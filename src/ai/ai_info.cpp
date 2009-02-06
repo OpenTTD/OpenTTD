@@ -24,7 +24,8 @@ AIConfigItem _start_date_config = {
 	AI::START_NEXT_HARD,
 	AI::START_NEXT_DEVIATION,
 	30,
-	AICONFIG_NONE
+	AICONFIG_NONE,
+	NULL
 };
 
 AIFileInfo::~AIFileInfo()

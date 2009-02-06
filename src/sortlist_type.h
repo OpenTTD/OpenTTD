@@ -313,9 +313,9 @@ public:
 	 * Filter the list.
 	 *
 	 * @param decide The function to decide about an item
-	 * @param filter_data The data for filter on
+	 * @param filter_data Additional data passed to the filter function
 	 * @return true if the list has been altered by filtering
-	 * */
+	 */
 	bool Filter(FilterFunction *decide, const F *filter_data)
 	{
 		/* Do not filter if the filter bit is not set */
@@ -346,7 +346,7 @@ public:
 	/**
 	 * Filter the data with the currently selected filter.
 	 *
-	 * @param filter_data The data for filer on
+	 * @param filter_data Additional data passed to the filter function.
 	 * @return true if the list has been altered by filtering
 	 */
 	bool Filter(const F *filter_data)
