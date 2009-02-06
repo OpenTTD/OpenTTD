@@ -138,6 +138,7 @@ AIScanner::AIScanner() :
 	SQAIInfo.PreRegister(engine);
 	SQAIInfo.AddConstructor<void (AIInfo::*)(), 1>(engine, "x");
 	SQAIInfo.DefSQAdvancedMethod(this->engine, &AIInfo::AddSetting, "AddSetting");
+	SQAIInfo.DefSQAdvancedMethod(this->engine, &AIInfo::AddLabels, "AddLabels");
 	SQAIInfo.DefSQConst(engine, AICONFIG_RANDOM, "AICONFIG_RANDOM");
 	SQAIInfo.DefSQConst(engine, AICONFIG_BOOLEAN, "AICONFIG_BOOLEAN");
 	SQAIInfo.PostRegister(engine);

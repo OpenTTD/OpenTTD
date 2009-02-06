@@ -210,6 +210,12 @@ AIInfo::~AIInfo()
 	for (AIConfigItemList::iterator it = this->config_list.begin(); it != this->config_list.end(); it++) {
 		free((char *)(*it).name);
 		free((char *)(*it).description);
+		if (it->labels != NULL) {
+			for (LabelMapping::iterator it2 = (*it).labels->Begin(); it2 != (*it).labels->End(); it2++) {
+				free(it2->second);
+			}
+			delete it->labels;
+		}
 	}
 	this->config_list.clear();
 }
@@ -320,6 +326,49 @@ SQInteger AIInfo::AddSetting(HSQUIRRELVM vm)
 	}
 
 	this->config_list.push_back(config);
+	return 0;
+}
+
+SQInteger AIInfo::AddLabels(HSQUIRRELVM vm)
+{
+	const SQChar *sq_setting_name;
+	sq_getstring(vm, -2, &sq_setting_name);
+	const char *setting_name = FS2OTTD(sq_setting_name);
+
+	AIConfigItem *config = NULL;
+	for (AIConfigItemList::iterator it = this->config_list.begin(); it != this->config_list.end(); it++) {
+		if (strcmp((*it).name, setting_name) == 0) config = &(*it);
+	}
+
+	if (config == NULL) {
+		char error[1024];
+		snprintf(error, sizeof(error), "Trying to add labels for non-defined setting '%s'", setting_name);
+		this->engine->ThrowError(error);
+		return SQ_ERROR;
+	}
+	if (config->labels != NULL) return SQ_ERROR;
+
+	config->labels = new LabelMapping;
+
+	/* Read the table and find all labels */
+	sq_pushnull(vm);
+	while (SQ_SUCCEEDED(sq_next(vm, -2))) {
+		const SQChar *sq_key;
+		const SQChar *sq_label;
+		sq_getstring(vm, -2, &sq_key);
+		sq_getstring(vm, -1, &sq_label);
+		/* Because squirrel doesn't support identifiers starting with a digit,
+		 * we skip the first character. */
+		const char *key_string = FS2OTTD(sq_key);
+		int key = atoi(key_string + 1);
+		const char *label = FS2OTTD(sq_label);
+
+		if (config->labels->Find(key) == config->labels->End()) config->labels->Insert(key, strdup(label));
+
+		sq_pop(vm, 2);
+	}
+	sq_pop(vm, 1);
+
 	return 0;
 }
 

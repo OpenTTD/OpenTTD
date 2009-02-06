@@ -261,9 +261,12 @@ struct AISettingsWindow : public Window {
 				DrawFrameRect(4, y  + 2, 23, y + 10, (current_value != 0) ? 6 : 4, (current_value != 0) ? FR_LOWERED : FR_NONE);
 			} else {
 				DrawArrowButtons(4, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + !!this->clicked_increase : 0, current_value > (*it).min_value, current_value < (*it).max_value);
-				static char buf[8];
-				sprintf(buf, "%d", current_value);
-				x = DoDrawStringTruncated(buf, 28, y + 3, TC_ORANGE, this->width - 32);
+				if (it->labels != NULL && it->labels->Find(current_value) != it->labels->End()) {
+					x = DoDrawStringTruncated(it->labels->Find(current_value)->second, 28, y + 3, TC_ORANGE, this->width - 32);
+				} else {
+					SetDParam(0, current_value);
+					x = DrawStringTruncated(28, y + 3, STR_JUST_INT, TC_ORANGE, this->width - 32);
+				}
 			}
 
 			DoDrawStringTruncated((*it).description, max(x + 3, 54), y + 3, TC_LIGHT_BLUE, this->width - (4 + max(x + 3, 54)));

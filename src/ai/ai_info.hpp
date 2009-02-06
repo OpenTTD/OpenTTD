@@ -6,6 +6,7 @@
 #define AI_INFO
 
 #include <list>
+#include "../core/smallmap_type.hpp"
 #include "api/ai_object.hpp"
 
 enum AIConfigFlags {
@@ -13,6 +14,8 @@ enum AIConfigFlags {
 	AICONFIG_RANDOM  = 0x1, //!< When randomizing the AI, pick any value between min_value and max_value when on custom difficulty setting.
 	AICONFIG_BOOLEAN = 0x2, //!< This value is a boolean (either 0 (false) or 1 (true) ).
 };
+
+typedef SmallMap<int, char *> LabelMapping;
 
 struct AIConfigItem {
 	const char *name;        //!< The name of the configuration setting.
@@ -26,6 +29,7 @@ struct AIConfigItem {
 	int random_deviation;    //!< The maximum random deviation from the default value.
 	int step_size;           //!< The step size in the gui.
 	AIConfigFlags flags;     //!< Flags for the configuration setting.
+	LabelMapping *labels;    //!< Text labels for the integer values.
 };
 
 extern AIConfigItem _start_date_config;
@@ -139,6 +143,11 @@ public:
 	 * Set a setting.
 	 */
 	SQInteger AddSetting(HSQUIRRELVM vm);
+
+	/**
+	 * Add labels for a setting.
+	 */
+	SQInteger AddLabels(HSQUIRRELVM vm);
 
 	/**
 	 * Get the default value for a setting.
