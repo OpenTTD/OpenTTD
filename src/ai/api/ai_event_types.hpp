@@ -703,7 +703,7 @@ private:
 };
 
 /**
- * Event Disaster Zeppeliner Cleared, indicating a previously crashed zeppeliner has been remvoed, and the airport is operating again.
+ * Event Disaster Zeppeliner Cleared, indicating a previously crashed zeppeliner has been removed, and the airport is operating again.
  */
 class AIEventDisasterZeppelinerCleared : public AIEvent {
 public:

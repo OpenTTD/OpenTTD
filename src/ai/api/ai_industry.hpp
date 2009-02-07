@@ -47,10 +47,10 @@ public:
 
 	/**
 	 * Gets the production of a cargo of the industry.
-	 * WARNING This function does not neccessarily return useful values for newindustries.
-	 *         An industry produces at least the returned amount per month,
-	 *         but the function can also return 0, when the industry produces lots of cargo.
-	 *         GetLastMonthProduction() is more robust.
+	 * @warning This function does not neccessarily return useful values for newindustries.
+	 *          An industry produces at least the returned amount per month,
+	 *          but the function can also return 0, when the industry produces lots of cargo.
+	 *          GetLastMonthProduction() is more robust.
 	 * @param industry_id The index of the industry.
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidIndustry(industry_id).

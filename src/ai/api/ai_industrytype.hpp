@@ -33,8 +33,8 @@ public:
 
 	/**
 	 * Get a list of CargoID possible produced by this industry-type.
-	 * WARNING This is function only returns the default cargos of the industry type.
-	 *         Industries can specify new cargotypes on construction.
+	 * @warning This function only returns the default cargos of the industry type.
+	 *          Industries can specify new cargotypes on construction.
 	 * @param industry_type The type to get the CargoIDs for.
 	 * @pre IsValidIndustryType(industry_type).
 	 * @return The CargoIDs of all cargotypes this industry could produce.
@@ -43,8 +43,8 @@ public:
 
 	/**
 	 * Get a list of CargoID accepted by this industry-type.
-	 * WARNING This is function only returns the default cargos of the industry type.
-	 *         Industries can specify new cargotypes on construction.
+	 * @warning This function only returns the default cargos of the industry type.
+	 *          Industries can specify new cargotypes on construction.
 	 * @param industry_type The type to get the CargoIDs for.
 	 * @pre IsValidIndustryType(industry_type).
 	 * @return The CargoIDs of all cargotypes this industry accepts.
