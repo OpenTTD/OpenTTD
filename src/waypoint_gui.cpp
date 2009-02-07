@@ -11,6 +11,7 @@
 #include "strings_func.h"
 #include "gfx_func.h"
 #include "command_func.h"
+#include "company_func.h"
 #include "functions.h"
 #include "window_func.h"
 
@@ -51,7 +52,7 @@ public:
 	virtual void OnPaint()
 	{
 		/* You can only change your own waypoints */
-		this->SetWidgetDisabledState(WAYPVW_RENAME, !CheckOwnership(this->wp->owner));
+		this->SetWidgetDisabledState(WAYPVW_RENAME, this->wp->owner != _local_company);
 		SetDParam(0, this->wp->index);
 		this->DrawWidgets();
 
