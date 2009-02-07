@@ -531,29 +531,6 @@ int ttd_main(int argc, char *argv[])
 	CheckConfig();
 	LoadFromHighScore();
 
-
-	/* override config? */
-	if (!StrEmpty(graphics_set)) {
-		free(_ini_graphics_set);
-		_ini_graphics_set = graphics_set;
-	}
-	if (!StrEmpty(musicdriver)) {
-		free(_ini_musicdriver);
-		_ini_musicdriver = musicdriver;
-	}
-	if (!StrEmpty(sounddriver)) {
-		free(_ini_sounddriver);
-		_ini_sounddriver = sounddriver;
-	}
-	if (!StrEmpty(videodriver)) {
-		free(_ini_videodriver);
-		_ini_videodriver = videodriver;
-	}
-	if (!StrEmpty(blitter)) {
-		free(_ini_blitter);
-		_ini_blitter = blitter;
-	}
-
 	if (resolution.width != 0) { _cur_resolution = resolution; }
 	if (startyear != INVALID_YEAR) _settings_newgame.game_creation.starting_year = startyear;
 	if (generation_seed != GENERATE_NEW_SEED) _settings_newgame.game_creation.generation_seed = generation_seed;
@@ -592,42 +569,47 @@ int ttd_main(int argc, char *argv[])
 	/* This must be done early, since functions use the InvalidateWindow* calls */
 	InitWindowSystem();
 
-	if (!SetGraphicsSet(_ini_graphics_set)) {
-		StrEmpty(_ini_graphics_set) ?
+	if (graphics_set == NULL) graphics_set = _ini_graphics_set;
+	if (!SetGraphicsSet(graphics_set)) {
+		StrEmpty(graphics_set) ?
 			usererror("Failed to find a graphics set. Please acquire a graphics set for OpenTTD.") :
-			usererror("Failed to select requested graphics set '%s'", _ini_graphics_set);
+			usererror("Failed to select requested graphics set '%s'", graphics_set);
 	}
 
 	/* Initialize game palette */
 	GfxInitPalettes();
 
 	DEBUG(misc, 1, "Loading blitter...");
-	if (BlitterFactoryBase::SelectBlitter(_ini_blitter) == NULL)
-		StrEmpty(_ini_blitter) ?
+	if (blitter == NULL) blitter = _ini_blitter;
+	if (BlitterFactoryBase::SelectBlitter(blitter) == NULL)
+		StrEmpty(blitter) ?
 			usererror("Failed to autoprobe blitter") :
-			usererror("Failed to select requested blitter '%s'; does it exist?", _ini_blitter);
+			usererror("Failed to select requested blitter '%s'; does it exist?", blitter);
 
 	DEBUG(driver, 1, "Loading drivers...");
 
-	_sound_driver = (SoundDriver*)SoundDriverFactoryBase::SelectDriver(_ini_sounddriver, Driver::DT_SOUND);
+	if (sounddriver == NULL) sounddriver = _ini_sounddriver;
+	_sound_driver = (SoundDriver*)SoundDriverFactoryBase::SelectDriver(sounddriver, Driver::DT_SOUND);
 	if (_sound_driver == NULL) {
-		StrEmpty(_ini_sounddriver) ?
+		StrEmpty(sounddriver) ?
 			usererror("Failed to autoprobe sound driver") :
-			usererror("Failed to select requested sound driver '%s'", _ini_sounddriver);
+			usererror("Failed to select requested sound driver '%s'", sounddriver);
 	}
 
-	_music_driver = (MusicDriver*)MusicDriverFactoryBase::SelectDriver(_ini_musicdriver, Driver::DT_MUSIC);
+	if (musicdriver == NULL) musicdriver = _ini_musicdriver;
+	_music_driver = (MusicDriver*)MusicDriverFactoryBase::SelectDriver(musicdriver, Driver::DT_MUSIC);
 	if (_music_driver == NULL) {
-		StrEmpty(_ini_musicdriver) ?
+		StrEmpty(musicdriver) ?
 			usererror("Failed to autoprobe music driver") :
-			usererror("Failed to select requested music driver '%s'", _ini_musicdriver);
+			usererror("Failed to select requested music driver '%s'", musicdriver);
 	}
 
-	_video_driver = (VideoDriver*)VideoDriverFactoryBase::SelectDriver(_ini_videodriver, Driver::DT_VIDEO);
+	if (videodriver == NULL) videodriver = _ini_videodriver;
+	_video_driver = (VideoDriver*)VideoDriverFactoryBase::SelectDriver(videodriver, Driver::DT_VIDEO);
 	if (_video_driver == NULL) {
-		StrEmpty(_ini_videodriver) ?
+		StrEmpty(videodriver) ?
 			usererror("Failed to autoprobe video driver") :
-			usererror("Failed to select requested video driver '%s'", _ini_videodriver);
+			usererror("Failed to select requested video driver '%s'", videodriver);
 	}
 
 	_savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
