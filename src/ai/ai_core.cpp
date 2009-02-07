@@ -88,11 +88,14 @@
 {
 	if (_networking && !_network_server) return;
 
+	CompanyID old_company = _current_company;
 	_current_company = company;
 	Company *c = GetCompany(company);
 
 	delete c->ai_instance;
 	c->ai_instance = NULL;
+
+	_current_company = old_company;
 
 	InvalidateWindowData(WC_AI_DEBUG, 0, -1);
 }
