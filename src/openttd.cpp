@@ -640,9 +640,6 @@ int ttd_main(int argc, char *argv[])
 
 	ResetGRFConfig(false);
 
-	/* XXX - ugly hack, if diff_level is 9, it means we got no setting from the config file */
-	if (_settings_newgame.difficulty.diff_level == 9) SetDifficultyLevel(0, &_settings_newgame.difficulty);
-
 	/* Copy the settings needed for creating a new map. */
 	_settings_game.game_creation = _settings_newgame.game_creation;
 
