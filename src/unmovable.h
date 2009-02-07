@@ -21,11 +21,5 @@ struct UnmovableSpec {
 
 };
 
-extern const UnmovableSpec _original_unmovable[];
-
-static inline const UnmovableSpec *GetUnmovableSpec(UnmovableType type)
-{
-	return &_original_unmovable[type];
-}
 
 #endif /* UNMOVABLE_H */

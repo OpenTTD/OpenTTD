@@ -28,6 +28,20 @@
 #include "table/sprites.h"
 #include "table/unmovable_land.h"
 
+/**
+ * Accessor for array _original_unmovable.
+ * This will ensure at once : proper access and
+ * not allowing modifications of it.
+ * @param type of unmovable (which is the index in _original_unmovable)
+ * @pre type < UNMOVABLE_MAX
+ * @return a pointer to the corresponding unmovable spec
+ **/
+static inline const UnmovableSpec *GetUnmovableSpec(UnmovableType type)
+{
+	assert(type < UNMOVABLE_MAX);
+	return &_original_unmovable[type];
+}
+
 /** Destroy a HQ.
  * During normal gameplay you can only implicitely destroy a HQ when you are
  * rebuilding it. Otherwise, only water can destroy it.

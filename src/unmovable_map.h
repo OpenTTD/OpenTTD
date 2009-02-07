@@ -15,6 +15,7 @@ enum UnmovableType {
 	UNMOVABLE_STATUE      = 2,    ///< Statue in towns
 	UNMOVABLE_OWNED_LAND  = 3,    ///< Owned land 'flag'
 	UNMOVABLE_HQ          = 4,    ///< HeadQuarter of a player
+	UNMOVABLE_MAX,
 };
 
 /**
