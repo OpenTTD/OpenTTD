@@ -360,7 +360,6 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 				} else {
 					v->owner = new_owner;
 					v->colormap = PAL_NONE;
-					v->group_id = DEFAULT_GROUP;
 					if (IsEngineCountable(v)) GetCompany(new_owner)->num_engines[v->engine_type]++;
 					if (v->IsPrimaryVehicle()) v->unitnumber = unitidgen[v->type].NextID();
 				}
