@@ -734,8 +734,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Plant tr
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Place rocky areas on landscape
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Place lighthouse
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Place transmitter
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define desert area.{}Press and hold CTRL to remove it
-STR_CREATE_LAKE                                                 :{BLACK}Define water area.{}Make a canal, unless CTRL is held down at sea level, when it will flood the surroundings instead
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define desert area.{}Press and hold Ctrl to remove it
+STR_CREATE_LAKE                                                 :{BLACK}Define water area.{}Make a canal, unless Ctrl is held down at sea level, when it will flood the surroundings instead
 STR_CREATE_RIVER                                                :{BLACK}Place rivers.
 STR_0290_DELETE                                                 :{BLACK}Delete
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Delete this town completely
@@ -812,8 +812,8 @@ STR_02D5_LAND_BLOCK_INFO                                        :Land area infor
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Toggle Console
 STR_AI_DEBUG_MENU                                               :AI Debug
-STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
-STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Giant Screenshot (Ctrl-G)
+STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl+S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Giant Screenshot (Ctrl+G)
 STR_02D9_ABOUT_OPENTTD                                          :About 'OpenTTD'
 ############ range ends here
 
@@ -1124,8 +1124,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Map scrollwheel speed: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Right-click emulation: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-click
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-click
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Off
 
 STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Left-click scrolling: {ORANGE}{STRING1}
@@ -2014,7 +2014,7 @@ STR_3069_BUOY                                                   :Buoy
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...buoy in the way
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...station too spread out
 STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...nonuniform stations disabled
-STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Hold down CTRL to select more than one item
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Hold down Ctrl to select more than one item
 
 STR_UNDEFINED                                                   :(undefined string)
 STR_STAT_CLASS_DFLT                                             :Default station
@@ -2476,7 +2476,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Show shi
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Show aircraft colour schemes
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Choose the primary colour for the selected scheme
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Choose the secondary colour for the selected scheme
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Select a colour scheme to change, or multiple schemes with CTRL+click. Click on the box to toggle use of the scheme
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Select a colour scheme to change, or multiple schemes with Ctrl+Click. Click on the box to toggle use of the scheme
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Steam)
@@ -2861,17 +2861,17 @@ STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Rail Veh
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Build Vehicle
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clone Vehicle
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}This will build a copy of the road vehicle. Control-click will share the orders
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}This will build a copy of a road vehicle. Click this button and then on a road vehicle inside or outside the depot. Control-click will share the orders
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}This will build a copy of the road vehicle. Ctrl+Click will share the orders
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}This will build a copy of a road vehicle. Click this button and then on a road vehicle inside or outside the depot. Ctrl+Click will share the orders
 STR_CLONE_TRAIN                                                 :{BLACK}Clone Train
-STR_CLONE_TRAIN_INFO                                            :{BLACK}This will build a copy of the train including all cars. Control-click will share the orders
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}This will build a copy of a train including all cars. Click this button and then on a train inside or outside the depot. Control-click will share the orders
+STR_CLONE_TRAIN_INFO                                            :{BLACK}This will build a copy of the train including all cars. Ctrl+Click will share the orders
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}This will build a copy of a train including all cars. Click this button and then on a train inside or outside the depot. Ctrl+Click will share the orders
 STR_8820_RENAME                                                 :{BLACK}Rename
 STR_8823_SKIP                                                   :{BLACK}Skip
 STR_8824_DELETE                                                 :{BLACK}Delete
 STR_8826_GO_TO                                                  :{BLACK}Go To
 STR_REFIT                                                       :{BLACK}Refit
-STR_REFIT_TIP                                                   :{BLACK}Select what cargo type to refit to in this order. Control click to remove refit instruction
+STR_REFIT_TIP                                                   :{BLACK}Select what cargo type to refit to in this order. Ctrl+Click to remove refit instruction
 STR_REFIT_ORDER                                                 :(Refit to {STRING})
 STR_REFIT_STOP_ORDER                                            :(Refit to {STRING} and stop)
 STR_STOP_ORDER                                                  :(Stop)
@@ -2921,7 +2921,7 @@ STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Rename t
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Current train action - click here to stop/start train
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Show train's orders
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centre main view on train's location
-STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Send train to depot. CTRL+click will only service
+STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Send train to depot. Ctrl+Click will only service
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Force train to proceed without waiting for signal to clear it
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Reverse direction of train
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Show train details
@@ -2931,8 +2931,8 @@ STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Show det
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Show details of train vehicles
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Show capacities of each vehicle
 STR_SHOW_TOTAL_CARGO                                            :{BLACK}Show total capacity of train, split by cargo type
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orders list - click on an order to highlight it. CTRL + click scrolls to the station
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Skip the current order, and start the next. CTRL + click skips to the selected order
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orders list - click on an order to highlight it. Ctrl+Click scrolls to the station
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Skip the current order, and start the next. Ctrl+Click skips to the selected order
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Delete the highlighted order
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insert a new order before the highlighted order, or add to end of list
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Timetable - click on an order to highlight it.
@@ -2987,7 +2987,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :This vehicle is
 STR_TIMETABLE_TOTAL_TIME                                        :This timetable will take {STRING1} to complete
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :This timetable will take at least {STRING1} to complete (not all timetabled)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofill
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fill the timetable automatically with the values from the next journey (CTRL-click to try to keep waiting times)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fill the timetable automatically with the values from the next journey (Ctrl+Click to try to keep waiting times)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Road vehicle in the way
@@ -3020,7 +3020,7 @@ STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Build ne
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Current vehicle action - click here to stop/start vehicle
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Show vehicle's orders
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centre main view on vehicle's location
-STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Send vehicle to depot. CTRL+click will only service
+STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Send vehicle to depot. Ctrl+Click will only service
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Force vehicle to turn around
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Show road vehicle details
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Vehicles - click on vehicle for information
@@ -3069,8 +3069,8 @@ STR_9805_SHIPS                                                  :{WHITE}{COMPANY
 STR_9808_NEW_SHIPS                                              :{WHITE}New Ships
 STR_9809_BUILD_SHIP                                             :{BLACK}Build Ship
 STR_CLONE_SHIP                                                  :{BLACK}Clone Ship
-STR_CLONE_SHIP_INFO                                             :{BLACK}This will build a copy of the ship. Control-click will share the orders
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}This will build a copy of a ship. Click this button and then on a ship inside or outside the depot. Control-click will share the orders
+STR_CLONE_SHIP_INFO                                             :{BLACK}This will build a copy of the ship. Ctrl+Click will share the orders
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}This will build a copy of a ship. Click this button and then on a ship inside or outside the depot. Ctrl+Click will share the orders
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Ship must be stopped in depot
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Can't sell ship...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Can't build ship...
@@ -3104,7 +3104,7 @@ STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Build th
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Current ship action - click here to stop/start ship
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Show ship's orders
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centre main view on ship's location
-STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Send ship to depot. CTRL+click will only service
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Send ship to depot. Ctrl+Click will only service
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Show ship details
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cost: {CURRENCY} Max. Speed: {VELOCITY}{}Capacity: {CARGO}{}Running Cost: {CURRENCY}/yr
 STR_982F_NAME_SHIP                                              :{BLACK}Name ship
@@ -3136,8 +3136,8 @@ STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Can't bu
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Aircraft Hangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}New Aircraft
 STR_CLONE_AIRCRAFT                                              :{BLACK}Clone Aircraft
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}This will build a copy of the aircraft. Control-click will share the orders
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}This will build a copy of an aircraft. Click this button and then on an aircraft inside or outside the hangar. Control-click will share the orders
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}This will build a copy of the aircraft. Ctrl+Click will share the orders
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}This will build a copy of an aircraft. Click this button and then on an aircraft inside or outside the hangar. Ctrl+Click will share the orders
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}New Aircraft
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Build Aircraft
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Can't build aircraft...
@@ -3176,7 +3176,7 @@ STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Build th
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Current aircraft action - click here to stop/start aircraft
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Show aircraft's orders
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centre main view on aircraft's location
-STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Send aircraft to hangar. CTRL+click will only service
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Send aircraft to hangar. Ctrl+Click will only service
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Show aircraft details
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cost: {CURRENCY} Max. Speed: {VELOCITY}{}Capacity: {COMMA} passengers, {COMMA} bags of mail{}Running Cost: {CURRENCY}/yr
 
@@ -3559,15 +3559,15 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...this 
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...road facing in the wrong direction
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Transparency Options
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Toggle transparency for station signs. CTRL+click to lock.
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Toggle transparency for trees. CTRL+click to lock.
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Toggle transparency for houses. CTRL+click to lock.
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Toggle transparency for industries. CTRL+click to lock.
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Toggle transparency for buildables like stations, depots and waypoints. CTRL+click to lock.
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Toggle transparency for bridges. CTRL+click to lock.
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Toggle transparency for structures like lighthouses and antennas. CTRL+click to lock.
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Toggle transparency for catenary. CTRL+click to lock.
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Toggle transparency for loading indicators. CTRL+click to lock.
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Toggle transparency for station signs. Ctrl+Click to lock.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Toggle transparency for trees. Ctrl+Click to lock.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Toggle transparency for houses. Ctrl+Click to lock.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Toggle transparency for industries. Ctrl+Click to lock.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Toggle transparency for buildables like stations, depots and waypoints. Ctrl+Click to lock.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Toggle transparency for bridges. Ctrl+Click to lock.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Toggle transparency for structures like lighthouses and antennas. Ctrl+Click to lock.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Toggle transparency for catenary. Ctrl+Click to lock.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Toggle transparency for loading indicators. Ctrl+Click to lock.
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Set objects invisible instead of transparent
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3606,7 +3606,7 @@ STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Can't re
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Can't add the vehicle to this group...
 STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Can't add shared vehicles to group...
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Groups - Click on a group to list all vehicles of this group
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Groups - click on a group to list all vehicles of this group
 STR_GROUP_CREATE_TIP                                            :{BLACK}Click to create a group
 STR_GROUP_DELETE_TIP                                            :{BLACK}Delete the selected group
 STR_GROUP_RENAME_TIP                                            :{BLACK}Rename the selected group
@@ -3696,7 +3696,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Exit-Sig
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo-Signal (electric){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of presignals.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Standard path signals can be passed from the back side.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}One-way Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way path signals can't be passed from the back side.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signal Convert{}When selected, clicking an existing signal will convert it to the selected signal type and variant, CTRL-click will toggle the existing variant.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signal Convert{}When selected, clicking an existing signal will convert it to the selected signal type and variant, Ctrl+Click will toggle the existing variant.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Dragging signal density
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Decrease dragging signal density
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Increase dragging signal density
