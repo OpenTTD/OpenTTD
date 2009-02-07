@@ -2182,6 +2182,8 @@ static bool DoBuildStatueOfCompany(TileIndex tile, TownID town_id)
 {
 	/* Statues can be build on slopes, just like houses. Only the steep slopes is a no go. */
 	if (IsSteepSlope(GetTileSlope(tile, NULL))) return false;
+	/* Don't build statues under bridges. */
+	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return false;
 
 	if (!IsTileType(tile, MP_HOUSE) &&
 			!IsTileType(tile, MP_CLEAR) &&
