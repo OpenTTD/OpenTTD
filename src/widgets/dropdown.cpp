@@ -39,6 +39,16 @@ StringID DropDownListParamStringItem::String() const
 	return this->string;
 }
 
+uint DropDownListCharStringItem::Width() const
+{
+	return GetStringBoundingBox(this->string).width;
+}
+
+void DropDownListCharStringItem::Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
+{
+	DoDrawStringTruncated(this->string, x + 2, y, sel ? TC_WHITE : TC_BLACK, width);
+}
+
 /**
  * Delete all items of a drop down list and the list itself
  * @param list List to delete.

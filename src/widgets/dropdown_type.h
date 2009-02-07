@@ -57,6 +57,21 @@ public:
 };
 
 /**
+ * List item containing a C char string.
+ */
+class DropDownListCharStringItem : public DropDownListItem {
+public:
+	const char *string;
+
+	DropDownListCharStringItem(const char *string, int result, bool masked) : DropDownListItem(result, masked), string(string) {}
+	virtual ~DropDownListCharStringItem() {}
+
+	virtual bool Selectable() const { return true; }
+	virtual uint Width() const;
+	virtual void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const;
+};
+
+/**
  * A drop down list is a collection of drop down list items.
  */
 typedef std::list<DropDownListItem *> DropDownList;
