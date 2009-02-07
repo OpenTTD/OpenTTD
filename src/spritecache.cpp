@@ -246,7 +246,7 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 		return sc->ptr;
 	}
 
-	assert(sprite_type == ST_NORMAL);
+	assert(sprite_type == ST_NORMAL || sprite_type == ST_FONT);
 
 	SpriteLoaderGrf sprite_loader;
 	SpriteLoader::Sprite sprite;
@@ -490,7 +490,10 @@ static const void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType reques
 	};
 
 	SpriteType available = sc->type;
-	if (requested == ST_FONT && available == ST_NORMAL) return GetRawSprite(sprite, ST_NORMAL);
+	if (requested == ST_FONT && available == ST_NORMAL) {
+		if (sc->ptr == NULL) sc->type = ST_FONT;
+		return GetRawSprite(sprite, sc->type);
+	}
 
 	byte warning_level = sc->warned ? 6 : 0;
 	sc->warned = true;
