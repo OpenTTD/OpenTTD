@@ -387,7 +387,7 @@ void GenerateUnmovables()
 	if (_settings_game.game_creation.landscape == LT_TOYLAND) return;
 
 	/* add radio tower */
-	int radiotowser_to_build = ScaleByMapSize(15); // maximum number of radio towers on the map
+	int radiotower_to_build = ScaleByMapSize(15); // maximum number of radio towers on the map
 	int lighthouses_to_build = _settings_game.game_creation.landscape == LT_TROPIC ? 0 : ScaleByMapSize1D((Random() & 3) + 7);
 
 	/* Scale the amount of lighthouses with the amount of land at the borders. */
@@ -406,7 +406,7 @@ void GenerateUnmovables()
 		lighthouses_to_build = lighthouses_to_build * num_water_tiles / (2 * MapMaxY() + 2 * MapMaxX() - 6);
 	}
 
-	SetGeneratingWorldProgress(GWP_UNMOVABLE, radiotowser_to_build + lighthouses_to_build);
+	SetGeneratingWorldProgress(GWP_UNMOVABLE, radiotower_to_build + lighthouses_to_build);
 
 	for (uint i = ScaleByMapSize(1000); i != 0; i--) {
 		TileIndex tile = RandomTile();
@@ -417,7 +417,7 @@ void GenerateUnmovables()
 
 			MakeTransmitter(tile);
 			IncreaseGeneratingWorldProgress(GWP_UNMOVABLE);
-			if (--radiotowser_to_build == 0) break;
+			if (--radiotower_to_build == 0) break;
 		}
 	}
 
