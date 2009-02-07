@@ -334,12 +334,13 @@ enum {
  * This enumeration defines flags for the _command_proc_table.
  */
 enum {
-	CMD_SERVER   = 0x01, ///< the command can only be initiated by the server
-	CMD_OFFLINE  = 0x02, ///< the command cannot be executed in a multiplayer game; single-player only
-	CMD_AUTO     = 0x04, ///< set the DC_AUTO flag on this command
-	CMD_NO_TEST  = 0x08, ///< the command's output may differ between test and execute due to town rating changes etc.
-	CMD_NO_WATER = 0x10, ///< set the DC_NO_WATER flag on this command
-	CMD_ALL_TILES= 0x20, ///< allow this command also on MP_VOID tiles
+	CMD_SERVER    = 0x01, ///< the command can only be initiated by the server
+	CMD_SPECTATOR = 0x02, ///< the command may be initiated by a spectator
+	CMD_OFFLINE   = 0x04, ///< the command cannot be executed in a multiplayer game; single-player only
+	CMD_AUTO      = 0x08, ///< set the DC_AUTO flag on this command
+	CMD_ALL_TILES = 0x10, ///< allow this command also on MP_VOID tiles
+	CMD_NO_TEST   = 0x20, ///< the command's output may differ between test and execute due to town rating changes etc.
+	CMD_NO_WATER  = 0x40, ///< set the DC_NO_WATER flag on this command
 };
 
 /**

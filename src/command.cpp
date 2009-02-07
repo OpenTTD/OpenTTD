@@ -304,7 +304,7 @@ static const Command _command_proc_table[] = {
 
 	{CmdMoneyCheat,                       CMD_OFFLINE}, /* CMD_MONEY_CHEAT */
 	{CmdBuildCanal,                          CMD_AUTO}, /* CMD_BUILD_CANAL */
-	{CmdCompanyCtrl,                                0}, /* CMD_COMPANY_CTRL */
+	{CmdCompanyCtrl,                    CMD_SPECTATOR}, /* CMD_COMPANY_CTRL */
 
 	{CmdLevelLand, CMD_ALL_TILES | CMD_NO_TEST | CMD_AUTO}, /* CMD_LEVEL_LAND; test run might clear tiles multiple times, in execution that only happens once */
 
@@ -524,7 +524,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (cmd_flags & CMD_ALL_TILES) == 0))) return false;
 
 	/* If the server is a spectator, it may only do server commands! */
-	if (_current_company == COMPANY_SPECTATOR && (cmd_flags & CMD_SERVER) == 0) return false;
+	if (_current_company == COMPANY_SPECTATOR && (cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) == 0) return false;
 
 	bool notest = (cmd_flags & CMD_NO_TEST) != 0;
 
