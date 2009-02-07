@@ -501,6 +501,8 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	StringID error_part1 = GB(cmd, 16, 16);
 	_additional_cash_required = 0;
 
+	CompanyID old_company = _current_company;
+
 	/** Spectator has no rights except for the (dedicated) server which
 	 * is/can be a spectator but as the server it can do anything */
 	if (_current_company == COMPANY_SPECTATOR && !_network_server) {
@@ -558,6 +560,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 		SetTownRatingTestMode(true);
 		res = proc(tile, flags, p1, p2, text);
 		SetTownRatingTestMode(false);
+		assert(cmd_id == CMD_COMPANY_CTRL || old_company == _current_company);
 		if (CmdFailed(res)) {
 			res.SetGlobalErrorMessage();
 			goto show_error;
@@ -594,6 +597,8 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	/* Actually try and execute the command. If no cost-type is given
 	 * use the construction one */
 	res2 = proc(tile, flags | DC_EXEC, p1, p2, text);
+
+	assert(cmd_id == CMD_COMPANY_CTRL || old_company == _current_company);
 
 	/* If notest is on, it means the result of the test can be different than
 	 *  the real command.. so ignore the test */
