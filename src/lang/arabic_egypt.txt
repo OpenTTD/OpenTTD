@@ -970,6 +970,10 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}صيغة
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}اختر صيغة حفظ الشاشة
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK} الواجهة الرسومية الاساسية
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK} اختر مجموعة الواجهة الرسومية
+
 STR_AUTOSAVE_1_MONTH                                            :كل شهر
 STR_AUTOSAVE_FAILED                                             :{WHITE}فشل الحفظ التلقائي
 
@@ -3764,6 +3768,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK} اخت�
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK} ضع علامة على التحديثات للمحتويات الموجودة و التي سيتم تحميلها
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK} مسح الكل
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK} ضع علامة على المحتوى التي لن يتم تحميلها
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK} ادخل فلتر
+STR_CONTENT_FILTER_TIP                                          :{BLACK} اختر كلمة اساسية لفلترة القائمة
+STR_CONTENT_FILTER_TITLE                                        :{BLACK} فلتر:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK} تحميل
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK} ابدأ تحميل المحتويات المختارة
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER} حجم البيانات  التي سيتم تحميلها: {WHITE}{BYTES}

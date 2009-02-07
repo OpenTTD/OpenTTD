@@ -1035,6 +1035,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Képment
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Válaszd ki milyen formátumú képmentést szeretnél
 
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+
 STR_AUTOSAVE_1_MONTH                                            :Minden hónapban
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatikus mentés sikertelen
 
@@ -3866,6 +3868,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Frissít
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Már meglévő tartalmakhoz az összes elérhető frissítés kijelölése letöltéshez
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Nincs kijelölés
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Megszünteti az összes kijelölést
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Kulcsszó megadása a szűréshez
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Írd ide a kulcsszót ami alapján szűrni szeretnéd a listát
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Címke/név szűrő:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Letöltés
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}A kijelölt tartalmak letöltésének megkezdése
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}A letöltés teljes mérete: {WHITE}{BYTES}

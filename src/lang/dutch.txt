@@ -734,8 +734,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Versprei
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plaats steenachtige gebieden op de kaart
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plaats vuurtoren
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plaats radiomast
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definieer woestijngebied.{}Gebruik CTRL om het te verwijderen
-STR_CREATE_LAKE                                                 :{BLACK}Definieer water gebied.{}Maak een kanaal, tenzij CTRL wordt vastgehouden op zee niveau, dan zal de omgeving overstromen
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definieer woestijngebied.{}Gebruik Ctrl om het te verwijderen
+STR_CREATE_LAKE                                                 :{BLACK}Definieer water gebied.{}Maak een kanaal, tenzij Ctrl wordt vastgehouden op zee niveau, dan zal de omgeving overstromen
 STR_CREATE_RIVER                                                :{BLACK}Maak rivier.
 STR_0290_DELETE                                                 :{BLACK}Verwijder
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Verwijder deze hele stad
@@ -762,6 +762,7 @@ STR_02A2_MEDIUM                                                 :{BLACK}Middelma
 STR_02A3_LARGE                                                  :{BLACK}Groot
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Willekeurig
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Stad
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Steden groeien sneller dan gewone dorpen{}Afhankelijk van instellingen, zijn ze groter als ze gemaakt worden
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Kies stadsgrootte
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Stadsgrootte:
 
@@ -811,8 +812,8 @@ STR_02D5_LAND_BLOCK_INFO                                        :Info over blok 
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Schakel console aan/uit
 STR_AI_DEBUG_MENU                                               :AI Debug
-STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
-STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Grote screenshot (Ctrl-G)
+STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl+S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Grote screenshot (Ctrl+G)
 STR_02D9_ABOUT_OPENTTD                                          :Over OpenTTD
 ############ range ends here
 
@@ -967,6 +968,8 @@ STR_OPTIONS_RES_TIP                                             :{BLACK}Selectee
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Screenshotformaat
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selecteer het formaat van de schermprint
+
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 
 STR_AUTOSAVE_1_MONTH                                            :Elke maand
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatisch opslaan mislukt
@@ -1124,7 +1127,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Kaart m
 
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Rechts-klik emulatie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-klik
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-klik
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+klik
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Uit
 
 STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Linkermuisknop scrollen: {ORANGE}{STRING}
@@ -2013,7 +2016,7 @@ STR_3069_BUOY                                                   :Boei
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boei in de weg
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...station te verspreid
 STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...niet uniforme stations uit
-STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Houd CTRL ingedrukt om meer items te kiezen
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Houd Ctrl ingedrukt om meer items te kiezen
 
 STR_UNDEFINED                                                   :(ongedefinieerde string)
 STR_STAT_CLASS_DFLT                                             :Standaard station
@@ -2475,7 +2478,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Laat sch
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Laat de vliegtuig kleurschema's zien
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Kies de hoofdkleur voor het geselecteerde schema
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Kies de tweede kleur voor het geselecteerde schema
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Kies een kleurschema om te wijzigen, of meerdere schema's met CTRL+klik. Klik in het venster het gebruik van het kleurschema te kiezen
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Kies een kleurschema om te wijzigen, of meerdere schema's met Ctrl+klik. Klik in het venster het gebruik van het kleurschema te kiezen
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Stoom)
@@ -2860,17 +2863,17 @@ STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Rails Vo
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Bouw voertuig
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Kloon voertuig
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Hierdoor wordt een kopie gebouw van dit voertuig. Control-klik deelt de orders
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Hierdoor wordt een kopie gebouwd van een voertuig. Klik op deze knop en dan op een voertuig binnen of buiten het depot. Control-klik deelt de orders
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Hierdoor wordt een kopie gebouw van dit voertuig. Ctrl+klik deelt de orders
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Hierdoor wordt een kopie gebouwd van een voertuig. Klik op deze knop en dan op een voertuig binnen of buiten het depot. Ctrl+klik deelt de orders
 STR_CLONE_TRAIN                                                 :{BLACK}Kloon Trein
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Hierdoor wordt een kopie gebouw van deze trein inclusief wagons. Control-klik deelt de orders
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Hierdoor wordt een kopie gebouwd van een trein inclusief wagons. Klik op deze knop en dan op een trein binnen of buiten het depot. Control-klik deelt de orders
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Hierdoor wordt een kopie gebouw van deze trein inclusief wagons. Ctrl+klik deelt de orders
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Hierdoor wordt een kopie gebouwd van een trein inclusief wagons. Klik op deze knop en dan op een trein binnen of buiten het depot. Ctrl+klik deelt de orders
 STR_8820_RENAME                                                 :{BLACK}Hernoemen
 STR_8823_SKIP                                                   :{BLACK}Sla over
 STR_8824_DELETE                                                 :{BLACK}Verwijder
 STR_8826_GO_TO                                                  :{BLACK}Ga naar
 STR_REFIT                                                       :{BLACK}Ombouwen
-STR_REFIT_TIP                                                   :{BLACK}Kies naar welk type vracht ombouwen in deze order. Ctrl-klik om ombouw instructie te verwijderen
+STR_REFIT_TIP                                                   :{BLACK}Kies naar welk type vracht ombouwen in deze order. Ctrl+klik om ombouw instructie te verwijderen
 STR_REFIT_ORDER                                                 :(Ombouwen naar {STRING})
 STR_REFIT_STOP_ORDER                                            :(Ombouwen naar {STRING} en stop)
 STR_STOP_ORDER                                                  :(Stop)
@@ -2930,8 +2933,8 @@ STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Laat det
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Laat details zien van treinvoertuigen
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Laat de mogelijkheden van elk voertuig zien
 STR_SHOW_TOTAL_CARGO                                            :{BLACK}Laat totale capaciteit van trein zien, gescheiden door goederentype
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orderlijst - klik op een order om deze te selecteren. CTRL + klikken gaat naar het station
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Sla huidige order over, en begin met de volgende. CTRL + klik, begin direct met geselecteerde order
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orderlijst - klik op een order om deze te selecteren. Ctrl+klik gaat naar het station
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Sla huidige order over, en begin met de volgende. Ctrl+klik begint direct met geselecteerde order
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Verwijder de geselecteerde order
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Voeg een nieuwe order in voor de geselecteerde order, of voeg het toe aan de eind van de lijst
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Dienstregeling - klik op een opdracht om het te selecteren
@@ -2986,7 +2989,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Dit voertuig is
 STR_TIMETABLE_TOTAL_TIME                                        :Dit tijdschema duurt {STRING} om te volbrengen
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Dit tijdschema duurt minstens {STRING} om te volbrengen (niet alles geselecteerd)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto aanvullen
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul de dienstregeling automatisch in aan de hand van de volgende reis (CTRL-klik om wachttijden proberen te bewaren)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul de dienstregeling automatisch in aan de hand van de volgende reis (Ctrl+klik om wachttijden proberen te bewaren)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Wegvoertuig in de weg
@@ -3068,8 +3071,8 @@ STR_9805_SHIPS                                                  :{WHITE}{COMPANY
 STR_9808_NEW_SHIPS                                              :{WHITE}Nieuwe schepen
 STR_9809_BUILD_SHIP                                             :{BLACK}Bouw schip
 STR_CLONE_SHIP                                                  :{BLACK}Kloon Schip
-STR_CLONE_SHIP_INFO                                             :{BLACK}Hierdoor wordt een kopie gebouw van dit schip. Control-klik deelt de orders
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Hierdoor wordt een kopie gebouwd van een schip. Klik op deze knop en dan op een schip binnen of buiten het depot. Control-klik deelt de orders
+STR_CLONE_SHIP_INFO                                             :{BLACK}Hierdoor wordt een kopie gebouw van dit schip. Ctrl+klik deelt de orders
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Hierdoor wordt een kopie gebouwd van een schip. Klik op deze knop en dan op een schip binnen of buiten het depot. Ctrl+klik deelt de orders
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Schip moet gestopt zijn binnen een depot
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Kan schip niet verkopen...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan schip niet kopen...
@@ -3135,8 +3138,8 @@ STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Kan vlie
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Vliegtuighangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nieuw vliegtuig
 STR_CLONE_AIRCRAFT                                              :{BLACK}Kloon Vliegtuig
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Hierdoor wordt een kopie gebouw van dit vliegtuig. Control-klik deelt de orders
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Hierdoor wordt een kopie gebouw van een vliegtuig. Klik op deze knop en dan op een vliegtuig binnen of buiten de hangar. Control-klik deelt de orders
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Hierdoor wordt een kopie gebouw van dit vliegtuig. Ctrl+klik deelt de orders
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Hierdoor wordt een kopie gebouw van een vliegtuig. Klik op deze knop en dan op een vliegtuig binnen of buiten de hangar. Ctrl+klik deelt de orders
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nieuw Vliegtuig
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Bouw Vliegtuig
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kan vliegtuig niet bouwen...
@@ -3565,7 +3568,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Wissel d
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Wissel doorzichtigheid voor gebouwen zoals stations, depots, controleposten en bovenleiding
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Wissel doorzichtigheid voor bruggen
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Wissel doorzichtigheid voor structuren zoals vuurtoren en antennes, in de toekomst misschien voor eyecandy
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Doorzichtigheid voor bovenleiding. CTRL+klik voor onthouden.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Doorzichtigheid voor bovenleiding. Ctrl+klik voor onthouden.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Schakel tussen doorzichtigheid voor laad indicatoren
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Zet object op onzichtbaar in plaats van doorzichtig
 
@@ -3695,7 +3698,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Exit-sei
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo-sein (electric){}Het combo sein gedraagt zicht als zowel ingangs- als exit-sein. Zo kun je grote netwerken van voorseinen maken.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Geavanceerde seinen (elektrisch){}Een geavanceerd sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Geavanceerde seinen kunnen van achteren worden gepasseerd.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Eenrichtings geavanceerde seinen (elektrisch){}Een geavanceerd sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtings geavanceerde seinen kunnen niet van achteren worden gepasseerd.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Sein ombouwen{}Wanneer geselecteerd, door te klikken op een bestaand seintype, zal het sein worden omgebouwd naar het geselecteerde seintype en varianten, CTRL-klik schakelt tussen de bestaande varianten.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Sein ombouwen{}Wanneer geselecteerd, door te klikken op een bestaand seintype, zal het sein worden omgebouwd naar het geselecteerde seintype en varianten, Ctrl+klik schakelt tussen de bestaande varianten.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Sleep sein dichtheid
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Verklein gesleepte sein dichtheid
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Vergroot gesleepte sein dichtheid

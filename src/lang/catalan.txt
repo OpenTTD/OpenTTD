@@ -969,6 +969,7 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format d
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selecciona el format per les captures de pantalla
 
+
 STR_AUTOSAVE_1_MONTH                                            :Cada mes
 STR_AUTOSAVE_FAILED                                             :{WHITE}Ha fallat el desat automàtic
 
@@ -3763,6 +3764,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sel. act
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Marca tots els continguts que siguin actualitzacions dels continguts a ser descarregats
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselecciona tot
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Marca tots els continguts a no ser descarregats
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Introdueix cadena filtrant
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Introdueix una paraula clau per filtrar la llista de
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Marca/anomena filtre:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descarrega
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Comença a descarregar el contingut seleccionat
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Mida de la descàrrega total: {WHITE}{BYTES}

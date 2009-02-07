@@ -761,7 +761,7 @@ STR_02A1_SMALL                                                  :{BLACK}Mic
 STR_02A2_MEDIUM                                                 :{BLACK}Mediu
 STR_02A3_LARGE                                                  :{BLACK}Mare
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Aleator
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Oras
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Metropolă
 STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Metropolele cresc mai repede decat oraşele{}În funcţie de setări, sunt mai mari când sunt fondate
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Alege mărimea oraşului
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Mărime oraş:
@@ -968,6 +968,7 @@ STR_OPTIONS_RES_TIP                                             :{BLACK}Alege re
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formatul capturii de ecran
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Alege tipul fişierului în care se salvează captura de ecran (screenshot)
+
 
 STR_AUTOSAVE_1_MONTH                                            :În fiecare lună
 STR_AUTOSAVE_FAILED                                             :{WHITE}Auto-salvarea a esuat
@@ -1225,7 +1226,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Rapida
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Foarte rapida
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proportia oraselor care se vor dezvolta de doua ori mai repede: {ORANGE}1 in {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proportia oraselor care se vor dezvolta de doua ori mai repede: {ORANGE}None
-STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicator initial dimensiune oras: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicator iniţial dimensiune oras: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Elimina elementele de drum absurde pe durata constructiei drumului: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Interfaţă
@@ -1815,7 +1816,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Mai întâi trebuie demolată clădirea
 STR_2005                                                        :{WHITE}{TOWN}
-STR_CITY                                                        :{WHITE}{TOWN} (Oraş)
+STR_CITY                                                        :{WHITE}{TOWN} (Metropolă)
 STR_2006_POPULATION                                             :{BLACK}Populaţia: {ORANGE}{COMMA}{BLACK}  Locuinţe: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Redenumire oraş
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Nu se poate redenumi oraşul...
@@ -3522,7 +3523,7 @@ STR_BORDER_MANUAL                                               :{BLACK}Manual
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Mic
-STR_CITY_AIRPORT                                                :{BLACK}Oras
+STR_CITY_AIRPORT                                                :{BLACK}Metropolă
 STR_METRO_AIRPORT                                               :{BLACK}Aeroporturi metropolitane
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Aeroport international
 STR_COMMUTER_AIRPORT                                            :{BLACK}Navetist
@@ -3763,6 +3764,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sel. act
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Marchează toate resursele care sunt actualizări ale resurselor existente pentru descărcare
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselectează tot
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Deselectează toate resursele selectate
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Filtru
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Introduceţi un cuvânt-cheie pentru filtrarea listei
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtru nume/etichetă:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descarcă
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Porneşte descărcarea resurselor selectate
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total de descărcat: {WHITE}{BYTES}

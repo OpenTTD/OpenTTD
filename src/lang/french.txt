@@ -970,6 +970,10 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format d
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Choisir le format de la copie d'écran
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Graphiques de base
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Sélectionner les graphiques de base à utiliser
+
 STR_AUTOSAVE_1_MONTH                                            :Tous les mois
 STR_AUTOSAVE_FAILED                                             :{WHITE}Enregistrement automatique échoué
 
@@ -3764,6 +3768,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sélecti
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Marquer tous les contenus qui sont une mise à jour du contenu existant pour être téléchargés
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Désélectionner tout
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Marquer tous les contenus pour ne pas être téléchargés
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Entrer le filtre
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Entrer un mot clé pour filtrer la liste
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtre sur tag/nom:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Télécharger
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Démarrer le téléchargement du contenu choisi
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Taille de téléchargement total: {WHITE}{BYTES}

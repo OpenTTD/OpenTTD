@@ -760,9 +760,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...köpr
 STR_02A1_SMALL                                                  :{BLACK}Küçük
 STR_02A2_MEDIUM                                                 :{BLACK}Orta
 STR_02A3_LARGE                                                  :{BLACK}Büyük
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Rastgele
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Şehir
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Şehirler normal kasabalardan daha hızlı büyürler{}Ayarlara göre değişmekle birlikte, ilk kurulduklarında daha büyük olurlar.
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Şehir büyüklüğü seç
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Şehir büyüklüğü:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Kasaba yol yerleşimi:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Bu kasaba için kullanılacak yol yerleşimini seç
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Orijinal
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Daha iyi yollar
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 şebeke
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 şebeke
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Rastgele
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Son mesajı ya da haberi göster
@@ -958,6 +968,10 @@ STR_OPTIONS_RES_TIP                                             :{BLACK}Kullanı
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Ekran görüntüsü biçimi
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Kullanılacak ekran görüntüsü biçimini seçin
+
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Temel grafik seti
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Kullanılacak temel grafik setini seçin
 
 STR_AUTOSAVE_1_MONTH                                            :Her ay
 STR_AUTOSAVE_FAILED                                             :{WHITE}Otokayıt başarısız
@@ -1191,11 +1205,13 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Yalnızca blok 
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Yalnızca yol sinyalleri
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Hepsi
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Yeni kasabalar için yol yerleşimi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :varsayılan
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :daha iyi yollar
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :rastgele
+STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE}Kasabalara yol yapma izni verilsin: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Ana araç çubuğu pozisyonu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Sol
@@ -3751,6 +3767,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Güncell
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Mevcut içeriğin güncellemesi olan tüm içeriği indirilmek üzere işaretle
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Tümünden seçimi kaldır
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Tüm içeriği indirilmemek üzere işaretle
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Filtre metnini girin
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Listeyi filtrelemek için bir anahtar sözcük girin
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Etiket/isim filtresi:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}İndir
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Seçili içeriği indirmeye başla
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Toplam indirme boyutu: {WHITE}{BYTES}
@@ -3775,7 +3794,7 @@ STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}İçerik
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Dosyalar isteniyor...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Şu an indirilen {STRING} ({2:NUM} adedin {1:NUM}.si)
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}İndirme tamamlandı
-STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{1:BYTES} of {0:BYTES} downloaded ({2:NUM} %)
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{1:BYTES}'ın {0:BYTES}'ı indirildi ({2:NUM} %)
 
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}İçerik sunucusuna bağlanılamadı...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}İndirme başarısız...

@@ -641,19 +641,19 @@ STR_022F_TOWN_GENERATION                                        :{BLACK}마을 �
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}산업 시설 만들기
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}도로 건설
 STR_0233_TOWN_GENERATION                                        :{WHITE}마을 만들기
-STR_0234_NEW_TOWN                                               :{BLACK}새 도시
-STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}새 도시 건설
-STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}여기에 도시를 건설할 수 없습니다...
+STR_0234_NEW_TOWN                                               :{BLACK}새 마을
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}새 마을 건설
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}여기에 마을을 건설할 수 없습니다...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...맵 가장자리에 너무 가깝습니다!
-STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...다른 도시와 너무 가깝습니다!
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...다른 마을과 너무 가깝습니다!
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...알맞지 않은 장소입니다!
-STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...도시가 너무 많습니다!
+STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...마을이 너무 많습니다!
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}도시를 만들 수 없습니다!
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...맵에 더이상 공간이 없습니다!
-STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}도시의 크기 키우기
+STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}마을의 크기 키우기
 STR_023C_EXPAND                                                 :{BLACK}확장하기
 STR_023D_RANDOM_TOWN                                            :{BLACK}무작위 마을 건설
-STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}무작위로 도시를 건설합니다.
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}무작위로 마을를 건설합니다.
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}산업시설 만들기
 STR_0240_COAL_MINE                                              :{BLACK}석탄 광산
 STR_0241_POWER_STATION                                          :{BLACK}발전소
@@ -700,17 +700,17 @@ STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}제철�
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}농장 건설
 STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}철 광산 건설
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}유정 건설
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}은행 (인구 1200명 이상의 도시에만 건설 가능)
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}은행 (인구 1200명 이상의 마을에만 건설 가능)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}제지소 건설
 STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}식품 처리 공장 건설
 STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}인쇄소 건설
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}금 광산 건설
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}은행 (도시에만 건설 가능)
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}은행 (마을에만 건설 가능)
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}제목소 (열대우림을 베어 나무를 생산)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}과일 농장 만들기
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}고무 농장 만들기
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}상수도 건설
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}급수탑 (도시에만 건설 가능)
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}급수탑 (마을에만 건설 가능)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}다이아몬드 광산 건설
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}구리 광산 건설
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}솜사탕 숲 심기
@@ -725,8 +725,8 @@ STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}거품 �
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}태피 채취장 건설
 STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}설탕 광산 건설
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}{STRING}을/를 여기에 건설할 수 없습니다...
-STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...도시를 먼저 만드십시오
-STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...한 도시에 하나만 건설 가능합니다!
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...마을을 먼저 만드십시오
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...한 마을에 하나만 건설 가능합니다!
 STR_0288_PLANT_TREES                                            :{BLACK}나무 심기
 STR_0289_PLACE_SIGN                                             :{BLACK}팻말 달기
 STR_028A_RANDOM_TREES                                           :{BLACK}무작위로 나무 심기
@@ -738,7 +738,7 @@ STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}사막 �
 STR_CREATE_LAKE                                                 :{BLACK}수면 지역을 정의하세요.{}바다 높이에서 CTRL이 눌려 있지 않으면, 운하를 만들때 침수할 것입니다.
 STR_CREATE_RIVER                                                :{BLACK}강을 만듦.
 STR_0290_DELETE                                                 :{BLACK}삭제
-STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}이 도시를 완전히 삭제
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}이 마을를 완전히 삭제
 STR_0292_SAVE_SCENARIO                                          :시나리오 저장
 STR_0293_LOAD_SCENARIO                                          :시나리오 불러오기
 STR_MENU_LOAD_HEIGHTMAP                                         :Heightmap 불러오기
@@ -753,7 +753,7 @@ STR_PLAY_HEIGHTMAP                                              :{BLACK}Heightma
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Heightmap을 지형으로 사용하여 게임을 시작합니다.
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}정말 이 시나리오를 종료하시겠습니까?
 STR_029C_QUIT_EDITOR                                            :{WHITE}에디터 종료
-STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...1200명 이상의 도시에만 건설할 수 있습니다!
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...1200명 이상의 마을에만 건설할 수 있습니다!
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}시작년도를 1년 앞당깁니다.
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}시작년도를 1년 늦춥니다.
 STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...교각의 양 끝은 모두 땅이어야합니다.
@@ -763,8 +763,8 @@ STR_02A3_LARGE                                                  :{BLACK}대형
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}임의
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}도시
 STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}도시는 보통 마을보다 더 빠르게 성장합니다{}세팅에 따라 그들이 만들어졌을때 더 큽니다
-STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}도시 크기 선택
-STR_02A5_TOWN_SIZE                                              :{YELLOW}도시 크기:
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}마을 크기 선택
+STR_02A5_TOWN_SIZE                                              :{YELLOW}마을 크기:
 
 STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}도시도로설계:
 STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}이 마을에 사용할 도로 설계를 선택합니다
@@ -797,7 +797,7 @@ STR_MENU_CONFIG_PATCHES                                         :고급 설정
 STR_NEWGRF_SETTINGS                                             :NewGRF 설정
 STR_TRANSPARENCY_OPTIONS                                        :투명 옵션
 STR_GAMEOPTMENU_0A                                              :
-STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}도시 이름 표시됨
+STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}마을 이름 표시됨
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}역 이름 표시됨
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}팻말 표시됨
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}웨이포인트 표시됨
@@ -824,7 +824,7 @@ STR_02DD_SUBSIDIES                                              :보조금
 STR_02DE_MAP_OF_WORLD                                           :전체 지도 보기
 STR_EXTRA_VIEW_PORT                                             :외부 화면
 STR_SIGN_LIST                                                   :팻말 목록
-STR_02DF_TOWN_DIRECTORY                                         :도시 목록
+STR_02DF_TOWN_DIRECTORY                                         :마을 목록
 STR_TOWN_POPULATION                                             :{BLACK}세계 인구: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}외부 화면 {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}외부 화면에 복사
@@ -843,9 +843,9 @@ STR_02E7                                                        :{BLACK}{SKIP}{S
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}차량 통행 방법 선택
 STR_02E9_DRIVE_ON_LEFT                                          :좌측통행
 STR_02EA_DRIVE_ON_RIGHT                                         :우측통행
-STR_02EB_TOWN_NAMES                                             :{BLACK}도시 이름
+STR_02EB_TOWN_NAMES                                             :{BLACK}마을 이름
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}도시 이름의 스타일 선택
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}마을 이름의 스타일 선택
 
 STR_02F4_AUTOSAVE                                               :{BLACK}자동저장
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -968,6 +968,10 @@ STR_OPTIONS_RES_TIP                                             :{BLACK}사용�
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}스크린샷 포맷
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}사용하실 스크린샷의 포맷을 선택하세요
+
+STR_OPTIONS_BASE_GRF                                            :{BLACK}기본 그래픽 세트
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}사용할 기본 그래픽을 선택하세요
 
 STR_AUTOSAVE_1_MONTH                                            :매달
 STR_AUTOSAVE_FAILED                                             :{WHITE}자동 저장 실패
@@ -1223,8 +1227,8 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :느림
 STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :보통
 STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :빠름
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :매우 빠름
-STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}2배 빠르게 성장하는 마을의 비율: {ORANGE}1 대 {STRING}
-STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}2배 빠르게 성장하는 마을의 비율: {ORANGE}없음
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}도시가 되는 마을의 비율: {ORANGE}1 대 {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}도시가 되는 마을의 비율: {ORANGE}없음
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}초기의 도시 크기 배수: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}도로 건설 중 부조리한 도로 요소를 제거: {ORANGE}{STRING}
 
@@ -3763,6 +3767,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}업데�
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}업데이트 항목이 있는 컨텐츠를 선택합니다
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}모두 선택해제
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}모든 컨텐츠를 선택해제합니다.
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}검색할 문자를 입력하세요
+STR_CONTENT_FILTER_TIP                                          :{BLACK}리스트에 검색할 키워드를 입력하세요
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}태그/이름 검색:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}다운로드
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}선택한 컨텐츠 다운로드 시작
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}총 파일 크기: {WHITE}{BYTES}

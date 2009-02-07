@@ -970,6 +970,10 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formato 
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Seleccione el formato de captura de pantalla a utilizar
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Conjunto de gráficos base
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selecciona el conjunto de gráficos base a usar
+
 STR_AUTOSAVE_1_MONTH                                            :Cada mes
 STR_AUTOSAVE_FAILED                                             :{WHITE}Error en Autoguardado
 
@@ -3764,6 +3768,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Seleccio
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Marca todo el contenido que es una actualización de contenido existente para descargar
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Desmarcar todas
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Marca todo el contenido para no ser descargado
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Escribe patrón de filtrado
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Introduce una palabra clave para filtrar la lista
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Etiqueta/nombre del filtro
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descargar
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Comenzar a descargar el contenido seleccionado
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Tamaño total de la descarga: {WHITE}{BYTES}

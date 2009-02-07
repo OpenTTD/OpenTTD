@@ -970,6 +970,10 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Screensh
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Format auswählen, in dem Screenshots abgespeichert werden sollen
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Standard Grafik
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Wähle die Grafik, die du nutzen möchtest
+
 STR_AUTOSAVE_1_MONTH                                            :Jeden Monat
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosicherung fehlgeschlagen
 
@@ -3764,6 +3768,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Upgrades
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Allen Inhalt, der einen bestehenden Inhalt verbessert, auswählen
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Alles abwählen
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Keinen Inhalt zum Download auswählen
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Gib einen Filter ein
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Gib ein Stichwort in die Filterliste ein
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/name filter:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Herunterladen
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Beginne den Inhalt herunterzuladen
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Gesamtgräße des Download: {WHITE}{BYTES}

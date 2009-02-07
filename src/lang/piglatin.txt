@@ -969,6 +969,10 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Eenshots
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Electsay ethay eenshotscray ormatfay otay useway
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Asebay aphicsgray etsay
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Electsay ethay asebay aphicsgray etsay otay useway
+
 STR_AUTOSAVE_1_MONTH                                            :Everyway onthmay
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosaveway ailedfay
 

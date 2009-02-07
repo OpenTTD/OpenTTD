@@ -761,9 +761,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...os ex
 STR_02A1_SMALL                                                  :{BLACK}Pequena
 STR_02A2_MEDIUM                                                 :{BLACK}Média
 STR_02A3_LARGE                                                  :{BLACK}Grande
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Randômico
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Cidade
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Cidades grandes cresem mais rápido que as cidades normais{}Dependendo das configs. são maiores quando fundadas.
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Selecionar tamanho da cidade
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Tamanho da cidade:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Disposição das ruas das cidades
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Selecione a disposição de ruas a ser utilizada nessa cidade
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Original
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Melhorado
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}Quadras 2x2
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}Quadras 3x3
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Randômico
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Exibir a última mensagem ou notícia
@@ -960,6 +970,7 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formato 
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selecionar o formato de foto que deseja utilizar
 
+
 STR_AUTOSAVE_1_MONTH                                            :A cada mês
 STR_AUTOSAVE_FAILED                                             :{WHITE}Falha ao salvar automaticamente
 
@@ -1148,6 +1159,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Último dispon�
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mais utilizado
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Exibir vias reservadas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Manter a barra de construção aberta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Agrupar despesas na janela de financas da companhia: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Exibe ferramentas de construção na falta de veículos adequados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de trens por jogador: {ORANGE}{STRING}
@@ -1191,11 +1203,13 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Normal apenas
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Avançados apenas
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Todos
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Disposição de ruas para novas cidades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :padrão
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :melhores estradas
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :grade 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :grade 3x3
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :random
+STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE}Permitir cidades construir novas ruas?: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posição da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Esquerda
@@ -3751,6 +3765,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selecion
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Seleciona tudo que consistir em upgrades para conteúdo existente para ser baixado
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Descelecionar tudo
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Desceleciona todos
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Entre com o filtro desejado
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Entre uma palavra a ser filtrada
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/nome do filtro:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Baixar
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Baixa o conteúdo selecionado
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Tamanho total do download: {WHITE}{BYTES}

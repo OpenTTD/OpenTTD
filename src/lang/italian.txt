@@ -762,9 +762,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...gli e
 STR_02A1_SMALL                                                  :{BLACK}Piccola
 STR_02A2_MEDIUM                                                 :{BLACK}Media
 STR_02A3_LARGE                                                  :{BLACK}Grande
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Casuale
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Metropoli
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Le metropoli crescono più rapidamente delle normali città.{}A seconda delle impostazioni, sono più grandi quando vengono fondate.
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Seleziona la dimensione della città
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Dimensione città:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Disposizione strade cittadine
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Seleziona la disposizione delle strade per questa città
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Originale
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Pianta migliorata
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}Griglia 2x2
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}Griglia 3x3
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Casuale
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Mostra l'ultimo messaggio o notizia
@@ -960,6 +970,10 @@ STR_OPTIONS_RES_TIP                                             :{BLACK}Selezion
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formato screenshot
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selezionare il formato da usare per gli screenshot
+
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Stile grafico di base
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Seleziona lo stile grafico di base da utilizzare
 
 STR_AUTOSAVE_1_MONTH                                            :Ogni mese
 STR_AUTOSAVE_FAILED                                             :{WHITE}Salvataggio automatico fallito
@@ -1193,11 +1207,13 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Solo segnali di
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Solo segnali a percorso
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Tutti
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Disposizione delle strade per le nuove città: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :Predefinita
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :Pianta migliorata
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :Griglia 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :Griglia 3x3
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :Casuale
+STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE}Permetti alle città di costruire strade: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posizione barra degli strumenti principale: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Sinistra
@@ -3753,6 +3769,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sel. agg
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Include nel download tutte le versioni aggiornate di contenuti esistenti
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deseleziona tutti
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Esclude dal download tutti gli elementi
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Inserire il filtro
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Inserire una parola da utilizzare per filtrare la lista
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtra per nome/tag:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Scarica
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Avvia il download dei contenuti selezionati
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Dimensione totale download: {WHITE}{BYTES}

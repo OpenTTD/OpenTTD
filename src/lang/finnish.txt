@@ -969,6 +969,10 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Kuvakaap
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Valitse kuvankaappauksen muoto.
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Perusgrafiikat
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Valitse käytettävät perusgrafiikat
+
 STR_AUTOSAVE_1_MONTH                                            :Kuukausittain
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automaattitallennus epäonnistui.
 
