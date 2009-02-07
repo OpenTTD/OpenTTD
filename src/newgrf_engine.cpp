@@ -845,6 +845,12 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 
 	const Engine *e = GetEngine(engine);
 
+	/* Engines are not available, when their cargo is not available.
+	 * But that does not apply to articulated parts. */
+	if (cargo == CT_INVALID) cargo = CT_DEFAULT;
+
+	assert(cargo < lengthof(e->group));
+
 	group = e->group[cargo];
 	if (group != NULL) return group;
 
