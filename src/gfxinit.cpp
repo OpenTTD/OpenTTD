@@ -569,3 +569,43 @@ bool HasGraphicsSet(const ContentInfo *ci, bool md5sum)
 }
 
 #endif /* ENABLE_NETWORK */
+
+/**
+ * Count the number of available graphics sets.
+ */
+int GetNumGraphicsSets()
+{
+	int n = 0;
+	for (const GraphicsSet *g = _available_graphics_sets; g != NULL; g = g->next) {
+		if (g->found_grfs <= 1) continue;
+		n++;
+	}
+	return n;
+}
+
+/**
+ * Get the index of the currently active graphics set
+ */
+int GetIndexOfCurrentGraphicsSet()
+{
+	int n = 0;
+	for (const GraphicsSet *g = _available_graphics_sets; g != NULL; g = g->next) {
+		if (g->found_grfs <= 1) continue;
+		if (g == _used_graphics_set) return n;
+		n++;
+	}
+	return -1;
+}
+
+/**
+ * Get the name of the graphics set at the specified index
+ */
+const char *GetGraphicsSetName(int index)
+{
+	for (const GraphicsSet *g = _available_graphics_sets; g != NULL; g = g->next) {
+		if (g->found_grfs <= 1) continue;
+		if (index == 0) return g->name;
+		index--;
+	}
+	error("GetGraphicsSetName: index %d out of range", index);
+}

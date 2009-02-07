@@ -969,6 +969,10 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Screensh
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Select the screenshot format to use
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Base graphics set
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{RAW_STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Select the base graphics set to use
+
 STR_AUTOSAVE_1_MONTH                                            :Every month
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosave failed
 

@@ -15,6 +15,10 @@ void FindGraphicsSets();
 bool SetGraphicsSet(const char *name);
 char *GetGraphicsSetsList(char *p, const char *last);
 
+int GetNumGraphicsSets();
+int GetIndexOfCurrentGraphicsSet();
+const char *GetGraphicsSetName(int index);
+
 extern char *_ini_graphics_set;
 
 #endif /* GFXINIT_H */

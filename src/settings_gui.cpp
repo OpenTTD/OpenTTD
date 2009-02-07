@@ -25,6 +25,7 @@
 #include "widgets/dropdown_func.h"
 #include "station_func.h"
 #include "highscore.h"
+#include "gfxinit.h"
 #include <map>
 
 #include "table/sprites.h"
@@ -112,6 +113,7 @@ enum GameOptionsWidgets {
 	GAMEOPT_RESOLUTION_BTN  = 19,
 	GAMEOPT_FULLSCREEN,
 	GAMEOPT_SCREENSHOT_BTN  = 22,
+	GAMEOPT_BASE_GRF_BTN    = 24,
 };
 
 /**
@@ -140,18 +142,34 @@ static void ShowTownnameDropdown(Window *w, int sel)
 
 static void ShowCustCurrency();
 
+static void ShowGraphicsSetMenu(Window *w)
+{
+	int n = GetNumGraphicsSets();
+	int current = GetIndexOfCurrentGraphicsSet();
+
+	DropDownList *list = new DropDownList();
+	for (int i = 0; i < n; i++) {
+		list->push_back(new DropDownListCharStringItem(GetGraphicsSetName(i), i, (_game_mode == GM_MENU) ? false : (current != i)));
+	}
+
+	ShowDropDownList(w, list, current, GAMEOPT_BASE_GRF_BTN);
+}
+
 struct GameOptionsWindow : Window {
 	GameSettings *opt;
+	bool reload;
 
 	GameOptionsWindow(const WindowDesc *desc) : Window(desc)
 	{
 		this->opt = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
+		this->reload = false;
 		this->FindWindowPlacementAndResize(desc);
 	}
 
 	~GameOptionsWindow()
 	{
 		DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
+		if (this->reload) _switch_mode = SM_MENU;
 	}
 
 	virtual void OnPaint()
@@ -171,6 +189,7 @@ struct GameOptionsWindow : Window {
 		SetDParam(7, i == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + i);
 		SetDParam(8, SPECSTR_SCREENSHOT_START + _cur_screenshot_format);
 		this->SetWidgetLoweredState(GAMEOPT_FULLSCREEN, _fullscreen);
+		SetDParamStr(9, GetGraphicsSetName(GetIndexOfCurrentGraphicsSet()));
 
 		this->DrawWidgets();
 		DrawString(20, 175, STR_OPTIONS_FULLSCREEN, TC_FROMSTRING); // fullscreen
@@ -246,6 +265,10 @@ struct GameOptionsWindow : Window {
 			case GAMEOPT_SCREENSHOT_BTN: // Setup screenshot format dropdown
 				ShowDropDownMenu(this, BuildDynamicDropdown(SPECSTR_SCREENSHOT_START, _num_screenshot_formats), _cur_screenshot_format, GAMEOPT_SCREENSHOT_BTN, 0, 0);
 				break;
+
+			case GAMEOPT_BASE_GRF_BTN:
+				ShowGraphicsSetMenu(this);
+				break;
 		}
 	}
 
@@ -312,6 +335,18 @@ struct GameOptionsWindow : Window {
 				SetScreenshotFormat(index);
 				this->SetDirty();
 				break;
+
+			case GAMEOPT_BASE_GRF_BTN:
+				if (_game_mode == GM_MENU) {
+					const char *name = GetGraphicsSetName(index);
+
+					free(_ini_graphics_set);
+					_ini_graphics_set = strdup(name);
+
+					SetGraphicsSet(name);
+					this->reload = true;
+				}
+				break;
 		}
 	}
 };
@@ -319,7 +354,7 @@ struct GameOptionsWindow : Window {
 static const Widget _game_options_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                          STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   369,     0,    13, STR_00B1_GAME_OPTIONS,             STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   369,    14,   238, 0x0,                               STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   369,    14,   280, 0x0,                               STR_NULL},
 {      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   179,    20,    55, STR_02E0_CURRENCY_UNITS,           STR_NULL},
 { WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,    20,   169,    34,    45, STR_02E1,                          STR_02E2_CURRENCY_UNITS_SELECTION},
 {      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,   190,   359,    20,    55, STR_MEASURING_UNITS,               STR_NULL},
@@ -345,11 +380,14 @@ static const Widget _game_options_widgets[] = {
 {      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,   190,   359,   146,   190, STR_OPTIONS_SCREENSHOT_FORMAT,     STR_NULL},
 { WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,   200,   349,   160,   171, STR_OPTIONS_SCREENSHOT_FORMAT_CBO, STR_OPTIONS_SCREENSHOT_FORMAT_TIP},
 
+{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   179,   235,   270, STR_OPTIONS_BASE_GRF,              STR_NULL},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,    20,   169,   249,   260, STR_OPTIONS_BASE_GRF_CBO,          STR_OPTIONS_BASE_GRF_TIP},
+
 {   WIDGETS_END},
 };
 
 static const WindowDesc _game_options_desc = {
-	WDP_CENTER, WDP_CENTER, 370, 239, 370, 239,
+	WDP_CENTER, WDP_CENTER, 370, 281, 370, 281,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_game_options_widgets,
