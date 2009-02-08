@@ -526,11 +526,11 @@ struct BuildRoadToolbarWindow : Window {
 		this->InvalidateWidget(RTW_REMOVE);
 		this->InvalidateWidget(RTW_ONE_WAY);
 
-		delete FindWindowById(WC_BUS_STATION, 0);
-		delete FindWindowById(WC_TRUCK_STATION, 0);
-		delete FindWindowById(WC_BUILD_DEPOT, 0);
-		delete FindWindowById(WC_SELECT_STATION, 0);
-		delete FindWindowById(WC_BUILD_BRIDGE, 0);
+		DeleteWindowById(WC_BUS_STATION, 0);
+		DeleteWindowById(WC_TRUCK_STATION, 0);
+		DeleteWindowById(WC_BUILD_DEPOT, 0);
+		DeleteWindowById(WC_SELECT_STATION, 0);
+		DeleteWindowById(WC_BUILD_BRIDGE, 0);
 	}
 
 	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)

@@ -123,8 +123,8 @@ struct BuildAirToolbarWindow : Window {
 	{
 		this->RaiseButtons();
 
-		delete FindWindowById(WC_BUILD_STATION, 0);
-		delete FindWindowById(WC_SELECT_STATION, 0);
+		DeleteWindowById(WC_BUILD_STATION, 0);
+		DeleteWindowById(WC_SELECT_STATION, 0);
 	}
 };
 

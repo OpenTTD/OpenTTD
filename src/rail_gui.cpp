@@ -742,11 +742,11 @@ struct BuildRailToolbarWindow : Window {
 		this->DisableWidget(RTW_REMOVE);
 		this->InvalidateWidget(RTW_REMOVE);
 
-		delete FindWindowById(WC_BUILD_SIGNAL, 0);
-		delete FindWindowById(WC_BUILD_STATION, 0);
-		delete FindWindowById(WC_BUILD_DEPOT, 0);
-		delete FindWindowById(WC_SELECT_STATION, 0);
-		delete FindWindowById(WC_BUILD_BRIDGE, 0);
+		DeleteWindowById(WC_BUILD_SIGNAL, 0);
+		DeleteWindowById(WC_BUILD_STATION, 0);
+		DeleteWindowById(WC_BUILD_DEPOT, 0);
+		DeleteWindowById(WC_SELECT_STATION, 0);
+		DeleteWindowById(WC_BUILD_BRIDGE, 0);
 	}
 
 	virtual void OnPlacePresize(Point pt, TileIndex tile)
