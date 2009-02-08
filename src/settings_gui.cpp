@@ -266,6 +266,15 @@ struct GameOptionsWindow : Window {
 				MarkWholeScreenDirty();
 				break;
 
+			case GAMEOPT_ROADSIDE_BTN: // Road side
+				if (this->opt->vehicle.road_side != index) { // only change if setting changed
+					uint i;
+					if (GetSettingFromName("vehicle.road_side", &i) == NULL) NOT_REACHED();
+					SetSettingValue(i, index);
+					MarkWholeScreenDirty();
+				}
+				break;
+
 			case GAMEOPT_TOWNNAME_BTN: // Town names
 				if (_game_mode == GM_MENU || GetNumTowns() == 0) {
 					this->opt->game_creation.town_name = index;
