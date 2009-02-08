@@ -61,8 +61,8 @@ struct CYapfNodeT {
 	FORCEINLINE TileIndex GetTile() const {return m_key.m_tile;}
 	FORCEINLINE Trackdir GetTrackdir() const {return m_key.m_td;}
 	FORCEINLINE const Tkey_& GetKey() const {return m_key;}
-	FORCEINLINE int GetCost() {return m_cost;}
-	FORCEINLINE int GetCostEstimate() {return m_estimate;}
+	FORCEINLINE int GetCost() const {return m_cost;}
+	FORCEINLINE int GetCostEstimate() const {return m_estimate;}
 	FORCEINLINE bool operator < (const Node& other) const {return m_estimate < other.m_estimate;}
 
 	void Dump(DumpTarget &dmp) const
