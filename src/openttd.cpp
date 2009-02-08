@@ -649,6 +649,10 @@ int ttd_main(int argc, char *argv[])
 	InitializeGUI();
 	IConsoleCmdExec("exec scripts/autoexec.scr 0");
 
+	/* Initialise the sprite/string tables. */
+	GfxLoadSprites();
+	LoadStringWidthTable();
+
 	GenerateWorld(GW_EMPTY, 64, 64); // Make the viewport initialization happy
 	WaitTillGeneratedWorld();
 
