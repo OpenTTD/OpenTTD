@@ -63,7 +63,6 @@ extern const byte _tileh_to_sprite[32];
 
 /* misc */
 VARDEF char _screenshot_name[128];
-VARDEF byte _vehicle_design_names;
 
 /* Forking stuff */
 VARDEF bool _dedicated_forks;

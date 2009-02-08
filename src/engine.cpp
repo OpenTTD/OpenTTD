@@ -256,23 +256,6 @@ void SetupEngines()
 
 void ShowEnginePreviewWindow(EngineID engine);
 
-void DeleteCustomEngineNames()
-{
-	Engine *e;
-	FOR_ALL_ENGINES(e) {
-		free(e->name);
-		e->name = NULL;
-	}
-
-	_vehicle_design_names &= ~1;
-}
-
-void LoadCustomEngineNames()
-{
-	/* XXX: not done */
-	DEBUG(misc, 1, "LoadCustomEngineNames: not done");
-}
-
 /* Determine if an engine type is a wagon (and not a loco) */
 static bool IsWagon(EngineID index)
 {
@@ -615,17 +598,8 @@ CommandCost CmdRenameEngine(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
 
 		if (reset) {
 			e->name = NULL;
-			/* if we removed the last custom name, disable the 'Save custom names' button */
-			_vehicle_design_names &= ~1;
-			FOR_ALL_ENGINES(e) {
-				if (e->name != NULL) {
-					_vehicle_design_names |= 1;
-					break;
-				}
-			}
 		} else {
 			e->name = strdup(text);
-			_vehicle_design_names |= 3;
 		}
 
 		MarkWholeScreenDirty();

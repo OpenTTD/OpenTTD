@@ -53,12 +53,6 @@ static const StringID _autosave_dropdown[] = {
 	INVALID_STRING_ID,
 };
 
-static const StringID _designnames_dropdown[] = {
-	STR_02BE_DEFAULT,
-	STR_02BF_CUSTOM,
-	INVALID_STRING_ID
-};
-
 static StringID *BuildDynamicDropdown(StringID base, int num)
 {
 	static StringID buf[32 + 1];
@@ -107,13 +101,11 @@ enum GameOptionsWidgets {
 	GAMEOPT_ROADSIDE_BTN    =  8,
 	GAMEOPT_TOWNNAME_BTN    = 10,
 	GAMEOPT_AUTOSAVE_BTN    = 12,
-	GAMEOPT_VEHICLENAME_BTN = 14,
-	GAMEOPT_VEHICLENAME_SAVE,
-	GAMEOPT_LANG_BTN        = 17,
-	GAMEOPT_RESOLUTION_BTN  = 19,
+	GAMEOPT_LANG_BTN        = 14,
+	GAMEOPT_RESOLUTION_BTN  = 16,
 	GAMEOPT_FULLSCREEN,
-	GAMEOPT_SCREENSHOT_BTN  = 22,
-	GAMEOPT_BASE_GRF_BTN    = 24,
+	GAMEOPT_SCREENSHOT_BTN  = 19,
+	GAMEOPT_BASE_GRF_BTN    = 21,
 };
 
 /**
@@ -174,11 +166,6 @@ struct GameOptionsWindow : Window {
 
 	virtual void OnPaint()
 	{
-		StringID str = STR_02BE_DEFAULT;
-
-		this->SetWidgetDisabledState(GAMEOPT_VEHICLENAME_SAVE, !(_vehicle_design_names & 1));
-		if (!this->IsWidgetDisabled(GAMEOPT_VEHICLENAME_SAVE)) str = STR_02BF_CUSTOM;
-		SetDParam(0, str);
 		SetDParam(1, _currency_specs[this->opt->locale.currency].name);
 		SetDParam(2, STR_UNITS_IMPERIAL + this->opt->locale.units);
 		SetDParam(3, STR_02E9_DRIVE_ON_LEFT + this->opt->vehicle.road_side);
@@ -227,13 +214,6 @@ struct GameOptionsWindow : Window {
 				ShowDropDownMenu(this, _autosave_dropdown, _settings_client.gui.autosave, GAMEOPT_AUTOSAVE_BTN, 0, 0);
 				break;
 
-			case GAMEOPT_VEHICLENAME_BTN: // Setup customized vehicle-names dropdown
-				ShowDropDownMenu(this, _designnames_dropdown, (_vehicle_design_names & 1) ? 1 : 0, GAMEOPT_VEHICLENAME_BTN, (_vehicle_design_names & 2) ? 0 : 2, 0);
-				break;
-
-			case GAMEOPT_VEHICLENAME_SAVE: // Save customized vehicle-names to disk
-				break;  // not implemented
-
 			case GAMEOPT_LANG_BTN: { // Setup interface language dropdown
 				typedef std::map<StringID, int, StringIDCompare> LangList;
 
@@ -275,16 +255,6 @@ struct GameOptionsWindow : Window {
 	virtual void OnDropdownSelect(int widget, int index)
 	{
 		switch (widget) {
-			case GAMEOPT_VEHICLENAME_BTN: // Vehicle design names
-				if (index == 0) {
-					DeleteCustomEngineNames();
-					MarkWholeScreenDirty();
-				} else if (!(_vehicle_design_names & 1)) {
-					LoadCustomEngineNames();
-					MarkWholeScreenDirty();
-				}
-				break;
-
 			case GAMEOPT_CURRENCY_BTN: /* Currency */
 				if (index == CUSTOM_CURRENCY_ID) ShowCustCurrency();
 				this->opt->locale.currency = index;
@@ -294,15 +264,6 @@ struct GameOptionsWindow : Window {
 			case GAMEOPT_DISTANCE_BTN: // Measuring units
 				this->opt->locale.units = index;
 				MarkWholeScreenDirty();
-				break;
-
-			case GAMEOPT_ROADSIDE_BTN: // Road side
-				if (this->opt->vehicle.road_side != index) { // only change if setting changed
-					uint i;
-					if (GetSettingFromName("vehicle.road_side", &i) == NULL) NOT_REACHED();
-					SetSettingValue(i, index);
-					MarkWholeScreenDirty();
-				}
 				break;
 
 			case GAMEOPT_TOWNNAME_BTN: // Town names
@@ -354,7 +315,7 @@ struct GameOptionsWindow : Window {
 static const Widget _game_options_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                          STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   369,     0,    13, STR_00B1_GAME_OPTIONS,             STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   369,    14,   280, 0x0,                               STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   369,    14,   242, 0x0,                               STR_NULL},
 {      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   179,    20,    55, STR_02E0_CURRENCY_UNITS,           STR_NULL},
 { WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,    20,   169,    34,    45, STR_02E1,                          STR_02E2_CURRENCY_UNITS_SELECTION},
 {      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,   190,   359,    20,    55, STR_MEASURING_UNITS,               STR_NULL},
@@ -366,10 +327,6 @@ static const Widget _game_options_widgets[] = {
 {      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   179,   104,   139, STR_02F4_AUTOSAVE,                 STR_NULL},
 { WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,    20,   169,   118,   129, STR_02F5,                          STR_02F6_SELECT_INTERVAL_BETWEEN},
 
-{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   359,   194,   228, STR_02BC_VEHICLE_DESIGN_NAMES,     STR_NULL},
-{ WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,    20,   119,   207,   218, STR_02BD,                          STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION},
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   130,   349,   207,   218, STR_02C0_SAVE_CUSTOM_NAMES,        STR_02C2_SAVE_CUSTOMIZED_VEHICLE},
-
 {      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,   190,   359,   104,   139, STR_OPTIONS_LANG,                  STR_NULL},
 { WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,   200,   349,   118,   129, STR_OPTIONS_LANG_CBO,              STR_OPTIONS_LANG_TIP},
 
@@ -380,14 +337,14 @@ static const Widget _game_options_widgets[] = {
 {      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,   190,   359,   146,   190, STR_OPTIONS_SCREENSHOT_FORMAT,     STR_NULL},
 { WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,   200,   349,   160,   171, STR_OPTIONS_SCREENSHOT_FORMAT_CBO, STR_OPTIONS_SCREENSHOT_FORMAT_TIP},
 
-{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   179,   235,   270, STR_OPTIONS_BASE_GRF,              STR_NULL},
-{ WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,    20,   169,   249,   260, STR_OPTIONS_BASE_GRF_CBO,          STR_OPTIONS_BASE_GRF_TIP},
+{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   179,   197,   232, STR_OPTIONS_BASE_GRF,              STR_NULL},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,    20,   169,   211,   222, STR_OPTIONS_BASE_GRF_CBO,          STR_OPTIONS_BASE_GRF_TIP},
 
 {   WIDGETS_END},
 };
 
 static const WindowDesc _game_options_desc = {
-	WDP_CENTER, WDP_CENTER, 370, 281, 370, 281,
+	WDP_CENTER, WDP_CENTER, 370, 243, 370, 243,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_game_options_widgets,
