@@ -1759,6 +1759,7 @@ void IConsoleStdLibRegister()
 	IConsoleAliasRegister("new_map",      "newgame");
 	IConsoleAliasRegister("new_game",     "newgame");
 	IConsoleAliasRegister("patch",        "setting %+");
+	IConsoleAliasRegister("set",          "setting %+");
 	IConsoleAliasRegister("list_patches", "list_settings %+");
 
 
