@@ -73,6 +73,9 @@ static const RailtypeInfo _original_railtypes[] = {
 
 		/* cost multiplier */
 		8,
+
+		/* rail type label */
+		'RAIL',
 	},
 
 	/** Electrified railway */
@@ -142,6 +145,9 @@ static const RailtypeInfo _original_railtypes[] = {
 
 		/* cost multiplier */
 		12,
+
+		/* rail type label */
+		'ELRL',
 	},
 
 	/** Monorail */
@@ -207,6 +213,9 @@ static const RailtypeInfo _original_railtypes[] = {
 
 		/* cost multiplier */
 		16,
+
+		/* rail type label */
+		'MONO',
 	},
 
 	/** Maglev */
@@ -272,6 +281,9 @@ static const RailtypeInfo _original_railtypes[] = {
 
 		/* cost multiplier */
 		24,
+
+		/* rail type label */
+		'MGLV',
 	},
 };
 

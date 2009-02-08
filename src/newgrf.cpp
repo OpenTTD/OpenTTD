@@ -479,6 +479,17 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x05: { // Track type
 				uint8 tracktype = grf_load_byte(&buf);
 
+				if (tracktype < _cur_grffile->railtype_max) {
+					RailType railtype = GetRailTypeByLabel(_cur_grffile->railtype_list[tracktype]);
+					if (railtype == INVALID_RAILTYPE) {
+						/* Rail type is not available, so disable this engine */
+						ei[i].climates = 0x80;
+					} else {
+						rvi[i].railtype = railtype;
+					}
+					break;
+				}
+
 				switch (tracktype) {
 					case 0: rvi->railtype = rvi->engclass >= 2 ? RAILTYPE_ELECTRIC : RAILTYPE_RAIL; break;
 					case 1: rvi->railtype = RAILTYPE_MONO; break;
@@ -610,8 +621,13 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				} else {
 					break;
 				}
-				if (rvi->railtype == RAILTYPE_RAIL     && engclass >= EC_ELECTRIC) rvi->railtype = RAILTYPE_ELECTRIC;
-				if (rvi->railtype == RAILTYPE_ELECTRIC && engclass  < EC_ELECTRIC) rvi->railtype = RAILTYPE_RAIL;
+
+				if (_cur_grffile->railtype_max == 0) {
+					/* Use traction type to select between normal and electrified
+					 * rail only when no translation list is in place. */
+					if (rvi->railtype == RAILTYPE_RAIL     && engclass >= EC_ELECTRIC) rvi->railtype = RAILTYPE_ELECTRIC;
+					if (rvi->railtype == RAILTYPE_ELECTRIC && engclass  < EC_ELECTRIC) rvi->railtype = RAILTYPE_RAIL;
+				}
 
 				rvi->engclass = engclass;
 			} break;
@@ -1749,6 +1765,12 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, by
 				buf += 8;
 				break;
 
+			case 0x12: // Rail type translation table
+				/* This is loaded during the reservation stage, so just skip it here. */
+				/* Each entry is 4 bytes. */
+				buf += 4;
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
@@ -1807,6 +1829,23 @@ static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, b
 				uint32 s = grf_load_dword(&buf);
 				uint32 t = grf_load_dword(&buf);
 				SetNewGRFOverride(s, t);
+				break;
+			}
+
+			case 0x12: { // Rail type translation table
+				if (i == 0) {
+					if (gvid != 0) {
+						grfmsg(1, "ReserveChangeInfo: Rail type translation table must start at zero");
+						return CIR_INVALID_ID;
+					}
+
+					free(_cur_grffile->railtype_list);
+					_cur_grffile->railtype_max = numinfo;
+					_cur_grffile->railtype_list = MallocT<RailTypeLabel>(numinfo);
+				}
+
+				RailTypeLabel rtl = grf_load_dword(&buf);
+				_cur_grffile->railtype_list[i] = BSWAP32(rtl);
 				break;
 			}
 

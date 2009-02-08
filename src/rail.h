@@ -132,6 +132,11 @@ struct RailtypeInfo {
 	 * Cost multiplier for building this rail type
 	 */
 	uint8 cost_multiplier;
+
+	/**
+	 * Unique 32 bit rail type identifier
+	 */
+	RailTypeLabel label;
 };
 
 
@@ -253,6 +258,13 @@ RailType GetBestRailtype(const CompanyID company);
  * @return the rail types.
  */
 RailTypes GetCompanyRailtypes(const CompanyID c);
+
+/**
+ * Get the rail type for a given label.
+ * @param label the railtype label.
+ * @return the railtype.
+ */
+RailType GetRailTypeByLabel(RailTypeLabel label);
 
 /**
  * Reset all rail type information to its default values.

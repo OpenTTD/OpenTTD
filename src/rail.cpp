@@ -207,3 +207,15 @@ RailTypes GetCompanyRailtypes(CompanyID company)
 
 	return rt;
 }
+
+RailType GetRailTypeByLabel(RailTypeLabel label)
+{
+	/* Loop through each rail type until the label is found */
+	for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
+		const RailtypeInfo *rti = GetRailTypeInfo(r);
+		if (rti->label == label) return r;
+	}
+
+	/* No matching label was found, so it is invalid */
+	return INVALID_RAILTYPE;
+}

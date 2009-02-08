@@ -10,6 +10,7 @@
 #include "cargotype.h"
 #include "industry_type.h"
 #include "station_type.h"
+#include "rail_type.h"
 
 enum GrfLoadingStage {
 	GLS_FILESCAN,
@@ -98,6 +99,9 @@ struct GRFFile {
 	uint8 cargo_max;
 	CargoLabel *cargo_list;
 	uint8 cargo_map[NUM_CARGO];
+
+	uint8 railtype_max;
+	RailTypeLabel *railtype_list;
 };
 
 extern GRFFile *_first_grffile;

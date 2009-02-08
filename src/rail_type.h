@@ -7,6 +7,8 @@
 
 #include "core/enum_type.hpp"
 
+typedef uint32 RailTypeLabel;
+
 /**
  * Enumeration for all possible railtypes.
  *
