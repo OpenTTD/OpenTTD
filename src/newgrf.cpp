@@ -4072,6 +4072,10 @@ static void SkipIf(byte *buf, size_t len)
 				break;
 			case 0x0C: result = GetCargoIDByLabel(BSWAP32(cond_val)) != CT_INVALID;
 				break;
+			case 0x0D: result = GetRailTypeByLabel(BSWAP32(cond_val)) == INVALID_RAILTYPE;
+				break;
+			case 0x0E: result = GetRailTypeByLabel(BSWAP32(cond_val)) != INVALID_RAILTYPE;
+				break;
 
 			default: grfmsg(1, "SkipIf: Unsupported condition type %02X. Ignoring", condtype); return;
 		}
@@ -5491,6 +5495,7 @@ static void ResetNewGRF()
 
 		free(f->filename);
 		free(f->cargo_list);
+		free(f->railtype_list);
 		free(f);
 	}
 
