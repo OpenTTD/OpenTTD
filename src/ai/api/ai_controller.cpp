@@ -22,6 +22,11 @@
 
 /* static */ void AIController::Sleep(int ticks)
 {
+	if (!AIObject::GetAllowDoCommand()) {
+		AILog::Error("You are not allowed to call Sleep in your constructor, Save(), Load(), and any valuator.\n");
+		return;
+	}
+
 	if (ticks <= 0) {
 		AILog::Warning("Sleep() value should be > 0. Assuming value 1.");
 		ticks = 1;
