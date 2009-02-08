@@ -1415,35 +1415,35 @@ static void *IntToReference(uint index, SLRefType rt)
 	switch (rt) {
 		case REF_ORDERLIST:
 			if (_OrderList_pool.AddBlockIfNeeded(index)) return GetOrderList(index);
-			error("Orders: failed loading savegame: too many order lists");
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "OrderList index out of range");
 
 		case REF_ORDER:
 			if (_Order_pool.AddBlockIfNeeded(index)) return GetOrder(index);
-			error("Orders: failed loading savegame: too many orders");
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Order index out of range");
 
 		case REF_VEHICLE:
 			if (_Vehicle_pool.AddBlockIfNeeded(index)) return GetVehicle(index);
-			error("Vehicles: failed loading savegame: too many vehicles");
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Vehicle index out of range");
 
 		case REF_STATION:
 			if (_Station_pool.AddBlockIfNeeded(index)) return GetStation(index);
-			error("Stations: failed loading savegame: too many stations");
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Station index out of range");
 
 		case REF_TOWN:
 			if (_Town_pool.AddBlockIfNeeded(index)) return GetTown(index);
-			error("Towns: failed loading savegame: too many towns");
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Town index out of range");
 
 		case REF_ROADSTOPS:
 			if (_RoadStop_pool.AddBlockIfNeeded(index)) return GetRoadStop(index);
-			error("RoadStops: failed loading savegame: too many RoadStops");
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "RoadStop index out of range");
 
 		case REF_ENGINE_RENEWS:
 			if (_EngineRenew_pool.AddBlockIfNeeded(index)) return GetEngineRenew(index);
-			error("EngineRenews: failed loading savegame: too many EngineRenews");
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "EngineRenew index out of range");
 
 		case REF_CARGO_PACKET:
 			if (_CargoPacket_pool.AddBlockIfNeeded(index)) return GetCargoPacket(index);
-			error("CargoPackets: failed loading savegame: too many Cargo packets");
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "CargoPacket index out of range");
 
 		case REF_VEHICLE_OLD:
 			/* Old vehicles were saved differently:
@@ -1453,7 +1453,7 @@ static void *IntToReference(uint index, SLRefType rt)
 			if (index == INVALID_VEHICLE) return NULL;
 
 			if (_Vehicle_pool.AddBlockIfNeeded(index)) return GetVehicle(index);
-			error("Vehicles: failed loading savegame: too many vehicles");
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Vehicle index out of range");
 
 		default: NOT_REACHED();
 	}
