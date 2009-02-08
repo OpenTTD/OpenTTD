@@ -936,7 +936,7 @@ STR_CURR_ROL                                                    :羅馬尼亞列
 STR_CURR_RUR                                                    :俄羅斯盧布 (RUR)
 STR_CURR_SIT                                                    :斯洛文尼亞托拉 (SIT)
 STR_CURR_SEK                                                    :瑞典克朗 (SEK)
-STR_CURR_YTL                                                    :土耳其里拉 (YTL)
+STR_CURR_TRY                                                    :土耳其里拉 (TRY)
 STR_CURR_SKK                                                    :斯洛伐克克朗 (SKK)
 STR_CURR_BRL                                                    :巴西里拉 (BRL)
 STR_CURR_EEK                                                    :愛沙尼亞克魯恩(EEK)

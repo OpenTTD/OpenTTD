@@ -947,7 +947,7 @@ STR_CURR_ROL                                                    :لور يونا
 STR_CURR_RUR                                                    :روبل روسي (RUR)
 STR_CURR_SIT                                                    :تولار سوفاني (SIT)
 STR_CURR_SEK                                                    :كرونا سويدية (SEK)
-STR_CURR_YTL                                                    :ليرة تركية (YTL)
+STR_CURR_TRY                                                    :ليرة تركية (TRY)
 STR_CURR_SKK                                                    :كرونا سلوفاكية (SKK)
 STR_CURR_BRL                                                    :ريال برازيلي (BRL)
 STR_CURR_EEK                                                    :كرونا استونية (EEK)

@@ -946,7 +946,7 @@ STR_CURR_ROL                                                    :Lei Romeno (ROL
 STR_CURR_RUR                                                    :Rublo Russo (RUR)
 STR_CURR_SIT                                                    :Tolar Esloveno (SIT)
 STR_CURR_SEK                                                    :Coroa Sueca (SEK)
-STR_CURR_YTL                                                    :Lira Turca (YTL)
+STR_CURR_TRY                                                    :Lira Turca (TRY)
 STR_CURR_SKK                                                    :Koruna Eslovaco (SKK)
 STR_CURR_BRL                                                    :Real Brasileiro (BRL)
 STR_CURR_EEK                                                    :Coroa Estoniana (EEK)

@@ -946,7 +946,7 @@ STR_CURR_ROL                                                    :루마니아 �
 STR_CURR_RUR                                                    :러시아 루블 (RUR)
 STR_CURR_SIT                                                    :슬로바키아 톨라 (SIT)
 STR_CURR_SEK                                                    :스웨덴 크로나 (SEK)
-STR_CURR_YTL                                                    :터키 리라 (YTL)
+STR_CURR_TRY                                                    :터키 리라 (TRY)
 STR_CURR_SKK                                                    :슬로바키아 코루나 (SKK)
 STR_CURR_BRL                                                    :브라질 레알 (BRL)
 STR_CURR_EEK                                                    :에스토니아 크룬 (EEK)

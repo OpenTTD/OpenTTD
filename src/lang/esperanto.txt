@@ -916,7 +916,7 @@ STR_CURR_ROL                                                    :Rumanaj Leŭoj 
 STR_CURR_RUR                                                    :Rusaj Rubloj (RUR)
 STR_CURR_SIT                                                    :Slovenaj Tolaroj (SIT)
 STR_CURR_SEK                                                    :Svedaj Kronoj (SEK)
-STR_CURR_YTL                                                    :Turkaj Liroj (YTL)
+STR_CURR_TRY                                                    :Turkaj Liroj (TRY)
 STR_CURR_SKK                                                    :Slovakaj Korunoj (SKK)
 STR_CURR_BRL                                                    :Brazilaj Realoj (BRL)
 STR_CURR_EEK                                                    :Estona Krono (EEK)

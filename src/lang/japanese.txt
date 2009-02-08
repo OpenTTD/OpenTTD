@@ -934,7 +934,7 @@ STR_CURR_ROL                                                    :ルーマニア
 STR_CURR_RUR                                                    :ロシアルーブル（RUR）
 STR_CURR_SIT                                                    :スロベニアトラール（SIT）
 STR_CURR_SEK                                                    :スウェーデンクローナ（SEK）
-STR_CURR_YTL                                                    :トルコリーラ（YTL）
+STR_CURR_TRY                                                    :トルコリーラ（TL）
 STR_CURR_SKK                                                    :スロバキアコルナ（SKK）
 STR_CURR_BRL                                                    :ブラジルレアル（BRL）
 STR_CURR_EEK                                                    :エストニアクローン(EEK)

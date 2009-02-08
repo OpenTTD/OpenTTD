@@ -931,7 +931,7 @@ STR_CURR_ROL                                                    :Leu Rwmanaidd (
 STR_CURR_RUR                                                    :Rwbl Rwsaidd (RUR)
 STR_CURR_SIT                                                    :Tolar Slofenaidd (SIT)
 STR_CURR_SEK                                                    :Krona Swedaidd (SEK)
-STR_CURR_YTL                                                    :Lira Twrcaidd (YTL)
+STR_CURR_TRY                                                    :Lira Twrcaidd (TRY)
 STR_CURR_SKK                                                    :Koruna Slofacaidd (SKK)
 STR_CURR_BRL                                                    :Real Brazilaidd (BRL)
 STR_CURR_EEK                                                    :Krooni Estonia (EEK)

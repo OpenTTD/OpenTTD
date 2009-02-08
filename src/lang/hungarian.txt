@@ -1012,7 +1012,7 @@ STR_CURR_ROL                                                    :Román Lej (ROL
 STR_CURR_RUR                                                    :Orosz Rubel (RUR)
 STR_CURR_SIT                                                    :Szlovén Tolár (SIT)
 STR_CURR_SEK                                                    :Svéd Korona (SEK)
-STR_CURR_YTL                                                    :Török Lira (YTL)
+STR_CURR_TRY                                                    :Török Lira (TRY)
 STR_CURR_SKK                                                    :Szlovák Korona (SKK)
 STR_CURR_BRL                                                    :Brazil Real (BRL)
 STR_CURR_EEK                                                    :Észt Korona (EKK)

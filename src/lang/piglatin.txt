@@ -946,7 +946,7 @@ STR_CURR_ROL                                                    :Omanianray Eula
 STR_CURR_RUR                                                    :Ussianray Ublesray (URRay)
 STR_CURR_SIT                                                    :Ovenianslay Olartay (ITSay)
 STR_CURR_SEK                                                    :Edishsway Onakray (EKSay)
-STR_CURR_YTL                                                    :Urkishtay Iralay (YTLay)
+STR_CURR_TRY                                                    :Urkishtay Iralay (RYTay)
 STR_CURR_SKK                                                    :Ovakslay Orunakay (SKKay)
 STR_CURR_BRL                                                    :Azilianbray Ealray (BRLay)
 STR_CURR_EEK                                                    :Estonianway Oonikray (EEKWAY)

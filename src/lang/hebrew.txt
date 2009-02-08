@@ -939,7 +939,7 @@ STR_CURR_ROL                                                    :(ROL) ליו ר
 STR_CURR_RUR                                                    :(RUR) רובל רוסי
 STR_CURR_SIT                                                    :(SIT) טולר סלובני
 STR_CURR_SEK                                                    :(SEK) קרונה שוודית
-STR_CURR_YTL                                                    :(YTL) לירה טורקית
+STR_CURR_TRY                                                    :(TRY) לירה טורקית
 STR_CURR_SKK                                                    :(SKK) קורונה סלובקית
 STR_CURR_BRL                                                    :(BRL) ריל ברזילאי
 STR_CURR_EEK                                                    :(EEK) קרוני אסטוני

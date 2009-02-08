@@ -948,7 +948,7 @@ STR_CURR_ROL                                                    :Rumānijas leja
 STR_CURR_RUR                                                    :Krievijas rubļii (RUR)
 STR_CURR_SIT                                                    :Slovēnijas tolārs (SIT)
 STR_CURR_SEK                                                    :Zviedrijas kronas (SEK)
-STR_CURR_YTL                                                    :Turcijas lira (YTL)
+STR_CURR_TRY                                                    :Turcijas lira (TRY)
 STR_CURR_SKK                                                    :Slovākijas kronas (SKK)
 STR_CURR_BRL                                                    :Brazīlijas reāli (BRL)
 STR_CURR_EEK                                                    :Igaunijas kronas (EEK)

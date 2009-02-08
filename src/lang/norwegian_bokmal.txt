@@ -944,7 +944,7 @@ STR_CURR_ROL                                                    :Rumensk leu (RO
 STR_CURR_RUR                                                    :Russisk rubel (RUR)
 STR_CURR_SIT                                                    :Slovensk tolar (SIT)
 STR_CURR_SEK                                                    :Svensk krone (SEK)
-STR_CURR_YTL                                                    :Tyrkiske lire (YTL)
+STR_CURR_TRY                                                    :Tyrkiske lire (TRY)
 STR_CURR_SKK                                                    :Slovakisk koruna (SKK)
 STR_CURR_BRL                                                    :Brasiliansk Real (BRL)
 STR_CURR_EEK                                                    :Estlandsk krone (EEK)
