@@ -63,7 +63,7 @@ Company::~Company()
 }
 
 /**
- * Sets the local company and updates the patch settings that are set on a
+ * Sets the local company and updates the settings that are set on a
  * per-company basis to reflect the core's state in the GUI.
  * @param new_company the new company
  * @pre IsValidCompanyID(new_company) || new_company == COMPANY_SPECTATOR || new_company == OWNER_NONE
@@ -75,7 +75,7 @@ void SetLocalCompany(CompanyID new_company)
 
 	_local_company = new_company;
 
-	/* Do not update the patches if we are in the intro GUI */
+	/* Do not update the settings if we are in the intro GUI */
 	if (IsValidCompanyID(new_company) && _game_mode != GM_MENU) {
 		const Company *c = GetCompany(new_company);
 		_settings_client.gui.autorenew        = c->engine_renew;

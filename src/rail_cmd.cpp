@@ -1082,7 +1082,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 	if (signals & SignalAgainstTrackdir(trackdir)) SetBit(signal_dir, 1);
 
 	/* signal_ctr         - amount of tiles already processed
-	 * signals_density    - patch setting to put signal on every Nth tile (double space on |, -- tracks)
+	 * signals_density    - setting to put signal on every Nth tile (double space on |, -- tracks)
 	 **********
 	 * trackdir   - trackdir to build with autorail
 	 * semaphores - semaphores or signals

@@ -67,7 +67,7 @@ void GamelogReset()
 		const LoggedAction *la = &_gamelog_action[i];
 		for (uint j = 0; j < la->changes; j++) {
 			const LoggedChange *lc = &la->change[j];
-			if (lc->ct == GLCT_PATCH) free(lc->patch.name);
+			if (lc->ct == GLCT_SETTING) free(lc->setting.name);
 		}
 		free(la->change);
 	}
@@ -133,7 +133,7 @@ static const char *la_text[] = {
 	"game loaded",
 	"GRF config changed",
 	"cheat was used",
-	"patch settings changed",
+	"settings changed",
 	"GRF bug triggered",
 };
 
@@ -211,8 +211,8 @@ void GamelogPrint(GamelogPrintProc *proc)
 					}
 					break;
 
-				case GLCT_PATCH:
-					AddDebugText(buf, "Patch setting changed: %s : %d -> %d", lc->patch.name, lc->patch.oldval, lc->patch.newval);
+				case GLCT_SETTING:
+					AddDebugText(buf, "Setting changed: %s : %d -> %d", lc->setting.name, lc->setting.oldval, lc->setting.newval);
 					break;
 
 				case GLCT_GRFADD:
@@ -360,21 +360,21 @@ void GamelogOldver()
 	lc->oldver.version = (_savegame_type == SGT_OTTD ? ((uint32)_sl_version << 8 | _sl_minor_version) : _ttdp_version);
 }
 
-/** Logs change in game patches. Only non-networksafe patches are logged
- * @param name patch name
- * @param oldval old patch value
- * @param newval new patch value
+/** Logs change in game settings. Only non-networksafe settings are logged
+ * @param name setting name
+ * @param oldval old setting value
+ * @param newval new setting value
  */
-void GamelogPatch(const char *name, int32 oldval, int32 newval)
+void GamelogSetting(const char *name, int32 oldval, int32 newval)
 {
-	assert(_gamelog_action_type == GLAT_PATCH);
+	assert(_gamelog_action_type == GLAT_SETTING);
 
-	LoggedChange *lc = GamelogChange(GLCT_PATCH);
+	LoggedChange *lc = GamelogChange(GLCT_SETTING);
 	if (lc == NULL) return;
 
-	lc->patch.name = strdup(name);
-	lc->patch.oldval = oldval;
-	lc->patch.newval = newval;
+	lc->setting.name = strdup(name);
+	lc->setting.oldval = oldval;
+	lc->setting.newval = newval;
 }
 
 

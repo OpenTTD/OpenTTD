@@ -872,68 +872,68 @@ STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGH
 
 
 
-STR_CONFIG_PATCHES_OFF                                          :Matikan
-STR_CONFIG_PATCHES_ON                                           :Hidupkan
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Papar status kelajuan kerderaan di bar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Benarkan membina di pantai dan cerun: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Dibenar membina keretapi panjang: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Melarang keretapi dan kapal membuat pusingan 90 darjah: {ORANGE}{STRING} {LTBLUE} (not with NTP)
-STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflasi: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Membenarkan bina jambatan panjang: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :seperti industri lain
-STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Membolehkan berbilang set enjin NewGRF: {ORANGE}{STRING}
+STR_CONFIG_SETTING_OFF                                          :Matikan
+STR_CONFIG_SETTING_ON                                           :Hidupkan
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Papar status kelajuan kerderaan di bar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Benarkan membina di pantai dan cerun: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Dibenar membina keretapi panjang: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Melarang keretapi dan kapal membuat pusingan 90 darjah: {ORANGE}{STRING} {LTBLUE} (not with NTP)
+STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflasi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Membenarkan bina jambatan panjang: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :seperti industri lain
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Membolehkan berbilang set enjin NewGRF: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Selalu membenarkan lapangan terbang yang kecil: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Selalu membenarkan lapangan terbang yang kecil: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Memperingatkan jika satu kereta api hilang jalan: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :tidak
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ya, tetapi kecuali kenderaan rencat
+STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Memperingatkan jika satu kereta api hilang jalan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :tidak
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ya, tetapi kecuali kenderaan rencat
 
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Pusingan jam
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Pusingan jam
 
-STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Syarikat sendiri
-STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Semua syarikat
-STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Membesarkan peta
-STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Matikan
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Syarikat sendiri
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :Semua syarikat
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Membesarkan peta
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Matikan
 
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Matikan
-
-
-
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Matikan
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Syarikat sendiri
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Semua syarikat
-STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Matikan
-STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Syarikat Sendiri
-STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Semua syarikat
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Landasan Biasa
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Landasan Elektrik
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Matikan
 
 
+
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Matikan
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Syarikat sendiri
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Semua syarikat
+STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Matikan
+STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Syarikat Sendiri
+STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Semua syarikat
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Landasan Biasa
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Landasan Elektrik
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 
 
 
 
 
-STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Kanan
-STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Kosong
-STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Lambat
-STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
-STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Cepat
-STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Sangat cepat
-
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Pembinaan
-STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Kenderaan
-STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stesen
-STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomi
-STR_CONFIG_PATCHES_AI                                           :{ORANGE}Pesaing
 
 
+STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Kanan
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Kosong
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lambat
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Cepat
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Sangat cepat
 
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Tidak dicadangkan)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Pembinaan
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kenderaan
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stesen
+STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
+
+
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Tidak dicadangkan)
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 
 
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain sebagai syarikat tersebut: {ORANGE}{COMMA}

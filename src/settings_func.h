@@ -7,10 +7,10 @@
 
 #include "core/smallvec_type.hpp"
 
-void IConsoleSetPatchSetting(const char *name, const char *value);
-void IConsoleSetPatchSetting(const char *name, int32 value);
-void IConsoleGetPatchSetting(const char *name);
-void IConsoleListPatches(const char *prefilter);
+void IConsoleSetSetting(const char *name, const char *value);
+void IConsoleSetSetting(const char *name, int32 value);
+void IConsoleGetSetting(const char *name);
+void IConsoleListSettings(const char *prefilter);
 
 void LoadFromConfig();
 void SaveToConfig();

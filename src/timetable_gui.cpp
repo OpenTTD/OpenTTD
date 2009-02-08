@@ -282,7 +282,7 @@ struct TimetableWindow : Window {
 
 					if (time != 0) {
 						SetDParam(0, time);
-						current = STR_CONFIG_PATCHES_INT32;
+						current = STR_CONFIG_SETTING_INT32;
 					}
 				}
 

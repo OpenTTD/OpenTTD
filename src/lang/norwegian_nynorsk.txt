@@ -784,7 +784,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Spelinstillingar
 STR_02C6_DIFFICULTY_SETTINGS                                    :Vanskegrad
-STR_MENU_CONFIG_PATCHES                                         :Avanserte alternativ
+STR_MENU_CONFIG_SETTINGS                                        :Avanserte alternativ
 STR_NEWGRF_SETTINGS                                             :Instillingar for ny grafikk
 STR_TRANSPARENCY_OPTIONS                                        :Gjennomsiktigheitsinnstillingar
 STR_GAMEOPTMENU_0A                                              :
@@ -1013,233 +1013,233 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ingen autoutbyting-/fornyingsreglar lagt til.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(pengegrense)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Avanserte innstillingar
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Vis avanserte alternativ
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Avanserte alternativ
+STR_CONFIG_SETTING                                              :{BLACK}Avanserte innstillingar
+STR_CONFIG_SETTING_TIP                                          :{BLACK}Vis avanserte alternativ
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avanserte alternativ
 
-STR_CONFIG_PATCHES_OFF                                          :Av
-STR_CONFIG_PATCHES_ON                                           :På
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Vis farten til køyretøyet på statuslinja: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Tillat bygging på skråningar og i vasskanten: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Gje høve til å endre lanskap under bruer, spor o.s.b.(autoslope): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Meir realistisk storleik på oppfangingsområde: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Tillat riving av industri, mer vei, osb.: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Tillat bygging av veldig lange tog: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjonsmodell: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Orginal
-STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisk
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Forby tog og skip mot å gjere 90-graderssvingar: {ORANGE}{STRING} {LTBLUE} (treng NGR)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Slå saman stasjoner som vert bygde på sida av einannan: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Bruk forbetra lastingsalgoritme: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Last køyretøy gradvis: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflasjon: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Lever varer til ein stasjon berre når varen trengst: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Tillat bygging av veldig lange bruer: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Tillat 'køyr til jernbanestall'-ordre: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metode for bygging av primærindustri: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :inga
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre industriar
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospekt
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Tillat fleire like industriar i samme by: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industriar av same type kan byggjast nær einannan: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Alltid vis lang dato på statuslinja: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Vis jernbanesignal på same sida som køyreretninga: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Vis rekneskap ved nyttår: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nye ordre er 'utan stopp' som standard: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Køyretøykøar (med kvantumseffektar): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Flytt på biletet dersom pila er nær ytterkantane på skjermen: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillat smørjing av bystyret: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Gje høve til å kjøpe eksklusive transportretter: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Gje høve til å sende penger til andre firma: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ikkje-einsarta stasjonar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Vektmultiplikator for frakt til å simulere tunge tog: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Flyfartfaktor: {ORANGE}1 / {STRING}
-STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillat å køyre gjennom stoppestadar på vegar som byane eig: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Tillat å byggje stasjonar inntil andre: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Slå på fleire sett NewGRF grafikkmotorar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_OFF                                          :Av
+STR_CONFIG_SETTING_ON                                           :På
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Vis farten til køyretøyet på statuslinja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Tillat bygging på skråningar og i vasskanten: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Gje høve til å endre lanskap under bruer, spor o.s.b.(autoslope): {ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Meir realistisk storleik på oppfangingsområde: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillat riving av industri, mer vei, osb.: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Tillat bygging av veldig lange tog: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjonsmodell: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Orginal
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisk
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forby tog og skip mot å gjere 90-graderssvingar: {ORANGE}{STRING} {LTBLUE} (treng NGR)
+STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Slå saman stasjoner som vert bygde på sida av einannan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Bruk forbetra lastingsalgoritme: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Last køyretøy gradvis: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflasjon: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Lever varer til ein stasjon berre når varen trengst: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Tillat bygging av veldig lange bruer: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Tillat 'køyr til jernbanestall'-ordre: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metode for bygging av primærindustri: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :inga
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre industriar
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospekt
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Tillat fleire like industriar i samme by: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Industriar av same type kan byggjast nær einannan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Alltid vis lang dato på statuslinja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Vis jernbanesignal på same sida som køyreretninga: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Vis rekneskap ved nyttår: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nye ordre er 'utan stopp' som standard: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Køyretøykøar (med kvantumseffektar): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Flytt på biletet dersom pila er nær ytterkantane på skjermen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Tillat smørjing av bystyret: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Gje høve til å kjøpe eksklusive transportretter: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Gje høve til å sende penger til andre firma: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ikkje-einsarta stasjonar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Vektmultiplikator for frakt til å simulere tunge tog: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Flyfartfaktor: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillat å køyre gjennom stoppestadar på vegar som byane eig: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillat å byggje stasjonar inntil andre: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Slå på fleire sett NewGRF grafikkmotorar: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Alltid tillat bygging av små flyplassar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Alltid tillat bygging av små flyplassar: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Vis ei åtvaring dersom eit tog har køyrt seg vill: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Inspiser ordrane til køyretøya: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nei
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, men utelat stoppa køyretøy
-STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :av alle køyretøy
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Åtvar dersom eit køyretøy har negativ inntekt: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Køyretøy utgår aldri: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Forny køyretøy automatisk når det vert gamalt: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Forny køyretøy automatisk når det er  {ORANGE}{STRING}{LTBLUE} månader før/etter maks alder
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimum pengar som trengst for automatisk fornying: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Varigskap for feilmelding: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Vis innbyggjartalet til byane i tittel: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Vis ei åtvaring dersom eit tog har køyrt seg vill: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Inspiser ordrane til køyretøya: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nei
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, men utelat stoppa køyretøy
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :av alle køyretøy
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Åtvar dersom eit køyretøy har negativ inntekt: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Køyretøy utgår aldri: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Forny køyretøy automatisk når det vert gamalt: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Forny køyretøy automatisk når det er  {ORANGE}{STRING}{LTBLUE} månader før/etter maks alder
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimum pengar som trengst for automatisk fornying: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Varigskap for feilmelding: {ORANGE}{STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Vis innbyggjartalet til byane i tittel: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Landskapsgenerator: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
-STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksimum avstand frå kartkant for oljeraffinerier {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snøgrense: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Kor ulendt skal terrenget vere (kun TerraGenesis): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Særs jamnt
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Jamnt
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ulendt
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Særs ulendt
-STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Treplasseringalgoritme: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Ingen
-STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
-STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Forbetra
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Høgdekartrotering: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mot klokka
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med klokka
-STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Høgden som eit flatt scenariokart får: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Ei eller fleire ruter på nordkanten er ikkje tomme
-STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Ei eller fleire ruter på ein av kantane inneheld ikkje vatn
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landskapsgenerator: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksimum avstand frå kartkant for oljeraffinerier {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Snøgrense: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Kor ulendt skal terrenget vere (kun TerraGenesis): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Særs jamnt
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Jamnt
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ulendt
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Særs ulendt
+STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Treplasseringalgoritme: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ingen
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Forbetra
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Høgdekartrotering: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mot klokka
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med klokka
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Høgden som eit flatt scenariokart får: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ei eller fleire ruter på nordkanten er ikkje tomme
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ei eller fleire ruter på ein av kantane inneheld ikkje vatn
 
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks stasjonspreiing: {ORANGE}{STRING} {RED}Advarsel: Høg innstilling gjev treigare spel
-STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Gjer vedlikehald på helikopter automatisk på helikopterlandingsplassar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koble landskapsverktøylinja til tog-/vei-/vass- og flyplassverktøylinjene: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ved rulling med musa, flytt synsvinkelen i den motsette retninga: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}glatt scrolling: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Vis eit målingverktøytips når ymse byggjeverktøy brukast: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Vis firmaovertakingar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ingen
-STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eige firma
-STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alle firma
-STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Foretrekk lagchat med <ENTER>: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funksjonen til scrollhjulet: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom kart
-STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll kart
-STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :av
-STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Fart på rullehjul: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maks stasjonspreiing: {ORANGE}{STRING} {RED}Advarsel: Høg innstilling gjev treigare spel
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Gjer vedlikehald på helikopter automatisk på helikopterlandingsplassar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koble landskapsverktøylinja til tog-/vei-/vass- og flyplassverktøylinjene: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Ved rulling med musa, flytt synsvinkelen i den motsette retninga: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}glatt scrolling: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Vis eit målingverktøytips når ymse byggjeverktøy brukast: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Vis firmaovertakingar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES_NONE                                :Ingen
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eige firma
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :Alle firma
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Foretrekk lagchat med <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funksjonen til scrollhjulet: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom kart
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scroll kart
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :av
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Fart på rullehjul: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Høgreklikk emulering: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando klikk
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontroll klikk
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Høgreklikk emulering: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando klikk
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontroll klikk
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
 
 
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Bruk {ORANGE}{STRING}{LTBLUE} datoformat for lagra spel.
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. des 2008)
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Bruk {ORANGE}{STRING}{LTBLUE} datoformat for lagra spel.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. des 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisk pause når ein startar nytt spel: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk avansert køyretøyliste: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Av
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Eige firma
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Alle firma
-STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Bruk lasteindikatorar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Av
-STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Eige firma
-STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Alle firma
-STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Bruk rutetabellar for køyretøy: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis rutetabell i klikk i staden for dagar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard Jernbane / etter nytt spel / lasta spel: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Vanleg jernbane
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elekrisk Jernbane
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Første tilgjengelege
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Siste tilgjengelege
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest brukte
-STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Hold byggjeverktya aktive etter bruk: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisk pause når ein startar nytt spel: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk avansert køyretøyliste: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Av
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eige firma
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Alle firma
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Bruk lasteindikatorar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Av
+STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eige firma
+STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle firma
+STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Bruk rutetabellar for køyretøy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis rutetabell i klikk i staden for dagar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard Jernbane / etter nytt spel / lasta spel: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Vanleg jernbane
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Elekrisk Jernbane
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Første tilgjengelege
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Siste tilgjengelege
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest brukte
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Hold byggjeverktya aktive etter bruk: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Vis bygningsverktøy når det ikkje er nokon høvelege køyretøy tilgjengeleg: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per speler: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antal køyretøy per spelar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maks antal fly per spelar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Maks antal skip per spelar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Vis bygningsverktøy når det ikkje er nokon høvelege køyretøy tilgjengeleg: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per speler: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Maks antal køyretøy per spelar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maks antal fly per spelar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maks antal skip per spelar: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Hindre datamaskinen i å byggje tog: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Hindre datamaskinen i å byggje køyretøy: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Hindre datamaskinen i å byggje fly: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Hindre datamaskinen i å byggje skip: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Hindre datamaskinen i å byggje tog: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Hindre datamaskinen i å byggje køyretøy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Hindre datamaskinen i å byggje fly: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Hindre datamaskinen i å byggje skip: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillat AI-spelarar i fleirspelarmodus (eksperimentelt): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillat AI-spelarar i fleirspelarmodus (eksperimentelt): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Standard vedlikehaldsintervall for tog: {ORANGE}{STRING} dagar/%
-STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard vedlikehaldsintervall for tog: {ORANGE}deaktivert
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Standard vedlikehaldsintervall for køyretøy: {ORANGE}{STRING} dagar/%
-STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Standard vedlikehaldsintervall for køyretøy: {ORANGE}deaktivert
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Standard vedlikehaldsintervall for fly: {ORANGE}{STRING} dagar/%
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standard vedlikehaldsintervall for køyretøy: {ORANGE}deaktivert
-STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standard vedlikehaldsintervall for båtar: {ORANGE}{STRING} dagar/%
-STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard vedlikehaldsintervall for skip: {ORANGE}deaktivert
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Deaktiver vedlikehald når havari er slått av: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Aktiver fartsgrenser for vogner: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Deaktiver elektriske tog: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard vedlikehaldsintervall for tog: {ORANGE}{STRING} dagar/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard vedlikehaldsintervall for tog: {ORANGE}deaktivert
+STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Standard vedlikehaldsintervall for køyretøy: {ORANGE}{STRING} dagar/%
+STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Standard vedlikehaldsintervall for køyretøy: {ORANGE}deaktivert
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Standard vedlikehaldsintervall for fly: {ORANGE}{STRING} dagar/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standard vedlikehaldsintervall for køyretøy: {ORANGE}deaktivert
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Standard vedlikehaldsintervall for båtar: {ORANGE}{STRING} dagar/%
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard vedlikehaldsintervall for skip: {ORANGE}deaktivert
+STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Deaktiver vedlikehald når havari er slått av: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Aktiver fartsgrenser for vogner: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Deaktiver elektriske tog: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Avisa vert trykt i fargar i: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Start spelet i år {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Jamn økonomi (fleire, mindre endringar): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillat kjøping av aksjar i andre selskap: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved opptrekking, plasser signal hver: {ORANGE}{STRING} rute{P "" r}
-STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg semaforer automatisk før: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Bruk signal GUI: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Signaltype bygd som standard: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Blokker signal
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Vegsignal
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Einvegs vegsignal
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Sjå gjennom signaltypar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Kun blokkeringssignal
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Kun vegsignal
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Alle
+STR_CONFIG_SETTING_COLORED_NEWS_YEAR                            :{LTBLUE}Avisa vert trykt i fargar i: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Start spelet i år {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Jamn økonomi (fleire, mindre endringar): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Tillat kjøping av aksjar i andre selskap: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved opptrekking, plasser signal hver: {ORANGE}{STRING} rute{P "" r}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg semaforer automatisk før: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Bruk signal GUI: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Signaltype bygd som standard: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blokker signal
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Vegsignal
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Einvegs vegsignal
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Sjå gjennom signaltypar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Kun blokkeringssignal
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Kun vegsignal
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :standard
-STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :betre vegar
-STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 rutenett
-STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 rutenett
-STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :vilkårleg
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :standard
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :betre vegar
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 rutenett
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 rutenett
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :vilkårleg
 
-STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Plassering av hovudverktøylinje: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Venstre
-STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Midtstilt
-STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Høgre
-STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Knipseradius for vindauge: {ORANGE}{STRING} px
-STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Knipseradius for vindauge: {ORANGE}deaktivert
-STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Farten byar veks med: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Ingen
-STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Sakte
-STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
-STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Rask
-STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Særs rask
-STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Andel byar som vil vekse dobbelt så fort: {ORANGE}1 av {STRING}
-STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel byar som vil vekse dobbelt så fort: {ORANGE}Ingen
-STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Faktor for multiplikasjon av bystorleik: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Fjern absurde vegelement under vegkonstruksjon: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Plassering av hovudverktøylinje: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Venstre
+STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Midtstilt
+STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Høgre
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Knipseradius for vindauge: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Knipseradius for vindauge: {ORANGE}deaktivert
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Farten byar veks med: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ingen
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Sakte
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rask
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Særs rask
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Andel byar som vil vekse dobbelt så fort: {ORANGE}1 av {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel byar som vil vekse dobbelt så fort: {ORANGE}Ingen
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Faktor for multiplikasjon av bystorleik: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Fjern absurde vegelement under vegkonstruksjon: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Grensesnitt
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Konstruksjon
-STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Køyretøy
-STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stasjonar
-STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Økonomi
-STR_CONFIG_PATCHES_AI                                           :{ORANGE}Motstandarar
-STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Vis innstillingar
-STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
-STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Varebehandling
-STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Forny automatisk
-STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Vedlikehald
-STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Tog
-STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Byar
-STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Industriar
+STR_CONFIG_SETTING_GUI                                          :{ORANGE}Grensesnitt
+STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruksjon
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køyretøy
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stasjonar
+STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Økonomi
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Motstandarar
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Vis innstillingar
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Varebehandling
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Forny automatisk
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Vedlikehald
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tog
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Byar
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriar
 
-STR_CONFIG_PATCHES_DISABLED                                     :slått av
-STR_CONFIG_PATCHES_INT32                                        :{NUM}
-STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_DISABLED                                     :slått av
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
 
-STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Endre innstillingsverdi
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Endre innstillingsverdi
 
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Vegfinnar for tog: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ikkje anbefalt)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Anbefalt)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Vegfinnar for køyretøy på vegar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Orginal {RED}(Ikkje anbefalt)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Anbefalt)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Vegfinnar for skip: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Orginal {BLUE}(Anbefalt)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ikkje anbefalt)
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Vegfinnar for tog: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ikkje anbefalt)
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Anbefalt)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Vegfinnar for køyretøy på vegar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Orginal {RED}(Ikkje anbefalt)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Anbefalt)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Vegfinnar for skip: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orginal {BLUE}(Anbefalt)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ikkje anbefalt)
 
 STR_TEMPERATE_LANDSCAPE                                         :Temperert landskap
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarktisk landskap
@@ -1367,7 +1367,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Bygg om 
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vel kva type last lokomotivet skal ta
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Bygg om lokomotivet til å frakte den valde varetypen
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan ikkje byggje om lokomotiv...
-STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Vedlikehaldsintervall er i prosent: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Vedlikehaldsintervall er i prosent: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Endre produksjon
 
 ############ network gui strings
@@ -1629,8 +1629,8 @@ STR_NETWORK_SEND                                                :{BLACK}Send
 ############ end network gui strings
 
 
-STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-storleik på kart: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-storleik på kart: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-storleik på kart: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-storleik på kart: {ORANGE}{STRING}
 
 
 ##### PNG-MAP-Loader
@@ -3686,7 +3686,7 @@ STR_AI_VERSION                                                  :Versjon:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Tillat at byen kontrollerar lydnivået for flyplassane: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Tillat at byen kontrollerar lydnivået for flyplassane: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Grense for lydnivå i byen: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Lyd generert: {GOLD}{COMMA}
 ########

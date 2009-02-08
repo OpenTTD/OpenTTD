@@ -12,7 +12,7 @@ enum GamelogActionType {
 	GLAT_LOAD,         ///< Game loaded
 	GLAT_GRF,          ///< GRF changed
 	GLAT_CHEAT,        ///< Cheat was used
-	GLAT_PATCH,        ///< Patches setting changed
+	GLAT_SETTING,      ///< Setting changed
 	GLAT_GRFBUG,       ///< GRF bug was triggered
 	GLAT_END,          ///< So we know how many GLATs are there
 	GLAT_NONE  = 0xFF, ///< No logging active; in savegames, end of list
@@ -32,7 +32,7 @@ void GamelogPrintConsole();
 void GamelogRevision();
 void GamelogMode();
 void GamelogOldver();
-void GamelogPatch(const char *name, int32 oldval, int32 newval);
+void GamelogSetting(const char *name, int32 oldval, int32 newval);
 
 void GamelogGRFUpdate(const GRFConfig *oldg, const GRFConfig *newg);
 void GamelogGRFAddList(const GRFConfig *newg);

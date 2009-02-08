@@ -265,7 +265,7 @@ static void ToolbarFastForwardClick(Window *w)
 enum OptionMenuEntries {
 	OME_GAMEOPTIONS,
 	OME_DIFFICULTIES,
-	OME_PATCHES,
+	OME_SETTINGS,
 	OME_NEWGRFSETTINGS,
 	OME_TRANSPARENCIES,
 	OME_SHOW_TOWNNAMES,
@@ -283,7 +283,7 @@ static void ToolbarOptionsClick(Window *w)
 	DropDownList *list = new DropDownList();
 	list->push_back(new DropDownListStringItem(STR_02C4_GAME_OPTIONS,        OME_GAMEOPTIONS, false));
 	list->push_back(new DropDownListStringItem(STR_02C6_DIFFICULTY_SETTINGS, OME_DIFFICULTIES, false));
-	list->push_back(new DropDownListStringItem(STR_MENU_CONFIG_PATCHES,      OME_PATCHES, false));
+	list->push_back(new DropDownListStringItem(STR_MENU_CONFIG_SETTINGS,      OME_SETTINGS, false));
 	list->push_back(new DropDownListStringItem(STR_NEWGRF_SETTINGS,          OME_NEWGRFSETTINGS, false));
 	list->push_back(new DropDownListStringItem(STR_TRANSPARENCY_OPTIONS,     OME_TRANSPARENCIES, false));
 	list->push_back(new DropDownListItem(-1, false));
@@ -305,7 +305,7 @@ static void MenuClickSettings(int index)
 	switch (index) {
 		case OME_GAMEOPTIONS:          ShowGameOptions();                              return;
 		case OME_DIFFICULTIES:         ShowGameDifficulty();                           return;
-		case OME_PATCHES:              ShowPatchesSelection();                         return;
+		case OME_SETTINGS:             ShowGameSettings();                             return;
 		case OME_NEWGRFSETTINGS:       ShowNewGRFSettings(!_networking, true, true, &_grfconfig);   return;
 		case OME_TRANSPARENCIES:       ShowTransparencyToolbar();                      break;
 

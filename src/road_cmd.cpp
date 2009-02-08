@@ -585,7 +585,7 @@ do_clear:;
 		/* Check the foundation/slopes when adding road/tram bits */
 		CommandCost ret = CheckRoadSlope(tileh, &pieces, existing, other_bits);
 		/* Return an error if we need to build a foundation (ret != 0) but the
-		 * current patch-setting is turned off (or stupid AI@work) */
+		 * current setting is turned off */
 		if (CmdFailed(ret) || (ret.GetCost() != 0 && !_settings_game.construction.build_on_slopes)) {
 			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 		}

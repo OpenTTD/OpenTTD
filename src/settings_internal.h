@@ -57,7 +57,7 @@ struct SettingDescBase {
 	SettingDescType cmd;    ///< various flags for the variable
 	SettingGuiFlag flags;   ///< handles how a setting would show up in the GUI (text/currency, etc.)
 	int32 min, max;         ///< minimum and maximum values
-	int32 interval;         ///< the interval to use between settings in the 'patches' window. If interval is '0' the interval is dynamically determined
+	int32 interval;         ///< the interval to use between settings in the 'settings' window. If interval is '0' the interval is dynamically determined
 	const char *many;       ///< ONE/MANY_OF_MANY: string of possible values for this type
 	StringID str;           ///< (translated) string with descriptive text; gui and console
 	OnChange *proc;         ///< callback procedure for when the value is changed
@@ -78,8 +78,8 @@ struct SettingDesc {
  * offset in a certain struct */
 typedef SettingDesc SettingDescGlobVarList;
 
-const SettingDesc *GetPatchFromName(const char *name, uint *i);
-bool SetPatchValue(uint index, int32 value);
-bool SetPatchValue(uint index, const char *value);
+const SettingDesc *GetSettingFromName(const char *name, uint *i);
+bool SetSettingValue(uint index, int32 value);
+bool SetSettingValue(uint index, const char *value);
 
 #endif /* SETTINGS_H */

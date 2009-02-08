@@ -34,10 +34,10 @@ static const SaveLoad _glog_oldver_desc[] = {
 	SLE_END()
 };
 
-static const SaveLoad _glog_patch_desc[] = {
-	SLE_STR(LoggedChange, patch.name,        SLE_STR,    128),
-	SLE_VAR(LoggedChange, patch.oldval,      SLE_INT32),
-	SLE_VAR(LoggedChange, patch.newval,      SLE_INT32),
+static const SaveLoad _glog_setting_desc[] = {
+	SLE_STR(LoggedChange, setting.name,      SLE_STR,    128),
+	SLE_VAR(LoggedChange, setting.oldval,    SLE_INT32),
+	SLE_VAR(LoggedChange, setting.newval,    SLE_INT32),
 	SLE_END()
 };
 
@@ -80,7 +80,7 @@ static const SaveLoad *_glog_desc[] = {
 	_glog_mode_desc,
 	_glog_revision_desc,
 	_glog_oldver_desc,
-	_glog_patch_desc,
+	_glog_setting_desc,
 	_glog_grfadd_desc,
 	_glog_grfrem_desc,
 	_glog_grfcompat_desc,

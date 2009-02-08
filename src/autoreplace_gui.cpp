@@ -276,7 +276,7 @@ public:
 
 		if (this->window_number == VEH_TRAIN) {
 			/* set on/off for renew_keep_length */
-			SetDParam(1, c->renew_keep_length ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
+			SetDParam(1, c->renew_keep_length ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 
 			/* set wagon/engine button */
 			SetDParam(2, this->wagon_btnstate ? STR_ENGINES : STR_WAGONS);

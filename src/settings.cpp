@@ -8,7 +8,7 @@
  *     handle various types, such as normal 'key = value' pairs, lists and value combinations of
  *     lists, strings, integers, 'bit'-masks and element selections.
  * <li>Defining the data structures that go into the configuration. These include for example
- *     the _patches struct, but also network-settings, banlists, newgrf, etc. There are a lot
+ *     the _settings struct, but also network-settings, banlists, newgrf, etc. There are a lot
  *     of helper macros available for the various types, and also saving/loading of these settings
  *     in a savegame is handled inside these structures.
  * <li>Handle reading and writing to the setting-structures from inside the game either from
@@ -405,7 +405,7 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 
 		if (!SlIsObjectCurrentlyValid(sld->version_from, sld->version_to)) continue;
 
-		/* For patches.xx.yy load the settings from [xx] yy = ? */
+		/* For settings.xx.yy load the settings from [xx] yy = ? */
 		s = strchr(sdb->name, '.');
 		if (s != NULL) {
 			group = ini->GetGroup(sdb->name, s - sdb->name);
@@ -417,12 +417,12 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 
 		item = group->GetItem(s, false);
 		if (item == NULL && group != group_def) {
-			/* For patches.xx.yy load the settings from [patches] yy = ? in case the previous
-			 * did not exist (e.g. loading old config files with a [patches] section */
+			/* For settings.xx.yy load the settings from [settingss] yy = ? in case the previous
+			 * did not exist (e.g. loading old config files with a [settings] section */
 			item = group_def->GetItem(s, false);
 		}
 		if (item == NULL) {
-			/* For patches.xx.zz.yy load the settings from [zz] yy = ? in case the previous
+			/* For settings.xx.zz.yy load the settings from [zz] yy = ? in case the previous
 			 * did not exist (e.g. loading old config files with a [yapf] section */
 			const char *sc = strchr(s, '.');
 			if (sc != NULL) item = ini->GetGroup(s, sc - s)->GetItem(sc + 1, false);
@@ -666,7 +666,7 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
  * Of each type there are again two versions, the normal one and one prefixed
  * with 'COND'.
  * COND means that the setting is only valid in certain savegame versions
- * (since patches are saved to the savegame, this bookkeeping is necessary.
+ * (since settings are saved to the savegame, this bookkeeping is necessary.
  * Now there are a lot of types. Easy ones are:
  * - VAR:  any number type, 'type' field specifies what number. eg int8 or uint32
  * - BOOL: a boolean number type
@@ -680,13 +680,13 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
  * use SDT(G)_CONDLISTO() meaning Old.
  * If nothing fits you, you can use the GENERAL macros, but it exposes the
  * internal structure somewhat so it needs a little looking. There are _NULL()
- * macros as well, these fill up space so you can add more patches there (in
+ * macros as well, these fill up space so you can add more settings there (in
  * place) and you DON'T have to increase the savegame version.
  *
  * While reading values from openttd.cfg, some values may not be converted
  * properly, for any kind of reasons.  In order to allow a process of self-cleaning
  * mechanism, a callback procedure is made available.  You will have to supply the function, which
- * will work on a string, one function per patch.  And of course, enable the callback param
+ * will work on a string, one function per setting. And of course, enable the callback param
  * on the appropriate macro.
  */
 
@@ -1081,14 +1081,14 @@ static bool CheckFreeformEdges(int32 p1)
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
 			if (v->type == VEH_SHIP && (TileX(v->tile) == 0 || TileY(v->tile) == 0)) {
-				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_EMPTY, 0, 0);
+				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_SETTING_EDGES_NOT_EMPTY, 0, 0);
 				return false;
 			}
 		}
 		Station *st;
 		FOR_ALL_STATIONS(st) {
 			if (TileX(st->xy) == 0 || TileY(st->xy) == 0) {
-				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_EMPTY, 0, 0);
+				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_SETTING_EDGES_NOT_EMPTY, 0, 0);
 				return false;
 			}
 		}
@@ -1097,25 +1097,25 @@ static bool CheckFreeformEdges(int32 p1)
 	} else {
 		for (uint i = 0; i < MapMaxX(); i++) {
 			if (TileHeight(TileXY(i, 1)) != 0) {
-				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_WATER, 0, 0);
+				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_SETTING_EDGES_NOT_WATER, 0, 0);
 				return false;
 			}
 		}
 		for (uint i = 1; i < MapMaxX(); i++) {
 			if (!IsTileType(TileXY(i, MapMaxY() - 1), MP_WATER) || TileHeight(TileXY(1, MapMaxY())) != 0) {
-				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_WATER, 0, 0);
+				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_SETTING_EDGES_NOT_WATER, 0, 0);
 				return false;
 			}
 		}
 		for (uint i = 0; i < MapMaxY(); i++) {
 			if (TileHeight(TileXY(1, i)) != 0) {
-				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_WATER, 0, 0);
+				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_SETTING_EDGES_NOT_WATER, 0, 0);
 				return false;
 			}
 		}
 		for (uint i = 1; i < MapMaxY(); i++) {
 			if (!IsTileType(TileXY(MapMaxX() - 1, i), MP_WATER) || TileHeight(TileXY(MapMaxX(), i)) != 0) {
-				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_WATER, 0, 0);
+				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_SETTING_EDGES_NOT_WATER, 0, 0);
 				return false;
 			}
 		}
@@ -1266,7 +1266,7 @@ static const SettingDesc _gameopt_settings[] = {
 	    SDT_END()
 };
 
-/* Some patches do not need to be synchronised when playing in multiplayer.
+/* Some settings do not need to be synchronised when playing in multiplayer.
  * These include for example the GUI settings and will not be saved with the
  * savegame.
  * It is also a bit tricky since you would think that service_interval
@@ -1275,9 +1275,9 @@ static const SettingDesc _gameopt_settings[] = {
  * assigns his value. If the setting was company-based, that would mean that
  * vehicles could decide on different moments that they are heading back to a
  * service depot, causing desyncs on a massive scale. */
-const SettingDesc _patch_settings[] = {
+const SettingDesc _settings[] = {
 	/***************************************************************************/
-	/* Saved patch variables. */
+	/* Saved settings variables. */
 	/* Do not ADD or REMOVE something in this "difficulty.XXX" table or before it. It breaks savegame compatability. */
 	 SDT_CONDVAR(GameSettings, difficulty.max_no_competitors,        SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     2,0,MAX_COMPANIES-1,1,STR_NULL,                                  DifficultyChange),
 	SDT_CONDNULL(                                                            1, 97, 109),
@@ -1305,88 +1305,88 @@ const SettingDesc _patch_settings[] = {
 	 SDT_CONDVAR(GameSettings, game_creation.snow_line,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 7 * TILE_HEIGHT, 2 * TILE_HEIGHT, 13 * TILE_HEIGHT, 0, STR_NULL, NULL),
  SDT_CONDOMANY(GameSettings, vehicle.road_side,                    SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 1,   1, "left|right", STR_NULL, CheckRoadSide, NULL),
 
-	    SDT_BOOL(GameSettings, construction.build_on_slopes,                                        0,NN,  true,                    STR_CONFIG_PATCHES_BUILDONSLOPES,          NULL),
-	SDT_CONDBOOL(GameSettings, construction.autoslope,                          75, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_PATCHES_AUTOSLOPE,              NULL),
-	    SDT_BOOL(GameSettings, construction.extra_dynamite,                                         0, 0, false,                    STR_CONFIG_PATCHES_EXTRADYNAMITE,          NULL),
-	    SDT_BOOL(GameSettings, construction.longbridges,                                            0,NN,  true,                    STR_CONFIG_PATCHES_LONGBRIDGES,            NULL),
-	    SDT_BOOL(GameSettings, construction.signal_side,                                            N,NN,  true,                    STR_CONFIG_PATCHES_SIGNALSIDE,             RedrawScreen),
-	    SDT_BOOL(GameSettings, station.always_small_airport,                                        0,NN, false,                    STR_CONFIG_PATCHES_SMALL_AIRPORTS,         NULL),
-	 SDT_CONDVAR(GameSettings, economy.town_layout,                  SLE_UINT8, 59, SL_MAX_VERSION, 0,MS,TL_BETTER_ROADS,TL_BEGIN,NUM_TLS-1,1, STR_CONFIG_PATCHES_TOWN_LAYOUT, NULL),
-	SDT_CONDBOOL(GameSettings, economy.allow_town_roads,                       113, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS,       NULL),
+	    SDT_BOOL(GameSettings, construction.build_on_slopes,                                        0,NN,  true,                    STR_CONFIG_SETTING_BUILDONSLOPES,          NULL),
+	SDT_CONDBOOL(GameSettings, construction.autoslope,                          75, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_AUTOSLOPE,              NULL),
+	    SDT_BOOL(GameSettings, construction.extra_dynamite,                                         0, 0, false,                    STR_CONFIG_SETTING_EXTRADYNAMITE,          NULL),
+	    SDT_BOOL(GameSettings, construction.longbridges,                                            0,NN,  true,                    STR_CONFIG_SETTING_LONGBRIDGES,            NULL),
+	    SDT_BOOL(GameSettings, construction.signal_side,                                            N,NN,  true,                    STR_CONFIG_SETTING_SIGNALSIDE,             RedrawScreen),
+	    SDT_BOOL(GameSettings, station.always_small_airport,                                        0,NN, false,                    STR_CONFIG_SETTING_SMALL_AIRPORTS,         NULL),
+	 SDT_CONDVAR(GameSettings, economy.town_layout,                  SLE_UINT8, 59, SL_MAX_VERSION, 0,MS,TL_BETTER_ROADS,TL_BEGIN,NUM_TLS-1,1, STR_CONFIG_SETTING_TOWN_LAYOUT, NULL),
+	SDT_CONDBOOL(GameSettings, economy.allow_town_roads,                       113, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_ALLOW_TOWN_ROADS,       NULL),
 
-	     SDT_VAR(GameSettings, vehicle.train_acceleration_model,     SLE_UINT8,                     0,MS,     0,     0,       1, 1, STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL, TrainAccelerationModelChanged),
-	    SDT_BOOL(GameSettings, pf.forbid_90_deg,                                                    0, 0, false,                    STR_CONFIG_PATCHES_FORBID_90_DEG,          NULL),
-	    SDT_BOOL(GameSettings, vehicle.mammoth_trains,                                              0,NN,  true,                    STR_CONFIG_PATCHES_MAMMOTHTRAINS,          NULL),
-	    SDT_BOOL(GameSettings, order.gotodepot,                                                     0, 0,  true,                    STR_CONFIG_PATCHES_GOTODEPOT,              NULL),
-	    SDT_BOOL(GameSettings, pf.roadveh_queue,                                                    0, 0,  true,                    STR_CONFIG_PATCHES_ROADVEH_QUEUE,          NULL),
+	     SDT_VAR(GameSettings, vehicle.train_acceleration_model,     SLE_UINT8,                     0,MS,     0,     0,       1, 1, STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL, TrainAccelerationModelChanged),
+	    SDT_BOOL(GameSettings, pf.forbid_90_deg,                                                    0, 0, false,                    STR_CONFIG_SETTING_FORBID_90_DEG,          NULL),
+	    SDT_BOOL(GameSettings, vehicle.mammoth_trains,                                              0,NN,  true,                    STR_CONFIG_SETTING_MAMMOTHTRAINS,          NULL),
+	    SDT_BOOL(GameSettings, order.gotodepot,                                                     0, 0,  true,                    STR_CONFIG_SETTING_GOTODEPOT,              NULL),
+	    SDT_BOOL(GameSettings, pf.roadveh_queue,                                                    0, 0,  true,                    STR_CONFIG_SETTING_ROADVEH_QUEUE,          NULL),
 
 	SDT_CONDBOOL(GameSettings, pf.new_pathfinding_all,                           0,             86, 0, 0, false,                    STR_NULL,                                  NULL),
 	SDT_CONDBOOL(GameSettings, pf.yapf.ship_use_yapf,                           28,             86, 0, 0, false,                    STR_NULL,                                  NULL),
 	SDT_CONDBOOL(GameSettings, pf.yapf.road_use_yapf,                           28,             86, 0, 0,  true,                    STR_NULL,                                  NULL),
 	SDT_CONDBOOL(GameSettings, pf.yapf.rail_use_yapf,                           28,             86, 0, 0,  true,                    STR_NULL,                                  NULL),
 
-	 SDT_CONDVAR(GameSettings, pf.pathfinder_for_trains,             SLE_UINT8, 87, SL_MAX_VERSION, 0, MS,    2,     0,       2, 1, STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS,  NULL),
-	 SDT_CONDVAR(GameSettings, pf.pathfinder_for_roadvehs,           SLE_UINT8, 87, SL_MAX_VERSION, 0, MS,    2,     0,       2, 1, STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH, NULL),
-	 SDT_CONDVAR(GameSettings, pf.pathfinder_for_ships,              SLE_UINT8, 87, SL_MAX_VERSION, 0, MS,    0,     0,       2, 1, STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS,   NULL),
+	 SDT_CONDVAR(GameSettings, pf.pathfinder_for_trains,             SLE_UINT8, 87, SL_MAX_VERSION, 0, MS,    2,     0,       2, 1, STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS,  NULL),
+	 SDT_CONDVAR(GameSettings, pf.pathfinder_for_roadvehs,           SLE_UINT8, 87, SL_MAX_VERSION, 0, MS,    2,     0,       2, 1, STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH, NULL),
+	 SDT_CONDVAR(GameSettings, pf.pathfinder_for_ships,              SLE_UINT8, 87, SL_MAX_VERSION, 0, MS,    0,     0,       2, 1, STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS,   NULL),
 
-	    SDT_BOOL(GameSettings, vehicle.never_expire_vehicles,                                       0,NN, false,                    STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES,  NULL),
-	     SDT_VAR(GameSettings, vehicle.max_trains,                  SLE_UINT16,                     0, 0,   500,     0,    5000, 0, STR_CONFIG_PATCHES_MAX_TRAINS,             RedrawScreen),
-	     SDT_VAR(GameSettings, vehicle.max_roadveh,                 SLE_UINT16,                     0, 0,   500,     0,    5000, 0, STR_CONFIG_PATCHES_MAX_ROADVEH,            RedrawScreen),
-	     SDT_VAR(GameSettings, vehicle.max_aircraft,                SLE_UINT16,                     0, 0,   200,     0,    5000, 0, STR_CONFIG_PATCHES_MAX_AIRCRAFT,           RedrawScreen),
-	     SDT_VAR(GameSettings, vehicle.max_ships,                   SLE_UINT16,                     0, 0,   300,     0,    5000, 0, STR_CONFIG_PATCHES_MAX_SHIPS,              RedrawScreen),
-	    SDT_BOOL(GameSettings, vehicle.servint_ispercent,                                           0,NN, false,                    STR_CONFIG_PATCHES_SERVINT_ISPERCENT,      CheckInterval),
-	     SDT_VAR(GameSettings, vehicle.servint_trains,              SLE_UINT16,                     0,D0,   150,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_TRAINS,         InvalidateDetailsWindow),
-	     SDT_VAR(GameSettings, vehicle.servint_roadveh,             SLE_UINT16,                     0,D0,   150,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_ROADVEH,        InvalidateDetailsWindow),
-	     SDT_VAR(GameSettings, vehicle.servint_ships,               SLE_UINT16,                     0,D0,   360,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_SHIPS,          InvalidateDetailsWindow),
-	     SDT_VAR(GameSettings, vehicle.servint_aircraft,            SLE_UINT16,                     0,D0,   100,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT,       InvalidateDetailsWindow),
-	    SDT_BOOL(GameSettings, order.no_servicing_if_no_breakdowns,                                 0, 0, false,                    STR_CONFIG_PATCHES_NOSERVICE,              NULL),
-	    SDT_BOOL(GameSettings, vehicle.wagon_speed_limits,                                          0,NN,  true,                    STR_CONFIG_PATCHES_WAGONSPEEDLIMITS,       UpdateConsists),
-	SDT_CONDBOOL(GameSettings, vehicle.disable_elrails,                         38, SL_MAX_VERSION, 0,NN, false,                    STR_CONFIG_PATCHES_DISABLE_ELRAILS,        SettingsDisableElrail),
-	 SDT_CONDVAR(GameSettings, vehicle.freight_trains,               SLE_UINT8, 39, SL_MAX_VERSION, 0,NN,     1,     1,     255, 1, STR_CONFIG_PATCHES_FREIGHT_TRAINS,         NULL),
-	SDT_CONDBOOL(GameSettings, order.timetabling,                               67, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_PATCHES_TIMETABLE_ALLOW,        NULL),
-	 SDT_CONDVAR(GameSettings, vehicle.plane_speed,                  SLE_UINT8, 90, SL_MAX_VERSION, 0, 0,     4,     1,       4, 0, STR_CONFIG_PATCHES_PLANE_SPEED,            NULL),
-	SDT_CONDBOOL(GameSettings, vehicle.dynamic_engines,                         95, SL_MAX_VERSION, 0,NN, false,                    STR_CONFIG_PATCHES_DYNAMIC_ENGINES,        NULL),
+	    SDT_BOOL(GameSettings, vehicle.never_expire_vehicles,                                       0,NN, false,                    STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES,  NULL),
+	     SDT_VAR(GameSettings, vehicle.max_trains,                  SLE_UINT16,                     0, 0,   500,     0,    5000, 0, STR_CONFIG_SETTING_MAX_TRAINS,             RedrawScreen),
+	     SDT_VAR(GameSettings, vehicle.max_roadveh,                 SLE_UINT16,                     0, 0,   500,     0,    5000, 0, STR_CONFIG_SETTING_MAX_ROADVEH,            RedrawScreen),
+	     SDT_VAR(GameSettings, vehicle.max_aircraft,                SLE_UINT16,                     0, 0,   200,     0,    5000, 0, STR_CONFIG_SETTING_MAX_AIRCRAFT,           RedrawScreen),
+	     SDT_VAR(GameSettings, vehicle.max_ships,                   SLE_UINT16,                     0, 0,   300,     0,    5000, 0, STR_CONFIG_SETTING_MAX_SHIPS,              RedrawScreen),
+	    SDT_BOOL(GameSettings, vehicle.servint_ispercent,                                           0,NN, false,                    STR_CONFIG_SETTING_SERVINT_ISPERCENT,      CheckInterval),
+	     SDT_VAR(GameSettings, vehicle.servint_trains,              SLE_UINT16,                     0,D0,   150,     5,     800, 0, STR_CONFIG_SETTING_SERVINT_TRAINS,         InvalidateDetailsWindow),
+	     SDT_VAR(GameSettings, vehicle.servint_roadveh,             SLE_UINT16,                     0,D0,   150,     5,     800, 0, STR_CONFIG_SETTING_SERVINT_ROADVEH,        InvalidateDetailsWindow),
+	     SDT_VAR(GameSettings, vehicle.servint_ships,               SLE_UINT16,                     0,D0,   360,     5,     800, 0, STR_CONFIG_SETTING_SERVINT_SHIPS,          InvalidateDetailsWindow),
+	     SDT_VAR(GameSettings, vehicle.servint_aircraft,            SLE_UINT16,                     0,D0,   100,     5,     800, 0, STR_CONFIG_SETTING_SERVINT_AIRCRAFT,       InvalidateDetailsWindow),
+	    SDT_BOOL(GameSettings, order.no_servicing_if_no_breakdowns,                                 0, 0, false,                    STR_CONFIG_SETTING_NOSERVICE,              NULL),
+	    SDT_BOOL(GameSettings, vehicle.wagon_speed_limits,                                          0,NN,  true,                    STR_CONFIG_SETTING_WAGONSPEEDLIMITS,       UpdateConsists),
+	SDT_CONDBOOL(GameSettings, vehicle.disable_elrails,                         38, SL_MAX_VERSION, 0,NN, false,                    STR_CONFIG_SETTING_DISABLE_ELRAILS,        SettingsDisableElrail),
+	 SDT_CONDVAR(GameSettings, vehicle.freight_trains,               SLE_UINT8, 39, SL_MAX_VERSION, 0,NN,     1,     1,     255, 1, STR_CONFIG_SETTING_FREIGHT_TRAINS,         NULL),
+	SDT_CONDBOOL(GameSettings, order.timetabling,                               67, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_TIMETABLE_ALLOW,        NULL),
+	 SDT_CONDVAR(GameSettings, vehicle.plane_speed,                  SLE_UINT8, 90, SL_MAX_VERSION, 0, 0,     4,     1,       4, 0, STR_CONFIG_SETTING_PLANE_SPEED,            NULL),
+	SDT_CONDBOOL(GameSettings, vehicle.dynamic_engines,                         95, SL_MAX_VERSION, 0,NN, false,                    STR_CONFIG_SETTING_DYNAMIC_ENGINES,        NULL),
 
-	    SDT_BOOL(GameSettings, station.join_stations,                                               0, 0,  true,                    STR_CONFIG_PATCHES_JOINSTATIONS,           NULL),
+	    SDT_BOOL(GameSettings, station.join_stations,                                               0, 0,  true,                    STR_CONFIG_SETTING_JOINSTATIONS,           NULL),
  SDTC_CONDBOOL(              gui.sg_full_load_any,                             0,             92, 0, 0 , true,                    STR_NULL,                                  NULL),
-	    SDT_BOOL(GameSettings, order.improved_load,                                                 0,NN,  true,                    STR_CONFIG_PATCHES_IMPROVEDLOAD,           NULL),
-	    SDT_BOOL(GameSettings, order.selectgoods,                                                   0, 0,  true,                    STR_CONFIG_PATCHES_SELECTGOODS,            NULL),
+	    SDT_BOOL(GameSettings, order.improved_load,                                                 0,NN,  true,                    STR_CONFIG_SETTING_IMPROVEDLOAD,           NULL),
+	    SDT_BOOL(GameSettings, order.selectgoods,                                                   0, 0,  true,                    STR_CONFIG_SETTING_SELECTGOODS,            NULL),
  SDTC_CONDBOOL(              gui.sg_new_nonstop,                               0,             92, 0, 0, false,                    STR_NULL,                                  NULL),
-	    SDT_BOOL(GameSettings, station.nonuniform_stations,                                         0,NN,  true,                    STR_CONFIG_PATCHES_NONUNIFORM_STATIONS,    NULL),
-	     SDT_VAR(GameSettings, station.station_spread,               SLE_UINT8,                     0, 0,    12,     4,      64, 0, STR_CONFIG_PATCHES_STATION_SPREAD,         InvalidateStationBuildWindow),
-	    SDT_BOOL(GameSettings, order.serviceathelipad,                                              0, 0,  true,                    STR_CONFIG_PATCHES_SERVICEATHELIPAD,       NULL),
-	    SDT_BOOL(GameSettings, station.modified_catchment,                                          0, 0,  true,                    STR_CONFIG_PATCHES_CATCHMENT,              NULL),
-	SDT_CONDBOOL(GameSettings, order.gradual_loading,                           40, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_PATCHES_GRADUAL_LOADING,        NULL),
-	SDT_CONDBOOL(GameSettings, construction.road_stop_on_town_road,             47, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD,      NULL),
-	SDT_CONDBOOL(GameSettings, station.adjacent_stations,                       62, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_PATCHES_ADJACENT_STATIONS,      NULL),
-	SDT_CONDBOOL(GameSettings, economy.station_noise_level,                     96, SL_MAX_VERSION, 0, 0, false,                    STR_CONFIG_PATCHES_NOISE_LEVEL,            InvalidateTownViewWindow),
-	SDT_CONDBOOL(GameSettings, station.distant_join_stations,                  106, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS,  DeleteSelectStationWindow),
+	    SDT_BOOL(GameSettings, station.nonuniform_stations,                                         0,NN,  true,                    STR_CONFIG_SETTING_NONUNIFORM_STATIONS,    NULL),
+	     SDT_VAR(GameSettings, station.station_spread,               SLE_UINT8,                     0, 0,    12,     4,      64, 0, STR_CONFIG_SETTING_STATION_SPREAD,         InvalidateStationBuildWindow),
+	    SDT_BOOL(GameSettings, order.serviceathelipad,                                              0, 0,  true,                    STR_CONFIG_SETTING_SERVICEATHELIPAD,       NULL),
+	    SDT_BOOL(GameSettings, station.modified_catchment,                                          0, 0,  true,                    STR_CONFIG_SETTING_CATCHMENT,              NULL),
+	SDT_CONDBOOL(GameSettings, order.gradual_loading,                           40, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_GRADUAL_LOADING,        NULL),
+	SDT_CONDBOOL(GameSettings, construction.road_stop_on_town_road,             47, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD,      NULL),
+	SDT_CONDBOOL(GameSettings, station.adjacent_stations,                       62, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_ADJACENT_STATIONS,      NULL),
+	SDT_CONDBOOL(GameSettings, economy.station_noise_level,                     96, SL_MAX_VERSION, 0, 0, false,                    STR_CONFIG_SETTING_NOISE_LEVEL,            InvalidateTownViewWindow),
+	SDT_CONDBOOL(GameSettings, station.distant_join_stations,                  106, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS,  DeleteSelectStationWindow),
 
-	    SDT_BOOL(GameSettings, economy.inflation,                                                   0, 0,  true,                    STR_CONFIG_PATCHES_INFLATION,              NULL),
-	     SDT_VAR(GameSettings, construction.raw_industry_construction, SLE_UINT8,                   0,MS,     0,     0,       2, 0, STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD, InvalidateBuildIndustryWindow),
-	    SDT_BOOL(GameSettings, economy.multiple_industry_per_town,                                  0, 0, false,                    STR_CONFIG_PATCHES_MULTIPINDTOWN,          NULL),
-	    SDT_BOOL(GameSettings, economy.same_industry_close,                                         0, 0, false,                    STR_CONFIG_PATCHES_SAMEINDCLOSE,           NULL),
-	    SDT_BOOL(GameSettings, economy.bribe,                                                       0, 0,  true,                    STR_CONFIG_PATCHES_BRIBE,                  NULL),
-	SDT_CONDBOOL(GameSettings, economy.exclusive_rights,                        79, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE,        NULL),
-	SDT_CONDBOOL(GameSettings, economy.give_money,                              79, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY,       NULL),
-	     SDT_VAR(GameSettings, game_creation.snow_line_height,       SLE_UINT8,                     0, 0,     7,     2,      13, 0, STR_CONFIG_PATCHES_SNOWLINE_HEIGHT,        NULL),
-	    SDTC_VAR(              gui.colored_news_year,                SLE_INT32,                     0,NC,  2000,MIN_YEAR,MAX_YEAR,1,STR_CONFIG_PATCHES_COLORED_NEWS_YEAR,      NULL),
-	     SDT_VAR(GameSettings, game_creation.starting_year,          SLE_INT32,                     0,NC,  1950,MIN_YEAR,MAX_YEAR,1,STR_CONFIG_PATCHES_STARTING_YEAR,          NULL),
+	    SDT_BOOL(GameSettings, economy.inflation,                                                   0, 0,  true,                    STR_CONFIG_SETTING_INFLATION,              NULL),
+	     SDT_VAR(GameSettings, construction.raw_industry_construction, SLE_UINT8,                   0,MS,     0,     0,       2, 0, STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD, InvalidateBuildIndustryWindow),
+	    SDT_BOOL(GameSettings, economy.multiple_industry_per_town,                                  0, 0, false,                    STR_CONFIG_SETTING_MULTIPINDTOWN,          NULL),
+	    SDT_BOOL(GameSettings, economy.same_industry_close,                                         0, 0, false,                    STR_CONFIG_SETTING_SAMEINDCLOSE,           NULL),
+	    SDT_BOOL(GameSettings, economy.bribe,                                                       0, 0,  true,                    STR_CONFIG_SETTING_BRIBE,                  NULL),
+	SDT_CONDBOOL(GameSettings, economy.exclusive_rights,                        79, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_ALLOW_EXCLUSIVE,        NULL),
+	SDT_CONDBOOL(GameSettings, economy.give_money,                              79, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_ALLOW_GIVE_MONEY,       NULL),
+	     SDT_VAR(GameSettings, game_creation.snow_line_height,       SLE_UINT8,                     0, 0,     7,     2,      13, 0, STR_CONFIG_SETTING_SNOWLINE_HEIGHT,        NULL),
+	    SDTC_VAR(              gui.colored_news_year,                SLE_INT32,                     0,NC,  2000,MIN_YEAR,MAX_YEAR,1,STR_CONFIG_SETTING_COLORED_NEWS_YEAR,      NULL),
+	     SDT_VAR(GameSettings, game_creation.starting_year,          SLE_INT32,                     0,NC,  1950,MIN_YEAR,MAX_YEAR,1,STR_CONFIG_SETTING_STARTING_YEAR,          NULL),
 	SDT_CONDNULL(                                                            4,  0, 104),
-	    SDT_BOOL(GameSettings, economy.smooth_economy,                                              0, 0,  true,                    STR_CONFIG_PATCHES_SMOOTH_ECONOMY,         NULL),
-	    SDT_BOOL(GameSettings, economy.allow_shares,                                                0, 0, false,                    STR_CONFIG_PATCHES_ALLOW_SHARES,           NULL),
-	 SDT_CONDVAR(GameSettings, economy.town_growth_rate,             SLE_UINT8, 54, SL_MAX_VERSION, 0, MS,    2,     0,       4, 0, STR_CONFIG_PATCHES_TOWN_GROWTH,            NULL),
-	 SDT_CONDVAR(GameSettings, economy.larger_towns,                 SLE_UINT8, 54, SL_MAX_VERSION, 0, D0,    4,     0,     255, 1, STR_CONFIG_PATCHES_LARGER_TOWNS,           NULL),
-	 SDT_CONDVAR(GameSettings, economy.initial_city_size,            SLE_UINT8, 56, SL_MAX_VERSION, 0, 0,     2,     1,      10, 1, STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER,   NULL),
-	SDT_CONDBOOL(GameSettings, economy.mod_road_rebuild,                        77, SL_MAX_VERSION, 0, 0, false,                    STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD,  NULL),
+	    SDT_BOOL(GameSettings, economy.smooth_economy,                                              0, 0,  true,                    STR_CONFIG_SETTING_SMOOTH_ECONOMY,         NULL),
+	    SDT_BOOL(GameSettings, economy.allow_shares,                                                0, 0, false,                    STR_CONFIG_SETTING_ALLOW_SHARES,           NULL),
+	 SDT_CONDVAR(GameSettings, economy.town_growth_rate,             SLE_UINT8, 54, SL_MAX_VERSION, 0, MS,    2,     0,       4, 0, STR_CONFIG_SETTING_TOWN_GROWTH,            NULL),
+	 SDT_CONDVAR(GameSettings, economy.larger_towns,                 SLE_UINT8, 54, SL_MAX_VERSION, 0, D0,    4,     0,     255, 1, STR_CONFIG_SETTING_LARGER_TOWNS,           NULL),
+	 SDT_CONDVAR(GameSettings, economy.initial_city_size,            SLE_UINT8, 56, SL_MAX_VERSION, 0, 0,     2,     1,      10, 1, STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER,   NULL),
+	SDT_CONDBOOL(GameSettings, economy.mod_road_rebuild,                        77, SL_MAX_VERSION, 0, 0, false,                    STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD,  NULL),
 
 	SDT_CONDNULL(1, 0, 106), // previously ai-new setting.
-	    SDT_BOOL(GameSettings, ai.ai_in_multiplayer,                                                0, 0, true,                     STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER,      NULL),
-	    SDT_BOOL(GameSettings, ai.ai_disable_veh_train,                                             0, 0, false,                    STR_CONFIG_PATCHES_AI_BUILDS_TRAINS,       NULL),
-	    SDT_BOOL(GameSettings, ai.ai_disable_veh_roadveh,                                           0, 0, false,                    STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH,      NULL),
-	    SDT_BOOL(GameSettings, ai.ai_disable_veh_aircraft,                                          0, 0, false,                    STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT,     NULL),
-	    SDT_BOOL(GameSettings, ai.ai_disable_veh_ship,                                              0, 0, false,                    STR_CONFIG_PATCHES_AI_BUILDS_SHIPS,        NULL),
-	 SDT_CONDVAR(GameSettings, ai.ai_max_opcode_till_suspend,       SLE_UINT32,107, SL_MAX_VERSION, 0, NG, 10000, 5000,250000,2500, STR_CONFIG_PATCHES_AI_MAX_OPCODES,         NULL),
+	    SDT_BOOL(GameSettings, ai.ai_in_multiplayer,                                                0, 0, true,                     STR_CONFIG_SETTING_AI_IN_MULTIPLAYER,      NULL),
+	    SDT_BOOL(GameSettings, ai.ai_disable_veh_train,                                             0, 0, false,                    STR_CONFIG_SETTING_AI_BUILDS_TRAINS,       NULL),
+	    SDT_BOOL(GameSettings, ai.ai_disable_veh_roadveh,                                           0, 0, false,                    STR_CONFIG_SETTING_AI_BUILDS_ROADVEH,      NULL),
+	    SDT_BOOL(GameSettings, ai.ai_disable_veh_aircraft,                                          0, 0, false,                    STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT,     NULL),
+	    SDT_BOOL(GameSettings, ai.ai_disable_veh_ship,                                              0, 0, false,                    STR_CONFIG_SETTING_AI_BUILDS_SHIPS,        NULL),
+	 SDT_CONDVAR(GameSettings, ai.ai_max_opcode_till_suspend,       SLE_UINT32,107, SL_MAX_VERSION, 0, NG, 10000, 5000,250000,2500, STR_CONFIG_SETTING_AI_MAX_OPCODES,         NULL),
 
 	     SDT_VAR(GameSettings, vehicle.extend_vehicle_life,          SLE_UINT8,                     0, 0,     0,     0,     100, 0, STR_NULL,                                  NULL),
 	     SDT_VAR(GameSettings, economy.dist_local_authority,         SLE_UINT8,                     0, 0,    20,     5,      60, 0, STR_NULL,                                  NULL),
@@ -1448,76 +1448,76 @@ const SettingDesc _patch_settings[] = {
 	 SDT_CONDVAR(GameSettings, pf.yapf.road_crossing_penalty,                  SLE_UINT, 33, SL_MAX_VERSION, 0, 0,     3 * YAPF_TILE_LENGTH,  0, 1000000, 0, STR_NULL,         NULL),
 	 SDT_CONDVAR(GameSettings, pf.yapf.road_stop_penalty,                      SLE_UINT, 47, SL_MAX_VERSION, 0, 0,     8 * YAPF_TILE_LENGTH,  0, 1000000, 0, STR_NULL,         NULL),
 
-	 SDT_CONDVAR(GameSettings, game_creation.land_generator,                  SLE_UINT8, 30, SL_MAX_VERSION, 0,MS,     1,                     0,       1, 0, STR_CONFIG_PATCHES_LAND_GENERATOR,        NULL),
-	 SDT_CONDVAR(GameSettings, game_creation.oil_refinery_limit,              SLE_UINT8, 30, SL_MAX_VERSION, 0, 0,    32,                    12,      48, 0, STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE, NULL),
-	 SDT_CONDVAR(GameSettings, game_creation.tgen_smoothness,                 SLE_UINT8, 30, SL_MAX_VERSION, 0,MS,     1,                     0,       3, 0, STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN,  NULL),
+	 SDT_CONDVAR(GameSettings, game_creation.land_generator,                  SLE_UINT8, 30, SL_MAX_VERSION, 0,MS,     1,                     0,       1, 0, STR_CONFIG_SETTING_LAND_GENERATOR,        NULL),
+	 SDT_CONDVAR(GameSettings, game_creation.oil_refinery_limit,              SLE_UINT8, 30, SL_MAX_VERSION, 0, 0,    32,                    12,      48, 0, STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE, NULL),
+	 SDT_CONDVAR(GameSettings, game_creation.tgen_smoothness,                 SLE_UINT8, 30, SL_MAX_VERSION, 0,MS,     1,                     0,       3, 0, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN,  NULL),
 	 SDT_CONDVAR(GameSettings, game_creation.generation_seed,                SLE_UINT32, 30, SL_MAX_VERSION, 0, 0,      GENERATE_NEW_SEED, 0, UINT32_MAX, 0, STR_NULL,                                 NULL),
-	 SDT_CONDVAR(GameSettings, game_creation.tree_placer,                     SLE_UINT8, 30, SL_MAX_VERSION, 0,MS,     2,                     0,       2, 0, STR_CONFIG_PATCHES_TREE_PLACER,           NULL),
-	     SDT_VAR(GameSettings, game_creation.heightmap_rotation,              SLE_UINT8,                     S,MS,     0,                     0,       1, 0, STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION,    NULL),
-	     SDT_VAR(GameSettings, game_creation.se_flat_world_height,            SLE_UINT8,                     S, 0,     1,                     0,      15, 0, STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT,  NULL),
+	 SDT_CONDVAR(GameSettings, game_creation.tree_placer,                     SLE_UINT8, 30, SL_MAX_VERSION, 0,MS,     2,                     0,       2, 0, STR_CONFIG_SETTING_TREE_PLACER,           NULL),
+	     SDT_VAR(GameSettings, game_creation.heightmap_rotation,              SLE_UINT8,                     S,MS,     0,                     0,       1, 0, STR_CONFIG_SETTING_HEIGHTMAP_ROTATION,    NULL),
+	     SDT_VAR(GameSettings, game_creation.se_flat_world_height,            SLE_UINT8,                     S, 0,     1,                     0,      15, 0, STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT,  NULL),
 
-	     SDT_VAR(GameSettings, game_creation.map_x,                           SLE_UINT8,                     S, 0,     8,                     6,      11, 0, STR_CONFIG_PATCHES_MAP_X,                 NULL),
-	     SDT_VAR(GameSettings, game_creation.map_y,                           SLE_UINT8,                     S, 0,     8,                     6,      11, 0, STR_CONFIG_PATCHES_MAP_Y,                 NULL),
-	SDT_CONDBOOL(GameSettings, construction.freeform_edges,                             111, SL_MAX_VERSION, 0, 0,  true,                                    STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES, CheckFreeformEdges),
+	     SDT_VAR(GameSettings, game_creation.map_x,                           SLE_UINT8,                     S, 0,     8,                     6,      11, 0, STR_CONFIG_SETTING_MAP_X,                 NULL),
+	     SDT_VAR(GameSettings, game_creation.map_y,                           SLE_UINT8,                     S, 0,     8,                     6,      11, 0, STR_CONFIG_SETTING_MAP_Y,                 NULL),
+	SDT_CONDBOOL(GameSettings, construction.freeform_edges,                             111, SL_MAX_VERSION, 0, 0,  true,                                    STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES, CheckFreeformEdges),
 	 SDT_CONDVAR(GameSettings, game_creation.water_borders,                   SLE_UINT8,111, SL_MAX_VERSION, 0, 0,    15,                     0,      16, 0, STR_NULL,                                 NULL),
 
  SDT_CONDOMANY(GameSettings, locale.currency,                               SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 0, CUSTOM_CURRENCY_ID, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRR|custom", STR_NULL, NULL, NULL),
  SDT_CONDOMANY(GameSettings, locale.units,                                  SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 1, 2, "imperial|metric|si", STR_NULL, NULL, NULL),
 
 	/***************************************************************************/
-	/* Unsaved patch variables. */
+	/* Unsaved setting variables. */
 	SDTC_OMANY(gui.autosave,                  SLE_UINT8, S,  0, 1, 4, "off|monthly|quarterly|half year|yearly", STR_NULL,                     NULL),
-	SDTC_OMANY(gui.date_format_in_default_names,SLE_UINT8,S,MS, 0, 2, "long|short|iso",       STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES,   NULL),
-	 SDTC_BOOL(gui.vehicle_speed,                        S,  0,  true,                        STR_CONFIG_PATCHES_VEHICLESPEED,                NULL),
-	 SDTC_BOOL(gui.status_long_date,                     S,  0,  true,                        STR_CONFIG_PATCHES_LONGDATE,                    NULL),
-	 SDTC_BOOL(gui.show_finances,                        S,  0,  true,                        STR_CONFIG_PATCHES_SHOWFINANCES,                NULL),
-	 SDTC_BOOL(gui.autoscroll,                           S,  0, false,                        STR_CONFIG_PATCHES_AUTOSCROLL,                  NULL),
-	 SDTC_BOOL(gui.reverse_scroll,                       S,  0, false,                        STR_CONFIG_PATCHES_REVERSE_SCROLLING,           NULL),
-	 SDTC_BOOL(gui.smooth_scroll,                        S,  0, false,                        STR_CONFIG_PATCHES_SMOOTH_SCROLLING,            NULL),
-	 SDTC_BOOL(gui.left_mouse_btn_scrolling,             S,  0, false,                        STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING,    NULL),
-	 SDTC_BOOL(gui.measure_tooltip,                      S,  0,  true,                        STR_CONFIG_PATCHES_MEASURE_TOOLTIP,             NULL),
-	  SDTC_VAR(gui.errmsg_duration,           SLE_UINT8, S,  0,     5,        0,       20, 0, STR_CONFIG_PATCHES_ERRMSG_DURATION,             NULL),
-	  SDTC_VAR(gui.toolbar_pos,               SLE_UINT8, S, MS,     0,        0,        2, 0, STR_CONFIG_PATCHES_TOOLBAR_POS,                 v_PositionMainToolbar),
-	  SDTC_VAR(gui.window_snap_radius,        SLE_UINT8, S, D0,    10,        1,       32, 0, STR_CONFIG_PATCHES_SNAP_RADIUS,                 NULL),
-	  SDTC_VAR(gui.window_soft_limit,         SLE_UINT8, S, D0,    20,        5,      255, 1, STR_CONFIG_PATCHES_SOFT_LIMIT,                  NULL),
-	 SDTC_BOOL(gui.population_in_label,                  S,  0,  true,                        STR_CONFIG_PATCHES_POPULATION_IN_LABEL,         PopulationInLabelActive),
-	 SDTC_BOOL(gui.link_terraform_toolbar,               S,  0, false,                        STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR,      NULL),
-	  SDTC_VAR(gui.liveries,                  SLE_UINT8, S, MS,     2,        0,        2, 0, STR_CONFIG_PATCHES_LIVERIES,                    RedrawScreen),
-	 SDTC_BOOL(gui.prefer_teamchat,                      S,  0, false,                        STR_CONFIG_PATCHES_PREFER_TEAMCHAT,             NULL),
-	  SDTC_VAR(gui.scrollwheel_scrolling,     SLE_UINT8, S, MS,     0,        0,        2, 0, STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING,       NULL),
-	  SDTC_VAR(gui.scrollwheel_multiplier,    SLE_UINT8, S,  0,     5,        1,       15, 1, STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER,      NULL),
-	 SDTC_BOOL(gui.pause_on_newgame,                     S,  0, false,                        STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME,           NULL),
-	  SDTC_VAR(gui.advanced_vehicle_list,     SLE_UINT8, S, MS,     1,        0,        2, 0, STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS,      NULL),
-	 SDTC_BOOL(gui.timetable_in_ticks,                   S,  0, false,                        STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS,          NULL),
-	 SDTC_BOOL(gui.quick_goto,                           S,  0, false,                        STR_CONFIG_PATCHES_QUICKGOTO,                   NULL),
-	  SDTC_VAR(gui.loading_indicators,        SLE_UINT8, S, MS,     1,        0,        2, 0, STR_CONFIG_PATCHES_LOADING_INDICATORS,          RedrawScreen),
-	  SDTC_VAR(gui.default_rail_type,         SLE_UINT8, S, MS,     4,        0,        6, 0, STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE,           NULL),
-	 SDTC_BOOL(gui.enable_signal_gui,                    S,  0,  true,                        STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI,           CloseSignalGUI),
-	  SDTC_VAR(gui.drag_signals_density,      SLE_UINT8, S,  0,     4,        1,       20, 0, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY,        DragSignalsDensityChanged),
-	  SDTC_VAR(gui.semaphore_build_before,    SLE_INT32, S, NC,  1975, MIN_YEAR, MAX_YEAR, 1, STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE, ResetSignalVariant),
-	 SDTC_BOOL(gui.vehicle_income_warn,                  S,  0,  true,                        STR_CONFIG_PATCHES_WARN_INCOME_LESS,            NULL),
-	  SDTC_VAR(gui.order_review_system,       SLE_UINT8, S, MS,     2,        0,        2, 0, STR_CONFIG_PATCHES_ORDER_REVIEW,                NULL),
-	 SDTC_BOOL(gui.lost_train_warn,                      S,  0,  true,                        STR_CONFIG_PATCHES_WARN_LOST_TRAIN,             NULL),
-	 SDTC_BOOL(gui.autorenew,                            S,  0, false,                        STR_CONFIG_PATCHES_AUTORENEW_VEHICLE,           EngineRenewUpdate),
-	  SDTC_VAR(gui.autorenew_months,          SLE_INT16, S,  0,     6,      -12,       12, 0, STR_CONFIG_PATCHES_AUTORENEW_MONTHS,            EngineRenewMonthsUpdate),
-	  SDTC_VAR(gui.autorenew_money,            SLE_UINT, S, CR,100000,        0,  2000000, 0, STR_CONFIG_PATCHES_AUTORENEW_MONEY,             EngineRenewMoneyUpdate),
-	 SDTC_BOOL(gui.always_build_infrastructure,          S,  0, false,                        STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE, RedrawScreen),
-	 SDTC_BOOL(gui.new_nonstop,                          S,  0, false,                        STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT,          NULL),
+	SDTC_OMANY(gui.date_format_in_default_names,SLE_UINT8,S,MS, 0, 2, "long|short|iso",       STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES,   NULL),
+	 SDTC_BOOL(gui.vehicle_speed,                        S,  0,  true,                        STR_CONFIG_SETTING_VEHICLESPEED,                NULL),
+	 SDTC_BOOL(gui.status_long_date,                     S,  0,  true,                        STR_CONFIG_SETTING_LONGDATE,                    NULL),
+	 SDTC_BOOL(gui.show_finances,                        S,  0,  true,                        STR_CONFIG_SETTING_SHOWFINANCES,                NULL),
+	 SDTC_BOOL(gui.autoscroll,                           S,  0, false,                        STR_CONFIG_SETTING_AUTOSCROLL,                  NULL),
+	 SDTC_BOOL(gui.reverse_scroll,                       S,  0, false,                        STR_CONFIG_SETTING_REVERSE_SCROLLING,           NULL),
+	 SDTC_BOOL(gui.smooth_scroll,                        S,  0, false,                        STR_CONFIG_SETTING_SMOOTH_SCROLLING,            NULL),
+	 SDTC_BOOL(gui.left_mouse_btn_scrolling,             S,  0, false,                        STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING,    NULL),
+	 SDTC_BOOL(gui.measure_tooltip,                      S,  0,  true,                        STR_CONFIG_SETTING_MEASURE_TOOLTIP,             NULL),
+	  SDTC_VAR(gui.errmsg_duration,           SLE_UINT8, S,  0,     5,        0,       20, 0, STR_CONFIG_SETTING_ERRMSG_DURATION,             NULL),
+	  SDTC_VAR(gui.toolbar_pos,               SLE_UINT8, S, MS,     0,        0,        2, 0, STR_CONFIG_SETTING_TOOLBAR_POS,                 v_PositionMainToolbar),
+	  SDTC_VAR(gui.window_snap_radius,        SLE_UINT8, S, D0,    10,        1,       32, 0, STR_CONFIG_SETTING_SNAP_RADIUS,                 NULL),
+	  SDTC_VAR(gui.window_soft_limit,         SLE_UINT8, S, D0,    20,        5,      255, 1, STR_CONFIG_SETTING_SOFT_LIMIT,                  NULL),
+	 SDTC_BOOL(gui.population_in_label,                  S,  0,  true,                        STR_CONFIG_SETTING_POPULATION_IN_LABEL,         PopulationInLabelActive),
+	 SDTC_BOOL(gui.link_terraform_toolbar,               S,  0, false,                        STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR,      NULL),
+	  SDTC_VAR(gui.liveries,                  SLE_UINT8, S, MS,     2,        0,        2, 0, STR_CONFIG_SETTING_LIVERIES,                    RedrawScreen),
+	 SDTC_BOOL(gui.prefer_teamchat,                      S,  0, false,                        STR_CONFIG_SETTING_PREFER_TEAMCHAT,             NULL),
+	  SDTC_VAR(gui.scrollwheel_scrolling,     SLE_UINT8, S, MS,     0,        0,        2, 0, STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING,       NULL),
+	  SDTC_VAR(gui.scrollwheel_multiplier,    SLE_UINT8, S,  0,     5,        1,       15, 1, STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER,      NULL),
+	 SDTC_BOOL(gui.pause_on_newgame,                     S,  0, false,                        STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME,           NULL),
+	  SDTC_VAR(gui.advanced_vehicle_list,     SLE_UINT8, S, MS,     1,        0,        2, 0, STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS,      NULL),
+	 SDTC_BOOL(gui.timetable_in_ticks,                   S,  0, false,                        STR_CONFIG_SETTING_TIMETABLE_IN_TICKS,          NULL),
+	 SDTC_BOOL(gui.quick_goto,                           S,  0, false,                        STR_CONFIG_SETTING_QUICKGOTO,                   NULL),
+	  SDTC_VAR(gui.loading_indicators,        SLE_UINT8, S, MS,     1,        0,        2, 0, STR_CONFIG_SETTING_LOADING_INDICATORS,          RedrawScreen),
+	  SDTC_VAR(gui.default_rail_type,         SLE_UINT8, S, MS,     4,        0,        6, 0, STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE,           NULL),
+	 SDTC_BOOL(gui.enable_signal_gui,                    S,  0,  true,                        STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI,           CloseSignalGUI),
+	  SDTC_VAR(gui.drag_signals_density,      SLE_UINT8, S,  0,     4,        1,       20, 0, STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY,        DragSignalsDensityChanged),
+	  SDTC_VAR(gui.semaphore_build_before,    SLE_INT32, S, NC,  1975, MIN_YEAR, MAX_YEAR, 1, STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE, ResetSignalVariant),
+	 SDTC_BOOL(gui.vehicle_income_warn,                  S,  0,  true,                        STR_CONFIG_SETTING_WARN_INCOME_LESS,            NULL),
+	  SDTC_VAR(gui.order_review_system,       SLE_UINT8, S, MS,     2,        0,        2, 0, STR_CONFIG_SETTING_ORDER_REVIEW,                NULL),
+	 SDTC_BOOL(gui.lost_train_warn,                      S,  0,  true,                        STR_CONFIG_SETTING_WARN_LOST_TRAIN,             NULL),
+	 SDTC_BOOL(gui.autorenew,                            S,  0, false,                        STR_CONFIG_SETTING_AUTORENEW_VEHICLE,           EngineRenewUpdate),
+	  SDTC_VAR(gui.autorenew_months,          SLE_INT16, S,  0,     6,      -12,       12, 0, STR_CONFIG_SETTING_AUTORENEW_MONTHS,            EngineRenewMonthsUpdate),
+	  SDTC_VAR(gui.autorenew_money,            SLE_UINT, S, CR,100000,        0,  2000000, 0, STR_CONFIG_SETTING_AUTORENEW_MONEY,             EngineRenewMoneyUpdate),
+	 SDTC_BOOL(gui.always_build_infrastructure,          S,  0, false,                        STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE, RedrawScreen),
+	 SDTC_BOOL(gui.new_nonstop,                          S,  0, false,                        STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT,          NULL),
 	 SDTC_BOOL(gui.keep_all_autosave,                    S,  0, false,                        STR_NULL,                                       NULL),
 	 SDTC_BOOL(gui.autosave_on_exit,                     S,  0, false,                        STR_NULL,                                       NULL),
 	  SDTC_VAR(gui.max_num_autosaves,         SLE_UINT8, S,  0,    16,        0,      255, 0, STR_NULL,                                       NULL),
 	 SDTC_BOOL(gui.bridge_pillars,                       S,  0,  true,                        STR_NULL,                                       NULL),
 	 SDTC_BOOL(gui.auto_euro,                            S,  0,  true,                        STR_NULL,                                       NULL),
 	  SDTC_VAR(gui.news_message_timeout,      SLE_UINT8, S,  0,     2,        1,      255, 0, STR_NULL,                                       NULL),
-	 SDTC_BOOL(gui.show_track_reservation,               S,  0, false,                        STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION,      RedrawScreen),
-	  SDTC_VAR(gui.default_signal_type,       SLE_UINT8, S, MS,     0,        0,        2, 1, STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE,         NULL),
-	  SDTC_VAR(gui.cycle_signal_types,        SLE_UINT8, S, MS,     2,        0,        2, 1, STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES,          NULL),
+	 SDTC_BOOL(gui.show_track_reservation,               S,  0, false,                        STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION,      RedrawScreen),
+	  SDTC_VAR(gui.default_signal_type,       SLE_UINT8, S, MS,     0,        0,        2, 1, STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE,         NULL),
+	  SDTC_VAR(gui.cycle_signal_types,        SLE_UINT8, S, MS,     2,        0,        2, 1, STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES,          NULL),
 	  SDTC_VAR(gui.station_numtracks,         SLE_UINT8, S,  0,     1,        1,        7, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(gui.station_platlength,        SLE_UINT8, S,  0,     5,        1,        7, 0, STR_NULL,                                       NULL),
 	 SDTC_BOOL(gui.station_dragdrop,                     S,  0,  true,                        STR_NULL,                                       NULL),
 	 SDTC_BOOL(gui.station_show_coverage,                S,  0, false,                        STR_NULL,                                       NULL),
-	 SDTC_BOOL(gui.persistent_buildingtools,             S,  0, false,                        STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS,    NULL),
-	 SDTC_BOOL(gui.expenses_layout,                      S,  0, false,                        STR_CONFIG_PATCHES_EXPENSES_LAYOUT,             RedrawScreen),
+	 SDTC_BOOL(gui.persistent_buildingtools,             S,  0, false,                        STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS,    NULL),
+	 SDTC_BOOL(gui.expenses_layout,                      S,  0, false,                        STR_CONFIG_SETTING_EXPENSES_LAYOUT,             RedrawScreen),
 
 	  SDTC_VAR(gui.console_backlog_timeout,  SLE_UINT16, S,  0,   100,       10,    65500, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(gui.console_backlog_length,   SLE_UINT16, S,  0,   100,       10,    65500, 0, STR_NULL,                                       NULL),
@@ -1555,15 +1555,15 @@ const SettingDesc _patch_settings[] = {
 #endif /* ENABLE_NETWORK */
 
 	/*
-	 * Since the network code (CmdChangePatchSetting and friends) use the index in this array to decide
-	 * which patch the server is talking about all conditional compilation of this array must be at the
-	 * end. This isn't really the best solution, the patches the server can tell the client about should
+	 * Since the network code (CmdChangeSetting and friends) use the index in this array to decide
+	 * which setting the server is talking about all conditional compilation of this array must be at the
+	 * end. This isn't really the best solution, the settings the server can tell the client about should
 	 * either use a seperate array or some other form of identifier.
 	 */
 
 #ifdef __APPLE__
 	/* We might need to emulate a right mouse button on mac */
-	 SDTC_VAR(gui.right_mouse_btn_emulation, SLE_UINT8, S, MS, 0, 0, 2, 0, STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU, NULL),
+	 SDTC_VAR(gui.right_mouse_btn_emulation, SLE_UINT8, S, MS, 0, 0, 2, 0, STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU, NULL),
 #endif
 
 	SDT_END()
@@ -1618,7 +1618,7 @@ static void HandleOldDiffCustom(bool savegame)
 	}
 
 	for (uint i = 0; i < options_to_load; i++) {
-		const SettingDesc *sd = &_patch_settings[i];
+		const SettingDesc *sd = &_settings[i];
 		/* Skip deprecated options */
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		void *var = GetVariableAddress(savegame ? &_settings_game : &_settings_newgame, &sd->save);
@@ -1855,7 +1855,7 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 	proc(ini, (const SettingDesc*)_win32_settings,   "win32", NULL);
 #endif /* WIN32 */
 
-	proc(ini, _patch_settings,   "patches",  &_settings_newgame);
+	proc(ini, _settings,         "patches",  &_settings_newgame);
 	proc(ini, _currency_settings,"currency", &_custom_currency);
 
 #ifdef ENABLE_NETWORK
@@ -1961,19 +1961,19 @@ void DeleteGRFPresetFromConfig(const char *config_name)
 
 static const SettingDesc *GetSettingDescription(uint index)
 {
-	if (index >= lengthof(_patch_settings)) return NULL;
-	return &_patch_settings[index];
+	if (index >= lengthof(_settings)) return NULL;
+	return &_settings[index];
 }
 
-/** Network-safe changing of patch-settings (server-only).
+/** Network-safe changing of settings (server-only).
  * @param tile unused
  * @param flags operation to perform
- * @param p1 the index of the patch in the SettingDesc array which identifies it
- * @param p2 the new value for the patch
+ * @param p1 the index of the setting in the SettingDesc array which identifies it
+ * @param p2 the new value for the setting
  * The new value is properly clamped to its minimum/maximum when setting
- * @see _patch_settings
+ * @see _settings
  */
-CommandCost CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdChangeSetting(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	const SettingDesc *sd = GetSettingDescription(p1);
 
@@ -2002,8 +2002,8 @@ CommandCost CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint3
 		}
 
 		if (sd->desc.flags & SGF_NO_NETWORK) {
-			GamelogStartAction(GLAT_PATCH);
-			GamelogPatch(sd->desc.name, oldval, newval);
+			GamelogStartAction(GLAT_SETTING);
+			GamelogSetting(sd->desc.name, oldval, newval);
 			GamelogStopAction();
 		}
 
@@ -2013,19 +2013,19 @@ CommandCost CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint3
 	return CommandCost();
 }
 
-/** Top function to save the new value of an element of the Patches struct
- * @param index offset in the SettingDesc array of the Patches struct which
- * identifies the patch member we want to change
- * @param object pointer to a valid patches struct that has its settings change.
- * This only affects patch-members that are not needed to be the same on all
+/** Top function to save the new value of an element of the Settings struct
+ * @param index offset in the SettingDesc array of the Settings struct which
+ * identifies the setting member we want to change
+ * @param object pointer to a valid settings struct that has its settings change.
+ * This only affects setting-members that are not needed to be the same on all
  * clients in a network game.
- * @param value new value of the patch */
-bool SetPatchValue(uint index, int32 value)
+ * @param value new value of the setting */
+bool SetSettingValue(uint index, int32 value)
 {
-	const SettingDesc *sd = &_patch_settings[index];
+	const SettingDesc *sd = &_settings[index];
 	/* If an item is company-based, we do not send it over the network
 	 * (if any) to change. Also *hack*hack* we update the _newgame version
-	 * of patches because changing a company-based setting in a game also
+	 * of settings because changing a company-based setting in a game also
 	 * changes its defaults. At least that is the convention we have chosen */
 	if (sd->save.conv & SLF_NETWORK_NO) {
 		void *var = GetVariableAddress((_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game, &sd->save);
@@ -2042,20 +2042,20 @@ bool SetPatchValue(uint index, int32 value)
 
 	/* send non-company-based settings over the network */
 	if (!_networking || (_networking && _network_server)) {
-		return DoCommandP(0, index, value, CMD_CHANGE_PATCH_SETTING);
+		return DoCommandP(0, index, value, CMD_CHANGE_SETTING);
 	}
 	return false;
 }
 
 /**
- * Set a patch value with a string.
- * @param index the patch settings index.
+ * Set a setting value with a string.
+ * @param index the settings index.
  * @param value the value to write
  * @note CANNOT BE SAVED IN THE SAVEGAME.
  */
-bool SetPatchValue(uint index, const char *value)
+bool SetSettingValue(uint index, const char *value)
 {
-	const SettingDesc *sd = &_patch_settings[index];
+	const SettingDesc *sd = &_settings[index];
 	assert(sd->save.conv & SLF_NETWORK_NO);
 
 	char *var = (char*)GetVariableAddress(NULL, &sd->save);
@@ -2066,24 +2066,24 @@ bool SetPatchValue(uint index, const char *value)
 }
 
 /**
- * Given a name of patch, return a setting description of it.
- * @param name  Name of the patch to return a setting description of
+ * Given a name of setting, return a setting description of it.
+ * @param name  Name of the setting to return a setting description of
  * @param i     Pointer to an integer that will contain the index of the setting after the call, if it is successful.
- * @return Pointer to the setting description of patch \a name if it can be found,
+ * @return Pointer to the setting description of setting \a name if it can be found,
  *         \c NULL indicates failure to obtain the description
  */
-const SettingDesc *GetPatchFromName(const char *name, uint *i)
+const SettingDesc *GetSettingFromName(const char *name, uint *i)
 {
 	const SettingDesc *sd;
 
 	/* First check all full names */
-	for (*i = 0, sd = _patch_settings; sd->save.cmd != SL_END; sd++, (*i)++) {
+	for (*i = 0, sd = _settings; sd->save.cmd != SL_END; sd++, (*i)++) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		if (strcmp(sd->desc.name, name) == 0) return sd;
 	}
 
 	/* Then check the shortcut variant of the name. */
-	for (*i = 0, sd = _patch_settings; sd->save.cmd != SL_END; sd++, (*i)++) {
+	for (*i = 0, sd = _settings; sd->save.cmd != SL_END; sd++, (*i)++) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		const char *short_name = strchr(sd->desc.name, '.');
 		if (short_name != NULL) {
@@ -2097,24 +2097,24 @@ const SettingDesc *GetPatchFromName(const char *name, uint *i)
 
 /* Those 2 functions need to be here, else we have to make some stuff non-static
  * and besides, it is also better to keep stuff like this at the same place */
-void IConsoleSetPatchSetting(const char *name, const char *value)
+void IConsoleSetSetting(const char *name, const char *value)
 {
 	uint index;
-	const SettingDesc *sd = GetPatchFromName(name, &index);
+	const SettingDesc *sd = GetSettingFromName(name, &index);
 
 	if (sd == NULL) {
-		IConsolePrintF(CC_WARNING, "'%s' is an unknown patch setting.", name);
+		IConsolePrintF(CC_WARNING, "'%s' is an unknown setting.", name);
 		return;
 	}
 
 	bool success;
 	if (sd->desc.cmd == SDT_STRING) {
-		success = SetPatchValue(index, value);
+		success = SetSettingValue(index, value);
 	} else {
 		uint32 val;
 		extern bool GetArgumentInteger(uint32 *value, const char *arg);
 		success = GetArgumentInteger(&val, value);
-		if (success) success = SetPatchValue(index, val);
+		if (success) success = SetSettingValue(index, val);
 	}
 
 	if (!success) {
@@ -2126,27 +2126,27 @@ void IConsoleSetPatchSetting(const char *name, const char *value)
 	}
 }
 
-void IConsoleSetPatchSetting(const char *name, int value)
+void IConsoleSetSetting(const char *name, int value)
 {
 	uint index;
-	const SettingDesc *sd = GetPatchFromName(name, &index);
+	const SettingDesc *sd = GetSettingFromName(name, &index);
 	assert(sd != NULL);
-	SetPatchValue(index, value);
+	SetSettingValue(index, value);
 }
 
 /**
- * Output value of a specific patch to the console
- * @param name  Name of the patch to output its value
+ * Output value of a specific setting to the console
+ * @param name  Name of the setting to output its value
  */
-void IConsoleGetPatchSetting(const char *name)
+void IConsoleGetSetting(const char *name)
 {
 	char value[20];
 	uint index;
-	const SettingDesc *sd = GetPatchFromName(name, &index);
+	const SettingDesc *sd = GetSettingFromName(name, &index);
 	const void *ptr;
 
 	if (sd == NULL) {
-		IConsolePrintF(CC_WARNING, "'%s' is an unknown patch setting.", name);
+		IConsolePrintF(CC_WARNING, "'%s' is an unknown setting.", name);
 		return;
 	}
 
@@ -2167,15 +2167,15 @@ void IConsoleGetPatchSetting(const char *name)
 }
 
 /**
- * List all patches and their value to the console
+ * List all settings and their value to the console
  *
- * @param prefilter  If not \c NULL, only list patches with names that begin with \a prefilter prefix
+ * @param prefilter  If not \c NULL, only list settings with names that begin with \a prefilter prefix
  */
-void IConsoleListPatches(const char *prefilter)
+void IConsoleListSettings(const char *prefilter)
 {
-	IConsolePrintF(CC_WARNING, "All patches with their current value:");
+	IConsolePrintF(CC_WARNING, "All settings with their current value:");
 
-	for (const SettingDesc *sd = _patch_settings; sd->save.cmd != SL_END; sd++) {
+	for (const SettingDesc *sd = _settings; sd->save.cmd != SL_END; sd++) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		if (prefilter != NULL) {
 			if (strncmp(sd->desc.name, prefilter, min(strlen(sd->desc.name), strlen(prefilter))) != 0) continue;
@@ -2193,10 +2193,10 @@ void IConsoleListPatches(const char *prefilter)
 		IConsolePrintF(CC_DEFAULT, "%s = %s", sd->desc.name, value);
 	}
 
-	IConsolePrintF(CC_WARNING, "Use 'patch' command to change a value");
+	IConsolePrintF(CC_WARNING, "Use 'setting' command to change a value");
 }
 
-/** Save and load handler for patches/settings
+/** Save and load handler for settings
  * @param osd SettingDesc struct containing all information
  * @param object can be either NULL in which case we load global variables or
  * a pointer to a struct which is getting saved */
@@ -2219,7 +2219,7 @@ static inline void LoadSettingsGlobList(const SettingDescGlobVarList *sdg)
 	LoadSettings((const SettingDesc*)sdg, NULL);
 }
 
-/** Save and load handler for patches/settings
+/** Save and load handler for settings
  * @param sd SettingDesc struct containing all information
  * @param object can be either NULL in which case we load global variables or
  * a pointer to a struct which is getting saved */
@@ -2264,12 +2264,12 @@ static void Load_PATS()
 	/* Copy over default setting since some might not get loaded in
 	 * a networking environment. This ensures for example that the local
 	 * signal_side stays when joining a network-server */
-	LoadSettings(_patch_settings, &_settings_game);
+	LoadSettings(_settings, &_settings_game);
 }
 
 static void Save_PATS()
 {
-	SaveSettings(_patch_settings, &_settings_game);
+	SaveSettings(_settings, &_settings_game);
 }
 
 void CheckConfig()

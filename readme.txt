@@ -246,7 +246,7 @@ again, see section 4.1).
 OpenTTD has a lot of features going beyond the original TTD emulation.
 Unfortunately, there is currently no comprehensive list of features, but there
 is a basic features list on the web, and some optional features can be
-controlled through the Configure Patches dialog. We also implement some
+controlled through the Advanced Settings dialog. We also implement some
 features known from TTDPatch (http://www.ttdpatch.net/).
 
 Several important non-standard controls:
@@ -276,7 +276,7 @@ Information logged:
 * Changing game mode (scenario editor <-> normal game)
 * Loading game saved in a different OTTD / TTDPatch / TTD version
 * Running a modified OTTD build
-* Changing patch settings affecting NewGRF behaviour (non-networksafe patches)
+* Changing settings affecting NewGRF behaviour (non-networksafe settings)
 * Changing landscape (by cheat)
 * Triggering NewGRF bugs
 
@@ -290,7 +290,7 @@ OpenTTD in debug mode.
 ---- -------------------
 The configuration file for OpenTTD (openttd.cfg) is in a simple Windows-like
 .INI format. It's mostly undocumented. Almost all settings can be changed
-ingame by using the 'Configure Patches' window.
+ingame by using the 'Advanced Settings' window.
 
 
 7.0) Compiling:

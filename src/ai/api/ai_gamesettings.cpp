@@ -8,7 +8,7 @@
 /* static */ bool AIGameSettings::IsValid(const char *setting)
 {
 	uint i;
-	const SettingDesc *sd = GetPatchFromName(setting, &i);
+	const SettingDesc *sd = GetSettingFromName(setting, &i);
 	return sd != NULL && sd->desc.cmd != SDT_STRING;
 }
 
@@ -17,7 +17,7 @@
 	if (!IsValid(setting)) return -1;
 
 	uint i;
-	const SettingDesc *sd = GetPatchFromName(setting, &i);
+	const SettingDesc *sd = GetSettingFromName(setting, &i);
 
 	void *ptr = GetVariableAddress(&_settings_game, &sd->save);
 	if (sd->desc.cmd == SDT_BOOLX) return *(bool*)ptr;

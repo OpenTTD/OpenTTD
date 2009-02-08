@@ -299,8 +299,8 @@ struct GameOptionsWindow : Window {
 			case GAMEOPT_ROADSIDE_BTN: // Road side
 				if (this->opt->vehicle.road_side != index) { // only change if setting changed
 					uint i;
-					if (GetPatchFromName("vehicle.road_side", &i) == NULL) NOT_REACHED();
-					SetPatchValue(i, index);
+					if (GetSettingFromName("vehicle.road_side", &i) == NULL) NOT_REACHED();
+					SetSettingValue(i, index);
 					MarkWholeScreenDirty();
 				}
 				break;
@@ -492,7 +492,7 @@ public:
 		this->DrawWidgets();
 
 		uint i;
-		const SettingDesc *sd = GetPatchFromName("difficulty.max_no_competitors", &i);
+		const SettingDesc *sd = GetSettingFromName("difficulty.max_no_competitors", &i);
 		int y = GAMEDIFF_WND_TOP_OFFSET;
 		StringID str = STR_6805_MAXIMUM_NO_COMPETITORS;
 		for (i = 0; i < GAME_DIFFICULTY_NUM; i++, sd++) {
@@ -536,7 +536,7 @@ public:
 				if (btn >= GAME_DIFFICULTY_NUM || y % (GAMEDIFF_WND_ROWSIZE + 2) >= 9) return;
 
 				uint i;
-				const SettingDesc *sd = GetPatchFromName("difficulty.max_no_competitors", &i) + btn;
+				const SettingDesc *sd = GetSettingFromName("difficulty.max_no_competitors", &i) + btn;
 				const SettingDescBase *sdb = &sd->desc;
 
 				/* Clicked disabled button? */
@@ -585,18 +585,18 @@ public:
 				GameSettings *opt_ptr = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
 
 				uint i;
-				const SettingDesc *sd = GetPatchFromName("difficulty.max_no_competitors", &i);
+				const SettingDesc *sd = GetSettingFromName("difficulty.max_no_competitors", &i);
 				for (uint btn = 0; btn != GAME_DIFFICULTY_NUM; btn++, sd++) {
 					int32 new_val = (int32)ReadValue(GetVariableAddress(&this->opt_mod_temp, &sd->save), sd->save.conv);
 					int32 cur_val = (int32)ReadValue(GetVariableAddress(opt_ptr, &sd->save), sd->save.conv);
 					/* if setting has changed, change it */
 					if (new_val != cur_val) {
-						DoCommandP(0, i + btn, new_val, CMD_CHANGE_PATCH_SETTING);
+						DoCommandP(0, i + btn, new_val, CMD_CHANGE_SETTING);
 					}
 				}
 
-				GetPatchFromName("difficulty.diff_level", &i);
-				DoCommandP(0, i, this->opt_mod_temp.difficulty.diff_level, CMD_CHANGE_PATCH_SETTING);
+				GetSettingFromName("difficulty.diff_level", &i);
+				DoCommandP(0, i, this->opt_mod_temp.difficulty.diff_level, CMD_CHANGE_SETTING);
 				delete this;
 				/* If we are in the editor, we should reload the economy.
 				 * This way when you load a game, the max loan and interest rate
@@ -631,87 +631,87 @@ static const int SETTING_HEIGHT = 11; ///< Height of a single setting in the tre
 static const int LEVEL_WIDTH = 15;    ///< Indenting width of a sub-page in pixels
 
 /**
- * Flags for #PatchEntry
- * @note The #PEF_BUTTONS_MASK matches expectations of the formal parameter 'state' of #DrawArrowButtons
+ * Flags for #SettingEntry
+ * @note The #SEF_BUTTONS_MASK matches expectations of the formal parameter 'state' of #DrawArrowButtons
  */
-enum PatchEntryFlags {
-	PEF_LEFT_DEPRESSED  = 0x01, ///< Of a numeric patch entry, the left button is depressed
-	PEF_RIGHT_DEPRESSED = 0x02, ///< Of a numeric patch entry, the right button is depressed
-	PEF_BUTTONS_MASK = (PEF_LEFT_DEPRESSED | PEF_RIGHT_DEPRESSED), ///< Bit-mask for button flags
+enum SettingEntryFlags {
+	SEF_LEFT_DEPRESSED  = 0x01, ///< Of a numeric setting entry, the left button is depressed
+	SEF_RIGHT_DEPRESSED = 0x02, ///< Of a numeric setting entry, the right button is depressed
+	SEF_BUTTONS_MASK = (SEF_LEFT_DEPRESSED | SEF_RIGHT_DEPRESSED), ///< Bit-mask for button flags
 
-	PEF_LAST_FIELD = 0x04, ///< This entry is the last one in a (sub-)page
+	SEF_LAST_FIELD = 0x04, ///< This entry is the last one in a (sub-)page
 
 	/* Entry kind */
-	PEF_SETTING_KIND = 0x10, ///< Entry kind: Entry is a setting
-	PEF_SUBTREE_KIND = 0x20, ///< Entry kind: Entry is a sub-tree
-	PEF_KIND_MASK    = (PEF_SETTING_KIND | PEF_SUBTREE_KIND), ///< Bit-mask for fetching entry kind
+	SEF_SETTING_KIND = 0x10, ///< Entry kind: Entry is a setting
+	SEF_SUBTREE_KIND = 0x20, ///< Entry kind: Entry is a sub-tree
+	SEF_KIND_MASK    = (SEF_SETTING_KIND | SEF_SUBTREE_KIND), ///< Bit-mask for fetching entry kind
 };
 
-struct PatchPage; // Forward declaration
+struct SettingsPage; // Forward declaration
 
-/** Data fields for a sub-page (#PEF_SUBTREE_KIND kind)*/
-struct PatchEntrySubtree {
-	PatchPage *page; ///< Pointer to the sub-page
-	bool folded;     ///< Sub-page is folded (not visible except for its title)
-	StringID title;  ///< Title of the sub-page
+/** Data fields for a sub-page (#SEF_SUBTREE_KIND kind)*/
+struct SettingEntrySubtree {
+	SettingsPage *page; ///< Pointer to the sub-page
+	bool folded;        ///< Sub-page is folded (not visible except for its title)
+	StringID title;     ///< Title of the sub-page
 };
 
-/** Data fields for a single setting (#PEF_SETTING_KIND kind) */
-struct PatchEntrySetting {
+/** Data fields for a single setting (#SEF_SETTING_KIND kind) */
+struct SettingEntrySetting {
 	const char *name;           ///< Name of the setting
 	const SettingDesc *setting; ///< Setting description of the setting
 	uint index;                 ///< Index of the setting in the settings table
 };
 
-/** Data structure describing a single patch in a tab */
-struct PatchEntry {
-	byte flags; ///< Flags of the patch entry. @see PatchEntryFlags
-	byte level; ///< Nesting level of this patch entry
+/** Data structure describing a single setting in a tab */
+struct SettingEntry {
+	byte flags; ///< Flags of the setting entry. @see SettingEntryFlags
+	byte level; ///< Nesting level of this setting entry
 	union {
-		PatchEntrySetting entry; ///< Data fields if entry is a setting
-		PatchEntrySubtree sub;   ///< Data fields if entry is a sub-page
+		SettingEntrySetting entry; ///< Data fields if entry is a setting
+		SettingEntrySubtree sub;   ///< Data fields if entry is a sub-page
 	} d; ///< Data fields for each kind
 
-	PatchEntry(const char *nm);
-	PatchEntry(PatchPage *sub, StringID title);
+	SettingEntry(const char *nm);
+	SettingEntry(SettingsPage *sub, StringID title);
 
 	void Init(byte level, bool last_field);
 	void FoldAll();
 	void SetButtons(byte new_val);
 
 	uint Length() const;
-	PatchEntry *FindEntry(uint row, uint *cur_row);
+	SettingEntry *FindEntry(uint row, uint *cur_row);
 
-	uint Draw(GameSettings *patches_ptr, int base_x, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last);
+	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last);
 
 private:
-	void DrawPatch(GameSettings *patches_ptr, const SettingDesc *sd, int x, int y, int state);
+	void DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd, int x, int y, int state);
 };
 
-/** Data structure describing one page of patches in the patch settings window. */
-struct PatchPage {
-	PatchEntry *entries; ///< Array of patch entries of the page.
-	byte num;            ///< Number of entries on the page (statically filled).
+/** Data structure describing one page of settings in the settings window. */
+struct SettingsPage {
+	SettingEntry *entries; ///< Array of setting entries of the page.
+	byte num;              ///< Number of entries on the page (statically filled).
 
 	void Init(byte level = 0);
 	void FoldAll();
 
 	uint Length() const;
-	PatchEntry *FindEntry(uint row, uint *cur_row) const;
+	SettingEntry *FindEntry(uint row, uint *cur_row) const;
 
-	uint Draw(GameSettings *patches_ptr, int base_x, int base_y, uint first_row, uint max_row, uint cur_row = 0, uint parent_last = 0) const;
+	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, uint first_row, uint max_row, uint cur_row = 0, uint parent_last = 0) const;
 };
 
 
-/* == PatchEntry methods == */
+/* == SettingEntry methods == */
 
 /**
  * Constructor for a single setting in the 'advanced settings' window
  * @param nm Name of the setting in the setting table
  */
-PatchEntry::PatchEntry(const char *nm)
+SettingEntry::SettingEntry(const char *nm)
 {
-	this->flags = PEF_SETTING_KIND;
+	this->flags = SEF_SETTING_KIND;
 	this->level = 0;
 	this->d.entry.name = nm;
 	this->d.entry.setting = NULL;
@@ -723,9 +723,9 @@ PatchEntry::PatchEntry(const char *nm)
  * @param sub   Sub-page
  * @param title Title of the sub-page
  */
-PatchEntry::PatchEntry(PatchPage *sub, StringID title)
+SettingEntry::SettingEntry(SettingsPage *sub, StringID title)
 {
-	this->flags = PEF_SUBTREE_KIND;
+	this->flags = SEF_SUBTREE_KIND;
 	this->level = 0;
 	this->d.sub.page = sub;
 	this->d.sub.folded = true;
@@ -733,21 +733,21 @@ PatchEntry::PatchEntry(PatchPage *sub, StringID title)
 }
 
 /**
- * Initialization of a patch entry
+ * Initialization of a setting entry
  * @param level      Page nesting level of this entry
  * @param last_field Boolean indicating this entry is the last at the (sub-)page
  */
-void PatchEntry::Init(byte level, bool last_field)
+void SettingEntry::Init(byte level, bool last_field)
 {
 	this->level = level;
-	if (last_field) this->flags |= PEF_LAST_FIELD;
+	if (last_field) this->flags |= SEF_LAST_FIELD;
 
-	switch (this->flags & PEF_KIND_MASK) {
-		case PEF_SETTING_KIND:
-			this->d.entry.setting = GetPatchFromName(this->d.entry.name, &this->d.entry.index);
+	switch (this->flags & SEF_KIND_MASK) {
+		case SEF_SETTING_KIND:
+			this->d.entry.setting = GetSettingFromName(this->d.entry.name, &this->d.entry.index);
 			assert(this->d.entry.setting != NULL);
 			break;
-		case PEF_SUBTREE_KIND:
+		case SEF_SUBTREE_KIND:
 			this->d.sub.page->Init(level + 1);
 			break;
 		default: NOT_REACHED();
@@ -755,13 +755,13 @@ void PatchEntry::Init(byte level, bool last_field)
 }
 
 /** Recursively close all folds of sub-pages */
-void PatchEntry::FoldAll()
+void SettingEntry::FoldAll()
 {
-	switch(this->flags & PEF_KIND_MASK) {
-		case PEF_SETTING_KIND:
+	switch(this->flags & SEF_KIND_MASK) {
+		case SEF_SETTING_KIND:
 			break;
 
-		case PEF_SUBTREE_KIND:
+		case SEF_SUBTREE_KIND:
 			this->d.sub.folded = true;
 			this->d.sub.page->FoldAll();
 			break;
@@ -772,23 +772,23 @@ void PatchEntry::FoldAll()
 
 
 /**
- * Set the button-depressed flags (#PEF_LEFT_DEPRESSED and #PEF_RIGHT_DEPRESSED) to a specified value
+ * Set the button-depressed flags (#SEF_LEFT_DEPRESSED and #SEF_RIGHT_DEPRESSED) to a specified value
  * @param new_val New value for the button flags
- * @see PatchEntryFlags
+ * @see SettingEntryFlags
  */
-void PatchEntry::SetButtons(byte new_val)
+void SettingEntry::SetButtons(byte new_val)
 {
-	assert((new_val & ~PEF_BUTTONS_MASK) == 0); // Should not touch any flags outside the buttons
-	this->flags = (this->flags & ~PEF_BUTTONS_MASK) | new_val;
+	assert((new_val & ~SEF_BUTTONS_MASK) == 0); // Should not touch any flags outside the buttons
+	this->flags = (this->flags & ~SEF_BUTTONS_MASK) | new_val;
 }
 
 /** Return numbers of rows needed to display the entry */
-uint PatchEntry::Length() const
+uint SettingEntry::Length() const
 {
-	switch (this->flags & PEF_KIND_MASK) {
-		case PEF_SETTING_KIND:
+	switch (this->flags & SEF_KIND_MASK) {
+		case SEF_SETTING_KIND:
 			return 1;
-		case PEF_SUBTREE_KIND:
+		case SEF_SUBTREE_KIND:
 			if (this->d.sub.folded) return 1; // Only displaying the title
 
 			return 1 + this->d.sub.page->Length(); // 1 extra row for the title
@@ -797,20 +797,20 @@ uint PatchEntry::Length() const
 }
 
 /**
- * Find patch entry at row \a row_num
+ * Find setting entry at row \a row_num
  * @param row_num Index of entry to return
  * @param cur_row Current row number
- * @return The requested patch entry or \c NULL if it not found
+ * @return The requested setting entry or \c NULL if it not found
  */
-PatchEntry *PatchEntry::FindEntry(uint row_num, uint *cur_row)
+SettingEntry *SettingEntry::FindEntry(uint row_num, uint *cur_row)
 {
 	if (row_num == *cur_row) return this;
 
-	switch (this->flags & PEF_KIND_MASK) {
-		case PEF_SETTING_KIND:
+	switch (this->flags & SEF_KIND_MASK) {
+		case SEF_SETTING_KIND:
 			(*cur_row)++;
 			break;
-		case PEF_SUBTREE_KIND:
+		case SEF_SUBTREE_KIND:
 			(*cur_row)++; // add one for row containing the title
 			if (this->d.sub.folded) {
 				break;
@@ -826,7 +826,7 @@ PatchEntry *PatchEntry::FindEntry(uint row_num, uint *cur_row)
 /**
  * Draw a row in the settings panel.
  *
- * See PatchPage::Draw() for an explanation about how drawing is performed.
+ * See SettingsPage::Draw() for an explanation about how drawing is performed.
  *
  * The \a parent_last parameter ensures that the vertical lines at the left are
  * only drawn when another entry follows, that it prevents output like
@@ -839,16 +839,16 @@ PatchEntry *PatchEntry::FindEntry(uint row_num, uint *cur_row)
  * The left-most vertical line is not wanted. It is prevented by setting the
  * appropiate bit in the \a parent_last parameter.
  *
- * @param patches_ptr Pointer to current values of all settings
- * @param base_x      Left-most position in window/panel to start drawing \a first_row
- * @param base_y      Upper-most position in window/panel to start drawing \a first_row
- * @param first_row   First row number to draw
- * @param max_row     Row-number to stop drawing (the row-number of the row below the last row to draw)
- * @param cur_row     Current row number (internal variable)
- * @param parent_last Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
+ * @param settings_ptr Pointer to current values of all settings
+ * @param base_x       Left-most position in window/panel to start drawing \a first_row
+ * @param base_y       Upper-most position in window/panel to start drawing \a first_row
+ * @param first_row    First row number to draw
+ * @param max_row      Row-number to stop drawing (the row-number of the row below the last row to draw)
+ * @param cur_row      Current row number (internal variable)
+ * @param parent_last  Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
  * @return Row number of the next row to draw
  */
-uint PatchEntry::Draw(GameSettings *patches_ptr, int base_x, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last)
+uint SettingEntry::Draw(GameSettings *settings_ptr, int base_x, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last)
 {
 	if (cur_row >= max_row) return cur_row;
 
@@ -865,33 +865,33 @@ uint PatchEntry::Draw(GameSettings *patches_ptr, int base_x, int base_y, uint fi
 		}
 		/* draw own |- prefix */
 		int halfway_y = y + SETTING_HEIGHT / 2;
-		int bottom_y = (flags & PEF_LAST_FIELD) ? halfway_y : y + SETTING_HEIGHT - 1;
+		int bottom_y = (flags & SEF_LAST_FIELD) ? halfway_y : y + SETTING_HEIGHT - 1;
 		GfxDrawLine(x + 4, y, x + 4, bottom_y, colour);
 		/* Small horizontal line from the last vertical line */
 		GfxDrawLine(x + 4, halfway_y, x + LEVEL_WIDTH - 4, halfway_y, colour);
 		x += LEVEL_WIDTH;
 	}
 
-	switch(this->flags & PEF_KIND_MASK) {
-		case PEF_SETTING_KIND:
+	switch(this->flags & SEF_KIND_MASK) {
+		case SEF_SETTING_KIND:
 			if (cur_row >= first_row) {
-				DrawPatch(patches_ptr, this->d.entry.setting, x, y, this->flags & PEF_BUTTONS_MASK);
+				DrawSetting(settings_ptr, this->d.entry.setting, x, y, this->flags & SEF_BUTTONS_MASK);
 			}
 			cur_row++;
 			break;
-		case PEF_SUBTREE_KIND:
+		case SEF_SUBTREE_KIND:
 			if (cur_row >= first_row) {
 				DrawSprite((this->d.sub.folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, x, y);
 				DrawString(x + 12, y, this->d.sub.title, TC_FROMSTRING);
 			}
 			cur_row++;
 			if (!this->d.sub.folded) {
-				if (this->flags & PEF_LAST_FIELD) {
+				if (this->flags & SEF_LAST_FIELD) {
 					assert(this->level < sizeof(parent_last));
 					SetBit(parent_last, this->level); // Add own last-field state
 				}
 
-				cur_row = this->d.sub.page->Draw(patches_ptr, base_x, base_y, first_row, max_row, cur_row, parent_last);
+				cur_row = this->d.sub.page->Draw(settings_ptr, base_x, base_y, first_row, max_row, cur_row, parent_last);
 			}
 			break;
 		default: NOT_REACHED();
@@ -901,16 +901,16 @@ uint PatchEntry::Draw(GameSettings *patches_ptr, int base_x, int base_y, uint fi
 
 /**
  * Private function to draw setting value (button + text + current value)
- * @param patches_ptr Pointer to current values of all settings
- * @param sd          Pointer to value description of setting to draw
- * @param x           Left-most position in window/panel to start drawing
- * @param y           Upper-most position in window/panel to start drawing
- * @param state       State of the left + right arrow buttons to draw for the setting
+ * @param settings_ptr Pointer to current values of all settings
+ * @param sd           Pointer to value description of setting to draw
+ * @param x            Left-most position in window/panel to start drawing
+ * @param y            Upper-most position in window/panel to start drawing
+ * @param state        State of the left + right arrow buttons to draw for the setting
  */
-void PatchEntry::DrawPatch(GameSettings *patches_ptr, const SettingDesc *sd, int x, int y, int state)
+void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd, int x, int y, int state)
 {
 	const SettingDescBase *sdb = &sd->desc;
-	const void *var = GetVariableAddress(patches_ptr, &sd->save);
+	const void *var = GetVariableAddress(settings_ptr, &sd->save);
 	bool editable = true;
 	bool disabled = false;
 
@@ -925,7 +925,7 @@ void PatchEntry::DrawPatch(GameSettings *patches_ptr, const SettingDesc *sd, int
 		bool on = (*(bool*)var);
 
 		DrawFrameRect(x, y, x + 19, y + 8, _bool_ctabs[!!on][!!editable], on ? FR_LOWERED : FR_NONE);
-		SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
+		SetDParam(0, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 	} else {
 		int32 value;
 
@@ -936,14 +936,14 @@ void PatchEntry::DrawPatch(GameSettings *patches_ptr, const SettingDesc *sd, int
 
 		disabled = (value == 0) && (sdb->flags & SGF_0ISDISABLED);
 		if (disabled) {
-			SetDParam(0, STR_CONFIG_PATCHES_DISABLED);
+			SetDParam(0, STR_CONFIG_SETTING_DISABLED);
 		} else {
 			if (sdb->flags & SGF_CURRENCY) {
-				SetDParam(0, STR_CONFIG_PATCHES_CURRENCY);
+				SetDParam(0, STR_CONFIG_SETTING_CURRENCY);
 			} else if (sdb->flags & SGF_MULTISTRING) {
 				SetDParam(0, sdb->str + value + 1);
 			} else {
-				SetDParam(0, (sdb->flags & SGF_NOCOMMA) ? STR_CONFIG_PATCHES_INT32 : STR_7024);
+				SetDParam(0, (sdb->flags & SGF_NOCOMMA) ? STR_CONFIG_SETTING_INT32 : STR_7024);
 			}
 			SetDParam(1, value);
 		}
@@ -952,13 +952,13 @@ void PatchEntry::DrawPatch(GameSettings *patches_ptr, const SettingDesc *sd, int
 }
 
 
-/* == PatchPage methods == */
+/* == SettingsPage methods == */
 
 /**
  * Initialization of an entire setting page
  * @param level Nesting level of this page (internal variable, do not provide a value for it when calling)
  */
-void PatchPage::Init(byte level)
+void SettingsPage::Init(byte level)
 {
 	for (uint field = 0; field < this->num; field++) {
 		this->entries[field].Init(level, field + 1 == num);
@@ -966,7 +966,7 @@ void PatchPage::Init(byte level)
 }
 
 /** Recursively close all folds of sub-pages */
-void PatchPage::FoldAll()
+void SettingsPage::FoldAll()
 {
 	for (uint field = 0; field < this->num; field++) {
 		this->entries[field].FoldAll();
@@ -974,7 +974,7 @@ void PatchPage::FoldAll()
 }
 
 /** Return number of rows needed to display the whole page */
-uint PatchPage::Length() const
+uint SettingsPage::Length() const
 {
 	uint length = 0;
 	for (uint field = 0; field < this->num; field++) {
@@ -984,14 +984,14 @@ uint PatchPage::Length() const
 }
 
 /**
- * Find the patch entry at row number \a row_num
+ * Find the setting entry at row number \a row_num
  * @param row_num Index of entry to return
  * @param cur_row Variable used for keeping track of the current row number. Should point to memory initialized to \c 0 when first called.
- * @return The requested patch entry or \c NULL if it does not exist
+ * @return The requested setting entry or \c NULL if it does not exist
  */
-PatchEntry *PatchPage::FindEntry(uint row_num, uint *cur_row) const
+SettingEntry *SettingsPage::FindEntry(uint row_num, uint *cur_row) const
 {
-	PatchEntry *pe = NULL;
+	SettingEntry *pe = NULL;
 
 	for (uint field = 0; field < this->num; field++) {
 		pe = this->entries[field].FindEntry(row_num, cur_row);
@@ -1005,25 +1005,25 @@ PatchEntry *PatchPage::FindEntry(uint row_num, uint *cur_row) const
 /**
  * Draw a selected part of the settings page.
  *
- * The scrollbar uses rows of the page, while the page data strucure is a tree of #PatchPage and #PatchEntry objects.
+ * The scrollbar uses rows of the page, while the page data strucure is a tree of #SettingsPage and #SettingEntry objects.
  * As a result, the drawing routing traverses the tree from top to bottom, counting rows in \a cur_row until it reaches \a first_row.
  * Then it enables drawing rows while traversing until \a max_row is reached, at which point drawing is terminated.
  *
- * @param patches_ptr Pointer to current values of all settings
- * @param base_x      Left-most position in window/panel to start drawing of each setting row
- * @param base_y      Upper-most position in window/panel to start drawing of row number \a first_row
- * @param first_row   Number of first row to draw
- * @param max_row     Row-number to stop drawing (the row-number of the row below the last row to draw)
- * @param cur_row     Current row number (internal variable)
- * @param parent_last Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
+ * @param settings_ptr Pointer to current values of all settings
+ * @param base_x       Left-most position in window/panel to start drawing of each setting row
+ * @param base_y       Upper-most position in window/panel to start drawing of row number \a first_row
+ * @param first_row    Number of first row to draw
+ * @param max_row      Row-number to stop drawing (the row-number of the row below the last row to draw)
+ * @param cur_row      Current row number (internal variable)
+ * @param parent_last  Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
  * @return Row number of the next row to draw
  */
-uint PatchPage::Draw(GameSettings *patches_ptr, int base_x, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last) const
+uint SettingsPage::Draw(GameSettings *settings_ptr, int base_x, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last) const
 {
 	if (cur_row >= max_row) return cur_row;
 
 	for (uint i = 0; i < this->num; i++) {
-		cur_row = this->entries[i].Draw(patches_ptr, base_x, base_y, first_row, max_row, cur_row, parent_last);
+		cur_row = this->entries[i].Draw(settings_ptr, base_x, base_y, first_row, max_row, cur_row, parent_last);
 		if (cur_row >= max_row) {
 			break;
 		}
@@ -1032,271 +1032,271 @@ uint PatchPage::Draw(GameSettings *patches_ptr, int base_x, int base_y, uint fir
 }
 
 
-static PatchEntry _patches_ui_display[] = {
-	PatchEntry("gui.vehicle_speed"),
-	PatchEntry("gui.status_long_date"),
-	PatchEntry("gui.date_format_in_default_names"),
-	PatchEntry("gui.population_in_label"),
-	PatchEntry("gui.measure_tooltip"),
-	PatchEntry("gui.loading_indicators"),
-	PatchEntry("gui.liveries"),
-	PatchEntry("gui.show_track_reservation"),
-	PatchEntry("gui.expenses_layout"),
+static SettingEntry _settings_ui_display[] = {
+	SettingEntry("gui.vehicle_speed"),
+	SettingEntry("gui.status_long_date"),
+	SettingEntry("gui.date_format_in_default_names"),
+	SettingEntry("gui.population_in_label"),
+	SettingEntry("gui.measure_tooltip"),
+	SettingEntry("gui.loading_indicators"),
+	SettingEntry("gui.liveries"),
+	SettingEntry("gui.show_track_reservation"),
+	SettingEntry("gui.expenses_layout"),
 };
 /** Display options sub-page */
-static PatchPage _patches_ui_display_page = {_patches_ui_display, lengthof(_patches_ui_display)};
+static SettingsPage _settings_ui_display_page = {_settings_ui_display, lengthof(_settings_ui_display)};
 
-static PatchEntry _patches_ui_interaction[] = {
-	PatchEntry("gui.window_snap_radius"),
-	PatchEntry("gui.window_soft_limit"),
-	PatchEntry("gui.link_terraform_toolbar"),
-	PatchEntry("gui.prefer_teamchat"),
-	PatchEntry("gui.autoscroll"),
-	PatchEntry("gui.reverse_scroll"),
-	PatchEntry("gui.smooth_scroll"),
-	PatchEntry("gui.left_mouse_btn_scrolling"),
+static SettingEntry _settings_ui_interaction[] = {
+	SettingEntry("gui.window_snap_radius"),
+	SettingEntry("gui.window_soft_limit"),
+	SettingEntry("gui.link_terraform_toolbar"),
+	SettingEntry("gui.prefer_teamchat"),
+	SettingEntry("gui.autoscroll"),
+	SettingEntry("gui.reverse_scroll"),
+	SettingEntry("gui.smooth_scroll"),
+	SettingEntry("gui.left_mouse_btn_scrolling"),
 	/* While the horizontal scrollwheel scrolling is written as general code, only
 	 *  the cocoa (OSX) driver generates input for it.
 	 *  Since it's also able to completely disable the scrollwheel will we display it on all platforms anyway */
-	PatchEntry("gui.scrollwheel_scrolling"),
-	PatchEntry("gui.scrollwheel_multiplier"),
+	SettingEntry("gui.scrollwheel_scrolling"),
+	SettingEntry("gui.scrollwheel_multiplier"),
 #ifdef __APPLE__
 	/* We might need to emulate a right mouse button on mac */
-	PatchEntry("gui.right_mouse_btn_emulation"),
+	SettingEntry("gui.right_mouse_btn_emulation"),
 #endif
 };
 /** Interaction sub-page */
-static PatchPage _patches_ui_interaction_page = {_patches_ui_interaction, lengthof(_patches_ui_interaction)};
+static SettingsPage _settings_ui_interaction_page = {_settings_ui_interaction, lengthof(_settings_ui_interaction)};
 
-static PatchEntry _patches_ui[] = {
-	PatchEntry(&_patches_ui_display_page, STR_CONFIG_PATCHES_DISPLAY_OPTIONS),
-	PatchEntry(&_patches_ui_interaction_page, STR_CONFIG_PATCHES_INTERACTION),
-	PatchEntry("gui.show_finances"),
-	PatchEntry("gui.errmsg_duration"),
-	PatchEntry("gui.toolbar_pos"),
-	PatchEntry("gui.pause_on_newgame"),
-	PatchEntry("gui.advanced_vehicle_list"),
-	PatchEntry("gui.timetable_in_ticks"),
-	PatchEntry("gui.quick_goto"),
-	PatchEntry("gui.default_rail_type"),
-	PatchEntry("gui.always_build_infrastructure"),
-	PatchEntry("gui.persistent_buildingtools"),
-	PatchEntry("gui.colored_news_year"),
+static SettingEntry _settings_ui[] = {
+	SettingEntry(&_settings_ui_display_page, STR_CONFIG_SETTING_DISPLAY_OPTIONS),
+	SettingEntry(&_settings_ui_interaction_page, STR_CONFIG_SETTING_INTERACTION),
+	SettingEntry("gui.show_finances"),
+	SettingEntry("gui.errmsg_duration"),
+	SettingEntry("gui.toolbar_pos"),
+	SettingEntry("gui.pause_on_newgame"),
+	SettingEntry("gui.advanced_vehicle_list"),
+	SettingEntry("gui.timetable_in_ticks"),
+	SettingEntry("gui.quick_goto"),
+	SettingEntry("gui.default_rail_type"),
+	SettingEntry("gui.always_build_infrastructure"),
+	SettingEntry("gui.persistent_buildingtools"),
+	SettingEntry("gui.colored_news_year"),
 };
 /** Interface subpage */
-static PatchPage _patches_ui_page = {_patches_ui, lengthof(_patches_ui)};
+static SettingsPage _settings_ui_page = {_settings_ui, lengthof(_settings_ui)};
 
-static PatchEntry _patches_construction_signals[] = {
-	PatchEntry("construction.signal_side"),
-	PatchEntry("gui.enable_signal_gui"),
-	PatchEntry("gui.drag_signals_density"),
-	PatchEntry("gui.semaphore_build_before"),
-	PatchEntry("gui.default_signal_type"),
-	PatchEntry("gui.cycle_signal_types"),
+static SettingEntry _settings_construction_signals[] = {
+	SettingEntry("construction.signal_side"),
+	SettingEntry("gui.enable_signal_gui"),
+	SettingEntry("gui.drag_signals_density"),
+	SettingEntry("gui.semaphore_build_before"),
+	SettingEntry("gui.default_signal_type"),
+	SettingEntry("gui.cycle_signal_types"),
 };
 /** Signals subpage */
-static PatchPage _patches_construction_signals_page = {_patches_construction_signals, lengthof(_patches_construction_signals)};
+static SettingsPage _settings_construction_signals_page = {_settings_construction_signals, lengthof(_settings_construction_signals)};
 
-static PatchEntry _patches_construction[] = {
-	PatchEntry(&_patches_construction_signals_page, STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS),
-	PatchEntry("construction.build_on_slopes"),
-	PatchEntry("construction.autoslope"),
-	PatchEntry("construction.extra_dynamite"),
-	PatchEntry("construction.longbridges"),
-	PatchEntry("station.always_small_airport"),
-	PatchEntry("construction.freeform_edges"),
+static SettingEntry _settings_construction[] = {
+	SettingEntry(&_settings_construction_signals_page, STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS),
+	SettingEntry("construction.build_on_slopes"),
+	SettingEntry("construction.autoslope"),
+	SettingEntry("construction.extra_dynamite"),
+	SettingEntry("construction.longbridges"),
+	SettingEntry("station.always_small_airport"),
+	SettingEntry("construction.freeform_edges"),
 };
 /** Construction sub-page */
-static PatchPage _patches_construction_page = {_patches_construction, lengthof(_patches_construction)};
+static SettingsPage _settings_construction_page = {_settings_construction, lengthof(_settings_construction)};
 
-static PatchEntry _patches_stations_cargo[] = {
-	PatchEntry("order.improved_load"),
-	PatchEntry("order.gradual_loading"),
-	PatchEntry("order.selectgoods"),
+static SettingEntry _settings_stations_cargo[] = {
+	SettingEntry("order.improved_load"),
+	SettingEntry("order.gradual_loading"),
+	SettingEntry("order.selectgoods"),
 };
 /** Cargo handling sub-page */
-static PatchPage _patches_stations_cargo_page = {_patches_stations_cargo, lengthof(_patches_stations_cargo)};
+static SettingsPage _settings_stations_cargo_page = {_settings_stations_cargo, lengthof(_settings_stations_cargo)};
 
-static PatchEntry _patches_stations[] = {
-	PatchEntry(&_patches_stations_cargo_page, STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING),
-	PatchEntry("station.join_stations"),
-	PatchEntry("station.nonuniform_stations"),
-	PatchEntry("station.adjacent_stations"),
-	PatchEntry("station.distant_join_stations"),
-	PatchEntry("station.station_spread"),
-	PatchEntry("economy.station_noise_level"),
-	PatchEntry("station.modified_catchment"),
-	PatchEntry("construction.road_stop_on_town_road"),
+static SettingEntry _settings_stations[] = {
+	SettingEntry(&_settings_stations_cargo_page, STR_CONFIG_SETTING_STATIONS_CARGOHANDLING),
+	SettingEntry("station.join_stations"),
+	SettingEntry("station.nonuniform_stations"),
+	SettingEntry("station.adjacent_stations"),
+	SettingEntry("station.distant_join_stations"),
+	SettingEntry("station.station_spread"),
+	SettingEntry("economy.station_noise_level"),
+	SettingEntry("station.modified_catchment"),
+	SettingEntry("construction.road_stop_on_town_road"),
 };
 /** Stations sub-page */
-static PatchPage _patches_stations_page = {_patches_stations, lengthof(_patches_stations)};
+static SettingsPage _settings_stations_page = {_settings_stations, lengthof(_settings_stations)};
 
-static PatchEntry _patches_economy_towns[] = {
-	PatchEntry("economy.bribe"),
-	PatchEntry("economy.exclusive_rights"),
-	PatchEntry("economy.town_layout"),
-	PatchEntry("economy.allow_town_roads"),
-	PatchEntry("economy.mod_road_rebuild"),
-	PatchEntry("economy.town_growth_rate"),
-	PatchEntry("economy.larger_towns"),
-	PatchEntry("economy.initial_city_size"),
+static SettingEntry _settings_economy_towns[] = {
+	SettingEntry("economy.bribe"),
+	SettingEntry("economy.exclusive_rights"),
+	SettingEntry("economy.town_layout"),
+	SettingEntry("economy.allow_town_roads"),
+	SettingEntry("economy.mod_road_rebuild"),
+	SettingEntry("economy.town_growth_rate"),
+	SettingEntry("economy.larger_towns"),
+	SettingEntry("economy.initial_city_size"),
 };
 /** Towns sub-page */
-static PatchPage _patches_economy_towns_page = {_patches_economy_towns, lengthof(_patches_economy_towns)};
+static SettingsPage _settings_economy_towns_page = {_settings_economy_towns, lengthof(_settings_economy_towns)};
 
-static PatchEntry _patches_economy_industries[] = {
-	PatchEntry("construction.raw_industry_construction"),
-	PatchEntry("economy.multiple_industry_per_town"),
-	PatchEntry("economy.same_industry_close"),
-	PatchEntry("game_creation.oil_refinery_limit"),
+static SettingEntry _settings_economy_industries[] = {
+	SettingEntry("construction.raw_industry_construction"),
+	SettingEntry("economy.multiple_industry_per_town"),
+	SettingEntry("economy.same_industry_close"),
+	SettingEntry("game_creation.oil_refinery_limit"),
 };
 /** Industries sub-page */
-static PatchPage _patches_economy_industries_page = {_patches_economy_industries, lengthof(_patches_economy_industries)};
+static SettingsPage _settings_economy_industries_page = {_settings_economy_industries, lengthof(_settings_economy_industries)};
 
-static PatchEntry _patches_economy[] = {
-	PatchEntry(&_patches_economy_towns_page, STR_CONFIG_PATCHES_ECONOMY_TOWNS),
-	PatchEntry(&_patches_economy_industries_page, STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES),
-	PatchEntry("economy.inflation"),
-	PatchEntry("economy.smooth_economy"),
+static SettingEntry _settings_economy[] = {
+	SettingEntry(&_settings_economy_towns_page, STR_CONFIG_SETTING_ECONOMY_TOWNS),
+	SettingEntry(&_settings_economy_industries_page, STR_CONFIG_SETTING_ECONOMY_INDUSTRIES),
+	SettingEntry("economy.inflation"),
+	SettingEntry("economy.smooth_economy"),
 };
 /** Economy sub-page */
-static PatchPage _patches_economy_page = {_patches_economy, lengthof(_patches_economy)};
+static SettingsPage _settings_economy_page = {_settings_economy, lengthof(_settings_economy)};
 
-static PatchEntry _patches_ai_npc[] = {
-	PatchEntry("ai.ai_in_multiplayer"),
-	PatchEntry("ai.ai_disable_veh_train"),
-	PatchEntry("ai.ai_disable_veh_roadveh"),
-	PatchEntry("ai.ai_disable_veh_aircraft"),
-	PatchEntry("ai.ai_disable_veh_ship"),
-	PatchEntry("ai.ai_max_opcode_till_suspend"),
+static SettingEntry _settings_ai_npc[] = {
+	SettingEntry("ai.ai_in_multiplayer"),
+	SettingEntry("ai.ai_disable_veh_train"),
+	SettingEntry("ai.ai_disable_veh_roadveh"),
+	SettingEntry("ai.ai_disable_veh_aircraft"),
+	SettingEntry("ai.ai_disable_veh_ship"),
+	SettingEntry("ai.ai_max_opcode_till_suspend"),
 };
 /** Computer players sub-page */
-static PatchPage _patches_ai_npc_page = {_patches_ai_npc, lengthof(_patches_ai_npc)};
+static SettingsPage _settings_ai_npc_page = {_settings_ai_npc, lengthof(_settings_ai_npc)};
 
-static PatchEntry _patches_ai[] = {
-	PatchEntry(&_patches_ai_npc_page, STR_CONFIG_PATCHES_AI_NPC),
-	PatchEntry("economy.give_money"),
-	PatchEntry("economy.allow_shares"),
+static SettingEntry _settings_ai[] = {
+	SettingEntry(&_settings_ai_npc_page, STR_CONFIG_SETTING_AI_NPC),
+	SettingEntry("economy.give_money"),
+	SettingEntry("economy.allow_shares"),
 };
 /** AI sub-page */
-static PatchPage _patches_ai_page = {_patches_ai, lengthof(_patches_ai)};
+static SettingsPage _settings_ai_page = {_settings_ai, lengthof(_settings_ai)};
 
-static PatchEntry _patches_vehicles_routing[] = {
-	PatchEntry("pf.pathfinder_for_trains"),
-	PatchEntry("pf.forbid_90_deg"),
-	PatchEntry("pf.pathfinder_for_roadvehs"),
-	PatchEntry("pf.roadveh_queue"),
-	PatchEntry("pf.pathfinder_for_ships"),
+static SettingEntry _settings_vehicles_routing[] = {
+	SettingEntry("pf.pathfinder_for_trains"),
+	SettingEntry("pf.forbid_90_deg"),
+	SettingEntry("pf.pathfinder_for_roadvehs"),
+	SettingEntry("pf.roadveh_queue"),
+	SettingEntry("pf.pathfinder_for_ships"),
 };
 /** Autorenew sub-page */
-static PatchPage _patches_vehicles_routing_page = {_patches_vehicles_routing, lengthof(_patches_vehicles_routing)};
+static SettingsPage _settings_vehicles_routing_page = {_settings_vehicles_routing, lengthof(_settings_vehicles_routing)};
 
-static PatchEntry _patches_vehicles_autorenew[] = {
-	PatchEntry("gui.autorenew"),
-	PatchEntry("gui.autorenew_months"),
-	PatchEntry("gui.autorenew_money"),
+static SettingEntry _settings_vehicles_autorenew[] = {
+	SettingEntry("gui.autorenew"),
+	SettingEntry("gui.autorenew_months"),
+	SettingEntry("gui.autorenew_money"),
 };
 /** Autorenew sub-page */
-static PatchPage _patches_vehicles_autorenew_page = {_patches_vehicles_autorenew, lengthof(_patches_vehicles_autorenew)};
+static SettingsPage _settings_vehicles_autorenew_page = {_settings_vehicles_autorenew, lengthof(_settings_vehicles_autorenew)};
 
-static PatchEntry _patches_vehicles_servicing[] = {
-	PatchEntry("vehicle.servint_ispercent"),
-	PatchEntry("vehicle.servint_trains"),
-	PatchEntry("vehicle.servint_roadveh"),
-	PatchEntry("vehicle.servint_ships"),
-	PatchEntry("vehicle.servint_aircraft"),
-	PatchEntry("order.no_servicing_if_no_breakdowns"),
-	PatchEntry("order.serviceathelipad"),
+static SettingEntry _settings_vehicles_servicing[] = {
+	SettingEntry("vehicle.servint_ispercent"),
+	SettingEntry("vehicle.servint_trains"),
+	SettingEntry("vehicle.servint_roadveh"),
+	SettingEntry("vehicle.servint_ships"),
+	SettingEntry("vehicle.servint_aircraft"),
+	SettingEntry("order.no_servicing_if_no_breakdowns"),
+	SettingEntry("order.serviceathelipad"),
 };
 /** Servicing sub-page */
-static PatchPage _patches_vehicles_servicing_page = {_patches_vehicles_servicing, lengthof(_patches_vehicles_servicing)};
+static SettingsPage _settings_vehicles_servicing_page = {_settings_vehicles_servicing, lengthof(_settings_vehicles_servicing)};
 
-static PatchEntry _patches_vehicles_trains[] = {
-	PatchEntry("vehicle.train_acceleration_model"),
-	PatchEntry("vehicle.mammoth_trains"),
-	PatchEntry("gui.lost_train_warn"),
-	PatchEntry("vehicle.wagon_speed_limits"),
-	PatchEntry("vehicle.disable_elrails"),
-	PatchEntry("vehicle.freight_trains"),
+static SettingEntry _settings_vehicles_trains[] = {
+	SettingEntry("vehicle.train_acceleration_model"),
+	SettingEntry("vehicle.mammoth_trains"),
+	SettingEntry("gui.lost_train_warn"),
+	SettingEntry("vehicle.wagon_speed_limits"),
+	SettingEntry("vehicle.disable_elrails"),
+	SettingEntry("vehicle.freight_trains"),
 };
 /** Trains sub-page */
-static PatchPage _patches_vehicles_trains_page = {_patches_vehicles_trains, lengthof(_patches_vehicles_trains)};
+static SettingsPage _settings_vehicles_trains_page = {_settings_vehicles_trains, lengthof(_settings_vehicles_trains)};
 
-static PatchEntry _patches_vehicles[] = {
-	PatchEntry(&_patches_vehicles_routing_page, STR_CONFIG_PATCHES_VEHICLES_ROUTING),
-	PatchEntry(&_patches_vehicles_autorenew_page, STR_CONFIG_PATCHES_VEHICLES_AUTORENEW),
-	PatchEntry(&_patches_vehicles_servicing_page, STR_CONFIG_PATCHES_VEHICLES_SERVICING),
-	PatchEntry(&_patches_vehicles_trains_page, STR_CONFIG_PATCHES_VEHICLES_TRAINS),
-	PatchEntry("order.gotodepot"),
-	PatchEntry("gui.new_nonstop"),
-	PatchEntry("gui.order_review_system"),
-	PatchEntry("gui.vehicle_income_warn"),
-	PatchEntry("vehicle.never_expire_vehicles"),
-	PatchEntry("vehicle.max_trains"),
-	PatchEntry("vehicle.max_roadveh"),
-	PatchEntry("vehicle.max_aircraft"),
-	PatchEntry("vehicle.max_ships"),
-	PatchEntry("vehicle.plane_speed"),
-	PatchEntry("order.timetabling"),
-	PatchEntry("vehicle.dynamic_engines"),
+static SettingEntry _settings_vehicles[] = {
+	SettingEntry(&_settings_vehicles_routing_page, STR_CONFIG_SETTING_VEHICLES_ROUTING),
+	SettingEntry(&_settings_vehicles_autorenew_page, STR_CONFIG_SETTING_VEHICLES_AUTORENEW),
+	SettingEntry(&_settings_vehicles_servicing_page, STR_CONFIG_SETTING_VEHICLES_SERVICING),
+	SettingEntry(&_settings_vehicles_trains_page, STR_CONFIG_SETTING_VEHICLES_TRAINS),
+	SettingEntry("order.gotodepot"),
+	SettingEntry("gui.new_nonstop"),
+	SettingEntry("gui.order_review_system"),
+	SettingEntry("gui.vehicle_income_warn"),
+	SettingEntry("vehicle.never_expire_vehicles"),
+	SettingEntry("vehicle.max_trains"),
+	SettingEntry("vehicle.max_roadveh"),
+	SettingEntry("vehicle.max_aircraft"),
+	SettingEntry("vehicle.max_ships"),
+	SettingEntry("vehicle.plane_speed"),
+	SettingEntry("order.timetabling"),
+	SettingEntry("vehicle.dynamic_engines"),
 };
 /** Vehicles sub-page */
-static PatchPage _patches_vehicles_page = {_patches_vehicles, lengthof(_patches_vehicles)};
+static SettingsPage _settings_vehicles_page = {_settings_vehicles, lengthof(_settings_vehicles)};
 
-static PatchEntry _patches_main[] = {
-	PatchEntry(&_patches_ui_page,           STR_CONFIG_PATCHES_GUI),
-	PatchEntry(&_patches_construction_page, STR_CONFIG_PATCHES_CONSTRUCTION),
-	PatchEntry(&_patches_vehicles_page,     STR_CONFIG_PATCHES_VEHICLES),
-	PatchEntry(&_patches_stations_page,     STR_CONFIG_PATCHES_STATIONS),
-	PatchEntry(&_patches_economy_page,      STR_CONFIG_PATCHES_ECONOMY),
-	PatchEntry(&_patches_ai_page,           STR_CONFIG_PATCHES_AI),
+static SettingEntry _settings_main[] = {
+	SettingEntry(&_settings_ui_page,           STR_CONFIG_SETTING_GUI),
+	SettingEntry(&_settings_construction_page, STR_CONFIG_SETTING_CONSTRUCTION),
+	SettingEntry(&_settings_vehicles_page,     STR_CONFIG_SETTING_VEHICLES),
+	SettingEntry(&_settings_stations_page,     STR_CONFIG_SETTING_STATIONS),
+	SettingEntry(&_settings_economy_page,      STR_CONFIG_SETTING_ECONOMY),
+	SettingEntry(&_settings_ai_page,           STR_CONFIG_SETTING_AI),
 };
 
 /** Main page, holding all advanced settings */
-static PatchPage _patches_main_page = {_patches_main, lengthof(_patches_main)};
+static SettingsPage _settings_main_page = {_settings_main, lengthof(_settings_main)};
 
-/** Widget numbers of config patches window */
-enum PatchesSelectionWidgets {
-	PATCHSEL_OPTIONSPANEL = 2, ///< Panel widget containing the option lists
-	PATCHSEL_SCROLLBAR,        ///< Scrollbar
-	PATCHSEL_RESIZE,           ///< Resize button
+/** Widget numbers of settings window */
+enum GameSettingsWidgets {
+	SETTINGSEL_OPTIONSPANEL = 2, ///< Panel widget containing the option lists
+	SETTINGSEL_SCROLLBAR,        ///< Scrollbar
+	SETTINGSEL_RESIZE,           ///< Resize button
 };
 
-struct PatchesSelectionWindow : Window {
-	static const int SETTINGTREE_LEFT_OFFSET; ///< Position of left edge of patch values
-	static const int SETTINGTREE_TOP_OFFSET;  ///< Position of top edge of patch values
+struct GameSettingsWindow : Window {
+	static const int SETTINGTREE_LEFT_OFFSET; ///< Position of left edge of setting values
+	static const int SETTINGTREE_TOP_OFFSET;  ///< Position of top edge of setting values
 
-	static GameSettings *patches_ptr;  ///< Pointer to the game settings being displayed and modified
+	static GameSettings *settings_ptr;  ///< Pointer to the game settings being displayed and modified
 
-	PatchEntry *valuewindow_entry; ///< If non-NULL, pointer to patch setting for which a value-entering window has been opened
-	PatchEntry *clicked_entry; ///< If non-NULL, pointer to a clicked numeric patch setting (with a depressed left or right button)
+	SettingEntry *valuewindow_entry; ///< If non-NULL, pointer to setting for which a value-entering window has been opened
+	SettingEntry *clicked_entry; ///< If non-NULL, pointer to a clicked numeric setting (with a depressed left or right button)
 
-	PatchesSelectionWindow(const WindowDesc *desc) : Window(desc)
+	GameSettingsWindow(const WindowDesc *desc) : Window(desc)
 	{
 		/* Check that the widget doesn't get moved without adapting the constant as well.
 		 *  - SETTINGTREE_LEFT_OFFSET should be 5 pixels to the right of the left edge of the panel
 		 *  - SETTINGTREE_TOP_OFFSET should be 5 pixels below the top edge of the panel
 		 */
-		assert(this->widget[PATCHSEL_OPTIONSPANEL].left + 5 == SETTINGTREE_LEFT_OFFSET);
-		assert(this->widget[PATCHSEL_OPTIONSPANEL].top + 5 == SETTINGTREE_TOP_OFFSET);
+		assert(this->widget[SETTINGSEL_OPTIONSPANEL].left + 5 == SETTINGTREE_LEFT_OFFSET);
+		assert(this->widget[SETTINGSEL_OPTIONSPANEL].top + 5 == SETTINGTREE_TOP_OFFSET);
 
 		static bool first_time = true;
 
-		patches_ptr = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
+		settings_ptr = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
 
 		/* Build up the dynamic settings-array only once per OpenTTD session */
 		if (first_time) {
-			_patches_main_page.Init();
+			_settings_main_page.Init();
 			first_time = false;
 		} else {
-			_patches_main_page.FoldAll(); // Close all sub-pages
+			_settings_main_page.FoldAll(); // Close all sub-pages
 		}
 
-		this->valuewindow_entry = NULL; // No patch entry for which a entry window is opened
-		this->clicked_entry = NULL; // No numeric patch setting buttons are depressed
+		this->valuewindow_entry = NULL; // No setting entry for which a entry window is opened
+		this->clicked_entry = NULL; // No numeric setting buttons are depressed
 		this->vscroll.pos = 0;
-		this->vscroll.cap = (this->widget[PATCHSEL_OPTIONSPANEL].bottom - this->widget[PATCHSEL_OPTIONSPANEL].top - 8) / SETTING_HEIGHT;
-		SetVScrollCount(this, _patches_main_page.Length());
+		this->vscroll.cap = (this->widget[SETTINGSEL_OPTIONSPANEL].bottom - this->widget[SETTINGSEL_OPTIONSPANEL].top - 8) / SETTING_HEIGHT;
+		SetVScrollCount(this, _settings_main_page.Length());
 
 		this->resize.step_height = SETTING_HEIGHT;
 		this->resize.height = this->height;
@@ -1309,13 +1309,13 @@ struct PatchesSelectionWindow : Window {
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
-		_patches_main_page.Draw(patches_ptr, SETTINGTREE_LEFT_OFFSET, SETTINGTREE_TOP_OFFSET,
+		_settings_main_page.Draw(settings_ptr, SETTINGTREE_LEFT_OFFSET, SETTINGTREE_TOP_OFFSET,
 						this->vscroll.pos, this->vscroll.pos + this->vscroll.cap);
 	}
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget != PATCHSEL_OPTIONSPANEL) return;
+		if (widget != SETTINGSEL_OPTIONSPANEL) return;
 
 		int y = pt.y - SETTINGTREE_TOP_OFFSET;  // Shift y coordinate
 		if (y < 0) return;  // Clicked above first entry
@@ -1324,22 +1324,22 @@ struct PatchesSelectionWindow : Window {
 		if (y % SETTING_HEIGHT > SETTING_HEIGHT - 2) return;  // Clicked too low at the setting
 
 		uint cur_row = 0;
-		PatchEntry *pe = _patches_main_page.FindEntry(btn, &cur_row);
+		SettingEntry *pe = _settings_main_page.FindEntry(btn, &cur_row);
 
 		if (pe == NULL) return;  // Clicked below the last setting of the page
 
 		int x = pt.x - SETTINGTREE_LEFT_OFFSET - (pe->level + 1) * LEVEL_WIDTH;  // Shift x coordinate
 		if (x < 0) return;  // Clicked left of the entry
 
-		if ((pe->flags & PEF_KIND_MASK) == PEF_SUBTREE_KIND) {
+		if ((pe->flags & SEF_KIND_MASK) == SEF_SUBTREE_KIND) {
 			pe->d.sub.folded = !pe->d.sub.folded; // Flip 'folded'-ness of the sub-page
 
-			SetVScrollCount(this, _patches_main_page.Length());
+			SetVScrollCount(this, _settings_main_page.Length());
 			this->SetDirty();
 			return;
 		}
 
-		assert((pe->flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
+		assert((pe->flags & SEF_KIND_MASK) == SEF_SETTING_KIND);
 		const SettingDesc *sd = pe->d.entry.setting;
 
 		/* return if action is only active in network, or only settable by server */
@@ -1347,7 +1347,7 @@ struct PatchesSelectionWindow : Window {
 		if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return;
 		if ((sd->desc.flags & SGF_NO_NETWORK) && _networking) return;
 
-		void *var = GetVariableAddress(patches_ptr, &sd->save);
+		void *var = GetVariableAddress(settings_ptr, &sd->save);
 		int32 value = (int32)ReadValue(var, sd->save.conv);
 
 		/* clicked on the icon on the left side. Either scroller or bool on/off */
@@ -1362,7 +1362,7 @@ struct PatchesSelectionWindow : Window {
 					/* Add a dynamic step-size to the scroller. In a maximum of
 					 * 50-steps you should be able to get from min to max,
 					 * unless specified otherwise in the 'interval' variable
-					 * of the current patch. */
+					 * of the current setting. */
 					uint32 step = (sdb->interval == 0) ? ((sdb->max - sdb->min) / 50) : sdb->interval;
 					if (step == 0) step = 1;
 
@@ -1388,7 +1388,7 @@ struct PatchesSelectionWindow : Window {
 							this->clicked_entry->SetButtons(0);
 						}
 						this->clicked_entry = pe;
-						this->clicked_entry->SetButtons((x >= 10) ? PEF_RIGHT_DEPRESSED : PEF_LEFT_DEPRESSED);
+						this->clicked_entry->SetButtons((x >= 10) ? SEF_RIGHT_DEPRESSED : SEF_LEFT_DEPRESSED);
 						this->flags4 |= WF_TIMEOUT_BEGIN;
 						_left_button_clicked = false;
 					}
@@ -1398,7 +1398,7 @@ struct PatchesSelectionWindow : Window {
 			}
 
 			if (value != oldvalue) {
-				SetPatchValue(pe->d.entry.index, value);
+				SetSettingValue(pe->d.entry.index, value);
 				this->SetDirty();
 			}
 		} else {
@@ -1409,7 +1409,7 @@ struct PatchesSelectionWindow : Window {
 
 				this->valuewindow_entry = pe;
 				SetDParam(0, value);
-				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_CONFIG_SETTING_INT32, STR_CONFIG_SETTING_QUERY_CAPT, 10, 100, this, CS_NUMERAL, QSF_NONE);
 			}
 		}
 	}
@@ -1427,14 +1427,14 @@ struct PatchesSelectionWindow : Window {
 	{
 		if (!StrEmpty(str)) {
 			assert(this->valuewindow_entry != NULL);
-			assert((this->valuewindow_entry->flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
+			assert((this->valuewindow_entry->flags & SEF_KIND_MASK) == SEF_SETTING_KIND);
 			const SettingDesc *sd = this->valuewindow_entry->d.entry.setting;
 			int32 value = atoi(str);
 
 			/* Save the correct currency-translated value */
 			if (sd->desc.flags & SGF_CURRENCY) value /= _currency->rate;
 
-			SetPatchValue(this->valuewindow_entry->d.entry.index, value);
+			SetSettingValue(this->valuewindow_entry->d.entry.index, value);
 			this->SetDirty();
 		}
 	}
@@ -1442,34 +1442,34 @@ struct PatchesSelectionWindow : Window {
 	virtual void OnResize(Point new_size, Point delta)
 	{
 		this->vscroll.cap += delta.y / SETTING_HEIGHT;
-		SetVScrollCount(this, _patches_main_page.Length());
+		SetVScrollCount(this, _settings_main_page.Length());
 	}
 };
 
-GameSettings *PatchesSelectionWindow::patches_ptr = NULL;
-const int PatchesSelectionWindow::SETTINGTREE_LEFT_OFFSET = 5;
-const int PatchesSelectionWindow::SETTINGTREE_TOP_OFFSET = 19;
+GameSettings *GameSettingsWindow::settings_ptr = NULL;
+const int GameSettingsWindow::SETTINGTREE_LEFT_OFFSET = 5;
+const int GameSettingsWindow::SETTINGTREE_TOP_OFFSET = 19;
 
-static const Widget _patches_selection_widgets[] = {
+static const Widget _settings_selection_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_MAUVE,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_MAUVE,    11,   411,     0,    13, STR_CONFIG_PATCHES_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     RESIZE_RB,  COLOUR_MAUVE,     0,   399,    14,   187, 0x0,                             STR_NULL}, // PATCHSEL_OPTIONSPANEL
-{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_MAUVE,   400,   411,    14,   175, 0x0,                             STR_0190_SCROLL_BAR_SCROLLS_LIST}, // PATCHSEL_SCROLLBAR
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_MAUVE,   400,   411,   176,   187, 0x0,                             STR_RESIZE_BUTTON}, // PATCHSEL_RESIZE
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_MAUVE,    11,   411,     0,    13, STR_CONFIG_SETTING_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_MAUVE,     0,   399,    14,   187, 0x0,                             STR_NULL}, // SETTINGSEL_OPTIONSPANEL
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_MAUVE,   400,   411,    14,   175, 0x0,                             STR_0190_SCROLL_BAR_SCROLLS_LIST}, // SETTINGSEL_SCROLLBAR
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_MAUVE,   400,   411,   176,   187, 0x0,                             STR_RESIZE_BUTTON}, // SETTINGSEL_RESIZE
 {   WIDGETS_END},
 };
 
-static const WindowDesc _patches_selection_desc = {
+static const WindowDesc _settings_selection_desc = {
 	WDP_CENTER, WDP_CENTER, 412, 188, 450, 397,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
-	_patches_selection_widgets,
+	_settings_selection_widgets,
 };
 
-void ShowPatchesSelection()
+void ShowGameSettings()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
-	new PatchesSelectionWindow(&_patches_selection_desc);
+	new GameSettingsWindow(&_settings_selection_desc);
 }
 
 
@@ -1586,7 +1586,7 @@ struct CustomCurrencyWindow : Window {
 					}
 				} else { // enter text
 					SetDParam(0, _custom_currency.rate);
-					str = STR_CONFIG_PATCHES_INT32;
+					str = STR_CONFIG_SETTING_INT32;
 					len = 5;
 					afilter = CS_NUMERAL;
 				}
@@ -1630,7 +1630,7 @@ struct CustomCurrencyWindow : Window {
 					}
 				} else { // enter text
 					SetDParam(0, _custom_currency.to_euro);
-					str = STR_CONFIG_PATCHES_INT32;
+					str = STR_CONFIG_SETTING_INT32;
 					len = 7;
 					afilter = CS_NUMERAL;
 				}

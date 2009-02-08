@@ -793,7 +793,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Amegay optionsway
 STR_02C6_DIFFICULTY_SETTINGS                                    :Ifficultyday ettingssay
-STR_MENU_CONFIG_PATCHES                                         :Advancedway ettingssay
+STR_MENU_CONFIG_SETTINGS                                        :Advancedway ettingssay
 STR_NEWGRF_SETTINGS                                             :EwGRFnay ettingssay
 STR_TRANSPARENCY_OPTIONS                                        :Ansparencytray optionsway
 STR_GAMEOPTMENU_0A                                              :
@@ -1027,247 +1027,247 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Onay autoreplaceway/enewray ulesray appliedway.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(oneymay imitlay)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Advancedway Ettingssay
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Isplayday advancedway ettingssay
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Advancedway Ettingssay
+STR_CONFIG_SETTING                                              :{BLACK}Advancedway Ettingssay
+STR_CONFIG_SETTING_TIP                                          :{BLACK}Isplayday advancedway ettingssay
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Advancedway Ettingssay
 
-STR_CONFIG_PATCHES_OFF                                          :Offway
-STR_CONFIG_PATCHES_ON                                           :Onway
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Owshay ehiclevay eedspay inway atusstay arbay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Allowway uildingbay onway opesslay andway oastscay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Allowway erraformingtay underway uildingsbay, ackstray, etcway. (autoslopeway): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Allowway oremay ealisticallyray izedsay atchmentcay areasway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Allowway emovalray ofway oremay owntay-ownedway oadsray, idgesbray, etcway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Enableway uildingbay eryvay onglay ainstray: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Aintray accelerationway odelmay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originalway
-STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_REALISTIC           :Ealisticray
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Orbidfay ainstray andway ipsshay otay akemay 90 egday urnstay: {ORANGE}{STRING} {LTBLUE} (equiresray NPFay)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Oinjay aintray ationsstay uiltbay extnay otay eachway otherway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Allowway otay oinjay ationsstay otnay irectlyday adjacentway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Useway improvedway oadinglay algorithmway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Oadlay ehiclesvay aduallygray: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflationway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Eliverday argocay otay away ationstay onlyway enwhay erethay isway away emandday: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Allowway uildingbay eryvay onglay idgesbray: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Allowway otogay epotday ordersway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Anualmay imarypray industryway onstructioncay ethodmay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :onenay
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :asway otherway industriesway
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :ospectingpray
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Allowway ultiplemay imilarsay industriesway erpay owntay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industriesway ofway ethay amesay ypetay ancay ebay uiltbay oseclay otay eachway otherway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Alwaysway owshay onglay ateday inway ethay atusstay arbay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Owshay ignalssay onway ethay ivedray idesay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Owshay inancesfay indowway atway ethay endway ofway ethay earyay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Ewnay ordersway areway 'onnay-op'stay ybay efaultday: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Oadray ehiclevay eueingquay (ithway antumquay effectsway): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Anpay indowway enwhay ousemay isway atway ethay edgeway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Allowway ibingbray ofway ethay ocallay authorityway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Allowway uyingbay exclusiveway ansporttray ightsray: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Allowway endingsay oneymay otay otherway ompaniescay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Onuniformnay ationsstay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Eightway ultipliermay orfay eightfray otay imulatesay eavyhay ainstray: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Aneplay eedspay actorfay: {ORANGE}1 / {STRING}
-STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Allowway ivedray-oughthray oadray opsstay onway owntay ownedway oadsray: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Allowway uildingbay adjacentway ationsstay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Enableway ultiplemay EwGRFnay engineway etssay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_OFF                                          :Offway
+STR_CONFIG_SETTING_ON                                           :Onway
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Owshay ehiclevay eedspay inway atusstay arbay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Allowway uildingbay onway opesslay andway oastscay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Allowway erraformingtay underway uildingsbay, ackstray, etcway. (autoslopeway): {ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Allowway oremay ealisticallyray izedsay atchmentcay areasway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Allowway emovalray ofway oremay owntay-ownedway oadsray, idgesbray, etcway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Enableway uildingbay eryvay onglay ainstray: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Aintray accelerationway odelmay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originalway
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Ealisticray
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Orbidfay ainstray andway ipsshay otay akemay 90 egday urnstay: {ORANGE}{STRING} {LTBLUE} (equiresray NPFay)
+STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Oinjay aintray ationsstay uiltbay extnay otay eachway otherway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Allowway otay oinjay ationsstay otnay irectlyday adjacentway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Useway improvedway oadinglay algorithmway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Oadlay ehiclesvay aduallygray: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflationway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Eliverday argocay otay away ationstay onlyway enwhay erethay isway away emandday: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Allowway uildingbay eryvay onglay idgesbray: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Allowway otogay epotday ordersway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Anualmay imarypray industryway onstructioncay ethodmay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :onenay
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :asway otherway industriesway
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :ospectingpray
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Allowway ultiplemay imilarsay industriesway erpay owntay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Industriesway ofway ethay amesay ypetay ancay ebay uiltbay oseclay otay eachway otherway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Alwaysway owshay onglay ateday inway ethay atusstay arbay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Owshay ignalssay onway ethay ivedray idesay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Owshay inancesfay indowway atway ethay endway ofway ethay earyay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Ewnay ordersway areway 'onnay-op'stay ybay efaultday: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Oadray ehiclevay eueingquay (ithway antumquay effectsway): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Anpay indowway enwhay ousemay isway atway ethay edgeway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Allowway ibingbray ofway ethay ocallay authorityway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Allowway uyingbay exclusiveway ansporttray ightsray: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Allowway endingsay oneymay otay otherway ompaniescay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Onuniformnay ationsstay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Eightway ultipliermay orfay eightfray otay imulatesay eavyhay ainstray: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Aneplay eedspay actorfay: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Allowway ivedray-oughthray oadray opsstay onway owntay ownedway oadsray: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Allowway uildingbay adjacentway ationsstay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Enableway ultiplemay EwGRFnay engineway etssay: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Alwaysway allowway allsmay airportsway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Alwaysway allowway allsmay airportsway: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Arnway ifway aintray isway ostlay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Eviewray ehicles'vay ordersway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :onay
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :esyay, utbay excludeway oppedstay ehiclesvay
-STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :ofway allway ehiclesvay
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Arnway ifway away ehicle'svay incomeway isway egativenay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Ehiclesvay evernay expireway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenewway ehiclevay enwhay itway etsgay oldway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autorenewway enwhay ehicevay isway {ORANGE}{STRING}{LTBLUE} onthsmay eforebay/afterway axmay ageway
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Autorenewway inimummay eedednay oneymay orfay enewray: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Urationday ofway errorway essagemay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Owshay owntay opulationpay inway ethay owntay amenay abellay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Arnway ifway aintray isway ostlay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Eviewray ehicles'vay ordersway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :onay
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :esyay, utbay excludeway oppedstay ehiclesvay
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ofway allway ehiclesvay
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Arnway ifway away ehicle'svay incomeway isway egativenay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Ehiclesvay evernay expireway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenewway ehiclevay enwhay itway etsgay oldway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autorenewway enwhay ehicevay isway {ORANGE}{STRING}{LTBLUE} onthsmay eforebay/afterway axmay ageway
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Autorenewway inimummay eedednay oneymay orfay enewray: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Urationday ofway errorway essagemay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Owshay owntay opulationpay inway ethay owntay amenay abellay: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Andlay eneratorgay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Originalway
-STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :ErraGenesistay
-STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Axmay istanceday omfray edgeway orfay Oilway Efineriesray {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Owsnay inelay eighthay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Oughnessray ofway erraintay (ErraGenesistay onlyway) : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Eryvay Oothsmay
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Oothsmay
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Oughray
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Eryvay Oughray
-STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Eetray acerplay algorithmway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Onenay
-STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Originalway
-STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Improvedway
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Eightmaphay otationray: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Ountercay ockwiseclay
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Ockwiseclay
-STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Ethay eighthay evellay away atflay enarioscay apmay etsgay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Enableway erraformingtay ethay ilestay atway ethay apmay ordersbay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Oneway orway oremay ilestay atway ethay orthernnay edgeway areway otnay emptyway
-STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Oneway orway oremay ilestay atway oneway ofway ethay edgesway isway otnay aterway
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Andlay eneratorgay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originalway
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :ErraGenesistay
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Axmay istanceday omfray edgeway orfay Oilway Efineriesray {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Owsnay inelay eighthay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Oughnessray ofway erraintay (ErraGenesistay onlyway) : {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Eryvay Oothsmay
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Oothsmay
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Oughray
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Eryvay Oughray
+STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Eetray acerplay algorithmway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Onenay
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originalway
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Improvedway
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Eightmaphay otationray: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Ountercay ockwiseclay
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Ockwiseclay
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Ethay eighthay evellay away atflay enarioscay apmay etsgay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Enableway erraformingtay ethay ilestay atway ethay apmay ordersbay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Oneway orway oremay ilestay atway ethay orthernnay edgeway areway otnay emptyway
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Oneway orway oremay ilestay atway oneway ofway ethay edgesway isway otnay aterway
 
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Axmay ationstay eadspray: {ORANGE}{STRING} {RED}Arningway: Ighhay ettingsay owsslay amegay
-STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Ervicesay elicoptershay atway elipadshay automaticallyway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Inklay andscapelay oolbartay otay ailray/oadray/aterway/airportway oolbarstay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Everseray ollscray irectionday: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Oothsmay iewportvay ollingscray: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Owshay away easurementmay ooltiptay enwhay usingway ariousvay uildbay-oolstay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Owshay ompanycay iverieslay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LIVERIES_NONE                                :Onenay
-STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Ownway ompanycay
-STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Allway ompaniescay
-STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Eferpray eamtay atchay ithway <ENTERWAY>: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Unctionfay ofway ollwheelscray: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Oomzay apmay
-STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Ollscray apmay
-STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Offway
-STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Apmay ollwheelscray eedspay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Axmay ationstay eadspray: {ORANGE}{STRING} {RED}Arningway: Ighhay ettingsay owsslay amegay
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Ervicesay elicoptershay atway elipadshay automaticallyway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Inklay andscapelay oolbartay otay ailray/oadray/aterway/airportway oolbarstay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Everseray ollscray irectionday: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Oothsmay iewportvay ollingscray: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Owshay away easurementmay ooltiptay enwhay usingway ariousvay uildbay-oolstay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Owshay ompanycay iverieslay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES_NONE                                :Onenay
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Ownway ompanycay
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :Allway ompaniescay
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Eferpray eamtay atchay ithway <ENTERWAY>: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Unctionfay ofway ollwheelscray: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Oomzay apmay
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Ollscray apmay
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Offway
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Apmay ollwheelscray eedspay: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Ightray-ickclay emulationway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Ommandcay-ickclay
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ontrolcay-ickclay
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Offway
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Ightray-ickclay emulationway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Ommandcay-ickclay
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ontrolcay-ickclay
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Offway
 
-STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Eftlay-ickclay ollingscray: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Eftlay-ickclay ollingscray: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Useway ethay {ORANGE}{STRING}{LTBLUE} ateday ormatfay orfay avegamesay amesnay.
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :onglay (31stay Ecday 2008)
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :ortshay (31-12-2008)
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISOWAY (2008-12-31)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Useway ethay {ORANGE}{STRING}{LTBLUE} ateday ormatfay orfay avegamesay amesnay.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :onglay (31stay Ecday 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :ortshay (31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISOWAY (2008-12-31)
 
-STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automaticallyway ausepay enwhay artingstay away ewnay amegay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Useway ethay advancedway ehiclevay istlay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Offway
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Ownway ompanycay
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Allway ompaniescay
-STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Useway oadinglay indicatorsway:{ORANGE}{STRING}
-STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Offway
-STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Ownway ompanycay
-STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Allway ompaniescay
-STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Enableway imetablingtay orfay ehiclesvay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Owshay imetabletay inway ickstay atherray anthay aysday: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Ickquay eationcray ofway ehiclevay ordersway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Efaultday ailray ypetay (afterway ewnay amegay/amegay oadlay): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Ormalnay Ailray
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Electrifiedway Ailray
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Onorailmay
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Aglevmay
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Irstfay availableway
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Astlay availableway
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Ostmay usedway
-STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Owshay eservedray ackstray: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Eepkay uildingbay oolstay activeway afterway usageway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Oupgray expensesway inway ompanycay inancefay indowway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automaticallyway ausepay enwhay artingstay away ewnay amegay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Useway ethay advancedway ehiclevay istlay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Offway
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Ownway ompanycay
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Allway ompaniescay
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Useway oadinglay indicatorsway:{ORANGE}{STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Offway
+STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Ownway ompanycay
+STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Allway ompaniescay
+STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Enableway imetablingtay orfay ehiclesvay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Owshay imetabletay inway ickstay atherray anthay aysday: {ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Ickquay eationcray ofway ehiclevay ordersway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Efaultday ailray ypetay (afterway ewnay amegay/amegay oadlay): {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Ormalnay Ailray
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Electrifiedway Ailray
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Onorailmay
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Aglevmay
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Irstfay availableway
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Astlay availableway
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Ostmay usedway
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Owshay eservedray ackstray: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Eepkay uildingbay oolstay activeway afterway usageway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Oupgray expensesway inway ompanycay inancefay indowway: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Owshay uildingbay oolstay enwhay onay uitablesay ehiclesvay:{ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Axmay ainstray erpay ayerplay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Axmay oadray ehiclesvay erpay ayerplay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Axmay aircraftway erpay ayerplay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Axmay ipsshay erpay ayerplay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Owshay uildingbay oolstay enwhay onay uitablesay ehiclesvay:{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Axmay ainstray erpay ayerplay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Axmay oadray ehiclesvay erpay ayerplay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Axmay aircraftway erpay ayerplay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Axmay ipsshay erpay ayerplay: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Isableday ainstray orfay omputercay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Isableday oadray ehiclesvay orfay omputercay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Isableday aircraftway orfay omputercay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Isableday ipsshay orfay omputercay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Isableday ainstray orfay omputercay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Isableday oadray ehiclesvay orfay omputercay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Isableday aircraftway orfay omputercay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Isableday ipsshay orfay omputercay: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Allowway AIsway inway ultiplayermay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}#opcodesway eforebay AIWAY isway uspendedsay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Allowway AIsway inway ultiplayermay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodesway eforebay AIWAY isway uspendedsay: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Efaultday ervicesay intervalway orfay ainstray: {ORANGE}{STRING} aysday/%
-STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Efaultday ervicesay intervalway orfay ainstray: {ORANGE}isabledday
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Efaultday ervicesay intervalway orfay oadray ehiclesvay: {ORANGE}{STRING} aysday/%
-STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Efaultday ervicesay intervalway orfay oadray ehiclesvay: {ORANGE}isabledday
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Efaultday ervicesay intervalway orfay aircraftway: {ORANGE}{STRING} aysday/%
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Efaultday ervicesay intervalway orfay aircraftway: {ORANGE}isabledday
-STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Efaultday ervicesay intervalway orfay ipsshay: {ORANGE}{STRING} aysday/%
-STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Efaultday ervicesay intervalway orfay ipsshay: {ORANGE}isabledday
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Isableday ervicingsay enwhay eakdownsbray etsay otay onenay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Enableway agonway eedspay imitslay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Isableday electricway ailsray: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Efaultday ervicesay intervalway orfay ainstray: {ORANGE}{STRING} aysday/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Efaultday ervicesay intervalway orfay ainstray: {ORANGE}isabledday
+STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Efaultday ervicesay intervalway orfay oadray ehiclesvay: {ORANGE}{STRING} aysday/%
+STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Efaultday ervicesay intervalway orfay oadray ehiclesvay: {ORANGE}isabledday
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Efaultday ervicesay intervalway orfay aircraftway: {ORANGE}{STRING} aysday/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Efaultday ervicesay intervalway orfay aircraftway: {ORANGE}isabledday
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Efaultday ervicesay intervalway orfay ipsshay: {ORANGE}{STRING} aysday/%
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Efaultday ervicesay intervalway orfay ipsshay: {ORANGE}isabledday
+STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Isableday ervicingsay enwhay eakdownsbray etsay otay onenay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Enableway agonway eedspay imitslay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Isableday electricway ailsray: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Olouredcay ewsnay appearsway inway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Artingstay earyay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Enableway oothsmay economyway (oremay, allersmay angeschay): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Allowway uyingbay aresshay omfray otherway ompaniescay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Enwhay aggingdray, aceplay ignalssay everyway: {ORANGE}{STRING} iletay(say)
-STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automaticallyway uildbay emaphoressay eforebay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Enableway ethay ignalsay UIGay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Ignalsay ypetay otay uildbay ybay efaultday: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Ockblay ignalssay
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Athpay ignalssay
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Oneway-ayway athpay ignalssay
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Yclecay oughthray ignalsay ypestay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Ockblay ignalssay onlyway
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Advancedway onlyway
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Allway
+STR_CONFIG_SETTING_COLORED_NEWS_YEAR                            :{LTBLUE}Olouredcay ewsnay appearsway inway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Artingstay earyay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Enableway oothsmay economyway (oremay, allersmay angeschay): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Allowway uyingbay aresshay omfray otherway ompaniescay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Enwhay aggingdray, aceplay ignalssay everyway: {ORANGE}{STRING} iletay(say)
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automaticallyway uildbay emaphoressay eforebay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Enableway ethay ignalsay UIGay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Ignalsay ypetay otay uildbay ybay efaultday: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Ockblay ignalssay
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Athpay ignalssay
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Oneway-ayway athpay ignalssay
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Yclecay oughthray ignalsay ypestay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Ockblay ignalssay onlyway
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Advancedway onlyway
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Allway
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Oadray ayoutlay orfay ewnay ownstay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :efaultday
-STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :etterbay oadsray
-STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2xay2 idgray
-STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3xay3 idgray
-STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :andomray
-STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE}Ownstay areway allowedway otay uildbay oadsray: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Oadray ayoutlay orfay ewnay ownstay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :efaultday
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :etterbay oadsray
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2xay2 idgray
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3xay3 idgray
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :andomray
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Ownstay areway allowedway otay uildbay oadsray: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Ositionpay ofway ainmay oolbartay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Eftlay
-STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Entrecay
-STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Ightray
-STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Indowway apsnay adiusray: {ORANGE}{STRING} pxay
-STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Indowway apsnay adiusray: {ORANGE}isabledday
-STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Indowway oftsay imitlay (onnay-ickystay): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Indowway oftsay imitlay (onnay-ickystay): {ORANGE}isabledday
-STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Owntay owthgray eedspay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Onenay
-STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Owslay
-STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Ormalnay
-STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Astfay
-STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Eryvay astfay
-STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Oportionpray ofway ownstay atthay illway ecomebay itiescay: {ORANGE}1 inway {STRING}
-STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Oportionpray ofway ownstay atthay illway ecomebay itiescay: {ORANGE}Onenay
-STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initialway itycay izesay ultipliermay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Emoveray absurdway oadray-elementsway uringday hetay oadray onstructioncay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Ositionpay ofway ainmay oolbartay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Eftlay
+STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Entrecay
+STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Ightray
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Indowway apsnay adiusray: {ORANGE}{STRING} pxay
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Indowway apsnay adiusray: {ORANGE}isabledday
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Indowway oftsay imitlay (onnay-ickystay): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Indowway oftsay imitlay (onnay-ickystay): {ORANGE}isabledday
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Owntay owthgray eedspay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Onenay
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Owslay
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Ormalnay
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Astfay
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Eryvay astfay
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Oportionpray ofway ownstay atthay illway ecomebay itiescay: {ORANGE}1 inway {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Oportionpray ofway ownstay atthay illway ecomebay itiescay: {ORANGE}Onenay
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initialway itycay izesay ultipliermay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Emoveray absurdway oadray-elementsway uringday hetay oadray onstructioncay: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Interfaceway
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Onstructioncay
-STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Ehiclesvay
-STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Ationsstay
-STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Economyway
-STR_CONFIG_PATCHES_AI                                           :{ORANGE}Ompetitorscay
-STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Isplayday optionsway
-STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interactionway
-STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Ignalssay
-STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Argocay andlinghay
-STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Omputercay ayersplay
-STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Autorenewway
-STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Ervicingsay
-STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Outingray
-STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Ainstray
-STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Ownstay
-STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Industriesway
+STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfaceway
+STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Onstructioncay
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ehiclesvay
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Ationsstay
+STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economyway
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Ompetitorscay
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Isplayday optionsway
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interactionway
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Ignalssay
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Argocay andlinghay
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Omputercay ayersplay
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autorenewway
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Ervicingsay
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Outingray
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Ainstray
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Ownstay
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriesway
 
-STR_CONFIG_PATCHES_DISABLED                                     :isabledday
-STR_CONFIG_PATCHES_INT32                                        :{NUM}
-STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_DISABLED                                     :isabledday
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
 
-STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Angechay ettingsay aluevay
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Angechay ettingsay aluevay
 
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Athfinderpay orfay ainstray: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Otnay Ecommendedray)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Ecommendedray)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Athfinderpay orfay oadray ehiclesvay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Originalway {RED}(Otnay Ecommendedray)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Ecommendedray)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Athfinderpay orfay ipsshay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Originalway {BLUE}(Ecommendedray)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Otnay Ecommendedray)
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Athfinderpay orfay ainstray: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Otnay Ecommendedray)
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Ecommendedray)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Athfinderpay orfay oadray ehiclesvay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Originalway {RED}(Otnay Ecommendedray)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Ecommendedray)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Athfinderpay orfay ipsshay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Originalway {BLUE}(Ecommendedray)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Otnay Ecommendedray)
 
 STR_TEMPERATE_LANDSCAPE                                         :Emperatetay andscapelay
 STR_SUB_ARCTIC_LANDSCAPE                                        :Ubsay-arcticway andscapelay
@@ -1395,7 +1395,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Efitray 
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Electsay ypetay ofway argocay orfay aintray otay arrycay
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Efitray aintray otay arrycay ighlightedhay argocay ypetay
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}An'tcay efitray aintray...
-STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Ervicesay intervalsway areway inway ercentspay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Ervicesay intervalsway areway inway ercentspay: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Angechay oductionpray
 
 ############ network gui strings
@@ -1658,8 +1658,8 @@ STR_NETWORK_SEND                                                :{BLACK}Endsay
 ############ end network gui strings
 
 
-STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}Xay-izesay ofway apmay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Yay-izesay ofway apmay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Xay-izesay ofway apmay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Yay-izesay ofway apmay: {ORANGE}{STRING}
 
 
 ##### PNG-MAP-Loader
@@ -3741,7 +3741,7 @@ STR_AI_DESCRIPTION                                              :Escriptionday:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Allowway owntay ontrolledcay oisenay evellay orfay airportsway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Allowway owntay ontrolledcay oisenay evellay orfay airportsway: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Oisenay imitlay inway owntay: {ORANGE}{COMMA}{BLACK}  axmay: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Oisenay eneratedgay: {GOLD}{COMMA}
 ########

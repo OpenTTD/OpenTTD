@@ -39,7 +39,7 @@ static bool _convert_signal_button;          ///< convert signal button in the s
 static SignalVariant _cur_signal_variant;    ///< set the signal variant (for signal GUI)
 static SignalType _cur_signal_type;          ///< set the signal type (for signal GUI)
 
-/* Map _patches.default_signal_type to the corresponding signal type */
+/* Map the setting: default_signal_type to the corresponding signal type */
 static const SignalType _default_signal_type[] = {SIGTYPE_NORMAL, SIGTYPE_PBS, SIGTYPE_PBS_ONEWAY};
 
 struct RailStationGUISettings {
@@ -211,7 +211,7 @@ static void GenericPlaceSignals(TileIndex tile)
 	} else {
 		const Window *w = FindWindowById(WC_BUILD_SIGNAL, 0);
 
-		/* Map _patches.cycle_signal_types to the lower and upper allowed signal type. */
+		/* Map the setting cycle_signal_types to the lower and upper allowed signal type. */
 		static const uint cycle_bounds[] = {SIGTYPE_NORMAL | (SIGTYPE_LAST_NOPBS << 3), SIGTYPE_PBS | (SIGTYPE_LAST << 3), SIGTYPE_NORMAL | (SIGTYPE_LAST << 3)};
 
 		/* various bitstuffed elements for CmdBuildSingleSignal() */
@@ -1776,8 +1776,8 @@ static void SetDefaultRailGui()
 /**
  * Updates the current signal variant used in the signal GUI
  * to the one adequate to current year.
- * @param 0 needed to be called when a patch setting changes
- * @return success, needed for patch settings
+ * @param 0 needed to be called when a setting changes
+ * @return success, needed for settings
  */
 bool ResetSignalVariant(int32 = 0)
 {

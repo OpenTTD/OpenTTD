@@ -793,7 +793,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Game options
 STR_02C6_DIFFICULTY_SETTINGS                                    :Difficulty settings
-STR_MENU_CONFIG_PATCHES                                         :Advanced settings
+STR_MENU_CONFIG_SETTINGS                                        :Advanced settings
 STR_NEWGRF_SETTINGS                                             :NewGRF settings
 STR_TRANSPARENCY_OPTIONS                                        :Transparency options
 STR_GAMEOPTMENU_0A                                              :
@@ -1027,247 +1027,252 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}No autoreplace/renew rules applied.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(money limit)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Advanced Settings
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Display advanced settings
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Advanced Settings
+STR_CONFIG_SETTING                                              :{BLACK}Advanced Settings
+STR_CONFIG_SETTING_TIP                                          :{BLACK}Display advanced settings
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Advanced Settings
 
-STR_CONFIG_PATCHES_OFF                                          :Off
-STR_CONFIG_PATCHES_ON                                           :On
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Show vehicle speed in status bar: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Allow building on slopes and coasts: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Allow terraforming under buildings, tracks, etc. (autoslope): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Allow more realistically sized catchment areas: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Allow removal of more town-owned roads, bridges, etc: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Enable building very long trains: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Train acceleration model: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
-STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistic
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Forbid trains and ships to make 90 deg turns: {ORANGE}{STRING1} {LTBLUE} (not with NTP)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Join train stations built next to each other: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Allow to join stations not directly adjacent: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Use improved loading algorithm: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Load vehicles gradually: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Deliver cargo to a station only when there is a demand: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Allow building very long bridges: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Allow goto depot orders: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manual primary industry construction method: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :none
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :as other industries
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospecting
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Allow multiple similar industries per town: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industries of the same type can be built close to each other: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Always show long date in the status bar: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Show signals on the drive side: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Show finances window at the end of the year: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}New orders are 'non-stop' by default: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Road vehicle queueing (with quantum effects): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Pan window when mouse is at the edge: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Allow bribing of the local authority: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Allow buying exclusive transport rights: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Allow sending money to other companies: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nonuniform stations: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Weight multiplier for freight to simulate heavy trains: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Plane speed factor: {ORANGE}1 / {STRING1}
-STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Allow drive-through road stops on town owned roads: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Allow building adjacent stations: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Enable multiple NewGRF engine sets: {ORANGE}{STRING}
+STR_CONFIG_SETTING_OFF                                          :Off
+STR_CONFIG_SETTING_ON                                           :On
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Show vehicle speed in status bar: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Allow building on slopes and coasts: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Allow terraforming under buildings, tracks, etc. (autoslope): {ORANGE}{STRING1}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Allow more realistically sized catchment areas: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Allow removal of more town-owned roads, bridges, etc: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Enable building very long trains: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Train acceleration model: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistic
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forbid trains and ships to make 90 deg turns: {ORANGE}{STRING1} {LTBLUE} (not with NTP)
+STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Join train stations built next to each other: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Allow to join stations not directly adjacent: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Use improved loading algorithm: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Load vehicles gradually: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Deliver cargo to a station only when there is a demand: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Allow building very long bridges: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Allow goto depot orders: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manual primary industry construction method: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :none
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :as other industries
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospecting
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Allow multiple similar industries per town: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Industries of the same type can be built close to each other: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Always show long date in the status bar: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Show signals on the drive side: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Show finances window at the end of the year: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}New orders are 'non-stop' by default: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Road vehicle queueing (with quantum effects): {ORANGE}{STRING1}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Pan window when mouse is at the edge: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Allow bribing of the local authority: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Allow buying exclusive transport rights: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Allow sending money to other companies: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Nonuniform stations: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Weight multiplier for freight to simulate heavy trains: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Plane speed factor: {ORANGE}1 / {STRING1}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Allow drive-through road stops on town owned roads: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Allow building adjacent stations: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Enable multiple NewGRF engine sets: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Always allow small airports: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Always allow small airports: {ORANGE}{STRING1}
 
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Warn if train is lost: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Review vehicles' orders: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :no
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :yes, but exclude stopped vehicles
-STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :of all vehicles
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Warn if a vehicle's income is negative: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vehicles never expire: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenew vehicle when it gets old: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autorenew when vehicle is {ORANGE}{STRING1}{LTBLUE} months before/after max age
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Duration of error message: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Show town population in the town name label: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Warn if train is lost: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Review vehicles' orders: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :no
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :yes, but exclude stopped vehicles
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :of all vehicles
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Warn if a vehicle's income is negative: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vehicles never expire: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenew vehicle when it gets old: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autorenew when vehicle is {ORANGE}{STRING1}{LTBLUE} months before/after max age
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duration of error message: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Show town population in the town name label: {ORANGE}{STRING1}
 
-STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Land generator: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
-STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max distance from edge for Oil Refineries {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snow line height: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Roughness of terrain (TerraGenesis only) : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Very Smooth
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Smooth
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rough
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Very Rough
-STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Tree placer algorithm: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :None
-STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
-STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Improved
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Heightmap rotation: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Counter clockwise
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Clockwise
-STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}The height level a flat scenario map gets: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Enable terraforming the tiles at the map borders: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}One or more tiles at the northern edge are not empty
-STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}One or more tiles at one of the edges is not water
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Land generator: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max distance from edge for Oil Refineries {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Snow line height: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Roughness of terrain (TerraGenesis only) : {ORANGE}{STRING1}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Very Smooth
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Smooth
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rough
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Very Rough
+STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Tree placer algorithm: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :None
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Improved
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Heightmap rotation: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Counter clockwise
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Clockwise
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}The height level a flat scenario map gets: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Enable terraforming the tiles at the map borders: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}One or more tiles at the northern edge are not empty
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}One or more tiles at one of the edges is not water
 
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max station spread: {ORANGE}{STRING1} {RED}Warning: High setting slows game
-STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landscape toolbar to rail/road/water/airport toolbars: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Reverse scroll direction: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Smooth viewport scrolling: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Show a measurement tooltip when using various build-tools: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Show company liveries: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LIVERIES_NONE                                :None
-STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Own company
-STR_CONFIG_PATCHES_LIVERIES_ALL                                 :All companies
-STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Prefer team chat with <ENTER>: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Function of scrollwheel: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom map
-STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll map
-STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
-STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Map scrollwheel speed: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Max station spread: {ORANGE}{STRING1} {RED}Warning: High setting slows game
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landscape toolbar to rail/road/water/airport toolbars: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Reverse scroll direction: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Smooth viewport scrolling: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Show a measurement tooltip when using various build-tools: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Show company liveries: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_LIVERIES_NONE                                :None
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Own company
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :All companies
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Prefer team chat with <ENTER>: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Function of scrollwheel: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom map
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scroll map
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Off
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Map scrollwheel speed: {ORANGE}{STRING1}
 
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Right-click emulation: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Off
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Right-click emulation: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Off
 
-STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Left-click scrolling: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Left-click scrolling: {ORANGE}{STRING1}
 
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Use the {ORANGE}{STRING1}{LTBLUE} date format for savegame names.
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :long (31st Dec 2008)
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :short (31-12-2008)
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Use the {ORANGE}{STRING1}{LTBLUE} date format for savegame names.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :long (31st Dec 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :short (31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatically pause when starting a new game: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Use the advanced vehicle list: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Off
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Own company
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :All companies
-STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Use loading indicators: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Off
-STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Own company
-STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :All companies
-STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Enable timetabling for vehicles: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Show timetable in ticks rather than days: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Quick creation of vehicle orders: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Default rail type (after new game/game load): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normal Rail
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Electrified Rail
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :First available
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Last available
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Most used
-STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Show reserved tracks: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Keep building tools active after usage: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Group expenses in company finance window: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatically pause when starting a new game: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Use the advanced vehicle list: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Off
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Own company
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :All companies
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Use loading indicators: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Off
+STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Own company
+STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :All companies
+STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Enable timetabling for vehicles: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Show timetable in ticks rather than days: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Quick creation of vehicle orders: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Default rail type (after new game/game load): {ORANGE}{STRING1}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Normal Rail
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Electrified Rail
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :First available
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Last available
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Most used
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Show reserved tracks: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Keep building tools active after usage: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Group expenses in company finance window: {ORANGE}{STRING1}
 
-STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Show building tools when no suitable vehicles are available: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max road vehicles per player: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Max aircraft per player: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Max ships per player: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Show building tools when no suitable vehicles are available: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Max road vehicles per player: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Max aircraft per player: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Max ships per player: {ORANGE}{STRING1}
 
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Disable trains for computer: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Disable road vehicles for computer: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Disable aircraft for computer: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Disable ships for computer: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Disable trains for computer: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Disable road vehicles for computer: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Disable aircraft for computer: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Disable ships for computer: {ORANGE}{STRING1}
 
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Allow AIs in multiplayer: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}#opcodes before AI is suspended: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Allow AIs in multiplayer: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes before AI is suspended: {ORANGE}{STRING1}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Default service interval for trains: {ORANGE}{STRING1} days/%
-STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Default service interval for trains: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Default service interval for road vehicles: {ORANGE}{STRING1} days/%
-STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Default service interval for road vehicles: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Default service interval for aircraft: {ORANGE}{STRING1} days/%
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Default service interval for aircraft: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Default service interval for ships: {ORANGE}{STRING1} days/%
-STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Default service interval for ships: {ORANGE}disabled
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Disable servicing when breakdowns set to none: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Enable wagon speed limits: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Disable electric rails: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Service intervals are in percents: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Default service interval for trains: {ORANGE}{STRING1} days/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Default service interval for trains: {ORANGE}disabled
+STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Default service interval for road vehicles: {ORANGE}{STRING1} days/%
+STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Default service interval for road vehicles: {ORANGE}disabled
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Default service interval for aircraft: {ORANGE}{STRING1} days/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Default service interval for aircraft: {ORANGE}disabled
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Default service interval for ships: {ORANGE}{STRING1} days/%
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Default service interval for ships: {ORANGE}disabled
+STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Disable servicing when breakdowns set to none: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Enable wagon speed limits: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Disable electric rails: {ORANGE}{STRING1}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Coloured news appears in: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Starting year: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Enable smooth economy (more, smaller changes): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Allow buying shares from other companies: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}When dragging, place signals every: {ORANGE}{STRING1} tile(s)
-STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatically build semaphores before: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Enable the signal GUI: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Signal type to build by default: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Block signals
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Path signals
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :One-way path signals
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Cycle through signal types: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Block signals only
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Path signals only
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :All
+STR_CONFIG_SETTING_COLORED_NEWS_YEAR                            :{LTBLUE}Coloured news appears in: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Starting year: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Enable smooth economy (more, smaller changes): {ORANGE}{STRING1}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Allow buying shares from other companies: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}When dragging, place signals every: {ORANGE}{STRING1} tile(s)
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatically build semaphores before: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Enable the signal GUI: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Signal type to build by default: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Block signals
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Path signals
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :One-way path signals
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Cycle through signal types: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Block signals only
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Path signals only
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :All
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Road layout for new towns: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :original
-STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :better roads
-STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 grid
-STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 grid
-STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :random
-STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE}Towns are allowed to build roads: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Road layout for new towns: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :original
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :better roads
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 grid
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 grid
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :random
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Towns are allowed to build roads: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Allow town controlled noise level for airports: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position of main toolbar: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Left
-STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centre
-STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Right
-STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Window snap radius: {ORANGE}{STRING1} px
-STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Window snap radius: {ORANGE}disabled
-STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Window soft limit (non-sticky): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Window soft limit (non-sticky): {ORANGE}disabled
-STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Town growth speed: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :None
-STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Slow
-STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
-STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Fast
-STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Very fast
-STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proportion of towns that will become cities: {ORANGE}1 in {STRING1}
-STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proportion of towns that will become cities: {ORANGE}None
-STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initial city size multiplier: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Remove absurd road-elements during the road construction: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Position of main toolbar: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Left
+STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centre
+STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Right
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Window snap radius: {ORANGE}{STRING1} px
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Window snap radius: {ORANGE}disabled
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Window soft limit (non-sticky): {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Window soft limit (non-sticky): {ORANGE}disabled
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Town growth speed: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :None
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Slow
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Fast
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Very fast
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Proportion of towns that will become cities: {ORANGE}1 in {STRING1}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proportion of towns that will become cities: {ORANGE}None
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initial city size multiplier: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Remove absurd road-elements during the road construction: {ORANGE}{STRING1}
 
-STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Interface
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Construction
-STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Vehicles
-STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stations
-STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Economy
-STR_CONFIG_PATCHES_AI                                           :{ORANGE}Competitors
-STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Display options
-STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interaction
-STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Signals
-STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Cargo handling
-STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Computer players
-STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Autorenew
-STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Servicing
-STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Routing
-STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Trains
-STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Towns
-STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Industries
+STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
+STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construction
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicles
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stations
+STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economy
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Competitors
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Display options
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaction
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signals
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Cargo handling
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer players
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autorenew
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servicing
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routing
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trains
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Towns
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industries
 
-STR_CONFIG_PATCHES_DISABLED                                     :disabled
-STR_CONFIG_PATCHES_INT32                                        :{NUM}
-STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pathfinder for trains: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Not recommended)
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recommended)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Pathfinder for road vehicles: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Not recommended)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Recommended)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfinder for ships: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recommended)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Not recommended)
 
-STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Change setting value
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-size of map: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-size of map: {ORANGE}{STRING1}
 
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pathfinder for trains: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Not recommended)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recommended)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Pathfinder for road vehicles: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Not recommended)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Recommended)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfinder for ships: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recommended)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Not recommended)
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :disabled
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Change setting value
 
 STR_TEMPERATE_LANDSCAPE                                         :Temperate landscape
 STR_SUB_ARCTIC_LANDSCAPE                                        :Sub-arctic landscape
@@ -1395,7 +1400,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Refit tr
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Select type of cargo for train to carry
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Refit train to carry highlighted cargo type
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Can't refit train...
-STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Service intervals are in percents: {ORANGE}{STRING1}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Change production
 
 ############ network gui strings
@@ -1656,11 +1660,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Private message
 STR_NETWORK_SEND                                                :{BLACK}Send
 
 ############ end network gui strings
-
-
-STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-size of map: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-size of map: {ORANGE}{STRING1}
-
 
 ##### PNG-MAP-Loader
 
@@ -3741,7 +3740,6 @@ STR_AI_DESCRIPTION                                              :Description:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Allow town controlled noise level for airports: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Noise limit in town: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Noise generated: {GOLD}{COMMA}
 ########

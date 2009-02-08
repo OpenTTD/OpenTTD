@@ -1626,35 +1626,35 @@ DEF_CONSOLE_CMD(ConContent)
 
 #endif /* ENABLE_NETWORK */
 
-DEF_CONSOLE_CMD(ConPatch)
+DEF_CONSOLE_CMD(ConSetting)
 {
 	if (argc == 0) {
-		IConsoleHelp("Change patch variables for all clients. Usage: 'patch <name> [<value>]'");
-		IConsoleHelp("Omitting <value> will print out the current value of the patch-setting.");
+		IConsoleHelp("Change setting for all clients. Usage: 'setting <name> [<value>]'");
+		IConsoleHelp("Omitting <value> will print out the current value of the setting.");
 		return true;
 	}
 
 	if (argc == 1 || argc > 3) return false;
 
 	if (argc == 2) {
-		IConsoleGetPatchSetting(argv[1]);
+		IConsoleGetSetting(argv[1]);
 	} else {
-		IConsoleSetPatchSetting(argv[1], argv[2]);
+		IConsoleSetSetting(argv[1], argv[2]);
 	}
 
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConListPatches)
+DEF_CONSOLE_CMD(ConListSettings)
 {
 	if (argc == 0) {
-		IConsoleHelp("List patch options. Usage: 'list_patches [<pre-filter>]'");
+		IConsoleHelp("List settings. Usage: 'list_settings [<pre-filter>]'");
 		return true;
 	}
 
 	if (argc > 2) return false;
 
-	IConsoleListPatches((argc == 2) ? argv[1] : NULL);
+	IConsoleListSettings((argc == 2) ? argv[1] : NULL);
 	return true;
 }
 
@@ -1749,15 +1749,18 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("cd",           ConChangeDirectory);
 	IConsoleCmdRegister("pwd",          ConPrintWorkingDirectory);
 	IConsoleCmdRegister("clear",        ConClearBuffer);
-	IConsoleCmdRegister("patch",        ConPatch);
-	IConsoleCmdRegister("list_patches", ConListPatches);
+	IConsoleCmdRegister("setting",      ConSetting);
+	IConsoleCmdRegister("list_settings",ConListSettings);
 	IConsoleCmdRegister("gamelog",      ConGamelogPrint);
 
-	IConsoleAliasRegister("dir",      "ls");
-	IConsoleAliasRegister("del",      "rm %+");
-	IConsoleAliasRegister("newmap",   "newgame");
-	IConsoleAliasRegister("new_map",  "newgame");
-	IConsoleAliasRegister("new_game", "newgame");
+	IConsoleAliasRegister("dir",          "ls");
+	IConsoleAliasRegister("del",          "rm %+");
+	IConsoleAliasRegister("newmap",       "newgame");
+	IConsoleAliasRegister("new_map",      "newgame");
+	IConsoleAliasRegister("new_game",     "newgame");
+	IConsoleAliasRegister("patch",        "setting %+");
+	IConsoleAliasRegister("list_patches", "list_settings %+");
+
 
 
 	IConsoleVarRegister("developer", &_stdlib_developer, ICONSOLE_VAR_BYTE, "Redirect debugging output from the console/command line to the ingame console (value 2). Default value: 1");
@@ -1822,31 +1825,31 @@ void IConsoleStdLibRegister()
 	IConsoleVarProcAdd("company_pw",             NetworkChangeCompanyPassword);
 	IConsoleAliasRegister("company_password",    "company_pw %+");
 
-	IConsoleAliasRegister("net_frame_freq",        "patch frame_freq %+");
-	IConsoleAliasRegister("net_sync_freq",         "patch sync_freq %+");
-	IConsoleAliasRegister("server_pw",             "patch server_password %+");
-	IConsoleAliasRegister("server_password",       "patch server_password %+");
-	IConsoleAliasRegister("rcon_pw",               "patch rcon_password %+");
-	IConsoleAliasRegister("rcon_password",         "patch rcon_password %+");
-	IConsoleAliasRegister("name",                  "patch client_name %+");
-	IConsoleAliasRegister("server_name",           "patch server_name %+");
-	IConsoleAliasRegister("server_port",           "patch server_port %+");
-	IConsoleAliasRegister("server_ip",             "patch server_bind_ip %+");
-	IConsoleAliasRegister("server_bind_ip",        "patch server_bind_ip %+");
-	IConsoleAliasRegister("server_ip_bind",        "patch server_bind_ip %+");
-	IConsoleAliasRegister("server_bind",           "patch server_bind_ip %+");
-	IConsoleAliasRegister("server_advertise",      "patch server_advertise %+");
-	IConsoleAliasRegister("max_clients",           "patch max_clients %+");
-	IConsoleAliasRegister("max_companies",         "patch max_companies %+");
-	IConsoleAliasRegister("max_spectators",        "patch max_spectators %+");
-	IConsoleAliasRegister("max_join_time",         "patch max_join_time %+");
-	IConsoleAliasRegister("pause_on_join",         "patch pause_on_join %+");
-	IConsoleAliasRegister("autoclean_companies",   "patch autoclean_companies %+");
-	IConsoleAliasRegister("autoclean_protected",   "patch autoclean_protected %+");
-	IConsoleAliasRegister("autoclean_unprotected", "patch autoclean_unprotected %+");
-	IConsoleAliasRegister("restart_game_year",     "patch restart_game_year %+");
-	IConsoleAliasRegister("min_players",           "patch min_active_clients %+");
-	IConsoleAliasRegister("reload_cfg",            "patch reload_cfg %+");
+	IConsoleAliasRegister("net_frame_freq",        "setting frame_freq %+");
+	IConsoleAliasRegister("net_sync_freq",         "setting sync_freq %+");
+	IConsoleAliasRegister("server_pw",             "setting server_password %+");
+	IConsoleAliasRegister("server_password",       "setting server_password %+");
+	IConsoleAliasRegister("rcon_pw",               "setting rcon_password %+");
+	IConsoleAliasRegister("rcon_password",         "setting rcon_password %+");
+	IConsoleAliasRegister("name",                  "setting client_name %+");
+	IConsoleAliasRegister("server_name",           "setting server_name %+");
+	IConsoleAliasRegister("server_port",           "setting server_port %+");
+	IConsoleAliasRegister("server_ip",             "setting server_bind_ip %+");
+	IConsoleAliasRegister("server_bind_ip",        "setting server_bind_ip %+");
+	IConsoleAliasRegister("server_ip_bind",        "setting server_bind_ip %+");
+	IConsoleAliasRegister("server_bind",           "setting server_bind_ip %+");
+	IConsoleAliasRegister("server_advertise",      "setting server_advertise %+");
+	IConsoleAliasRegister("max_clients",           "setting max_clients %+");
+	IConsoleAliasRegister("max_companies",         "setting max_companies %+");
+	IConsoleAliasRegister("max_spectators",        "setting max_spectators %+");
+	IConsoleAliasRegister("max_join_time",         "setting max_join_time %+");
+	IConsoleAliasRegister("pause_on_join",         "setting pause_on_join %+");
+	IConsoleAliasRegister("autoclean_companies",   "setting autoclean_companies %+");
+	IConsoleAliasRegister("autoclean_protected",   "setting autoclean_protected %+");
+	IConsoleAliasRegister("autoclean_unprotected", "setting autoclean_unprotected %+");
+	IConsoleAliasRegister("restart_game_year",     "setting restart_game_year %+");
+	IConsoleAliasRegister("min_players",           "setting min_active_clients %+");
+	IConsoleAliasRegister("reload_cfg",            "setting reload_cfg %+");
 #endif /* ENABLE_NETWORK */
 
 	// debugging stuff

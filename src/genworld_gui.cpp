@@ -281,10 +281,10 @@ static DropDownList *BuildMapsizeDropDown()
 
 static const StringID _elevations[]  = {STR_682A_VERY_FLAT, STR_682B_FLAT, STR_682C_HILLY, STR_682D_MOUNTAINOUS, INVALID_STRING_ID};
 static const StringID _sea_lakes[]   = {STR_VERY_LOW, STR_6820_LOW, STR_6821_MEDIUM, STR_6822_HIGH, INVALID_STRING_ID};
-static const StringID _smoothness[]  = {STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH, STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH, STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH, STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH, INVALID_STRING_ID};
-static const StringID _tree_placer[] = {STR_CONFIG_PATCHES_TREE_PLACER_NONE, STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL, STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED, INVALID_STRING_ID};
-static const StringID _rotation[]    = {STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE, STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE, INVALID_STRING_ID};
-static const StringID _landscape[]   = {STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL, STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS, INVALID_STRING_ID};
+static const StringID _smoothness[]  = {STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH, INVALID_STRING_ID};
+static const StringID _tree_placer[] = {STR_CONFIG_SETTING_TREE_PLACER_NONE, STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL, STR_CONFIG_SETTING_TREE_PLACER_IMPROVED, INVALID_STRING_ID};
+static const StringID _rotation[]    = {STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE, STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE, INVALID_STRING_ID};
+static const StringID _landscape[]   = {STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL, STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS, INVALID_STRING_ID};
 static const StringID _num_towns[]   = {STR_NUM_VERY_LOW, STR_6816_LOW, STR_6817_NORMAL, STR_6818_HIGH, INVALID_STRING_ID};
 static const StringID _num_inds[]    = {STR_NONE, STR_NUM_VERY_LOW, STR_6816_LOW, STR_6817_NORMAL, STR_6818_HIGH, INVALID_STRING_ID};
 
@@ -471,7 +471,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_START_DATE_TEXT: // Year text
 				this->widget_id = GLAND_START_DATE_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.starting_year);
-				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_CONFIG_SETTING_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case GLAND_SNOW_LEVEL_DOWN:
@@ -489,7 +489,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_SNOW_LEVEL_TEXT: // Snow line text
 				this->widget_id = GLAND_SNOW_LEVEL_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.snow_line_height);
-				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_SNOW_LINE_QUERY_CAPT, 3, 100, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_CONFIG_SETTING_INT32, STR_SNOW_LINE_QUERY_CAPT, 3, 100, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case GLAND_TREE_PULLDOWN: // Tree placer
@@ -570,13 +570,13 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_TOWN_PULLDOWN:
 				_settings_newgame.difficulty.number_towns = index;
 				if (_settings_newgame.difficulty.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
-				IConsoleSetPatchSetting("difficulty.number_towns", _settings_newgame.difficulty.number_towns);
+				IConsoleSetSetting("difficulty.number_towns", _settings_newgame.difficulty.number_towns);
 				break;
 
 			case GLAND_INDUSTRY_PULLDOWN:
 				_settings_newgame.difficulty.number_industries = index;
 				if (_settings_newgame.difficulty.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
-				IConsoleSetPatchSetting("difficulty.number_industries", _settings_newgame.difficulty.number_industries);
+				IConsoleSetSetting("difficulty.number_industries", _settings_newgame.difficulty.number_industries);
 				break;
 
 			case GLAND_LANDSCAPE_PULLDOWN:
@@ -591,13 +591,13 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_TERRAIN_PULLDOWN:
 				_settings_newgame.difficulty.terrain_type = index;
 				if (_settings_newgame.difficulty.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
-				IConsoleSetPatchSetting("difficulty.terrain_type", _settings_newgame.difficulty.terrain_type);
+				IConsoleSetSetting("difficulty.terrain_type", _settings_newgame.difficulty.terrain_type);
 				break;
 
 			case GLAND_WATER_PULLDOWN:
 				_settings_newgame.difficulty.quantity_sea_lakes = index;
 				if (_settings_newgame.difficulty.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
-				IConsoleSetPatchSetting("difficulty.quantity_sea_lakes", _settings_newgame.difficulty.quantity_sea_lakes);
+				IConsoleSetSetting("difficulty.quantity_sea_lakes", _settings_newgame.difficulty.quantity_sea_lakes);
 				break;
 		}
 		this->SetDirty();
@@ -783,7 +783,7 @@ struct CreateScenarioWindow : public Window
 			case CSCEN_START_DATE_TEXT: // Year text
 				this->widget_id = CSCEN_START_DATE_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.starting_year);
-				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_CONFIG_SETTING_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case CSCEN_FLAT_LAND_HEIGHT_DOWN:
@@ -801,7 +801,7 @@ struct CreateScenarioWindow : public Window
 			case CSCEN_FLAT_LAND_HEIGHT_TEXT: // Height level text
 				this->widget_id = CSCEN_FLAT_LAND_HEIGHT_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.se_flat_world_height);
-				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_FLAT_WORLD_HEIGHT_QUERY_CAPT, 3, 100, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_CONFIG_SETTING_INT32, STR_FLAT_WORLD_HEIGHT_QUERY_CAPT, 3, 100, this, CS_NUMERAL, QSF_NONE);
 				break;
 		}
 	}

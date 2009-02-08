@@ -263,7 +263,7 @@ enum {
 	CMD_REMOVE_SIGNAL_TRACK,          ///< remove signals along a track (by dragging)
 
 	CMD_GIVE_MONEY,                   ///< give money to another company
-	CMD_CHANGE_PATCH_SETTING,         ///< change a patch setting
+	CMD_CHANGE_SETTING,               ///< change a setting
 
 	CMD_SET_AUTOREPLACE,              ///< set an autoreplace entry
 

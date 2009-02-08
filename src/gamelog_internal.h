@@ -12,7 +12,7 @@ enum GamelogChangeType {
 	GLCT_MODE,        ///< Scenario editor x Game, different landscape
 	GLCT_REVISION,    ///< Changed game revision string
 	GLCT_OLDVER,      ///< Loaded from savegame without logged data
-	GLCT_PATCH,       ///< Non-networksafe patch value changed
+	GLCT_SETTING,     ///< Non-networksafe setting value changed
 	GLCT_GRFADD,      ///< Removed GRF
 	GLCT_GRFREM,      ///< Added GRF
 	GLCT_GRFCOMPAT,   ///< Loading compatible GRF
@@ -55,10 +55,10 @@ struct LoggedChange {
 			int32 offset;    ///< offset, positive = move down
 		} grfmove;
 		struct {
-			char *name;      ///< name of the patch
+			char *name;      ///< name of the setting
 			int32 oldval;    ///< old value
 			int32 newval;    ///< new value
-		} patch;
+		} setting;
 		struct {
 			uint64 data;     ///< additional data
 			uint32 grfid;    ///< ID of problematic GRF

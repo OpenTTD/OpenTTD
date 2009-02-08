@@ -22,7 +22,7 @@
  *
  * @note The names of the setting for AIGameSettings::IsValid and
  *       AIGameSettings::GetValue are the same ones as those that are shown by
- *       the list_patches command in the in-game console. Settings that are
+ *       the list_settings command in the in-game console. Settings that are
  *       string based are NOT supported and AIGAmeSettings::IsValid will return
  *       false for them. These settings will not be supported either because
  *       they have no relevance for the AI (default client names, server IPs,

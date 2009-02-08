@@ -2029,7 +2029,7 @@ static CommandCost RemoveAirport(Station *st, uint32 flags)
 		}
 
 		/* Go get the final noise level, that is base noise minus factor from distance to town center.
-		 * And as for construction, always remove it, even if the patch is not set, in order to avoid the
+		 * And as for construction, always remove it, even if the setting is not set, in order to avoid the
 		 * need of recalculation */
 		Town *nearest = AirportGetNearestTown(afc, tile);
 		nearest->noise_reached -= GetAirportNoiseLevelForTown(afc, nearest->xy, tile);

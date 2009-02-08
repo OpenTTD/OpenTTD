@@ -89,7 +89,7 @@ public:
 	 * @param industry_type The type of the industry.
 	 * @pre IsValidIndustryType(industry_type).
 	 * @return True if you can prospect this type of industry.
-	 * @note If the patch setting "Manual primary industry construction method" is set
+	 * @note If the setting "Manual primary industry construction method" is set
 	 * to either "None" or "as other industries" this function always returns false.
 	 */
 	static bool CanProspectIndustry(IndustryType industry_type);

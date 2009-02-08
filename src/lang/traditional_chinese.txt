@@ -783,7 +783,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :遊戲選項
 STR_02C6_DIFFICULTY_SETTINGS                                    :難易設定
-STR_MENU_CONFIG_PATCHES                                         :進階設定
+STR_MENU_CONFIG_SETTINGS                                        :進階設定
 STR_NEWGRF_SETTINGS                                             :NewGRF 設定
 STR_TRANSPARENCY_OPTIONS                                        :透明度選項
 STR_GAMEOPTMENU_0A                                              :
@@ -1013,236 +1013,236 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}無自動替換/翻新的規則可套用
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(金錢限制)
 
-STR_CONFIG_PATCHES                                              :{BLACK}進階設定
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}顯示進階設定
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}進階設定
+STR_CONFIG_SETTING                                              :{BLACK}進階設定
+STR_CONFIG_SETTING_TIP                                          :{BLACK}顯示進階設定
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}進階設定
 
-STR_CONFIG_PATCHES_OFF                                          :關
-STR_CONFIG_PATCHES_ON                                           :開
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}於狀態列顯示速度：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}可在斜坡及岸邊興建：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}允許在建築物或是軌道底下改變地形斜度 (autoslope)：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}依車站種類不同改變收集範圍：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}可移除更多市鎮所有的道路、橋樑等：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}提高列車長度限制：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}列車加速演算模型：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_ORIGINAL            :原版
-STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_REALISTIC           :真實
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}禁止列車直角轉向：{ORANGE}{STRING} {LTBLUE} (NTP 模式下無法使用)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}合併建在一起的車站：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}允許將不相鄰的車站與附近的車站結合：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}使用改善後的裝載演算法：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}交通工具逐步裝載：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}通貨膨脹：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}有需求才向車站供貨：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}提高橋樑長度限制：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}可以下「到機廠」指令：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}變更基礎工業的建造方式：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :無法建造
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :與其他工業相同
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :需探勘
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}每個市鎮可擁有多個同類型工業：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}同類型工業興建距離不受限制：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}永遠於狀態列顯示長日期格式：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}於駕駛側顯示號誌：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}於年末顯示財政視窗：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}設定指令時預設選擇「直達」指令：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}車輛排隊 (量子效應)：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}滑鼠在視窗邊緣時移動視窗：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}可向地方政府行賄：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}允許購買市鎮的專屬運輸權：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}允許流通資金給其他公司：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}不規則形狀車站：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}貨物重量倍率，以模擬較重列車：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}飛機速度比例：{ORANGE}{STRING} 分之一
-STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}可在市鎮內興建路邊車站：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}允許興建相鄰車站： {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}允許載入多個 NewGRF 車輛組：{ORANGE}{STRING}
+STR_CONFIG_SETTING_OFF                                          :關
+STR_CONFIG_SETTING_ON                                           :開
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}於狀態列顯示速度：{ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}可在斜坡及岸邊興建：{ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}允許在建築物或是軌道底下改變地形斜度 (autoslope)：{ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}依車站種類不同改變收集範圍：{ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}可移除更多市鎮所有的道路、橋樑等：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}提高列車長度限制：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}列車加速演算模型：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :原版
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :真實
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}禁止列車直角轉向：{ORANGE}{STRING} {LTBLUE} (NTP 模式下無法使用)
+STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}合併建在一起的車站：{ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}允許將不相鄰的車站與附近的車站結合：{ORANGE}{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}使用改善後的裝載演算法：{ORANGE}{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}交通工具逐步裝載：{ORANGE}{STRING}
+STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}通貨膨脹：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}有需求才向車站供貨：{ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}提高橋樑長度限制：{ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}可以下「到機廠」指令：{ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}變更基礎工業的建造方式：{ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :無法建造
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :與其他工業相同
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :需探勘
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}每個市鎮可擁有多個同類型工業：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}同類型工業興建距離不受限制：{ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}永遠於狀態列顯示長日期格式：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}於駕駛側顯示號誌：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}於年末顯示財政視窗：{ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}設定指令時預設選擇「直達」指令：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}車輛排隊 (量子效應)：{ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}滑鼠在視窗邊緣時移動視窗：{ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}可向地方政府行賄：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}允許購買市鎮的專屬運輸權：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}允許流通資金給其他公司：{ORANGE}{STRING}
+STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}不規則形狀車站：{ORANGE}{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}貨物重量倍率，以模擬較重列車：{ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}飛機速度比例：{ORANGE}{STRING} 分之一
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}可在市鎮內興建路邊車站：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}允許興建相鄰車站： {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}允許載入多個 NewGRF 車輛組：{ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}永遠可以興建小機場：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}永遠可以興建小機場：{ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}列車迷路時警告：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}檢查交通工具指令：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :否
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :是，不過停止的交通工具除外
-STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :所有交通工具
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}當交通工具收入為負時警告：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}運輸工具永不過期：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE} 交通工具自動翻新：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}當交通工具在使用年限 {ORANGE}{STRING}{LTBLUE} 個月前/後自動更新
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}自動翻新所需最低餘額：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}錯誤訊息顯示時間：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}於標籤顯示市鎮人口：{ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}列車迷路時警告：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}檢查交通工具指令：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :否
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :是，不過停止的交通工具除外
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :所有交通工具
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}當交通工具收入為負時警告：{ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}運輸工具永不過期：{ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE} 交通工具自動翻新：{ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}當交通工具在使用年限 {ORANGE}{STRING}{LTBLUE} 個月前/後自動更新
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}自動翻新所需最低餘額：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}錯誤訊息顯示時間：{ORANGE}{STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}於標籤顯示市鎮人口：{ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}地形產生器：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :原版
-STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}煉油廠離地圖邊緣的最大距離：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}雪線高度：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}地形起伏度 (只適用於 TerraGenesis)：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :非常平滑
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :平滑
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :高低不平
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :非常粗糙
-STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}樹木分佈演算法：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :無
-STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :原版
-STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :改進版
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}旋轉高度圖：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :逆時針
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :順時針
-STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}平面地圖高度：{ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}地形產生器：{ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :原版
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}煉油廠離地圖邊緣的最大距離：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}雪線高度：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}地形起伏度 (只適用於 TerraGenesis)：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :非常平滑
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :平滑
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :高低不平
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :非常粗糙
+STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}樹木分佈演算法：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :無
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :原版
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :改進版
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}旋轉高度圖：{ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :逆時針
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :順時針
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}平面地圖高度：{ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}車站最長延伸範圍：{ORANGE}{STRING} {RED}注意：過高會使效能下降
-STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}直升機於直升機坪自動維修：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}地形工具列與鐵軌/道路/水道/機場建設合併：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}反轉捲軸方向：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}視野平滑移動：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}使用某些建設工具時顯示度量提示：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}顯示運輸公司的自訂配色：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_LIVERIES_NONE                                :不顯示
-STR_CONFIG_PATCHES_LIVERIES_OWN                                 :自家公司
-STR_CONFIG_PATCHES_LIVERIES_ALL                                 :所有公司
-STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}按 <ENTER> 鍵與小隊交談：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}滑鼠滾輪作用： {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :放大地圖
-STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :捲動地圖
-STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :關閉
-STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}滾輪地圖捲動速度： {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}車站最長延伸範圍：{ORANGE}{STRING} {RED}注意：過高會使效能下降
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}直升機於直升機坪自動維修：{ORANGE}{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}地形工具列與鐵軌/道路/水道/機場建設合併：{ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}反轉捲軸方向：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}視野平滑移動：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}使用某些建設工具時顯示度量提示：{ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}顯示運輸公司的自訂配色：{ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES_NONE                                :不顯示
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :自家公司
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :所有公司
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}按 <ENTER> 鍵與小隊交談：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}滑鼠滾輪作用： {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :放大地圖
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :捲動地圖
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :關閉
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}滾輪地圖捲動速度： {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}右鍵模擬：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command 鍵
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control 鍵
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :無
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}右鍵模擬：{ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command 鍵
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control 鍵
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :無
 
-STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}滑鼠左鍵捲動：{ORANGE}{STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}滑鼠左鍵捲動：{ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}使用 {ORANGE}{STRING}{LTBLUE} 時間格式作為存檔檔名。
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :長格式 (31st Dec 2008)
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :短格式 (31-12-2008)
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :國際格式 (2008-12-31)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}使用 {ORANGE}{STRING}{LTBLUE} 時間格式作為存檔檔名。
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :長格式 (31st Dec 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :短格式 (31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :國際格式 (2008-12-31)
 
-STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}自動在開始新遊戲時暫停：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}使用進階交通工具清單： {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :無
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :自家公司
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :所有公司
-STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}使用裝載進度指示：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :無
-STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :自家公司
-STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :所有公司
-STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}啟用交通工具時刻表：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}顯示時刻表時以 Tick 取代日為單位：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}預設的路軌類型 (將在新遊戲/載入遊戲時生效)：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :傳統鐵路
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :電氣化鐵路
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :單軌
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :磁浮
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :最先可用的路軌
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :最新可用的路軌
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :最常用的路軌
-STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}顯示列車佔用的路徑：{ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}自動在開始新遊戲時暫停：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}使用進階交通工具清單： {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :無
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :自家公司
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :所有公司
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}使用裝載進度指示：{ORANGE}{STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :無
+STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :自家公司
+STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :所有公司
+STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}啟用交通工具時刻表：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}顯示時刻表時以 Tick 取代日為單位：{ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}預設的路軌類型 (將在新遊戲/載入遊戲時生效)：{ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :傳統鐵路
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :電氣化鐵路
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :單軌
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :磁浮
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :最先可用的路軌
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :最新可用的路軌
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :最常用的路軌
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}顯示列車佔用的路徑：{ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}即使沒有適合的交通工具可用也顯示建造工具：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}每位玩家可擁有列車數目：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}每位玩家可擁有車輛數目：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}每位玩家可擁有飛機數目：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}每位玩家可擁有船舶數目：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}即使沒有適合的交通工具可用也顯示建造工具：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}每位玩家可擁有列車數目：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}每位玩家可擁有車輛數目：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}每位玩家可擁有飛機數目：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}每位玩家可擁有船舶數目：{ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}不允許電腦使用鐵路：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}不允許電腦使用汽車：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}不允許電腦使用飛機：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}不允許電腦使用船舶：{ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}不允許電腦使用鐵路：{ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}不允許電腦使用汽車：{ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}不允許電腦使用飛機：{ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}不允許電腦使用船舶：{ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}多人遊戲中允許電腦 AI 加入：{ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}多人遊戲中允許電腦 AI 加入：{ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}列車預設維護間隔：{ORANGE}{STRING} 天/%
-STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}列車預設維護間隔：{ORANGE}關閉
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}汽車預設維護間隔：{ORANGE}{STRING} 天/%
-STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}汽車預設維護間隔：{ORANGE}關閉
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}飛機預設維護間隔：{ORANGE}{STRING} 天/%
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}飛機預設維護間隔：{ORANGE}關閉
-STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}船舶預設維護間隔：{ORANGE}{STRING} 天/%
-STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}船舶預設維護間隔：{ORANGE}關閉
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}關閉運具故障後也不自動維護：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}開啟列車車廂速限：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}停用電氣化鐵道：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}列車預設維護間隔：{ORANGE}{STRING} 天/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}列車預設維護間隔：{ORANGE}關閉
+STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}汽車預設維護間隔：{ORANGE}{STRING} 天/%
+STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}汽車預設維護間隔：{ORANGE}關閉
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}飛機預設維護間隔：{ORANGE}{STRING} 天/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}飛機預設維護間隔：{ORANGE}關閉
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}船舶預設維護間隔：{ORANGE}{STRING} 天/%
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}船舶預設維護間隔：{ORANGE}關閉
+STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}關閉運具故障後也不自動維護：{ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}開啟列車車廂速限：{ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}停用電氣化鐵道：{ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}彩色報紙登場年份：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}開始年份：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}開啟平滑經濟模式 (更多、更小的變動)：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}允許購買其它公司的股票：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}拖拉時每隔：{ORANGE}{STRING} 格自動建造號誌
-STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}自動在指定年份前建造懸臂號誌：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}啟用號誌介面：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}預設的號誌類型：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :閉塞號誌
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :路徑號誌
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :單向路徑號誌
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}按住 Ctrl 點選號誌時要切換的號誌種類：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :僅限閉塞號誌
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :僅限路徑號誌
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :所有號誌
+STR_CONFIG_SETTING_COLORED_NEWS_YEAR                            :{LTBLUE}彩色報紙登場年份：{ORANGE}{STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}開始年份：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}開啟平滑經濟模式 (更多、更小的變動)：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}允許購買其它公司的股票：{ORANGE}{STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}拖拉時每隔：{ORANGE}{STRING} 格自動建造號誌
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}自動在指定年份前建造懸臂號誌：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}啟用號誌介面：{ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}預設的號誌類型：{ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :閉塞號誌
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :路徑號誌
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :單向路徑號誌
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}按住 Ctrl 點選號誌時要切換的號誌種類：{ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :僅限閉塞號誌
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :僅限路徑號誌
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :所有號誌
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :預設
-STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :較佳規劃
-STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :２x２網格
-STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :３x３網格
-STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :隨機
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :預設
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :較佳規劃
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :２x２網格
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :３x３網格
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :隨機
 
-STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}主工具列位置：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :靠左
-STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :置中
-STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :靠右
-STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}視窗吸附距離：{ORANGE}{STRING} px
-STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}視窗吸附距離：{ORANGE}關閉
-STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}市鎮成長速度：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :停滯
-STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :慢
-STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :正常
-STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :快
-STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :非常快
-STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}城鎮升格為城市的比例：{ORANGE}{STRING} 分之一
-STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}城鎮升格為城市的比例：{ORANGE}無
-STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}初始市鎮規模倍率：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}鋪設道路時移除不合理的路面：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}主工具列位置：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :靠左
+STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :置中
+STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :靠右
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}視窗吸附距離：{ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}視窗吸附距離：{ORANGE}關閉
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}市鎮成長速度：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :停滯
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :慢
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :正常
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :快
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :非常快
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}城鎮升格為城市的比例：{ORANGE}{STRING} 分之一
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}城鎮升格為城市的比例：{ORANGE}無
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}初始市鎮規模倍率：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}鋪設道路時移除不合理的路面：{ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_GUI                                          :{ORANGE}介面
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}建造
-STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}交通工具
-STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}車站
-STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}經濟
-STR_CONFIG_PATCHES_AI                                           :{ORANGE}競爭對手
-STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}顯示選項
-STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}互動
-STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}號誌
-STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}貨物裝載
-STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}電腦玩家
-STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}自動更新
-STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}維修
-STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}路線
-STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}列車
-STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}市鎮
-STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}工業
+STR_CONFIG_SETTING_GUI                                          :{ORANGE}介面
+STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}建造
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}交通工具
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}車站
+STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}經濟
+STR_CONFIG_SETTING_AI                                           :{ORANGE}競爭對手
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}顯示選項
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}互動
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}號誌
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}貨物裝載
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}電腦玩家
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}自動更新
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}維修
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}路線
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}列車
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}市鎮
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}工業
 
-STR_CONFIG_PATCHES_DISABLED                                     :關閉
-STR_CONFIG_PATCHES_INT32                                        :{NUM}
-STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_DISABLED                                     :關閉
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
 
-STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}修改設定值
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}修改設定值
 
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}列車的路徑搜尋方式：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(不建議)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
-STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(建議)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}車輛的路徑搜尋方式：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :原版 {RED}(不建議)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(建議)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}船隻的路徑搜尋方式：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :原版 {BLUE}(建議)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(不建議)
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}列車的路徑搜尋方式：{ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(不建議)
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(建議)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}車輛的路徑搜尋方式：{ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :原版 {RED}(不建議)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(建議)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}船隻的路徑搜尋方式：{ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :原版 {BLUE}(建議)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(不建議)
 
 STR_TEMPERATE_LANDSCAPE                                         :溫帶
 STR_SUB_ARCTIC_LANDSCAPE                                        :寒帶
@@ -1370,7 +1370,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}改造�
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}選擇要運輸的貨物種類
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}改造列車以運輸選定的貨物種類
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}無法改造列車...
-STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}維護間隔以百分比計算：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}維護間隔以百分比計算：{ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}修改產量
 
 ############ network gui strings
@@ -1633,8 +1633,8 @@ STR_NETWORK_SEND                                                :{BLACK}傳送
 ############ end network gui strings
 
 
-STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}地圖 X 軸大小：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}地圖 Y 軸大小：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}地圖 X 軸大小：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}地圖 Y 軸大小：{ORANGE}{STRING}
 
 
 ##### PNG-MAP-Loader
@@ -3708,7 +3708,7 @@ STR_AI_DESCRIPTION                                              :敘述：
 ########
 
 ############ town controlled noise level
-STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}允許市鎮限制機場噪音：{ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}允許市鎮限制機場噪音：{ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}市鎮噪音限制：{ORANGE}{COMMA}{BLACK}  最大：{ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}產生噪音：{GOLD}{COMMA}
 ########

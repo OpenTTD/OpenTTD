@@ -1540,7 +1540,7 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *a
 	if (v->u.air.previous_pos != v->u.air.pos) {
 		AircraftEventHandler_EnterTerminal(v, apc);
 		/* on an airport with helipads, a helicopter will always land there
-		 * and get serviced at the same time - patch setting */
+		 * and get serviced at the same time - setting */
 		if (_settings_game.order.serviceathelipad) {
 			if (v->subtype == AIR_HELICOPTER && apc->helipads != NULL) {
 				/* an exerpt of ServiceAircraft, without the invisibility stuff */

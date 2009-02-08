@@ -110,7 +110,7 @@ static void _GenerateWorld(void *arg)
 				for (uint col = 0; col < MapSizeX(); col++) MakeVoid(TileXY(col, 0));
 			}
 
-			/* Make the map the height of the patch setting */
+			/* Make the map the height of the setting */
 			if (_game_mode != GM_MENU) FlatEmptyWorld(_settings_game.game_creation.se_flat_world_height);
 
 			ConvertGroundTilesIntoWaterTiles();

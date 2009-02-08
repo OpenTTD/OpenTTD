@@ -585,7 +585,7 @@ static inline bool CheckAllowRemoveTunnelBridge(TileIndex tile)
 	if (_current_company == OWNER_WATER || _game_mode == GM_EDITOR) return true;
 	/* Obviously if the bridge/tunnel belongs to us, or no-one, we can remove it */
 	if (CheckTileOwnership(tile) || IsTileOwner(tile, OWNER_NONE)) return true;
-	/* Otherwise we can only remove town-owned stuff with extra patch-settings, or cheat */
+	/* Otherwise we can only remove town-owned stuff with extra settings, or cheat */
 	if (IsTileOwner(tile, OWNER_TOWN) && (_settings_game.construction.extra_dynamite || _cheats.magic_bulldozer.value)) return true;
 	return false;
 }

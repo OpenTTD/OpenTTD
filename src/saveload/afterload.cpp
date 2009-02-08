@@ -1215,7 +1215,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	/* A patch option containing the proportion of towns that grow twice as
+	/* A setting containing the proportion of towns that grow twice as
 	 * fast was added in version 54. From version 56 this is now saved in the
 	 * town as cities can be built specifically in the scenario editor. */
 	if (CheckSavegameVersion(56)) {
@@ -1257,7 +1257,7 @@ bool AfterLoadGame()
 	}
 
 	if (CheckSavegameVersion(58)) {
-		/* patch difficulty number_industries other than zero get bumped to +1
+		/* Setting difficulty number_industries other than zero get bumped to +1
 		 * since a new option (very low at position1) has been added */
 		if (_settings_game.difficulty.number_industries > 0) {
 			_settings_game.difficulty.number_industries++;

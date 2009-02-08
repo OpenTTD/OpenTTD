@@ -983,159 +983,159 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(monlimo)
 
 
-STR_CONFIG_PATCHES_OFF                                          :Malaktiva
-STR_CONFIG_PATCHES_ON                                           :Aktiva
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Montru veturilrapidecon en statbreto: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Permesu konstrui sur kliniĝoj kaj bordoj: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permesu pli realgrandaj kaptoregionoj: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permesu forigon de pli da urbaj vojoj, pontoj ktp: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permesu konstrui tre longajn trajnojn: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Trajnoj kaj ŝipoj ne ort-turniĝu: {ORANGE}{STRING} {LTBLUE} (bezonas NPF)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Ligu stacidomojn konstruatajn unu apud la alia: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Uzu plibonigitan ŝarĝalgoritmon: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Laŭgrade ŝarĝu veturilojn: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflacio: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Nur liveru ŝarĝon al stacio se estas peto: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permesu konstruadon de tre longaj pontoj: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Permesu ordenojn por iri al deponejo: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nenio
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kiel aliaj industrioj
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Permesu pliajn similajn industriojn en la sama urbo: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Samtipaj industrioj povas esti konstruataj proksime unu de la alia: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Ĉiam montru longan daton en la statbreto: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Montru signalojn veturflanke: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Montru financan fenestron fine de la jaro: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Vojveturila vicigo (kun kvantum-efektoj): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Ŝovu fenestron se la muso estas ĉe la rando: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permesu subaĉeti la lokajn estrojn: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nekonformaj stacioj: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Pezpliigo pro ŝarĝo por imiti pezajn trajnojn: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permesu trairaj bushaltejoj sur vojoj urboposedataj: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permesu konstrui staciojn apude: {ORANGE}{STRING}
+STR_CONFIG_SETTING_OFF                                          :Malaktiva
+STR_CONFIG_SETTING_ON                                           :Aktiva
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Montru veturilrapidecon en statbreto: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permesu konstrui sur kliniĝoj kaj bordoj: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permesu pli realgrandaj kaptoregionoj: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permesu forigon de pli da urbaj vojoj, pontoj ktp: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permesu konstrui tre longajn trajnojn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Trajnoj kaj ŝipoj ne ort-turniĝu: {ORANGE}{STRING} {LTBLUE} (bezonas NPF)
+STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Ligu stacidomojn konstruatajn unu apud la alia: {ORANGE}{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Uzu plibonigitan ŝarĝalgoritmon: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Laŭgrade ŝarĝu veturilojn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflacio: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Nur liveru ŝarĝon al stacio se estas peto: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Permesu konstruadon de tre longaj pontoj: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Permesu ordenojn por iri al deponejo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nenio
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kiel aliaj industrioj
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Permesu pliajn similajn industriojn en la sama urbo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Samtipaj industrioj povas esti konstruataj proksime unu de la alia: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Ĉiam montru longan daton en la statbreto: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Montru signalojn veturflanke: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Montru financan fenestron fine de la jaro: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Vojveturila vicigo (kun kvantum-efektoj): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Ŝovu fenestron se la muso estas ĉe la rando: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permesu subaĉeti la lokajn estrojn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Nekonformaj stacioj: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Pezpliigo pro ŝarĝo por imiti pezajn trajnojn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permesu trairaj bushaltejoj sur vojoj urboposedataj: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permesu konstrui staciojn apude: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Ĉiam permesu malgrandajn flughavenojn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Ĉiam permesu malgrandajn flughavenojn: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Avertu se trajno perdiĝas: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Atentu veturilajn ordenojn: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ne
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :jes, escepte de haltigitaj veturiloj
-STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :de ĉiuj veturiloj
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Veturiloj neniam eluziĝas: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Aŭtomate anstataŭu veturilon se malnoviĝas: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Anstataŭu {ORANGE}{STRING}{LTBLUE} monatojn antaŭ/post pleja veturilaĝo
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimuma mono por anstataŭado: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Daŭro de erar-mesaĝo: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Montru enloĝantaron en urbnomindikilo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Avertu se trajno perdiĝas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Atentu veturilajn ordenojn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ne
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jes, escepte de haltigitaj veturiloj
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de ĉiuj veturiloj
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Veturiloj neniam eluziĝas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Aŭtomate anstataŭu veturilon se malnoviĝas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Anstataŭu {ORANGE}{STRING}{LTBLUE} monatojn antaŭ/post pleja veturilaĝo
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimuma mono por anstataŭado: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Daŭro de erar-mesaĝo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Montru enloĝantaron en urbnomindikilo: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Landgenerilo: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Origina
-STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksimuma distanco de rando por Oleproduktejoj {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Neĝregiona alto: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Nereguleco de tereno (nur por TerraGenesis) : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Tre Regule
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Regule
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Neregule
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Malregule
-STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Arbometa algoritmo: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Nenia
-STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Origina
-STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Plibonigita
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Altecmapa turniĝo: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Maldekstrume
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Dekstrume
-STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Kiom alta fariĝos scenara mapo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landgenerilo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Origina
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksimuma distanco de rando por Oleproduktejoj {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Neĝregiona alto: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Nereguleco de tereno (nur por TerraGenesis) : {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Tre Regule
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Regule
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Neregule
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Malregule
+STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Arbometa algoritmo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nenia
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Origina
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Plibonigita
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Altecmapa turniĝo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Maldekstrume
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Dekstrume
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Kiom alta fariĝos scenara mapo: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksimuma stacivasteco: {ORANGE}{STRING} {RED}Atentu: Pli alte, malpli rapide
-STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Aŭtomate prizorgu helikopterojn sur helikopterejoj: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligu landaspektan breton al konstruadaj bretoj: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Inversigu skroldirekton: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Montru mezuran konsilbalonon ĉe uzo de konstruiloj: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Montru kompaniajn liverojn: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LIVERIES_NONE                                :Neniuj
-STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propra kompanio
-STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Ĉiuj kompanioj
-STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Preferu teambabiladon per <ENTER>: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funkcio de skrol-rado: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zomi mapon
-STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Skroli mapon
-STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Malaktiva
-STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Mapskrolrada rapido: {ORANGE}{STRING}
-
-
-STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Aŭtomate paŭzu startante novan ludon: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Ĉiuj kompanioj
-STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Ĉiuj kompanioj
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Pli uzata
-
-STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Trajna maksimumo por ĉiu ludanto: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Vojveturila maksimumo por ĉiu ludanto: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Aviadila maksimumo por ĉiu ludanto: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Ŝipa maksimumo por ĉiu ludanto: {ORANGE}{STRING}
-
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Malebligu trajnojn por la komputilo: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Malebligu vojveturilojn por la komputilo: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Malebligu aviadilojn por la komputilo: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Malebligu ŝipojn por la komputilo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maksimuma stacivasteco: {ORANGE}{STRING} {RED}Atentu: Pli alte, malpli rapide
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Aŭtomate prizorgu helikopterojn sur helikopterejoj: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligu landaspektan breton al konstruadaj bretoj: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Inversigu skroldirekton: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Montru mezuran konsilbalonon ĉe uzo de konstruiloj: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Montru kompaniajn liverojn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES_NONE                                :Neniuj
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Propra kompanio
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :Ĉiuj kompanioj
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Preferu teambabiladon per <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funkcio de skrol-rado: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zomi mapon
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Skroli mapon
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Malaktiva
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Mapskrolrada rapido: {ORANGE}{STRING}
 
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Defaŭlta prizorgintervalo por trajnoj: {ORANGE}{STRING} tagoj/%
-STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Defaŭlta prizorgintervalo por trajnoj: {ORANGE}malaktiva
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Defaŭlta prizorgintervalo por vojveturiloj: {ORANGE}{STRING} tagoj/%
-STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Defaŭlta prizorgintervalo por vojveturiloj: {ORANGE}malaktiva
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Defaŭlta prizorgintervalo por aviadiloj: {ORANGE}{STRING} tagoj/%
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Defaŭlta prizorgintervalo por aviadiloj: {ORANGE}malaktiva
-STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Defaŭlta prizorgintervalo por ŝipoj: {ORANGE}{STRING} tagoj/%
-STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Defaŭlta prizorgintervalo por ŝipoj: {ORANGE}malaktiva
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Malŝaltu prizorgadon se rompiĝoj ne okazas: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Aktivigu vagonajn rapideclimojn: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Malŝaltu elektrajn relojn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Aŭtomate paŭzu startante novan ludon: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Ĉiuj kompanioj
+STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Ĉiuj kompanioj
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Pli uzata
 
-STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Koloraj novaĵoj aperas en: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Komenca jaro: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Aktivigu glatan ekonomion (pliaj, etaj ŝanĝoj): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permesu aĉetadon de dividaĵoj en aliaj kompanioj: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Tirante metu signalojn je ĉiuj: {ORANGE}{STRING} kvadrado(j)
-STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Aŭtomate konstruu semaforojn antaŭ: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :ĉiom
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Trajna maksimumo por ĉiu ludanto: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Vojveturila maksimumo por ĉiu ludanto: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Aviadila maksimumo por ĉiu ludanto: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Ŝipa maksimumo por ĉiu ludanto: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :defaŭlte
-STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :pli bonaj vojoj
-STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :kvadrataro de 2x2
-STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :kvadrataro de 3x3
-STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :hazarda
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Malebligu trajnojn por la komputilo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Malebligu vojveturilojn por la komputilo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Malebligu aviadilojn por la komputilo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Malebligu ŝipojn por la komputilo: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Loko de ĉefa ilbreto: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Maldekstre
-STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centre
-STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Dekstre
-STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Fenestroliga distanco: {ORANGE}{STRING} px
-STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fenestroliga distanco: {ORANGE}malaktiva
-STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Urba kreskorapideco: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Ne
-STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Malrapide
-STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normale
-STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Rapide
-STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Tre rapide
-STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Grandeco de urboj kiuj duoble rapide kreskas: {ORANGE}1 en {STRING}
-STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Grandeco de urboj kiuj duoble rapide kreskas: {ORANGE}Ne
-STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Komenca urbgrandeca multobligo: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Interfaco
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Konstruado
-STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Veturiloj
-STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stacioj
-STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomio
-STR_CONFIG_PATCHES_AI                                           :{ORANGE}Konkurantoj
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Defaŭlta prizorgintervalo por trajnoj: {ORANGE}{STRING} tagoj/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Defaŭlta prizorgintervalo por trajnoj: {ORANGE}malaktiva
+STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Defaŭlta prizorgintervalo por vojveturiloj: {ORANGE}{STRING} tagoj/%
+STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Defaŭlta prizorgintervalo por vojveturiloj: {ORANGE}malaktiva
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Defaŭlta prizorgintervalo por aviadiloj: {ORANGE}{STRING} tagoj/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Defaŭlta prizorgintervalo por aviadiloj: {ORANGE}malaktiva
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Defaŭlta prizorgintervalo por ŝipoj: {ORANGE}{STRING} tagoj/%
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Defaŭlta prizorgintervalo por ŝipoj: {ORANGE}malaktiva
+STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Malŝaltu prizorgadon se rompiĝoj ne okazas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Aktivigu vagonajn rapideclimojn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Malŝaltu elektrajn relojn: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_DISABLED                                     :malaktiva
-STR_CONFIG_PATCHES_INT32                                        :{NUM}
-STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_COLORED_NEWS_YEAR                            :{LTBLUE}Koloraj novaĵoj aperas en: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Komenca jaro: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Aktivigu glatan ekonomion (pliaj, etaj ŝanĝoj): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permesu aĉetadon de dividaĵoj en aliaj kompanioj: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Tirante metu signalojn je ĉiuj: {ORANGE}{STRING} kvadrado(j)
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Aŭtomate konstruu semaforojn antaŭ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :ĉiom
 
-STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Ŝanĝu agord-valoron
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :defaŭlte
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :pli bonaj vojoj
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :kvadrataro de 2x2
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :kvadrataro de 3x3
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :hazarda
 
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(malrekomenda)
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Loko de ĉefa ilbreto: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Maldekstre
+STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centre
+STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Dekstre
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Fenestroliga distanco: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fenestroliga distanco: {ORANGE}malaktiva
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Urba kreskorapideco: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ne
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Malrapide
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normale
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rapide
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Tre rapide
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Grandeco de urboj kiuj duoble rapide kreskas: {ORANGE}1 en {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Grandeco de urboj kiuj duoble rapide kreskas: {ORANGE}Ne
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Komenca urbgrandeca multobligo: {ORANGE}{STRING}
+
+STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfaco
+STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruado
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veturiloj
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stacioj
+STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomio
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurantoj
+
+STR_CONFIG_SETTING_DISABLED                                     :malaktiva
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Ŝanĝu agord-valoron
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(malrekomenda)
 
 STR_TEMPERATE_LANDSCAPE                                         :Modera landaspekto
 STR_SUB_ARCTIC_LANDSCAPE                                        :Arktikeca landaspekto
@@ -1259,7 +1259,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Transfor
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Elektu ŝarĝospecon portotan de la trajno
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Transformu trajnon por porti la elektitan ŝarĝotipon
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Ne povas transformi la trajnon...
-STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Prizorgintervala procentaĵo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Prizorgintervala procentaĵo: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ŝanĝu produktadon
 
 
@@ -1491,8 +1491,8 @@ STR_NETWORK_SEND                                                :{BLACK}Sendu
 ############ end network gui strings
 
 
-STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-grandeco de la mapo: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-grandeco de la mapo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-grandeco de la mapo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-grandeco de la mapo: {ORANGE}{STRING}
 
 
 ##### PNG-MAP-Loader
