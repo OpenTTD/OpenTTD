@@ -124,6 +124,7 @@ public:
 		type(br_type),
 		bridges(bl)
 	{
+		this->parent = FindWindowById(WC_BUILD_TOOLBAR, GB(this->type, 15, 2));
 		this->bridges->SetListing(this->last_sorting);
 		this->bridges->SetSortFuncs(this->sorter_funcs);
 		this->bridges->NeedResort();

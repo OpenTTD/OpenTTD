@@ -244,6 +244,7 @@ struct BuildDocksToolbarWindow : Window {
 		delete FindWindowById(WC_BUILD_STATION, 0);
 		delete FindWindowById(WC_BUILD_DEPOT, 0);
 		delete FindWindowById(WC_SELECT_STATION, 0);
+		delete FindWindowById(WC_BUILD_BRIDGE, 0);
 	}
 
 	virtual void OnPlacePresize(Point pt, TileIndex tile_from)

@@ -1129,18 +1129,10 @@ struct SelectStationWindow : Window {
 	{
 		this->vscroll.cap = 6;
 		this->resize.step_height = 10;
-		_thd.lock_pos = true;
-		_thd.lock_size = true;
 
 		FindStationsNearby(this->tile, this->size_x, this->size_y, true);
 
 		this->FindWindowPlacementAndResize(desc);
-	}
-
-	~SelectStationWindow()
-	{
-		_thd.lock_pos = false;
-		_thd.lock_size = false;
 	}
 
 	virtual void OnPaint()
@@ -1260,6 +1252,7 @@ static bool StationJoinerNeeded(CommandContainer cmd, int w, int h)
 void ShowSelectStationIfNeeded(CommandContainer cmd, int w, int h)
 {
 	if (StationJoinerNeeded(cmd, w, h)) {
+		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 		if (BringWindowToFrontById(WC_SELECT_STATION, 0)) return;
 		new SelectStationWindow(&_select_station_desc, cmd, w, h);
 	} else {

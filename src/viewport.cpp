@@ -2190,17 +2190,11 @@ void UpdateTileSelection()
 		/* clear the old selection? */
 		if (_thd.drawstyle) SetSelectionTilesDirty();
 
-		if (!_thd.lock_pos) {
-			_thd.pos = _thd.new_pos;
-			_thd.drawstyle = _thd.new_drawstyle;
-		}
-
-		if (!_thd.lock_size) {
-			_thd.size = _thd.new_size;
-			_thd.dirty = 0xff;
-		}
-
+		_thd.drawstyle = _thd.new_drawstyle;
+		_thd.pos = _thd.new_pos;
+		_thd.size = _thd.new_size;
 		_thd.outersize = _thd.new_outersize;
+		_thd.dirty = 0xff;
 
 		/* draw the new selection? */
 		if (_thd.new_drawstyle) SetSelectionTilesDirty();
@@ -2640,7 +2634,7 @@ calc_heightdiff_single_direction:;
 			y = sy + Clamp(y - sy, -limit, limit);
 			} /* Fallthrough */
 		case VPM_X_AND_Y: { /* drag an X by Y area */
-			if (_settings_client.gui.measure_tooltip && !_thd.lock_size) {
+			if (_settings_client.gui.measure_tooltip) {
 				static const StringID measure_strings_area[] = {
 					STR_NULL, STR_NULL, STR_MEASURE_AREA, STR_MEASURE_AREA_HEIGHTDIFF
 				};
@@ -2734,10 +2728,6 @@ void SetObjectToPlaceWnd(CursorID icon, SpriteID pal, ViewportHighlightMode mode
 
 void SetObjectToPlace(CursorID icon, SpriteID pal, ViewportHighlightMode mode, WindowClass window_class, WindowNumber window_num)
 {
-	/* unlock position and size */
-	_thd.lock_pos = false;
-	_thd.lock_size = false;
-
 	/* undo clicking on button and drag & drop */
 	if (_thd.place_mode != VHM_NONE || _special_mouse_mode == WSM_DRAGDROP) {
 		Window *w = FindWindowById(_thd.window_class, _thd.window_number);

@@ -71,9 +71,6 @@ struct TileHighlightData {
 	ViewportPlaceMethod select_method;
 	ViewportDragDropSelectionProcess select_proc;
 
-	bool lock_pos;  //< If position changes are taken, or not
-	bool lock_size; //< If size changes are taken, or not
-
 	TileIndex redsq;
 };
 
