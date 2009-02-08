@@ -298,6 +298,7 @@ enum RailToolbarWidgets {
  */
 static void ToggleRailButton_Remove(Window *w)
 {
+	DeleteWindowById(WC_SELECT_STATION, 0);
 	w->ToggleWidgetLoweredState(RTW_REMOVE);
 	w->InvalidateWidget(RTW_REMOVE);
 	_remove_button_clicked = w->IsWidgetLowered(RTW_REMOVE);

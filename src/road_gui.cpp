@@ -368,6 +368,8 @@ static void BuildRoadClick_Tunnel(Window *w)
 static void BuildRoadClick_Remove(Window *w)
 {
 	if (w->IsWidgetDisabled(RTW_REMOVE)) return;
+
+	DeleteWindowById(WC_SELECT_STATION, 0);
 	ToggleRoadButton_Remove(w);
 	SndPlayFx(SND_15_BEEP);
 }
