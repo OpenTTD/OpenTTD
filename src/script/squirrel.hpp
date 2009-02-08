@@ -186,6 +186,11 @@ public:
 	 * Release a SQ object.
 	 */
 	void ReleaseObject(HSQOBJECT *ptr) { sq_release(this->vm, ptr); }
+
+	/**
+	 * Tell the VM to remove \c amount ops from the number of ops till suspend.
+	 */
+	static void DecreaseOps(HSQUIRRELVM vm, int amount);
 };
 
 #endif /* SQUIRREL_HPP */

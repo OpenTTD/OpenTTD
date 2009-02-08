@@ -454,3 +454,8 @@ void Squirrel::InsertResult(int result)
 	vm->GetAt(vm->_stackbase + vm->_suspended_target) = vm->GetUp(-1);
 	vm->Pop();
 }
+
+/* static */ void Squirrel::DecreaseOps(HSQUIRRELVM vm, int ops)
+{
+	vm->DecreaseOps(ops);
+}

@@ -6,6 +6,7 @@
 #include "ai_abstractlist.hpp"
 #include "../../debug.h"
 #include "../../core/alloc_func.hpp"
+#include "../../script/squirrel.hpp"
 
 /**
  * Base class for any AIAbstractList sorter.
@@ -818,6 +819,8 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm) {
 
 		(*iter).second = (int32)value;
 		this->buckets[(int32)value].insert((*iter).first);
+
+		Squirrel::DecreaseOps(vm, 5);
 	}
 
 	sq_release(vm, &obj_func);
