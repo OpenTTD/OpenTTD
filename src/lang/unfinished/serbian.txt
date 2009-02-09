@@ -24,20 +24,24 @@ STR_000D_ACCEPTS                                                :{BLACK}Prihvata
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :putnici
 STR_000F_PASSENGERS.aku                                         :putnike
-STR_0010_COAL                                                   :Ugalj
+STR_000F_PASSENGERS.gen                                         :putnika
+STR_000F_PASSENGERS.big                                         :Putnici
+STR_0010_COAL                                                   :ugalj
 STR_0010_COAL.aku                                               :ugalj
+STR_0010_COAL.gen                                               :uglja
+STR_0010_COAL.big                                               :Ugalj
 STR_0011_MAIL                                                   :pošta
 STR_0011_MAIL.aku                                               :poštu
-STR_0011_MAIL.gen                                               :pošte
 STR_0011_MAIL.big                                               :Pošta
+STR_0011_MAIL.gen                                               :pošte
 STR_0012_OIL                                                    :nafta
 STR_0012_OIL.aku                                                :naftu
-STR_0012_OIL.gen                                                :nafte
 STR_0012_OIL.big                                                :Nafta
+STR_0012_OIL.gen                                                :nafte
 STR_0013_LIVESTOCK                                              :stoka
 STR_0013_LIVESTOCK.aku                                          :stoku
-STR_0013_LIVESTOCK.gen                                          :stoke
 STR_0013_LIVESTOCK.big                                          :Stoka
+STR_0013_LIVESTOCK.gen                                          :stoke
 STR_0014_GOODS                                                  :roba
 STR_0014_GOODS.aku                                              :robu
 STR_0015_GRAIN                                                  :žito
@@ -50,209 +54,209 @@ STR_0018_STEEL                                                  :čelik
 STR_0018_STEEL.aku                                              :čelik
 STR_0019_VALUABLES                                              :dragocenosti
 STR_0019_VALUABLES.aku                                          :dragocenosti
-STR_0019_VALUABLES.gen                                          :dragocenosti
 STR_0019_VALUABLES.big                                          :Dragocenosti
+STR_0019_VALUABLES.gen                                          :dragocenosti
 STR_001A_COPPER_ORE                                             :ruda bakra
 STR_001A_COPPER_ORE.aku                                         :rudu bakra
-STR_001A_COPPER_ORE.gen                                         :rude bakra
 STR_001A_COPPER_ORE.big                                         :Ruda bakra
+STR_001A_COPPER_ORE.gen                                         :rude bakra
 STR_001B_MAIZE                                                  :kukuruz
 STR_001B_MAIZE.aku                                              :kukuruz
-STR_001B_MAIZE.gen                                              :kukuruza
 STR_001B_MAIZE.big                                              :Kukuruz
+STR_001B_MAIZE.gen                                              :kukuruza
 STR_001C_FRUIT                                                  :voće
 STR_001C_FRUIT.aku                                              :voće
-STR_001C_FRUIT.gen                                              :voća
 STR_001C_FRUIT.big                                              :Voće
+STR_001C_FRUIT.gen                                              :voća
 STR_001D_DIAMONDS                                               :dijamanti
 STR_001D_DIAMONDS.aku                                           :dijamante
-STR_001D_DIAMONDS.gen                                           :dijamanata
 STR_001D_DIAMONDS.big                                           :Dijamanti
+STR_001D_DIAMONDS.gen                                           :dijamanata
 STR_001E_FOOD                                                   :hrana
 STR_001E_FOOD.aku                                               :hranu
-STR_001E_FOOD.gen                                               :hrane
 STR_001E_FOOD.big                                               :Hrana
+STR_001E_FOOD.gen                                               :hrane
 STR_001F_PAPER                                                  :papir
 STR_001F_PAPER.aku                                              :papir
-STR_001F_PAPER.gen                                              :papira
 STR_001F_PAPER.big                                              :Papir
+STR_001F_PAPER.gen                                              :papira
 STR_0020_GOLD                                                   :zlato
 STR_0020_GOLD.aku                                               :zlato
-STR_0020_GOLD.gen                                               :zlata
 STR_0020_GOLD.big                                               :Zlato
+STR_0020_GOLD.gen                                               :zlata
 STR_0021_WATER                                                  :voda
 STR_0021_WATER.aku                                              :vodu
-STR_0021_WATER.gen                                              :vode
 STR_0021_WATER.big                                              :Voda
+STR_0021_WATER.gen                                              :vode
 STR_0022_WHEAT                                                  :pšenica
 STR_0022_WHEAT.aku                                              :pšenicu
-STR_0022_WHEAT.gen                                              :pšenice
 STR_0022_WHEAT.big                                              :Pšenica
+STR_0022_WHEAT.gen                                              :pšenice
 STR_0023_RUBBER                                                 :kaučuk
 STR_0023_RUBBER.aku                                             :kaučuk
-STR_0023_RUBBER.gen                                             :kaučuka
 STR_0023_RUBBER.big                                             :Kaučuk
+STR_0023_RUBBER.gen                                             :kaučuka
 STR_0024_SUGAR                                                  :šećer
 STR_0024_SUGAR.aku                                              :šećer
-STR_0024_SUGAR.gen                                              :šećera
 STR_0024_SUGAR.big                                              :Šećer
+STR_0024_SUGAR.gen                                              :šećera
 STR_0025_TOYS                                                   :igračke
 STR_0025_TOYS.aku                                               :igračke
-STR_0025_TOYS.gen                                               :igračaka
 STR_0025_TOYS.big                                               :Igračke
+STR_0025_TOYS.gen                                               :igračaka
 STR_0026_CANDY                                                  :slatkiši
 STR_0026_CANDY.aku                                              :slatkiše
-STR_0026_CANDY.gen                                              :slatkiša
 STR_0026_CANDY.big                                              :Slatkiši
+STR_0026_CANDY.gen                                              :slatkiša
 STR_0027_COLA                                                   :kola
 STR_0027_COLA.aku                                               :kolu
-STR_0027_COLA.gen                                               :kole
 STR_0027_COLA.big                                               :Kola
+STR_0027_COLA.gen                                               :kole
 STR_0028_COTTON_CANDY                                           :šećerna vuna
 STR_0028_COTTON_CANDY.aku                                       :šećernu vunu
-STR_0028_COTTON_CANDY.gen                                       :šećerne vune
 STR_0028_COTTON_CANDY.big                                       :Šećerna vuna
+STR_0028_COTTON_CANDY.gen                                       :šećerne vune
 STR_0029_BUBBLES                                                :mehurići
 STR_0029_BUBBLES.aku                                            :mehuriće
-STR_0029_BUBBLES.gen                                            :mehurića
 STR_0029_BUBBLES.big                                            :Mehurići
+STR_0029_BUBBLES.gen                                            :mehurića
 STR_002A_TOFFEE                                                 :karamele
 STR_002A_TOFFEE.aku                                             :karamele
-STR_002A_TOFFEE.gen                                             :karamela
 STR_002A_TOFFEE.big                                             :Karamele
+STR_002A_TOFFEE.gen                                             :karamela
 STR_002B_BATTERIES                                              :baterije
 STR_002B_BATTERIES.aku                                          :baterije
-STR_002B_BATTERIES.gen                                          :baterija
 STR_002B_BATTERIES.big                                          :Baterije
+STR_002B_BATTERIES.gen                                          :baterija
 STR_002C_PLASTIC                                                :plastika
 STR_002C_PLASTIC.aku                                            :plastiku
-STR_002C_PLASTIC.gen                                            :plastike
 STR_002C_PLASTIC.big                                            :Plastika
+STR_002C_PLASTIC.gen                                            :plastike
 STR_002D_FIZZY_DRINKS                                           :Gazirana PiÄa
 STR_002D_FIZZY_DRINKS.aku                                       :gazirana pića
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :putnik
 STR_002F_PASSENGER.aku                                          :putnika
-STR_002F_PASSENGER.gen                                          :putnika
 STR_002F_PASSENGER.big                                          :Putnik
+STR_002F_PASSENGER.gen                                          :putnika
 STR_0030_COAL                                                   :ugalj
 STR_0030_COAL.aku                                               :ugalj
-STR_0030_COAL.gen                                               :uglja
 STR_0030_COAL.big                                               :Ugalj
+STR_0030_COAL.gen                                               :uglja
 STR_0031_MAIL                                                   :pošta
 STR_0031_MAIL.aku                                               :poštu
-STR_0031_MAIL.gen                                               :pošte
 STR_0031_MAIL.big                                               :Pošta
+STR_0031_MAIL.gen                                               :pošte
 STR_0032_OIL                                                    :nafta
 STR_0032_OIL.aku                                                :naftu
-STR_0032_OIL.gen                                                :nafte
 STR_0032_OIL.big                                                :Nafta
+STR_0032_OIL.gen                                                :nafte
 STR_0033_LIVESTOCK                                              :stoka
 STR_0033_LIVESTOCK.aku                                          :stoku
-STR_0033_LIVESTOCK.gen                                          :stoke
 STR_0033_LIVESTOCK.big                                          :Stoka
+STR_0033_LIVESTOCK.gen                                          :stoke
 STR_0034_GOODS                                                  :roba
 STR_0034_GOODS.aku                                              :robu
-STR_0034_GOODS.gen                                              :robe
 STR_0034_GOODS.big                                              :Roba
+STR_0034_GOODS.gen                                              :robe
 STR_0035_GRAIN                                                  :žito
 STR_0035_GRAIN.aku                                              :žito
-STR_0035_GRAIN.gen                                              :žita
 STR_0035_GRAIN.big                                              :Žito
+STR_0035_GRAIN.gen                                              :žita
 STR_0036_WOOD                                                   :drvna građa
 STR_0036_WOOD.aku                                               :drvnu građu
-STR_0036_WOOD.gen                                               :drvne građe
 STR_0036_WOOD.big                                               :Drvna građa
+STR_0036_WOOD.gen                                               :drvne građe
 STR_0037_IRON_ORE                                               :ruda gvožđa
 STR_0037_IRON_ORE.aku                                           :rudu gvožđa
-STR_0037_IRON_ORE.gen                                           :rude gvožđa
 STR_0037_IRON_ORE.big                                           :Ruda gvožđa
+STR_0037_IRON_ORE.gen                                           :rude gvožđa
 STR_0038_STEEL                                                  :čelik
 STR_0038_STEEL.aku                                              :čelik
-STR_0038_STEEL.gen                                              :čelika
 STR_0038_STEEL.big                                              :Čelik
+STR_0038_STEEL.gen                                              :čelika
 STR_0039_VALUABLES                                              :dragocenosti
 STR_0039_VALUABLES.aku                                          :dragocenosti
-STR_0039_VALUABLES.gen                                          :dragocenosti
 STR_0039_VALUABLES.big                                          :Dragocenosti
+STR_0039_VALUABLES.gen                                          :dragocenosti
 STR_003A_COPPER_ORE                                             :ruda bakra
 STR_003A_COPPER_ORE.aku                                         :rudu bakra
-STR_003A_COPPER_ORE.gen                                         :rude bakra
 STR_003A_COPPER_ORE.big                                         :Ruda bakra
+STR_003A_COPPER_ORE.gen                                         :rude bakra
 STR_003B_MAIZE                                                  :kukuruz
 STR_003B_MAIZE.aku                                              :kukuruz
-STR_003B_MAIZE.gen                                              :kukuruza
 STR_003B_MAIZE.big                                              :Kukuruz
+STR_003B_MAIZE.gen                                              :kukuruza
 STR_003C_FRUIT                                                  :VoÄe
 STR_003C_FRUIT.aku                                              :voće
 STR_003D_DIAMOND                                                :dijamant
 STR_003D_DIAMOND.aku                                            :dijamant
-STR_003D_DIAMOND.gen                                            :dijamanta
 STR_003D_DIAMOND.big                                            :Dijamant
+STR_003D_DIAMOND.gen                                            :dijamanta
 STR_003E_FOOD                                                   :hrana
 STR_003E_FOOD.aku                                               :hranu
-STR_003E_FOOD.gen                                               :hrane
 STR_003E_FOOD.big                                               :Hrana
+STR_003E_FOOD.gen                                               :hrane
 STR_003F_PAPER                                                  :papir
 STR_003F_PAPER.aku                                              :papir
-STR_003F_PAPER.gen                                              :papira
 STR_003F_PAPER.big                                              :Papir
+STR_003F_PAPER.gen                                              :papira
 STR_0040_GOLD                                                   :zlato
 STR_0040_GOLD.aku                                               :zlato
-STR_0040_GOLD.gen                                               :zlata
 STR_0040_GOLD.big                                               :Zlato
+STR_0040_GOLD.gen                                               :zlata
 STR_0041_WATER                                                  :voda
 STR_0041_WATER.aku                                              :vodu
-STR_0041_WATER.gen                                              :vode
 STR_0041_WATER.big                                              :Voda
+STR_0041_WATER.gen                                              :vode
 STR_0042_WHEAT                                                  :pšenica
 STR_0042_WHEAT.aku                                              :pšenicu
-STR_0042_WHEAT.gen                                              :pšenice
 STR_0042_WHEAT.big                                              :Pšenica
+STR_0042_WHEAT.gen                                              :pšenice
 STR_0043_RUBBER                                                 :kaučuk
 STR_0043_RUBBER.aku                                             :kaučuk
-STR_0043_RUBBER.gen                                             :kaučuka
 STR_0043_RUBBER.big                                             :Kaučuk
+STR_0043_RUBBER.gen                                             :kaučuka
 STR_0044_SUGAR                                                  :šećer
 STR_0044_SUGAR.aku                                              :šećer
-STR_0044_SUGAR.gen                                              :šećera
 STR_0044_SUGAR.big                                              :Šećer
+STR_0044_SUGAR.gen                                              :šećera
 STR_0045_TOY                                                    :igračka
 STR_0045_TOY.aku                                                :igračku
-STR_0045_TOY.gen                                                :igračke
 STR_0045_TOY.big                                                :Igračka
+STR_0045_TOY.gen                                                :igračke
 STR_0046_CANDY                                                  :slatkiš
 STR_0046_CANDY.aku                                              :slatkiš
-STR_0046_CANDY.gen                                              :slatkiša
 STR_0046_CANDY.big                                              :Slatkiš
+STR_0046_CANDY.gen                                              :slatkiša
 STR_0047_COLA                                                   :kola
 STR_0047_COLA.aku                                               :kolu
-STR_0047_COLA.gen                                               :kole
 STR_0047_COLA.big                                               :Kola
+STR_0047_COLA.gen                                               :kole
 STR_0048_COTTON_CANDY                                           :šećerna vuna
 STR_0048_COTTON_CANDY.aku                                       :šećernu vunu
-STR_0048_COTTON_CANDY.gen                                       :šećerne vune
 STR_0048_COTTON_CANDY.big                                       :Šećerna vuna
+STR_0048_COTTON_CANDY.gen                                       :šećerne vune
 STR_0049_BUBBLE                                                 :mehurić
 STR_0049_BUBBLE.aku                                             :mehurić
-STR_0049_BUBBLE.gen                                             :mehurića
 STR_0049_BUBBLE.big                                             :Mehurić
+STR_0049_BUBBLE.gen                                             :mehurića
 STR_004A_TOFFEE                                                 :karamela
 STR_004A_TOFFEE.aku                                             :karamelu
-STR_004A_TOFFEE.gen                                             :karamele
 STR_004A_TOFFEE.big                                             :Karamela
+STR_004A_TOFFEE.gen                                             :karamele
 STR_004B_BATTERY                                                :baterija
 STR_004B_BATTERY.aku                                            :bateriju
-STR_004B_BATTERY.gen                                            :baterije
 STR_004B_BATTERY.big                                            :Baterija
+STR_004B_BATTERY.gen                                            :baterije
 STR_004C_PLASTIC                                                :plastika
 STR_004C_PLASTIC.aku                                            :plastiku
-STR_004C_PLASTIC.gen                                            :plastike
 STR_004C_PLASTIC.big                                            :Plastika
+STR_004C_PLASTIC.gen                                            :plastike
 STR_004D_FIZZY_DRINK                                            :gazirano piće
 STR_004D_FIZZY_DRINK.aku                                        :gazirano piće
-STR_004D_FIZZY_DRINK.gen                                        :gaziranog pića
 STR_004D_FIZZY_DRINK.big                                        :Gazirano piće
+STR_004D_FIZZY_DRINK.gen                                        :gaziranog pića
 STR_QUANTITY_PASSENGERS                                         :{COMMA} putnik{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} nad ugalj
 STR_QUANTITY_MAIL                                               :{COMMA} torba{P "" s} nad pošta
@@ -351,11 +355,11 @@ STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFON
 STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Farma
 STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fabrika
 STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Štamparija
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Naftni izvori
+STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Naftna bušotina
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Rudnik gvožđa
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Železara
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banka
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Papirna industrija
+STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Fabrika papira
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Rudnik zlata
 STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Prehrambeni kombinat
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Rudnik dijamanata
@@ -368,7 +372,7 @@ STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFON
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Šuma šećerne vune
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Fabrika slatkiša
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Plantaža baterija
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Izvori kole
+STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Izvor kole
 STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Prodavnica igračaka
 STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Fabrika igračaka
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Gejziri plastike
@@ -490,13 +494,13 @@ STR_016E                                                        :{TINYFONT}{STRI
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Pauziraj igru
-STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Sačuvaj i prekini igru, i izađi
-STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Prikaži spiska svih stanica kompanije
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Sačuvaj poziciju, prekini igru, izađi
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Prikaži spisak svih stanica kompanije
 STR_0174_DISPLAY_MAP                                            :{BLACK}Prikaži mape, dodatne poglede, spisak znakova
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Prikaži mape, popis naselja
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Prikaži popis naselja
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Prikaži finansijsko stanje kompanije
-STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Prikaži opšte informacije o kompaniji
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Prikaži opšte podatke kompanije
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Prikaži grafikone
 STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Prikaži tabele lige kompanija
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Prikaži spisak svih vozova kompanije
@@ -526,7 +530,7 @@ STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Prikaži
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Prikaži industrije na mapi
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Prikaži transportne rute na mapi
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Prikaži vegetaciju na mapi
-STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Prikaži vlasnike na mapi
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Prikaži vlasnike zemljišta na mapi
 STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Uključi/isključi imena naselja na mapi
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Ovogodišnja zarada: {CURRENCY} (prošle godine: {CURRENCY})
 
@@ -535,20 +539,18 @@ STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLAC
 
 STR_019F_TRAIN                                                  :voz
 STR_019F_TRAIN.aku                                              :voz
-STR_019F_TRAIN.gen                                              :voza
 STR_019F_TRAIN.big                                              :Voz
+STR_019F_TRAIN.gen                                              :voza
 STR_019C_ROAD_VEHICLE                                           :drumsko vozilo
 STR_019C_ROAD_VEHICLE.aku                                       :drumsko vozilo
-STR_019C_ROAD_VEHICLE.gen                                       :drumskog vozila
 STR_019C_ROAD_VEHICLE.big                                       :Drumsko vozilo
+STR_019C_ROAD_VEHICLE.gen                                       :drumskog vozila
 STR_019E_SHIP                                                   :brod
 STR_019E_SHIP.aku                                               :brod
-STR_019E_SHIP.gen                                               :broda
 STR_019E_SHIP.big                                               :Brod
+STR_019E_SHIP.gen                                               :broda
 STR_019D_AIRCRAFT                                               :letelica
-STR_019D_AIRCRAFT.aku                                           :Letelicu
-STR_019D_AIRCRAFT.gen                                           :Letelice
-STR_019D_AIRCRAFT.big                                           :Letelica
+STR_019D_AIRCRAFT.aku                                           :letelicu
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} zastareva
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} previše zastareva
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} previše zastareva i hitno bi ga/je trebalo zameniti
@@ -617,7 +619,7 @@ STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Skoči n
 STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Skoči na sledeću numeru u izboru
 STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Prekini muziku
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Pusti muziku
-STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Pomerati klizače za promenu jačine muzike i zvučnih efekata
+STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Pomerajte klizače za promenu jačine muzike i zvučnih efekata
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
@@ -645,7 +647,7 @@ STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klik na 
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Uključi/isključi nasumičan izbor pri puštanju
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Prikaži prozor za izbor muzičkih numera
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klik na uslugu centrira pogled na industriju/naselje
-STR_01FE_DIFFICULTY                                             :{BLACK}Težina igre ({STRING})
+STR_01FE_DIFFICULTY                                             :{BLACK}Težina igre: ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Poslednja poruka/izveštaj
 STR_0201_MESSAGE_SETTINGS                                       :Podešavanja poruka
@@ -653,7 +655,7 @@ STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Prikaži
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Opcije poruka
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Vrste poruka:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Dolazak prvog vozila na igračevu stanicu
-STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Dolazak prvog vozila na protivničku stanicu
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Dolazak prvog vozila na suparničku stanicu
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Udesi/nepogode
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informacije o kompaniji
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Promene u ekonomiji
@@ -662,16 +664,23 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Nova vo
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Promene u prihvatanju tovara
 STR_020E_SUBSIDIES                                              :{YELLOW}Subvencije
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Opšte informacije
-STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...je predaleko od prethodne destinacije
+STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...previše udaljeno od prethodne destinacije
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Najbolje kompanije koje su dostigle {NUM}{}({STRING} nivo)
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Biznismen
+STR_0213_BUSINESSMAN.gen                                        :biznismena
 STR_0214_ENTREPRENEUR                                           :Privrednik
+STR_0214_ENTREPRENEUR.gen                                       :privrednika
 STR_0215_INDUSTRIALIST                                          :Industrijalac
+STR_0215_INDUSTRIALIST.gen                                      :industrijalca
 STR_0216_CAPITALIST                                             :Kapitalista
+STR_0216_CAPITALIST.gen                                         :kapitaliste
 STR_0217_MAGNATE                                                :Magnat
+STR_0217_MAGNATE.gen                                            :magnata
 STR_0218_MOGUL                                                  :Mogul
+STR_0218_MOGUL.gen                                              :mogula
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Tajkun veka
+STR_0219_TYCOON_OF_THE_CENTURY.gen                              :tajkuna veka
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} dostiže status '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME}, vlasnik kompanije {COMPANY} je dostigao status '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
@@ -681,7 +690,7 @@ STR_0223_LAND_GENERATION                                        :{WHITE}Generato
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Uvećaj područje koje treba sniziti/povisiti
-STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Smanje područje koje treba sniziti/povisiti
+STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Smanji područje koje treba sniziti/povisiti
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generiši nov nasumičan teren
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Obnovi reljef
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Obnovi reljef
@@ -694,131 +703,131 @@ STR_0234_NEW_TOWN                                               :{BLACK}Novo nas
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Podigni novo naselje
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Ovde je nemoguće izgraditi naselje...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...previše blizu ivici mape
-STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...previše blizu drugom naselju
-STR_0239_SITE_UNSUITABLE                                        :{WHITE}...mesto je neodgovarajuće
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...drugo naselje je previše blizu
+STR_0239_SITE_UNSUITABLE                                        :{WHITE}...mesto je neadekvatno
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...previše naselja
-STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Uvećaj veličinu naselja
+STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Uvećaj površinu naselja
 STR_023C_EXPAND                                                 :{BLACK}Proširi
-STR_023D_RANDOM_TOWN                                            :{BLACK}Nasumično Naselje
+STR_023D_RANDOM_TOWN                                            :{BLACK}Nasumično naselje
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Izgradi naselje na nasumičnoj lokaciji
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Stvaranje Industrije
-STR_0240_COAL_MINE                                              :{BLACK}Rudnik Uglja
-STR_0241_POWER_STATION                                          :{BLACK}Elektrana
-STR_0242_SAWMILL                                                :{BLACK}Pilana
-STR_0243_FOREST                                                 :{BLACK}Šuma
-STR_0244_OIL_REFINERY                                           :{BLACK}Naftna Rafinerija
-STR_0245_OIL_RIG                                                :{BLACK}Naftna Platforma
-STR_0246_FACTORY                                                :{BLACK}Fabrika
-STR_0247_STEEL_MILL                                             :{BLACK}Čeličana
-STR_0248_FARM                                                   :{BLACK}Farma
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Rudnik Gvozdene Rude
-STR_024A_OIL_WELLS                                              :{BLACK}Bunari Nafte
-STR_024B_BANK                                                   :{BLACK}Banka
-STR_024C_PAPER_MILL                                             :{BLACK}Fabrika Papira
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Postrojenje Za Obradu Hrane
-STR_024E_PRINTING_WORKS                                         :{BLACK}Štamparija
-STR_024F_GOLD_MINE                                              :{BLACK}Rudnik Zlata
-STR_0250_LUMBER_MILL                                            :{BLACK}Fabrika Za Obradu Drveta
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Plantaža Voća
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Plantaža Gume
-STR_0253_WATER_SUPPLY                                           :{BLACK}Izvor Vode
-STR_0254_WATER_TOWER                                            :{BLACK}Vodotoranj
-STR_0255_DIAMOND_MINE                                           :{BLACK}Rudnik Dijamanata
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Rudnik Bakarne Rude
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Šuma Šećerne Pene
-STR_0258_CANDY_FACTORY                                          :{BLACK}Fabrika Slatkiša
-STR_0259_BATTERY_FARM                                           :{BLACK}Farma Baterija
-STR_025A_COLA_WELLS                                             :{BLACK}Bunari Kole
-STR_025B_TOY_SHOP                                               :{BLACK}Prodavnica Igračaka
-STR_025C_TOY_FACTORY                                            :{BLACK}Fabrika Igračaka
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Fontane Plastike
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Fabrika Gaziranih Pića
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Generator Mehurića
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Karemelom
-STR_0261_SUGAR_MINE                                             :{BLACK}Rudnik Šećera
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Izgradi Rudnik Uglja
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Izgradi Elektranu
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Izgradi Pilanu
-STR_0265_PLANT_FOREST                                           :{BLACK}Zasadi Šumu
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Izgradi Naftnu Rafineriju
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Izgradi Naftnu Bušotinu (Samo može da se postavi blizu ivica mape)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Izgradi Fabriku
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Izgradi Čeličanu
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Izgradi Farmu
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Izgradi Rudnik Gvozdene Rude
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Izgradi Bunare Nafte
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Izgradi Banku (Može biti izgrađena samo u naseljima sa populacijom većom od 1200 stanovnika)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Izgradi Fabriku Za Obradu Papira
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Izgradi Postrojenje Za Obradu Hrane
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Izgradi Štampariju
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Izgradi Rudnik Zlata
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Izgradi Banku (Može biti izgrađena samo u naseljima)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Izgradi Fabriku Za Obradu Drveta (da raščisti prašumu i proizvede Drvo)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Zasadi Plantažu Voća
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Zasadi Plantažu Gume
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Izgradi Izvor Vode
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Izgradi Vodotoranj (Može biti izgrađen samo u naseljima)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Izgradi Rudnik Dijamanata
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Izgradi Rudnik Bakarne Rude
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Zasadi Šumu Šećerne Pene
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Izgradi Fabriku Slatkiša
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Izgradi Farmu Baterija
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Izgradi Bunare Kole
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Izgradi Prodavnicu Igračaka
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Izgradi Fabriku Igračaka
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Izgradi Fontane Plastike
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Izgradi Fabriku Gaziranih Pića
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Izgradi Generator Mehurića
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Izgradi Karamelom
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Izgradi Rudnik Šećera
-STR_0285_CAN_T_BUILD_HERE                                       :{WHITE} {STRING} ne može da se izgradi ovde ...
-STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...prvo mora da se izgradi naselje
-STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...samo jedno dozvoljeno po naselju
-STR_0288_PLANT_TREES                                            :{BLACK}Zasadi drveće
-STR_0289_PLACE_SIGN                                             :{BLACK}Postavi znak
-STR_028A_RANDOM_TREES                                           :{BLACK}Nasumično Drveće
-STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Zasadi drveće nasumično preko reljefa
-STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Postavi kamenite delove na reljef
+STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Generator industrije
+STR_0240_COAL_MINE                                              :{BLACK}rudnik uglja
+STR_0241_POWER_STATION                                          :{BLACK}termoelektrana
+STR_0242_SAWMILL                                                :{BLACK}pilana
+STR_0243_FOREST                                                 :{BLACK}šuma
+STR_0244_OIL_REFINERY                                           :{BLACK}rafinerija nafte
+STR_0245_OIL_RIG                                                :{BLACK}naftna platforma
+STR_0246_FACTORY                                                :{BLACK}fabrika
+STR_0247_STEEL_MILL                                             :{BLACK}železara
+STR_0248_FARM                                                   :{BLACK}farma
+STR_0249_IRON_ORE_MINE                                          :{BLACK}rudnik gvožđa
+STR_024A_OIL_WELLS                                              :{BLACK}naftna bušotina
+STR_024B_BANK                                                   :{BLACK}banka
+STR_024C_PAPER_MILL                                             :{BLACK}fabrika papira
+STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}prehrambeni kombinat
+STR_024E_PRINTING_WORKS                                         :{BLACK}štamparija
+STR_024F_GOLD_MINE                                              :{BLACK}rudnik zlata
+STR_0250_LUMBER_MILL                                            :{BLACK}drvni kombinat
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}plantaža voća
+STR_0252_RUBBER_PLANTATION                                      :{BLACK}plantaža kaučuka
+STR_0253_WATER_SUPPLY                                           :{BLACK}izvor vode
+STR_0254_WATER_TOWER                                            :{BLACK}vodotoranj
+STR_0255_DIAMOND_MINE                                           :{BLACK}rudnik dijamanata
+STR_0256_COPPER_ORE_MINE                                        :{BLACK}rudnik bakra
+STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}šuma šećerne vune
+STR_0258_CANDY_FACTORY                                          :{BLACK}fabrika slatkiša
+STR_0259_BATTERY_FARM                                           :{BLACK}farma baterija
+STR_025A_COLA_WELLS                                             :{BLACK}izvor kole
+STR_025B_TOY_SHOP                                               :{BLACK}prodavnica igračaka
+STR_025C_TOY_FACTORY                                            :{BLACK}fabrika igračaka
+STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}gejziri plastike
+STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}fabrika gaziranih pića
+STR_025F_BUBBLE_GENERATOR                                       :{BLACK}generator mehurića
+STR_0260_TOFFEE_QUARRY                                          :{BLACK}karemenolom
+STR_0261_SUGAR_MINE                                             :{BLACK}rudnik šećera
+STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Izgradnja rudnika uglja
+STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Izgradnja termoelektrane
+STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Izgradnja pilane
+STR_0265_PLANT_FOREST                                           :{BLACK}Sadnja šume
+STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Izgradnja naftne rafinerije
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Izgradnja naftne platforme (izgradnja dozvoljena samo u blizini ivica mape)
+STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Izgradnja fabrike
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Izgradnja železare
+STR_026A_CONSTRUCT_FARM                                         :{BLACK}Izgradnja farme
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Izgradnja rudnika gvožđa
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Izgradnja naftne bušotine
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Izgradnja banke (izgradnja dozvoljena samo u naseljima sa populacijom većom od 1200)
+STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Izgradnja fabrike papira
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Izgradnja prehrambenog kombinata
+STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Izgradnja štamparije
+STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Izgradnja rudnika zlata
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Izgradnja banke (izgradnja dozvoljena samo u naseljima)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Izgradnja drvnog kombinata (da raščisti prašumu i proizvodi drvo)
+STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Sadnja plantaže voća
+STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Sadnja plantaže kaučuka
+STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Izgradnja izvora vode
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Izgradnja vodotornja (izgradnja dozvoljena samo u naseljima)
+STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Izgradnja rudnika dijamanata
+STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Izgradnja rudnika bakra
+STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Sadnja šume šećerne vune
+STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Izgradnja fabrike slatkiša
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Izgradnja farme baterija
+STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Izgradnja izvora kole
+STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Izgradnja prodavnice igračaka
+STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Izgradnja fabrike igračaka
+STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Izgradnja gejzira plastike
+STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Izgradnja fabrike gaziranih pića
+STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Izgradnja generatora mehurića
+STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Izgradnja karamenoloma
+STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Izgradnja rudnika šećera
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE} {STRING} je nemoguće izgraditi ovde...
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...prvo bi trebalo podići naselje
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...dozvoljena je samo jedna ovakva gradnja po naselju
+STR_0288_PLANT_TREES                                            :{BLACK}Sadnja drveća
+STR_0289_PLACE_SIGN                                             :{BLACK}Postavljanje znaka
+STR_028A_RANDOM_TREES                                           :{BLACK}Nasumično postavljeno drveće
+STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Zasadi drveće nasumično preko čitavog reljefa
+STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Postavi stenovita područja na reljef
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Postavi svetionik
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Postavi predajnik
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definiši pustinjsku oblast.{}Pritisni i drži CTRL da je ukloniš
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definiši pustinjsku oblast.{}Pritisni i drži Ctrl da je ukloniš
 STR_0290_DELETE                                                 :{BLACK}Obriši
-STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Potpuno obriši ovo naselje
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Potpuno ukloni ovo naselje
 STR_0292_SAVE_SCENARIO                                          :Sačuvaj scenario
 STR_0293_LOAD_SCENARIO                                          :Učitaj scenario
 STR_0294_QUIT_EDITOR                                            :Napusti editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Napusti
-STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Sačuvaj scenario, učitaj scenario, napusti editor scenarija, izađi
-STR_0298_LOAD_SCENARIO                                          :{WHITE}Učitaj Scenario
-STR_0299_SAVE_SCENARIO                                          :{WHITE}Sačuvaj Scenario
-STR_029A_PLAY_SCENARIO                                          :{BLACK}Igraj Scenario
-STR_029C_QUIT_EDITOR                                            :{WHITE}Napusti Editor
-STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...može biti izgrađeno samo u neseljima sa populacijom od najmanje 1200
-STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Pomeri datum početka za jednu godinu unazad
-STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Pomeri datum početka za jednu godinu unapred
-STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...oba kraja mosta moraju biti na tlu
+STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Sačuvaj scenario, učitaj scenario, napusti editor, izađi
+STR_0298_LOAD_SCENARIO                                          :{WHITE}Učitaj scenario
+STR_0299_SAVE_SCENARIO                                          :{WHITE}Sačuvaj scenario
+STR_029A_PLAY_SCENARIO                                          :{BLACK}Igraj scenario
+STR_029C_QUIT_EDITOR                                            :{WHITE}Napusti editor
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...dozvoljeno izgraditi samo u naseljima sa populacijom od najmanje 1200
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Pomeranje datuma početka za jednu godinu unazad
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Pomeranje datuma početka za jednu godinu unapred
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...oba kraja mosta moraju biti na čvrstom tlu
 STR_02A1_SMALL                                                  :{BLACK}Malo
 STR_02A2_MEDIUM                                                 :{BLACK}Srednje
 STR_02A3_LARGE                                                  :{BLACK}Veliko
-STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Izaberi veličinu naselja
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Izbor veličine naselja
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Veličina naselja:
 
 
 STR_02B6                                                        :{STRING}  -  {STRING}
-STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Pokaži poslednju poruku ili novost
+STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Prikaži poslednju poruku ili izveštaj
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Imenik naselja
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Vehicle design names
+STR_02BB_TOWN_DIRECTORY                                         :Popis naselja
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Imena vozila
 STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :Podrazumevan
 STR_02BF_CUSTOM                                                 :Prilagođen
 STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Sačuvaj prilagođena imena
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Izbor imena nacrta vozila
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Sačuvaj prilagođena imena nacrta vozila
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Izbor imena vozila
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Sačuvaj prilagođena imena vozila
 
 ############ range for menu starts
-STR_02C4_GAME_OPTIONS                                           :Opcije u igri
+STR_02C4_GAME_OPTIONS                                           :Opcije
 STR_02C6_DIFFICULTY_SETTINGS                                    :Podešavanje težine
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Prikazana imena naselja
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Prikazana imena stanica
@@ -829,18 +838,18 @@ STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Provid
 ############ range ends here
 
 ############ range for menu starts
-STR_02D5_LAND_BLOCK_INFO                                        :Informacija o zemljištu
-STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
-STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Giant Screenshot (Ctrl-G)
-STR_02D9_ABOUT_OPENTTD                                          :O 'OpenTTD'-u
+STR_02D5_LAND_BLOCK_INFO                                        :Podaci o zemljištu
+STR_02D7_SCREENSHOT_CTRL_S                                      :Sačuvaj sliku (Ctrl+S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Sačuvaj sliku u velikom formatu (Ctrl+G)
+STR_02D9_ABOUT_OPENTTD                                          :O OpenTTD-u
 ############ range ends here
 
-STR_02DB_OFF                                                    :{BLACK}Isključeno
-STR_02DA_ON                                                     :{BLACK}Uključeno
-STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Prikaži ponude
-STR_02DD_SUBSIDIES                                              :Ponude
+STR_02DB_OFF                                                    :{BLACK}Off
+STR_02DA_ON                                                     :{BLACK}On
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Prikaži subvencije
+STR_02DD_SUBSIDIES                                              :Subvencije
 STR_02DE_MAP_OF_WORLD                                           :Mapa sveta
-STR_02DF_TOWN_DIRECTORY                                         :Spisak gradova
+STR_02DF_TOWN_DIRECTORY                                         :Popis naselja
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Valuta
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
@@ -848,44 +857,54 @@ STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Izbor va
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Drumska vozila
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Izaberi stranu puta kojom ce se kretati drumska vozila
-STR_02E9_DRIVE_ON_LEFT                                          :Vozi levom stranom
-STR_02EA_DRIVE_ON_RIGHT                                         :Vozi desnom stranom
-STR_02EB_TOWN_NAMES                                             :{BLACK}Imena gradova
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Izaberi stranu puta kojom će se kretati drumska vozila
+STR_02E9_DRIVE_ON_LEFT                                          :Levom stranom
+STR_02EA_DRIVE_ON_RIGHT                                         :Desnom stranom
+STR_02EB_TOWN_NAMES                                             :{BLACK}Imena naselja
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Izaberi stil imena gradova
 
-STR_02F4_AUTOSAVE                                               :{BLACK}Automacko čuvanje igre
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Izabrati viseigra igrač nad 2-8 igrač
-STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Pokazati igra opcije
-STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Pokazati teškoća opcije
-STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Trzaj jedan nov igra, koristeći jedan prilagođen scenarij
-STR_0304_QUIT                                                   :{BLACK}Napustiti
-STR_0305_QUIT_OPENTTD                                           :{BLACK}Napustiti 'OpenTTD'
+STR_02F4_AUTOSAVE                                               :{BLACK}Auto čuvanje pozicije
+STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Izbor vremenskog intervala između dve automatski sačuvane pozicije
+STR_02F7_OFF                                                    :Isključeno
+STR_02F8_EVERY_3_MONTHS                                         :Svaka 3 meseca
+STR_02F9_EVERY_6_MONTHS                                         :Svakih 6 meseci
+STR_02FA_EVERY_12_MONTHS                                        :Svakih 12 meseci
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}Započni novu igru
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Učitaj staru poziciju
+STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Kreiraj svet/scenario u igri po svom ukusu
+STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Izbor igre za jednog igrača
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Izbor igre za više igrača (od 2 do 8 igrača)
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Prikaži opcije igre
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Prikaži opcije težine igre
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Započni novu igru, koristeći prethodno prilagođen scenario
+STR_0304_QUIT                                                   :{BLACK}Napusti
+STR_0305_QUIT_OPENTTD                                           :{BLACK}Napusti 'OpenTTD'
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
-STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...može samo da se gradi u varošovi
-STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Izabrati 'umerena zona' krajolik stil
-STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Izabrati 'sub-arktički' krajolik stil
-STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Izabrati 'sub-tropski' krajolik stil
-STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Izabrati 'igračka zemlja' krajolik stil
-STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Fond građenje od novu industriju ili izabrati sve industrije
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...gradnja je dozvoljena samo u naseljima
+STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Izbor umerenog klimatskog pojasa
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Izbor subpolarnog klimatskog pojasa
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Izbor suptropskog klimatskog pojasa
+STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Izbor 'zemlje igračaka'
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Finansiranje izgradnje nove industrije, spisak svih industrija
 
 ############ range for menu starts
-STR_0313_FUND_NEW_INDUSTRY                                      :Fond građenje od novu industriju
+STR_0313_FUND_NEW_INDUSTRY                                      :Finansiranje izgradnje nove industrije
 ############ range ends here
 
-STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Fond građenje od novu industriju
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...može samo da se gradi u varošovi
-STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...može samo da se gradi u kisne sume
-STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...može samo da se gradi u pustinje
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Finansiranje izgradnje nove industrije
+STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...gradnja je dozvoljena samo u naseljima
+STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...gradnja je dozvoljena samo u područjima pod tropskim šumama
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...gradnja je dozvoljena samo u pustinjskim oblastima
 STR_0319_PAUSED                                                 :{YELLOW}* * PAUZA * *
 
-STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Ekranska slika uspešno se snimilo kao '{STRING}'
-STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Ekranska slika nije uspela!
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Slika je snimljena pod imenom '{STRING}'
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Slika nije snimljena!
 
-STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Kupiti zemlju za budućnost korist
-STR_032F_AUTOSAVE                                               :{RED}AUTOSNIMLJENO
-STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Izabrati 'Ezy Ulica stil muzika' program
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Kupovina zemljišta za kasnije korišćenje
+STR_032F_AUTOSAVE                                               :{RED}AUTO-ČUVANJE
+STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Izbor programa 'lagane stvari'
 
 
 ############ start of townname region
@@ -930,6 +949,7 @@ STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Izabrati
 
 
 
+############ generic strings for settings
 
 
 
@@ -1001,109 +1021,106 @@ STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Izabrati
 
 ############ end network gui strings
 
-
-
-
 ##### PNG-MAP-Loader
 
 
 
 ##id 0x0800
-STR_0800_COST                                                   :{TINYFONT}{RED}Vrednost: {CURRENCY}
-STR_0801_COST                                                   :{RED}Vrednost: {CURRENCY}
-STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Zarada: {CURRENCY}
-STR_0803_INCOME                                                 :{GREEN}Zarada: {CURRENCY}
-STR_0805_ESTIMATED_COST                                         :{WHITE}Predračunska Vrednost: {CURRENCY}
-STR_0807_ESTIMATED_INCOME                                       :{WHITE}Predračunska Zarada: {CURRENCY}
-STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Ne može da se digne zemlja ovde...
-STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Ne može da se dublji zemlja ovde...
-STR_080A_ROCKS                                                  :Kameni
-STR_080B_ROUGH_LAND                                             :Grub zemlja
-STR_080C_BARE_LAND                                              :Prazna zemlja
+STR_0800_COST                                                   :{TINYFONT}{RED}Trošak: {CURRENCY}
+STR_0801_COST                                                   :{RED}Trošak: {CURRENCY}
+STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Prihod: {CURRENCY}
+STR_0803_INCOME                                                 :{GREEN}Prihod: {CURRENCY}
+STR_0805_ESTIMATED_COST                                         :{WHITE}Procena troška: {CURRENCY}
+STR_0807_ESTIMATED_INCOME                                       :{WHITE}Procena zarade: {CURRENCY}
+STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Nije izvodljivo ovde podići zemljište...
+STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Nije izvodljivo ovde spustiti zemljište...
+STR_080A_ROCKS                                                  :Stene
+STR_080B_ROUGH_LAND                                             :Grub teren
+STR_080C_BARE_LAND                                              :Ogoljeno tlo
 STR_080D_GRASS                                                  :Trava
-STR_080E_FIELDS                                                 :Polje
-STR_080F_SNOW_COVERED_LAND                                      :Snežna-prekrivana zemlja
+STR_080E_FIELDS                                                 :Polja
+STR_080F_SNOW_COVERED_LAND                                      :Snegom prekrivena zemlja
 STR_0810_DESERT                                                 :Pustinja
 
 ##id 0x1000
-STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Zemlja je na nagib u pogrešnu direkciju
-STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Nemogućan trag kombinacija
+STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Teren je nagnut na lošu stranu
+STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Nemoguća kombinacija šina
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Iskopavanje bi oštetilo tunel
-STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}... već je na morski nivo
-STR_1004_TOO_HIGH                                               :{WHITE}... puno visoko
-STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nema pogodan pruga
-STR_1007_ALREADY_BUILT                                          :{WHITE}...već napravljeno
-STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Mora da se prvo izvadi pruga
-STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Pruga Građenje
-STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Jednošinski Građenje
-STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Maglev Voz Građenje
-STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Izabrati Vozni Most
-STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Ne može da se gradi vozni skladište ovde...
-STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Ne može da se gradi vozna služba ovde...
-STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Ne može da se gradi signali ovde...
-STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Ne može da se gradi pruga ovde...
-STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Ne može da se izvaditi pruga odavde...
-STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Ne može da se izvaditi signali odavde...
-STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Vozni Skladište Orijentisanje
-STR_1015_RAILROAD_CONSTRUCTION                                  :Pruga građenje
-STR_1016_MONORAIL_CONSTRUCTION                                  :Monorejel građenje
-STR_1017_MAGLEV_CONSTRUCTION                                    :Maglev voz građenje
-STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Graditi vozna pruga
-STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Graditi vozni skladište(za građenje i ispravno stanje od vozovi)
-STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Graditi vozna služba
-STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Graditi vozni signali
-STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Graditi vozni most
-STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Graditi vozni tunel
-STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Ključ građenje/očisti za vozne pruge i signale
-STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Most izbor - klikni na vaše najbolji most da se gradi
-STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Izabrati vozni skladište orientacija
-STR_1021_RAILROAD_TRACK                                         :Vozna pruga
-STR_1023_RAILROAD_TRAIN_DEPOT                                   :Vozna skladište
-STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...zemlja je vlastit od druga kompanija
+STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}...teren je već na nivou mora
+STR_1004_TOO_HIGH                                               :{WHITE}...previsoko
+STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nedostaje odgovarajuća železnička pruga
+STR_1007_ALREADY_BUILT                                          :{WHITE}...već izgrađeno
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Potrebno je prvo ukloniti železničku prugu
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Izgradnja železničke pruge
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Izgradnja jednošinske pruge (Monorail)
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Izgradnja magnetne pruge (MagLev)
+STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Izbor železničkog mosta
+STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Izgradnja železničkog depoa ovde nije moguća...
+STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Izgradnja železničke stanice ovde nije moguća...
+STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Izgradnja signalizacije ovde nije moguća...
+STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Izgradnja železničke pruge ovde nije moguća...
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Nemoguće je ukloniti železničku prugu odatle...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Nemoguće je ukloniti signalizaciju odatle...
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orijentacija železničkog depoa
+STR_1015_RAILROAD_CONSTRUCTION                                  :Izgradnja železničke pruge
+STR_1016_MONORAIL_CONSTRUCTION                                  :Izgradnja jednošinske pruge (Monorail)
+STR_1017_MAGLEV_CONSTRUCTION                                    :Izgradnja magnetne pruge (MagLev)
+STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Izgradnja železničke pruge
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Izgradnja voznog depoa (za pravljenje novih, kao i za servis starih vozova)
+STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Izgradnja železničke stanice
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Izgradnja železničke signalizacije
+STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Izgradnja železničkog mosta
+STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Izgradnja železničkog tunela
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Uklanjanje železničkih pruga i signalizacije (kad je uključeno)
+STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Izbor mosta - gradnja se potvrđuje klikom na željeni most
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Izbor orijentacije železničkog depoa
+STR_1021_RAILROAD_TRACK                                         :Železnička pruga
+STR_1023_RAILROAD_TRAIN_DEPOT                                   :Železnički depo
+STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...zemljište je u vlasništvu druge kompanije
 
 
 
 ##id 0x1800
-STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Mora prvo da se skolni put
-STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Građenje Put
+STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Neophodno je prvo ukloniti put
+STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Izgradnja puta
 STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Tramvaj Konstrukcija
-STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Izabrati most
-STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Ne može da se gradi put ovde...
-STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Ne može da se skloni put odavde...
-STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Drumsko Vozilo Skladište Orientacija
-STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ne može da se gradi drumsko vozilo skladištet ovde...
-STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Ne može da se gradi služba za avtobus...
-STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Ne može da se gradi služba za kamione...
-STR_180A_ROAD_CONSTRUCTION                                      :Građenje od put
-STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Graditi izabran deo od put
-STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Graditi drumsko vozilo skladište (za građevina i popravljanje drumsko vozilo)
-STR_180D_BUILD_BUS_STATION                                      :{BLACK}Graditi služba za avtobus
-STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Graditi luka utovara za kamion
-STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Graditi most
-STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Graditi tunel
-STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Ključ građenje/očisti za put
-STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Izabrati drumsko vozilo skladište orijentisanje
+STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Izbor drumskog mosta
+STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Izgradnja puta ovde nije moguća...
+STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Nemoguće je ukloniti put odatle...
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orijentacija drumskog depoa
+STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Izgradnja drumskog depoa ovde nije moguća...
+STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Izgradnja autobuske stanice ovde nije moguća...
+STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Izgradnja stanice za utovar/istovar kamiona ovde nije moguća...
+STR_180A_ROAD_CONSTRUCTION                                      :Izgradnja puta
+STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Izgradnja deonice puta
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Izgradnja drumskog depoa (za izgradnju novih i servis starih vozila)
+STR_180D_BUILD_BUS_STATION                                      :{BLACK}Izgradnja autobuske stanice
+STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Izgradnja stanice za utovar/istovar kamiona
+STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Izgradnja drumskog mosta
+STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Izgradnja drumskog tunela
+STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Uklanjanje puteva (kada je uključeno)
+STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Izbor orijentacije drumskog depoa
 STR_1814_ROAD                                                   :Put
-STR_1815_ROAD_WITH_STREETLIGHTS                                 :Put sa semafori
-STR_1816_TREE_LINED_ROAD                                        :Put sa drveće
-STR_1817_ROAD_VEHICLE_DEPOT                                     :Drumsko vozilo skladište
-STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Put/pruge presecanje
+STR_1815_ROAD_WITH_STREETLIGHTS                                 :Put sa signalizacijom
+STR_1816_TREE_LINED_ROAD                                        :Put sa drvoredom
+STR_1817_ROAD_VEHICLE_DEPOT                                     :Drumski depo
+STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Ukrštanje pruge i puta
 
 ##id 0x2000
-STR_2000_TOWNS                                                  :{WHITE}Gradovi
+STR_2000_TOWNS                                                  :{WHITE}Naselja
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
-STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Zgrada mora da se prvo sruši
+STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Zgradu bi trebalo srušiti prethodno
 STR_2005                                                        :{WHITE}{TOWN}
-STR_2006_POPULATION                                             :{BLACK}Ljudstvo: {ORANGE}{COMMA}{BLACK}  Kuće: {ORANGE}{COMMA}
-STR_2007_RENAME_TOWN                                            :Preimenovati Grad
-STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Ne može preimenovati grad...
-STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} lokalna autoriet na daje da so ovo radi
-STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Gradske imene - klikni na ime da centriraš
-STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centriraj glavni izgled na mesto od grad
-STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Promeni ime od grad
-STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Putnici zadnji mesec: {ORANGE}{COMMA}{BLACK}  najveći: {ORANGE}{COMMA}
-STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Pošta zadnji mesec {ORANGE}{COMMA}{BLACK}  najveći: {ORANGE}{COMMA}
+STR_2006_POPULATION                                             :{BLACK}Populacija: {ORANGE}{COMMA}{BLACK}  Kuće: {ORANGE}{COMMA}
+STR_2007_RENAME_TOWN                                            :Preimenuj naselje
+STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Naselje nije moguće preimenovati...
+STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} vlast odbija da izda dozvolu
+STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Imena naselja - klik na ime centrira pogled na to naselje
+STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Pozicioniraj pogled na lokaciju naselja
+STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Promeni ime naselja
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Broj putnika tokom meseca: {ORANGE}{COMMA}{BLACK}  maksimum: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Količina pošte tokom meseca: {ORANGE}{COMMA}{BLACK}  maksimum: {ORANGE}{COMMA}
 STR_200F_TALL_OFFICE_BLOCK                                      :Visoka radionica
 STR_2010_OFFICE_BLOCK                                           :Radionica
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Male blagoste

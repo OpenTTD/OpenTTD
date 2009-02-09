@@ -764,6 +764,7 @@ STR_SCENARIO_EDITOR_CITY                                        :{BLACK}By
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Vælg bystørrelse
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Bystørrelse:
 
+
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Vis seneste besked eller nyhedsrapport
 STR_OFF                                                         :Fra
@@ -957,6 +958,7 @@ STR_OPTIONS_RES_TIP                                             :{BLACK}Vælg ø
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Skærmbillede-format
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vælg skærmbillede-format
+
 
 STR_AUTOSAVE_1_MONTH                                            :Hver måned
 STR_AUTOSAVE_FAILED                                             :{WHITE}Fejl under autogem
@@ -1153,6 +1155,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Deaktiv
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Deaktiver skibe for computeren: {ORANGE}{STRING}
 
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Service intervaller er i procent: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard service interval for tog: {ORANGE}{STRING} dage/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard service interval for tog: {ORANGE}slået fra
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Standard service interval for vejkøretøjer: {ORANGE}{STRING} dage/%
@@ -1186,6 +1189,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :bedre veje
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :tilfældig
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Tillad byer at fastsætte støjgrænser for lufthavne: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Placering af værktøjslinje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Venstre
@@ -1211,15 +1215,10 @@ STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Station
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Økonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Modstandere
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servicering
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tog
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Byer
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrier
-
-STR_CONFIG_SETTING_DISABLED                                     :deaktiveret
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Skift indstillingsværdi
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Stifinder til tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ikke anbefalet)
@@ -1233,6 +1232,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Stifind
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Anbefalet)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ikke anbefalet)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-størrelse af kort: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-størrelse af kort: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :deaktiveret
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Skift indstillingsværdi
 
 STR_TEMPERATE_LANDSCAPE                                         :Tempereret klima
 STR_SUB_ARCTIC_LANDSCAPE                                        :Arktisk klima
@@ -1360,7 +1368,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Ombyg to
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vælg den lasttype toget skal kører med
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Ombyg toget til at køre med den markerede lasttype
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan ikke ombygge toget...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Service intervaller er i procent: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Skift produktion
 
 ############ network gui strings
@@ -1539,6 +1546,7 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv be
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveren er beskyttet. Indtast kodeord
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Selskabet er beskyttet. Indtast kodeord
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klient liste
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nyt firma
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Ingen netværksheder fundet eller kompilet uden ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Kunne ikke finde nogen netværksspil
@@ -1585,6 +1593,9 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spil ikke læng
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :forlader
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} har tilsluttet sig spillet
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} har tilsluttet sig firmaet #{2:NUM}
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} har tilsluttet sig som tilskuer
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} har startet et nyt firma (#{2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} har forladt spillet ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} har ændret sit navn til {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} gav dit firma {2:CURRENCY}
@@ -1616,11 +1627,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privat besked
 STR_NETWORK_SEND                                                :{BLACK}Send
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-størrelse af kort: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-størrelse af kort: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -1827,6 +1833,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tilskudsordning tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give tredobbelt udbytte i de næste 12 måneder!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tilskudsordning tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give firedobbelt udbytte i de næste 12 måneder!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} lokale myndigheder nægter at tillade, at endnu en lufthavn bygges i byen
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN}s lokale myndigheder afviser tilladelse til lufthavn pga. støjgener
 STR_2036_COTTAGES                                               :Hytter
 STR_2037_HOUSES                                                 :Huse
 STR_2038_FLATS                                                  :Lejligheder
@@ -1903,6 +1910,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}For tæt
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Grænser op til mere end en eksisterende station/fragtcentral
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}For mange stationer/fragtcentraler i denne by
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}For mange stationer/fragtcentraler
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Banegården er i for mange dele
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}For mange busterminaler
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}For mange fragtcentraler
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}For tæt på en anden station/fragtcentral
@@ -2011,6 +2019,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Ødelagt gemt s
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spillet er gemt med en nyere version
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Filen kan ikke læses
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Filen kan ikke skrives
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Dataintegritets-tjek fejlede
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Liste over drev, biblioteker og gemte spilfiler
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nuværende gemte spils navn
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Slet det valgte gemte spil
@@ -2100,6 +2109,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Der er et tog i tunnelen
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Der er et køretøj i tunnelen
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}En anden tunnel er i vejen
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunnellen ville slutte uden for kortet
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Det er umuligt at lave en udgravning til tunnelen i den anden ende
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Det er nødvendigt at rive tunnelen ned først
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Det er nødvendigt at rive broen ned først
@@ -2381,6 +2391,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Flyt sel
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Kan ikke bygge selskabets hovedkvarter...
 STR_7072_VIEW_HQ                                                :{BLACK}Vis HK
 STR_RELOCATE_HQ                                                 :{BLACK}Flyt hovedkvarter
+STR_COMPANY_JOIN                                                :{BLACK}Tilslut dig
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Tilslut dig og spil som dette firma
 STR_COMPANY_PASSWORD                                            :{BLACK}Kodeord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Beskyt dit selskab med et kodeord for at undgå, at fremmede slutter sig til spillet.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Sæt selskabets kodeord
@@ -3462,6 +3474,12 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Højde a
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrer det lille kort ved den nuværende position
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
+# Strings for map borders at game generation
+STR_NORTHWEST                                                   :{BLACK}Nordvest
+STR_NORTHEAST                                                   :{BLACK}Nordøst
+STR_SOUTHEAST                                                   :{BLACK}Sydøst
+STR_SOUTHWEST                                                   :{BLACK}Sydvest
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Lille
 STR_CITY_AIRPORT                                                :{BLACK}By
@@ -3653,7 +3671,30 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Tillad byer at fastsætte støjgrænser for lufthavne: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Støjgrænse i byen: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Genereret støj: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD er kompileret uden "zlib"-understøttelse...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... det er ikke muligt at downloade indhold!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Basisgrafik
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_SCENARIO                                       :Scenarie
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Højdekort
+STR_CONTENT_TITLE                                               :{WHITE}Download af indhold
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Indholdstype
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Navn
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Navn på indhold
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Klik på en linje for at se alle detaljer{}Vælg den vha. afkrydsning til download
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Vælg alle
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Vælg alt indhold til download
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Vælg opdateringer
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Vælg alt indhold, der er opdateringer til eksisterende indhold, til download
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Fravælg alle
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Fravælg alt indhold fra download
+
+
+
 ########

@@ -760,9 +760,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...ends 
 STR_02A1_SMALL                                                  :{BLACK}Small
 STR_02A2_MEDIUM                                                 :{BLACK}Medium
 STR_02A3_LARGE                                                  :{BLACK}Large
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Random
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}City
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Cities grow faster than regular towns{}Depending on settings, they are bigger when founded
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Select town size
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Town size:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Town road layout:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Select road layout used for this town
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Original
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Better roads
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 grid
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 grid
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Random
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Show last message or news report
@@ -959,6 +969,10 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Screensh
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Select the screenshot format to use
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Base graphics set
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Select the base graphics set to use
+
 STR_AUTOSAVE_1_MONTH                                            :Every month
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosave failed
 
@@ -1025,6 +1039,9 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Allow t
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Allow more realistically sized catchment areas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Allow removal of more town-owned roads, bridges, etc: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Enable building very long trains: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Train acceleration model: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistic
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forbid trains and ships to make 90 deg turns: {ORANGE}{STRING} {LTBLUE} (requires NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Join train stations built next to each other: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Allow joining stations not directly adjacent: {ORANGE}{STRING}
@@ -1089,6 +1106,9 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Heightm
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Anti-clockwise
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Clockwise
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}The height level a flat scenario map gets: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Enable terraforming the tiles at the map borders: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}One or more tiles at the northern edge are not empty
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}One or more tiles at one of the edges is not water
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Max station spread: {ORANGE}{STRING} {RED}Warning: High setting slows game
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING}
@@ -1141,6 +1161,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Last available
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Most used
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Show reserved tracks: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Keep building tools active after usage: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Group expenses in company finance window: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Show building tools when no suitable vehicles are available: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING}
@@ -1156,6 +1177,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Disable
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Allow AIs in multiplayer (experimental): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes before AI is suspended: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Service intervals are in percents: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Default service interval for trains: {ORANGE}{STRING} days/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Default service interval for trains: {ORANGE}disabled
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Default service interval for road vehicles: {ORANGE}{STRING} days/%
@@ -1168,7 +1190,6 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Disable
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Enable railroad car speed limits: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Disable electric rails: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Colored news appears in: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Starting date: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Enable smooth economy (more, smaller changes): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Allow buying shares from other companies: {ORANGE}{STRING}
@@ -1184,11 +1205,14 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Block signals o
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Path signals only
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :All
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Road layout for new towns: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :original
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :better roads
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 grid
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 grid
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :random
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Towns are allowed to build roads: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Allow town controlled noise level for airports: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Position of main toolbar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Left
@@ -1227,12 +1251,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trains
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Towns
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industries
 
-STR_CONFIG_SETTING_DISABLED                                     :disabled
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Change setting value
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pathfinder for trains: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Not recommended)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1245,6 +1263,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfin
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recommended)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Not recommended)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-size of map: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-size of map: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :disabled
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Change setting value
 
 STR_TEMPERATE_LANDSCAPE                                         :Temperate landscape
 STR_SUB_ARCTIC_LANDSCAPE                                        :Sub-arctic landscape
@@ -1372,7 +1399,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Refit tr
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Select type of cargo for train to carry
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Refit train to carry highlighted cargo type
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Can't refit train...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Service intervals are in percents: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Change production
 
 ############ network gui strings
@@ -1551,6 +1577,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Enter th
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server is protected. Enter password
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company is protected. Enter password
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Client List
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spectate
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}New Company
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} No network devices found or compiled without ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Could not find any network games
@@ -1597,6 +1625,9 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Game unpaused (
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :leaving
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} has joined the game
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} has joined company #{2:NUM}
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} has joined spectators
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} has started a new company (#{2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} has left the game ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} has changed his/her name to {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} gave your company {2:CURRENCY}
@@ -1628,11 +1659,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Private message
 STR_NETWORK_SEND                                                :{BLACK}Send
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-size of map: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-size of map: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -1839,6 +1865,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Service subsidy awarded to {COMPANY}!{}{}{STRING} service from {STATION} to {STATION} will pay triple rates for the next year!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Service subsidy awarded to {COMPANY}!{}{}{STRING} service from {STATION} to {STATION} will pay quadruple rates for the next year!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} local authority refuses to allow another airport to be built in this town
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} local authority refuses permission for airport due to noise concerns
 STR_2036_COTTAGES                                               :Cottages
 STR_2037_HOUSES                                                 :Houses
 STR_2038_FLATS                                                  :Apartments
@@ -2024,6 +2051,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Broken savegame
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Savegame is made with newer version
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :File not readable
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :File not writable
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Data integrity check failed
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}List of drives, directories and saved-game files
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Currently selected name for saved-game
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Delete the currently selected saved-game
@@ -2113,6 +2141,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Train in tunnel
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Road vehicle in tunnel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Another tunnel in the way
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunnel would end out of the map
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Unable to excavate land for other end of tunnel
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Must demolish tunnel first
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Must demolish bridge first
@@ -2284,9 +2313,6 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Company {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}New Face
-STR_7005_COLOUR_SCHEME                                          :{BLACK}Color Scheme
-STR_7006_COLOUR_SCHEME                                          :{GOLD}Color Scheme:
-STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}New Color Scheme
 STR_7008_COMPANY_NAME                                           :{BLACK}Company Name
 STR_7009_PRESIDENT_NAME                                         :{BLACK}President Name
 STR_700A_COMPANY_NAME                                           :Company Name
@@ -2333,7 +2359,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Select n
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Change the company vehicle livery
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Change the president's name
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Change the company name
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Click on desired color scheme
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Increase size of loan
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Repay part of loan
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(President)
@@ -2394,6 +2419,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Rebuild 
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Can't build company headquarters...
 STR_7072_VIEW_HQ                                                :{BLACK}View HQ
 STR_RELOCATE_HQ                                                 :{BLACK}Relocate HQ
+STR_COMPANY_JOIN                                                :{BLACK}Join
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Join and play as this company
 STR_COMPANY_PASSWORD                                            :{BLACK}Password
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Password-protect your company to prevent unauthorized users from joining.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Set company password
@@ -3479,6 +3506,18 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Height o
 STR_SMALLMAP_CENTER                                             :{BLACK}Center the smallmap on the current position
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
+# Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Map edges:
+STR_NORTHWEST                                                   :{BLACK}Northwest
+STR_NORTHEAST                                                   :{BLACK}Northeast
+STR_SOUTHEAST                                                   :{BLACK}Southeast
+STR_SOUTHWEST                                                   :{BLACK}Southwest
+STR_BORDER_FREEFORM                                             :{BLACK}Freeform
+STR_BORDER_WATER                                                :{BLACK}Water
+STR_BORDER_RANDOM                                               :{BLACK}Random
+STR_BORDER_RANDOMIZE                                            :{BLACK}Random
+STR_BORDER_MANUAL                                               :{BLACK}Manual
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Small
 STR_CITY_AIRPORT                                                :{BLACK}City
@@ -3667,15 +3706,97 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI settings
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Name of the AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reload AI
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Kill the AI, reload the script, and restart the AI
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI Debug window is only available for the server
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI Configuration
+STR_AI_CHANGE                                                   :{BLACK}Select AI
+STR_AI_CONFIGURE                                                :{BLACK}Configure
+STR_AI_CHANGE_TIP                                               :{BLACK}Load another AI
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Configure the parameters of the AI
+STR_AI_LIST_TIP                                                 :{BLACK}All AIs that will be loaded in the next game
+STR_AI_LIST_CAPTION                                             :{WHITE}Available AIs
+STR_AI_AILIST_TIP                                               :{BLACK}Click to select an AI
+STR_AI_ACCEPT                                                   :{BLACK}Accept
+STR_AI_ACCEPT_TIP                                               :{BLACK}Select highlighted AI
+STR_AI_CANCEL                                                   :{BLACK}Cancel
+STR_AI_CANCEL_TIP                                               :{BLACK}Don't change AI
+STR_AI_CLOSE                                                    :{BLACK}Close
+STR_AI_RESET                                                    :{BLACK}Reset
+STR_AI_HUMAN_PLAYER                                             :Human player
+STR_AI_RANDOM_AI                                                :Random AI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
+STR_AI_AUTHOR                                                   :Author:
+STR_AI_VERSION                                                  :Version:
+STR_AI_DESCRIPTION                                              :Description:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Allow town controlled noise level for airports: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Noise limit in town: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Noise generated: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD is built without "zlib" support...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... downloading content is not possible!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Base graphics
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :AI library
+STR_CONTENT_TYPE_SCENARIO                                       :Scenario
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Heightmap
+STR_CONTENT_TITLE                                               :{WHITE}Content downloading
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Type of the content
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Name
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Name of the content
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Click on a line to see the details{}Click on the checkbox to select it for downloading
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Select all
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Mark all content to be downloaded
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Select upgrades
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Mark all content that is an upgrade for existing content to be downloaded
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Unselect all
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Mark all content to be not downloaded
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Enter filter string
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Enter a keyword to filter the list for
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/name filter:
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Start downloading the selected content
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total download size: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}CONTENT INFO
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}You have not selected this to be downloaded
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}You have selected this to be downloaded
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}This dependency has been selected to be downloaded
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}You already have this
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}This content is unknown and cannot be downloaded in OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}This is a replacement for an exising {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Name: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Version: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Description: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Type: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Download size: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Selected because of: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependencies: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags: {WHITE}{STRING}
+
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Downloading content...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Requesting files...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Currently downloading {STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Download complete
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} of {BYTES} downloaded ({NUM} %)
+
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Could not connect to the content server...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Downloading failed...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... connection lost
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... file not writable
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Could not decompress the downloaded file
+
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Check online content
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Check for new and updated content to download
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Find missing content online
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Check whether the missing content can be found online
 ########

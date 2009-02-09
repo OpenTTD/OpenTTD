@@ -969,6 +969,9 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format d
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selecciona el format per les captures de pantalla
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Conjunt de gràfics bàsics
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selecciona el conjunt de gràfics bàsics a utilitzar
 
 STR_AUTOSAVE_1_MONTH                                            :Cada mes
 STR_AUTOSAVE_FAILED                                             :{WHITE}Ha fallat el desat automàtic
@@ -1174,6 +1177,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Desacti
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permet IA en multijugador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes abans de suspendre la IA: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Els intervals de manteniment estan en percentatges: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Interval de manteniment per defecte dels trens: {ORANGE}{STRING} dies/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Interval de manteniment per defecte dels trens: {ORANGE}desactivat
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Interval de manteniment per defecte dels automòbils: {ORANGE}{STRING} dies/%
@@ -1209,6 +1213,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :graella 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :graella 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleatori
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Els pobles poden construir carreteres: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permet a la ciutat controlar el nivell de soroll dels aeroports: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posició de la barra d'eines principal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Esquerra
@@ -1247,12 +1252,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trens
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Pobles
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Indústries
 
-STR_CONFIG_SETTING_DISABLED                                     :desactivat
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Canvia el valor de l'ajustament
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Cerca de rutes per trens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(No recomanat)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1265,6 +1264,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Cerca d
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomanat)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Not recomanat)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Mida-X del mapa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Mida-Y del mapa: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :desactivat
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Canvia el valor de l'ajustament
 
 STR_TEMPERATE_LANDSCAPE                                         :paisatge temperat
 STR_SUB_ARCTIC_LANDSCAPE                                        :paisatge subàrtic
@@ -1392,7 +1400,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Remodela
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona tipus de càrrega a transportar
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Remodela un tren per transportar el tipus de càrrega seleccionada
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}No es pot remodelar el tren...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Els intervals de manteniment estan en percentatges: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Canvi de producció
 
 ############ network gui strings
@@ -1653,11 +1660,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Missatge Privat
 STR_NETWORK_SEND                                                :{BLACK}Envia
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Mida-X del mapa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Mida-Y del mapa: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -3738,7 +3740,6 @@ STR_AI_DESCRIPTION                                              :Descripció:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permet a la ciutat controlar el nivell de soroll dels aeroports: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Límit de soroll a la ciutat: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Soroll generat: {GOLD}{COMMA}
 ########

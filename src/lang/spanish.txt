@@ -1178,6 +1178,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Desacti
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permitir IA en multijugador (experimental): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Número de instrucciones antes de pausar la IA: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervalo de despachos en porcentajes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de despacho por defecto para trenes: {ORANGE}{STRING} días
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de despacho por defecto para trenes: {ORANGE}no
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Intervalo de despacho por defecto para veh. de carretera: {ORANGE}{STRING} días
@@ -1190,7 +1191,6 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Desacti
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Activar límites de velocidad en vagones: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Desactivar railes electricos: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Noticias en color aparecen en: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Fecha de inicio: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Activar economía suave (cambios más pequeños): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permitir comprar acciones de otras empresas: {ORANGE}{STRING}
@@ -1213,6 +1213,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :rejilla 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :rejilla 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleatorio
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Permitir que las ciudades construyan carreteras: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir a la ciudad controlar el nivel de ruidos de los aeropuertos: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posición de la barra de herramientas principal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Izquierda
@@ -1251,12 +1252,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenes
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Pueblos
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrias
 
-STR_CONFIG_SETTING_DISABLED                                     :desactivado
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Cambiar valor de la opción
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pathfinder para trenes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(No recomendado)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1269,6 +1264,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfin
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomendado)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(No recomendado)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Tamaño X del mapa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Tamaño Y del mapa: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :desactivado
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Cambiar valor de la opción
 
 STR_TEMPERATE_LANDSCAPE                                         :Paisaje templado
 STR_SUB_ARCTIC_LANDSCAPE                                        :Paisaje sub-ártico
@@ -1396,7 +1400,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Reformar
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Elegir tipo de carga para que el tren lleve
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Reformar tren para transportar mercancía resaltada
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}No se puede reformar tren...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervalo de despachos en porcentajes: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambiar producción
 
 ############ network gui strings
@@ -1657,11 +1660,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Mensaje privado
 STR_NETWORK_SEND                                                :{BLACK}Enviar
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Tamaño X del mapa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Tamaño Y del mapa: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -2316,9 +2314,6 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Empresa {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nueva Cara
-STR_7005_COLOUR_SCHEME                                          :{BLACK}Esquema Color
-STR_7006_COLOUR_SCHEME                                          :{GOLD}Esquema color:
-STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Nuevo esquema de colores
 STR_7008_COMPANY_NAME                                           :{BLACK}Nombre Empresa
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Nombre Presid.
 STR_700A_COMPANY_NAME                                           :Nombre Empresa
@@ -2365,7 +2360,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Seleccio
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Cambiar los colores de la empresa
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Cambiar el nombre del presidente
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Cambiar el nombre de la empresa
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Click en esquema de color elegido
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Incrementar préstamo
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Pagar parte del préstamo
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Presidente)
@@ -3742,7 +3736,6 @@ STR_AI_DESCRIPTION                                              :Descripción:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir a la ciudad controlar el nivel de ruidos de los aeropuertos: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Nivel de ruido en ciudad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Ruido generado: {GOLD}{COMMA}
 ########

@@ -1035,7 +1035,9 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Képment
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Válaszd ki milyen formátumú képmentést szeretnél
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Grafikus alapcsomag
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Kiválaszthatod melyik grafikus alapcsomagot szeretnéd használni
 
 STR_AUTOSAVE_1_MONTH                                            :Minden hónapban
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatikus mentés sikertelen
@@ -1241,6 +1243,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Hajók 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Számítógépes ellenfelek a hálózati játékokban (béta): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}MI felfüggesztéséhez szükséges opcode mennyiség: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Szervízintervallumok százalékban: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Alapértelmezett szervízelés vonatoknak: {ORANGE}{STRING} naponta
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Alapértelmezett szervízelés vonatoknak: {ORANGE}kikapcsolva
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Alapértelmezett szervízelés közúti járműveknek: {ORANGE}{STRING} naponta
@@ -1253,7 +1256,6 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Ne legy
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}A vagonok sebessége korlátozható: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Villamosított vágányok letiltása: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Színes újságcikkek megjelenése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Játék induló dátuma: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Egyenletes gazdaság (több, kisebb változás): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Másik cégekből részvényt lehet vásárolni: {ORANGE}{STRING}
@@ -1276,6 +1278,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2-es háló
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3-as háló
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :véletlenszerű
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Települések építhetnek utakat: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Várostól függő zajszint engedélyezése a repterek számára: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}A fő eszközsor helye: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Balra
@@ -1314,12 +1317,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vonatok
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Városok
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Ipar
 
-STR_CONFIG_SETTING_DISABLED                                     :kikapcsolva
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Válassz beállítási értéket
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Útvonalkereső vonatokhoz: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ellenjavallt)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1332,6 +1329,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Útvona
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Eredeti {BLUE}(Ajánlott)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ellenjavallt)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}ÉK-DNY térképszélesség: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}ÉNY-DK térképszélesség: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :kikapcsolva
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Válassz beállítási értéket
 
 STR_TEMPERATE_LANDSCAPE                                         :mérsékelt táj
 STR_SUB_ARCTIC_LANDSCAPE                                        :sarkköri táj
@@ -1459,7 +1465,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Vonat á
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Válaszd ki, milyen árut szállítson a vonat
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}A vonat átalakítása a kijelölt áru szállítására
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nem alakíthatod át a vonatot...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Szervízintervallumok százalékban: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Termelés megváltoztatása
 
 ############ network gui strings
@@ -1720,11 +1725,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privát üzenet
 STR_NETWORK_SEND                                                :{BLACK}Elküld
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}ÉK-DNY térképszélesség: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}ÉNY-DK térképszélesség: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -2416,9 +2416,6 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :({COMMA}. vállalat)
 STR_7004_NEW_FACE                                               :{BLACK}Új arc
-STR_7005_COLOUR_SCHEME                                          :{BLACK}Szín váltása
-STR_7006_COLOUR_SCHEME                                          :{GOLD}Szín:
-STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Új szín
 STR_7008_COMPANY_NAME                                           :{BLACK}Vállalat neve
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Elnök neve
 STR_700A_COMPANY_NAME                                           :A vállalat neve
@@ -2465,7 +2462,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Új arc 
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}A cég járművei színének megváltoztatása
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Az elnök nevének megváltoztatása
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}A cég nevének megváltoztatása
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Kattints az új színre
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}A kölcsön növelése
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}A kölcsön egy részének törlesztése
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Elnök)
@@ -3842,7 +3838,6 @@ STR_AI_DESCRIPTION                                              :Leírás:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Várostól függő zajszint engedélyezése a repterek számára: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Zajszint a városban: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Zajtermelés: {GOLD}{COMMA}
 ########

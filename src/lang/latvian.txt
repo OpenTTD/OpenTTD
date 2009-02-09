@@ -971,6 +971,10 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Ekrāna 
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Ekrāna kopijas formāta izvēle
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Pamata grafika komplekts
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Uzslēgt pamat grafikas komplektu lietošanai
+
 STR_AUTOSAVE_1_MONTH                                            :Ikmēnesi
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automātiskā saglabāšana neizdevās
 
@@ -1174,6 +1178,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Izslēg
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Atļaut AIs vairākspēlētāju spēlē: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes pirms AI ir izslēgts: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Apkalpošanas intervāls procentos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Noklusētais vilcienu apkalpošanas periods: {ORANGE}{STRING} dienas/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Noklusētais vilcienu apkalpošanas periods: {ORANGE}atspējots
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Noklusētais autotransporta apkalpošanas periods: {ORANGE}{STRING} dienas/%
@@ -1186,7 +1191,6 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Aizlied
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Ieslēgt vagonu ātruma ierobežojumus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Izslēgt eletrificēto dzelzceļu: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Krāsainās avīzes parādās: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Sākuma gads: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Ieslēgt lēzenas izmaiņas ekonomikā: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Atļaut akciju pirkšanu no citām kompānijām: {ORANGE}{STRING}
@@ -1209,6 +1213,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 režģis
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 režģis
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :pēc nejaušības
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Pilsētām ir atļauts būvēt ceļu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Atļaut pilsētām kontrolēt trokšņu līmeni lidostās: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Galvenās rīkjoslas izvietojums: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Pa kreisi
@@ -1247,12 +1252,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vilcien
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Pilsētas
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Rūpniecības nozares
 
-STR_CONFIG_SETTING_DISABLED                                     :atspējots
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Mainīt iestatījuma vērtību
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Vilcienu virziena meklētājs: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Nav ieteicams)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1265,6 +1264,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Kuģu c
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Oriģinālais {BLUE}(Ieteicamais)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nav ieteicams)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Kartes X-izmērs: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Kartes Y-izmērs: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :atspējots
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Mainīt iestatījuma vērtību
 
 STR_TEMPERATE_LANDSCAPE                                         :Mērenais klimats
 STR_SUB_ARCTIC_LANDSCAPE                                        :Subarktiskais klimats
@@ -1392,7 +1400,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Pārbūv
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Izvēlaties kravas veidu, ko pārvadāt ar vilcienu
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Pārbūvēt vilcienu izceltā kravas veida pārvadāšanai
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nevar pārbūvēt vilcienu...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Apkalpošanas intervāls procentos: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Mainīt produkciju
 
 ############ network gui strings
@@ -1653,11 +1660,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privāts ziņoj
 STR_NETWORK_SEND                                                :{BLACK}Sūtīt
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Kartes X-izmērs: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Kartes Y-izmērs: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -2312,9 +2314,6 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Uzņēmums {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Jauna seja
-STR_7005_COLOUR_SCHEME                                          :{BLACK}Krāsu palete
-STR_7006_COLOUR_SCHEME                                          :{GOLD}Krāsu palete:
-STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Jauna krāsu palete
 STR_7008_COMPANY_NAME                                           :{BLACK}Uzņēmuma vārds
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Vadītāja vārds
 STR_700A_COMPANY_NAME                                           :Uzņēmuma vārds
@@ -2361,7 +2360,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Izvēlie
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Izmainīt uzņēmuma transportlīdzekļu izskatu
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Mainīt vadītāja vārdu
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Mainīt uzņēmuma  nosaukumu
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Klik uz vēlamo krāsu shēmu
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Palielināt aizdevuma apmēru
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Atmaksāt aizdevuma daļu
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Vadītājs)
@@ -3730,7 +3728,6 @@ STR_AI_DESCRIPTION                                              :Apraksts:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Atļaut pilsētām kontrolēt trokšņu līmeni lidostās: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Trokšņu limits pilsētā: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Radītais troksnis: {GOLD}{COMMA}
 ########
@@ -3756,6 +3753,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Norādie
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Iezīmējiet visu saturu lejupielādei, lai, tas ir uzlabojums eksistējošam saturam
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Atcelt visa iezīmēšanu
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Iezīmēt visu saturu lejupielādei
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Ievadīt filtra stīgu
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Ievadiet atslēgvārdu, lai filtrētu sarakstu
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Taga/vārda filtrs:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Lejupielāde
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Sākt norādītā lejupielādi
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Kopējais apjoms: {WHITE}{BYTES}

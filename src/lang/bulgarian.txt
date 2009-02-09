@@ -480,10 +480,10 @@ STR_AGE                                                         :{COMMA} год�
 STR_AGE_RED                                                     :{RED}{COMMA} годин{P а и} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Автобус/камион
-STR_019D_AIRCRAFT                                               :Самолет
-STR_019E_SHIP                                                   :Кораб
 STR_019F_TRAIN                                                  :Влак
+STR_019C_ROAD_VEHICLE                                           :Автобус/камион
+STR_019E_SHIP                                                   :Кораб
+STR_019D_AIRCRAFT                                               :Самолет
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} започва да остарява
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} е много остаряло
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} е прекалено остаряло и спешно има нужда от замяна
@@ -762,9 +762,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...кр�
 STR_02A1_SMALL                                                  :{BLACK}Малък
 STR_02A2_MEDIUM                                                 :{BLACK}Среден
 STR_02A3_LARGE                                                  :{BLACK}Голям
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Случаен
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Град
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Градовете се разрастват по-бързо от градчетата.{}В зависимост от настройките те са по-големи при тяхното създаване
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Избери големина на града
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Големина на града:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}План на пътищата:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Изберете план за пътищата в този град
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Оргинален
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}По-добри пътища
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}мрежа 2x2
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}мрежа 3x3
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Случаен
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Покажи последното съобщение или отчет на новините
@@ -803,6 +813,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Про
 STR_02D5_LAND_BLOCK_INFO                                        :Информация за терена
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Показване/скриване на конзола
+STR_AI_DEBUG_MENU                                               :AI Debug
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Огромен Screenshot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :За 'OpenTTD'
@@ -959,6 +970,10 @@ STR_OPTIONS_RES_TIP                                             :{BLACK}Избо
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Формат на снимките
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Избор на файловия форма в който ще се записват екранните снимки
+
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Базов графичен набор
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Изберете базов графичен набор
 
 STR_AUTOSAVE_1_MONTH                                            :всеки месец
 STR_AUTOSAVE_FAILED                                             :{WHITE}Автозапазването е неуспешно
@@ -1154,6 +1169,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Пре�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Премахване на корабите за компютърния играч: {ORANGE}{STRING}
 
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Интервал на сервиз е в проценти: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Интервал на сервиз за влакове: {ORANGE}{STRING} дни/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Интервал на сервиз за влакове: {ORANGE}без сервиз
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Интервал на сервиз за автомобили: {ORANGE}{STRING} дни/%
@@ -1185,6 +1201,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :по-добри
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2х2 мрежа
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3х3 мрежа
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :случаен
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Градовете контролират нивото на шум от летищата: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Позиция на лентата за инструменти: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :ляво
@@ -1211,12 +1228,6 @@ STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Ста�
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Икономика
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Съперници
 
-STR_CONFIG_SETTING_DISABLED                                     :изключено
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Промяна стойноста на настройка
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Пътенамирач за влакове: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(не се препоръчва)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1229,6 +1240,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Път�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :оригинален {BLUE}(препоръчва се)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(не се препоръчва)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-размер на карта: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-размер на карта: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :изключено
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Промяна стойноста на настройка
 
 STR_TEMPERATE_LANDSCAPE                                         :умерен климат
 STR_SUB_ARCTIC_LANDSCAPE                                        :Арктичен климат
@@ -1356,9 +1376,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Проб
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Избор тип на товар за влак
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Преоборудва влака да превозва избрания тип товар
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Преоборудването на влака е невъзможно...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Интервал на сервиз е в проценти: {ORANGE}{STRING.n}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Промяна на производство
-
 
 ############ network gui strings
 
@@ -1612,11 +1630,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Лично съ
 STR_NETWORK_SEND                                                :{BLACK}Изпращане
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-размер на карта: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-размер на карта: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -3458,6 +3471,8 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Висо
 STR_SMALLMAP_CENTER                                             :{BLACK}Центриране на малката карта на текущата позиция
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
+# Strings for map borders at game generation
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Малко
 STR_CITY_AIRPORT                                                :{BLACK}Град
@@ -3645,8 +3660,16 @@ STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-.,�
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!?+"%=:/_№ІVыУЕИШЩКСДЗЦ§)ЬЯАОЖГТНВМЧЮЙЪЭФХПРЛБ
 ########
 
+############ AI GUI
+########
+
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Градовете контролират нивото на шум от летищата: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Лимит на шумът в градът: {ORANGE}{COMMA}{BLACK}  най-много: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Произведен шум: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

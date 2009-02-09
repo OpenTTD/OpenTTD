@@ -1177,6 +1177,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}禁止�
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}联机游戏时允许电脑玩家(AI): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}AI挂起前的 #opcodes ： {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}保养周期(百分数)： {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}火车的默认保养周期：{ORANGE}{STRING} 天/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}火车的默认保养周期：{ORANGE}禁用
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}汽车的默认保养周期：{ORANGE}{STRING} 天/%
@@ -1189,7 +1190,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}在无�
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}启动车辆限速：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}禁用电气化铁路：{ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}彩色新闻出现在：{ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}在{ORANGE}{STRING}上的色彩：
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}开始年份：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}启用平滑经济模式 (更多小的经济变化)：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}允许购买其他公司的股份：{ORANGE}{STRING}
@@ -1212,6 +1213,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2格
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3格
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :随机
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}允许城镇建设道路: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}允许城镇控制机场噪音: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}主工具栏位置：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :左侧
@@ -1250,12 +1252,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}列车
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}城镇
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}工业设施
 
-STR_CONFIG_SETTING_DISABLED                                     :禁用
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}改变设置值
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}火车寻路: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(不推荐)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1268,6 +1264,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}船只�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :原始 {BLUE}(推荐)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(不推荐)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}地图的 X 方向大小：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}地图的 Y 方向大小：{ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :禁用
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}改变设置值
 
 STR_TEMPERATE_LANDSCAPE                                         :温带景观
 STR_SUB_ARCTIC_LANDSCAPE                                        :寒带景观
@@ -1395,7 +1400,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}改装�
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}选择希望列车装载的货物类型
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}让列车装载高亮选定的货物
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}不能改造列车……
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}保养周期(百分数)： {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}改变产量
 
 ############ network gui strings
@@ -1656,11 +1660,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :私聊
 STR_NETWORK_SEND                                                :{BLACK}发送
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}地图的 X 方向大小：{ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}地图的 Y 方向大小：{ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -2315,9 +2314,9 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(公司 {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}新的肖像
-STR_7005_COLOUR_SCHEME                                          :{BLACK}配色方案
-STR_7006_COLOUR_SCHEME                                          :{GOLD}配色方案：
-STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}新的配色方案
+STR_7005_COLOUR_SCHEME                                          :{BLACK}色彩方案
+STR_7006_COLOUR_SCHEME                                          :{GOLD}色彩方案:
+STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}新色彩方案
 STR_7008_COMPANY_NAME                                           :{BLACK}公司名称
 STR_7009_PRESIDENT_NAME                                         :{BLACK}总裁姓名
 STR_700A_COMPANY_NAME                                           :公司名称
@@ -2364,7 +2363,7 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}为总�
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}改变公司车船的颜色
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}为总裁改名
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}改变公司的名称
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}请选择喜欢的配色方案
+STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}点击您想要的色彩方案
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}增加贷款的额度
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}偿还部分贷款
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manager)
@@ -3741,7 +3740,6 @@ STR_AI_DESCRIPTION                                              :描述:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}允许城镇控制机场噪音: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}当前城镇噪音: {ORANGE}{COMMA}{BLACK}  最大: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}产生的噪音: {GOLD}{COMMA}
 ########

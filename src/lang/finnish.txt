@@ -1177,6 +1177,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Tietoko
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Salli tekoälyt moninpeleissä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodet ennen tekoälyn pysäyttämistä: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Huoltovälit ovat prosentteina: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Oletushuoltoväli junille: {ORANGE}{STRING} päivää
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Oletushuoltoväli junille: {ORANGE}pois päältä
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Oletushuoltoväli ajoneuvoille: {ORANGE}{STRING} päivää
@@ -1189,7 +1190,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Huollot
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Ota käyttöön vaunujen nopeusrajoitukset: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Poista sähköradat käytöstä: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Värjätyt uutiset: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Värilliset uutiset ilmestyvät: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Aloitusvuosi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Tasainen talous (enemmän pieniä muutoksia): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Salli osakkeiden ostaminen muista yhtiöistä: {ORANGE}{STRING}
@@ -1212,6 +1213,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 ruudukko
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 ruudukko
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :satunnainen
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Kaupungit saavat rakentaa teitä: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Käytä kaupunkien hallitsemaa melutasoa lentokentille: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Päätyökalupalkin sijainti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :vasen
@@ -1250,12 +1252,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Junat
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Kaupungit
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Laitokset
 
-STR_CONFIG_SETTING_DISABLED                                     :pois käytöstä
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Muuta asetusarvo
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Junien käyttämä reitinetsijä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ei suositeltu)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1268,6 +1264,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Laivoje
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Alkuperäinen {BLUE}(Suositeltu)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ei suositeltu)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Kartan x-koko: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Kartan y-koko: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :pois käytöstä
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Muuta asetusarvo
 
 STR_TEMPERATE_LANDSCAPE                                         :lauhkea maasto
 STR_SUB_ARCTIC_LANDSCAPE                                        :pohjoinen maasto
@@ -1395,7 +1400,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Sovita j
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Valitse junan rahtityyppi
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Sovita juna kuljettamaan valittua rahtityyppiä.
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Junaa ei voi sovittaa...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Huoltovälit ovat prosentteina: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Aloita tuotanto
 
 ############ network gui strings
@@ -1656,11 +1660,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Yksityinen vies
 STR_NETWORK_SEND                                                :{BLACK}Lähetä
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Kartan x-koko: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Kartan y-koko: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -2317,7 +2316,7 @@ STR_7002_COMPANY                                                :(Yhtiö {COMMA}
 STR_7004_NEW_FACE                                               :{BLACK}Uudet kasvot
 STR_7005_COLOUR_SCHEME                                          :{BLACK}Väriteema
 STR_7006_COLOUR_SCHEME                                          :{GOLD}Väriteema:
-STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Uusi tunnusväri
+STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Uusi Väriteema
 STR_7008_COMPANY_NAME                                           :{BLACK}Yhtiön nimi
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Pääjohtajan nimi
 STR_700A_COMPANY_NAME                                           :Yhtiön nimi
@@ -2364,7 +2363,7 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Valitse 
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Muuta yhtiön ajoneuvoammattikuntaa.
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Muuta pääjohtajan nimeä.
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Muuta yhtiön nimeä.
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Valitse tunnusväri.
+STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Klikkaa haluamaasi väriä
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Ota lisää lainaa.
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Lyhennä lainaa.
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(pääjohtaja)
@@ -3741,7 +3740,6 @@ STR_AI_DESCRIPTION                                              :Kuvaus:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Käytä kaupunkien hallitsemaa melutasoa lentokentille: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Meluraja kaupungissa: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Aiheutettu melu: {GOLD}{COMMA}
 ########

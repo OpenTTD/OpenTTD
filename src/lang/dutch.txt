@@ -969,7 +969,9 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Screensh
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selecteer het formaat van de schermprint
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Basis graphics set
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selecteer de te gebruiken basis graphics set
 
 STR_AUTOSAVE_1_MONTH                                            :Elke maand
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatisch opslaan mislukt
@@ -1175,6 +1177,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Schepen
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Laat computerspelers toe in netwerkspel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}aantal opcodes voordat computerspeler wordt gestopt: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Reparatie intervallen zijn in percentages: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standaard reparatie interval bij treinen: {ORANGE}{STRING} dagen
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standaard reparatie interval voor treinen: {ORANGE}uit
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Standaard reparatie interval bij wegvoertuigen: {ORANGE}{STRING} dagen
@@ -1210,6 +1213,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 raster
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 raster
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :willekeurig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Steden mogen wegen bouwen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Geluidsniveau controle door steden voor vliegvelden toestaan: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Positie van algemene toolbar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Links
@@ -1248,12 +1252,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Treinen
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Steden
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrieën
 
-STR_CONFIG_SETTING_DISABLED                                     :uitgeschakeld
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Verander waarde
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Routezoeker voor treinen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Niet aanbevolen)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1266,6 +1264,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Routezo
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Aanbevolen)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Niet aanbevolen)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-grootte van de kaart: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-grootte van de kaart: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :uitgeschakeld
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Verander waarde
 
 STR_TEMPERATE_LANDSCAPE                                         :gematigd landschap
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarctisch landschap
@@ -1393,7 +1400,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Bouw tre
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Kies type lading om te transporteren
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Bouw trein om voor geselecteerde ladingtype
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan trein niet ombouwen...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Reparatie intervallen zijn in percentages: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Verander productie
 
 ############ network gui strings
@@ -1654,11 +1660,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Praat met deze 
 STR_NETWORK_SEND                                                :{BLACK}Verstuur
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-grootte van de kaart: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-grootte van de kaart: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -3739,7 +3740,6 @@ STR_AI_DESCRIPTION                                              :Omschrijving:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Geluidsniveau controle door steden voor vliegvelden toestaan: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Geluidslimiet in stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Genereert geluid: {GOLD}{COMMA}
 ########
@@ -3765,6 +3765,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selectee
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Markeer alle updates voor bestaande content om te downloaden
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselecteer alles
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Laat alle content niet downloaden
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Geef het filter op
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Geef een woord waarop gefilters kan worden in de lijst
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/naam filter:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Start downloaden van geselecteerde gegevens
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Totale download grootte: {WHITE}{BYTES}

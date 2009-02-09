@@ -769,7 +769,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Mărime
 STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Modelul drumului:
 STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Alege modelul de drum folosit pentru acest oraş
 STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Original
-STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Drumuri mai bune
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Îmbunătăţit
 STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}Grilă 2x2
 STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}Grilă 3x3
 STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Aleator
@@ -969,6 +969,9 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formatul
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Alege tipul fişierului în care se salvează captura de ecran (screenshot)
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Set grafic de bază
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selectează setul grafic de bază utilizat în joc
 
 STR_AUTOSAVE_1_MONTH                                            :În fiecare lună
 STR_AUTOSAVE_FAILED                                             :{WHITE}Auto-salvarea a esuat
@@ -997,7 +1000,7 @@ STR_TONS                                                        :tone
 STR_LITERS                                                      :litri
 STR_ITEMS                                                       :bucăţi
 STR_CRATES                                                      :pachete
-STR_RES_OTHER                                                   :altele
+STR_RES_OTHER                                                   :(alta/nespecificată)
 STR_NOTHING                                                     :
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
@@ -1174,6 +1177,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Dezacti
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permite Inteligenţă Artificială în multiplayer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}# de operaţii după care IA este suspendată: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervaluri de service in procente: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalul de service presetat pentru trenuri: {ORANGE}{STRING} zile
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalul de service presetat pentru trenuri: {ORANGE}dezactivat
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Intervalul de service presetat pentru autovehicule: {ORANGE}{STRING} zile
@@ -1186,7 +1190,6 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Deactiv
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Activează limite de viteză pentru vagoane: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Dezactiveaza sinele electrice: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Stirile în culori apar în anul: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Anul de început a jocului: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Economie cu schimbãri de productie mai reduse, dar mai frecvente: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permite cumpararea de actiuni de la alte companii: {ORANGE}{STRING}
@@ -1209,6 +1212,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grila 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grila 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleator
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Oraşele pot construi drumuri: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permite controlarea nivelului de zgomot din aeroport de către oras: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pozitia listei cu instrumente: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :stânga
@@ -1247,12 +1251,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenuri
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Oraşe
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrii
 
-STR_CONFIG_SETTING_DISABLED                                     :dezactivat
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Schimbă valoarea setării
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Algoritm de rutare pentru trenuri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Nerecomandat)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1265,6 +1263,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Algorit
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomandat)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nerecomandat)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Marimea X a hartii: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Marimea Y a hartii: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :dezactivat
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Schimbă valoarea setării
 
 STR_TEMPERATE_LANDSCAPE                                         :peisajul temperat
 STR_SUB_ARCTIC_LANDSCAPE                                        :peisajul sub-arctic
@@ -1392,7 +1399,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Modific�
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Alege tipul de marfă transportat de tren
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Modificã trenul pentru a transporta marfa aleasã
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nu pot modifica trenul...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervaluri de service in procente: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Schimba productia
 
 ############ network gui strings
@@ -1653,11 +1659,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Mesaj privat
 STR_NETWORK_SEND                                                :{BLACK}Trimite
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Marimea X a hartii: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Marimea Y a hartii: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -2312,9 +2313,6 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Companie {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Schimbă poza
-STR_7005_COLOUR_SCHEME                                          :{BLACK}Culoare
-STR_7006_COLOUR_SCHEME                                          :{GOLD}Culoare:
-STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Alege noua culoare
 STR_7008_COMPANY_NAME                                           :{BLACK}Nume companie
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Nume preşedinte
 STR_700A_COMPANY_NAME                                           :Noul nume al companiei
@@ -2361,7 +2359,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Alege o 
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Schimbă culoarea care îţi reprezintă compania
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Schimbă numele preşedintelui
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Schimbă numele companiei
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Clic pe culoarea dorită
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Împrumută o nouă sumă de bani
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Plăteşte înapoi o parte din credite
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Preşedinte)
@@ -3738,7 +3735,6 @@ STR_AI_DESCRIPTION                                              :Descriere:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permite controlarea nivelului de zgomot din aeroport de către oras: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Limita zgomotului în oraş: {ORANGE}{COMMA}{BLACK}  maxim: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Zgomot generat: {GOLD}{COMMA}
 ########
