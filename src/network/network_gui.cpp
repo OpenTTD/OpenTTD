@@ -308,6 +308,7 @@ public:
 		ttd_strlcpy(this->edit_str_buf, _settings_client.network.client_name, this->edit_str_size);
 		this->afilter = CS_ALPHANUMERAL;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 120);
+		this->SetFocusedWidget(NGWW_CLIENT);
 
 		UpdateNetworkGameWindow(true);
 
@@ -879,6 +880,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 
 		this->afilter = CS_ALPHANUMERAL;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 160);
+		this->SetFocusedWidget(NSSW_GAMENAME);
 
 		this->field = NSSW_GAMENAME;
 
@@ -1882,6 +1884,7 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 		this->parent = parent;
 		this->afilter = CS_ALPHANUMERAL;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 0);
+		this->SetFocusedWidget(NCPWW_PASSWORD);
 
 		this->FindWindowPlacementAndResize(desc);
 	}

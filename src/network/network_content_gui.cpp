@@ -317,6 +317,7 @@ public:
 		ttd_strlcpy(this->edit_str_buf, "", this->edit_str_size);
 		this->afilter = CS_ALPHANUMERAL;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, EDITBOX_MAX_LENGTH);
+		this->SetFocusedWidget(NCLWW_FILTER);
 
 		this->vscroll.cap = 14;
 		this->resize.step_height = 14;

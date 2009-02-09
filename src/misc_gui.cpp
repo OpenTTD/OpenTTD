@@ -951,8 +951,19 @@ bool HandleCaret(Textbuf *tb)
 	return false;
 }
 
+bool QueryString::HasEditBoxFocus(const Window *w, int wid) const
+{
+	return ((w->window_class == WC_OSK &&
+			_focused_window == w->parent &&
+			w->parent->focused_widget &&
+			w->parent->focused_widget->type == WWT_EDITBOX) ||
+			w->IsWidgetGloballyFocused(wid));
+}
+
 HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, Window::EventState &state)
 {
+	if (!QueryString::HasEditBoxFocus(w, wid)) return HEBR_NOT_FOCUSED;
+
 	state = Window::ES_HANDLED;
 
 	switch (keycode) {
@@ -990,7 +1001,7 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 
 void QueryString::HandleEditBox(Window *w, int wid)
 {
-	if (HandleCaret(&this->text)) {
+	if (HasEditBoxFocus(w, wid) && HandleCaret(&this->text)) {
 		w->InvalidateWidget(wid);
 		/* When we're not the OSK, notify 'our' OSK to redraw the widget,
 		 * so the caret changes appropriately. */
@@ -1034,7 +1045,7 @@ void QueryString::DrawEditBox(Window *w, int wid)
 	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
 
 	DoDrawString(tb->buf, delta, 0, TC_YELLOW);
-	if (tb->caret) DoDrawString("_", tb->caretxoffs + delta, 0, TC_WHITE);
+	if (HasEditBoxFocus(w, wid) && tb->caret) DoDrawString("_", tb->caretxoffs + delta, 0, TC_WHITE);
 
 	_cur_dpi = old_dpi;
 }
@@ -1072,6 +1083,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 	QueryStringWindow(uint16 size, const WindowDesc *desc, Window *parent) : QueryStringBaseWindow(size, desc)
 	{
 		this->parent = parent;
+		this->SetFocusedWidget(QUERY_STR_WIDGET_TEXT);
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -1130,6 +1142,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 			case HEBR_CONFIRM: this->OnOk();
 			/* FALL THROUGH */
 			case HEBR_CANCEL: delete this; break; // close window, abandon changes
+			case HEBR_NOT_FOCUSED: break;
 		}
 		return state;
 	}
@@ -1180,7 +1193,6 @@ static const WindowDesc _query_string_desc = {
 void ShowQueryString(StringID str, StringID caption, uint maxsize, uint maxwidth, Window *parent, CharSetFilter afilter, QueryStringFlags flags)
 {
 	DeleteWindowById(WC_QUERY_STRING, 0);
-	DeleteWindowById(WC_SAVELOAD, 0);
 
 	QueryStringWindow *w = new QueryStringWindow(maxsize, &_query_string_desc, parent);
 
@@ -1500,6 +1512,11 @@ public:
 				strecpy(o_dir.name, _personal_dir, lastof(o_dir.name));
 		}
 
+		/* Focus the edit box by default in the save windows */
+		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
+			this->SetFocusedWidget(SLWW_SAVE_OSK_TITLE);
+		}
+
 		this->vscroll.cap = 10;
 		this->resize.step_width = 2;
 		this->resize.step_height = 10;
@@ -1708,7 +1725,6 @@ static const FileType _file_modetotype[] = {
 
 void ShowSaveLoadDialog(SaveLoadDialogMode mode)
 {
-	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
 
 	const WindowDesc *sld;

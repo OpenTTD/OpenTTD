@@ -59,6 +59,8 @@ enum WindowDefaultFlag {
 	WDF_STICKY_BUTTON   =   1 << 5, ///< Set window to sticky mode; they are not closed unless closed with 'X' (widget 2)
 	WDF_RESIZABLE       =   1 << 6, ///< Window can be resized
 	WDF_MODAL           =   1 << 7, ///< The window is a modal child of some other window, meaning the parent is 'inactive'
+
+	WDF_NO_FOCUS        =   1 << 8, ///< This window won't get focus/make any other window lose focus when click
 };
 
 /**
@@ -154,6 +156,7 @@ public:
 	Widget *widget;        ///< Widgets of the window
 	uint widget_count;     ///< Number of widgets of the window
 	uint32 desc_flags;     ///< Window/widgets default flags setting, @see WindowDefaultFlag
+	const Widget *focused_widget; ///< Currently focused widget or NULL, if no widget has focus
 
 	Window *parent;        ///< Parent window
 	Window *z_front;       ///< The window in front of us in z-order
@@ -169,6 +172,9 @@ public:
 	void HideWidget(byte widget_index);
 	void ShowWidget(byte widget_index);
 	bool IsWidgetHidden(byte widget_index) const;
+	void SetFocusedWidget(byte widget_index);
+	bool IsWidgetGloballyFocused(byte widget_index) const;
+	bool IsWidgetFocused(byte widget_index) const;
 	void SetWidgetLoweredState(byte widget_index, bool lowered_stat);
 	void ToggleWidgetLoweredState(byte widget_index);
 	void LowerWidget(byte widget_index);
@@ -176,6 +182,7 @@ public:
 	bool IsWidgetLowered(byte widget_index) const;
 	void AlignWidgetRight(byte widget_index_a, byte widget_index_b);
 	int  GetWidgetWidth(byte widget_index) const;
+	bool HasWidgetOfType(WidgetType widget_type) const;
 
 	void RaiseButtons();
 	void CDECL SetWidgetsDisabledState(bool disab_stat, int widgets, ...);
@@ -198,6 +205,15 @@ public:
 	 */
 	virtual void OnPaint() {}
 
+	/**
+	 * Called when window gains focus
+	 */
+	virtual void OnFocus() {}
+
+	/**
+	 * Called when window looses focus
+	 */
+	virtual void OnFocusLost() {}
 
 	/**
 	 * A key has been pressed.
@@ -423,18 +439,13 @@ int GetWidgetFromPos(const Window *w, int x, int y);
 /* window.cpp */
 extern Window *_z_front_window;
 extern Window *_z_back_window;
+extern Window *_focused_window;
 
 /** Iterate over all windows */
 #define FOR_ALL_WINDOWS_FROM_BACK_FROM(w, start)  for (w = start; w != NULL; w = w->z_front) if (w->window_class != WC_INVALID)
 #define FOR_ALL_WINDOWS_FROM_FRONT_FROM(w, start) for (w = start; w != NULL; w = w->z_back) if (w->window_class != WC_INVALID)
 #define FOR_ALL_WINDOWS_FROM_BACK(w)  FOR_ALL_WINDOWS_FROM_BACK_FROM(w, _z_back_window)
 #define FOR_ALL_WINDOWS_FROM_FRONT(w) FOR_ALL_WINDOWS_FROM_FRONT_FROM(w, _z_front_window)
-
-/**
- * Disable scrolling of the main viewport when an input-window is active.
- * This contains the count of windows with a textbox in them.
- */
-extern byte _no_scroll;
 
 extern Point _cursorpos_drag_start;
 
@@ -454,6 +465,10 @@ enum SpecialMouseMode {
 };
 
 Window *GetCallbackWnd();
+
+void SetFocusedWindow(Window *w);
+const Widget *GetGloballyFocusedWidget();
+bool EditBoxInGlobalFocus();
 
 void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y);
 
@@ -548,6 +563,43 @@ inline bool Window::IsWidgetHidden(byte widget_index) const
 {
 	assert(widget_index < this->widget_count);
 	return HasBit(this->widget[widget_index].display_flags, WIDG_HIDDEN);
+}
+
+ /**
+ * Set focus within this window to given widget. The function however don't
+ * change which window that has focus.
+ * @param widget_index : index of the widget in the window to set focus to
+ */
+inline void Window::SetFocusedWidget(byte widget_index)
+{
+	if (widget_index < this->widget_count) {
+		/* Repaint the widget that loss focus. A focused edit box may else leave the caret left on the screen */
+		if (this->focused_widget && this->focused_widget - this->widget != widget_index) {
+			this->InvalidateWidget(this->focused_widget - this->widget);
+		}
+		this->focused_widget = &this->widget[widget_index];
+	}
+}
+
+/**
+ * Check if given widget has user input focus. This means that both the window
+ * has focus and that the given widget has focus within the window.
+ * @param widget_index : index of the widget in the window to check
+ * @return true if given widget is the focused window in this window and this window has focus
+ */
+inline bool Window::IsWidgetGloballyFocused(byte widget_index) const
+{
+	return _focused_window == this && IsWidgetFocused(widget_index);
+}
+
+/**
+ * Check if given widget is focused within this window
+ * @param widget_index : index of the widget in the window to check
+ * @return true if given widget is the focused window in this window
+ */
+inline bool Window::IsWidgetFocused(byte widget_index) const
+{
+	return this->focused_widget == &this->widget[widget_index];
 }
 
 /**

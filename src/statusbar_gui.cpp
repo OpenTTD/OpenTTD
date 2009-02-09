@@ -185,7 +185,7 @@ static const Widget _main_status_widgets[] = {
 static WindowDesc _main_status_desc = {
 	WDP_CENTER, 0, 320, 12, 640, 12,
 	WC_STATUS_BAR, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_NO_FOCUS,
 	_main_status_widgets,
 };
 

@@ -150,7 +150,6 @@ struct IConsoleWindow : Window
 	IConsoleWindow(const WindowDesc *desc) : Window(desc)
 	{
 		_iconsole_mode = ICONSOLE_OPENED;
-		_no_scroll++; // override cursor arrows; the gamefield will not scroll
 
 		this->height = _screen.height / 3;
 		this->width  = _screen.width;
@@ -159,7 +158,6 @@ struct IConsoleWindow : Window
 	~IConsoleWindow()
 	{
 		_iconsole_mode = ICONSOLE_CLOSED;
-		_no_scroll--;
 	}
 
 	virtual void OnPaint()
@@ -180,7 +178,7 @@ struct IConsoleWindow : Window
 
 		DoDrawString(_iconsole_cmdline.buf, 10 + delta, this->height - ICON_LINE_HEIGHT, CC_COMMAND);
 
-		if (_iconsole_cmdline.caret) {
+		if (_focused_window == this && _iconsole_cmdline.caret) {
 			DoDrawString("_", 10 + delta + _iconsole_cmdline.caretxoffs, this->height - ICON_LINE_HEIGHT, TC_WHITE);
 		}
 	}
@@ -201,6 +199,8 @@ struct IConsoleWindow : Window
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
+		if (_focused_window != this) return ES_NOT_HANDLED;
+
 		const int scroll_height = (this->height / ICON_LINE_HEIGHT) - 1;
 		switch (keycode) {
 			case WKC_UP:

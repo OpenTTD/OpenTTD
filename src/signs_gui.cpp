@@ -196,6 +196,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 		this->LowerWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
 
 		UpdateSignEditWindow(si);
+		this->SetFocusedWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
 		this->FindWindowPlacementAndResize(desc);
 	}
 
@@ -216,6 +217,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, MAX_LENGTH_SIGN_NAME_PIXELS);
 
 		this->InvalidateWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
+		this->SetFocusedWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
 	}
 
 	/**
@@ -347,9 +349,8 @@ void HandleClickOnSign(const Sign *si)
 
 void ShowRenameSignWindow(const Sign *si)
 {
-	/* Delete all other edit windows and the save window */
+	/* Delete all other edit windows */
 	DeleteWindowById(WC_QUERY_STRING, 0);
-	DeleteWindowById(WC_SAVELOAD, 0);
 
 	new SignWindow(&_query_sign_edit_desc, si);
 }

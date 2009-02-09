@@ -16,6 +16,7 @@ enum HandleEditBoxResult
 	HEBR_EDITING = 0, // Other key pressed.
 	HEBR_CONFIRM,     // Return or enter key pressed.
 	HEBR_CANCEL,      // Escape key pressed.
+	HEBR_NOT_FOCUSED, // Edit box widget not focused.
 };
 
 /**
@@ -43,6 +44,7 @@ struct QueryString {
 		free((void*)this->orig);
 	}
 
+	bool HasEditBoxFocus(const Window *w, int wid) const;
 	void DrawEditBox(Window *w, int wid);
 	void HandleEditBox(Window *w, int wid);
 	HandleEditBoxResult HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, Window::EventState &state);

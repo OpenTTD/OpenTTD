@@ -278,6 +278,7 @@ public:
 		this->dest    = dest;
 		this->afilter = CS_ALPHANUMERAL;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 0);
+		this->SetFocusedWidget(NWCW_TEXTBOX);
 
 		InvalidateWindowData(WC_NEWS_WINDOW, 0, this->height);
 
@@ -480,6 +481,7 @@ public:
 					SendChat(this->text.buf, this->dtype, this->dest);
 				/* FALLTHROUGH */
 				case HEBR_CANCEL: delete this; break;
+				case HEBR_NOT_FOCUSED: break;
 			}
 		}
 		return state;

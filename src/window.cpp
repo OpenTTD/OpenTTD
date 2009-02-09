@@ -34,7 +34,13 @@ Window *_z_front_window = NULL;
 /** List of windows opened at the screen sorted from the back. */
 Window *_z_back_window  = NULL;
 
-byte _no_scroll;
+/*
+ * Window that currently have focus. - The main purpose is to generate
+ * FocusLost events, not to give next window in z-order focus when a
+ * window is closed.
+ */
+Window *_focused_window;
+
 Point _cursorpos_drag_start;
 
 int _scrollbar_start_pos;
@@ -46,6 +52,51 @@ bool _scrolling_viewport;
 
 byte _special_mouse_mode;
 
+/**
+ * Set the window that has the focus
+ * @param w The window to set the focus on
+ */
+void SetFocusedWindow(Window *w)
+{
+	if (_focused_window == w) return;
+
+	/* Invalidate focused widget */
+	if (_focused_window != NULL && _focused_window->focused_widget != NULL) {
+		uint focused_widget_id = _focused_window->focused_widget - _focused_window->widget;
+		_focused_window->InvalidateWidget(focused_widget_id);
+	}
+
+	/* Remember which window was previously focused */
+	Window *old_focused = _focused_window;
+	_focused_window = w;
+
+	/* So we can inform it that it lost focus */
+	if (old_focused != NULL) old_focused->OnFocusLost();
+	if (_focused_window != NULL) _focused_window->OnFocus();
+}
+
+/**
+ * Gets the globally focused widget. Which is the focused widget of the focused window.
+ * @return A pointer to the globally focused Widget, or NULL if there is no globally focused widget.
+ */
+const Widget *GetGloballyFocusedWidget()
+{
+	return _focused_window != NULL ? _focused_window->focused_widget : NULL;
+}
+
+/**
+ * Check if an edit box is in global focus. That is if focused window
+ * has a edit box as focused widget, or if a console is focused.
+ * @return returns true if an edit box is in global focus or if the focused window is a console, else false
+ */
+bool EditBoxInGlobalFocus()
+{
+	const Widget *wi = GetGloballyFocusedWidget();
+
+	/* The console does not have an edit box so a special case is needed. */
+	return (wi != NULL && wi->type == WWT_EDITBOX) ||
+			(_focused_window != NULL && _focused_window->window_class == WC_CONSOLE);
+}
 
 /**
  * Sets the enabled/disabled status of a list of widgets.
@@ -147,6 +198,18 @@ void Window::HandleButtonClick(byte widget)
 	this->InvalidateWidget(widget);
 }
 
+/**
+ * Checks if the window has at least one widget of given type
+ * @param widget_type the widget type to look for
+ */
+bool Window::HasWidgetOfType(WidgetType widget_type) const
+{
+	for (uint i = 0; i < this->widget_count; i++) {
+		if (this->widget[i].type == widget_type) return true;
+	}
+	return false;
+}
+
 static void StartWindowDrag(Window *w);
 static void StartWindowSizing(Window *w);
 
@@ -159,15 +222,50 @@ static void StartWindowSizing(Window *w);
  */
 static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 {
+	bool focused_widget_changed = false;
 	int widget = 0;
 	if (w->desc_flags & WDF_DEF_WIDGET) {
 		widget = GetWidgetFromPos(w, x, y);
+
+		/* If clicked on a window that previously did dot have focus */
+		if (_focused_window != w &&
+				(w->desc_flags & WDF_NO_FOCUS) == 0 &&           // Don't lose focus to toolbars
+				!(w->desc_flags & WDF_STD_BTN && widget == 0)) { // Don't change focused window if 'X' (close button) was clicked
+			focused_widget_changed = true;
+			if (_focused_window != NULL) {
+				_focused_window->OnFocusLost();
+
+				/* The window that lost focus may have had opened a OSK, window so close it, unless the user has clicked on the OSK window. */
+				if (w->window_class != WC_OSK) DeleteWindowById(WC_OSK, 0);
+			}
+			SetFocusedWindow(w);
+			w->OnFocus();
+		}
+
 		if (widget < 0) return; // exit if clicked outside of widgets
 
 		/* don't allow any interaction if the button has been disabled */
 		if (w->IsWidgetDisabled(widget)) return;
 
 		const Widget *wi = &w->widget[widget];
+
+		/* Clicked on a widget that is not disabled.
+		 * So unless the clicked widget is the caption bar, change focus to this widget */
+		if (wi->type != WWT_CAPTION) {
+			/* Close the OSK window if a edit box loses focus */
+			if (w->focused_widget && w->focused_widget->type == WWT_EDITBOX && // An edit box was previously selected
+					w->focused_widget != wi &&                                 // and focus is going to change
+					w->window_class != WC_OSK) {                               // and it is not the OSK window
+				DeleteWindowById(WC_OSK, 0);
+			}
+
+			if (w->focused_widget != wi) {
+				/* Repaint the widget that loss focus. A focused edit box may else leave the caret left on the screen */
+				if (w->focused_widget) w->InvalidateWidget(w->focused_widget - w->widget);
+				focused_widget_changed = true;
+				w->focused_widget = wi;
+			}
+		}
 
 		if (wi->type & WWB_MASK) {
 			/* special widget handling for buttons*/
@@ -181,7 +279,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 			}
 		} else if (wi->type == WWT_SCROLLBAR || wi->type == WWT_SCROLL2BAR || wi->type == WWT_HSCROLLBAR) {
 			ScrollbarClickHandler(w, wi, x, y);
-		} else if (wi->type == WWT_EDITBOX) {
+		} else if (wi->type == WWT_EDITBOX && !focused_widget_changed) { // Only open the OSK window if clicking on an already focused edit box
 			/* Open the OSK window if clicked on an edit box */
 			QueryStringBaseWindow *qs = dynamic_cast<QueryStringBaseWindow*>(w);
 			if (qs != NULL) {
@@ -431,18 +529,16 @@ Window::~Window()
 	/* Prevent Mouseover() from resetting mouse-over coordinates on a non-existing window */
 	if (_mouseover_last_w == this) _mouseover_last_w = NULL;
 
+	/* Make sure we don't try to access this window as the focused window when it don't exist anymore. */
+	if (_focused_window == this) _focused_window = NULL;
+
 	this->DeleteChildWindows();
 
 	if (this->viewport != NULL) DeleteWindowViewport(this);
 
 	this->SetDirty();
 
-	if (this->widget != NULL) {
-		for (const Widget *wi = this->widget; wi->type != WWT_LAST; wi++) {
-			if (wi->type == WWT_EDITBOX) _no_scroll--;
-		}
-		free(this->widget);
-	}
+	free(this->widget);
 
 	this->window_class = WC_INVALID;
 }
@@ -646,10 +742,6 @@ static void AssignWidgetToWindow(Window *w, const Widget *widget)
 		w->widget = MallocT<Widget>(index);
 		memcpy(w->widget, widget, sizeof(*w->widget) * index);
 		w->widget_count = index - 1;
-
-		for (const Widget *wi = w->widget; wi->type != WWT_LAST; wi++) {
-			if (wi->type == WWT_EDITBOX) _no_scroll++;
-		}
 	} else {
 		w->widget = NULL;
 		w->widget_count = 0;
@@ -682,11 +774,17 @@ void Window::Initialize(int x, int y, int min_width, int min_height,
 	this->width = min_width;
 	this->height = min_height;
 	AssignWidgetToWindow(this, widget);
+	this->focused_widget = 0;
 	this->resize.width = min_width;
 	this->resize.height = min_height;
 	this->resize.step_width = 1;
 	this->resize.step_height = 1;
 	this->window_number = window_number;
+
+	/* Give focus to the opened window unless it is the OSK window or a text box
+	 * of focused window has focus (so we don't interrupt typing). But if the new
+	 * window has a text box, then take focus anyway. */
+	if (this->window_class != WC_OSK && (!EditBoxInGlobalFocus() || this->HasWidgetOfType(WWT_EDITBOX))) SetFocusedWindow(this);
 
 	/* Hacky way of specifying always-on-top windows. These windows are
 		* always above other windows because they are moved below them.
@@ -1072,8 +1170,8 @@ void InitWindowSystem()
 
 	_z_back_window = NULL;
 	_z_front_window = NULL;
+	_focused_window = NULL;
 	_mouseover_last_w = NULL;
-	_no_scroll = 0;
 	_scrolling_viewport = 0;
 }
 
@@ -1620,11 +1718,6 @@ static bool MaybeBringWindowToFront(Window *w)
  */
 void HandleKeypress(uint32 raw_key)
 {
-	/* Stores if a window with a textfield for typing is open
-	 * If this is the case, keypress events are only passed to windows with text fields and
-	 * to thein this main toolbar. */
-	bool query_open = false;
-
 	/*
 	* During the generation of the world, there might be
 	* another thread that is currently building for example
@@ -1654,29 +1747,16 @@ void HandleKeypress(uint32 raw_key)
 	 */
 	if (key == 0 && keycode == 0) return;
 
-	/* check if we have a query string window open before allowing hotkeys */
-	if (FindWindowById(WC_QUERY_STRING,            0) != NULL ||
-			FindWindowById(WC_SEND_NETWORK_MSG,        0) != NULL ||
-			FindWindowById(WC_GENERATE_LANDSCAPE,      0) != NULL ||
-			FindWindowById(WC_CONSOLE,                 0) != NULL ||
-			FindWindowById(WC_SAVELOAD,                0) != NULL ||
-			FindWindowById(WC_COMPANY_PASSWORD_WINDOW, 0) != NULL) {
-		query_open = true;
+	/* Check if the focused window has a focused editbox */
+	if (EditBoxInGlobalFocus()) {
+		/* All input will in this case go to the focused window */
+		_focused_window->OnKeyPress(key, keycode);
+		return;
 	}
 
 	/* Call the event, start with the uppermost window. */
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
-		/* if a query window is open, only call the event for certain window types */
-		if (query_open &&
-				w->window_class != WC_QUERY_STRING &&
-				w->window_class != WC_SEND_NETWORK_MSG &&
-				w->window_class != WC_GENERATE_LANDSCAPE &&
-				w->window_class != WC_CONSOLE &&
-				w->window_class != WC_SAVELOAD &&
-				w->window_class != WC_COMPANY_PASSWORD_WINDOW) {
-			continue;
-		}
 		if (w->OnKeyPress(key, keycode) == Window::ES_HANDLED) return;
 	}
 
@@ -1791,7 +1871,11 @@ static const int8 scrollamt[16][2] = {
 
 static void HandleKeyScrolling()
 {
-	if (_dirkeys && !_no_scroll) {
+	/*
+	 * Check that any of the dirkeys is pressed and that the focused window
+	 * dont has an edit-box as focused widget.
+	 */
+	if (_dirkeys && !EditBoxInGlobalFocus()) {
 		int factor = _shift_pressed ? 50 : 10;
 		ScrollMainViewport(scrollamt[_dirkeys][0] * factor, scrollamt[_dirkeys][1] * factor);
 	}
