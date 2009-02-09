@@ -44,10 +44,10 @@ Sprite *Blitter_8bppDebug::Encode(SpriteLoader::Sprite *sprite, Blitter::Allocat
 	dest_sprite->x_offs = sprite->x_offs;
 	dest_sprite->y_offs = sprite->y_offs;
 
-	/* Write a random color as sprite; this makes debugging really easy */
-	uint color = InteractiveRandom() % 150 + 2;
+	/* Write a random colour as sprite; this makes debugging really easy */
+	uint colour = InteractiveRandom() % 150 + 2;
 	for (int i = 0; i < sprite->height * sprite->width; i++) {
-		dest_sprite->data[i] = (sprite->data[i].m == 0) ? 0 : color;
+		dest_sprite->data[i] = (sprite->data[i].m == 0) ? 0 : colour;
 	}
 
 	return dest_sprite;

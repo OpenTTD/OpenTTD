@@ -917,7 +917,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			if (pos == 0) {
 				DrawString(14, y, STR_4010_GENERATE_RANDOM_NEW_GAME, TC_DARK_GREEN);
 			} else {
-				DoDrawString(item->title, 14, y, _fios_colors[item->type] );
+				DoDrawString(item->title, 14, y, _fios_colours[item->type] );
 			}
 			y += NSSWND_ROWSIZE;
 

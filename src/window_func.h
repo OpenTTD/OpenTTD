@@ -19,7 +19,7 @@ int PositionMainToolbar(Window *w);
 void InitWindowSystem();
 void UnInitWindowSystem();
 void ResetWindowSystem();
-void SetupColorsAndInitialWindow();
+void SetupColoursAndInitialWindow();
 void InputLoop();
 
 void InvalidateThisWindowData(Window *w, int data = 0);

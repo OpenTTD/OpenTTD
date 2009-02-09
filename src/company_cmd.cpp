@@ -97,17 +97,17 @@ bool IsHumanCompany(CompanyID company)
 }
 
 
-uint16 GetDrawStringCompanyColor(CompanyID company)
+uint16 GetDrawStringCompanyColour(CompanyID company)
 {
-	/* Get the color for DrawString-subroutines which matches the color
+	/* Get the colour for DrawString-subroutines which matches the colour
 	 * of the company */
-	if (!IsValidCompanyID(company)) return _colour_gradient[COLOUR_WHITE][4] | IS_PALETTE_COLOR;
-	return (_colour_gradient[_company_colours[company]][4]) | IS_PALETTE_COLOR;
+	if (!IsValidCompanyID(company)) return _colour_gradient[COLOUR_WHITE][4] | IS_PALETTE_COLOUR;
+	return (_colour_gradient[_company_colours[company]][4]) | IS_PALETTE_COLOUR;
 }
 
 void DrawCompanyIcon(CompanyID c, int x, int y)
 {
-	DrawSprite(SPR_PLAYER_ICON, COMPANY_SPRITE_COLOR(c), x, y);
+	DrawSprite(SPR_PLAYER_ICON, COMPANY_SPRITE_COLOUR(c), x, y);
 }
 
 /**
@@ -352,7 +352,7 @@ static Colours GenerateCompanyColour()
 		}
 	};
 
-	/* Move the colors that look similar to each company's color to the side */
+	/* Move the colours that look similar to each company's colour to the side */
 	Company *c;
 	FOR_ALL_COMPANIES(c) {
 		Colours pcolour = (Colours)c->colour;
@@ -374,7 +374,7 @@ static Colours GenerateCompanyColour()
 		}
 	}
 
-	/* Return the first available color */
+	/* Return the first available colour */
 	for (uint i = 0; i < COLOUR_END; i++) {
 		if (colours[i] != INVALID_COLOUR) return colours[i];
 	}

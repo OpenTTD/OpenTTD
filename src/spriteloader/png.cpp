@@ -49,7 +49,7 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 	png_byte header[8];
 	png_structp png_ptr;
 	png_infop info_ptr, end_info;
-	uint bit_depth, color_type;
+	uint bit_depth, colour_type;
 	uint i, pixelsize;
 	png_bytep row_pointer;
 	SpriteLoader::CommonPixel *dst;
@@ -106,9 +106,9 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 	}
 
 	bit_depth  = png_get_bit_depth(png_ptr, info_ptr);
-	color_type = png_get_color_type(png_ptr, info_ptr);
+	colour_type = png_get_color_type(png_ptr, info_ptr);
 
-	if (mask && (bit_depth != 8 || color_type != PNG_COLOR_TYPE_PALETTE)) {
+	if (mask && (bit_depth != 8 || colour_type != PNG_COLOR_TYPE_PALETTE)) {
 		DEBUG(misc, 0, "Ignoring mask for SpriteID %d as it isn't a 8 bit palette image", id);
 		return true;
 	}
@@ -116,16 +116,16 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 	if (!mask) {
 		if (bit_depth == 16) png_set_strip_16(png_ptr);
 
-		if (color_type == PNG_COLOR_TYPE_PALETTE) {
+		if (colour_type == PNG_COLOR_TYPE_PALETTE) {
 			png_set_palette_to_rgb(png_ptr);
-			color_type = PNG_COLOR_TYPE_RGB;
+			colour_type = PNG_COLOR_TYPE_RGB;
 		}
-		if (color_type == PNG_COLOR_TYPE_GRAY || color_type == PNG_COLOR_TYPE_GRAY_ALPHA) {
+		if (colour_type == PNG_COLOR_TYPE_GRAY || colour_type == PNG_COLOR_TYPE_GRAY_ALPHA) {
 			png_set_gray_to_rgb(png_ptr);
-			color_type = PNG_COLOR_TYPE_RGB;
+			colour_type = PNG_COLOR_TYPE_RGB;
 		}
 
-		if (color_type == PNG_COLOR_TYPE_RGB) {
+		if (colour_type == PNG_COLOR_TYPE_RGB) {
 			png_set_filler(png_ptr, 0xff, PNG_FILLER_AFTER);
 		}
 
@@ -151,7 +151,7 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 					dst[x].r = 0;
 					dst[x].g = 0;
 					dst[x].b = 0;
-					/* Alpha channel is used from the original image (to allow transparency in remap colors) */
+					/* Alpha channel is used from the original image (to allow transparency in remap colours) */
 					dst[x].m = row_pointer[x * sizeof(uint8)];
 				}
 			} else {

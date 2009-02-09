@@ -780,7 +780,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 	SpriteID relocation;
 	SpriteID image;
-	SpriteID palette = COMPANY_SPRITE_COLOR(_local_company);
+	SpriteID palette = COMPANY_SPRITE_COLOUR(_local_company);
 	uint tile = 2;
 
 	statspec = GetCustomStationSpec(sclass, station);

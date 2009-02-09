@@ -160,7 +160,7 @@ struct CheatWindow : Window {
 						/* Display date for change date cheat */
 						case STR_CHEAT_CHANGE_DATE: SetDParam(0, _date); break;
 
-						/* Draw colored flag for change company cheat */
+						/* Draw coloured flag for change company cheat */
 						case STR_CHEAT_CHANGE_COMPANY:
 							SetDParam(0, val + 1);
 							GetString(buf, STR_CHEAT_CHANGE_COMPANY, lastof(buf));

@@ -295,7 +295,7 @@ void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y)
 	ResetWindowSystem();
 
 	/* Create toolbars */
-	SetupColorsAndInitialWindow();
+	SetupColoursAndInitialWindow();
 
 	if (_gw.thread != NULL) {
 		_gw.thread->Join();

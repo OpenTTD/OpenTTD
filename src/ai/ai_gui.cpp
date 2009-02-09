@@ -258,7 +258,7 @@ struct AISettingsWindow : public Window {
 
 			int x = 0;
 			if (((*it).flags & AICONFIG_BOOLEAN) != 0) {
-				DrawFrameRect(4, y  + 2, 23, y + 10, (current_value != 0) ? 6 : 4, (current_value != 0) ? FR_LOWERED : FR_NONE);
+				DrawFrameRect(4, y  + 2, 23, y + 10, (current_value != 0) ? COLOUR_GREEN : COLOUR_RED, (current_value != 0) ? FR_LOWERED : FR_NONE);
 			} else {
 				DrawArrowButtons(4, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + !!this->clicked_increase : 0, current_value > (*it).min_value, current_value < (*it).max_value);
 				if (it->labels != NULL && it->labels->Find(current_value) != it->labels->End()) {

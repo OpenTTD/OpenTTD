@@ -70,7 +70,7 @@ struct GUISettings {
 	bool   left_mouse_btn_scrolling;         ///< left mouse button scroll
 	bool   pause_on_newgame;                 ///< whether to start new games paused or not
 	bool   enable_signal_gui;                ///< show the signal GUI when the signal button is pressed
-	Year   colored_news_year;                ///< when does newspaper become colored?
+	Year   coloured_news_year;               ///< when does newspaper become coloured?
 	bool   timetable_in_ticks;               ///< whether to show the timetable in ticks rather than days
 	bool   quick_goto;                       ///< Allow quick access to 'goto button' in vehicle orders window
 	bool   bridge_pillars;                   ///< show bridge pillars for high bridges

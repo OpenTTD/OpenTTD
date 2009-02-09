@@ -32,12 +32,12 @@ void FindVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
 bool HasVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
 bool HasVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
 void CallVehicleTicks();
-uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *color);
+uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *colour);
 
 void InitializeTrains();
 byte VehicleRandomBits();
 void ResetVehiclePosHash();
-void ResetVehicleColorMap();
+void ResetVehicleColourMap();
 
 bool CanRefitTo(EngineID engine_type, CargoID cid_to);
 CargoID FindFirstRefittableCargo(EngineID engine_type);

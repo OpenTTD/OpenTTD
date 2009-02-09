@@ -148,7 +148,7 @@ void NetworkFreeLocalCommandQueue();
 
 // from network.c
 void NetworkCloseClient(NetworkClientSocket *cs);
-void NetworkTextMessage(NetworkAction action, ConsoleColour color, bool self_send, const char *name, const char *str = "", int64 data = 0);
+void NetworkTextMessage(NetworkAction action, ConsoleColour colour, bool self_send, const char *name, const char *str = "", int64 data = 0);
 void NetworkGetClientName(char *clientname, size_t size, const NetworkClientSocket *cs);
 uint NetworkCalculateLag(const NetworkClientSocket *cs);
 byte NetworkGetCurrentLanguageIndex();

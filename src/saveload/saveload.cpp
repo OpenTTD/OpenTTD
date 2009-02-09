@@ -1622,7 +1622,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		AbortSaveLoad();
 		if (_sl.excpt_uninit != NULL) _sl.excpt_uninit();
 
-		/* Skip the "color" character */
+		/* Skip the "colour" character */
 		DEBUG(sl, 0, GetSaveLoadErrorString() + 3);
 
 		if (threaded) {
@@ -1822,7 +1822,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 		/* deinitialize compressor. */
 		if (_sl.excpt_uninit != NULL) _sl.excpt_uninit();
 
-		/* Skip the "color" character */
+		/* Skip the "colour" character */
 		DEBUG(sl, 0, GetSaveLoadErrorString() + 3);
 
 		/* A saver/loader exception!! reinitialize all variables to prevent crash! */

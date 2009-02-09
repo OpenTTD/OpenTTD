@@ -211,7 +211,7 @@ Vehicle::Vehicle()
 	this->group_id           = DEFAULT_GROUP;
 	this->fill_percent_te_id = INVALID_TE_ID;
 	this->first              = this;
-	this->colormap           = PAL_NONE;
+	this->colourmap           = PAL_NONE;
 }
 
 /**
@@ -480,10 +480,10 @@ void ResetVehiclePosHash()
 	memset(_new_vehicle_position_hash, 0, sizeof(_new_vehicle_position_hash));
 }
 
-void ResetVehicleColorMap()
+void ResetVehicleColourMap()
 {
 	Vehicle *v;
-	FOR_ALL_VEHICLES(v) { v->colormap = PAL_NONE; }
+	FOR_ALL_VEHICLES(v) { v->colourmap = PAL_NONE; }
 }
 
 /**
@@ -870,7 +870,7 @@ void CheckVehicle32Day(Vehicle *v)
 	uint16 callback = GetVehicleCallback(CBID_VEHICLE_32DAY_CALLBACK, 0, 0, v->engine_type, v);
 	if (callback == CALLBACK_FAILED) return;
 	if (HasBit(callback, 0)) TriggerVehicle(v, VEHICLE_TRIGGER_CALLBACK_32); // Trigger vehicle trigger 10
-	if (HasBit(callback, 1)) v->colormap = PAL_NONE;                         // Update colormap via callback 2D
+	if (HasBit(callback, 1)) v->colourmap = PAL_NONE;                         // Update colourmap via callback 2D
 }
 
 void DecreaseVehicleValue(Vehicle *v)
@@ -1372,10 +1372,10 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service,
 /**
  * Calculates how full a vehicle is.
  * @param v The Vehicle to check. For trains, use the first engine.
- * @param color The string to show depending on if we are unloading or loading
+ * @param colour The string to show depending on if we are unloading or loading
  * @return A percentage of how full the Vehicle is.
  */
-uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *color)
+uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *colour)
 {
 	int count = 0;
 	int max = 0;
@@ -1390,20 +1390,20 @@ uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *color)
 	for (; v != NULL; v = v->Next()) {
 		count += v->cargo.Count();
 		max += v->cargo_cap;
-		if (v->cargo_cap != 0 && color != NULL) {
+		if (v->cargo_cap != 0 && colour != NULL) {
 			unloading += HasBit(v->vehicle_flags, VF_CARGO_UNLOADING) ? 1 : 0;
 			loading |= !(u->current_order.GetUnloadType() & OUFB_UNLOAD) && st->goods[v->cargo_type].days_since_pickup != 255;
 			cars++;
 		}
 	}
 
-	if (color != NULL) {
+	if (colour != NULL) {
 		if (unloading == 0 && loading) {
-			*color = STR_PERCENT_UP;
+			*colour = STR_PERCENT_UP;
 		} else if (cars == unloading || !loading) {
-			*color = STR_PERCENT_DOWN;
+			*colour = STR_PERCENT_DOWN;
 		} else {
-			*color = STR_PERCENT_UP_DOWN;
+			*colour = STR_PERCENT_UP_DOWN;
 		}
 	}
 
@@ -1908,7 +1908,7 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 
 static SpriteID GetEngineColourMap(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v)
 {
-	SpriteID map = (v != NULL) ? v->colormap : PAL_NONE;
+	SpriteID map = (v != NULL) ? v->colourmap : PAL_NONE;
 
 	/* Return cached value if any */
 	if (map != PAL_NONE) return map;
@@ -1916,7 +1916,7 @@ static SpriteID GetEngineColourMap(EngineID engine_type, CompanyID company, Engi
 	/* Check if we should use the colour map callback */
 	if (HasBit(EngInfo(engine_type)->callbackmask, CBM_VEHICLE_COLOUR_REMAP)) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_COLOUR_MAPPING, 0, 0, engine_type, v);
-		/* A return value of 0xC000 is stated to "use the default two-color
+		/* A return value of 0xC000 is stated to "use the default two-colour
 		 * maps" which happens to be the failure action too... */
 		if (callback != CALLBACK_FAILED && callback != 0xC000) {
 			map = GB(callback, 0, 14);
@@ -1924,7 +1924,7 @@ static SpriteID GetEngineColourMap(EngineID engine_type, CompanyID company, Engi
 			 * map else it's returned as-is. */
 			if (!HasBit(callback, 14)) {
 				/* Update cache */
-				if (v != NULL) ((Vehicle*)v)->colormap = map;
+				if (v != NULL) ((Vehicle*)v)->colourmap = map;
 				return map;
 			}
 		}
@@ -1932,7 +1932,7 @@ static SpriteID GetEngineColourMap(EngineID engine_type, CompanyID company, Engi
 
 	bool twocc = HasBit(EngInfo(engine_type)->misc_flags, EF_USES_2CC);
 
-	if (map == PAL_NONE) map = twocc ? (SpriteID)SPR_2CCMAP_BASE : (SpriteID)PALETTE_RECOLOR_START;
+	if (map == PAL_NONE) map = twocc ? (SpriteID)SPR_2CCMAP_BASE : (SpriteID)PALETTE_RECOLOUR_START;
 
 	const Livery *livery = GetEngineLivery(engine_type, company, parent_engine_type, v);
 
@@ -1940,7 +1940,7 @@ static SpriteID GetEngineColourMap(EngineID engine_type, CompanyID company, Engi
 	if (twocc) map += livery->colour2 * 16;
 
 	/* Update cache */
-	if (v != NULL) ((Vehicle*)v)->colormap = map;
+	if (v != NULL) ((Vehicle*)v)->colourmap = map;
 	return map;
 }
 

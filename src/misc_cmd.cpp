@@ -49,7 +49,7 @@ CommandCost CmdSetCompanyManagerFace(TileIndex tile, uint32 flags, uint32 p1, ui
  * p1 bits 8-9 set in use state or first/second colour
  * @param p2 new colour for vehicles, property, etc.
  */
-CommandCost CmdSetCompanyColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdSetCompanyColour(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (p2 >= 16) return CMD_ERROR; // max 16 colours
 
@@ -116,7 +116,7 @@ CommandCost CmdSetCompanyColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			default:
 				break;
 		}
-		ResetVehicleColorMap();
+		ResetVehicleColourMap();
 		MarkWholeScreenDirty();
 	}
 	return CommandCost();

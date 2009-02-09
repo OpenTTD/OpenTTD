@@ -148,7 +148,7 @@ void RoadVehUpdateCache(Vehicle *v)
 		u->u.road.cached_veh_length = GetRoadVehLength(u);
 
 		/* Invalidate the vehicle colour map */
-		u->colormap = PAL_NONE;
+		u->colourmap = PAL_NONE;
 	}
 }
 

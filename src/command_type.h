@@ -202,7 +202,7 @@ enum {
 
 	CMD_BUILD_COMPANY_HQ,             ///< build the company headquarter
 	CMD_SET_COMPANY_MANAGER_FACE,     ///< set the manager's face of the company
-	CMD_SET_COMPANY_COLOR,            ///< set the color of the company
+	CMD_SET_COMPANY_COLOUR,            ///< set the colour of the company
 
 	CMD_INCREASE_LOAN,                ///< increase the loan from the bank
 	CMD_DECREASE_LOAN,                ///< decrease the loan from the bank

@@ -11,7 +11,7 @@
 class Blitter_32bppSimple : public Blitter_32bppBase {
 public:
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
-	/* virtual */ void DrawColorMappingRect(void *dst, int width, int height, int pal);
+	/* virtual */ void DrawColourMappingRect(void *dst, int width, int height, int pal);
 	/* virtual */ Sprite *Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator);
 
 	/* virtual */ const char *GetName() { return "32bpp-simple"; }

@@ -741,7 +741,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 	}
 
 	if (ci != NULL)
-		NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), self_send, name, msg, data);
+		NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), self_send, name, msg, data);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -816,10 +816,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_RCON)
 {
 	char rcon_out[NETWORK_RCONCOMMAND_LENGTH];
 
-	ConsoleColour color_code = (ConsoleColour)p->Recv_uint16();
+	ConsoleColour colour_code = (ConsoleColour)p->Recv_uint16();
 	p->Recv_string(rcon_out, sizeof(rcon_out));
 
-	IConsolePrint(color_code, rcon_out);
+	IConsolePrint(colour_code, rcon_out);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }

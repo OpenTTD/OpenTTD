@@ -853,7 +853,7 @@ static const OldChunks industry_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Industry, type ),
 	OCL_SVAR( OC_TTO | OC_FILE_U8 | OC_VAR_U16, Industry, counter ),
 	OCL_SVAR(  OC_UINT8, Industry, owner ),
-	OCL_SVAR(  OC_UINT8, Industry, random_color ),
+	OCL_SVAR(  OC_UINT8, Industry, random_colour ),
 	OCL_SVAR( OC_TTD | OC_FILE_U8 | OC_VAR_I32, Industry, last_prod_year ),
 	OCL_SVAR( OC_TTD | OC_UINT16, Industry, counter ),
 	OCL_SVAR( OC_TTD | OC_UINT8, Industry, was_cargo_delivered ),
@@ -879,7 +879,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 			ConvertDateToYMD(_date, &ymd);
 			i->last_prod_year = ymd.year;
 
-			i->random_color = RemapTTOColour(i->random_color);
+			i->random_colour = RemapTTOColour(i->random_colour);
 		}
 
 		IncIndustryTypeCount(i->type);
@@ -1004,7 +1004,7 @@ static bool LoadOldCompany(LoadgameState *ls, int num)
 	if (_savegame_type == SGT_TTO) {
 		/* adjust manager's face */
 		if (HasBit(c->face, 27) && GB(c->face, 26, 1) == GB(c->face, 19, 1)) {
-			/* if face would be black in TTD, adjust tie color and thereby face color */
+			/* if face would be black in TTD, adjust tie colour and thereby face colour */
 			ClrBit(c->face, 27);
 		}
 
@@ -1715,7 +1715,7 @@ static const OldChunks main_chunk[] = {
 	OCL_VAR ( OC_FILE_U8 | OC_VAR_U32,    1, &_cur_company_tick_index ),
 
 	OCL_NULL( 2 ),               ///< Date stuff, calculated automatically
-	OCL_NULL( 8 ),               ///< Company colors, calculated automatically
+	OCL_NULL( 8 ),               ///< Company colours, calculated automatically
 
 	OCL_VAR (  OC_UINT8,    1, &_economy.infl_amount ),
 	OCL_VAR (  OC_UINT8,    1, &_economy.infl_amount_pr ),

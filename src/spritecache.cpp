@@ -174,7 +174,7 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 	int num  = FioReadWord();
 	byte type = FioReadByte();
 
-	/* Type 0xFF indicates either a colormap or some other non-sprite info */
+	/* Type 0xFF indicates either a colourmap or some other non-sprite info */
 	assert((type == 0xFF) == (sprite_type == ST_RECOLOUR));
 	if (type == 0xFF) {
 		/* "Normal" recolour sprites are ALWAYS 257 bytes. Then there is a small

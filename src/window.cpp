@@ -630,7 +630,7 @@ void ChangeWindowOwner(Owner old_owner, Owner new_owner)
 		if (w->owner != old_owner) continue;
 
 		switch (w->window_class) {
-			case WC_COMPANY_COLOR:
+			case WC_COMPANY_COLOUR:
 			case WC_FINANCES:
 			case WC_STATION_LIST:
 			case WC_TRAINS_LIST:

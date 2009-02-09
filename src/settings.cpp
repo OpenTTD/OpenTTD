@@ -1370,7 +1370,7 @@ const SettingDesc _settings[] = {
 	SDT_CONDBOOL(GameSettings, economy.exclusive_rights,                        79, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_ALLOW_EXCLUSIVE,        NULL),
 	SDT_CONDBOOL(GameSettings, economy.give_money,                              79, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_ALLOW_GIVE_MONEY,       NULL),
 	     SDT_VAR(GameSettings, game_creation.snow_line_height,       SLE_UINT8,                     0, 0,     7,     2,      13, 0, STR_CONFIG_SETTING_SNOWLINE_HEIGHT,        NULL),
-	    SDTC_VAR(              gui.colored_news_year,                SLE_INT32,                     0,NC,  2000,MIN_YEAR,MAX_YEAR,1,STR_CONFIG_SETTING_COLORED_NEWS_YEAR,      NULL),
+	    SDTC_VAR(              gui.coloured_news_year,               SLE_INT32,                     0,NC,  2000,MIN_YEAR,MAX_YEAR,1,STR_CONFIG_SETTING_COLORED_NEWS_YEAR,      NULL),
 	     SDT_VAR(GameSettings, game_creation.starting_year,          SLE_INT32,                     0,NC,  1950,MIN_YEAR,MAX_YEAR,1,STR_CONFIG_SETTING_STARTING_YEAR,          NULL),
 	SDT_CONDNULL(                                                            4,  0, 104),
 	    SDT_BOOL(GameSettings, economy.smooth_economy,                                              0, 0,  true,                    STR_CONFIG_SETTING_SMOOTH_ECONOMY,         NULL),

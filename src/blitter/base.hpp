@@ -54,15 +54,15 @@ public:
 	virtual void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) = 0;
 
 	/**
-	 * Draw a colortable to the screen. This is: the color of the screen is read
-	 *  and is looked-up in the palette to match a new color, which then is put
+	 * Draw a colourtable to the screen. This is: the colour of the screen is read
+	 *  and is looked-up in the palette to match a new colour, which then is put
 	 *  on the screen again.
 	 * @param dst the destination pointer (video-buffer).
 	 * @param width the width of the buffer.
 	 * @param height the height of the buffer.
 	 * @param pal the palette to use.
 	 */
-	virtual void DrawColorMappingRect(void *dst, int width, int height, int pal) = 0;
+	virtual void DrawColourMappingRect(void *dst, int width, int height, int pal) = 0;
 
 	/**
 	 * Convert a sprite from the loader to our own format.
@@ -80,33 +80,33 @@ public:
 	virtual void *MoveTo(const void *video, int x, int y) = 0;
 
 	/**
-	 * Draw a pixel with a given color on the video-buffer.
+	 * Draw a pixel with a given colour on the video-buffer.
 	 * @param video The destination pointer (video-buffer).
 	 * @param x The x position within video-buffer.
 	 * @param y The y position within video-buffer.
-	 * @param color A 8bpp mapping color.
+	 * @param colour A 8bpp mapping colour.
 	 */
-	virtual void SetPixel(void *video, int x, int y, uint8 color) = 0;
+	virtual void SetPixel(void *video, int x, int y, uint8 colour) = 0;
 
 	/**
-	 * Draw a pixel with a given color on the video-buffer if there is currently a black pixel.
+	 * Draw a pixel with a given colour on the video-buffer if there is currently a black pixel.
 	 * @param video The destination pointer (video-buffer).
 	 * @param x The x position within video-buffer.
 	 * @param y The y position within video-buffer.
-	 * @param color A 8bpp mapping color.
+	 * @param colour A 8bpp mapping colour.
 	 */
-	virtual void SetPixelIfEmpty(void *video, int x, int y, uint8 color) = 0;
+	virtual void SetPixelIfEmpty(void *video, int x, int y, uint8 colour) = 0;
 
 	/**
-	 * Make a single horizontal line in a single color on the video-buffer.
+	 * Make a single horizontal line in a single colour on the video-buffer.
 	 * @param video The destination pointer (video-buffer).
 	 * @param width The lenght of the line.
-	 * @param color A 8bpp mapping color.
+	 * @param colour A 8bpp mapping colour.
 	 */
-	virtual void DrawRect(void *video, int width, int height, uint8 color) = 0;
+	virtual void DrawRect(void *video, int width, int height, uint8 colour) = 0;
 
 	/**
-	 * Draw a line with a given color.
+	 * Draw a line with a given colour.
 	 * @param video The destination pointer (video-buffer).
 	 * @param x The x coordinate from where the line starts.
 	 * @param y The y coordinate from where the line starts.
@@ -114,9 +114,9 @@ public:
 	 * @param y2 The y coordinate to where the lines goes.
 	 * @param screen_width The width of the screen you are drawing in (to avoid buffer-overflows).
 	 * @param screen_height The height of the screen you are drawing in (to avoid buffer-overflows).
-	 * @param color A 8bpp mapping color.
+	 * @param colour A 8bpp mapping colour.
 	 */
-	virtual void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 color) = 0;
+	virtual void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour) = 0;
 
 	/**
 	 * Copy from a buffer to the screen.

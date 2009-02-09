@@ -942,7 +942,7 @@ CommandCost CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 		v->cargo.Truncate((v->cargo_type == new_cid) ? capacity : 0);
 		v->cargo_type = new_cid;
 		v->cargo_subtype = new_subtype;
-		v->colormap = PAL_NONE; // invalidate vehicle colour map
+		v->colourmap = PAL_NONE; // invalidate vehicle colour map
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClassesData(WC_SHIPS_LIST, 0);

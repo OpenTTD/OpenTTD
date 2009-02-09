@@ -414,7 +414,7 @@ static void MapSpriteMappingRecolour(PalSpriteID *grf_sprite)
 
 	if (HasBit(grf_sprite->sprite, 15)) {
 		ClrBit(grf_sprite->sprite, 15);
-		SetBit(grf_sprite->sprite, PALETTE_MODIFIER_COLOR);
+		SetBit(grf_sprite->sprite, PALETTE_MODIFIER_COLOUR);
 	}
 }
 
@@ -2353,7 +2353,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				indsp->appear_ingame[_settings_game.game_creation.landscape] = grf_load_byte(&buf);
 				break;
 
-			case 0x19: // Map color
+			case 0x19: // Map colour
 				indsp->map_colour = MapDOSColour(grf_load_byte(&buf));
 				break;
 
@@ -4413,7 +4413,7 @@ static uint32 GetPatchVariable(uint8 param)
 			}
 
 
-		/* 2CC colormap base sprite */
+		/* 2CC colourmap base sprite */
 		case 0x11: return SPR_2CCMAP_BASE;
 
 		/* map size: format = -MABXYSS

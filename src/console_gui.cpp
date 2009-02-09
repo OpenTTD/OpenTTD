@@ -437,11 +437,11 @@ static void IConsoleHistoryNavigate(int direction)
  * as well as to a logfile. If the network server is a dedicated server, all activities
  * are also logged. All lines to print are added to a temporary buffer which can be
  * used as a history to print them onscreen
- * @param color_code the colour of the command. Red in case of errors, etc.
+ * @param colour_code the colour of the command. Red in case of errors, etc.
  * @param string the message entered or output on the console (notice, error, etc.)
  */
-void IConsoleGUIPrint(ConsoleColour color_code, char *str)
+void IConsoleGUIPrint(ConsoleColour colour_code, char *str)
 {
-	new IConsoleLine(str, (TextColour)color_code);
+	new IConsoleLine(str, (TextColour)colour_code);
 	SetWindowDirty(FindWindowById(WC_CONSOLE, 0));
 }

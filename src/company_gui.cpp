@@ -401,7 +401,7 @@ public:
 
 	void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
 	{
-		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOR_START + this->result, x + 16, y + 7);
+		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + this->result, x + 16, y + 7);
 		DrawStringTruncated(x + 32, y + 3, this->String(), sel ? TC_WHITE : TC_BLACK, width - 30);
 	}
 };
@@ -498,11 +498,11 @@ public:
 
 				DrawString(15, y, STR_LIVERY_DEFAULT + scheme, sel ? TC_WHITE : TC_BLACK);
 
-				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(c->livery[scheme].colour1), 152, y);
+				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(c->livery[scheme].colour1), 152, y);
 				DrawString(165, y, STR_00D1_DARK_BLUE + c->livery[scheme].colour1, sel ? TC_WHITE : TC_GOLD);
 
 				if (!this->IsWidgetHidden(SCLW_WIDGET_SEC_COL_DROPDOWN)) {
-					DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(c->livery[scheme].colour2), 277, y);
+					DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(c->livery[scheme].colour2), 277, y);
 					DrawString(290, y, STR_00D1_DARK_BLUE + c->livery[scheme].colour2, sel ? TC_WHITE : TC_GOLD);
 				}
 
@@ -570,7 +570,7 @@ public:
 
 				/* If clicking on the left edge, toggle using the livery */
 				if (pt.x < 10) {
-					DoCommandP(0, j | (2 << 8), !GetCompany((CompanyID)this->window_number)->livery[j].in_use, CMD_SET_COMPANY_COLOR);
+					DoCommandP(0, j | (2 << 8), !GetCompany((CompanyID)this->window_number)->livery[j].in_use, CMD_SET_COMPANY_COLOUR);
 				}
 
 				if (_ctrl_pressed) {
@@ -588,7 +588,7 @@ public:
 	{
 		for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 			if (HasBit(this->sel, scheme)) {
-				DoCommandP(0, scheme | (widget == SCLW_WIDGET_PRI_COL_DROPDOWN ? 0 : 256), index, CMD_SET_COMPANY_COLOR);
+				DoCommandP(0, scheme | (widget == SCLW_WIDGET_PRI_COL_DROPDOWN ? 0 : 256), index, CMD_SET_COMPANY_COLOUR);
 			}
 		}
 	}
@@ -628,7 +628,7 @@ static const Widget _select_company_livery_widgets[] = {
 
 static const WindowDesc _select_company_livery_desc = {
 	WDP_AUTO, WDP_AUTO, 400, 49 + 1 * 14, 400, 49 + 1 * 14,
-	WC_COMPANY_COLOR, WC_NONE,
+	WC_COMPANY_COLOUR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_select_company_livery_widgets,
 };
@@ -636,11 +636,11 @@ static const WindowDesc _select_company_livery_desc = {
 /**
  * Draws the face of a company manager's face.
  * @param cmf   the company manager's face
- * @param color the (background) color of the gradient
+ * @param colour the (background) colour of the gradient
  * @param x     x-position to draw the face
  * @param y     y-position to draw the face
  */
-void DrawCompanyManagerFace(CompanyManagerFace cmf, int color, int x, int y)
+void DrawCompanyManagerFace(CompanyManagerFace cmf, int colour, int x, int y)
 {
 	GenderEthnicity ge = (GenderEthnicity)GetCompanyManagerFaceBits(cmf, CMFV_GEN_ETHN, GE_WM);
 
@@ -662,7 +662,7 @@ void DrawCompanyManagerFace(CompanyManagerFace cmf, int color, int x, int y)
 	}
 
 	/* Draw the gradient (background) */
-	DrawSprite(SPR_GRADIENT, GENERAL_SPRITE_COLOR(color), x, y);
+	DrawSprite(SPR_GRADIENT, GENERAL_SPRITE_COLOUR(colour), x, y);
 
 	for (CompanyManagerFaceVariable cmfv = CMFV_CHEEKS; cmfv < CMFV_END; cmfv++) {
 		switch (cmfv) {
@@ -1131,7 +1131,7 @@ enum CompanyWindowWidgets {
 	CW_WIDGET_CAPTION,
 	CW_WIDGET_FACE,
 	CW_WIDGET_NEW_FACE,
-	CW_WIDGET_COLOR_SCHEME,
+	CW_WIDGET_COLOUR_SCHEME,
 	CW_WIDGET_PRESIDENT_NAME,
 	CW_WIDGET_COMPANY_NAME,
 	CW_WIDGET_BUILD_VIEW_HQ,
@@ -1264,7 +1264,7 @@ struct CompanyWindow : Window
 		bool local = this->window_number == _local_company;
 
 		this->SetWidgetHiddenState(CW_WIDGET_NEW_FACE,       !local);
-		this->SetWidgetHiddenState(CW_WIDGET_COLOR_SCHEME,   !local);
+		this->SetWidgetHiddenState(CW_WIDGET_COLOUR_SCHEME,   !local);
 		this->SetWidgetHiddenState(CW_WIDGET_PRESIDENT_NAME, !local);
 		this->SetWidgetHiddenState(CW_WIDGET_COMPANY_NAME,   !local);
 		this->widget[CW_WIDGET_BUILD_VIEW_HQ].data = (local && c->location_of_HQ == INVALID_TILE) ? STR_706F_BUILD_HQ : STR_7072_VIEW_HQ;
@@ -1321,7 +1321,7 @@ struct CompanyWindow : Window
 		/* "Colour scheme:" */
 		DrawString(110, 43, STR_7006_COLOR_SCHEME, TC_FROMSTRING);
 		/* Draw company-colour bus */
-		DrawSprite(SPR_VEH_BUS_SW_VIEW, COMPANY_SPRITE_COLOR(c->index), 215, 44);
+		DrawSprite(SPR_VEH_BUS_SW_VIEW, COMPANY_SPRITE_COLOUR(c->index), 215, 44);
 
 		/* "Vehicles:" */
 		DrawCompanyVehiclesAmount((CompanyID)this->window_number);
@@ -1339,8 +1339,8 @@ struct CompanyWindow : Window
 		switch (widget) {
 			case CW_WIDGET_NEW_FACE: DoSelectCompanyManagerFace(this, false); break;
 
-			case CW_WIDGET_COLOR_SCHEME:
-				if (BringWindowToFrontById(WC_COMPANY_COLOR, this->window_number)) break;
+			case CW_WIDGET_COLOUR_SCHEME:
+				if (BringWindowToFrontById(WC_COMPANY_COLOUR, this->window_number)) break;
 				new SelectCompanyLiveryWindow(&_select_company_livery_desc, (CompanyID)this->window_number);
 				break;
 

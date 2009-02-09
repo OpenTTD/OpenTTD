@@ -50,20 +50,20 @@ static const Widget _smallmap_widgets[] = {
 /* number of used industries */
 static int _smallmap_industry_count;
 
-/** Macro for ordinary entry of LegendAndColor */
+/** Macro for ordinary entry of LegendAndColour */
 #define MK(a, b) {a, b, INVALID_INDUSTRYTYPE, true, false, false}
-/** Macro for end of list marker in arrays of LegendAndColor */
+/** Macro for end of list marker in arrays of LegendAndColour */
 #define MKEND() {0, STR_NULL, INVALID_INDUSTRYTYPE, true, true, false}
-/** Macro for break marker in arrays of LegendAndColor.
+/** Macro for break marker in arrays of LegendAndColour.
  * It will have valid data, though */
 #define MS(a, b) {a, b, INVALID_INDUSTRYTYPE, true, false, true}
 
 /** Structure for holding relevant data for legends in small map */
 struct LegendAndColour {
-	uint16 colour;     ///< color of the item on the map
-	StringID legend;   ///< string corresponding to the colored item
+	uint16 colour;     ///< colour of the item on the map
+	StringID legend;   ///< string corresponding to the coloured item
 	IndustryType type; ///< type of industry
-	bool show_on_map;  ///< for filtering industries, if true is shown on map in color
+	bool show_on_map;  ///< for filtering industries, if true is shown on map in colour
 	bool end;          ///< this is the end of the list
 	bool col_break;    ///< perform a break and go one collumn further
 };
@@ -180,28 +180,28 @@ static const LegendAndColour * const _legend_table[] = {
 	_legend_land_owners,
 };
 
-#define MKCOLOR(x) TO_LE32X(x)
+#define MKCOLOUR(x) TO_LE32X(x)
 
 /**
  * Height encodings; MAX_TILE_HEIGHT + 1 levels, from 0 to MAX_TILE_HEIGHT
  */
 static const uint32 _map_height_bits[] = {
-	MKCOLOR(0x5A5A5A5A),
-	MKCOLOR(0x5A5B5A5B),
-	MKCOLOR(0x5B5B5B5B),
-	MKCOLOR(0x5B5C5B5C),
-	MKCOLOR(0x5C5C5C5C),
-	MKCOLOR(0x5C5D5C5D),
-	MKCOLOR(0x5D5D5D5D),
-	MKCOLOR(0x5D5E5D5E),
-	MKCOLOR(0x5E5E5E5E),
-	MKCOLOR(0x5E5F5E5F),
-	MKCOLOR(0x5F5F5F5F),
-	MKCOLOR(0x5F1F5F1F),
-	MKCOLOR(0x1F1F1F1F),
-	MKCOLOR(0x1F271F27),
-	MKCOLOR(0x27272727),
-	MKCOLOR(0x27272727),
+	MKCOLOUR(0x5A5A5A5A),
+	MKCOLOUR(0x5A5B5A5B),
+	MKCOLOUR(0x5B5B5B5B),
+	MKCOLOUR(0x5B5C5B5C),
+	MKCOLOUR(0x5C5C5C5C),
+	MKCOLOUR(0x5C5D5C5D),
+	MKCOLOUR(0x5D5D5D5D),
+	MKCOLOUR(0x5D5E5D5E),
+	MKCOLOUR(0x5E5E5E5E),
+	MKCOLOUR(0x5E5F5E5F),
+	MKCOLOUR(0x5F5F5F5F),
+	MKCOLOUR(0x5F1F5F1F),
+	MKCOLOUR(0x1F1F1F1F),
+	MKCOLOUR(0x1F271F27),
+	MKCOLOUR(0x27272727),
+	MKCOLOUR(0x27272727),
 };
 assert_compile(lengthof(_map_height_bits) == MAX_TILE_HEIGHT + 1);
 
@@ -217,48 +217,48 @@ static inline uint32 ApplyMask(uint32 colour, const AndOr *mask)
 
 
 static const AndOr _smallmap_contours_andor[] = {
-	{MKCOLOR(0x00000000), MKCOLOR(0xFFFFFFFF)},
-	{MKCOLOR(0x000A0A00), MKCOLOR(0xFF0000FF)},
-	{MKCOLOR(0x00D7D700), MKCOLOR(0xFF0000FF)},
-	{MKCOLOR(0x00B5B500), MKCOLOR(0xFF0000FF)},
-	{MKCOLOR(0x00000000), MKCOLOR(0xFFFFFFFF)},
-	{MKCOLOR(0x98989898), MKCOLOR(0x00000000)},
-	{MKCOLOR(0xCACACACA), MKCOLOR(0x00000000)},
-	{MKCOLOR(0x00000000), MKCOLOR(0xFFFFFFFF)},
-	{MKCOLOR(0xB5B5B5B5), MKCOLOR(0x00000000)},
-	{MKCOLOR(0x00000000), MKCOLOR(0xFFFFFFFF)},
-	{MKCOLOR(0x00B5B500), MKCOLOR(0xFF0000FF)},
-	{MKCOLOR(0x000A0A00), MKCOLOR(0xFF0000FF)},
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
+	{MKCOLOUR(0x000A0A00), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
+	{MKCOLOUR(0x98989898), MKCOLOUR(0x00000000)},
+	{MKCOLOUR(0xCACACACA), MKCOLOUR(0x00000000)},
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
+	{MKCOLOUR(0xB5B5B5B5), MKCOLOUR(0x00000000)},
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
+	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR(0x000A0A00), MKCOLOUR(0xFF0000FF)},
 };
 
 static const AndOr _smallmap_vehicles_andor[] = {
-	{MKCOLOR(0x00000000), MKCOLOR(0xFFFFFFFF)},
-	{MKCOLOR(0x00D7D700), MKCOLOR(0xFF0000FF)},
-	{MKCOLOR(0x00D7D700), MKCOLOR(0xFF0000FF)},
-	{MKCOLOR(0x00B5B500), MKCOLOR(0xFF0000FF)},
-	{MKCOLOR(0x00000000), MKCOLOR(0xFFFFFFFF)},
-	{MKCOLOR(0x00D7D700), MKCOLOR(0xFF0000FF)},
-	{MKCOLOR(0xCACACACA), MKCOLOR(0x00000000)},
-	{MKCOLOR(0x00000000), MKCOLOR(0xFFFFFFFF)},
-	{MKCOLOR(0xB5B5B5B5), MKCOLOR(0x00000000)},
-	{MKCOLOR(0x00000000), MKCOLOR(0xFFFFFFFF)},
-	{MKCOLOR(0x00B5B500), MKCOLOR(0xFF0000FF)},
-	{MKCOLOR(0x00D7D700), MKCOLOR(0xFF0000FF)},
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
+	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
+	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR(0xCACACACA), MKCOLOUR(0x00000000)},
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
+	{MKCOLOUR(0xB5B5B5B5), MKCOLOUR(0x00000000)},
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
+	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
 };
 
 static const AndOr _smallmap_vegetation_andor[] = {
-	{MKCOLOR(0x00000000), MKCOLOR(0xFFFFFFFF)},
-	{MKCOLOR(0x00D7D700), MKCOLOR(0xFF0000FF)},
-	{MKCOLOR(0x00D7D700), MKCOLOR(0xFF0000FF)},
-	{MKCOLOR(0x00B5B500), MKCOLOR(0xFF0000FF)},
-	{MKCOLOR(0x00575700), MKCOLOR(0xFF0000FF)},
-	{MKCOLOR(0x00D7D700), MKCOLOR(0xFF0000FF)},
-	{MKCOLOR(0xCACACACA), MKCOLOR(0x00000000)},
-	{MKCOLOR(0x00000000), MKCOLOR(0xFFFFFFFF)},
-	{MKCOLOR(0xB5B5B5B5), MKCOLOR(0x00000000)},
-	{MKCOLOR(0x00000000), MKCOLOR(0xFFFFFFFF)},
-	{MKCOLOR(0x00B5B500), MKCOLOR(0xFF0000FF)},
-	{MKCOLOR(0x00D7D700), MKCOLOR(0xFF0000FF)},
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
+	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR(0x00575700), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR(0xCACACACA), MKCOLOUR(0x00000000)},
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
+	{MKCOLOUR(0xB5B5B5B5), MKCOLOUR(0x00000000)},
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
+	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
 };
 
 typedef uint32 GetSmallMapPixels(TileIndex tile); // typedef callthrough function
@@ -328,9 +328,9 @@ static inline TileType GetEffectiveTileType(TileIndex tile)
 }
 
 /**
- * Return the color a tile would be displayed with in the small map in mode "Contour".
- * @param tile The tile of which we would like to get the color.
- * @return The color of tile in the small map in mode "Contour"
+ * Return the colour a tile would be displayed with in the small map in mode "Contour".
+ * @param tile The tile of which we would like to get the colour.
+ * @return The colour of tile in the small map in mode "Contour"
  */
 static inline uint32 GetSmallMapContoursPixels(TileIndex tile)
 {
@@ -341,46 +341,46 @@ static inline uint32 GetSmallMapContoursPixels(TileIndex tile)
 }
 
 /**
- * Return the color a tile would be displayed with in the small map in mode "Vehicles".
+ * Return the colour a tile would be displayed with in the small map in mode "Vehicles".
  *
- * @param tile The tile of which we would like to get the color.
- * @return The color of tile in the small map in mode "Vehicles"
+ * @param tile The tile of which we would like to get the colour.
+ * @return The colour of tile in the small map in mode "Vehicles"
  */
 static inline uint32 GetSmallMapVehiclesPixels(TileIndex tile)
 {
 	TileType t = GetEffectiveTileType(tile);
 
-	return ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
+	return ApplyMask(MKCOLOUR(0x54545454), &_smallmap_vehicles_andor[t]);
 }
 
 /**
- * Return the color a tile would be displayed with in the small map in mode "Industries".
+ * Return the colour a tile would be displayed with in the small map in mode "Industries".
  *
- * @param tile The tile of which we would like to get the color.
- * @return The color of tile in the small map in mode "Industries"
+ * @param tile The tile of which we would like to get the colour.
+ * @return The colour of tile in the small map in mode "Industries"
  */
 static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
 {
 	TileType t = GetEffectiveTileType(tile);
 
 	if (t == MP_INDUSTRY) {
-		/* If industry is allowed to be seen, use its color on the map */
+		/* If industry is allowed to be seen, use its colour on the map */
 		if (_legend_from_industries[_industry_to_list_pos[GetIndustryByTile(tile)->type]].show_on_map) {
 			return GetIndustrySpec(GetIndustryByTile(tile)->type)->map_colour * 0x01010101;
 		} else {
-			/* otherwise, return the color of the clear tiles, which will make it disappear */
-			return ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[MP_CLEAR]);
+			/* otherwise, return the colour of the clear tiles, which will make it disappear */
+			return ApplyMask(MKCOLOUR(0x54545454), &_smallmap_vehicles_andor[MP_CLEAR]);
 		}
 	}
 
-	return ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
+	return ApplyMask(MKCOLOUR(0x54545454), &_smallmap_vehicles_andor[t]);
 }
 
 /**
- * Return the color a tile would be displayed with in the small map in mode "Routes".
+ * Return the colour a tile would be displayed with in the small map in mode "Routes".
  *
- * @param tile The tile of which we would like to get the color.
- * @return The color of tile  in the small map in mode "Routes"
+ * @param tile The tile of which we would like to get the colour.
+ * @return The colour of tile  in the small map in mode "Routes"
  */
 static inline uint32 GetSmallMapRoutesPixels(TileIndex tile)
 {
@@ -389,30 +389,30 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile)
 
 	if (t == MP_STATION) {
 		switch (GetStationType(tile)) {
-			case STATION_RAIL:    bits = MKCOLOR(0x56565656); break;
-			case STATION_AIRPORT: bits = MKCOLOR(0xB8B8B8B8); break;
-			case STATION_TRUCK:   bits = MKCOLOR(0xC2C2C2C2); break;
-			case STATION_BUS:     bits = MKCOLOR(0xBFBFBFBF); break;
-			case STATION_DOCK:    bits = MKCOLOR(0x98989898); break;
-			default:              bits = MKCOLOR(0xFFFFFFFF); break;
+			case STATION_RAIL:    bits = MKCOLOUR(0x56565656); break;
+			case STATION_AIRPORT: bits = MKCOLOUR(0xB8B8B8B8); break;
+			case STATION_TRUCK:   bits = MKCOLOUR(0xC2C2C2C2); break;
+			case STATION_BUS:     bits = MKCOLOUR(0xBFBFBFBF); break;
+			case STATION_DOCK:    bits = MKCOLOUR(0x98989898); break;
+			default:              bits = MKCOLOUR(0xFFFFFFFF); break;
 		}
 	} else {
-		/* ground color */
-		bits = ApplyMask(MKCOLOR(0x54545454), &_smallmap_contours_andor[t]);
+		/* ground colour */
+		bits = ApplyMask(MKCOLOUR(0x54545454), &_smallmap_contours_andor[t]);
 	}
 	return bits;
 }
 
 
 static const uint32 _vegetation_clear_bits[] = {
-	MKCOLOR(0x54545454), ///< full grass
-	MKCOLOR(0x52525252), ///< rough land
-	MKCOLOR(0x0A0A0A0A), ///< rocks
-	MKCOLOR(0x25252525), ///< fields
-	MKCOLOR(0x98989898), ///< snow
-	MKCOLOR(0xC2C2C2C2), ///< desert
-	MKCOLOR(0x54545454), ///< unused
-	MKCOLOR(0x54545454), ///< unused
+	MKCOLOUR(0x54545454), ///< full grass
+	MKCOLOUR(0x52525252), ///< rough land
+	MKCOLOUR(0x0A0A0A0A), ///< rocks
+	MKCOLOUR(0x25252525), ///< fields
+	MKCOLOUR(0x98989898), ///< snow
+	MKCOLOUR(0xC2C2C2C2), ///< desert
+	MKCOLOUR(0x54545454), ///< unused
+	MKCOLOUR(0x54545454), ///< unused
 };
 
 static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
@@ -423,26 +423,26 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 	switch (t) {
 		case MP_CLEAR:
 			if (IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) < 3) {
-				bits = MKCOLOR(0x37373737);
+				bits = MKCOLOUR(0x37373737);
 			} else {
 				bits = _vegetation_clear_bits[GetClearGround(tile)];
 			}
 			break;
 
 		case MP_INDUSTRY:
-			bits = GetIndustrySpec(GetIndustryByTile(tile)->type)->check_proc == CHECK_FOREST ? MKCOLOR(0xD0D0D0D0) : MKCOLOR(0xB5B5B5B5);
+			bits = GetIndustrySpec(GetIndustryByTile(tile)->type)->check_proc == CHECK_FOREST ? MKCOLOUR(0xD0D0D0D0) : MKCOLOUR(0xB5B5B5B5);
 			break;
 
 		case MP_TREES:
 			if (GetTreeGround(tile) == TREE_GROUND_SNOW_DESERT) {
-				bits = (_settings_game.game_creation.landscape == LT_ARCTIC) ? MKCOLOR(0x98575798) : MKCOLOR(0xC25757C2);
+				bits = (_settings_game.game_creation.landscape == LT_ARCTIC) ? MKCOLOUR(0x98575798) : MKCOLOUR(0xC25757C2);
 			} else {
-				bits = MKCOLOR(0x54575754);
+				bits = MKCOLOUR(0x54575754);
 			}
 			break;
 
 		default:
-			bits = ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
+			bits = ApplyMask(MKCOLOUR(0x54545454), &_smallmap_vehicles_andor[t]);
 			break;
 	}
 
@@ -450,13 +450,13 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 }
 
 
-static uint32 _owner_colors[OWNER_END + 1];
+static uint32 _owner_colours[OWNER_END + 1];
 
 /**
- * Return the color a tile would be displayed with in the small map in mode "Owner".
+ * Return the colour a tile would be displayed with in the small map in mode "Owner".
  *
- * @param tile The tile of which we would like to get the color.
- * @return The color of tile in the small map in mode "Owner"
+ * @param tile The tile of which we would like to get the colour.
+ * @return The colour of tile in the small map in mode "Owner"
  */
 static inline uint32 GetSmallMapOwnerPixels(TileIndex tile)
 {
@@ -472,20 +472,20 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile)
 		 */
 	}
 
-	return _owner_colors[o];
+	return _owner_colours[o];
 }
 
 
 static const uint32 _smallmap_mask_left[3] = {
-	MKCOLOR(0xFF000000),
-	MKCOLOR(0xFFFF0000),
-	MKCOLOR(0xFFFFFF00),
+	MKCOLOUR(0xFF000000),
+	MKCOLOUR(0xFFFF0000),
+	MKCOLOUR(0xFFFFFF00),
 };
 
 static const uint32 _smallmap_mask_right[] = {
-	MKCOLOR(0x000000FF),
-	MKCOLOR(0x0000FFFF),
-	MKCOLOR(0x00FFFFFF),
+	MKCOLOUR(0x000000FF),
+	MKCOLOUR(0x0000FFFF),
+	MKCOLOUR(0x00FFFFFF),
 };
 
 /* each tile has 4 x pixels and 1 y pixel */
@@ -499,7 +499,7 @@ static GetSmallMapPixels *_smallmap_draw_procs[] = {
 	GetSmallMapOwnerPixels,
 };
 
-static const byte _vehicle_type_colors[6] = {
+static const byte _vehicle_type_colours[6] = {
 	184, 191, 152, 15, 215, 184
 };
 
@@ -564,7 +564,7 @@ public:
 	 * Basically, the small map is draw column of pixels by column of pixels. The pixels
 	 * are drawn directly into the screen buffer. The final map is drawn in multiple passes.
 	 * The passes are:
-	 * <ol><li>The colors of tiles in the different modes.</li>
+	 * <ol><li>The colours of tiles in the different modes.</li>
 	 * <li>Town names (optional)</li></ol>
 	 *
 	 * @param dpi pointer to pixel to write onto
@@ -592,15 +592,15 @@ public:
 		if (this->map_type == SMT_OWNER) {
 			const Company *c;
 
-			/* fill with some special colors */
-			_owner_colors[OWNER_TOWN] = MKCOLOR(0xB4B4B4B4);
-			_owner_colors[OWNER_NONE] = MKCOLOR(0x54545454);
-			_owner_colors[OWNER_WATER] = MKCOLOR(0xCACACACA);
-			_owner_colors[OWNER_END]   = MKCOLOR(0x20202020); /* industry */
+			/* fill with some special colours */
+			_owner_colours[OWNER_TOWN] = MKCOLOUR(0xB4B4B4B4);
+			_owner_colours[OWNER_NONE] = MKCOLOUR(0x54545454);
+			_owner_colours[OWNER_WATER] = MKCOLOUR(0xCACACACA);
+			_owner_colours[OWNER_END]   = MKCOLOUR(0x20202020); /* industry */
 
 			/* now fill with the company colours */
 			FOR_ALL_COMPANIES(c) {
-				_owner_colors[c->index] =
+				_owner_colours[c->index] =
 					_colour_gradient[c->colour][5] * 0x01010101;
 			}
 		}
@@ -675,7 +675,7 @@ public:
 		if (this->map_type == SMT_CONTOUR || this->map_type == SMT_VEHICLES) {
 			Vehicle *v;
 			bool skip;
-			byte color;
+			byte colour;
 
 			FOR_ALL_VEHICLES(v) {
 				if (v->type != VEH_EFFECT &&
@@ -709,12 +709,12 @@ public:
 						skip = true;
 					}
 
-					/* Calculate pointer to pixel and the color */
-					color = (this->map_type == SMT_VEHICLES) ? _vehicle_type_colors[v->type] : 0xF;
+					/* Calculate pointer to pixel and the colour */
+					colour = (this->map_type == SMT_VEHICLES) ? _vehicle_type_colours[v->type] : 0xF;
 
 					/* And draw either one or two pixels depending on clipping */
-					blitter->SetPixel(dpi->dst_ptr, x, y, color);
-					if (!skip) blitter->SetPixel(dpi->dst_ptr, x + 1, y, color);
+					blitter->SetPixel(dpi->dst_ptr, x, y, colour);
+					if (!skip) blitter->SetPixel(dpi->dst_ptr, x + 1, y, colour);
 				}
 			}
 		}
@@ -855,19 +855,19 @@ public:
 				assert(tbl->type < NUM_INDUSTRYTYPES);
 				SetDParam(1, _industry_counts[tbl->type]);
 				if (!tbl->show_on_map) {
-					/* Simply draw the string, not the black border of the legend color.
+					/* Simply draw the string, not the black border of the legend colour.
 					 * This will enforce the idea of the disabled item */
 					DrawString(x + 11, y, STR_SMALLMAP_INDUSTRY, TC_GREY);
 				} else {
 					DrawString(x + 11, y, STR_SMALLMAP_INDUSTRY, TC_BLACK);
-					GfxFillRect(x, y + 1, x + 8, y + 5, 0); // outer border of the legend color
+					GfxFillRect(x, y + 1, x + 8, y + 5, 0); // outer border of the legend colour
 				}
 			} else {
 				/* Anything that is not an industry is using normal process */
 				GfxFillRect(x, y + 1, x + 8, y + 5, 0);
 				DrawString(x + 11, y, tbl->legend, TC_FROMSTRING);
 			}
-			GfxFillRect(x + 1, y + 2, x + 7, y + 4, tbl->colour); // legend color
+			GfxFillRect(x + 1, y + 2, x + 7, y + 4, tbl->colour); // legend colour
 
 			y += 6;
 		}

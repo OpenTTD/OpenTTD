@@ -104,7 +104,7 @@ DEF_COMMAND(CmdBuildIndustry);
 
 DEF_COMMAND(CmdBuildCompanyHQ);
 DEF_COMMAND(CmdSetCompanyManagerFace);
-DEF_COMMAND(CmdSetCompanyColor);
+DEF_COMMAND(CmdSetCompanyColour);
 
 DEF_COMMAND(CmdIncreaseLoan);
 DEF_COMMAND(CmdDecreaseLoan);
@@ -252,7 +252,7 @@ static const Command _command_proc_table[] = {
 	{CmdBuildIndustry,                              0}, /* CMD_BUILD_INDUSTRY */
 	{CmdBuildCompanyHQ,       CMD_NO_WATER | CMD_AUTO}, /* CMD_BUILD_COMPANY_HQ */
 	{CmdSetCompanyManagerFace,                      0}, /* CMD_SET_COMPANY_MANAGER_FACE */
-	{CmdSetCompanyColor,                            0}, /* CMD_SET_COMPANY_COLOR */
+	{CmdSetCompanyColour,                           0}, /* CMD_SET_COMPANY_COLOUR */
 
 	{CmdIncreaseLoan,                               0}, /* CMD_INCREASE_LOAN */
 	{CmdDecreaseLoan,                               0}, /* CMD_DECREASE_LOAN */

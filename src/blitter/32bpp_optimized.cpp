@@ -136,11 +136,11 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 					break;
 
 				case BM_TRANSPARENT:
-					/* TODO -- We make an assumption here that the remap in fact is transparency, not some color.
+					/* TODO -- We make an assumption here that the remap in fact is transparency, not some colour.
 					 *  This is never a problem with the code we produce, but newgrfs can make it fail... or at least:
 					 *  we produce a result the newgrf maker didn't expect ;) */
 
-					/* Make the current color a bit more black, so it looks like this image is transparent */
+					/* Make the current colour a bit more black, so it looks like this image is transparent */
 					src_n += n;
 					if (src_px->a == 255) {
 						src_px += n;

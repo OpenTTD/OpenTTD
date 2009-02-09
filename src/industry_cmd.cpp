@@ -288,8 +288,8 @@ static void DrawTile_Industry(TileInfo *ti)
 			GetIndustryConstructionStage(ti->tile))];
 
 	image = dits->ground.sprite;
-	if (HasBit(image, PALETTE_MODIFIER_COLOR) && dits->ground.pal == PAL_NONE) {
-		pal = GENERAL_SPRITE_COLOR(ind->random_color);
+	if (HasBit(image, PALETTE_MODIFIER_COLOUR) && dits->ground.pal == PAL_NONE) {
+		pal = GENERAL_SPRITE_COLOUR(ind->random_colour);
 	} else {
 		pal = dits->ground.pal;
 	}
@@ -312,7 +312,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	image = dits->building.sprite;
 	if (image != 0) {
 		AddSortableSpriteToDraw(image,
-			(HasBit(image, PALETTE_MODIFIER_COLOR) && dits->building.pal == PAL_NONE) ? GENERAL_SPRITE_COLOR(ind->random_color) : dits->building.pal,
+			(HasBit(image, PALETTE_MODIFIER_COLOUR) && dits->building.pal == PAL_NONE) ? GENERAL_SPRITE_COLOUR(ind->random_colour) : dits->building.pal,
 			ti->x + dits->subtile_x,
 			ti->y + dits->subtile_y,
 			dits->width,
@@ -1488,7 +1488,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->owner = owner;
 
 	r = Random();
-	i->random_color = GB(r, 0, 4);
+	i->random_colour = GB(r, 0, 4);
 	i->counter = GB(r, 4, 12);
 	i->random = GB(r, 16, 16);
 	i->produced_cargo_waiting[0] = 0;
@@ -1512,7 +1512,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 
 	if (HasBit(indspec->callback_flags, CBM_IND_DECIDE_COLOUR)) {
 		uint16 res = GetIndustryCallback(CBID_INDUSTRY_DECIDE_COLOUR, 0, 0, i, type, INVALID_TILE);
-		if (res != CALLBACK_FAILED) i->random_color = GB(res, 0, 4);
+		if (res != CALLBACK_FAILED) i->random_colour = GB(res, 0, 4);
 	}
 
 	if (HasBit(indspec->callback_flags, CBM_IND_INPUT_CARGO_TYPES)) {

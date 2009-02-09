@@ -41,7 +41,7 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 	int num = FioReadWord();
 	byte type = FioReadByte();
 
-	/* Type 0xFF indicates either a colormap or some other non-sprite info; we do not handle them here */
+	/* Type 0xFF indicates either a colourmap or some other non-sprite info; we do not handle them here */
 	if (type == 0xFF) return false;
 
 	sprite->height = FioReadByte();

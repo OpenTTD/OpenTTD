@@ -18,7 +18,7 @@
  * - 10 to 13: nose
  * - 13 to 15: lips (also moustache for males)
  * - 16 to 19: hair
- * - 20 to 22: eye color
+ * - 20 to 22: eye colour
  * - 20 to 27: tie, ear rings etc.
  * - 28 to 30: glasses
  * - 19, 26 and 27: race (bit 27 set and bit 19 equal to bit 26 = black, otherwise white)

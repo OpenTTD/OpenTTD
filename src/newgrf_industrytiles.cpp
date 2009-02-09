@@ -163,7 +163,7 @@ static void NewIndustryTileResolver(ResolverObject *res, IndustryGfx gfx, TileIn
 	res->grffile         = (its != NULL ? its->grf_prop.grffile : NULL);
 }
 
-static void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte rnd_color, byte stage, IndustryGfx gfx)
+static void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte rnd_colour, byte stage, IndustryGfx gfx)
 {
 	const DrawTileSprites *dts = group->g.layout.dts;
 	const DrawTileSeqStruct *dtss;
@@ -179,7 +179,7 @@ static void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group,
 		if (image == SPR_FLAT_WATER_TILE && IsIndustryTileOnWater(ti->tile)) {
 			DrawWaterClassGround(ti);
 		} else {
-			DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, GENERAL_SPRITE_COLOR(rnd_color)));
+			DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, GENERAL_SPRITE_COLOUR(rnd_colour)));
 		}
 	}
 
@@ -194,7 +194,7 @@ static void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group,
 
 		if (IS_CUSTOM_SPRITE(image)) image += stage;
 
-		pal = SpriteLayoutPaletteTransform(image, pal, GENERAL_SPRITE_COLOR(rnd_color));
+		pal = SpriteLayoutPaletteTransform(image, pal, GENERAL_SPRITE_COLOUR(rnd_colour));
 
 		if ((byte)dtss->delta_z != 0x80) {
 			AddSortableSpriteToDraw(
@@ -252,7 +252,7 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 		/* Limit the building stage to the number of stages supplied. */
 		byte stage = GetIndustryConstructionStage(ti->tile);
 		stage = Clamp(stage - 4 + group->g.layout.num_sprites, 0, group->g.layout.num_sprites - 1);
-		IndustryDrawTileLayout(ti, group, i->random_color, stage, gfx);
+		IndustryDrawTileLayout(ti, group, i->random_colour, stage, gfx);
 		return true;
 	}
 }

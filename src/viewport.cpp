@@ -48,8 +48,8 @@ Point _tile_fract_coords;
 ZoomLevel _saved_scrollpos_zoom;
 
 struct StringSpriteToDraw {
-	uint16 string;
-	uint16 color;
+	StringID string;
+	uint16 colour;
 	int32 x;
 	int32 y;
 	uint64 params[2];
@@ -733,7 +733,7 @@ void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool trans
 }
 
 /* Returns a StringSpriteToDraw */
-void AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 params_2, uint16 color, uint16 width)
+void AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 params_2, uint16 colour, uint16 width)
 {
 	StringSpriteToDraw *ss = _vd.string_sprites_to_draw.Append();
 	ss->string = string;
@@ -742,7 +742,7 @@ void AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 para
 	ss->params[0] = params_1;
 	ss->params[1] = params_2;
 	ss->width = width;
-	ss->color = color;
+	ss->colour = colour;
 }
 
 
@@ -1440,7 +1440,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 		 * or if we are drawing a general text sign (STR_2806) */
 			if (!IsTransparencySet(TO_SIGNS) || ss->string == STR_2806) {
 				DrawFrameRect(
-					x, y, x + w, bottom, ss->color,
+					x, y, x + w, bottom, (Colours)ss->colour,
 					IsTransparencySet(TO_SIGNS) ? FR_TRANSPARENT : FR_NONE
 				);
 			}
@@ -1449,11 +1449,11 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 		SetDParam(0, ss->params[0]);
 		SetDParam(1, ss->params[1]);
 		/* if we didn't draw a rectangle, or if transparant building is on,
-		 * draw the text in the color the rectangle would have */
+		 * draw the text in the colour the rectangle would have */
 		if (IsTransparencySet(TO_SIGNS) && ss->string != STR_2806 && ss->width != 0) {
-			/* Real colors need the IS_PALETTE_COLOR flag
-			 * otherwise colors from _string_colormap are assumed. */
-			colour = (TextColour)_colour_gradient[ss->color][6] | IS_PALETTE_COLOR;
+			/* Real colours need the IS_PALETTE_COLOUR flag
+			 * otherwise colours from _string_colourmap are assumed. */
+			colour = (TextColour)_colour_gradient[ss->colour][6] | IS_PALETTE_COLOUR;
 		} else {
 			colour = TC_BLACK;
 		}

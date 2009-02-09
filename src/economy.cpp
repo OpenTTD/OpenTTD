@@ -359,7 +359,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 					if (v->Previous() == NULL) delete v;
 				} else {
 					v->owner = new_owner;
-					v->colormap = PAL_NONE;
+					v->colourmap = PAL_NONE;
 					if (IsEngineCountable(v)) GetCompany(new_owner)->num_engines[v->engine_type]++;
 					if (v->IsPrimaryVehicle()) v->unitnumber = unitidgen[v->type].NextID();
 				}
@@ -416,7 +416,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		if (si->owner == old_owner) si->owner = new_owner == INVALID_OWNER ? OWNER_NONE : new_owner;
 	}
 
-	/* Change color of existing windows */
+	/* Change colour of existing windows */
 	if (new_owner != INVALID_OWNER) ChangeWindowOwner(old_owner, new_owner);
 
 	_current_company = old;

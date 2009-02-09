@@ -650,7 +650,7 @@ static void DrawTile_Water(TileInfo *ti)
 
 		case WATER_TILE_DEPOT:
 			DrawWaterClassGround(ti);
-			DrawWaterStuff(ti, _shipdepot_display_seq[GetSection(ti->tile)], COMPANY_SPRITE_COLOR(GetTileOwner(ti->tile)), 0, false);
+			DrawWaterStuff(ti, _shipdepot_display_seq[GetSection(ti->tile)], COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile)), 0, false);
 			break;
 	}
 }
@@ -663,7 +663,7 @@ void DrawShipDepotSprite(int x, int y, int image)
 
 	for (; wdts->delta_x != 0x80; wdts++) {
 		Point pt = RemapCoords(wdts->delta_x, wdts->delta_y, wdts->delta_z);
-		DrawSprite(wdts->image, COMPANY_SPRITE_COLOR(_local_company), x + pt.x, y + pt.y);
+		DrawSprite(wdts->image, COMPANY_SPRITE_COLOUR(_local_company), x + pt.x, y + pt.y);
 	}
 }
 

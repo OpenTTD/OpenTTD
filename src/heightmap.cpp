@@ -16,9 +16,9 @@
 #include "table/strings.h"
 
 /**
- * Convert RGB colors to Grayscale using 29.9% Red, 58.7% Green, 11.4% Blue
+ * Convert RGB colours to Grayscale using 29.9% Red, 58.7% Green, 11.4% Blue
  *  (average luminosity formula) -- Dalestan
- * This in fact is the NTSC Color Space -- TrueLight
+ * This in fact is the NTSC Colour Space -- TrueLight
  */
 static inline byte RGBToGrayscale(byte red, byte green, byte blue)
 {
@@ -126,7 +126,7 @@ static bool ReadHeightmapPNG(char *filename, uint *x, uint *y, byte **map)
 	png_set_packing(png_ptr);
 	png_read_png(png_ptr, info_ptr, PNG_TRANSFORM_PACKING | PNG_TRANSFORM_STRIP_ALPHA | PNG_TRANSFORM_STRIP_16, NULL);
 
-	/* Maps of wrong color-depth are not used.
+	/* Maps of wrong colour-depth are not used.
 	 * (this should have been taken care of by stripping alpha and 16-bit samples on load) */
 	if ((info_ptr->channels != 1) && (info_ptr->channels != 3) && (info_ptr->bit_depth != 8)) {
 		ShowErrorMessage(STR_PNGMAP_ERR_IMAGE_TYPE, STR_PNGMAP_ERROR, 0, 0);
@@ -351,7 +351,7 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 				assert(img_row < img_height);
 				assert(img_col < img_width);
 
-				/* Color scales from 0 to 255, OpenTTD height scales from 0 to 15 */
+				/* Colour scales from 0 to 255, OpenTTD height scales from 0 to 15 */
 				SetTileHeight(tile, map[img_row * img_width + img_col] / 16);
 			}
 			/* Only clear the tiles within the map area. */

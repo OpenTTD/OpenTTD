@@ -239,7 +239,7 @@ public:
 	Vehicle *next_new_hash;
 	Vehicle **old_new_hash;
 
-	SpriteID colormap; // NOSAVE: cached color mapping
+	SpriteID colourmap; // NOSAVE: cached colour mapping
 
 	/* Related to age and service time */
 	Year build_year;

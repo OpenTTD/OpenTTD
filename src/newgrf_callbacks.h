@@ -199,7 +199,7 @@ enum CallbackID {
 	/** Callback done for each tile of a station to check the slope. */
 	CBID_STATION_LAND_SLOPE_CHECK        = 0x149, // 15 bit callback, not implemented
 
-	/** Called to determine the color of an industry. */
+	/** Called to determine the colour of an industry. */
 	CBID_INDUSTRY_DECIDE_COLOUR          = 0x14A, // 4 bit callback
 
 	/** Customize the input cargo types of a newly build industry. */

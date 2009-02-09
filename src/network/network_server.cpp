@@ -572,11 +572,11 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_NEWGAME)
 	cs->Send_Packet(p);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkClientSocket *cs, uint16 color, const char *command)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkClientSocket *cs, uint16 colour, const char *command)
 {
 	Packet *p = NetworkSend_Init(PACKET_SERVER_RCON);
 
-	p->Send_uint16(color);
+	p->Send_uint16(colour);
 	p->Send_string(command);
 	cs->Send_Packet(p);
 }
@@ -1044,7 +1044,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			ci = NetworkFindClientInfoFromClientID(from_id);
 			/* Display the text locally, and that is it */
 			if (ci != NULL)
-				NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), false, ci->client_name, msg, data);
+				NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
 		} else {
 			/* Else find the client to send the message to */
 			FOR_ALL_CLIENT_SOCKETS(cs) {
@@ -1061,7 +1061,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 				ci = NetworkFindClientInfoFromClientID(from_id);
 				ci_to = NetworkFindClientInfoFromClientID((ClientID)dest);
 				if (ci != NULL && ci_to != NULL)
-					NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), true, ci_to->client_name, msg, data);
+					NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), true, ci_to->client_name, msg, data);
 			} else {
 				FOR_ALL_CLIENT_SOCKETS(cs) {
 					if (cs->client_id == from_id) {
@@ -1089,7 +1089,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		ci = NetworkFindClientInfoFromClientID(from_id);
 		ci_own = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
 		if (ci != NULL && ci_own != NULL && ci_own->client_playas == dest) {
-			NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), false, ci->client_name, msg, data);
+			NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
 			if (from_id == CLIENT_ID_SERVER) show_local = false;
 			ci_to = ci_own;
 		}
@@ -1104,7 +1104,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 				StringID str = IsValidCompanyID(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
 				SetDParam(0, ci_to->client_playas);
 				GetString(name, str, lastof(name));
-				NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci_own->client_playas), true, name, msg, data);
+				NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci_own->client_playas), true, name, msg, data);
 			} else {
 				FOR_ALL_CLIENT_SOCKETS(cs) {
 					if (cs->client_id == from_id) {
@@ -1124,7 +1124,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		}
 		ci = NetworkFindClientInfoFromClientID(from_id);
 		if (ci != NULL)
-			NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), false, ci->client_name, msg, data);
+			NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
 		break;
 	}
 }

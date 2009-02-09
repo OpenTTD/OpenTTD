@@ -10,7 +10,7 @@
 #include "core/geometry_type.hpp"
 #include "zoom_type.h"
 
-typedef uint32 SpriteID;      ///< The number of a sprite, without mapping bits and colortables
+typedef uint32 SpriteID;      ///< The number of a sprite, without mapping bits and colourtables
 
 /** Combination of a palette sprite and a 'real' sprite */
 struct PalSpriteID {
@@ -185,7 +185,7 @@ enum Colours {
 	INVALID_COLOUR = 0xFF,
 };
 
-/** Colour of the strings, see _string_colormap in table/palettes.h or docs/ottd-colourtext-palette.png */
+/** Colour of the strings, see _string_colourmap in table/palettes.h or docs/ottd-colourtext-palette.png */
 enum TextColour {
 	TC_FROMSTRING  = 0x00,
 	TC_BLUE        = 0x00,
@@ -207,7 +207,7 @@ enum TextColour {
 	TC_BLACK       = 0x10,
 	TC_INVALID     = 0xFF,
 
-	IS_PALETTE_COLOR = 0x100, ///< colour value is already a real palette colour index, not an index of a StringColour
+	IS_PALETTE_COLOUR = 0x100, ///< colour value is already a real palette colour index, not an index of a StringColour
 };
 DECLARE_ENUM_AS_BIT_SET(TextColour);
 
@@ -220,9 +220,9 @@ enum PaletteAnimationSizes {
 
 /** Define the operation GfxFillRect performs */
 enum FillRectMode {
-	FILLRECT_OPAQUE,  ///< Fill rectangle with a single color
+	FILLRECT_OPAQUE,  ///< Fill rectangle with a single colour
 	FILLRECT_CHECKER, ///< Draw only every second pixel, used for greying-out
-	FILLRECT_RECOLOR, ///< Apply a recolor sprite to the screen content
+	FILLRECT_RECOLOUR, ///< Apply a recolour sprite to the screen content
 };
 
 /** Palettes OpenTTD supports. */

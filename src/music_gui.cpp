@@ -398,14 +398,14 @@ public:
 		GfxFillRect(187, 16, 200, 33, 0);
 
 		for (i = 0; i != 8; i++) {
-			int color = 0xD0;
+			int colour = 0xD0;
 			if (i > 4) {
-				color = 0xBF;
+				colour = 0xBF;
 				if (i > 6) {
-					color = 0xB8;
+					colour = 0xB8;
 				}
 			}
-			GfxFillRect(187, NUM_SONGS_PLAYLIST - i * 2, 200, NUM_SONGS_PLAYLIST - i * 2, color);
+			GfxFillRect(187, NUM_SONGS_PLAYLIST - i * 2, 200, NUM_SONGS_PLAYLIST - i * 2, colour);
 		}
 
 		GfxFillRect(60, 46, 239, 52, 0);

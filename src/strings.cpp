@@ -1577,12 +1577,12 @@ void CheckForMissingGlyphsInLoadedLanguagePack()
 						 * have to show the error. As we do not want the string to
 						 * be translated by the translators, we 'force' it into the
 						 * binary and 'load' it via a BindCString. To do this
-						 * properly we have to set the color of the string,
-						 * otherwise we end up with a lot of artefacts. The color
+						 * properly we have to set the colour of the string,
+						 * otherwise we end up with a lot of artefacts. The colour
 						 * 'character' might change in the future, so for safety
 						 * we just Utf8 Encode it into the string, which takes
 						 * exactly three characters, so it replaces the "XXX" with
-						 * the color marker.
+						 * the colour marker.
 						 */
 						static char *err_str = strdup("XXXThe current font is missing some of the characters used in the texts for this language. Read the readme to see how to solve this.");
 						Utf8Encode(err_str, SCC_YELLOW);
@@ -1603,12 +1603,12 @@ void CheckForMissingGlyphsInLoadedLanguagePack()
 	 * about it with a message. As we do not want the string to
 	 * be translated by the translators, we 'force' it into the
 	 * binary and 'load' it via a BindCString. To do this
-	 * properly we have to set the color of the string,
-	 * otherwise we end up with a lot of artefacts. The color
+	 * properly we have to set the colour of the string,
+	 * otherwise we end up with a lot of artefacts. The colour
 	 * 'character' might change in the future, so for safety
 	 * we just Utf8 Encode it into the string, which takes
 	 * exactly three characters, so it replaces the "XXX" with
-	 * the color marker.
+	 * the colour marker.
 	 */
 	if (_dynlang.text_dir != TD_LTR) {
 		static char *err_str = strdup("XXXThis version of OpenTTD does not support right-to-left languages. Recompile with icu enabled.");

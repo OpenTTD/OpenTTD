@@ -166,7 +166,7 @@ int GetWidgetFromPos(const Window *w, int x, int y)
  * @param colour Colour table to use. @see _colour_gradient
  * @param flags  Flags controlling how to draw the frame. @see FrameFlags
  */
-void DrawFrameRect(int left, int top, int right, int bottom, int colour, FrameFlags flags)
+void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, FrameFlags flags)
 {
 	uint dark         = _colour_gradient[colour][3];
 	uint medium_dark  = _colour_gradient[colour][5];
@@ -174,7 +174,7 @@ void DrawFrameRect(int left, int top, int right, int bottom, int colour, FrameFl
 	uint light        = _colour_gradient[colour][7];
 
 	if (flags & FR_TRANSPARENT) {
-		GfxFillRect(left, top, right, bottom, PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOR);
+		GfxFillRect(left, top, right, bottom, PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOUR);
 	} else {
 		uint interior;
 

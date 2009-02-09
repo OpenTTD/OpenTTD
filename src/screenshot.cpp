@@ -234,7 +234,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	if (pixelformat == 32) {
 		png_color_8 sig_bit;
 
-		/* Save exact color/alpha resolution */
+		/* Save exact colour/alpha resolution */
 		sig_bit.alpha = 0;
 		sig_bit.blue  = 8;
 		sig_bit.green = 8;
@@ -417,7 +417,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 
 	free(buff);
 
-	/* write 8-bit color palette */
+	/* write 8-bit colour palette */
 	if (fputc(12, f) == EOF) {
 		fclose(f);
 		return false;

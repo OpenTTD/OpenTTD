@@ -7,8 +7,8 @@
 
 #include "gfx_type.h"
 
-#define GENERAL_SPRITE_COLOR(color) ((color) + PALETTE_RECOLOR_START)
-#define COMPANY_SPRITE_COLOR(owner) (GENERAL_SPRITE_COLOR(_company_colours[owner]))
+#define GENERAL_SPRITE_COLOUR(colour) ((colour) + PALETTE_RECOLOUR_START)
+#define COMPANY_SPRITE_COLOUR(owner) (GENERAL_SPRITE_COLOUR(_company_colours[owner]))
 
 /**
  * Whether a sprite comes from the original graphics files or a new grf file

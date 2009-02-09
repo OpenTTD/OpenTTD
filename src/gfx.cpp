@@ -97,11 +97,11 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
  * @param top Minimum Y (inclusive)
  * @param right Maximum X (inclusive)
  * @param bottom Maximum Y (inclusive)
- * @param colour A 8 bit palette index (FILLRECT_OPAQUE and FILLRECT_CHECKER) or a recolour spritenumber (FILLRECT_RECOLOR)
+ * @param colour A 8 bit palette index (FILLRECT_OPAQUE and FILLRECT_CHECKER) or a recolour spritenumber (FILLRECT_RECOLOUR)
  * @param mode
  *         FILLRECT_OPAQUE:   Fill the rectangle with the specified colour
  *         FILLRECT_CHECKER:  Like FILLRECT_OPAQUE, but only draw every second pixel (used to grey out things)
- *         FILLRECT_RECOLOR:  Apply a recolour sprite to every pixel in the rectangle currently on screen
+ *         FILLRECT_RECOLOUR:  Apply a recolour sprite to every pixel in the rectangle currently on screen
  */
 void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectMode mode)
 {
@@ -135,8 +135,8 @@ void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectM
 			blitter->DrawRect(dst, right, bottom, (uint8)colour);
 			break;
 
-		case FILLRECT_RECOLOR:
-			blitter->DrawColorMappingRect(dst, right, bottom, GB(colour, 0, PALETTE_WIDTH));
+		case FILLRECT_RECOLOUR:
+			blitter->DrawColourMappingRect(dst, right, bottom, GB(colour, 0, PALETTE_WIDTH));
 			break;
 
 		case FILLRECT_CHECKER: {
@@ -838,8 +838,8 @@ Dimension GetStringBoundingBox(const char *str)
 void DrawCharCentered(WChar c, int x, int y, TextColour colour)
 {
 	FontSize size = FS_NORMAL;
-	assert(colour & IS_PALETTE_COLOR);
-	colour &= ~IS_PALETTE_COLOR;
+	assert(colour & IS_PALETTE_COLOUR);
+	colour &= ~IS_PALETTE_COLOUR;
 	int w = GetCharacterWidth(size, c);
 
 	_string_colourremap[1] = _string_colourmap[_use_palette][colour].text;
@@ -908,8 +908,8 @@ static int ReallyDoDrawString(const char *string, int x, int y, TextColour colou
 
 		if (colour != TC_INVALID) { // the invalid colour flag test should not  really occur.  But better be safe
 switch_colour:;
-			if (colour & IS_PALETTE_COLOR) {
-				_string_colourremap[1] = colour & ~IS_PALETTE_COLOR;
+			if (colour & IS_PALETTE_COLOUR) {
+				_string_colourremap[1] = colour & ~IS_PALETTE_COLOUR;
 				_string_colourremap[2] = (_use_palette == PAL_DOS) ? 1 : 215;
 			} else {
 				_string_colourremap[1] = _string_colourmap[_use_palette][colour].text;
@@ -1111,8 +1111,8 @@ void DoPaletteAnimations()
 	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	const Colour *s;
 	const ExtraPaletteValues *ev = &_extra_palette_values;
-	/* Amount of colors to be rotated.
-	 * A few more for the DOS palette, because the water colors are
+	/* Amount of colours to be rotated.
+	 * A few more for the DOS palette, because the water colours are
 	 * 245-254 for DOS and 217-226 for Windows.  */
 	const int colour_rotation_amount = (_use_palette == PAL_DOS) ? PALETTE_ANIM_SIZE_DOS : PALETTE_ANIM_SIZE_WIN;
 	Colour old_val[PALETTE_ANIM_SIZE_DOS];

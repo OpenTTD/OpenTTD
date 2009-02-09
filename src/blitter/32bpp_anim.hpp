@@ -22,10 +22,10 @@ public:
 	{}
 
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
-	/* virtual */ void DrawColorMappingRect(void *dst, int width, int height, int pal);
-	/* virtual */ void SetPixel(void *video, int x, int y, uint8 color);
-	/* virtual */ void SetPixelIfEmpty(void *video, int x, int y, uint8 color);
-	/* virtual */ void DrawRect(void *video, int width, int height, uint8 color);
+	/* virtual */ void DrawColourMappingRect(void *dst, int width, int height, int pal);
+	/* virtual */ void SetPixel(void *video, int x, int y, uint8 colour);
+	/* virtual */ void SetPixelIfEmpty(void *video, int x, int y, uint8 colour);
+	/* virtual */ void DrawRect(void *video, int width, int height, uint8 colour);
 	/* virtual */ void CopyFromBuffer(void *video, const void *src, int width, int height);
 	/* virtual */ void CopyToBuffer(const void *video, void *dst, int width, int height);
 	/* virtual */ void ScrollBuffer(void *video, int &left, int &top, int &width, int &height, int scroll_x, int scroll_y);

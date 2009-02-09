@@ -338,7 +338,7 @@ static void LoadIntroGame()
 
 	/* Setup main window */
 	ResetWindowSystem();
-	SetupColorsAndInitialWindow();
+	SetupColoursAndInitialWindow();
 
 	/* Load the default opening screen savegame */
 	if (SaveOrLoad("opntitle.dat", SL_LOAD, DATA_DIR) != SL_OK) {
@@ -811,7 +811,7 @@ static void StartScenario()
 	/* Reinitialize windows */
 	ResetWindowSystem();
 
-	SetupColorsAndInitialWindow();
+	SetupColoursAndInitialWindow();
 
 	ResetGRFConfig(true);
 

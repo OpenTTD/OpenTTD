@@ -373,7 +373,7 @@ static void DrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte st
 	const DrawTileSeqStruct *dtss;
 
 	const HouseSpec *hs = GetHouseSpecs(house_id);
-	SpriteID palette = hs->random_colour[TileHash2Bit(ti->x, ti->y)] + PALETTE_RECOLOR_START;
+	SpriteID palette = hs->random_colour[TileHash2Bit(ti->x, ti->y)] + PALETTE_RECOLOUR_START;
 	if (HasBit(hs->callback_mask, CBM_HOUSE_COLOUR)) {
 		uint16 callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, GetTownByTile(ti->tile), ti->tile);
 		if (callback != CALLBACK_FAILED) {

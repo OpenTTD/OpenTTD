@@ -25,22 +25,22 @@ void Blitter_8bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoom
 		src_line += bp->sprite_width * ScaleByZoom(1, zoom);
 
 		for (int x = 0; x < bp->width; x++) {
-			uint color = 0;
+			uint colour = 0;
 
 			switch (mode) {
 				case BM_COLOUR_REMAP:
-					color = bp->remap[*src];
+					colour = bp->remap[*src];
 					break;
 
 				case BM_TRANSPARENT:
-					if (*src != 0) color = bp->remap[*dst];
+					if (*src != 0) colour = bp->remap[*dst];
 					break;
 
 				default:
-					color = *src;
+					colour = *src;
 					break;
 			}
-			if (color != 0) *dst = color;
+			if (colour != 0) *dst = colour;
 			dst++;
 			src += ScaleByZoom(1, zoom);
 		}

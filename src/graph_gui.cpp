@@ -149,7 +149,7 @@ protected:
 	int gd_left, gd_top;  ///< Where to start drawing the graph, in pixels.
 	uint gd_height;    ///< The height of the graph in pixels.
 	StringID format_str_y_axis;
-	byte colors[GRAPH_MAX_DATASETS];
+	byte colours[GRAPH_MAX_DATASETS];
 	OverflowSafeInt64 cost[GRAPH_MAX_DATASETS][24]; ///< last 2 years
 
 	void DrawGraph() const
@@ -158,7 +158,7 @@ protected:
 		OverflowSafeInt64 highest_value; ///< Highest value to be drawn.
 		int x_axis_offset;               ///< Distance from the top of the graph to the x axis.
 
-		/* the colors and cost array of GraphDrawer must accomodate
+		/* the colours and cost array of GraphDrawer must accomodate
 		* both values for cargo and companies. So if any are higher, quit */
 		assert(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_COMPANIES);
 		assert(this->num_vert_lines > 0);
@@ -294,7 +294,7 @@ protected:
 				/* Centre the dot between the grid lines. */
 				x = this->gd_left + GRAPH_X_POSITION_BEGINNING + (GRAPH_X_POSITION_SEPARATION / 2);
 
-				byte color  = this->colors[i];
+				byte colour  = this->colours[i];
 				uint prev_x = INVALID_DATAPOINT_POS;
 				uint prev_y = INVALID_DATAPOINT_POS;
 
@@ -326,10 +326,10 @@ protected:
 						y = this->gd_top + x_axis_offset - (x_axis_offset * datapoint) / (highest_value >> reduce_range);
 
 						/* Draw the point. */
-						GfxFillRect(x - 1, y - 1, x + 1, y + 1, color);
+						GfxFillRect(x - 1, y - 1, x + 1, y + 1, colour);
 
 						/* Draw the line connected to the previous point. */
-						if (prev_x != INVALID_DATAPOINT_POS) GfxDrawLine(prev_x, prev_y, x, y, color);
+						if (prev_x != INVALID_DATAPOINT_POS) GfxDrawLine(prev_x, prev_y, x, y, colour);
 
 						prev_x = x;
 						prev_y = y;
@@ -388,7 +388,7 @@ public:
 		for (CompanyID k = COMPANY_FIRST; k < MAX_COMPANIES; k++) {
 			if (IsValidCompanyID(k)) {
 				c = GetCompany(k);
-				this->colors[numd] = _colour_gradient[c->colour][6];
+				this->colours[numd] = _colour_gradient[c->colour][6];
 				for (int j = this->num_on_x_axis, i = 0; --j >= 0;) {
 					this->cost[numd][i] = (j >= c->num_valid_stat_ent) ? INVALID_DATAPOINT : GetGraphData(c, j);
 					i++;
@@ -676,7 +676,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 			 * changed the NewGRF configuration with this window open. */
 			if (i + 3 < this->widget_count) {
 				/* Since the buttons have no text, no images,
-				 * both the text and the colored box have to be manually painted.
+				 * both the text and the coloured box have to be manually painted.
 				 * clk_dif will move one pixel down and one pixel to the right
 				 * when the button is clicked */
 				byte clk_dif = this->IsWidgetLowered(i + 3) ? 1 : 0;
@@ -688,7 +688,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 				y += 8;
 			}
 
-			this->colors[i] = cs->legend_colour;
+			this->colours[i] = cs->legend_colour;
 			for (uint j = 0; j != 20; j++) {
 				this->cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, c);
 			}
@@ -902,7 +902,7 @@ public:
 		byte x;
 		uint16 y = 27;
 		int total_score = 0;
-		int color_done, color_notdone;
+		int colour_done, colour_notdone;
 
 		/* Draw standard stuff */
 		this->DrawWidgets();
@@ -959,9 +959,9 @@ public:
 			DrawCompanyIcon(i, (i % 8) * 37 + 13 + x, (i < 8 ? 0 : 13) + 16 + x);
 		}
 
-		/* The colors used to show how the progress is going */
-		color_done = _colour_gradient[COLOUR_GREEN][4];
-		color_notdone = _colour_gradient[COLOUR_RED][4];
+		/* The colours used to show how the progress is going */
+		colour_done = _colour_gradient[COLOUR_GREEN][4];
+		colour_notdone = _colour_gradient[COLOUR_RED][4];
 
 		/* Draw all the score parts */
 		for (ScoreID i = SCORE_BEGIN; i < SCORE_END; i++) {
@@ -991,8 +991,8 @@ public:
 			if (val < 0 && i == SCORE_LOAN) x = 0;
 
 			/* Draw the bar */
-			if (x !=  0) GfxFillRect(112,     y - 2, 112 + x,  y + 10, color_done);
-			if (x != 50) GfxFillRect(112 + x, y - 2, 112 + 50, y + 10, color_notdone);
+			if (x !=  0) GfxFillRect(112,     y - 2, 112 + x,  y + 10, colour_done);
+			if (x != 50) GfxFillRect(112 + x, y - 2, 112 + 50, y + 10, colour_notdone);
 
 			/* Calculate the % */
 			x = Clamp(val, 0, needed) * 100 / needed;

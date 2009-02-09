@@ -1883,7 +1883,7 @@ static void DrawTile_Track(TileInfo *ti)
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 	SpriteID image;
 
-	_drawtile_track_palette = COMPANY_SPRITE_COLOR(GetTileOwner(ti->tile));
+	_drawtile_track_palette = COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile));
 
 	if (IsPlainRailTile(ti->tile)) {
 		TrackBits rails = GetTrackBits(ti->tile);
@@ -2020,14 +2020,14 @@ default_waypoint:
 
 static void DrawTileSequence(int x, int y, SpriteID ground, const DrawTileSeqStruct *dtss, uint32 offset)
 {
-	SpriteID palette = COMPANY_SPRITE_COLOR(_local_company);
+	SpriteID palette = COMPANY_SPRITE_COLOUR(_local_company);
 
 	DrawSprite(ground, PAL_NONE, x, y);
 	for (; dtss->image.sprite != 0; dtss++) {
 		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
 		SpriteID image = dtss->image.sprite + offset;
 
-		DrawSprite(image, HasBit(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE, x + pt.x, y + pt.y);
+		DrawSprite(image, HasBit(image, PALETTE_MODIFIER_COLOUR) ? palette : PAL_NONE, x + pt.x, y + pt.y);
 	}
 }
 

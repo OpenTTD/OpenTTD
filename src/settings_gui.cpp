@@ -886,7 +886,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 	if ((sdb->flags & SGF_NO_NETWORK) && _networking) editable = false;
 
 	if (sdb->cmd == SDT_BOOLX) {
-		static const int _bool_ctabs[2][2] = {{9, 4}, {7, 6}};
+		static const Colours _bool_ctabs[2][2] = {{COLOUR_CREAM, COLOUR_RED}, {COLOUR_DARK_GREEN, COLOUR_GREEN}};
 		/* Draw checkbox for boolean-value either on/off */
 		bool on = (*(bool*)var);
 
@@ -1047,7 +1047,7 @@ static SettingEntry _settings_ui[] = {
 	SettingEntry("gui.default_rail_type"),
 	SettingEntry("gui.always_build_infrastructure"),
 	SettingEntry("gui.persistent_buildingtools"),
-	SettingEntry("gui.colored_news_year"),
+	SettingEntry("gui.coloured_news_year"),
 };
 /** Interface subpage */
 static SettingsPage _settings_ui_page = {_settings_ui, lengthof(_settings_ui)};

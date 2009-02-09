@@ -202,14 +202,14 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 			if (IsInvisibilitySet(TO_STRUCTURES)) break;
 
-			AddSortableSpriteToDraw(SPR_STATUE_COMPANY, COMPANY_SPRITE_COLOR(GetTileOwner(ti->tile)), ti->x, ti->y, 16, 16, 25, ti->z, IsTransparencySet(TO_STRUCTURES));
+			AddSortableSpriteToDraw(SPR_STATUE_COMPANY, COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile)), ti->x, ti->y, 16, 16, 25, ti->z, IsTransparencySet(TO_STRUCTURES));
 			break;
 
 		case UNMOVABLE_OWNED_LAND:
 			DrawClearLandTile(ti, 0);
 
 			AddSortableSpriteToDraw(
-				SPR_BOUGHT_LAND, COMPANY_SPRITE_COLOR(GetTileOwner(ti->tile)),
+				SPR_BOUGHT_LAND, COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile)),
 				ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, BB_HEIGHT_UNDER_BRIDGE, GetSlopeZ(ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2)
 			);
 			DrawBridgeMiddle(ti);
@@ -219,7 +219,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			assert(IsCompanyHQ(ti->tile));
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
-			SpriteID palette = COMPANY_SPRITE_COLOR(GetTileOwner(ti->tile));
+			SpriteID palette = COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile));
 
 			const DrawTileSprites *t = &_unmovable_display_datas[GetCompanyHQSize(ti->tile) << 2 | GetCompanyHQSection(ti->tile)];
 			DrawGroundSprite(t->ground.sprite, palette);

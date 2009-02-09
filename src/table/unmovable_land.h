@@ -15,54 +15,54 @@ static const DrawTileSeqStruct _unmovable_display_nothing[] = {
 };
 
 static const DrawTileSeqStruct _unmovable_display_datas_8[] = {
-	TILE_SEQ_LINE(20, SPR_MEDIUMHQ_NORTH_WALL | (1 << PALETTE_MODIFIER_COLOR))
+	TILE_SEQ_LINE(20, SPR_MEDIUMHQ_NORTH_WALL | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _unmovable_display_datas_9[] = {
-	TILE_SEQ_LINE(20, SPR_MEDIUMHQ_EAST_WALL  | (1 << PALETTE_MODIFIER_COLOR))
+	TILE_SEQ_LINE(20, SPR_MEDIUMHQ_EAST_WALL  | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _unmovable_display_datas_10[] = {
-	TILE_SEQ_LINE(20, SPR_MEDIUMHQ_WEST_WALL  | (1 << PALETTE_MODIFIER_COLOR))
+	TILE_SEQ_LINE(20, SPR_MEDIUMHQ_WEST_WALL  | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _unmovable_display_datas_12[] = {
-	TILE_SEQ_LINE(50, SPR_LARGEHQ_NORTH_BUILD | (1 << PALETTE_MODIFIER_COLOR))
+	TILE_SEQ_LINE(50, SPR_LARGEHQ_NORTH_BUILD | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _unmovable_display_datas_13[] = {
-	TILE_SEQ_LINE(50, SPR_LARGEHQ_EAST_BUILD  | (1 << PALETTE_MODIFIER_COLOR))
+	TILE_SEQ_LINE(50, SPR_LARGEHQ_EAST_BUILD  | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _unmovable_display_datas_14[] = {
-	TILE_SEQ_LINE(50, SPR_LARGEHQ_WEST_BUILD  | (1 << PALETTE_MODIFIER_COLOR))
+	TILE_SEQ_LINE(50, SPR_LARGEHQ_WEST_BUILD  | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _unmovable_display_datas_16[] = {
-	TILE_SEQ_LINE(60, SPR_HUGEHQ_NORTH_BUILD  | (1 << PALETTE_MODIFIER_COLOR))
+	TILE_SEQ_LINE(60, SPR_HUGEHQ_NORTH_BUILD  | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _unmovable_display_datas_17[] = {
-	TILE_SEQ_LINE(60, SPR_HUGEHQ_EAST_BUILD   | (1 << PALETTE_MODIFIER_COLOR))
+	TILE_SEQ_LINE(60, SPR_HUGEHQ_EAST_BUILD   | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _unmovable_display_datas_18[] = {
-	TILE_SEQ_LINE(60, SPR_HUGEHQ_WEST_BUILD   | (1 << PALETTE_MODIFIER_COLOR))
+	TILE_SEQ_LINE(60, SPR_HUGEHQ_WEST_BUILD   | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 #undef TILE_SEQ_LINE
 #undef TILE_SEQ_END
 
-#define TILE_SPRITE_LINE(img, dtss) { {img | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE}, dtss },
+#define TILE_SPRITE_LINE(img, dtss) { {img | (1 << PALETTE_MODIFIER_COLOUR), PAL_NONE}, dtss },
 
 static const DrawTileSprites _unmovable_display_datas[] = {
 	TILE_SPRITE_LINE(SPR_TINYHQ_NORTH,         _unmovable_display_nothing)

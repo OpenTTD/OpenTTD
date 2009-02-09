@@ -67,7 +67,7 @@ void BuildFileList();
 void SetFiosType(const byte fiostype);
 
 /* FIOS_TYPE_FILE, FIOS_TYPE_OLDFILE etc. different colours */
-extern const TextColour _fios_colors[];
+extern const TextColour _fios_colours[];
 
 /* bridge_gui.cpp */
 void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, byte bridge_type);

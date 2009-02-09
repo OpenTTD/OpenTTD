@@ -12,7 +12,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkClientSocket *cs,
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, NetworkErrorCode error);
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SHUTDOWN);
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_NEWGAME);
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkClientSocket *cs, uint16 color, const char *command);
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkClientSocket *cs, uint16 colour, const char *command);
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_MOVE)(NetworkClientSocket *cs, uint16 client_id, CompanyID company_id);
 
 bool NetworkServer_ReadPackets(NetworkClientSocket *cs);

@@ -322,10 +322,10 @@ bool BmpReadHeader(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 	if (info->bpp <= 8) {
 		uint i;
 
-		/* Reads number of colors if available in info header */
+		/* Reads number of colours if available in info header */
 		if (header_size >= 16) {
 			SkipBytes(buffer, 12);                  // skip image size and resolution
-			info->palette_size = ReadDword(buffer); // number of colors in palette
+			info->palette_size = ReadDword(buffer); // number of colours in palette
 			SkipBytes(buffer, header_size - 16);    // skip the end of info header
 		}
 		if (info->palette_size == 0) info->palette_size = 1 << info->bpp;

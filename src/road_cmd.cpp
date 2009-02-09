@@ -1178,7 +1178,7 @@ static void DrawTile_Road(TileInfo *ti)
 		case ROAD_TILE_DEPOT: {
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
-			SpriteID palette = COMPANY_SPRITE_COLOR(GetTileOwner(ti->tile));
+			SpriteID palette = COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile));
 
 			const DrawTileSprites *dts;
 			if (HasTileRoadType(ti->tile, ROADTYPE_TRAM)) {
@@ -1196,7 +1196,7 @@ static void DrawTile_Road(TileInfo *ti)
 				SpriteID image = dtss->image.sprite;
 				SpriteID pal;
 
-				if (!IsTransparencySet(TO_BUILDINGS) && HasBit(image, PALETTE_MODIFIER_COLOR)) {
+				if (!IsTransparencySet(TO_BUILDINGS) && HasBit(image, PALETTE_MODIFIER_COLOUR)) {
 					pal = palette;
 				} else {
 					pal = PAL_NONE;
@@ -1218,7 +1218,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 {
-	SpriteID palette = COMPANY_SPRITE_COLOR(_local_company);
+	SpriteID palette = COMPANY_SPRITE_COLOUR(_local_company);
 	const DrawTileSprites *dts = (rt == ROADTYPE_TRAM) ? &_tram_depot[dir] : &_road_depot[dir];
 
 	x += 33;
@@ -1230,7 +1230,7 @@ void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
 		SpriteID image = dtss->image.sprite;
 
-		DrawSprite(image, HasBit(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE, x + pt.x, y + pt.y);
+		DrawSprite(image, HasBit(image, PALETTE_MODIFIER_COLOUR) ? palette : PAL_NONE, x + pt.x, y + pt.y);
 	}
 }
 

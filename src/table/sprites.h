@@ -56,8 +56,8 @@ enum Sprites {
 	SPR_HALFTILE_SELECTION_DOWN = SPR_OPENTTD_BASE + 4,
 	SPR_HALFTILE_SELECTION_UP   = SPR_OPENTTD_BASE + 8,
 
-	SPR_SQUARE             = SPR_OPENTTD_BASE + 38, // colored square (used for newgrf compatibility)
-	SPR_BLOT               = SPR_OPENTTD_BASE + 39, // colored circle (mainly used as vehicle profit marker and for server compatibility)
+	SPR_SQUARE             = SPR_OPENTTD_BASE + 38, // coloured square (used for newgrf compatibility)
+	SPR_BLOT               = SPR_OPENTTD_BASE + 39, // coloured circle (mainly used as vehicle profit marker and for server compatibility)
 	SPR_LOCK               = SPR_OPENTTD_BASE + 40, // lock icon (for password protected servers)
 	SPR_BOX_EMPTY          = SPR_OPENTTD_BASE + 41,
 	SPR_BOX_CHECKED        = SPR_OPENTTD_BASE + 42,
@@ -1401,24 +1401,24 @@ enum AnimCursors {
  * <ul><li> SPRITE_WIDTH is the number of bits used for the actual sprite to be displayed.
  * This always starts at bit 0.</li>
  * <li> TRANSPARENT_BIT is the bit number which toggles sprite transparency</li>
- * <li> RECOLOR_BIT toggles the recoloring system</li>
+ * <li> RECOLOUR_BIT toggles the recolouring system</li>
  * <li> PALETTE_SPRITE_WIDTH and PALETTE_SPRITE_START determine the position and number of
- * bits used for the recoloring process. For transparency, it must be 0x322.</li></ul>
+ * bits used for the recolouring process. For transparency, it must be 0x322.</li></ul>
  */
 enum SpriteSetup {
 	TRANSPARENT_BIT = 31,       ///< toggles transparency in the sprite
-	RECOLOR_BIT = 30,           ///< toggles recoloring in the sprite
+	RECOLOUR_BIT = 30,          ///< toggles recolouring in the sprite
 	OFFSET_BIT = 29,
 	OPAQUE_BIT = 28,
 
-	PALETTE_WIDTH = 24,         ///< number of bits of the sprite containing the recolor palette
+	PALETTE_WIDTH = 24,         ///< number of bits of the sprite containing the recolour palette
 	SPRITE_WIDTH = 24,          ///< number of bits for the sprite number
 };
 
 /**
- * these masks change the colors of the palette for a sprite.
+ * these masks change the colours of the palette for a sprite.
  * Apart from this bit, a sprite number is needed to define
- * the palette used for recoloring. This palette is stored
+ * the palette used for recolouring. This palette is stored
  * in the bits marked by PALETTE_SPRITE_MASK.
  * @note Do not modify this enum. Alter SpriteSetup instead
  * @see SpriteSetup
@@ -1429,8 +1429,8 @@ enum Modifiers {
 	SPRITE_MODIFIER_OPAQUE        = OPAQUE_BIT,
 	///when a sprite is to be displayed transparently, this bit needs to be set.
 	PALETTE_MODIFIER_TRANSPARENT  = TRANSPARENT_BIT,
-	///this bit is set when a recoloring process is in action
-	PALETTE_MODIFIER_COLOR        = RECOLOR_BIT,
+	///this bit is set when a recolouring process is in action
+	PALETTE_MODIFIER_COLOUR       = RECOLOUR_BIT,
 };
 
 /** Masks needed for sprite operations.
@@ -1443,18 +1443,18 @@ enum SpriteMasks {
 	SPRITE_MASK = MAX_SPRITES - 1,
 
 	MAX_PALETTES = 1 << PALETTE_WIDTH,
-	///The mask for the auxiliary sprite (the one that takes care of recoloring)
+	///The mask for the auxiliary sprite (the one that takes care of recolouring)
 	PALETTE_MASK = MAX_PALETTES - 1,
 };
 
 assert_compile( (1 << TRANSPARENT_BIT & SPRITE_MASK) == 0 );
-assert_compile( (1 << RECOLOR_BIT & SPRITE_MASK) == 0 );
-assert_compile( !(TRANSPARENT_BIT == RECOLOR_BIT) );
+assert_compile( (1 << RECOLOUR_BIT & SPRITE_MASK) == 0 );
+assert_compile( !(TRANSPARENT_BIT == RECOLOUR_BIT) );
 assert_compile( (1 << TRANSPARENT_BIT & PALETTE_MASK) == 0);
-assert_compile( (1 << RECOLOR_BIT & PALETTE_MASK) == 0 );
+assert_compile( (1 << RECOLOUR_BIT & PALETTE_MASK) == 0 );
 
-enum Recoloring {
-	PALETTE_RECOLOR_START       = 0x307,
+enum Recolouring {
+	PALETTE_RECOLOUR_START       = 0x307,
 };
 
 
@@ -1471,10 +1471,10 @@ static const SpriteID PALETTE_SEL_TILE_RED        = 0x304;
 	///This draws a blueish square (catchment areas for example)
 static const SpriteID PALETTE_SEL_TILE_BLUE       = 0x305;
 	//0x306 is a real sprite (the little dot you get when you try to raise/lower a corner of the map
-	//here the color switches begin
-	//use this if you add stuff to the value, so that the resulting color
+	//here the colour switches begin
+	//use this if you add stuff to the value, so that the resulting colour
 	//is not a fixed value.
-	//NOTE THAT THE SWITCH 0x8000 is NOT present in _TO_COLORS yet!
+	//NOTE THAT THE SWITCH 0x8000 is NOT present in _TO_COLOURS yet!
 enum PaletteSprites {
 	PALETTE_TO_DARK_BLUE        = 0x307,
 	PALETTE_TO_PALE_GREEN       = 0x308,
@@ -1486,32 +1486,32 @@ enum PaletteSprites {
 	PALETTE_TO_DARK_GREEN       = 0x30E,
 	PALETTE_TO_BLUE             = 0x30F,
 	PALETTE_TO_CREAM            = 0x310,
-	//maybe don't use as company color because it doesn't display in the graphs?
+	//maybe don't use as company colour because it doesn't display in the graphs?
 	PALETTE_TO_MAUVE            = 0x311,
 	PALETTE_TO_PURPLE           = 0x312,
 	PALETTE_TO_ORANGE           = 0x313,
 	PALETTE_TO_BROWN            = 0x314,
 	PALETTE_TO_GREY             = 0x315,
 	PALETTE_TO_WHITE            = 0x316,
-	//sets color to bare land stuff, for rail and road (and crossings)
+	//sets colour to bare land stuff, for rail and road (and crossings)
 	PALETTE_TO_BARE_LAND        = 0x317,
 	//XXX is 318-31A really not used?
 	PALETTE_TO_STRUCT_BLUE      = 0x31B,
-	//structure color to something brownish (for the cantilever bridges for example)
+	//structure colour to something brownish (for the cantilever bridges for example)
 	PALETTE_TO_STRUCT_BROWN     = 0x31C,
 	PALETTE_TO_STRUCT_WHITE     = 0x31D,
 	//sets bridge or structure to red, little concrete one and cantilever use this one for example
 	PALETTE_TO_STRUCT_RED       = 0x31E,
 	PALETTE_TO_STRUCT_GREEN     = 0x31F,
 	PALETTE_TO_STRUCT_CONCRETE  = 0x320, //Sets the suspension bridge to concrete, also other strucutures use it
-	PALETTE_TO_STRUCT_YELLOW    = 0x321, //Sets the bridge color to yellow (suspension and tubular)
+	PALETTE_TO_STRUCT_YELLOW    = 0x321, //Sets the bridge colour to yellow (suspension and tubular)
 	PALETTE_TO_TRANSPARENT      = 0x322, //This sets the sprite to transparent
-	//This is used for changing the tubular bridges to the silicon display, or some grayish color
+	//This is used for changing the tubular bridges to the silicon display, or some grayish colour
 	PALETTE_TO_STRUCT_GREY      = 0x323,
 
-	//XXX - const - PALETTE_CRASH               = 0x324,  //this changes stuff to the "crash color"
-	//XXX another place where structures are colored.
-	//I'm not sure which colors these are
+	//XXX - const - PALETTE_CRASH               = 0x324,  //this changes stuff to the "crash colour"
+	//XXX another place where structures are coloured.
+	//I'm not sure which colours these are
 	PALETTE_59E                 = 0x59E,
 	PALETTE_59F                 = 0x59F,
 };

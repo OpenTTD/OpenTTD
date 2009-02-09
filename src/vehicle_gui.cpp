@@ -112,7 +112,7 @@ void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
 {
 	SpriteID pal;
 
-	/* draw profit-based colored icons */
+	/* draw profit-based coloured icons */
 	if (v->age <= DAYS_IN_YEAR * 2) {
 		pal = PALETTE_TO_GREY;
 	} else if (v->GetDisplayProfitLastYear() < 0) {

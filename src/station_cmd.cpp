@@ -2330,7 +2330,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 	SpriteID palette;
 	if (IsValidCompanyID(owner)) {
-		palette = COMPANY_SPRITE_COLOR(owner);
+		palette = COMPANY_SPRITE_COLOUR(owner);
 	} else {
 		/* Some stations are not owner by a company, namely oil rigs */
 		palette = PALETTE_TO_GREY;
@@ -2437,7 +2437,7 @@ static void DrawTile_Station(TileInfo *ti)
 void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadType roadtype, int image)
 {
 	int32 total_offset = 0;
-	SpriteID pal = COMPANY_SPRITE_COLOR(_local_company);
+	SpriteID pal = COMPANY_SPRITE_COLOUR(_local_company);
 	const DrawTileSprites *t = &_station_display_datas[st][image];
 
 	if (railtype != INVALID_RAILTYPE) {
@@ -2446,7 +2446,7 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 	}
 
 	SpriteID img = t->ground.sprite;
-	DrawSprite(img + total_offset, HasBit(img, PALETTE_MODIFIER_COLOR) ? pal : PAL_NONE, x, y);
+	DrawSprite(img + total_offset, HasBit(img, PALETTE_MODIFIER_COLOUR) ? pal : PAL_NONE, x, y);
 
 	if (roadtype == ROADTYPE_TRAM) {
 		DrawSprite(SPR_TRAMWAY_TRAM + (t->ground.sprite == SPR_ROAD_PAVED_STRAIGHT_X ? 1 : 0), PAL_NONE, x, y);

@@ -1367,8 +1367,8 @@ static const Widget _save_dialog_widgets[] = {
 {   WIDGETS_END},
 };
 
-/* Colors for fios types */
-const TextColour _fios_colors[] = {
+/* Colours for fios types */
+const TextColour _fios_colours[] = {
 	TC_LIGHT_BLUE, TC_DARK_GREEN,  TC_DARK_GREEN, TC_ORANGE, TC_LIGHT_BROWN,
 	TC_ORANGE,     TC_LIGHT_BROWN, TC_ORANGE,     TC_ORANGE, TC_YELLOW
 };
@@ -1554,7 +1554,7 @@ public:
 		for (uint pos = this->vscroll.pos; pos < _fios_items.Length(); pos++) {
 			const FiosItem *item = _fios_items.Get(pos);
 
-			DoDrawStringTruncated(item->title, 4, y, _fios_colors[item->type], this->width - 18);
+			DoDrawStringTruncated(item->title, 4, y, _fios_colours[item->type], this->width - 18);
 			y += 10;
 			if (y >= this->vscroll.cap * 10 + widg->top + 1) break;
 		}

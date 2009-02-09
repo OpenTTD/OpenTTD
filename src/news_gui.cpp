@@ -50,7 +50,7 @@ static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 	const CompanyNewsInformation *cni = (const CompanyNewsInformation*)ni->free_data;
 
 	DrawCompanyManagerFace(cni->face, cni->colour, 2, 23);
-	GfxFillRect(3, 23, 3 + 91, 23 + 118, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOR);
+	GfxFillRect(3, 23, 3 + 91, 23 + 118, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOUR);
 
 	SetDParamStr(0, cni->president_name);
 	DrawStringMultiCenter(49, 148, STR_JUST_RAW_STRING, 94);
@@ -229,11 +229,11 @@ struct NewsWindow : Window {
 					this->DrawViewport();
 					_transparency_opt = to_backup;
 
-					/* Shade the viewport into gray, or color*/
+					/* Shade the viewport into gray, or colour*/
 					ViewPort *vp = this->viewport;
 					GfxFillRect(vp->left - this->left, vp->top - this->top,
 						vp->left - this->left + vp->width - 1, vp->top - this->top + vp->height - 1,
-						(this->ni->flags & NF_INCOLOR ? PALETTE_TO_TRANSPARENT : PALETTE_TO_STRUCT_GREY), FILLRECT_RECOLOR
+						(this->ni->flags & NF_INCOLOUR ? PALETTE_TO_TRANSPARENT : PALETTE_TO_STRUCT_GREY), FILLRECT_RECOLOUR
 					);
 
 					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
@@ -497,8 +497,8 @@ void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b,
 	ni->subtype = subtype;
 	ni->flags = _news_subtype_data[subtype].flags;
 
-	/* show this news message in color? */
-	if (_cur_year >= _settings_client.gui.colored_news_year) ni->flags |= NF_INCOLOR;
+	/* show this news message in colour? */
+	if (_cur_year >= _settings_client.gui.coloured_news_year) ni->flags |= NF_INCOLOUR;
 
 	ni->data_a = data_a;
 	ni->data_b = data_b;

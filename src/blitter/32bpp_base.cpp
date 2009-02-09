@@ -11,32 +11,32 @@ void *Blitter_32bppBase::MoveTo(const void *video, int x, int y)
 	return (uint32 *)video + x + y * _screen.pitch;
 }
 
-void Blitter_32bppBase::SetPixel(void *video, int x, int y, uint8 color)
+void Blitter_32bppBase::SetPixel(void *video, int x, int y, uint8 colour)
 {
-	*((uint32 *)video + x + y * _screen.pitch) = LookupColourInPalette(color);
+	*((uint32 *)video + x + y * _screen.pitch) = LookupColourInPalette(colour);
 }
 
-void Blitter_32bppBase::SetPixelIfEmpty(void *video, int x, int y, uint8 color)
+void Blitter_32bppBase::SetPixelIfEmpty(void *video, int x, int y, uint8 colour)
 {
 	uint32 *dst = (uint32 *)video + x + y * _screen.pitch;
-	if (*dst == 0) *dst = LookupColourInPalette(color);
+	if (*dst == 0) *dst = LookupColourInPalette(colour);
 }
 
-void Blitter_32bppBase::DrawRect(void *video, int width, int height, uint8 color)
+void Blitter_32bppBase::DrawRect(void *video, int width, int height, uint8 colour)
 {
-	uint32 color32 = LookupColourInPalette(color);
+	uint32 colour32 = LookupColourInPalette(colour);
 
 	do {
 		uint32 *dst = (uint32 *)video;
 		for (int i = width; i > 0; i--) {
-			*dst = color32;
+			*dst = colour32;
 			dst++;
 		}
 		video = (uint32 *)video + _screen.pitch;
 	} while (--height);
 }
 
-void Blitter_32bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 color)
+void Blitter_32bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour)
 {
 	int dy;
 	int dx;
@@ -60,7 +60,7 @@ void Blitter_32bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int 
 		stepx = 1;
 	}
 
-	if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, color);
+	if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, colour);
 	if (dx > dy) {
 		frac = dy - (dx / 2);
 		while (x != x2) {
@@ -70,7 +70,7 @@ void Blitter_32bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int 
 			}
 			x += stepx;
 			frac += dy;
-			if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, color);
+			if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, colour);
 		}
 	} else {
 		frac = dx - (dy / 2);
@@ -81,7 +81,7 @@ void Blitter_32bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int 
 			}
 			y += stepy;
 			frac += dx;
-			if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, color);
+			if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, colour);
 		}
 	}
 }

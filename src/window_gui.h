@@ -21,14 +21,14 @@ enum FrameFlags {
 	FR_NONE         =  0,
 	FR_TRANSPARENT  =  1 << 0,  ///< Makes the background transparent if set
 	FR_BORDERONLY   =  1 << 4,  ///< Draw border only, no background
-	FR_LOWERED      =  1 << 5,  ///< If set the frame is lowered and the background color brighter (ie. buttons when pressed)
-	FR_DARKENED     =  1 << 6,  ///< If set the background is darker, allows for lowered frames with normal background color when used with FR_LOWERED (ie. dropdown boxes)
+	FR_LOWERED      =  1 << 5,  ///< If set the frame is lowered and the background colour brighter (ie. buttons when pressed)
+	FR_DARKENED     =  1 << 6,  ///< If set the background is darker, allows for lowered frames with normal background colour when used with FR_LOWERED (ie. dropdown boxes)
 };
 
 DECLARE_ENUM_AS_BIT_SET(FrameFlags);
 
 /* wiget.cpp */
-void DrawFrameRect(int left, int top, int right, int bottom, int color, FrameFlags flags);
+void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, FrameFlags flags);
 
 /**
  * High level window description

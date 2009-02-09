@@ -79,16 +79,16 @@ void IConsoleFree()
  * as well as to a logfile. If the network server is a dedicated server, all activities
  * are also logged. All lines to print are added to a temporary buffer which can be
  * used as a history to print them onscreen
- * @param color_code the colour of the command. Red in case of errors, etc.
+ * @param colour_code the colour of the command. Red in case of errors, etc.
  * @param string the message entered or output on the console (notice, error, etc.)
  */
-void IConsolePrint(ConsoleColour color_code, const char *string)
+void IConsolePrint(ConsoleColour colour_code, const char *string)
 {
 	char *str;
 #ifdef ENABLE_NETWORK
 	if (_redirect_console_to_client != INVALID_CLIENT_ID) {
 		/* Redirect the string to the client */
-		NetworkServerSendRcon(_redirect_console_to_client, color_code, string);
+		NetworkServerSendRcon(_redirect_console_to_client, colour_code, string);
 		return;
 	}
 #endif
@@ -108,7 +108,7 @@ void IConsolePrint(ConsoleColour color_code, const char *string)
 	}
 
 	IConsoleWriteToLogFile(str);
-	IConsoleGUIPrint(color_code, str);
+	IConsoleGUIPrint(colour_code, str);
 }
 
 /**
@@ -116,7 +116,7 @@ void IConsolePrint(ConsoleColour color_code, const char *string)
  * by any other means. Uses printf() style format, for more information look
  * at IConsolePrint()
  */
-void CDECL IConsolePrintF(ConsoleColour color_code, const char *s, ...)
+void CDECL IConsolePrintF(ConsoleColour colour_code, const char *s, ...)
 {
 	va_list va;
 	char buf[ICON_MAX_STREAMSIZE];
@@ -125,7 +125,7 @@ void CDECL IConsolePrintF(ConsoleColour color_code, const char *s, ...)
 	vsnprintf(buf, sizeof(buf), s, va);
 	va_end(va);
 
-	IConsolePrint(color_code, buf);
+	IConsolePrint(colour_code, buf);
 }
 
 /**

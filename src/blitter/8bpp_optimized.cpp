@@ -140,7 +140,7 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, Blitter::All
 			for (int x = 0; x < scaled_width; x++) {
 				uint colour = 0;
 
-				/* Get the color keeping in mind the zoom-level */
+				/* Get the colour keeping in mind the zoom-level */
 				for (int j = 0; j < scaled_1; j++) {
 					if (src->m != 0) colour = src->m;
 					/* Because of the scaling it might happen we read outside the buffer. Avoid that. */

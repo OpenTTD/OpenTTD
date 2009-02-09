@@ -134,6 +134,6 @@ bool GetArgumentInteger(uint32 *value, const char *arg);
 
 void IConsoleGUIInit();
 void IConsoleGUIFree();
-void IConsoleGUIPrint(ConsoleColour color_code, char *string);
+void IConsoleGUIPrint(ConsoleColour colour_code, char *string);
 
 #endif /* CONSOLE_INTERNAL_H */

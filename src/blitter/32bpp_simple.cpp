@@ -39,11 +39,11 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 					break;
 
 				case BM_TRANSPARENT:
-					/* TODO -- We make an assumption here that the remap in fact is transparency, not some color.
+					/* TODO -- We make an assumption here that the remap in fact is transparency, not some colour.
 					 *  This is never a problem with the code we produce, but newgrfs can make it fail... or at least:
 					 *  we produce a result the newgrf maker didn't expect ;) */
 
-					/* Make the current color a bit more black, so it looks like this image is transparent */
+					/* Make the current colour a bit more black, so it looks like this image is transparent */
 					if (src->a != 0) *dst = MakeTransparent(*dst, 192);
 					break;
 
@@ -57,7 +57,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 	}
 }
 
-void Blitter_32bppSimple::DrawColorMappingRect(void *dst, int width, int height, int pal)
+void Blitter_32bppSimple::DrawColourMappingRect(void *dst, int width, int height, int pal)
 {
 	uint32 *udst = (uint32 *)dst;
 
@@ -82,7 +82,7 @@ void Blitter_32bppSimple::DrawColorMappingRect(void *dst, int width, int height,
 		return;
 	}
 
-	DEBUG(misc, 0, "32bpp blitter doesn't know how to draw this color table ('%d')", pal);
+	DEBUG(misc, 0, "32bpp blitter doesn't know how to draw this colour table ('%d')", pal);
 }
 
 Sprite *Blitter_32bppSimple::Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator)
@@ -102,10 +102,10 @@ Sprite *Blitter_32bppSimple::Encode(SpriteLoader::Sprite *sprite, Blitter::Alloc
 	for (int i = 0; i < sprite->height * sprite->width; i++) {
 		if (dst[i].m != 0) {
 			/* Pre-convert the mapping channel to a RGB value */
-			uint color = this->LookupColourInPalette(dst[i].m);
-			dst[i].r = GB(color, 16, 8);
-			dst[i].g = GB(color, 8,  8);
-			dst[i].b = GB(color, 0,  8);
+			uint colour = this->LookupColourInPalette(dst[i].m);
+			dst[i].r = GB(colour, 16, 8);
+			dst[i].g = GB(colour, 8,  8);
+			dst[i].b = GB(colour, 0,  8);
 		}
 	}
 

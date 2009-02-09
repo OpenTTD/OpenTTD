@@ -60,7 +60,7 @@ static inline uint GetChatMessageCount()
 
 /**
  * Add a text message to the 'chat window' to be shown
- * @param color The colour this message is to be shown in
+ * @param colour The colour this message is to be shown in
  * @param duration The duration of the chat message in game-days
  * @param message message itself in printf() style
  */
@@ -96,7 +96,7 @@ void CDECL NetworkAddChatMessage(TextColour colour, uint8 duration, const char *
 
 		/* The default colour for a message is company colour. Replace this with
 		 * white for any additional lines */
-		cmsg->colour = (bufp == buf && colour & IS_PALETTE_COLOR) ? colour : (TextColour)(0x1D - 15) | IS_PALETTE_COLOR;
+		cmsg->colour = (bufp == buf && colour & IS_PALETTE_COLOUR) ? colour : (TextColour)(0x1D - 15) | IS_PALETTE_COLOUR;
 		cmsg->end_date = _date + duration;
 
 		bufp += strlen(bufp) + 1; // jump to 'next line' in the formatted string
@@ -232,7 +232,7 @@ void NetworkDrawChatMessage()
 			_screen.height - _chatmsg_box.y - count * NETWORK_CHAT_LINE_HEIGHT - 2,
 			_chatmsg_box.x + _chatmsg_box.width - 1,
 			_screen.height - _chatmsg_box.y - 2,
-			PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOR // black, but with some alpha for background
+			PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOUR // black, but with some alpha for background
 		);
 
 	/* Paint the chat messages starting with the lowest at the bottom */

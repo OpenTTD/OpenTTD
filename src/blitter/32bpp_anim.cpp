@@ -129,11 +129,11 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					break;
 
 				case BM_TRANSPARENT:
-					/* TODO -- We make an assumption here that the remap in fact is transparency, not some color.
+					/* TODO -- We make an assumption here that the remap in fact is transparency, not some colour.
 					 *  This is never a problem with the code we produce, but newgrfs can make it fail... or at least:
 					 *  we produce a result the newgrf maker didn't expect ;) */
 
-					/* Make the current color a bit more black, so it looks like this image is transparent */
+					/* Make the current colour a bit more black, so it looks like this image is transparent */
 					src_n += n;
 					if (src_px->a == 255) {
 						src_px += n;
@@ -212,11 +212,11 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 	}
 }
 
-void Blitter_32bppAnim::DrawColorMappingRect(void *dst, int width, int height, int pal)
+void Blitter_32bppAnim::DrawColourMappingRect(void *dst, int width, int height, int pal)
 {
 	if (_screen_disable_anim) {
-		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent DrawColorMappingRect() */
-		Blitter_32bppOptimized::DrawColorMappingRect(dst, width, height, pal);
+		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent DrawColourMappingRect() */
+		Blitter_32bppOptimized::DrawColourMappingRect(dst, width, height, pal);
 		return;
 	}
 
@@ -252,38 +252,38 @@ void Blitter_32bppAnim::DrawColorMappingRect(void *dst, int width, int height, i
 		return;
 	}
 
-	DEBUG(misc, 0, "32bpp blitter doesn't know how to draw this color table ('%d')", pal);
+	DEBUG(misc, 0, "32bpp blitter doesn't know how to draw this colour table ('%d')", pal);
 }
 
-void Blitter_32bppAnim::SetPixel(void *video, int x, int y, uint8 color)
+void Blitter_32bppAnim::SetPixel(void *video, int x, int y, uint8 colour)
 {
-	*((uint32 *)video + x + y * _screen.pitch) = LookupColourInPalette(color);
+	*((uint32 *)video + x + y * _screen.pitch) = LookupColourInPalette(colour);
 
-	/* Set the color in the anim-buffer too, if we are rendering to the screen */
+	/* Set the colour in the anim-buffer too, if we are rendering to the screen */
 	if (_screen_disable_anim) return;
-	this->anim_buf[((uint32 *)video - (uint32 *)_screen.dst_ptr) + x + y * this->anim_buf_width] = color;
+	this->anim_buf[((uint32 *)video - (uint32 *)_screen.dst_ptr) + x + y * this->anim_buf_width] = colour;
 }
 
-void Blitter_32bppAnim::SetPixelIfEmpty(void *video, int x, int y, uint8 color)
+void Blitter_32bppAnim::SetPixelIfEmpty(void *video, int x, int y, uint8 colour)
 {
 	uint32 *dst = (uint32 *)video + x + y * _screen.pitch;
 	if (*dst == 0) {
-		*dst = LookupColourInPalette(color);
-		/* Set the color in the anim-buffer too, if we are rendering to the screen */
+		*dst = LookupColourInPalette(colour);
+		/* Set the colour in the anim-buffer too, if we are rendering to the screen */
 		if (_screen_disable_anim) return;
-		this->anim_buf[((uint32 *)video - (uint32 *)_screen.dst_ptr) + x + y * this->anim_buf_width] = color;
+		this->anim_buf[((uint32 *)video - (uint32 *)_screen.dst_ptr) + x + y * this->anim_buf_width] = colour;
 	}
 }
 
-void Blitter_32bppAnim::DrawRect(void *video, int width, int height, uint8 color)
+void Blitter_32bppAnim::DrawRect(void *video, int width, int height, uint8 colour)
 {
 	if (_screen_disable_anim) {
 		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent DrawRect() */
-		Blitter_32bppOptimized::DrawRect(video, width, height, color);
+		Blitter_32bppOptimized::DrawRect(video, width, height, colour);
 		return;
 	}
 
-	uint32 color32 = LookupColourInPalette(color);
+	uint32 colour32 = LookupColourInPalette(colour);
 	uint8 *anim_line;
 
 	anim_line = ((uint32 *)video - (uint32 *)_screen.dst_ptr) + this->anim_buf;
@@ -293,9 +293,9 @@ void Blitter_32bppAnim::DrawRect(void *video, int width, int height, uint8 color
 		uint8 *anim = anim_line;
 
 		for (int i = width; i > 0; i--) {
-			*dst = color32;
-			/* Set the color in the anim-buffer too */
-			*anim = color;
+			*dst = colour32;
+			/* Set the colour in the anim-buffer too */
+			*anim = colour;
 			dst++;
 			anim++;
 		}
