@@ -228,7 +228,7 @@ struct CompanyFinancesWindow : Window {
 			Window(desc, company),
 			small(show_small)
 	{
-		this->caption_color = this->window_number;
+		this->owner = (Owner)this->window_number;
 
 		if (show_stickied) this->flags4 |= WF_STICKY;
 
@@ -458,7 +458,7 @@ private:
 public:
 	SelectCompanyLiveryWindow(const WindowDesc *desc, CompanyID company) : Window(desc, company)
 	{
-		this->caption_color = company;
+		this->owner = company;
 		this->livery_class = LC_OTHER;
 		this->sel = 1;
 		this->LowerWidget(SCLW_WIDGET_CLASS_GENERAL);
@@ -848,7 +848,7 @@ public:
 	SelectCompanyManagerFaceWindow(const WindowDesc *desc, Window *parent, bool advanced, int top, int left) : Window(desc, parent->window_number)
 	{
 		this->parent = parent;
-		this->caption_color = this->window_number;
+		this->owner = (Owner)this->window_number;
 		this->face = GetCompany((CompanyID)this->window_number)->face;
 		this->advanced = advanced;
 
@@ -1254,7 +1254,7 @@ struct CompanyWindow : Window
 
 	CompanyWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		this->caption_color = this->window_number;
+		this->owner = (Owner)this->window_number;
 		this->FindWindowPlacementAndResize(desc);
 	}
 

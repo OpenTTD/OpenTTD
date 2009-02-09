@@ -51,7 +51,7 @@ struct TimetableWindow : Window {
 	TimetableWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->vehicle = GetVehicle(window_number);
-		this->caption_color = this->vehicle->owner;
+		this->owner = this->vehicle->owner;
 		this->vscroll.cap = 8;
 		this->resize.step_height = 10;
 		this->sel_index = -1;

@@ -271,7 +271,7 @@ struct RefitWindow : public Window {
 
 	RefitWindow(const WindowDesc *desc, const Vehicle *v, VehicleOrderID order) : Window(desc, v->index)
 	{
-		this->caption_color = v->owner;
+		this->owner = v->owner;
 		this->vscroll.cap = 8;
 		this->resize.step_height = 14;
 
@@ -801,7 +801,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 		CompanyID company = (CompanyID)GB(this->window_number, 0, 8);
 
 		this->vehicle_type = (VehicleType)GB(this->window_number, 11, 5);
-		this->caption_color = company;
+		this->owner = company;
 
 		/* Hide the widgets that we will not use in this window
 		* Some windows contains actions only fit for the owner */
@@ -930,7 +930,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 	virtual void OnPaint()
 	{
 		int x = 2;
-		const Owner owner = (Owner)this->caption_color;
+		const Owner owner = this->owner;
 		const uint16 window_type = this->window_number & VLW_MASK;
 		const uint16 index = GB(this->window_number, 16, 16);
 
@@ -1094,9 +1094,8 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 		if (_pause_game != 0) return;
 		if (this->vehicles.NeedResort()) {
 			StationID station = ((this->window_number & VLW_MASK) == VLW_STATION_LIST) ? GB(this->window_number, 16, 16) : INVALID_STATION;
-			Owner owner = (Owner)this->caption_color;
 
-			DEBUG(misc, 3, "Periodic resort %d list company %d at station %d", this->vehicle_type, owner, station);
+			DEBUG(misc, 3, "Periodic resort %d list company %d at station %d", this->vehicle_type, this->owner, station);
 			this->SetDirty();
 		}
 	}
@@ -1327,7 +1326,7 @@ struct VehicleDetailsWindow : Window {
 		}
 
 		this->widget[VLD_WIDGET_MIDDLE_DETAILS].data = (this->vscroll.cap << 8) + 1;
-		this->caption_color = v->owner;
+		this->owner = v->owner;
 
 		this->tab = 0;
 
@@ -1671,7 +1670,7 @@ struct VehicleViewWindow : Window {
 	{
 		const Vehicle *v = GetVehicle(this->window_number);
 
-		this->caption_color = v->owner;
+		this->owner = v->owner;
 		InitializeWindowViewport(this, VV_VIEWPORT_X, VV_VIEWPORT_Y, VV_INITIAL_VIEWPORT_WIDTH,
 												 (v->type == VEH_TRAIN) ? VV_INITIAL_VIEWPORT_HEIGHT_TRAIN : VV_INITIAL_VIEWPORT_HEIGHT,
 												 this->window_number | (1 << 31), _vehicle_view_zoom_levels[v->type]);

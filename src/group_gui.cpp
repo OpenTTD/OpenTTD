@@ -173,7 +173,7 @@ public:
 		const Owner owner = (Owner)GB(this->window_number, 0, 8);
 		this->vehicle_type = (VehicleType)GB(this->window_number, 11, 5);
 
-		this->caption_color = owner;
+		this->owner = owner;
 		this->resize.step_width = 1;
 
 		switch (this->vehicle_type) {

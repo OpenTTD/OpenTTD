@@ -623,7 +623,7 @@ private:
 public:
 	OrdersWindow(const WindowDesc *desc, const Vehicle *v) : Window(desc, v->index)
 	{
-		this->caption_color = v->owner;
+		this->owner = v->owner;
 		this->vscroll.cap = 6;
 		this->resize.step_height = 10;
 		this->selected_order = -1;

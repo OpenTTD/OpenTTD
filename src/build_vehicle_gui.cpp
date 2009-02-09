@@ -803,7 +803,7 @@ struct BuildVehicleWindow : Window {
 		this->resize.width  = this->width;
 		this->resize.height = this->height;
 
-		this->caption_color = (tile != INVALID_TILE) ? GetTileOwner(tile) : _local_company;
+		this->owner = (tile != INVALID_TILE) ? GetTileOwner(tile) : _local_company;
 
 		this->sel_engine      = INVALID_ENGINE;
 		this->regenerate_list = false;

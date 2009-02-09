@@ -36,7 +36,7 @@ public:
 	WaypointWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->wp = GetWaypoint(this->window_number);
-		this->caption_color = this->wp->owner;
+		this->owner = this->wp->owner;
 
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
 		InitializeWindowViewport(this, 3, 17, 254, 86, this->wp->xy, ZOOM_LVL_MIN);

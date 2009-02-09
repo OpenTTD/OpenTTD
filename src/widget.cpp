@@ -468,10 +468,10 @@ void Window::DrawWidgets() const
 		case WWT_CAPTION:
 			assert(r.bottom - r.top == 13); // To ensure the same sizes are used everywhere!
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_BORDERONLY);
-			DrawFrameRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, wi->colour, (this->caption_color == 0xFF) ? FR_LOWERED | FR_DARKENED : FR_LOWERED | FR_DARKENED | FR_BORDERONLY);
+			DrawFrameRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, wi->colour, (this->owner == INVALID_OWNER) ? FR_LOWERED | FR_DARKENED : FR_LOWERED | FR_DARKENED | FR_BORDERONLY);
 
-			if (this->caption_color != 0xFF) {
-				GfxFillRect(r.left + 2, r.top + 2, r.right - 2, r.bottom - 2, _colour_gradient[_company_colours[this->caption_color]][4]);
+			if (this->owner != INVALID_OWNER) {
+				GfxFillRect(r.left + 2, r.top + 2, r.right - 2, r.bottom - 2, _colour_gradient[_company_colours[this->owner]][4]);
 			}
 
 			DrawStringCenteredTruncated(r.left + 2, r.right - 2, r.top + 2, wi->data, TC_FROMSTRING);

@@ -233,7 +233,7 @@ protected:
 public:
 	CompanyStationsWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		this->caption_color = (byte)this->window_number;
+		this->owner = (Owner)this->window_number;
 		this->vscroll.cap = 12;
 		this->resize.step_height = 10;
 		this->resize.height = this->height - 10 * 7; // minimum if 5 in the list
@@ -711,7 +711,7 @@ struct StationViewWindow : public Window {
 	StationViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		Owner owner = GetStation(window_number)->owner;
-		if (owner != OWNER_NONE) this->caption_color = owner;
+		if (owner != OWNER_NONE) this->owner = owner;
 		this->vscroll.cap = 5;
 		this->resize.step_height = 10;
 

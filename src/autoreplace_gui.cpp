@@ -236,7 +236,7 @@ public:
 		this->resize.width  = this->width;
 		this->resize.height = this->height;
 
-		this->caption_color = _local_company;
+		this->owner = _local_company;
 		this->sel_group = id_g;
 		this->vscroll2.cap = this->vscroll.cap;   // these two are always the same
 

@@ -608,7 +608,7 @@ restart_search:
 	 * as deleting this window could cascade in deleting (many) others
 	 * anywhere in the z-array */
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		if (w->caption_color == id) {
+		if (w->owner == id) {
 			delete w;
 			goto restart_search;
 		}
@@ -627,7 +627,7 @@ void ChangeWindowOwner(Owner old_owner, Owner new_owner)
 {
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		if (w->caption_color != old_owner) continue;
+		if (w->owner != old_owner) continue;
 
 		switch (w->window_class) {
 			case WC_COMPANY_COLOR:
@@ -642,7 +642,7 @@ void ChangeWindowOwner(Owner old_owner, Owner new_owner)
 				continue;
 
 			default:
-				w->caption_color = new_owner;
+				w->owner = new_owner;
 				break;
 		}
 	}
@@ -768,7 +768,7 @@ void Window::Initialize(int x, int y, int min_width, int min_height,
 	/* Set up window properties */
 	this->window_class = cls;
 	this->flags4 = WF_WHITE_BORDER_MASK; // just opened windows have a white border
-	this->caption_color = 0xFF;
+	this->owner = INVALID_OWNER;
 	this->left = x;
 	this->top = y;
 	this->width = min_width;

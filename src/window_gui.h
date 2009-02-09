@@ -150,9 +150,9 @@ public:
 	Scrollbar vscroll2; ///< Second vertical scroll bar
 	ResizeInfo resize;  ///< Resize information
 
-	byte caption_color; ///< Background color of the window caption, contains CompanyID
+	Owner owner;        ///< The owner of the content shown in this window. Company colour is acquired from this variable.
 
-	ViewportData *viewport;      ///< Pointer to viewport data, if present
+	ViewportData *viewport;///< Pointer to viewport data, if present
 	Widget *widget;        ///< Widgets of the window
 	uint widget_count;     ///< Number of widgets of the window
 	uint32 desc_flags;     ///< Window/widgets default flags setting, @see WindowDefaultFlag

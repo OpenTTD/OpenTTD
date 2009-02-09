@@ -243,7 +243,7 @@ struct DepotWindow : Window {
 		this->sel = INVALID_VEHICLE;
 		this->generate_list = true;
 
-		this->caption_color = GetTileOwner(tile);
+		this->owner = GetTileOwner(tile);
 		this->CreateDepotListWindow(type);
 
 		this->FindWindowPlacementAndResize(desc);
