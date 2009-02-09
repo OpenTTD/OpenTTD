@@ -234,6 +234,23 @@ void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3)
 	GfxDrawLineUnscaled(x + dx3, y + dy3, x + dx3 + dx2, y + dy3 + dy2, colour);
 }
 
+/**
+ * Set the colour remap to be for the given colour.
+ * @param colour the new colour of the remap.
+ */
+static void SetColourRemap(TextColour colour)
+{
+	if (colour == TC_INVALID) return;
+
+	if (colour & IS_PALETTE_COLOUR) {
+		_string_colourremap[1] = colour & ~IS_PALETTE_COLOUR;
+		_string_colourremap[2] = (_use_palette == PAL_DOS) ? 1 : 215;
+	} else {
+		_string_colourremap[1] = _string_colourmap[_use_palette][colour].text;
+		_string_colourremap[2] = _string_colourmap[_use_palette][colour].shadow;
+	}
+	_colour_remap_ptr = _string_colourremap;
+}
 
 #if !defined(WITH_ICU)
 static void HandleBiDiAndArabicShapes(char *text, const char *lastof) {}
@@ -833,20 +850,12 @@ Dimension GetStringBoundingBox(const char *str)
  * @param c           Character (glyph) to draw
  * @param x           X position to draw character
  * @param y           Y position to draw character
- * @param real_colour Colour to use, see DoDrawString() for details
+ * @param colour      Colour to use, see DoDrawString() for details
  */
 void DrawCharCentered(WChar c, int x, int y, TextColour colour)
 {
-	FontSize size = FS_NORMAL;
-	assert(colour & IS_PALETTE_COLOUR);
-	colour &= ~IS_PALETTE_COLOUR;
-	int w = GetCharacterWidth(size, c);
-
-	_string_colourremap[1] = _string_colourmap[_use_palette][colour].text;
-	_string_colourremap[2] = _string_colourmap[_use_palette][colour].shadow;
-	_colour_remap_ptr = _string_colourremap;
-
-	GfxMainBlitter(GetGlyph(size, c), x - w / 2, y, BM_COLOUR_REMAP);
+	SetColourRemap(colour);
+	GfxMainBlitter(GetGlyph(FS_NORMAL, c), x - GetCharacterWidth(FS_NORMAL, c) / 2, y, BM_COLOUR_REMAP);
 }
 
 /** Draw a string at the given coordinates with the given colour.
@@ -908,14 +917,7 @@ static int ReallyDoDrawString(const char *string, int x, int y, TextColour colou
 
 		if (colour != TC_INVALID) { // the invalid colour flag test should not  really occur.  But better be safe
 switch_colour:;
-			if (colour & IS_PALETTE_COLOUR) {
-				_string_colourremap[1] = colour & ~IS_PALETTE_COLOUR;
-				_string_colourremap[2] = (_use_palette == PAL_DOS) ? 1 : 215;
-			} else {
-				_string_colourremap[1] = _string_colourmap[_use_palette][colour].text;
-				_string_colourremap[2] = _string_colourmap[_use_palette][colour].shadow;
-			}
-			_colour_remap_ptr = _string_colourremap;
+			SetColourRemap(colour);
 		}
 	}
 
