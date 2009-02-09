@@ -674,7 +674,7 @@ struct AIDebugWindow : public Window {
 			uint pos = (log->count + log->pos - i) % log->count;
 			if (log->lines[pos] == NULL) break;
 
-			uint colour;
+			TextColour colour;
 			switch (log->type[pos]) {
 				case AILog::LOG_SQ_INFO:  colour = TC_BLACK;  break;
 				case AILog::LOG_SQ_ERROR: colour = TC_RED;    break;

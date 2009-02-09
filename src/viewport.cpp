@@ -1418,7 +1418,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 
 	const StringSpriteToDraw *ssend = sstdv->End();
 	for (const StringSpriteToDraw *ss = sstdv->Begin(); ss != ssend; ++ss) {
-		uint16 colour;
+		TextColour colour;
 
 		if (ss->width != 0) {
 			/* Do not draw signs nor station names if they are set invisible */
@@ -1453,7 +1453,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 		if (IsTransparencySet(TO_SIGNS) && ss->string != STR_2806 && ss->width != 0) {
 			/* Real colors need the IS_PALETTE_COLOR flag
 			 * otherwise colors from _string_colormap are assumed. */
-			colour = _colour_gradient[ss->color][6] | IS_PALETTE_COLOR;
+			colour = (TextColour)_colour_gradient[ss->color][6] | IS_PALETTE_COLOR;
 		} else {
 			colour = TC_BLACK;
 		}

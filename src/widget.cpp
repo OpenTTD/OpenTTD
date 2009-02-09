@@ -257,7 +257,7 @@ void Window::DrawWidgets() const
 		case WWT_TEXT: {
 			const StringID str = wi->data;
 
-			if (str != STR_NULL) DrawStringTruncated(r.left, r.top, str, wi->colour, r.right - r.left);
+			if (str != STR_NULL) DrawStringTruncated(r.left, r.top, str, (TextColour)wi->colour, r.right - r.left);
 			break;
 		}
 

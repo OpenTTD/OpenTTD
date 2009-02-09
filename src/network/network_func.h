@@ -10,6 +10,7 @@
 #include "core/address.h"
 #include "network_type.h"
 #include "../console_type.h"
+#include "../gfx_type.h"
 
 extern NetworkServerGameInfo _network_game_info;
 extern NetworkCompanyState *_network_company_states;
@@ -69,7 +70,7 @@ void NetworkServerSendError(ClientID client_id, NetworkErrorCode error);
 void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const char *msg, ClientID from_id, int64 data = 0);
 
 void NetworkInitChatMessage();
-void CDECL NetworkAddChatMessage(uint16 color, uint8 duration, const char *message, ...);
+void CDECL NetworkAddChatMessage(TextColour colour, uint8 duration, const char *message, ...);
 void NetworkUndrawChatMessage();
 void NetworkChatMessageDailyLoop();
 

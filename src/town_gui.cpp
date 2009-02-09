@@ -286,7 +286,7 @@ public:
 		if (_settings_game.economy.station_noise_level) {
 			SetDParam(0, this->town->noise_reached);
 			SetDParam(1, this->town->MaxTownNoise());
-			DrawString(2, 137, STR_NOISE_IN_TOWN, 0);
+			DrawString(2, 137, STR_NOISE_IN_TOWN, TC_FROMSTRING);
 		}
 	}
 

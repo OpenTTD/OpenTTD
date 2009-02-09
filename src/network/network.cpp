@@ -189,7 +189,7 @@ bool NetworkCompanyIsPassworded(CompanyID company_id)
 // This puts a text-message to the console, or in the future, the chat-box,
 //  (to keep it all a bit more general)
 // If 'self_send' is true, this is the client who is sending the message
-void NetworkTextMessage(NetworkAction action, ConsoleColour color, bool self_send, const char *name, const char *str, int64 data)
+void NetworkTextMessage(NetworkAction action, ConsoleColour colour, bool self_send, const char *name, const char *str, int64 data)
 {
 	const int duration = 10; // Game days the messages stay visible
 
@@ -200,19 +200,19 @@ void NetworkTextMessage(NetworkAction action, ConsoleColour color, bool self_sen
 			if (data >= NETWORK_SERVER_MESSAGE_END) return;
 
 			strid = STR_NETWORK_SERVER_MESSAGE;
-			color = CC_DEFAULT;
+			colour = CC_DEFAULT;
 			data = STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS + data;
 			break;
 		case NETWORK_ACTION_COMPANY_SPECTATOR:
-			color = CC_DEFAULT;
+			colour = CC_DEFAULT;
 			strid = STR_NETWORK_CLIENT_COMPANY_SPECTATE;
 			break;
 		case NETWORK_ACTION_COMPANY_JOIN:
-			color = CC_DEFAULT;
+			colour = CC_DEFAULT;
 			strid = STR_NETWORK_CLIENT_COMPANY_JOIN;
 			break;
 		case NETWORK_ACTION_COMPANY_NEW:
-			color = CC_DEFAULT;
+			colour = CC_DEFAULT;
 			strid = STR_NETWORK_CLIENT_COMPANY_NEW;
 			break;
 		case NETWORK_ACTION_JOIN:           strid = STR_NETWORK_CLIENT_JOINED; break;
@@ -231,8 +231,8 @@ void NetworkTextMessage(NetworkAction action, ConsoleColour color, bool self_sen
 	GetString(message, strid, lastof(message));
 
 	DEBUG(desync, 1, "msg: %d; %d; %s\n", _date, _date_fract, message);
-	IConsolePrintF(color, "%s", message);
-	NetworkAddChatMessage(color, duration, "%s", message);
+	IConsolePrintF(colour, "%s", message);
+	NetworkAddChatMessage((TextColour)colour, duration, "%s", message);
 }
 
 // Calculate the frame-lag of a client

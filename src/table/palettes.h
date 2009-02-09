@@ -200,7 +200,7 @@ struct StringColor {
 	byte shadow;
 };
 
-static const StringColor _string_colormap[][17] = {
+static const StringColor _string_colourmap[][17] = {
 	{ /* DOS palette. */
 		{ 150,   1 }, // TC_BLUE
 		{  12,   1 }, // TC_SILVER

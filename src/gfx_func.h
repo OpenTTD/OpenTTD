@@ -85,27 +85,27 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
 void DrawSprite(SpriteID img, SpriteID pal, int x, int y, const SubSprite *sub = NULL);
 
-int DrawStringCentered(int x, int y, StringID str, uint16 color);
-int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, uint16 color);
-int DoDrawStringCentered(int x, int y, const char *str, uint16 color);
+int DrawStringCentered(int x, int y, StringID str, TextColour colour);
+int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, TextColour colour);
+int DoDrawStringCentered(int x, int y, const char *str, TextColour colour);
 
-int DrawString(int x, int y, StringID str, uint16 color);
-int DrawStringTruncated(int x, int y, StringID str, uint16 color, uint maxw);
+int DrawString(int x, int y, StringID str, TextColour colour);
+int DrawStringTruncated(int x, int y, StringID str, TextColour colour, uint maxw);
 
-int DoDrawString(const char *string, int x, int y, uint16 real_colour, bool parse_string_also_when_clipped = false);
-int DoDrawStringTruncated(const char *str, int x, int y, uint16 color, uint maxw);
+int DoDrawString(const char *string, int x, int y, TextColour colour, bool parse_string_also_when_clipped = false);
+int DoDrawStringTruncated(const char *str, int x, int y, TextColour colour, uint maxw);
 
-void DrawStringCenterUnderline(int x, int y, StringID str, uint16 color);
-void DrawStringCenterUnderlineTruncated(int xl, int xr, int y, StringID str, uint16 color);
+void DrawStringCenterUnderline(int x, int y, StringID str, TextColour colour);
+void DrawStringCenterUnderlineTruncated(int xl, int xr, int y, StringID str, TextColour colour);
 
-int DrawStringRightAligned(int x, int y, StringID str, uint16 color);
-void DrawStringRightAlignedTruncated(int x, int y, StringID str, uint16 color, uint maxw);
-void DrawStringRightAlignedUnderline(int x, int y, StringID str, uint16 color);
+int DrawStringRightAligned(int x, int y, StringID str, TextColour colour);
+void DrawStringRightAlignedTruncated(int x, int y, StringID str, TextColour colour, uint maxw);
+void DrawStringRightAlignedUnderline(int x, int y, StringID str, TextColour colour);
 
-void DrawCharCentered(uint32 c, int x, int y, uint16 color);
+void DrawCharCentered(uint32 c, int x, int y, TextColour colour);
 
-void GfxFillRect(int left, int top, int right, int bottom, int color, FillRectMode mode = FILLRECT_OPAQUE);
-void GfxDrawLine(int left, int top, int right, int bottom, int color);
+void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectMode mode = FILLRECT_OPAQUE);
+void GfxDrawLine(int left, int top, int right, int bottom, int colour);
 void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3);
 
 Dimension GetStringBoundingBox(const char *str);

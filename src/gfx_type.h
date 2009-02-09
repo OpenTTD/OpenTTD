@@ -206,17 +206,16 @@ enum TextColour {
 	TC_DARK_BLUE   = 0x0F,
 	TC_BLACK       = 0x10,
 	TC_INVALID     = 0xFF,
+
+	IS_PALETTE_COLOR = 0x100, ///< colour value is already a real palette colour index, not an index of a StringColour
 };
+DECLARE_ENUM_AS_BIT_SET(TextColour);
 
 /** Defines a few values that are related to animations using palette changes */
 enum PaletteAnimationSizes {
 	PALETTE_ANIM_SIZE_WIN   = 28,   ///< number of animated colours in Windows palette
 	PALETTE_ANIM_SIZE_DOS   = 38,   ///< number of animated colours in DOS palette
 	PALETTE_ANIM_SIZE_START = 217,  ///< Index in  the _palettes array from which all animations are taking places (table/palettes.h)
-};
-
-enum StringColorFlags {
-	IS_PALETTE_COLOR = 0x100, ///< color value is already a real palette color index, not an index of a StringColor
 };
 
 /** Define the operation GfxFillRect performs */

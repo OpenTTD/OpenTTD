@@ -32,7 +32,7 @@ enum {
 
 struct ChatMessage {
 	char message[DRAW_STRING_BUFFER];
-	uint16 color;
+	TextColour colour;
 	Date end_date;
 };
 
@@ -64,7 +64,7 @@ static inline uint GetChatMessageCount()
  * @param duration The duration of the chat message in game-days
  * @param message message itself in printf() style
  */
-void CDECL NetworkAddChatMessage(uint16 color, uint8 duration, const char *message, ...)
+void CDECL NetworkAddChatMessage(TextColour colour, uint8 duration, const char *message, ...)
 {
 	char buf[DRAW_STRING_BUFFER];
 	const char *bufp;
@@ -96,7 +96,7 @@ void CDECL NetworkAddChatMessage(uint16 color, uint8 duration, const char *messa
 
 		/* The default colour for a message is company colour. Replace this with
 		 * white for any additional lines */
-		cmsg->color = (bufp == buf && color & IS_PALETTE_COLOR) ? color : (0x1D - 15) | IS_PALETTE_COLOR;
+		cmsg->colour = (bufp == buf && colour & IS_PALETTE_COLOR) ? colour : (TextColour)(0x1D - 15) | IS_PALETTE_COLOR;
 		cmsg->end_date = _date + duration;
 
 		bufp += strlen(bufp) + 1; // jump to 'next line' in the formatted string
@@ -237,7 +237,7 @@ void NetworkDrawChatMessage()
 
 	/* Paint the chat messages starting with the lowest at the bottom */
 	for (uint y = NETWORK_CHAT_LINE_HEIGHT; count-- != 0; y += NETWORK_CHAT_LINE_HEIGHT) {
-		DoDrawString(_chatmsg_list[count].message, _chatmsg_box.x + 3, _screen.height - _chatmsg_box.y - y + 1, _chatmsg_list[count].color);
+		DoDrawString(_chatmsg_list[count].message, _chatmsg_box.x + 3, _screen.height - _chatmsg_box.y - y + 1, _chatmsg_list[count].colour);
 	}
 
 	/* Make sure the data is updated next flush */

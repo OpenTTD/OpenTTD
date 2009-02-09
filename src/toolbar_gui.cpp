@@ -171,7 +171,7 @@ public:
 
 		SetDParam(0, company);
 		SetDParam(1, company);
-		int col;
+		TextColour col;
 		if (this->greyed) {
 			col = TC_GREY;
 		} else {

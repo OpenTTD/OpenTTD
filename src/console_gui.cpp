@@ -31,16 +31,16 @@ struct IConsoleLine {
 	static int size;            ///< The amount of items in the backlog
 
 	IConsoleLine *previous; ///< The previous console message.
-	char *buffer;          ///< The data to store.
-	uint16 colour;         ///< The colour of the line.
-	uint16 time;           ///< The amount of time the line is in the backlog.
+	char *buffer;           ///< The data to store.
+	TextColour colour;      ///< The colour of the line.
+	uint16 time;            ///< The amount of time the line is in the backlog.
 
 	/**
 	 * Initialize the console line.
 	 * @param buffer the data to print.
 	 * @param colour the colour of the line.
 	 */
-	IConsoleLine(char *buffer, uint16 colour) :
+	IConsoleLine(char *buffer, TextColour colour) :
 			previous(IConsoleLine::front),
 			buffer(buffer),
 			colour(colour),
@@ -172,11 +172,11 @@ struct IConsoleWindow : Window
 		/* If the text is longer than the window, don't show the starting ']' */
 		int delta = this->width - 10 - _iconsole_cmdline.width - ICON_RIGHT_BORDERWIDTH;
 		if (delta > 0) {
-			DoDrawString("]", 5, this->height - ICON_LINE_HEIGHT, CC_COMMAND);
+			DoDrawString("]", 5, this->height - ICON_LINE_HEIGHT, (TextColour)CC_COMMAND);
 			delta = 0;
 		}
 
-		DoDrawString(_iconsole_cmdline.buf, 10 + delta, this->height - ICON_LINE_HEIGHT, CC_COMMAND);
+		DoDrawString(_iconsole_cmdline.buf, 10 + delta, this->height - ICON_LINE_HEIGHT, (TextColour)CC_COMMAND);
 
 		if (_focused_window == this && _iconsole_cmdline.caret) {
 			DoDrawString("_", 10 + delta + _iconsole_cmdline.caretxoffs, this->height - ICON_LINE_HEIGHT, TC_WHITE);
@@ -442,6 +442,6 @@ static void IConsoleHistoryNavigate(int direction)
  */
 void IConsoleGUIPrint(ConsoleColour color_code, char *str)
 {
-	new IConsoleLine(str, color_code);
+	new IConsoleLine(str, (TextColour)color_code);
 	SetWindowDirty(FindWindowById(WC_CONSOLE, 0));
 }
