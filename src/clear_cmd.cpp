@@ -20,7 +20,7 @@
 #include "table/sprites.h"
 #include "table/clear_land.h"
 
-static CommandCost ClearTile_Clear(TileIndex tile, byte flags)
+static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlag flags)
 {
 	static const Money *clear_price_table[] = {
 		&_price.clear_grass,
@@ -357,7 +357,7 @@ void InitializeClearLand()
 	_settings_game.game_creation.snow_line = _settings_game.game_creation.snow_line_height * TILE_HEIGHT;
 }
 
-static CommandCost TerraformTile_Clear(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+static CommandCost TerraformTile_Clear(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 }

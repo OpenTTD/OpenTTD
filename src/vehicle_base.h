@@ -594,7 +594,7 @@ public:
 	 * @param command the command to execute.
 	 * @return the cost of the depot action.
 	 */
-	CommandCost SendToDepot(uint32 flags, DepotCommand command);
+	CommandCost SendToDepot(DoCommandFlag flags, DepotCommand command);
 };
 
 /**

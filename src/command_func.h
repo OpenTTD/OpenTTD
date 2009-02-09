@@ -53,8 +53,8 @@ static const CommandCost CMD_ERROR = CommandCost(INVALID_STRING_ID);
 /**
  * Execute a command
  */
-CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 cmd, const char *text = NULL);
-CommandCost DoCommand(const CommandContainer *container, uint32 flags);
+CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, DoCommandFlag flags, uint32 cmd, const char *text = NULL);
+CommandCost DoCommand(const CommandContainer *container, DoCommandFlag flags);
 
 /**
  * Execute a network safe DoCommand function
@@ -91,9 +91,9 @@ Money GetAvailableMoneyForCommand();
  * @param cmd_flags Flags from GetCommandFlags
  * @return flags for DoCommand
  */
-static inline uint32 CommandFlagsToDCFlags(uint cmd_flags)
+static inline DoCommandFlag CommandFlagsToDCFlags(uint cmd_flags)
 {
-	uint32 flags = 0;
+	DoCommandFlag flags = DC_NONE;
 	if (cmd_flags & CMD_NO_WATER) flags |= DC_NO_WATER;
 	if (cmd_flags & CMD_AUTO) flags |= DC_AUTO;
 	if (cmd_flags & CMD_ALL_TILES) flags |= DC_ALL_TILES;

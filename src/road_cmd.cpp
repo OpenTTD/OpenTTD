@@ -112,7 +112,7 @@ Foundation GetRoadFoundation(Slope tileh, RoadBits bits);
  * @param town_check Shall the town rating checked/affected
  * @return true when it is allowed to remove the road bits
  */
-bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType rt, uint32 flags, bool town_check)
+bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType rt, DoCommandFlag flags, bool town_check)
 {
 	if (_game_mode == GM_EDITOR || remove == ROAD_NONE) return true;
 
@@ -170,7 +170,7 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType
  * @param rt roadtype to remove
  * @param crossing_check should we check if there is a tram track when we are removing road from crossing?
  */
-static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, RoadType rt, bool crossing_check, bool town_check = true)
+static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits pieces, RoadType rt, bool crossing_check, bool town_check = true)
 {
 	RoadTypes rts = GetRoadTypes(tile);
 	/* The tile doesn't have the given road type */
@@ -346,7 +346,7 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
  *           bit 4..5 road type
  * @param p2 unused
  */
-CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRemoveRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	RoadType rt = (RoadType)GB(p1, 4, 2);
 	if (!IsValidRoadType(rt)) return CMD_ERROR;
@@ -440,7 +440,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits *pieces, RoadBits existi
  *           bit 6..7 disallowed directions to toggle
  * @param p2 the town that is building the road (0 if not applicable)
  */
-CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
@@ -683,7 +683,7 @@ do_clear:;
  * - p2 = (bit 3 + 4) - road type
  * - p2 = (bit 5) - set road direction
  */
-CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildLongRoad(TileIndex end_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	bool had_bridge = false;
@@ -769,7 +769,7 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
  * - p2 = (bit 2) - direction: 0 = along x-axis, 1 = along y-axis (p2 & 4)
  * - p2 = (bit 3 + 4) - road type
  */
-CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRemoveLongRoad(TileIndex end_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
@@ -834,7 +834,7 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint3
  * @todo When checking for the tile slope,
  * distingush between "Flat land required" and "land sloped in wrong direction"
  */
-CommandCost CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildRoadDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	DiagDirection dir = Extract<DiagDirection, 0>(p1);
 	RoadType rt = (RoadType)GB(p1, 2, 2);
@@ -867,7 +867,7 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	return cost.AddCost(_price.build_road_depot);
 }
 
-static CommandCost RemoveRoadDepot(TileIndex tile, uint32 flags)
+static CommandCost RemoveRoadDepot(TileIndex tile, DoCommandFlag flags)
 {
 	if (!CheckTileOwnership(tile) && _current_company != OWNER_WATER) return CMD_ERROR;
 
@@ -881,7 +881,7 @@ static CommandCost RemoveRoadDepot(TileIndex tile, uint32 flags)
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_road_depot);
 }
 
-static CommandCost ClearTile_Road(TileIndex tile, byte flags)
+static CommandCost ClearTile_Road(TileIndex tile, DoCommandFlag flags)
 {
 	switch (GetRoadTileType(tile)) {
 		case ROAD_TILE_NORMAL: {
@@ -1588,7 +1588,7 @@ static void ChangeTileOwner_Road(TileIndex tile, Owner old_owner, Owner new_owne
 	}
 }
 
-static CommandCost TerraformTile_Road(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+static CommandCost TerraformTile_Road(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	if (_settings_game.construction.build_on_slopes && AutoslopeEnabled()) {
 		switch (GetRoadTileType(tile)) {

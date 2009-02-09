@@ -26,7 +26,7 @@ static Foundation GetFoundation_Dummy(TileIndex tile, Slope tileh)
 	return FOUNDATION_NONE;
 }
 
-static CommandCost ClearTile_Dummy(TileIndex tile, byte flags)
+static CommandCost ClearTile_Dummy(TileIndex tile, DoCommandFlag flags)
 {
 	return_cmd_error(STR_0001_OFF_EDGE_OF_MAP);
 }
@@ -69,7 +69,7 @@ static TrackStatus GetTileTrackStatus_Dummy(TileIndex tile, TransportType mode, 
 	return 0;
 }
 
-static CommandCost TerraformTile_Dummy(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+static CommandCost TerraformTile_Dummy(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	return_cmd_error(STR_0001_OFF_EDGE_OF_MAP);
 }

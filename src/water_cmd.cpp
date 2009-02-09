@@ -99,7 +99,7 @@ static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
  * @param p1 bit 0 depot orientation (Axis)
  * @param p2 unused
  */
-CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	TileIndex tile2;
 
@@ -162,7 +162,7 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 	}
 }
 
-static CommandCost RemoveShipDepot(TileIndex tile, uint32 flags)
+static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 {
 	if (!IsShipDepot(tile)) return CMD_ERROR;
 	if (!CheckTileOwnership(tile)) return CMD_ERROR;
@@ -188,7 +188,7 @@ static CommandCost RemoveShipDepot(TileIndex tile, uint32 flags)
 }
 
 /** build a shiplift */
-static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 flags)
+static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, DoCommandFlag flags)
 {
 	CommandCost ret;
 	int delta;
@@ -234,7 +234,7 @@ static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 fla
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_water * 22 >> 3);
 }
 
-static CommandCost RemoveShiplift(TileIndex tile, uint32 flags)
+static CommandCost RemoveShiplift(TileIndex tile, DoCommandFlag flags)
 {
 	TileIndexDiff delta = TileOffsByDiagDir(GetLockDirection(tile));
 
@@ -263,7 +263,7 @@ static CommandCost RemoveShiplift(TileIndex tile, uint32 flags)
  * @param p1 unused
  * @param p2 unused
  */
-CommandCost CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildLock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile, NULL));
 	if (dir == INVALID_DIAGDIR) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
@@ -280,7 +280,7 @@ CommandCost CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
  * @param p1 start tile of stretch-dragging
  * @param p2 specifies canal (0), water (1) or river (2); last two can only be built in scenario editor
  */
-CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	int size_x, size_y;
@@ -343,7 +343,7 @@ CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, co
 	}
 }
 
-static CommandCost ClearTile_Water(TileIndex tile, byte flags)
+static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 {
 	switch (GetWaterTileType(tile)) {
 		case WATER_TILE_CLEAR:
@@ -1147,7 +1147,7 @@ static VehicleEnterTileStatus VehicleEnter_Water(Vehicle *v, TileIndex tile, int
 	return VETSB_CONTINUE;
 }
 
-static CommandCost TerraformTile_Water(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	/* Canals can't be terraformed */
 	if (IsWaterTile(tile) && IsCanal(tile)) return_cmd_error(STR_MUST_DEMOLISH_CANAL_FIRST);

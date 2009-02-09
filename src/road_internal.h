@@ -25,7 +25,7 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb);
  * @param town_check Shall the town rating checked/affected
  * @return true when it is allowed to remove the road bits
  */
-bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType rt, uint32 flags, bool town_check = true);
+bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType rt, DoCommandFlag flags, bool town_check = true);
 
 /**
  * Draw the catenary for tram road bits

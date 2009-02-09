@@ -411,7 +411,7 @@ static uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle 
  *                        the maximum vehicle order id is 254.
  * @param p2 packed order to insert
  */
-CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v;
 	VehicleID veh   = GB(p1,  0, 16);
@@ -629,7 +629,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
  * @param *dst delete the orders of this vehicle
  * @param flags execution flags
  */
-static CommandCost DecloneOrder(Vehicle *dst, uint32 flags)
+static CommandCost DecloneOrder(Vehicle *dst, DoCommandFlag flags)
 {
 	if (flags & DC_EXEC) {
 		DeleteVehicleOrders(dst);
@@ -645,7 +645,7 @@ static CommandCost DecloneOrder(Vehicle *dst, uint32 flags)
  * @param p1 the ID of the vehicle
  * @param p2 the order to delete (max 255)
  */
-CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v;
 	VehicleID veh_id = p1;
@@ -713,7 +713,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
  * @param p1 The ID of the vehicle which order is skipped
  * @param p2 the selected order to which we want to skip
  */
-CommandCost CmdSkipToOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v;
 	VehicleID veh_id = p1;
@@ -753,7 +753,7 @@ CommandCost CmdSkipToOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
  * @note The target order will move one place down in the orderlist
  *  if you move the order upwards else it'll move it one place down
  */
-CommandCost CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleID veh = p1;
 	VehicleOrderID moving_order = GB(p2,  0, 16);
@@ -831,7 +831,7 @@ CommandCost CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
  *  - p2 = (bit 0 -  3) - what data to modify (@see ModifyOrderFlags)
  *  - p2 = (bit 4 - 15) - the data to modify
  */
-CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleOrderID sel_ord = GB(p1, 16, 16); // XXX - automatically truncated to 8 bits.
 	VehicleID veh          = GB(p1,  0, 16);
@@ -1048,7 +1048,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
  * - p1 = (bit 16-31) - source vehicle to clone orders from, if any (none for CO_UNSHARE)
  * @param p2 mode of cloning: CO_SHARE, CO_COPY, or CO_UNSHARE
  */
-CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *dst;
 	VehicleID veh_src = GB(p1, 16, 16);
@@ -1177,7 +1177,7 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, co
  *   - bit 8-15 Cargo subtype
  *   - bit 16-23 number of order to modify
  */
-CommandCost CmdOrderRefit(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	const Vehicle *v;
 	Order *order;
@@ -1333,7 +1333,7 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
  * If we do want to backup/restore it, just add UnitID uid to BackuppedOrders, and
  * restore it as parameter 'y' (ugly hack I know) for example. "v->unitnumber = y;"
  */
-CommandCost CmdRestoreOrderIndex(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRestoreOrderIndex(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v;
 	VehicleOrderID cur_ord = GB(p2,  0, 16);

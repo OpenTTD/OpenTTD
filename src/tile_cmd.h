@@ -66,7 +66,7 @@ struct TileDesc {
  */
 typedef void DrawTileProc(TileInfo *ti);
 typedef uint GetSlopeZProc(TileIndex tile, uint x, uint y);
-typedef CommandCost ClearTileProc(TileIndex tile, byte flags);
+typedef CommandCost ClearTileProc(TileIndex tile, DoCommandFlag flags);
 
 /**
  * Tile callback function signature for obtaining accepted carog of a tile
@@ -127,7 +127,7 @@ typedef Foundation GetFoundationProc(TileIndex tile, Slope tileh);
  * @param tileh_new Slope after terraforming.
  * @return Error code or extra cost for terraforming (like clearing land, building foundations, etc., but not the terraforming itself.)
  */
-typedef CommandCost TerraformTileProc(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new);
+typedef CommandCost TerraformTileProc(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new);
 
 /**
  * Set of callback functions for performing tile operations of a given tile type.

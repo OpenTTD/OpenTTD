@@ -49,7 +49,7 @@ static inline const UnmovableSpec *GetUnmovableSpec(UnmovableType type)
  * @param flags docommand flags of calling function
  * @return cost of the operation
  */
-static CommandCost DestroyCompanyHQ(CompanyID cid, uint32 flags)
+static CommandCost DestroyCompanyHQ(CompanyID cid, DoCommandFlag flags)
 {
 	Company *c = GetCompany(cid);
 
@@ -89,7 +89,7 @@ void UpdateCompanyHQ(Company *c, uint score)
 	MarkTileDirtyByTile(tile + TileDiffXY(1, 1));
 }
 
-extern CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, StationID *station, bool check_clear = true);
+extern CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag flags, uint invalid_dirs, StationID *station, bool check_clear = true);
 
 /** Build or relocate the HQ. This depends if the HQ is already built or not
  * @param tile tile where the HQ will be built or relocated to
@@ -97,7 +97,7 @@ extern CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags
  * @param p1 unused
  * @param p2 unused
  */
-CommandCost CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildCompanyHQ(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Company *c = GetCompany(_current_company);
 	CommandCost cost(EXPENSES_PROPERTY);
@@ -131,7 +131,7 @@ CommandCost CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
  * @param p2 unused
  * @return error of cost of operation
  */
-CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdPurchaseLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
@@ -158,7 +158,7 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 
  * @param p2 unused
  * @return error or cost of operation
  */
-CommandCost CmdSellLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdSellLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsOwnedLandTile(tile)) return CMD_ERROR;
 	if (!CheckTileOwnership(tile) && _current_company != OWNER_WATER) return CMD_ERROR;
@@ -258,7 +258,7 @@ static Foundation GetFoundation_Unmovable(TileIndex tile, Slope tileh)
 	return IsOwnedLand(tile) ? FOUNDATION_NONE : FlatteningFoundation(tileh);
 }
 
-static CommandCost ClearTile_Unmovable(TileIndex tile, byte flags)
+static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
 {
 	if (IsCompanyHQ(tile)) {
 		if (_current_company == OWNER_WATER) {
@@ -486,7 +486,7 @@ static void ChangeTileOwner_Unmovable(TileIndex tile, Owner old_owner, Owner new
 	}
 }
 
-static CommandCost TerraformTile_Unmovable(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+static CommandCost TerraformTile_Unmovable(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	/* Owned land remains unsold */
 	if (IsOwnedLand(tile) && CheckTileOwnership(tile)) return CommandCost();

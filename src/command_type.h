@@ -293,7 +293,8 @@ enum {
  *
  * This enums defines some flags which can be used for the commands.
  */
-enum {
+enum DoCommandFlag {
+	DC_NONE            = 0x000, ///< no flag is set
 	DC_EXEC            = 0x001, ///< execute the given command
 	DC_AUTO            = 0x002, ///< don't allow building on structures
 	DC_QUERY_COST      = 0x004, ///< query cost only,  don't build.
@@ -304,6 +305,7 @@ enum {
 	DC_AUTOREPLACE     = 0x080, ///< autoreplace/autorenew is in progress, this shall disable vehicle limits when building, and ignore certain restrictions when undoing things (like vehicle attach callback)
 	DC_ALL_TILES       = 0x100, ///< allow this command also on MP_VOID tiles
 };
+DECLARE_ENUM_AS_BIT_SET(DoCommandFlag);
 
 /**
  * Used to combine a StringID with the command.
@@ -361,7 +363,7 @@ enum {
  * @param text Additional text
  * @return The CommandCost of the command, which can be succeeded or failed.
  */
-typedef CommandCost CommandProc(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text);
+typedef CommandCost CommandProc(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text);
 
 /**
  * Define a command with the flags which belongs to it.

@@ -156,7 +156,7 @@ static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile)
  * @todo When checking for the tile slope,
  * distingush between "Flat land required" and "land sloped in wrong direction"
  */
-CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Waypoint *wp;
 	Slope tileh;
@@ -270,7 +270,7 @@ void WaypointsDailyLoop()
  * @param justremove will indicate if it is removed from rail or if rails are removed too
  * @return cost of operation or error
  */
-CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
+CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justremove)
 {
 	Waypoint *wp;
 
@@ -318,7 +318,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
  * @param p2 unused
  * @return cost of operation or error
  */
-CommandCost CmdRemoveTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	return RemoveTrainWaypoint(tile, flags, true);
 }
@@ -342,7 +342,7 @@ static bool IsUniqueWaypointName(const char *name)
  * @param p2 unused
  * @return cost of operation or error
  */
-CommandCost CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRenameWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidWaypointID(p1)) return CMD_ERROR;
 

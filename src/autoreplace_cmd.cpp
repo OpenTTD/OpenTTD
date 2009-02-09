@@ -292,7 +292,7 @@ static inline CommandCost StartStopVehicle(const Vehicle *v, bool evaluate_callb
  * @param whole_chain move all vehicles following 'v' (true), or only 'v' (false)
  * @return success or error
  */
-static inline CommandCost MoveVehicle(const Vehicle *v, const Vehicle *after, uint32 flags, bool whole_chain)
+static inline CommandCost MoveVehicle(const Vehicle *v, const Vehicle *after, DoCommandFlag flags, bool whole_chain)
 {
 	return DoCommand(0, v->index | (after != NULL ? after->index : INVALID_VEHICLE) << 16, whole_chain ? 1 : 0, flags, CMD_MOVE_RAIL_VEHICLE);
 }
@@ -302,7 +302,7 @@ static inline CommandCost MoveVehicle(const Vehicle *v, const Vehicle *after, ui
  * @param new_head The new head of the completely replaced vehicle chain
  * @param flags the command flags to use
  */
-static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, uint32 flags)
+static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, DoCommandFlag flags)
 {
 	CommandCost cost = CommandCost();
 
@@ -346,7 +346,7 @@ static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, 
  * @param nothing_to_do is set to 'false' when something was done (only valid when not failed)
  * @return cost or error
  */
-static CommandCost ReplaceFreeUnit(Vehicle **single_unit, uint32 flags, bool *nothing_to_do)
+static CommandCost ReplaceFreeUnit(Vehicle **single_unit, DoCommandFlag flags, bool *nothing_to_do)
 {
 	Vehicle *old_v = *single_unit;
 	assert(old_v->type == VEH_TRAIN && !IsArticulatedPart(old_v) && !IsRearDualheaded(old_v));
@@ -395,7 +395,7 @@ static CommandCost ReplaceFreeUnit(Vehicle **single_unit, uint32 flags, bool *no
  * @param nothing_to_do is set to 'false' when something was done (only valid when not failed)
  * @return cost or error
  */
-static CommandCost ReplaceChain(Vehicle **chain, uint32 flags, bool wagon_removal, bool *nothing_to_do)
+static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon_removal, bool *nothing_to_do)
 {
 	Vehicle *old_head = *chain;
 	assert(old_head->IsPrimaryVehicle());
@@ -601,7 +601,7 @@ static CommandCost ReplaceChain(Vehicle **chain, uint32 flags, bool wagon_remova
  * @param p1 Index of vehicle
  * @param p2 not used
  */
-CommandCost CmdAutoreplaceVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES, 0);
 	bool nothing_to_do = true;

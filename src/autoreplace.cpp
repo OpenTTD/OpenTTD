@@ -47,7 +47,7 @@ EngineID EngineReplacement(EngineRenewList erl, EngineID engine, GroupID group)
 	return er == NULL ? INVALID_ENGINE : er->to;
 }
 
-CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID new_engine, GroupID group, uint32 flags)
+CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID new_engine, GroupID group, DoCommandFlag flags)
 {
 	EngineRenew *er;
 
@@ -72,7 +72,7 @@ CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, Engi
 	return CommandCost();
 }
 
-CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, GroupID group, uint32 flags)
+CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, GroupID group, DoCommandFlag flags)
 {
 	EngineRenew *er = (EngineRenew *)(*erl);
 	EngineRenew *prev = NULL;

@@ -516,7 +516,7 @@ static bool ClickTile_Town(TileIndex tile)
 	return false;
 }
 
-static CommandCost ClearTile_Town(TileIndex tile, byte flags)
+static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
 {
 	if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 	if (!CanDeleteHouse(tile)) return CMD_ERROR;
@@ -1510,7 +1510,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
  *            3..5 town road layout (@see TownLayout)
  * @param p2 unused
  */
-CommandCost CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Only in the scenario editor */
 	if (_game_mode != GM_EDITOR) return CMD_ERROR;
@@ -2098,7 +2098,7 @@ static bool IsUniqueTownName(const char *name)
  * @param p1 town ID to rename
  * @param p2 unused
  */
-CommandCost CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRenameTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidTownID(p1)) return CMD_ERROR;
 
@@ -2368,7 +2368,7 @@ uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
  * @param p1 town to do the action at
  * @param p2 action to perform, @see _town_action_proc for the list of available actions
  */
-CommandCost CmdDoTownAction(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdDoTownAction(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidTownID(p1) || p2 > lengthof(_town_action_proc)) return CMD_ERROR;
 
@@ -2497,7 +2497,7 @@ static void UpdateTownUnwanted(Town *t)
  * @param tile The tile where the station shall be constructed.
  * @param flags Command flags. DC_NO_TOWN_RATING is tested.
  */
-bool CheckIfAuthorityAllowsNewStation(TileIndex tile, uint32 flags)
+bool CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags)
 {
 	if (!IsValidCompanyID(_current_company) || (flags & DC_NO_TOWN_RATING)) return true;
 
@@ -2630,7 +2630,7 @@ static const int _default_rating_settings [3][3] = {
 	{ 96, 384, 768}, // Hostile
 };
 
-bool CheckforTownRating(uint32 flags, Town *t, byte type)
+bool CheckforTownRating(DoCommandFlag flags, Town *t, byte type)
 {
 	/* if magic_bulldozer cheat is active, town doesn't restrict your destructive actions */
 	if (t == NULL || !IsValidCompanyID(_current_company) || _cheats.magic_bulldozer.value)
@@ -2692,7 +2692,7 @@ void InitializeTowns()
 	_total_towns = 0;
 }
 
-static CommandCost TerraformTile_Town(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	if (AutoslopeEnabled()) {
 		HouseID house = GetHouseType(tile);

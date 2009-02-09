@@ -34,7 +34,7 @@ StringID _error_message;
  *
  * @param yyyy The desired function name of the new command handler function.
  */
-#define DEF_COMMAND(yyyy) CommandCost yyyy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+#define DEF_COMMAND(yyyy) CommandCost yyyy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 
 DEF_COMMAND(CmdBuildRailroadTrack);
 DEF_COMMAND(CmdRemoveRailroadTrack);
@@ -376,7 +376,7 @@ static int _docommand_recursive = 0;
  * @see CommandProc
  * @return the cost
  */
-CommandCost DoCommand(const CommandContainer *container, uint32 flags)
+CommandCost DoCommand(const CommandContainer *container, DoCommandFlag flags)
 {
 	return DoCommand(container->tile, container->p1, container->p2, flags, container->cmd & CMD_ID_MASK, container->text);
 }
@@ -393,7 +393,7 @@ CommandCost DoCommand(const CommandContainer *container, uint32 flags)
  * @see CommandProc
  * @return the cost
  */
-CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 cmd, const char *text)
+CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, DoCommandFlag flags, uint32 cmd, const char *text)
 {
 	CommandCost res;
 
@@ -520,7 +520,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	/* Command flags are used internally */
 	uint cmd_flags = GetCommandFlags(cmd);
 	/* Flags get send to the DoCommand */
-	uint32 flags = CommandFlagsToDCFlags(cmd_flags);
+	DoCommandFlag flags = CommandFlagsToDCFlags(cmd_flags);
 
 	/* Do not even think about executing out-of-bounds tile-commands */
 	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (cmd_flags & CMD_ALL_TILES) == 0))) return false;

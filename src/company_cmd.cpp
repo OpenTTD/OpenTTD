@@ -568,7 +568,7 @@ void CompaniesYearlyLoop()
  * if p1 = 5, then
  * - p2 = enable renew_keep_length
  */
-CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidCompanyID(_current_company)) return CMD_ERROR;
 
@@ -711,7 +711,7 @@ void CompanyNewsInformation::FillData(const Company *c, const Company *other)
  * @arg - network_server.c:838 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)@n
  * @arg - network_client.c:536 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP) from where the map has been received
  */
-CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (flags & DC_EXEC) _current_company = OWNER_NONE;
 

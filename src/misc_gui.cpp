@@ -94,7 +94,7 @@ public:
 
 		Money old_money = c->money;
 		c->money = INT64_MAX;
-		CommandCost costclear = DoCommand(tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR);
+		CommandCost costclear = DoCommand(tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR);
 		c->money = old_money;
 
 		/* Because build_date is not set yet in every TileDesc, we make sure it is empty */

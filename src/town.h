@@ -18,6 +18,7 @@
 #include "viewport_type.h"
 #include "economy_type.h"
 #include "map_type.h"
+#include "command_type.h"
 
 enum {
 	HOUSE_NO_CLASS   = 0,
@@ -280,7 +281,7 @@ enum {
 	TOWN_HAS_STADIUM    = 2    ///< There can be only one stadium by town.
 };
 
-bool CheckforTownRating(uint32 flags, Town *t, byte type);
+bool CheckforTownRating(DoCommandFlag flags, Town *t, byte type);
 
 static inline HouseSpec *GetHouseSpecs(HouseID house_id)
 {
@@ -352,7 +353,7 @@ void ResetHouses();
 void ClearTownHouse(Town *t, TileIndex tile);
 void UpdateTownMaxPass(Town *t);
 void UpdateTownRadius(Town *t);
-bool CheckIfAuthorityAllowsNewStation(TileIndex tile, uint32 flags);
+bool CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags);
 Town *ClosestTownFromTile(TileIndex tile, uint threshold);
 void ChangeTownRating(Town *t, int add, int max);
 HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile);

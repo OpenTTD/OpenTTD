@@ -90,7 +90,7 @@ static void MarkSignDirty(Sign *si)
  * @param p1 unused
  * @param p2 unused
  */
-CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Try to locate a new sign */
 	if (!Sign::CanAllocateItem()) return_cmd_error(STR_2808_TOO_MANY_SIGNS);
@@ -128,7 +128,7 @@ CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
  * @param p2 unused
  * @return 0 if succesfull, otherwise CMD_ERROR
  */
-CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidSignID(p1)) return CMD_ERROR;
 

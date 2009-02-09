@@ -966,7 +966,7 @@ void AgeVehicle(Vehicle *v)
  * @param p2 bit 0: Shall the start/stop newgrf callback be evaluated (only valid with DC_AUTOREPLACE for network safety)
  * @return result of operation.  Nothing if everything went well
  */
-CommandCost CmdStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Disable the effect of p2 bit 0, when DC_AUTOREPLACE is not set */
 	if ((flags & DC_AUTOREPLACE) == 0) SetBit(p2, 0);
@@ -1039,7 +1039,7 @@ CommandCost CmdStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
  *   - bit 6 if set, then it's a vehicle list window, not a depot and Tile is ignored in this case
  *   - bit 8-11 Vehicle List Window type (ignored unless bit 1 is set)
  */
-CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleList list;
 	CommandCost return_value = CMD_ERROR;
@@ -1089,7 +1089,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uin
  * @param p1 Vehicle type
  * @param p2 unused
  */
-CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdDepotSellAllVehicles(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleList list;
 
@@ -1126,7 +1126,7 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uin
  * @param p1 Type of vehicle
  * @param p2 If bit 0 is set, then either replace all or nothing (instead of replacing until money runs out)
  */
-CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleList list;
 	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES);
@@ -1178,7 +1178,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
  * @param p1 the original vehicle's index
  * @param p2 1 = shared orders, else copied orders
  */
-CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost total_cost(EXPENSES_NEW_VEHICLES);
 	uint32 build_argument = 2;
@@ -1346,7 +1346,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
  * @param vlw_flag tells what kind of list requested the goto depot
  * @return 0 for success and CMD_ERROR if no vehicle is able to go to depot
  */
-CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, Owner owner, uint16 vlw_flag, uint32 id)
+CommandCost SendAllVehiclesToDepot(VehicleType type, DoCommandFlag flags, bool service, Owner owner, uint16 vlw_flag, uint32 id)
 {
 	VehicleList list;
 
@@ -1528,7 +1528,7 @@ static bool IsUniqueVehicleName(const char *name)
  * @param p1 vehicle ID to name
  * @param p2 unused
  */
-CommandCost CmdRenameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
@@ -1559,7 +1559,7 @@ CommandCost CmdRenameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
  * @param p1 vehicle ID that is being service-interval-changed
  * @param p2 new service interval
  */
-CommandCost CmdChangeServiceInt(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdChangeServiceInt(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	uint16 serv_int = GetServiceIntervalClamped(p2); /* Double check the service interval from the user-input */
 
@@ -2051,7 +2051,7 @@ void Vehicle::HandleLoading(bool mode)
 	InvalidateVehicleOrder(this, 0);
 }
 
-CommandCost Vehicle::SendToDepot(uint32 flags, DepotCommand command)
+CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 {
 	if (!CheckOwnership(this->owner)) return CMD_ERROR;
 	if (this->vehstatus & VS_CRASHED) return CMD_ERROR;

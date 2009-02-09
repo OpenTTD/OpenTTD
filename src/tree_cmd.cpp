@@ -320,7 +320,7 @@ void GenerateTrees()
  * @param p1 tree type, -1 means random.
  * @param p2 end tile of area-drag
  */
-CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	StringID msg = INVALID_STRING_ID;
 	CommandCost cost(EXPENSES_OTHER);
@@ -526,7 +526,7 @@ static Foundation GetFoundation_Trees(TileIndex tile, Slope tileh)
 	return FOUNDATION_NONE;
 }
 
-static CommandCost ClearTile_Trees(TileIndex tile, byte flags)
+static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlag flags)
 {
 	uint num;
 
@@ -762,7 +762,7 @@ void InitializeTrees()
 	_trees_tick_ctr = 0;
 }
 
-static CommandCost TerraformTile_Trees(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+static CommandCost TerraformTile_Trees(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 }

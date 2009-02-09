@@ -728,7 +728,7 @@ void Ship::Tick()
  * @param p1 ship type being built (engine)
  * @param p2 unused
  */
-CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	UnitID unit_num;
 
@@ -820,7 +820,7 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
  * @param p1 vehicle ID to be sold
  * @param p2 unused
  */
-CommandCost CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdSellShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v;
 
@@ -865,7 +865,7 @@ bool Ship::FindClosestDepot(TileIndex *location, DestinationID *destination, boo
  * - p2 bit 0-3 - DEPOT_ flags (see vehicle.h)
  * - p2 bit 8-10 - VLW flag (for mass goto depot)
  */
-CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdSendShipToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (p2 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
@@ -893,7 +893,7 @@ CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
  * - p2 = (bit 16) - refit only this vehicle (ignored)
  * @return cost of refit or error
  */
-CommandCost CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRefitShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v;
 	CommandCost cost(EXPENSES_SHIP_RUN);

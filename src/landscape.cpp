@@ -588,7 +588,7 @@ void ClearSnowLine(void)
  * @param p1 unused
  * @param p2 unused
  */
-CommandCost CmdLandscapeClear(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdLandscapeClear(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	return _tile_type_procs[GetTileType(tile)]->clear_tile_proc(tile, flags);
 }
@@ -599,7 +599,7 @@ CommandCost CmdLandscapeClear(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
  * @param flags of operation to conduct
  * @param p2 unused
  */
-CommandCost CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdClearArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (p1 >= MapSize()) return CMD_ERROR;
 

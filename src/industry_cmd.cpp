@@ -406,7 +406,7 @@ static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 	}
 }
 
-static CommandCost ClearTile_Industry(TileIndex tile, byte flags)
+static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlag flags)
 {
 	Industry *i = GetIndustryByTile(tile);
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
@@ -1262,7 +1262,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 				/* Clear the tiles as OWNER_TOWN to not affect town rating, and to not clear protected buildings */
 				CompanyID old_company = _current_company;
 				_current_company = OWNER_TOWN;
-				bool not_clearable = CmdFailed(DoCommand(cur_tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR));
+				bool not_clearable = CmdFailed(DoCommand(cur_tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR));
 				_current_company = old_company;
 
 				if (not_clearable) return false;
@@ -1338,7 +1338,7 @@ static bool CheckCanTerraformSurroundingTiles(TileIndex tile, uint height, int i
  * This function tries to flatten out the land below an industry, without
  *  damaging the surroundings too much.
  */
-static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, uint32 flags, const IndustryTileTable *it, int type)
+static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags, const IndustryTileTable *it, int type)
 {
 	const int MKEND = -0x80;   // used for last element in an IndustryTileTable (see build_industry.h)
 	int max_x = 0;
@@ -1597,7 +1597,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
  * @param seed random seed (possibly) used by industries
  * @return the pointer of the newly created industry, or NULL if it failed
  */
-static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint32 flags, const IndustrySpec *indspec, uint itspec_index, uint32 seed)
+static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCommandFlag flags, const IndustrySpec *indspec, uint itspec_index, uint32 seed)
 {
 	const IndustryTileTable *it = indspec->table[itspec_index];
 	bool custom_shape_check = false;
@@ -1610,7 +1610,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
 		if (!_check_new_industry_procs[indspec->check_proc](tile)) return NULL;
 	}
 
-	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, 0, it, type)) return NULL;
+	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, DC_NONE, it, type)) return NULL;
 	if (!CheckIfFarEnoughFromIndustry(tile, type)) return NULL;
 
 	const Town *t = CheckMultipleIndustryInTown(tile, type);
@@ -1642,7 +1642,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
  * @param p2 seed to use for variable 8F
  * @return index of the newly create industry, or CMD_ERROR if it failed
  */
-CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(GB(p1, 0, 16));
 	const Industry *ind = NULL;
@@ -2349,7 +2349,7 @@ Money IndustrySpec::GetRemovalCost() const
 	return (_price.remove_house * this->removal_cost_multiplier) >> 8;
 }
 
-static CommandCost TerraformTile_Industry(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	if (AutoslopeEnabled()) {
 		/* We imitate here TTDP's behaviour:

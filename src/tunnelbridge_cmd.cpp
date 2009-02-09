@@ -150,7 +150,7 @@ static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, uint *z)
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 }
 
-bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len, uint32 flags)
+bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len, DoCommandFlag flags)
 {
 	if (flags & DC_QUERY_COST) {
 		return bridge_len <= (_settings_game.construction.longbridges ? 100U : 16U);
@@ -176,7 +176,7 @@ bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len, uint32 flags)
  * - p2 = (bit  8-14) - rail type or road types.
  * - p2 = (bit 15-16) - transport type.
  */
-CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	BridgeType bridge_type;
 	RailType railtype = INVALID_RAILTYPE;
@@ -463,7 +463,7 @@ not_valid_below:;
  * @param p1 railtype or roadtypes. bit 9 set means road tunnel
  * @param p2 unused
  */
-CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	TileIndexDiff delta;
 	TileIndex end_tile;
@@ -590,7 +590,7 @@ static inline bool CheckAllowRemoveTunnelBridge(TileIndex tile)
 	return false;
 }
 
-static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
+static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 {
 	Town *t = NULL;
 	TileIndex endtile;
@@ -653,7 +653,7 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 }
 
 
-static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
+static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 {
 	DiagDirection direction;
 	TileIndexDiff delta;
@@ -726,7 +726,7 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 	return CommandCost(EXPENSES_CONSTRUCTION, (GetTunnelBridgeLength(tile, endtile) + 2) * _price.clear_bridge);
 }
 
-static CommandCost ClearTile_TunnelBridge(TileIndex tile, byte flags)
+static CommandCost ClearTile_TunnelBridge(TileIndex tile, DoCommandFlag flags)
 {
 	if (IsTunnel(tile)) {
 		if (flags & DC_AUTO) return_cmd_error(STR_5006_MUST_DEMOLISH_TUNNEL_FIRST);
@@ -1462,7 +1462,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 	return VETSB_CONTINUE;
 }
 
-static CommandCost TerraformTile_TunnelBridge(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	if (_settings_game.construction.build_on_slopes && AutoslopeEnabled() && IsBridge(tile) && GetTunnelBridgeTransportType(tile) != TRANSPORT_WATER) {
 		DiagDirection direction = GetTunnelBridgeDirection(tile);

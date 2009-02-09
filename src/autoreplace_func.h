@@ -32,7 +32,7 @@ EngineID EngineReplacement(EngineRenewList erl, EngineID engine, GroupID group);
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID new_engine, GroupID group, uint32 flags);
+CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID new_engine, GroupID group, DoCommandFlag flags);
 
 /**
  * Remove an engine replacement from a given renewlist.
@@ -41,7 +41,7 @@ CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, Engi
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, GroupID group, uint32 flags);
+CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, GroupID group, DoCommandFlag flags);
 
 /**
  * Remove all engine replacement settings for the given company.
@@ -83,7 +83,7 @@ static inline bool EngineHasReplacementForCompany(const Company *c, EngineID eng
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-static inline CommandCost AddEngineReplacementForCompany(Company *c, EngineID old_engine, EngineID new_engine, GroupID group, uint32 flags)
+static inline CommandCost AddEngineReplacementForCompany(Company *c, EngineID old_engine, EngineID new_engine, GroupID group, DoCommandFlag flags)
 {
 	return AddEngineReplacement(&c->engine_renew_list, old_engine, new_engine, group, flags);
 }
@@ -95,7 +95,7 @@ static inline CommandCost AddEngineReplacementForCompany(Company *c, EngineID ol
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-static inline CommandCost RemoveEngineReplacementForCompany(Company *c, EngineID engine, GroupID group, uint32 flags)
+static inline CommandCost RemoveEngineReplacementForCompany(Company *c, EngineID engine, GroupID group, DoCommandFlag flags)
 {
 	return RemoveEngineReplacement(&c->engine_renew_list, engine, group, flags);
 }

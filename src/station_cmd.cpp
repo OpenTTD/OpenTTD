@@ -696,7 +696,7 @@ static void DeleteStationIfEmpty(Station *st)
 	UpdateStationSignCoord(st);
 }
 
-static CommandCost ClearTile_Station(TileIndex tile, byte flags);
+static CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags);
 
 /** Tries to clear the given area.
  * @param tile TileIndex to start check
@@ -708,7 +708,7 @@ static CommandCost ClearTile_Station(TileIndex tile, byte flags);
  * @param check_clear if clearing tile should be performed (in wich case, cost will be added)
  * @return the cost in case of success, or an error code if it failed.
  */
-CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, StationID *station, bool check_clear = true)
+CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag flags, uint invalid_dirs, StationID *station, bool check_clear = true)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	int allowed_z = -1;
@@ -900,7 +900,7 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, const St
  * - p2 = (bit  8-15) - custom station id
  * - p2 = (bit 16-31) - station ID to join (INVALID_STATION if build new one)
  */
-CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Does the authority allow this? */
 	if (!CheckIfAuthorityAllowsNewStation(tile_org, flags)) return CMD_ERROR;
@@ -1192,7 +1192,7 @@ restart:
  * @param p1 start_tile
  * @param p2 unused
  */
-CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	TileIndex start = p1 == 0 ? tile : p1;
 
@@ -1297,7 +1297,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 }
 
 
-static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
+static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, DoCommandFlag flags)
 {
 	/* if there is flooding and non-uniform stations are enabled, remove platforms tile by tile */
 	if (_current_company == OWNER_WATER && _settings_game.station.nonuniform_stations) {
@@ -1395,7 +1395,7 @@ static RoadStop **FindRoadStopSpot(bool truck_station, Station *st)
  *           bit 5: allow stations directly adjacent to other stations.
  *           bit 16..31: station ID to join (INVALID_STATION if build new one)
  */
-CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	bool type = HasBit(p2, 0);
 	bool is_drive_through = HasBit(p2, 1);
@@ -1544,7 +1544,7 @@ static Vehicle *ClearRoadStopStatusEnum(Vehicle *v, void *)
  * @param tile TileIndex been queried
  * @return cost or failure of operation
  */
-static CommandCost RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
+static CommandCost RemoveRoadStop(Station *st, DoCommandFlag flags, TileIndex tile)
 {
 	if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) {
 		return CMD_ERROR;
@@ -1617,7 +1617,7 @@ static CommandCost RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
  * @param p1 not used
  * @param p2 bit 0: 0 for Bus stops, 1 for truck stops
  */
-CommandCost CmdRemoveRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Make sure the specified tile is a road stop of the correct type */
 	if (!IsTileType(tile, MP_STATION) || !IsRoadStop(tile) || (uint32)GetRoadStopType(tile) != GB(p2, 0, 1)) return CMD_ERROR;
@@ -1847,7 +1847,7 @@ void UpdateAirportsNoise()
  * - p2 = (bit     0) - allow airports directly adjacent to other airports.
  * - p2 = (bit 16-31) - station ID to join (INVALID_STATION if build new one)
  */
-CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	bool airport_upgrade = true;
 	StationID station_to_join = GB(p2, 16, 16);
@@ -1991,7 +1991,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
 	return cost;
 }
 
-static CommandCost RemoveAirport(Station *st, uint32 flags)
+static CommandCost RemoveAirport(Station *st, DoCommandFlag flags)
 {
 	if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) {
 		return CMD_ERROR;
@@ -2058,7 +2058,7 @@ static CommandCost RemoveAirport(Station *st, uint32 flags)
  * @param p1 unused
  * @param p2 unused
  */
-CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsWaterTile(tile) || tile == 0) return_cmd_error(STR_304B_SITE_UNSUITABLE);
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
@@ -2120,7 +2120,7 @@ bool HasStationInUse(StationID station, CompanyID company)
 	return false;
 }
 
-static CommandCost RemoveBuoy(Station *st, uint32 flags)
+static CommandCost RemoveBuoy(Station *st, DoCommandFlag flags)
 {
 	/* XXX: strange stuff */
 	if (!IsValidCompanyID(_current_company)) return_cmd_error(INVALID_STRING_ID);
@@ -2168,7 +2168,7 @@ static const byte _dock_h_chk[4] = { 1, 2, 1, 2 };
  * @param p1 (bit 0) - allow docks directly adjacent to other docks.
  * @param p2 bit 16-31: station ID to join (INVALID_STATION if build new one)
  */
-CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	StationID station_to_join = GB(p2, 16, 16);
 	bool distant_join = (station_to_join != INVALID_STATION);
@@ -2269,7 +2269,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.build_dock);
 }
 
-static CommandCost RemoveDock(Station *st, uint32 flags)
+static CommandCost RemoveDock(Station *st, DoCommandFlag flags)
 {
 	if (!CheckOwnership(st->owner)) return CMD_ERROR;
 
@@ -2917,7 +2917,7 @@ static bool IsUniqueStationName(const char *name)
  * @param p1 station ID that is to be renamed
  * @param p2 unused
  */
-CommandCost CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRenameStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidStationID(p1)) return CMD_ERROR;
 
@@ -3174,7 +3174,7 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
  * @param flags command flags
  * @return true if the road can be cleared
  */
-static bool CanRemoveRoadWithStop(TileIndex tile, uint32 flags)
+static bool CanRemoveRoadWithStop(TileIndex tile, DoCommandFlag flags)
 {
 	/* The road can always be cleared if it was not a town-owned road */
 	if (!GetStopBuiltOnTownRoad(tile)) return true;
@@ -3182,7 +3182,7 @@ static bool CanRemoveRoadWithStop(TileIndex tile, uint32 flags)
 	return CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile, ROADTYPE_ROAD), OWNER_TOWN, ROADTYPE_ROAD, flags);
 }
 
-static CommandCost ClearTile_Station(TileIndex tile, byte flags)
+static CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
 {
 	if (flags & DC_AUTO) {
 		switch (GetStationType(tile)) {
@@ -3232,7 +3232,7 @@ void InitializeStations()
 	_station_tick_ctr = 0;
 }
 
-static CommandCost TerraformTile_Station(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+static CommandCost TerraformTile_Station(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	if (_settings_game.construction.build_on_slopes && AutoslopeEnabled()) {
 		/* TODO: If you implement newgrf callback 149 'land slope check', you have to decide what to do with it here.

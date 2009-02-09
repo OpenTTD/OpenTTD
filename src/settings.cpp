@@ -1973,7 +1973,7 @@ static const SettingDesc *GetSettingDescription(uint index)
  * The new value is properly clamped to its minimum/maximum when setting
  * @see _settings
  */
-CommandCost CmdChangeSetting(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	const SettingDesc *sd = GetSettingDescription(p1);
 
