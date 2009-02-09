@@ -1244,9 +1244,9 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Bedriuw {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nei Gesicht
-STR_7005_COLOR_SCHEME                                           :{BLACK}Kleurenskema
-STR_7006_COLOR_SCHEME                                           :{GOLD}Kleurenskema:
-STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nei Kleurenskema
+STR_7005_COLOUR_SCHEME                                          :{BLACK}Kleurenskema
+STR_7006_COLOUR_SCHEME                                          :{GOLD}Kleurenskema:
+STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Nei Kleurenskema
 STR_7008_COMPANY_NAME                                           :{BLACK}Bedriuwsnamme
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Namme fan Direkteur
 STR_700A_COMPANY_NAME                                           :Bedriuwsnamme
@@ -1290,7 +1290,7 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Selektea
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Feroarje de bedriuwskleuren
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Feroarje de namme fan de direkteur
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Feroarje de bedriuwsnamme
-STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Klik op it ferlangde kleurenskema
+STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Klik op it ferlangde kleurenskema
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Lien mear jild
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Betelje in diel fan de liening werom
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Bedriuwslieder)

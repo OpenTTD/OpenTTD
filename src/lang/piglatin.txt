@@ -1189,7 +1189,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Isabled
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Enableway agonway eedspay imitslay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Isableday electricway ailsray: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLORED_NEWS_YEAR                            :{LTBLUE}Olouredcay ewsnay appearsway inway: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Olouredcay ewsnay appearsway inway: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Artingstay earyay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Enableway oothsmay economyway (oremay, allersmay angeschay): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Allowway uyingbay aresshay omfray otherway ompaniescay: {ORANGE}{STRING}
@@ -2315,9 +2315,9 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Ompanycay {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Ewnay Acefay
-STR_7005_COLOR_SCHEME                                           :{BLACK}Olourcay Emeschay
-STR_7006_COLOR_SCHEME                                           :{GOLD}Olourcay Emeschay:
-STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Ewnay Olourcay Emeschay
+STR_7005_COLOUR_SCHEME                                          :{BLACK}Olourcay Emeschay
+STR_7006_COLOUR_SCHEME                                          :{GOLD}Olourcay Emeschay:
+STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Ewnay Olourcay Emeschay
 STR_7008_COMPANY_NAME                                           :{BLACK}Ompanycay Amenay
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Anagermay Amenay
 STR_700A_COMPANY_NAME                                           :Ompanycay Amenay
@@ -2364,7 +2364,7 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Electsay
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Angechay ethay ompanycay ehiclevay iverylay
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Angechay ethay anager'smay amenay
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Angechay ethay ompanycay amenay
-STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Ickclay onway esiredday olourcay emeschay
+STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Ickclay onway esiredday olourcay emeschay
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Increaseway izesay ofway oanlay
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Epayray artpay ofway oanlay
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Anagermay)

@@ -1186,7 +1186,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Aizlied
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Ieslēgt vagonu ātruma ierobežojumus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Izslēgt eletrificēto dzelzceļu: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLORED_NEWS_YEAR                            :{LTBLUE}Krāsainās avīzes parādās: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Krāsainās avīzes parādās: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Sākuma gads: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Ieslēgt lēzenas izmaiņas ekonomikā: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Atļaut akciju pirkšanu no citām kompānijām: {ORANGE}{STRING}
@@ -2312,9 +2312,9 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Uzņēmums {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Jauna seja
-STR_7005_COLOR_SCHEME                                           :{BLACK}Krāsu palete
-STR_7006_COLOR_SCHEME                                           :{GOLD}Krāsu palete:
-STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Jauna krāsu palete
+STR_7005_COLOUR_SCHEME                                          :{BLACK}Krāsu palete
+STR_7006_COLOUR_SCHEME                                          :{GOLD}Krāsu palete:
+STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Jauna krāsu palete
 STR_7008_COMPANY_NAME                                           :{BLACK}Uzņēmuma vārds
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Vadītāja vārds
 STR_700A_COMPANY_NAME                                           :Uzņēmuma vārds
@@ -2361,7 +2361,7 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Izvēlie
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Izmainīt uzņēmuma transportlīdzekļu izskatu
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Mainīt vadītāja vārdu
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Mainīt uzņēmuma  nosaukumu
-STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Klik uz vēlamo krāsu shēmu
+STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Klik uz vēlamo krāsu shēmu
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Palielināt aizdevuma apmēru
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Atmaksāt aizdevuma daļu
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Vadītājs)

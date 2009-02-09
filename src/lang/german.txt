@@ -1190,7 +1190,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Wartung
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Berücksichtige Waggonhöchstgeschwindigkeit: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Deaktiviere elektrifizierte Strecken: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLORED_NEWS_YEAR                            :{LTBLUE}Farbige Nachrichten erscheinen ab: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Farbige Nachrichten erscheinen ab: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Startdatum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Feinere Wirtschaft aktivieren (mehrere, kleinere Veränderungen): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Erlaube Anteile an anderen Firmen zu kaufen: {ORANGE}{STRING}
@@ -2316,9 +2316,9 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Unternehmen {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Neues Gesicht
-STR_7005_COLOR_SCHEME                                           :{BLACK}Farbauswahl
-STR_7006_COLOR_SCHEME                                           :{GOLD}Farbauswahl:
-STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Neue Farbauswahl
+STR_7005_COLOUR_SCHEME                                          :{BLACK}Farbauswahl
+STR_7006_COLOUR_SCHEME                                          :{GOLD}Farbauswahl:
+STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Neue Farbauswahl
 STR_7008_COMPANY_NAME                                           :{BLACK}Firmenname
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Managername
 STR_700A_COMPANY_NAME                                           :Firmenname
@@ -2365,7 +2365,7 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Neues Pr
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Firmenfarbe ändern
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Managername ändern
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Firmenname ändern
-STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Auf die gewünschte Farbe klicken
+STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Auf die gewünschte Farbe klicken
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Kredit aufnehmen
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Kredit abzahlen
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manager)

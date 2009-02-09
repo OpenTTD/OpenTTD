@@ -1168,7 +1168,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}關閉�
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}開啟列車車廂速限：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}停用電氣化鐵道：{ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLORED_NEWS_YEAR                            :{LTBLUE}彩色報紙登場年份：{ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}彩色報紙登場年份：{ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}開始年份：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}開啟平滑經濟模式 (更多、更小的變動)：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}允許購買其它公司的股票：{ORANGE}{STRING}
@@ -2290,9 +2290,9 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(公司 {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}新臉孔
-STR_7005_COLOR_SCHEME                                           :{BLACK}配色
-STR_7006_COLOR_SCHEME                                           :{GOLD}配色：
-STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}新配色
+STR_7005_COLOUR_SCHEME                                          :{BLACK}配色
+STR_7006_COLOUR_SCHEME                                          :{GOLD}配色：
+STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}新配色
 STR_7008_COMPANY_NAME                                           :{BLACK}公司名稱
 STR_7009_PRESIDENT_NAME                                         :{BLACK}經理姓名
 STR_700A_COMPANY_NAME                                           :公司名稱
@@ -2339,7 +2339,7 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}選擇�
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}變更公司交通工具配色
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}變更經理姓名
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}變更公司名稱
-STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}點選您想用的配色
+STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}點選您想用的配色
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}增加貸款
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}償還貸款
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(經理)

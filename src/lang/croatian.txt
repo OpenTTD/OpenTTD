@@ -1240,7 +1240,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Isklju�
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Omogući ograničenje brzine za vagone: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Onemogući električnu prugu: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLORED_NEWS_YEAR                            :{LTBLUE}Vijesti u boji pojavljuju se: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Vijesti u boji pojavljuju se: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Početna godina: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Uključi tečnu ekonomiju (više manjih izazova): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Dopusti kupovanje udjela u drugim tvrtkama: {ORANGE}{STRING}
@@ -2363,9 +2363,9 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Tvrtka {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Novo lice
-STR_7005_COLOR_SCHEME                                           :{BLACK}Boja
-STR_7006_COLOR_SCHEME                                           :{GOLD}Boja:
-STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nova boja
+STR_7005_COLOUR_SCHEME                                          :{BLACK}Boja
+STR_7006_COLOUR_SCHEME                                          :{GOLD}Boja:
+STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Nova boja
 STR_7008_COMPANY_NAME                                           :{BLACK}Ime tvrtke
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Ime direktora
 STR_700A_COMPANY_NAME                                           :Ime tvrtke
@@ -2412,7 +2412,7 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Odaberi 
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Promijeni shemu boja za vozila tvrtke
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Promjeni ime direktora
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Promijeni ime tvrtke
-STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Klikni na željenu boju
+STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Klikni na željenu boju
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Povećaj iznos zajma
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Otplati dio zajma
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Direktor)

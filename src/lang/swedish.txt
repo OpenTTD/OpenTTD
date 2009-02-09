@@ -1141,7 +1141,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Avaktiv
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Använd hastighetsbegränsningar för tågvagnar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Stäng av elektriska spår: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLORED_NEWS_YEAR                            :{LTBLUE}Färgade nyheter visas i: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Färgade nyheter visas i: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Startdatum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Lugn ekonomi (flera små ändringar): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Tillåt inköp av aktier från andra företag: {ORANGE}{STRING}
@@ -2226,9 +2226,9 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Företag {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nytt ansikte
-STR_7005_COLOR_SCHEME                                           :{BLACK}Färgval
-STR_7006_COLOR_SCHEME                                           :{GOLD}Färgval:
-STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nytt färgval
+STR_7005_COLOUR_SCHEME                                          :{BLACK}Färgval
+STR_7006_COLOUR_SCHEME                                          :{GOLD}Färgval:
+STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Nytt färgval
 STR_7008_COMPANY_NAME                                           :{BLACK}Företagsnamn
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Namn på VD
 STR_700A_COMPANY_NAME                                           :Företagsnamn
@@ -2275,7 +2275,7 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Välj ny
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Byt färg på företaget
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Byt VD:ns namn
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Byt företagets namn
-STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Fälj ny färg
+STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Fälj ny färg
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Öka lånets storlek
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Återbetala en del av lånet
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(VD)

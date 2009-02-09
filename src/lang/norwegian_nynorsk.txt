@@ -1168,7 +1168,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Deaktiv
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Aktiver fartsgrenser for vogner: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Deaktiver elektriske tog: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLORED_NEWS_YEAR                            :{LTBLUE}Avisa vert trykt i fargar i: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Avisa vert trykt i fargar i: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Start spelet i år {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Jamn økonomi (fleire, mindre endringar): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Tillat kjøping av aksjar i andre selskap: {ORANGE}{STRING}
@@ -2285,9 +2285,9 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Firma {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nytt andlet
-STR_7005_COLOR_SCHEME                                           :{BLACK}Firmafarge
-STR_7006_COLOR_SCHEME                                           :{GOLD}Firmafarge:
-STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Ny firmafarge
+STR_7005_COLOUR_SCHEME                                          :{BLACK}Firmafarge
+STR_7006_COLOUR_SCHEME                                          :{GOLD}Firmafarge:
+STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Ny firmafarge
 STR_7008_COMPANY_NAME                                           :{BLACK}Firmanamn
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Namnet til sjefen
 STR_700A_COMPANY_NAME                                           :Firmanamn
@@ -2334,7 +2334,7 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Gje sjef
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Endre firmafarge
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Endre namnet til sjefen
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Endre firmanamnet
-STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Trykk på fargen du ønskjer
+STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Trykk på fargen du ønskjer
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Auk storleiken på lånet
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Betal attende ein del av lånet
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Sjef)

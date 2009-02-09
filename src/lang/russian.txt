@@ -1177,7 +1177,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Не о
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Использовать ограничение скорости у вагонов (если есть): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Выключить электрофицированную железную дорогу: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLORED_NEWS_YEAR                            :{LTBLUE}Цветные газеты появляются: {ORANGE}в {STRING} году
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Цветные газеты появляются: {ORANGE}в {STRING} году
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Год начала игры: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Включить плавную экономику (частые, небольшие изменения): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Разрешить торговлю акциями других компаний: {ORANGE}{STRING}
@@ -2312,9 +2312,9 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Компания {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Лицо
-STR_7005_COLOR_SCHEME                                           :{BLACK}Цвет
-STR_7006_COLOR_SCHEME                                           :{GOLD}Цвет:
-STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Новый цвет
+STR_7005_COLOUR_SCHEME                                          :{BLACK}Цвет
+STR_7006_COLOUR_SCHEME                                          :{GOLD}Цвет:
+STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Новый цвет
 STR_7008_COMPANY_NAME                                           :{BLACK}Название
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Директор
 STR_700A_COMPANY_NAME                                           :Компания
@@ -2361,7 +2361,7 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Выбр
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Изменить цвет транспортных средств компании
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Изменение имени директора
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Изменение названия компании
-STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Выберите цветовую схему
+STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Выберите цветовую схему
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Взять/увеличить кредит
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Вернуть часть ссуды
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Директор)
