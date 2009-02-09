@@ -155,16 +155,9 @@
 	uint16 res = GetAiPurchaseCallbackResult(GSF_STATION, cargo_id, 0, source_industry, goal_industry, min(255, distance / 2), AICE_STATION_GET_STATION_ID, source_station ? 0 : 1, min(15, num_platforms) << 4 | min(15, platform_length), &file);
 	uint32 p2 = INVALID_STATION << 16;
 	if (res != CALLBACK_FAILED) {
-		extern StationClass _station_classes[STAT_CLASS_MAX];
-		const StationSpec *spec = GetCustomStationSpecByGrf(file->grfid, res);
-		int index = -1;
-		for (uint j = 0; j < _station_classes[spec->sclass].stations; j++) {
-			if (spec == _station_classes[spec->sclass].spec[j]) {
-				index = j;
-				break;
-			}
-		}
-		if (index == -1) {
+		int index = 0;
+		const StationSpec *spec = GetCustomStationSpecByGrf(file->grfid, res, &index);
+		if (spec == NULL) {
 			DEBUG(grf, 1, "%s returned an invalid station ID for 'AI construction/purchase selection (18)' callback", file->filename);
 		} else {
 			p2 |= spec->sclass | index << 8;

@@ -23,7 +23,7 @@
 
 #include "table/strings.h"
 
-StationClass _station_classes[STAT_CLASS_MAX];
+static StationClass _station_classes[STAT_CLASS_MAX];
 
 enum {
 	MAX_SPECLIST = 255,
@@ -156,8 +156,14 @@ const StationSpec *GetCustomStationSpec(StationClassID sclass, uint station)
 	return NULL;
 }
 
-
-const StationSpec *GetCustomStationSpecByGrf(uint32 grfid, byte localidx)
+/**
+ * Retrieve a station spec by GRF location.
+ * @param grfid    GRF ID of station spec.
+ * @param localidx Index within GRF file of station spec.
+ * @param index    Pointer to return the index of the station spec in its station class. If NULL then not used.
+ * @return The station spec.
+ */
+const StationSpec *GetCustomStationSpecByGrf(uint32 grfid, byte localidx, int *index)
 {
 	uint j;
 
@@ -165,7 +171,10 @@ const StationSpec *GetCustomStationSpecByGrf(uint32 grfid, byte localidx)
 		for (j = 0; j < _station_classes[i].stations; j++) {
 			const StationSpec *statspec = _station_classes[i].spec[j];
 			if (statspec == NULL) continue;
-			if (statspec->grffile->grfid == grfid && statspec->localidx == localidx) return statspec;
+			if (statspec->grffile->grfid == grfid && statspec->localidx == localidx) {
+				if (index != NULL) *index = j;
+				return statspec;
+			}
 		}
 	}
 

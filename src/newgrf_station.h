@@ -118,7 +118,7 @@ uint GetNumCustomStations(StationClassID sclass);
 
 void SetCustomStationSpec(StationSpec *statspec);
 const StationSpec *GetCustomStationSpec(StationClassID sclass, uint station);
-const StationSpec *GetCustomStationSpecByGrf(uint32 grfid, byte localidx);
+const StationSpec *GetCustomStationSpecByGrf(uint32 grfid, byte localidx, int *index);
 
 /* Evaluate a tile's position within a station, and return the result a bitstuffed format. */
 uint32 GetPlatformInfo(Axis axis, byte tile, int platforms, int length, int x, int y, bool centred);
