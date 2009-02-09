@@ -255,7 +255,7 @@ public:
 			Widget *wi = &this->widget[SLW_CARGOSTART + i];
 			wi->type     = WWT_PANEL;
 			wi->display_flags = RESIZE_NONE;
-			wi->color    = COLOUR_GREY;
+			wi->colour   = COLOUR_GREY;
 			wi->left     = 89 + i * 14;
 			wi->right    = wi->left + 13;
 			wi->top      = 14;

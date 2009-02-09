@@ -37,7 +37,7 @@
 CompanyByte _local_company;
 CompanyByte _current_company;
 /* NOSAVE: can be determined from company structs */
-byte _company_colours[MAX_COMPANIES];
+Colours _company_colours[MAX_COMPANIES];
 CompanyManagerFace _company_manager_face; ///< for company manager face storage in openttd.cfg
 
 DEFINE_OLD_POOL_GENERIC(Company, Company)
@@ -434,7 +434,7 @@ Company *DoStartupNewCompany(bool is_ai)
 	c->colour = colour;
 
 	ResetCompanyLivery(c);
-	_company_colours[c->index] = c->colour;
+	_company_colours[c->index] = (Colours)c->colour;
 
 	c->money = c->current_loan = 100000;
 

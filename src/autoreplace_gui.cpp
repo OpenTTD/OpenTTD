@@ -282,8 +282,8 @@ public:
 			SetDParam(2, this->wagon_btnstate ? STR_ENGINES : STR_WAGONS);
 
 			/* sets the colour of that art thing */
-			this->widget[RVW_WIDGET_TRAIN_FLUFF_LEFT].color  = _company_colours[_local_company];
-			this->widget[RVW_WIDGET_TRAIN_FLUFF_RIGHT].color = _company_colours[_local_company];
+			this->widget[RVW_WIDGET_TRAIN_FLUFF_LEFT].colour  = _company_colours[_local_company];
+			this->widget[RVW_WIDGET_TRAIN_FLUFF_RIGHT].colour = _company_colours[_local_company];
 		}
 
 		if (this->window_number == VEH_TRAIN) {

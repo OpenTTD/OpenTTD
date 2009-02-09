@@ -163,15 +163,15 @@ int GetWidgetFromPos(const Window *w, int x, int y)
  * @param top    Top edge of the frame
  * @param right  Right edge of the frame
  * @param bottom Bottom edge of the frame
- * @param color  Colour table to use. @see _colour_gradient
+ * @param colour Colour table to use. @see _colour_gradient
  * @param flags  Flags controlling how to draw the frame. @see FrameFlags
  */
-void DrawFrameRect(int left, int top, int right, int bottom, int color, FrameFlags flags)
+void DrawFrameRect(int left, int top, int right, int bottom, int colour, FrameFlags flags)
 {
-	uint dark         = _colour_gradient[color][3];
-	uint medium_dark  = _colour_gradient[color][5];
-	uint medium_light = _colour_gradient[color][6];
-	uint light        = _colour_gradient[color][7];
+	uint dark         = _colour_gradient[colour][3];
+	uint medium_dark  = _colour_gradient[colour][5];
+	uint medium_light = _colour_gradient[colour][6];
+	uint light        = _colour_gradient[colour][7];
 
 	if (flags & FR_TRANSPARENT) {
 		GfxFillRect(left, top, right, bottom, PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOR);
@@ -223,7 +223,7 @@ void Window::DrawWidgets() const
 		case WWT_IMGBTN_2: {
 			SpriteID img = wi->data;
 			assert(img != 0);
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
 
 			/* show different image when clicked for WWT_IMGBTN_2 */
 			if ((wi->type & WWT_MASK) == WWT_IMGBTN_2 && clicked) img++;
@@ -233,16 +233,16 @@ void Window::DrawWidgets() const
 
 		case WWT_PANEL:
 			assert(wi->data == 0);
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
 			break;
 
 		case WWT_EDITBOX:
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_LOWERED | FR_DARKENED);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_LOWERED | FR_DARKENED);
 			break;
 
 		case WWT_TEXTBTN:
 		case WWT_TEXTBTN_2:
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
 			/* FALL THROUGH */
 
 		case WWT_LABEL: {
@@ -257,20 +257,20 @@ void Window::DrawWidgets() const
 		case WWT_TEXT: {
 			const StringID str = wi->data;
 
-			if (str != STR_NULL) DrawStringTruncated(r.left, r.top, str, wi->color, r.right - r.left);
+			if (str != STR_NULL) DrawStringTruncated(r.left, r.top, str, wi->colour, r.right - r.left);
 			break;
 		}
 
 		case WWT_INSET: {
 			const StringID str = wi->data;
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_LOWERED | FR_DARKENED);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_LOWERED | FR_DARKENED);
 
 			if (str != STR_NULL) DrawStringTruncated(r.left + 2, r.top + 1, str, TC_FROMSTRING, r.right - r.left - 10);
 			break;
 		}
 
 		case WWT_MATRIX: {
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
 
 			int c = GB(wi->data, 0, 8);
 			int amt1 = (wi->right - wi->left + 1) / c;
@@ -278,32 +278,32 @@ void Window::DrawWidgets() const
 			int d = GB(wi->data, 8, 8);
 			int amt2 = (wi->bottom - wi->top + 1) / d;
 
-			int color = _colour_gradient[wi->color & 0xF][6];
+			int colour = _colour_gradient[wi->colour & 0xF][6];
 
 			int x = r.left;
 			for (int ctr = c; ctr > 1; ctr--) {
 				x += amt1;
-				GfxFillRect(x, r.top + 1, x, r.bottom - 1, color);
+				GfxFillRect(x, r.top + 1, x, r.bottom - 1, colour);
 			}
 
 			x = r.top;
 			for (int ctr = d; ctr > 1; ctr--) {
 				x += amt2;
-				GfxFillRect(r.left + 1, x, r.right - 1, x, color);
+				GfxFillRect(r.left + 1, x, r.right - 1, x, colour);
 			}
 
-			color = _colour_gradient[wi->color & 0xF][4];
+			colour = _colour_gradient[wi->colour & 0xF][4];
 
 			x = r.left - 1;
 			for (int ctr = c; ctr > 1; ctr--) {
 				x += amt1;
-				GfxFillRect(x, r.top + 1, x, r.bottom - 1, color);
+				GfxFillRect(x, r.top + 1, x, r.bottom - 1, colour);
 			}
 
 			x = r.top - 1;
 			for (int ctr = d; ctr > 1; ctr--) {
 				x += amt2;
-				GfxFillRect(r.left + 1, x, r.right - 1, x, color);
+				GfxFillRect(r.left + 1, x, r.right - 1, x, colour);
 			}
 
 			break;
@@ -316,15 +316,15 @@ void Window::DrawWidgets() const
 
 			/* draw up/down buttons */
 			clicked = ((this->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP);
-			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
 			DoDrawString(UPARROW, r.left + 2 + clicked, r.top + clicked, TC_BLACK);
 
 			clicked = (((this->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN));
-			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
 			DoDrawString(DOWNARROW, r.left + 2 + clicked, r.bottom - 9 + clicked, TC_BLACK);
 
-			int c1 = _colour_gradient[wi->color & 0xF][3];
-			int c2 = _colour_gradient[wi->color & 0xF][7];
+			int c1 = _colour_gradient[wi->colour & 0xF][3];
+			int c2 = _colour_gradient[wi->colour & 0xF][7];
 
 			/* draw "shaded" background */
 			GfxFillRect(r.left, r.top + 10, r.right, r.bottom - 10, c2);
@@ -337,7 +337,7 @@ void Window::DrawWidgets() const
 			GfxFillRect(r.left + 8, r.top + 10, r.left + 8, r.bottom - 10, c2);
 
 			Point pt = HandleScrollbarHittest(&this->vscroll, r.top, r.bottom);
-			DrawFrameRect(r.left, pt.x, r.right, pt.y, wi->color, (this->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_MIDDLE ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, pt.x, r.right, pt.y, wi->colour, (this->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_MIDDLE ? FR_LOWERED : FR_NONE);
 			break;
 		}
 
@@ -347,15 +347,15 @@ void Window::DrawWidgets() const
 
 			/* draw up/down buttons */
 			clicked = ((this->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2));
-			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->color,  (clicked) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->colour,  (clicked) ? FR_LOWERED : FR_NONE);
 			DoDrawString(UPARROW, r.left + 2 + clicked, r.top + clicked, TC_BLACK);
 
 			clicked = ((this->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2));
-			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->color,  (clicked) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->colour,  (clicked) ? FR_LOWERED : FR_NONE);
 			DoDrawString(DOWNARROW, r.left + 2 + clicked, r.bottom - 9 + clicked, TC_BLACK);
 
-			int c1 = _colour_gradient[wi->color & 0xF][3];
-			int c2 = _colour_gradient[wi->color & 0xF][7];
+			int c1 = _colour_gradient[wi->colour & 0xF][3];
+			int c2 = _colour_gradient[wi->colour & 0xF][7];
 
 			/* draw "shaded" background */
 			GfxFillRect(r.left, r.top + 10, r.right, r.bottom - 10, c2);
@@ -368,7 +368,7 @@ void Window::DrawWidgets() const
 			GfxFillRect(r.left + 8, r.top + 10, r.left + 8, r.bottom - 10, c2);
 
 			Point pt = HandleScrollbarHittest(&this->vscroll2, r.top, r.bottom);
-			DrawFrameRect(r.left, pt.x, r.right, pt.y, wi->color, (this->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_MIDDLE | WF_SCROLL2) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, pt.x, r.right, pt.y, wi->colour, (this->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_MIDDLE | WF_SCROLL2) ? FR_LOWERED : FR_NONE);
 			break;
 		}
 
@@ -378,15 +378,15 @@ void Window::DrawWidgets() const
 			assert(r.bottom - r.top == 11); // To ensure the same sizes are used everywhere!
 
 			clicked = ((this->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL));
-			DrawFrameRect(r.left, r.top, r.left + 9, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, r.top, r.left + 9, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
 			DrawSprite(SPR_ARROW_LEFT, PAL_NONE, r.left + 1 + clicked, r.top + 1 + clicked);
 
 			clicked = ((this->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL));
-			DrawFrameRect(r.right - 9, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.right - 9, r.top, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
 			DrawSprite(SPR_ARROW_RIGHT, PAL_NONE, r.right - 8 + clicked, r.top + 1 + clicked);
 
-			int c1 = _colour_gradient[wi->color & 0xF][3];
-			int c2 = _colour_gradient[wi->color & 0xF][7];
+			int c1 = _colour_gradient[wi->colour & 0xF][3];
+			int c2 = _colour_gradient[wi->colour & 0xF][7];
 
 			/* draw "shaded" background */
 			GfxFillRect(r.left + 10, r.top, r.right - 10, r.bottom, c2);
@@ -400,7 +400,7 @@ void Window::DrawWidgets() const
 
 			/* draw actual scrollbar */
 			Point pt = HandleScrollbarHittest(&this->hscroll, r.left, r.right);
-			DrawFrameRect(pt.x, r.top, pt.y, r.bottom, wi->color, (this->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL)) == (WF_SCROLL_MIDDLE | WF_HSCROLL) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(pt.x, r.top, pt.y, r.bottom, wi->colour, (this->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL)) == (WF_SCROLL_MIDDLE | WF_HSCROLL) ? FR_LOWERED : FR_NONE);
 
 			break;
 		}
@@ -411,8 +411,8 @@ void Window::DrawWidgets() const
 
 			if (str != STR_NULL) x2 = DrawString(r.left + 6, r.top, str, TC_FROMSTRING);
 
-			int c1 = _colour_gradient[wi->color][3];
-			int c2 = _colour_gradient[wi->color][7];
+			int c1 = _colour_gradient[wi->colour][3];
+			int c2 = _colour_gradient[wi->colour][7];
 
 			/* Line from upper left corner to start of text */
 			GfxFillRect(r.left, r.top + 4, r.left + 4, r.top + 4, c1);
@@ -441,7 +441,7 @@ void Window::DrawWidgets() const
 			assert(r.right - r.left == 11); // To ensure the same sizes are used everywhere!
 
 			clicked = !!(this->flags4 & WF_STICKY);
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
 			DrawSprite((clicked) ? SPR_PIN_UP : SPR_PIN_DOWN, PAL_NONE, r.left + 2 + clicked, r.top + 3 + clicked);
 			break;
 
@@ -450,7 +450,7 @@ void Window::DrawWidgets() const
 			assert(r.right - r.left == 11); // To ensure the same sizes are used everywhere!
 
 			clicked = !!(this->flags4 & WF_SIZING);
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
 			DrawSprite(SPR_WINDOW_RESIZE, PAL_NONE, r.left + 3 + clicked, r.top + 3 + clicked);
 			break;
 
@@ -460,15 +460,15 @@ void Window::DrawWidgets() const
 			assert(str == STR_00C5 || str == STR_00C6); // black or silver cross
 			assert(r.right - r.left == 10); // To ensure the same sizes are used everywhere
 
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_NONE);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_NONE);
 			DrawString(r.left + 2, r.top + 2, str, TC_FROMSTRING);
 			break;
 		}
 
 		case WWT_CAPTION:
 			assert(r.bottom - r.top == 13); // To ensure the same sizes are used everywhere!
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_BORDERONLY);
-			DrawFrameRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, wi->color, (this->caption_color == 0xFF) ? FR_LOWERED | FR_DARKENED : FR_LOWERED | FR_DARKENED | FR_BORDERONLY);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_BORDERONLY);
+			DrawFrameRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, wi->colour, (this->caption_color == 0xFF) ? FR_LOWERED | FR_DARKENED : FR_LOWERED | FR_DARKENED | FR_BORDERONLY);
 
 			if (this->caption_color != 0xFF) {
 				GfxFillRect(r.left + 2, r.top + 2, r.right - 2, r.bottom - 2, _colour_gradient[_company_colours[this->caption_color]][4]);
@@ -481,8 +481,8 @@ void Window::DrawWidgets() const
 			assert(r.bottom - r.top == 11); // ensure consistent size
 
 			StringID str = wi->data;
-			DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, wi->color, FR_NONE);
-			DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, wi->color, clicked ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, wi->colour, FR_NONE);
+			DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, wi->colour, clicked ? FR_LOWERED : FR_NONE);
 			DrawString(r.right - (clicked ? 8 : 9), r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
 			if (str != STR_NULL) DrawStringTruncated(r.left + 2, r.top + 1, str, TC_BLACK, r.right - r.left - 12);
 			break;
@@ -492,8 +492,8 @@ void Window::DrawWidgets() const
 			assert(r.bottom - r.top == 11); // ensure consistent size
 
 			StringID str = wi->data;
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_LOWERED | FR_DARKENED);
-			DrawFrameRect(r.right - 11, r.top + 1, r.right - 1, r.bottom - 1, wi->color, clicked ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_LOWERED | FR_DARKENED);
+			DrawFrameRect(r.right - 11, r.top + 1, r.right - 1, r.bottom - 1, wi->colour, clicked ? FR_LOWERED : FR_NONE);
 			DrawString(r.right - (clicked ? 8 : 9), r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
 			if (str != STR_NULL) DrawStringTruncated(r.left + 2, r.top + 2, str, TC_BLACK, r.right - r.left - 12);
 			break;
@@ -501,7 +501,7 @@ void Window::DrawWidgets() const
 		}
 
 		if (this->IsWidgetDisabled(i)) {
-			GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[wi->color & 0xF][2], FILLRECT_CHECKER);
+			GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[wi->colour & 0xF][2], FILLRECT_CHECKER);
 		}
 	}
 

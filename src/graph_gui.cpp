@@ -634,7 +634,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 			Widget *wi = &this->widget[3 + i];
 			wi->type     = WWT_PANEL;
 			wi->display_flags = RESIZE_NONE;
-			wi->color    = COLOUR_ORANGE;
+			wi->colour   = COLOUR_ORANGE;
 			wi->left     = 493;
 			wi->right    = 562;
 			wi->top      = 24 + i * 8;

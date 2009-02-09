@@ -1592,6 +1592,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\widget_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\win32.h"
 				>
 			</File>

@@ -272,7 +272,7 @@ static void Load_PLYR()
 	while ((index = SlIterateArray()) != -1) {
 		Company *c = new (index) Company();
 		SaveLoad_PLYR(c);
-		_company_colours[index] = c->colour;
+		_company_colours[index] = (Colours)c->colour;
 	}
 }
 

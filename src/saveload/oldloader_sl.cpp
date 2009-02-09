@@ -1051,7 +1051,7 @@ static bool LoadOldCompany(LoadgameState *ls, int num)
 		if (c->money == 893288) c->money = c->current_loan = 100000;
 	}
 
-	_company_colours[num] = c->colour;
+	_company_colours[num] = (Colours)c->colour;
 	c->inaugurated_year -= ORIGINAL_BASE_YEAR;
 
 	return true;

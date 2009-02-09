@@ -328,6 +328,7 @@ viewport_type.h
 water.h
 waypoint.h
 waypoint_type.h
+widget_type.h
 win32.h
 music/win32_m.h
 sound/win32_s.h

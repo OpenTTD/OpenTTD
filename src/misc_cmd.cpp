@@ -53,7 +53,7 @@ CommandCost CmdSetCompanyColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 {
 	if (p2 >= 16) return CMD_ERROR; // max 16 colours
 
-	byte colour = p2;
+	Colours colour = (Colours)p2;
 
 	LiveryScheme scheme = (LiveryScheme)GB(p1, 0, 8);
 	byte state = GB(p1, 8, 2);

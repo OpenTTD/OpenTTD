@@ -9,6 +9,7 @@
 #include "company_type.h"
 #include "tile_type.h"
 #include "strings_type.h"
+#include "gfx_type.h"
 
 void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner);
 void GetNameOfOwner(Owner owner, TileIndex tile);
@@ -17,7 +18,7 @@ void SetLocalCompany(CompanyID new_company);
 extern CompanyByte _local_company;
 extern CompanyByte _current_company;
 
-extern byte _company_colours[MAX_COMPANIES];     ///< NOSAVE: can be determined from company structs
+extern Colours _company_colours[MAX_COMPANIES];  ///< NOSAVE: can be determined from company structs
 extern CompanyManagerFace _company_manager_face; ///< for company manager face storage in openttd.cfg
 
 bool IsHumanCompany(CompanyID company);

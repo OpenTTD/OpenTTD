@@ -124,7 +124,7 @@ struct OskWindow : public Window {
 
 			if (HasBit(_keystate, KEYS_SHIFT)) {
 				ToggleBit(_keystate, KEYS_SHIFT);
-				this->widget[OSK_WIDGET_SHIFT].color = HasBit(_keystate, KEYS_SHIFT) ? COLOUR_WHITE : COLOUR_GREY;
+				this->widget[OSK_WIDGET_SHIFT].colour = HasBit(_keystate, KEYS_SHIFT) ? COLOUR_WHITE : COLOUR_GREY;
 				this->SetDirty();
 			}
 			return;

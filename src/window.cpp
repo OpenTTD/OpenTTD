@@ -172,6 +172,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 		if (wi->type & WWB_MASK) {
 			/* special widget handling for buttons*/
 			switch (wi->type) {
+				default: NOT_REACHED();
 				case WWT_PANEL   | WWB_PUSHBUTTON: /* WWT_PUSHBTN */
 				case WWT_IMGBTN  | WWB_PUSHBUTTON: /* WWT_PUSHIMGBTN */
 				case WWT_TEXTBTN | WWB_PUSHBUTTON: /* WWT_PUSHTXTBTN */

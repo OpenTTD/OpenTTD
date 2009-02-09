@@ -148,11 +148,11 @@ struct DropdownWindow : Window {
 			if (y + item_height < height) {
 				if (sel == item->result) GfxFillRect(x + 1, y, x + width - 1, y + item_height - 1, 0);
 
-				item->Draw(x, y, width, height, sel == item->result, (TextColour)this->widget[0].color);
+				item->Draw(x, y, width, height, sel == item->result, (TextColour)this->widget[0].colour);
 
 				if (item->masked) {
 					GfxFillRect(x, y, x + width - 1, y + item_height - 1,
-						_colour_gradient[this->widget[0].color][5], FILLRECT_CHECKER
+						_colour_gradient[this->widget[0].colour][5], FILLRECT_CHECKER
 					);
 				}
 			}
@@ -307,7 +307,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 		height + 4,
 		_dropdown_menu_widgets);
 
-	dw->widget[0].color = wi->color;
+	dw->widget[0].colour = wi->colour;
 	dw->widget[0].right = width - 1;
 	dw->widget[0].bottom = height + 3;
 
@@ -316,7 +316,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 	if (scroll) {
 		/* We're scrolling, so enable the scroll bar and shrink the list by
 		 * the scrollbar's width */
-		dw->widget[1].color  = wi->color;
+		dw->widget[1].colour = wi->colour;
 		dw->widget[1].right  = dw->widget[0].right;
 		dw->widget[1].left   = dw->widget[1].right - 11;
 		dw->widget[1].bottom = dw->widget[0].bottom;
