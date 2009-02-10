@@ -1936,6 +1936,17 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 		if (v->vehstatus & VS_CRASHED || v->breakdown_ctr != 0) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
+			/* Properly leave the station if we are loading and won't be loading anymore */
+			if (v->current_order.IsType(OT_LOADING)) {
+				const Vehicle *last = v;
+				while (last->Next() != NULL) last = last->Next();
+
+				/* not a station || different station --> leave the station */
+				if (!IsTileType(last->tile, MP_STATION) || GetStationIndex(last->tile) != GetStationIndex(v->tile)) {
+					v->LeaveStation();
+				}
+			}
+
 			if (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && v->cur_speed != 0) {
 				ToggleBit(v->u.rail.flags, VRF_REVERSING);
 			} else {
