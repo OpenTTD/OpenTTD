@@ -1012,7 +1012,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 
 	/* Check if we can allocate a custom stationspec to this station */
 	const StationSpec *statspec = GetCustomStationSpec((StationClassID)GB(p2, 0, 8), GB(p2, 8, 8));
-	int specindex = AllocateSpecToStation(statspec, st, flags & DC_EXEC);
+	int specindex = AllocateSpecToStation(statspec, st, (flags & DC_EXEC) != 0);
 	if (specindex == -1) return_cmd_error(STR_TOO_MANY_STATION_SPECS);
 
 	if (statspec != NULL) {
