@@ -391,7 +391,7 @@ void GenerateUnmovables()
 	int lighthouses_to_build = _settings_game.game_creation.landscape == LT_TROPIC ? 0 : ScaleByMapSize1D((Random() & 3) + 7);
 
 	/* Scale the amount of lighthouses with the amount of land at the borders. */
-	if (_settings_game.construction.freeform_edges) {
+	if (_settings_game.construction.freeform_edges && lighthouses_to_build != 0) {
 		uint num_water_tiles = 0;
 		for (uint x = 0; x < MapMaxX(); x++) {
 			if (IsTileType(TileXY(x, 1), MP_WATER)) num_water_tiles++;
@@ -420,8 +420,6 @@ void GenerateUnmovables()
 			if (--radiotower_to_build == 0) break;
 		}
 	}
-
-	if (_settings_game.game_creation.landscape == LT_TROPIC) return;
 
 	/* add lighthouses */
 	uint maxx = MapMaxX();
