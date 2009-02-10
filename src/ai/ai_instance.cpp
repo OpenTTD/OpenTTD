@@ -272,13 +272,13 @@ void AIInstance::GameLoop()
 
 	if (!this->is_started) {
 		try {
+			AIObject::SetAllowDoCommand(false);
 			/* Run the constructor if it exists. Don't allow any DoCommands in it. */
 			if (this->engine->MethodExists(*this->instance, "constructor")) {
-				AIObject::SetAllowDoCommand(false);
 				this->engine->CallMethod(*this->instance, "constructor");
-				AIObject::SetAllowDoCommand(true);
 			}
 			this->CallLoad();
+			AIObject::SetAllowDoCommand(true);
 			/* Start the AI by calling Start() */
 			if (!this->engine->CallMethod(*this->instance, "Start",  _settings_game.ai.ai_max_opcode_till_suspend)) this->Died();
 		} catch (AI_VMSuspend e) {
@@ -524,9 +524,10 @@ void AIInstance::Save()
 	} else if (this->engine->MethodExists(*this->instance, "Save")) {
 		HSQOBJECT savedata;
 		/* We don't want to be interrupted during the save function. */
+		bool backup_allow = AIObject::GetAllowDoCommand();
 		AIObject::SetAllowDoCommand(false);
 		this->engine->CallMethod(*this->instance, "Save", &savedata);
-		AIObject::SetAllowDoCommand(true);
+		AIObject::SetAllowDoCommand(backup_allow);
 
 		if (!sq_istable(savedata)) {
 			AILog::Error("Save function should return a table.");
@@ -653,8 +654,6 @@ void AIInstance::CallLoad()
 		return;
 	}
 
-	AIObject::SetAllowDoCommand(false);
-
 	/* Go to the instance-root */
 	sq_pushobject(vm, *this->instance);
 	/* Find the function-name inside the script */
@@ -673,6 +672,4 @@ void AIInstance::CallLoad()
 
 	/* Pop 1) The version, 2) the savegame data, 3) the object instance, 4) the function pointer. */
 	sq_pop(vm, 4);
-
-	AIObject::SetAllowDoCommand(true);
 }

@@ -759,6 +759,7 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm) {
 
 	/* Don't allow docommand from a Valuator, as we can't resume in
 	 *  mid-code */
+	bool backup_allow = AIObject::GetAllowDoCommand();
 	AIObject::SetAllowDoCommand(false);
 
 	sq_addref(vm, &obj_func);
@@ -788,7 +789,7 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm) {
 
 		/* Call the function */
 		if (SQ_FAILED(sq_call(vm, nparam + 2, SQTrue, SQTrue))) {
-			AIObject::SetAllowDoCommand(true);
+			AIObject::SetAllowDoCommand(backup_allow);
 			return SQ_ERROR;
 		}
 
@@ -810,7 +811,7 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm) {
 				sq_release(vm, &obj_func);
 				for (int i = 0; i < nparam; i++) sq_release(vm, &obj_params[i]);
 
-				AIObject::SetAllowDoCommand(true);
+				AIObject::SetAllowDoCommand(backup_allow);
 				return sq_throwerror(vm, _SC("return value of valuator is not valid (not integer/bool)"));
 			}
 		}
@@ -826,6 +827,6 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm) {
 	sq_release(vm, &obj_func);
 	for (int i = 0; i < nparam; i++) sq_release(vm, &obj_params[i]);
 
-	AIObject::SetAllowDoCommand(true);
+	AIObject::SetAllowDoCommand(backup_allow);
 	return 0;
 }
