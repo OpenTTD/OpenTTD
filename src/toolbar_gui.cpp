@@ -628,6 +628,8 @@ static void ToolbarBuildRailClick(Window *w)
 	DropDownList *list = new DropDownList();
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
 		const RailtypeInfo *rti = GetRailTypeInfo(rt);
+		/* Skip rail type if it has no label */
+		if (rti->label == 0) continue;
 		list->push_back(new DropDownListStringItem(rti->strings.menu_text, rt, !HasBit(c->avail_railtypes, rt)));
 	}
 	ShowDropDownList(w, list, _last_built_railtype, TBN_RAILS, 140, true, true);
