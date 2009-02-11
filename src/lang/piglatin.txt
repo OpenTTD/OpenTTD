@@ -1630,13 +1630,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} as
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} avegay ouryay ompanycay {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Ouyay avegay {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Eamtay] :
-STR_NETWORK_CHAT_COMPANY                                        :[Eamtay] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Eamtay] Otay {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Eamtay] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Eamtay] Otay {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Ivatepray] :
-STR_NETWORK_CHAT_CLIENT                                         :[Ivatepray] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Ivatepray] Otay {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Ivatepray] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Ivatepray] Otay {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Allway] :
-STR_NETWORK_CHAT_ALL                                            :[Allway] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Allway] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Enterway exttay orfay etworknay atchay
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Ethay erversay osedclay ethay essionsay
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Ethay erversay isway estartingray...{}Easeplay aitway...

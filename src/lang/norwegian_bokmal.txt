@@ -1615,13 +1615,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} ha
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} gav {2:CURRENCY} til ditt firma
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Du gav {2:CURRENCY} til {1:STRING}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Lag] :
-STR_NETWORK_CHAT_COMPANY                                        :[Lag] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Lag] Til {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Lag] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Lag] Til {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privat] :
-STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Til {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Til {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Alle] :
-STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Skriv inn text for netverk samtale
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Tjeneren avsluttet spillet
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Tjeneren starter på nytt...{}Vennligst vent

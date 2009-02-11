@@ -1656,13 +1656,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} je
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} je podarilo tvojemu podjetju {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Podjetju {1:STRING} je bil podarjen znesek {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Skupina] :
-STR_NETWORK_CHAT_COMPANY                                        :[Skupina] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Skupina] Za {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Skupina] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Skupina] Za {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privatno] :
-STR_NETWORK_CHAT_CLIENT                                         :[Privatno] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatno] Za {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Privatno] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatno] Za {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Vsi] :
-STR_NETWORK_CHAT_ALL                                            :[Vsi] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Vsi] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Vpiši tekst za mrežni pogovor
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Strežnik je zaprl sejo
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Strežnik se zaganja...{}Prosim počakaj...

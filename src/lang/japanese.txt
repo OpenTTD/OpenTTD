@@ -1588,13 +1588,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} �
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} は {2:CURRENCY} を送金してくれました
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** {1:STRING} に {2:CURRENCY} を送金しました
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :『チーム』：
-STR_NETWORK_CHAT_COMPANY                                        :『チーム』{STRING}：{GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :『チーム』{STRING}へ：{GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :『チーム』{STRING}：{WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :『チーム』{STRING}へ：{WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :『秘密』：
-STR_NETWORK_CHAT_CLIENT                                         :『秘密』{STRING}：{GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :『秘密』{STRING}へ：{GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :『秘密』{STRING}：{WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :『秘密』{STRING}へ：{WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :『全員』：
-STR_NETWORK_CHAT_ALL                                            :『全員』{STRING}：{GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :『全員』{STRING}：{WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}チャットのメッセージを入力
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE}サーバがセッションを終了しました
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE}サーバが再起道中...{}しばらくお待ちください...

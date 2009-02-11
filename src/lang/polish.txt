@@ -1691,13 +1691,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} zm
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} dał/dała twojemu przedsiębiorstwu {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Dałeś {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Zespół] :
-STR_NETWORK_CHAT_COMPANY                                        :[Zespół] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Zespół] do {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Zespół] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Zespół] do {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Prywatna] :
-STR_NETWORK_CHAT_CLIENT                                         :[Prywatna] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Prywatna] do {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Prywatna] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Prywatna] do {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Wszyscy] :
-STR_NETWORK_CHAT_ALL                                            :[Wszyscy] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Wszyscy] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Wpisz tekst do chat'u
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Serwer zamknął sesję
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Restart serwera...{}Proszę czekać...

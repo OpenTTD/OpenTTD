@@ -1634,13 +1634,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} �
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} 送您公司了 {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** 您送了 {2:CURRENCY} 给 {1:STRING}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[团队] :
-STR_NETWORK_CHAT_COMPANY                                        :[团队] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[团队] To {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[团队] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[团队] To {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[私聊] :
-STR_NETWORK_CHAT_CLIENT                                         :[私聊] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[私聊] To {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[私聊] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[私聊] To {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[全体] :
-STR_NETWORK_CHAT_ALL                                            :[全体] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[全体] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}请输入联机聊天内容
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} 服务器关闭了进程
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} 服务器正在重新启动。{}请等待……

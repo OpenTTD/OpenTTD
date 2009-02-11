@@ -1548,13 +1548,13 @@ STR_NETWORK_ERR_CLIENT_CHEATER                                  :försökte fusk
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servern är full
 ############ End of leave-in-this-order
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Företaget] :
-STR_NETWORK_CHAT_COMPANY                                        :[Företaget] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Företaget] Till {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Företaget] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Företaget] Till {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privat] :
-STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Till {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Till {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Alla] :
-STR_NETWORK_CHAT_ALL                                            :[Alla] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Alla] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Mata in text för nätverkschat
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Servern avslutade sessionen
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Servern startar om...{}Var vänlig vänta...

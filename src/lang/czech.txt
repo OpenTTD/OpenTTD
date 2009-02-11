@@ -1682,13 +1682,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} si
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} poslal(a) tvé společnosti {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Dal(a) jsi {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Tým] :
-STR_NETWORK_CHAT_COMPANY                                        :[Tým] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Tým] pro {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Tým] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Tým] pro {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Osobní] :
-STR_NETWORK_CHAT_CLIENT                                         :[Osobní] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Osobní] pro {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Osobní] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Osobní] pro {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Všichni] :
-STR_NETWORK_CHAT_ALL                                            :[Všichni] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Všichni] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Zadej zprávu
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE}Server ukončil relaci
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE}Server se restartuje...{}Počkejte prosím...

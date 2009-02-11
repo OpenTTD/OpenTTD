@@ -1613,13 +1613,13 @@ STR_NETWORK_NAME_CHANGE                                         :{STRING} שינ
 STR_NETWORK_GIVE_MONEY                                          :{2:CURRENCY} נתן לחברתך {NBSP}{0:STRING} ***
 STR_NETWORK_GAVE_MONEY_AWAY                                     :{2:CURRENCY} {1:STRING} נתת ל ***
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[קבוצה] :
-STR_NETWORK_CHAT_COMPANY                                        :[קבוצה] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[קובץ] To {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[קבוצה] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[קובץ] To {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[פרטי] :
-STR_NETWORK_CHAT_CLIENT                                         :[פרטי] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[פרטי] ל {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[פרטי] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[פרטי] ל {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[לכולם] :
-STR_NETWORK_CHAT_ALL                                            :[לכולם] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[לכולם] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}הקלד טקסט לצאט ברשת
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} השרת סגר את המשחק
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} השרת עושה הפעלה מחדש{}אנא המתן...

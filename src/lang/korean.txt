@@ -1630,13 +1630,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} �
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} 가 당신의 회사에게 {2:CURRENCY}를 송금하였습니다
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** 당신은  {1:STRING} 에게 {2:CURRENCY}를 송금하였습니다
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[팀] :
-STR_NETWORK_CHAT_COMPANY                                        :[팀] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[팀] {STRING}에게: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[팀] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[팀] {STRING}에게: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[귓속말] :
-STR_NETWORK_CHAT_CLIENT                                         :[귓속말] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[귓속말] {STRING}에게: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[귓속말] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[귓속말] {STRING}에게: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[모두] :
-STR_NETWORK_CHAT_ALL                                            :[모두] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[모두] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}네트워크 채팅을 위한 텍스트를 입력하세요
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} 서버가 세션을 종료하였습니다
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} 서버 재가동중...{}기다려주세요...

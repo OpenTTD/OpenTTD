@@ -1598,13 +1598,13 @@ STR_NETWORK_ERR_CLIENT_CHEATER                                  :üritas pettust
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server on täis
 ############ End of leave-in-this-order
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
-STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] kohta {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] kohta {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Private] :
-STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] kohta {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] kohta {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
-STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Sisesta tekst võrgus suhtlemiseks
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Server sulges sessiooni
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Server restardib...{}Palun oota...

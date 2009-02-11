@@ -1634,13 +1634,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} on
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} antoi yrityksellesi {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Annoit henkilölle {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Joukkue] :
-STR_NETWORK_CHAT_COMPANY                                        :[Joukkue] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Joukkue] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Joukkue] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Joukkue] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Yksityinen] :
-STR_NETWORK_CHAT_CLIENT                                         :[Yksityinen] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Yksityinen] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Yksityinen] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Yksityinen] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Kaikki] :
-STR_NETWORK_CHAT_ALL                                            :[Kaikki] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Kaikki] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Syötä teksti verkkokeskustelua varten
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Palvelin sulki istunnon
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Palvelin käynnistyy uudelleen...{}Odota, ole hyvä...

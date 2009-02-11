@@ -1758,13 +1758,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} з
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} дав Вашій компанії {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Ви дали {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Команда] :
-STR_NETWORK_CHAT_COMPANY                                        :[Команда] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Команда] до {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Команда] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Команда] до {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Приватно] :
-STR_NETWORK_CHAT_CLIENT                                         :[Приватно] {STRING}:{GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Приватно] до {STRING}:{GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Приватно] {STRING}:{WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Приватно] до {STRING}:{WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Всім] :
-STR_NETWORK_CHAT_ALL                                            :[Всім] {STRING}:{GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Всім] {STRING}:{WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Введіть текст для мережевого чату
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Сервер закрив сеанс
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Перезавантаження сервера...{}Зачекайте...

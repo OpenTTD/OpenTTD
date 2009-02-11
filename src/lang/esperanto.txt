@@ -1464,13 +1464,13 @@ STR_NETWORK_ERR_CLIENT_CHEATER                                  :provis uzi filu
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servilo plenas
 ############ End of leave-in-this-order
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Teamo] :
-STR_NETWORK_CHAT_COMPANY                                        :[Teamo] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Teamo] Al {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Teamo] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Teamo] Al {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Private] :
-STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] Al {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] Al {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Ĉiuj] :
-STR_NETWORK_CHAT_ALL                                            :[Ĉiuj] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Ĉiuj] {STRING}: {WHITE}{STRING}
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} La servilo fermis la sesion
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} La servilo restartiĝas...{}Bonvolu atendi...
 

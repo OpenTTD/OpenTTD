@@ -1699,13 +1699,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} ne
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} a következő összeget utalta cégednek: {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** {1:STRING} cégnek sikeresen átutaltál {2:CURRENCY}-t
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Csapat] :
-STR_NETWORK_CHAT_COMPANY                                        :[Csapat] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Csapat] {STRING} számára: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Csapat] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Csapat] {STRING} számára: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privát] :
-STR_NETWORK_CHAT_CLIENT                                         :[Privát] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privát] {STRING} számára: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Privát] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privát] {STRING} számára: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Mindenkinek] :
-STR_NETWORK_CHAT_ALL                                            :[Mindenkinek] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Mindenkinek] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Add meg a hálózati beszélgetéshez a neved
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} A szerver leállította a játékot
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} A szerver újraindul...{}Türelem...

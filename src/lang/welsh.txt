@@ -1547,13 +1547,13 @@ STR_NETWORK_ERR_CLIENT_CHEATER                                  :yn ceisio twyll
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :gweinydd llawn
 ############ End of leave-in-this-order
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Tîm] :
-STR_NETWORK_CHAT_COMPANY                                        :[Tîm] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Tîm] i {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Tîm] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Tîm] i {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Preifat] :
-STR_NETWORK_CHAT_CLIENT                                         :[Preifat] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Preifat] To {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Preifat] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Preifat] To {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Pawb] :
-STR_NETWORK_CHAT_ALL                                            :[Pawb] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Pawb] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}teipiwch destun ar gyfer sgwrs rwydwaith
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} caeodd y gweinydd y sesiwn
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Mae'r gweinydd yn ailgychwyn...{}Arhoswch...

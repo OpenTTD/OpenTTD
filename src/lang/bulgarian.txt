@@ -1604,13 +1604,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} с
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} изпрати {2:CURRENCY} на твоята компания
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Ти даде {2:CURRENCY} на {1:STRING}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
-STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] До {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] До {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Private] :
-STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] До {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] До {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
-STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Въведи текст за мрежов разговор
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Сървъра прекъсна сесията
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Сървъра се рестартира...{}Моля изчакайте...

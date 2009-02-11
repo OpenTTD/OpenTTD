@@ -1626,13 +1626,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} mu
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} deu à sua companhia {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Deu {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Equipa] :
-STR_NETWORK_CHAT_COMPANY                                        :[Equipa] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipa] Para {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Equipa] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipa] Para {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privado] :
-STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] Para {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] Para {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Todos] :
-STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introduza a mensagem para os outros jogadores
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} O servidor fechou a sessão
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} O servidor está a reiniciar...{}Por favor espere...

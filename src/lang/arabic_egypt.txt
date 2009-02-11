@@ -1631,13 +1631,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} ق
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} اعطى شركتك : {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :***  انت اعطيت : {1:STRING}  {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[فريق]
-STR_NETWORK_CHAT_COMPANY                                        :[فريق]{STRING} : {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[فريق] الى {STRING} : {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[فريق]{STRING} : {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[فريق] الى {STRING} : {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[خاص]:
-STR_NETWORK_CHAT_CLIENT                                         :[خاص] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[خاص] الى {STRING} : {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[خاص] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[خاص] الى {STRING} : {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[الكل]:
-STR_NETWORK_CHAT_ALL                                            :[الكل] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[الكل] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}ادخل نص للمحادثة
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE}اقفل الخادم الجلسة
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} يتم بدأ الخادم من جديد ... {} الرجاء الأنتظار

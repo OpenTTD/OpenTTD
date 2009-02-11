@@ -1561,13 +1561,13 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor cheo
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Equipo] :
-STR_NETWORK_CHAT_COMPANY                                        :[Equipo] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipo] A {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Equipo] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipo] A {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privado] :
-STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] A {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] A {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Todos] :
-STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Escribe o texto para a charla en rede
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} O servidor pechou a conexión
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} O servidor estase a reiniciar...{}Espera por favor...

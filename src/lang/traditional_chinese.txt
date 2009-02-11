@@ -1605,13 +1605,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} �
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} 付給你的公司 {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** 你付給 {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[團隊]：
-STR_NETWORK_CHAT_COMPANY                                        :[團隊] {STRING}：{GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[團隊] 給 {STRING}：{GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[團隊] {STRING}：{WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[團隊] 給 {STRING}：{WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[私人]：
-STR_NETWORK_CHAT_CLIENT                                         :[私人] {STRING}：{GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[私人] 給 {STRING}：{GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[私人] {STRING}：{WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[私人] 給 {STRING}：{WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[全員] ：
-STR_NETWORK_CHAT_ALL                                            :[全員] {STRING}：{GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[全員] {STRING}：{WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}輸入要聊天的文字
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} 伺服器關閉連線
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} 伺服器正在重新啟動...{}請稍候...

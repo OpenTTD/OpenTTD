@@ -1585,13 +1585,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} he
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} het jou besigheid {2:CURRENCY} gegee
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Jy het {1:STRING} {2:CURRENCY} gegee
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Span] :
-STR_NETWORK_CHAT_COMPANY                                        :[Span] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Span] Na {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Span] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Span] Na {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privaat] :
-STR_NETWORK_CHAT_CLIENT                                         :[Privaat] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privaat] Na {STRING}:{GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Privaat] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privaat] Na {STRING}:{WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
-STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Tik woord in vir netwerk kominikasie
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Die verskaffer het die sessie toegemaak
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Die verskaffer is besig om te weerbegin...{}Wag asb...

@@ -1633,13 +1633,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} ş
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} a dat companiei tale {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Ai dat {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
-STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] To {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] To {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Private] :
-STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] pentru {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] pentru {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
-STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introdu textul pentru chat in retea
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE}Serverul a inchis conexiunea
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE}Serverul este repornit...{}Va rugam asteptati...

@@ -1588,13 +1588,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Žaidimas tęsi
 STR_NETWORK_CLIENT_LEAVING                                      :išeinama
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} prisijungė prie žaidimo
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Komandai] :
-STR_NETWORK_CHAT_COMPANY                                        :[Komandai] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Komandai] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Komandai] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Komandai] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privačiai] :
-STR_NETWORK_CHAT_CLIENT                                         :[Privačiai] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privačiai] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Privačiai] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privačiai] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Visiems] :
-STR_NETWORK_CHAT_ALL                                            :[Visiems] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Visiems] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Įveskite tekstą internetiniam čatui
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Serveris uzsidare
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Serveris persikrauna...{}Prasau palaukti...

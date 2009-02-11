@@ -1664,13 +1664,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} zm
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} dal ti spoločnosť {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Dal si {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Tim] :
-STR_NETWORK_CHAT_COMPANY                                        :[Tim] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Tim] pre {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Tim] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Tim] pre {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Súkromne] :
-STR_NETWORK_CHAT_CLIENT                                         :[Osobny] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatny] pre {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Osobny] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatny] pre {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Všetkým] :
-STR_NETWORK_CHAT_ALL                                            :[Všetkým] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Všetkým] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Zadajte text pre sietový chat
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Server ukoncil relaciu
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Server sa restartuje ...{}Cakajte prosim ...

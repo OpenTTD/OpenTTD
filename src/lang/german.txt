@@ -1635,13 +1635,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} ha
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} gab Ihrem Unternehmen {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Sie gaben {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
-STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] an {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] an {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privat] :
-STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] an {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] an {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Alle] :
-STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Chattext eingeben
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE}Der Server hat das Spiel beendet
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE}Der Server startet neu...{}Bitte warten...

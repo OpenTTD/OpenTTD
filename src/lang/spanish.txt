@@ -1634,13 +1634,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} ha
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} da a tu compañia {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Entregas {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Equipo] :
-STR_NETWORK_CHAT_COMPANY                                        :[Equipo] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipo] a {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Equipo] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipo] a {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privado] :
-STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] a {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] a {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Todos] :
-STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introduce el texto para el chat en red
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} El servidor ha cerrado la sesión
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Se está reiniciando el servidor...{}Espere por favor...

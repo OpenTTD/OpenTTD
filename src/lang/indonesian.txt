@@ -1614,13 +1614,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} te
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} telah memberi perusahaanmu {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Anda telah memberi {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Tim] :
-STR_NETWORK_CHAT_COMPANY                                        :[Tim] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Tim] Ke {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Tim] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Tim] Ke {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privat] :
-STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Ke {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Ke {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Semua] :
-STR_NETWORK_CHAT_ALL                                            :[Semua] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Semua] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Masukkan teks untuk perbincangan jaringan
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Server menutup sesi
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Server memulai ulang...{}Tunggulah...

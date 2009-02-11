@@ -1679,13 +1679,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} je
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} je dao vašoj kompaniji {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Dali ste {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Ekipa]:
-STR_NETWORK_CHAT_COMPANY                                        :[Ekipa] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Ekipa] Za {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Ekipa] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Ekipa] Za {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privatno] :
-STR_NETWORK_CHAT_CLIENT                                         :[Privatno] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatno] Za {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Privatno] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatno] Za {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Svima] :
-STR_NETWORK_CHAT_ALL                                            :[Svima] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Svima] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Upišite tekst mrežnog razgovora
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Poslužitelj je zatvorio sesiju
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Poslužitelj se ponovno pokreće...{}Molimo pričekajte...

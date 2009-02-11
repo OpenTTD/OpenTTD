@@ -1630,13 +1630,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} ad
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} şirketinize {2:CURRENCY} verdi
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** {1:STRING} oyuncusuna {2:CURRENCY} verdiniz
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Takım] :
-STR_NETWORK_CHAT_COMPANY                                        :[Takım] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Takım] -> {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Takım] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Takım] -> {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Özel] :
-STR_NETWORK_CHAT_CLIENT                                         :[Özel] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Özel] -> {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Özel] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Özel] -> {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Herkes] :
-STR_NETWORK_CHAT_ALL                                            :[Herkes] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Herkes] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Ağ sohbeti için yazı girin
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Sunucu kapandı
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Sunucu baştan başlatılıyor...{}Lütfen bekleyin...

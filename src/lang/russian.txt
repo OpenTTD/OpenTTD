@@ -1616,13 +1616,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} и
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} передал вашей компании {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Вы передали {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Команда] :
-STR_NETWORK_CHAT_COMPANY                                        :[Команда] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Команде] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Команда] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Команде] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Лично] :
-STR_NETWORK_CHAT_CLIENT                                         :[Лично] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Лично] к {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Лично] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Лично] к {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Всем] :
-STR_NETWORK_CHAT_ALL                                            :[Всем] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Всем] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Введите текст для сетевого сообщения
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Сервер закрыл сессию
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Сервер перезапускается...{}Пожалуйста, подождите...

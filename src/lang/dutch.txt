@@ -1634,13 +1634,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} he
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} gaf je bedrijf {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Je gaf {2:CURRENCY} aan {1:STRING}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
-STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] Aan {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] Aan {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Prive] :
-STR_NETWORK_CHAT_CLIENT                                         :[Prive] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Prive] Aan {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Prive] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Prive] Aan {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Iedereen] :
-STR_NETWORK_CHAT_ALL                                            :[Iedereen] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Iedereen] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Heef de tekst voor de netwerk-chat
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} De server heeft de sessie gestopt.
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} De server wordt opnieuw gestart...{}Wacht aub...

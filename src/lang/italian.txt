@@ -1632,13 +1632,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} ha
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} ha donato alla tua compagnia {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Hai donato {2:CURRENCY} a {1:STRING}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Squadra] :
-STR_NETWORK_CHAT_COMPANY                                        :[Squadra] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Squadra] A {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Squadra] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Squadra] A {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privato] :
-STR_NETWORK_CHAT_CLIENT                                         :[Privato] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privato] A {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Privato] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privato] A {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Tutti] :
-STR_NETWORK_CHAT_ALL                                            :[Tutti] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Tutti] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Inserire il messaggio
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Il server ha chiuso la sessione
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Il server si sta riavviando...{}Attendere prego...

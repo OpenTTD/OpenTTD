@@ -1628,13 +1628,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} mu
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} deu à sua companhia{2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Você deu a {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Equipe] :
-STR_NETWORK_CHAT_COMPANY                                        :[Equipe] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipe] Para {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Equipe] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipe] Para {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privado] :
-STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] Para {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] Para {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Todos] :
-STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Coloque o texto para o jogo em rede
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} O servidor fechou a sessão
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} O servidor está reiniciando...{}Aguarde...

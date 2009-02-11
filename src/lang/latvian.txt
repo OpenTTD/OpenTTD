@@ -1634,13 +1634,13 @@ STR_NETWORK_NAME_CHANGE                                         :*** {STRING} ir
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} iedeva tavai kompānijai {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Jūs iedevāt {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Komanda] :
-STR_NETWORK_CHAT_COMPANY                                        :[Komanda] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Komanda] Uz {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Komanda] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Komanda] Uz {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privāti] :
-STR_NETWORK_CHAT_CLIENT                                         :[Privāti] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privāti] Uz {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Privāti] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privāti] Uz {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Visiem] :
-STR_NETWORK_CHAT_ALL                                            :[Visiem] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Visiem] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Ievadiet tekstu tīkla tērzēšanai
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Serveris beidza sesiju
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Serveris pārstartējas...{}Lūdzu uzgaidiet...
