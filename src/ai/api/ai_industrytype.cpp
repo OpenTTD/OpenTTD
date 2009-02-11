@@ -56,7 +56,7 @@
 	const IndustrySpec *ins = ::GetIndustrySpec(industry_type);
 
 	AIList *list = new AIList();
-	for (int i = 0; i < 2; i++) {
+	for (size_t i = 0; i < lengthof(ins->produced_cargo); i++) {
 		if (ins->produced_cargo[i] != CT_INVALID) list->AddItem(ins->produced_cargo[i], 0);
 	}
 
@@ -70,7 +70,7 @@
 	const IndustrySpec *ins = ::GetIndustrySpec(industry_type);
 
 	AIList *list = new AIList();
-	for (int i = 0; i < 3; i++) {
+	for (size_t i = 0; i < lengthof(ins->accepts_cargo); i++) {
 		if (ins->accepts_cargo[i] != CT_INVALID) list->AddItem(ins->accepts_cargo[i], 0);
 	}
 

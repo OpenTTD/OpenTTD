@@ -97,7 +97,7 @@ public:
 	/**
 	 * Check if a given method exists.
 	 */
-	void CheckMethods(SQInteger *res, const char *name);
+	bool CheckMethod(const char *name);
 
 	/**
 	 * Process the creation of a FileInfo object.

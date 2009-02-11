@@ -119,20 +119,19 @@ const char *AIFileInfo::GetMainScript()
 	return this->main_script;
 }
 
-void AIFileInfo::CheckMethods(SQInteger *res, const char *name)
+bool AIFileInfo::CheckMethod(const char *name)
 {
 	if (!this->engine->MethodExists(*this->SQ_instance, name)) {
 		char error[1024];
 		snprintf(error, sizeof(error), "your info.nut/library.nut doesn't have the method '%s'", name);
 		this->engine->ThrowError(error);
-		*res = SQ_ERROR;
+		return false;
 	}
+	return true;
 }
 
 /* static */ SQInteger AIFileInfo::Constructor(HSQUIRRELVM vm, AIFileInfo *info, bool library)
 {
-	SQInteger res = 0;
-
 	/* Set some basic info from the parent */
 	info->SQ_instance = MallocT<SQObject>(1);
 	Squirrel::GetInstance(vm, info->SQ_instance, 2);
@@ -141,20 +140,21 @@ void AIFileInfo::CheckMethods(SQInteger *res, const char *name)
 	info->base = ((AIScanner *)Squirrel::GetGlobalPointer(vm));
 	info->engine = info->base->GetEngine();
 
-	/* Check if all needed fields are there */
-	info->CheckMethods(&res, "GetAuthor");
-	info->CheckMethods(&res, "GetName");
-	info->CheckMethods(&res, "GetShortName");
-	info->CheckMethods(&res, "GetDescription");
-	info->CheckMethods(&res, "GetVersion");
-	info->CheckMethods(&res, "GetDate");
-	info->CheckMethods(&res, "CreateInstance");
-	if (library) {
-		info->CheckMethods(&res, "GetCategory");
+	static const char * const required_functions[] = {
+		"GetAuthor",
+		"GetName",
+		"GetShortName",
+		"GetDescription",
+		"GetVersion",
+		"GetDate",
+		"CreateInstance",
+	};
+	for (size_t i = 0; i < lengthof(required_functions); i++) {
+		if (!info->CheckMethod(required_functions[i])) return SQ_ERROR;
 	}
-
-	/* Abort if one method was missing */
-	if (res != 0) return res;
+	if (library) {
+		if (!info->CheckMethod("GetCategory")) return SQ_ERROR;
+	}
 
 	info->main_script = strdup(info->base->GetMainScript());
 
