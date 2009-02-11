@@ -23,9 +23,9 @@ STR_000D_ACCEPTS                                                :{BLACK}Aanvaar:
 STR_SUPPLIES                                                    :{BLACK}Voorraad: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Passasiers
-STR_0010_COAL                                                   :Kool
+STR_0010_COAL                                                   :Steenkool
 STR_0011_MAIL                                                   :Pos
-STR_0012_OIL                                                    :Olie
+STR_0012_OIL                                                    :Ru-Olie
 STR_0013_LIVESTOCK                                              :Lewende Hawe
 STR_0014_GOODS                                                  :Goedere
 STR_0015_GRAIN                                                  :Graan
@@ -55,7 +55,7 @@ STR_002C_PLASTIC                                                :Plastiek
 STR_002D_FIZZY_DRINKS                                           :Gas Koeldrank
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Passasier
-STR_0030_COAL                                                   :Kool
+STR_0030_COAL                                                   :Steenkool
 STR_0031_MAIL                                                   :Pos
 STR_0032_OIL                                                    :Olie
 STR_0033_LIVESTOCK                                              :Lewende Hawe
@@ -218,7 +218,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Skepe
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Vliegtuie
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Vervoer Roetes
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Kool Myn
+STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Steenkool Myn
 STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Krag Stasie
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Woud
 STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Saagmeul
@@ -239,7 +239,7 @@ STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFON
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Gomlastiek Plantasie
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Water Lewering
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Water Toring
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Timmerhout Meule
+STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Saag Meule
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Spookasem Woud
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Lekker Fabriek
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Battery Boerdery
@@ -764,6 +764,7 @@ STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Stad
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Kies dorp groote
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Dorp groote:
 
+
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Toon laaste boodskap of nuus verslag
 STR_OFF                                                         :Af
@@ -958,6 +959,7 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Skermsky
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Kies die skermskyf formaat om te gebruik
 
+
 STR_AUTOSAVE_1_MONTH                                            :Elke maand
 STR_AUTOSAVE_FAILED                                             :{WHITE}Outospaar misluk
 
@@ -1024,6 +1026,8 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Laattoe
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Laattoe meer realisties grootte opvanggebied: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Toelaat verwydering van meer stad-besite paaie, bruge, ens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Ontsper gebou van baie lang treine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Oorspronklik
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realisties
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Verbied triene en skepe om 90 graad draaie te maak: {ORANGE}{STRING} {LTBLUE} (benodig NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}sluit aan trein stasies gebou naby mekaar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Laat toe dat stasies lanks mekaar gebind kan word: {ORANGE}{STRING}
@@ -1087,6 +1091,8 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Hoogtek
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Teller vooruit
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Vooruit
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Die hoogte vlak wat 'n plat draaiboek kaart kry: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Een of meer teëls op die Noordelike grens is nie leeg nie
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een of meer teëls by een van die kante is nie water nie
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maks stasie gesprei: {ORANGE}{STRING} {RED}Waarskuwing: hoë stel vertraag speletjie
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Versien helikopters by helihawes outomaties: {ORANGE}{STRING}
@@ -1150,6 +1156,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Sper vl
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Sper skepe vir rekenaar: {ORANGE}{STRING}
 
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Diens pouse is in persente: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Verstek diens pouse vir treine: {ORANGE}{STRING} dae/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Verstek diens pouse vir treine: {ORANGE}strem
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Verstek diens pouse vir pad voertuie: {ORANGE}{STRING} dae/%
@@ -1218,12 +1225,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Treine
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Dorpe
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Nywerhede
 
-STR_CONFIG_SETTING_DISABLED                                     :gestrem
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Verander stel waarde
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Padvinder vir treine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Nie aanbevole nie)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1236,6 +1237,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Padvind
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Oorspronklike {BLUE}(Aanbevole)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nie aanbevole nie)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-groote van kaart: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-groote van kaart: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :gestrem
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Verander stel waarde
 
 STR_TEMPERATE_LANDSCAPE                                         :Magtig landskap
 STR_SUB_ARCTIC_LANDSCAPE                                        :Onder-noordpool landskap
@@ -1363,9 +1373,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Herstel 
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Kies vrag tipe vir trein te ontvoer
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Herstel trein om verlig vrag tipe te ontvoer
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}kan nie trein herstel nie...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Diens pouse is in persente: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Verander produksie
-
 
 ############ network gui strings
 
@@ -1538,6 +1546,7 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Sleutel 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Verskaffer is beskerm. Invoeg wagwoord
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Maatskappy is beskerm. Invoeg wagwoord
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klient Lys
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nuwe Maatskapy
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Geen netwerk ontwerp gevind of voldoen sonder ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Kan nie enige netwerk spele vind nie
@@ -1611,11 +1620,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privaate boodsk
 STR_NETWORK_SEND                                                :{BLACK}Stuur
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-groote van kaart: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-groote van kaart: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -3317,11 +3321,11 @@ STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop Voe
 STR_NOT_REPLACING                                               :{BLACK}Word nie vervang nie
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Geen voertuig gekies
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Kies die enjin tipe te vervang
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Kies die nuwe enjin tipe jy wou gebriuk in plaas van die linkerkant gekose enjin tipe
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Kies die nuwe enjin tipe wat jy wil gebriuk in plaas van die linker gekose enjin tipe
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Druk om te stop die vervanger van die enjin tipe gekose links
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Druk om te begin vervanger van die linkerkant gekose enjin tipe met die regte gekose enjin tipe
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Kies die spoortipe waarvoor jy wil enjine vervang
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Toon watter enjin die linkerkand gekose enjin word vervang met, of enige
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Druk om vervanging van die linker gekose enjin tipe met die regter gekose enjin tipe te begin
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Kies die spoortipe waarvoor jy die enjines wil  vervang
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Toon aan watter enjin die linker gekose enjin mee vervang moet word , indien enige
 STR_REPLACE_HELP                                                :{BLACK}Hierdie laat jou toe om te vervang een enjin tipe met 'n ander tipe, wanneer treine van die oorspronklike tipe arriveer by 'n depot
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wa verwydering: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Maak autoreplace hou die lengte van 'n trein dieselfde deur verwyder waens (begin by die voor), indien vervang die enjin sal die trein langer maak
@@ -3439,6 +3443,8 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Hoogte v
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Senter die kleinkaart op die huidige posisie
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+
+# Strings for map borders at game generation
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Klein
@@ -3608,7 +3614,16 @@ STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\q
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
+############ AI GUI
+########
+
 ############ town controlled noise level
 STR_NOISE_IN_TOWN                                               :{BLACK}Geraaas limit in dorp: {ORANGE}{COMMA}{BLACK}  Maks: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Geraas gegenereer: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

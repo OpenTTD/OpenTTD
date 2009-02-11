@@ -157,7 +157,7 @@ STR_00B1_GAME_OPTIONS                                           :{WHITE}Pilihan 
 STR_00B2_MESSAGE                                                :{YELLOW}Pesan
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Pesan dari {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Peringatan!
-STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Tidak dapat melakukan ini....
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Tidak bisa
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Tidak dapat membersihkan area ini....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Hak Cipta asli {COPYRIGHT} 1995 Chris Sawyer, Hak Cipta dilindungi
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versi {REV}
@@ -218,7 +218,7 @@ STR_00F7_SHIPS                                                  :{BLACK}{TINYFON
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Pesawat
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Jalur Transportasi
 STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Tambang Batubara
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Stasiun Pembangkit Listrik
+STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Pembangkit Listrik
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Hutan
 STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Penggergajian Kayu
 STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Kilang Minyak
@@ -760,9 +760,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}... kedu
 STR_02A1_SMALL                                                  :{BLACK}Kecil
 STR_02A2_MEDIUM                                                 :{BLACK}Sedang
 STR_02A3_LARGE                                                  :{BLACK}Besar
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Acak
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Kota
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Kota tumbuh lebih cepat daripada kecamatan{}Tergantung setting, kota lebih besar ketika dibuat.
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Pilih ukuran kota
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Ukuran kota:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Tata letak jalan:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Pilih tata letak jalan untuk kota ini:
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Asli
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Lebih baik
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}grid 2x2
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}grid 3x3
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Acak
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Tampilkan pesan atau laporan berita terakhir
@@ -958,6 +968,10 @@ STR_OPTIONS_RES_TIP                                             :{BLACK}Pilih re
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format tangkapan layar
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Pilih format hasil tangkapan layar
+
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Grafik Set Standar
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Pilih grafis dasar untuk digunakan
 
 STR_AUTOSAVE_1_MONTH                                            :Setiap bulan
 STR_AUTOSAVE_FAILED                                             :{WHITE}Simpan otomatis gagal
@@ -1163,6 +1177,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Non-akt
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Ijinkan kecerdasan pada modus banyak pemain: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcode AI sebelum dihentikan: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Jangka waktu servis dalam persen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard jangka servis berkala kereta: {ORANGE}{STRING} hari/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard jangka servis berkala untuk kereta: {ORANGE}Non-aktif
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Standard jangka servis berkala bus/truk: {ORANGE}{STRING} hari/%
@@ -1191,11 +1206,14 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Hanya sinyal bl
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Hanya sinyal jalur
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Semua
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Tata letak jalan untuk kota baru: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Asli
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :lebih baik
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :kotak 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :kotak 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :acak
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Kota boleh membangun jalan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Ijinkan kota mengatur tingkat kebisingan bandara : {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posisi toolbar utama: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Kiri
@@ -1234,12 +1252,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Kereta
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Kota
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industri
 
-STR_CONFIG_SETTING_DISABLED                                     :Non-aktifkan
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Ganti nilai tetapan
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pencari jejak untuk kereta api: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :{RED}(Tidak direkomendasikan)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1252,6 +1264,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pencari
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orisinil {BLUE}(Dianjurkan)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Tdk dianjurkan)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Ukuran X peta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Ukuran Y peta: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :Non-aktifkan
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Ganti nilai tetapan
 
 STR_TEMPERATE_LANDSCAPE                                         :Lansekap 'sederhana'
 STR_SUB_ARCTIC_LANDSCAPE                                        :Lansekap 'Sub Antartika'
@@ -1379,7 +1400,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Renovasi
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Pilih jenis kargo yang akan dibawa kereta
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Ubah kargo lokomotif untuk membawa kargo terpilih
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Tidak dapat mengubah kargo lokomotif...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Jangka waktu servis dalam persen: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Perubahan produksi
 
 ############ network gui strings
@@ -1640,11 +1660,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Pesan pribadi
 STR_NETWORK_SEND                                                :{BLACK}Kirim
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Ukuran X peta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Ukuran Y peta: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -3725,7 +3740,6 @@ STR_AI_DESCRIPTION                                              :Deskripsi:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Ijinkan kota mengatur tingkat kebisingan bandara : {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Batas kebisingan di kota : {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Tingkat Kebisingan: {GOLD}{COMMA}
 ########
@@ -3751,6 +3765,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pilih pe
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Pilih semua konten yang tersedia pembaruannya untuk diunduh
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Hps semua pilihan
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Tandai semua untuk tidak diunduh
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Masukkan string filter
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Masukkan kata kunci untuk filter
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Nama Filter:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Unduh
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Mulai unduh konten terpilih
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total ukuran terunduh: {WHITE}{BYTES}

@@ -261,8 +261,11 @@ STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Poloha
 STR_00E5_CONTOURS                                               :Vrstevnice
+STR_00E5_CONTOURS.g                                             :vrstevnic
 STR_00E6_VEHICLES                                               :Dopravné prostriedky
+STR_00E6_VEHICLES.g                                             :dopravnych prostriedkov
 STR_00E7_INDUSTRIES                                             :Priemysel
+STR_00E7_INDUSTRIES.g                                           :priemyslu
 STR_00E8_ROUTES                                                 :Trasy
 STR_00E9_VEGETATION                                             :Vegetácia
 STR_00EA_OWNERS                                                 :Vlastníci
@@ -828,6 +831,7 @@ STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Mesto
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Vyber velkost mesta
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Velkost mesta:
 
+
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Zobrazit poslednu spravu alebo novinku
 STR_OFF                                                         :Vypnute
@@ -1021,6 +1025,7 @@ STR_OPTIONS_RES_TIP                                             :{BLACK}Vyber ro
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formát screenshotov
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vyber format screenshotov
+
 
 STR_AUTOSAVE_1_MONTH                                            :Každý mesiac
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autoulozenie zlyhalo
@@ -1218,6 +1223,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Zakazat
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Povolit AI v multiplayeri (experimentalne): {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Servisne intervaly v percentach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Implicitný servisný interval pre vlaky: {ORANGE}{STRING} dní/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Implicitny servisny interval pre vlaky: {ORANGE}vypnuty
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Implicitny servisny interval pre automobily: {ORANGE}{STRING} dni/%
@@ -1251,6 +1257,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :zdokonalená
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :bloky 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :bloky 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :náhodne
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Povolit mestom urcené hlukové limity pre letiská: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pozícia hlavného menu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :vlavo
@@ -1289,12 +1296,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlaky
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Mestá
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Priemysel
 
-STR_CONFIG_SETTING_DISABLED                                     :zakazane
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Zmenit hodnotu nastavenia
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Algoritmus hladania cesty pre vlaky: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(neodporúca sa)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1307,6 +1308,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Algorit
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :pôvodný {BLUE}(odporúca sa)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(neodporúca sa)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-rozmer mapy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-rozmer mapy: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :zakazane
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Zmenit hodnotu nastavenia
 
 STR_TEMPERATE_LANDSCAPE                                         :krajina mierneho pasma
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarkticka krajina
@@ -1434,7 +1444,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Prestava
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vybrat typ prepravovaneho nakladu
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Prestavat vlak na prepravu vybraneho nakladu
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nemozno prestavat vlak ...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Servisne intervaly v percentach: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmenit produkciu
 
 ############ network gui strings
@@ -1690,11 +1699,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privatna sprava
 STR_NETWORK_SEND                                                :{BLACK}Poslat
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-rozmer mapy: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-rozmer mapy: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -3541,6 +3545,8 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Vyska ro
 STR_SMALLMAP_CENTER                                             :{BLACK}Vycentrovat malu mapu na aktualnu poziciu
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
+# Strings for map borders at game generation
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Male
 STR_CITY_AIRPORT                                                :{BLACK}Mestske
@@ -3735,7 +3741,6 @@ STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI Debu
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Povolit mestom urcené hlukové limity pre letiská: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Hlukový limit v meste: {ORANGE}{COMMA}{BLACK}  max.: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Vytváraný hluk: {GOLD}{COMMA}
 ########

@@ -1,5 +1,5 @@
 ##name Persian
-##ownname Farsi
+##ownname فارسی
 ##isocode fa_IR
 ##winlangid 0x0429
 ##plural 0
@@ -8,6 +8,15 @@
 #
 
 ##id 0x0000
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}خارج از نقشه
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}بسیار نزدیک به حاشیه ی نقشه
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}پول به اندازه ی کافی موجود نیست- به {CURRENCY} نیاز است
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}زمین باید مسطح باشد
+STR_0008_WAITING                                                :{BLACK}در انتظار: {WHITE}{STRING}
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000C_ACCEPTS                                                :{BLACK}قبول می کند: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}قبول می کند: {GOLD}
 STR_000F_PASSENGERS                                             :مسافر
 STR_0010_COAL                                                   :ذغال
 STR_0011_MAIL                                                   :پاکت پستی
@@ -270,10 +279,10 @@ STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLAC
 ############ range for service numbers starts
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :ماشین
-STR_019D_AIRCRAFT                                               :هواپیما
-STR_019E_SHIP                                                   :کشتی
 STR_019F_TRAIN                                                  :قطار
+STR_019C_ROAD_VEHICLE                                           :ماشین
+STR_019E_SHIP                                                   :کشتی
+STR_019D_AIRCRAFT                                               :هواپیما
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}اطلاعات زمین
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}هزینه پاک کردن: {LTBLUE}0
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}هزینه پاک کردن: {RED}{CURRENCY}
@@ -282,37 +291,37 @@ STR_01AA_NAME                                                   :{BLACK}نام
 STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
-STR_01AC_1ST                                                    :اولین
-STR_01AD_2ND                                                    :دومین
-STR_01AE_3RD                                                    :سومین
-STR_01AF_4TH                                                    :چهارمین
-STR_01B0_5TH                                                    :پنجمین
-STR_01B1_6TH                                                    :ششمین
-STR_01B2_7TH                                                    :هفتمین
-STR_01B3_8TH                                                    :هشتمین
-STR_01B4_9TH                                                    :نهمین
-STR_01B5_10TH                                                   :دهمین
-STR_01B6_11TH                                                   :یازدهمین
-STR_01B7_12TH                                                   :دوازدهمین
-STR_01B8_13TH                                                   :سیزدهمین
-STR_01B9_14TH                                                   :چهار دهمین
-STR_01BA_15TH                                                   :پونزدهمین
-STR_01BB_16TH                                                   :شونزدهمین
-STR_01BC_17TH                                                   :هفدهمین
-STR_01BD_18TH                                                   :هجدهمین
-STR_01BE_19TH                                                   :نونزدهمین
-STR_01BF_20TH                                                   :بیستمین
-STR_01C0_21ST                                                   :بیست و یکمین
-STR_01C1_22ND                                                   :بیست و دومین
-STR_01C2_23RD                                                   :بیست و سومین
-STR_01C3_24TH                                                   :بیست و چهارمین
-STR_01C4_25TH                                                   :بیست و پنجمین
-STR_01C5_26TH                                                   :بیست و ششمین
-STR_01C6_27TH                                                   :بیست و هفتمین
-STR_01C7_28TH                                                   :بیست و هشتمین
-STR_01C8_29TH                                                   :بیست و نهمین
-STR_01C9_30TH                                                   :سیمین
-STR_01CA_31ST                                                   :سی و یکمین
+STR_01AC_1ST                                                    :1
+STR_01AD_2ND                                                    :2
+STR_01AE_3RD                                                    :3
+STR_01AF_4TH                                                    :4
+STR_01B0_5TH                                                    :5
+STR_01B1_6TH                                                    :6
+STR_01B2_7TH                                                    :7
+STR_01B3_8TH                                                    :8
+STR_01B4_9TH                                                    :9
+STR_01B5_10TH                                                   :10
+STR_01B6_11TH                                                   :11
+STR_01B7_12TH                                                   :12
+STR_01B8_13TH                                                   :13
+STR_01B9_14TH                                                   :14
+STR_01BA_15TH                                                   :15
+STR_01BB_16TH                                                   :16
+STR_01BC_17TH                                                   :17
+STR_01BD_18TH                                                   :18
+STR_01BE_19TH                                                   :19
+STR_01BF_20TH                                                   :20
+STR_01C0_21ST                                                   :21
+STR_01C1_22ND                                                   :22
+STR_01C2_23RD                                                   :23
+STR_01C3_24TH                                                   :24
+STR_01C4_25TH                                                   :25
+STR_01C5_26TH                                                   :26
+STR_01C6_27TH                                                   :27
+STR_01C7_28TH                                                   :28
+STR_01C8_29TH                                                   :29
+STR_01C9_30TH                                                   :30
+STR_01CA_31ST                                                   :31
 ############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
@@ -472,6 +481,7 @@ STR_02A3_LARGE                                                  :{BLACK}بزرگ
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}انتخاب اندازه ی شهر
 STR_02A5_TOWN_SIZE                                              :{YELLOW}اندازه ی شهر :
 
+
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK} اخرین پیغام یا گزارش را نشان بده
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
@@ -572,6 +582,7 @@ STR_6                                                           :{BLACK}6
 
 
 
+
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
@@ -596,6 +607,8 @@ STR_6                                                           :{BLACK}6
 
 
 
+
+############ generic strings for settings
 
 
 
@@ -658,15 +671,14 @@ STR_6                                                           :{BLACK}6
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 
 
 
 
 ############ end network gui strings
-
-
-
 
 ##### PNG-MAP-Loader
 
@@ -806,6 +818,7 @@ STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE} تعداد لامات بسیار زیاد شده
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}اینجا نمی شود علامت ساخت
 STR_280A_SIGN                                                   :علامت
+STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}تغییر نام علامت
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}نمی شود اسم علامت را عوض کرد
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}نوع درخت را مشخص کنید تا کاشته شود
 STR_280E_TREES                                                  :درختان
@@ -1048,6 +1061,7 @@ STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}حد ا
 
 
 
+SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
 
@@ -1091,6 +1105,8 @@ STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}حد ا
 
 
 
+# Strings for map borders at game generation
+
 ########### String for new airports
 
 
@@ -1125,5 +1141,14 @@ STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}حد ا
 ############ on screen keyboard
 ########
 
+############ AI GUI
+########
+
 ############ town controlled noise level
+########
+
+############ Downloading of content from the central server
+
+
+
 ########
