@@ -1267,11 +1267,8 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 
 				if (not_clearable) return false;
 			} else {
-				/* Clear the tiles as OWNER_TOWN to not affect town rating, and to not clear protected buildings */
-				CompanyID old_company = _current_company;
-				_current_company = OWNER_TOWN;
-				bool not_clearable = CmdFailed(DoCommand(cur_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR));
-				_current_company = old_company;
+				/* Clear the tiles, but do not affect town ratings */
+				bool not_clearable = CmdFailed(DoCommand(cur_tile, 0, 0, DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, CMD_LANDSCAPE_CLEAR));
 
 				if (not_clearable) return false;
 			}
@@ -1368,7 +1365,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 	if (TileX(cur_tile) + size_x >= MapMaxX() || TileY(cur_tile) + size_y >= MapMaxY()) return false;
 
 	/* _current_company is OWNER_NONE for randomly generated industries and in editor, or the company who funded or prospected the industry.
-	 * Perform terraforming as OWNER_TOWN to disable autoslope. */
+	 * Perform terraforming as OWNER_TOWN to disable autoslope and town ratings. */
 	CompanyID old_company = _current_company;
 	_current_company = OWNER_TOWN;
 
@@ -1456,7 +1453,7 @@ enum ProductionLevels {
 	PRODLEVEL_MAXIMUM = 0x80,  ///< the industry is running at full speed
 };
 
-static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const IndustryTileTable *it, byte layout, const Town *t, Owner owner)
+static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const IndustryTileTable *it, byte layout, const Town *t, Owner owner, Owner founder)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 	uint32 r;
@@ -1508,7 +1505,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->last_prod_year = _cur_year;
 	i->last_month_production[0] = i->production_rate[0] * 8;
 	i->last_month_production[1] = i->production_rate[1] * 8;
-	i->founder = _current_company;
+	i->founder = founder;
 
 	if (HasBit(indspec->callback_flags, CBM_IND_DECIDE_COLOUR)) {
 		uint16 res = GetIndustryCallback(CBID_INDUSTRY_DECIDE_COLOUR, 0, 0, i, type, INVALID_TILE);
@@ -1546,9 +1543,6 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 
 	i->prod_level = PRODLEVEL_DEFAULT;
 
-	/* Clear the tiles as OWNER_TOWN, to not affect town rating, and to not clear protected buildings */
-	CompanyID old_company = _current_company;
-	_current_company = OWNER_TOWN;
 	do {
 		TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
 
@@ -1562,7 +1556,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 
 			WaterClass wc = (IsWaterTile(cur_tile) ? GetWaterClass(cur_tile) : WATER_CLASS_INVALID);
 
-			DoCommand(cur_tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+			DoCommand(cur_tile, 0, 0, DC_EXEC | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, CMD_LANDSCAPE_CLEAR);
 
 			MakeIndustry(cur_tile, i->index, it->gfx, Random(), wc);
 
@@ -1577,7 +1571,6 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 			if (its->animation_info != 0xFFFF) AddAnimatedTile(cur_tile);
 		}
 	} while ((++it)->ti.x != -0x80);
-	_current_company = old_company;
 
 	i->width++;
 	i->height++;
@@ -1595,9 +1588,10 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
  * @param indspec pointer to industry specifications
  * @param itspec_index the index of the itsepc to build/fund
  * @param seed random seed (possibly) used by industries
+ * @param founder Founder of the industry
  * @return the pointer of the newly created industry, or NULL if it failed
  */
-static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCommandFlag flags, const IndustrySpec *indspec, uint itspec_index, uint32 seed)
+static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCommandFlag flags, const IndustrySpec *indspec, uint itspec_index, uint32 seed, Owner founder)
 {
 	const IndustryTileTable *it = indspec->table[itspec_index];
 	bool custom_shape_check = false;
@@ -1623,7 +1617,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCo
 	if (flags & DC_EXEC) {
 		Industry *i = new Industry(tile);
 		if (!custom_shape_check) CheckIfCanLevelIndustryPlatform(tile, DC_EXEC, it, type);
-		DoCreateNewIndustry(i, tile, type, it, itspec_index, t, OWNER_NONE);
+		DoCreateNewIndustry(i, tile, type, it, itspec_index, t, OWNER_NONE, founder);
 
 		return i;
 	}
@@ -1660,6 +1654,9 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	if (_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && indspec->IsRawIndustry()) {
 		if (flags & DC_EXEC) {
+			/* Prospected industries are build as OWNER_TOWN to not e.g. be build on owned land of the founder */
+			CompanyID founder = _current_company;
+			_current_company = OWNER_TOWN;
 			/* Prospecting has a chance to fail, however we cannot guarantee that something can
 			 * be built on the map, so the chance gets lower when the map is fuller, but there
 			 * is nothing we can really do about that. */
@@ -1669,12 +1666,13 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 					 * because parameter evaluation order is not guaranteed in the c++ standard
 					 */
 					tile = RandomTile();
-					ind = CreateNewIndustryHelper(tile, p1, flags, indspec, RandomRange(indspec->num_table), p2);
+					ind = CreateNewIndustryHelper(tile, p1, flags, indspec, RandomRange(indspec->num_table), p2, founder);
 					if (ind != NULL) {
 						break;
 					}
 				}
 			}
+			_current_company = founder;
 		}
 	} else {
 		int count = indspec->num_table;
@@ -1687,7 +1685,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			if (--num < 0) num = indspec->num_table - 1;
 		} while (!CheckIfIndustryTilesAreFree(tile, itt[num], num, p1));
 
-		ind = CreateNewIndustryHelper(tile, p1, flags, indspec, num, p2);
+		ind = CreateNewIndustryHelper(tile, p1, flags, indspec, num, p2, _current_company);
 		if (ind == NULL) return CMD_ERROR;
 	}
 
@@ -1712,7 +1710,7 @@ Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
 	uint32 seed = Random();
-	return CreateNewIndustryHelper(tile, type, DC_EXEC, indspec, RandomRange(indspec->num_table), seed);
+	return CreateNewIndustryHelper(tile, type, DC_EXEC, indspec, RandomRange(indspec->num_table), seed, OWNER_NONE);
 }
 
 enum {
