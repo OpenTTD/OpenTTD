@@ -121,7 +121,6 @@ public:
 
 	/** Removes given item from this map
 	 * @param item item to remove
-	 * @return true iff key was found
 	 * @note it has to be pointer to item in this map. It is overwritten by the last item.
 	 */
 	FORCEINLINE void Erase(T *item)

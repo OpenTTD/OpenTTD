@@ -45,7 +45,6 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 
 	/** Removes given pair from this map
 	 * @param pair pair to remove
-	 * @return true iff the key was found
 	 * @note it has to be pointer to pair in this map. It is overwritten by the last item.
 	 */
 	FORCEINLINE void Erase(Pair *pair)
