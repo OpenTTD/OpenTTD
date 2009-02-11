@@ -294,16 +294,16 @@ enum {
  * This enums defines some flags which can be used for the commands.
  */
 enum DoCommandFlag {
-	DC_NONE            = 0x000, ///< no flag is set
-	DC_EXEC            = 0x001, ///< execute the given command
-	DC_AUTO            = 0x002, ///< don't allow building on structures
-	DC_QUERY_COST      = 0x004, ///< query cost only,  don't build.
-	DC_NO_WATER        = 0x008, ///< don't allow building on water
-	DC_NO_RAIL_OVERLAP = 0x010, ///< don't allow overlap of rails (used in buildrail)
-	DC_NO_TOWN_RATING  = 0x020, ///< town rating does not disallow you from building
-	DC_BANKRUPT        = 0x040, ///< company bankrupts, skip money check, skip vehicle on tile check in some cases
-	DC_AUTOREPLACE     = 0x080, ///< autoreplace/autorenew is in progress, this shall disable vehicle limits when building, and ignore certain restrictions when undoing things (like vehicle attach callback)
-	DC_ALL_TILES       = 0x100, ///< allow this command also on MP_VOID tiles
+	DC_NONE                  = 0x000, ///< no flag is set
+	DC_EXEC                  = 0x001, ///< execute the given command
+	DC_AUTO                  = 0x002, ///< don't allow building on structures
+	DC_QUERY_COST            = 0x004, ///< query cost only,  don't build.
+	DC_NO_WATER              = 0x008, ///< don't allow building on water
+	DC_NO_RAIL_OVERLAP       = 0x010, ///< don't allow overlap of rails (used in buildrail)
+	DC_NO_TEST_TOWN_RATING   = 0x020, ///< town rating does not disallow you from building
+	DC_BANKRUPT              = 0x040, ///< company bankrupts, skip money check, skip vehicle on tile check in some cases
+	DC_AUTOREPLACE           = 0x080, ///< autoreplace/autorenew is in progress, this shall disable vehicle limits when building, and ignore certain restrictions when undoing things (like vehicle attach callback)
+	DC_ALL_TILES             = 0x100, ///< allow this command also on MP_VOID tiles
 };
 DECLARE_ENUM_AS_BIT_SET(DoCommandFlag);
 

@@ -531,7 +531,7 @@ static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
 	Town *t = _cleared_town = GetTownByTile(tile);
 
 	if (IsValidCompanyID(_current_company)) {
-		if (rating > t->ratings[_current_company] && !(flags & DC_NO_TOWN_RATING) && !_cheats.magic_bulldozer.value) {
+		if (rating > t->ratings[_current_company] && !(flags & DC_NO_TEST_TOWN_RATING) && !_cheats.magic_bulldozer.value) {
 			SetDParam(0, t->index);
 			return_cmd_error(STR_2009_LOCAL_AUTHORITY_REFUSES);
 		}
@@ -2495,11 +2495,11 @@ static void UpdateTownUnwanted(Town *t)
 /**
  * Checks whether the local authority allows construction of a new station (rail, road, airport, dock) on the given tile
  * @param tile The tile where the station shall be constructed.
- * @param flags Command flags. DC_NO_TOWN_RATING is tested.
+ * @param flags Command flags. DC_NO_TEST_TOWN_RATING is tested.
  */
 bool CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags)
 {
-	if (!IsValidCompanyID(_current_company) || (flags & DC_NO_TOWN_RATING)) return true;
+	if (!IsValidCompanyID(_current_company) || (flags & DC_NO_TEST_TOWN_RATING)) return true;
 
 	Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 	if (t == NULL) return true;
@@ -2642,7 +2642,7 @@ bool CheckforTownRating(DoCommandFlag flags, Town *t, byte type)
 	 */
 	int modemod = _default_rating_settings[_settings_game.difficulty.town_council_tolerance][type];
 
-	if (GetRating(t) < 16 + modemod && !(flags & DC_NO_TOWN_RATING)) {
+	if (GetRating(t) < 16 + modemod && !(flags & DC_NO_TEST_TOWN_RATING)) {
 		SetDParam(0, t->index);
 		_error_message = STR_2009_LOCAL_AUTHORITY_REFUSES;
 		return false;
