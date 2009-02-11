@@ -39,12 +39,8 @@ enum RailTypes {
 	RAILTYPES_ELECTRIC = 1 << RAILTYPE_ELECTRIC, ///< Electrified rails
 	RAILTYPES_MONO     = 1 << RAILTYPE_MONO,     ///< Monorail!
 	RAILTYPES_MAGLEV   = 1 << RAILTYPE_MAGLEV,   ///< Ever fast maglev
-	RAILTYPES_ALL      = RAILTYPES_RAIL | RAILTYPES_ELECTRIC | RAILTYPES_MONO | RAILTYPES_MAGLEV, ///< All of them
-	RAILTYPES_END,                               ///< Used for iterations?
-	INVALID_RAILTYPES  = 0xFF                    ///< Invalid railtypes
+	INVALID_RAILTYPES  = UINT_MAX                ///< Invalid railtypes
 };
 DECLARE_ENUM_AS_BIT_SET(RailTypes);
-template <> struct EnumPropsT<RailTypes> : MakeEnumPropsT<RailTypes, byte, RAILTYPES_NONE, RAILTYPES_END, INVALID_RAILTYPES> {};
-typedef TinyEnumT<RailTypes> RailTypesByte;
 
 #endif /* RAIL_TYPE_H */
