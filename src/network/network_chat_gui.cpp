@@ -96,7 +96,7 @@ void CDECL NetworkAddChatMessage(TextColour colour, uint8 duration, const char *
 
 		/* The default colour for a message is company colour. Replace this with
 		 * white for any additional lines */
-		cmsg->colour = (bufp == buf && colour & IS_PALETTE_COLOUR) ? colour : (TextColour)(0x1D - 15) | IS_PALETTE_COLOUR;
+		cmsg->colour = (bufp == buf && colour & IS_PALETTE_COLOUR) ? colour : TC_WHITE;
 		cmsg->end_date = _date + duration;
 
 		bufp += strlen(bufp) + 1; // jump to 'next line' in the formatted string
