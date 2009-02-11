@@ -13,13 +13,14 @@
 #include "engine_base.h"
 #include "date_func.h"
 #include "settings_type.h"
+#include "landscape.h"
 
 bool IsPossibleCrossing(const TileIndex tile, Axis ax)
 {
 	return (IsTileType(tile, MP_RAILWAY) &&
 		!HasSignals(tile) &&
-		GetTrackBits(tile) == (ax == AXIS_X ?  TRACK_BIT_Y : TRACK_BIT_X) &&
-		GetTileSlope(tile, NULL) == SLOPE_FLAT);
+		GetTrackBits(tile) == (ax == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X) &&
+		GetFoundationSlope(tile, NULL) == SLOPE_FLAT);
 }
 
 RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)

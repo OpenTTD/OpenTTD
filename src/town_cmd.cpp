@@ -776,7 +776,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 				return false;
 		}
 
-		cur_slope = GetTileSlope(tile, NULL);
+		cur_slope = _settings_game.construction.build_on_slopes ? GetFoundationSlope(tile, NULL) : GetTileSlope(tile, NULL);
 		if (cur_slope == SLOPE_FLAT) {
 no_slope:
 			/* Tile has no slope */
