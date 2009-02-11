@@ -537,7 +537,7 @@ static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
 		}
 	}
 
-	ChangeTownRating(t, -rating, RATING_HOUSE_MINIMUM);
+	ChangeTownRating(t, -rating, RATING_HOUSE_MINIMUM, flags);
 	if (flags & DC_EXEC) {
 		ClearTownHouse(t, tile);
 	}
@@ -2278,7 +2278,7 @@ static void TownActionBribe(Town *t)
 			InvalidateWindow(WC_TOWN_AUTHORITY, t->index);
 		}
 	} else {
-		ChangeTownRating(t, RATING_BRIBE_UP_STEP, RATING_BRIBE_MAXIMUM);
+		ChangeTownRating(t, RATING_BRIBE_UP_STEP, RATING_BRIBE_MAXIMUM, DC_EXEC);
 	}
 }
 
@@ -2591,10 +2591,17 @@ static int GetRating(const Town *t)
 	return t->ratings[_current_company];
 }
 
-void ChangeTownRating(Town *t, int add, int max)
+/**
+ * Changes town rating of the current company
+ * @param t Town to affect
+ * @param add Value to add
+ * @param max Minimum (add < 0) resp. maximum (add > 0) rating that should be archievable with this change
+ * @param flags Command flags, especially DC_NO_MODIFY_TOWN_RATING is tested
+ */
+void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags)
 {
 	/* if magic_bulldozer cheat is active, town doesn't penaltize for removing stuff */
-	if (t == NULL ||
+	if (t == NULL || (flags & DC_NO_MODIFY_TOWN_RATING) ||
 			!IsValidCompanyID(_current_company) ||
 			(_cheats.magic_bulldozer.value && add < 0)) {
 		return;

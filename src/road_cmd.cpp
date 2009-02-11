@@ -157,7 +157,7 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType
 		}
 		rating_decrease = RATING_ROAD_DOWN_STEP_INNER;
 	}
-	ChangeTownRating(t, rating_decrease, RATING_ROAD_MINIMUM);
+	ChangeTownRating(t, rating_decrease, RATING_ROAD_MINIMUM, flags);
 
 	return true;
 }

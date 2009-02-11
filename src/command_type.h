@@ -304,6 +304,7 @@ enum DoCommandFlag {
 	DC_BANKRUPT              = 0x040, ///< company bankrupts, skip money check, skip vehicle on tile check in some cases
 	DC_AUTOREPLACE           = 0x080, ///< autoreplace/autorenew is in progress, this shall disable vehicle limits when building, and ignore certain restrictions when undoing things (like vehicle attach callback)
 	DC_ALL_TILES             = 0x100, ///< allow this command also on MP_VOID tiles
+	DC_NO_MODIFY_TOWN_RATING = 0x200, ///< do not change town rating
 };
 DECLARE_ENUM_AS_BIT_SET(DoCommandFlag);
 

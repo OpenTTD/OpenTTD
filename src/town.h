@@ -355,7 +355,7 @@ void UpdateTownMaxPass(Town *t);
 void UpdateTownRadius(Town *t);
 bool CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags);
 Town *ClosestTownFromTile(TileIndex tile, uint threshold);
-void ChangeTownRating(Town *t, int add, int max);
+void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags);
 HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile);
 void SetTownRatingTestMode(bool mode);
 uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t);
