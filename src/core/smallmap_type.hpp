@@ -45,7 +45,7 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 
 	/** Removes given pair from this map
 	 * @param pair pair to remove
-	 * @return true if the key was found
+	 * @return true iff the key was found
 	 * @note it has to be pointer to pair in this map. It is overwritten by the last item.
 	 */
 	FORCEINLINE void Erase(Pair *pair)
@@ -56,7 +56,7 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 
 	/** Removes given key from this map
 	 * @param key key to remove
-	 * @return true if the key was found
+	 * @return true iff the key was found
 	 * @note last item is moved to its place, so don't increase your iterator if true is returned!
 	 */
 	FORCEINLINE bool Erase(const T &key)
@@ -73,7 +73,7 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	/** Adds new item to this map.
 	 * @param key key
 	 * @param data data
-	 * @return true if the key wasn't already present
+	 * @return true iff the key wasn't already present
 	 */
 	FORCEINLINE bool Insert(const T &key, const U &data)
 	{
