@@ -656,6 +656,8 @@ int ttd_main(int argc, char *argv[])
 	GenerateWorld(GW_EMPTY, 64, 64); // Make the viewport initialization happy
 	WaitTillGeneratedWorld();
 
+	CheckForMissingGlyphsInLoadedLanguagePack();
+
 #ifdef ENABLE_NETWORK
 	if (network && _network_available) {
 		if (network_conn != NULL) {
