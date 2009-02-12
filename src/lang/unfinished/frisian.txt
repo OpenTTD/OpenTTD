@@ -1468,7 +1468,7 @@ STR_804A_SUGAR_TRUCK                                            :Sûkerwein
 
 
 
-SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
+STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
 

@@ -982,7 +982,7 @@ public:
 
 			/* Draw the score */
 			SetDParam(0, score);
-			DrawStringRightAligned(107, y, SET_PERFORMANCE_DETAIL_INT, TC_FROMSTRING);
+			DrawStringRightAligned(107, y, STR_PERFORMANCE_DETAIL_INT, TC_FROMSTRING);
 
 			/* Calculate the %-bar */
 			x = Clamp(val, 0, needed) * 50 / needed;

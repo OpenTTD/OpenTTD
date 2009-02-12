@@ -459,7 +459,7 @@ STR_019F_TRAIN                                                  :Treni
 
 
 
-SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
+STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
 

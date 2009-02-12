@@ -3229,7 +3229,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}تفاص
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
+STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}العربات:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}المحطات:

@@ -1278,7 +1278,7 @@ STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nama kap
 
 
 
-SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
+STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
 

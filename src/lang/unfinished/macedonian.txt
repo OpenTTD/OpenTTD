@@ -987,7 +987,7 @@ STR_BRIBE_FAILED_2                                              :{WHITE}разо
 STR_BUILD_DATE                                                  :{BLACK}Изградба: {LTBLUE}{DATE_LONG}
 
 
-SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
+STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
 

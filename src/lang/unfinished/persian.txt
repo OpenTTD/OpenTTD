@@ -1061,7 +1061,7 @@ STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}حد ا
 
 
 
-SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
+STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
 
