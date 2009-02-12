@@ -17,7 +17,5 @@ void SQAIEngineList_Register(Squirrel *engine) {
 	SQAIEngineList.PreRegister(engine, "AIAbstractList");
 	SQAIEngineList.AddConstructor<void (AIEngineList::*)(AIVehicle::VehicleType vehicle_type), 2>(engine, "xi");
 
-	SQAIEngineList.DefSQStaticMethod(engine, &AIEngineList::GetClassName, "GetClassName", 1, "x");
-
 	SQAIEngineList.PostRegister(engine);
 }

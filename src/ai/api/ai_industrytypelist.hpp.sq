@@ -17,7 +17,5 @@ void SQAIIndustryTypeList_Register(Squirrel *engine) {
 	SQAIIndustryTypeList.PreRegister(engine, "AIAbstractList");
 	SQAIIndustryTypeList.AddConstructor<void (AIIndustryTypeList::*)(), 1>(engine, "x");
 
-	SQAIIndustryTypeList.DefSQStaticMethod(engine, &AIIndustryTypeList::GetClassName, "GetClassName", 1, "x");
-
 	SQAIIndustryTypeList.PostRegister(engine);
 }

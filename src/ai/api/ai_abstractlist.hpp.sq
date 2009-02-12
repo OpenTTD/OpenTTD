@@ -24,8 +24,6 @@ void SQAIAbstractList_Register(Squirrel *engine) {
 	SQAIAbstractList.DefSQConst(engine, AIAbstractList::SORT_BY_VALUE, "SORT_BY_VALUE");
 	SQAIAbstractList.DefSQConst(engine, AIAbstractList::SORT_BY_ITEM,  "SORT_BY_ITEM");
 
-	SQAIAbstractList.DefSQStaticMethod(engine, &AIAbstractList::GetClassName, "GetClassName", 1, "x");
-
 	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::Clear,              "Clear",              1, "x");
 	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::HasItem,            "HasItem",            2, "xi");
 	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::Begin,              "Begin",              1, "x");

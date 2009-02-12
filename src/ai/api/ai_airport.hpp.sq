@@ -38,21 +38,20 @@ void SQAIAirport_Register(Squirrel *engine) {
 	SQAIAirport.DefSQConst(engine, AIAirport::PT_BIG_PLANE,     "PT_BIG_PLANE");
 	SQAIAirport.DefSQConst(engine, AIAirport::PT_INVALID,       "PT_INVALID");
 
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetClassName,             "GetClassName",             1, "x");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::IsValidAirportType,       "IsValidAirportType",       2, "xi");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::IsHangarTile,             "IsHangarTile",             2, "xi");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::IsAirportTile,            "IsAirportTile",            2, "xi");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::AirportAvailable,         "AirportAvailable",         2, "xi");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetAirportWidth,          "GetAirportWidth",          2, "xi");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetAirportHeight,         "GetAirportHeight",         2, "xi");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetAirportCoverageRadius, "GetAirportCoverageRadius", 2, "xi");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetNumHangars,            "GetNumHangars",            2, "xi");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetHangarOfAirport,       "GetHangarOfAirport",       2, "xi");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::BuildAirport,             "BuildAirport",             4, "xiib");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::RemoveAirport,            "RemoveAirport",            2, "xi");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetAirportType,           "GetAirportType",           2, "xi");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetNoiseLevelIncrease,    "GetNoiseLevelIncrease",    3, "xii");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetNearestTown,           "GetNearestTown",           3, "xii");
+	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::IsValidAirportType,       "IsValidAirportType",       2, "?i");
+	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::IsHangarTile,             "IsHangarTile",             2, "?i");
+	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::IsAirportTile,            "IsAirportTile",            2, "?i");
+	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::AirportAvailable,         "AirportAvailable",         2, "?i");
+	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetAirportWidth,          "GetAirportWidth",          2, "?i");
+	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetAirportHeight,         "GetAirportHeight",         2, "?i");
+	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetAirportCoverageRadius, "GetAirportCoverageRadius", 2, "?i");
+	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetNumHangars,            "GetNumHangars",            2, "?i");
+	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetHangarOfAirport,       "GetHangarOfAirport",       2, "?i");
+	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::BuildAirport,             "BuildAirport",             4, "?iib");
+	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::RemoveAirport,            "RemoveAirport",            2, "?i");
+	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetAirportType,           "GetAirportType",           2, "?i");
+	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetNoiseLevelIncrease,    "GetNoiseLevelIncrease",    3, "?ii");
+	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetNearestTown,           "GetNearestTown",           3, "?ii");
 
 	SQAIAirport.PostRegister(engine);
 }

@@ -23,7 +23,7 @@ function dump_class_templates(name) {
 	print "	template <> const " name " *GetParam(ForceType<const " name " *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (" name " *)instance; }"
 	print "	template <> const " name " &GetParam(ForceType<const " name " &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(" name " *)instance; }"
 	if (name == "AIEvent") {
-		print " template <> int Return<" name " *>(HSQUIRRELVM vm, " name " *res) { if (res == NULL) { sq_pushnull(vm); return 1; } Squirrel::CreateClassInstanceVM(vm, \"" name "\", res, NULL, DefSQDestructorCallback<" name ">); return 1; }"
+		print "	template <> int Return<" name " *>(HSQUIRRELVM vm, " name " *res) { if (res == NULL) { sq_pushnull(vm); return 1; } Squirrel::CreateClassInstanceVM(vm, \"" name "\", res, NULL, DefSQDestructorCallback<" name ">); return 1; }"
 	} else {
 		print "	template <> int Return<" name " *>(HSQUIRRELVM vm, " name " *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, \"" name "\", res, NULL, DefSQDestructorCallback<" name ">); return 1; }"
 	}
@@ -342,7 +342,11 @@ BEGIN {
 	} else if (funcname == "") next
 
 	split(param_s, params, ",")
-	types = "x"
+	if (is_static) {
+		types = "?"
+	} else {
+		types = "x"
+	}
 	for (len = 1; params[len] != ""; len++) {
 		sub("^[ 	]*", "", params[len])
 		if (match(params[len], "\\*") || match(params[len], "&")) {
@@ -370,6 +374,7 @@ BEGIN {
 		cls_param[1] = len;
 		cls_param[2] = types;
 	} else if (substr(funcname, 0, 1) == "_" && types != "v") {
+	} else if (funcname == "GetClassName" && types == "?") {
 	} else if (is_static) {
 		static_method_size++
 		static_methods[static_method_size, 0] = funcname

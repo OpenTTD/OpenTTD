@@ -43,8 +43,6 @@ void SQAIEvent_Register(Squirrel *engine) {
 	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_DISASTER_ZEPPELINER_CRASHED, "AI_ET_DISASTER_ZEPPELINER_CRASHED");
 	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_DISASTER_ZEPPELINER_CLEARED, "AI_ET_DISASTER_ZEPPELINER_CLEARED");
 
-	SQAIEvent.DefSQStaticMethod(engine, &AIEvent::GetClassName, "GetClassName", 1, "x");
-
 	SQAIEvent.DefSQMethod(engine, &AIEvent::GetEventType, "GetEventType", 1, "x");
 
 	SQAIEvent.PostRegister(engine);
@@ -64,11 +62,10 @@ void SQAIEventController_Register(Squirrel *engine) {
 	SQAIEventController.PreRegister(engine);
 	SQAIEventController.AddConstructor<void (AIEventController::*)(), 1>(engine, "x");
 
-	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::GetClassName,     "GetClassName",     1, "x");
-	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::IsEventWaiting,   "IsEventWaiting",   1, "x");
-	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::GetNextEvent,     "GetNextEvent",     1, "x");
-	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::InsertEvent,      "InsertEvent",      2, "xx");
-	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::FreeEventPointer, "FreeEventPointer", 1, "x");
+	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::IsEventWaiting,   "IsEventWaiting",   1, "?");
+	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::GetNextEvent,     "GetNextEvent",     1, "?");
+	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::InsertEvent,      "InsertEvent",      2, "?x");
+	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::FreeEventPointer, "FreeEventPointer", 1, "?");
 
 	SQAIEventController.PostRegister(engine);
 }

@@ -17,10 +17,9 @@ void SQAIGameSettings_Register(Squirrel *engine) {
 	SQAIGameSettings.PreRegister(engine);
 	SQAIGameSettings.AddConstructor<void (AIGameSettings::*)(), 1>(engine, "x");
 
-	SQAIGameSettings.DefSQStaticMethod(engine, &AIGameSettings::GetClassName,          "GetClassName",          1, "x");
-	SQAIGameSettings.DefSQStaticMethod(engine, &AIGameSettings::IsValid,               "IsValid",               2, "xs");
-	SQAIGameSettings.DefSQStaticMethod(engine, &AIGameSettings::GetValue,              "GetValue",              2, "xs");
-	SQAIGameSettings.DefSQStaticMethod(engine, &AIGameSettings::IsDisabledVehicleType, "IsDisabledVehicleType", 2, "xi");
+	SQAIGameSettings.DefSQStaticMethod(engine, &AIGameSettings::IsValid,               "IsValid",               2, "?s");
+	SQAIGameSettings.DefSQStaticMethod(engine, &AIGameSettings::GetValue,              "GetValue",              2, "?s");
+	SQAIGameSettings.DefSQStaticMethod(engine, &AIGameSettings::IsDisabledVehicleType, "IsDisabledVehicleType", 2, "?i");
 
 	SQAIGameSettings.PostRegister(engine);
 }

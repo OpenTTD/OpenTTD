@@ -17,8 +17,6 @@ void SQAICargoList_Register(Squirrel *engine) {
 	SQAICargoList.PreRegister(engine, "AIAbstractList");
 	SQAICargoList.AddConstructor<void (AICargoList::*)(), 1>(engine, "x");
 
-	SQAICargoList.DefSQStaticMethod(engine, &AICargoList::GetClassName, "GetClassName", 1, "x");
-
 	SQAICargoList.PostRegister(engine);
 }
 
@@ -36,8 +34,6 @@ void SQAICargoList_IndustryAccepting_Register(Squirrel *engine) {
 	SQAICargoList_IndustryAccepting.PreRegister(engine, "AIAbstractList");
 	SQAICargoList_IndustryAccepting.AddConstructor<void (AICargoList_IndustryAccepting::*)(IndustryID industry_id), 2>(engine, "xi");
 
-	SQAICargoList_IndustryAccepting.DefSQStaticMethod(engine, &AICargoList_IndustryAccepting::GetClassName, "GetClassName", 1, "x");
-
 	SQAICargoList_IndustryAccepting.PostRegister(engine);
 }
 
@@ -54,8 +50,6 @@ void SQAICargoList_IndustryProducing_Register(Squirrel *engine) {
 	DefSQClass <AICargoList_IndustryProducing> SQAICargoList_IndustryProducing("AICargoList_IndustryProducing");
 	SQAICargoList_IndustryProducing.PreRegister(engine, "AIAbstractList");
 	SQAICargoList_IndustryProducing.AddConstructor<void (AICargoList_IndustryProducing::*)(IndustryID industry_id), 2>(engine, "xi");
-
-	SQAICargoList_IndustryProducing.DefSQStaticMethod(engine, &AICargoList_IndustryProducing::GetClassName, "GetClassName", 1, "x");
 
 	SQAICargoList_IndustryProducing.PostRegister(engine);
 }

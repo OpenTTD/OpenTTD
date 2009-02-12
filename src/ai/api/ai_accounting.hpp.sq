@@ -17,8 +17,6 @@ void SQAIAccounting_Register(Squirrel *engine) {
 	SQAIAccounting.PreRegister(engine);
 	SQAIAccounting.AddConstructor<void (AIAccounting::*)(), 1>(engine, "x");
 
-	SQAIAccounting.DefSQStaticMethod(engine, &AIAccounting::GetClassName, "GetClassName", 1, "x");
-
 	SQAIAccounting.DefSQMethod(engine, &AIAccounting::GetCosts,   "GetCosts",   1, "x");
 	SQAIAccounting.DefSQMethod(engine, &AIAccounting::ResetCosts, "ResetCosts", 1, "x");
 

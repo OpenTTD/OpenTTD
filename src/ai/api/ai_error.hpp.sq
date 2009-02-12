@@ -109,13 +109,12 @@ void SQAIError_Register(Squirrel *engine) {
 	AIError::RegisterErrorMapString(AIError::ERR_TOO_CLOSE_TO_EDGE,            "ERR_TOO_CLOSE_TO_EDGE");
 	AIError::RegisterErrorMapString(AIError::ERR_STATION_TOO_SPREAD_OUT,       "ERR_STATION_TOO_SPREAD_OUT");
 
-	SQAIError.DefSQStaticMethod(engine, &AIError::GetClassName,           "GetClassName",           1, "x");
-	SQAIError.DefSQStaticMethod(engine, &AIError::GetErrorCategory,       "GetErrorCategory",       1, "x");
-	SQAIError.DefSQStaticMethod(engine, &AIError::GetLastError,           "GetLastError",           1, "x");
-	SQAIError.DefSQStaticMethod(engine, &AIError::GetLastErrorString,     "GetLastErrorString",     1, "x");
-	SQAIError.DefSQStaticMethod(engine, &AIError::StringToError,          "StringToError",          2, "xi");
-	SQAIError.DefSQStaticMethod(engine, &AIError::RegisterErrorMap,       "RegisterErrorMap",       3, "xii");
-	SQAIError.DefSQStaticMethod(engine, &AIError::RegisterErrorMapString, "RegisterErrorMapString", 3, "xis");
+	SQAIError.DefSQStaticMethod(engine, &AIError::GetErrorCategory,       "GetErrorCategory",       1, "?");
+	SQAIError.DefSQStaticMethod(engine, &AIError::GetLastError,           "GetLastError",           1, "?");
+	SQAIError.DefSQStaticMethod(engine, &AIError::GetLastErrorString,     "GetLastErrorString",     1, "?");
+	SQAIError.DefSQStaticMethod(engine, &AIError::StringToError,          "StringToError",          2, "?i");
+	SQAIError.DefSQStaticMethod(engine, &AIError::RegisterErrorMap,       "RegisterErrorMap",       3, "?ii");
+	SQAIError.DefSQStaticMethod(engine, &AIError::RegisterErrorMapString, "RegisterErrorMapString", 3, "?is");
 
 	SQAIError.PostRegister(engine);
 }

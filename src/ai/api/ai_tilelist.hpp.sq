@@ -17,8 +17,6 @@ void SQAITileList_Register(Squirrel *engine) {
 	SQAITileList.PreRegister(engine, "AIAbstractList");
 	SQAITileList.AddConstructor<void (AITileList::*)(), 1>(engine, "x");
 
-	SQAITileList.DefSQStaticMethod(engine, &AITileList::GetClassName, "GetClassName", 1, "x");
-
 	SQAITileList.DefSQMethod(engine, &AITileList::AddRectangle,    "AddRectangle",    3, "xii");
 	SQAITileList.DefSQMethod(engine, &AITileList::AddTile,         "AddTile",         2, "xi");
 	SQAITileList.DefSQMethod(engine, &AITileList::RemoveRectangle, "RemoveRectangle", 3, "xii");
@@ -41,8 +39,6 @@ void SQAITileList_IndustryAccepting_Register(Squirrel *engine) {
 	SQAITileList_IndustryAccepting.PreRegister(engine, "AITileList");
 	SQAITileList_IndustryAccepting.AddConstructor<void (AITileList_IndustryAccepting::*)(IndustryID industry_id, uint radius), 3>(engine, "xii");
 
-	SQAITileList_IndustryAccepting.DefSQStaticMethod(engine, &AITileList_IndustryAccepting::GetClassName, "GetClassName", 1, "x");
-
 	SQAITileList_IndustryAccepting.PostRegister(engine);
 }
 
@@ -60,8 +56,6 @@ void SQAITileList_IndustryProducing_Register(Squirrel *engine) {
 	SQAITileList_IndustryProducing.PreRegister(engine, "AITileList");
 	SQAITileList_IndustryProducing.AddConstructor<void (AITileList_IndustryProducing::*)(IndustryID industry_id, uint radius), 3>(engine, "xii");
 
-	SQAITileList_IndustryProducing.DefSQStaticMethod(engine, &AITileList_IndustryProducing::GetClassName, "GetClassName", 1, "x");
-
 	SQAITileList_IndustryProducing.PostRegister(engine);
 }
 
@@ -78,8 +72,6 @@ void SQAITileList_StationType_Register(Squirrel *engine) {
 	DefSQClass <AITileList_StationType> SQAITileList_StationType("AITileList_StationType");
 	SQAITileList_StationType.PreRegister(engine, "AITileList");
 	SQAITileList_StationType.AddConstructor<void (AITileList_StationType::*)(StationID station_id, AIStation::StationType station_type), 3>(engine, "xii");
-
-	SQAITileList_StationType.DefSQStaticMethod(engine, &AITileList_StationType::GetClassName, "GetClassName", 1, "x");
 
 	SQAITileList_StationType.PostRegister(engine);
 }

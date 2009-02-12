@@ -17,26 +17,25 @@ void SQAIEngine_Register(Squirrel *engine) {
 	SQAIEngine.PreRegister(engine);
 	SQAIEngine.AddConstructor<void (AIEngine::*)(), 1>(engine, "x");
 
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetClassName,   "GetClassName",   1, "x");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::IsValidEngine,  "IsValidEngine",  2, "xi");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetName,        "GetName",        2, "xi");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetCargoType,   "GetCargoType",   2, "xi");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::CanRefitCargo,  "CanRefitCargo",  3, "xii");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::CanPullCargo,   "CanPullCargo",   3, "xii");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetCapacity,    "GetCapacity",    2, "xi");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetReliability, "GetReliability", 2, "xi");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetMaxSpeed,    "GetMaxSpeed",    2, "xi");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetPrice,       "GetPrice",       2, "xi");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetMaxAge,      "GetMaxAge",      2, "xi");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetRunningCost, "GetRunningCost", 2, "xi");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetVehicleType, "GetVehicleType", 2, "xi");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::IsWagon,        "IsWagon",        2, "xi");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::CanRunOnRail,   "CanRunOnRail",   3, "xii");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::HasPowerOnRail, "HasPowerOnRail", 3, "xii");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetRoadType,    "GetRoadType",    2, "xi");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetRailType,    "GetRailType",    2, "xi");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::IsArticulated,  "IsArticulated",  2, "xi");
-	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetPlaneType,   "GetPlaneType",   2, "xi");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::IsValidEngine,  "IsValidEngine",  2, "?i");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetName,        "GetName",        2, "?i");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetCargoType,   "GetCargoType",   2, "?i");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::CanRefitCargo,  "CanRefitCargo",  3, "?ii");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::CanPullCargo,   "CanPullCargo",   3, "?ii");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetCapacity,    "GetCapacity",    2, "?i");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetReliability, "GetReliability", 2, "?i");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetMaxSpeed,    "GetMaxSpeed",    2, "?i");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetPrice,       "GetPrice",       2, "?i");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetMaxAge,      "GetMaxAge",      2, "?i");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetRunningCost, "GetRunningCost", 2, "?i");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetVehicleType, "GetVehicleType", 2, "?i");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::IsWagon,        "IsWagon",        2, "?i");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::CanRunOnRail,   "CanRunOnRail",   3, "?ii");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::HasPowerOnRail, "HasPowerOnRail", 3, "?ii");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetRoadType,    "GetRoadType",    2, "?i");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetRailType,    "GetRailType",    2, "?i");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::IsArticulated,  "IsArticulated",  2, "?i");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetPlaneType,   "GetPlaneType",   2, "?i");
 
 	SQAIEngine.PostRegister(engine);
 }

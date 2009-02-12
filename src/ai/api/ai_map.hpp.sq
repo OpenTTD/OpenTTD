@@ -23,18 +23,17 @@ void SQAIMap_Register(Squirrel *engine) {
 
 	SQAIMap.DefSQConst(engine, AIMap::TILE_INVALID, "TILE_INVALID");
 
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetClassName,      "GetClassName",      1, "x");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::IsValidTile,       "IsValidTile",       2, "xi");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetMapSize,        "GetMapSize",        1, "x");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetMapSizeX,       "GetMapSizeX",       1, "x");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetMapSizeY,       "GetMapSizeY",       1, "x");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetTileX,          "GetTileX",          2, "xi");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetTileY,          "GetTileY",          2, "xi");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetTileIndex,      "GetTileIndex",      3, "xii");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::DistanceManhattan, "DistanceManhattan", 3, "xii");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::DistanceMax,       "DistanceMax",       3, "xii");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::DistanceSquare,    "DistanceSquare",    3, "xii");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::DistanceFromEdge,  "DistanceFromEdge",  2, "xi");
+	SQAIMap.DefSQStaticMethod(engine, &AIMap::IsValidTile,       "IsValidTile",       2, "?i");
+	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetMapSize,        "GetMapSize",        1, "?");
+	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetMapSizeX,       "GetMapSizeX",       1, "?");
+	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetMapSizeY,       "GetMapSizeY",       1, "?");
+	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetTileX,          "GetTileX",          2, "?i");
+	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetTileY,          "GetTileY",          2, "?i");
+	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetTileIndex,      "GetTileIndex",      3, "?ii");
+	SQAIMap.DefSQStaticMethod(engine, &AIMap::DistanceManhattan, "DistanceManhattan", 3, "?ii");
+	SQAIMap.DefSQStaticMethod(engine, &AIMap::DistanceMax,       "DistanceMax",       3, "?ii");
+	SQAIMap.DefSQStaticMethod(engine, &AIMap::DistanceSquare,    "DistanceSquare",    3, "?ii");
+	SQAIMap.DefSQStaticMethod(engine, &AIMap::DistanceFromEdge,  "DistanceFromEdge",  2, "?i");
 
 	SQAIMap.PostRegister(engine);
 }

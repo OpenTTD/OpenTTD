@@ -17,18 +17,17 @@ void SQAIIndustryType_Register(Squirrel *engine) {
 	SQAIIndustryType.PreRegister(engine);
 	SQAIIndustryType.AddConstructor<void (AIIndustryType::*)(), 1>(engine, "x");
 
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::GetClassName,          "GetClassName",          1, "x");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::IsValidIndustryType,   "IsValidIndustryType",   2, "xi");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::GetName,               "GetName",               2, "xi");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::GetProducedCargo,      "GetProducedCargo",      2, "xi");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::GetAcceptedCargo,      "GetAcceptedCargo",      2, "xi");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::IsRawIndustry,         "IsRawIndustry",         2, "xi");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::ProductionCanIncrease, "ProductionCanIncrease", 2, "xi");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::GetConstructionCost,   "GetConstructionCost",   2, "xi");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::CanBuildIndustry,      "CanBuildIndustry",      2, "xi");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::CanProspectIndustry,   "CanProspectIndustry",   2, "xi");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::BuildIndustry,         "BuildIndustry",         3, "xii");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::ProspectIndustry,      "ProspectIndustry",      2, "xi");
+	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::IsValidIndustryType,   "IsValidIndustryType",   2, "?i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::GetName,               "GetName",               2, "?i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::GetProducedCargo,      "GetProducedCargo",      2, "?i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::GetAcceptedCargo,      "GetAcceptedCargo",      2, "?i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::IsRawIndustry,         "IsRawIndustry",         2, "?i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::ProductionCanIncrease, "ProductionCanIncrease", 2, "?i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::GetConstructionCost,   "GetConstructionCost",   2, "?i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::CanBuildIndustry,      "CanBuildIndustry",      2, "?i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::CanProspectIndustry,   "CanProspectIndustry",   2, "?i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::BuildIndustry,         "BuildIndustry",         3, "?ii");
+	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::ProspectIndustry,      "ProspectIndustry",      2, "?i");
 
 	SQAIIndustryType.PostRegister(engine);
 }

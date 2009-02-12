@@ -34,18 +34,17 @@ void SQAIBridge_Register(Squirrel *engine) {
 	AIError::RegisterErrorMapString(AIBridge::ERR_BRIDGE_CANNOT_END_IN_WATER,      "ERR_BRIDGE_CANNOT_END_IN_WATER");
 	AIError::RegisterErrorMapString(AIBridge::ERR_BRIDGE_HEADS_NOT_ON_SAME_HEIGHT, "ERR_BRIDGE_HEADS_NOT_ON_SAME_HEIGHT");
 
-	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetClassName,      "GetClassName",      1, "x");
-	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::IsValidBridge,     "IsValidBridge",     2, "xi");
-	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::IsBridgeTile,      "IsBridgeTile",      2, "xi");
-	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetName,           "GetName",           2, "xi");
-	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetMaxSpeed,       "GetMaxSpeed",       2, "xi");
-	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetPrice,          "GetPrice",          3, "xii");
-	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetMaxLength,      "GetMaxLength",      2, "xi");
-	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetMinLength,      "GetMinLength",      2, "xi");
-	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetYearAvailable,  "GetYearAvailable",  2, "xi");
-	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::BuildBridge,       "BuildBridge",       5, "xiiii");
-	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::RemoveBridge,      "RemoveBridge",      2, "xi");
-	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetOtherBridgeEnd, "GetOtherBridgeEnd", 2, "xi");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::IsValidBridge,     "IsValidBridge",     2, "?i");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::IsBridgeTile,      "IsBridgeTile",      2, "?i");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetName,           "GetName",           2, "?i");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetMaxSpeed,       "GetMaxSpeed",       2, "?i");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetPrice,          "GetPrice",          3, "?ii");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetMaxLength,      "GetMaxLength",      2, "?i");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetMinLength,      "GetMinLength",      2, "?i");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetYearAvailable,  "GetYearAvailable",  2, "?i");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::BuildBridge,       "BuildBridge",       5, "?iiii");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::RemoveBridge,      "RemoveBridge",      2, "?i");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetOtherBridgeEnd, "GetOtherBridgeEnd", 2, "?i");
 
 	SQAIBridge.PostRegister(engine);
 }

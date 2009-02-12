@@ -17,7 +17,5 @@ void SQAIGroupList_Register(Squirrel *engine) {
 	SQAIGroupList.PreRegister(engine, "AIAbstractList");
 	SQAIGroupList.AddConstructor<void (AIGroupList::*)(), 1>(engine, "x");
 
-	SQAIGroupList.DefSQStaticMethod(engine, &AIGroupList::GetClassName, "GetClassName", 1, "x");
-
 	SQAIGroupList.PostRegister(engine);
 }

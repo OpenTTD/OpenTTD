@@ -17,7 +17,5 @@ void SQAIRailTypeList_Register(Squirrel *engine) {
 	SQAIRailTypeList.PreRegister(engine, "AIAbstractList");
 	SQAIRailTypeList.AddConstructor<void (AIRailTypeList::*)(), 1>(engine, "x");
 
-	SQAIRailTypeList.DefSQStaticMethod(engine, &AIRailTypeList::GetClassName, "GetClassName", 1, "x");
-
 	SQAIRailTypeList.PostRegister(engine);
 }

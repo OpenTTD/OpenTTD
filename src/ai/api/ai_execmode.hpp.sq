@@ -17,7 +17,5 @@ void SQAIExecMode_Register(Squirrel *engine) {
 	SQAIExecMode.PreRegister(engine);
 	SQAIExecMode.AddConstructor<void (AIExecMode::*)(), 1>(engine, "x");
 
-	SQAIExecMode.DefSQStaticMethod(engine, &AIExecMode::GetClassName, "GetClassName", 1, "x");
-
 	SQAIExecMode.PostRegister(engine);
 }

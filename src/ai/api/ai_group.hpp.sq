@@ -25,22 +25,21 @@ void SQAIGroup_Register(Squirrel *engine) {
 	SQAIGroup.DefSQConst(engine, AIGroup::GROUP_DEFAULT, "GROUP_DEFAULT");
 	SQAIGroup.DefSQConst(engine, AIGroup::GROUP_INVALID, "GROUP_INVALID");
 
-	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetClassName,                "GetClassName",                1, "x");
-	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::IsValidGroup,                "IsValidGroup",                2, "xi");
-	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::CreateGroup,                 "CreateGroup",                 2, "xi");
-	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::DeleteGroup,                 "DeleteGroup",                 2, "xi");
-	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetVehicleType,              "GetVehicleType",              2, "xi");
-	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::SetName,                     "SetName",                     3, "xis");
-	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetName,                     "GetName",                     2, "xi");
-	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::EnableAutoReplaceProtection, "EnableAutoReplaceProtection", 3, "xib");
-	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetAutoReplaceProtection,    "GetAutoReplaceProtection",    2, "xi");
-	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetNumEngines,               "GetNumEngines",               3, "xii");
-	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::MoveVehicle,                 "MoveVehicle",                 3, "xii");
-	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::EnableWagonRemoval,          "EnableWagonRemoval",          2, "xb");
-	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::HasWagonRemoval,             "HasWagonRemoval",             1, "x");
-	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::SetAutoReplace,              "SetAutoReplace",              4, "xiii");
-	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetEngineReplacement,        "GetEngineReplacement",        3, "xii");
-	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::StopAutoReplace,             "StopAutoReplace",             3, "xii");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::IsValidGroup,                "IsValidGroup",                2, "?i");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::CreateGroup,                 "CreateGroup",                 2, "?i");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::DeleteGroup,                 "DeleteGroup",                 2, "?i");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetVehicleType,              "GetVehicleType",              2, "?i");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::SetName,                     "SetName",                     3, "?is");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetName,                     "GetName",                     2, "?i");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::EnableAutoReplaceProtection, "EnableAutoReplaceProtection", 3, "?ib");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetAutoReplaceProtection,    "GetAutoReplaceProtection",    2, "?i");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetNumEngines,               "GetNumEngines",               3, "?ii");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::MoveVehicle,                 "MoveVehicle",                 3, "?ii");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::EnableWagonRemoval,          "EnableWagonRemoval",          2, "?b");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::HasWagonRemoval,             "HasWagonRemoval",             1, "?");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::SetAutoReplace,              "SetAutoReplace",              4, "?iii");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetEngineReplacement,        "GetEngineReplacement",        3, "?ii");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::StopAutoReplace,             "StopAutoReplace",             3, "?ii");
 
 	SQAIGroup.PostRegister(engine);
 }

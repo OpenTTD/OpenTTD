@@ -17,8 +17,6 @@ void SQAIList_Register(Squirrel *engine) {
 	SQAIList.PreRegister(engine, "AIAbstractList");
 	SQAIList.AddConstructor<void (AIList::*)(), 1>(engine, "x");
 
-	SQAIList.DefSQStaticMethod(engine, &AIList::GetClassName, "GetClassName", 1, "x");
-
 	SQAIList.DefSQMethod(engine, &AIList::AddItem,    "AddItem",    3, "xii");
 	SQAIList.DefSQMethod(engine, &AIList::ChangeItem, "ChangeItem", 3, "xii");
 	SQAIList.DefSQMethod(engine, &AIList::RemoveItem, "RemoveItem", 2, "xi");

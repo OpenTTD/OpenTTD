@@ -27,8 +27,7 @@ void SQAIEventVehicleCrashed_Register(Squirrel *engine) {
 	SQAIEventVehicleCrashed.DefSQConst(engine, AIEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT, "CRASH_AIRCRAFT_NO_AIRPORT");
 	SQAIEventVehicleCrashed.DefSQConst(engine, AIEventVehicleCrashed::CRASH_FLOODED,             "CRASH_FLOODED");
 
-	SQAIEventVehicleCrashed.DefSQStaticMethod(engine, &AIEventVehicleCrashed::GetClassName, "GetClassName", 1, "x");
-	SQAIEventVehicleCrashed.DefSQStaticMethod(engine, &AIEventVehicleCrashed::Convert,      "Convert",      2, "xx");
+	SQAIEventVehicleCrashed.DefSQStaticMethod(engine, &AIEventVehicleCrashed::Convert, "Convert", 2, "?x");
 
 	SQAIEventVehicleCrashed.DefSQMethod(engine, &AIEventVehicleCrashed::GetVehicleID,        "GetVehicleID",        1, "x");
 	SQAIEventVehicleCrashed.DefSQMethod(engine, &AIEventVehicleCrashed::GetCrashSite,        "GetCrashSite",        1, "x");
@@ -51,8 +50,7 @@ void SQAIEventSubsidyOffer_Register(Squirrel *engine) {
 	DefSQClass <AIEventSubsidyOffer> SQAIEventSubsidyOffer("AIEventSubsidyOffer");
 	SQAIEventSubsidyOffer.PreRegister(engine, "AIEvent");
 
-	SQAIEventSubsidyOffer.DefSQStaticMethod(engine, &AIEventSubsidyOffer::GetClassName, "GetClassName", 1, "x");
-	SQAIEventSubsidyOffer.DefSQStaticMethod(engine, &AIEventSubsidyOffer::Convert,      "Convert",      2, "xx");
+	SQAIEventSubsidyOffer.DefSQStaticMethod(engine, &AIEventSubsidyOffer::Convert, "Convert", 2, "?x");
 
 	SQAIEventSubsidyOffer.DefSQMethod(engine, &AIEventSubsidyOffer::GetSubsidyID, "GetSubsidyID", 1, "x");
 
@@ -72,8 +70,7 @@ void SQAIEventSubsidyOfferExpired_Register(Squirrel *engine) {
 	DefSQClass <AIEventSubsidyOfferExpired> SQAIEventSubsidyOfferExpired("AIEventSubsidyOfferExpired");
 	SQAIEventSubsidyOfferExpired.PreRegister(engine, "AIEvent");
 
-	SQAIEventSubsidyOfferExpired.DefSQStaticMethod(engine, &AIEventSubsidyOfferExpired::GetClassName, "GetClassName", 1, "x");
-	SQAIEventSubsidyOfferExpired.DefSQStaticMethod(engine, &AIEventSubsidyOfferExpired::Convert,      "Convert",      2, "xx");
+	SQAIEventSubsidyOfferExpired.DefSQStaticMethod(engine, &AIEventSubsidyOfferExpired::Convert, "Convert", 2, "?x");
 
 	SQAIEventSubsidyOfferExpired.DefSQMethod(engine, &AIEventSubsidyOfferExpired::GetSubsidyID, "GetSubsidyID", 1, "x");
 
@@ -93,8 +90,7 @@ void SQAIEventSubsidyAwarded_Register(Squirrel *engine) {
 	DefSQClass <AIEventSubsidyAwarded> SQAIEventSubsidyAwarded("AIEventSubsidyAwarded");
 	SQAIEventSubsidyAwarded.PreRegister(engine, "AIEvent");
 
-	SQAIEventSubsidyAwarded.DefSQStaticMethod(engine, &AIEventSubsidyAwarded::GetClassName, "GetClassName", 1, "x");
-	SQAIEventSubsidyAwarded.DefSQStaticMethod(engine, &AIEventSubsidyAwarded::Convert,      "Convert",      2, "xx");
+	SQAIEventSubsidyAwarded.DefSQStaticMethod(engine, &AIEventSubsidyAwarded::Convert, "Convert", 2, "?x");
 
 	SQAIEventSubsidyAwarded.DefSQMethod(engine, &AIEventSubsidyAwarded::GetSubsidyID, "GetSubsidyID", 1, "x");
 
@@ -114,8 +110,7 @@ void SQAIEventSubsidyExpired_Register(Squirrel *engine) {
 	DefSQClass <AIEventSubsidyExpired> SQAIEventSubsidyExpired("AIEventSubsidyExpired");
 	SQAIEventSubsidyExpired.PreRegister(engine, "AIEvent");
 
-	SQAIEventSubsidyExpired.DefSQStaticMethod(engine, &AIEventSubsidyExpired::GetClassName, "GetClassName", 1, "x");
-	SQAIEventSubsidyExpired.DefSQStaticMethod(engine, &AIEventSubsidyExpired::Convert,      "Convert",      2, "xx");
+	SQAIEventSubsidyExpired.DefSQStaticMethod(engine, &AIEventSubsidyExpired::Convert, "Convert", 2, "?x");
 
 	SQAIEventSubsidyExpired.DefSQMethod(engine, &AIEventSubsidyExpired::GetSubsidyID, "GetSubsidyID", 1, "x");
 
@@ -135,8 +130,7 @@ void SQAIEventEnginePreview_Register(Squirrel *engine) {
 	DefSQClass <AIEventEnginePreview> SQAIEventEnginePreview("AIEventEnginePreview");
 	SQAIEventEnginePreview.PreRegister(engine, "AIEvent");
 
-	SQAIEventEnginePreview.DefSQStaticMethod(engine, &AIEventEnginePreview::GetClassName, "GetClassName", 1, "x");
-	SQAIEventEnginePreview.DefSQStaticMethod(engine, &AIEventEnginePreview::Convert,      "Convert",      2, "xx");
+	SQAIEventEnginePreview.DefSQStaticMethod(engine, &AIEventEnginePreview::Convert, "Convert", 2, "?x");
 
 	SQAIEventEnginePreview.DefSQMethod(engine, &AIEventEnginePreview::GetName,        "GetName",        1, "x");
 	SQAIEventEnginePreview.DefSQMethod(engine, &AIEventEnginePreview::GetCargoType,   "GetCargoType",   1, "x");
@@ -163,8 +157,7 @@ void SQAIEventCompanyNew_Register(Squirrel *engine) {
 	DefSQClass <AIEventCompanyNew> SQAIEventCompanyNew("AIEventCompanyNew");
 	SQAIEventCompanyNew.PreRegister(engine, "AIEvent");
 
-	SQAIEventCompanyNew.DefSQStaticMethod(engine, &AIEventCompanyNew::GetClassName, "GetClassName", 1, "x");
-	SQAIEventCompanyNew.DefSQStaticMethod(engine, &AIEventCompanyNew::Convert,      "Convert",      2, "xx");
+	SQAIEventCompanyNew.DefSQStaticMethod(engine, &AIEventCompanyNew::Convert, "Convert", 2, "?x");
 
 	SQAIEventCompanyNew.DefSQMethod(engine, &AIEventCompanyNew::GetCompanyID, "GetCompanyID", 1, "x");
 
@@ -184,8 +177,7 @@ void SQAIEventCompanyInTrouble_Register(Squirrel *engine) {
 	DefSQClass <AIEventCompanyInTrouble> SQAIEventCompanyInTrouble("AIEventCompanyInTrouble");
 	SQAIEventCompanyInTrouble.PreRegister(engine, "AIEvent");
 
-	SQAIEventCompanyInTrouble.DefSQStaticMethod(engine, &AIEventCompanyInTrouble::GetClassName, "GetClassName", 1, "x");
-	SQAIEventCompanyInTrouble.DefSQStaticMethod(engine, &AIEventCompanyInTrouble::Convert,      "Convert",      2, "xx");
+	SQAIEventCompanyInTrouble.DefSQStaticMethod(engine, &AIEventCompanyInTrouble::Convert, "Convert", 2, "?x");
 
 	SQAIEventCompanyInTrouble.DefSQMethod(engine, &AIEventCompanyInTrouble::GetCompanyID, "GetCompanyID", 1, "x");
 
@@ -205,8 +197,7 @@ void SQAIEventCompanyMerger_Register(Squirrel *engine) {
 	DefSQClass <AIEventCompanyMerger> SQAIEventCompanyMerger("AIEventCompanyMerger");
 	SQAIEventCompanyMerger.PreRegister(engine, "AIEvent");
 
-	SQAIEventCompanyMerger.DefSQStaticMethod(engine, &AIEventCompanyMerger::GetClassName, "GetClassName", 1, "x");
-	SQAIEventCompanyMerger.DefSQStaticMethod(engine, &AIEventCompanyMerger::Convert,      "Convert",      2, "xx");
+	SQAIEventCompanyMerger.DefSQStaticMethod(engine, &AIEventCompanyMerger::Convert, "Convert", 2, "?x");
 
 	SQAIEventCompanyMerger.DefSQMethod(engine, &AIEventCompanyMerger::GetOldCompanyID, "GetOldCompanyID", 1, "x");
 	SQAIEventCompanyMerger.DefSQMethod(engine, &AIEventCompanyMerger::GetNewCompanyID, "GetNewCompanyID", 1, "x");
@@ -227,8 +218,7 @@ void SQAIEventCompanyBankrupt_Register(Squirrel *engine) {
 	DefSQClass <AIEventCompanyBankrupt> SQAIEventCompanyBankrupt("AIEventCompanyBankrupt");
 	SQAIEventCompanyBankrupt.PreRegister(engine, "AIEvent");
 
-	SQAIEventCompanyBankrupt.DefSQStaticMethod(engine, &AIEventCompanyBankrupt::GetClassName, "GetClassName", 1, "x");
-	SQAIEventCompanyBankrupt.DefSQStaticMethod(engine, &AIEventCompanyBankrupt::Convert,      "Convert",      2, "xx");
+	SQAIEventCompanyBankrupt.DefSQStaticMethod(engine, &AIEventCompanyBankrupt::Convert, "Convert", 2, "?x");
 
 	SQAIEventCompanyBankrupt.DefSQMethod(engine, &AIEventCompanyBankrupt::GetCompanyID, "GetCompanyID", 1, "x");
 
@@ -248,8 +238,7 @@ void SQAIEventVehicleLost_Register(Squirrel *engine) {
 	DefSQClass <AIEventVehicleLost> SQAIEventVehicleLost("AIEventVehicleLost");
 	SQAIEventVehicleLost.PreRegister(engine, "AIEvent");
 
-	SQAIEventVehicleLost.DefSQStaticMethod(engine, &AIEventVehicleLost::GetClassName, "GetClassName", 1, "x");
-	SQAIEventVehicleLost.DefSQStaticMethod(engine, &AIEventVehicleLost::Convert,      "Convert",      2, "xx");
+	SQAIEventVehicleLost.DefSQStaticMethod(engine, &AIEventVehicleLost::Convert, "Convert", 2, "?x");
 
 	SQAIEventVehicleLost.DefSQMethod(engine, &AIEventVehicleLost::GetVehicleID, "GetVehicleID", 1, "x");
 
@@ -269,8 +258,7 @@ void SQAIEventVehicleWaitingInDepot_Register(Squirrel *engine) {
 	DefSQClass <AIEventVehicleWaitingInDepot> SQAIEventVehicleWaitingInDepot("AIEventVehicleWaitingInDepot");
 	SQAIEventVehicleWaitingInDepot.PreRegister(engine, "AIEvent");
 
-	SQAIEventVehicleWaitingInDepot.DefSQStaticMethod(engine, &AIEventVehicleWaitingInDepot::GetClassName, "GetClassName", 1, "x");
-	SQAIEventVehicleWaitingInDepot.DefSQStaticMethod(engine, &AIEventVehicleWaitingInDepot::Convert,      "Convert",      2, "xx");
+	SQAIEventVehicleWaitingInDepot.DefSQStaticMethod(engine, &AIEventVehicleWaitingInDepot::Convert, "Convert", 2, "?x");
 
 	SQAIEventVehicleWaitingInDepot.DefSQMethod(engine, &AIEventVehicleWaitingInDepot::GetVehicleID, "GetVehicleID", 1, "x");
 
@@ -290,8 +278,7 @@ void SQAIEventVehicleUnprofitable_Register(Squirrel *engine) {
 	DefSQClass <AIEventVehicleUnprofitable> SQAIEventVehicleUnprofitable("AIEventVehicleUnprofitable");
 	SQAIEventVehicleUnprofitable.PreRegister(engine, "AIEvent");
 
-	SQAIEventVehicleUnprofitable.DefSQStaticMethod(engine, &AIEventVehicleUnprofitable::GetClassName, "GetClassName", 1, "x");
-	SQAIEventVehicleUnprofitable.DefSQStaticMethod(engine, &AIEventVehicleUnprofitable::Convert,      "Convert",      2, "xx");
+	SQAIEventVehicleUnprofitable.DefSQStaticMethod(engine, &AIEventVehicleUnprofitable::Convert, "Convert", 2, "?x");
 
 	SQAIEventVehicleUnprofitable.DefSQMethod(engine, &AIEventVehicleUnprofitable::GetVehicleID, "GetVehicleID", 1, "x");
 
@@ -311,8 +298,7 @@ void SQAIEventIndustryOpen_Register(Squirrel *engine) {
 	DefSQClass <AIEventIndustryOpen> SQAIEventIndustryOpen("AIEventIndustryOpen");
 	SQAIEventIndustryOpen.PreRegister(engine, "AIEvent");
 
-	SQAIEventIndustryOpen.DefSQStaticMethod(engine, &AIEventIndustryOpen::GetClassName, "GetClassName", 1, "x");
-	SQAIEventIndustryOpen.DefSQStaticMethod(engine, &AIEventIndustryOpen::Convert,      "Convert",      2, "xx");
+	SQAIEventIndustryOpen.DefSQStaticMethod(engine, &AIEventIndustryOpen::Convert, "Convert", 2, "?x");
 
 	SQAIEventIndustryOpen.DefSQMethod(engine, &AIEventIndustryOpen::GetIndustryID, "GetIndustryID", 1, "x");
 
@@ -332,8 +318,7 @@ void SQAIEventIndustryClose_Register(Squirrel *engine) {
 	DefSQClass <AIEventIndustryClose> SQAIEventIndustryClose("AIEventIndustryClose");
 	SQAIEventIndustryClose.PreRegister(engine, "AIEvent");
 
-	SQAIEventIndustryClose.DefSQStaticMethod(engine, &AIEventIndustryClose::GetClassName, "GetClassName", 1, "x");
-	SQAIEventIndustryClose.DefSQStaticMethod(engine, &AIEventIndustryClose::Convert,      "Convert",      2, "xx");
+	SQAIEventIndustryClose.DefSQStaticMethod(engine, &AIEventIndustryClose::Convert, "Convert", 2, "?x");
 
 	SQAIEventIndustryClose.DefSQMethod(engine, &AIEventIndustryClose::GetIndustryID, "GetIndustryID", 1, "x");
 
@@ -353,8 +338,7 @@ void SQAIEventEngineAvailable_Register(Squirrel *engine) {
 	DefSQClass <AIEventEngineAvailable> SQAIEventEngineAvailable("AIEventEngineAvailable");
 	SQAIEventEngineAvailable.PreRegister(engine, "AIEvent");
 
-	SQAIEventEngineAvailable.DefSQStaticMethod(engine, &AIEventEngineAvailable::GetClassName, "GetClassName", 1, "x");
-	SQAIEventEngineAvailable.DefSQStaticMethod(engine, &AIEventEngineAvailable::Convert,      "Convert",      2, "xx");
+	SQAIEventEngineAvailable.DefSQStaticMethod(engine, &AIEventEngineAvailable::Convert, "Convert", 2, "?x");
 
 	SQAIEventEngineAvailable.DefSQMethod(engine, &AIEventEngineAvailable::GetEngineID, "GetEngineID", 1, "x");
 
@@ -374,8 +358,7 @@ void SQAIEventStationFirstVehicle_Register(Squirrel *engine) {
 	DefSQClass <AIEventStationFirstVehicle> SQAIEventStationFirstVehicle("AIEventStationFirstVehicle");
 	SQAIEventStationFirstVehicle.PreRegister(engine, "AIEvent");
 
-	SQAIEventStationFirstVehicle.DefSQStaticMethod(engine, &AIEventStationFirstVehicle::GetClassName, "GetClassName", 1, "x");
-	SQAIEventStationFirstVehicle.DefSQStaticMethod(engine, &AIEventStationFirstVehicle::Convert,      "Convert",      2, "xx");
+	SQAIEventStationFirstVehicle.DefSQStaticMethod(engine, &AIEventStationFirstVehicle::Convert, "Convert", 2, "?x");
 
 	SQAIEventStationFirstVehicle.DefSQMethod(engine, &AIEventStationFirstVehicle::GetStationID, "GetStationID", 1, "x");
 	SQAIEventStationFirstVehicle.DefSQMethod(engine, &AIEventStationFirstVehicle::GetVehicleID, "GetVehicleID", 1, "x");
@@ -396,8 +379,7 @@ void SQAIEventDisasterZeppelinerCrashed_Register(Squirrel *engine) {
 	DefSQClass <AIEventDisasterZeppelinerCrashed> SQAIEventDisasterZeppelinerCrashed("AIEventDisasterZeppelinerCrashed");
 	SQAIEventDisasterZeppelinerCrashed.PreRegister(engine, "AIEvent");
 
-	SQAIEventDisasterZeppelinerCrashed.DefSQStaticMethod(engine, &AIEventDisasterZeppelinerCrashed::GetClassName, "GetClassName", 1, "x");
-	SQAIEventDisasterZeppelinerCrashed.DefSQStaticMethod(engine, &AIEventDisasterZeppelinerCrashed::Convert,      "Convert",      2, "xx");
+	SQAIEventDisasterZeppelinerCrashed.DefSQStaticMethod(engine, &AIEventDisasterZeppelinerCrashed::Convert, "Convert", 2, "?x");
 
 	SQAIEventDisasterZeppelinerCrashed.DefSQMethod(engine, &AIEventDisasterZeppelinerCrashed::GetStationID, "GetStationID", 1, "x");
 
@@ -417,8 +399,7 @@ void SQAIEventDisasterZeppelinerCleared_Register(Squirrel *engine) {
 	DefSQClass <AIEventDisasterZeppelinerCleared> SQAIEventDisasterZeppelinerCleared("AIEventDisasterZeppelinerCleared");
 	SQAIEventDisasterZeppelinerCleared.PreRegister(engine, "AIEvent");
 
-	SQAIEventDisasterZeppelinerCleared.DefSQStaticMethod(engine, &AIEventDisasterZeppelinerCleared::GetClassName, "GetClassName", 1, "x");
-	SQAIEventDisasterZeppelinerCleared.DefSQStaticMethod(engine, &AIEventDisasterZeppelinerCleared::Convert,      "Convert",      2, "xx");
+	SQAIEventDisasterZeppelinerCleared.DefSQStaticMethod(engine, &AIEventDisasterZeppelinerCleared::Convert, "Convert", 2, "?x");
 
 	SQAIEventDisasterZeppelinerCleared.DefSQMethod(engine, &AIEventDisasterZeppelinerCleared::GetStationID, "GetStationID", 1, "x");
 

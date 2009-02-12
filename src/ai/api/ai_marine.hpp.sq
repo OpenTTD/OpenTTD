@@ -28,23 +28,22 @@ void SQAIMarine_Register(Squirrel *engine) {
 
 	AIError::RegisterErrorMapString(AIMarine::ERR_MARINE_MUST_BE_BUILT_ON_WATER, "ERR_MARINE_MUST_BE_BUILT_ON_WATER");
 
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::GetClassName,           "GetClassName",           1, "x");
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::IsWaterDepotTile,       "IsWaterDepotTile",       2, "xi");
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::IsDockTile,             "IsDockTile",             2, "xi");
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::IsBuoyTile,             "IsBuoyTile",             2, "xi");
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::IsLockTile,             "IsLockTile",             2, "xi");
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::IsCanalTile,            "IsCanalTile",            2, "xi");
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::AreWaterTilesConnected, "AreWaterTilesConnected", 3, "xii");
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::BuildWaterDepot,        "BuildWaterDepot",        3, "xib");
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::BuildDock,              "BuildDock",              3, "xib");
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::BuildBuoy,              "BuildBuoy",              2, "xi");
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::BuildLock,              "BuildLock",              2, "xi");
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::BuildCanal,             "BuildCanal",             2, "xi");
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::RemoveWaterDepot,       "RemoveWaterDepot",       2, "xi");
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::RemoveDock,             "RemoveDock",             2, "xi");
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::RemoveBuoy,             "RemoveBuoy",             2, "xi");
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::RemoveLock,             "RemoveLock",             2, "xi");
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::RemoveCanal,            "RemoveCanal",            2, "xi");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::IsWaterDepotTile,       "IsWaterDepotTile",       2, "?i");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::IsDockTile,             "IsDockTile",             2, "?i");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::IsBuoyTile,             "IsBuoyTile",             2, "?i");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::IsLockTile,             "IsLockTile",             2, "?i");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::IsCanalTile,            "IsCanalTile",            2, "?i");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::AreWaterTilesConnected, "AreWaterTilesConnected", 3, "?ii");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::BuildWaterDepot,        "BuildWaterDepot",        3, "?ib");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::BuildDock,              "BuildDock",              3, "?ib");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::BuildBuoy,              "BuildBuoy",              2, "?i");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::BuildLock,              "BuildLock",              2, "?i");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::BuildCanal,             "BuildCanal",             2, "?i");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::RemoveWaterDepot,       "RemoveWaterDepot",       2, "?i");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::RemoveDock,             "RemoveDock",             2, "?i");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::RemoveBuoy,             "RemoveBuoy",             2, "?i");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::RemoveLock,             "RemoveLock",             2, "?i");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::RemoveCanal,            "RemoveCanal",            2, "?i");
 
 	SQAIMarine.PostRegister(engine);
 }

@@ -17,8 +17,6 @@ void SQAIBridgeList_Register(Squirrel *engine) {
 	SQAIBridgeList.PreRegister(engine, "AIAbstractList");
 	SQAIBridgeList.AddConstructor<void (AIBridgeList::*)(), 1>(engine, "x");
 
-	SQAIBridgeList.DefSQStaticMethod(engine, &AIBridgeList::GetClassName, "GetClassName", 1, "x");
-
 	SQAIBridgeList.PostRegister(engine);
 }
 
@@ -35,8 +33,6 @@ void SQAIBridgeList_Length_Register(Squirrel *engine) {
 	DefSQClass <AIBridgeList_Length> SQAIBridgeList_Length("AIBridgeList_Length");
 	SQAIBridgeList_Length.PreRegister(engine, "AIAbstractList");
 	SQAIBridgeList_Length.AddConstructor<void (AIBridgeList_Length::*)(uint length), 2>(engine, "xi");
-
-	SQAIBridgeList_Length.DefSQStaticMethod(engine, &AIBridgeList_Length::GetClassName, "GetClassName", 1, "x");
 
 	SQAIBridgeList_Length.PostRegister(engine);
 }

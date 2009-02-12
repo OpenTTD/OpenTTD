@@ -17,7 +17,5 @@ void SQAISubsidyList_Register(Squirrel *engine) {
 	SQAISubsidyList.PreRegister(engine, "AIAbstractList");
 	SQAISubsidyList.AddConstructor<void (AISubsidyList::*)(), 1>(engine, "x");
 
-	SQAISubsidyList.DefSQStaticMethod(engine, &AISubsidyList::GetClassName, "GetClassName", 1, "x");
-
 	SQAISubsidyList.PostRegister(engine);
 }

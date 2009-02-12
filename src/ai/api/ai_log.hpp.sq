@@ -27,11 +27,10 @@ void SQAILog_Register(Squirrel *engine) {
 	SQAILog.DefSQConst(engine, AILog::LOG_WARNING,  "LOG_WARNING");
 	SQAILog.DefSQConst(engine, AILog::LOG_INFO,     "LOG_INFO");
 
-	SQAILog.DefSQStaticMethod(engine, &AILog::GetClassName,   "GetClassName",   1, "x");
-	SQAILog.DefSQStaticMethod(engine, &AILog::Info,           "Info",           2, "xs");
-	SQAILog.DefSQStaticMethod(engine, &AILog::Warning,        "Warning",        2, "xs");
-	SQAILog.DefSQStaticMethod(engine, &AILog::Error,          "Error",          2, "xs");
-	SQAILog.DefSQStaticMethod(engine, &AILog::FreeLogPointer, "FreeLogPointer", 1, "x");
+	SQAILog.DefSQStaticMethod(engine, &AILog::Info,           "Info",           2, "?s");
+	SQAILog.DefSQStaticMethod(engine, &AILog::Warning,        "Warning",        2, "?s");
+	SQAILog.DefSQStaticMethod(engine, &AILog::Error,          "Error",          2, "?s");
+	SQAILog.DefSQStaticMethod(engine, &AILog::FreeLogPointer, "FreeLogPointer", 1, "?");
 
 	SQAILog.PostRegister(engine);
 }

@@ -17,8 +17,6 @@ void SQAIVehicleList_Register(Squirrel *engine) {
 	SQAIVehicleList.PreRegister(engine, "AIAbstractList");
 	SQAIVehicleList.AddConstructor<void (AIVehicleList::*)(), 1>(engine, "x");
 
-	SQAIVehicleList.DefSQStaticMethod(engine, &AIVehicleList::GetClassName, "GetClassName", 1, "x");
-
 	SQAIVehicleList.PostRegister(engine);
 }
 
@@ -36,8 +34,6 @@ void SQAIVehicleList_Station_Register(Squirrel *engine) {
 	SQAIVehicleList_Station.PreRegister(engine, "AIAbstractList");
 	SQAIVehicleList_Station.AddConstructor<void (AIVehicleList_Station::*)(StationID station_id), 2>(engine, "xi");
 
-	SQAIVehicleList_Station.DefSQStaticMethod(engine, &AIVehicleList_Station::GetClassName, "GetClassName", 1, "x");
-
 	SQAIVehicleList_Station.PostRegister(engine);
 }
 
@@ -54,8 +50,6 @@ void SQAIVehicleList_SharedOrders_Register(Squirrel *engine) {
 	DefSQClass <AIVehicleList_SharedOrders> SQAIVehicleList_SharedOrders("AIVehicleList_SharedOrders");
 	SQAIVehicleList_SharedOrders.PreRegister(engine, "AIAbstractList");
 	SQAIVehicleList_SharedOrders.AddConstructor<void (AIVehicleList_SharedOrders::*)(VehicleID vehicle_id), 2>(engine, "xi");
-
-	SQAIVehicleList_SharedOrders.DefSQStaticMethod(engine, &AIVehicleList_SharedOrders::GetClassName, "GetClassName", 1, "x");
 
 	SQAIVehicleList_SharedOrders.PostRegister(engine);
 }

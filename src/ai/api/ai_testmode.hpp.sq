@@ -17,7 +17,5 @@ void SQAITestMode_Register(Squirrel *engine) {
 	SQAITestMode.PreRegister(engine);
 	SQAITestMode.AddConstructor<void (AITestMode::*)(), 1>(engine, "x");
 
-	SQAITestMode.DefSQStaticMethod(engine, &AITestMode::GetClassName, "GetClassName", 1, "x");
-
 	SQAITestMode.PostRegister(engine);
 }
