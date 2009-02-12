@@ -1705,7 +1705,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 }
 
 
-Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
+static Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
