@@ -3771,13 +3771,13 @@ STR_CONTENT_FILTER_TIP                                          :{BLACK}Gib ein 
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/name filter:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Herunterladen
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Beginne den Inhalt herunterzuladen
-STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Gesamtgräße des Download: {WHITE}{BYTES}
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Gesamtgröße des Download: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}Inhalts-Info
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Sie haben das nicht zum Herunterladen ausgewählt
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Sie haben dies zum Herunterladen ausgewählt
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Diese Abhängigkeit wurde zum Herunterladen ausgewählt
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Sie haben das schon
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Der Inhalt ist unbekannt und kann nicht von OpenTTD heruntergeladen werden
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Die Erweiterung ist unbekannt und kann nicht von OpenTTD heruntergeladen werden
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Das ist ein Ersatz für {G einen eine ein ""} existiernd{G en e es e} {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Name: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Version: {WHITE}{STRING}
@@ -3789,7 +3789,7 @@ STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Gewähl
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Abhängigkeiten: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags: {WHITE}{STRING}
 
-STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Inhalt herunterladend...
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Erweiterungen herunterladend...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Dateien anfordernd...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Momentan herunterladend {STRING} ({NUM} von {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Herunterladen abgeschlossen

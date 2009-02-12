@@ -1,0 +1,706 @@
+##name Luxembourgish
+##ownname Luxembourgish
+##isocode lb_LU
+##winlangid 0x046e
+##plural 0
+
+#
+
+##id 0x0000
+STR_NULL                                                        :
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Auserhalb vun der Kaart
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Ze noo um Bord vun der Kaart
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nët genuch Geld - dëss Aktioun kascht {CURRENCY}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}D'Land muss flaach sinn
+STR_0008_WAITING                                                :{BLACK}Um Waarden: {WHITE}{STRING}
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000C_ACCEPTS                                                :{BLACK}Acceptéiert: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}Acceptéiert: {GOLD}
+STR_000F_PASSENGERS                                             :Passagéier
+STR_0010_COAL                                                   :Kuelen
+STR_0011_MAIL                                                   :Post
+STR_0012_OIL                                                    :Ueleg
+STR_0013_LIVESTOCK                                              :Nahrung
+STR_0014_GOODS                                                  :Wueren
+STR_0015_GRAIN                                                  :Kaar
+STR_0016_WOOD                                                   :Holz
+STR_0017_IRON_ORE                                               :Eisnenärz
+STR_0018_STEEL                                                  :Stol
+STR_0019_VALUABLES                                              :Wertsaachen
+STR_001A_COPPER_ORE                                             :Kofferärz
+STR_001B_MAIZE                                                  :Mais
+STR_001C_FRUIT                                                  :Friichten
+STR_001D_DIAMONDS                                               :Diamanten
+STR_001E_FOOD                                                   :Iessen
+STR_001F_PAPER                                                  :Pabeier
+STR_0020_GOLD                                                   :Gold
+STR_0021_WATER                                                  :Waasser
+STR_0022_WHEAT                                                  :Weess
+STR_0023_RUBBER                                                 :Kautschuk
+STR_0024_SUGAR                                                  :Zocker
+STR_0025_TOYS                                                   :Spillsaachen
+STR_0026_CANDY                                                  :Séissegkeeten
+STR_0027_COLA                                                   :Cola
+STR_0028_COTTON_CANDY                                           :Zockerwatt
+STR_0029_BUBBLES                                                :Blosen
+STR_002A_TOFFEE                                                 :Karmell
+STR_002B_BATTERIES                                              :Batterien
+STR_002C_PLASTIC                                                :Plastik
+STR_002D_FIZZY_DRINKS                                           :Gedrénks mat Khueleseier
+STR_002F_PASSENGER                                              :Passagéier
+STR_0030_COAL                                                   :Kuelen
+STR_0031_MAIL                                                   :Post
+STR_0032_OIL                                                    :Ueleg
+STR_0033_LIVESTOCK                                              :Nahrung
+STR_0034_GOODS                                                  :Wueren
+STR_0035_GRAIN                                                  :Kaar
+STR_0036_WOOD                                                   :Holz
+STR_0037_IRON_ORE                                               :Eisenärz
+STR_0038_STEEL                                                  :Stol
+STR_0039_VALUABLES                                              :Wertsaachen
+STR_003A_COPPER_ORE                                             :Kofferärz
+STR_003B_MAIZE                                                  :Mais
+STR_003C_FRUIT                                                  :Friichten
+STR_003D_DIAMOND                                                :Diamanten
+STR_003E_FOOD                                                   :Iessen
+STR_003F_PAPER                                                  :Pabeier
+STR_0040_GOLD                                                   :Gold
+STR_0041_WATER                                                  :Waasser
+STR_0042_WHEAT                                                  :Weess
+STR_0043_RUBBER                                                 :Kautschuck
+STR_0044_SUGAR                                                  :Zocker
+STR_0045_TOY                                                    :Spillsaach
+STR_0046_CANDY                                                  :Séissegkeet
+STR_0047_COLA                                                   :Cola
+STR_0048_COTTON_CANDY                                           :Zockerwatt
+STR_0049_BUBBLE                                                 :Blos
+STR_004A_TOFFEE                                                 :Karmell
+STR_004B_BATTERY                                                :Batterie
+STR_004C_PLASTIC                                                :Plastik
+STR_004D_FIZZY_DRINK                                            :Gedrénks mat Khueleseier
+STR_00AE                                                        :{WHITE}{DATE_SHORT}
+STR_00AF                                                        :{WHITE}{DATE_LONG}
+STR_00B0_MAP                                                    :{WHITE}Kaart - {STRING}
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Spill Optiounen
+STR_00B2_MESSAGE                                                :{YELLOW}Meldung
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Matdeelung vun {STRING}
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kann daat nët maachen....
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kann dei Plaatz nët eidel maachen....
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All Rechter viirbehaalen
+STR_00B7_VERSION                                                :{BLACK}OpenTTD versioun {REV}
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 D'OpenTTD team
+
+STR_00C5                                                        :{BLACK}{CROSS}
+STR_00C6                                                        :{SILVER}{CROSS}
+STR_00C7_QUIT                                                   :{WHITE}Eraus
+STR_00C8_YES                                                    :{BLACK}Jo
+STR_00C9_NO                                                     :{BLACK}Nee
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Sidd der sëcher das dir aus dem OpenTTD eraus wëllt , an op {STRING} zerèck?
+STR_00CB_1                                                      :{BLACK}1
+STR_00CC_2                                                      :{BLACK}2
+STR_00CD_3                                                      :{BLACK}3
+STR_00CE_4                                                      :{BLACK}4
+STR_00CF_5                                                      :{BLACK}5
+STR_00D0_NOTHING                                                :Näischt
+STR_00D1_DARK_BLUE                                              :Donkel Blo
+STR_00D2_PALE_GREEN                                             :Bleech Grèng
+STR_00D3_PINK                                                   :Rosa
+STR_00D4_YELLOW                                                 :Giel
+STR_00D5_RED                                                    :Rout
+STR_00D6_LIGHT_BLUE                                             :Hell Blo
+STR_00D7_GREEN                                                  :Grèng
+STR_00D8_DARK_GREEN                                             :Donkel Grèng
+STR_00D9_BLUE                                                   :Blo
+STR_00DA_CREAM                                                  :Bèige
+STR_00DB_MAUVE                                                  :Donkel Mov
+STR_00DC_PURPLE                                                 :Mov
+STR_00DD_ORANGE                                                 :Orange
+STR_00DE_BROWN                                                  :Brong
+STR_00DF_GREY                                                   :Gro
+STR_00E0_WHITE                                                  :Wäiss
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Ze vill Gefiehrer am Spill
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
+STR_00E4_LOCATION                                               :{BLACK}Plaatz
+STR_00E5_CONTOURS                                               :Konturen
+STR_00E6_VEHICLES                                               :Gefiehrer
+STR_00E7_INDUSTRIES                                             :Industrien
+STR_00E8_ROUTES                                                 :Routen
+STR_00E9_VEGETATION                                             :Vegetatioun
+STR_00EA_OWNERS                                                 :Besëtzer
+STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Stroossen
+STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Schinnen
+STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Statiounen/Flughafen/Hafen
+STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Gebäier/Industrien
+STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Gefiehrer
+STR_00F0_100M                                                   :{BLACK}{TINYFONT}100m
+STR_00F1_200M                                                   :{BLACK}{TINYFONT}200m
+STR_00F2_300M                                                   :{BLACK}{TINYFONT}300m
+STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
+STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
+STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Zich
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Stroosengefiehrer
+STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Schëffer
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Fligeren
+STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Transport Routen
+STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Kuelenstollen
+STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Kraaftwierk
+STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Bësch
+STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Seeerei
+STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Ueleg Rafinerie
+STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Bauerenhaff
+STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fabrik
+STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Dreckerei
+STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Uelegquell
+STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Eisenärzstollen
+STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Stolwierk
+STR_0105_BANK                                                   :{BLACK}{TINYFONT}Bank
+STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Pabeierfabrik
+STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Goldstollen
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Iessensverarbeschtungswierk
+STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Diamantstollen
+STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Kofferärzstollen
+STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Uebstplantage
+STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Kautschuckplantage
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Waasserwierk
+STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Waassertuerm
+STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Bauholzwierk
+STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Zockerwattbësch
+STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Séissegkeetenfabrik
+STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Batterien Farm
+STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Colaquellen
+STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Spillgeschäft
+STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Spillsaachenfabrik
+STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Plastikpëtz
+STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Fabrik fir spruddelegt Gedrénks
+STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Blosen Generator
+STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Karmellbroch
+STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Zockerminn
+STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Gare
+STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Camionsluedeplaatz
+STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Busgare
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Flughafen/Hubschrauberlandeplaatz
+STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Hafen
+STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Knubbelegt Land
+STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Grasland
+STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}Onerschlossend Land
+STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}Felder
+STR_0124_TREES                                                  :{BLACK}{TINYFONT}Beem
+STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}Fielsen
+STR_0126_WATER                                                  :{BLACK}{TINYFONT}Waasser
+STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}Keen Besëtzer
+STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}Stiedt
+STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}Industrien
+STR_012A_DESERT                                                 :{BLACK}{TINYFONT}Wüst
+STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Schnéi
+STR_012C_MESSAGE                                                :{WHITE}Meldung
+STR_012D                                                        :{WHITE}{STRING}
+STR_012E_CANCEL                                                 :{BLACK}Oofbriechen
+STR_012F_OK                                                     :{BLACK}OK
+STR_0130_RENAME                                                 :{BLACK}Ëmbenennen
+STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Ze vill Nimm défineiert
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Deen Numm gët ët schon
+
+
+STR_013B_OWNED_BY                                               :{WHITE}...am Besëtz vun {STRING}
+STR_013C_CARGO                                                  :{BLACK}Luedung
+STR_013D_INFORMATION                                            :{BLACK}Informatioun
+STR_013E_CAPACITIES                                             :{BLACK}Kapazitéiten
+STR_013F_CAPACITY                                               :{BLACK}Kapazitéit: {LTBLUE}{CARGO}
+STR_0140_NEW_GAME                                               :{BLACK}Nei Partie
+STR_0141_LOAD_GAME                                              :{BLACK}Spill lueden
+
+STR_0148_GAME_OPTIONS                                           :{BLACK}Spillotiounen
+
+STR_0150_SOMEONE                                                :iergendeen{SKIP}{SKIP}
+STR_0151_MAP_OF_WORLD                                           :Weltkaart
+STR_0152_TOWN_DIRECTORY                                         :Stiedtverzeechniss
+STR_0153_SUBSIDIES                                              :Subventiounen
+
+
+
+
+
+
+
+
+
+############ range for menu starts
+STR_0154_OPERATING_PROFIT_GRAPH                                 :Grafik: Operativen Gëwënn
+STR_0155_INCOME_GRAPH                                           :Grafik: Ankommes
+STR_0156_DELIVERED_CARGO_GRAPH                                  :Grafik: Geliwert Luedungen
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Grafik: Performance
+STR_0158_COMPANY_VALUE_GRAPH                                    :Grafik: Betriebswert
+STR_0159_CARGO_PAYMENT_RATES                                    :Luedungs Bezuelraten
+STR_015A_COMPANY_LEAGUE_TABLE                                   :Betriebs Ranglëscht
+############ range for menu ends
+
+STR_015B_OPENTTD                                                :{WHITE}Iwert OpenTTD
+STR_015C_SAVE_GAME                                              :Spill späicheren
+STR_015D_LOAD_GAME                                              :Spill lueden
+STR_015E_QUIT_GAME                                              :Spill opginn
+STR_015F_QUIT                                                   :Eraus
+STR_0161_QUIT_GAME                                              :{WHITE}Spill opginn
+
+
+############ range for months starts
+STR_0162_JAN                                                    :Jan
+STR_0163_FEB                                                    :Feb
+STR_0164_MAR                                                    :Mär
+STR_0165_APR                                                    :Abr
+STR_0166_MAY                                                    :Mee
+STR_0167_JUN                                                    :Jun
+STR_0168_JUL                                                    :Jul
+STR_0169_AUG                                                    :Aug
+STR_016A_SEP                                                    :Sep
+STR_016B_OCT                                                    :Oct
+STR_016C_NOV                                                    :Nov
+STR_016D_DEC                                                    :Dez
+############ range for months ends
+
+STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
+STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_0170                                                        :{TINYFONT}{STRING}-
+STR_0171_PAUSE_GAME                                             :{BLACK}Spill pausen
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Spill späicheren, Spill opginn, Eraus
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Weis d'Lëscht vun den Firmen hieren Statiounen
+STR_0174_DISPLAY_MAP                                            :{BLACK}Weis d'Kaart, extra Siichtpunkt oder d'Lëscht vun den Zeeschen
+STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Weis d'Kaart, Stiedtverzeeschniss
+STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Weis d'Stiedverzeeschniss
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Informatiounen zu den Firmenfinanzen
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Generel Firmeninformatioun
+STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Weis Grafiken
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Weis d'Firmen-Ranglëscht
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Lëscht vun den Firmenzich
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Lëscht vun den Storssengefiehrer vun der Firma
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Lëscht vun den Firmenschëffer
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Lëscht vun den Firmenfligeren
+STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Vergréisser d'Sicht
+STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Verklenger d'Sicht
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Schinnen bauen
+STR_0182_BUILD_ROADS                                            :{BLACK}Stroossen bauen
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Schëffhafen bauen
+STR_0184_BUILD_AIRPORTS                                         :{BLACK}Flughafen bauen
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Beem planzen, Schëlder opsetzen etc.
+STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Informatiounen zum Land
+STR_0187_OPTIONS                                                :{BLACK}Optiounen
+STR_0188                                                        :{BLACK}{SMALLUPARROW}
+STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Den Service-Intervall kann nët geännert ginn...
+STR_018B_CLOSE_WINDOW                                           :{BLACK}Fënster zoumaachen
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Fënstertitel - hei zéien fir d'Fënster ze bewegen
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Objekter op engem Stëck Land zerstéieren
+STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}En Eck vum Land eroofsetzen
+STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}En Eck vum Land erophiewen
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Scrollbar - scrollt d'Lëscht erop/eroof
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Weis d'Landkonturen op der Kaart
+STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Weis d'Gefiehrer op der Kaart
+STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Weis d'Industrien op der Kaart
+STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Weis d'Transportrouten op der Kaart
+STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Weis d'Vegetatioun op der Kaart
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Weis d'Landbesëtzer op der Kaart
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Schalt d'Stiedtnimm op der Kaart un/aus
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Profit dësst Joër: {CURRENCY} (läscht Joër: {CURRENCY})
+
+############ range for service numbers starts
+############ range for service numbers ends
+
+STR_019F_TRAIN                                                  :Zuch
+STR_019C_ROAD_VEHICLE                                           :Stroossengefiehr
+STR_019E_SHIP                                                   :Schëff
+STR_019D_AIRCRAFT                                               :Flieger
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} gët aal
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} gët ganz aal
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} as ganz aal, an sollt schnellstens ersaat ginn
+STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Land Informatiounen
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Käschten fir ze Raumen: {LTBLUE}N/A
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Käschten fir ze Raumen: {RED}{CURRENCY}
+STR_01A6_N_A                                                    :N/A
+STR_01A7_OWNER                                                  :{BLACK}Besëtzer: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Local Autoriteit: {LTBLUE}{STRING}
+STR_01A9_NONE                                                   :Keng
+STR_01AA_NAME                                                   :{BLACK}Numm
+STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
+
+############ range for days starts
+STR_01AC_1ST                                                    :1ten
+STR_01AD_2ND                                                    :2ten
+STR_01AE_3RD                                                    :3ten
+STR_01AF_4TH                                                    :4ten
+STR_01B0_5TH                                                    :5ten
+STR_01B1_6TH                                                    :6ten
+STR_01B2_7TH                                                    :7ten
+STR_01B3_8TH                                                    :8ten
+STR_01B4_9TH                                                    :9ten
+STR_01B5_10TH                                                   :10ten
+STR_01B6_11TH                                                   :11ten
+STR_01B7_12TH                                                   :12ten
+STR_01B8_13TH                                                   :13ten
+STR_01B9_14TH                                                   :14ten
+STR_01BA_15TH                                                   :15ten
+STR_01BB_16TH                                                   :16ten
+STR_01BC_17TH                                                   :17ten
+STR_01BD_18TH                                                   :18ten
+STR_01BE_19TH                                                   :19ten
+STR_01BF_20TH                                                   :20ten
+STR_01C0_21ST                                                   :21ten
+STR_01C1_22ND                                                   :22ten
+STR_01C2_23RD                                                   :23ten
+STR_01C3_24TH                                                   :24ten
+STR_01C4_25TH                                                   :25ten
+STR_01C5_26TH                                                   :26ten
+STR_01C6_27TH                                                   :27ten
+STR_01C7_28TH                                                   :28ten
+STR_01C8_29TH                                                   :29ten
+STR_01C9_30TH                                                   :30ten
+STR_01CA_31ST                                                   :31ten
+############ range for days ends
+
+STR_01CB                                                        :{TINYFONT}{COMMA}
+
+STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Akzeptéiert Luedung: {LTBLUE}
+
+STR_01D1_8                                                      :({COMMA}/8 {STRING})
+STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz Jukebox
+STR_01D3_SOUND_MUSIC                                            :Sound/Musék
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Sound/Musék Fënster
+STR_01D5_ALL                                                    :{TINYFONT}All
+STR_01D6_OLD_STYLE                                              :{TINYFONT}Aalen Style
+STR_01D7_NEW_STYLE                                              :{TINYFONT}Neien Style
+STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy Street
+STR_01D9_CUSTOM_1                                               :{TINYFONT}Benotzerdéf. 1
+STR_01DA_CUSTOM_2                                               :{TINYFONT}Benotzerdéf. 2
+STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}Musék Lautstärkt
+STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}Lautstärkt vun den Effekter
+STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
+STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Sprang op d'Stéck firdrun vun der Selektioun
+STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Sprang op dat nächst Stéck vun der Selektioun
+STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Stop d'Musék
+STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Start d'Musék
+STR_01E3                                                        :{DKGREEN}{TINYFONT}--
+STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
+STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
+STR_01E6                                                        :{DKGREEN}{TINYFONT}------
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Nummer{SETX 88}Titel
+STR_01E9_SHUFFLE                                                :{TINYFONT}Shuffle
+
+
+
+############ range for menu starts
+############ range ends here
+
+############ range for menu starts
+############ range ends here
+
+
+
+
+############ range for menu starts
+############ range ends here
+
+
+
+
+
+############ start of townname region
+############ end of townname region
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ generic strings for settings
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ network gui strings
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+############ end network gui strings
+
+##### PNG-MAP-Loader
+
+
+
+##id 0x0800
+
+##id 0x1000
+
+
+
+##id 0x1800
+
+##id 0x2000
+
+
+##id 0x2800
+
+##id 0x3000
+
+
+############ range for rating starts
+############ range for rating ends
+
+
+
+##id 0x3800
+
+##id 0x4000
+
+##id 0x4800
+
+############ range for requires starts
+############ range for requires ends
+
+############ range for produces starts
+############ range for produces ends
+
+
+##id 0x5000
+
+##id 0x5800
+
+
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
+##id 0x6000
+
+
+############ end of savegame specific region!
+
+##id 0x6800
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+############ range for difficulty settings starts
+############ range for difficulty settings ends
+
+
+##id 0x7000
+
+
+
+##id 0x8000
+
+##id 0x8800
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##id 0x9000
+
+
+
+##id 0x9800
+
+
+##id 0xA000
+
+
+
+##id 0xB000
+
+
+
+############ Those following lines need to be in this order!!
+############ End of order list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### depot strings
+
+
+
+
+
+
+
+
+
+
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
+
+
+
+########### For showing numbers in widgets
+
+
+########### String for New Landscape Generator
+
+
+
+# Strings for map borders at game generation
+
+########### String for new airports
+
+
+############ Tooltip measurment
+
+
+############ Date formatting
+
+########
+
+
+
+
+##### Mass Order
+
+
+
+
+
+
+#### Improved sign GUI
+
+########
+
+
+############ Face formatting
+########
+
+############ signal GUI
+########
+
+############ on screen keyboard
+########
+
+############ AI GUI
+########
+
+############ town controlled noise level
+########
+
+############ Downloading of content from the central server
+
+
+
+########

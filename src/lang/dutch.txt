@@ -263,7 +263,7 @@ STR_0124_TREES                                                  :{BLACK}{TINYFON
 STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}Rotsen
 STR_0126_WATER                                                  :{BLACK}{TINYFONT}Water
 STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}Geen eigenaar
-STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}Steden
+STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}Dorpen
 STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}Industrieën
 STR_012A_DESERT                                                 :{BLACK}{TINYFONT}Woestijn
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Sneeuw
@@ -308,7 +308,7 @@ STR_0148_GAME_OPTIONS                                           :{BLACK}Spelopti
 
 STR_0150_SOMEONE                                                :iemand{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Wereldkaart
-STR_0152_TOWN_DIRECTORY                                         :Stedenlijst
+STR_0152_TOWN_DIRECTORY                                         :Dorpenlijst
 STR_0153_SUBSIDIES                                              :Subsidies
 
 STR_UNITS_IMPERIAL                                              :Imperiaal
@@ -432,8 +432,8 @@ STR_0171_PAUSE_GAME                                             :{BLACK}Pauzeer 
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Spel opslaan, spel stoppen, afsluiten
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Toon lijst met stations van het bedrijf
 STR_0174_DISPLAY_MAP                                            :{BLACK}Toon kaart
-STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Toon kaart, stedenlijst
-STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Toon stedenlijst
+STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Toon kaart, dorpenlijst
+STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Toon dorpenlijst
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Toon financiële informatie van het bedrijf
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Toon algemene informatie van het bedrijf
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Toon grafieken
@@ -640,20 +640,20 @@ STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landscha
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stadproductie
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrieproductie
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Wegenbouw
-STR_0233_TOWN_GENERATION                                        :{WHITE}Stadproductie
-STR_0234_NEW_TOWN                                               :{BLACK}Nieuwe stad
-STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Bouw nieuwe stad
-STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Kan hier geen nieuwe stad bouwen...
+STR_0233_TOWN_GENERATION                                        :{WHITE}Dorpsproductie
+STR_0234_NEW_TOWN                                               :{BLACK}Nieuw dorp
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Bouw nieuw dorp
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Kan hier geen nieuw dorp bouwen...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...te dicht bij de rand van de kaart
-STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...te dicht bij een andere stad
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...te dicht bij een ander dorp
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...locatie ongeschikt
-STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...te veel steden
+STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...te veel dorpen
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kan geen enkele stad bouwen
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...er is geen ruimte meer op de kaart
-STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Vergroot stad
+STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Vergroot dorp
 STR_023C_EXPAND                                                 :{BLACK}Vergroot
-STR_023D_RANDOM_TOWN                                            :{BLACK}Willekeurige stad
-STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Bouw stad op willekeurige locatie
+STR_023D_RANDOM_TOWN                                            :{BLACK}Willekeurige dorp
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Bouw dorp op willekeurige locatie
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Industrieproductie
 STR_0240_COAL_MINE                                              :{BLACK}Kolenmijn
 STR_0241_POWER_STATION                                          :{BLACK}Energiecentrale
@@ -725,8 +725,8 @@ STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Plaats b
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Plaats toffeegroeve
 STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Plaats suikermijn
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kan {STRING} hier niet bouwen...
-STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...plaats eerst stad
-STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...slechts één per stad toegestaan
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...plaats eerst dorp
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...slechts één per dorp toegestaan
 STR_0288_PLANT_TREES                                            :{BLACK}Plant bomen
 STR_0289_PLACE_SIGN                                             :{BLACK}Plaats bord
 STR_028A_RANDOM_TREES                                           :{BLACK}Willekeurige bomen
@@ -738,7 +738,7 @@ STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definiee
 STR_CREATE_LAKE                                                 :{BLACK}Definieer water gebied.{}Maak een kanaal, tenzij Ctrl wordt vastgehouden op zee niveau, dan zal de omgeving overstromen
 STR_CREATE_RIVER                                                :{BLACK}Maak rivier.
 STR_0290_DELETE                                                 :{BLACK}Verwijder
-STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Verwijder deze hele stad
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Verwijder dit hele dorp
 STR_0292_SAVE_SCENARIO                                          :Scenario opslaan
 STR_0293_LOAD_SCENARIO                                          :Scenario openen
 STR_MENU_LOAD_HEIGHTMAP                                         :Laad hoogtekaart
@@ -753,7 +753,7 @@ STR_PLAY_HEIGHTMAP                                              :{BLACK}Speel Ho
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start een nieuw spel, gebruik een hoogtekaart als landschap
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Weet je zeker dat je dit scenario wilt sluiten?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Sluit editor
-STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan alleen in steden met bevolking van meer dan 1200 worden gebouwd
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan alleen in dorpen met bevolking van meer dan 1200 worden gebouwd
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Verplaats startdatum 1 jaar terug
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Verplaats startdatum 1 jaar vooruit
 STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...uiteinden van brug moeten beiden op land zijn
@@ -763,7 +763,7 @@ STR_02A3_LARGE                                                  :{BLACK}Groot
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Willekeurig
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Stad
 STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Steden groeien sneller dan gewone dorpen{}Afhankelijk van instellingen, zijn ze groter als ze gemaakt worden
-STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Kies stadsgrootte
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Kies dorpsgrootte
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Stadsgrootte:
 
 STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Wegpatroon

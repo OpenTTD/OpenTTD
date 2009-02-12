@@ -19,11 +19,15 @@ STR_000C_ACCEPTS                                                :{BLACK}Aceptas:
 STR_000D_ACCEPTS                                                :{BLACK}Aceptas: {GOLD}
 STR_000F_PASSENGERS                                             :Pasajero
 STR_0010_COAL                                                   :Karbono
+STR_0011_MAIL                                                   :Posto
 STR_0012_OIL                                                    :Petrolo
 STR_0013_LIVESTOCK                                              :Brutaro
+STR_0014_GOODS                                                  :Havaji
 STR_0015_GRAIN                                                  :Semino
+STR_0016_WOOD                                                   :Ligno
 STR_0017_IRON_ORE                                               :Fer-erco
 STR_0018_STEEL                                                  :Stalo
+STR_0019_VALUABLES                                              :Valoraji
 STR_001A_COPPER_ORE                                             :Kupr-erco
 STR_001B_MAIZE                                                  :Maizo
 STR_001C_FRUIT                                                  :Frukto
@@ -36,16 +40,25 @@ STR_0022_WHEAT                                                  :Frumento
 STR_0023_RUBBER                                                 :Kauchuko
 STR_0024_SUGAR                                                  :Sukro
 STR_0025_TOYS                                                   :Ludili
+STR_0026_CANDY                                                  :Bonboni
+STR_0028_COTTON_CANDY                                           :Kandi-lanugo
+STR_0029_BUBBLES                                                :Buli
+STR_002A_TOFFEE                                                 :Karamelo
 STR_002B_BATTERIES                                              :Baterii
 STR_002C_PLASTIC                                                :Plastiko
+STR_002D_FIZZY_DRINKS                                           :Gasoza Drinkaji
 STR_002F_PASSENGER                                              :Pasajero
 STR_0030_COAL                                                   :Karbono
+STR_0031_MAIL                                                   :Posto
 STR_0032_OIL                                                    :Petrolo
 STR_0033_LIVESTOCK                                              :Brutaro
 STR_0034_GOODS                                                  :Havaji
 STR_0035_GRAIN                                                  :Semino
+STR_0036_WOOD                                                   :Ligno
 STR_0037_IRON_ORE                                               :Fer-erco
 STR_0038_STEEL                                                  :Stalo
+STR_0039_VALUABLES                                              :Valoraji
+STR_003A_COPPER_ORE                                             :Kupr-erco
 STR_003B_MAIZE                                                  :Maizo
 STR_003C_FRUIT                                                  :Frukto
 STR_003D_DIAMOND                                                :Diamanto
@@ -223,13 +236,14 @@ STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLAC
 ############ range for service numbers starts
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Voy-vehili
-STR_019D_AIRCRAFT                                               :Aeroplani
-STR_019E_SHIP                                                   :Bateli
 STR_019F_TRAIN                                                  :Treni
+STR_019C_ROAD_VEHICLE                                           :Voy-vehili
+STR_019E_SHIP                                                   :Bateli
+STR_019D_AIRCRAFT                                               :Aeroplani
 
 ############ range for days starts
 ############ range for days ends
+
 
 
 
@@ -253,6 +267,7 @@ STR_019F_TRAIN                                                  :Treni
 
 ############ start of townname region
 ############ end of townname region
+
 
 
 
@@ -291,6 +306,8 @@ STR_019F_TRAIN                                                  :Treni
 
 
 
+
+############ generic strings for settings
 
 
 
@@ -353,15 +370,14 @@ STR_019F_TRAIN                                                  :Treni
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 
 
 
 
 ############ end network gui strings
-
-
-
 
 ##### PNG-MAP-Loader
 
@@ -404,6 +420,7 @@ STR_019F_TRAIN                                                  :Treni
 ##id 0x5000
 
 ##id 0x5800
+STR_5802_LIGHTHOUSE                                             :Faro
 
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -419,10 +436,23 @@ STR_019F_TRAIN                                                  :Treni
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
+STR_6813_ECONOMY                                                :{LTBLUE}Ekonomio: {ORANGE}{STRING}
+STR_6815_DISASTERS                                              :{LTBLUE}Dizastri: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_6816_LOW                                                    :Basa
+STR_6817_NORMAL                                                 :Normala
+STR_6818_HIGH                                                   :Alta
+STR_681C_SLOW                                                   :Lenta
+STR_681D_MEDIUM                                                 :Meza
+STR_681E_FAST                                                   :Rapida
+STR_6820_LOW                                                    :Basa
+STR_6821_MEDIUM                                                 :Meza
+STR_6822_HIGH                                                   :Alta
 
 ##id 0x7000
+STR_7027_LOAN                                                   :{WHITE}Prest-ajo
+STR_7039_VEHICLES                                               :{GOLD}Vehili:
 
 
 
@@ -503,6 +533,8 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
+# Strings for map borders at game generation
+
 ########### String for new airports
 
 
@@ -537,5 +569,14 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ on screen keyboard
 ########
 
+############ AI GUI
+########
+
 ############ town controlled noise level
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

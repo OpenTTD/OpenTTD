@@ -154,13 +154,13 @@ STR_ABBREV_ALL                                                  :{TINYFONT}ALLE
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Kaart - {STRING}
-STR_00B1_GAME_OPTIONS                                           :{WHITE}Speletjie Opsies
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Spel Opsies
 STR_00B2_MESSAGE                                                :{YELLOW}Boodskap
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Boodskap van {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Versigtig!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kan dit nie doen nie....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan nie hierdie area skoon maak nie....
-STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Oorspronklik kopiereg {COPYRIGHT} 1995 Chris Sawyer, Alle regte voorbehou
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Oorspronklike kopiereg {COPYRIGHT} 1995 Chris Sawyer, Alle regte voorbehou
 STR_00B7_VERSION                                                :{BLACK}OpenTTD uitgawe {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Die OpenTTD span
 STR_TRANSLATED_BY                                               :{BLACK}  Vertaler(s) -
@@ -275,7 +275,7 @@ STR_012E_CANCEL                                                 :{BLACK}Kanselle
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Hernoem
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Te veel name verklaar
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Gekiesde naam reeds gebruik
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Gekiesde naam reeds in gebruik
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -3445,6 +3445,11 @@ STR_SMALLMAP_CENTER                                             :{BLACK}Senter d
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 # Strings for map borders at game generation
+STR_NORTHWEST                                                   :{BLACK}Noordwes
+STR_NORTHEAST                                                   :{BLACK}Noordoos
+STR_SOUTHEAST                                                   :{BLACK}Suidoos
+STR_SOUTHWEST                                                   :{BLACK}Suidwes
+STR_BORDER_WATER                                                :{BLACK}Water
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Klein

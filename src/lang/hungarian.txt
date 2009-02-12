@@ -2466,7 +2466,7 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Új arc 
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}A cég járművei színének megváltoztatása
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Az elnök nevének megváltoztatása
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}A cég nevének megváltoztatása
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Kattints a választott színsémára
+STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Kattints a kiválasztott színsémára
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}A kölcsön növelése
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}A kölcsön egy részének törlesztése
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Elnök)

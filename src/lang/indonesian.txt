@@ -766,10 +766,10 @@ STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Kota tum
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Pilih ukuran kota
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Ukuran kota:
 
-STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Tata letak jalan:
-STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Pilih tata letak jalan untuk kota ini:
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Tampilan jalan kota:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Pilihlah tampilan jalan yang digunakan utk kota ini
 STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Asli
-STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Lebih baik
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Jalan yang lebih baik
 STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}grid 2x2
 STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}grid 3x3
 STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Acak
@@ -969,9 +969,9 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format t
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Pilih format hasil tangkapan layar
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Grafik Set Standar
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Set Grafik Dasar
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Pilih grafis dasar untuk digunakan
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Pilih grafik dasar yang digunakan
 
 STR_AUTOSAVE_1_MONTH                                            :Setiap bulan
 STR_AUTOSAVE_FAILED                                             :{WHITE}Simpan otomatis gagal
@@ -1206,13 +1206,13 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Hanya sinyal bl
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Hanya sinyal jalur
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Semua
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Tata letak jalan untuk kota baru: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Tampilan jalan untuk kota baru: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Asli
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :lebih baik
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :kotak 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :kotak 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :acak
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Kota boleh membangun jalan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Kota mengijinkan untuk membuat jalan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Ijinkan kota mengatur tingkat kebisingan bandara : {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posisi toolbar utama: {ORANGE}{STRING}
@@ -3765,9 +3765,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pilih pe
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Pilih semua konten yang tersedia pembaruannya untuk diunduh
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Hps semua pilihan
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Tandai semua untuk tidak diunduh
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Masukkan string filter
-STR_CONTENT_FILTER_TIP                                          :{BLACK}Masukkan kata kunci untuk filter
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}Nama Filter:
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Masukkan kata penyaring
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Masukkan kata kunci untuk menyaring daftar
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tanda/nama filter:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Unduh
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Mulai unduh konten terpilih
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total ukuran terunduh: {WHITE}{BYTES}

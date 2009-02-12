@@ -2315,9 +2315,9 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Empresa {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nueva Cara
-STR_7005_COLOUR_SCHEME                                          :{BLACK}Esquema de color
-STR_7006_COLOUR_SCHEME                                          :{GOLD}Esquema de color:
-STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Nuevo esquema de color
+STR_7005_COLOUR_SCHEME                                          :{BLACK}Esquema de Color
+STR_7006_COLOUR_SCHEME                                          :{GOLD}Esquema de Color:
+STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Nuevo Esquema de Color
 STR_7008_COMPANY_NAME                                           :{BLACK}Nombre Empresa
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Nombre Presid.
 STR_700A_COMPANY_NAME                                           :Nombre Empresa
@@ -3762,7 +3762,7 @@ STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Nombre d
 STR_CONTENT_MATRIX_TIP                                          :{BLACK}Pincha en una línea para ver los detalles{}Pincha en los cajetines para seleccionar las descargas
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Seleccionar todas
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Marca todo el contenido para descarga
-STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Seleccionar actualizaciones
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Seleccionar acts.
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Marca todo el contenido que es una actualización de contenido existente para descargar
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Desmarcar todas
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Marca todo el contenido para no ser descargado
