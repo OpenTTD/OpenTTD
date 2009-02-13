@@ -858,6 +858,7 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Aloita u
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Lataa tallennettu peli.
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Luo oma pelimaailma/skenaario.
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Valitse yksinpeli.
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Aloita moninpeli
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Näytä peliasetukset.
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Näytä vaikeusasetukset.
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Aloita uusi peli käyttäen omaa skenaariota.

@@ -855,13 +855,14 @@ STR_02F7_OFF                                                    :Désactivé
 STR_02F8_EVERY_3_MONTHS                                         :Tous les 3 mois
 STR_02F9_EVERY_6_MONTHS                                         :Tous les 6 mois
 STR_02FA_EVERY_12_MONTHS                                        :Tous les 12 mois
-STR_02FB_START_A_NEW_GAME                                       :{BLACK}Commencer une nouvelle partie
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}Démarrer une nouvelle partie
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Charger une partie sauvée
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Créer un monde/scénario de jeu personnalisé
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Sélectionner mode joueur simple
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Démarrer une partie multijoueurs
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Afficher les options du jeu
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Afficher les options de niveau de difficulté
-STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Débuter une nouvelle partie à partir d'un scénario
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Démarrer une nouvelle partie à partir d'un scénario
 STR_0304_QUIT                                                   :{BLACK}Quitter
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Quitter 'OpenTTD'
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
@@ -1177,6 +1178,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Désact
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permettre les IA en multi-joueurs: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Nombre d'opcodes avant de suspendre l'IA: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Les intervalles de service sont en pourcentage: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Entretien des trains tous les: {ORANGE}{STRING} jours
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Entretien des trains tous les: {ORANGE}inactif
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Entretien des véhicules routiers tous les: {ORANGE}{STRING} jours
@@ -1212,6 +1214,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grille 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grille 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aléatoire
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Autoriser la construction des routes par les villes: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permettre plus d'aéroport par ville, selon les nuisances: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Position de la barre d'outils principale: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :À gauche
@@ -1250,12 +1253,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trains
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Villes
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industries
 
-STR_CONFIG_SETTING_DISABLED                                     :inactif
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Changer valeur du paramètre
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Recherche de chemin des trains: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Non recommandé)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1268,6 +1265,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Recherc
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recommandé)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Not recommandé)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Taille X de la carte : {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Taille Y de la carte : {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :inactif
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Changer valeur du paramètre
 
 STR_TEMPERATE_LANDSCAPE                                         :environnement 'Tempéré'
 STR_SUB_ARCTIC_LANDSCAPE                                        :environnement 'Arctique'
@@ -1395,7 +1401,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Réamén
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choisir le type de cargaison à transporter
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Réaménager le train pour transporter la cargaison sélectionnée
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Impossible de réaménager le train...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Les intervalles de service sont en pourcentage: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Changer la production
 
 ############ network gui strings
@@ -1656,11 +1661,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Message privé
 STR_NETWORK_SEND                                                :{BLACK}Envoyer
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Taille X de la carte : {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Taille Y de la carte : {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -3741,7 +3741,6 @@ STR_AI_DESCRIPTION                                              :Description:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permettre plus d'aéroport par ville, selon les nuisances: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Limite de nuisance pour la ville: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Bruit généré: {GOLD}{COMMA}
 ########

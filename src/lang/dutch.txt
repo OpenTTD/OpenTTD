@@ -582,7 +582,7 @@ STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klik op 
 STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klik op het muziek item om het van de lijst te verwijderen (Aangepast 1 en Aangepast 2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Programmashuffle aan/uit
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Toon nummerselectiescherm
-STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klik op de dienst om de stad/industrie te centreren
+STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klik op de dienst om de plaats/industrie te centreren
 STR_01FE_DIFFICULTY                                             :{BLACK}Moeilijkheidsgraad ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Laatste (nieuws)bericht
@@ -648,7 +648,7 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...te di
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...te dicht bij een ander dorp
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...locatie ongeschikt
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...te veel dorpen
-STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kan geen enkele stad bouwen
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kan geen enkele plaats bouwen
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...er is geen ruimte meer op de kaart
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Vergroot dorp
 STR_023C_EXPAND                                                 :{BLACK}Vergroot
@@ -797,7 +797,7 @@ STR_MENU_CONFIG_SETTINGS                                        :Geavanceerde in
 STR_NEWGRF_SETTINGS                                             :Newgrf instellingen
 STR_TRANSPARENCY_OPTIONS                                        :Doorzichtigheidsopties
 STR_GAMEOPTMENU_0A                                              :
-STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Geef stadsnamen weer
+STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Geef plaatsnamen weer
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Geef stationsnamen weer
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Geef borden weer
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Controleposten weergegeven
@@ -1819,12 +1819,12 @@ STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Gebouw m
 STR_2005                                                        :{WHITE}{TOWN}
 STR_CITY                                                        :{WHITE}{TOWN} (Stad)
 STR_2006_POPULATION                                             :{BLACK}Bevolking: {ORANGE}{COMMA}{BLACK}  Huizen: {ORANGE}{COMMA}
-STR_2007_RENAME_TOWN                                            :Hernoem stad
-STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Kan stad niet hernoemen...
+STR_2007_RENAME_TOWN                                            :Hernoem dorp
+STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Kan dorp niet hernoemen...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}De gemeenteraad van {TOWN} staat dit niet toe
-STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Plaatsnamen - klik op naam om het hoofdbeeld te centreren op de stad
-STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centreer het hoofdbeeld op de locatie van de stad
-STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Hernoem stad
+STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Plaatsnamen - klik op naam om het hoofdbeeld te centreren op de plaats
+STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centreer het hoofdbeeld op de locatie van de plaats
+STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Hernoem plaats
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagiers afgelopen maand: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post afgelopen maand: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200F_TALL_OFFICE_BLOCK                                      :Hoog kantoorgebouw
@@ -1879,7 +1879,7 @@ STR_203F_HOUSES                                                 :Huizen
 STR_2040_CINEMA                                                 :Bioscoop
 STR_2041_SHOPPING_MALL                                          :Winkelcentrum
 STR_2042_DO_IT                                                  :{BLACK}Doe het
-STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Lijst met dingen die mogelijk zijn in deze stad - klik op een item voor meer details
+STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Lijst met dingen die mogelijk zijn in dit dorp - klik op een item voor meer details
 STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}Voer de geselecteerde actie uit in de bovenstaande lijst
 STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Mogelijkheden:
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Kleine reclamecampagne
@@ -1895,8 +1895,8 @@ STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Begin een grote advertentiecampagne, om meer passagiers en goederen naar jouw transportdiensten te trekken.{}  Kosten: {CURRENCY}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Betaal een vernieuwing van het wegdek. Veroorzaakt merkbare verstoring van het wegverkeer tot 6 maanden.{}  Kosten: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Bouw een standbeeld ter ere van jouw bedrijf.{} Kosten: {CURRENCY}
-STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Betaal de bouw van nieuwe commerciële gebouwen in de stad.{}  Kosten: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Koop 1 jaar exclusieve transportrechten in deze stad. De gemeenteraad staat passagiers en goederen toe alleen jouw stations te gebruiken.{} Kosten: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Betaal de bouw van nieuwe commerciële gebouwen in het dorp.{}  Kosten: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Koop 1 jaar exclusieve transportrechten in deze plaats. De gemeenteraad staat passagiers en goederen toe alleen jouw stations te gebruiken.{} Kosten: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Koop het plaatselijk gezag om om je rang te verhogen, met het gevaar van een strenge sanctie, wanneer gepakt.{}  Kosten: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Verkeerschaos in {TOWN}!{}{}Wegreparatie betaald door {STRING} zorgt voor 6 maanden van irritatie bij weggebruikers!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
@@ -1940,7 +1940,7 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Aantal s
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Platformlengte
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Te dicht bij een ander station
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Voegt meer dan één bestaand (laad)station samen
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Teveel (laad)stations in de buurt van deze stad
+STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Teveel (laad)stations in de buurt van deze plaats
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Teveel (laad)stations
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Te veel treinstationsonderdelen
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Te veel bushaltes

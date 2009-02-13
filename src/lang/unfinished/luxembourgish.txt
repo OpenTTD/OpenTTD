@@ -378,6 +378,7 @@ STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Sprang o
 STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Sprang op dat nächst Stéck vun der Selektioun
 STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Stop d'Musék
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Start d'Musék
+STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Zéi  den Regler fir d'Lautstärk vun der Musék an den Effekter anzestellen
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
@@ -385,23 +386,278 @@ STR_01E6                                                        :{DKGREEN}{TINYF
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Nummer{SETX 88}Titel
 STR_01E9_SHUFFLE                                                :{TINYFONT}Shuffle
+STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Programm
+STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Musékprogramm Selectioun
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
+STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Lidder Index
+STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Programm - '{STRING}'
+STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Läschen
+STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Späicheren
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Momentanen Programm fir d'Lidder
+STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Selectioneier 'all Lidder' Programm
+STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Selectioneier 'aalen Style' Programm
+STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Selectioneier 'neien Style' Programm
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Selectioneier 'Benotzerdéf. 1' Programm
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Selectioneier 'Benotzerdéf. 2' Programm
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Den gewielten Program eidel maachen (nëmmen Benotzerdéf.1 oder Benotzerdéf.2)
+STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Musék anstellungen späicheren
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klick op d'Lidd fir ët zum aktuellen Program dobäi zesetzen (nëmmen Benotzerdéf.1 oder Benotzerdéf.2)
+STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Schalt den "shuffle" un/aus
+STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Weis Musékselektioneier-Fënster
+STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klick op den Service fir d'Unsiicht op d'Industrie/Stadt ze zentréieren
+STR_01FE_DIFFICULTY                                             :{BLACK}Schwieregkeet ({STRING})
+STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
+STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Läscht Meldung/Neiegkeet
+STR_0201_MESSAGE_SETTINGS                                       :Meldungsanstellungen
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Weis dei läscht Meldung/Neiegkeet, oder d'Anstellungen
+STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Meldungsoptiounen
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Meldungstyp:
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ukonft vum eischten Gefiehrt op enger Spillerstatioun
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ukonft vum eischten Gefiehrt op enger Geigenspillerstatioun
+STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidenter / Katastrophen
+STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmeninformatiounen
+STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Wirtschaftsännerungen
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Hinweis / Informatioun iwert Firmengefiehrter
+STR_020C_NEW_VEHICLES                                           :{YELLOW}Nei Gefhierter
+STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Ännerungen vun acceptéiert Luedungen
+STR_020E_SUBSIDIES                                              :{YELLOW}Subventiounen
+STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Generel Informatiounen
+STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...ze wäit vun läschter destinatioun
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top Firmen dei {NUM} erreescht hun{}({STRING} Level)
+STR_0212                                                        :{BIGFONT}{COMMA}.
+STR_0213_BUSINESSMAN                                            :Kaafmann
+STR_0214_ENTREPRENEUR                                           :Entrepreneur
+STR_0215_INDUSTRIALIST                                          :Industriellen
+STR_0216_CAPITALIST                                             :Kapitalist
+STR_0217_MAGNATE                                                :Magnat
+STR_0218_MOGUL                                                  :Mogul
+STR_0219_TYCOON_OF_THE_CENTURY                                  :Tycoon vum Joërhonnert
+STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} ereescht den Status '{STRING}'!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} vun {COMPANY} ereescht den Status '{STRING}'!
+STR_021F                                                        :{BLUE}{COMMA}
+STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Szenarien Editor
+STR_0223_LAND_GENERATION                                        :{WHITE}Landerstellung
+STR_0224                                                        :{BLACK}{UPARROW}
+STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Vergréisser d'Zone fir d'Land unzehiewen/eroofzesetzen
+STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Verklenger d'Zone fir d'Land unzehiewen/eroofzesetzen
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generéier en zoufalls Land
+STR_022B_RESET_LANDSCAPE                                        :{BLACK}Setz d'Landschaft zerèck
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}Setz d'Landschaft zerèck
+STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landschaftserstellung
+STR_022F_TOWN_GENERATION                                        :{BLACK}Stadterstellung
+STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrieerstellung
+STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Stroossenbau
+STR_0233_TOWN_GENERATION                                        :{WHITE}Stadterstellung
+STR_0234_NEW_TOWN                                               :{BLACK}Nei Stadt
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Erstell nei Stadt
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Kann d'Stadt nët hei bauen...
+STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...ze noo um Enn vun der Kaart
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...ze noo un enger aanerer Stadt
+STR_0239_SITE_UNSUITABLE                                        :{WHITE}...Plaatz nët geegent
+STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...ze vill Stiedt
+STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Stadt mei grouss maachen
+STR_023C_EXPAND                                                 :{BLACK}Erweideren
+STR_023D_RANDOM_TOWN                                            :{BLACK}Zoufallsstadt
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Bau d'Stadt op enger zoufälleger Plaatz
+STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Industrieerstellung
+STR_0240_COAL_MINE                                              :{BLACK}Kuelenstollen
+STR_0241_POWER_STATION                                          :{BLACK}Kraftwierk
+STR_0242_SAWMILL                                                :{BLACK}Séeerei
+STR_0243_FOREST                                                 :{BLACK}Bësch
+STR_0244_OIL_REFINERY                                           :{BLACK}Uelegrafinerie
+STR_0245_OIL_RIG                                                :{BLACK}Uelegbuerinsel
+STR_0246_FACTORY                                                :{BLACK}Fabrik
+STR_0247_STEEL_MILL                                             :{BLACK}Stolwierk
+STR_0248_FARM                                                   :{BLACK}Bauerenhaf
+STR_0249_IRON_ORE_MINE                                          :{BLACK}Eisenärzstollen
+STR_024A_OIL_WELLS                                              :{BLACK}Uelegquellen
+STR_024B_BANK                                                   :{BLACK}Bank
+STR_024C_PAPER_MILL                                             :{BLACK}Pabeierfabrik
+STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Iessensverarbeschtungsfabrik
+STR_024E_PRINTING_WORKS                                         :{BLACK}Dréckerei
+STR_024F_GOLD_MINE                                              :{BLACK}Goldstollen
+STR_0250_LUMBER_MILL                                            :{BLACK}Bauholzfabrik
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}Uebstplantage
+STR_0252_RUBBER_PLANTATION                                      :{BLACK}Kautschuckplantage
+STR_0253_WATER_SUPPLY                                           :{BLACK}Waasserwierk
+STR_0254_WATER_TOWER                                            :{BLACK}Waassertuerm
+STR_0255_DIAMOND_MINE                                           :{BLACK}Diamandstollen
+STR_0256_COPPER_ORE_MINE                                        :{BLACK}Kofferärzstollen
+STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Zockerwattbësch
+STR_0258_CANDY_FACTORY                                          :{BLACK}Séissegkeetenfabrik
+STR_0259_BATTERY_FARM                                           :{BLACK}Batteriefarm
+STR_025A_COLA_WELLS                                             :{BLACK}Colaquellen
+STR_025B_TOY_SHOP                                               :{BLACK}Spillgeschäft
+STR_025C_TOY_FACTORY                                            :{BLACK}Spillsaachenfabrik
+STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Plastikpëtz
+STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Kueleseiergedrenksfabrik
+STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Blosen Generator
+STR_0260_TOFFEE_QUARRY                                          :{BLACK}Karmellstollen
+STR_0261_SUGAR_MINE                                             :{BLACK}Zockerminn
+STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Kuelenstollen bauen
+STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Kraftwierk bauen
+STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Séeerei bauen
+STR_0265_PLANT_FOREST                                           :{BLACK}Bësch planzen
+STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Uelegrafinerie bauen
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Uelegbuerinsel bauen (nëmmen no bei dem Enn vun der Kaart)
+STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Fabrik bauen
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Stolwierk bauen
+STR_026A_CONSTRUCT_FARM                                         :{BLACK}Bauerenhaf bauen
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Eisenärzstollen bauen
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Uelegquellen bauen
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bank bauen(Nëmmen an Stiedt mat mei wei 1200 Anwunner)
+STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Pabeierfabrik bauen
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Iesenverarbeschtungsfabrik bauen
+STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Dréckerei bauen
+STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Goldstollen bauen
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bank bauen (Nëmmen an Stiedt)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Bauholzfabrik bauen (Fir den Bësch oofzebauen an Holz ze produzeieren)
+STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Uebstplantage unbauen
+STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Kautschuckplantage unbauen
+STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Waasserwierk bauen
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Waassertuerm bauen (Nëmmen an Stiedt)
+STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Diamandstollen bauen
+STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Kofferärzstollen bauen
+STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Zockerwattbësch unbauen
+STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Séissegkeetenfabrik bauen
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Batteriefarm bauen
+STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Colaquellen bauen
+STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Spillgeschäft bauen
+STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Spillsaachenfabrik bauen
+STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Plastikpëtz bauen
+STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Khueleseiergedrénksfabrik bauen
+STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Blosen Generator bauen
+STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Karmellbroch bauen
+STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Zockerminn bauen
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kann {STRING} nët hei bauen...
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...muss fir d'éischt eng Stadt bauen
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...nëmmen 1 pro Stadt erlaabt
+STR_0288_PLANT_TREES                                            :{BLACK}Beem setzen
+STR_0289_PLACE_SIGN                                             :{BLACK}Schëld opstellen
+STR_028A_RANDOM_TREES                                           :{BLACK}Zoufälleg Beem
+STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Beem zoufälleg iwert d'Landschaft setzen
+STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Fielsen iwert d'Landschaft setzen
+STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Liichttuerm bauen
+STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sender bauen
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Zone fir Wüst défineieren.{}CTRL unhaalen fir se ze läschen
+STR_0290_DELETE                                                 :{BLACK}Läschen
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Dës Stadt ganz läschen
+STR_0292_SAVE_SCENARIO                                          :Szenerie späicheren
+STR_0293_LOAD_SCENARIO                                          :Szenerie lueden
+STR_0294_QUIT_EDITOR                                            :Eraus aus dem Editor
+STR_0295                                                        :
+STR_0296_QUIT                                                   :Eraus
+STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Szénerie späicheren, Szénerie lueden, Eraus aus dem Szénerieeditor, Eraus
+STR_0298_LOAD_SCENARIO                                          :{WHITE}Szénerie lueden
+STR_0299_SAVE_SCENARIO                                          :{WHITE}Szénerie späicheren
+STR_029A_PLAY_SCENARIO                                          :{BLACK}Szénerie spillen
+STR_029C_QUIT_EDITOR                                            :{WHITE}Eraus aus dem Editor
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kann nëmmen an Stiedt mat opmannst 1200 Anwunner gebaut ginn
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Änner den Startdatum 1 Joer nohannen
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Änner den Startdatum 1 Joer novir
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...dei zwee Enner vun der Brèck mussen um Land sinn
+STR_02A1_SMALL                                                  :{BLACK}Klèng
+STR_02A2_MEDIUM                                                 :{BLACK}Mëttel
+STR_02A3_LARGE                                                  :{BLACK}Grouß
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Wiel d'Stadtgréisst
+STR_02A5_TOWN_SIZE                                              :{YELLOW}Stadtgréisst:
 
 
+STR_02B6                                                        :{STRING}  -  {STRING}
+STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Läscht Meldung oder Neiegkeet
+STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
+STR_02BB_TOWN_DIRECTORY                                         :Stiedtverzeeschniss
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Gefiehrtdesingnumm
+STR_02BD                                                        :{BLACK}{STRING}
+STR_02BE_DEFAULT                                                :Standard
+STR_02BF_CUSTOM                                                 :Benotzerdéfineiert
+STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Späicher eegen Nimm
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Gefiehrtdesingnimm sélectioun
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Späicher eegen Gefiehrtdesingnimm
 
 ############ range for menu starts
+STR_02C4_GAME_OPTIONS                                           :Spilloptiounen
+STR_02C6_DIFFICULTY_SETTINGS                                    :Schwieregkeetsanstellungen
+STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Stiedtnimm ungewisen
+STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Statiounennimm ungewisen
+STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Schëlder ungewisen
+STR_02D0_FULL_ANIMATION                                         :{SETX 12}Ganz Animatiounen
+STR_02D2_FULL_DETAIL                                            :{SETX 12}Ganz Detailer
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Transparent Gebäier
 ############ range ends here
 
 ############ range for menu starts
+STR_02D5_LAND_BLOCK_INFO                                        :Landinformatiounen
+STR_02D6                                                        :
+STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl+S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Riesen Screenshot (Ctrl+G)
+STR_02D9_ABOUT_OPENTTD                                          :Iwert 'OpenTTD'
 ############ range ends here
 
+STR_02DB_OFF                                                    :{BLACK}Aus
+STR_02DA_ON                                                     :{BLACK}Un
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Subventiounen weisen
+STR_02DD_SUBSIDIES                                              :Subventiounen
+STR_02DE_MAP_OF_WORLD                                           :Weltkaart
+STR_02DF_TOWN_DIRECTORY                                         :Stiedtverzeeschniss
 
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Währungseenheet
+STR_02E1                                                        :{BLACK}{SKIP}{STRING}
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Währungseenheet wielen
+STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Stroossengefiehrer
+STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Wei eng Stroossensäit sollen d'Gefiehrer fuehren
+STR_02E9_DRIVE_ON_LEFT                                          :Lènks fuehren
+STR_02EA_DRIVE_ON_RIGHT                                         :Riets fuehren
+STR_02EB_TOWN_NAMES                                             :{BLACK}Stiedtnimm
+STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Style vun den Stiedtnimm wielen
 
+STR_02F4_AUTOSAVE                                               :{BLACK}Autospäicheren
+STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Wiel den Intervall aus fir d'Automatëschspäicherung
+STR_02F7_OFF                                                    :Aus
+STR_02F8_EVERY_3_MONTHS                                         :All 3 Méint
+STR_02F9_EVERY_6_MONTHS                                         :All 6 Méint
+STR_02FA_EVERY_12_MONTHS                                        :All 12 Méint
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}Starten eng nei Partie
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Lueden eng Partie
+STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Erstell eng eegen Spillwelt/Szénerie
+STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Wiel en eenzelspiller Spill
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Wiel en multiplayer Spill vun 2-8 Spiller
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Spilloptiounen
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Schwieregkeetsanstellungen
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Start eng nei Partie, mat enger eegener Szénerie
+STR_0304_QUIT                                                   :{BLACK}Eraus
+STR_0305_QUIT_OPENTTD                                           :{BLACK}Aus 'OpenTTD' eraus goen
+STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kann nëmmen an Stiedt gebaut ginn
+STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Wielt den Ladschaftsstyle 'tempereiert'
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Wielt den Ladschaftsstyle 'sub-arktesch'
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Wielt den Ladschaftsstyle 'sub-tropesch'
+STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Wielt den Ladschaftsstyle 'spillsaachenland'
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Finanzéiert den Bau vun enger neier Industrie oder lëscht all d'Industrien op
 
 ############ range for menu starts
+STR_0313_FUND_NEW_INDUSTRY                                      :Finanzéiert eng nei Industrie
 ############ range ends here
 
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Nei Industrie finanzéiert
+STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kann nëmmen an Stiedt gebaut ginn
+STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...kann nëmmen am Regenwaldgebit gebaut ginn
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...kann nëmmen an der Wüst gebaut ginn
+STR_0319_PAUSED                                                 :{YELLOW}* *  PAUSÉIERT  *  *
 
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot gespäichert als '{STRING}'
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screenshot fehler!
 
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Kaaf Land fir zukünftëg Benotzung
+STR_032F_AUTOSAVE                                               :{RED}AUTOSPÄICHEREN
+STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Wielt 'Ezy Street Musék' programme
 
 
 ############ start of townname region
@@ -523,14 +779,91 @@ STR_01E9_SHUFFLE                                                :{TINYFONT}Shuff
 
 
 ##id 0x0800
+STR_0800_COST                                                   :{TINYFONT}{RED}Käschten: {CURRENCY}
+STR_0801_COST                                                   :{RED}Käschten: {CURRENCY}
+STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Akommes: {CURRENCY}
+STR_0803_INCOME                                                 :{GREEN}Akommes: {CURRENCY}
+STR_0805_ESTIMATED_COST                                         :{WHITE}Geschätzten Käschten: {CURRENCY}
+STR_0807_ESTIMATED_INCOME                                       :{WHITE}Geschätzten Akommes: {CURRENCY}
+STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Kann d'Land hei nët unhiewen...
+STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Kann d'Land hei nët eroofsetzen...
+STR_080A_ROCKS                                                  :Fielsen
+STR_080B_ROUGH_LAND                                             :Knubbelegt Land
+STR_080C_BARE_LAND                                              :Blankt Land
+STR_080D_GRASS                                                  :gras
+STR_080E_FIELDS                                                 :Felder
+STR_080F_SNOW_COVERED_LAND                                      :Schnéibedecktent Land
+STR_0810_DESERT                                                 :Wüst
 
 ##id 0x1000
+STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Land ass an dei falsch Richtung geneigt
+STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Onmeiglech Streckenkombinatioun
+STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Verdeiwung geif den Tunnel beschiedegen
+STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}... schon op Meeresspigel
+STR_1004_TOO_HIGH                                               :{WHITE}... ze héich
+STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Keng geégent Schinnen
+STR_1007_ALREADY_BUILT                                          :{WHITE}...schon gebaut
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}D'Schinnen mussen fir d'Eischt ewesch
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Schinnenbau
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Einschienbahnbau
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Magnéitbahnbau
+STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Wiel d'Schinnenbrèck
+STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Kann den Zuchdepot hei nët bauen...
+STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Kann d'Gare nët hei bauen...
+STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Kann d'Signaler nët hei bauen...
+STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Kann d'Schinnen hei nët bauen...
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Kann d'Schinnen hei nët ewesch huelen...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Kann d'Signaler hei nët ewesch huelen...
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Zuchdepot Richtung
+STR_1015_RAILROAD_CONSTRUCTION                                  :Schinnenbau
+STR_1016_MONORAIL_CONSTRUCTION                                  :Einschienenbahnbau
+STR_1017_MAGLEV_CONSTRUCTION                                    :Magnéitbunnbau
+STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Streck mat Schinnen bauen
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Zuchdepot bauen (fir Zich ze kaafen an ze flécken)
+STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Gare bauen
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Zuchsignaler bauen
+STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Zuchbrèck bauen
+STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Zuchtunnel bauen
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Wieselt zwëschen bauen/ewesch huelen vun Schinnen an Signaler
+STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Brèckenauswiehl - Wielt äer Brèck aus
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Wielt d'Zuchdepot Richtung
+STR_1021_RAILROAD_TRACK                                         :Schinnen
+STR_1023_RAILROAD_TRAIN_DEPOT                                   :Schinnen Zuchdepot
+STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...d'Plaatz ass am Besëtz vun enger aanerer Firma
 
 
 
 ##id 0x1800
+STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Muss d'Strooss ewech huelen
+STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Stroossenbau
+STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Wielt d'Stroossenbrèck
+STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kann d'Strooss nët hei bauen...
+STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}CKann d'Strooss nët hei ewsch huelen...
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Stroossendepot Richtung
+STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kann d'Stroossendepot hei nët bauen...
+STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Kann d'Busgare hei nët bauen...
+STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kann d'Camionsgare nët bauen...
+STR_180A_ROAD_CONSTRUCTION                                      :Stroossenbau
+STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Baut Stroossen
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Baut Stroossendepot (fir Gefiehrer ze kaafen an ze flècken)
+STR_180D_BUILD_BUS_STATION                                      :{BLACK}Baut Busgare
+STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Baut Camionsgare
+STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Baut Stroossenbrèck
+STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Baut Stroosentunnel
+STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Wieselt bauen/ewesch huelen vun Stroossenkonstruktiounen
+STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Wielt Stroossendepot Richtung
+STR_1814_ROAD                                                   :Strooss
+STR_1815_ROAD_WITH_STREETLIGHTS                                 :Strooss mat Luuchten
+STR_1816_TREE_LINED_ROAD                                        :Strooss mat Beem
+STR_1817_ROAD_VEHICLE_DEPOT                                     :Stroossendepot
+STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Zuch/Strooss Barrière
 
 ##id 0x2000
+STR_2000_TOWNS                                                  :{WHITE}Stiedt
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
+STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Gebäi muss fir déischt oofgerapt ginn
+STR_2005                                                        :{WHITE}{TOWN}
 
 
 ##id 0x2800
