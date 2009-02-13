@@ -48,31 +48,27 @@ AILibrary::~AILibrary()
 
 const char *AIFileInfo::GetAuthor()
 {
-	if (this->author == NULL) this->author = this->engine->CallStringMethodStrdup(*this->SQ_instance, "GetAuthor");
 	return this->author;
 }
 
 const char *AIFileInfo::GetName()
 {
-	if (this->name == NULL) this->name = this->engine->CallStringMethodStrdup(*this->SQ_instance, "GetName");
 	return this->name;
 }
 
 const char *AIFileInfo::GetShortName()
 {
-	if (this->short_name == NULL) this->short_name = this->engine->CallStringMethodStrdup(*this->SQ_instance, "GetShortName");
 	return this->short_name;
 }
 
 const char *AIFileInfo::GetDescription()
 {
-	if (this->description == NULL) this->description = this->engine->CallStringMethodStrdup(*this->SQ_instance, "GetDescription");
 	return this->description;
 }
 
 int AIFileInfo::GetVersion()
 {
-	return this->engine->CallIntegerMethod(*this->SQ_instance, "GetVersion");
+	return this->version;
 }
 
 void AIFileInfo::GetSettings()
@@ -82,22 +78,12 @@ void AIFileInfo::GetSettings()
 
 const char *AIFileInfo::GetDate()
 {
-	if (this->date == NULL) this->date = this->engine->CallStringMethodStrdup(*this->SQ_instance, "GetDate");
 	return this->date;
 }
 
 const char *AIFileInfo::GetInstanceName()
 {
-	if (this->instance_name == NULL) this->instance_name = this->engine->CallStringMethodStrdup(*this->SQ_instance, "CreateInstance");
 	return this->instance_name;
-}
-
-bool AIFileInfo::CanLoadFromVersion(int version)
-{
-	if (version == -1) return true;
-	if (!this->engine->MethodExists(*this->SQ_instance, "MinVersionToLoad")) return (version == this->GetVersion());
-
-	return version >= this->engine->CallIntegerMethod(*this->SQ_instance, "MinVersionToLoad") && version <= this->GetVersion();
 }
 
 const char *AIFileInfo::GetMainScript()
@@ -144,6 +130,15 @@ bool AIFileInfo::CheckMethod(const char *name)
 
 	info->main_script = strdup(info->base->GetMainScript());
 
+	/* Cache the data the info file gives us. */
+	info->author = info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAuthor");
+	info->name = info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetName");
+	info->short_name = info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetShortName");
+	info->description = info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetDescription");
+	info->date = info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetDate");
+	info->version = info->engine->CallIntegerMethod(*info->SQ_instance, "GetVersion");
+	info->instance_name = info->engine->CallStringMethodStrdup(*info->SQ_instance, "CreateInstance");
+
 	return 0;
 }
 
@@ -165,6 +160,11 @@ bool AIFileInfo::CheckMethod(const char *name)
 	/* Check if we have settings */
 	if (info->engine->MethodExists(*info->SQ_instance, "GetSettings")) {
 		info->GetSettings();
+	}
+	if (info->engine->MethodExists(*info->SQ_instance, "MinVersionToLoad")) {
+		info->min_loadable_version = info->engine->CallIntegerMethod(*info->SQ_instance, "MinVersionToLoad");
+	} else {
+		info->min_loadable_version = info->GetVersion();
 	}
 
 	/* Remove the link to the real instance, else it might get deleted by RegisterAI() */
@@ -205,6 +205,12 @@ AIInfo::~AIInfo()
 		}
 	}
 	this->config_list.clear();
+}
+
+bool AIInfo::CanLoadFromVersion(int version)
+{
+	if (version == -1) return true;
+	return version >= this->min_loadable_version && version <= this->GetVersion();
 }
 
 SQInteger AIInfo::AddSetting(HSQUIRRELVM vm)
@@ -401,6 +407,9 @@ int AIInfo::GetSettingDefaultValue(const char *name)
 		return res;
 	}
 
+	/* Cache the category */
+	library->category = library->engine->CallStringMethodStrdup(*library->SQ_instance, "GetCategory");
+
 	/* Register the Library to the base system */
 	library->base->RegisterLibrary(library);
 
@@ -409,7 +418,6 @@ int AIInfo::GetSettingDefaultValue(const char *name)
 
 const char *AILibrary::GetCategory()
 {
-	if (this->category == NULL) this->category = this->engine->CallStringMethodStrdup(*this->SQ_instance, "GetCategory");
 	return this->category;
 }
 

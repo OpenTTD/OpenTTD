@@ -85,11 +85,6 @@ public:
 	const char *GetInstanceName();
 
 	/**
-	 * Check if we can start this AI.
-	 */
-	bool CanLoadFromVersion(int version);
-
-	/**
 	 * Get the filename of the main.nut script.
 	 */
 	const char *GetMainScript();
@@ -115,6 +110,7 @@ private:
 	const char *description;
 	const char *date;
 	const char *instance_name;
+	int version;
 };
 
 class AIInfo : public AIFileInfo {
@@ -140,6 +136,11 @@ public:
 	const AIConfigItem *GetConfigItem(const char *name);
 
 	/**
+	 * Check if we can start this AI.
+	 */
+	bool CanLoadFromVersion(int version);
+
+	/**
 	 * Set a setting.
 	 */
 	SQInteger AddSetting(HSQUIRRELVM vm);
@@ -156,6 +157,7 @@ public:
 
 private:
 	AIConfigItemList config_list;
+	int min_loadable_version;
 };
 
 class AILibrary : public AIFileInfo {
