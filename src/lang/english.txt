@@ -3252,6 +3252,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}The amou
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total points out of possible points
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Settings
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Display NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF settings
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Apply changes
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Toggle palette
@@ -3711,7 +3712,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI settings
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI Settings
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Display AI settings
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Name of the AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reload AI
