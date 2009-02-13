@@ -3257,8 +3257,8 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Apply ch
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Toggle palette
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Toggle the palette of the selected NewGRF.{}Do this when the graphics from this NewGRF look pink in-game
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Set parameters
-STR_NEWGRF_TIP                                                  :{BLACK}A list of all the Newgrf sets that you have installed. Click a set to change the settings
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}There are currently no newgrf files installed! Please refer to the manual for instructions on installing new graphics
+STR_NEWGRF_TIP                                                  :{BLACK}A list of all the NewGRF sets that you have installed. Click a set to change the settings
+STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}There are currently no NewGRF files installed! Please refer to the manual for instructions on installing new graphics
 STR_NEWGRF_FILENAME                                             :{BLACK}Filename: {SILVER}{RAW_STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}Palette: {SILVER}{RAW_STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{RAW_STRING}
@@ -3800,7 +3800,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... conn
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... file not writable
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Could not decompress the downloaded file
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Check online content
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Check Online Content
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Check for new and updated content to download
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Find missing content online
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Check whether the missing content can be found online
