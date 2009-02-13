@@ -56,12 +56,12 @@ AIController::~AIController()
 	this->loaded_library.clear();
 }
 
-uint AIController::GetTick()
+/* static */ uint AIController::GetTick()
 {
-	return this->ticks;
+	return ::GetCompany(_current_company)->ai_instance->GetController()->ticks;
 }
 
-int AIController::GetSetting(const char *name)
+/* static */ int AIController::GetSetting(const char *name)
 {
 	return AIConfig::GetConfig(_current_company)->GetSetting(name);
 }
