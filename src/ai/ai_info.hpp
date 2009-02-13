@@ -47,52 +47,52 @@ public:
 	/**
 	 * Get the Author of the AI.
 	 */
-	const char *GetAuthor();
+	const char *GetAuthor() const { return this->author; }
 
 	/**
 	 * Get the Name of the AI.
 	 */
-	const char *GetName();
+	const char *GetName() const { return this->name; }
 
 	/**
 	 * Get the 4 character long short name of the AI.
 	 */
-	const char *GetShortName();
+	const char *GetShortName() const { return this->short_name; }
 
 	/**
 	 * Get the description of the AI.
 	 */
-	const char *GetDescription();
+	const char *GetDescription() const { return this->description; }
 
 	/**
 	 * Get the version of the AI.
 	 */
-	int GetVersion();
+	int GetVersion() const { return this->version; }
 
 	/**
 	 * Get the settings of the AI.
 	 */
-	void GetSettings();
+	void GetSettings() const;
 
 	/**
 	 * Get the date of the AI.
 	 */
-	const char *GetDate();
+	const char *GetDate() const { return this->date; }
 
 	/**
 	 * Get the name of the instance of the AI to create.
 	 */
-	const char *GetInstanceName();
+	const char *GetInstanceName() const { return this->instance_name; }
 
 	/**
 	 * Get the filename of the main.nut script.
 	 */
-	const char *GetMainScript();
+	const char *GetMainScript() const { return this->main_script; }
 
 	/**
 	 * Check if a given method exists.
 	 */
-	bool CheckMethod(const char *name);
+	bool CheckMethod(const char *name) const;
 
 	/**
 	 * Process the creation of a FileInfo object.
@@ -128,17 +128,17 @@ public:
 	/**
 	 * Get the config list for this AI.
 	 */
-	const AIConfigItemList *GetConfigList();
+	const AIConfigItemList *GetConfigList() const;
 
 	/**
 	 * Get the description of a certain ai config option.
 	 */
-	const AIConfigItem *GetConfigItem(const char *name);
+	const AIConfigItem *GetConfigItem(const char *name) const;
 
 	/**
 	 * Check if we can start this AI.
 	 */
-	bool CanLoadFromVersion(int version);
+	bool CanLoadFromVersion(int version) const;
 
 	/**
 	 * Set a setting.
@@ -153,7 +153,7 @@ public:
 	/**
 	 * Get the default value for a setting.
 	 */
-	int GetSettingDefaultValue(const char *name);
+	int GetSettingDefaultValue(const char *name) const;
 
 private:
 	AIConfigItemList config_list;
@@ -175,7 +175,7 @@ public:
 	/**
 	 * Get the category this library is in.
 	 */
-	const char *GetCategory();
+	const char *GetCategory() const { return this->category; }
 
 private:
 	const char *category;

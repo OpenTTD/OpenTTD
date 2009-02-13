@@ -46,52 +46,12 @@ AILibrary::~AILibrary()
 	free((void *)this->category);
 }
 
-const char *AIFileInfo::GetAuthor()
-{
-	return this->author;
-}
-
-const char *AIFileInfo::GetName()
-{
-	return this->name;
-}
-
-const char *AIFileInfo::GetShortName()
-{
-	return this->short_name;
-}
-
-const char *AIFileInfo::GetDescription()
-{
-	return this->description;
-}
-
-int AIFileInfo::GetVersion()
-{
-	return this->version;
-}
-
-void AIFileInfo::GetSettings()
+void AIFileInfo::GetSettings() const
 {
 	this->engine->CallMethod(*this->SQ_instance, "GetSettings", NULL, -1);
 }
 
-const char *AIFileInfo::GetDate()
-{
-	return this->date;
-}
-
-const char *AIFileInfo::GetInstanceName()
-{
-	return this->instance_name;
-}
-
-const char *AIFileInfo::GetMainScript()
-{
-	return this->main_script;
-}
-
-bool AIFileInfo::CheckMethod(const char *name)
+bool AIFileInfo::CheckMethod(const char *name) const
 {
 	if (!this->engine->MethodExists(*this->SQ_instance, name)) {
 		char error[1024];
@@ -207,7 +167,7 @@ AIInfo::~AIInfo()
 	this->config_list.clear();
 }
 
-bool AIInfo::CanLoadFromVersion(int version)
+bool AIInfo::CanLoadFromVersion(int version) const
 {
 	if (version == -1) return true;
 	return version >= this->min_loadable_version && version <= this->GetVersion();
@@ -365,22 +325,22 @@ SQInteger AIInfo::AddLabels(HSQUIRRELVM vm)
 	return 0;
 }
 
-const AIConfigItemList *AIInfo::GetConfigList()
+const AIConfigItemList *AIInfo::GetConfigList() const
 {
 	return &this->config_list;
 }
 
-const AIConfigItem *AIInfo::GetConfigItem(const char *name)
+const AIConfigItem *AIInfo::GetConfigItem(const char *name) const
 {
-	for (AIConfigItemList::iterator it = this->config_list.begin(); it != this->config_list.end(); it++) {
+	for (AIConfigItemList::const_iterator it = this->config_list.begin(); it != this->config_list.end(); it++) {
 		if (strcmp((*it).name, name) == 0) return &(*it);
 	}
 	return NULL;
 }
 
-int AIInfo::GetSettingDefaultValue(const char *name)
+int AIInfo::GetSettingDefaultValue(const char *name) const
 {
-	for (AIConfigItemList::iterator it = this->config_list.begin(); it != this->config_list.end(); it++) {
+	for (AIConfigItemList::const_iterator it = this->config_list.begin(); it != this->config_list.end(); it++) {
 		if (strcmp((*it).name, name) != 0) continue;
 		/* The default value depends on the difficulty level */
 		switch ((_game_mode == GM_MENU) ? _settings_newgame.difficulty.diff_level : _settings_game.difficulty.diff_level) {
@@ -414,11 +374,6 @@ int AIInfo::GetSettingDefaultValue(const char *name)
 	library->base->RegisterLibrary(library);
 
 	return 0;
-}
-
-const char *AILibrary::GetCategory()
-{
-	return this->category;
 }
 
 /* static */ SQInteger AILibrary::Import(HSQUIRRELVM vm)
