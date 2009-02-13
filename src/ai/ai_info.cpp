@@ -30,7 +30,6 @@ AIConfigItem _start_date_config = {
 
 AIFileInfo::~AIFileInfo()
 {
-	this->engine->ReleaseObject(this->SQ_instance);
 	free((void *)this->author);
 	free((void *)this->name);
 	free((void *)this->short_name);
