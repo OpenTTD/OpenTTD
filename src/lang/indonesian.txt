@@ -858,7 +858,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Mulai pe
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Membuka permainan yang telah disimpan
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Buat kustomisasi skenario permainan
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Pilih bermain sendirian
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Pilih bermain bersama antara 2 - 8 pemain
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Tampilkan opsi permainan
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Tampilkan opsi tingkat kesulitan
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Mulai permainan baru, menggunakan skenario kustomisasi

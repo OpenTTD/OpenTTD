@@ -860,7 +860,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Запо
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Отвори запасена игра
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Създай свой собствен карта-свят
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Избери игра със себе си
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Избери игра в интернета с още 1-7 други играча
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Покажи параметрите на играта
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Покажи параметрите на трудност
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Започни нова игра, използвайки предварително моделиран карта-свят

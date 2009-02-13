@@ -860,7 +860,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Sākt ja
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Ielādēt saglabāto spēli
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Izveidot speciālu spēles pasauli/scenāriju
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Izvēlēties viena spēlētāja spēli
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Izvēlēties 2 līdz 8 spēlētāju spēli
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Rādīt spēles režīmus
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Rādīt grūtības pakāpju režīmus
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Sākt jaunu spēli ar speciālu scenāriju

@@ -858,7 +858,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Start a 
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Load a saved game
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Create a customized game world/scenario
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Select single-player game
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Select multiplayer game of 2-8 players
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Display game options
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Display difficulty options
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Start a new game, using a customized scenario

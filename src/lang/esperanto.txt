@@ -830,7 +830,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Startu n
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Ŝarĝu konservitan ludon
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Kreu mem ludmondon/scenaron
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Elektu unuludantan ludon
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Elektu plurludantan ludon por 2-8 ludantoj
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Montru ludajn opciojn
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Montru malfacilec-opciojn
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Komencu novan ludon per propra scenaro

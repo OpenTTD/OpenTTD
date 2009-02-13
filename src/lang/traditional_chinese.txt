@@ -848,7 +848,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}開始�
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}載入舊遊戲
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}建立自訂遊戲世界/場景
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}選擇單機遊戲
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}選擇 2 ~ 8 人的連線遊戲
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}顯示遊戲選項
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}顯示難易選項
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}使用自訂的場景開始新遊戲

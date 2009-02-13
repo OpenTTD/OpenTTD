@@ -856,7 +856,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Start ny
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Last inn et lagret spill
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Spesiallag en spillverden eller et scenario
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Velg enkeltspiller-modus
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Velg flerspiller-spill med 2-8 spillere
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Vis spillinnstillinger
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Vis vanskelighetsgrad
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Start et nytt spill som bruker et scenario

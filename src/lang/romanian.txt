@@ -858,7 +858,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Începer
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Încarcă un joc salvat
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Creează un joc/scenariu propriu
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Alege un joc cu un singur jucător
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Alege un joc multiplayer cu 2-8 jucători
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Afişează opţiunile jocului
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Afişează opţiunile pentru alegerea dificultăţii
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Începerea unui joc nou folosind un scenariu deja existent

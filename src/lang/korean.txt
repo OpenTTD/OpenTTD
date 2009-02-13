@@ -858,7 +858,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}새 게�
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}저장된 게임 불러오기
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}사용자 게임/시나리오 만들기
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}싱글 플레이 게임 선택
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}2-8명의 멀티 플레이 게임 선택
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}게임 옵션 표시
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}난이도 옵션 표시
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}사용자 시나리오로 새 게임을 시작

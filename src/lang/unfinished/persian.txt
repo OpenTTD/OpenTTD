@@ -540,7 +540,6 @@ STR_02FA_EVERY_12_MONTHS                                        :هر 12 ماه
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}شروع بازی جدید
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}ادامه ی بازی گذشته
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}انتخاب بازی تک نفره
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}انتخاب بازی 2-8 نفره
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}نشان دادن تنظیمات بازی
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK} نشان دادن تنظیمات سختی
 STR_0304_QUIT                                                   :{BLACK}خروج

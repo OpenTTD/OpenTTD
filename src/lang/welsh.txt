@@ -843,7 +843,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Dechrau 
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Llwytho Gêm sydd wedi'i Gadw
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Creu addasiad o fyd/senario ar gyfer y gêm
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Dewis gêm un chwaraewr
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Dewis gêm amlchwaraewr ar gyfer 2-8 chwaraewr
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Dangos dewisiadau'r gêm
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Dangos dewisiadau anhawster
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Dechrau gêm newydd, gan ddefnyddio senario wedi'i haddasu

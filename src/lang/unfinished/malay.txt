@@ -752,7 +752,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Mulakan 
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Muat permainan yang tersimpan
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Membentuk dunia permananan/senario custom
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Pilih permainan satu pemain
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Pilih permainan banyak pemain sebanyak 2-8 pemain
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Papar pilihan permainan
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Papar pilihan kesukaran
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Mulakan permainan baru, dengan mengunnakan senario custom

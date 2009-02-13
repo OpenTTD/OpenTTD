@@ -646,7 +646,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Begjin i
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Laad in opslein spul
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Meitsje in selsmakke lânskip
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Selektear ien-spyler spul
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Selektear mear-spyler spul fan 2 oant 8 spylers
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Lit spul opsjes sjen
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Lit swierrichheid opsjes sjen
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Start in nei spul, mei in selsmakke lânskip

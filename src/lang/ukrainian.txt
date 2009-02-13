@@ -983,7 +983,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Поча
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Продовжити збережену гру
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Створити свій сценарій
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Грати одному
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Грати з 2-8 гравцями
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Показати налаштування гри
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Показати налаштування складності
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Почати нову гру, використовуючи сценарій

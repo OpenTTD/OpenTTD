@@ -895,7 +895,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Alusta u
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Laadi salvestatud mäng
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Loo oma mängukaart
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Vali üksikmäng
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Vali 2-8 mängijaga mitmikmäng
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Kuva mängu valikuid
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Kuva raskusastmete valikuid
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Alusta omatehtud stsenaariumit kasutades uut mängu

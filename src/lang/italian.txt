@@ -860,7 +860,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Inizia u
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Carica una partita salvata
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Crea uno scenario personalizzato
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Seleziona una partita a giocatore singolo
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Seleziona una partita multigiocatore con 2-8 giocatori
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Mostra le opzioni di gioco
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Mostra le opzioni di difficoltà
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Inizia una nuova partita, utilizzando uno scenario personalizzato

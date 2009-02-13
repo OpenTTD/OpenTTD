@@ -859,7 +859,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Commence
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Charger une partie sauvée
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Créer un monde/scénario de jeu personnalisé
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Sélectionner mode joueur simple
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Sélectionnner une partie multi-joueurs de 2 à 8 joueurs
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Afficher les options du jeu
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Afficher les options de niveau de difficulté
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Débuter une nouvelle partie à partir d'un scénario

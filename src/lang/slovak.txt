@@ -915,7 +915,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Spustit 
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Nahrat ulozenú hru
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Vytvorit vlastny scenar
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Vyberte hru pre 1 hraca
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Vyberte hru pre 2-8 hracov
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Zobraz nastavenia hry
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Zobraz nastavenia obtiaznosti
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Spustit novu hru s pouzitim vlastneho scenara

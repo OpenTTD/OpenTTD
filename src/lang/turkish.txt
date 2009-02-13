@@ -858,7 +858,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Yeni oyu
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Oyun yükle
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Kendi dünyani/senoryonu yarat
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Tek kişilik bir oyun seçin
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}2-8 oyunculu bir oyun seçin
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Seçenekleri göster
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Zorluk ayarlarını göster
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Özel bir senaryo kullanarak yeni oyun başlat

@@ -924,7 +924,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Új ját
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Mentett játék betöltése
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Testreszabott pálya készítése
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Egy játékos játék kiválasztása
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Hálózati játék választása 2-8 játékosig
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}A játék beállításainak megmutatása
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}A nehézségi beállítások megmutatása
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Új játék kezdése saját pályán

@@ -916,7 +916,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Hrát no
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Nahrát hru
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Vytvořit vlastní mapu - scénář
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Vybrat hru pro jednoho hráče
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Hrát ve 2-8 hráčích
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Zobrazit možnosti hry
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Nastavit obtížnost
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Hrát novou hru ze scénáře

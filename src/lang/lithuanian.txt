@@ -877,7 +877,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Pradėti
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Įkelti išsaugotą žaidimą
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Sukurk savo žaidimo žemėlapį/scenarijų
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Pasirink 1 žaidejo žaidimą
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Pasirinkite žaidimą tinkle skirtą 2-8 žaidėjams
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Rodyti žaidimo nustatymus
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Rodyti sudėtingumo nustatymus
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Pradėti naują žaidimą pasirenkant scenarijų

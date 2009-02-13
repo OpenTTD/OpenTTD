@@ -859,7 +859,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Comenzar
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Cargar un juego guardado
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Crear un mundo/escenario de juego personalizado
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Selecciona juego para un solo jugador
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Seleccionar juego multijugador para 2-8 jugadores
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Muestra las opciones del juego
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Muestra las opciones de dificultad
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Comienza un nuevo juego, usando un escenario personalizado desde el disco

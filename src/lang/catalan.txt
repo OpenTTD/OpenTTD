@@ -858,7 +858,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Comença
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Carrega un joc desat
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Crea un joc amb un món/escenari personalitzat
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Selecciona un joc per un jugador
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Selecciona un joc multijugador de 2-8 jugadors
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Mostra les opcions del joc
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Mostra les opcions de dificultat
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Comença un joc nou, utilitzant un escenari personalitzat

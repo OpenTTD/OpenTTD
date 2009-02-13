@@ -846,7 +846,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}新規�
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}ゲームを開きます
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}カスタムシナリオを作成します
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}一人プレイを選択します
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}マルチプレイ（２〜８人）を選択します
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}ゲームの設定を表示します
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}難易度の設定を表示します
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}カスタムシナリオを使用して新規ゲームを開始します

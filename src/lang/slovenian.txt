@@ -890,7 +890,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Začni n
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Naloži shranjeno igro
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Ustvari poljubni svet/scenarij
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Izberi igro za enega igralca
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Izberi igro za 2-8 igralcev
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Prikaži možnosti igre
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Prikazi nastavitve težavnosti
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Začni novo igro po scenariju

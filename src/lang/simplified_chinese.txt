@@ -858,7 +858,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}开始�
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}读取一个游戏存档
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}创建一个自定义的世界场景
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}选择单用户游戏
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}选择 2-8 各用户参与的游戏
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}显示游戏选项
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}显示难度选项
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}使用一个自定义场景开始游戏

@@ -847,7 +847,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Comezar 
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Cargar unha partida
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Crear un mundo/escenario persoalizado
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Partida para un Xogador
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Seleccionar partida multixogador de 2-8 xogadores
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Amosa-las opcións do xogo
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Amosa-las opcións de dificultade
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Comezar unha nova partida, usando un escenario persoalizado

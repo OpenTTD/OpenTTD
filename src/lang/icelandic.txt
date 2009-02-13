@@ -843,7 +843,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Hefja n�
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Opna vistaðan leik
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Búa til eigið land
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Velja einspilunarleik
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Velja 2-8 leikmanna fjölspilunarleik
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Stilla OpenTTD
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Stilla erfiðleikastig
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Hefja nýjan leik í sérvöldu korti

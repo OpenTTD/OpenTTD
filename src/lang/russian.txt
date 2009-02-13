@@ -850,7 +850,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Нача
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Загрузить сохранённую игру
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Создать собственный сценарий
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Выбрать одиночную игру
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Выбрать сетевую игру на 2-8 игроков
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Открыть настройки игры
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Открыть настройки сложности
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Начать новую игру, используя сценарий

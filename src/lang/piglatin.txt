@@ -858,7 +858,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Artstay 
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Oadlay away avedsay amegay
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Eatecray away ustomisedcay amegay orldway/enarioscay
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Electsay inglesay-ayerplay amegay
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Electsay ultiplayermay amegay ofway 2-8 ayersplay
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Isplayday amegay optionsway
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Isplayday ifficultyday optionsway
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Artstay away ewnay amegay, usingway away ustomisedcay enarioscay

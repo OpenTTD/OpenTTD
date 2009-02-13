@@ -849,7 +849,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Έναρ
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Φόρτωση αποθηκευμένου παιχνιδιού
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Δημιουργία προσαρμοσμένου κόσμου/σεναρίου
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Επιλογή παιχνιδιού ενός παίκτη
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Επιλογή παιχνιδιού πολλών παικτών (2-8)
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Εμφάνιση επιλογών παιχνιδιού
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Εμφάνιση επιλογών δυσκολίας
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Έναρξη νέου παιχνιδιού, χρησιμοποιώντας ένα προσαρμοσμένο σενάριο

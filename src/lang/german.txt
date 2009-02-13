@@ -859,7 +859,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Ein neue
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Ein gespeichertes Spiel laden
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Eine eigene Spielwelt / Szenario kreieren
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Einspielermodus wählen
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Mehrspielerspiel mit 2-8 Spielern wählen
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Spieleinstellungen anzeigen
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Schwierigkeitsgrad anzeigen
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Starte ein neues Spiel in einem eigenen Szenario

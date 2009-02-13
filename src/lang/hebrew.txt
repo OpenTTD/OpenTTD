@@ -851,7 +851,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}התחל
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}טען משחק שמור
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}צור מפה/סצנריו מותאמים אישית
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}בחר משחק לשחקן אחד
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}בחר משחק רשת ל 2-8 שחקנים
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}הצג הגדרות משחק
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}הצג הגדרות קושי
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}התחל משחק חדש עם סצנריו מותאם אישית

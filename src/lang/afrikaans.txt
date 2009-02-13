@@ -848,7 +848,6 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Begin nu
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Laai 'n gestoorde spel
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Skep 'n doelgeboude spel wêreld/draaiboek
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Kies enkel-speler speletjie
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Kies multispeler speletjie van 2-8 spelers
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Vertoon speletjie opsies
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Vertoon moelikheid stellings
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Begin 'n nuwe speletjie, met 'n doelgeboude draaiboek
