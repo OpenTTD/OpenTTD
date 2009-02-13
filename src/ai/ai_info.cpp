@@ -104,8 +104,8 @@ bool AIFileInfo::CheckMethod(const char *name) const
 /* static */ SQInteger AIInfo::Constructor(HSQUIRRELVM vm)
 {
 	/* Get the AIInfo */
-	SQUserPointer instance;
-	sq_getinstanceup(vm, 2, &instance, 0);
+	SQUserPointer instance = NULL;
+	if (SQ_FAILED(sq_getinstanceup(vm, 2, &instance, 0)) || instance == NULL) return sq_throwerror(vm, _SC("Pass an instance of a child class of AIInfo to RegisterAI"));
 	AIInfo *info = (AIInfo *)instance;
 
 	SQInteger res = AIFileInfo::Constructor(vm, info, false);
@@ -184,12 +184,12 @@ SQInteger AIInfo::AddSetting(HSQUIRRELVM vm)
 	sq_pushnull(vm);
 	while (SQ_SUCCEEDED(sq_next(vm, -2))) {
 		const SQChar *sqkey;
-		sq_getstring(vm, -2, &sqkey);
+		if (SQ_FAILED(sq_getstring(vm, -2, &sqkey))) return SQ_ERROR;
 		const char *key = FS2OTTD(sqkey);
 
 		if (strcmp(key, "name") == 0) {
 			const SQChar *sqvalue;
-			sq_getstring(vm, -1, &sqvalue);
+			if (SQ_FAILED(sq_getstring(vm, -1, &sqvalue))) return SQ_ERROR;
 			config.name = strdup(FS2OTTD(sqvalue));
 			char *s;
 			/* Don't allow '=' and ',' in configure setting names, as we need those
@@ -199,51 +199,51 @@ SQInteger AIInfo::AddSetting(HSQUIRRELVM vm)
 			items |= 0x001;
 		} else if (strcmp(key, "description") == 0) {
 			const SQChar *sqdescription;
-			sq_getstring(vm, -1, &sqdescription);
+			if (SQ_FAILED(sq_getstring(vm, -1, &sqdescription))) return SQ_ERROR;
 			config.description = strdup(FS2OTTD(sqdescription));
 			items |= 0x002;
 		} else if (strcmp(key, "min_value") == 0) {
 			SQInteger res;
-			sq_getinteger(vm, -1, &res);
+			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.min_value = res;
 			items |= 0x004;
 		} else if (strcmp(key, "max_value") == 0) {
 			SQInteger res;
-			sq_getinteger(vm, -1, &res);
+			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.max_value = res;
 			items |= 0x008;
 		} else if (strcmp(key, "easy_value") == 0) {
 			SQInteger res;
-			sq_getinteger(vm, -1, &res);
+			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.easy_value = res;
 			items |= 0x010;
 		} else if (strcmp(key, "medium_value") == 0) {
 			SQInteger res;
-			sq_getinteger(vm, -1, &res);
+			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.medium_value = res;
 			items |= 0x020;
 		} else if (strcmp(key, "hard_value") == 0) {
 			SQInteger res;
-			sq_getinteger(vm, -1, &res);
+			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.hard_value = res;
 			items |= 0x040;
 		}  else if (strcmp(key, "random_deviation") == 0) {
 			SQInteger res;
-			sq_getinteger(vm, -1, &res);
+			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.random_deviation = res;
 			items |= 0x200;
 		} else if (strcmp(key, "custom_value") == 0) {
 			SQInteger res;
-			sq_getinteger(vm, -1, &res);
+			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.custom_value = res;
 			items |= 0x080;
 		} else if (strcmp(key, "step_size") == 0) {
 			SQInteger res;
-			sq_getinteger(vm, -1, &res);
+			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.step_size = res;
 		} else if (strcmp(key, "flags") == 0) {
 			SQInteger res;
-			sq_getinteger(vm, -1, &res);
+			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.flags = (AIConfigFlags)res;
 			items |= 0x100;
 		} else {
@@ -284,7 +284,7 @@ SQInteger AIInfo::AddSetting(HSQUIRRELVM vm)
 SQInteger AIInfo::AddLabels(HSQUIRRELVM vm)
 {
 	const SQChar *sq_setting_name;
-	sq_getstring(vm, -2, &sq_setting_name);
+	if (SQ_FAILED(sq_getstring(vm, -2, &sq_setting_name))) return SQ_ERROR;
 	const char *setting_name = FS2OTTD(sq_setting_name);
 
 	AIConfigItem *config = NULL;
@@ -307,8 +307,8 @@ SQInteger AIInfo::AddLabels(HSQUIRRELVM vm)
 	while (SQ_SUCCEEDED(sq_next(vm, -2))) {
 		const SQChar *sq_key;
 		const SQChar *sq_label;
-		sq_getstring(vm, -2, &sq_key);
-		sq_getstring(vm, -1, &sq_label);
+		if (SQ_FAILED(sq_getstring(vm, -2, &sq_key))) return SQ_ERROR;
+		if (SQ_FAILED(sq_getstring(vm, -1, &sq_label))) return SQ_ERROR;
 		/* Because squirrel doesn't support identifiers starting with a digit,
 		 * we skip the first character. */
 		const char *key_string = FS2OTTD(sq_key);
