@@ -100,7 +100,7 @@ public:
 	 * Call the AI Load function if it exists and data was loaded
 	 *  from a savegame.
 	 */
-	void CallLoad();
+	bool CallLoad();
 
 	/**
 	 * Load and discard data from a savegame.

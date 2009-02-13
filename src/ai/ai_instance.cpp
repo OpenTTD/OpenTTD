@@ -249,6 +249,11 @@ void AIInstance::Died()
 void AIInstance::GameLoop()
 {
 	if (this->is_dead) return;
+	if (this->engine->HasScriptCrashed()) {
+		/* The script crashed during saving, kill it here. */
+		this->Died();
+		return;
+	}
 	this->controller->ticks++;
 
 	if (this->suspend   < -1) this->suspend++; // Multiplayer suspend, increase up to -1.
@@ -275,12 +280,12 @@ void AIInstance::GameLoop()
 			AIObject::SetAllowDoCommand(false);
 			/* Run the constructor if it exists. Don't allow any DoCommands in it. */
 			if (this->engine->MethodExists(*this->instance, "constructor")) {
-				this->engine->CallMethod(*this->instance, "constructor");
+				if (!this->engine->CallMethod(*this->instance, "constructor")) { this->Died(); return; }
 			}
-			this->CallLoad();
+			if (!this->CallLoad()) { this->Died(); return; }
 			AIObject::SetAllowDoCommand(true);
 			/* Start the AI by calling Start() */
-			if (!this->engine->CallMethod(*this->instance, "Start",  _settings_game.ai.ai_max_opcode_till_suspend)) this->Died();
+			if (!this->engine->CallMethod(*this->instance, "Start",  _settings_game.ai.ai_max_opcode_till_suspend) || !this->engine->IsSuspended()) this->Died();
 		} catch (AI_VMSuspend e) {
 			this->suspend  = e.GetSuspendTime();
 			this->callback = e.GetSuspendCallback();
@@ -500,8 +505,8 @@ enum {
 
 void AIInstance::Save()
 {
-	/* Don't save data if the AI didn't start yet. */
-	if (this->engine == NULL) {
+	/* Don't save data if the AI didn't start yet or if it crashed. */
+	if (this->engine == NULL || this->engine->HasScriptCrashed()) {
 		SaveEmpty();
 		return;
 	}
@@ -526,7 +531,12 @@ void AIInstance::Save()
 		/* We don't want to be interrupted during the save function. */
 		bool backup_allow = AIObject::GetAllowDoCommand();
 		AIObject::SetAllowDoCommand(false);
-		this->engine->CallMethod(*this->instance, "Save", &savedata);
+		if (!this->engine->CallMethod(*this->instance, "Save", &savedata)) {
+			/* The script crashed in the Save function. We can't kill
+			 * it here, but do so in the next AI tick. */
+			SaveEmpty();
+			return;
+		}
 		AIObject::SetAllowDoCommand(backup_allow);
 
 		if (!sq_istable(savedata)) {
@@ -637,21 +647,21 @@ void AIInstance::Load(int version)
 	sq_pushbool(vm, true);
 }
 
-void AIInstance::CallLoad()
+bool AIInstance::CallLoad()
 {
 	HSQUIRRELVM vm = this->engine->GetVM();
 	/* Is there save data that we should load? */
 	SQBool res;
 	sq_getbool(vm, -1, &res);
 	sq_poptop(vm);
-	if (!res) return;
+	if (!res) return true;
 
 	if (!this->engine->MethodExists(*this->instance, "Load")) {
 		AILog::Warning("Loading failed: there was data for the AI to load, but the AI does not have a Load() function.");
 
 		/* Pop the savegame data and version. */
 		sq_pop(vm, 2);
-		return;
+		return true;
 	}
 
 	/* Go to the instance-root */
@@ -668,8 +678,9 @@ void AIInstance::CallLoad()
 
 	/* Call the AI load function. sq_call removes the arguments (but not the
 	 * function pointer) from the stack. */
-	sq_call(vm, 3, SQFalse, SQFalse);
+	if (SQ_FAILED(sq_call(vm, 3, SQFalse, SQFalse))) return false;
 
 	/* Pop 1) The version, 2) the savegame data, 3) the object instance, 4) the function pointer. */
 	sq_pop(vm, 4);
+	return true;
 }

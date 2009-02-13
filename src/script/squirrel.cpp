@@ -24,7 +24,9 @@ void Squirrel::CompileError(HSQUIRRELVM vm, const SQChar *desc, const SQChar *so
 #endif
 
 	/* Check if we have a custom print function */
-	SQPrintFunc *func = ((Squirrel *)sq_getforeignptr(vm))->print_func;
+	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
+	engine->crashed = true;
+	SQPrintFunc *func = engine->print_func;
 	if (func == NULL) {
 		scfprintf(stderr, _SC("%s"), buf);
 	} else {
@@ -59,7 +61,9 @@ void Squirrel::RunError(HSQUIRRELVM vm, const SQChar *error)
 	/* Check if we have a custom print function */
 	SQChar buf[1024];
 	scsnprintf(buf, lengthof(buf), _SC("Your script made an error: %s\n"), error);
-	SQPrintFunc *func = ((Squirrel *)sq_getforeignptr(vm))->print_func;
+	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
+	engine->crashed = true;
+	SQPrintFunc *func = engine->print_func;
 	if (func == NULL) {
 		scfprintf(stderr, _SC("%s"), buf);
 	} else {
@@ -156,6 +160,7 @@ void Squirrel::AddClassEnd()
 
 bool Squirrel::MethodExists(HSQOBJECT instance, const char *method_name)
 {
+	assert(!this->crashed);
 	int top = sq_gettop(this->vm);
 	/* Go to the instance-root */
 	sq_pushobject(this->vm, instance);
@@ -171,6 +176,7 @@ bool Squirrel::MethodExists(HSQOBJECT instance, const char *method_name)
 
 bool Squirrel::Resume(int suspend)
 {
+	assert(!this->crashed);
 	sq_resumecatch(this->vm, suspend);
 	return this->vm->_suspended != 0;
 }
@@ -182,6 +188,7 @@ void Squirrel::CollectGarbage()
 
 bool Squirrel::CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT *ret, int suspend)
 {
+	assert(!this->crashed);
 	/* Store the stack-location for the return value. We need to
 	 * restore this after saving or the stack will be corrupted
 	 * if we're in the middle of a DoCommand. */
@@ -199,7 +206,7 @@ bool Squirrel::CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT
 	}
 	/* Call the method */
 	sq_pushobject(this->vm, instance);
-	sq_call(this->vm, 1, ret == NULL ? SQFalse : SQTrue, SQTrue, suspend);
+	if (SQ_FAILED(sq_call(this->vm, 1, ret == NULL ? SQFalse : SQTrue, SQTrue, suspend))) return false;
 	if (ret != NULL) sq_getstackobj(vm, -1, ret);
 	/* Reset the top, but don't do so for the AI main function, as we need
 	 *  a correct stack when resuming. */
@@ -207,7 +214,25 @@ bool Squirrel::CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT
 	/* Restore the return-value location. */
 	this->vm->_suspended_target = last_target;
 
-	return this->vm->_suspended != 0;
+	return true;
+}
+
+bool Squirrel::CallStringMethodStrdup(HSQOBJECT instance, const char *method_name, const char **res, int suspend)
+{
+	HSQOBJECT ret;
+	if (!this->CallMethod(instance, method_name, &ret, suspend)) return false;
+	if (ret._type != OT_STRING) return false;
+	*res = strdup(ObjectToString(&ret));
+	return true;
+}
+
+bool Squirrel::CallIntegerMethod(HSQOBJECT instance, const char *method_name, int *res, int suspend)
+{
+	HSQOBJECT ret;
+	if (!this->CallMethod(instance, method_name, &ret, suspend)) return false;
+	if (ret._type != OT_INTEGER) return false;
+	*res = ObjectToInteger(&ret);
+	return true;
 }
 
 /* static */ bool Squirrel::CreateClassInstanceVM(HSQUIRRELVM vm, const char *class_name, void *real_instance, HSQOBJECT *instance, SQRELEASEHOOK release_hook)
@@ -258,6 +283,7 @@ Squirrel::Squirrel()
 	this->vm = sq_open(1024);
 	this->print_func = NULL;
 	this->global_pointer = NULL;
+	this->crashed = false;
 
 	/* Handle compile-errors ourself, so we can display it nicely */
 	sq_setcompilererrorhandler(this->vm, &Squirrel::CompileError);
@@ -458,4 +484,19 @@ void Squirrel::InsertResult(int result)
 /* static */ void Squirrel::DecreaseOps(HSQUIRRELVM vm, int ops)
 {
 	vm->DecreaseOps(ops);
+}
+
+bool Squirrel::IsSuspended()
+{
+	return this->vm->_suspended != 0;
+}
+
+bool Squirrel::HasScriptCrashed()
+{
+	return this->crashed;
+}
+
+void Squirrel::ResetCrashed()
+{
+	this->crashed = false;
 }

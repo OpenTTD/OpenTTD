@@ -72,7 +72,7 @@ public:
 	/**
 	 * Get the settings of the AI.
 	 */
-	void GetSettings() const;
+	bool GetSettings();
 
 	/**
 	 * Get the date of the AI.

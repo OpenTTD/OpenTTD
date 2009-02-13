@@ -45,9 +45,9 @@ AILibrary::~AILibrary()
 	free((void *)this->category);
 }
 
-void AIFileInfo::GetSettings() const
+bool AIFileInfo::GetSettings()
 {
-	this->engine->CallMethod(*this->SQ_instance, "GetSettings", NULL, -1);
+	return this->engine->CallMethod(*this->SQ_instance, "GetSettings", NULL, -1);
 }
 
 bool AIFileInfo::CheckMethod(const char *name) const
@@ -90,13 +90,13 @@ bool AIFileInfo::CheckMethod(const char *name) const
 	info->main_script = strdup(info->base->GetMainScript());
 
 	/* Cache the data the info file gives us. */
-	info->author = info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAuthor");
-	info->name = info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetName");
-	info->short_name = info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetShortName");
-	info->description = info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetDescription");
-	info->date = info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetDate");
-	info->version = info->engine->CallIntegerMethod(*info->SQ_instance, "GetVersion");
-	info->instance_name = info->engine->CallStringMethodStrdup(*info->SQ_instance, "CreateInstance");
+	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAuthor", &info->author)) return SQ_ERROR;
+	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetName", &info->name)) return SQ_ERROR;
+	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetShortName", &info->short_name)) return SQ_ERROR;
+	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetDescription", &info->description)) return SQ_ERROR;
+	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetDate", &info->date)) return SQ_ERROR;
+	if (!info->engine->CallIntegerMethod(*info->SQ_instance, "GetVersion", &info->version)) return SQ_ERROR;
+	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "CreateInstance", &info->instance_name)) return SQ_ERROR;
 
 	return 0;
 }
@@ -118,10 +118,10 @@ bool AIFileInfo::CheckMethod(const char *name) const
 
 	/* Check if we have settings */
 	if (info->engine->MethodExists(*info->SQ_instance, "GetSettings")) {
-		info->GetSettings();
+		if (!info->GetSettings()) return SQ_ERROR;
 	}
 	if (info->engine->MethodExists(*info->SQ_instance, "MinVersionToLoad")) {
-		info->min_loadable_version = info->engine->CallIntegerMethod(*info->SQ_instance, "MinVersionToLoad");
+		if (!info->engine->CallIntegerMethod(*info->SQ_instance, "MinVersionToLoad", &info->min_loadable_version)) return SQ_ERROR;
 	} else {
 		info->min_loadable_version = info->GetVersion();
 	}
@@ -367,7 +367,10 @@ int AIInfo::GetSettingDefaultValue(const char *name) const
 	}
 
 	/* Cache the category */
-	library->category = library->engine->CallStringMethodStrdup(*library->SQ_instance, "GetCategory");
+	if (!library->engine->CallStringMethodStrdup(*library->SQ_instance, "GetCategory", &library->category)) {
+		delete library;
+		return SQ_ERROR;
+	}
 
 	/* Register the Library to the base system */
 	library->base->RegisterLibrary(library);

@@ -12,6 +12,7 @@ private:
 	HSQUIRRELVM vm;          ///< The VirtualMachine instnace for squirrel
 	void *global_pointer;    ///< Can be set by who ever initializes Squirrel
 	SQPrintFunc *print_func; ///< Points to either NULL, or a custom print handler
+	bool crashed;            ///< True if the squirrel script made an error.
 
 	/**
 	 * The internal RunError handler. It looks up the real error and calls RunError with it.
@@ -111,11 +112,12 @@ public:
 
 	/**
 	 * Call a method of an instance, in various flavors.
+	 * @return False if the script crashed or returned a wrong type.
 	 */
 	bool CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT *ret, int suspend = -1);
 	bool CallMethod(HSQOBJECT instance, const char *method_name, int suspend = -1) { return this->CallMethod(instance, method_name, NULL, suspend); }
-	const char *CallStringMethodStrdup(HSQOBJECT instance, const char *method_name, int suspend = -1) { HSQOBJECT ret; this->CallMethod(instance, method_name, &ret, suspend); return strdup(ObjectToString(&ret)); }
-	int CallIntegerMethod(HSQOBJECT instance, const char *method_name, int suspend = -1) { HSQOBJECT ret; this->CallMethod(instance, method_name, &ret, suspend); return ObjectToInteger(&ret); }
+	bool CallStringMethodStrdup(HSQOBJECT instance, const char *method_name, const char **res, int suspend = -1);
+	bool CallIntegerMethod(HSQOBJECT instance, const char *method_name, int *res, int suspend = -1);
 
 	/**
 	 * Check if a method exists in an instance.
@@ -191,6 +193,22 @@ public:
 	 * Tell the VM to remove \c amount ops from the number of ops till suspend.
 	 */
 	static void DecreaseOps(HSQUIRRELVM vm, int amount);
+
+	/**
+	 * Did the squirrel code suspend or return normally.
+	 * @return True if the function suspended.
+	 */
+	bool IsSuspended();
+
+	/**
+	 * Find out if the squirrel script made an error before.
+	 */
+	bool HasScriptCrashed();
+
+	/**
+	 * Reset the crashed status.
+	 */
+	void ResetCrashed();
 };
 
 #endif /* SQUIRREL_HPP */

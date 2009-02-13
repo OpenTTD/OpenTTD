@@ -88,6 +88,8 @@ void AIScanner::ScanDir(const char *dirname, bool library_scan, bool library_rec
 			if (!FioCheckFileExists(info_script, AI_DIR) || !FioCheckFileExists(main_script, AI_DIR)) continue;
 
 			DEBUG(ai, 6, "Loading AI at location '%s'", main_script);
+			/* We don't care if one of the other scripst failed to load. */
+			this->engine->ResetCrashed();
 			this->engine->LoadScript(info_script);
 		} else {
 			char library_script[MAX_PATH];
@@ -100,6 +102,8 @@ void AIScanner::ScanDir(const char *dirname, bool library_scan, bool library_rec
 			if (!FioCheckFileExists(library_script, AI_LIBRARY_DIR) || !FioCheckFileExists(main_script, AI_LIBRARY_DIR)) continue;
 
 			DEBUG(ai, 6, "Loading AI Library at location '%s'", main_script);
+			/* We don't care if one of the other scripst failed to load. */
+			this->engine->ResetCrashed();
 			this->engine->LoadScript(library_script);
 		}
 	}
@@ -157,6 +161,7 @@ AIScanner::AIScanner() :
 	this->ScanAIDir();
 
 	/* Create the dummy AI */
+	this->engine->ResetCrashed();
 	extern void AI_CreateAIInfoDummy(HSQUIRRELVM vm);
 	AI_CreateAIInfoDummy(this->engine->GetVM());
 }
