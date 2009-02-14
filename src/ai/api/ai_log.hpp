@@ -18,6 +18,7 @@ class AILog : public AIObject {
 public:
 	static const char *GetClassName() { return "AILog"; }
 
+#ifndef EXPORT_SKIP
 	/**
 	 * Log levels; The value is also feed to DEBUG() lvl.
 	 *  This has no use for you, as AI writer.
@@ -41,6 +42,7 @@ public:
 		int pos;                //!< Current position in lines.
 		int used;               //!< Total amount of used log-lines.
 	};
+#endif /* EXPORT_SKIP */
 
 	/**
 	 * Print an Info message to the logs.
@@ -60,11 +62,13 @@ public:
 	 */
 	static void Error(const char *message);
 
+#ifndef EXPORT_SKIP
 	/**
 	 * Free the log pointer.
 	 * @note DO NOT CALL YOURSELF; leave it to the internal AI programming.
 	 */
 	static void FreeLogPointer();
+#endif /* EXPORT_SKIP */
 
 private:
 	/**

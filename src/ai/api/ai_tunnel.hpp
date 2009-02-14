@@ -64,7 +64,7 @@ public:
 	 * Internal function to help BuildTunnel in case of road.
 	 */
 	static bool _BuildTunnelRoad2();
-#endif
+#endif /* DOXYGEN_SKIP */
 
 	/**
 	 * Builds a tunnel starting at start. The direction of the tunnel depends

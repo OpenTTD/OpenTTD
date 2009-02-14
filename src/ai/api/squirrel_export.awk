@@ -86,10 +86,10 @@ BEGIN {
 /^(	*)private/   { if (cls_level == 1) public = "false"; next; }
 
 # Ignore special doxygen blocks
-/^#ifndef DOXYGEN_SKIP/ { doxygen_skip = "next"; next; }
-/^#ifdef DOXYGEN_SKIP/  { doxygen_skip = "true"; next; }
-/^#endif/               { doxygen_skip = "false"; next; }
-/^#else/                {
+/^#ifndef DOXYGEN_SKIP/          { doxygen_skip = "next"; next; }
+/^#ifdef DOXYGEN_SKIP/           { doxygen_skip = "true"; next; }
+/^#endif \/\* DOXYGEN_SKIP \*\// { doxygen_skip = "false"; next; }
+/^#else/                         {
 	if (doxygen_skip == "next") {
 		doxygen_skip = "true";
 	} else {
@@ -98,6 +98,11 @@ BEGIN {
 	next;
 }
 { if (doxygen_skip == "true") next }
+
+# Ignore functions that shouldn't be exported to squirrel
+/^#ifndef EXPORT_SKIP/          { export_skip = "true"; next; }
+/^#endif \/\* EXPORT_SKIP \*\// { export_skip = "false"; next; }
+{ if (export_skip == "true") next }
 
 # Ignore the comments
 /^#/             { next; }

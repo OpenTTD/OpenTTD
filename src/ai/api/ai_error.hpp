@@ -136,6 +136,7 @@ public:
 	 */
 	static char *GetLastErrorString();
 
+#ifndef EXPORT_SKIP
 	/**
 	 * Get the error based on the OpenTTD StringID.
 	 * @note DO NOT INVOKE THIS METHOD YOURSELF!
@@ -159,6 +160,7 @@ public:
 	 * @param message The string representation of this error message, used for debug purposes.
 	 */
 	static void RegisterErrorMapString(AIErrorType ai_error_msg, const char *message);
+#endif /* EXPORT_SKIP */
 
 private:
 	typedef std::map<StringID, AIErrorType> AIErrorMap;

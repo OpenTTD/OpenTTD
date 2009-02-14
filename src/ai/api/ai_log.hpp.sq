@@ -4,10 +4,6 @@
 #include "ai_log.hpp"
 
 namespace SQConvert {
-	/* Allow enums to be used as Squirrel parameters */
-	template <> AILog::AILogType GetParam(ForceType<AILog::AILogType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AILog::AILogType)tmp; }
-	template <> int Return<AILog::AILogType>(HSQUIRRELVM vm, AILog::AILogType res) { sq_pushinteger(vm, (int32)res); return 1; }
-
 	/* Allow AILog to be used as Squirrel parameter */
 	template <> AILog *GetParam(ForceType<AILog *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AILog *)instance; }
 	template <> AILog &GetParam(ForceType<AILog &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AILog *)instance; }
@@ -21,16 +17,9 @@ void SQAILog_Register(Squirrel *engine) {
 	SQAILog.PreRegister(engine);
 	SQAILog.AddConstructor<void (AILog::*)(), 1>(engine, "x");
 
-	SQAILog.DefSQConst(engine, AILog::LOG_SQ_ERROR, "LOG_SQ_ERROR");
-	SQAILog.DefSQConst(engine, AILog::LOG_ERROR,    "LOG_ERROR");
-	SQAILog.DefSQConst(engine, AILog::LOG_SQ_INFO,  "LOG_SQ_INFO");
-	SQAILog.DefSQConst(engine, AILog::LOG_WARNING,  "LOG_WARNING");
-	SQAILog.DefSQConst(engine, AILog::LOG_INFO,     "LOG_INFO");
-
-	SQAILog.DefSQStaticMethod(engine, &AILog::Info,           "Info",           2, "?s");
-	SQAILog.DefSQStaticMethod(engine, &AILog::Warning,        "Warning",        2, "?s");
-	SQAILog.DefSQStaticMethod(engine, &AILog::Error,          "Error",          2, "?s");
-	SQAILog.DefSQStaticMethod(engine, &AILog::FreeLogPointer, "FreeLogPointer", 1, "?");
+	SQAILog.DefSQStaticMethod(engine, &AILog::Info,    "Info",    2, "?s");
+	SQAILog.DefSQStaticMethod(engine, &AILog::Warning, "Warning", 2, "?s");
+	SQAILog.DefSQStaticMethod(engine, &AILog::Error,   "Error",   2, "?s");
 
 	SQAILog.PostRegister(engine);
 }

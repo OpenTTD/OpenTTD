@@ -185,7 +185,7 @@ public:
 	 * Internal function to help ChangeOrder.
 	 */
 	static bool _ChangeOrder();
-#endif
+#endif /* DOXYGEN_SKIP */
 
 	/**
 	 * Changes the order flags of the given order.

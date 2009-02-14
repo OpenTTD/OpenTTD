@@ -62,10 +62,8 @@ void SQAIEventController_Register(Squirrel *engine) {
 	SQAIEventController.PreRegister(engine);
 	SQAIEventController.AddConstructor<void (AIEventController::*)(), 1>(engine, "x");
 
-	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::IsEventWaiting,   "IsEventWaiting",   1, "?");
-	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::GetNextEvent,     "GetNextEvent",     1, "?");
-	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::InsertEvent,      "InsertEvent",      2, "?x");
-	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::FreeEventPointer, "FreeEventPointer", 1, "?");
+	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::IsEventWaiting, "IsEventWaiting", 1, "?");
+	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::GetNextEvent,   "GetNextEvent",   1, "?");
 
 	SQAIEventController.PostRegister(engine);
 }
