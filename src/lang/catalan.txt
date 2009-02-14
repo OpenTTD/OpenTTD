@@ -734,6 +734,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Cada 12 mesos
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Comença un joc nou
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Carrega un joc desat
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Crea un joc amb un món/escenari personalitzat
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Comença un joc multijugador
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Mostra les opcions del joc
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Mostra les opcions de dificultat
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Comença un joc nou, utilitzant un escenari personalitzat
@@ -1239,7 +1240,6 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Històri
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Llista de les notícies més recents
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Desactiva tots
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Activa tots
-
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Indústries
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportat)
@@ -3091,6 +3091,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}La quant
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total de punts sobre els punts possibles
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Extensions NewGRF
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Mostra els paràmetres NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Extensions NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplica els canvis
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Commuta paleta
@@ -3546,6 +3547,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Paràmetres IA
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Mostra els paràmetres IA
 STR_AI_DEBUG                                                    :{WHITE}Depuració IA
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nom de la IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarrega IA

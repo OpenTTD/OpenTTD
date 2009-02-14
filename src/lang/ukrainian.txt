@@ -859,6 +859,7 @@ STR_02FA_EVERY_12_MONTHS                                        :щороку
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Почати нову гру
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Продовжити збережену гру
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Створити свій сценарій
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Почати багатокористувачеву гру
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Показати налаштування гри
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Показати налаштування складності
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Почати нову гру, використовуючи сценарій
@@ -1364,7 +1365,6 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Істо
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Список останніх нових повідомлень
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Вимкнути всі
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Показувати всі
-
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Промисловість
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% перевезено)
@@ -3253,6 +3253,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Сума
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Загальна кількість балів
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Налаштування NewGRF
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Показати настройки NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Налаштування нової графіки
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Застосувати зміни
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Переключити палітру
@@ -3708,6 +3709,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|�
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Параметри AI
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Показати настройки AI
 STR_AI_DEBUG                                                    :{WHITE}Дебаг AI
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Назва AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезавантажити AI

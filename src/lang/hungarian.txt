@@ -768,6 +768,7 @@ STR_02FA_EVERY_12_MONTHS                                        :12 havonta
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Új játék kezdése
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Mentett játék betöltése
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Testreszabott pálya készítése
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Többfős játék indítása
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}A játék beállításainak megmutatása
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}A nehézségi beállítások megmutatása
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Új játék kezdése saját pályán
@@ -1273,7 +1274,6 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Előző 
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Az előző hírüzenetek listája
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Kikapcsol mind
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Bekapcsol mind
-
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Gazdasági épületek
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% elszállítva)
@@ -3162,6 +3162,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Magas k�
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Megszerzett pontok az elérhető pontokból
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF beállítások
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}NewGRF beállítások megjelenítése
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF beállítások
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Alkalmazás
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Palettaváltás
@@ -3617,6 +3618,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :§'"+!%/=()ÖÜ
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}MI beállítások
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}AI beállítások megjelenítése
 STR_AI_DEBUG                                                    :{WHITE}MI nyomkövetés
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}MI neve
 STR_AI_DEBUG_RELOAD                                             :{BLACK}MI újratöltése

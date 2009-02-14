@@ -1242,7 +1242,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Liste de
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Désactiver tout
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Activer tout
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industries
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transporté)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transporté)
@@ -3093,6 +3092,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Le monta
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total des points par rapport aux points possibles.
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Paramètres NewGRF
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Afficher la configuration des NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Paramètres Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Appliquer les changements
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Basculer palette
@@ -3548,6 +3548,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    : 1234567890°+ 
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Paramètres IA
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Afficher la configuration des IA
 STR_AI_DEBUG                                                    :{WHITE}Débogage d'IA
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nom de l'IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recharger IA

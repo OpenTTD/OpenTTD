@@ -1241,7 +1241,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Lista vi
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Kaikki pois päältä
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Kaikki päälle
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Teollisuusala
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}{NBSP}% kuljetettu)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% kuljetettu)
@@ -3092,6 +3091,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Tämän 
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Summa kaikista mahdollisista pisteistä.
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF-asetukset
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Näytä NewGRF-asetukset
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf-asetukset
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Ota käyttöön
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Käytä eri palettia
@@ -3547,6 +3547,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :½!"#¤%&/()=?`
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Tekoälyasetukset
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Näytä tekoälyasetukset
 STR_AI_DEBUG                                                    :{WHITE}Tekoälyn virheenjäljitys
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Tekoälyn nimi
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Lataa tekoäly uudelleen

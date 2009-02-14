@@ -734,6 +734,7 @@ STR_02FA_EVERY_12_MONTHS                                        :La fiecare 12 l
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Începere joc nou
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Încarcă un joc salvat
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Creează un joc/scenariu propriu
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Începe un joc multiplayer
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Afişează opţiunile jocului
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Afişează opţiunile pentru alegerea dificultăţii
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Începerea unui joc nou folosind un scenariu deja existent
@@ -1239,7 +1240,6 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Cronolog
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}O listă a celor mai recente mesaje
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Dezactivează toate
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Activează toate
-
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrii
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportat)

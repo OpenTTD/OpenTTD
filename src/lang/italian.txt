@@ -651,10 +651,10 @@ STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Le metro
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Seleziona la dimensione della città
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Dimensione città:
 
-STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Disposizione strade cittadine
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Disposizione strade:
 STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Seleziona la disposizione delle strade per questa città
 STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Originale
-STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Pianta migliorata
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Migliorata
 STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}Griglia 2x2
 STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}Griglia 3x3
 STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Casuale
@@ -736,6 +736,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Ogni 12 mesi
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Inizia una nuova partita
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Carica una partita salvata
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Crea uno scenario personalizzato
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Inizia una partita multigiocatore
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Mostra le opzioni di gioco
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Mostra le opzioni di difficoltà
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Inizia una nuova partita, utilizzando uno scenario personalizzato
@@ -1053,6 +1054,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Disabil
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permetti le IA nelle partite multigiocatore: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Max. opcode prima della sospensione della IA: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Gli intervalli di manutenzione sono in percentuale: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervallo manutenzione predefinito treni: {ORANGE}{STRING} giorni/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervallo manutenzione predefinito treni: {ORANGE}Disabilitato
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Intervallo manutenzione predefinito automezzi: {ORANGE}{STRING} giorni/%
@@ -1083,11 +1085,12 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tutti
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Disposizione delle strade per le nuove città: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Predefinita
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Pianta migliorata
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Migliorata
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Griglia 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Griglia 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Casuale
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Permetti alle città di costruire strade: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Consenti controllo rumore aeroporti da parte delle città: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posizione barra degli strumenti principale: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Sinistra
@@ -1126,12 +1129,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Treni
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Città
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrie
 
-STR_CONFIG_SETTING_DISABLED                                     :disabilitato
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Cambia impostazione
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pathfinder per i treni: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(non raccomandato)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1144,6 +1141,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfin
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Originale {BLUE}(raccomandato)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(non raccomandato)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Dimensione X della mappa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Dimensione Y della mappa: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :disabilitato
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Cambia impostazione
 
 STR_TEMPERATE_LANDSCAPE                                         :Paesaggio 'temperato'
 STR_SUB_ARCTIC_LANDSCAPE                                        :Paesaggio 'sub-artico'
@@ -1237,7 +1243,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Elenco d
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Disabilita tutti
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Abilita tutti
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrie
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% trasportato)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% trasportato)
@@ -1251,7 +1256,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Riadatta
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selezionare il tipo di carico da far trasportare al treno
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Riadatta il treno per trasportare il tipo di carico selezionato
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Impossibile riadattare il treno...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Gli intervalli di manutenzione sono in percentuale: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambia produzione
 
 ############ network gui strings
@@ -1512,11 +1516,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Messaggio priva
 STR_NETWORK_SEND                                                :{BLACK}Invia
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Dimensione X della mappa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Dimensione Y della mappa: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -3094,6 +3093,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}L'ammont
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Punteggio totale rispetto al massimo realizzabile
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Impostazioni NewGRF
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Mostra le impostazioni NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Impostazioni NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Applica modifiche
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Alterna tavolozze
@@ -3549,6 +3549,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :|!"£$%&/()=?^ 
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Impostazioni IA
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Mostra le impostazioni dell'intelligenza artificiale
 STR_AI_DEBUG                                                    :{WHITE}Debug IA
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nome della IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ricarica IA
@@ -3576,7 +3577,6 @@ STR_AI_VERSION                                                  :Versione:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Consenti controllo rumore aeroporti da parte delle città: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Limite di rumore in città: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Rumore generato: {GOLD}{COMMA}
 ########

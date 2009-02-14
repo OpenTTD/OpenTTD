@@ -644,9 +644,16 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...endan
 STR_02A1_SMALL                                                  :{BLACK}Liten
 STR_02A2_MEDIUM                                                 :{BLACK}Middels
 STR_02A3_LARGE                                                  :{BLACK}Stor
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Vilkårleg
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}By
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Vel storleik på by
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Bystorleik:
+
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Orginal
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Betre vegar
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 rutenett
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 rutenett
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Vilkårleg
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Vis siste melding eller nyhende
@@ -679,6 +686,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Gjenno
 STR_02D5_LAND_BLOCK_INFO                                        :Informasjon om felt
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Vis/gjøym konsoll
+STR_AI_DEBUG_MENU                                               :AI feilsøking
 STR_02D7_SCREENSHOT_CTRL_S                                      :Skjermfoto (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Stort skjermfoto (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Om 'OpenTTD'
@@ -724,6 +732,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Kvar 12. månad
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Start nytt spel
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Last inn eit lagra spel
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Spesiallag ei spelverd eller eit scenario
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Start eit fleirspelar-spel
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Vis spelinstillingar
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Vis vanskegrad
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Start eit nytt spel som tar i bruk eit scenario
@@ -833,6 +842,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Filforma
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vel kva format skjermdumpen skal lagrast i
 
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+
 STR_AUTOSAVE_1_MONTH                                            :Kvar månad
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autolagring gjekk gale
 
@@ -897,7 +908,7 @@ STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Vis far
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Tillat bygging på skråningar og i vasskanten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Gje høve til å endre lanskap under bruer, spor o.s.b.(autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Meir realistisk storleik på oppfangingsområde: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillat riving av industri, mer vei, osb.: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillat riving av industri, meir veg, osb.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Tillat bygging av veldig lange tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjonsmodell: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Orginal
@@ -924,7 +935,7 @@ STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Køyret
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Flytt på biletet dersom pila er nær ytterkantane på skjermen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Tillat smørjing av bystyret: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Gje høve til å kjøpe eksklusive transportretter: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Gje høve til å sende penger til andre firma: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Gje høve til å sende pengar til andre firma: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ikkje-einsarta stasjonar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Vektmultiplikator for frakt til å simulere tunge tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Flyfartfaktor: {ORANGE}1 / {STRING}
@@ -972,7 +983,7 @@ STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maks st
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Gjer vedlikehald på helikopter automatisk på helikopterlandingsplassar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koble landskapsverktøylinja til tog-/vei-/vass- og flyplassverktøylinjene: {ORANGE}{STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Ved rulling med musa, flytt synsvinkelen i den motsette retninga: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}glatt scrolling: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Glatt scrolling: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Vis eit målingverktøytips når ymse byggjeverktøy brukast: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Vis firmaovertakingar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ingen
@@ -990,6 +1001,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando klikk
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontroll klikk
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
 
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Venstreknapps-rulling: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Bruk {ORANGE}{STRING}{LTBLUE} datoformat for lagra spel.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. des 2008)
@@ -1015,7 +1027,9 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Første tilgjengelege
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Siste tilgjengelege
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest brukte
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Syn reserverte spor: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Hold byggjeverktya aktive etter bruk: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grupper utgifter i firmarekneskapen-vindauget: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Vis bygningsverktøy når det ikkje er nokon høvelege køyretøy tilgjengeleg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per speler: {ORANGE}{STRING}
@@ -1023,13 +1037,14 @@ STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Maks an
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maks antal fly per spelar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maks antal skip per spelar: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Hindre datamaskinen i å byggje tog: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Hindre datamaskinen i å byggje køyretøy: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Hindre datamaskinen i å byggje fly: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Hindre datamaskinen i å byggje skip: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Hindre datamaskina i å byggje tog: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Hindre datamaskina i å byggje køyretøy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Hindre datamaskina i å byggje fly: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Hindre datamaskina i å byggje skip: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillat AI-spelarar i fleirspelarmodus (eksperimentelt): {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Vedlikehaldsintervall er i prosent: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard vedlikehaldsintervall for tog: {ORANGE}{STRING} dagar/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard vedlikehaldsintervall for tog: {ORANGE}deaktivert
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Standard vedlikehaldsintervall for køyretøy: {ORANGE}{STRING} dagar/%
@@ -1045,7 +1060,7 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Deaktiv
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Avisa vert trykt i fargar i: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Start spelet i år {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Jamn økonomi (fleire, mindre endringar): {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Tillat kjøping av aksjar i andre selskap: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Tillat kjøp av aksjar i andre selskap: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved opptrekking, plasser signal hver: {ORANGE}{STRING} rute{P "" r}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg semaforer automatisk før: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Bruk signal GUI: {ORANGE}{STRING}
@@ -1058,11 +1073,14 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Kun blokkerings
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Kun vegsignal
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Vegplan for nye byar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :standard
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :betre vegar
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 rutenett
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 rutenett
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :vilkårleg
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Byar har lov til å byggja vegar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Tillat at byen kontrollerar lydnivået for flyplassane: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Plassering av hovudverktøylinje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Venstre
@@ -1090,17 +1108,12 @@ STR_CONFIG_SETTING_AI                                           :{ORANGE}Motstan
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Vis innstillingar
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Varebehandling
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datamaskinspelarar
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Forny automatisk
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Vedlikehald
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tog
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Byar
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriar
-
-STR_CONFIG_SETTING_DISABLED                                     :slått av
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Endre innstillingsverdi
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Vegfinnar for tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ikkje anbefalt)
@@ -1114,6 +1127,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Vegfinn
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orginal {BLUE}(Anbefalt)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ikkje anbefalt)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-storleik på kart: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-storleik på kart: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :slått av
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Endre innstillingsverdi
 
 STR_TEMPERATE_LANDSCAPE                                         :Temperert landskap
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarktisk landskap
@@ -1207,7 +1229,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Ei liste
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Deaktiver alle
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Aktiver alle
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industriar
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA} % transportert)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA} %/{COMMA} % transportert)
@@ -1221,7 +1242,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Bygg om 
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vel kva type last lokomotivet skal ta
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Bygg om lokomotivet til å frakte den valde varetypen
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan ikkje byggje om lokomotiv...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Vedlikehaldsintervall er i prosent: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Endre produksjon
 
 ############ network gui strings
@@ -1400,6 +1420,7 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Slå inn
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tenaren er beskytta. Skriv inn passord
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firmaet er beskytta.  Skriv inn eit passord
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Liste over klientar
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Vær tilskodar
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nytt firma
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Finn inkje nettverksadapter eller kompilert utan ENABLE_NETWORK
@@ -1481,11 +1502,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privat melding
 STR_NETWORK_SEND                                                :{BLACK}Send
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-storleik på kart: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-storleik på kart: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -2178,7 +2194,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Kan ikkj
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...lånet er allereie betalt attende
 STR_702E_REQUIRED                                               :{WHITE}...du treng {CURRENCY}
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Kan ikkje betale lånet attende...
-STR_INSUFFICIENT_FUNDS                                          :{WHITE}Kan ikkje gje vekk penger som er lånt frå banken...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Kan ikkje gje vekk pengar som er lånt frå banken...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Gje sjefen ei andletslyfting
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Endre firmafarge
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Endre namnet til sjefen
@@ -2212,7 +2228,7 @@ STR_7052_COMPANY_VALUES                                         :{WHITE}Firmaver
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Firmarangering
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
-STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transportfirma har problemer!
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transportfirma har problem!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING} vil verte seld eller nedlagt, dersom ikkje økonomien til firmaet tek seg opp!
 STR_7058_PRESIDENT                                              :{BLACK}{PRESIDENTNAME}{}(Sjef)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Transportfirma fusjonerer!
@@ -2243,6 +2259,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Gjenoppb
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Kan ikkje byggje hovudkontor...
 STR_7072_VIEW_HQ                                                :{BLACK}Sjå hovudkontor
 STR_RELOCATE_HQ                                                 :{BLACK}Omplasser hovudkvarter
+STR_COMPANY_JOIN                                                :{BLACK}Knytt til
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Knytt til og spel som dette firmaet
 STR_COMPANY_PASSWORD                                            :{BLACK}Passord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Passordbeskytt firmaet ditt slik at ikkje alle og einkvar kan verte med. Bruk '*' for å tømme passord.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Vel firmapassord
@@ -2623,6 +2641,7 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Reis alltid
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Service om naudsynt
 STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
 
+STR_ORDER_CONDITIONAL                                           :Betinga ordrehopp
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Korleis samanlikne informasjon frå køyretøyet til den gjevne verdien
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Verdien som informasjon frå køyretøyet vert samanlikna med
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Skriv inn verdi å samanlikne med
@@ -3260,7 +3279,7 @@ STR_NUM_3                                                       :{BLACK}{SKIP}{S
 
 STR_GENERATE                                                    :{WHITE}Generer
 STR_RANDOM                                                      :{BLACK}Gjer tilfeldig
-STR_RANDOM_HELP                                                 :{BLACK}Endre tilfeldig-nummer som nyttast for terreng-generering
+STR_RANDOM_HELP                                                 :{BLACK}Endre tilfeldig nummer som nyttast for terreng-generering
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generer ei verd
 STR_RANDOM_SEED                                                 :{BLACK}Tilfeldig nummer:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Trykk her for å taste inn eit tilfeldig nummer
@@ -3441,9 +3460,9 @@ STR_FACE_SIMPLE_TIP                                             :{BLACK}Enkelt v
 STR_FACE_LOAD                                                   :{BLACK}Last
 STR_FACE_LOAD_TIP                                               :{BLACK}Last favoritandlet
 STR_FACE_LOAD_DONE                                              :{WHITE}Favorittandletet ditt har blitt lasta frå OpenTTD config fila
-STR_FACE_FACECODE                                               :{BLACK}Spelar andlet nummer.
-STR_FACE_FACECODE_TIP                                           :{BLACK}Sjå og / eller set spelar andletsnummer
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Sjå og eller set spelars andletsnummer
+STR_FACE_FACECODE                                               :{BLACK}Spelarandlet nummer.
+STR_FACE_FACECODE_TIP                                           :{BLACK}Sjå og/eller set spelar andletsnummer
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Sjå og/eller set spelars andletsnummer
 STR_FACE_FACECODE_SET                                           :{WHITE}Ny kode for andletsnummer er satt
 STR_FACE_FACECODE_ERR                                           :{WHITE}Kunne ikke setja spelars andletsnummer - må vera mellom  0 og 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Lagre
@@ -3508,19 +3527,32 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI konfigurasjonar
+STR_AI_DEBUG                                                    :{WHITE}AI feilsøking
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Namnet til datamaskinspelaren
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Last datamaskinspelaren på ny
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Drep datamaskinspelaren, last skriptet på ny og starte om datamaskinspelaren
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI konfigurasjonar
+STR_AI_CHANGE                                                   :{BLACK}Vel AI
+STR_AI_CONFIGURE                                                :{BLACK}Konfigurere
+STR_AI_CHANGE_TIP                                               :{BLACK}Last endå ein AI
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Konfigurer AI-parametrane
+STR_AI_LIST_CAPTION                                             :{WHITE}Tilgjengelege AI
+STR_AI_AILIST_TIP                                               :{BLACK}Klikk for å velje ein AI
 STR_AI_ACCEPT                                                   :{BLACK}Godta
+STR_AI_ACCEPT_TIP                                               :{BLACK}Merk utheva AI
 STR_AI_CANCEL                                                   :{BLACK}Avbryt
+STR_AI_CANCEL_TIP                                               :{BLACK}Ikkje endre AI
 STR_AI_CLOSE                                                    :{BLACK}Lukk
 STR_AI_RESET                                                    :{BLACK}Tilbakestill
+STR_AI_HUMAN_PLAYER                                             :Menneskeleg spelar
+STR_AI_RANDOM_AI                                                :Vilkårleg AI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parametrar
 STR_AI_AUTHOR                                                   :Forfattar:
 STR_AI_VERSION                                                  :Versjon:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Tillat at byen kontrollerar lydnivået for flyplassane: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Grense for lydnivå i byen: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Lyd generert: {GOLD}{COMMA}
 ########
@@ -3530,6 +3562,8 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... det er ikkje mogeleg å laste ned innhald!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grunngrafikk
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :AI bibliotek
 STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Høgdekart
 STR_CONTENT_TITLE                                               :{WHITE}Last ned innhald
@@ -3544,12 +3578,16 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Vel oppd
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Merk alt innhald som er ei oppgradering av eksisterande, og skal lastast ned
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Vel ingenting
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Merk alt innhald som ikkje skal lastast ned
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Skriv inn filter-streng
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Skriv eit nøkkelord for filtrering av lista
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Merke-/namn-filter
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Last ned
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Last ned valt innhald
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total størrelse: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INNHALDSINFORMASJON
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Du har ikkje valt at dette skal lastast ned
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Du har valt dette for nedlasting
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Følgjande avhengnad har blitt merka for nedlasting
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Du har allereie dette
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Dette innhaldet er ukjent og kan ikkje lastas ned i OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Dette erstattar ei eksisterande {STRING}
@@ -3559,7 +3597,9 @@ STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Omtale:
 STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Type: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Størrelse: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Vald på grunn av: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Avheng av: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Merker: {WHITE}{STRING}
 
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Lastar ned innhald...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Ber om filer...
