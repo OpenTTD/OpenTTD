@@ -49,7 +49,6 @@ void SQAITown_Register(Squirrel *engine) {
 	SQAITown.DefSQConst(engine, AITown::ROAD_LAYOUT_3x3,              "ROAD_LAYOUT_3x3");
 	SQAITown.DefSQConst(engine, AITown::ROAD_LAYOUT_INVALID,          "ROAD_LAYOUT_INVALID");
 
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetMaxTownID,               "GetMaxTownID",               1, "?");
 	SQAITown.DefSQStaticMethod(engine, &AITown::GetTownCount,               "GetTownCount",               1, "?");
 	SQAITown.DefSQStaticMethod(engine, &AITown::IsValidTown,                "IsValidTown",                2, "?i");
 	SQAITown.DefSQStaticMethod(engine, &AITown::GetName,                    "GetName",                    2, "?i");

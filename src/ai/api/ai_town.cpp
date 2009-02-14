@@ -14,11 +14,6 @@
 #include "../../station_base.h"
 #include "table/strings.h"
 
-/* static */ TownID AITown::GetMaxTownID()
-{
-	return ::GetMaxTownIndex();
-}
-
 /* static */ int32 AITown::GetTownCount()
 {
 	return ::GetNumTowns();

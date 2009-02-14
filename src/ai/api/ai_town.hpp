@@ -97,13 +97,6 @@ public:
 	};
 
 	/**
-	 * Gets the maximum town index; there are no valid towns with a higher index.
-	 * @return The maximum town index.
-	 * @post Return value is always non-negative.
-	 */
-	static TownID GetMaxTownID();
-
-	/**
 	 * Gets the number of towns. This is different than GetMaxTownID()
 	 *   because of the way OpenTTD works internally.
 	 * @return The number of towns.
