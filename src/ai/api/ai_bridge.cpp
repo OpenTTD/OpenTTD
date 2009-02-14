@@ -10,10 +10,11 @@
 #include "../../core/alloc_func.hpp"
 #include "../../economy_func.h"
 #include "../../settings_type.h"
+#include "../../date_func.h"
 
 /* static */ bool AIBridge::IsValidBridge(BridgeID bridge_id)
 {
-	return bridge_id < MAX_BRIDGES;
+	return bridge_id < MAX_BRIDGES && ::GetBridgeSpec(bridge_id)->avail_year <= _cur_year;
 }
 
 /* static */ bool AIBridge::IsBridgeTile(TileIndex tile)
@@ -157,13 +158,6 @@ static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
 	if (!IsValidBridge(bridge_id)) return -1;
 
 	return ::GetBridgeSpec(bridge_id)->min_length + 2;
-}
-
-/* static */ int32 AIBridge::GetYearAvailable(BridgeID bridge_id)
-{
-	if (!IsValidBridge(bridge_id)) return -1;
-
-	return ::GetBridgeSpec(bridge_id)->avail_year;
 }
 
 /* static */ TileIndex AIBridge::GetOtherBridgeEnd(TileIndex tile)

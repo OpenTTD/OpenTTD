@@ -252,7 +252,6 @@ function Regression::Bridge()
 		print("    GetPrice():         " + AIBridge.GetPrice(i, 5));
 		print("    GetMaxLength():     " + AIBridge.GetMaxLength(i));
 		print("    GetMinLength():     " + AIBridge.GetMinLength(i));
-		print("    GetYearAvailable(): " + AIBridge.GetYearAvailable(i));
 	}
 	print("  Valid Bridges:        " + j);
 
@@ -294,11 +293,6 @@ function Regression::BridgeList()
 	}
 	list.Valuate(AIBridge.GetMinLength);
 	print("  MinLength ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
-		print("    " + i + " => " + list.GetValue(i));
-	}
-	list.Valuate(AIBridge.GetYearAvailable);
-	print("  YearAvailable ListDump:");
 	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}

@@ -643,7 +643,6 @@
     GetPrice():         -1
     GetMaxLength():     -1
     GetMinLength():     -1
-    GetYearAvailable(): -1
   Bridge 0
     IsValidBridge():    true
     GetName():          Wooden rail bridge
@@ -651,7 +650,6 @@
     GetPrice():         10
     GetMaxLength():     102
     GetMinLength():     2
-    GetYearAvailable(): 0
   Bridge 1
     IsValidBridge():    true
     GetName():          Concrete rail bridge
@@ -659,7 +657,6 @@
     GetPrice():         15
     GetMaxLength():     4
     GetMinLength():     2
-    GetYearAvailable(): 0
   Bridge 2
     IsValidBridge():    true
     GetName():          Steel girder rail bridge
@@ -667,7 +664,6 @@
     GetPrice():         19
     GetMaxLength():     7
     GetMinLength():     2
-    GetYearAvailable(): 1930
   Bridge 3
     IsValidBridge():    true
     GetName():          Reinforced concrete suspension rail bridge
@@ -675,7 +671,6 @@
     GetPrice():         22
     GetMaxLength():     12
     GetMinLength():     4
-    GetYearAvailable(): 0
   Bridge 4
     IsValidBridge():    true
     GetName():          Steel suspension rail bridge
@@ -683,7 +678,6 @@
     GetPrice():         25
     GetMaxLength():     102
     GetMinLength():     5
-    GetYearAvailable(): 1930
   Bridge 5
     IsValidBridge():    true
     GetName():          Steel suspension rail bridge
@@ -691,7 +685,6 @@
     GetPrice():         26
     GetMaxLength():     102
     GetMinLength():     5
-    GetYearAvailable(): 1930
   Bridge 6
     IsValidBridge():    true
     GetName():          Steel cantilever rail bridge
@@ -699,7 +692,6 @@
     GetPrice():         30
     GetMaxLength():     9
     GetMinLength():     5
-    GetYearAvailable(): 1930
   Bridge 7
     IsValidBridge():    true
     GetName():          Steel cantilever rail bridge
@@ -707,7 +699,6 @@
     GetPrice():         31
     GetMaxLength():     10
     GetMinLength():     5
-    GetYearAvailable(): 1930
   Bridge 8
     IsValidBridge():    true
     GetName():          Steel cantilever rail bridge
@@ -715,7 +706,6 @@
     GetPrice():         33
     GetMaxLength():     11
     GetMinLength():     5
-    GetYearAvailable(): 1930
   Bridge 9
     IsValidBridge():    true
     GetName():          Steel girder rail bridge
@@ -723,31 +713,27 @@
     GetPrice():         32
     GetMaxLength():     4
     GetMinLength():     2
-    GetYearAvailable(): 1930
   Bridge 10
-    IsValidBridge():    true
-    GetName():          Tubular rail bridge
-    GetMaxSpeed():      320
-    GetPrice():         34
-    GetMaxLength():     102
-    GetMinLength():     4
-    GetYearAvailable(): 1995
+    IsValidBridge():    false
+    GetName():          (null : 0x00000000)
+    GetMaxSpeed():      -1
+    GetPrice():         -1
+    GetMaxLength():     -1
+    GetMinLength():     -1
   Bridge 11
-    IsValidBridge():    true
-    GetName():          Tubular rail bridge
-    GetMaxSpeed():      512
-    GetPrice():         51
-    GetMaxLength():     102
-    GetMinLength():     4
-    GetYearAvailable(): 2005
+    IsValidBridge():    false
+    GetName():          (null : 0x00000000)
+    GetMaxSpeed():      -1
+    GetPrice():         -1
+    GetMaxLength():     -1
+    GetMinLength():     -1
   Bridge 12
-    IsValidBridge():    true
-    GetName():          Tubular rail bridge
-    GetMaxSpeed():      608
-    GetPrice():         69
-    GetMaxLength():     102
-    GetMinLength():     4
-    GetYearAvailable(): 2010
+    IsValidBridge():    false
+    GetName():          (null : 0x00000000)
+    GetMaxSpeed():      -1
+    GetPrice():         -1
+    GetMaxLength():     -1
+    GetMinLength():     -1
   Bridge 13
     IsValidBridge():    false
     GetName():          (null : 0x00000000)
@@ -755,8 +741,7 @@
     GetPrice():         -1
     GetMaxLength():     -1
     GetMinLength():     -1
-    GetYearAvailable(): -1
-  Valid Bridges:        13
+  Valid Bridges:        10
   IsBridgeTile():       false
   RemoveBridge():       false
   GetLastErrorString(): ERR_PRECONDITION_FAILED
@@ -816,17 +801,6 @@
     2 => 2
     1 => 2
     0 => 2
-  YearAvailable ListDump:
-    9 => 1930
-    8 => 1930
-    7 => 1930
-    6 => 1930
-    5 => 1930
-    4 => 1930
-    2 => 1930
-    3 => 0
-    1 => 0
-    0 => 0
 
 --BridgeList_Length--
   Count():             3

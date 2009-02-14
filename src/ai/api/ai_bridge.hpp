@@ -95,15 +95,6 @@ public:
 	 */
 	static int32 GetMinLength(BridgeID bridge_id);
 
-	/**
-	 * Get the year in which a bridge becomes available.
-	 * @param bridge_id The bridge to get the year of availability of.
-	 * @pre IsValidBridge(bridge_id).
-	 * @returns The year of availability the bridge has.
-	 * @note Years are like 2010, -10 (10 B.C.), 1950, ..
-	 */
-	static int32 GetYearAvailable(BridgeID bridge_id);
-
 #ifndef DOXYGEN_SKIP
 	/**
 	 * Internal function to help BuildBridge in case of road.

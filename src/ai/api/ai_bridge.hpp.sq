@@ -41,7 +41,6 @@ void SQAIBridge_Register(Squirrel *engine) {
 	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetPrice,          "GetPrice",          3, "?ii");
 	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetMaxLength,      "GetMaxLength",      2, "?i");
 	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetMinLength,      "GetMinLength",      2, "?i");
-	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetYearAvailable,  "GetYearAvailable",  2, "?i");
 	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::BuildBridge,       "BuildBridge",       5, "?iiii");
 	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::RemoveBridge,      "RemoveBridge",      2, "?i");
 	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetOtherBridgeEnd, "GetOtherBridgeEnd", 2, "?i");
