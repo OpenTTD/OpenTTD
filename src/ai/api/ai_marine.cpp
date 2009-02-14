@@ -64,11 +64,13 @@
 	return gtts1 != TRACK_BIT_NONE;
 }
 
-/* static */ bool AIMarine::BuildWaterDepot(TileIndex tile, bool vertical)
+/* static */ bool AIMarine::BuildWaterDepot(TileIndex tile, TileIndex front)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, ::IsValidTile(front));
+	EnforcePrecondition(false, (::TileX(front) == ::TileX(tile)) != (::TileY(front) == ::TileY(tile)));
 
-	return AIObject::DoCommand(tile, vertical, 0, CMD_BUILD_SHIP_DEPOT);
+	return AIObject::DoCommand(tile, ::TileY(front) == ::TileY(tile), 0, CMD_BUILD_SHIP_DEPOT);
 }
 
 /* static */ bool AIMarine::BuildDock(TileIndex tile, StationID station_id)

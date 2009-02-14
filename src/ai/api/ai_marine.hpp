@@ -82,15 +82,16 @@ public:
 	/**
 	 * Builds a water depot on tile.
 	 * @param tile The tile where the water depot will be build.
-	 * @param vertical If true, depot will be vertical, else horizontal.
+	 * @param front A tile on the same axis with 'tile' as the depot shall be oriented
 	 * @pre AIMap::IsValidTile(tile).
+	 * @pre AIMap::IsValidTile(front).
 	 * @exception AIError::ERR_AREA_NOT_CLEAR
 	 * @exception AIError::ERR_SITE_UNSUITABLE
 	 * @exception AIMarine::ERR_MARINE_MUST_BE_BUILT_ON_WATER
 	 * @return Whether the water depot has been/can be build or not.
 	 * @note A WaterDepot is 1 tile in width, and 2 tiles in length.
 	 */
-	static bool BuildWaterDepot(TileIndex tile, bool vertical);
+	static bool BuildWaterDepot(TileIndex tile, TileIndex front);
 
 	/**
 	 * Builds a dock where tile is the tile still on land.

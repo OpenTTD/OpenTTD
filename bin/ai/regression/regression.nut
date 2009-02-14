@@ -778,7 +778,7 @@ function Regression::Marine()
 	print("  IsCanalTile():        " + AIMarine.IsCanalTile(32116));
 
 	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
-	print("  BuildWaterDepot():    " + AIMarine.BuildWaterDepot(28479, false));
+	print("  BuildWaterDepot():    " + AIMarine.BuildWaterDepot(28479, 28478));
 	print("  BuildDock():          " + AIMarine.BuildDock(29253, AIStation.STATION_JOIN_ADJACENT));
 	print("  BuildBuoy():          " + AIMarine.BuildBuoy(28481));
 	print("  BuildLock():          " + AIMarine.BuildLock(28487));
@@ -804,7 +804,7 @@ function Regression::Marine()
 	print("  IsCanalTile():        " + AIMarine.IsCanalTile(32127));
 	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
 
-	print("  BuildWaterDepot():    " + AIMarine.BuildWaterDepot(28479, false));
+	print("  BuildWaterDepot():    " + AIMarine.BuildWaterDepot(28479, 28480));
 	print("  BuildDock():          " + AIMarine.BuildDock(29253, AIStation.STATION_JOIN_ADJACENT));
 }
 
