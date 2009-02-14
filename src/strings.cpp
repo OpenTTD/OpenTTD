@@ -700,8 +700,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 				/* industry not valid anymore? */
 				if (!i->IsValid()) break;
 
-				/* First print the town name and the industry type name
-				 * The string STR_INDUSTRY_PATTERN controls the formatting */
+				/* First print the town name and the industry type name. */
 				args[0] = i->town->index;
 				args[1] = GetIndustrySpec(i->type)->name;
 				buff = FormatString(buff, GetStringPtr(STR_INDUSTRY_FORMAT), args, modifier >> 24, last);
