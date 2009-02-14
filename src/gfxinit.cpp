@@ -577,7 +577,7 @@ int GetNumGraphicsSets()
 {
 	int n = 0;
 	for (const GraphicsSet *g = _available_graphics_sets; g != NULL; g = g->next) {
-		if (g->found_grfs <= 1) continue;
+		if (g != _used_graphics_set && g->found_grfs <= 1) continue;
 		n++;
 	}
 	return n;
@@ -590,8 +590,8 @@ int GetIndexOfCurrentGraphicsSet()
 {
 	int n = 0;
 	for (const GraphicsSet *g = _available_graphics_sets; g != NULL; g = g->next) {
-		if (g->found_grfs <= 1) continue;
 		if (g == _used_graphics_set) return n;
+		if (g->found_grfs <= 1) continue;
 		n++;
 	}
 	return -1;
@@ -603,7 +603,7 @@ int GetIndexOfCurrentGraphicsSet()
 const char *GetGraphicsSetName(int index)
 {
 	for (const GraphicsSet *g = _available_graphics_sets; g != NULL; g = g->next) {
-		if (g->found_grfs <= 1) continue;
+		if (g != _used_graphics_set && g->found_grfs <= 1) continue;
 		if (index == 0) return g->name;
 		index--;
 	}
