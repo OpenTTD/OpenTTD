@@ -320,7 +320,7 @@ public:
 
 	/**
 	 * Builds a road bus or truck station.
-	 * @param tile Place to build the depot.
+	 * @param tile Place to build the station.
 	 * @param front The tile exactly in front of the station.
 	 *   For drive-through stations either entrance side can be used.
 	 * @param truck Whether to build a truck (true) or bus (false) station.

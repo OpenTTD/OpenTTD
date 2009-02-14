@@ -92,7 +92,7 @@ public:
 	 * Sets the amount to loan.
 	 * @param loan The amount to loan (multiplier of GetLoanInterval()).
 	 * @pre 'loan' must be non-negative.
-	 * @pre GetLoanInterval() must be a multiplier of GetLoanInterval().
+	 * @pre GetLoanInterval() must be a multiplier of 'loan'.
 	 * @pre 'loan' must be below GetMaxLoanAmount().
 	 * @pre 'loan' - GetLoanAmount() + GetBankBalance() must be non-negative.
 	 * @return True if the loan could be set to your requested amount.
@@ -104,7 +104,7 @@ public:
 	 * @param loan The amount to loan (any positive number).
 	 * @pre 'loan' must be non-negative.
 	 * @pre 'loan' must be below GetMaxLoanAmount().
-	 * @return True if we could allocate a minimum of "loan" loan.
+	 * @return True if we could allocate a minimum of 'loan' loan.
 	 */
 	static bool SetMinimumLoanAmount(int32 loan);
 
