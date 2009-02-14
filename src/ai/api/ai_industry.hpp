@@ -46,21 +46,6 @@ public:
 	static char *GetName(IndustryID industry_id);
 
 	/**
-	 * Gets the production of a cargo of the industry.
-	 * @warning This function does not neccessarily return useful values for newindustries.
-	 *          An industry produces at least the returned amount per month,
-	 *          but the function can also return 0, when the industry produces lots of cargo.
-	 *          GetLastMonthProduction() is more robust.
-	 * @param industry_id The index of the industry.
-	 * @param cargo_id The index of the cargo.
-	 * @pre IsValidIndustry(industry_id).
-	 * @pre AICargo::IsValidCargo(cargo_id).
-	 * @return The production of the cargo for this industry, or -1 if
-	 *   this industry doesn't produce this cargo.
-	 */
-	static int32 GetProduction(IndustryID industry_id, CargoID cargo_id);
-
-	/**
 	 * See if an industry accepts a certain cargo.
 	 * @param industry_id The index of the industry.
 	 * @param cargo_id The index of the cargo.

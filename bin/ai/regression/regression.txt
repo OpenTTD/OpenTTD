@@ -5066,19 +5066,22 @@
     IsValidIndustry(): false
     GetName():         (null : 0x00000000)
     GetLocation():     -1
-    GetProduction():   -1
     IsCargoAccepted(): false
   Industry 0
     IsValidIndustry(): true
     GetName():         Kennville Oil Refinery
     GetLocation():     19695
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 1
     IsValidIndustry(): true
     GetName():         Sadtown Forest
     GetLocation():     45122
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
@@ -5087,7 +5090,6 @@
     IsValidIndustry(): true
     GetName():         Fudinghattan Forest
     GetLocation():     41929
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  108
 	   GetLastMonthTransported(): 0
@@ -5096,7 +5098,6 @@
     IsValidIndustry(): true
     GetName():         Benville Forest
     GetLocation():     44640
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  80
 	   GetLastMonthTransported(): 0
@@ -5105,7 +5106,6 @@
     IsValidIndustry(): true
     GetName():         Netfingbridge Forest
     GetLocation():     8793
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  135
 	   GetLastMonthTransported(): 0
@@ -5114,7 +5114,6 @@
     IsValidIndustry(): true
     GetName():         Hutfingford Forest
     GetLocation():     55429
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  99
 	   GetLastMonthTransported(): 0
@@ -5123,7 +5122,6 @@
     IsValidIndustry(): true
     GetName():         Great Hinninghall Forest
     GetLocation():     6533
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
@@ -5132,7 +5130,6 @@
     IsValidIndustry(): true
     GetName():         Tondston Forest
     GetLocation():     27609
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  115
 	   GetLastMonthTransported(): 0
@@ -5141,49 +5138,83 @@
     IsValidIndustry(): true
     GetName():         Planfield Sawmill
     GetLocation():     17318
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
   Industry 9
     IsValidIndustry(): true
     GetName():         Hutfingford Sawmill
     GetLocation():     60050
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
   Industry 10
     IsValidIndustry(): true
     GetName():         Naborough Sawmill
     GetLocation():     54184
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
   Industry 11
     IsValidIndustry(): true
     GetName():         Prundinghall Sawmill
     GetLocation():     48499
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
   Industry 12
     IsValidIndustry(): true
     GetName():         Fraston Sawmill
     GetLocation():     51419
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
   Industry 13
     IsValidIndustry(): true
     GetName():         Fort Frindston Sawmill
     GetLocation():     15950
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
   Industry 14
     IsValidIndustry(): true
     GetName():         Grinnway Sawmill
     GetLocation():     20001
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
   Industry 15
     IsValidIndustry(): true
     GetName():         Trenningville Coal Mine
     GetLocation():     51854
-    GetProduction():   104
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  126
 	   GetLastMonthTransported(): 0
@@ -5192,7 +5223,6 @@
     IsValidIndustry(): true
     GetName():         Kennville Coal Mine
     GetLocation():     11734
-    GetProduction():   88
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  99
 	   GetLastMonthTransported(): 0
@@ -5201,7 +5231,6 @@
     IsValidIndustry(): true
     GetName():         Great Hinninghall Coal Mine
     GetLocation():     13947
-    GetProduction():   152
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  171
 	   GetLastMonthTransported(): 0
@@ -5210,7 +5239,6 @@
     IsValidIndustry(): true
     GetName():         Little Fruford Coal Mine
     GetLocation():     23682
-    GetProduction():   112
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  126
 	   GetLastMonthTransported(): 0
@@ -5219,7 +5247,6 @@
     IsValidIndustry(): true
     GetName():         Hutfingford Coal Mine
     GetLocation():     57429
-    GetProduction():   88
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  99
 	   GetLastMonthTransported(): 0
@@ -5228,7 +5255,6 @@
     IsValidIndustry(): true
     GetName():         Mendingston Coal Mine
     GetLocation():     8562
-    GetProduction():   152
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  171
 	   GetLastMonthTransported(): 0
@@ -5237,7 +5263,6 @@
     IsValidIndustry(): true
     GetName():         Tondston Coal Mine
     GetLocation():     29147
-    GetProduction():   104
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  117
 	   GetLastMonthTransported(): 0
@@ -5246,7 +5271,6 @@
     IsValidIndustry(): true
     GetName():         Quartfingfield Coal Mine
     GetLocation():     27822
-    GetProduction():   136
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  153
 	   GetLastMonthTransported(): 0
@@ -5255,7 +5279,6 @@
     IsValidIndustry(): true
     GetName():         Muningville Coal Mine
     GetLocation():     43035
-    GetProduction():   80
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  90
 	   GetLastMonthTransported(): 0
@@ -5264,7 +5287,6 @@
     IsValidIndustry(): true
     GetName():         Grinnway Coal Mine
     GetLocation():     17943
-    GetProduction():   32
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  40
 	   GetLastMonthTransported(): 0
@@ -5273,49 +5295,62 @@
     IsValidIndustry(): true
     GetName():         Sadtown Power Station
     GetLocation():     48182
-    GetProduction():   -1
     IsCargoAccepted(): true
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 26
     IsValidIndustry(): true
     GetName():         Tunford Power Station
     GetLocation():     33934
-    GetProduction():   -1
     IsCargoAccepted(): true
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 27
     IsValidIndustry(): true
     GetName():         Quartfingfield Power Station
     GetLocation():     23714
-    GetProduction():   -1
     IsCargoAccepted(): true
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 28
     IsValidIndustry(): true
     GetName():         Kennville Power Station
     GetLocation():     20170
-    GetProduction():   -1
     IsCargoAccepted(): true
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 29
     IsValidIndustry(): true
     GetName():         Nuntfingburg Power Station
     GetLocation():     6685
-    GetProduction():   -1
     IsCargoAccepted(): true
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 30
     IsValidIndustry(): true
     GetName():         Bedburg Power Station
     GetLocation():     29022
-    GetProduction():   -1
     IsCargoAccepted(): true
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 31
     IsValidIndustry(): true
     GetName():         Benville Power Station
     GetLocation():     44160
-    GetProduction():   -1
     IsCargoAccepted(): true
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 32
     IsValidIndustry(): true
     GetName():         Fort Frindston Oil Wells
     GetLocation():     14701
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  108
 	   GetLastMonthTransported(): 0
@@ -5324,7 +5359,6 @@
     IsValidIndustry(): true
     GetName():         Nuntfingburg Oil Wells
     GetLocation():     5659
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  40
 	   GetLastMonthTransported(): 0
@@ -5333,7 +5367,6 @@
     IsValidIndustry(): true
     GetName():         Benville Oil Wells
     GetLocation():     36728
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  64
 	   GetLastMonthTransported(): 0
@@ -5342,7 +5375,6 @@
     IsValidIndustry(): true
     GetName():         Grinnway Oil Wells
     GetLocation():     14361
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  63
 	   GetLastMonthTransported(): 0
@@ -5351,7 +5383,6 @@
     IsValidIndustry(): true
     GetName():         Muningville Oil Wells
     GetLocation():     36908
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
@@ -5360,7 +5391,6 @@
     IsValidIndustry(): true
     GetName():         Tondston Oil Wells
     GetLocation():     34237
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  108
 	   GetLastMonthTransported(): 0
@@ -5369,7 +5399,6 @@
     IsValidIndustry(): true
     GetName():         Fort Frindston Iron Ore Mine
     GetLocation():     17742
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  108
 	   GetLastMonthTransported(): 0
@@ -5378,7 +5407,6 @@
     IsValidIndustry(): true
     GetName():         Tondston Iron Ore Mine
     GetLocation():     25545
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  30
 	   GetLastMonthTransported(): 0
@@ -5387,7 +5415,6 @@
     IsValidIndustry(): true
     GetName():         Fudinghattan Iron Ore Mine
     GetLocation():     47838
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
@@ -5396,7 +5423,6 @@
     IsValidIndustry(): true
     GetName():         Nuntfingburg Iron Ore Mine
     GetLocation():     8763
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
@@ -5405,7 +5431,6 @@
     IsValidIndustry(): true
     GetName():         Lardborough Iron Ore Mine
     GetLocation():     60866
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  81
 	   GetLastMonthTransported(): 0
@@ -5414,7 +5439,6 @@
     IsValidIndustry(): true
     GetName():         Tunford Iron Ore Mine
     GetLocation():     41155
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  108
 	   GetLastMonthTransported(): 0
@@ -5423,7 +5447,6 @@
     IsValidIndustry(): true
     GetName():         Chentfingbourne Iron Ore Mine
     GetLocation():     19529
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  135
 	   GetLastMonthTransported(): 0
@@ -5432,7 +5455,6 @@
     IsValidIndustry(): true
     GetName():         Naborough Farm
     GetLocation():     52931
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  81
 	   GetLastMonthTransported(): 0
@@ -5444,7 +5466,6 @@
     IsValidIndustry(): true
     GetName():         Lardborough Farm
     GetLocation():     59604
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  81
 	   GetLastMonthTransported(): 0
@@ -5456,7 +5477,6 @@
     IsValidIndustry(): true
     GetName():         Chentfingbourne Farm
     GetLocation():     24366
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  63
 	   GetLastMonthTransported(): 0
@@ -5468,7 +5488,6 @@
     IsValidIndustry(): true
     GetName():         Wrundtown Farm
     GetLocation():     36847
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
@@ -5480,7 +5499,6 @@
     IsValidIndustry(): true
     GetName():         Little Fruford Farm
     GetLocation():     28287
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  90
 	   GetLastMonthTransported(): 0
@@ -5492,7 +5510,6 @@
     IsValidIndustry(): true
     GetName():         Hutfingford Farm
     GetLocation():     57432
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  117
 	   GetLastMonthTransported(): 0
@@ -5504,7 +5521,6 @@
     IsValidIndustry(): true
     GetName():         Tondston Farm
     GetLocation():     23519
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  81
 	   GetLastMonthTransported(): 0
@@ -5516,7 +5532,6 @@
     IsValidIndustry(): true
     GetName():         Nuntfingburg Farm
     GetLocation():     10773
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  126
 	   GetLastMonthTransported(): 0
@@ -5528,7 +5543,6 @@
     IsValidIndustry(): true
     GetName():         Sadtown Farm
     GetLocation():     48206
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  40
 	   GetLastMonthTransported(): 0
@@ -5540,7 +5554,6 @@
     IsValidIndustry(): true
     GetName():         Quartfingfield Farm
     GetLocation():     24005
-    GetProduction():   -1
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
@@ -5552,103 +5565,221 @@
     IsValidIndustry(): true
     GetName():         Little Fruford Steel Mill
     GetLocation():     21107
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 56
     IsValidIndustry(): true
     GetName():         Quartfingfield Steel Mill
     GetLocation():     23727
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 57
     IsValidIndustry(): true
     GetName():         Bedburg Steel Mill
     GetLocation():     41813
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 58
     IsValidIndustry(): true
     GetName():         Franinghead Steel Mill
     GetLocation():     8852
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 59
     IsValidIndustry(): true
     GetName():         Lardborough Steel Mill
     GetLocation():     59867
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 60
     IsValidIndustry(): true
     GetName():         Sadtown Steel Mill
     GetLocation():     55360
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 61
     IsValidIndustry(): true
     GetName():         Fraston Steel Mill
     GetLocation():     52953
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 62
     IsValidIndustry(): true
     GetName():         Chentfingbourne Factory
     GetLocation():     24893
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 63
     IsValidIndustry(): true
     GetName():         Fort Frindston Factory
     GetLocation():     20819
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 64
     IsValidIndustry(): true
     GetName():         Fudinghattan Factory
     GetLocation():     46278
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 65
     IsValidIndustry(): true
     GetName():         Prundinghall Factory
     GetLocation():     53096
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 66
     IsValidIndustry(): true
     GetName():         Kennville Factory
     GetLocation():     14818
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 67
     IsValidIndustry(): true
     GetName():         Muningville Factory
     GetLocation():     34375
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 68
     IsValidIndustry(): true
     GetName():         Trenningville Factory
     GetLocation():     44181
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 69
     IsValidIndustry(): true
     GetName():         Wrundtown Oil Refinery
     GetLocation():     39663
-    GetProduction():   -1
     IsCargoAccepted(): false
+	   GetLastMonthProduction():  0
+	   GetLastMonthTransported(): 0
+	   GetStockpiledCargo():      -1
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 70
     IsValidIndustry(): true
     GetName():         Mendingston Power Station
     GetLocation():     6498
-    GetProduction():   -1
     IsCargoAccepted(): true
+	   GetLastMonthProduction():  -1
+	   GetLastMonthTransported(): -1
+	   GetStockpiledCargo():      0
   Industry 71
     IsValidIndustry(): false
     GetName():         (null : 0x00000000)
     GetLocation():     -1
-    GetProduction():   -1
     IsCargoAccepted(): false
   Valid Industries:    71
   GetIndustryCount():  71
@@ -6015,18 +6146,6 @@
     2 => 0
     1 => 0
     0 => 0
-  KeepAboveValue(50): done
-  Count():             9
-  Production ListDump:
-    20 => 152
-    17 => 152
-    22 => 136
-    18 => 112
-    21 => 104
-    15 => 104
-    19 => 88
-    16 => 88
-    23 => 80
 --IndustryList_CargoAccepting--
   Count():             8
   Location ListDump:

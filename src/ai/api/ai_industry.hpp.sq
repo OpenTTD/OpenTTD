@@ -21,7 +21,6 @@ void SQAIIndustry_Register(Squirrel *engine) {
 	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::GetIndustryCount,           "GetIndustryCount",           1, "?");
 	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::IsValidIndustry,            "IsValidIndustry",            2, "?i");
 	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::GetName,                    "GetName",                    2, "?i");
-	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::GetProduction,              "GetProduction",              3, "?ii");
 	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::IsCargoAccepted,            "IsCargoAccepted",            3, "?ii");
 	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::GetStockpiledCargo,         "GetStockpiledCargo",         3, "?ii");
 	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::GetLastMonthProduction,     "GetLastMonthProduction",     3, "?ii");

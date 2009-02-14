@@ -550,12 +550,11 @@ function Regression::Industry()
 		print("    IsValidIndustry(): " + AIIndustry.IsValidIndustry(i));
 		print("    GetName():         " + AIIndustry.GetName(i));
 		print("    GetLocation():     " + AIIndustry.GetLocation(i));
-		print("    GetProduction():   " + AIIndustry.GetProduction(i, 1));
 		print("    IsCargoAccepted(): " + AIIndustry.IsCargoAccepted(i, 1));
 
 		local cargo_list = AICargoList();
 		for (local j = cargo_list.Begin(); cargo_list.HasNext(); j = cargo_list.Next()) {
-			if (AIIndustry.GetProduction(i, j) > 0) {
+			if (AIIndustry.IsCargoAccepted(i, j) || AIIndustry.GetLastMonthProduction(i,j) >= 0) {
 				print("	   GetLastMonthProduction():  " + AIIndustry.GetLastMonthProduction(i, j));
 				print("	   GetLastMonthTransported(): " + AIIndustry.GetLastMonthTransported(i, j));
 				print("	   GetStockpiledCargo():      " + AIIndustry.GetStockpiledCargo(i, j));
@@ -595,14 +594,6 @@ function Regression::IndustryList()
 	}
 	list.Valuate(AIIndustry.IsCargoAccepted, 1);
 	print("  CargoAccepted(1) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
-		print("    " + i + " => " + list.GetValue(i));
-	}
-	list.Valuate(AIIndustry.GetProduction, 1);
-	list.KeepAboveValue(50);
-	print("  KeepAboveValue(50): done");
-	print("  Count():             " + list.Count());
-	print("  Production ListDump:");
 	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
