@@ -9,11 +9,6 @@
 #include "../../articulated_vehicles.h"
 #include "table/strings.h"
 
-bool AIEventVehicleCrashed::CloneCrashedVehicle(TileIndex depot)
-{
-	return false;
-}
-
 char *AIEventEnginePreview::GetName()
 {
 	static const int len = 64;

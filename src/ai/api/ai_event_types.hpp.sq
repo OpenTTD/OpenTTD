@@ -29,10 +29,9 @@ void SQAIEventVehicleCrashed_Register(Squirrel *engine) {
 
 	SQAIEventVehicleCrashed.DefSQStaticMethod(engine, &AIEventVehicleCrashed::Convert, "Convert", 2, "?x");
 
-	SQAIEventVehicleCrashed.DefSQMethod(engine, &AIEventVehicleCrashed::GetVehicleID,        "GetVehicleID",        1, "x");
-	SQAIEventVehicleCrashed.DefSQMethod(engine, &AIEventVehicleCrashed::GetCrashSite,        "GetCrashSite",        1, "x");
-	SQAIEventVehicleCrashed.DefSQMethod(engine, &AIEventVehicleCrashed::GetCrashReason,      "GetCrashReason",      1, "x");
-	SQAIEventVehicleCrashed.DefSQMethod(engine, &AIEventVehicleCrashed::CloneCrashedVehicle, "CloneCrashedVehicle", 2, "xi");
+	SQAIEventVehicleCrashed.DefSQMethod(engine, &AIEventVehicleCrashed::GetVehicleID,   "GetVehicleID",   1, "x");
+	SQAIEventVehicleCrashed.DefSQMethod(engine, &AIEventVehicleCrashed::GetCrashSite,   "GetCrashSite",   1, "x");
+	SQAIEventVehicleCrashed.DefSQMethod(engine, &AIEventVehicleCrashed::GetCrashReason, "GetCrashReason", 1, "x");
 
 	SQAIEventVehicleCrashed.PostRegister(engine);
 }

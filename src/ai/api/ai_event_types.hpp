@@ -14,10 +14,7 @@
 
 /**
  * Event Vehicle Crash, indicating a vehicle of yours is crashed.
- *  It contains both the crash site as the vehicle crashed. It has a nice
- *  helper that creates a new vehicle in a depot with the same type
- *  and orders as the crashed one. In case the vehicle type isn't available
- *  anymore, it will find the next best.
+ *  It contains the crash site, the crashed vehicle and the reason for the crash.
  */
 class AIEventVehicleCrashed : public AIEvent {
 public:
@@ -70,14 +67,6 @@ public:
 	 * @return The reason for crashing
 	 */
 	CrashReason GetCrashReason() { return crash_reason; }
-
-	/**
-	 * Clone the crashed vehicle and send it on its way again.
-	 * @param depot the depot to build the vehicle in.
-	 * @return True when the cloning succeeded.
-	 * @note This function isn't implemented yet.
-	 */
-	bool CloneCrashedVehicle(TileIndex depot);
 
 private:
 	TileIndex crash_site;
