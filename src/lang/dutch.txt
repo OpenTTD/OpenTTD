@@ -162,7 +162,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan dit 
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Originele copyright {COPYRIGHT} 1995 Chris Sawyer, alle rechten voorbehouden
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versie {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Het OpenTTD team
-STR_TRANSLATED_BY                                               :{BLACK}  Vertaler(s) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -217,39 +216,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Schepen
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Vliegtuig
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Transportroutes
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Kolenmijn
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Energiecentrale
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Bos
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Houtzagerij
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Olieraffinaderij
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Boerderij
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fabriek
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Drukkerij
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Oliebron
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}IJzermijn
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Hoogoven
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}Bank
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Papierfabriek
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Goudmijn
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Voedselverwerkingsfabriek
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Diamantmijn
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Kopermijn
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Fruitplantage
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Rubberplantage
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Waterbron
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Watertoren
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Houtzagerij
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Suikerspinbos
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Snoepfabriek
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Batterijplantage
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Colabronnen
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Speelgoedwinkel
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Speelgoedfabriek
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Plasticfonteinen
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Frisdrankfabriek
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Bellenblazer
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Toffeegroeve
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Suikermijn
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Treinstation
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Laadstation
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Busstation
@@ -273,8 +240,6 @@ STR_DEFAULT                                                     :{BLACK}Standaar
 STR_012E_CANCEL                                                 :{BLACK}Annuleren
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Hernoem
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Te veel namen in gebruik
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Deze naam is al in gebruik
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -298,7 +263,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nieuw spel
 STR_0141_LOAD_GAME                                              :{BLACK}Laad spel
-STR_SINGLE_PLAYER                                               :{BLACK}Een speler
 STR_MULTIPLAYER                                                 :{BLACK}Multiplayer
 STR_SCENARIO_EDITOR                                             :{BLACK}Scenario Bewerken
 
@@ -307,9 +271,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Spelopties
 
 STR_0150_SOMEONE                                                :iemand{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Wereldkaart
-STR_0152_TOWN_DIRECTORY                                         :Dorpenlijst
-STR_0153_SUBSIDIES                                              :Subsidies
 
 STR_UNITS_IMPERIAL                                              :Imperiaal
 STR_UNITS_METRIC                                                :Metrisch
@@ -323,24 +284,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}pk
 STR_UNITS_POWER_METRIC                                          :{COMMA}pk
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P "" nen}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} ton trekkracht
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -570,7 +525,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Programma - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Leeg
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Opslaan
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Huidig muziekprogramma
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Selecteer 'alle nummers' programma
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Selecteer 'oude stijl-muziek' programma
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Selecteer 'nieuwe stijl-muziek' programma
@@ -654,76 +608,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Vergroot
 STR_023C_EXPAND                                                 :{BLACK}Vergroot
 STR_023D_RANDOM_TOWN                                            :{BLACK}Willekeurige dorp
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Bouw dorp op willekeurige locatie
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Industrieproductie
-STR_0240_COAL_MINE                                              :{BLACK}Kolenmijn
-STR_0241_POWER_STATION                                          :{BLACK}Energiecentrale
-STR_0242_SAWMILL                                                :{BLACK}Houtzagerij
-STR_0243_FOREST                                                 :{BLACK}Bos
-STR_0244_OIL_REFINERY                                           :{BLACK}Olieraffinaderij
-STR_0245_OIL_RIG                                                :{BLACK}Olieplatform
-STR_0246_FACTORY                                                :{BLACK}Fabriek
-STR_0247_STEEL_MILL                                             :{BLACK}Hoogoven
-STR_0248_FARM                                                   :{BLACK}Boerderij
-STR_0249_IRON_ORE_MINE                                          :{BLACK}IJzermijn
-STR_024A_OIL_WELLS                                              :{BLACK}Oliebron
-STR_024B_BANK                                                   :{BLACK}Bank
-STR_024C_PAPER_MILL                                             :{BLACK}Papierfabriek
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Voedselverwerkingsfabriek
-STR_024E_PRINTING_WORKS                                         :{BLACK}Drukkerij
-STR_024F_GOLD_MINE                                              :{BLACK}Goudmijn
-STR_0250_LUMBER_MILL                                            :{BLACK}Houtzagerij
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Fruitplantage
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Rubberplantage
-STR_0253_WATER_SUPPLY                                           :{BLACK}Waterbron
-STR_0254_WATER_TOWER                                            :{BLACK}Watertoren
-STR_0255_DIAMOND_MINE                                           :{BLACK}Diamantmijn
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Kopermijn
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Suikerspinbos
-STR_0258_CANDY_FACTORY                                          :{BLACK}Snoepfabriek
-STR_0259_BATTERY_FARM                                           :{BLACK}Batterijplantage
-STR_025A_COLA_WELLS                                             :{BLACK}Colabronnen
-STR_025B_TOY_SHOP                                               :{BLACK}Speelgoedwinkel
-STR_025C_TOY_FACTORY                                            :{BLACK}Speelgoedfabriek
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Plasticfonteinen
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Frisdrankfabriek
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Bellenblazer
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Toffeegroeve
-STR_0261_SUGAR_MINE                                             :{BLACK}Suikermijn
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Plaats kolenmijn
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Plaats energiecentrale
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Plaats houtzagerij
-STR_0265_PLANT_FOREST                                           :{BLACK}Plant bos
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Plaats olieraffinaderij
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Plaats olieplatform (kan alleen worden gebouwd bij randen van de kaart)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Plaats fabriek
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Plaats hoogoven
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Plaats boerderij
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Plaats ijzermijn
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Plaats oliebron
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Plaats bank (alleen in steden met een bevolking van meer dan 1200)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Plaats papierfabriek
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Plaats voedselverwerkingsfabriek
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Plaats drukkerij
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Plaats goudmijn
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Plaats bank (kan alleen worden gebouwd in steden)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Plaats houtzagerij (kapt regenwoud en produceert hout)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Plant fruitplantage
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Plant rubberplantage
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Plaats waterbron
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Plaats watertoren (kan alleen worden gebouwd in steden)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Plaats diamantmijn
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Plaats kopermijn
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Plant suikerspinbos
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Plaats snoepfabriek
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Plaats batterijplantage
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Plaats colabronnen
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Plaats speelgoedwinkel
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Plaats speelgoedfabriek
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Plaats plasticfonteinen
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Plaats frisdrankfabriek
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Plaats bellenblazer
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Plaats toffeegroeve
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Plaats suikermijn
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kan {STRING} hier niet bouwen...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...plaats eerst dorp
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...slechts één per dorp toegestaan
@@ -752,7 +636,6 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}Scenario
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Speel Hoogtekaart
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start een nieuw spel, gebruik een hoogtekaart als landschap
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Weet je zeker dat je dit scenario wilt sluiten?
-STR_029C_QUIT_EDITOR                                            :{WHITE}Sluit editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan alleen in dorpen met bevolking van meer dan 1200 worden gebouwd
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Verplaats startdatum 1 jaar terug
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Verplaats startdatum 1 jaar vooruit
@@ -781,13 +664,8 @@ STR_SUMMARY                                                     :Kort
 STR_FULL                                                        :Volledig
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Stedenlijst
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Voertuignamen
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Standaard
 STR_02BF_CUSTOM                                                 :Aangepast
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Sla aangepaste namen op
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Keuze van voertuignamen
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Sla aangepaste voertuignamen op
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -796,7 +674,6 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :Moeilijkheidsgr
 STR_MENU_CONFIG_SETTINGS                                        :Geavanceerde instellingen
 STR_NEWGRF_SETTINGS                                             :Newgrf instellingen
 STR_TRANSPARENCY_OPTIONS                                        :Doorzichtigheidsopties
-STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Geef plaatsnamen weer
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Geef stationsnamen weer
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Geef borden weer
@@ -857,7 +734,6 @@ STR_02FA_EVERY_12_MONTHS                                        :Iedere 12 maand
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Start een nieuw spel
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Laad een opgeslagen spel
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Maak een eigen spelwereld/scenario
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Kies een éénspelerspel
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Bekijk opties
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Bekijk moeilijkheidsgraad
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Start een nieuw spel, gebaseerd op een scenario
@@ -880,7 +756,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Betaal n
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan alleen in steden gebouwd worden
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...kan alleen in het regenwoud gebouwd worden
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...kan alleen in woestijngebieden gebouwd worden
 STR_0319_PAUSED                                                 :{YELLOW}* *  GEPAUZEERD  *  *
@@ -1319,7 +1194,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Bouw spo
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...er is geen stad in dit scenario
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Weet je zeker dat je een willekeurig landschap wil maken?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Veel willekeurige steden
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Bedek de kaart met willekeurig geplaatste steden
 STR_MANY_RANDOM_INDUSTRIES                                      :Veel willekeurige industrieën
@@ -1366,25 +1240,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Een lijs
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Alles uitschakelen
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Alles inschakelen
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Graaf kolenmijn
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Plant bos
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Plaats olieplatform
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Sticht boerderij
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Graaf kopermijn
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Boor voor olie
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Graaf goudmijn
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Graaf diamantmijn
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Graaf ijzermijn
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Sticht boomgaard
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Sticht rubberboerderij
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Sticht waterbron
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Plant suikerspinbos
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Sticht batterijplantage
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Boor voor cola
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Sticht plasticfonteinen
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Plaats bellenblazer
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Sticht toffeegroeve
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Graaf suikermijn
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrielijst
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% vervoerd)
@@ -2056,8 +1911,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lijst va
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Huidige gekozen naam voor opgeslagen spel
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Verwijder het momenteel geselecteerde opgeslagen spel
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Sla het huidige spel op onder de gekozen naam
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Selecteer nieuw speltype
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Selecteer scenario (groen), vooraf ingesteld spel (blauw), or willekeurig nieuw spel
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Genereer willekeurig nieuw spel
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Laad Hoogtekaart
 STR_SAVE_OSKTITLE                                               :{BLACK}Typ een naam voor het op te slaan spel
@@ -2138,8 +1991,6 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} productie van {INDUSTRY} daalt met {COMMA}%!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Trein in tunnel
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Wegvoertuig in tunnel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Andere tunnel in de weg
 STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunnel eindigt buiten de kaart
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Kan geen land uitgraven voor andere uiteinde tunnel
@@ -2309,7 +2160,6 @@ STR_TOLERANT                                                    :Neutraal
 STR_HOSTILE                                                     :Negatief
 
 ##id 0x7000
-STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Bedrijf {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nieuw gezicht
@@ -2362,7 +2212,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Kies nie
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Verander het uiterlijk van de bedrijfsvoertuigen
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Verander de naam van de directeur
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Verander de bedrijfsnaam
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Klik op geselecteerde nieuwe kleurenschema
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Vergroot lening
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Betaal deel van lening terug
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Directeur)
@@ -2912,7 +2761,6 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Kan trei
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Reparatie-interval: {LTBLUE}{COMMA}dagen{BLACK}   Laatste reparatie: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Service interval: {LTBLUE}{COMMA}%{BLACK}   Laatste service: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Treinen - klik op een trein voor informatie
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Bouw nieuwe treinen (treindepot nodig)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Treinen - klik op trein voor info., sleep voertuig om toe toevoegen/verwijderen van trein
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Bouw nieuw treinonderdeel
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Sleep treinonderdeel hier om het te verkopen
@@ -2963,7 +2811,6 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan het 
 STR_CLEAR_TIME                                                  :{BLACK}Reset de tijd
 STR_RESET_LATENESS                                              :{BLACK}Reset teller
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Verander naam controlepost
-STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Gestopt
 STR_TRAIN_STOPPING_VEL                                          :{RED}Aan het stoppen, {VELOCITY}
@@ -3018,7 +2865,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Onderho
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kan voertuig niet naar depot sturen...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan geen lokaal depot vinden
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Wegvoertuigen - klik op een voertuig voor informatie
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Bouw nieuwe wegvoertuigen (heeft wegvoertuigdepot nodig)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Huidige actie van voertuig - klik hier om voertuig te starten of te stoppen
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Laat orders van voertuig zien
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centreer hoofdscherm op de locatie van het voertuig
@@ -3100,7 +2946,6 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Bouw nie
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Sleep schip hierheen om het te verkopen
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centreer hoofdbeeld op de locatie van het schipdepot
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Schepen - klik op een schip voor informatie
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Bouw nieuwe schepen (heeft schipdepot nodig)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Schepenlijst - klik op een schip voor informatie
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Bouw het geselecteerde schip
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Actie van dit schip - klik hier om het te starten of te stoppen
@@ -3145,7 +2990,6 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Bouw Vli
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kan vliegtuig niet bouwen...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Vliegtuigen
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Orders)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Leeftijd: {LTBLUE}{STRING}{BLACK}   Brandstofkosten: {LTBLUE}{CURRENCY}/jr
 STR_A00E_MAX_SPEED                                              :{BLACK}Max. snelheid: {LTBLUE}{VELOCITY}
@@ -3168,7 +3012,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Kan vlie
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Vliegveldbouw
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Bouw vliegveld
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Vliegtuig - klik op vliegtuig voor informatie
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Bouw nieuw vliegtuig (heeft vliegveld met hangar nodig)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Vliegtuig - klik op vliegtuig voor informatie
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Bouw nieuw vliegtuig
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Sleep vliegtuig hierheen om het te verkopen
@@ -3194,12 +3037,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Hernoem 
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Hernoem vliegtuigtype
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Kan vliegtuigtype niet hernoemen...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Bouw vliegtuig om om andere goederen te vervoeren
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Omgebouwd)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Vliegtuig ombouwen
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecteer goederentype om te vervoeren door het vliegtuig
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Bouw vliegtuig om, om het geselecteerde goederentype te vervoeren
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecteer goederentype om te vervoeren:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nieuwe capaciteit: {GOLD}{STRING}{}{BLACK}Ombouwkosten: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan vliegtuig niet ombouwen...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Dienstregeling)
@@ -3256,8 +3096,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Wijzigin
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Palet omzetten
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Verander het palet van het geselecteerd NewGRF bestand.{}Gebruik deze mogelijkheid wanneer de afbeeldingen er paars uit zien in het spel, van dit NewGRF bestand
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Stel parameters in
-STR_NEWGRF_TIP                                                  :{BLACK}Een lijst van alle geïnstalleerde Newgrf sets. Klik op een set om de instellingen te wijzigen.
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Er zijn op dit moment geen newgrf bestanden geïnstalleerd! Raadpleeg het handboek voor instructies voor het installeren van nieuwe graphics.
 STR_NEWGRF_FILENAME                                             :{BLACK}Bestandsnaam: {SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}Palet: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
@@ -3316,7 +3154,6 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Bijbeho
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Compatibele GRF(s) geladen voor ontbrekende bestanden
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missend(e) GRF bestand(en) zijn uitgeschakeld
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Er zijn missende GRF bestanden om het spel te laden
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ontbrekende GRF bestand(en)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Pauze uit zetten kan OpenTTD laten vastlopen. Geef geen fout rapporten bij herhaaldelijk vastlopen.{}Weet je zeker dat je pauze wilt uit zetten?
 
@@ -3390,7 +3227,6 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klik op 
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klik op deze knop als je de aan de linkerkant geselecteerde locomotief wil vervangen met die aan de rechterkant
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecteer een railtype waar je locomotieven voor wil selecteren
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dit geeft weer waarmee de aan de linkerkant geselecteerde locomotief mee vervangen wordt
-STR_REPLACE_HELP                                                :{BLACK}Deze optie stelt je in staat om een type voertuig te selecteren en die te vervangen door een andere, zodra de voertuigen een depot inrijden
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons verwijderen: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te vervangen trein behoudt zijn lengte door wagons weg te halen (startend aan de voorkant), als het vervangen de trein langer zou maken
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Aan het vervangen: {ORANGE}{SKIP}{SKIP}{STRING}
@@ -3599,7 +3435,6 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} 
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Sch{P ip epen}
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Vliegtuig
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Hernoem een groep
-STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Vervang voertuigen van "{GROUP}"
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Kan groep niet maken...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}Kan deze groep niet verwijderen...
@@ -3735,7 +3570,6 @@ STR_AI_RANDOM_AI                                                :Willekeurige AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
 STR_AI_AUTHOR                                                   :Maker:
 STR_AI_VERSION                                                  :Versie:
-STR_AI_DESCRIPTION                                              :Omschrijving:
 ########
 
 ############ town controlled noise level

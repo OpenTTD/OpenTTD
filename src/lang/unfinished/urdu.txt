@@ -91,7 +91,6 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA} مسا�
 STR_QUANTITY_COAL                                               :{WEIGHT} کویلہ
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}یہ نہیں کر سکتا۔۔۔
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}یہ جگہ صاف نہیں کر سکتا۔۔۔
-STR_TRANSLATED_BY                                               :{BLACK}  مترجم -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -141,34 +140,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}کشتیاں
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}ہوایی جہاز
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}مواصلاتی راستے
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}کویلے کی کان
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}بجلی گھر
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}جنگل
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}کھیت
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}کارخانہ
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}چھاپہ خانہ
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}تیل کے کنویں
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}خام لوہے کی کان
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}فولاد کا کارخانہ
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}بینک
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}کاغذ کا کارخانہ
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}سونے کی کان
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}کھانا بنانے کا کارخانہ
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}ہیرے کی کان
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}خام تانبے کی کان
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}پھلوں کا باغ
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}ربر کا باغ
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}پانی کا چشمہ
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}پانی کی ٹینکی
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}لچھے کا باغ
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}مٹھایی کا کارخانہ
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}بیٹری کا کھیت
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}کولا کے کنویں
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}کھلونوں کی دکان
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}کھلونوں کی فیکٹری
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}پلاسٹک کے فوارے
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}گیسی مشروب کی فیکٹری
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}بلبلے پیدا کرنے کی مشین
 
 
 

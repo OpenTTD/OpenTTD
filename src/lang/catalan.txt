@@ -162,7 +162,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}No es po
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, Tots els drets reservats
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versió {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 L'equip d'OpenTTD
-STR_TRANSLATED_BY                                               :{BLACK}  Traductor(s) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -217,39 +216,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Vaixells
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Avions
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Rutes de Transport
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Mina de Carbó
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Central Tèrmica
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Bosc
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Serradora
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Refineria de Petroli
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Granja
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fàbrica
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Impremta
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Pous de Petroli
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Mina de Ferro
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Alt Forn
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banc
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Paperera
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Mina d'Or
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Planta de Manipulació d'Aliments
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Mina de Diamants
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Mina de Coure
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Plantació de Fruita
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Plantació de Cautxú
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Sortidor d'Aigua
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Torre d'Aigua
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Cabana de Fusta
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Bosc de Cotó de Sucre
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Fàbrica de Dolços
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Granja de Piles
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Pous de Refresc
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Botiga de Joguines
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Fàbrica de Joguines
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Fonts de Plàstic
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Fàbrica de Begudes Gasoses
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Generador de Bombolles
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Cantera de Caramels
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Mina de Sucre
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Estació de Ferrocarril
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Moll de Càrrega de Camions
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Parada d'autobús
@@ -273,8 +240,6 @@ STR_DEFAULT                                                     :{BLACK}Predeter
 STR_012E_CANCEL                                                 :{BLACK}Cancel·la
 STR_012F_OK                                                     :{BLACK}Bé
 STR_0130_RENAME                                                 :{BLACK}Reanomena
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Massa noms definits
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Aquest nom ja es fa servir
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -298,7 +263,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nou Joc
 STR_0141_LOAD_GAME                                              :{BLACK}Carrega un Joc
-STR_SINGLE_PLAYER                                               :{BLACK}Jugador individual
 STR_MULTIPLAYER                                                 :{BLACK}Multijugador
 STR_SCENARIO_EDITOR                                             :{BLACK}Editor d'Escenaris
 
@@ -307,9 +271,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Opcions del Joc
 
 STR_0150_SOMEONE                                                :algú{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Mapa del món
-STR_0152_TOWN_DIRECTORY                                         :Directori de Poblacions
-STR_0153_SUBSIDIES                                              :Subvencions
 
 STR_UNITS_IMPERIAL                                              :Imperial
 STR_UNITS_METRIC                                                :Mètric
@@ -323,24 +284,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}hp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P a es}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P a es}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galó{P "" ns}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litre{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} força per tona
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -570,7 +525,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Programa - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Esborra
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Desa
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Programa actual de pistes de música
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Selecciona el programa 'totes les pistes'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Selecciona el programa 'música estil antic'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Selecciona el programa 'música de nou estil'
@@ -654,76 +608,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Incremen
 STR_023C_EXPAND                                                 :{BLACK}Expandeix
 STR_023D_RANDOM_TOWN                                            :{BLACK}Localitat Aleatòria
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Construeix una població en un lloc aleatori
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Generació d'indústries
-STR_0240_COAL_MINE                                              :{BLACK}Mina de Carbó
-STR_0241_POWER_STATION                                          :{BLACK}Central Tèrmica
-STR_0242_SAWMILL                                                :{BLACK}Serradora
-STR_0243_FOREST                                                 :{BLACK}Bosc
-STR_0244_OIL_REFINERY                                           :{BLACK}Refineria de Petroli
-STR_0245_OIL_RIG                                                :{BLACK}Plataforma Petrolífera
-STR_0246_FACTORY                                                :{BLACK}Fàbrica
-STR_0247_STEEL_MILL                                             :{BLACK}Alt Forn
-STR_0248_FARM                                                   :{BLACK}Granja
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Mina de Ferro
-STR_024A_OIL_WELLS                                              :{BLACK}Pous de Petroli
-STR_024B_BANK                                                   :{BLACK}Banc
-STR_024C_PAPER_MILL                                             :{BLACK}Paperera
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Planta de Manipulació de Queviures
-STR_024E_PRINTING_WORKS                                         :{BLACK}Arts Gràfiques
-STR_024F_GOLD_MINE                                              :{BLACK}Mina d'Or
-STR_0250_LUMBER_MILL                                            :{BLACK}Cabana de Fusta
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Plantació de Fruita
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Plantació de Cautxú
-STR_0253_WATER_SUPPLY                                           :{BLACK}Sortidor d'aigua
-STR_0254_WATER_TOWER                                            :{BLACK}Torre d'aigua
-STR_0255_DIAMOND_MINE                                           :{BLACK}Mina de Diamants
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Mina de Coure
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Bosc de Cotó de Sucre
-STR_0258_CANDY_FACTORY                                          :{BLACK}Fàbrica de Dolços
-STR_0259_BATTERY_FARM                                           :{BLACK}Granja de Piles
-STR_025A_COLA_WELLS                                             :{BLACK}Pous de Refresc
-STR_025B_TOY_SHOP                                               :{BLACK}Botiga de Joguines
-STR_025C_TOY_FACTORY                                            :{BLACK}Fàbrica de Joguines
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Fonts de Plàstic
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Fàbrica de Begudes Gasoses
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Generador de Bombolles
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Cantera de Caramel
-STR_0261_SUGAR_MINE                                             :{BLACK}Mina de sucre
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Construeix una Mina de Carbó
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Construeix una Central Tèrmica
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Construeix una Serralleria
-STR_0265_PLANT_FOREST                                           :{BLACK}Planta un Bosc
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Construeix una Refineria de Petroli
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Construeix una Plataforma Petrolífera (Només es pot construir vora els límits del mapa)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Construeix una Fàbrica
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Construeix un Alt Forn
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Construeix una Granja
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Construeix una Mina de Ferro
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Construeix uns Pous de Petroli
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construeix un Banc (Només es pot construir en poblacions de més de 1200 hab.)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Construeix una Paperera
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Construeix una Planta de Manipulació de Queviures
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Construeix unes Arts Gràfiques
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Construeix una Mina d'Or
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construeix un Banc (Només es pot construir en poblacions)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Construeix una Cabana de Fusta (per netejar la selva tropical i produir Fusta)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Crea una Plantació de Fruita
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Crea una Plantació de Cautxú
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Construeix un Sortidor d'Aigua
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Construeix una Torre d'aigua (Només es pot construir en poblacions)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Construeix una Mina de Diamants
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Construeix una Mina de Coure
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Planta un Bosc de Cotó de Sucre
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Construeix una Fàbrica de Dolços
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Construeix una Granja de Piles
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Construeix uns Pous de Refresc
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Construeix una Botiga de Joguines
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Construeix una Fàbrica de Joguines
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Construeix unes Fonts de Plàstic
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Construeix una Fàbrica de Begudes Gasoses
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Construeix un Generador de Bombolles
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Construeix una Cantera de Caramel
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Construeix una Mina de Sucre
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Aquí no es pot construir {STRING}...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...has de construir la població primer
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...només un permès per població
@@ -752,7 +636,6 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}Juga un 
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Juga un mapa d'alçades
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Comença un nou joc, utilitzant un mapa d'alçades com a terreny
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Estàs segur que vols sortir d'aquest escenari ?
-STR_029C_QUIT_EDITOR                                            :{WHITE}Surt de l'Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...només es pot construir en poblacions de més de 1200 hab.
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Retarda la data d'inici 1 any
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Avança la data d'inici 1 any
@@ -781,13 +664,8 @@ STR_SUMMARY                                                     :Resum
 STR_FULL                                                        :Complet
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Directori de Poblacions
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Noms de dissenys de vehicles
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Per defecte
 STR_02BF_CUSTOM                                                 :Personalitzat
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Desa els noms configurables
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Selecció de noms de disseny de vehicles
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Desa els noms de disseny de vehicles personalitzats al disc
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -796,7 +674,6 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :Paràmetres de 
 STR_MENU_CONFIG_SETTINGS                                        :Paràmetres avançats
 STR_NEWGRF_SETTINGS                                             :Extensions NewGRF
 STR_TRANSPARENCY_OPTIONS                                        :Opcions de transparència
-STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Mostra els noms de les poblacions
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Mostra els noms de les estacions
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Mostra les senyals
@@ -857,7 +734,6 @@ STR_02FA_EVERY_12_MONTHS                                        :Cada 12 mesos
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Comença un joc nou
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Carrega un joc desat
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Crea un joc amb un món/escenari personalitzat
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Selecciona un joc per un jugador
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Mostra les opcions del joc
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Mostra les opcions de dificultat
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Comença un joc nou, utilitzant un escenari personalitzat
@@ -880,7 +756,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Financia
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...només es pot construir en poblacions
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...només es pot construir en àrees de selva tropical
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...només es pot construir en àrees de desert
 STR_0319_PAUSED                                                 :{YELLOW}* *  EN PAUSA  *  *
@@ -1319,7 +1194,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Construe
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...no hi ha poblacions en aquest escenari
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Estàs segur que vols crear un paisatge aleatori?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Moltes poblacions aleatòries
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Omple el mapa amb poblacions situades aleatòriament
 STR_MANY_RANDOM_INDUSTRIES                                      :Moltes indústries aleatòries
@@ -1366,25 +1240,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Llista d
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Desactiva tots
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Activa tots
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Construeix Mina de Carbó
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Planta un Bosc
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Construeix una Plataforma Petrolífera
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Financia Granja
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Construeix una Mina de Coure
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Perfora per buscar Petroli
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Construeix una Mina d'Or
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Construeix una Mina de Diamants
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Construeix una Mina de Ferro
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Financia Plantació de Fruita
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Financia Plantació de Cautxú
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Financia un Sortidor d'Aigua
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Planta un Bosc de Cotó de Sucre
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Financia Granja de Piles
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Perfora per buscar Cola
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Financia Fonts de Plàstic
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Construeix un Generador de Bombolles
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Financia Cantera de Caramel
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Construeix una Mina de Sucre
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Indústries
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportat)
@@ -2056,8 +1911,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Llista d
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nom actualment seleccionat per joc desat
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Esborra el joc desat actualment seleccionat
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Desa el joc actual, usant el nom seleccionat
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Selecciona el Nou Tipus de Joc
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Selecciona l'escenari (verd), joc pre-programat (blau), o el nou joc aleatori
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Genera un nou joc aleatori
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Carrega un Mapa d'alçades
 STR_SAVE_OSKTITLE                                               :{BLACK}Posa el nom pel joc desat
@@ -2138,8 +1991,6 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}La producció de {STRING} a {INDUSTRY} es redueix un {COMMA}%!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tren dins del túnel
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Vehicle dins del túnel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Un altre túnel en el camí
 STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}El túnel acabarà fora del mapa
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Impossible excavar la terra a l'altre extrem del túnel
@@ -2309,7 +2160,6 @@ STR_TOLERANT                                                    :Tolerant
 STR_HOSTILE                                                     :Hostil
 
 ##id 0x7000
-STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Companyia {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nova Cara
@@ -2362,7 +2212,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Seleccio
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Canvia l'aspecte dels vehicles de la companyia
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Canvia el nom del president
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Canvia el nom de la companyia
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Clica al nou esquema de color triat
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Augmenta l'import del préstec
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Amortitza part del préstec
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(President)
@@ -2912,7 +2761,6 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}No es po
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Interval de manteniment: {LTBLUE}{COMMA}dies{BLACK}   Darrer manteniment: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Interval de manteniment: {LTBLUE}{COMMA}%{BLACK}   Darrer manteniment: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trens - clica al tren per més informació
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Construeix nous trens (es necessita cotxera)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trens - clica al tren per info., arrossega el vehicle per afegir/treure del tren
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construeix un nou element de tren
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arrossega l'element de tren fins aquí per vendre'l
@@ -2963,7 +2811,6 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}No es po
 STR_CLEAR_TIME                                                  :{BLACK}Esborra Temps
 STR_RESET_LATENESS                                              :{BLACK}Reset. control de retard
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Canvia el nom del punt de trobada
-STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Parant
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parant, a {VELOCITY}
@@ -3018,7 +2865,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisi�
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}No es pot enviar el vehicle a cotxera...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Impossible trobar la cotxera local
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Automòbils - clica en un vehicle per més informació
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Construeix nous automòbils (necessita una cotxera)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Acció sobre el vehicle actual - clica aquí per parar/arrencar el vehicle
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Mostra les ordres dels vehicles
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centra la pantalla principal a la situació del vehicle
@@ -3100,7 +2946,6 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Construe
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Arrossega el vaixell fins aquí per vendre'l
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centra la pantalla principal en la situació de la drassana
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Vaixells - clica en un vaixell per més informació
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Construeix nous vaixells (necessita una drassana)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Llista de selecció de Vaixells - clica en un vaixell per més informació
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Construeix el vaixell seleccionat
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Accions sobre el vaixell actual - clica aquí per parar/arrencar el vaixell
@@ -3145,7 +2990,6 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construe
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}No es pot construir l'avió...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Avions
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Ordres)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detalls)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Edat: {LTBLUE}{STRING}{BLACK}   Cost de Circulació: {LTBLUE}{CURRENCY}/any
 STR_A00E_MAX_SPEED                                              :{BLACK}Max. velocitat: {LTBLUE}{VELOCITY}
@@ -3168,7 +3012,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}No es po
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Construcció d'Aeroport
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construeix un aeroport
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Avió - clica sobre l'avió per més informació
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construeix nous avions (necessita un aeroport amb hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Avió - clica sobre l'avió per més informació
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construeix nous avions
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrossega l'avió fins aquí per vendre'l
@@ -3194,12 +3037,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Reanomen
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Reanomena tipus d'avió
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}No es pot reanomenar el tipus d'avió...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Remodela avions per poder transportar diferents tipus de càrrega
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Remodela)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Remodela avió
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona tipus de càrrega a transportar
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Remodela l'avió per poder transportar el tipus de càrrega seleccionat
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecciona el tipus de càrrega a transportar:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova capacitat: {GOLD}{STRING}{}{BLACK}Cost de la remodelació: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}No es pot remodelar l'avió...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Horari)
@@ -3256,8 +3096,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplica e
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Commuta paleta
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Commuta la paleta del NewGRF seleccionat.{}Fes això quan els gràfics del NewGRF en el joc siguin rosats
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Estableix paràm.
-STR_NEWGRF_TIP                                                  :{BLACK}Llista de totes les opcions de NewGRF que has instal·lat. Prem en un grup d'opcions per canviar els seus atributs.
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Ara no hi ha arxius de NewGRF instal·lats! Consulta el manual per a les instruccions d'instal·lació de nous gràfics.
 STR_NEWGRF_FILENAME                                             :{BLACK}Nom d'arxiu: {SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}Id de GRF: {SILVER}{STRING}
@@ -3316,7 +3154,6 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}No s'ha
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}S'han carregat els GRF(s) compatibles pels arxius faltants
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Els arxius GRF(s) faltants han estat desactivats
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Arxius GRF(s) faltants per poder carregar el joc
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Falten arxiu(s) GRF
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Treure la pausa pot provocar fallades d'OpenTTD. No informis d'errors a causa de fallades subseqüents.{}Estàs segur de voler treure la pausa?
 
@@ -3390,7 +3227,6 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Prem per
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Prem per iniciar el reemplaçament del tipus de motor seleccionat a l'esquerra pel seleccionat a la dreta
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Tria el tipus de via pel que vols substituir motors
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra quin motor dels seleccionats a l'esquerra es substitueix, si n'hi ha
-STR_REPLACE_HELP                                                :{BLACK}Et permet substituir un tipus de motor per un altre, quan els trens del tipus original entrin a cotxeres
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure vagons: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la substitució automàtica mantingui la llargària del tren eliminant vagons (començant pel front), si substituint la màquina el tren es fa més llarg
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituint: {ORANGE}{SKIP}{SKIP}{STRING}
@@ -3599,7 +3435,6 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} 
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Vaixell{P "" s}
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Avió
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Canvia de nom el grup
-STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Substitueix els Vehicles de "{GROUP}"
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}No puc crear el  grup...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}No puc eliminar aquest grup...
@@ -3735,7 +3570,6 @@ STR_AI_RANDOM_AI                                                :IA Aleatòria
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paràmetres IA
 STR_AI_AUTHOR                                                   :Autor:
 STR_AI_VERSION                                                  :Versió:
-STR_AI_DESCRIPTION                                              :Descripció:
 ########
 
 ############ town controlled noise level

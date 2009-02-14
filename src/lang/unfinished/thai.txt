@@ -163,7 +163,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}ไม�
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}ลิขสิทธิ์เดิม {COPYRIGHT} ค.ศ.1995 ของ Chris Sawyer, สงวนลิขสิทธิ์
 STR_00B7_VERSION                                                :{BLACK}OpenTTD รุ่นที่ {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}ลิขสิทธิ์ OpenTTD {COPYRIGHT}2002-2008 ของ The OpenTTD team
-STR_TRANSLATED_BY                                               :{BLACK}  ผู้แปล - ฉัตรชัย กฤชเศรษฐสกุล, ภาคภูมิ เวทย์วิทยานุวัฒน์
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -218,39 +217,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}เรือ
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}อากาศยาน
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}เส้นทางการขนส่ง
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}เหมืองถ่านหิน
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}โรงผลิตไฟฟ้า
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}ป่าไม้
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}โรงเลื่อยไม้
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}โรงกลั่นน้ำมัน
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}ฟาร์ม
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}โรงงาน
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}โรงพิมพ์
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}บ่อน้ำมัน
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}เหมืองแร่เหล็ก
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}โรงถลุงเหล็ก
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}ธนาคาร
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}โรงงานกระดาษ
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}เหมืองทอง
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}โรงงานแปรรูปอาหาร
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}เหมืองเพชร
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}เหมืองทองแดง
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}สวนผลไม้
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}สวนยางพารา
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}แหล่งน้ำ
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}หอเก็บน้ำ
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}โรงเลื่อยไม้
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}ป่าสายไหม
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}โรงงานขนมหวาน
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}ฟาร์มถ่านไฟฉาย
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}บ่อโคล่า
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}ร้านขายของเล่น
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}โรงงานของเล่น
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}บ่อพลาสติก
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}โรงงานน้ำอัดลมหรรษา
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}โรงงานเป่าฟอง
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}เหมืองทอฟฟี่
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}เหมืองน้ำตาล
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}สถานีรถไฟ
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}สถานีถ่ายของรถบรรทุก
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}ป้ายรถเมล์
@@ -274,8 +241,6 @@ STR_DEFAULT                                                     :{BLACK}ค่�
 STR_012E_CANCEL                                                 :{BLACK}ยกเลิก
 STR_012F_OK                                                     :{BLACK}ตกลง
 STR_0130_RENAME                                                 :{BLACK}เปลี่ยนชื่อ
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}บัญญัติหลายชื่อมากเกินไป
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}มีชื่อนี้ซ้ำอยู่แล้ว
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -298,7 +263,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}เริ่มเกมใหม่
 STR_0141_LOAD_GAME                                              :{BLACK}เปิดเกมเดิม
-STR_SINGLE_PLAYER                                               :{BLACK}เล่นคนเดียว
 STR_MULTIPLAYER                                                 :{BLACK}เล่นหลายคน
 STR_SCENARIO_EDITOR                                             :{BLACK}โปรแกรมแก้ฉาก
 
@@ -307,9 +271,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}ตั้งค่าเกม
 
 STR_0150_SOMEONE                                                :บางคน{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :แผนที่โลก
-STR_0152_TOWN_DIRECTORY                                         :ทำเนียบชื่อเมือง
-STR_0153_SUBSIDIES                                              :โครงการที่มีเงินทุนสนับสนุน
 
 STR_UNITS_IMPERIAL                                              :ระบบอังกฤษ
 STR_UNITS_METRIC                                                :ระบบเมตริก
@@ -323,19 +284,15 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA} แร�
 STR_UNITS_POWER_METRIC                                          :{COMMA} แรงม้า
 STR_UNITS_POWER_SI                                              :{COMMA} กิโลวัตต์
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA} ตัน
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} ตัน
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} กิโลกรัม
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ตัน
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ตัน
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} กิโลกรัม
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA} แกลลอน
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} ลิตร
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} ลบ.ม.
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} แกลลอน
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} ลิตร
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ลูกบาศก์เมตร
 
@@ -536,7 +493,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}โปรแกรม - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}ลบทั้งหมด
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}บันทึก
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}โปรแกรมเพลงปัจจุบัน
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}เลือกโปรแกรม 'ทุกเพลง'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}เลือกโปรแกรม 'เพลงแนวเก่า'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}เลือกโปรแกรม 'เพลงแนวใหม่'
@@ -604,26 +560,6 @@ STR_0239_SITE_UNSUITABLE                                        :{WHITE}...พ�
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...มีเมืองมากเกินไป
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}ไม่สามารถสร้างเมืองใดได้อีก
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...มีพื้นที่บนแผนที่ไม่มากพอ
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}การสร้างแหล่งอุตสาหกรรม
-STR_0240_COAL_MINE                                              :{BLACK}เหมืองถ่านดิน
-STR_0241_POWER_STATION                                          :{BLACK}โรงไฟฟ้า
-STR_0242_SAWMILL                                                :{BLACK}โรงเลื่อย
-STR_0243_FOREST                                                 :{BLACK}ป่าปลูก
-STR_0244_OIL_REFINERY                                           :{BLACK}โรงกลั่นน้ำมัน
-STR_0245_OIL_RIG                                                :{BLACK}แท่นขุดน้ำมัน
-STR_0246_FACTORY                                                :{BLACK}โรงงาน
-STR_0247_STEEL_MILL                                             :{BLACK}โรงถลุงเหล็ก
-STR_0248_FARM                                                   :{BLACK}บ้านไร่
-STR_0249_IRON_ORE_MINE                                          :{BLACK}เหมืองแร่เหล็ก
-STR_024A_OIL_WELLS                                              :{BLACK}บ่อน้ำมัน
-STR_024B_BANK                                                   :{BLACK}ธนาคาร
-STR_024C_PAPER_MILL                                             :{BLACK}โรงงานกระดาษ
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}โรงงานผลิตอาหาร
-STR_024E_PRINTING_WORKS                                         :{BLACK}โรงพิมพ์
-STR_024F_GOLD_MINE                                              :{BLACK}เหมืองทอง
-STR_0250_LUMBER_MILL                                            :{BLACK}โรงไม้
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}สวนผลไม้
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}สวนยางพารา
 
 
 ############ range for menu starts

@@ -162,7 +162,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}이 지�
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_00B7_VERSION                                                :{BLACK}OpenTTD 버전 {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 The OpenTTD team
-STR_TRANSLATED_BY                                               :{BLACK}  한글화 -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -217,39 +216,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}선박
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}항공기
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}운송 경로
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}석탄 광산
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}발전소
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}숲
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}목재소
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}석유 정제소
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}농장
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}공장
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}인쇄소
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}유정
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}철광산
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}제철소
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}은행
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}제지소
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}금 광산
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}식품 처리 공장
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}다이아몬드 광산
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}구리 광산
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}과일 농장
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}고무 농장
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}상수도
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}급수탑
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}재목소
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}솜사탕 숲
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}사탕 공장
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}배터리 농장
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}콜라 우물
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}장난감 가게
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}장난감 공장
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}플라스틱 분수
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}탄산음료 공장
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}거품 제조 공장
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}태피 채취장
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}설탕 광산
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}철도역
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}트럭 적하장
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}버스 정류장
@@ -273,8 +240,6 @@ STR_DEFAULT                                                     :{BLACK}기본�
 STR_012E_CANCEL                                                 :{BLACK}취소
 STR_012F_OK                                                     :{BLACK}확인
 STR_0130_RENAME                                                 :{BLACK}이름 바꾸기
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}더이상 이름을 설정할 수 없습니다!
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}이미 사용중인 이름입니다!
 
 STR_OSNAME_WINDOWS                                              :윈도우
 STR_OSNAME_DOS                                                  :DOS
@@ -298,7 +263,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}새 게임
 STR_0141_LOAD_GAME                                              :{BLACK}불러오기
-STR_SINGLE_PLAYER                                               :{BLACK}싱글 플레이
 STR_MULTIPLAYER                                                 :{BLACK}멀티 플레이
 STR_SCENARIO_EDITOR                                             :{BLACK}시나리오 에디터
 
@@ -307,9 +271,6 @@ STR_BY                                                          :{BLACK}x
 STR_0148_GAME_OPTIONS                                           :{BLACK}게임 설정
 
 STR_0150_SOMEONE                                                :누군가{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :전체 지도 보기
-STR_0152_TOWN_DIRECTORY                                         :마을 목록
-STR_0153_SUBSIDIES                                              :보조금
 
 STR_UNITS_IMPERIAL                                              :임페리얼법
 STR_UNITS_METRIC                                                :미터법
@@ -323,24 +284,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}마력
 STR_UNITS_POWER_METRIC                                          :{COMMA}마력
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} 톤
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} 톤
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} 갤런
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} 리터
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} 톤중
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -570,7 +525,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}프로그램 - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}초기화
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}저장
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}현재 음악 트랙
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}'모든 트랙' 선택
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}'고전 스타일 음악' 선택
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}'뉴 스타일 음악' 선택
@@ -654,76 +608,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}마을�
 STR_023C_EXPAND                                                 :{BLACK}확장하기
 STR_023D_RANDOM_TOWN                                            :{BLACK}무작위 마을 건설
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}무작위로 마을를 건설합니다.
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}산업시설 만들기
-STR_0240_COAL_MINE                                              :{BLACK}석탄 광산
-STR_0241_POWER_STATION                                          :{BLACK}발전소
-STR_0242_SAWMILL                                                :{BLACK}제재소
-STR_0243_FOREST                                                 :{BLACK}숲
-STR_0244_OIL_REFINERY                                           :{BLACK}석유 정제소
-STR_0245_OIL_RIG                                                :{BLACK}유전
-STR_0246_FACTORY                                                :{BLACK}공장
-STR_0247_STEEL_MILL                                             :{BLACK}제철소
-STR_0248_FARM                                                   :{BLACK}농장
-STR_0249_IRON_ORE_MINE                                          :{BLACK}철 광산
-STR_024A_OIL_WELLS                                              :{BLACK}유정
-STR_024B_BANK                                                   :{BLACK}은행
-STR_024C_PAPER_MILL                                             :{BLACK}제지소
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}식품 처리 공장
-STR_024E_PRINTING_WORKS                                         :{BLACK}인쇄소
-STR_024F_GOLD_MINE                                              :{BLACK}금 광산
-STR_0250_LUMBER_MILL                                            :{BLACK}제목소
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}과일 농장
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}고무 농장
-STR_0253_WATER_SUPPLY                                           :{BLACK}상수도
-STR_0254_WATER_TOWER                                            :{BLACK}급수탑
-STR_0255_DIAMOND_MINE                                           :{BLACK}다이아몬드 광산
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}구리 광산
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}솜사탕 숲
-STR_0258_CANDY_FACTORY                                          :{BLACK}사탕 공장
-STR_0259_BATTERY_FARM                                           :{BLACK}배터리 농장
-STR_025A_COLA_WELLS                                             :{BLACK}콜라 우물
-STR_025B_TOY_SHOP                                               :{BLACK}장난감 가게
-STR_025C_TOY_FACTORY                                            :{BLACK}장난감 공장
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}플라스틱 분수
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}탄산음료 공장
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}거품 제조 공장
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}태피 채취장
-STR_0261_SUGAR_MINE                                             :{BLACK}설탕 광산
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}석탄 광산 건설
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}발전소 건설
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}제재소 건설
-STR_0265_PLANT_FOREST                                           :{BLACK}숲 심기
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}석유 정제소 건설
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}유전 건설 (맵 가장자리 근처에만 건설 가능)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}공장 건설
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}제철소 건설
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}농장 건설
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}철 광산 건설
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}유정 건설
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}은행 (인구 1200명 이상의 마을에만 건설 가능)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}제지소 건설
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}식품 처리 공장 건설
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}인쇄소 건설
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}금 광산 건설
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}은행 (마을에만 건설 가능)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}제목소 (열대우림을 베어 나무를 생산)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}과일 농장 만들기
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}고무 농장 만들기
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}상수도 건설
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}급수탑 (마을에만 건설 가능)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}다이아몬드 광산 건설
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}구리 광산 건설
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}솜사탕 숲 심기
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}사탕 공장 건설
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}배터리 농장 건설
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}콜라 우물 건설
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}장난감 가게 건설
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}장난감 공장 건설
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}플라스틱 분수 건설
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}탄산음료 공장 건설
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}거품 제조 공장 건설
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}태피 채취장 건설
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}설탕 광산 건설
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}{STRING}을/를 여기에 건설할 수 없습니다...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...마을을 먼저 만드십시오
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...한 마을에 하나만 건설 가능합니다!
@@ -752,7 +636,6 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}시나�
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Heightmap 플레이
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Heightmap을 지형으로 사용하여 게임을 시작합니다.
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}정말 이 시나리오를 종료하시겠습니까?
-STR_029C_QUIT_EDITOR                                            :{WHITE}에디터 종료
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...1200명 이상의 마을에만 건설할 수 있습니다!
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}시작년도를 1년 앞당깁니다.
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}시작년도를 1년 늦춥니다.
@@ -781,13 +664,8 @@ STR_SUMMARY                                                     :요약
 STR_FULL                                                        :전체
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :마을 목록
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}차량 디자인명
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :기본값
 STR_02BF_CUSTOM                                                 :사용자
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}사용자 이름 저장
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}차량 디자인명 선택
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}사용자 차량 디자인명 저장
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -796,7 +674,6 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :난이도 설�
 STR_MENU_CONFIG_SETTINGS                                        :고급 설정
 STR_NEWGRF_SETTINGS                                             :NewGRF 설정
 STR_TRANSPARENCY_OPTIONS                                        :투명 옵션
-STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}마을 이름 표시됨
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}역 이름 표시됨
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}팻말 표시됨
@@ -857,7 +734,6 @@ STR_02FA_EVERY_12_MONTHS                                        :12개월마다
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}새 게임 시작
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}저장된 게임 불러오기
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}사용자 게임/시나리오 만들기
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}싱글 플레이 게임 선택
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}게임 옵션 표시
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}난이도 옵션 표시
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}사용자 시나리오로 새 게임을 시작
@@ -880,7 +756,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}새 산�
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...도시에만 건설할 수 있습니다!
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...열대우림 지역에만 건설할 수 있습니다!
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...사막 지역에만 건설할 수 있습니다!
 STR_0319_PAUSED                                                 :{YELLOW}* *  일시정지됨  *  *
@@ -1314,7 +1189,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}자동 �
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...시나리오에 도시가 없습니다.
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}무작위로 지형을 만드시겠습니까?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}도시 여러개를 무작위 건설
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}무작위로 도시를 건설합니다.
 STR_MANY_RANDOM_INDUSTRIES                                      :무작위 산업시설 건설
@@ -1361,25 +1235,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}최근 �
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}모두 사용 안함
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}모두 사용
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}석탄 광산을 건설합니다.
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}숲을 심습니다.
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}유전을 건설합니다.
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}농장에 투자합니다.
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}구리 광산을 건설합니다.
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}석유를 팝니다.
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}금 광산을 건설합니다.
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}다이아몬드 광산을 건설합니다.
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}철 광산을 건설합니다.
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}과일 농장에 투자합니다.
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}고무 농장에 투자합니다.
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}상수도에 투자합니다.
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}솜사탕 숲을 심습니다.
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}배터리 농장에 투자합니다.
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}콜라 우물을 팝니다.
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}플라스틱 분수에 투자합니다.
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}거품 제조 공장을 건설합니다.
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}태피 채취장에 투자합니다.
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}설탕 광산을 건설합니다.
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}산업시설
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% 운반됨)
@@ -2057,8 +1912,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}드라�
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}저장될 세이브 파일의 이름입니다.
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}선택된 세이브 파일을 삭제합니다.
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}선택한 이름으로 현재 게임을 저장합니다
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}새 게임 종류를 선택
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}시나리오(녹색), 프리셋 게임(파랑), 무작위 게임 선택
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :신규 무작위 게임 만들기
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Heightmap 로드
 STR_SAVE_OSKTITLE                                               :{BLACK}게임을 저장할 파일명을 입력하세요
@@ -2139,8 +1992,6 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{1:INDUSTRY}의 {0:STRING} 생산량이 {2:COMMA}% 감소하였습니다!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}터널 속에 열차가 있습니다
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}터널 속에 자동차가 있습니다
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}도중에 다른 터널이 있습니다
 STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}터널이 맵 끝을 통과합니다
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}지형 문제로 터널의 반대쪽 출구를 만들 수 없습니다
@@ -2310,7 +2161,6 @@ STR_TOLERANT                                                    :신경 씀
 STR_HOSTILE                                                     :싫어함
 
 ##id 0x7000
-STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(회사 {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}새 얼굴
@@ -2363,7 +2213,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}매니�
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}회사 차량의 색상을 변경합니다.
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}매니저의 이름을 변경합니다.
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}회사 이름을 변경합니다.
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}원하는 색상을 선택하세요.
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}돈을 빌립니다.
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}돈을 갚습니다.
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(매니저)
@@ -2913,7 +2762,6 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}기차�
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}점검 간격: {LTBLUE}{COMMA}일마다{BLACK}   최근 점검: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}점검 간격: {LTBLUE}{COMMA}%{BLACK}   최근 점검: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}열차 - 열차 정보를 보려면 클릭
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}새 기차를 만듭니다 (차량기지 필요)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}열차 - 열차 정보를 보려면 클릭, 차량을 드래그해서 추가하거나 삭제하세요
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}새 기차 만들기
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}기관차/객차/화물차 한량만 제거하려면 여기로 드래그하세요
@@ -2964,7 +2812,6 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}차량 �
 STR_CLEAR_TIME                                                  :{BLACK}시간 초기화
 STR_RESET_LATENESS                                              :{BLACK}지연 카운터 초기화
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}웨이포인트 이름 변경
-STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}정지중
 STR_TRAIN_STOPPING_VEL                                          :{RED}{VELOCITY}의 속도로 정지중
@@ -3019,7 +2866,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} 
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}차량을 차고로 보낼 수 없습니다...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}인접한 차고를 찾을 수 없습니다
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}자동차 - 자세히 보려면 클릭
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}새 자동차 만들기 (차고 필요)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}현재 차량 행동 - 운행/정지시키려면 클릭하세요
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}차량 경로 보이기
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}이 차량이 있는 곳으로 이동
@@ -3101,7 +2947,6 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}새 선�
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}선박을 팔려면 여기로 드래그하세요
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}이 정박소가 잇는 위치로 이동합니다
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}새 선박을 만듭니다 (정박소 필요)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}선박 선택 목록 - 선박의 정보를 보려면 클릭하세요
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}선택한 선박 만들기
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}현재 선박 행동 - 선박을 운행/중지시키려면 클릭하세요
@@ -3146,7 +2991,6 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}항공�
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}항공기를 만들 수 없습니다...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA}대의 항공기
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (경로)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (상세정보)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
 STR_A00E_MAX_SPEED                                              :{BLACK}최고속력: {LTBLUE}{VELOCITY}
@@ -3169,7 +3013,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}항공�
 STR_A01D_AIRPORT_CONSTRUCTION                                   :공항 건설
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}공항 건설
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}항공기 - 항공기 정보를 보려면 클릭하세요
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}새 항공기 (격납고가 있는 공항 필요)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}항공기 - 항공기 정보를 보려면 클릭하세요
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}새 항공기
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}항공기를 팔려면 여기로 드래그하세요
@@ -3195,12 +3038,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}항공�
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}항공기 타입의 이름 지정
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}항공기 타입의 이름을 지정할 수 없습니다...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}이 항공기가 다른 종류의 화물을 싣도록 개조
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (개조)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}항공기 개조
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}이 항공기가 수송할 화물의 종류를 선택하십시오
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}선택한 화물을 싣도록 항공기를 개조합니다
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}수송할 화물 종류 선택:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}새 수송량: {GOLD}{STRING}{}{BLACK}개조 가격: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}항공기를 개조할 수 없습니다...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (시간표)
@@ -3257,8 +3097,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}변경�
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}팔레트 바꾸기
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}NewGRF의 팔레트를 바꿉니다.{}게임에서 그래픽이 분홍색으로 보일때 이 기능을 사용하십시오.
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}파라미터 설정
-STR_NEWGRF_TIP                                                  :{BLACK}당신이 설치한 NewGRF의 모든 목록입니다. 설정을 변경하려면 클릭하세요
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}NewGRF 파일이 설치되어 있지 않습니다! NewGRF 설치 방법에 대한 매뉴얼을 참고해주십시오
 STR_NEWGRF_FILENAME                                             :{BLACK}파일명: {SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}팔레트: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
@@ -3317,7 +3155,6 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}매치�
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}없는 파일 대신에 호환되는 GRF가 로드되었습니다
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}사라진 GRF 파일은 사용이 불가능합니다
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}사라진 GRF 파일이 게임 로드에 사용될 수 있습니다
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF 파일 없음
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시정지를 해제하면 오류가 발생할 수도 있습니다. 차후에 나오는 오류에 대해서 버그 리포트를 제출하지 마십시오.{}정말로 일시정지를 해제하시겠습니까?
 
@@ -3391,7 +3228,6 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}좌측�
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}좌측에서 선택한 기관차 종류를 우측의 새 기관차로 교체하려면 누르세요
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}교체할 기관차가 속한 철도의 형식을 고르세요
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}좌측의 선택된 기관차가 어떤 기관차로 교체되고 있는지 표시합니다
-STR_REPLACE_HELP                                                :{BLACK}이 기능은 열차가 차량기지로 들어갔을 때 한 기관차 종류를 다른 종류로 교체하게 할 수 있습니다
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}화물차 제거: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}자동교체시에 열차가 기존보다 길어지면 화물차를 제거함으로써 교체시 달라지는 열차의 길이를 같게 조정합니다 (앞쪽부터 시작됨)
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}교체중: {ORANGE}{SKIP}{SKIP}{STRING}
@@ -3600,7 +3436,6 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} 
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} 선박
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} 항공기
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}그룹 이름 바꾸기
-STR_GROUP_REPLACE_CAPTION                                       :{WHITE}"{GROUP}"의 차량 교체
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}그룹을 만들 수 없습니다...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}이 그룹을 지울 수 없습니다...
@@ -3736,7 +3571,6 @@ STR_AI_RANDOM_AI                                                :무작위 인�
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}인공지능 파라미터
 STR_AI_AUTHOR                                                   :저자:
 STR_AI_VERSION                                                  :버젼:
-STR_AI_DESCRIPTION                                              :설명:
 ########
 
 ############ town controlled noise level

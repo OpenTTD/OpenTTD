@@ -196,7 +196,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Negalima
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Pradinės versijos teisės priklauso {COPYRIGHT} 1995 Chris Sawyer, Visos teisės saugomos
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versija {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD komanda
-STR_TRANSLATED_BY                                               :{BLACK}  Vertejai: Mindaugas Surdokas (L781), Vytautas Liuolia
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -251,39 +250,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Laivai
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Lėktuvai
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Keliai
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Anglies kasykla
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Elektrinė
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Miškas
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Lentpjūvė
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Naftos perdirbimo įmonė
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Ūkis
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Gamykla
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Spaustuvė
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Naftos gręžinys
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Geležies rūdos kasykla
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Plieno liejykla
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}Bankas
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Popieriaus gamykla
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Aukso kasykla
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Maisto perdirbimo įmonė
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Deimantų kasykla
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Vario rūdos kasykla
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Vaismedžių plantacija
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Kaučiukmedžių plantacija
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Vandens gręžinys
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Vandens bokštas
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Lentpjūvė
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Cukraus vatos krūmynai
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Saldumynų gamykla
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Baterijų ūkis
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Kolos gręžiniai
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Žaislų parduotuvė
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Žaislų gamykla
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Plastmasės versmės
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Gaiviųjų gėrimų gamykla
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Burbulų leistuvas
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Karamelės telkinys
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Cukraus kasykla
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Geležinkelio stotis
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Sunkvežimių pakrovimo aikštelė
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Autobusų stotis
@@ -307,8 +274,6 @@ STR_DEFAULT                                                     :{BLACK}Nutylint
 STR_012E_CANCEL                                                 :{BLACK}Atšaukti
 STR_012F_OK                                                     :{BLACK}Gerai
 STR_0130_RENAME                                                 :{BLACK}Pervadinti
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Per daug vardų
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Pasirinktas vardas jau naudojamas
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -332,7 +297,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Naujas žaidimas
 STR_0141_LOAD_GAME                                              :{BLACK}Įkelti žaidimą
-STR_SINGLE_PLAYER                                               :{BLACK}Vienas zaidejas
 STR_MULTIPLAYER                                                 :{BLACK}Žaidimas tinkle
 STR_SCENARIO_EDITOR                                             :{BLACK}Scenarijaus redaktorius
 
@@ -341,9 +305,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Žaidimo nustatymai
 
 STR_0150_SOMEONE                                                :kažkas{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Žemėlapis
-STR_0152_TOWN_DIRECTORY                                         :Miestų sąrašas
-STR_0153_SUBSIDIES                                              :Subsidijos
 
 STR_UNITS_IMPERIAL                                              :Imperinės
 STR_UNITS_METRIC                                                :Metrinė
@@ -357,24 +318,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}AG
 STR_UNITS_POWER_METRIC                                          :{COMMA}AG
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P a os ų}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P a os ų}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P as ai ų}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P as ai ų}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ svar{P o ų ų} jėga (lbf)
-STR_UNITS_FORCE_METRIC                                          :{COMMA} ton{P os ų ų} jėga
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -600,7 +555,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Programa - „{STRING}“
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Išvalyti
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Išsaugoti
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Dabartinė garso takelių programa
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Parinkti „visi takeliai“ programą
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Parinkti „seno stiliaus muzika“ programą
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Parinkti „naujo stiliaus muzika“ programą
@@ -684,76 +638,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Padidint
 STR_023C_EXPAND                                                 :{BLACK}Išplėsti
 STR_023D_RANDOM_TOWN                                            :{BLACK}Atsitiktinis miestas
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Pastatyti miestą atsitiktinėje vietoje
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Pramonės kūrimas
-STR_0240_COAL_MINE                                              :{BLACK}Anglies kasykla
-STR_0241_POWER_STATION                                          :{BLACK}Elektrinė
-STR_0242_SAWMILL                                                :{BLACK}Lentpjūvė
-STR_0243_FOREST                                                 :{BLACK}Miškas
-STR_0244_OIL_REFINERY                                           :{BLACK}Naftos perdirbimo įmonė
-STR_0245_OIL_RIG                                                :{BLACK}Naftos bokštas
-STR_0246_FACTORY                                                :{BLACK}Gamykla
-STR_0247_STEEL_MILL                                             :{BLACK}Plieno liejykla
-STR_0248_FARM                                                   :{BLACK}Ūkis
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Geležies rūdos kasykla
-STR_024A_OIL_WELLS                                              :{BLACK}Naftos gręžiniai
-STR_024B_BANK                                                   :{BLACK}Bankas
-STR_024C_PAPER_MILL                                             :{BLACK}Popieriaus gamykla
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Maisto perdirbimo įmonė
-STR_024E_PRINTING_WORKS                                         :{BLACK}Spaustuvė
-STR_024F_GOLD_MINE                                              :{BLACK}Aukso kasykla
-STR_0250_LUMBER_MILL                                            :{BLACK}Lentpjūvė
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Vaismedžių plantacija
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Kaučiukmedžių plantacija
-STR_0253_WATER_SUPPLY                                           :{BLACK}Vandens gręžinys
-STR_0254_WATER_TOWER                                            :{BLACK}Vandentiekio bokštas
-STR_0255_DIAMOND_MINE                                           :{BLACK}Deimantų kasykla
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Vario rūdos kasykla
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Cukraus vatos krūmynai
-STR_0258_CANDY_FACTORY                                          :{BLACK}Saldumynų gamykla
-STR_0259_BATTERY_FARM                                           :{BLACK}Baterijų ūkis
-STR_025A_COLA_WELLS                                             :{BLACK}Kolos gręžiniai
-STR_025B_TOY_SHOP                                               :{BLACK}Žaislų parduotuvė
-STR_025C_TOY_FACTORY                                            :{BLACK}Žaislų gamykla
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Plastmasės versmės
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Gaiviųjų gėrimų gamykla
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Burbulų leistuvas
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Karamelės telkinys
-STR_0261_SUGAR_MINE                                             :{BLACK}Cukraus kasykla
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Statyti anglies kasyklą
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Statyti elektrinę
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Statyti lentpjūvę
-STR_0265_PLANT_FOREST                                           :{BLACK}Užsodinti mišką
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Statyti naftos perdirbimo įmonę
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Statyti naftos grežinį jūroje (tik prie žemelapio kraštų)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Statyti gamyklą
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Statyti plieno liejyklą
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Statyti ūkį
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Statyti geležies rūdos kasyklą
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Gręžti naftos gręžinius
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Statyti banką (tik miestuose, kuriuose yra bent 1200 gyventojų)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Statyti popieriaus gamyklą
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Statyti maisto perdirbimo imonę
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Statyti spaustuvę
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Statyti aukso kasyklą
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Statyti banką (tik miestuose)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Pastatykite lentpjūvę (perdirbama nukirsta mediena)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Užsodinti vaismedžių plantaciją
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Užsodinti kaučiukmedžių plantaciją
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Statyti vandens gręžinį
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Statyti vandentiekio bokštą (tik miestuose)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Statyti deimantų kasyklą
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Statyti vario rūdos kasyklą
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Užsodinti cukraus vatos krūmynus
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Statyti saldumynų gamyklą
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Statyti baterijų ūkį
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Statyti kolos versmes
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Statyti žaislų parduotuvę
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Statyti žaislų gamyklą
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Statyti plastmasės versmes
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Statyti gaiviųjų gėrimų gamyklą
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Statyti burbulų leistuvą
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Statyti karamelės telkinį
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Statyti cukraus kasyklą
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}{STRING} čia negali būti pastatyta...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...pirma reikia pastatyti miestą
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...mieste gali būti tik vienas
@@ -782,7 +666,6 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}Išbandy
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Zaisti Papildomam zemelapyje
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Pradeti zaidima naudojant papildoma zemelapi ir zemtvraka
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Ar tikrai norite išeiti iš šio scenarijaus?
-STR_029C_QUIT_EDITOR                                            :{WHITE}Išeiti iš redaktoriaus
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...gali būti pastatyta tik miestuose, kuriuose yra bent 1200 gyventojų
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Žaidimo pradžios datą sumažinti 1 metais
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Žaidimo pradžios datą padidinti 1 metais
@@ -801,13 +684,8 @@ STR_SUMMARY                                                     :Santrauka
 STR_FULL                                                        :Pilnas
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Miestų sąrašas
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Tr. priemonių pavadinimai
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Standartinis
 STR_02BF_CUSTOM                                                 :Tinkintas
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Išsaugoti tinkintus vardus
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Transporto priemonių pavadinimų pasirinkimo laukas
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Išsaugoti transporto priemonių pavadinimus
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -816,7 +694,6 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :Sunkumo lygio n
 STR_MENU_CONFIG_SETTINGS                                        :Sudėtingesni nustatymai
 STR_NEWGRF_SETTINGS                                             :Papild. grafikos nustatymai (NewGRF)
 STR_TRANSPARENCY_OPTIONS                                        :Permatomumo nustatymai
-STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Rodyti miestų pavadinimus
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Rodyti stotelių pavadinimus
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Rodyti ženklus
@@ -876,7 +753,6 @@ STR_02FA_EVERY_12_MONTHS                                        :Kas 12 mėnesi�
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Pradėti naują žaidimą
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Įkelti išsaugotą žaidimą
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Sukurk savo žaidimo žemėlapį/scenarijų
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Pasirink 1 žaidejo žaidimą
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Rodyti žaidimo nustatymus
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Rodyti sudėtingumo nustatymus
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Pradėti naują žaidimą pasirenkant scenarijų
@@ -899,7 +775,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Finansuo
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...galima statyti tik miestuose
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...gali būti statomas tik drėgnose miškingose teritorijose
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...gali būti statomas tik dykumose
 STR_0319_PAUSED                                                 :{YELLOW}* *   SUSTABDYTA   * *
@@ -1284,7 +1159,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Statyti 
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...siame scenarijuje nera miestu
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Ar tikrai norite sukurti atsitiktinį kraštovaizdį?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Daug atsitiktinių miestų
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Sukuria miestus atsitiktinėse žemėlapio vietose
 STR_MANY_RANDOM_INDUSTRIES                                      :Daug atsitiktinių pramonės įmonių
@@ -1331,25 +1205,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Paskutin
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Atjungti visus
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Ijungti visus
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Statyti anglies kasykla
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Sodinti miska
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Statyti naftos platforma
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Įsteigti ūkį
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Statyti vario rudos kasykla
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Ieskoti naftos
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Statyti aukso kasyklas
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Statyti deimantu kasyklas
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Statyti anglies rudos kasykla
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Užsodinti vaismedžių plantaciją
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Užsodinti kaučiukmedžių plantaciją
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Statyti vandens gręžinį
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Uzsodinti ledinuku miska
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Statyti baterijų ūkį
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}grezti kokakolos grezini
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Statyti plastikinius fontanus
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Statyti muilo burbulu generatoriu
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Statyti saldainiu fabrika
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Statyti cukraus kasykla
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Gamyklos
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportuota)
@@ -2008,8 +1863,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Diskų, 
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Pasirinktas žaidimas
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Ištrinti pasirinktą žaidimą
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Išsaugoti žaidimą pasirinktu vardu
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Pasirink naujo žaidimo tipą
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Pasirinkite scenarijų (žalia spalva), nustatytą žaidimą (mėlyna), ar atsitiktinį naują žaidimą
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Sukurti atsitiktinį naują žaidimą
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Atverti aukščių žemėlapį
 STR_SAVE_OSKTITLE                                               :{BLACK}Įveskite Išsaugomo žaidimo vardą
@@ -2087,8 +1940,6 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING.ko} produkcija krenta ({INDUSTRY}) - {COMMA}%!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tunelyje traukinys
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Tunelyje transporto priemonė
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Trukdo kitas tunelis
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nepavyko iškasti žemės kitame tunelio gale
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Pirmiau reikia pašalinti tunelį
@@ -2256,7 +2107,6 @@ STR_TOLERANT                                                    :Tolerantiskas
 STR_HOSTILE                                                     :Priešiškas
 
 ##id 0x7000
-STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7004_NEW_FACE                                               :{BLACK}Naujas veidas
 STR_7005_COLOUR_SCHEME                                          :{BLACK}Spalva
@@ -2308,7 +2158,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Pasirink
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Keičia kompanijos transporto priemonių spalvą
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Keičia kompanijos direktoriaus vardą
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Keičia kompanijos pavadinimą
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Paspausk ant pasirinktos spalvos
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Padidina paskola
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Grąžina paskolos dalį
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Direktorius)
@@ -2795,7 +2644,6 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Traukini
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Remonto intervalas: {LTBLUE}{COMMA}dienos{BLACK}   Paskutinis remontas: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Remonto intervalas: {LTBLUE}{COMMA}%{BLACK}   Paskutinis remontas: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Traukiniai - spausk ant traukinio, jei nori detalesnes informacijos
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Isigyti nauju traukiniu (reikia traukiniu depo)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Traukiniai - paspausk ant traukinio jei nori detalesnes informacijos, tempk vagona, jei nori ji prikabinti/pasalinti nuo traukinio
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Isigyti nauja gelezinkelio transporto priemone
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Nutempk transporto priemone cia, jei nori ja parduoti
@@ -2874,7 +2722,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servisa
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Negalima rasti automobilio garazo...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Negalima rasti garazo
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Automobiliai - paspausk ant automobilio, jei nori detalesnes informacijos
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Isigyti nauja automobili (reikia automobiliu garazo)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Automobilio uzduotis - spustelk cia, jei nori sustabdyti/paleisti automobili
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Rodyti automobilio uzduotis
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Rodyti automobili ekrano centre
@@ -2948,7 +2795,6 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Statyti 
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Nutempk laiva cia, jei nori ji parduoti
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Rodyti laivu depa ekrano centre
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Laivai - paspausk ant laivo, jei nori daugiau informacijos
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Statyti naujus laivus (reikia laivu depo)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Laivu sarasas - paspausk ant laivo, jei nori detalesnes informacijos
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Statyti pazymeta laiva
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Dabartine laivo uzduotis - paspausk cia, jei nori sustabdyti/paleisti laiva
@@ -2991,7 +2837,6 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Isigyti 
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Negalima isigyti lektuvo...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Lektuvai
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Uzduotys)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detaliau)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Amzius: {LTBLUE}{STRING}{BLACK}   Eksploatacijos islaidos: {LTBLUE}{CURRENCY}/met.
 STR_A00E_MAX_SPEED                                              :{BLACK}Maks. greitis: {LTBLUE}{VELOCITY}
@@ -3013,7 +2858,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Negalima
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Oro uostu konstr.
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Statyti opo uosta
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lektuvas - spauskite ant lektuvo informacijai
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Statyti nauja lektuva (reikia oro uosto su angaru)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lektuvas - paspausk ant lektuvo, jei nori daugiau informacijos
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Statyti nauja lektuva
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Nutempk lektuva cia, jei nori parduoti
@@ -3039,12 +2883,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Pakeisti
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Pakeisti lektuvo varda
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Negalima pakeisti lektuvo vardo...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Pakeisti lektuvo pervezamu kroviniu tipa
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Keisti)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Keisti krovinio tipa
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Pasirink nauja krovinio tipa
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Pakeisti lektuvo pervezamo krovinio tipa pazymetu
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Pasirink nauja kroviniu tipa:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nauja talpa: {GOLD}{STRING}{}{BLACK}Pakeitimo kaina: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Negalima pakeisti krovinio tipo...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Tvarkaraštis)
@@ -3096,8 +2937,6 @@ STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Papild. 
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Papild. grafikos nustatymai (NewGRF)
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Įvykdyti pakeitimus
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Nustatyti parametrus
-STR_NEWGRF_TIP                                                  :{BLACK}Įdiegtų Papild. grafikos failų sąrašas. Spragtelėjus pavadinimą galima keisti jų nustatymus
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Šiuo metu nėra įdiegtų Papild. grafikos failų! Kaip įdiegti Papild. grafikos failus (NewGRF) galite sužinoti vartotojo vadove
 STR_NEWGRF_FILENAME                                             :{BLACK}Failo vardas: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5suma: {SILVER}{STRING}
@@ -3143,7 +2982,6 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Atitink
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Suderinami grafikos failai panaudoti vietoj trūkstamų
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Trūkstami grafikos failai nenaudojami
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Trūksta žaidimo paleidimui reikalingų grafikos failų
 
 
 
@@ -3210,7 +3048,6 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Spustelk
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Spustelk, jei nori pradeti pazymeto tipo tr. priemoniu keitimo procedura
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Pasirink norimu keisti traukiniu begiu tipa
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Kaireje lango dalyje pazymeta tr. priemone bus pakeista tr. priemone, kuri yra pazymeta desineje lango puseje
-STR_REPLACE_HELP                                                :{BLACK}Tai leidzia tau keisti viena tr. priemoniu tipa kitu, kai pirmojo tipo traukinys uzsuka i depa
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagono pasalinimas: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Pakeitimo metu išlaikyti traukinio ilgį atjungiant vagonus (pradedant juo priekio), jeigu pakeitus garvežį traukinys pailgėtų.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Keicima: {ORANGE}{SKIP}{SKIP}{STRING}

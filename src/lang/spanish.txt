@@ -163,7 +163,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}No se pu
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright Original {COPYRIGHT} 1995 Chris Sawyer, Todos los derechos reservados
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versión {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 El equipo OpenTTD
-STR_TRANSLATED_BY                                               :{BLACK}  Traductor(es) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -218,39 +217,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Barcos
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Aeronaves
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Rutas de transporte
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Mina de carbón
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Central eléctica
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Bosque
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Aserradero
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Refinería
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Granja
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fábrica
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Imprenta
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Pozos de petróleo
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Mina de hierro
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Altos hornos
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banco
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Papelera
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Mina de oro
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Planta procesadora de alimento
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Mina de diamantes
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Mina de cobre
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Plantación de fruta
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Plantación de caucho
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Abastecimiento de agua
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Torre de agua
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Aserradero
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Bosque de algodón de azúcar
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Fábrica de dulces
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Granja de pilas
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Pozos de cola
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Juguetería
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Fábrica de juguetes
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Fuentes de plástico
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Fábrica de refrescos
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Generador de burbujas
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Cantera de caramelos
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Mina de azúcar
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Estación de ferrocarril
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Muelle de carga de camiones
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Estación de autobuses
@@ -274,8 +241,6 @@ STR_DEFAULT                                                     :{BLACK}Por defe
 STR_012E_CANCEL                                                 :{BLACK}Cancelar
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Renombrar
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Demasiados nombres definidos
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}El nombre elegido está en uso
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -299,7 +264,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nuevo Juego
 STR_0141_LOAD_GAME                                              :{BLACK}Cargar Juego
-STR_SINGLE_PLAYER                                               :{BLACK}Un jugador
 STR_MULTIPLAYER                                                 :{BLACK}Multijugador
 STR_SCENARIO_EDITOR                                             :{BLACK}Editor de Escenario
 
@@ -308,9 +272,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Opciones de Juego
 
 STR_0150_SOMEONE                                                :alguien{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Mapa del mundo
-STR_0152_TOWN_DIRECTORY                                         :Listado de poblaciones
-STR_0153_SUBSIDIES                                              :Subvenciones
 
 STR_UNITS_IMPERIAL                                              :Imperial
 STR_UNITS_METRIC                                                :Métrico
@@ -324,24 +285,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}hp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonelada{P "" s}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonelada{P "" s}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galón{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} ton. fuerza
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -571,7 +526,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Programa - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Borrar
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Guardar
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Programa actual de pistas de música
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Seleccionar programa 'todas las pistas'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Seleccionar programa 'estilo antigüo'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Seleccionar programa 'estilo moderno'
@@ -655,76 +609,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Aumentar
 STR_023C_EXPAND                                                 :{BLACK}Aumentar
 STR_023D_RANDOM_TOWN                                            :{BLACK}Población al azar
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Construir población en sitio al azar
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Generación de industria
-STR_0240_COAL_MINE                                              :{BLACK}Mina de Carbón
-STR_0241_POWER_STATION                                          :{BLACK}Cental Eléctrica
-STR_0242_SAWMILL                                                :{BLACK}Aserradero
-STR_0243_FOREST                                                 :{BLACK}Bosque
-STR_0244_OIL_REFINERY                                           :{BLACK}Refinería
-STR_0245_OIL_RIG                                                :{BLACK}Plataforma Petrolífera
-STR_0246_FACTORY                                                :{BLACK}Fábrica
-STR_0247_STEEL_MILL                                             :{BLACK}Altos Hornos
-STR_0248_FARM                                                   :{BLACK}Granja
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Mina de Hierro
-STR_024A_OIL_WELLS                                              :{BLACK}Pozos de Petróleo
-STR_024B_BANK                                                   :{BLACK}Banco
-STR_024C_PAPER_MILL                                             :{BLACK}Papelera
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Planta procesadora de alimentos
-STR_024E_PRINTING_WORKS                                         :{BLACK}Imprenta
-STR_024F_GOLD_MINE                                              :{BLACK}Mina de Oro
-STR_0250_LUMBER_MILL                                            :{BLACK}Aserradero
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Plantación de Fruta
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Plantación de Trigo
-STR_0253_WATER_SUPPLY                                           :{BLACK}Abastecimiento de Agua
-STR_0254_WATER_TOWER                                            :{BLACK}Torre de Agua
-STR_0255_DIAMOND_MINE                                           :{BLACK}Mina de Diamantes
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Mina de Cobre
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Bosque de Algodón de azúcar
-STR_0258_CANDY_FACTORY                                          :{BLACK}Fábrica de Dulces
-STR_0259_BATTERY_FARM                                           :{BLACK}Granja de Pilas
-STR_025A_COLA_WELLS                                             :{BLACK}Pozos de Cola
-STR_025B_TOY_SHOP                                               :{BLACK}Juguetería
-STR_025C_TOY_FACTORY                                            :{BLACK}Fábrica de juguetes
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Fuentes de plástico
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Fábrica de refrescos
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Generador de burbujas
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Cantera de caramelos
-STR_0261_SUGAR_MINE                                             :{BLACK}Mina de azúcar
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Construir Mina de Carbón
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Construir Central Eléctrica
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Construir Sawmill
-STR_0265_PLANT_FOREST                                           :{BLACK}Plantar Bosque
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Construir Refinería
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Construir Plataforma Petrolífera (Solo puede ser construir cerca del borde del mapa)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Construir Fábrica
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Construir Altos Hornos
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Construir Granja
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Construir Mina de Hierro
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Construir Pozos de Petróleo
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construir Banco (Solo puede ser construido en poblaciones con más de 1200 habitantes)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Construir Papelera
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Construir Planta procesadora de Alimentos
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Construir Imprenta
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Construir Mina de Oro
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construir Banco (Solo puede ser construido en poblaciones)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Construir Aserradero (para talar la selva y producir madera)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Plantar fruta
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Plantar trigo
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Construir Abastecimiento de agua
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Construir Torre de Agua Tower (Solo puede ser construido en poblaciones)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Construir Mina de Diamantes
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Construir Mina de Cobre
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Plantar Bosque de Algodón de azúcar
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Construir Fábrica de Dulces
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Construir Granja de Pilas
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Construir Pozos de Cola
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Construir Juguetería
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Construir Fábrica de Juguetes
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Construir Fuentes de Plástico
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Construir Fábrica de Refrescos
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Construir Generador de Burbujas
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Construir cantera de caramelos
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Construir Mina de Azúcar
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}No se puede construir {STRING} aquí...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...debe constuirse la población primero
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...solo se permite uno por población
@@ -753,7 +637,6 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}Jugar Es
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Jugar Mapa de alturas
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Empezar juego nuevo, usando mapa de altura como terreno
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}¿Está seguro de que desea salir de este escenario?
-STR_029C_QUIT_EDITOR                                            :{WHITE}Salir del Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...solo puede ser construido en poblaciones con una población superior a 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Retrocede la fecha de inicio en 1 año
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Avanza la fecha de inicio en 1 año
@@ -782,13 +665,8 @@ STR_SUMMARY                                                     :Resumen
 STR_FULL                                                        :Completo
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Directorio de poblaciones
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Nombres de diseño de vehículos
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Por defecto
 STR_02BF_CUSTOM                                                 :Personalizado
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Guardar nombres personalizados
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Selección de nombres de diseño de vehículos
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Guardar nombres personalizados en disco
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -797,7 +675,6 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :Configuración 
 STR_MENU_CONFIG_SETTINGS                                        :Opciones avanzadas
 STR_NEWGRF_SETTINGS                                             :Configuración Newgrf
 STR_TRANSPARENCY_OPTIONS                                        :Opciones de transparencia
-STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Ver nombres de poblaciones
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Ver nombres de estaciones
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Ver señales
@@ -858,7 +735,6 @@ STR_02FA_EVERY_12_MONTHS                                        :Cada 12 meses
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Comenzar nuevo juego
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Cargar un juego guardado
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Crear un mundo/escenario de juego personalizado
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Selecciona juego para un solo jugador
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Muestra las opciones del juego
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Muestra las opciones de dificultad
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Comienza un nuevo juego, usando un escenario personalizado desde el disco
@@ -881,7 +757,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Fundar n
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...sólo se puede construir en poblaciones
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...sólo se puede construir en áreas de selva
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...sólo se puede construir en áreas desérticas
 STR_0319_PAUSED                                                 :{YELLOW}* *  PAUSADO  *  *
@@ -1320,7 +1195,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Construi
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...no hay poblaciones en este escenario
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}¿Está seguro de generar un paisaje al azar?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Varias poblaciones al azar
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Cubre el mapa con poblaciones colocadas al azar
 STR_MANY_RANDOM_INDUSTRIES                                      :Varias industrias al azar
@@ -1367,25 +1241,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Listado 
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Desactivar todo
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Activar todo
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Construir mina de carbón
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Plantar bosque
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Construir plataforma petrolífera
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Fundar granja
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Construir mina de cobre
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Taladrar para buscar petróleo
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Construir mina de oro
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Construir mina de diamantes
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Construir mina de hierro
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Fundar plantación de frutas
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Fundar plantación de caucho
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Fundar suministro de agua
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Plantar bosque de Algodón de azúcar
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Fundar granja de pilas
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Taladrar para buscar cola
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Fundar fuentes de plástico
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Construir generador de burbujas
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Fundar cantera de caramelos
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Construir mina de azúcar
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrias
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportado)
@@ -2057,8 +1912,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Listado 
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nombre seleccionado actualmente para el juego guardado
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Borrar el juego guardado seleccionado
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Guarda el juego actual, usando el nombre seleccionado
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Seleccione Nuevo Tipo de Juego
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Seleccione escenario (verde), juegos preestablecidos-set (azul), o juego al azar
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generar juego nuevo al azar
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Cargar Mapas de altura
 STR_SAVE_OSKTITLE                                               :{BLACK}Introduce un nombre para el juego guardado
@@ -2139,8 +1992,6 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}¡La producción de {STRING} en {INDUSTRY} desciende un {COMMA}%!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tren en túnel
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Vehículo de carretera en túnel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Otro túnel en el camino
 STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}El túnel acabaría fuera del mapa
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}No se puede excavar en la tierra al otro lado del túnel
@@ -2310,7 +2161,6 @@ STR_TOLERANT                                                    :Tolerante
 STR_HOSTILE                                                     :Hostil
 
 ##id 0x7000
-STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Empresa {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nueva Cara
@@ -2363,7 +2213,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Seleccio
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Cambiar los colores de la empresa
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Cambiar el nombre del presidente
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Cambiar el nombre de la empresa
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Pulsa en el esquema de color deseado
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Incrementar préstamo
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Pagar parte del préstamo
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Presidente)
@@ -2913,7 +2762,6 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}No se pu
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Intervalo de despacho: {LTBLUE}{COMMA}días{BLACK}   Último servicio: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Intervalo de despacho: {LTBLUE}{COMMA}%{BLACK}   Último servicio: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trenes - click en tren para información
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Construir nuevos trenes (requiere depósito)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trenes - click en tren para info., arrastrar vehículo para añadir/retirar del tren
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construir nuevo vehículo de tren
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arrastrar aquí vehículo para venderlo
@@ -2964,7 +2812,6 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}No se pu
 STR_CLEAR_TIME                                                  :{BLACK}Limpiar Horario
 STR_RESET_LATENESS                                              :{BLACK}Resetear Retrasos
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Cambiar nombre del punto de paso
-STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Parándose
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parándose, {VELOCITY}
@@ -3019,7 +2866,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servici
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}No se puede enviar vehículo al depósito...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}No se puede encontrar ruta al depósito
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Vehículos de carretera - click en vehículo para información
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Construir nuevos vehículos (requiere depósito)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Acción actual del vehículo - click aquí para detener/arrancar vehículo
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Ver órdenes del vehículo
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centrar vista en posición del vehículo
@@ -3101,7 +2947,6 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Construi
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Arrastra barco aquí para venderlo
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrar vista en posición del astillero
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Barcos - click en barco para información
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Construir nuevos barcos (requiere astillero)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Lista de selección de barcos - click en barco para información
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Construir el barco resaltado
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Acción actual del barco - click aquí para detener/arrancar barco
@@ -3146,7 +2991,6 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construi
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}No se puede construir aeronave...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Aeronave
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Órdenes)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detalles)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Edad: {LTBLUE}{STRING}{BLACK}   Coste Operativo: {LTBLUE}{CURRENCY}/año
 STR_A00E_MAX_SPEED                                              :{BLACK}Velocidad Máx.: {LTBLUE}{VELOCITY}
@@ -3169,7 +3013,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}No se pu
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Construir aeropuerto
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construir aeropuerto
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}La aeronave - click en la aeronave para información
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construir nueva aeronave (requiere aeropuerto con hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronave - click en la aeronave para información
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construir aeronave
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrastra aeronave aquí para venderla
@@ -3195,12 +3038,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Renombra
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Renombrar tipo de aeronave
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}No se puede renombrar el tipo de aeronave...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Reformar aeronave para llevar otro tipo de carga
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Reformar)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Reformar aeronave
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleccione tipo de carga para que la aeronave la lleve
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Reformar aeronave para que lleve el tipo de carga resaltado
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Elige tipo de carga para llevar:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nueva capacidad: {GOLD}{STRING}{}{BLACK}Coste de reforma: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}No se puede reformar aeronave...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Horarios)
@@ -3257,8 +3097,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar 
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Seleccionar paleta
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Seleccionar la paleta del NewGRF seleccionado.{}Hazlo cuando los gráficos de este NewGRF se vean rosa en el juego
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Establecer parámetros
-STR_NEWGRF_TIP                                                  :{BLACK}Un listado de todos los Newgrf que tiene instalados. Haga click para cambiar las opciones.
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}¡No tiene ningún fichero newgrf instalado! Por favor, lea las instrucciones en el manual para instalar nuevos gráficos.
 STR_NEWGRF_FILENAME                                             :{BLACK}Fichero: {SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
@@ -3317,7 +3155,6 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Fichero
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatibles cargos para ficheros que faltan
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fichero(s) GRF perdidos han sido desactivados
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fichero(s) GRF para poder cargar el juego
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichero(s) GRF que faltan
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quitar la pausa puede hacer que se cierre OpenTTD. No notifique este error.{}¿Desea realmente quitar la pausa?
 
@@ -3391,7 +3228,6 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Presiona
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Presiona este botón si quieres reemplazar la locomotora seleccionada a la izquierda por la seleccionada en la derecha
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleccione tipo de rail para seleccionar locomotoras para ese tipo
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Muestra que locomotora será reemplazada
-STR_REPLACE_HELP                                                :{BLACK}Esta función permite seleccionar un tipo de locomotora y reemplazarla por otra. El cambio se realizará cuando el vehículo llegue al depósito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Quitar vagón: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Hacer que el cambio automático mantenga la longitud del tren quitando vagones (empezando por adelante), si el cambio de locomotora produce un tren más largo.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Reemplazando: {ORANGE}{SKIP}{SKIP}{STRING}
@@ -3600,7 +3436,6 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} 
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Barco{P "" s}
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Aeronave
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renombrar un grupo
-STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Reemplazar vehículos de "{GROUP}"
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}No se puede crear grupo...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}No se puede borrar este grupo...
@@ -3736,7 +3571,6 @@ STR_AI_RANDOM_AI                                                :IA aleatoria
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parámetros de la IA
 STR_AI_AUTHOR                                                   :Autor:
 STR_AI_VERSION                                                  :Versión:
-STR_AI_DESCRIPTION                                              :Descripción:
 ########
 
 ############ town controlled noise level

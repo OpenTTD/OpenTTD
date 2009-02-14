@@ -144,39 +144,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Schëffer
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Fligeren
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Transport Routen
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Kuelenstollen
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Kraaftwierk
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Bësch
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Seeerei
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Ueleg Rafinerie
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Bauerenhaff
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fabrik
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Dreckerei
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Uelegquell
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Eisenärzstollen
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Stolwierk
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}Bank
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Pabeierfabrik
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Goldstollen
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Iessensverarbeschtungswierk
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Diamantstollen
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Kofferärzstollen
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Uebstplantage
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Kautschuckplantage
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Waasserwierk
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Waassertuerm
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Bauholzwierk
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Zockerwattbësch
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Séissegkeetenfabrik
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Batterien Farm
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Colaquellen
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Spillgeschäft
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Spillsaachenfabrik
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Plastikpëtz
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Fabrik fir spruddelegt Gedrénks
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Blosen Generator
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Karmellbroch
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Zockerminn
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Gare
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Camionsluedeplaatz
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Busgare
@@ -199,8 +167,6 @@ STR_012D                                                        :{WHITE}{STRING}
 STR_012E_CANCEL                                                 :{BLACK}Oofbriechen
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Ëmbenennen
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Ze vill Nimm défineiert
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Deen Numm gët ët schon
 
 
 STR_013B_OWNED_BY                                               :{WHITE}...am Besëtz vun {STRING}
@@ -214,9 +180,6 @@ STR_0141_LOAD_GAME                                              :{BLACK}Spill lu
 STR_0148_GAME_OPTIONS                                           :{BLACK}Spillotiounen
 
 STR_0150_SOMEONE                                                :iergendeen{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Weltkaart
-STR_0152_TOWN_DIRECTORY                                         :Stiedtverzeechniss
-STR_0153_SUBSIDIES                                              :Subventiounen
 
 
 
@@ -394,7 +357,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Programm - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Läschen
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Späicheren
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Momentanen Programm fir d'Lidder
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Selectioneier 'all Lidder' Programm
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Selectioneier 'aalen Style' Programm
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Selectioneier 'neien Style' Programm
@@ -462,76 +424,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Stadt me
 STR_023C_EXPAND                                                 :{BLACK}Erweideren
 STR_023D_RANDOM_TOWN                                            :{BLACK}Zoufallsstadt
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Bau d'Stadt op enger zoufälleger Plaatz
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Industrieerstellung
-STR_0240_COAL_MINE                                              :{BLACK}Kuelenstollen
-STR_0241_POWER_STATION                                          :{BLACK}Kraftwierk
-STR_0242_SAWMILL                                                :{BLACK}Séeerei
-STR_0243_FOREST                                                 :{BLACK}Bësch
-STR_0244_OIL_REFINERY                                           :{BLACK}Uelegrafinerie
-STR_0245_OIL_RIG                                                :{BLACK}Uelegbuerinsel
-STR_0246_FACTORY                                                :{BLACK}Fabrik
-STR_0247_STEEL_MILL                                             :{BLACK}Stolwierk
-STR_0248_FARM                                                   :{BLACK}Bauerenhaf
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Eisenärzstollen
-STR_024A_OIL_WELLS                                              :{BLACK}Uelegquellen
-STR_024B_BANK                                                   :{BLACK}Bank
-STR_024C_PAPER_MILL                                             :{BLACK}Pabeierfabrik
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Iessensverarbeschtungsfabrik
-STR_024E_PRINTING_WORKS                                         :{BLACK}Dréckerei
-STR_024F_GOLD_MINE                                              :{BLACK}Goldstollen
-STR_0250_LUMBER_MILL                                            :{BLACK}Bauholzfabrik
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Uebstplantage
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Kautschuckplantage
-STR_0253_WATER_SUPPLY                                           :{BLACK}Waasserwierk
-STR_0254_WATER_TOWER                                            :{BLACK}Waassertuerm
-STR_0255_DIAMOND_MINE                                           :{BLACK}Diamandstollen
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Kofferärzstollen
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Zockerwattbësch
-STR_0258_CANDY_FACTORY                                          :{BLACK}Séissegkeetenfabrik
-STR_0259_BATTERY_FARM                                           :{BLACK}Batteriefarm
-STR_025A_COLA_WELLS                                             :{BLACK}Colaquellen
-STR_025B_TOY_SHOP                                               :{BLACK}Spillgeschäft
-STR_025C_TOY_FACTORY                                            :{BLACK}Spillsaachenfabrik
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Plastikpëtz
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Kueleseiergedrenksfabrik
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Blosen Generator
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Karmellstollen
-STR_0261_SUGAR_MINE                                             :{BLACK}Zockerminn
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Kuelenstollen bauen
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Kraftwierk bauen
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Séeerei bauen
-STR_0265_PLANT_FOREST                                           :{BLACK}Bësch planzen
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Uelegrafinerie bauen
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Uelegbuerinsel bauen (nëmmen no bei dem Enn vun der Kaart)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Fabrik bauen
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Stolwierk bauen
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Bauerenhaf bauen
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Eisenärzstollen bauen
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Uelegquellen bauen
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bank bauen(Nëmmen an Stiedt mat mei wei 1200 Anwunner)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Pabeierfabrik bauen
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Iesenverarbeschtungsfabrik bauen
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Dréckerei bauen
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Goldstollen bauen
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bank bauen (Nëmmen an Stiedt)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Bauholzfabrik bauen (Fir den Bësch oofzebauen an Holz ze produzeieren)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Uebstplantage unbauen
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Kautschuckplantage unbauen
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Waasserwierk bauen
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Waassertuerm bauen (Nëmmen an Stiedt)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Diamandstollen bauen
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Kofferärzstollen bauen
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Zockerwattbësch unbauen
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Séissegkeetenfabrik bauen
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Batteriefarm bauen
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Colaquellen bauen
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Spillgeschäft bauen
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Spillsaachenfabrik bauen
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Plastikpëtz bauen
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Khueleseiergedrénksfabrik bauen
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Blosen Generator bauen
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Karmellbroch bauen
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Zockerminn bauen
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kann {STRING} nët hei bauen...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...muss fir d'éischt eng Stadt bauen
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...nëmmen 1 pro Stadt erlaabt
@@ -554,7 +446,6 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Széneri
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Szénerie lueden
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Szénerie späicheren
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Szénerie spillen
-STR_029C_QUIT_EDITOR                                            :{WHITE}Eraus aus dem Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kann nëmmen an Stiedt mat opmannst 1200 Anwunner gebaut ginn
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Änner den Startdatum 1 Joer nohannen
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Änner den Startdatum 1 Joer novir
@@ -570,13 +461,8 @@ STR_02B6                                                        :{STRING}  -  {S
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Läscht Meldung oder Neiegkeet
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Stiedtverzeeschniss
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Gefiehrtdesingnumm
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Standard
 STR_02BF_CUSTOM                                                 :Benotzerdéfineiert
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Späicher eegen Nimm
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Gefiehrtdesingnimm sélectioun
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Späicher eegen Gefiehrtdesingnimm
 
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Spilloptiounen
@@ -627,7 +513,6 @@ STR_02FA_EVERY_12_MONTHS                                        :All 12 Méint
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Starten eng nei Partie
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Lueden eng Partie
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Erstell eng eegen Spillwelt/Szénerie
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Wiel en eenzelspiller Spill
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Wiel en multiplayer Spill vun 2-8 Spiller
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Spilloptiounen
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Schwieregkeetsanstellungen
@@ -647,7 +532,6 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Finanzéiert en
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Nei Industrie finanzéiert
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kann nëmmen an Stiedt gebaut ginn
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...kann nëmmen am Regenwaldgebit gebaut ginn
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...kann nëmmen an der Wüst gebaut ginn
 STR_0319_PAUSED                                                 :{YELLOW}* *  PAUSÉIERT  *  *

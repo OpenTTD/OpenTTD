@@ -195,7 +195,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nem tisz
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright {COPYRIGHT} 1995 Chris Sawyer, Minden jog fenntartva
 STR_00B7_VERSION                                                :{BLACK}OpenTTD version {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Az OpenTTD csapat
-STR_TRANSLATED_BY                                               :{BLACK}  Fordítók -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -250,72 +249,8 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}HAJÓ
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}REPÜLÖGÉP
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}SZÁLLITÁSI ÚTVONAL
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}SZÉNBÁNYA
-STR_00FA_COAL_MINE.t                                            :{BLACK}{TINYFONT}szénbányát
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}ERÖMÜ
-STR_00FB_POWER_STATION.t                                        :{BLACK}{TINYFONT}erőművet
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}ERDÖ
 STR_00FC_FOREST.t                                               :{BLACK}{TINYFONT}erdőt
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}FÜRÉSZTELEP
-STR_00FD_SAWMILL.t                                              :{BLACK}{TINYFONT}fűrésztelepet
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}OLAJFINOMITÓ
-STR_00FE_OIL_REFINERY.t                                         :{BLACK}{TINYFONT}olajfinomítót
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}FARM
-STR_00FF_FARM.t                                                 :{BLACK}{TINYFONT}farmot
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}GYÁR
-STR_0100_FACTORY.t                                              :{BLACK}{TINYFONT}gyárat
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}NYOMDA
-STR_0101_PRINTING_WORKS.t                                       :{BLACK}{TINYFONT}nyomdát
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}OLAJKÚT
-STR_0102_OIL_WELLS.t                                            :{BLACK}{TINYFONT}olajkútat
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}VASÉRCBÁNYA
-STR_0103_IRON_ORE_MINE.t                                        :{BLACK}{TINYFONT}vasércbányát
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}ACÉLÖNTÖ
-STR_0104_STEEL_MILL.t                                           :{BLACK}{TINYFONT}acélöntőt
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}BANK
-STR_0105_BANK.t                                                 :{BLACK}{TINYFONT}bankot
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}PAPIRGYÁR
-STR_0106_PAPER_MILL.t                                           :{BLACK}{TINYFONT}papírgyárat
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}ARANYBÁNYA
-STR_0107_GOLD_MINE.t                                            :{BLACK}{TINYFONT}aranybányát
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}KONZERVGYÁR
-STR_0108_FOOD_PROCESSING_PLANT.t                                :{BLACK}{TINYFONT}konzervgyárat
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}GYÉMÁNTBÁNYA
-STR_0109_DIAMOND_MINE.t                                         :{BLACK}{TINYFONT}gyémántbányát
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}RÉZÉRCBÁNYA
-STR_010A_COPPER_ORE_MINE.t                                      :{BLACK}{TINYFONT}rézércbányát
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}GYÜMÖLCSÜLTETVÉNY
-STR_010B_FRUIT_PLANTATION.t                                     :{BLACK}{TINYFONT}gyümölcsültetvényt
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}GUMIFA ÜLTETVÉNY
-STR_010C_RUBBER_PLANTATION.t                                    :{BLACK}{TINYFONT}gumiültetvényt
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}VIZFORRÁS
-STR_010D_WATER_SUPPLY.t                                         :{BLACK}{TINYFONT}vízforrást
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}VIZTORONY
-STR_010E_WATER_TOWER.t                                          :{BLACK}{TINYFONT}víztornyot
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}FAVÁGÓ
-STR_010F_LUMBER_MILL.t                                          :{BLACK}{TINYFONT}favágót
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}VATTACUKOR-ERDÖ
-STR_0110_COTTON_CANDY_FOREST.t                                  :{BLACK}{TINYFONT}vattacukor-erdőt
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}CUKORKAGYÁR
-STR_0111_CANDY_FACTORY.t                                        :{BLACK}{TINYFONT}cukorkagyárat
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}ELEMFARM
-STR_0112_BATTERY_FARM.t                                         :{BLACK}{TINYFONT}elemfarmot
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}KÓLAKÚT
-STR_0113_COLA_WELLS.t                                           :{BLACK}{TINYFONT}kólakútat
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}JÁTÉKBOLT
-STR_0114_TOY_SHOP.t                                             :{BLACK}{TINYFONT}játékboltot
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}JÁTÉKGYÁR
-STR_0115_TOY_FACTORY.t                                          :{BLACK}{TINYFONT}játékgyárat
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}MÜANYAGFORRÁS
-STR_0116_PLASTIC_FOUNTAINS.t                                    :{BLACK}{TINYFONT}műanyagforrást
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}ÜDITÖITAL GYÁR
-STR_0117_FIZZY_DRINK_FACTORY.t                                  :{BLACK}{TINYFONT}üdítőital-gyárat
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}BUBORÉKGENERÁTOR
-STR_0118_BUBBLE_GENERATOR.t                                     :{BLACK}{TINYFONT}buborékgenerátort
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}TEJKARAMELLA FEJTÖ
-STR_0119_TOFFEE_QUARRY.t                                        :{BLACK}{TINYFONT}tejkaramella fejtőt
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}CUKORBÁNYA
-STR_011A_SUGAR_MINE.t                                           :{BLACK}{TINYFONT}cukorbányát
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}VASÚTÁLLOMÁS
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}TEHERAUTÓ-RAKODÓHELY
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}BUSZMEGÁLLÓ
@@ -339,8 +274,6 @@ STR_DEFAULT                                                     :{BLACK}Alapért
 STR_012E_CANCEL                                                 :{BLACK}Mégsem
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Átnevez
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Túl sok név van megadva
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}A megadott név már használatban van
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -364,7 +297,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Új játék
 STR_0141_LOAD_GAME                                              :{BLACK}Játék betöltése
-STR_SINGLE_PLAYER                                               :{BLACK}Egyjátékos
 STR_MULTIPLAYER                                                 :{BLACK}Hálózati játék
 STR_SCENARIO_EDITOR                                             :{BLACK}Pályaszerkesztő
 
@@ -373,9 +305,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Beállítások
 
 STR_0150_SOMEONE                                                :valaki{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Világtérkép
-STR_0152_TOWN_DIRECTORY                                         :Városlista
-STR_0153_SUBSIDIES                                              :Támogatások
 
 STR_UNITS_IMPERIAL                                              :Angolszász
 STR_UNITS_METRIC                                                :Metrikus
@@ -389,24 +318,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA} LE
 STR_UNITS_POWER_METRIC                                          :{COMMA} LE
 STR_UNITS_POWER_SI                                              :{COMMA} kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonna
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonna
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} köbméter
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} 9.81*10³ N
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -636,7 +559,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}"{STRING}" MÜSORA
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}TÖRLÉS
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}MENTÉS
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Az aktuális műsor számai
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}A 'minden szám' műsor kiválasztása
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}A 'régi stílus' zenei műsor kiválasztása
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Az 'új stílus' zenei program kiválasztása
@@ -720,76 +642,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}A telep�
 STR_023C_EXPAND                                                 :{BLACK}Növel
 STR_023D_RANDOM_TOWN                                            :{BLACK}Egy véletlen település
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Egy település építése véletlenszerű helyre
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Gazdasági épület készítése
-STR_0240_COAL_MINE                                              :{BLACK}Szénbánya
-STR_0241_POWER_STATION                                          :{BLACK}Erőmű
-STR_0242_SAWMILL                                                :{BLACK}Fűrésztelep
-STR_0243_FOREST                                                 :{BLACK}Erdő
-STR_0244_OIL_REFINERY                                           :{BLACK}Olajfinomító
-STR_0245_OIL_RIG                                                :{BLACK}Olajfúró torony
-STR_0246_FACTORY                                                :{BLACK}Gyár
-STR_0247_STEEL_MILL                                             :{BLACK}Acélöntő
-STR_0248_FARM                                                   :{BLACK}Farm
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Vasércbánya
-STR_024A_OIL_WELLS                                              :{BLACK}Olajkút
-STR_024B_BANK                                                   :{BLACK}Bank
-STR_024C_PAPER_MILL                                             :{BLACK}Papírgyár
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Konzervgyár
-STR_024E_PRINTING_WORKS                                         :{BLACK}Nyomda
-STR_024F_GOLD_MINE                                              :{BLACK}Aranybánya
-STR_0250_LUMBER_MILL                                            :{BLACK}Favágó
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Gyümölcsültetvény
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Gumifa ültetvény
-STR_0253_WATER_SUPPLY                                           :{BLACK}Vízforrás
-STR_0254_WATER_TOWER                                            :{BLACK}Víztorony
-STR_0255_DIAMOND_MINE                                           :{BLACK}Gyémántbánya
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Rézércbánya
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Vattacukor-erdő
-STR_0258_CANDY_FACTORY                                          :{BLACK}Cukorkagyár
-STR_0259_BATTERY_FARM                                           :{BLACK}Elemfarm
-STR_025A_COLA_WELLS                                             :{BLACK}Kólakút
-STR_025B_TOY_SHOP                                               :{BLACK}Játékbolt
-STR_025C_TOY_FACTORY                                            :{BLACK}Játékgyár
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Műanyagforrás
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Üdítőital-gyár
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Buborékgenerátor
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Tejkaramella-fejtő
-STR_0261_SUGAR_MINE                                             :{BLACK}Cukorbánya
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Szénbánya építése
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Erőmű építése
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Fűrésztelep építése
-STR_0265_PLANT_FOREST                                           :{BLACK}Erdő ültetése
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Olajfinomító építése
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Olajfúró torony építése (csak a térkép széléhez közel építhető)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Gyár építése
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Acélöntő építése
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Farm építése
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Vasércbánya építése
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Olajkút építése
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bank építése (csak 1200-nál nagyobb lakosságú településeken építhető)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Papírgyár építése
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Konzervgyár építése
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Nyomda építése
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Aranybánya építése
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bank építése (csak nagy településeken építhető)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Favágó építése (az esőerdő kivágására és fa termelésére)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Gyümölcsültetvény ültetése
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Gumifa ültetvény ültetése
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Vízforrás építése
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Víztorony építése (csak sivatagi településeken építhető)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Gyémántbánya építése
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Rézércbánya építése
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Vattacukor-erdő ültetése
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Cukorkagyár építése
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Elemfarm építése
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Kólakút építése
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Játékbolt építése
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Játékgyár építése
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Műanyagforrás építése
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Üdítőital-gyár építése
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Buborékgenerátor építése
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Tejkaramella-fejtő építése
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Cukorbánya építése
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Nem építhető ide {STRING}...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...előbb települést kell építened
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...városonként csak egy lehet
@@ -818,7 +670,6 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}Játék 
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Játék magasságtérképen
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Új játékot kezd egy magasságtérkép alapján
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Biztosan abba akarod hagyni a pálya szerkesztését ?
-STR_029C_QUIT_EDITOR                                            :{WHITE}Kilépés a szerkesztőből
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...csak 1200-nál nagyobb lakosságszámú településeken építhető
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}A kezdődátum visszább állítása egy évvel
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}A kezdődátum előrébb állítása egy évvel
@@ -847,13 +698,8 @@ STR_SUMMARY                                                     :Kivonat
 STR_FULL                                                        :Teljes
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Városlista
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Járművek márkanevei
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Alap
 STR_02BF_CUSTOM                                                 :Saját
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Saját nevek mentése
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}A járművek márkanevének kiválasztása
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}A saját jármű-márkanevek elmentése lemezre
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -862,7 +708,6 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :Nehézségi be�
 STR_MENU_CONFIG_SETTINGS                                        :Haladó beállítások
 STR_NEWGRF_SETTINGS                                             :NewGRF beállítások
 STR_TRANSPARENCY_OPTIONS                                        :Átlátszósági beállítások
-STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Városnevek mutatása
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Állomásnevek mutatása
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Feliratok mutatása
@@ -923,7 +768,6 @@ STR_02FA_EVERY_12_MONTHS                                        :12 havonta
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Új játék kezdése
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Mentett játék betöltése
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Testreszabott pálya készítése
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Egy játékos játék kiválasztása
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}A játék beállításainak megmutatása
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}A nehézségi beállítások megmutatása
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Új játék kezdése saját pályán
@@ -946,7 +790,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Új gazd
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...csak településben építhető
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...csak esőerdőben építhető
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...csak sivatagban építhető
 STR_0319_PAUSED                                                 :{YELLOW}*  *  SZÜNET  *  *
@@ -1385,7 +1228,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Vasúti 
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...nincs település ezen a pályán
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Biztos vagy benne hogy véletlen tájképet akarsz létrehozni?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Sok véletlen település
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Véletlenszerüen elhelyez a térképen sok települést.
 STR_MANY_RANDOM_INDUSTRIES                                      :Sok véletlen gazdasági épület
@@ -1432,25 +1274,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Az előz
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Kikapcsol mind
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Bekapcsol mind
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Szénbánya építése
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Erdő ültetése
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Olajfúró torony építése
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Farm építése
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Rézércbánya építése
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Olajkút építése
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Aranybánya építése
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Gyémántbánya építése
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Vasércbánya építése
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Gyümölcsültetvény telepítése
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Gumifa ültetvény telepítése
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Vízforrás építése
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Vattacukor-erdő telepítése
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Elemfarm építése
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Kólakút építése
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Műanyagforrás építése
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Buborékgenerátor építése
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Tejkaramella fejtő építése
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Cukorbánya építése
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Gazdasági épületek
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% elszállítva)
@@ -2122,8 +1945,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Meghajt�
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}A mentés neve
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}A kijelölt mentés törlése
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}A játék elmentése a választott néven
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Az új játék típusa
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Válassz egy pályát (zöld), előre beállított játékot (kék) vagy véletlenszerű új játékot
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Véletlenszerű új játék
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Magasságtérkép betöltése
 STR_SAVE_OSKTITLE                                               :{BLACK}Add meg a játékmentés nevét
@@ -2241,8 +2062,6 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} termelés csökkent! {INDUSTRY} mostantól {COMMA}%-al kevesebbet termel!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vonat van az alagútban
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Közúti jármű van az alagútban
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Másik alagút van az útban
 STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Az alagút vége a pályán kívülre esik
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nem lehet kiásni a földet az alagút túloldalán
@@ -2412,7 +2231,6 @@ STR_TOLERANT                                                    :Toleráns
 STR_HOSTILE                                                     :Ellenséges
 
 ##id 0x7000
-STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :({COMMA}. vállalat)
 STR_7004_NEW_FACE                                               :{BLACK}Új arc
@@ -2465,7 +2283,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Új arc 
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}A cég járművei színének megváltoztatása
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Az elnök nevének megváltoztatása
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}A cég nevének megváltoztatása
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Kattints a kiválasztott színsémára
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}A kölcsön növelése
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}A kölcsön egy részének törlesztése
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Elnök)
@@ -3015,7 +2832,6 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Nem ind�
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Javítási időköz: {LTBLUE}{COMMA} nap{BLACK}   Utolsó javítás: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Szervíz-intervallum: {LTBLUE}{COMMA}%{BLACK}   Utolsó szervíz: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vonatok - kattints egy vonatra az adataihoz
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Új vonatok vásárlása (járműtelep szükséges hozzá)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vonatok - kattints egy vonatra az adataihoz, húzással áthelyezheted a járműveket
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Új vasúti jármű vásárlása
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Dobj ide egy járművet az eladásához
@@ -3066,7 +2882,6 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nem vál
 STR_CLEAR_TIME                                                  :{BLACK}Idő törlése
 STR_RESET_LATENESS                                              :{BLACK}Késés nullázása
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Átnevezi az ellenőrző pontot
-STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Lassít
 STR_TRAIN_STOPPING_VEL                                          :{RED}Lassít, {VELOCITY}
@@ -3121,7 +2936,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Javít�
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nem küldheted a járművet a garázsba...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nem találom a helyi garázst
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Közúti járművek - kattints egy járműre az adataihoz
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Új közúti járművek vásárlása (garázs kell hozzá)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Aktuális járműesemény - kattints ide a jármű elindításához/ megállításához
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}A jármű menetrendjének megmutatása
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}A fő nézetet a járműre állítja
@@ -3203,7 +3017,6 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Új haj�
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Dobj ide egy hajót az eladásához
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}A fő nézetet a dokkra állítja
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Hajók - kattints egy hajóra az adataihoz
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Új hajók vásárlása (dokk szükséges hozzá)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Hajó kiválasztása - kattints egy hajóra az adataihoz
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}A kijelölt hajó megvétele
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Aktuális hajóesemény - kattints ide a hajó elindításhoz/megállításhoz
@@ -3248,7 +3061,6 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Megvesz
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nem veheted meg a repülőgépet...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} repülőgépei - {COMMA}
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} menetrendje
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} adatai
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Működtetési költség: {LTBLUE}{CURRENCY}/év
 STR_A00E_MAX_SPEED                                              :{BLACK}Végsebesség: {LTBLUE}{VELOCITY}
@@ -3271,7 +3083,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nem adha
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Repülőtér építése
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Repülőtér építése
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Repülőgépek - kattints egy repülőgépre az adataihoz
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Új repülőgépek vásárlása (hangár szükséges hozzá)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Repülőgépek - kattints egy repülőgépre az adataihoz
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Új repülőgépek vásárlása
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Dobj ide egy repülőgépet az eladásához
@@ -3297,12 +3108,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}A repül
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Márkanév megváltoztatása
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Nem változtathatod meg a márkanevet...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}A repülőgép átalakítása másfajta rakomány szállítására
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} átalakítása
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Repülőgép átalakítása
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Válaszd ki, milyen árut szállítson a repülőgép
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}A repülőgép átalakítása a kijelölt áru szállítására
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Átalakítás, hogy szállíthasson:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Új kapacitás: {GOLD}{STRING}{}{BLACK}Átalakítás költsége: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nem alakíthatod át a repülőgépet...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} várakozási és menetidői
@@ -3359,8 +3167,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Alkalmaz
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Palettaváltás
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}A kiválasztott NewGRF palettájának váltása.{}Akkor használd, ha a NewGRF-ból származó grafikai elemek rózsaszínként jelennek meg
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Paraméterek beállítása
-STR_NEWGRF_TIP                                                  :{BLACK}Az általad felinstallált newgrf csomagok listája. Kattints a csomagra a beállítások módosításához.
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Jelenleg nincsennek newgrf csomagok felinstallálva. Olvasd el a manuálban, hogyan kell installálni az új grafikákat.
 STR_NEWGRF_FILENAME                                             :{BLACK}Fájlnév: {SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}Paletta: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
@@ -3419,7 +3225,6 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Pontosa
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilis GRF(ek) betöltve a hiányzó fájl(ok) helyett
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Hiányzó GRF fájl(oka)t kikapcsoltam
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Kritikus GRF fájl(ok) hiányoznak, a játék nem betölthető
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Hiányzó GRF fájl(ok)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}A játék folytatásától az OpenTTD lefagyhat.{}Ne jelentsd be az ismétlődő lefagyásokat egyesével.{}Biztosan folytatni akarod?
 
@@ -3493,7 +3298,6 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Nyomd me
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Nyomd meg ezt a gombot hogy a bal oldalon kiválasztott egységet lecseréld a jobb oldalon kiválasztottra
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Válaszd ki a cserélendő egységek vasúttípusát
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Megmutatja, hogy melyik bal oldali egységet akarod kicserélni
-STR_REPLACE_HELP                                                :{BLACK}Ez az opció lehetőve teszi, hogy kiválassz mozdonytípust és lecseréld másfajtára. Ez aztán automatikusan fog megtörténni, amikor a jármű karbantartásra a járműtelepre megy
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon törlés: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az automatikus cserénél a szerelvény hosszának a megtartása kocsik lekapcsolásával (mozdony utántól kezdve), ha a csere után a szerelvény hosszabb lenne.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Lecserél: {ORANGE}{SKIP}{SKIP}{STRING}
@@ -3702,7 +3506,6 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} 
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} hajó
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} repülő
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Csoport átnevezése
-STR_GROUP_REPLACE_CAPTION                                       :{WHITE}A(z) "{GROUP}" csoport járműveinek lecserélése
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Csoport létrehozás sikertelen...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}Csoport törlése sikertelen...
@@ -3838,7 +3641,6 @@ STR_AI_RANDOM_AI                                                :Véletlenszerű
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}MI paraméterek
 STR_AI_AUTHOR                                                   :Készítő:
 STR_AI_VERSION                                                  :Verzió:
-STR_AI_DESCRIPTION                                              :Leírás:
 ########
 
 ############ town controlled noise level

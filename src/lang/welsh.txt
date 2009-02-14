@@ -162,7 +162,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Does dim
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Hawlfraint Wreiddiol {COPYRIGHT} 1995 Chris Sawyer, Holl cedwir pob hawl
 STR_00B7_VERSION                                                :{BLACK}fersiwn OpenTTD {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Y tîm OpenTTD
-STR_TRANSLATED_BY                                               :{BLACK}  Cyfieithydd – Gruffudd Prys
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -217,39 +216,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Llongau
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Awyrennau
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Llwybrau Cludiant
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Gorsaf Lo
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Gorsaf Bŵer
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Coedwig
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Melin Goed
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Purfa Olew
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Fferm
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Ffatri
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Gwaith Argraffu
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Ffynhonnau Olew
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Mwynglawdd Mwyn Haearn
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Melin Ddur
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banc
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Melin Bapur
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Mwynglawdd  Aur
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Ffatri Prosesu Bwyd
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Mwynglawdd Ddiemwntau
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Mwynglawdd Mwyn Copr
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Planhigfa Ffrwythau
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Planhigfa Rwber
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Cyflenwad Dŵr
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Twr Dŵr
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Melin Goed
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Coedwig Candifflos
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Ffatri Felysion
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Fferm Fatrïau
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Ffynhonnau Ddiodydd Cola
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Siop Deganau
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Ffatri Deganau
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Ffynhonnau Plastig
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Ffatri Ddiod Pefriog
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Cynhyrchydd Swigod
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Chwarel Doffi
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Mwynglawdd Siwgr
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Gorsaf Reilffordd
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Man Llwytho Lorïau
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Gorsaf Fysiau
@@ -273,8 +240,6 @@ STR_DEFAULT                                                     :{BLACK}Rhagosod
 STR_012E_CANCEL                                                 :{BLACK}Diddymu
 STR_012F_OK                                                     :{BLACK}Iawn
 STR_0130_RENAME                                                 :{BLACK}Ailenwi
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Gormod o enwau wedi'u diffinio
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Mae'r enw hwnnw eisoes mewn defnydd
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -298,7 +263,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Gêm Newydd
 STR_0141_LOAD_GAME                                              :{BLACK}Llwytho Gêm
-STR_SINGLE_PLAYER                                               :{BLACK}Un Chwaraewr
 STR_MULTIPLAYER                                                 :{BLACK}Amlchwaraewr
 STR_SCENARIO_EDITOR                                             :{BLACK}Golygydd Senario
 
@@ -307,9 +271,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Dewisiadau Gêm
 
 STR_0150_SOMEONE                                                :rhywun{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Map o'r Byd
-STR_0152_TOWN_DIRECTORY                                         :Cyfeiriadur Trefi
-STR_0153_SUBSIDIES                                              :Cymorthdaliadau
 
 STR_UNITS_IMPERIAL                                              :Imperial
 STR_UNITS_METRIC                                                :Metrig
@@ -323,24 +284,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}hp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tunnell
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tunnell
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galwyn
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} grym tunnell
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -566,7 +521,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Rhaglen - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Clirio
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Cadw
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Rhaglen gyfredol o draciau cerddoriaeth
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Dewis y rhaglen 'pob trac'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Dewis y rhaglen 'cerddoriaeth arddull hen'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Dewis y rhaglen 'cerddoriaeth arddull newydd'
@@ -650,76 +604,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Cynyddu 
 STR_023C_EXPAND                                                 :{BLACK}Ehangu
 STR_023D_RANDOM_TOWN                                            :{BLACK}Tref ar hap
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Adeiladu tref mewn safle ar hap
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Cynhyrchu Diwydiannau
-STR_0240_COAL_MINE                                              :{BLACK}Gorsaf Lo
-STR_0241_POWER_STATION                                          :{BLACK}Gorsaf Bŵer
-STR_0242_SAWMILL                                                :{BLACK}Melin Goed
-STR_0243_FOREST                                                 :{BLACK}Coedwig
-STR_0244_OIL_REFINERY                                           :{BLACK}Purfa Olew
-STR_0245_OIL_RIG                                                :{BLACK}Rig Olew
-STR_0246_FACTORY                                                :{BLACK}Ffatri
-STR_0247_STEEL_MILL                                             :{BLACK}Melin Ddur
-STR_0248_FARM                                                   :{BLACK}Fferm
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Mwynglawdd Mwyn Haearn
-STR_024A_OIL_WELLS                                              :{BLACK}Ffynhonnau Olew
-STR_024B_BANK                                                   :{BLACK}Banc
-STR_024C_PAPER_MILL                                             :{BLACK}Melin Bapur
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Gwaith Prosesu Bwyd
-STR_024E_PRINTING_WORKS                                         :{BLACK}Gwaith Argraffu
-STR_024F_GOLD_MINE                                              :{BLACK}Mwynglawdd Aur
-STR_0250_LUMBER_MILL                                            :{BLACK}Melin Goed
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Planhigfa Ffrwythau
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Planhigfa Rwber
-STR_0253_WATER_SUPPLY                                           :{BLACK}Cyflenwad Dŵr
-STR_0254_WATER_TOWER                                            :{BLACK}Twr Dŵr
-STR_0255_DIAMOND_MINE                                           :{BLACK}Mwynglawdd Ddiemwntau
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Mwynglawdd Mwyn Copr
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Coedwig Gandifflos
-STR_0258_CANDY_FACTORY                                          :{BLACK}Ffatri Felysion
-STR_0259_BATTERY_FARM                                           :{BLACK}Fferm Fatris
-STR_025A_COLA_WELLS                                             :{BLACK}Ffynhonnau Cola
-STR_025B_TOY_SHOP                                               :{BLACK}Siop Deganau
-STR_025C_TOY_FACTORY                                            :{BLACK}Ffatri Deganau
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Pistyll Plastig
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Ffatri Ddŵr Pefrio
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Cynhyrchydd Swigod
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Chwarel Doffi
-STR_0261_SUGAR_MINE                                             :{BLACK}Mwynglawdd Siwgr
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Adeiladu Gorsaf Lo
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Adeiladu Gorsaf Bŵer
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Adeiladu Melin Goed
-STR_0265_PLANT_FOREST                                           :{BLACK}Plannu Coedwig
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Adeiladu Purfa Olew
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Adeiladu Rig Olew (Dim ond ar ymylon y map mae modd eu hadeiladu)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Adeiladu Ffatri
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Adeiladu Melin Ddur
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Adeiladu Fferm
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Adeiladu Mwynglawdd Mwyn Haearn
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Adeiladu Ffynhonnau Olew
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Adeiladu Banc (Dim ond mewn trefi gyda phoblogaeth sy’n uwch na 1200 y mae modd eu hadeiladu)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Adeiladu Melin Bapur
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Adeiladu Gwaith Prosesu Bwyd
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Adeiladu Gwaith Argraffu
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Adeiladu Mwynglawdd Aur
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Adeiladu Banc (Dim ond mewn trefi mae modd ei adeiladu)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Adeiladu Melin Goed (i glirio fforestydd glaw a chynhyrchu Coed)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Plannu Planhigfa Ffrwythau
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Plannu Planhigfa Rwber
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Adeiladu Cyflenwad Dŵr
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Adeiladu Twr Dŵr (gellir ei adeiladu'n unig mewn towns)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Adeiladu Mwynglawdd Ddiemwntau
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Adeiladu Mwynglawdd Mwyn Copr
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Plannu Coedwig Candifflos
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Adeiladu Ffatri Felysion
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Adeiladu Fferm Fatrïau
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Adeiladu Ffynhonnau Cola
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Adeiladu Siop Deganau
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Adeiladu Ffatri Deganau
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Adeiladu Ffynhonnau Plastig
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Adeiladu Ffatri Ddŵr Pefriog
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Adeiladu Cynhyrchydd Swigod
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Adeiladu Chwarel Doffi
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Adeiladu Mwynglawdd Siwgr
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Ni ellir adeiladu {STRING} yma...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...rhaid adeiladu tref yn gyntaf
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...caniateir un yn unig ym mhob tref
@@ -748,7 +632,6 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}Chwarae 
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Chwarae Map Uchder
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Dechrau gêm newydd, gan ddefnyddio'r map uchder fel tirwedd
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Ydych chi'n siwr eich bod chi eisiau gadael y senario hwn?
-STR_029C_QUIT_EDITOR                                            :{WHITE}Cau Golygydd
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...gellir ei adeiladu'n unig mewn trefi gyda phoblogaeth o 1200 neu fwy
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Symud y dyddiad cychwyn yn ôl 1 blwyddyn
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Symud y dyddiad cychwyn ymlaen 2 flynedd
@@ -767,13 +650,8 @@ STR_SUMMARY                                                     :Crynodeb
 STR_FULL                                                        :Llawn
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Cyfeiriadur Trefi
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Enwau Cynllun Cerbydau
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Rhagosodiad
 STR_02BF_CUSTOM                                                 :Addasedig
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Cadw enwau addasedig
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Dewis Enwau Cynllun Cerbydau
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Cadw enwau cynllun addasedig
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -782,7 +660,6 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :Gosodiadau Anha
 STR_MENU_CONFIG_SETTINGS                                        :Gosodiadau uwch
 STR_NEWGRF_SETTINGS                                             :Gosodiadau NewGRF
 STR_TRANSPARENCY_OPTIONS                                        :Dewisiadau tryloywder
-STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Dangos enwau trefi
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Dangos enwau gorsafoedd
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Dangos arwyddion
@@ -842,7 +719,6 @@ STR_02FA_EVERY_12_MONTHS                                        :Bob 12 mis
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Dechrau Gêm Newydd
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Llwytho Gêm sydd wedi'i Gadw
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Creu addasiad o fyd/senario ar gyfer y gêm
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Dewis gêm un chwaraewr
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Dangos dewisiadau'r gêm
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Dangos dewisiadau anhawster
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Dechrau gêm newydd, gan ddefnyddio senario wedi'i haddasu
@@ -865,7 +741,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Ariannu 
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...gellir ei adeiladu'n unig mewn trefi
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...gellir ei adeiladu'n unig mewn ardal o goedwigoedd glaw
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...gellir ei adeiladu'n unig mewn ardaloedd o anialwch
 STR_0319_PAUSED                                                 :{YELLOW}* *  WEDI'I OEDI  *  *
@@ -1251,7 +1126,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Adeiladu
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...nid oes tref yn y senario hwn
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Ydych chi'n siŵr eich bod chi eisiau creu tirwedd ar hap?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Llawer o drefi ar hap
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Gorchuddio'r map gyda threfi wedi'i lleoli ar hap
 STR_MANY_RANDOM_INDUSTRIES                                      :Llawer o ddiwydiannau ar hap
@@ -1298,25 +1172,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Rhestr o
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Analluogi popeth
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Galluogi popeth
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Adeiladu Gorsaf Lo
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Plannu Coedwig
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Adeiladu Rig Olew
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Ariannu Fferm
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Adeiladu Mwynglawdd Mwyn Copr
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Drilio am Olew
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Adeiladu Mwynglawdd Aur
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Adeiladu Mwynglawdd Ddiemwntau
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Adeiladu Mwynglawdd Mwyn Haearn
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Ariannu Planhigfa Ffrwythau
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Ariannu Planhigfa Rwber
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Ariannu Cyflenwad Dŵr
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Plannu Coedwig Candifflos
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Ariannu Fferm Fatrïau
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Drilio am Gola
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Ariannu Ffynhonnau Plastig
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Adeiladu Cynhyrchydd Swigod
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Ariannu Chwarel Doffi
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Adeiladu Mwynglawdd Siwgr
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Diwydiannau
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% wedi'i gludo)
@@ -1965,8 +1820,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Rhestr o
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Enw sydd wedi'i dewis ar gyfer gêm wedi'i chadw
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Dileu'r gêm wedi'i chadw sydd wedi'i dewis
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Cadw'r gêm hwn gan ddefnyddio'r enw sydd wedi'i dewis
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Dewiswch Math y Gêm Newydd
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Dewiswch senario (gwyrdd), gêm ragosodedig (glas), neu gêm newydd ar hap
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Cynhyrchu gêm newydd ar hap
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Llwytho Heightmap
 STR_SAVE_OSKTITLE                                               :{BLACK}Rhowch enw ar gyfer y gêm a gadwyd
@@ -2047,8 +1900,6 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Mae cynnyrch {STRING} {INDUSTRY} yn gostwng {COMMA}%!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Mae'r trên mewn twnnel
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Mae'r cerbyd ffordd mewn twnnel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}mae twnnel arall yn y ffordd
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Does dim modd cloddio'r tir ar ben arall y twnnel
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Rhaid dymchwel twnnel yn gyntaf
@@ -2217,7 +2068,6 @@ STR_TOLERANT                                                    :Hapus
 STR_HOSTILE                                                     :Gwrthwynebus
 
 ##id 0x7000
-STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Cwmni {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Gwyneb Newydd
@@ -2270,7 +2120,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Dewiswch
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Newid lifrau cerbydau'r cwmni
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Newid enw'r rheolwr
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Newid enw'r cwmni
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Cliciwch ar y cynllun lliw rydych yn ei ddymuno
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Cynyddu maint y benthyciad
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Ad-dalu rhan o'r benthycid
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Rheolwr)
@@ -2804,7 +2653,6 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Methu cy
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Bwlch rhwng gwasanaeth: {LTBLUE}{COMMA}days{BLACK}   Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}bwlch rhwng gwasanaeth: {LTBLUE}{COMMA}%{BLACK}  Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trenau - cliciwch ar trên i gael gwybodaeth
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Adeiladu newydd trenau (angen depo trên)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trenau - cliciwch ar y trên am wybodaeth, llusgwch gerbyd i'w ychwanegu neu i'w dynnu o'r trên
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Adeiladu cerbyd trên newydd
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Llusgwch gerbyd trên yma i'w werthu
@@ -2855,7 +2703,6 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Methu ai
 STR_CLEAR_TIME                                                  :{BLACK}Clirio Amser
 STR_RESET_LATENESS                                              :{BLACK}Ailosod Mesurydd Hwyrni
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Newid enw pwynt llwybro
-STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Wrthi'n stopio
 STR_TRAIN_STOPPING_VEL                                          :{RED}Wrthi'n stopio {VELOCITY}
@@ -2908,7 +2755,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Mynd am
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Methu gyrru cerbyd i'r depo...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Methu dod o hyd i'r depo lleol
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Cerbydau Ffordd - cliciwch ar cerbyd am wybodaeth
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Adeiladu cerbyd ffordd newydd (angen depo cerbyd ffordd)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Gweithred gyfredol y cerbyd - cliciwch yma i gychwyn/stopio'r cerbyd
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Dangos gorchmynion cerbyd
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Canoli'r brif olygfa ar leoliad y cerbyd
@@ -2989,7 +2835,6 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Adeiladu
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Llusgwch long yma i'w gwerthu
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Canoli'r brif olygfa ar leoliad depo'r llong
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Llongau - cliciwch ar long am wybodaeth
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Adeiladu llong newydd (angen depo llong)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Rhestr ddewis llongau - cliciwch ar long am wybodaeth
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Adeiladu'r llong sydd wedi'i hamlygu
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Gweithred y llong gyfredol - cliciwch yma i gychwyn/stopio llong
@@ -3034,7 +2879,6 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Adeiladu
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Methu adeiladu awyren...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Awyrennau
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Gorchmynion)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Manylion)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Oed: {LTBLUE}{STRING}{BLACK}   Côst Rhedeg: {LTBLUE}{CURRENCY}/bl
 STR_A00E_MAX_SPEED                                              :{BLACK}Cyflymder uchaf: {LTBLUE}{VELOCITY}
@@ -3056,7 +2900,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}methu gw
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Adeiladu Maes Awyr
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Adeiladu maes awyr
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Awyrennau - cliciwch ar awyren am wybodaeth
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Adeiladu awyren newydd (angen maes awyr gydag awyrendy)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Awyrennau - cliciwch ar awyren am wybodaeth
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Adeiladu awyren newydd
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Llusgwch awyren yma i'w gwerthu
@@ -3082,12 +2925,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Ailenwi'
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Ailenwi'r math awyren
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Methu ailenwi'r math awyren...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Ailffitio awyren i gario llwyth o fath gwahanol
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Ailffitio)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Ailffitio awyren
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Dewiswch y math o lwyth i'r awyren ei chario
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Ailffitio awyren i gario'r math o lwyth sydd wedi'i amlygu
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Dewiswch y math o lwyth i'w gario:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Bellach yn gallu cludo: {GOLD}{STRING}{}{BLACK}Côst ailffitio: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Methu ailffitio awyren...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Amserlen)
@@ -3139,8 +2979,6 @@ STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Gosodiad
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Gosodiadau NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Gweithredu newidiadau
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Gosod paramedrau
-STR_NEWGRF_TIP                                                  :{BLACK}Rhestr o bob Newgrf sydd gennych chi wedi'u gosod. Cliciwch ar set i newid y gosodiadau
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Does dim ffeiliau newgrf wedi eu gosod ar hyn o bryd! Edrychwch yn y llawlyfr am gyfarwyddiadau ar sut i osod graffeg newydd
 STR_NEWGRF_FILENAME                                             :{BLACK}Enw Ffeil: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
@@ -3173,7 +3011,6 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ni ddar
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Llwythwyd GRF(au) cytûn yn lle'r rhai coll
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Analluogwyd y ffeiliau GRF coll
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Ffeiliau GRF ar goll i fedru llwytho gêm
 
 
 
@@ -3239,7 +3076,6 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Gwasgwch
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Gwasgwch i ddechrau disodli'r  math injan sydd wedi'i ddewis ar y chwith gyda'r math injan ar y dde
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Dewiswch y math o reilffordd yr hoffech chi ddisodli injans ar ei gyfer
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dangoswch pa injan (os unrhyw) y mae'r injan ar y chwith yn cael ei disodli gyda
-STR_REPLACE_HELP                                                :{BLACK}mae hyn yn gadael i chi ddisodli un math injan gyda math arall, pan fydd injan o'r math gwreiddiol yn cyrraedd y depo
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Tynnu wagenni: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gwneud i awtoddisodli gadw hyd y trên yr un peth drwy dynnu wagenni (gan ddechrau yn y blaen), os byddai disodli'r injan yn gwneud y trên yn hirach.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Disodli: {ORANGE}{SKIP}{SKIP}{STRING}

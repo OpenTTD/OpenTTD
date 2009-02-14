@@ -164,7 +164,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Нево
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Оригинальные авторские права {COPYRIGHT} 1995 Chris Sawyer, Все права защищены
 STR_00B7_VERSION                                                :{BLACK}OpenTTD v{REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Команда разработчиков OpenTTD
-STR_TRANSLATED_BY                                               :{BLACK}  Переводчики - Назаров Дмитрий (aka Smoky555), Олег Попков (aka Oleg)  - http://forums.ttdrussia.net
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -219,39 +218,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Суда
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Авиатранспорт
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Маршруты транспорта
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Угольная шахта
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Электростанция
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Лес
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Лесопилка
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Нефтезавод
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Ферма
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Завод
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Типография
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Нефтяная скважина
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Шахта железной руды
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Сталелитейный завод
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}Банк
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Бумажная фабрика
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Золотой прииск
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Пищевой завод
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Алмазная шахта
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Медная шахта
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Фруктовые плантации
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Плантация каучука
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Водокачка
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Водонапорная башня
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Лесопилка
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Лес сахарной ваты
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Завод сладостей
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Ферма батареек
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Насос колы
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Магазин игрушек
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Завод игрушек
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Фонтаны пластика
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Завод шипучки
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Генератор пузырьков
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Карьер ирисок
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Шахта сахара
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Ж/Д станция
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Автостанция
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Автобусная станция
@@ -275,8 +242,6 @@ STR_DEFAULT                                                     :{BLACK}По-у�
 STR_012E_CANCEL                                                 :{BLACK}Отмена
 STR_012F_OK                                                     :{BLACK}Принять
 STR_0130_RENAME                                                 :{BLACK}Переимен.
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Слишком много имен определено
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Выбранное имя уже используется
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -300,7 +265,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Новая игра
 STR_0141_LOAD_GAME                                              :{BLACK}Загрузить игру
-STR_SINGLE_PLAYER                                               :{BLACK}Один игрок
 STR_MULTIPLAYER                                                 :{BLACK}Сетевая игра
 STR_SCENARIO_EDITOR                                             :{BLACK}Редактор сценариев
 
@@ -309,9 +273,6 @@ STR_BY                                                          :{BLACK}×
 STR_0148_GAME_OPTIONS                                           :{BLACK}Настройки игры
 
 STR_0150_SOMEONE                                                :кто-нибудь{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Карта мира
-STR_0152_TOWN_DIRECTORY                                         :Список городов
-STR_0153_SUBSIDIES                                              :Субсидии
 
 STR_UNITS_IMPERIAL                                              :Британские
 STR_UNITS_METRIC                                                :Метрические
@@ -325,24 +286,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA} лс
 STR_UNITS_POWER_METRIC                                          :{COMMA} лс
 STR_UNITS_POWER_SI                                              :{COMMA} кВт
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}т
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}т
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}кг
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} тонн{P а ы ""}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} тонн{P а ы ""}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} кг
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}гал.
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}л
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}м³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} галлон{P "" а ов}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} литр{P "" а ов}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} м³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} тонн силы
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -572,7 +527,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Программа - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Очистить
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Сохранить
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Текущая программа музыкальных треков
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Выбор программы 'Все треки'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Выбор программы 'Старый стиль музыки'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Выбор программы 'Новый стиль музыки'
@@ -656,76 +610,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Увел
 STR_023C_EXPAND                                                 :{BLACK}Расширить
 STR_023D_RANDOM_TOWN                                            :{BLACK}Случайный город
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Создать город в случайном месте
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Создание предприятий
-STR_0240_COAL_MINE                                              :{BLACK}Угольная шахта
-STR_0241_POWER_STATION                                          :{BLACK}Электростанция
-STR_0242_SAWMILL                                                :{BLACK}Лесопилка
-STR_0243_FOREST                                                 :{BLACK}Лес
-STR_0244_OIL_REFINERY                                           :{BLACK}Нефтезавод
-STR_0245_OIL_RIG                                                :{BLACK}Нефтяная вышка
-STR_0246_FACTORY                                                :{BLACK}Фабрика
-STR_0247_STEEL_MILL                                             :{BLACK}Сталеплавильный завод
-STR_0248_FARM                                                   :{BLACK}Ферма
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Железорудная шахта
-STR_024A_OIL_WELLS                                              :{BLACK}Нефтяная скважина
-STR_024B_BANK                                                   :{BLACK}Банк
-STR_024C_PAPER_MILL                                             :{BLACK}Бумажная фабрика
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Пищевая фабрика
-STR_024E_PRINTING_WORKS                                         :{BLACK}Типография
-STR_024F_GOLD_MINE                                              :{BLACK}Золотая шахта
-STR_0250_LUMBER_MILL                                            :{BLACK}Лесопилка
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Плантация фруктов
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Плантация каучука
-STR_0253_WATER_SUPPLY                                           :{BLACK}Водокачка
-STR_0254_WATER_TOWER                                            :{BLACK}Водонапорная башня
-STR_0255_DIAMOND_MINE                                           :{BLACK}Алмазные копи
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Медная шахта
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Лес сахарной ваты
-STR_0258_CANDY_FACTORY                                          :{BLACK}Фабрика сладостей
-STR_0259_BATTERY_FARM                                           :{BLACK}Фабрика батареек
-STR_025A_COLA_WELLS                                             :{BLACK}Завод колы
-STR_025B_TOY_SHOP                                               :{BLACK}Магазин игрушек
-STR_025C_TOY_FACTORY                                            :{BLACK}Фабрика игрушек
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Фонтан пластика
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Завод газировки
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Генератор пузырьков
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Карьер ирисок
-STR_0261_SUGAR_MINE                                             :{BLACK}Сахарная шахта
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Построить угольную шахту
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Построить электростанцию
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Построить лесопилку
-STR_0265_PLANT_FOREST                                           :{BLACK}Посадить лес
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Построить нефтезавод
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Построить нефтяную вышку (только возможно у края карты)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Построить фабрику
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Построить сталелитейный завод
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Построить ферму
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Построить шахту железной руды
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Построить нефтяные скважины
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Построить банк (только возможно в городе с населением более 1200)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Построить бумажную фабрику
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Построить пищевой завод
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Построить типографию
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Построить золотой прииск
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Построить банк (только возможно в городе)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Построить лесопилку (уничтожает джунгли и производит дерево)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Создать фруктовую плантацию
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Создать плантацию каучука
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Построить водокачку
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Построить водонапорную башню (только возможно в городе)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Построить алмазную шахту
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Построить шахту медной руды
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Посадить лес сахарной ваты
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Построить конфетную фабрику
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Построить ферму батареек
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Построить колодцы колы
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Построить магазин игрушек
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Построить фабрику игрушек
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Построить фонтаны пластика
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Построить завод газировки
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Построить генератор пузырьков
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Построить карьер ирисок
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Построить сахарную шахту
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Здесь нельзя создать {STRING}...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...сначала постройте город
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...такой объект уже есть в городе
@@ -754,7 +638,6 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}Игра
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Играть карту высот
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Начать новую игру, используя карту высот в качестве шаблона карты
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Вы уверены, что хотите выйти из этого сценария?
-STR_029C_QUIT_EDITOR                                            :{WHITE}Выход из редактора
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...можно построить в городах с населением более 1200 жителей
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Уменьшить год начала игры на 1
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Увеличить год начала игры на 1
@@ -773,13 +656,8 @@ STR_SUMMARY                                                     :Кратко
 STR_FULL                                                        :Полно
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Список городов
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Названия транспортных средств
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :По умолчанию
 STR_02BF_CUSTOM                                                 :Свои
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Сохранить пользовательские названия
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Загрузка пользовательских названий транспортных средств
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Сохранить пользовательские названия транспортных средств
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -788,7 +666,6 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :Настрой�
 STR_MENU_CONFIG_SETTINGS                                        :Расширенные настройки
 STR_NEWGRF_SETTINGS                                             :Настройки NewGRF
 STR_TRANSPARENCY_OPTIONS                                        :Настройки прозрачности
-STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Показ названий городов
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Показ названий станций
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Показ знаков
@@ -849,7 +726,6 @@ STR_02FA_EVERY_12_MONTHS                                        :Каждый г
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Начать новую игру
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Загрузить сохранённую игру
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Создать собственный сценарий
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Выбрать одиночную игру
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Открыть настройки игры
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Открыть настройки сложности
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Начать новую игру, используя сценарий
@@ -872,7 +748,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Созд
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...можно строить только в городах
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...можно строить только в тропиках
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...можно строить только в пустыне
 STR_0319_PAUSED                                                 :{YELLOW}*  *  ПАУЗА  *  *
@@ -1300,7 +1175,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Стро
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...в этом сценарии нет городов
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Вы уверены, что хотите создать случайную землю?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Много случайных городов
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Случайно разместить на карте города
 STR_MANY_RANDOM_INDUSTRIES                                      :Много произвольных промышленностей
@@ -1347,25 +1221,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Спис
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Выключить все
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Включить все
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Построить угольную Шахту
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Высадить лес
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Построить нефтеперераб. завод
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Профинансировать ферму
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Построить шахту медной руды
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Пробурить нефт. скважину
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Построить золотую шахту
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Построить алмазные копи
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Построить шахту железной руды
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Высадить фруктовые плантации
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Основать каучуковые плантации
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Построить водокачку
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Посадить лес сахарной ваты
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Спонсировать ферму батареек
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Вырыть колодцы колы
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Построить фонтаны пластика
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Построить Генератор Пузырьков
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Профинансировать Карьер Ирисок
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Построить шахту сахара
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Промышленность
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% перевезено)
@@ -2043,8 +1898,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Спис
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Выбранное имя для сохранения игры
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Удалить выбранную сохраненную игру
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Сохранить игру, используя выбранное имя
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Выбрать тип новой игры
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Выбрать сценарий(зеленый), предустановленную новую игру (синий) или случайную новую игру
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Сгенерировать случайную карту
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Загруз. ЛАНДШАФТ
 STR_SAVE_OSKTITLE                                               :{BLACK}Введите имя сохраняемой игры
@@ -2125,8 +1978,6 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} производительность {INDUSTRY} уменьшилась на {COMMA}%!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Поезд в туннеле
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Машина в туннеле
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Другой туннель на пути
 STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Туннель заканчивается за пределами карты
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Невозможно поднять/опустить землю для другого конца туннеля
@@ -2307,7 +2158,6 @@ STR_TOLERANT                                                    :Терпимо�
 STR_HOSTILE                                                     :Враждебное
 
 ##id 0x7000
-STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Компания {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Лицо
@@ -2360,7 +2210,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Выбр
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Изменить цвет транспортных средств компании
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Изменение имени директора
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Изменение названия компании
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Выберите цветовую схему
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Взять/увеличить кредит
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Вернуть часть ссуды
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Директор)
@@ -2910,7 +2759,6 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Нево
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Осмотр каждые: {LTBLUE}{COMMA}дней{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Интервал обслуж.: {LTBLUE}{COMMA}%{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Поезда - нажмите для получения справки
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Построить новые поезда (сначала требуется построить депо)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Поезда - кликните для получения информации, используйте перетаскивание для изменения состава
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Построить новый поезд
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Перетащите вагон сюда, чтобы продать его
@@ -2961,7 +2809,6 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Нево
 STR_CLEAR_TIME                                                  :{BLACK}Сбросить Время
 STR_RESET_LATENESS                                              :{BLACK}Сброс счетчика
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Переименовать точку пути
-STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Остановлен
 STR_TRAIN_STOPPING_VEL                                          :{RED}Останавливаю, {VELOCITY}
@@ -3016,7 +2863,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Обс�
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Невозможно отправить машину в гараж...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Невозможно найти гараж
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Автомобили - кликните для получения подробной информации
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Построить новые автомобили (требуется гараж)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Текущее задание автомобиля, кликните, чтобы остановить/запустить его
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Показать задания
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Показать автомобиль в главном окне
@@ -3098,7 +2944,6 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Пост
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Перетащите корабль сюда для продажи
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Показать док в основном окне
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Корабли - нажмите для получения справки
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Построить новый корабль (требуется док)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Список кораблей - нажмите для получения справки
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Построить выбранный корабль
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Текущее задание корабля - кликните для запуска/остановки
@@ -3143,7 +2988,6 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Пост
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Невозможно построить возд. транспорт...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Единиц{P 2 а ы ""} авиатранспорта
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Задания)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Детали)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Возраст: {LTBLUE}{STRING}{BLACK} Стоимость обслуживания: {LTBLUE}{CURRENCY}/год
 STR_A00E_MAX_SPEED                                              :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY}
@@ -3166,7 +3010,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Не м�
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Строительство аэропорта
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Построить аэропорт
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Авиатранспорт - нажмите для получения справки
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Построить новый авиатранспорт (нужен аэропорт с ангаром)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Авиатранспорт - нажмите для получения справки
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Построить новый авиатранспорт
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Перетащите транспорт сюда для продажи
@@ -3192,12 +3035,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Пере
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Переименовать
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Невозможно переименовать...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Переоборудовать транспорт для других грузов
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Переоборуд.)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Переоборудовать
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Выберите тип грузов для перевозки
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Переоборудовать авиатранспорт для перевозки выбранного типа груза
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Выберите тип груза для перевозки:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Новая емкость: {GOLD}{STRING}{}{BLACK}Стоимость переоборуд.: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Невозможно переоборудовать...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Расписание)
@@ -3254,8 +3094,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Прим
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Переключить палитру
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Переключить палитру для выбраного NewGRF файла.{}Включите эту опцию для выбранного NewGRF файла, если все в игре вам кажентся в "розовом" цвете.
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Параметры
-STR_NEWGRF_TIP                                                  :{BLACK}Список всех файлов NewGRF, которые у вас установлены. Выбрать для изменения настроек
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}В настоящее время нет никаких установленных файлов NewGRF! Пожалуйста, обратитесь к описанию для инструкций для установки Новой Графики
 STR_NEWGRF_FILENAME                                             :{BLACK}Имя файла: {SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}Палитра: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
@@ -3314,7 +3152,6 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Соо�
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Вместо отсутствующих загружены совместимые файлы NewGRF
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Отсутствующие файлы NewGRF были отключены
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Не найдены файлы NewGRF, необходимые для загрузки игры
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Пропущенные GRF файлы
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Снятие с паузы может привести к ошибке OpenTTD.{}Вы хотите запустить игру?
 
@@ -3388,7 +3225,6 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Прек
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Начать замену выбранных типов транспорта
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Тип пути, на котором производить замену
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}На какой танспорт происходит замена
-STR_REPLACE_HELP                                                :{BLACK}Это позволяет заменять один тип локомотива другим, когда локомотивы выбранного типа заезжают в депо.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Удаление вагонов: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Разрешить при автозамене сохранять длину поездов способом удаления вагонов (начиная с головы поезда), если при автозамене локомотива увеличится длина поезда.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Заменяем: {ORANGE}{SKIP}{SKIP}{STRING}
@@ -3597,7 +3433,6 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} 
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} корабл{P ь я ей}
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} самолёт{P "" а ов}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Переименовать группу
-STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Заменить транспорт в группе "{GROUP}"
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Не могу создать группу...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}Не могу удалить группу...
@@ -3733,7 +3568,6 @@ STR_AI_RANDOM_AI                                                :Случ. ИИ
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Параметры ИИ
 STR_AI_AUTHOR                                                   :Автор:
 STR_AI_VERSION                                                  :Версия:
-STR_AI_DESCRIPTION                                              :Описание:
 ########
 
 ############ town controlled noise level

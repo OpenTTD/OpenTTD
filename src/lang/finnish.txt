@@ -162,7 +162,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Aluetta 
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Alkuperäiset oikeudet {COPYRIGHT} 1995 Chris Sawyer, kaikki oikeudet pidätetään
 STR_00B7_VERSION                                                :{BLACK}OpenTTD-versio {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 The OpenTTD team
-STR_TRANSLATED_BY                                               :{BLACK}  Kääntäjä(t) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -217,39 +216,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Laivat
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Lentokoneet
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Kuljetusreitit
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Hiilikaivos
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Voimala
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Metsä
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Saha
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Öljynjalostamo
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Maatila
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Tehdas
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Kirjapaino
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Öljykenttä
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Rautakaivos
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Teräsvalimo
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}Pankki
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Paperitehdas
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Kultakaivos
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Ruoanjalostamo
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Timanttikaivos
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Kuparikaivos
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Hedelmäviljelmä
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Kumiviljelmä
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Lähde
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Vesitorni
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Hakkuualue
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Hattarametsä
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Karkkitehdas
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Paristomaatila
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Limsakenttä
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Lelukauppa
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Lelutehdas
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Muovilähde
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Sihijuomatehdas
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Kuplageneraattori
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Toffeelouhos
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Sokerikaivos
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Rautatieasema
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Lastauslaituri
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Linja-autoasema
@@ -273,8 +240,6 @@ STR_DEFAULT                                                     :{BLACK}Oletus
 STR_012E_CANCEL                                                 :{BLACK}Peruuta
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Nimeä uud.
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Liian monta nimeä määritelty
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Nimi on jo käytössä
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -298,7 +263,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Uusi peli
 STR_0141_LOAD_GAME                                              :{BLACK}Lataa peli
-STR_SINGLE_PLAYER                                               :{BLACK}Yksinpeli
 STR_MULTIPLAYER                                                 :{BLACK}Moninpeli
 STR_SCENARIO_EDITOR                                             :{BLACK}Maisemaeditori
 
@@ -307,9 +271,6 @@ STR_BY                                                          :{BLACK}×
 STR_0148_GAME_OPTIONS                                           :{BLACK}Pelin asetukset
 
 STR_0150_SOMEONE                                                :joku{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Maailmankartta
-STR_0152_TOWN_DIRECTORY                                         :Kaupunkihakemisto
-STR_0153_SUBSIDIES                                              :Tukiaiset
 
 STR_UNITS_IMPERIAL                                              :Englantilainen
 STR_UNITS_METRIC                                                :Metrinen
@@ -323,24 +284,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hv
 STR_UNITS_POWER_METRIC                                          :{COMMA}hv
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonni{P "" a}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallona{P "" a}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litra{P "" a}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} tf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -570,7 +525,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Soittolista - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Tyhjennä
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Tallenna
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Nykyinen soittolista
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Valitse 'kaikki raidat'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Valitse 'vanhan tyylin musiikki'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Valitse 'uuden tyylin musiikki'
@@ -654,76 +608,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Suurenna
 STR_023C_EXPAND                                                 :{BLACK}Laajenna
 STR_023D_RANDOM_TOWN                                            :{BLACK}Satunnainen kaupunki
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Rakenna kaupunki satunnaiseen paikkaan
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Luo teollisuutta
-STR_0240_COAL_MINE                                              :{BLACK}Hiilikaivos
-STR_0241_POWER_STATION                                          :{BLACK}Voimala
-STR_0242_SAWMILL                                                :{BLACK}Saha
-STR_0243_FOREST                                                 :{BLACK}Metsä
-STR_0244_OIL_REFINERY                                           :{BLACK}Öljynjalostamo
-STR_0245_OIL_RIG                                                :{BLACK}Öljylautta
-STR_0246_FACTORY                                                :{BLACK}Tehdas
-STR_0247_STEEL_MILL                                             :{BLACK}Teräsvalimo
-STR_0248_FARM                                                   :{BLACK}Maatila
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Rautakaivos
-STR_024A_OIL_WELLS                                              :{BLACK}Öljykenttä
-STR_024B_BANK                                                   :{BLACK}Pankki
-STR_024C_PAPER_MILL                                             :{BLACK}Paperitehdas
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Ruoanjalostamo
-STR_024E_PRINTING_WORKS                                         :{BLACK}Kirjapaino
-STR_024F_GOLD_MINE                                              :{BLACK}Kultakaivos
-STR_0250_LUMBER_MILL                                            :{BLACK}Hakkuualue
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Hedelmäviljelmä
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Kumiviljelmä
-STR_0253_WATER_SUPPLY                                           :{BLACK}Lähde
-STR_0254_WATER_TOWER                                            :{BLACK}Vesitorni
-STR_0255_DIAMOND_MINE                                           :{BLACK}timanttikaivos
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Kuparikaivos
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Hattarametsä
-STR_0258_CANDY_FACTORY                                          :{BLACK}Karkkitehdas
-STR_0259_BATTERY_FARM                                           :{BLACK}Paristomaatila
-STR_025A_COLA_WELLS                                             :{BLACK}Limsakenttä
-STR_025B_TOY_SHOP                                               :{BLACK}Lelukauppa
-STR_025C_TOY_FACTORY                                            :{BLACK}Lelutehdas
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Muovikaivo
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Sihijuomatehdas
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Kuplageneraattori
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Toffeelouhos
-STR_0261_SUGAR_MINE                                             :{BLACK}Sokerikaivos
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Rakenna hiilikaivos.
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Rakenna sähkölaitos.
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Rakenna saha.
-STR_0265_PLANT_FOREST                                           :{BLACK}Istuta metsä.
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Rakenna öljynjalostamo.
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Rakenna öljylautta (voidaan rakentaa vain kartan reunojen läheisyyteen).
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Rakenna tehdas.
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Rakenna teräsvalimo.
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Rakenna maatila.
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Rakenna rautakaivos.
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Rakenna öljykenttä.
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Rakenna pankki (voidaan rakentaa vain kaupunkiin, jonka väkiluku on suurempi kuin 1200).
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Rakenna paperitehdas.
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Rakenna ruoanjalostamo.
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Rakenna kirjapaino.
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Rakenna kultakaivos.
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Rakenna pankki (voidaan rakentaa vain kaupunkeihin).
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Rakenna hakkuualue (sademetsän kaatamiseen ja puuntuottoon).
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Istuta hedelmäviljelmä.
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Istuta kumiviljelmä.
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Rakenna lähde.
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Rakenna vesitorni (voidaan rakentaa vain kaupunkeihin).
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Rakenna timanttikaivos.
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Rakenna kuparikaivos.
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Istuta hattarametsä.
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Rakenna karkkitehdas.
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Rakenna paristomaatila.
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Rakenna limsakenttä.
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Rakenna karkkikauppa.
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Rakenna karkkitehdas.
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Rakenna muovikaivo.
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Rakenna sihijuomatehdas.
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Rakenna kuplageneraattori.
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Rakenna toffeelouhos.
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Rakenna sokerikaivos.
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}{STRING}: tähän ei voi rakentaa...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...kaupunki pitää rakentaa ensin.
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...vain yksi on sallittu kaupunkia kohden.
@@ -752,7 +636,6 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}Pelaa sk
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Pelaa korkeuskartta
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Aloita uusi peli, käyttäen korkeuskarttaa maastona
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Lopetetaanko skenaario?
-STR_029C_QUIT_EDITOR                                            :{WHITE}Sulje editori
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...voidaan rakentaa vain kaupunkeihin, joissa on yli 1200 asukasta.
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Siirrä aloituspäivää vuodella taaksepäin.
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Siirrä aloituspäivää vuodella eteenpäin.
@@ -781,13 +664,8 @@ STR_SUMMARY                                                     :Tiivistelmä
 STR_FULL                                                        :Täysi
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Kaupunkihakemisto
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Liikennevälineiden mallien nimet
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Oletus
 STR_02BF_CUSTOM                                                 :Oma
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Tallenna kustomoidut nimet.
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Liikennevälineiden mallinimien valinta.
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Tallenna omat liikennevälineiden mallien nimet levylle.
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -796,7 +674,6 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :Vaikeusasetukse
 STR_MENU_CONFIG_SETTINGS                                        :Lisäasetukset
 STR_NEWGRF_SETTINGS                                             :Newgrf-asetukset
 STR_TRANSPARENCY_OPTIONS                                        :Läpinäkyvyysvalinnat
-STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Kaupunkien nimet näkyvissä
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Asemien nimet näkyvissä
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Kyltit näkyvissä
@@ -857,7 +734,6 @@ STR_02FA_EVERY_12_MONTHS                                        :Kerran vuodessa
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Aloita uusi peli.
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Lataa tallennettu peli.
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Luo oma pelimaailma/skenaario.
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Valitse yksinpeli.
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Aloita moninpeli
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Näytä peliasetukset.
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Näytä vaikeusasetukset.
@@ -881,7 +757,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Rakenna 
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...voidaan rakentaa vain kaupunkeihin.
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...voidaan rakentaa vain sademetsäalueisiin.
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...voidaan rakentaa vain aavikkoalueisiin.
 STR_0319_PAUSED                                                 :{YELLOW}* *  TAUKO  *  *
@@ -1320,7 +1195,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Rakenna 
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...tässä skenaariossa ei ole kaupunkeja.
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Haluatko todella luoda satunnaisen maaston?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Monta satunnaista kaupunkia
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Peitä kartta satunnaisesti sijoitetuilla kaupungeilla.
 STR_MANY_RANDOM_INDUSTRIES                                      :Monta satunnaista teollisuusaluetta
@@ -1367,25 +1241,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Lista vi
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Kaikki pois päältä
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Kaikki päälle
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Rakenna hiilikaivos.
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Istuta metsä.
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Rakenna öljylautta.
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Rahoita maatila.
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Rakenna kuparikaivos.
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Poraa öljyä.
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Rakenna kultakaivos.
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Rakenna timanttikaivos.
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Rakenna rautakaivos.
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Rahoita hedelmäviljelmää.
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Rahoita kumiviljelmää.
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Rahoita lähdettä.
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Istuta hattarametsä.
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Rahoita paristomaatila.
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Poraa limsaa.
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Rahoita muovilähteitä.
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Rakenna kuplageneraattori.
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Rahoita toffeelouhosta.
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Rakenna sokerikaivos.
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Teollisuusala
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}{NBSP}% kuljetettu)
@@ -2057,8 +1912,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lista as
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Valittu nimi pelitallenteelle.
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Poista valittu pelitallenne.
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Tallenna nykyinen peli käyttäen valittua nimeä.
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Valitse uusi pelityyppi
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Valitse skenaario (vihreä), alkuasetettu peli (sininen) tai satunnainen peli.
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Luo uusi satunnainen peli
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Lataa korkeuskartta
 STR_SAVE_OSKTITLE                                               :{BLACK}Syötä nimi tallennustiedostolle
@@ -2139,8 +1992,6 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{1:INDUSTRY} tuottaa {0:STRING} {2:COMMA}{NBSP}% entistä vähemmän!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Juna on tunnelissa.
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Ajoneuvo on tunnelissa.
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Toinen tunneli on tiellä.
 STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunneli loppuisi kartan ulkopuolelle
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Maata ei voi kaivaa tunnelin toisessa päässä.
@@ -2310,7 +2161,6 @@ STR_TOLERANT                                                    :Suvaitseva
 STR_HOSTILE                                                     :Vihamielinen
 
 ##id 0x7000
-STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Yhtiö {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Uudet kasvot
@@ -2363,7 +2213,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Valitse 
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Muuta yhtiön ajoneuvoammattikuntaa.
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Muuta pääjohtajan nimeä.
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Muuta yhtiön nimeä.
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Klikkaa haluamaasi väriä
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Ota lisää lainaa.
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Lyhennä lainaa.
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(pääjohtaja)
@@ -2913,7 +2762,6 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Junaa ei
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Huoltoväli: {LTBLUE}{COMMA} päivää{BLACK}   Viimeisin huolto: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Huoltoväli: {LTBLUE}{COMMA}%{BLACK}   Viime huolto: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Junat - napsauta junaa saadaksesi tietoja.
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Rakenna uusia junia (tarvitaan veturitalli).
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Junat - napsauta junaa saadaksesi tietoja, vedä vaunu lisätäksesi/poistaaksesi junasta.
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Rakenna uusi yksikkö.
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Vedä yksikkö tähän myydäksesi sen.
@@ -2964,7 +2812,6 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Juna(vau
 STR_CLEAR_TIME                                                  :{BLACK}Nollaa aika
 STR_RESET_LATENESS                                              :{BLACK}Nollaa myöhästymislaskuri
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Muuta reittipisteen nimeä
-STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Pysäytetään
 STR_TRAIN_STOPPING_VEL                                          :{RED}Pysäytetään, {VELOCITY}
@@ -3019,7 +2866,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Huolto 
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Ajoneuvon lähettäminen huoltoasemalle ei onnistu...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Paikallista huoltoasemaa ei löydy.
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Ajoneuvot - napsauta ajoneuvoja saadaksesi tietoja.
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Rakenna uusi ajoneuvo (tarvitaan huoltoasema).
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Nykyisen ajoneuvon toiminnot - napsauta tässä pysäyttääksesi/laittaaksesi liikkeelle.
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Näytä ajoneuvon aikataulu.
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Keskitä näkymä ajoneuvon sijaintiin.
@@ -3101,7 +2947,6 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Rakenna 
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Vedä laiva tähän myydäksesi sen.
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Keskitä näkymä telakan sijaintiin.
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Laivat - napsauta laivaa saadaksesi tietoja.
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Rakenna uusia laivoja (tarvitaan telakka).
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Laivan valintalista - napsauta laivaa saadaksesi tietoja.
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Rakenna valittu laiva
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Nykyisen laivat toiminnot - napsauta tässä pysäyttääksesi/laittaaksesi liikkeelle.
@@ -3146,7 +2991,6 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Rakenna 
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Lentokonetta ei voi rakentaa...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} lentokonetta
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (aikataulu)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (tiedot)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Ikä: {LTBLUE}{STRING}{BLACK}   Käyttökustannuket: {LTBLUE}{CURRENCY}/vuosi
 STR_A00E_MAX_SPEED                                              :{BLACK}Huippunopeus: {LTBLUE}{VELOCITY}
@@ -3169,7 +3013,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Lentokon
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Lentokentän rakentaminen
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Rakenna lentokenttä
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lentokoneet - napsauta lentokonetta saadaksesi tietoja.
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Rakenna uusi lentokone (tarvitaan lentokenttä lentokonehallilla).
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lentokoneet - napsauta lentokonetta saadaksesi tietoja.
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Rakenna uusi lentokone
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Vedä lentokone tähän myydäksesi sen.
@@ -3195,12 +3038,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Nimeä l
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Nimeä lentokonetyyppi uudelleen.
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Lentokonetyyppiä ei voi uudelleennimetä...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Sovita lentokone eri rahtityypille.
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (sovita)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Sovita lentokone
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Valitse kuljetettavan rahdin tyyppi.
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Sovita lentokone kuljettamaan valittua rahtityyppiä.
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Valitse kuljetettava rahtityyppi:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uusi kapasiteetti: {GOLD}{STRING}{}{BLACK}Sovituksen kustannus: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Lentokonetta ei voi sovittaa...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (aikataulu)
@@ -3257,8 +3097,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Ota käy
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Käytä eri palettia
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Käytä valitun NewGRF:n kanssa eri palettia.{}Tee näin, jos tämän NewGRF:n grafiikat näkyvät pelissä vaaleanpunaisina.
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Aseta parametrit
-STR_NEWGRF_TIP                                                  :{BLACK}Lista kaikista asennetuista Newgrf-paketeista. Napsauta pakettia muuttaaksesi asetuksia.
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Yhtään Newgrf-tiedostoa ei ole asennettuna! Lue manuaalista ohjeet uusien grafiikoiden asentamiseksi.
 STR_NEWGRF_FILENAME                                             :{BLACK}Tiedostonimi: {SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}Paletti: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
@@ -3317,7 +3155,6 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Sopivaa
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Yhteensopivat GRF:t ladattu puuttuvien tiedostojen korvaamiseksi
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Puuttuvat GRF tiedostot ovat poistettu käytöstä
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Puuttuvat GRF tiedostot tarvitaan pelin lataamiseksi.
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Puuttuva(t) GRF-tiedosto(t)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Taukotilasta poistuminen saattaa kaataa OpenTTD:n. Älä lähetä virheraportteja tämänjälkeisistä kaatumisista.{}Haluatko todella poistua taukotilasta?
 
@@ -3391,7 +3228,6 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Napsauta
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Napsauta aloittaaksesi vasemmalta valitun veturityypin korvauksen oikealta valitulla veturityypillä.
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Valitse rautatietyyppi, jolle veturikorvaukset tehdään.
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Näyttää, millä vasemmalta valittu veturi korvataan, jos millään.
-STR_REPLACE_HELP                                                :{BLACK}Tällä voit korvata yhden veturityypin toisella, kun alkuperäisen tyypin junat menevät varikolle.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vaunun poisto: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automaattikorvaus pitäköön junan vakiopituisena poistamalla vaunuja (edestä) jos veturi pidentäisi junaa.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Korvataan: {ORANGE}{SKIP}{SKIP}{STRING}
@@ -3600,7 +3436,6 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} 
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Laiva{P "" t}
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} {P Lentoalus Lentoalukset}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Nimeä ryhmä
-STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Korvaa ryhmän "{GROUP}" ajoneuvot
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Ei voi luoda ryhmää.
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}Ryhmää ei voi poistaa.
@@ -3736,7 +3571,6 @@ STR_AI_RANDOM_AI                                                :Sattumanvaraine
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Tekoälyn parametrit
 STR_AI_AUTHOR                                                   :Tekijä:
 STR_AI_VERSION                                                  :Versio:
-STR_AI_DESCRIPTION                                              :Kuvaus:
 ########
 
 ############ town controlled noise level

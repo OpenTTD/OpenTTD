@@ -142,33 +142,6 @@ STR_00F7_SHIPS                                                  :{BLACK}{TINYFON
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Aeroplani
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Transport-voyi
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Foresto
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Segerio
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Petrol-refineyo
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Farmerio
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fabrikerio
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Imprimado
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Staliferio
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banko
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Paper-fabrikerio
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Or-mineyo
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Agroalimental-fabrikerio
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Diamant-mineyo
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Kupr-erco Mineyo
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Frukto Plantacerio
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Kauchuko Plantacerio
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Aquo Fonto
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Aquo Turmo
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Segerio
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Kandi-lanugo Foresto
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Bonbono Fabrikerio
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Baterio Farmo
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Ludilo Butiko
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Ludilo Fabrikerio
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Plastika Fonteno
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Gasoza Drinkajo Fabrikerio
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Bulo Generatoro
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Karamelo-Mineyo
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Sukro-Mineyo
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Fervoyala Staciono
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Kamiono-Kayo
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Autobuso Staciono
@@ -191,8 +164,6 @@ STR_012D                                                        :{WHITE}{STRING}
 STR_012E_CANCEL                                                 :{BLACK}Anular
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Rinomizar
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Tro multa nomi definita
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Selektita nomo ja uzata
 
 
 STR_013C_CARGO                                                  :{BLACK}Kargajo
@@ -205,9 +176,6 @@ STR_0141_LOAD_GAME                                              :{BLACK}Charjas 
 STR_0148_GAME_OPTIONS                                           :{BLACK}Ludo Selekti
 
 STR_0150_SOMEONE                                                :ulu{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Mapo di mondo
-STR_0152_TOWN_DIRECTORY                                         :Urbo repertorio
-STR_0153_SUBSIDIES                                              :Subsidii
 
 
 

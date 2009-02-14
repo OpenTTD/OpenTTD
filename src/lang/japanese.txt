@@ -162,7 +162,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}この�
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}オリジナル版権{COPYRIGHT} 1995 Chris Sawyer、不許複製
 STR_00B7_VERSION                                                :{BLACK}OpenTTD バージョン {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 The OpenTTD team
-STR_TRANSLATED_BY                                               :{BLACK}  訳者－
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -217,39 +216,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}船舶
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}飛行機
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}運送経路
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}炭鉱
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}発電所
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}森林
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}製材工場
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}石油精製所
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}農場
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}工場
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}印刷所
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}油田
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}鉄鉱山
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}製鋼所
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}銀行
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}製紙工場
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}金鉱
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}食品加工場
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}ダイヤモンド鉱山
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}銅鉱山
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}果物農園
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}ゴム園
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}給水設備
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}給水塔
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}製材所
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}綿菓子
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}菓子工場
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}電池農園
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}コーラ井
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}玩具店
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}玩具工場
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}プラスチック泉
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}炭酸飲料工場
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}泡の発生器
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}タフィー採掘場
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}砂糖鉱山
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}駅
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}荷役所
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}バス停
@@ -273,8 +240,6 @@ STR_DEFAULT                                                     :{BLACK}デフ�
 STR_012E_CANCEL                                                 :{BLACK}キャンセル
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}名称を変更
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}名称定義数の制限を超えています
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}指定した名称はすでに使用中です
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -298,7 +263,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}新しいゲーム
 STR_0141_LOAD_GAME                                              :{BLACK}ロード
-STR_SINGLE_PLAYER                                               :{BLACK}一人でプレイ
 STR_MULTIPLAYER                                                 :{BLACK}多人数プレイ
 STR_SCENARIO_EDITOR                                             :{BLACK}シナリオエディタ
 
@@ -307,9 +271,6 @@ STR_BY                                                          :{BLACK}x
 STR_0148_GAME_OPTIONS                                           :{BLACK}ゲームの基本設定
 
 STR_0150_SOMEONE                                                :誰かは{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :世界の地図
-STR_0152_TOWN_DIRECTORY                                         :町のリスト
-STR_0153_SUBSIDIES                                              :助成金
 
 STR_UNITS_IMPERIAL                                              :インペリアル法
 STR_UNITS_METRIC                                                :メートル法
@@ -323,24 +284,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}馬力
 STR_UNITS_POWER_METRIC                                          :{COMMA}馬力
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}トン
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}トン
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}キロ
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}トン
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}トン
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}ガロン
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}リットル
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}ガロン
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}リットル
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA}重量トン
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -569,7 +524,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}プレイリスト - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}消去
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}保存
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}再生中のプレイリスト
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}プレイリスト「すべての曲」を選択します
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}プレイリスト「旧式ジャズ」を選択します
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}プレイリスト「新式ジャズ」を選択します
@@ -653,76 +607,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}町の�
 STR_023C_EXPAND                                                 :{BLACK}拡大
 STR_023D_RANDOM_TOWN                                            :{BLACK}ランダムな町
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}ランダムなところに町を建設します
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}産業の作成
-STR_0240_COAL_MINE                                              :{BLACK}炭鉱
-STR_0241_POWER_STATION                                          :{BLACK}発電所
-STR_0242_SAWMILL                                                :{BLACK}製材工場
-STR_0243_FOREST                                                 :{BLACK}森林
-STR_0244_OIL_REFINERY                                           :{BLACK}石油精製所
-STR_0245_OIL_RIG                                                :{BLACK}石油掘削装置
-STR_0246_FACTORY                                                :{BLACK}工場
-STR_0247_STEEL_MILL                                             :{BLACK}製鋼所
-STR_0248_FARM                                                   :{BLACK}農場
-STR_0249_IRON_ORE_MINE                                          :{BLACK}鉄鉱山
-STR_024A_OIL_WELLS                                              :{BLACK}油田
-STR_024B_BANK                                                   :{BLACK}銀行
-STR_024C_PAPER_MILL                                             :{BLACK}製紙工場
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}食品加工場
-STR_024E_PRINTING_WORKS                                         :{BLACK}印刷所
-STR_024F_GOLD_MINE                                              :{BLACK}金鉱
-STR_0250_LUMBER_MILL                                            :{BLACK}製材所
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}果樹園
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}ゴム園
-STR_0253_WATER_SUPPLY                                           :{BLACK}給水設備
-STR_0254_WATER_TOWER                                            :{BLACK}給水塔
-STR_0255_DIAMOND_MINE                                           :{BLACK}ダイヤモンド鉱山
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}銅鉱山
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}綿菓子の森
-STR_0258_CANDY_FACTORY                                          :{BLACK}菓子工場
-STR_0259_BATTERY_FARM                                           :{BLACK}電池農園
-STR_025A_COLA_WELLS                                             :{BLACK}コーラ井
-STR_025B_TOY_SHOP                                               :{BLACK}玩具屋
-STR_025C_TOY_FACTORY                                            :{BLACK}玩具工場
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}プラスチック泉
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}炭酸飲料工場
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}発泡所
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}タフィー採掘所
-STR_0261_SUGAR_MINE                                             :{BLACK}砂糖鉱山
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}炭鉱を建設します
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}発電所を建設します
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}製材工場を建設します
-STR_0265_PLANT_FOREST                                           :{BLACK}森林を植林します
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}石油精製所
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}石油掘削装置を建設します（マップの端の近くにのみ建設できます）
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}工場を建設します
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}製鋼所を建設します
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}農場を建設します
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}鉄鉱山を建設します
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}油田を建設します
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}銀行を建設します（人口1200人以上の市町のみに建設できます）
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}製紙工場を建設します
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}食品加工場を建設します
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}印刷所を建設します
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}金鉱山を建設します
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}銀行を建設します（町内のみに建設できます）
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}（熱帯雨林を伐採して木材を作るための）製材所を建設します
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}果物農園を建設します
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}ゴム園を建設します
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}給水設備を建設します
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}給水塔を建設します（町内のみに建設できます）
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}ダイヤモンド鉱山を建設します
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}銅鉱山を建設します
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}綿菓子の森を建設します
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}菓子工場を建設します
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}電池農園を建設します
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}コーラ井を建設します
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}玩具店を建設します
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}玩具工場を建設します
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}プラスチック泉を建設します
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}炭酸飲料工場を建設します
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}発泡所を建設します
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}タフィー鉱山を建設します
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}砂糖鉱山を建設します
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}ここに{STRING}が建設できません
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...先に町を建設しなければなりません
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...一町内に一つしか建設できません
@@ -751,7 +635,6 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}シナ�
 STR_PLAY_HEIGHTMAP                                              :{BLACK}ハイトマップをプレイ
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}地形をハイトマップに基づいて新規ゲームを開始します
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}このシナリオを終了してもよろしいですか？
-STR_029C_QUIT_EDITOR                                            :{WHITE}エディタの終了
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...人口が1200人以上の市町のみに建設できます
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}開始日を1年間減らします
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}開始日を1年間増やします
@@ -770,13 +653,8 @@ STR_SUMMARY                                                     :概要
 STR_FULL                                                        :完全
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :市町村のリスト
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}車両の名称
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :デフォルト
 STR_02BF_CUSTOM                                                 :カスタム
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}カスタム名称を保存
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}車両の名称の選択
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}カスタマイズした車両の名称を保存します
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -785,7 +663,6 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :難易度の設
 STR_MENU_CONFIG_SETTINGS                                        :パッチ設定
 STR_NEWGRF_SETTINGS                                             :NewGRFの設定
 STR_TRANSPARENCY_OPTIONS                                        :半透明設定
-STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}市町村名を表示
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}駅名を表示
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}標示を表示
@@ -845,7 +722,6 @@ STR_02FA_EVERY_12_MONTHS                                        :毎12月
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}新規ゲームを開始します
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}ゲームを開きます
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}カスタムシナリオを作成します
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}一人プレイを選択します
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}ゲームの設定を表示します
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}難易度の設定を表示します
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}カスタムシナリオを使用して新規ゲームを開始します
@@ -868,7 +744,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}新規�
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...町内のみに建設できます
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...雨林地域のみに建設できます
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...砂漠地域のみに建設できます
 STR_0319_PAUSED                                                 :{YELLOW}＊＊ポーズ＊＊
@@ -1277,7 +1152,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}自動�
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...このシナリオに市町村がありません
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}ランダムな地形を作成してもよろしいですか？
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}多くのランダムな市町村
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}地図にたくさんの市町村を建設します
 STR_MANY_RANDOM_INDUSTRIES                                      :多くのランダムな産業
@@ -1324,25 +1198,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}最近�
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}すべてを切
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}すべてを入
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}炭鉱を建設します
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}森林を植林します
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}石油掘削装置を建設します
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}農場を建設します
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}銅鉱山を建設します
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}油田を建設します
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}金鉱山を建設します
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}ダイヤモンド鉱山を建設します
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}鉄鉱山を建設します
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}果物農園を建設します
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}ゴム園を建設します
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}給水塔を建設します
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}綿菓子の森を植林します
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}電池農園を建設します
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}コーラ井を建設します
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}プラスチック泉を建設します
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}発泡所を建設します
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}タフィー鉱山を建設します
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}砂糖鉱山を建設します
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}産業
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK}（{CARGO}{STRING}）{YELLOW}（{COMMA}％が運送済み）
@@ -1998,8 +1853,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}ドラ�
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}ゲームのファイル名
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}選択したゲームを削除します
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}指定したファイル名で現在のゲームを保存します
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}新規ゲーム種類の選択
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}シナリオ（緑）、プリセットゲーム（青）もしくは新規ランダムゲームを選択します
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :新規ランダムゲームを作成
 STR_LOAD_HEIGHTMAP                                              :{WHITE}ハイトマップを開く
 STR_SAVE_OSKTITLE                                               :{BLACK}セーブゲーム名を入力
@@ -2080,8 +1933,6 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{1:INDUSTRY}で{0:STRING}の生産量が{2:COMMA}％縮小！
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}トンネルに列車があります
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}トンネルに道路車両があります
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}他のトンネルがすでにあります
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}向こうの土地を掘削できません
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}先にトンネルを破壊しなければなりません
@@ -2250,7 +2101,6 @@ STR_TOLERANT                                                    :寛容
 STR_HOSTILE                                                     :対立
 
 ##id 0x7000
-STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7004_NEW_FACE                                               :{BLACK}新規顔
 STR_7005_COLOUR_SCHEME                                          :{BLACK}カラースキーム
@@ -2302,7 +2152,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}社長�
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}交通会社のカラースキームを変更
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}社長の名前を変更します
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}会社名を変更します
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}カラースキームを選択
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}借入
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}返済
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}（社長）
@@ -2795,7 +2644,6 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}列車�
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}補修間隔：{LTBLUE}{COMMA}日間{BLACK}  最新の補修：{LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}修理の間隔：{LTBLUE}{COMMA}％{BLACK}　最終の修理：{LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}列車 - 情報を見るには列車をクリックします
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}新規列車を購入（電車庫が必要）
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}列車 - 情報を見るには列車をクリックします。車両を追加／取り除くにはドラッグします。
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}新規鉄道車両を購入
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}車両を売却するには、ここへドラッグします
@@ -2846,7 +2694,6 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}鉄道�
 STR_CLEAR_TIME                                                  :{BLACK}時間を消去
 STR_RESET_LATENESS                                              :{BLACK}遅刻回数をリセット
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}通過点の名前を変更する
-STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}停車中
 STR_TRAIN_STOPPING_VEL                                          :{RED}停車中、{VELOCITY}
@@ -2899,7 +2746,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN}�
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}車両を車庫へ回送できません...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}付近に車庫が見つかりません
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}道路車両 - クリックして情報を表示します
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}新規道路車両を購入（車庫が必要）
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}車両の現在の動作 - 開始／停止するにはクリックします
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}車両の指令を表示します
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}主の画面を車両の場所に移動します
@@ -2979,7 +2825,6 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}新規�
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}販売するには船舶をここへドラッグします
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}メイン画面を造船所の場所に移動します
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}船舶のリスト - 情報を見るには船舶をクリックします
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}新規船舶を購入（造船所が必要）
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}船舶のリスト - 情報を見るには船舶をクリックします
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}選択した船舶を購入
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}船舶の現在の動作 - 始動／停止するにはここへクリックします
@@ -3024,7 +2869,6 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}飛行�
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}飛行機を購入できません...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - 飛行機{COMMA}台
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE}（指令）
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}使用年数：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}一年間{CURRENCY}
 STR_A00E_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
@@ -3046,7 +2890,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}飛行�
 STR_A01D_AIRPORT_CONSTRUCTION                                   :空港の建設
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}空港を建設
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}飛行機 - 情報を見るには飛行機をクリックします
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}新規飛行機を購入（格納庫が必要）
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}飛行機 - 情報を見るには飛行機をクリックします
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}新規飛行機を購入
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}売却するには飛行機をここへドラッグします
@@ -3072,12 +2915,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}飛行�
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}飛行機の名称を変更
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}飛行機の名称を変更できません...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}他の種類の貨物を運送する為に飛行機を改装
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (改装)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}飛行機を改装
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}運送する貨物の種類を選択します
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}選択した種類の貨物を運送するために飛行機を改装
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}運送する貨物種類を選択：
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}改装後の積載量：{GOLD}{STRING}{}{BLACK}改装費用：{GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}飛行機を改装できません...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE}（時刻表）
@@ -3134,8 +2974,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}変更�
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}パレットを切り替える
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}選択したパレットを切り替えます。{}（この NewGRF のスプライトがピンクになってしまうとき、この操作を試します。）
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}パラメータの設定
-STR_NEWGRF_TIP                                                  :{BLACK}インストールしたNewGRFセットのリストです。設定を変更するにはセットをクリックします
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}インストールしたNewGRFがありません。NewGRFファイルのインストール方法を見るには、説明書をご参照ください。
 STR_NEWGRF_FILENAME                                             :{BLACK}ファイル名：{SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}パレット：{SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID：{SILVER}{STRING}
@@ -3192,7 +3030,6 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}一致�
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}見つからないファイルの代わりに対応している代替 GRF ファイルを使用しています
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}見つからない GRF ファイルを切にしています
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}ゲームを開くには次の GRF ファイルが必要
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF ファイルが見つかりません
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}ポーズを解除した場合は、OpenTTD の安定性に悪影響を与える可能性があります。この後クラッシュが行った場合は、バグレポートの報告をご遠慮ください。{}ポーズを解除してもよろしいですか？
 
@@ -3265,7 +3102,6 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}左に�
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}左に選択した機関車の種類を右に選択した機関車の種類を開始するにはクリックします
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}交換する機関車の線路種類を選択します
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}選択した場合は左に選択した機関車を交換する機関車を表示します
-STR_REPLACE_HELP                                                :{BLACK}左に選択した鉄道車両の種類が電車庫に入ったときに右に選択した他の種類に交換することができます。
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}列車の縮小：{ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}自動交換によって列車の長さが長くなる場合は、列車の長さを保守するには客車／貨車を取り除くことができます。列車の先頭から開始します。
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}交換：{ORANGE}{SKIP}{SKIP}{STRING}
@@ -3457,7 +3293,6 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} 
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - 船舶{COMMA}隻
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - 飛行機{COMMA}台
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}グループ名を変更
-STR_GROUP_REPLACE_CAPTION                                       :{WHITE}"{GROUP}"内の車両を交換
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}グループが作成できません...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}グループが削除できません...

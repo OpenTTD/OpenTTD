@@ -162,7 +162,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Не м�
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Оригинален copyright {COPYRIGHT} 1995 Chris Sawyer, Сите права се задржани
 STR_00B7_VERSION                                                :{BLACK}OpenTTD верзија {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD тимот
-STR_TRANSLATED_BY                                               :{BLACK}  Преведувач(и) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -217,39 +216,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Бродови
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Летала
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Транспортни Рути
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Рудник за јаглен
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Електрана
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Шума
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Пилана
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Рафинерија за Нафта
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Фарма
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Фабрика
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Печатница
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Нафтен извор
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Рудник за Железна Руда
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Фабрика за Челик
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}Банка
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Фабрика за Хартија
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Рудник за Злато
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Фабрика за Прехрана
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Рудник за Дијаманти
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Рудник за Бакар
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Овошна Плантажа
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Плантажа за Гума
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Резервор за Вода
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Кула за Вода
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Пилана за Граѓа
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Шума со Суровина за Колачиња
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Фабрика за Благо
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Фарма за Батерии
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Извор на Кола
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Продавница за Играчки
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Фабрика за Играчки
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Фонтани на Пластика
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Фабрика за Газирани Пијалоци
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Генератор на Меурчиња
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Рудник за Карамела
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Рудник за Шеќер
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Железничка Станица
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Станица за Товарење
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Автобуска Станица
@@ -273,8 +240,6 @@ STR_DEFAULT                                                     :{BLACK}Зада
 STR_012E_CANCEL                                                 :{BLACK}Откажи
 STR_012F_OK                                                     :{BLACK}Во ред
 STR_0130_RENAME                                                 :{BLACK}Преименувај
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Дефинирани се премногу имиња
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Избраното име веќе се користи
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_UNIX                                                 :Unix
@@ -297,7 +262,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Нова Игра
 STR_0141_LOAD_GAME                                              :{BLACK}Вчитај Игра
-STR_SINGLE_PLAYER                                               :{BLACK}Сам играч
 STR_MULTIPLAYER                                                 :{BLACK}Повеќе играчи
 STR_SCENARIO_EDITOR                                             :{BLACK}Сценарио едитор
 
@@ -306,9 +270,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Опции на Играта
 
 STR_0150_SOMEONE                                                :некој{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Карта на светот
-STR_0152_TOWN_DIRECTORY                                         :Именик на градови
-STR_0153_SUBSIDIES                                              :Привилегии
 
 STR_UNITS_IMPERIAL                                              :Империјален
 STR_UNITS_METRIC                                                :Метрички
@@ -322,24 +283,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}кс
 STR_UNITS_POWER_METRIC                                          :{COMMA}кс
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} тон{P "" и}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} тон{P "" и}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} галон{P "" и}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} лит{P ар ри}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} тонска сила
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -555,7 +510,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Програм - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Исчисти
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Зачувај
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Тековен програм на музика
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Избери програм со сите песни
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Избери 'old style music' програм
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Избери програм „нов стил на музика“
@@ -624,43 +578,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Згол
 STR_023C_EXPAND                                                 :{BLACK}Рашири
 STR_023D_RANDOM_TOWN                                            :{BLACK}Случаен Град
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Игради град на случајна локација
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Генерирање на индустрија
-STR_0240_COAL_MINE                                              :{BLACK}Рудник за Јаглен
-STR_0241_POWER_STATION                                          :{BLACK}Електрана
-STR_0242_SAWMILL                                                :{BLACK}Пилана
-STR_0243_FOREST                                                 :{BLACK}Шума
-STR_0244_OIL_REFINERY                                           :{BLACK}Нафтна Рафинерија
-STR_0245_OIL_RIG                                                :{BLACK}Нафтна Платформа
-STR_0246_FACTORY                                                :{BLACK}Фабрика
-STR_0247_STEEL_MILL                                             :{BLACK}Фабрика за Челик
-STR_0248_FARM                                                   :{BLACK}Фарма
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Рудник за Железна Руда
-STR_024A_OIL_WELLS                                              :{BLACK}Нафтен Извор
-STR_024B_BANK                                                   :{BLACK}Банка
-STR_024C_PAPER_MILL                                             :{BLACK}Индустрија за Хартија
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Плантажа за Преработка на Храна
-STR_024E_PRINTING_WORKS                                         :{BLACK}Печатница
-STR_024F_GOLD_MINE                                              :{BLACK}Рудник за Злато
-STR_0250_LUMBER_MILL                                            :{BLACK}Пилана за дрва
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Овошна плантажа
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Плантажа за Гума
-STR_0253_WATER_SUPPLY                                           :{BLACK}Резервоар за Вода
-STR_0254_WATER_TOWER                                            :{BLACK}Кула за Вода
-STR_0255_DIAMOND_MINE                                           :{BLACK}Рудник за Дијаманти
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Рудник за Бакарна Руда
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Шума со суровина за колачиња
-STR_0258_CANDY_FACTORY                                          :{BLACK}Фабрика за слатко
-STR_0259_BATTERY_FARM                                           :{BLACK}Фарма за батерии
-STR_025A_COLA_WELLS                                             :{BLACK}Извор за Кола
-STR_025B_TOY_SHOP                                               :{BLACK}Продавница за Играчки
-STR_025C_TOY_FACTORY                                            :{BLACK}Фабрика за Играчки
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Фонтани со пластика
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Фабрика за газирани пијалоци
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Генератор на меурчиња
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Ископина на карамели
-STR_0261_SUGAR_MINE                                             :{BLACK}Рудник за шеќер
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Конструирај Рудник за Јаглен
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Конструирај Електрана
 
 
 ############ range for menu starts
@@ -939,7 +856,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Не м�
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Изградба на аеродром
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Изгради аеродром
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Авион - кликни на авионот за информации
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Направи нов авион (може само во аеродром со хангар)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Авион - кликни на авионот за информации
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Направи нов авион
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Повлечи го авионот со глушецот овде за да го продадеш
@@ -964,12 +880,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Преи
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Преименувај го типот на авиони
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Не може да се преименува типот на авиони...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Пренамени авион за да може да пренесува друг вид на товар
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Пренамени)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Пренамени авион
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Одбери тип на товар за авионот
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Пренамени го авионот за да носи од одбележаниот тип на товар
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Одбери тип на товар:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Нов капацитет: {GOLD}{STRING}{}{BLACK}Пренамената чини: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Не може да се пренамени авионот...
 
 

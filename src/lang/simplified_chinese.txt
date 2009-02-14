@@ -162,7 +162,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}不能�
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}原始版权由 {COPYRIGHT} 1995 Chris Sawyer 所有，保留一切权力。
 STR_00B7_VERSION                                                :{BLACK}OpenTTD 版本 {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 The OpenTTD team
-STR_TRANSLATED_BY                                               :{BLACK}简体中文翻译者：Fishingsnow@yjrg.net
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -217,39 +216,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}船只
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}飞机
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}运输路线
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}煤矿
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}发电厂
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}森林
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}木材厂
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}炼油厂
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}农场
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}工厂
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}印刷厂
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}油田
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}铁矿
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}炼钢厂
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}银行
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}造纸厂
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}金矿
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}食品加工厂
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}钻石矿
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}铜矿
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}果园
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}橡胶园
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}水厂
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}水塔
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}木材厂
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}棉花糖森林
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}糖果厂
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}电池农场
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}可乐泉
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}玩具店
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}玩具工厂
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}塑料喷泉
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}跳跳水工厂
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}泡泡小屋
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}太妃场
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}蔗糖矿
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}火车站
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}汽车货场
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}公共汽车站
@@ -273,8 +240,6 @@ STR_DEFAULT                                                     :{BLACK}默认
 STR_012E_CANCEL                                                 :{BLACK}取消
 STR_012F_OK                                                     :{BLACK}确定
 STR_0130_RENAME                                                 :{BLACK}重命名
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}自定义的名字过多
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}选定的名字已经被用了
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -298,7 +263,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}新游戏
 STR_0141_LOAD_GAME                                              :{BLACK}读取存档
-STR_SINGLE_PLAYER                                               :{BLACK}单用户
 STR_MULTIPLAYER                                                 :{BLACK}联机游戏
 STR_SCENARIO_EDITOR                                             :{BLACK}场景编辑器
 
@@ -307,9 +271,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}游戏选项
 
 STR_0150_SOMEONE                                                :某人{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :世界地图
-STR_0152_TOWN_DIRECTORY                                         :城镇列表
-STR_0153_SUBSIDIES                                              :财政补贴
 
 STR_UNITS_IMPERIAL                                              :英制
 STR_UNITS_METRIC                                                :度量
@@ -323,24 +284,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}马力
 STR_UNITS_POWER_METRIC                                          :{COMMA}马力
 STR_UNITS_POWER_SI                                              :{COMMA}千瓦
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}英吨
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}吨
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}千克
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}吨
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}吨
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}千克
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}加仑
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}升
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}立方米
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}加仑
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}升
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}立方米
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}千磅力
-STR_UNITS_FORCE_METRIC                                          :{COMMA}吨力
 STR_UNITS_FORCE_SI                                              :{COMMA}千牛顿
 
 ############ range for menu starts
@@ -570,7 +525,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}列表 - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}清除
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}保存
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}当前音轨的列表
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}选择 '全部音轨' 列表
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}选择 '旧的风格' 列表
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}选择 '新的风格' 列表
@@ -654,76 +608,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}增加�
 STR_023C_EXPAND                                                 :{BLACK}扩张
 STR_023D_RANDOM_TOWN                                            :{BLACK}随机城镇
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}随机新增一些城镇
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}生成工业
-STR_0240_COAL_MINE                                              :{BLACK}煤矿
-STR_0241_POWER_STATION                                          :{BLACK}发电站
-STR_0242_SAWMILL                                                :{BLACK}木材厂
-STR_0243_FOREST                                                 :{BLACK}林场
-STR_0244_OIL_REFINERY                                           :{BLACK}炼油厂
-STR_0245_OIL_RIG                                                :{BLACK}钻井平台
-STR_0246_FACTORY                                                :{BLACK}工厂
-STR_0247_STEEL_MILL                                             :{BLACK}炼钢厂
-STR_0248_FARM                                                   :{BLACK}农场
-STR_0249_IRON_ORE_MINE                                          :{BLACK}铁矿
-STR_024A_OIL_WELLS                                              :{BLACK}油田
-STR_024B_BANK                                                   :{BLACK}银行
-STR_024C_PAPER_MILL                                             :{BLACK}造纸厂
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}食品加工厂
-STR_024E_PRINTING_WORKS                                         :{BLACK}印刷厂
-STR_024F_GOLD_MINE                                              :{BLACK}金矿
-STR_0250_LUMBER_MILL                                            :{BLACK}木材厂
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}果园
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}橡胶园
-STR_0253_WATER_SUPPLY                                           :{BLACK}水厂
-STR_0254_WATER_TOWER                                            :{BLACK}水塔
-STR_0255_DIAMOND_MINE                                           :{BLACK}钻石矿
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}铜矿
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}棉花糖森林
-STR_0258_CANDY_FACTORY                                          :{BLACK}糖果厂
-STR_0259_BATTERY_FARM                                           :{BLACK}电池农场
-STR_025A_COLA_WELLS                                             :{BLACK}可乐泉
-STR_025B_TOY_SHOP                                               :{BLACK}玩具店
-STR_025C_TOY_FACTORY                                            :{BLACK}玩具工厂
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}塑料喷泉
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}跳跳水工厂
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}泡泡小屋
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}太妃场
-STR_0261_SUGAR_MINE                                             :{BLACK}蔗糖矿
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}建设煤矿
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}建设发电站
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}建设木材厂
-STR_0265_PLANT_FOREST                                           :{BLACK}建设林场
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}建设炼油厂
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}建设钻井平台 (只能在地图边缘创建)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}建设工厂
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}建设炼钢厂
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}建设农场
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}建设铁矿
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}建设油田
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}建设银行 (只能在人口超过 1200 人的城镇中建设)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}建设造纸厂
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}建设食品加工厂
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}建设印刷厂
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}建设金矿
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}建设银行 (只能在城镇中建设)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}建设木材厂 (砍伐雨林以生产木材)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}建设果园
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}建设橡胶园
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}建设水厂
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}建设水塔 (只能在城镇中建设)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}建设钻石矿
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}建设铜矿
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}建设棉花糖森林
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}建设糖果厂
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}建设电池农场
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}建设可乐泉
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}建设玩具店
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}建设玩具工厂
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}建设塑料喷泉
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}建设跳跳水工厂
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}建设泡泡小屋
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}建设太妃场
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}建设蔗糖矿
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}不能在这里建设 {STRING} ……
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}必须先建设一个城镇……
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}每个城镇只能建设一个……
@@ -752,7 +636,6 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}以场�
 STR_PLAY_HEIGHTMAP                                              :{BLACK}以高度图开始游戏
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}以高度图决定的地形开始一个新游戏。
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}你确定要退出当前场景吗？
-STR_029C_QUIT_EDITOR                                            :{WHITE}退出编辑器
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}只能在人口超过 1200 的城镇建造……
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}将开始年份向前调整 1 年
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}将开始年份向后调整 1 年
@@ -781,13 +664,8 @@ STR_SUMMARY                                                     :摘要
 STR_FULL                                                        :完全
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :城镇地图
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}车辆自定义名称
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :默认
 STR_02BF_CUSTOM                                                 :自定义
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}保存自定义名称
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}车辆名称选择
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}保存自定义的车辆名称
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -796,7 +674,6 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :难度设定
 STR_MENU_CONFIG_SETTINGS                                        :高级设置
 STR_NEWGRF_SETTINGS                                             :NewGRF 设置
 STR_TRANSPARENCY_OPTIONS                                        :透明选项
-STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}显示城镇名称
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}显示车站名称
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}显示标志
@@ -857,7 +734,6 @@ STR_02FA_EVERY_12_MONTHS                                        :每 12 个月
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}开始一个新游戏
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}读取一个游戏存档
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}创建一个自定义的世界场景
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}选择单用户游戏
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}显示游戏选项
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}显示难度选项
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}使用一个自定义场景开始游戏
@@ -880,7 +756,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}建设�
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}只能在城镇中建设……
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}只能在雨林中建设……
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}只能在沙漠中建设……
 STR_0319_PAUSED                                                 :{YELLOW}* *  暂停中  *  *
@@ -1319,7 +1194,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}使用�
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}当前场景中没有城镇……
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}你确定要创建一个随机的景观吗？
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}大量随机城镇
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}在地图上创建大量随机的城镇
 STR_MANY_RANDOM_INDUSTRIES                                      :大量随机工业
@@ -1366,25 +1240,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}最新�
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}全部禁用
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}全部启用
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}建造煤矿
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}建造林场
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}建造钻井平台
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}建造农场
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}建造铜矿
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}建造油田
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}建造金矿
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}建造钻石矿
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}建造铁矿
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}建造果园
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}建造橡胶园
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}建造水厂
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}建造棉花糖森林
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}建造电池农场
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}建造可乐泉
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}建造塑料喷泉
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}建造泡泡小屋
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}建造太妃场
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}建造蔗糖矿
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}工业设施
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% 已运输)
@@ -2056,8 +1911,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}驱动�
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}保存当前游戏用的存档名字
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}删除选定的游戏存档
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}以选定的名字保存当前游戏
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}选择新游戏类型
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}选择场景(绿色)，预设游戏(蓝色)或随机开始新游戏
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :随机生成新游戏
 STR_LOAD_HEIGHTMAP                                              :{WHITE}读取地形图
 STR_SAVE_OSKTITLE                                               :{BLACK}为存档命名
@@ -2138,8 +1991,6 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} {INDUSTRY} 的产量下降了 {COMMA}%！
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}隧道中有火车
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}隧道中有汽车
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}规划位置中有另一条隧道
 STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}隧道出口将超出地图边界
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}隧道出口的地形无法处理
@@ -2309,7 +2160,6 @@ STR_TOLERANT                                                    :隐忍
 STR_HOSTILE                                                     :对立
 
 ##id 0x7000
-STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(公司 {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}新的肖像
@@ -2362,7 +2212,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}为总�
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}改变公司车船的颜色
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}为总裁改名
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}改变公司的名称
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}点击您想要的色彩方案
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}增加贷款的额度
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}偿还部分贷款
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manager)
@@ -2912,7 +2761,6 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}不能�
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}保养周期：{LTBLUE}{COMMA}days{BLACK}   上次保养：{LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}保养周期：{LTBLUE}{COMMA}%{BLACK}   上次保养：{LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}列车 - 点击可以查看详细信息
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}购买新的列车 (需要一个车库)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}列车 - 点击可以查看列车详细信息，拖动可以增加/减少车厢
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}购买
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}将列车拖到这里以出售
@@ -2963,7 +2811,6 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}不能�
 STR_CLEAR_TIME                                                  :{BLACK}清除时间
 STR_RESET_LATENESS                                              :{BLACK}清除晚点计数器
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}修改路点名
-STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}正在停止
 STR_TRAIN_STOPPING_VEL                                          :{RED}正在停止，{VELOCITY}
@@ -3018,7 +2865,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}正在 
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}不能命令该汽车前往车库...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}在附近找不到车库
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}汽车 - 单击车辆可以查看详细信息
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}购买新汽车 (需要有一个汽车车库)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}当前车辆的状态 - 单击这里可以停止/启动车辆
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}显示车辆的调度指令
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}将屏幕中心移动到汽车所在的位置
@@ -3100,7 +2946,6 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}购买
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}将船只拖到这里以出售
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}将屏幕中心移动到当前船坞的位置
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}船只列表 - 点击可以查看详细信息
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}购买新的船只 (需要一个船坞)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}船只列表 - 点击可以查看详细信息
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}购买高亮的船只
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}船只当前的状态 - 点击可以启动/停止船只
@@ -3145,7 +2990,6 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}购买
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}不能购买飞机……
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} 飞机
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (调度计划)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (详情)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}年龄：{LTBLUE}{STRING}{BLACK}   运行成本：{LTBLUE}{CURRENCY}/年
 STR_A00E_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
@@ -3168,7 +3012,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}不能�
 STR_A01D_AIRPORT_CONSTRUCTION                                   :机场建设
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}新建机场
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}飞机 - 点击可以查看详细信息
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}购买新闻及 (需要一个有机库的机场)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}飞机 - 点击可以查看详细信息
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}购买飞机
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}将飞机拖到这里以出售
@@ -3194,12 +3037,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}重命�
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}重命名飞机型号
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}不能重命名型号类型……
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}改装飞机装载货物的类型
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (改装)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}改装飞机
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}选择希望飞机装载的货物类型
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}改装飞机以运输高亮的货物类型
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}选择要运输的货物类型：
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}新的装载能力：{GOLD}{STRING}{}{BLACK}改装费用：{GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}不能改装飞机……
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (时间表)
@@ -3256,8 +3096,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}应用
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}切换调色板
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}切换选定GRF的调色.{}本功能用于游戏使用时GRF呈粉色
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}设置参数
-STR_NEWGRF_TIP                                                  :{BLACK}所有已经安装的 Newgrf 列表，点击可以改变参数。
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}当前没有任何已安装的 newgrf，请查看使用手册中关于如何安装的指导。
 STR_NEWGRF_FILENAME                                             :{BLACK}文件名：{SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}调色板: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID：{SILVER}{STRING}
@@ -3316,7 +3154,6 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}未找�
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}已为缺失的文件载入兼容的 GRF
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}缺失的 GRF 文件已经被禁用
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}缺少使游戏运行所必需的 GRF 文件
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}无法找到GRF文件
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}取消暂停可能造成错误. 请不要把接下来可能发生的错误当做Bug.{}继续么?
 
@@ -3390,7 +3227,6 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}点击�
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}点击这里可以开始根据选定的类型更新引擎
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}选择要更新的引擎对应的铁路类型
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}显示用来替换左侧被选定的引擎的新引擎
-STR_REPLACE_HELP                                                :{BLACK}当由某一引擎牵引的列车进入车库的时候，可以被自动地替换为另一类型的列车。
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}清理挂车：{ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}当引擎升级可能造成列车变长时，自动去掉最开始的若干挂车以保证列车长度不变。
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}替换项目： {ORANGE}{SKIP}{SKIP}{STRING}
@@ -3599,7 +3435,6 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} 
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} 船只
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} 飞机
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}移除分组
-STR_GROUP_REPLACE_CAPTION                                       :{WHITE}替换"{GROUP}"组的车辆
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}无法新建分组……
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}无法删除分组……
@@ -3735,7 +3570,6 @@ STR_AI_RANDOM_AI                                                :随机 AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI 特征
 STR_AI_AUTHOR                                                   :作者:
 STR_AI_VERSION                                                  :版本:
-STR_AI_DESCRIPTION                                              :描述:
 ########
 
 ############ town controlled noise level

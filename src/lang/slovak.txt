@@ -226,7 +226,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Oblast n
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Povodný copyright: {COPYRIGHT} 1995 Chris Sawyer, vsetky prava vyhradene
 STR_00B7_VERSION                                                :{BLACK}OpenTTD verzia {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 team OpenTTD
-STR_TRANSLATED_BY                                               :{BLACK} Preklad - Lukas Lengyel & gpsoft
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -284,39 +283,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Lode
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Lietadlá
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Dopravné trasy
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Uholná bana
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Elektráren
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Les
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Píla
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Ropná rafinéria
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Farma
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Továren
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Tlaciaren
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Ropné vrty
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Železorudná bana
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Oceliaren
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banka
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Výroba papiera
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Zlatá bana
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Výroba potravín
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Diamantová bana
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Medenná bana
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Ovocný sad
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Kaucuková plantáž
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Vodný zdroj
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Vodojem
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Píla
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Les cukrovej vaty
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Cukrovar
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Vyroba baterii
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Vyroba kofoly
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Hrackarstvo
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Vyroba hraciek
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Zuvackova fontana
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Vyroba sumienky
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Bublifuk
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Karamelovy lom
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Cukrova bana
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Železnicná stanica
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Nakladacia rampa
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Autobusová stanica
@@ -340,8 +307,6 @@ STR_DEFAULT                                                     :{BLACK}Standard
 STR_012E_CANCEL                                                 :{BLACK}Zrušit
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Premenovat
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Použitých príliš vela mien
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Vybrané meno je už použité
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -365,7 +330,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nová hra
 STR_0141_LOAD_GAME                                              :{BLACK}Nahrat hru
-STR_SINGLE_PLAYER                                               :{BLACK}Jeden hrac
 STR_MULTIPLAYER                                                 :{BLACK}Viacero hrácov
 STR_SCENARIO_EDITOR                                             :{BLACK}Editor scenárov
 
@@ -374,9 +338,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Nastavenia hry
 
 STR_0150_SOMEONE                                                :niekto{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Mapa sveta
-STR_0152_TOWN_DIRECTORY                                         :Zoznam miest
-STR_0153_SUBSIDIES                                              :Dotácie
 
 STR_UNITS_IMPERIAL                                              :Imperialne
 STR_UNITS_METRIC                                                :Metrické
@@ -390,24 +351,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}hp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P "" y ov}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lit{P er re rov}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} megapond{P "" y ov}
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -637,7 +592,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Zmazat
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Uložit
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Aktuálny program
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Vybrat 'Všetko'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Vybrat 'Stary styl'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Vybrat 'Novy styl'
@@ -721,76 +675,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Zvacsit 
 STR_023C_EXPAND                                                 :{BLACK}Rozsirit
 STR_023D_RANDOM_TOWN                                            :{BLACK}Nahodne mesto
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Postavit mesto na nahodnej pozicii
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Vytvorenie priemyslu
-STR_0240_COAL_MINE                                              :{BLACK}Uholna bana
-STR_0241_POWER_STATION                                          :{BLACK}Elektraren
-STR_0242_SAWMILL                                                :{BLACK}Pila
-STR_0243_FOREST                                                 :{BLACK}Les
-STR_0244_OIL_REFINERY                                           :{BLACK}Ropna rafineria
-STR_0245_OIL_RIG                                                :{BLACK}Vrtna plosina
-STR_0246_FACTORY                                                :{BLACK}Tovaren
-STR_0247_STEEL_MILL                                             :{BLACK}Oceliaren
-STR_0248_FARM                                                   :{BLACK}Farma
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Zelezorudna bana
-STR_024A_OIL_WELLS                                              :{BLACK}Vrtna veza
-STR_024B_BANK                                                   :{BLACK}Banka
-STR_024C_PAPER_MILL                                             :{BLACK}Vyroba papiera
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Potravinársky podnik
-STR_024E_PRINTING_WORKS                                         :{BLACK}Tlaciaren
-STR_024F_GOLD_MINE                                              :{BLACK}Zlata bana
-STR_0250_LUMBER_MILL                                            :{BLACK}Pila
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Ovocny sad
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Kaucukova plantaz
-STR_0253_WATER_SUPPLY                                           :{BLACK}Vodny zdroj
-STR_0254_WATER_TOWER                                            :{BLACK}Vodojem
-STR_0255_DIAMOND_MINE                                           :{BLACK}Diamantova bana
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Medenna bana
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Les cukrovej vaty
-STR_0258_CANDY_FACTORY                                          :{BLACK}Cukrovar
-STR_0259_BATTERY_FARM                                           :{BLACK}Vyroba baterii
-STR_025A_COLA_WELLS                                             :{BLACK}Vyroba kofoly
-STR_025B_TOY_SHOP                                               :{BLACK}Hrackarstvo
-STR_025C_TOY_FACTORY                                            :{BLACK}Vyroba hraciek
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Zuvackova fontana
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Vyroba sumienky
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Bublifuk
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Karamelovy lom
-STR_0261_SUGAR_MINE                                             :{BLACK}Cukrova bana
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Postavit uholnu banu
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Postavit elektraren
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Postavit pilu
-STR_0265_PLANT_FOREST                                           :{BLACK}Vysadit les
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Postavit ropnu rafineriu
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Postavit vrtnu plosinu (da sa postavit len blizko okraja mapy)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Postavit tovaren
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Postavit oceliaren
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Postavit farmu
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Postavit zelezorudnu banu
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Postavit ropny vrt
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Postavit banku (len v mestach kde je populacia vacsia ako 1200)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Postavit vyrobu papiera
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Postavit potravinársky podnik
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Postavit tlaciaren
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Postavit zlatu banu
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Postavit banku (len v mestach)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Postavit pilu (na cistenie dazdoveho pralesa a produkciu dreva)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Postavit ovocny sad
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Postavit kaucukovu plantaz
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Postavit vodny zdroj
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Postavit vodojem (len v mestach)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Postavit diamantovu banu
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Postavit medennu banu
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Vysadit les cukrovej vaty
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Postavit cukrovar
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Postavit vyrobu baterii
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Postavit vyrobu kofoly
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Postavit hrackarstvo
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Postavit vyrobu hraciek
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Postavit zuvackovu fontanu
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Postavit vyrobu sumienky
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Postavit bublifuk
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Postavit karamelovy lom
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Postavit cukrovu banu
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}{STRING} sa tu neda postavit...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...najskor treba postavit mesto...
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...povolene len jedno pre mesto...
@@ -819,7 +703,6 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}Hrat sce
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Hrat výškovú mapu
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Zacat novu hru s pouzitim vyskovej mapy ako krajiny
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Si si isty ze chces ukoncit tento scenar ?
-STR_029C_QUIT_EDITOR                                            :{WHITE}Ukoncit Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...moze byt postavene v mestach z populaciou vacsou ako 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Posunut zaciatok o rok dozadu
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Posunut zaciatok o rok dopredu
@@ -839,13 +722,8 @@ STR_SUMMARY                                                     :Obsah
 STR_FULL                                                        :Plne
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Zoznam miest
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Názvy vozidiel
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Vychodzie
 STR_02BF_CUSTOM                                                 :Vlastne
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Ulozit vlastne nazvy
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Vyber nazvu vozidiel
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Ulozit vlastne nazvy vozidiel na disk
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -854,7 +732,6 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :Nastavenia obti
 STR_MENU_CONFIG_SETTINGS                                        :Rozšírené nastavenia
 STR_NEWGRF_SETTINGS                                             :Nastavenie newgrf
 STR_TRANSPARENCY_OPTIONS                                        :Nastavenia priehladnosti
-STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Zobrazit nazvy miest
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Zobrazit nazvy stanic
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Zobrazit popisy
@@ -914,7 +791,6 @@ STR_02FA_EVERY_12_MONTHS                                        :Každých 12 me
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Spustit novu hru
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Nahrat ulozenú hru
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Vytvorit vlastny scenar
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Vyberte hru pre 1 hraca
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Zobraz nastavenia hry
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Zobraz nastavenia obtiaznosti
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Spustit novu hru s pouzitim vlastneho scenara
@@ -937,7 +813,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Financov
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}... moze byt postavene len v meste
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}... moze byt postavene len v dazdovom pralese
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}... moze byt postavene len v pusti
 STR_0319_PAUSED                                                 :{YELLOW}* *  ZASTAVENE  *  *
@@ -1363,7 +1238,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Automati
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}... v tomto scenari nie je ziadne mesto
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Si si isty, ze chces vytvorit nahodny teren?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Vela nahodnych miest
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Pokryt mapu nahodne umiestnenymi mestami
 STR_MANY_RANDOM_INDUSTRIES                                      :Vela nahodneho priemyslu
@@ -1410,25 +1284,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Zoznam p
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Zakazat vsetky
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Povolit vsetky
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Postavit uholnu banu
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Vysadit les
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Postavit vrtnu plosinu
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Financovat farmu
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Postavit medennu banu
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Postavit ropny vrt
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Postavit zlatu banu
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Postavit diamantovu banu
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Postavit zelezorudnu banu
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Financovat ovocnu plantaz
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Financovat kaucukovu plantaz
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Financovat vodny zdroj
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Vysadit les na cukrovu vatu
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Postavit vyrobu baterii
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Postavit vyrobu kofoly
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Financovat zuvackovu fontanu
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Postavit bublifuk
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Postavit karamelovy lom
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Postavit cukrovu banu
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Priemysel
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% prepravenych)
@@ -2093,8 +1948,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Zoznam d
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Vybrany nazov pre ulozenie hry
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Vymazat vybranu ulozenu hru
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Ulozit aktualnu hru s pouzitim vybraneho mena
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Vyber typ novej hry
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Vyber scenar (zeleny), prednastavenu hra (modra), alebo nahodnu hru
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Vygenerovat nahodnu novu hru
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Nahrat výškovú mapu
 STR_SAVE_OSKTITLE                                               :{BLACK}Zadajte názov pre uloženie hry
@@ -2175,8 +2028,6 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{1:INDUSTRY} znižuje produkciu {0:STRING.g} o {2:COMMA}%!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vlak v tuneli
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Automobil v tuneli
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Iny tunel v ceste
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nemozno zarovnat teren na druhej strane tunela
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Tunel musi byt najskor zburany
@@ -2345,7 +2196,6 @@ STR_TOLERANT                                                    :Tolerantny
 STR_HOSTILE                                                     :Odmietavy
 
 ##id 0x7000
-STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Spoločnosť {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nová tvár
@@ -2398,7 +2248,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Vybrat n
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Zmenit vzhlad spolocnosti
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Zmenit meno prezidenta
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Zmenit nazov spolocnosti
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Kliknut pre vyber novej farby
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Zvysit velkost uveru
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Splatit cast uveru
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Prezident)
@@ -2946,7 +2795,6 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Nemozno 
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Servisny interval: {LTBLUE}{COMMA}dni{BLACK}   Posledny servis: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Servisny interval: {LTBLUE}{COMMA}%{BLACK}   Posledny servis: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlaky - kliknut na vlak pre informacie
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Kupit nove vlaky (potrebne depo)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlaky - kliknut na vlak pre informacie, potiahni pre zmenu pozicie
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Kupit novy vlak
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Pre predaj vlaku ho potiahni sem
@@ -2997,7 +2845,6 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Typ vlak
 STR_CLEAR_TIME                                                  :{BLACK}Vymazat cas
 STR_RESET_LATENESS                                              :{BLACK}Reset meskania
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Zmeniť meno smerového bodu
-STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Zastavuje
 STR_TRAIN_STOPPING_VEL                                          :{RED}Zastavuje, {VELOCITY}
@@ -3052,7 +2899,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servis 
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nemozno poslat automobil do garaze ...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemozno najst miestnu garaz
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Automobily - kliknut pre detaily
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Zakupit novy automobil (potrebna garaz)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Aktualna cinnost vozidla - kliknut pre zastavenie/spustenie
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Zobrazit cestovne prikazy
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Vycentrovat pohlad na vozidlo
@@ -3134,7 +2980,6 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Vyrobit 
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Potiahnut lod sem, na predaj
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Vycentrovat pohlad na lodenicu
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Lode - kliknut pre informacie
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Vyrobit nove lode (potrebna lodenica)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Vyber lodi - kliknut pre informacie
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Vyrobit vybranu lod
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Atualna cinnost lode - klini pre zastavenie/spustenie
@@ -3179,7 +3024,6 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Vyrobit 
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nemozno vyrobit lietadlo...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Lietad{P lo la iel}
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Prikazy)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Náklady na prevádzku: {LTBLUE}{CURRENCY}/rok
 STR_A00E_MAX_SPEED                                              :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY}
@@ -3202,7 +3046,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nie je m
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Výstavba letiska
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Postavit letisko
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lietadlo - kliknut pre informacie
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Vyrobit nove lietadlo (potrebne letisko z hangarom)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lietadlo - kliknut pre informacie
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Vyrobit nove lietadlo
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Potiahni lietadlo sem pre predaj
@@ -3228,12 +3071,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Premenov
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Premenovat typ lietadla
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Nie je mozne premenovat typ lietadla ...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Prestavat lietadlo na iny typ nakladu
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Prestavat)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Prestavat lietadlo
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vyber novy typ nakladu
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Prestavat lietadlo na novy typ nakladu
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vybrat typ noveho nakladu:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nová kapacita: {GOLD}{STRING}{}{BLACK}Náklady na prestavbu: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nie je mozne prestavat na novy typ nakladu ...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Cestovný poriadok)
@@ -3290,8 +3130,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Potvrdit
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Prepnúť paletu
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Prepnúť paletu na zvolené NewGRF.{}Vykonajte to ak grafika z tohoto NewGRF je v hre ružová
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Nastavit parametre
-STR_NEWGRF_TIP                                                  :{BLACK}Zoznam vsetkych sad nainstalovanych novych grafik. Nastavenie zmenite kliknutim na set.
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nie sú nainštalované žiadne súbory s novou grafikou. Postup inštalácie nových grafík nájdete v manuály.
 STR_NEWGRF_FILENAME                                             :{BLACK}Názov súboru: {SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
@@ -3350,7 +3188,6 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Príslu
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilné GRF použité namiesto chýbajúcich súborov
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chýbajúce GRF súbory boli vypnuté
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Cýbajú GRF súbory potrebné pre nahratie hry
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Chýba(jú) GRF súbor(y)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Odpauzovanie môže spôsobit pád OpenTTD. Nezaznamenávajte nasledujúce chyby.{}Naozaj chcete odpauzovat?
 
@@ -3424,7 +3261,6 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Stlac to
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Stlac toto tlacidlo, ak chces zacat vymienat typ lokomotivy v lavom zozname za typ lokomotivy v pravom zozname
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vyber typ kolajnic, pre ktore chces vymienat lokomotivy
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Zobrazenie za ktoru lokomotivu sa lokomotiva v zozname nalavo zamiena
-STR_REPLACE_HELP                                                :{BLACK}Umoznuje vybrat typ lokomotivy, ktory sa automaticky zameni za iny typ, ak sa vlaky s takouto lokomotivou zastavia v depe
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranenie vagonu: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkcia automatickeho vylepsovania vlakov moze udrzovat rovnaku dlzku vlakov odstranovanim vagonov (od zaciatku vlakov), pokial by zmena rusna vlak predlzila.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymena: {ORANGE}{SKIP}{SKIP}{STRING}
@@ -3622,7 +3458,6 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} 
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Lod{P "" e í}
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Lietad{P lo lá iel}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Premenovat skupinu
-STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Nahradit vozidlá skupiny "{GROUP}"
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Nie je možné vytvorit skupinu ...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}Nie je možné zrušit túto skupinu ...

@@ -286,7 +286,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Područj
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_00B7_VERSION                                                :{BLACK}OpenTTD verzija {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 OpenTTD tim
-STR_TRANSLATED_BY                                               :{BLACK}  Prevodilac(s) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -341,39 +340,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Brodovi
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Letelice
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Transportne rute
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Rudnik uglja
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Termoelektrana
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Šuma
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Pilana
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Rafinerija nafte
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Farma
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fabrika
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Štamparija
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Naftna bušotina
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Rudnik gvožđa
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Železara
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banka
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Fabrika papira
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Rudnik zlata
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Prehrambeni kombinat
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Rudnik dijamanata
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Rudnik bakra
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Plantaža voća
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Plantaža kaučuka
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Izvor vode
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Vodotoranj
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Drvni kombinat
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Šuma šećerne vune
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Fabrika slatkiša
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Plantaža baterija
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Izvor kole
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Prodavnica igračaka
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Fabrika igračaka
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Gejziri plastike
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Fabrika gaziranih pića
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Generator mehurića
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Karamenolom
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Rudnik šećera
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Železnička stanica
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Utovar kamiona
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Autobuska stanica
@@ -397,8 +364,6 @@ STR_DEFAULT                                                     :{BLACK}Propust
 STR_012E_CANCEL                                                 :{BLACK}Otkaži
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Preimenuj
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Definisano je previše imena
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Izabrano ime je već u upotrebi
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -422,7 +387,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nova igra
 STR_0141_LOAD_GAME                                              :{BLACK}Učitaj igru
-STR_SINGLE_PLAYER                                               :{BLACK}Sam igrač
 STR_MULTIPLAYER                                                 :{BLACK}Mreža igra
 STR_SCENARIO_EDITOR                                             :{BLACK}Scenarij Urednik
 
@@ -431,9 +395,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Opcije
 
 STR_0150_SOMEONE                                                :neko{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Mapa sveta
-STR_0152_TOWN_DIRECTORY                                         :Popis naselja
-STR_0153_SUBSIDIES                                              :Subvencije
 
 STR_UNITS_IMPERIAL                                              :Carski
 STR_UNITS_METRIC                                                :Metrički
@@ -629,7 +590,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Obriši
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Sačuvaj
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Tekući program muzičkih numera
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Izaberi program 'sve numere'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Izaberi program 'stari zvuk'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Izaberi program 'novi zvuk'
@@ -704,76 +664,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Uvećaj 
 STR_023C_EXPAND                                                 :{BLACK}Proširi
 STR_023D_RANDOM_TOWN                                            :{BLACK}Nasumično naselje
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Izgradi naselje na nasumičnoj lokaciji
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Generator industrije
-STR_0240_COAL_MINE                                              :{BLACK}rudnik uglja
-STR_0241_POWER_STATION                                          :{BLACK}termoelektrana
-STR_0242_SAWMILL                                                :{BLACK}pilana
-STR_0243_FOREST                                                 :{BLACK}šuma
-STR_0244_OIL_REFINERY                                           :{BLACK}rafinerija nafte
-STR_0245_OIL_RIG                                                :{BLACK}naftna platforma
-STR_0246_FACTORY                                                :{BLACK}fabrika
-STR_0247_STEEL_MILL                                             :{BLACK}železara
-STR_0248_FARM                                                   :{BLACK}farma
-STR_0249_IRON_ORE_MINE                                          :{BLACK}rudnik gvožđa
-STR_024A_OIL_WELLS                                              :{BLACK}naftna bušotina
-STR_024B_BANK                                                   :{BLACK}banka
-STR_024C_PAPER_MILL                                             :{BLACK}fabrika papira
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}prehrambeni kombinat
-STR_024E_PRINTING_WORKS                                         :{BLACK}štamparija
-STR_024F_GOLD_MINE                                              :{BLACK}rudnik zlata
-STR_0250_LUMBER_MILL                                            :{BLACK}drvni kombinat
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}plantaža voća
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}plantaža kaučuka
-STR_0253_WATER_SUPPLY                                           :{BLACK}izvor vode
-STR_0254_WATER_TOWER                                            :{BLACK}vodotoranj
-STR_0255_DIAMOND_MINE                                           :{BLACK}rudnik dijamanata
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}rudnik bakra
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}šuma šećerne vune
-STR_0258_CANDY_FACTORY                                          :{BLACK}fabrika slatkiša
-STR_0259_BATTERY_FARM                                           :{BLACK}farma baterija
-STR_025A_COLA_WELLS                                             :{BLACK}izvor kole
-STR_025B_TOY_SHOP                                               :{BLACK}prodavnica igračaka
-STR_025C_TOY_FACTORY                                            :{BLACK}fabrika igračaka
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}gejziri plastike
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}fabrika gaziranih pića
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}generator mehurića
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}karemenolom
-STR_0261_SUGAR_MINE                                             :{BLACK}rudnik šećera
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Izgradnja rudnika uglja
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Izgradnja termoelektrane
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Izgradnja pilane
-STR_0265_PLANT_FOREST                                           :{BLACK}Sadnja šume
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Izgradnja naftne rafinerije
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Izgradnja naftne platforme (izgradnja dozvoljena samo u blizini ivica mape)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Izgradnja fabrike
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Izgradnja železare
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Izgradnja farme
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Izgradnja rudnika gvožđa
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Izgradnja naftne bušotine
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Izgradnja banke (izgradnja dozvoljena samo u naseljima sa populacijom većom od 1200)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Izgradnja fabrike papira
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Izgradnja prehrambenog kombinata
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Izgradnja štamparije
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Izgradnja rudnika zlata
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Izgradnja banke (izgradnja dozvoljena samo u naseljima)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Izgradnja drvnog kombinata (da raščisti prašumu i proizvodi drvo)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Sadnja plantaže voća
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Sadnja plantaže kaučuka
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Izgradnja izvora vode
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Izgradnja vodotornja (izgradnja dozvoljena samo u naseljima)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Izgradnja rudnika dijamanata
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Izgradnja rudnika bakra
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Sadnja šume šećerne vune
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Izgradnja fabrike slatkiša
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Izgradnja farme baterija
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Izgradnja izvora kole
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Izgradnja prodavnice igračaka
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Izgradnja fabrike igračaka
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Izgradnja gejzira plastike
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Izgradnja fabrike gaziranih pića
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Izgradnja generatora mehurića
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Izgradnja karamenoloma
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Izgradnja rudnika šećera
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE} {STRING} je nemoguće izgraditi ovde...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...prvo bi trebalo podići naselje
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...dozvoljena je samo jedna ovakva gradnja po naselju
@@ -796,7 +686,6 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Sačuvaj
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Učitaj scenario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Sačuvaj scenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Igraj scenario
-STR_029C_QUIT_EDITOR                                            :{WHITE}Napusti editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...dozvoljeno izgraditi samo u naseljima sa populacijom od najmanje 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Pomeranje datuma početka za jednu godinu unazad
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Pomeranje datuma početka za jednu godinu unapred
@@ -812,13 +701,8 @@ STR_02B6                                                        :{STRING}  -  {S
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Prikaži poslednju poruku ili izveštaj
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Popis naselja
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Imena vozila
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Podrazumevan
 STR_02BF_CUSTOM                                                 :Prilagođen
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Sačuvaj prilagođena imena
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Izbor imena vozila
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Sačuvaj prilagođena imena vozila
 
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Opcije
@@ -868,7 +752,6 @@ STR_02FA_EVERY_12_MONTHS                                        :Svakih 12 mesec
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Započni novu igru
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Učitaj staru poziciju
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Kreiraj svet/scenario u igri po svom ukusu
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Izbor igre za jednog igrača
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Prikaži opcije igre
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Prikaži opcije težine igre
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Započni novu igru, koristeći prethodno prilagođen scenario
@@ -887,7 +770,6 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Finansiranje iz
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Finansiranje izgradnje nove industrije
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...gradnja je dozvoljena samo u naseljima
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...gradnja je dozvoljena samo u područjima pod tropskim šumama
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...gradnja je dozvoljena samo u pustinjskim oblastima
 STR_0319_PAUSED                                                 :{YELLOW}* * PAUZA * *
@@ -1324,8 +1206,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Spisak d
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Ime sačuvane pozicije
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Obriši izabrani fajl sa sačuvanom pozicijom
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Sačuvaj tekuću igru, koristeći odabrano ime
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Izbor vrste nove igre
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Izbor scenarija (zelena), predefinisane igre (plava), ili nasumično-generisane nove igre
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Nasumično generisanje nove igre
 
 ##id 0x4800
@@ -1400,8 +1280,6 @@ STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...može biti postavljeno samo blizu ivica mape
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Voz je u tunelu
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Drumsko vozilo je u tunelu
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Drugi tunel je na putu
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nije moguće iskopati drugi kraj tunela
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Potrebno je prvo uništiti tunel
@@ -1568,7 +1446,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Izbor no
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Promena izgleda vozila kompanije
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Promena imena vlasnika
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Promena imena kompanije
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Kliknite na željenu kolor šemu
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Uvećanje zajma
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Otplata dela duga
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(vlasnik)

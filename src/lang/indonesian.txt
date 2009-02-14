@@ -162,7 +162,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Tidak da
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Hak Cipta asli {COPYRIGHT} 1995 Chris Sawyer, Hak Cipta dilindungi
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versi {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Tim OpenTTD
-STR_TRANSLATED_BY                                               :{BLACK}  Penerjemah(s) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -217,39 +216,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Kapal
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Pesawat
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Jalur Transportasi
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Tambang Batubara
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Pembangkit Listrik
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Hutan
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Penggergajian Kayu
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Kilang Minyak
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Pertanian
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Pabrik
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Percetakan
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Ladang Minyak
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Tambang Biji Besi
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Peleburan Baja
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}Bank
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Pabrik Kertas
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Tambang Emas
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Industri Pengolahan Pangan
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Tambang Intan
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Tambang Biji Tembaga
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Perkebunan Buah
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Perkebunan Karet
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Sumber Air
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Menara Air
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Pengolahan Kayu
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Hutan Harum Manis
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Pabrik Manisan
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Perkebunan Baterai
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Sumur Cola
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Toko Mainan
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Pabrik Mainan
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Pancuran Plastik
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Pabrik Minuman Berdesis
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Pembangkit Gelembung
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Pabrik Kue Toffee
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Tambang Gula
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Station Kereta
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Terminal bongkar muat
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Terminal Bus
@@ -273,8 +240,6 @@ STR_DEFAULT                                                     :{BLACK}Standar
 STR_012E_CANCEL                                                 :{BLACK}Batal
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Ubah nama
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Terlalu banyak Nama yang telah didefinisikan
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Nama ini sudah digunakan
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -298,7 +263,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Permainan baru
 STR_0141_LOAD_GAME                                              :{BLACK}Buka Permainan
-STR_SINGLE_PLAYER                                               :{BLACK}Bermain sendiri
 STR_MULTIPLAYER                                                 :{BLACK}Bermain bersama
 STR_SCENARIO_EDITOR                                             :{BLACK}Editor Skenario
 
@@ -307,9 +271,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Pilihan Permainan
 
 STR_0150_SOMEONE                                                :seseorang{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Peta Dunia
-STR_0152_TOWN_DIRECTORY                                         :Daftar Kota
-STR_0153_SUBSIDIES                                              :Pembiayaan
 
 STR_UNITS_IMPERIAL                                              :Imperial
 STR_UNITS_METRIC                                                :Metrik
@@ -323,24 +284,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}hp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gln
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} ton gaya
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -570,7 +525,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Kosong
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Simpan
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Program Track musik sekarang
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Pilih program 'semua track'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Pilih program 'gaya musik lama'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Pilih program 'gaya musik masa kini'
@@ -654,76 +608,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Tambah u
 STR_023C_EXPAND                                                 :{BLACK}Memperluas
 STR_023D_RANDOM_TOWN                                            :{BLACK}Kota secara acak
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Membangun kota di lokasi secara acak
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Membuat Industri
-STR_0240_COAL_MINE                                              :{BLACK}Tambang Batubara
-STR_0241_POWER_STATION                                          :{BLACK}Pembangkit Listrik
-STR_0242_SAWMILL                                                :{BLACK}Penggergajian Kayu
-STR_0243_FOREST                                                 :{BLACK}Hutan
-STR_0244_OIL_REFINERY                                           :{BLACK}Kilang Minyak
-STR_0245_OIL_RIG                                                :{BLACK}Pengeboran minyak lepas pantai
-STR_0246_FACTORY                                                :{BLACK}Pabrik
-STR_0247_STEEL_MILL                                             :{BLACK}Pabrik Peleburan Baja
-STR_0248_FARM                                                   :{BLACK}Pertanian
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Tambang Bijih Tembaga
-STR_024A_OIL_WELLS                                              :{BLACK}Sumur Minyak
-STR_024B_BANK                                                   :{BLACK}Bank
-STR_024C_PAPER_MILL                                             :{BLACK}Pabrik Pengolahan Kertas
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Pengolahan Makanan
-STR_024E_PRINTING_WORKS                                         :{BLACK}Percetakan
-STR_024F_GOLD_MINE                                              :{BLACK}Tambang Emas
-STR_0250_LUMBER_MILL                                            :{BLACK}Pabrik Pengolahan Kayu Gelondongan
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Perkebunan Buah
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Perkebunan Karet
-STR_0253_WATER_SUPPLY                                           :{BLACK}Sumber Air
-STR_0254_WATER_TOWER                                            :{BLACK}Menara Air
-STR_0255_DIAMOND_MINE                                           :{BLACK}Tambang Intan
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Tambang Bijih Tembaga
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Hutan Harum Manis
-STR_0258_CANDY_FACTORY                                          :{BLACK}Pabrik Manisan
-STR_0259_BATTERY_FARM                                           :{BLACK}Pertanian Baterai
-STR_025A_COLA_WELLS                                             :{BLACK}Sumur Cola
-STR_025B_TOY_SHOP                                               :{BLACK}Toko Mainan
-STR_025C_TOY_FACTORY                                            :{BLACK}Pabrik Mainan
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Sumber Mata Air Plastik
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Pabrik Minuman berdesis
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Pembangkit Gelembung
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Tambang gula-gula
-STR_0261_SUGAR_MINE                                             :{BLACK}Tambang Gula
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Membangun Tambang Batubara
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Membangun Stasiun Pembangkit
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Membangun Penggergajian Kayu
-STR_0265_PLANT_FOREST                                           :{BLACK}Menanam Hutan
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Membangun Kilang Minyak
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Membangun Pengeboran Minyak lepas pantai (hanya dapat dibangun di dekat batas peta)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Membangun Pabrik
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Membangun Peleburan Baja
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Membangun Pertanian
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Membangun Tambang Bijih Besi
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Membangun Sumur Minyak
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Membangun Bank (Hanya dapat dilakukan pada kota dengan populasi diatas 1200)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Membangun Pengolahan Kertas
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Membangun Pengolahan Pangan
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Membangun Percetakan
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Membangun Tambang Emas
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Membangun Bank (Hanya dapat dilakukan di kota)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Membangun pengolahan Kayu (untuk mengolah hasil hutan dan menghasilkan Kayu)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Menanam Perkebunan Buah
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Menanam Perkebunan Karet
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Membangun Sumber Air
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Membangun Menara Air (Hanya dapat dilakukan di kota)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Membangun Tambang Intan
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Membangun Tambang Bijih Tembaga
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Menanam Hutan Harum Manis
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Membangun Pabrik Manisan
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Membangun Pertanian Baterai
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Membangun Sumur Cola
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Membangun Toko Mainan
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Membangun Pabrik Mainan
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Membangun Pancuran Plastik
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Membangun Pabrik Minuman berdesis
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Membangun Pembangkit Gelembung
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Membangun Tambang Toffee
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Membangun Tambang Gula
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Tidak dapat membangun {STRING} disini...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...harus membangun kota terlebih dahulu
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...hanya diizinkan satu di setiap kota
@@ -752,7 +636,6 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}Mainkan 
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Mainkan Heightmap
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Mulai permainan baru, menggunakan heightmap sebagai datarannya
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Apakah anda yakin akan keluar dari skenario ini ?
-STR_029C_QUIT_EDITOR                                            :{WHITE}Keluar Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...hanya dapat dibangun pada kota dengan populasi paling sedikit 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Mundurkan tanggal mulai sejauh 1 tahun
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Majukan tanggal mulai sejauh 1 tahun
@@ -781,13 +664,8 @@ STR_SUMMARY                                                     :Ringkasan
 STR_FULL                                                        :Penuh
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Daftar kota
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Desain nama kendaraan
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Standar
 STR_02BF_CUSTOM                                                 :Bebas
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Simpan nama bebas
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Pilih desain nama kendaraan
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Simpan kustomisasi desain nama kendaraan
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -796,7 +674,6 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :Pengaturan ting
 STR_MENU_CONFIG_SETTINGS                                        :Pengaturan lanjutan
 STR_NEWGRF_SETTINGS                                             :Pengaturan NewGRF
 STR_TRANSPARENCY_OPTIONS                                        :Pengaturan Transparansi
-STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Nama kota ditampilkan
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Nama stasiun ditampilkan
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Tanda ditampilkan
@@ -857,7 +734,6 @@ STR_02FA_EVERY_12_MONTHS                                        :Setiap 12 bulan
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Mulai permainan baru
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Membuka permainan yang telah disimpan
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Buat kustomisasi skenario permainan
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Pilih bermain sendirian
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Tampilkan opsi permainan
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Tampilkan opsi tingkat kesulitan
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Mulai permainan baru, menggunakan skenario kustomisasi
@@ -880,7 +756,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Danai in
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...hanya dapat dibangun di kota
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...hanya dapat dibangun di area hutan hujan
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...hanya dapat dibangun di area gurun
 STR_0319_PAUSED                                                 :{YELLOW}* *  BERHENTI  *  *
@@ -1319,7 +1194,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Membangu
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...disana tidak ada kota dalam skenario ini
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Apakah anda yakin mau membuat landsekap secara acak?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Buat kota secara acak
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Dukung Peta dengan penempatan kota secara otomatis
 STR_MANY_RANDOM_INDUSTRIES                                      :Bangun industri secara acak
@@ -1366,25 +1240,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Daftar p
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Matikan semua
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Aktifkan semua
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Buat tambang batubara
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Menanam Hutan
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Membangun Pengeboran Minyak Lepas Pantai
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Danai Peternakan
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Buat Tambang Bijih Tembaga
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Bor Minyak
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Membangun Tambang Emas
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Bangun Tambang Intan
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Membangun Tambang Bijih Besi
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Danai Perkebunan Buah
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Danai Perkebunan Karet
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Danai Pengeboran Air
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Menanam Hutan Harum Manis
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Danai Peternakan Baterai
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Bor Kola
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Danai Air Mancur Plastik
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Bangun Pembangkit Gelembung
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Danai Pertambangan Toffee
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Membangun Tambang Gula
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% terkirim)
@@ -2056,8 +1911,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Daftar d
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nama yang akan digunakan untuk menyimpan permainan
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Hapus nama simpanan permainan terpilih
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Simpan permainan saat ini, gunakan nama yang terpilih
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Pilih Jenis Permainan Baru
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Pilih skenario(hijau), permainan yang telah di-set (biru), atau permainan baru secara acak
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Bangkitkan permainan baru secara acak
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Buka peta  Heightmap
 STR_SAVE_OSKTITLE                                               :{BLACK}Masukkan nama dari permainan tersimpan
@@ -2138,8 +1991,6 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produksi {STRING} di {INDUSTRY} turun hingga {COMMA}%!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Kereta Api sedang di dalam terowongan
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Bus/truk sedang di dalam terowongan
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Bersinggungan dengan terowongan lain
 STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Terowongan boleh berakhir di luar peta
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Tidak dapat menyesuaikan kemiringan tanah di ujung terowongan
@@ -2309,7 +2160,6 @@ STR_TOLERANT                                                    :Toleran
 STR_HOSTILE                                                     :Bermusuhan
 
 ##id 0x7000
-STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Perusahaan {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Ganti Wajah
@@ -2362,7 +2212,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Pilih wa
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Ubah warna kendaraan perusahaan
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Ubah nama pimpinan
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Ubah nama perusahaan
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Klik pada tema warna yang diinginkan
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Tambah jumlah pinjaman
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Bayar sebagian pinjaman
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Pimpinan)
@@ -2912,7 +2761,6 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Tidak da
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Jangka waktu servis: {LTBLUE}{COMMA} hari{BLACK}   Servis terakhir: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Jangka waktu servis: {LTBLUE}{COMMA} %{BLACK}   Servis terakhir: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Kereta - klik pada kereta untuk melihat informasi
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Membuat kereta baru (membutuhkan depo kereta)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Kereta Api - klik untuk info kereta., drag kendaraan untuk menambah atau menghapus dari kereta
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Membuat kereta baru
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Drag kereta ke sini untuk menjualnya
@@ -2963,7 +2811,6 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Tidak da
 STR_CLEAR_TIME                                                  :{BLACK}Hapus waktu
 STR_RESET_LATENESS                                              :{BLACK}Reset
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Ganti nama penunjuk arah
-STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Berhenti
 STR_TRAIN_STOPPING_VEL                                          :{RED}Akan berhenti, {VELOCITY}
@@ -3018,7 +2865,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servis 
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Tidak dapat mengirim kendaraan ke garasi...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Tidak dapat menemukan garasi terdekat
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Bus/truk - klik pada kendaraan untuk menampilkan informasi
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Membuat bus/truk baru (membutuhkan garasi bus/truk)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Kegiatan kendaraan saat ini - klik disini untuk menghentikan / menjalankan kendaraan
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Tampilkan perintah kendaraan
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Arahkan pandangan pada lokasi kendaraan
@@ -3100,7 +2946,6 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Membuat 
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Drag kapal kesini untuk menjualnya
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Arahkan pandangan pada lokasi Galangan Kapal
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Kapal - klik pada kapal untuk menampilkan informasi
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Membuat kapal baru (membutuhkan Galangan Kapal)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Daftar kapal - klik pada kapal untuk informasi
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Buat kapal yang dipilih
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Aksi kapal saat ini - klik disini untuk menghentikan / menjalankan kapal
@@ -3145,7 +2990,6 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Buat Pes
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Tidak dapat membuat pesawat ...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Pesawat
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Order)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detail)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Usia: {LTBLUE}{STRING}{BLACK}   Biaya Operasional: {LTBLUE}{CURRENCY}/thn
 STR_A00E_MAX_SPEED                                              :{BLACK}Kecepatan Maks.: {LTBLUE}{VELOCITY}
@@ -3168,7 +3012,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Tidak da
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Konstruksi Bandara
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Membangun bandara
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Pesawat - klik pada pesawat untuk informasi
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Membuat pesawat baru (membutuhkan bandara dengan hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Pesawat - klik pada pesawat untuk informasi
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Membuat pesawat baru
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Drag pesawat kesini untuk menjualnya
@@ -3194,12 +3037,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Ubah nam
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Ubah nama jenis pesawat
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Tidak dapat mengubah nama jenis pesawat...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Renovasi kargo untuk membawa barang jenis lain
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Renovasi)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Ubah kargo pesawat
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Pilih jenis kargo yang akan dibawa pesawat
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Ubah kargo pesawat agar bisa membawa kargo terpilih
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Pilih jenis kargo yang akan dibawa:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Kapasitas baru: {GOLD}{STRING}{}{BLACK}Biaya ubah kargo: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Tidak dapat mengubah kargo pesawat...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Sesuai dengan jadwal)
@@ -3256,8 +3096,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Terapkan
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Tandai palet
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Tandai palet NewGRF terpilih.{}Lakukan ini ketika grafis NewGRF ini terlihat berwarna merah muda di dalam permainan
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Atur parameter
-STR_NEWGRF_TIP                                                  :{BLACK}Daftar semua berkas Newgrf yang terpasang. Klik salah satu untuk mengganti pengaturan
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Tidak ada berkas Newgrf yang terpasang! Mohon meninjau instruksi dari buku manual tentang cara untuk memasang grafik
 STR_NEWGRF_FILENAME                                             :{BLACK}Nama File: {SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}Palet/warna: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
@@ -3316,7 +3154,6 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Berkas 
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF kompatibel telah dimuat untuk berkas yang hilang
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Berkas GRF telah di non-aktifkan
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Berkas GRF tidak tersedia untuk dapat memuat permainan
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Berkas GRF yang hilang
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Tidak menghentikan sementara dapat membuat OpenTTD menjadi crash. Jangan mengirimkan laporan bug dari crash tersebut.{}Apakah Anda sungguh tidak ingin menghentikan?
 
@@ -3390,7 +3227,6 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Tekan un
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Tekan untuk memulai penggantian jenis kendaraan terpilih  di sisi kiri dengan di sisi kanan
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Pilih jenis kereta yang anda inginkan untuk diganti
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Menampilkan kendaraan terpilih di sisi kiri yang akan diganti, jika ada
-STR_REPLACE_HELP                                                :{BLACK}Mengijinkan anda untuk mengganti model kereta dengan model lainnya, ketika kereta tsb memasuki depo
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Membuang gerbong: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Membuat panjang kereta tetap sama saat penggantian secara otomatis dengan cara membuang gerbong(dihitung dari bagian depan), jika penggantian lokomotif membuat kereta lebih panjang.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Mengganti: {ORANGE}{SKIP}{SKIP}{STRING}
@@ -3599,7 +3435,6 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} 
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Kapal
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Pesawat
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Ubah nama kelompok
-STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Ganti kendaraan pada kelompok "{GROUP}"
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Tidak data membuat kelompok...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}Tidak dapat menghapus kelompok ini...
@@ -3735,7 +3570,6 @@ STR_AI_RANDOM_AI                                                :AI Acak
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parameter AI
 STR_AI_AUTHOR                                                   :Pembuat:
 STR_AI_VERSION                                                  :Versi:
-STR_AI_DESCRIPTION                                              :Deskripsi:
 ########
 
 ############ town controlled noise level

@@ -162,7 +162,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nu se po
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, toate drepturile rezervate
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versiunea {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Echipa OpenTTD
-STR_TRANSLATED_BY                                               :{BLACK}  Translator(i) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -217,39 +216,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Nave
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Aeronave
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Rute de transport
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Mină de cărbune
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Termocentrală
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Pădure
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Fabrică de cherestea
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Rafinărie
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Fermă
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fabrică de conserve
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Tipografie
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Sonde de petrol
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Mină de fier
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Oţelărie
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}Bancă
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Fabrică de hârtie
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Mină de aur
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Combinat alimentar
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Mină de diamante
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Mină de cupru
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Livadă
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Plantaţie de cauciuc
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Rezervor de apă
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Turn de apă
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Fabrică de cherestea
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Pădure de vată de zahăr
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Fabrică de bomboane
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Fermă de baterii
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Fântâni de cola
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Magazin de jucării
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Fabrică de jucării
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Fântâni de plastic
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Fabrică de sucuri
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Generator de balonaşe
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Carieră de caramel
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Mină de zahăr
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Gară
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Loc încărcare camioane
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Staţie de autobuz
@@ -273,8 +240,6 @@ STR_DEFAULT                                                     :{BLACK}Prestabi
 STR_012E_CANCEL                                                 :{BLACK}Anulează
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Nume nou
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Prea multe nume definite
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Numele ales este deja folosit
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -298,7 +263,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Joc nou
 STR_0141_LOAD_GAME                                              :{BLACK}Încarcă joc
-STR_SINGLE_PLAYER                                               :{BLACK}Un singur jucãtor
 STR_MULTIPLAYER                                                 :{BLACK}Multiplayer
 STR_SCENARIO_EDITOR                                             :{BLACK}Editor harta
 
@@ -307,9 +271,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Optiuni
 
 STR_0150_SOMEONE                                                :cineva{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Harta lumii
-STR_0152_TOWN_DIRECTORY                                         :Lista cu orase
-STR_0153_SUBSIDIES                                              :Subventii
 
 STR_UNITS_IMPERIAL                                              :Imperiale
 STR_UNITS_METRIC                                                :Metrice
@@ -323,24 +284,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cp
 STR_UNITS_POWER_METRIC                                          :{COMMA}cp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P ă e}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P ă e}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galo{P n ane}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P u i}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ livre-forţă
-STR_UNITS_FORCE_METRIC                                          :{COMMA} tone-forţă
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -570,7 +525,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Sterge
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Salveaza
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Programul current al pieselor muzicale
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Selecteaza programul 'toate melodiile'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Selecteaza programul 'oldies'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Selecteaza programul 'modern'
@@ -654,76 +608,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Măreşt
 STR_023C_EXPAND                                                 :{BLACK}Extinde
 STR_023D_RANDOM_TOWN                                            :{BLACK}Oraş aleator
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Construieşte un oraş într-o locaţie aleatoare
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Generare industrii
-STR_0240_COAL_MINE                                              :{BLACK}Mină de cărbune
-STR_0241_POWER_STATION                                          :{BLACK}Termocentrală
-STR_0242_SAWMILL                                                :{BLACK}Fabrică de cherestea
-STR_0243_FOREST                                                 :{BLACK}Pădure
-STR_0244_OIL_REFINERY                                           :{BLACK}Rafinărie
-STR_0245_OIL_RIG                                                :{BLACK}Platformă petrolieră
-STR_0246_FACTORY                                                :{BLACK}Fabrică de conserve
-STR_0247_STEEL_MILL                                             :{BLACK}Oţelărie
-STR_0248_FARM                                                   :{BLACK}Fermă
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Mină de fier
-STR_024A_OIL_WELLS                                              :{BLACK}Sonde de petrol
-STR_024B_BANK                                                   :{BLACK}Bancă
-STR_024C_PAPER_MILL                                             :{BLACK}Fabrică de hârtie
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Combinat alimentar
-STR_024E_PRINTING_WORKS                                         :{BLACK}Tipografie
-STR_024F_GOLD_MINE                                              :{BLACK}Mină de aur
-STR_0250_LUMBER_MILL                                            :{BLACK}Fabrică de cherestea
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Livadă
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Plantaţie de cauciuc
-STR_0253_WATER_SUPPLY                                           :{BLACK}Rezervor de apă
-STR_0254_WATER_TOWER                                            :{BLACK}Turn de apă
-STR_0255_DIAMOND_MINE                                           :{BLACK}Mină de diamante
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Mină de cupru
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Pădure de vată de zahăr
-STR_0258_CANDY_FACTORY                                          :{BLACK}Fabrică de bomboane
-STR_0259_BATTERY_FARM                                           :{BLACK}Fermă de baterii
-STR_025A_COLA_WELLS                                             :{BLACK}Fântâni de cola
-STR_025B_TOY_SHOP                                               :{BLACK}Magazin de jucării
-STR_025C_TOY_FACTORY                                            :{BLACK}Fabrică de jucării
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Fântâni de plastic
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Fabrică de sucuri
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Generator de balonaşe
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Carieră de caramel
-STR_0261_SUGAR_MINE                                             :{BLACK}Mină de zahăr
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Construieste mina de cupru
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Construieste termocentrala
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Infiinteaza fabrica de cherestea
-STR_0265_PLANT_FOREST                                           :{BLACK}Planteaza padure
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Construieste rafinarie
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Construieste platforma petroliera (doar în apropierea marginilor hartii)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Construieste fabrica de conserve
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Construieste otelarie
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Infiinteaza ferma
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Construieste mina de fier
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Construieste sonde de petrol
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construieste banca (doar în oraşele cu o populaţie de cel putin 1200 locuitori)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Construieste fabrica de hartie
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Construieste combinat alimentar
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Construieste tipografie
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Construieste mina de aur
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construieste banca (doar în orase)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Construieste fabrica de cherestea (taie arborii din jur pentru a produce lemne)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Planteaza livada
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Înfiinteaza plantatie de cauciuc
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Construieşte rezervor de apă
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Construieşte turn de apă (doar în oraşe)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Construieşte mină de diamante
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Construieşte mină de cupru
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Plantează pădure de vată de zahăr
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Construieşte fabrică de bomboane
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Înfiinţează fermă de baterii
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Construieşte fântâni de cola
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Construieşte magazin de jucării
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Construieşte fabrică de jucării
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Construieşte fântâni de plastic
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Construieşte fabrică de sucuri
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Construieşte generator de balonaşe
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Construieşte carieră de caramel
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Construieşte mină de zahăr
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Nu se poate construi {STRING} aici...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...mai întâi trebuie creat un oraş
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...un singur obiectiv de acest tip este permis într-un oraş
@@ -752,7 +636,6 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}Joacă s
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Hartă topografică
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Începe un joc nou folosind o hartă topografică pentru generarea terenului
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Esti sigur cã vrei sã renunti la acest scenariu?
-STR_029C_QUIT_EDITOR                                            :{WHITE}Ieşire din editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...Se poate construi doar în oraşe cu populaţia de cel puţin 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Schimbă data de start cu un an în urmă
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Schimbă data de start înainte cu un an
@@ -781,13 +664,8 @@ STR_SUMMARY                                                     :Pe scurt
 STR_FULL                                                        :Pe larg
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Lista oraşelor (F5)
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Numele vehiculelor
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Prestabilit
 STR_02BF_CUSTOM                                                 :Propriu
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Salvează numele proprii
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Selectează numele modelelor
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Salvează pe disc numele personalizate de mărci şi modele
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -796,7 +674,6 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :Setări dificul
 STR_MENU_CONFIG_SETTINGS                                        :Setari avansate
 STR_NEWGRF_SETTINGS                                             :Setari Newgrf
 STR_TRANSPARENCY_OPTIONS                                        :Optiuni transparenta
-STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Afişează numele oraşelor
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Afişează numele staţiilor
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Afişează semnele de pe hartă
@@ -857,7 +734,6 @@ STR_02FA_EVERY_12_MONTHS                                        :La fiecare 12 l
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Începere joc nou
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Încarcă un joc salvat
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Creează un joc/scenariu propriu
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Alege un joc cu un singur jucător
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Afişează opţiunile jocului
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Afişează opţiunile pentru alegerea dificultăţii
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Începerea unui joc nou folosind un scenariu deja existent
@@ -880,7 +756,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Construi
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...se poate construi doar în oraşe
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...se poate construi doar in padurile ecuatoriale
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...se poate construi doar în zonele de deşert
 STR_0319_PAUSED                                                 :{YELLOW}* *  PAUZĂ  (F1) *  *
@@ -1319,7 +1194,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Construi
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...în acest scenariu nu există nici un oraş
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Eşti sigur că vrei să creezi un peisaj aleator?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Mai multe orase aleatoare
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Umple harta cu orase generate aleator
 STR_MANY_RANDOM_INDUSTRIES                                      :Multe industrii aleatoare
@@ -1366,25 +1240,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}O listă
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Dezactivează toate
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Activează toate
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Construieşte mină de cărbune
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Plantează pădure
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Construieşte platformă petrolieră
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Înfiinţează fermă
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Construieşte mină de cupru
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Forează după petrol
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Construieşte mină de aur
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Construieşte mină de diamante
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Construieşte mină de fier
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Plantează livadă
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Înfiinţează plantaţie de cauciuc
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Construieşte rezervor de apă
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Plantează pădure de vată de zahăr
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Înfiinţează fermă de baterii
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Forează după cola
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Construieste fântâni de plastic
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Construieste generator de balonase
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Construieşte carieră de caramel
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Construieşte mină de zahăr
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrii
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportat)
@@ -2056,8 +1911,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lista de
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Numele selectat pentru un joc salvat
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Şterge jocul salvat selectat
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Salvează cu numele selectat jocul curent
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Alege tipul noului joc
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Alege un scenariu (verde), un joc predefinit (albastru) sau o hartă aleatoare
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generează o hartă aleatoare
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Încarcă harta înălţimilor
 STR_SAVE_OSKTITLE                                               :{BLACK}Introduceţi un nume pentru salvare
@@ -2138,8 +1991,6 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Productia de {STRING} de la {INDUSTRY} scade cu {COMMA}%!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tren în tunel
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Autovehicul în tunel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Intersectare cu alt tunel
 STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunelul ar ieşi din hartă
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Terenul de la celălalt capăt al tunelului este imposibil de excavat
@@ -2309,7 +2160,6 @@ STR_TOLERANT                                                    :tolerantă
 STR_HOSTILE                                                     :ostilă
 
 ##id 0x7000
-STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Companie {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Schimbă poza
@@ -2362,7 +2212,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Alege o 
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Schimbă culoarea care îţi reprezintă compania
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Schimbă numele preşedintelui
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Schimbă numele companiei
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Click pe schema de culoare dorită
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Împrumută o nouă sumă de bani
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Plăteşte înapoi o parte din credite
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Preşedinte)
@@ -2912,7 +2761,6 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Nu se po
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Intervalul pentru întreţinere: {LTBLUE}{COMMA}zile{BLACK}   Ultima întreţinere: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Intervalul de service: {LTBLUE}{COMMA}%{BLACK}   Ultimul service: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trenuri - apasă aici pentru informaţii despre trenuri
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Cumpără trenuri noi (necesită un depou)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trenuri - clic pe tren pentru informaţii, mută vehiculele pentru adăugare-scoatere din tren
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construieşte un nou vehicul feroviar
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Mută un vehicul aici pentru a-l vinde
@@ -2963,7 +2811,6 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nu se po
 STR_CLEAR_TIME                                                  :{BLACK}Curata timp
 STR_RESET_LATENESS                                              :{BLACK}Reinitializeaza contorul de intarziere
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Schimba numele haltei
-STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Oprire
 STR_TRAIN_STOPPING_VEL                                          :{RED}Oprire, {VELOCITY}
@@ -3018,7 +2865,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Service
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nu pot trimite autovehiculul la autobază...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nu pot găsi o autobază apropiată
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Autovehicule - clic pe vehicul pentru informatii
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Cumpãrã un nou autovehicul (ai nevoie de o autobazã)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Comanda curentă a autovehiculului - clic aici pentru a opri/porni autovehiculul
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Afişează comenzile autovehiculului
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centrează imaginea pe locaţia curentă a autovehiculului
@@ -3100,7 +2946,6 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Construi
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Trage nava aici pentru a o vinde
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrează imaginea pe locaţia şantierului
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Nave - click pe navă pentru informaţii
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Construieşte nave noi (necesită cel puţin un şantier naval)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Listă de selecţie a navelor - click pe o navă pentru informaţii
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Construieşte nava selectată
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Comanda curentă a navei - clic aici pentru a opri/porni nava
@@ -3145,7 +2990,6 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Cumpăr�
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nu se poate cumpăra aeronava...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Aeronave
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Comenzi)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detalii)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Vârstă: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
 STR_A00E_MAX_SPEED                                              :{BLACK}Viteză max.: {LTBLUE}{VELOCITY}
@@ -3168,7 +3012,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nu se po
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Construire aeroport
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construieşte aeroport
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronavă - clic pe aeronavă pentru informaţii
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Cumpără o nouă aeronavă (necesită un aeroport cu hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronavă - clic pe aeronavă pentru informaţii
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Cumpără o aeronavă
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Trage aeronava aici pentru a o vinde
@@ -3194,12 +3037,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Redenume
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Redenumeşte modelul de aeronavă
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Nu se poate redenumi modelul de aeronavă...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Schimbă tipul de marfă transportat de aeronavă
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Schimbă marfa)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Schimbă marfa transportată de aeronavă
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Alege tipul de încărcătură ce va fi transportat de aeronavă
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Schimbă tipul de încărcătură al aeronavei cu cel selectat
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Alege tipul încărcăturii:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Noua capacitate: {GOLD}{STRING}{}{BLACK}Costul transformării: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nu se poate schimba tipul aeronavei...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Orar)
@@ -3256,8 +3096,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplică 
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Comuta paleta
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Schimba paleta la NewGRF ul selectat .{} Efectueaza acest lucru cand graficele din acest NewGRF sunt roz in joc
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Seteaza parametri
-STR_NEWGRF_TIP                                                  :{BLACK}Lista tuturor setarilor Newgrf pe care le-ai instalat. Click pentru a schimba setarile.
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nu exista fisiere newgrf instalate! Citeste manualul pentru instructiunile de instalare a fisierelor grafice noi.
 STR_NEWGRF_FILENAME                                             :{BLACK}Nume fisier: {SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
@@ -3316,7 +3154,6 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Nu am g
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Fisier(e) GRF compatibil(e) incarcate pentru fisierele lipsa
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fisierele GRF lipsa au fost dezactivate
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fisierele GRF lipsa pentru permiterea incarcarii jocului
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fisier(e) GRF lipsa
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Reluarea jocului poate bloca OpenTTD. Nu raportati raporturi cu probleme pentru blocari succesive.{}Sigur doresti sa reiei jocul?
 
@@ -3390,7 +3227,6 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Apasa ai
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Apasa aici pentru a incepe inlocuirea motorului selectat in stanga cu cel selectat in dreapta
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Alege un tip de cale ferată pentru care să înlocuieşti motoarele
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Arata care va fi  inlocuitorul motorului selectat in stanga
-STR_REPLACE_HELP                                                :{BLACK}Aceasta functie iti permite sa selectezi un model de vehicul si sa-l inlocuiesti cu altul. Schimbarea se va efectua automat la intrarea vehiculului intr-un depou.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retragere vagoane: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fã optiunea de autoînlocuire sã pãstreze identicã lungimea unui tren prin eliminarea vagoanelor (începând din fatã), dacã înlocuirea motorului ar face trenul mai lung.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Înlocuire: {ORANGE}{SKIP}{SKIP}{STRING}
@@ -3599,7 +3435,6 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} 
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Nav{P a e}
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Aeronav{P a e}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Redenumeste un grup
-STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Inlocuieste vehiculele din "{GROUP}"
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Nu pot crea grup...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}Nu pot şterge grup...
@@ -3735,7 +3570,6 @@ STR_AI_RANDOM_AI                                                :IA aleator
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametri IA
 STR_AI_AUTHOR                                                   :Autor:
 STR_AI_VERSION                                                  :Versiune:
-STR_AI_DESCRIPTION                                              :Descriere:
 ########
 
 ############ town controlled noise level

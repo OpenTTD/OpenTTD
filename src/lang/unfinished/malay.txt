@@ -124,7 +124,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Tidak bo
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Hakcipta terpelihara{COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versi {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 The OpenTTD team
-STR_TRANSLATED_BY                                               :{BLACK}  Penterjemah -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -179,39 +178,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Kapal
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Kapal Terbang
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Laluan Pengangkutan
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Lombong Arang Batu
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Stesen Janakuasa
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Hutan
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Kilang Papan
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Kilang Penapis Minyak
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Ladang
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Kilang
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Percetakan
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Telaga Minyak
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Lombong Bijih Besi
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Kilang Keluli
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}Bank
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Kilang Kertas
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Lombong Emas
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Kilang Pemprosesan Makanan
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Lombong Berlian
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Lombong Bijih Tembaga
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Ladang Buahan
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Ladang Getah
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Bekalan Air
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Menara Air
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Kilang Kayu
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Hutan Candyfloss
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Kilang Manisan
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Ladang Bateri
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Telaga Kola
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Kedai Mainan
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Kilang Mainan
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Pancutan Plastik
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Kilang Minuman Bergas
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Penjana Buih
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Kuari Tofi
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Lombong Gula
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Stesen Keretapi
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Tempat Pemunggahan Barang
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Stesen Bas
@@ -234,8 +201,6 @@ STR_012D                                                        :{WHITE}{STRING}
 STR_012E_CANCEL                                                 :{BLACK}Batal
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Tukar Nama
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Terlalu banyak nama ditakrifkan
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Nama dipilih telah dipakai
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -259,7 +224,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Permainan Baru
 STR_0141_LOAD_GAME                                              :{BLACK}Muat Permainan
-STR_SINGLE_PLAYER                                               :{BLACK}Seorang pemain
 STR_MULTIPLAYER                                                 :{BLACK}Ramai pemain
 
 STR_MAPSIZE                                                     :{BLACK}Saiz peta:
@@ -267,9 +231,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Pilihan Permainan
 
 STR_0150_SOMEONE                                                :Seseorang{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Peta Dunia
-STR_0152_TOWN_DIRECTORY                                         :Direktori Bandar
-STR_0153_SUBSIDIES                                              :Subsidi
 
 STR_UNITS_METRIC                                                :Metrik
 STR_UNITS_SI                                                    :SI
@@ -282,23 +243,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}hp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tan
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tan
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galen
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -512,7 +468,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Bersih
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Simpan
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Program trek muzik semasa
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Pilih program 'semua trek'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Pilih program 'muzik gaya lama'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Pilih program 'muzik gaya baru'
@@ -589,76 +544,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Besarkan
 STR_023C_EXPAND                                                 :{BLACK}Kembangkan
 STR_023D_RANDOM_TOWN                                            :{BLACK}Bandar Secara Rawak
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Bina bandar secara rawak
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Hasilkan Industri
-STR_0240_COAL_MINE                                              :{BLACK}Lombong Arang
-STR_0241_POWER_STATION                                          :{BLACK}Stesen Janakuasa
-STR_0242_SAWMILL                                                :{BLACK}Kilang papan
-STR_0243_FOREST                                                 :{BLACK}Hutan
-STR_0244_OIL_REFINERY                                           :{BLACK}Kilang Penapis Minyak
-STR_0245_OIL_RIG                                                :{BLACK}Pelantar Minyak
-STR_0246_FACTORY                                                :{BLACK}Kilang
-STR_0247_STEEL_MILL                                             :{BLACK}Kilang Keluli
-STR_0248_FARM                                                   :{BLACK}Ladang
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Lombong Bijih Besi
-STR_024A_OIL_WELLS                                              :{BLACK}Perigi Minyak
-STR_024B_BANK                                                   :{BLACK}Bank
-STR_024C_PAPER_MILL                                             :{BLACK}Kilang Kertas
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Kilang Pemprosessan Makanan
-STR_024E_PRINTING_WORKS                                         :{BLACK}Kilang Percetakan
-STR_024F_GOLD_MINE                                              :{BLACK}Lombong Emas
-STR_0250_LUMBER_MILL                                            :{BLACK}Kilang Kayu
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Ladang Buahan
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Ladang Getah
-STR_0253_WATER_SUPPLY                                           :{BLACK}Bekalan Air
-STR_0254_WATER_TOWER                                            :{BLACK}Menara Air
-STR_0255_DIAMOND_MINE                                           :{BLACK}Lombong Berlian
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Lombong Bijih Besi
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Hutan Gula Kapas
-STR_0258_CANDY_FACTORY                                          :{BLACK}Kilang gula-gula
-STR_0259_BATTERY_FARM                                           :{BLACK}Ladang Bateri
-STR_025A_COLA_WELLS                                             :{BLACK}Perigi Kola
-STR_025B_TOY_SHOP                                               :{BLACK}Kedai Permainan
-STR_025C_TOY_FACTORY                                            :{BLACK}Kilang Permainan
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Pancutan Plastik
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Kilang air bergas
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Penjana Buih
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Kuari Tofi
-STR_0261_SUGAR_MINE                                             :{BLACK}Lombong Gula
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Bina Lombong Arang Batu
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Bina Stesen Janakuasa
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Bina Kilang Papan
-STR_0265_PLANT_FOREST                                           :{BLACK}Penanaman Hutan
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Bina Kilang Penapisan minyak
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Bina Carigali Minyak (Hanya boleh dibuat dipinggir peta)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Bina Kilang
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Bina Kilang Keluli
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Bina Ladang
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Bina Lombng Bijih Besi
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Bina Telaga Minyak
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bina Bank (Hanya boleh dibina di bandar berpenduduk melebihi 1200 orang)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Bina Kilang Papan
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Bina Kilang Pemprosessan Makanan
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Bina Kilang Percetakan
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Bina Lombong Emas
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bina Bank (Hanya boleh dibina di bandar)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Bina Kilang Kayu (menebang hutan untuk hasilkan kayu)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Bina Ladang Buahan
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Bina Ladang Getah
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Menyalurkan Bekalan Air
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Bina Tangki Air (Hanya boleh dibina di bandar)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Bina Lombong Berilian
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Bina Lombong Tembaga
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Menanam Hutan Gula Kapas
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Bina Kilang Gula-gula
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Bina Ladang Bateri
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Bina Telaga Cola
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Bina Kedai Permainan
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Bina Kilang Mainan
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Bina Pancutan Plastik
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Bina Kilang Air Bergas
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Bina Penjana Buih
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Bina Kuari Tofi
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Bina Lombong Gula
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Tidak boleh bina {STRING} di sini...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...mesti membangunkan bandar dahulu
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...hanya satu dibenarkan untuk setiap bandar
@@ -680,7 +565,6 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Simpan s
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Muat Senario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Simpan Senario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Main Senario
-STR_029C_QUIT_EDITOR                                            :{WHITE}Keluar dari Penyunting
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}... hanya boleh dibina di bandar dengan populasi lebih atau sama dengan 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Pindah tarikh permulaan 1 tahun belakang
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Pindah tarikh permulaan 1 tahun ke hadapan
@@ -694,12 +578,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Saiz ba
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Tunjukkan utusan atau laporan berita terakhir
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Direktori Bandar
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}nama rekabentuk kenderaan
-STR_02BE_DEFAULT                                                :Fungsi lalai
 STR_02BF_CUSTOM                                                 :Custom
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Simpan nama custom
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Pilihan nama rekabentuk kenderaan
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Simpan nama rekabentuk kenderaan custom
 
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Pilihan permainan
@@ -751,7 +630,6 @@ STR_02FA_EVERY_12_MONTHS                                        :Setiap 12 bulan
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Mulakan permainan baru
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Muat permainan yang tersimpan
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Membentuk dunia permananan/senario custom
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Pilih permainan satu pemain
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Papar pilihan permainan
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Papar pilihan kesukaran
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Mulakan permainan baru, dengan mengunnakan senario custom
@@ -774,7 +652,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Biaya in
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...hanya boleh dibina di bandar
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...hanya boleh dibina di kawasan hutan
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...hanya boleh dibina di kawasan gurun
 STR_0319_PAUSED                                                 :{YELLOW}* *  DIHENTIKAN  *  *
@@ -971,9 +848,6 @@ STR_CONVERT_RAIL_TIP                                            :{BLACK}Menukark
 
 
 
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Bina Lombong Bijih Besi
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Tumbuh Hutan Gula Kapas
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Menggerudi untuk Kola
 
 
 

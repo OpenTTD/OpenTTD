@@ -164,7 +164,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}...לא 
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}כל הזכויות שמורות , {COPYRIGHT}1995 כריס סויר - {NBSP}זכויות יוצרים מקוריות
 STR_00B7_VERSION                                                :{BLACK}{REV} גירסה , OpenTTD
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 The OpenTTD team
-STR_TRANSLATED_BY                                               :{BLACK}  מתרגמים
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -219,39 +218,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}כלי שייט
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}כלי טייס
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}  נתיבי תחבורה
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}מכרה פחם
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}תחנת כוח
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}יער
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}מנסרה
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}בית זיקוק
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}חווה
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}מפעל
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}בית דפוס
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}בארות נפט
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}מכרה ברזל
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}מפעל פלדה
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}בנק
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}מפעל נייר
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}מכרה זהב
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}מפעל עיבוד מזון
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}מכרה יהלומים
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}מכרה נחושת
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}מטע עצי פרי
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}מטע עצי גומי
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}משאבת מים
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}מגדל מים
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}מנסרת  עץ
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}יער שערות סבתא
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}מפעל ממתקים
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}חוות סוללות
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}בארות קולה
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}חנות צעצועים
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}מפעל צעצועים
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}מזרקות פלסטיק
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}מפעל משקאות מוגזים
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}מייצר בועות
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}מכרה טופי
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}מכרה סוכר
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}תחנת רכבת
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}תחנת טעינה למשאיות
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}תחנת אוטובוס
@@ -275,8 +242,6 @@ STR_DEFAULT                                                     :{BLACK}בחיר
 STR_012E_CANCEL                                                 :{BLACK}ביטול
 STR_012F_OK                                                     :{BLACK}אישור
 STR_0130_RENAME                                                 :{BLACK}שנה שם
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}הוגדרו יותר מדי שמות
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}השם הנבחר כבר בשימוש
 
 STR_OSNAME_WINDOWS                                              :חלונות
 STR_OSNAME_DOS                                                  :דוס
@@ -300,7 +265,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}משחק חדש
 STR_0141_LOAD_GAME                                              :{BLACK}טען משחק
-STR_SINGLE_PLAYER                                               :{BLACK}שחקן יחיד
 STR_MULTIPLAYER                                                 :{BLACK}משחק מרובה שחקנים
 STR_SCENARIO_EDITOR                                             :{BLACK}עורך השלבים
 
@@ -309,9 +273,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}אפשרויות
 
 STR_0150_SOMEONE                                                :{SKIP}{SKIP}מישהו
-STR_0151_MAP_OF_WORLD                                           :מפת העולם
-STR_0152_TOWN_DIRECTORY                                         :מדריך הערים
-STR_0153_SUBSIDIES                                              :סובסידיות
 
 STR_UNITS_IMPERIAL                                              :אימפריאל
 STR_UNITS_METRIC                                                :מטרית
@@ -325,24 +286,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}כ"ס
 STR_UNITS_POWER_METRIC                                          :{COMMA}כ"ס
 STR_UNITS_POWER_SI                                              :{COMMA}קילו וואט
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}ט'
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}ט'
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}ק"ג
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} טו{P "נות" "ן"}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} טו{P "נות" "ן"}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} ק"ג
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}גל'
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}ל'
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}מ'³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} גלו{P "נים" "ן"}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} ליטר {P "" "ים"}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ³מטר
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ ליברה פיט
-STR_UNITS_FORCE_METRIC                                          :{COMMA}ניוטון
 STR_UNITS_FORCE_SI                                              :{COMMA} קילו ניוטן
 
 ############ range for menu starts
@@ -572,7 +527,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}תוכנית- '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}מחק
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}שמור
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}תוכנית הנגינה הנוכחית
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}'בחר בתוכנית 'כל המנגינות
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}'בחר בתוכנית 'סגנון ישן
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}'בחר בתוכנית 'סגנון חדש
@@ -656,76 +610,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK} הרח�
 STR_023C_EXPAND                                                 :{BLACK}הרחב
 STR_023D_RANDOM_TOWN                                            :{BLACK}עיר אקראית
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}בנה עיירה במקום אקראי
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}יצירת תעשיות
-STR_0240_COAL_MINE                                              :{BLACK}מכרה פחם
-STR_0241_POWER_STATION                                          :{BLACK}תחנת כח
-STR_0242_SAWMILL                                                :{BLACK}מנסרה
-STR_0243_FOREST                                                 :{BLACK}יער
-STR_0244_OIL_REFINERY                                           :{BLACK}בית זיקוק
-STR_0245_OIL_RIG                                                :{BLACK}אסדת קידוח
-STR_0246_FACTORY                                                :{BLACK}מפעל
-STR_0247_STEEL_MILL                                             :{BLACK}מפעל לייצור מתכת
-STR_0248_FARM                                                   :{BLACK}חווה
-STR_0249_IRON_ORE_MINE                                          :{BLACK}מכרה ברזל
-STR_024A_OIL_WELLS                                              :{BLACK}בארות נפט
-STR_024B_BANK                                                   :{BLACK}בנק
-STR_024C_PAPER_MILL                                             :{BLACK}בית-חרושת לנייר
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}מפעל עיבוד מזון
-STR_024E_PRINTING_WORKS                                         :{BLACK}בית דפוס
-STR_024F_GOLD_MINE                                              :{BLACK}מכרה זהב
-STR_0250_LUMBER_MILL                                            :{BLACK}מנסרה
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}מטע עצי פרי
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}מטע  עצי גומי
-STR_0253_WATER_SUPPLY                                           :{BLACK}משאבת מים
-STR_0254_WATER_TOWER                                            :{BLACK}מגדל מים
-STR_0255_DIAMOND_MINE                                           :{BLACK}מכרה יהלומים
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}מכרה נחושת
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}יער שערות סבתא
-STR_0258_CANDY_FACTORY                                          :{BLACK}מפעל ממתקים
-STR_0259_BATTERY_FARM                                           :{BLACK}חוות סוללות
-STR_025A_COLA_WELLS                                             :{BLACK}באר קולה
-STR_025B_TOY_SHOP                                               :{BLACK}חנות צעצועים
-STR_025C_TOY_FACTORY                                            :{BLACK}מפעל צעצועים
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK} מזרקות פלסטיק
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}מפעל משקאות מוגזים
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}מחולל בועות
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}מחצבת טופי
-STR_0261_SUGAR_MINE                                             :{BLACK}מכרה סוכר
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}בנה מכרה פחם
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}בנה תחנת כח
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}בנה מנסרה
-STR_0265_PLANT_FOREST                                           :{BLACK}טע עצים
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}בנה בית זיקוק
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}(בנה אסדת קידוח (אפשרי רק בשולי המפה
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}בנה מפעל
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}בנה בית חרושת לייצור פלדה
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}בנה חווה
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}בנה מכרה ברזל
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}בנה בארות-נפט
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}(בנה בנק (רק בערים שאוכלוסיתן מעל 1200 איש
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}בנה בית חרושת לנייר
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}בנה מפעל עיבוד מזון
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}בנה בית דפוס
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}בנה מכרה זהב
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}(בנה בנק (יכול להבנות בתוך ערים
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}(בנה מנסרת עץ (כדי לפנות יערות גשם ולייצר עץ
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}טע מטע פירות
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}טע מטע גומי
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}בנה מתקן שאיבת מים
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}(בנה מגדל מים(יכול להבנות רק ליד ערים
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}בנה מכרה יהלומים
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}בנה מכרה נחושת
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}טע יער שערות סבתא
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}בנה מפעל לממתקים
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}בנה חוות סוללות
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}בנה בארות קולה
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}בנה חנות צעצועים
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}בנה מפעל צעצועים
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}בנה מזרקות פלסטיק
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}בנה מפעל למשקאות מוגזים
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}בנה מחולל בועות
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}בנה מחצבת טופי
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}בנה מכרה סוכר
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}באתר זה {STRING} לא ניתן לבנות
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...יש לבנות עיר קודם
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...מותר רק אחד בכל עיר
@@ -754,7 +638,6 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}שחק �
 STR_PLAY_HEIGHTMAP                                              :{BLACK}שחק במפת גובה
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}התחל משחק חדש בשימוש מפת גובה כנוף.
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}?האם אתה בטוח שברצונך לצאת משלב זה
-STR_029C_QUIT_EDITOR                                            :{WHITE}צא מהעורך
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...ניתן לבנות בערים עם אוכלוסיה של לפחות 1200 איש
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}שנה את שנת ההתחלה לשנה 1 פחות
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}שנה את שנת ההתחלה לשנה 1 יותר
@@ -774,13 +657,8 @@ STR_SUMMARY                                                     :תמצית
 STR_FULL                                                        :מלא
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :מדריך הערים
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}שמות דגמי כלי תעבורה
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :ברירת מחדל
 STR_02BF_CUSTOM                                                 :אחר
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}שמור שמות מותאמים אישית
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}בחירת שמות דגמים
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}שמור שמות מותאמים אישית
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -789,7 +667,6 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :הגדרות ק
 STR_MENU_CONFIG_SETTINGS                                        :הגדרות מתקדמות
 STR_NEWGRF_SETTINGS                                             :הגדרות GRF חדש
 STR_TRANSPARENCY_OPTIONS                                        :אפשרויות שקיפות
-STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}שמות ערים
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}שמות תחנות
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}סימניות
@@ -850,7 +727,6 @@ STR_02FA_EVERY_12_MONTHS                                        :כל 12 חוד�
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}התחל משחק חדש
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}טען משחק שמור
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}צור מפה/סצנריו מותאמים אישית
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}בחר משחק לשחקן אחד
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}הצג הגדרות משחק
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}הצג הגדרות קושי
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}התחל משחק חדש עם סצנריו מותאם אישית
@@ -873,7 +749,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}ממן �
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...יכול להבנות רק ליד ערים
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...יכול להבנות רק ליד אזורי יערות הגשם
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...יכול להבנות רק ליד אזורי מדבר
 STR_0319_PAUSED                                                 :{YELLOW}* *  המשחק מושהה  *  *
@@ -1297,7 +1172,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}בנה �
 
 STR_NO_TOWN_IN_SCENARIO                                         ::{WHITE}אין ערים בסצנריו זה...
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}?בטוח שברצונך ליצור פני שטח באופן אקראי
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}ערים אקראיות
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}פזר על המפה ערים באופן אקראי
 STR_MANY_RANDOM_INDUSTRIES                                      :תעשיות אקראיות
@@ -1344,25 +1218,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}רשימ
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}השתק את כולן
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}הצג את כולן
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}בנה מכרה פחם
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}טע יער
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}בנה אסדת קידוח
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}בנה חווה
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}בנה מכרה נחושת
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}קדח באר נפט
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}בנה מכרה זהב
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK} בנה מכרה יהלומים
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}בנה מכרה עפרת ברזל
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}טע מטע עצי פרי
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}טע מטע עצי גומי
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}בנה משאבת מיים
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}טע יער שערות סבתא
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}בנה חוות בטריות
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}בנה באר קולה
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}בנה מזרקת פלסטיק
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}בנה מחולל בועות
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}בנה מחצבת טופי
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}בנה מכרה סוכר
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}תעשיות
 STR_INDUSTRYDIR_ITEM                                            :{YELLOW}(שונעו {NBSP}{3:COMMA}%){BLACK} ({1:CARGO}{2:STRING}) {ORANGE}{0:INDUSTRY}
@@ -2040,8 +1895,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}רשימ
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}השם שנבחר לשמירה
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}מחק את קובץ השמירה שנבחר
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}שמור את המשחק הנוכחי עם השם שנבחר
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}בחר סוג משחק חדש
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}בחר סצנריו(ירוק), משחק שהוגדר מראש (כחול), או משחק אקראי חדש
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :צור משחק אקראי חדש
 STR_LOAD_HEIGHTMAP                                              :{WHITE}טען מפת גובה
 STR_SAVE_OSKTITLE                                               :{BLACK}הכנס שם לשמירה
@@ -2122,8 +1975,6 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} ייצור חודשי ב {INDUSTRY} ירד ב{COMMA}%!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}רכבת במנהרה
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}רכב במנהרה
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}מנהרה אחרת מפריעה
 STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE} התעלה תסתיים מחוץ למפה
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}לא ניתן היה לפנות את השטח בקצה השני של המנהרה
@@ -2293,7 +2144,6 @@ STR_TOLERANT                                                    :סביר
 STR_HOSTILE                                                     :עויין
 
 ##id 0x7000
-STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :({COMMA} חברה)
 STR_7004_NEW_FACE                                               :{BLACK}פנים חדשות
@@ -2346,7 +2196,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}בחר �
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}שנה את צבעי כלי הרכב שבבעלות החברה
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}שנה את שם המנהל
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}שנה את שם החברה
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}בחר מבין הגדרות הצבע להלן
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}הגדל את ההלוואה
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}החזר חלק מההלוואה
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(מנהל)
@@ -2896,7 +2745,6 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}לא נ�
 STR_883C_SERVICING_INTERVAL_DAYS                                :{LTBLUE}{1:DATE_LONG} :טיפול אחרוןֿ {BLACK}{LTBLUE}{0:COMMA}% {BLACK} :מרווח בין טיפולים
 STR_SERVICING_INTERVAL_PERCENT                                  :{LTBLUE}{1:DATE_LONG} :טיפול אחרוןֿ {BLACK}{LTBLUE}{0:COMMA}% {BLACK} :מרווח בין טיפולים
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}רכבות - בחר רכבת לצפייה במידע
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}בניית רכבות חדשות
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}רכבות - בחר רכבת לקבלת מידע, גרור קרון להוספתו/הסרתו מהרכבת
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}בניית קרון חדש
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}גרור קרון/קטר לכאן כדי למכור אותו
@@ -2947,7 +2795,6 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}לא נ�
 STR_CLEAR_TIME                                                  :{BLACK}אפס זמן
 STR_RESET_LATENESS                                              :{BLACK}אפס מונה איחורים
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}שנה שם נקודת ציון
-STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}עוצרת
 STR_TRAIN_STOPPING_VEL                                          :{RED}{VELOCITY} ,עוצרת
@@ -3002,7 +2849,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE} {1:VEL
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}...לא ניתן לשלוח את כלי הרכב למוסך
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}לא ניתן לאתר מוסך כלי רכב מקומי
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}כלי רכב - לחץ על כלי רכב למידע
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}בנה כלי רכב חדש
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}מצב כלי הרכב- לחץ כאן לעצירה/המשך נסיעה
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}הצג את רשימת היעדים
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}מקד את התצוגה על מיקומו של כלי הרכב
@@ -3084,7 +2930,6 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}בנה �
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}גרור כלי שייט לכאן על מנת למכרו
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}מקד את התצוגה הראשית על מבדוק הספינות
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}כלי שייט – בחר כלי לצפיה במידע
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}בנה כלי שייט חדשים
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}כלי שייט – בחר כלי לצפיה במידע
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}בנה את כלי השייט שנבחר
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}עצור/הפעל כלי שייט
@@ -3129,7 +2974,6 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}בנה �
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}לא ניתן לבנות כלי טייס
 STR_A009_AIRCRAFT                                               ::{WHITE}כלי טייס {NBSP}{1:COMMA} - {0:COMPANY}
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}(יעדים){VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}(פרטים){VEHICLE}
 STR_A00D_AGE_RUNNING_COST_YR                                    ::לשנה {LTBLUE}{1:CURRENCY}{BLACK} :עלות תפעולית {LTBLUE}{0:STRING}{BLACK} :גיל
 STR_A00E_MAX_SPEED                                              :{LTBLUE}{VELOCITY}{BLACK} :מהירות מירבית
@@ -3152,7 +2996,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}לא נ�
 STR_A01D_AIRPORT_CONSTRUCTION                                   :בניית שדה תעופה
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}בנה שדה תעופה
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}כלי טייס – לחץ על כלי לצפיה במידע
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}בנה כלי טייס חדש
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}כלי טייס – לחץ על כלי לצפיה במידע
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}בנה כלי טייס חדש
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}גרור כלי טייס לכאן על מנת למכרו
@@ -3178,12 +3021,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}החלף
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}החלף שם סוג כלי הטיס
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}לא ניתן להחליף את שם הסוג של כלי הטייס
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}התאם כלי טייס לנשיאת מטען נתון
-STR_A03C_REFIT                                                  :{WHITE}(התאם){VEHICLE}
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}התאם כלי טייס
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}בחר את סוג המטען עבור כלי טייס זה
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}התאם את כלי הטייס לנשיאת המטען שנבחר
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}בחר את סוג המטען עבור כלי  זה
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{GOLD}{1:CURRENCY}{BLACK} :עלות ההתאמה {}{GOLD}{0:STRING}{BLACK} :קיבולת
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}לא ניתן להתאים את כלי הטייס לנשיאת מטען זה
 
 STR_TIMETABLE_TITLE                                             :{WHITE} (לוח זמנים){VEHICLE}
@@ -3240,8 +3080,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}החל �
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}החלף פלטת צבעים
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}מחליף את פלטת הצבעים עבור קובץ השדרוג הגראפי שנבחר. השתמש באפשרות זו אם הצבעים שהתקבלו אינם די ברורים
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}קבע ערכים
-STR_NEWGRF_TIP                                                  :{BLACK}רשימת השדרוגים הגראפיים שהותקנו. בחר שם קובץ לשינוי הגדרות
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}! אין שידרוגים גראפיים מותקנים
 STR_NEWGRF_FILENAME                                             :{SILVER}{STRING}{BLACK}: שם קובץ
 STR_NEWGRF_PALETTE                                              :{SILVER}{STRING}{BLACK}: פלטת צבעים
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
@@ -3300,7 +3138,6 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}הקו�
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}קבצים תואמים נטענו במקום קבצים חסרים
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}שדרוגים גראפים אחדים לא נמצאו ולפיכך שותקו
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}חסרים קבצי שדרוג גראפי הדרושים לטעינת המשחק
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}קבצים חסרים
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}?הפשרת המשחק עלולה להביא לקריסה. להמשיך
 
@@ -3374,7 +3211,6 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}לחץ �
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}לחץ כאן על מנת להתחיל בהחלפה
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}בחר את סוג המסילה עבורה ברצונך להחליף קטרים
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK} מציג אילו קטרים מוחלפים זה בזה
-STR_REPLACE_HELP                                                :{BLACK}מאפשר החלפה אוטומטית של קטר הרכבת כאשר היא נכנסת למוסך
 STR_REPLACE_REMOVE_WAGON                                        :{ORANGE}{SKIP}{STRING}{BLACK} : הסרת קרונות
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}הסר קרונות מהסוף על מנת לשמור על האורך המקורי של הרכבת
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{ORANGE}{SKIP}{SKIP}{STRING}{BLACK} : מחליף
@@ -3583,7 +3419,6 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE} רכב�
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE} כלי שייט  {NBSP}{1:COMMA} - {0:GROUP}
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE} כלי טייס  {NBSP}{1:COMMA} - {0:GROUP}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}שנה שם קבוצה
-STR_GROUP_REPLACE_CAPTION                                       :{WHITE} "{GROUP}" החלף את הרכבים ב
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}... לא ניתן ליצור קבוצה
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}... לא ניתן למחוק קבוצה זו
@@ -3719,7 +3554,6 @@ STR_AI_RANDOM_AI                                                :בינה מלא
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}פרמטרים של בינה מלאכותית
 STR_AI_AUTHOR                                                   ::מחבר
 STR_AI_VERSION                                                  :: גירסה
-STR_AI_DESCRIPTION                                              ::תיאור
 ########
 
 ############ town controlled noise level

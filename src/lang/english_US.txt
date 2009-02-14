@@ -162,7 +162,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Can't cl
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_00B7_VERSION                                                :{BLACK}OpenTTD version {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 The OpenTTD team
-STR_TRANSLATED_BY                                               :{BLACK}  Translator(s) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -217,39 +216,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Ships
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Aircraft
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Transport Routes
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Coal Mine
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Power Station
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Forest
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Sawmill
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Oil Refinery
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Farm
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Factory
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Printing Works
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Oil Wells
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Iron Ore Mine
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Steel Mill
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}Bank
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Paper Mill
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Gold Mine
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Food Processing Plant
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Diamond Mine
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Copper Ore Mine
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Fruit Plantation
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Rubber Plantation
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Water Supply
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Water Tower
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Lumber Mill
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Cotton Candy Forest
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Candy Factory
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Battery Farm
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Cola Wells
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Toy Shop
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Toy Factory
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Plastic Fountains
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Fizzy Drink Factory
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Bubble Generator
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Toffee Quarry
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Sugar Mine
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Railroad Station
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Truck Loading Bay
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Bus Station
@@ -273,8 +240,6 @@ STR_DEFAULT                                                     :{BLACK}Default
 STR_012E_CANCEL                                                 :{BLACK}Cancel
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Rename
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Too many names defined
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Chosen name already in use
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -298,7 +263,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}New Game
 STR_0141_LOAD_GAME                                              :{BLACK}Load Game
-STR_SINGLE_PLAYER                                               :{BLACK}Single player
 STR_MULTIPLAYER                                                 :{BLACK}Multiplayer
 STR_SCENARIO_EDITOR                                             :{BLACK}Scenario Editor
 
@@ -307,9 +271,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Game Options
 
 STR_0150_SOMEONE                                                :someone{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Map of world
-STR_0152_TOWN_DIRECTORY                                         :Town directory
-STR_0153_SUBSIDIES                                              :Subsidies
 
 STR_UNITS_IMPERIAL                                              :Imperial
 STR_UNITS_METRIC                                                :Metric
@@ -323,24 +284,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}hp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P "" s}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonne{P "" s}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litre{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} tonne force
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -570,7 +525,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Clear
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Save
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Current program of music tracks
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Select 'all tracks' program
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Select 'old style music' program
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Select 'new style music' program
@@ -654,76 +608,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Increase
 STR_023C_EXPAND                                                 :{BLACK}Expand
 STR_023D_RANDOM_TOWN                                            :{BLACK}Random Town
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Build town in random location
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Industry Generation
-STR_0240_COAL_MINE                                              :{BLACK}Coal Mine
-STR_0241_POWER_STATION                                          :{BLACK}Power Station
-STR_0242_SAWMILL                                                :{BLACK}Sawmill
-STR_0243_FOREST                                                 :{BLACK}Forest
-STR_0244_OIL_REFINERY                                           :{BLACK}Oil Refinery
-STR_0245_OIL_RIG                                                :{BLACK}Oil Rig
-STR_0246_FACTORY                                                :{BLACK}Factory
-STR_0247_STEEL_MILL                                             :{BLACK}Steel Mill
-STR_0248_FARM                                                   :{BLACK}Farm
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Iron Ore Mine
-STR_024A_OIL_WELLS                                              :{BLACK}Oil Wells
-STR_024B_BANK                                                   :{BLACK}Bank
-STR_024C_PAPER_MILL                                             :{BLACK}Paper Mill
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Food Processing Plant
-STR_024E_PRINTING_WORKS                                         :{BLACK}Printing Works
-STR_024F_GOLD_MINE                                              :{BLACK}Gold Mine
-STR_0250_LUMBER_MILL                                            :{BLACK}Lumber Mill
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Fruit Plantation
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Rubber Plantation
-STR_0253_WATER_SUPPLY                                           :{BLACK}Water Supply
-STR_0254_WATER_TOWER                                            :{BLACK}Water Tower
-STR_0255_DIAMOND_MINE                                           :{BLACK}Diamond Mine
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Copper Ore Mine
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Cotton Candy Forest
-STR_0258_CANDY_FACTORY                                          :{BLACK}Candy Factory
-STR_0259_BATTERY_FARM                                           :{BLACK}Battery Farm
-STR_025A_COLA_WELLS                                             :{BLACK}Cola Wells
-STR_025B_TOY_SHOP                                               :{BLACK}Toy Shop
-STR_025C_TOY_FACTORY                                            :{BLACK}Toy Factory
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Plastic Fountains
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Fizzy Drink Factory
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Bubble Generator
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Toffee Quarry
-STR_0261_SUGAR_MINE                                             :{BLACK}Sugar Mine
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Construct Coal Mine
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Construct Power Station
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Construct Sawmill
-STR_0265_PLANT_FOREST                                           :{BLACK}Plant Forest
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Construct Oil Refinery
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Construct Oil Rig (Can only be built near the edges of the map)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Construct Factory
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Construct Steel Mill
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Construct Farm
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Construct Iron Ore Mine
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Construct Oil Wells
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construct Bank (Can only be built in towns with a population greater than 1200)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Construct Paper Mill
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Construct Food Processing Plant
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Construct Printing Works
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Construct Gold Mine
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construct Bank (Can only be built in towns)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Construct Lumber Mill (to clear rainforest and produce Wood)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Plant Fruit Plantation
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Plant Rubber Plantation
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Construct Water Supply
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Construct Water Tower (Can only be built in towns)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Construct Diamond Mine
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Construct Copper Ore Mine
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Plant Cotton Candy Forest
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Construct Candy Factory
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Construct Battery Farm
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Construct Cola Wells
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Construct Toy Shop
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Construct Toy Factory
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Construct Plastic Fountains
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Construct Fizzy Drink Factory
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Construct Bubble Generator
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Construct Toffee Quarry
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Construct Sugar Mine
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Can't build {STRING} here...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...must build town first
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...only one allowed per town
@@ -752,7 +636,6 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}Play Sce
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Play Heightmap
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start a new game, using a heightmap as landscape
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Are you sure you want to quit this scenario ?
-STR_029C_QUIT_EDITOR                                            :{WHITE}Quit Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...can only be built in towns with a population of at least 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Move the starting date backward 1 year
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Move the starting date forward 1 year
@@ -781,13 +664,8 @@ STR_SUMMARY                                                     :Summary
 STR_FULL                                                        :Full
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Town directory
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Vehicle design names
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Default
 STR_02BF_CUSTOM                                                 :Custom
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Save custom names
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Vehicle design names selection
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Save customized vehicle design names
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -796,7 +674,6 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :Difficulty sett
 STR_MENU_CONFIG_SETTINGS                                        :Advanced settings
 STR_NEWGRF_SETTINGS                                             :Newgrf settings
 STR_TRANSPARENCY_OPTIONS                                        :Transparency options
-STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Town names displayed
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Station names displayed
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Signs displayed
@@ -857,7 +734,6 @@ STR_02FA_EVERY_12_MONTHS                                        :Every 12 months
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Start a new game
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Load a saved game
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Create a customized game world/scenario
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Select single-player game
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Display game options
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Display difficulty options
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Start a new game, using a customized scenario
@@ -880,7 +756,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Fund new
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...can only be built in towns
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...can only be built in rainforest areas
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...can only be built in desert areas
 STR_0319_PAUSED                                                 :{YELLOW}* *  PAUSED  *  *
@@ -1318,7 +1193,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Build ra
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...there is no town in this scenario
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Are you sure you want to create a random landscape?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Many random towns
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Cover the map with randomly placed towns
 STR_MANY_RANDOM_INDUSTRIES                                      :Many random industries
@@ -1365,25 +1239,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}A list o
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Disable all
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Enable all
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Construct Coal Mine
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Plant Forest
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Construct Oil Rig
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Fund Farm
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Construct Copper Ore Mine
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Drill for Oil
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Construct Gold Mine
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Construct Diamond Mine
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Construct Iron Ore Mine
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Fund Fruit Plantation
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Fund Rubber Plantation
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Fund Water Supply
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Plant Cotton Candy Forest
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Fund Battery Farm
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Drill for Cola
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Fund Plastic Fountains
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Construct Bubble Generator
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Fund Toffee Quarry
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Construct Sugar Mine
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industries
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transported)
@@ -2055,8 +1910,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}List of 
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Currently selected name for saved-game
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Delete the currently selected saved-game
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Save the current game, using the selected name
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Select New Game Type
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Select scenario (green), pre-set game (blue), or random new game
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generate random new game
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Load Heightmap
 STR_SAVE_OSKTITLE                                               :{BLACK}Enter a name for the savegame
@@ -2137,8 +1990,6 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} production at {INDUSTRY} goes down by {COMMA}%!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Train in tunnel
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Road vehicle in tunnel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Another tunnel in the way
 STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunnel would end out of the map
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Unable to excavate land for other end of tunnel
@@ -2308,7 +2159,6 @@ STR_TOLERANT                                                    :Tolerant
 STR_HOSTILE                                                     :Hostile
 
 ##id 0x7000
-STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Company {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}New Face
@@ -2907,7 +2757,6 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Can't st
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Servicing interval: {LTBLUE}{COMMA}days{BLACK}   Last service: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Servicing interval: {LTBLUE}{COMMA}%{BLACK}   Last service: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trains - click on train for information
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Build new trains (requires train depot)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trains - click on train for info., drag vehicle to add/remove from train
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Build new train vehicle
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Drag train vehicle to here to sell it
@@ -2958,7 +2807,6 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Can't re
 STR_CLEAR_TIME                                                  :{BLACK}Clear Time
 STR_RESET_LATENESS                                              :{BLACK}Reset Late Counter
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Change waypoint name
-STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Stopping
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopping, {VELOCITY}
@@ -3013,7 +2861,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Service
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Can't send vehicle to depot...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Unable to find local depot
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Road vehicles - click on vehicle for information
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Build new road vehicles (requires road vehicle depot)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Current vehicle action - click here to stop/start vehicle
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Show vehicle's orders
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Center main view on vehicle's location
@@ -3095,7 +2942,6 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Build ne
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Drag ship to here to sell it
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Center main view on ship depot location
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Ships - click on ship for information
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Build new ships (requires ship depot)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Ship selection list - click on ship for information
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Build the highlighted ship
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Current ship action - click here to stop/start ship
@@ -3140,7 +2986,6 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Build Ai
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Can't build aircraft...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Aircraft
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Orders)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Age: {LTBLUE}{STRING}{BLACK}   Running Cost: {LTBLUE}{CURRENCY}/yr
 STR_A00E_MAX_SPEED                                              :{BLACK}Max. speed: {LTBLUE}{VELOCITY}
@@ -3163,7 +3008,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Can't se
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Airport construction
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Build airport
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aircraft - click on aircraft for information
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Build new aircraft (requires airport with hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aircraft - click on aircraft for information
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Build new aircraft
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Drag aircraft to here to sell it
@@ -3189,12 +3033,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Rename a
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Rename aircraft type
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Can't rename aircraft type...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Refit aircraft to carry a different cargo type
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Refit)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Refit aircraft
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Select type of cargo for aircraft to carry
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Refit aircraft to carry highlighted cargo type
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Select cargo type to carry:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}New capacity: {GOLD}{STRING}{}{BLACK}Cost of refit: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Can't refit aircraft...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Timetable)
@@ -3251,8 +3092,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Apply ch
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Toggle palette
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Toggle the palette of the selected NewGRF.{}Do this when the graphics from this NewGRF look pink in-game
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Set parameters
-STR_NEWGRF_TIP                                                  :{BLACK}A list of all the Newgrf sets that you have installed. Click a set to change the settings.
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}There are currently no newgrf files installed! Please refer to the manual for instructions to install new graphics.
 STR_NEWGRF_FILENAME                                             :{BLACK}Filename: {SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}Palette: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
@@ -3311,7 +3150,6 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchin
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Compatible GRF(s) loaded for missing files
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missing GRF file(s) have been disabled
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Missing GRF file(s) to be able to load game
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Missing GRF file(s)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausing can crash OpenTTD. Do not file bug reports for subsequent crashes.{}Do you really want to unpause?
 
@@ -3385,7 +3223,6 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Press to
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Press to begin replacement of the left selected engine type with the right selected engine type
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Choose the railtype you want to replace engines for
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Displays which engine the left selected engine is being replaced with, if any
-STR_REPLACE_HELP                                                :{BLACK}This allows you to replace one engine type with another type, when trains of the original type enter a depot
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Car removal: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Make autoreplace keep the length of a train the same by removing cars (starting at the front), if replacing the engine would make the train longer.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Replacing: {ORANGE}{SKIP}{SKIP}{STRING}
@@ -3594,7 +3431,6 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} 
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Ship{P "" s}
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Aircraft
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rename a group
-STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Replace Vehicles of "{GROUP}"
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Can't create group...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}Can't delete this group...
@@ -3730,7 +3566,6 @@ STR_AI_RANDOM_AI                                                :Random AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
 STR_AI_AUTHOR                                                   :Author:
 STR_AI_VERSION                                                  :Version:
-STR_AI_DESCRIPTION                                              :Description:
 ########
 
 ############ town controlled noise level

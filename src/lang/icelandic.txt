@@ -163,7 +163,6 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Get ekki
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Upphaflegur höfundarréttur {COPYRIGHT} 1995 Chris Sawyer, Öll réttindi áskilin
 STR_00B7_VERSION                                                :{BLACK}OpenTTD útgáfa {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD hópurinn
-STR_TRANSLATED_BY                                               :{BLACK}  Þýðendur -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -218,39 +217,7 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Skip
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Flugvélar
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Flutningarleiðir
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Kolanáma
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Rafmagnsstöð
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Skógur
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Timburverksmiðja
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Olíuhreinsunarstöð
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Býli
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Verksmiðja
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Prentsmiðja
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Olíulindir
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Járnnáma
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Stálbræðsla
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banki
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Pappírsverksmiðja
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Gullnáma
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Matvinnslufyrirtæki
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Demantanáma
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Koparnáma
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Ávaxtaplantekra
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Gúmmíplantekra
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Vatnsbirgi
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Vatnsturn
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Timburverksmiðja
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Sykurfrauðsskógur
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Sælgætisverksmiðja
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Rafhlöðubýli
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Kólalindir
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Leikfangabúð
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Leikfangaverksmiðja
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Plastbrunnir
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Gosdrykkjaverksmiðja
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Kúluframkallari
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Toffýæð
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Sykurnáma
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Lestarstöð
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Vörubílastöð
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Strætóstoppistöð
@@ -274,8 +241,6 @@ STR_DEFAULT                                                     :{BLACK}Sjálfgi
 STR_012E_CANCEL                                                 :{BLACK}Hætta við
 STR_012F_OK                                                     :{BLACK}Í lagi
 STR_0130_RENAME                                                 :{BLACK}Endurnefna
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Of mörg nöfn skilgreint
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Valið nafn er þegar í notkun
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_UNIX                                                 :Unix
@@ -298,7 +263,6 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nýr leikur
 STR_0141_LOAD_GAME                                              :{BLACK}Opna leik
-STR_SINGLE_PLAYER                                               :{BLACK}Einspilun
 STR_MULTIPLAYER                                                 :{BLACK}Fjölspilun
 STR_SCENARIO_EDITOR                                             :{BLACK}Landslagsgerð
 
@@ -307,9 +271,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Stillingar
 
 STR_0150_SOMEONE                                                :einhver{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Heimskort
-STR_0152_TOWN_DIRECTORY                                         :Bæjarmappa
-STR_0153_SUBSIDIES                                              :Samstarfssamningar
 
 STR_UNITS_IMPERIAL                                              :Amerískt kerfi
 STR_UNITS_METRIC                                                :Metrakerfi
@@ -323,24 +284,18 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hö.
 STR_UNITS_POWER_METRIC                                          :{COMMA}hö.
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}tonn
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}tonn
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonn
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonn
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lítr{P i ar}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ pundkraftur
-STR_UNITS_FORCE_METRIC                                          :{COMMA} tonnkraftur
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -566,7 +521,6 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Listi - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Hreinsa
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Vista
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Núverandi lagalisti
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Velja 'öll lög' listann
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Velja 'gamli stíll' listann
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Velja 'nýi stíll' listann
@@ -650,76 +604,6 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Stækka 
 STR_023C_EXPAND                                                 :{BLACK}Stækka
 STR_023D_RANDOM_TOWN                                            :{BLACK}Handahófskenndur bær
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Byggja bæ á handahófskenndum stað
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Iðnaðargerð
-STR_0240_COAL_MINE                                              :{BLACK}Kolanáma
-STR_0241_POWER_STATION                                          :{BLACK}Rafmagnsstöð
-STR_0242_SAWMILL                                                :{BLACK}Timburverksmiðja
-STR_0243_FOREST                                                 :{BLACK}Skógur
-STR_0244_OIL_REFINERY                                           :{BLACK}Olíuhreinsunarstöð
-STR_0245_OIL_RIG                                                :{BLACK}Olíuborpallur
-STR_0246_FACTORY                                                :{BLACK}Verskmiðja
-STR_0247_STEEL_MILL                                             :{BLACK}Stálbræðsla
-STR_0248_FARM                                                   :{BLACK}Býli
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Járnnáma
-STR_024A_OIL_WELLS                                              :{BLACK}Olíulindir
-STR_024B_BANK                                                   :{BLACK}Banki
-STR_024C_PAPER_MILL                                             :{BLACK}Pappírsverksmiðja
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Matvinnslufyrirtæki
-STR_024E_PRINTING_WORKS                                         :{BLACK}Prentsmiðja
-STR_024F_GOLD_MINE                                              :{BLACK}Gullnáma
-STR_0250_LUMBER_MILL                                            :{BLACK}Timburverksmiðja
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Ávaxtaplantekra
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Gúmmíplantekra
-STR_0253_WATER_SUPPLY                                           :{BLACK}Vatnsbirgi
-STR_0254_WATER_TOWER                                            :{BLACK}Vatnsturn
-STR_0255_DIAMOND_MINE                                           :{BLACK}Demantanáma
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Koparnáma
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Sykurfrauðsskógur
-STR_0258_CANDY_FACTORY                                          :{BLACK}Sælgætisverksmiðja
-STR_0259_BATTERY_FARM                                           :{BLACK}Rafhlöðubýli
-STR_025A_COLA_WELLS                                             :{BLACK}Kólalindir
-STR_025B_TOY_SHOP                                               :{BLACK}Leikfangabúð
-STR_025C_TOY_FACTORY                                            :{BLACK}Leikfangaverksmiðja
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Plastbrunnir
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Gosdrykkjaverksmiðja
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Kúluframkallari
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Toffýæð
-STR_0261_SUGAR_MINE                                             :{BLACK}Sykurnáma
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Byggja Kolanámu
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Byggja Rafmagnsstöð
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Reisa Timburverksmiðju
-STR_0265_PLANT_FOREST                                           :{BLACK}Gróðursetja Skóg
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Byggja Olíuhreinsunarstöð
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Byggja Olíuborpall (aðeins hægt að byggja við brúnir kortsins)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Byggja Verksmiðju
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Byggja Stálbræðslu
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Byggja Býli
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Grafa Járnnámu
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Byggja Olíulindir
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Byggja Banka (aðeins hægt að byggja í bæjum með fleiri en 1200 íbúum)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Reisa pappírsverksmiðju
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Reisa Matvinnslufyrirtæki
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Byggja Prentsmiðju
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Byggja Gullnámu
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Byggja Banka (aðeins hægt að byggja í bæjum)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Reisa timburverksmiðju (til að fella regnskóga og framleiða timbur)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Gróðursetja Ávexti
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Gróðursetja Gúmmí
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Reisa Vatnsbirgi
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Byggja Vatnsturn (aðeins hægt að byggja í bæjum)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Byggja Demantanámu
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Byggja Koparnámu
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Gróðursetja sykurfrauðsskóg
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Byggja Sælgætisverksmiðju
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Byggja Rafhlöðubýli
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Byggja Kólalindir
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Byggja Leikfangabúð
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Byggja Leikfangaverksmiðju
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Byggja Plastbrunni
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Byggja Gosdrykkjaverksmiðju
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Byggja Kúluframkallara
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Byggja Toffýæð
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Byggja Sykurnámu
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Get ekki byggt {STRING} hérna...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...verður að byggja bæ first
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...aðeins eitt stykki á hvern bæ
@@ -748,7 +632,6 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}Spila ko
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Spila á hæðarkorti
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Hefja nýjan leik byggðan á hæðarkorti
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Ertu viss um að þú viljir hætta í þessu korti ?
-STR_029C_QUIT_EDITOR                                            :{WHITE}Hætta í kortagerð
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...aðeins hægt að byggja í bæjum með fleiri en 1200 íbúum
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Færa byrjunardagsetninguna aftur um 1 ár
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Færa byrjunardagsetninguna fram um 1 ár
@@ -767,13 +650,8 @@ STR_SUMMARY                                                     :Úrtak
 STR_FULL                                                        :Allt
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Bæjarmappa
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Tegundanöfn farartækja
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Upphafleg
 STR_02BF_CUSTOM                                                 :Breytt
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Geyma breytt nöfn
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Nöfn farartækja
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Vista breytt tegundanöfn farartækja
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -782,7 +660,6 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :Erfiðleikastig
 STR_MENU_CONFIG_SETTINGS                                        :Þróaðri stillingar
 STR_NEWGRF_SETTINGS                                             :NewGRF stillingar
 STR_TRANSPARENCY_OPTIONS                                        :Gegnsæisstillingar
-STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Bæjarnöfn sýnd
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Stöðvarnöfn sýnd
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Skilti sýnd
@@ -842,7 +719,6 @@ STR_02FA_EVERY_12_MONTHS                                        :Árlega
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Hefja nýjan leik
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Opna vistaðan leik
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Búa til eigið land
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Velja einspilunarleik
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Stilla OpenTTD
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Stilla erfiðleikastig
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Hefja nýjan leik í sérvöldu korti
@@ -865,7 +741,6 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Fjármag
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...aðeins hægt að byggja í bæjum
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...aðeins hægt að byggja á regnskógasvæðum
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...aðeins hægt að byggja í eyðimörk
 STR_0319_PAUSED                                                 :{YELLOW}* *  STÖÐVAÐUR  *  *
@@ -1248,7 +1123,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Byggja l
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...það er enginn bær í þessu landi
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Ertu viss um að þú viljir búa til handahófskennt land?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Búa til marga bæi
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Þekja landið með bæjum
 STR_MANY_RANDOM_INDUSTRIES                                      :Búa til marga iðnaði
@@ -1295,25 +1169,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Listi yf
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Fela allt
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Sýna allt
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Grafa Kolanámu
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Gróðursetja Skóg
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Reisa Olíuborpall
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Koma á fót Bóndabýli
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Grafa Koparnámu
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Bora eftir Olíu
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Grafa Gullnámu
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Grafa Demantanámu
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Grafa Járnnámu
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Rækta Ávaxtaplantekru
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Rækta Gúmmíplantekru
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Koma á fót Vatnsbirgi
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Gróðursetja Sykurfrauðsskóg
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Koma á fót Rafhlöðubýli
-STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Bora eftir kóla
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Grafa Plastbrunna
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Reisa Kúluframleiðslu
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Grafa Karamellunámu
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Grafa Sykurnámu
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Iðnaðir
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% flutt)
@@ -1963,8 +1818,6 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Listi yf
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nafn fyrir vistun leiks
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Eyða nafninu
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Vista leikinn undir þessu nafni
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Velja tegund leiks
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Velja landslag (grænt), forstilltan leik (blátt) eða handahófskenndan leik
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Búa til nýjan leik
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Hlaða hæðakorti
 STR_SAVE_OSKTITLE                                               :{BLACK}Sláðu inn nafn fyrir vistun leiksins
@@ -2045,8 +1898,6 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING}framleiðsla í {INDUSTRY} minnkar um {COMMA}%!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Lest í göngunum
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Bifreið í göngunum
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Önnur göng fyrir
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Get ekki breytt landi fyrir hinn enda gangnanna
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Verður að eyða göngum fyrst
@@ -2215,7 +2066,6 @@ STR_TOLERANT                                                    :Umburðarlynd
 STR_HOSTILE                                                     :Fjandsamleg
 
 ##id 0x7000
-STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Fyrirtæki {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nýtt Andlit
@@ -2268,7 +2118,6 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Velja n�
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Breyta útliti á farartækjum fyrirtækisins
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Breyta nafni forstöðumanns
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Breyta nafni fyrirtækisins
-STR_7034_CLICK_ON_SELECTED_NEW_COLOUR                           :{BLACK}Smelltu á litinn sem þú vilt
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Auka lán
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Borga til baka hluta af láni
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manager)
@@ -2809,7 +2658,6 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Get ekki
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Skoðanamillibil: {LTBLUE}{COMMA}dagar{BLACK}   Seinasta skoðun: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Skoðanamillibil: {LTBLUE}{COMMA}%{BLACK}   Seinasta skoðun: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Lestir - smelltu á lest fyrir nánari upplýsingar
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Búa til nýjar lestir (þarfnast lestarskýlis)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Lestir - ýttu á lest fyrir uppl., dragðu farartæki til að bæta við/fjarlægja úr lest
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Byggja nýja lest
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Dragðu lestarvagn hingað til að selja hann
@@ -2860,7 +2708,6 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Get ekki
 STR_CLEAR_TIME                                                  :{BLACK}Hreinsa tíma
 STR_RESET_LATENESS                                              :{BLACK}Endurstilla seinkunnarteljara
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Breyta nafni á vegleiðara
-STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Stöðva
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stöðva, {VELOCITY}
@@ -2913,7 +2760,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Viðhal
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Get ekki sent bifreið í skýli...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Finnur ekkert nálægt skýli
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Bifreið - smelltu á bifreið fyrir nánari upplýsingar
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Bæta við bílaflota fyrirtækisins (þarfnast bifreiðaskýlis)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Núverandi aðgerð bifreiðar - smelltu hér til að stöðva/ræsa bifreið
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Sýna skipanir bifreiðar
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Miðja aðalsjónarhornið á bifreið
@@ -2994,7 +2840,6 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Smíða 
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Dragðu skip hingað til að selja það
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Miðja aðalsjónarhorn á slipp
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skip - smelltu fyrir nánari upplýsingar
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Smíða nýtt skip (þarfnast slipps)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Skipalisti - smelltu á skip fyrir nánari upplýsingar
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Smíða valið skip
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Núverandi aðgerð skips - smelltu hér til að stöðva/ræsa skipið
@@ -3039,7 +2884,6 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Smíða 
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Get ekki smíðað flugvél...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Flugvél
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Skipanir)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Upplýsingar)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY}á ári
 STR_A00E_MAX_SPEED                                              :{BLACK}Hámarkshraði: {LTBLUE}{VELOCITY}
@@ -3061,7 +2905,6 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Get ekki
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Flugvallarframkvæmdir
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Byggja flugvöll
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Flugvélar - smelltu á flugvél fyrir nánari upplýsingar
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Smíða nýja flugvél (þarfnast flugvallar með flugskýli)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Flugvélar - smelltu á flugvél fyrir nánari upplýsingar
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Smíða nýja flugvél
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Dragðu flugvél hingað til að selja hana
@@ -3087,12 +2930,9 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Endurnef
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Endurnefna tegund flugvélar
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Get ekki endurnefnt tegund flugvélarinnar...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Breyta flugvél svo hún flytji annan farm
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Breya)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Breyta flugvél
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Veldu farm sem flugvél á að flytja
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Breyta flugvél svo hún flytji valinn farm
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Veldu farm sem á að flytja:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ný burðargeta: {GOLD}{STRING}{}{BLACK}Breytingarkostnaður: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Get ekki breytt flugvél...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Áætlun)
@@ -3146,8 +2986,6 @@ STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF S
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF stillingar
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Virkja breytingar
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Stilla breytur
-STR_NEWGRF_TIP                                                  :{BLACK}Listi yfir öll NewGRF sett sem þú hefur sett inn. Smelltu til að breyta stillingunum
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Það eru engar NewGRF skrár innsettar! Vinsamlegast skoðaðu leiðbeiningarnar fyrir upplýsingar um hvernig setja á inn nýja grafík
 STR_NEWGRF_FILENAME                                             :{BLACK}Skráarnafn: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF einkenni: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5 summa: {SILVER}{STRING}
@@ -3199,7 +3037,6 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Viðeig
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Samsvarandi GRF hlaðið í staðin týndrar skrár
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Týndar GRF skrár hafa verið gerðar óvirkar
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Vantar GRF skrár til að hægt sé að hlaða leik
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Vantar GRF skrá(r)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}OpenTTD getur hrunið ef leikur er settur af stað. Ekki skrá villufærslur fyrir eftirfarandi hrun.{}Ertu viss um að þú viljir setja leikinn af stað?
 
@@ -3270,7 +3107,6 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Smelltu 
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Smelltu til að hefja skipti á vagntegundinni sem valin er til vinstri með vagntegundinni sem valin er til hægri
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Veldu hvernig lestir þú skipta út
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Sýnir hvaða vagn kemur í stað þess sem valinn er vinstra megin
-STR_REPLACE_HELP                                                :{BLACK}Þetta gerir þér kleift að skipta út öllum vögum af einni tegund með annarri, þegar þeir fara í lestarskýli
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Selja lestarvagna: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Heldur lengd lestar með því að fjarlægja vagna (framan frá) ef útskipting dráttarvagna myndi lengja hana.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Skipti út: {ORANGE}{SKIP}{SKIP}{STRING}
@@ -3462,7 +3298,6 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} 
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Skip
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Flugvél{P "" ar}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Endurnefna hóp
-STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Skipta út farartækjum í "{GROUP}"
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Get ekki búið til hóp...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}Get ekki eytt þessum hópi...
