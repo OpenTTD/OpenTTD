@@ -6403,10 +6403,10 @@
     BuildRoadStation(truck):       true
     BuildRoadStation(bus):         true
     BuildRoadStation(truck):       true
-    BuildRoadStation(bus-drive):   true
-    BuildRoadStation(truck-drive): true
-    BuildRoadStation(bus-drive):   true
-    BuildRoadStation(truck-drive): true
+    BuildDriveThroughRoadStation(bus-drive):   true
+    BuildDriveThroughRoadStation(truck-drive): true
+    BuildDriveThroughRoadStation(bus-drive):   true
+    BuildDriveThroughRoadStation(truck-drive): true
     BuildRoadDepot():              true
     GetRoadStationFrontTile():     33411
     GetRoadStationFrontTile():     33924

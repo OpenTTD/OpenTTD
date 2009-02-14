@@ -1016,10 +1016,10 @@ function Regression::Road()
 
 	print("  Station");
 	print("    IsRoadTile():                  " + AIRoad.IsRoadTile(33411));
-	print("    BuildRoadStation():            " + AIRoad.BuildRoadStation(0, 1, false, false, AIStation.STATION_JOIN_ADJACENT));
-	print("    BuildRoadStation():            " + AIRoad.BuildRoadStation(33411, 33411, false, false, AIStation.STATION_JOIN_ADJACENT));
-	print("    BuildRoadStation():            " + AIRoad.BuildRoadStation(33411, 33414, false, false, AIStation.STATION_JOIN_ADJACENT));
-	print("    BuildRoadStation():            " + AIRoad.BuildRoadStation(33411, 33412, false, false, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildRoadStation():            " + AIRoad.BuildRoadStation(0, 1, AIRoad.ROADVEHTYPE_BUS, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildRoadStation():            " + AIRoad.BuildRoadStation(33411, 33411, AIRoad.ROADVEHTYPE_BUS, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildRoadStation():            " + AIRoad.BuildRoadStation(33411, 33414, AIRoad.ROADVEHTYPE_BUS, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildRoadStation():            " + AIRoad.BuildRoadStation(33411, 33412, AIRoad.ROADVEHTYPE_BUS, AIStation.STATION_JOIN_ADJACENT));
 	print("    IsStationTile():               " + AITile.IsStationTile(33411));
 	print("    IsStationTile():               " + AITile.IsStationTile(33412));
 	print("    HasRoadType(Road):             " + AIRoad.HasRoadType(33411, AIRoad.ROADTYPE_ROAD));
@@ -1033,15 +1033,15 @@ function Regression::Road()
 	print("    RemoveRoadStation():           " + AIRoad.RemoveRoadStation(33411));
 
 	print("  Station Types");
-	print("    BuildRoadStation(bus):         " + AIRoad.BuildRoadStation(33411, 33410, false, false, AIStation.STATION_JOIN_ADJACENT));
-	print("    BuildRoadStation(truck):       " + AIRoad.BuildRoadStation(33421, 33422, true,  false, AIStation.STATION_JOIN_ADJACENT));
-	print("    BuildRoadStation(truck):       " + AIRoad.BuildRoadStation(33412, 33413, true,  false, AIStation.STATION_JOIN_ADJACENT));
-	print("    BuildRoadStation(bus):         " + AIRoad.BuildRoadStation(33411 + 256, 33411, false, false, AIStation.STATION_JOIN_ADJACENT));
-	print("    BuildRoadStation(truck):       " + AIRoad.BuildRoadStation(33412 + 256, 33412 + 256 + 256, true,  false, AIStation.STATION_JOIN_ADJACENT));
-	print("    BuildRoadStation(bus-drive):   " + AIRoad.BuildRoadStation(33413, 33412, false, true, AIStation.STATION_JOIN_ADJACENT));
-	print("    BuildRoadStation(truck-drive): " + AIRoad.BuildRoadStation(33414, 33413, true,  true, AIStation.STATION_JOIN_ADJACENT));
-	print("    BuildRoadStation(bus-drive):   " + AIRoad.BuildRoadStation(33415, 33414, false, true, AIStation.STATION_JOIN_ADJACENT));
-	print("    BuildRoadStation(truck-drive): " + AIRoad.BuildRoadStation(33416, 33415, true,  true, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildRoadStation(bus):         " + AIRoad.BuildRoadStation(33411, 33410, AIRoad.ROADVEHTYPE_BUS, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildRoadStation(truck):       " + AIRoad.BuildRoadStation(33421, 33422, AIRoad.ROADVEHTYPE_TRUCK, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildRoadStation(truck):       " + AIRoad.BuildRoadStation(33412, 33413, AIRoad.ROADVEHTYPE_TRUCK, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildRoadStation(bus):         " + AIRoad.BuildRoadStation(33411 + 256, 33411, AIRoad.ROADVEHTYPE_BUS, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildRoadStation(truck):       " + AIRoad.BuildRoadStation(33412 + 256, 33412 + 256 + 256, AIRoad.ROADVEHTYPE_TRUCK, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildDriveThroughRoadStation(bus-drive):   " + AIRoad.BuildDriveThroughRoadStation(33413, 33412, AIRoad.ROADVEHTYPE_BUS, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildDriveThroughRoadStation(truck-drive): " + AIRoad.BuildDriveThroughRoadStation(33414, 33413, AIRoad.ROADVEHTYPE_TRUCK, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildDriveThroughRoadStation(bus-drive):   " + AIRoad.BuildDriveThroughRoadStation(33415, 33414, AIRoad.ROADVEHTYPE_BUS, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildDriveThroughRoadStation(truck-drive): " + AIRoad.BuildDriveThroughRoadStation(33416, 33415, AIRoad.ROADVEHTYPE_TRUCK, AIStation.STATION_JOIN_ADJACENT));
 	print("    BuildRoadDepot():              " + AIRoad.BuildRoadDepot(33417, 33418));
 	print("    GetRoadStationFrontTile():     " + AIRoad.GetRoadStationFrontTile(33411 + 256));
 	print("    GetRoadStationFrontTile():     " + AIRoad.GetRoadStationFrontTile(33412 + 256));

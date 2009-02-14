@@ -9,6 +9,8 @@ namespace SQConvert {
 	template <> int Return<AIRoad::ErrorMessages>(HSQUIRRELVM vm, AIRoad::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> AIRoad::RoadType GetParam(ForceType<AIRoad::RoadType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRoad::RoadType)tmp; }
 	template <> int Return<AIRoad::RoadType>(HSQUIRRELVM vm, AIRoad::RoadType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AIRoad::RoadVehicleType GetParam(ForceType<AIRoad::RoadVehicleType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRoad::RoadVehicleType)tmp; }
+	template <> int Return<AIRoad::RoadVehicleType>(HSQUIRRELVM vm, AIRoad::RoadVehicleType res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow AIRoad to be used as Squirrel parameter */
 	template <> AIRoad *GetParam(ForceType<AIRoad *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIRoad *)instance; }
@@ -31,6 +33,8 @@ void SQAIRoad_Register(Squirrel *engine) {
 	SQAIRoad.DefSQConst(engine, AIRoad::ROADTYPE_ROAD,                                "ROADTYPE_ROAD");
 	SQAIRoad.DefSQConst(engine, AIRoad::ROADTYPE_TRAM,                                "ROADTYPE_TRAM");
 	SQAIRoad.DefSQConst(engine, AIRoad::ROADTYPE_INVALID,                             "ROADTYPE_INVALID");
+	SQAIRoad.DefSQConst(engine, AIRoad::ROADVEHTYPE_BUS,                              "ROADVEHTYPE_BUS");
+	SQAIRoad.DefSQConst(engine, AIRoad::ROADVEHTYPE_TRUCK,                            "ROADVEHTYPE_TRUCK");
 
 	AIError::RegisterErrorMap(STR_ROAD_WORKS_IN_PROGRESS,               AIRoad::ERR_ROAD_WORKS_IN_PROGRESS);
 	AIError::RegisterErrorMap(STR_DRIVE_THROUGH_ERROR_DIRECTION,        AIRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION);
@@ -62,7 +66,8 @@ void SQAIRoad_Register(Squirrel *engine) {
 	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::BuildRoadFull,                  "BuildRoadFull",                  3, "?ii");
 	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::BuildOneWayRoadFull,            "BuildOneWayRoadFull",            3, "?ii");
 	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::BuildRoadDepot,                 "BuildRoadDepot",                 3, "?ii");
-	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::BuildRoadStation,               "BuildRoadStation",               6, "?iibbi");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::BuildRoadStation,               "BuildRoadStation",               5, "?iiii");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::BuildDriveThroughRoadStation,   "BuildDriveThroughRoadStation",   5, "?iiii");
 	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::RemoveRoad,                     "RemoveRoad",                     3, "?ii");
 	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::RemoveRoadFull,                 "RemoveRoadFull",                 3, "?ii");
 	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::RemoveRoadDepot,                "RemoveRoadDepot",                2, "?i");

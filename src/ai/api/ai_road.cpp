@@ -491,13 +491,14 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 	return AIObject::DoCommand(tile, entrance_dir | (AIObject::GetRoadType() << 2), 0, CMD_BUILD_ROAD_DEPOT);
 }
 
-/* static */ bool AIRoad::BuildRoadStation(TileIndex tile, TileIndex front, bool truck, bool drive_through, StationID station_id)
+/* static */ bool AIRoad::_BuildRoadStationInternal(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, bool drive_through, StationID station_id)
 {
 	EnforcePrecondition(false, tile != front);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, ::IsValidTile(front));
 	EnforcePrecondition(false, ::TileX(tile) == ::TileX(front) || ::TileY(tile) == ::TileY(front));
 	EnforcePrecondition(false, station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id));
+	EnforcePrecondition(false, road_veh_type == ROADVEHTYPE_BUS || road_veh_type == ROADVEHTYPE_TRUCK);
 
 	uint entrance_dir;
 	if (drive_through) {
@@ -508,10 +509,20 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 
 	uint p2 = station_id == AIStation::STATION_JOIN_ADJACENT ? 0 : 32;
 	p2 |= drive_through ? 2 : 0;
-	p2 |= truck ? 1 : 0;
+	p2 |= road_veh_type == ROADVEHTYPE_TRUCK ? 1 : 0;
 	p2 |= ::RoadTypeToRoadTypes(AIObject::GetRoadType()) << 2;
 	p2 |= (AIStation::IsValidStation(station_id) ? station_id : INVALID_STATION) << 16;
 	return AIObject::DoCommand(tile, entrance_dir, p2, CMD_BUILD_ROAD_STOP);
+}
+
+/* static */ bool AIRoad::BuildRoadStation(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, StationID station_id)
+{
+	return _BuildRoadStationInternal(tile, front, road_veh_type, false, station_id);
+}
+
+/* static */ bool AIRoad::BuildDriveThroughRoadStation(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, StationID station_id)
+{
+	return _BuildRoadStationInternal(tile, front, road_veh_type, true, station_id);
 }
 
 /* static */ bool AIRoad::RemoveRoad(TileIndex start, TileIndex end)

@@ -49,6 +49,14 @@ public:
 	};
 
 	/**
+	 * Type of road station
+	 */
+	enum RoadVehicleType {
+		ROADVEHTYPE_BUS,   //!< Build objects useable for busses and passenger trams
+		ROADVEHTYPE_TRUCK, //!< Build objects useable for trucks and cargo trams
+	};
+
+	/**
 	 * Checks whether the given tile is actually a tile with road that can be
 	 *  used to traverse a tile. This excludes road depots and 'normal' road
 	 *  stations, but includes drive through stations.
@@ -322,9 +330,7 @@ public:
 	 * Builds a road bus or truck station.
 	 * @param tile Place to build the station.
 	 * @param front The tile exactly in front of the station.
-	 *   For drive-through stations either entrance side can be used.
-	 * @param truck Whether to build a truck (true) or bus (false) station.
-	 * @param drive_through Whether to make the station drive through or not.
+	 * @param road_veh_type Whether to build a truck or bus station.
 	 * @param station_id The station to join, AIStation::STATION_NEW or AIStation::STATION_JOIN_ADJACENT.
 	 * @pre AIMap::IsValidTile(tile).
 	 * @pre AIMap::IsValidTile(front).
@@ -341,7 +347,30 @@ public:
 	 * @exception AIStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
 	 * @return Whether the station has been/can be build or not.
 	 */
-	static bool BuildRoadStation(TileIndex tile, TileIndex front, bool truck, bool drive_through, StationID station_id);
+	static bool BuildRoadStation(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, StationID station_id);
+
+	/**
+	 * Builds a drive-through road bus or truck station.
+	 * @param tile Place to build the depot.
+	 * @param front A tile on the same axis with 'tile' as the station shall be oriented.
+	 * @param road_veh_type Whether to build a truck or bus station.
+	 * @param station_id The station to join, AIStation::STATION_NEW or AIStation::STATION_JOIN_ADJACENT.
+	 * @pre AIMap::IsValidTile(tile).
+	 * @pre AIMap::IsValidTile(front).
+	 * @pre 'tile' is not equal to 'front', but in a straight line of it.
+	 * @pre station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id).
+	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception AIError::ERR_AREA_NOT_CLEAR
+	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
+	 * @exception AIRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION
+	 * @exception AIRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD
+	 * @exception AIError:ERR_VEHICLE_IN_THE_WAY
+	 * @exception AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
+	 * @exception AIStation::ERR_STATION_TOO_MANY_STATIONS
+	 * @exception AIStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
+	 * @return Whether the station has been/can be build or not.
+	 */
+	static bool BuildDriveThroughRoadStation(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, StationID station_id);
 
 	/**
 	 * Removes a road from the center of tile start to the center of tile end.
@@ -404,6 +433,11 @@ private:
 	 * Internal function used by Build(OneWay)Road(Full).
 	 */
 	static bool _BuildRoadInternal(TileIndex start, TileIndex end, bool one_way, bool full);
+
+	/**
+	 * Internal function used by Build(DriveThrough)RoadStation.
+	 */
+	static bool _BuildRoadStationInternal(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, bool drive_through, StationID station_id);
 };
 
 #endif /* AI_ROAD_HPP */
