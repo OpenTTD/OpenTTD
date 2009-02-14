@@ -62,7 +62,7 @@ void SQAIRoad_Register(Squirrel *engine) {
 	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::BuildRoadFull,                  "BuildRoadFull",                  3, "?ii");
 	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::BuildOneWayRoadFull,            "BuildOneWayRoadFull",            3, "?ii");
 	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::BuildRoadDepot,                 "BuildRoadDepot",                 3, "?ii");
-	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::BuildRoadStation,               "BuildRoadStation",               6, "?iibbb");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::BuildRoadStation,               "BuildRoadStation",               6, "?iibbi");
 	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::RemoveRoad,                     "RemoveRoad",                     3, "?ii");
 	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::RemoveRoadFull,                 "RemoveRoadFull",                 3, "?ii");
 	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::RemoveRoadDepot,                "RemoveRoadDepot",                2, "?i");

@@ -3,6 +3,7 @@
 /** @file ai_marine.cpp Implementation of AIMarine. */
 
 #include "ai_marine.hpp"
+#include "ai_station.hpp"
 #include "../../station_map.h"
 #include "../../tile_cmd.h"
 
@@ -70,11 +71,14 @@
 	return AIObject::DoCommand(tile, vertical, 0, CMD_BUILD_SHIP_DEPOT);
 }
 
-/* static */ bool AIMarine::BuildDock(TileIndex tile, bool join_adjacent)
+/* static */ bool AIMarine::BuildDock(TileIndex tile, StationID station_id)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id));
 
-	return AIObject::DoCommand(tile, join_adjacent ? 0 : 1, INVALID_STATION << 16, CMD_BUILD_DOCK);
+	uint p1 = station_id == AIStation::STATION_JOIN_ADJACENT ? 0 : 1;
+	uint p2 = (AIStation::IsValidStation(station_id) ? station_id : INVALID_STATION) << 16;
+	return AIObject::DoCommand(tile, p1, p2, CMD_BUILD_DOCK);
 }
 
 /* static */ bool AIMarine::BuildBuoy(TileIndex tile)

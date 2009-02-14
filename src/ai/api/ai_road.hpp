@@ -325,10 +325,11 @@ public:
 	 *   For drive-through stations either entrance side can be used.
 	 * @param truck Whether to build a truck (true) or bus (false) station.
 	 * @param drive_through Whether to make the station drive through or not.
-	 * @param join_adjacent When building next to an other station, don't create a new station when this flag is true.
+	 * @param station_id The station to join, AIStation::STATION_NEW or AIStation::STATION_JOIN_ADJACENT.
 	 * @pre AIMap::IsValidTile(tile).
 	 * @pre AIMap::IsValidTile(front).
 	 * @pre 'tile' is not equal to 'front', but in a straight line of it.
+	 * @pre station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id).
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception AIError::ERR_AREA_NOT_CLEAR
 	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
@@ -340,7 +341,7 @@ public:
 	 * @exception AIStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
 	 * @return Whether the station has been/can be build or not.
 	 */
-	static bool BuildRoadStation(TileIndex tile, TileIndex front, bool truck, bool drive_through, bool join_adjacent);
+	static bool BuildRoadStation(TileIndex tile, TileIndex front, bool truck, bool drive_through, StationID station_id);
 
 	/**
 	 * Removes a road from the center of tile start to the center of tile end.

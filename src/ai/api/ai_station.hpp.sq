@@ -9,6 +9,8 @@ namespace SQConvert {
 	template <> int Return<AIStation::ErrorMessages>(HSQUIRRELVM vm, AIStation::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> AIStation::StationType GetParam(ForceType<AIStation::StationType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIStation::StationType)tmp; }
 	template <> int Return<AIStation::StationType>(HSQUIRRELVM vm, AIStation::StationType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AIStation::SpecialStationIDs GetParam(ForceType<AIStation::SpecialStationIDs>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIStation::SpecialStationIDs)tmp; }
+	template <> int Return<AIStation::SpecialStationIDs>(HSQUIRRELVM vm, AIStation::SpecialStationIDs res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow AIStation to be used as Squirrel parameter */
 	template <> AIStation *GetParam(ForceType<AIStation *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStation *)instance; }
@@ -34,6 +36,9 @@ void SQAIStation_Register(Squirrel *engine) {
 	SQAIStation.DefSQConst(engine, AIStation::STATION_AIRPORT,                          "STATION_AIRPORT");
 	SQAIStation.DefSQConst(engine, AIStation::STATION_DOCK,                             "STATION_DOCK");
 	SQAIStation.DefSQConst(engine, AIStation::STATION_ANY,                              "STATION_ANY");
+	SQAIStation.DefSQConst(engine, AIStation::STATION_NEW,                              "STATION_NEW");
+	SQAIStation.DefSQConst(engine, AIStation::STATION_JOIN_ADJACENT,                    "STATION_JOIN_ADJACENT");
+	SQAIStation.DefSQConst(engine, AIStation::STATION_INVALID,                          "STATION_INVALID");
 
 	AIError::RegisterErrorMap(STR_306C_STATION_TOO_SPREAD_OUT,       AIStation::ERR_STATION_TOO_LARGE);
 	AIError::RegisterErrorMap(STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT, AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION);

@@ -75,8 +75,8 @@ void SQAIRail_Register(Squirrel *engine) {
 	SQAIRail.DefSQStaticMethod(engine, &AIRail::GetRailDepotFrontTile,     "GetRailDepotFrontTile",     2, "?i");
 	SQAIRail.DefSQStaticMethod(engine, &AIRail::GetRailStationDirection,   "GetRailStationDirection",   2, "?i");
 	SQAIRail.DefSQStaticMethod(engine, &AIRail::BuildRailDepot,            "BuildRailDepot",            3, "?ii");
-	SQAIRail.DefSQStaticMethod(engine, &AIRail::BuildRailStation,          "BuildRailStation",          6, "?iiiib");
-	SQAIRail.DefSQStaticMethod(engine, &AIRail::BuildNewGRFRailStation,    "BuildNewGRFRailStation",    11, "?iiiibiiiib");
+	SQAIRail.DefSQStaticMethod(engine, &AIRail::BuildRailStation,          "BuildRailStation",          6, "?iiiii");
+	SQAIRail.DefSQStaticMethod(engine, &AIRail::BuildNewGRFRailStation,    "BuildNewGRFRailStation",    11, "?iiiiiiiiib");
 	SQAIRail.DefSQStaticMethod(engine, &AIRail::RemoveRailStationTileRect, "RemoveRailStationTileRect", 3, "?ii");
 	SQAIRail.DefSQStaticMethod(engine, &AIRail::GetRailTracks,             "GetRailTracks",             2, "?i");
 	SQAIRail.DefSQStaticMethod(engine, &AIRail::BuildRailTrack,            "BuildRailTrack",            3, "?ii");

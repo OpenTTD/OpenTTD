@@ -56,12 +56,15 @@
 	return _settings_game.station.modified_catchment ? ::GetAirport(type)->catchment : (uint)CA_UNMODIFIED;
 }
 
-/* static */ bool AIAirport::BuildAirport(TileIndex tile, AirportType type, bool join_adjacent)
+/* static */ bool AIAirport::BuildAirport(TileIndex tile, AirportType type, StationID station_id)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsValidAirportType(type));
+	EnforcePrecondition(false, station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id));
 
-	return AIObject::DoCommand(tile, type, (INVALID_STATION << 16) | (join_adjacent ? 0 : 1), CMD_BUILD_AIRPORT);
+	uint p2 = station_id == AIStation::STATION_JOIN_ADJACENT ? 0 : 1;
+	p2 |= (AIStation::IsValidStation(station_id) ? station_id : INVALID_STATION) << 16;
+	return AIObject::DoCommand(tile, type, p2, CMD_BUILD_AIRPORT);
 }
 
 /* static */ bool AIAirport::RemoveAirport(TileIndex tile)

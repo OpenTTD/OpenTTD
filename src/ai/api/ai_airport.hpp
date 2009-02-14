@@ -120,9 +120,10 @@ public:
 	 * Builds a airport with tile at the topleft corner.
 	 * @param tile The topleft corner of the airport.
 	 * @param type The type of airport to build.
-	 * @param join_adjacent When building next to an other station, don't create a new station when this flag is true.
+	 * @param station_id The station to join, AIStation::STATION_NEW or AIStation::STATION_JOIN_ADJACENT.
 	 * @pre AIMap::IsValidTile(tile).
 	 * @pre AirportAvailable(type).
+	 * @pre station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id).
 	 * @exception AIError::ERR_AREA_NOT_CLEAR
 	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
 	 * @exception AIError::ERR_LOCAL_AUTHORITY_REFUSES
@@ -130,7 +131,7 @@ public:
 	 * @exception AIStation::ERR_STATION_TOO_CLOSE_TO_OTHER_STATION
 	 * @return Whether the airport has been/can be build or not.
 	 */
-	static bool BuildAirport(TileIndex tile, AirportType type, bool join_adjacent);
+	static bool BuildAirport(TileIndex tile, AirportType type, StationID station_id);
 
 	/**
 	 * Removes a airport.

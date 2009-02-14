@@ -4,6 +4,7 @@
 
 #include "ai_rail.hpp"
 #include "ai_map.hpp"
+#include "ai_station.hpp"
 #include "../../debug.h"
 #include "../../station_map.h"
 #include "../../company_func.h"
@@ -125,35 +126,37 @@
 	return AIObject::DoCommand(tile, AIObject::GetRailType(), entrance_dir, CMD_BUILD_TRAIN_DEPOT);
 }
 
-/* static */ bool AIRail::BuildRailStation(TileIndex tile, RailTrack direction, uint num_platforms, uint platform_length, bool join_adjacent)
+/* static */ bool AIRail::BuildRailStation(TileIndex tile, RailTrack direction, uint num_platforms, uint platform_length, StationID station_id)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, direction == RAILTRACK_NW_SE || direction == RAILTRACK_NE_SW);
 	EnforcePrecondition(false, num_platforms > 0 && num_platforms <= 0xFF);
 	EnforcePrecondition(false, platform_length > 0 && platform_length <= 0xFF);
 	EnforcePrecondition(false, IsRailTypeAvailable(GetCurrentRailType()));
+	EnforcePrecondition(false, station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id));
 
 	uint32 p1 = GetCurrentRailType() | (platform_length << 16) | (num_platforms << 8);
 	if (direction == RAILTRACK_NW_SE) p1 |= (1 << 4);
-	if (!join_adjacent) p1 |= (1 << 24);
-	return AIObject::DoCommand(tile, p1, INVALID_STATION << 16, CMD_BUILD_RAILROAD_STATION);
+	if (station_id != AIStation::STATION_JOIN_ADJACENT) p1 |= (1 << 24);
+	return AIObject::DoCommand(tile, p1, (AIStation::IsValidStation(station_id) ? station_id : INVALID_STATION) << 16, CMD_BUILD_RAILROAD_STATION);
 }
 
-/* static */ bool AIRail::BuildNewGRFRailStation(TileIndex tile, RailTrack direction, uint num_platforms, uint platform_length, bool join_adjacent, CargoID cargo_id, IndustryType source_industry, IndustryType goal_industry, int distance, bool source_station)
+/* static */ bool AIRail::BuildNewGRFRailStation(TileIndex tile, RailTrack direction, uint num_platforms, uint platform_length, StationID station_id, CargoID cargo_id, IndustryType source_industry, IndustryType goal_industry, int distance, bool source_station)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, direction == RAILTRACK_NW_SE || direction == RAILTRACK_NE_SW);
 	EnforcePrecondition(false, num_platforms > 0 && num_platforms <= 0xFF);
 	EnforcePrecondition(false, platform_length > 0 && platform_length <= 0xFF);
 	EnforcePrecondition(false, IsRailTypeAvailable(GetCurrentRailType()));
+	EnforcePrecondition(false, station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id));
 
 	uint32 p1 = GetCurrentRailType() | (platform_length << 16) | (num_platforms << 8);
 	if (direction == RAILTRACK_NW_SE) p1 |= 1 << 4;
-	if (!join_adjacent) p1 |= (1 << 24);
+	if (station_id != AIStation::STATION_JOIN_ADJACENT) p1 |= (1 << 24);
 
 	const GRFFile *file;
 	uint16 res = GetAiPurchaseCallbackResult(GSF_STATION, cargo_id, 0, source_industry, goal_industry, min(255, distance / 2), AICE_STATION_GET_STATION_ID, source_station ? 0 : 1, min(15, num_platforms) << 4 | min(15, platform_length), &file);
-	uint32 p2 = INVALID_STATION << 16;
+	uint32 p2 = (AIStation::IsValidStation(station_id) ? station_id : INVALID_STATION) << 16;
 	if (res != CALLBACK_FAILED) {
 		int index = 0;
 		const StationSpec *spec = GetCustomStationSpecByGrf(file->grfid, res, &index);

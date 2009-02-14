@@ -4,6 +4,7 @@
 
 #include "ai_road.hpp"
 #include "ai_map.hpp"
+#include "ai_station.hpp"
 #include "../../station_map.h"
 #include "../../command_type.h"
 #include "../../settings_type.h"
@@ -490,12 +491,13 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 	return AIObject::DoCommand(tile, entrance_dir | (AIObject::GetRoadType() << 2), 0, CMD_BUILD_ROAD_DEPOT);
 }
 
-/* static */ bool AIRoad::BuildRoadStation(TileIndex tile, TileIndex front, bool truck, bool drive_through, bool join_adjacent)
+/* static */ bool AIRoad::BuildRoadStation(TileIndex tile, TileIndex front, bool truck, bool drive_through, StationID station_id)
 {
 	EnforcePrecondition(false, tile != front);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, ::IsValidTile(front));
 	EnforcePrecondition(false, ::TileX(tile) == ::TileX(front) || ::TileY(tile) == ::TileY(front));
+	EnforcePrecondition(false, station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id));
 
 	uint entrance_dir;
 	if (drive_through) {
@@ -504,7 +506,12 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 		entrance_dir = (::TileX(tile) == ::TileX(front)) ? (::TileY(tile) < ::TileY(front) ? 1 : 3) : (::TileX(tile) < ::TileX(front) ? 2 : 0);
 	}
 
-	return AIObject::DoCommand(tile, entrance_dir, (join_adjacent ? 0 : 32) | (drive_through ? 2 : 0) | (truck ? 1 : 0) | (::RoadTypeToRoadTypes(AIObject::GetRoadType()) << 2) | (INVALID_STATION << 16), CMD_BUILD_ROAD_STOP);
+	uint p2 = station_id == AIStation::STATION_JOIN_ADJACENT ? 0 : 32;
+	p2 |= drive_through ? 2 : 0;
+	p2 |= truck ? 1 : 0;
+	p2 |= ::RoadTypeToRoadTypes(AIObject::GetRoadType()) << 2;
+	p2 |= (AIStation::IsValidStation(station_id) ? station_id : INVALID_STATION) << 16;
+	return AIObject::DoCommand(tile, entrance_dir, p2, CMD_BUILD_ROAD_STOP);
 }
 
 /* static */ bool AIRoad::RemoveRoad(TileIndex start, TileIndex end)

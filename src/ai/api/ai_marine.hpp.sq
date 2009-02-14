@@ -35,7 +35,7 @@ void SQAIMarine_Register(Squirrel *engine) {
 	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::IsCanalTile,            "IsCanalTile",            2, "?i");
 	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::AreWaterTilesConnected, "AreWaterTilesConnected", 3, "?ii");
 	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::BuildWaterDepot,        "BuildWaterDepot",        3, "?ib");
-	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::BuildDock,              "BuildDock",              3, "?ib");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::BuildDock,              "BuildDock",              3, "?ii");
 	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::BuildBuoy,              "BuildBuoy",              2, "?i");
 	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::BuildLock,              "BuildLock",              2, "?i");
 	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::BuildCanal,             "BuildCanal",             2, "?i");

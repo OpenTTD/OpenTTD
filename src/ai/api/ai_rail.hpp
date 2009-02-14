@@ -213,12 +213,13 @@ public:
 	 * @param direction The direction to build the station.
 	 * @param num_platforms The number of platforms to build.
 	 * @param platform_length The length of each platform.
-	 * @param join_adjacent When building next to an other station, don't create a new station when this flag is true.
+	 * @param station_id The station to join, AIStation::STATION_NEW or AIStation::STATION_JOIN_ADJACENT.
 	 * @pre IsRailTypeAvailable(GetCurrentRailType()).
 	 * @pre AIMap::IsValidTile(tile).
 	 * @pre direction == RAILTRACK_NW_SE || direction == RAILTRACK_NE_SW.
 	 * @pre num_platforms > 0 && num_platforms <= 255.
 	 * @pre platform_length > 0 && platform_length <= 255.
+	 * @pre station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id).
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception AIError::ERR_AREA_NOT_CLEAR
 	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
@@ -227,7 +228,7 @@ public:
 	 * @exception AIStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
 	 * @return Whether the station has been/can be build or not.
 	 */
-	static bool BuildRailStation(TileIndex tile, RailTrack direction, uint num_platforms, uint platform_length, bool join_adjacent);
+	static bool BuildRailStation(TileIndex tile, RailTrack direction, uint num_platforms, uint platform_length, StationID station_id);
 
 	/**
 	 * Build a NewGRF rail station. This calls callback 18 to let a NewGRF
@@ -237,7 +238,7 @@ public:
 	 * @param direction The direction to build the station.
 	 * @param num_platforms The number of platforms to build.
 	 * @param platform_length The length of each platform.
-	 * @param join_adjacent When building next to an other station, don't create a new station when this flag is true.
+	 * @param station_id The station to join, AIStation::STATION_NEW or AIStation::STATION_JOIN_ADJACENT.
 	 * @param cargo_id The CargoID of the cargo that will be transported from / to this station.
 	 * @param source_industry The IndustryType of the industry you'll transport goods from.
 	 * @param goal_industry The IndustryType of the industry you'll transport goods to.
@@ -248,6 +249,7 @@ public:
 	 * @pre direction == RAILTRACK_NW_SE || direction == RAILTRACK_NE_SW.
 	 * @pre num_platforms > 0 && num_platforms <= 255.
 	 * @pre platform_length > 0 && platform_length <= 255.
+	 * @pre station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id).
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception AIError::ERR_AREA_NOT_CLEAR
 	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
@@ -256,7 +258,7 @@ public:
 	 * @exception AIStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
 	 * @return Whether the station has been/can be build or not.
 	 */
-	static bool BuildNewGRFRailStation(TileIndex tile, RailTrack direction, uint num_platforms, uint platform_length, bool join_adjacent, CargoID cargo_id, IndustryType source_industry, IndustryType goal_industry, int distance, bool source_station);
+	static bool BuildNewGRFRailStation(TileIndex tile, RailTrack direction, uint num_platforms, uint platform_length, StationID station_id, CargoID cargo_id, IndustryType source_industry, IndustryType goal_industry, int distance, bool source_station);
 
 	/**
 	 * Remove a rectangle of platform pieces from a rail station.

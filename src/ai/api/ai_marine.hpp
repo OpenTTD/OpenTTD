@@ -95,15 +95,16 @@ public:
 	/**
 	 * Builds a dock where tile is the tile still on land.
 	 * @param tile The tile still on land of the dock.
-	 * @param join_adjacent When building next to an other station, don't create a new station when this flag is true.
+	 * @param station_id The station to join, AIStation::STATION_NEW or AIStation::STATION_JOIN_ADJACENT.
 	 * @pre AIMap::IsValidTile(tile).
+	 * @pre station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id).
 	 * @exception AIError::ERR_AREA_NOT_CLEAR
 	 * @exception AIError::ERR_SITE_UNSUITABLE
 	 * @exception AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
 	 * @exception AIStation::ERR_STATION_TOO_MANY_STATIONS
 	 * @return Whether the dock has been/can be build or not.
 	 */
-	static bool BuildDock(TileIndex tile, bool join_adjacent);
+	static bool BuildDock(TileIndex tile, StationID station_id);
 
 	/**
 	 * Builds a buoy on tile.
