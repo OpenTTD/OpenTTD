@@ -134,17 +134,39 @@
 	return (::GetIndustrySpec(::GetIndustry(industry_id)->type)->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0;
 }
 
-/* static */ bool AIIndustry::HasHeliportAndDock(IndustryID industry_id)
+/* static */ bool AIIndustry::HasHeliport(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return false;
 
 	return (::GetIndustrySpec(::GetIndustry(industry_id)->type)->behaviour & INDUSTRYBEH_AI_AIRSHIP_ROUTES) != 0;
 }
 
-/* static */ TileIndex AIIndustry::GetHeliportAndDockLocation(IndustryID industry_id)
+/* static */ TileIndex AIIndustry::GetHeliportLocation(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return INVALID_TILE;
-	if (!HasHeliportAndDock(industry_id)) return INVALID_TILE;
+	if (!HasHeliport(industry_id)) return INVALID_TILE;
+
+	const Industry *ind = ::GetIndustry(industry_id);
+	BEGIN_TILE_LOOP(tile_cur, ind->width, ind->height, ind->xy);
+		if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
+			return tile_cur;
+		}
+	END_TILE_LOOP(tile_cur, ind->width, ind->height, ind->xy);
+
+	return INVALID_TILE;
+}
+
+/* static */ bool AIIndustry::HasDock(IndustryID industry_id)
+{
+	if (!IsValidIndustry(industry_id)) return false;
+
+	return (::GetIndustrySpec(::GetIndustry(industry_id)->type)->behaviour & INDUSTRYBEH_AI_AIRSHIP_ROUTES) != 0;
+}
+
+/* static */ TileIndex AIIndustry::GetDockLocation(IndustryID industry_id)
+{
+	if (!IsValidIndustry(industry_id)) return INVALID_TILE;
+	if (!HasDock(industry_id)) return INVALID_TILE;
 
 	const Industry *ind = ::GetIndustry(industry_id);
 	BEGIN_TILE_LOOP(tile_cur, ind->width, ind->height, ind->xy);

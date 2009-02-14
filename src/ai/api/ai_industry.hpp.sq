@@ -30,8 +30,10 @@ void SQAIIndustry_Register(Squirrel *engine) {
 	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::GetDistanceManhattanToTile, "GetDistanceManhattanToTile", 3, "?ii");
 	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::GetDistanceSquareToTile,    "GetDistanceSquareToTile",    3, "?ii");
 	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::IsBuiltOnWater,             "IsBuiltOnWater",             2, "?i");
-	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::HasHeliportAndDock,         "HasHeliportAndDock",         2, "?i");
-	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::GetHeliportAndDockLocation, "GetHeliportAndDockLocation", 2, "?i");
+	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::HasHeliport,                "HasHeliport",                2, "?i");
+	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::GetHeliportLocation,        "GetHeliportLocation",        2, "?i");
+	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::HasDock,                    "HasDock",                    2, "?i");
+	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::GetDockLocation,            "GetDockLocation",            2, "?i");
 	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::GetIndustryType,            "GetIndustryType",            2, "?i");
 
 	SQAIIndustry.PostRegister(engine);

@@ -132,21 +132,38 @@ public:
 	static bool IsBuiltOnWater(IndustryID industry_id);
 
 	/**
-	 * Does this industry have a heliport and dock?
+	 * Does this industry have a heliport?
 	 * @param industry_id The index of the industry.
 	 * @pre IsValidIndustry(industry_id).
-	 * @return True when the industry has a heliport and dock.
+	 * @return True when the industry has a heliport.
 	 */
-	static bool HasHeliportAndDock(IndustryID industry_id);
+	static bool HasHeliport(IndustryID industry_id);
 
 	/**
-	 * Gets the location of the industry's heliport/dock.
+	 * Gets the location of the industry's heliport.
 	 * @param industry_id The index of the industry.
 	 * @pre IsValidIndustry(industry_id).
-	 * @pre HasHeliportAndDock(industry_id).
-	 * @return The location of the industry's heliport/dock.
+	 * @pre HasHeliport(industry_id).
+	 * @return The location of the industry's heliport.
 	 */
-	static TileIndex GetHeliportAndDockLocation(IndustryID industry_id);
+	static TileIndex GetHeliportLocation(IndustryID industry_id);
+
+	/**
+	 * Does this industry have a dock?
+	 * @param industry_id The index of the industry.
+	 * @pre IsValidIndustry(industry_id).
+	 * @return True when the industry has a dock.
+	 */
+	static bool HasDock(IndustryID industry_id);
+
+	/**
+	 * Gets the location of the industry's dock.
+	 * @param industry_id The index of the industry.
+	 * @pre IsValidIndustry(industry_id).
+	 * @pre HasDock(industry_id).
+	 * @return The location of the industry's dock.
+	 */
+	static TileIndex GetDockLocation(IndustryID industry_id);
 
 	/**
 	 * Get the IndustryType of the industry.
