@@ -47,9 +47,9 @@ public:
 	};
 
 	/**
-	 * Checks whether the given AirportType is valid.
+	 * Checks whether the given AirportType is valid and available.
 	 * @param type The AirportType to check.
-	 * @return True if and only if the AirportTypeis valid.
+	 * @return True if and only if the AirportType is valid and available.
 	 */
 	static bool IsValidAirportType(AirportType type);
 
@@ -68,12 +68,6 @@ public:
 	 * @return True if and only if the tile has a airport.
 	 */
 	static bool IsAirportTile(TileIndex tile);
-
-	/**
-	 * Check if a certain airport type is already available.
-	 * @param type The type of airport to check.
-	 */
-	static bool AirportAvailable(AirportType type);
 
 	/**
 	 * Get the width of this type of airport.

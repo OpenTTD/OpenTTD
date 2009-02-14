@@ -11,7 +11,7 @@
 
 /* static */ bool AIAirport::IsValidAirportType(AirportType type)
 {
-	return type >= AT_SMALL && type <= AT_HELISTATION;
+	return type >= AT_SMALL && type <= AT_HELISTATION && HasBit(::GetValidAirports(), type);
 }
 
 /* static */ bool AIAirport::IsHangarTile(TileIndex tile)
@@ -26,13 +26,6 @@
 	if (!::IsValidTile(tile)) return false;
 
 	return ::IsTileType(tile, MP_STATION) && ::IsAirport(tile);
-}
-
-/* static */ bool AIAirport::AirportAvailable(AirportType type)
-{
-	if (!IsValidAirportType(type)) return false;
-
-	return HasBit(::GetValidAirports(), type);
 }
 
 /* static */ int32 AIAirport::GetAirportWidth(AirportType type)

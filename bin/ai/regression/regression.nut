@@ -214,7 +214,6 @@ function Regression::Airport()
 
 	for (local i = -1; i < 10; i++) {
 		print("  IsValidAirportType(" + i + "):       " + AIAirport.IsValidAirportType(i));
-		print("  AirportAvailable(" + i + "):         " + AIAirport.AirportAvailable(i));
 		print("  GetAirportWidth(" + i + "):          " + AIAirport.GetAirportWidth(i));
 		print("  GetAirportHeight(" + i + "):         " + AIAirport.GetAirportHeight(i));
 		print("  GetAirportCoverageRadius(" + i + "): " + AIAirport.GetAirportCoverageRadius(i));

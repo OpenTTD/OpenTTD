@@ -576,57 +576,46 @@
   GetHangarOfAirport(): -1
   GetAirportType():     255
   IsValidAirportType(-1):       false
-  AirportAvailable(-1):         false
   GetAirportWidth(-1):          -1
   GetAirportHeight(-1):         -1
   GetAirportCoverageRadius(-1): -1
   IsValidAirportType(0):       true
-  AirportAvailable(0):         true
   GetAirportWidth(0):          4
   GetAirportHeight(0):         3
   GetAirportCoverageRadius(0): 4
-  IsValidAirportType(1):       true
-  AirportAvailable(1):         false
-  GetAirportWidth(1):          6
-  GetAirportHeight(1):         6
-  GetAirportCoverageRadius(1): 5
-  IsValidAirportType(2):       true
-  AirportAvailable(2):         false
-  GetAirportWidth(2):          1
-  GetAirportHeight(2):         1
-  GetAirportCoverageRadius(2): 4
-  IsValidAirportType(3):       true
-  AirportAvailable(3):         false
-  GetAirportWidth(3):          6
-  GetAirportHeight(3):         6
-  GetAirportCoverageRadius(3): 6
-  IsValidAirportType(4):       true
-  AirportAvailable(4):         false
-  GetAirportWidth(4):          7
-  GetAirportHeight(4):         7
-  GetAirportCoverageRadius(4): 8
-  IsValidAirportType(5):       true
-  AirportAvailable(5):         false
-  GetAirportWidth(5):          5
-  GetAirportHeight(5):         4
-  GetAirportCoverageRadius(5): 4
-  IsValidAirportType(6):       true
-  AirportAvailable(6):         false
-  GetAirportWidth(6):          2
-  GetAirportHeight(6):         2
-  GetAirportCoverageRadius(6): 4
-  IsValidAirportType(7):       true
-  AirportAvailable(7):         false
-  GetAirportWidth(7):          9
-  GetAirportHeight(7):         11
-  GetAirportCoverageRadius(7): 10
-  IsValidAirportType(8):       true
-  AirportAvailable(8):         false
-  GetAirportWidth(8):          4
-  GetAirportHeight(8):         2
-  GetAirportCoverageRadius(8): 4
+  IsValidAirportType(1):       false
+  GetAirportWidth(1):          -1
+  GetAirportHeight(1):         -1
+  GetAirportCoverageRadius(1): -1
+  IsValidAirportType(2):       false
+  GetAirportWidth(2):          -1
+  GetAirportHeight(2):         -1
+  GetAirportCoverageRadius(2): -1
+  IsValidAirportType(3):       false
+  GetAirportWidth(3):          -1
+  GetAirportHeight(3):         -1
+  GetAirportCoverageRadius(3): -1
+  IsValidAirportType(4):       false
+  GetAirportWidth(4):          -1
+  GetAirportHeight(4):         -1
+  GetAirportCoverageRadius(4): -1
+  IsValidAirportType(5):       false
+  GetAirportWidth(5):          -1
+  GetAirportHeight(5):         -1
+  GetAirportCoverageRadius(5): -1
+  IsValidAirportType(6):       false
+  GetAirportWidth(6):          -1
+  GetAirportHeight(6):         -1
+  GetAirportCoverageRadius(6): -1
+  IsValidAirportType(7):       false
+  GetAirportWidth(7):          -1
+  GetAirportHeight(7):         -1
+  GetAirportCoverageRadius(7): -1
+  IsValidAirportType(8):       false
+  GetAirportWidth(8):          -1
+  GetAirportHeight(8):         -1
+  GetAirportCoverageRadius(8): -1
   IsValidAirportType(9):       false
-  AirportAvailable(9):         false
   GetAirportWidth(9):          -1
   GetAirportHeight(9):         -1
   GetAirportCoverageRadius(9): -1
