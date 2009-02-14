@@ -7011,15 +7011,7 @@
     33411 => 0
 
 --Town--
-  GetMaxTownID():    31
   GetTownCount():    28
-  Town -1
-    IsValidTown():   false
-    GetName():       (null : 0x00000000)
-    GetPopulation(): -1
-    GetLocation():   -1
-    GetHouseCount(): -1
-    GetRating():     -1
   Town 0
     IsValidTown():   true
     GetName():       Planfield
@@ -7216,34 +7208,6 @@
     GetLocation():   45525
     GetHouseCount(): 19
     GetRating():     0
-  Town 28
-    IsValidTown():   false
-    GetName():       (null : 0x00000000)
-    GetPopulation(): -1
-    GetLocation():   -1
-    GetHouseCount(): -1
-    GetRating():     -1
-  Town 29
-    IsValidTown():   false
-    GetName():       (null : 0x00000000)
-    GetPopulation(): -1
-    GetLocation():   -1
-    GetHouseCount(): -1
-    GetRating():     -1
-  Town 30
-    IsValidTown():   false
-    GetName():       (null : 0x00000000)
-    GetPopulation(): -1
-    GetLocation():   -1
-    GetHouseCount(): -1
-    GetRating():     -1
-  Town 31
-    IsValidTown():   false
-    GetName():       (null : 0x00000000)
-    GetPopulation(): -1
-    GetLocation():   -1
-    GetHouseCount(): -1
-    GetRating():     -1
   Valid Towns:       28
   GetTownCount():    28
 

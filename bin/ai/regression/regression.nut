@@ -1306,9 +1306,10 @@ function Regression::Town()
 
 	print("");
 	print("--Town--");
-	print("  GetMaxTownID():    " + AITown.GetMaxTownID());
 	print("  GetTownCount():    " + AITown.GetTownCount());
-	for (local i = -1; i < AITown.GetMaxTownID() + 1; i++) {
+	local list = AITownList();
+	list.Sort(AIAbstractList.SORT_BY_ITEM, true);
+	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
 		if (AITown.IsValidTown(i)) j++;
 		print("  Town " + i);
 		print("    IsValidTown():   " + AITown.IsValidTown(i));
