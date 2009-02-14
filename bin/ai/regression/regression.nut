@@ -1481,7 +1481,7 @@ function Regression::Vehicle()
 	print("  BuildVehicle():       " + AIVehicle.BuildVehicle(10008, 9));
 	print("  BuildVehicle():       " + AIVehicle.BuildVehicle(10008, 27));
 	print("  BuildVehicle():       " + AIVehicle.BuildVehicle(10008, 27));
-	print("  MoveWagon():          " + AIVehicle.MoveWagon(18, 0, true, 17, 0));
+	print("  MoveWagonChain():     " + AIVehicle.MoveWagonChain(18, 0, 17, 0));
 	print("  GetNumWagons():       " + AIVehicle.GetNumWagons(17));
 	print("  GetLength():          " + AIVehicle.GetLength(17));
 	print("  GetWagonEngineType(): " + AIVehicle.GetWagonEngineType(17, 0));

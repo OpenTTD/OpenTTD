@@ -7498,7 +7498,7 @@
   BuildVehicle():       17
   BuildVehicle():       18
   BuildVehicle():       19
-  MoveWagon():          true
+  MoveWagonChain():     true
   GetNumWagons():       3
   GetLength():          24
   GetWagonEngineType(): 9

@@ -328,7 +328,6 @@ public:
 	 * Move a wagon after another wagon.
 	 * @param source_vehicle_id The vehicle to move a wagon away from.
 	 * @param source_wagon The wagon in source_vehicle to move.
-	 * @param move_attached_wagons Also move all wagons attached to the wagon to move.
 	 * @param dest_vehicle_id The vehicle to move the wagon to, or -1 to create a new vehicle.
 	 * @param dest_wagon The wagon in dest_vehicle to place source_wagon after.
 	 * @pre IsValidVehicle(source_vehicle_id).
@@ -336,9 +335,24 @@ public:
 	 * @pre dest_vehicle_id == -1 || (IsValidVehicle(dest_vehicle_id) && dest_wagon < GetNumWagons(dest_vehicle_id)).
 	 * @pre GetVehicleType(source_vehicle_id) == VEHICLE_RAIL.
 	 * @pre dest_vehicle_id == -1 || GetVehicleType(dest_vehicle_id) == VEHICLE_RAIL.
-	 * @return Whether or not moving the wagon(s) succeeded.
+	 * @return Whether or not moving the wagon succeeded.
 	 */
-	static bool MoveWagon(VehicleID source_vehicle_id, int source_wagon, bool move_attached_wagons, int dest_vehicle_id, int dest_wagon);
+	static bool MoveWagon(VehicleID source_vehicle_id, int source_wagon, int dest_vehicle_id, int dest_wagon);
+
+	/**
+	 * Move a chain of wagons after another wagon.
+	 * @param source_vehicle_id The vehicle to move a wagon away from.
+	 * @param source_wagon The first wagon in source_vehicle to move.
+	 * @param dest_vehicle_id The vehicle to move the wagons to, or -1 to create a new vehicle.
+	 * @param dest_wagon The wagon in dest_vehicle to place source_wagon and following wagons after.
+	 * @pre IsValidVehicle(source_vehicle_id).
+	 * @pre source_wagon < GetNumWagons(source_vehicle_id).
+	 * @pre dest_vehicle_id == -1 || (IsValidVehicle(dest_vehicle_id) && dest_wagon < GetNumWagons(dest_vehicle_id)).
+	 * @pre GetVehicleType(source_vehicle_id) == VEHICLE_RAIL.
+	 * @pre dest_vehicle_id == -1 || GetVehicleType(dest_vehicle_id) == VEHICLE_RAIL.
+	 * @return Whether or not moving the wagons succeeded.
+	 */
+	static bool MoveWagonChain(VehicleID source_vehicle_id, int source_wagon, int dest_vehicle_id, int dest_wagon);
 
 	/**
 	 * Gets the capacity of the given vehicle when refited to the given cargo type.
@@ -383,16 +397,29 @@ public:
 	 * Sells the given wagon from the vehicle.
 	 * @param vehicle_id The vehicle to sell a wagon from.
 	 * @param wagon The wagon to sell.
-	 * @param sell_attached_wagons Sell all wagons attached to the one we want to sell.
 	 * @pre IsValidVehicle(vehicle_id).
 	 * @pre wagon < GetNumWagons(vehicle_id).
 	 * @pre You must own the vehicle.
 	 * @pre The vehicle must be stopped in the depot.
 	 * @exception AIVehicle::ERR_VEHICLE_IS_DESTROYED
 	 * @exception AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT
-	 * @return True if and only if the wagon(s) has been sold.
+	 * @return True if and only if the wagon has been sold.
 	 */
-	static bool SellWagon(VehicleID vehicle_id, int wagon, bool sell_attached_wagons);
+	static bool SellWagon(VehicleID vehicle_id, int wagon);
+
+	/**
+	 * Sells all wagons from the vehicle starting from a given position.
+	 * @param vehicle_id The vehicle to sell a wagon from.
+	 * @param wagon The wagon to sell.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre wagon < GetNumWagons(vehicle_id).
+	 * @pre You must own the vehicle.
+	 * @pre The vehicle must be stopped in the depot.
+	 * @exception AIVehicle::ERR_VEHICLE_IS_DESTROYED
+	 * @exception AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT
+	 * @return True if and only if the wagons have been sold.
+	 */
+	static bool SellWagonChain(VehicleID vehicle_id, int wagon);
 
 	/**
 	 * Sends the given vehicle to a depot.
@@ -486,6 +513,17 @@ public:
 	 * @return True if the vehicle has shared orders.
 	 */
 	static bool HasSharedOrders(VehicleID vehicle_id);
+
+private:
+	/**
+	 * Internal function used by SellWagon(Chain).
+	 */
+	static bool _SellWagonInternal(VehicleID vehicle_id, int wagon, bool sell_attached_wagons);
+
+	/**
+	 * Internal function used by MoveWagon(Chain).
+	 */
+	static bool _MoveWagonInternal(VehicleID source_vehicle_id, int source_wagon, bool move_attached_wagons, int dest_vehicle_id, int dest_wagon);
 };
 
 #endif /* AI_VEHICLE_HPP */

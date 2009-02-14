@@ -79,7 +79,7 @@
 	return 0;
 }
 
-/* static */ bool AIVehicle::MoveWagon(VehicleID source_vehicle_id, int source_wagon, bool move_attached_wagons, int dest_vehicle_id, int dest_wagon)
+/* static */ bool AIVehicle::_MoveWagonInternal(VehicleID source_vehicle_id, int source_wagon, bool move_attached_wagons, int dest_vehicle_id, int dest_wagon)
 {
 	EnforcePrecondition(false, IsValidVehicle(source_vehicle_id) && source_wagon < GetNumWagons(source_vehicle_id));
 	EnforcePrecondition(false, dest_vehicle_id == -1 || (IsValidVehicle(dest_vehicle_id) && dest_wagon < GetNumWagons(dest_vehicle_id)));
@@ -95,6 +95,16 @@
 	}
 
 	return AIObject::DoCommand(0, v->index | ((w == NULL ? INVALID_VEHICLE : w->index) << 16), move_attached_wagons ? 1 : 0, CMD_MOVE_RAIL_VEHICLE);
+}
+
+/* static */ bool AIVehicle::MoveWagon(VehicleID source_vehicle_id, int source_wagon, int dest_vehicle_id, int dest_wagon)
+{
+	return _MoveWagonInternal(source_vehicle_id, source_wagon, false, dest_vehicle_id, dest_wagon);
+}
+
+/* static */ bool AIVehicle::MoveWagonChain(VehicleID source_vehicle_id, int source_wagon, int dest_vehicle_id, int dest_wagon)
+{
+	return _MoveWagonInternal(source_vehicle_id, source_wagon, true, dest_vehicle_id, dest_wagon);
 }
 
 /* static */ int AIVehicle::GetRefitCapacity(VehicleID vehicle_id, CargoID cargo)
@@ -122,7 +132,7 @@
 	return AIObject::DoCommand(0, vehicle_id, v->type == VEH_TRAIN ? 1 : 0, GetCmdSellVeh(v));
 }
 
-/* static */ bool AIVehicle::SellWagon(VehicleID vehicle_id, int wagon, bool sell_attached_wagons)
+/* static */ bool AIVehicle::_SellWagonInternal(VehicleID vehicle_id, int wagon, bool sell_attached_wagons)
 {
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id) && wagon < GetNumWagons(vehicle_id));
 	EnforcePrecondition(false, ::GetVehicle(vehicle_id)->type == VEH_TRAIN);
@@ -131,6 +141,16 @@
 	while (wagon-- > 0) v = GetNextUnit(v);
 
 	return AIObject::DoCommand(0, v->index, sell_attached_wagons ? 1 : 0, CMD_SELL_RAIL_WAGON);
+}
+
+/* static */ bool AIVehicle::SellWagon(VehicleID vehicle_id, int wagon)
+{
+	return _SellWagonInternal(vehicle_id, wagon, false);
+}
+
+/* static */ bool AIVehicle::SellWagonChain(VehicleID vehicle_id, int wagon)
+{
+	return _SellWagonInternal(vehicle_id, wagon, true);
 }
 
 /* static */ bool AIVehicle::SendVehicleToDepot(VehicleID vehicle_id)

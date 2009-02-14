@@ -122,11 +122,13 @@ void SQAIVehicle_Register(Squirrel *engine) {
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::IsStoppedInDepot,   "IsStoppedInDepot",   2, "?i");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::BuildVehicle,       "BuildVehicle",       3, "?ii");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::CloneVehicle,       "CloneVehicle",       4, "?iib");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::MoveWagon,          "MoveWagon",          6, "?iibii");
+	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::MoveWagon,          "MoveWagon",          5, "?iiii");
+	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::MoveWagonChain,     "MoveWagonChain",     5, "?iiii");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetRefitCapacity,   "GetRefitCapacity",   3, "?ii");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::RefitVehicle,       "RefitVehicle",       3, "?ii");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::SellVehicle,        "SellVehicle",        2, "?i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::SellWagon,          "SellWagon",          4, "?iib");
+	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::SellWagon,          "SellWagon",          3, "?ii");
+	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::SellWagonChain,     "SellWagonChain",     3, "?ii");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::SendVehicleToDepot, "SendVehicleToDepot", 2, "?i");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::StartStopVehicle,   "StartStopVehicle",   2, "?i");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::SkipToVehicleOrder, "SkipToVehicleOrder", 3, "?ii");
