@@ -79,8 +79,8 @@ public:
 	 * Can you build this type of industry?
 	 * @param industry_type The type of the industry.
 	 * @pre IsValidIndustryType(industry_type).
-	 * @return True if you can prospect this type of industry.
-	 * @note Returns false if you can only prospect this type of industry.
+	 * @return True if you can build this type of industry at locations of your choice.
+	 * @note Returns false if you can only prospect this type of industry, or not build it at all.
 	 */
 	static bool CanBuildIndustry(IndustryType industry_type);
 
