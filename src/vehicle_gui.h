@@ -62,6 +62,7 @@ void ShowBuildVehicleWindow(TileIndex tile, VehicleType type);
 
 uint ShowAdditionalText(int x, int y, uint w, EngineID engine);
 uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine);
+StringID GetCargoSubtypeText(const Vehicle *v);
 
 void ShowVehicleListWindow(const Vehicle *v);
 void ShowVehicleListWindow(const Waypoint *wp);

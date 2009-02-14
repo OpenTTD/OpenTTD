@@ -256,8 +256,8 @@ STR_013B_OWNED_BY                                               :{WHITE}...เ�
 STR_013C_CARGO                                                  :{BLACK}สินค้า
 STR_013D_INFORMATION                                            :{BLACK}ข้อมูล
 STR_013E_CAPACITIES                                             :{BLACK}ปริมาณที่รับได้
-STR_013F_CAPACITY                                               :{BLACK}ความจุ: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}ความจุ: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}ความจุ: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}ความจุ: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}ความจุสินค้าทั้งหมดของรถไฟขบวนนี้:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})

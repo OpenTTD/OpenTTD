@@ -301,8 +301,8 @@ STR_013C_CARGO                                                  :{BLACK}Ładunek
 STR_013D_INFORMATION                                            :{BLACK}Informacja
 STR_013E_CAPACITIES                                             :{BLACK}Pojemność
 STR_TOTAL_CARGO                                                 :{BLACK}Całkowity ładunek
-STR_013F_CAPACITY                                               :{BLACK}Pojemność: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Pojemność: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Pojemność: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Pojemność: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Calkowita pojemność tego pociągu:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2904,7 +2904,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Max. pr�
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY}  (ostatni rok: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Niezawodność: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Zbudowany: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Pojemność: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Pojemność: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...musi być zatrzymany w zajezdni samochodowej
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nie można sprzedać samochodu...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nie można zatrzymać/ruszyć samochodu...
@@ -2981,7 +2981,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Max. pr�
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY}  (w ostatnim roku: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Niezawodność: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Wybudowany: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Pojemność: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}Pojemność: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nie można zatrzymać/ruszyć statku...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nie można wysłać statku do stoczni...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nie można znaleźć stoczni
@@ -3056,8 +3056,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Samolot jest na drodze
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nie można zatrzymać/ruszyć samolotu
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Samolot jest w locie
-STR_A019_CAPACITY                                               :{BLACK}Pojemność: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Pojemność: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Pojemność: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Pojemność: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Samolot musi być zatrzymany w hangarze
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nie można sprzedać samolotu...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Konstrukcje lotnicze

@@ -323,8 +323,8 @@ STR_013C_CARGO                                                  :{BLACK}Náklad
 STR_013D_INFORMATION                                            :{BLACK}Informácie
 STR_013E_CAPACITIES                                             :{BLACK}Kapacita
 STR_TOTAL_CARGO                                                 :{BLACK}Celkový náklad
-STR_013F_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Kapacita: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Celkový náklad (kapacita) tohto vlaku:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2887,7 +2887,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Max. ryc
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zisk tento rok: {LTBLUE}{CURRENCY}  (posledny rok: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolahlivost: {LTBLUE}{COMMA}%  {BLACK}Pocet poruch od posledneho servisu: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Vyrobene: {LTBLUE}{NUM}{BLACK} Hodnota: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}... musi byt zastaveny v garazi
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nemozno predat automobil ...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nemozno zastavit/spustit automobil ...
@@ -2964,7 +2964,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Max. ryc
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zisk tento rok: {LTBLUE}{CURRENCY}  (posledny rok: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolahlivost: {LTBLUE}{COMMA}%  {BLACK}Pocet poruch od posledneho servisu: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Vyrobene: {LTBLUE}{NUM}{BLACK} Hodnota: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nemozno zastavit/spustit lod ...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nemozno poslat lod do lodenice ...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemozno najst miestnu lodenicu
@@ -3039,8 +3039,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lietadlo v ceste
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nemozno zastavit/spustit lietadlo ...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lietadlo je vo vzduchu
-STR_A019_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Lietadlo musi byt zastavene v hangari
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nie je mozne predat lietadlo ...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Výstavba letiska

@@ -494,6 +494,17 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 	return DrawStringMultiLine(x, y, STR_JUST_RAW_STRING, w);
 }
 
+/** Get the cargo subtype text from NewGRF for the vehicle details window. */
+StringID GetCargoSubtypeText(const Vehicle *v)
+{
+	if (HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_CARGO_SUFFIX)) {
+		uint16 cb = GetVehicleCallback(CBID_VEHICLE_CARGO_SUFFIX, 0, 0, v->engine_type, v);
+		if (cb != CALLBACK_FAILED) {
+			return GetGRFStringID(GetEngineGRFID(v->engine_type), 0xD000 + cb);
+		}
+	}
+	return STR_EMPTY;
+}
 
 /** Sort vehicles by their number */
 static int CDECL VehicleNumberSorter(const Vehicle * const *a, const Vehicle * const *b)

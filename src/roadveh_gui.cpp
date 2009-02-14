@@ -27,12 +27,18 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 
 	if (RoadVehHasArticPart(v)) {
 		AcceptedCargo max_cargo;
+		StringID subtype_text[NUM_CARGO];
 		char capacity[512];
 
 		memset(max_cargo, 0, sizeof(max_cargo));
+		memset(subtype_text, 0, sizeof(subtype_text));
 
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 			max_cargo[u->cargo_type] += u->cargo_cap;
+			if (u->cargo_cap > 0) {
+				StringID text = GetCargoSubtypeText(u);
+				if (text != STR_EMPTY) subtype_text[u->cargo_type] = text;
+			}
 		}
 
 		GetString(capacity, STR_ARTICULATED_RV_CAPACITY, lastof(capacity));
@@ -48,6 +54,12 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 
 				if (!first) strecat(capacity, ", ", lastof(capacity));
 				strecat(capacity, buffer, lastof(capacity));
+
+				if (subtype_text[i] != 0) {
+					GetString(buffer, subtype_text[i], lastof(buffer));
+					strecat(capacity, buffer, lastof(capacity));
+				}
+
 				first = false;
 			}
 		}
@@ -75,6 +87,7 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 	} else {
 		SetDParam(0, v->cargo_type);
 		SetDParam(1, v->cargo_cap);
+		SetDParam(2, GetCargoSubtypeText(v));
 		DrawString(x, y + 10 + y_offset, STR_9012_CAPACITY, TC_FROMSTRING);
 
 		str = STR_8812_EMPTY;

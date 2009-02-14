@@ -256,8 +256,8 @@ STR_013C_CARGO                                                  :{BLACK}Càrrega
 STR_013D_INFORMATION                                            :{BLACK}Informació
 STR_013E_CAPACITIES                                             :{BLACK}Capacitats
 STR_TOTAL_CARGO                                                 :{BLACK}Càrrega Total
-STR_013F_CAPACITY                                               :{BLACK}Capacitats: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Capacitat: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Capacitats: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Capacitat: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Càrrega total (capacitat) d'aquest tren:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2853,7 +2853,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Vel. Max
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Benefici enguany: {LTBLUE}{CURRENCY}  (darrer any: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Rendibilitat: {LTBLUE}{COMMA}%  {BLACK}Avaries des del darrer manteniment: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Construït: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...s'ha de parar dins d'una cotxera
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}No pots vendre l'automòbil...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}No es pot parar/arrencar l'automòbil...
@@ -2930,7 +2930,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Max. vel
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Benefici enguany: {LTBLUE}{CURRENCY}  (darrer any: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Rendibilitat: {LTBLUE}{COMMA}%  {BLACK}Avaries des de l'últim manteniment: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Construït: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}No es pot parar/arrencar el vaixell...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}No es pot enviar vaixell a la drassana...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Incapaç de trobar drassana local
@@ -3005,8 +3005,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Avió al camí
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}No es pot parar/arrencar l'avió...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}L'avió està volant
-STR_A019_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}L'avió s'ha de parar a l'hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}No es pot vendre l'avió...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Construcció d'Aeroport

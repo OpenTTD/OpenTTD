@@ -256,8 +256,8 @@ STR_013C_CARGO                                                  :{BLACK}Gods
 STR_013D_INFORMATION                                            :{BLACK}Information
 STR_013E_CAPACITIES                                             :{BLACK}Kapaciteter
 STR_TOTAL_CARGO                                                 :{BLACK}Gods Totalt
-STR_013F_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Tågets totala kapacitet:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}{CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2759,7 +2759,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Tophasti
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY}  (förra året: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan senaste service: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...måste stoppas inuti ett bussgarage
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan inte sälja vägfordon...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan inte stoppa/starta vägfordon...
@@ -2835,7 +2835,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Tophasti
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY}  (förra år: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan senaste service: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan inte stoppa/starta skepp...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan inte skicka skepp till depå...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan inte finna en lokal depå
@@ -2908,8 +2908,8 @@ STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Service
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Flygplan i vägen
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan inte stoppa/starta flygplan...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Flygplan är i luften
-STR_A019_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Flygplan måste stoppas i hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Kan inte sälja flygplan...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Flygplatsbyggnation

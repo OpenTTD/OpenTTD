@@ -321,8 +321,8 @@ STR_013C_CARGO                                                  :{BLACK}Teret
 STR_013D_INFORMATION                                            :{BLACK}Informacije
 STR_013E_CAPACITIES                                             :{BLACK}Nosivosti
 STR_TOTAL_CARGO                                                 :{BLACK}Ukupni teret
-STR_013F_CAPACITY                                               :{BLACK}Nosivost: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Nosivost: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Nosivost: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Nosivost: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Ukupna nosivost tereta ovog vlaka:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2902,7 +2902,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Maks brz
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Dobit ove godine: {LTBLUE}{CURRENCY}  (prošle godine: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pouzdanost: {LTBLUE}{COMMA}%  {BLACK}Kvarovi od posljednjeg servisa: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Izgrađen: {LTBLUE}{NUM}{BLACK} Vrijednost: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Nosivost: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Nosivost: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...mora biti zaustavljen unutar spremišta cestovnih vozila
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nije moguće prodati cestovno vozilo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nije moguće zaustaviti/pokrenuti cestovno vozilo...
@@ -2979,7 +2979,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Maks. br
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Dobit ove godine: {LTBLUE}{CURRENCY}  (prošle godine: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pouzdanost: {LTBLUE}{COMMA}%  {BLACK}Kvarova od posljednjeg servisa: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Izgrađeno: {LTBLUE}{NUM}{BLACK} Vrijednost: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Nosivost: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}Nosivost: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nije moguće pokrenuti/zaustaviti brod...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nije moguće poslati brod u spremište...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ne mogu pronaći lokalno spremište
@@ -3054,8 +3054,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Smeta zrakoplov
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nije moguće zaustaviti/pokrenuti zrakoplov...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Zrakoplov je u letu
-STR_A019_CAPACITY                                               :{BLACK}Nosivost: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Nosivost: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Nosivost: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Nosivost: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Zrakoplov mora biti zaustavljen u hangaru
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nije moguće prodati zrakoplov...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Izgradnja zračne luke

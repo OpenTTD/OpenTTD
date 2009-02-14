@@ -258,8 +258,8 @@ STR_013C_CARGO                                                  :{BLACK}Груз
 STR_013D_INFORMATION                                            :{BLACK}Информация
 STR_013E_CAPACITIES                                             :{BLACK}Вместимость
 STR_TOTAL_CARGO                                                 :{BLACK}Общий груз
-STR_013F_CAPACITY                                               :{BLACK}Вместимость: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Емкость: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Вместимость: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Емкость: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Общая загруженность этого транспорта:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} (Всего: {SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2851,7 +2851,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Макс
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломок с последнего ремонта: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Построено: {LTBLUE}{NUM}{BLACK} Цена: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Емкость: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Емкость: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...должен быть остановлен в гараже
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Невозможно продать автомобиль...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Невозможно остановить/пустить автомобиль...
@@ -2928,7 +2928,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Макс
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломок с последнего обслуж.: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Построено: {LTBLUE}{NUM}{BLACK} Стоимость: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Емкость: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}Емкость: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Не могу остановить/запустить корабль...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Не могу отправить корабль в док...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Невозможно найти док
@@ -3003,8 +3003,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}ОН ЛЕТИТ!
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Невозможно остановить/запустить авиатранспорт...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Самолет в полете
-STR_A019_CAPACITY                                               :{BLACK}Емкость: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Емкость: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Емкость: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Емкость: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Самолет должен быть остановлен в ангаре
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Не могу продать авиатранспорт...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Строительство аэропорта

@@ -173,7 +173,7 @@ STR_013B_OWNED_BY                                               :{WHITE}...am Be
 STR_013C_CARGO                                                  :{BLACK}Luedung
 STR_013D_INFORMATION                                            :{BLACK}Informatioun
 STR_013E_CAPACITIES                                             :{BLACK}Kapazitéiten
-STR_013F_CAPACITY                                               :{BLACK}Kapazitéit: {LTBLUE}{CARGO}
+STR_013F_CAPACITY                                               :{BLACK}Kapazitéit: {LTBLUE}{CARGO}{STRING}
 STR_0140_NEW_GAME                                               :{BLACK}Nei Partie
 STR_0141_LOAD_GAME                                              :{BLACK}Spill lueden
 

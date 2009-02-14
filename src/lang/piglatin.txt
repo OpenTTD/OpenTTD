@@ -256,8 +256,8 @@ STR_013C_CARGO                                                  :{BLACK}Argocay
 STR_013D_INFORMATION                                            :{BLACK}Informationway
 STR_013E_CAPACITIES                                             :{BLACK}Apacitiescay
 STR_TOTAL_CARGO                                                 :{BLACK}Otaltay Argocay
-STR_013F_CAPACITY                                               :{BLACK}Apacitycay: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Apacitycay: {LTBLUE}{CARGO} (xay{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Apacitycay: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Apacitycay: {LTBLUE}{CARGO}{STRING} (xay{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Otaltay argocay apacitycay ofway isthay aintray:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (xay{NUM})
@@ -2854,7 +2854,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Axmay. e
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ofitpray isthay earyay: {LTBLUE}{CURRENCY}  (astlay earyay: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eliabilityray: {LTBLUE}{COMMA}%  {BLACK}Eakdownsbray incesay astlay ervicesay: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Uiltbay: {LTBLUE}{NUM}{BLACK} Aluevay: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Apacitycay: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Apacitycay: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...ustmay ebay oppedstay insideway away oadray ehiclevay epotday
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}An'tcay ellsay oadray ehiclevay...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}An'tcay opstay/artstay oadray ehiclevay...
@@ -2931,7 +2931,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Axmay. e
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ofitpray isthay earyay: {LTBLUE}{CURRENCY}  (astlay earyay: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eliabilityray: {LTBLUE}{COMMA}%  {BLACK}Eakdownsbray incesay astlay ervicesay: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Uiltbay: {LTBLUE}{NUM}{BLACK} Aluevay: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Apacitycay: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}Apacitycay: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}An'tcay opstay/artstay ipshay...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}An'tcay endsay ipshay otay epotday...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Unableway otay indfay ocallay epotday
@@ -3006,8 +3006,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aircraftway inway ethay ayway
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}An'tcay opstay/artstay aircraftway...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aircraftway isway inway ightflay
-STR_A019_CAPACITY                                               :{BLACK}Apacitycay: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Apacitycay: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Apacitycay: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Apacitycay: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Aircraftway ustmay ebay oppedstay inway angarhay
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}An'tcay ellsay aircraftway...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Airportway onstructioncay

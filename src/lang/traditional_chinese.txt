@@ -256,8 +256,8 @@ STR_013C_CARGO                                                  :{BLACK}貨物
 STR_013D_INFORMATION                                            :{BLACK}資訊
 STR_013E_CAPACITIES                                             :{BLACK}容量
 STR_TOTAL_CARGO                                                 :{BLACK}總貨物量
-STR_013F_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}容量：{LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}容量：{LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}此列車的總容量：
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2825,7 +2825,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}極速�
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年損益：{LTBLUE}{CURRENCY}  (去年：{CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}可靠度：{LTBLUE}{COMMA}%  {BLACK}上次維護後故障次數：{LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   購買於：{LTBLUE}{NUM}{BLACK} 價值：{LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...必須停在車庫内
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}無法出售車輛...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}無法停止/起動車輛...
@@ -2902,7 +2902,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}極速�
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年損益：{LTBLUE}{CURRENCY}  (去年：{CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}可靠度：{LTBLUE}{COMMA}%  {BLACK}上次維護後故障次數：{LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   購買於：{LTBLUE}{NUM}{BLACK} 價值：{LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}無法停止/起動船舶...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}無法將船舶送到船塢...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}找不到附近的船塢
@@ -2977,8 +2977,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}前方有飛機
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}無法停止/起動飛機...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}飛機正在飛行中
-STR_A019_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}，{CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}，{CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}飛機必須停在機棚内
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}無法出售飛機...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :興建機場

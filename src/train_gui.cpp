@@ -145,7 +145,8 @@ static void TrainDetailsCapacityTab(const Vehicle *v, int x, int y)
 	if (v->cargo_cap != 0) {
 		SetDParam(0, v->cargo_type);
 		SetDParam(1, v->cargo_cap);
-		SetDParam(2, _settings_game.vehicle.freight_trains);
+		SetDParam(2, GetCargoSubtypeText(v));
+		SetDParam(3, _settings_game.vehicle.freight_trains);
 		DrawString(x, y, FreightWagonMult(v->cargo_type) > 1 ? STR_CAPACITY_MULT : STR_013F_CAPACITY, TC_FROMSTRING);
 	}
 }

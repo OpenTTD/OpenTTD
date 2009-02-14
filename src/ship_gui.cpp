@@ -50,6 +50,7 @@ void DrawShipDetails(const Vehicle *v, int x, int y)
 
 	SetDParam(0, v->cargo_type);
 	SetDParam(1, v->cargo_cap);
+	SetDParam(2, GetCargoSubtypeText(v));
 	DrawString(x, y + 10, STR_9817_CAPACITY, TC_FROMSTRING);
 
 	StringID str = STR_8812_EMPTY;

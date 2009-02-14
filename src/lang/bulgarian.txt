@@ -258,8 +258,8 @@ STR_013C_CARGO                                                  :{BLACK}Това
 STR_013D_INFORMATION                                            :{BLACK}Информация
 STR_013E_CAPACITIES                                             :{BLACK}Вместимости
 STR_TOTAL_CARGO                                                 :{BLACK}Общо товар
-STR_013F_CAPACITY                                               :{BLACK}Вместимост: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Капацитет: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Вместимост: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Капацитет: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Обща товарна вместимост на влака:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2814,7 +2814,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Макс
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Печалба тази година: {LTBLUE}{CURRENCY}  (предходна година: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надеждност: {LTBLUE}{COMMA}%  {BLACK}Повреди от последния сервиз: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Производство: {LTBLUE}{NUM}{BLACK} Стойност: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Капацитет: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Капацитет: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...трябва да бъде спряно в сервиз за коли
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Не може да продаде колата...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Не може да пусне/спре колата...
@@ -2891,7 +2891,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Макс
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Печалба тази година: {LTBLUE}{CURRENCY}  (миналата година: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надеждност: {LTBLUE}{COMMA}%  {BLACK}Повреди след последния сервиз: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Купен: {LTBLUE}{NUM}{BLACK} Цена: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Вместимост: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}Вместимост: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Не може да спреш/задвижиш кораба...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Не може да пратиш кораба в депото...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Не може да намери местното депо
@@ -2966,8 +2966,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Самолет на пътя
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Не може да спре/пусне самолет...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Самолета е във въздуха
-STR_A019_CAPACITY                                               :{BLACK}Капацитет: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Капацитет: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Капацитет: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Капацитет: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Самолета трябва да бъде спрян в хангар
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Не може да продаде самолета...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Строене на летище

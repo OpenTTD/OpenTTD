@@ -257,8 +257,8 @@ STR_013C_CARGO                                                  :{BLACK}Vrag
 STR_013D_INFORMATION                                            :{BLACK}Inligting
 STR_013E_CAPACITIES                                             :{BLACK}Kapasiteite
 STR_TOTAL_CARGO                                                 :{BLACK}Totaale Vrag
-STR_013F_CAPACITY                                               :{BLACK}Kapasiteit: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Kapasiteit: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Kapasiteit: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Kapasiteit: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Totaale vrag kapasitiet van die trein:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2801,7 +2801,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Max. spo
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profyt die jaar: {LTBLUE}{CURRENCY}  (verlede jaar: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betroubaarheid: {LTBLUE}{COMMA}% {BLACK}Komplikasies na laaste diens: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Gebou: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapasitiet: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Kapasitiet: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...moet gestop binne 'n pad voertuig depot wees
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan nie pad voertuig verkoop nie
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kani nie pad voertuig stop/aanskakel nie...
@@ -2877,7 +2877,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Max. spo
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profyt die jaar: {LTBLUE}{CURRENCY}  (verlede jaar: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betroubaarheid: {LTBLUE}{COMMA}%  {BLACK}Komplikasies na laaste diens: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Gebou: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapasitiet: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}Kapasitiet: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan nie skip stop/aanskakel nie
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan nie skip na depot stuur nie...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan nie plaaslike depot vind nie
@@ -2950,8 +2950,8 @@ STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Diens b
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Vliegtuig in die pad
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan nie vliegtuig stop/aanskakel nie...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Vliegtuig is opvlug
-STR_A019_CAPACITY                                               :{BLACK}Kapasiteit: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Kapasiteit: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Kapasiteit: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Kapasiteit: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Vliegtuig moet in hangar gestop wees
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Vliegtuig kan nie verkoop word nie...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Lughawe konstruksie

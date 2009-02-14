@@ -257,8 +257,8 @@ STR_013C_CARGO                                                  :{BLACK}بضاع
 STR_013D_INFORMATION                                            :{BLACK}معلومات
 STR_013E_CAPACITIES                                             :{BLACK} السعة
 STR_TOTAL_CARGO                                                 :{BLACK}مجموع الحمولة
-STR_013F_CAPACITY                                               :{BLACK}  سعة  : {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}السعة: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}  سعة  : {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}السعة: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}الحمولة القصوى لهذا القطار:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2855,7 +2855,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}السر
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}الدخل هذة السنة: {LTBLUE}{CURRENCY}          (السنة الماضية{CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}الصلاحية: {LTBLUE}{COMMA}% {BLACK}عدد مرات التوقف من الصيانة السابقة: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}تاريخ الشراء: {LTBLUE}{NUM}{BLACK}القيمة: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE} ... يجب ان يوقف داخل ورشة الصيانة.
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}لا يمكن بيع العربة...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}لا يمكن ايقاف / تشغيل العربة
@@ -2932,7 +2932,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}السر
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}الدخل هذة السنة: {LTBLUE}{CURRENCY}        (السنة الماضية: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}الصلاحية: {LTBLUE}{COMMA} %   {BLACK}الأعطال منذ آخر صيانة: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK} سنة الشراء: {LTBLUE}{NUM}{BLACK} القيمة: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}لا يمكن توقيف/ تشغيل السفينة ...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}لا يمكن ارسال السفينة الى حوض الصيانة ...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}لا يمكن ايجاد حوض صيانة قريب
@@ -3007,8 +3007,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}طائرة في الطريق
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}لا يمكن توقيف / تشغيل الطائرة
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}الطائرة تقوم بالطيران الآن
-STR_A019_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO} ،  {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO} ،  {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}يجب ان تكون الطائرة متوقفة في الحظيرة
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}لا يمكن بيع الطائرة
 STR_A01D_AIRPORT_CONSTRUCTION                                   :بناء المطار

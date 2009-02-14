@@ -37,6 +37,7 @@ void DrawAircraftDetails(const Vehicle *v, int x, int y)
 			SetDParam(1, u->cargo_cap);
 			SetDParam(2, u->Next()->cargo_type);
 			SetDParam(3, u->Next()->cargo_cap);
+			SetDParam(4, GetCargoSubtypeText(u));
 			DrawString(x, y + 10, (u->Next()->cargo_cap != 0) ? STR_A019_CAPACITY : STR_A01A_CAPACITY, TC_FROMSTRING);
 		}
 

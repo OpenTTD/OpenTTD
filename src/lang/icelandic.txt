@@ -256,8 +256,8 @@ STR_013C_CARGO                                                  :{BLACK}Farmur
 STR_013D_INFORMATION                                            :{BLACK}Upplýsingar
 STR_013E_CAPACITIES                                             :{BLACK}Burðargeta
 STR_TOTAL_CARGO                                                 :{BLACK}Heildarfarmur
-STR_013F_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Farmur alls (burðargeta) þessarar lestar:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2749,7 +2749,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Hámarks
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Hagnaður á þessu ári: {LTBLUE}{CURRENCY}  (síðasta ár: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA}%  {BLACK}Bilanir frá síðustu viðgerð: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Byggður: {LTBLUE}{NUM}{BLACK} Virði: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...verður að stöðvast í bifreiðaskýli
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Get ekki selt bifreið...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Get ekki stöðvað/ræst bifreið...
@@ -2825,7 +2825,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Hámarks
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Tekjur þessa árs: {LTBLUE}{CURRENCY}  (síðasta ár: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA}%  {BLACK}Bilanir frá síðustu skoðun: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Smíðað: {LTBLUE}{NUM}{BLACK} Verðmæti: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Get ekki stöðvað/ræst skip...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Get ekki sent skip í slipp...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Finnur ekkert nálægt skýli
@@ -2898,8 +2898,8 @@ STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Viðhal
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Flugvél er fyrir
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Get ekki stöðvað/ræst flugvél...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}flugvélin er á flugi
-STR_A019_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Flugvélin verður að vera stöðvuð í flugskýli
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Get ekki selt flugvélina...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Flugvallarframkvæmdir

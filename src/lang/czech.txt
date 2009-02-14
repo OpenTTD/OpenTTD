@@ -324,8 +324,8 @@ STR_013C_CARGO                                                  :{BLACK}Náklad
 STR_013D_INFORMATION                                            :{BLACK}Informace
 STR_013E_CAPACITIES                                             :{BLACK}Kapacity
 STR_TOTAL_CARGO                                                 :{BLACK}Celkový náklad
-STR_013F_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Kapacita: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Celková kapacita tohoto vlaku:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2912,7 +2912,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Max. ryc
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Příjem tento rok: {LTBLUE}{CURRENCY}  (minulý rok: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Koupen: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}... musí být zastaven v garáži
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nemohu prodat silniční vozidlo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nemohu zastavit/rozjet silniční vozidlo...
@@ -2989,7 +2989,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Max. ryc
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Příjem tento rok: {LTBLUE}{CURRENCY}  (minulý rok: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Koupeno: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nelze rozjet/zastavit loď...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nelze poslat loď do depa...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemohu najít místní depo
@@ -3064,8 +3064,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Letadlo v cestě
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nemohu rozjet/zastavit letadlo...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Letadlo letí
-STR_A019_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Letadlo musí být zastaveno v hangáru
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nelze prodat letadlo...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Stavba letiště

@@ -380,8 +380,8 @@ STR_013C_CARGO                                                  :{BLACK}Tovar
 STR_013D_INFORMATION                                            :{BLACK}Informacija
 STR_013E_CAPACITIES                                             :{BLACK}Kapaciteti
 STR_TOTAL_CARGO                                                 :{BLACK}Zbir Tovar
-STR_013F_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Zbir tovar kapacitet nad ova trenirati:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})

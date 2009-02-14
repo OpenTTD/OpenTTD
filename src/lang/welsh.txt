@@ -256,8 +256,8 @@ STR_013C_CARGO                                                  :{BLACK}Llwyth
 STR_013D_INFORMATION                                            :{BLACK}Gwybodaeth
 STR_013E_CAPACITIES                                             :{BLACK}Cyfansymau Gallu Cludo
 STR_TOTAL_CARGO                                                 :{BLACK}Cyfanswm Cargo
-STR_013F_CAPACITY                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Cyfanswm cynhwysedd cargo y trên hwn:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2744,7 +2744,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Cyflymde
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Elw eleni: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Dibynadwyedd: {LTBLUE}{COMMA}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Adeiladwyd: {LTBLUE}{NUM}{BLACK} Gwerth: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...rhaid iddo fod wedi'i stopio mewn depo cerbyd ffordd
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Methu gwerthu cerbyd ffordd...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Methu stop/start cerbyd ffordd...
@@ -2820,7 +2820,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Cyflymde
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Elw eleni: {LTBLUE}{CURRENCY}  (llynedd: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Dibynadwyedd: {LTBLUE}{COMMA}%  {BLACK}Torri i lawr ers y gwasanaeth diwethaf: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Adeiladwyd: {LTBLUE}{NUM}{BLACK} Gwerth: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}methu cychwyn/stopio llong...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Methu gyrru llong i ddepo...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Methu dod o hyd i'r depo lleol
@@ -2893,8 +2893,8 @@ STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Mynd am
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Awyren yn y ffordd
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Methu stopio/cychwyn awyren...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}mae'r awyren yn hedfan
-STR_A019_CAPACITY                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Rhaid i awyrennau rhaid i awyrennau fod wedi'i stopio mewn awyrendy
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}methu gwerthu awyren...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Adeiladu Maes Awyr

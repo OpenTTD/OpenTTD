@@ -258,8 +258,8 @@ STR_013C_CARGO                                                  :{BLACK}Krava
 STR_013D_INFORMATION                                            :{BLACK}Informācija
 STR_013E_CAPACITIES                                             :{BLACK}Ietilpība
 STR_TOTAL_CARGO                                                 :{BLACK}Krava kopā
-STR_013F_CAPACITY                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Kopējā kravas ietilpība:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2849,7 +2849,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Maks. ā
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Peļņa šogad: {LTBLUE}{CURRENCY}  (pērn: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Uzticamība: {LTBLUE}{COMMA}%  {BLACK}Bojājumi kopš pēdējās apkopes: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Uzbūvēts: {LTBLUE}{NUM}{BLACK} Vērtība: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...jābūt apstādinātam depo iekšpusē
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Transportl. nevar pārdot...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Transportl. nevar apstādināt/palaist...
@@ -2925,7 +2925,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Maks. ā
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Peļņa šogad: {LTBLUE}{CURRENCY}  (pērn: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Uzticamība: {LTBLUE}{COMMA}%  {BLACK}Bojājumi kopš pēdējās apkopes: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Uzbūvēts: {LTBLUE}{NUM}{BLACK} Vērtība: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nevar apstādināt/palaist kuģi...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kuģi nevar aizsūtīt uz depo...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nevar atrast tuvējo depo
@@ -3000,8 +3000,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lidaparāts ceļā
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nav iespējams apturēt/palaist lidaparātu...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lidaparāts pašreiz lido
-STR_A019_CAPACITY                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Lidaparātu var apturēt angārā
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nav iespējams pārdot lidaparātu...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Lidostas būve

@@ -255,8 +255,8 @@ STR_013C_CARGO                                                  :{BLACK}Ŝarĝo
 STR_013D_INFORMATION                                            :{BLACK}Informoj
 STR_013E_CAPACITIES                                             :{BLACK}Kapabloj
 STR_TOTAL_CARGO                                                 :{BLACK}Tuta Ŝarĝo
-STR_013F_CAPACITY                                               :{BLACK}Enhavkapablo: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Kapablo: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Enhavkapablo: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Tuta ŝarĝkapablo de ĉi tiu trajno:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2492,7 +2492,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Maksimum
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ĉi-jara gajno: {LTBLUE}{CURRENCY}  (lastjara: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fidebleco: {LTBLUE}{COMMA}%  {BLACK}Rompiĝoj post lasta prizorgo: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...devas esti haltigata en vojveturila deponejo
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ne povas vendi vojveturilon...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ne povas haltigi/starti vojveturilon...
@@ -2563,7 +2563,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Maksimum
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ĉi-jara gajno: {LTBLUE}{CURRENCY}  (lastjara: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fidebleco: {LTBLUE}{COMMA}%  {BLACK}Rompiĝoj post lasta prizorgo: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Ne povas haltigi/starti ŝipon...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Ne povas sendi ŝipon al deponejo...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ne eblas trovi lokan deponejon
@@ -2634,8 +2634,8 @@ STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Prizorg
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aviadilo okupas la lokon
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Ne povas haltigi/starti aviadilon...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aviadilo flugas
-STR_A019_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Aviadilo devas esti haltigata en la hangaro
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Ne povas vendi aviadilon...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Flughavena konstruado

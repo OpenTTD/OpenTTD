@@ -290,8 +290,8 @@ STR_013C_CARGO                                                  :{BLACK}Keliamoj
 STR_013D_INFORMATION                                            :{BLACK}Informacija
 STR_013E_CAPACITIES                                             :{BLACK}Talpumas
 STR_TOTAL_CARGO                                                 :{BLACK}Visa keliamoji galia
-STR_013F_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Talpa: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Talpa: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Visa traukinio keliamoji galia:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2711,7 +2711,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Maks. gr
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Pelnas šiais metais: {LTBLUE}{CURRENCY}  (pernai: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Sugedo po paskutinio remonto: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Pastatytas: {LTBLUE}{NUM}{BLACK} Verte: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...automobilis turi buti sustabdytas garaze
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Automobilio parduoti negalima...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Automobilio sustabdyti/paleisti negalima...
@@ -2780,7 +2780,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Maks. gr
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Pelnas šiais metais: {LTBLUE}{CURRENCY}  (pernai: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Gedimai po paskutinio remonto: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Pastatytas: {LTBLUE}{NUM}{BLACK} Verte: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Sustabdyti/paleisti laivo negalima...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nusiusti i laivu depa negalima...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Negali rasti artimiausio laivu depo
@@ -2851,8 +2851,8 @@ STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Servisa
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Oro uostai
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Negalima cia statyti oro uosto...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lektuvas dabar skrenda
-STR_A019_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Lektuvas turi buti sustabdytas angare
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Negalima parduoti lektuvo...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Oro uostu konstr.

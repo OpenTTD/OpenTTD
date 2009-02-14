@@ -256,8 +256,8 @@ STR_013C_CARGO                                                  :{BLACK}화물
 STR_013D_INFORMATION                                            :{BLACK}정보
 STR_013E_CAPACITIES                                             :{BLACK}수용량
 STR_TOTAL_CARGO                                                 :{BLACK}총 화물량
-STR_013F_CAPACITY                                               :{BLACK}수용량: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}수용량: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}수용량: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}수용량: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}이 열차의 총 수용량:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2854,7 +2854,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}최고�
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}올해 수익: {LTBLUE}{CURRENCY}  (작년: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}수송량: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}수송량: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...차고 안에서 정지해있어야 합니다!
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}자동차를 팔 수 없습니다...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}자동차를 운행/정지시킬 수 없습니다...
@@ -2931,7 +2931,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}최고�
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}올해 수익: {LTBLUE}{CURRENCY}  (작년: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}수송량: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}수송량: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}선박을 운행/중지시킬 수 없습니다...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}선박을 정박소로 보낼 수 없습니다...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}인접한 정박소를 찾을 수 없습니다
@@ -3006,8 +3006,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}중간에 항공기가 있습니다
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}항공기를 운행/중지시킬 수 없습니다...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}항공기가 운항중입니다
-STR_A019_CAPACITY                                               :{BLACK}수송량: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}수송량: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}수송량: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}수송량: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}격납고 내에서 정지해있어야합니다
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}항공기를 팔 수 없습니다...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :공항 건설

@@ -381,8 +381,8 @@ STR_013C_CARGO                                                  :{BLACK}Вант
 STR_013D_INFORMATION                                            :{BLACK}Інформація
 STR_013E_CAPACITIES                                             :{BLACK}Місткість
 STR_TOTAL_CARGO                                                 :{BLACK}Повна місткість
-STR_013F_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Місткість:{LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Місткість:{LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Повна місткість цього поїзду:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -3015,7 +3015,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Макс
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибуток цього року: {LTBLUE}{CURRENCY}  (минулого року: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...авто повинно стояти в депо
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Неможливо продати авто...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Неможливо зупинити авто...
@@ -3092,7 +3092,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Макс
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибуток цього року: {LTBLUE}{CURRENCY}  (минулого року: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Неможливо зупинити корабель...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Неможливо направити корабель в депо...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Неможливо знайти місцеве депо
@@ -3167,8 +3167,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Літак на шляху
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Неможливо зупинити літак...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Літак у польоті
-STR_A019_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Літак повинен стояти в ангарі
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Неможливо продати літак...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Будувати аеропорт

@@ -257,8 +257,8 @@ STR_013C_CARGO                                                  :{BLACK}Carga
 STR_013D_INFORMATION                                            :{BLACK}Información
 STR_013E_CAPACITIES                                             :{BLACK}Capacidades
 STR_TOTAL_CARGO                                                 :{BLACK}Carga total
-STR_013F_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Capacidad: {LTBLUE}{CARGO} (x{NUM})
+STR_013F_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Carga total (capacidad) de este tren:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2854,7 +2854,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Velocida
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Beneficio este año: {LTBLUE}{CURRENCY}  (último año: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde último despacho: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Const.: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...debe estar detenido dentro de un depósito
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}No se puede vender vehículo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}No se puede detener/arrancar vehículo...
@@ -2931,7 +2931,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Velocida
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Beneficio este año: {LTBLUE}{CURRENCY}  (año anterior: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde último despacho: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Const.: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}
+STR_9817_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}No se puede detener/arrancar barco...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}No se puede mandar barco a astillero...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}No se puede encontrar ruta al astillero
@@ -3006,8 +3006,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronave en camino
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}No se puede detener/arrancar aeronave...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}La aeronave está en vuelo
-STR_A019_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}La aeronave debe estar parada en hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}No se puede vender la aeronave...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Construir aeropuerto
