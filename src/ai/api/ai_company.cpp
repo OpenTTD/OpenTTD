@@ -27,24 +27,12 @@
 	return ResolveCompanyID(company) == ResolveCompanyID(COMPANY_SELF);
 }
 
-/* static */ bool AICompany::SetCompanyName(const char *name)
-{
-	AILog::Error("AICompany::SetCompanyName is obsolete. Use AICompany::SetName instead.");
-	return AICompany::SetName(name);
-}
-
 /* static */ bool AICompany::SetName(const char *name)
 {
 	EnforcePrecondition(false, !::StrEmpty(name));
 	EnforcePreconditionCustomError(false, ::strlen(name) < MAX_LENGTH_COMPANY_NAME_BYTES, AIError::ERR_PRECONDITION_STRING_TOO_LONG);
 
 	return AIObject::DoCommand(0, 0, 0, CMD_RENAME_COMPANY, name);
-}
-
-/* static */ char *AICompany::GetCompanyName(AICompany::CompanyID company)
-{
-	AILog::Error("AICompany::GetCompanyName is obsolete. Use AICompany::GetName instead.");
-	return AICompany::GetName(company);
 }
 
 /* static */ char *AICompany::GetName(AICompany::CompanyID company)

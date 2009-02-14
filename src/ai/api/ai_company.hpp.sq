@@ -28,9 +28,7 @@ void SQAICompany_Register(Squirrel *engine) {
 
 	SQAICompany.DefSQStaticMethod(engine, &AICompany::ResolveCompanyID,     "ResolveCompanyID",     2, "?i");
 	SQAICompany.DefSQStaticMethod(engine, &AICompany::IsMine,               "IsMine",               2, "?i");
-	SQAICompany.DefSQStaticMethod(engine, &AICompany::SetCompanyName,       "SetCompanyName",       2, "?s");
 	SQAICompany.DefSQStaticMethod(engine, &AICompany::SetName,              "SetName",              2, "?s");
-	SQAICompany.DefSQStaticMethod(engine, &AICompany::GetCompanyName,       "GetCompanyName",       2, "?i");
 	SQAICompany.DefSQStaticMethod(engine, &AICompany::GetName,              "GetName",              2, "?i");
 	SQAICompany.DefSQStaticMethod(engine, &AICompany::SetPresidentName,     "SetPresidentName",     2, "?s");
 	SQAICompany.DefSQStaticMethod(engine, &AICompany::GetPresidentName,     "GetPresidentName",     2, "?i");

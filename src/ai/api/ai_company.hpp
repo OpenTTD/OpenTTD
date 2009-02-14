@@ -44,11 +44,6 @@ public:
 	static bool IsMine(CompanyID company);
 
 	/**
-	 * Obsolete, use AICompany::SetName instead.
-	 */
-	static bool SetCompanyName(const char *name);
-
-	/**
 	 * Set the name of your company.
 	 * @param name The new name of the company.
 	 * @pre 'name' must have at least one character.
@@ -57,11 +52,6 @@ public:
 	 * @return True if the name was changed.
 	 */
 	static bool SetName(const char *name);
-
-	/**
-	 * Obsolete, use AICompany::GetName instead.
-	 */
-	static char *GetCompanyName(CompanyID company);
 
 	/**
 	 * Get the name of the given company.
