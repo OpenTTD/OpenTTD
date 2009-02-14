@@ -640,18 +640,14 @@ int ttd_main(int argc, char *argv[])
 
 	ResetGRFConfig(false);
 
-	/* Copy the settings needed for creating a new map. */
-	_settings_game.game_creation = _settings_newgame.game_creation;
+	/* Make sure _settings is filled with _settings_newgame if we switch to a game directly */
+	if (_switch_mode != SM_NONE) MakeNewgameSettingsLive();
 
 	/* initialize the ingame console */
 	IConsoleInit();
 	_cursor.in_window = true;
 	InitializeGUI();
 	IConsoleCmdExec("exec scripts/autoexec.scr 0");
-
-	/* Initialise the sprite/string tables. */
-	GfxLoadSprites();
-	LoadStringWidthTable();
 
 	GenerateWorld(GW_EMPTY, 64, 64); // Make the viewport initialization happy
 	WaitTillGeneratedWorld();

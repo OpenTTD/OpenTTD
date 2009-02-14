@@ -248,8 +248,8 @@ void StartGeneratingLandscape(glwp_modes mode)
 {
 	DeleteAllNonVitalWindows();
 
-	/* Copy the settings needed for creating a new map. */
-	_settings_game.game_creation = _settings_newgame.game_creation;
+	/* Copy all XXX_newgame to XXX when coming from outside the editor */
+	MakeNewgameSettingsLive();
 	ResetGRFConfig(true);
 
 	SndPlayFx(SND_15_BEEP);
@@ -442,6 +442,8 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				break;
 
 			case GLAND_GENERATE_BUTTON: // Generate
+				MakeNewgameSettingsLive();
+
 				if (mode == GLWP_HEIGHTMAP &&
 						(this->x * 2 < (1U << _settings_newgame.game_creation.map_x) ||
 						this->x / 2 > (1U << _settings_newgame.game_creation.map_x) ||
