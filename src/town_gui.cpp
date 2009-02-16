@@ -752,7 +752,13 @@ public:
 
 	static void PlaceProc_Town(TileIndex tile)
 	{
-		DoCommandP(tile, town_size | city << 2 | town_layout << 3, 0, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE), CcBuildTown);
+		uint32 townnameparts;
+		if (!GenerateTownName(&townnameparts)) {
+			ShowErrorMessage(STR_023A_TOO_MANY_TOWNS, STR_0236_CAN_T_BUILD_TOWN_HERE, 0, 0);
+			return;
+		}
+
+		DoCommandP(tile, town_size | city << 2 | town_layout << 3, townnameparts, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE), CcBuildTown);
 	}
 };
 

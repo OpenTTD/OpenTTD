@@ -1364,49 +1364,83 @@ void UpdateTownRadius(Town *t)
 	}
 }
 
-static bool CreateTownName(uint32 *townnameparts)
+extern int _nb_orig_names;
+
+/**
+ * Struct holding a parameters used to generate town name.
+ * Speeds things up a bit because these values are computed only once per name generation.
+ */
+struct TownNameParams {
+	bool grf;            ///< true iff a newgrf is used to generate town name
+	uint32 grfid;        ///< newgrf ID
+	uint16 townnametype; ///< town name style
+
+	TownNameParams(byte town_name) :
+		grf(town_name >= _nb_orig_names),
+		grfid(this->grf ? GetGRFTownNameId(town_name - _nb_orig_names) : 0),
+		townnametype(this->grf ? GetGRFTownNameType(town_name - _nb_orig_names) : SPECSTR_TOWNNAME_START + town_name)
+	{ }
+};
+
+/**
+ * Verifies the town name is valid and unique.
+ * @param r random bits
+ * @param par town name parameters
+ * @return true iff name is valid and unique
+ */
+static bool VerifyTownName(uint32 r, const TownNameParams *par)
 {
-	extern int _nb_orig_names;
-	Town *t2;
-	char buf1[64];
-	char buf2[64];
-	uint32 r;
+	/* reserve space for extra unicode character and terminating '\0' */
+	char buf1[MAX_LENGTH_TOWN_NAME_BYTES + 4 + 1];
+	char buf2[MAX_LENGTH_TOWN_NAME_BYTES + 4 + 1];
+
+	SetDParam(0, r);
+	if (par->grf && par->grfid != 0) {
+		GRFTownNameGenerate(buf1, par->grfid, par->townnametype, r, lastof(buf1));
+	} else {
+		GetString(buf1, par->townnametype, lastof(buf1));
+	}
+
+	/* Check size and width */
+	if (strlen(buf1) >= MAX_LENGTH_TOWN_NAME_BYTES) return false;
+
+	const Town *t;
+	FOR_ALL_TOWNS(t) {
+		/* We can't just compare the numbers since
+		 * several numbers may map to a single name. */
+		SetDParam(0, t->index);
+		GetString(buf2, STR_TOWN, lastof(buf2));
+		if (strcmp(buf1, buf2) == 0) return false;
+	}
+
+	return true;
+}
+
+/**
+ * Generates valid town name.
+ * @param townnameparts if a name is generated, it's stored there
+ * @return true iff a name was generated
+ */
+bool GenerateTownName(uint32 *townnameparts)
+{
 	/* Do not set too low tries, since when we run out of names, we loop
 	 * for #tries only one time anyway - then we stop generating more
 	 * towns. Do not show it too high neither, since looping through all
 	 * the other towns may take considerable amount of time (10000 is
 	 * too much). */
 	int tries = 1000;
-	bool grf = (_settings_game.game_creation.town_name >= _nb_orig_names);
-	uint32 grfid = grf ? GetGRFTownNameId(_settings_game.game_creation.town_name - _nb_orig_names) : 0;
-	uint16 townnametype = grf ? GetGRFTownNameType(_settings_game.game_creation.town_name - _nb_orig_names) : SPECSTR_TOWNNAME_START + _settings_game.game_creation.town_name;
+	TownNameParams par(_settings_game.game_creation.town_name);
 
 	assert(townnameparts != NULL);
 
 	for (;;) {
-restart:
-		r = Random();
+		uint32 r = InteractiveRandom();
 
-		SetDParam(0, r);
-		if (grf && grfid != 0) {
-			GRFTownNameGenerate(buf1, grfid, townnametype, r, lastof(buf1));
-		} else {
-			GetString(buf1, townnametype, lastof(buf1));
+		if (!VerifyTownName(r, &par)) {
+			if (tries-- < 0) return false;
+			continue;
 		}
 
-		/* Check size and width */
-		if (strlen(buf1) >= MAX_LENGTH_TOWN_NAME_BYTES || GetStringBoundingBox(buf1).width > MAX_LENGTH_TOWN_NAME_PIXELS) continue;
-
-		FOR_ALL_TOWNS(t2) {
-			/* We can't just compare the numbers since
-			 * several numbers may map to a single name. */
-			SetDParam(0, t2->index);
-			GetString(buf2, STR_TOWN, lastof(buf2));
-			if (strcmp(buf1, buf2) == 0) {
-				if (tries-- < 0) return false;
-				goto restart;
-			}
-		}
 		*townnameparts = r;
 		return true;
 	}
@@ -1429,8 +1463,6 @@ void UpdateTownMaxPass(Town *t)
  */
 static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize size, bool city, TownLayout layout)
 {
-	extern int _nb_orig_names;
-
 	t->xy = tile;
 	t->num_houses = 0;
 	t->time_until_rebuild = 10;
@@ -1485,8 +1517,6 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	if (size == TS_RANDOM) x = (Random() & 0xF) + 8;
 	if (city) x *= _settings_game.economy.initial_city_size;
 
-	t->noise_reached = 0;
-
 	t->num_houses += x;
 	UpdateTownRadius(t);
 
@@ -1498,6 +1528,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	t->num_houses -= x;
 	UpdateTownRadius(t);
 	UpdateTownMaxPass(t);
+	UpdateAirportsNoise();
 }
 
 /** Create a new town.
@@ -1508,7 +1539,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
  * @param p1  0..1 size of the town (@see TownSize)
  *               2 true iff it should be a city
  *            3..5 town road layout (@see TownLayout)
- * @param p2 unused
+ * @param p2 town name parts
  */
 CommandCost CmdBuildTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1518,28 +1549,27 @@ CommandCost CmdBuildTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	TownSize size = (TownSize)GB(p1, 0, 2);
 	bool city = HasBit(p1, 2);
 	TownLayout layout = (TownLayout)GB(p1, 3, 3);
+	TownNameParams par(_settings_game.game_creation.town_name);
+	uint32 townnameparts = p2;
 
 	if (size > TS_RANDOM) return CMD_ERROR;
 	if (layout > TL_RANDOM) return CMD_ERROR;
+	if (!VerifyTownName(townnameparts, &par)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 
 	/* Check if too close to the edge of map */
-	if (DistanceFromEdge(tile) < 12)
+	if (DistanceFromEdge(tile) < 12) {
 		return_cmd_error(STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP);
+	}
+
+	/* Check distance to all other towns. */
+	if (IsCloseToTown(tile, 20)) {
+		return_cmd_error(STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN);
+	}
 
 	/* Can only build on clear flat areas, possibly with trees. */
 	if ((!IsTileType(tile, MP_CLEAR) && !IsTileType(tile, MP_TREES)) || GetTileSlope(tile, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_0239_SITE_UNSUITABLE);
 	}
-
-	/* Check distance to all other towns. */
-	if (IsCloseToTown(tile, 20))
-		return_cmd_error(STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN);
-
-	uint32 townnameparts;
-
-	/* Get a unique name for the town. */
-	if (!CreateTownName(&townnameparts))
-		return_cmd_error(STR_023A_TOO_MANY_TOWNS);
 
 	/* Allocate town struct */
 	if (!Town::CanAllocateItem()) return_cmd_error(STR_023A_TOO_MANY_TOWNS);
@@ -1583,7 +1613,7 @@ Town *CreateRandomTown(uint attempts, TownSize size, bool city, TownLayout layou
 		uint32 townnameparts;
 
 		/* Get a unique name for the town. */
-		if (!CreateTownName(&townnameparts)) break;
+		if (!GenerateTownName(&townnameparts)) break;
 
 		/* Allocate a town struct */
 		Town *t = new Town(tile);
