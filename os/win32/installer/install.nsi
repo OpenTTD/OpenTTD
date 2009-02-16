@@ -4,7 +4,7 @@
 !include ${VERSION_INCLUDE}
 
 !define APPURLLINK "http://www.openttd.org"
-!define APPNAMEANDVERSION "${APPNAME} ${APPVERSION}"
+!define APPNAMEANDVERSION "${APPNAME} ${APPVERSION}-beta1"
 !define APPVERSIONINTERNAL "${APPVERSION}.0" ; Needs to be of the format X.X.X.X
 
 !define MUI_ICON "..\..\..\media\openttd.ico"
