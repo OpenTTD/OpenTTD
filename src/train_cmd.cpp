@@ -506,7 +506,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 	if (mode == AM_ACCEL) {
 		return (force - resistance) / (mass * 2);
 	} else {
-		return min((-force - resistance) / mass, -10000 / mass);
+		return min(-force - resistance, -10000) / mass;
 	}
 }
 
