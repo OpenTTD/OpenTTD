@@ -3515,6 +3515,26 @@ static uint CountPassengersInTrain(const Vehicle *v)
 	return num;
 }
 
+/**
+ * Marks train as crashed and creates an AI event.
+ * Doesn't do anything if the train is crashed already.
+ * @param v first vehicle of chain
+ * @return number of victims (including 2 drivers; zero if train was already crashed)
+ */
+static uint TrainCrashed(Vehicle *v)
+{
+	/* do not crash train twice */
+	if (v->vehstatus & VS_CRASHED) return 0;
+
+	/* two drivers + passengers */
+	uint num = 2 + CountPassengersInTrain(v);
+
+	SetVehicleCrashed(v);
+	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_TRAIN));
+
+	return num;
+}
+
 struct TrainCollideChecker {
 	Vehicle *v;  ///< vehicle we are testing for collision
 	uint num;    ///< number of dead if train collided
@@ -3537,17 +3557,9 @@ static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
 		/* needed to disable possible crash of competitor train in station by building diagonal track at its end */
 		if (x_diff * x_diff + y_diff * y_diff > 25) return NULL;
 
-		if (!(tcc->v->vehstatus & VS_CRASHED)) {
-			/* two drivers + passengers killed in train tcc->v (if it was not crashed already) */
-			tcc->num += 2 + CountPassengersInTrain(tcc->v);
-			SetVehicleCrashed(tcc->v);
-		}
-
-		if (!(coll->vehstatus & VS_CRASHED)) {
-			/* two drivers + passengers killed in train coll (if it was not crashed already) */
-			tcc->num += 2 + CountPassengersInTrain(coll);
-			SetVehicleCrashed(coll);
-		}
+		/* crash both trains */
+		tcc->num += TrainCrashed(tcc->v);
+		tcc->num += TrainCrashed(coll);
 
 		/* Try to reserve all tiles directly under the crashed trains.
 		 * As there might be more than two trains involved, we have to do that for all vehicles */
@@ -3595,7 +3607,6 @@ static bool CheckTrainCollision(Vehicle *v)
 	/* any dead -> no crash */
 	if (tcc.num == 0) return false;
 
-	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_TRAIN));
 	SetDParam(0, tcc.num);
 	AddNewsItem(STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL,
 		NS_ACCIDENT_VEHICLE,
