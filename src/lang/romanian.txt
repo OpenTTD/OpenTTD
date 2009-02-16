@@ -552,7 +552,7 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informa
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Inaugurare industrii
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Inchidere industrii
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Schimbari economice
-STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Schimbarile de productie ale industriilor oferite de companie
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Schimbările de producţie ale industriilor partenere cu compania
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Schimbări de producţie la industrii partenere cu concurenţa
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Alte schimbări în producţia industrială
 STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Sugestii / informatii despre vehiculele companiei
@@ -3091,6 +3091,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Ponderea
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Punctajul total din numãrul maxim posibil
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Setari NewGRF
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Afişează setarile NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Setari Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplică schimbările
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Comuta paleta
@@ -3360,9 +3361,9 @@ STR_BORDER_MANUAL                                               :{BLACK}Manual
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Mic
-STR_CITY_AIRPORT                                                :{BLACK}Metropolă
-STR_METRO_AIRPORT                                               :{BLACK}Aeroporturi metropolitane
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Aeroport international
+STR_CITY_AIRPORT                                                :{BLACK}Orăşenesc
+STR_METRO_AIRPORT                                               :{BLACK}Metropolitan
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}International
 STR_COMMUTER_AIRPORT                                            :{BLACK}Navetist
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinental
 STR_HELIPORT                                                    :{BLACK}Helidrom
@@ -3372,7 +3373,7 @@ STR_HELISTATION                                                 :{BLACK}Baza eli
 STR_SMALL_AIRPORTS                                              :{BLACK}Aeroporturi mici
 STR_LARGE_AIRPORTS                                              :{BLACK}Aeroporturi mari
 STR_HUB_AIRPORTS                                                :{BLACK}Aeroporturi centrale
-STR_HELIPORTS                                                   :{BLACK}Aeroporturi elicoptere
+STR_HELIPORTS                                                   :{BLACK}Heliporturi
 
 ############ Tooltip measurment
 
@@ -3546,6 +3547,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Setări IA
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Afişează setarile pentru Inteligenţa Artificială
 STR_AI_DEBUG                                                    :{WHITE}Depanare IA
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Numele Inteligenţei Artificiale
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reîncarcă IA

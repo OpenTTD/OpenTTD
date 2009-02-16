@@ -734,6 +734,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Cada 12 meses
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Iniciar um novo jogo
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Carregar um jogo gravado
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Criar um cenário de jogo personalizado
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Começar um jogo em rede
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Mostrar opções de jogo
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Mostrar opções de dificuldade
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Iniciar um novo jogo, utilizando um cenário personalizado guardado no disco
@@ -842,6 +843,8 @@ STR_OPTIONS_RES_TIP                                             :{BLACK}Seleccio
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formato da captura de ecrã
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Seleccione o formato de captura de ecrã que deseja utilizar
+
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 
 STR_AUTOSAVE_1_MONTH                                            :Cada mês
 STR_AUTOSAVE_FAILED                                             :{WHITE}Falha ao guardar automaticamente
@@ -1047,6 +1050,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Desacti
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permitir AIs em multi-jogador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes antes da AI ser suspensa: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Os intervalos de serviço são em percentagem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de serviço predefinido para comboios: {ORANGE}{STRING} dias
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de serviço predefinido para comboios: {ORANGE}desactivado
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Intervalo de serviço predefinido para veículos de estrada: {ORANGE}{STRING} dias
@@ -1082,6 +1086,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grelha 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grelha 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ao acaso
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}As cidades têm permissão para construir estradas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir que a cidade controle o nível de ruído dos aeroportos: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posição da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Esquerda
@@ -1120,12 +1125,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Comboio
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Cidades
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrias
 
-STR_CONFIG_SETTING_DISABLED                                     :desactivado
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Alterar valor
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Sistema de encontrar caminho para comboios: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Não recomendado)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1138,6 +1137,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Sistema
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomendado)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Não recomendado)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-tamanho do mapa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-tamanho do mapa: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :desactivado
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Alterar valor
 
 STR_TEMPERATE_LANDSCAPE                                         :Terreno temperado
 STR_SUB_ARCTIC_LANDSCAPE                                        :terreno subárctico
@@ -1231,7 +1239,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Lista de
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Desactivar tudo
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Activar tudo
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Indústrias
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportado)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportado)
@@ -1245,7 +1252,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Converte
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleccionar tipo de carga do comboio
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Converter comboio para transportar a carga seleccionada
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Não é possível converter comboio...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Os intervalos de serviço são em percentagem: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Modificar produção
 
 ############ network gui strings
@@ -1506,11 +1512,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Mensagem privad
 STR_NETWORK_SEND                                                :{BLACK}Enviar
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-tamanho do mapa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-tamanho do mapa: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -3543,6 +3544,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :|!"#$%&/()=?»Q
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Definições da AI
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Mostrar definições da AI
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nome da AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar AI
@@ -3570,7 +3572,6 @@ STR_AI_VERSION                                                  :Versão:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir que a cidade controle o nível de ruído dos aeroportos: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Limite de ruído na cidade: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Ruído gerado: {GOLD}{COMMA}
 ########
@@ -3596,6 +3597,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Seleccio
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Marcar todo o conteúdo que seja actualização ao conteúdo existente a ser descarregado
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Desseleccionar tudo
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Marcar todo o conteúdo que não deva ser descarregado
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtrar por nomes:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descarregar
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Iniciar a descarga do conteudo seleccionado
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Tamanho total do download: {WHITE}{BYTES}

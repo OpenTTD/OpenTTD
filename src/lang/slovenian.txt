@@ -685,9 +685,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE} ... oba
 STR_02A1_SMALL                                                  :{BLACK}Majhno
 STR_02A2_MEDIUM                                                 :{BLACK}Srednje
 STR_02A3_LARGE                                                  :{BLACK}Veliko
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Naključno
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Mesto
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Mesta rastejo hitreje kot navadna naselja{}Odvisno od nastavitev, so večja, ko so ustanovljena
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Izberi velikost mesta
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Velikost mesta:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Oblika mestnih cest:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Izberi obliko cest za to mesto
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Original
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Boljše ceste
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 mreža
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 mreža
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Naključno
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Prikaži zadnje sporočilo ali novico
@@ -766,6 +776,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Vsakih 12 mesec
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Začni novo igro
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Naloži shranjeno igro
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Ustvari poljubni svet/scenarij
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Poženi večigralsko igro
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Prikaži možnosti igre
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Prikazi nastavitve težavnosti
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Začni novo igro po scenariju
@@ -874,6 +885,10 @@ STR_OPTIONS_RES_TIP                                             :{BLACK}Izberi l
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format zajema slike
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Izberi format zajema slike
+
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Osnovni komplet grafik
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Izberi osnovni komplet grafik za uporabo
 
 STR_AUTOSAVE_1_MONTH                                            :Vsak mesec
 STR_AUTOSAVE_FAILED                                             :{WHITE}Samodejno shranjevanje spodletelo
@@ -1079,6 +1094,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Onemogo
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Dovoli UI v večigralskem načinu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#op-kode pred blokado UI: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Obdobja servisiranja so v procentih: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Privzeto obdobje servisiranja za vlake: {ORANGE}{STRING} dni/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Privzeto obdobje servisiranja za vlake: {ORANGE}onemogočeno
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Privzeto obdobje servisiranja za cestna vozila: {ORANGE}{STRING} dni/%
@@ -1107,11 +1123,14 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Samo normalni
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Samo napredni
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Vse
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Oblika cest za nova mesta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :privzeto
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :boljše ceste
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 mreža
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 mreža
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :naključno
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Mesta lahko gradijo ceste: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Omogoči mestni nadzor hrupa za letališča: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pozicija glavne orodne vrstice: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Levo
@@ -1150,12 +1169,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlaki
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Mesta
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrije
 
-STR_CONFIG_SETTING_DISABLED                                     :onemogočeno
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Spremeni vrednost
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Iskalnik poti za vlake: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ni priporočeno)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1168,6 +1181,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Logarit
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Priporočen)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ni priporočen)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-velikost ozemlja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-velikost ozemlja: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :onemogočeno
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Spremeni vrednost
 
 STR_TEMPERATE_LANDSCAPE                                         :Zmerno podnebje
 STR_SUB_ARCTIC_LANDSCAPE                                        :Sub arktično podnebje
@@ -1261,7 +1283,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Seznam z
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Onemogoči vse
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Omogoči vse
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrije
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% prepeljano)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% prepeljano)
@@ -1275,7 +1296,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Predelaj
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Izberi predelavo za tip tovora
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Predelaj vlak za označen tip tovora
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nemogoča predelava vlaka...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Obdobja servisiranja so v procentih: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Spremeni proizvodnjo
 
 ############ network gui strings
@@ -1536,11 +1556,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privatno sporo�
 STR_NETWORK_SEND                                                :{BLACK}Pošlji
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-velikost ozemlja: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-velikost ozemlja: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -3156,6 +3171,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Znesek p
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Skupno točk od vseh možnih
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF nastavitve
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Prikaži nastavitve NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF nastavitve
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Potrdi spremembe
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Preklop palete
@@ -3611,6 +3627,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Nastavitve UI
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Prikaži nastavitve UI
 STR_AI_DEBUG                                                    :{WHITE}UI Čiščenje
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Ime UI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno naloži UI
@@ -3638,7 +3655,6 @@ STR_AI_VERSION                                                  :Verzija:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Omogoči mestni nadzor hrupa za letališča: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Meja hrupa v mestu: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Efektivni hrup: {GOLD}{COMMA}
 ########
@@ -3664,6 +3680,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Izberi n
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Označi vse nadgradne vsebine za obstoječe vsebine prenosa
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Nobena
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Označi vse, da ne bo prenešeno
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Vnesi vrstico za filtriranje
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Vnesi besedni ključ, po katerem se bo filtriral seznam
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Oznaka/ime filtra:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Prenesi
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Požene prenos izbranih vsebin
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Skupna velikost prenosa: {WHITE}{BYTES}

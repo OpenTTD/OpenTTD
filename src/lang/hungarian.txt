@@ -3618,7 +3618,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :§'"+!%/=()ÖÜ
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}MI beállítások
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}AI beállítások megjelenítése
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}A gépi ellenfelek beállításainak megjelenítése
 STR_AI_DEBUG                                                    :{WHITE}MI nyomkövetés
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}MI neve
 STR_AI_DEBUG_RELOAD                                             :{BLACK}MI újratöltése

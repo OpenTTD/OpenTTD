@@ -614,7 +614,6 @@ STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Wielt 'E
 
 
 
-
 ############ network gui strings
 
 
@@ -754,26 +753,166 @@ STR_2005                                                        :{WHITE}{TOWN}
 
 ##id 0x3000
 
+STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Kann d'Statioun nët ëmmbenennen...
+STR_3032_RATINGS                                                :{BLACK}Bewertungen
+STR_3033_ACCEPTS                                                :{BLACK}Acceptéiert
+STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Lokal Bewertungen vun den Transporter:
 
 ############ range for rating starts
+STR_3035_APPALLING                                              :Mies
+STR_3036_VERY_POOR                                              :Ganz Schlecht
+STR_3037_POOR                                                   :Schlecht
+STR_3038_MEDIOCRE                                               :Mëttelmeisseg
+STR_3039_GOOD                                                   :Gudd
+STR_303A_VERY_GOOD                                              :Ganz Gudd
+STR_303B_EXCELLENT                                              :Exellent
+STR_303C_OUTSTANDING                                            :Perfekt
 ############ range for rating ends
 
+STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} acceptéiert {STRING} nët mei
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} acceptéiert {STRING} oder {STRING} nët mei
+STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} acceptéiert elo {STRING}
+STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} acceptéiert elo {STRING} ann {STRING}
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Busgare Richtung
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Camionsgare Richtung
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Busgare muss fir déischt oofgerapt ginn
+STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Muss d'Camionsgare fir déischt oofrapen
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Statioun{P "" en}
+STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
+STR_304A_NONE                                                   :{YELLOW}- Näischt -
+STR_304B_SITE_UNSUITABLE                                        :{WHITE}...Plaatz nët passend
+STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Ze noo bei engem aanerem Hafen
+STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Muss den Hafen fir déischt oofrapen
+STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Wielt Gare Richtung
+STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Wielt d'Unzuel vun den Gleisen fir d'Gare
+STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Wielt d'Längt vun der Gare
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Wielt Busgare Richtung
+STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Wielt Camionsgare Richtung
+STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Zentréiert d'Siicht op d'Statioun
+STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Weis d'Statiounsbewertungen
+STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Dën Numm vun der Statioun änneren
+STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Weis d'Lëscht vun den acceptéierten Luedungen
+STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Statiounennimm - klick op den Numm fir d'Siicht drop ze zentréieren
+STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Wielt gréisst/typ vum Flughafen
+STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_305E_RAILROAD_STATION                                       :Gare
+STR_305F_AIRCRAFT_HANGAR                                        :Fliigerhangar
+STR_3060_AIRPORT                                                :Flughafen
+STR_3061_TRUCK_LOADING_AREA                                     :Camionsgare
+STR_3062_BUS_STATION                                            :Busgare
+STR_3063_SHIP_DOCK                                              :Shëffhafen
+STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Weis d'Reechwäit vun dem Gebäi un
+STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Weis d'Reechwäit vun dem Gebäi nët un
+STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Reechwäit
+STR_3068_DOCK                                                   :{WHITE}Hafen
+STR_3069_BUOY                                                   :Boje
+STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...Boje am Wee
+STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...Statioun ze ausgebreed
 
 
 ##id 0x3800
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Schëffdepot Richtung
+STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...muss op Waasser gebaut ginn
+STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Kann d'Schëffdepot nët hei bauen...
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Wielt d'Schëffdepot Richtung
+STR_3804_WATER                                                  :Waasser
+STR_3805_COAST_OR_RIVERBANK                                     :Küst oder Flossufer
+STR_3806_SHIP_DEPOT                                             :Schëffdepot
+STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Kann nët op d'Waasser bauen
 
 ##id 0x4000
+STR_4000_SAVE_GAME                                              :{WHITE}Spill späicheren
+STR_4001_LOAD_GAME                                              :{WHITE}Spill lueden
+STR_4002_SAVE                                                   :{BLACK}Späicheren
+STR_4003_DELETE                                                 :{BLACK}Läschen
+STR_4004                                                        :{COMPANY}, {STRING}
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} fräi
+STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kann nët um Laafwierk liesen
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Fehler beim Späicheren{}{STRING}
+STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kann d'Datei nët läschen
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Fehler beim Lueden{}{STRING}
+STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lëscht vun den Laafwierker, Dossieren an Späicherstänn
+STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Momentan gewieltenen Numm fir den Späicherstand
+STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Läscht den momentan gewieltenen Späicherstand
+STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Späichert dei aktuel Partie ënnert dem gewieltenem Numm
+STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generéiert en zoufällegt neit Spill
 
 ##id 0x4800
+STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} am Wee
+STR_4801                                                        :{WHITE}{INDUSTRY}
+STR_4802_COAL_MINE                                              :Kuelenstollen
+STR_4803_POWER_STATION                                          :Kraftwierk
+STR_4804_SAWMILL                                                :Séeerei
+STR_4805_FOREST                                                 :Bësch
+STR_4806_OIL_REFINERY                                           :Uelegrafinerie
+STR_4807_OIL_RIG                                                :Uelegbuehrinsel
+STR_4808_FACTORY                                                :Fabrik
+STR_4809_PRINTING_WORKS                                         :Drèckerei
+STR_480A_STEEL_MILL                                             :Stolwierk
+STR_480B_FARM                                                   :Bauerenhaff
+STR_480C_COPPER_ORE_MINE                                        :Kofferärzstollen
+STR_480D_OIL_WELLS                                              :Uelegquellen
+STR_480E_BANK                                                   :Bank
+STR_480F_FOOD_PROCESSING_PLANT                                  :Iesensverarbeschtungsfabrik
+STR_4810_PAPER_MILL                                             :Pabeierfabrik
+STR_4811_GOLD_MINE                                              :Goldstollen
+STR_4812_BANK                                                   :Bank
+STR_4813_DIAMOND_MINE                                           :Diamantstollen
+STR_4814_IRON_ORE_MINE                                          :Eisenärzsollen
+STR_4815_FRUIT_PLANTATION                                       :Uebstplantage
+STR_4816_RUBBER_PLANTATION                                      :Kautschuckplantage
+STR_4817_WATER_SUPPLY                                           :Waasserwierk
+STR_4818_WATER_TOWER                                            :Waassertuerm
+STR_4819_FACTORY                                                :Fabrik
+STR_481A_FARM                                                   :Bauerenhaff
+STR_481B_LUMBER_MILL                                            :Bauholzfabrik
+STR_481C_COTTON_CANDY_FOREST                                    :Zockerwatt Bësch
+STR_481D_CANDY_FACTORY                                          :Séissegkeetenfabrik
+STR_481E_BATTERY_FARM                                           :Bateriefarm
+STR_481F_COLA_WELLS                                             :Colaquellen
+STR_4820_TOY_SHOP                                               :Spillgeschäft
+STR_4821_TOY_FACTORY                                            :Spillsaachen Fabrik
+STR_4822_PLASTIC_FOUNTAINS                                      :Plastikpëtz
+STR_4823_FIZZY_DRINK_FACTORY                                    :Kueleseiergedrenks Fabrik
+STR_4824_BUBBLE_GENERATOR                                       :Blosengenerator
+STR_4825_TOFFEE_QUARRY                                          :Karmelbroch
+STR_4826_SUGAR_MINE                                             :Zockerminn
 
 ############ range for requires starts
+STR_4827_REQUIRES                                               :{BLACK}Brauch: {YELLOW}{STRING}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Brauch: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_4829_REQUIRES                                               :{BLACK}Brauch: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
 ############ range for produces starts
+STR_4827_PRODUCES                                               :{BLACK}Produzéiert: {YELLOW}{STRING}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Produzéiert: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
+STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktioun läschen Mount:
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportéiert)
+STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Zentréiert d'Siicht op d'Industrie
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Nei {STRING} gët bei {TOWN} gebaut!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nei {STRING} gët bei {TOWN} geplantzt!
+STR_482F_COST                                                   :{BLACK}Käschten: {YELLOW}{CURRENCY}
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Kann deen Industrietyp hei nët bauen...
+STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...Bësch kann nëmmen iwert der Schnéilinn geplantzt ginn
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} gët glaich zougemaacht!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Liwerungsproblemer féieren dozou das {STRING} gläich zougemacht gët!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Mangel un Beem féiert dozou das {STRING} gläich zougemaacht gët!
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} erhéischt d'Produktioun!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nei Kuehlenflöz bei {INDUSTRY} font!{}Verdueblung vun der Produktioun erwart!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nei Uelegreserven bei {INDUSTRY} font!{}Verdueblung vun der Produktioun erwart!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Verbessert oofbaumethoden bei {INDUSTRY} erfont!{}Verdueblung vun der Produktioun erwart!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} Produktioun ëmm 50% eroof
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insektenbefall bei {INDUSTRY}!{}Produktioun ëmm 50% eroof
+STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...kann nëmmen no un den Ecker vun der Kaart positionéiert ginn
 
 ##id 0x5000
+STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Aaneren Tunnel am Wee
+STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Kann d'Land nët fir dei aaner Säit vum Tunnel fräi leen
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Mss den Tunnel fir déischt oofrappen
 
 ##id 0x5800
 

@@ -734,6 +734,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Every 12 months
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Start a new game
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Load a saved game
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Create a customized game world/scenario
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Start a multiplayer game
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Display game options
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Display difficulty options
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Start a new game, using a customized scenario
@@ -1064,6 +1065,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Disable
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Enable railroad car speed limits: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Disable electric rails: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Colored news appears in: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Starting date: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Enable smooth economy (more, smaller changes): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Allow buying shares from other companies: {ORANGE}{STRING}
@@ -1238,7 +1240,6 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Message 
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}A list of the recent news messages
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Disable all
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Enable all
-
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industries
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transported)
@@ -2162,6 +2163,9 @@ STR_HOSTILE                                                     :Hostile
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Company {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}New Face
+STR_7005_COLOUR_SCHEME                                          :{BLACK}Color Scheme
+STR_7006_COLOUR_SCHEME                                          :{GOLD}Color Scheme:
+STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}New Color Scheme
 STR_7008_COMPANY_NAME                                           :{BLACK}Company Name
 STR_7009_PRESIDENT_NAME                                         :{BLACK}President Name
 STR_700A_COMPANY_NAME                                           :Company Name
@@ -3087,6 +3091,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}The amou
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total points out of possible points
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Settings
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Display NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf settings
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Apply changes
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Toggle palette
@@ -3542,6 +3547,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI settings
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Display AI settings
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Name of the AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reload AI

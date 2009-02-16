@@ -735,6 +735,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Alle 12 Monate
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Ein neues Spiel beginnen
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Ein gespeichertes Spiel laden
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Eine eigene Spielwelt / Szenario kreieren
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Mehrspieler-Spiel beginnen
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Spieleinstellungen anzeigen
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Schwierigkeitsgrad anzeigen
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Starte ein neues Spiel in einem eigenen Szenario
@@ -1240,7 +1241,6 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Vergange
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Eine Liste der aktuellen Nachrichten
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Alles deaktivieren
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Alles aktivieren
-
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrien
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportiert)
@@ -3092,6 +3092,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Das  von
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Erreichte Punkte von der maximal erreichbaren Anzahl
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF-Einstellungen
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}NewGRF Einstellungen anzeigen
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Einstellungen
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Übernehmen
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Palette ändern
@@ -3547,6 +3548,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :°!"§$%&/()=?`
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Einstellungen für die KI
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Einstellungen für KI anzeigen
 STR_AI_DEBUG                                                    :{WHITE}KI Debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Name der KI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}AI neu laden

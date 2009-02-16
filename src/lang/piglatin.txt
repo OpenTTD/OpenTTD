@@ -734,6 +734,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Everyway 12 ont
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Artstay away ewnay amegay
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Oadlay away avedsay amegay
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Eatecray away ustomisedcay amegay orldway/enarioscay
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Artstay away ultimay-ayerplay amegay
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Isplayday amegay optionsway
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Isplayday ifficultyday optionsway
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Artstay away ewnay amegay, usingway away ustomisedcay enarioscay
@@ -1051,6 +1052,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Isabled
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Allowway AIsway inway ultiplayermay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodesway eforebay AIWAY isway uspendedsay: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Ervicesay intervalsway areway inway ercentspay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Efaultday ervicesay intervalway orfay ainstray: {ORANGE}{STRING} aysday/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Efaultday ervicesay intervalway orfay ainstray: {ORANGE}isabledday
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Efaultday ervicesay intervalway orfay oadray ehiclesvay: {ORANGE}{STRING} aysday/%
@@ -1086,6 +1088,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2xay2 idgray
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3xay3 idgray
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :andomray
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Ownstay areway allowedway otay uildbay oadsray: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Allowway owntay ontrolledcay oisenay evellay orfay airportsway: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Ositionpay ofway ainmay oolbartay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Eftlay
@@ -1124,12 +1127,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Ainstra
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Ownstay
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriesway
 
-STR_CONFIG_SETTING_DISABLED                                     :isabledday
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Angechay ettingsay aluevay
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Athfinderpay orfay ainstray: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Otnay Ecommendedray)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1142,6 +1139,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Athfind
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Originalway {BLUE}(Ecommendedray)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Otnay Ecommendedray)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Xay-izesay ofway apmay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Yay-izesay ofway apmay: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :isabledday
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Angechay ettingsay aluevay
 
 STR_TEMPERATE_LANDSCAPE                                         :Emperatetay andscapelay
 STR_SUB_ARCTIC_LANDSCAPE                                        :Ubsay-arcticway andscapelay
@@ -1235,7 +1241,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Away ist
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Isableday allway
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Enableway allway
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industriesway
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% ansportedtray)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% ansportedtray)
@@ -1249,7 +1254,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Efitray 
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Electsay ypetay ofway argocay orfay aintray otay arrycay
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Efitray aintray otay arrycay ighlightedhay argocay ypetay
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}An'tcay efitray aintray...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Ervicesay intervalsway areway inway ercentspay: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Angechay oductionpray
 
 ############ network gui strings
@@ -1510,11 +1514,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Ivatepray essag
 STR_NETWORK_SEND                                                :{BLACK}Endsay
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Xay-izesay ofway apmay: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Yay-izesay ofway apmay: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -3092,6 +3091,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Ethay am
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Otaltay ointspay outway ofway ossiblepay ointspay
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}EwGRFnay Ettingssay
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Isplayday EwGRFnay ettingssay
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}EwGRFnay ettingssay
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Applyway angeschay
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Oggletay alettepay
@@ -3547,6 +3547,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|E
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}AIWAY ettingssay
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Isplayday AIWAY ettingssay
 STR_AI_DEBUG                                                    :{WHITE}AIWAY Ebugday
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Amenay ofway ethay AIWAY
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Eloadray AIWAY
@@ -3574,7 +3575,6 @@ STR_AI_VERSION                                                  :Ersionvay:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Allowway owntay ontrolledcay oisenay evellay orfay airportsway: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Oisenay imitlay inway owntay: {ORANGE}{COMMA}{BLACK}  axmay: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Oisenay eneratedgay: {GOLD}{COMMA}
 ########

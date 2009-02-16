@@ -1284,7 +1284,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Zoznam p
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Zakazat vsetky
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Povolit vsetky
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Priemysel
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% prepravenych)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% prepravenych)
@@ -3572,6 +3571,24 @@ STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Meno AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Znovu načítať AI
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Zrušiť AI, znovu načítať skript, a reštartovať AI
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI Debug okno je dostupné len pre server
+STR_AI_CHANGE                                                   :{BLACK}Označiť AI
+STR_AI_CONFIGURE                                                :{BLACK}Nastaviť
+STR_AI_CHANGE_TIP                                               :{BLACK}Načítať ďaľšiu AI
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Nastaviť parametre AI
+STR_AI_LIST_TIP                                                 :{BLACK}Všetky AI budú načítané v nasledujúcej hre
+STR_AI_LIST_CAPTION                                             :{WHITE}Dostupné AI
+STR_AI_AILIST_TIP                                               :{BLACK}Klikni pre výber AI
+STR_AI_ACCEPT                                                   :{BLACK}Potvrdiť
+STR_AI_ACCEPT_TIP                                               :{BLACK}Vybrať vyznačené AI
+STR_AI_CANCEL                                                   :{BLACK}Zrušiť
+STR_AI_CANCEL_TIP                                               :{BLACK}Nemeniť AI
+STR_AI_CLOSE                                                    :{BLACK}Zavrieť
+STR_AI_RESET                                                    :{BLACK}Resetovať
+STR_AI_HUMAN_PLAYER                                             :Človek
+STR_AI_RANDOM_AI                                                :Náhodná AI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametre AI
+STR_AI_AUTHOR                                                   :Autor:
+STR_AI_VERSION                                                  :Verzia:
 ########
 
 ############ town controlled noise level
@@ -3586,6 +3603,39 @@ STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Základná graf
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI knižnica
+STR_CONTENT_TYPE_SCENARIO                                       :Mapa
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Výšková mapa
+STR_CONTENT_TITLE                                               :{WHITE}Sťahovanie obsahu
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Typ
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Typ obsahu
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Meno
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Meno obsahu
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Kliknite na riadok pre zobrazenie detailov{}Kliknite na zaštravacie pole pre stiahnutie
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Označiť všetko
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Označiť všetok obsah pre stiahnutie
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Označiť aktualizácie
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Označiť všetok obsah obsahujúci aktualizáciu, ktorý sa má stiahnuť
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznačiť všetko
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Označiť všetok obsah ktorý nemá byť stiahnutý
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Vložiť filtrovací reťazec
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Vložiť kľúčové slovo pre filtrovanie zoznamu
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/meno filtru:
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Sťahovanie
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Začať sťahovanie ozačeného obsahu
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Celková veľkosť stiahnutých súborov: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFO O OBSAHU
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Neoznačili ste toto pre stiahnutie
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Označili ste toto pre stiahnutie
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Táto závislosť bola označená na stiahnutie
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Už to máte
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Tento obsah je neznámy a nemôže byť stiahnutý v OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Toto je náhrada za existujúci {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Meno: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Verzia: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Popis: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Typ: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Veľkosť stiahnutého súboru: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Označené pretože: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Závislosti: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tagy: {WHITE}{STRING}
@@ -3604,4 +3654,6 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nemôže
 
 STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Skontrolovať online obsah
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Skontrolovať nový a aktualizovaný obsah pre stiahnutie
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Nájsť chýbajúci obsah online
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Skontrolovať či chýbajúci obsah je dostupný online
 ########

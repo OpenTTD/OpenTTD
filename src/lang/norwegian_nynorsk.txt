@@ -598,9 +598,9 @@ STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Vegbyggi
 STR_0233_TOWN_GENERATION                                        :{WHITE}Bygenerering
 STR_0234_NEW_TOWN                                               :{BLACK}Ny by
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Grunnlegg ein ny by
-STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Kan ikkje grunnleggje by her...
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Kan ikkje grunnleggja by her...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...for nært kanten på kartet
-STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...for nært ein annan by
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...for nær ein annan by
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...feltet er ikkje høveleg
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...for mange byar
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kan ikkje byggje byar
@@ -609,9 +609,9 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Auk byst
 STR_023C_EXPAND                                                 :{BLACK}Utvid
 STR_023D_RANDOM_TOWN                                            :{BLACK}Lag tilfeldig by
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Bygg by ein tilfeldig stad
-STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kan ikkje byggje {STRING} her...
-STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...må byggje ein by først
-STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...berre éin er tillatt per by
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kan ikkje byggja {STRING} her...
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...må byggja ein by først
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...berre ein er tillatt per by
 STR_0288_PLANT_TREES                                            :{BLACK}Plant tre
 STR_0289_PLACE_SIGN                                             :{BLACK}Plasser skilt
 STR_028A_RANDOM_TREES                                           :{BLACK}Plant tilfeldige tre
@@ -646,6 +646,7 @@ STR_02A2_MEDIUM                                                 :{BLACK}Middels
 STR_02A3_LARGE                                                  :{BLACK}Stor
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Vilkårleg
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}By
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Store byar veks raskare enn små byar{}Instillingane avgjer om dei er større når dei vert grunnlagt
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Vel storleik på by
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Bystorleik:
 
@@ -1088,6 +1089,7 @@ STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Midtstilt
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Høgre
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Knipseradius for vindauge: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Knipseradius for vindauge: {ORANGE}deaktivert
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Flytande vindauge (ikkje fest til andre): {ORANGE}deaktivert
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Farten byar veks med: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ingen
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Sakte
@@ -1106,11 +1108,13 @@ STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stasjon
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Økonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Motstandarar
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Vis innstillingar
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaksjon
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Varebehandling
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datamaskinspelarar
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Forny automatisk
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Vedlikehald
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruting
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tog
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Byar
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriar
@@ -3077,6 +3081,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Storleik
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total poengsum av moglege poeng
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF-innstillingar
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Syn NewGRF instillingar
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Innstillingar for ny grafikk
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Bruk forandringane
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Vis palett
@@ -3368,6 +3373,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Område:
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
@@ -3528,15 +3534,18 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI konfigurasjonar
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Syn AI instillingar
 STR_AI_DEBUG                                                    :{WHITE}AI feilsøking
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Namnet til datamaskinspelaren
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Last datamaskinspelaren på ny
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Drep datamaskinspelaren, last skriptet på ny og starte om datamaskinspelaren
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI-feilsøkingvindauget er kun tilgjengeleg for serveren
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI konfigurasjonar
 STR_AI_CHANGE                                                   :{BLACK}Vel AI
 STR_AI_CONFIGURE                                                :{BLACK}Konfigurere
 STR_AI_CHANGE_TIP                                               :{BLACK}Last endå ein AI
 STR_AI_CONFIGURE_TIP                                            :{BLACK}Konfigurer AI-parametrane
+STR_AI_LIST_TIP                                                 :{BLACK}Alle AI som vil bli lasta i neste spel
 STR_AI_LIST_CAPTION                                             :{WHITE}Tilgjengelege AI
 STR_AI_AILIST_TIP                                               :{BLACK}Klikk for å velje ein AI
 STR_AI_ACCEPT                                                   :{BLACK}Godta

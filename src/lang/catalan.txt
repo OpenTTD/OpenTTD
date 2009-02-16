@@ -3610,7 +3610,7 @@ STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFO CO
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}No has seleccionat això per a ser descarregat
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Has seleccionat això per a ser descarregat
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Aquesta dependència ha estat seleccionada per a ser descarregada
-STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Ja tens això
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Actualment instal·lat
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Aquest contingut és desconegut i no pot ser descarregat a OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Això és un substitut per a l'existent {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nom: {WHITE}{STRING}
@@ -3635,7 +3635,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... conn
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... no es pot escriure al fitxer
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No s'han pogut descomprimir els arxius descarregats
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Comprova contingut en línia
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Contingut en línia
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Comprova si hi ha continguts nous i actualitzats per a descarregar
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Cerca contingut que falta en línia
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Comprova si el contingut que falta pot ser trobat en línia

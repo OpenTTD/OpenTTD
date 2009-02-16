@@ -734,6 +734,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Iedere 12 maand
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Start een nieuw spel
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Laad een opgeslagen spel
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Maak een eigen spelwereld/scenario
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Start een multi-player spel
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Bekijk opties
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Bekijk moeilijkheidsgraad
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Start een nieuw spel, gebaseerd op een scenario
@@ -1239,7 +1240,6 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Berichtg
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Een lijst met recente nieuwsberichten
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Alles uitschakelen
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Alles inschakelen
-
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrielijst
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% vervoerd)
@@ -3091,6 +3091,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}De hoeve
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Totaal aantal punten uit de mogelijke punten
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Instellingen
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Toon NewGRF instellingen
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf instellingen
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Wijzigingen doorvoeren
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Palet omzetten
@@ -3546,6 +3547,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI instellingen
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Toon AI instellingen
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Naam computerspeler
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaad computerspeler
