@@ -1348,10 +1348,10 @@ const SettingDesc _settings[] = {
 	SDT_CONDBOOL(GameSettings, vehicle.dynamic_engines,                         95, SL_MAX_VERSION, 0,NN, false,                    STR_CONFIG_SETTING_DYNAMIC_ENGINES,        NULL),
 
 	    SDT_BOOL(GameSettings, station.join_stations,                                               0, 0,  true,                    STR_CONFIG_SETTING_JOINSTATIONS,           NULL),
- SDTC_CONDBOOL(              gui.sg_full_load_any,                             0,             92, 0, 0 , true,                    STR_NULL,                                  NULL),
+	SDTC_CONDBOOL(             gui.sg_full_load_any,                            22,             92, 0, 0,  true,                    STR_NULL,                                  NULL),
 	    SDT_BOOL(GameSettings, order.improved_load,                                                 0,NN,  true,                    STR_CONFIG_SETTING_IMPROVEDLOAD,           NULL),
 	    SDT_BOOL(GameSettings, order.selectgoods,                                                   0, 0,  true,                    STR_CONFIG_SETTING_SELECTGOODS,            NULL),
- SDTC_CONDBOOL(              gui.sg_new_nonstop,                               0,             92, 0, 0, false,                    STR_NULL,                                  NULL),
+	SDTC_CONDBOOL(             gui.sg_new_nonstop,                              22,             92, 0, 0, false,                    STR_NULL,                                  NULL),
 	    SDT_BOOL(GameSettings, station.nonuniform_stations,                                         0,NN,  true,                    STR_CONFIG_SETTING_NONUNIFORM_STATIONS,    NULL),
 	     SDT_VAR(GameSettings, station.station_spread,               SLE_UINT8,                     0, 0,    12,     4,      64, 0, STR_CONFIG_SETTING_STATION_SPREAD,         InvalidateStationBuildWindow),
 	    SDT_BOOL(GameSettings, order.serviceathelipad,                                              0, 0,  true,                    STR_CONFIG_SETTING_SERVICEATHELIPAD,       NULL),

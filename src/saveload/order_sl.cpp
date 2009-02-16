@@ -14,8 +14,8 @@ void Order::ConvertFromOldSavegame()
 	uint8 old_flags = this->flags;
 	this->flags = 0;
 
-	/* First handle non-stop */
-	if (_settings_client.gui.sg_new_nonstop) {
+	/* First handle non-stop - use value from savegame if possible, else use value from config file */
+	if (_settings_client.gui.sg_new_nonstop || (CheckSavegameVersion(22) && _settings_client.gui.new_nonstop)) {
 		/* OFB_NON_STOP */
 		this->SetNonStopType((old_flags & 8) ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 	} else {
@@ -35,7 +35,8 @@ void Order::ConvertFromOldSavegame()
 		} else if ((old_flags & 4) == 0) { // !OFB_FULL_LOAD
 			this->SetLoadType(OLF_LOAD_IF_POSSIBLE);
 		} else {
-			this->SetLoadType(_settings_client.gui.sg_full_load_any ? OLF_FULL_LOAD_ANY : OLFB_FULL_LOAD);
+			/* old OTTD versions stored full_load_any in config file - assume it was enabled when loading */
+			this->SetLoadType(_settings_client.gui.sg_full_load_any || CheckSavegameVersion(22) ? OLF_FULL_LOAD_ANY : OLFB_FULL_LOAD);
 		}
 
 		/* Finally fix the unload flags */
