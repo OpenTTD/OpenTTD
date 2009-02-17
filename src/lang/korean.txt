@@ -734,6 +734,7 @@ STR_02FA_EVERY_12_MONTHS                                        :12개월마다
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}새 게임 시작
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}저장된 게임 불러오기
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}사용자 게임/시나리오 만들기
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}멀티플레이 게임을 시작합니다
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}게임 옵션 표시
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}난이도 옵션 표시
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}사용자 시나리오로 새 게임을 시작
@@ -1051,6 +1052,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}컴퓨�
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}멀티플레이에서 AI를 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}AI가 중지되기 전의 #opcodes: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}백분율에 의한 점검 주기: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}열차 기본 점검 간격: {ORANGE}{STRING} 일/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}열차 기본 점검 간격: {ORANGE}사용불가
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}자동차 기본 점검 간격: {ORANGE}{STRING} 일/%
@@ -1086,6 +1088,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 칸
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 칸
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :무작위
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}마을에서 도로건설 허용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}도시가 공항에서 나오는 소음을 제한하도록 함: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}주메뉴의 위치 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :왼쪽
@@ -1124,12 +1127,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}열차
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}도시
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}산업시설
 
-STR_CONFIG_SETTING_DISABLED                                     :사용불가
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}설정값 변경
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}열차용 경로탐색: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(비추천)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1142,6 +1139,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}선박�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :오리지널 {BLUE}(추천)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(비추천)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}맵의 가로 크기: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}맵의 세로 크기: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :사용불가
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}설정값 변경
 
 STR_TEMPERATE_LANDSCAPE                                         :온대 기후
 STR_SUB_ARCTIC_LANDSCAPE                                        :냉대 기후
@@ -1235,7 +1241,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}최근 �
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}모두 사용 안함
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}모두 사용
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}산업시설
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% 운반됨)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}%가 각각 운반됨)
@@ -1249,7 +1254,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}열차 �
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}열차가 수송할 화물의 종류를 선택하세요
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}선택된 화물을 수송하도록 열차를 개조
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}열차를 개조할 수 없습니다...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}백분율에 의한 점검 주기: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}생산량 변경
 
 ############ network gui strings
@@ -1510,11 +1514,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :귓속말하기
 STR_NETWORK_SEND                                                :{BLACK}보내기
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}맵의 가로 크기: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}맵의 세로 크기: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -3092,6 +3091,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}회사�
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}산출 가능한 점수들의 총 합계 점수입니다.
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF 설정
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}NewGRF 세팅을 봅니다
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 설정
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}변경사항 적용
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}팔레트 바꾸기
@@ -3547,6 +3547,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}인공지능 설정
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}인공지능 설정 보기
 STR_AI_DEBUG                                                    :{WHITE}AI 디버그
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}AI의 이름
 STR_AI_DEBUG_RELOAD                                             :{BLACK}AI 재시작
@@ -3574,7 +3575,6 @@ STR_AI_VERSION                                                  :버젼:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}도시가 공항에서 나오는 소음을 제한하도록 함: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}도시 소음 제한: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}발생 소음: {GOLD}{COMMA}
 ########

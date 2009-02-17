@@ -711,9 +711,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}... oba 
 STR_02A1_SMALL                                                  :{BLACK}Malé
 STR_02A2_MEDIUM                                                 :{BLACK}Středni
 STR_02A3_LARGE                                                  :{BLACK}Velké
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Náhodná
 STR_FOUND_TOWN_CITY                                             :{BLACK}Město
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Velkoměsta rostou rychleji než běžná města{}V závislosti na nastavení jsou při založení větší
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Zvol velikost města:
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Velikost města:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Silniční síť města:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Zvolte rozvržení silniční sítě v tomto městě
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Původní
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Lepší silnice
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}mřížka 2x2
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}mřížka 3x3
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Náhodné
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Ukázat poslední zprávu nebo článek
@@ -792,6 +802,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Každých 12 m�
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Hrát novou hru
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Nahrát hru
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Vytvořit vlastní mapu - scénář
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Spustit hru více hráčů
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Zobrazit možnosti hry
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Nastavit obtížnost
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Hrát novou hru ze scénáře
@@ -900,6 +911,10 @@ STR_OPTIONS_RES_TIP                                             :{BLACK}Zvolit r
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formát screenshotů
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Zvolit formát screenshotů
+
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Základní sada grafiky
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Zvolte základní sadu grafiky
 
 STR_AUTOSAVE_1_MONTH                                            :Každý měsíc
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatické uložení selhalo
@@ -1105,6 +1120,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Zakáza
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Povolit AI v síťové hře: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}počet opkódů než se vypne AI: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervaly servisů v procentech: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Základní servisní interval pro vlaky: {ORANGE}{STRING} dní
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Základní servisní interval pro vlaky: {ORANGE}vypnuto
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Základní servisní interval pro silniční vozidla: {ORANGE}{STRING} dní
@@ -1133,11 +1149,14 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :pouze obyčejn�
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :pouze dokonalejší (PBS)
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :všechna
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Rozvržení silnic pro nová města: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :původní
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :lepší silnice
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :mřížka 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :mřížka 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :náhodně
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Města smějí stavět silnice: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Umožnit městům ovlivňovat hlukový limit pro letiště: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Umístění hlavní lišty: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :vlevo
@@ -1176,12 +1195,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlaky
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Města
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Průmysl
 
-STR_CONFIG_SETTING_DISABLED                                     :vypnuto
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Změnit hodnotu nastavení
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Hledač cesty pro vlaky: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(nedoporučuje se)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1194,6 +1207,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Hledač
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :původní {BLUE}(doporučený)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(nedoporučuje se)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Rozmer X mapy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Rozmer Y mapy: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :vypnuto
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Změnit hodnotu nastavení
 
 STR_TEMPERATE_LANDSCAPE                                         :krajina mírného pásma
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarktická krajina
@@ -1287,7 +1309,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Seznam p
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Vypnout všechny
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Zapnout všechny
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Průmysl
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA} % přepraveno)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA} %/{COMMA} % přepraveno)
@@ -1301,7 +1322,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Přestav
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Zvolit typ nákladu, na který vlak přestavět
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Přestavět vlak na označený typ nákladu
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nelze přestavět vlak...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervaly servisů v procentech: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Změnit produkci
 
 ############ network gui strings
@@ -1562,11 +1582,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Soukromá zprá
 STR_NETWORK_SEND                                                :{BLACK}Poslat
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Rozmer X mapy: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Rozmer Y mapy: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -3150,6 +3165,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Má spol
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Celkový počet bodů z 1000 možných
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Nastavení grafik
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Ukázat nastavení NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastavení grafických souborů
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Potvrdit změny
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Přepnout paletu
@@ -3605,6 +3621,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~1234567890_+|Q
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Nastavení AI
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Ukázat nastavení AI
 STR_AI_DEBUG                                                    :{WHITE}Ladění AI
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Název AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Obnovit AI
@@ -3632,7 +3649,6 @@ STR_AI_VERSION                                                  :Verze:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Umožnit městům ovlivňovat hlukový limit pro letiště: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Hlukový limit ve městě: {ORANGE}{COMMA}{BLACK}  max.: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Vytvářený hluk: {GOLD}{COMMA}
 ########
@@ -3658,6 +3674,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Vybrat v
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Označit všechen vylepšený/aktualizovaný obsah ke stáhnutí
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznačit vše
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Nestahovat nic
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Vložte filtr
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Vložte klíčové slovo pro filtr seznamu
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtr na značku/jméno:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Stáhnout
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Začít stahovat vybraný obsah
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Celková velikost dat: {WHITE}{BYTES}

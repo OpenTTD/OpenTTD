@@ -1041,6 +1041,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Hindre 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Hindre datamaskinen i å bygge skip: {ORANGE}{STRING}
 
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Vedlikeholdsintervaller i prosent: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard vedlikeholdsintervall for tog: {ORANGE}{STRING} dager
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard vedlikeholdsintervall for tog: {ORANGE}deaktivert
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Standard vedlikeholdsintervall for kjøretøy: {ORANGE}{STRING} dager
@@ -1076,6 +1077,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 rutenett
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3-rutenett
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :tilfeldig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Byer har tillatelse til å bygge veier: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Tillat bykontrollert lydnivå for flyplasser: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Plassering av hovedverktøylinje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Venstre
@@ -1083,6 +1085,8 @@ STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Midtstilt
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Høyre
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Knipseradius for vindu: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Knipseradius for vindu: {ORANGE}deaktivert
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Flytende vinduer (ikke fest til andre): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Flytende vinduer (ikke fest til andre): {ORANGE}deaktivert
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Hastighet for byenes vekst: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ingen
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Sakte
@@ -1106,15 +1110,10 @@ STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signale
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Lastehåndtering
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoforny
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Vedlikehold
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruting
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tog
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Byer
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrier
-
-STR_CONFIG_SETTING_DISABLED                                     :slått av
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Endre innstillingsverdi
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Linjefinner for tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ikke anbefalt)
@@ -1128,6 +1127,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Linjefi
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orginal {BLUE}(Anbefalt)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ikke anbefalt)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-størrelse på kart: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-størrelse på kart: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :slått av
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Endre innstillingsverdi
 
 STR_TEMPERATE_LANDSCAPE                                         :Temperert landskap
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarktisk landskap
@@ -1221,7 +1229,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}En liste
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Deaktiver alle
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Aktiver alle
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrier
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}{NBSP}% transportert)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}{NBSP}%/{COMMA}{NBSP}% transportert)
@@ -1235,7 +1242,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Bygg om 
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Velg hvilken last lokomotivet skal ta
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Bygg om lokomotivet til å frakte den valgte varetypen
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan ikke bygge om lokomotiv...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Vedlikeholdsintervaller i prosent: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Endre produksjon
 
 ############ network gui strings
@@ -1414,6 +1420,7 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv in
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tjeneren er beskyttet. Skriv inn passord
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firmaet er beskyttet. Skriv inn passord
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Liste over klienter
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Vær tilskuer
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nytt firma
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Ingen nettverksadapter funnet eller kompilert uten ENABLE_NETWORK
@@ -1495,11 +1502,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privat beskjed
 STR_NETWORK_SEND                                                :{BLACK}Send
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-størrelse på kart: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-størrelse på kart: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -1891,6 +1893,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Ødelagt lagret
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spillet er lagret i en nyere versjon
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Kan ikke lese filen
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Kan ikke skrive til filen
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integritetssjekk av data misslyktest
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Liste over disker, mapper og lagrede spill
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Gjeldende navn for valgt lagret spill
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Slett valgte lagring
@@ -2256,6 +2259,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Gjenoppb
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Kan ikke bygge hovedkontor...
 STR_7072_VIEW_HQ                                                :{BLACK}Se hovedkontor
 STR_RELOCATE_HQ                                                 :{BLACK}Omplasser hovedkvarter
+STR_COMPANY_JOIN                                                :{BLACK}Bli med
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Bli med og spill som denne bedriften
 STR_COMPANY_PASSWORD                                            :{BLACK}Passord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Passordbeskytt ditt firma for å forhindre uautoriserte brukere fra å bli med. Bruk '*' for å tømme passord.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Velg firmapassord
@@ -3073,6 +3078,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Størrel
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total poeng av mulige poeng
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Instillinger
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Vis NewGRF instillinger
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Innstillinger for ny grafikk
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Bruk forandringene
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Vis/skjul palette
@@ -3336,6 +3342,7 @@ STR_SOUTHWEST                                                   :{BLACK}Sørvest
 STR_BORDER_WATER                                                :{BLACK}Sjø
 STR_BORDER_RANDOM                                               :{BLACK}Tilfeldig
 STR_BORDER_RANDOMIZE                                            :{BLACK}Tilfeldig
+STR_BORDER_MANUAL                                               :{BLACK}Manuell
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Liten
@@ -3524,36 +3531,86 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI instillinger
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Vis AI instillinger
+STR_AI_DEBUG                                                    :{WHITE}AI feilsøking
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI feilsøkingsvidu er kun tilgjengelig for serveren
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI konfigurasjon
+STR_AI_CHANGE                                                   :{BLACK}Velg AI
 STR_AI_CONFIGURE                                                :{BLACK}Konfigurer
+STR_AI_CHANGE_TIP                                               :{BLACK}Last enda en AI
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Konfigurer AI-parameterene
+STR_AI_AILIST_TIP                                               :{BLACK}Klikk for å velge en AI
 STR_AI_ACCEPT                                                   :{BLACK}Godta
+STR_AI_ACCEPT_TIP                                               :{BLACK}Velg merket AI
 STR_AI_CANCEL                                                   :{BLACK}Avbryt
+STR_AI_CANCEL_TIP                                               :{BLACK}Ikke endre AI
 STR_AI_CLOSE                                                    :{BLACK}Lukk
 STR_AI_RESET                                                    :{BLACK}Tilbakestill
+STR_AI_RANDOM_AI                                                :Tilfeldig AI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI-parametere
 STR_AI_VERSION                                                  :Versjon
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Tillat bykontrollert lydnivå for flyplasser: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Lyd grense i by: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Lyd generert: {GOLD}{COMMA}
 ########
 
 ############ Downloading of content from the central server
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD er bygget uten støtte for "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... det er ikke mulig å laste ned innhold!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Original grafikk
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRP
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :AI bibliotek
+STR_CONTENT_TYPE_SCENARIO                                       :Scenario
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Høydekart
+STR_CONTENT_TITLE                                               :{WHITE}Last ned innhold
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Type innhold
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Navn
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Navn
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Klikk på en linje for å se detaljene{}Klikk på avmerkningsboksen for å merke den til nedlastning
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Velg alt
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Merk alt innhold til å bli lastet ned
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Velg oppgraderinger
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Merk alt innhold som en en oppgradering av eksisterende innhold
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Velg bort alt
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Merk alt innhold som ikke skal lastes ned
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Merke-/navnefilter:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Last ned
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Start nedlastningen av det merkede innholdet
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total størrelse: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INNHOLDSINFORMASJON
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Du har ikke valgt at dette skal lastes ned
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Du har valgt at dette skal lastes ned
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Dette har du fra før av
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Dette innholdet er ukjent og kan ikke lastes ned i OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Dette er en erstatning for en eksisterende {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Navn: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versjon: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Beskrivelse: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Type: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Nedlastnings størrelse: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Valgt pga.: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Avhengig av: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Merker: {WHITE}{STRING}
 
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Laster ned innhold...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Laster ned {STRING} ({NUM} av {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Nedlastning fullført
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} av {BYTES} lastet ned ({NUM} %)
 
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kunne ikke koble til innholdsserver...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Nedlastning misslyktest...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... mistet tilkoblingen
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... kunne ikke skrive til fil
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kunne ikke pakke ut den nedlastede filen
 
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Se etter innhold på nettet
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Se etter nytt eller oppdatert innhold å laste ned
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Finn manglende innhold på nettet
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Sjekk om manglende innhold kan bli funnet på nettet
 ########

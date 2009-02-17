@@ -433,13 +433,17 @@ STR_AGE                                                         :{COMMA} b{P "lw
 STR_AGE_RED                                                     :{RED}{COMMA} b{P "" lynyddoedd} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Mae Cerbyd Ffordd
-STR_019D_AIRCRAFT                                               :Mae Awyren
-STR_019E_SHIP                                                   :Mae Llong
 STR_019F_TRAIN                                                  :Mae Trên
+STR_019C_ROAD_VEHICLE                                           :Mae Cerbyd Ffordd
+STR_019E_SHIP                                                   :Mae Llong
+STR_019D_AIRCRAFT                                               :Mae Awyren
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}Mae {VEHICLE} yn heneiddio
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE} Mae {VEHICLE} yn hynod o hen
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE} Mae {VEHICLE} yn hynod o hen ac angen ei ddisodli
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Gwybodath Ardal Tir
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Côst i'w glirio: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Côst i'w glirio: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Elw o'i glirio: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Perchennog: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Perchennog ffordd: {LTBLUE}{STRING}
@@ -639,9 +643,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...rhaid
 STR_02A1_SMALL                                                  :{BLACK}Bach
 STR_02A2_MEDIUM                                                 :{BLACK}Canolig
 STR_02A3_LARGE                                                  :{BLACK}Mawr
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Ar hap
 STR_FOUND_TOWN_CITY                                             :{BLACK}Dinas
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Mae dinasoedd yn tyfu'n gynt na threfi arferol{}Yn dibynnu ar y gosodiadau, maent hefyd yn fwy pan gânt eu sefydlu
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Dewiswch maint y dref
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Maint tref:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Cynllun ffyrdd tref
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Dewiswch y cynllun ffyrdd i'w ddefnyddio ar gyfer y dref hon
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Gwreiddiol
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Gwell ffyrdd
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}Grid 2x2
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}Grid 3x3
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Ar hap
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Dangos y neges neu'r adroddiad newyddion ddiwethaf...
@@ -674,6 +688,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Arwydd
 STR_02D5_LAND_BLOCK_INFO                                        :Gwybodaeth ardal tir
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Toglu Consol
+STR_AI_DEBUG_MENU                                               :Dadfygio AI
 STR_02D7_SCREENSHOT_CTRL_S                                      :Ciplun (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Ciplun anferth (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Gwybodaeth am 'OpenTTD'
@@ -719,6 +734,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Bob 12 mis
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Dechrau Gêm Newydd
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Llwytho Gêm sydd wedi'i Gadw
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Creu addasiad o fyd/senario ar gyfer y gêm
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Cychwyn gêm amlchwaraewr
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Dangos dewisiadau'r gêm
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Dangos dewisiadau anhawster
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Dechrau gêm newydd, gan ddefnyddio senario wedi'i haddasu
@@ -828,6 +844,10 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Fformat 
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Dewiswch y fformat ciplun i'w ddefnyddio
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Set Raffeg Sylfaenol
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Dewiswch y set raffeg sylfaenol i'w defnyddio
+
 STR_AUTOSAVE_1_MONTH                                            :Bob mis
 STR_AUTOSAVE_FAILED                                             :{WHITE}Methodd yr Awtogadw
 
@@ -864,12 +884,21 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Does dim
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Does dim modd copïo'r rhestr gorchmynion...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Diwedd y Gorchmynion sydd wedi'u Rhannu - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Mae {VEHICLE} yn methu dod o hyd i lwybr er mwyn parhau.
+STR_TRAIN_IS_LOST                                               :{WHITE} Mae {VEHICLE} ar goll.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Elw {VEHICLE} y flwyddyn diwethaf oedd {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Arian Sengl Ewropeaidd!{}{}Cafodd yr Ewro ei gyflwyno fel unig arian cyfred eich gwlad!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}Mae gan {VEHICLE} rhy ychydig o orchmynion yn ei amserlen
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}Mae gan {VEHICLE} orchymyn gwallus
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}Mae gan {VEHICLE} orchmynion dyblyg
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}Mae gan {VEHICLE} orsaf annilys yn ei orchmynion
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Methwyd ag adnewyddu {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE} Aeth gormod o amser heibio i allu adnewyddu {VEHICLE}
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ni weithredwyd unrhyw reolau awtogyfnewid/adnewydd.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(terfyn arian)
 
@@ -885,8 +914,12 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Caniat�
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Caniatáu ardaloedd dalgylch mwy realistig eu maint: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Caniatáu chwalu ffyrdd, pontydd ayb. o eiddo trefi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Galluogi adeiladu trenau hir iawn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model cyflymu trenau: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Gwreiddiol
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistig
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Rhwystro trenau a llongau rhag troi 90 gradd: {ORANGE}{STRING} {LTBLUE} (angen NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Uno gorsafoedd trên sydd drws nesaf i'w gilydd: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Caniatáu cyfuno gorsafoedd nad ydynt yn union gyfochrog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Defnyddio'r algorithm llwytho gwell: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Llwytho cerbydau'n raddol: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Chwyddiant: {ORANGE}{STRING}
@@ -947,6 +980,9 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Tro Map
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Gwrthglocwedd
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Clocwedd
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Y lefel map uchder mae map senario fflat yn ei dderbyn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Galluogi tirffurfio'r teiliau ar ymylon mapiau: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Nid yw un neu fwy o'r teiliau ar ymyl gogleddol y map yn wag
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Nid yw un neu fwy o'r teiliau ar un o'r ymylon yn ddw^r
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Arwynebedd mwyaf gorsaf: {ORANGE}{STRING} {RED}Rhybudd: Byddgosodiad uchel yn arafu'r gêm
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Rhoi gwasanaeth i hofrenyddion ar helepads yn awtomatig: {ORANGE}{STRING}
@@ -970,6 +1006,11 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-clic
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-clic
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :I ffwrdd
 
+
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :hir (31fed Rhag 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :byr(31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Oedi'n awtomatig wrth  gychwyn gêm newydd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Defnyddio'r rhestr cerbydau uwch {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :I ffwrdd
@@ -981,6 +1022,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eich cwmni
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Pob cwmni
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Galluogi amserlennu ar gyfer cerbydau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Dangos amserlen fesul ticiau yn hytrach na dyddiau: {ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creu cyflym ar gyfer gorchmynion cerbydau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Math rheilffordd ragosodedig (ar ôl gêm newydd/llwytho gêm ): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Rheilffordd Gyffredin
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Rheilffordd Drydan
@@ -990,6 +1032,8 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Y Cyntaf sydd a
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Yr olaf sydd ar gael
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Defnydd mwyaf
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Dangos traciau wedi'u cadw: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Cadw'r offer adeiladu yn weithredol wedi ei ddefnydd: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grwpio costau yn ffenestr cyllid y cwmni: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Dangos offer adeiladu pan na fydd cerbydau addas ar gael: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Uchafswm trenau y chwaraewr: {ORANGE}{STRING}
@@ -1002,7 +1046,10 @@ STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Analluo
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Analluogi awyren ar gyfer y cyfrifiadur: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Analluogi llongau ar gyfer y cyfrifiadur: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Caniatáu AIau mewn gemau amlchwaraewr: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes cyn yr atelir AI: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Dangos y cyfnod rhwng gwasanaethau mewn canrannau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer trenau: {ORANGE}{STRING} days/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer trenau: {ORANGE}disabled
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer cerbyd ffordd: {ORANGE}{STRING} days/%
@@ -1031,11 +1078,14 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Signalau blocio
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Signalau llwybr yn unig
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Pob math
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Cynllun ffyrdd ar gyfer trefi newydd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :rhagosodedig
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :ffyrdd gwell
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grid 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grid 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ar hap
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Caiff trefi adeiladu ffyrdd: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Caniatáu i drefi reoli lefel swn meysydd awyrenau: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Safle'r prif far offer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Chwith
@@ -1043,6 +1093,8 @@ STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Canol
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :De
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radiws snap ffenestr: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radiws snap ffenestr: {ORANGE}analluogwyd
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Terfyn meddal ffenestri (ddim yn ludiog): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Terfyn meddal ffenestri (ddim yn ludiog): {ORANGE} wedi'i analluogi
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Cyflymder twf tref: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Dim
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Araf
@@ -1060,12 +1112,16 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Cerbyda
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Gorsafoedd
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Cystadleuwyr
-
-STR_CONFIG_SETTING_DISABLED                                     :analluogwyd
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Newid gwerth gosodiad
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Dewisiadau dangos
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Rhyngweithio
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signalau
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Trin Cargo
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Chwaraewyr Cyfrifiadurol
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Awtoadnewyddu
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Llwybro
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenau
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Trefi
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Diwydiannau
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Llwybrwr ar gyfer trenau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ni argymhellir)
@@ -1079,6 +1135,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Llwybrw
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Gwreiddiol{BLUE}(Argymhelliad)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nid yw'n cael ei argymell)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-faint map: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-faint map: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :analluogwyd
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Newid gwerth gosodiad
 
 STR_TEMPERATE_LANDSCAPE                                         :Tirwedd Tymherus
 STR_SUB_ARCTIC_LANDSCAPE                                        :Tirwedd Is-arctig
@@ -1172,7 +1237,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Rhestr o
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Analluogi popeth
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Galluogi popeth
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Diwydiannau
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% wedi'i gludo)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% wedi'i gludo)
@@ -1186,9 +1250,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Ailffiti
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Dewiswch fath o lwyth i'r trên ei gario
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Ailffitio'r trên i gario'r math o llwyth sydd wedi'i ddewis
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Methu ailffitio trên...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Dangos y cyfnod rhwng gwasanaethau mewn canrannau: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Newid cynnyrch
-
 
 ############ network gui strings
 
@@ -1358,12 +1420,16 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Estyn gw
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Estyn gwybodaeth cwmnïau..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cleient{P "" iau}o'ch blaen
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} wedi eu llwytho i lawr hyd yn hyn
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Datgysylltu
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Nodwch faint o arian yr hoffech chi ei roi
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Mae'r gweinydd wedi'i ddiogelu. Rhowch y cyfrinair.
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Mae'r cwmni wedi'i ddiogelu. rhowch y cyfrinair.
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Rhestr Cleientiaid
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Gwylio
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Cwmni Newydd
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Ni ddaethpwyd o hyd i ddyfeisiau rhwydwaith, neu ni chafodd y gêm ei chrynhoi gyda ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Methu darganfod unrhyw gemau rhwydwaith
@@ -1400,6 +1466,15 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :wedi cael cic g
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :yn ceisio twyllo
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :gweinydd llawn
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Gêm wedi'i seibio (dim digon o chwaraewyr)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Gêm wedi'i ddadseibio (digon o chwaraewyr)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Gêm wedi'i seibio (cysylltu â chleient)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Gêm wedi'i ddadseibio (wedi cysylltu â chleient)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Gêm wedi'i ddadseibio (wedi methu cysylltu â chleient)
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :wrthi'n gadael
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Tîm] :
 STR_NETWORK_CHAT_COMPANY                                        :[Tîm] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Tîm] i {STRING}: {WHITE}{STRING}
@@ -1427,11 +1502,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Neges breifat
 STR_NETWORK_SEND                                                :{BLACK}Anfon
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-faint map: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-faint map: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -2980,11 +3050,18 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Gosodiad
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Gweithredu newidiadau
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Gosod paramedrau
 STR_NEWGRF_FILENAME                                             :{BLACK}Enw Ffeil: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Palet: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Rydych ar fin gwneud newidiadau i gêm sy'n rhedeg; all hyn beri i OpenTTD grashio.{}Ydych chi'n siŵr eich bod chi eisiau gwneud hyn?
 
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Llwytho'r rhagosodiad a ddewiswyd
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Cadw rhagosodiad
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Cadw'r rhestr gyfredol fel rhagosodiad
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Rhoi enw ar gyfer y rhagosodiad
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Dileu rhagosodiad
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Dileu'r rhagosodiad a ddewiswyd
 STR_NEWGRF_ADD                                                  :{BLACK}Ychwanegu
 STR_NEWGRF_ADD_TIP                                              :{BLACK}ychwanegu ffeil NewGRF i'r rhestr
 STR_NEWGRF_REMOVE                                               :{BLACK}Tynnu
@@ -3184,6 +3261,10 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}uchder t
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Canoli'r map bach ar y lleoliad presennol
 
+# Strings for map borders at game generation
+STR_NORTHWEST                                                   :{BLACK}Gogledd Orllewin
+STR_NORTHEAST                                                   :{BLACK}Gogledd Ddwyrain
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Bach
 STR_CITY_AIRPORT                                                :{BLACK}Dinas
@@ -3264,8 +3345,16 @@ STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\q
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
+############ AI GUI
+########
+
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Caniatáu i drefi reoli lefel swn meysydd awyrenau: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Uchafswm swn mewn trefi: {ORANGE}{COMMA}{BLACK}  uchafswm: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Swn a gynhyrchir: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

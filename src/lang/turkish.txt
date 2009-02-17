@@ -734,6 +734,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Her 12 ay
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Yeni oyuna başla
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Oyun yükle
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Kendi dünyani/senoryonu yarat
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Çok oyunculu oyun başlat
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Seçenekleri göster
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Zorluk ayarlarını göster
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Özel bir senaryo kullanarak yeni oyun başlat
@@ -1051,6 +1052,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Bilgisa
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Çok oyunculuda yapay zekâ olsun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}YZ duraklatılmadan önceki opkod sayısı: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Servis gecikmeleri yüzde ile: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Trenler için varsayılan servis gecikmesi: {ORANGE}{STRING} gün/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Trenler için varsayılan servis gecikmesi: {ORANGE}kapalı
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Arabalar için varsayılan servis gecikmesi:: {ORANGE}{STRING} gün/%
@@ -1086,6 +1088,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :rastgele
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Kasabalara yol yapma izni verilsin: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Kasabalar tarafından kontrol edilen havaalanı gürültü seviyesine izin ver: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Ana araç çubuğu pozisyonu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Sol
@@ -1124,12 +1127,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenler
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Şehirler
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Endüstri
 
-STR_CONFIG_SETTING_DISABLED                                     :kapalı
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Ayar değerini değiştir
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Trenler için yol bulucu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Önerilmez)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1142,6 +1139,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Gemiler
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Öntanımlı {BLUE}(Önerilen)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Önerilmez)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Haritanın genişliği: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Haritanın yuksekliği: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :kapalı
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Ayar değerini değiştir
 
 STR_TEMPERATE_LANDSCAPE                                         :Ilıman iklim
 STR_SUB_ARCTIC_LANDSCAPE                                        :Soğuk iklim
@@ -1235,7 +1241,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}En son h
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Hepsini kapa
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Hepsini aç
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Fabrikalar
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} (%{COMMA} tasindi)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} (%{COMMA}/%{COMMA} tasindi)
@@ -1249,7 +1254,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Modifiye
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Trenin taşıyacağı kargo türünü seçin
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Treni seçilen kargoyu taşıyacak şekilde modifiye et
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Modifiye edilemiyor...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Servis gecikmeleri yüzde ile: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Üretimi değiştir
 
 ############ network gui strings
@@ -1510,11 +1514,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Özel mesaj
 STR_NETWORK_SEND                                                :{BLACK}Gönder
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Haritanın genişliği: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Haritanın yuksekliği: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -3092,6 +3091,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Bu şirk
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Toplam puan
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Ayarları
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}NewGRF ayarlarını göster
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf ayarları
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Uygula
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Palet değiştir
@@ -3547,6 +3547,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :"!'^+%&/()=?_|Q
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}YZ ayarları
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}YZ ayarlarını göster
 STR_AI_DEBUG                                                    :{WHITE}YZ Hata Ayıklama
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}YZ adı
 STR_AI_DEBUG_RELOAD                                             :{BLACK}YZ'yı baştan yükle
@@ -3574,7 +3575,6 @@ STR_AI_VERSION                                                  :Sürüm:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Kasabalar tarafından kontrol edilen havaalanı gürültü seviyesine izin ver: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Kasabadaki gürültü sınırı: {ORANGE}{COMMA}{BLACK}  En fazla: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Üretilen gürültü: {GOLD}{COMMA}
 ########

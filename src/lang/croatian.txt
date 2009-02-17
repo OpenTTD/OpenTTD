@@ -708,9 +708,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...oba k
 STR_02A1_SMALL                                                  :{BLACK}Malo
 STR_02A2_MEDIUM                                                 :{BLACK}Srednje
 STR_02A3_LARGE                                                  :{BLACK}Veliko
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Nasumično
 STR_FOUND_TOWN_CITY                                             :{BLACK}Grad
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Velegradovi rastu brže od običnih gradova{}Ovisno o postavkama, veći su prilikom osnivanja
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Odaberi veličinu grada
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Veličina grada:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Raspored gradskih cesta
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Odaberi raspored ceste za ovaj grad
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Original
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Bolje ceste
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 mreža
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 mreža
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Nasumično
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Pokaži zadnju poruku ili vijest
@@ -789,6 +799,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Svakih 12 mjese
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Započni novu igru
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Učitaj spremljenu igru
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Izradi proizvoljni igrački svijet/scenarij
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Pokreni igru sa više igrača
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Prikaži postavke igre
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Prikaži postavke težine
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Započni novu igru koristeći proizvoljni scenarij
@@ -897,6 +908,10 @@ STR_OPTIONS_RES_TIP                                             :{BLACK}Izaberi 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format za sliku ekrana
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Izaberi format za sliku ekrana
+
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Osnovni set grafike
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Odaberi osnovni grafički set za igru
 
 STR_AUTOSAVE_1_MONTH                                            :Svaki mjesec
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatsko spremanje neuspješno
@@ -1087,6 +1102,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Zadnja dostupna
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Najčešće korištena
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Pokaži rezervirane tračnice: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Zadrži alate za izradu aktivnima nakon upotrebe: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grupiraj troškove u financijskom prozoru tvrtke: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Pokaži alate za izgradnju kada su odgovarajuća vozila nedostupna: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maksimalan broj vlakova po igraču: {ORANGE}{STRING}
@@ -1102,6 +1118,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Isklju�
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Dozvoli UI u mrežnoj igri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#operativnih zahvata prije suspendiranja UI: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Servisni su intervali u postotcima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Inicijalni servisni period za vlakove: {ORANGE}{STRING} dana/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Inicijalni servisni period za vlakove: {ORANGE}onemogućeno
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Inicijalni servisni interval za cestovna vozila: {ORANGE}{STRING} dana/%
@@ -1130,11 +1147,14 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Samo blokiraju�
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Samo putni signali
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Sve
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Dizajn ceste za nove gradove: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :inicijalno
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :bolje ceste
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 mreža
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 mreža
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :nasumično
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Gradovi mogu graditi ceste: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Omogući određivanje razine buke za zračne luke od strane gradova: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Položaj glavne alatne trake: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Lijevo
@@ -1173,12 +1193,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlakovi
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Gradovi
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrije
 
-STR_CONFIG_SETTING_DISABLED                                     :onemogućeno
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Promijeni vrijednost postavke
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pronalaženje putanje za vlakove: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Nije preporučivo)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1191,6 +1205,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pronala
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Preporučeno)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nije preporučivo)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X veličina karte: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y veličina karte: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :onemogućeno
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Promijeni vrijednost postavke
 
 STR_TEMPERATE_LANDSCAPE                                         :Blagi krajolik
 STR_SUB_ARCTIC_LANDSCAPE                                        :Subarktički krajolik
@@ -1284,7 +1307,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Popis ne
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Onemogući sve
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Omogući sve
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrije
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% prevezeno)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% prevezeno)
@@ -1298,7 +1320,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Prenamij
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Odaberi vrstu tereta koju će vlak prevoziti
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Prenamijeni vlak za prijevoz označene vrste tereta
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nije moguće prenamijeniti vlak...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Servisni su intervali u postotcima: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Promijeni proizvodnju
 
 ############ network gui strings
@@ -1560,11 +1581,6 @@ STR_NETWORK_SEND                                                :{BLACK}Pošalji
 
 ############ end network gui strings
 
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X veličina karte: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y veličina karte: {ORANGE}{STRING}
-
-
 ##### PNG-MAP-Loader
 
 STR_PNGMAP_ERROR                                                :{WHITE}Nemoguće je učitati krajolik iz PNG-a...
@@ -1770,6 +1786,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvencija je dodijeljena tvrtki {COMPANY}!{}{}Prijevoz {STRING.gen} od postaje {STATION} do postaje {STATION} plaćat će se trostruko sljedećih godinu dana!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvencija je dodijeljena tvrtki {COMPANY}!{}{}Prijevoz {STRING.gen} od postaje {STATION} do postaje {STATION} plaćat će se četverostruko sljedećih godinu dana!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Lokalna samouprava grada {TOWN}a odbija dozvoliti izgradnju još jedne zračne luke u ovom gradu
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} ne dozvoljava izgradnju zrakoplovne luke zbog brige o buci
 STR_2036_COTTAGES                                               :Kolibe
 STR_2037_HOUSES                                                 :Kuće
 STR_2038_FLATS                                                  :Stanovi
@@ -3140,6 +3157,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Iznos no
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Ukupni broj bodova od mogućih bodova
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Postavke
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Prikaži postavke NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF postavke
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Potvrdi promjene
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Aktiviraj paletu
@@ -3595,6 +3613,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI postavke
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Prikaži postavke umjetne inteligencije
 STR_AI_DEBUG                                                    :{WHITE}Debugiranje UI
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Ime UI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno učitaj UI
@@ -3622,7 +3641,6 @@ STR_AI_VERSION                                                  :Verzija:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Omogući određivanje razine buke za zračne luke od strane gradova: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Ograničenje buke u gradu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Proizvedeno buke: {GOLD}{COMMA}
 ########
@@ -3648,6 +3666,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Izaberi 
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Označi sav sadržaj koji je nadogradnja postojećem sadržaju kako bi ga preuzeo
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznači sve
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Označi sav sadržaj koji se ne preuzima
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Unesi znak za filter
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Unesite ključnu riječ kako bi filtrirali listu
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Ime/Tag filter:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Preuzmi
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Počni preuzimanje označenog sadržaja
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Ukupna veličina preuzimanja: {WHITE}{BYTES}

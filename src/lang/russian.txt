@@ -645,9 +645,12 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...об�
 STR_02A1_SMALL                                                  :{BLACK}Малый
 STR_02A2_MEDIUM                                                 :{BLACK}Средний
 STR_02A3_LARGE                                                  :{BLACK}Большой
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Случайно
 STR_FOUND_TOWN_CITY                                             :{BLACK}Город
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Выбор размера города
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Размер города:
+
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Случайно
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Показать последнее сообщение или новость
@@ -726,6 +729,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Каждый г
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Начать новую игру
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Загрузить сохранённую игру
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Создать собственный сценарий
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Начать сетевую игру
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Открыть настройки игры
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Открыть настройки сложности
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Начать новую игру, используя сценарий
@@ -834,6 +838,8 @@ STR_OPTIONS_RES_TIP                                             :{BLACK}Выбо
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Формат скриншотов
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Формат, в котором будут сохраняться снимки экрана
+
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 
 STR_AUTOSAVE_1_MONTH                                            :Каждый месяц
 STR_AUTOSAVE_FAILED                                             :{WHITE}Ошибка автосохранения
@@ -1039,6 +1045,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Не д
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Разрешить AI в сетевой игре: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Число тактов перед остановкой ИИ: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Интервал обслуживания в процентах: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Обслуживание поездов по умолчанию: {ORANGE}кажд{P 1 ый ые ые} {STRING} д{P 1 ень ня ней}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Обслуживание поездов по умолчанию: {ORANGE}не обслуживаются
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Обслуживание автотранспорта: {ORANGE}кажд{P 1 ый ые ые} {STRING} д{P 1 ень ня ней}/%
@@ -1072,6 +1079,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :улучшен�
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :решёткой 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :решёткой 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :случайно
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Разрешить городам контролировать уровень шума для аэропортов: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Положение главной панели инструментов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :слева
@@ -1110,12 +1118,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Пое�
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Города
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Промышленность
 
-STR_CONFIG_SETTING_DISABLED                                     :отключено
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Изменить значение
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Алгоритм поиска пути для поездов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Не рекоменд.)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1128,6 +1130,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Алг�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Оригин. {BLUE}(Рекоменд.)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Не рекоменд.)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Горизонтальный размер карты: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Вертикальный размер карты: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :отключено
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Изменить значение
 
 STR_TEMPERATE_LANDSCAPE                                         :Умеренный ландшафт
 STR_SUB_ARCTIC_LANDSCAPE                                        :Субарктический ландшафт
@@ -1221,7 +1232,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Спис
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Выключить все
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Включить все
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Промышленность
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% перевезено)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% перевезено)
@@ -1235,7 +1245,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Пере
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Выбор типа груза для перевозки
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Переоборудование поезда для выделенного типа груза
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Не могу переоборудовать поезд...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Интервал обслуживания в процентах: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Изменить производительность
 
 ############ network gui strings
@@ -1496,11 +1505,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Личное с
 STR_NETWORK_SEND                                                :{BLACK}Отправить
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Горизонтальный размер карты: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Вертикальный размер карты: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -3089,6 +3093,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Разм
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Всего пунктов из общего количества возможных
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Настройки NewGRF
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Показать настройки NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Настройки NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Применить изменения
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Переключить палитру
@@ -3544,6 +3549,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Настройки ИИ
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Показать настройки искуственного интеллекта
 STR_AI_DEBUG                                                    :{WHITE}Отладка AI
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Имя AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезагрузить AI
@@ -3571,7 +3577,6 @@ STR_AI_VERSION                                                  :Версия:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Разрешить городам контролировать уровень шума для аэропортов: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Уровень шума в городе: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Производимый шум: {GOLD}{COMMA}
 ########

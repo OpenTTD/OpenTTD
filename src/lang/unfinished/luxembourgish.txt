@@ -543,6 +543,7 @@ STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Kaaf Lan
 STR_032F_AUTOSAVE                                               :{RED}AUTOSPÄICHEREN
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Wielt 'Ezy Street Musék' programme
 
+STR_6                                                           :{BLACK}6
 
 ############ start of townname region
 ############ end of townname region
@@ -913,8 +914,46 @@ STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...kann 
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Aaneren Tunnel am Wee
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Kann d'Land nët fir dei aaner Säit vum Tunnel fräi leen
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Mss den Tunnel fir déischt oofrappen
+STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Musst d'Brèck fir déischt oofrapen
+STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Kann nët op der selweschter Plaatz unfänken an ophaalen
+STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Start an Enn mussen op enger Linn sinn
+STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Plaatz onpassend fir Tunnelentrée
+STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_500E_SUSPENSION_STEEL                                       :Stolen Hängebrèck
+STR_500F_GIRDER_STEEL                                           :Stoldréier Breck
+STR_5010_CANTILEVER_STEEL                                       :Fräidroend Stolbrèck
+STR_5011_SUSPENSION_CONCRETE                                    :Betons Hängebrèck
+STR_5012_WOODEN                                                 :Holzen Brèck
+STR_5013_CONCRETE                                               :Betons Brèck
+STR_5014_TUBULAR_STEEL                                          :Rouerstohl Brèck
+STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Kann d'Brèck nët hei bauen...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Kann den Tunnel nët hei bauen...
+STR_5017_RAILROAD_TUNNEL                                        :Zuchtunnel
+STR_5018_ROAD_TUNNEL                                            :Stroossentunnel
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Stolen Zuchhängebrèck
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Stoldréier Zuchbrèck
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Stolen fräidroend Zuchbrèck
+STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Stolbeton Zuchhängebrèck
+STR_501F_WOODEN_RAIL_BRIDGE                                     :Holzen Zuchbrèck
+STR_5020_CONCRETE_RAIL_BRIDGE                                   :Betons Zuchbrèck
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Stol Hängebrèck
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Stoldréier Brèck
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Fräidroend Stolbrèck
+STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Stolbetons Hängebrèck
+STR_5025_WOODEN_ROAD_BRIDGE                                     :Holzen Brèck
+STR_5026_CONCRETE_ROAD_BRIDGE                                   :Betons Brèck
+STR_5027_TUBULAR_RAIL_BRIDGE                                    :Rouerstol Zuchbrèck
+STR_5028_TUBULAR_ROAD_BRIDGE                                    :Rouerstol Brèck
 
 ##id 0x5800
+STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Objet am Wee
+STR_5801_TRANSMITTER                                            :Sender
+STR_5802_LIGHTHOUSE                                             :Liichttuerm
+STR_5803_COMPANY_HEADQUARTERS                                   :Firmen Haaptgebäi
+STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...Firmen Haaptgebäi am Wee
+STR_5805_COMPANY_OWNED_LAND                                     :Land am Firmenbesëtz
+STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Kann daat Land nët kaafen...
+STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...schon am Besëtz!
 
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -925,11 +964,22 @@ STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Mss den 
 ############ end of savegame specific region!
 
 ##id 0x6800
+STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Schwieregkeetsgraad
 
 ############ range for difficulty levels starts
+STR_6801_EASY                                                   :{BLACK}Einfach
+STR_6802_MEDIUM                                                 :{BLACK}Mëttel
+STR_6803_HARD                                                   :{BLACK}Schwéier
+STR_6804_CUSTOM                                                 :{BLACK}Benotzerdéfinéiert
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maximum unzuel vun Konkurrenten: {ORANGE}{COMMA}
+STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Unzuel vun Stiedt: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Unzuel vun Industrien: {ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maximalen ufanks Kredit: {ORANGE}{CURRENCY}
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Ufanks Zënnssaatz: {ORANGE}{COMMA}%
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Ënnerhaalskäschten fir Gefiehrter: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 
