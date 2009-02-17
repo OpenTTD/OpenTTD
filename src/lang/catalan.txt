@@ -644,8 +644,8 @@ STR_02A1_SMALL                                                  :{BLACK}Petit
 STR_02A2_MEDIUM                                                 :{BLACK}Mitjà
 STR_02A3_LARGE                                                  :{BLACK}Gran
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Aleatori
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Ciutat
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Les ciutats creixen més ràpid que els pobles normals{}Depenent de la configuració, són més grans quan es funden
+STR_FOUND_TOWN_CITY                                             :{BLACK}Ciutat
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Les ciutats creixen més ràpid que els pobles normals{}Depenent de la configuració, són més grans quan es funden
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Selecciona la mida de la població
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Mida de població:
 

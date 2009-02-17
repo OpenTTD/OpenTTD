@@ -686,8 +686,8 @@ STR_02A1_SMALL                                                  :{BLACK}Majhno
 STR_02A2_MEDIUM                                                 :{BLACK}Srednje
 STR_02A3_LARGE                                                  :{BLACK}Veliko
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Naključno
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Mesto
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Mesta rastejo hitreje kot navadna naselja{}Odvisno od nastavitev, so večja, ko so ustanovljena
+STR_FOUND_TOWN_CITY                                             :{BLACK}Mesto
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Mesta rastejo hitreje kot navadna naselja{}Odvisno od nastavitev, so večja, ko so ustanovljena
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Izberi velikost mesta
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Velikost mesta:
 

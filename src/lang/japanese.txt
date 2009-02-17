@@ -642,7 +642,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...橋�
 STR_02A1_SMALL                                                  :{BLACK}村
 STR_02A2_MEDIUM                                                 :{BLACK}町
 STR_02A3_LARGE                                                  :{BLACK}市
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}市町村
+STR_FOUND_TOWN_CITY                                             :{BLACK}市町村
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}町のサイズを選択します
 STR_02A5_TOWN_SIZE                                              :{YELLOW}町のサイズ：
 

@@ -644,8 +644,8 @@ STR_02A1_SMALL                                                  :{BLACK}소형
 STR_02A2_MEDIUM                                                 :{BLACK}중형
 STR_02A3_LARGE                                                  :{BLACK}대형
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}임의
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}도시
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}도시는 보통 마을보다 더 빠르게 성장합니다{}세팅에 따라 그들이 만들어졌을때 더 큽니다
+STR_FOUND_TOWN_CITY                                             :{BLACK}도시
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}도시는 보통 마을보다 더 빠르게 성장합니다{}세팅에 따라 그들이 만들어졌을때 더 큽니다
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}마을 크기 선택
 STR_02A5_TOWN_SIZE                                              :{YELLOW}마을 크기:
 

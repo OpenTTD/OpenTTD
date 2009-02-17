@@ -646,8 +646,8 @@ STR_02A1_SMALL                                                  :{BLACK}Mazs
 STR_02A2_MEDIUM                                                 :{BLACK}Vidējs
 STR_02A3_LARGE                                                  :{BLACK}Liels
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Nejaušs
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Pilsēta
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Lielpilsētas attīstās ātrāk kā mazpilsētas{}Atkarībā no uzstādījumiem tās dibināšanas brīdī ir lielākas.
+STR_FOUND_TOWN_CITY                                             :{BLACK}Pilsēta
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Lielpilsētas attīstās ātrāk kā mazpilsētas{}Atkarībā no uzstādījumiem tās dibināšanas brīdī ir lielākas.
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Norādīt pilsētas izmērus
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Pilsētas izmēri:
 

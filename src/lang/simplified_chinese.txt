@@ -644,8 +644,8 @@ STR_02A1_SMALL                                                  :{BLACK}小
 STR_02A2_MEDIUM                                                 :{BLACK}中
 STR_02A3_LARGE                                                  :{BLACK}大
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}随机
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}城市
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}城市增长速度高于一般城镇{}依据设定，它们建立时更大
+STR_FOUND_TOWN_CITY                                             :{BLACK}城市
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}城市增长速度高于一般城镇{}依据设定，它们建立时更大
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}选择城镇规模
 STR_02A5_TOWN_SIZE                                              :{YELLOW}城镇规模：
 

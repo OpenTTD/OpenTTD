@@ -639,7 +639,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...rhaid
 STR_02A1_SMALL                                                  :{BLACK}Bach
 STR_02A2_MEDIUM                                                 :{BLACK}Canolig
 STR_02A3_LARGE                                                  :{BLACK}Mawr
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Dinas
+STR_FOUND_TOWN_CITY                                             :{BLACK}Dinas
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Dewiswch maint y dref
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Maint tref:
 

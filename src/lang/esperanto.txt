@@ -627,7 +627,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...amba≈
 STR_02A1_SMALL                                                  :{BLACK}Malgranda
 STR_02A2_MEDIUM                                                 :{BLACK}Mezgranda
 STR_02A3_LARGE                                                  :{BLACK}Granda
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Urbo
+STR_FOUND_TOWN_CITY                                             :{BLACK}Urbo
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Elektu urban grandecon
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Urba grandeco:
 

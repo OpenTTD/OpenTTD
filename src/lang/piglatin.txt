@@ -644,8 +644,8 @@ STR_02A1_SMALL                                                  :{BLACK}Allsmay
 STR_02A2_MEDIUM                                                 :{BLACK}Ediummay
 STR_02A3_LARGE                                                  :{BLACK}Argelay
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Andomray
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Itycay
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Itiescay owgray asterfay anthay egularray ownstay{}Ependingday onway ettingssay, eythay areway iggerbay enwhay oundedfay
+STR_FOUND_TOWN_CITY                                             :{BLACK}Itycay
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Itiescay owgray asterfay anthay egularray ownstay{}Ependingday onway ettingssay, eythay areway iggerbay enwhay oundedfay
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Electsay owntay izesay
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Owntay izesay:
 

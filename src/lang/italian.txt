@@ -646,8 +646,8 @@ STR_02A1_SMALL                                                  :{BLACK}Piccola
 STR_02A2_MEDIUM                                                 :{BLACK}Media
 STR_02A3_LARGE                                                  :{BLACK}Grande
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Casuale
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Metropoli
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Le metropoli crescono più rapidamente delle normali città.{}A seconda delle impostazioni, sono più grandi quando vengono fondate.
+STR_FOUND_TOWN_CITY                                             :{BLACK}Metropoli
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Le metropoli crescono più rapidamente delle normali città.{}A seconda delle impostazioni, sono più grandi quando vengono fondate.
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Seleziona la dimensione della città
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Dimensione città:
 

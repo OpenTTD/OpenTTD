@@ -644,7 +644,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...κα�
 STR_02A1_SMALL                                                  :{BLACK}Μικρό
 STR_02A2_MEDIUM                                                 :{BLACK}Μεσαίο
 STR_02A3_LARGE                                                  :{BLACK}Μεγάλο
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Πόλη
+STR_FOUND_TOWN_CITY                                             :{BLACK}Πόλη
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Επιλογή μεγέθους πόλης
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Μέγεθος πόλης:
 

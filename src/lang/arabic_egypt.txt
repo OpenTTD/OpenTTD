@@ -645,8 +645,8 @@ STR_02A1_SMALL                                                  :{BLACK}صغير
 STR_02A2_MEDIUM                                                 :{BLACK}وسط
 STR_02A3_LARGE                                                  :{BLACK}كبير
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK} عشوائي
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}مدينة
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK} المدن الكبيرة تنمو اسرع من المدن العادية. {} كلما كانت اكبر عند انشائها, بالاعتماد على الاعدادات.
+STR_FOUND_TOWN_CITY                                             :{BLACK}مدينة
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK} المدن الكبيرة تنمو اسرع من المدن العادية. {} كلما كانت اكبر عند انشائها, بالاعتماد على الاعدادات.
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}اختر حجم المدينة
 STR_02A5_TOWN_SIZE                                              :{YELLOW}حجم المدينة:
 

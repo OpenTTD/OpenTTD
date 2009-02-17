@@ -645,8 +645,8 @@ STR_02A1_SMALL                                                  :{BLACK}Pequeña
 STR_02A2_MEDIUM                                                 :{BLACK}Mediana
 STR_02A3_LARGE                                                  :{BLACK}Grande
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Aleatorio
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Ciudad
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Las ciudades crecen más rápido que las villas normales{}Dependiendo de los ajustes, son mayores al ser fundadas
+STR_FOUND_TOWN_CITY                                             :{BLACK}Ciudad
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Las ciudades crecen más rápido que las villas normales{}Dependiendo de los ajustes, son mayores al ser fundadas
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Selecciona el tamaño de la población
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Tamaño población:
 

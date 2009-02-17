@@ -642,7 +642,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...橋�
 STR_02A1_SMALL                                                  :{BLACK}小型
 STR_02A2_MEDIUM                                                 :{BLACK}中型
 STR_02A3_LARGE                                                  :{BLACK}大型
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}城市
+STR_FOUND_TOWN_CITY                                             :{BLACK}城市
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}選擇市鎮大小
 STR_02A5_TOWN_SIZE                                              :{YELLOW}市鎮大小：
 

@@ -688,8 +688,8 @@ STR_02A1_SMALL                                                  :{BLACK}Male
 STR_02A2_MEDIUM                                                 :{BLACK}Średnie
 STR_02A3_LARGE                                                  :{BLACK}Duże
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Losowo
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Metropolia
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Duże miasta rozwijają się szybciej o małych miast{}W zależności od ustawień, są większe przy zakładaniu
+STR_FOUND_TOWN_CITY                                             :{BLACK}Metropolia
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Duże miasta rozwijają się szybciej o małych miast{}W zależności od ustawień, są większe przy zakładaniu
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Wybierz wielkość miasta
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Wielkość miasta:
 

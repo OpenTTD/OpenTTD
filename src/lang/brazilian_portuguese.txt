@@ -645,8 +645,8 @@ STR_02A1_SMALL                                                  :{BLACK}Pequena
 STR_02A2_MEDIUM                                                 :{BLACK}Média
 STR_02A3_LARGE                                                  :{BLACK}Grande
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Randômico
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Cidade
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Cidades grandes cresem mais rápido que as cidades normais{}Dependendo das configs. são maiores quando fundadas.
+STR_FOUND_TOWN_CITY                                             :{BLACK}Cidade
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Cidades grandes cresem mais rápido que as cidades normais{}Dependendo das configs. são maiores quando fundadas.
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Selecionar tamanho da cidade
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Tamanho da cidade:
 

@@ -691,7 +691,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...mõle
 STR_02A1_SMALL                                                  :{BLACK}Väike
 STR_02A2_MEDIUM                                                 :{BLACK}Keskmine
 STR_02A3_LARGE                                                  :{BLACK}Suur
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Linn
+STR_FOUND_TOWN_CITY                                             :{BLACK}Linn
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Vali linna suurus
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Linna suurus:
 

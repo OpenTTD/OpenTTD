@@ -710,7 +710,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...konce
 STR_02A1_SMALL                                                  :{BLACK}Male
 STR_02A2_MEDIUM                                                 :{BLACK}Stredne
 STR_02A3_LARGE                                                  :{BLACK}Velke
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Mesto
+STR_FOUND_TOWN_CITY                                             :{BLACK}Mesto
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Vyber velkost mesta
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Velkost mesta:
 

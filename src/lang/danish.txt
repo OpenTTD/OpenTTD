@@ -643,7 +643,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...begge
 STR_02A1_SMALL                                                  :{BLACK}Lille
 STR_02A2_MEDIUM                                                 :{BLACK}Mellem
 STR_02A3_LARGE                                                  :{BLACK}Stor
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}By
+STR_FOUND_TOWN_CITY                                             :{BLACK}By
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Vælg bystørrelse
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Bystørrelse:
 

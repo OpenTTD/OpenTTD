@@ -644,8 +644,8 @@ STR_02A1_SMALL                                                  :{BLACK}Pieni
 STR_02A2_MEDIUM                                                 :{BLACK}Keskisuuri
 STR_02A3_LARGE                                                  :{BLACK}Suuri
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Sattumanvarainen
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Kaupunki
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Suurkaupungit kasvavat nopeammin kuin tavalliset kaupungit{}Asetuksista riippuen, ne ovat suurempia perustettaessa
+STR_FOUND_TOWN_CITY                                             :{BLACK}Kaupunki
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Suurkaupungit kasvavat nopeammin kuin tavalliset kaupungit{}Asetuksista riippuen, ne ovat suurempia perustettaessa
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Valitse kaupungin koko.
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Kaupungin koko:
 

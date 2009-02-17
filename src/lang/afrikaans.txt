@@ -643,7 +643,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...albei
 STR_02A1_SMALL                                                  :{BLACK}Klein
 STR_02A2_MEDIUM                                                 :{BLACK}Middelmatig
 STR_02A3_LARGE                                                  :{BLACK}Groot
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Stad
+STR_FOUND_TOWN_CITY                                             :{BLACK}Stad
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Kies dorp groote
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Dorp groote:
 

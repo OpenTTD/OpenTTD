@@ -643,7 +643,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...קצ�
 STR_02A1_SMALL                                                  :{BLACK}קטן
 STR_02A2_MEDIUM                                                 :{BLACK}בינוני
 STR_02A3_LARGE                                                  :{BLACK}גדול
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}עיר
+STR_FOUND_TOWN_CITY                                             :{BLACK}עיר
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}בחר את גודל העיר
 STR_02A5_TOWN_SIZE                                              :{YELLOW}:גודל העיר
 

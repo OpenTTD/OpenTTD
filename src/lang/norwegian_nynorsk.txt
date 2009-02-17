@@ -645,8 +645,8 @@ STR_02A1_SMALL                                                  :{BLACK}Liten
 STR_02A2_MEDIUM                                                 :{BLACK}Middels
 STR_02A3_LARGE                                                  :{BLACK}Stor
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Vilkårleg
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}By
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Store byar veks raskare enn små byar{}Instillingane avgjer om dei er større når dei vert grunnlagt
+STR_FOUND_TOWN_CITY                                             :{BLACK}By
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Store byar veks raskare enn små byar{}Instillingane avgjer om dei er større når dei vert grunnlagt
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Vel storleik på by
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Bystorleik:
 

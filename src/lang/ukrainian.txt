@@ -769,8 +769,8 @@ STR_02A1_SMALL                                                  :{BLACK}Мале
 STR_02A2_MEDIUM                                                 :{BLACK}Середнє
 STR_02A3_LARGE                                                  :{BLACK}Велике
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Довільний
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Місто
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Мегаполіси ростуть швидше за звичайні міста{}Вони більші при заснуванні, якщо вказано у настройках
+STR_FOUND_TOWN_CITY                                             :{BLACK}Місто
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Мегаполіси ростуть швидше за звичайні міста{}Вони більші при заснуванні, якщо вказано у настройках
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Вибір розміру міста
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Розмір міста:
 

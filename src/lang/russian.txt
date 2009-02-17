@@ -645,7 +645,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...об�
 STR_02A1_SMALL                                                  :{BLACK}Малый
 STR_02A2_MEDIUM                                                 :{BLACK}Средний
 STR_02A3_LARGE                                                  :{BLACK}Большой
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Город
+STR_FOUND_TOWN_CITY                                             :{BLACK}Город
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Выбор размера города
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Размер города:
 

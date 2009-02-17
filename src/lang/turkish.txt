@@ -644,8 +644,8 @@ STR_02A1_SMALL                                                  :{BLACK}Küçük
 STR_02A2_MEDIUM                                                 :{BLACK}Orta
 STR_02A3_LARGE                                                  :{BLACK}Büyük
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Rastgele
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Şehir
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Şehirler normal kasabalardan daha hızlı büyürler{}Ayarlara göre değişmekle birlikte, ilk kurulduklarında daha büyük olurlar.
+STR_FOUND_TOWN_CITY                                             :{BLACK}Şehir
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Şehirler normal kasabalardan daha hızlı büyürler{}Ayarlara göre değişmekle birlikte, ilk kurulduklarında daha büyük olurlar.
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Şehir büyüklüğü seç
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Şehir büyüklüğü:
 

@@ -643,7 +643,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...os fi
 STR_02A1_SMALL                                                  :{BLACK}Pequeno
 STR_02A2_MEDIUM                                                 :{BLACK}Mediano
 STR_02A3_LARGE                                                  :{BLACK}Grande
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Cidade
+STR_FOUND_TOWN_CITY                                             :{BLACK}Cidade
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Selecciona o tamaño da cidade:
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Tamaño da cidade:
 

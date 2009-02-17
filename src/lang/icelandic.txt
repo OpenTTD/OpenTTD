@@ -639,7 +639,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...báð
 STR_02A1_SMALL                                                  :{BLACK}Lítill
 STR_02A2_MEDIUM                                                 :{BLACK}Miðlungs
 STR_02A3_LARGE                                                  :{BLACK}Stór
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Borg
+STR_FOUND_TOWN_CITY                                             :{BLACK}Borg
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Velja stærð bæjar
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Stærð bæjar:
 

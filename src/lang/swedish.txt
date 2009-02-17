@@ -639,7 +639,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...brons
 STR_02A1_SMALL                                                  :{BLACK}Liten
 STR_02A2_MEDIUM                                                 :{BLACK}Mellan
 STR_02A3_LARGE                                                  :{BLACK}Stor
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Stad
+STR_FOUND_TOWN_CITY                                             :{BLACK}Stad
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Välj stadsstorlek
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Stadsstorlek:
 

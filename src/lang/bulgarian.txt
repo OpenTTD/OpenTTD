@@ -646,8 +646,8 @@ STR_02A1_SMALL                                                  :{BLACK}Малъ
 STR_02A2_MEDIUM                                                 :{BLACK}Среден
 STR_02A3_LARGE                                                  :{BLACK}Голям
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Случаен
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Град
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Градовете се разрастват по-бързо от градчетата.{}В зависимост от настройките те са по-големи при тяхното създаване
+STR_FOUND_TOWN_CITY                                             :{BLACK}Град
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Градовете се разрастват по-бързо от градчетата.{}В зависимост от настройките те са по-големи при тяхното създаване
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Избери големина на града
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Големина на града:
 

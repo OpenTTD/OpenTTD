@@ -708,7 +708,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...oba k
 STR_02A1_SMALL                                                  :{BLACK}Malo
 STR_02A2_MEDIUM                                                 :{BLACK}Srednje
 STR_02A3_LARGE                                                  :{BLACK}Veliko
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Grad
+STR_FOUND_TOWN_CITY                                             :{BLACK}Grad
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Odaberi veličinu grada
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Veličina grada:
 

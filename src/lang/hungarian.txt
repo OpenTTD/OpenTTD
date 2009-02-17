@@ -678,8 +678,8 @@ STR_02A1_SMALL                                                  :{BLACK}Kicsi
 STR_02A2_MEDIUM                                                 :{BLACK}Közepes
 STR_02A3_LARGE                                                  :{BLACK}Nagy
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Véletlenszerű
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Város
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Átlagosnál gyorsabban növekedő városok{}Függ a beállításoktól, nagyobbak, mint alapításkor
+STR_FOUND_TOWN_CITY                                             :{BLACK}Város
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Átlagosnál gyorsabban növekedő városok{}Függ a beállításoktól, nagyobbak, mint alapításkor
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}A település méretének kiválasztása
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Új település mérete:
 

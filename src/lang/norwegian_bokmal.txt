@@ -644,7 +644,7 @@ STR_02A1_SMALL                                                  :{BLACK}Liten
 STR_02A2_MEDIUM                                                 :{BLACK}Middels
 STR_02A3_LARGE                                                  :{BLACK}Stor
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Tilfeldig
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}By
+STR_FOUND_TOWN_CITY                                             :{BLACK}By
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Velg bystørrelse
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Bystørrelse:
 

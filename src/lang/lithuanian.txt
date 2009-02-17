@@ -673,7 +673,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...abu t
 STR_02A1_SMALL                                                  :{BLACK}Mažas
 STR_02A2_MEDIUM                                                 :{BLACK}Vidutinis
 STR_02A3_LARGE                                                  :{BLACK}Didelis
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Miestas
+STR_FOUND_TOWN_CITY                                             :{BLACK}Miestas
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Išsirinkite miesto dydį
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Miesto dydis:
 

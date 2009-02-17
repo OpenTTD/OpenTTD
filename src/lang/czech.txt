@@ -711,7 +711,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}... oba 
 STR_02A1_SMALL                                                  :{BLACK}Malé
 STR_02A2_MEDIUM                                                 :{BLACK}Středni
 STR_02A3_LARGE                                                  :{BLACK}Velké
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Město
+STR_FOUND_TOWN_CITY                                             :{BLACK}Město
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Zvol velikost města:
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Velikost města:
 

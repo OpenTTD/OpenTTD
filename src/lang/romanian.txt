@@ -644,8 +644,8 @@ STR_02A1_SMALL                                                  :{BLACK}Mic
 STR_02A2_MEDIUM                                                 :{BLACK}Mediu
 STR_02A3_LARGE                                                  :{BLACK}Mare
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Aleator
-STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Metropolă
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Metropolele cresc mai repede decat oraşele{}În funcţie de setări, sunt mai mari când sunt fondate
+STR_FOUND_TOWN_CITY                                             :{BLACK}Metropolă
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Metropolele cresc mai repede decat oraşele{}În funcţie de setări, sunt mai mari când sunt fondate
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Alege mărimea oraşului
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Mărime oraş:
 
