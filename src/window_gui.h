@@ -30,6 +30,11 @@ DECLARE_ENUM_AS_BIT_SET(FrameFlags);
 /* wiget.cpp */
 void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, FrameFlags flags);
 
+/* window.cpp */
+extern Window *_z_front_window;
+extern Window *_z_back_window;
+extern Window *_focused_window;
+
 /**
  * High level window description
  */
@@ -162,26 +167,203 @@ public:
 	Window *z_front;       ///< The window in front of us in z-order
 	Window *z_back;        ///< The window behind us in z-order
 
-	void HandleButtonClick(byte widget);
+	/**
+	 * Sets the enabled/disabled status of a widget.
+	 * By default, widgets are enabled.
+	 * On certain conditions, they have to be disabled.
+	 * @param widget_index index of this widget in the window
+	 * @param disab_stat status to use ie: disabled = true, enabled = false
+	 */
+	inline void SetWidgetDisabledState(byte widget_index, bool disab_stat)
+	{
+		assert(widget_index < this->widget_count);
+		SB(this->widget[widget_index].display_flags, WIDG_DISABLED, 1, !!disab_stat);
+	}
 
-	void SetWidgetDisabledState(byte widget_index, bool disab_stat);
-	void DisableWidget(byte widget_index);
-	void EnableWidget(byte widget_index);
-	bool IsWidgetDisabled(byte widget_index) const;
-	void SetWidgetHiddenState(byte widget_index, bool hidden_stat);
-	void HideWidget(byte widget_index);
-	void ShowWidget(byte widget_index);
-	bool IsWidgetHidden(byte widget_index) const;
-	void SetFocusedWidget(byte widget_index);
-	bool IsWidgetGloballyFocused(byte widget_index) const;
-	bool IsWidgetFocused(byte widget_index) const;
-	void SetWidgetLoweredState(byte widget_index, bool lowered_stat);
-	void ToggleWidgetLoweredState(byte widget_index);
-	void LowerWidget(byte widget_index);
-	void RaiseWidget(byte widget_index);
-	bool IsWidgetLowered(byte widget_index) const;
-	void AlignWidgetRight(byte widget_index_a, byte widget_index_b);
-	int  GetWidgetWidth(byte widget_index) const;
+	/**
+	 * Sets a widget to disabled.
+	 * @param widget_index index of this widget in the window
+	 */
+	inline void DisableWidget(byte widget_index)
+	{
+		SetWidgetDisabledState(widget_index, true);
+	}
+
+	/**
+	 * Sets a widget to Enabled.
+	 * @param widget_index index of this widget in the window
+	 */
+	inline void EnableWidget(byte widget_index)
+	{
+		SetWidgetDisabledState(widget_index, false);
+	}
+
+	/**
+	 * Gets the enabled/disabled status of a widget.
+	 * @param widget_index index of this widget in the window
+	 * @return status of the widget ie: disabled = true, enabled = false
+	 */
+	inline bool IsWidgetDisabled(byte widget_index) const
+	{
+		assert(widget_index < this->widget_count);
+		return HasBit(this->widget[widget_index].display_flags, WIDG_DISABLED);
+	}
+
+	/**
+	 * Sets the hidden/shown status of a widget.
+	 * By default, widgets are visible.
+	 * On certain conditions, they have to be hidden.
+	 * @param widget_index index of this widget in the window
+	 * @param hidden_stat status to use ie. hidden = true, visible = false
+	 */
+	inline void SetWidgetHiddenState(byte widget_index, bool hidden_stat)
+	{
+		assert(widget_index < this->widget_count);
+		SB(this->widget[widget_index].display_flags, WIDG_HIDDEN, 1, !!hidden_stat);
+	}
+
+	/**
+	 * Sets a widget hidden.
+	 * @param widget_index index of this widget in the window
+	 */
+	inline void HideWidget(byte widget_index)
+	{
+		SetWidgetHiddenState(widget_index, true);
+	}
+
+	/**
+	 * Sets a widget visible.
+	 * @param widget_index index of this widget in the window
+	 */
+	inline void ShowWidget(byte widget_index)
+	{
+		SetWidgetHiddenState(widget_index, false);
+	}
+
+	/**
+	 * Gets the visibility of a widget.
+	 * @param widget_index index of this widget in the window
+	 * @return status of the widget ie: hidden = true, visible = false
+	 */
+	inline bool IsWidgetHidden(byte widget_index) const
+	{
+		assert(widget_index < this->widget_count);
+		return HasBit(this->widget[widget_index].display_flags, WIDG_HIDDEN);
+	}
+
+	/**
+	 * Set focus within this window to given widget. The function however don't
+	 * change which window that has focus.
+	 * @param widget_index : index of the widget in the window to set focus to
+	 */
+	inline void SetFocusedWidget(byte widget_index)
+	{
+		if (widget_index < this->widget_count) {
+			/* Repaint the widget that loss focus. A focused edit box may else leave the caret left on the screen */
+			if (this->focused_widget && this->focused_widget - this->widget != widget_index) {
+				this->InvalidateWidget(this->focused_widget - this->widget);
+			}
+			this->focused_widget = &this->widget[widget_index];
+		}
+	}
+
+	/**
+	 * Check if given widget is focused within this window
+	 * @param widget_index : index of the widget in the window to check
+	 * @return true if given widget is the focused window in this window
+	 */
+	inline bool IsWidgetFocused(byte widget_index) const
+	{
+		return this->focused_widget == &this->widget[widget_index];
+	}
+
+	/**
+	 * Check if given widget has user input focus. This means that both the window
+	 * has focus and that the given widget has focus within the window.
+	 * @param widget_index : index of the widget in the window to check
+	 * @return true if given widget is the focused window in this window and this window has focus
+	 */
+	inline bool IsWidgetGloballyFocused(byte widget_index) const
+	{
+		return _focused_window == this && IsWidgetFocused(widget_index);
+	}
+
+	/**
+	 * Sets the lowered/raised status of a widget.
+	 * @param widget_index index of this widget in the window
+	 * @param lowered_stat status to use ie: lowered = true, raised = false
+	 */
+	inline void SetWidgetLoweredState(byte widget_index, bool lowered_stat)
+	{
+		assert(widget_index < this->widget_count);
+		SB(this->widget[widget_index].display_flags, WIDG_LOWERED, 1, !!lowered_stat);
+	}
+
+	/**
+	 * Invert the lowered/raised  status of a widget.
+	 * @param widget_index index of this widget in the window
+	 */
+	inline void ToggleWidgetLoweredState(byte widget_index)
+	{
+		assert(widget_index < this->widget_count);
+		ToggleBit(this->widget[widget_index].display_flags, WIDG_LOWERED);
+	}
+
+	/**
+	 * Marks a widget as lowered.
+	 * @param widget_index index of this widget in the window
+	 */
+	inline void LowerWidget(byte widget_index)
+	{
+		SetWidgetLoweredState(widget_index, true);
+	}
+
+	/**
+	 * Marks a widget as raised.
+	 * @param widget_index index of this widget in the window
+	 */
+	inline void RaiseWidget(byte widget_index)
+	{
+		SetWidgetLoweredState(widget_index, false);
+	}
+
+	/**
+	 * Gets the lowered state of a widget.
+	 * @param widget_index index of this widget in the window
+	 * @return status of the widget ie: lowered = true, raised= false
+	 */
+	inline bool IsWidgetLowered(byte widget_index) const
+	{
+		assert(widget_index < this->widget_count);
+		return HasBit(this->widget[widget_index].display_flags, WIDG_LOWERED);
+	}
+
+	/**
+	 * Align widgets a and b next to each other.
+	 * @param widget_index_a  the left widget
+	 * @param widget_index_b  the right widget (fixed)
+	 */
+	inline void AlignWidgetRight(byte widget_index_a, byte widget_index_b)
+	{
+		assert(widget_index_a < this->widget_count);
+		assert(widget_index_b < this->widget_count);
+		int w = this->widget[widget_index_a].right - this->widget[widget_index_a].left;
+		this->widget[widget_index_a].right = this->widget[widget_index_b].left - 1;
+		this->widget[widget_index_a].left  = this->widget[widget_index_a].right - w;
+	}
+
+	/**
+	 * Get the width of a widget.
+	 * @param widget_index  the widget
+	 * @return width of the widget
+	 */
+	inline int GetWidgetWidth(byte widget_index) const
+	{
+		assert(widget_index < this->widget_count);
+		return this->widget[widget_index].right - this->widget[widget_index].left + 1;
+	}
+
+	void HandleButtonClick(byte widget);
 	bool HasWidgetOfType(WidgetType widget_type) const;
 
 	void RaiseButtons();
@@ -436,11 +618,6 @@ void GuiShowTooltips(StringID str, uint paramcount = 0, const uint64 params[] = 
 /* widget.cpp */
 int GetWidgetFromPos(const Window *w, int x, int y);
 
-/* window.cpp */
-extern Window *_z_front_window;
-extern Window *_z_back_window;
-extern Window *_focused_window;
-
 /** Iterate over all windows */
 #define FOR_ALL_WINDOWS_FROM_BACK_FROM(w, start)  for (w = start; w != NULL; w = w->z_front) if (w->window_class != WC_INVALID)
 #define FOR_ALL_WINDOWS_FROM_FRONT_FROM(w, start) for (w = start; w != NULL; w = w->z_back) if (w->window_class != WC_INVALID)
@@ -479,202 +656,5 @@ void ResizeWindowForWidget(Window *w, uint widget, int delta_x, int delta_y);
 void SetVScrollCount(Window *w, int num);
 void SetVScroll2Count(Window *w, int num);
 void SetHScrollCount(Window *w, int num);
-
-
-/**
- * Sets the enabled/disabled status of a widget.
- * By default, widgets are enabled.
- * On certain conditions, they have to be disabled.
- * @param widget_index index of this widget in the window
- * @param disab_stat status to use ie: disabled = true, enabled = false
- */
-inline void Window::SetWidgetDisabledState(byte widget_index, bool disab_stat)
-{
-	assert(widget_index < this->widget_count);
-	SB(this->widget[widget_index].display_flags, WIDG_DISABLED, 1, !!disab_stat);
-}
-
-/**
- * Sets a widget to disabled.
- * @param widget_index index of this widget in the window
- */
-inline void Window::DisableWidget(byte widget_index)
-{
-	SetWidgetDisabledState(widget_index, true);
-}
-
-/**
- * Sets a widget to Enabled.
- * @param widget_index index of this widget in the window
- */
-inline void Window::EnableWidget(byte widget_index)
-{
-	SetWidgetDisabledState(widget_index, false);
-}
-
-/**
- * Gets the enabled/disabled status of a widget.
- * @param widget_index index of this widget in the window
- * @return status of the widget ie: disabled = true, enabled = false
- */
-inline bool Window::IsWidgetDisabled(byte widget_index) const
-{
-	assert(widget_index < this->widget_count);
-	return HasBit(this->widget[widget_index].display_flags, WIDG_DISABLED);
-}
-
-/**
- * Sets the hidden/shown status of a widget.
- * By default, widgets are visible.
- * On certain conditions, they have to be hidden.
- * @param widget_index index of this widget in the window
- * @param hidden_stat status to use ie. hidden = true, visible = false
- */
-inline void Window::SetWidgetHiddenState(byte widget_index, bool hidden_stat)
-{
-	assert(widget_index < this->widget_count);
-	SB(this->widget[widget_index].display_flags, WIDG_HIDDEN, 1, !!hidden_stat);
-}
-
-/**
- * Sets a widget hidden.
- * @param widget_index index of this widget in the window
- */
-inline void Window::HideWidget(byte widget_index)
-{
-	SetWidgetHiddenState(widget_index, true);
-}
-
-/**
- * Sets a widget visible.
- * @param widget_index index of this widget in the window
- */
-inline void Window::ShowWidget(byte widget_index)
-{
-	SetWidgetHiddenState(widget_index, false);
-}
-
-/**
- * Gets the visibility of a widget.
- * @param widget_index index of this widget in the window
- * @return status of the widget ie: hidden = true, visible = false
- */
-inline bool Window::IsWidgetHidden(byte widget_index) const
-{
-	assert(widget_index < this->widget_count);
-	return HasBit(this->widget[widget_index].display_flags, WIDG_HIDDEN);
-}
-
- /**
- * Set focus within this window to given widget. The function however don't
- * change which window that has focus.
- * @param widget_index : index of the widget in the window to set focus to
- */
-inline void Window::SetFocusedWidget(byte widget_index)
-{
-	if (widget_index < this->widget_count) {
-		/* Repaint the widget that loss focus. A focused edit box may else leave the caret left on the screen */
-		if (this->focused_widget && this->focused_widget - this->widget != widget_index) {
-			this->InvalidateWidget(this->focused_widget - this->widget);
-		}
-		this->focused_widget = &this->widget[widget_index];
-	}
-}
-
-/**
- * Check if given widget has user input focus. This means that both the window
- * has focus and that the given widget has focus within the window.
- * @param widget_index : index of the widget in the window to check
- * @return true if given widget is the focused window in this window and this window has focus
- */
-inline bool Window::IsWidgetGloballyFocused(byte widget_index) const
-{
-	return _focused_window == this && IsWidgetFocused(widget_index);
-}
-
-/**
- * Check if given widget is focused within this window
- * @param widget_index : index of the widget in the window to check
- * @return true if given widget is the focused window in this window
- */
-inline bool Window::IsWidgetFocused(byte widget_index) const
-{
-	return this->focused_widget == &this->widget[widget_index];
-}
-
-/**
- * Sets the lowered/raised status of a widget.
- * @param widget_index index of this widget in the window
- * @param lowered_stat status to use ie: lowered = true, raised = false
- */
-inline void Window::SetWidgetLoweredState(byte widget_index, bool lowered_stat)
-{
-	assert(widget_index < this->widget_count);
-	SB(this->widget[widget_index].display_flags, WIDG_LOWERED, 1, !!lowered_stat);
-}
-
-/**
- * Invert the lowered/raised  status of a widget.
- * @param widget_index index of this widget in the window
- */
-inline void Window::ToggleWidgetLoweredState(byte widget_index)
-{
-	assert(widget_index < this->widget_count);
-	ToggleBit(this->widget[widget_index].display_flags, WIDG_LOWERED);
-}
-
-/**
- * Marks a widget as lowered.
- * @param widget_index index of this widget in the window
- */
-inline void Window::LowerWidget(byte widget_index)
-{
-	SetWidgetLoweredState(widget_index, true);
-}
-
-/**
- * Marks a widget as raised.
- * @param widget_index index of this widget in the window
- */
-inline void Window::RaiseWidget(byte widget_index)
-{
-	SetWidgetLoweredState(widget_index, false);
-}
-
-/**
- * Gets the lowered state of a widget.
- * @param widget_index index of this widget in the window
- * @return status of the widget ie: lowered = true, raised= false
- */
-inline bool Window::IsWidgetLowered(byte widget_index) const
-{
-	assert(widget_index < this->widget_count);
-	return HasBit(this->widget[widget_index].display_flags, WIDG_LOWERED);
-}
-
-/**
- * Align widgets a and b next to each other.
- * @param widget_index_a  the left widget
- * @param widget_index_b  the right widget (fixed)
- */
-inline void Window::AlignWidgetRight(byte widget_index_a, byte widget_index_b)
-{
-	assert(widget_index_a < this->widget_count);
-	assert(widget_index_b < this->widget_count);
-	int w = this->widget[widget_index_a].right - this->widget[widget_index_a].left;
-	this->widget[widget_index_a].right = this->widget[widget_index_b].left - 1;
-	this->widget[widget_index_a].left  = this->widget[widget_index_a].right - w;
-}
-
-/**
- * Get the width of a widget.
- * @param widget_index  the widget
- * @return width of the widget
- */
-inline int Window::GetWidgetWidth(byte widget_index) const
-{
-	assert(widget_index < this->widget_count);
-	return this->widget[widget_index].right - this->widget[widget_index].left + 1;
-}
 
 #endif /* WINDOW_GUI_H */
