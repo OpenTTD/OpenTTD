@@ -2,8 +2,8 @@
 
 /** @file endian_type.hpp Definition of various endian-dependant macros. */
 
-#ifndef ENDIAN_TYPE_H
-#define ENDIAN_TYPE_H
+#ifndef ENDIAN_TYPE_HPP
+#define ENDIAN_TYPE_HPP
 
 #if defined(ARM) || defined(__arm__) || defined(__alpha__)
 	#define OTTD_ALIGNMENT 1

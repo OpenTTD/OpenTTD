@@ -2,8 +2,8 @@
 
 /** @file endian_func.hpp Function to handling different endian machines. */
 
-#ifndef ENDIAN_FUNC_H
-#define ENDIAN_FUNC_H
+#ifndef ENDIAN_FUNC_HPP
+#define ENDIAN_FUNC_HPP
 
 #include "endian_type.hpp"
 #include "bitmath_func.hpp"

@@ -2,8 +2,8 @@
 
 /** @file dbg_helpers.h Functions to be used for debug printings. */
 
-#ifndef DBG_HELPERS
-#define DBG_HELPERS
+#ifndef DBG_HELPERS_H
+#define DBG_HELPERS_H
 
 #include <new>
 #include <map>
@@ -163,4 +163,4 @@ struct DumpTarget {
 	}
 };
 
-#endif /* DBG_HELPERS */
+#endif /* DBG_HELPERS_H */
