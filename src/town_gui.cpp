@@ -598,7 +598,7 @@ void CcBuildTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	}
 }
 
-static const Widget _scen_edit_town_gen_widgets[] = {
+static const Widget _found_town_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,   11,   147,     0,    13, STR_0233_TOWN_GENERATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,  148,   159,     0,    13, 0x0,                      STR_STICKY_BUTTON},
@@ -613,7 +613,7 @@ static const Widget _scen_edit_town_gen_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,    68,    79, STR_02A2_MEDIUM,             STR_02A4_SELECT_TOWN_SIZE},
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,    81,    92, STR_02A3_LARGE,              STR_02A4_SELECT_TOWN_SIZE},
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,    81,    92, STR_SELECT_TOWN_SIZE_RANDOM, STR_02A4_SELECT_TOWN_SIZE},
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    96,   107, STR_SCENARIO_EDITOR_CITY,    STR_SCENARIO_EDITOR_CITY_TOOLTIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    96,   107, STR_FOUND_TOWN_CITY,         STR_FOUND_TOWN_CITY_TOOLTIP},
 
 {      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   147,   108,   121, STR_TOWN_ROAD_LAYOUT,           STR_NULL},
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,   122,   133, STR_SELECT_LAYOUT_ORIGINAL,     STR_SELECT_TOWN_ROAD_LAYOUT},
@@ -625,7 +625,7 @@ static const Widget _scen_edit_town_gen_widgets[] = {
 {   WIDGETS_END},
 };
 
-struct ScenarioEditorTownGenerationWindow : Window
+struct FoundTownWindow : Window
 {
 private:
 	enum TownScenarioEditorWidget {
@@ -651,7 +651,7 @@ private:
 	static TownLayout town_layout;
 
 public:
-	ScenarioEditorTownGenerationWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	FoundTownWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->FindWindowPlacementAndResize(desc);
 		town_layout = _settings_game.economy.town_layout;
@@ -762,19 +762,19 @@ public:
 	}
 };
 
-TownSize ScenarioEditorTownGenerationWindow::town_size = TS_MEDIUM; // select medium-sized towns per default
-bool ScenarioEditorTownGenerationWindow::city;
-TownLayout ScenarioEditorTownGenerationWindow::town_layout;
+TownSize FoundTownWindow::town_size = TS_MEDIUM; // select medium-sized towns per default;
+bool FoundTownWindow::city;
+TownLayout FoundTownWindow::town_layout;
 
-static const WindowDesc _scen_edit_town_gen_desc = {
+static const WindowDesc _found_town_desc = {
 	WDP_AUTO, WDP_AUTO, 160, 162, 160, 162,
-	WC_SCEN_TOWN_GEN, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
-	_scen_edit_town_gen_widgets,
+	WC_FOUND_TOWN, WC_NONE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
+	_found_town_widgets,
 };
 
 void ShowBuildTownWindow()
 {
 	if (_game_mode != GM_EDITOR && !IsValidCompanyID(_local_company)) return;
-	AllocateWindowDescFront<ScenarioEditorTownGenerationWindow>(&_scen_edit_town_gen_desc, 0);
+	AllocateWindowDescFront<FoundTownWindow>(&_found_town_desc, 0);
 }
