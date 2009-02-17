@@ -856,6 +856,10 @@ void GenerateLandscape(byte mode)
 		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_settings_game.game_creation.landscape == LT_TROPIC) ? 3 + gwp_desert_amount : 3);
 		GenerateTerrainPerlin();
 	} else {
+		if (_settings_game.construction.freeform_edges) {
+			for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, 0));
+			for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(0, y));
+		}
 		switch (_settings_game.game_creation.landscape) {
 			case LT_ARCTIC: {
 				SetGeneratingWorldProgress(GWP_LANDSCAPE, 2);
