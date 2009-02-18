@@ -1797,7 +1797,7 @@ void IConsoleStdLibRegister()
 	IConsoleCmdHookAdd("rcon",             ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
 
 	IConsoleCmdRegister("join",            ConJoinCompany);
-	IConsoleCmdHookAdd("join",             ICONSOLE_HOOK_ACCESS, ConHookClientOnly);
+	IConsoleCmdHookAdd("join",             ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
 	IConsoleAliasRegister("spectate",      "join 255");
 	IConsoleCmdRegister("move",            ConMoveClient);
 	IConsoleCmdHookAdd("move",             ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
