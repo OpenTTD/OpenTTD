@@ -1213,7 +1213,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}'n Lys v
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Sper alle
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Ontsper alle
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Nywerhede
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% uitgevoer)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% uitgevoer)
@@ -3158,7 +3157,7 @@ STR_NOT_REPLACING                                               :{BLACK}Word nie
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Geen voertuig gekies
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Kies die enjin tipe te vervang
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Kies die nuwe enjin tipe wat jy wil gebriuk in plaas van die linker gekose enjin tipe
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Druk om te stop die vervanger van die enjin tipe gekose links
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Druk om die vervaardiging van die linker gekose enjin tipe te stop
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Druk om vervanging van die linker gekose enjin tipe met die regter gekose enjin tipe te begin
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Kies die spoortipe waarvoor jy die enjines wil  vervang
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Toon aan watter enjin die linker gekose enjin mee vervang moet word , indien enige
@@ -3284,6 +3283,7 @@ STR_NORTHWEST                                                   :{BLACK}Noordwes
 STR_NORTHEAST                                                   :{BLACK}Noordoos
 STR_SOUTHEAST                                                   :{BLACK}Suidoos
 STR_SOUTHWEST                                                   :{BLACK}Suidwes
+STR_BORDER_FREEFORM                                             :{BLACK}Vryeform
 STR_BORDER_WATER                                                :{BLACK}Water
 
 ########### String for new airports
@@ -3454,6 +3454,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_ACCEPT                                                   :{BLACK}Aanvaar
+STR_AI_CANCEL                                                   :{BLACK}Kanseleer
 ########
 
 ############ town controlled noise level
@@ -3462,6 +3464,13 @@ STR_STATION_NOISE                                               :{BLACK}Geraas g
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipe
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Naam
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Naam van die inhoud
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Selekteer alles
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Merk al die inhoud wat afgelaai moet word
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Begin om die geselekteerde inligting af te laai
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Jy het hierdie reeds
 
 
 

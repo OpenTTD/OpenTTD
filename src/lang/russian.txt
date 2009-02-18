@@ -647,9 +647,16 @@ STR_02A2_MEDIUM                                                 :{BLACK}Сред
 STR_02A3_LARGE                                                  :{BLACK}Большой
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Случайно
 STR_FOUND_TOWN_CITY                                             :{BLACK}Город
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Большие города растут быстрее, чем маленькие {} В зависимости от настроек, они при создании имеют больший размер.
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Выбор размера города
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Размер города:
 
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Сеть городских дорог:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Выбрать алгоритм создания сети городских дорог
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Оригинальная
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Улучшенная
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3
 STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Случайно
 
 STR_02B6                                                        :{STRING}  -  {STRING}
@@ -839,7 +846,9 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Форм
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Формат, в котором будут сохраняться снимки экрана
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Основной графический сет
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Выбрать осовной графический сет для использования
 
 STR_AUTOSAVE_1_MONTH                                            :Каждый месяц
 STR_AUTOSAVE_FAILED                                             :{WHITE}Ошибка автосохранения
@@ -1074,11 +1083,13 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :только о
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :только ПМС
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :все
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Тип сети городских дорог для новых городов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :старый алгоритм
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :улучшенный алгоритм
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :решёткой 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :решёткой 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :случайно
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Городам разрешено строить дороги: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Разрешить городам контролировать уровень шума для аэропортов: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Положение главной панели инструментов: {ORANGE}{STRING}
@@ -3602,6 +3613,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Выбр
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Выбрать весь контент, требующий обновления для загрузки
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Снять выделение
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Ничего не загружать
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Введите строку фильтра
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Введите ключевое слово для фильтрации списка
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Наим. фильтра:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Скачать
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Начать загрузку выбранного контента
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Всего для загруки: {WHITE}{BYTES}

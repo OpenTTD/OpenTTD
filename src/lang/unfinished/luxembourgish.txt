@@ -544,6 +544,7 @@ STR_032F_AUTOSAVE                                               :{RED}AUTOSPÄIC
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Wielt 'Ezy Street Musék' programme
 
 STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 ############ end of townname region
@@ -980,10 +981,79 @@ STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Unzuel 
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maximalen ufanks Kredit: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Ufanks Zënnssaatz: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Ënnerhaalskäschten fir Gefiehrter: {ORANGE}{STRING}
+STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Baugeschwindegkeet vun den Konkurrenten: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Futti goen vun Gefiehrter: {ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Subventiounmultiplikator: {ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Käschten vun den Konstruktiounen: {ORANGE}{STRING}
+STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Terrain: {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Unzuel vun Mieren/Séier: {ORANGE}{STRING}
+STR_6813_ECONOMY                                                :{LTBLUE}Economie: {ORANGE}{STRING}
+STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Zuch zerècksetzen(dréien): {ORANGE}{STRING}
+STR_6815_DISASTERS                                              :{LTBLUE}Katastrophen: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_6816_LOW                                                    :Wéinech
+STR_6817_NORMAL                                                 :Normal
+STR_6818_HIGH                                                   :Vill
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
+STR_681B_VERY_SLOW                                              :Ganz Lues
+STR_681C_SLOW                                                   :Lues
+STR_681D_MEDIUM                                                 :Mëttel
+STR_681E_FAST                                                   :Schnell
+STR_681F_VERY_FAST                                              :Ganz Schnell
+STR_6820_LOW                                                    :Wéinech
+STR_6821_MEDIUM                                                 :Mëttel
+STR_6822_HIGH                                                   :Vill
+STR_6823_NONE                                                   :Keng
+STR_6824_REDUCED                                                :Manner
+STR_6825_NORMAL                                                 :Normal
+STR_6826_X1_5                                                   :x1.5
+STR_6827_X2                                                     :x2
+STR_6828_X3                                                     :x3
+STR_6829_X4                                                     :x4
+STR_682A_VERY_FLAT                                              :Ganz Flaach
+STR_682B_FLAT                                                   :Flaach
+STR_682C_HILLY                                                  :Hiwelech
+STR_682D_MOUNTAINOUS                                            :Bierger
+STR_682E_STEADY                                                 :Konstant
+STR_682F_FLUCTUATING                                            :Variabel
+STR_6830_IMMEDIATE                                              :Direkt
+STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 Méint nom Start
+STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 Méint nom Start
+STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 Méint nom Start
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Um Ënn vun der Streck, an an den Statiounen
+STR_6835_AT_END_OF_LINE_ONLY                                    :Um Ënn vun der Streck nëmmen
+STR_6836_OFF                                                    :Aus
+STR_6837_ON                                                     :Un
+STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Weist Bäschtenlëscht
 
 ##id 0x7000
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Company {COMMA})
+STR_7004_NEW_FACE                                               :{BLACK}Néit Gesiicht
+STR_7005_COLOUR_SCHEME                                          :{BLACK}Faarw Schéma
+STR_7006_COLOUR_SCHEME                                          :{GOLD}Faarw Schéma:
+STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Neien Faarw Schéma
+STR_7008_COMPANY_NAME                                           :{BLACK}Firmennumm
+STR_7009_PRESIDENT_NAME                                         :{BLACK}Managernumm
+STR_700A_COMPANY_NAME                                           :Firmennumm
+STR_700B_PRESIDENT_S_NAME                                       :Numm vum Manager
+STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Kann den Firmennumm nët änneren...
+STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Kann den Numm vum Manager nët änneren...
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finanzen {BLACK}{COMPANYNUM}
+STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Ausgaaben/Ankommen
+STR_7010                                                        :{WHITE}{NUM}
+STR_7011_CONSTRUCTION                                           :{GOLD}Konstruktioun
+STR_7012_NEW_VEHICLES                                           :{GOLD}Néi Gefiehrer
+STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Zuch Betriebskäschten
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Stroossengefiehrer Betriebskäschten
+STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Fliiger Betriebskäschten
+STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Shëff Betriebskäschten
+STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Besëtzt Ënnerhalt
+STR_7018_TRAIN_INCOME                                           :{GOLD}Zuch Ankommen
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Stroossengefiehrer Ankommen
+STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Fliiger Ankommen
 
 
 

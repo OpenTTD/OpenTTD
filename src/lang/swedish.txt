@@ -443,6 +443,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Markinformation
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Kostnad att röja: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kostnad att röja: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Inkomst vid rensning: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Otillgänglig
 STR_01A7_OWNER                                                  :{BLACK}Ägare: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Vägens ägare: {LTBLUE}{STRING}
@@ -687,6 +688,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Genoms
 STR_02D5_LAND_BLOCK_INFO                                        :Information om mark
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Visa/dölj konsolen
+STR_AI_DEBUG_MENU                                               :AI Debuggning
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Gigantisk Screenshot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Om 'OpenTTD'
@@ -842,6 +844,9 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Skärmdu
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Välj filformat för skärmdump
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Grafikpaket som standard
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Välj vilket grafikpaket som ska användas som standard
 
 STR_AUTOSAVE_1_MONTH                                            :Varje månad
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosparning misslyckades
@@ -887,6 +892,7 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} har för få ordrar i schemat
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} har en ogiltig order
 STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} har dubblerade destinationer
 STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} har en felaktig station ibland destinationerna
 # end of order system
@@ -975,6 +981,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Höjkar
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Motsols
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Medsols
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Vilken nivåhöjd en platt scenario-karta får: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Tillåt förändring av rutorna vid kartans kanter: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}En eller fler rutor vid den norra gränsen är inte tomma
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}En eller fler rutor vid en av gränserna är inte vatten
 
@@ -1043,6 +1050,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Förbju
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Förbjud skepp för datorn: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillåt datorer i flerspelarläge: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes innan datorspelaren är avstängd: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Visa serviceintervall i procent: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard serviceintervall för tåg: {ORANGE}{STRING} dagar/%
@@ -1088,6 +1096,8 @@ STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centrerad
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Höger
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Fönstersnäppsradie: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fönstersnäppsradie: {ORANGE}avaktiverad
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Fönstrens mjuka gräns (Inte Klistrade): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Fönstrens mjuka gräns (Inte Klistrade): {ORANGE}Avstängd
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Stadens tillväxthastighet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ingen
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Långsamt
@@ -1106,9 +1116,13 @@ STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Station
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Motståndare
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Skärminställningar
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interagera
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Frakthantering
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datorspelare
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoförnya
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servicing
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Planering av resrutt
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tåg
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Städer
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrier
@@ -1456,6 +1470,7 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :utkastad av ser
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :försökte fuska
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servern är full
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Spelet pausat (Inte tillräckligt med spelare)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Spelet fortsätter (Tillräckligt med spelare)
@@ -1471,6 +1486,7 @@ STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} ha
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} har lämnat spelet ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} har ändrat hans/hennes namn till {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} gav ditt företag {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** You gave {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Företaget] :
 STR_NETWORK_CHAT_COMPANY                                        :[Företaget] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Företaget] Till {STRING}: {WHITE}{STRING}
@@ -3240,6 +3256,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klicka f
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skyltlista - {COMMA} Skylt{P "" ar}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Order att förändra frakttyp stoppades {VEHICLE}
 
 ############ Lists rail types
 
@@ -3338,6 +3355,8 @@ STR_SOUTHEAST                                                   :{BLACK}Sydost
 STR_SOUTHWEST                                                   :{BLACK}Sydväst
 STR_BORDER_FREEFORM                                             :{BLACK}Frihand
 STR_BORDER_WATER                                                :{BLACK}Vatten
+STR_BORDER_RANDOM                                               :{BLACK}På måfå
+STR_BORDER_RANDOMIZE                                            :{BLACK}På måfå
 STR_BORDER_MANUAL                                               :{BLACK}Manuell
 
 ########### String for new airports
@@ -3367,6 +3386,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Yta: {NU
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
@@ -3526,11 +3546,31 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}Inställningar för datorspelare
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Visa inställningar för datorspelare
+STR_AI_DEBUG                                                    :{WHITE}Felsökning av datorspelare
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Namn på datorspelaren
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Ladda om datorspelaren
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Stoppa datorspelaren, ladda om scriptet och starta sedan om datorspelaren
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Felsökning av datorspelaren är bara tillgänglig för servern
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguration av datorspelaren
+STR_AI_CHANGE                                                   :{BLACK}Välj datorspelare
 STR_AI_CONFIGURE                                                :{BLACK}Konfigurera
+STR_AI_CHANGE_TIP                                               :{BLACK}Ladda en annan datorspelare
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Konfigurera datorspelarens parametrar
+STR_AI_LIST_TIP                                                 :{BLACK}Alla datorspelare som kommer laddas nästa spelomgång
+STR_AI_LIST_CAPTION                                             :{WHITE}Tillgängliga datorspelare
+STR_AI_AILIST_TIP                                               :{BLACK}Klicka för att välja en datorspelare
 STR_AI_ACCEPT                                                   :{BLACK}Acceptera
+STR_AI_ACCEPT_TIP                                               :{BLACK}Välj markerad datorspelare
 STR_AI_CANCEL                                                   :{BLACK}Avbryt
+STR_AI_CANCEL_TIP                                               :{BLACK}Ändra inte datorspelare
 STR_AI_CLOSE                                                    :{BLACK}Stäng
 STR_AI_RESET                                                    :{BLACK}Återställ
+STR_AI_HUMAN_PLAYER                                             :Mänsklig spelare
+STR_AI_RANDOM_AI                                                :Slumpa datorspelare
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Datorspelarens parametrar
+STR_AI_AUTHOR                                                   :Upphovsman:
 STR_AI_VERSION                                                  :Version:
 ########
 
@@ -3542,7 +3582,10 @@ STR_STATION_NOISE                                               :{BLACK}Generera
 ############ Downloading of content from the central server
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD har byggts utan stöd för "zlib"...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ladda ned innehåll är inte möjligt!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Standardgrafikinställningar
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :Datorspelare
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Datorspelarbibliotek
 STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Höjdkarta
 STR_CONTENT_TITLE                                               :{WHITE}Innehåll laddas hem
@@ -3557,12 +3600,16 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Välj up
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Markera allt innehåll som är en uppgradering på befintligt innehåll för nedladdning
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Avmarkera allt
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Markera att inte ladda hem någonting
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Skriv in sökfilter
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Skriv in ett sökord att filtrera listan efter
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter för Tagg/namn:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Ladda ned
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Börja ladda hem valt innehåll
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total storlek på nedladdning: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INNEHÅLLSINFORMATION
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Du har _inte_ valt att ladda ned detta
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Du har valt att ladda ned detta
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}De filer som behövs har markerats för nedladdning
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Du har redan denna
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Detta innehåll är okänt och kan inte laddas ned genom OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Denna används istället för {STRING}
@@ -3573,6 +3620,7 @@ STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {W
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Typ: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Nedladdningsstorlek: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Vald på grund av: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Filer som behövs: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Taggar: {WHITE}{STRING}
 
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Laddar ned innehåll...

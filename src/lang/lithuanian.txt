@@ -2634,6 +2634,8 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Per daug
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Negali iterpti naujos uzduoties...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Sios uzduoties negalima istrinti...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Sios uzduoties negalima keisti...
+STR_CAN_T_ADD_ORDER                                             :{WHITE}automobilis negali nukakti iki stotelės
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}automobilis dalinantis grafiką negali nukakti iki stotelės
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Transporto priemones perkelti negalima...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Galinis variklis visada seks is paskos priekio
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2664,8 +2666,10 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Rodyti d
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Rodyti detalia vagonu talpos informacija
 STR_SHOW_TOTAL_CARGO                                            :{BLACK}Rodyti bendra traukinio talpos informacija pagal kroviniu tipa
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Nurodymų sąrašas - nurodymas pažymimas ant jo spragtelėjus. Spregtelėjimas laikant VALD (CTRL) nukelia į stotį
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Praleisti esamą nurodymą ir pradėti sekantį. Ctrl+spaudimas praleidžia nurodymą
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Istrinti pazymeta uzduoti
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Iterpti nauja uzduoti pries pazymeta, arba iterpti saraso pabaigoje
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Grafikas - spausti ant nurodymo paryškinant jį.
 STR_SERVICE_HINT                                                :{BLACK}Nevykdyti sios uzduoties iki tol, kol nereikes remonto
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kaina: {CURRENCY} Svoris: {WEIGHT_S}{}Greitis: {VELOCITY}  Galia: {POWER}{}Eksplotacijos išlaidos: {CURRENCY}/metus{}Talpa: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Sugedo
@@ -2685,15 +2689,32 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Traukinio vaziavimo krypties pakeisti negalima...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Pervardinti traukinio tipa
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Neimanoma pervardinti traukinio tipo...
+STR_CLEAR_TIME                                                  :{BLACK}Ištrinti laiką
+STR_RESET_LATENESS                                              :{BLACK}Paleisti vėlavimo skaitiklį
 
 STR_TRAIN_STOPPING                                              :{RED}Stabdoma
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stabdomas, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Nesuderinami begiai
 STR_TRAIN_NO_POWER                                              :{RED}Nėra energijos
 STR_TRAIN_START_NO_CATENARY                                     :Šiuose bėgiuose trūkta grandies, taigi traukiniai negali judėti
+STR_TRAIN_STUCK                                                 :{ORANGE}Laukiama laisvo kelio
 
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Naujas{STRING} -  {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Neįmanoma parduoti sunaikintos transporto priemonės...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Neįmanoma pertvarkyti sunaikinto transporto...
 
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Neįmanoma sudaryti grafiko...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Transportas gali laukti tik stotelėse.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}transporto priemonė čia nestoja.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Keisti laiką
+STR_TIMETABLE_STATUS_ON_TIME                                    :Transporto priemonė atvažiuoja laiku
+STR_TIMETABLE_STATUS_LATE                                       :Transporto priemonė vėluoja {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :Transporto priemonė skuba {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :Apvažiuos visą maršrutą per {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Šis maršrutas užtruks mažiausiai {STRING} (ne viskas turi nustatytą laiką)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto užpildymas
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automobilis kelyje
@@ -2714,6 +2735,7 @@ STR_9012_CAPACITY                                               :{BLACK}Talpa: {
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...automobilis turi buti sustabdytas garaze
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Automobilio parduoti negalima...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Automobilio sustabdyti/paleisti negalima...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} laukia depe
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Uzduotis: {TOWN} garazas
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Uzduotis: {TOWN} garazas, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servisas{TOWN} Masinu Depe
@@ -2734,6 +2756,7 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Rodyti a
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Automobiliu pasirinkimo sarasas - paspausk ant automobilio jei nori detalesnes informacijos
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Isigyti pazymeta automobili
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kaina: {CURRENCY}{}Greitis: {VELOCITY}{}Eksploatavimo kaina: {CURRENCY}/met{}Talpa: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Talpa: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
@@ -2743,6 +2766,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Automobi
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Pavadinti automobili
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Gyventojai džiūgauja. . .{}Pirmas autobusas atvyko į {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Gyventojai džiūgauja. . .{}Pirmas sunkvežimis atvyko į {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Miestelėnai švenčia . . .{}Pirmas Tramvajus atvyko į {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Miestelėnai švenčia . . .{}Pirmas krovininis tramvajus atvyko į {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Automobilio avarija!{}Automobilio vairuotojas zuvo po susidurimo su traukiniu
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Automobilio avarija!{}Žuvo {COMMA} keleiv(P is iai ių) automobiliui susidūrus su traukiniu
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Automobilis negali apsisukti...
@@ -2759,6 +2784,9 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Neimanom
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Nurodykite šios transporto priemonės pervežamą krovinių tipą
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Kanalų konstrukcija
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Kanalų konstrukcija
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Kanalai
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Neimanoma pastatyti uosto cia...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Laivu depas
 STR_9804_NEW_SHIPS                                              :{BLACK}Naujas laivas
@@ -2787,6 +2815,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Kursas:
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Kursas: {TOWN} laivu depas, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servisas{TOWN} Laivu Depe
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servisas {TOWN} Laivu Depe, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} laukia doke
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Statyti laivu doka
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Statyti laivu depa (nauju laivu isigijimui, remontui)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Laivai - paspausk ant laivo, jei nori daugiau informacijos
@@ -2809,6 +2838,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Negalima
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Zmones dziaugiasi...{}Pirmas laivas atvyko i {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Statyti pludura, kuris bus naudojamas kaip tarpine stotele
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Negalima cia statyti pluduro...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Statyti akveduką
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Čia akveduko nepastatysite...
 STR_9836_RENAME                                                 :{BLACK}Pervardinti
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Pakeisti laivo tipa
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Pakeisti laivo varda
@@ -2847,6 +2878,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Kursas:
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Kursas: {STATION} angarasangar, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Sevisas {STATION} Angare
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Servisas{STATION} Angare, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} laukia angare
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Oro uostai
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Negalima cia statyti oro uosto...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lektuvas dabar skrenda
@@ -2902,6 +2934,9 @@ STR_BRIBE_FAILED                                                :{WHITE}Tavo meg
 STR_BRIBE_FAILED_2                                              :{WHITE}issaiskinta vietiniu pareigunu
 STR_BUILD_DATE                                                  :{BLACK}Pastatytas: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Stotelės rūšis: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Stotelės tipas: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Issamus veiklos ivertinimas
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaliai
@@ -2933,8 +2968,11 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Kompanij
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Viso taškų (iš visų galimų)
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Papild. grafikos nustatymai
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Atvaizduoti NewGRF nustatymus
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Papild. grafikos nustatymai (NewGRF)
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Įvykdyti pakeitimus
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Kaitalioti paletę
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Kaitalioja parinkto NewGRF paletę.{}Darykite jei pajungta grafika nuspalvinta rožine spalva
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Nustatyti parametrus
 STR_NEWGRF_FILENAME                                             :{BLACK}Failo vardas: {SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}Paletė: {SILVER}{STRING}
@@ -2943,6 +2981,9 @@ STR_NEWGRF_MD5SUM                                               :{BLACK}MD5suma:
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Jūs norite atlikti pakeitimus veikiančiam žaidimui: OpenTTD gali pakibti.{}Ar jūs tikrai norite tai atlikti?
 
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Įspėjimas: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Klaida: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalinė klaida: {SILVER}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} neveiks su TTDPatch versija nurodyta pagal OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} skirtas {STRING} TTD versijai.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} yra pritaikytas naudojimui su {STRING}
@@ -2954,8 +2995,17 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF failas, kur
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Per daug NewGRF'ų įkelta.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Įkėlimas {STRING} kaip statinio NewGRF su {STRING} gali sukelti desinchronizacija.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nenumatytas spraitas.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nežinomas veiksmo (Action 0) nustatymas.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Bandymas naudoti netinkamą ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} turi sugadintą spraitą. Visi sugadinti spraitai bus rodomi kaip raudoni klaustukai (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Turi veiksmo (Action 8) kelis vienetus.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Užkrauti parinktą nustatymą
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Išsaugoti nustatymą
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Išsaugoti esamą sąrašą kaip nuostatą
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Įvesti vardą nuostatai
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Ištrinti nustatymus
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Ištrinti dabar parinktas nuostatas
 STR_NEWGRF_ADD                                                  :{BLACK}Pridėti
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Pridėti Papild. grafikos failą į sąrašą
 STR_NEWGRF_REMOVE                                               :{BLACK}Pašalinti
@@ -2982,6 +3032,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Atitink
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Suderinami grafikos failai panaudoti vietoj trūkstamų
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Trūkstami grafikos failai nenaudojami
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Trūksta GRF failų
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Paleidimas gali užlaužti OpenTTD. Neraportuokite šios rūšies gedimų!{}Ar norite paleisti toliau?
 
 
 

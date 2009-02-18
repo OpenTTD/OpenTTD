@@ -734,6 +734,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Setiap 12 bulan
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Mulai permainan baru
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Membuka permainan yang telah disimpan
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Buat kustomisasi skenario permainan
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Memulai permainan bersama
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Tampilkan opsi permainan
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Tampilkan opsi tingkat kesulitan
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Mulai permainan baru, menggunakan skenario kustomisasi
@@ -1239,7 +1240,6 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Pesan La
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Daftar pesan berita-berita yang ada
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Matikan semua
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Aktifkan semua
-
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% terkirim)
@@ -3091,6 +3091,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Banyakny
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total Nilai Keluar dari nilai-nilai yang mungin
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Pengaturan NewGRF
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Tampilkan setting NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Pengaturan NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Terapkan Perubahan
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Tandai palet
@@ -3546,6 +3547,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Pengaturan AI
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Tampilkan setting AI
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Name of the AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reload AI

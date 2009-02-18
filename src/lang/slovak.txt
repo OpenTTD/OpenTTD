@@ -755,6 +755,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transp
 STR_02D5_LAND_BLOCK_INFO                                        :Informacie o pozemku
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Zobrazit / skryt konzolu
+STR_AI_DEBUG_MENU                                               :AI Oprava
 STR_02D7_SCREENSHOT_CTRL_S                                      :ScreenShot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Velky ScreenShot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :O hre 'OpenTTD'

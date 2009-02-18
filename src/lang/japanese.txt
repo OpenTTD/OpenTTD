@@ -646,6 +646,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}市町�
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}町のサイズを選択します
 STR_02A5_TOWN_SIZE                                              :{YELLOW}町のサイズ：
 
+
 STR_02B6                                                        :{STRING} - {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}最後のメッセージ／報道を表示します
 STR_OFF                                                         :切
@@ -830,6 +831,7 @@ STR_OPTIONS_RES_TIP                                             :{BLACK}画面�
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}スクリーンショットフォーマット
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}スクリーンショットのファイルフォーマットを選択します
+
 
 STR_AUTOSAVE_1_MONTH                                            :毎月
 STR_AUTOSAVE_FAILED                                             :{WHITE}自動保存に失敗しました
@@ -1019,6 +1021,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}コン�
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}マルチプレイヤーゲームで AI を許容（実験的）：{ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}修理間隔をパーセントで表示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}列車のデフォルトの修理間隔：{ORANGE}{STRING}日間／％
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}列車のデフォルトの修理間隔：{ORANGE}切
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}道路車両のデフォルトの修理間隔：{ORANGE}{STRING}日間／％
@@ -1088,12 +1091,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}電車
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}市町村
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}産業
 
-STR_CONFIG_SETTING_DISABLED                                     :切
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}設定を変更します
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}電車の経路処理アルゴリズム：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP{RED}（すすめない）
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1106,6 +1103,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}船舶�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :本来{BLUE}（おすすめ）
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF{RED}（すすめない）
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}地図のX軸の長さ：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}地図のY軸の長さ：{ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :切
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}設定を変更します
 
 STR_TEMPERATE_LANDSCAPE                                         :温帯国
 STR_SUB_ARCTIC_LANDSCAPE                                        :亜寒帯国
@@ -1198,7 +1204,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}最近�
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}すべてを切
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}すべてを入
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}産業
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK}（{CARGO}{STRING}）{YELLOW}（{COMMA}％が運送済み）
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK}（{CARGO}{STRING}／{CARGO}{STRING}）{YELLOW}（{COMMA}％／{COMMA}％が運送済み）
@@ -1212,7 +1217,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}列車�
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}列車が運送する貨物を選択
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}選択した貨物種類に再装備
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}列車が再装備できません...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}修理間隔をパーセントで表示：{ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}生産量を変更
 
 ############ network gui strings
@@ -1468,11 +1472,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :秘密メッセ
 STR_NETWORK_SEND                                                :{BLACK}送信
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}地図のX軸の長さ：{ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}地図のY軸の長さ：{ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -2539,6 +2538,12 @@ STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}列車があります
 STR_ORDER_NON_STOP                                              :{BLACK}直行便
+STR_ORDER_NO_UNLOAD                                             :（積み荷を降ろせずに貨物を積む）
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :（積み荷を降ろせずに満載する）
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :（積み荷を降ろせずにいかに満載する）
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}選択した指令の停止方法を変更します
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}選択した指令の積み込む方法を変更します
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}選択した指令の降ろす方法を変更します
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}詳しい注文を挿入
@@ -2546,11 +2551,17 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :近辺の電車
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :近辺の格納庫へ行く
 STR_ORDER_NEAREST_DEPOT                                         :最も近い
 STR_ORDER_NEAREST_HANGAR                                        :最も近い格納庫
+STR_ORDER_SERVICE_AT                                            :修理：
+STR_ORDER_SERVICE_NON_STOP_AT                                   :回送して修理：
 STR_ORDER_TRAIN_DEPOT                                           :電車庫
+STR_ORDER_ROAD_DEPOT                                            :車庫
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} 格納庫
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :常に行く
+STR_ORDER_DROP_SERVICE_DEPOT                                    :必要であれば修理
+STR_ORDER_DROP_HALT_DEPOT                                       :停止
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}乗り物のデータと比較する値
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}比較に用いる値を入力
@@ -2586,9 +2597,11 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{TOWN}�
 
 STR_INVALID_ORDER                                               :{RED}（不正な指令）
 
+STR_UNKNOWN_STATION                                             :不明な駅
 STR_8812_EMPTY                                                  :{LTBLUE}空
 STR_8813_FROM                                                   :{LTBLUE}{CARGO}（原点：{STATION}）
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO}（原点：{STATION}）（x{NUM}）
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} は電車庫内に停車しています
 STR_8815_NEW_VEHICLES                                           :{BLACK}新規車両
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}列車が長過ぎます
@@ -2615,8 +2628,11 @@ STR_8826_GO_TO                                                  :{BLACK}駅を�
 STR_REFIT                                                       :{BLACK}再装備
 STR_REFIT_TIP                                                   :{BLACK}貨物の種類を選択してください。Control+クリックすると、再装備をキャンセルします。
 STR_REFIT_ORDER                                                 :（{STRING}に改装）
+STR_STOP_ORDER                                                  :（停止）
 STR_TIMETABLE_VIEW                                              :{BLACK}時刻表
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}時刻表を表示します
+STR_ORDER_VIEW                                                  :{BLACK}指令
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}指令を表示します
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE}（指令）
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - 指令終了 - -
 STR_SERVICE                                                     :{BLACK}修理
@@ -2625,6 +2641,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}　価値：{LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}積み降ろし中
+STR_LEAVING                                                     :{LTBLUE}出発中
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}列車は車庫に止めなければなりません
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}列車を電車庫へ回送できません...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}これ以上の指令を追加できません
@@ -2635,6 +2652,7 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}この�
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}この指令を移動できません...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}実行中の指令はスキップできません...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}選択した指令へスキップできません...
+STR_CAN_T_ADD_ORDER                                             :{WHITE}その駅に行けません
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}この車輌を移動できません...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}ダブルヘッドの場合、後部の機関車は常に前部の機関車について行きます
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -3220,6 +3238,8 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}平地�
 STR_SMALLMAP_CENTER                                             :{BLACK}予約地図を現在の場所に移動します
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
+# Strings for map borders at game generation
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}町空港
 STR_CITY_AIRPORT                                                :{BLACK}市空港
@@ -3406,4 +3426,10 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ town controlled noise level
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

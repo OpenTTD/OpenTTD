@@ -2686,6 +2686,7 @@ STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Braukt
 STR_TIMETABLE_STAY_FOR                                          :un palikt līdz{STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :un braukt līdz{STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dien{P a as u}
+STR_TIMETABLE_TICKS                                             :{COMMA} tikšķ{P is i u}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Dodas uz {TOWN} vilcienu depo
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Dodas uz {TOWN} vilcienu depo, {VELOCITY}
@@ -2882,6 +2883,7 @@ STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {C
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Ietilpība: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} transportlīdzek{P lis ļi ļu}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nosaukt transportl.
@@ -3190,6 +3192,7 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Rādīt 
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Rādīt lidaparātus, kuru rīkojumu sarakstos ir šī stacija
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Rādīt kuģus, kuru rīkojumu sarakstos ir šī stacija
 
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Dalītie uzdevumi {COMMA} transportlīdzek{P lim ļiem ļiem}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Rādīt visus ar šo plānu saistītos transportlīdzekļus
 
 ### depot strings
@@ -3211,6 +3214,8 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Automāt
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Automātiski nomainīt visus kuģus depo
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Automātiski nomainīt visus lidaparātus angārā
 
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} vilcien{P s i u}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} ceļa transportlīdzek{P lis ļi ļu}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Kuģ{P is i ""}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Lidaparāt{P s i ""}
 
@@ -3428,6 +3433,9 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Pievienot kopējos transportus
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Izņemt visus transportus
 
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} vilcien{P s i u}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} ceļa transportlīdzek{P lis ļi ļu}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} kuģ{P is i u}
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Lidaparāts
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Pārsaukt grupu
 

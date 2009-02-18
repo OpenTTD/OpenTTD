@@ -769,8 +769,8 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Új ját
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Mentett játék betöltése
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Testreszabott pálya készítése
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Többfős játék indítása
-STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}A játék beállításainak megmutatása
-STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}A nehézségi beállítások megmutatása
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}A játék beállításainak megjelenítése
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}A nehézségi beállítások megjelenítése
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Új játék kezdése saját pályán
 STR_0304_QUIT                                                   :{BLACK}Kilépés
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Kilépés az OpenTTD-ből
@@ -2058,8 +2058,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} termelése a felére csökkent
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Egy rovaráradat {INDUSTRY} pusztulását okozta!{}A termelés a felére csökkent
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...csak a térkép széléhez közel építhető
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} termelés nőtt! {INDUSTRY} mostantól {COMMA}%-al többet termel!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} termelés csökkent! {INDUSTRY} mostantól {COMMA}%-al kevesebbet termel!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING}termelés nőtt! {INDUSTRY} mostantól {COMMA}%-kal többet termel!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING}termelés csökkent! {INDUSTRY} mostantól {COMMA}%-kal kevesebbet termel!
 
 ##id 0x5000
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Másik alagút van az útban
@@ -3469,15 +3469,15 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...ez eg
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...az út másik irányba vezet
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Átlátszósági beállítások
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Keret nélküli állomásnevek bekapcsolása. CTRL+kattintással zárolható
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Fák átlátszóságának bekapcsolása. CTRL+kattintással zárolható
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Épületek átlátszóságának bekapcsolása. CTRL+kattintással zárolható
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Gazdasági létesítmények átlátszóságának bekapcsolása. CTRL+kattintással zárolható
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Építhető elemek (állomások, járműtelepek, ellenőrző pontok) átlátszóságának bekapcsolása. CTRL+kattintással zárolható
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Hidak átlátszóságának bekapcsolása. CTRL+kattintással zárolható
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Átlátszó tereptárgyak (adótornyok, világítótornyok, stb.) átlátszóságának bekapcsolása. CTRL+kattintással zárolható
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Felsővezetékek átlátszóságának bekapcsolása. CTRL+kattintással zárolható
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Átlátszó rakodásjelző bekapcsolása. CTRL+kattintással zárolható
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Keret nélküli állomásnevek bekapcsolása. CTRL+kattintással zárolható.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Fák átlátszóságának bekapcsolása. CTRL+kattintással zárolható.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Épületek átlátszóságának bekapcsolása. CTRL+kattintással zárolható.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Gazdasági létesítmények átlátszóságának bekapcsolása. CTRL+kattintással zárolható.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Építhető elemek (állomások, járműtelepek, ellenőrző pontok) átlátszóságának bekapcsolása. CTRL+kattintással zárolható.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Hidak átlátszóságának bekapcsolása. CTRL+kattintással zárolható.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Tereptárgyak (adótornyok, világítótornyok, stb.) átlátszóságának bekapcsolása. CTRL+kattintással zárolható.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Felsővezetékek átlátszóságának bekapcsolása. CTRL+kattintással zárolható.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Átlátszó rakodásjelző bekapcsolása. CTRL+kattintással zárolható.
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Az objektum ne átlátszó legyen, hanem láthatatlan
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}

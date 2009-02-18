@@ -1216,7 +1216,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Спис
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Изключване на всички
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Включване на всички
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Индустрии
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% превозено)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% превозено)
@@ -1453,6 +1452,9 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Играта п
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :напускам
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} се присъедини към играта
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} пое контрола над компания #{2:NUM}
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} се присъедини като наблюдател
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} създаде нова компания (#{2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} напусна играта ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} си промени името на {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} изпрати {2:CURRENCY} на твоята компания
@@ -1690,6 +1692,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY} спечели субсидия!!{}{}Превоз на {STRING} от {STATION} до {STATION} ще се заплаща тройно през следващата година!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY} спечели субсидия!!{}{}Превоз на {STRING} от {STATION} до {STATION} ще се заплаща четворно през следващата година!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} местни власти отказват да позволят построяването на друго летище в града
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} локалните власти отказват разрешение за летището (твърде шумно)
 STR_2036_COTTAGES                                               :Селски къщи
 STR_2037_HOUSES                                                 :Къщи
 STR_2038_FLATS                                                  :Апартаменти
@@ -1766,6 +1769,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Твър
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Граничи с повече от една гара/товарна платформа
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Твърде много гари/товарни платформи в града
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Твърде много гари/товарни платформи
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Твърде много части на гара
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Твърде много автобусни спирки
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Твърде много гари за камиони
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Твърде близо до друга гара/товарна платформа
@@ -1874,6 +1878,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Запазен�
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Запазената игра е направена от по-нова версия
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Фаилат е непрочетим
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Фаилат е неписуем
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Неуспешна проверкат за валидност на данните
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Списък с хард-дисковете, директориите и запазените игри
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Избрано име за запазена игра
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Изтрий избраната запазената игра
@@ -1959,6 +1964,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 
 ##id 0x5000
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Друг тунел пречи
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Тунела би завършил извън картата
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Не може да бъде изкопан другия край на тунела
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Първо разрушете тунела
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Първо трябва да разрушите моста
@@ -2238,6 +2244,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Прем
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Не може на построиш централен офис...
 STR_7072_VIEW_HQ                                                :{BLACK}Покажи Централния Офис
 STR_RELOCATE_HQ                                                 :{BLACK}Преместване ЦК
+STR_COMPANY_JOIN                                                :{BLACK}Присъедини се
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Присъедини се, управлявайки тази компания
 STR_COMPANY_PASSWORD                                            :{BLACK}Парола
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Постави парола за да предпазиш компанията си от неоторизирани потребители.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Поставяне парола на компанията
@@ -2713,6 +2721,8 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Не м�
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Не може да промениш тази заповед...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Не може да прескочиш настоящата заповед...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Не може да прескочиш до избраната заповед...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}превозното средство не може да отиде до всички спирки
+STR_CAN_T_ADD_ORDER                                             :{WHITE}превозносто средство не може да отиде до тази станция
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Не може да преместиш машината...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Задния локомотив ще следва винаги предния си събрат
 STR_8838_N_A                                                    :Не се предлага{SKIP}
