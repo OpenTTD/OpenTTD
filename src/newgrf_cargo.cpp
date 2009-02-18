@@ -31,7 +31,7 @@ static uint32 CargoGetVariable(const ResolverObject *object, byte variable, byte
 	DEBUG(grf, 1, "Unhandled cargo property 0x%X", variable);
 
 	*available = false;
-	return 0;
+	return UINT_MAX;
 }
 
 

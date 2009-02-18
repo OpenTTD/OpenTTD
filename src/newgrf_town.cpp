@@ -95,5 +95,5 @@ uint32 TownGetVariable(byte variable, byte parameter, bool *available, const Tow
 	DEBUG(grf, 1, "Unhandled town property 0x%X", variable);
 
 	*available = false;
-	return (uint32)-1;
+	return UINT_MAX;
 }

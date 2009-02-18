@@ -102,7 +102,7 @@ static uint32 IndustryTileGetVariable(const ResolverObject *object, byte variabl
 	DEBUG(grf, 1, "Unhandled industry tile property 0x%X", variable);
 
 	*available = false;
-	return (uint32)-1;
+	return UINT_MAX;
 }
 
 static const SpriteGroup *IndustryTileResolveReal(const ResolverObject *object, const SpriteGroup *group)

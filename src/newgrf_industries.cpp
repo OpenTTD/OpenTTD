@@ -380,7 +380,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 	DEBUG(grf, 1, "Unhandled industry property 0x%X", variable);
 
 	*available = false;
-	return (uint32)-1;
+	return UINT_MAX;
 }
 
 static const SpriteGroup *IndustryResolveReal(const ResolverObject *object, const SpriteGroup *group)

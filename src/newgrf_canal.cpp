@@ -56,7 +56,7 @@ static uint32 CanalGetVariable(const ResolverObject *object, byte variable, byte
 	DEBUG(grf, 1, "Unhandled canal property 0x%02X", variable);
 
 	*available = false;
-	return 0;
+	return UINT_MAX;
 }
 
 
