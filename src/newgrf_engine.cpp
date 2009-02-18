@@ -840,6 +840,9 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 			 * as v->cargo_type is temporary changed to the new type */
 			group = use_cache ? v->u.rail.cached_override : GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, v->u.rail.first_engine);
 			if (group != NULL) return group;
+		} else if (v->type == VEH_ROAD) {
+			group = GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, v->u.road.first_engine);
+			if (group != NULL) return group;
 		}
 	}
 
