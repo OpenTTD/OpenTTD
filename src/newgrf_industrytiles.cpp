@@ -69,34 +69,34 @@ static uint32 IndustryTileGetVariable(const ResolverObject *object, byte variabl
 	}
 
 	switch (variable) {
-		 /* Construction state of the tile: a value between 0 and 3 */
-		case 0x40 : return (IsTileType(tile, MP_INDUSTRY)) ? GetIndustryConstructionStage(tile) : 0;
+		/* Construction state of the tile: a value between 0 and 3 */
+		case 0x40: return (IsTileType(tile, MP_INDUSTRY)) ? GetIndustryConstructionStage(tile) : 0;
 
-		case 0x41 : return GetTerrainType(tile);
+		/* Terrain type */
+		case 0x41: return GetTerrainType(tile);
 
 		/* Current town zone of the tile in the nearest town */
-		case 0x42 : return GetTownRadiusGroup(ClosestTownFromTile(tile, UINT_MAX), tile);
+		case 0x42: return GetTownRadiusGroup(ClosestTownFromTile(tile, UINT_MAX), tile);
 
 		/* Relative position */
-		case 0x43 : return GetRelativePosition(tile, inds->xy);
+		case 0x43: return GetRelativePosition(tile, inds->xy);
 
 		/* Animation frame. Like house variable 46 but can contain anything 0..FF. */
-		case 0x44 : return (IsTileType(tile, MP_INDUSTRY)) ? GetIndustryAnimationState(tile) : 0;
+		case 0x44: return (IsTileType(tile, MP_INDUSTRY)) ? GetIndustryAnimationState(tile) : 0;
 
 		/* Land info of nearby tiles */
-		case 0x60 : return GetNearbyIndustryTileInformation(parameter, tile, inds == NULL ? (IndustryID)INVALID_INDUSTRY : inds->index);
+		case 0x60: return GetNearbyIndustryTileInformation(parameter, tile, inds == NULL ? (IndustryID)INVALID_INDUSTRY : inds->index);
 
 		/* Animation stage of nearby tiles */
-		case 0x61 : {
+		case 0x61:
 			tile = GetNearbyTile(parameter, tile);
 			if (IsTileType(tile, MP_INDUSTRY) && GetIndustryByTile(tile) == inds) {
 				return GetIndustryAnimationState(tile);
 			}
-			return 0xFFFFFFFF;
-		}
+			return UINT_MAX;
 
 		/* Get industry tile ID at offset */
-		case 0x62 : return GetIndustryIDAtOffset(GetNearbyTile(parameter, tile), inds);
+		case 0x62: return GetIndustryIDAtOffset(GetNearbyTile(parameter, tile), inds);
 	}
 
 	DEBUG(grf, 1, "Unhandled industry tile property 0x%X", variable);
