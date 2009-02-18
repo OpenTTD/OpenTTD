@@ -1832,6 +1832,13 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 			default: NOT_REACHED();
 			case VEH_TRAIN: {
 				const RailVehicleInfo *rvi = RailVehInfo(engine_type);
+				if (v != NULL && parent_engine_type != INVALID_ENGINE && (UsesWagonOverride(v) || (IsArticulatedPart(v) && rvi->railveh_type != RAILVEH_WAGON))) {
+					/* Wagonoverrides use the coloir scheme of the front engine.
+					 * Articulated parts use the colour scheme of the first part. (Not supported for articulated wagons) */
+					engine_type = parent_engine_type;
+					rvi = RailVehInfo(engine_type);
+					/* Note: Luckily cargo_type is not needed for engines */
+				}
 
 				if (cargo_type == CT_INVALID) cargo_type = rvi->cargo_type;
 				if (rvi->railveh_type == RAILVEH_WAGON) {
@@ -1867,8 +1874,15 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 			}
 
 			case VEH_ROAD: {
+				/* Always use the livery of the front */
+				if (v != NULL && parent_engine_type != INVALID_ENGINE) {
+					engine_type = parent_engine_type;
+					cargo_type = v->First()->cargo_type;
+				}
 				const RoadVehicleInfo *rvi = RoadVehInfo(engine_type);
 				if (cargo_type == CT_INVALID) cargo_type = rvi->cargo_type;
+
+				/* Important: Use Tram Flag of front part. Luckily engine_type refers to the front part here. */
 				if (HasBit(EngInfo(engine_type)->misc_flags, EF_ROAD_TRAM)) {
 					/* Tram */
 					scheme = IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_PASSENGER_TRAM : LS_FREIGHT_TRAM;
@@ -1952,10 +1966,9 @@ SpriteID GetEnginePalette(EngineID engine_type, CompanyID company)
 SpriteID GetVehiclePalette(const Vehicle *v)
 {
 	if (v->type == VEH_TRAIN) {
-		return GetEngineColourMap(
-			(v->u.rail.first_engine != INVALID_ENGINE && (UsesWagonOverride(v) || (IsArticulatedPart(v) && RailVehInfo(v->engine_type)->railveh_type != RAILVEH_WAGON))) ?
-				v->u.rail.first_engine : v->engine_type,
-			v->owner, v->u.rail.first_engine, v);
+		return GetEngineColourMap(v->engine_type, v->owner, v->u.rail.first_engine, v);
+	} else if (v->type == VEH_ROAD) {
+		return GetEngineColourMap(v->engine_type, v->owner, v->u.road.first_engine, v);
 	}
 
 	return GetEngineColourMap(v->engine_type, v->owner, INVALID_ENGINE, v);

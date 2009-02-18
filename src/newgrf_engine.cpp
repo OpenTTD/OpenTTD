@@ -432,7 +432,9 @@ static uint8 LiveryHelper(EngineID engine, const Vehicle *v)
 		if (!IsValidCompanyID(_current_company)) return 0;
 		l = GetEngineLivery(engine, _current_company, INVALID_ENGINE, NULL);
 	} else if (v->type == VEH_TRAIN) {
-		l = GetEngineLivery((v->u.rail.first_engine != INVALID_ENGINE && (IsArticulatedPart(v) || UsesWagonOverride(v))) ? v->u.rail.first_engine : v->engine_type, v->owner, v->u.rail.first_engine, v);
+		l = GetEngineLivery(v->engine_type, v->owner, v->u.rail.first_engine, v);
+	} else if (v->type == VEH_ROAD) {
+		l = GetEngineLivery(v->engine_type, v->owner, v->u.road.first_engine, v);
 	} else {
 		l = GetEngineLivery(v->engine_type, v->owner, INVALID_ENGINE, v);
 	}
