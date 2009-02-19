@@ -1570,7 +1570,7 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Moet eer
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Moet pad eers verwyder
-STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Pad werke in vorder
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Pad werke in verloop
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Pad Konstruksie
 STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Tremweg Konstruksie
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Kies Pad Brug
@@ -2627,7 +2627,7 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Spring oor na b
 STR_CONDITIONAL_NUM                                             :Spring oor na bevel {COMMA} wanneer {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Spring oor na bevel {COMMA} wanneer {STRING} {STRING}
 
-STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Geen rys
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Geen reis
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Reis (Nie gerooster nie)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Reis vir {STRING}
 STR_TIMETABLE_STAY_FOR                                          :en bly vir {STRING}
@@ -2734,8 +2734,8 @@ STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Vee uit 
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Invoeg 'n nuwe opdrag voor die verlig opdrag, of byvoeg na einde van lys
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rooster - kliek op 'n opdrag om dit te verlig
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander die bedrag van tyd die verlig opdrag moes vat
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Skoon die totaal van tyd vir die verlig opdrag
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Herstel die laat teller, so dat die voertuig is op tyd
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Vee uit die totaal van tyd vir die gespesiveerde opdrag
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Herstel die laat teller, so dat die  voertuig op tyd is
 STR_SERVICE_HINT                                                :{BLACK}Sprong die opdraag tensy 'n diens nodig is
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kos: {CURRENCY} Gewig: {WEIGHT_S}{}Spoed: {VELOCITY}  Krag: {POWER}{}Loopkoste: {CURRENCY}/jr{}Kapasitiet: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Komplikasies
@@ -2763,7 +2763,7 @@ STR_TRAIN_STOPPING                                              :{RED}Ophou
 STR_TRAIN_STOPPING_VEL                                          :{RED}Ophou, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Onbestaaanbaar spoor tipes
 STR_TRAIN_NO_POWER                                              :{RED}Geen Krag
-STR_TRAIN_START_NO_CATENARY                                     :Die spoort kort catenary, dus kan die trien nie aanskakel nie
+STR_TRAIN_START_NO_CATENARY                                     :Die spoor kort n kettinglyn, dus kan die trien nie aanskakel nie
 STR_TRAIN_STUCK                                                 :{ORANGE}Wag vir beskikbare pad
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nuwe {STRING} nou beskikbaar!
@@ -2774,7 +2774,7 @@ STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Kan nie 
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Kan nie vernietigte voertuig aanpas nie...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan nie rooster voertuig nie...
-STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Voertuie gan slegs by stasies wag.
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Voertuie kan slegs by stasies wag.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Die voertuig stop nie by die stasie nie.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Verander Tyd
 STR_TIMETABLE_STATUS_ON_TIME                                    :Die voertuig loop tans op tyd
@@ -2783,7 +2783,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Die voertuig lo
 STR_TIMETABLE_TOTAL_TIME                                        :Die rooster sal  {STRING} vat om te verklaar
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Die rooster sal te minste {STRING} vat om te verklaar (nie alles gerooster nie)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Outovul
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul die tydtabel outomaties in met die waardes van die volgende rut (CTRL-linker muis om die wagtyd te probeer hou)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul die tydtabel outomaties in met die waardes van die volgende reis (CTRL-linker muis om die wagtyd te probeer hou)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Pad voertuig in die pad
@@ -2850,7 +2850,7 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Herpas p
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Herpas pad voertuig
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Herpas pad voertuig om beklemtoonde vrat tipe te ontvoer
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan nie pad voertuig herpas nie...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Kies vrag tipe vir pad voertuig te ontvoer
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Kies vrag tipe vir pad voertuig om te vervoer
 
 ##id 0x9800
 STR_9800_WATERWAYS_CONSTRUCTION                                 :Waterweg konstruksie
@@ -3469,7 +3469,10 @@ STR_CONTENT_NAME_CAPTION                                        :{BLACK}Naam
 STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Naam van die inhoud
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Selekteer alles
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Merk al die inhoud wat afgelaai moet word
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Merk alle inhoud wat nie afgelaai moet word nie
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Begin om die geselekteerde inligting af te laai
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Jy het nie dit geselekteer om af te laai nie
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Jy het dit geselekeer om af te laai
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Jy het hierdie reeds
 
 

@@ -2005,7 +2005,7 @@ STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Sākumam
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Nederīga vieta tuneļa sākumam
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_500E_SUSPENSION_STEEL                                       :Vanšu, Tērauda
-STR_500F_GIRDER_STEEL                                           :Girder, Tērauda
+STR_500F_GIRDER_STEEL                                           :Tērauda spraišļu
 STR_5010_CANTILEVER_STEEL                                       :Konsole, Tērauda
 STR_5011_SUSPENSION_CONCRETE                                    :Piekartilts, Betona
 STR_5012_WOODEN                                                 :Koka

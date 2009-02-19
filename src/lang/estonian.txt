@@ -487,10 +487,13 @@ STR_AGE                                                         :{COMMA} aasta{P
 STR_AGE_RED                                                     :{RED}{COMMA} aasta{P "" t} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Sõiduk
-STR_019D_AIRCRAFT                                               :Õhusõiduk
-STR_019E_SHIP                                                   :Laev
 STR_019F_TRAIN                                                  :Rong
+STR_019C_ROAD_VEHICLE                                           :Sõiduk
+STR_019E_SHIP                                                   :Laev
+STR_019D_AIRCRAFT                                               :Õhusõiduk
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} hakkab jääma vanaks
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} hakkab jääma väga vanaks
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} hakkab jääma väga vanaks ning vajab kiiret väljavahetamist
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Maa-ala andmed
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Puhastustasu: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Puhastustasu: {RED}{CURRENCY}
@@ -691,9 +694,16 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...mõle
 STR_02A1_SMALL                                                  :{BLACK}Väike
 STR_02A2_MEDIUM                                                 :{BLACK}Keskmine
 STR_02A3_LARGE                                                  :{BLACK}Suur
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Suvaline
 STR_FOUND_TOWN_CITY                                             :{BLACK}Linn
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Vali linna suurus
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Linna suurus:
+
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Originaalne
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Paremad teed
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 võrgustik
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 võrgustik
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Suvaline
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Näita viimast teadet
@@ -880,6 +890,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Ekraanip
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vali kasutatav ekraanipildi vorming
 
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+
 STR_AUTOSAVE_1_MONTH                                            :Iga kuu
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automaatne salvestus nurjus
 
@@ -937,6 +949,8 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Võimal
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Võimalda reaalsemaid veekogu alasid: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Luba linnateede, -sildade, -tunnelite jne lammutamine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Lubatakse väga pikkasid ronge ehitatada: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originaalne
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistlik
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Rongidel ja laevadel keelatakse 90 kraadised pöörded: {ORANGE}{STRING} {LTBLUE} (vajab NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Ühenda üksteise vastu ehitatud jaamad kokku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Kasuta parandatud laadimisalgoritmi: {ORANGE}{STRING}
@@ -1022,6 +1036,10 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+klikk
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+klikk
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Väljas
 
+
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :lühike (31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Uut mängu alustades seisatatakse automaatselt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Kasuta laiendatud sõidukinimekirja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Väljas
@@ -1055,6 +1073,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Keela a
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Arvuti ei tohi laevasid kasutada: {ORANGE}{STRING}
 
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Hooldusvahemikud on protsentides: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Vaikimisi hooldusintervall rongidele: {ORANGE}{STRING} päeva
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Rongide hooldusvahemik vaikimisi: {ORANGE}väljas
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Vaikimisi valitud mootorsõidukite hooldusvahemik: {ORANGE}{STRING} päeva
@@ -1088,6 +1107,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :paremad teed
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 võrgustik
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 võrgustik
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :suvaline
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Luba linnades lennujaaamade mürapiirangud: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Tööriistariba asukoht: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Vasakul
@@ -1113,12 +1133,6 @@ STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Jaamad
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Majandus
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurendid
 
-STR_CONFIG_SETTING_DISABLED                                     :väljas
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Muuda seadete väärtusi
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Rongide rajaleidja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(ebasoovitatav)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1131,6 +1145,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Laevade
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Algne {BLUE}(soovitatav)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(ebasoovitatav)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Kaardi X-telje suurus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Kaardi Y-telje suurus: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :väljas
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Muuda seadete väärtusi
 
 STR_TEMPERATE_LANDSCAPE                                         :Parasvöötme maastik
 STR_SUB_ARCTIC_LANDSCAPE                                        :Arktiline maastik
@@ -1223,7 +1246,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Nimekiri
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Kõik välja
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Kõik sisse
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Tööstused
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% veetud)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% veetud)
@@ -1237,9 +1259,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Seadista
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vali laadung, mida rong peaks kandma
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Rongi ümberseadistamine valitud laadungi vedamiseks
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Ei ole võimalik ümber seadistada...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Hooldusvahemikud on protsentides: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Tootlikuse muutmine
-
 
 ############ network gui strings
 
@@ -1451,6 +1471,8 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :server viskas v
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :üritas pettust kasutada
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server on täis
 ############ End of leave-in-this-order
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] kohta {STRING}: {WHITE}{STRING}
@@ -1478,11 +1500,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privaatne sõnu
 STR_NETWORK_SEND                                                :{BLACK}Saada
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Kaardi X-telje suurus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Kaardi Y-telje suurus: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -3294,6 +3311,8 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Lameda m
 STR_SMALLMAP_CENTER                                             :{BLACK}Vii väikekaart praegusele asukohale
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
+# Strings for map borders at game generation
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Väike
 STR_CITY_AIRPORT                                                :{BLACK}Linn
@@ -3476,8 +3495,16 @@ STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\q
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
+############ AI GUI
+########
+
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Luba linnades lennujaaamade mürapiirangud: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Mürapiirang linnas: {ORANGE}{COMMA}{BLACK}  suurim: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Tekitatud müra: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

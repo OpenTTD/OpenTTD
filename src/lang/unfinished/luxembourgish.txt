@@ -177,17 +177,35 @@ STR_013F_CAPACITY                                               :{BLACK}Kapazit�
 STR_0140_NEW_GAME                                               :{BLACK}Nei Partie
 STR_0141_LOAD_GAME                                              :{BLACK}Spill lueden
 
+STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Spillotiounen
 
 STR_0150_SOMEONE                                                :iergendeen{SKIP}{SKIP}
 
+STR_UNITS_IMPERIAL                                              :Britësche System
+STR_UNITS_METRIC                                                :Métreschen System
 
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}ps
+STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonn{P "" en}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" en}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Grafik: Operativen Gëwënn
@@ -204,8 +222,42 @@ STR_015C_SAVE_GAME                                              :Spill späicher
 STR_015D_LOAD_GAME                                              :Spill lueden
 STR_015E_QUIT_GAME                                              :Spill opginn
 STR_015F_QUIT                                                   :Eraus
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Sidd dir sëcher das dir dëss Partie obginn wëllt?
 STR_0161_QUIT_GAME                                              :{WHITE}Spill opginn
+STR_SORT_BY                                                     :{BLACK}Sortéier noo
 
+STR_SORT_BY_POPULATION                                          :{BLACK}Bevölkerung
+STR_SORT_BY_PRODUCTION                                          :Produktioun
+STR_SORT_BY_TYPE                                                :Typ
+STR_SORT_BY_TRANSPORTED                                         :Transportéiert
+STR_SORT_BY_NAME                                                :{BLACK}Numm
+STR_SORT_BY_DROPDOWN_NAME                                       :Numm
+STR_SORT_BY_DATE                                                :{BLACK}Datum
+STR_SORT_BY_NUMBER                                              :Nummer
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit am läschten Joër
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit dësst Joër
+STR_SORT_BY_AGE                                                 :Alter
+STR_SORT_BY_RELIABILITY                                         :Verlässlegkeet
+STR_SORT_BY_MAX_SPEED                                           :Maximal Geschwindegkeet
+STR_SORT_BY_MODEL                                               :Model
+STR_SORT_BY_VALUE                                               :Wert
+STR_SORT_BY_LENGTH                                              :Längt
+STR_SORT_BY_FACILITY                                            :Statiounstyp
+STR_ENGINE_SORT_COST                                            :Käschten
+STR_ENGINE_SORT_RUNNING_COST                                    :Betriebskäschten
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Selektéier all d'Fabriken
+STR_AVAILABLE_TRAINS                                            :{BLACK}Verfügbar Zich
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Verfügbar Gefiehrer
+STR_AVAILABLE_SHIPS                                             :{BLACK}Verfügbar Schëffer
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Verfügbar Fligern
+STR_MANAGE_LIST                                                 :{BLACK}Verwaltungslëscht
+STR_MANAGE_LIST_TIP                                             :{BLACK}Schéckt d'Instructiounen un all Gefiehrer an der Lëscht
+STR_REPLACE_VEHICLES                                            :Gefiehrer ersetzen
+STR_SEND_TRAIN_TO_DEPOT                                         :An den Depot schécken
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :An den Depot schécken
+STR_SEND_SHIP_TO_DEPOT                                          :An den Depot schécken
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :An den Hangar schécken
+STR_SEND_FOR_SERVICING                                          :Fir Wartung schécken
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -253,10 +305,14 @@ STR_0189                                                        :{BLACK}{SMALLDO
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Den Service-Intervall kann nët geännert ginn...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Fënster zoumaachen
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Fënstertitel - hei zéien fir d'Fënster ze bewegen
+STR_STICKY_BUTTON                                               :{BLACK}MArkéier dës Fënster als nët zouzemaachen vun dem "All Fënsteren zoumaachen" Knäppchen
+STR_RESIZE_BUTTON                                               :{BLACK}Klicken an zéihen fir d'Fënstergréisst ze änneren
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klickt hei fir op d'Standard Späicher-/Luedeverzeeschnis ze goen
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Objekter op engem Stëck Land zerstéieren
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}En Eck vum Land eroofsetzen
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}En Eck vum Land erophiewen
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Scrollbar - scrollt d'Lëscht erop/eroof
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Scrollbar - scrollt d'Lëscht no lénks/riets
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Weis d'Landkonturen op der Kaart
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Weis d'Gefiehrer op der Kaart
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Weis d'Industrien op der Kaart
@@ -267,6 +323,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Schalt d
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Profit dësst Joër: {CURRENCY} (läscht Joër: {CURRENCY})
 
 ############ range for service numbers starts
+STR_AGE                                                         :{COMMA} Joër ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} Joër ({COMMA})
 ############ range for service numbers ends
 
 STR_019F_TRAIN                                                  :Zuch
@@ -279,8 +337,12 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Land Informatiounen
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Käschten fir ze Raumen: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Käschten fir ze Raumen: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Ankommen wann erleedegt: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Besëtzer: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Stroossenbesëtzer: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Trambunnbesëtzer: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Schinnenbesëtzer: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Local Autoriteit: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Keng
 STR_01AA_NAME                                                   :{BLACK}Numm
@@ -365,6 +427,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Selectio
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Den gewielten Program eidel maachen (nëmmen Benotzerdéf.1 oder Benotzerdéf.2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Musék anstellungen späicheren
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klick op d'Lidd fir ët zum aktuellen Program dobäi zesetzen (nëmmen Benotzerdéf.1 oder Benotzerdéf.2)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klickt op d'Lidd fir ët vum aktuellen Programm ze läschen (Benotzerdéfinéiert 1 an 2 nëmmen)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Schalt den "shuffle" un/aus
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Weis Musékselektioneier-Fënster
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klick op den Service fir d'Unsiicht op d'Industrie/Stadt ze zentréieren
@@ -372,6 +435,7 @@ STR_01FE_DIFFICULTY                                             :{BLACK}Schwiere
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Läscht Meldung/Neiegkeet
 STR_0201_MESSAGE_SETTINGS                                       :Meldungsanstellungen
+STR_MESSAGE_HISTORY_MENU                                        :Meldungshistorie
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Weis dei läscht Meldung/Neiegkeet, oder d'Anstellungen
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Meldungsoptiounen
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Meldungstyp:
@@ -379,12 +443,15 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ukonft 
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ukonft vum eischten Gefiehrt op enger Geigenspillerstatioun
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidenter / Katastrophen
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmeninformatiounen
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Industrieeröffnung
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Industrie gët zougemaacht
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Wirtschaftsännerungen
 STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Hinweis / Informatioun iwert Firmengefiehrter
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nei Gefhierter
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Ännerungen vun acceptéiert Luedungen
 STR_020E_SUBSIDIES                                              :{YELLOW}Subventiounen
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Generel Informatiounen
+STR_MESSAGES_ALL                                                :{YELLOW}Stellt all d'Meldungstypen op: Aus / Resumé / Ganz
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...ze wäit vun läschter destinatioun
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top Firmen dei {NUM} erreescht hun{}({STRING} Level)
 STR_0212                                                        :{BIGFONT}{COMMA}.
@@ -395,6 +462,8 @@ STR_0216_CAPITALIST                                             :Kapitalist
 STR_0217_MAGNATE                                                :Magnat
 STR_0218_MOGUL                                                  :Mogul
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Tycoon vum Joërhonnert
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} ereescht den Status '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} vun {COMPANY} ereescht den Status '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
@@ -420,6 +489,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...ze no
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...ze noo un enger aanerer Stadt
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...Plaatz nët geegent
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...ze vill Stiedt
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kann keng Stiedt bauen
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...ët ass keng Plaatz mei op der Kaart
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Stadt mei grouss maachen
 STR_023C_EXPAND                                                 :{BLACK}Erweideren
 STR_023D_RANDOM_TOWN                                            :{BLACK}Zoufallsstadt
@@ -435,10 +506,12 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Fielsen 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Liichttuerm bauen
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sender bauen
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Zone fir Wüst défineieren.{}CTRL unhaalen fir se ze läschen
+STR_CREATE_RIVER                                                :{BLACK}Setzt Flëss
 STR_0290_DELETE                                                 :{BLACK}Läschen
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Dës Stadt ganz läschen
 STR_0292_SAVE_SCENARIO                                          :Szenerie späicheren
 STR_0293_LOAD_SCENARIO                                          :Szenerie lueden
+STR_MENU_LOAD_HEIGHTMAP                                         :Luedt Héichtenkaart
 STR_0294_QUIT_EDITOR                                            :Eraus aus dem Editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Eraus
@@ -446,6 +519,7 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Széneri
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Szénerie lueden
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Szénerie späicheren
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Szénerie spillen
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Spillt Héichtenkaart
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kann nëmmen an Stiedt mat opmannst 1200 Anwunner gebaut ginn
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Änner den Startdatum 1 Joer nohannen
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Änner den Startdatum 1 Joer novir
@@ -453,20 +527,35 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...dei z
 STR_02A1_SMALL                                                  :{BLACK}Klèng
 STR_02A2_MEDIUM                                                 :{BLACK}Mëttel
 STR_02A3_LARGE                                                  :{BLACK}Grouß
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Zoufall
+STR_FOUND_TOWN_CITY                                             :{BLACK}Stadt
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Wiel d'Stadtgréisst
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Stadtgréisst:
 
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Stadt Stroosenlayout
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Original
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Besser Stroossen
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 Gitter
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 Gitter
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Zoufall
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Läscht Meldung oder Neiegkeet
+STR_OFF                                                         :Aus
+STR_SUMMARY                                                     :Resumé
+STR_FULL                                                        :Ganz
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Stiedtverzeeschniss
 STR_02BD                                                        :{BLACK}{STRING}
 STR_02BF_CUSTOM                                                 :Benotzerdéfineiert
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Spilloptiounen
 STR_02C6_DIFFICULTY_SETTINGS                                    :Schwieregkeetsanstellungen
+STR_MENU_CONFIG_SETTINGS                                        :Erweidert Anstellungen
+STR_NEWGRF_SETTINGS                                             :NewGRF Anstellungen
+STR_TRANSPARENCY_OPTIONS                                        :Transparenz Optiounen
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Stiedtnimm ungewisen
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Statiounennimm ungewisen
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Schëlder ungewisen
@@ -478,6 +567,8 @@ STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Transp
 ############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Landinformatiounen
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Konsole un/aus
+STR_AI_DEBUG_MENU                                               :KI Debug
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl+S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Riesen Screenshot (Ctrl+G)
 STR_02D9_ABOUT_OPENTTD                                          :Iwert 'OpenTTD'
@@ -488,11 +579,14 @@ STR_02DA_ON                                                     :{BLACK}Un
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Subventiounen weisen
 STR_02DD_SUBSIDIES                                              :Subventiounen
 STR_02DE_MAP_OF_WORLD                                           :Weltkaart
+STR_SIGN_LIST                                                   :Schëlderlëscht
 STR_02DF_TOWN_DIRECTORY                                         :Stiedtverzeeschniss
+STR_TOWN_POPULATION                                             :{BLACK}Weltbevölkerung: {COMMA}
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Währungseenheet
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Währungseenheet wielen
+STR_MEASURING_UNITS                                             :{BLACK}Mooseenheeten
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Stroossengefiehrer
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
@@ -532,6 +626,9 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Finanzéiert en
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Nei Industrie finanzéiert
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...kann nëmmen am Regenwaldgebit gebaut ginn
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...kann nëmmen an der Wüst gebaut ginn
 STR_0319_PAUSED                                                 :{YELLOW}* *  PAUSÉIERT  *  *
@@ -541,42 +638,206 @@ STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screensh
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Kaaf Land fir zukünftëg Benotzung
 STR_032F_AUTOSAVE                                               :{RED}AUTOSPÄICHEREN
+STR_SAVING_GAME                                                 :{RED}*  *  SPÄICHERT D'SPILL  *  *
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Wielt 'Ezy Street Musék' programme
 
 STR_6                                                           :{BLACK}6
 STR_7                                                           :{BLACK}7
 
 ############ start of townname region
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Engliësch (Original)
+STR_TOWNNAME_FRENCH                                             :Franséisch
+STR_TOWNNAME_GERMAN                                             :Däitsch
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Engliësch (Erweidert)
+STR_TOWNNAME_LATIN_AMERICAN                                     :Lateinamerikanesch
+STR_TOWNNAME_SILLY                                              :Blöd
+STR_TOWNNAME_SWEDISH                                            :Schwédesch
+STR_TOWNNAME_DUTCH                                              :Holländësch
+STR_TOWNNAME_FINNISH                                            :Finnësch
+STR_TOWNNAME_POLISH                                             :Polnësch
+STR_TOWNNAME_SLOVAKISH                                          :Slovakësch
+STR_TOWNNAME_NORWEGIAN                                          :Norwegësch
+STR_TOWNNAME_HUNGARIAN                                          :Ungarësch
+STR_TOWNNAME_AUSTRIAN                                           :Éisträichësch
+STR_TOWNNAME_ROMANIAN                                           :Rumänesch
+STR_TOWNNAME_CZECH                                              :Tschechësch
+STR_TOWNNAME_SWISS                                              :Swäitzerësch
+STR_TOWNNAME_DANISH                                             :Dänësch
+STR_TOWNNAME_TURKISH                                            :Türkësch
+STR_TOWNNAME_ITALIAN                                            :Italienësch
+STR_TOWNNAME_CATALAN                                            :Katalanësch
 ############ end of townname region
 
+STR_CURR_GBP                                                    :Pond (£)
+STR_CURR_USD                                                    :Dollar ($)
+STR_CURR_EUR                                                    :Euro (€)
+STR_CURR_YEN                                                    :Yen (¥)
+STR_CURR_ATS                                                    :Éisträichëschen Schilling (ATS)
+STR_CURR_BEF                                                    :Belgësch Frang (BEF)
+STR_CURR_CHF                                                    :Schwäitzer Frang (CHF)
+STR_CURR_CZK                                                    :Tschechësch Kroun (CZK)
+STR_CURR_DEM                                                    :Däitsch Mark (DEM)
+STR_CURR_DKK                                                    :Dänësch Kroun (DKK)
+STR_CURR_ESP                                                    :Peseta (ESP)
+STR_CURR_FIM                                                    :Finnmark (FIM)
+STR_CURR_FRF                                                    :Franséisch Frang (FRF)
+STR_CURR_GRD                                                    :Griechësch Drachme (GRD)
+STR_CURR_HUF                                                    :Ungarësch Forint (HUF)
+STR_CURR_ISK                                                    :Isländësch Kroun (ISK)
+STR_CURR_ITL                                                    :Italienësch Lire (ITL)
+STR_CURR_NLG                                                    :Holländësch Gulden (NLG)
+STR_CURR_NOK                                                    :Norwegesch Kroun (NOK)
+STR_CURR_PLN                                                    :Polnësch Zloty (PLN)
+STR_CURR_ROL                                                    :Rumänësch Leu (ROL)
+STR_CURR_RUR                                                    :Russësch Rubl (RUR)
+STR_CURR_SIT                                                    :Slowenëschen Tolar (SIT)
+STR_CURR_SEK                                                    :Schwédësch Kroun (SEK)
+STR_CURR_TRY                                                    :Türkësch Lire (TRY)
+STR_CURR_SKK                                                    :Slovakësch Kroun (SKK)
+STR_CURR_BRL                                                    :Brasilianësch Real (BRL)
+STR_CURR_EEK                                                    :Estnësch Kroun (EEK)
 
+STR_CURR_CUSTOM                                                 :Benotzerdéfinéiert...
 
+STR_OPTIONS_LANG                                                :{BLACK}Sprooch
+STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_LANG_TIP                                            :{BLACK}Wielt d'Interfacesprooch
 
+STR_OPTIONS_FULLSCREEN                                          :{BLACK}Vollbild
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Klickt dëss Optioun un fir OpenTTD am Vollbild ze spillen
+STR_FULLSCREEN_FAILED                                           :{WHITE}Fehler beim Vollbild
 
+STR_OPTIONS_RES                                                 :{BLACK}Bildopléisung
+STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_RES_TIP                                             :{BLACK}Wielt d'Bildopléisung
 
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Screenshotformat
+STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Wielt den Screenshotformat deen benotzt sollt ginn
 
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 
+STR_AUTOSAVE_1_MONTH                                            :All Mount
+STR_AUTOSAVE_FAILED                                             :{WHITE}Fehler beim Autospäicheren
 
+STR_MONTH_JAN                                                   :Januar
+STR_MONTH_FEB                                                   :Febuar
+STR_MONTH_MAR                                                   :März
+STR_MONTH_APR                                                   :Abrëll
+STR_MONTH_MAY                                                   :Mee
+STR_MONTH_JUN                                                   :Juni
+STR_MONTH_JUL                                                   :Juli
+STR_MONTH_AUG                                                   :August
+STR_MONTH_SEP                                                   :September
+STR_MONTH_OCT                                                   :Oktober
+STR_MONTH_NOV                                                   :November
+STR_MONTH_DEC                                                   :Dezember
 
+STR_HEADING_FOR_STATION                                         :{LTBLUE}Um Wee fir {STATION}
+STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Um wee fir {STATION}, {VELOCITY}
+STR_NO_ORDERS                                                   :{LTBLUE}Keng Opträg
+STR_NO_ORDERS_VEL                                               :{LTBLUE}Keng Opträg, {VELOCITY}
 
+STR_PASSENGERS                                                  :Passagéier
+STR_BAGS                                                        :Säck
+STR_TONS                                                        :Tonnen
+STR_LITERS                                                      :Literen
+STR_ITEMS                                                       :Objeten
+STR_CRATES                                                      :Këschten
+STR_RES_OTHER                                                   :Aaneres
+STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
+STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kann d'Optragslëscht nët deelen...
+STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kann d'Optragslëscht nët kopéieren...
+STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Ënn vun der Optragslëscht - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} kann den Wee fir weider ze fueren nët fannen
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} as verluer.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Dëm {VEHICLE} säin Profit vum läschten Joër war {CURRENCY}
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} huet ze weinech Opträg am Plang
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} huet en eidelen Optrag
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} huet duebel Opträg
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} huet eng falsch Statioun an den Opträg
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Fehler beim Autoernéieren vun {VEHICLE}{}{STRING}
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Keng Autoernéierungsregel festgeluet.
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(money limit)
+
+STR_CONFIG_SETTING                                              :{BLACK}Erweidert Anstellungen
+STR_CONFIG_SETTING_TIP                                          :{BLACK}Weist erweidert Anstellungen
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Erweidert Anstellungen
+
+STR_CONFIG_SETTING_OFF                                          :Aus
+STR_CONFIG_SETTING_ON                                           :Un
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Weisst d'Geschwindegkeet an der Statusbar un: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Zuchbeschleunegung: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistësch
+STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflatioun: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :keng
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :wei aaner Industrien
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Erkundung
 
 
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Opträg vun den Gefiehrer noopréifen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nee
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jo, mee nët dei gestoppten Gefiehrer
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :vun allen Gefiehrer
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Weist Bewunnerzuel am Numm vun der Stadt: {ORANGE}{STRING}
+
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landgenerator: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ganz Eben
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Eben
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Oneben
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Ganz Oneben
+STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Baamplanzalgorithmus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Keen
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Verbessert
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Entgéint der Auer
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Matt der Auer
+
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Weis Firmentracht: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES_NONE                                :Keng
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eegen Firma
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :All Firmen
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Kaart Zoomen
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Kaart Scrollen
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Aus
+
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :CTRL+Klick
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :CTRL+Click
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Aus
 
 
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :laang (31ten Dez 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kuerz (31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-
-
-
-
-
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatësch Pausen beim Start vun enger néier Partie: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Benotzt d'erweidert Gefiehrerlëscht: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Aus
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eegen Firma
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :All Firmen
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Weist den Ludestatus un: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Aus
+STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eegen Firma
+STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :All Firmen
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Normal Schinnen
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrësch Schinnen
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Einschienenbunn
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Magnéitbunn
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Ëischt Verfügbar
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Läscht Verfügbar
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meescht Benotzten
 
 
 
@@ -650,8 +911,18 @@ STR_7                                                           :{BLACK}7
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Spill gepaust (nët genuch Spiller)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Spill leeft erëm (genuch Spiller)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Spill gepaust (Clien connèctéiert)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Spill leeft erëm (Clien ass connèctéiert)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spill leeft erëm (Client konnt nët connèctéieren)
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :verloossen
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} ass dëm Spill baigetrueden
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} ass bei d?Firma #{2:NUM} gaangen
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} ass als Zuschauer do
 
 
 
@@ -1054,6 +1325,71 @@ STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Besëtzt 
 STR_7018_TRAIN_INCOME                                           :{GOLD}Zuch Ankommen
 STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Stroossengefiehrer Ankommen
 STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Fliiger Ankommen
+STR_701B_SHIP_INCOME                                            :{GOLD}Schëff Ankommen
+STR_701C_LOAN_INTEREST                                          :{GOLD}Zënssaatz
+STR_701D_OTHER                                                  :{GOLD}Aaner
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
+STR_7020_TOTAL                                                  :{WHITE}Total:
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
+STR_7022_INCOME_GRAPH                                           :{WHITE}Grafik: Ankommen
+STR_7024                                                        :{COMMA}
+STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Grafik: Betriibsgewënn
+STR_7026_BANK_BALANCE                                           :{WHITE}Kontostand
+STR_7027_LOAN                                                   :{WHITE}Kredit
+STR_7028                                                        :{BLACK}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Léinen {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Zerèckbezuelen {SKIP}{SKIP}{CURRENCY}
+STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...Maximalen Kredit ass {CURRENCY}
+STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Kann nët méi Geld léinen...
+STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...keen Kredit zerèckzebezuelen
+STR_702E_REQUIRED                                               :{WHITE}...ët ginn {CURRENCY} gebraucht
+STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Kann den Kredit nët zerèckbezuelen...
+STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Wielt en néit Gesiicht fir den Manager
+STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Wieselt d'Firmengefiehrer Faarw
+STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Wieselt den Numm vum Manager
+STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Wieselt den Firmennumm
+STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Erhéicht den Kredit
+STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Bezuelt en Deel vum Kredit zerèck
+STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manager)
+STR_7038_INAUGURATED                                            :{GOLD}Angefouert: {WHITE}{NUM}
+STR_7039_VEHICLES                                               :{GOLD}Gefiehrer:
+STR_7042_NONE                                                   :{WHITE}Keng
+STR_7043_FACE_SELECTION                                         :{WHITE}Gesiichtsauswiehl
+STR_7044_MALE                                                   :{BLACK}Männlech
+STR_7045_FEMALE                                                 :{BLACK}Weiblech
+STR_7046_NEW_FACE                                               :{BLACK}Néit Gesiicht
+STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Briech d'Auswiel vum Gesiicht oof
+STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Accépteier néit Gesiicht
+STR_7049_SELECT_MALE_FACES                                      :{BLACK}Wielt männlech Gesiichter
+STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Wielt weiblech Gesiichter
+STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Generéiert Zoufällegt néit Gesiicht
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transportfirma huet Probleemer!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING} gët verkaaf oder Bankrupterklärt, wann sëch d'Performance nët verbessert!
+STR_7058_PRESIDENT                                              :{BLACK}{PRESIDENTNAME}{}(Manager)
+STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Transportfirmen Fusioun!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} as un {STRING} fir {CURRENCY} verkaaf ginn!
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Mir sichen eng Transportfirma déi eis Firma iwerhuelen wëll.{}{}Wëllt dir {COMPANY} fir {CURRENCY} kaafen?
+STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrupt!
+STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Kann d'Firma nët kaafen...
+STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Luedungs Bezuelraten
+STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Deeg am ëmmlaaf
+STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Bezuelung fir Liwerung vun 10 Unitéiten (oder 10.000 liter) Luedungen op Distanz vun  20 Quadrater
+STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Wieselt den Grafik fir den Luedungstyp un/aus
+STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
+STR_7066_ENGINEER                                               :Techniker
+STR_7067_TRAFFIC_MANAGER                                        :Verkéiersmanager
+STR_7068_TRANSPORT_COORDINATOR                                  :Transportkoordinator
+STR_7069_ROUTE_SUPERVISOR                                       :Stroossenopsiicht
+STR_706A_DIRECTOR                                               :Direktor
+STR_706B_CHIEF_EXECUTIVE                                        :Firmenchef
+STR_706C_CHAIRMAN                                               :Viirsëtzenden
+STR_706D_PRESIDENT                                              :Präsident
+STR_706E_TYCOON                                                 :Tycoon
+STR_706F_BUILD_HQ                                               :{BLACK}Haaptgebäi bauen
+STR_7072_VIEW_HQ                                                :{BLACK}Weist Haaptgebäi
 
 
 
