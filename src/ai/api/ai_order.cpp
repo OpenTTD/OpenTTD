@@ -86,7 +86,7 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 		case OC_RELIABILITY:
 		case OC_MAX_SPEED:
 		case OC_AGE:
-			return compare >= CF_EQUALS && compare <= CF_MORE_EQUALS);
+			return compare >= CF_EQUALS && compare <= CF_MORE_EQUALS;
 
 		case OC_REQUIRES_SERVICE:
 			return compare == CF_IS_TRUE || compare == CF_IS_FALSE;
