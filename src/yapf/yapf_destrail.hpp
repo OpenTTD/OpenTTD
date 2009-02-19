@@ -115,25 +115,12 @@ protected:
 	/// to access inherited path finder
 	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
 
-	static TileIndex CalcStationCenterTile(StationID station)
-	{
-		const Station *st = GetStation(station);
-
-		/* If the rail station is (temporarily) not present, use the station sign to drive near the station */
-		if (!IsValidTile(st->train_tile)) return st->xy;
-
-		uint x = TileX(st->train_tile) + st->trainst_w / 2;
-		uint y = TileY(st->train_tile) + st->trainst_h / 2;
-		// return the tile of our target coordinates
-		return TileXY(x, y);
-	}
-
 public:
 	void SetDestination(const Vehicle *v)
 	{
 		switch (v->current_order.GetType()) {
 			case OT_GOTO_STATION:
-				m_destTile = CalcStationCenterTile(v->current_order.GetDestination());
+				m_destTile = CalcClosestStationTile(v->current_order.GetDestination(), v->tile);
 				m_dest_station_id = v->current_order.GetDestination();
 				m_destTrackdirs = INVALID_TRACKDIR_BIT;
 				break;

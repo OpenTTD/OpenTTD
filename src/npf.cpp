@@ -15,6 +15,7 @@
 #include "tunnelbridge.h"
 #include "pbs.h"
 #include "settings_type.h"
+#include "pathfind.h"
 
 static AyStar _npf_aystar;
 
@@ -81,35 +82,6 @@ static uint NPFHash(uint key1, uint key2)
 static int32 NPFCalcZero(AyStar *as, AyStarNode *current, OpenListNode *parent)
 {
 	return 0;
-}
-
-/* Calcs the tile of given station that is closest to a given tile
- * for this we assume the station is a rectangle,
- * as defined by its top tile (st->train_tile) and its width/height (st->trainst_w, st->trainst_h)
- */
-static TileIndex CalcClosestStationTile(StationID station, TileIndex tile)
-{
-	const Station *st = GetStation(station);
-
-	/* If the rail station is (temporarily) not present, use the station sign to drive near the station */
-	if (!IsValidTile(st->train_tile)) return st->xy;
-
-	uint minx = TileX(st->train_tile);  // topmost corner of station
-	uint miny = TileY(st->train_tile);
-	uint maxx = minx + st->trainst_w - 1; // lowermost corner of station
-	uint maxy = miny + st->trainst_h - 1;
-	uint x;
-	uint y;
-
-	/* we are going the aim for the x coordinate of the closest corner
-	 * but if we are between those coordinates, we will aim for our own x coordinate */
-	x = Clamp(TileX(tile), minx, maxx);
-
-	/* same for y coordinate, see above comment */
-	y = Clamp(TileY(tile), miny, maxy);
-
-	/* return the tile of our target coordinates */
-	return TileXY(x, y);
 }
 
 /* Calcs the heuristic to the target station or tile. For train stations, it

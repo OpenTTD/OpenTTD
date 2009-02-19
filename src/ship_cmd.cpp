@@ -7,7 +7,6 @@
 #include "landscape.h"
 #include "timetable.h"
 #include "command_func.h"
-#include "pathfind.h"
 #include "station_map.h"
 #include "news_func.h"
 #include "company_func.h"
@@ -30,6 +29,7 @@
 #include "effectvehicle_func.h"
 #include "settings_type.h"
 #include "ai/ai.hpp"
+#include "pathfind.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
