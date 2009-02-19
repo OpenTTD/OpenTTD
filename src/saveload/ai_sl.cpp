@@ -10,6 +10,8 @@
 #include "../string_func.h"
 #include "../ai/ai.hpp"
 #include "../ai/ai_config.hpp"
+#include "../network/network.h"
+#include "../ai/ai_instance.hpp"
 
 static char _ai_saveload_name[64];
 static int  _ai_saveload_version;
@@ -53,11 +55,15 @@ static void Load_AIPL()
 
 	CompanyID index;
 	while ((index = (CompanyID)SlIterateArray()) != (CompanyID)-1) {
-		AIConfig *config = AIConfig::GetConfig(index);
-
 		_ai_saveload_version = -1;
 		SlObject(NULL, _ai_company);
 
+		if (!_networking || _network_server) {
+			AIInstance::LoadEmpty();
+			continue;
+		}
+
+		AIConfig *config = AIConfig::GetConfig(index);
 		if (StrEmpty(_ai_saveload_name)) {
 			/* A random AI. */
 			config->ChangeAI(NULL);
