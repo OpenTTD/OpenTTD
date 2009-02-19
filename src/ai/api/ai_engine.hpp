@@ -82,6 +82,7 @@ public:
 	 *  reliability (you most likely don't want to buy it).
 	 * @param engine_id The engine to get the reliability of.
 	 * @pre IsValidEngine(engine_id).
+	 * @pre GetVehicleType(engine_id) != AIVehicle::VT_TRAIN || !IsWagon(engine_id).
 	 * @return The reliability the engine has.
 	 */
 	static int32 GetReliability(EngineID engine_id);
@@ -90,6 +91,7 @@ public:
 	 * Get the maximum speed of an engine.
 	 * @param engine_id The engine to get the maximum speed of.
 	 * @pre IsValidEngine(engine_id).
+	 * @pre GetVehicleType(engine_id) != AIVehicle::VT_TRAIN || !IsWagon(engine_id).
 	 * @return The maximum speed the engine has.
 	 * @note The speed is in OpenTTD's internal speed unit.
 	 *       This is mph / 1.6, which is roughly km/h.
@@ -122,6 +124,33 @@ public:
 	 * @note Cost is per year; divide by 365 to get per day.
 	 */
 	static Money GetRunningCost(EngineID engine_id);
+
+	/**
+	 * Get the power of an engine.
+	 * @param engine_id The engine to get the power of.
+	 * @pre IsValidEngine(engine_id).
+	 * @pre GetVehicleType(engine_id) == AIVehicle::VT_RAIL && !IsWagon(engine_id).
+	 * @return The power of the engine in hp.
+	 */
+	static int32 GetPower(EngineID engine_id);
+
+	/**
+	 * Get the weight of an engine.
+	 * @param engine_id The engine to get the weight of.
+	 * @pre IsValidEngine(engine_id).
+	 * @pre GetVehicleType(engine_id) == AIVehicle::VT_RAIL.
+	 * @return The weight of the engine in metric tons.
+	 */
+	static int32 GetWeight(EngineID engine_id);
+
+	/**
+	 * Get the maximum tractive effort of an engine.
+	 * @param engine_id The engine to get the maximum tractive effort of.
+	 * @pre IsValidEngine(engine_id).
+	 * @pre GetVehicleType(engine_id) == AIVehicle::VT_RAIL && !IsWagon(engine_id).
+	 * @return The maximum tractive effort of the engine in kN.
+	 */
+	static int32 GetMaxTractiveEffort(EngineID engine_id);
 
 	/**
 	 * Get the type of an engine.

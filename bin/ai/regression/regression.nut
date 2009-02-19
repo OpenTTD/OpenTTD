@@ -453,6 +453,9 @@ function Regression::Engine()
 		print("    GetPrice():         " + AIEngine.GetPrice(i));
 		print("    GetMaxAge():        " + AIEngine.GetMaxAge(i));
 		print("    GetRunningCost():   " + AIEngine.GetRunningCost(i));
+		print("    GetPower():         " + AIEngine.GetPower(i));
+		print("    GetWeight():        " + AIEngine.GetWeight(i));
+		print("    GetMaxTractiveEffort(): " + AIEngine.GetMaxTractiveEffort(i));
 		print("    GetVehicleType():   " + AIEngine.GetVehicleType(i));
 		print("    GetRailType():      " + AIEngine.GetRailType(i));
 		print("    GetRoadType():      " + AIEngine.GetRoadType(i));

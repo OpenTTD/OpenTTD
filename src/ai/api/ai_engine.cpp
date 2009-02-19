@@ -110,6 +110,7 @@
 /* static */ int32 AIEngine::GetReliability(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
+	if (GetVehicleType(engine_id) == AIVehicle::VT_RAIL && IsWagon(engine_id)) return -1;
 
 	return (::GetEngine(engine_id)->reliability * 100 >> 16);
 }
@@ -134,6 +135,7 @@
 /* static */ int32 AIEngine::GetMaxAge(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
+	if (GetVehicleType(engine_id) == AIVehicle::VT_RAIL && IsWagon(engine_id)) return -1;
 
 	return ::GetEngine(engine_id)->lifelength * DAYS_IN_LEAP_YEAR;
 }
@@ -143,6 +145,32 @@
 	if (!IsValidEngine(engine_id)) return -1;
 
 	return ::GetEngine(engine_id)->GetRunningCost();
+}
+
+/* static */ int32 AIEngine::GetPower(EngineID engine_id)
+{
+	if (!IsValidEngine(engine_id)) return -1;
+	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return -1;
+	if (IsWagon(engine_id)) return -1;
+
+	return ::GetEngine(engine_id)->GetPower();
+}
+
+/* static */ int32 AIEngine::GetWeight(EngineID engine_id)
+{
+	if (!IsValidEngine(engine_id)) return -1;
+	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return -1;
+
+	return ::GetEngine(engine_id)->GetDisplayWeight();
+}
+
+/* static */ int32 AIEngine::GetMaxTractiveEffort(EngineID engine_id)
+{
+	if (!IsValidEngine(engine_id)) return -1;
+	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return -1;
+	if (IsWagon(engine_id)) return -1;
+
+	return ::GetEngine(engine_id)->GetDisplayMaxTractiveEffort();
 }
 
 /* static */ AIVehicle::VehicleType AIEngine::GetVehicleType(EngineID engine_id)

@@ -1075,6 +1075,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1090,6 +1093,9 @@
     GetPrice():         22
     GetMaxAge():        5490
     GetRunningCost():   7
+    GetPower():         300
+    GetWeight():        47
+    GetMaxTractiveEffort(): 139
     GetVehicleType():   0
     GetRailType():      0
     GetRoadType():      -1
@@ -1105,6 +1111,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1120,6 +1129,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1135,6 +1147,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1150,6 +1165,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1165,6 +1183,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1180,6 +1201,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1195,6 +1219,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1210,6 +1237,9 @@
     GetPrice():         41
     GetMaxAge():        7686
     GetRunningCost():   18
+    GetPower():         1000
+    GetWeight():        131
+    GetMaxTractiveEffort(): 388
     GetVehicleType():   0
     GetRailType():      0
     GetRoadType():      -1
@@ -1225,6 +1255,9 @@
     GetPrice():         61
     GetMaxAge():        7320
     GetRunningCost():   21
+    GetPower():         1200
+    GetWeight():        162
+    GetMaxTractiveEffort(): 480
     GetVehicleType():   0
     GetRailType():      0
     GetRoadType():      -1
@@ -1240,6 +1273,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1255,6 +1291,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1270,6 +1309,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1285,6 +1327,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1300,6 +1345,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1315,6 +1363,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1330,6 +1381,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1345,6 +1399,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1360,6 +1417,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1375,6 +1435,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1390,6 +1453,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1405,6 +1471,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1420,6 +1489,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1435,6 +1507,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1450,6 +1525,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1465,6 +1543,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1480,6 +1561,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1490,11 +1574,14 @@
     GetCargoType():     0
     CanRefitCargo():    false
     GetCapacity():      40
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         79
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        25
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      0
     GetRoadType():      -1
@@ -1505,11 +1592,14 @@
     GetCargoType():     2
     CanRefitCargo():    false
     GetCapacity():      30
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         73
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        21
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      0
     GetRoadType():      -1
@@ -1520,11 +1610,14 @@
     GetCargoType():     1
     CanRefitCargo():    true
     GetCapacity():      30
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         56
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        18
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      0
     GetRoadType():      -1
@@ -1535,11 +1628,14 @@
     GetCargoType():     3
     CanRefitCargo():    false
     GetCapacity():      30
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         64
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        24
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      0
     GetRoadType():      -1
@@ -1550,11 +1646,14 @@
     GetCargoType():     4
     CanRefitCargo():    false
     GetCapacity():      25
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         61
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        20
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      0
     GetRoadType():      -1
@@ -1565,11 +1664,14 @@
     GetCargoType():     5
     CanRefitCargo():    false
     GetCapacity():      25
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         60
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        21
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      0
     GetRoadType():      -1
@@ -1580,11 +1682,14 @@
     GetCargoType():     6
     CanRefitCargo():    false
     GetCapacity():      30
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         58
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        19
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      0
     GetRoadType():      -1
@@ -1595,11 +1700,14 @@
     GetCargoType():     7
     CanRefitCargo():    false
     GetCapacity():      30
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         57
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        16
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      0
     GetRoadType():      -1
@@ -1610,11 +1718,14 @@
     GetCargoType():     8
     CanRefitCargo():    false
     GetCapacity():      30
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         57
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        19
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      0
     GetRoadType():      -1
@@ -1625,11 +1736,14 @@
     GetCargoType():     9
     CanRefitCargo():    false
     GetCapacity():      20
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         62
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        18
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      0
     GetRoadType():      -1
@@ -1640,11 +1754,14 @@
     GetCargoType():     10
     CanRefitCargo():    false
     GetCapacity():      20
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         81
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        30
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      0
     GetRoadType():      -1
@@ -1660,6 +1777,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1675,6 +1795,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1690,6 +1813,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1705,6 +1831,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1720,6 +1849,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1735,6 +1867,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1750,6 +1885,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1765,6 +1903,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1780,6 +1921,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1795,6 +1939,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1810,6 +1957,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1825,6 +1975,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1840,6 +1993,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1855,6 +2011,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1870,6 +2029,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1885,6 +2047,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1900,6 +2065,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1915,6 +2083,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1930,6 +2101,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -1940,11 +2114,14 @@
     GetCargoType():     0
     CanRefitCargo():    false
     GetCapacity():      45
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         79
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        25
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      2
     GetRoadType():      -1
@@ -1955,11 +2132,14 @@
     GetCargoType():     2
     CanRefitCargo():    false
     GetCapacity():      35
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         73
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        21
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      2
     GetRoadType():      -1
@@ -1970,11 +2150,14 @@
     GetCargoType():     1
     CanRefitCargo():    true
     GetCapacity():      35
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         56
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        18
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      2
     GetRoadType():      -1
@@ -1985,11 +2168,14 @@
     GetCargoType():     3
     CanRefitCargo():    false
     GetCapacity():      35
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         64
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        24
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      2
     GetRoadType():      -1
@@ -2000,11 +2186,14 @@
     GetCargoType():     4
     CanRefitCargo():    false
     GetCapacity():      30
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         61
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        20
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      2
     GetRoadType():      -1
@@ -2015,11 +2204,14 @@
     GetCargoType():     5
     CanRefitCargo():    false
     GetCapacity():      30
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         60
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        21
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      2
     GetRoadType():      -1
@@ -2030,11 +2222,14 @@
     GetCargoType():     6
     CanRefitCargo():    false
     GetCapacity():      35
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         58
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        19
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      2
     GetRoadType():      -1
@@ -2045,11 +2240,14 @@
     GetCargoType():     7
     CanRefitCargo():    false
     GetCapacity():      35
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         57
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        16
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      2
     GetRoadType():      -1
@@ -2060,11 +2258,14 @@
     GetCargoType():     8
     CanRefitCargo():    false
     GetCapacity():      35
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         57
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        19
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      2
     GetRoadType():      -1
@@ -2075,11 +2276,14 @@
     GetCargoType():     9
     CanRefitCargo():    false
     GetCapacity():      25
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         62
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        18
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      2
     GetRoadType():      -1
@@ -2090,11 +2294,14 @@
     GetCargoType():     10
     CanRefitCargo():    false
     GetCapacity():      25
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         81
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        30
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      2
     GetRoadType():      -1
@@ -2110,6 +2317,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2125,6 +2335,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2140,6 +2353,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2155,6 +2371,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2170,6 +2389,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2185,6 +2407,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2200,6 +2425,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2215,6 +2443,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2230,6 +2461,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2245,6 +2479,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2260,6 +2497,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2275,6 +2515,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2290,6 +2533,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2305,6 +2551,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2320,6 +2569,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2335,6 +2587,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2350,6 +2605,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2365,6 +2623,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2380,6 +2641,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2395,6 +2659,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2410,6 +2677,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2420,11 +2690,14 @@
     GetCargoType():     0
     CanRefitCargo():    false
     GetCapacity():      47
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         79
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        25
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      3
     GetRoadType():      -1
@@ -2435,11 +2708,14 @@
     GetCargoType():     2
     CanRefitCargo():    false
     GetCapacity():      37
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         73
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        21
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      3
     GetRoadType():      -1
@@ -2450,11 +2726,14 @@
     GetCargoType():     1
     CanRefitCargo():    true
     GetCapacity():      37
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         56
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        18
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      3
     GetRoadType():      -1
@@ -2465,11 +2744,14 @@
     GetCargoType():     3
     CanRefitCargo():    false
     GetCapacity():      37
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         64
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        24
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      3
     GetRoadType():      -1
@@ -2480,11 +2762,14 @@
     GetCargoType():     4
     CanRefitCargo():    false
     GetCapacity():      32
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         61
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        20
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      3
     GetRoadType():      -1
@@ -2495,11 +2780,14 @@
     GetCargoType():     5
     CanRefitCargo():    false
     GetCapacity():      32
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         60
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        21
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      3
     GetRoadType():      -1
@@ -2510,11 +2798,14 @@
     GetCargoType():     6
     CanRefitCargo():    false
     GetCapacity():      37
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         58
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        19
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      3
     GetRoadType():      -1
@@ -2525,11 +2816,14 @@
     GetCargoType():     7
     CanRefitCargo():    false
     GetCapacity():      37
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         57
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        16
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      3
     GetRoadType():      -1
@@ -2540,11 +2834,14 @@
     GetCargoType():     8
     CanRefitCargo():    false
     GetCapacity():      37
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         57
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        19
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      3
     GetRoadType():      -1
@@ -2555,11 +2852,14 @@
     GetCargoType():     9
     CanRefitCargo():    false
     GetCapacity():      27
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         62
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        18
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      3
     GetRoadType():      -1
@@ -2570,11 +2870,14 @@
     GetCargoType():     10
     CanRefitCargo():    false
     GetCapacity():      27
-    GetReliability():   0
+    GetReliability():   -1
     GetMaxSpeed():      0
     GetPrice():         81
-    GetMaxAge():        7320
+    GetMaxAge():        -1
     GetRunningCost():   0
+    GetPower():         -1
+    GetWeight():        30
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   0
     GetRailType():      3
     GetRoadType():      -1
@@ -2590,6 +2893,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2605,6 +2911,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2620,6 +2929,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2635,6 +2947,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2650,6 +2965,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2665,6 +2983,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2680,6 +3001,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2695,6 +3019,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2710,6 +3037,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2725,6 +3055,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2740,6 +3073,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2755,6 +3091,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2770,6 +3109,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2785,6 +3127,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2800,6 +3145,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2815,6 +3163,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2830,6 +3181,9 @@
     GetPrice():         386
     GetMaxAge():        4392
     GetRunningCost():   14
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -2845,6 +3199,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2860,6 +3217,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2875,6 +3235,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2890,6 +3253,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2905,6 +3271,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2920,6 +3289,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2935,6 +3307,9 @@
     GetPrice():         347
     GetMaxAge():        5490
     GetRunningCost():   14
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -2950,6 +3325,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2965,6 +3343,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -2980,6 +3361,9 @@
     GetPrice():         370
     GetMaxAge():        5490
     GetRunningCost():   14
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -2995,6 +3379,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3010,6 +3397,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3025,6 +3415,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3040,6 +3433,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3055,6 +3451,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3070,6 +3469,9 @@
     GetPrice():         354
     GetMaxAge():        5490
     GetRunningCost():   14
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3085,6 +3487,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3100,6 +3505,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3115,6 +3523,9 @@
     GetPrice():         337
     GetMaxAge():        5490
     GetRunningCost():   14
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3130,6 +3541,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3145,6 +3559,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3160,6 +3577,9 @@
     GetPrice():         344
     GetMaxAge():        5490
     GetRunningCost():   14
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3175,6 +3595,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3190,6 +3613,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3205,6 +3631,9 @@
     GetPrice():         366
     GetMaxAge():        5490
     GetRunningCost():   14
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3220,6 +3649,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3235,6 +3667,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3250,6 +3685,9 @@
     GetPrice():         379
     GetMaxAge():        5490
     GetRunningCost():   14
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3265,6 +3703,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3280,6 +3721,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3295,6 +3739,9 @@
     GetPrice():         389
     GetMaxAge():        5490
     GetRunningCost():   14
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3310,6 +3757,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3325,6 +3775,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3340,6 +3793,9 @@
     GetPrice():         360
     GetMaxAge():        5490
     GetRunningCost():   14
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3355,6 +3811,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3370,6 +3829,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3385,6 +3847,9 @@
     GetPrice():         466
     GetMaxAge():        5490
     GetRunningCost():   14
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3400,6 +3865,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3415,6 +3883,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3430,6 +3901,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3445,6 +3919,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3460,6 +3937,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3475,6 +3955,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3490,6 +3973,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3505,6 +3991,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3520,6 +4009,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3535,6 +4027,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3550,6 +4045,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3565,6 +4063,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3580,6 +4081,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3595,6 +4099,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3610,6 +4117,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3625,6 +4135,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3640,6 +4153,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3655,6 +4171,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3670,6 +4189,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3685,6 +4207,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3700,6 +4225,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3715,6 +4243,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3730,6 +4261,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3745,6 +4279,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3760,6 +4297,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3775,6 +4315,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3790,6 +4333,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3805,6 +4351,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3820,6 +4369,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3835,6 +4387,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3850,6 +4405,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3865,6 +4423,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3880,6 +4441,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3895,6 +4459,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3910,6 +4477,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3925,6 +4495,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3940,6 +4513,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3955,6 +4531,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3970,6 +4549,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -3985,6 +4567,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4000,6 +4585,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4015,6 +4603,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4030,6 +4621,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4045,6 +4639,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4060,6 +4657,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4075,6 +4675,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4090,6 +4693,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4105,6 +4711,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4120,6 +4729,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4135,6 +4747,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4150,6 +4765,9 @@
     GetPrice():         515
     GetMaxAge():        10980
     GetRunningCost():   21
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   2
     GetRailType():      255
     GetRoadType():      -1
@@ -4165,6 +4783,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4180,6 +4801,9 @@
     GetPrice():         309
     GetMaxAge():        10980
     GetRunningCost():   14
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   2
     GetRailType():      255
     GetRoadType():      -1
@@ -4195,6 +4819,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4210,6 +4837,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4225,6 +4855,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4240,6 +4873,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4255,6 +4891,9 @@
     GetPrice():         412
     GetMaxAge():        10980
     GetRunningCost():   23
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   2
     GetRailType():      255
     GetRoadType():      -1
@@ -4270,6 +4909,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4285,6 +4927,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4300,6 +4945,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4315,6 +4963,9 @@
     GetPrice():         45
     GetMaxAge():        7320
     GetRunningCost():   13
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   3
     GetRailType():      255
     GetRoadType():      -1
@@ -4330,6 +4981,9 @@
     GetPrice():         48
     GetMaxAge():        8784
     GetRunningCost():   15
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   3
     GetRailType():      255
     GetRoadType():      -1
@@ -4345,6 +4999,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4360,6 +5017,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4375,6 +5035,9 @@
     GetPrice():         48
     GetMaxAge():        10980
     GetRunningCost():   15
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   3
     GetRailType():      255
     GetRoadType():      -1
@@ -4390,6 +5053,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4405,6 +5071,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4420,6 +5089,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4435,6 +5107,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4450,6 +5125,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4465,6 +5143,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4480,6 +5161,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4495,6 +5179,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4510,6 +5197,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4525,6 +5215,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4540,6 +5233,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4555,6 +5251,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4570,6 +5269,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4585,6 +5287,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4600,6 +5305,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4615,6 +5323,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4630,6 +5341,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4645,6 +5359,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4660,6 +5377,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4675,6 +5395,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4690,6 +5413,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4705,6 +5431,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4720,6 +5449,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4735,6 +5467,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4750,6 +5485,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4765,6 +5503,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4780,6 +5521,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4795,6 +5539,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4810,6 +5557,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4825,6 +5575,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4840,6 +5593,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4855,6 +5611,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4870,6 +5629,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4885,6 +5647,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4900,6 +5665,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4915,6 +5683,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
@@ -4930,6 +5701,9 @@
     GetPrice():         -1
     GetMaxAge():        -1
     GetRunningCost():   -1
+    GetPower():         -1
+    GetWeight():        -1
+    GetMaxTractiveEffort(): -1
     GetVehicleType():   255
     GetRailType():      255
     GetRoadType():      -1
