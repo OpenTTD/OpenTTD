@@ -18,28 +18,28 @@ public:
 	 * The classes of cargo (from newgrf_cargo.h).
 	 */
 	enum CargoClass {
-		CC_PASSENGERS   = 1 <<  0, ///< Passengers
-		CC_MAIL         = 1 <<  1, ///< Mail
-		CC_EXPRESS      = 1 <<  2, ///< Express cargo (Goods, Food, Candy, but also possible for passengers)
-		CC_ARMOURED     = 1 <<  3, ///< Armoured cargo (Valuables, Gold, Diamonds)
-		CC_BULK         = 1 <<  4, ///< Bulk cargo (Coal, Grain etc., Ores, Fruit)
-		CC_PIECE_GOODS  = 1 <<  5, ///< Piece goods (Livestock, Wood, Steel, Paper)
-		CC_LIQUID       = 1 <<  6, ///< Liquids (Oil, Water, Rubber)
-		CC_REFRIGERATED = 1 <<  7, ///< Refrigerated cargo (Food, Fruit)
-		CC_HAZARDOUS    = 1 <<  8, ///< Hazardous cargo (Nuclear Fuel, Explosives, etc.)
-		CC_COVERED      = 1 <<  9, ///< Covered/Sheltered Freight (Transporation in Box Vans, Silo Wagons, etc.)
+		CC_PASSENGERS   = 1 <<  0, //!< Passengers
+		CC_MAIL         = 1 <<  1, //!< Mail
+		CC_EXPRESS      = 1 <<  2, //!< Express cargo (Goods, Food, Candy, but also possible for passengers)
+		CC_ARMOURED     = 1 <<  3, //!< Armoured cargo (Valuables, Gold, Diamonds)
+		CC_BULK         = 1 <<  4, //!< Bulk cargo (Coal, Grain etc., Ores, Fruit)
+		CC_PIECE_GOODS  = 1 <<  5, //!< Piece goods (Livestock, Wood, Steel, Paper)
+		CC_LIQUID       = 1 <<  6, //!< Liquids (Oil, Water, Rubber)
+		CC_REFRIGERATED = 1 <<  7, //!< Refrigerated cargo (Food, Fruit)
+		CC_HAZARDOUS    = 1 <<  8, //!< Hazardous cargo (Nuclear Fuel, Explosives, etc.)
+		CC_COVERED      = 1 <<  9, //!< Covered/Sheltered Freight (Transporation in Box Vans, Silo Wagons, etc.)
 	};
 
 	/**
 	 * The effects a cargo can have on a town.
 	 */
 	enum TownEffect {
-		TE_NONE       = 0, ///< This cargo has no effect on a town
-		TE_PASSENGERS = 1, ///< This cargo supplies passengers to a town
-		TE_MAIL       = 2, ///< This cargo supplies mail to a town
-		TE_GOODS      = 3, ///< This cargo supplies goods to a town
-		TE_WATER      = 4, ///< This cargo supplies water to a town
-		TE_FOOD       = 5, ///< This cargo supplies food to a town
+		TE_NONE       = 0, //!< This cargo has no effect on a town
+		TE_PASSENGERS = 1, //!< This cargo supplies passengers to a town
+		TE_MAIL       = 2, //!< This cargo supplies mail to a town
+		TE_GOODS      = 3, //!< This cargo supplies goods to a town
+		TE_WATER      = 4, //!< This cargo supplies water to a town
+		TE_FOOD       = 5, //!< This cargo supplies food to a town
 	};
 
 	/**

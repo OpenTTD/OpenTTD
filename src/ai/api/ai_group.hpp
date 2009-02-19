@@ -28,7 +28,7 @@ public:
 	/**
 	 * Checks whether the given group is valid.
 	 * @param group_id The group to check.
-	 * @pre group_id != DEFAULT_GROUP && group_id != ALL_GROUP.
+	 * @pre group_id != GROUP_DEFAULT && group_id != GROUP_ALL.
 	 * @return True if and only if the group is valid.
 	 */
 	static bool IsValidGroup(GroupID group_id);
@@ -44,7 +44,7 @@ public:
 
 	/**
 	 * Delete the given group. When the deletion succeeds all vehicles in the
-	 *  given group will move to the DEFAULT_GROUP.
+	 *  given group will move to the GROUP_DEFAULT.
 	 * @param group_id The group to delete.
 	 * @pre IsValidGroup(group_id).
 	 * @return True if and only if the group was succesfully deleted.
@@ -101,7 +101,7 @@ public:
 	 * Get the number of engines in a given group.
 	 * @param group_id The group to get the number of engines in.
 	 * @param engine_id The engine id to count.
-	 * @pre IsValidGroup(group_id) || group_id == ALL_GROUP || group_id == DEFAULT_GROUP.
+	 * @pre IsValidGroup(group_id) || group_id == GROUP_ALL || group_id == GROUP_DEFAULT.
 	 * @return The number of engines with id engine_id in the group with id group_id.
 	 */
 	static int32 GetNumEngines(GroupID group_id, EngineID engine_id);
@@ -110,11 +110,11 @@ public:
 	 * Move a vehicle to a group.
 	 * @param group_id The group to move the vehicel to.
 	 * @param vehicle_id The vehicle to move to the group.
-	 * @pre IsValidGroup(group_id) || group_id == DEFAULT_GROUP.
+	 * @pre IsValidGroup(group_id) || group_id == GROUP_DEFAULT.
 	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
 	 * @return True if and only if the vehicle was succesfully moved to the group.
 	 * @note A vehicle can be in only one group at the same time. To remove it from
-	 *  a group, move it to another or to DEFAULT_GROUP. Moving the vehicle to the
+	 *  a group, move it to another or to GROUP_DEFAULT. Moving the vehicle to the
 	 *  given group means removing it from another group.
 	 */
 	static bool MoveVehicle(GroupID group_id, VehicleID vehicle_id);
@@ -141,7 +141,7 @@ public:
 	 *  vehicles from all groups that haven't set autoreplace protection.
 	 * @param engine_id_old The engine id to start replacing.
 	 * @param engine_id_new The engine id to replace with.
-	 * @pre IsValidGroup(group_id) || group_id == ALL_GROUP.
+	 * @pre IsValidGroup(group_id) || group_id == GROUP_ALL.
 	 * @pre AIEngine.IsValidEngine(engine_id_new).
 	 * @note To stop autoreplacing engine_id_old, call StopAutoReplace(group_id, engine_id_old).
 	 */
@@ -151,7 +151,7 @@ public:
 	 * Get the EngineID the given EngineID is replaced with.
 	 * @param group_id The group to get the replacement from.
 	 * @param engine_id The engine that is being replaced.
-	 * @pre IsValidGroup(group_id) || group_id == ALL_GROUP.
+	 * @pre IsValidGroup(group_id) || group_id == GROUP_ALL.
 	 * @return The EngineID that is replacing engine_id or an invalid EngineID
 	 *   in case engine_id is not begin replaced.
 	 */
@@ -161,7 +161,7 @@ public:
 	 * Stop replacing a certain engine in the specified group.
 	 * @param group_id The group to stop replacing the engine in.
 	 * @param engine_id The engine id to stop replacing with another engine.
-	 * @pre IsValidGroup(group_id) || group_id == ALL_GROUP.
+	 * @pre IsValidGroup(group_id) || group_id == GROUP_ALL.
 	 * @return True if and if the replacing was succesfully stopped.
 	 */
 	static bool StopAutoReplace(GroupID group_id, EngineID engine_id);

@@ -56,7 +56,7 @@ public:
 	/**
 	 * Get the name of the given company.
 	 * @param company The company to get the name for.
-	 * @pre ResolveCompanyID(company) != COMPANY_INVALID
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The name of the given company.
 	 */
 	static char *GetName(CompanyID company);
@@ -73,7 +73,7 @@ public:
 	/**
 	 * Get the name of the president of the given company.
 	 * @param company The company to get the president's name for.
-	 * @pre ResolveCompanyID(company) != COMPANY_INVALID
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The name of the president of the given company.
 	 */
 	static char *GetPresidentName(CompanyID company);
@@ -124,7 +124,7 @@ public:
 	/**
 	 * Gets the current value of the given company.
 	 * @param company The company to get the company value of.
-	 * @pre ResolveCompanyID(company) != COMPANY_INVALID
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The current value of the given company.
 	 */
 	static Money GetCompanyValue(CompanyID company);
@@ -132,7 +132,7 @@ public:
 	/**
 	 * Gets the bank balance. In other words, the amount of money the given company can spent.
 	 * @param company The company to get the bank balance of.
-	 * @pre ResolveCompanyID(company) != COMPANY_INVALID
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The actual bank balance.
 	 */
 	static Money GetBankBalance(CompanyID company);

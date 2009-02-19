@@ -59,7 +59,7 @@ public:
 	 * @param engine_id The engine to check.
 	 * @param cargo_id The cargo to check.
 	 * @pre IsValidEngine(engine_id).
-	 * @pre GetVehicleType(engine_id) == AIVehicle.VEHICLE_RAIL.
+	 * @pre GetVehicleType(engine_id) == AIVehicle::VT_RAIL.
 	 * @pre AICargo::IsValidCargo(cargo_id).
 	 * @return True if the engine can pull wagons carrying this cargo.
 	 * @note This function is not exhaustive; a true here does not mean
@@ -135,7 +135,7 @@ public:
 	 * Check if an engine is a wagon.
 	 * @param engine_id The engine to check.
 	 * @pre IsValidEngine(engine_id).
-	 * @pre GetVehicleType(engine_id) == AIVehicle.VEHICLE_RAIL.
+	 * @pre GetVehicleType(engine_id) == AIVehicle::VT_RAIL.
 	 * @return Whether or not the engine is a wagon.
 	 */
 	static bool IsWagon(EngineID engine_id);
@@ -145,7 +145,7 @@ public:
 	 * @param engine_id The engine to check.
 	 * @param track_rail_type The type you want to check.
 	 * @pre IsValidEngine(engine_id).
-	 * @pre GetVehicleType(engine_id) == AIVehicle::VEHICLE_RAIL.
+	 * @pre GetVehicleType(engine_id) == AIVehicle::VT_RAIL.
 	 * @pre AIRail::IsRailTypeAvailable(track_rail_type).
 	 * @return Whether an engine of type 'engine_id' can run on 'track_rail_type'.
 	 * @note Even if a train can run on a RailType that doesn't mean that it'll be
@@ -158,7 +158,7 @@ public:
 	 * @param engine_id The engine to check.
 	 * @param track_rail_type Another RailType.
 	 * @pre IsValidEngine(engine_id).
-	 * @pre GetVehicleType(engine_id) == AIVehicle::VEHICLE_RAIL.
+	 * @pre GetVehicleType(engine_id) == AIVehicle::VT_RAIL.
 	 * @pre AIRail::IsRailTypeAvailable(track_rail_type).
 	 * @return Whether an engine of type 'engine_id' has power on 'track_rail_type'.
 	 */
@@ -168,7 +168,7 @@ public:
 	 * Get the RoadType of the engine.
 	 * @param engine_id The engine to get the RoadType of.
 	 * @pre IsValidEngine(engine_id).
-	 * @pre GetVehicleType(engine_id) == AIVehicle.VEHICLE_ROAD.
+	 * @pre GetVehicleType(engine_id) == AIVehicle::VT_ROAD.
 	 * @return The RoadType the engine has.
 	 */
 	static AIRoad::RoadType GetRoadType(EngineID engine_id);
@@ -177,7 +177,7 @@ public:
 	 * Get the RailType of the engine.
 	 * @param engine_id The engine to get the RailType of.
 	 * @pre IsValidEngine(engine_id).
-	 * @pre GetVehicleType(engine_id) == AIVehicle.VEHICLE_RAIL.
+	 * @pre GetVehicleType(engine_id) == AIVehicle::VT_RAIL.
 	 * @return The RailType the engine has.
 	 */
 	static AIRail::RailType GetRailType(EngineID engine_id);
@@ -186,7 +186,7 @@ public:
 	 * Check if the engine is articulated.
 	 * @param engine_id The engine to check.
 	 * @pre IsValidEngine(engine_id).
-	 * @pre GetVehicleType(engine_id) == AIVehicle.VEHICLE_ROAD || GetVehicleType(engine_id) == AIVehicle.VEHICLE_RAIL.
+	 * @pre GetVehicleType(engine_id) == AIVehicle::VT_ROAD || GetVehicleType(engine_id) == AIVehicle::VT_RAIL.
 	 * @return True if the engine is articulated.
 	 */
 	static bool IsArticulated(EngineID engine_id);
@@ -195,7 +195,7 @@ public:
 	 * Get the PlaneType of the engine.
 	 * @param engine_id The engine to get the PlaneType of.
 	 * @pre IsValidEngine(engine_id).
-	 * @pre GetVehicleType(engine_id) == AIVehicle.VEHICLE_AIR.
+	 * @pre GetVehicleType(engine_id) == AIVehicle::VT_AIR.
 	 * @return The PlaneType the engine has.
 	 */
 	static AIAirport::PlaneType GetPlaneType(EngineID engine_id);

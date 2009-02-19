@@ -76,7 +76,7 @@ public:
 	 * @param start Where to start the tunnel.
 	 * @param vehicle_type The vehicle-type of tunnel to build.
 	 * @pre AIMap::IsValidTile(start).
-	 * @pre vehicle_type == AIVehicle::VEHICLE_ROAD || (vehicle_type == AIVehicle::VEHICLE_RAIL &&
+	 * @pre vehicle_type == AIVehicle::VT_ROAD || (vehicle_type == AIVehicle::VT_RAIL &&
 	 *   AIRail::IsRailTypeAvailable(AIRail::GetCurrentRailType())).
 	 * @exception AIError::ERR_AREA_NOT_CLEAR
 	 * @exception AITunnel::ERR_TUNNEL_CANNOT_BUILD_ON_WATER

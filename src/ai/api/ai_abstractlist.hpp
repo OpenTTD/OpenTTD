@@ -21,8 +21,8 @@ public:
 
 	/** Type of sorter */
 	enum SorterType {
-		SORT_BY_VALUE, ///< Sort the list based on the value of the item.
-		SORT_BY_ITEM, ///< Sort the list based on the item itself.
+		SORT_BY_VALUE, //!< Sort the list based on the value of the item.
+		SORT_BY_ITEM,  //!< Sort the list based on the item itself.
 	};
 
 private:

@@ -9,7 +9,7 @@
 
 /**
  * Creates a list of groups of which you are the owner.
- * @note Neither AIGroup.ALL_GROUP nor AIGroup.DEFAULT_GROUP is in this list.
+ * @note Neither AIGroup::GROUP_ALL nor AIGroup::GROUP_DEFAULT is in this list.
  * @ingroup AIList
  */
 class AIGroupList : public AIAbstractList {

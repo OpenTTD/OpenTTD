@@ -86,7 +86,7 @@ public:
 
 	/**
 	 * Resolves the given order index to the correct index for the given vehicle.
-	 *  If the order index was CURRENT_ORDER it will be resolved to the index of
+	 *  If the order index was ORDER_CURRENT it will be resolved to the index of
 	 *  the current order (as shown in the order list). If the order with the
 	 *  given index does not exist it will return ORDER_INVALID.
 	 * @param vehicle_id The vehicle to check the order index for.
@@ -118,7 +118,7 @@ public:
 	 * @param vehicle_id The vehicle to get the destination for.
 	 * @param order_position The order to get the destination for.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
-	 * @note Giving CURRENT_ORDER as order_position will give the order that is
+	 * @note Giving ORDER_CURRENT as order_position will give the order that is
 	 *  currently being executed by the vehicle. This is not necessarily the
 	 *  current order as given by ResolveOrderPosition (the current index in the
 	 *  order list) as manual or autoservicing depot orders do not show up
@@ -132,7 +132,7 @@ public:
 	 * @param vehicle_id The vehicle to get the destination for.
 	 * @param order_position The order to get the destination for.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
-	 * @note Giving CURRENT_ORDER as order_position will give the order that is
+	 * @note Giving ORDER_CURRENT as order_position will give the order that is
 	 *  currently being executed by the vehicle. This is not necessarily the
 	 *  current order as given by ResolveOrderPosition (the current index in the
 	 *  order list) as manual or autoservicing depot orders do not show up

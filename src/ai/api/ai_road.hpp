@@ -49,7 +49,7 @@ public:
 	};
 
 	/**
-	 * Type of road station
+	 * Type of road station.
 	 */
 	enum RoadVehicleType {
 		ROADVEHTYPE_BUS,   //!< Build objects useable for busses and passenger trams

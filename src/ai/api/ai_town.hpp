@@ -72,16 +72,16 @@ public:
 	 * Different ratings one could have in a town.
 	 */
 	enum TownRating {
-		TOWN_RATING_NONE,         ///< The company got no rating in the town.
-		TOWN_RATING_APPALLING,    ///< The company got an appalling rating in the town .
-		TOWN_RATING_VERY_POOR,    ///< The company got an very poor rating in the town.
-		TOWN_RATING_POOR,         ///< The company got an poor rating in the town.
-		TOWN_RATING_MEDIOCRE,     ///< The company got an mediocre rating in the town.
-		TOWN_RATING_GOOD,         ///< The company got an good rating in the town.
-		TOWN_RATING_VERY_GOOD,    ///< The company got an very good rating in the town.
-		TOWN_RATING_EXCELLENT,    ///< The company got an excellent rating in the town.
-		TOWN_RATING_OUTSTANDING,  ///< The company got an outstanding rating in the town.
-		TOWN_RATING_INVALID = -1, ///< The town rating for invalid towns/companies.
+		TOWN_RATING_NONE,         //!< The company got no rating in the town.
+		TOWN_RATING_APPALLING,    //!< The company got an appalling rating in the town .
+		TOWN_RATING_VERY_POOR,    //!< The company got an very poor rating in the town.
+		TOWN_RATING_POOR,         //!< The company got an poor rating in the town.
+		TOWN_RATING_MEDIOCRE,     //!< The company got an mediocre rating in the town.
+		TOWN_RATING_GOOD,         //!< The company got an good rating in the town.
+		TOWN_RATING_VERY_GOOD,    //!< The company got an very good rating in the town.
+		TOWN_RATING_EXCELLENT,    //!< The company got an excellent rating in the town.
+		TOWN_RATING_OUTSTANDING,  //!< The company got an outstanding rating in the town.
+		TOWN_RATING_INVALID = -1, //!< The town rating for invalid towns/companies.
 	};
 
 	/**
@@ -89,16 +89,15 @@ public:
 	 */
 	enum RoadLayout {
 		/* Order IS important, as it matches an in-game value */
-		ROAD_LAYOUT_ORIGINAL,     ///< Original algorithm (min. 1 distance between roads).
-		ROAD_LAYOUT_BETTER_ROADS, ///< Extended original algorithm (min. 2 distance between roads).
-		ROAD_LAYOUT_2x2,          ///< Geometric 2x2 grid algorithm
-		ROAD_LAYOUT_3x3,          ///< Geometric 3x3 grid algorithm
-		ROAD_LAYOUT_INVALID = -1, ///< The layout for invalid towns.
+		ROAD_LAYOUT_ORIGINAL,     //!< Original algorithm (min. 1 distance between roads).
+		ROAD_LAYOUT_BETTER_ROADS, //!< Extended original algorithm (min. 2 distance between roads).
+		ROAD_LAYOUT_2x2,          //!< Geometric 2x2 grid algorithm
+		ROAD_LAYOUT_3x3,          //!< Geometric 3x3 grid algorithm
+		ROAD_LAYOUT_INVALID = -1, //!< The layout for invalid towns.
 	};
 
 	/**
-	 * Gets the number of towns. This is different than GetMaxTownID()
-	 *   because of the way OpenTTD works internally.
+	 * Gets the number of towns.
 	 * @return The number of towns.
 	 * @post Return value is always non-negative.
 	 */

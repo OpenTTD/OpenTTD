@@ -82,7 +82,7 @@ public:
 	/**
 	 * Builds a water depot on tile.
 	 * @param tile The tile where the water depot will be build.
-	 * @param front A tile on the same axis with 'tile' as the depot shall be oriented
+	 * @param front A tile on the same axis with 'tile' as the depot shall be oriented.
 	 * @pre AIMap::IsValidTile(tile).
 	 * @pre AIMap::IsValidTile(front).
 	 * @exception AIError::ERR_AREA_NOT_CLEAR

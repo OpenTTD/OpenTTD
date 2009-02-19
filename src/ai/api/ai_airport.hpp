@@ -62,10 +62,10 @@ public:
 	static bool IsHangarTile(TileIndex tile);
 
 	/**
-	 * Checks whether the given tile is actually a tile with a airport.
+	 * Checks whether the given tile is actually a tile with an airport.
 	 * @param tile The tile to check.
 	 * @pre AIMap::IsValidTile(tile).
-	 * @return True if and only if the tile has a airport.
+	 * @return True if and only if the tile has an airport.
 	 */
 	static bool IsAirportTile(TileIndex tile);
 
@@ -128,7 +128,7 @@ public:
 	static bool BuildAirport(TileIndex tile, AirportType type, StationID station_id);
 
 	/**
-	 * Removes a airport.
+	 * Removes an airport.
 	 * @param tile Any tile of the airport.
 	 * @pre AIMap::IsValidTile(tile).
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
@@ -151,7 +151,7 @@ public:
 	 * @param tile The tile to check.
 	 * @param type The AirportType to check.
 	 * @return The amount of noise added to the nearest town.
-	 * @note The noise will be added to the town with TownID GetNearestTown(itle, type).
+	 * @note The noise will be added to the town with TownID GetNearestTown(tile, type).
 	 */
 	static int GetNoiseLevelIncrease(TileIndex tile, AirportType type);
 

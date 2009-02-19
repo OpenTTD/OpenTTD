@@ -24,12 +24,12 @@ public:
 	 * The reasons for vehicle crashes
 	 */
 	enum CrashReason {
-		CRASH_TRAIN,                ///< Two trains collided
-		CRASH_RV_LEVEL_CROSSING,    ///< Road vehicle got under a train
-		CRASH_RV_UFO,               ///< Road vehicle got under a landing ufo
-		CRASH_PLANE_LANDING,        ///< Plane crashed on landing
-		CRASH_AIRCRAFT_NO_AIRPORT,  ///< Aircraft crashed after it found not a single airport for landing
-		CRASH_FLOODED,              ///< Vehicle was flooded
+		CRASH_TRAIN,                //!< Two trains collided
+		CRASH_RV_LEVEL_CROSSING,    //!< Road vehicle got under a train
+		CRASH_RV_UFO,               //!< Road vehicle got under a landing ufo
+		CRASH_PLANE_LANDING,        //!< Plane crashed on landing
+		CRASH_AIRCRAFT_NO_AIRPORT,  //!< Aircraft crashed after it found not a single airport for landing
+		CRASH_FLOODED,              //!< Vehicle was flooded
 	};
 
 	/**

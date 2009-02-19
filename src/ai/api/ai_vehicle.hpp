@@ -268,7 +268,7 @@ public:
 	 * Get the RoadType of the vehicle.
 	 * @param vehicle_id The vehicle to get the RoadType of.
 	 * @pre IsValidVehicle(vehicle_id).
-	 * @pre GetVehicleType(vehicle_id) == VEHICLE_ROAD.
+	 * @pre GetVehicleType(vehicle_id) == VT_ROAD.
 	 * @return The RoadType the vehicle has.
 	 */
 	static AIRoad::RoadType GetRoadType(VehicleID vehicle_id);
@@ -333,8 +333,8 @@ public:
 	 * @pre IsValidVehicle(source_vehicle_id).
 	 * @pre source_wagon < GetNumWagons(source_vehicle_id).
 	 * @pre dest_vehicle_id == -1 || (IsValidVehicle(dest_vehicle_id) && dest_wagon < GetNumWagons(dest_vehicle_id)).
-	 * @pre GetVehicleType(source_vehicle_id) == VEHICLE_RAIL.
-	 * @pre dest_vehicle_id == -1 || GetVehicleType(dest_vehicle_id) == VEHICLE_RAIL.
+	 * @pre GetVehicleType(source_vehicle_id) == VT_RAIL.
+	 * @pre dest_vehicle_id == -1 || GetVehicleType(dest_vehicle_id) == VT_RAIL.
 	 * @return Whether or not moving the wagon succeeded.
 	 */
 	static bool MoveWagon(VehicleID source_vehicle_id, int source_wagon, int dest_vehicle_id, int dest_wagon);
@@ -348,8 +348,8 @@ public:
 	 * @pre IsValidVehicle(source_vehicle_id).
 	 * @pre source_wagon < GetNumWagons(source_vehicle_id).
 	 * @pre dest_vehicle_id == -1 || (IsValidVehicle(dest_vehicle_id) && dest_wagon < GetNumWagons(dest_vehicle_id)).
-	 * @pre GetVehicleType(source_vehicle_id) == VEHICLE_RAIL.
-	 * @pre dest_vehicle_id == -1 || GetVehicleType(dest_vehicle_id) == VEHICLE_RAIL.
+	 * @pre GetVehicleType(source_vehicle_id) == VT_RAIL.
+	 * @pre dest_vehicle_id == -1 || GetVehicleType(dest_vehicle_id) == VT_RAIL.
 	 * @return Whether or not moving the wagons succeeded.
 	 */
 	static bool MoveWagonChain(VehicleID source_vehicle_id, int source_wagon, int dest_vehicle_id, int dest_wagon);
@@ -454,7 +454,7 @@ public:
 	 * Turn the given vehicle so it'll drive the other way.
 	 * @param vehicle_id The vehicle to turn.
 	 * @pre IsValidVehicle(vehicle_id).
-	 * @pre GetVehicleType(vehicle_id) == VEHICLE_ROAD || GetVehicleType(vehicle_id) == VEHICLE_RAIL.
+	 * @pre GetVehicleType(vehicle_id) == VT_ROAD || GetVehicleType(vehicle_id) == VT_RAIL.
 	 * @return True if and only if the vehicle has started to turn.
 	 * @note Vehicles cannot always be reversed. For example busses and trucks need to be running
 	 *  and not be inside a depot.
@@ -475,7 +475,7 @@ public:
 	 * Get the length of a the total vehicle in 1/16's of a tile.
 	 * @param vehicle_id The vehicle to get the length of.
 	 * @pre IsValidVehicle(vehicle_id).
-	 * @pre GetVehicleType(vehicle_id) == AIVehicle.VEHICLE_ROAD || GetVehicleType(vehicle_id) == AIVehicle.VEHICLE_RAIL.
+	 * @pre GetVehicleType(vehicle_id) == VT_ROAD || GetVehicleType(vehicle_id) == VT_RAIL.
 	 * @return The length of the engine.
 	 */
 	static int GetLength(VehicleID vehicle_id);
@@ -501,7 +501,7 @@ public:
 	 * Check if the vehicle is articulated.
 	 * @param vehicle_id The vehicle to check.
 	 * @pre IsValidVehicle(vehicle_id).
-	 * @pre GetVehicleType(vehicle_id) == VEHICLE_ROAD || GetVehicleType(vehicle_id) == VEHICLE_RAIL.
+	 * @pre GetVehicleType(vehicle_id) == VT_ROAD || GetVehicleType(vehicle_id) == VT_RAIL.
 	 * @return True if the vehicle is articulated.
 	 */
 	static bool IsArticulated(VehicleID vehicle_id);

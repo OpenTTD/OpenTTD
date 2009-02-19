@@ -121,8 +121,8 @@ public:
 	 * @pre 'start' and 'end' are in a straight line, i.e.
 	 *  AIMap::GetTileX(start) == AIMap::GetTileX(end) or
 	 *  AIMap::GetTileY(start) == AIMap::GetTileY(end).
-	 * @pre vehicle_type == AIVehicle::VEHICLE_ROAD || (vehicle_type == AIVehicle::VEHICLE_RAIL &&
-	 *   AIRail::IsRailTypeAvailable(AIRail::GetCurrentRailType())) || vehicle_type == AIVehicle::VEHICLE_WATER.
+	 * @pre vehicle_type == AIVehicle::VT_ROAD || vehicle_type == AIVehicle::VT_WATER ||
+	 *   (vehicle_type == AIVehicle::VT_RAIL && AIRail::IsRailTypeAvailable(AIRail::GetCurrentRailType())).
 	 * @exception AIError::ERR_ALREADY_BUILT
 	 * @exception AIError::ERR_AREA_NOT_CLEAR
 	 * @exception AIError::ERR_LAND_SLOPED_WRONG
