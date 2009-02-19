@@ -69,6 +69,36 @@ public:
 		AIOF_INVALID           = 0xFFFF,
 	};
 
+	/**
+	 * All conditions a conditional order can depend on.
+	 */
+	enum OrderCondition {
+		/* Order _is_ important, as it's based on OrderConditionVariable in order_type.h. */
+		OC_LOAD_PERCENTAGE,  //!< Skip based on the amount of load, value is in tons.
+		OC_RELIABILITY,      //!< Skip based on the reliability, value is percent (0..100).
+		OC_MAX_SPEED,        //!< Skip based on the maximum speed, value is in OpenTTD's internal speed unit, see AIEngine::GetMaxSpeed.
+		OC_AGE,              //!< Skip based on the age, value is in years.
+		OC_REQUIRES_SERVICE, //!< Skip when the vehicle requires service, no value.
+		OC_UNCONDITIONALLY,  //!< Always skip, no compare function, no value.
+		OC_INVALID = -1,     //!< An invalid condition, do not use.
+	};
+
+	/**
+	 * Comparators for conditional orders.
+	 */
+	enum CompareFunction {
+		/* Order _is_ important, as it's based on OrderConditionComparator in order_type.h. */
+		CF_EQUALS,       //!< Skip if both values are equal
+		CF_NOT_EQUALS,   //!< Skip if both values are not equal
+		CF_LESS_THAN,    //!< Skip if the value is less than the limit
+		CF_LESS_EQUALS,  //!< Skip if the value is less or equal to the limit
+		CF_MORE_THAN,    //!< Skip if the value is more than the limit
+		CF_MORE_EQUALS,  //!< Skip if the value is more or equal to the limit
+		CF_IS_TRUE,      //!< Skip if the variable is true
+		CF_IS_FALSE,     //!< Skip if the variable is false
+		CF_INVALID = -1, //!< Invalid compare function, do not use.
+	};
+
 	/** Different constants related to the OrderPosition */
 	enum OrderPosition {
 		ORDER_CURRENT = 0xFF, //!< Constant that gets resolved to the current order.
@@ -83,6 +113,15 @@ public:
 	 * @return True if and only if the order_position is valid for the given vehicle.
 	 */
 	static bool IsValidVehicleOrder(VehicleID vehicle_id, OrderPosition order_position);
+
+	/**
+	 * Checks whether the given order is a conditional order.
+	 * @param vehicle_id The vehicle to check.
+	 * @param order_position The order index to check.
+	 * @pre order_position != ORDER_CURRENT && IsValidVehicleOrder(vehicle_id, order_position).
+	 * @return True if and only if the order is a conditional order.
+	 */
+	static bool IsConditionalOrder(VehicleID vehicle_id, OrderPosition order_position);
 
 	/**
 	 * Resolves the given order index to the correct index for the given vehicle.
@@ -105,6 +144,14 @@ public:
 	static bool AreOrderFlagsValid(TileIndex destination, AIOrderFlags order_flags);
 
 	/**
+	 * Checks whether the given combination of condition and compare function is valid.
+	 * @param condition The condition to check.
+	 * @param compare The compare function to check.
+	 * @return True if and only if the combination of condition and compare function is valid.
+	 */
+	static bool IsValidConditionalOrder(OrderCondition condition, CompareFunction compare);
+
+	/**
 	 * Returns the number of orders for the given vehicle.
 	 * @param vehicle_id The vehicle to get the order count of.
 	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
@@ -118,6 +165,7 @@ public:
 	 * @param vehicle_id The vehicle to get the destination for.
 	 * @param order_position The order to get the destination for.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @pre order_position == ORDER_CURRENT || !IsConditionalOrder(vehicle_id, order_position).
 	 * @note Giving ORDER_CURRENT as order_position will give the order that is
 	 *  currently being executed by the vehicle. This is not necessarily the
 	 *  current order as given by ResolveOrderPosition (the current index in the
@@ -132,6 +180,7 @@ public:
 	 * @param vehicle_id The vehicle to get the destination for.
 	 * @param order_position The order to get the destination for.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @pre order_position == ORDER_CURRENT || !IsConditionalOrder(vehicle_id, order_position).
 	 * @note Giving ORDER_CURRENT as order_position will give the order that is
 	 *  currently being executed by the vehicle. This is not necessarily the
 	 *  current order as given by ResolveOrderPosition (the current index in the
@@ -140,6 +189,89 @@ public:
 	 * @return The AIOrderFlags of the order.
 	 */
 	static AIOrderFlags GetOrderFlags(VehicleID vehicle_id, OrderPosition order_position);
+
+	/**
+	 * Gets the OrderPosition to jump to if the check succeeds of the given order for the given vehicle.
+	 * @param vehicle_id The vehicle to get the OrderPosition for.
+	 * @param order_position The order to get the OrderPosition for.
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @pre order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position).
+	 * @return The target of the conditional jump.
+	 */
+	static OrderPosition GetOrderJumpTo(VehicleID vehicle_id, OrderPosition order_position);
+
+	/**
+	 * Gets the OrderCondition of the given order for the given vehicle.
+	 * @param vehicle_id The vehicle to get the condition type for.
+	 * @param order_position The order to get the condition type for.
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @pre order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position).
+	 * @return The OrderCondition of the order.
+	 */
+	static OrderCondition GetOrderCondition(VehicleID vehicle_id, OrderPosition order_position);
+
+	/**
+	 * Gets the CompareFunction of the given order for the given vehicle.
+	 * @param vehicle_id The vehicle to get the compare function for.
+	 * @param order_position The order to get the compare function for.
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @pre order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position).
+	 * @return The CompareFunction of the order.
+	 */
+	static CompareFunction GetOrderCompareFunction(VehicleID vehicle_id, OrderPosition order_position);
+
+	/**
+	 * Gets the value to compare against of the given order for the given vehicle.
+	 * @param vehicle_id The vehicle to get the value for.
+	 * @param order_position The order to get the value for.
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @pre order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position).
+	 * @return The value to compare against of the order.
+	 */
+	static int32 GetOrderCompareValue(VehicleID vehicle_id, OrderPosition order_position);
+
+	/**
+	 * Sets the OrderPosition to jump to if the check succeeds of the given order for the given vehicle.
+	 * @param vehicle_id The vehicle to set the OrderPosition for.
+	 * @param order_position The order to set the OrderPosition for.
+	 * @param jump_to The order to jump to if the check succeeds.
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @pre IsValidVehicleOrder(vehicle_id, jump_to).
+	 * @pre order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position).
+	 * @return Whether the order has been/can be changed.
+	 */
+	static bool SetOrderJumpTo(VehicleID vehicle_id, OrderPosition order_position, OrderPosition jump_to);
+
+	/**
+	 * Sets the OrderCondition of the given order for the given vehicle.
+	 * @param vehicle_id The vehicle to set the condition type for.
+	 * @param order_position The order to set the condition type for.
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @pre order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position).
+	 * @return Whether the order has been/can be changed.
+	 */
+	static bool SetOrderCondition(VehicleID vehicle_id, OrderPosition order_position, OrderCondition condition);
+
+	/**
+	 * Sets the CompareFunction of the given order for the given vehicle.
+	 * @param vehicle_id The vehicle to set the compare function for.
+	 * @param order_position The order to set the compare function for.
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @pre order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position).
+	 * @return Whether the order has been/can be changed.
+	 */
+	static bool SetOrderCompareFunction(VehicleID vehicle_id, OrderPosition order_position, CompareFunction compare);
+
+	/**
+	 * Sets the value to compare against of the given order for the given vehicle.
+	 * @param vehicle_id The vehicle to set the value for.
+	 * @param order_position The order to set the value for.
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @pre order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position).
+	 * @pre value >= 0 && value < 2048.
+	 * @return Whether the order has been/can be changed.
+	 */
+	static bool SetOrderCompareValue(VehicleID vehicle_id, OrderPosition order_position, int32 value);
 
 	/**
 	 * Appends an order to the end of the vehicle's order list.
@@ -156,6 +288,18 @@ public:
 	static bool AppendOrder(VehicleID vehicle_id, TileIndex destination, AIOrderFlags order_flags);
 
 	/**
+	 * Appends a conditional order to the end of the vehicle's order list.
+	 * @param vehicle_id The vehicle to append the order to.
+	 * @param jump_to The OrderPosition to jump to if the condition is true.
+	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
+	 * @pre IsValidVehicleOrder(vehicle_id, jump_to).
+	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception AIOrder::ERR_ORDER_NO_MORE_SPACE
+	 * @return True if and only if the order was appended.
+	 */
+	static bool AppendConditionalOrder(VehicleID vehicle_id, OrderPosition jump_to);
+
+	/**
 	 * Inserts an order before the given order_position into the vehicle's order list.
 	 * @param vehicle_id The vehicle to add the order to.
 	 * @param order_position The order to place the new order before.
@@ -169,6 +313,19 @@ public:
 	 * @return True if and only if the order was inserted.
 	 */
 	static bool InsertOrder(VehicleID vehicle_id, OrderPosition order_position, TileIndex destination, AIOrderFlags order_flags);
+
+	/**
+	 * Appends a conditional order before the given order_position into the vehicle's order list.
+	 * @param vehicle_id The vehicle to add the order to.
+	 * @param order_position The order to place the new order before.
+	 * @param jump_to The OrderPosition to jump to if the condition is true.
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @pre IsValidVehicleOrder(vehicle_id, jump_to).
+	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception AIOrder::ERR_ORDER_NO_MORE_SPACE
+	 * @return True if and only if the order was inserted.
+	 */
+	static bool InsertConditionalOrder(VehicleID vehicle_id, OrderPosition order_position, OrderPosition jump_to);
 
 	/**
 	 * Removes an order from the vehicle's order list.

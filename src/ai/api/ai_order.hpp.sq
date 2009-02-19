@@ -9,6 +9,10 @@ namespace SQConvert {
 	template <> int Return<AIOrder::ErrorMessages>(HSQUIRRELVM vm, AIOrder::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> AIOrder::AIOrderFlags GetParam(ForceType<AIOrder::AIOrderFlags>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIOrder::AIOrderFlags)tmp; }
 	template <> int Return<AIOrder::AIOrderFlags>(HSQUIRRELVM vm, AIOrder::AIOrderFlags res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AIOrder::OrderCondition GetParam(ForceType<AIOrder::OrderCondition>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIOrder::OrderCondition)tmp; }
+	template <> int Return<AIOrder::OrderCondition>(HSQUIRRELVM vm, AIOrder::OrderCondition res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AIOrder::CompareFunction GetParam(ForceType<AIOrder::CompareFunction>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIOrder::CompareFunction)tmp; }
+	template <> int Return<AIOrder::CompareFunction>(HSQUIRRELVM vm, AIOrder::CompareFunction res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> AIOrder::OrderPosition GetParam(ForceType<AIOrder::OrderPosition>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIOrder::OrderPosition)tmp; }
 	template <> int Return<AIOrder::OrderPosition>(HSQUIRRELVM vm, AIOrder::OrderPosition res) { sq_pushinteger(vm, (int32)res); return 1; }
 
@@ -42,6 +46,22 @@ void SQAIOrder_Register(Squirrel *engine) {
 	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_UNLOAD_FLAGS,                                "AIOF_UNLOAD_FLAGS");
 	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_LOAD_FLAGS,                                  "AIOF_LOAD_FLAGS");
 	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_INVALID,                                     "AIOF_INVALID");
+	SQAIOrder.DefSQConst(engine, AIOrder::OC_LOAD_PERCENTAGE,                               "OC_LOAD_PERCENTAGE");
+	SQAIOrder.DefSQConst(engine, AIOrder::OC_RELIABILITY,                                   "OC_RELIABILITY");
+	SQAIOrder.DefSQConst(engine, AIOrder::OC_MAX_SPEED,                                     "OC_MAX_SPEED");
+	SQAIOrder.DefSQConst(engine, AIOrder::OC_AGE,                                           "OC_AGE");
+	SQAIOrder.DefSQConst(engine, AIOrder::OC_REQUIRES_SERVICE,                              "OC_REQUIRES_SERVICE");
+	SQAIOrder.DefSQConst(engine, AIOrder::OC_UNCONDITIONALLY,                               "OC_UNCONDITIONALLY");
+	SQAIOrder.DefSQConst(engine, AIOrder::OC_INVALID,                                       "OC_INVALID");
+	SQAIOrder.DefSQConst(engine, AIOrder::CF_EQUALS,                                        "CF_EQUALS");
+	SQAIOrder.DefSQConst(engine, AIOrder::CF_NOT_EQUALS,                                    "CF_NOT_EQUALS");
+	SQAIOrder.DefSQConst(engine, AIOrder::CF_LESS_THAN,                                     "CF_LESS_THAN");
+	SQAIOrder.DefSQConst(engine, AIOrder::CF_LESS_EQUALS,                                   "CF_LESS_EQUALS");
+	SQAIOrder.DefSQConst(engine, AIOrder::CF_MORE_THAN,                                     "CF_MORE_THAN");
+	SQAIOrder.DefSQConst(engine, AIOrder::CF_MORE_EQUALS,                                   "CF_MORE_EQUALS");
+	SQAIOrder.DefSQConst(engine, AIOrder::CF_IS_TRUE,                                       "CF_IS_TRUE");
+	SQAIOrder.DefSQConst(engine, AIOrder::CF_IS_FALSE,                                      "CF_IS_FALSE");
+	SQAIOrder.DefSQConst(engine, AIOrder::CF_INVALID,                                       "CF_INVALID");
 	SQAIOrder.DefSQConst(engine, AIOrder::ORDER_CURRENT,                                    "ORDER_CURRENT");
 	SQAIOrder.DefSQConst(engine, AIOrder::ORDER_INVALID,                                    "ORDER_INVALID");
 
@@ -51,20 +71,32 @@ void SQAIOrder_Register(Squirrel *engine) {
 	AIError::RegisterErrorMapString(AIOrder::ERR_ORDER_TOO_MANY,                               "ERR_ORDER_TOO_MANY");
 	AIError::RegisterErrorMapString(AIOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION, "ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION");
 
-	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::IsValidVehicleOrder,  "IsValidVehicleOrder",  3, "?ii");
-	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::ResolveOrderPosition, "ResolveOrderPosition", 3, "?ii");
-	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::AreOrderFlagsValid,   "AreOrderFlagsValid",   3, "?ii");
-	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderCount,        "GetOrderCount",        2, "?i");
-	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderDestination,  "GetOrderDestination",  3, "?ii");
-	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderFlags,        "GetOrderFlags",        3, "?ii");
-	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::AppendOrder,          "AppendOrder",          4, "?iii");
-	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::InsertOrder,          "InsertOrder",          5, "?iiii");
-	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::RemoveOrder,          "RemoveOrder",          3, "?ii");
-	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::ChangeOrder,          "ChangeOrder",          4, "?iii");
-	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::MoveOrder,            "MoveOrder",            4, "?iii");
-	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::CopyOrders,           "CopyOrders",           3, "?ii");
-	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::ShareOrders,          "ShareOrders",          3, "?ii");
-	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::UnshareOrders,        "UnshareOrders",        2, "?i");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::IsValidVehicleOrder,     "IsValidVehicleOrder",     3, "?ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::IsConditionalOrder,      "IsConditionalOrder",      3, "?ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::ResolveOrderPosition,    "ResolveOrderPosition",    3, "?ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::AreOrderFlagsValid,      "AreOrderFlagsValid",      3, "?ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::IsValidConditionalOrder, "IsValidConditionalOrder", 3, "?ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderCount,           "GetOrderCount",           2, "?i");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderDestination,     "GetOrderDestination",     3, "?ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderFlags,           "GetOrderFlags",           3, "?ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderJumpTo,          "GetOrderJumpTo",          3, "?ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderCondition,       "GetOrderCondition",       3, "?ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderCompareFunction, "GetOrderCompareFunction", 3, "?ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderCompareValue,    "GetOrderCompareValue",    3, "?ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SetOrderJumpTo,          "SetOrderJumpTo",          4, "?iii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SetOrderCondition,       "SetOrderCondition",       4, "?iii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SetOrderCompareFunction, "SetOrderCompareFunction", 4, "?iii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SetOrderCompareValue,    "SetOrderCompareValue",    4, "?iii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::AppendOrder,             "AppendOrder",             4, "?iii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::AppendConditionalOrder,  "AppendConditionalOrder",  3, "?ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::InsertOrder,             "InsertOrder",             5, "?iiii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::InsertConditionalOrder,  "InsertConditionalOrder",  4, "?iii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::RemoveOrder,             "RemoveOrder",             3, "?ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::ChangeOrder,             "ChangeOrder",             4, "?iii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::MoveOrder,               "MoveOrder",               4, "?iii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::CopyOrders,              "CopyOrders",              3, "?ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::ShareOrders,             "ShareOrders",             3, "?ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::UnshareOrders,           "UnshareOrders",           2, "?i");
 
 	SQAIOrder.PostRegister(engine);
 }
