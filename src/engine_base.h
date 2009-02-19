@@ -55,6 +55,7 @@ struct Engine : PoolItem<Engine, EngineID, &_Engine_pool> {
 	uint GetDisplayMaxSpeed() const;
 	uint GetPower() const;
 	uint GetDisplayWeight() const;
+	uint GetDisplayMaxTractiveEffort() const;
 };
 
 static inline bool IsEngineIndex(uint index)

@@ -512,11 +512,10 @@ static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const
 static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, const RailVehicleInfo *rvi)
 {
 	const Engine *e = GetEngine(engine_number);
-	uint weight = e->GetDisplayWeight();
 
 	/* Purchase Cost - Engine weight */
 	SetDParam(0, e->GetCost());
-	SetDParam(1, weight);
+	SetDParam(1, e->GetDisplayWeight());
 	DrawString(x, y, STR_PURCHASE_INFO_COST_WEIGHT, TC_FROMSTRING);
 	y += 10;
 
@@ -528,7 +527,7 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 
 	/* Max tractive effort - not applicable if old acceleration or maglev */
 	if (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && rvi->railtype != RAILTYPE_MAGLEV) {
-		SetDParam(0, (weight * 10 * GetEngineProperty(engine_number, 0x1F, rvi->tractive_effort)) / 256);
+		SetDParam(0, e->GetDisplayMaxTractiveEffort());
 		DrawString(x, y, STR_PURCHASE_INFO_MAX_TE, TC_FROMSTRING);
 		y += 10;
 	}

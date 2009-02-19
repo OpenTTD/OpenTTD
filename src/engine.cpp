@@ -204,6 +204,22 @@ uint Engine::GetDisplayWeight() const
 	}
 }
 
+/**
+ * Returns the tractive effort for display purposes.
+ * For dual-headed train-engines this is the tractive effort of both heads
+ * @return tractive effort in display units kN
+ */
+uint Engine::GetDisplayMaxTractiveEffort() const
+{
+	/* Currently only trains have 'tractive effort' */
+	switch (this->type) {
+		case VEH_TRAIN:
+			return (10 * this->GetDisplayWeight() * GetEngineProperty(this->index, 0x1F, this->u.rail.tractive_effort)) / 256;
+
+		default: NOT_REACHED();
+	}
+}
+
 /** Sets cached values in Company::num_vehicles and Group::num_vehicles
  */
 void SetCachedEngineCounts()
