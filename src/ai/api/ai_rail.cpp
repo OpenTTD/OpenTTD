@@ -170,6 +170,24 @@
 	return AIObject::DoCommand(tile, p1, p2, CMD_BUILD_RAILROAD_STATION);
 }
 
+/* static */ bool AIRail::BuildRailWaypoint(TileIndex tile)
+{
+	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, IsRailTile(tile));
+	EnforcePrecondition(false, GetRailTracks(tile) == RAILTRACK_NE_SW || GetRailTracks(tile) == RAILTRACK_NW_SE);
+	EnforcePrecondition(false, IsRailTypeAvailable(GetCurrentRailType()));
+
+	return AIObject::DoCommand(tile, 0, 0, CMD_BUILD_TRAIN_WAYPOINT);
+}
+
+/* static */ bool AIRail::RemoveRailWaypoint(TileIndex tile)
+{
+	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, IsRailWaypointTile(tile));
+
+	return AIObject::DoCommand(tile, 0, 0, CMD_REMOVE_TRAIN_WAYPOINT);
+}
+
 /* static */ bool AIRail::RemoveRailStationTileRect(TileIndex tile, TileIndex tile2)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));

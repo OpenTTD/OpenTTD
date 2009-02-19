@@ -69,6 +69,8 @@
 #include "api/ai_tunnel.hpp.sq"
 #include "api/ai_vehicle.hpp.sq"
 #include "api/ai_vehiclelist.hpp.sq"
+#include "api/ai_waypoint.hpp.sq"
+#include "api/ai_waypointlist.hpp.sq"
 
 #undef DEFINE_SCRIPT_FILES
 

@@ -1,0 +1,33 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_waypoint.hpp"
+
+namespace SQConvert {
+	/* Allow enums to be used as Squirrel parameters */
+	template <> AIWaypoint::SpecialWaypointIDs GetParam(ForceType<AIWaypoint::SpecialWaypointIDs>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIWaypoint::SpecialWaypointIDs)tmp; }
+	template <> int Return<AIWaypoint::SpecialWaypointIDs>(HSQUIRRELVM vm, AIWaypoint::SpecialWaypointIDs res) { sq_pushinteger(vm, (int32)res); return 1; }
+
+	/* Allow AIWaypoint to be used as Squirrel parameter */
+	template <> AIWaypoint *GetParam(ForceType<AIWaypoint *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIWaypoint *)instance; }
+	template <> AIWaypoint &GetParam(ForceType<AIWaypoint &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIWaypoint *)instance; }
+	template <> const AIWaypoint *GetParam(ForceType<const AIWaypoint *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIWaypoint *)instance; }
+	template <> const AIWaypoint &GetParam(ForceType<const AIWaypoint &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIWaypoint *)instance; }
+	template <> int Return<AIWaypoint *>(HSQUIRRELVM vm, AIWaypoint *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIWaypoint", res, NULL, DefSQDestructorCallback<AIWaypoint>); return 1; }
+}; // namespace SQConvert
+
+void SQAIWaypoint_Register(Squirrel *engine) {
+	DefSQClass <AIWaypoint> SQAIWaypoint("AIWaypoint");
+	SQAIWaypoint.PreRegister(engine);
+	SQAIWaypoint.AddConstructor<void (AIWaypoint::*)(), 1>(engine, "x");
+
+	SQAIWaypoint.DefSQConst(engine, AIWaypoint::WAYPOINT_INVALID, "WAYPOINT_INVALID");
+
+	SQAIWaypoint.DefSQStaticMethod(engine, &AIWaypoint::IsValidWaypoint, "IsValidWaypoint", 2, "?i");
+	SQAIWaypoint.DefSQStaticMethod(engine, &AIWaypoint::GetWaypointID,   "GetWaypointID",   2, "?i");
+	SQAIWaypoint.DefSQStaticMethod(engine, &AIWaypoint::GetName,         "GetName",         2, "?i");
+	SQAIWaypoint.DefSQStaticMethod(engine, &AIWaypoint::SetName,         "SetName",         3, "?is");
+	SQAIWaypoint.DefSQStaticMethod(engine, &AIWaypoint::GetLocation,     "GetLocation",     2, "?i");
+
+	SQAIWaypoint.PostRegister(engine);
+}

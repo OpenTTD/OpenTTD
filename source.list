@@ -630,6 +630,8 @@ ai/api/ai_tunnel.hpp
 ai/api/ai_types.hpp
 ai/api/ai_vehicle.hpp
 ai/api/ai_vehiclelist.hpp
+ai/api/ai_waypoint.hpp
+ai/api/ai_waypointlist.hpp
 
 # AI API Implementation
 ai/api/ai_abstractlist.cpp
@@ -679,6 +681,8 @@ ai/api/ai_townlist.cpp
 ai/api/ai_tunnel.cpp
 ai/api/ai_vehicle.cpp
 ai/api/ai_vehiclelist.cpp
+ai/api/ai_waypoint.cpp
+ai/api/ai_waypointlist.cpp
 
 # Blitters
 #if DEDICATED

@@ -2699,6 +2699,14 @@
 				RelativePath=".\..\src\ai\api\ai_vehiclelist.hpp"
 				>
 			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_waypoint.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_waypointlist.hpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="AI API Implementation"
@@ -2889,6 +2897,14 @@
 			</File>
 			<File
 				RelativePath=".\..\src\ai\api\ai_vehiclelist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_waypoint.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_waypointlist.cpp"
 				>
 			</File>
 		</Filter>

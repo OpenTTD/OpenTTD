@@ -261,6 +261,27 @@ public:
 	static bool BuildNewGRFRailStation(TileIndex tile, RailTrack direction, uint num_platforms, uint platform_length, StationID station_id, CargoID cargo_id, IndustryType source_industry, IndustryType goal_industry, int distance, bool source_station);
 
 	/**
+	 * Build a rail waypoint.
+	 * @param tile Place to build the waypoint.
+	 * @pre AIMap::IsValidTile(tile).
+	 * @pre IsRailTile(tile).
+	 * @pre GetRailTracks(tile) == RAILTRACK_NE_SW || GetRailTracks(tile) == RAILTRACK_NW_SE.
+	 * @pre IsRailTypeAvailable(GetCurrentRailType()).
+	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
+	 * @return Whether the rail waypoint has been/can be build or not.
+	 */
+	static bool BuildRailWaypoint(TileIndex tile);
+
+	/**
+	 * Remove a rail waypoint.
+	 * @param tile Place to remove the waypoint from.
+	 * @pre AIMap::IsValidTile(tile).
+	 * @pre IsRailWaypointTile(tile).
+	 * @return Whether the rail waypoint has been/can be removed or not.
+	 */
+	static bool RemoveRailWaypoint(TileIndex tile);
+
+	/**
 	 * Remove a rectangle of platform pieces from a rail station.
 	 * @param tile One corner of the rectangle to clear.
 	 * @param tile2 The oppposite corner.

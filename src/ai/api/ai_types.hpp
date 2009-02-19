@@ -23,6 +23,7 @@ typedef uint16 StringID;     //!< The ID of a string.
 typedef uint32 TileIndex;    //!< The ID of a tile (just named differently).
 typedef uint16 TownID;       //!< The ID of a town.
 typedef uint16 VehicleID;    //!< The ID of a vehicle.
+typedef uint16 WaypointID;   //!< The ID of a waypoint.
 
 /* Types we defined ourself, as the OpenTTD core doesn't have them (yet) */
 typedef uint AIErrorType;    //!< The types of errors inside the NoAI framework.
