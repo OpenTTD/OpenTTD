@@ -62,7 +62,6 @@ void Squirrel::RunError(HSQUIRRELVM vm, const SQChar *error)
 	SQChar buf[1024];
 	scsnprintf(buf, lengthof(buf), _SC("Your script made an error: %s\n"), error);
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
-	engine->crashed = true;
 	SQPrintFunc *func = engine->print_func;
 	if (func == NULL) {
 		scfprintf(stderr, _SC("%s"), buf);
@@ -177,7 +176,7 @@ bool Squirrel::MethodExists(HSQOBJECT instance, const char *method_name)
 bool Squirrel::Resume(int suspend)
 {
 	assert(!this->crashed);
-	sq_resumecatch(this->vm, suspend);
+	this->crashed = !sq_resumecatch(this->vm, suspend);
 	return this->vm->_suspended != 0;
 }
 
