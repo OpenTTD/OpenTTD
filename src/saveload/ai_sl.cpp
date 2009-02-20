@@ -58,7 +58,7 @@ static void Load_AIPL()
 		_ai_saveload_version = -1;
 		SlObject(NULL, _ai_company);
 
-		if (!_networking || _network_server) {
+		if (_networking && !_network_server) {
 			AIInstance::LoadEmpty();
 			continue;
 		}
