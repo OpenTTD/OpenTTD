@@ -227,7 +227,6 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 //		v->load_unload_time_rem = 0;
 //		v->progress = 0;
 
-//	v->u.road.unk2 = 0;
 //	v->u.road.overtaking = 0;
 
 		v->last_station_visited = INVALID_STATION;

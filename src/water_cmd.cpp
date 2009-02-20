@@ -566,8 +566,8 @@ static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 	for (; wdts->delta_x != 0x80; wdts++) {
 		AddSortableSpriteToDraw(wdts->image + base + ((wdts->image < 24) ? locks_base : 0), palette,
 			ti->x + wdts->delta_x, ti->y + wdts->delta_y,
-			wdts->width, wdts->height,
-			wdts->unk, ti->z + wdts->delta_z,
+			wdts->size_x, wdts->size_y,
+			wdts->size_z, ti->z + wdts->delta_z,
 			IsTransparencySet(TO_BUILDINGS));
 	}
 }

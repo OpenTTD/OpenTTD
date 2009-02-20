@@ -6,9 +6,9 @@ struct WaterDrawTileStruct {
 	byte delta_x;
 	byte delta_y;
 	byte delta_z;
-	byte width;
-	byte height;
-	byte unk;
+	byte size_x;
+	byte size_y;
+	byte size_z;
 	SpriteID image;
 };
 
