@@ -619,6 +619,8 @@ static void NetworkClose()
 	_networking = false;
 	_network_server = false;
 
+	NetworkFreeLocalCommandQueue();
+
 	free(_network_company_states);
 	_network_company_states = NULL;
 
