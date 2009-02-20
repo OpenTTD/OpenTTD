@@ -59,7 +59,7 @@ static void Load_AIPL()
 		SlObject(NULL, _ai_company);
 
 		if (_networking && !_network_server) {
-			AIInstance::LoadEmpty();
+			if (IsValidCompanyID(index) && !IsHumanCompany(index)) AIInstance::LoadEmpty();
 			continue;
 		}
 
