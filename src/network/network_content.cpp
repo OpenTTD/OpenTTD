@@ -305,7 +305,8 @@ static bool GunzipFile(const ContentInfo *ci)
 {
 #if defined(WITH_ZLIB)
 	bool ret = true;
-	gzFile fin = gzopen(GetFullFilename(ci, true), "rb");
+	FILE *ftmp = fopen(GetFullFilename(ci, true), "rb");
+	gzFile fin = gzdopen(fileno(ftmp), "rb");
 	FILE *fout = fopen(GetFullFilename(ci, false), "wb");
 
 	if (fin == NULL || fout == NULL) {
@@ -323,7 +324,8 @@ static bool GunzipFile(const ContentInfo *ci)
 	}
 
 exit:
-	if (fin != NULL) gzclose(fin);
+	if (fin  != NULL) gzclose(fin);
+	if (ftmp != NULL) fclose(ftmp);
 	if (fout != NULL) fclose(fout);
 
 	return ret;
