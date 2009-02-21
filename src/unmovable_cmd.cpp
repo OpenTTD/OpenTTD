@@ -264,7 +264,7 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
 		if (_current_company == OWNER_WATER) {
 			return DestroyCompanyHQ(GetTileOwner(tile), DC_EXEC);
 		} else {
-			return_cmd_error(STR_5804_COMPANY_HEADQUARTERS_IN);
+			return_cmd_error(flags & DC_AUTO ? STR_5804_COMPANY_HEADQUARTERS_IN : INVALID_STRING_ID);
 		}
 	}
 
@@ -274,7 +274,7 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
 
 	/* checks if you're allowed to remove unmovable things */
 	if (_game_mode != GM_EDITOR && _current_company != OWNER_WATER && ((flags & DC_AUTO || !_cheats.magic_bulldozer.value)) )
-		return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
+		return_cmd_error(flags & DC_AUTO ? STR_5800_OBJECT_IN_THE_WAY : INVALID_STRING_ID);
 
 	if (IsStatue(tile)) {
 		if (flags & DC_AUTO) return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);

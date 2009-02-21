@@ -423,7 +423,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlag flags)
 				((indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) ||
 				HasBit(GetIndustryTileSpec(GetIndustryGfx(tile))->slopes_refused, 5)))) {
 		SetDParam(0, indspec->name);
-		return_cmd_error(STR_4800_IN_THE_WAY);
+		return_cmd_error(flags & DC_AUTO ? STR_4800_IN_THE_WAY : INVALID_STRING_ID);
 	}
 
 	if (flags & DC_EXEC) {
