@@ -1009,7 +1009,10 @@ static bool DifficultyReset(int32 level)
 static bool DifficultyChange(int32)
 {
 	if (_game_mode == GM_MENU) {
-		_settings_newgame.difficulty.diff_level = 3;
+		if (_settings_newgame.difficulty.diff_level != 3) {
+			ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
+			_settings_newgame.difficulty.diff_level = 3;
+		}
 	} else {
 		_settings_game.difficulty.diff_level = 3;
 	}

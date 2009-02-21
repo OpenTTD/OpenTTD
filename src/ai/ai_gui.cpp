@@ -16,6 +16,7 @@
 #include "../string_func.h"
 #include "../textbuf_gui.h"
 #include "../settings_type.h"
+#include "../settings_func.h"
 #include "../network/network_content.h"
 
 #include "ai.hpp"
@@ -485,15 +486,13 @@ struct AIConfigWindow : public Window {
 			case AIC_WIDGET_BACKGROUND: {
 				/* Check if the user clicked on one of the arrows to configure the number of AIs */
 				if (IsInsideBS(pt.x, 10, 20) && IsInsideBS(pt.y, 18, 10)) {
+					int new_value;
 					if (pt.x <= 20) {
-						_settings_newgame.difficulty.max_no_competitors = max(0, _settings_newgame.difficulty.max_no_competitors - 1);
+						new_value = max(0, _settings_newgame.difficulty.max_no_competitors - 1);
 					} else {
-						_settings_newgame.difficulty.max_no_competitors = min(MAX_COMPANIES - 1, _settings_newgame.difficulty.max_no_competitors + 1);
+						new_value = min(MAX_COMPANIES - 1, _settings_newgame.difficulty.max_no_competitors + 1);
 					}
-					if (_settings_newgame.difficulty.diff_level != 3) {
-						_settings_newgame.difficulty.diff_level = 3;
-						ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
-					}
+					IConsoleSetSetting("difficulty.max_no_competitors", new_value);
 					this->SetDirty();
 				}
 				break;

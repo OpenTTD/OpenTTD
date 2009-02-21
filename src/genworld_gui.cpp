@@ -571,15 +571,11 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_SMOOTHNESS_PULLDOWN:    _settings_newgame.game_creation.tgen_smoothness = index;  break;
 
 			case GLAND_TOWN_PULLDOWN:
-				_settings_newgame.difficulty.number_towns = index;
-				if (_settings_newgame.difficulty.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
-				IConsoleSetSetting("difficulty.number_towns", _settings_newgame.difficulty.number_towns);
+				IConsoleSetSetting("difficulty.number_towns", index);
 				break;
 
 			case GLAND_INDUSTRY_PULLDOWN:
-				_settings_newgame.difficulty.number_industries = index;
-				if (_settings_newgame.difficulty.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
-				IConsoleSetSetting("difficulty.number_industries", _settings_newgame.difficulty.number_industries);
+				IConsoleSetSetting("difficulty.number_industries", index);
 				break;
 
 			case GLAND_LANDSCAPE_PULLDOWN:
@@ -592,15 +588,11 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				break;
 
 			case GLAND_TERRAIN_PULLDOWN:
-				_settings_newgame.difficulty.terrain_type = index;
-				if (_settings_newgame.difficulty.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
-				IConsoleSetSetting("difficulty.terrain_type", _settings_newgame.difficulty.terrain_type);
+				IConsoleSetSetting("difficulty.terrain_type", index);
 				break;
 
 			case GLAND_WATER_PULLDOWN:
-				_settings_newgame.difficulty.quantity_sea_lakes = index;
-				if (_settings_newgame.difficulty.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
-				IConsoleSetSetting("difficulty.quantity_sea_lakes", _settings_newgame.difficulty.quantity_sea_lakes);
+				IConsoleSetSetting("difficulty.quantity_sea_lakes", index);
 				break;
 		}
 		this->SetDirty();
