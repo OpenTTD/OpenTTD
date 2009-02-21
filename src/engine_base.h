@@ -50,6 +50,8 @@ struct Engine : PoolItem<Engine, EngineID, &_Engine_pool> {
 
 	inline bool IsValid() const { return this->info.climates != 0; }
 
+	CargoID GetDefaultCargoType() const;
+	bool CanCarryCargo() const;
 	Money GetRunningCost() const;
 	Money GetCost() const;
 	uint GetDisplayMaxSpeed() const;

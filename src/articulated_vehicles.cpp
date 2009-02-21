@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "train.h"
 #include "roadveh.h"
+#include "aircraft.h"
 #include "newgrf_engine.h"
 #include "vehicle_func.h"
 
@@ -45,30 +46,22 @@ uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
  */
 static inline uint16 GetVehicleDefaultCapacity(EngineID engine, VehicleType type, CargoID *cargo_type)
 {
+	const Engine *e = GetEngine(engine);
+	CargoID cargo = (e->CanCarryCargo() ? e->GetDefaultCargoType() : (CargoID)CT_INVALID);
+	if (cargo_type != NULL) *cargo_type = cargo;
+	if (cargo == CT_INVALID) return 0;
 	switch (type) {
-		case VEH_TRAIN: {
-			const RailVehicleInfo *rvi = RailVehInfo(engine);
-			if (cargo_type != NULL) *cargo_type = rvi->cargo_type;
-			return GetEngineProperty(engine, 0x14, rvi->capacity) + (rvi->railveh_type == RAILVEH_MULTIHEAD ? rvi->capacity : 0);
-		}
+		case VEH_TRAIN:
+			return GetEngineProperty(engine, 0x14, e->u.rail.capacity) + (e->u.rail.railveh_type == RAILVEH_MULTIHEAD ? e->u.rail.capacity : 0);
 
-		case VEH_ROAD: {
-			const RoadVehicleInfo *rvi = RoadVehInfo(engine);
-			if (cargo_type != NULL) *cargo_type = rvi->cargo_type;
-			return GetEngineProperty(engine, 0x0F, rvi->capacity);
-		}
+		case VEH_ROAD:
+			return GetEngineProperty(engine, 0x0F, e->u.road.capacity);
 
-		case VEH_SHIP: {
-			const ShipVehicleInfo *svi = ShipVehInfo(engine);
-			if (cargo_type != NULL) *cargo_type = svi->cargo_type;
-			return GetEngineProperty(engine, 0x0D, svi->capacity);
-		}
+		case VEH_SHIP:
+			return GetEngineProperty(engine, 0x0D, e->u.ship.capacity);
 
-		case VEH_AIRCRAFT: {
-			const AircraftVehicleInfo *avi = AircraftVehInfo(engine);
-			if (cargo_type != NULL) *cargo_type = CT_PASSENGERS;
-			return avi->passenger_capacity;
-		}
+		case VEH_AIRCRAFT:
+			return AircraftDefaultCargoCapacity(cargo, &e->u.air);
 
 		default: NOT_REACHED();
 	}
@@ -264,28 +257,30 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 		u->cur_image = 0xAC2;
 		u->random_bits = VehicleRandomBits();
 
+		const Engine *e_artic = GetEngine(engine_type);
 		switch (type) {
 			default: NOT_REACHED();
 
-			case VEH_TRAIN: {
-				const RailVehicleInfo *rvi_artic = RailVehInfo(engine_type);
-
+			case VEH_TRAIN:
 				u = new (u) Train();
 				previous->SetNext(u);
 				u->u.rail.track = v->u.rail.track;
 				u->u.rail.railtype = v->u.rail.railtype;
 				u->u.rail.first_engine = v->engine_type;
 
-				u->spritenum = rvi_artic->image_index;
-				u->cargo_type = rvi_artic->cargo_type;
-				u->cargo_cap = rvi_artic->capacity;  // Callback 36 is called when the consist is finished
+				u->spritenum = e_artic->u.rail.image_index;
+				if (e_artic->CanCarryCargo()) {
+					u->cargo_type = e_artic->GetDefaultCargoType();
+					u->cargo_cap = e_artic->u.rail.capacity;  // Callback 36 is called when the consist is finished
+				} else {
+					u->cargo_type = v->cargo_type; // Needed for livery selection
+					u->cargo_cap = 0;
+				}
 
 				SetArticulatedPart(u);
-			} break;
+				break;
 
-			case VEH_ROAD: {
-				const RoadVehicleInfo *rvi_artic = RoadVehInfo(engine_type);
-
+			case VEH_ROAD:
 				u = new (u) RoadVehicle();
 				previous->SetNext(u);
 				u->u.road.first_engine = v->engine_type;
@@ -295,12 +290,17 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 				u->u.road.roadtype = v->u.road.roadtype;
 				u->u.road.compatible_roadtypes = v->u.road.compatible_roadtypes;
 
-				u->spritenum = rvi_artic->image_index;
-				u->cargo_type = rvi_artic->cargo_type;
-				u->cargo_cap = rvi_artic->capacity;  // Callback 36 is called when the consist is finished
+				u->spritenum = e_artic->u.road.image_index;
+				if (e_artic->CanCarryCargo()) {
+					u->cargo_type = e_artic->GetDefaultCargoType();
+					u->cargo_cap = e_artic->u.road.capacity;  // Callback 36 is called when the consist is finished
+				} else {
+					u->cargo_type = v->cargo_type; // Needed for livery selection
+					u->cargo_cap = 0;
+				}
 
 				SetRoadVehArticPart(u);
-			} break;
+				break;
 		}
 
 		if (flip_image) u->spritenum++;

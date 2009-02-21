@@ -166,6 +166,9 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (!IsEngineBuildable(p1, VEH_ROAD, _current_company)) return_cmd_error(STR_ROAD_VEHICLE_NOT_AVAILABLE);
 
 	const Engine *e = GetEngine(p1);
+	/* Engines without valid cargo should not be available */
+	if (e->GetDefaultCargoType() == CT_INVALID) return CMD_ERROR;
+
 	CommandCost cost(EXPENSES_NEW_VEHICLES, e->GetCost());
 	if (flags & DC_QUERY_COST) return cost;
 
@@ -217,7 +220,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 
 		v->spritenum = rvi->image_index;
-		v->cargo_type = rvi->cargo_type;
+		v->cargo_type = e->GetDefaultCargoType();
 		v->cargo_subtype = 0;
 		v->cargo_cap = rvi->capacity;
 //		v->cargo_count = 0;
@@ -262,7 +265,8 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		/* Call callback 36s after the whole consist has been constructed */
 		for (Vehicle *u = v; u != NULL; u = u->Next()) {
-			u->cargo_cap = GetVehicleProperty(u, 0x0F, u->cargo_cap);
+			/* Cargo capacity is zero if and only if the vehicle cannot carry anything */
+			if (u->cargo_cap != 0) u->cargo_cap = GetVehicleProperty(u, 0x0F, u->cargo_cap);
 		}
 
 		VehiclePositionChanged(v);
@@ -2009,7 +2013,8 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		 * [Refit] button near each wagon. */
 		if (!CanRefitTo(v->engine_type, new_cid)) continue;
 
-		if (v->cargo_cap == 0) continue;
+		const Engine *e = GetEngine(v->engine_type);
+		if (!e->CanCarryCargo()) continue;
 
 		if (HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
 			/* Back up the cargo type */
@@ -2028,14 +2033,13 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		if (capacity == CALLBACK_FAILED) {
 			/* callback failed or not used, use default capacity */
-			const RoadVehicleInfo *rvi = RoadVehInfo(v->engine_type);
 
-			CargoID old_cid = rvi->cargo_type;
+			CargoID old_cid = e->GetDefaultCargoType();
 			/* normally, the capacity depends on the cargo type, a vehicle can
 			 * carry twice as much mail/goods as normal cargo, and four times as
 			 * many passengers
 			 */
-			capacity = GetVehicleProperty(v, 0x0F, rvi->capacity);
+			capacity = GetVehicleProperty(v, 0x0F, e->u.road.capacity);
 			switch (old_cid) {
 				case CT_PASSENGERS: break;
 				case CT_MAIL:

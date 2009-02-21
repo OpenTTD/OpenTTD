@@ -123,7 +123,6 @@ static uint GetTotalCapacityOfArticulatedParts(EngineID engine, VehicleType type
 
 static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
 {
-	const RailVehicleInfo *rvi = RailVehInfo(engine);
 	const Engine *e = GetEngine(engine);
 
 	SetDParam(0, e->GetCost());
@@ -135,7 +134,7 @@ static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
 
 	uint capacity = GetTotalCapacityOfArticulatedParts(engine, VEH_TRAIN);
 	if (capacity != 0) {
-		SetDParam(5, rvi->cargo_type);
+		SetDParam(5, e->GetDefaultCargoType());
 		SetDParam(6, capacity);
 	} else {
 		SetDParam(5, CT_INVALID);
@@ -159,14 +158,18 @@ static void DrawAircraftEngineInfo(EngineID engine, int x, int y, int maxw)
 
 static void DrawRoadVehEngineInfo(EngineID engine, int x, int y, int maxw)
 {
-	const RoadVehicleInfo *rvi = RoadVehInfo(engine);
 	const Engine *e = GetEngine(engine);
 
 	SetDParam(0, e->GetCost());
 	SetDParam(1, e->GetDisplayMaxSpeed());
 	SetDParam(2, e->GetRunningCost());
-	SetDParam(3, rvi->cargo_type);
-	SetDParam(4, GetTotalCapacityOfArticulatedParts(engine, VEH_ROAD));
+	uint capacity = GetTotalCapacityOfArticulatedParts(engine, VEH_ROAD);
+	if (capacity != 0) {
+		SetDParam(3, e->GetDefaultCargoType());
+		SetDParam(4, capacity);
+	} else {
+		SetDParam(3, CT_INVALID);
+	}
 
 	DrawStringMultiCenter(x, y, STR_902A_COST_SPEED_RUNNING_COST, maxw);
 }
@@ -178,7 +181,7 @@ static void DrawShipEngineInfo(EngineID engine, int x, int y, int maxw)
 
 	SetDParam(0, e->GetCost());
 	SetDParam(1, e->GetDisplayMaxSpeed());
-	SetDParam(2, svi->cargo_type);
+	SetDParam(2, e->GetDefaultCargoType());
 	SetDParam(3, GetEngineProperty(engine, 0x0D, svi->capacity));
 	SetDParam(4, e->GetRunningCost());
 	DrawStringMultiCenter(x, y, STR_982E_COST_MAX_SPEED_CAPACITY, maxw);

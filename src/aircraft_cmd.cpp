@@ -254,6 +254,9 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	const Engine *e = GetEngine(p1);
 	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
 
+	/* Engines without valid cargo should not be available */
+	if (e->GetDefaultCargoType() == CT_INVALID) return CMD_ERROR;
+
 	/* to just query the cost, it is not neccessary to have a valid tile (automation/AI) */
 	if (flags & DC_QUERY_COST) return value;
 
@@ -309,7 +312,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		v->cargo_cap = avi->passenger_capacity;
 		u->cargo_cap = avi->mail_capacity;
 
-		v->cargo_type = CT_PASSENGERS;
+		v->cargo_type = e->GetDefaultCargoType();
 		u->cargo_type = CT_MAIL;
 
 		v->cargo_subtype = 0;
@@ -334,16 +337,8 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		u->subtype = AIR_SHADOW;
 		u->UpdateDeltaXY(INVALID_DIR);
 
-		/* Danger, Will Robinson!
-		 * If the aircraft is refittable, but cannot be refitted to
-		 * passengers, we select the cargo type from the refit mask.
-		 * This is a fairly nasty hack to get around the fact that TTD
-		 * has no default cargo type specifier for planes... */
-		CargoID cargo = FindFirstRefittableCargo(p1);
-		if (cargo != CT_INVALID && cargo != CT_PASSENGERS) {
+		if (v->cargo_type != CT_PASSENGERS) {
 			uint16 callback = CALLBACK_FAILED;
-
-			v->cargo_type = cargo;
 
 			if (HasBit(EngInfo(p1)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
 				callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, v->engine_type, v);

@@ -1085,7 +1085,7 @@
   Engine 0
     IsValidEngine():    true
     GetName():          Kirby Paul Tank (Steam)
-    GetCargoType():     0
+    GetCargoType():     255
     CanRefitCargo():    false
     GetCapacity():      -1
     GetReliability():   75
@@ -1229,7 +1229,7 @@
   Engine 8
     IsValidEngine():    true
     GetName():          Chaney 'Jubilee' (Steam)
-    GetCargoType():     0
+    GetCargoType():     255
     CanRefitCargo():    false
     GetCapacity():      -1
     GetReliability():   79
@@ -1247,7 +1247,7 @@
   Engine 9
     IsValidEngine():    true
     GetName():          Ginzu 'A4' (Steam)
-    GetCargoType():     0
+    GetCargoType():     255
     CanRefitCargo():    false
     GetCapacity():      -1
     GetReliability():   83

@@ -737,6 +737,9 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	const Engine *e = GetEngine(p1);
 	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
 
+	/* Engines without valid cargo should not be available */
+	if (e->GetDefaultCargoType() == CT_INVALID) return CMD_ERROR;
+
 	if (flags & DC_QUERY_COST) return value;
 
 	/* The ai_new queries the vehicle cost before building the route,
@@ -772,7 +775,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 
 		v->spritenum = svi->image_index;
-		v->cargo_type = svi->cargo_type;
+		v->cargo_type = e->GetDefaultCargoType();
 		v->cargo_subtype = 0;
 		v->cargo_cap = svi->capacity;
 		v->value = value.GetCost();

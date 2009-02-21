@@ -21,28 +21,9 @@ char *AIEventEnginePreview::GetName()
 
 CargoID AIEventEnginePreview::GetCargoType()
 {
-	switch (::GetEngine(engine)->type) {
-		case VEH_ROAD: {
-			const RoadVehicleInfo *vi = ::RoadVehInfo(engine);
-			return vi->cargo_type;
-		} break;
-
-		case VEH_TRAIN: {
-			const RailVehicleInfo *vi = ::RailVehInfo(engine);
-			return vi->cargo_type;
-		} break;
-
-		case VEH_SHIP: {
-			const ShipVehicleInfo *vi = ::ShipVehInfo(engine);
-			return vi->cargo_type;
-		} break;
-
-		case VEH_AIRCRAFT: {
-			return CT_PASSENGERS;
-		} break;
-
-		default: NOT_REACHED();
-	}
+	const Engine *e = ::GetEngine(engine);
+	if (!e->CanCarryCargo()) return CT_INVALID;
+	return e->GetDefaultCargoType();
 }
 
 int32 AIEventEnginePreview::GetCapacity()

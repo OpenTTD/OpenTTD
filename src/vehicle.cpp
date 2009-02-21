@@ -1296,7 +1296,8 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 					break;
 				}
 			} else {
-				CargoID initial_cargo = GetEngineCargoType(v->engine_type);
+				const Engine *e = GetEngine(v->engine_type);
+				CargoID initial_cargo = (e->CanCarryCargo() ? e->GetDefaultCargoType() : (CargoID)CT_INVALID);
 
 				if (v->cargo_type != initial_cargo && initial_cargo != CT_INVALID) {
 					total_cost.AddCost(GetRefitCost(v->engine_type));
@@ -1828,7 +1829,8 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 	 * whether any _other_ liveries are in use. */
 	if (c->livery[LS_DEFAULT].in_use && (_settings_client.gui.liveries == 2 || (_settings_client.gui.liveries == 1 && company == _local_company))) {
 		/* Determine the livery scheme to use */
-		switch (GetEngine(engine_type)->type) {
+		const Engine *e = GetEngine(engine_type);
+		switch (e->type) {
 			default: NOT_REACHED();
 			case VEH_TRAIN: {
 				const RailVehicleInfo *rvi = RailVehInfo(engine_type);
@@ -1836,11 +1838,13 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 					/* Wagonoverrides use the coloir scheme of the front engine.
 					 * Articulated parts use the colour scheme of the first part. (Not supported for articulated wagons) */
 					engine_type = parent_engine_type;
+					e = GetEngine(engine_type);
 					rvi = RailVehInfo(engine_type);
 					/* Note: Luckily cargo_type is not needed for engines */
 				}
 
-				if (cargo_type == CT_INVALID) cargo_type = rvi->cargo_type;
+				if (cargo_type == CT_INVALID) cargo_type = e->GetDefaultCargoType();
+				if (cargo_type == CT_INVALID) cargo_type = CT_GOODS; // The vehicle does not carry anything, let's pick some freight cargo
 				if (rvi->railveh_type == RAILVEH_WAGON) {
 					if (!GetCargo(cargo_type)->is_freight) {
 						if (parent_engine_type == INVALID_ENGINE) {
@@ -1877,10 +1881,11 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 				/* Always use the livery of the front */
 				if (v != NULL && parent_engine_type != INVALID_ENGINE) {
 					engine_type = parent_engine_type;
+					e = GetEngine(engine_type);
 					cargo_type = v->First()->cargo_type;
 				}
-				const RoadVehicleInfo *rvi = RoadVehInfo(engine_type);
-				if (cargo_type == CT_INVALID) cargo_type = rvi->cargo_type;
+				if (cargo_type == CT_INVALID) cargo_type = e->GetDefaultCargoType();
+				if (cargo_type == CT_INVALID) cargo_type = CT_GOODS; // The vehicle does not carry anything, let's pick some freight cargo
 
 				/* Important: Use Tram Flag of front part. Luckily engine_type refers to the front part here. */
 				if (HasBit(EngInfo(engine_type)->misc_flags, EF_ROAD_TRAM)) {
@@ -1894,16 +1899,14 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 			}
 
 			case VEH_SHIP: {
-				const ShipVehicleInfo *svi = ShipVehInfo(engine_type);
-				if (cargo_type == CT_INVALID) cargo_type = svi->cargo_type;
+				if (cargo_type == CT_INVALID) cargo_type = e->GetDefaultCargoType();
+				if (cargo_type == CT_INVALID) cargo_type = CT_GOODS; // The vehicle does not carry anything, let's pick some freight cargo
 				scheme = IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_PASSENGER_SHIP : LS_FREIGHT_SHIP;
 				break;
 			}
 
 			case VEH_AIRCRAFT: {
-				const AircraftVehicleInfo *avi = AircraftVehInfo(engine_type);
-				if (cargo_type == CT_INVALID) cargo_type = CT_PASSENGERS;
-				switch (avi->subtype) {
+				switch (e->u.air.subtype) {
 					case AIR_HELI: scheme = LS_HELICOPTER; break;
 					case AIR_CTOL: scheme = LS_SMALL_PLANE; break;
 					case AIR_CTOL | AIR_FAST: scheme = LS_LARGE_PLANE; break;

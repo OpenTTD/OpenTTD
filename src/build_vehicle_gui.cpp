@@ -484,7 +484,8 @@ static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const
 	/* Wagon weight - (including cargo) */
 	uint weight = e->GetDisplayWeight();
 	SetDParam(0, weight);
-	SetDParam(1, (GetCargo(rvi->cargo_type)->weight * GetEngineProperty(engine_number, 0x14, rvi->capacity) >> 4) + weight);
+	uint cargo_weight = (e->CanCarryCargo() ? GetCargo(e->GetDefaultCargoType())->weight * GetEngineProperty(engine_number, 0x14, rvi->capacity) >> 4 : 0);
+	SetDParam(1, cargo_weight + weight);
 	DrawString(x, y, STR_PURCHASE_INFO_WEIGHT_CWEIGHT, TC_FROMSTRING);
 	y += 10;
 
@@ -582,7 +583,7 @@ static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const Ship
 	y += 10;
 
 	/* Cargo type + capacity */
-	SetDParam(0, svi->cargo_type);
+	SetDParam(0, e->GetDefaultCargoType());
 	SetDParam(1, GetEngineProperty(engine_number, 0x0D, svi->capacity));
 	SetDParam(2, IsEngineRefittable(engine_number) ? STR_9842_REFITTABLE : STR_EMPTY);
 	DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
@@ -599,8 +600,8 @@ static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const Ship
 /* Draw aircraft specific details */
 static int DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number, const AircraftVehicleInfo *avi)
 {
-	CargoID cargo;
 	const Engine *e = GetEngine(engine_number);
+	CargoID cargo = e->GetDefaultCargoType();
 
 	/* Purchase cost - Max speed */
 	SetDParam(0, e->GetCost());
@@ -609,7 +610,6 @@ static int DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number, const 
 	y += 10;
 
 	/* Cargo capacity */
-	cargo = FindFirstRefittableCargo(engine_number);
 	if (cargo == CT_INVALID || cargo == CT_PASSENGERS) {
 		SetDParam(0, avi->passenger_capacity);
 		SetDParam(1, avi->mail_capacity);

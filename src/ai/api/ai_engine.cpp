@@ -33,28 +33,10 @@
 {
 	if (!IsValidEngine(engine_id)) return CT_INVALID;
 
-	switch (::GetEngine(engine_id)->type) {
-		case VEH_ROAD: {
-			const RoadVehicleInfo *vi = ::RoadVehInfo(engine_id);
-			return vi->cargo_type;
-		} break;
+	const Engine *e = ::GetEngine(engine_id);
+	if (!e->CanCarryCargo()) return CT_INVALID;
 
-		case VEH_TRAIN: {
-			const RailVehicleInfo *vi = ::RailVehInfo(engine_id);
-			return vi->cargo_type;
-		} break;
-
-		case VEH_SHIP: {
-			const ShipVehicleInfo *vi = ::ShipVehInfo(engine_id);
-			return vi->cargo_type;
-		} break;
-
-		case VEH_AIRCRAFT: {
-			return CT_PASSENGERS;
-		} break;
-
-		default: NOT_REACHED();
-	}
+	return e->GetDefaultCargoType();
 }
 
 /* static */ bool AIEngine::CanRefitCargo(EngineID engine_id, CargoID cargo_id)

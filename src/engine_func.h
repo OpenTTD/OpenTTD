@@ -21,7 +21,6 @@ void DrawAircraftEngine(int x, int y, EngineID engine, SpriteID pal);
 
 bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company);
 bool IsEngineRefittable(EngineID engine);
-CargoID GetEngineCargoType(EngineID engine);
 void SetCachedEngineCounts();
 void SetYearEngineAgingStops();
 void StartupOneEngine(Engine *e, Date aging_date);

@@ -265,7 +265,8 @@ void TrainConsistChanged(Vehicle *v, bool same_length)
 	}
 
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
-		const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
+		const Engine *e_u = GetEngine(u->engine_type);
+		const RailVehicleInfo *rvi_u = &e_u->u.rail;
 
 		if (!HasBit(EngInfo(u->engine_type)->misc_flags, EF_RAIL_TILTS)) train_can_tilt = false;
 
@@ -326,7 +327,7 @@ void TrainConsistChanged(Vehicle *v, bool same_length)
 			}
 		}
 
-		if (u->cargo_type == rvi_u->cargo_type && u->cargo_subtype == 0) {
+		if (e_u->CanCarryCargo() && u->cargo_type == e_u->GetDefaultCargoType() && u->cargo_subtype == 0) {
 			/* Set cargo capacity if we've not been refitted */
 			u->cargo_cap = GetVehicleProperty(u, 0x14, rvi_u->capacity);
 		}
@@ -581,8 +582,12 @@ void DrawTrainEngine(int x, int y, EngineID engine, SpriteID pal)
 
 static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandFlag flags)
 {
-	const RailVehicleInfo *rvi = RailVehInfo(engine);
-	CommandCost value(EXPENSES_NEW_VEHICLES, GetEngine(engine)->GetCost());
+	const Engine *e = GetEngine(engine);
+	const RailVehicleInfo *rvi = &e->u.rail;
+	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
+
+	/* Engines without valid cargo should not be available */
+	if (e->GetDefaultCargoType() == CT_INVALID) return CMD_ERROR;
 
 	if (flags & DC_QUERY_COST) return value;
 
@@ -643,7 +648,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 			InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		}
 
-		v->cargo_type = rvi->cargo_type;
+		v->cargo_type = e->GetDefaultCargoType();
 //		v->cargo_subtype = 0;
 		v->cargo_cap = rvi->capacity;
 		v->value = value.GetCost();
@@ -733,6 +738,9 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	const Engine *e = GetEngine(p1);
 	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
 
+	/* Engines with CT_INVALID should not be available */
+	if (e->GetDefaultCargoType() == CT_INVALID) return CMD_ERROR;
+
 	if (flags & DC_QUERY_COST) return value;
 
 	/* Check if the train is actually being built in a depot belonging
@@ -783,7 +791,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		v->u.rail.track = TRACK_BIT_DEPOT;
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 		v->spritenum = rvi->image_index;
-		v->cargo_type = rvi->cargo_type;
+		v->cargo_type = e->GetDefaultCargoType();
 //		v->cargo_subtype = 0;
 		v->cargo_cap = rvi->capacity;
 		v->max_speed = rvi->max_speed;
@@ -2015,7 +2023,8 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		 * some nice [Refit] button near each wagon. --pasky */
 		if (!CanRefitTo(v->engine_type, new_cid)) continue;
 
-		if (v->cargo_cap != 0) {
+		const Engine *e = GetEngine(v->engine_type);
+		if (e->CanCarryCargo()) {
 			uint16 amount = CALLBACK_FAILED;
 
 			if (HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
@@ -2032,13 +2041,12 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 			}
 
 			if (amount == CALLBACK_FAILED) { // callback failed or not used, use default
-				const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
-				CargoID old_cid = rvi->cargo_type;
+				CargoID old_cid = e->GetDefaultCargoType();
 				/* normally, the capacity depends on the cargo type, a rail vehicle can
 				 * carry twice as much mail/goods as normal cargo, and four times as
 				 * many passengers
 				 */
-				amount = rvi->capacity;
+				amount = e->u.rail.capacity;
 				switch (old_cid) {
 					case CT_PASSENGERS: break;
 					case CT_MAIL:

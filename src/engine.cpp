@@ -113,6 +113,66 @@ Engine::~Engine()
 	free(this->name);
 }
 
+/**
+ * Determines the default cargo type of an engine.
+ *
+ * Usually a valid cargo is returned, even though the vehicle has zero capacity, and can therefore not carry anything. But the cargotype is still used
+ * for livery selection etc..
+ *
+ * Vehicles with CT_INVALID as default cargo are usally not available, but it can appear as default cargo of articulated parts.
+ *
+ * @return The default cargo type.
+ * @see CanCarryCargo
+ */
+CargoID Engine::GetDefaultCargoType() const
+{
+	switch (this->type) {
+		case VEH_TRAIN:
+			return this->u.rail.cargo_type;
+
+		case VEH_ROAD:
+			return this->u.road.cargo_type;
+
+		case VEH_SHIP:
+			return this->u.ship.cargo_type;
+
+		case VEH_AIRCRAFT:
+			return FindFirstRefittableCargo(this->index);
+
+		default: NOT_REACHED();
+	}
+}
+
+/**
+ * Determines whether an engine can carry something.
+ * A vehicle cannot carry anything if its capacity is zero, or none of the possible cargos is available in the climate.
+ * @return true if the vehicle can carry something.
+ */
+bool Engine::CanCarryCargo() const
+{
+	/* For engines that can appear in a consist (i.e. rail vehicles and (articulated) road vehicles), a capacity
+	 * of zero is a special case, to define the vehicle to not carry anything. The default cargotype is still used
+	 * for livery selection etc.
+	 * Note: Only the property is tested. A capacity callback returning 0 does not have the same effect.
+	 */
+	switch (this->type) {
+		case VEH_TRAIN:
+			if (this->u.rail.capacity == 0) return false;
+			break;
+
+		case VEH_ROAD:
+			if (this->u.road.capacity == 0) return false;
+			break;
+
+		case VEH_SHIP:
+		case VEH_AIRCRAFT:
+			break;
+
+		default: NOT_REACHED();
+	}
+	return this->GetDefaultCargoType() != CT_INVALID;
+}
+
 Money Engine::GetRunningCost() const
 {
 	switch (this->type) {
@@ -668,6 +728,8 @@ bool IsEngineRefittable(EngineID engine)
 
 	if (e->type == VEH_SHIP && !e->u.ship.refittable) return false;
 
+	if (!e->CanCarryCargo()) return false;
+
 	const EngineInfo *ei = &e->info;
 	if (ei->refit_mask == 0) return false;
 
@@ -676,35 +738,6 @@ bool IsEngineRefittable(EngineID engine)
 	if (HasBit(ei->callbackmask, CBM_VEHICLE_CARGO_SUFFIX)) return true;
 
 	/* Is there any cargo except the default cargo? */
-	CargoID default_cargo = GetEngineCargoType(engine);
+	CargoID default_cargo = e->GetDefaultCargoType();
 	return default_cargo != CT_INVALID && ei->refit_mask != 1U << default_cargo;
-}
-
-/** Get the default cargo type for a certain engine type
- * @param engine The ID to get the cargo for
- * @return The cargo type. CT_INVALID means no cargo capacity
- */
-CargoID GetEngineCargoType(EngineID engine)
-{
-	assert(IsEngineIndex(engine));
-
-	switch (GetEngine(engine)->type) {
-		case VEH_TRAIN:
-			if (RailVehInfo(engine)->capacity == 0) return CT_INVALID;
-			return RailVehInfo(engine)->cargo_type;
-
-		case VEH_ROAD:
-			if (RoadVehInfo(engine)->capacity == 0) return CT_INVALID;
-			return RoadVehInfo(engine)->cargo_type;
-
-		case VEH_SHIP:
-			if (ShipVehInfo(engine)->capacity == 0) return CT_INVALID;
-			return ShipVehInfo(engine)->cargo_type;
-
-		case VEH_AIRCRAFT:
-			/* all aircraft starts as passenger planes with cargo capacity */
-			return CT_PASSENGERS;
-
-		default: NOT_REACHED(); return CT_INVALID;
-	}
 }
