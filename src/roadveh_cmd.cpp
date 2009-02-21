@@ -2003,7 +2003,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (new_cid >= NUM_CARGO) return CMD_ERROR;
 
-	for (; v != NULL; v = v->Next()) {
+	for (; v != NULL; v = (only_this ? NULL : v->Next())) {
 		/* XXX: We refit all the attached wagons en-masse if they can be
 		 * refitted. This is how TTDPatch does it.  TODO: Have some nice
 		 * [Refit] button near each wagon. */
@@ -2065,8 +2065,6 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 			InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
 		}
-
-		if (only_this) break;
 	}
 
 	if (flags & DC_EXEC) RoadVehUpdateCache(GetVehicle(p1)->First());
