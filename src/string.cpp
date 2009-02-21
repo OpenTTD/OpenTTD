@@ -104,8 +104,7 @@ void str_validate(char *str, bool allow_newlines, bool ignore)
 	size_t len;
 
 	for (len = Utf8Decode(&c, str); c != '\0'; len = Utf8Decode(&c, str)) {
-		if (IsPrintable(c) && (c < SCC_SPRITE_START || c > SCC_SPRITE_END ||
-			IsValidChar(c - SCC_SPRITE_START, CS_ALPHANUMERAL))) {
+		if (IsPrintable(c) && (c < SCC_SPRITE_START || c > SCC_SPRITE_END)) {
 			/* Copy the character back. Even if dst is current the same as str
 			 * (i.e. no characters have been changed) this is quicker than
 			 * moving the pointers ahead by len */
