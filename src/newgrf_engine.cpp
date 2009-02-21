@@ -452,10 +452,21 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		switch (variable) {
 			case 0x43: return _current_company | (LiveryHelper(object->u.vehicle.self_type, NULL) << 24); // Owner information
 			case 0x46: return 0;               // Motion counter
+			case 0x47: { // Vehicle cargo info
+				const Engine *e = GetEngine(object->u.vehicle.self_type);
+				CargoID cargo_type = e->GetDefaultCargoType();
+				if (cargo_type != CT_INVALID) {
+					const CargoSpec *cs = GetCargo(cargo_type);
+					return (cs->classes << 16) | (cs->weight << 8) | GetEngineGRF(e->index)->cargo_map[cargo_type];
+				} else {
+					return 0x000000FF;
+				}
+			}
 			case 0x48: return GetEngine(object->u.vehicle.self_type)->flags; // Vehicle Type Info
 			case 0x49: return _cur_year; // 'Long' format build year
 			case 0xC4: return Clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR; // Build year
 			case 0xDA: return INVALID_VEHICLE; // Next vehicle
+			case 0xF2: return 0; // Cargo subtype
 		}
 
 		*available = false;
