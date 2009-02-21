@@ -1536,7 +1536,8 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		if (_settings_game.order.improved_load && (v->current_order.GetLoadType() & OLFB_FULL_LOAD)) {
 			/* 'Reserve' this cargo for this vehicle, because we were first. */
 			for (; v != NULL; v = v->Next()) {
-				if (v->cargo_cap != 0) cargo_left[v->cargo_type] -= v->cargo_cap - v->cargo.Count();
+				int cap_left = v->cargo_cap - v->cargo.Count();
+				if (cap_left > 0) cargo_left[v->cargo_type] -= cap_left;
 			}
 		}
 		return;
@@ -1555,7 +1556,6 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	int unloading_time = 0;
 	Vehicle *u = v;
 	int result = 0;
-	uint cap;
 
 	bool completely_emptied = true;
 	bool anything_unloaded = false;
@@ -1636,8 +1636,9 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 		/* If there's goods waiting at the station, and the vehicle
 		 * has capacity for it, load it on the vehicle. */
-		if (!ge->cargo.Empty() &&
-				(cap = v->cargo_cap - v->cargo.Count()) != 0) {
+		int cap_left = v->cargo_cap - v->cargo.Count();
+		if (!ge->cargo.Empty() && cap_left > 0) {
+			uint cap = cap_left;
 			uint count = ge->cargo.Count();
 
 			/* Skip loading this vehicle if another train/vehicle is already handling
@@ -1679,7 +1680,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			result |= 2;
 		}
 
-		if (v->cargo.Count() == v->cargo_cap) {
+		if (v->cargo.Count() >= v->cargo_cap) {
 			SetBit(cargo_full, v->cargo_type);
 		} else {
 			SetBit(cargo_not_full, v->cargo_type);
@@ -1696,7 +1697,8 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	if (_settings_game.order.improved_load && (u->current_order.GetLoadType() & OLFB_FULL_LOAD)) {
 		/* Update left cargo */
 		for (v = u; v != NULL; v = v->Next()) {
-			if (v->cargo_cap != 0) cargo_left[v->cargo_type] -= v->cargo_cap - v->cargo.Count();
+			int cap_left = v->cargo_cap - v->cargo.Count();
+			if (cap_left > 0) cargo_left[v->cargo_type] -= cap_left;
 		}
 	}
 
@@ -1716,7 +1718,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			if (v->current_order.GetLoadType() == OLF_FULL_LOAD_ANY) {
 				/* if the aircraft carries passengers and is NOT full, then
 				 * continue loading, no matter how much mail is in */
-				if ((v->type == VEH_AIRCRAFT && IsCargoInClass(v->cargo_type, CC_PASSENGERS) && v->cargo_cap != v->cargo.Count()) ||
+				if ((v->type == VEH_AIRCRAFT && IsCargoInClass(v->cargo_type, CC_PASSENGERS) && v->cargo_cap > v->cargo.Count()) ||
 						(cargo_not_full && (cargo_full & ~cargo_not_full) == 0)) { // There are stull non-full cargos
 					finished_loading = false;
 				}
