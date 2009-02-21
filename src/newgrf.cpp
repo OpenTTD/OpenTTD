@@ -5746,7 +5746,10 @@ static void CalculateRefitMasks()
 		 * cargo type. Apparently cargo_type isn't a common property... */
 		switch (e->type) {
 			default: NOT_REACHED();
-			case VEH_AIRCRAFT: break;
+			case VEH_AIRCRAFT:
+				if (FindFirstRefittableCargo(engine) == CT_INVALID) ei->climates = 0x80;
+				break;
+
 			case VEH_TRAIN: {
 				RailVehicleInfo *rvi = &e->u.rail;
 				if (rvi->cargo_type == CT_INVALID) rvi->cargo_type = FindFirstRefittableCargo(engine);
