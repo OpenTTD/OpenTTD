@@ -49,27 +49,27 @@ void SQAITown_Register(Squirrel *engine) {
 	SQAITown.DefSQConst(engine, AITown::ROAD_LAYOUT_3x3,              "ROAD_LAYOUT_3x3");
 	SQAITown.DefSQConst(engine, AITown::ROAD_LAYOUT_INVALID,          "ROAD_LAYOUT_INVALID");
 
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetTownCount,               "GetTownCount",               1, "?");
-	SQAITown.DefSQStaticMethod(engine, &AITown::IsValidTown,                "IsValidTown",                2, "?i");
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetName,                    "GetName",                    2, "?i");
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetPopulation,              "GetPopulation",              2, "?i");
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetHouseCount,              "GetHouseCount",              2, "?i");
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetLocation,                "GetLocation",                2, "?i");
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetLastMonthProduction,     "GetLastMonthProduction",     3, "?ii");
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetLastMonthTransported,    "GetLastMonthTransported",    3, "?ii");
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetMaxProduction,           "GetMaxProduction",           3, "?ii");
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetDistanceManhattanToTile, "GetDistanceManhattanToTile", 3, "?ii");
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetDistanceSquareToTile,    "GetDistanceSquareToTile",    3, "?ii");
-	SQAITown.DefSQStaticMethod(engine, &AITown::IsWithinTownInfluence,      "IsWithinTownInfluence",      3, "?ii");
-	SQAITown.DefSQStaticMethod(engine, &AITown::HasStatue,                  "HasStatue",                  2, "?i");
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetRoadReworkDuration,      "GetRoadReworkDuration",      2, "?i");
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetExclusiveRightsCompany,  "GetExclusiveRightsCompany",  2, "?i");
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetExclusiveRightsDuration, "GetExclusiveRightsDuration", 2, "?i");
-	SQAITown.DefSQStaticMethod(engine, &AITown::IsActionAvailable,          "IsActionAvailable",          3, "?ii");
-	SQAITown.DefSQStaticMethod(engine, &AITown::PerformTownAction,          "PerformTownAction",          3, "?ii");
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetRating,                  "GetRating",                  3, "?ii");
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetAllowedNoise,            "GetAllowedNoise",            2, "?i");
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetRoadLayout,              "GetRoadLayout",              2, "?i");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetTownCount,               "GetTownCount",               1, ".");
+	SQAITown.DefSQStaticMethod(engine, &AITown::IsValidTown,                "IsValidTown",                2, ".i");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetName,                    "GetName",                    2, ".i");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetPopulation,              "GetPopulation",              2, ".i");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetHouseCount,              "GetHouseCount",              2, ".i");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetLocation,                "GetLocation",                2, ".i");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetLastMonthProduction,     "GetLastMonthProduction",     3, ".ii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetLastMonthTransported,    "GetLastMonthTransported",    3, ".ii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetMaxProduction,           "GetMaxProduction",           3, ".ii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetDistanceManhattanToTile, "GetDistanceManhattanToTile", 3, ".ii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetDistanceSquareToTile,    "GetDistanceSquareToTile",    3, ".ii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::IsWithinTownInfluence,      "IsWithinTownInfluence",      3, ".ii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::HasStatue,                  "HasStatue",                  2, ".i");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetRoadReworkDuration,      "GetRoadReworkDuration",      2, ".i");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetExclusiveRightsCompany,  "GetExclusiveRightsCompany",  2, ".i");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetExclusiveRightsDuration, "GetExclusiveRightsDuration", 2, ".i");
+	SQAITown.DefSQStaticMethod(engine, &AITown::IsActionAvailable,          "IsActionAvailable",          3, ".ii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::PerformTownAction,          "PerformTownAction",          3, ".ii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetRating,                  "GetRating",                  3, ".ii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetAllowedNoise,            "GetAllowedNoise",            2, ".i");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetRoadLayout,              "GetRoadLayout",              2, ".i");
 
 	SQAITown.PostRegister(engine);
 }

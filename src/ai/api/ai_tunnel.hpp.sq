@@ -37,10 +37,10 @@ void SQAITunnel_Register(Squirrel *engine) {
 	AIError::RegisterErrorMapString(AITunnel::ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY, "ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY");
 	AIError::RegisterErrorMapString(AITunnel::ERR_TUNNEL_END_SITE_UNSUITABLE,       "ERR_TUNNEL_END_SITE_UNSUITABLE");
 
-	SQAITunnel.DefSQStaticMethod(engine, &AITunnel::IsTunnelTile,      "IsTunnelTile",      2, "?i");
-	SQAITunnel.DefSQStaticMethod(engine, &AITunnel::GetOtherTunnelEnd, "GetOtherTunnelEnd", 2, "?i");
-	SQAITunnel.DefSQStaticMethod(engine, &AITunnel::BuildTunnel,       "BuildTunnel",       3, "?ii");
-	SQAITunnel.DefSQStaticMethod(engine, &AITunnel::RemoveTunnel,      "RemoveTunnel",      2, "?i");
+	SQAITunnel.DefSQStaticMethod(engine, &AITunnel::IsTunnelTile,      "IsTunnelTile",      2, ".i");
+	SQAITunnel.DefSQStaticMethod(engine, &AITunnel::GetOtherTunnelEnd, "GetOtherTunnelEnd", 2, ".i");
+	SQAITunnel.DefSQStaticMethod(engine, &AITunnel::BuildTunnel,       "BuildTunnel",       3, ".ii");
+	SQAITunnel.DefSQStaticMethod(engine, &AITunnel::RemoveTunnel,      "RemoveTunnel",      2, ".i");
 
 	SQAITunnel.PostRegister(engine);
 }

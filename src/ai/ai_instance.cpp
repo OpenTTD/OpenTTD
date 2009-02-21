@@ -109,7 +109,7 @@ AIInstance::AIInstance(AIInfo *info) :
 	this->engine->SetPrintFunction(&PrintFunc);
 
 	/* The import method is available at a very early stage */
-	this->engine->AddMethod("import", &AILibrary::Import, 4, "?ssi");
+	this->engine->AddMethod("import", &AILibrary::Import, 4, ".ssi");
 
 	/* Register the AIController */
 	SQAIController_Register(this->engine);

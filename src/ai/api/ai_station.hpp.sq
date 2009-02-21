@@ -54,20 +54,20 @@ void SQAIStation_Register(Squirrel *engine) {
 	AIError::RegisterErrorMapString(AIStation::ERR_STATION_TOO_MANY_STATIONS,            "ERR_STATION_TOO_MANY_STATIONS");
 	AIError::RegisterErrorMapString(AIStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN,    "ERR_STATION_TOO_MANY_STATIONS_IN_TOWN");
 
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::IsValidStation,             "IsValidStation",             2, "?i");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetStationID,               "GetStationID",               2, "?i");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetName,                    "GetName",                    2, "?i");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::SetName,                    "SetName",                    3, "?is");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetLocation,                "GetLocation",                2, "?i");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetCargoWaiting,            "GetCargoWaiting",            3, "?ii");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetCargoRating,             "GetCargoRating",             3, "?ii");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetCoverageRadius,          "GetCoverageRadius",          2, "?i");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetDistanceManhattanToTile, "GetDistanceManhattanToTile", 3, "?ii");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetDistanceSquareToTile,    "GetDistanceSquareToTile",    3, "?ii");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::IsWithinTownInfluence,      "IsWithinTownInfluence",      3, "?ii");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::HasStationType,             "HasStationType",             3, "?ii");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::HasRoadType,                "HasRoadType",                3, "?ii");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetNearestTown,             "GetNearestTown",             2, "?i");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::IsValidStation,             "IsValidStation",             2, ".i");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetStationID,               "GetStationID",               2, ".i");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetName,                    "GetName",                    2, ".i");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::SetName,                    "SetName",                    3, ".is");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetLocation,                "GetLocation",                2, ".i");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetCargoWaiting,            "GetCargoWaiting",            3, ".ii");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetCargoRating,             "GetCargoRating",             3, ".ii");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetCoverageRadius,          "GetCoverageRadius",          2, ".i");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetDistanceManhattanToTile, "GetDistanceManhattanToTile", 3, ".ii");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetDistanceSquareToTile,    "GetDistanceSquareToTile",    3, ".ii");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::IsWithinTownInfluence,      "IsWithinTownInfluence",      3, ".ii");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::HasStationType,             "HasStationType",             3, ".ii");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::HasRoadType,                "HasRoadType",                3, ".ii");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetNearestTown,             "GetNearestTown",             2, ".i");
 
 	SQAIStation.PostRegister(engine);
 }

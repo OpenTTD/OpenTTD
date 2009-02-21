@@ -17,9 +17,9 @@ void SQAILog_Register(Squirrel *engine) {
 	SQAILog.PreRegister(engine);
 	SQAILog.AddConstructor<void (AILog::*)(), 1>(engine, "x");
 
-	SQAILog.DefSQStaticMethod(engine, &AILog::Info,    "Info",    2, "?s");
-	SQAILog.DefSQStaticMethod(engine, &AILog::Warning, "Warning", 2, "?s");
-	SQAILog.DefSQStaticMethod(engine, &AILog::Error,   "Error",   2, "?s");
+	SQAILog.DefSQStaticMethod(engine, &AILog::Info,    "Info",    2, ".s");
+	SQAILog.DefSQStaticMethod(engine, &AILog::Warning, "Warning", 2, ".s");
+	SQAILog.DefSQStaticMethod(engine, &AILog::Error,   "Error",   2, ".s");
 
 	SQAILog.PostRegister(engine);
 }

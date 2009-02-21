@@ -109,9 +109,9 @@ void SQAIError_Register(Squirrel *engine) {
 	AIError::RegisterErrorMapString(AIError::ERR_TOO_CLOSE_TO_EDGE,            "ERR_TOO_CLOSE_TO_EDGE");
 	AIError::RegisterErrorMapString(AIError::ERR_STATION_TOO_SPREAD_OUT,       "ERR_STATION_TOO_SPREAD_OUT");
 
-	SQAIError.DefSQStaticMethod(engine, &AIError::GetErrorCategory,   "GetErrorCategory",   1, "?");
-	SQAIError.DefSQStaticMethod(engine, &AIError::GetLastError,       "GetLastError",       1, "?");
-	SQAIError.DefSQStaticMethod(engine, &AIError::GetLastErrorString, "GetLastErrorString", 1, "?");
+	SQAIError.DefSQStaticMethod(engine, &AIError::GetErrorCategory,   "GetErrorCategory",   1, ".");
+	SQAIError.DefSQStaticMethod(engine, &AIError::GetLastError,       "GetLastError",       1, ".");
+	SQAIError.DefSQStaticMethod(engine, &AIError::GetLastErrorString, "GetLastErrorString", 1, ".");
 
 	SQAIError.PostRegister(engine);
 }

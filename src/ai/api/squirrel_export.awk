@@ -348,7 +348,7 @@ BEGIN {
 
 	split(param_s, params, ",")
 	if (is_static) {
-		types = "?"
+		types = "."
 	} else {
 		types = "x"
 	}
@@ -379,7 +379,7 @@ BEGIN {
 		cls_param[1] = len;
 		cls_param[2] = types;
 	} else if (substr(funcname, 0, 1) == "_" && types != "v") {
-	} else if (funcname == "GetClassName" && types == "?") {
+	} else if (funcname == "GetClassName" && types == ".") {
 	} else if (is_static) {
 		static_method_size++
 		static_methods[static_method_size, 0] = funcname

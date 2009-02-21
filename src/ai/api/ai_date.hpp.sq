@@ -17,11 +17,11 @@ void SQAIDate_Register(Squirrel *engine) {
 	SQAIDate.PreRegister(engine);
 	SQAIDate.AddConstructor<void (AIDate::*)(), 1>(engine, "x");
 
-	SQAIDate.DefSQStaticMethod(engine, &AIDate::GetCurrentDate, "GetCurrentDate", 1, "?");
-	SQAIDate.DefSQStaticMethod(engine, &AIDate::GetYear,        "GetYear",        2, "?i");
-	SQAIDate.DefSQStaticMethod(engine, &AIDate::GetMonth,       "GetMonth",       2, "?i");
-	SQAIDate.DefSQStaticMethod(engine, &AIDate::GetDayOfMonth,  "GetDayOfMonth",  2, "?i");
-	SQAIDate.DefSQStaticMethod(engine, &AIDate::GetDate,        "GetDate",        4, "?iii");
+	SQAIDate.DefSQStaticMethod(engine, &AIDate::GetCurrentDate, "GetCurrentDate", 1, ".");
+	SQAIDate.DefSQStaticMethod(engine, &AIDate::GetYear,        "GetYear",        2, ".i");
+	SQAIDate.DefSQStaticMethod(engine, &AIDate::GetMonth,       "GetMonth",       2, ".i");
+	SQAIDate.DefSQStaticMethod(engine, &AIDate::GetDayOfMonth,  "GetDayOfMonth",  2, ".i");
+	SQAIDate.DefSQStaticMethod(engine, &AIDate::GetDate,        "GetDate",        4, ".iii");
 
 	SQAIDate.PostRegister(engine);
 }
