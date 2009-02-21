@@ -672,25 +672,23 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint3
 {
 	CommandCost ret, total_cost(EXPENSES_CONSTRUCTION);
 	Track track = (Track)GB(p2, 4, 3);
-	Trackdir trackdir;
-	byte mode = HasBit(p2, 7);
+	bool remove = HasBit(p2, 7);
 	RailType railtype = (RailType)GB(p2, 0, 4);
-	TileIndex end_tile;
 
 	if (!ValParamRailtype(railtype) || !ValParamTrackOrientation(track)) return CMD_ERROR;
 	if (p1 >= MapSize()) return CMD_ERROR;
-	end_tile = p1;
-	trackdir = TrackToTrackdir(track);
+	TileIndex end_tile = p1;
+	Trackdir trackdir = TrackToTrackdir(track);
 
 	if (CmdFailed(ValidateAutoDrag(&trackdir, tile, end_tile))) return CMD_ERROR;
 
 	if (flags & DC_EXEC) SndPlayTileFx(SND_20_SPLAT_2, tile);
 
 	for (;;) {
-		ret = DoCommand(tile, railtype, TrackdirToTrack(trackdir), flags, (mode == 0) ? CMD_BUILD_SINGLE_RAIL : CMD_REMOVE_SINGLE_RAIL);
+		ret = DoCommand(tile, railtype, TrackdirToTrack(trackdir), flags, remove ? CMD_REMOVE_SINGLE_RAIL : CMD_BUILD_SINGLE_RAIL);
 
 		if (CmdFailed(ret)) {
-			if ((_error_message != STR_1007_ALREADY_BUILT) && (mode == 0)) break;
+			if (_error_message != STR_1007_ALREADY_BUILT && !remove) break;
 			_error_message = INVALID_STRING_ID;
 		} else {
 			total_cost.AddCost(ret);
@@ -704,7 +702,7 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint3
 		if (!IsDiagonalTrackdir(trackdir)) ToggleBit(trackdir, 0);
 	}
 
-	return (total_cost.GetCost() == 0) ? CommandCost(STR_1007_ALREADY_BUILT) : total_cost;
+	return (total_cost.GetCost() == 0) ? CommandCost(remove ? INVALID_STRING_ID : STR_1007_ALREADY_BUILT) : total_cost;
 }
 
 /** Build rail on a stretch of track.
