@@ -1114,7 +1114,7 @@ static void DoAutosave()
 	if (_networking) return;
 #endif /* PSP */
 
-	if (_settings_client.gui.keep_all_autosave && _local_company != COMPANY_SPECTATOR) {
+	if (_settings_client.gui.keep_all_autosave) {
 		GenerateDefaultSaveName(buf, lastof(buf));
 		strecat(buf, ".sav", lastof(buf));
 	} else {
