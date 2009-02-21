@@ -775,6 +775,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Co 12 miesięcy
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Rozpocznij nową grę
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Wczytaj zapisaną grę
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Stwórz własny świat/scenariusz
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Rozpocznij grę multi-player
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Wyświetl opcje gry
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Wyświetl ustawienia trudności
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Rozpocznij grę używając własnego scenariusza
@@ -884,6 +885,7 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format z
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Wybierz format zrzutu ekranu
 
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 
 STR_AUTOSAVE_1_MONTH                                            :Co 1 miesiąc
 STR_AUTOSAVE_FAILED                                             :{WHITE}Błąd autozapisu
@@ -923,11 +925,13 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Ko
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} nie potrafi znaleźć trasy, aby kontynuować.
 STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} zgubił się.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Dochód {VEHICLE} w zeszłym roku to {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europejska Unia Monetarna!{}{}Euro zostało wprowadzone jako jedyna waluta do wszystkich transakcji w twoim kraju!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} ma za dużo rozkazów w rozkładzie
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} ma pusty rozkaz
 STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} ma podwojony rozkaz
 STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} ma nieprawiodłową stację w rozkazach
 # end of order system
@@ -1256,7 +1260,6 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Poprzedn
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Lista ostatnich wiadomości
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Wyłącz wszystko
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Włącz wszystko
-
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Przemysł
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} (przetransportowano {COMMA}%)
@@ -2212,6 +2215,9 @@ STR_HOSTILE                                                     :Wrogie
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Firma {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nowa Twarz
+STR_7005_COLOUR_SCHEME                                          :{BLACK}Schemat kolorów
+STR_7006_COLOUR_SCHEME                                          :{GOLD}Schemat kolorów:
+STR_7007_NEW_COLOUR_SCHEME                                      :{WHITE}Nowy schemat kolorów
 STR_7008_COMPANY_NAME                                           :{BLACK}Nazwa Firmy
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Prezes
 STR_700A_COMPANY_NAME                                           :Nazwa firmy
@@ -3595,6 +3601,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Ustawienia SI
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Wyświetl ustawienia SI
+STR_AI_DEBUG                                                    :{WHITE}SI Debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nazwa SI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Przeładuj SI
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Zabij SI, przeładuj skrypt i zrestartuj SI
@@ -3603,6 +3611,7 @@ STR_AI_CHANGE                                                   :{BLACK}Wybierz 
 STR_AI_CONFIGURE                                                :{BLACK}Konfiguruj
 STR_AI_CHANGE_TIP                                               :{BLACK}Wczytaj kolejne SI
 STR_AI_CONFIGURE_TIP                                            :{BLACK}Konfiguruj parametry SI
+STR_AI_LIST_CAPTION                                             :{WHITE}Dostępne SI
 STR_AI_AILIST_TIP                                               :{BLACK}Kliknij, aby wybrać SI
 STR_AI_ACCEPT                                                   :{BLACK}Zaakceptuj
 STR_AI_ACCEPT_TIP                                               :{BLACK}Wybierz podświetlone SI
@@ -3654,6 +3663,11 @@ STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Typ: {W
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Rozmiar pobrania: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tagi: {WHITE}{STRING}
 
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Żądanie plików...
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Pobieranie ukończone
 
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Pobieranie nie powiodło się...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... utracono połączenie
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nie udało się dekompresować pobranego pliku
 
 ########

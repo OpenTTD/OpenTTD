@@ -734,6 +734,7 @@ STR_02FA_EVERY_12_MONTHS                                        :每 12 个月
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}开始一个新游戏
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}读取一个游戏存档
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}创建一个自定义的世界场景
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}开始联机游戏
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}显示游戏选项
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}显示难度选项
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}使用一个自定义场景开始游戏
@@ -1239,7 +1240,6 @@ STR_MESSAGE_HISTORY                                             :{WHITE}消息�
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}最新的新闻列表
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}全部禁用
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}全部启用
-
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}工业设施
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% 已运输)
@@ -3091,6 +3091,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}向银�
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}总的评价点数
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF 设置
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}显示GRF设定
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 设置
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}应用
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}切换调色板
@@ -3546,6 +3547,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI 设定
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}显示AI设定
 STR_AI_DEBUG                                                    :{WHITE}AI 调试
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}AI名称
 STR_AI_DEBUG_RELOAD                                             :{BLACK}重载 AI

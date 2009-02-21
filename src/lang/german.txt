@@ -2061,7 +2061,7 @@ STR_SV_STNAME_TRANSFER                                          :{STRING} Transf
 STR_SV_STNAME_HALT                                              :{STRING} Halt
 STR_SV_STNAME_VALLEY                                            :{STRING} Tal
 STR_SV_STNAME_HEIGHTS                                           :{STRING} Höhe
-STR_SV_STNAME_WOODS                                             :{STRING} Waldfrieden
+STR_SV_STNAME_WOODS                                             :{STRING} Stadion
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Seeblick
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Zentrum
 STR_SV_STNAME_AIRPORT                                           :{STRING} Flughafen
@@ -3582,16 +3582,16 @@ STR_STATION_NOISE                                               :{BLACK}Lärmbel
 
 ############ Downloading of content from the central server
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD wurde ohne "zlib" erstellt...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... herunterladen des Inhalts nicht möglich!
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... herunterladen von Inhalten nicht möglich!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=p}Grundgrafiken
 STR_CONTENT_TYPE_NEWGRF                                         :{G=n}NewGRF
 STR_CONTENT_TYPE_AI                                             :{G=w}KI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=w}KI Biliothek
 STR_CONTENT_TYPE_SCENARIO                                       :{G=n}Szenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=w}Reliefkarte
-STR_CONTENT_TITLE                                               :{WHITE}Herunterladen von Inhalt
+STR_CONTENT_TITLE                                               :{WHITE}Herunterladen von Erweiterungen
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Art
-STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Art des Inhaltes
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Art der Erweiterung
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Name
 STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Name des Inhaltes
 STR_CONTENT_MATRIX_TIP                                          :{BLACK}Auf eine Zeile klicken, um Details zu sehen{}Checkbox anklicken, um zum Download auszuwählen
@@ -3605,13 +3605,13 @@ STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Gib eine
 STR_CONTENT_FILTER_TIP                                          :{BLACK}Gib ein Stichwort in die Filterliste ein
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/name filter:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Herunterladen
-STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Beginne den Inhalt herunterzuladen
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Beginne die Erweiterung(en) herunterzuladen
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Gesamtgröße des Download: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}Inhalts-Info
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Sie haben das nicht zum Herunterladen ausgewählt
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Sie haben dies nicht zum Herunterladen ausgewählt
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Sie haben dies zum Herunterladen ausgewählt
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Diese Abhängigkeit wurde zum Herunterladen ausgewählt
-STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Sie haben das schon
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Diese Erweiterung besitzen Sie schon
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Die Erweiterung ist unbekannt und kann nicht von OpenTTD heruntergeladen werden
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Das ist ein Ersatz für {G einen eine ein ""} existiernd{G en e es e} {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Name: {WHITE}{STRING}

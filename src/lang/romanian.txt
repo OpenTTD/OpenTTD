@@ -318,7 +318,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Eşti s
 STR_0161_QUIT_GAME                                              :{WHITE}Iesire din joc
 STR_SORT_ORDER_TIP                                              :{BLACK}Alegeti ordinea de sortare ascendenta/descendenta
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Alege criteriul de sortare
-STR_SORT_BY                                                     :{BLACK}Ordonează:
+STR_SORT_BY                                                     :{BLACK}Ordonează
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populatia
 STR_SORT_BY_PRODUCTION                                          :Productie
@@ -2607,7 +2607,7 @@ STR_ORDER_GO_TO                                                 :Du-te la
 STR_ORDER_GO_NON_STOP_TO                                        :Du-te fără oprire la
 STR_ORDER_GO_VIA                                                :Du-te prin
 STR_ORDER_GO_NON_STOP_VIA                                       :Du-te fără oprire prin
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Incarca la maxim orice cargobot
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Încarcă orice produs
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Incarca daca este disponibil
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Încarcă toate produsele
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Încarcă orice produs

@@ -265,7 +265,7 @@ STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARG
 STR_0140_NEW_GAME                                               :{BLACK}Nytt spel
 STR_0141_LOAD_GAME                                              :{BLACK}Last inn spel
 STR_MULTIPLAYER                                                 :{BLACK}Fleirspelar
-STR_SCENARIO_EDITOR                                             :{BLACK}Scenarioredigering
+STR_SCENARIO_EDITOR                                             :{BLACK}Scenario-redigerar
 
 STR_MAPSIZE                                                     :{BLACK}Kartstorleik:
 STR_BY                                                          :{BLACK}*
@@ -549,7 +549,7 @@ STR_0205_MESSAGE_TYPES                                          :{BLACK}Meldings
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Første køyretøy kjem fram på stasjonen til spelaren
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Første køyretøy kjem fram på stasjonen til motstandaren
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ulykker/katastrofar
-STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firma informasjon
+STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmainformasjon
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Nyopning av industriar
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Nedlegging av industriar
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Økonomiske endringar
@@ -580,7 +580,7 @@ STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} frå {COMPANY} oppnår status som '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
-STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenarioredigering
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenario-redigerar
 STR_0223_LAND_GENERATION                                        :{WHITE}Landgenerering
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
@@ -1044,6 +1044,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Hindre 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Hindre datamaskina i å byggje skip: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillat AI-spelarar i fleirspelarmodus (eksperimentelt): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes før AI blir avbrutt: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Vedlikehaldsintervall er i prosent: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard vedlikehaldsintervall for tog: {ORANGE}{STRING} dagar/%
@@ -2598,10 +2599,10 @@ STR_ORDER_GO_TO                                                 :Køyr til
 STR_ORDER_GO_NON_STOP_TO                                        :Køyr utan stopp til
 STR_ORDER_GO_VIA                                                :Køyr om
 STR_ORDER_GO_NON_STOP_VIA                                       :Køyr utan stopp om
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Last fullt, uavhengig av kva det er
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Last dersom tilgjengeleg
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Last fullt, vilkårleg last
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Last om tilgjengeleg
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Last fullt av all last
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Last fullt, uavhengig av kva det er
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Last fullt, vilkårleg last
 STR_ORDER_DROP_NO_LOADING                                       :Ikkje last
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Last av alt
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Last av dersom godtatt
@@ -2609,7 +2610,7 @@ STR_ORDER_DROP_UNLOAD                                           :Last av alt
 STR_ORDER_DROP_TRANSFER                                         :Overfør
 STR_ORDER_DROP_NO_UNLOADING                                     :Ikkje last av
 STR_ORDER_FULL_LOAD                                             :(Last fullt)
-STR_ORDER_FULL_LOAD_ANY                                         :(Last fullt, uavhengig av kva type last det er)
+STR_ORDER_FULL_LOAD_ANY                                         :(Last fullt, vilkårleg last)
 STR_ORDER_NO_LOAD                                               :(Ikkje last)
 STR_ORDER_UNLOAD                                                :(Last av og plukk opp ny last)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Last av og vent til lasten er full)

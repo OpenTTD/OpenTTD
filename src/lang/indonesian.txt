@@ -645,7 +645,7 @@ STR_02A2_MEDIUM                                                 :{BLACK}Sedang
 STR_02A3_LARGE                                                  :{BLACK}Besar
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Acak
 STR_FOUND_TOWN_CITY                                             :{BLACK}Kota
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Kota tumbuh lebih cepat daripada kecamatan{}Tergantung setting, kota lebih besar ketika dibuat.
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Kota tumbuh lebih cepat daripada biasanya{}Tergantung pengaturan, kota dapat lebih besar ketika di danai.
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Pilih ukuran kota
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Ukuran kota:
 
@@ -2283,7 +2283,7 @@ STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Kata San
 STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Standar Kata Sandi Perusahaan
 STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Pergunakan kata sandi perusahaan ini sebagai standar perusahaan baru
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Dunia Resesi!{}{}Ahli Finansial takut ekonomi jatuh pada posisi terburuk!
-STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Resesi Berakhir!{}{}Perbaikan dalam bidang perdagangan memberikan kepercayaan diri kepada para industri untuk memperkuat pertumbuhan ekonomi!
+STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Resesi Berakhir!{}{}Perbaikan di bidang perdagangan memberikan kepercayaan diri sektor industri untuk memperkuat pertumbuhan ekonomi!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Tandai besar/kecil ukuran jendela
 STR_7076_COMPANY_VALUE                                          :{GOLD}Nilai Perusahaan: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Beli 25% saham perusahaan
@@ -3004,7 +3004,7 @@ STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Perbaik
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} sedang menunggu di hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Pesawat sedang berjalan
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Tidak dapat menghentikan / menjalankan pesawat...
-STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Pesawat dalam penerbangan
+STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Pesawat sedang terbang
 STR_A019_CAPACITY                                               :{BLACK}Kapasitas: {LTBLUE}{CARGO}, {CARGO}{STRING}
 STR_A01A_CAPACITY                                               :{BLACK}Kapasitas: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Pesawat harus berhenti di hangar
@@ -3029,7 +3029,7 @@ STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nama pes
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Tidak dapat memberi nama pesawat
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nama pesawat
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Pesawat pertama tiba di {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Kecelakaan Pesawat!{}{COMMA}orang mati dalam kebakaran di {STATION}
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Kecelakaan Pesawat!{}{COMMA} orang mati dalam kebakaran di {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Kecelakaan pada Pesawat!{}Pesawat kehabisan bahan bakar, {COMMA}orang mati dalam lautan api!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Ubah Nama

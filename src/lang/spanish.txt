@@ -3125,10 +3125,10 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contiene múltiples entradas Action 8.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Cargar la programación seleccionada
-STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Grabar programación
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Grabar progra...
 STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Grabar lista actual como una programación
 STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Introduce nombre de la programación
-STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Borrar programación
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Borrar progr...
 STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Borrar la programación seleccionada
 STR_NEWGRF_ADD                                                  :{BLACK}Añadir
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Añadir un NewGRF a la lista

@@ -735,7 +735,7 @@ STR_02FA_EVERY_12_MONTHS                                        :A cada 12 meses
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Iniciar um novo jogo
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Carregar um jogo salvado
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Criar um cenário de jogo personalizado
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Iniciar um jogo multi-player game
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Iniciar um jogo de vários jogadores
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Exibir opções de jogo
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Exibir opções de dificuldade
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Iniciar um novo jogo, usando um cenário personalizado
@@ -845,9 +845,9 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formato 
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selecionar o formato de foto que deseja utilizar
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Base de gráficos selecionada
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Jogo de gráficos base
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selecione a base de gráficos para usar
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selecione o jogo de gráficos a ser utilizado
 
 STR_AUTOSAVE_1_MONTH                                            :A cada mês
 STR_AUTOSAVE_FAILED                                             :{WHITE}Falha ao salvar automaticamente
@@ -3092,7 +3092,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Tem um e
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total de pontos sobre o máximo de pontos
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Configurar NewGRF
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Exibir configurações de NewGRF
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Exibir configs. dos NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configurar NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar alterações
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Liga/Desliga paleta
@@ -3548,7 +3548,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Opções da IA
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Exibir configurações de IA
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Exibir configs. da IA
 STR_AI_DEBUG                                                    :{WHITE}Debug da IA
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nome da IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar IA
