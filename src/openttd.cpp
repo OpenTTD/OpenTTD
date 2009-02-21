@@ -439,6 +439,7 @@ int ttd_main(int argc, char *argv[])
 			videodriver = strdup("dedicated");
 			blitter = strdup("null");
 			dedicated = true;
+			SetDebugString("net=6");
 			if (mgo.opt != NULL) {
 				/* Use the existing method for parsing (openttd -n).
 				 * However, we do ignore the #company part. */

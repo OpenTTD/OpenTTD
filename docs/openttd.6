@@ -41,7 +41,10 @@ or 1 if omitted
 .It Fl d Ar cat=level[, ...]
 Set debug verbosity for a specific category
 .It Fl D Ar [host][:port]
-Start a dedicated server
+Start a dedicated server. Sets network debug level to 6. If you want to change this, use
+.Fl d
+after
+.Fl D
 .It Fl G Ar seed
 Seed the pseudo random number generator
 .It Fl e

@@ -141,8 +141,6 @@ const char *VideoDriver_Dedicated::Start(const char * const *parm)
 	_screen.height = _cur_resolution.height;
 	ScreenSizeChanged();
 
-	SetDebugString("net=6");
-
 #if defined(WINCE)
 	/* WinCE doesn't support console stuff */
 #elif defined(WIN32)
