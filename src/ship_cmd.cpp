@@ -611,7 +611,7 @@ static void ShipController(Vehicle *v)
 				} else if (v->dest_tile != 0) {
 					/* We have a target, let's see if we reached it... */
 					if (v->current_order.IsType(OT_GOTO_STATION) &&
-							IsBuoyTile(v->dest_tile) &&
+							GetStation(v->current_order.GetDestination())->IsBuoy() &&
 							DistanceManhattan(v->dest_tile, gp.new_tile) <= 3) {
 						/* We got within 3 tiles of our target buoy, so let's skip to our
 						* next order */
