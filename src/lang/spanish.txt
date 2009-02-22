@@ -192,7 +192,7 @@ STR_00DD_ORANGE                                                 :Naranja
 STR_00DE_BROWN                                                  :Marrón
 STR_00DF_GREY                                                   :Gris
 STR_00E0_WHITE                                                  :Blanco
-STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Demasiados vehículos en el juego
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Demasiados vehículos en juego
 STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Sitio
@@ -223,7 +223,7 @@ STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFON
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Estación de autobuses
 STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Aeropuerto/Helipuerto
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Muelle
-STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Terreno complicado
+STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Terreno agreste
 STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Terreno de prados
 STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}Terreno árido
 STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}Campos
@@ -389,7 +389,7 @@ STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Guardar 
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostrar lista de estaciones
 STR_0174_DISPLAY_MAP                                            :{BLACK}Mostrar mapa
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Mostrar mapa, guía de poblaciones
-STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Mostrar guía de poblaciones
+STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Mostrar guía de ciudades
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Mostrar información financiera de la empresa
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Mostrar información general de la empresa
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Mostrar gráficos
@@ -404,14 +404,14 @@ STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Construi
 STR_0182_BUILD_ROADS                                            :{BLACK}Construir carreteras
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Construir muelles para barcos
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Construir aeropuertos
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Plantar árboles
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Plantar árboles, señales, etc.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Consultar bloque de terreno
 STR_0187_OPTIONS                                                :{BLACK}Opciones
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
-STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}No es posible cambiar el intervalo del mantenimiento
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}No se puede cambiar el intervalo de mantenimiento
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Cerrar ventana
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Título de la ventana - arrastrelo para mover la ventana
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Título de la ventana - arrastrelo para moverla
 STR_STICKY_BUTTON                                               :{BLACK}Marcar esta ventana como no borrable para el comando de 'Cerrar Todas las Ventanas'
 STR_RESIZE_BUTTON                                               :{BLACK}Pulse y arrastre para redimensionar la ventana
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Pulsa aquí para ir al directorio por defecto de guardado
@@ -456,37 +456,37 @@ STR_01AA_NAME                                                   :{BLACK}Nombre
 STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
-STR_01AC_1ST                                                    :1
-STR_01AD_2ND                                                    :2
-STR_01AE_3RD                                                    :3
-STR_01AF_4TH                                                    :4
-STR_01B0_5TH                                                    :5
-STR_01B1_6TH                                                    :6
-STR_01B2_7TH                                                    :7
-STR_01B3_8TH                                                    :8
-STR_01B4_9TH                                                    :9
-STR_01B5_10TH                                                   :10
-STR_01B6_11TH                                                   :11
-STR_01B7_12TH                                                   :12
-STR_01B8_13TH                                                   :13
-STR_01B9_14TH                                                   :14
-STR_01BA_15TH                                                   :15
-STR_01BB_16TH                                                   :16
-STR_01BC_17TH                                                   :17
-STR_01BD_18TH                                                   :18
-STR_01BE_19TH                                                   :19
-STR_01BF_20TH                                                   :20
-STR_01C0_21ST                                                   :21
-STR_01C1_22ND                                                   :22
-STR_01C2_23RD                                                   :23
-STR_01C3_24TH                                                   :24
-STR_01C4_25TH                                                   :25
-STR_01C5_26TH                                                   :26
-STR_01C6_27TH                                                   :27
-STR_01C7_28TH                                                   :28
-STR_01C8_29TH                                                   :29
-STR_01C9_30TH                                                   :30
-STR_01CA_31ST                                                   :31
+STR_01AC_1ST                                                    :1º
+STR_01AD_2ND                                                    :2º
+STR_01AE_3RD                                                    :3º
+STR_01AF_4TH                                                    :4º
+STR_01B0_5TH                                                    :5º
+STR_01B1_6TH                                                    :6º
+STR_01B2_7TH                                                    :7º
+STR_01B3_8TH                                                    :8º
+STR_01B4_9TH                                                    :9º
+STR_01B5_10TH                                                   :10º
+STR_01B6_11TH                                                   :11º
+STR_01B7_12TH                                                   :12º
+STR_01B8_13TH                                                   :13º
+STR_01B9_14TH                                                   :14º
+STR_01BA_15TH                                                   :15º
+STR_01BB_16TH                                                   :16º
+STR_01BC_17TH                                                   :17º
+STR_01BD_18TH                                                   :18º
+STR_01BE_19TH                                                   :19º
+STR_01BF_20TH                                                   :20º
+STR_01C0_21ST                                                   :21º
+STR_01C1_22ND                                                   :22º
+STR_01C2_23RD                                                   :23º
+STR_01C3_24TH                                                   :24º
+STR_01C4_25TH                                                   :25º
+STR_01C5_26TH                                                   :26º
+STR_01C6_27TH                                                   :27º
+STR_01C7_28TH                                                   :28º
+STR_01C8_29TH                                                   :29º
+STR_01C9_30TH                                                   :30º
+STR_01CA_31ST                                                   :31º
 ############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
@@ -533,7 +533,7 @@ STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Seleccio
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Seleccionar programa 'Personal 2' (definido por el usuario)
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Borrar programa actual (solo Personal 1 y Personal 2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Guardar configuración de música
-STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Pulse sobre la pista de música para añadirla al programa actual (solo Personal 1 y Personal 2)
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Pulse en la pista de música para añadirla al programa actual (solo Personal 1 y 2)
 STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Pulsa sobre la canción para quitarla del programa actual (Solo Personalizado1 y Personalizado2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Encender/apagar mezclador
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Mostrar ventana de selección de pistas musicales

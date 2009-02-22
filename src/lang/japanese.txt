@@ -3239,6 +3239,15 @@ STR_SMALLMAP_CENTER                                             :{BLACK}予約�
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 # Strings for map borders at game generation
+STR_NORTHWEST                                                   :{BLACK}西北
+STR_NORTHEAST                                                   :{BLACK}東北
+STR_SOUTHEAST                                                   :{BLACK}東南
+STR_SOUTHWEST                                                   :{BLACK}西南
+STR_BORDER_FREEFORM                                             :{BLACK}自由な型
+STR_BORDER_WATER                                                :{BLACK}水
+STR_BORDER_RANDOM                                               :{BLACK}ランダム
+STR_BORDER_RANDOMIZE                                            :{BLACK}ランダム
+STR_BORDER_MANUAL                                               :{BLACK}手動
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}町空港
@@ -3268,6 +3277,9 @@ STR_DATE_TINY                                                   :{2:NUM}-{1:STRI
 STR_DATE_SHORT                                                  :{1:NUM}年{0:STRING}
 STR_DATE_LONG                                                   :{2:NUM}年{1:STRING}{0:STRING}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}振り替えクレジット: {LTBLUE}{CURRENCY}
@@ -3423,12 +3435,67 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI の設定
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}AI の設定を表示します
+STR_AI_DEBUG                                                    :{WHITE}AI デバッグ
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}AI の名前
+STR_AI_DEBUG_RELOAD                                             :{BLACK}AI を再起動
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}AI を停止して、スクリプトを読み込んで、AI を再起動します。
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI デバッグウインドウはサーバのみで使用することができます。
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI の設定
+STR_AI_CHANGE                                                   :{BLACK}AI を選択
+STR_AI_CONFIGURE                                                :{BLACK}設定
+STR_AI_CHANGE_TIP                                               :{BLACK}ほかの AI を開きます
+STR_AI_CONFIGURE_TIP                                            :{BLACK}AI のパラメータを設定します
+STR_AI_LIST_TIP                                                 :{BLACK}次のゲームにすべての使用する AI を表示します。
+STR_AI_LIST_CAPTION                                             :{WHITE}使用可能の AI
+STR_AI_AILIST_TIP                                               :{BLACK}クリックして AI を選択します。
+STR_AI_ACCEPT                                                   :{BLACK}OK
+STR_AI_ACCEPT_TIP                                               :{BLACK}選択した AI を使用します。
+STR_AI_CANCEL                                                   :{BLACK}キャンセル
+STR_AI_CANCEL_TIP                                               :{BLACK}AI を変更しません
+STR_AI_CLOSE                                                    :{BLACK}閉じる
+STR_AI_RESET                                                    :{BLACK}リセット
+STR_AI_HUMAN_PLAYER                                             :人間のプレヤー
+STR_AI_RANDOM_AI                                                :ランダムな AI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI のパラメータ
+STR_AI_AUTHOR                                                   :作成者：
+STR_AI_VERSION                                                  :バージョン：
 ########
 
 ############ town controlled noise level
+STR_NOISE_IN_TOWN                                               :{BLACK}市内の雑音制限：{ORANGE}{COMMA}{BLACK} 最大：{ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}発生した雑音：{GOLD}{COMMA}
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}この OpenTTD は zlib のサポートが入っていないため...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}...ダウンロードすることができません！
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :ベースグラフィック
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :AI ライブラリ
+STR_CONTENT_TYPE_SCENARIO                                       :シナリオ
+STR_CONTENT_TYPE_HEIGHTMAP                                      :ハイトマップ
+STR_CONTENT_TITLE                                               :{WHITE}ダウンロード中
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}種類
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}項目の種類
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}名前
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}項目の名前
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}項目をキリックして詳しく表示します。{}ダウンロードするにはチェックボックスを付けます。
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}すべてを選択
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}すべての項目を選択します。
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}アップデートを選択
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}すでにダウンロードした項目のためのアップデートをすべて選択します。
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}選択を解除
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}何も選択していないようにします
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}フィルタを入力
+STR_CONTENT_FILTER_TIP                                          :{BLACK}フィルタのキーワードを入力します。
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}タグ／名前のフィルタ：
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}ダウンロード
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}選択した項目のダウンロードを開始します。
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}合計ダウンロードサイズ：{WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}項目の情報
 
 
 

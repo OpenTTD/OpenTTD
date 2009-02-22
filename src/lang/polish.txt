@@ -693,6 +693,7 @@ STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Duże mi
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Wybierz wielkość miasta
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Wielkość miasta:
 
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Oryginalnie
 STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Lepsze drogi
 STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}Siatka 2x2
 STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}Siatka 3x3
@@ -953,6 +954,8 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Pozwól
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Zezwól na bardziej realistyczny zasięg obejmowania: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Pozwól usuwać drogi, mosty, tunele, itp. należące do miasta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Pozwól budować bardzo długie pociągi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Oryginalnie
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistycznie
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zabroń pociągom i statkom skręcać o 90st: {ORANGE}{STRING} {LTBLUE} (wymaga NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Połącz stacje budowane jedna obok drugiej: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Użyj ulepszonego algorytmu załadunku: {ORANGE}{STRING}

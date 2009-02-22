@@ -27,7 +27,7 @@ STR_0010_COAL                                                   :Charbon
 STR_0011_MAIL                                                   :Courrier
 STR_0012_OIL                                                    :Pétrole
 STR_0013_LIVESTOCK                                              :Bétail
-STR_0014_GOODS                                                  :Marchandise
+STR_0014_GOODS                                                  :Biens
 STR_0015_GRAIN                                                  :Céréales
 STR_0016_WOOD                                                   :Bois
 STR_0017_IRON_ORE                                               :Fer
@@ -59,7 +59,7 @@ STR_0030_COAL                                                   :Charbon
 STR_0031_MAIL                                                   :Courrier
 STR_0032_OIL                                                    :Pétrole
 STR_0033_LIVESTOCK                                              :Bétail
-STR_0034_GOODS                                                  :Marchandise
+STR_0034_GOODS                                                  :Biens
 STR_0035_GRAIN                                                  :Céréales
 STR_0036_WOOD                                                   :Bois
 STR_0037_IRON_ORE                                               :Fer
