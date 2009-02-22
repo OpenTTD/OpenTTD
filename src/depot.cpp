@@ -7,6 +7,9 @@
 #include "order_func.h"
 #include "window_func.h"
 #include "oldpool_func.h"
+#include "core/bitmath_func.hpp"
+#include "tile_map.h"
+#include "water_map.h"
 
 DEFINE_OLD_POOL_GENERIC(Depot, Depot)
 
@@ -17,6 +20,13 @@ DEFINE_OLD_POOL_GENERIC(Depot, Depot)
  */
 Depot *GetDepotByTile(TileIndex tile)
 {
+	/* A ship depot is multiple tiles. The north most tile is
+	 * always the ->xy tile, so make sure we always look for
+	 * the nothern tile and not the southern one. */
+	if (IsShipDepotTile(tile)) {
+		tile = min(tile, GetOtherShipDepotTile(tile));
+	}
+
 	Depot *depot;
 
 	FOR_ALL_DEPOTS(depot) {
