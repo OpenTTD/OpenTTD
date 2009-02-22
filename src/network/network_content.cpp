@@ -324,8 +324,14 @@ static bool GunzipFile(const ContentInfo *ci)
 	}
 
 exit:
-	if (fin  != NULL) gzclose(fin);
-	if (ftmp != NULL) fclose(ftmp);
+	if (fin != NULL) {
+		/* Closes ftmp too! */
+		gzclose(fin);
+	} else if (ftmp != NULL) {
+		/* In case the gz stream was opened correctly this will
+		 * be closed by gzclose. */
+		fclose(ftmp);
+	}
 	if (fout != NULL) fclose(fout);
 
 	return ret;
