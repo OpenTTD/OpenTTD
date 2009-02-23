@@ -394,18 +394,22 @@ struct NewGRFWindow : public Window {
 			SetDParamStr(0, _grf_preset_list[this->preset]);
 			this->widget[SNGRFS_PRESET_LIST].data = STR_JUST_RAW_STRING;
 		}
+		this->SetWidgetDisabledState(SNGRFS_PRESET_DELETE, this->preset == -1);
 
 		bool has_missing = false;
+		bool has_compatible = false;
 		for (const GRFConfig *c = this->list; !has_missing && c != NULL; c = c->next) {
-			has_missing = c->status == GCS_NOT_FOUND || HasBit(c->flags, GCF_COMPATIBLE);
+			has_missing    |= c->status == GCS_NOT_FOUND;
+			has_compatible |= HasBit(c->flags, GCF_COMPATIBLE);
 		}
-		if (has_missing) {
+		if (has_missing || has_compatible) {
 			this->widget[SNGRFS_CONTENT_DOWNLOAD].data     = STR_CONTENT_INTRO_MISSING_BUTTON;
 			this->widget[SNGRFS_CONTENT_DOWNLOAD].tooltips = STR_CONTENT_INTRO_MISSING_BUTTON_TIP;
 		} else {
 			this->widget[SNGRFS_CONTENT_DOWNLOAD].data     = STR_CONTENT_INTRO_BUTTON;
 			this->widget[SNGRFS_CONTENT_DOWNLOAD].tooltips = STR_CONTENT_INTRO_BUTTON_TIP;
 		}
+		this->SetWidgetDisabledState(SNGRFS_PRESET_SAVE, has_missing);
 
 		this->DrawWidgets();
 
