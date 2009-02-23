@@ -55,7 +55,17 @@ static int32 ClickChangeCompanyCheat(int32 p1, int32 p2)
 }
 
 /**
- * @param p1 -1 or +1 (down/up)
+ * @param p1 new value
+ * @param p2 unused
+ */
+static int32 ClickSetProdCheat(int32 p1, int32 p2)
+{
+	InvalidateWindowClasses(WC_INDUSTRY_VIEW);
+	return p1;
+}
+
+/**
+ * @param p1 new climate
  * @param p2 unused
  */
 static int32 ClickChangeClimateCheat(int32 p1, int32 p2)
@@ -109,7 +119,7 @@ static const CheatEntry _cheats_ui[] = {
 	{SLE_BOOL,  STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value,         &_cheats.crossing_tunnels.been_used, NULL                     },
 	{SLE_BOOL,  STR_CHEAT_BUILD_IN_PAUSE,  &_cheats.build_in_pause.value,           &_cheats.build_in_pause.been_used,   NULL                     },
 	{SLE_BOOL,  STR_CHEAT_NO_JETCRASH,     &_cheats.no_jetcrash.value,              &_cheats.no_jetcrash.been_used,      NULL                     },
-	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,               &_cheats.setup_prod.been_used,       NULL                     },
+	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,               &_cheats.setup_prod.been_used,       &ClickSetProdCheat       },
 	{SLE_UINT8, STR_CHEAT_SWITCH_CLIMATE,  &_settings_game.game_creation.landscape, &_cheats.switch_climate.been_used,   &ClickChangeClimateCheat },
 	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &_cur_year,                              &_cheats.change_date.been_used,      &ClickChangeDateCheat    },
 };
