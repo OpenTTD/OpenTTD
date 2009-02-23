@@ -11,11 +11,6 @@
 #include "../../station_map.h"
 #include "table/strings.h"
 
-/* static */ IndustryID AIIndustry::GetMaxIndustryID()
-{
-	return ::GetMaxIndustryIndex();
-}
-
 /* static */ int32 AIIndustry::GetIndustryCount()
 {
 	return ::GetNumIndustries();

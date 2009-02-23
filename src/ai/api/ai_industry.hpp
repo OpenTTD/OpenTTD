@@ -15,18 +15,10 @@ public:
 	static const char *GetClassName() { return "AIIndustry"; }
 
 	/**
-	 * Gets the maximum industry index; there are no valid industries with a
-	 *   higher index.
-	 * @return The maximum industry index.
-	 * @post Return value is always non-negative.
-	 */
-	static IndustryID GetMaxIndustryID();
-
-	/**
-	 * Gets the number of industries. This is different than GetMaxIndustryID()
-	 *   because of the way OpenTTD works internally.
+	 * Gets the number of industries.
 	 * @return The number of industries.
 	 * @post Return value is always non-negative.
+	 * @note The maximum valid IndustryID can be higher then the value returned.
 	 */
 	static int32 GetIndustryCount();
 
