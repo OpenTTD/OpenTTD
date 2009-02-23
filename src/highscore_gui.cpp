@@ -193,8 +193,8 @@ void ShowHighscoreTable(int difficulty, int8 ranking)
  * if it was high enough */
 void ShowEndGameChart()
 {
-	/* Dedicated server doesn't need the highscore window */
-	if (_network_dedicated) return;
+	/* Dedicated server doesn't need the highscore window and neither does -v null. */
+	if (_network_dedicated || (!_networking && !IsValidCompanyID(_local_company))) return;
 
 	HideVitalWindows();
 	DeleteWindowByClass(WC_ENDSCREEN);
