@@ -86,7 +86,7 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 
 	if (num != 0) return WarnCorruptSprite(file_slot, file_pos, __LINE__);
 
-	sprite->data = CallocT<SpriteLoader::CommonPixel>(sprite->width * sprite->height);
+	sprite->AllocateData(sprite->width * sprite->height);
 
 	/* When there are transparency pixels, this format has an other trick.. decode it */
 	if (type & 0x08) {

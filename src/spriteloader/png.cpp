@@ -51,7 +51,6 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 	png_infop info_ptr, end_info;
 	uint bit_depth, colour_type;
 	uint i, pixelsize;
-	png_bytep row_pointer;
 	SpriteLoader::CommonPixel *dst;
 
 	if (!OpenPNGFile(filename, id, mask)) return mask; // If mask is true, and file not found, continue true anyway, as it isn't a show-stopper
@@ -102,7 +101,7 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 
 		sprite->height = info_ptr->height;
 		sprite->width  = info_ptr->width;
-		sprite->data = CallocT<SpriteLoader::CommonPixel>(sprite->width * sprite->height);
+		sprite->AllocateData(sprite->width * sprite->height);
 	}
 
 	bit_depth  = png_get_bit_depth(png_ptr, info_ptr);
@@ -134,11 +133,7 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 		pixelsize = sizeof(uint8);
 	}
 
-	row_pointer = (png_byte *)MallocT<byte>(info_ptr->width * pixelsize);
-	if (row_pointer == NULL) {
-		png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
-		return false;
-	}
+	png_bytep row_pointer = AllocaM(png_byte, info_ptr->width * pixelsize);
 
 	for (i = 0; i < info_ptr->height; i++) {
 		png_read_row(png_ptr, row_pointer, NULL);
@@ -164,7 +159,6 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 		}
 	}
 
-	free(row_pointer);
 	png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
 
 	return true;

@@ -154,7 +154,6 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 
 		if (sprite_loader.LoadSprite(&sprite, file_slot, sc->id, sprite_type)) {
 			sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
-			free(sprite.data);
 
 			return sc->ptr;
 		}
@@ -256,7 +255,6 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 		return (void*)GetRawSprite(SPR_IMG_QUERY, ST_NORMAL);
 	}
 	sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
-	free(sprite.data);
 
 	return sc->ptr;
 }
@@ -561,3 +559,18 @@ void GfxInitSpriteMem()
 
 	_compact_cache_counter = 0;
 }
+
+void SpriteLoader::Sprite::AllocateData(size_t size)
+{
+	if (Sprite::size < size) {
+		Sprite::size = size;
+		Sprite::mem = ReallocT<SpriteLoader::CommonPixel>(Sprite::mem, Sprite::size);
+	}
+
+	memset(Sprite::mem, 0, sizeof(SpriteLoader::CommonPixel) * size);
+
+	this->data = Sprite::mem;
+
+}
+/* static */ SpriteLoader::CommonPixel *SpriteLoader::Sprite::mem = NULL;
+/* static */ size_t SpriteLoader::Sprite::size = 0;

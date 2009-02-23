@@ -710,7 +710,7 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 	height = max(1, slot->bitmap.rows  + (size == FS_NORMAL));
 
 	/* FreeType has rendered the glyph, now we allocate a sprite and copy the image into it */
-	sprite.data = CallocT<SpriteLoader::CommonPixel>(width * height);
+	sprite.AllocateData(width * height);
 	sprite.width = width;
 	sprite.height = height;
 	sprite.x_offs = slot->bitmap_left;
@@ -740,7 +740,6 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 	}
 
 	new_glyph.sprite = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, AllocateFont);
-	free(sprite.data);
 	new_glyph.width  = (slot->advance.x >> 6) + (size != FS_NORMAL);
 
 	SetGlyphPtr(size, key, &new_glyph);
