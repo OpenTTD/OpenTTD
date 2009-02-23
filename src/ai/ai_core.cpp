@@ -37,7 +37,7 @@
 		info = AI::ai_scanner->SelectRandomAI();
 		assert(info != NULL);
 		/* Load default data and store the name in the settings */
-		AIConfig::GetConfig(company)->ChangeAI(info->GetInstanceName());
+		AIConfig::GetConfig(company)->ChangeAI(info->GetName());
 	}
 
 	_current_company = company;

@@ -115,7 +115,7 @@ struct AIListWindow : public Window {
 		} else {
 			AIInfoList::const_iterator it = this->ai_info_list->begin();
 			for (int i = 0; i < this->selected; i++) it++;
-			AIConfig::GetConfig(slot)->ChangeAI((*it).second->GetInstanceName(), (*it).second->GetVersion());
+			AIConfig::GetConfig(slot)->ChangeAI((*it).second->GetName(), (*it).second->GetVersion());
 		}
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}

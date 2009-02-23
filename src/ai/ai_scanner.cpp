@@ -307,12 +307,12 @@ void AIScanner::RegisterLibrary(AILibrary *library)
 void AIScanner::RegisterAI(AIInfo *info)
 {
 	char ai_name[1024];
-	snprintf(ai_name, sizeof(ai_name), "%s.%d", info->GetInstanceName(), info->GetVersion());
+	snprintf(ai_name, sizeof(ai_name), "%s.%d", info->GetName(), info->GetVersion());
 	strtolower(ai_name);
 
 	/* Check if GetShortName follows the rules */
 	if (strlen(info->GetShortName()) != 4) {
-		DEBUG(ai, 0, "The AI '%s' returned a string from GetShortName() which is not four characaters. Unable to load the AI.", info->GetInstanceName());
+		DEBUG(ai, 0, "The AI '%s' returned a string from GetShortName() which is not four characaters. Unable to load the AI.", info->GetName());
 		delete info;
 		return;
 	}
@@ -342,7 +342,7 @@ void AIScanner::RegisterAI(AIInfo *info)
 
 	/* Add the AI to the 'unique' AI list, where only the highest version of the
 	 *  AI is registered. */
-	snprintf(ai_name, sizeof(ai_name), "%s", info->GetInstanceName());
+	snprintf(ai_name, sizeof(ai_name), "%s", info->GetName());
 	strtolower(ai_name);
 	if (this->info_single_list.find(ai_name) == this->info_single_list.end()) {
 		this->info_single_list[strdup(ai_name)] = info;
@@ -406,7 +406,7 @@ AIInfo *AIScanner::FindInfo(const char *nameParam, int versionParam)
 	AIInfoList::iterator it = this->info_list.begin();
 	for (; it != this->info_list.end(); it++) {
 		char ai_name_compare[1024];
-		snprintf(ai_name_compare, sizeof(ai_name_compare), "%s", (*it).second->GetInstanceName());
+		snprintf(ai_name_compare, sizeof(ai_name_compare), "%s", (*it).second->GetName());
 		strtolower(ai_name_compare);
 
 		if (strcasecmp(ai_name, ai_name_compare) == 0 && (*it).second->CanLoadFromVersion(versionParam)) {
@@ -424,7 +424,7 @@ char *AIScanner::GetAIConsoleList(char *p, const char *last)
 	AIInfoList::iterator it = this->info_list.begin();
 	for (; it != this->info_list.end(); it++) {
 		AIInfo *i = (*it).second;
-		p += seprintf(p, last, "%10s (v%d): %s\n", i->GetInstanceName(), i->GetVersion(), i->GetDescription());
+		p += seprintf(p, last, "%10s (v%d): %s\n", i->GetName(), i->GetVersion(), i->GetDescription());
 	}
 	p += seprintf(p, last, "\n");
 
