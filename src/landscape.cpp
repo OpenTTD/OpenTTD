@@ -539,11 +539,13 @@ bool IsSnowLineSet(void)
 void SetSnowLine(byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS])
 {
 	_snow_line = CallocT<SnowLine>(1);
+	_snow_line->lowest_value = 0xFF;
 	memcpy(_snow_line->table, table, sizeof(_snow_line->table));
 
 	for (uint i = 0; i < SNOW_LINE_MONTHS; i++) {
 		for (uint j = 0; j < SNOW_LINE_DAYS; j++) {
 			_snow_line->highest_value = max(_snow_line->highest_value, table[i][j]);
+			_snow_line->lowest_value = min(_snow_line->lowest_value, table[i][j]);
 		}
 	}
 }
@@ -570,6 +572,16 @@ byte GetSnowLine(void)
 byte HighestSnowLine(void)
 {
 	return _snow_line == NULL ? _settings_game.game_creation.snow_line : _snow_line->highest_value;
+}
+
+/**
+ * Get the lowest possible snow line height, either variable or static.
+ * @return the lowest snow line height.
+ * @ingroup SnowLineGroup
+ */
+byte LowestSnowLine(void)
+{
+	return _snow_line == NULL ? _settings_game.game_creation.snow_line : _snow_line->lowest_value;
 }
 
 /**

@@ -22,6 +22,10 @@
 #include "tilehighlight_func.h"
 #include "sortlist_type.h"
 #include "road_cmd.h"
+#include "landscape_type.h"
+#include "landscape.h"
+#include "cargotype.h"
+#include "tile_map.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -230,6 +234,10 @@ private:
 	};
 
 public:
+	enum {
+		TVW_HEIGHT_NORMAL = 150,
+	};
+
 	TownViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->town = GetTown(this->window_number);
@@ -252,10 +260,7 @@ public:
 			this->widget[TVW_CHANGENAME].right = this->widget[TVW_STICKY].right;
 		}
 
-		/* Space required for showing noise level information */
-		if (_settings_game.economy.station_noise_level) {
-			ResizeWindowForWidget(this, TVW_INFOPANEL, 0, 10);
-		}
+		this->ResizeWindowAsNeeded();
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -268,17 +273,72 @@ public:
 		SetDParam(0, this->town->index);
 		this->DrawWidgets();
 
+		uint y = 107;
+
 		SetDParam(0, this->town->population);
 		SetDParam(1, this->town->num_houses);
-		DrawString(2, 107, STR_2006_POPULATION, TC_FROMSTRING);
+		DrawString(2, y, STR_2006_POPULATION, TC_FROMSTRING);
 
 		SetDParam(0, this->town->act_pass);
 		SetDParam(1, this->town->max_pass);
-		DrawString(2, 117, STR_200D_PASSENGERS_LAST_MONTH_MAX, TC_FROMSTRING);
+		DrawString(2, y += 10, STR_200D_PASSENGERS_LAST_MONTH_MAX, TC_FROMSTRING);
 
 		SetDParam(0, this->town->act_mail);
 		SetDParam(1, this->town->max_mail);
-		DrawString(2, 127, STR_200E_MAIL_LAST_MONTH_MAX, TC_FROMSTRING);
+		DrawString(2, y += 10, STR_200E_MAIL_LAST_MONTH_MAX, TC_FROMSTRING);
+
+		uint cargo_needed_for_growth = 0;
+		switch (_settings_game.game_creation.landscape) {
+			case LT_ARCTIC:
+				if (TilePixelHeight(this->town->xy) >= LowestSnowLine()) cargo_needed_for_growth = 1;
+				break;
+
+			case LT_TROPIC:
+				if (GetTropicZone(this->town->xy) == TROPICZONE_DESERT) cargo_needed_for_growth = 2;
+				break;
+
+			default: break;
+		}
+
+		if (cargo_needed_for_growth > 0) {
+			DrawString(2, y += 10, STR_CARGO_FOR_TOWNGROWTH, TC_FROMSTRING);
+
+			CargoID first_food_cargo = CT_INVALID;
+			StringID food_name = STR_001E_FOOD;
+			CargoID first_water_cargo = CT_INVALID;
+			StringID water_name = STR_0021_WATER;
+			for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
+				const CargoSpec *cs = GetCargo(cid);
+				if (first_food_cargo == CT_INVALID && cs->town_effect == TE_FOOD) {
+					first_food_cargo = cid;
+					food_name = cs->name;
+				}
+				if (first_water_cargo == CT_INVALID && cs->town_effect == TE_WATER) {
+					first_water_cargo = cid;
+					water_name = cs->name;
+				}
+			}
+
+			if (first_food_cargo != CT_INVALID && this->town->act_food > 0) {
+				SetDParam(0, first_food_cargo);
+				SetDParam(1, this->town->act_food);
+				DrawString(2, y += 10, STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH, TC_FROMSTRING);
+			} else {
+				SetDParam(0, food_name);
+				DrawString(2, y += 10, STR_CARGO_FOR_TOWNGROWTH_REQUIRED, TC_FROMSTRING);
+			}
+
+			if (cargo_needed_for_growth > 1) {
+				if (first_water_cargo != CT_INVALID && this->town->act_water > 0) {
+					SetDParam(0, first_water_cargo);
+					SetDParam(1, this->town->act_water);
+					DrawString(2, y += 10, STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH, TC_FROMSTRING);
+				} else {
+					SetDParam(0, water_name);
+					DrawString(2, y += 10, STR_CARGO_FOR_TOWNGROWTH_REQUIRED, TC_FROMSTRING);
+				}
+			}
+		}
 
 		this->DrawViewport();
 
@@ -286,7 +346,7 @@ public:
 		if (_settings_game.economy.station_noise_level) {
 			SetDParam(0, this->town->noise_reached);
 			SetDParam(1, this->town->MaxTownNoise());
-			DrawString(2, 137, STR_NOISE_IN_TOWN, TC_FROMSTRING);
+			DrawString(2, y += 10, STR_NOISE_IN_TOWN, TC_FROMSTRING);
 		}
 	}
 
@@ -320,20 +380,32 @@ public:
 		}
 	}
 
+	void ResizeWindowAsNeeded()
+	{
+		int aimed_height = TVW_HEIGHT_NORMAL;
+
+		switch (_settings_game.game_creation.landscape) {
+			case LT_ARCTIC:
+				if (TilePixelHeight(this->town->xy) >= LowestSnowLine()) aimed_height += 20;
+				break;
+
+			case LT_TROPIC:
+				if (GetTropicZone(this->town->xy) == TROPICZONE_DESERT) aimed_height += 30;
+				break;
+
+			default: break;
+		}
+
+		if (_settings_game.economy.station_noise_level) aimed_height += 10;
+
+		if (this->height != aimed_height) ResizeWindowForWidget(this, TVW_INFOPANEL, 0, aimed_height - this->height);
+	}
+
 	virtual void OnInvalidateData(int data = 0)
 	{
 		/* Called when setting station noise have changed, in order to resize the window */
 		this->SetDirty(); // refresh display for current size. This will allow to avoid glitches when downgrading
-
-		if (_settings_game.economy.station_noise_level) { // adjust depending
-			if (this->height == 150) { // window is smaller, needs to be bigger
-				ResizeWindowForWidget(this, TVW_INFOPANEL, 0, 10);
-			}
-		} else {
-			if (this->height != 150) { // window is bigger, needs to be smaller
-				ResizeWindowForWidget(this, TVW_INFOPANEL, 0, -10);
-			}
-		}
+		this->ResizeWindowAsNeeded();
 	}
 
 	virtual void OnQueryTextFinished(char *str)
@@ -361,7 +433,7 @@ static const Widget _town_view_widgets[] = {
 };
 
 static const WindowDesc _town_view_desc = {
-	WDP_AUTO, WDP_AUTO, 260, 150, 260, 150,
+	WDP_AUTO, WDP_AUTO, 260, TownViewWindow::TVW_HEIGHT_NORMAL, 260, TownViewWindow::TVW_HEIGHT_NORMAL,
 	WC_TOWN_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_town_view_widgets,

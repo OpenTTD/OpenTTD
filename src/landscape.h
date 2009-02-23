@@ -20,12 +20,14 @@ enum {
 struct SnowLine {
 	byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS]; ///< Height of the snow line each day of the year
 	byte highest_value; ///< Highest snow line of the year
+	byte lowest_value;  ///< Lowest snow line of the year
 };
 
 bool IsSnowLineSet(void);
 void SetSnowLine(byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS]);
 byte GetSnowLine(void);
 byte HighestSnowLine(void);
+byte LowestSnowLine(void);
 void ClearSnowLine(void);
 
 uint GetPartialZ(int x, int y, Slope corners);
