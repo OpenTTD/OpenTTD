@@ -560,17 +560,4 @@ void GfxInitSpriteMem()
 	_compact_cache_counter = 0;
 }
 
-void SpriteLoader::Sprite::AllocateData(size_t size)
-{
-	if (Sprite::size < size) {
-		Sprite::size = size;
-		Sprite::mem = ReallocT<SpriteLoader::CommonPixel>(Sprite::mem, Sprite::size);
-	}
-
-	memset(Sprite::mem, 0, sizeof(SpriteLoader::CommonPixel) * size);
-
-	this->data = Sprite::mem;
-
-}
-/* static */ SpriteLoader::CommonPixel *SpriteLoader::Sprite::mem = NULL;
-/* static */ size_t SpriteLoader::Sprite::size = 0;
+/* static */ ReusableBuffer<SpriteLoader::CommonPixel> SpriteLoader::Sprite::buffer;

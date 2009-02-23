@@ -71,6 +71,61 @@ struct SmallStackSafeStackAlloc {
 };
 
 /**
+ * A reusable buffer that can be used for places that temporary allocate
+ * a bit of memory and do that very often, or for places where static
+ * memory is allocated that might need to be reallocated sometimes.
+ *
+ * Every time Allocate or ZeroAllocate is called previous results of both
+ * functions will become invalid.
+ */
+template <typename T>
+class ReusableBuffer {
+private:
+	T *buffer;    ///< The real data buffer
+	size_t count; ///< Number of T elements in the buffer
+
+public:
+	/** Create a new buffer */
+	ReusableBuffer() : buffer(NULL), count(0) {}
+	/** Clear the buffer */
+	~ReusableBuffer() { free(this->buffer); }
+
+	/**
+	 * Get buffer of at least count times T.
+	 * @note the buffer might be bigger
+	 * @note calling this function invalidates any previous buffers given
+	 * @param count the minimum buffer size
+	 * @return the buffer
+	 */
+	T *Allocate(size_t count)
+	{
+		if (this->count < count) {
+			free(this->buffer);
+			this->buffer = MallocT<T>(count);
+		}
+		return this->buffer;
+	}
+
+	/**
+	 * Get buffer of at least count times T with zeroed memory.
+	 * @note the buffer might be bigger
+	 * @note calling this function invalidates any previous buffers given
+	 * @param count the minimum buffer size
+	 * @return the buffer
+	 */
+	T *ZeroAllocate(size_t count)
+	{
+		if (this->count < count) {
+			free(this->buffer);
+			this->buffer = CallocT<T>(count);
+		} else {
+			memset(this->buffer, 0, sizeof(T) * count);
+		}
+		return this->buffer;
+	}
+};
+
+/**
  * Base class that provides memory initialization on dynamically created objects.
  * All allocated memory will be zeroed.
  */

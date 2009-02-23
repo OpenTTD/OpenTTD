@@ -5,6 +5,8 @@
 #ifndef SPRITELOADER_HPP
 #define SPRITELOADER_HPP
 
+#include "../core/alloc_type.hpp"
+
 class SpriteLoader {
 public:
 	struct CommonPixel {
@@ -22,9 +24,6 @@ public:
 	 * This to prevent thousands of malloc + frees just to load a sprite.
 	 */
 	struct Sprite {
-		Sprite() : data(NULL) {}
-		~Sprite() { assert(this->data == NULL || this->data == Sprite::mem); }
-
 		uint16 height;                   ///< Height of the sprite
 		uint16 width;                    ///< Width of the sprite
 		int16 x_offs;                    ///< The x-offset of where the sprite will be drawn
@@ -35,12 +34,10 @@ public:
 		 * Allocate the sprite data of this sprite.
 		 * @param size the minimum size of the data field.
 		 */
-		void AllocateData(size_t size);
+		void AllocateData(size_t size) { this->data = Sprite::buffer.ZeroAllocate(size); }
 	private:
 		/** Allocated memory to pass sprite data around */
-		static SpriteLoader::CommonPixel *mem;
-		/** Size (in items) of the above memory. */
-		static size_t size;
+		static ReusableBuffer<SpriteLoader::CommonPixel> buffer;
 	};
 
 	/**

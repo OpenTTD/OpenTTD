@@ -113,7 +113,12 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, Blitter::All
 
 	/* We have no idea how much memory we really need, so just guess something */
 	memory *= 5;
-	SpriteData *temp_dst = (SpriteData *)MallocT<byte>(memory);
+
+	/* Don't allocate memory each time, but just keep some
+	 * memory around as this function is called quite often
+	 * and the memory usage is quite low. */
+	static ReusableBuffer<byte> temp_buffer;
+	SpriteData *temp_dst = (SpriteData *)temp_buffer.Allocate(memory);
 	byte *dst = temp_dst->data;
 
 	/* Make the sprites per zoom-level */
@@ -195,7 +200,6 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, Blitter::All
 	dest_sprite->x_offs = sprite->x_offs;
 	dest_sprite->y_offs = sprite->y_offs;
 	memcpy(dest_sprite->data, temp_dst, size);
-	free(temp_dst);
 
 	return dest_sprite;
 }
