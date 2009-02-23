@@ -30,6 +30,7 @@
 #include "video/video_driver.hpp"
 #include "engine_base.h"
 #include "strgen/strgen.h"
+#include "gfx_func.h"
 
 #include "table/strings.h"
 #include "table/control_codes.h"
@@ -1587,6 +1588,9 @@ void CheckForMissingGlyphsInLoadedLanguagePack()
 						Utf8Encode(err_str, SCC_YELLOW);
 						SetDParamStr(0, err_str);
 						ShowErrorMessage(INVALID_STRING_ID, STR_JUST_RAW_STRING, 0, 0);
+
+						/* Reset the font width */
+						LoadStringWidthTable();
 						return;
 					}
 				}
@@ -1594,6 +1598,9 @@ void CheckForMissingGlyphsInLoadedLanguagePack()
 		}
 		break;
 	}
+
+	/* Update the font with cache */
+	LoadStringWidthTable();
 
 #if !defined(WITH_ICU)
 	/*
