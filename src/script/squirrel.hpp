@@ -46,10 +46,8 @@ protected:
 	static void ErrorPrintFunc(HSQUIRRELVM vm, const SQChar *s, ...);
 
 public:
-	friend class AIController;
 	friend class AIScanner;
 	friend class AIInstance;
-	friend class AIFileInfo;
 
 	Squirrel();
 	~Squirrel();
