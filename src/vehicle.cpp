@@ -37,7 +37,6 @@
 #include "ai/ai.hpp"
 #include "core/smallmap_type.hpp"
 #include "vehiclelist.h"
-#include "core/mem_func.hpp"
 #include "depot_func.h"
 #include "settings_type.h"
 
@@ -1746,9 +1745,7 @@ FreeUnitIDGenerator::FreeUnitIDGenerator(VehicleType type, CompanyID owner) : ca
 	this->maxid++; // so there is space for last item (with v->unitnumber == maxid)
 	this->maxid++; // this one will always be free (well, it will fail when there are 65535 units, so this overflows)
 
-	this->cache = MallocT<bool>(this->maxid);
-
-	MemSetT(this->cache, 0, this->maxid);
+	this->cache = CallocT<bool>(this->maxid);
 
 	/* Fill the cache */
 	FOR_ALL_VEHICLES(v) {

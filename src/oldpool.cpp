@@ -55,10 +55,7 @@ bool OldMemoryPoolBase::AddBlockToPool()
 	this->blocks = ReallocT(this->blocks, this->current_blocks + 1);
 
 	/* Allocate memory to the new block item */
-	this->blocks[this->current_blocks] = MallocT<byte>(this->item_size * (1 << this->block_size_bits));
-
-	/* Clean the content of the new block */
-	memset(this->blocks[this->current_blocks], 0, this->item_size * (1 << this->block_size_bits));
+	this->blocks[this->current_blocks] = CallocT<byte>(this->item_size * (1 << this->block_size_bits));
 
 	/* Call a custom function if defined (e.g. to fill indexes) */
 	if (this->new_block_proc != NULL) this->new_block_proc(this->current_blocks * (1 << this->block_size_bits));
