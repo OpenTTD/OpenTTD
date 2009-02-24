@@ -648,10 +648,10 @@ struct SettingEntry {
 	uint Length() const;
 	SettingEntry *FindEntry(uint row, uint *cur_row);
 
-	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last);
+	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, uint cur_row, uint parent_last);
 
 private:
-	void DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd, int x, int y, int state);
+	void DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd, int x, int y, int max_x, int state);
 };
 
 /** Data structure describing one page of settings in the settings window. */
@@ -665,7 +665,7 @@ struct SettingsPage {
 	uint Length() const;
 	SettingEntry *FindEntry(uint row, uint *cur_row) const;
 
-	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, uint first_row, uint max_row, uint cur_row = 0, uint parent_last = 0) const;
+	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, uint cur_row = 0, uint parent_last = 0) const;
 };
 
 
@@ -808,13 +808,14 @@ SettingEntry *SettingEntry::FindEntry(uint row_num, uint *cur_row)
  * @param settings_ptr Pointer to current values of all settings
  * @param base_x       Left-most position in window/panel to start drawing \a first_row
  * @param base_y       Upper-most position in window/panel to start drawing \a first_row
+ * @param max_x        The maximum x position to draw strings add.
  * @param first_row    First row number to draw
  * @param max_row      Row-number to stop drawing (the row-number of the row below the last row to draw)
  * @param cur_row      Current row number (internal variable)
  * @param parent_last  Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
  * @return Row number of the next row to draw
  */
-uint SettingEntry::Draw(GameSettings *settings_ptr, int base_x, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last)
+uint SettingEntry::Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, uint cur_row, uint parent_last)
 {
 	if (cur_row >= max_row) return cur_row;
 
@@ -841,14 +842,14 @@ uint SettingEntry::Draw(GameSettings *settings_ptr, int base_x, int base_y, uint
 	switch(this->flags & SEF_KIND_MASK) {
 		case SEF_SETTING_KIND:
 			if (cur_row >= first_row) {
-				DrawSetting(settings_ptr, this->d.entry.setting, x, y, this->flags & SEF_BUTTONS_MASK);
+				DrawSetting(settings_ptr, this->d.entry.setting, x, y, max_x, this->flags & SEF_BUTTONS_MASK);
 			}
 			cur_row++;
 			break;
 		case SEF_SUBTREE_KIND:
 			if (cur_row >= first_row) {
 				DrawSprite((this->d.sub.folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, x, y);
-				DrawString(x + 12, y, this->d.sub.title, TC_FROMSTRING);
+				DrawStringTruncated(x + 12, y, this->d.sub.title, TC_FROMSTRING, max_x - x - 12);
 			}
 			cur_row++;
 			if (!this->d.sub.folded) {
@@ -857,7 +858,7 @@ uint SettingEntry::Draw(GameSettings *settings_ptr, int base_x, int base_y, uint
 					SetBit(parent_last, this->level); // Add own last-field state
 				}
 
-				cur_row = this->d.sub.page->Draw(settings_ptr, base_x, base_y, first_row, max_row, cur_row, parent_last);
+				cur_row = this->d.sub.page->Draw(settings_ptr, base_x, base_y, max_x, first_row, max_row, cur_row, parent_last);
 			}
 			break;
 		default: NOT_REACHED();
@@ -871,9 +872,10 @@ uint SettingEntry::Draw(GameSettings *settings_ptr, int base_x, int base_y, uint
  * @param sd           Pointer to value description of setting to draw
  * @param x            Left-most position in window/panel to start drawing
  * @param y            Upper-most position in window/panel to start drawing
+ * @param max_x        The maximum x position to draw strings add.
  * @param state        State of the left + right arrow buttons to draw for the setting
  */
-void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd, int x, int y, int state)
+void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd, int x, int y, int max_x, int state)
 {
 	const SettingDescBase *sdb = &sd->desc;
 	const void *var = GetVariableAddress(settings_ptr, &sd->save);
@@ -914,7 +916,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 			SetDParam(1, value);
 		}
 	}
-	DrawString(x + 25, y, (sdb->str) + disabled, TC_FROMSTRING);
+	DrawStringTruncated(x + 25, y, (sdb->str) + disabled, TC_FROMSTRING, max_x - x - 25);
 }
 
 
@@ -978,18 +980,19 @@ SettingEntry *SettingsPage::FindEntry(uint row_num, uint *cur_row) const
  * @param settings_ptr Pointer to current values of all settings
  * @param base_x       Left-most position in window/panel to start drawing of each setting row
  * @param base_y       Upper-most position in window/panel to start drawing of row number \a first_row
+ * @param max_x        The maximum x position to draw strings add.
  * @param first_row    Number of first row to draw
  * @param max_row      Row-number to stop drawing (the row-number of the row below the last row to draw)
  * @param cur_row      Current row number (internal variable)
  * @param parent_last  Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
  * @return Row number of the next row to draw
  */
-uint SettingsPage::Draw(GameSettings *settings_ptr, int base_x, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last) const
+uint SettingsPage::Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, uint cur_row, uint parent_last) const
 {
 	if (cur_row >= max_row) return cur_row;
 
 	for (uint i = 0; i < this->num; i++) {
-		cur_row = this->entries[i].Draw(settings_ptr, base_x, base_y, first_row, max_row, cur_row, parent_last);
+		cur_row = this->entries[i].Draw(settings_ptr, base_x, base_y, max_x, first_row, max_row, cur_row, parent_last);
 		if (cur_row >= max_row) {
 			break;
 		}
@@ -1276,7 +1279,7 @@ struct GameSettingsWindow : Window {
 	{
 		this->DrawWidgets();
 		_settings_main_page.Draw(settings_ptr, SETTINGTREE_LEFT_OFFSET, SETTINGTREE_TOP_OFFSET,
-						this->vscroll.pos, this->vscroll.pos + this->vscroll.cap);
+				this->width - 13, this->vscroll.pos, this->vscroll.pos + this->vscroll.cap);
 	}
 
 	virtual void OnClick(Point pt, int widget)
