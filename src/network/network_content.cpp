@@ -754,6 +754,7 @@ void ClientNetworkContentSocketHandler::Clear()
 	for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) delete *iter;
 
 	this->infos.Clear();
+	this->requested.Clear();
 }
 
 /*** CALLBACK ***/
