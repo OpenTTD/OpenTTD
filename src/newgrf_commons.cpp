@@ -26,7 +26,7 @@ OverrideManagerBase::OverrideManagerBase(uint16 offset, uint16 maximum, uint16 i
 
 	mapping_ID = CallocT<EntityIDMapping>(max_new_entities);
 	entity_overrides = MallocT<uint16>(max_offset);
-	memset(entity_overrides, invalid, sizeof(entity_overrides));
+	for (size_t i = 0; i < max_offset; i++) entity_overrides[i] = invalid;
 	grfid_overrides = CallocT<uint32>(max_offset);
 }
 

@@ -42,7 +42,7 @@ static FORCEINLINE void MemMoveT(T *destination, const T *source, uint num = 1)
  * @param num number of items to be set (!not number of bytes!)
  */
 template <typename T>
-static FORCEINLINE void MemSetT(T *ptr, int value, uint num = 1)
+static FORCEINLINE void MemSetT(T *ptr, byte value, uint num = 1)
 {
 	memset(ptr, value, num * sizeof(T));
 }

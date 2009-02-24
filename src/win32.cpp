@@ -150,7 +150,7 @@ static uint32 CalcCRC(byte *data, uint size, uint32 crc)
 static void GetFileInfo(DebugFileInfo *dfi, const TCHAR *filename)
 {
 	HANDLE file;
-	memset(dfi, 0, sizeof(dfi));
+	memset(dfi, 0, sizeof(*dfi));
 
 	file = CreateFile(filename, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, 0);
 	if (file != INVALID_HANDLE_VALUE) {

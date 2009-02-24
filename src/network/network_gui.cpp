@@ -1323,7 +1323,7 @@ struct NetworkLobbyWindow : public Window {
 				NetworkTCPQueryServer(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port)); // company info
 				NetworkUDPQueryServer(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port)); // general data
 				/* Clear the information so removed companies don't remain */
-				memset(this->company_info, 0, sizeof(company_info));
+				memset(this->company_info, 0, sizeof(this->company_info));
 				break;
 		}
 	}
