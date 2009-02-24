@@ -2197,15 +2197,15 @@ static void TownActionRoadRebuild(Town *t)
 {
 	t->road_build_months = 6;
 
-	char *company_name = MallocT<char>(64);
+	char company_name[MAX_LENGTH_COMPANY_NAME_BYTES];
 	SetDParam(0, _current_company);
-	GetString(company_name, STR_COMPANY_NAME, company_name + 64);
+	GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
 
+	char *cn = strdup(company_name);
 	SetDParam(0, t->index);
-	SetDParamStr(1, company_name);
+	SetDParamStr(1, cn);
 
-	AddNewsItem(STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING,
-		NS_GENERAL, t->xy, 0, company_name);
+	AddNewsItem(STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING, NS_GENERAL, t->xy, 0, cn);
 }
 
 static bool DoBuildStatueOfCompany(TileIndex tile, TownID town_id)
