@@ -625,13 +625,17 @@ public:
 				this->list_pos = this->content.Length() - 1;
 				break;
 
+			case WKC_SPACE:
 			case WKC_RETURN:
-				if (this->selected != NULL) {
-					_network_content_client.ToggleSelectedState(this->selected);
-					this->content.ForceResort();
-					this->SetDirty();
+				if (keycode == WKC_RETURN || !IsWidgetFocused(NCLWW_FILTER)) {
+					if (this->selected != NULL) {
+						_network_content_client.ToggleSelectedState(this->selected);
+						this->content.ForceResort();
+						this->SetDirty();
+					}
+					return ES_HANDLED;
 				}
-				return ES_HANDLED;
+				/* Fall through when pressing space is pressed and filter isn't focused */
 
 			default: {
 				/* Handle editbox input */
