@@ -75,8 +75,6 @@ struct PersistentStorageArray : BaseStorageArray {
 		/* We do not have made a backup; lets do so */
 		if (this->prev_storage != NULL) {
 			this->prev_storage = MallocT<TYPE>(SIZE);
-			if (this->prev_storage == NULL) return;
-
 			memcpy(this->prev_storage, this->storage, sizeof(this->storage));
 
 			/* We only need to register ourselves when we made the backup

@@ -127,10 +127,6 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 
 	/* now generate the bitmap bits */
 	void *buff = MallocT<uint8>(padw * maxlines * bpp); // by default generate 128 lines at a time.
-	if (buff == NULL) {
-		fclose(f);
-		return false;
-	}
 	memset(buff, 0, padw * maxlines); // zero the buffer to have the padding bytes set to 0
 
 	/* start at the bottom, since bitmaps are stored bottom up. */
@@ -255,11 +251,6 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 
 	/* now generate the bitmap bits */
 	void *buff = MallocT<uint8>(w * maxlines * bpp); // by default generate 128 lines at a time.
-	if (buff == NULL) {
-		png_destroy_write_struct(&png_ptr, &info_ptr);
-		fclose(f);
-		return false;
-	}
 	memset(buff, 0, w * maxlines * bpp);
 
 	y = 0;
@@ -355,10 +346,6 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 
 	/* now generate the bitmap bits */
 	uint8 *buff = MallocT<uint8>(w * maxlines); // by default generate 128 lines at a time.
-	if (buff == NULL) {
-		fclose(f);
-		return false;
-	}
 	memset(buff, 0, w * maxlines); // zero the buffer to have the padding bytes set to 0
 
 	y = 0;

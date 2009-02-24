@@ -331,7 +331,6 @@ bool BmpReadHeader(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 		if (info->palette_size == 0) info->palette_size = 1 << info->bpp;
 
 		data->palette = CallocT<Colour>(info->palette_size);
-		if (data->palette == NULL) return false;
 
 		for (i = 0; i < info->palette_size; i++) {
 			data->palette[i].b = ReadByte(buffer);
@@ -353,7 +352,6 @@ bool BmpReadBitmap(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 	assert(info != NULL && data != NULL);
 
 	data->bitmap = CallocT<byte>(info->width * info->height * ((info->bpp == 24) ? 3 : 1));
-	if (data->bitmap == NULL) return false;
 
 	/* Load image */
 	SetStreamOffset(buffer, info->offset);

@@ -253,7 +253,6 @@ static inline bool AllocHeightMap()
 	_height_map.total_size = (_height_map.size_x + 1) * (_height_map.size_y + 1);
 	_height_map.dim_x = _height_map.size_x + 1;
 	_height_map.h = CallocT<height_t>(_height_map.total_size);
-	if (_height_map.h == NULL) return false;
 
 	/* Iterate through height map initialize values */
 	FOR_ALL_TILES_IN_HEIGHT(h) *h = _invalid_height;

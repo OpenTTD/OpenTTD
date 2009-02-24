@@ -991,20 +991,17 @@ void SanitizeFilename(char *filename)
 
 void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 {
-	FILE *in;
-	byte *mem;
-	size_t len;
-
-	in = fopen(filename, "rb");
+	FILE *in = fopen(filename, "rb");
 	if (in == NULL) return NULL;
 
 	fseek(in, 0, SEEK_END);
-	len = ftell(in);
+	size_t len = ftell(in);
 	fseek(in, 0, SEEK_SET);
-	if (len > maxsize || (mem = MallocT<byte>(len + 1)) == NULL) {
+	if (len > maxsize) {
 		fclose(in);
 		return NULL;
 	}
+	byte *mem = MallocT<byte>(len + 1);
 	mem[len] = 0;
 	if (fread(mem, len, 1, in) != 1) {
 		fclose(in);

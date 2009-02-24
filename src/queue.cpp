@@ -34,7 +34,6 @@ static bool InsSort_Push(Queue *q, void *item, int priority)
 {
 	InsSortNode *newnode = MallocT<InsSortNode>(1);
 
-	if (newnode == NULL) return false;
 	newnode->item = item;
 	newnode->priority = priority;
 	if (q->data.inssort.first == NULL ||

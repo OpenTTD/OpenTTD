@@ -111,7 +111,6 @@ static bool SetBankSource(MixerChannel *mc, const FileEntry *fe)
 	if (fe->file_size == 0) return false;
 
 	int8 *mem = MallocT<int8>(fe->file_size);
-	if (mem == NULL) return false;
 
 	FioSeekToFile(fe->file_slot, fe->file_offset);
 	FioReadBlock(mem, fe->file_size);
