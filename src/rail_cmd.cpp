@@ -807,6 +807,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
  * - p1 = (bit 9-11)- start cycle from this signal type
  * - p1 = (bit 12-14)-wrap around after this signal type
  * - p1 = (bit 15-16)-cycle the signal direction this many times
+ * - p1 = (bit 17)  - 1 = don't modify an existing signal but don't fail either, 0 = always set new signal type
  * @param p2 used for CmdBuildManySignals() to copy direction of first signal
  * TODO: p2 should be replaced by two bits for "along" and "against" the track.
  */
@@ -844,6 +845,9 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 			return_cmd_error(STR_1005_NO_SUITABLE_RAILROAD_TRACK);
 		}
 	}
+
+	/* In case we don't want to change an existing signal, return without error. */
+	if (HasBit(p1, 17) && HasSignalOnTrack(tile, track)) return CommandCost();
 
 	/* you can not convert a signal if no signal is on track */
 	if (convert_signal && !HasSignalOnTrack(tile, track)) return CMD_ERROR;
@@ -1095,6 +1099,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 			SB(p1, 3, 1, mode);
 			SB(p1, 4, 1, semaphores);
 			SB(p1, 5, 3, sigtype);
+			if (!remove && signal_ctr == 0) SetBit(p1, 17);
 
 			/* Pick the correct orientation for the track direction */
 			signals = 0;
