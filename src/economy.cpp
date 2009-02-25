@@ -1583,19 +1583,28 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		if (HasBit(v->vehicle_flags, VF_CARGO_UNLOADING) && (u->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0) {
 			uint cargo_count = v->cargo.Count();
 			uint amount_unloaded = _settings_game.order.gradual_loading ? min(cargo_count, load_amount) : cargo_count;
-			bool remaining; // Are there cargo entities in this vehicle that can still be unloaded here?
+			bool remaining = false; // Are there cargo entities in this vehicle that can still be unloaded here?
+			bool accepted  = false; // Is the cargo accepted by the station?
 
 			if (HasBit(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE) && !(u->current_order.GetUnloadType() & OUFB_TRANSFER)) {
 				/* The cargo has reached it's final destination, the packets may now be destroyed */
 				remaining = v->cargo.MoveTo(NULL, amount_unloaded, CargoList::MTA_FINAL_DELIVERY, last_visited);
 
 				result |= 1;
-			} else if (u->current_order.GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) {
+				accepted = true;
+			}
+
+			/* The !accepted || v->cargo.Count == cargo_count clause is there
+			 * to make it possible to force unload vehicles at the station where
+			 * they were loaded, but to not force unload the vehicle when the
+			 * station is still accepting the cargo in the vehicle. It doesn't
+			 * accept cargo that was loaded at the same station. */
+			if (u->current_order.GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER) && (!accepted || v->cargo.Count() == cargo_count)) {
 				remaining = v->cargo.MoveTo(&ge->cargo, amount_unloaded);
 				SetBit(ge->acceptance_pickup, GoodsEntry::PICKUP);
 
 				result |= 2;
-			} else {
+			} else if (!accepted) {
 				/* The order changed while unloading (unset unload/transfer) or the
 				 * station does not accept goods anymore. */
 				ClrBit(v->vehicle_flags, VF_CARGO_UNLOADING);
