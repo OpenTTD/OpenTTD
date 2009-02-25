@@ -92,7 +92,7 @@ STR_QUANTITY_MAIL                                               :{COMMA} sac{P "
 STR_QUANTITY_OIL                                                :{VOLUME} de pétrole
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} tête{P "" s} de bétail
 STR_QUANTITY_GOODS                                              :{COMMA} caisse{P "" s} de biens
-STR_QUANTITY_GRAIN                                              :{WEIGHT} de grains
+STR_QUANTITY_GRAIN                                              :{WEIGHT} de céréales
 STR_QUANTITY_WOOD                                               :{WEIGHT} de bois
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} de fer
 STR_QUANTITY_STEEL                                              :{WEIGHT} d'acier
@@ -124,7 +124,7 @@ STR_ABBREV_MAIL                                                 :{TINYFONT}CO
 STR_ABBREV_OIL                                                  :{TINYFONT}PT
 STR_ABBREV_LIVESTOCK                                            :{TINYFONT}BT
 STR_ABBREV_GOODS                                                :{TINYFONT}BN
-STR_ABBREV_GRAIN                                                :{TINYFONT}GR
+STR_ABBREV_GRAIN                                                :{TINYFONT}CR
 STR_ABBREV_WOOD                                                 :{TINYFONT}BO
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}FE
 STR_ABBREV_STEEL                                                :{TINYFONT}AC
@@ -1683,6 +1683,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrer 
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Renommer la ville
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagers le mois dernier : {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Courrier le mois dernier : {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Cargaison nécessaire à la croissance de la ville:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} requis
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} livré le mois dernier
 STR_200F_TALL_OFFICE_BLOCK                                      :Grand immeuble de bureaux
 STR_2010_OFFICE_BLOCK                                           :Immeuble de bureaux
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Petit immeuble résidentiel
@@ -2364,7 +2367,7 @@ STR_801D_COAL_CAR                                               :Wagon de charbo
 STR_801E_OIL_TANKER                                             :Wagon-citerne de pétrole
 STR_801F_LIVESTOCK_VAN                                          :Wagon à bétail
 STR_8020_GOODS_VAN                                              :Wagon de biens
-STR_8021_GRAIN_HOPPER                                           :Wagon à grain
+STR_8021_GRAIN_HOPPER                                           :Wagon à céréales
 STR_8022_WOOD_TRUCK                                             :Wagon à bois
 STR_8023_IRON_ORE_HOPPER                                        :Wagon à fer
 STR_8024_STEEL_TRUCK                                            :Wagon à acier
@@ -2394,7 +2397,7 @@ STR_803B_COAL_CAR                                               :Wagon de charbo
 STR_803C_OIL_TANKER                                             :Wagon-citerne de pétrole
 STR_803D_LIVESTOCK_VAN                                          :Wagon à bétail
 STR_803E_GOODS_VAN                                              :Wagon de biens
-STR_803F_GRAIN_HOPPER                                           :Wagon à grain
+STR_803F_GRAIN_HOPPER                                           :Wagon à céréales
 STR_8040_WOOD_TRUCK                                             :Wagon à bois
 STR_8041_IRON_ORE_HOPPER                                        :Wagon à fer
 STR_8042_STEEL_TRUCK                                            :Wagon à acier
@@ -2426,7 +2429,7 @@ STR_805B_COAL_CAR                                               :Wagon de charbo
 STR_805C_OIL_TANKER                                             :Wagon-citerne de pétrole
 STR_805D_LIVESTOCK_VAN                                          :Wagon à bétail
 STR_805E_GOODS_VAN                                              :Wagon de biens
-STR_805F_GRAIN_HOPPER                                           :Wagon à grain
+STR_805F_GRAIN_HOPPER                                           :Wagon à céréales
 STR_8060_WOOD_TRUCK                                             :Wagon à bois
 STR_8061_IRON_ORE_HOPPER                                        :Wagon à fer
 STR_8062_STEEL_TRUCK                                            :Wagon à acier
@@ -2472,9 +2475,9 @@ STR_8089_FOSTER_LIVESTOCK_VAN                                   :Camion à béta
 STR_808A_BALOGH_GOODS_TRUCK                                     :Camion de biens Balogh
 STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Camion de biens Craighead
 STR_808C_GOSS_GOODS_TRUCK                                       :Camion de biens Goss
-STR_808D_HEREFORD_GRAIN_TRUCK                                   :Camion à grain Hereford
-STR_808E_THOMAS_GRAIN_TRUCK                                     :Camion à grain Thomas
-STR_808F_GOSS_GRAIN_TRUCK                                       :Camion à grain Goss
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Camion à céréales Hereford
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Camion à céréales Thomas
+STR_808F_GOSS_GRAIN_TRUCK                                       :Camion à céréales Goss
 STR_8090_WITCOMBE_WOOD_TRUCK                                    :Camion à bois Witcombe
 STR_8091_FOSTER_WOOD_TRUCK                                      :Camion à bois Foster
 STR_8092_MORELAND_WOOD_TRUCK                                    :Camion à bois Moreland

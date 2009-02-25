@@ -1750,6 +1750,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Umístit
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Změnit jméno města
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Cestujících minulý měsíc: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Pošta za minulý měsíc: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Množství doručeného nákladu potřebného pro rozvoj města:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{BLACK}Je potřeba {ORANGE}{STRING}
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} dovezeno minulý měsíc
 STR_200F_TALL_OFFICE_BLOCK                                      :Vysoký kancelářský blok
 STR_2010_OFFICE_BLOCK                                           :Kancelářský blok
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Malé bytovky

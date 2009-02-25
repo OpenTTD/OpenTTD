@@ -919,7 +919,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisk
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forbyd skibe og tog at dreje 90 grader: {ORANGE}{STRING} {LTBLUE} (skal bruge NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Foren togstationer der bygges ved siden af hinanden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Tillad sammenkædning af stationer der ikke ligger direkte op ad hinanden: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Brug forbedret indlæsnings algoritme: {ORANGE}{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Brug forbedret indlæsningsalgoritme: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Last køretøjer gradvist: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Aflever kun last til en station hvis der er en forespørgsel: {ORANGE}{STRING}
@@ -1110,11 +1110,14 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køret�
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stationer
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Økonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Modstandere
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Visningsindstillinger
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Brugerflade
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Godshåndtering
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerstyrede spillere
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Auto-forny
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servicering
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruteplanlægning
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tog
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Byer
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrier
@@ -1338,7 +1341,7 @@ STR_NETWORK_LOAD_GAME                                           :{BLACK}Hent et 
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Fortsæt et tidligere gemt spil med flere spillere (sørg for at tilslutte som den rette spiller)
 
 ############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Hvilketsomhelst
+STR_NETWORK_LANG_ANY                                            :Hvilket som helst
 STR_NETWORK_LANG_ENGLISH                                        :Engelsk
 STR_NETWORK_LANG_GERMAN                                         :Tysk
 STR_NETWORK_LANG_FRENCH                                         :Fransk
@@ -1424,6 +1427,7 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv be
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveren er beskyttet. Indtast kodeord
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Selskabet er beskyttet. Indtast kodeord
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klient liste
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Tilslut som tilskuer
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nyt firma
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Ingen netværksheder fundet eller kompilet uden ENABLE_NETWORK
@@ -1673,6 +1677,8 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrer 
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Ændre navnet på byen
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagerer sidste måned: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post sidste måned: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} krævet
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} leveret seneste måned
 STR_200F_TALL_OFFICE_BLOCK                                      :Høj kontorbygning
 STR_2010_OFFICE_BLOCK                                           :Kontorbygning
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Lille lejlighedskompleks
@@ -2740,6 +2746,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan ikke
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Kan ikke flytte denne ordre...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Kan ikke springe over nuværende ordre...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Kan ikke springe over valgt ordre...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}køretøj kan ikke køre til alle stationer
+STR_CAN_T_ADD_ORDER                                             :{WHITE}køretøj kan ikke køre til denne station
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}et køretøj, der deler denne ordre, kan ikke køre til den station
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan ikke flytte køretøjet...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Det bagerste lokomotiv vil altid følge dets forende
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -3109,13 +3118,14 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uventet grafike
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukendt Action 0 egenskab.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøg på brug af ugyldig ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} indeholder en ødelagt sprite. Alle ødelagte sprites vil blive vist som et rødt spørgsmålstegm (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Indeholder flere "Action 8" poster.
 
-STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Indlæs den valgte forudindstilling
-STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Gem forudindstilling
-STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Gem den aktuelle liste som en forudindstilling
-STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Indtast navn til forudindstilling
-STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Slet forudindstilling
-STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Slet den for tiden valgte forudindstilling
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Indlæs den valgte indstilling
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Gem indstilling
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Gem den aktuelle liste som indstilling
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Indtast navn til indstilling
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Slet indstilling
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Slet den for tiden valgte indstilling
 STR_NEWGRF_ADD                                                  :{BLACK}Tilføj
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Tilføj et NewGRF sæt til listen
 STR_NEWGRF_REMOVE                                               :{BLACK}Fjern
@@ -3322,23 +3332,25 @@ STR_PREPARING_TILELOOP                                          :{BLACK}Kører f
 STR_PREPARING_GAME                                              :{BLACK}Forbereder spil
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Denne handling ændrer sværhedsgraden til speciel
 STR_SE_FLAT_WORLD                                               :{WHITE}Fladt land
-STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generér fladt land
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generer fladt landskab
 STR_SE_RANDOM_LAND                                              :{WHITE}Tilfældigt land
 STR_SE_NEW_WORLD                                                :{BLACK}Opret nyt scenarie
 STR_SE_CAPTION                                                  :{WHITE}Scenarietype
-STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Flyt højden af fladt land en ned
-STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Flyt højden af fladt land en op
-STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Ændre højden af fladt land
-STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Højde af fladt land:
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Sæt højden af fladt landskab en ned
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Sæt højden af fladt landskab en op
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Ændre højden af fladt landskab
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Højde af fladt landskab:
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrer det lille kort ved den nuværende position
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 # Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Kortkanter:
 STR_NORTHWEST                                                   :{BLACK}Nordvest
 STR_NORTHEAST                                                   :{BLACK}Nordøst
 STR_SOUTHEAST                                                   :{BLACK}Sydøst
 STR_SOUTHWEST                                                   :{BLACK}Sydvest
+STR_BORDER_FREEFORM                                             :{BLACK}Fri udformning
 STR_BORDER_WATER                                                :{BLACK}Vand
 STR_BORDER_RANDOM                                               :{BLACK}Tilfældige
 STR_BORDER_RANDOMIZE                                            :{BLACK}Tilfældige

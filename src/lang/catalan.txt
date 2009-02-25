@@ -1682,6 +1682,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centra l
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Canvia el nom de la població
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passatgers el darrer mes: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Correu el darrer mes: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Càrrega requerida per tal de que el poble creixi:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} requerides
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} lliurades el darrer mes
 STR_200F_TALL_OFFICE_BLOCK                                      :Bloc d'oficines alt
 STR_2010_OFFICE_BLOCK                                           :Bloc d'oficines
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Petit bloc d'apartaments

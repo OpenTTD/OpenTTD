@@ -687,6 +687,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Gjenno
 STR_02D5_LAND_BLOCK_INFO                                        :Informasjon om felt
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Vis/skjul konsoll
+STR_AI_DEBUG_MENU                                               :AI Debug
 STR_02D7_SCREENSHOT_CTRL_S                                      :Skjermdump (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Stor skjermdump (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Om 'OpenTTD'

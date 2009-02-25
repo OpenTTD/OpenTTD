@@ -1682,6 +1682,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Center t
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Change town name
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passengers last month: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Mail last month: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Cargo needed for town growth:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} required
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} delivered last month
 STR_200F_TALL_OFFICE_BLOCK                                      :Tall office block
 STR_2010_OFFICE_BLOCK                                           :Office block
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Small block of apartments

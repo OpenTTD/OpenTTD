@@ -1682,6 +1682,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Mută im
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Schimbă numele oraşului
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Călători luna trecută: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Colete poştale luna trecută: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Transporturi necesare dezvoltării oraşului:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} necesare
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} livrat luna trecută
 STR_200F_TALL_OFFICE_BLOCK                                      :Clădire înaltă de birouri
 STR_2010_OFFICE_BLOCK                                           :Clădire de birouri
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Bloc mic de apartamente
@@ -3207,10 +3210,10 @@ STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Obtine o
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Obtine o lista ordonata a tuturor vaselor din depoul actual
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Obtine o lista ordonata a tuturor aeronavelor din orice hangar al acestui aeroport
 
-STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Inlocuieste automat toate trenurile din depou
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Inlocuieste automat toate autovehiculele din depou
-STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Inlocuieste automat toate vasele din depou
-STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Inlocuieste automat toate aeronavele din hangar
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}înlocuieşte automat toate din depou
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}înlocuieşte automat toate autovehiculele din depou
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}înlocuieşte automat toate vasele din depou
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}înlocuieşte automat toate aeronavele din hangar
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tren{P "" s}
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Autovehicul{P "" s}
@@ -3546,7 +3549,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}Setări IA
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}Setări Inteligenţă Artificială
 STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Afişează setarile pentru Inteligenţa Artificială
 STR_AI_DEBUG                                                    :{WHITE}Depanare IA
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Numele Inteligenţei Artificiale

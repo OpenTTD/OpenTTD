@@ -9,7 +9,7 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Af van die landkaart af
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Van die landkaart af
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Te naby aan die kant van die landkaart
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nie genoeg kontant nie - benodig {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
@@ -324,7 +324,7 @@ STR_SORT_BY                                                     :{BLACK}Sorteer 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populasie
 STR_SORT_BY_PRODUCTION                                          :Produksie
 STR_SORT_BY_TYPE                                                :Tipe
-STR_SORT_BY_TRANSPORTED                                         :Uitgervoer
+STR_SORT_BY_TRANSPORTED                                         :Vervoer
 STR_SORT_BY_NAME                                                :{BLACK}Naam
 STR_SORT_BY_DROPDOWN_NAME                                       :Naam
 STR_SORT_BY_DATE                                                :{BLACK}Datum
@@ -412,7 +412,7 @@ STR_0189                                                        :{BLACK}{SMALLDO
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Kan nie diens interval verander nie...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Maak venster toe
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Venster titel - sleep om venster te beweeg
-STR_STICKY_BUTTON                                               :{BLACK}Bemerk die venste as ontoemaakbaar by die"Sluit Alle Vensters" sleutel
+STR_STICKY_BUTTON                                               :{BLACK}Merk die venster as ontoemaakbaar met die"Sluit Alle Vensters" sleutel
 STR_RESIZE_BUTTON                                               :{BLACK}Kliek en sleep om venster te vergroot
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliek hier om na die huidige spaar/laai lêer te spring
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Vernietig geboue ens. op 'n vierkant van land
@@ -755,7 +755,7 @@ STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Skermsko
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Koop land vir gebruk in die toekoms
 STR_032F_AUTOSAVE                                               :{RED}OUTOSTOOR
-STR_SAVING_GAME                                                 :{RED}*  *  BESPARING SPELETJIE  *  *
+STR_SAVING_GAME                                                 :{RED}*  *  SPAAR  SPELETJIE  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Spaar nog in vorder, {}wag asb tot dit klaar is!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Kies 'Ezy Straat styl musiek' program
 
@@ -1122,8 +1122,8 @@ STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Verander stel waarde
 
 STR_TEMPERATE_LANDSCAPE                                         :Magtig landskap
-STR_SUB_ARCTIC_LANDSCAPE                                        :Onder-noordpool landskap
-STR_SUB_TROPICAL_LANDSCAPE                                      :Onder-tropies landskap
+STR_SUB_ARCTIC_LANDSCAPE                                        :Sub-artiese landskap
+STR_SUB_TROPICAL_LANDSCAPE                                      :Sub-tropiese landskap
 STR_TOYLAND_LANDSCAPE                                           :Speelgoedland landskap
 
 STR_CHEATS                                                      :{WHITE}Kullery
@@ -3246,7 +3246,7 @@ STR_GENERATE_DATE                                               :{BLACK}{DATE_LO
 STR_SNOW_LINE_UP                                                :{BLACK}Beweeg die sneeu lyn een op
 STR_SNOW_LINE_DOWN                                              :{BLACK}Beweeg die sneeu lyn een af
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Verander sneeu lyn hoogte
-STR_START_DATE_QUERY_CAPT                                       :{WHITE}Verander begins jaar
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Verander begin jaar
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skaal waaskuwing
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Om die kaart te veel te verstel is nie aanbeveel. Gaan voort met die generasie?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Hoogtekaart name:

@@ -1716,6 +1716,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}A fő n�
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}A város nevének megváltoztatása
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Utasok az előző hónapban: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Levélcsomagok az előző hónapban: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}A város növekedéséhez szükséges áru:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} szükséges
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} szállítva a múlt hónapban
 STR_200F_TALL_OFFICE_BLOCK                                      :Magas irodaház
 STR_2010_OFFICE_BLOCK                                           :Irodaház
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Kis bérház

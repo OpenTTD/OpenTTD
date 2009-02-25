@@ -1682,6 +1682,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Canoli'r
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}newid enw'r dref
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}teithiwr mis diwethaf: {ORANGE}{COMMA}{BLACK}  uchafswm: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post mis diwethaf: {ORANGE}{COMMA}{BLACK}  uchafswm: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Cargo angen i tyfi'r tref:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} angen
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} dosbarthu mis diwethaf
 STR_200F_TALL_OFFICE_BLOCK                                      :Bloc swyddfa uchel
 STR_2010_OFFICE_BLOCK                                           :Bloc swyddfa
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Bloc bach o fflatiau

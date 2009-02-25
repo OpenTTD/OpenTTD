@@ -1749,6 +1749,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Pohlad n
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Zmenit nazov mesta
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Cestujuci posledny mesiac: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Posta posledny mesiac: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Tovar potrebný k rozrastu mesta:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} potrebný
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} doručené posledný mesiac
 STR_200F_TALL_OFFICE_BLOCK                                      :Administrativa
 STR_2010_OFFICE_BLOCK                                           :Kancelarie
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Maly bytovy blok

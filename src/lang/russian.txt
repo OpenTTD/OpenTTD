@@ -1684,6 +1684,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Отце
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Переименовать город
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Пассажиров за прошлый месяц: {ORANGE}{COMMA}{BLACK}  макс.: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Почты за прошлый месяц: {ORANGE}{COMMA}{BLACK}  макс.: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Груз, необходимый для роста города:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} необходимо
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} доставлено в прошлом месяце
 STR_200F_TALL_OFFICE_BLOCK                                      :Высотное офисное здание
 STR_2010_OFFICE_BLOCK                                           :Офисное здание
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Жилой дом
