@@ -334,7 +334,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_MOVE)(CompanyID company, const char 
 //   DEF_CLIENT_RECEIVE_COMMAND has parameter: Packet *p
 // **********
 
-extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm, Subdirectory subdir);
+extern bool SafeSaveOrLoad(const char *filename, int mode, GameMode newgm, Subdirectory subdir);
 extern StringID _switch_mode_errorstr;
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_FULL)

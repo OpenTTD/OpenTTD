@@ -844,9 +844,9 @@ static void StartScenario()
  * @param newgm switch to this mode of loading fails due to some unknown error
  * @param subdir default directory to look for filename, set to 0 if not needed
  */
-bool SafeSaveOrLoad(const char *filename, int mode, int newgm, Subdirectory subdir)
+bool SafeSaveOrLoad(const char *filename, int mode, GameMode newgm, Subdirectory subdir)
 {
-	byte ogm = _game_mode;
+	GameMode ogm = _game_mode;
 
 	_game_mode = newgm;
 	assert(mode == SL_LOAD || mode == SL_OLD_LOAD);

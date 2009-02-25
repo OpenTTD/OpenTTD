@@ -3,6 +3,7 @@
 /** @file gfx.cpp Handling of drawing text and other gfx related stuff. */
 
 #include "stdafx.h"
+#include "openttd.h"
 #include "gfx_func.h"
 #include "variables.h"
 #include "spritecache.h"
@@ -36,7 +37,7 @@ DrawPixelInfo _screen;
 bool _screen_disable_anim = false;   ///< Disable palette animation (important for 32bpp-anim blitter during giant screenshot)
 bool _exit_game;
 bool _networking;         ///< are we in networking mode?
-byte _game_mode;
+GameMode _game_mode;
 int8 _pause_game;
 int _pal_first_dirty;
 int _pal_count_dirty;

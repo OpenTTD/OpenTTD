@@ -5,10 +5,10 @@
 #ifndef OPENTTD_H
 #define OPENTTD_H
 
-enum GameModes {
+enum GameMode {
 	GM_MENU,
 	GM_NORMAL,
-	GM_EDITOR
+	GM_EDITOR,
 };
 
 enum SwitchModes {
@@ -35,7 +35,7 @@ enum {
 	DO_WAYPOINTS          = 6,
 };
 
-extern byte _game_mode;
+extern GameMode _game_mode;
 extern bool _exit_game;
 extern int8 _pause_game;
 

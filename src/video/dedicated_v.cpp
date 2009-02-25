@@ -125,7 +125,7 @@ static void CloseWindowsConsoleThread()
 
 static void *_dedicated_video_mem;
 
-extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm, Subdirectory subdir);
+extern bool SafeSaveOrLoad(const char *filename, int mode, GameMode newgm, Subdirectory subdir);
 extern void SwitchMode(int new_mode);
 
 static FVideoDriver_Dedicated iFVideoDriver_Dedicated;

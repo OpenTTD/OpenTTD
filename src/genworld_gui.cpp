@@ -588,7 +588,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				break;
 
 			case GLAND_TERRAIN_PULLDOWN: {
-				byte old_gm = _game_mode;
+				GameMode old_gm = _game_mode;
 				_game_mode = GM_MENU;
 				IConsoleSetSetting("difficulty.terrain_type", index);
 				_game_mode = old_gm;
@@ -596,7 +596,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			}
 
 			case GLAND_WATER_PULLDOWN: {
-				byte old_gm = _game_mode;
+				GameMode old_gm = _game_mode;
 				_game_mode = GM_MENU;
 				IConsoleSetSetting("difficulty.quantity_sea_lakes", index);
 				_game_mode = old_gm;
