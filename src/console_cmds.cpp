@@ -923,7 +923,7 @@ DEF_CONSOLE_CMD(ConNewGame)
 	return true;
 }
 
-extern void SwitchMode(int new_mode);
+extern void SwitchToMode(SwitchMode new_mode);
 
 DEF_CONSOLE_CMD(ConRestart)
 {
@@ -933,10 +933,10 @@ DEF_CONSOLE_CMD(ConRestart)
 		return true;
 	}
 
-	/* Don't copy the _newgame pointers to the real pointers, so call SwitchMode directly */
+	/* Don't copy the _newgame pointers to the real pointers, so call SwitchToMode directly */
 	_settings_game.game_creation.map_x = MapLogX();
 	_settings_game.game_creation.map_y = FindFirstBit(MapSizeY());
-	SwitchMode(SM_NEWGAME);
+	SwitchToMode(SM_NEWGAME);
 	return true;
 }
 

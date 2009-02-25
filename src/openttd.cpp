@@ -867,7 +867,7 @@ bool SafeSaveOrLoad(const char *filename, int mode, GameMode newgm, Subdirectory
 	}
 }
 
-void SwitchMode(int new_mode)
+void SwitchToMode(SwitchMode new_mode)
 {
 #ifdef ENABLE_NETWORK
 	/* If we are saving something, the network stays in his current state */
@@ -1002,6 +1002,8 @@ void SwitchMode(int new_mode)
 			/* XXX: set date */
 			MarkWholeScreenDirty();
 			break;
+
+		default: NOT_REACHED();
 	}
 
 	if (_switch_mode_errorstr != INVALID_STRING_ID) {
@@ -1146,7 +1148,7 @@ void GameLoop()
 
 	/* switch game mode? */
 	if (_switch_mode != SM_NONE) {
-		SwitchMode(_switch_mode);
+		SwitchToMode(_switch_mode);
 		_switch_mode = SM_NONE;
 	}
 

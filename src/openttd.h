@@ -11,18 +11,18 @@ enum GameMode {
 	GM_EDITOR,
 };
 
-enum SwitchModes {
-	SM_NONE            =  0,
-	SM_NEWGAME         =  1,
-	SM_EDITOR          =  2,
-	SM_LOAD            =  3,
-	SM_MENU            =  4,
-	SM_SAVE            =  5,
-	SM_GENRANDLAND     =  6,
-	SM_LOAD_SCENARIO   =  9,
-	SM_START_SCENARIO  = 10,
-	SM_START_HEIGHTMAP = 11,
-	SM_LOAD_HEIGHTMAP  = 12,
+enum SwitchMode {
+	SM_NONE,
+	SM_NEWGAME,
+	SM_EDITOR,
+	SM_LOAD,
+	SM_MENU,
+	SM_SAVE,
+	SM_GENRANDLAND,
+	SM_LOAD_SCENARIO,
+	SM_START_SCENARIO,
+	SM_START_HEIGHTMAP,
+	SM_LOAD_HEIGHTMAP,
 };
 
 /* Display Options */
@@ -36,6 +36,7 @@ enum {
 };
 
 extern GameMode _game_mode;
+extern SwitchMode _switch_mode;
 extern bool _exit_game;
 extern int8 _pause_game;
 

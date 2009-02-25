@@ -39,7 +39,7 @@ enum glwp_modes {
 	GLWP_END
 };
 
-extern void SwitchMode(int new_mode);
+extern void SwitchToMode(SwitchMode new_mode);
 extern void MakeNewgameSettingsLive();
 
 static inline void SetNewLandscapeType(byte landscape)

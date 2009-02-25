@@ -49,9 +49,6 @@ VARDEF bool _rightclick_emulate;
 /* IN/OUT parameters to commands */
 VARDEF bool _generating_world;
 
-/* Used when switching from the intro menu. */
-VARDEF byte _switch_mode;
-
 VARDEF char _savegame_format[8];
 
 VARDEF char *_config_file;

@@ -30,7 +30,7 @@
 
 static void ShowNetworkStartServerWindow();
 static void ShowNetworkLobbyWindow(NetworkGameList *ngl);
-extern void SwitchMode(int new_mode);
+extern void SwitchToMode(SwitchMode new_mode);
 
 static const StringID _connection_types_dropdown[] = {
 	STR_NETWORK_LAN_INTERNET,
@@ -1020,7 +1020,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 						strecpy(_file_to_saveload.title, this->map->title, lastof(_file_to_saveload.title));
 
 						delete this;
-						SwitchMode(SM_START_SCENARIO);
+						SwitchToMode(SM_START_SCENARIO);
 					}
 				}
 				break;
@@ -1829,7 +1829,7 @@ struct NetworkJoinStatusWindow : Window {
 	{
 		if (widget == 2) { //Disconnect button
 			NetworkDisconnect();
-			SwitchMode(SM_MENU);
+			SwitchToMode(SM_MENU);
 			ShowNetworkGameWindow();
 		}
 	}

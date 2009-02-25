@@ -126,7 +126,7 @@ static void CloseWindowsConsoleThread()
 static void *_dedicated_video_mem;
 
 extern bool SafeSaveOrLoad(const char *filename, int mode, GameMode newgm, Subdirectory subdir);
-extern void SwitchMode(int new_mode);
+extern void SwitchToMode(SwitchMode new_mode);
 
 static FVideoDriver_Dedicated iFVideoDriver_Dedicated;
 
@@ -261,7 +261,7 @@ void VideoDriver_Dedicated::MainLoop()
 	/* If SwitchMode is SM_LOAD, it means that the user used the '-g' options */
 	if (_switch_mode != SM_LOAD) {
 		StartNewGameWithoutGUI(GENERATE_NEW_SEED);
-		SwitchMode(_switch_mode);
+		SwitchToMode(_switch_mode);
 		_switch_mode = SM_NONE;
 	} else {
 		_switch_mode = SM_NONE;
@@ -273,7 +273,7 @@ void VideoDriver_Dedicated::MainLoop()
 			_networking = false;
 		} else {
 			/* We can load this game, so go ahead */
-			SwitchMode(SM_LOAD);
+			SwitchToMode(SM_LOAD);
 		}
 	}
 
