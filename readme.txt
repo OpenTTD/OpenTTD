@@ -498,6 +498,7 @@ Thanks to:
   Cian Duffy (MYOB)              - BeOS port / manual writing
   Christian Rosentreter (tokai)  - MorphOS / AmigaOS port
   Richard Kempton (RichK67)      - Additional airports, initial TGP implementation
+  Alberto Demichelis             - Squirrel scripting language
   Michael Blunck                 - For revolutionizing TTD with awesome graphics
   George                         - Canal graphics
   David Dallaston (Pikka)        - Tram tracks

@@ -1,0 +1,22 @@
+The programming language SQUIRREL 2.2.1 stable
+
+--------------------------------------------------
+The project has been compiled and run on Windows(Windows XP/2000 on Intel x86 Windows XP Pro on AMD x64) and
+Linux(Slackware 9.0 on Intel x86, Fedora Core 4 on AMD x64).
+
+Has been tested with the following compilers:
+	MS Visual C++ 6.0,7.0,7.1 and 8.0 (32 and 64bits)
+	MinGW gcc 3.2 (mingw special 20020817-1)
+	Cygnus gcc 3.2
+	Linux gcc 3.2.3
+	Linux gcc 4.0.0 (x86 64bits)
+
+
+Feedback and suggestions are appreciated
+project page - http://www.squirrel-lang.org
+community forums - http://www.squirrel-lang.org/Forums
+wiki - http://wiki.squirrel-lang.org
+author - alberto@demichelis.net
+
+END OF README
+

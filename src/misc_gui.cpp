@@ -343,6 +343,7 @@ struct AboutWindow : public Window {
 			"  Christian Rosentreter (tokai) - MorphOS / AmigaOS port",
 			"  Richard Kempton (richK) - additional airports, initial TGP implementation",
 			"",
+			"  Alberto Demichelis - Squirrel scripting language © 2003-2008",
 			"  Michael Blunck - Pre-Signals and Semaphores © 2003",
 			"  George - Canal/Lock graphics © 2003-2004",
 			"  David Dallaston - Tram tracks",
