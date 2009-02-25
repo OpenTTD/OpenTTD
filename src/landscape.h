@@ -58,6 +58,4 @@ void RunTileLoop();
 void InitializeLandscape();
 void GenerateLandscape(byte mode);
 
-TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng);
-
 #endif /* LANDSCAPE_H */
