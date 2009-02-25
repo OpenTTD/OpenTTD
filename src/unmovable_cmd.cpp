@@ -452,7 +452,7 @@ void GenerateUnmovables()
 				MakeLighthouse(tile);
 				IncreaseGeneratingWorldProgress(GWP_UNMOVABLE);
 				lighthouses_to_build--;
-				TILE_ASSERT(tile);
+				assert(tile < MapSize());
 				break;
 			}
 			tile = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDiagDir(dir));

@@ -928,7 +928,7 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	/* check the amount of bad tiles */
 	count = 0;
 	BEGIN_TILE_LOOP(cur_tile, size_x, size_y, tile)
-		TILE_ASSERT(cur_tile);
+		assert(cur_tile < MapSize());
 		count += IsBadFarmFieldTile(cur_tile);
 	END_TILE_LOOP(cur_tile, size_x, size_y, tile)
 	if (count * 2 >= size_x * size_y) return;
@@ -940,7 +940,7 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 
 	/* make field */
 	BEGIN_TILE_LOOP(cur_tile, size_x, size_y, tile)
-		TILE_ASSERT(cur_tile);
+		assert(cur_tile < MapSize());
 		if (!IsBadFarmFieldTile2(cur_tile)) {
 			MakeField(cur_tile, field_type, industry);
 			SetClearCounter(cur_tile, counter);

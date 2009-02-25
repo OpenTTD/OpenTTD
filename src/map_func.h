@@ -18,11 +18,6 @@ extern uint _map_tile_mask;
  */
 
 #define TILE_MASK(x) ((x) & _map_tile_mask)
-/**
- * Asserts when the tile is outside of the map.
- * @param x the tile to check
- */
-#define TILE_ASSERT(x) assert(TILE_MASK(x) == (x));
 
 /**
  * Pointer to the tile-array.

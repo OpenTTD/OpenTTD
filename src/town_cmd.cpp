@@ -818,7 +818,7 @@ no_slope:
 
 static bool TerraformTownTile(TileIndex tile, int edges, int dir)
 {
-	TILE_ASSERT(tile);
+	assert(tile < MapSize());
 
 	CommandCost r = DoCommand(tile, edges, dir, DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
 	if (CmdFailed(r) || r.GetCost() >= (_price.terraform + 2) * 8) return false;
@@ -828,7 +828,7 @@ static bool TerraformTownTile(TileIndex tile, int edges, int dir)
 
 static void LevelTownLand(TileIndex tile)
 {
-	TILE_ASSERT(tile);
+	assert(tile < MapSize());
 
 	/* Don't terraform if land is plain or if there's a house there. */
 	if (IsTileType(tile, MP_HOUSE)) return;
@@ -1027,7 +1027,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 	RoadBits rcmd = ROAD_NONE;  // RoadBits for the road construction command
 	TileIndex tile = *tile_ptr; // The main tile on which we base our growth
 
-	TILE_ASSERT(tile);
+	assert(tile < MapSize());
 
 	if (cur_rb == ROAD_NONE) {
 		/* Tile has no road. First reset the status counter
@@ -1195,7 +1195,7 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 	 */
 	DiagDirection target_dir = DIAGDIR_END; // The direction in which we want to extend the town
 
-	TILE_ASSERT(tile);
+	assert(tile < MapSize());
 
 	/* Number of times to search.
 	 * Better roads, 2X2 and 3X3 grid grow quite fast so we give
