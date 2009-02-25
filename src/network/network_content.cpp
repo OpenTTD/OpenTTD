@@ -505,7 +505,11 @@ void ClientNetworkContentSocketHandler::SendReceive()
 #else
 	WaitSelect(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv, NULL);
 #endif
-	if (FD_ISSET(this->sock, &read_fd)) this->Recv_Packets();
+	if (FD_ISSET(this->sock, &read_fd)) {
+		this->Recv_Packets();
+		this->lastActivity = _realtime_tick;
+	}
+
 	this->writable = !!FD_ISSET(this->sock, &write_fd);
 	this->Send_Packets();
 }
