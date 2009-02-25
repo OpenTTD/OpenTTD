@@ -36,7 +36,6 @@ bool _right_button_clicked; ///< Is right mouse button clicked?
 DrawPixelInfo _screen;
 bool _screen_disable_anim = false;   ///< Disable palette animation (important for 32bpp-anim blitter during giant screenshot)
 bool _exit_game;
-bool _networking;         ///< are we in networking mode?
 GameMode _game_mode;
 SwitchMode _switch_mode;  ///< The next mainloop command.
 int8 _pause_game;

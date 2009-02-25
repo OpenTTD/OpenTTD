@@ -43,6 +43,7 @@ DECLARE_POSTFIX_INCREMENT(ClientID);
 typedef ClientIndex NetworkClientInfoID;
 DEFINE_OLD_POOL_GENERIC(NetworkClientInfo, NetworkClientInfo);
 
+bool _networking;         ///< are we in networking mode?
 bool _network_server;     ///< network-server is active
 bool _network_available;  ///< is network mode available?
 bool _network_dedicated;  ///< are we a dedicated server?
