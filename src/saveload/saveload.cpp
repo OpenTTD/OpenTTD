@@ -45,6 +45,7 @@ SavegameType _savegame_type; ///< type of savegame we are loading
 uint32 _ttdp_version;     ///< version of TTDP savegame (if applicable)
 uint16 _sl_version;       ///< the major savegame version identifier
 byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
+char _savegame_format[8]; ///< how to compress savegames
 
 typedef void WriterProc(size_t len);
 typedef size_t ReaderProc();

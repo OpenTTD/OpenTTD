@@ -22,14 +22,6 @@ VARDEF uint16 _disaster_delay;
  *  tick handler. */
 VARDEF uint16 _station_tick_ctr;
 
-/* Iterator through all towns in OnTick_Town */
-VARDEF uint32 _cur_town_ctr;
-/* Frequency iterator at the same place */
-VARDEF uint32 _cur_town_iter;
-
-VARDEF uint _cur_company_tick_index;
-VARDEF uint _next_competitor_start;
-
 /* Determines how often to run the tree loop */
 VARDEF byte _trees_tick_ctr;
 
@@ -42,14 +34,11 @@ VARDEF bool _do_autosave;
 VARDEF int _autosave_ctr;
 
 VARDEF byte _display_opt;
-VARDEF int _caret_timer;
 
 VARDEF bool _rightclick_emulate;
 
 /* IN/OUT parameters to commands */
 VARDEF bool _generating_world;
-
-VARDEF char _savegame_format[8];
 
 VARDEF char *_config_file;
 VARDEF char *_highscore_file;
@@ -57,9 +46,6 @@ VARDEF char *_log_file;
 
 /* landscape.cpp */
 extern const byte _tileh_to_sprite[32];
-
-/* misc */
-VARDEF char _screenshot_name[128];
 
 /* Forking stuff */
 VARDEF bool _dedicated_forks;

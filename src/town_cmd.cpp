@@ -52,6 +52,9 @@ HouseSpec _house_specs[HOUSE_MAX];
 Town *_cleared_town;
 int _cleared_town_rating;
 
+uint32 _cur_town_ctr;     ///< iterator through all towns in OnTick_Town
+uint32 _cur_town_iter;    ///< frequency iterator at the same place
+
 /* Initialize the town-pool */
 DEFINE_OLD_POOL_GENERIC(Town, Town)
 

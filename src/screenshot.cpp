@@ -21,6 +21,7 @@
 char _screenshot_format_name[8];
 uint _num_screenshot_formats;
 uint _cur_screenshot_format;
+char _screenshot_name[128];
 ScreenshotType current_screenshot_type;
 
 /* called by the ScreenShot proc to generate screenshot lines. */

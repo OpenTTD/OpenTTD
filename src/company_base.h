@@ -107,4 +107,7 @@ static inline byte ActiveCompanyCount()
 
 Money CalculateCompanyValue(const Company *c);
 
+extern uint _next_competitor_start;
+extern uint _cur_company_tick_index;
+
 #endif /* COMPANY_BASE_H */

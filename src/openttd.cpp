@@ -715,6 +715,7 @@ void HandleExitGameRequest()
 static void ShowScreenshotResult(bool b)
 {
 	if (b) {
+		extern char *_screenshot_name;
 		SetDParamStr(0, _screenshot_name);
 		ShowErrorMessage(INVALID_STRING_ID, STR_031B_SCREENSHOT_SUCCESSFULLY, 0, 0);
 	} else {
@@ -1155,6 +1156,7 @@ void GameLoop()
 	IncreaseSpriteLRU();
 	InteractiveRandom();
 
+	extern int _caret_timer;
 	_caret_timer += 3;
 	_palette_animation_counter += 8;
 	CursorTick();

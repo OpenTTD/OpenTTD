@@ -39,6 +39,8 @@ CompanyByte _current_company;
 /* NOSAVE: can be determined from company structs */
 Colours _company_colours[MAX_COMPANIES];
 CompanyManagerFace _company_manager_face; ///< for company manager face storage in openttd.cfg
+uint _next_competitor_start;              ///< the number of ticks before the next AI is started
+uint _cur_company_tick_index;             ///< used to generate a name for one company that doesn't have a name yet per tick
 
 DEFINE_OLD_POOL_GENERIC(Company, Company)
 

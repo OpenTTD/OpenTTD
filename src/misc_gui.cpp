@@ -41,6 +41,7 @@ SaveLoadDialogMode _saveload_mode;
 
 static bool _fios_path_changed;
 static bool _savegame_sort_dirty;
+int _caret_timer;
 
 static const Widget _land_info_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},

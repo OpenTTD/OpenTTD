@@ -331,4 +331,6 @@ void SlArray(void *array, size_t length, VarType conv);
 void SlObject(void *object, const SaveLoad *sld);
 bool SlObjectMember(void *object, const SaveLoad *sld);
 
+extern char _savegame_format[8];
+
 #endif /* SAVELOAD_H */
