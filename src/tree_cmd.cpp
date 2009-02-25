@@ -174,9 +174,9 @@ static void DoPlaceMoreTrees(TileIndex tile)
 		int x = GB(r, 0, 5) - 16;
 		int y = GB(r, 8, 5) - 16;
 		uint dist = abs(x) + abs(y);
-		TileIndex cur_tile = TILE_MASK(tile + TileDiffXY(x, y));
+		TileIndex cur_tile = TileAddWrap(tile, x, y);
 
-		if (dist <= 13 && CanPlantTreesOnTile(cur_tile, true)) {
+		if (cur_tile != INVALID_TILE && dist <= 13 && CanPlantTreesOnTile(cur_tile, true)) {
 			PlaceTree(cur_tile, r);
 		}
 	}
@@ -212,7 +212,8 @@ static void PlaceTreeAtSameHeight(TileIndex tile, uint height)
 		uint32 r = Random();
 		int x = GB(r, 0, 5) - 16;
 		int y = GB(r, 8, 5) - 16;
-		TileIndex cur_tile = TILE_MASK(tile + TileDiffXY(x, y));
+		TileIndex cur_tile = TileAddWrap(tile, x, y);
+		if (cur_tile == INVALID_TILE) continue;
 
 		/* Keep in range of the existing tree */
 		if (abs(x) + abs(y) > 16) continue;
@@ -735,7 +736,7 @@ void OnTick_Trees()
 
 	/* place a tree at a random spot */
 	r = Random();
-	tile = TILE_MASK(r);
+	tile = RandomTileSeed(r);
 	if (CanPlantTreesOnTile(tile, false) && (tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {
 		PlantTreesOnTile(tile, tree, 0, 0);
 	}

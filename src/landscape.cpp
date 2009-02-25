@@ -830,8 +830,8 @@ static void CreateDesertOrRainForest()
 
 		for (data = _make_desert_or_rainforest_data;
 				data != endof(_make_desert_or_rainforest_data); ++data) {
-			TileIndex t = TILE_MASK(tile + ToTileIndexDiff(*data));
-			if (TileHeight(t) >= 4 || IsTileType(t, MP_WATER)) break;
+			TileIndex t = AddTileIndexDiffCWrap(tile, *data);
+			if (t != INVALID_TILE && (TileHeight(t) >= 4 || IsTileType(t, MP_WATER))) break;
 		}
 		if (data == endof(_make_desert_or_rainforest_data))
 			SetTropicZone(tile, TROPICZONE_DESERT);
@@ -848,8 +848,8 @@ static void CreateDesertOrRainForest()
 
 		for (data = _make_desert_or_rainforest_data;
 				data != endof(_make_desert_or_rainforest_data); ++data) {
-			TileIndex t = TILE_MASK(tile + ToTileIndexDiff(*data));
-			if (IsTileType(t, MP_CLEAR) && IsClearGround(t, CLEAR_DESERT)) break;
+			TileIndex t = AddTileIndexDiffCWrap(tile, *data);
+			if (t != INVALID_TILE && IsTileType(t, MP_CLEAR) && IsClearGround(t, CLEAR_DESERT)) break;
 		}
 		if (data == endof(_make_desert_or_rainforest_data))
 			SetTropicZone(tile, TROPICZONE_RAINFOREST);

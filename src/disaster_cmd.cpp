@@ -682,10 +682,12 @@ static void DisasterTick_Big_Ufo_Destroyer(Vehicle *v)
 				EV_EXPLOSION_SMALL);
 		}
 
-		BEGIN_TILE_LOOP(tile, 6, 6, v->tile - TileDiffXY(3, 3))
-			tile = TILE_MASK(tile);
-			DisasterClearSquare(tile);
-		END_TILE_LOOP(tile, 6, 6, v->tile - TileDiffXY(3, 3))
+		for (int dy = -3; dy < 3; dy++) {
+			for (int dx = -3; dx < 3; dx++) {
+				TileIndex tile = TileAddWrap(v->tile, dx, dy);
+				if (tile != INVALID_TILE) DisasterClearSquare(tile);
+			}
+		}
 	}
 }
 

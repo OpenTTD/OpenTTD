@@ -124,7 +124,8 @@ static int CountMapSquareAround(TileIndex tile, CMSAMatcher cmp)
 
 	for (int dx = -3; dx <= 3; dx++) {
 		for (int dy = -3; dy <= 3; dy++) {
-			if (cmp(TILE_MASK(tile + TileDiffXY(dx, dy)))) num++;
+			TileIndex t = TileAddWrap(tile, dx, dy);
+			if (t != INVALID_TILE && cmp(t)) num++;
 		}
 	}
 
@@ -2956,52 +2957,27 @@ void FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod, StationList
 {
 	/* area to search = producer plus station catchment radius */
 	int max_rad = (_settings_game.station.modified_catchment ? MAX_CATCHMENT : CA_UNMODIFIED);
-	int w = w_prod + 2 * max_rad;
-	int h = h_prod + 2 * max_rad;
 
-	BEGIN_TILE_LOOP(cur_tile, w, h, tile - TileDiffXY(max_rad, max_rad))
-		cur_tile = TILE_MASK(cur_tile);
-		if (!IsTileType(cur_tile, MP_STATION)) continue;
+	for (int dy = -max_rad; dy < h_prod + max_rad; dy++) {
+		for (int dx = -max_rad; dx < w_prod + max_rad; dx++) {
+			TileIndex cur_tile = TileAddWrap(tile, dx, dy);
+			if (cur_tile == INVALID_TILE || !IsTileType(cur_tile, MP_STATION)) continue;
 
-		Station *st = GetStationByTile(cur_tile);
+			Station *st = GetStationByTile(cur_tile);
 
-		if (st->IsBuoy()) continue; // bouys don't accept cargo
+			if (st->IsBuoy()) continue; // bouys don't accept cargo
 
-
-		if (_settings_game.station.modified_catchment) {
-			/* min and max coordinates of the producer relative */
-			const int x_min_prod = max_rad + 1;
-			const int x_max_prod = max_rad + w_prod;
-			const int y_min_prod = max_rad + 1;
-			const int y_max_prod = max_rad + h_prod;
-
-			int rad = st->GetCatchmentRadius();
-
-			int x_dist = min(w_cur - x_min_prod, x_max_prod - w_cur);
-			if (w_cur < x_min_prod) {
-				x_dist = x_min_prod - w_cur;
-			} else if (w_cur > x_max_prod) {
-				x_dist = w_cur - x_max_prod;
+			if (_settings_game.station.modified_catchment) {
+				int rad = st->GetCatchmentRadius();
+				if (dx < -rad || dx >= rad + w_prod || dy < -rad || dy >= rad + h_prod) continue;
 			}
 
-			if (x_dist > rad) continue;
-
-			int y_dist = min(h_cur - y_min_prod, y_max_prod - h_cur);
-			if (h_cur < y_min_prod) {
-				y_dist = y_min_prod - h_cur;
-			} else if (h_cur > y_max_prod) {
-				y_dist = h_cur - y_max_prod;
-			}
-
-			if (y_dist > rad) continue;
+			/* Insert the station in the set. This will fail if it has
+			 * already been added.
+			 */
+			stations->Include(st);
 		}
-
-		/* Insert the station in the set. This will fail if it has
-		 * already been added.
-		 */
-		stations->Include(st);
-
-	END_TILE_LOOP(cur_tile, w, h, tile - TileDiffXY(max_rad, max_rad))
+	}
 }
 
 uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
