@@ -36,7 +36,7 @@ public:
 	WaypointWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->wp = GetWaypoint(this->window_number);
-		this->owner = this->wp->owner;
+		if (this->wp->owner != OWNER_NONE) this->owner = this->wp->owner;
 
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
 		InitializeWindowViewport(this, 3, 17, 254, 86, this->wp->xy, ZOOM_LVL_MIN);
@@ -53,6 +53,9 @@ public:
 	{
 		/* You can only change your own waypoints */
 		this->SetWidgetDisabledState(WAYPVW_RENAME, this->wp->owner != _local_company);
+		/* Disable the widget for waypoints with no owner (after company bankrupt) */
+		this->SetWidgetDisabledState(WAYPVW_SHOW_TRAINS, this->wp->owner == OWNER_NONE);
+
 		SetDParam(0, this->wp->index);
 		this->DrawWidgets();
 
