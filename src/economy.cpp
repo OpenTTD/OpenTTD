@@ -398,6 +398,24 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		UpdateSignalsInBuffer();
 	}
 
+	/* convert owner of stations (including deleted ones, but excluding buoys) */
+	Station *st;
+	FOR_ALL_STATIONS(st) {
+		if (st->owner == old_owner) {
+			/* if a company goes bankrupt, set owner to OWNER_NONE so the sign doesn't disappear immediately
+			 * also, drawing station window would cause reading invalid company's colour */
+			st->owner = new_owner == INVALID_OWNER ? OWNER_NONE : new_owner;
+		}
+	}
+
+	/* do the same for waypoints (we need to do this here so deleted waypoints are converted too) */
+	Waypoint *wp;
+	FOR_ALL_WAYPOINTS(wp) {
+		if (wp->owner == old_owner) {
+			wp->owner = new_owner == INVALID_OWNER ? OWNER_NONE : new_owner;
+		}
+	}
+
 	/* In all cases clear replace engine rules.
 	 * Even if it was copied, it could interfere with new owner's rules */
 	RemoveAllEngineReplacementForCompany(GetCompany(old_owner));

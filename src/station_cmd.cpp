@@ -3120,10 +3120,8 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
 	if (!IsTileOwner(tile, old_owner)) return;
 
 	if (new_owner != INVALID_OWNER) {
-		Station *st = GetStationByTile(tile);
-
+		/* for buoys, owner of tile is owner of water, st->owner == OWNER_NONE */
 		SetTileOwner(tile, new_owner);
-		if (!IsBuoy(tile)) st->owner = new_owner; // do not set st->owner for buoys
 		InvalidateWindowClassesData(WC_STATION_LIST, 0);
 	} else {
 		if (IsDriveThroughStopTile(tile)) {

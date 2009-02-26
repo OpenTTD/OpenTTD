@@ -1615,14 +1615,6 @@ bool AfterLoadGame()
 				}
 			}
 		}
-
-		/* Give owners to waypoints, based on rail tracks it is sitting on.
-		 * If none is available, specify OWNER_NONE */
-		Waypoint *wp;
-		FOR_ALL_WAYPOINTS(wp) {
-			Owner owner = (IsRailWaypointTile(wp->xy) ? GetTileOwner(wp->xy) : OWNER_NONE);
-			wp->owner = IsValidCompanyID(owner) ? owner : OWNER_NONE;
-		}
 	}
 
 	if (CheckSavegameVersion(102)) {
@@ -1719,6 +1711,26 @@ bool AfterLoadGame()
 				case 0: layout = 2; break;
 			}
 			t->layout = layout - 1;
+		}
+	}
+
+	if (CheckSavegameVersion(114)) {
+		/* There could be (deleted) stations with invalid owner, set owner to OWNER NONE.
+		 * The conversion affects oil rigs and buoys too, but it doesn't matter as
+		 * they have st->owner == OWNER_NONE already. */
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			if (!IsValidCompanyID(st->owner)) st->owner = OWNER_NONE;
+		}
+
+		/* Give owners to waypoints, based on rail tracks it is sitting on.
+		 * If none is available, specify OWNER_NONE.
+		 * This code was in CheckSavegameVersion(101) in the past, but in some cases,
+		 * the owner of waypoints could be incorrect. */
+		Waypoint *wp;
+		FOR_ALL_WAYPOINTS(wp) {
+			Owner owner = IsTileType(wp->xy, MP_RAILWAY) ? GetTileOwner(wp->xy) : OWNER_NONE;
+			wp->owner = IsValidCompanyID(owner) ? owner : OWNER_NONE;
 		}
 	}
 
