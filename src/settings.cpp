@@ -1136,6 +1136,24 @@ static bool CheckFreeformEdges(int32 p1)
 	return true;
 }
 
+/**
+ * Changing the setting "allow multiple NewGRF sets" is not allowed
+ * if there are vehicles.
+ */
+static bool ChangeDynamicEngines(int32 p1)
+{
+	if (_game_mode == GM_MENU) return true;
+
+	const Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (IsCompanyBuildableVehicleType(v)) {
+			ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES, 0, 0);
+			return false;
+		}
+	}
+	return true;
+}
+
 #ifdef ENABLE_NETWORK
 
 static bool UpdateMinActiveClients(int32 p1)
@@ -1348,7 +1366,7 @@ const SettingDesc _settings[] = {
 	 SDT_CONDVAR(GameSettings, vehicle.freight_trains,               SLE_UINT8, 39, SL_MAX_VERSION, 0,NN,     1,     1,     255, 1, STR_CONFIG_SETTING_FREIGHT_TRAINS,         NULL),
 	SDT_CONDBOOL(GameSettings, order.timetabling,                               67, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_TIMETABLE_ALLOW,        NULL),
 	 SDT_CONDVAR(GameSettings, vehicle.plane_speed,                  SLE_UINT8, 90, SL_MAX_VERSION, 0, 0,     4,     1,       4, 0, STR_CONFIG_SETTING_PLANE_SPEED,            NULL),
-	SDT_CONDBOOL(GameSettings, vehicle.dynamic_engines,                         95, SL_MAX_VERSION, 0,NN, false,                    STR_CONFIG_SETTING_DYNAMIC_ENGINES,        NULL),
+	SDT_CONDBOOL(GameSettings, vehicle.dynamic_engines,                         95, SL_MAX_VERSION, 0,NN, false,                    STR_CONFIG_SETTING_DYNAMIC_ENGINES,        ChangeDynamicEngines),
 
 	    SDT_BOOL(GameSettings, station.join_stations,                                               0, 0,  true,                    STR_CONFIG_SETTING_JOINSTATIONS,           NULL),
 	SDTC_CONDBOOL(             gui.sg_full_load_any,                            22,             92, 0, 0,  true,                    STR_NULL,                                  NULL),
