@@ -947,6 +947,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permet situar parades en carreteres que són propietat del poble: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permet construir estacions annexes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Activa diversos paquets de motors NewGRF: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}No es pot canviar aquest ajustament quan hi ha vehicles.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Permet sempre aeroports petits: {ORANGE}{STRING}
 

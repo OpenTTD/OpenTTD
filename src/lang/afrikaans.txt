@@ -1506,7 +1506,7 @@ STR_0810_DESERT                                                 :Woestyn
 
 ##id 0x1000
 STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Land loop in verkeerde rigting
-STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Onmoontlik spoor kombinasie
+STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Onmoontlike spoor kombinasie
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Uitgrawings sal tonnel beskadig
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}... reeds op seevlak
 STR_1004_TOO_HIGH                                               :{WHITE}... te hoog
@@ -1518,7 +1518,7 @@ STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Pad is e
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Spoorweg Kostruksie
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrifiseerde Spoorweg Konstruksie
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Enkelspoor Konstruksie
-STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Maglev Konstruksie
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Magneetsweeftrein Konstruksie
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Kies Spoor Brug
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Kan nie trein skuur hier bou nie...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Kan nie spoorweg stasie hier bou nie...
@@ -1530,7 +1530,7 @@ STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Trein Sk
 STR_1015_RAILROAD_CONSTRUCTION                                  :Spoorweg konstruksie
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrifiseerde Spoorweg konstruksie
 STR_1016_MONORAIL_CONSTRUCTION                                  :Enkelspoor konstruksie
-STR_1017_MAGLEV_CONSTRUCTION                                    :Maglev konstruksie
+STR_1017_MAGLEV_CONSTRUCTION                                    :Magneetsweeftrein konstruksie
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Bou spoore
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Bou trein skuur (vir die bou en diens van treine)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Bou spoorweg stasie
@@ -1538,7 +1538,7 @@ STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Bou spoo
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Bou spoorweg brug
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Bou spoorweg tonnel
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Tokkel bou/verwyder vir spoore en seinligte
-STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Brug keuse - kliek op jou verkies brug om dit te bou
+STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Brug seleksie - kliek op jou verkose brug om dit te bou
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Kies spoorweg skuur orientasie
 STR_1021_RAILROAD_TRACK                                         :Spoorweg
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Spoorweg trein skuur
@@ -1569,11 +1569,11 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Moet eer
 
 
 ##id 0x1800
-STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Moet pad eers verwyder
+STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Moet pad eers verwyder word
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Pad werke in verloop
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Pad Konstruksie
 STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Tremweg Konstruksie
-STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Kies Pad Brug
+STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Selekteer Pad Brug
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... een rigting paaie kan nie aansluitings hê nie
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kan nie pad hier bou nie...
 STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Kan nie tremweg hier bou nie...

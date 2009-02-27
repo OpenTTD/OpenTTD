@@ -947,6 +947,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Lentoko
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Läpiajettavat pysäkit kaupungin teille: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Vierekkäiset asemat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Useat NewGRF-veturisetit: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Tätä asetusta ei voi muuttaa kun kulkuneuvoja on olemassa.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Salli aina pienet lentokentät: {ORANGE}{STRING}
 

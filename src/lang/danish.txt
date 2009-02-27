@@ -946,6 +946,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Fly-has
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillad gennemkørsels-stop på veje ejet af en by: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillad bygning af tilstødende stationer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Muliggør flere NewGRF køretøjssæt: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Denne indstilling kan ikke ændres, når der er køretøjer.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Tillad altid små lufthavne: {ORANGE}{STRING}
 
@@ -1093,6 +1094,8 @@ STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Center
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Højre
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Vinduernes sammenkoblings afstand: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Vinduernes sammenkoblings afstand: {ORANGE}slået fra
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Vinduesbegræsning (ikke-sticky): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Vinduesbegræsning (ikke-sticky): {ORANGE}slået fra
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Byvækst tempo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ingen
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Langsom
@@ -1677,6 +1680,7 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrer 
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Ændre navnet på byen
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagerer sidste måned: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post sidste måned: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Nødvendig godsmængde for at byen kan vokse:
 STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} krævet
 STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} leveret seneste måned
 STR_200F_TALL_OFFICE_BLOCK                                      :Høj kontorbygning

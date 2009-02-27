@@ -949,6 +949,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Коэ�
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Позволять строить остановки на городских дорогах: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Разрешить строительство смежных станций: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Включить поддержку нескольких NewGRF сетов: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Изменение этого параметра невозможно, если в игре есть транспортные средства.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Малые аэропорты всегда доступны: {ORANGE}{STRING}
 

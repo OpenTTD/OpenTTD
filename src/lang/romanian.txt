@@ -947,6 +947,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permite semafoare in intersectiile drumurilor din proprietatea orasului: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permite construirea de statii adiacente: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Permite mai multe seturi NewGRF simultan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Schimbarea acestei setări nu este permisă cand există vehicule in joc.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Permite întotdeauna aeroporturi mici: {ORANGE}{STRING}
 
@@ -2785,7 +2786,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Afişeaz
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Afişează capacităţile fiecărei componente
 STR_SHOW_TOTAL_CARGO                                            :{BLACK}Afiseazã capacitãtile totale ale trenului, diferentiate pe tip de încãrcãturã
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista de comenzi - clic pe o comandă pentru a o selecta. Ctrl+clic poziţionează ecranul pe staţie
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Renunta la comanta acruala si preia-o pe urmatoarea. CTRL + click face salt la comanda selectata
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Renunţă la comanda actuală si preia-o pe urmatoarea. CTRL + click face salt la comanda selectată
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Şterge comanda selectată
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Adaugă o comandă înaintea celei selectate, sau la sfârşitul listei
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Orar - click on an order to highlight it.

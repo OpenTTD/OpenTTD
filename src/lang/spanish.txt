@@ -948,6 +948,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permite conducir en paradas sobre carreteras de ciudades: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permitir construcción en estaciones contiguas : {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Activar motor  de multiples NewGRF: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Este cambio no es posible cuando tiene vehículos
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Permitir siempre aeropuertos pequeños: {ORANGE}{STRING}
 
@@ -1683,6 +1684,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrar 
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Cambiar nombre de la población
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Pasajeros último mes: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Correo último mes: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Carga necesaria para crecimiento de la ciudad:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} requeridos
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} entregados último mes
 STR_200F_TALL_OFFICE_BLOCK                                      :Bloque alto de oficinas
 STR_2010_OFFICE_BLOCK                                           :Bloque de oficinas
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Bloque de viviendas pequeño

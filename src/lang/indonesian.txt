@@ -947,6 +947,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Ijinkan terminal drive-thru pada jalan milik kota: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Ijinkan membangun stasiun berdampingan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Aktifkan beberapa pengaturan mesin NewGRF : {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Tidak diijinkan mengubah setting ini karena kendaraan sudah ada
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Selalu ijinkan membangun bandara kecil: {ORANGE}{STRING}
 
@@ -1682,6 +1683,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Arahkan 
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Ubah nama kota
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Penumpang bulan lalu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Dokumen bulan lalu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Kargo untuk pertumbuhan kota:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{BLACK} Butuh {ORANGE}{STRING}
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{BLACK} Bulan lalu terima {ORANGE}{CARGO}
 STR_200F_TALL_OFFICE_BLOCK                                      :Gedung perkantoran tinggi
 STR_2010_OFFICE_BLOCK                                           :Blok Perkantoran
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Blok kecil dari apartemen

@@ -947,6 +947,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Uçak h
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Şehiriçi yollara durak yapmak izinli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Bitişik istasyonlar izinli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Birden çok NewGRF lokomotif setini aktifleştir: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Araçlar varken bu ayarı değiştirmezsiniz.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Küçük havalimanı her zaman etkin: {ORANGE}{STRING}
 
@@ -1682,6 +1683,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Ana gör
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Şehrin ismini değiştir
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Geçen ayki yolcular: {ORANGE}{COMMA}{BLACK}  mak: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Geçen ayki posta: {ORANGE}{COMMA}{BLACK}  mak: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Kasaba büyümesi için gerekli kargo:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} gerekli
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :Geçen ay {SETX 20}{ORANGE}{CARGO}{BLACK} taşındı
 STR_200F_TALL_OFFICE_BLOCK                                      :Yüksek ofis binasi
 STR_2010_OFFICE_BLOCK                                           :Ofis binasi
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Küçük apartman

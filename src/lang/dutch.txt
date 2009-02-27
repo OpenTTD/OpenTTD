@@ -947,6 +947,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Vliegtu
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Laat toe dat doorrij wegstops worden geplaatst op door stad beheerde wegen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Bouwen van aangrenzende stations toestaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Activeer meerdere NewGRF treinsets: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Deze instelling kan niet gewijzigd worden als er voertuigen zijn.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Altijd kleine vliegvelden toestaan: {ORANGE}{STRING}
 
@@ -1682,6 +1683,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centreer
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Hernoem plaats
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagiers afgelopen maand: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post afgelopen maand: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Goederen nodig om het dorp te laten groeien:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} nodig
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} afgelopen maand afgeleverd
 STR_200F_TALL_OFFICE_BLOCK                                      :Hoog kantoorgebouw
 STR_2010_OFFICE_BLOCK                                           :Kantoorgebouw
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Klein flatgebouw

@@ -85,37 +85,37 @@ STR_004B_BATTERY                                                :배터리
 STR_004C_PLASTIC                                                :플라스틱
 STR_004D_FIZZY_DRINK                                            :탄산음료
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA}명의 승객
-STR_QUANTITY_COAL                                               :{WEIGHT}의 석탄
-STR_QUANTITY_MAIL                                               :{COMMA} 자루의 우편
-STR_QUANTITY_OIL                                                :{VOLUME}의 석유
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} 마리의 가축
-STR_QUANTITY_GOODS                                              :{COMMA} 상자의 상품
-STR_QUANTITY_GRAIN                                              :{WEIGHT}의 곡물
-STR_QUANTITY_WOOD                                               :{WEIGHT}의 목재
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT}의 철광석
-STR_QUANTITY_STEEL                                              :{WEIGHT}의 철
-STR_QUANTITY_VALUABLES                                          :{COMMA} 자루의 귀금속
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT}의 구리 광석
-STR_QUANTITY_MAIZE                                              :{WEIGHT}의 옥수수
-STR_QUANTITY_FRUIT                                              :{WEIGHT}의 과일
-STR_QUANTITY_DIAMONDS                                           :{COMMA} 자루의 다이아몬드
-STR_QUANTITY_FOOD                                               :{WEIGHT}의 식품
-STR_QUANTITY_PAPER                                              :{WEIGHT}의 종이
-STR_QUANTITY_GOLD                                               :{COMMA} 자루의 금
-STR_QUANTITY_WATER                                              :{VOLUME}의 물
-STR_QUANTITY_WHEAT                                              :{WEIGHT}의 밀
-STR_QUANTITY_RUBBER                                             :{VOLUME}의 고무
-STR_QUANTITY_SUGAR                                              :{WEIGHT}의 설탕
-STR_QUANTITY_TOYS                                               :장난감 {COMMA} 상자
-STR_QUANTITY_SWEETS                                             :{COMMA} 자루의 사탕
-STR_QUANTITY_COLA                                               :{VOLUME}의 콜라
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT}의 솜사탕
-STR_QUANTITY_BUBBLES                                            :거품 {COMMA} 상자
-STR_QUANTITY_TOFFEE                                             :{WEIGHT}의 태피
-STR_QUANTITY_BATTERIES                                          :배터리 {COMMA} 상자
-STR_QUANTITY_PLASTIC                                            :{VOLUME}의 플라스틱
-STR_QUANTITY_FIZZY_DRINKS                                       :탄산음료 {COMMA} 박스
+STR_QUANTITY_PASSENGERS                                         :승객 {COMMA}명
+STR_QUANTITY_COAL                                               :석탄 {WEIGHT}
+STR_QUANTITY_MAIL                                               :우편 {COMMA}자루
+STR_QUANTITY_OIL                                                :석유 {VOLUME}
+STR_QUANTITY_LIVESTOCK                                          :가축 {COMMA}마리
+STR_QUANTITY_GOODS                                              :상품 {COMMA}상자
+STR_QUANTITY_GRAIN                                              :곡물 {WEIGHT}
+STR_QUANTITY_WOOD                                               :목재 {WEIGHT}
+STR_QUANTITY_IRON_ORE                                           :철광석 {WEIGHT}
+STR_QUANTITY_STEEL                                              :철 {WEIGHT}
+STR_QUANTITY_VALUABLES                                          :귀금속 {COMMA}자루
+STR_QUANTITY_COPPER_ORE                                         :구리 광석 {WEIGHT}
+STR_QUANTITY_MAIZE                                              :옥수수 {WEIGHT}
+STR_QUANTITY_FRUIT                                              :과일 {WEIGHT}
+STR_QUANTITY_DIAMONDS                                           :다이아몬드 {COMMA}자루
+STR_QUANTITY_FOOD                                               :식품 {WEIGHT}
+STR_QUANTITY_PAPER                                              :종이 {WEIGHT}
+STR_QUANTITY_GOLD                                               :금 {COMMA}자루
+STR_QUANTITY_WATER                                              :물 {VOLUME}
+STR_QUANTITY_WHEAT                                              :밀 {WEIGHT}
+STR_QUANTITY_RUBBER                                             :고무 {VOLUME}
+STR_QUANTITY_SUGAR                                              :설탕 {WEIGHT}
+STR_QUANTITY_TOYS                                               :장난감 {COMMA}상자
+STR_QUANTITY_SWEETS                                             :사탕 {COMMA}자루
+STR_QUANTITY_COLA                                               :콜라 {VOLUME}
+STR_QUANTITY_CANDYFLOSS                                         :솜사탕 {WEIGHT}
+STR_QUANTITY_BUBBLES                                            :거품 {COMMA}개
+STR_QUANTITY_TOFFEE                                             :태피 {WEIGHT}
+STR_QUANTITY_BATTERIES                                          :배터리 {COMMA}개
+STR_QUANTITY_PLASTIC                                            :플라스틱 {VOLUME}
+STR_QUANTITY_FIZZY_DRINKS                                       :탄산음료 {COMMA}개
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
 STR_ABBREV_COAL                                                 :{TINYFONT}CL
@@ -619,7 +619,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}암석 �
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}등대를 놓습니다.
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}송신기를 놓습니다.
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}사막 지역을 지정합니다.{}CTRL키를 누른채로 지우십시오.
-STR_CREATE_LAKE                                                 :{BLACK}수면 지역을 정의하세요.{}바다 높이에서 CTRL이 눌려 있지 않으면, 운하를 만들때 침수할 것입니다.
+STR_CREATE_LAKE                                                 :{BLACK}벽으로 물을 막고 있는 운하를 만듭니다.{}가장 낮은 곳에서 CTRL을 누르면 (벽 없이) 물을 생성하여 주변을 물로 채웁니다.
 STR_CREATE_RIVER                                                :{BLACK}강을 만듦.
 STR_0290_DELETE                                                 :{BLACK}삭제
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}이 마을를 완전히 삭제
@@ -690,7 +690,7 @@ STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :콘솔 켜기/끄기
 STR_AI_DEBUG_MENU                                               :AI 디버그
 STR_02D7_SCREENSHOT_CTRL_S                                      :스크린 샷 (Ctrl+S)
-STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :거대 스크린샷 (Ctrl+G)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :대형 스크린샷 (Ctrl+G)
 STR_02D9_ABOUT_OPENTTD                                          :'OpenTTD'에 대해서
 ############ range ends here
 
@@ -947,6 +947,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}비행�
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}마을이 소유중인 도로를 통과하는 버스 정류장 건설 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}정거장 근처에 건물 짓기 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}여러 개의 NewGRF 엔진 세트를 허용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}이미 차량이 존재하면 이 설정을 변경하실 수 없습니다.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}소형 공항의 건설을 허용 : {ORANGE}{STRING}
 
@@ -1682,6 +1683,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}이 도�
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}도시 이름 변경
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}지난달 승객수: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}지난달 우편수: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}마을이 성장하기 위해 필요한 화물:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK}(이)가 필요함
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK}(이)가 지난달에 수송됨
 STR_200F_TALL_OFFICE_BLOCK                                      :고층 사무 구획
 STR_2010_OFFICE_BLOCK                                           :사무 구획
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :소규모의 평지 구획
@@ -3525,13 +3529,13 @@ STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}이곳�
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}폐색 신호기 (까치발){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}입구 신호기 (까치발){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}출구-신호기 (까치발){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}콤보-신호기 (까치발){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 거대한 전면신호기의 "나무구조"를 건설할 수 있게 합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}콤보-신호기 (까치발){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 전면신호기의 거대한 "나뭇가지 구조"를 건설할 수 있게 도와줍니다.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}경로 신호기 (까치발){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}일방통행 경로 신호기 (까치발){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 신호기는 반대편에서 통과가 불가능합니다.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}폐색 신호기 (전자식){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}입구-신호기 (전자식){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}출구-신호기 (전자식){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}콤보-신호기 (전자식){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 거대한 전면신호기의 "나무구조"를 건설할 수 있게 합니다.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}콤보-신호기 (전자식){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 전면신호기의  거대한 "나뭇가지 구조"를 건설할 수 있게 도와줍니다.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}일방통행 경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 경로 신호기는 반대편에서 통과가 불가능합니다.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}신호기 변환{}선택했을 때, 이미 설치한 신호기를 클릭하면 선택한 신호기의 타입과 종류를 변경하게 되고, CTRL+클릭은 존재하는 종류를 토글할 것입니다.

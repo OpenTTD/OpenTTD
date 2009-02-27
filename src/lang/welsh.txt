@@ -166,8 +166,8 @@ STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}Gadael
-STR_00C8_YES                                                    :{BLACK}do
-STR_00C9_NO                                                     :{BLACK}Naddo
+STR_00C8_YES                                                    :{BLACK}Iawn
+STR_00C9_NO                                                     :{BLACK}Na
 STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Ydych chi eisiau gadael y gêm a dychwelyd i {STRING}?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
@@ -313,7 +313,7 @@ STR_015B_OPENTTD                                                :{WHITE}Gwybodae
 STR_015C_SAVE_GAME                                              :Cadw Gêm
 STR_015D_LOAD_GAME                                              :Llwytho Gêm
 STR_015E_QUIT_GAME                                              :Rhoi'r gorau i'r Gêm
-STR_015F_QUIT                                                   :Exit
+STR_015F_QUIT                                                   :Gadael
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Ydych chi'n siwr eich bod chi eisiau rhoi'r gorau i'r gêm?
 STR_0161_QUIT_GAME                                              :{WHITE}Rhoi'r gorau i Gêm
 STR_SORT_ORDER_TIP                                              :{BLACK}Dewiswch drefn trefnu (disgynnol/esgynnol)
@@ -947,6 +947,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Ffactor
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Caniatáu arosfannau gyrru-trwodd ar ffyrdd sy'n eiddo i drefi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Caniatáu adeiladu gorsafoedd cyfochrog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Galluogi defnyddio mwy nag un o setiau injian NewGRF: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Nid yw hi'n bosib newid y gosodiadau pan mae cerbydau'n bodoli.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Caniatáu meysydd awyr bach drwy gydol y gêm: {ORANGE}{STRING}
 
@@ -3352,8 +3353,8 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 
 # Strings for map borders at game generation
 STR_BORDER_TYPE                                                 :{BLACK}Ymylon mapiau:
-STR_NORTHWEST                                                   :{BLACK}Gogledd Orllewin
-STR_NORTHEAST                                                   :{BLACK}Gogledd Ddwyrain
+STR_NORTHWEST                                                   :{BLACK}Gog. Orllewin
+STR_NORTHEAST                                                   :{BLACK}Gog. Ddwyrain
 STR_SOUTHEAST                                                   :{BLACK}De Ddwyrain
 STR_SOUTHWEST                                                   :{BLACK}De Orllewin
 STR_BORDER_FREEFORM                                             :{BLACK}Ffurfrydd

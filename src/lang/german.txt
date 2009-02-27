@@ -948,6 +948,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Flugzeu
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Bushaltestellen an städtischen Straßen erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Bau angrenzender Stationen erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Mehrere NewGRF Fahrzeugsets erlauben: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Diese Einstellung kann nicht geändert werden solange Fahrzeuge im Spiel sind.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Kleine Flughäfen immer erlauben: {ORANGE}{STRING}
 

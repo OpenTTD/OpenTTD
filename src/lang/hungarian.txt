@@ -981,6 +981,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Repül�
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Áthajtó állomások engedélyezése városi tulajdonú utakra: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Érintkező állomások építésének engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Több NewGRF járműgarnitúra engedélyezése: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}A beállítást nem lehet megváltoztatni, ha van használatban jármű.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Mindig engedélyezze a kis repülőtereket: {ORANGE}{STRING}
 
