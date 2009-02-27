@@ -1215,7 +1215,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 
 static void AddWaypoint(const Waypoint *wp, StringID str, uint16 width)
 {
-	AddStringToDraw(wp->sign.left + 1, wp->sign.top + 1, str, wp->index, 0, (wp->deleted ? 0xE : 11), width);
+	AddStringToDraw(wp->sign.left + 1, wp->sign.top + 1, str, wp->index, 0, (wp->deleted ? 0xE : _company_colours[wp->owner]), width);
 }
 
 
