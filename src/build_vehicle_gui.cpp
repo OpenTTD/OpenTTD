@@ -567,12 +567,11 @@ static int DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number)
 	DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, TC_FROMSTRING);
 	y += 10;
 
-	/* Cargo type + capacity */
-	return DrawCargoCapacityInfo(x, y, engine_number, VEH_ROAD, IsEngineRefittable(engine_number));
+	return y;
 }
 
 /* Draw ship specific details */
-static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const ShipVehicleInfo *svi)
+static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const ShipVehicleInfo *svi, bool refittable)
 {
 	const Engine *e = GetEngine(engine_number);
 
@@ -585,7 +584,7 @@ static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const Ship
 	/* Cargo type + capacity */
 	SetDParam(0, e->GetDefaultCargoType());
 	SetDParam(1, GetEngineProperty(engine_number, 0x0D, svi->capacity));
-	SetDParam(2, IsEngineRefittable(engine_number) ? STR_9842_REFITTABLE : STR_EMPTY);
+	SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 	DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
 	y += 10;
 
@@ -598,7 +597,7 @@ static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const Ship
 }
 
 /* Draw aircraft specific details */
-static int DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number, const AircraftVehicleInfo *avi)
+static int DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number, const AircraftVehicleInfo *avi, bool refittable)
 {
 	const Engine *e = GetEngine(engine_number);
 	CargoID cargo = e->GetDefaultCargoType();
@@ -619,7 +618,7 @@ static int DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number, const 
 		* callback, then the capacity shown is likely to be incorrect. */
 		SetDParam(0, cargo);
 		SetDParam(1, AircraftDefaultCargoCapacity(cargo, avi));
-		SetDParam(2, STR_9842_REFITTABLE);
+		SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 		DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
 	}
 	y += 10;
@@ -644,14 +643,12 @@ int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 	const Engine *e = GetEngine(engine_number);
 	YearMonthDay ymd;
 	ConvertDateToYMD(e->intro_date, &ymd);
-	bool refittable = IsEngineRefittable(engine_number);
+	bool refittable = IsArticulatedVehicleRefittable(engine_number);
 
 	switch (e->type) {
 		default: NOT_REACHED();
 		case VEH_TRAIN: {
 			const RailVehicleInfo *rvi = RailVehInfo(engine_number);
-			refittable &= GetEngineProperty(engine_number, 0x14, rvi->capacity) > 0;
-
 			if (rvi->railveh_type == RAILVEH_WAGON) {
 				y = DrawRailWagonPurchaseInfo(x, y, engine_number, rvi);
 			} else {
@@ -671,14 +668,27 @@ int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 			}
 			break;
 		}
-		case VEH_ROAD:
+		case VEH_ROAD: {
 			y = DrawRoadVehPurchaseInfo(x, y, engine_number);
+
+			/* Cargo type + capacity, or N/A */
+			int new_y = DrawCargoCapacityInfo(x, y, engine_number, VEH_ROAD, refittable);
+
+			if (new_y == y) {
+				SetDParam(0, CT_INVALID);
+				SetDParam(2, STR_EMPTY);
+				DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
+				y += 10;
+			} else {
+				y = new_y;
+			}
 			break;
+		}
 		case VEH_SHIP:
-			y = DrawShipPurchaseInfo(x, y, engine_number, ShipVehInfo(engine_number));
+			y = DrawShipPurchaseInfo(x, y, engine_number, ShipVehInfo(engine_number), refittable);
 			break;
 		case VEH_AIRCRAFT:
-			y = DrawAircraftPurchaseInfo(x, y, engine_number, AircraftVehInfo(engine_number));
+			y = DrawAircraftPurchaseInfo(x, y, engine_number, AircraftVehInfo(engine_number), refittable);
 			break;
 	}
 

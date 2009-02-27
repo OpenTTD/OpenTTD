@@ -716,6 +716,7 @@ bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company)
 
 /**
  * Check if an engine is refittable.
+ * Note: Likely you want to use IsArticulatedVehicleRefittable().
  * @param engine index of the engine to check.
  * @return true if the engine is refittable.
  */

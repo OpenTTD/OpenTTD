@@ -118,8 +118,32 @@ uint16 *GetCapacityOfArticulatedParts(EngineID engine, VehicleType type)
 }
 
 /**
+ * Checks whether any of the articulated parts is refittable
+ * @param engine the first part
+ * @return true if refittable
+ */
+bool IsArticulatedVehicleRefittable(EngineID engine)
+{
+	if (IsEngineRefittable(engine)) return true;
+
+	const Engine *e = GetEngine(engine);
+	if (e->type != VEH_TRAIN && e->type != VEH_ROAD) return false;
+
+	if (!HasBit(e->info.callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return false;
+
+	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
+		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine, NULL);
+		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) break;
+
+		EngineID artic_engine = GetNewEngineID(GetEngineGRF(engine), e->type, GB(callback, 0, 7));
+		if (IsEngineRefittable(artic_engine)) return true;
+	}
+
+	return false;
+}
+
+/**
  * Ors the refit_masks of all articulated parts.
- * Note: Vehicles with a default capacity of zero are ignored.
  * @param engine the first part
  * @param type the vehicle type
  * @param include_initial_cargo_type if true the default cargo type of the vehicle is included; if false only the refit_mask
@@ -146,7 +170,6 @@ uint32 GetUnionOfArticulatedRefitMasks(EngineID engine, VehicleType type, bool i
 
 /**
  * Ands the refit_masks of all articulated parts.
- * Note: Vehicles with a default capacity of zero are ignored.
  * @param engine the first part
  * @param type the vehicle type
  * @param include_initial_cargo_type if true the default cargo type of the vehicle is included; if false only the refit_mask

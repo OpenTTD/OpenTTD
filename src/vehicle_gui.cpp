@@ -29,6 +29,7 @@
 #include "timetable.h"
 #include "vehiclelist.h"
 #include "settings_type.h"
+#include "articulated_vehicles.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -447,7 +448,7 @@ uint ShowAdditionalText(int x, int y, uint w, EngineID engine)
 uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 {
 	/* List of cargo types of this engine */
-	uint32 cmask = EngInfo(engine)->refit_mask;
+	uint32 cmask = GetUnionOfArticulatedRefitMasks(engine, GetEngine(engine)->type, false);
 	/* List of cargo types available in this climate */
 	uint32 lmask = _cargo_mask;
 	char string[512];
@@ -1667,9 +1668,6 @@ static bool IsVehicleRefitable(const Vehicle *v)
 	if (!v->IsStoppedInDepot()) return false;
 
 	do {
-		/* Skip this vehicle if it has no capacity */
-		if (v->cargo_cap == 0) continue;
-
 		if (IsEngineRefittable(v->engine_type)) return true;
 	} while ((v->type == VEH_TRAIN || v->type == VEH_ROAD) && (v = v->Next()) != NULL);
 
