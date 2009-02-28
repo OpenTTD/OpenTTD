@@ -229,6 +229,11 @@ STR_015E_QUIT_GAME                                              :Spul ferlitte
 STR_015F_QUIT                                                   :Ofslúte
 STR_0161_QUIT_GAME                                              :{WHITE}Ferlit Spul
 
+STR_SEND_TRAIN_TO_DEPOT                                         :Stjoer nei depot
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Stjoer nei depot
+STR_SEND_SHIP_TO_DEPOT                                          :Stjoer nei depot
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Stjoer nei hangaar
+STR_SEND_FOR_SERVICING                                          :Stjoer foar ûnderhâldsbeurt
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -276,10 +281,14 @@ STR_0189                                                        :{BLACK}{SMALLDO
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Kin tiid tusken ûnderhâldsbeurten net feroarje...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Slút finster
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Finstertitel - hjirmei kinst it finster ferslepe
+STR_STICKY_BUTTON                                               :{BLACK}Skerm as net-slútber markeare mei de kaai 'Slút alle skermen'
+STR_RESIZE_BUTTON                                               :{BLACK}Klik en sleep om skermgrutte oan te passen
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hjir klikke om nei standert opslach- en laadtriemtafel te gean
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Brek gebouen ensfh. ôf op in stikje lân
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Ferleech in hoekje lân
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Ferheech in hoekje lân
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Rolbalke - rollet de list op/del
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Rôlbalke - rôlje list links/rjochts
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Lit de lân kontoeren sjen op de kaart
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Lit fiertúgen sjen op 'e kaart
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Lit yndustrieen sjen op 'e kaart
@@ -290,17 +299,26 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Set doar
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Winst dit jier: {CURRENCY} (ferline jier: {CURRENCY})
 
 ############ range for service numbers starts
+STR_AGE                                                         :{COMMA} jier{P "" ren} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} jier{P "" ren} ({COMMA})
 ############ range for service numbers ends
 
 STR_019F_TRAIN                                                  :Trein
 STR_019C_ROAD_VEHICLE                                           :Auto
 STR_019E_SHIP                                                   :Skip
 STR_019D_AIRCRAFT                                               :Fleanmasine
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} wurdt âld
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} wurdt tige âld
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} wurdt tige âld en is nedich oan ferfaning ta
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Lân Gebiet Ynformaasje
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Kosten om leech te meitsjen: {LTBLUE}N/B
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kosten om leech te meitsjen: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Netto omset: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/B
 STR_01A7_OWNER                                                  :{BLACK}Eigner: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Dykeigener: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Tramdykeigener: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Treinsporteigener: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Gemiente: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Neat
 STR_01AA_NAME                                                   :{BLACK}Namme
@@ -385,6 +403,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Selektea
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Leechje dit programma (allinnich Eigen 1 of Eigen 2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Sla musyk ynstellings op
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klik op musyk nûmer om te te foegjen oan dit programma (allinnich Eigen 1 of Eigen 2)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klik op musyknûmmer om't út it aktive programma it heljen (allinnich Custom1 of Custom2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Set musyk wikseljen oan/út
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Lit musyk seleksje skerm sjen.
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klik om te sentrearen op yndusty/stêd
@@ -392,6 +411,7 @@ STR_01FE_DIFFICULTY                                             :{BLACK}Moeilikh
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Lêste (neis)berjocht
 STR_0201_MESSAGE_SETTINGS                                       :Berjocht ynstellings
+STR_MESSAGE_HISTORY_MENU                                        :Berjochtenskiednis
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Lit lêste (neis)berjocht sjen / lit berjocht ynstellings sjen
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Berjocht Opsjes
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Berjochttypes:
@@ -399,13 +419,22 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Oankoms
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Oankomst fan earste reau op stasjon fan tsjinstander
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ungemakken / rampen
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Bedriuwsynformaasje
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Iepening fan yndustryen
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Sluten fan yndustryen
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Feroarings yn 'e ekonomie
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Produksjeferoarings fan yndustryen betsjinne troch it bedriuw
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produksjeferoarings fan yndustryen betsjinne troch konkurrint(en)
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Produksjeferoarings oare yndustryen
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Advys / ynformaasje oer bedriuwsreauen
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nije reauen
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Feroarings yn akseptearen fan fracht
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsydzjes
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Algemiene ynformaasje
+STR_MESSAGES_ALL                                                :{YELLOW}Set alle berjochtensoarten nei: Út / Gearfetting / Hielendal
+STR_MESSAGE_SOUND                                               :{YELLOW}Musykje ôfspielje by gearfette nijsberjochten
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...te fier fan lêste bestimming
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top bedriuwen dy't  niveau {NUM}{}({STRING} helle ha)
+STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Bedriuwskompetysjetabel yn {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Sakeman
 STR_0214_ENTREPRENEUR                                           :Undernimmer
@@ -414,6 +443,8 @@ STR_0216_CAPITALIST                                             :Kapitalist
 STR_0217_MAGNATE                                                :Magnaat
 STR_0218_MOGUL                                                  :Mongoal
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Tycoon fan 'e Ieuw
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} behellet '{STRING}' status!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} fan {COMPANY} behellet '{STRING}' status!
 STR_021F                                                        :{BLUE}{COMMA}
@@ -427,6 +458,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Ferlyts 
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Meitsje samar wat lân
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Set it lânskip werom
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Lânskip weromsette
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Alle spilerbesittings fan'e kaart fuortsmite
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Bisto der wis fan alle spilerbesittings fuort te smiten?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Lânskip generaasje
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stêd generaasje
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Yndustry generaasje
@@ -439,6 +472,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...te ti
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...te ticht by in oare stêd
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...terrein net geskikt
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...te folle stêden
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kin gjin stêd bouwe
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...der is gjin romte mear op'e kaart
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Fergrutsje stêd
 STR_023C_EXPAND                                                 :{BLACK}Grutter
 STR_023D_RANDOM_TOWN                                            :{BLACK}Samar in stêd
@@ -454,10 +489,13 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Set rots
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Bou in fjoertoer
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Bou in sendmast
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definiearje woastyngebiet.{}Hâld CTRL yndrukt om it fuort te heljen
+STR_CREATE_LAKE                                                 :{BLACK}Tsjut wettergebied oan.{}Meitsje in kanaal, of ast' Ctrl op seenivo yndrukst, dan oerstreamt it gebied deromhinne
+STR_CREATE_RIVER                                                :{BLACK}Rivier pleatse.
 STR_0290_DELETE                                                 :{BLACK}Fuort
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Helje dizze hiele stêd fuort
 STR_0292_SAVE_SCENARIO                                          :Sla scenario op
 STR_0293_LOAD_SCENARIO                                          :Laad scenario
+STR_MENU_LOAD_HEIGHTMAP                                         :Laad hichtekaart
 STR_0294_QUIT_EDITOR                                            :Slút de lânskipsbouer
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Ofslúte
@@ -465,6 +503,9 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Sla scen
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Laad Scenario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Sla Scenario op
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Spylje Scenario
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Spylje hichtekaart
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Begjin in nij spul, mei de hichtekaart as lânskip
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Wolsto echt dit lânskip slúte?
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kin allinnich bout wurde yn stêden mei 1200 ynwenners of mear
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Set it startjier 1 jier efterút
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Set it startjier 1 jier foarút
@@ -472,9 +513,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...beide
 STR_02A1_SMALL                                                  :{BLACK}Lyts
 STR_02A2_MEDIUM                                                 :{BLACK}Middel
 STR_02A3_LARGE                                                  :{BLACK}Grut
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Samar in getal
+STR_FOUND_TOWN_CITY                                             :{BLACK}Stêd
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Stêden groeien flugger as doarpen{}Ôfhinklik fan ynstellings binne se grutter at se makke wurde
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Selektear de grutte fan 'e stêd
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Grutte fan 'e stêd:
 
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Strjittenpatroan
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Selektear strjittenpatroan foar dit plak
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Orizjiniel
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Bettere diken
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 raster
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 raster
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Samar
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Lit lêste (neis)berjocht sjen

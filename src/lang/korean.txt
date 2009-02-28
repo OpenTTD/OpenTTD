@@ -1035,7 +1035,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :자기부상
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :처음 사용 가능한 것
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :최신 기술의 철도
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :가장 많이 사용한 것
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}예약된 트랙 보이기: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}차량의 다음 진행 경로 보여주기: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}건설 도구를 사용 후 계속 유지: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}재정 창에서 비용 그룹화: {ORANGE}{STRING}
 

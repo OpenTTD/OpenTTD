@@ -947,6 +947,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Hastigh
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillåt genomfarts-stop på stadsägda vägar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillåt byggande av närliggande stationer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Tillåt flera NewGRF-set: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det är inte möjligt att ändra denna inställning när det finns fordon
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Tillåt alltid små flygplatser: {ORANGE}{STRING}
 
@@ -1682,6 +1683,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrera
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Byt namn på staden
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagerare förra månaden: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post förra månaden: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Fraktgods behövs för ortens tillväxt:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} nödvändlig
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} levererat den senaste månaden
 STR_200F_TALL_OFFICE_BLOCK                                      :Högt kontor
 STR_2010_OFFICE_BLOCK                                           :Kontor
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Små lägenheter

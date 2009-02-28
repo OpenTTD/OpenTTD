@@ -181,6 +181,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :پچھلے سا
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :سامان کی گنجایش
 STR_NO_WAITING_CARGO                                            :{BLACK}کسی قسم کا کویی سامان انتظار نہیں کر رہا ہے
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}تمام سہولتوں کا انتخاب کرو
+STR_SELECT_ALL_TYPES                                            :{BLACK}تمام قسم کا سامان کا انتخاب کرو  (بشمول غیر منتظر سامان کے)
 STR_AVAILABLE_TRAINS                                            :{BLACK}دستیاب ریل گاڑیاں
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}دستیاب گاڑیاں
 STR_AVAILABLE_SHIPS                                             :{BLACK}دستیاب کشتیاں
@@ -191,6 +192,27 @@ STR_MANAGE_LIST                                                 :{BLACK}فہرس
 ############ range for months starts
 ############ range for months ends
 
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}کمپنی کی مالیاتی معلومات دکھاو
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}کمپنی کی عام معلومات دکھاو
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}کمپنی کی ریل گاڑیوں کی فہرست دکھاو
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}کمپنی کی سڑک کی سواریوں کی فہرست دکھاو
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}کمپنی کی کشتیوں کی فہرست دکھاو
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}کمپنی کے ہوای جہازوں کی فہرست دکھاو
+STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}بڑا کر کے دکھاو
+STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}چھوٹا کر کے دکھاو
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}ریل کی پٹری بچھاو
+STR_0182_BUILD_ROADS                                            :{BLACK}سڑکیں بناو
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}بندرگاہیں بناو
+STR_0184_BUILD_AIRPORTS                                         :{BLACK}ہوای اڈے بناو
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}درخت اگاو، اشارے لگاو، وغیرہ
+STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}زمینی رقبہ کی معلومات
+STR_0188                                                        :{BLACK}{SMALLUPARROW}
+STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
+STR_018B_CLOSE_WINDOW                                           :{BLACK}کھڑکی بند کرو
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}کھڑکی کا نام - کھڑکی کو ہلانے کیلیے اسے پکڑ کر ہلاو
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}زمین کے ایک مربے پر عمارتیں وغیرہ گراو
+STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}زمین کا ایک کنارہ نیچے کرو
+STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}زمین کا ایک کنارہ اونچا کرو
 
 ############ range for service numbers starts
 ############ range for service numbers ends
@@ -198,6 +220,7 @@ STR_MANAGE_LIST                                                 :{BLACK}فہرس
 
 ############ range for days starts
 ############ range for days ends
+
 
 
 
@@ -221,6 +244,7 @@ STR_MANAGE_LIST                                                 :{BLACK}فہرس
 
 ############ start of townname region
 ############ end of townname region
+
 
 
 
@@ -260,8 +284,7 @@ STR_MANAGE_LIST                                                 :{BLACK}فہرس
 
 
 
-
-
+############ generic strings for settings
 
 
 
@@ -331,9 +354,6 @@ STR_MANAGE_LIST                                                 :{BLACK}فہرس
 
 
 ############ end network gui strings
-
-
-
 
 ##### PNG-MAP-Loader
 
@@ -474,6 +494,8 @@ STR_MANAGE_LIST                                                 :{BLACK}فہرس
 
 
 
+# Strings for map borders at game generation
+
 ########### String for new airports
 
 
@@ -508,5 +530,14 @@ STR_MANAGE_LIST                                                 :{BLACK}فہرس
 ############ on screen keyboard
 ########
 
+############ AI GUI
+########
+
 ############ town controlled noise level
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

@@ -196,7 +196,7 @@ STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Zu viele
 STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Standort
-STR_00E5_CONTOURS                                               :Umrisse
+STR_00E5_CONTOURS                                               :Höhenrelief
 STR_00E6_VEHICLES                                               :Fahrzeuge
 STR_00E7_INDUSTRIES                                             :Industrien
 STR_00E8_ROUTES                                                 :Strecken
@@ -392,8 +392,8 @@ STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Weltkart
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Städteverzeichnis anzeigen
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Firmenfinanzen anzeigen
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Allgemeine Firmeninformationen anzeigen
-STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Diagramm anzeigen
-STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Firmentabelle anzeigen
+STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Diagramme anzeigen
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Firmentabelle oder Punktestand anzeigen
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Zuglisten der Firmen anzeigen
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Fahrzeuglisten der Firmen anzeigen
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Schiffslisten der Firmen anzeigen
@@ -686,7 +686,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Durchs
 ############ range ends here
 
 ############ range for menu starts
-STR_02D5_LAND_BLOCK_INFO                                        :Gebietsinformation
+STR_02D5_LAND_BLOCK_INFO                                        :Gebietsinformationen, Konsole, Computer-Spieler (KI), Bildschirmfotos
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Konsole öffnen/schließen
 STR_AI_DEBUG_MENU                                               :KI Debug
@@ -747,7 +747,7 @@ STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}'gemäß
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}'subarktische' Landschaft auswählen
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}'subtropische' Landschaft auswählen
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}'fantastische' Landschaft auswählen
-STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Errichtung und Finanzierung einer neuen Industrie
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Liste aller Industrien oder Errichtung und Finanzierung einer neuen Industrie
 
 ############ range for menu starts
 STR_INDUSTRY_DIR                                                :Industrieverzeichnis
@@ -1107,7 +1107,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :mittel
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :schnell
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :sehr schnell
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Anteil der Städte, die doppelt so schnell wachsen: {ORANGE}jede {STRING}.
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Anteil der Städte, die doppelt so schnell wachsen: {ORANGE}keine
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Anteil der Städte, die schneller wachsen: {ORANGE}keine
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Startmultiplikator der Stadtgröße: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Entferne absurde Straßenteile während des Straßenbaus: {ORANGE}{STRING}
 
@@ -1189,11 +1189,11 @@ STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Wegpunktname ändern
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Wegpunktname kann nicht geändert werden...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Schiene in einen Wegpunkt umwandeln
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Wegpunkt (auf vorhandener Schiene) bauen
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Wegpunkt kann hier nicht gebaut werden...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Wegpunkt kann hier nicht entfernt werden...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Bauen von Schienen unter Verwendung des Autoschienenmodus
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Gleise legen mit automatischer Wahl der Ausrichtung
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...in diesem Szenario gibt es keine Stadt
 
@@ -1228,7 +1228,7 @@ STR_LANDINFO_COORDS                                             :{BLACK}Koordina
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Dieser Teil des Bahnhofs kann nicht entfernt werden...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Gleistyp kann hier nicht verändert werden...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Gleis umwandeln / erweitern
+STR_CONVERT_RAIL_TIP                                            :{BLACK}in aktuellen Gleistyp umwandeln
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Lok hierher ziehen, um den ganzen Zug zu verkaufen
 
@@ -1237,7 +1237,7 @@ STR_STATION_DRAG_DROP                                           :{BLACK}Bahnhof 
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Wähle eine Stationsart zum anzeigen
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Wähle die Stationsart aus, die gebaut werden soll
 
-STR_FAST_FORWARD                                                :{BLACK}Spiel vorspulen
+STR_FAST_FORWARD                                                :{BLACK}Zeitraffer (Zeit vergeht schnellstmöglich)
 STR_MESSAGE_HISTORY                                             :{WHITE}Vergangene Nachrichten
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Eine Liste der aktuellen Nachrichten
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Alles deaktivieren
@@ -1580,7 +1580,7 @@ STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Bahnhof 
 STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Signale errichten
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Eisenbahnbrücke bauen
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Eisenbahntunnel bauen
-STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Umschalter für Bau/Abriss von Gleisen und Signalen
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Umschalter für Bau/Abriss von aktuellem Bauwerkzeug
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Brückenauswahl - klicke auf die gewünschte Brücke, um sie zu bauen
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Ausrichtung des Zugdepots auswählen
 STR_1021_RAILROAD_TRACK                                         :Gleis
@@ -1635,9 +1635,9 @@ STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Güterve
 STR_180A_ROAD_CONSTRUCTION                                      :Straßenbau
 STR_TRAMWAY_CONSTRUCTION                                        :Straßenbahnbau
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Straße bauen
-STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Werkzeug zum automatischen Bauen von Straßen
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Straße bauen mit automatischer Wahl der Ausrichtung
 STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Straßenbahnabschnitt bauen
-STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Werkzeug zum automatischen Bauen von Schienen
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Staßenbahnabschnitt bauen mit automatischer Wahl der Ausrichtung
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Fahrzeugdepot bauen (zum Bau und zur Wartung von Fahrzeugen)
 STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Straßenbahndepot bauen (zum Erstellen und Warten von Straßenbahnen)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Busbahnhof bauen
@@ -2756,7 +2756,7 @@ STR_CAN_T_SKIP_ORDER                                            :{WHITE}Auftrag 
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Wechseln zum ausgewählten Auftrag nicht möglich...
 STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}Fahrzeug kann nicht alle Stationen erreichen
 STR_CAN_T_ADD_ORDER                                             :{WHITE}Fahrzeug kann diese Station nicht erreichen
-STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}Ein Fahrzeug, welches diesen gemeinsam Fahrplan nutzt, kann die Station nicht erreichen
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}Ein Fahrzeug, welches diesen gemeinsamen Fahrplan nutzt, kann die Station nicht erreichen
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Fahrzeug kann nicht bewegt werden...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Hintere Lok folgt immer der vorderen Lok
 STR_8838_N_A                                                    :k.A.{SKIP}
@@ -2774,11 +2774,11 @@ STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Zugfahrz
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Angewähltes Fahrzeug bauen
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Umbenennen der Waggontypen
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Laufende Zugbewegung - Klicke hier, um den Zug anzuhalten / zu starten
-STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Anzeige der Zugaufträge
+STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Anzeige der Aufträge
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Hauptansicht zum Zug scrollen
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Zug ins Depot schicken
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Zug zur Weiterfahrt zwingen, ohne das Signal zu beachten
-STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Zug umkehren
+STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Fahrtrichtung umkehren
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Zeige Einzelheiten des Zuges
 STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Wartungsintervall erhöhen
 STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Wartungsintervall verringern
@@ -2912,8 +2912,8 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Straßen
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wählen Sie aus, welche Fracht das Straßenfahrzeug transportieren soll
 
 ##id 0x9800
-STR_9800_WATERWAYS_CONSTRUCTION                                 :Wasserwegerrichtung
-STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Wasserwegerrichtung
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Wasserwegebau
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Wasserwegebau
 STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Wasserwege
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Hafen kann hier nicht gebaut werden...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Werft
@@ -3354,10 +3354,10 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 
 # Strings for map borders at game generation
 STR_BORDER_TYPE                                                 :{BLACK}Karten Ränder:
-STR_NORTHWEST                                                   :{BLACK}Nord-West
-STR_NORTHEAST                                                   :{BLACK}Nord-Süd
-STR_SOUTHEAST                                                   :{BLACK}Süd-Ost
-STR_SOUTHWEST                                                   :{BLACK}Süd-West
+STR_NORTHWEST                                                   :{BLACK}Nordwesten
+STR_NORTHEAST                                                   :{BLACK}Nordosten
+STR_SOUTHEAST                                                   :{BLACK}Südosten
+STR_SOUTHWEST                                                   :{BLACK}Südwesten
 STR_BORDER_FREEFORM                                             :{BLACK}beliebig
 STR_BORDER_WATER                                                :{BLACK}Wasser
 STR_BORDER_RANDOM                                               :{BLACK}Zufällig
@@ -3555,7 +3555,7 @@ STR_AI_SETTINGS_BUTTON                                          :{BLACK}Einstell
 STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Einstellungen für KI anzeigen
 STR_AI_DEBUG                                                    :{WHITE}KI Debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Name der KI
-STR_AI_DEBUG_RELOAD                                             :{BLACK}AI neu laden
+STR_AI_DEBUG_RELOAD                                             :{BLACK}KI erneut laden
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Stoppe die KI, lade das Script neu und starte de KI erneut
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}KI Debug-Fenster ist nur auf dem Server vorhanden
 STR_AI_CONFIG_CAPTION                                           :{WHITE}KI einstellen
@@ -3628,9 +3628,9 @@ STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Gewähl
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Abhängigkeiten: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags: {WHITE}{STRING}
 
-STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Erweiterungen herunterladend...
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Lade Erweiterungen herunter...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Dateien anfordernd...
-STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Momentan herunterladend {STRING} ({NUM} von {NUM})
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Lade momentan herunter:  {STRING} ({NUM} von {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Herunterladen abgeschlossen
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} von {BYTES} heruntergeladen ({NUM} %)
 

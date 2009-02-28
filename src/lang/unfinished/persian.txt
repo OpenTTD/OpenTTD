@@ -536,7 +536,6 @@ STR_6                                                           :{BLACK}6
 
 
 
-
 ############ network gui strings
 
 

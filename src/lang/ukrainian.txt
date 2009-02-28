@@ -1072,6 +1072,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Фак�
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Дозволити безпересадкові зупинки на муніципальних дорогах: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Дозволити будувати суміжні станції: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Дозволити декілька NewGRF наборів транспорту: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Цю настройку не можна змінювати, якщо є транспорт.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Будувати малі аеропорти можна завжди: {ORANGE}{STRING}
 
@@ -1807,6 +1808,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Пока
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Змінити назву міста
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Пасажирів за місяць: {ORANGE}{COMMA}{BLACK} найбільше: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Пошти за місяць: {ORANGE}{COMMA}{BLACK} найбільше: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Вантаж, потрібний для зростання міста:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} потрібно
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} перевезено за останній місяць
 STR_200F_TALL_OFFICE_BLOCK                                      :Великий офіс
 STR_2010_OFFICE_BLOCK                                           :Офісний район
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Будинки

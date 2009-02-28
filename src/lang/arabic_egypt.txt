@@ -735,6 +735,7 @@ STR_02FA_EVERY_12_MONTHS                                        :كل سنة
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}بدأ لعبة جديدة
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}تحميل لعبة محفوظة
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}انشاء خريطة عالم خاصة
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK} ابدأ لعبة جماعية
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}عرض خيارات اللعبة
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}عرض خيارات الصعوبة
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}بدأ لعبة جديدة من العالم الخاص
@@ -947,6 +948,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}معا�
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}السماح للعربات العبور خلال المواقف المملوكة داخل المدن {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}السماح ببناء محطات متلاصقة{ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}السماح بتعدد محركات NewGFR {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE} تغير هذا الخيار غير متاح عندما يكون هناك عربات
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}السمح دائما بالمطارات الصغيرة: {ORANGE}{STRING}
 
@@ -1052,6 +1054,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}حظر 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE} السماح بالذكاء الصناعي في اللعب الجماعي : {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE} #opcodes قبل تعليق الذكاء الصناعي : {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}فترات الصيانة بالنسبة المئوية : {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}فترات الصيانة القياسية للقطارات: {ORANGE}{STRING} يوم / %
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}فترة الصيانة القياسية للقطارات{ORANGE}غير مفعل
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}فترات الصيانة القياسية للطائرات : {ORANGE}{STRING}يوم / %
@@ -1087,6 +1090,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :شبكة 2*2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :شبكة 3*3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :عشوائي
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE} السماح للمدن ببناء طرق: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}السماح للمدن بالتحكم في ضجيج المطارات: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}موقع شريط الأدوات الرئيسي:  {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :يسار
@@ -1125,12 +1129,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE} قطا
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE} مدن
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE} مصانع
 
-STR_CONFIG_SETTING_DISABLED                                     :غير مفعل
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}عدل قيمة التغيير
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}موجد الطريق - قصاص الطريق -  للقطارات: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(غير مفضل)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1143,6 +1141,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE} موج
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :أصلي{BLUE}(مستحسن)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(غير مفضل)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}عرض الخريطة س: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}طول الخريطة ص: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :غير مفعل
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}عدل قيمة التغيير
 
 STR_TEMPERATE_LANDSCAPE                                         :مناطق معتدلة
 STR_SUB_ARCTIC_LANDSCAPE                                        :مناطق ثلجية
@@ -1236,7 +1243,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}قائم
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}تعطيل الكل
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}تفعيل الكل
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}صناعات
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW}({COMMA}% صدرت)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW}({COMMA}%/{COMMA}% صدرت)
@@ -1250,7 +1256,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}تهيئ
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}أختر نوع البضاعة لينقلها القطار
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}اعادة تهيئة القطار لحمل البضائع المختارة
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}لايمكن اعادة تهيئة القطار
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}فترات الصيانة بالنسبة المئوية : {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}تغيير الانتاج
 
 ############ network gui strings
@@ -1512,11 +1517,6 @@ STR_NETWORK_SEND                                                :{BLACK}ارسل
 
 ############ end network gui strings
 
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}عرض الخريطة س: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}طول الخريطة ص: {ORANGE}{STRING}
-
-
 ##### PNG-MAP-Loader
 
 STR_PNGMAP_ERROR                                                :{WHITE}لا يمكن تحميل الخريطة من PNG ...
@@ -1684,6 +1684,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}وسط �
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}تغيير اسم المدينة
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}الركاب الشهر الماضي: {ORANGE}{COMMA}{BLACK}  الأقصى: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}طرود البريد الشهر الماضي: {ORANGE}{COMMA}{BLACK}  الأقصى: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK} نمو المدينة يتطلب بضائع
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} مطلوب
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} اوصل الشهر الماضي
 STR_200F_TALL_OFFICE_BLOCK                                      :مبنى مكاتب عالي
 STR_2010_OFFICE_BLOCK                                           :مبنى مكاتب
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :مبنى شقق صغيرة
@@ -3093,6 +3096,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}مقدا
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}مجموع النقاط من المجموع الكلي الممكن
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK} اعدادات NewGRF
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK} عرض اعدادات newGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE} اعدادات NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}نفذ التغييرات
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}فتح/اغلاق اللوحة
@@ -3548,6 +3552,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :ذ1234567890-=�
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK} اعدادات الذكاء الصناعي
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK} عرض اعدادات الذكاء الصناعي
 STR_AI_DEBUG                                                    :{WHITE} مكتشف اخطاء  الذكاء الصناعي
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK} اسم الذكاء الصناعي
 STR_AI_DEBUG_RELOAD                                             :{BLACK} اعادة تحميل الذكاء الصناعي
@@ -3575,7 +3580,6 @@ STR_AI_VERSION                                                  :النسخة:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}السماح للمدن بالتحكم في ضجيج المطارات: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}حدود الضوضاء داخل المدن: {ORANGE}{COMMA}{BLACK} القصوى: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK} الضوضاء المتولدة: {GOLD}{COMMA}
 ########
