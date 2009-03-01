@@ -5797,13 +5797,7 @@
   HasWagonRemoval():        false
 
 --Industry--
-  GetMaxIndustryID():  71
   GetIndustryCount():  71
-  Industry -1
-    IsValidIndustry(): false
-    GetName():         (null : 0x00000000)
-    GetLocation():     -1
-    IsCargoAccepted(): false
   Industry 0
     IsValidIndustry(): true
     GetName():         Kennville Oil Refinery
@@ -6513,11 +6507,6 @@
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
-  Industry 71
-    IsValidIndustry(): false
-    GetName():         (null : 0x00000000)
-    GetLocation():     -1
-    IsCargoAccepted(): false
   Valid Industries:    71
   GetIndustryCount():  71
 

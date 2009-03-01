@@ -538,9 +538,10 @@ function Regression::Industry()
 
 	print("");
 	print("--Industry--");
-	print("  GetMaxIndustryID():  " + AIIndustry.GetMaxIndustryID());
 	print("  GetIndustryCount():  " + AIIndustry.GetIndustryCount());
-	for (local i = -1; i < AIIndustry.GetMaxIndustryID() + 1; i++) {
+	local list = AIIndustryList();
+	list.Sort(AIAbstractList.SORT_BY_ITEM, true);
+	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
 		if (AIIndustry.IsValidIndustry(i)) j++;
 		print("  Industry " + i);
 		print("    IsValidIndustry(): " + AIIndustry.IsValidIndustry(i));
