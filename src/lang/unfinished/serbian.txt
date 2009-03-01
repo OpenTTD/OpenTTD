@@ -854,7 +854,6 @@ STR_7                                                           :{BLACK}7
 
 
 
-
 ############ network gui strings
 
 
@@ -1647,6 +1646,10 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ End of list of rail types
 
 
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Brzina: {GOLD}{VELOCITY}{BLACK}   Snaga: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Brzina: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cena odrzavanja: {GOLD}{CURRENCY}/yr
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Tezina: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 
 ########### For showing numbers in widgets
 

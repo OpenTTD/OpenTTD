@@ -1686,8 +1686,8 @@ STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Cambia i
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passeggeri il mese scorso: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Posta il mese scorso: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Carichi richiesti per la crescita della città:
-STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}Richiesto: {ORANGE}{STRING}{BLACK}
-STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}Consegnato il mese scorso: {ORANGE}{CARGO}{BLACK}
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{BLACK}Richiesto: {ORANGE}{STRING}
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{BLACK}Consegnato il mese scorso: {ORANGE}{CARGO}
 STR_200F_TALL_OFFICE_BLOCK                                      :Grattacielo di uffici
 STR_2010_OFFICE_BLOCK                                           :Palazzo di uffici
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Piccolo condominio

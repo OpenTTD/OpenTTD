@@ -219,7 +219,7 @@ STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFON
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Transportstrecken
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Wald
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Bahnhof
-STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}LKW-Ladestation
+STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Lkw-Ladestation
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Busbahnhof
 STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Flughafen / Heliport
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Hafen
@@ -385,7 +385,7 @@ STR_016E                                                        :{TINYFONT}{STRI
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Spiel anhalten
-STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Spiel speichern, Spiel laden, Spiel verlassen, Beenden
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Spiel speichern, Spiel laden, Spiel abbrechen, Beenden
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Liste der Firmenbahnhöfe anzeigen
 STR_0174_DISPLAY_MAP                                            :{BLACK}Weltkarte anzeigen
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Weltkarte anzeigen, Städteverzeichnis
@@ -1569,7 +1569,7 @@ STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Signal k
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Gleise können hier nicht verlegt werden...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Gleise können nicht abgerissen werden...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Signale können hier nicht entfernt werden...
-STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Zugdepotausrichtung
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Ausrichtung Zugdepot
 STR_1015_RAILROAD_CONSTRUCTION                                  :Gleisbau
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Bau elektrifizierter Strecken
 STR_1016_MONORAIL_CONSTRUCTION                                  :Einschienenbahnbau
@@ -1624,8 +1624,8 @@ STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Straße 
 STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Straßenbahn kann hier nicht gebaut werden...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Diese Straße kann nicht entfernt werden...
 STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Straßenbahn kann hier nicht entfernt werden...
-STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Fahrzeugdepot-Ausr.
-STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Ausrichtung des Straßenbahndepots
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Ausrichtung Depot
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Ausrichtung Depot
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Fahrzeugdepot kann hier nicht gebaut werden...
 STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Straßenbahndepot kann hier nicht gebaut werden...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Busbahnhof kann nicht gebaut werden...
@@ -1652,7 +1652,7 @@ STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Aktivier
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Zwischen Bau/Abriss der Straße umschalten
 STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Umschalten zwischen Bauen/Entfernen für Straßenbahnbau
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Ausrichtung des Fahrzeugdepots wählen
-STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Ausrichtung des Straßenbahndepots wählen
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Ausrichtung des Straßenbahndepots auswählen
 STR_1814_ROAD                                                   :Straße
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Straße mit Laternen
 STR_1816_TREE_LINED_ROAD                                        :Straße mit Bäumen
@@ -1833,8 +1833,8 @@ STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} akzeptiert keine {STRING} und keine {STRING} mehr
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} akzeptiert jetzt auch {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} akzeptiert jetzt auch {STRING} und {STRING}
-STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Busbahnhof-Ausr.
-STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Lkw-Ladeplatz-Ausr.
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Ausrichtung Busbahnhof
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Ausrichtung Lkw-Ladeplatz
 STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}Ausrichtung der Straßenbahnhaltestelle
 STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}Ausrichtung der Güterverladestelle
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Der Busbahnhof muss erst abgerissen werden
@@ -1847,13 +1847,13 @@ STR_304A_NONE                                                   :{YELLOW}- Keine
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...Gelände ungeeignet
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Zu dicht an einem anderen Hafen
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Hafen muss erst entfernt werden
-STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Bahnhofsausrichtung auswählen
+STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Ausrichtung des Bahnhofs auswählen
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Anzahl der Bahnsteige wählen
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Bahnsteiglänge wählen
-STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Busbahnhofsausrichtung wählen
-STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Ladeplatzausrichtung wählen
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Ausrichtung des Busbahnhofs auswählen
+STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Ausrichtung des Lkw-Ladeplatzes auswählen
 STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}Ausrichtung für die Straßenbahnhaltestelle wählen
-STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Ausrichtung für die Güterverladestelle wählen
+STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Ausrichtung der Güterverladestelle auswählen
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Hauptansicht zur Station scrollen
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Stationsbewertung anzeigen
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Name der Station ändern
@@ -1883,10 +1883,10 @@ STR_STAT_CLASS_DFLT                                             :Standardstation
 STR_STAT_CLASS_WAYP                                             :Wegpunkte
 
 ##id 0x3800
-STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Werftausrichtung
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Ausrichtung der Werft
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...muss auf Wasser gebaut werden
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Werft kann hier nicht gebaut werden...
-STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Werftausrichtung auswählen
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Ausrichtung der Werft auswählen
 STR_3804_WATER                                                  :Wasser
 STR_3805_COAST_OR_RIVERBANK                                     :Küste oder Flussufer
 STR_3806_SHIP_DEPOT                                             :Werft
@@ -2065,7 +2065,7 @@ STR_SV_STNAME_TRANSFER                                          :{STRING} Transf
 STR_SV_STNAME_HALT                                              :{STRING} Halt
 STR_SV_STNAME_VALLEY                                            :{STRING} Tal
 STR_SV_STNAME_HEIGHTS                                           :{STRING} Höhe
-STR_SV_STNAME_WOODS                                             :{STRING} Stadion
+STR_SV_STNAME_WOODS                                             :{STRING} Waldrand
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Seeblick
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Zentrum
 STR_SV_STNAME_AIRPORT                                           :{STRING} Flughafen
@@ -2743,7 +2743,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Wert: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Laden / Entladen
-STR_LEAVING                                                     :{LTBLUE}verlassend
+STR_LEAVING                                                     :{LTBLUE}Abfahrt
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Zug muss im Depot angehalten sein
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Zug kann nicht ins Depot geschickt werden...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Kein Platz für weitere Aufträge
@@ -2956,7 +2956,7 @@ STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Ausgewä
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Laufende Schiffsbewegung - Klicke hier, um das Schiff anzuhalten / zu starten
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Aufträge des Schiffes
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Hauptansicht zum Schiff scrollen
-STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Schicke das Schiff zur Werft
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Schicke das Schiff zur Werft. Strg+Klick, um dort nur Wartung durchzuführen.
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Zeige Einzelheiten des Schiffes
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosten: {CURRENCY}  Höchstgeschwindigk.: {VELOCITY}{}Kapazität: {CARGO}{}Betriebskosten: {CURRENCY} pro Jahr
 STR_982F_NAME_SHIP                                              :{BLACK}Schiffsname
@@ -3085,18 +3085,18 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Kredit:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Gesamt:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Anzahl an Fahrzeugen (Straßenfahrzeuge, Züge, Schiffe und Flugzeuge/Helikopter)
-STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Anzahl an Stationen (Jeder Teil einer Station zählt einzeln: Bahnhof, Ladeplatz, Busbahnhof, Flugplatz)
+STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Anzahl an Stationen (Jeder Teil einer Station zählt einzeln: Bahnhof, Ladeplatz, Busbahnhof, Flugplatz, Hafen)
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Geringster Gewinn der Fahrzeuge, die älter als 2 Jahre sind
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Geringste Monatseinnahmen in den letzten 12 Quartalen
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Höchste Monatseinnahmen in den letzten 12 Quartalen
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}In den letzten 4 Quartalen gelieferte Frachteinheiten
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Im letzten Quartal gelieferte Frachttypen
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Kontostand dieser Firma
-STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Das  von dieser Firma in Anspruch genommene Darlehen
+STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Der von dieser Firma in Anspruch genommene Kredit
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Erreichte Punkte von der maximal erreichbaren Anzahl
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF-Einstellungen
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}NewGRF Einstellungen anzeigen
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}NewGRF-Einstellungen anzeigen
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Einstellungen
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Übernehmen
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Palette ändern
@@ -3209,7 +3209,7 @@ STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Alle Flu
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Züge, die dieses Depot anfahren, auflisten
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Fahrzeuge, die dieses Depot anfahren, auflisten
-STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Schiffe, die diese Werft anfahren, auflisten
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}All Schiffe, die diese Werft anfahren, auflisten
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Flugzeuge, die diesen Flughafen anfliegen, auflisten
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Alle Züge im Depot automatisch ersetzen
@@ -3353,12 +3353,12 @@ STR_SMALLMAP_CENTER                                             :{BLACK}Zusatzan
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 # Strings for map borders at game generation
-STR_BORDER_TYPE                                                 :{BLACK}Karten Ränder:
+STR_BORDER_TYPE                                                 :{BLACK}Kartenränder:
 STR_NORTHWEST                                                   :{BLACK}Nordwesten
 STR_NORTHEAST                                                   :{BLACK}Nordosten
 STR_SOUTHEAST                                                   :{BLACK}Südosten
 STR_SOUTHWEST                                                   :{BLACK}Südwesten
-STR_BORDER_FREEFORM                                             :{BLACK}beliebig
+STR_BORDER_FREEFORM                                             :{BLACK}Beliebig
 STR_BORDER_WATER                                                :{BLACK}Wasser
 STR_BORDER_RANDOM                                               :{BLACK}Zufällig
 STR_BORDER_RANDOMIZE                                            :{BLACK}Zufällig
@@ -3586,7 +3586,7 @@ STR_STATION_NOISE                                               :{BLACK}Lärmbel
 
 ############ Downloading of content from the central server
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD wurde ohne "zlib" erstellt...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... herunterladen von Inhalten nicht möglich!
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... herunterladen von Erweiterungen nicht möglich!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=p}Grundgrafiken
 STR_CONTENT_TYPE_NEWGRF                                         :{G=n}NewGRF
 STR_CONTENT_TYPE_AI                                             :{G=w}KI
@@ -3597,22 +3597,22 @@ STR_CONTENT_TITLE                                               :{WHITE}Herunter
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Art
 STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Art der Erweiterung
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Name
-STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Name des Inhaltes
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Name der Erweiterung
 STR_CONTENT_MATRIX_TIP                                          :{BLACK}Auf eine Zeile klicken, um Details zu sehen{}Checkbox anklicken, um zum Download auszuwählen
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Alles wählen
-STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Allen Inhalt zum Herunterladen auswählen
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Alle Erweiterungen zum Herunterladen auswählen
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Upgrades auswählen
-STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Allen Inhalt, der einen bestehenden Inhalt verbessert, auswählen
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Alle Erweiterungen, die einen bestehenden Inhalt verbessert, auswählen
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Alles abwählen
-STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Keinen Inhalt zum Download auswählen
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Keine Erweiterung zum Download auswählen
 STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Gib einen Filter ein
 STR_CONTENT_FILTER_TIP                                          :{BLACK}Gib ein Stichwort in die Filterliste ein
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/name filter:
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter für Stichworte oder Namen:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Herunterladen
-STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Beginne die Erweiterung(en) herunterzuladen
-STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Gesamtgröße des Download: {WHITE}{BYTES}
-STR_CONTENT_DETAIL_TITLE                                        :{SILVER}Inhalts-Info
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Sie haben dies nicht zum Herunterladen ausgewählt
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Beginne die ausgewählten Erweiterung(en) herunterzuladen
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Gesamtgröße der Downloads: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}Beschreibung der Erweiterung
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Diese ist nicht zum Herunterladen ausgewählt
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Sie haben dies zum Herunterladen ausgewählt
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Diese Abhängigkeit wurde zum Herunterladen ausgewählt
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Diese Erweiterung besitzen Sie schon
@@ -3626,10 +3626,10 @@ STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Typ: {W
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Download-Größe: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Gewählt weil: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Abhängigkeiten: {WHITE}{STRING}
-STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Stichworte: {WHITE}{STRING}
 
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Lade Erweiterungen herunter...
-STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Dateien anfordernd...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Fordere Dateien an...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Lade momentan herunter:  {STRING} ({NUM} von {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Herunterladen abgeschlossen
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} von {BYTES} heruntergeladen ({NUM} %)
@@ -3640,8 +3640,8 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... Verb
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... Datei nicht schreibbar
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kann heruntergeladene Datei nicht entpacken
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Prüfe Online-Inhalt
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Prüfe auf neuen oder aktualisierten Inhalt zum Herunterladen
-STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Fehlende Inhalte online suchen
-STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Versuche fehlende Inhalte online zu finden
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Erweiterungen herunterladen
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Prüfe auf neue oder aktualisierte Erweiterungen zum Herunterladen
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Fehlende Erweiterungen online suchen
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Versuche fehlende Erweiterungen online zu finden
 ########

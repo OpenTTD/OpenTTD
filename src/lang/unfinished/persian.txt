@@ -923,10 +923,229 @@ STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}حد ا
 
 
 ##id 0x7000
+STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}مبلغ پرداختی محموله ها
+STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}روز های گذشته در حمل
+STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}مبلغ پرداختی برای 10 واحد (یا 10000لیتر) به ازای 20 مربع
+STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}روشن/خاموش کردن نمودار برای نوع محموله
+STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
+STR_7066_ENGINEER                                               :مهندس
+STR_7067_TRAFFIC_MANAGER                                        :مدیر ترافیکی
+STR_7068_TRANSPORT_COORDINATOR                                  :رئیس حمل و نقل
+STR_7069_ROUTE_SUPERVISOR                                       :مشاور جاده ها
+STR_706A_DIRECTOR                                               :رئیس کل
+STR_706B_CHIEF_EXECUTIVE                                        :مشاور وزیر
+STR_706C_CHAIRMAN                                               :وزیر ترابری
+STR_706D_PRESIDENT                                              :رئیس جمهور
+STR_706E_TYCOON                                                 :ترک اصیل!
+STR_706F_BUILD_HQ                                               :{BLACK}ساخت ساختمان مرکزی
+STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}ساخت / دیدن ساختمان مرکزی
+STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}ساختمان مرکزی را نمی شود اینجا ساخت ...
+STR_7072_VIEW_HQ                                                :{BLACK}دیدن ساختمان مرکزی
+STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}تغییر دادن اندازه ی صفحه
+STR_7076_COMPANY_VALUE                                          :{GOLD}ارزش شرکت: {WHITE}{CURRENCY}
+STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}25% سهام شرکت را بخر
+STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}25% سهام شرکت را بفروش
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}25% سهام این شرکت را بخر
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}25% سهام این شرکت را بفروش
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}نمی شود 25% سهام این شرکت را خرید
+STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}نمی شود 25% سهام این شرکت را فروخت
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% توسط {COMPANY} خریداری شده)
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} توسط {STRING} خریداری شد!
 
 
 
 ##id 0x8000
+STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (بخار)
+STR_8001_MJS_250_DIESEL                                         :MJS 250 (دیزل)
+STR_8002_PLODDYPHUT_CHOO_CHOO                                   :Ploddyphut Choo-Choo
+STR_8003_POWERNAUT_CHOO_CHOO                                    :Powernaut Choo-Choo
+STR_8004_MIGHTYMOVER_CHOO_CHOO                                  :Mightymover Choo-Choo
+STR_8005_PLODDYPHUT_DIESEL                                      :Ploddyphut Diesel
+STR_8006_POWERNAUT_DIESEL                                       :Powernaut دیزل
+STR_8007_WILLS_2_8_0_STEAM                                      :Wills 2-8-0 (بخار)
+STR_8008_CHANEY_JUBILEE_STEAM                                   :Chaney 'Jubilee' (بخار)
+STR_8009_GINZU_A4_STEAM                                         :Ginzu 'A4' (بخار)
+STR_800A_SH_8P_STEAM                                            :SH '8P' (بخار)
+STR_800B_MANLEY_MOREL_DMU_DIESEL                                :Manley-Morel DMU (دیزل)
+STR_800C_DASH_DIESEL                                            :'Dash' (دیزل)
+STR_800D_SH_HENDRY_25_DIESEL                                    :SH/Hendry '25' (دیزل)
+STR_800E_UU_37_DIESEL                                           :UU '37' (دیزل)
+STR_800F_FLOSS_47_DIESEL                                        :Floss '47' (دیزل)
+STR_8010_CS_4000_DIESEL                                         :CS 4000 (دیزل)
+STR_8011_CS_2400_DIESEL                                         :CS 2400 (دیزل)
+STR_8012_CENTENNIAL_DIESEL                                      :Centennial (دیزل)
+STR_8013_KELLING_3100_DIESEL                                    :Kelling 3100 (دیزل)
+STR_8014_TURNER_TURBO_DIESEL                                    :Turner Turbo (دیزل)
+STR_8015_MJS_1000_DIESEL                                        :MJS 1000 (دیزل)
+STR_8016_SH_125_DIESEL                                          :SH '125' (دیزل)
+STR_8017_SH_30_ELECTRIC                                         :SH '30' (برقی)
+STR_8018_SH_40_ELECTRIC                                         :SH '40' (برقی)
+STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (برقی)
+STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (برقی)
+STR_801B_PASSENGER_CAR                                          :واگن مسافربر
+STR_801C_MAIL_VAN                                               :واگن نامه
+STR_801D_COAL_CAR                                               :واگن ذغال
+STR_801E_OIL_TANKER                                             :تانکر نفت
+STR_801F_LIVESTOCK_VAN                                          :واگن فرآورده های حیوانی
+STR_8020_GOODS_VAN                                              :واگن محصولات
+STR_8021_GRAIN_HOPPER                                           :واگن حمل حبوبات
+STR_8022_WOOD_TRUCK                                             :واگن چوب بری
+STR_8023_IRON_ORE_HOPPER                                        :واگن سنگ آهن
+STR_8024_STEEL_TRUCK                                            :واگن فولاد
+STR_8025_ARMORED_VAN                                            :واگن حفاظت شده
+STR_8026_FOOD_VAN                                               :واگن مواد غذایی
+STR_8027_PAPER_TRUCK                                            :واگن کاغذ
+STR_8028_COPPER_ORE_HOPPER                                      :واگن سنگ مس
+STR_8029_WATER_TANKER                                           :تانکر آب
+STR_802A_FRUIT_TRUCK                                            :واگن حمل میوه
+STR_802C_SUGAR_TRUCK                                            :واگن حمل شکر
+STR_802D_COTTON_CANDY_HOPPER                                    :واگن حمل پشمک
+STR_802E_TOFFEE_HOPPER                                          :واگن حمل تافی
+STR_802F_BUBBLE_VAN                                             :واگن حباب بری
+STR_8030_COLA_TANKER                                            :تانکر نوشابه
+STR_8031_CANDY_VAN                                              :تانکر شیرینی جات
+STR_8032_TOY_VAN                                                :واگن اسباب بازی
+STR_8033_BATTERY_TRUCK                                          :واگن باتری
+STR_8034_FIZZY_DRINK_TRUCK                                      :تانکر نوشابه گازدار
+STR_8035_PLASTIC_TRUCK                                          :واگن پلاستیک بری
+STR_8036_X2001_ELECTRIC                                         :'X2001' (برقی)
+STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (برقی)
+STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
+STR_8039_PASSENGER_CAR                                          :واگن مسافربر
+STR_803A_MAIL_VAN                                               :واگن نامه بر
+STR_803B_COAL_CAR                                               :واگن حمل ذغال
+STR_803C_OIL_TANKER                                             :تانکر نفت
+STR_803D_LIVESTOCK_VAN                                          :واگن حمل محصولات حیوانی
+STR_803E_GOODS_VAN                                              :واگن محصولات
+STR_803F_GRAIN_HOPPER                                           :واگن حمل حبوبات
+STR_8040_WOOD_TRUCK                                             :واگن چوب بری
+STR_8041_IRON_ORE_HOPPER                                        :واگن سنگ آهن
+STR_8042_STEEL_TRUCK                                            :واگن فولاد
+STR_8043_ARMORED_VAN                                            :واگن حفاظت شده
+STR_8044_FOOD_VAN                                               :واگن حمل مواد غذایی
+STR_8045_PAPER_TRUCK                                            :وان کاغذ بری
+STR_8046_COPPER_ORE_HOPPER                                      :واگن سنگ مس
+STR_8047_WATER_TANKER                                           :تانکر آب
+STR_8048_FRUIT_TRUCK                                            :واگن حمل میوه
+STR_804A_SUGAR_TRUCK                                            :واگن شکر
+STR_804B_COTTON_CANDY_HOPPER                                    :واگن حمل پشمک
+STR_804C_TOFFEE_HOPPER                                          :واگن حمل تافی
+STR_804D_BUBBLE_VAN                                             :واگن حباب بری
+STR_804E_COLA_TANKER                                            :تانکر نوشابه
+STR_804F_CANDY_VAN                                              :واگن شیرینی جات
+STR_8050_TOY_VAN                                                :واگن اسباب بازی
+STR_8051_BATTERY_TRUCK                                          :واگن حمل باتری
+STR_8052_FIZZY_DRINK_TRUCK                                      :تانکر نوشابه گازدار
+STR_8053_PLASTIC_TRUCK                                          :واگن حمل پلاستیک
+STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Leviathan' (Electric)
+STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' (برقی)
+STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (برقی)
+STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (برقی)
+STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
+STR_8059_PASSENGER_CAR                                          :واگن مسافر بری
+STR_805A_MAIL_VAN                                               :واگن حمل نامه
+STR_805B_COAL_CAR                                               :واگن ذغال سنگ
+STR_805C_OIL_TANKER                                             :تانکر نفت
+STR_805D_LIVESTOCK_VAN                                          :واگن حمل محصولات حیوانی
+STR_805E_GOODS_VAN                                              :واگن محصولات
+STR_805F_GRAIN_HOPPER                                           :واگن حمل حبوبات
+STR_8060_WOOD_TRUCK                                             :واگن چوب بری
+STR_8061_IRON_ORE_HOPPER                                        :واگن سنگ آهن
+STR_8062_STEEL_TRUCK                                            :واگن فولاد
+STR_8063_ARMORED_VAN                                            :واگن محفاظت شده
+STR_8064_FOOD_VAN                                               :واگن مواد غذایی
+STR_8065_PAPER_TRUCK                                            :واگن کاغذ بری
+STR_8066_COPPER_ORE_HOPPER                                      :واگن حمل سنگ مس
+STR_8067_WATER_TANKER                                           :تانکر آب
+STR_8068_FRUIT_TRUCK                                            :واگن میوه
+STR_8069_RUBBER_TRUCK                                           :واگن کائوچو
+STR_806A_SUGAR_TRUCK                                            :واگن شکر
+STR_806B_COTTON_CANDY_HOPPER                                    :واگن حمل پشمک
+STR_806C_TOFFEE_HOPPER                                          :واگن حمل تافی
+STR_806D_BUBBLE_VAN                                             :واگن حباب
+STR_806E_COLA_TANKER                                            :تانکر نوشابه
+STR_8070_TOY_VAN                                                :واگن اسباب بازی
+STR_8071_BATTERY_TRUCK                                          :کامیون حمل باتری
+STR_8072_FIZZY_DRINK_TRUCK                                      :کامیون نوشابه گازدار
+STR_8073_PLASTIC_TRUCK                                          :کامیون حمل پلاستیک
+STR_8074_MPS_REGAL_BUS                                          :اتوبوس شاهی MPS
+STR_8075_HEREFORD_LEOPARD_BUS                                   :اتوبوس Hereford Leopard
+STR_8076_FOSTER_BUS                                             :اتوبوس Foster
+STR_8077_FOSTER_MKII_SUPERBUS                                   :اتوبوس ویژه Foster MkII
+STR_8078_PLODDYPHUT_MKI_BUS                                     :اتوبوس Ploddyphut MkI
+STR_8079_PLODDYPHUT_MKII_BUS                                    :اتوبوس Plodyphut MkII
+STR_807A_PLODDYPHUT_MKIII_BUS                                   :اتوبوس Plodyphut MkII
+STR_807B_BALOGH_COAL_TRUCK                                      :کامیون حمل ذغال سنگ Balogh
+STR_807C_UHL_COAL_TRUCK                                         :کامیون حمل ذغال سنگ Uhl
+STR_807D_DW_COAL_TRUCK                                          :کامیون حمل ذغال سنگ DW
+STR_807E_MPS_MAIL_TRUCK                                         :کامیون حمل نامه MPS
+STR_807F_REYNARD_MAIL_TRUCK                                     :کامیون حمل نامه Reynard
+STR_8080_PERRY_MAIL_TRUCK                                       :کامیون حمل نامه Perry
+STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :کامیون حمل نامه MightyMover
+STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :کامیون حمل نامه Powernaught
+STR_8083_WIZZOWOW_MAIL_TRUCK                                    :کامیون حمل نامه Wizzowow
+STR_8084_WITCOMBE_OIL_TANKER                                    :تانکر نفت Witcombe
+STR_8085_FOSTER_OIL_TANKER                                      :تانکر نفت Foster
+STR_8086_PERRY_OIL_TANKER                                       :تانکر نفت Perry
+STR_808A_BALOGH_GOODS_TRUCK                                     :کامیون محصولات Balogh
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :کامیون محصولات Craighead
+STR_808C_GOSS_GOODS_TRUCK                                       :کامیون محصولات Goss
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :کامیون حبوبات Hereford
+STR_808E_THOMAS_GRAIN_TRUCK                                     :کامیون حبوبات Thomas
+STR_808F_GOSS_GRAIN_TRUCK                                       :کامیون حبوبات Goss
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :کامیون حمل چوب Witcombe
+STR_8091_FOSTER_WOOD_TRUCK                                      :کامیون حمل چوب Foster
+STR_8092_MORELAND_WOOD_TRUCK                                    :کامیون حمل چوب Moreland
+STR_8093_MPS_IRON_ORE_TRUCK                                     :کامیون  حمل سنگ آهن MPS
+STR_8094_UHL_IRON_ORE_TRUCK                                     :کامیون  حمل سنگ آهن Uhl
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :کامیون  حمل سنگ آهن Chippy
+STR_8096_BALOGH_STEEL_TRUCK                                     :کامیون حمل فولاد Balogh
+STR_8097_UHL_STEEL_TRUCK                                        :کامیون حمل فولاد Uhl
+STR_8098_KELLING_STEEL_TRUCK                                    :کامیون حمل فولاد Kelling
+STR_8099_BALOGH_ARMORED_TRUCK                                   :کامیون محافظت شده Balogh
+STR_809A_UHL_ARMORED_TRUCK                                      :کامیون محافظت شده Uhl
+STR_809B_FOSTER_ARMORED_TRUCK                                   :کامیون محافظت شده Foster
+STR_809C_FOSTER_FOOD_VAN                                        :واگن مواد غذایی Foster
+STR_809D_PERRY_FOOD_VAN                                         :واگن مواد غذایی Perry
+STR_809E_CHIPPY_FOOD_VAN                                        :واگن مواد غذایی Chippy
+STR_809F_UHL_PAPER_TRUCK                                        :کامیون حمل کاغذ Uhl
+STR_80A0_BALOGH_PAPER_TRUCK                                     :کامیون حمل کاغذ Balogh
+STR_80A1_MPS_PAPER_TRUCK                                        :کامیون حمل کاغذ MPS
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :کامیون حمل سنگ مس MPS
+STR_80A3_UHL_COPPER_ORE_TRUCK                                   :کامیون حمل سنگ مس Uhl
+STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :کامیون حمل سنگ مس Goss
+STR_80A5_UHL_WATER_TANKER                                       :تانکر آب Uhl
+STR_80A6_BALOGH_WATER_TANKER                                    :تانکر آب Balogh
+STR_80A7_MPS_WATER_TANKER                                       :تانکر آب MPS
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :کامیون حمل میوه Balogh
+STR_80A9_UHL_FRUIT_TRUCK                                        :کامیون حمل میوه Uhl
+STR_80AA_KELLING_FRUIT_TRUCK                                    :کامیون حمل میوه Kelling
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :کامیون کائوچو Balogh
+STR_80AC_UHL_RUBBER_TRUCK                                       :کامیون کائوچو Uhl
+STR_80AD_RMT_RUBBER_TRUCK                                       :کامیون کائوچو RMT
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :کامیون حمل شکر MightyMover
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :کامیون حمل شکر Powernaught
+STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :کامیون حمل شکر Wizzowow
+STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :کامیون حمل نوشابه MightyMover
+STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :کامیون حمل نوشابه Powernaught
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :کامیون حمل نوشابه Wizzowow
+STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :کامیون حمل پشمک MightyMover
+STR_80B5_POWERNAUGHT_COTTON_CANDY                               :کامیون حمل پشمک Powernaught
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :کامیون حمل پشمک Candyfloss
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :کامیون حمل تافی MightyMover
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :کامیون حمل تافی Powernaught
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :کامیون حمل تافی Wizzowow
+STR_80BA_MIGHTYMOVER_TOY_VAN                                    :واگن حمل اسباب بازی MightyMover
+STR_80BB_POWERNAUGHT_TOY_VAN                                    :واگن حمل اسباب بازی Powernaught
+STR_80BC_WIZZOWOW_TOY_VAN                                       :واگن حمل اسباب بازی Wizzowow
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :کامیون حمل باتری MightyMover
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :کامیون حمل باتری Powernaught
+STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :کامیون حمل باتری Wizzowow
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :کامیون حمل نوشیدنی گازدار MightyMover
+STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :کامیون حمل نوشیدنی گازدار Powernaught
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :کامیون حمل نوشیدنی گازدار Wizzowow
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :کامیون حمل پلاستیک MightyMover
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :کامیون حمل پلاستیک Powernaught
 
 ##id 0x8800
 
