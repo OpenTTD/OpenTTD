@@ -471,6 +471,9 @@ STR_019F_TRAIN                                                  :Traukinys
 STR_019C_ROAD_VEHICLE                                           :Automobilis
 STR_019E_SHIP                                                   :Laivas
 STR_019D_AIRCRAFT                                               :Lėktuvas
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} paseno
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} labai paseno
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} labai paseno ir  skubiai reikia pakeisti
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacija apie žemės plotą
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Išvalymo kaina: {LTBLUE}NĖRA
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Išvalymo kaina: {RED}{CURRENCY}
@@ -681,6 +684,9 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Miesto 
 STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Miesto kelių išdėstymas:
 STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Pasirinkti kelio išdėstymą šiam miestui
 STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Originalus
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Geresni keliai
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 tinklelis
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 tinklelis
 STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Atsitiktinai
 
 STR_02B6                                                        :{STRING}  -  {STRING}
@@ -714,6 +720,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Permat
 STR_02D5_LAND_BLOCK_INFO                                        :Žemės ploto informacija
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Konsolė
+STR_AI_DEBUG_MENU                                               :AI Debug
 STR_02D7_SCREENSHOT_CTRL_S                                      :Fotografuoti ekrano vaizdą (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Fotografuoti viso ekrano vaizdą (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Apie „OpenTTD“
@@ -868,6 +875,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Ekrano v
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Pasirinkite ekrano vaizdo kopijos formatą
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Bazinis grafikos rinkinys
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Pasirinkti naudojimui bazinę grafikos rinkinį
 
 STR_AUTOSAVE_1_MONTH                                            :Kiekvieną mėnesį
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatinis išsaugojimas nepavyko
@@ -905,10 +914,14 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Užduoč
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Užduočių sąrašo kopijuoti negalima...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Bendrų užduočių pabaiga - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} negali rasti kelio
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} pasimetė
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} pelnas pernai buvo {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Bendras Europos sąjungos piniginis vienetas - Euras!{}{}Nuo šiol Euras tampa pagrindine valiuta kasdieniniuose atsiskaitymuose!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} turi per mažai užduočių tvarkaraštyje
 STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} turi blogas užduotis
 STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} turi pasikartojančias užduotis
 STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} turi neteisingą stotelę užduotyse
@@ -961,6 +974,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Lėktuv
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Leisti pravažiuojamas stoteles viduryje miesto kelio: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Leisti statyti susiliečiančias stoteles: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Leisti kelis NewGRF transporto pr. rinkinius vienu metu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Neįmanoma pakeisti nuostatos kai yra tr. priemonių.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Visada leisti statyti mažus oro uostus: {ORANGE}{STRING}
 
@@ -1013,6 +1027,8 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Žemėlapio sli
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :išjungta
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Žemėlapio slinties greitis: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Išjungta
 
 
@@ -1053,6 +1069,7 @@ STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Uždrau
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Uždrausti kompiuteriui lėktuvus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Uždrausti kompiuteriui laivus: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Leisti AIs Interneto režime: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Remonto intervalas procentais: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Traukinių remonto intervalas: {ORANGE}{STRING} (d. ar %)
@@ -1083,11 +1100,13 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Tik tradicinių
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Kelio signalų
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Visus
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Kelių išdėstymas naujiems miestams: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :numatytas
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :geresni keliai
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 laukeliai
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 laukeliai
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :atsitiktinis
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Miestams leidžiama tiesti kelius: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pagrindinės įrankių juostos pozicija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Kairėje
@@ -1116,6 +1135,7 @@ STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Rodyti 
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Sąveika
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signalai
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Krovinų valdymas
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Kompiuterio žaidėjai
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Traukiniai
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Miestai
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Gamyklos
@@ -1471,6 +1491,10 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Žaidimas tęsi
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :išeinama
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} prisijungė prie žaidimo
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} prisijungė prie stebėtojų
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} paliko žaidimą ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} pasikeitė vardą į {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} turi savo kompaniją {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Komandai] :
 STR_NETWORK_CHAT_COMPANY                                        :[Komandai] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Komandai] {STRING}: {WHITE}{STRING}
@@ -1665,6 +1689,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Rodyti m
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Keisti miesto vardą
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Praėjusio mėnesio keleivių sk.: {ORANGE}{COMMA}{BLACK}  Daugiausia: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Praėjusio mėnesio pašto siuntų sk.: {ORANGE}{COMMA}{BLACK}  Daugiausia: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Kad miestas augtų reikalingi kroviniai:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} reikia
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} pervežta praeitą mėnesį
 STR_200F_TALL_OFFICE_BLOCK                                      :Administracinis kompleksas
 STR_2010_OFFICE_BLOCK                                           :Administracinis pastatas
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Nedidelis daugiabutis
@@ -1703,6 +1730,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidijos suteiktos {COMPANY}!{}{}{STRING}  pervežimas iš {STATION} į {STATION} visus metus bus apmokamas trigubai!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidijos suteiktos {COMPANY}!{}{}{STRING} pervežimas iš {STATION} į {STATION} bus metus apmokamas keturgubai!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} vietinė valdžia neleidžia statyti kito oro uosto šiame mieste
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} vietos valdžia atsisako suteikti leidimą statyti oro uosta dėl triukšmo problemų
 STR_2036_COTTAGES                                               :Vasarnamiai
 STR_2037_HOUSES                                                 :Namai
 STR_2038_FLATS                                                  :Butai
@@ -1779,6 +1807,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Per arti
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Ribojasi su daugiau nei viena stotele/pakrovimo aikštele
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Per daug stotelių/pakrovimo aikštelių šiame mieste
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Per daug stotelių
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Perdaug traukinių stoties dalių
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Per daug autobusų stotelių
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Per daug sunkvežimių pakrovimo aikstelių
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Per arti kitos stotelės
@@ -1829,6 +1858,7 @@ STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Pasirink
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Pasirink autobusų stoteles orientaciją
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Pasirink sunkvežimių pakrovimo aikštelės orientaciją
 STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}Pairinkite keleivinio tramvajaus stoties orientaciją
+STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Pasirinkti krovininio tramvajaus stoties orientaciją
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Rodyti stotele ekrano centre
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Parodyti stotelės reitingus
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Pakeisti stotelės pavadinimą
@@ -1886,6 +1916,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Sugadintas išs
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Išsaugotas žaidimas iš naujesnės versijos
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Neįmanoma perskaityti failo
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Neįmanoma įrašyti failo
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Nepavyko duomenų vientisumo patikrinimas
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Diskų, katalogų ir išsaugotu žaidimų sąrašas
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Pasirinktas žaidimas
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Ištrinti pasirinktą žaidimą
@@ -1943,6 +1974,9 @@ STR_4829_REQUIRES                                               :{BLACK}Reikalau
 
 ############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Krovinys, kuris bus perdirbtas:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Gamina: {YELLOW}{STRING}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Gamina: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Praėjusio mėnesio produkcija:
@@ -1968,6 +2002,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 
 ##id 0x5000
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Trukdo kitas tunelis
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunelis bus žemėlapio gale
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nepavyko iškasti žemės kitame tunelio gale
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Pirmiau reikia pašalinti tunelį
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Pirmiau reikia pašalinti tiltą
@@ -2248,11 +2283,15 @@ STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Neįmano
 STR_7072_VIEW_HQ                                                :{BLACK}Apžiūrėti būstinę
 STR_RELOCATE_HQ                                                 :{BLACK}Perkelti bustinę
 STR_COMPANY_JOIN                                                :{BLACK}Prisijungti
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Prisijunkite ir žaiskite kaip šios kompanijos
 STR_COMPANY_PASSWORD                                            :{BLACK}Slaptažodis
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Slaptažodis apsaugo tavo kompanija nuo neleistinų vartotojų prisijungimo.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Įvesti slaptažodį
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Neišsaugotas įvestas slaptažodis
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Suteiktas kompanijai naujas slaptažodis
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Kompanijos slaptažodis
 STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Numatytasis kompanijos slaptažodis
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Naudoti kompanijos slaptažodį kaip pagrindinį naujoms kompanijoms
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Pasaulinė krizė!{}{}Ekonomikai griūvant, finansų ekspertai bijo paties blogiausio!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Krizė įveikta!{}{}Prekybos pagyvejimas suteikia naujų vilčių pramonės įmonėms!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Pakeisti lango dydį
@@ -2445,42 +2484,42 @@ STR_808C_GOSS_GOODS_TRUCK                                       :Goss prekinis s
 STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford grūdų sunkvežimis
 STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas grūdų sunkvežimis
 STR_808F_GOSS_GRAIN_TRUCK                                       :Goss grūdų sunkvežimis
-STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe Wood Truck
-STR_8091_FOSTER_WOOD_TRUCK                                      :Foster Wood Truck
-STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland Wood Truck
-STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS Iron Ore Truck
-STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl Iron Ore Truck
-STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy Iron Ore Truck
-STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh Steel Truck
-STR_8097_UHL_STEEL_TRUCK                                        :Uhl Steel Truck
-STR_8098_KELLING_STEEL_TRUCK                                    :Kelling Steel Truck
-STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh Armoured Truck
-STR_809A_UHL_ARMORED_TRUCK                                      :Uhl Armoured Truck
-STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster Armoured Truck
-STR_809C_FOSTER_FOOD_VAN                                        :Foster Food Van
-STR_809D_PERRY_FOOD_VAN                                         :Perry Food Van
-STR_809E_CHIPPY_FOOD_VAN                                        :Chippy Food Van
-STR_809F_UHL_PAPER_TRUCK                                        :Uhl Paper Truck
-STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh Paper Truck
-STR_80A1_MPS_PAPER_TRUCK                                        :MPS Paper Truck
-STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS Copper Ore Truck
-STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl Copper Ore Truck
-STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss Copper Ore Truck
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe medienos sunkvežimis
+STR_8091_FOSTER_WOOD_TRUCK                                      :Foster medienos sunkvežimis
+STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland medienos sunkvežimis
+STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS geležies rūdos sunkvežimis
+STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl geležies rūdos sunkvežimis
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy geležies rūdos sunkvežimis
+STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh plieno sunkvežimis
+STR_8097_UHL_STEEL_TRUCK                                        :Uhl plieno sunkvežimis
+STR_8098_KELLING_STEEL_TRUCK                                    :Kelling plieno sunkvežimis
+STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh šarvuotas sunkvežimis
+STR_809A_UHL_ARMORED_TRUCK                                      :Uhl šarvuotas sunkvežimis
+STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster šarvuotas sunkvežimis
+STR_809C_FOSTER_FOOD_VAN                                        :Foster maisto sunkvežimis
+STR_809D_PERRY_FOOD_VAN                                         :Perry maisto sunkvežimis
+STR_809E_CHIPPY_FOOD_VAN                                        :Chippy maisto sunkvežimis
+STR_809F_UHL_PAPER_TRUCK                                        :Uhl popieriaus sunkvežimis
+STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh popieriaus sunkvežimis
+STR_80A1_MPS_PAPER_TRUCK                                        :MPS popieriaus sunkvežimis
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS vario rūdos sunkvežimis
+STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl vario rūdos sunkvežimis
+STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss vario rūdos sunkvežimis
 STR_80A5_UHL_WATER_TANKER                                       :Uhl vandens cisterna
 STR_80A6_BALOGH_WATER_TANKER                                    :Balogh vandens cisterna
 STR_80A7_MPS_WATER_TANKER                                       :MPS vandens cisterna
-STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh Fruit Truck
-STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl Fruit Truck
-STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling Fruit Truck
-STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh Rubber Truck
-STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl Rubber Truck
-STR_80AD_RMT_RUBBER_TRUCK                                       :RMT Rubber Truck
-STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover Sugar Truck
-STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught Sugar Truck
-STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow Sugar Truck
-STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover Cola Truck
-STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught Cola Truck
-STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow Cola Truck
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh vaisių sunkvežimis
+STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl vaisių sunkvežimis
+STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling vaisių sunkvežimis
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh kaučiuko sunkvežimis
+STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl kaučiuko sunkvežimis
+STR_80AD_RMT_RUBBER_TRUCK                                       :RMT kaučiuko sunkvežimis
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover cukraus sunkvežimis
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught cukraus sunkvežimis
+STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow cukraus sunkvežimis
+STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover kolos sunkvežimis
+STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught kolos sunkvežimis
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow kolos sunkvežimis
 STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover Candyfloss Truck
 STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught Candyfloss Truck
 STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow Candyfloss Truck
@@ -2571,6 +2610,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Gyventojai džiūgauja. . .{}Pirmas traukinys atvažiavo į {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detales)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Traukinys kelyje
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Nesustoti
 STR_ORDER_GO_TO                                                 :Važiuoti į
 STR_ORDER_GO_NON_STOP_TO                                        :Važiuoti nesustojant į
@@ -2592,6 +2633,14 @@ STR_ORDER_NO_LOAD                                               :(Nepakrauti)
 STR_ORDER_UNLOAD                                                :(Iškrauti ir pasiimti krovinį)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Iškrauti ir laukti pilno krovinio)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Iškrauti ir laukti pilno pakrovimo)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Iškrauti ir palikti tuščią)
+STR_ORDER_TRANSFER                                              :(Perkelti ir paimti krovinį)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Perkelti ir laukti pilno krovinio)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Perkelti ir laukti pilno bet kokio pakrovimo)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Perkelti ir palikti tuščią)
+STR_ORDER_NO_UNLOAD                                             :(Neiškrauti ir paimti krovinį)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Neiškrauti ir laukti pilno pakrovimo)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Neiškrauti ir laukti bet kokio pilno pakrovimo)
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Grįžti į artimiausią depą

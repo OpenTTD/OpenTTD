@@ -948,6 +948,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Fator d
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permitir estações drive-through em ruas locais: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permitir construção de estações adjacentes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Ativar múltiplos conjuntos NewGRF de locomotivas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Impossível alterar essa configuração enquanto houverem veículos.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
@@ -1683,6 +1684,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrali
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Alterar o nome da cidade
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passageiros no mês passado: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Cartas no mês passado: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Carga necessária para prover o crescimento:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} necessário(a)
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} entregue no mes passado
 STR_200F_TALL_OFFICE_BLOCK                                      :Edifício alto de escritórios
 STR_2010_OFFICE_BLOCK                                           :Edifício de escritórios
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Edifício de apartamentos grande
