@@ -40,7 +40,7 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int pos, int width)
 		WChar c = Utf8Consume(&s);
 		if (c == 0) {
 			break;
-		} else if (c == 0x0D) {
+		} else if (c == '\n') {
 			if (d + 4 >= last) break;
 			d[0] = d[1] = d[2] = d[3] = ' ';
 			d += 4;
