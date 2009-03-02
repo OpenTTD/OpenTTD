@@ -176,8 +176,6 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 	/* The tile doesn't have the given road type */
 	if (!HasBit(rts, rt)) return CMD_ERROR;
 
-	bool town_road_under_stop = false;
-
 	switch (GetTileType(tile)) {
 		case MP_ROAD:
 			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
@@ -185,7 +183,6 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 
 		case MP_STATION:
 			if (!IsDriveThroughStopTile(tile)) return CMD_ERROR;
-			if (rt == ROADTYPE_ROAD) town_road_under_stop = GetStopBuiltOnTownRoad(tile);
 			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 			break;
 
@@ -198,7 +195,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 			return CMD_ERROR;
 	}
 
-	if (!CheckAllowRemoveRoad(tile, pieces, town_road_under_stop ? OWNER_TOWN : GetRoadOwner(tile, rt), rt, flags, town_check)) return CMD_ERROR;
+	if (!CheckAllowRemoveRoad(tile, pieces, GetRoadOwner(tile, rt), rt, flags, town_check)) return CMD_ERROR;
 
 	if (!IsTileType(tile, MP_ROAD)) {
 		/* If it's the last roadtype, just clear the whole tile */
@@ -212,6 +209,15 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 			if (flags & DC_EXEC) {
 				SetRoadTypes(other_end, GetRoadTypes(other_end) & ~RoadTypeToRoadTypes(rt));
 				SetRoadTypes(tile, GetRoadTypes(tile) & ~RoadTypeToRoadTypes(rt));
+
+				/* If the owner of the bridge sells all it's road, also move the ownership
+				 * to the owner of the other roadtype. */
+				RoadType other_rt = (rt == ROADTYPE_ROAD) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
+				Owner other_owner = GetRoadOwner(tile, other_rt);
+				if (other_owner != GetTileOwner(tile)) {
+					SetTileOwner(tile, other_owner);
+					SetTileOwner(other_end, other_owner);
+				}
 
 				/* Mark tiles diry that have been repaved */
 				MarkTileDirtyByTile(tile);
@@ -547,7 +553,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetTrackBits(tile)));
 				/* Always add road to the roadtypes (can't draw without it) */
 				bool reserved = HasBit(GetTrackReservation(tile), AxisToTrack(OtherAxis(roaddir)));
-				MakeRoadCrossing(tile, _current_company, _current_company, _current_company, GetTileOwner(tile), roaddir, GetRailType(tile), RoadTypeToRoadTypes(rt) | ROADTYPES_ROAD, p2);
+				MakeRoadCrossing(tile, _current_company, _current_company, GetTileOwner(tile), roaddir, GetRailType(tile), RoadTypeToRoadTypes(rt) | ROADTYPES_ROAD, p2);
 				SetCrossingReservation(tile, reserved);
 				UpdateLevelCrossing(tile, false);
 				MarkTileDirtyByTile(tile);
@@ -639,6 +645,8 @@ do_clear:;
 
 				SetRoadTypes(other_end, GetRoadTypes(other_end) | RoadTypeToRoadTypes(rt));
 				SetRoadTypes(tile, GetRoadTypes(tile) | RoadTypeToRoadTypes(rt));
+				SetRoadOwner(other_end, rt, _current_company);
+				SetRoadOwner(tile, rt, _current_company);
 
 				/* Mark tiles diry that have been repaved */
 				MarkTileDirtyByTile(other_end);
@@ -653,11 +661,11 @@ do_clear:;
 			case MP_STATION:
 				assert(IsDriveThroughStopTile(tile));
 				SetRoadTypes(tile, GetRoadTypes(tile) | RoadTypeToRoadTypes(rt));
-				if (rt == ROADTYPE_ROAD) SetStopBuiltOnTownRoad(tile, false);
+				SetRoadOwner(tile, rt, _current_company);
 				break;
 
 			default:
-				MakeRoadNormal(tile, pieces, RoadTypeToRoadTypes(rt), p2, _current_company, _current_company, _current_company);
+				MakeRoadNormal(tile, pieces, RoadTypeToRoadTypes(rt), p2, _current_company, _current_company);
 				break;
 		}
 
@@ -911,7 +919,7 @@ static CommandCost ClearTile_Road(TileIndex tile, DoCommandFlag flags)
 
 			/* Must iterate over the roadtypes in a reverse manner because
 			 * tram tracks must be removed before the road bits. */
-			RoadType rt = ROADTYPE_HWAY;
+			RoadType rt = ROADTYPE_TRAM;
 			do {
 				if (HasBit(rts, rt)) {
 					CommandCost tmp_ret = RemoveRoad(tile, flags, GetCrossingRoadBits(tile), rt, false);

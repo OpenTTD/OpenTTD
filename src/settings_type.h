@@ -166,6 +166,7 @@ struct ConstructionSettings {
 	bool   signal_side;                      ///< show signals on right side
 	bool   extra_dynamite;                   ///< extra dynamite
 	bool   road_stop_on_town_road;           ///< allow building of drive-through road stops on town owned roads
+	bool   road_stop_on_competitor_road;     ///< allow building of drive-through road stops on roads owned by competitors
 	uint8  raw_industry_construction;        ///< type of (raw) industry construction (none, "normal", prospecting)
 	bool   freeform_edges;                   ///< allow terraforming the tiles at the map edges
 };

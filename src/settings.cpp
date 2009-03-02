@@ -1379,6 +1379,7 @@ const SettingDesc _settings[] = {
 	    SDT_BOOL(GameSettings, station.modified_catchment,                                          0, 0,  true,                    STR_CONFIG_SETTING_CATCHMENT,              NULL),
 	SDT_CONDBOOL(GameSettings, order.gradual_loading,                           40, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_GRADUAL_LOADING,        NULL),
 	SDT_CONDBOOL(GameSettings, construction.road_stop_on_town_road,             47, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD,      NULL),
+	SDT_CONDBOOL(GameSettings, construction.road_stop_on_competitor_road,      114, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD,NULL),
 	SDT_CONDBOOL(GameSettings, station.adjacent_stations,                       62, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_ADJACENT_STATIONS,      NULL),
 	SDT_CONDBOOL(GameSettings, economy.station_noise_level,                     96, SL_MAX_VERSION, 0, 0, false,                    STR_CONFIG_SETTING_NOISE_LEVEL,            InvalidateTownViewWindow),
 	SDT_CONDBOOL(GameSettings, station.distant_join_stations,                  106, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS,  DeleteSelectStationWindow),

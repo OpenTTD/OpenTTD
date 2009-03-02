@@ -71,7 +71,7 @@ static inline bool IsBridgeAbove(TileIndex t)
 static inline BridgeType GetBridgeType(TileIndex t)
 {
 	assert(IsBridgeTile(t));
-	return GB(_m[t].m2, 4, 4);
+	return GB(_m[t].m6, 2, 4);
 }
 
 /**
@@ -168,10 +168,11 @@ static inline void MakeBridgeRamp(TileIndex t, Owner o, BridgeType bridgetype, D
 {
 	SetTileType(t, MP_TUNNELBRIDGE);
 	SetTileOwner(t, o);
-	_m[t].m2 = bridgetype << 4;
+	_m[t].m2 = 0;
 	_m[t].m3 = rt;
 	_m[t].m4 = 0;
 	_m[t].m5 = 1 << 7 | tt << 2 | d;
+	SB(_m[t].m6, 2, 4, bridgetype);
 }
 
 /**
@@ -184,7 +185,10 @@ static inline void MakeBridgeRamp(TileIndex t, Owner o, BridgeType bridgetype, D
  */
 static inline void MakeRoadBridgeRamp(TileIndex t, Owner o, BridgeType bridgetype, DiagDirection d, RoadTypes r)
 {
-	MakeBridgeRamp(t, o, bridgetype, d, TRANSPORT_ROAD, r);
+	MakeBridgeRamp(t, o, bridgetype, d, TRANSPORT_ROAD, 0);
+	SetRoadOwner(t, ROADTYPE_ROAD, o);
+	if (o != OWNER_TOWN) SetRoadOwner(t, ROADTYPE_TRAM, o);
+	SetRoadTypes(t, r);
 }
 
 /**

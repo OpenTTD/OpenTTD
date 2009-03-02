@@ -1392,7 +1392,7 @@ static RoadStop **FindRoadStopSpot(bool truck_station, Station *st)
  * @param p1 entrance direction (DiagDirection)
  * @param p2 bit 0: 0 for Bus stops, 1 for truck stops
  *           bit 1: 0 for normal, 1 for drive-through
- *           bit 2..4: the roadtypes
+ *           bit 2..3: the roadtypes
  *           bit 5: allow stations directly adjacent to other stations.
  *           bit 16..31: station ID to join (INVALID_STATION if build new one)
  */
@@ -1401,10 +1401,11 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	bool type = HasBit(p2, 0);
 	bool is_drive_through = HasBit(p2, 1);
 	bool build_over_road  = is_drive_through && IsNormalRoadTile(tile);
-	bool town_owned_road  = false;
-	RoadTypes rts = (RoadTypes)GB(p2, 2, 3);
+	RoadTypes rts = (RoadTypes)GB(p2, 2, 2);
 	StationID station_to_join = GB(p2, 16, 16);
 	bool distant_join = (station_to_join != INVALID_STATION);
+	Owner tram_owner = _current_company;
+	Owner road_owner = _current_company;
 
 	if (distant_join && (!_settings_game.station.distant_join_stations || !IsValidStationID(station_to_join))) return CMD_ERROR;
 
@@ -1428,20 +1429,21 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if (build_over_road) {
 		/* there is a road, check if we can build road+tram stop over it */
 		if (HasBit(cur_rts, ROADTYPE_ROAD)) {
-			Owner road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
+			road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
 			if (road_owner == OWNER_TOWN) {
-				town_owned_road = true;
 				if (!_settings_game.construction.road_stop_on_town_road) return_cmd_error(STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD);
-			} else {
-				if (road_owner != OWNER_NONE && !CheckOwnership(road_owner)) return CMD_ERROR;
+			} else if (!_settings_game.construction.road_stop_on_competitor_road && road_owner != OWNER_NONE && !CheckOwnership(road_owner)) {
+				return CMD_ERROR;
 			}
 			num_roadbits += CountBits(GetRoadBits(tile, ROADTYPE_ROAD));
 		}
 
 		/* there is a tram, check if we can build road+tram stop over it */
 		if (HasBit(cur_rts, ROADTYPE_TRAM)) {
-			Owner tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
-			if (tram_owner != OWNER_NONE && !CheckOwnership(tram_owner)) return CMD_ERROR;
+			tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
+			if (!_settings_game.construction.road_stop_on_competitor_road && tram_owner != OWNER_NONE && !CheckOwnership(tram_owner)) {
+				return CMD_ERROR;
+			}
 			num_roadbits += CountBits(GetRoadBits(tile, ROADTYPE_TRAM));
 		}
 
@@ -1516,7 +1518,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 		RoadStopType rs_type = type ? ROADSTOP_TRUCK : ROADSTOP_BUS;
 		if (is_drive_through) {
-			MakeDriveThroughRoadStop(tile, st->owner, st->index, rs_type, rts, (Axis)p1, town_owned_road);
+			MakeDriveThroughRoadStop(tile, st->owner, road_owner, tram_owner, st->index, rs_type, rts, (Axis)p1);
 		} else {
 			MakeRoadStop(tile, st->owner, st->index, rs_type, rts, (DiagDirection)p1);
 		}
@@ -1629,7 +1631,6 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	RoadBits road_bits = IsDriveThroughStopTile(tile) ?
 			((GetRoadStopDir(tile) == DIAGDIR_NE) ? ROAD_X : ROAD_Y) :
 			DiagDirToRoadBits(GetRoadStopDir(tile));
-	bool is_towns_road = is_drive_through && GetStopBuiltOnTownRoad(tile);
 
 	CommandCost ret = RemoveRoadStop(st, flags, tile);
 
@@ -1639,7 +1640,7 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		 * removed by the owner of the roadstop, _current_company is the
 		 * owner of the road stop. */
 		MakeRoadNormal(tile, road_bits, rts, ClosestTownFromTile(tile, UINT_MAX)->index,
-				is_towns_road ? OWNER_TOWN : _current_company, _current_company, _current_company);
+				GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM));
 	}
 
 	return ret;
@@ -2478,10 +2479,27 @@ static void GetAcceptedCargo_Station(TileIndex tile, AcceptedCargo ac)
 static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 {
 	td->owner[0] = GetTileOwner(tile);
-	if (IsDriveThroughStopTile(tile) && HasTileRoadType(tile, ROADTYPE_ROAD) && GetStopBuiltOnTownRoad(tile)) {
-		/* Display a second owner */
-		td->owner_type[1] = STR_ROAD_OWNER;
-		td->owner[1] = OWNER_TOWN;
+	if (IsDriveThroughStopTile(tile)) {
+		Owner road_owner = INVALID_OWNER;
+		Owner tram_owner = INVALID_OWNER;
+		RoadTypes rts = GetRoadTypes(tile);
+		if (HasBit(rts, ROADTYPE_ROAD)) road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
+		if (HasBit(rts, ROADTYPE_TRAM)) tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
+
+		/* Is there a mix of owners? */
+		if ((tram_owner != INVALID_OWNER && tram_owner != td->owner[0]) ||
+				(road_owner != INVALID_OWNER && road_owner != td->owner[0])) {
+			uint i = 1;
+			if (road_owner != INVALID_OWNER) {
+				td->owner_type[i] = STR_ROAD_OWNER;
+				td->owner[i] = road_owner;
+				i++;
+			}
+			if (tram_owner != INVALID_OWNER) {
+				td->owner_type[i] = STR_TRAM_OWNER;
+				td->owner[i] = tram_owner;
+			}
+		}
 	}
 	td->build_date = GetStationByTile(tile)->build_date;
 
@@ -3117,6 +3135,15 @@ void DeleteOilRig(TileIndex tile)
 
 static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_owner)
 {
+	if (IsDriveThroughStopTile(tile)) {
+		for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
+			/* Update all roadtypes, no matter if they are present */
+			if (GetRoadOwner(tile, rt) == old_owner) {
+				SetRoadOwner(tile, rt, new_owner == INVALID_OWNER ? OWNER_NONE : new_owner);
+			}
+		}
+	}
+
 	if (!IsTileOwner(tile, old_owner)) return;
 
 	if (new_owner != INVALID_OWNER) {
@@ -3150,10 +3177,16 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
  */
 static bool CanRemoveRoadWithStop(TileIndex tile, DoCommandFlag flags)
 {
-	/* The road can always be cleared if it was not a town-owned road */
-	if (!GetStopBuiltOnTownRoad(tile)) return true;
+	Owner road_owner = _current_company;
+	Owner tram_owner = _current_company;
 
-	return CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile, ROADTYPE_ROAD), OWNER_TOWN, ROADTYPE_ROAD, flags);
+	RoadTypes rts = GetRoadTypes(tile);
+	if (HasBit(rts, ROADTYPE_ROAD)) road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
+	if (HasBit(rts, ROADTYPE_TRAM)) tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
+
+	if ((road_owner != OWNER_TOWN && !CheckOwnership(road_owner)) || !CheckOwnership(tram_owner)) return false;
+
+	return road_owner != OWNER_TOWN || CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile, ROADTYPE_ROAD), OWNER_TOWN, ROADTYPE_ROAD, flags);
 }
 
 static CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)

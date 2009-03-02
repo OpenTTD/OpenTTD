@@ -649,9 +649,6 @@ static void ToolbarBuildRoadClick(Window *w)
 	const Company *c = GetCompany(_local_company);
 	DropDownList *list = new DropDownList();
 	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		/* Highways don't exist */
-		if (rt == ROADTYPE_HWAY) continue;
-
 		/* The standard road button is *always* available */
 		list->push_back(new DropDownListStringItem(STR_180A_ROAD_CONSTRUCTION + rt, rt, !(HasBit(c->avail_roadtypes, rt) || rt == ROADTYPE_ROAD)));
 	}

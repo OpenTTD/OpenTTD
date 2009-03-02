@@ -378,20 +378,17 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 						roadtypes |= ROADTYPES_ROAD;
 						break;
 
-					case ROADTYPES_ROADTRAM: if (road == tram) break;
-						/* FALL THROUGH */
-					case ROADTYPES_ROADHWAY: // Road and highway are incompatible in this case
-					case ROADTYPES_TRAMHWAY: // Tram and highway are incompatible in this case
-					case ROADTYPES_ALL:      // Also incompatible
-						return CMD_ERROR;
+					case ROADTYPES_ALL:
+						if (road != tram) return CMD_ERROR;
+						break;
 				}
 
-				road |= tram | GetRoadBits(tile, ROADTYPE_HWAY);
+				road |= tram;
 
 				if ((track == TRACK_X && road == ROAD_Y) ||
 						(track == TRACK_Y && road == ROAD_X)) {
 					if (flags & DC_EXEC) {
-						MakeRoadCrossing(tile, GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM), GetRoadOwner(tile, ROADTYPE_HWAY), _current_company, (track == TRACK_X ? AXIS_Y : AXIS_X), railtype, roadtypes, GetTownIndex(tile));
+						MakeRoadCrossing(tile, GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM), _current_company, (track == TRACK_X ? AXIS_Y : AXIS_X), railtype, roadtypes, GetTownIndex(tile));
 						UpdateLevelCrossing(tile, false);
 					}
 					break;
@@ -475,7 +472,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 					if (v != NULL) FreeTrainTrackReservation(v);
 				}
 				owner = GetTileOwner(tile);
-				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypes(tile), GetTownIndex(tile), GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM), GetRoadOwner(tile, ROADTYPE_HWAY));
+				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypes(tile), GetTownIndex(tile), GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM));
 			}
 			break;
 		}

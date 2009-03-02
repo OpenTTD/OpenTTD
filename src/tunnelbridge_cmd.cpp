@@ -211,7 +211,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	/* type of bridge */
 	switch (transport_type) {
 		case TRANSPORT_ROAD:
-			roadtypes = (RoadTypes)GB(p2, 8, 3);
+			roadtypes = (RoadTypes)GB(p2, 8, 2);
 			if (!AreValidRoadTypes(roadtypes) || !HasRoadTypesAvail(_current_company, roadtypes)) return CMD_ERROR;
 			break;
 
@@ -354,7 +354,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	/* do the drill? */
 	if (flags & DC_EXEC) {
 		DiagDirection dir = AxisToDiagDir(direction);
-		Owner owner = (replace_bridge && IsTileOwner(tile_start, OWNER_TOWN)) ? OWNER_TOWN : _current_company;
+		Owner owner = replace_bridge ? GetTileOwner(tile_start) : _current_company;
 
 		switch (transport_type) {
 			case TRANSPORT_RAIL:
@@ -480,7 +480,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 	if (transport_type == TRANSPORT_RAIL) {
 		if (!ValParamRailtype((RailType)p1)) return CMD_ERROR;
 	} else {
-		const RoadTypes rts = (RoadTypes)GB(p1, 0, 3);
+		const RoadTypes rts = (RoadTypes)GB(p1, 0, 2);
 		if (!AreValidRoadTypes(rts) || !HasRoadTypesAvail(_current_company, rts)) return CMD_ERROR;
 	}
 
@@ -570,8 +570,8 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 			AddSideToSignalBuffer(start_tile, INVALID_DIAGDIR, _current_company);
 			YapfNotifyTrackLayoutChange(start_tile, DiagDirToDiagTrack(direction));
 		} else {
-			MakeRoadTunnel(start_tile, _current_company, direction,                 (RoadTypes)GB(p1, 0, 3));
-			MakeRoadTunnel(end_tile,   _current_company, ReverseDiagDir(direction), (RoadTypes)GB(p1, 0, 3));
+			MakeRoadTunnel(start_tile, _current_company, direction,                 (RoadTypes)GB(p1, 0, 2));
+			MakeRoadTunnel(end_tile,   _current_company, ReverseDiagDir(direction), (RoadTypes)GB(p1, 0, 2));
 		}
 	}
 
@@ -583,11 +583,19 @@ static inline bool CheckAllowRemoveTunnelBridge(TileIndex tile)
 {
 	/* Floods can remove anything as well as the scenario editor */
 	if (_current_company == OWNER_WATER || _game_mode == GM_EDITOR) return true;
-	/* Obviously if the bridge/tunnel belongs to us, or no-one, we can remove it */
-	if (CheckTileOwnership(tile) || IsTileOwner(tile, OWNER_NONE)) return true;
-	/* Otherwise we can only remove town-owned stuff with extra settings, or cheat */
-	if (IsTileOwner(tile, OWNER_TOWN) && (_settings_game.construction.extra_dynamite || _cheats.magic_bulldozer.value)) return true;
-	return false;
+
+	RoadTypes rts = GetRoadTypes(tile);
+	Owner road_owner = _current_company;
+	Owner tram_owner = _current_company;
+
+	if (HasBit(rts, ROADTYPE_ROAD)) road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
+	if (HasBit(rts, ROADTYPE_TRAM)) tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
+
+	/* We can remove unowned road and if the town allows it */
+	if (road_owner == OWNER_NONE || (road_owner == OWNER_TOWN && (_settings_game.construction.extra_dynamite || _cheats.magic_bulldozer.value))) road_owner = _current_company;
+	if (tram_owner == OWNER_NONE) tram_owner = _current_company;
+
+	return CheckOwnership(road_owner) && CheckOwnership(tram_owner);
 }
 
 static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
@@ -1242,6 +1250,27 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 		td->str = (tt == TRANSPORT_WATER) ? STR_AQUEDUCT : GetBridgeSpec(GetBridgeType(tile))->transport_name[tt];
 	}
 	td->owner[0] = GetTileOwner(tile);
+
+	Owner road_owner = INVALID_OWNER;
+	Owner tram_owner = INVALID_OWNER;
+	RoadTypes rts = GetRoadTypes(tile);
+	if (HasBit(rts, ROADTYPE_ROAD)) road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
+	if (HasBit(rts, ROADTYPE_TRAM)) tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
+
+	/* Is there a mix of owners? */
+	if ((tram_owner != INVALID_OWNER && tram_owner != td->owner[0]) ||
+			(road_owner != INVALID_OWNER && road_owner != td->owner[0])) {
+		uint i = 1;
+		if (road_owner != INVALID_OWNER) {
+			td->owner_type[i] = STR_ROAD_OWNER;
+			td->owner[i] = road_owner;
+			i++;
+		}
+		if (tram_owner != INVALID_OWNER) {
+			td->owner_type[i] = STR_TRAM_OWNER;
+			td->owner[i] = tram_owner;
+		}
+	}
 }
 
 
@@ -1292,6 +1321,13 @@ static TrackStatus GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType
 
 static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner new_owner)
 {
+	for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
+		/* Update all roadtypes, no matter if they are present */
+		if (GetRoadOwner(tile, rt) == old_owner) {
+			SetRoadOwner(tile, rt, new_owner == INVALID_OWNER ? OWNER_NONE : new_owner);
+		}
+	}
+
 	if (!IsTileOwner(tile, old_owner)) return;
 
 	if (new_owner != INVALID_OWNER) {

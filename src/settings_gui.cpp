@@ -1096,6 +1096,7 @@ static SettingEntry _settings_stations[] = {
 	SettingEntry("economy.station_noise_level"),
 	SettingEntry("station.modified_catchment"),
 	SettingEntry("construction.road_stop_on_town_road"),
+	SettingEntry("construction.road_stop_on_competitor_road"),
 };
 /** Stations sub-page */
 static SettingsPage _settings_stations_page = {_settings_stations, lengthof(_settings_stations)};

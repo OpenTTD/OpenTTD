@@ -16,7 +16,6 @@ enum RoadType {
 	ROADTYPE_BEGIN = 0,     ///< Used for iterations
 	ROADTYPE_ROAD = 0,      ///< Basic road type
 	ROADTYPE_TRAM = 1,      ///< Trams
-	ROADTYPE_HWAY = 2,      ///< Only a placeholder. Not sure what we are going to do with this road type.
 	ROADTYPE_END,           ///< Used for iterations
 	INVALID_ROADTYPE = 0xFF ///< flag for invalid roadtype
 };
@@ -27,16 +26,12 @@ DECLARE_POSTFIX_INCREMENT(RoadType);
  * @note currently only roadtypes with ROADTYPE_ROAD and ROADTYPE_TRAM are supported.
  */
 enum RoadTypes {
-	ROADTYPES_NONE     = 0,                                                 ///< No roadtypes
-	ROADTYPES_ROAD     = 1 << ROADTYPE_ROAD,                                ///< Road
-	ROADTYPES_TRAM     = 1 << ROADTYPE_TRAM,                                ///< Trams
-	ROADTYPES_HWAY     = 1 << ROADTYPE_HWAY,                                ///< Highway (or whatever substitute)
-	ROADTYPES_ROADTRAM = ROADTYPES_ROAD | ROADTYPES_TRAM,                   ///< Road + trams
-	ROADTYPES_ROADHWAY = ROADTYPES_ROAD | ROADTYPES_HWAY,                   ///< Road + highway (or whatever substitute)
-	ROADTYPES_TRAMHWAY = ROADTYPES_TRAM | ROADTYPES_HWAY,                   ///< Trams + highway (or whatever substitute)
-	ROADTYPES_ALL      = ROADTYPES_ROAD | ROADTYPES_TRAM | ROADTYPES_HWAY,  ///< Road + trams + highway (or whatever substitute)
-	ROADTYPES_END,                                                          ///< Used for iterations?
-	INVALID_ROADTYPES  = 0xFF                                               ///< Invalid roadtypes
+	ROADTYPES_NONE     = 0,                                ///< No roadtypes
+	ROADTYPES_ROAD     = 1 << ROADTYPE_ROAD,               ///< Road
+	ROADTYPES_TRAM     = 1 << ROADTYPE_TRAM,               ///< Trams
+	ROADTYPES_ALL      = ROADTYPES_ROAD | ROADTYPES_TRAM,  ///< Road + trams
+	ROADTYPES_END,                                         ///< Used for iterations?
+	INVALID_ROADTYPES  = 0xFF                              ///< Invalid roadtypes
 };
 DECLARE_ENUM_AS_BIT_SET(RoadTypes);
 template <> struct EnumPropsT<RoadTypes> : MakeEnumPropsT<RoadTypes, byte, ROADTYPES_NONE, ROADTYPES_END, INVALID_ROADTYPES> {};
