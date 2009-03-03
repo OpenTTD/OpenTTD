@@ -946,6 +946,7 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Estaç�
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para trens simulando trens pesados: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Fator de velocidade para aeronaves: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permitir estações drive-through em ruas locais: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Permitir estações drive-through nas ruas de outros competidores: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permitir construção de estações adjacentes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Ativar múltiplos conjuntos NewGRF de locomotivas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Impossível alterar essa configuração enquanto houverem veículos.

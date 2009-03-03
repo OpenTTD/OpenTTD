@@ -945,6 +945,7 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Stasiun
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Faktor kali muatan untuk simulasi kereta yang berat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor kecepatan pesawat: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Ijinkan terminal drive-thru pada jalan milik kota: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Ijinkan terminal drive-thru pada jalan milik pesaing: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Ijinkan membangun stasiun berdampingan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Aktifkan beberapa pengaturan mesin NewGRF : {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Tidak diijinkan mengubah setting ini karena kendaraan sudah ada

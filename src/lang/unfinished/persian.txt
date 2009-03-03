@@ -1087,6 +1087,9 @@ STR_8083_WIZZOWOW_MAIL_TRUCK                                    :کامیون ح
 STR_8084_WITCOMBE_OIL_TANKER                                    :تانکر نفت Witcombe
 STR_8085_FOSTER_OIL_TANKER                                      :تانکر نفت Foster
 STR_8086_PERRY_OIL_TANKER                                       :تانکر نفت Perry
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :واگن حمل فرآورده های حیوانی Talbott
+STR_8088_UHL_LIVESTOCK_VAN                                      :واگن حمل فرآورده های حیوانی Uhl
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :واگن حمل فرآورده های حیوانی Foster
 STR_808A_BALOGH_GOODS_TRUCK                                     :کامیون محصولات Balogh
 STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :کامیون محصولات Craighead
 STR_808C_GOSS_GOODS_TRUCK                                       :کامیون محصولات Goss
@@ -1146,8 +1149,76 @@ STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :کامیون ح
 STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :کامیون حمل نوشیدنی گازدار Wizzowow
 STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :کامیون حمل پلاستیک MightyMover
 STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :کامیون حمل پلاستیک Powernaught
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :کامین حمل پلاستیک Wizzowow
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :کامیون حمل حباب MightyMover
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :کامیون حمل حباب Powernaught
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :کامیون حمل حباب Wizzowow
+STR_80CC_MPS_OIL_TANKER                                         :تانکر نفت MPS
+STR_80CD_CS_INC_OIL_TANKER                                      :تانکر نفت CS-Inc.
+STR_80CE_MPS_PASSENGER_FERRY                                    :اتوبوس MPS
+STR_80CF_FFP_PASSENGER_FERRY                                    :اتوبوس FFP
+STR_80D0_BAKEWELL_300_HOVERCRAFT                                :هاور کرفت Bakewell 300
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :اتوبوس Chugger-Chug
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :اتوبوس Shivershake
+STR_80D3_YATE_CARGO_SHIP                                        :کشتی حمل بار Yate
+STR_80D4_BAKEWELL_CARGO_SHIP                                    :کشتی حمل بار Bakewell
+STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :کشتی حمل بار Mightymover
+STR_80D6_POWERNAUT_CARGO_SHIP                                   :کشتی حمل بار Powernaut
+STR_80D7_SAMPSON_U52                                            :Sampson U52
+STR_80D8_COLEMAN_COUNT                                          :Coleman Count
+STR_80D9_FFP_DART                                               :FFP Dart
+STR_80DA_YATE_HAUGAN                                            :Yate Haugan
+STR_80DB_BAKEWELL_COTSWALD_LB_3                                 :Bakewell Cotswald LB-3
+STR_80DC_BAKEWELL_LUCKETT_LB_8                                  :Bakewell Luckett LB-8
+STR_80DD_BAKEWELL_LUCKETT_LB_9                                  :Bakewell Luckett LB-9
+STR_80DE_BAKEWELL_LUCKETT_LB80                                  :Bakewell Luckett LB80
+STR_80DF_BAKEWELL_LUCKETT_LB_10                                 :Bakewell Luckett LB-10
+STR_80E0_BAKEWELL_LUCKETT_LB_11                                 :Bakewell Luckett LB-11
+STR_80E1_YATE_AEROSPACE_YAC_1_11                                :Yate Aerospace YAC 1-11
+STR_80E2_DARWIN_100                                             :Darwin 100
+STR_80E3_DARWIN_200                                             :Darwin 200
+STR_80E4_DARWIN_300                                             :Darwin 300
+STR_80E5_DARWIN_400                                             :Darwin 400
+STR_80E6_DARWIN_500                                             :Darwin 500
+STR_80E7_DARWIN_600                                             :Darwin 600
+STR_80E8_GURU_GALAXY                                            :Guru Galaxy
+STR_80E9_AIRTAXI_A21                                            :Airtaxi A21
+STR_80EA_AIRTAXI_A31                                            :Airtaxi A31
+STR_80EB_AIRTAXI_A32                                            :Airtaxi A32
+STR_80EC_AIRTAXI_A33                                            :Airtaxi A33
+STR_80EE_DINGER_100                                             :Dinger 100
+STR_80EF_AIRTAXI_A34_1000                                       :AirTaxi A34-1000
+STR_80F0_YATE_Z_SHUTTLE                                         :Yate Z-Shuttle
+STR_80F1_KELLING_K1                                             :Kelling K1
+STR_80F2_KELLING_K6                                             :Kelling K6
+STR_80F3_KELLING_K7                                             :Kelling K7
+STR_80F4_DARWIN_700                                             :Darwin 700
+STR_80F5_FFP_HYPERDART_2                                        :FFP Hyperdart 2
+STR_80F6_DINGER_200                                             :Dinger 200
+STR_80F7_DINGER_1000                                            :Dinger 1000
+STR_80F8_PLODDYPHUT_100                                         :Ploddyphut 100
+STR_80F9_PLODDYPHUT_500                                         :Ploddyphut 500
+STR_80FA_FLASHBANG_X1                                           :Flashbang X1
+STR_80FB_JUGGERPLANE_M1                                         :Juggerplane M1
+STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizzer
+STR_80FD_TRICARIO_HELICOPTER                                    :هلیکوپترTricario
+STR_80FE_GURU_X2_HELICOPTER                                     :هلیکوپترGuru X2
+STR_80FF_POWERNAUT_HELICOPTER                                   :هلیکوپترPowernaut
+STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}پیغام از سازنده ی وسیله نقلیه
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}ما به تازگی {STRING} را طراحی کرده ایم- آیا مایلید در یک سال اولان را به شگل انحصاری مورد تست قرار دهید تا نحوه عملکرد وسیله را قبل از عرضه ی جهانی مورد بررسی قرار دهیم؟
+STR_8102_RAILROAD_LOCOMOTIVE                                    :لوکوموتیو راه آهن
+STR_8103_ROAD_VEHICLE                                           :ماشین جاده ای
+STR_8104_AIRCRAFT                                               :هواپیما
+STR_8105_SHIP                                                   :کشتی
+STR_8106_MONORAIL_LOCOMOTIVE                                    :لوکوموتیو مونوریل
+STR_8107_MAGLEV_LOCOMOTIVE                                      :لوکوموتیو ریل مغناطیسی
 
 ##id 0x8800
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}شهروندان ورود اولین قطار را به {STATION} تبریک گفتند!
+STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (جزئیات)
+STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}قطار در راه است
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 
 
 
@@ -1155,8 +1226,39 @@ STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :کامیون ح
 
 
 
+STR_8812_EMPTY                                                  :{LTBLUE}خالی
+STR_8813_FROM                                                   :{LTBLUE}{CARGO} از {STATION}
+STR_8815_NEW_VEHICLES                                           :{BLACK}وسیله ی جدید
+STR_8816                                                        :{BLACK}-
+STR_8819_TRAIN_TOO_LONG                                         :{WHITE}قطار بسیار طولانی شده
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} قطار{P "" s}
 
+STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}قطار جدید
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}قطار جدید مونوریل
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}قطار جدید ریل مغناطیسی
 
+STR_881F_BUILD_VEHICLE                                          :{BLACK}ساخت وسیله نقلیه
+STR_8820_RENAME                                                 :{BLACK}تغییر نام
+STR_8823_SKIP                                                   :{BLACK}رها کردن
+STR_8824_DELETE                                                 :{BLACK}پاک کردن
+STR_8826_GO_TO                                                  :{BLACK}برو به
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (دستورات)
+STR_882A_END_OF_ORDERS                                          :{SETX 10}- - پایان دستورات - -
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}نمیشود قطار  ساخت ...
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   مدل: {LTBLUE}{NUM}{BLACK} قیمت: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}  قیمت: {LTBLUE}{CURRENCY}
+STR_882E                                                        :{WHITE}{VEHICLE}
+STR_882F_LOADING_UNLOADING                                      :{LTBLUE}پر / خالی کردن
+STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}برای دستورات بیشتر جا نداریم
+STR_8832_TOO_MANY_ORDERS                                        :{WHITE}دستورات بسیار زیاد شده اند
+STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}نمی شود دستور جدید قرار داد ...
+STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}نمی شود دستور را حذف کرد
+STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}این دستور تغییر نمی کند...
+STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE} ...این وسیله را نمی توان حرکت داد
+STR_8838_N_A                                                    :N/A{SKIP}
+STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}نمی شود قطار را فروخت...
+STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}قطار را نمی شود حرکت داد / متوقف کرد...
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}فاصله ی زمانی بین تعمیرات دوره ای: {LTBLUE}{COMMA}روز {BLACK}   آخیرین تعمسرات: {LTBLUE}{DATE_LONG}
 
 
 

@@ -946,6 +946,7 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Estacio
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Carga el multiplicador de peso para simular trenes pesados: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor velocidad avión: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permite conducir en paradas sobre carreteras de ciudades: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Permitir pasar por los stops de carreteras de los competidores: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permitir construcción en estaciones contiguas : {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Activar motor  de multiples NewGRF: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Este cambio no es posible cuando tiene vehículos

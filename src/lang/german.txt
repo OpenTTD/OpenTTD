@@ -385,7 +385,7 @@ STR_016E                                                        :{TINYFONT}{STRI
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Spiel anhalten
-STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Spiel speichern, Spiel laden, Spiel abbrechen, Beenden
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Spiel speichern, Spiel laden, Spiel abbrechen, (OpenTTD) Beenden
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Liste der Firmenbahnhöfe anzeigen
 STR_0174_DISPLAY_MAP                                            :{BLACK}Weltkarte anzeigen
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Weltkarte anzeigen, Städteverzeichnis
@@ -590,7 +590,7 @@ STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Erzeuge 
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Landfläche wiederherstellen
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Landfläche wiederherstellen
 STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Das gesamte Spielereigentum von der Karte entfernen
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Soll wirklich das gesamte Spielereigentum entfernt werden soll?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Soll wirklich das gesamte Spielereigentum entfernt werden?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landfläche erzeugen
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stadt errichten
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrie errichten
@@ -618,7 +618,7 @@ STR_028A_RANDOM_TREES                                           :{BLACK}Zufälli
 STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Bäume zufällig über die Landschaft verteilen
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Felsige Gebiete in der Landschaft platzieren
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Leuchtturm errichten
-STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sender errichten
+STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sendemast errichten
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Wüstengebiet anlegen{}Zum Entfernen Strg-Taste drücken
 STR_CREATE_LAKE                                                 :{BLACK}Wasser erzeugen.{}Baut einen Kanal. Bei gedrückter Strg-Taste wird ein Wasserfeld erzeugt, das umliegendes Land flutet.
 STR_CREATE_RIVER                                                :{BLACK}Flüsse platzieren.
@@ -734,7 +734,7 @@ STR_02F9_EVERY_6_MONTHS                                         :Alle  6 Monate
 STR_02FA_EVERY_12_MONTHS                                        :Alle 12 Monate
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Ein neues Spiel beginnen
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Ein gespeichertes Spiel laden
-STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Eine eigene Spielwelt / Szenario kreieren
+STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Eine eigene Spielwelt / eigenes Szenario kreieren
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Mehrspieler-Spiel beginnen
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Spieleinstellungen anzeigen
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Schwierigkeitsgrad anzeigen
@@ -941,11 +941,12 @@ STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Fahrzeu
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Spielfeld scrollen, wenn die Maus am Bildrand anstößt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Bestechen der Stadtverwaltung erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Den Erwerb exklusiver Transportrechte erlauben: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Es erlauben, anderen Firmen Geld zu schenken: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Schenken von Geld an andere Firmen erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ungleichmäßige Bahnhöfe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Frachtgewicht erhöhen, um schwere Züge zu simulieren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Flugzeug-Geschwindigkeitsfaktor: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Bushaltestellen an städtischen Straßen erlauben: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Bus- und Lkw-Haltestellen auf städtischen Straßen erlauben: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Bus- und Lkw-Haltestellen auf Straßen von Wettbewerbern erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Bau angrenzender Stationen erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Mehrere NewGRF Fahrzeugsets erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Diese Einstellung kann nicht geändert werden solange Fahrzeuge im Spiel sind.
@@ -1070,7 +1071,7 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Deaktiv
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Farbige Nachrichten erscheinen ab: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Startdatum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Feinere Wirtschaft aktivieren (mehrere, kleinere Veränderungen): {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Es erlauben, Anteile an anderen Firmen zu kaufen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Handel mit Firmenanteilen erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Errichte Signale alle {ORANGE}{STRING} Felder beim Ziehen mit der Maus
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatischer Bau von Formsignalen bis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Aktiviere Signal-Menü: {ORANGE}{STRING}
@@ -1539,7 +1540,7 @@ STR_0807_ESTIMATED_INCOME                                       :{WHITE}Geschät
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Land kann nicht angehoben werden...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Land kann nicht abgesenkt werden...
 STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Kann dieses Land nicht anpassen...
-STR_080A_ROCKS                                                  :Gebirge
+STR_080A_ROCKS                                                  :Felsen
 STR_080B_ROUGH_LAND                                             :Unebenes Land
 STR_080C_BARE_LAND                                              :Kahles Land
 STR_080D_GRASS                                                  :Gras
@@ -2036,7 +2037,7 @@ STR_5028_TUBULAR_ROAD_BRIDGE                                    :Rundstahlbrück
 
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Gegenstand im Weg
-STR_5801_TRANSMITTER                                            :Sender
+STR_5801_TRANSMITTER                                            :Sendemast
 STR_5802_LIGHTHOUSE                                             :Leuchtturm
 STR_5803_COMPANY_HEADQUARTERS                                   :Firmensitz
 STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...Firmensitz ist im Weg
@@ -2100,7 +2101,7 @@ STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Speicher
 STR_6801_EASY                                                   :{BLACK}Leicht
 STR_6802_MEDIUM                                                 :{BLACK}Normal
 STR_6803_HARD                                                   :{BLACK}Schwer
-STR_6804_CUSTOM                                                 :{BLACK}Individuell
+STR_6804_CUSTOM                                                 :{BLACK}benutzerdef.
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
@@ -2804,7 +2805,7 @@ STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Gewinn l
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zuverlässigkeit: {LTBLUE}{COMMA}% {BLACK}Ausfälle seit letzter Wartung: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Angehalten
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Der Zug kann das Signal nicht ohne Gefahr passieren...
-STR_8863_CRASHED                                                :{RED}Zusammenstoß!
+STR_8863_CRASHED                                                :{RED}Unfall!
 
 STR_8865_NAME_TRAIN                                             :{WHITE}Name des Zuges
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Zug kann nicht benannt werden...
@@ -3106,7 +3107,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Dateinam
 STR_NEWGRF_PALETTE                                              :{BLACK}Palette: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF-ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5-Summe: {SILVER}{STRING}
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Änderungen während eines laufenden Spiels können zum Absturz von OpenTTD führen.{}Fortfahren?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Änderungen während eines laufenden Spiels können zum Absturz von OpenTTD führen.{}Trotzdem fortfahren?
 
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warnung: {SILVER}{STRING}
