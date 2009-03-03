@@ -123,6 +123,15 @@ public:
 		}
 		return this->buffer;
 	}
+
+	/**
+	 * Get the currently allocated buffer.
+	 * @return the buffer
+	 */
+	FORCEINLINE const T *GetBuffer() const
+	{
+		return this->buffer;
+	}
 };
 
 /**

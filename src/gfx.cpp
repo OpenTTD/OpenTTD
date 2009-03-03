@@ -52,7 +52,7 @@ static int ReallyDoDrawString(const char *string, int x, int y, TextColour colou
 
 FontSize _cur_fontsize;
 static FontSize _last_fontsize;
-static uint8 _cursor_backup[64 * 64 * 4];
+static ReusableBuffer<uint8> _cursor_backup;
 
 /**
  * The rect for repaint.
@@ -1288,7 +1288,7 @@ void UndrawMouseCursor()
 	if (_cursor.visible) {
 		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 		_cursor.visible = false;
-		blitter->CopyFromBuffer(blitter->MoveTo(_screen.dst_ptr, _cursor.draw_pos.x, _cursor.draw_pos.y), _cursor_backup, _cursor.draw_size.x, _cursor.draw_size.y);
+		blitter->CopyFromBuffer(blitter->MoveTo(_screen.dst_ptr, _cursor.draw_pos.x, _cursor.draw_pos.y), _cursor_backup.GetBuffer(), _cursor.draw_size.x, _cursor.draw_size.y);
 		_video_driver->MakeDirty(_cursor.draw_pos.x, _cursor.draw_pos.y, _cursor.draw_size.x, _cursor.draw_size.y);
 	}
 }
@@ -1337,10 +1337,10 @@ void DrawMouseCursor()
 	_cursor.draw_pos.y = y;
 	_cursor.draw_size.y = h;
 
-	assert(blitter->BufferSize(w, h) < (int)sizeof(_cursor_backup));
+	uint8 *buffer = _cursor_backup.Allocate(blitter->BufferSize(w, h));
 
 	/* Make backup of stuff below cursor */
-	blitter->CopyToBuffer(blitter->MoveTo(_screen.dst_ptr, _cursor.draw_pos.x, _cursor.draw_pos.y), _cursor_backup, _cursor.draw_size.x, _cursor.draw_size.y);
+	blitter->CopyToBuffer(blitter->MoveTo(_screen.dst_ptr, _cursor.draw_pos.x, _cursor.draw_pos.y), buffer, _cursor.draw_size.x, _cursor.draw_size.y);
 
 	/* Draw cursor on screen */
 	_cur_dpi = &_screen;
