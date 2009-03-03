@@ -1800,6 +1800,9 @@ static bool CheckFree2x2Area(TileIndex tile, TownID town, uint z, bool noslope)
  */
 static inline bool TownLayoutAllowsHouseHere(Town *t, TileIndex tile)
 {
+	/* Allow towns everywhere when we don't build roads */
+	if (!_settings_game.economy.allow_town_roads && !_generating_world) return true;
+
 	TileIndexDiffC grid_pos = TileIndexToTileIndexDiffC(t->xy, tile);
 
 	switch (t->layout) {
@@ -1828,6 +1831,9 @@ static inline bool TownLayoutAllowsHouseHere(Town *t, TileIndex tile)
  */
 static inline bool TownLayoutAllows2x2HouseHere(Town *t, TileIndex tile)
 {
+	/* Allow towns everywhere when we don't build roads */
+	if (!_settings_game.economy.allow_town_roads && !_generating_world) return true;
+
 	/* MapSize() is sure dividable by both MapSizeX() and MapSizeY(),
 	 * so to do only one memory access, use MapSize() */
 	uint dx = MapSize() + TileX(t->xy) - TileX(tile);
