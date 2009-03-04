@@ -1596,7 +1596,7 @@ public:
 
 				const FiosItem *file = _fios_items.Get(y);
 
-				char *name = FiosBrowseTo(file);
+				const char *name = FiosBrowseTo(file);
 				if (name != NULL) {
 					if (_saveload_mode == SLD_LOAD_GAME || _saveload_mode == SLD_LOAD_SCENARIO) {
 						_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD;

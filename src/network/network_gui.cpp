@@ -1012,7 +1012,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 				if (this->map == NULL) { // start random new game
 					ShowGenerateLandscape();
 				} else { // load a scenario
-					char *name = FiosBrowseTo(this->map);
+					const char *name = FiosBrowseTo(this->map);
 					if (name != NULL) {
 						SetFiosType(this->map->type);
 						_file_to_saveload.filetype = FT_SCENARIO;

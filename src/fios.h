@@ -98,7 +98,7 @@ void FiosGetHeightmapList(SaveLoadDialogMode mode);
 /* Free the list of savegames */
 void FiosFreeSavegameList();
 /* Browse to. Returns a filename w/path if we reached a file. */
-char *FiosBrowseTo(const FiosItem *item);
+const char *FiosBrowseTo(const FiosItem *item);
 /* Return path, free space and stringID */
 StringID FiosGetDescText(const char **path, uint64 *total_free);
 /* Delete a name */

@@ -84,7 +84,7 @@ StringID FiosGetDescText(const char **path, uint64 *total_free)
 /* Browse to a new path based on the passed FiosItem struct
  * @param *item FiosItem object telling us what to do
  * @return a string if we have given a file as a target, otherwise NULL */
-char *FiosBrowseTo(const FiosItem *item)
+const char *FiosBrowseTo(const FiosItem *item)
 {
 	char *path = _fios_path;
 
