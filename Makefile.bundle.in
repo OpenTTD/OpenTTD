@@ -36,8 +36,6 @@ bundle: all
 	$(Q)rm -rf   "$(BUNDLE_DIR)"
 	$(Q)mkdir -p "$(BUNDLE_DIR)"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/docs"
-	$(Q)mkdir -p "$(BUNDLE_DIR)/scenario"
-	$(Q)mkdir -p "$(BUNDLE_DIR)/scenario/heightmap"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/media"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/scripts"
 	$(Q)mkdir -p "$(TTD_DIR)"
@@ -74,12 +72,6 @@ endif
 ifdef MENU_DIR
 	$(Q)cp "$(ROOT_DIR)/media/openttd.desktop" "$(BUNDLE_DIR)/media/"
 	$(Q)cat "$(ROOT_DIR)/media/openttd.desktop" | sed s/=openttd/=$(BINARY_NAME)/g > "$(ROOT_DIR)/media/openttd.desktop.install"
-endif
-ifeq ($(shell if test -n "`ls -l \"$(BIN_DIR)/scenario/\"*.scn 2> /dev/null`"; then echo 1; fi), 1)
-	$(Q)cp "$(BIN_DIR)/scenario/"*.scn        "$(BUNDLE_DIR)/scenario/"
-endif
-ifeq ($(shell if test -n "`ls -l \"$(BIN_DIR)/scenario/heightmaps/\"* 2>/dev/null`"; then echo 1; fi), 1)
-	$(Q)cp "$(BIN_DIR)/scenario/heightmaps/"* "$(BUNDLE_DIR)/scenario/heightmap/"
 endif
 ifeq ($(TTD), openttd.exe)
 	$(Q)unix2dos "$(BUNDLE_DIR)/docs/"* "$(BUNDLE_DIR)/readme.txt" "$(BUNDLE_DIR)/COPYING" "$(BUNDLE_DIR)/changelog.txt" "$(BUNDLE_DIR)/known-bugs.txt"
@@ -188,5 +180,4 @@ ifdef MENU_DIR
 	$(Q)install -d "$(INSTALL_MENU_DIR)"
 	$(Q)install -m 644 "$(ROOT_DIR)/media/openttd.desktop.install" "$(INSTALL_MENU_DIR)/${BINARY_NAME}.desktop"
 endif
-	$(Q)cp -R "$(BUNDLE_DIR)/scenario" "$(INSTALL_DATA_DIR)"
 endif # OSXAPP
