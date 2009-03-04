@@ -74,12 +74,16 @@ protected:
 		int p1 = Yapf().PfGetSettings().rail_look_ahead_signal_p1;
 		int p2 = Yapf().PfGetSettings().rail_look_ahead_signal_p2;
 		int *pen = m_sig_look_ahead_costs.GrowSizeNC(Yapf().PfGetSettings().rail_look_ahead_max_signals);
-		for (uint i = 0; i < Yapf().PfGetSettings().rail_look_ahead_max_signals; i++)
+		for (uint i = 0; i < Yapf().PfGetSettings().rail_look_ahead_max_signals; i++) {
 			pen[i] = p0 + i * (p1 + i * p2);
+		}
 	}
 
 	/// to access inherited path finder
-	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+	Tpf& Yapf()
+	{
+		return *static_cast<Tpf*>(this);
+	}
 
 public:
 	FORCEINLINE int SlopeCost(TileIndex tile, Trackdir td)
@@ -125,8 +129,9 @@ public:
 			switch (GetTileType(tile)) {
 				case MP_ROAD:
 					/* Increase the cost for level crossings */
-					if (IsLevelCrossing(tile))
+					if (IsLevelCrossing(tile)) {
 						cost += Yapf().PfGetSettings().rail_crossing_penalty;
+					}
 					break;
 
 				default:
@@ -215,7 +220,7 @@ public:
 								case SIGTYPE_NORMAL:
 								case SIGTYPE_ENTRY:  cost += Yapf().PfGetSettings().rail_firstred_penalty; break;
 								default: break;
-							};
+							}
 						}
 					}
 
@@ -251,9 +256,10 @@ public:
 	}
 
 public:
-	FORCEINLINE void SetMaxCost(int max_cost) {m_max_cost = max_cost;}
-
-
+	FORCEINLINE void SetMaxCost(int max_cost)
+	{
+		m_max_cost = max_cost;
+	}
 
 	/** Called by YAPF to calculate the cost from the origin to the given node.
 	 *  Calculates only the cost of given node, adds it to the parent node cost
@@ -412,10 +418,12 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			{
 				int min_speed = 0;
 				int max_speed = tf->GetSpeedLimit(&min_speed);
-				if (max_speed < v->max_speed)
+				if (max_speed < v->max_speed) {
 					extra_cost += YAPF_TILE_LENGTH * (v->max_speed - max_speed) * (4 + tf->m_tiles_skipped) / v->max_speed;
-				if (min_speed > v->max_speed)
+				}
+				if (min_speed > v->max_speed) {
 					extra_cost += YAPF_TILE_LENGTH * (min_speed - v->max_speed);
+				}
 			}
 
 			/* Finish if we already exceeded the maximum path cost (i.e. when
@@ -568,7 +576,5 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 		m_disable_cache = disable;
 	}
 };
-
-
 
 #endif /* YAPF_COSTRAIL_HPP */

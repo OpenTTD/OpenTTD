@@ -46,28 +46,41 @@ public:
 	{
 		m_new_node = NULL;
 	}
+
 	/** destructor */
 	~CNodeList_HashTableT()
 	{
 	}
+
 	/** return number of open nodes */
-	FORCEINLINE int OpenCount() {return m_open.Count();}
+	FORCEINLINE int OpenCount()
+	{
+		return m_open.Count();
+	}
+
 	/** return number of closed nodes */
-	FORCEINLINE int ClosedCount() {return m_closed.Count();}
+	FORCEINLINE int ClosedCount()
+	{
+		return m_closed.Count();
+	}
+
 	/** allocate new data item from m_arr */
 	FORCEINLINE Titem_ *CreateNewNode()
 	{
 		if (m_new_node == NULL) m_new_node = &m_arr.Add();
 		return m_new_node;
 	}
+
 	/** notify the nodelist, that we don't want to discard the given node */
 	FORCEINLINE void FoundBestNode(Titem_& item)
 	{
 		// for now it is enough to invalidate m_new_node if it is our given node
-		if (&item == m_new_node)
+		if (&item == m_new_node) {
 			m_new_node = NULL;
+		}
 		// TODO: do we need to store best nodes found in some extra list/array? Probably not now.
 	}
+
 	/** insert given item as open node (into m_open and m_open_queue) */
 	FORCEINLINE void InsertOpenNode(Titem_& item)
 	{
@@ -76,9 +89,11 @@ public:
 		// TODO: check if m_open_queue is not full
 		assert(!m_open_queue.IsFull());
 		m_open_queue.Push(item);
-		if (&item == m_new_node)
+		if (&item == m_new_node) {
 			m_new_node = NULL;
+		}
 	}
+
 	/** return the best open node */
 	FORCEINLINE Titem_ *GetBestOpenNode()
 	{
@@ -88,6 +103,7 @@ public:
 		}
 		return NULL;
 	}
+
 	/** remove and return the best open node */
 	FORCEINLINE Titem_ *PopBestOpenNode()
 	{
@@ -98,12 +114,14 @@ public:
 		}
 		return NULL;
 	}
+
 	/** return the open node specified by a key or NULL if not found */
 	FORCEINLINE Titem_ *FindOpenNode(const Key& key)
 	{
 		Titem_ *item = m_open.Find(key);
 		return item;
 	}
+
 	/** remove and return the open node specified by a key */
 	FORCEINLINE Titem_& PopOpenNode(const Key& key)
 	{
@@ -112,12 +130,14 @@ public:
 		m_open_queue.RemoveByIdx(idxPop);
 		return item;
 	}
+
 	/** close node */
 	FORCEINLINE void InsertClosedNode(Titem_& item)
 	{
 		assert(m_open.Find(item.GetKey()) == NULL);
 		m_closed.Push(item);
 	}
+
 	/** return the closed node specified by a key or NULL if not found */
 	FORCEINLINE Titem_ *FindClosedNode(const Key& key)
 	{

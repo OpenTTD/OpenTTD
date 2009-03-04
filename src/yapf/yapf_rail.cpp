@@ -15,8 +15,6 @@
 
 int _total_pf_time_us = 0;
 
-
-
 template <class Types>
 class CYapfReserveTrack
 {
@@ -27,7 +25,10 @@ public:
 
 protected:
 	/// to access inherited pathfinder
-	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+	FORCEINLINE Tpf& Yapf()
+	{
+		return *static_cast<Tpf*>(this);
+	}
 
 private:
 	TileIndex m_res_dest;         ///< The reservation target tile
@@ -171,7 +172,10 @@ public:
 
 protected:
 	/// to access inherited path finder
-	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+	FORCEINLINE Tpf& Yapf()
+	{
+		return *static_cast<Tpf*>(this);
+	}
 
 public:
 	/** Called by YAPF to move from the given node to the next tile. For each
@@ -180,12 +184,16 @@ public:
 	inline void PfFollowNode(Node& old_node)
 	{
 		TrackFollower F(Yapf().GetVehicle());
-		if (F.Follow(old_node.GetLastTile(), old_node.GetLastTrackdir()))
+		if (F.Follow(old_node.GetLastTile(), old_node.GetLastTrackdir())) {
 			Yapf().AddMultipleNodes(&old_node, F);
+		}
 	}
 
 	/// return debug report character to identify the transportation type
-	FORCEINLINE char TransportTypeChar() const {return 't';}
+	FORCEINLINE char TransportTypeChar() const
+	{
+		return 't';
+	}
 
 	static bool stFindNearestDepotTwoWay(const Vehicle *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int max_distance, int reverse_penalty, TileIndex *depot_tile, bool *reversed)
 	{
@@ -247,7 +255,10 @@ public:
 
 protected:
 	/// to access inherited path finder
-	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+	FORCEINLINE Tpf& Yapf()
+	{
+		return *static_cast<Tpf*>(this);
+	}
 
 public:
 	/** Called by YAPF to move from the given node to the next tile. For each
@@ -256,12 +267,16 @@ public:
 	inline void PfFollowNode(Node& old_node)
 	{
 		TrackFollower F(Yapf().GetVehicle(), Yapf().GetCompatibleRailTypes());
-		if (F.Follow(old_node.GetLastTile(), old_node.GetLastTrackdir()) && F.MaskReservedTracks())
+		if (F.Follow(old_node.GetLastTile(), old_node.GetLastTrackdir()) && F.MaskReservedTracks()) {
 			Yapf().AddMultipleNodes(&old_node, F);
+		}
 	}
 
 	/** Return debug report character to identify the transportation type */
-	FORCEINLINE char TransportTypeChar() const {return 't';}
+	FORCEINLINE char TransportTypeChar() const
+	{
+		return 't';
+	}
 
 	static bool stFindNearestSafeTile(const Vehicle *v, TileIndex t1, Trackdir td, bool override_railtype)
 	{
@@ -329,7 +344,10 @@ public:
 
 protected:
 	/// to access inherited path finder
-	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+	FORCEINLINE Tpf& Yapf()
+	{
+		return *static_cast<Tpf*>(this);
+	}
 
 public:
 	/** Called by YAPF to move from the given node to the next tile. For each
@@ -338,12 +356,16 @@ public:
 	inline void PfFollowNode(Node& old_node)
 	{
 		TrackFollower F(Yapf().GetVehicle());
-		if (F.Follow(old_node.GetLastTile(), old_node.GetLastTrackdir()))
+		if (F.Follow(old_node.GetLastTile(), old_node.GetLastTrackdir())) {
 			Yapf().AddMultipleNodes(&old_node, F);
+		}
 	}
 
 	/// return debug report character to identify the transportation type
-	FORCEINLINE char TransportTypeChar() const {return 't';}
+	FORCEINLINE char TransportTypeChar() const
+	{
+		return 't';
+	}
 
 	static Trackdir stChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found, bool reserve_track, PBSTileInfo *target)
 	{
@@ -600,4 +622,7 @@ bool YapfRailFindNearestSafeTile(const Vehicle *v, TileIndex tile, Trackdir td, 
 /** if any track changes, this counter is incremented - that will invalidate segment cost cache */
 int CSegmentCostCacheBase::s_rail_change_counter = 0;
 
-void YapfNotifyTrackLayoutChange(TileIndex tile, Track track) {CSegmentCostCacheBase::NotifyTrackLayoutChange(tile, track);}
+void YapfNotifyTrackLayoutChange(TileIndex tile, Track track)
+{
+	CSegmentCostCacheBase::NotifyTrackLayoutChange(tile, track);
+}

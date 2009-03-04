@@ -88,7 +88,10 @@ public:
 
 protected:
 	/// to access inherited path finder
-	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+	FORCEINLINE Tpf& Yapf()
+	{
+		return *static_cast<Tpf*>(this);
+	}
 
 public:
 	/// return current settings (can be custom - company based - but later)
@@ -118,12 +121,14 @@ public:
 		while (true) {
 			m_num_steps++;
 			Node *n = m_nodes.GetBestOpenNode();
-			if (n == NULL)
+			if (n == NULL) {
 				break;
+			}
 
 			// if the best open node was worse than the best path found, we can finish
-			if (m_pBestDestNode != NULL && m_pBestDestNode->GetCost() < n->GetCostEstimate())
+			if (m_pBestDestNode != NULL && m_pBestDestNode->GetCost() < n->GetCostEstimate()) {
 				break;
+			}
 
 			Yapf().PfFollowNode(*n);
 			if (m_max_search_nodes == 0 || m_nodes.ClosedCount() < m_max_search_nodes) {
@@ -281,7 +286,10 @@ public:
 		m_nodes.InsertOpenNode(n);
 	}
 
-	const Vehicle * GetVehicle() const {return m_veh;}
+	const Vehicle * GetVehicle() const
+	{
+		return m_veh;
+	}
 
 	void DumpBase(DumpTarget &dmp) const
 	{

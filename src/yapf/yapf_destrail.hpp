@@ -38,7 +38,10 @@ public:
 	typedef typename Node::Key Key;               ///< key to hash tables
 
 	/// to access inherited path finder
-	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+	Tpf& Yapf()
+	{
+		return *static_cast<Tpf*>(this);
+	}
 
 	/// Called by YAPF to detect if node ends in the desired destination
 	FORCEINLINE bool PfDetectDestination(Node& n)
@@ -73,7 +76,10 @@ public:
 	typedef typename Types::TrackFollower TrackFollower; ///< TrackFollower. Need to typedef for gcc 2.95
 
 	/// to access inherited path finder
-	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+	Tpf& Yapf()
+	{
+		return *static_cast<Tpf*>(this);
+	}
 
 	/// Called by YAPF to detect if node ends in the desired destination
 	FORCEINLINE bool PfDetectDestination(Node& n)
@@ -113,7 +119,10 @@ protected:
 	StationID    m_dest_station_id;
 
 	/// to access inherited path finder
-	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+	Tpf& Yapf()
+	{
+		return *static_cast<Tpf*>(this);
+	}
 
 public:
 	void SetDestination(const Vehicle *v)
@@ -199,6 +208,5 @@ public:
 		return true;
 	}
 };
-
 
 #endif /* YAPF_DESTRAIL_HPP */

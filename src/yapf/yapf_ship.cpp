@@ -18,7 +18,10 @@ public:
 
 protected:
 	/// to access inherited path finder
-	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+	FORCEINLINE Tpf& Yapf()
+	{
+		return *static_cast<Tpf*>(this);
+	}
 
 public:
 	/** Called by YAPF to move from the given node to the next tile. For each
@@ -27,12 +30,16 @@ public:
 	inline void PfFollowNode(Node& old_node)
 	{
 		TrackFollower F(Yapf().GetVehicle());
-		if (F.Follow(old_node.m_key.m_tile, old_node.m_key.m_td))
+		if (F.Follow(old_node.m_key.m_tile, old_node.m_key.m_td)) {
 			Yapf().AddMultipleNodes(&old_node, F);
+		}
 	}
 
 	/// return debug report character to identify the transportation type
-	FORCEINLINE char TransportTypeChar() const {return 'w';}
+	FORCEINLINE char TransportTypeChar() const
+	{
+		return 'w';
+	}
 
 	static Trackdir ChooseShipTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 	{
@@ -94,7 +101,10 @@ public:
 
 protected:
 	/// to access inherited path finder
-	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+	Tpf& Yapf()
+	{
+		return *static_cast<Tpf*>(this);
+	}
 
 public:
 	/** Called by YAPF to calculate the cost from the origin to the given node.
@@ -168,7 +178,7 @@ Trackdir YapfChooseShipTrack(const Vehicle *v, TileIndex tile, DiagDirection ent
 }
 
 /** performance measurement helper */
-void * NpfBeginInterval()
+void *NpfBeginInterval()
 {
 	CPerformanceTimer& perf = *new CPerformanceTimer;
 	perf.Start();

@@ -23,13 +23,13 @@ public:
 	FORCEINLINE bool PfNodeCacheFetch(Node& n)
 	{
 		return false;
-	};
+	}
 
 	/** Called by YAPF to flush the cached segment cost data back into cache storage.
 	 *  Current cache implementation doesn't use that. */
 	FORCEINLINE void PfNodeCacheFlush(Node& n)
 	{
-	};
+	}
 };
 
 
@@ -52,7 +52,10 @@ protected:
 	LocalCache      m_local_cache;
 
 	/// to access inherited path finder
-	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+	FORCEINLINE Tpf& Yapf()
+	{
+		return *static_cast<Tpf*>(this);
+	}
 
 public:
 	/** Called by YAPF to attach cached or local segment cost data to the given node.
@@ -62,13 +65,13 @@ public:
 		CacheKey key(n.GetKey());
 		Yapf().ConnectNodeToCachedData(n, *new (&m_local_cache.AddNC()) CachedData(key));
 		return false;
-	};
+	}
 
 	/** Called by YAPF to flush the cached segment cost data back into cache storage.
 	 *  Current cache implementation doesn't use that. */
 	FORCEINLINE void PfNodeCacheFlush(Node& n)
 	{
-	};
+	}
 };
 
 
@@ -81,7 +84,10 @@ struct CSegmentCostCacheBase
 {
 	static int   s_rail_change_counter;
 
-	static void NotifyTrackLayoutChange(TileIndex tile, Track track) {s_rail_change_counter++;}
+	static void NotifyTrackLayoutChange(TileIndex tile, Track track)
+	{
+		s_rail_change_counter++;
+	}
 };
 
 
@@ -109,7 +115,11 @@ struct CSegmentCostCacheT
 	FORCEINLINE CSegmentCostCacheT() {}
 
 	/** flush (clear) the cache */
-	FORCEINLINE void Flush() {m_map.Clear(); m_heap.Clear();};
+	FORCEINLINE void Flush()
+	{
+		m_map.Clear();
+		m_heap.Clear();
+	}
 
 	FORCEINLINE Tsegment& Get(Key& key, bool *found)
 	{
@@ -148,7 +158,10 @@ protected:
 	FORCEINLINE CYapfSegmentCostCacheGlobalT() : m_global_cache(stGetGlobalCache()) {};
 
 	/// to access inherited path finder
-	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+	FORCEINLINE Tpf& Yapf()
+	{
+		return *static_cast<Tpf*>(this);
+	}
 
 	FORCEINLINE static Cache& stGetGlobalCache()
 	{
@@ -184,17 +197,13 @@ public:
 		CachedData& item = m_global_cache.Get(key, &found);
 		Yapf().ConnectNodeToCachedData(n, item);
 		return found;
-	};
+	}
 
 	/** Called by YAPF to flush the cached segment cost data back into cache storage.
 	 *  Current cache implementation doesn't use that. */
 	FORCEINLINE void PfNodeCacheFlush(Node& n)
 	{
-	};
-
+	}
 };
-
-
-
 
 #endif /* YAPF_COSTCACHE_HPP */

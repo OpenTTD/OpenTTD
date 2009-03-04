@@ -5,8 +5,6 @@
 #ifndef  YAPF_NODE_ROAD_HPP
 #define  YAPF_NODE_ROAD_HPP
 
-
-
 /** Yapf Node for road YAPF */
 template <class Tkey_>
 struct CYapfRoadNodeT
@@ -32,7 +30,5 @@ typedef CYapfRoadNodeT<CYapfNodeKeyTrackDir> CYapfRoadNodeTrackDir;
 // Default NodeList types
 typedef CNodeList_HashTableT<CYapfRoadNodeExitDir , 8, 12> CRoadNodeListExitDir;
 typedef CNodeList_HashTableT<CYapfRoadNodeTrackDir, 10, 14> CRoadNodeListTrackDir;
-
-
 
 #endif /* YAPF_NODE_ROAD_HPP */

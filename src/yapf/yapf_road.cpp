@@ -20,7 +20,10 @@ public:
 
 protected:
 	/// to access inherited path finder
-	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+	Tpf& Yapf()
+	{
+		return *static_cast<Tpf*>(this);
+	}
 
 	int SlopeCost(TileIndex tile, TileIndex next_tile, Trackdir trackdir)
 	{
@@ -51,12 +54,15 @@ protected:
 			switch (GetTileType(tile)) {
 				case MP_ROAD:
 					/* Increase the cost for level crossings */
-					if (IsLevelCrossing(tile))
+					if (IsLevelCrossing(tile)) {
 						cost += Yapf().PfGetSettings().road_crossing_penalty;
+					}
 					break;
+
 				case MP_STATION:
-					if (IsDriveThroughStopTile(tile))
+					if (IsDriveThroughStopTile(tile)) {
 						cost += Yapf().PfGetSettings().road_stop_penalty;
+					}
 					break;
 
 				default:
@@ -144,7 +150,10 @@ public:
 	typedef typename Node::Key Key;                      ///< key to hash tables
 
 	/// to access inherited path finder
-	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+	Tpf& Yapf()
+	{
+		return *static_cast<Tpf*>(this);
+	}
 
 	/// Called by YAPF to detect if node ends in the desired destination
 	FORCEINLINE bool PfDetectDestination(Node& n)
@@ -190,7 +199,10 @@ public:
 
 protected:
 	/// to access inherited path finder
-	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+	Tpf& Yapf()
+	{
+		return *static_cast<Tpf*>(this);
+	}
 
 public:
 	/// Called by YAPF to detect if node ends in the desired destination
@@ -246,7 +258,10 @@ public:
 
 protected:
 	/// to access inherited path finder
-	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+	FORCEINLINE Tpf& Yapf()
+	{
+		return *static_cast<Tpf*>(this);
+	}
 
 public:
 
@@ -256,12 +271,16 @@ public:
 	inline void PfFollowNode(Node& old_node)
 	{
 		TrackFollower F(Yapf().GetVehicle());
-		if (F.Follow(old_node.m_segment_last_tile, old_node.m_segment_last_td))
+		if (F.Follow(old_node.m_segment_last_tile, old_node.m_segment_last_td)) {
 			Yapf().AddMultipleNodes(&old_node, F);
+		}
 	}
 
 	/// return debug report character to identify the transportation type
-	FORCEINLINE char TransportTypeChar() const {return 'r';}
+	FORCEINLINE char TransportTypeChar() const
+	{
+		return 'r';
+	}
 
 	static Trackdir stChooseRoadTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir)
 	{
@@ -433,14 +452,17 @@ uint YapfRoadVehDistanceToTile(const Vehicle *v, TileIndex tile)
 	PfnDistanceToTile pfnDistanceToTile = &CYapfRoad2::stDistanceToTile; // default: ExitDir, allow 90-deg
 
 	// check if non-default YAPF type should be used
-	if (_settings_game.pf.yapf.disable_node_optimization)
+	if (_settings_game.pf.yapf.disable_node_optimization) {
 		pfnDistanceToTile = &CYapfRoad1::stDistanceToTile; // Trackdir, allow 90-deg
+	}
 
 	// measure distance in YAPF units
 	uint dist = pfnDistanceToTile(v, tile);
 	// convert distance to tiles
-	if (dist != UINT_MAX)
+	if (dist != UINT_MAX) {
 		dist = (dist + YAPF_TILE_LENGTH - 1) / YAPF_TILE_LENGTH;
+	}
+
 	return dist;
 }
 
@@ -448,8 +470,9 @@ Depot *YapfFindNearestRoadDepot(const Vehicle *v)
 {
 	TileIndex tile = v->tile;
 	Trackdir trackdir = GetVehicleTrackdir(v);
-	if ((TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes)) & TrackdirToTrackdirBits(trackdir)) == 0)
+	if ((TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes)) & TrackdirToTrackdirBits(trackdir)) == 0) {
 		return NULL;
+	}
 
 	// handle the case when our vehicle is already in the depot tile
 	if (IsRoadDepotTile(tile)) {
@@ -462,8 +485,9 @@ Depot *YapfFindNearestRoadDepot(const Vehicle *v)
 	PfnFindNearestDepot pfnFindNearestDepot = &CYapfRoadAnyDepot2::stFindNearestDepot;
 
 	// check if non-default YAPF type should be used
-	if (_settings_game.pf.yapf.disable_node_optimization)
+	if (_settings_game.pf.yapf.disable_node_optimization) {
 		pfnFindNearestDepot = &CYapfRoadAnyDepot1::stFindNearestDepot; // Trackdir, allow 90-deg
+	}
 
 	Depot *ret = pfnFindNearestDepot(v, tile, trackdir);
 	return ret;
