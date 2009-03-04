@@ -62,7 +62,7 @@ struct FiosItem {
 	FiosType type;
 	uint64 mtime;
 	char title[64];
-	char name[256 - 12 - 64];
+	char name[MAX_PATH];
 };
 
 /* Deals with the type of the savegame, independent of extension */

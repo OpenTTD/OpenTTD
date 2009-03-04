@@ -129,11 +129,7 @@ const char *FiosBrowseTo(const FiosItem *item)
 		case FIOS_TYPE_OLD_SCENARIO:
 		case FIOS_TYPE_PNG:
 		case FIOS_TYPE_BMP:
-		{
-			static char str_buffr[512];
-			snprintf(str_buffr, lengthof(str_buffr), "%s%s", path, item->name);
-			return str_buffr;
-		}
+			return item->name;
 	}
 
 	return NULL;
@@ -192,11 +188,76 @@ bool FileExists(const char *filename)
 
 typedef FiosType fios_getlist_callback_proc(SaveLoadDialogMode mode, const char *filename, const char *ext, char *title, const char *last);
 
-/** Create a list of the files in a directory, according to some arbitrary rule.
+/**
+ * Scanner to scan for a particular type of FIOS file.
+ */
+class FiosFileScanner : public FileScanner {
+	SaveLoadDialogMode mode; ///< The mode we want to search for
+	fios_getlist_callback_proc *callback_proc; ///< Callback to check whether the file may be added
+public:
+	/**
+	 * Create the scanner
+	 *  @param mode The mode we are in. Some modes don't allow 'parent'.
+	 *  @param callback_proc The function that is called where you need to do the filtering.
+	 */
+	FiosFileScanner(SaveLoadDialogMode mode, fios_getlist_callback_proc *callback_proc) :
+		mode(mode),
+		callback_proc(callback_proc)
+	{}
+
+	/* virtual */ bool AddFile(const char *filename, size_t basepath_length);
+};
+
+/**
+ * Try to add a fios item set with the given filename.
+ * @param filename        the full path to the file to read
+ * @param basepath_length amount of characters to chop of before to get a relative filename
+ * @return true if the file is added.
+ */
+bool FiosFileScanner::AddFile(const char *filename, size_t basepath_length)
+{
+	const char *ext = strrchr(filename, '.');
+	if (ext == NULL) return false;
+
+	char fios_title[64];
+	fios_title[0] = '\0'; // reset the title;
+
+	FiosType type = this->callback_proc(this->mode, filename, ext, fios_title, lastof(fios_title));
+	if (type == FIOS_TYPE_INVALID) return false;
+
+	for (const FiosItem *fios = _fios_items.Begin(); fios != _fios_items.End(); fios++) {
+		if (strcmp(fios->name, filename) == 0) return false;
+	}
+
+	FiosItem *fios = _fios_items.Append();
+	struct stat sb;
+	if (stat(filename, &sb) == 0) {
+		fios->mtime = sb.st_mtime;
+	} else {
+		fios->mtime = 0;
+	}
+
+	fios->type = type;
+	strecpy(fios->name, filename, lastof(fios->name));
+
+	/* If the file doesn't have a title, use it's filename */
+	const char *t = fios_title;
+	if (StrEmpty(fios_title)) {
+		t = strrchr(filename, PATHSEPCHAR);
+		t = (t == NULL) ? filename : (t + 1);
+	}
+	strecpy(fios->title, t, lastof(fios->title));
+	str_validate(fios->title);
+
+	return true;
+}
+
+
+/** Fill the list of the files in a directory, according to some arbitrary rule.
  *  @param mode The mode we are in. Some modes don't allow 'parent'.
  *  @param callback_proc The function that is called where you need to do the filtering.
- *  @return Return the list of files. */
-static FiosItem *FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc *callback_proc)
+ */
+static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc *callback_proc)
 {
 	struct stat sb;
 	struct dirent *dirent;
@@ -248,35 +309,8 @@ static FiosItem *FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_
 	sort_start = _fios_items.Length();
 
 	/* Show files */
-	dir = ttd_opendir(_fios_path);
-	if (dir != NULL) {
-		while ((dirent = readdir(dir)) != NULL) {
-			char fios_title[64];
-			char *t;
-			strecpy(d_name, FS2OTTD(dirent->d_name), lastof(d_name));
-
-			if (!FiosIsValidFile(_fios_path, dirent, &sb) || !S_ISREG(sb.st_mode) || FiosIsHiddenFile(dirent)) continue;
-
-			/* File has no extension, skip it */
-			if ((t = strrchr(d_name, '.')) == NULL) continue;
-			fios_title[0] = '\0'; // reset the title;
-
-			FiosType type = callback_proc(mode, d_name, t, fios_title, lastof(fios_title));
-			if (type != FIOS_TYPE_INVALID) {
-				fios = _fios_items.Append();
-				fios->mtime = sb.st_mtime;
-				fios->type = type;
-				strecpy(fios->name, d_name, lastof(fios->name));
-
-				/* Some callbacks want to lookup the title of the file. Allow that.
-				 * If we just copy the title from the filename, strip the extension */
-				t = (fios_title[0] == '\0') ? *t = '\0', d_name : fios_title;
-				strecpy(fios->title, t, lastof(fios->title));
-				str_validate(fios->title);
-			}
-		}
-		closedir(dir);
-	}
+	FiosFileScanner scanner(mode, callback_proc);
+	scanner.Scan(NULL, _fios_path, false);
 
 	qsort(_fios_items.Get(sort_start), _fios_items.Length() - sort_start, sizeof(FiosItem), compare_FiosItems);
 
@@ -284,8 +318,6 @@ static FiosItem *FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_
 	if (mode != SLD_NEW_GAME) FiosGetDrives();
 
 	_fios_items.Compact();
-
-	return _fios_items.Begin();
 }
 
 /**
