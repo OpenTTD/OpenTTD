@@ -339,9 +339,9 @@ public:
 
 #ifndef DOXYGEN_SKIP
 	/**
-	 * Internal function to help ChangeOrder.
+	 * Internal function to help SetOrderFlags.
 	 */
-	static bool _ChangeOrder();
+	static bool _SetOrderFlags();
 #endif /* DOXYGEN_SKIP */
 
 	/**
@@ -353,6 +353,11 @@ public:
 	 * @pre AreOrderFlagsValid(GetOrderDestination(vehicle_id, order_position), order_flags).
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return True if and only if the order was changed.
+	 */
+	static bool SetOrderFlags(VehicleID vehicle_id, OrderPosition order_position, AIOrderFlags order_flags);
+
+	/**
+	 * Deprecated, use SetOrderFlags instead.
 	 */
 	static bool ChangeOrder(VehicleID vehicle_id, OrderPosition order_position, AIOrderFlags order_flags);
 

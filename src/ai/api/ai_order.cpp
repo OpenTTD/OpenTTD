@@ -4,6 +4,7 @@
 
 #include "ai_order.hpp"
 #include "ai_vehicle.hpp"
+#include "ai_log.hpp"
 #include "../ai_instance.hpp"
 #include "../../debug.h"
 #include "../../vehicle_base.h"
@@ -306,25 +307,25 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 }
 
 /**
- * Callback handler as ChangeOrder possibly needs multiple DoCommand calls
+ * Callback handler as SetOrderFlags possibly needs multiple DoCommand calls
  * to be able to set all order flags correctly. As we need to wait till the
  * command has completed before we know the next bits to change we need to
  * call the function multiple times. Each time it'll reduce the difference
  * between the wanted and the current order.
  * @param instance The AI we are doing the callback for.
  */
-static void _DoCommandReturnChangeOrder(class AIInstance *instance)
+static void _DoCommandReturnSetOrderFlags(class AIInstance *instance)
 {
-	AIObject::SetLastCommandRes(AIOrder::_ChangeOrder());
+	AIObject::SetLastCommandRes(AIOrder::_SetOrderFlags());
 	AIInstance::DoCommandReturn(instance);
 }
 
-/* static */ bool AIOrder::_ChangeOrder()
+/* static */ bool AIOrder::_SetOrderFlags()
 {
 	/* Make sure we don't go into an infinite loop */
 	int retry = AIObject::GetCallbackVariable(3) - 1;
 	if (retry < 0) {
-		DEBUG(ai, 0, "Possible infinite loop in ChangeOrder detected");
+		DEBUG(ai, 0, "Possible infinite loop in SetOrderFlags() detected");
 		return false;
 	}
 	AIObject::SetCallbackVariable(3, retry);
@@ -343,22 +344,22 @@ static void _DoCommandReturnChangeOrder(class AIInstance *instance)
 	AIOrderFlags current = GetOrderFlags(vehicle_id, order_position);
 
 	if ((current & AIOF_NON_STOP_FLAGS) != (order_flags & AIOF_NON_STOP_FLAGS)) {
-		return AIObject::DoCommand(0, vehicle_id | (order_position << 16), (order_flags & AIOF_NON_STOP_FLAGS) << 4 | MOF_NON_STOP, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnChangeOrder);
+		return AIObject::DoCommand(0, vehicle_id | (order_position << 16), (order_flags & AIOF_NON_STOP_FLAGS) << 4 | MOF_NON_STOP, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnSetOrderFlags);
 	}
 
 	switch (order->GetType()) {
 		case OT_GOTO_DEPOT:
 			if ((current & AIOF_SERVICE_IF_NEEDED) != (order_flags & AIOF_SERVICE_IF_NEEDED)) {
-				return AIObject::DoCommand(0, vehicle_id | (order_position << 16), MOF_DEPOT_ACTION, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnChangeOrder);
+				return AIObject::DoCommand(0, vehicle_id | (order_position << 16), MOF_DEPOT_ACTION, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnSetOrderFlags);
 			}
 			break;
 
 		case OT_GOTO_STATION:
 			if ((current & AIOF_UNLOAD_FLAGS) != (order_flags & AIOF_UNLOAD_FLAGS)) {
-				return AIObject::DoCommand(0, vehicle_id | (order_position << 16), (order_flags & AIOF_UNLOAD_FLAGS) << 2 | MOF_UNLOAD, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnChangeOrder);
+				return AIObject::DoCommand(0, vehicle_id | (order_position << 16), (order_flags & AIOF_UNLOAD_FLAGS) << 2 | MOF_UNLOAD, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnSetOrderFlags);
 			}
 			if ((current & AIOF_LOAD_FLAGS) != (order_flags & AIOF_LOAD_FLAGS)) {
-				return AIObject::DoCommand(0, vehicle_id | (order_position << 16), (order_flags & AIOF_LOAD_FLAGS) >> 1 | MOF_LOAD, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnChangeOrder);
+				return AIObject::DoCommand(0, vehicle_id | (order_position << 16), (order_flags & AIOF_LOAD_FLAGS) >> 1 | MOF_LOAD, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnSetOrderFlags);
 			}
 			break;
 
@@ -370,7 +371,7 @@ static void _DoCommandReturnChangeOrder(class AIInstance *instance)
 	return true;
 }
 
-/* static */ bool AIOrder::ChangeOrder(VehicleID vehicle_id, OrderPosition order_position, AIOrder::AIOrderFlags order_flags)
+/* static */ bool AIOrder::SetOrderFlags(VehicleID vehicle_id, OrderPosition order_position, AIOrder::AIOrderFlags order_flags)
 {
 	AIObject::SetCallbackVariable(0, vehicle_id);
 	AIObject::SetCallbackVariable(1, order_position);
@@ -378,7 +379,13 @@ static void _DoCommandReturnChangeOrder(class AIInstance *instance)
 	/* In case another client(s) change orders at the same time we could
 	 * end in an infinite loop. This stops that from happening ever. */
 	AIObject::SetCallbackVariable(3, 8);
-	return AIOrder::_ChangeOrder();
+	return AIOrder::_SetOrderFlags();
+}
+
+/* static */ bool AIOrder::ChangeOrder(VehicleID vehicle_id, OrderPosition order_position, AIOrder::AIOrderFlags order_flags)
+{
+	AILog::Warning("AIOrder::ChangeOrder is deprecated and will be removed soon, please use AIOrder::SetOrderFlags instead.");
+	return SetOrderFlags(vehicle_id, order_position, order_flags);
 }
 
 /* static */ bool AIOrder::MoveOrder(VehicleID vehicle_id, OrderPosition order_position_move, OrderPosition order_position_target)

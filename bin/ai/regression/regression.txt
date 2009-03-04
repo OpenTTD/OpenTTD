@@ -8348,7 +8348,7 @@
   GetOrderCount():       2
   IsValidVehicleOrder(): true
   RemoveOrder():         true
-  ChangeOrder():         true
+  SetOrderFlags():       true
   GetOrderDestination(): 33411
   CopyOrders():          false
   CopyOrders():          true

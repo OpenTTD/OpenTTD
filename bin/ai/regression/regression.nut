@@ -826,7 +826,7 @@ function Regression::Order()
 	print("  GetOrderCount():       " + AIOrder.GetOrderCount(12));
 	print("  IsValidVehicleOrder(): " + AIOrder.IsValidVehicleOrder(12, 1));
 	print("  RemoveOrder():         " + AIOrder.RemoveOrder(12, 0));
-	print("  ChangeOrder():         " + AIOrder.ChangeOrder(12, 0, AIOrder.AIOF_FULL_LOAD));
+	print("  SetOrderFlags():       " + AIOrder.SetOrderFlags(12, 0, AIOrder.AIOF_FULL_LOAD));
 	print("  GetOrderDestination(): " + AIOrder.GetOrderDestination(12, 0));
 	print("  CopyOrders():          " + AIOrder.CopyOrders(12, 1));
 	print("  CopyOrders():          " + AIOrder.CopyOrders(13, 12));

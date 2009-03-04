@@ -92,6 +92,7 @@ void SQAIOrder_Register(Squirrel *engine) {
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::InsertOrder,             "InsertOrder",             5, ".iiii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::InsertConditionalOrder,  "InsertConditionalOrder",  4, ".iii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::RemoveOrder,             "RemoveOrder",             3, ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SetOrderFlags,           "SetOrderFlags",           4, ".iii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::ChangeOrder,             "ChangeOrder",             4, ".iii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::MoveOrder,               "MoveOrder",               4, ".iii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::CopyOrders,              "CopyOrders",              3, ".ii");
