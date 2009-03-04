@@ -935,19 +935,20 @@ void DeterminePaths(const char *exe)
 	_highscore_file = str_fmt("%shs.dat", _personal_dir);
 	_log_file = str_fmt("%sopenttd.log",  _personal_dir);
 
-	char *save_dir     = str_fmt("%s%s", _personal_dir, FioGetSubdirectory(SAVE_DIR));
-	char *autosave_dir = str_fmt("%s%s", _personal_dir, FioGetSubdirectory(AUTOSAVE_DIR));
-
 	/* Make the necessary folders */
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && defined(WITH_PERSONAL_DIR)
 	FioCreateDirectory(_personal_dir);
 #endif
 
-	FioCreateDirectory(save_dir);
-	FioCreateDirectory(autosave_dir);
+	static const Subdirectory default_subdirs[] = {
+		SAVE_DIR, AUTOSAVE_DIR
+	};
 
-	free(save_dir);
-	free(autosave_dir);
+	for (uint i = 0; i < lengthof(default_subdirs); i++) {
+		char *dir = str_fmt("%s%s", _personal_dir, FioGetSubdirectory(default_subdirs[i]));
+		FioCreateDirectory(dir);
+		free(dir);
+	}
 
 	/* If we have network we make a directory for the autodownloading of content */
 	_searchpaths[SP_AUTODOWNLOAD_DIR] = str_fmt("%s%s", _personal_dir, "content_download" PATHSEP);
