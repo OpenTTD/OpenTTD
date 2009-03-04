@@ -226,7 +226,7 @@ STR_011F_DOCK                                                   :{BLACK}{TINYFON
 STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Unebenes Land
 STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Wiesen
 STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}Kahles Land
-STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}Felder
+STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}Ackerland
 STR_0124_TREES                                                  :{BLACK}{TINYFONT}Bäume
 STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}Felsen
 STR_0126_WATER                                                  :{BLACK}{TINYFONT}Wasser
@@ -547,15 +547,15 @@ STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Zeige le
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Nachrichtenoptionen
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Nachrichtenart:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs an Station des Spielers
-STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs an Station eines Gegners
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs an Station eines Wettbewerbers
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Unfälle / Katastrophen
-STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmendaten
+STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmenmitteilungen
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Eröffnung von Industrien
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Schließung von Industrien
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Änderungen der Wirtschaftslage
-STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Produktionsänderung bei vom Unternehmen belieferten Industrien
-STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produktionsänderung von Industrien, die ein Gegner bedient
-STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Andere Produktionsänderungen
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Produktionsänderung von Industrien, die der Spieler bedient
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produktionsänderung von Industrien, die ein Wettbewerber bedient
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Produktionsänderungen anderer Industrien
 STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Rat / Informationen zu Fahrzeugen des Unternehmens
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Neue Fahrzeuge
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Änderungen akzeptierter Fracht
@@ -914,7 +914,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Das Bau
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Landschaftsbau unter Gebäuden, Schienen, usw. erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Stationsarten haben verschieden große Einzugsgebiete: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Entfernung von weiteren Straßen, Brücken, usw. erlauben: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Das Bauen von sehr langen Zügen erlauben: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Bau von sehr langen Zügen erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Beschleunigungsmodell für Züge: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisch
@@ -925,7 +925,7 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Verbess
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Fahrzeuge schrittweise beladen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Industrien beliefern nur Stationen mit passendem Transport: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Das Bauen von sehr langen Brücken erlauben: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Bau von sehr langen Brücken erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}"Fahre zum Depot"-Aufträge im Fahrplan erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manueller Bau von Rohstoffindustrien: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nicht erlaubt
@@ -944,7 +944,7 @@ STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Den Erw
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Schenken von Geld an andere Firmen erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ungleichmäßige Bahnhöfe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Frachtgewicht erhöhen, um schwere Züge zu simulieren: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Flugzeug-Geschwindigkeitsfaktor: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor für Geschwindigkeit von Flugzeugen: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Bus- und Lkw-Haltestellen auf städtischen Straßen erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Bus- und Lkw-Haltestellen auf Straßen von Wettbewerbern erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Bau angrenzender Stationen erlauben: {ORANGE}{STRING}
@@ -1544,7 +1544,7 @@ STR_080A_ROCKS                                                  :Felsen
 STR_080B_ROUGH_LAND                                             :Unebenes Land
 STR_080C_BARE_LAND                                              :Kahles Land
 STR_080D_GRASS                                                  :Gras
-STR_080E_FIELDS                                                 :Felder
+STR_080E_FIELDS                                                 :Ackerland
 STR_080F_SNOW_COVERED_LAND                                      :Schneebedecktes Land
 STR_0810_DESERT                                                 :Wüste
 
@@ -1983,9 +1983,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Kosten: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Industrie kann hier nicht gebaut werden...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...Wald kann nur oberhalb der Schneegrenze gepflanzt werden
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} gibt bevorstehende Schließung bekannt!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Wegen fehlender Rohstoffe kündigt {STRING} die drohende Schließung an!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Wegen Holzmangel gibt {STRING} die bevorstehende Schließung bekannt!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} gibt baldige Schließung bekannt!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Wegen fehlender Rohstoffe kündigt {STRING} die baldige Schließung an!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Wegen Holzmangel gibt {STRING} die baldige Schließung bekannt!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} erhöht die Produktion!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Neue Kohlevorkommen bei {INDUSTRY} gefunden!{}Förderung verdoppelt!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Neue Ölfunde bei {INDUSTRY}!{}Förderung wird vermutlich verdoppelt!
@@ -2161,9 +2161,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Nur am Strecken
 STR_6836_OFF                                                    :Aus
 STR_6837_ON                                                     :An
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Highscoretabelle zeigen
-STR_PERMISSIVE                                                  :Zustimmend
-STR_TOLERANT                                                    :Akzeptierend
-STR_HOSTILE                                                     :Feindlich
+STR_PERMISSIVE                                                  :Nachsichtig
+STR_TOLERANT                                                    :Neutral
+STR_HOSTILE                                                     :Ablehnend
 
 ##id 0x7000
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
@@ -3567,7 +3567,7 @@ STR_AI_CONFIGURE_TIP                                            :{BLACK}Stelle d
 STR_AI_LIST_TIP                                                 :{BLACK}Alle KIs, die im nächsten Spiel geladen werden
 STR_AI_LIST_CAPTION                                             :{WHITE}Verfügbare KIs
 STR_AI_AILIST_TIP                                               :{BLACK}Klicken, um eine KI auszuwählen
-STR_AI_ACCEPT                                                   :{BLACK}Akzeptiert
+STR_AI_ACCEPT                                                   :{BLACK}Anwenden
 STR_AI_ACCEPT_TIP                                               :{BLACK}Ausgewählte KI verwenden
 STR_AI_CANCEL                                                   :{BLACK}Abbrechen
 STR_AI_CANCEL_TIP                                               :{BLACK}KI nicht wechseln

@@ -1078,6 +1078,9 @@ STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Ljósag
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :venjuleg
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Brautar ljós
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Ein-stefnu ljós
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Skruna milli tegundir merkja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Aðeins stöðvunar-merki
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Aðeins Leiðar-merki
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Allt
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Vegskipulag fyrir nýja bæji: {ORANGE}{STRING}
@@ -1112,6 +1115,8 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Farart�
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stöðvar
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Efnahagur
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Mótherji
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Skjá-valmöguleikar
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Viðmót
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Lestaljós og -merki
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Meðhöndlun farms
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Gervigreind
@@ -1481,6 +1486,7 @@ STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} st
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} yfirgefur leikinn ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} heitir nú {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} sendi þér {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Þú gafst {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] Til {STRING}: {WHITE}{STRING}
@@ -1596,6 +1602,7 @@ STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Járnbrautartei
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Járnbrautarspor með útgangs- og fjölljósum
 STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Járnbrautarteinar með útgöngu- og háþróuðum skiltum
 STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Járnbrautarteinar með útgönguskiltum og háþróuðum einstefnuskiltum
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Lestarteinar með samskeyta- og leiðar-merkjum
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Verður að fjarlægja járnbrautarstöð fyrst
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Reisa aðra stöð
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Tengja stöðvar
@@ -1714,6 +1721,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Samstarfssamningur gerður við {COMPANY}!{}{}{STRING}flutningur frá {STATION} til {STATION} mun borga þrefalt í heilt ár!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Samstarfssamningur gerður við {COMPANY}!{}{}{STRING}flutningur frá {STATION} til {STATION} mun borga fjórfalt í heilt ár!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Bæjaryfirvöld {TOWN} leyfa ekki byggingu annars flugvallar nærliggjandi bænum
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} Stjórn bæjarins hafnar leyfir fyrir flugvelli vegna hljóðmengunar
 STR_2036_COTTAGES                                               :Einbýlishús
 STR_2037_HOUSES                                                 :Hús
 STR_2038_FLATS                                                  :Íbúðir
@@ -1790,6 +1798,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Of nál�
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Tengist fleiri en einni annarri stöð
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Of margar stöðvar/lestunarsvæði í þessum bæ
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Of margar stöðvar/lestunarsvæði
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Of margir hlutar af lestarstöðvum
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Of margar strætisvagnastöðvar
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Of margar vörubílastöðvar
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Of nálægt annarri stöð/lestunarsvæði
@@ -1887,6 +1896,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Opna lei
 STR_4002_SAVE                                                   :{BLACK}Vista
 STR_4003_DELETE                                                 :{BLACK}Eyða
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Áhorfandi, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} laus
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Get ekki lesið af drifi
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Vistun leiks mistókst{}{STRING}
@@ -1982,6 +1992,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 
 ##id 0x5000
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Önnur göng fyrir
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Göng myndu enda utan korts
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Get ekki breytt landi fyrir hinn enda gangnanna
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Verður að eyða göngum fyrst
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Verður að eyða brú fyrst
@@ -2261,6 +2272,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Endurrei
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Ekki hægt að byggja höfuðstöðvar...
 STR_7072_VIEW_HQ                                                :{BLACK}Skoða HS
 STR_RELOCATE_HQ                                                 :{BLACK}Flytja HS
+STR_COMPANY_JOIN                                                :{BLACK}Taka þátt
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Taka þátt sem þetta fyrirtæki
 STR_COMPANY_PASSWORD                                            :{BLACK}Lykilorð
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Til að vernda fyrirtæki þitt frá óboðnum notendum geturðu sett lykilorð á það
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Setja lykilorð á fyrirtæki
@@ -2665,9 +2678,11 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Hoppa í skipun
 STR_CONDITIONAL_NUM                                             :Hoppa í skipun {COMMA} þegar {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Hoppa í skipun {COMMA} þegar {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Engin ferðalög
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Ferðalag (ekki sett í áætlun)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Ferðast í {STRING}
 STR_TIMETABLE_STAY_FOR                                          :og bíða í {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :og ferðast í {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" a}
 STR_TIMETABLE_TICKS                                             :{COMMA} sl{P ag ög}
 
@@ -2682,6 +2697,7 @@ STR_UNKNOWN_STATION                                             :óþekkt stöð
 STR_8812_EMPTY                                                  :{LTBLUE}Tómt
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} frá {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} frá {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} bíður í þjónustumiðstöð
 STR_8815_NEW_VEHICLES                                           :{BLACK}Ný faratæki
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Lestin er of löng
@@ -2732,6 +2748,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Get ekki
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Get ekki fært þessa skipun...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Get ekki sleppt núverandi skipun...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Get ekki hoppað í valda skipun...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}farartæku getur ekki farið á allar stöðvar
+STR_CAN_T_ADD_ORDER                                             :{WHITE}farartæki getur ekki farið á þessa stöð
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}farartæki sem deilir þessum skipunum getur ekki farið á þessa stöð
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Get ekki fært farartæki...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Aftari dráttarvagn fylgir alltaf fremri hluta
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2836,6 +2855,7 @@ STR_9012_CAPACITY                                               :{BLACK}Burðarg
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...verður að stöðvast í bifreiðaskýli
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Get ekki selt bifreið...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Get ekki stöðvað/ræst bifreið...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} bíður í þjónustumiðstöð
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Er á leið til bifreiðaskýlis {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Er á leið til bifreiðaskýlis {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Viðhald í {TOWN} bifreiðaskýli
@@ -2916,6 +2936,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Stefnir
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Stefnir að {TOWN} slippi, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Viðhald í {TOWN} slippi
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Viðhald í {TOWN} slippi, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} bíður í þjónustumiðstöð
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Byggja höfn
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Reisa slipp (til að smíða og viðhalda skipum)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skip - smelltu á skip fyrir nánari upplýsingar
@@ -2978,6 +2999,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Stefnir
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Stefnir á {STATION} flugskýli, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Viðhald í {STATION} flugskýli
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Viðhald í {STATION} flugskýli, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} bíður í flugskýlinu
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Flugvél er fyrir
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Get ekki stöðvað/ræst flugvél...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}flugvélin er á flugi
@@ -3087,6 +3109,8 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} þarf OpenTTD útgáfu {STRING} eða nýrri.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF skránni sem það var hannað til að þýða
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Of mörg NewGRF eru hlaðin.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Óviðbúin hreyfimynd.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Reyndi að notast við rangt ID
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Hlaða valdar stillingu
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Vista stillingu
@@ -3309,6 +3333,12 @@ STR_SMALLMAP_CENTER                                             :{BLACK}Miðja h
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 # Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Hliðar korts:
+STR_NORTHWEST                                                   :{BLACK}Norðvestur
+STR_NORTHEAST                                                   :{BLACK}Norðaustur
+STR_SOUTHEAST                                                   :{BLACK}Suðaustur
+STR_SOUTHWEST                                                   :{BLACK}Suðvestur
+STR_BORDER_WATER                                                :{BLACK}Vatn
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Lítill flugvöllur
@@ -3338,6 +3368,9 @@ STR_DATE_TINY                                                   :{STRING}-{STRIN
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Millifæra gjaldeyri: {LTBLUE}{CURRENCY}
@@ -3484,9 +3517,25 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Auka þ�
 ########
 
 ############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI Stillingar
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Sýna AI stillingar
+STR_AI_DEBUG                                                    :{WHITE}AI Villuprófun
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}AI heiti
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Endurhlaða AI
+STR_AI_CHANGE                                                   :{BLACK}Velja AI
+STR_AI_CONFIGURE                                                :{BLACK}Stilla
+STR_AI_CHANGE_TIP                                               :{BLACK}Hlaða aðra AI
+STR_AI_ACCEPT                                                   :{BLACK}Í lagi
+STR_AI_CANCEL                                                   :{BLACK}Hætta við
+STR_AI_CLOSE                                                    :{BLACK}Loka
+STR_AI_HUMAN_PLAYER                                             :Menskur spilari
+STR_AI_AUTHOR                                                   :Höfundur:
+STR_AI_VERSION                                                  :Útgáfa:
 ########
 
 ############ town controlled noise level
@@ -3495,7 +3544,31 @@ STR_STATION_NOISE                                               :{BLACK}Hávaði
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ekki hægt að hlaða niður efni!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Venjuleg grafík
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :AI safn
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Hæðar-kort
+STR_CONTENT_TITLE                                               :{WHITE}Niðurhel efni
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Týpa
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Heiti
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Heiti efnis
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Velja allt
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Af-velja allt
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Niðurhala
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Stærð niðurhals: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Þú hefur þetta nú þegar
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Heiti: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Útgáfa: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Týpa: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Stærð niðurhals: {WHITE}{BYTES}
 
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Hel niður efni...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Bið um skrár...
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Niðurhali lokið
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} af {BYTES} niðurhalað ({NUM} %)
 
 
 ########

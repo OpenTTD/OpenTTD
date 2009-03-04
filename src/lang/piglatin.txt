@@ -945,6 +945,7 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Onunifo
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Eightway ultipliermay orfay eightfray otay imulatesay eavyhay ainstray: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Aneplay eedspay actorfay: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Allowway ivedray-oughthray oadray opsstay onway owntay ownedway oadsray: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Allowway ivedray-oughthray oadray opsstay onway oadsray ownedway ybay ompetitorscay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Allowway uildingbay adjacentway ationsstay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Enableway ultiplemay EwGRFnay engineway etssay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Angingchay isthay ettingsay isway otnay ossiblepay enwhay erethay areway ehiclesvay.
