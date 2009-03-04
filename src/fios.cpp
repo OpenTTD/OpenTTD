@@ -256,8 +256,9 @@ bool FiosFileScanner::AddFile(const char *filename, size_t basepath_length)
 /** Fill the list of the files in a directory, according to some arbitrary rule.
  *  @param mode The mode we are in. Some modes don't allow 'parent'.
  *  @param callback_proc The function that is called where you need to do the filtering.
+ *  @param subdir The directory from where to start (global) searching.
  */
-static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc *callback_proc)
+static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc *callback_proc, Subdirectory subdir)
 {
 	struct stat sb;
 	struct dirent *dirent;
@@ -310,7 +311,11 @@ static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc 
 
 	/* Show files */
 	FiosFileScanner scanner(mode, callback_proc);
-	scanner.Scan(NULL, _fios_path, false);
+	if (subdir == NO_DIRECTORY) {
+		scanner.Scan(NULL, _fios_path, false);
+	} else {
+		scanner.Scan(NULL, subdir, true, true);
+	}
 
 	qsort(_fios_items.Get(sort_start), _fios_items.Length() - sort_start, sizeof(FiosItem), compare_FiosItems);
 
@@ -318,6 +323,27 @@ static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc 
 	if (mode != SLD_NEW_GAME) FiosGetDrives();
 
 	_fios_items.Compact();
+}
+
+/**
+ * Get the title of a file, which (if exists) is stored in a file named
+ * the same as the data file but with '.title' added to it.
+ * @param file filename to get the title for
+ * @param title the title buffer to fill
+ * @param last the last element in the title buffer
+ */
+static void GetFileTitle(const char *file, char *title, const char *last)
+{
+	char buf[MAX_PATH];
+	strecpy(buf, file, lastof(buf));
+	strecat(buf, ".title", lastof(buf));
+
+	FILE *f = FioFOpenFile(buf, "r");
+	if (f == NULL) return;
+
+	size_t read = fread(title, 1, last - title, f);
+	assert(title + read <= last);
+	title[read] = '\0';
 }
 
 /**
@@ -338,7 +364,10 @@ FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, 
 	 * .SS1 Transport Tycoon Deluxe preset game
 	 * .SV1 Transport Tycoon Deluxe (Patch) saved game
 	 * .SV2 Transport Tycoon Deluxe (Patch) saved 2-player game */
-	if (strcasecmp(ext, ".sav") == 0) return FIOS_TYPE_FILE;
+	if (strcasecmp(ext, ".sav") == 0) {
+		GetFileTitle(file, title, last);
+		return FIOS_TYPE_FILE;
+	}
 
 	if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
 		if (strcasecmp(ext, ".ss1") == 0 || strcasecmp(ext, ".sv1") == 0 ||
@@ -368,7 +397,7 @@ void FiosGetSavegameList(SaveLoadDialogMode mode)
 
 	_fios_path = fios_save_path;
 
-	FiosGetFileList(mode, &FiosGetSavegameListCallback);
+	FiosGetFileList(mode, &FiosGetSavegameListCallback, NO_DIRECTORY);
 }
 
 /**
@@ -388,7 +417,10 @@ static FiosType FiosGetScenarioListCallback(SaveLoadDialogMode mode, const char 
 	 * .SCN OpenTTD style scenario file
 	 * .SV0 Transport Tycoon Deluxe (Patch) scenario
 	 * .SS0 Transport Tycoon Deluxe preset scenario */
-	if (strcasecmp(ext, ".scn") == 0) return FIOS_TYPE_SCENARIO;
+	if (strcasecmp(ext, ".scn") == 0) {
+		GetFileTitle(file, title, last);
+		return FIOS_TYPE_SCENARIO;
+	}
 
 	if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO || mode == SLD_NEW_GAME) {
 		if (strcasecmp(ext, ".sv0") == 0 || strcasecmp(ext, ".ss0") == 0 ) {
@@ -418,7 +450,10 @@ void FiosGetScenarioList(SaveLoadDialogMode mode)
 
 	_fios_path = fios_scn_path;
 
-	FiosGetFileList(mode, &FiosGetScenarioListCallback);
+	char base_path[MAX_PATH];
+	FioGetDirectory(base_path, sizeof(base_path), SCENARIO_DIR);
+
+	FiosGetFileList(mode, &FiosGetScenarioListCallback, (mode == SLD_LOAD_SCENARIO && strcmp(base_path, _fios_path) == 0) ? SCENARIO_DIR : NO_DIRECTORY);
 }
 
 static FiosType FiosGetHeightmapListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title, const char *last)
@@ -428,13 +463,17 @@ static FiosType FiosGetHeightmapListCallback(SaveLoadDialogMode mode, const char
 	 * .BMP BMP Based heightmap files
 	 */
 
+	FiosType type = FIOS_TYPE_INVALID;
+
 #ifdef WITH_PNG
-	if (strcasecmp(ext, ".png") == 0) return FIOS_TYPE_PNG;
+	if (strcasecmp(ext, ".png") == 0) type = FIOS_TYPE_PNG;
 #endif /* WITH_PNG */
 
-	if (strcasecmp(ext, ".bmp") == 0) return FIOS_TYPE_BMP;
+	if (strcasecmp(ext, ".bmp") == 0) type = FIOS_TYPE_BMP;
 
-	return FIOS_TYPE_INVALID;
+	if (type != FIOS_TYPE_INVALID) GetFileTitle(file, title, last);
+
+	return type;
 }
 
 /* Get a list of Heightmaps */
@@ -449,5 +488,8 @@ void FiosGetHeightmapList(SaveLoadDialogMode mode)
 
 	_fios_path = fios_hmap_path;
 
-	FiosGetFileList(mode, &FiosGetHeightmapListCallback);
+	char base_path[MAX_PATH];
+	FioGetDirectory(base_path, sizeof(base_path), HEIGHTMAP_DIR);
+
+	FiosGetFileList(mode, &FiosGetHeightmapListCallback, strcmp(base_path, _fios_path) == 0 ? HEIGHTMAP_DIR : NO_DIRECTORY);
 }
