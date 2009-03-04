@@ -1049,11 +1049,13 @@ static uint ScanPath(FileScanner *fs, const char *extension, const char *path, s
 			num += ScanPath(fs, extension, filename, basepath_length, recursive);
 		} else if (S_ISREG(sb.st_mode)) {
 			/* File */
-			char *ext = strrchr(filename, '.');
+			if (extension != NULL) {
+				char *ext = strrchr(filename, '.');
 
-			/* If no extension or extension isn't .grf, skip the file */
-			if (ext == NULL) continue;
-			if (strcasecmp(ext, extension) != 0) continue;
+				/* If no extension or extension isn't .grf, skip the file */
+				if (ext == NULL) continue;
+				if (strcasecmp(ext, extension) != 0) continue;
+			}
 
 			if (fs->AddFile(filename, basepath_length)) num++;
 		}
@@ -1073,11 +1075,14 @@ static uint ScanTar(FileScanner *fs, const char *extension, TarFileList::iterato
 {
 	uint num = 0;
 	const char *filename = (*tar).first.c_str();
-	const char *ext = strrchr(filename, '.');
 
-	/* If no extension or extension isn't .grf, skip the file */
-	if (ext == NULL) return false;
-	if (strcasecmp(ext, extension) != 0) return false;
+	if (extension != NULL) {
+		const char *ext = strrchr(filename, '.');
+
+		/* If no extension or extension isn't .grf, skip the file */
+		if (ext == NULL) return false;
+		if (strcasecmp(ext, extension) != 0) return false;
+	}
 
 	if (fs->AddFile(filename, 0)) num++;
 
