@@ -73,8 +73,8 @@ public:
 	/** Destruct the proper one... */
 	virtual ~FileScanner() {}
 
-	uint Scan(const char *extension, Subdirectory sd, bool tars = true);
-	uint Scan(const char *extension, const char *directory);
+	uint Scan(const char *extension, Subdirectory sd, bool tars = true, bool recursive = true);
+	uint Scan(const char *extension, const char *directory, bool recursive = true);
 
 	/**
 	 * Add a file with the given filename.

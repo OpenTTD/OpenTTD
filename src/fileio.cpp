@@ -1022,7 +1022,7 @@ void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
  * @param path            full path we're currently at
  * @param basepath_length from where in the path are we 'based' on the search path
  */
-static uint ScanPath(FileScanner *fs, const char *extension, const char *path, size_t basepath_length)
+static uint ScanPath(FileScanner *fs, const char *extension, const char *path, size_t basepath_length, bool recursive)
 {
 	extern bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb);
 
@@ -1043,9 +1043,10 @@ static uint ScanPath(FileScanner *fs, const char *extension, const char *path, s
 
 		if (S_ISDIR(sb.st_mode)) {
 			/* Directory */
+			if (!recursive) continue;
 			if (strcmp(d_name, ".") == 0 || strcmp(d_name, "..") == 0) continue;
 			AppendPathSeparator(filename, lengthof(filename));
-			num += ScanPath(fs, extension, filename, basepath_length);
+			num += ScanPath(fs, extension, filename, basepath_length, recursive);
 		} else if (S_ISREG(sb.st_mode)) {
 			/* File */
 			char *ext = strrchr(filename, '.');
@@ -1091,7 +1092,7 @@ static uint ScanTar(FileScanner *fs, const char *extension, TarFileList::iterato
  * @return the number of found files, i.e. the number of times that
  *         AddFile returned true.
  */
-uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars)
+uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool recursive)
 {
 	Searchpath sp;
 	char path[MAX_PATH];
@@ -1100,7 +1101,7 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars)
 
 	FOR_ALL_SEARCHPATHS(sp) {
 		FioAppendDirectory(path, MAX_PATH, sp, sd);
-		num += ScanPath(this, extension, path, strlen(path));
+		num += ScanPath(this, extension, path, strlen(path), recursive);
 	}
 
 	if (tars) {
@@ -1119,10 +1120,10 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars)
  * @return the number of found files, i.e. the number of times that
  *         AddFile returned true.
  */
-uint FileScanner::Scan(const char *extension, const char *directory)
+uint FileScanner::Scan(const char *extension, const char *directory, bool recursive)
 {
 	char path[MAX_PATH];
 	strecpy(path, directory, lastof(path));
 	AppendPathSeparator(path, lengthof(path));
-	return ScanPath(this, extension, path, strlen(path));
+	return ScanPath(this, extension, path, strlen(path), recursive);
 }
