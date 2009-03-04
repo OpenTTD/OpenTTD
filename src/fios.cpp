@@ -37,7 +37,7 @@ extern void FiosGetDrives();
 extern bool FiosGetDiskFreeSpace(const char *path, uint64 *tot);
 
 /* get the name of an oldstyle savegame */
-extern void GetOldSaveGameName(const char *path, const char *file, char *title, const char *last);
+extern void GetOldSaveGameName(const char *file, char *title, const char *last);
 
 /**
  * Compare two FiosItem's. Used with qsort when sorting the file list.
@@ -343,7 +343,7 @@ FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, 
 	if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
 		if (strcasecmp(ext, ".ss1") == 0 || strcasecmp(ext, ".sv1") == 0 ||
 				strcasecmp(ext, ".sv2") == 0) {
-			if (title != NULL) GetOldSaveGameName(_fios_path, file, title, last);
+			if (title != NULL) GetOldSaveGameName(file, title, last);
 			return FIOS_TYPE_OLDFILE;
 		}
 	}
@@ -392,7 +392,7 @@ static FiosType FiosGetScenarioListCallback(SaveLoadDialogMode mode, const char 
 
 	if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO || mode == SLD_NEW_GAME) {
 		if (strcasecmp(ext, ".sv0") == 0 || strcasecmp(ext, ".ss0") == 0 ) {
-			GetOldSaveGameName(_fios_path, file, title, last);
+			GetOldSaveGameName(file, title, last);
 			return FIOS_TYPE_OLD_SCENARIO;
 		}
 	}

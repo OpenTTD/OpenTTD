@@ -1737,6 +1737,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 			assert(mode == SL_LOAD);
 			DEBUG(desync, 1, "load: %s\n", filename);
 
+			/* Can't fseek to 0 as in tar files that is not correct */
+			long pos = ftell(_sl.fh);
 			if (fread(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 
 			/* see if we have any loader for this type. */
@@ -1744,13 +1746,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 				/* No loader found, treat as version 0 and use LZO format */
 				if (fmt == endof(_saveload_formats)) {
 					DEBUG(sl, 0, "Unknown savegame type, trying to load it as the buggy format");
-	#if defined(WINCE)
-					/* Of course some system had not to support rewind ;) */
-					fseek(_sl.fh, 0L, SEEK_SET);
 					clearerr(_sl.fh);
-	#else
-					rewind(_sl.fh);
-	#endif
+					fseek(_sl.fh, pos, SEEK_SET);
 					_sl_version = 0;
 					_sl_minor_version = 0;
 					fmt = _saveload_formats + 1; // LZO

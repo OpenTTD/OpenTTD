@@ -12,6 +12,7 @@
 #include "gfx_func.h"
 #include "fios.h"
 #include "settings_type.h"
+#include "fileio_func.h"
 
 #include "table/strings.h"
 
@@ -98,7 +99,7 @@ static bool ReadHeightmapPNG(char *filename, uint *x, uint *y, byte **map)
 	png_structp png_ptr = NULL;
 	png_infop info_ptr  = NULL;
 
-	fp = fopen(filename, "rb");
+	fp = FioFOpenFile(filename, "rb");
 	if (fp == NULL) {
 		ShowErrorMessage(STR_PNGMAP_ERR_FILE_NOT_FOUND, STR_PNGMAP_ERROR, 0, 0);
 		return false;
@@ -221,7 +222,7 @@ static bool ReadHeightmapBMP(char *filename, uint *x, uint *y, byte **map)
 	/* Init BmpData */
 	memset(&data, 0, sizeof(data));
 
-	f = fopen(filename, "rb");
+	f = FioFOpenFile(filename, "rb");
 	if (f == NULL) {
 		ShowErrorMessage(STR_PNGMAP_ERR_FILE_NOT_FOUND, STR_BMPMAP_ERROR, 0, 0);
 		return false;

@@ -9,6 +9,7 @@
 #include "../strings_type.h"
 #include "../string_func.h"
 #include "../settings_type.h"
+#include "../fileio_func.h"
 
 #include "table/strings.h"
 
@@ -224,7 +225,6 @@ static inline bool CheckOldSavegameType(FILE *f, char *temp, const char *last, u
 {
 	assert(last - temp + 1 >= (int)len);
 
-	fseek(f, 0, SEEK_SET);
 	if (fread(temp, 1, len, f) != len) {
 		temp[0] = '\0'; // if reading failed, make the name empty
 		return false;
@@ -243,8 +243,11 @@ static SavegameType DetermineOldSavegameType(FILE *f, char *title, const char *l
 
 	SavegameType type = SGT_TTO;
 
+	/* Can't fseek to 0 as in tar files that is not correct */
+	long pos = ftell(f);
 	if (!CheckOldSavegameType(f, temp, lastof(temp), TTO_HEADER_SIZE)) {
 		type = SGT_TTD;
+		fseek(f, pos, SEEK_SET);
 		if (!CheckOldSavegameType(f, temp, lastof(temp), TTD_HEADER_SIZE)) {
 			type = SGT_INVALID;
 		}
@@ -273,7 +276,7 @@ bool LoadOldSaveGame(const char *file)
 	InitLoading(&ls);
 
 	/* Open file */
-	ls.file = fopen(file, "rb");
+	ls.file = FioFOpenFile(file, "rb");
 
 	if (ls.file == NULL) {
 		DEBUG(oldloader, 0, "Cannot open file '%s'", file);
@@ -303,12 +306,9 @@ bool LoadOldSaveGame(const char *file)
 	return true;
 }
 
-void GetOldSaveGameName(const char *path, const char *file, char *title, const char *last)
+void GetOldSaveGameName(const char *file, char *title, const char *last)
 {
-	char filename[MAX_PATH];
-
-	snprintf(filename, lengthof(filename), "%s" PATHSEP "%s", path, file);
-	FILE *f = fopen(filename, "rb");
+	FILE *f = FioFOpenFile(file, "rb");
 
 	if (f == NULL) {
 		*title = '\0';
