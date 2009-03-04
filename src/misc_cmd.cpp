@@ -19,6 +19,7 @@
 #include "company_base.h"
 #include "company_gui.h"
 #include "settings_type.h"
+#include "vehicle_base.h"
 
 #include "table/strings.h"
 
@@ -118,6 +119,12 @@ CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		}
 		ResetVehicleColourMap();
 		MarkWholeScreenDirty();
+
+		/* Company colour data is indirectly cached. */
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->owner == _current_company) v->cache_valid = 0;
+		}
 	}
 	return CommandCost();
 }

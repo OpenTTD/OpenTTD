@@ -257,11 +257,13 @@ void TrainConsistChanged(Vehicle *v, bool same_length)
 
 		/* Set user defined data to its default value */
 		u->u.rail.user_def_data = rvi_u->user_def_data;
+		u->cache_valid = 0;
 	}
 
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
 		/* Update user defined data (must be done before other properties) */
 		u->u.rail.user_def_data = GetVehicleProperty(u, 0x25, u->u.rail.user_def_data);
+		u->cache_valid = 0;
 	}
 
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
@@ -347,6 +349,7 @@ void TrainConsistChanged(Vehicle *v, bool same_length)
 		if (!same_length) u->u.rail.cached_veh_length = veh_len;
 
 		v->u.rail.cached_total_length += u->u.rail.cached_veh_length;
+		u->cache_valid = 0;
 	}
 
 	/* store consist weight/max speed in cache */

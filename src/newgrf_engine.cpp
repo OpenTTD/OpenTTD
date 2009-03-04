@@ -442,10 +442,35 @@ static uint8 LiveryHelper(EngineID engine, const Vehicle *v)
 	return l->colour1 + l->colour2 * 16;
 }
 
+/**
+ * Helper to get the position of a vehicle within a chain of vehicles.
+ * @param v the vehicle to get the position of.
+ * @param consecutive whether to look at the whole chain or the vehicles
+ *                    with the same 'engine type'.
+ * @return the position in the chain from front and tail and chain length.
+ */
+static uint32 PositionHelper(const Vehicle *v, bool consecutive)
+{
+	const Vehicle *u;
+	byte chain_before = 0;
+	byte chain_after  = 0;
+
+	for (u = v->First(); u != v; u = u->Next()) {
+		chain_before++;
+		if (consecutive && u->engine_type != v->engine_type) chain_before = 0;
+	}
+
+	while (u->Next() != NULL && (!consecutive || u->Next()->engine_type == v->engine_type)) {
+		chain_after++;
+		u = u->Next();
+	}
+
+	return chain_before | chain_after << 8 | (chain_before + chain_after + consecutive) << 16;
+}
 
 static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
-	const Vehicle *v = GRV(object);
+	Vehicle *v = const_cast<Vehicle*>(GRV(object));
 
 	if (v == NULL) {
 		/* Vehicle does not exist, so we're in a purchase list */
@@ -476,80 +501,81 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 	/* Calculated vehicle parameters */
 	switch (variable) {
 		case 0x40: // Get length of consist
+			if (!HasBit(v->cache_valid, 0)) {
+				v->cached_var40 = PositionHelper(v, false);
+				SetBit(v->cache_valid, 0);
+			}
+			return v->cached_var40;
+
 		case 0x41: // Get length of same consecutive wagons
-			{
+			if (!HasBit(v->cache_valid, 1)) {
+				v->cached_var41 = PositionHelper(v, true);
+				SetBit(v->cache_valid, 1);
+			}
+			return v->cached_var41;
+
+		case 0x42: // Consist cargo information
+			if (!HasBit(v->cache_valid, 2)) {
 				const Vehicle *u;
-				byte chain_before = 0;
-				byte chain_after  = 0;
+				byte cargo_classes = 0;
+				CargoID common_cargo_best = CT_INVALID;
+				uint8 common_cargos[NUM_CARGO];
+				uint8 common_subtype_best = 0xFF; // Return 0xFF if nothing is carried
+				uint8 common_subtypes[256];
+				byte user_def_data = 0;
+				CargoID common_cargo_type = CT_PASSENGERS;
+				uint8 common_subtype = 0;
 
-				for (u = v->First(); u != v; u = u->Next()) {
-					chain_before++;
-					if (variable == 0x41 && u->engine_type != v->engine_type) chain_before = 0;
+				/* Reset our arrays */
+				memset(common_cargos, 0, sizeof(common_cargos));
+				memset(common_subtypes, 0, sizeof(common_subtypes));
+
+				for (u = v; u != NULL; u = u->Next()) {
+					if (v->type == VEH_TRAIN) user_def_data |= u->u.rail.user_def_data;
+
+					/* Skip empty engines */
+					if (u->cargo_cap == 0) continue;
+
+					cargo_classes |= GetCargo(u->cargo_type)->classes;
+					common_cargos[u->cargo_type]++;
 				}
 
-				while (u->Next() != NULL && (variable == 0x40 || u->Next()->engine_type == v->engine_type)) {
-					chain_after++;
-					u = u->Next();
+				/* Pick the most common cargo type */
+				for (CargoID cargo = 0; cargo < NUM_CARGO; cargo++) {
+					if (common_cargos[cargo] > common_cargo_best) {
+						common_cargo_best = common_cargos[cargo];
+						common_cargo_type = cargo;
+					}
 				}
 
-				return chain_before | chain_after << 8 | (chain_before + chain_after + (variable == 0x41)) << 16;
-			}
+				/* Count subcargo types of common_cargo_type */
+				for (u = v; u != NULL; u = u->Next()) {
+					/* Skip empty engines and engines not carrying common_cargo_type */
+					if (u->cargo_cap == 0 || u->cargo_type != common_cargo_type) continue;
 
-		case 0x42: { // Consist cargo information
-			const Vehicle *u;
-			byte cargo_classes = 0;
-			CargoID common_cargo_best = CT_INVALID;
-			uint8 common_cargos[NUM_CARGO];
-			uint8 common_subtype_best = 0xFF; // Return 0xFF if nothing is carried
-			uint8 common_subtypes[256];
-			byte user_def_data = 0;
-			CargoID common_cargo_type = CT_PASSENGERS;
-			uint8 common_subtype = 0;
-
-			/* Reset our arrays */
-			memset(common_cargos, 0, sizeof(common_cargos));
-			memset(common_subtypes, 0, sizeof(common_subtypes));
-
-			for (u = v; u != NULL; u = u->Next()) {
-				if (v->type == VEH_TRAIN) user_def_data |= u->u.rail.user_def_data;
-
-				/* Skip empty engines */
-				if (u->cargo_cap == 0) continue;
-
-				cargo_classes |= GetCargo(u->cargo_type)->classes;
-				common_cargos[u->cargo_type]++;
-			}
-
-			/* Pick the most common cargo type */
-			for (CargoID cargo = 0; cargo < NUM_CARGO; cargo++) {
-				if (common_cargos[cargo] > common_cargo_best) {
-					common_cargo_best = common_cargos[cargo];
-					common_cargo_type = cargo;
+					common_subtypes[u->cargo_subtype]++;
 				}
-			}
 
-			/* Count subcargo types of common_cargo_type */
-			for (u = v; u != NULL; u = u->Next()) {
-				/* Skip empty engines and engines not carrying common_cargo_type */
-				if (u->cargo_cap == 0 || u->cargo_type != common_cargo_type) continue;
-
-				common_subtypes[u->cargo_subtype]++;
-			}
-
-			/* Pick the most common subcargo type*/
-			for (uint i = 0; i < lengthof(common_subtypes); i++) {
-				if (common_subtypes[i] > common_subtype_best) {
-					common_subtype_best = common_subtypes[i];
-					common_subtype = i;
+				/* Pick the most common subcargo type*/
+				for (uint i = 0; i < lengthof(common_subtypes); i++) {
+					if (common_subtypes[i] > common_subtype_best) {
+						common_subtype_best = common_subtypes[i];
+						common_subtype = i;
+					}
 				}
-			}
 
-			uint8 common_bitnum = (common_cargo_type == CT_INVALID ? 0xFF : GetCargo(common_cargo_type)->bitnum);
-			return cargo_classes | (common_bitnum << 8) | (common_subtype << 16) | (user_def_data << 24);
-		}
+				uint8 common_bitnum = (common_cargo_type == CT_INVALID ? 0xFF : GetCargo(common_cargo_type)->bitnum);
+				v->cached_var42 = cargo_classes | (common_bitnum << 8) | (common_subtype << 16) | (user_def_data << 24);
+				SetBit(v->cache_valid, 2);
+			}
+			return v->cached_var42;
 
 		case 0x43: // Company information
-			return v->owner | (GetCompany(v->owner)->is_ai ? 0x10000 : 0) | (LiveryHelper(v->engine_type, v) << 24);
+			if (!HasBit(v->cache_valid, 3)) {
+				v->cached_var43 = v->owner | (GetCompany(v->owner)->is_ai ? 0x10000 : 0) | (LiveryHelper(v->engine_type, v) << 24);
+				SetBit(v->cache_valid, 3);
+			}
+			return v->cached_var43;
 
 		case 0x44: // Aircraft information
 			if (v->type != VEH_AIRCRAFT) return UINT_MAX;
