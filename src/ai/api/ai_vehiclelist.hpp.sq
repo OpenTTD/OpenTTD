@@ -53,3 +53,37 @@ void SQAIVehicleList_SharedOrders_Register(Squirrel *engine) {
 
 	SQAIVehicleList_SharedOrders.PostRegister(engine);
 }
+
+namespace SQConvert {
+	/* Allow AIVehicleList_Group to be used as Squirrel parameter */
+	template <> AIVehicleList_Group *GetParam(ForceType<AIVehicleList_Group *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIVehicleList_Group *)instance; }
+	template <> AIVehicleList_Group &GetParam(ForceType<AIVehicleList_Group &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIVehicleList_Group *)instance; }
+	template <> const AIVehicleList_Group *GetParam(ForceType<const AIVehicleList_Group *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIVehicleList_Group *)instance; }
+	template <> const AIVehicleList_Group &GetParam(ForceType<const AIVehicleList_Group &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIVehicleList_Group *)instance; }
+	template <> int Return<AIVehicleList_Group *>(HSQUIRRELVM vm, AIVehicleList_Group *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIVehicleList_Group", res, NULL, DefSQDestructorCallback<AIVehicleList_Group>); return 1; }
+}; // namespace SQConvert
+
+void SQAIVehicleList_Group_Register(Squirrel *engine) {
+	DefSQClass <AIVehicleList_Group> SQAIVehicleList_Group("AIVehicleList_Group");
+	SQAIVehicleList_Group.PreRegister(engine, "AIAbstractList");
+	SQAIVehicleList_Group.AddConstructor<void (AIVehicleList_Group::*)(GroupID group_id), 2>(engine, "xi");
+
+	SQAIVehicleList_Group.PostRegister(engine);
+}
+
+namespace SQConvert {
+	/* Allow AIVehicleList_DefaultGroup to be used as Squirrel parameter */
+	template <> AIVehicleList_DefaultGroup *GetParam(ForceType<AIVehicleList_DefaultGroup *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIVehicleList_DefaultGroup *)instance; }
+	template <> AIVehicleList_DefaultGroup &GetParam(ForceType<AIVehicleList_DefaultGroup &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIVehicleList_DefaultGroup *)instance; }
+	template <> const AIVehicleList_DefaultGroup *GetParam(ForceType<const AIVehicleList_DefaultGroup *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIVehicleList_DefaultGroup *)instance; }
+	template <> const AIVehicleList_DefaultGroup &GetParam(ForceType<const AIVehicleList_DefaultGroup &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIVehicleList_DefaultGroup *)instance; }
+	template <> int Return<AIVehicleList_DefaultGroup *>(HSQUIRRELVM vm, AIVehicleList_DefaultGroup *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIVehicleList_DefaultGroup", res, NULL, DefSQDestructorCallback<AIVehicleList_DefaultGroup>); return 1; }
+}; // namespace SQConvert
+
+void SQAIVehicleList_DefaultGroup_Register(Squirrel *engine) {
+	DefSQClass <AIVehicleList_DefaultGroup> SQAIVehicleList_DefaultGroup("AIVehicleList_DefaultGroup");
+	SQAIVehicleList_DefaultGroup.PreRegister(engine, "AIAbstractList");
+	SQAIVehicleList_DefaultGroup.AddConstructor<void (AIVehicleList_DefaultGroup::*)(AIVehicle::VehicleType vehicle_type), 2>(engine, "xi");
+
+	SQAIVehicleList_DefaultGroup.PostRegister(engine);
+}

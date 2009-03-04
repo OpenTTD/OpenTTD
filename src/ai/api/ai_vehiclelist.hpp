@@ -6,6 +6,7 @@
 #define AI_VEHICLELIST_HPP
 
 #include "ai_abstractlist.hpp"
+#include "ai_vehicle.hpp"
 
 /**
  * Creates a list of vehicles of which you are the owner.
@@ -43,6 +44,34 @@ public:
 	 * @param station_id The vehicle that the rest shared orders with.
 	 */
 	AIVehicleList_SharedOrders(VehicleID vehicle_id);
+};
+
+/**
+ * Creates a list of vehicles that are in a group.
+ * @ingroup AIList
+ */
+class AIVehicleList_Group : public AIAbstractList {
+public:
+	static const char *GetClassName() { return "AIVehicleList_Group"; }
+
+	/**
+	 * @param group_id The ID of the group the vehicles are in.
+	 */
+	AIVehicleList_Group(GroupID group_id);
+};
+
+/**
+ * Creates a list of vehicles that are in the default group.
+ * @ingroup AIList
+ */
+class AIVehicleList_DefaultGroup : public AIAbstractList {
+public:
+	static const char *GetClassName() { return "AIVehicleList_DefaultGroup"; }
+
+	/**
+	 * @param vehicle_type The VehicleType to get the list of vehicles for.
+	 */
+	AIVehicleList_DefaultGroup(AIVehicle::VehicleType vehicle_type);
 };
 
 #endif /* AI_VEHICLELIST_HPP */
