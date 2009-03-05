@@ -1195,7 +1195,7 @@ static void CloneVehicleName(const Vehicle *src, Vehicle *dst)
 	char buf[256];
 
 	/* Find the position of the first digit in the last group of digits. */
-	int number_position;
+	size_t number_position;
 	for (number_position = strlen(src->name); number_position > 0; number_position--) {
 		/* The design of UTF-8 lets this work simply without having to check
 		 * for UTF-8 sequences. */
