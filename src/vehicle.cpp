@@ -1171,6 +1171,64 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
 	return cost;
 }
 
+/** Clone the custom name of a vehicle, adding or incrementing a number.
+ * @param src Source vehicle, with a custom name.
+ * @param dst Destination vehicle.
+ */
+static void CloneVehicleName(const Vehicle *src, Vehicle *dst)
+{
+	char buf[256];
+
+	/* Find the position of the first digit in the last group of digits. */
+	int number_position;
+	for (number_position = strlen(src->name); number_position > 0; number_position--) {
+		/* The design of UTF-8 lets this work simply without having to check
+		 * for UTF-8 sequences. */
+		if (src->name[number_position - 1] < '0' || src->name[number_position - 1] > '9') break;
+	}
+
+	/* Format buffer and determine starting number. */
+	int num;
+	if (number_position == strlen(src->name)) {
+		/* No digit at the end, so start at number 2. */
+		strecpy(buf, src->name, lastof(buf));
+		strecat(buf, " ", lastof(buf));
+		number_position = strlen(buf);
+		num = 2;
+	} else {
+		/* Found digits, parse them and start at the next number. */
+		strecpy(buf, src->name, lastof(buf));
+		buf[number_position] = '\0';
+		num = strtol(&src->name[number_position], NULL, 10) + 1;
+	}
+
+	/* Check if this name is already taken. */
+	for (int max_iterations = 1000; max_iterations > 0; max_iterations--, num++) {
+		/* Attach the number to the temporary name. */
+		seprintf(&buf[number_position], lastof(buf), "%d", num);
+		bool dup = false;
+
+		/* Check name against all other vehicles for this company. */
+		const Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->owner == src->owner && v->name != NULL) {
+				if (strcmp(buf, v->name) == 0) {
+					dup = true;
+					break;
+				}
+			}
+		}
+
+		if (!dup) {
+			/* Name is not a duplicate, so assign it. */
+			dst->name = strdup(buf);
+			break;
+		}
+	}
+
+	/* All done. If we didn't find a name, it'll just use its default. */
+}
+
 /** Clone a vehicle. If it is a train, it will clone all the cars too
  * @param tile tile of the depot where the cloned vehicle is build
  * @param flags type of operation
@@ -1322,6 +1380,9 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		 * cargo types might not match (passenger vs non-passenger)
 		 */
 		DoCommand(0, (v_front->index << 16) | w_front->index, p2 & 1 ? CO_SHARE : CO_COPY, flags, CMD_CLONE_ORDER);
+
+		/* Now clone the vehicle's name, if it has one. */
+		if (v_front->name != NULL) CloneVehicleName(v_front, w_front);
 	}
 
 	/* Since we can't estimate the cost of cloning a vehicle accurately we must
