@@ -344,6 +344,7 @@ static void GetFileTitle(const char *file, char *title, const char *last)
 	size_t read = fread(title, 1, last - title, f);
 	assert(title + read <= last);
 	title[read] = '\0';
+	FioFCloseFile(f);
 }
 
 /**
