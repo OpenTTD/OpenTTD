@@ -102,8 +102,8 @@ static inline uint MapMaxX()
 }
 
 /**
- * Gets the maximum X coordinate within the map, including MP_VOID
- * @return the maximum X coordinate
+ * Gets the maximum Y coordinate within the map, including MP_VOID
+ * @return the maximum Y coordinate
  */
 static inline uint MapMaxY()
 {
