@@ -1171,6 +1171,21 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
 	return cost;
 }
 
+/** Test if a name is unique among vehicle names.
+ * @param name Name to test.
+ * @return True ifffffff the name is unique.
+ */
+static bool IsUniqueVehicleName(const char *name)
+{
+	const Vehicle *v;
+
+	FOR_ALL_VEHICLES(v) {
+		if (v->name != NULL && strcmp(v->name, name) == 0) return false;
+	}
+
+	return true;
+}
+
 /** Clone the custom name of a vehicle, adding or incrementing a number.
  * @param src Source vehicle, with a custom name.
  * @param dst Destination vehicle.
@@ -1206,21 +1221,9 @@ static void CloneVehicleName(const Vehicle *src, Vehicle *dst)
 	for (int max_iterations = 1000; max_iterations > 0; max_iterations--, num++) {
 		/* Attach the number to the temporary name. */
 		seprintf(&buf[number_position], lastof(buf), "%d", num);
-		bool dup = false;
 
-		/* Check name against all other vehicles for this company. */
-		const Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
-			if (v->owner == src->owner && v->name != NULL) {
-				if (strcmp(buf, v->name) == 0) {
-					dup = true;
-					break;
-				}
-			}
-		}
-
-		if (!dup) {
-			/* Name is not a duplicate, so assign it. */
+		/* Check the name is unique. */
+		if (IsUniqueVehicleName(buf)) {
 			dst->name = strdup(buf);
 			break;
 		}
@@ -1570,17 +1573,6 @@ void VehicleEnterDepot(Vehicle *v)
 			AI::NewEvent(v->owner, new AIEventVehicleWaitingInDepot(v->index));
 		}
 	}
-}
-
-static bool IsUniqueVehicleName(const char *name)
-{
-	const Vehicle *v;
-
-	FOR_ALL_VEHICLES(v) {
-		if (v->name != NULL && strcmp(v->name, name) == 0) return false;
-	}
-
-	return true;
 }
 
 /** Give a custom name to your vehicle
