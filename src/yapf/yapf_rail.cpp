@@ -81,7 +81,7 @@ private:
 			}
 		}
 
-		return tile != m_res_dest;
+		return tile != m_res_dest || td != m_res_dest_td;
 	}
 
 	/** Unreserve a single track/platform. Stops when the previous failer is reached. */
@@ -97,7 +97,7 @@ private:
 		} else if (tile != m_res_fail_tile || td != m_res_fail_td) {
 			UnreserveRailTrack(tile, TrackdirToTrack(td));
 		}
-		return tile != m_res_dest && (tile != m_res_fail_tile || td != m_res_fail_td);
+		return (tile != m_res_dest || td != m_res_dest_td) && (tile != m_res_fail_tile || td != m_res_fail_td);
 	}
 
 public:
