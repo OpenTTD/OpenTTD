@@ -1347,7 +1347,7 @@ void ResizeWindow(Window *w, int x, int y)
 	w->SetDirty();
 }
 
-static bool _dragging_window;
+static bool _dragging_window; ///< A window is being dragged or resized.
 
 static bool HandleWindowDragging()
 {

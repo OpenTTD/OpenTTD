@@ -584,7 +584,7 @@ enum WindowFlags {
 	WF_SCROLL_DOWN       = 1 <<  5, ///< Lower scroll button has been pressed, @see ScrollbarClickHandler()
 	WF_SCROLL_MIDDLE     = 1 <<  6, ///< Scrollbar scrolling, @see ScrollbarClickHandler()
 	WF_HSCROLL           = 1 <<  7,
-	WF_SIZING            = 1 <<  8,
+	WF_SIZING            = 1 <<  8, ///< Window is being resized.
 	WF_STICKY            = 1 <<  9, ///< Window is made sticky by user
 
 	WF_DISABLE_VP_SCROLL = 1 << 10, ///< Window does not do autoscroll, @see HandleAutoscroll()
