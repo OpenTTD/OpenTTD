@@ -22,6 +22,7 @@
 
 extern bool TarListAddFile(const char *filename);
 extern bool HasGraphicsSet(const ContentInfo *ci, bool md5sum);
+extern bool HasScenario(const ContentInfo *ci, bool md5sum);
 ClientNetworkContentSocketHandler _network_content_client;
 
 /** Wrapper function for the HasProc */
@@ -86,6 +87,11 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_INFO)
 			proc = AI::HasAI; break;
 			break;
 
+		case CONTENT_TYPE_SCENARIO:
+		case CONTENT_TYPE_HEIGHTMAP:
+			proc = HasScenario;
+			break;
+
 		default:
 			break;
 	}
@@ -143,6 +149,8 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
 {
 	if (type == CONTENT_TYPE_END) {
 		this->RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
+		this->RequestContentList(CONTENT_TYPE_SCENARIO);
+		this->RequestContentList(CONTENT_TYPE_HEIGHTMAP);
 		this->RequestContentList(CONTENT_TYPE_AI);
 		this->RequestContentList(CONTENT_TYPE_NEWGRF);
 		this->RequestContentList(CONTENT_TYPE_AI_LIBRARY);

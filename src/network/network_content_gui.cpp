@@ -98,6 +98,13 @@ public:
 					InvalidateWindowData(WC_NETWORK_WINDOW, 0, 2);
 					break;
 
+				case CONTENT_TYPE_SCENARIO:
+				case CONTENT_TYPE_HEIGHTMAP:
+					InvalidateWindowClasses(WC_SAVELOAD);
+					extern void ScanScenarios();
+					ScanScenarios();
+					break;
+
 				default:
 					break;
 			}
