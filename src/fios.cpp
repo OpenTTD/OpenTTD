@@ -555,7 +555,7 @@ public:
 		/* open the scenario file, but first get the name.
 		 * This is safe as we check on extension which
 		 * must always exist. */
-		*strrchr(filename, '.') = '\0';
+		*(char *)strrchr(filename, '.') = '\0';
 		f = FioFOpenFile(filename, "rb", SCENARIO_DIR, &size);
 		if (f == NULL) return false;
 
