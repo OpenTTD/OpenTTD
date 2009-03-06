@@ -592,13 +592,13 @@ STR_022C_RESET_LANDSCAPE                                        :{WHITE}Landflä
 STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Das gesamte Spielereigentum von der Karte entfernen
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Soll wirklich das gesamte Spielereigentum entfernt werden?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landfläche erzeugen
-STR_022F_TOWN_GENERATION                                        :{BLACK}Stadt errichten
+STR_022F_TOWN_GENERATION                                        :{BLACK}Stadt gründen
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrie errichten
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Straße bauen
-STR_0233_TOWN_GENERATION                                        :{WHITE}Stadt errichten
+STR_0233_TOWN_GENERATION                                        :{WHITE}Stadt gründen
 STR_0234_NEW_TOWN                                               :{BLACK}Neue Stadt
-STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Neue Stadt errichten
-STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Stadt kann hier nicht errichtet werden...
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Neue Stadt gründen
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Stadt kann hier nicht gegründet werden...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...zu dicht am Spielfeldrand
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...zu dicht an einer anderen Stadt
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...ungeeigneter Standort
@@ -608,9 +608,9 @@ STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...es is
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Die Stadt vergrößern
 STR_023C_EXPAND                                                 :{BLACK}Ausdehnen
 STR_023D_RANDOM_TOWN                                            :{BLACK}Zufällige Stadt
-STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Stadt an zufälligem Platz errichten
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Stadt an zufälligem Platz gründen
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}{STRING} kann hier nicht gebaut werden...
-STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...erst muss eine Stadt errichtet werden
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...erst muss eine Stadt gegründet werden
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...pro Stadt nur einmal erlaubt
 STR_0288_PLANT_TREES                                            :{BLACK}Bäume pflanzen
 STR_0289_PLACE_SIGN                                             :{BLACK}Schild aufstellen
@@ -990,7 +990,7 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE} Eines o
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maximale Stationsgröße: {ORANGE}{STRING} {RED}(Hoher Wert verlangsamt das Spiel)
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Helipads automatisch warten: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Landschaftsbau-Toolbar an die Bauwerkzeuge binden: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Werkzeugleiste für Landschaftsbau an die Bauwerkzeuge binden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Bei Rechtsklick Ansicht in die Gegenrichtung verschieben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Optimierten Bildlauf in den Ansichten verwenden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Beim Bauen Tooltip mit Abmessungen anzeigen: {ORANGE}{STRING}
@@ -1204,7 +1204,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :Viele zufällig
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Das Spielfeld mit zufällig platzierten Industrien füllen
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Industrie kann nicht erzeugt werden...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Die Landschaftsbau-Toolbar ermöglicht es, Land zu senken/heben, Bäume zu pflanzen, etc.
+STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Die Werkzeugleiste für Landschaftsbau ermöglicht es, Land zu senken/heben, Bäume zu pflanzen, etc.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landschaftsbau
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Land ausgleichen
 
@@ -1264,8 +1264,8 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Produkti
 STR_NETWORK_MULTIPLAYER                                         :{WHITE}Mehrspieler
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Spielername:
-STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Dieser Name wird Sie anderen Spielern gegenüber identifizieren
-STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Bitte Ihren Name eingeben
+STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Dieser Name dient zur Indentifizierung anderen Spielern gegenüber
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Bitte eigenen Name eingeben
 STR_NETWORK_CONNECTION                                          :{BLACK}Verbindung:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Zwischen Spiel im Internet und LAN wählen
 
@@ -1390,7 +1390,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Lettisch
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Mehrspielerlobby
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Spieleintritt vorbereiten:   {ORANGE}{STRING}
-STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Eine Liste aller Firmen, die sich im Spiel befinden. Sie können einer Firma beitreten oder eine eigene Firma gründen, sofern ein Platz frei ist.
+STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Eine Liste aller Firmen, die sich im Spiel befinden. Man kann einer Firma beitreten oder eine eigene Firma gründen, sofern ein Platz frei ist.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Neues Unternehmen
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Ein neues Unternehmen gründen
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Beim Spiel zusehen
@@ -1431,7 +1431,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Trennen
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Wieviel Geld möchten Sie geben?
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Wieviel Geld soll übergeben werden?
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server ist geschützt. Passwort eingeben:
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma ist geschützt. Passwort eingeben:
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Teilnehmerliste
@@ -1449,7 +1449,7 @@ STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Server k
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Verbindung konnte nicht hergestellt werden
 STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Verbindung #{NUM} hat das Zeitlimit überschritten
 STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Protokollfehler: Die Verbindung musste getrennt werden
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Ihre Version entspricht nicht der Serverversion
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Diese Version des Spiels entspricht nicht der des Servers
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Falsches Passwort
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}Der Server ist voll
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Sie sind auf diesem Server gesperrt
@@ -1483,13 +1483,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spiel fortgeset
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :geht
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} trat dem Spiel bei
-STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} ist der Firma #{2:NUM} beigetregen
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} ist der Firma #{2:NUM} beigetreten
 STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} ist den Zuschauern beigetreten
 STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} hat eine neue Firma gegründet (#{2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} hat das Spiel verlassen ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} hat seinen/ihren Namen in {STRING} geändert
-STR_NETWORK_GIVE_MONEY                                          :*** {STRING} gab Ihrem Unternehmen {2:CURRENCY}
-STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Sie gaben {1:STRING} {2:CURRENCY}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} gab der eigenen Firma {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Die eigene Firma übergab {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] an {STRING}: {WHITE}{STRING}
@@ -1751,14 +1751,14 @@ STR_204A_BUILD_STATUE_OF_COMPANY                                :Statue des Firm
 STR_204B_FUND_NEW_BUILDINGS                                     :Neue Gebäude finanzieren
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Exklusive Transportrechte kaufen
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Die Stadtverwaltung bestechen
-STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}Führen Sie im Ort eine kleine Werbekampagne durch, um mehr Passagier- und Frachtaufträge für das Unternehmen zu gewinnen.{}Kosten: {CURRENCY}
-STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW}Führen Sie im Ort eine mittlere Werbekampagne durch, um mehr Passagier- und Frachtaufträge für das Unternehmen zu gewinnen.{}Kosten: {CURRENCY}
-STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}Führen Sie im Ort eine große Werbekampagne durch, um mehr Passagier- und Frachtaufträge für das Unternehmen zu gewinnen.{}Kosten: {CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW}Finanzieren Sie die örtlichen Straßenreparaturen. Der Straßenverkehr wird bis zu 6 Monate beeinträchtigt.{}Kosten: {CURRENCY}
-STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW}Errichten Sie eine Statue in Ehre an den Transporteigentümer.{}Kosten: {CURRENCY}
-STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW}Finanzieren Sie den Bau kommerzieller Gebäude im Ort.{}Kosten: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW}Kaufen Sie für 1 Jahre die exklusiven Transportrechte der Stadt. Die Stadtverwaltung erlaubt nur Passagier- und Frachttransporte Ihres Unternehmens.{}Kosten: {CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW}Bestechen Sie die Stadtverwaltung, um Ihre Bewertung zu verbessern. Dabei riskieren Sie allerdings eine harte Strafe, falls Sie ertappt werden.{}Kosten: {CURRENCY}
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}Im Ort eine kleine Werbekampagne starten, um mehr Passagier- und Frachtaufträge für das eigene Unternehmen zu gewinnen.{}Kosten: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW}Im Ort eine mittlere Werbekampagne starten, um mehr Passagier- und Frachtaufträge für das eigene Unternehmen zu gewinnen.{}Kosten: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}Im Ort eine große Werbekampagne starten, um mehr Passagier- und Frachtaufträge für das eigene Unternehmen zu gewinnen.{}Kosten: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW}Die örtlichen Straßenreparaturen finanzieren. Der Straßenverkehr wird bis zu 6 Monate beeinträchtigt.{}Kosten: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW}Eine Statue zu Ehren der eigenen Firma errichten.{}Kosten: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW}Bau von Geschäftsgebäuden im Ort finanzieren.{}Kosten: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW}Für ein  Jahr die exklusiven Transportrechte in der Stadt kaufen. Die Stadtverwaltung erlaubt dann nur Passagier- und Frachttransporte des eigenen Unternehmens.{}Kosten: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW}Die Stadtverwaltung bestechen, um die eigene Bewertung zu verbessern. Dabei riskiert man allerdings eine harte Strafe, falls man ertappt wird.{}Kosten: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Verkehrschaos in {TOWN}!{}{}Straßensanierungsprogramm finanziert durch {STRING} wird 6 Monate lang Verzögerungen im Verkehr bewirken!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -2043,7 +2043,7 @@ STR_5803_COMPANY_HEADQUARTERS                                   :Firmensitz
 STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...Firmensitz ist im Weg
 STR_5805_COMPANY_OWNED_LAND                                     :Firmeneigenes Gelände
 STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Das Land kann nicht erworben werden...
-STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...Sie besitzen es bereits!
+STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...ist bereits im eigenen Firma!
 
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -2120,7 +2120,7 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Wassera
 STR_6813_ECONOMY                                                :{LTBLUE}Wirtschaft: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Zug umkehren: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Katastrophen: {ORANGE}{STRING}
-STR_CITY_APPROVAL                                               :{LTBLUE}Haltung der Stadtverwaltung zum Landschaftsbau: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Haltung der Stadtverwaltung zu Abrißmaßnahmen: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Keine
@@ -2161,7 +2161,7 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Nur am Strecken
 STR_6836_OFF                                                    :Aus
 STR_6837_ON                                                     :An
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Highscoretabelle zeigen
-STR_PERMISSIVE                                                  :Nachsichtig
+STR_PERMISSIVE                                                  :Wohlwollend
 STR_TOLERANT                                                    :Neutral
 STR_HOSTILE                                                     :Ablehnend
 
@@ -2252,7 +2252,7 @@ STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT
 STR_7058_PRESIDENT                                              :{BLACK}{PRESIDENTNAME}{}(Manager)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Transportfirmen fusionieren!
 STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} ist verkauft worden an {STRING} für {CURRENCY}!
-STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Wir suchen jemanden, der die Firma übernimmt.{}{}Nehmen Sie das Angebot an und kaufen {COMPANY} für {CURRENCY}?
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Wir suchen eine Transportfirma, die unsere Firma übernimmt.{}{}Besteht Interesse daran, {COMPANY}  für {CURRENCY} zu übernehmen?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Insolvenz!
 STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} ist von den Gläubigern geschlossen worden, alles Vermögen wurde veräussert!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Neue Transportfirma gegründet!
@@ -2281,7 +2281,7 @@ STR_RELOCATE_HQ                                                 :{BLACK}verlegen
 STR_COMPANY_JOIN                                                :{BLACK}Beitreten
 STR_COMPANY_JOIN_TIP                                            :{BLACK}Dieser Firma beitreten und sie unterstützen
 STR_COMPANY_PASSWORD                                            :{BLACK}Passwort
-STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Sie können Ihre Firma mit einem Passwort schützen, sodass nur ausgewählte Spieler beitreten können.
+STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Die Firma durch ein Passwort schützen, sodass nur ausgewählte Spieler beitreten können.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Firmenpasswort setzen
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}eingegebenes Passwort nicht speichern
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Passwort der Firma zuweisen
@@ -2593,7 +2593,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Hubsch
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Hubschrauber
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Hubschrauber
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Nachricht vom Fahrzeughersteller
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Wir haben {G "einen" "eine" "ein" ""} neue{G n "" s ""} {0:STRING} entwickelt. {}Sind Sie daran interessiert, {G 0 den die das die} {0:STRING} ein Jahr lang exklusiv zu nutzen, so dass wir die Funktionen testen können, bevor {G 0 er sie es sie} allgemein zur Verfügung gestellt {G 0 wird wird wird werden}?
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Wir haben {G "einen" "eine" "ein" ""} neue{G n "" s ""} {0:STRING} entwickelt. {}Besteht Interesse, {G 0 den die das die} {0:STRING} ein Jahr lang exklusiv zu nutzen, so dass wir die Funktionen testen können, bevor {G 0 er sie es sie} allgemein zur Verfügung gestellt {G 0 wird wird wird werden}?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :{G=w}Lokomotive
 STR_8103_ROAD_VEHICLE                                           :{G=n}Fahrzeug
 STR_8104_AIRCRAFT                                               :{G=n}Flugzeug
@@ -3059,7 +3059,7 @@ STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Stolleneinbruch bei {TOWN} hinterlässt Pfad der Zerstörung!
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Hochwasser!{}Mindestens {COMMA} Mensch{P "" en} vermisst oder tot nach schwerer Flut!
 
-STR_BRIBE_FAILED                                                :{WHITE}Ihr Bestechungsversuch wurde
+STR_BRIBE_FAILED                                                :{WHITE}Der Bestechungsversuch wurde
 STR_BRIBE_FAILED_2                                              :{WHITE}von einem regionalen Untersuchungsbeamten aufgedeckt.
 STR_BUILD_DATE                                                  :{BLACK}Errichtet am: {LTBLUE}{DATE_LONG}
 
@@ -3614,9 +3614,9 @@ STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Beginne 
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Gesamtgröße der Downloads: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}Beschreibung der Erweiterung
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Diese ist nicht zum Herunterladen ausgewählt
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Sie haben dies zum Herunterladen ausgewählt
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Dies ist zum Herunterladen ausgewählt
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Diese Abhängigkeit wurde zum Herunterladen ausgewählt
-STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Diese Erweiterung besitzen Sie schon
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Diese Erweiterung ist schon vorhanden
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Die Erweiterung ist unbekannt und kann nicht von OpenTTD heruntergeladen werden
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Das ist ein Ersatz für {G einen eine ein ""} existiernd{G en e es e} {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Name: {WHITE}{STRING}

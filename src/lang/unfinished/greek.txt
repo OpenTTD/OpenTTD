@@ -644,9 +644,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...κα�
 STR_02A1_SMALL                                                  :{BLACK}Μικρό
 STR_02A2_MEDIUM                                                 :{BLACK}Μεσαίο
 STR_02A3_LARGE                                                  :{BLACK}Μεγάλο
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Τυχαίο
 STR_FOUND_TOWN_CITY                                             :{BLACK}Πόλη
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Οι πόλεις αναπτύσσονται ταχύτερα από τις απλές κωμοπόλεις{}Ανάλογα με τις ρυθμίσεις, είναι μεγαλύτερες όταν ιδρύονται
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Επιλογή μεγέθους πόλης
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Μέγεθος πόλης:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Σχέδιο δρόμων πόλεως
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Επιλογή σχεδίου δρόμων που χρησιμοποιείται για αυτή την πόλη
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Αρχικό
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Καλύτεροι δρόμοι
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}Πλέγμα 2x2
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}Πλέγμα 3x3
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Τυχαίο
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Εμφάνιση τελευταίου μηνύματος ή αναφοράς νέων
@@ -725,6 +735,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Κάθε 12 μ�
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Έναρξη νέου παιχνιδιού
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Φόρτωση αποθηκευμένου παιχνιδιού
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Δημιουργία προσαρμοσμένου κόσμου/σεναρίου
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Έναρξη παιχνιδιού με πολλούς παίκτες
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Εμφάνιση επιλογών παιχνιδιού
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Εμφάνιση επιλογών δυσκολίας
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Έναρξη νέου παιχνιδιού, χρησιμοποιώντας ένα προσαρμοσμένο σενάριο
@@ -833,6 +844,9 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Διαμ
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Επιλογή της διαμόρφωσης της φωτογραφίας σε χρήση
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Βασικό σετ γραφικών
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Επιλογή του βασικού σετ γραφικών που θα χρησιμοποιηθεί
+
 STR_AUTOSAVE_1_MONTH                                            :Κάθε μήνα
 STR_AUTOSAVE_FAILED                                             :{WHITE}Το αυτόματο σώσιμο απέτυχε
 
@@ -898,6 +912,8 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Επι�
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Επιτρέπονται πιο ρεαλιστικά ταξινομημένες περιοχές συλλογής : {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Επιτρέπεται η αφαίρεση περισσότερων ιδιοκτησιών πόλεων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Επιτρέπεται η δημιουργία πολύ μακριών τρένων: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Αρχικό
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Ρεαλιστικό
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Απαγόρευση στροφών 90 μοιρών για τρένα και πλοία: {ORANGE}{STRING} {LTBLUE} (απαιτεί NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Σύνδεση σταθμών τρένων χτισμένων κοντά: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Χρησιμοποίηση βελτιωμένου αλγόριθμου φόρτωσης: {ORANGE}{STRING}
@@ -1034,14 +1050,15 @@ STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Στα�
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Οικονομία
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Ανταγωνιστές
 
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+
+
+############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :απενεργοποιημένο
 STR_CONFIG_SETTING_INT32                                        :{NUM}
 STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Αλλαγή τιμής ρύθμισης
-
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 
 STR_TEMPERATE_LANDSCAPE                                         :Συγκρατημένο τοπίο
 STR_SUB_ARCTIC_LANDSCAPE                                        :Πολικό τοπίο
@@ -1123,7 +1140,6 @@ STR_STATION_DRAG_DROP                                           :{BLACK}Φτιά
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Επέλεξε τον τύπο του σταθμού προς χτίσιμο
 
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Βιομηχανίες
 STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Ονόματα βιομηχανιών - click στο ονομα για κεντράρισμα στην βιομηχανία
 
@@ -1191,9 +1207,6 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :Kicked απο �
 
 
 ############ end network gui strings
-
-
-
 
 ##### PNG-MAP-Loader
 

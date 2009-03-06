@@ -1257,19 +1257,91 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}این �
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE} ...این وسیله را نمی توان حرکت داد
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}نمی شود قطار را فروخت...
+STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}مسیری به ایستگاه راه آهن پیدا نمیشود
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}قطار را نمی شود حرکت داد / متوقف کرد...
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}فاصله ی زمانی بین تعمیرات دوره ای: {LTBLUE}{COMMA}روز {BLACK}   آخیرین تعمسرات: {LTBLUE}{DATE_LONG}
+STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}قطارها-برای اطلاعات بیشتر روی قطار کلیک کنید
+STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}قطارها-برای اطلاعات بیشتر روی قطار کلیک کنید. وسیله را بکشید تا آن را از قطار خارج/وارد کنید
+STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}ساخت قطار جدید
+STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}قطار را برای فروش به اینجا بکشید
+STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}نمای اصلی جایگاه ایستگاه قطار
+STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}لیست انتخاب قطار - برای اطلاعات بیشتر روی وسیله کلیک کنید
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}قطار مشخص شده را بخر
+STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}تغییر نام نوع قطار
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}فعالیت فعلی قطار - برای توقف/شروع حرکت قطار اینجا کلیک کن
+STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}نمایش دستورات قطار
+STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}نمای اصلی جایگاه قطار
+STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}این قطار را به ایستگاه راه آهن بفرست. Ctrl+Click فقط قطار را سرویس میکند
+STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}قطار را مجبور کن بدون صبر برای علامت ترخیص شروع به حرکت کند
+STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}برعکس کردن جهت حرکت قطار
+STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}نمایش مشخصات قطار
+STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}افزایش مدت سرویس
+STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}کاهش مدت سرویس
+STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}نمایش مشخصات محموله در حال حمل
+STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}نمایش مشخصات قطار
+STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}نمایش ظرفیت هر وسیله
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}لیست دستورات - برای مشخص کردن دستور روی آن کلیک کنید. Ctrl+click به ایستگاه میرود
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}لغو دستور فعلی و شروع بعدی. Ctrl+Click دستور انتخاب شده را لغو می کند
+STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}پاک کردن دستور مشخص شده
+STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}وارد کردن دستور جدید قبل از دستور مشخص شده. یا اضافه کردن آن به آخر لیست
+STR_885C_BROKEN_DOWN                                            :{RED}از کار افتاده
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}سود این سال: {LTBLUE}{CURRENCY}  (سال قبل: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}قابلیت: {LTBLUE}{COMMA}%  {BLACK}دفعات خراب شدن از آخرین سرویس {LTBLUE}{COMMA}
+STR_8861_STOPPED                                                :{RED}متوقف شده
+STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}در هنگام خطر نمی توان علامت عبور قطار را داد
+STR_8863_CRASHED                                                :{RED}تصادف کرده!
 
+STR_8865_NAME_TRAIN                                             :{WHITE}نام گذاری قطار
+STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}نمیتوان برای قطار نام انتخاب کرد...
+STR_8867_NAME_TRAIN                                             :{BLACK}نام گذاری قطار
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}تصادف قطار!{}{COMMA} مرگ در انفجار حاصل از برخورد
+STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}جهت قطار را نمی شود تغییر داد...
+STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}تغییر نام انواع قطار ها
+STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}نمی شود انواع قطار ها را تغییر نام داد...
 
 
 
 
 
 ##id 0x9000
+STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}ماشین در جاده است
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} ماشین{P "" s}
+STR_9002                                                        :{WHITE}{VEHICLE}
+STR_9004_NEW_VEHICLES                                           :{BLACK}وسایل نقلیه ی جدید
+STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}ماشین های جدید
+STR_9007_BUILD_VEHICLE                                          :{BLACK}ساخت وسیله نقلیه
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}نمی شود ماشین ساخت...
+STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (اطلاعات)
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}سن: {LTBLUE}{STRING}{BLACK}   هزینه ی جا به جایی: {LTBLUE}{CURRENCY}/yr
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}سود امسال : {LTBLUE}{CURRENCY}  (lپارسال: {CURRENCY})
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}ضریب اطمینان: {LTBLUE}{COMMA}%  {BLACK}خرابی ها بعد از آخرین سرویس: {LTBLUE}{COMMA}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}  ساخته شده: {LTBLUE}{NUM}{BLACK} قیمت: {LTBLUE}{CURRENCY}
+STR_9012_CAPACITY                                               :{BLACK}ضرفیت: {LTBLUE}{CARGO}{STRING}
+STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}نمیشود ماشین را فروخت...
 
+STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}نام گذاری ماشین
+STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}شهروندان ورود اولین اتوبوس را به . . .{}{STATION} تبریک گفتند!
+STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}شهروندان ورود اولین کامیون را به . . .{}{STATION} تبریک گفتند!
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}تصادف ماشین!{}راننده پس از تصادف با قطار در آتش سوخت
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}تصادف ماشین!{}راننده پس از تصادف با قطار{COMMA} در آتش سوخت
+STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}ماشین نمی تواند دور بزند...
+STR_9034_RENAME                                                 :{BLACK}تغییر نام
+STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}تغییر نام انواع ماشین ها
+STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}تغییر نام انواع ماشین ها
+STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}نمی شود انواع ماشین ها را تغییر نام داد...
 
 
 ##id 0x9800
+STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}کشتی فروخته نمی شود...
+STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}نمی شود کشتی ساخت...
+STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}قطار در راه است
+STR_980F                                                        :{WHITE}{VEHICLE}
+STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (اطلاعات)
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}سن: {LTBLUE}{STRING}{BLACK}   هزینه ناوبری: {LTBLUE}{CURRENCY}/yr
+STR_9813_MAX_SPEED                                              :{BLACK}حد اکثر سرعت: {LTBLUE}{VELOCITY}
+STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}سود امسال: {LTBLUE}{CURRENCY}  (lپارسال: {CURRENCY})
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}ضریب اطمینان: {LTBLUE}{COMMA}%  {BLACK}خرابی ها بعد از آخرین سرویس: {LTBLUE}{COMMA}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   ساخت: {LTBLUE}{NUM}{BLACK} قیمت: {LTBLUE}{CURRENCY}
 
 
 ##id 0xA000

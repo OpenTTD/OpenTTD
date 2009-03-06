@@ -79,6 +79,40 @@ STR_004A_TOFFEE                                                 :Karmell
 STR_004B_BATTERY                                                :Batterie
 STR_004C_PLASTIC                                                :Plastik
 STR_004D_FIZZY_DRINK                                            :Gedrénks mat Khueleseier
+STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
+STR_ABBREV_COAL                                                 :{TINYFONT}KU
+STR_ABBREV_MAIL                                                 :{TINYFONT}PO
+STR_ABBREV_OIL                                                  :{TINYFONT}UL
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LI
+STR_ABBREV_GOODS                                                :{TINYFONT}WU
+STR_ABBREV_GRAIN                                                :{TINYFONT}KA
+STR_ABBREV_WOOD                                                 :{TINYFONT}HO
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}EÄ
+STR_ABBREV_STEEL                                                :{TINYFONT}ST
+STR_ABBREV_VALUABLES                                            :{TINYFONT}WS
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}KÄ
+STR_ABBREV_MAIZE                                                :{TINYFONT}MA
+STR_ABBREV_FRUIT                                                :{TINYFONT}FR
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
+STR_ABBREV_FOOD                                                 :{TINYFONT}IE
+STR_ABBREV_PAPER                                                :{TINYFONT}PB
+STR_ABBREV_GOLD                                                 :{TINYFONT}GD
+STR_ABBREV_WATER                                                :{TINYFONT}WA
+STR_ABBREV_WHEAT                                                :{TINYFONT}WE
+STR_ABBREV_RUBBER                                               :{TINYFONT}KT
+STR_ABBREV_SUGAR                                                :{TINYFONT}ZO
+STR_ABBREV_TOYS                                                 :{TINYFONT}SP
+STR_ABBREV_SWEETS                                               :{TINYFONT}SÉ
+STR_ABBREV_COLA                                                 :{TINYFONT}KO
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}ZW
+STR_ABBREV_BUBBLES                                              :{TINYFONT}BL
+STR_ABBREV_TOFFEE                                               :{TINYFONT}KR
+STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
+STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}KG
+STR_ABBREV_NONE                                                 :{TINYFONT}NO
+STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Kaart - {STRING}
@@ -867,33 +901,161 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meescht Benotzt
 
 
 
+STR_LANDINFO_RIVER                                              :Floss
 
 
+STR_LANDINFO_COORDS                                             :{BLACK}Koordinaten: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+
+STR_CONVERT_RAIL_TIP                                            :{BLACK}Konvertéiert den Typ vun Schinnen
 
 
+STR_DRAG_DROP                                                   :{BLACK}Drag & Drop
+STR_STATION_DRAG_DROP                                           :{BLACK}D'Statioun per drag & drop bauen
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Wielt eng Statiounsklass fir ze weisen
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Wielt den Statiounstyp fir ze bauen
 
+STR_FAST_FORWARD                                                :{BLACK}Spill schnell laafen loosen
+STR_MESSAGE_HISTORY                                             :{WHITE}Meldungshistorie
+STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Eng lëscht vun den läschten Meldungen
+STR_MESSAGES_DISABLE_ALL                                        :{BLACK}All ausschalten
+STR_MESSAGES_ENABLE_ALL                                         :{BLACK}All unschalten
 
+STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrien
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportéiert)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportéiert)
+STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Fabrikennimm - klickt op en Numm fir d'Unsiicht do drop ze zentréieren
 
+STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...ze Noo bei énger aanerer Fabrik
 
-
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Den Zuch unpassen fir aaner Luedungen ze transportéieren
+STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Zuch unpassen
+STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selèctéiert d'Luedung déi transportéiert soll ginn
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Passt den Zuch un fir den ungewielten Luedungstyp
+STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kann den Zuch nët unpassen...
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}D'Produktioun wiesselen
 
 ############ network gui strings
 
+STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multiplayer
+
+STR_NETWORK_PLAYER_NAME                                         :{BLACK}Spillernumm:
+STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Daat ass den Numm mat deem iersch dei aaner Spiller Identifizéieren kënnen
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Gidd ären Numm an
+STR_NETWORK_CONNECTION                                          :{BLACK}Connectioun:
+STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Wielt zwëschent enger Internet Partie oder enger LAN Partie
+
+STR_NETWORK_START_SERVER                                        :{BLACK}Server starten
+STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Eegenen Server starten
+
+STR_NETWORK_GAME_NAME                                           :{BLACK}Numm
+STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Numm vum Spill
+STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Sprooch, Serverversioun, etc.
+STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Klickt op en Spill fir ët ze selèctéieren
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Server deem der d'läschte Kéier bäigetrueden sidd:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Klickt fir den Server ze wielen deen der d'läschte Kéier haat
+
+STR_NETWORK_FIND_SERVER                                         :{BLACK}Server sichen
+STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Am Netzwierk no éngem Server sichen
+STR_NETWORK_ADD_SERVER                                          :{BLACK}Server bäisétzen
+STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Sétzt en Server op d'Lëscht wou och no enger Partie gesicht gët
+STR_NETWORK_ENTER_IP                                            :{BLACK}d'Address vum Host unginn
+
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Spiller
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Spiller online / max Spiller{}Firmen online / max Firmen
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Kaartgréisst
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Kaartengréisst vum Spill{}Klicken fir dono ze Sortéieren
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Datum
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Momentanen Datum
+
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Joër
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Unzuel vun Joër wou{}daat Spill leeft
+
+STR_NETWORK_GAME_INFO                                           :{SILVER}SPILL INFO
+STR_NETWORK_CLIENTS                                             :{SILVER}Spiller:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Sprooch:  {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Kaartgréisst:  {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Serverversioun:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serveraddress:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_START_DATE                                          :{SILVER}Start Datum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Momentanen Datum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD                                            :{SILVER}Passwuertgeschützt!
+STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
+STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER VOLL
+STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSIOUNSËNNERSCHEED
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF ËNNERSCHEEDLECH
+
+STR_NETWORK_JOIN_GAME                                           :{BLACK}Spill bäitrieden
 
 
+STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Néi Multiplayerpartie starten
 
-
-
-
-
-
-
-
-
-
-
+STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Spillnumm:
+STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Dën Numm deen an der Lëscht vun den Spiller ungewissen gët
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Gidd ën Numm fir d'Spill un
+STR_NETWORK_SET_PASSWORD                                        :{BLACK}Passwuert setzen
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}En Passwuert fir d'Spill sëtzen, dass ët nët Public accèssibel ass
+STR_NETWORK_SELECT_MAP                                          :{BLACK}Kaart wielen:
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Wéi eng Kaart wëllt der spillen?
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
+STR_NETWORK_LAN                                                 :LAN
+STR_NETWORK_INTERNET                                            :Internet
+STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
+STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (Werben)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} Spiller
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max Spiller:
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} Firm{P a en}
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max Firmen:
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} Zuschauer
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max Zuschauer:
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_GAME                                          :{BLACK}Spill starten
+STR_NETWORK_START_GAME_TIP                                      :{BLACK}Eng néi Partie iwert d'Netzwierk starten
+STR_NETWORK_LOAD_GAME                                           :{BLACK}Spill lueden
+STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Eng mei aal Multiplayerpartie lueden (als richtegen Spiller connectéieren)
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY                                            :Egal
+STR_NETWORK_LANG_ENGLISH                                        :Englësch
+STR_NETWORK_LANG_GERMAN                                         :Däitsch
+STR_NETWORK_LANG_FRENCH                                         :Franséisch
+STR_NETWORK_LANG_BRAZILIAN                                      :Breazilianësch
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgarësch
+STR_NETWORK_LANG_CHINESE                                        :Chinesësch
+STR_NETWORK_LANG_CZECH                                          :Tscheschësch
+STR_NETWORK_LANG_DANISH                                         :Dänësch
+STR_NETWORK_LANG_DUTCH                                          :Holländësch
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finnësch
+STR_NETWORK_LANG_HUNGARIAN                                      :Ungarësch
+STR_NETWORK_LANG_ICELANDIC                                      :Isländesch
+STR_NETWORK_LANG_ITALIAN                                        :Italienësch
+STR_NETWORK_LANG_JAPANESE                                       :Japanësch
+STR_NETWORK_LANG_KOREAN                                         :Koreanësch
+STR_NETWORK_LANG_LITHUANIAN                                     :Lithauësch
+STR_NETWORK_LANG_NORWEGIAN                                      :Norwegësch
+STR_NETWORK_LANG_POLISH                                         :Polnësch
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugiesësch
+STR_NETWORK_LANG_ROMANIAN                                       :Rumänësch
+STR_NETWORK_LANG_RUSSIAN                                        :Russësch
+STR_NETWORK_LANG_SLOVAK                                         :Slovakësch
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovénësch
+STR_NETWORK_LANG_SPANISH                                        :Spuenësch
+STR_NETWORK_LANG_SWEDISH                                        :Schwedësch
+STR_NETWORK_LANG_TURKISH                                        :Türkësch
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainësch
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikanësch
+STR_NETWORK_LANG_CROATIAN                                       :Kroatësch
+STR_NETWORK_LANG_CATALAN                                        :Katalanësch
+STR_NETWORK_LANG_ESTONIAN                                       :Estnësch
+STR_NETWORK_LANG_GALICIAN                                       :Galicianësch
+STR_NETWORK_LANG_GREEK                                          :Grieschësch
+STR_NETWORK_LANG_LATVIAN                                        :Lettësch
 ############ End of leave-in-this-order
 
 
@@ -1020,12 +1182,128 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Gebäi muss fir déischt oofgerapt ginn
 STR_2005                                                        :{WHITE}{TOWN}
+STR_2006_POPULATION                                             :{BLACK}Bewunnerunzuel: {ORANGE}{COMMA}{BLACK}  Haiser: {ORANGE}{COMMA}
+STR_2007_RENAME_TOWN                                            :Stadt ëmbënennen
+STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Kann d'Stadt nët ëmbënennen...
+STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} d'Geméng wëll daat nët erlaaben
+STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Stiedtnimm - klickt op den Numm fir d'Unsiicht drop ze zentréieren
+STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Zentréiert d'Unsiicht op d'Stadt
+STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Wieselt den Stadtnumm
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagéier läschten Mount: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post läschten Mount: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_200F_TALL_OFFICE_BLOCK                                      :Héichen Büroblock
+STR_2010_OFFICE_BLOCK                                           :Büroblock
+STR_2011_SMALL_BLOCK_OF_FLATS                                   :Kléngen Apartementsblock
+STR_2012_CHURCH                                                 :Kiirch
+STR_2013_LARGE_OFFICE_BLOCK                                     :Groussen Büroblock
+STR_2014_TOWN_HOUSES                                            :Stadthaiser
+STR_2015_HOTEL                                                  :Hotel
+STR_2016_STATUE                                                 :Statu
+STR_2017_FOUNTAIN                                               :Sprangbuer
+STR_2018_PARK                                                   :Park
+STR_2019_OFFICE_BLOCK                                           :Büroblock
+STR_201A_SHOPS_AND_OFFICES                                      :Geschäfter an Büroen
+STR_201B_MODERN_OFFICE_BUILDING                                 :Modernt Bürosgebäi
+STR_201C_WAREHOUSE                                              :Lagerhaus
+STR_201D_OFFICE_BLOCK                                           :Büroblock
+STR_201E_STADIUM                                                :Stadium
+STR_201F_OLD_HOUSES                                             :Aal Haiser
+STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Geméng
+STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Weist d'Informatiounen zu der Geméng
+STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} Geméng
+STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transportfirmen Bewertung:
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_2025_SUBSIDIES                                              :{WHITE}Subventiounen
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subventiounen fir den Service:
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} vun {STRING} op {STRING}
+STR_2028_BY                                                     :{YELLOW} (by {DATE_SHORT})
+STR_202A_NONE                                                   :{ORANGE}Keng
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Servicer mat Subventiounen:
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} vun {STATION} op {STATION}{YELLOW} ({COMPANY}
+STR_202D_UNTIL                                                  :{YELLOW}, bis {DATE_SHORT})
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subventioun oofgelaaf:{}{}{STRING} vun {STRING} op {STRING} gët nët méi subventionéiert.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subventioun entzunn:{}{}{STRING} Service vun {STATION} op {STATION} gët nët méi subventionéiert.
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subventioun offréiert:{}{}Eischten {STRING} Service vun {STRING} op {STRING} gëtt mat énger Subventioun vun 1 Joër belount.!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subventioun geet un {COMPANY}!{}{}{STRING} Service vun {STATION} op {STATION} gët nächst Joër mat 150% bezuelt!
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subventioun geet un {COMPANY}!{}{}{STRING} Service vun {STATION} op {STATION} gët nächst Joër mat 200% bezuelt!
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subventioun geet un {COMPANY}!{}{}{STRING} Service vun {STATION} op {STATION} gët nächst Joër mat 300% bezuelt!
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subventioun geet un {COMPANY}!{}{}{STRING} Service vun {STATION} op {STATION} gët nächst Joër mat 400% bezuelt!
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} d'Geméng erlaben keen weideren Flughafen an der Stadt
+STR_2036_COTTAGES                                               :Hütten
+STR_2037_HOUSES                                                 :Haiser
+STR_2038_FLATS                                                  :Apartementer
+STR_2039_TALL_OFFICE_BLOCK                                      :Héichen Gewerbeblock
+STR_203A_SHOPS_AND_OFFICES                                      :Geschäfter an Büroen
+STR_203B_SHOPS_AND_OFFICES                                      :Geschäfter an Büroen
+STR_203C_THEATER                                                :Theater
+STR_203D_STADIUM                                                :Stadium
+STR_203E_OFFICES                                                :Büroen
+STR_203F_HOUSES                                                 :Häiser
+STR_2040_CINEMA                                                 :Kino
+STR_2041_SHOPPING_MALL                                          :Ankaafszentrum
+STR_2042_DO_IT                                                  :{BLACK}Maach ët
+STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Lëscht vun Saachen dei an der Stadt gemaacht kënnen ginn - klickt op eng Optioun fir méi Informatiounen
+STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}Féiert déi ungewielten Optioun aus
+STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Verfügbar Optiounen:
+STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Kléng Marketingaktioun
+STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Mëttel Marketingsaktioun
+STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Grouss Marketingsaktioun
+STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Strossennéibau finanzéieren
+STR_204A_BUILD_STATUE_OF_COMPANY                                :Statu vum Firmeninhaber bauen
+STR_204B_FUND_NEW_BUILDINGS                                     :Néi Gebäier finanzéieren
+STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Exclusiv Transportrechter kaafen
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Eng kleng Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{}  Käschten: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Eng mëttel Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{}  Käschten: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Eng grous Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{}  Käschten: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Stroosennéibau an der Stadt finanzéieren. Stéiert den Traffic op den Stroossen fir dei nächst 6 Méint.{}  Käschten: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Eng Statu zur Éier vun der Firma bauen.{} Käschten: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Den Bau vun neien Kommerzgebäier finanzéieren.{}  Käschten: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Kaaft fir 1 Joër exclusiv Transportrechter an dësser Stadt. D'Geméng erlaabt dën Transport vun Passagéier an Wueren nëmmen ärer Firma.{} Käschten: {CURRENCY}
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Trafficchaos an {TOWN}!{}{}Stroosennéibau deen vun {STRING} finanzéiert gin ass bréngt 6 Méint Misére fir d'Autosfuerer!
+STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (ënnert Construktioun)
+STR_2059_IGLOO                                                  :Iglu
+STR_205A_TEPEES                                                 :Tipien
+STR_205B_TEAPOT_HOUSE                                           :Téikaan-Haus
+STR_205C_PIGGY_BANK                                             :Spuerschwäin-Bank
 
 
 ##id 0x2800
+STR_2800_PLANT_TREES                                            :Beem planzen
+STR_2801_PLACE_SIGN                                             :Schëld opstellen
+STR_2802_TREES                                                  :{WHITE}Beem
+STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...schon Beem hei
+STR_2804_SITE_UNSUITABLE                                        :{WHITE}...Plaatz nët geegent
+STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Kann d'Beem hei nët planzen...
+STR_2806                                                        :{WHITE}{SIGN}
+STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...ze vill Schëlder
+STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Kann d'Schëld hei nët opriichten...
+STR_280A_SIGN                                                   :Schëld
+STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Schëldtext änneren
+STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Kann den Numm vum Schëld nët änneren...
+STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Wielt den Baamtyp
+STR_280E_TREES                                                  :Beem
+STR_280F_RAINFOREST                                             :Regenwald
+STR_2810_CACTUS_PLANTS                                          :Kaktus
 
 ##id 0x3000
+STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Gare Selectioun
+STR_3001_AIRPORT_SELECTION                                      :{WHITE}Flughafen Selectioun
+STR_3002_ORIENTATION                                            :{BLACK}Richtung
+STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Unzuel vun Schinnen
+STR_3004_PLATFORM_LENGTH                                        :{BLACK}Längt
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Ze noo un enger aanerer Gare
+STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Grenzt un mei wei eng Gare un
+STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Zevill Garen an der Stadt
+STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Zevill Garen
+STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Ze noo un énger aanerer Gare
+STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
+STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Musst d'Gare fir d'éischt oofrappen
+STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Ze noo un éngem aaneren Flughafen
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Musst den Flughafen fir d'éischt oofrappen
 
+STR_3030_RENAME_STATION_LOADING                                 :D'Gare ëmbënennen
 STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Kann d'Statioun nët ëmmbenennen...
 STR_3032_RATINGS                                                :{BLACK}Bewertungen
 STR_3033_ACCEPTS                                                :{BLACK}Acceptéiert
@@ -1354,6 +1632,7 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Bezuelt 
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manager)
 STR_7038_INAUGURATED                                            :{GOLD}Angefouert: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Gefiehrer:
+STR_AIRCRAFT                                                    :{WHITE}{COMMA} Fliiger
 STR_7042_NONE                                                   :{WHITE}Keng
 STR_7043_FACE_SELECTION                                         :{WHITE}Gesiichtsauswiehl
 STR_7044_MALE                                                   :{BLACK}Männlech
@@ -1364,6 +1643,14 @@ STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Accépte
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Wielt männlech Gesiichter
 STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Wielt weiblech Gesiichter
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Generéiert Zoufällegt néit Gesiicht
+STR_704C_KEY                                                    :{BLACK}Legend
+STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Weisst Legend vun der Grafik
+STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Legend vun den Firmengrafiken
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klickt hei fir d'Firma an der Grafik an/aus ze schalten
+STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Unitéiten vun Luedung geliwert
+STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Firmen Preformancebewertung (max bewertung=1000)
+STR_7052_COMPANY_VALUES                                         :{WHITE}Firmenwert
+STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Firmenliga Tabell
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transportfirma huet Probleemer!
@@ -1373,6 +1660,9 @@ STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT
 STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} as un {STRING} fir {CURRENCY} verkaaf ginn!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Mir sichen eng Transportfirma déi eis Firma iwerhuelen wëll.{}{}Wëllt dir {COMPANY} fir {CURRENCY} kaafen?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrupt!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} ass zougemaacht ginn, an all Reschtposten sinn verkaaf!
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nei Transportfirma gestart!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} baut bei {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Kann d'Firma nët kaafen...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Luedungs Bezuelraten
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Deeg am ëmmlaaf
@@ -1389,13 +1679,297 @@ STR_706C_CHAIRMAN                                               :Viirsëtzenden
 STR_706D_PRESIDENT                                              :Präsident
 STR_706E_TYCOON                                                 :Tycoon
 STR_706F_BUILD_HQ                                               :{BLACK}Haaptgebäi bauen
+STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Baut/Weist d'Firmenhaaptgebäi
+STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Kann d'Firmenhaptgebäi nët bauen...
 STR_7072_VIEW_HQ                                                :{BLACK}Weist Haaptgebäi
+STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Wirtschaftsréckgang!{}{}Finanzexperten rechnen mat schlëmmsten Anbroch!
+STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Wirtschaftsflaut eriwer!{}{}Verbesserung am Handel mëcht zouversiichtlech!
+STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Wieselt grous/kléng Fënstergréist
+STR_7076_COMPANY_VALUE                                          :{GOLD}Firmenwert: {WHITE}{CURRENCY}
+STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Kaaft 25%Undeel vun der Firma
+STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Verkaaft 25%Undeel vun der Firma
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Kaaft 25%Undeel vun dësser Firma
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Verkaaft 25%Undeel vun dësser Firma
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Kann kéng 25% Undeel vun dësser Firma kaafen...
+STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Kann kéng 25% Undeel vun dësser Firma verkaafen...
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% am Besëtz vun {COMPANY})
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} ass vun {STRING} iwerholl ginn!
 
 
 
 ##id 0x8000
+STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Kessel (Damp)
+STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
+STR_8002_PLODDYPHUT_CHOO_CHOO                                   :Ploddyphut Chu-Chu
+STR_8003_POWERNAUT_CHOO_CHOO                                    :Powernaut Chu-Chu
+STR_8004_MIGHTYMOVER_CHOO_CHOO                                  :Mightymover Chu-Chu
+STR_8005_PLODDYPHUT_DIESEL                                      :Ploddyphut Diesel
+STR_8006_POWERNAUT_DIESEL                                       :Powernaut Diesel
+STR_8007_WILLS_2_8_0_STEAM                                      :Wills 2-8-0 (Damp)
+STR_8008_CHANEY_JUBILEE_STEAM                                   :Chaney 'Jubiläum' (Damp)
+STR_8009_GINZU_A4_STEAM                                         :Ginzu 'A4' (Damp)
+STR_800A_SH_8P_STEAM                                            :SH '8P' (Damp)
+STR_800B_MANLEY_MOREL_DMU_DIESEL                                :Manley-Morel DMU (Diesel)
+STR_800C_DASH_DIESEL                                            :'Dash' (Diesel)
+STR_800D_SH_HENDRY_25_DIESEL                                    :SH/Hendry '25' (Diesel)
+STR_800E_UU_37_DIESEL                                           :UU '37' (Diesel)
+STR_800F_FLOSS_47_DIESEL                                        :Floss '47' (Diesel)
+STR_8010_CS_4000_DIESEL                                         :CS 4000 (Diesel)
+STR_8011_CS_2400_DIESEL                                         :CS 2400 (Diesel)
+STR_8012_CENTENNIAL_DIESEL                                      :Centennial (Diesel)
+STR_8013_KELLING_3100_DIESEL                                    :Kelling 3100 (Diesel)
+STR_8014_TURNER_TURBO_DIESEL                                    :Turner Turbo (Diesel)
+STR_8015_MJS_1000_DIESEL                                        :MJS 1000 (Diesel)
+STR_8016_SH_125_DIESEL                                          :SH '125' (Diesel)
+STR_8017_SH_30_ELECTRIC                                         :SH '30' (Elèktrësch)
+STR_8018_SH_40_ELECTRIC                                         :SH '40' (Elèktrësch)
+STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (Elèktrësch)
+STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Elèktrësch)
+STR_801B_PASSENGER_CAR                                          :Passagéierwagon
+STR_801C_MAIL_VAN                                               :Postwagon
+STR_801D_COAL_CAR                                               :Kuelenwagon
+STR_801E_OIL_TANKER                                             :Uelegwagon
+STR_801F_LIVESTOCK_VAN                                          :Liewnsmëttelwagon
+STR_8020_GOODS_VAN                                              :Güterwagon
+STR_8021_GRAIN_HOPPER                                           :Kaarwagon
+STR_8022_WOOD_TRUCK                                             :Holzwagon
+STR_8023_IRON_ORE_HOPPER                                        :Eisenärzwagon
+STR_8024_STEEL_TRUCK                                            :Stolwagon
+STR_8025_ARMORED_VAN                                            :Gepanzerten Wagon
+STR_8026_FOOD_VAN                                               :Iesenswagon
+STR_8027_PAPER_TRUCK                                            :Pabéierwagon
+STR_8028_COPPER_ORE_HOPPER                                      :Kofferärzwagon
+STR_8029_WATER_TANKER                                           :Waasserwagon
+STR_802A_FRUIT_TRUCK                                            :Friichtenwagon
+STR_802B_RUBBER_TRUCK                                           :Kautschuckwagon
+STR_802C_SUGAR_TRUCK                                            :Zockerwagon
+STR_802D_COTTON_CANDY_HOPPER                                    :Zockerwatt Wagon
+STR_802E_TOFFEE_HOPPER                                          :Karmelwagon
+STR_802F_BUBBLE_VAN                                             :Blosenwagon
+STR_8030_COLA_TANKER                                            :Kolawagon
+STR_8031_CANDY_VAN                                              :Séissegkeetenwagon
+STR_8032_TOY_VAN                                                :Spillsaachenwagon
+STR_8033_BATTERY_TRUCK                                          :Batterienwagon
+STR_8034_FIZZY_DRINK_TRUCK                                      :Kuelesèiergedrènks Wagon
+STR_8035_PLASTIC_TRUCK                                          :Plastikwagon
+STR_8036_X2001_ELECTRIC                                         :'X2001' (Elektrësch)
+STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Elektrësch)
+STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
+STR_8039_PASSENGER_CAR                                          :Passagéierwagon
+STR_803A_MAIL_VAN                                               :Postwagon
+STR_803B_COAL_CAR                                               :Kuelenwagon
+STR_803C_OIL_TANKER                                             :Uelegwagon
+STR_803D_LIVESTOCK_VAN                                          :Liewensmëttelwagon
+STR_803E_GOODS_VAN                                              :Güterwagon
+STR_803F_GRAIN_HOPPER                                           :Kaarwagon
+STR_8040_WOOD_TRUCK                                             :Holzwagon
+STR_8041_IRON_ORE_HOPPER                                        :Eisenärzwagon
+STR_8042_STEEL_TRUCK                                            :Stolwagon
+STR_8043_ARMORED_VAN                                            :Gepanzerten Wagon
+STR_8044_FOOD_VAN                                               :Iesenswagon
+STR_8045_PAPER_TRUCK                                            :Pabéierwagon
+STR_8046_COPPER_ORE_HOPPER                                      :Kofferärz Wagon
+STR_8047_WATER_TANKER                                           :Waasserwagon
+STR_8048_FRUIT_TRUCK                                            :Friichtenwagon
+STR_8049_RUBBER_TRUCK                                           :Kautschuckwagon
+STR_804A_SUGAR_TRUCK                                            :Zockerwagon
+STR_804B_COTTON_CANDY_HOPPER                                    :Zockerwatt Wagon
+STR_804C_TOFFEE_HOPPER                                          :Karmelwagon
+STR_804D_BUBBLE_VAN                                             :Blosenwagon
+STR_804E_COLA_TANKER                                            :Kolawagon
+STR_804F_CANDY_VAN                                              :Séissegkeetenwagon
+STR_8050_TOY_VAN                                                :Spillsaachenwagon
+STR_8051_BATTERY_TRUCK                                          :Batteriewagon
+STR_8052_FIZZY_DRINK_TRUCK                                      :Kuhelesèiergedrènks Wagon
+STR_8053_PLASTIC_TRUCK                                          :Plastikwagon
+STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Leviathan' (Elektrësch)
+STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' (Elektrësch)
+STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (Elektrësch)
+STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (Elektrësch)
+STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
+STR_8059_PASSENGER_CAR                                          :Passagéierwagon
+STR_805A_MAIL_VAN                                               :Postwagon
+STR_805B_COAL_CAR                                               :Kuelenwagon
+STR_805C_OIL_TANKER                                             :Uelegwagon
+STR_805D_LIVESTOCK_VAN                                          :Liewensmëttelwagon
+STR_805E_GOODS_VAN                                              :Güterwagon
+STR_805F_GRAIN_HOPPER                                           :Kaarwagon
+STR_8060_WOOD_TRUCK                                             :Holzwagon
+STR_8061_IRON_ORE_HOPPER                                        :Eisenärzwagon
+STR_8062_STEEL_TRUCK                                            :Stolwagon
+STR_8063_ARMORED_VAN                                            :Gepanzerten Wagon
+STR_8064_FOOD_VAN                                               :Iesenswagon
+STR_8065_PAPER_TRUCK                                            :Pabéierwagon
+STR_8066_COPPER_ORE_HOPPER                                      :Kofferärzwagon
+STR_8067_WATER_TANKER                                           :Waasserwagon
+STR_8068_FRUIT_TRUCK                                            :Friichtenwagon
+STR_8069_RUBBER_TRUCK                                           :Kautschuckwagon
+STR_806A_SUGAR_TRUCK                                            :Zockerwagon
+STR_806B_COTTON_CANDY_HOPPER                                    :Zockerwatt Wagon
+STR_806C_TOFFEE_HOPPER                                          :Karmelwagon
+STR_806D_BUBBLE_VAN                                             :Blosenwagon
+STR_806E_COLA_TANKER                                            :Kolawagon
+STR_806F_CANDY_VAN                                              :Séissegkeetenwagon
+STR_8070_TOY_VAN                                                :Spillsaachenwagon
+STR_8071_BATTERY_TRUCK                                          :Batteriewagon
+STR_8072_FIZZY_DRINK_TRUCK                                      :Kuhelesèiergedrènks Wagon
+STR_8073_PLASTIC_TRUCK                                          :Plastikwagon
+STR_8074_MPS_REGAL_BUS                                          :MPS Regal Bus
+STR_8075_HEREFORD_LEOPARD_BUS                                   :Hereford Leopard Bus
+STR_8076_FOSTER_BUS                                             :Foster Bus
+STR_8077_FOSTER_MKII_SUPERBUS                                   :Foster MkII Superbus
+STR_8078_PLODDYPHUT_MKI_BUS                                     :Ploddyphut MkI Bus
+STR_8079_PLODDYPHUT_MKII_BUS                                    :Ploddyphut MkII Bus
+STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkIII Bus
+STR_807B_BALOGH_COAL_TRUCK                                      :Balogh Kuelencamion
+STR_807C_UHL_COAL_TRUCK                                         :Uhl Kuelencamion
+STR_807D_DW_COAL_TRUCK                                          :DW Kuelencamion
+STR_807E_MPS_MAIL_TRUCK                                         :MPS Postcamion
+STR_807F_REYNARD_MAIL_TRUCK                                     :Reynard Postcamion
+STR_8080_PERRY_MAIL_TRUCK                                       :Perry Postcamion
+STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :MightyMover Postcamion
+STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught Postcamion
+STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow Postcamion
+STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe Uelegcamion
+STR_8085_FOSTER_OIL_TANKER                                      :Foster Uelegcamion
+STR_8086_PERRY_OIL_TANKER                                       :Perry Uelegcamion
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott Liewensmëttelcamion
+STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl Liewensmëttelcamion
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster Liewensmëttelcamion
+STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh Gütercamion
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead Gütercamion
+STR_808C_GOSS_GOODS_TRUCK                                       :Goss Gütercamion
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford Kaarcamion
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas Kaarcamion
+STR_808F_GOSS_GRAIN_TRUCK                                       :Goss Kaarcamion
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe Holzcamion
+STR_8091_FOSTER_WOOD_TRUCK                                      :Foster Holzcamion
+STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland Holzcamion
+STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS Eisenärzcamion
+STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl Eisenärzcamion
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy Eisenärzcamion
+STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh Stolcamion
+STR_8097_UHL_STEEL_TRUCK                                        :Uhl Stolcamion
+STR_8098_KELLING_STEEL_TRUCK                                    :Kelling Stolcamion
+STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh gepanzerten Camion
+STR_809A_UHL_ARMORED_TRUCK                                      :Uhl gepanzerten Camion
+STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster gepanzerten Camion
+STR_809C_FOSTER_FOOD_VAN                                        :Foster Iesenscamion
+STR_809D_PERRY_FOOD_VAN                                         :Perry Iesenscamion
+STR_809E_CHIPPY_FOOD_VAN                                        :Chippy Iesenscamion
+STR_809F_UHL_PAPER_TRUCK                                        :Uhl Pabéiercamion
+STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh Pabéiercamion
+STR_80A1_MPS_PAPER_TRUCK                                        :MPS Pabéiercamion
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS Kofferärzcamion
+STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl Kofferärzcamion
+STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss Kofferärzcamion
+STR_80A5_UHL_WATER_TANKER                                       :Uhl Waassercamion
+STR_80A6_BALOGH_WATER_TANKER                                    :Balogh Waassercamion
+STR_80A7_MPS_WATER_TANKER                                       :MPS Waassercamion
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh Friichtencamion
+STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl Friichtencamion
+STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling Friichtencamion
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh Kautschuckcamion
+STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl Kautschuckcamion
+STR_80AD_RMT_RUBBER_TRUCK                                       :RMT Kautschuckcamion
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover Zockercamion
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught Zockercamion
+STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow Zockercamion
+STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover Kolacamion
+STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught Kolacamion
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow Kolacamion
+STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover Zockerwattcamion
+STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught Zockerwattcamion
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow Zockerwattcamion
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover Karmelcamion
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught Karmelcamion
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow Karmelcamion
+STR_80BA_MIGHTYMOVER_TOY_VAN                                    :MightyMover Spillsaachencamion
+STR_80BB_POWERNAUGHT_TOY_VAN                                    :Powernaught Spillsaachencamion
+STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzowow Spillsaachencamion
+STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover Séissegkeetencamion
+STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught Séissegkeetencamion
+STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzowow Séissegkeetencamion
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover Batteriencamion
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught Batteriencamion
+STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow Batteriencamion
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover Kuhelesèiergedrènks Camion
+STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught Kuhelesèiergedrènks Camion
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow Kuhelesèiergedrènks Camion
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover Plastikcamion
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught Plastikcamion
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow Plastikcamion
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover Blosencamion
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught Blosencamion
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow Blosencamion
+STR_80CC_MPS_OIL_TANKER                                         :MPS Uelegcamion
+STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. Uelegcamion
+STR_80CE_MPS_PASSENGER_FERRY                                    :MPS Passagéierfähre
+STR_80CF_FFP_PASSENGER_FERRY                                    :FFP Passagéierfähre
+STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Loftkëssenboot
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug Passagéierfähre
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake Passagéierfähre
+STR_80D3_YATE_CARGO_SHIP                                        :Yate Frachtschëff
+STR_80D4_BAKEWELL_CARGO_SHIP                                    :Bakewell Frachtschëff
+STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Mightymover Frachtschëff
+STR_80D6_POWERNAUT_CARGO_SHIP                                   :Powernaut Frachtschëff
+STR_80D7_SAMPSON_U52                                            :Sampson U52
+STR_80D8_COLEMAN_COUNT                                          :Coleman Count
+STR_80D9_FFP_DART                                               :FFP Dart
+STR_80DA_YATE_HAUGAN                                            :Yate Haugan
+STR_80DB_BAKEWELL_COTSWALD_LB_3                                 :Bakewell Cotswald LB-3
+STR_80DC_BAKEWELL_LUCKETT_LB_8                                  :Bakewell Luckett LB-8
+STR_80DD_BAKEWELL_LUCKETT_LB_9                                  :Bakewell Luckett LB-9
+STR_80DE_BAKEWELL_LUCKETT_LB80                                  :Bakewell Luckett LB80
+STR_80DF_BAKEWELL_LUCKETT_LB_10                                 :Bakewell Luckett LB-10
+STR_80E0_BAKEWELL_LUCKETT_LB_11                                 :Bakewell Luckett LB-11
+STR_80E1_YATE_AEROSPACE_YAC_1_11                                :Yate Aerospace YAC 1-11
+STR_80E2_DARWIN_100                                             :Darwin 100
+STR_80E3_DARWIN_200                                             :Darwin 200
+STR_80E4_DARWIN_300                                             :Darwin 300
+STR_80E5_DARWIN_400                                             :Darwin 400
+STR_80E6_DARWIN_500                                             :Darwin 500
+STR_80E7_DARWIN_600                                             :Darwin 600
+STR_80E8_GURU_GALAXY                                            :Guru Galaxy
+STR_80E9_AIRTAXI_A21                                            :Airtaxi A21
+STR_80EA_AIRTAXI_A31                                            :Airtaxi A31
+STR_80EB_AIRTAXI_A32                                            :Airtaxi A32
+STR_80EC_AIRTAXI_A33                                            :Airtaxi A33
+STR_80ED_YATE_AEROSPACE_YAE46                                   :Yate Aerospace YAe46
+STR_80EE_DINGER_100                                             :Dinger 100
+STR_80EF_AIRTAXI_A34_1000                                       :AirTaxi A34-1000
+STR_80F0_YATE_Z_SHUTTLE                                         :Yate Z-Shuttel
+STR_80F1_KELLING_K1                                             :Kelling K1
+STR_80F2_KELLING_K6                                             :Kelling K6
+STR_80F3_KELLING_K7                                             :Kelling K7
+STR_80F4_DARWIN_700                                             :Darwin 700
+STR_80F5_FFP_HYPERDART_2                                        :FFP Hyperdart 2
+STR_80F6_DINGER_200                                             :Dinger 200
+STR_80F7_DINGER_1000                                            :Dinger 1000
+STR_80F8_PLODDYPHUT_100                                         :Ploddyphut 100
+STR_80F9_PLODDYPHUT_500                                         :Ploddyphut 500
+STR_80FA_FLASHBANG_X1                                           :Flashbang X1
+STR_80FB_JUGGERPLANE_M1                                         :Juggerplane M1
+STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizzer
+STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Helicopter
+STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Helicopter
+STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helicopter
+STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Meldung vum Gefiehrterhiersteller
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Mir hunn elo en neien {STRING} gebaut - sidd dir drun interesséiert dësst Gefiehrt 1 Joër exclusiv ze notzen, fir ze testen op ët komplett Marktreif ass?
+STR_8102_RAILROAD_LOCOMOTIVE                                    :Lokomotiv
+STR_8103_ROAD_VEHICLE                                           :Stroossengefiehrt
+STR_8104_AIRCRAFT                                               :Fliiger
+STR_8105_SHIP                                                   :Schëff
+STR_8106_MONORAIL_LOCOMOTIVE                                    :Einschienbahnlocomotiv
+STR_8107_MAGLEV_LOCOMOTIVE                                      :Magnéitbahnlocomotiv
 
 ##id 0x8800
+STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Zuchdepot
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Biirger feieren . . .{}Éischten Zuch kënnt bei {STATION} un!
+STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
+STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Zuch am Wee
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 
 
 
@@ -1403,23 +1977,256 @@ STR_7072_VIEW_HQ                                                :{BLACK}Weist Ha
 
 
 
+STR_8812_EMPTY                                                  :{LTBLUE}Eidel
+STR_8813_FROM                                                   :{LTBLUE}{CARGO} vun {STATION}
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} waart am Depot
+STR_8815_NEW_VEHICLES                                           :{BLACK}Néi Gefiehrer
+STR_8816                                                        :{BLACK}-
+STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Zuch ze laang
+STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Zich kënnen nëmmen an engem Depot verännert ginn
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Z{P uch ich}
 
+STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Néi Zich
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Néi Einschienbahngefiehrer
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Néi Magnéitbahngefiehrer
 
+STR_881F_BUILD_VEHICLE                                          :{BLACK}Gefiehrt bauen
+STR_8820_RENAME                                                 :{BLACK}Ëmbënennen
+STR_8823_SKIP                                                   :{BLACK}Iwersprangen
+STR_8824_DELETE                                                 :{BLACK}Läschen
+STR_8826_GO_TO                                                  :{BLACK}Géi op
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Orders)
+STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Ënn vun den Opträg - -
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Kann den Zuch nët bauen...
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Wert: {LTBLUE}{CURRENCY}
+STR_882E                                                        :{WHITE}{VEHICLE}
+STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Lueden / Entlueden
+STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Kann den Zuch nët an den Depot schécken...
+STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Kéng Plaatz mei fir Opträg
+STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Zevill Opträg
+STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kann keen néien Optrag bäisetzen...
+STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kann den Optrag nët läschen...
+STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kann den Optrag nët änneren...
+STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kann d'Gefiehrt nët rèckelen...
+STR_8838_N_A                                                    :N/A{SKIP}
+STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kann den Zuch nët verkaafen...
+STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kann den Wee an den Depot nët fannen
+STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Kann den Zuch nët starten/stopen...
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Wartungsinterval: {LTBLUE}{COMMA}deeg{BLACK}   Läscht Wartung: {LTBLUE}{DATE_LONG}
+STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Zich - klickt op den Zuch fir Informatiounen
+STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Zich - klcikt op den Zuch fir info., zitt d'Gefiehrt fir en un zehänken/wechzehuelen
+STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Baut néien Zuch
+STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Zitt den Zuch héi hinn fir en ze verkaafen
+STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Zentréiert d'Unsiicht op den Depot
+STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Zuchlëscht - klickt op en Zuch fir Informatiounen
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Baut den ungewieltenen Zuch
+STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Gefiehrttyp ëmbënennen
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Momentan aktioun - klickt hei fir den Zuch ze stopen/starten
+STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Weist d'Opträg vum Zuch
+STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Zentréiert d'Unsiicht op den Zuch
+STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Schéckt den Zuch an den Depot. CTRL+Klick mëcht nëmmen Wartung
+STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Forcéiert den Zuch durch d'Signal ze fueren
+STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Directioun vum Zuch wiesselen
+STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Weist d'Detailer vum Zuch
+STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Wartungsinterval erhéichen
+STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Wartungsinterval eroofsetzen
+STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Weist d'Detailer vun der Luedung
+STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Weist d'Detailer vun den Wagongen
+STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Weist d'KApazitéiten vun den Wagongen
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Optragslëscht - Klickt op en Optrag fir en ze selèctéieren. CTRL+Klick hëlt d'Unsiicht op d'Statioun
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Iwersprang den momentanen Optrag. CTRL+Klick iwerspréngt op den ungewieltenen Optrag
+STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Läscht den ungewieltenen Optrag
+STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Sëtzt en neien Optrag firun den ungewieltenen Optrag, oder un d'Ënn vun der Lëscht an
+STR_885C_BROKEN_DOWN                                            :{RED}Futti
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}   Betriebskäschten: {LTBLUE}{CURRENCY}/joër
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit dësst Joër: {LTBLUE}{CURRENCY}  (läscht Joër: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zouverlässegkeet: {LTBLUE}{COMMA}%  {BLACK}Pannen säit läschter Wartung: {LTBLUE}{COMMA}
+STR_8861_STOPPED                                                :{RED}Gestoppt
+STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kann den Zuch nët bei Gefohr lanscht d'Signal schécken...
+STR_8863_CRASHED                                                :{RED}Onfall!
 
+STR_8865_NAME_TRAIN                                             :{WHITE}Zuch benennen
+STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Kann den Zuch nët benennen...
+STR_8867_NAME_TRAIN                                             :{BLACK}Zuch benennen
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Zuch onfall!{}{COMMA} stiewen an der Explosioun nom onfall
+STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kann d'Richtung vum Zuch nët äneren...
+STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zuchgefiehrttyp ëmbenennen
+STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kann den Zuchgefiehrttyp nët ëmbënennen...
 
 
 
 
 
 ##id 0x9000
+STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Stroossengefiehrt am Wee
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Gefiehr{P t er}
+STR_9002                                                        :{WHITE}{VEHICLE}
+STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Stroossendepot
+STR_9004_NEW_VEHICLES                                           :{BLACK}Néi Gefiehrer
+STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Néi Stroossengefiehrer
+STR_9007_BUILD_VEHICLE                                          :{BLACK}Gefiehrt bauen
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kann d'Stroossengefiehrt nët bauen...
+STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detailer)
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}   Betriebskäschten: {LTBLUE}{CURRENCY}/joër
+STR_900E_MAX_SPEED                                              :{BLACK}Max. Geschwindegkeet: {LTBLUE}{VELOCITY}
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit dësst Joër: {LTBLUE}{CURRENCY}  (läscht Joër: {CURRENCY})
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zouverlässegkeet: {LTBLUE}{COMMA}%  {BLACK}Pannen säit läschter Wartung: {LTBLUE}{COMMA}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY}
+STR_9012_CAPACITY                                               :{BLACK}Kapazitéit: {LTBLUE}{CARGO}{STRING}
+STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...muss an engem Depot stoen
+STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kann d'Stroossengefiehrt nët verkaafen...
+STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kann d'Stroossengefiehrt nët stoppen/starten...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} waart am Depot
+STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kann d'Gefiehrt nët an den Depot schécken...
+STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kann den Depot nët fannen
+STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Stroossengefiehrer - klcikt op en Gefiehrt fir Informatiounen
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Momentan aktioun - klickt hei fir d'Gefiehrt ze stoppen/starten
+STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Weist d'Opträg vum Gefiehrt
+STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Zentréiert d'Unsiicht op d'Gefiehrt
+STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Schéckt d'Gefiehrt an den Depot. CTRL+Klick mëcht nëmmen Wartung
+STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Forcéiert d'Gefiehrt fir ze dréien
+STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Weist Stroosengefiehrt Detailer
+STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Gefiehrter - klickt op en Gefiehrt fir Informatiounen
+STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Néit Stroossengefiehrt bauen
+STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Zitt d'Stroossengefiehrt heihin fir ët ze verkaafen
+STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Zentréiert d'Unsiicht op den Depot
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Stroossengefiehrt Lëscht - klcikt op en Gefiehrt fir Informatiounen
+STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Baut dat ungewieltent Stroossengefiehrt
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Käschten: {CURRENCY}{}Geschwindegkeet: {VELOCITY}{}Betriibskäschten: {CURRENCY}/joër{}Kapazitéit: {CARGO}
 
+STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Stroossengefiehrt benennen
+STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kann d'Stroossengefiehrt nët bennenen...
+STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Stroossengefiehrt benennen
+STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Biirger feieren . . .{}Éischten Bus kënnt bei {STATION} un!
+STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Biirger feieren . . .{}Eischten Camion kënnt bei {STATION} un!
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Stroossengefiehrt onfall!{}Fuhrer stieft an der Explosioun no Onfall mam Zuch
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Stroossengefiehrt onfall!{}{COMMA} stiewen an der Explosioun no Onfall mam Zuch
+STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kann d'Gefiehrt nët dréien...
+STR_9034_RENAME                                                 :{BLACK}Ëmmbenennen
+STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Gefiehrtertyp ëmmbenennen
+STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Gefiehrtertyp ëmmbenennen
+STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kann den Gefiehrtertyp nët ëmmbenennen...
 
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Waasserstroosen bauen
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Waasserstroosen bauen
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Waasserstroosen
+STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Kann den Dock héi nët bauen...
+STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Schëffdepot
+STR_9804_NEW_SHIPS                                              :{BLACK}Néi Schëffer
+STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Schëff{P "" er}
+STR_9808_NEW_SHIPS                                              :{WHITE}Néi Schëffer
+STR_9809_BUILD_SHIP                                             :{BLACK}Schëff bauen
+STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Schëff muss am Depot stoen
+STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Kann Schëff nët verkaafen...
+STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kann Schëff nët bauen...
+STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Schëff am Wee
+STR_980F                                                        :{WHITE}{VEHICLE}
+STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detailer)
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}   Betriebskäschten: {LTBLUE}{CURRENCY}/joër
+STR_9813_MAX_SPEED                                              :{BLACK}Max. Geschwindegkeet: {LTBLUE}{VELOCITY}
+STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit dësst Joër: {LTBLUE}{CURRENCY}  (läscht Joër: {CURRENCY})
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zouverlässegkeet: {LTBLUE}{COMMA}%  {BLACK}Pannen säit läschter Wartung: {LTBLUE}{COMMA}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY}
+STR_9817_CAPACITY                                               :{BLACK}Kapazitéit: {LTBLUE}{CARGO}{STRING}
+STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kann d'Schëff nët stoppen/starten...
+STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kann d'Schëff nët an den Depot schècken...
+STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kann d'Depot nët fannen
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} waart am Depot
+STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Schëffdock bauen
+STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Schëffdepot bauen (fir Schëffer ze bauen an ze warten)
+STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Schëffer - klickt op d'Schëff fir Informatiounen
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Néit Schëff bauen
+STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Zitt Schëff heihin fir ët ze verkaafen
+STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Zentréiert d'Unsiicht op den Depot
+STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Schëffer - Klickt op d'Schëff fir Informatiounen
+STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Schëffslëscht - Klickt op d'Schëff fir Informatiounen
+STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Baut daat ungewielten Schëff
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Momentan Aktioun - Klickt hei fir d'Schëff ze stoppen/starten
+STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Weist d'Opträg vum Schëff
+STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Zentréiert d'Unsiicht op d'Schëff
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Schéck d'Schëff an den Depot. CTRL+Klick fir nëmmen Wartung
+STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Weist Schëffdetailer
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Käschten: {CURRENCY} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO}{}Betriibskäschten: {CURRENCY}/joër
+STR_982F_NAME_SHIP                                              :{BLACK}Schëff benennen
 
+STR_9831_NAME_SHIP                                              :{WHITE}Schëff benennen
+STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Kann d'Schëff nët benennen...
+STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Biirger feieren . . .{}Éischt Schëff kënnt bei {STATION} un!
+STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Plazéiert eng Boye, déi als Weepunkt kann benotzt ginn
+STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Kann Boye nët hei platzéieren...
+STR_9836_RENAME                                                 :{BLACK}Ëmmbenennen
+STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Schëffstyp ëmmbenennen
+STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Schëffstyp ëmmbenennen
+STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Kann den Schëffstyp nët ëmmbenennen...
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Schëffslager ëmbauen fir aaner Luedungen ze transportéieren
+STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Refit)
+STR_983C_REFIT_SHIP                                             :{BLACK}Schëff ëmbauen
+STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selèctéiert den Luedungstyp fir d'Schëff
+STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Schëff op dei ungewielten Luedung ëmmbauen
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wielt den Luedungstyp:
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Néi KApazitéit: {GOLD}{CARGO}{}{BLACK}Käschten fir ëmmzebauen: {GOLD}{CURRENCY}
+STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kann d'Schëff nët ëmmbauen...
+STR_9842_REFITTABLE                                             :(ëmmbaubar)
 
 ##id 0xA000
+STR_A000_AIRPORTS                                               :{WHITE}Flughäfen
+STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Kann den Flughafen hei nët bauen...
+STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Fliigerhangar
+STR_A003_NEW_AIRCRAFT                                           :{BLACK}Néien Fliiger
+STR_A005_NEW_AIRCRAFT                                           :{WHITE}Néien Fliiger
+STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Fliiger bauen
+STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kann dën Fliiger nët bauen...
+STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Fliiger
+STR_A00A                                                        :{WHITE}{VEHICLE}
+STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detailer)
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}   Betriebskäschten: {LTBLUE}{CURRENCY}/joër
+STR_A00E_MAX_SPEED                                              :{BLACK}Max. Geschwindegkeet: {LTBLUE}{VELOCITY}
+STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit dësst Joër: {LTBLUE}{CURRENCY}  (läscht Joër: {CURRENCY})
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zouverlässegkeet: {LTBLUE}{COMMA}%  {BLACK}Pannen säit läschter Eartung: {LTBLUE}{COMMA}
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY}
+STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kann den Fliiger nët an den Hangar schécken...
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} waart am Hangar
+STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Fliiger am Wee
+STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kann den Fliiger nët stoppen/starten...
+STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Fliiger ass am fluch
+STR_A019_CAPACITY                                               :{BLACK}Kapazitéit: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Kapazitéit: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Fliiger muss am Hangar sinn
+STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Kann dën Fliiger nët verkaafen...
+STR_A01D_AIRPORT_CONSTRUCTION                                   :Flughafenbau
+STR_A01E_BUILD_AIRPORT                                          :{BLACK}Flughafen bauen
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Fliiger - Klickt op den Fliiger fir Informatiounen
+STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Fliiger - Klickt op den Fliiger fir Informatiounen
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Néien Fliiger bauen
+STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Zitt dën Fliiger heihin fir ën ze verkaafen
+STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Zentréiert d'Unsiicht op den Hangar
+STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Fliigerlëscht - Klickt op den Fliiger fir Informatiounen
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Baut den ungewielten Fliiger
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Momentan Aktioun - Klickt hei fir den Fliiger ze stoppen/starten
+STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Weist d'Opträg vum Fliiger
+STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Zentréiert d'Unsiicht op den Fliiger
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Schéckt den Fliiger an den Hangar. CTRL+Click fir nëmmen Wartung
+STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Weisst d'Fliigerdetailer
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Käschten: {CURRENCY} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {COMMA} Passagéier, {COMMA} Postsäck{}Betriebskäschten: {CURRENCY}/joër
 
+STR_A030_NAME_AIRCRAFT                                          :{WHITE}Fliiger benennen
+STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Kann den Fliiger nët benennen...
+STR_A032_NAME_AIRCRAFT                                          :{BLACK}Fliiger benennen
+STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Biirger feieren . . .{}Éischten Fliiger kënnt bei {STATION} un!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Fliigeronfall!{}{COMMA} stiewen an der Explosioun bei {STATION}
+STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
+STR_A037_RENAME                                                 :{BLACK}Ëmmbenennen
+STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Fliigertyp ëmmbenennen
+STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Fliigertyp ëmmbenennen
+STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Kann den Fliigertyp nët ëmmbenennen...
+STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Fliiger ëmmbauen fir en aaneren Luedungstyp ze transportéieren
+STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Fliiger ëmmbauen
+STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wielt den Luedungstyp aus
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Baut den Fliiger fir den ungewieltenen Luedungstyp ëmm
+STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kann den Fliiger nët ëmmbauen...
 
 
 ##id 0xB000
@@ -1448,6 +2255,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Weist Ha
 
 
 
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Fliiger nët verfügbar
 
 
 
@@ -1506,6 +2314,16 @@ STR_7072_VIEW_HQ                                                :{BLACK}Weist Ha
 ########
 
 ############ AI GUI
+STR_AI_CHANGE                                                   :{BLACK}Selèctionéiert KI
+STR_AI_CONFIGURE                                                :{BLACK}Konfiguréieren
+STR_AI_CHANGE_TIP                                               :{BLACK}Lued eng aaner KI
+STR_AI_AILIST_TIP                                               :{BLACK}Klickt fir éng KI ze selèctéieren
+STR_AI_ACCEPT                                                   :{BLACK}Acceptéiert
+STR_AI_ACCEPT_TIP                                               :{BLACK}Selèctéiert ungewielten KI
+STR_AI_CANCEL                                                   :{BLACK}Oofbriechen
+STR_AI_CANCEL_TIP                                               :{BLACK}KI nët wieselen
+STR_AI_CLOSE                                                    :{BLACK}Zoumaachen
+STR_AI_AUTHOR                                                   :Autor:
 ########
 
 ############ town controlled noise level
