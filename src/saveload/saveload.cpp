@@ -33,6 +33,7 @@
 #include "../statusbar_gui.h"
 #include "../fileio_func.h"
 #include "../gamelog.h"
+#include "../string_func.h"
 
 #include "table/strings.h"
 
@@ -631,6 +632,7 @@ static void SlString(void *ptr, size_t length, VarType conv)
 		}
 
 		((char*)ptr)[len] = '\0'; // properly terminate the string
+		str_validate((char*)ptr, (char*)ptr + len);
 	}
 }
 

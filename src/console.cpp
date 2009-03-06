@@ -97,7 +97,7 @@ void IConsolePrint(ConsoleColour colour_code, const char *string)
 	 * characters and (when applicable) assign it to the console buffer */
 	str = strdup(string);
 	str_strip_colours(str);
-	str_validate(str);
+	str_validate(str, str + strlen(str));
 
 	if (_network_dedicated) {
 		fprintf(stdout, "%s\n", str);

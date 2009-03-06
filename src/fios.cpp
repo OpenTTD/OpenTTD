@@ -247,7 +247,7 @@ bool FiosFileScanner::AddFile(const char *filename, size_t basepath_length)
 		t = (t == NULL) ? filename : (t + 1);
 	}
 	strecpy(fios->title, t, lastof(fios->title));
-	str_validate(fios->title);
+	str_validate(fios->title, lastof(fios->title));
 
 	return true;
 }
@@ -292,7 +292,7 @@ static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc 
 				fios->mtime = 0;
 				strecpy(fios->name, d_name, lastof(fios->name));
 				snprintf(fios->title, lengthof(fios->title), "%s" PATHSEP " (Directory)", d_name);
-				str_validate(fios->title);
+				str_validate(fios->title, lastof(fios->title));
 			}
 		}
 		closedir(dir);
@@ -344,6 +344,7 @@ static void GetFileTitle(const char *file, char *title, const char *last)
 	size_t read = fread(title, 1, last - title, f);
 	assert(title + read <= last);
 	title[read] = '\0';
+	str_validate(title, last);
 	FioFCloseFile(f);
 }
 

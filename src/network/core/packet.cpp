@@ -237,6 +237,7 @@ void Packet::Recv_string(char *buffer, size_t size, bool allow_newlines)
 {
 	PacketSize pos;
 	char *bufp = buffer;
+	const char *last = buffer + size - 1;
 
 	/* Don't allow reading from a closed socket */
 	if (cs->HasClientQuit()) return;
@@ -253,7 +254,7 @@ void Packet::Recv_string(char *buffer, size_t size, bool allow_newlines)
 	}
 	this->pos = pos;
 
-	str_validate(bufp, allow_newlines);
+	str_validate(bufp, last, allow_newlines);
 }
 
 #endif /* ENABLE_NETWORK */

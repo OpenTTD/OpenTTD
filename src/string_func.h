@@ -93,9 +93,15 @@ int CDECL seprintf(char *str, const char *last, const char *format, ...);
 
 char *CDECL str_fmt(const char *str, ...);
 
-/** Scans the string for valid characters and if it finds invalid ones,
- * replaces them with a question mark '?' */
-void str_validate(char *str, bool allow_newlines = false, bool ignore = false);
+/**
+ * Scans the string for valid characters and if it finds invalid ones,
+ * replaces them with a question mark '?' (if not ignored)
+ * @param str the string to validate
+ * @param last the last valid character of str
+ * @param allow_newlines whether newlines should be allowed or ignored
+ * @param ignore whether to ignore or replace with a question mark
+ */
+void str_validate(char *str, const char *last, bool allow_newlines = false, bool ignore = false);
 
 /** Scans the string for colour codes and strips them */
 void str_strip_colours(char *str);

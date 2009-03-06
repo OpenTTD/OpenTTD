@@ -97,13 +97,27 @@ char *CDECL str_fmt(const char *str, ...)
 }
 
 
-void str_validate(char *str, bool allow_newlines, bool ignore)
+void str_validate(char *str, const char *last, bool allow_newlines, bool ignore)
 {
-	char *dst = str;
-	WChar c;
-	size_t len;
+	/* Assume the ABSOLUTE WORST to be in str as it comes from the outside. */
 
-	for (len = Utf8Decode(&c, str); c != '\0'; len = Utf8Decode(&c, str)) {
+	char *dst = str;
+	while (*str != '\0') {
+		size_t len = Utf8EncodedCharLen(*str);
+		/* If the character is unknown, i.e. encoded length is 0
+		 * we assume worst case for the length check.
+		 * The length check is needed to prevent Utf8Decode to read
+		 * over the terminating '\0' if that happens to be placed
+		 * within the encoding of an UTF8 character. */
+		if ((len == 0 && str + 4 > last) || str + len > last) break;
+
+		WChar c;
+		len = Utf8Decode(&c, str);
+		/* It's possible to encode the string termination character
+		 * into a multiple bytes. This prevents those termination
+		 * characters to be skipped */
+		if (c == '\0') break;
+
 		if (IsPrintable(c) && (c < SCC_SPRITE_START || c > SCC_SPRITE_END)) {
 			/* Copy the character back. Even if dst is current the same as str
 			 * (i.e. no characters have been changed) this is quicker than

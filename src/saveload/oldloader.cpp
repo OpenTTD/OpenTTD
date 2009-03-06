@@ -232,6 +232,7 @@ static inline bool CheckOldSavegameType(FILE *f, char *temp, const char *last, u
 
 	bool ret = VerifyOldNameChecksum(temp, len);
 	temp[len - 2] = '\0'; // name is nul-terminated in savegame, but it's better to be sure
+	str_validate(temp, last);
 
 	return ret;
 }
