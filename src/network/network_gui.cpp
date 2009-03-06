@@ -1445,25 +1445,20 @@ static const NetworkClientInfo *NetworkFindClientInfo(byte client_no)
 // Here we start to define the options out of the menu
 static void ClientList_Kick(byte client_no)
 {
-	if (client_no < MAX_CLIENTS) {
-		SEND_COMMAND(PACKET_SERVER_ERROR)(GetNetworkClientSocket(client_no), NETWORK_ERROR_KICKED);
-	}
+	const NetworkClientInfo *ci = NetworkFindClientInfo(client_no);
+
+	if (ci == NULL) return;
+
+	NetworkServerKickClient(ci->client_id);
 }
 
 static void ClientList_Ban(byte client_no)
 {
-	uint32 ip = NetworkFindClientInfo(client_no)->client_ip;
+	const NetworkClientInfo *ci = NetworkFindClientInfo(client_no);
 
-	for (uint i = 0; i < lengthof(_network_ban_list); i++) {
-		if (_network_ban_list[i] == NULL) {
-			_network_ban_list[i] = strdup(inet_ntoa(*(struct in_addr *)&ip));
-			break;
-		}
-	}
+	if (ci == NULL) return;
 
-	if (client_no < MAX_CLIENTS) {
-		SEND_COMMAND(PACKET_SERVER_ERROR)(GetNetworkClientSocket(client_no), NETWORK_ERROR_KICKED);
-	}
+	NetworkServerBanIP(GetClientIP(ci));
 }
 
 static void ClientList_GiveMoney(byte client_no)

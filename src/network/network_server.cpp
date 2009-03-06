@@ -1766,6 +1766,33 @@ void NetworkServerSendError(ClientID client_id, NetworkErrorCode error)
 	SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromClientID(client_id), error);
 }
 
+void NetworkServerKickClient(ClientID client_id)
+{
+	if (client_id == CLIENT_ID_SERVER) return;
+	NetworkServerSendError(client_id, NETWORK_ERROR_KICKED);
+}
+
+void NetworkServerBanIP(const char *banip)
+{
+	const NetworkClientInfo *ci;
+	uint32 ip_number = inet_addr(banip);
+
+	/* There can be multiple clients with the same IP, kick them all */
+	FOR_ALL_CLIENT_INFOS(ci) {
+		if (ci->client_ip == ip_number) {
+			NetworkServerKickClient(ci->client_id);
+		}
+	}
+
+	/* Add user to ban-list */
+	for (uint index = 0; index < lengthof(_network_ban_list); index++) {
+		if (_network_ban_list[index] == NULL) {
+			_network_ban_list[index] = strdup(banip);
+			break;
+		}
+	}
+}
+
 bool NetworkCompanyHasClients(CompanyID company)
 {
 	const NetworkClientInfo *ci;

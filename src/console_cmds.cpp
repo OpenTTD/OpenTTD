@@ -411,18 +411,11 @@ DEF_CONSOLE_CMD(ConBan)
 	if (ci != NULL) {
 		IConsolePrint(CC_DEFAULT, "Client banned");
 		banip = GetClientIP(ci);
-		NetworkServerSendError(client_id, NETWORK_ERROR_KICKED);
 	} else {
 		IConsolePrint(CC_DEFAULT, "Client not online, banned IP");
 	}
 
-	/* Add user to ban-list */
-	for (uint index = 0; index < lengthof(_network_ban_list); index++) {
-		if (_network_ban_list[index] == NULL) {
-			_network_ban_list[index] = strdup(banip);
-			break;
-		}
-	}
+	NetworkServerBanIP(banip);
 
 	return true;
 }
@@ -613,7 +606,7 @@ DEF_CONSOLE_CMD(ConKick)
 	}
 
 	if (ci != NULL) {
-		NetworkServerSendError(client_id, NETWORK_ERROR_KICKED);
+		NetworkServerKickClient(client_id);
 	} else {
 		IConsoleError("Client not found");
 	}
