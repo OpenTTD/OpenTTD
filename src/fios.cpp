@@ -545,8 +545,9 @@ public:
 		if (f == NULL) return false;
 
 		ScenarioIdentifier id;
-		fscanf(f, "%i", &id.scenid);
+		int fret = fscanf(f, "%i", &id.scenid);
 		FioFCloseFile(f);
+		if (fret != 1) return false;
 
 		Md5 checksum;
 		uint8 buffer[1024];
