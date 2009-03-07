@@ -926,7 +926,7 @@ STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}인플�
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}수요가 있을때만 화물을 역에 옮겨놓음 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}매우 긴 다리 건설 허용 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}차량기지(차고/격납고)를 경로에 지정하는 것을 허용 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}수동 기본 산업 건설 방법: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}1차 산업 시설 수동 건설 방법: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :없음
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :다른 산업시설처럼
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :답사
@@ -3472,7 +3472,7 @@ STR_SIGN_OSKTITLE                                               :{BLACK}팻말 �
 ########
 
 STR_FUND_NEW_INDUSTRY                                           :{BLACK}투자
-STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}예측
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}답사
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}건설
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}목록에서 적당한 산업시설을 선택하십시오
 

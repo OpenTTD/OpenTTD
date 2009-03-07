@@ -57,7 +57,7 @@ STR_002E                                                        :
 STR_002F_PASSENGER                                              :Επιβάτης
 STR_0030_COAL                                                   :Άνθρακας
 STR_0031_MAIL                                                   :Ταχυδρομικές Υπηρεσίες
-STR_0032_OIL                                                    :Λάδι
+STR_0032_OIL                                                    :Πετρέλαιο
 STR_0033_LIVESTOCK                                              :Ζώα
 STR_0034_GOODS                                                  :Βιομηχανικα Προϊόντα
 STR_0035_GRAIN                                                  :Σιτάρι
@@ -68,13 +68,13 @@ STR_0039_VALUABLES                                              :Τιμαλφή
 STR_003A_COPPER_ORE                                             :Μετάλλευμα Χαλκού
 STR_003B_MAIZE                                                  :Καλαμπόκι
 STR_003C_FRUIT                                                  :Φρούτα
-STR_003D_DIAMOND                                                :Διαμάντι
+STR_003D_DIAMOND                                                :Διαμάντια
 STR_003E_FOOD                                                   :Φαγητό
 STR_003F_PAPER                                                  :Χαρτί
-STR_0040_GOLD                                                   :Χρυσό
+STR_0040_GOLD                                                   :Χρυσός
 STR_0041_WATER                                                  :Νερό
 STR_0042_WHEAT                                                  :Σιτάρι
-STR_0043_RUBBER                                                 :Λαστικά
+STR_0043_RUBBER                                                 :Καουτσούκ
 STR_0044_SUGAR                                                  :Ζάχαρη
 STR_0045_TOY                                                    :Παιχνίδια
 STR_0046_CANDY                                                  :Γλυκό
@@ -756,6 +756,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Χρηματο�
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Χρηματοδότηση νέας βιομηχανίας
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...μπορεί να χτιστεί μόνο σε δασώδεις περιοχές
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...μπορεί να χτιστεί μόνο σε ερημικές περιοχές
@@ -845,6 +846,7 @@ STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{S
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Επιλογή της διαμόρφωσης της φωτογραφίας σε χρήση
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Βασικό σετ γραφικών
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Επιλογή του βασικού σετ γραφικών που θα χρησιμοποιηθεί
 
 STR_AUTOSAVE_1_MONTH                                            :Κάθε μήνα
@@ -909,19 +911,23 @@ STR_CONFIG_SETTING_OFF                                          :Κλειστό
 STR_CONFIG_SETTING_ON                                           :Ανοιχτό
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Εμφάνιση της ταχύτητας του οχήματος στη γραμμή κατάστασης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Επιτρέπεται το χτίσιμο σε πλαγιές και ακτές: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Να επιτρέπεται η διαμόρφωση εδάφους κάτω από κτήρια, γραμμές, κλπ. (αυτόματη κλίση): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Επιτρέπονται πιο ρεαλιστικά ταξινομημένες περιοχές συλλογής : {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Επιτρέπεται η αφαίρεση περισσότερων ιδιοκτησιών πόλεων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Επιτρέπεται η δημιουργία πολύ μακριών τρένων: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Μοντέλο επιτάχυνσης τραίνων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Αρχικό
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Ρεαλιστικό
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Απαγόρευση στροφών 90 μοιρών για τρένα και πλοία: {ORANGE}{STRING} {LTBLUE} (απαιτεί NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Σύνδεση σταθμών τρένων χτισμένων κοντά: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Να επιτρέπεται η σύνδεση μη παρακείμενων σταθμών: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Χρησιμοποίηση βελτιωμένου αλγόριθμου φόρτωσης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Φόρτωση οχημάτων σταδιακά: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Πληθωρισμός: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Παράδοση φορτίου σε σταθμό μόνο όταν υπάρχει ζήτηση: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Επιτρέπεται να χτίζονται πολύ μακριές γέφυρες: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Επιτρέπονται οι εντολές αποστολής σε αμαξοστάσιο: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Χειροκίνητη μέθοδος κατασκευής βιομηχανιών πρώτων υλών: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :κανένα
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :όπως σε άλλες βιομηχανίες
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :επικείμενη
@@ -933,11 +939,14 @@ STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Εμφ�
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Ουρά οχημάτων (με κβαντικά εφφέ): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Μετακίνηση παραθύρου όταν είναι το ποντίκι στην άκρη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Επιτρέπεται η δωροδοκία της τοπικής αρχής: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Να επιτρέπεται η αποστολή χρημάτων σε άλλες εταιρίες: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ανομοιόμορφοι σταθμοί: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Πολλαπλασιαστής βάρους σε φορία για εξομοίωση βαρέων τρένων: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Συντελεστής ταχύτητας αεροσκαφών: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Επιτρέπεται η κίνηση μέσω των στάσεων σε δρόμους πόλεων : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Επιτρέπεται η κατασκευή παρακείμενων σταθμών: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Επιτρέπεται η χρήση πολλαπλών μηχανών από τα NewGRF: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Δεν είναι δυνατή η αλλαγή αυτής της ρύθμισης όταν υπάρχουν οχήματα.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Επιτρέπονται τα μικρά αεροδρόμια πάντα: {ORANGE}{STRING}
 
@@ -946,6 +955,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Επα�
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :όχι
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ναι, αλλά εξαιρούνται τα σταματημένα οχήματα
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :από όλα τα οχήματα
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Ειδοποίηση όταν το εισόδημα ενός οχήματος είναι αρνητικό: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Τα οχήματα δεν λήγουν ποτέ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Αυτόματη Ανανέωση όταν ένα όχημα παλιώνει: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Αυτόματη Ανανέωση όταν ένα όχημα είναι {ORANGE}{STRING}{LTBLUE} μήνες πρίν/μετά την μέγιστη ηληκία
@@ -971,11 +981,15 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Περ�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Αντίθετη Φορά Ρολογιού
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Δεξιόστροφα
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Το επίπεδο ύψους που παίρνει ένα επίπεδο σενάριο: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Να επιτρέπεται η διαμόρφωση εδάφους στις άκρες του χάρτη: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ένα ή περισσότερα τετράγωνα στην βόρεια άκρη δεν είναι κενά
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ένα ή περισσότερα τετράγωνα σε μια από τις άκρες δεν είναι στο νερό
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Μέγιστη διασπορά σταθμών: {ORANGE}{STRING} {RED}Προσοχή: Η υψηλή ρύθμιση καθυστερεί το παιχνίδι
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Αυτόματη επισκευή ελικοπτέρων στα ελικοδρόμια: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Σύνδεση γραμμής εργαλείων τοπίου με γραμμή εργαλείων σιδηρόδρομου/δρόμου/νερού/αεροδρομίου: {ORANGE}{STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Ανάποδη μετακίνηση οθόνης: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Ομαλή μετάβαση οθόνης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Εμφάνιση εργαλείου μετρήσεως όταν χρησιμοποιούνται διάφορα εργαλεία: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Εμφάνιση χρωμάτων των εταιρειών: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Κανένας
@@ -988,22 +1002,43 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Μετακίν�
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Κλειστό
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Ταχύτητα ροδέλας μετακίνησης χάρτη: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Εξομοίωση δεξιού κλικ {ORANGE}{STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Κλικ Εντολών
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :όχι
 
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Μετάβαση με αριστερό κλικ: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Χρήση της {ORANGE}{STRING}{LTBLUE} ημερολογιακής μορφής στα αποθηκευμένα παιχνίδια.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :μεγάλη (31 Δεκ 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :σύντομη (31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Αυτόματη παύση κατά την εκκίνηση ενός νέου παιχνιδιού: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Χρήση της προχωρημένης λίστας οχημάτων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :όχι
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Η εταιρία μου
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Όλες οι εταιρίες
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Χρήση δεικτών φόρτωσης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :όχι
+STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Η εταιρία μου
+STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Όλες οι εταιρίες
+STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Ενεργοποίηση χρονοδιαγραμμάτων για τα οχήματα: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Εμφάνιση χρονοδιαγραμμάτων σε τικ αντί για ημέρες: {ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Γρήγορη δημιουργία εντολών για τα οχήματα: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Προεπιλογή τύπου γραμμής (μετά από νέο παιχνίδι/φόρτωση παιχνιδιού): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Κανονικός σιδηρόδρομος
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Ηλεκτρικός σιδηρόδρομος
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Μαγνητικής Αιώρησης
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Πρώτη διαθεσιμότητα
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Τελευταία διαθεσιμότητα
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Περισσότερο χρησιμοποιούμενος
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Εμφάνιση κλεισμένων γραμμών: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Διατήρηση των οικοδομικών εργαλείων ενεργών μετά από χρήση τους: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Ομαδοποίηση εξόδων στο παράθυρο οικονομικών της εταιρίας: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Εμφάνιση οικοδομικών εργαλίων όταν δεν υπάρχουν κατάλληλα οχήματα: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Μέγιστα τρένα ανα παίκτη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Μέγιστα οχήματα ανα παίκτη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Μέγιστα αεροσκάφη ανα παίκτη: {ORANGE}{STRING}
@@ -1016,6 +1051,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Απε�
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Επιτρέπονται οι AI σε παιχνίδι για πολλούς παίκτες (πειραματικό): {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Τα διαστήματα μεταξύ συντήρησης είναι σε ποσοστά: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για τρένα: {ORANGE}{STRING} μέρες/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για τρένα: {ORANGE}απενεργοποιημένο
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για οχήματα: {ORANGE}{STRING} μέρες/%
@@ -1034,7 +1070,17 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Ενε�
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Ενεργοποίηση δυνατότητας αγοράς μετοχών από άλλες εταιρείες: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Κατά το σύρσιμο, τοποθέτησε σήματα κάθε: {ORANGE}{STRING} τετράγωνο(α)
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Αυτόματο χτίσιμο σηματοφόρων πρίν: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Ενεργοποίηση του μενού σηματοδοτών: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Τύπος σηματοδότη που θα χρησιμοποιείται από προεπιλογή: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Όλα
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Σχέδιο δρόμων για νέες πόλεις: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Αρχικό
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Καλύτεροι δρόμοι
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Πλέγμα 2χ2
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Πλέγμα 3χ3
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Τυχαίο
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Οι πόλεις επιτρέπεται να χτίσουν δρόμους: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Θέση κύριας εργαλειοθήκης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Αριστερά
@@ -1042,6 +1088,16 @@ STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Κέντρο
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Δεξιά
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}απενεργοποιημένο
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Ρυθμός ανάπτυξης πόλεων: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Μηδενικός
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Αργός
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Κανονικός
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Γρήγορος
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Πολύ γρήγορος
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Αναλογία κωμοπόλεων που θα γίνουν πόλεις: {ORANGE}1 στις {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Αναλογία κωμοπόλεων που θα γίνουν πόλεις: {ORANGE}Καμία
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Αρχικός πολλαπλασιαστής μεγέθους πόλης: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Να αφαιρούνται παράλογα στοιχεία δρόμων κατά την κατασκευή τους: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Σύστημα Διεπαφής
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Κατασκευή
@@ -1049,10 +1105,33 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Οχή�
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Σταθμοί
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Οικονομία
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Ανταγωνιστές
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Επιλογές εμφάνισης
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Αλληλεπιδράσεις
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Σηματοδότες
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Χειρισμός φορτίων
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Παίκτες υπολογιστή
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Αυτόματη ανανέωση
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Έλεγχος οχημάτων
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Δρομολογήσεις
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Τραίνα
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Πόλεις
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Βιομηχανίες
 
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Μέθοδος δρομολόγησης για τραίνα: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Δεν συνίσταται)
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Συνίσταται)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Μέθοδος δρομολόγησης για οχήματα δρόμου: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Δεν συνίσταται)
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Συνίσταται)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Μέθοδος δρομολόγησης για πλοία: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Συνίσταται)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Δεν συνίσταται)
 
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-μέγεθος χάρτη: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-μέγεθος χάρτη: {ORANGE}{STRING}
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :απενεργοποιημένο
@@ -1069,6 +1148,7 @@ STR_CHEATS                                                      :{WHITE}Κλεψ
 STR_CHEATS_TIP                                                  :{BLACK}Τα κουτάκια δείχνουν αν έχετε χρησιμοποιήσει αυτό το κόλπο πρίν
 STR_CHEATS_WARNING                                              :{BLACK}Προσοχή! Είστε έτοιμος να προδώσετε τους φίλους ανταγωνιστές σας. Θυμηθείτε ότι αυτή η ντροπή θα μείνει για πάντα.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Αύξηση χρημάτων κατά {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Παίζετε με την εταιρία: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Μαγική μπουλντόζα (αφαιρεί βιομηχανίες, αμετακίνητα): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Τα τούνελ διασταυρώνονται: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Χτήσιμο ενώ βρίσκεστε σε παύση: {ORANGE}{STRING}
@@ -1091,6 +1171,7 @@ STR_WAYPOINT                                                    :{WHITE}Σημε
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Επιλογή τύπου σημείου πορείας
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Τραίν{P ο α}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Διαμόρφωση ονόματος σημείου πορείας
@@ -1110,6 +1191,8 @@ STR_MANY_RANDOM_INDUSTRIES                                      :Πολλές τ
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Γέμισε τον χάρτη με τυχαίες τοποθετημένες βιομηχανίες
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Δεν γίνεται να δημιουργηθούν βιομηχανίες...
 
+STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Ανοίξτε την μπάρα εργαλείων μορφοποίησης εδάφους για ανύψωση/βύθιση γης, δενδροφύτευση, κλπ.
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Μορφοποίηση εδάφους
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Επιπεδοποίηση γης
 
 
@@ -1122,12 +1205,14 @@ STR_LANDINFO_CANAL                                              :Κανάλι
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Δεν μπορεί να χτιστεί υδατοφράκτης εδώ...
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Κατασκευή Υδατοφράκτη
+STR_LANDINFO_LOCK                                               :Κλείδωμα
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Δεν μπορούν να τοποθετηθούν ποτάμια εδώ...
 STR_LANDINFO_RIVER                                              :Ποτάμι
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...σημαδούρα σε χρήση
 
+STR_LANDINFO_COORDS                                             :{BLACK}Συντεταγμένες: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Δεν μπορεί να αφαιρεθεί μέρος του σταθμού...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Δεν γίνεται να μετατραπεί ο τύπος της σιδηροτροχιάς εδώ...
@@ -1139,6 +1224,11 @@ STR_DRAG_DROP                                                   :{BLACK}Έλξη
 STR_STATION_DRAG_DROP                                           :{BLACK}Φτιάξε ένα σταθμό χρησιμοποιόντας έλξη & πτώση
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Επέλεξε τον τύπο του σταθμού προς χτίσιμο
 
+STR_FAST_FORWARD                                                :{BLACK}Γρήγορη ταχύτητα παιχνιδιού
+STR_MESSAGE_HISTORY                                             :{WHITE}Ιστορικό Μηνυμάτων
+STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Λίστα των πρόσφατων μηνυμάτων ειδήσεων
+STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Απενεργοποίηση όλων
+STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Ενεργοποίηση όλων
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Βιομηχανίες
 STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Ονόματα βιομηχανιών - click στο ονομα για κεντράρισμα στην βιομηχανία
@@ -1148,29 +1238,150 @@ STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...πο�
 STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Αναπροσαρμογή τρένου για μεταφορά διαφορετικού φορτίου
 STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Αναπροσαρμογή τρένου
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Επιλογή τύπου φορτίου για να μεταφέρει το τρένο
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Διασκευή του τρένου ώστε να μεταφέρει το επιλεγμένο φορτίο
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Δεν γίνεται να αναπροσαρμοστεί το τρένο...
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Αλλαγή παραγωγής
 
 ############ network gui strings
 
 
+STR_NETWORK_PLAYER_NAME                                         :{BLACK}Όνομα παίκτη:
+STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Αυτό είναι το όνομα με το οποίο θα σας αναγνωρίζουν οι άλλοι παίκτες
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Εισάγετε το όνομά σας
+STR_NETWORK_CONNECTION                                          :{BLACK}Σύνδεση:
+STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Επιλέξτε μεταξύ παιχνιδιού στο ίντερνετ η τοπικού (LAN) παιχνιδιού
+
+STR_NETWORK_START_SERVER                                        :{BLACK}Εκκίνηση διακομιστή
+STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Ξεκινήστε το δικό σας διακομιστή
+
+STR_NETWORK_GAME_NAME                                           :{BLACK}Όνομα
+STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Όνομα του παιχνιδιού
+STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Γλώσσα, έκδοση διακομιστή, κλπ.
+STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Κάντε κλικ σε ένα παιχνίδι από την λίστα για το επιλέξετε
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Ο διακομιστής που συμμετείχατε την τελευταία φορά:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Κάντε κλικ για να επιλέξετε το διακομιστή που συμμετείχατε την τελευταία φορά
+
+STR_NETWORK_FIND_SERVER                                         :{BLACK}Βρείτε το διακομιστή
+STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Ψάξτε το δίκτυο για ένα διακομιστή
+STR_NETWORK_ADD_SERVER                                          :{BLACK}Προσθέστε ένα διακομιστή
+STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Προσθέστε ένα διακομιστή στην λίστα ο οποίος θα ελέγχεται κάθε φορά για παιχνίδια.
+STR_NETWORK_ENTER_IP                                            :{BLACK}Εισάγετε τη διεύθυνση του οικοδεσπότη
+
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Συμμετέχοντες
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Συμμετέχοντες online  / μέγιστος αριθμός συμμετεχόντων {}Εταιρίες online / μέγιστος αριθμός εταιριών
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Μέγεθος χάρτη
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Μέγεθος χάρτη του παιχνιδιού{}Κάντε κλικ για ταξινόμηση ανά περιοχή
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Ημερομηνία
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Τρέχουσα ημερομηνία
+
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Χρόνια
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Αριθμός χρόνων{}που τρέχει το παιχνίδι
+
+STR_NETWORK_GAME_INFO                                           :{SILVER}ΠΛΗΡΟΦΟΡΙΕΣ ΠΑΙΧΝΙΔΙΟΥ
+STR_NETWORK_CLIENTS                                             :{SILVER}Συμμετέχοντες:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Γλώσσα:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Μέγεθος χάρτη:  {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Έκδοση διακομιστή:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Διεύθυνση διακομιστή:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_START_DATE                                          :{SILVER}Ημερομηνία έναρξης:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Τρέχουσα ημερομηνία:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD                                            :{SILVER}Προστατευμένο με κωδικό!
+STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}ΔΙΑΚΟΜΙΣΤΗΣ ΕΚΤΟΣ ΛΕΙΤΟΥΡΓΙΑΣ
+STR_NETWORK_SERVER_FULL                                         :{SILVER}ΔΙΑΚΟΜΙΣΤΗΣ ΓΕΜΑΤΟΣ
+STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}ΑΝΑΝΤΙΣΤΟΙΧΙΑ ΕΚΔΟΣΗΣ
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}ΑΝΑΝΤΙΣΤΟΙΧΙΑ NEWGRF
+
+STR_NETWORK_JOIN_GAME                                           :{BLACK}Συμμετοχή σε παιχνίδι
 
 
+STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Έναρξη νέου παιχνιδιού για πολλούς παίκτες
 
-
-
-
-
-
-
-
-
-
+STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Όνομα παιχνιδιού:
+STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Το όνομα του παιχνιδιού θα εμφανιστεί στους άλλους παίκτες στο μενού επιλογής παιχνιδιού για πολλούς παίκτες
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Εισάγετε το όνομα του δικτυακού παιχνιδιού
+STR_NETWORK_SET_PASSWORD                                        :{BLACK}Θέστε κωδικό
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Προστατέψτε το παιχνίδι με έναν κωδικό εάν δε θέλετε να είναι δημοσίως προσβάσιμο
+STR_NETWORK_SELECT_MAP                                          :{BLACK}Επιλέξτε έναν χάρτη:
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Σε ποιό χάρτη θέλετε να παίξετε;
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
+STR_NETWORK_LAN                                                 :LAN
+STR_NETWORK_INTERNET                                            :Ίντερνετ
+STR_NETWORK_LAN_INTERNET                                        :LAN / Ίντερνετ
+STR_NETWORK_INTERNET_ADVERTISE                                  :Ίντερνετ (αναγγελία)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} συμμετ{P έχων εχόντων}
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Μέγιστος αριθμός συμμετεχόντων:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Επιλέξτε τον μέγιστο αριθμό συμμετεχόντων. Δεν είναι ανάγκη να γεμίσουν όλες οι θέσεις
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} εταιρί{P α ες}
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Μέγιστος αριθμός εταιριών:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Περιορισμός του διακομιστή σε συγκεκριμένο αριθμό εταιριών
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} θεατ{P ής ές}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Μέγιστος αριθμός θεατών:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Περιορισμός του διακομιστή σε συγκεκριμένο αριθμό θεατών
+STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Ομιλούμενη γλώσσα:
+STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Οι υπόλοιποι παίκτες θα γνωρίζουν ποια γλώσσα ομιλείται στο διακομιστή
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_GAME                                          :{BLACK}Έναρξη παιχνιδιού
+STR_NETWORK_START_GAME_TIP                                      :{BLACK}Έναρξη νέου δικτυακού παιχνιδιού από τυχαίο χάρτη ή σενάριο
+STR_NETWORK_LOAD_GAME                                           :{BLACK}Φόρτωση παιχνιδιού
+STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Συνέχεια ενός αποθηκευμένου παιχνιδιού με πολλούς παίκτες (επιβεβαιώστε πως συνδέεστε ως ο σωστός παίκτης)
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY                                            :Οποιαδήποτε
+STR_NETWORK_LANG_ENGLISH                                        :Αγγλικά
+STR_NETWORK_LANG_GERMAN                                         :Γερμανικά
+STR_NETWORK_LANG_FRENCH                                         :Γαλλικά
+STR_NETWORK_LANG_BRAZILIAN                                      :Βραζιλιάνικα
+STR_NETWORK_LANG_BULGARIAN                                      :Βουλγαρικά
+STR_NETWORK_LANG_CHINESE                                        :Κινέζικα
+STR_NETWORK_LANG_CZECH                                          :Τσεχικά
+STR_NETWORK_LANG_DANISH                                         :Δανικά
+STR_NETWORK_LANG_DUTCH                                          :Ολλανδικά
+STR_NETWORK_LANG_ESPERANTO                                      :Εσπεράντο
+STR_NETWORK_LANG_FINNISH                                        :Φινλανδικά
+STR_NETWORK_LANG_HUNGARIAN                                      :Ουγγρικά
+STR_NETWORK_LANG_ICELANDIC                                      :Ισλανδικά
+STR_NETWORK_LANG_ITALIAN                                        :Ιταλικά
+STR_NETWORK_LANG_JAPANESE                                       :Γιαπωνέζικα
+STR_NETWORK_LANG_KOREAN                                         :Κορεατικά
+STR_NETWORK_LANG_LITHUANIAN                                     :Λιθουανικά
+STR_NETWORK_LANG_NORWEGIAN                                      :Νορβηγικά
+STR_NETWORK_LANG_POLISH                                         :Πολωνικά
+STR_NETWORK_LANG_PORTUGUESE                                     :Πορτογαλικά
+STR_NETWORK_LANG_ROMANIAN                                       :Ρουμανικά
+STR_NETWORK_LANG_RUSSIAN                                        :Ρωσικά
+STR_NETWORK_LANG_SLOVAK                                         :Σλοβακικά
+STR_NETWORK_LANG_SLOVENIAN                                      :Σλοβενικά
+STR_NETWORK_LANG_SPANISH                                        :Ισπανικά
+STR_NETWORK_LANG_SWEDISH                                        :Σουηδικά
+STR_NETWORK_LANG_TURKISH                                        :Τουρκικά
+STR_NETWORK_LANG_UKRAINIAN                                      :Ουκρανικά
+STR_NETWORK_LANG_AFRIKAANS                                      :Αφρικανικά
+STR_NETWORK_LANG_CROATIAN                                       :Κροατικά
+STR_NETWORK_LANG_CATALAN                                        :Καταλανικά
+STR_NETWORK_LANG_ESTONIAN                                       :Εσθονικά
+STR_NETWORK_LANG_GALICIAN                                       :Γαλικιανά
+STR_NETWORK_LANG_GREEK                                          :Ελληνικά
+STR_NETWORK_LANG_LATVIAN                                        :Λετονικά
 ############ End of leave-in-this-order
 
+STR_NETWORK_GAME_LOBBY                                          :{WHITE}Αίθουσας παιχνιδιού για πολλούς παίκτες
 
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Προετοιμασία για συμμετοχή:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Λίστα όλων των εταιριών αυτή τη στιγμή στο παιχνίδι. Μπορείτε είτε να συμμετάσχετε σε μία ή να δημιουργήσετε μια νέα αν υπάρχει κενή θέση
+STR_NETWORK_NEW_COMPANY                                         :{BLACK}Νέα εταιρία
+STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Δημιουργία νέας εταιρίας
+STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Παρακολούθηση παιχνιδιού
+STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Δείτε το παιχνίδι ως θεατής
+STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Συμμετοχή σε εταιρία
+STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Βοηθείστε  στην διαχείριση αυτής της εταιρίας
+STR_NETWORK_REFRESH                                             :{BLACK}Ανανέωση διακομιστή
+STR_NETWORK_REFRESH_TIP                                         :{BLACK}Ανανεώση πληροφοριών του διακομιστή
 
+STR_NETWORK_COMPANY_INFO                                        :{SILVER}ΠΛΗΡΟΦΟΡΙΕΣ ΕΤΑΙΡΙΑΣ
 
 
 
