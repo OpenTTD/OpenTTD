@@ -591,12 +591,18 @@ static bool NetworkListen()
 	return true;
 }
 
+/** Resets both pools used for network clients */
+static void InitializeNetworkPools()
+{
+	_NetworkClientSocket_pool.CleanPool();
+	_NetworkClientSocket_pool.AddBlockToPool();
+	_NetworkClientInfo_pool.CleanPool();
+	_NetworkClientInfo_pool.AddBlockToPool();
+}
+
 // Close all current connections
 static void NetworkClose()
 {
-	/* The pool is already empty, so we already closed the connections */
-	if (GetNetworkClientSocketPoolSize() == 0) return;
-
 	NetworkClientSocket *cs;
 
 	FOR_ALL_CLIENT_SOCKETS(cs) {
@@ -625,17 +631,13 @@ static void NetworkClose()
 	free(_network_company_states);
 	_network_company_states = NULL;
 
-	_NetworkClientSocket_pool.CleanPool();
-	_NetworkClientInfo_pool.CleanPool();
+	InitializeNetworkPools();
 }
 
 // Inits the network (cleans sockets and stuff)
 static void NetworkInitialize()
 {
-	_NetworkClientSocket_pool.CleanPool();
-	_NetworkClientSocket_pool.AddBlockToPool();
-	_NetworkClientInfo_pool.CleanPool();
-	_NetworkClientInfo_pool.AddBlockToPool();
+	InitializeNetworkPools();
 
 	_sync_frame = 0;
 	_network_first_time = true;
