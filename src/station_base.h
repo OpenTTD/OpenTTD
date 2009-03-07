@@ -52,6 +52,7 @@ struct RoadStop : PoolItem<RoadStop, RoadStopID, &_RoadStop_pool> {
 	static const int  cDebugCtorLevel =  5;  ///< Debug level on which Contructor / Destructor messages are printed
 	static const uint LIMIT           = 16;  ///< The maximum amount of roadstops that are allowed at a single station
 	static const uint MAX_BAY_COUNT   =  2;  ///< The maximum number of loading bays
+	static const uint MAX_VEHICLES    = 64;  ///< The maximum number of vehicles that can allocate a slot to this roadstop
 
 	TileIndex        xy;                    ///< Position on the map
 	byte             status;                ///< Current status of the Stop. Like which spot is taken. Access using *Bay and *Busy functions.

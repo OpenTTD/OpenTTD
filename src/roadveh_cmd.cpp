@@ -1691,7 +1691,7 @@ again:
 				if (IsDriveThroughStopTile(next_tile) && (GetRoadStopType(next_tile) == type) && GetStationIndex(v->tile) == GetStationIndex(next_tile)) {
 					RoadStop *rs_n = GetRoadStopByTile(next_tile, type);
 
-					if (rs_n->IsFreeBay(HasBit(v->u.road.state, RVS_USING_SECOND_BAY))) {
+					if (rs_n->IsFreeBay(HasBit(v->u.road.state, RVS_USING_SECOND_BAY)) && rs_n->num_vehicles < RoadStop::MAX_VEHICLES) {
 						/* Bay in next stop along is free - use it */
 						ClearSlot(v);
 						rs_n->num_vehicles++;
@@ -1927,6 +1927,10 @@ void RoadVehicle::OnNewDay()
 				);
 				/* Now we find the nearest road stop that has a free slot */
 				for (; rs != NULL; rs = rs->GetNextRoadStop(this)) {
+					if (rs->num_vehicles >= RoadStop::MAX_VEHICLES) {
+						DEBUG(ms, 4, " stop 0x%X's queue is full, not treating further", rs->xy);
+						continue;
+					}
 					dist = RoadFindPathToStop(this, rs->xy);
 					if (dist == UINT_MAX) {
 						DEBUG(ms, 4, " stop 0x%X is unreachable, not treating further", rs->xy);
