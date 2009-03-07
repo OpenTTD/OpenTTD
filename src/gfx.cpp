@@ -294,7 +294,7 @@ static void HandleBiDiAndArabicShapes(char *buffer, const char *lastof)
 
 	char *t = buffer;
 	size_t length = 0;
-	while (*t != '\0' && length < lengthof(input_output)) {
+	while (*t != '\0' && length < lengthof(input_output) - 1) {
 		WChar tmp;
 		t += Utf8Decode(&tmp, t);
 		input_output[length++] = tmp;
