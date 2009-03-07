@@ -204,9 +204,10 @@ void AIConfig::SettingsToString(char *string, size_t size)
 		snprintf(no, sizeof(no), "%d", (*it).second);
 
 		/* Check if the string would fit in the destination */
-		size -= strlen((*it).first) - 1 - strlen(no) - 1;
+		size_t needed_size = strlen((*it).first) + 1 + strlen(no) + 1;
 		/* If it doesn't fit, skip the next settings */
-		if (size <= 0) return;
+		if (size <= needed_size) break;
+		size -= needed_size;
 
 		strcat(string, (*it).first);
 		strcat(string, "=");
