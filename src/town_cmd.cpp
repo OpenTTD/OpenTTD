@@ -1981,7 +1981,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 				hs = GetHouseSpecs(house);
 			}
 
-			if ((hs->extra_flags & BUILDING_IS_HISTORICAL) && !_generating_world) continue;
+			if ((hs->extra_flags & BUILDING_IS_HISTORICAL) && !_generating_world && _game_mode != GM_EDITOR) continue;
 		}
 
 		if (_cur_year < hs->min_year || _cur_year > hs->max_year) continue;
@@ -2025,7 +2025,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 		byte construction_counter = 0;
 		byte construction_stage = 0;
 
-		if (_generating_world) {
+		if (_generating_world || _game_mode == GM_EDITOR) {
 			uint32 r = Random();
 
 			construction_stage = TOWN_HOUSE_COMPLETED;
@@ -2166,7 +2166,13 @@ CommandCost CmdRenameTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 /** Called from GUI */
 void ExpandTown(Town *t)
 {
-	_generating_world = true;
+	/* Warn the users if towns are not allowed to build roads,
+	 * but do this only onces per openttd run. */
+	static bool warned_no_roads = false;
+	if (!_settings_game.economy.allow_town_roads && !warned_no_roads) {
+		ShowErrorMessage(INVALID_STRING_ID, STR_TOWN_EXPAND_WARN_NO_ROADS, 0, 0);
+		warned_no_roads = true;
+	}
 
 	/* The more houses, the faster we grow */
 	uint amount = RandomRange(ClampToU16(t->num_houses / 10)) + 3;
@@ -2180,7 +2186,6 @@ void ExpandTown(Town *t)
 	UpdateTownRadius(t);
 
 	UpdateTownMaxPass(t);
-	_generating_world = false;
 }
 
 extern const byte _town_action_costs[8] = {
