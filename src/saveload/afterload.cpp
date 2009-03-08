@@ -624,13 +624,13 @@ bool AfterLoadGame()
 			switch (GetTileType(t)) {
 				case MP_HOUSE:
 					_m[t].m4 = _m[t].m2;
-					SetTownIndex(t, CalcClosestTownFromTile(t, UINT_MAX)->index);
+					SetTownIndex(t, CalcClosestTownFromTile(t)->index);
 					break;
 
 				case MP_ROAD:
 					_m[t].m4 |= (_m[t].m2 << 4);
 					if ((GB(_m[t].m5, 4, 2) == ROAD_TILE_CROSSING ? (Owner)_m[t].m3 : GetTileOwner(t)) == OWNER_TOWN) {
-						SetTownIndex(t, CalcClosestTownFromTile(t, UINT_MAX)->index);
+						SetTownIndex(t, CalcClosestTownFromTile(t)->index);
 					} else {
 						SetTownIndex(t, 0);
 					}
@@ -775,7 +775,7 @@ bool AfterLoadGame()
 							break;
 					}
 					if (!HasTownOwnedRoad(t)) {
-						const Town *town = CalcClosestTownFromTile(t, (uint)-1);
+						const Town *town = CalcClosestTownFromTile(t);
 						if (town != NULL) SetTownIndex(t, town->index);
 					}
 					_m[t].m4 = 0;
@@ -1273,7 +1273,7 @@ bool AfterLoadGame()
 	if (CheckSavegameVersion(52)) {
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (IsStatueTile(t)) {
-				_m[t].m2 = CalcClosestTownFromTile(t, UINT_MAX)->index;
+				_m[t].m2 = CalcClosestTownFromTile(t)->index;
 			}
 		}
 	}

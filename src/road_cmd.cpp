@@ -290,7 +290,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 					} else {
 						if (rt == ROADTYPE_ROAD && IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN)) {
 							/* Update nearest-town index */
-							const Town *town = CalcClosestTownFromTile(tile, UINT_MAX);
+							const Town *town = CalcClosestTownFromTile(tile);
 							SetTownIndex(tile, town == NULL ? (TownID)INVALID_TOWN : town->index);
 						}
 						SetRoadBits(tile, ROAD_NONE, rt);
@@ -457,7 +457,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	 * if a non-company is building the road */
 	if ((IsValidCompanyID(_current_company) && p2 != 0) || (_current_company == OWNER_TOWN && !IsValidTownID(p2))) return CMD_ERROR;
 	if (_current_company != OWNER_TOWN) {
-		const Town *town = CalcClosestTownFromTile(tile, UINT_MAX);
+		const Town *town = CalcClosestTownFromTile(tile);
 		p2 = (town != NULL) ? town->index : (TownID)INVALID_TOWN;
 	}
 
@@ -1254,7 +1254,7 @@ void UpdateNearestTownForRoadTiles(bool invalidate)
 		if (IsTileType(t, MP_ROAD) && !HasTownOwnedRoad(t)) {
 			TownID tid = (TownID)INVALID_TOWN;
 			if (!invalidate) {
-				const Town *town = CalcClosestTownFromTile(t, UINT_MAX);
+				const Town *town = CalcClosestTownFromTile(t);
 				if (town != NULL) tid = town->index;
 			}
 			SetTownIndex(t, tid);

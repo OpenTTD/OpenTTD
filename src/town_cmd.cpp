@@ -2590,7 +2590,7 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 
 				Town *town = GetTown(tid);
 				assert(town->IsValid());
-				assert(town == CalcClosestTownFromTile(tile, UINT_MAX));
+				assert(town == CalcClosestTownFromTile(tile));
 
 				if (DistanceManhattan(tile, town->xy) >= threshold) town = NULL;
 
