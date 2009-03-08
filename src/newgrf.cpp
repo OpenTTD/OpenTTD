@@ -328,38 +328,56 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 {
 	/* Hack for add-on GRFs that need to modify another GRF's engines. This lets
 	 * them use the same engine slots. */
-	const GRFFile *grf_match = NULL;
+	uint32 scope_grfid = INVALID_GRFID; // If not using dynamic_engines, all newgrfs share their ID range
 	if (_settings_game.vehicle.dynamic_engines) {
+		/* If dynamic_engies is enabled, there can be multiple independent ID ranges. */
+		scope_grfid = file->grfid;
 		uint32 override = _grf_id_overrides[file->grfid];
 		if (override != 0) {
-			grf_match = GetFileByGRFID(override);
+			scope_grfid = override;
+			const GRFFile *grf_match = GetFileByGRFID(override);
 			if (grf_match == NULL) {
 				grfmsg(5, "Tried mapping from GRFID %x to %x but target is not loaded", BSWAP32(file->grfid), BSWAP32(override));
 			} else {
 				grfmsg(5, "Mapping from GRFID %x to %x", BSWAP32(file->grfid), BSWAP32(override));
 			}
 		}
+
+		/* Check if the engine is registered in the override manager */
+		EngineID engine = _engine_mngr.GetID(type, internal_id, scope_grfid);
+		if (engine != INVALID_ENGINE) return GetEngine(engine);
 	}
 
-	/* Check if this vehicle is already defined... */
-	Engine *e = NULL;
-	FOR_ALL_ENGINES(e) {
-		if (_settings_game.vehicle.dynamic_engines && e->grffile != NULL && e->grffile != file && e->grffile != grf_match) continue;
-		if (e->type != type) continue;
-		if (e->internal_id != internal_id) continue;
+	/* Check if there is an unreserved slot */
+	EngineID engine = _engine_mngr.GetID(type, internal_id, INVALID_GRFID);
+	if (engine != INVALID_ENGINE) {
+		Engine *e = GetEngine(engine);
 
 		if (e->grffile == NULL) {
 			e->grffile = file;
 			grfmsg(5, "Replaced engine at index %d for GRFID %x, type %d, index %d", e->index, BSWAP32(file->grfid), type, internal_id);
 		}
+
+		/* Reserve the engine slot */
+		EngineIDMapping *eid = _engine_mngr.Get(engine);
+		eid->grfid           = scope_grfid; // Note: this is INVALID_GRFID if dynamic_engines is disabled, so no reservation
+
 		return e;
 	}
 
 	uint engine_pool_size = GetEnginePoolSize();
 
 	/* ... it's not, so create a new one based off an existing engine */
-	e = new Engine(type, internal_id);
+	Engine *e = new Engine(type, internal_id);
 	e->grffile = file;
+
+	/* Reserve the engine slot */
+	assert(_engine_mngr.Length() == e->index);
+	EngineIDMapping *eid = _engine_mngr.Append();
+	eid->type            = type;
+	eid->grfid           = scope_grfid; // Note: this is INVALID_GRFID if dynamic_engines is disabled, so no reservation
+	eid->internal_id     = internal_id;
+	eid->substitute_id   = min(internal_id, _engine_counts[type]); // substitute_id == _engine_counts[subtype] means "no substitute"
 
 	if (engine_pool_size != GetEnginePoolSize()) {
 		/* Resize temporary engine data ... */
@@ -377,24 +395,14 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 
 EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16 internal_id)
 {
-	extern uint32 GetNewGRFOverride(uint32 grfid);
-
-	const GRFFile *grf_match = NULL;
+	uint32 scope_grfid = INVALID_GRFID; // If not using dynamic_engines, all newgrfs share their ID range
 	if (_settings_game.vehicle.dynamic_engines) {
+		scope_grfid = file->grfid;
 		uint32 override = _grf_id_overrides[file->grfid];
-		if (override != 0) grf_match = GetFileByGRFID(override);
+		if (override != 0) scope_grfid = override;
 	}
 
-	const Engine *e = NULL;
-	FOR_ALL_ENGINES(e) {
-		if (_settings_game.vehicle.dynamic_engines && e->grffile != file && (grf_match == NULL || e->grffile != grf_match)) continue;
-		if (e->type != type) continue;
-		if (e->internal_id != internal_id) continue;
-
-		return e->index;
-	}
-
-	return INVALID_ENGINE;
+	return _engine_mngr.GetID(type, internal_id, scope_grfid);
 }
 
 /** Map the colour modifiers of TTDPatch to those that Open is using.

@@ -50,6 +50,8 @@ enum GrfSpecFeature {
 	GSF_END,
 };
 
+static const uint32 INVALID_GRFID = 0xFFFFFFFF;
+
 struct GRFLabel {
 	byte label;
 	uint32 nfo_line;

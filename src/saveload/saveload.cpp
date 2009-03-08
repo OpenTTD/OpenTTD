@@ -34,6 +34,7 @@
 #include "../fileio_func.h"
 #include "../gamelog.h"
 #include "../string_func.h"
+#include "../engine_base.h"
 
 #include "table/strings.h"
 
@@ -1675,6 +1676,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 
 	/* Load a TTDLX or TTDPatch game */
 	if (mode == SL_OLD_LOAD) {
+		_engine_mngr.ResetToDefaultMapping();
 		InitializeGame(256, 256, true); // set a mapsize of 256x256 for TTDPatch games or it might get confused
 		GamelogReset();
 		if (!LoadOldSaveGame(filename)) return SL_REINIT;
@@ -1788,6 +1790,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 				snprintf(err_str, lengthof(err_str), "Initializing loader '%s' failed", fmt->name);
 				SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, err_str);
 			}
+
+			_engine_mngr.ResetToDefaultMapping();
 
 			/* Old maps were hardcoded to 256x256 and thus did not contain
 			 * any mapsize information. Pre-initialize to 256x256 to not to

@@ -286,6 +286,8 @@ static void ParseResolution(Dimension *res, const char *s)
 static void InitializeDynamicVariables()
 {
 	/* Dynamic stuff needs to be initialized somewhere... */
+	_engine_mngr.ResetToDefaultMapping();
+	_house_mngr.ResetMapping();
 	_industry_mngr.ResetMapping();
 	_industile_mngr.ResetMapping();
 	_Company_pool.AddBlockToPool();
@@ -763,6 +765,7 @@ static void MakeNewGame(bool from_heightmap)
 	_game_mode = GM_NORMAL;
 
 	ResetGRFConfig(true);
+	_engine_mngr.ResetToDefaultMapping();
 	_house_mngr.ResetMapping();
 	_industile_mngr.ResetMapping();
 	_industry_mngr.ResetMapping();

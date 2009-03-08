@@ -111,7 +111,39 @@ static void Load_ENGS()
 	}
 }
 
+/** Save and load the mapping between the engine id in the pool, and the grf file it came from. */
+static const SaveLoad _engine_id_mapping_desc[] = {
+	SLE_VAR(EngineIDMapping, grfid,         SLE_UINT32),
+	SLE_VAR(EngineIDMapping, internal_id,   SLE_UINT16),
+	SLE_VAR(EngineIDMapping, type,          SLE_UINT8),
+	SLE_VAR(EngineIDMapping, substitute_id, SLE_UINT8),
+	SLE_END()
+};
+
+static void Save_EIDS()
+{
+	const EngineIDMapping *end = _engine_mngr.End();
+	uint index = 0;
+	for (EngineIDMapping *eid = _engine_mngr.Begin(); eid != end; eid++, index++) {
+		SlSetArrayIndex(index);
+		SlObject(eid, _engine_id_mapping_desc);
+	}
+}
+
+static void Load_EIDS()
+{
+	int index;
+
+	_engine_mngr.Clear();
+
+	while ((index = SlIterateArray()) != -1) {
+		EngineIDMapping *eid = _engine_mngr.Append();
+		SlObject(eid, _engine_id_mapping_desc);
+	}
+}
+
 extern const ChunkHandler _engine_chunk_handlers[] = {
+	{ 'EIDS', Save_EIDS,     Load_EIDS,     CH_ARRAY          },
 	{ 'ENGN', Save_ENGN,     Load_ENGN,     CH_ARRAY          },
 	{ 'ENGS', NULL,          Load_ENGS,     CH_RIFF | CH_LAST },
 };

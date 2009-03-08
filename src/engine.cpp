@@ -28,6 +28,8 @@
 
 DEFINE_OLD_POOL_GENERIC(Engine, Engine)
 
+EngineOverrideManager _engine_mngr;
+
 /** Year that engine aging stops. Engines will not reduce in reliability
  * and no more engines will be introduced */
 Year _year_engine_aging_stops;
@@ -47,6 +49,8 @@ const uint8 _engine_offsets[4] = {
 	lengthof(_orig_rail_vehicle_info) + lengthof(_orig_road_vehicle_info),
 	lengthof(_orig_rail_vehicle_info) + lengthof(_orig_road_vehicle_info) + lengthof(_orig_ship_vehicle_info),
 };
+
+const uint EngineOverrideManager::NUM_DEFAULT_ENGINES = _engine_counts[VEH_TRAIN] + _engine_counts[VEH_ROAD] + _engine_counts[VEH_SHIP] + _engine_counts[VEH_AIRCRAFT];
 
 Engine::Engine() :
 	name(NULL),
@@ -280,6 +284,44 @@ uint Engine::GetDisplayMaxTractiveEffort() const
 	}
 }
 
+/**
+ * Initializes the EngineOverrideManager with the default engines.
+ */
+void EngineOverrideManager::ResetToDefaultMapping()
+{
+	this->Clear();
+	for (VehicleType type = VEH_TRAIN; type <= VEH_AIRCRAFT; type++) {
+		for (uint internal_id = 0; internal_id < _engine_counts[type]; internal_id++) {
+			EngineIDMapping *eid = this->Append();
+			eid->type            = type;
+			eid->grfid           = INVALID_GRFID;
+			eid->internal_id     = internal_id;
+			eid->substitute_id   = internal_id;
+		}
+	}
+}
+
+/**
+ * Looks up an EngineID in the EngineOverrideManager
+ * @param type Vehicle type
+ * @param grf_local_id The local id in the newgrf
+ * @param grfid The GrfID that defines the scope of grf_local_id.
+ *              If a newgrf overrides the engines of another newgrf, the "scope grfid" is the ID of the overridden newgrf.
+ *              If dynnamic_engines is disabled, all newgrf share the same ID scope identified by INVALID_GRFID.
+ * @return The engine ID if present, or INVALID_ENGINE if not.
+ */
+EngineID EngineOverrideManager::GetID(VehicleType type, uint16 grf_local_id, uint32 grfid)
+{
+	const EngineIDMapping *end = this->End();
+	EngineID index = 0;
+	for (const EngineIDMapping *eid = this->Begin(); eid != end; eid++, index++) {
+		if (eid->type == type && eid->grfid == grfid && eid->internal_id == grf_local_id) {
+			return index;
+		}
+	}
+	return INVALID_ENGINE;
+}
+
 /** Sets cached values in Company::num_vehicles and Group::num_vehicles
  */
 void SetCachedEngineCounts()
@@ -323,10 +365,13 @@ void SetupEngines()
 	_Engine_pool.CleanPool();
 	_Engine_pool.AddBlockToPool();
 
-	for (uint i = 0; i < lengthof(_orig_rail_vehicle_info); i++) new Engine(VEH_TRAIN, i);
-	for (uint i = 0; i < lengthof(_orig_road_vehicle_info); i++) new Engine(VEH_ROAD, i);
-	for (uint i = 0; i < lengthof(_orig_ship_vehicle_info); i++) new Engine(VEH_SHIP, i);
-	for (uint i = 0; i < lengthof(_orig_aircraft_vehicle_info); i++) new Engine(VEH_AIRCRAFT, i);
+	assert(_engine_mngr.Length() >= _engine_mngr.NUM_DEFAULT_ENGINES);
+	const EngineIDMapping *end = _engine_mngr.End();
+	uint index = 0;
+	for (const EngineIDMapping *eid = _engine_mngr.Begin(); eid != end; eid++, index++) {
+		const Engine *e = new Engine(eid->type, eid->internal_id);
+		assert(e->index == index);
+	}
 }
 
 

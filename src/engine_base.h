@@ -8,6 +8,7 @@
 #include "engine_type.h"
 #include "economy_type.h"
 #include "oldpool.h"
+#include "core/smallvec_type.hpp"
 
 DECLARE_OLD_POOL(Engine, Engine, 6, 10000)
 
@@ -59,6 +60,26 @@ struct Engine : PoolItem<Engine, EngineID, &_Engine_pool> {
 	uint GetDisplayWeight() const;
 	uint GetDisplayMaxTractiveEffort() const;
 };
+
+struct EngineIDMapping {
+	uint32 grfid;          ///< The GRF ID of the file the entity belongs to
+	uint16 internal_id;    ///< The internal ID within the GRF file
+	VehicleTypeByte type;  ///< The engine type
+	uint8  substitute_id;  ///< The (original) entity ID to use if this GRF is not available (currently not used)
+};
+
+/**
+ * Stores the mapping of EngineID to the internal id of newgrfs.
+ * Note: This is not part of Engine, as the data in the EngineOverrideManager and the engine pool get resetted in different cases.
+ */
+struct EngineOverrideManager : SmallVector<EngineIDMapping, 256> {
+	static const uint NUM_DEFAULT_ENGINES; ///< Number of default entries
+
+	void ResetToDefaultMapping();
+	EngineID GetID(VehicleType type, uint16 grf_local_id, uint32 grfid);
+};
+
+extern EngineOverrideManager _engine_mngr;
 
 static inline bool IsEngineIndex(uint index)
 {
