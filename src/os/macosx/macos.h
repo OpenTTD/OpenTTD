@@ -83,4 +83,14 @@ static inline bool MacOSVersionIsAtLeast(long major, long minor, long bugfix)
 	return true;
 }
 
+/*
+ * OSX 10.3.9 has blessed us with a signal with unlikable side effects.
+ * The most problematic side effect is that it makes OpenTTD 'think' that
+ * it's running on 10.4.0 or higher and thus tries to link to functions
+ * that are only defined there. So now we'll remove all and any signal
+ * handling for OSX < 10.4 and 10.3.9 works as it should at the cost of
+ * not giving a useful error when savegame loading goes wrong.
+ */
+#define signal(sig, func) (MacOSVersionIsAtLeast(10, 4, 0) ? signal(sig, func) : NULL)
+
 #endif /* MACOS_H */
