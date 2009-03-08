@@ -390,7 +390,6 @@ static inline void MakeRoadNormal(TileIndex t, RoadBits bits, RoadTypes rot, Tow
 	_m[t].m3 = (HasBit(rot, ROADTYPE_TRAM) ? bits : 0);
 	_m[t].m4 = 0;
 	_m[t].m5 = (HasBit(rot, ROADTYPE_ROAD) ? bits : 0) | ROAD_TILE_NORMAL << 6;
-	SetRoadOwner(t, ROADTYPE_TRAM, tram);
 	SB(_m[t].m6, 2, 4, 0);
 	_me[t].m7 = rot << 6;
 	SetRoadOwner(t, ROADTYPE_TRAM, tram);

@@ -192,6 +192,8 @@ static inline void MakeUnmovable(TileIndex t, UnmovableType u, Owner o)
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
 	_m[t].m5 = u;
+	SB(_m[t].m6, 2, 4, 0);
+	_me[t].m7 = 0;
 }
 
 

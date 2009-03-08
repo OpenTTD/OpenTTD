@@ -173,6 +173,7 @@ static inline void MakeBridgeRamp(TileIndex t, Owner o, BridgeType bridgetype, D
 	_m[t].m4 = 0;
 	_m[t].m5 = 1 << 7 | tt << 2 | d;
 	SB(_m[t].m6, 2, 4, bridgetype);
+	_me[t].m7 = 0;
 }
 
 /**

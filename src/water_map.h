@@ -146,6 +146,8 @@ static inline void MakeWater(TileIndex t)
 	_m[t].m3 = WATER_CLASS_SEA;
 	_m[t].m4 = 0;
 	_m[t].m5 = 0;
+	SB(_m[t].m6, 2, 4, 0);
+	_me[t].m7 = 0;
 }
 
 static inline void MakeShore(TileIndex t)
@@ -156,6 +158,8 @@ static inline void MakeShore(TileIndex t)
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
 	_m[t].m5 = 1;
+	SB(_m[t].m6, 2, 4, 0);
+	_me[t].m7 = 0;
 }
 
 static inline void MakeRiver(TileIndex t, uint8 random_bits)
@@ -166,6 +170,8 @@ static inline void MakeRiver(TileIndex t, uint8 random_bits)
 	_m[t].m3 = WATER_CLASS_RIVER;
 	_m[t].m4 = random_bits;
 	_m[t].m5 = 0;
+	SB(_m[t].m6, 2, 4, 0);
+	_me[t].m7 = 0;
 }
 
 static inline void MakeCanal(TileIndex t, Owner o, uint8 random_bits)
@@ -177,6 +183,8 @@ static inline void MakeCanal(TileIndex t, Owner o, uint8 random_bits)
 	_m[t].m3 = WATER_CLASS_CANAL;
 	_m[t].m4 = random_bits;
 	_m[t].m5 = 0;
+	SB(_m[t].m6, 2, 4, 0);
+	_me[t].m7 = 0;
 }
 
 static inline void MakeShipDepot(TileIndex t, Owner o, DepotPart base, Axis a, WaterClass original_water_class)
@@ -187,6 +195,8 @@ static inline void MakeShipDepot(TileIndex t, Owner o, DepotPart base, Axis a, W
 	_m[t].m3 = original_water_class;
 	_m[t].m4 = 0;
 	_m[t].m5 = base + a * 2;
+	SB(_m[t].m6, 2, 4, 0);
+	_me[t].m7 = 0;
 }
 
 static inline void MakeLockTile(TileIndex t, Owner o, byte section, WaterClass original_water_class)
@@ -197,6 +207,8 @@ static inline void MakeLockTile(TileIndex t, Owner o, byte section, WaterClass o
 	_m[t].m3 = original_water_class;
 	_m[t].m4 = 0;
 	_m[t].m5 = section;
+	SB(_m[t].m6, 2, 4, 0);
+	_me[t].m7 = 0;
 }
 
 static inline void MakeLock(TileIndex t, Owner o, DiagDirection d, WaterClass wc_lower, WaterClass wc_upper)

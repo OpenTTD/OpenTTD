@@ -166,25 +166,6 @@ static inline bool IsIndustryTileOnWater(TileIndex t)
 }
 
 /**
- * Make the given tile an industry tile
- * @param t      the tile to make an industry tile
- * @param index  the industry this tile belongs to
- * @param gfx    the graphics to use for the tile
- * @param random the random value
- */
-static inline void MakeIndustry(TileIndex t, IndustryID index, IndustryGfx gfx, uint8 random, WaterClass wc)
-{
-	SetTileType(t, MP_INDUSTRY);
-	_m[t].m1 = 0;
-	_m[t].m2 = index;
-	_m[t].m3 = 0;
-	_m[t].m4 = 0;
-	SetIndustryGfx(t, gfx);
-	_me[t].m7 = random;
-	SetWaterClass(t, wc);
-}
-
-/**
  * Returns this indutry tile's construction counter value
  * @param tile the tile to query
  * @pre IsTileType(tile, MP_INDUSTRY)
@@ -319,6 +300,26 @@ static inline void SetIndustryTriggers(TileIndex tile, byte triggers)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
 	SB(_m[tile].m6, 3, 3, triggers);
+}
+
+/**
+ * Make the given tile an industry tile
+ * @param t      the tile to make an industry tile
+ * @param index  the industry this tile belongs to
+ * @param gfx    the graphics to use for the tile
+ * @param random the random value
+ */
+static inline void MakeIndustry(TileIndex t, IndustryID index, IndustryGfx gfx, uint8 random, WaterClass wc)
+{
+	SetTileType(t, MP_INDUSTRY);
+	_m[t].m1 = 0;
+	_m[t].m2 = index;
+	_m[t].m3 = 0;
+	_m[t].m4 = 0;
+	SetIndustryGfx(t, gfx); // m5, part of m6
+	SetIndustryTriggers(t, 0); // rest of m6
+	SetIndustryRandomBits(t, random); // m7
+	SetWaterClass(t, wc);
 }
 
 #endif /* INDUSTRY_MAP_H */

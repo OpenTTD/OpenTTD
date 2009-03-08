@@ -314,7 +314,9 @@ static inline void MakeStation(TileIndex t, Owner o, StationID sid, StationType 
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
 	_m[t].m5 = section;
+	SB(_m[t].m6, 2, 1, 0);
 	SB(_m[t].m6, 3, 3, st);
+	_me[t].m7 = 0;
 }
 
 static inline void MakeRailStation(TileIndex t, Owner o, StationID sid, Axis a, byte section, RailType rt)
