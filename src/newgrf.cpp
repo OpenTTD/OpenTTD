@@ -324,7 +324,15 @@ static void SetNewGRFOverride(uint32 source_grfid, uint32 target_grfid)
 	grfmsg(5, "SetNewGRFOverride: Added override of 0x%X to 0x%X", BSWAP32(source_grfid), BSWAP32(target_grfid));
 }
 
-static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 internal_id)
+/**
+ * Returns the engine associated to a certain internal_id, resp. allocates it.
+ * @param file NewGRF that wants to change the engine
+ * @param type Vehicle type
+ * @param internal_id Engine ID inside the NewGRF
+ * @param static_access If the engine is not present, return NULL instead of allocating a new engine. (Used for static Action 0x04)
+ * @return The requested engine
+ */
+static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 internal_id, bool static_access = false)
 {
 	/* Hack for add-on GRFs that need to modify another GRF's engines. This lets
 	 * them use the same engine slots. */
@@ -359,11 +367,15 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 		}
 
 		/* Reserve the engine slot */
-		EngineIDMapping *eid = _engine_mngr.Get(engine);
-		eid->grfid           = scope_grfid; // Note: this is INVALID_GRFID if dynamic_engines is disabled, so no reservation
+		if (!static_access) {
+			EngineIDMapping *eid = _engine_mngr.Get(engine);
+			eid->grfid           = scope_grfid; // Note: this is INVALID_GRFID if dynamic_engines is disabled, so no reservation
+		}
 
 		return e;
 	}
+
+	if (static_access) return NULL;
 
 	uint engine_pool_size = GetEnginePoolSize();
 
@@ -3443,7 +3455,8 @@ static void FeatureNewName(byte *buf, size_t len)
 			case GSF_SHIP:
 			case GSF_AIRCRAFT:
 				if (!generic) {
-					Engine *e = GetNewEngine(_cur_grffile, (VehicleType)feature, id);
+					Engine *e = GetNewEngine(_cur_grffile, (VehicleType)feature, id, HasBit(_cur_grfconfig->flags, GCF_STATIC));
+					if (e == NULL) break;
 					StringID string = AddGRFString(_cur_grffile->grfid, e->index, lang, new_scheme, name, e->info.string_id);
 					e->info.string_id = string;
 				} else {
