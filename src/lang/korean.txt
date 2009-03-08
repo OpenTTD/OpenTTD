@@ -3,6 +3,7 @@
 ##isocode ko_KR
 ##winlangid 0x0412
 ##plural 1
+##gender m f
 
 #
 
@@ -606,6 +607,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}도시�
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...맵에 더이상 공간이 없습니다!
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}마을의 크기 키우기
 STR_023C_EXPAND                                                 :{BLACK}확장하기
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}마을이 도로를 짓지 않습니다. [고급설정->경제->도시]에서 도로를 지을 수 있도록 설정을 변경하실 수 있습니다.
 STR_023D_RANDOM_TOWN                                            :{BLACK}무작위 마을 건설
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}무작위로 마을를 건설합니다.
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}{STRING}을/를 여기에 건설할 수 없습니다...

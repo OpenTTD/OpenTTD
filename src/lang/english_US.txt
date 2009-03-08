@@ -606,6 +606,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Can't bu
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...there is no more space on the map
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Increase size of town
 STR_023C_EXPAND                                                 :{BLACK}Expand
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}The town will not build roads. You can enable building of roads via Advanced Settings->Economy->Towns.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Random Town
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Build town in random location
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Can't build {STRING} here...
@@ -945,8 +946,10 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Nonunif
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Weight multiplier for freight to simulate heavy trains: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Plane speed factor: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Allow drive-through road stops on town owned roads: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Allow drive-through road stops on roads owned by competitors: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Allow building adjacent stations: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Enable multiple NewGRF engine sets: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Changing this setting is not possible when there are vehicles.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Always allow small airports: {ORANGE}{STRING}
 

@@ -640,6 +640,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Nem lehe
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...nincs több hely a térképen
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}A település méretének növelése
 STR_023C_EXPAND                                                 :{BLACK}Növel
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}A település nem fog utakat építeni. Az útépítést a Haladó beállítások->Gazdaság->Városok menüben engedélyezheted.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Egy véletlen település
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Egy település építése véletlenszerű helyre
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Nem építhető ide {STRING}...

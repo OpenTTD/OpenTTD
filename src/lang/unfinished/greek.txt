@@ -1851,11 +1851,18 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...εί�
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 
+STR_SV_STNAME_BUOY_9                                            :{STRING} Σημαδούρα 9
+STR_SV_STNAME_UPPER                                             :Άνω {STRING}
+STR_SV_STNAME_LOWER                                             :Κάτω {STRING}
+STR_SV_STNAME_HELIPORT                                          :{STRING} Ελικοδρόμιο
+STR_SV_STNAME_FOREST                                            :{STRING} Δάσος
+STR_SV_STNAME_FALLBACK                                          :{STRING} Σταθμός #{NUM}
 
 ############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Βαθμός Δυσκολίας
+STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Αποθήκευση
 
 ############ range for difficulty levels starts
 STR_6801_EASY                                                   :{BLACK}Εύκολο
@@ -1925,6 +1932,7 @@ STR_HOSTILE                                                     :Εχθρικό
 
 ##id 0x7000
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Εταιρία {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Νέο Πρόσωπο
 STR_7005_COLOUR_SCHEME                                          :{BLACK}Χρωματισμός
 STR_7006_COLOUR_SCHEME                                          :{GOLD}Χρωματισμός:
@@ -1956,10 +1964,12 @@ STR_701F                                                        :{BLACK}+{CURREN
 STR_7020_TOTAL                                                  :{WHITE}Σύνολο:
 STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Γράφημα Εισοδήματος
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Γράφημα Ενεργών Εσόδων
 STR_7026_BANK_BALANCE                                           :{WHITE}Ισολογισμός Τραπέζης
 STR_7027_LOAN                                                   :{WHITE}Δάνειο
+STR_MAX_LOAN                                                    :{WHITE}Μέγιστο Δάνειο:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Δανεισμός {SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Πληρωμή {SKIP}{SKIP}{CURRENCY}
@@ -1968,6 +1978,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Αδύν
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...δεν υπάρχει δάνειο προς αποπληρωμή
 STR_702E_REQUIRED                                               :{WHITE}...Απαιτούνται {CURRENCY}
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Αδύνατη η αποπληρωμή του δανείου...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Δεν είναι δυνατόν να δοθούν χρήματα που είναι δανεισμένα από την τράπεζα...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Επιλογή νέου προσώπου διευθυντή
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Αλλαγή της εμφάνισης των οχημάτων της εταιρείας
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Αλλαγή του ονόματος του διευθυντή
@@ -1977,7 +1988,10 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Αποπ
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manager)
 STR_7038_INAUGURATED                                            :{GOLD}Εγκαινιασμένος: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Οχήματα:
+STR_TRAINS                                                      :{WHITE}{COMMA} τραίν{P ο α}
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} {P όχημα οχήματα} δρόμου
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} αεροσκάφος
+STR_SHIPS                                                       :{WHITE}{COMMA} πλοί{P ο α}
 STR_7042_NONE                                                   :{WHITE}Κανένα
 STR_7043_FACE_SELECTION                                         :{WHITE}Επιλογή Προσώπου
 STR_7044_MALE                                                   :{BLACK}Αρσενικό
@@ -2025,8 +2039,20 @@ STR_706D_PRESIDENT                                              :Πρόεδρο�
 STR_706E_TYCOON                                                 :Μεγιστάνας
 STR_706F_BUILD_HQ                                               :{BLACK}Χτίσιμο Αρχηγείου
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Χτίστιμο αρχηγείου εταιρείας / προβολή αρχηγείου
+STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Ανοικοδόμηση του αρχηγείου της εταιρίας σε άλλο μέρος, με κόστος το 1% της αξίας της εταιρίας
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Αδύνατο να χτιστεί αρχηγείο εταιρείας...
 STR_7072_VIEW_HQ                                                :{BLACK}Προβολή Αρχηγείου
+STR_RELOCATE_HQ                                                 :{BLACK}Ανοικοδόμηση Αρχηγείου
+STR_COMPANY_JOIN                                                :{BLACK}Συμμετοχή
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Συμμετοχή και παιχνίδι ως αυτή η εταιρία
+STR_COMPANY_PASSWORD                                            :{BLACK}Κωδικός
+STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Προστατεύστε την εταιρία με κωδικό ώστε να αποφύγετε την συμμετοχή ανεπιθύμητων παικτών.
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Θέστε τον κωδικό της εταιρίας
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Να μην αποθηκευτεί ο κωδικός
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Δώστε στην εταιρία νέο κωδικό
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Κωδικός εταιρίας
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Προεπιλεγμένος κωδικός εταιρίας
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Χρήση αυτού του κωδικού ως προεπιλογή για τις νέες εταιρίες
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Παγκόσμια Υποχώρηση!{}{}Οι οικονομολόγοι φοβούνται τα χειρότερα καθώς η οικονομία πιάνει πάτο!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Υποχώρηση Τέλος!{}{}Κέρδη στο εμπόριο δίνει σιγουριά στις βιομηχανίες καθώς η οικονομία δυναμώνει!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Εναλλαγή μεγάλου/μικρού παραθύρου
@@ -2041,7 +2067,38 @@ STR_707D_OWNED_BY                                               :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}Η {STRING} εξαγοράστηκε από την {STRING}!
 STR_PROTECTED                                                   :{WHITE}Αυτή η εταιρεία δεν είναι αρκετά ώριμη για συναλλαγή μετοχών ακόμα...
 
+STR_LIVERY_DEFAULT                                              :Πρότυπο Μοτίβου Χρωμάτων
+STR_LIVERY_STEAM                                                :Ατμοκίνητη Μηχανή
+STR_LIVERY_DIESEL                                               :Πετρελαιοκίνητη Μηχανή
+STR_LIVERY_ELECTRIC                                             :Ηλεκτροκίνητη Μηχανή
+STR_LIVERY_MONORAIL                                             :Μονόγραμμη Μηχανή
+STR_LIVERY_MAGLEV                                               :Μαγνητικά Αιωρούμενη Μηχανή
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Επιβατηγό Βαγόνι (Ατμού)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Επιβατηγό Βαγόνι (Πετρελαίου)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Επιβατηγό Βαγόνι (Ηλεκτρικό)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Επιβατηγό Βαγόνι (Μονόγραμμο)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Επιβατηγό Βαγόνι (Μαγνητικά Αιωρούμενο)
+STR_LIVERY_FREIGHT_WAGON                                        :Εμπορικό Βαγόνι
+STR_LIVERY_BUS                                                  :Λεωφορείο
+STR_LIVERY_TRUCK                                                :Φορτηγό
+STR_LIVERY_PASSENGER_SHIP                                       :Επιβατηγό πλοίο
+STR_LIVERY_FREIGHT_SHIP                                         :Εμπορικό Πλοίο
+STR_LIVERY_HELICOPTER                                           :Ελικόπτερο
+STR_LIVERY_SMALL_PLANE                                          :Μικρό Αεροπλάνο
+STR_LIVERY_LARGE_PLANE                                          :Μεγάλο Αεροπλάνο
+STR_LIVERY_PASSENGER_TRAM                                       :Επιβατηγό Τραμ
+STR_LIVERY_FREIGHT_TRAM                                         :Εμπορικό Τράμ
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Εμφάνιση γενικών χρωματικών μοτίβων
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Εμφάνιση χρωματικών μοτίβων τραίνων
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Εμφάνιση χρωματικών μοτίβων οχημάτων δρόμου
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Εμφάνιση χρωματικών μοτίβων πλοίων
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Εμφάνιση χρωματικών μοτίβων αεροσκαφών
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Επιλογή του βασικού χρώματος για το επιλεγμένο μοτίβο
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Επιλογή του δευτερεύοντος χρώματος για το επιλεγμένο μοτίβο
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Επιλέξτε το χρωματικό μοτίβο για αλλαγή ή πολλά μοτίβα με Ctrl+Κλικ. Κάντε κλικ στο κουτάκι για να επιλέξετε τη χρήση του μοτίβου
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Ατμοκίνητο)

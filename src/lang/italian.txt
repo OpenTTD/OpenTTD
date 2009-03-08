@@ -608,6 +608,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Impossib
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...non c'è altro spazio sulla mappa
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Aumenta la dimensione della città
 STR_023C_EXPAND                                                 :{BLACK}Espandi
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Alla città non è permesso costruire strade. È possibile abilitare la costruzione di strade in Impostazioni avanzate -> Economia -> Città.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Città casuale
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Costruisce una città in un luogo casuale
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Impossibile costruire {STRING} qui...

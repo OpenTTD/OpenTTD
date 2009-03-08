@@ -1420,7 +1420,7 @@ STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) In
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Wachten...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Downloaden kaart...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Verwerken data...
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registeren...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registreren...
 
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Ophalen spelinformatie...
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ophalen bedrijfsinformatie...
@@ -1428,19 +1428,19 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ophalen 
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} speler{P "" s} voor ons
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} opgehaald
 
-STR_NETWORK_DISCONNECT                                          :{BLACK}Verbinding verbroken
+STR_NETWORK_DISCONNECT                                          :{BLACK}Verbreek verbinding
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Geef de hoeveelheid geld die je wilt geven in
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server is beveiligd. Voer wachtwoord in.
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Bedrijf is beveiligd. Voer wachtwoord in.
-STR_NETWORK_CLIENT_LIST                                         :{WHITE}Spelers Lijst
+STR_NETWORK_CLIENT_LIST                                         :{WHITE}Spelerslijst
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Kijk toe
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nieuw Bedrijf
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Geen netwerkapparaten gevonden of gecompileerd zonder ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Kon geen enkel netwerkspel vinden
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} De server beantwoorde het verzoek niet
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Kan geen verbinding maken vanwege niet gelijke NewGRF instelling
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Kan geen verbinding maken, je hebt niet dezelfde NewGRF files als de server
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Netwerkspel synchronisatie mislukt.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Netwerkspel verbinding kwijt.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Kon server-opgeslagen spel niet laden

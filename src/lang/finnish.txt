@@ -606,6 +606,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kaupunke
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...kartalla ei ole enää tilaa
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Suurenna kaupunkia
 STR_023C_EXPAND                                                 :{BLACK}Laajenna
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Kaupunki ei rakenna teitä. Voit sallia teiden rakentamisen valikosta Lisäasetukset->Talous->Kaupungit.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Satunnainen kaupunki
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Rakenna kaupunki satunnaiseen paikkaan
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}{STRING}: tähän ei voi rakentaa...
@@ -945,7 +946,7 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Epäyht
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Kerroin rahdin painolle raskaiden junien simuilointiin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Lentokoneen nopeuskerroin: {ORANGE}1/{STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Läpiajettavat pysäkit kaupungin teille: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Salli läpiajettavien ajoneuvopysäkkien rakentaminen vastustajien omistamille teille: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Salli läpiajettavat pysäkit kilpailijoiden omistamilla teillä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Vierekkäiset asemat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Useat NewGRF-veturisetit: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Tätä asetusta ei voi muuttaa kun kulkuneuvoja on olemassa.

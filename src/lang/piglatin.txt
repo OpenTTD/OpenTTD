@@ -606,6 +606,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}An'tcay 
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...erethay isway onay oremay acespay onway ethay apmay
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Increaseway izesay ofway owntay
 STR_023C_EXPAND                                                 :{BLACK}Expandway
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Ethay owntay illway otnay uildbay oadsray. Ouyay ancay enableway uildingbay ofway oadsray iavay Advancedway Ettingssay->Economyway->Ownstay.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Andomray Owntay
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Uildbay owntay inway andomray ocationlay
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}An'tcay uildbay {STRING} erehay...

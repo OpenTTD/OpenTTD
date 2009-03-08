@@ -956,7 +956,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :是，不過停
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :所有交通工具
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}當交通工具收入為負時警告：{ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}運輸工具永不過期：{ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}交通工具自動翻新：{ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}交通工具自動翻新: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}當交通工具在使用年限 {ORANGE}{STRING}{LTBLUE} 個月前／後自動更新
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}自動翻新所需最低餘額：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}錯誤訊息顯示時間：{ORANGE}{STRING}
@@ -1024,7 +1024,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :自家公司
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :所有公司
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}啟用交通工具時刻表：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}顯示時刻表時以 Tick 取代日為單位：{ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}快速建立車輛順序：{ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}快速建立交通工具調度命令：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}預設的路軌類型 (將在新遊戲／載入遊戲時生效)：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :傳統鐵路
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :電氣化鐵路
