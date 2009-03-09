@@ -254,7 +254,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		v->u.road.roadtype = HasBit(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
 		v->u.road.compatible_roadtypes = RoadTypeToRoadTypes(v->u.road.roadtype);
-		v->u.road.cached_veh_length = GetRoadVehLength(v);
+		v->u.road.cached_veh_length = 8;
 
 		v->vehicle_flags = 0;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
@@ -263,8 +263,9 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		AddArticulatedParts(vl, VEH_ROAD);
 
-		/* Call callback 36s after the whole consist has been constructed */
+		/* Call various callbacks after the whole consist has been constructed */
 		for (Vehicle *u = v; u != NULL; u = u->Next()) {
+			u->u.road.cached_veh_length = GetRoadVehLength(u);
 			/* Cargo capacity is zero if and only if the vehicle cannot carry anything */
 			if (u->cargo_cap != 0) u->cargo_cap = GetVehicleProperty(u, 0x0F, u->cargo_cap);
 		}

@@ -307,7 +307,7 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 				u = new (u) RoadVehicle();
 				previous->SetNext(u);
 				u->u.road.first_engine = v->engine_type;
-				u->u.road.cached_veh_length = GetRoadVehLength(u);
+				u->u.road.cached_veh_length = 8; // Callback is called when the consist is finished
 				u->u.road.state = RVSB_IN_DEPOT;
 
 				u->u.road.roadtype = v->u.road.roadtype;
