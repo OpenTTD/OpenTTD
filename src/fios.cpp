@@ -51,11 +51,11 @@ int CDECL compare_FiosItems(const void *a, const void *b)
 	const FiosItem *db = (const FiosItem *)b;
 	int r = 0;
 
-	if ((_savegame_sort_order & SORT_BY_NAME) == 0) {
+	if ((_savegame_sort_order & SORT_BY_NAME) == 0 && da->mtime != db->mtime) {
 		r = da->mtime < db->mtime ? -1 : 1;
+	} else {
+		r = strcasecmp(da->title, db->title);
 	}
-
-	if (r == 0) r = strcasecmp(da->title, db->title);
 
 	if (_savegame_sort_order & SORT_DESCENDING) r = -r;
 	return r;
