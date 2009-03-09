@@ -261,31 +261,13 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 		EngineID engine_type = GetNewEngineID(GetEngineGRF(v->engine_type), type, GB(callback, 0, 7));
 		bool flip_image = HasBit(callback, 7);
 
-		/* get common values from first engine */
-		u->direction = v->direction;
-		u->owner = v->owner;
-		u->tile = v->tile;
-		u->x_pos = v->x_pos;
-		u->y_pos = v->y_pos;
-		u->z_pos = v->z_pos;
-		u->build_year = v->build_year;
-		u->vehstatus = v->vehstatus & ~VS_STOPPED;
-
-		u->cargo_subtype = 0;
-		u->max_speed = 0;
-		u->max_age = 0;
-		u->engine_type = engine_type;
-		u->value = 0;
-		u->subtype = 0;
-		u->cur_image = 0xAC2;
-		u->random_bits = VehicleRandomBits();
-
 		const Engine *e_artic = GetEngine(engine_type);
 		switch (type) {
 			default: NOT_REACHED();
 
 			case VEH_TRAIN:
 				u = new (u) Train();
+				u->subtype = 0;
 				previous->SetNext(u);
 				u->u.rail.track = v->u.rail.track;
 				u->u.rail.railtype = v->u.rail.railtype;
@@ -305,6 +287,7 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 
 			case VEH_ROAD:
 				u = new (u) RoadVehicle();
+				u->subtype = 0;
 				previous->SetNext(u);
 				u->u.road.first_engine = v->engine_type;
 				u->u.road.cached_veh_length = 8; // Callback is called when the consist is finished
@@ -325,6 +308,24 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 				SetRoadVehArticPart(u);
 				break;
 		}
+
+		/* get common values from first engine */
+		u->direction = v->direction;
+		u->owner = v->owner;
+		u->tile = v->tile;
+		u->x_pos = v->x_pos;
+		u->y_pos = v->y_pos;
+		u->z_pos = v->z_pos;
+		u->build_year = v->build_year;
+		u->vehstatus = v->vehstatus & ~VS_STOPPED;
+
+		u->cargo_subtype = 0;
+		u->max_speed = 0;
+		u->max_age = 0;
+		u->engine_type = engine_type;
+		u->value = 0;
+		u->cur_image = 0xAC2;
+		u->random_bits = VehicleRandomBits();
 
 		if (flip_image) u->spritenum++;
 
