@@ -43,14 +43,14 @@ static uint32 CanalGetVariable(const ResolverObject *object, byte variable, byte
 	TileIndex tile = object->u.canal.tile;
 
 	switch (variable) {
-		case 0x80:
-			return GetTileZ(tile) / TILE_HEIGHT;
+		/* Height of tile */
+		case 0x80: return GetTileZ(tile) / TILE_HEIGHT;
 
-		case 0x81:
-			return GetTerrainType(tile);
+		/* Terrain type */
+		case 0x81: return GetTerrainType(tile);
 
-		case 0x83:
-			return GetWaterTileRandomBits(tile);
+		/* Random data for river or canal tiles, otherwise zero */
+		case 0x83: return GetWaterTileRandomBits(tile);
 	}
 
 	DEBUG(grf, 1, "Unhandled canal property 0x%02X", variable);
