@@ -562,6 +562,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}ไม�
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...มีพื้นที่บนแผนที่ไม่มากพอ
 
 
+
 ############ range for menu starts
 ############ range ends here
 
@@ -629,6 +630,7 @@ STR_TOWNNAME_ROMANIAN                                           :โรมาเ
 
 
 
+
 STR_MONTH_APR                                                   :เมษายน
 STR_MONTH_MAY                                                   :พฤษภาคม
 STR_MONTH_JUN                                                   :มิถุนายน
@@ -688,7 +690,7 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 
 
 
-
+############ generic strings for settings
 
 
 
@@ -759,9 +761,6 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 
 ############ end network gui strings
 
-
-
-
 ##### PNG-MAP-Loader
 
 
@@ -775,6 +774,35 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 ##id 0x1800
 
 ##id 0x2000
+STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}เปลี่ยนชื่อเมือง
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}ผู้โดยสารเมื่อเดือนที่แล้ว: {ORANGE}{COMMA}{BLACK}  จำนวนสูงสุด: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}จดหมายเมื่อเดือนที่แล้ว: {ORANGE}{COMMA}{BLACK}  จำนวนสูงสุด: {ORANGE}{COMMA}
+STR_200F_TALL_OFFICE_BLOCK                                      :ตึกสูง
+STR_2010_OFFICE_BLOCK                                           :อาคารสำนักงาน
+STR_2011_SMALL_BLOCK_OF_FLATS                                   :แฟลต
+STR_2012_CHURCH                                                 :โบส์ถ
+STR_2013_LARGE_OFFICE_BLOCK                                     :อาคารสำนักงานขนาดใหญ่
+STR_2014_TOWN_HOUSES                                            :ทาวน์เฮ้าส์
+STR_2015_HOTEL                                                  :โรงแรม
+STR_2016_STATUE                                                 :อนุสาวรีย์
+STR_2017_FOUNTAIN                                               :น้ำพุ
+STR_2018_PARK                                                   :สวนสาธารณะ
+STR_2019_OFFICE_BLOCK                                           :อาคารสำนักงาน
+STR_201A_SHOPS_AND_OFFICES                                      :ร้านค้าและสำนักงาน
+STR_201B_MODERN_OFFICE_BUILDING                                 :อาคารสำนักงานสมัยใหม่
+STR_201C_WAREHOUSE                                              :โกดัง
+STR_201D_OFFICE_BLOCK                                           :อาคารสำนักงาน
+STR_201E_STADIUM                                                :สนามกีฬา
+STR_201F_OLD_HOUSES                                             :บ้านโบราณ
+STR_2020_LOCAL_AUTHORITY                                        :{BLACK}เจ้าหน้าที่ท้องถิ่น
+STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} เจ้าหน้าที่ท้องถิ่น
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_2025_SUBSIDIES                                              :{WHITE}เงินอุดหนุน
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}ให้เงินอุดหนุนสำหรับการบริการ:
+STR_2028_BY                                                     :{YELLOW} (by {DATE_SHORT})
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}การบริการได้เงินอุดหนุนเรียบร้อยแล้ว:
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} เดินทางจาก{STATION} ถึง {STATION}{YELLOW} ({COMPANY}
+STR_202D_UNTIL                                                  :{YELLOW}, จนถึง {DATE_SHORT})
 
 
 ##id 0x2800
@@ -911,6 +939,8 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ########### String for New Landscape Generator
 
 
+
+# Strings for map borders at game generation
 
 ########### String for new airports
 

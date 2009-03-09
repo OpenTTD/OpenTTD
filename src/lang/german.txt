@@ -607,6 +607,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Bau von 
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...es ist kein Platz mehr auf dem Spielfeld.
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Die Stadt vergrößern
 STR_023C_EXPAND                                                 :{BLACK}Ausdehnen
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Städte bauen im Moment keine Straßen. Städtischer Straßenbau kann mittels Erweiterte Einstellungen->Wirtschaft->Städte eingestellt werden.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Zufällige Stadt
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Stadt an zufälligem Platz gründen
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}{STRING} kann hier nicht gebaut werden...

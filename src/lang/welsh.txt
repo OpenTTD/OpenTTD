@@ -606,6 +606,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Methu ad
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...nid oes mwy o le ar y map
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Cynyddu maint tref
 STR_023C_EXPAND                                                 :{BLACK}Ehangu
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Ni fydd y dref yn adeiladu ffyrdd. Gallwch alluogi adeiladu ffyrdd yn  Gosodiadau Uwch->Economi->Trefi.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Tref ar hap
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Adeiladu tref mewn safle ar hap
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Ni ellir adeiladu {STRING} yma...

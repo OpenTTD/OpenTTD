@@ -1063,15 +1063,65 @@ STR_NETWORK_LANG_LATVIAN                                        :Lettësch
 
 
 
+STR_NETWORK_CONNECTING                                          :{WHITE}Connèctéiert...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Connèctéiert..
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Authoriséiert..
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Waart..
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Kaart erooflueden..
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Daten verarbeschten..
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registréiert..
 
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Ruffen d'Spillinfo oof..
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ruffen d'Firmeninfos oof..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} Spiller firun iersch
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} eroofgeluden
 
+STR_NETWORK_DISCONNECT                                          :{BLACK}Verbindung trennen
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Gidd den Betraag un deen der wëllt ginn
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server ass geschützt. Passwuert anginn
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma ass geschützt. Passwuert anginn
+STR_NETWORK_CLIENT_LIST                                         :{WHITE}Spillerlëscht
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Zuschauer
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Néi Firma
 
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Keng Netzwierkgeräter font oder compiléiert ouni ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Konnt kéng Netzwierkspiller fannen
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Den Server huet nët op d'Unfroo geäntwert
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Konnt sëch weinst NewGRF ënnerscheed nët connèctéieren
+STR_NETWORK_ERR_DESYNC                                          :{WHITE} Netzwierksyncronisatioun-Fehler
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Netzwierkverbindung verluer
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Konnt den Spillstand nët lueden
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Konnt den Server nët starten
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Konnt sëch nët connèctéieren
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Connèctioun #{NUM} oofgelaaf
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} En Protokolfehler war entstaanen an d'Connèctioun ass getrennt ginn
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} D'Versioun vum Client stëmmt nët mat där vum Server iwereneen
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Falscht Passwuert
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Dën Server ass voll
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Dir sidd vun dësem Server gebannt
+STR_NETWORK_ERR_KICKED                                          :{WHITE} Dir sidd aus dem Spill gekickt ginn
+STR_NETWORK_ERR_CHEATER                                         :{WHITE} Cheaten ass op dësem Server nët erlaabt
 
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL                                  :generelen Fehler
+STR_NETWORK_ERR_CLIENT_DESYNC                                   :desync Fehler
+STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :konnt d'Kaart nët lueden
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :Connèctioun verluer
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :Protokollfehler
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF ënnerscheedlech
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :nët authoriséiert
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :komëschen Paak erhaalen
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :Falsch Versioun
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :Numm gët schon benotzt
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :falscht Passwuert
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :falsch Firmen-ID am "DoCommand"
+STR_NETWORK_ERR_CLIENT_KICKED                                   :vum Server gekickt
+STR_NETWORK_ERR_CLIENT_CHEATER                                  :huet probéiert ze cheaten
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :Server voll
 ############ End of leave-in-this-order
 STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
@@ -1085,26 +1135,60 @@ STR_NETWORK_CLIENT_LEAVING                                      :verloossen
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} ass dëm Spill baigetrueden
 STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} ass bei d?Firma #{2:NUM} gaangen
 STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} ass als Zuschauer do
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} huet eng néi Firma ungefaangen (#{2:NUM})
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} huet d'Spill verloos ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} huet säin Numm op {STRING} gewiesselt
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} huet ärer Firma {2:CURRENCY} ginn
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
+STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] Zu {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Private] :
+STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] Zu {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
+STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Text fir Chat anginn
+STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Dën Server huet d'Sessioun zougemaacht
+STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Sën Server gët néi gestart...{}Weg. Waarden...
+
+STR_NETWORK_SERVER                                              :Server
+STR_NETWORK_CLIENT                                              :Spiller
+STR_NETWORK_SPECTATORS                                          :Zuschauer
+
+STR_NETWORK_CLIENTLIST_NONE                                     :(kéng)
+STR_NETWORK_CLIENTLIST_KICK                                     :Kick
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Suen ginn
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Zu jidferéngem schwätzen
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Zu Firma schwätzen
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privat Meldung
 
 
-
-
+STR_NETWORK_SEND                                                :{BLACK}Schécken
 
 ############ end network gui strings
 
 ##### PNG-MAP-Loader
 
+STR_PNGMAP_ERROR                                                :{WHITE}Kann d'Landschaft nët vum PNG lueden...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...Datei nët font.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...konnt den Bildtyp nët convertéieren. 8 oder 24-bit PNG Bild geraucht.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...eppes ass schief gaagnen. Sorry. (warscheinlech éng korrupt Datei)
 
+STR_BMPMAP_ERROR                                                :{WHITE}Kann d'Landschaft nët vum BMP lueden...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...konnt den Bildtyp nët convertéieren.
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Käschten: {CURRENCY}
 STR_0801_COST                                                   :{RED}Käschten: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Akommes: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Akommes: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transfer: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Geschätzten Käschten: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Geschätzten Akommes: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Kann d'Land hei nët unhiewen...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Kann d'Land hei nët eroofsetzen...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Kann d'Land nët ebenen...
 STR_080A_ROCKS                                                  :Fielsen
 STR_080B_ROUGH_LAND                                             :Knubbelegt Land
 STR_080C_BARE_LAND                                              :Blankt Land
@@ -1119,10 +1203,13 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Onmeigle
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Verdeiwung geif den Tunnel beschiedegen
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}... schon op Meeresspigel
 STR_1004_TOO_HIGH                                               :{WHITE}... ze héich
+STR_ALREADY_LEVELLED                                            :{WHITE}... schon flaach
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Keng geégent Schinnen
 STR_1007_ALREADY_BUILT                                          :{WHITE}...schon gebaut
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}D'Schinnen mussen fir d'Eischt ewesch
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}D'Strooss ass éng Richtung oder blockéiert
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Schinnenbau
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Élektrëschen Zuchbau
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Einschienbahnbau
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Magnéitbahnbau
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Wiel d'Schinnenbrèck
@@ -1134,6 +1221,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Kann d'S
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Kann d'Signaler hei nët ewesch huelen...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Zuchdepot Richtung
 STR_1015_RAILROAD_CONSTRUCTION                                  :Schinnenbau
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Élektrëschen Zuchbau
 STR_1016_MONORAIL_CONSTRUCTION                                  :Einschienenbahnbau
 STR_1017_MAGLEV_CONSTRUCTION                                    :Magnéitbunnbau
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Streck mat Schinnen bauen
@@ -1148,40 +1236,95 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Wielt d'
 STR_1021_RAILROAD_TRACK                                         :Schinnen
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Schinnen Zuchdepot
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...d'Plaatz ass am Besëtz vun enger aanerer Firma
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Schinnen mat Blocksignaler
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Schinnen mat Fiirsignaler
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Schinnen mat Ausgangssignaler
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Schinnen mat Kombosignaler
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Schinnen mat Pfadsignaler
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Schinnen mat Pfadsignaler an eng Richtung
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Schinnen mat Block- an Fiirsignaler
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Schinnen mat Block- an Ausgangssignaler
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Schinnen mat Block- an Kombosignaler
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Schinnen mat Block- an Pfadsignaler
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Schinnen mat Block- an Pfadsignaler an éng Richtung
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Schinnen mat Fiir- an Ausgangssignaler
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Schinnen mat Fiir- an Kombosignaler
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Schinnen mat Fiir- an Pfadsignaler
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Schinnen mat Fiir- an Pfaadsignaler an éng Richtung
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Schinnen mat Ausgangs- an Kombosignaler
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Schinnen mat Ausgangs- an Pfadsignaler
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Schinnen mat Ausgangs- an Pfadsignaler an éng Richtung
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Schinnen mat Kombo- an Pfadsignaler
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Schinnen mat Kombo- an Pfadsignaler an éng Richtung
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Schinnen mat Pfad- an Pfadsignaler an éng Richtung
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Musst d'Gare fir désicht oofrappen
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Eng separéiert Gare bauen
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}D'Gare verbannen
 
 
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Muss d'Strooss ewech huelen
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Stroossenarbeschten umgaangen
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Stroossenbau
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Tramkonstruktioun
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Wielt d'Stroossenbrèck
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... Einbahnstroossen  kënnen kéng Kräizung hunn
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kann d'Strooss nët hei bauen...
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Kann dën Tram héi nët bauen...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}CKann d'Strooss nët hei ewsch huelen...
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Kann dën Tram nët ëwesch huelen...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Stroossendepot Richtung
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Tramdepot Orientatioun
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kann d'Stroossendepot hei nët bauen...
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Kann dën Tramdepot nët héi bauen...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Kann d'Busgare hei nët bauen...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kann d'Camionsgare nët bauen...
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Kann d'Passagéier-Tramstatioun nët bauen...
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Kann d'Wueren-Tramstatioun nët bauen...
 STR_180A_ROAD_CONSTRUCTION                                      :Stroossenbau
+STR_TRAMWAY_CONSTRUCTION                                        :Trambau
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Baut Stroossen
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}D'Strooss mam "Autostrooss" Modus bauen
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Tramschinnen bauen
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Tramschinnen mam "Autotram" Modus bauen
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Baut Stroossendepot (fir Gefiehrer ze kaafen an ze flècken)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Tramdepot bauen(fir ze bauen an ze Warten)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Baut Busgare
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Baut Camionsgare
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Passagéier-Tramstatioun bauen
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Wueren-Tramstatioun bauen
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Baut Stroossenbrèck
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Tramschinnen Brèck bauen
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Baut Stroosentunnel
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Tramtunnel bauen
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Strooss an éng Richtung aktivéieren/déaktivéieren
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Wieselt bauen/ewesch huelen vun Stroossenkonstruktiounen
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Wiesselt bauen/oofrappen vum Trambau
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Wielt Stroossendepot Richtung
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Tramdepot Richtung wielen
 STR_1814_ROAD                                                   :Strooss
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Strooss mat Luuchten
 STR_1816_TREE_LINED_ROAD                                        :Strooss mat Beem
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Stroossendepot
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Zuch/Strooss Barrière
+STR_TRAMWAY                                                     :Tram
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Kann d'Busgare nët oofrappen...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Kann d'Camionsgare nët oofrappen...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Kann d'Passagéier-Tramstatioun nët oofrappen...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Kann d'Wueren-Tramstatioun nët oofrappen...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Stiedt
+STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Gebäi muss fir déischt oofgerapt ginn
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Stadt)
 STR_2006_POPULATION                                             :{BLACK}Bewunnerunzuel: {ORANGE}{COMMA}{BLACK}  Haiser: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Stadt ëmbënennen
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Kann d'Stadt nët ëmbënennen...
@@ -1191,6 +1334,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Zentréi
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Wieselt den Stadtnumm
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagéier läschten Mount: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post läschten Mount: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Luedungen gebraucht fir Stadtwuestum:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} gebraucht
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} läschten mount geliwert
 STR_200F_TALL_OFFICE_BLOCK                                      :Héichen Büroblock
 STR_2010_OFFICE_BLOCK                                           :Büroblock
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Kléngen Apartementsblock
@@ -1229,6 +1375,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subventioun geet un {COMPANY}!{}{}{STRING} Service vun {STATION} op {STATION} gët nächst Joër mat 300% bezuelt!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subventioun geet un {COMPANY}!{}{}{STRING} Service vun {STATION} op {STATION} gët nächst Joër mat 400% bezuelt!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} d'Geméng erlaben keen weideren Flughafen an der Stadt
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN}er Gemeng refüséiert den Bau fir den Flughafen wéinst Kaméidi
 STR_2036_COTTAGES                                               :Hütten
 STR_2037_HOUSES                                                 :Haiser
 STR_2038_FLATS                                                  :Apartementer
@@ -1252,6 +1399,7 @@ STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Strossennéibau
 STR_204A_BUILD_STATUE_OF_COMPANY                                :Statu vum Firmeninhaber bauen
 STR_204B_FUND_NEW_BUILDINGS                                     :Néi Gebäier finanzéieren
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Exclusiv Transportrechter kaafen
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :D'Gemeng bestiechen
 STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Eng kleng Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{}  Käschten: {CURRENCY}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Eng mëttel Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{}  Käschten: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Eng grous Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{}  Käschten: {CURRENCY}
@@ -1259,6 +1407,7 @@ STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Eng Statu zur Éier vun der Firma bauen.{} Käschten: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Den Bau vun neien Kommerzgebäier finanzéieren.{}  Käschten: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Kaaft fir 1 Joër exclusiv Transportrechter an dësser Stadt. D'Geméng erlaabt dën Transport vun Passagéier an Wueren nëmmen ärer Firma.{} Käschten: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} D'Gemeng bestiechen fir d'Bewertung ze erhéichen, mam Risque fir eng grouss Bestroofung, falls der erwëscht gidd.{}  Käschten: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Trafficchaos an {TOWN}!{}{}Stroosennéibau deen vun {STRING} finanzéiert gin ass bréngt 6 Méint Misére fir d'Autosfuerer!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -1268,8 +1417,13 @@ STR_205A_TEPEES                                                 :Tipien
 STR_205B_TEAPOT_HOUSE                                           :Téikaan-Haus
 STR_205C_PIGGY_BANK                                             :Spuerschwäin-Bank
 
+STR_INDUSTRY                                                    :{INDUSTRY}
+STR_TOWN                                                        :{TOWN}
+STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
+STR_STATION                                                     :{STATION}
 
 ##id 0x2800
+STR_LANDSCAPING                                                 :Landschaftsbau
 STR_2800_PLANT_TREES                                            :Beem planzen
 STR_2801_PLACE_SIGN                                             :Schëld opstellen
 STR_2802_TREES                                                  :{WHITE}Beem
@@ -1282,6 +1436,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Kann d'S
 STR_280A_SIGN                                                   :Schëld
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Schëldtext änneren
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Kann den Numm vum Schëld nët änneren...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Kann d'Schëld nët läschen...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Wielt den Baamtyp
 STR_280E_TREES                                                  :Beem
 STR_280F_RAINFOREST                                             :Regenwald
@@ -1297,6 +1452,9 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Ze noo u
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Grenzt un mei wei eng Gare un
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Zevill Garen an der Stadt
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Zevill Garen
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Zevill Garen
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Zevill Busgaren
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Zevill Camionsgaren
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Ze noo un énger aanerer Gare
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Musst d'Gare fir d'éischt oofrappen
@@ -1327,8 +1485,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} acceptéiert elo {STRING} ann {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Busgare Richtung
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Camionsgare Richtung
+STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}Passagéier-Tramstatioun Richtung
+STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}Wuern-Tramstatioun Richtung
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Busgare muss fir déischt oofgerapt ginn
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Muss d'Camionsgare fir déischt oofrapen
+STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION                        :{WHITE}Muss d'Tramstatioun fir d'éischt oofrappen
+STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Muss d'Tramstatioun fir d'éischt oofrappen
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Statioun{P "" en}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Näischt -
@@ -1340,6 +1502,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Wielt d'
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Wielt d'Längt vun der Gare
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Wielt Busgare Richtung
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Wielt Camionsgare Richtung
+STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}Passagéier-Tramstatioun Richtung wielen
+STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Wueren-Tramstatioun Richtung wielen
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Zentréiert d'Siicht op d'Statioun
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Weis d'Statiounsbewertungen
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Dën Numm vun der Statioun änneren
@@ -1347,6 +1511,7 @@ STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Weis d'L
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Statiounennimm - klick op den Numm fir d'Siicht drop ze zentréieren
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Wielt gréisst/typ vum Flughafen
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Gare
 STR_305F_AIRCRAFT_HANGAR                                        :Fliigerhangar
 STR_3060_AIRPORT                                                :Flughafen
@@ -1360,7 +1525,12 @@ STR_3068_DOCK                                                   :{WHITE}Hafen
 STR_3069_BUOY                                                   :Boje
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...Boje am Wee
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...Statioun ze ausgebreed
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...Nët Uniform Statiounen oofgeschalt
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Haalt CTRL un fir méi wei 1 Objet auszewielen
 
+STR_UNDEFINED                                                   :(ondéfinéierten string)
+STR_STAT_CLASS_DFLT                                             :Standard Statioun
+STR_STAT_CLASS_WAYP                                             :Weepunkten
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Schëffdepot Richtung
@@ -1370,7 +1540,9 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Wielt d'
 STR_3804_WATER                                                  :Waasser
 STR_3805_COAST_OR_RIVERBANK                                     :Küst oder Flossufer
 STR_3806_SHIP_DEPOT                                             :Schëffdepot
+STR_AQUEDUCT                                                    :Aquadukt
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Kann nët op d'Waasser bauen
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Musst den  Kanal fir d'éischt oofrappen
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Spill späicheren
@@ -1378,16 +1550,25 @@ STR_4001_LOAD_GAME                                              :{WHITE}Spill lu
 STR_4002_SAVE                                                   :{BLACK}Späicheren
 STR_4003_DELETE                                                 :{BLACK}Läschen
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Zuschauer, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} fräi
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kann nët um Laafwierk liesen
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Fehler beim Späicheren{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kann d'Datei nët läschen
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Fehler beim Lueden{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Internen Fehler: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Futtisen Späicherstand - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Späicherstand ass mat méi néier Versioun gemaacht
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datei nët liesbar
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Datei nët beschreiwbar
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Datenintegritéit fehler
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lëscht vun den Laafwierker, Dossieren an Späicherstänn
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Momentan gewieltenen Numm fir den Späicherstand
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Läscht den momentan gewieltenen Späicherstand
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Späichert dei aktuel Partie ënnert dem gewieltenem Numm
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generéiert en zoufällegt neit Spill
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Lueden Héichtenkaart
+STR_SAVE_OSKTITLE                                               :{BLACK}Gidd en Numm an fir den Späicherstand
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} am Wee
@@ -1437,6 +1618,8 @@ STR_4829_REQUIRES                                               :{BLACK}Brauch: 
 ############ range for requires ends
 
 ############ range for produces starts
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Luedungen dei nach verschafft mussen gin:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{STRING}{BLACK}
 STR_4827_PRODUCES                                               :{BLACK}Produzéiert: {YELLOW}{STRING}{STRING}
 STR_4828_PRODUCES                                               :{BLACK}Produzéiert: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
@@ -1459,13 +1642,18 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} Produktioun ëmm 50% eroof
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insektenbefall bei {INDUSTRY}!{}Produktioun ëmm 50% eroof
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...kann nëmmen no un den Ecker vun der Kaart positionéiert ginn
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} Produktioun vun {INDUSTRY} geet ëm {COMMA}% erop!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} Produktioun vun {INDUSTRY} geet ëm {COMMA}% eroof!
 
 ##id 0x5000
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Aaneren Tunnel am Wee
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunnel géif ausserhalb der Kaart erauskommen
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Kann d'Land nët fir dei aaner Säit vum Tunnel fräi leen
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Mss den Tunnel fir déischt oofrappen
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Musst d'Brèck fir déischt oofrapen
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Kann nët op der selweschter Plaatz unfänken an ophaalen
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Brèckenënner nët op der selweschter Héicht
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Brèck ass ze déif fir dëssen Terrain
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Start an Enn mussen op enger Linn sinn
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Plaatz onpassend fir Tunnelentrée
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -1476,6 +1664,7 @@ STR_5011_SUSPENSION_CONCRETE                                    :Betons Hängebr
 STR_5012_WOODEN                                                 :Holzen Brèck
 STR_5013_CONCRETE                                               :Betons Brèck
 STR_5014_TUBULAR_STEEL                                          :Rouerstohl Brèck
+STR_BRIDGE_TUBULAR_SILICON                                      :Rouer, Silikon
 STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Kann d'Brèck nët hei bauen...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Kann den Tunnel nët hei bauen...
 STR_5017_RAILROAD_TUNNEL                                        :Zuchtunnel
@@ -1509,12 +1698,53 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...schon
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
+STR_SV_EMPTY                                                    :
+STR_SV_UNNAMED                                                  :Onbenannt
+STR_SV_TRAIN_NAME                                               :Zuch {COMMA}
+STR_SV_ROADVEH_NAME                                             :Stroossengefiehrt {COMMA}
+STR_SV_SHIP_NAME                                                :Schëff {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Fliger {COMMA}
 
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} Norden
+STR_SV_STNAME_SOUTH                                             :{STRING} Süden
+STR_SV_STNAME_EAST                                              :{STRING} Osten
+STR_SV_STNAME_WEST                                              :{STRING} Westen
+STR_SV_STNAME_CENTRAL                                           :{STRING} Zentrum
+STR_SV_STNAME_TRANSFER                                          :{STRING}er Transfer
+STR_SV_STNAME_HALT                                              :{STRING}er Stopp
+STR_SV_STNAME_VALLEY                                            :{STRING}er Dall
+STR_SV_STNAME_HEIGHTS                                           :{STRING}er Bierg
+STR_SV_STNAME_WOODS                                             :{STRING} beim Bësch
+STR_SV_STNAME_LAKESIDE                                          :{STRING} um Séi
+STR_SV_STNAME_EXCHANGE                                          :{STRING}er Wiesel
+STR_SV_STNAME_AIRPORT                                           :{STRING}er Flughafen
+STR_SV_STNAME_OILFIELD                                          :{STRING}er Uelegfeld
+STR_SV_STNAME_MINES                                             :{STRING}er Minnen
+STR_SV_STNAME_DOCKS                                             :{STRING} Hafen
+STR_SV_STNAME_BUOY_1                                            :{STRING} Boye 1
+STR_SV_STNAME_BUOY_2                                            :{STRING} Boye 2
+STR_SV_STNAME_BUOY_3                                            :{STRING} Boye 3
+STR_SV_STNAME_BUOY_4                                            :{STRING} Boye 4
+STR_SV_STNAME_BUOY_5                                            :{STRING} Boye 5
+STR_SV_STNAME_BUOY_6                                            :{STRING} Boye 6
+STR_SV_STNAME_BUOY_7                                            :{STRING} Boye 7
+STR_SV_STNAME_BUOY_8                                            :{STRING} Boye 8
+STR_SV_STNAME_BUOY_9                                            :{STRING} Boye 9
+STR_SV_STNAME_ANNEXE                                            :{STRING} Annexe
+STR_SV_STNAME_SIDINGS                                           :{STRING}er Oofstellplaatz
+STR_SV_STNAME_BRANCH                                            :{STRING}er Oofzweigung
+STR_SV_STNAME_UPPER                                             :Uewer {STRING}
+STR_SV_STNAME_LOWER                                             :Nidder {STRING}
+STR_SV_STNAME_HELIPORT                                          :{STRING}er Hubschrauberplaatz
+STR_SV_STNAME_FOREST                                            :{STRING} Bësch
+STR_SV_STNAME_FALLBACK                                          :{STRING} Statioun #{NUM}
 
 ############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Schwieregkeetsgraad
+STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Späicheren
 
 ############ range for difficulty levels starts
 STR_6801_EASY                                                   :{BLACK}Einfach
@@ -1539,8 +1769,11 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Unzuel 
 STR_6813_ECONOMY                                                :{LTBLUE}Economie: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Zuch zerècksetzen(dréien): {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Katastrophen: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Dem Stadtroot séng Anstellung zum Ëmmbau: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_NONE                                                        :Kéng
+STR_NUM_VERY_LOW                                                :Ganz Kléng
 STR_6816_LOW                                                    :Wéinech
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Vill
@@ -1551,6 +1784,7 @@ STR_681C_SLOW                                                   :Lues
 STR_681D_MEDIUM                                                 :Mëttel
 STR_681E_FAST                                                   :Schnell
 STR_681F_VERY_FAST                                              :Ganz Schnell
+STR_VERY_LOW                                                    :Ganz Wéineg
 STR_6820_LOW                                                    :Wéinech
 STR_6821_MEDIUM                                                 :Mëttel
 STR_6822_HIGH                                                   :Vill
@@ -1576,6 +1810,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Um Ënn vun der
 STR_6836_OFF                                                    :Aus
 STR_6837_ON                                                     :Un
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Weist Bäschtenlëscht
+STR_PERMISSIVE                                                  :Erlaabend
+STR_TOLERANT                                                    :Tolerant
+STR_HOSTILE                                                     :Ooflehnend
 
 ##id 0x7000
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
@@ -1611,10 +1848,12 @@ STR_701F                                                        :{BLACK}+{CURREN
 STR_7020_TOTAL                                                  :{WHITE}Total:
 STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Grafik: Ankommen
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Grafik: Betriibsgewënn
 STR_7026_BANK_BALANCE                                           :{WHITE}Kontostand
 STR_7027_LOAN                                                   :{WHITE}Kredit
+STR_MAX_LOAN                                                    :{WHITE}Max Kredit:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Léinen {SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Zerèckbezuelen {SKIP}{SKIP}{CURRENCY}
@@ -1623,6 +1862,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Kann në
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...keen Kredit zerèckzebezuelen
 STR_702E_REQUIRED                                               :{WHITE}...ët ginn {CURRENCY} gebraucht
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Kann den Kredit nët zerèckbezuelen...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Kann keng Suen ginn déi vun der Bank geléint sinn...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Wielt en néit Gesiicht fir den Manager
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Wieselt d'Firmengefiehrer Faarw
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Wieselt den Numm vum Manager
@@ -1632,7 +1872,10 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Bezuelt 
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manager)
 STR_7038_INAUGURATED                                            :{GOLD}Angefouert: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Gefiehrer:
+STR_TRAINS                                                      :{WHITE}{COMMA} Z{P uch ich}
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} Stroossengefiehr{P t er}
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} Fliiger
+STR_SHIPS                                                       :{WHITE}{COMMA} Schëff{P "" er}
 STR_7042_NONE                                                   :{WHITE}Keng
 STR_7043_FACE_SELECTION                                         :{WHITE}Gesiichtsauswiehl
 STR_7044_MALE                                                   :{BLACK}Männlech
@@ -1680,8 +1923,20 @@ STR_706D_PRESIDENT                                              :Präsident
 STR_706E_TYCOON                                                 :Tycoon
 STR_706F_BUILD_HQ                                               :{BLACK}Haaptgebäi bauen
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Baut/Weist d'Firmenhaaptgebäi
+STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Bau d'Firmenhaaptgebai op eng aaner Palatz.{}Käschten: 1% vun dem Firmenwert
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Kann d'Firmenhaptgebäi nët bauen...
 STR_7072_VIEW_HQ                                                :{BLACK}Weist Haaptgebäi
+STR_RELOCATE_HQ                                                 :{BLACK}Firmenhaaptgebai rèckelen
+STR_COMPANY_JOIN                                                :{BLACK}Bäitrieden
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Bäitrieden an a mat där Firma spillen
+STR_COMPANY_PASSWORD                                            :{BLACK}Passwuert
+STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Setzt en Passwuert fir nëmmen Authoriséiert Benotzer spillen ze loosen.
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Setzt d'Firmen-Passwuert
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Späicher d'Passwuert nët
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Benotz daat néit Passwuert fir d'Firma
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Firmen-Passwuert
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Standard Firmen-Passwuert
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Benotzt dësst Passwuert als Standard fir néi Firmen
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Wirtschaftsréckgang!{}{}Finanzexperten rechnen mat schlëmmsten Anbroch!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Wirtschaftsflaut eriwer!{}{}Verbesserung am Handel mëcht zouversiichtlech!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Wieselt grous/kléng Fënstergréist
@@ -1694,8 +1949,40 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Kann ké
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Kann kéng 25% Undeel vun dësser Firma verkaafen...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% am Besëtz vun {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} ass vun {STRING} iwerholl ginn!
+STR_PROTECTED                                                   :{WHITE}Dëss Firma ass nach nët aal genuch fir Undeeler ze handelen...
 
+STR_LIVERY_DEFAULT                                              :Standard Tracht
+STR_LIVERY_STEAM                                                :Damplok
+STR_LIVERY_DIESEL                                               :Diesellok
+STR_LIVERY_ELECTRIC                                             :Elektrolok
+STR_LIVERY_MONORAIL                                             :Einschienbahnlok
+STR_LIVERY_MAGLEV                                               :Magnéitbahnlok
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passagéierwagon (Damp)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passagéierwagon (Diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagéierwagon (Elektrësch)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Passagéierwagon (Einschienbahn)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Passagéierwagon (Magnéitbahn)
+STR_LIVERY_FREIGHT_WAGON                                        :Wuerenwagon
+STR_LIVERY_BUS                                                  :Bus
+STR_LIVERY_TRUCK                                                :Camion
+STR_LIVERY_PASSENGER_SHIP                                       :Passagéierfähr
+STR_LIVERY_FREIGHT_SHIP                                         :Wuerenschëff
+STR_LIVERY_HELICOPTER                                           :Helicopter
+STR_LIVERY_SMALL_PLANE                                          :Kléngen Fliger
+STR_LIVERY_LARGE_PLANE                                          :Groussen Fliger
+STR_LIVERY_PASSENGER_TRAM                                       :Passagéiertram
+STR_LIVERY_FREIGHT_TRAM                                         :Wuerentram
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Weisst generel Faarwschemen
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Weisst Zuch Faarwschemen
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Weisst Stroossengefiehrer Faarwschemen
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Weisst Schëff Faarwschemen
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Weisst Fliiger Faarwschemen
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Wielt d'Primärfaarw fir den ausgewieltenen Schema
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Wielt d'Sekundärfaarw fir den ausgewieltenen Schema
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Wielt en Faarwschema fir ze wiesselen, oder en puer Schemen mat CTRL+Klick. Klickt op d'Këscht fir d'Schemanotzung ze wieselen
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Kessel (Damp)
@@ -1970,15 +2257,101 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Zuch am Wee
 STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
+STR_ORDER_GO_TO                                                 :Géi op
+STR_ORDER_GO_NON_STOP_TO                                        :Géi non-stop op
+STR_ORDER_GO_VIA                                                :Géi iwert
+STR_ORDER_GO_NON_STOP_VIA                                       :Géi non-stop iwert
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Voll lueden mat der Wuer
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lueden wann méiglech
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Alles voll lueden
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Voll lueden mat der Wuer
+STR_ORDER_DROP_NO_LOADING                                       :Nët belueden
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Alles entlueden
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Entlueden wann acceptéiert
+STR_ORDER_DROP_UNLOAD                                           :Alles entlueden
+STR_ORDER_DROP_TRANSFER                                         :Transferéieren
+STR_ORDER_DROP_NO_UNLOADING                                     :Nët entlueden
+STR_ORDER_FULL_LOAD                                             :(Voll lueden)
+STR_ORDER_FULL_LOAD_ANY                                         :(Voll lueden mat all Wuer)
+STR_ORDER_NO_LOAD                                               :(Nët lueden)
+STR_ORDER_UNLOAD                                                :(Entlueden an Luedung huelen)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Entlueden an erem voll lueden)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Entlueden an mat all Wuer voll lueden)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Entlueden an eidel loosen)
+STR_ORDER_TRANSFER                                              :(Transferéieren an Lueden)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transferéieren an voll lueden)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transferéieren an mat all Wuer voll lueden)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferéieren an eidel loosen)
+STR_ORDER_NO_UNLOAD                                             :(Nët entlueden an weider beluden)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nët entlueden an voll weider belueden)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nët entlueden an mat all Wuer voll belueden)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Wiesselt d'Stoppen vun dem ungewieltenem Optrag
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Wiesselt Lueden vun dem ungewieltenem Optrag
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Wiesselt Entlueden vun dem ungewieltenem Optrag
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Setzt en erweiderten Optrag an
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Géi bei den noosten Depot
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Géi bei den noosten HAngar
+STR_ORDER_NEAREST_DEPOT                                         :den noosten
+STR_ORDER_NEAREST_HANGAR                                        :den noosten Hangar
+STR_ORDER_SERVICE_AT                                            :Wartung bei
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Wartung non-stop bei
+STR_ORDER_TRAIN_DEPOT                                           :Zuchdepot
+STR_ORDER_ROAD_DEPOT                                            :Stroossengefiehrer-Depot
+STR_ORDER_SHIP_DEPOT                                            :Schëffdepot
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Géi ëmmer
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Wartung wann gebraucht
+STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 
+STR_ORDER_CONDITIONAL                                           :Bedéngten Optragssprong
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Gefiehrtsdaten als Basis fir den Optragssprong
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Wéi Gefiehrtsdaten verglach sollen ginn
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Den Wert deen mat den Gefiehrtsdaten verglach gëtt
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Wert anginn fir ze Vergläichen
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Prozent gelueden
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Zouverlässegkeet
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximal Geschwindegkeet
+STR_ORDER_CONDITIONAL_AGE                                       :Gefiehrtalter (Joër)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Brauch eng Revisioun
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Ëmmer
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :ass gläcih
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ass nët gläich
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :ass manner wéi
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :ass manner oder gläich wéi
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :ass méi wéi
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :ass méi oder gläich wéi
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :is wouer(true)
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :as falsch(false)
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Sprang op Optrag {COMMA}
+STR_CONDITIONAL_NUM                                             :Sprang op Optrag {COMMA} wann {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Sprang op Optrag {COMMA} wann {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Nët ënnerwee
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Ënnerwee (ouni Fahrplan)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Ënnerwee fir {STRING}
+STR_TIMETABLE_STAY_FOR                                          :an bleif fir {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :an ënnerwee fir {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} d{P ag eeg}
+STR_TIMETABLE_TICKS                                             :{COMMA} interval{P "" en}
 
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Ënnerwee fir {TOWN} Zuchdepot
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Ënnerwee fir {TOWN} Zuchdepot, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Revisioun bei {TOWN} Zuchdepot
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Revisioun bei {TOWN} Zuchdepot, {VELOCITY}
 
+STR_INVALID_ORDER                                               :{RED} (ongültegen Optrag)
 
+STR_UNKNOWN_STATION                                             :onbekannt Statioun
 STR_8812_EMPTY                                                  :{LTBLUE}Eidel
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} vun {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} vun {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} waart am Depot
 STR_8815_NEW_VEHICLES                                           :{BLACK}Néi Gefiehrer
 STR_8816                                                        :{BLACK}-
@@ -1987,14 +2360,21 @@ STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Zich kë
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Z{P uch ich}
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Néi Zich
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Néi Elektrozich
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Néi Einschienbahngefiehrer
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Néi Magnéitbahngefiehrer
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Zich
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Gefiehrt bauen
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Gefiehrt klonen
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Baut éng Kopie vum Stroossengefiehrt. CTRL+Klick kopéiert och d'Opträg
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Baut éng Kopie vum Stroossengefiehrt. CTRL+Klick kopéiert och d'Opträg
+STR_CLONE_TRAIN                                                 :{BLACK}Zuch klonen
 STR_8820_RENAME                                                 :{BLACK}Ëmbënennen
 STR_8823_SKIP                                                   :{BLACK}Iwersprangen
 STR_8824_DELETE                                                 :{BLACK}Läschen
 STR_8826_GO_TO                                                  :{BLACK}Géi op
+STR_STOP_ORDER                                                  :(Stop)
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Orders)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Ënn vun den Opträg - -
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Kann den Zuch nët bauen...
@@ -2314,9 +2694,16 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Fliiger 
 ########
 
 ############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}KI Debug
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Numm vun der KI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}KI nei lueden
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}KI stoppen, Skript néi lueden, KI néi starten
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}KI Debugfënster ass nëmmen fir Serveren verfügbar
+STR_AI_CONFIG_CAPTION                                           :{WHITE}KI Konfiguratioun
 STR_AI_CHANGE                                                   :{BLACK}Selèctionéiert KI
 STR_AI_CONFIGURE                                                :{BLACK}Konfiguréieren
 STR_AI_CHANGE_TIP                                               :{BLACK}Lued eng aaner KI
+STR_AI_CONFIGURE_TIP                                            :{BLACK}All Parameter vun der KI konfiguréieren
 STR_AI_AILIST_TIP                                               :{BLACK}Klickt fir éng KI ze selèctéieren
 STR_AI_ACCEPT                                                   :{BLACK}Acceptéiert
 STR_AI_ACCEPT_TIP                                               :{BLACK}Selèctéiert ungewielten KI
