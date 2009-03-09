@@ -58,6 +58,8 @@
 #include "settings_func.h"
 #include "ini_type.h"
 #include "ai/ai_config.hpp"
+#include "newgrf.h"
+#include "engine_base.h"
 
 #include "void_map.h"
 #include "station_base.h"
@@ -1151,6 +1153,11 @@ static bool ChangeDynamicEngines(int32 p1)
 			return false;
 		}
 	}
+
+	/* Reset the engines, they will get new EngineIDs */
+	_engine_mngr.ResetToDefaultMapping();
+	ReloadNewGRFData();
+
 	return true;
 }
 
