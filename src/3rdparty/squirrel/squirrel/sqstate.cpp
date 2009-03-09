@@ -189,6 +189,7 @@ SQSharedState::~SQSharedState()
 	SQCollectable *t = _gc_chain;
 	SQCollectable *nx = NULL;
 	while(t) {
+		t->UnMark();
 		t->_uiRef++;
 		t->Finalize();
 		nx = t->_next;
@@ -198,7 +199,7 @@ SQSharedState::~SQSharedState()
 	}
 //	assert(_gc_chain==NULL); //just to proove a theory
 	while(_gc_chain){
-		_gc_chain->_uiRef++;
+		_gc_chain->_uiRef--;
 		_gc_chain->Release();
 	}
 #endif
