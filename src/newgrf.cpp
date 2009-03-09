@@ -40,6 +40,7 @@
 #include "network/network.h"
 #include "map_func.h"
 #include <map>
+#include "core/alloc_type.hpp"
 
 #include "table/strings.h"
 #include "table/build_industry.h"
@@ -5900,7 +5901,7 @@ static void FinaliseIndustriesArray()
 /* XXX: We consider GRF files trusted. It would be trivial to exploit OTTD by
  * a crafted invalid GRF file. We should tell that to the user somehow, or
  * better make this more robust in the future. */
-static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
+static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
 {
 	/* XXX: There is a difference between staged loading in TTDPatch and
 	 * here.  In TTDPatch, for some reason actions 1 and 2 are carried out
@@ -5937,17 +5938,13 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		/* 0x13 */ { NULL,     NULL,      NULL,            NULL,           NULL,              TranslateGRFStrings, },
 	};
 
-	bool preloaded_sprite = true;
 	GRFLocation location(_cur_grfconfig->grfid, _nfo_line);
-	byte *buf;
 
 	GRFLineToSpriteOverride::iterator it = _grf_line_to_action6_sprite_override.find(location);
 	if (it == _grf_line_to_action6_sprite_override.end()) {
-		/* No preloaded sprite to work with; allocate and read the
+		/* No preloaded sprite to work with; read the
 		 * pseudo sprite content. */
-		buf = MallocT<byte>(num);
 		FioReadBlock(buf, num);
-		preloaded_sprite = false;
 	} else {
 		/* Use the preloaded sprite data. */
 		buf = _grf_line_to_action6_sprite_override[location];
@@ -5973,7 +5970,6 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		grfmsg(7, "DecodeSpecialSprite: Handling action 0x%02X in stage %d", action, stage);
 		handlers[action][stage](buf, num);
 	}
-	if (!preloaded_sprite) free(buf);
 }
 
 
@@ -6029,13 +6025,15 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 	_skip_sprites = 0; // XXX
 	_nfo_line = 0;
 
+	ReusableBuffer<byte> buf;
+
 	while ((num = FioReadWord()) != 0) {
 		byte type = FioReadByte();
 		_nfo_line++;
 
 		if (type == 0xFF) {
 			if (_skip_sprites == 0) {
-				DecodeSpecialSprite(num, stage);
+				DecodeSpecialSprite(buf.Allocate(num), num, stage);
 
 				/* Stop all processing if we are to skip the remaining sprites */
 				if (_skip_sprites == -1) break;
