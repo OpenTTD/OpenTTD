@@ -707,7 +707,8 @@ void AIAbstractList::KeepList(AIAbstractList *list)
 	this->RemoveList(&tmp);
 }
 
-SQInteger AIAbstractList::_get(HSQUIRRELVM vm) {
+SQInteger AIAbstractList::_get(HSQUIRRELVM vm)
+{
 	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
 
 	SQInteger idx;
@@ -719,7 +720,8 @@ SQInteger AIAbstractList::_get(HSQUIRRELVM vm) {
 	return 1;
 }
 
-SQInteger AIAbstractList::_nexti(HSQUIRRELVM vm) {
+SQInteger AIAbstractList::_nexti(HSQUIRRELVM vm)
+{
 	if (sq_gettype(vm, 2) == OT_NULL) {
 		if (this->IsEmpty()) {
 			sq_pushnull(vm);
@@ -742,53 +744,44 @@ SQInteger AIAbstractList::_nexti(HSQUIRRELVM vm) {
 	return 1;
 }
 
-SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm) {
-	int nparam = sq_gettop(vm) - 2;
+SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm)
+{
+	/* The first parameter is the instance of AIAbstractList. */
+	int nparam = sq_gettop(vm) - 1;
 
-	/* Get the list instance and the function to call */
-	HSQOBJECT obj_list, obj_func;
-	sq_getstackobj(vm, 1, &obj_list);
-	sq_getstackobj(vm, 2, &obj_func);
-
-	if (sq_isclass(obj_list)) {
-		return sq_throwerror(vm, _SC("parameter 1 has an invalid type (expected instance)"));
+	if (nparam < 1) {
+		return sq_throwerror(vm, _SC("You need to give a least a Valuator as parameter to AIAbstractList::Valuate"));
 	}
-	if (sq_isfunction(obj_func)) {
-		return sq_throwerror(vm, _SC("parameter 2 has an invalid type (expected function)"));
+
+	/* Make sure the valuator function is really a function, and not any
+	 * other type. It's parameter 2 for us, but for the user it's the
+	 * first parameter they give. */
+	SQObjectType valuator_type = sq_gettype(vm, 2);
+	if (valuator_type != OT_CLOSURE && valuator_type != OT_NATIVECLOSURE) {
+		return sq_throwerror(vm, _SC("parameter 1 has an invalid type (expected function)"));
 	}
 
 	/* Don't allow docommand from a Valuator, as we can't resume in
-	 *  mid-code */
+	 * mid C++-code. */
 	bool backup_allow = AIObject::GetAllowDoCommand();
 	AIObject::SetAllowDoCommand(false);
 
-	sq_addref(vm, &obj_func);
-
-	/* Read the params */
-	HSQOBJECT *obj_params = AllocaM(HSQOBJECT, nparam);
-	for (int i = 0; i < nparam; i++) {
-		sq_getstackobj(vm, i + 3, &obj_params[i]);
-		sq_addref(vm, &obj_params[i]);
-	}
-	/* Remove all unneeded stuff */
-	sq_pop(vm, nparam + 1);
+	/* Push the function to call */
+	sq_push(vm, 2);
 
 	/* Walk all items, and query the result */
 	this->buckets.clear();
 	for (AIAbstractListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter++) {
-		/* The function to call */
-		sq_pushobject(vm, obj_func);
-		/* The 'list' instance; this is most likely wrong, but we need to send something ;) */
-		sq_pushobject(vm, obj_list);
-
-		/* Now send the params */
+		/* Push the root table as instance object, this is what squirrel does for meta-functions. */
+		sq_pushroottable(vm);
+		/* Push all arguments for the valuator function. */
 		sq_pushinteger(vm, (*iter).first);
-		for (int i = 0; i < nparam; i++) {
-			sq_pushobject(vm, obj_params[i]);
+		for (int i = 0; i < nparam - 1; i++) {
+			sq_push(vm, i + 3);
 		}
 
-		/* Call the function */
-		if (SQ_FAILED(sq_call(vm, nparam + 2, SQTrue, SQTrue))) {
+		/* Call the function. Squirrel pops all parameters and pushes the return value. */
+		if (SQ_FAILED(sq_call(vm, nparam + 1, SQTrue, SQTrue))) {
 			AIObject::SetAllowDoCommand(backup_allow);
 			return SQ_ERROR;
 		}
@@ -807,25 +800,28 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm) {
 			} break;
 
 			default: {
-				sq_pop(vm, 3);
-				sq_release(vm, &obj_func);
-				for (int i = 0; i < nparam; i++) sq_release(vm, &obj_params[i]);
+				/* See below for explanation. The extra pop is the return value. */
+				sq_pop(vm, nparam + 4);
 
 				AIObject::SetAllowDoCommand(backup_allow);
 				return sq_throwerror(vm, _SC("return value of valuator is not valid (not integer/bool)"));
 			}
 		}
-		/* Remove junk */
-		sq_pop(vm, 2);
 
 		(*iter).second = (int32)value;
 		this->buckets[(int32)value].insert((*iter).first);
 
+		/* Pop the return value. */
+		sq_poptop(vm);
+
 		Squirrel::DecreaseOps(vm, 5);
 	}
-
-	sq_release(vm, &obj_func);
-	for (int i = 0; i < nparam; i++) sq_release(vm, &obj_params[i]);
+	/* Pop from the squirrel stack:
+	 * 1. The root stable (as instance object).
+	 * 2. The valuator function.
+	 * 3. The parameters given to this function.
+	 * 4. The AIAbstractList instance object. */
+	sq_pop(vm, nparam + 3);
 
 	AIObject::SetAllowDoCommand(backup_allow);
 	return 0;
