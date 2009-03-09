@@ -608,7 +608,7 @@ Vehicle::~Vehicle()
 
 	DeleteVehicleNews(this->index, INVALID_STRING_ID);
 
-	new (this) InvalidVehicle();
+	this->type = VEH_INVALID;
 }
 
 /** Adds a vehicle to the list of vehicles, that visited a depot this tick
