@@ -102,6 +102,7 @@ public:
 		if (this->count < count) {
 			free(this->buffer);
 			this->buffer = MallocT<T>(count);
+			this->count = count;
 		}
 		return this->buffer;
 	}
@@ -118,6 +119,7 @@ public:
 		if (this->count < count) {
 			free(this->buffer);
 			this->buffer = CallocT<T>(count);
+			this->count = count;
 		} else {
 			memset(this->buffer, 0, sizeof(T) * count);
 		}
