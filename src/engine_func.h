@@ -25,4 +25,6 @@ void SetCachedEngineCounts();
 void SetYearEngineAgingStops();
 void StartupOneEngine(Engine *e, Date aging_date);
 
+uint GetTotalCapacityOfArticulatedParts(EngineID engine, VehicleType type);
+
 #endif /* ENGINE_H */

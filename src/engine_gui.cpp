@@ -109,7 +109,7 @@ void ShowEnginePreviewWindow(EngineID engine)
 	AllocateWindowDescFront<EnginePreviewWindow>(&_engine_preview_desc, engine);
 }
 
-static uint GetTotalCapacityOfArticulatedParts(EngineID engine, VehicleType type)
+uint GetTotalCapacityOfArticulatedParts(EngineID engine, VehicleType type)
 {
 	uint total = 0;
 
