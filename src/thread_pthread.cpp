@@ -68,7 +68,10 @@ private:
 			NOT_REACHED();
 		}
 
-		if (self_destruct) delete this;
+		if (self_destruct) {
+			pthread_detach(pthread_self());
+			delete this;
+		}
 	}
 };
 
