@@ -2651,8 +2651,6 @@ void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags)
 		return;
 	}
 
-	SetBit(t->have_ratings, _current_company);
-
 	int rating = GetRating(t);
 	if (add < 0) {
 		if (rating > max) {
@@ -2668,6 +2666,7 @@ void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags)
 	if (_town_rating_test) {
 		_town_test_ratings[t] = rating;
 	} else {
+		SetBit(t->have_ratings, _current_company);
 		t->ratings[_current_company] = rating;
 		InvalidateWindow(WC_TOWN_AUTHORITY, t->index);
 	}
