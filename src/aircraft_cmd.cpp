@@ -1156,7 +1156,7 @@ static bool AircraftController(Vehicle *v)
 
 static void HandleCrashedAircraft(Vehicle *v)
 {
-	v->u.air.crashed_counter++;
+	v->u.air.crashed_counter += 3;
 
 	Station *st = GetTargetAirportIfValid(v);
 
