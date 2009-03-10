@@ -230,8 +230,13 @@ bool FiosFileScanner::AddFile(const char *filename, size_t basepath_length)
 	}
 
 	FiosItem *fios = _fios_items.Append();
+#ifdef WIN32
+	struct _stat sb;
+	if (_tstat(OTTD2FS(filename), &sb) == 0) {
+#else
 	struct stat sb;
 	if (stat(filename, &sb) == 0) {
+#endif
 		fios->mtime = sb.st_mtime;
 	} else {
 		fios->mtime = 0;
