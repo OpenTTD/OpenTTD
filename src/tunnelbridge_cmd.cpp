@@ -584,18 +584,28 @@ static inline bool CheckAllowRemoveTunnelBridge(TileIndex tile)
 	/* Floods can remove anything as well as the scenario editor */
 	if (_current_company == OWNER_WATER || _game_mode == GM_EDITOR) return true;
 
-	RoadTypes rts = GetRoadTypes(tile);
-	Owner road_owner = _current_company;
-	Owner tram_owner = _current_company;
+	switch (GetTunnelBridgeTransportType(tile)) {
+		case TRANSPORT_ROAD: {
+			RoadTypes rts = GetRoadTypes(tile);
+			Owner road_owner = _current_company;
+			Owner tram_owner = _current_company;
 
-	if (HasBit(rts, ROADTYPE_ROAD)) road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
-	if (HasBit(rts, ROADTYPE_TRAM)) tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
+			if (HasBit(rts, ROADTYPE_ROAD)) road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
+			if (HasBit(rts, ROADTYPE_TRAM)) tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
 
-	/* We can remove unowned road and if the town allows it */
-	if (road_owner == OWNER_NONE || (road_owner == OWNER_TOWN && (_settings_game.construction.extra_dynamite || _cheats.magic_bulldozer.value))) road_owner = _current_company;
-	if (tram_owner == OWNER_NONE) tram_owner = _current_company;
+			/* We can remove unowned road and if the town allows it */
+			if (road_owner == OWNER_NONE || (road_owner == OWNER_TOWN && (_settings_game.construction.extra_dynamite || _cheats.magic_bulldozer.value))) road_owner = _current_company;
+			if (tram_owner == OWNER_NONE) tram_owner = _current_company;
 
-	return CheckOwnership(road_owner) && CheckOwnership(tram_owner);
+			return CheckOwnership(road_owner) && CheckOwnership(tram_owner);
+		}
+
+		case TRANSPORT_RAIL:
+		case TRANSPORT_WATER:
+			return CheckOwnership(GetTileOwner(tile));
+
+		default: NOT_REACHED();
+	}
 }
 
 static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
