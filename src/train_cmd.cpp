@@ -39,7 +39,7 @@
 
 static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool force_res, bool *got_reservation, bool mark_stuck);
 static bool TrainCheckIfLineEnds(Vehicle *v);
-static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image);
+static void TrainController(Vehicle *v, Vehicle *nomove);
 static TileIndex TrainApproachingCrossingTile(const Vehicle *v);
 static void CheckIfTrainNeedsService(Vehicle *v);
 static void CheckNextTrainTile(Vehicle *v);
@@ -1760,7 +1760,7 @@ static void AdvanceWagonsBeforeSwap(Vehicle *v)
 
 		/* do not update images now
 		 * negative differential will be handled in AdvanceWagonsAfterSwap() */
-		for (int i = 0; i < differential; i++) TrainController(first, last->Next(), false);
+		for (int i = 0; i < differential; i++) TrainController(first, last->Next());
 
 		base = first; // == base->Next()
 		length -= 2;
@@ -1790,7 +1790,7 @@ static void AdvanceWagonsAfterSwap(Vehicle *v)
 		if (d <= 0) {
 			leave->vehstatus &= ~VS_HIDDEN; // move it out of the depot
 			leave->u.rail.track = TrackToTrackBits(GetRailDepotTrack(leave->tile));
-			for (int i = 0; i >= d; i--) TrainController(leave, NULL, false); // maybe move it, and maybe let another wagon leave
+			for (int i = 0; i >= d; i--) TrainController(leave, NULL); // maybe move it, and maybe let another wagon leave
 		}
 	} else {
 		dep = NULL; // no vehicle in a depot, so no vehicle leaving a depot
@@ -1819,7 +1819,7 @@ static void AdvanceWagonsAfterSwap(Vehicle *v)
 		int differential = last->u.rail.cached_veh_length - base->u.rail.cached_veh_length;
 
 		/* do not update images now */
-		for (int i = 0; i < differential; i++) TrainController(first, (nomove ? last->Next() : NULL), false);
+		for (int i = 0; i < differential; i++) TrainController(first, (nomove ? last->Next() : NULL));
 
 		base = first; // == base->Next()
 		length -= 2;
@@ -3639,7 +3639,7 @@ static Vehicle *CheckVehicleAtSignal(Vehicle *v, void *data)
 	return NULL;
 }
 
-static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
+static void TrainController(Vehicle *v, Vehicle *nomove)
 {
 	Vehicle *prev;
 
@@ -3841,7 +3841,6 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 
 		/* update image of train, as well as delta XY */
 		v->UpdateDeltaXY(v->direction);
-		if (update_image) v->cur_image = v->GetImage(v->direction);
 
 		v->x_pos = gp.x;
 		v->y_pos = gp.y;
@@ -4340,13 +4339,21 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 		/* Loop until the train has finished moving. */
 		do {
 			j -= adv_spd;
-			TrainController(v, NULL, true);
+			TrainController(v, NULL);
 			/* Don't continue to move if the train crashed. */
 			if (CheckTrainCollision(v)) break;
 			/* 192 spd used for going straight, 256 for going diagonally. */
 			adv_spd = (v->direction & 1) ? 192 : 256;
 		} while (j >= adv_spd);
 		SetLastSpeed(v, v->cur_speed);
+	}
+
+	for (Vehicle *u = v; u != NULL; u = u->Next()) {
+		if ((u->vehstatus & VS_HIDDEN) != 0) continue;
+
+		uint16 old_image = u->cur_image;
+		u->cur_image = u->GetImage(u->direction);
+		if (old_image != u->cur_image) VehicleMove(u, true);
 	}
 
 	if (v->progress == 0) v->progress = j; // Save unused spd for next time, if TrainController didn't set progress
