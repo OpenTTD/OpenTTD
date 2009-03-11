@@ -1348,12 +1348,6 @@ static bool CanBuildTramTrackOnTile(CompanyID c, TileIndex t, RoadBits r)
 
 static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 {
-	Direction new_dir;
-	Direction old_dir;
-	RoadDriveEntry rd;
-	int x, y;
-	uint32 r;
-
 	if (v->u.road.overtaking != 0)  {
 		if (IsTileType(v->tile, MP_STATION)) {
 			/* Force us to be not overtaking! */
@@ -1406,16 +1400,13 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 	/* Get move position data for next frame.
 	 * For a drive-through road stop use 'straight road' move data.
 	 * In this case v->u.road.state is masked to give the road stop entry direction. */
-	rd = _road_drive_data[v->u.road.roadtype][(
+	RoadDriveEntry rd = _road_drive_data[v->u.road.roadtype][(
 		(HasBit(v->u.road.state, RVS_IN_DT_ROAD_STOP) ? v->u.road.state & RVSB_ROAD_STOP_TRACKDIR_MASK : v->u.road.state) +
 		(_settings_game.vehicle.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking][v->u.road.frame + 1];
 
 	if (rd.x & RDE_NEXT_TILE) {
 		TileIndex tile = v->tile + TileOffsByDiagDir((DiagDirection)(rd.x & 3));
 		Trackdir dir;
-		uint32 r;
-		Direction newdir;
-		const RoadDriveEntry *rdp;
 
 		if (IsRoadVehFront(v)) {
 			/* If this is the front engine, look for the right path. */
@@ -1486,21 +1477,21 @@ again:
 		}
 
 		/* Get position data for first frame on the new tile */
-		rdp = _road_drive_data[v->u.road.roadtype][(dir + (_settings_game.vehicle.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking];
+		const RoadDriveEntry *rdp = _road_drive_data[v->u.road.roadtype][(dir + (_settings_game.vehicle.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking];
 
-		x = TileX(tile) * TILE_SIZE + rdp[start_frame].x;
-		y = TileY(tile) * TILE_SIZE + rdp[start_frame].y;
+		int x = TileX(tile) * TILE_SIZE + rdp[start_frame].x;
+		int y = TileY(tile) * TILE_SIZE + rdp[start_frame].y;
 
-		newdir = RoadVehGetSlidingDirection(v, x, y);
+		Direction new_dir = RoadVehGetSlidingDirection(v, x, y);
 		if (IsRoadVehFront(v)) {
-			Vehicle *u = RoadVehFindCloseTo(v, x, y, newdir);
+			Vehicle *u = RoadVehFindCloseTo(v, x, y, new_dir);
 			if (u != NULL) {
 				v->cur_speed = u->First()->cur_speed;
 				return false;
 			}
 		}
 
-		r = VehicleEnterTile(v, tile, x, y);
+		uint32 r = VehicleEnterTile(v, tile, x, y);
 		if (HasBit(r, VETS_CANNOT_ENTER)) {
 			if (!IsTileType(tile, MP_TUNNELBRIDGE)) {
 				v->cur_speed = 0;
@@ -1536,12 +1527,12 @@ again:
 			v->u.road.state = (byte)dir;
 			v->u.road.frame = start_frame;
 		}
-		if (newdir != v->direction) {
-			v->direction = newdir;
+		if (new_dir != v->direction) {
+			v->direction = new_dir;
 			v->cur_speed -= v->cur_speed >> 2;
 		}
 
-		v->cur_image = v->GetImage(newdir);
+		v->cur_image = v->GetImage(v->direction);
 		v->UpdateDeltaXY(v->direction);
 		RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y));
 		return true;
@@ -1550,10 +1541,6 @@ again:
 	if (rd.x & RDE_TURNED) {
 		/* Vehicle has finished turning around, it will now head back onto the same tile */
 		Trackdir dir;
-		uint32 r;
-		Direction newdir;
-		const RoadDriveEntry *rdp;
-
 		uint turn_around_start_frame = RVC_TURN_AROUND_START_FRAME;
 
 		RoadBits tram;
@@ -1589,15 +1576,15 @@ again:
 			return false;
 		}
 
-		rdp = _road_drive_data[v->u.road.roadtype][(_settings_game.vehicle.road_side << RVS_DRIVE_SIDE) + dir];
+		const RoadDriveEntry *rdp = _road_drive_data[v->u.road.roadtype][(_settings_game.vehicle.road_side << RVS_DRIVE_SIDE) + dir];
 
-		x = TileX(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].x;
-		y = TileY(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].y;
+		int x = TileX(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].x;
+		int y = TileY(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].y;
 
-		newdir = RoadVehGetSlidingDirection(v, x, y);
-		if (IsRoadVehFront(v) && RoadVehFindCloseTo(v, x, y, newdir) != NULL) return false;
+		Direction new_dir = RoadVehGetSlidingDirection(v, x, y);
+		if (IsRoadVehFront(v) && RoadVehFindCloseTo(v, x, y, new_dir) != NULL) return false;
 
-		r = VehicleEnterTile(v, v->tile, x, y);
+		uint32 r = VehicleEnterTile(v, v->tile, x, y);
 		if (HasBit(r, VETS_CANNOT_ENTER)) {
 			v->cur_speed = 0;
 			return false;
@@ -1606,12 +1593,12 @@ again:
 		v->u.road.state = dir;
 		v->u.road.frame = turn_around_start_frame;
 
-		if (newdir != v->direction) {
-			v->direction = newdir;
+		if (new_dir != v->direction) {
+			v->direction = new_dir;
 			v->cur_speed -= v->cur_speed >> 2;
 		}
 
-		v->cur_image = v->GetImage(newdir);
+		v->cur_image = v->GetImage(v->direction);
 		v->UpdateDeltaXY(v->direction);
 		RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y));
 		return true;
@@ -1627,10 +1614,10 @@ again:
 	}
 
 	/* Calculate new position for the vehicle */
-	x = (v->x_pos & ~15) + (rd.x & 15);
-	y = (v->y_pos & ~15) + (rd.y & 15);
+	int x = (v->x_pos & ~15) + (rd.x & 15);
+	int y = (v->y_pos & ~15) + (rd.y & 15);
 
-	new_dir = RoadVehGetSlidingDirection(v, x, y);
+	Direction new_dir = RoadVehGetSlidingDirection(v, x, y);
 
 	if (IsRoadVehFront(v) && !IsInsideMM(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END)) {
 		/* Vehicle is not in a road stop.
@@ -1646,13 +1633,13 @@ again:
 		}
 	}
 
-	old_dir = v->direction;
+	Direction old_dir = v->direction;
 	if (new_dir != old_dir) {
 		v->direction = new_dir;
 		v->cur_speed -= (v->cur_speed >> 2);
 		if (old_dir != v->u.road.state) {
 			/* The vehicle is in a road stop */
-			v->cur_image = v->GetImage(new_dir);
+			v->cur_image = v->GetImage(v->direction);
 			v->UpdateDeltaXY(v->direction);
 			SetRoadVehPosition(v, v->x_pos, v->y_pos);
 			/* Note, return here means that the frame counter is not incremented
@@ -1761,7 +1748,7 @@ again:
 
 	/* Check tile position conditions - i.e. stop position in depot,
 	 * entry onto bridge or into tunnel */
-	r = VehicleEnterTile(v, v->tile, x, y);
+	uint32 r = VehicleEnterTile(v, v->tile, x, y);
 	if (HasBit(r, VETS_CANNOT_ENTER)) {
 		v->cur_speed = 0;
 		return false;
