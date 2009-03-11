@@ -388,7 +388,7 @@ enum {
 /* static */ bool AIInstance::SaveObject(HSQUIRRELVM vm, SQInteger index, int max_depth, bool test)
 {
 	if (max_depth == 0) {
-		AILog::Error("Savedata can only be nested to 5 deep. No data saved.");
+		AILog::Error("Savedata can only be nested to 25 deep. No data saved.");
 		return false;
 	}
 
@@ -499,7 +499,7 @@ enum {
 		}
 
 		default:
-			AILog::Error("You tried to save unsupported type. No data saved.");
+			AILog::Error("You tried to save an unsupported type. No data saved.");
 			return false;
 	}
 }

@@ -88,7 +88,7 @@ void AIScanner::ScanDir(const char *dirname, bool library_scan, bool library_rec
 			if (!FioCheckFileExists(info_script, AI_DIR) || !FioCheckFileExists(main_script, AI_DIR)) continue;
 
 			DEBUG(ai, 6, "Loading AI at location '%s'", main_script);
-			/* We don't care if one of the other scripst failed to load. */
+			/* We don't care if one of the other scripts failed to load. */
 			this->engine->ResetCrashed();
 			this->engine->LoadScript(info_script);
 		} else {

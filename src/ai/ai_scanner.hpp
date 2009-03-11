@@ -56,7 +56,7 @@ public:
 	const AIInfoList *GetUniqueAIInfoList() { return &this->info_single_list; }
 
 	/**
-	 * Get the engine of the main squirrel handler (it indexes all avialable squirrels).
+	 * Get the engine of the main squirrel handler (it indexes all available scripts).
 	 */
 	class Squirrel *GetEngine() { return this->engine; }
 

@@ -80,7 +80,7 @@ SQInteger SquirrelStd::require(HSQUIRRELVM vm)
 	free(real_filename);
 	free(filen);
 
-	return ret ? 0: SQ_ERROR;
+	return ret ? 0 : SQ_ERROR;
 }
 
 SQInteger SquirrelStd::notifyallexceptions(HSQUIRRELVM vm)
