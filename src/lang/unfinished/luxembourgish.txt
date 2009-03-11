@@ -2669,31 +2669,145 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Fliiger 
 
 ########
 
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer Suen: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...d'Stooss ass am Besëtz vun der Stadt
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...Strooss geet an dei falsch Richtung
 
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Transparenzoptiounen
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Wiesselt d'Transparenz fir d'Statiounsschëlder. Ctrl+Klick fir festzesetzen.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Wiesselt d'Transparenz fir d'Beem. Ctrl+Klick fir festzesetzen.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Wiesselt d'Transparenz fir d'Haiser. Ctrl+Klick fir festzesetzen.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Wiesselt d'Transparenz fir d'Industrien. Ctrl+Klick fir festzesetzen.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Wiesselt d'Transparenz fir d'Firmengebäier. Ctrl+Klick fir festzesetzen.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Wiesselt d'Transparenz fir d'Brècken. Ctrl+Klick fir festzesetzen.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Wiesselt d'Transparenz fir d'Gebäier wei d'Liichtiirm oder Transmitter. Ctrl+Klick fir festzesetzen.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Wiesselt d'Transparenz fir d'Iwerleitung. Ctrl+Klick fir festzesetzen.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Wiesselt d'Transparenz fir d'Luedungsindikatoren. Ctrl+Klick fir festzesetzen.
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Setzt d'Objeten op onsichtbar amplaatz transparent
 
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Grupp {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :All Zich
+STR_GROUP_ALL_ROADS                                             :All Stroossengefiehrer
+STR_GROUP_ALL_SHIPS                                             :All Schëffer
+STR_GROUP_ALL_AIRCRAFTS                                         :All Fligeren
+STR_GROUP_DEFAULT_TRAINS                                        :Ongrupéiert Zich
+STR_GROUP_DEFAULT_ROADS                                         :Ongrupéiert Stroossengefiehrer
+STR_GROUP_DEFAULT_SHIPS                                         :Ongrupéiert Schëffer
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ongrupéiert Fligeren
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :All gedeelten Gefiehrer
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :All Gefiehrer wechhuelen
 
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Z{P uch ich}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Stroossengefiehr{P t er}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Schëff{P "" er}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Fliger{P "" en}
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Éng Grupp ëmmbenennen
 
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Kann d'Grupp nët erstellen...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Kann d'Grupp nët läschen...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Kann d'Grupp nët ëmmbenennen...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Kann nët all d'Gefiehrer aus der Grupp läschen...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Kann d'Gefiehrt nët bei d'Grupp bäisetzen...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Kann dei gedeelten Gefiehrer nët bei d'Grupp bäisetzen...
 
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Gruppen - klcikt op éng Grupp fir d'Gefieherer aus där Grupp ze gesinn
+STR_GROUP_CREATE_TIP                                            :{BLACK}Klickt fir éng Grupp ze maachen
+STR_GROUP_DELETE_TIP                                            :{BLACK}Déi ungewielten Grupp läschen
+STR_GROUP_RENAME_TIP                                            :{BLACK}Déi ungewielten Grupp ëmmbenennen
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klickt fir déi Grupp vum globalen "Autoersetzen" auszeschléissen
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_SIGN_NAME                                                   :{SIGN}
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Numm muss eenzegarteg sinn
 
 #### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Géi bei d'nächst Schëld
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Géi bei d'Schëld firdrun
+STR_SIGN_OSKTITLE                                               :{BLACK}Gidd en Numm fir d'Schëld an
 
 ########
 
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Grënnen
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Biirgbau
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Bauen
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Wielt déi gewënschten Industrie op der Lëscht aus
 
 ############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Erweidert
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Erweidert Gesiichtsauswiel.
+STR_FACE_SIMPLE                                                 :{BLACK}Einfach
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Einfach Gesiichtsauswiel
+STR_FACE_LOAD                                                   :{BLACK}Lueden
+STR_FACE_LOAD_TIP                                               :{BLACK}Favoriséiert Gesiicht lueden
+STR_FACE_LOAD_DONE                                              :{WHITE}Äert favoriséiert Gesiicht ass aus der OpenTTD configuratiouns Datei gelueden ginn.
+STR_FACE_FACECODE                                               :{BLACK}Gesiicht no.
+STR_FACE_FACECODE_TIP                                           :{BLACK}Kuckt an wielt d'Gesiichtsnummer
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Kuckt an wielt d'Gesiichtsnummer
+STR_FACE_FACECODE_SET                                           :{WHITE}Néi Gesiichtsnummer ass angestallt ginn.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Konnt d'Gesiichtsnummer nët setzen - muss en numereschen Wert zwëschent 0 an 4,294,967,295 sinn!
+STR_FACE_SAVE                                                   :{BLACK}Späicheren
+STR_FACE_SAVE_TIP                                               :{BLACK}Späichert favoriséiert Gesiicht
+STR_FACE_SAVE_DONE                                              :{WHITE}Dësst Gesiicht gët als Favoriséiert an der OpenTTD Configuratiounsdatei gespäichert.
+STR_FACE_EUROPEAN                                               :{BLACK}Europäesch
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Wielt europäesch Gesiichter
+STR_FACE_AFRICAN                                                :{BLACK}Afrikanësch
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Wielt afrikanësch Gesiichter
+STR_FACE_YES                                                    :Jo
+STR_FACE_NO                                                     :Nee
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Schalt Schnautz oder Ouerréng an
+STR_FACE_HAIR                                                   :Hoër:
+STR_FACE_HAIR_TIP                                               :{BLACK}Hoër wiesselen
+STR_FACE_EYEBROWS                                               :Aaenbraaen:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Aaenbraaen wiesselen
+STR_FACE_EYECOLOUR                                              :Aaenfaarw:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Aaenfaarw wiesselen
+STR_FACE_GLASSES                                                :Brëll:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Brëll anschalten
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Brëll wiesselen
+STR_FACE_NOSE                                                   :Nues:
+STR_FACE_NOSE_TIP                                               :{BLACK}Nues wiesselen
+STR_FACE_LIPS                                                   :Lëppsen:
+STR_FACE_MOUSTACHE                                              :Schnautz:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Lëppsen oder Schnautz wiesselen
+STR_FACE_CHIN                                                   :Kënn:
+STR_FACE_CHIN_TIP                                               :{BLACK}Kënn wiesselen
+STR_FACE_JACKET                                                 :Mantel:
+STR_FACE_JACKET_TIP                                             :{BLACK}Mantel wiesselen
+STR_FACE_COLLAR                                                 :Halsband:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Halsband wiesselen
+STR_FACE_TIE                                                    :Krawatt:
+STR_FACE_EARRING                                                :Ouerréng:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Krawatt oder Ouerréng wiesselen
 ########
 
 ############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Signalauswiel
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Kann d'Signal héi nët convertéieren...
 ########
 
 ############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}KI Anstellungen
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}KI Anstellungen weisen
 STR_AI_DEBUG                                                    :{WHITE}KI Debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Numm vun der KI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}KI nei lueden
@@ -2704,13 +2818,20 @@ STR_AI_CHANGE                                                   :{BLACK}Selècti
 STR_AI_CONFIGURE                                                :{BLACK}Konfiguréieren
 STR_AI_CHANGE_TIP                                               :{BLACK}Lued eng aaner KI
 STR_AI_CONFIGURE_TIP                                            :{BLACK}All Parameter vun der KI konfiguréieren
+STR_AI_LIST_TIP                                                 :{BLACK}All KI'en dei am nächsten Spill gelueden ginn
+STR_AI_LIST_CAPTION                                             :{WHITE}Verfügbar KI'en
 STR_AI_AILIST_TIP                                               :{BLACK}Klickt fir éng KI ze selèctéieren
 STR_AI_ACCEPT                                                   :{BLACK}Acceptéiert
 STR_AI_ACCEPT_TIP                                               :{BLACK}Selèctéiert ungewielten KI
 STR_AI_CANCEL                                                   :{BLACK}Oofbriechen
 STR_AI_CANCEL_TIP                                               :{BLACK}KI nët wieselen
 STR_AI_CLOSE                                                    :{BLACK}Zoumaachen
+STR_AI_RESET                                                    :{BLACK}Reset
+STR_AI_HUMAN_PLAYER                                             :Mënschlechen Spiller
+STR_AI_RANDOM_AI                                                :Zoufälleg KI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}KI Anstellungen
 STR_AI_AUTHOR                                                   :Autor:
+STR_AI_VERSION                                                  :Versioun:
 ########
 
 ############ town controlled noise level

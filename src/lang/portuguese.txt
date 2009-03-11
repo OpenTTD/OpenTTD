@@ -606,6 +606,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Não é 
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...não existe mais espaço no mapa
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Aumentar o tamanho da cidade
 STR_023C_EXPAND                                                 :{BLACK}Expandir
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}A cidade não construirá estradas. Pode-se permitir a construção de estradas por Opções Avançadas->Economia->Cidades.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Cidade Aleatória
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Construir uma cidade num local aleatório
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Não é possível construir {STRING} aqui...
@@ -945,6 +946,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permitir estações de passagem em estradas das cidades: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permitir construção de estações adjacentes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Utilizar múltiplos conjuntos NewGRF de veículos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Não é possivel mudar quando se encontram veículos.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
@@ -1680,6 +1682,8 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrar 
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Alterar o nome da cidade
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passageiros no último mês: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Correio no último mês: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Mercadoria necessária para o progresso da cidade:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} necessário
 STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} entregues no mês passado
 STR_200F_TALL_OFFICE_BLOCK                                      :Edifício alto de escritórios
 STR_2010_OFFICE_BLOCK                                           :Edifício de escritórios

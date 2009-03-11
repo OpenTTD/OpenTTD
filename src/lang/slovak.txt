@@ -673,6 +673,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Nie je m
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}... nie je dalsie miesto na mape
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Zvacsit velkost mesta
 STR_023C_EXPAND                                                 :{BLACK}Rozsirit
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Mesto nevybuduje cesty. Môžete povoliť budovanie ciest cez Pokročilé nasvavenia->Ekonomika->Mestá.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Nahodne mesto
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Postavit mesto na nahodnej pozicii
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}{STRING} sa tu neda postavit...
@@ -1012,8 +1013,10 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Roznoro
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Váhový násobok pre nákladné vlaky: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor rýchlosti lietadiel: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Povolit prejazdné zastávky na mestských cestách: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Povoliť prechádzanie cez stop značky na cestách vlastnené konkurenciou: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Povolit stavbu oddelených staníc: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Povolit viaceré NewGRF sety s rušnami: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Zmena tohto nastavenia nie je možná, pokial sa tu nachádzajú vozidlá.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Vždy povolit stavbu malých letísk: {ORANGE}{STRING}
 

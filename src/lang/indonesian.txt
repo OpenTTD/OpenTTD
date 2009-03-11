@@ -606,6 +606,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Tidak da
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...tidak ada lagi ruang tersisa dalam peta
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Tambah ukuran kota
 STR_023C_EXPAND                                                 :{BLACK}Memperluas
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Kota tidak akan membangun jalan. Anda dapat mengaktifkan pembangunan pada menu  Pengaturan Lanjutan->Ekonomi->Kota.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Kota secara acak
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Membangun kota di lokasi secara acak
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Tidak dapat membangun {STRING} disini...
