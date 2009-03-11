@@ -29,7 +29,6 @@ static void ChimneySmokeTick(Vehicle *v)
 
 		TileIndex tile = TileVirtXY(v->x_pos, v->y_pos);
 		if (!IsTileType(tile, MP_INDUSTRY)) {
-			EndVehicleMove(v);
 			delete v;
 			return;
 		}
@@ -68,7 +67,6 @@ static void SteamSmokeTick(Vehicle *v)
 		if (v->cur_image != SPR_STEAM_SMOKE_4) {
 			v->cur_image++;
 		} else {
-			EndVehicleMove(v);
 			delete v;
 			return;
 		}
@@ -103,7 +101,6 @@ static void DieselSmokeTick(Vehicle *v)
 			VehiclePositionChanged(v);
 			EndVehicleMove(v);
 		} else {
-			EndVehicleMove(v);
 			delete v;
 		}
 	}
@@ -127,7 +124,6 @@ static void ElectricSparkTick(Vehicle *v)
 			VehiclePositionChanged(v);
 			EndVehicleMove(v);
 		} else {
-			EndVehicleMove(v);
 			delete v;
 		}
 	}
@@ -156,7 +152,6 @@ static void SmokeTick(Vehicle *v)
 		if (v->cur_image != SPR_SMOKE_4) {
 			v->cur_image++;
 		} else {
-			EndVehicleMove(v);
 			delete v;
 			return;
 		}
@@ -185,7 +180,6 @@ static void ExplosionLargeTick(Vehicle *v)
 			VehiclePositionChanged(v);
 			EndVehicleMove(v);
 		} else {
-			EndVehicleMove(v);
 			delete v;
 		}
 	}
@@ -213,8 +207,6 @@ static void BreakdownSmokeTick(Vehicle *v)
 
 	v->u.effect.animation_state--;
 	if (v->u.effect.animation_state == 0) {
-		BeginVehicleMove(v);
-		EndVehicleMove(v);
 		delete v;
 	}
 }
@@ -235,7 +227,6 @@ static void ExplosionSmallTick(Vehicle *v)
 			VehiclePositionChanged(v);
 			EndVehicleMove(v);
 		} else {
-			EndVehicleMove(v);
 			delete v;
 		}
 	}
@@ -306,7 +297,6 @@ static void BulldozerTick(Vehicle *v)
 			v->u.effect.animation_substate = 0;
 			v->u.effect.animation_state++;
 			if (v->u.effect.animation_state == lengthof(_bulldozer_movement)) {
-				EndVehicleMove(v);
 				delete v;
 				return;
 			}
@@ -502,7 +492,6 @@ static void BubbleTick(Vehicle *v)
 	const BubbleMovement *b = &_bubble_movement[v->spritenum - 1][anim_state];
 
 	if (b->y == 4 && b->x == 0) {
-		EndVehicleMove(v);
 		delete v;
 		return;
 	}
