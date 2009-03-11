@@ -197,20 +197,20 @@ void VehiclePositionChanged(Vehicle *v)
 
 	UpdateVehiclePosHash(v, pt.x, pt.y);
 
-	v->left_coord = pt.x;
-	v->top_coord = pt.y;
-	v->right_coord = pt.x + spr->width + 2;
-	v->bottom_coord = pt.y + spr->height + 2;
+	v->coord.left = pt.x;
+	v->coord.top = pt.y;
+	v->coord.right = pt.x + spr->width + 2;
+	v->coord.bottom = pt.y + spr->height + 2;
 }
 
 Vehicle::Vehicle()
 {
 	this->type               = VEH_INVALID;
-	this->left_coord         = INVALID_COORD;
+	this->coord.left         = INVALID_COORD;
 	this->group_id           = DEFAULT_GROUP;
 	this->fill_percent_te_id = INVALID_TE_ID;
 	this->first              = this;
-	this->colourmap           = PAL_NONE;
+	this->colourmap          = PAL_NONE;
 }
 
 /**
@@ -439,8 +439,8 @@ static void UpdateVehiclePosHash(Vehicle *v, int x, int y)
 	UpdateNewVehiclePosHash(v, x == INVALID_COORD);
 
 	Vehicle **old_hash, **new_hash;
-	int old_x = v->left_coord;
-	int old_y = v->top_coord;
+	int old_x = v->coord.left;
+	int old_y = v->coord.top;
 
 	new_hash = (x == INVALID_COORD) ? NULL : &_vehicle_position_hash[GEN_HASH(x, y)];
 	old_hash = (old_x == INVALID_COORD) ? NULL : &_vehicle_position_hash[GEN_HASH(old_x, old_y)];
@@ -816,10 +816,10 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 
 			while (v != NULL) {
 				if (!(v->vehstatus & VS_HIDDEN) &&
-						l <= v->right_coord &&
-						t <= v->bottom_coord &&
-						r >= v->left_coord &&
-						b >= v->top_coord) {
+						l <= v->coord.right &&
+						t <= v->coord.bottom &&
+						r >= v->coord.left &&
+						b >= v->coord.top) {
 					DoDrawVehicle(v);
 				}
 				v = v->next_hash;
@@ -844,12 +844,12 @@ Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)
 
 	FOR_ALL_VEHICLES(v) {
 		if ((v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0 &&
-				x >= v->left_coord && x <= v->right_coord &&
-				y >= v->top_coord && y <= v->bottom_coord) {
+				x >= v->coord.left && x <= v->coord.right &&
+				y >= v->coord.top && y <= v->coord.bottom) {
 
 			dist = max(
-				abs(((v->left_coord + v->right_coord) >> 1) - x),
-				abs(((v->top_coord + v->bottom_coord) >> 1) - y)
+				abs(((v->coord.left + v->coord.right) >> 1) - x),
+				abs(((v->coord.top + v->coord.bottom) >> 1) - y)
 			);
 
 			if (dist < best_dist) {
@@ -1641,10 +1641,7 @@ static Rect _old_vehicle_coords; ///< coords of vehicle before it has moved
  */
 void BeginVehicleMove(const Vehicle *v)
 {
-	_old_vehicle_coords.left   = v->left_coord;
-	_old_vehicle_coords.top    = v->top_coord;
-	_old_vehicle_coords.right  = v->right_coord;
-	_old_vehicle_coords.bottom = v->bottom_coord;
+	_old_vehicle_coords = v->coord;
 }
 
 /**
@@ -1656,10 +1653,10 @@ void BeginVehicleMove(const Vehicle *v)
 void EndVehicleMove(const Vehicle *v)
 {
 	MarkAllViewportsDirty(
-		min(_old_vehicle_coords.left,   v->left_coord),
-		min(_old_vehicle_coords.top,    v->top_coord),
-		max(_old_vehicle_coords.right,  v->right_coord) + 1,
-		max(_old_vehicle_coords.bottom, v->bottom_coord) + 1
+		min(_old_vehicle_coords.left,   v->coord.left),
+		min(_old_vehicle_coords.top,    v->coord.top),
+		max(_old_vehicle_coords.right,  v->coord.right) + 1,
+		max(_old_vehicle_coords.bottom, v->coord.bottom) + 1
 	);
 }
 
@@ -1673,7 +1670,7 @@ void EndVehicleMove(const Vehicle *v)
  */
 void MarkSingleVehicleDirty(const Vehicle *v)
 {
-	MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
+	MarkAllViewportsDirty(v->coord.left, v->coord.top, v->coord.right + 1, v->coord.bottom + 1);
 }
 
 /**

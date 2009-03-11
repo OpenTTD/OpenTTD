@@ -245,8 +245,8 @@ void SndPlayTileFx(SoundFx sound, TileIndex tile)
 void SndPlayVehicleFx(SoundFx sound, const Vehicle *v)
 {
 	SndPlayScreenCoordFx(sound,
-		v->left_coord, v->right_coord,
-		v->top_coord, v->top_coord
+		v->coord.left, v->coord.right,
+		v->coord.top, v->coord.bottom
 	);
 }
 

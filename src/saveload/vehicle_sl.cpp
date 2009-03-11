@@ -359,7 +359,7 @@ void AfterLoadVehicles(bool part_of_load)
 			default: break;
 		}
 
-		v->left_coord = INVALID_COORD;
+		v->coord.left = INVALID_COORD;
 		VehiclePositionChanged(v);
 	}
 }

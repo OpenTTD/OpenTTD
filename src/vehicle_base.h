@@ -231,10 +231,7 @@ public:
 
 	/* Boundaries for the current position in the world and a next hash link.
 	 * NOSAVE: All of those can be updated with VehiclePositionChanged() */
-	int32 left_coord;
-	int32 top_coord;
-	int32 right_coord;
-	int32 bottom_coord;
+	Rect coord;
 	Vehicle *next_hash;
 	Vehicle *next_new_hash;
 	Vehicle **old_new_hash;
