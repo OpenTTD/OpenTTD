@@ -1216,8 +1216,8 @@ static const SettingDesc _music_settings[] = {
 	 SDT_END()
 };
 
-/* win32_v.c only settings */
-#ifdef WIN32
+/* win32_v.cpp only settings */
+#if defined(WIN32) && !defined(DEDICATED)
 extern bool _force_full_redraw, _window_maximize;
 extern uint _display_hz, _fullscreen_bpp;
 
@@ -1880,7 +1880,7 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 {
 	proc(ini, (const SettingDesc*)_misc_settings,    "misc",  NULL);
 	proc(ini, (const SettingDesc*)_music_settings,   "music", &msf);
-#ifdef WIN32
+#if defined(WIN32) && !defined(DEDICATED)
 	proc(ini, (const SettingDesc*)_win32_settings,   "win32", NULL);
 #endif /* WIN32 */
 
