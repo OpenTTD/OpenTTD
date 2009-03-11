@@ -1927,7 +1927,7 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		EventState state;
+		EventState state = ES_NOT_HANDLED;
 		switch (this->HandleEditBoxKey(4, key, keycode, state)) {
 			default: break;
 

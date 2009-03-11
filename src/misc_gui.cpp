@@ -993,8 +993,8 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 		default:
 			if (IsValidChar(key, this->afilter)) {
 				if (InsertTextBufferChar(&this->text, key)) w->InvalidateWidget(wid);
-			} else { // key wasn't caught. Continue only if standard entry specified
-				state = (this->afilter == CS_ALPHANUMERAL) ? Window::ES_HANDLED : Window::ES_NOT_HANDLED;
+			} else {
+				state = Window::ES_NOT_HANDLED;
 			}
 	}
 
@@ -1134,7 +1134,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		EventState state;
+		EventState state = ES_NOT_HANDLED;
 		switch (this->HandleEditBoxKey(QUERY_STR_WIDGET_TEXT, key, keycode, state)) {
 			default: NOT_REACHED();
 			case HEBR_EDITING: {

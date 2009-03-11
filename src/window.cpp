@@ -1750,8 +1750,7 @@ void HandleKeypress(uint32 raw_key)
 	/* Check if the focused window has a focused editbox */
 	if (EditBoxInGlobalFocus()) {
 		/* All input will in this case go to the focused window */
-		_focused_window->OnKeyPress(key, keycode);
-		return;
+		if (_focused_window->OnKeyPress(key, keycode) == Window::ES_HANDLED) return;
 	}
 
 	/* Call the event, start with the uppermost window. */
