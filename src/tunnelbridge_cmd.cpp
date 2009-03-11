@@ -597,7 +597,7 @@ static inline bool CheckAllowRemoveTunnelBridge(TileIndex tile)
 			if (road_owner == OWNER_NONE || (road_owner == OWNER_TOWN && (_settings_game.construction.extra_dynamite || _cheats.magic_bulldozer.value))) road_owner = _current_company;
 			if (tram_owner == OWNER_NONE) tram_owner = _current_company;
 
-			return CheckOwnership(road_owner) && CheckOwnership(tram_owner);
+			return (GetTileOwner(tile) == OWNER_NONE || CheckTileOwnership(tile)) && CheckOwnership(road_owner) && CheckOwnership(tram_owner);
 		}
 
 		case TRANSPORT_RAIL:
