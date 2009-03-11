@@ -22,7 +22,6 @@
 typedef Vehicle *VehicleFromPosProc(Vehicle *v, void *data);
 
 void VehicleServiceInDepot(Vehicle *v);
-void VehiclePositionChanged(Vehicle *v);
 Vehicle *GetLastVehicleInChain(Vehicle *v);
 const Vehicle *GetLastVehicleInChain(const Vehicle *v);
 uint CountVehiclesInChain(const Vehicle *v);
@@ -55,8 +54,7 @@ void CheckVehicleBreakdown(Vehicle *v);
 void AgeVehicle(Vehicle *v);
 void VehicleEnteredDepotThisTick(Vehicle *v);
 
-void BeginVehicleMove(const Vehicle *v);
-void EndVehicleMove(const Vehicle *v);
+void VehicleMove(Vehicle *v, bool update_viewport);
 void MarkSingleVehicleDirty(const Vehicle *v);
 
 UnitID GetFreeUnitNumber(VehicleType type);

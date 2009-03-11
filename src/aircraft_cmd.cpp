@@ -397,8 +397,8 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 		UpdateAircraftCache(v);
 
-		VehiclePositionChanged(v);
-		VehiclePositionChanged(u);
+		VehicleMove(v, false);
+		VehicleMove(u, false);
 
 		/* Aircraft with 3 vehicles (chopper)? */
 		if (v->subtype == AIR_HELICOPTER) {
@@ -421,7 +421,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			w->UpdateDeltaXY(INVALID_DIR);
 
 			u->SetNext(w);
-			VehiclePositionChanged(w);
+			VehicleMove(w, false);
 		}
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
@@ -692,9 +692,7 @@ static void HelicopterTickHandler(Vehicle *v)
 
 	u->cur_image = img;
 
-	BeginVehicleMove(u);
-	VehiclePositionChanged(u);
-	EndVehicleMove(u);
+	VehicleMove(u, true);
 }
 
 void SetAircraftPosition(Vehicle *v, int x, int y, int z)
@@ -706,9 +704,7 @@ void SetAircraftPosition(Vehicle *v, int x, int y, int z)
 	v->cur_image = v->GetImage(v->direction);
 	if (v->subtype == AIR_HELICOPTER) v->Next()->Next()->cur_image = GetRotorImage(v);
 
-	BeginVehicleMove(v);
-	VehiclePositionChanged(v);
-	EndVehicleMove(v);
+	VehicleMove(v, true);
 
 	Vehicle *u = v->Next();
 
@@ -721,9 +717,7 @@ void SetAircraftPosition(Vehicle *v, int x, int y, int z)
 	u->z_pos = GetSlopeZ(safe_x, safe_y);
 	u->cur_image = v->cur_image;
 
-	BeginVehicleMove(u);
-	VehiclePositionChanged(u);
-	EndVehicleMove(u);
+	VehicleMove(u, true);
 
 	u = u->Next();
 	if (u != NULL) {
@@ -731,9 +725,7 @@ void SetAircraftPosition(Vehicle *v, int x, int y, int z)
 		u->y_pos = y;
 		u->z_pos = z + 5;
 
-		BeginVehicleMove(u);
-		VehiclePositionChanged(u);
-		EndVehicleMove(u);
+		VehicleMove(u, true);
 	}
 }
 

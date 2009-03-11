@@ -329,6 +329,6 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 
 		if (flip_image) u->spritenum++;
 
-		VehiclePositionChanged(u);
+		VehicleMove(u, false);
 	}
 }

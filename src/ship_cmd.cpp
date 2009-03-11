@@ -588,8 +588,6 @@ static void ShipController(Vehicle *v)
 
 	if (!ShipAccelerate(v)) return;
 
-	BeginVehicleMove(v);
-
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	if (v->u.ship.state != TRACK_BIT_WORMHOLE) {
 		/* Not on a bridge */
@@ -683,8 +681,7 @@ static void ShipController(Vehicle *v)
 		if (!IsTileType(gp.new_tile, MP_TUNNELBRIDGE) || !HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
 			v->x_pos = gp.x;
 			v->y_pos = gp.y;
-			VehiclePositionChanged(v);
-			if (!(v->vehstatus & VS_HIDDEN)) EndVehicleMove(v);
+			VehicleMove(v, !(v->vehstatus & VS_HIDDEN));
 			return;
 		}
 	}
@@ -698,8 +695,7 @@ static void ShipController(Vehicle *v)
 getout:
 	v->UpdateDeltaXY(dir);
 	v->cur_image = v->GetImage(dir);
-	VehiclePositionChanged(v);
-	EndVehicleMove(v);
+	VehicleMove(v, true);
 	return;
 
 reverse_direction:
@@ -803,7 +799,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 		v->cargo_cap = GetVehicleProperty(v, 0x0D, svi->capacity);
 
-		VehiclePositionChanged(v);
+		VehicleMove(v, false);
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClassesData(WC_SHIPS_LIST, 0);

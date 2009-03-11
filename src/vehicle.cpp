@@ -186,23 +186,6 @@ bool HasVehicleOnTunnelBridge(TileIndex tile, TileIndex endtile, const Vehicle *
 
 static void UpdateVehiclePosHash(Vehicle *v, int x, int y);
 
-void VehiclePositionChanged(Vehicle *v)
-{
-	int img = v->cur_image;
-	Point pt = RemapCoords(v->x_pos + v->x_offs, v->y_pos + v->y_offs, v->z_pos);
-	const Sprite *spr = GetSprite(img, ST_NORMAL);
-
-	pt.x += spr->x_offs;
-	pt.y += spr->y_offs;
-
-	UpdateVehiclePosHash(v, pt.x, pt.y);
-
-	v->coord.left = pt.x;
-	v->coord.top = pt.y;
-	v->coord.right = pt.x + spr->width + 2;
-	v->coord.bottom = pt.y + spr->height + 2;
-}
-
 Vehicle::Vehicle()
 {
 	this->type               = VEH_INVALID;
@@ -1631,33 +1614,38 @@ CommandCost CmdChangeServiceInt(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 }
 
 
-static Rect _old_vehicle_coords; ///< coords of vehicle before it has moved
-
 /**
- * Stores the vehicle image coords for later call to EndVehicleMove()
- * @param v vehicle which image's coords to store
- * @see _old_vehicle_coords
- * @see EndVehicleMove()
+ * Move a vehicle in the game state; that is moving it's position in
+ * the position hashes and marking it's location in the viewport dirty
+ * if requested.
+ * @param v vehicle to move
+ * @param update_viewport whether to dirty the viewport
  */
-void BeginVehicleMove(const Vehicle *v)
+void VehicleMove(Vehicle *v, bool update_viewport)
 {
-	_old_vehicle_coords = v->coord;
-}
+	int img = v->cur_image;
+	Point pt = RemapCoords(v->x_pos + v->x_offs, v->y_pos + v->y_offs, v->z_pos);
+	const Sprite *spr = GetSprite(img, ST_NORMAL);
 
-/**
- * Marks screen dirty after a vehicle has moved
- * @param v vehicle which is marked dirty
- * @see _old_vehicle_coords
- * @see BeginVehicleMove()
- */
-void EndVehicleMove(const Vehicle *v)
-{
-	MarkAllViewportsDirty(
-		min(_old_vehicle_coords.left,   v->coord.left),
-		min(_old_vehicle_coords.top,    v->coord.top),
-		max(_old_vehicle_coords.right,  v->coord.right) + 1,
-		max(_old_vehicle_coords.bottom, v->coord.bottom) + 1
-	);
+	pt.x += spr->x_offs;
+	pt.y += spr->y_offs;
+
+	UpdateVehiclePosHash(v, pt.x, pt.y);
+
+	Rect old_coord = v->coord;
+	v->coord.left   = pt.x;
+	v->coord.top    = pt.y;
+	v->coord.right  = pt.x + spr->width + 2;
+	v->coord.bottom = pt.y + spr->height + 2;
+
+	if (update_viewport) {
+		MarkAllViewportsDirty(
+			min(old_coord.left,   v->coord.left),
+			min(old_coord.top,    v->coord.top),
+			max(old_coord.right,  v->coord.right) + 1,
+			max(old_coord.bottom, v->coord.bottom) + 1
+		);
+	}
 }
 
 /**

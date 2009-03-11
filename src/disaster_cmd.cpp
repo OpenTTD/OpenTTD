@@ -135,7 +135,7 @@ static void InitializeDisasterVehicle(Vehicle *v, int x, int y, byte z, Directio
 	v->current_order.Free();
 
 	DisasterVehicleUpdateImage(v);
-	VehiclePositionChanged(v);
+	VehicleMove(v, false);
 	MarkSingleVehicleDirty(v);
 }
 
@@ -143,20 +143,17 @@ static void SetDisasterVehiclePos(Vehicle *v, int x, int y, byte z)
 {
 	Vehicle *u;
 
-	BeginVehicleMove(v);
 	v->x_pos = x;
 	v->y_pos = y;
 	v->z_pos = z;
 	v->tile = TileVirtXY(x, y);
 
 	DisasterVehicleUpdateImage(v);
-	VehiclePositionChanged(v);
-	EndVehicleMove(v);
+	VehicleMove(v, true);
 
 	if ((u = v->Next()) != NULL) {
 		int safe_x = Clamp(x, 0, MapMaxX() * TILE_SIZE);
 		int safe_y = Clamp(y - 1, 0, MapMaxY() * TILE_SIZE);
-		BeginVehicleMove(u);
 
 		u->x_pos = x;
 		u->y_pos = y - 1 - (max(z - GetSlopeZ(safe_x, safe_y), 0U) >> 3);
@@ -165,16 +162,13 @@ static void SetDisasterVehiclePos(Vehicle *v, int x, int y, byte z)
 		u->direction = v->direction;
 
 		DisasterVehicleUpdateImage(u);
-		VehiclePositionChanged(u);
-		EndVehicleMove(u);
+		VehicleMove(u, true);
 
 		if ((u = u->Next()) != NULL) {
-			BeginVehicleMove(u);
 			u->x_pos = x;
 			u->y_pos = y;
 			u->z_pos = z + 5;
-			VehiclePositionChanged(u);
-			EndVehicleMove(u);
+			VehicleMove(u, true);
 		}
 	}
 }
@@ -543,8 +537,7 @@ static void DisasterTick_Helicopter_Rotors(Vehicle *v)
 
 	if (++v->cur_image > SPR_ROTOR_MOVING_3) v->cur_image = SPR_ROTOR_MOVING_1;
 
-	VehiclePositionChanged(v);
-	MarkSingleVehicleDirty(v);
+	VehicleMove(v, true);
 }
 
 /**
@@ -702,8 +695,6 @@ static void DisasterTick_Submarine(Vehicle *v)
 	v->tick_counter++;
 
 	if (++v->age > 8880) {
-		VehiclePositionChanged(v);
-		MarkSingleVehicleDirty(v);
 		delete v;
 		return;
 	}

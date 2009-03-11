@@ -25,8 +25,6 @@ static void ChimneySmokeTick(Vehicle *v)
 	if (v->progress > 0) {
 		v->progress--;
 	} else {
-		BeginVehicleMove(v);
-
 		TileIndex tile = TileVirtXY(v->x_pos, v->y_pos);
 		if (!IsTileType(tile, MP_INDUSTRY)) {
 			delete v;
@@ -39,8 +37,7 @@ static void ChimneySmokeTick(Vehicle *v)
 			v->cur_image = SPR_CHIMNEY_SMOKE_0;
 		}
 		v->progress = 7;
-		VehiclePositionChanged(v);
-		EndVehicleMove(v);
+		VehicleMove(v, true);
 	}
 }
 
@@ -53,8 +50,6 @@ static void SteamSmokeInit(Vehicle *v)
 static void SteamSmokeTick(Vehicle *v)
 {
 	bool moved = false;
-
-	BeginVehicleMove(v);
 
 	v->progress++;
 
@@ -73,10 +68,7 @@ static void SteamSmokeTick(Vehicle *v)
 		moved = true;
 	}
 
-	if (moved) {
-		VehiclePositionChanged(v);
-		EndVehicleMove(v);
-	}
+	if (moved) VehicleMove(v, true);
 }
 
 static void DieselSmokeInit(Vehicle *v)
@@ -90,16 +82,12 @@ static void DieselSmokeTick(Vehicle *v)
 	v->progress++;
 
 	if ((v->progress & 3) == 0) {
-		BeginVehicleMove(v);
 		v->z_pos++;
-		VehiclePositionChanged(v);
-		EndVehicleMove(v);
+		VehicleMove(v, true);
 	} else if ((v->progress & 7) == 1) {
-		BeginVehicleMove(v);
 		if (v->cur_image != SPR_DIESEL_SMOKE_5) {
 			v->cur_image++;
-			VehiclePositionChanged(v);
-			EndVehicleMove(v);
+			VehicleMove(v, true);
 		} else {
 			delete v;
 		}
@@ -118,11 +106,9 @@ static void ElectricSparkTick(Vehicle *v)
 		v->progress++;
 	} else {
 		v->progress = 0;
-		BeginVehicleMove(v);
 		if (v->cur_image != SPR_ELECTRIC_SPARK_5) {
 			v->cur_image++;
-			VehiclePositionChanged(v);
-			EndVehicleMove(v);
+			VehicleMove(v, true);
 		} else {
 			delete v;
 		}
@@ -138,8 +124,6 @@ static void SmokeInit(Vehicle *v)
 static void SmokeTick(Vehicle *v)
 {
 	bool moved = false;
-
-	BeginVehicleMove(v);
 
 	v->progress++;
 
@@ -158,10 +142,7 @@ static void SmokeTick(Vehicle *v)
 		moved = true;
 	}
 
-	if (moved) {
-		VehiclePositionChanged(v);
-		EndVehicleMove(v);
-	}
+	if (moved) VehicleMove(v, true);
 }
 
 static void ExplosionLargeInit(Vehicle *v)
@@ -174,11 +155,9 @@ static void ExplosionLargeTick(Vehicle *v)
 {
 	v->progress++;
 	if ((v->progress & 3) == 0) {
-		BeginVehicleMove(v);
 		if (v->cur_image != SPR_EXPLOSION_LARGE_F) {
 			v->cur_image++;
-			VehiclePositionChanged(v);
-			EndVehicleMove(v);
+			VehicleMove(v, true);
 		} else {
 			delete v;
 		}
@@ -195,14 +174,12 @@ static void BreakdownSmokeTick(Vehicle *v)
 {
 	v->progress++;
 	if ((v->progress & 7) == 0) {
-		BeginVehicleMove(v);
 		if (v->cur_image != SPR_BREAKDOWN_SMOKE_3) {
 			v->cur_image++;
 		} else {
 			v->cur_image = SPR_BREAKDOWN_SMOKE_0;
 		}
-		VehiclePositionChanged(v);
-		EndVehicleMove(v);
+		VehicleMove(v, true);
 	}
 
 	v->u.effect.animation_state--;
@@ -221,11 +198,9 @@ static void ExplosionSmallTick(Vehicle *v)
 {
 	v->progress++;
 	if ((v->progress & 3) == 0) {
-		BeginVehicleMove(v);
 		if (v->cur_image != SPR_EXPLOSION_SMALL_B) {
 			v->cur_image++;
-			VehiclePositionChanged(v);
-			EndVehicleMove(v);
+			VehicleMove(v, true);
 		} else {
 			delete v;
 		}
@@ -285,8 +260,6 @@ static void BulldozerTick(Vehicle *v)
 	if ((v->progress & 7) == 0) {
 		const BulldozerMovement *b = &_bulldozer_movement[v->u.effect.animation_state];
 
-		BeginVehicleMove(v);
-
 		v->cur_image = SPR_BULLDOZER_NE + b->image;
 
 		v->x_pos += _inc_by_dir[b->direction].x;
@@ -301,8 +274,7 @@ static void BulldozerTick(Vehicle *v)
 				return;
 			}
 		}
-		VehiclePositionChanged(v);
-		EndVehicleMove(v);
+		VehicleMove(v, true);
 	}
 }
 
@@ -470,13 +442,10 @@ static void BubbleTick(Vehicle *v)
 	v->progress++;
 	if ((v->progress & 3) != 0) return;
 
-	BeginVehicleMove(v);
-
 	if (v->spritenum == 0) {
 		v->cur_image++;
 		if (v->cur_image < SPR_BUBBLE_GENERATE_3) {
-			VehiclePositionChanged(v);
-			EndVehicleMove(v);
+			VehicleMove(v, true);
 			return;
 		}
 		if (v->u.effect.animation_substate != 0) {
@@ -522,8 +491,7 @@ static void BubbleTick(Vehicle *v)
 	v->z_pos += b->z;
 	v->cur_image = SPR_BUBBLE_0 + b->image;
 
-	VehiclePositionChanged(v);
-	EndVehicleMove(v);
+	VehicleMove(v, true);
 }
 
 
@@ -572,9 +540,8 @@ Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type)
 
 	_effect_init_procs[type](v);
 
-	VehiclePositionChanged(v);
-	BeginVehicleMove(v);
-	EndVehicleMove(v);
+	VehicleMove(v, false);
+	MarkSingleVehicleDirty(v);
 
 	return v;
 }

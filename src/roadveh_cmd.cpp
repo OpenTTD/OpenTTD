@@ -270,7 +270,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			if (u->cargo_cap != 0) u->cargo_cap = GetVehicleProperty(u, 0x0F, u->cargo_cap);
 		}
 
-		VehiclePositionChanged(v);
+		VehicleMove(v, false);
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
@@ -540,8 +540,7 @@ static byte SetRoadVehPosition(Vehicle *v, int x, int y)
 	old_z = v->z_pos;
 	v->z_pos = new_z;
 
-	VehiclePositionChanged(v);
-	EndVehicleMove(v);
+	VehicleMove(v, true);
 	return old_z;
 }
 
@@ -555,7 +554,6 @@ static void RoadVehSetRandomDirection(Vehicle *v)
 		uint32 r = Random();
 
 		v->direction = ChangeDir(v->direction, delta[r & 3]);
-		BeginVehicleMove(v);
 		v->UpdateDeltaXY(v->direction);
 		v->cur_image = v->GetImage(v->direction);
 		SetRoadVehPosition(v, v->x_pos, v->y_pos);
@@ -1246,8 +1244,6 @@ static bool RoadVehLeaveDepot(Vehicle *v, bool first)
 		v->cur_speed = 0;
 	}
 
-	BeginVehicleMove(v);
-
 	v->vehstatus &= ~VS_HIDDEN;
 	v->u.road.state = tdir;
 	v->u.road.frame = RVC_DEPOT_START_FRAME;
@@ -1367,9 +1363,6 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 	 * by the previous vehicle in the chain when it gets to the right place. */
 	if (v->IsInDepot()) return true;
 
-	/* Save old vehicle position to use at end of move to set viewport area dirty */
-	BeginVehicleMove(v);
-
 	if (v->u.road.state == RVSB_WORMHOLE) {
 		/* Vehicle is entering a depot or is on a bridge or in a tunnel */
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
@@ -1392,8 +1385,7 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 
 		v->x_pos = gp.x;
 		v->y_pos = gp.y;
-		VehiclePositionChanged(v);
-		if (!(v->vehstatus & VS_HIDDEN)) EndVehicleMove(v);
+		VehicleMove(v, !(v->vehstatus & VS_HIDDEN));
 		return true;
 	}
 

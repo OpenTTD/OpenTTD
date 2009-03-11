@@ -669,7 +669,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 
 		_new_vehicle_id = v->index;
 
-		VehiclePositionChanged(v);
+		VehicleMove(v, false);
 		TrainConsistChanged(v->First(), false);
 		UpdateTrainGroupID(v->First());
 
@@ -724,7 +724,7 @@ static void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool buildin
 	u->value = v->value;
 	u->cur_image = 0xAC2;
 	u->random_bits = VehicleRandomBits();
-	VehiclePositionChanged(u);
+	VehicleMove(u, false);
 }
 
 /** Build a railroad vehicle.
@@ -827,7 +827,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		SetFrontEngine(v);
 		SetTrainEngine(v);
 
-		VehiclePositionChanged(v);
+		VehicleMove(v, false);
 
 		if (rvi->railveh_type == RAILVEH_MULTIHEAD) {
 			SetMultiheaded(v);
@@ -1546,9 +1546,7 @@ static void UpdateVarsAfterSwap(Vehicle *v)
 {
 	v->UpdateDeltaXY(v->direction);
 	v->cur_image = v->GetImage(v->direction);
-	BeginVehicleMove(v);
-	VehiclePositionChanged(v);
-	EndVehicleMove(v);
+	VehicleMove(v, true);
 }
 
 static inline void SetLastSpeed(Vehicle *v, int spd)
@@ -2420,7 +2418,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 
 	v->UpdateDeltaXY(v->direction);
 	v->cur_image = v->GetImage(v->direction);
-	VehiclePositionChanged(v);
+	VehicleMove(v, false);
 	UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
 	UpdateTrainAcceleration(v);
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
@@ -3366,8 +3364,7 @@ static byte AfterSetTrainPos(Vehicle *v, bool new_tile)
 		}
 	}
 
-	VehiclePositionChanged(v);
-	EndVehicleMove(v);
+	VehicleMove(v, true);
 	return old_z;
 }
 
@@ -3650,7 +3647,6 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 	for (prev = v->Previous(); v != nomove; prev = v, v = v->Next()) {
 		DiagDirection enterdir = DIAGDIR_BEGIN;
 		bool update_signals_crossing = false; // will we update signals or crossing state?
-		BeginVehicleMove(v);
 
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 		if (v->u.rail.track != TRACK_BIT_WORMHOLE) {
@@ -3838,8 +3834,7 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 			} else {
 				v->x_pos = gp.x;
 				v->y_pos = gp.y;
-				VehiclePositionChanged(v);
-				if (!(v->vehstatus & VS_HIDDEN)) EndVehicleMove(v);
+				VehicleMove(v, !(v->vehstatus & VS_HIDDEN));
 				continue;
 			}
 		}
@@ -4002,7 +3997,6 @@ static void ChangeTrainDirRandomly(Vehicle *v)
 		/* We don't need to twist around vehicles if they're not visible */
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			v->direction = ChangeDir(v->direction, delta[GB(Random(), 0, 2)]);
-			BeginVehicleMove(v);
 			v->UpdateDeltaXY(v->direction);
 			v->cur_image = v->GetImage(v->direction);
 			/* Refrain from updating the z position of the vehicle when on
