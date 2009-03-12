@@ -83,6 +83,26 @@ bool IsGenerateWorldThreaded()
 }
 
 /**
+ * Clean up the 'mess' of generation. That is show windows again, reset
+ * thread variables and delete the progress window.
+ */
+static void CleanupGeneration()
+{
+	_generating_world = false;
+
+	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
+	/* Show all vital windows again, because we have hidden them */
+	if (_gw.threaded && _game_mode != GM_MENU) ShowVitalWindows();
+	_gw.active   = false;
+	_gw.proc     = NULL;
+	_gw.abortp   = NULL;
+	_gw.threaded = false;
+
+	DeleteWindowById(WC_GENERATE_PROGRESS_WINDOW, 0);
+	MarkWholeScreenDirty();
+}
+
+/**
  * The internal, real, generate function.
  */
 static void _GenerateWorld(void *arg)
@@ -158,15 +178,7 @@ static void _GenerateWorld(void *arg)
 		if (_gw.proc != NULL) _gw.proc();
 		IncreaseGeneratingWorldProgress(GWP_GAME_START);
 
-		if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
-		/* Show all vital windows again, because we have hidden them */
-		if (_gw.threaded && _game_mode != GM_MENU) ShowVitalWindows();
-		_gw.active   = false;
-		_gw.proc     = NULL;
-		_gw.threaded = false;
-
-		DeleteWindowById(WC_GENERATE_PROGRESS_WINDOW, 0);
-		MarkWholeScreenDirty();
+		CleanupGeneration();
 
 		if (_network_dedicated) DEBUG(net, 0, "Map generated, starting game");
 		DEBUG(desync, 1, "new_map: %i\n", _settings_game.game_creation.generation_seed);
@@ -241,17 +253,7 @@ void HandleGeneratingWorldAbortion()
 
 	if (_gw.abortp != NULL) _gw.abortp();
 
-	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
-	/* Show all vital windows again, because we have hidden them */
-	if (_gw.threaded && _game_mode != GM_MENU) ShowVitalWindows();
-
-	_gw.active   = false;
-	_gw.proc     = NULL;
-	_gw.abortp   = NULL;
-	_gw.threaded = false;
-
-	DeleteWindowById(WC_GENERATE_PROGRESS_WINDOW, 0);
-	MarkWholeScreenDirty();
+	CleanupGeneration();
 
 	_gw.thread->Exit();
 }
