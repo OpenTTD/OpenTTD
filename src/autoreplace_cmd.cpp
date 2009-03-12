@@ -342,7 +342,6 @@ static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, 
 /** Replace a single unit in a free wagon chain
  * @param single_unit vehicle to let autoreplace/renew operator on
  * @param flags command flags
- * @param wagon_removal remove wagons when the resulting chain occupies more tiles than the old did
  * @param nothing_to_do is set to 'false' when something was done (only valid when not failed)
  * @return cost or error
  */
