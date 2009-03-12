@@ -1197,6 +1197,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Can't re
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Build railway track using the Autorail mode
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...there is no town in this scenario
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Map generation aborted...{}...no suitable town locations
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Many random towns
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Cover the map with randomly placed towns

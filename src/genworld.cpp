@@ -141,7 +141,10 @@ static void _GenerateWorld(void *arg)
 
 			/* only generate towns, tree and industries in newgame mode. */
 			if (_game_mode != GM_EDITOR) {
-				GenerateTowns(_settings_game.economy.town_layout);
+				if (!GenerateTowns(_settings_game.economy.town_layout)) {
+					HandleGeneratingWorldAbortion();
+					return;
+				}
 				GenerateIndustries();
 				GenerateUnmovables();
 				GenerateTrees();
@@ -255,7 +258,10 @@ void HandleGeneratingWorldAbortion()
 
 	CleanupGeneration();
 
-	_gw.thread->Exit();
+	if (_gw.thread != NULL) _gw.thread->Exit();
+
+	extern void SwitchToMode(SwitchMode new_mode);
+	SwitchToMode(_switch_mode);
 }
 
 /**

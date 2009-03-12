@@ -1648,8 +1648,10 @@ bool GenerateTowns(TownLayout layout)
 	/* give it a last try, but now more aggressive */
 	if (num == 0 && CreateRandomTown(10000, TS_RANDOM, false, layout) == NULL) {
 		if (GetNumTowns() == 0) {
-			/* XXX - can we handle that more gracefully? */
-			if (_game_mode != GM_EDITOR) usererror("Could not generate any town");
+			if (_game_mode != GM_EDITOR) {
+				extern StringID _switch_mode_errorstr;
+				_switch_mode_errorstr = STR_COULD_NOT_CREATE_TOWN;
+			}
 
 			return false;
 		}
