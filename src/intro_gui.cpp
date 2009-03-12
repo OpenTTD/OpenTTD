@@ -20,6 +20,7 @@
 #include "functions.h"
 #include "newgrf_config.h"
 #include "ai/ai_gui.hpp"
+#include "gfx_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -106,7 +107,14 @@ public:
 #endif /* ENABLE_NETWORK */
 
 		switch (widget) {
-			case SGI_GENERATE_GAME:  ShowGenerateLandscape(); break;
+			case SGI_GENERATE_GAME:
+				if (_ctrl_pressed) {
+					StartNewGameWithoutGUI(GENERATE_NEW_SEED);
+				} else {
+					ShowGenerateLandscape();
+				}
+				break;
+
 			case SGI_LOAD_GAME:      ShowSaveLoadDialog(SLD_LOAD_GAME); break;
 			case SGI_PLAY_SCENARIO:  ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
 			case SGI_PLAY_HEIGHTMAP: ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP); break;
