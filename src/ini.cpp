@@ -10,6 +10,12 @@
 #include "string_func.h"
 #include "fileio_func.h"
 
+#if (defined(_POSIX_C_SOURCE) && _POSIX_C_SOURCE >= 199309L) || (defined(_XOPEN_SOURCE) && _XOPEN_SOURCE >= 500)
+# define WITH_FDATASYNC
+# include <unistd.h>
+#endif
+
+
 IniItem::IniItem(IniGroup *parent, const char *name, size_t len) : next(NULL), value(NULL), comment(NULL)
 {
 	if (len == 0) len = strlen(name);
@@ -253,7 +259,16 @@ void IniFile::LoadFromDisk(const char *filename)
 
 bool IniFile::SaveToDisk(const char *filename)
 {
-	FILE *f = fopen(filename, "w");
+	/*
+	 * First write the configuration to a (temporary) file and then rename
+	 * that file. This to prevent that when OpenTTD crashes during the save
+	 * you end up with a truncated configuration file.
+	 */
+	char file_new[MAX_PATH];
+
+	strecpy(file_new, filename, lastof(file_new));
+	strecat(file_new, ".new", lastof(file_new));
+	FILE *f = fopen(file_new, "w");
 	if (f == NULL) return false;
 
 	for (const IniGroup *group = this->group; group != NULL; group = group->next) {
@@ -275,6 +290,20 @@ bool IniFile::SaveToDisk(const char *filename)
 	}
 	if (this->comment) fputs(this->comment, f);
 
+/*
+ * POSIX (and friends) do not guarantee that when a file is closed it is
+ * flushed to the disk. So we manually flush it do disk if we have the
+ * APIs to do so. We only need to flush the data as the metadata itself
+ * (modification date etc.) is not important to us; only the real data is.
+ */
+#ifdef WITH_FDATASYNC
+	int ret = fdatasync(fileno(f));
 	fclose(f);
+	if (ret != 0) return false;
+#else
+	fclose(f);
+#endif
+
+	rename(file_new, filename);
 	return true;
 }
