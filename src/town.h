@@ -254,10 +254,10 @@ void ExpandTown(Town *t);
 Town *CreateRandomTown(uint attempts, TownSize size, bool city, TownLayout layout);
 
 enum {
-	ROAD_REMOVE = 0,
-	UNMOVEABLE_REMOVE = 1,
+	ROAD_REMOVE         = 0,
+	UNMOVEABLE_REMOVE   = 1,
 	TUNNELBRIDGE_REMOVE = 1,
-	INDUSTRY_REMOVE = 2
+	INDUSTRY_REMOVE     = 2
 };
 
 /** This is the number of ticks between towns being processed for building new
