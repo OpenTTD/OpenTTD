@@ -37,4 +37,10 @@ void LoadHeightmap(char *filename);
  */
 void FlatEmptyWorld(byte tile_height);
 
+/**
+ * This function takes care of the fact that land in OpenTTD can never differ
+ * more than 1 in height
+ */
+void FixSlopes();
+
 #endif /* HEIGHTMAP_H */

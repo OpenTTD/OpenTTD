@@ -766,7 +766,7 @@ static void GenerateTerrain(int type, uint flag)
 				Tile *tile_cur = tile;
 
 				for (uint w_cur = w; w_cur != 0; --w_cur) {
-					if (*p >= tile_cur->type_height) tile_cur->type_height = *p;
+					if (GB(*p, 0, 4) >= tile_cur->type_height) tile_cur->type_height = GB(*p, 0, 4);
 					p++;
 					tile_cur++;
 				}
@@ -779,7 +779,7 @@ static void GenerateTerrain(int type, uint flag)
 				Tile *tile_cur = tile;
 
 				for (uint h_cur = h; h_cur != 0; --h_cur) {
-					if (*p >= tile_cur->type_height) tile_cur->type_height = *p;
+					if (GB(*p, 0, 4) >= tile_cur->type_height) tile_cur->type_height = GB(*p, 0, 4);
 					p++;
 					tile_cur += TileDiffXY(0, 1);
 				}
@@ -793,7 +793,7 @@ static void GenerateTerrain(int type, uint flag)
 				Tile *tile_cur = tile;
 
 				for (uint w_cur = w; w_cur != 0; --w_cur) {
-					if (*p >= tile_cur->type_height) tile_cur->type_height = *p;
+					if (GB(*p, 0, 4) >= tile_cur->type_height) tile_cur->type_height = GB(*p, 0, 4);
 					p++;
 					tile_cur--;
 				}
@@ -807,7 +807,7 @@ static void GenerateTerrain(int type, uint flag)
 				Tile *tile_cur = tile;
 
 				for (uint h_cur = h; h_cur != 0; --h_cur) {
-					if (*p >= tile_cur->type_height) tile_cur->type_height = *p;
+					if (GB(*p, 0, 4) >= tile_cur->type_height) tile_cur->type_height = GB(*p, 0, 4);
 					p++;
 					tile_cur -= TileDiffXY(0, 1);
 				}
@@ -815,6 +815,8 @@ static void GenerateTerrain(int type, uint flag)
 			} while (--w != 0);
 			break;
 	}
+
+	FixSlopes();
 }
 
 
