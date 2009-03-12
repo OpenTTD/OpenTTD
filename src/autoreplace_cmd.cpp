@@ -513,7 +513,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 					*chain = new_head;
 				}
 
-				/* Transfer cargo of old vehicles and sell them*/
+				/* Transfer cargo of old vehicles and sell them */
 				for (int i = 0; i < num_units; i++) {
 					Vehicle *w = old_vehs[i];
 					/* Is the vehicle again part of the new chain?
@@ -522,7 +522,10 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 
 					if ((flags & DC_EXEC) != 0) TransferCargo(w, new_head, true);
 
-					cost.AddCost(DoCommand(0, w->index, 0, flags, GetCmdSellVeh(w)));
+					/* Sell the vehicle.
+					 * Note: This might temporarly construct new trains, so use DC_AUTOREPLACE to prevent
+					 *       it from failing due to engine limits. */
+					cost.AddCost(DoCommand(0, w->index, 0, flags | DC_AUTOREPLACE, GetCmdSellVeh(w)));
 					if ((flags & DC_EXEC) != 0) {
 						old_vehs[i] = NULL;
 						if (i == 0) old_head = NULL;
