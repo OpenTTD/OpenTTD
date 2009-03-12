@@ -608,6 +608,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Нево
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...больше нет места на карте
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Увеличить размер города
 STR_023C_EXPAND                                                 :{BLACK}Расширить
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Города не строят дорог. Вы можете включить стоительство дорог в Расш. настройки->Экономика->Города.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Случайный город
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Создать город в случайном месте
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Здесь нельзя создать {STRING}...

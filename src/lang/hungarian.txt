@@ -1231,6 +1231,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Nem lehe
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Vasúti pálya építése egyszerűsített módón
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...nincs település ezen a pályán
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}A térkép generálása meghiúsult...{}...nincs városépítésre alkalmas hely
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Sok véletlen település
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Véletlenszerüen elhelyez a térképen sok települést.

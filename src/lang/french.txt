@@ -1198,6 +1198,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Impossib
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Construire les rails avec le mode AutoRail
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...il n'y a pas de ville dans ce scenario
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Génération de la carte annulée...{}...pas d'emplacements valables pour une ville
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Beaucoup de villes au hasard
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Couvrir la carte avec des villes placées aléatoirement

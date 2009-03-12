@@ -1197,6 +1197,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}An'tcay 
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Uildbay ailwayray acktray usingway ethay Autorailway odemay
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...erethay isway onay owntay inway isthay enarioscay
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Apmay enerationgay abortedway...{}...onay uitablesay owntay ocationslay
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Anymay andomray ownstay
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Overcay ethay apmay ithway andomlyray acedplay ownstay

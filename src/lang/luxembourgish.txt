@@ -12,11 +12,15 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Auserhal
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Ze noo um Bord vun der Kaart
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nët genuch Geld - dëss Aktioun kascht {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
+STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}D'Land muss flaach sinn
 STR_0008_WAITING                                                :{BLACK}Um Waarden: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} ënneerwee vun {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Acceptéiert: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Acceptéiert: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Liwerung: {GOLD}
+STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Passagéier
 STR_0010_COAL                                                   :Kuelen
 STR_0011_MAIL                                                   :Post
@@ -48,6 +52,7 @@ STR_002A_TOFFEE                                                 :Karmell
 STR_002B_BATTERIES                                              :Batterien
 STR_002C_PLASTIC                                                :Plastik
 STR_002D_FIZZY_DRINKS                                           :Gedrénks mat Khueleseier
+STR_002E                                                        :
 STR_002F_PASSENGER                                              :Passagéier
 STR_0030_COAL                                                   :Kuelen
 STR_0031_MAIL                                                   :Post
@@ -79,6 +84,38 @@ STR_004A_TOFFEE                                                 :Karmell
 STR_004B_BATTERY                                                :Batterie
 STR_004C_PLASTIC                                                :Plastik
 STR_004D_FIZZY_DRINK                                            :Gedrénks mat Khueleseier
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} Passagéier
+STR_QUANTITY_COAL                                               :{WEIGHT} Kuel
+STR_QUANTITY_MAIL                                               :{COMMA} Posts{P aak äck}
+STR_QUANTITY_OIL                                                :{VOLUME} Ueleg
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} Liewensmëttelkëscht{P "" en}
+STR_QUANTITY_GOODS                                              :{COMMA} Wuerenkëscht{P "" en}
+STR_QUANTITY_GRAIN                                              :{WEIGHT} Kaar
+STR_QUANTITY_WOOD                                               :{WEIGHT} Holz
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} Eisenärz
+STR_QUANTITY_STEEL                                              :{WEIGHT} Stol
+STR_QUANTITY_VALUABLES                                          :{COMMA} S{P aak äck} mat Wertsaachen
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} Kofferärz
+STR_QUANTITY_MAIZE                                              :{WEIGHT} Mäis
+STR_QUANTITY_FRUIT                                              :{WEIGHT} Friichten
+STR_QUANTITY_DIAMONDS                                           :{COMMA} S{P aak äck} mat Diamanten
+STR_QUANTITY_FOOD                                               :{WEIGHT} Iessen
+STR_QUANTITY_PAPER                                              :{WEIGHT} Pabeier
+STR_QUANTITY_GOLD                                               :{COMMA} S{P aak äck} mat Gold
+STR_QUANTITY_WATER                                              :{VOLUME} Waasser
+STR_QUANTITY_WHEAT                                              :{WEIGHT} Weizen
+STR_QUANTITY_RUBBER                                             :{VOLUME} Kautschuck
+STR_QUANTITY_SUGAR                                              :{WEIGHT} Zocker
+STR_QUANTITY_TOYS                                               :{COMMA} Spillsaach{P "" en}
+STR_QUANTITY_SWEETS                                             :{COMMA} S{P aak äck} mat Séissegkeeten
+STR_QUANTITY_COLA                                               :{VOLUME} Cola
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} Zockerwatt
+STR_QUANTITY_BUBBLES                                            :{COMMA} Blos{P "" en}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} Karmel
+STR_QUANTITY_BATTERIES                                          :{COMMA} batterie{P "" n}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} Plastik
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} Khueleseiergedrènks
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
 STR_ABBREV_COAL                                                 :{TINYFONT}KU
@@ -119,6 +156,7 @@ STR_00B0_MAP                                                    :{WHITE}Kaart - 
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Spill Optiounen
 STR_00B2_MESSAGE                                                :{YELLOW}Meldung
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Matdeelung vun {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Oppassen!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kann daat nët maachen....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kann dei Plaatz nët eidel maachen....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All Rechter viirbehaalen
@@ -198,19 +236,37 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Schnéi
 STR_012C_MESSAGE                                                :{WHITE}Meldung
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Standard
 STR_012E_CANCEL                                                 :{BLACK}Oofbriechen
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Ëmbenennen
 
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
+STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_MORPHOS                                              :MorphOS
+STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...am Besëtz vun {STRING}
 STR_013C_CARGO                                                  :{BLACK}Luedung
 STR_013D_INFORMATION                                            :{BLACK}Informatioun
 STR_013E_CAPACITIES                                             :{BLACK}Kapazitéiten
+STR_TOTAL_CARGO                                                 :{BLACK}Total Luedung
 STR_013F_CAPACITY                                               :{BLACK}Kapazitéit: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}Kapazitéit: {LTBLUE}{CARGO}{STRING} (x{NUM})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Total Luedplaatz fir dëssen Zuch:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nei Partie
 STR_0141_LOAD_GAME                                              :{BLACK}Spill lueden
+STR_MULTIPLAYER                                                 :{BLACK}Multiplayer
+STR_SCENARIO_EDITOR                                             :{BLACK}Szenarien Editor
 
+STR_MAPSIZE                                                     :{BLACK}Kaartgréisst:
 STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Spillotiounen
 
@@ -218,6 +274,7 @@ STR_0150_SOMEONE                                                :iergendeen{SKIP
 
 STR_UNITS_IMPERIAL                                              :Britësche System
 STR_UNITS_METRIC                                                :Métreschen System
+STR_UNITS_SI                                                    :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
@@ -249,6 +306,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Grafik: Perform
 STR_0158_COMPANY_VALUE_GRAPH                                    :Grafik: Betriebswert
 STR_0159_CARGO_PAYMENT_RATES                                    :Luedungs Bezuelraten
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Betriebs Ranglëscht
+STR_PERFORMANCE_DETAIL_MENU                                     :Dtailéiert Performancebewertung
 ############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Iwert OpenTTD
@@ -258,6 +316,8 @@ STR_015E_QUIT_GAME                                              :Spill opginn
 STR_015F_QUIT                                                   :Eraus
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Sidd dir sëcher das dir dëss Partie obginn wëllt?
 STR_0161_QUIT_GAME                                              :{WHITE}Spill opginn
+STR_SORT_ORDER_TIP                                              :{BLACK}Richtung fir ze sortéieren (oofsteigend/opsteigend)
+STR_SORT_CRITERIA_TIP                                           :{BLACK}Argument fir ze sortéieren
 STR_SORT_BY                                                     :{BLACK}Sortéier noo
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Bevölkerung
@@ -272,13 +332,20 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit am läsc
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit dësst Joër
 STR_SORT_BY_AGE                                                 :Alter
 STR_SORT_BY_RELIABILITY                                         :Verlässlegkeet
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total Luedplaatz no Luedungstyp
 STR_SORT_BY_MAX_SPEED                                           :Maximal Geschwindegkeet
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Wert
 STR_SORT_BY_LENGTH                                              :Längt
+STR_SORT_BY_LIFE_TIME                                           :Reschtlaafzäit
 STR_SORT_BY_FACILITY                                            :Statiounstyp
+STR_SORT_BY_WAITING                                             :Luedungswert
+STR_SORT_BY_RATING_MAX                                          :Luedungsbewertung
 STR_ENGINE_SORT_COST                                            :Käschten
+STR_ENGINE_SORT_INTRO_DATE                                      :Aféirungsdatum
 STR_ENGINE_SORT_RUNNING_COST                                    :Betriebskäschten
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Luedungskapazitéit
+STR_NO_WAITING_CARGO                                            :{BLACK}Kéng Luedung
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Selektéier all d'Fabriken
 STR_AVAILABLE_TRAINS                                            :{BLACK}Verfügbar Zich
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Verfügbar Gefiehrer
@@ -554,6 +621,8 @@ STR_0298_LOAD_SCENARIO                                          :{WHITE}Széneri
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Szénerie späicheren
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Szénerie spillen
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Spillt Héichtenkaart
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Néi Partie starten, mat énger Héichtenkaart als Landschaft
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Sëcher dass der aus dësem Szenario raus wëllt ?
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kann nëmmen an Stiedt mat opmannst 1200 Anwunner gebaut ginn
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Änner den Startdatum 1 Joer nohannen
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Änner den Startdatum 1 Joer novir
@@ -563,6 +632,7 @@ STR_02A2_MEDIUM                                                 :{BLACK}Mëttel
 STR_02A3_LARGE                                                  :{BLACK}Grouß
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Zoufall
 STR_FOUND_TOWN_CITY                                             :{BLACK}Stadt
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Stiedt wuesen méi schnell wéi Dierfer{}Oofhängeg vun den Anstellungen, sinn se méi grous am Ufank
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Wiel d'Stadtgréisst
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Stadtgréisst:
 
@@ -596,6 +666,7 @@ STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Schël
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Ganz Animatiounen
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Ganz Detailer
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Transparent Gebäier
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transparent Statiounsschëlder
 ############ range ends here
 
 ############ range for menu starts
@@ -613,15 +684,22 @@ STR_02DA_ON                                                     :{BLACK}Un
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Subventiounen weisen
 STR_02DD_SUBSIDIES                                              :Subventiounen
 STR_02DE_MAP_OF_WORLD                                           :Weltkaart
+STR_EXTRA_VIEW_PORT                                             :Extra Unsiicht
 STR_SIGN_LIST                                                   :Schëlderlëscht
 STR_02DF_TOWN_DIRECTORY                                         :Stiedtverzeeschniss
 STR_TOWN_POPULATION                                             :{BLACK}Weltbevölkerung: {COMMA}
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Unsiicht {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopéiert op d'Unsiicht
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopéiert d'Plaatz vun der globaler Unsiicht op dëss Unsiicht
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Vun der Unsiicht dransetzen
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Setzt d'Platz vun dësser Unsiicht op déi global Unsiicht
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Währungseenheet
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Währungseenheet wielen
 STR_MEASURING_UNITS                                             :{BLACK}Mooseenheeten
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Moosseenheetenauswiel
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Stroossengefiehrer
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Wei eng Stroossensäit sollen d'Gefiehrer fuehren
@@ -656,6 +734,7 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Wielt de
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Finanzéiert den Bau vun enger neier Industrie oder lëscht all d'Industrien op
 
 ############ range for menu starts
+STR_INDUSTRY_DIR                                                :Industrielëscht
 STR_0313_FUND_NEW_INDUSTRY                                      :Finanzéiert eng nei Industrie
 ############ range ends here
 
@@ -673,6 +752,7 @@ STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screensh
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Kaaf Land fir zukünftëg Benotzung
 STR_032F_AUTOSAVE                                               :{RED}AUTOSPÄICHEREN
 STR_SAVING_GAME                                                 :{RED}*  *  SPÄICHERT D'SPILL  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Nach umgaangen ze späicheren. {} Weg. waarden bis daat faerdeg ass!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Wielt 'Ezy Street Musék' programme
 
 STR_6                                                           :{BLACK}6
@@ -749,7 +829,9 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Screensh
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Wielt den Screenshotformat deen benotzt sollt ginn
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Basis Grafikset
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Wielt den Basis Grafikset fir ze benotzen
 
 STR_AUTOSAVE_1_MONTH                                            :All Mount
 STR_AUTOSAVE_FAILED                                             :{WHITE}Fehler beim Autospäicheren
@@ -790,6 +872,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Ë
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} kann den Wee fir weider ze fueren nët fannen
 STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} as verluer.
 STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Dëm {VEHICLE} säin Profit vum läschten Joër war {CURRENCY}
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europäesch Wärungsoptioun!{}{}Dën Euro ass als néi Währung am Land angefhouert ginn!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -800,6 +883,7 @@ STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE
 # end of order system
 
 STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Fehler beim Autoernéieren vun {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} ass ze laang noom Auswiesselen
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Keng Autoernéierungsregel festgeluet.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(money limit)
 
@@ -810,19 +894,32 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Erweider
 STR_CONFIG_SETTING_OFF                                          :Aus
 STR_CONFIG_SETTING_ON                                           :Un
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Weisst d'Geschwindegkeet an der Statusbar un: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Erlaabt d'Bauen op Küsten an op Oofhäng: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Erlaabt Landforumng ënnert Gebäier, Stroossen, etc. (autoslope): {ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Erlaabt méi realistësch Staugréisstplaatzen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Zuchbeschleunegung: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistësch
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Benotz verbesserten Luedalgorithmus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Lued d'Gefiehrer graduell: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflatioun: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Erlaab ganz laang Brècken: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Erlaab Depot Opträg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :keng
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :wei aaner Industrien
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Erkundung
 
+STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Erlaab ëmmer kléng Flughäfen: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Warnen wann en Zuch verluer geet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Opträg vun den Gefiehrer noopréifen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nee
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jo, mee nët dei gestoppten Gefiehrer
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :vun allen Gefiehrer
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Warnen wann en Gefiehrt en negativen Akommen huet: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Gefiehrer laafen nie oof: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Gefiehrt automatësch ernéieren wann ët aal gët: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Dauer vun Fehlermeldungen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Weist Bewunnerzuel am Numm vun der Stadt: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landgenerator: {ORANGE}{STRING}
@@ -843,15 +940,20 @@ STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Weis Fi
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Keng
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eegen Firma
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :All Firmen
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Preferéier Teamchat mat <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Fonktioun vum Scrollrad: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Kaart Zoomen
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Kaart Scrollen
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Aus
 
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Riétsklickemulatioun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :CTRL+Klick
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :CTRL+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Aus
 
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Lénksklickscroll: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Benotz {ORANGE}{STRING}{LTBLUE} Datumsformat fir Späichernimm.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :laang (31ten Dez 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kuerz (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -865,6 +967,8 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Weist d
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Aus
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eegen Firma
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :All Firmen
+STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Erlaab Fuerplang fir Gefiehrer: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Weisst den Fuerplang an Intervallen amplaatz vun Deeg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Normal Schinnen
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrësch Schinnen
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Einschienenbunn
@@ -873,32 +977,149 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Ëischt Verfüg
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Läscht Verfügbar
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meescht Benotzten
 
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Max Zich pro Spiller: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Max Stroossengefiehrer pro Spiller: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Max Fligeren pro Spiller: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Max Schëffer pro Spiller: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Zich fir den Computer ausschalten: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Stroossengefiehrer fir den Computer ausschalten: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Fligeren fir den Computer ausschalten: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Schëffer fir den Computer ausschalten: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Erlaabt KI am Multiplayer: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Revisiounsintervalen an Prozenter: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard Revisiounsinterval fir Zich: {ORANGE}{STRING} deeg/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard Revisiounsinterval fir Zich: {ORANGE}ausgeschalt
+STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Standard Revisiounsinterval fir Stroosengefiehrer: {ORANGE}{STRING} deeg/%
+STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Standard Revisiounsinterval fir Stroossengefiehrer: {ORANGE}ausgeschalt
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Standard Revisiounsinterval fir Fligeren: {ORANGE}{STRING} deeg/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standard Revisiounsinterval fir Fligeren: {ORANGE}ausgeschalt
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Standard Revisiounsinterval fir Schëffer: {ORANGE}{STRING} deeg/%
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard Revisiounsinterval fir Schëffer: {ORANGE}ausgeschalt
+STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Revisiounen ausschalten wann Pannen op "Kéng" gestallt sinn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Geschwindegkeetsbegrenzungen fir Wagongen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Elècktrëschschinnen ausschalten: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Faarwegnéiegkeeten sinn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Startjoër: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Gläichmässeg Economie anschalten (méi oft an kléng Wiessel): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Undeeler vun aaneren Firmen kaafen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blocksignaler
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Pfadsignaler
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Pfadsignaler an éng Richtung
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Nëmmen Blocksignaler
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Nëmmen Pfadsignaler
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alleguerten
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Stroossenlayout an néien Stiedt: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Original
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :besser Stroossen
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 Gitter
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 Gitter
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Zoufälleg
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Stiedt därfen Stroossen bauen: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Lénks
+STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Zentréiert
+STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Riets
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Stadt-Wuestum: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Keen
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lues
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Schnell
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Ganz Schnell
 
+STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
+STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruktioun
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Gefiehrer
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Statiounen
+STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economie
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Géigner
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Unzeigoptiounen
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaktioun
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Luedungshandhabung
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerspiller
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoernéieren
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Revisiounen
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routenplangung
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Zich
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Stiedt
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrien
 
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pfadfinder fir Zich: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Nët recommondéiert)
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recommondéiert)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Pfadfinder fir Stroossengefiehrer: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Nët recommondéiert)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Recommondéiert)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pfadfinder fir Schëffer: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recommondéiert)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nët recommondéiert)
 
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-Gréisst vun der Kaart: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-Gréisst vun der Kaart: {ORANGE}{STRING}
 
 ############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :ausgeschalt
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Anstellung änneren
+
+STR_TEMPERATE_LANDSCAPE                                         :Temperéiert Landschaft
+STR_SUB_ARCTIC_LANDSCAPE                                        :Sub-Arktësch Landschaft
+STR_SUB_TROPICAL_LANDSCAPE                                      :Sub-Tropësch Landschaft
+STR_TOYLAND_LANDSCAPE                                           :Spillland Landschaft
+
+STR_CHEATS                                                      :{WHITE}Cheats
+STR_CHEATS_TIP                                                  :{BLACK}Checkboxen weisen un dass dir den Cheat schon éng Keier benotzt hudd
+STR_CHEATS_WARNING                                              :{BLACK}Warnung! Dir sidd um Wee är Géigner ze verroden. Sou eng Ongnod gët biss an all Éiwegkeet behaalen.
+STR_CHEAT_MONEY                                                 :{LTBLUE}Suen ëmm {CURRENCY} erhéichen
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Als Firma spillen: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magëschen Bulldozer (Industrien oofrappen, onzerstéierbar Saachen): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnelen kënnen sëch Kräizen: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}An dem Pausmodus bauen: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jet'en maachen nët regelmässeg en Onfall op kléngen Flughäfen: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Klima wiesselen: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Datum wiesselen: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Erlaabt änneren vun den Produktiounswerter: {ORANGE}{STRING}
+
+STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Um Wee fir {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Um Wee fir {WAYPOINT}, {VELOCITY}
+
+STR_GO_TO_WAYPOINT                                              :Iwert {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT                                     :Géi non-stop iwert {WAYPOINT}
+
+STR_WAYPOINTNAME_CITY                                           :Weepunkt {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :Weepunkt {TOWN} #{COMMA}
+STR_LANDINFO_WAYPOINT                                           :Weepunkt
+
+STR_WAYPOINT                                                    :{WHITE}Weepunkt
+STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Wielt den Weepunktyp
+
+STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Z{P uch ich}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_RAW                                                :{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Weepunktnumm
+
+STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Kann den Weepunktnumm nët änneren...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Konvertéiert d'Schinnen zum Weepunkt
+STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Kann keen Zuchweepunkt héi bauen...
 
 
 
 
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landschaftsbau
 
 
 
-
-
-
-
-
-
-
-
+STR_LANDINFO_CANAL                                              :Kanal
 
 
 STR_LANDINFO_RIVER                                              :Floss
@@ -1059,9 +1280,28 @@ STR_NETWORK_LANG_LATVIAN                                        :Lettësch
 ############ End of leave-in-this-order
 
 
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Préparéiert fir bäizetrieden:   {ORANGE}{STRING}
+STR_NETWORK_NEW_COMPANY                                         :{BLACK}Néi Firma
+STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Néi Firma erstellen
+STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Dëm Spill nookucken
+STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}D'Spill als Zuschauer verfolgen
+STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Firma bäitrieden
+STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Déi Firma mat verwalten
+STR_NETWORK_REFRESH                                             :{BLACK}Server ernéieren
+STR_NETWORK_REFRESH_TIP                                         :{BLACK}Serverinfo ernéieren
 
+STR_NETWORK_COMPANY_INFO                                        :{SILVER}FIRMENINFO
 
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Firmennumm:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Grënnung:  {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Firmenwert:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Kontostand:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Ankommen vum läschten Joër:  {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Performance:  {WHITE}{NUM}
 
+STR_NETWORK_VEHICLES                                            :{SILVER}Gefiehrer:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Statiounen:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Spiller:  {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Connèctéiert...
 
@@ -1139,6 +1379,7 @@ STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} hu
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} huet d'Spill verloos ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} huet säin Numm op {STRING} gewiesselt
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} huet ärer Firma {2:CURRENCY} ginn
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Dir hudd {1:STRING} {2:CURRENCY} ginn
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] Zu {STRING}: {WHITE}{STRING}
@@ -1180,12 +1421,12 @@ STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...konnt
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Käschten: {CURRENCY}
 STR_0801_COST                                                   :{RED}Käschten: {CURRENCY}
-STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Akommes: {CURRENCY}
+STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Akommen: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Akommes: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transfer: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Geschätzten Käschten: {CURRENCY}
-STR_0807_ESTIMATED_INCOME                                       :{WHITE}Geschätzten Akommes: {CURRENCY}
+STR_0807_ESTIMATED_INCOME                                       :{WHITE}Geschätzten Akommen: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Kann d'Land hei nët unhiewen...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Kann d'Land hei nët eroofsetzen...
 STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Kann d'Land nët ebenen...
@@ -1222,7 +1463,7 @@ STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Kann d'S
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Zuchdepot Richtung
 STR_1015_RAILROAD_CONSTRUCTION                                  :Schinnenbau
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Élektrëschen Zuchbau
-STR_1016_MONORAIL_CONSTRUCTION                                  :Einschienenbahnbau
+STR_1016_MONORAIL_CONSTRUCTION                                  :Einschienbahnbau
 STR_1017_MAGLEV_CONSTRUCTION                                    :Magnéitbunnbau
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Streck mat Schinnen bauen
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Zuchdepot bauen (fir Zich ze kaafen an ze flécken)
@@ -2374,20 +2615,37 @@ STR_8820_RENAME                                                 :{BLACK}Ëmbëne
 STR_8823_SKIP                                                   :{BLACK}Iwersprangen
 STR_8824_DELETE                                                 :{BLACK}Läschen
 STR_8826_GO_TO                                                  :{BLACK}Géi op
+STR_REFIT                                                       :{BLACK}Ëmmbauen
+STR_REFIT_TIP                                                   :{BLACK}Wielt wéi een Luedungstyp der wëllt. CTRL+Click fir dën Ëmmbau ze läschen
+STR_REFIT_ORDER                                                 :(Ëmmbau op {STRING})
+STR_REFIT_STOP_ORDER                                            :(Ëmmbau op {STRING} an stopen)
 STR_STOP_ORDER                                                  :(Stop)
+STR_TIMETABLE_VIEW                                              :{BLACK}Fuerplang
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Wiesselt op d'Fuerplangunzeig
+STR_ORDER_VIEW                                                  :{BLACK}Opträg
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Wiesselt op d'Opträgunzeig
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Orders)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Ënn vun den Opträg - -
+STR_SERVICE                                                     :{BLACK}Revisioun
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Kann den Zuch nët bauen...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Wert: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Lueden / Entlueden
+STR_LEAVING                                                     :{LTBLUE}Verloosen
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Zuch muss am Depot sinn
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Kann den Zuch nët an den Depot schécken...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Kéng Plaatz mei fir Opträg
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Zevill Opträg
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kann keen néien Optrag bäisetzen...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kann den Optrag nët läschen...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kann den Optrag nët änneren...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Kann den Optraag nët rèckelen...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Kann den Optraag nët iwersprangen...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Kann nët op den ungewieltenen Optrag iwersprangen...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}Gefiehrt kann nët op all Statioun goen
+STR_CAN_T_ADD_ORDER                                             :{WHITE}Gefiehrt kann nët op déi Statioun goen
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}en Gefiehrt deen dëssen Optraag deelt kann nët op déi Statioun goen
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kann d'Gefiehrt nët rèckelen...
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kann den Zuch nët verkaafen...

@@ -607,6 +607,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}No se pu
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...no hay más espacio en el mapa
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Aumentar tamaño de la población
 STR_023C_EXPAND                                                 :{BLACK}Aumentar
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}La ciudad no construirá carreteras. Puedes activar la función de construcción de carreteras en Opciones Avanzadas->Economía->Cuidades.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Población al azar
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Construir población en sitio al azar
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}No se puede construir {STRING} aquí...
