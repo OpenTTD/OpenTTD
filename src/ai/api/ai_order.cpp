@@ -306,6 +306,13 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 	return AIObject::DoCommand(0, vehicle_id, order_position, CMD_DELETE_ORDER);
 }
 
+/* static */ bool AIOrder::SkipToOrder(VehicleID vehicle_id, OrderPosition next_order)
+{
+	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, next_order));
+
+	return AIObject::DoCommand(0, vehicle_id, next_order, CMD_SKIP_TO_ORDER);
+}
+
 /**
  * Callback handler as SetOrderFlags possibly needs multiple DoCommand calls
  * to be able to set all order flags correctly. As we need to wait till the

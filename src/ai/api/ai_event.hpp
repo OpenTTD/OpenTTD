@@ -91,6 +91,7 @@ public:
 	/**
 	 * Insert an event to the queue for the company.
 	 * @param event The event to insert.
+	 * @note DO NOT CALL YOURSELF; leave it to the internal AI programming.
 	 */
 	static void InsertEvent(AIEvent *event);
 

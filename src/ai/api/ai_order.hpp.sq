@@ -95,6 +95,7 @@ void SQAIOrder_Register(Squirrel *engine) {
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SetOrderFlags,           "SetOrderFlags",           4, ".iii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::ChangeOrder,             "ChangeOrder",             4, ".iii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::MoveOrder,               "MoveOrder",               4, ".iii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SkipToOrder,             "SkipToOrder",             3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::CopyOrders,              "CopyOrders",              3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::ShareOrders,             "ShareOrders",             3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::UnshareOrders,           "UnshareOrders",           2, ".i");

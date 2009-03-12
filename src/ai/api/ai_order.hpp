@@ -331,7 +331,7 @@ public:
 	 * Removes an order from the vehicle's order list.
 	 * @param vehicle_id The vehicle to remove the order from.
 	 * @param order_position The order to remove from the order list.
-	 * @pre AIVehicle::IsValidVehicleOrder(vehicle_id, order_position).
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return True if and only if the order was removed.
 	 */
@@ -376,6 +376,16 @@ public:
 	 *  downwards (e.g. 8).
 	 */
 	static bool MoveOrder(VehicleID vehicle_id, OrderPosition order_position_move, OrderPosition order_position_target);
+
+	/**
+	 * Make a vehicle execute next_order instead of its current order.
+	 * @param vehicle_id The vehicle that should skip some orders.
+	 * @param next_order The order the vehicle should skip to.
+	 * @pre IsValidVehicleOrder(vehicle_id, next_order).
+	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @return True if and only the current order was changed.
+	 */
+	static bool SkipToOrder(VehicleID vehicle_id, OrderPosition next_order);
 
 	/**
 	 * Copies the orders from another vehicle. The orders of the main vehicle
