@@ -467,8 +467,10 @@ bool OBGFileScanner::AddFile(const char *filename, size_t basepath_length)
 		if (duplicate) {
 			delete graphics;
 		} else {
-			graphics->next = _available_graphics_sets;
-			_available_graphics_sets = graphics;
+			GraphicsSet **last = &_available_graphics_sets;
+			while (*last != NULL) last = &(*last)->next;
+
+			*last = graphics;
 			ret = true;
 		}
 	} else {
