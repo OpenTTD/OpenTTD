@@ -156,6 +156,7 @@ struct GameCreationSettings {
 	byte   landscape;                        ///< the landscape we're currently in
 	byte   snow_line;                        ///< the snowline level in this game
 	byte   water_borders;                    ///< bitset of the borders that are water
+	uint16 custom_town_number;               ///< manually entered number of towns
 };
 
 /** Settings related to construction in-game */

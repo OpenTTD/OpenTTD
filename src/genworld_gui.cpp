@@ -25,6 +25,7 @@
 #include "core/random_func.hpp"
 #include "landscape_type.h"
 #include "querystring_gui.h"
+#include "town.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -285,7 +286,7 @@ static const StringID _smoothness[]  = {STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_
 static const StringID _tree_placer[] = {STR_CONFIG_SETTING_TREE_PLACER_NONE, STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL, STR_CONFIG_SETTING_TREE_PLACER_IMPROVED, INVALID_STRING_ID};
 static const StringID _rotation[]    = {STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE, STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE, INVALID_STRING_ID};
 static const StringID _landscape[]   = {STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL, STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS, INVALID_STRING_ID};
-static const StringID _num_towns[]   = {STR_NUM_VERY_LOW, STR_6816_LOW, STR_6817_NORMAL, STR_6818_HIGH, INVALID_STRING_ID};
+static const StringID _num_towns[]   = {STR_NUM_VERY_LOW, STR_6816_LOW, STR_6817_NORMAL, STR_6818_HIGH, STR_02BF_CUSTOM, INVALID_STRING_ID};
 static const StringID _num_inds[]    = {STR_NONE, STR_NUM_VERY_LOW, STR_6816_LOW, STR_6817_NORMAL, STR_6818_HIGH, INVALID_STRING_ID};
 
 struct GenerateLandscapeWindow : public QueryStringBaseWindow {
@@ -571,6 +572,11 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_SMOOTHNESS_PULLDOWN:    _settings_newgame.game_creation.tgen_smoothness = index;  break;
 
 			case GLAND_TOWN_PULLDOWN:
+				if (index == CUSTOM_TOWN_NUMBER_DIFFICULTY) {
+					this->widget_id = widget;
+					SetDParam(0, _settings_newgame.game_creation.custom_town_number);
+					ShowQueryString(STR_CONFIG_SETTING_INT32, STR_NUMBER_OF_TOWNS, 5, 50, this, CS_NUMERAL, QSF_NONE);
+				};
 				IConsoleSetSetting("difficulty.number_towns", index);
 				break;
 
@@ -620,6 +626,10 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				case GLAND_SNOW_LEVEL_TEXT:
 					this->InvalidateWidget(GLAND_SNOW_LEVEL_TEXT);
 					_settings_newgame.game_creation.snow_line_height = Clamp(value, 2, MAX_SNOWLINE_HEIGHT);
+					break;
+
+				case GLAND_TOWN_PULLDOWN:
+					_settings_newgame.game_creation.custom_town_number = Clamp(value, 1, CUSTOM_TOWN_MAX_NUMBER);
 					break;
 			}
 

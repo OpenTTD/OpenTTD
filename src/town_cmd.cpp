@@ -1633,7 +1633,8 @@ static const byte _num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, no
 bool GenerateTowns(TownLayout layout)
 {
 	uint num = 0;
-	uint n = ScaleByMapSize(_num_initial_towns[_settings_game.difficulty.number_towns] + (Random() & 7));
+	uint difficulty = _settings_game.difficulty.number_towns;
+	uint n = difficulty == CUSTOM_TOWN_NUMBER_DIFFICULTY ? _settings_game.game_creation.custom_town_number : ScaleByMapSize(_num_initial_towns[difficulty] + (Random() & 7));
 	uint num_cities = _settings_game.economy.larger_towns == 0 ? 0 : n / _settings_game.economy.larger_towns;
 
 	SetGeneratingWorldProgress(GWP_TOWN, n);

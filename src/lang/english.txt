@@ -666,7 +666,6 @@ STR_FULL                                                        :Full
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Town directory
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Custom
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -2129,6 +2128,7 @@ STR_NUM_VERY_LOW                                                :Very low
 STR_6816_LOW                                                    :Low
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :High
+STR_02BF_CUSTOM                                                 :Custom
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Very Slow
