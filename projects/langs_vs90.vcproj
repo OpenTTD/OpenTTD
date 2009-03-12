@@ -438,6 +438,21 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath="..\src\lang\luxembourgish.txt"
+			>
+			<FileConfiguration
+				Name="Debug|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating luxembourgish language file"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					AdditionalDependencies=""
+					Outputs="..\bin\lang\luxembourgish.lng"
+				/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath="..\src\lang\norwegian_bokmal.txt"
 			>
 			<FileConfiguration
