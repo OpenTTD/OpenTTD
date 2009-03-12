@@ -184,8 +184,6 @@ bool HasVehicleOnTunnelBridge(TileIndex tile, TileIndex endtile, const Vehicle *
 }
 
 
-static void UpdateVehiclePosHash(Vehicle *v, int x, int y);
-
 Vehicle::Vehicle()
 {
 	this->type               = VEH_INVALID;
