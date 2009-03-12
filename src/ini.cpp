@@ -64,17 +64,14 @@ IniGroup::~IniGroup()
 
 IniItem *IniGroup::GetItem(const char *name, bool create)
 {
-	IniItem *item;
-	size_t len = strlen(name);
-
-	for (item = this->item; item != NULL; item = item->next) {
+	for (IniItem *item = this->item; item != NULL; item = item->next) {
 		if (strcmp(item->name, name) == 0) return item;
 	}
 
 	if (!create) return NULL;
 
 	/* otherwise make a new one */
-	return new IniItem(this, name, len);
+	return new IniItem(this, name, strlen(name));
 }
 
 void IniGroup::Clear()
@@ -97,19 +94,17 @@ IniFile::~IniFile()
 
 IniGroup *IniFile::GetGroup(const char *name, size_t len)
 {
-	IniGroup *group;
-
 	if (len == 0) len = strlen(name);
 
 	/* does it exist already? */
-	for (group = this->group; group != NULL; group = group->next) {
+	for (IniGroup *group = this->group; group != NULL; group = group->next) {
 		if (!memcmp(group->name, name, len) && group->name[len] == 0) {
 			return group;
 		}
 	}
 
 	/* otherwise make a new one */
-	group = new IniGroup(this, name, len);
+	IniGroup *group = new IniGroup(this, name, len);
 	group->comment = strdup("\n");
 	return group;
 }
@@ -145,9 +140,8 @@ void IniFile::LoadFromDisk(const char *filename)
 {
 	assert(this->last_group == &this->group);
 
-	char buffer[1024], c, *s, *t, *e;
+	char buffer[1024];
 	IniGroup *group = NULL;
-	IniItem *item = NULL;
 
 	char *comment = NULL;
 	uint comment_size = 0;
@@ -173,11 +167,12 @@ void IniFile::LoadFromDisk(const char *filename)
 
 	/* for each line in the file */
 	while ((size_t)ftell(in) < end && fgets(buffer, sizeof(buffer), in)) {
+		char c, *s;
 		/* trim whitespace from the left side */
 		for (s = buffer; *s == ' ' || *s == '\t'; s++) {}
 
 		/* trim whitespace from right side. */
-		e = s + strlen(s);
+		char *e = s + strlen(s);
 		while (e > s && ((c = e[-1]) == '\n' || c == '\r' || c == ' ' || c == '\t')) e--;
 		*e = '\0';
 
@@ -185,14 +180,13 @@ void IniFile::LoadFromDisk(const char *filename)
 		if (*s == '#' || *s == ';' || *s == '\0') {
 			uint ns = comment_size + (e - s + 1);
 			uint a = comment_alloc;
-			uint pos;
 			/* add to comment */
 			if (ns > a) {
 				a = max(a, 128U);
 				do a *= 2; while (a < ns);
 				comment = ReallocT(comment, comment_alloc = a);
 			}
-			pos = comment_size;
+			uint pos = comment_size;
 			comment_size += (e - s + 1);
 			comment[pos + e - s] = '\n'; // comment newline
 			memcpy(comment + pos, s, e - s); // copy comment contents
@@ -213,6 +207,7 @@ void IniFile::LoadFromDisk(const char *filename)
 				comment_size = 0;
 			}
 		} else if (group) {
+			char *t;
 			/* find end of keyname */
 			if (*s == '\"') {
 				s++;
@@ -223,7 +218,7 @@ void IniFile::LoadFromDisk(const char *filename)
 			}
 
 			/* it's an item in an existing group */
-			item = new IniItem(group, s, t-s);
+			IniItem *item = new IniItem(group, s, t - s);
 			if (comment_size) {
 				item->comment = strndup(comment, comment_size);
 				comment_size = 0;
@@ -258,17 +253,13 @@ void IniFile::LoadFromDisk(const char *filename)
 
 bool IniFile::SaveToDisk(const char *filename)
 {
-	FILE *f;
-	IniGroup *group;
-	IniItem *item;
-
-	f = fopen(filename, "w");
+	FILE *f = fopen(filename, "w");
 	if (f == NULL) return false;
 
-	for (group = this->group; group != NULL; group = group->next) {
+	for (const IniGroup *group = this->group; group != NULL; group = group->next) {
 		if (group->comment) fputs(group->comment, f);
 		fprintf(f, "[%s]\n", group->name);
-		for (item = group->item; item != NULL; item = item->next) {
+		for (const IniItem *item = group->item; item != NULL; item = item->next) {
 			assert(item->value != NULL);
 			if (item->comment != NULL) fputs(item->comment, f);
 
