@@ -2,6 +2,7 @@
 ##ownname Português
 ##isocode pt_PT
 ##winlangid 0x0816
+##grflangid 0x36
 ##plural 0
 
 #

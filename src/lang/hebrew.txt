@@ -2,6 +2,7 @@
 ##ownname עברית
 ##isocode he_IL
 ##winlangid 0x040d
+##grflangid 0x61
 ##plural 0
 ##gender m f
 ##textdir rtl

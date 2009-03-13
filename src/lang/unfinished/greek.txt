@@ -2,6 +2,7 @@
 ##ownname Ελληνικά
 ##isocode el_GR
 ##winlangid 0x0408
+##grflangid 0x1e
 ##plural 0
 ##gender m f n
 

@@ -2,6 +2,7 @@
 ##ownname Deutsch
 ##isocode de_DE
 ##winlangid 0x0407
+##grflangid 0x02
 ##plural 0
 ##gender m w n p
 

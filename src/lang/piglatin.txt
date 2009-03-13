@@ -2,6 +2,7 @@
 ##ownname Igpay atinlay
 ##isocode xx_PL
 ##winlangid 0x0000
+##grflangid 0x01
 ##plural 0
 
 #

@@ -1,7 +1,8 @@
 ##name Ido
 ##ownname Ido
-##isocode io_XX
+##isocode io_IO
 ##winlangid 0x0000
+##grflangid 0x06
 ##plural 0
 
 #

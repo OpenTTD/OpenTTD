@@ -2,6 +2,7 @@
 ##ownname Thai
 ##isocode th_TH
 ##winlangid 0x041e
+##grflangid 0x42
 ##plural 1
 ##textdir ltr
 

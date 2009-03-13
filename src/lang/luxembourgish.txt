@@ -2,6 +2,7 @@
 ##ownname Luxembourgish
 ##isocode lb_LU
 ##winlangid 0x046e
+##grflangid 0x23
 ##plural 0
 
 #

@@ -2,6 +2,7 @@
 ##ownname Français
 ##isocode fr_FR
 ##winlangid 0x040c
+##grflangid 0x03
 ##plural 2
 ##gender m m2 f
 

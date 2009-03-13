@@ -2,6 +2,7 @@
 ##ownname Español (ES)
 ##isocode es_ES
 ##winlangid 0x0c0a
+##grflangid 0x04
 ##plural 0
 ##gender masculino femenino
 

@@ -2,6 +2,7 @@
 ##ownname Polski
 ##isocode pl_PL
 ##winlangid 0x0415
+##grflangid 0x30
 ##plural 7
 ##case d c b n m w
 ##gender m f n

@@ -2,6 +2,7 @@
 ##ownname 日本語
 ##isocode ja_JP
 ##winlangid 0x0411
+##grflangid 0x39
 ##plural 1
 
 #

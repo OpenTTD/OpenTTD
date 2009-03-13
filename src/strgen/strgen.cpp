@@ -88,6 +88,7 @@ static char _lang_name[32], _lang_ownname[32], _lang_isocode[16];
 static byte _lang_pluralform;
 static byte _lang_textdir;
 static uint16 _lang_winlangid;
+static uint8 _lang_newgrflangid;
 #define MAX_NUM_GENDER 8
 static char _genders[MAX_NUM_GENDER][16];
 static uint _numgenders;
@@ -663,12 +664,19 @@ static void HandlePragma(char *str)
 			error("Invalid textdir %s", str + 8);
 		}
 	} else if (!memcmp(str, "winlangid ", 10)) {
-		char *buf = str + 10;
+		const char *buf = str + 10;
 		long langid = strtol(buf, NULL, 16);
 		if (langid > UINT16_MAX || langid < 0) {
 			error("Invalid winlangid %s", buf);
 		}
 		_lang_winlangid = (uint16)langid;
+	} else if (!memcmp(str, "grflangid ", 10)) {
+		const char *buf = str + 10;
+		long langid = strtol(buf, NULL, 16);
+		if (langid >= 0x7F || langid < 0) {
+			error("Invalid grflangid %s", buf);
+		}
+		_lang_newgrflangid = (uint8)langid;
 	} else if (!memcmp(str, "gender ", 7)) {
 		char *buf = str + 7;
 
@@ -933,6 +941,7 @@ static void ParseFile(const char *file, bool english)
 	_lang_name[0] = _lang_ownname[0] = _lang_isocode[0] = '\0';
 	_lang_textdir = TD_LTR;
 	_lang_winlangid = 0x0000; // neutral language code
+	_lang_newgrflangid = 0; // standard english
 	// TODO:!! We can't reset the cases. In case the translated strings
 	// derive some strings from english....
 
@@ -1183,6 +1192,7 @@ static void WriteLangfile(const char *filename)
 	hdr.plural_form = _lang_pluralform;
 	hdr.text_dir = _lang_textdir;
 	hdr.winlangid = TO_LE16(_lang_winlangid);
+	hdr.newgrflangid = _lang_newgrflangid;
 	strcpy(hdr.name, _lang_name);
 	strcpy(hdr.own_name, _lang_ownname);
 	strcpy(hdr.isocode, _lang_isocode);

@@ -2,6 +2,7 @@
 ##ownname Македонски
 ##isocode mk_MK
 ##winlangid 0x042f
+##grflangid 0x26
 ##plural 0
 
 #

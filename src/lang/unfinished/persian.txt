@@ -2,6 +2,7 @@
 ##ownname فارسی
 ##isocode fa_IR
 ##winlangid 0x0429
+##grflangid 0x62
 ##plural 0
 ##textdir rtl
 

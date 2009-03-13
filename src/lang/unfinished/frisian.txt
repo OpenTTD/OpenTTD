@@ -2,6 +2,7 @@
 ##ownname Frysk
 ##isocode fy_NL
 ##winlangid 0x0462
+##grflangid 0x32
 ##plural 0
 
 #

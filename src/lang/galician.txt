@@ -2,6 +2,7 @@
 ##ownname Galego
 ##isocode gl_ES
 ##winlangid 0x0456
+##grflangid 0x31
 ##plural 0
 ##gender m f n
 

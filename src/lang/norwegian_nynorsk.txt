@@ -2,6 +2,7 @@
 ##ownname Norsk, Nynorsk
 ##isocode nn_NO
 ##winlangid 0x0814
+##grflangid 0x0e
 ##plural 0
 ##gender masculine feminine neuter
 

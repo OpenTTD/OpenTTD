@@ -2,6 +2,7 @@
 ##ownname Norsk (bokmål)
 ##isocode nb_NO
 ##winlangid 0x0414
+##grflangid 0x2f
 ##plural 0
 
 #

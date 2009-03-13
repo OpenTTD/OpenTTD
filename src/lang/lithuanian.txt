@@ -2,6 +2,7 @@
 ##ownname Lietuvių
 ##isocode lt_LT
 ##winlangid 0x0427
+##grflangid 0x2b
 ##plural 5
 ##case kas ko kam ka kuo kur kreip
 ##gender vyr mot

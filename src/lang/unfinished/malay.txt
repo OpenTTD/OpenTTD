@@ -2,6 +2,7 @@
 ##ownname Melayu
 ##isocode ms_MY
 ##winlangid 0x043a
+##grflangid 0x3c
 ##plural 0
 
 #

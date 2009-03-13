@@ -2,6 +2,7 @@
 ##ownname Esperanto
 ##isocode eo_EO
 ##winlangid 0x0000
+##grflangid 0x05
 ##plural 0
 ##case n
 

@@ -1,7 +1,8 @@
 ##name Serbian
 ##ownname Srpski
-##isocode srp
+##isocode sr_RS
 ##winlangid 0x7c1a
+##grflangid 0x0d
 ##plural 6
 ##case nom big gen dat aku vok lok ins
 ##gender muški ženski srednji

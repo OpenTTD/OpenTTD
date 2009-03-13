@@ -2,6 +2,7 @@
 ##ownname Italiano
 ##isocode it_IT
 ##winlangid 0x0410
+##grflangid 0x27
 ##plural 0
 ##case ms mp fs fp
 ##gender m f

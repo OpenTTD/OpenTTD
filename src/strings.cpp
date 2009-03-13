@@ -1315,7 +1315,7 @@ bool ReadLanguagePack(int lang_index)
 
 	_dynlang.curr = lang_index;
 	_dynlang.text_dir = (TextDirection)lang_pack->text_dir;
-	SetCurrentGrfLangID(_langpack->isocode);
+	SetCurrentGrfLangID(_langpack->newgrflangid);
 	SortNetworkLanguages();
 	return true;
 }

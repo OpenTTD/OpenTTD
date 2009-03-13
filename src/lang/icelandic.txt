@@ -2,6 +2,7 @@
 ##ownname Íslenska
 ##isocode is_IS
 ##winlangid 0x040f
+##grflangid 0x29
 ##plural 0
 ##gender karlkyn kvenkyn hvorugkyn
 

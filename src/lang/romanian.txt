@@ -2,6 +2,7 @@
 ##ownname Românã
 ##isocode ro_RO
 ##winlangid 0x0418
+##grflangid 0x28
 ##plural 0
 
 #

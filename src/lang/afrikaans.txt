@@ -2,6 +2,7 @@
 ##ownname Jaybee
 ##isocode af_ZA
 ##winlangid 0x0436
+##grflangid 0x1b
 ##plural 0
 ##gender male
 

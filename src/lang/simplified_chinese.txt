@@ -2,6 +2,7 @@
 ##ownname 简体中文
 ##isocode zh_CN
 ##winlangid 0x0804
+##grflangid 0x56
 ##plural 1
 
 #

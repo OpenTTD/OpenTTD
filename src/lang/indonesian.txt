@@ -2,6 +2,7 @@
 ##ownname Bahasa Indonesia
 ##isocode id_ID
 ##winlangid 0x0421
+##grflangid 0x5a
 ##plural 1
 
 #

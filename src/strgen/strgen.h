@@ -23,7 +23,8 @@ struct LanguagePackHeader {
 	 *   http://msdn.microsoft.com/en-us/library/ms776294.aspx
 	 */
 	uint16 winlangid;   // windows language id
-	/* byte pad[0];        // pad header to be a multiple of 4 */
+	uint8 newgrflangid; // newgrf language id
+	byte pad[3];        // pad header to be a multiple of 4
 };
 
 assert_compile(sizeof(LanguagePackHeader) % 4 == 0);

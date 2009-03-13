@@ -2,6 +2,7 @@
 ##ownname Dansk
 ##isocode da_DA
 ##winlangid 0x0406
+##grflangid 0x2d
 ##plural 0
 
 #

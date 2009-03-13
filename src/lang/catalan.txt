@@ -2,6 +2,7 @@
 ##ownname Català
 ##isocode ca_ES
 ##winlangid 0x0403
+##grflangid 0x22
 ##plural 0
 
 #

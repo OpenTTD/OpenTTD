@@ -2,6 +2,7 @@
 ##ownname 繁體中文
 ##isocode zh_TW
 ##winlangid 0x0404
+##grflangid 0x0c
 ##plural 1
 
 #

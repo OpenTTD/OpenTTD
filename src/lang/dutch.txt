@@ -2,6 +2,7 @@
 ##ownname Nederlands
 ##isocode nl_NL
 ##winlangid 0x0413
+##grflangid 0x1f
 ##plural 0
 
 #

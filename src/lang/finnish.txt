@@ -2,6 +2,7 @@
 ##ownname Suomi
 ##isocode fi_FI
 ##winlangid 0x040b
+##grflangid 0x35
 ##plural 0
 
 #
