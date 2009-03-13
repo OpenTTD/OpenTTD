@@ -667,7 +667,6 @@ STR_FULL                                                        :Täysi
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Kaupunkihakemisto
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Oma
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1198,6 +1197,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Junien r
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Rakenna rautatiet käyttäen Autorail-tilaa.
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...tässä skenaariossa ei ole kaupunkeja.
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Kartan generointi peruutettu...{}...ei kelvollisia kaupunkien sijainteja
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Monta satunnaista kaupunkia
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Peitä kartta satunnaisesti sijoitetuilla kaupungeilla.
@@ -2129,6 +2129,7 @@ STR_NUM_VERY_LOW                                                :Erittäin alhai
 STR_6816_LOW                                                    :Matala
 STR_6817_NORMAL                                                 :Normaali
 STR_6818_HIGH                                                   :Korkea
+STR_02BF_CUSTOM                                                 :Oma
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Hyvin hidas

@@ -669,7 +669,6 @@ STR_FULL                                                        :Completo
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Elenco città
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Personalizzati
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1200,6 +1199,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Impossib
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Costruisce binari usando la modalità automatica
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...non ci sono città in questo scenario
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Generazione mondo interrotta...{}...nessuna posizione adatta per le città
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Alcune città casuali
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Copre la mappa con città posizionate casualmente
@@ -2131,6 +2131,7 @@ STR_NUM_VERY_LOW                                                :Molto basso
 STR_6816_LOW                                                    :Basso
 STR_6817_NORMAL                                                 :Normale
 STR_6818_HIGH                                                   :Alto
+STR_02BF_CUSTOM                                                 :Personalizzati
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Molto lenta

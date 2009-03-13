@@ -734,7 +734,6 @@ STR_FULL                                                        :Plne
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Zoznam miest
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Vlastne
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1265,6 +1264,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Tu nie j
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Automaticka stavba zeleznicnych kolaji
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}... v tomto scenari nie je ziadne mesto
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Generovanie mapy zrušené...{}...žiadne vyhovujúce lokácie miest
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Vela nahodnych miest
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Pokryt mapu nahodne umiestnenymi mestami
@@ -2196,6 +2196,7 @@ STR_NUM_VERY_LOW                                                :Velmi nízky
 STR_6816_LOW                                                    :Nízky
 STR_6817_NORMAL                                                 :Normálny
 STR_6818_HIGH                                                   :Vysoký
+STR_02BF_CUSTOM                                                 :Vlastne
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Velmi Pomale

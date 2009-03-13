@@ -668,7 +668,6 @@ STR_FULL                                                        :Zeitung
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Städteverzeichnis
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Eigene
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1199,6 +1198,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Wegpunkt
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Gleise legen mit automatischer Wahl der Ausrichtung
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...in diesem Szenario gibt es keine Stadt
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Kartengenerierung wurde abgebrochen... {} ...kein brauchbarer Platz für eine Stadt gefunden
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Viele zufällige Städte
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Das Spielfeld mit zufällig platzierten Städten füllen
@@ -1455,7 +1455,7 @@ STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Diese Ve
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Falsches Passwort
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}Der Server ist voll
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Sie sind auf diesem Server gesperrt
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Sie wurden vom Server ausgeschlossen
+STR_NETWORK_ERR_KICKED                                          :{WHITE} Sie wurden vom Server hinausgeworfen
 STR_NETWORK_ERR_CHEATER                                         :{WHITE}Mogeln ist auf diesem Server nicht erlaubt
 
 ############ Leave those lines in this order!!
@@ -1471,7 +1471,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :Falsche Version
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :Name wird bereits verwendet
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :Falsches Spielpasswort
 STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :Falsche Unternehmens-ID in DoCommand
-STR_NETWORK_ERR_CLIENT_KICKED                                   :ausgeschlossen
+STR_NETWORK_ERR_CLIENT_KICKED                                   :vom Server hinausgeworfen
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :hat versucht zu mogeln
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :Server voll
 ############ End of leave-in-this-order
@@ -1509,7 +1509,7 @@ STR_NETWORK_CLIENT                                              :Teilnehmer
 STR_NETWORK_SPECTATORS                                          :Zuschauer
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(keiner)
-STR_NETWORK_CLIENTLIST_KICK                                     :Ausschließen
+STR_NETWORK_CLIENTLIST_KICK                                     :Hinauswerfen
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Geld schenken
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Mit allen sprechen
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Mit eigener Firma sprechen
@@ -2130,6 +2130,7 @@ STR_NUM_VERY_LOW                                                :Sehr niedrig
 STR_6816_LOW                                                    :Niedrig
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Hoch
+STR_02BF_CUSTOM                                                 :Eigene
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Sehr langsam

@@ -667,7 +667,6 @@ STR_FULL                                                        :Full
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Town directory
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Custom
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1198,6 +1197,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Can't re
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Build railroad track using the Autorail mode
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...there is no town in this scenario
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Map generation aborted...{}...no suitable town locations
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Many random towns
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Cover the map with randomly placed towns
@@ -2129,6 +2129,7 @@ STR_NUM_VERY_LOW                                                :Very low
 STR_6816_LOW                                                    :Low
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :High
+STR_02BF_CUSTOM                                                 :Custom
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Very Slow

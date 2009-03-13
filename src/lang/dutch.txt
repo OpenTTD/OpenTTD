@@ -667,7 +667,6 @@ STR_FULL                                                        :Volledig
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Stedenlijst
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Aangepast
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1686,7 +1685,7 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centreer
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Hernoem plaats
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagiers afgelopen maand: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post afgelopen maand: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Goederen nodig om het dorp te laten groeien:
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Vracht nodig voor groei dorp:
 STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} nodig
 STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} afgelopen maand afgeleverd
 STR_200F_TALL_OFFICE_BLOCK                                      :Hoog kantoorgebouw
@@ -2129,6 +2128,7 @@ STR_NUM_VERY_LOW                                                :Erg laag
 STR_6816_LOW                                                    :Laag
 STR_6817_NORMAL                                                 :Normaal
 STR_6818_HIGH                                                   :Hoog
+STR_02BF_CUSTOM                                                 :Aangepast
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Erg langzaam

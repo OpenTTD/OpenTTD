@@ -607,6 +607,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Şehir k
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...haritada boş yer yok
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Şehrin boyutunu büyült
 STR_023C_EXPAND                                                 :{BLACK}Genişlet
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Şehir yol yapmayacak. Yol yapımını Gelişmiş Ayarlar->Ekonomi->Şehirler'den etkinleştirebilirsiniz.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Rastgele Şehir
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Rastgele bir yerde şehir yarat
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Buraya {STRING} yapılamaz...
@@ -666,7 +667,6 @@ STR_FULL                                                        :Tam
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Şehir listesi
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Özel
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -946,6 +946,7 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Özel i
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Ağır yük trenleri için ağırlık çarpanı: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Uçak hızı çarpanı: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Şehiriçi yollara durak yapmak izinli: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Rakiplerin yolu üzerinde durak yapmaya izin ver: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Bitişik istasyonlar izinli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Birden çok NewGRF lokomotif setini aktifleştir: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Araçlar varken bu ayarı değiştirmezsiniz.
@@ -1196,6 +1197,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Tren yer
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Otoray modunda ray yap
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...Bu senaryoda hiç şehir yok
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Harita oluşturulması iptal edildi...{}...uygun yerleşim bölgesi yok
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Birçok rastgele şehir
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Haritayı rastgele şehirlerle doldur
@@ -2127,6 +2129,7 @@ STR_NUM_VERY_LOW                                                :Çok az
 STR_6816_LOW                                                    :Düşük
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Yüksek
+STR_02BF_CUSTOM                                                 :Özel
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Çok Yavas
