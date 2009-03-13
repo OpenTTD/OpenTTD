@@ -2001,6 +2001,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\vehicle_cmd.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\water_cmd.cpp"
 				>
 			</File>

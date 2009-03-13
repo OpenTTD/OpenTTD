@@ -449,6 +449,7 @@ train_cmd.cpp
 tree_cmd.cpp
 tunnelbridge_cmd.cpp
 unmovable_cmd.cpp
+vehicle_cmd.cpp
 water_cmd.cpp
 
 # Save/Load handlers
