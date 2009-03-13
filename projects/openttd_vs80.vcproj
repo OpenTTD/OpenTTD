@@ -1972,6 +1972,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\signs_cmd.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\station_cmd.cpp"
 				>
 			</File>
