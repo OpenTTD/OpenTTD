@@ -452,6 +452,7 @@ tunnelbridge_cmd.cpp
 unmovable_cmd.cpp
 vehicle_cmd.cpp
 water_cmd.cpp
+waypoint_cmd.cpp
 
 # Save/Load handlers
 saveload/afterload.cpp

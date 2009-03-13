@@ -2012,6 +2012,10 @@
 				RelativePath=".\..\src\water_cmd.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\..\src\waypoint_cmd.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Save/Load handlers"
