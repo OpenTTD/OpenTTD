@@ -572,7 +572,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_SMOOTHNESS_PULLDOWN:    _settings_newgame.game_creation.tgen_smoothness = index;  break;
 
 			case GLAND_TOWN_PULLDOWN:
-				if (index == CUSTOM_TOWN_NUMBER_DIFFICULTY) {
+				if ((uint)index == CUSTOM_TOWN_NUMBER_DIFFICULTY) {
 					this->widget_id = widget;
 					SetDParam(0, _settings_newgame.game_creation.custom_town_number);
 					ShowQueryString(STR_CONFIG_SETTING_INT32, STR_NUMBER_OF_TOWNS, 5, 50, this, CS_NUMERAL, QSF_NONE);

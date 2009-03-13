@@ -95,8 +95,8 @@ struct BuildingCounts {
 	uint8 class_count[HOUSE_CLASS_MAX];
 };
 
-static const int CUSTOM_TOWN_NUMBER_DIFFICULTY  = 4; ///< value for custom town number in difficulty settings
-static const int CUSTOM_TOWN_MAX_NUMBER = 5000;  ///< this is the maximum number of towns a user can specify in customisation
+static const uint CUSTOM_TOWN_NUMBER_DIFFICULTY  = 4; ///< value for custom town number in difficulty settings
+static const uint CUSTOM_TOWN_MAX_NUMBER = 5000;  ///< this is the maximum number of towns a user can specify in customisation
 
 DECLARE_OLD_POOL(Town, Town, 3, 8000)
 
