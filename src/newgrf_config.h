@@ -31,6 +31,7 @@ enum GRFStatus {
 /** Encountered GRF bugs */
 enum GRFBugs {
 	GBUG_VEH_LENGTH,  ///< Length of rail vehicle changes when not inside a depot
+	GBUG_VEH_REFIT,   ///< Articulated vehicles carry different cargos resp. are differently refittable than specified in purchase list
 };
 
 /** Status of post-gameload GRF compatibility check */

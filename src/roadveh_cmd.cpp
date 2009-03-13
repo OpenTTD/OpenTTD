@@ -275,10 +275,13 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
 		InvalidateWindow(WC_COMPANY, v->owner);
-		if (IsLocalCompany())
+		if (IsLocalCompany()) {
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Road window
+		}
 
 		GetCompany(_current_company)->num_engines[p1]++;
+
+		CheckConsistencyOfArticulatedVehicle(v);
 	}
 
 	return cost;

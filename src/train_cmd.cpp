@@ -178,23 +178,7 @@ static void RailVehicleLengthChanged(const Vehicle *u)
 	uint32 grfid = engine->grffile->grfid;
 	GRFConfig *grfconfig = GetGRFConfig(grfid);
 	if (GamelogGRFBugReverse(grfid, engine->internal_id) || !HasBit(grfconfig->grf_bugs, GBUG_VEH_LENGTH)) {
-		SetBit(grfconfig->grf_bugs, GBUG_VEH_LENGTH);
-		SetDParamStr(0, grfconfig->name);
-		SetDParam(1, u->engine_type);
-		ShowErrorMessage(STR_NEWGRF_BROKEN_VEHICLE_LENGTH, STR_NEWGRF_BROKEN, 0, 0);
-
-		/* debug output */
-		char buffer[512];
-
-		SetDParamStr(0, grfconfig->name);
-		GetString(buffer, STR_NEWGRF_BROKEN, lastof(buffer));
-		DEBUG(grf, 0, "%s", buffer + 3);
-
-		SetDParam(1, u->engine_type);
-		GetString(buffer, STR_NEWGRF_BROKEN_VEHICLE_LENGTH, lastof(buffer));
-		DEBUG(grf, 0, "%s", buffer + 3);
-
-		if (!_networking) _pause_game = -1;
+		ShowNewGrfVehicleError(u->engine_type, STR_NEWGRF_BROKEN, STR_NEWGRF_BROKEN_VEHICLE_LENGTH, GBUG_VEH_LENGTH, true);
 	}
 }
 
@@ -678,6 +662,8 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Train window
 		}
 		GetCompany(_current_company)->num_engines[engine]++;
+
+		CheckConsistencyOfArticulatedVehicle(v);
 	}
 
 	return value;
@@ -857,6 +843,8 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		}
 
 		GetCompany(_current_company)->num_engines[p1]++;
+
+		CheckConsistencyOfArticulatedVehicle(v);
 	}
 
 	return value;

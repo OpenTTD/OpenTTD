@@ -14,6 +14,7 @@
 #include "vehicle_type.h"
 #include "engine_type.h"
 #include "transport_type.h"
+#include "newgrf_config.h"
 
 #define is_custom_sprite(x) (x >= 0xFD)
 #define IS_CUSTOM_FIRSTHEAD_SPRITE(x) (x == 0xFD)
@@ -46,6 +47,7 @@ void ViewportAddVehicles(DrawPixelInfo *dpi);
 
 SpriteID GetRotorImage(const Vehicle *v);
 
+void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRFBugs bug_type, bool critical);
 StringID VehicleInTheWayErrMsg(const Vehicle *v);
 bool HasVehicleOnTunnelBridge(TileIndex tile, TileIndex endtile, const Vehicle *ignore = NULL);
 

@@ -3,7 +3,9 @@
 /** @file vehicle.cpp Base implementations of all vehicles. */
 
 #include "stdafx.h"
+#include "gui.h"
 #include "openttd.h"
+#include "debug.h"
 #include "roadveh.h"
 #include "ship.h"
 #include "spritecache.h"
@@ -36,6 +38,7 @@
 #include "core/smallmap_type.hpp"
 #include "depot_func.h"
 #include "settings_type.h"
+#include "network/network.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -99,6 +102,40 @@ bool Vehicle::NeedsAutomaticServicing() const
 	if (this->current_order.IsType(OT_LOADING))            return false;
 	if (this->current_order.IsType(OT_GOTO_DEPOT) && this->current_order.GetDepotOrderType() != ODTFB_SERVICE) return false;
 	return NeedsServicing();
+}
+
+/**
+ * Displays a "NewGrf Bug" error message for a engine, and pauses the game if not networking.
+ * @param engine The engine that caused the problem
+ * @param part1  Part 1 of the error message, taking the grfname as parameter 1
+ * @param part2  Part 2 of the error message, taking the engine as parameter 2
+ * @param bug_type Flag to check and set in grfconfig
+ * @param critical Shall the "OpenTTD might crash"-message be shown when the player tries to unpause?
+ */
+void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRFBugs bug_type, bool critical)
+{
+	const Engine *e = GetEngine(engine);
+	uint32 grfid = e->grffile->grfid;
+	GRFConfig *grfconfig = GetGRFConfig(grfid);
+
+	if (!HasBit(grfconfig->grf_bugs, bug_type)) {
+		SetBit(grfconfig->grf_bugs, bug_type);
+		SetDParamStr(0, grfconfig->name);
+		SetDParam(1, engine);
+		ShowErrorMessage(part2, part1, 0, 0);
+		if (!_networking) _pause_game = (critical ? -1 : 1);
+	}
+
+	/* debug output */
+	char buffer[512];
+
+	SetDParamStr(0, grfconfig->name);
+	GetString(buffer, part1, lastof(buffer));
+	DEBUG(grf, 0, "%s", buffer + 3);
+
+	SetDParam(1, engine);
+	GetString(buffer, part2, lastof(buffer));
+	DEBUG(grf, 0, "%s", buffer + 3);
 }
 
 StringID VehicleInTheWayErrMsg(const Vehicle *v)

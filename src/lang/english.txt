@@ -3170,6 +3170,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Behaviou
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}It changes vehicle length for '{1:ENGINE}' when not inside a depot.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Train '{VEHICLE}' belonging to '{COMPANY}' has invalid length. It is probably caused by problems with NewGRFs. Game may desync or crash.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:RAW_STRING}' provides incorrect information.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Cargo/refit information for '{1:ENGINE}' differs from purchase list after construction. This might cause autorenew/-replace to fail refitting correctly.
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game was saved in version without tram support. All trams have been removed.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Custom currency

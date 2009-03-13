@@ -9,6 +9,8 @@
 #include "newgrf_engine.h"
 #include "vehicle_func.h"
 
+#include "table/strings.h"
+
 static const uint MAX_ARTICULATED_PARTS = 100; ///< Maximum of articulated parts per vehicle, i.e. when to abort calling the articulated vehicle callback.
 
 uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
@@ -238,6 +240,64 @@ bool IsArticulatedVehicleCarryingDifferentCargos(const Vehicle *v, CargoID *carg
 	return false;
 }
 
+/**
+ * Checks whether the specs of freshly build articulated vehicles are consistent with the information specified in the purchase list.
+ * Only essential information is checked to leave room for magic tricks/workarounds to grfcoders.
+ * It checks:
+ *   For autoreplace/-renew:
+ *    - Default cargo type (without capacity)
+ *    - intersection and union of refit masks.
+ */
+void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
+{
+	const Engine *engine = GetEngine(v->engine_type);
+
+	uint32 purchase_refit_union = GetUnionOfArticulatedRefitMasks(v->engine_type, v->type, true);
+	uint32 purchase_refit_intersection = GetIntersectionOfArticulatedRefitMasks(v->engine_type, v->type, true);
+	uint16 *purchase_default_capacity = GetCapacityOfArticulatedParts(v->engine_type, v->type);
+
+	uint32 real_refit_union = 0;
+	uint32 real_refit_intersection = UINT_MAX;
+	uint16 real_default_capacity[NUM_CARGO];
+	memset(real_default_capacity, 0, sizeof(real_default_capacity));
+
+	do {
+		uint32 refit_mask = GetAvailableVehicleCargoTypes(v->engine_type, v->type, true);
+		real_refit_union |= refit_mask;
+		if (refit_mask != 0) real_refit_intersection &= refit_mask;
+
+		assert(v->cargo_type < NUM_CARGO);
+		real_default_capacity[v->cargo_type] += v->cargo_cap;
+
+		switch (v->type) {
+			case VEH_TRAIN:
+				v = (EngineHasArticPart(v) ? GetNextArticPart(v) : NULL);
+				break;
+
+			case VEH_ROAD:
+				v = (RoadVehHasArticPart(v) ? v->Next() : NULL);
+				break;
+
+			default:
+				v = NULL;
+				break;
+		}
+	} while (v != NULL);
+
+	/* Check whether the vehicle carries more cargos than expected */
+	bool carries_more = false;
+	for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
+		if (real_default_capacity[cid] != 0 && purchase_default_capacity[cid] == 0) {
+			carries_more = true;
+			break;
+		}
+	}
+
+	/* show a warning once for each GRF after each game load */
+	if (real_refit_union != purchase_refit_union || real_refit_intersection != purchase_refit_intersection || carries_more) {
+		ShowNewGrfVehicleError(engine->index, STR_NEWGRF_BUGGY, STR_NEWGRF_BUGGY_ARTICULATED_CARGO, GBUG_VEH_REFIT, false);
+	}
+}
 
 void AddArticulatedParts(Vehicle **vl, VehicleType type)
 {

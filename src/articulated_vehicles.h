@@ -15,5 +15,7 @@ uint32 GetUnionOfArticulatedRefitMasks(EngineID engine, VehicleType type, bool i
 uint32 GetIntersectionOfArticulatedRefitMasks(EngineID engine, VehicleType type, bool include_initial_cargo_type);
 bool IsArticulatedVehicleCarryingDifferentCargos(const Vehicle *v, CargoID *cargo_type);
 bool IsArticulatedVehicleRefittable(EngineID engine);
+void CheckConsistencyOfArticulatedVehicle(const Vehicle *v);
+
 
 #endif /* ARTICULATED_VEHICLES_H */
