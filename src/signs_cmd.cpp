@@ -8,7 +8,6 @@
 #include "signs_base.h"
 #include "signs_func.h"
 #include "command_func.h"
-#include "strings_func.h"
 #include "tilehighlight_func.h"
 #include "window_func.h"
 #include "map_func.h"

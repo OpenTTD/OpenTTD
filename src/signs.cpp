@@ -10,7 +10,6 @@
 #include "viewport_func.h"
 #include "zoom_func.h"
 #include "functions.h"
-#include "window_func.h"
 #include "oldpool_func.h"
 
 #include "table/strings.h"

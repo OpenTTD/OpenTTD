@@ -16,7 +16,6 @@
 #include "vehicle_func.h"
 #include "string_func.h"
 #include "company_func.h"
-#include "company_base.h"
 #include "company_gui.h"
 #include "settings_type.h"
 #include "vehicle_base.h"

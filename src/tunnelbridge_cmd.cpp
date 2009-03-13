@@ -9,7 +9,6 @@
 #include "openttd.h"
 #include "rail_map.h"
 #include "landscape.h"
-#include "town_type.h"
 #include "unmovable_map.h"
 #include "viewport_func.h"
 #include "command_func.h"

@@ -12,7 +12,6 @@
 #include "gfx_func.h"
 #include "command_func.h"
 #include "company_func.h"
-#include "functions.h"
 #include "window_func.h"
 
 #include "table/strings.h"

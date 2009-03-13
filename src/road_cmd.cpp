@@ -20,7 +20,6 @@
 #include "window_func.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
-#include "vehicle_base.h"
 #include "sound_func.h"
 #include "tunnelbridge.h"
 #include "cheat_type.h"

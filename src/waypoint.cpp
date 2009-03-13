@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 
-#include "command_func.h"
+#include "strings_type.h"
 #include "rail.h"
 #include "station_base.h"
 #include "town.h"
@@ -12,7 +12,7 @@
 #include "window_func.h"
 #include "newgrf_station.h"
 #include "oldpool_func.h"
-#include "train.h"
+#include "order_func.h"
 
 DEFINE_OLD_POOL_GENERIC(Waypoint, Waypoint)
 
