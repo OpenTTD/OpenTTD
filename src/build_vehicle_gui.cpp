@@ -237,8 +237,11 @@ static int CDECL ShipEngineCapacitySorter(const void *a, const void *b)
 /* Aircraft sorting functions */
 static int CDECL AircraftEngineCargoSorter(const void *a, const void *b)
 {
-	int va = AircraftVehInfo(*(const EngineID*)a)->passenger_capacity;
-	int vb = AircraftVehInfo(*(const EngineID*)b)->passenger_capacity;
+	const Engine *e_a = GetEngine(*(const EngineID*)a);
+	const Engine *e_b = GetEngine(*(const EngineID*)b);
+
+	int va = AircraftDefaultCargoCapacity(e_a->GetDefaultCargoType(), &e_a->u.air);
+	int vb = AircraftDefaultCargoCapacity(e_b->GetDefaultCargoType(), &e_b->u.air);
 	int r = va - vb;
 
 	if (r == 0) {

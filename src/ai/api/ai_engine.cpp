@@ -64,10 +64,11 @@
 {
 	if (!IsValidEngine(engine_id)) return -1;
 
-	switch (::GetEngine(engine_id)->type) {
+	const Engine *e = ::GetEngine(engine_id);
+	switch (e->type) {
 		case VEH_ROAD:
 		case VEH_TRAIN: {
-			uint16 *capacities = GetCapacityOfArticulatedParts(engine_id, ::GetEngine(engine_id)->type);
+			uint16 *capacities = GetCapacityOfArticulatedParts(engine_id, e->type);
 			for (CargoID c = 0; c < NUM_CARGO; c++) {
 				if (capacities[c] == 0) continue;
 				return capacities[c];
@@ -75,15 +76,13 @@
 			return -1;
 		} break;
 
-		case VEH_SHIP: {
-			const ShipVehicleInfo *vi = ::ShipVehInfo(engine_id);
-			return vi->capacity;
-		} break;
+		case VEH_SHIP:
+			return e->u.ship.capacity;
+			break;
 
-		case VEH_AIRCRAFT: {
-			const AircraftVehicleInfo *vi = ::AircraftVehInfo(engine_id);
-			return vi->passenger_capacity;
-		} break;
+		case VEH_AIRCRAFT:
+			return AircraftDefaultCargoCapacity(e->GetDefaultCargoType(), &e->u.air);
+			break;
 
 		default: NOT_REACHED();
 	}
