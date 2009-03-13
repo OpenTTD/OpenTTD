@@ -18,6 +18,7 @@
 #include "company_func.h"
 #include "town.h"
 #include "network/network.h"
+#include "network/network_content.h"
 #include "variables.h"
 #include "company_base.h"
 #include "texteff.hpp"
@@ -1338,16 +1339,17 @@ void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallback
 
 
 static const Widget _load_dialog_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   256,     0,    13, STR_NULL,         STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   127,    14,    25, STR_SORT_BY_NAME, STR_SORT_ORDER_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   128,   256,    14,    25, STR_SORT_BY_DATE, STR_SORT_ORDER_TIP},
-{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,     0,   256,    26,    47, 0x0,              STR_NULL},
-{      WWT_PANEL,     RESIZE_RB,  COLOUR_GREY,     0,   256,    48,   153, 0x0,              STR_NULL},
-{ WWT_PUSHIMGBTN,     RESIZE_LR,  COLOUR_GREY,   245,   256,    48,    59, SPR_HOUSE_ICON,   STR_SAVELOAD_HOME_BUTTON},
-{      WWT_INSET,     RESIZE_RB,  COLOUR_GREY,     2,   243,    50,   151, 0x0,              STR_400A_LIST_OF_DRIVES_DIRECTORIES},
-{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   245,   256,    60,   141, 0x0,              STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   245,   256,   142,   153, 0x0,              STR_RESIZE_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   256,     0,    13, STR_NULL,                 STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   127,    14,    25, STR_SORT_BY_NAME,         STR_SORT_ORDER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   128,   256,    14,    25, STR_SORT_BY_DATE,         STR_SORT_ORDER_TIP},
+{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,     0,   256,    26,    47, 0x0,                      STR_NULL},
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_GREY,     0,   256,    48,   153, 0x0,                      STR_NULL},
+{ WWT_PUSHIMGBTN,     RESIZE_LR,  COLOUR_GREY,   245,   256,    48,    59, SPR_HOUSE_ICON,           STR_SAVELOAD_HOME_BUTTON},
+{      WWT_INSET,     RESIZE_RB,  COLOUR_GREY,     2,   243,    50,   139, 0x0,                      STR_400A_LIST_OF_DRIVES_DIRECTORIES},
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   245,   256,    60,   141, 0x0,                      STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,    RESIZE_RTB,  COLOUR_GREY,     0,   243,   142,   153, STR_CONTENT_INTRO_BUTTON, STR_CONTENT_INTRO_BUTTON_TIP},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   245,   256,   142,   153, 0x0,                      STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -1443,7 +1445,8 @@ private:
 		SLWW_SORT_BYDATE,
 		SLWW_HOME_BUTTON = 6,
 		SLWW_DRIVES_DIRECTORIES_LIST,
-		SLWW_SAVE_OSK_TITLE = 10,  ///< only available for save operations
+		SLWW_CONTENT_DOWNLOAD = 9, ///< only available for play scenario/heightmap (content download)
+		SLWW_SAVE_OSK_TITLE,       ///< only available for save operations
 		SLWW_DELETE_SELECTION,     ///< same in here
 		SLWW_SAVE_GAME,            ///< not to mention in here too
 	};
@@ -1466,11 +1469,24 @@ public:
 			STR_LOAD_HEIGHTMAP,
 		};
 
+		this->vscroll.cap = 10;
+		this->resize.step_width = 2;
+		this->resize.step_height = 10;
+
 		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
 
 		/* Use an array to define what will be the current file type being handled
 		 * by current file mode */
 		switch (mode) {
+			case SLD_LOAD_GAME:
+				this->HideWidget(SLWW_CONTENT_DOWNLOAD);
+				this->widget[SLWW_DRIVES_DIRECTORIES_LIST].bottom += this->widget[SLWW_CONTENT_DOWNLOAD].bottom - this->widget[SLWW_CONTENT_DOWNLOAD].top;
+				break;
+
+			case SLD_LOAD_SCENARIO:
+			case SLD_LOAD_HEIGHTMAP:
+				this->vscroll.cap--;
+
 			case SLD_SAVE_GAME:     this->GenerateFileName(); break;
 			case SLD_SAVE_SCENARIO: strcpy(this->edit_str_buf, "UNNAMED"); break;
 			default:                break;
@@ -1518,10 +1534,6 @@ public:
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
 			this->SetFocusedWidget(SLWW_SAVE_OSK_TITLE);
 		}
-
-		this->vscroll.cap = 10;
-		this->resize.step_width = 2;
-		this->resize.step_height = 10;
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -1627,6 +1639,20 @@ public:
 				break;
 			}
 
+			case SLWW_CONTENT_DOWNLOAD:
+				if (!_network_available) {
+					ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
+				} else {
+#if defined(ENABLE_NETWORK)
+					switch (_saveload_mode) {
+						default: NOT_REACHED();
+						case SLD_LOAD_SCENARIO:  ShowNetworkContentListWindow(NULL, CONTENT_TYPE_SCENARIO);  break;
+						case SLD_LOAD_HEIGHTMAP: ShowNetworkContentListWindow(NULL, CONTENT_TYPE_HEIGHTMAP); break;
+					}
+#endif
+				}
+				break;
+
 			case SLWW_DELETE_SELECTION: case SLWW_SAVE_GAME: // Delete, Save game
 				break;
 		}
@@ -1697,6 +1723,11 @@ public:
 		}
 
 		this->vscroll.cap += delta.y / 10;
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		BuildFileList();
 	}
 };
 

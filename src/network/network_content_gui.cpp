@@ -100,9 +100,9 @@ public:
 
 				case CONTENT_TYPE_SCENARIO:
 				case CONTENT_TYPE_HEIGHTMAP:
-					InvalidateWindowClasses(WC_SAVELOAD);
 					extern void ScanScenarios();
 					ScanScenarios();
+					InvalidateWindowData(WC_SAVELOAD, 0, 0);
 					break;
 
 				default:
