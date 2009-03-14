@@ -688,16 +688,21 @@ struct AIDebugWindow : public Window {
 		}
 	}
 
+	void ChangeToAI(CompanyID show_ai)
+	{
+		this->RaiseWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
+		ai_debug_company = show_ai;
+		this->LowerWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
+		this->SetDirty();
+	}
+
 	virtual void OnClick(Point pt, int widget)
 	{
 		/* Check which button is clicked */
 		if (IsInsideMM(widget, AID_WIDGET_COMPANY_BUTTON_START, AID_WIDGET_COMPANY_BUTTON_END + 1)) {
 			/* Is it no on disable? */
 			if (!this->IsWidgetDisabled(widget)) {
-				this->RaiseWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
-				ai_debug_company = (CompanyID)(widget - AID_WIDGET_COMPANY_BUTTON_START);
-				this->LowerWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
-				this->SetDirty();
+				ChangeToAI((CompanyID)(widget - AID_WIDGET_COMPANY_BUTTON_START));
 			}
 		}
 		if (widget == AID_WIDGET_RELOAD_TOGGLE && !this->IsWidgetDisabled(widget)) {
@@ -770,10 +775,12 @@ static const WindowDesc _ai_debug_desc = {
 	_ai_debug_widgets
 };
 
-void ShowAIDebugWindow()
+void ShowAIDebugWindow(CompanyID show_company)
 {
 	if (!_networking || _network_server) {
-		AllocateWindowDescFront<AIDebugWindow>(&_ai_debug_desc, 0);
+		AIDebugWindow *w = (AIDebugWindow *)BringWindowToFrontById(WC_AI_DEBUG, 0);
+		if (w == NULL) w = new AIDebugWindow(&_ai_debug_desc, 0);
+		if (show_company != INVALID_COMPANY) w->ChangeToAI(show_company);
 	} else {
 		ShowErrorMessage(INVALID_STRING_ID, STR_AI_DEBUG_SERVER_ONLY, 0, 0);
 	}

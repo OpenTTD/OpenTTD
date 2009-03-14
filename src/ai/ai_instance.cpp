@@ -7,6 +7,7 @@
 #include "../settings_type.h"
 #include "../vehicle_base.h"
 #include "../saveload/saveload.h"
+#include "../gui.h"
 #include "table/strings.h"
 
 #include <squirrel.h>
@@ -20,6 +21,7 @@
 #include "ai_info.hpp"
 #include "ai_storage.hpp"
 #include "ai_instance.hpp"
+#include "ai_gui.hpp"
 
 /* Convert all AI related classes to Squirrel data.
  * Note: this line a marker in squirrel_export.sh. Do not change! */
@@ -251,6 +253,9 @@ void AIInstance::Died()
 	delete this->engine;
 	this->instance = NULL;
 	this->engine = NULL;
+
+	ShowAIDebugWindow(_current_company);
+	ShowErrorMessage(INVALID_STRING_ID, STR_AI_PLEASE_REPORT_CRASH, 0, 0);
 }
 
 void AIInstance::GameLoop()
