@@ -649,6 +649,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Ni mogo�
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE} ... ni več prostora na zemljevidu
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Povečaj velikost mesta
 STR_023C_EXPAND                                                 :{BLACK}Razširi
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Mesta ne bodo gradila cest. Lahko omogočiš gradnjo cest v Napredne nastavitve->Ekonomija->Mesta.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Naključno mesto
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Zgradi mesto na naključni lokaciji
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Tukaj ni možno zgraditi {STRING}
@@ -708,7 +709,6 @@ STR_FULL                                                        :Polno
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Imenik mest
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Po meri
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -988,8 +988,10 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Neenake
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Koeficient teže tovora za simulacijo težkih vlakov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor hitrosti letal: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Dovoli prehodne postaje na cestah v lasti mest: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Dovoli prevoženja postaj na tekmečevih cestah: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Dovoli gradnjo združljivih postaj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Omogoči večkratni set NewGRF pogona: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sprememba teh nastavitev ni mogoča, ko so tam vozila.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Vedno dovoli majhna letališča: {ORANGE}{STRING}
 
@@ -1237,6 +1239,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Ni mogo�
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Gradi tire s pomočjo Samodejne gradnje
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...ni mest na ozemlju
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Ustvarjanje ozemlja prekinjeno...{}...ni primernih lokacij za mesta
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Več naključnih mest
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Postavi na ozemlje naključna mesta
@@ -1725,6 +1728,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Premakni
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Spremeni ime mesta
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Potnikov prejšnji mesec: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Pošte prejšnji mesec: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Količina potrebnega tovora za rast mesta:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} potrebno
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} podeljeno zadnji mesec
 STR_200F_TALL_OFFICE_BLOCK                                      :Visok pisarniški blok
 STR_2010_OFFICE_BLOCK                                           :Pisarniški blok
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Majhen blok
@@ -2203,6 +2209,7 @@ STR_NUM_VERY_LOW                                                :Zelo malo
 STR_6816_LOW                                                    :Malo
 STR_6817_NORMAL                                                 :Normalno
 STR_6818_HIGH                                                   :Veliko
+STR_02BF_CUSTOM                                                 :Po meri
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Zelo počasi
@@ -3243,6 +3250,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Ozadje N
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Spremeni dolžino vozila za '{1:ENGINE}' ko ni v garaži.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' , ki pripada družbi '{COMPANY}', ima neveljavno dolžino. Najbrž vsebuje probleme povezane z NewGRF. Igra se lahko sesuje.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' javlja napačno informacijo.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacija o predelavi tovornih zmogljivosti za '{1:ENGINE}' je različna od seznama nakupa po konstrukciji. To lahko povzroči, da bi samoobnova ne uspela pravilno.
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Igra je bila shranjena brez podpore za tramvaj. Vsi tramvaji so bili odstranjeni.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Valuta po meri
@@ -3653,6 +3663,7 @@ STR_AI_RANDOM_AI                                                :Naključni UI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}UI parametri
 STR_AI_AUTHOR                                                   :Avtor:
 STR_AI_VERSION                                                  :Verzija:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Ena izmed zagnanih UI se je sesula. Prosim, javi to avtorju UI s priloženo sliko zaslona v orodju za čiščenje UI.
 ########
 
 ############ town controlled noise level

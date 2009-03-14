@@ -667,7 +667,6 @@ STR_FULL                                                        :Ullfay
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Owntay irectoryday
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Ustomcay
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -2130,6 +2129,7 @@ STR_NUM_VERY_LOW                                                :Eryvay owlay
 STR_6816_LOW                                                    :Owlay
 STR_6817_NORMAL                                                 :Ormalnay
 STR_6818_HIGH                                                   :Ighhay
+STR_02BF_CUSTOM                                                 :Ustomcay
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Eryvay Owslay
@@ -3169,6 +3169,9 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausin
 STR_NEWGRF_BROKEN                                               :{WHITE}Ehaviourbay ofway EwGRFnay '{0:STRING}' isway ikelylay otay ausecay esyncsday andway/orway ashescray.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Itway angeschay ehiclevay engthlay orfay '{1:ENGINE}' enwhay otnay insideway away epotday.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Aintray '{VEHICLE}' elongingbay otay '{COMPANY}' ashay invalidway engthlay. Itway isway obablypray ausedcay ybay oblemspray ithway EwGRFsnay. Amegay aymay esyncday orway ashcray.
+
+STR_NEWGRF_BUGGY                                                :{WHITE}EwGRFnay '{0:STRING}' ovidespray incorrectway informationway.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Argocay/efitray informationway orfay '{1:ENGINE}' iffersday omfray urchasepay istlay afterway onstructioncay. Isthay ightmay ausecay autorenewway/-eplaceray otay ailfay efittingray orrectlycay.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Amegay asway avedsay inway ersionvay ithoutway amtray upportsay. Allway amstray avehay eenbay emovedray.
 

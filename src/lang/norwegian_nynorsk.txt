@@ -665,7 +665,6 @@ STR_FULL                                                        :Fullt
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Byoversikt
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Eigendefinert
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1188,6 +1187,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Kan ikkj
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Bygg jernbane ved hjelp av autobanemodusen
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...det er ingen byar i dette scenarioet
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Kart-generering avbrutt...{}...ingen passande by-plasseringar
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Mange tilfeldige byar
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Dekk kartet med tilfeldig plasserte byar
@@ -1676,6 +1676,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Sentrer 
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Bytt namn på byen
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passasjerar førre månad: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post førre månad: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Frakt naudsynt for folketalsauke:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} naudsynt
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} levert forrige månad
 STR_200F_TALL_OFFICE_BLOCK                                      :Høghus
 STR_2010_OFFICE_BLOCK                                           :Kontorblokk
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Leilegheitsblokk
@@ -1791,6 +1794,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}For nær
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Grensar til meir enn éin eksisterande stasjon/lasteterminal
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}For mange stasjonar/lasteterminalar i byen
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}For mange stasjonar/lasteterminalar
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}For mange togstasjon-delar
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}For mange busshaldeplassar
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}For mange lasteterminalar
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}For nær ein annan jernbanestasjon/lasteterminal
@@ -2115,6 +2119,7 @@ STR_NUM_VERY_LOW                                                :Særs låg
 STR_6816_LOW                                                    :Lite
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Høgt
+STR_02BF_CUSTOM                                                 :Eigendefinert
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Særs seint
@@ -2648,6 +2653,7 @@ STR_ORDER_DROP_SERVICE_DEPOT                                    :Service om naud
 STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
 
 STR_ORDER_CONDITIONAL                                           :Betinga ordrehopp
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Køyrety-data å basera ordre-hopping på
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Korleis samanlikne informasjon frå køyretøyet til den gjevne verdien
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Verdien som informasjon frå køyretøyet vert samanlikna med
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Skriv inn verdi å samanlikne med
@@ -3113,6 +3119,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uforventa grafi
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukjent Handling 0 eigedom.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøk på å bruka ugyldig ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneheld ein øydelagt grafikk. All øydelagt grafikk vil bli vist som raude spørsmålsteikn (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inneheld fleire "Action 8" oppføringar.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Last det valde oppsettet
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Lagre oppsettet
@@ -3152,6 +3159,8 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausin
 STR_NEWGRF_BROKEN                                               :{WHITE}Oppførselen til NewGRF'{0:STRING}' vil sannsynlegvis forårsake desyncs og/eller krasj.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Byter køyretylengde for '{1:ENGINE}' når ikkje i depot.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' eigd av '{COMPANY}' har ulovleg lengde. Dette er sansynlegvis forårsaka av eit problem med NewGRFer. Spelet kan bli desynkronisert eller krasja.
+
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' gir gal informasjon.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spelet har blitt lagra i ein versjon utan støtte for trikk. Alle trikkar har blitt fjerna.
 
@@ -3247,6 +3256,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klikk fo
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} skilt
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Stoppa ordrereparerings-feiling {VEHICLE}
 
 ############ Lists rail types
 
@@ -3343,6 +3353,7 @@ STR_NORTHWEST                                                   :{BLACK}Nordvest
 STR_NORTHEAST                                                   :{BLACK}Nordaust
 STR_SOUTHEAST                                                   :{BLACK}Søraust
 STR_SOUTHWEST                                                   :{BLACK}Sørvest
+STR_BORDER_FREEFORM                                             :{BLACK}Fri-form
 STR_BORDER_WATER                                                :{BLACK}Vatn
 STR_BORDER_RANDOM                                               :{BLACK}Vilkårleg
 STR_BORDER_RANDOMIZE                                            :{BLACK}Vilkårleg
@@ -3561,6 +3572,7 @@ STR_AI_RANDOM_AI                                                :Vilkårleg AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parametrar
 STR_AI_AUTHOR                                                   :Forfattar:
 STR_AI_VERSION                                                  :Versjon:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Ein AI har krasja. Venleg rapporter dette til produsenten av AIen med eit skjermbilete av "AI Debug"-vindauget.
 ########
 
 ############ town controlled noise level

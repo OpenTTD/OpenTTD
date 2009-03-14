@@ -701,7 +701,6 @@ STR_FULL                                                        :Teljes
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Városlista
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Saját
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -2201,6 +2200,7 @@ STR_NUM_VERY_LOW                                                :Nagyon kevés
 STR_6816_LOW                                                    :Kevés
 STR_6817_NORMAL                                                 :Normál
 STR_6818_HIGH                                                   :Sok
+STR_02BF_CUSTOM                                                 :Saját
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Nagyon lassú
@@ -3160,7 +3160,7 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Összese
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Járművek száma. Beleértendőek a közúti járművek, a vonatok, hajók és repülők.
 STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Állomásrészek száma. Minden rész számít (pl. vasútállomás, buszmegálló, repülőtér), még akkor is, ha egy állomáshoz tartoznak is.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}A két évesnél idősebb vonatok minimális profitja
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}A két évesnél idősebb járművek minimális profitja
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Az utóbbi 12 negyedév legalacsonyabb havi profitja
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Az utóbbi 12 negyedév legjövedelmezőbb havi profitja
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Utolsó négy negyedévben elszállított rakomány.
@@ -3240,6 +3240,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}A játé
 STR_NEWGRF_BROKEN                                               :{WHITE}A '{0:STRING}' viselkedése valószínűleg ütközést vagy összeomlást okoz.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Megváltoztatja '{1:ENGINE}' jármű hosszát mikor nincs bent a járműtelepen.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}A '{1:COMPANY}' cég '{0:VEHICLE}'-jelű vonatának érvénytelen a hossza. Ezt a NewGRF-ek okozhatják. A játék elszállhat - lefagyhat.
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}A játék olyan verzióban lett elmentve, ami nem támogatja a villamosokat . Az összes villamos törölve lett.
 
@@ -3651,6 +3652,7 @@ STR_AI_RANDOM_AI                                                :Véletlenszerű
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}MI paraméterek
 STR_AI_AUTHOR                                                   :Készítő:
 STR_AI_VERSION                                                  :Verzió:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Az egyik futó MI futása közben hiba történt. Kérjük jelezd ezt az MI készítőjének az MI nyomkövetés ablakról készített képpel.
 ########
 
 ############ town controlled noise level

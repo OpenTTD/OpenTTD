@@ -3170,6 +3170,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF:n
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Se muuttaa kulkuneuvon '{1:ENGINE}' pituutta, kun se ei ole varikolla.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Yhtiölle '{1:COMPANY}' kuuluvan junan '{0:VEHICLE}' pituus on virheellinen. Tämä johtuu luultavasti NewGRF:ien ongelmista. Peli saattaa nykiä tai kaatua.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' antaa väärää tietoa.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Rahti/uudelleensovitus tiedot kulkuneuvolle '{1:ENGINE}' ovat eri kuin ostolistassa rakentamisen jälkeen. Tämä voi aiheuttaa, että kulkuneuvon korvaus ei uudelleensovita oikein.
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Peli tallennettiin versiossa, joka ei tue raitiovaunuja. Kaikki raitiovaunut on poistettu.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Oma valuutta
@@ -3580,6 +3583,7 @@ STR_AI_RANDOM_AI                                                :Sattumanvaraine
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Tekoälyn parametrit
 STR_AI_AUTHOR                                                   :Tekijä:
 STR_AI_VERSION                                                  :Versio:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Yksi käynnissä olevista tekoälyistä kaatui. Ole hyvä ja kerro tästä tekoälyn tekijälle, sekä ota kuvankaappaus Tekoalyn Virheenkorjaus ikkunasta.
 ########
 
 ############ town controlled noise level

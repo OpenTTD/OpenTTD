@@ -698,7 +698,6 @@ STR_FULL                                                        :Pilnas
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Miestų sąrašas
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Tinkintas
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -2133,6 +2132,7 @@ STR_NUM_VERY_LOW                                                :Labai mažas
 STR_6816_LOW                                                    :Žemas
 STR_6817_NORMAL                                                 :Vidutinis
 STR_6818_HIGH                                                   :Aukštas
+STR_02BF_CUSTOM                                                 :Tinkintas
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Labai lėtas
@@ -2731,6 +2731,7 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Per daug
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Negali iterpti naujos uzduoties...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Sios uzduoties negalima istrinti...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Sios uzduoties negalima keisti...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}transporto priemonė negali vykti į visas stotis
 STR_CAN_T_ADD_ORDER                                             :{WHITE}automobilis negali nukakti iki stotelės
 STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}automobilis dalinantis grafiką negali nukakti iki stotelės
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Transporto priemones perkelti negalima...
@@ -2788,6 +2789,7 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Pervardi
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Neimanoma pervardinti traukinio tipo...
 STR_CLEAR_TIME                                                  :{BLACK}Ištrinti laiką
 STR_RESET_LATENESS                                              :{BLACK}Paleisti vėlavimo skaitiklį
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Keisti waypoint pavadinimą
 
 STR_TRAIN_STOPPING                                              :{RED}Stabdoma
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stabdomas, {VELOCITY}
@@ -2796,6 +2798,7 @@ STR_TRAIN_NO_POWER                                              :{RED}Nėra ener
 STR_TRAIN_START_NO_CATENARY                                     :Šiuose bėgiuose trūkta grandies, taigi traukiniai negali judėti
 STR_TRAIN_STUCK                                                 :{ORANGE}Laukiama laisvo kelio
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Naujų{STRING} nėra!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Naujas{STRING} -  {ENGINE}
 
@@ -3132,6 +3135,8 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Trūksta
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Trūksta GRF failų
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Paleidimas gali užlaužti OpenTTD. Neraportuokite šios rūšies gedimų!{}Ar norite paleisti toliau?
 
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Tai pakeičia transporto priemonės ilgį '{1:ENGINE}' kai ji nėra depe.
+
 
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Pasirinkti valiuta
@@ -3202,6 +3207,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagono p
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Pakeitimo metu išlaikyti traukinio ilgį atjungiant vagonus (pradedant juo priekio), jeigu pakeitus garvežį traukinys pailgėtų.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Keicima: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERIMENTINĖ GALIMYBĖ {}Pereidinėti tarp garvežių ir vagonų pakeitimo langų.{}Vagonai bus pakeičiami tik tada, jeigu naujasis vagonas galės gabenti tą patį krovinio tipą kaip ir senasis. Tai atliekama patikrinant kiekvieną vagoną jo keitimo metu.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Transporto priemonė negalima
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Transporto priemonė negalima
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Laivas negalimas
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Orlaivis negalimas
 
 STR_ENGINES                                                     :Varikliai
 STR_WAGONS                                                      :Vagonai
@@ -3312,11 +3321,14 @@ STR_SMALLMAP_CENTER                                             :{BLACK}Centruot
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 # Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Žemėlapio kraštai:
 STR_NORTHWEST                                                   :{BLACK}Šiaurės-vakarai
 STR_NORTHEAST                                                   :{BLACK}Šiaurės-rytai
 STR_SOUTHEAST                                                   :{BLACK}Pietryčiai
 STR_SOUTHWEST                                                   :{BLACK}Pietvakariai
 STR_BORDER_WATER                                                :{BLACK}Vanduo
+STR_BORDER_RANDOM                                               :{BLACK}Atsitiktinis
+STR_BORDER_RANDOMIZE                                            :{BLACK}Atsitiktinai
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Mažas
@@ -3350,6 +3362,7 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Pervesti Kreditus: {LTBLUE}{CURRENCY}
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Permatomumo nustatymai
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Nustatyti objektus nematomais vietoje permatomų
@@ -3401,6 +3414,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Vardas t
 
 #### Improved sign GUI
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Eiti prie ankstesnio ženklo
+STR_SIGN_OSKTITLE                                               :{BLACK}Įrašykite ženklo pavadinimą
 
 ########
 
@@ -3458,6 +3472,7 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Pakeisti
 ########
 
 ############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Signalo Pasirinkimas
 ########
 
 ############ on screen keyboard
@@ -3474,6 +3489,9 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}AI Nusta
 STR_AI_CHANGE                                                   :{BLACK}Pasirinkti AI
 STR_AI_CONFIGURE                                                :{BLACK}Derinti
 STR_AI_CHANGE_TIP                                               :{BLACK}Įkelti kitą AI
+STR_AI_ACCEPT                                                   :{BLACK}Priimti
+STR_AI_CANCEL                                                   :{BLACK}Atšaukti
+STR_AI_CLOSE                                                    :{BLACK}Uždaryti
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parametrai
 STR_AI_AUTHOR                                                   :Autorius:
 STR_AI_VERSION                                                  :Versija:

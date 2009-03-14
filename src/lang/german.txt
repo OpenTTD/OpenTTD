@@ -3171,6 +3171,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Verhalte
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Verändert die Fahrzeuglänge von '{1:ENGINE}' außerhalb eines Depots.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zug '{VEHICLE}' der Firma '{COMPANY}' hat eine ungültige Länge. Vermutlich ein NewGRF Problem. Spiel kann desynchronisieren oder abstürzen.
 
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spiel wurde in einer Version ohne Straßenbahnunterstützung gespeichert. Alle Straßenbahnen wurden entfernt.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Eigene Währung

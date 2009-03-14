@@ -668,7 +668,6 @@ STR_FULL                                                        :Complet
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Annuaire des villes
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Personnalisé
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -2131,6 +2130,7 @@ STR_NUM_VERY_LOW                                                :Très bas
 STR_6816_LOW                                                    :Bas
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Élevé
+STR_02BF_CUSTOM                                                 :Personnalisé
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Très Lent
@@ -3171,6 +3171,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Le compo
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Il modifie la longueur de vehicule pour '{1:ENGINE}' en dehors du dépot.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Le train '{VEHICLE}' appartenant à '{COMPANY}' a une longueur invalide. Celà est probablement dû à des problèmes avec des NewGRFs. Le jeu peut avoir des erreurs de synchronisation ou planter.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}Le NewGRF '{0:STRING}' fournit une information incorrecte.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}L'information de cargaison/réaménagement pour '{1:ENGINE}' après sa construction est différent de la liste d'achat. Cela peut causer un échec de réaménagement lors de l'auto-renouvèlement/remplacement.
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Partie sauvegardée avec une version sans support des tramways. Tous les tramways ont été supprimés.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Devise personnalisée
@@ -3581,6 +3584,7 @@ STR_AI_RANDOM_AI                                                :IA aléatoire
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paramètres IA
 STR_AI_AUTHOR                                                   :Auteur:
 STR_AI_VERSION                                                  :Version:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}L'une des IA a rencontré un problème. Merci de rapporter ceci à l'auteur de l'IA avec une capture d'écran de la fenêtre de débogage d'IA.
 ########
 
 ############ town controlled noise level

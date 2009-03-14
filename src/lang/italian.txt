@@ -3172,6 +3172,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Le carat
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}La lunghezza dei veicoli  '{1:ENGINE}' può cambiare al di fuori dei depositi.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Il treno '{VEHICLE}' della '{COMPANY}' ha una lunghezza non valida, probabilmente a causa di problemi con un NewGRF. È possibile che si verifichino errori di sincronizzazione o crash.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}Informazioni scorrette fornite dal NewGRF '{0:STRING}'
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}I dati su carico e riadattamento di '{1:ENGINE}' sono diversi da quelli indicati prima della costruzione. Il rinnovo/rimpiazzo automatico potrebbe fallire.
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}La partita è stata salvata in una versione senza il supporto per i tram. Tutte le tranvie sono state rimosse.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Valuta personalizzata
@@ -3582,6 +3585,7 @@ STR_AI_RANDOM_AI                                                :IA casuale
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametri IA
 STR_AI_AUTHOR                                                   :Autore:
 STR_AI_VERSION                                                  :Versione:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Una delle IA in funzione è andata in crash. Si prega di inviare una segnalazione all'autore della IA con uno screenshot della finestra Debug IA.
 ########
 
 ############ town controlled noise level
