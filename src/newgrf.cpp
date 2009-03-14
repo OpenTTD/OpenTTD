@@ -2520,7 +2520,7 @@ static void SafeChangeInfo(byte *buf, size_t len)
 	buf++;
 	uint8 feature  = grf_load_byte(&buf);
 	uint8 numprops = grf_load_byte(&buf);
-	grf_load_byte(&buf);     // num-info
+	uint numinfo = grf_load_byte(&buf);
 	grf_load_extended(&buf); // id
 
 	if (feature == GSF_BRIDGE && numprops == 1) {
@@ -2528,6 +2528,22 @@ static void SafeChangeInfo(byte *buf, size_t len)
 		/* Bridge property 0x0D is redefinition of sprite layout tables, which
 		 * is considered safe. */
 		if (prop == 0x0D) return;
+	} else if (feature == GSF_GLOBALVAR && numprops == 1) {
+		uint8 prop = grf_load_byte(&buf);
+		/* Engine ID Mappings are safe, if the source is static */
+		if (prop == 0x11) {
+			bool is_safe = true;
+			for (uint i = 0; i < numinfo; i++) {
+				uint32 s = grf_load_dword(&buf);
+				grf_load_dword(&buf); // dest
+				const GRFConfig *grfconfig = GetGRFConfig(s);
+				if (grfconfig != NULL && !HasBit(grfconfig->flags, GCF_STATIC)) {
+					is_safe = false;
+					break;
+				}
+			}
+			if (is_safe) return;
+		}
 	}
 
 	SetBit(_cur_grfconfig->flags, GCF_UNSAFE);
