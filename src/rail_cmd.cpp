@@ -319,14 +319,13 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
+			if (!CheckTileOwnership(tile)) return CMD_ERROR;
+
+			if (!IsCompatibleRail(GetRailType(tile), railtype)) return_cmd_error(STR_1001_IMPOSSIBLE_TRACK_COMBINATION);
+
 			if (!CheckTrackCombination(tile, trackbit, flags) ||
 					!EnsureNoTrainOnTrack(tile, track)) {
 				return CMD_ERROR;
-			}
-			if (!IsTileOwner(tile, _current_company) ||
-					!IsCompatibleRail(GetRailType(tile), railtype)) {
-				/* Get detailed error message */
-				return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
 
 			ret = CheckRailSlope(tileh, trackbit, GetTrackBits(tile), tile);
