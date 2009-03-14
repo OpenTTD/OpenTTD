@@ -88,7 +88,7 @@ private:
 	 *  For library-scan, if a library is found, AILibrary is created, and the
 	 *    library is registered to the central system.
 	 */
-	void ScanDir(const char *dirname, bool library_dir, bool library_recursive = false);
+	void ScanDir(const char *dirname, bool library_dir);
 
 	AIInfo *info_dummy;
 	AIInfoList info_list;

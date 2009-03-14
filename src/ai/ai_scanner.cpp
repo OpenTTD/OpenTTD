@@ -20,7 +20,7 @@
 #include "ai_scanner.hpp"
 #include "api/ai_controller.hpp"
 
-void AIScanner::ScanDir(const char *dirname, bool library_scan, bool library_recursive)
+void AIScanner::ScanDir(const char *dirname, bool library_scan)
 {
 	extern bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb);
 	extern bool FiosIsHiddenFile(const struct dirent *ent);
@@ -48,19 +48,10 @@ void AIScanner::ScanDir(const char *dirname, bool library_scan, bool library_rec
 		ttd_strlcpy(temp_script, dirname, sizeof(temp_script));
 		ttd_strlcat(temp_script, d_name,  sizeof(temp_script));
 
-		if (S_ISDIR(sb.st_mode)) {
-			/* Libraries are always in a subdirectory of their category, so scan those */
-			if (library_scan && !library_recursive) {
-				ttd_strlcat(temp_script, PATHSEP, sizeof(temp_script));
-				ScanDir(temp_script, library_scan, true);
-				continue;
-			}
-		} else if (S_ISREG(sb.st_mode)) {
+		if (S_ISREG(sb.st_mode)) {
 			/* Only .tar files are allowed */
 			char *ext = strrchr(d_name, '.');
 			if (ext == NULL || strcasecmp(ext, ".tar") != 0) continue;
-			/* .tar files are only allowed in the root of the library dir */
-			if (library_recursive) continue;
 
 			/* We always expect a directory in the TAR */
 			const char *first_dir = FioTarFirstDir(temp_script);
@@ -69,7 +60,7 @@ void AIScanner::ScanDir(const char *dirname, bool library_scan, bool library_rec
 			ttd_strlcat(temp_script, PATHSEP, sizeof(temp_script));
 			ttd_strlcat(temp_script, first_dir, sizeof(temp_script));
 			FioTarAddLink(temp_script, first_dir);
-		} else {
+		} else if (!S_ISDIR(sb.st_mode)) {
 			/* Skip any other type of file */
 			continue;
 		}
