@@ -23,9 +23,9 @@ template <typename T, size_t N> struct ArrayT<T[N]> {
 
 
 /**
-* Helper template function that returns item of array at given index
-* or t_unk when index is out of bounds.
-*/
+ * Helper template function that returns item of array at given index
+ * or t_unk when index is out of bounds.
+ */
 template <typename E, typename T>
 inline typename ArrayT<T>::item_t ItemAtT(E idx, T &t, typename ArrayT<T>::item_t t_unk)
 {
@@ -36,10 +36,10 @@ inline typename ArrayT<T>::item_t ItemAtT(E idx, T &t, typename ArrayT<T>::item_
 }
 
 /**
-* Helper template function that returns item of array at given index
-* or t_inv when index == idx_inv
-* or t_unk when index is out of bounds.
-*/
+ * Helper template function that returns item of array at given index
+ * or t_inv when index == idx_inv
+ * or t_unk when index is out of bounds.
+ */
 template <typename E, typename T>
 inline typename ArrayT<T>::item_t ItemAtT(E idx, T &t, typename ArrayT<T>::item_t t_unk, E idx_inv, typename ArrayT<T>::item_t t_inv)
 {
@@ -53,11 +53,11 @@ inline typename ArrayT<T>::item_t ItemAtT(E idx, T &t, typename ArrayT<T>::item_
 }
 
 /**
-* Helper template function that returns compound bitfield name that is
-* concatenation of names of each set bit in the given value
-* or t_inv when index == idx_inv
-* or t_unk when index is out of bounds.
-*/
+ * Helper template function that returns compound bitfield name that is
+ * concatenation of names of each set bit in the given value
+ * or t_inv when index == idx_inv
+ * or t_unk when index is out of bounds.
+ */
 template <typename E, typename T>
 inline CStrA ComposeNameT(E value, T &t, const char *t_unk, E val_inv, const char *name_inv)
 {

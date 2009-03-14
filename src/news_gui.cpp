@@ -843,7 +843,7 @@ struct MessageOptionsWindow : Window {
 		/* Draw the string of each setting on each button. */
 		for (int i = 0, y = 26; i < NT_END; i++, y += 12) {
 			/* 51 comes from 13 + 89 (left and right of the button)+1, shiefted by one as to get division,
-				* which will give centered position */
+			 * which will give centered position */
 			DrawStringCentered(51, y + 1, _message_opt[_news_type_data[i].display], TC_BLACK);
 		}
 	}
@@ -890,28 +890,28 @@ struct MessageOptionsWindow : Window {
 
 
 /*
-* The news settings window widgets
-*
-* Main part of the window is a list of news-setting lines, one for each news category.
-* Each line is constructed by an expansion of the \c NEWS_SETTINGS_LINE macro
-*/
+ * The news settings window widgets
+ *
+ * Main part of the window is a list of news setting lines, one for each news category.
+ * Each line is constructed by an expansion of the \c NEWS_SETTINGS_LINE macro
+ */
 
 /**
-* Macro to construct one news-setting line in the news-settings window.
-* One line consists of four widgets, namely
-* - A [<] button
-* - A [...] label
-* - A [>] button
-* - A text label describing the news category
-* Horizontal positions of the widgets are hard-coded, vertical start position is (\a basey + \a linenum * \c NEWS_SETTING_BASELINE_SKIP).
-* Height of one line is 12, with the text label shifted 1 pixel down.
-*
-* First line should be widget number WIDGET_NEWSOPT_START_OPTION
-*
-* @param basey: Base Y coordinate
-* @param linenum: Count, news-setting is the \a linenum-th line
-* @param text: StringID for the text label to display
-*/
+ * Macro to construct one news setting line in the news - settings window.
+ * One line consists of four widgets, namely
+ * - A [<] button
+ * - A [...] label
+ * - A [>] button
+ * - A text label describing the news category
+ * Horizontal positions of the widgets are hard coded, vertical start position is (\a basey + \a linenum * \c NEWS_SETTING_BASELINE_SKIP).
+ * Height of one line is 12, with the text label shifted 1 pixel down.
+ *
+ * First line should be widget number WIDGET_NEWSOPT_START_OPTION
+ *
+ * @param basey: Base Y coordinate
+ * @param linenum: Count, news - setting is the \a linenum - th line
+ * @param text: StringID for the text label to display
+ */
 #define NEWS_SETTINGS_LINE(basey, linenum, text) \
 	{ WWT_PUSHIMGBTN, RESIZE_NONE, COLOUR_YELLOW, \
 	    4,  12,  basey     + linenum * NEWS_SETTING_BASELINE_SKIP,  basey + 11 + linenum * NEWS_SETTING_BASELINE_SKIP, \

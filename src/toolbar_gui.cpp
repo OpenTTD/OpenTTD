@@ -1032,8 +1032,8 @@ struct MainToolbarWindow : Window {
 		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB4, FILLRECT_CHECKER);
 
 		/* If spectator, disable all construction buttons
-		* ie : Build road, rail, ships, airports and landscaping
-		* Since enabled state is the default, just disable when needed */
+		 * ie : Build road, rail, ships, airports and landscaping
+		 * Since enabled state is the default, just disable when needed */
 		this->SetWidgetsDisabledState(_local_company == COMPANY_SPECTATOR, TBN_RAILS, TBN_ROADS, TBN_WATER, TBN_AIR, TBN_LANDSCAPE, WIDGET_LIST_END);
 		/* disable company list drop downs, if there are no companies */
 		this->SetWidgetsDisabledState(ActiveCompanyCount() == TBN_PAUSE, TBN_STATIONS, TBN_FINANCES, TBN_TRAINS, TBN_ROADVEHS, TBN_SHIPS, TBN_AIRCRAFTS, WIDGET_LIST_END);

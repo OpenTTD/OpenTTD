@@ -673,7 +673,7 @@ void EnginesMonthlyLoop()
 			if (!(e->flags & ENGINE_AVAILABLE) && _date >= (e->intro_date + DAYS_IN_YEAR)) {
 				/* Introduce it to all companies */
 				NewVehicleAvailable(e);
-			} else if (!(e->flags & (ENGINE_AVAILABLE|ENGINE_EXCLUSIVE_PREVIEW)) && _date >= e->intro_date) {
+			} else if (!(e->flags & (ENGINE_AVAILABLE | ENGINE_EXCLUSIVE_PREVIEW)) && _date >= e->intro_date) {
 				/* Introduction date has passed.. show introducing dialog to one companies. */
 				e->flags |= ENGINE_EXCLUSIVE_PREVIEW;
 

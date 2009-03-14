@@ -217,7 +217,7 @@ struct MyGetOptData {
 
 static int MyGetOpt(MyGetOptData *md)
 {
-	const char *s,*r,*t;
+	const char *s, *r, *t;
 
 	s = md->cont;
 	if (s != NULL)
@@ -942,7 +942,7 @@ void SwitchToMode(SwitchMode new_mode)
 					StartupEngines();
 				}
 				/* Update the local company for a loaded game. It is either always
-				* company #1 (eg 0) or in the case of a dedicated server a spectator */
+				 * company #1 (eg 0) or in the case of a dedicated server a spectator */
 				SetLocalCompany(_network_dedicated ? COMPANY_SPECTATOR : COMPANY_FIRST);
 				/* Execute the game-start script */
 				IConsoleCmdExec("exec scripts/game_start.scr 0");

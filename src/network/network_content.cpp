@@ -257,9 +257,9 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 
 	while (count > 0) {
 		/* We can "only" send a limited number of IDs in a single packet.
-		* A packet begins with the packet size and a byte for the type.
-		* Then this packet adds a uint16 for the count in this packet.
-		* The rest of the packet can be used for the IDs. */
+		 * A packet begins with the packet size and a byte for the type.
+		 * Then this packet adds a uint16 for the count in this packet.
+		 * The rest of the packet can be used for the IDs. */
 		uint p_count = min(count, (SEND_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16)) / sizeof(uint32));
 
 		Packet *p = new Packet(PACKET_CONTENT_CLIENT_CONTENT);

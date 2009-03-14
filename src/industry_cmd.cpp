@@ -1921,14 +1921,14 @@ static bool CheckIndustryCloseDownProtection(IndustryType type)
 }
 
 /**
-* Can given cargo type be accepted or produced by the industry?
-* @param cargo: Cargo type
-* @param ind: Industry
-* @param *c_accepts: Pointer to boolean for acceptance of cargo
-* @param *c_produces: Pointer to boolean for production of cargo
-* @return: \c *c_accepts is set when industry accepts the cargo type,
-*          \c *c_produces is set when the industry produces the cargo type
-*/
+ * Can given cargo type be accepted or produced by the industry?
+ * @param cargo: Cargo type
+ * @param ind: Industry
+ * @param *c_accepts: Pointer to boolean for acceptance of cargo
+ * @param *c_produces: Pointer to boolean for production of cargo
+ * @return: \c *c_accepts is set when industry accepts the cargo type,
+ *          \c *c_produces is set when the industry produces the cargo type
+ */
 static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accepts, bool *c_produces)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(ind->type);
@@ -1959,18 +1959,18 @@ static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accept
 }
 
 /**
-* Compute who can service the industry.
-*
-* Here, 'can service' means that he/she has trains and stations close enough
-* to the industry with the right cargo type and the right orders (ie has the
-* technical means).
-*
-* @param ind: Industry being investigated.
-*
-* @return: 0 if nobody can service the industry, 2 if the local company can
-* service the industry, and 1 otherwise (only competitors can service the
-* industry)
-*/
+ * Compute who can service the industry.
+ *
+ * Here, 'can service' means that he/she has trains and stations close enough
+ * to the industry with the right cargo type and the right orders (ie has the
+ * technical means).
+ *
+ * @param ind: Industry being investigated.
+ *
+ * @return: 0 if nobody can service the industry, 2 if the local company can
+ * service the industry, and 1 otherwise (only competitors can service the
+ * industry)
+ */
 int WhoCanServiceIndustry(Industry *ind)
 {
 	/* Find all stations within reach of the industry */
@@ -2024,12 +2024,12 @@ int WhoCanServiceIndustry(Industry *ind)
 }
 
 /**
-* Report news that industry production has changed significantly
-*
-* @param ind: Industry with changed production
-* @param type: Cargo type that has changed
-* @param percent: Percentage of change (>0 means increase, <0 means decrease)
-*/
+ * Report news that industry production has changed significantly
+ *
+ * @param ind: Industry with changed production
+ * @param type: Cargo type that has changed
+ * @param percent: Percentage of change (>0 means increase, <0 means decrease)
+ */
 static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int percent)
 {
 	NewsSubtype ns;

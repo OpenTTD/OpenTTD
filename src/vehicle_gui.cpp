@@ -420,9 +420,9 @@ static const WindowDesc _vehicle_refit_desc = {
 };
 
 /** Show the refit window for a vehicle
-* @param *v The vehicle to show the refit window for
-* @param order of the vehicle ( ? )
-*/
+ * @param *v The vehicle to show the refit window for
+ * @param order of the vehicle ( ? )
+ */
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *parent)
 {
 	DeleteWindowById(WC_VEHICLE_REFIT, v->index);
@@ -816,7 +816,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 		this->owner = company;
 
 		/* Hide the widgets that we will not use in this window
-		* Some windows contains actions only fit for the owner */
+		 * Some windows contains actions only fit for the owner */
 		if (company == _local_company) {
 			this->HideWidget(VLW_WIDGET_OTHER_COMPANY_FILLER);
 			this->SetWidgetDisabledState(VLW_WIDGET_AVAILABLE_VEHICLES, window_type != VLW_STANDARD);
@@ -916,8 +916,8 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 		this->widget[VLW_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
 
 		/* Set up sorting. Make the window-specific _sorting variable
-			* point to the correct global _sorting struct so we are freed
-			* from having conditionals during window operation */
+		 * point to the correct global _sorting struct so we are freed
+		 * from having conditionals during window operation */
 		switch (this->vehicle_type) {
 			case VEH_TRAIN:    this->sorting = &_sorting.train; break;
 			case VEH_ROAD:     this->sorting = &_sorting.roadveh; break;
@@ -957,7 +957,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 			case VLW_SHARED_ORDERS: /* Shared Orders */
 				if (this->vehicles.Length() == 0) {
 					/* We can't open this window without vehicles using this order
-					* and we should close the window when deleting the order      */
+					 * and we should close the window when deleting the order      */
 					NOT_REACHED();
 				}
 				SetDParam(0, this->vscroll.count);

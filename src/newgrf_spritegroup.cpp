@@ -117,7 +117,7 @@ static uint32 RotateRight(uint32 val, uint32 rot)
 
 
 /* Evaluate an adjustment for a variable of the given size.
-* U is the unsigned type and S is the signed type to use. */
+ * U is the unsigned type and S is the signed type to use. */
 template <typename U, typename S>
 static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, ResolverObject *object, U last_value, uint32 value)
 {

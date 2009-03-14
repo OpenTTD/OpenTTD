@@ -167,7 +167,7 @@ static void TrainDepotMoveVehicle(const Vehicle *wagon, VehicleID sel, const Veh
 uint _block_sizes[4][2];
 
 /* Array to hold the default resize capacities
-* First part is the vehicle type, while the last is 0 = x, 1 = y */
+ * First part is the vehicle type, while the last is 0 = x, 1 = y */
 const uint _resize_cap[][2] = {
 /* VEH_TRAIN */    {6, 10 * 29},
 /* VEH_ROAD */     {5, 5},
@@ -255,11 +255,11 @@ struct DepotWindow : Window {
 	}
 
 	/** Draw a vehicle in the depot window in the box with the top left corner at x,y
-	* @param *w Window to draw in
-	* @param *v Vehicle to draw
-	* @param x Left side of the box to draw in
-	* @param y Top of the box to draw in
-	*/
+	 * @param *w Window to draw in
+	 * @param *v Vehicle to draw
+	 * @param x Left side of the box to draw in
+	 * @param y Top of the box to draw in
+	 */
 	void DrawVehicleInDepot(Window *w, const Vehicle *v, int x, int y)
 	{
 		byte diff_x = 0, diff_y = 0;
@@ -550,10 +550,10 @@ struct DepotWindow : Window {
 	}
 
 	/**
-	* Clones a vehicle
-	* @param *v is the original vehicle to clone
-	* @param *w is the window of the depot where the clone is build
-	*/
+	 * Clones a vehicle
+	 * @param *v is the original vehicle to clone
+	 * @param *w is the window of the depot where the clone is build
+	 */
 	void HandleCloneVehClick(const Vehicle *v, const Window *w)
 	{
 		uint error_str;
@@ -585,7 +585,7 @@ struct DepotWindow : Window {
 
 		if (this->type == VEH_TRAIN) {
 			/* Divide the size of DEPOT_WIDGET_SELL into two equally big buttons so DEPOT_WIDGET_SELL and DEPOT_WIDGET_SELL_CHAIN will get the same size.
-			* This way it will stay the same even if DEPOT_WIDGET_SELL_CHAIN is resized for some reason                                                  */
+			 * This way it will stay the same even if DEPOT_WIDGET_SELL_CHAIN is resized for some reason                                                  */
 			this->widget[DEPOT_WIDGET_SELL_CHAIN].top    = ((this->widget[DEPOT_WIDGET_SELL_CHAIN].bottom - this->widget[DEPOT_WIDGET_SELL].top) / 2) + this->widget[DEPOT_WIDGET_SELL].top;
 			this->widget[DEPOT_WIDGET_SELL].bottom     = this->widget[DEPOT_WIDGET_SELL_CHAIN].top - 1;
 		}

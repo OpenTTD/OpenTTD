@@ -787,13 +787,13 @@ void Window::Initialize(int x, int y, int min_width, int min_height,
 	if (this->window_class != WC_OSK && (!EditBoxInGlobalFocus() || this->HasWidgetOfType(WWT_EDITBOX))) SetFocusedWindow(this);
 
 	/* Hacky way of specifying always-on-top windows. These windows are
-		* always above other windows because they are moved below them.
-		* status-bar is above news-window because it has been created earlier.
-		* Also, as the chat-window is excluded from this, it will always be
-		* the last window, thus always on top.
-		* XXX - Yes, ugly, probably needs something like w->always_on_top flag
-		* to implement correctly, but even then you need some kind of distinction
-		* between on-top of chat/news and status windows, because these conflict */
+	 * always above other windows because they are moved below them.
+	 * status-bar is above news-window because it has been created earlier.
+	 * Also, as the chat-window is excluded from this, it will always be
+	 * the last window, thus always on top.
+	 * XXX - Yes, ugly, probably needs something like w->always_on_top flag
+	 * to implement correctly, but even then you need some kind of distinction
+	 * between on-top of chat/news and status windows, because these conflict */
 	Window *w = _z_front_window;
 	if (w != NULL && this->window_class != WC_SEND_NETWORK_MSG && this->window_class != WC_HIGHSCORE && this->window_class != WC_ENDSCREEN) {
 		if (FindWindowById(WC_MAIN_TOOLBAR, 0)     != NULL) w = w->z_back;
@@ -1719,14 +1719,14 @@ static bool MaybeBringWindowToFront(Window *w)
 void HandleKeypress(uint32 raw_key)
 {
 	/*
-	* During the generation of the world, there might be
-	* another thread that is currently building for example
-	* a road. To not interfere with those tasks, we should
-	* NOT change the _current_company here.
-	*
-	* This is not necessary either, as the only events that
-	* can be handled are the 'close application' events
-	*/
+	 * During the generation of the world, there might be
+	 * another thread that is currently building for example
+	 * a road. To not interfere with those tasks, we should
+	 * NOT change the _current_company here.
+	 *
+	 * This is not necessary either, as the only events that
+	 * can be handled are the 'close application' events
+	 */
 	if (!IsGeneratingWorld()) _current_company = _local_company;
 
 	/* Setup event */
@@ -1967,7 +1967,8 @@ void MouseLoop(MouseClick click, int mousewheel)
 			default:
 				if (!scrollwheel_scrolling || w == NULL || w->window_class != WC_SMALLMAP) break;
 				/* We try to use the scrollwheel to scroll since we didn't touch any of the buttons.
-				* Simulate a right button click so we can get started. */
+				 * Simulate a right button click so we can get started. */
+
 				/* fallthough */
 			case MC_RIGHT: DispatchRightClickEvent(w, x - w->left, y - w->top); break;
 		}

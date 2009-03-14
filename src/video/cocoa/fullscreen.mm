@@ -379,7 +379,7 @@ class FullscreenSubdriver: public CocoaSubdriver {
 		 * As a result, coordinate translation produces incorrect results.
 		 * We can hack around this bug by setting the screen rect ourselves.
 		 * This hack should be removed if/when the bug is fixed.
-		*/
+		 */
 		screen_rect = NSMakeRect(0, 0, display_width, display_height);
 		[ [ NSScreen mainScreen ] setFrame:screen_rect ];
 
@@ -576,9 +576,9 @@ public:
 	}
 
 	/*
-		Convert local coordinate to window server (CoreGraphics) coordinate.
-		In fullscreen mode this just means copying the coords.
-	*/
+	 * Convert local coordinate to window server (CoreGraphics) coordinate.
+	 * In fullscreen mode this just means copying the coords.
+	 */
 	virtual CGPoint PrivateLocalToCG(NSPoint *p)
 	{
 		CGPoint cgp;

@@ -376,8 +376,8 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 					if (font_style != NULL && strcasecmp(font_style, (char*)style) != 0) continue;
 
 					/* Font config takes the best shot, which, if the family name is spelled
-					* wrongly a 'random' font, so check whether the family name is the
-					* same as the supplied name */
+					 * wrongly a 'random' font, so check whether the family name is the
+					 * same as the supplied name */
 					if (strcasecmp(font_family, (char*)family) == 0) {
 						err = FT_New_Face(_library, (char *)file, 0, face);
 					}

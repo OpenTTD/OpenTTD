@@ -219,9 +219,9 @@ struct MainWindow : Window
 		}
 
 		/* Disable all key shortcuts, except quit shortcuts when
-		* generating the world, otherwise they create threading
-		* problem during the generating, resulting in random
-		* assertions that are hard to trigger and debug */
+		 * generating the world, otherwise they create threading
+		 * problem during the generating, resulting in random
+		 * assertions that are hard to trigger and debug */
 		if (IsGeneratingWorld()) return ES_NOT_HANDLED;
 
 		if (keycode == WKC_BACKQUOTE) {

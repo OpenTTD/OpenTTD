@@ -87,7 +87,7 @@ public:
 	{
 		int x = TileX(this->wp->xy) * TILE_SIZE;
 		int y = TileY(this->wp->xy) * TILE_SIZE;
-		ScrollWindowTo(x,y, this);
+		ScrollWindowTo(x, y, this);
 	}
 
 	virtual void OnQueryTextFinished(char *str)

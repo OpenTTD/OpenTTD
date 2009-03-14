@@ -602,7 +602,7 @@ static void ShipController(Vehicle *v)
 				if (HasBit(r, VETS_CANNOT_ENTER)) goto reverse_direction;
 
 				/* A leave station order only needs one tick to get processed, so we can
-				* always skip ahead. */
+				 * always skip ahead. */
 				if (v->current_order.IsType(OT_LEAVESTATION)) {
 					v->current_order.Free();
 					InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
@@ -612,7 +612,7 @@ static void ShipController(Vehicle *v)
 							GetStation(v->current_order.GetDestination())->IsBuoy() &&
 							DistanceManhattan(v->dest_tile, gp.new_tile) <= 3) {
 						/* We got within 3 tiles of our target buoy, so let's skip to our
-						* next order */
+						 * next order */
 						UpdateVehicleTimetable(v, true);
 						v->cur_order_index++;
 						v->current_order.MakeDummy();

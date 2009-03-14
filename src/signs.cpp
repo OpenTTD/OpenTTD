@@ -64,8 +64,8 @@ void UpdateAllSignVirtCoords()
 void MarkSignDirty(Sign *si)
 {
 	/* We use ZOOM_LVL_MAX here, as every viewport can have an other zoom,
-		*  and there is no way for us to know which is the biggest. So make the
-		*  biggest area dirty, and we are safe for sure. */
+	 *  and there is no way for us to know which is the biggest. So make the
+	 *  biggest area dirty, and we are safe for sure. */
 	MarkAllViewportsDirty(
 		si->sign.left - 6,
 		si->sign.top  - 3,

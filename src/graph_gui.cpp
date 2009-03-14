@@ -125,8 +125,8 @@ protected:
 
 		GRAPH_NUM_LINES_Y = 9, ///< How many horizontal lines to draw.
 		/* 9 is convenient as that means the distance between them is the gd_height of the graph / 8,
-		* which is the same
-		* as height >> 3. */
+		 * which is the same
+		 * as height >> 3. */
 	};
 
 	uint excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
@@ -159,7 +159,7 @@ protected:
 		int x_axis_offset;               ///< Distance from the top of the graph to the x axis.
 
 		/* the colours and cost array of GraphDrawer must accomodate
-		* both values for cargo and companies. So if any are higher, quit */
+		 * both values for cargo and companies. So if any are higher, quit */
 		assert(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_COMPANIES);
 		assert(this->num_vert_lines > 0);
 
@@ -209,9 +209,9 @@ protected:
 		assert(this->num_dataset > 0);
 
 		/* Start of with a value of twice the gd_height of the graph in pixels. It's a
-		* bit arbitrary, but it makes the cargo payment graph look a little nicer,
-		* and prevents division by zero when calculating where the datapoint
-		* should be drawn. */
+		 * bit arbitrary, but it makes the cargo payment graph look a little nicer,
+		 * and prevents division by zero when calculating where the datapoint
+		 * should be drawn. */
 		highest_value = x_axis_offset * 2;
 
 		for (int i = 0; i < this->num_dataset; i++) {
@@ -221,8 +221,8 @@ protected:
 
 					if (datapoint != INVALID_DATAPOINT) {
 						/* For now, if the graph has negative values the scaling is
-						* symmetrical about the x axis, so take the absolute value
-						* of each data point. */
+						 * symmetrical about the x axis, so take the absolute value
+						 * of each data point. */
 						highest_value = max(highest_value, abs(datapoint));
 					}
 				}
@@ -230,7 +230,7 @@ protected:
 		}
 
 		/* Round up highest_value so that it will divide cleanly into the number of
-		* axis labels used. */
+		 * axis labels used. */
 		int round_val = highest_value % (GRAPH_NUM_LINES_Y - 1);
 		if (round_val != 0) highest_value += (GRAPH_NUM_LINES_Y - 1 - round_val);
 
@@ -239,7 +239,7 @@ protected:
 		int64 y_label_separation = highest_value / (GRAPH_NUM_LINES_Y - 1);
 
 		/* If there are negative values, the graph goes from highest_value to
-		* -highest_value, not highest_value to 0. */
+		 * -highest_value, not highest_value to 0. */
 		if (this->has_negative_values) y_label_separation *= 2;
 
 		x = this->gd_left + GRAPH_X_POSITION_BEGINNING + 1;
@@ -303,16 +303,16 @@ protected:
 
 					if (datapoint != INVALID_DATAPOINT) {
 						/*
-						* Check whether we need to reduce the 'accuracy' of the
-						* datapoint value and the highest value to splut overflows.
-						* And when 'drawing' 'one million' or 'one million and one'
-						* there is no significant difference, so the least
-						* significant bits can just be removed.
-						*
-						* If there are more bits needed than would fit in a 32 bits
-						* integer, so at about 31 bits because of the sign bit, the
-						* least significant bits are removed.
-						*/
+						 * Check whether we need to reduce the 'accuracy' of the
+						 * datapoint value and the highest value to splut overflows.
+						 * And when 'drawing' 'one million' or 'one million and one'
+						 * there is no significant difference, so the least
+						 * significant bits can just be removed.
+						 *
+						 * If there are more bits needed than would fit in a 32 bits
+						 * integer, so at about 31 bits because of the sign bit, the
+						 * least significant bits are removed.
+						 */
 						int mult_range = FindLastBit(x_axis_offset) + FindLastBit(abs(datapoint));
 						int reduce_range = max(mult_range - 31, 0);
 
@@ -1008,7 +1008,7 @@ public:
 			if (i == SCORE_LOAN) val = needed - val;
 
 			/* Draw the amount we have against what is needed
-				* For some of them it is in currency format */
+			 * For some of them it is in currency format */
 			SetDParam(0, val);
 			SetDParam(1, needed);
 			switch (i) {

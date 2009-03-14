@@ -318,7 +318,7 @@ public:
 
 		/* Then, try townnames */
 		/* Not that the following assumes all town indices are adjacent, ie no
-		* towns have been deleted. */
+		 * towns have been deleted. */
 		if (*item <= (uint)MAX_CLIENT_SLOTS + GetMaxTownIndex()) {
 			const Town *t;
 
@@ -375,7 +375,7 @@ public:
 
 			if (_chat_tab_completion_active) {
 				/* We are pressing TAB again on the same name, is there an other name
-				*  that starts with this? */
+				 *  that starts with this? */
 				if (!second_scan) {
 					size_t offset;
 					size_t length;

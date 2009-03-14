@@ -725,12 +725,12 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 #ifdef ENABLE_NETWORK
 
 			/* Joining Client:
-			* _local_company: COMPANY_SPECTATOR
-			* _network_playas/cid = requested company/clientid
-			*
-			* Other client(s)/server:
-			* _local_company/_network_playas: what they play as
-			* cid = requested company/company of joining client */
+			 * _local_company: COMPANY_SPECTATOR
+			 * _network_playas/cid = requested company/clientid
+			 *
+			 * Other client(s)/server:
+			 * _local_company/_network_playas: what they play as
+			 * cid = requested company/company of joining client */
 			ClientID cid = (ClientID)p2;
 
 			/* Has the network client a correct ClientIndex? */
@@ -766,7 +766,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				_current_company = _local_company;
 
 				/* Now that we have a new company, broadcast our autorenew settings to
-				* all clients so everything is in sync */
+				 * all clients so everything is in sync */
 				NetworkSend_Command(0,
 					(_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4,
 					_settings_client.gui.autorenew_money,
@@ -780,8 +780,8 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			if (_network_server) {
 				/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at
-				* server-side in network_server.c:838, function
-				* DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
+				 * server side in network_server.c:838, function
+				 * DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
 				CompanyID old_playas = ci->client_playas;
 				ci->client_playas = c->index;
 				NetworkUpdateClientInfo(ci->client_id);
@@ -793,16 +793,16 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					NetworkServerUpdateCompanyPassworded(ci->client_playas, false);
 
 					/* XXX - When a client joins, we automatically set its name to the
-					* client's name (for some reason). As it stands now only the server
-					* knows the client's name, so it needs to send out a "broadcast" to
-					* do this. To achieve this we send a network command. However, it
-					* uses _local_company to execute the command as.  To prevent abuse
-					* (eg. only yourself can change your name/company), we 'cheat' by
-					* impersonation _local_company as the server. Not the best solution;
-					* but it works.
-					* TODO: Perhaps this could be improved by when the client is ready
-					* with joining to let it send itself the command, and not the server?
-					* For example in network_client.c:534? */
+					 * client's name (for some reason). As it stands now only the server
+					 * knows the client's name, so it needs to send out a "broadcast" to
+					 * do this. To achieve this we send a network command. However, it
+					 * uses _local_company to execute the command as.  To prevent abuse
+					 * (eg. only yourself can change your name/company), we 'cheat' by
+					 * impersonation _local_company as the server. Not the best solution;
+					 * but it works.
+					 * TODO: Perhaps this could be improved by when the client is ready
+					 * with joining to let it send itself the command, and not the server?
+					 * For example in network_client.c:534? */
 					_local_company = ci->client_playas;
 					NetworkSend_Command(0, 0, 0, CMD_RENAME_PRESIDENT, NULL, ci->client_name);
 					_local_company = company_backup;

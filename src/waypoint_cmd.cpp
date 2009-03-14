@@ -183,7 +183,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 			/* Move existing (recently deleted) waypoint to the new location */
 
 			/* First we update the destination for all vehicles that
-			* have the old waypoint in their orders. */
+			 * have the old waypoint in their orders. */
 			Vehicle *v;
 			FOR_ALL_VEHICLES(v) {
 				if (v->type == VEH_TRAIN &&

@@ -8,7 +8,7 @@
 bool AITestMode::ModeProc(TileIndex tile, uint32 p1, uint32 p2, uint procc, CommandCost costs)
 {
 	/* In test mode we only return 'false', telling the DoCommand it
-		*  should stop after testing the command and return with that result. */
+	 *  should stop after testing the command and return with that result. */
 	return false;
 }
 

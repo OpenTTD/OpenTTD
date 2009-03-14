@@ -1112,13 +1112,13 @@ public:
 	{
 		const Vehicle *v = _place_clicked_vehicle;
 		/*
-		* Check if we clicked on a vehicle
-		* and if the GOTO button of this window is pressed
-		* This is because of all open order windows WE_MOUSELOOP is called
-		* and if you have 3 windows open, and this check is not done
-		* the order is copied to the last open window instead of the
-		* one where GOTO is enabled
-		*/
+		 * Check if we clicked on a vehicle
+		 * and if the GOTO button of this window is pressed
+		 * This is because of all open order windows WE_MOUSELOOP is called
+		 * and if you have 3 windows open, and this check is not done
+		 * the order is copied to the last open window instead of the
+		 * one where GOTO is enabled
+		 */
 		if (v != NULL && this->IsWidgetLowered(ORDER_WIDGET_GOTO)) {
 			_place_clicked_vehicle = NULL;
 			this->HandleOrderVehClick(v);

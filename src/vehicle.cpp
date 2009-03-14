@@ -720,9 +720,9 @@ CargoID FindFirstRefittableCargo(EngineID engine_type)
 }
 
 /** Learn the price of refitting a certain engine
-* @param engine_type Which engine to refit
-* @return Price for refitting
-*/
+ * @param engine_type Which engine to refit
+ * @return Price for refitting
+ */
 CommandCost GetRefitCost(EngineID engine_type)
 {
 	Money base_cost;

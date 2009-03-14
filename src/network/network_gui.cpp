@@ -713,8 +713,8 @@ public:
 		SetVScrollCount(this, this->servers.Length());
 
 		/* Additional colums in server list */
-		if (this->width > NetworkGameWindow::MIN_EXTRA_COLUMNS_WIDTH + GetWidgetWidth(NGWW_MAPSIZE)
-				+ GetWidgetWidth(NGWW_DATE) + GetWidgetWidth(NGWW_YEARS)) {
+		if (this->width > NetworkGameWindow::MIN_EXTRA_COLUMNS_WIDTH + GetWidgetWidth(NGWW_MAPSIZE) +
+				GetWidgetWidth(NGWW_DATE) + GetWidgetWidth(NGWW_YEARS)) {
 			/* show columns 'Map size', 'Date' and 'Years' */
 			this->SetWidgetsHiddenState(false, NGWW_MAPSIZE, NGWW_DATE, NGWW_YEARS, WIDGET_LIST_END);
 			AlignWidgetRight(NGWW_YEARS,   NGWW_INFO);
@@ -1028,7 +1028,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			case NSSW_LOAD: // Load game
 				_is_network_server = true;
 				/* XXX - WC_NETWORK_WINDOW (this window) should stay, but if it stays, it gets
-				* copied all the elements of 'load game' and upon closing that, it segfaults */
+				 * copied all the elements of 'load game' and upon closing that, it segfaults */
 				delete this;
 				ShowSaveLoadDialog(SLD_LOAD_GAME);
 				break;

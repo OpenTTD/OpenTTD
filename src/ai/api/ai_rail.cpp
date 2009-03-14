@@ -316,7 +316,7 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, ::IsValidTile(to));
 	EnforcePrecondition(false, ::DistanceManhattan(from, tile) == 1);
-	EnforcePrecondition(false, ::DistanceManhattan(tile,to) >= 1);
+	EnforcePrecondition(false, ::DistanceManhattan(tile, to) >= 1);
 	EnforcePrecondition(false, IsRailTypeAvailable(GetCurrentRailType()));
 	int diag_offset = abs(abs((int)::TileX(to) - (int)::TileX(tile)) - abs((int)::TileY(to) - (int)::TileY(tile)));
 	EnforcePrecondition(false, diag_offset <= 1 ||
@@ -333,7 +333,7 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, ::IsValidTile(to));
 	EnforcePrecondition(false, ::DistanceManhattan(from, tile) == 1);
-	EnforcePrecondition(false, ::DistanceManhattan(tile,to) >= 1);
+	EnforcePrecondition(false, ::DistanceManhattan(tile, to) >= 1);
 	int diag_offset = abs(abs((int)::TileX(to) - (int)::TileX(tile)) - abs((int)::TileY(to) - (int)::TileY(tile)));
 	EnforcePrecondition(false, diag_offset <= 1 ||
 			(::TileX(from) == ::TileX(tile) && ::TileX(tile) == ::TileX(to)) ||

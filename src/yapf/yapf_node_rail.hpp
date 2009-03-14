@@ -68,7 +68,7 @@ enum EndSegmentReason {
 	ESR_SAFE_TILE,         ///< safe waiting position found (could be a target)
 
 	/* The following reasons are used only internally by PfCalcCost().
-	*   They should not be found in the cached segment. */
+	 *  They should not be found in the cached segment. */
 	ESR_PATH_TOO_LONG,     ///< the path is too long (searching for the nearest depot in the given radius)
 	ESR_FIRST_TWO_WAY_RED, ///< first signal was 2-way and it was red
 	ESR_LOOK_AHEAD_END,    ///< we have just passed the last look-ahead signal

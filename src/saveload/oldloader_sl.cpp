@@ -691,9 +691,9 @@ static bool LoadOldCargoPaymentRate(LoadgameState *ls, int num)
 
 	if (_savegame_type == SGT_TTO) {
 		/* SVXConverter about cargo payment rates correction:
-		* "increase them to compensate for the faster time advance in TTD compared to TTO
-		* which otherwise would cause much less income while the annual running costs of
-		* the vehicles stay the same" */
+		 * "increase them to compensate for the faster time advance in TTD compared to TTO
+		 * which otherwise would cause much less income while the annual running costs of
+		 * the vehicles stay the same" */
 
 		Money m = ((((Money)_old_price) << 16) + (uint)_old_price_frac) * 124 / 74;
 
@@ -1039,15 +1039,15 @@ static bool LoadOldCompany(LoadgameState *ls, int num)
 				c->name_1 = STR_SV_UNNAMED;
 		} else {
 			/* Beside some multiplayer maps (1 on 1), which we don't official support,
-			* all other companys are an AI.. mark them as such */
+			 * all other companys are an AI.. mark them as such */
 			c->is_ai = true;
 		}
 
 		/* Sometimes it is better to not ask.. in old scenarios, the money
-		* was always 893288 pounds. In the newer versions this is correct,
-		* but correct for those oldies
-		* Ps: this also means that if you had exact 893288 pounds, you will go back
-		* to 100000.. this is a very VERY small chance ;) */
+		 * was always 893288 pounds. In the newer versions this is correct,
+		 * but correct for those oldies
+		 * Ps: this also means that if you had exact 893288 pounds, you will go back
+		 * to 100000.. this is a very VERY small chance ;) */
 		if (c->money == 893288) c->money = c->current_loan = 100000;
 	}
 

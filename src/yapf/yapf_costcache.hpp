@@ -138,7 +138,7 @@ struct CSegmentCostCacheT
 /** CYapfSegmentCostCacheGlobalT - the yapf cost cache provider that adds the segment cost
  *  caching functionality to yapf. Using this class as base of your will provide the global
  *  segment cost caching services for your Nodes.
-*/
+ */
 template <class Types>
 class CYapfSegmentCostCacheGlobalT
 	: public CYapfSegmentCostCacheLocalT<Types>

@@ -596,9 +596,9 @@ struct BuildRoadToolbarWindow : Window {
 				case DDSP_PLACE_ROAD_Y_DIR:
 				case DDSP_PLACE_AUTOROAD:
 					/* Flag description:
-					* Use the first three bits (0x07) if dir == Y
-					* else use the last 2 bits (X dir has
-					* not the 3rd bit set) */
+					 * Use the first three bits (0x07) if dir == Y
+					 * else use the last 2 bits (X dir has
+					 * not the 3rd bit set) */
 					_place_road_flag = (RoadFlags)((_place_road_flag & RF_DIR_Y) ? (_place_road_flag & 0x07) : (_place_road_flag >> 3));
 
 					DoCommandP(end_tile, start_tile, _place_road_flag | (_cur_roadtype << 3) | (_one_way_button_clicked << 5),

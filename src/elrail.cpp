@@ -552,12 +552,12 @@ bool SettingsDisableElrail(int32 p1)
 	}
 
 	/* when disabling elrails, make sure that all existing trains can run on
-	*  normal rail too */
+	 *  normal rail too */
 	if (disable) {
 		FOR_ALL_VEHICLES(v) {
 			if (v->type == VEH_TRAIN && v->u.rail.railtype == RAILTYPE_ELECTRIC) {
 				/* this railroad vehicle is now compatible only with elrail,
-				*  so add there also normal rail compatibility */
+				 *  so add there also normal rail compatibility */
 				v->u.rail.compatible_railtypes |= RAILTYPES_RAIL;
 				v->u.rail.railtype = RAILTYPE_RAIL;
 				SetBit(v->u.rail.flags, VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL);
@@ -577,8 +577,8 @@ bool SettingsDisableElrail(int32 p1)
 	FOR_ALL_COMPANIES(c) c->avail_railtypes = GetCompanyRailtypes(c->index);
 
 	/* This resets the _last_built_railtype, which will be invalid for electric
-	* rails. It may have unintended consequences if that function is ever
-	* extended, though. */
+	 * rails. It may have unintended consequences if that function is ever
+	 * extended, though. */
 	ReinitGuiAfterToggleElrail(disable);
 	return true;
 }

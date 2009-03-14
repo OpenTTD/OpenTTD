@@ -2251,9 +2251,9 @@ void VpSetPlaceSizingLimit(int limit)
 }
 
 /**
-* Highlights all tiles between a set of two tiles. Used in dock and tunnel placement
-* @param from TileIndex of the first tile to highlight
-* @param to TileIndex of the last tile to highlight */
+ * Highlights all tiles between a set of two tiles. Used in dock and tunnel placement
+ * @param from TileIndex of the first tile to highlight
+ * @param to TileIndex of the last tile to highlight */
 void VpSetPresizeRange(TileIndex from, TileIndex to)
 {
 	uint64 distance = DistanceManhattan(from, to) + 1;
@@ -2338,19 +2338,19 @@ static bool SwapDirection(HighLightStyle style, TileIndex start_tile, TileIndex 
 }
 
 /** Calculates height difference between one tile and another
-* Multiplies the result to suit the standard given by minimap - 50 meters high
-* To correctly get the height difference we need the direction we are dragging
-* in, as well as with what kind of tool we are dragging. For example a horizontal
-* autorail tool that starts in bottom and ends at the top of a tile will need the
-* maximum of SW, S and SE, N corners respectively. This is handled by the lookup table below
-* See _tileoffs_by_dir in map.c for the direction enums if you can't figure out
-* the values yourself.
-* @param style HightlightStyle of drag. This includes direction and style (autorail, rect, etc.)
-* @param distance amount of tiles dragged, important for horizontal/vertical drags
-*        ignored for others
-* @param start_tile, end_tile start and end tile of drag operation
-* @return height difference between two tiles. Tile measurement tool utilizes
-* this value in its tooltips */
+ * Multiplies the result to suit the standard given by minimap - 50 meters high
+ * To correctly get the height difference we need the direction we are dragging
+ * in, as well as with what kind of tool we are dragging. For example a horizontal
+ * autorail tool that starts in bottom and ends at the top of a tile will need the
+ * maximum of SW, S and SE, N corners respectively. This is handled by the lookup table below
+ * See _tileoffs_by_dir in map.c for the direction enums if you can't figure out
+ * the values yourself.
+ * @param style HightlightStyle of drag. This includes direction and style (autorail, rect, etc.)
+ * @param distance amount of tiles dragged, important for horizontal/vertical drags
+ *        ignored for others
+ * @param start_tile, end_tile start and end tile of drag operation
+ * @return height difference between two tiles. Tile measurement tool utilizes
+ * this value in its tooltips */
 static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_tile, TileIndex end_tile)
 {
 	bool swap = SwapDirection(style, start_tile, end_tile);

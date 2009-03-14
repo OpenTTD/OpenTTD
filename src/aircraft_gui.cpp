@@ -15,12 +15,12 @@
 #include "table/strings.h"
 
 /**
-* Draw the details for the given vehicle at the position (x,y)
-*
-* @param v current vehicle
-* @param x The x coordinate
-* @param y The y coordinate
-*/
+ * Draw the details for the given vehicle at the position (x, y)
+ *
+ * @param v current vehicle
+ * @param x The x coordinate
+ * @param y The y coordinate
+ */
 void DrawAircraftDetails(const Vehicle *v, int x, int y)
 {
 	int y_offset = (v->Next()->cargo_cap != 0) ? -11 : 0;

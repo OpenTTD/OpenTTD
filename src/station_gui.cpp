@@ -364,7 +364,7 @@ public:
 			assert(st->xy != INVALID_TILE);
 
 			/* Do not do the complex check HasStationInUse here, it may be even false
-				* when the order had been removed and the station list hasn't been removed yet */
+			 * when the order had been removed and the station list hasn't been removed yet */
 			assert(st->owner == owner || (st->owner == OWNER_NONE && !st->IsBuoy()));
 
 			SetDParam(0, st->index);

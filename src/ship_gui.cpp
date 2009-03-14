@@ -35,12 +35,12 @@ void CcBuildShip(bool success, TileIndex tile, uint32 p1, uint32 p2)
 }
 
 /**
-* Draw the details for the given vehicle at the position (x,y)
-*
-* @param v current vehicle
-* @param x The x coordinate
-* @param y The y coordinate
-*/
+ * Draw the details for the given vehicle at the position (x, y)
+ *
+ * @param v current vehicle
+ * @param x The x coordinate
+ * @param y The y coordinate
+ */
 void DrawShipDetails(const Vehicle *v, int x, int y)
 {
 	SetDParam(0, v->engine_type);

@@ -624,7 +624,7 @@ struct BuildRailToolbarWindow : Window {
 		switch (clicked_widget) {
 			case RTW_REMOVE:
 				/* If it is the removal button that has been clicked, do nothing,
-				* as it is up to the other buttons to drive removal status */
+				 * as it is up to the other buttons to drive removal status */
 				return;
 				break;
 			case RTW_BUILD_NS:
@@ -636,13 +636,13 @@ struct BuildRailToolbarWindow : Window {
 			case RTW_BUILD_STATION:
 			case RTW_BUILD_SIGNALS:
 				/* Removal button is enabled only if the rail/signal/waypoint/station
-				* button is still lowered.  Once raised, it has to be disabled */
+				 * button is still lowered.  Once raised, it has to be disabled */
 				this->SetWidgetDisabledState(RTW_REMOVE, !this->IsWidgetLowered(clicked_widget));
 				break;
 
 			default:
 				/* When any other buttons than rail/signal/waypoint/station, raise and
-				* disable the removal button */
+				 * disable the removal button */
 				this->DisableWidget(RTW_REMOVE);
 				this->RaiseWidget(RTW_REMOVE);
 				break;
@@ -862,7 +862,7 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 	uint sy = TileY(start);
 	uint ex = TileX(end);
 	uint ey = TileY(end);
-	uint w,h;
+	uint w, h;
 
 	if (sx > ex) Swap(sx, ex);
 	if (sy > ey) Swap(sy, ey);

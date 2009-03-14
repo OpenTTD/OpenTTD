@@ -97,12 +97,12 @@ public:
 	}
 
 	/**
-	* Make a pixel looks like it is transparent.
-	* @param colour the colour already on the screen.
-	* @param nom the amount of transparency, nominator, makes colour lighter.
-	* @param denom denominator, makes colour darker.
-	* @return the new colour for the screen.
-	*/
+	 * Make a pixel looks like it is transparent.
+	 * @param colour the colour already on the screen.
+	 * @param nom the amount of transparency, nominator, makes colour lighter.
+	 * @param denom denominator, makes colour darker.
+	 * @return the new colour for the screen.
+	 */
 	static inline uint32 MakeTransparent(uint32 colour, uint nom, uint denom = 256)
 	{
 		uint r = GB(colour, 16, 8);
@@ -113,10 +113,10 @@ public:
 	}
 
 	/**
-	* Make a colour grey - based.
-	* @param colour the colour to make grey.
-	* @return the new colour, now grey.
-	*/
+	 * Make a colour grey - based.
+	 * @param colour the colour to make grey.
+	 * @return the new colour, now grey.
+	 */
 	static inline uint32 MakeGrey(uint32 colour)
 	{
 		uint r = GB(colour, 16, 8);
@@ -124,8 +124,8 @@ public:
 		uint b = GB(colour, 0,  8);
 
 		/* To avoid doubles and stuff, multiple it with a total of 65536 (16bits), then
-		*  divide by it to normalize the value to a byte again. See heightmap.cpp for
-		*  information about the formula. */
+		 *  divide by it to normalize the value to a byte again. See heightmap.cpp for
+		 *  information about the formula. */
 		colour = ((r * 19595) + (g * 38470) + (b * 7471)) / 65536;
 
 		return ComposeColour(0xFF, colour, colour, colour);

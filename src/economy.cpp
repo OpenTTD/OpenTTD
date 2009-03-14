@@ -190,7 +190,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 			do {
 				min_income = min(min_income, cee->income + cee->expenses);
 				max_income = max(max_income, cee->income + cee->expenses);
-			} while (++cee,--numec);
+			} while (++cee, --numec);
 
 			if (min_income > 0) {
 				_score_part[owner][SCORE_MIN_INCOME] = ClampToI32(min_income);
@@ -212,7 +212,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 			total_delivered = 0;
 			do {
 				total_delivered += cee->delivered_cargo;
-			} while (++cee,--numec);
+			} while (++cee, --numec);
 
 			_score_part[owner][SCORE_DELIVERED] = total_delivered;
 		}
@@ -962,7 +962,7 @@ struct FoundRoute {
 
 static void FindSubsidyPassengerRoute(FoundRoute *fr)
 {
-	Town *from,*to;
+	Town *from, *to;
 
 	fr->distance = UINT_MAX;
 
@@ -1062,13 +1062,13 @@ static void SubsidyMonthlyHandler()
 	for (s = _subsidies; s != endof(_subsidies); s++) {
 		if (s->cargo_type == CT_INVALID) continue;
 
-		if (s->age == 12-1) {
+		if (s->age == 12 - 1) {
 			pair = SetupSubsidyDecodeParam(s, 1);
 			AddNewsItem(STR_202E_OFFER_OF_SUBSIDY_EXPIRED, NS_SUBSIDIES, pair.a, pair.b);
 			s->cargo_type = CT_INVALID;
 			modified = true;
 			AI::BroadcastNewEvent(new AIEventSubsidyOfferExpired(s - _subsidies));
-		} else if (s->age == 2*12-1) {
+		} else if (s->age == 2 * 12 - 1) {
 			st = GetStation(s->to);
 			if (st->owner == _local_company) {
 				pair = SetupSubsidyDecodeParam(s, 1);
@@ -1083,7 +1083,7 @@ static void SubsidyMonthlyHandler()
 	}
 
 	/* 25% chance to go on */
-	if (Chance16(1,4)) {
+	if (Chance16(1, 4)) {
 		/*  Find a free slot*/
 		s = _subsidies;
 		while (s->cargo_type != CT_INVALID) {
@@ -1734,7 +1734,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	if (anything_loaded || anything_unloaded) {
 		if (_settings_game.order.gradual_loading) {
 			/* The time it takes to load one 'slice' of cargo or passengers depends
-			* on the vehicle type - the values here are those found in TTDPatch */
+			 * on the vehicle type - the values here are those found in TTDPatch */
 			const uint gradual_loading_wait_time[] = { 40, 20, 10, 20 };
 
 			unloading_time = gradual_loading_wait_time[v->type];

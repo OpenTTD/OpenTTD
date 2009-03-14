@@ -204,7 +204,7 @@ struct IConsoleWindow : Window
 		const int scroll_height = (this->height / ICON_LINE_HEIGHT) - 1;
 		switch (keycode) {
 			case WKC_UP:
-				IConsoleHistoryNavigate(+1);
+				IConsoleHistoryNavigate(1);
 				this->SetDirty();
 				break;
 

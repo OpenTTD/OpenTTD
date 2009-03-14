@@ -169,11 +169,11 @@ static int CDECL TrainEnginePowerVsRunningCostSorter(const void *a, const void *
 	const Engine *e_b = GetEngine(*(const EngineID*)b);
 
 	/* Here we are using a few tricks to get the right sort.
-		* We want power/running cost, but since we usually got higher running cost than power and we store the result in an int,
-		* we will actually calculate cunning cost/power (to make it more than 1).
-		* Because of this, the return value have to be reversed as well and we return b - a instead of a - b.
-		* Another thing is that both power and running costs should be doubled for multiheaded engines.
-		* Since it would be multipling with 2 in both numerator and denumerator, it will even themselves out and we skip checking for multiheaded. */
+	 * We want power/running cost, but since we usually got higher running cost than power and we store the result in an int,
+	 * we will actually calculate cunning cost/power (to make it more than 1).
+	 * Because of this, the return value have to be reversed as well and we return b - a instead of a - b.
+	 * Another thing is that both power and running costs should be doubled for multiheaded engines.
+	 * Since it would be multipling with 2 in both numerator and denumerator, it will even themselves out and we skip checking for multiheaded. */
 	Money va = (e_a->GetRunningCost()) / max(1U, (uint)e_a->GetPower());
 	Money vb = (e_b->GetRunningCost()) / max(1U, (uint)e_b->GetPower());
 	int r = ClampToI32(vb - va);
@@ -514,7 +514,7 @@ static int DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number, const 
 		DrawString(x, y, STR_PURCHASE_INFO_AIRCRAFT_CAPACITY, TC_FROMSTRING);
 	} else {
 		/* Note, if the default capacity is selected by the refit capacity
-		* callback, then the capacity shown is likely to be incorrect. */
+		 * callback, then the capacity shown is likely to be incorrect. */
 		SetDParam(0, cargo);
 		SetDParam(1, AircraftDefaultCargoCapacity(cargo, avi));
 		SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
@@ -809,9 +809,9 @@ struct BuildVehicleWindow : Window {
 		this->eng_list.Clear();
 
 		/* Make list of all available train engines and wagons.
-		* Also check to see if the previously selected engine is still available,
-		* and if not, reset selection to INVALID_ENGINE. This could be the case
-		* when engines become obsolete and are removed */
+		 * Also check to see if the previously selected engine is still available,
+		 * and if not, reset selection to INVALID_ENGINE. This could be the case
+		 * when engines become obsolete and are removed */
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
 			EngineID eid = e->index;
@@ -891,9 +891,9 @@ struct BuildVehicleWindow : Window {
 		const Station *st = this->listview_mode ? NULL : GetStationByTile(this->window_number);
 
 		/* Make list of all available planes.
-		* Also check to see if the previously selected plane is still available,
-		* and if not, reset selection to INVALID_ENGINE. This could be the case
-		* when planes become obsolete and are removed */
+		 * Also check to see if the previously selected plane is still available,
+		 * and if not, reset selection to INVALID_ENGINE. This could be the case
+		 * when planes become obsolete and are removed */
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_AIRCRAFT) {
 			EngineID eid = e->index;

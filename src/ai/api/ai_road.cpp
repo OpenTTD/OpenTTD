@@ -395,7 +395,7 @@ static bool NormaliseTileOffset(int32 *tile)
 static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, DiagDirection neighbour)
 {
 	TileIndex neighbour_tile = ::TileAddByDiagDir(start_tile, neighbour);
-	if ((rts & ::GetRoadTypes(neighbour_tile)) == 0) return	false;
+	if ((rts & ::GetRoadTypes(neighbour_tile)) == 0) return false;
 
 	switch (::GetTileType(neighbour_tile)) {
 		case MP_ROAD:

@@ -32,7 +32,7 @@ static void _DoCommandReturnBuildBridge2(class AIInstance *instance)
 	}
 
 	/* This can never happen, as in test-mode this callback is never executed,
-	*  and in execute-mode, the other callback is called. */
+	 *  and in execute-mode, the other callback is called. */
 	NOT_REACHED();
 }
 
@@ -45,7 +45,7 @@ static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
 	}
 
 	/* This can never happen, as in test-mode this callback is never executed,
-	*  and in execute-mode, the other callback is called. */
+	 *  and in execute-mode, the other callback is called. */
 	NOT_REACHED();
 }
 

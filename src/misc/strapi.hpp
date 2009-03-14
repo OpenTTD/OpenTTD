@@ -17,9 +17,9 @@
 #endif /* HAS_WCHAR */
 
 /** String API mapper base - just mapping by character type, not by case sensitivity yet.
-	* Class template CStrApiBaseT declaration is general, but following inline method
-	* definitions are specialized by character type. Class is not used directly, but only
-	* as a base class for template class CStrApiT */
+ * Class template CStrApiBaseT declaration is general, but following inline method
+ * definitions are specialized by character type. Class is not used directly, but only
+ * as a base class for template class CStrApiT */
 template <typename Tchar>
 class CStrApiBaseT
 {

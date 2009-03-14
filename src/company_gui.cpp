@@ -877,8 +877,8 @@ public:
 
 
 			/* Disable dynamically the widgets which CompanyManagerFaceVariable has less than 2 options
-			* (or in other words you haven't any choice).
-			* If the widgets depend on a HAS-variable and this is false the widgets will be disabled, too. */
+			 * (or in other words you haven't any choice).
+			 * If the widgets depend on a HAS-variable and this is false the widgets will be disabled, too. */
 
 			/* Eye colour buttons */
 			this->SetWidgetsDisabledState(_cmf_info[CMFV_EYE_COLOUR].valid_values[this->ge] < 2,
@@ -1037,10 +1037,10 @@ public:
 
 			default:
 				/* For all buttons from SCMFW_WIDGET_HAS_MOUSTACHE_EARRING to SCMFW_WIDGET_GLASSES_R is the same function.
-				* Therefor is this combined function.
-				* First it checks which CompanyManagerFaceVariable will be change and then
-				* a: invert the value for boolean variables
-				* or b: it checks inside of IncreaseCompanyManagerFaceBits() if a left (_L) butten is pressed and then decrease else increase the variable */
+				 * Therefor is this combined function.
+				 * First it checks which CompanyManagerFaceVariable will be change and then
+				 * a: invert the value for boolean variables
+				 * or b: it checks inside of IncreaseCompanyManagerFaceBits() if a left (_L) butten is pressed and then decrease else increase the variable */
 				if (this->advanced && widget >= SCMFW_WIDGET_HAS_MOUSTACHE_EARRING && widget <= SCMFW_WIDGET_GLASSES_R) {
 					CompanyManagerFaceVariable cmfv; // which CompanyManagerFaceVariable shall be edited
 

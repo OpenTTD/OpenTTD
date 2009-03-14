@@ -388,7 +388,7 @@ public:
 		this->DrawWidgets();
 
 		/* Draw Matrix Group
-			* The selected group is drawn in white */
+		 * The selected group is drawn in white */
 		StringID str_all_veh, str_no_group_veh;
 
 		switch (this->vehicle_type) {
