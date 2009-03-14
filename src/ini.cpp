@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "core/alloc_func.hpp"
 #include "core/math_func.hpp"
+#include "core/mem_func.hpp"
 #include "debug.h"
 #include "ini_type.h"
 #include "string_func.h"
@@ -15,6 +16,9 @@
 # include <unistd.h>
 #endif
 
+#ifdef WIN32
+# include <shellapi.h>
+#endif
 
 IniItem::IniItem(IniGroup *parent, const char *name, size_t len) : next(NULL), value(NULL), comment(NULL)
 {
@@ -304,6 +308,28 @@ bool IniFile::SaveToDisk(const char *filename)
 	fclose(f);
 #endif
 
+#if defined(WIN32) || defined(WIN64)
+	/* Allocate space for one more \0 character. */
+	TCHAR tfilename[MAX_PATH + 1], tfile_new[MAX_PATH + 1];
+	_tcsncpy(tfilename, OTTD2FS(filename), MAX_PATH);
+	_tcsncpy(tfile_new, OTTD2FS(file_new), MAX_PATH);
+	/* SHFileOperation wants a double '\0' terminated string. */
+	tfilename[MAX_PATH - 1] = '\0';
+	tfile_new[MAX_PATH - 1] = '\0';
+	tfilename[_tcslen(tfilename) + 1] = '\0';
+	tfile_new[_tcslen(tfile_new) + 1] = '\0';
+
+	/* Rename file without any user confirmation. */
+	SHFILEOPSTRUCT shfopt;
+	MemSetT(&shfopt, 0);
+	shfopt.wFunc  = FO_MOVE;
+	shfopt.fFlags = FOF_NOCONFIRMATION | FOF_NOCONFIRMMKDIR | FOF_NOERRORUI | FOF_SILENT;
+	shfopt.pFrom  = tfile_new;
+	shfopt.pTo    = tfilename;
+	SHFileOperation(&shfopt);
+#else
 	rename(file_new, filename);
+#endif
+
 	return true;
 }
