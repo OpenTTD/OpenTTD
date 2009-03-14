@@ -38,7 +38,6 @@ enum {
  * If no appropiate font is found, the function returns an error */
 #ifdef WIN32
 #include <windows.h>
-#include <tchar.h>
 #include <shlobj.h> // SHGetFolderPath
 #include "win32.h"
 

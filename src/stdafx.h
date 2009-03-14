@@ -247,6 +247,7 @@
 	#if defined(WIN32) || defined(WIN64)
 		char *getcwd(char *buf, size_t size);
 		#include <tchar.h>
+		#include <io.h>
 
 		/* XXX - WinCE without MSVCRT doesn't support wfopen, so it seems */
 		#if !defined(WINCE)

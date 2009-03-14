@@ -14,7 +14,6 @@
 #include <windows.h>
 #include <winnt.h>
 #include <wininet.h>
-#include <io.h>
 #include <fcntl.h>
 #include <shlobj.h> // SHGetFolderPath
 #include "variables.h"
@@ -26,7 +25,6 @@
 #include "string_func.h"
 #include "gamelog.h"
 #include <ctype.h>
-#include <tchar.h>
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/stat.h>

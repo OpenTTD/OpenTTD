@@ -12,10 +12,6 @@
 #include <sys/stat.h>
 
 #ifdef WIN32
-# include <tchar.h>
-# ifndef UNICODE
-#  include <io.h>
-# endif
 # define access _taccess
 #else
 # include <unistd.h>

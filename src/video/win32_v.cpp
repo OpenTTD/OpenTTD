@@ -16,7 +16,6 @@
 #include "../texteff.hpp"
 #include "win32_v.h"
 #include <windows.h>
-#include <tchar.h>
 
 static struct {
 	HWND main_wnd;
