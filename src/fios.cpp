@@ -17,7 +17,6 @@
 #  include <io.h>
 # endif
 # define access _taccess
-# define unlink _tunlink
 #else
 # include <unistd.h>
 #endif /* WIN32 */
@@ -161,16 +160,12 @@ void FiosMakeSavegameName(char *buf, const char *name, size_t size)
 #endif
 }
 
-#if defined(WIN32)
-# define unlink _tunlink
-#endif
-
 bool FiosDelete(const char *name)
 {
 	char filename[512];
 
 	FiosMakeSavegameName(filename, name, lengthof(filename));
-	return unlink(OTTD2FS(filename)) == 0;
+	return unlink(filename) == 0;
 }
 
 bool FileExists(const char *filename)

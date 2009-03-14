@@ -251,6 +251,7 @@
 		/* XXX - WinCE without MSVCRT doesn't support wfopen, so it seems */
 		#if !defined(WINCE)
 			#define fopen(file, mode) _tfopen(OTTD2FS(file), _T(mode))
+			#define unlink(file) _tunlink(OTTD2FS(file))
 		#endif /* WINCE */
 
 		const char *FS2OTTD(const TCHAR *name);
