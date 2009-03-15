@@ -278,7 +278,7 @@ Function CheckFile(filename)
 End Function
 
 Dim version
-version = DetermineSVNVersion
+version = "0.7.0-RC1"
 If Not (IsCachedVersion(version) And CheckFile("../src/rev.cpp") And CheckFile("../src/ottdres.rc")) Then
 	UpdateFiles version
 End If
