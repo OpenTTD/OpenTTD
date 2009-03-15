@@ -86,32 +86,32 @@ static void ShowGroupActionDropdown(Window *w, GroupID gid)
 
 
 static const Widget _group_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,             STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   447,     0,    13, 0x0,                  STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   448,   459,     0,    13, 0x0,                  STR_STICKY_BUTTON},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   200,   280,    14,    25, STR_SORT_BY,          STR_SORT_ORDER_TIP},
-{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,   281,   447,    14,    25, 0x0,                  STR_SORT_CRITERIA_TIP},
-{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,   448,   459,    14,    25, 0x0,                  STR_NULL},
-{     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,   200,   447,    26,   181, 0x701,                STR_NULL},
-{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   448,   459,    26,   181, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,   188,   199,   169,   193, 0x0,                  STR_NULL},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   200,   305,   182,   193, 0x0,                  STR_AVAILABLE_ENGINES_TIP},
-{   WWT_DROPDOWN,     RESIZE_TB,  COLOUR_GREY,   306,   423,   182,   193, STR_MANAGE_LIST,      STR_MANAGE_LIST_TIP},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   424,   435,   182,   193, SPR_FLAG_VEH_STOPPED, STR_MASS_STOP_LIST_TIP},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   436,   447,   182,   193, SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP},
-{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,   448,   447,   182,   193, 0x0,                  STR_NULL},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   448,   459,   182,   193, 0x0,                  STR_RESIZE_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,             STR_018B_CLOSE_WINDOW},             // GRP_WIDGET_CLOSEBOX
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   447,     0,    13, 0x0,                  STR_018C_WINDOW_TITLE_DRAG_THIS},   // GRP_WIDGET_CAPTION
+{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   448,   459,     0,    13, 0x0,                  STR_STICKY_BUTTON},                 // GRP_WIDGET_STICKY
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   200,   280,    14,    25, STR_SORT_BY,          STR_SORT_ORDER_TIP},                // GRP_WIDGET_SORT_BY_ORDER
+{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,   281,   447,    14,    25, 0x0,                  STR_SORT_CRITERIA_TIP},             // GRP_WIDGET_SORT_BY_DROPDOWN
+{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,   448,   459,    14,    25, 0x0,                  STR_NULL},                          // GRP_WIDGET_EMPTY_TOP_RIGHT
+{     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,   200,   447,    26,   181, 0x701,                STR_NULL},                          // GRP_WIDGET_LIST_VEHICLE
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   448,   459,    26,   181, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},  // GRP_WIDGET_LIST_VEHICLE_SCROLLBAR
+{      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,   188,   199,   169,   193, 0x0,                  STR_NULL},                          // GRP_WIDGET_EMPTY2
+{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   200,   305,   182,   193, 0x0,                  STR_AVAILABLE_ENGINES_TIP},         // GRP_WIDGET_AVAILABLE_VEHICLES
+{   WWT_DROPDOWN,     RESIZE_TB,  COLOUR_GREY,   306,   423,   182,   193, STR_MANAGE_LIST,      STR_MANAGE_LIST_TIP},               // GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN
+{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   424,   435,   182,   193, SPR_FLAG_VEH_STOPPED, STR_MASS_STOP_LIST_TIP},            // GRP_WIDGET_STOP_ALL
+{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   436,   447,   182,   193, SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP},           // GRP_WIDGET_START_ALL
+{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,   448,   447,   182,   193, 0x0,                  STR_NULL},                          // GRP_WIDGET_EMPTY_BOTTOM_RIGHT
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   448,   459,   182,   193, 0x0,                  STR_RESIZE_BUTTON},                 // GRP_WIDGET_RESIZE
 
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   199,    14,    25, 0x0,                  STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   199,    26,    38, 0x0,                  STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   199,    39,    51, 0x0,                  STR_NULL},
-{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   187,    52,   168, 0x701,                STR_GROUPS_CLICK_ON_GROUP_FOR_TIP},
-{ WWT_SCROLL2BAR, RESIZE_BOTTOM,  COLOUR_GREY,   188,   199,    52,   168, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,     0,    23,   169,   193, 0x0,                  STR_GROUP_CREATE_TIP},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,    24,    47,   169,   193, 0x0,                  STR_GROUP_DELETE_TIP},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,    48,    71,   169,   193, 0x0,                  STR_GROUP_RENAME_TIP},
-{      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,    72,   163,   169,   193, 0x0,                  STR_NULL},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   164,   187,   169,   193, 0x0,                  STR_GROUP_REPLACE_PROTECTION_TIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   199,    14,    25, 0x0,                  STR_NULL},                          // GRP_WIDGET_EMPTY_TOP_LEFT
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   199,    26,    38, 0x0,                  STR_NULL},                          // GRP_WIDGET_ALL_VEHICLES
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   199,    39,    51, 0x0,                  STR_NULL},                          // GRP_WIDGET_DEFAULT_VEHICLES
+{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   187,    52,   168, 0x701,                STR_GROUPS_CLICK_ON_GROUP_FOR_TIP}, // GRP_WIDGET_LIST_GROUP
+{ WWT_SCROLL2BAR, RESIZE_BOTTOM,  COLOUR_GREY,   188,   199,    52,   168, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},  // GRP_WIDGET_LIST_GROUP_SCROLLBAR
+{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,     0,    23,   169,   193, 0x0,                  STR_GROUP_CREATE_TIP},              // GRP_WIDGET_CREATE_GROUP
+{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,    24,    47,   169,   193, 0x0,                  STR_GROUP_DELETE_TIP},              // GRP_WIDGET_DELETE_GROUP
+{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,    48,    71,   169,   193, 0x0,                  STR_GROUP_RENAME_TIP},              // GRP_WIDGET_RENAME_GROUP
+{      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,    72,   163,   169,   193, 0x0,                  STR_NULL},                          // GRP_WIDGET_EMPTY1
+{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   164,   187,   169,   193, 0x0,                  STR_GROUP_REPLACE_PROTECTION_TIP},  // GRP_WIDGET_REPLACE_PROTECTION
 {   WIDGETS_END},
 };
 

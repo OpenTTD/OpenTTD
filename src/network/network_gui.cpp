@@ -76,7 +76,7 @@ void UpdateNetworkGameWindow(bool unselect)
 enum NetworkGameWindowWidgets {
 	NGWW_CLOSE,         ///< Close 'X' button
 	NGWW_CAPTION,       ///< Caption of the window
-	NGWW_RESIZE,        ///< Resize button
+	NGWW_MAIN,          ///< Main panel
 
 	NGWW_CONNECTION,    ///< Label in from of connection droplist
 	NGWW_CONN_BTN,      ///< 'Connection' droplist button
@@ -104,6 +104,8 @@ enum NetworkGameWindowWidgets {
 	NGWW_ADD,           ///< 'Add server' button
 	NGWW_START,         ///< 'Start server' button
 	NGWW_CANCEL,        ///< 'Cancel' button
+
+	NGWW_RESIZE,        ///< Resize button
 };
 
 typedef GUIList<NetworkGameList*> GUIGameServerList;
@@ -772,7 +774,7 @@ static const Widget _network_game_window_widgets[] = {
 /* TOP */
 {   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},            // NGWW_CLOSE
 {    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_LIGHT_BLUE,    11,   449,     0,    13, STR_NETWORK_MULTIPLAYER,          STR_NULL},                         // NGWW_CAPTION
-{      WWT_PANEL,   RESIZE_RB,     COLOUR_LIGHT_BLUE,     0,   449,    14,   263, 0x0,                              STR_NULL},                         // NGWW_RESIZE
+{      WWT_PANEL,   RESIZE_RB,     COLOUR_LIGHT_BLUE,     0,   449,    14,   263, 0x0,                              STR_NULL},                         // NGWW_MAIN
 
 {       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     9,    85,    23,    35, STR_NETWORK_CONNECTION,           STR_NULL},                         // NGWW_CONNECTION
 { WWT_DROPDOWNIN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    90,   181,    22,    33, STR_NETWORK_LAN_INTERNET_COMBO,   STR_NETWORK_CONNECTION_TIP},       // NGWW_CONN_BTN
@@ -806,7 +808,7 @@ static const Widget _network_game_window_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,        226,   326,   246,   257, STR_NETWORK_START_SERVER,         STR_NETWORK_START_SERVER_TIP},     // NGWW_START
 { WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,        334,   434,   246,   257, STR_012E_CANCEL,                  STR_NULL},                         // NGWW_CANCEL
 
-{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_LIGHT_BLUE,   438,   449,   252,   263, 0x0,                              STR_RESIZE_BUTTON },
+{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_LIGHT_BLUE,   438,   449,   252,   263, 0x0,                              STR_RESIZE_BUTTON },               // NGWW_RESIZE
 
 {   WIDGETS_END},
 };
