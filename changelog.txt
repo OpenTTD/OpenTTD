@@ -1,3 +1,22 @@
+0.7.0-RC1 (2009-03-16)
+------------------------------------------------------------------------
+-Feature: Pop up the AI Debug Window if one of the AIs crashed and show a message that the user should report the crash [FS#2728] (r15708)
+-Feature: Allow the number of towns that will be generated in the generate world window to be customized [FS#2672] (r15695)
+-Fix: Enabling freeform edges could cause submarines to get stuck on land tiles (r15733)
+-Fix: Centering on a vehicle did not respect its z coordinate (r15725)
+-Fix: Do not show passenger-/mail-capacity if the aircraft carries only cargo (r15705)
+-Fix: Blame NewGRFs returning inconsistent information in purchase-list/after building before users have a chance to blame OpenTTD for incorrectly autorenewing/-replacing [FS#2595] (r15701)
+-Fix: Just sell the old engines after autorenew/replace. Do not bother about trains exceeding the trainlimit, which will be sold anyway [FS#2721] (r15692)
+-Fix: Do not crash when the generate map does not contain a suitable location for a town [FS#2720] (r15689)
+-Fix: Do not crash when someone substitutes the "map generation" sprites with garbage [FS#2720] (r15685)
+-Fix: Vehicle images would be determined during the process of moving the vehicle which means that only the (orientation) data for the vehicles in front of it is valid. Now the data for the vehicles behind the vehicle are valid too [FS#2546] (r15677)
+-Fix: It was possible to remove rail tunnels/bridges and aqueducts build by rival companies [FS#2718] (r15667)
+-Fix: Sorting of engines in the purchase list did not use the same numbers as the GUI showed, e.g. articulated parts were not taken into accound when ordering by capacity [FS#2689] (r15666)
+-Fix: Handling of aircraft crash counter did not take account of the reduced number of calls (from 6 down to 2) to the aircraft event handler, resulting in crashed aircraft taking three times longer than they should to clear. Compensate by increasing the counter by 3 on every call instead of 1 (r15665)
+-Fix: Growing of vsize as (some) threads were not properly released (r15663)
+-Fix: Do not mark a company as having ratings in a town when querying the cost of a command (r15662)
+
+
 0.7.0-beta2 (2009-03-10)
 ------------------------------------------------------------------------
 - Feature: Allow downloading scenarios and heightmaps via the in game content download (r15632)
