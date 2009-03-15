@@ -11,7 +11,7 @@
  */
 static const RailtypeInfo _original_railtypes[] = {
 	/** Railway */
-	{ /* Main Sprites */
+	{ // Main Sprites
 		{ SPR_RAIL_TRACK_Y, SPR_RAIL_TRACK_N_S, SPR_RAIL_TRACK_BASE, SPR_RAIL_SINGLE_Y, SPR_RAIL_SINGLE_X,
 			SPR_RAIL_SINGLE_NORTH, SPR_RAIL_SINGLE_SOUTH, SPR_RAIL_SINGLE_EAST, SPR_RAIL_SINGLE_WEST,
 			SPR_TRACKS_FOR_SLOPES_RAIL_BASE,
@@ -79,7 +79,7 @@ static const RailtypeInfo _original_railtypes[] = {
 	},
 
 	/** Electrified railway */
-	{ /* Main Sprites */
+	{ // Main Sprites
 		{ SPR_RAIL_TRACK_Y, SPR_RAIL_TRACK_N_S, SPR_RAIL_TRACK_BASE, SPR_RAIL_SINGLE_Y, SPR_RAIL_SINGLE_X,
 			SPR_RAIL_SINGLE_NORTH, SPR_RAIL_SINGLE_SOUTH, SPR_RAIL_SINGLE_EAST, SPR_RAIL_SINGLE_WEST,
 			SPR_TRACKS_FOR_SLOPES_RAIL_BASE,
@@ -151,7 +151,7 @@ static const RailtypeInfo _original_railtypes[] = {
 	},
 
 	/** Monorail */
-	{ /* Main Sprites */
+	{ // Main Sprites
 		{ SPR_MONO_TRACK_Y, SPR_MONO_TRACK_N_S, SPR_MONO_TRACK_BASE, SPR_MONO_SINGLE_Y, SPR_MONO_SINGLE_X,
 			SPR_MONO_SINGLE_NORTH, SPR_MONO_SINGLE_SOUTH, SPR_MONO_SINGLE_EAST, SPR_MONO_SINGLE_WEST,
 			SPR_TRACKS_FOR_SLOPES_MONO_BASE,
@@ -219,7 +219,7 @@ static const RailtypeInfo _original_railtypes[] = {
 	},
 
 	/** Maglev */
-	{ /* Main sprites */
+	{ // Main sprites
 		{ SPR_MGLV_TRACK_Y, SPR_MGLV_TRACK_N_S, SPR_MGLV_TRACK_BASE, SPR_MGLV_SINGLE_Y, SPR_MGLV_SINGLE_X,
 			SPR_MGLV_SINGLE_NORTH, SPR_MGLV_SINGLE_SOUTH, SPR_MGLV_SINGLE_EAST, SPR_MGLV_SINGLE_WEST,
 			SPR_TRACKS_FOR_SLOPES_MAGLEV_BASE,

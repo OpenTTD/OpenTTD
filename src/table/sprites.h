@@ -270,7 +270,7 @@ enum Sprites {
 	SPR_MEDIUMHQ_EAST           = 2613,
 	SPR_MEDIUMHQ_EAST_WALL      = 2614,
 	SPR_MEDIUMHQ_WEST           = 2615,
-	SPR_MEDIUMHQ_WEST_WALL      = 2616, //very tiny piece of wall
+	SPR_MEDIUMHQ_WEST_WALL      = 2616, // very tiny piece of wall
 	SPR_MEDIUMHQ_SOUTH          = 2617,
 	SPR_LARGEHQ_NORTH_GROUND    = 2618,
 	SPR_LARGEHQ_NORTH_BUILD     = 2619,
@@ -325,13 +325,13 @@ enum Sprites {
 	SPR_RAIL_PLATFORM_PILLARS_X_REAR  = 1076,
 	SPR_RAIL_PLATFORM_PILLARS_Y_REAR  = 1077,
 	SPR_RAIL_PLATFORM_PILLARS_X_FRONT = 1078,
-	SPR_RAIL_ROOF_STRUCTURE_X_TILE_A  = 1079, //First half of the roof structure
+	SPR_RAIL_ROOF_STRUCTURE_X_TILE_A  = 1079, // First half of the roof structure
 	SPR_RAIL_ROOF_STRUCTURE_Y_TILE_A  = 1080,
-	SPR_RAIL_ROOF_STRUCTURE_X_TILE_B  = 1081, //Second half of the roof structure
+	SPR_RAIL_ROOF_STRUCTURE_X_TILE_B  = 1081, // Second half of the roof structure
 	SPR_RAIL_ROOF_STRUCTURE_Y_TILE_B  = 1082,
-	SPR_RAIL_ROOF_GLASS_X_TILE_A      = 1083, //First half of the roof glass
+	SPR_RAIL_ROOF_GLASS_X_TILE_A      = 1083, // First half of the roof glass
 	SPR_RAIL_ROOF_GLASS_Y_TILE_A      = 1084,
-	SPR_RAIL_ROOF_GLASS_X_TILE_B      = 1085, //second half of the roof glass
+	SPR_RAIL_ROOF_GLASS_X_TILE_B      = 1085, // second half of the roof glass
 	SPR_RAIL_ROOF_GLASS_Y_TILE_B      = 1086,
 	SPR_MONO_SINGLE_Y                 = 1087,
 	SPR_MONO_SINGLE_X                 = 1088,
@@ -408,7 +408,7 @@ enum Sprites {
 	SPR_AIRPORT_RUNWAY_EXIT_B       = 2646,
 	SPR_AIRPORT_RUNWAY_EXIT_C       = 2647,
 	SPR_AIRPORT_RUNWAY_EXIT_D       = 2648,
-	SPR_AIRPORT_RUNWAY_END          = 2649, //We should have different ends
+	SPR_AIRPORT_RUNWAY_END          = 2649, // We should have different ends
 	SPR_AIRPORT_TERMINAL_A          = 2650,
 	SPR_AIRPORT_TOWER               = 2651,
 	SPR_AIRPORT_CONCOURSE           = 2652,
@@ -454,8 +454,8 @@ enum Sprites {
 	SPR_AIRPORT_HELIPAD             = SPR_OPENTTD_BASE + 86,
 	SPR_AIRPORT_HELIDEPOT_OFFICE    = 2095,
 
-	/* Road Stops */
-	/* Road stops have a ground tile and 3 buildings, one on each side
+	/* Road Stops
+	 * Road stops have a ground tile and 3 buildings, one on each side
 	 * (except the side where the entry is). These are marked _A _B and _C */
 	SPR_BUS_STOP_NE_GROUND          = 2692,
 	SPR_BUS_STOP_SE_GROUND          = 2693,
@@ -490,15 +490,15 @@ enum Sprites {
 	SPR_TRUCK_STOP_SW_BUILD_C       = 2722,
 	SPR_TRUCK_STOP_NW_BUILD_C       = 2723,
 
-	/* Sprites for docks */
-	/* Docks consist of two tiles, the sloped one and the flat one */
+	/* Sprites for docks
+	 * Docks consist of two tiles, the sloped one and the flat one */
 	SPR_DOCK_SLOPE_NE               = 2727,
 	SPR_DOCK_SLOPE_SE               = 2728,
 	SPR_DOCK_SLOPE_SW               = 2729,
 	SPR_DOCK_SLOPE_NW               = 2730,
-	SPR_DOCK_FLAT_X                 = 2731, //for NE and SW
-	SPR_DOCK_FLAT_Y                 = 2732, //for NW and SE
-	SPR_BUOY                        = 4076, //XXX this sucks, because it displays wrong stuff on canals
+	SPR_DOCK_FLAT_X                 = 2731, // for NE and SW
+	SPR_DOCK_FLAT_Y                 = 2732, // for NW and SE
+	SPR_BUOY                        = 4076, // XXX this sucks, because it displays wrong stuff on canals
 
 	/* Sprites for road */
 	SPR_ROAD_Y                  = 1332,
@@ -553,17 +553,17 @@ enum Sprites {
 	SPR_SHIP_DEPOT_NE           = 4073,
 	SPR_SHIP_DEPOT_SE_REAR      = 4074,
 	SPR_SHIP_DEPOT_SW_REAR      = 4075,
-	//here come sloped water sprites
-	SPR_WATER_SLOPE_Y_UP        = SPR_CANALS_BASE + 0, //Water flowing negative Y direction
-	SPR_WATER_SLOPE_X_DOWN      = SPR_CANALS_BASE + 1, //positive X
-	SPR_WATER_SLOPE_X_UP        = SPR_CANALS_BASE + 2, //negative X
-	SPR_WATER_SLOPE_Y_DOWN      = SPR_CANALS_BASE + 3,  //positive Y
-	//sprites for the shiplifts
-	//there are 4 kinds of shiplifts, each of them is 3 tiles long.
-	//the four kinds are running in the X and Y direction and
-	//are "lowering" either in the "+" or the "-" direction.
-	//the three tiles are the center tile (where the slope is)
-	//and a bottom and a top tile
+	/* here come sloped water sprites */
+	SPR_WATER_SLOPE_Y_UP        = SPR_CANALS_BASE + 0, // Water flowing negative Y direction
+	SPR_WATER_SLOPE_X_DOWN      = SPR_CANALS_BASE + 1, // positive X
+	SPR_WATER_SLOPE_X_UP        = SPR_CANALS_BASE + 2, // negative X
+	SPR_WATER_SLOPE_Y_DOWN      = SPR_CANALS_BASE + 3, // positive Y
+	/* sprites for the shiplifts
+	 * there are 4 kinds of shiplifts, each of them is 3 tiles long.
+	 * the four kinds are running in the X and Y direction and
+	 * are "lowering" either in the "+" or the "-" direction.
+	 * the three tiles are the center tile (where the slope is)
+	 * and a bottom and a top tile */
 	SPR_SHIPLIFT_BASE                 = SPR_CANALS_BASE +  4,
 	SPR_SHIPLIFT_Y_UP_CENTER_REAR     = SPR_CANALS_BASE +  4,
 	SPR_SHIPLIFT_X_DOWN_CENTER_REAR   = SPR_CANALS_BASE +  5,
@@ -621,40 +621,40 @@ enum Sprites {
 	/* ramps */
 	SPR_BTWDN_ROAD_RAMP_Y_DOWN  = 2529,
 	SPR_BTWDN_ROAD_RAMP_X_DOWN  = 2530,
-	SPR_BTWDN_ROAD_RAMP_X_UP    = 2531, //for some weird reason the order is swapped
-	SPR_BTWDN_ROAD_RAMP_Y_UP    = 2532, //between X and Y.
+	SPR_BTWDN_ROAD_RAMP_X_UP    = 2531, // for some weird reason the order is swapped
+	SPR_BTWDN_ROAD_RAMP_Y_UP    = 2532, // between X and Y.
 	SPR_BTWDN_ROAD_Y_SLOPE_UP   = 2533,
 	SPR_BTWDN_ROAD_X_SLOPE_UP   = 2534,
 	SPR_BTWDN_ROAD_Y_SLOPE_DOWN = 2535,
 	SPR_BTWDN_ROAD_X_SLOPE_DOWN = 2536,
 	SPR_BTWDN_RAIL_RAMP_Y_DOWN  = 2537,
 	SPR_BTWDN_RAIL_RAMP_X_DOWN  = 2538,
-	SPR_BTWDN_RAIL_RAMP_X_UP    = 2539, //for some weird reason the order is swapped
-	SPR_BTWDN_RAIL_RAMP_Y_UP    = 2540, //between X and Y.
+	SPR_BTWDN_RAIL_RAMP_X_UP    = 2539, // for some weird reason the order is swapped
+	SPR_BTWDN_RAIL_RAMP_Y_UP    = 2540, // between X and Y.
 	SPR_BTWDN_RAIL_Y_SLOPE_UP   = 2541,
 	SPR_BTWDN_RAIL_X_SLOPE_UP   = 2542,
 	SPR_BTWDN_RAIL_Y_SLOPE_DOWN = 2543,
 	SPR_BTWDN_RAIL_X_SLOPE_DOWN = 2544,
 	SPR_BTWDN_MONO_RAMP_Y_DOWN  = 4352,
 	SPR_BTWDN_MONO_RAMP_X_DOWN  = 4353,
-	SPR_BTWDN_MONO_RAMP_X_UP    = 4354, //for some weird reason the order is swapped
-	SPR_BTWDN_MONO_RAMP_Y_UP    = 4355, //between X and Y.
+	SPR_BTWDN_MONO_RAMP_X_UP    = 4354, // for some weird reason the order is swapped
+	SPR_BTWDN_MONO_RAMP_Y_UP    = 4355, // between X and Y.
 	SPR_BTWDN_MONO_Y_SLOPE_UP   = 4356,
 	SPR_BTWDN_MONO_X_SLOPE_UP   = 4357,
 	SPR_BTWDN_MONO_Y_SLOPE_DOWN = 4358,
 	SPR_BTWDN_MONO_X_SLOPE_DOWN = 4359,
 	SPR_BTWDN_MGLV_RAMP_Y_DOWN  = 4392,
 	SPR_BTWDN_MGLV_RAMP_X_DOWN  = 4393,
-	SPR_BTWDN_MGLV_RAMP_X_UP    = 4394, //for some weird reason the order is swapped
-	SPR_BTWDN_MGLV_RAMP_Y_UP    = 4395, //between X and Y.
+	SPR_BTWDN_MGLV_RAMP_X_UP    = 4394, // for some weird reason the order is swapped
+	SPR_BTWDN_MGLV_RAMP_Y_UP    = 4395, // between X and Y.
 	SPR_BTWDN_MGLV_Y_SLOPE_UP   = 4396,
 	SPR_BTWDN_MGLV_X_SLOPE_UP   = 4397,
 	SPR_BTWDN_MGLV_Y_SLOPE_DOWN = 4398,
 	SPR_BTWDN_MGLV_X_SLOPE_DOWN = 4399,
 
-	/* Steel Girder with arches */
-	/* BTSGA == Bridge Type Steel Girder Arched */
-	/* This is bridge type number 2 */
+	/* Steel Girder with arches
+	 * BTSGA == Bridge Type Steel Girder Arched
+	 * This is bridge type number 2 */
 	SPR_BTSGA_RAIL_X_REAR       = 2499,
 	SPR_BTSGA_RAIL_Y_REAR       = 2500,
 	SPR_BTSGA_ROAD_X_REAR       = 2501,
@@ -668,8 +668,8 @@ enum Sprites {
 	SPR_BTSGA_MGLV_X_REAR       = 4364,
 	SPR_BTSGA_MGLV_Y_REAR       = 4365,
 
-	/* BTSUS == Suspension bridge */
-	/* TILE_* denotes the different tiles a suspension bridge
+	/* BTSUS == Suspension bridge
+	 * TILE_* denotes the different tiles a suspension bridge
 	 * can have
 	 * TILE_A and TILE_B are the "beginnings" and "ends" of the
 	 *   suspension system. they have small rectangluar endcaps
@@ -753,8 +753,8 @@ enum Sprites {
 	SPR_BTSUS_MGLV_X_REAR_TILE_F  = 4384,
 	SPR_BTSUS_MGLV_Y_REAR_TILE_F  = 4385,
 
-	/* cantilever bridges */
-	/* They have three different kinds of tiles:
+	/* cantilever bridges
+	 * They have three different kinds of tiles:
 	 * END(ing), MID(dle), BEG(ginning) */
 	SPR_BTCAN_RAIL_X_BEG          = 2507,
 	SPR_BTCAN_RAIL_X_MID          = 2508,
@@ -819,8 +819,8 @@ enum Sprites {
 	SPR_BTGIR_MGLV_X        = 4402,
 	SPR_BTGIR_MGLV_Y        = 4403,
 
-	/* tubular bridges */
-	/* tubular bridges have 3 kinds of tiles:
+	/* tubular bridges
+	 * tubular bridges have 3 kinds of tiles:
 	 *  a start tile (with only half a tube on the far side, marked _BEG
 	 *  a middle tile (full tunnel), marked _MID
 	 *  and an end tile (half a tube on the near side, maked _END
@@ -923,21 +923,21 @@ enum Sprites {
 	/* Town/house sprites */
 	SPR_LIFT = 1443,
 
-	//used in town_land.h
-	//CNST1..3 = Those are the different stages of construction
-	//The last 2 hexas correspond to the type of building it represent, if any
+	/* used in town_land.h
+	 * CNST1..3 = Those are the different stages of construction
+	 * The last 2 hexas correspond to the type of building it represent, if any */
 	SPR_CNST1_TALLOFFICE_00                 = 1421,
 	SPR_CNST2_TALLOFFICE_00                 = 1422,
 	SPR_CNST3_TALLOFFICE_00                 = 1423,
 	SPR_GROUND_TALLOFFICE_00                = 1424,
-	SPR_BUILD_TALLOFFICE_00                 = 1425, //temperate
+	SPR_BUILD_TALLOFFICE_00                 = 1425, // temperate
 	SPR_CNST1_OFFICE_01                     = 1426,
 	SPR_CNST2_OFFICE_01                     = 1427,
-	SPR_BUILD_OFFICE_01                     = 1428, //temperate
+	SPR_BUILD_OFFICE_01                     = 1428, // temperate
 	SPR_GROUND_OFFICE_01                    = 1429,
-	SPR_CNST1_SMLBLCKFLATS_02               = 1430, //Small Block of Flats
+	SPR_CNST1_SMLBLCKFLATS_02               = 1430, // Small Block of Flats
 	SPR_CNST2_SMLBLCKFLATS_02               = 1431,
-	SPR_BUILD_SMLBLCKFLATS_02               = 1432, //temperate
+	SPR_BUILD_SMLBLCKFLATS_02               = 1432, // temperate
 	SPR_GROUND_SMLBLCKFLATS_02              = 1433,
 	SPR_CNST1_TEMPCHURCH                    = 1434,
 	SPR_CNST2_TEMPCHURCH                    = 1435,
@@ -947,7 +947,7 @@ enum Sprites {
 	SPR_CNST2_LARGEOFFICE_04                = 1441,
 	SPR_BUILD_LARGEOFFICE_04                = 1442, // temperate, sub-arctic, subtropical
 	SPR_BUILD_LARGEOFFICE_04_SNOW           = 4569, // same, with snow
-	// These are in fact two houses for the same houseID.  so V1 and V2
+	/* These are in fact two houses for the same houseID.  so V1 and V2 */
 	SPR_CNST1_TOWNHOUSE_06_V1               = 1444,
 	SPR_CNST2_TOWNHOUSE_06_V1               = 1445,
 	SPR_BUILD_TOWNHOUSE_06_V1               = 1446, // 1st variation
@@ -1075,7 +1075,7 @@ enum Sprites {
 	SPR_IT_TOY_FACTORY_ROBOT        = 4720,
 	SPR_IT_POWER_PLANT_TRANSFORMERS = 2054,
 
-	/*small icons of cargo available in station waiting*/
+	/* small icons of cargo available in station waiting*/
 	SPR_CARGO_PASSENGER             = 4297,
 	SPR_CARGO_COAL                  = 4298,
 	SPR_CARGO_MAIL                  = 4299,
@@ -1086,10 +1086,10 @@ enum Sprites {
 	SPR_CARGO_WOOD                  = 4304,
 	SPR_CARGO_IRON_ORE              = 4305,
 	SPR_CARGO_STEEL                 = 4306,
-	SPR_CARGO_VALUES_GOLD           = 4307,  /*shared between temperate and arctic*/
+	SPR_CARGO_VALUES_GOLD           = 4307,  //shared between temperate and arctic
 	SPR_CARGO_FRUIT                 = 4308,
 	SPR_CARGO_COPPER_ORE            = 4309,
-	SPR_CARGO_WATERCOLA             = 4310,  /*shared between desert and toyland*/
+	SPR_CARGO_WATERCOLA             = 4310,  //shared between desert and toyland
 	SPR_CARGO_DIAMONDS              = 4311,
 	SPR_CARGO_FOOD                  = 4312,
 	SPR_CARGO_PAPER                 = 4313,
@@ -1289,8 +1289,8 @@ enum Sprites {
 
 /** Cursor sprite numbers */
 enum CursorSprite {
-	/* Terraform */
-	/* Cursors */
+	/* Terraform
+	 * Cursors */
 	SPR_CURSOR_MOUSE          = 0,
 	SPR_CURSOR_ZZZ            = 1,
 	SPR_CURSOR_BOUY           = 702,
@@ -1386,7 +1386,7 @@ enum CursorSprite {
 	SPR_CURSOR_CLONE_AIRPLANE = SPR_OPENTTD_BASE + 113,
 };
 
-/// Animation macro in table/animcursors.h (_animcursors[])
+/** Animation macro in table/animcursors.h (_animcursors[]) */
 enum AnimCursors {
 	ANIMCURSOR_DEMOLISH     = -1, ///<  704 -  707 - demolish dynamite
 	ANIMCURSOR_LOWERLAND    = -2, ///<  699 -  701 - lower land tool
@@ -1425,11 +1425,11 @@ enum SpriteSetup {
  */
 enum Modifiers {
 	SPRITE_MODIFIER_USE_OFFSET    = OFFSET_BIT,
-	/// Set when a sprite must not ever be displayed transparently
+	/** Set when a sprite must not ever be displayed transparently */
 	SPRITE_MODIFIER_OPAQUE        = OPAQUE_BIT,
-	///when a sprite is to be displayed transparently, this bit needs to be set.
+	/** when a sprite is to be displayed transparently, this bit needs to be set. */
 	PALETTE_MODIFIER_TRANSPARENT  = TRANSPARENT_BIT,
-	///this bit is set when a recolouring process is in action
+	/** this bit is set when a recolouring process is in action */
 	PALETTE_MODIFIER_COLOUR       = RECOLOUR_BIT,
 };
 
@@ -1437,13 +1437,13 @@ enum Modifiers {
  * @note Do not modify this enum. Alter SpriteSetup instead
  * @see SpriteSetup */
 enum SpriteMasks {
-	///Maximum number of sprites that can be loaded at a given time.
+	/** Maximum number of sprites that can be loaded at a given time. */
 	MAX_SPRITES = 1 << SPRITE_WIDTH,
-	///The mask to for the main sprite
+	/** The mask to for the main sprite */
 	SPRITE_MASK = MAX_SPRITES - 1,
 
 	MAX_PALETTES = 1 << PALETTE_WIDTH,
-	///The mask for the auxiliary sprite (the one that takes care of recolouring)
+	/** The mask for the auxiliary sprite (the one that takes care of recolouring) */
 	PALETTE_MASK = MAX_PALETTES - 1,
 };
 
@@ -1461,20 +1461,20 @@ enum Recolouring {
 static const SpriteID PALETTE_CRASH = 0x324;
 static const SpriteID PAL_NONE = 0;
 
-	//note: these numbers are already the modified once the renderer needs.
-	//the actual sprite number is the upper 16 bits of the number
+	/* note: these numbers are already the modified once the renderer needs.
+	 * the actual sprite number is the upper 16 bits of the number */
 
-	///Here a puslating red tile is drawn if you try to build a wrong tunnel or raise/lower land where it is not possible
+	/** Here a puslating red tile is drawn if you try to build a wrong tunnel or raise/lower land where it is not possible */
 static const SpriteID PALETTE_TILE_RED_PULSATING  = 0x303;
-	///makes a square red. is used when removing rails or other stuff
+	/** makes a square red. is used when removing rails or other stuff */
 static const SpriteID PALETTE_SEL_TILE_RED        = 0x304;
-	///This draws a blueish square (catchment areas for example)
+	/** This draws a blueish square (catchment areas for example) */
 static const SpriteID PALETTE_SEL_TILE_BLUE       = 0x305;
-	//0x306 is a real sprite (the little dot you get when you try to raise/lower a corner of the map
-	//here the colour switches begin
-	//use this if you add stuff to the value, so that the resulting colour
-	//is not a fixed value.
-	//NOTE THAT THE SWITCH 0x8000 is NOT present in _TO_COLOURS yet!
+	/* 0x306 is a real sprite (the little dot you get when you try to raise/lower a corner of the map
+	 * here the colour switches begin
+	 * use this if you add stuff to the value, so that the resulting colour
+	 * is not a fixed value.
+	 * NOTE THAT THE SWITCH 0x8000 is NOT present in _TO_COLOURS yet! */
 enum PaletteSprites {
 	PALETTE_TO_DARK_BLUE        = 0x307,
 	PALETTE_TO_PALE_GREEN       = 0x308,
@@ -1486,32 +1486,32 @@ enum PaletteSprites {
 	PALETTE_TO_DARK_GREEN       = 0x30E,
 	PALETTE_TO_BLUE             = 0x30F,
 	PALETTE_TO_CREAM            = 0x310,
-	//maybe don't use as company colour because it doesn't display in the graphs?
+	/* maybe don't use as company colour because it doesn't display in the graphs? */
 	PALETTE_TO_MAUVE            = 0x311,
 	PALETTE_TO_PURPLE           = 0x312,
 	PALETTE_TO_ORANGE           = 0x313,
 	PALETTE_TO_BROWN            = 0x314,
 	PALETTE_TO_GREY             = 0x315,
 	PALETTE_TO_WHITE            = 0x316,
-	//sets colour to bare land stuff, for rail and road (and crossings)
+	/* sets colour to bare land stuff, for rail and road (and crossings) */
 	PALETTE_TO_BARE_LAND        = 0x317,
-	//XXX is 318-31A really not used?
+	/* XXX is 318-31A really not used? */
 	PALETTE_TO_STRUCT_BLUE      = 0x31B,
-	//structure colour to something brownish (for the cantilever bridges for example)
+	/* structure colour to something brownish (for the cantilever bridges for example) */
 	PALETTE_TO_STRUCT_BROWN     = 0x31C,
 	PALETTE_TO_STRUCT_WHITE     = 0x31D,
-	//sets bridge or structure to red, little concrete one and cantilever use this one for example
+	/* sets bridge or structure to red, little concrete one and cantilever use this one for example */
 	PALETTE_TO_STRUCT_RED       = 0x31E,
 	PALETTE_TO_STRUCT_GREEN     = 0x31F,
-	PALETTE_TO_STRUCT_CONCRETE  = 0x320, //Sets the suspension bridge to concrete, also other strucutures use it
-	PALETTE_TO_STRUCT_YELLOW    = 0x321, //Sets the bridge colour to yellow (suspension and tubular)
-	PALETTE_TO_TRANSPARENT      = 0x322, //This sets the sprite to transparent
-	//This is used for changing the tubular bridges to the silicon display, or some grayish colour
+	PALETTE_TO_STRUCT_CONCRETE  = 0x320, // Sets the suspension bridge to concrete, also other strucutures use it
+	PALETTE_TO_STRUCT_YELLOW    = 0x321, // Sets the bridge colour to yellow (suspension and tubular)
+	PALETTE_TO_TRANSPARENT      = 0x322, // This sets the sprite to transparent
+	/* This is used for changing the tubular bridges to the silicon display, or some grayish colour */
 	PALETTE_TO_STRUCT_GREY      = 0x323,
 
-	//XXX - const - PALETTE_CRASH               = 0x324,  //this changes stuff to the "crash colour"
-	//XXX another place where structures are coloured.
-	//I'm not sure which colours these are
+	/* XXX - const - PALETTE_CRASH               = 0x324,  // this changes stuff to the "crash colour"
+	 * XXX another place where structures are coloured.
+	 * I'm not sure which colours these are */
 	PALETTE_59E                 = 0x59E,
 	PALETTE_59F                 = 0x59F,
 };

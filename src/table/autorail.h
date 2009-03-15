@@ -10,13 +10,13 @@
  *   0      1      2      3     4     5
  */
 
-// mark invalid tiles red
+/* mark invalid tiles red */
 #define RED(c) -c
 
-// table maps each of the six rail directions and tileh combinations to a sprite
-// invalid entries are required to make sure that this array can be quickly accessed
+/* table maps each of the six rail directions and tileh combinations to a sprite
+ * invalid entries are required to make sure that this array can be quickly accessed */
 static const int _AutorailTilehSprite[][6] = {
-// type   0        1        2        3        4        5
+/* type   0        1        2        3        4        5 */
 	{       0,       8,      16,      25,      34,      42 }, // tileh = 0
 	{       5,      13, RED(22), RED(31),      35,      42 }, // tileh = 1
 	{       5,      10,      16,      26, RED(38), RED(46) }, // tileh = 2
@@ -52,8 +52,8 @@ static const int _AutorailTilehSprite[][6] = {
 #undef RED
 
 
-// maps each pixel of a tile (16x16) to a selection type
-// (0,0) is the top corner, (16,16) the bottom corner
+/* maps each pixel of a tile (16x16) to a selection type
+ * (0,0) is the top corner, (16,16) the bottom corner */
 static const HighLightStyle _autorail_piece[][16] = {
 	{ HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR },
 	{ HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR },

@@ -194,14 +194,14 @@ static const ExtraPaletteValues _extra_palette_values = {
 };
 #undef M
 
-// Colour table for colours in lang files (e.g. {BLACK})
+/* Colour table for colours in lang files (e.g. {BLACK}) */
 struct StringColour {
 	byte text;
 	byte shadow;
 };
 
 static const StringColour _string_colourmap[][17] = {
-	{ /* DOS palette. */
+	{ // DOS palette.
 		{ 150,   1 }, // TC_BLUE
 		{  12,   1 }, // TC_SILVER
 		{ 189,   1 }, // TC_GOLD
@@ -220,7 +220,7 @@ static const StringColour _string_colourmap[][17] = {
 		{ 133,   1 }, // TC_DARK_BLUE
 		{   1,   0 }, // TC_BLACK
 	},
-	{ /* Windows palette. */
+	{ // Windows palette.
 		{ 150, 215 }, // TC_BLUE
 		{  12, 215 }, // TC_SILVER
 		{ 189, 215 }, // TC_GOLD

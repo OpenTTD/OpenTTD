@@ -50,12 +50,12 @@ static byte OwnedPPPonPCP[DIAGDIR_END] = {
 
 /** Maps a track bit onto two PCP positions */
 static const DiagDirection PCPpositions[TRACK_END][2] = {
-	{DIAGDIR_NE, DIAGDIR_SW}, /* X */
-	{DIAGDIR_SE, DIAGDIR_NW}, /* Y */
-	{DIAGDIR_NW, DIAGDIR_NE}, /* UPPER */
-	{DIAGDIR_SE, DIAGDIR_SW}, /* LOWER */
-	{DIAGDIR_SW, DIAGDIR_NW}, /* LEFT */
-	{DIAGDIR_NE, DIAGDIR_SE}, /* RIGHT */
+	{DIAGDIR_NE, DIAGDIR_SW}, // X
+	{DIAGDIR_SE, DIAGDIR_NW}, // Y
+	{DIAGDIR_NW, DIAGDIR_NE}, // UPPER
+	{DIAGDIR_SE, DIAGDIR_SW}, // LOWER
+	{DIAGDIR_SW, DIAGDIR_NW}, // LEFT
+	{DIAGDIR_NE, DIAGDIR_SE}, // RIGHT
 };
 
 #define PCP_NOT_ON_TRACK 0xFF
@@ -64,32 +64,32 @@ static const DiagDirection PCPpositions[TRACK_END][2] = {
  * which are not on either end of the track are fully preferred.
  * @see PCPpositions */
 static byte PreferredPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
-	{    /* X */
-		1 << DIR_NE | 1 << DIR_SE | 1 << DIR_NW, /* NE */
-		PCP_NOT_ON_TRACK,                        /* SE */
-		1 << DIR_SE | 1 << DIR_SW | 1 << DIR_NW, /* SW */
-		PCP_NOT_ON_TRACK                         /* NE */
-	}, { /* Y */
+	{    // X
+		1 << DIR_NE | 1 << DIR_SE | 1 << DIR_NW, // NE
+		PCP_NOT_ON_TRACK,                        // SE
+		1 << DIR_SE | 1 << DIR_SW | 1 << DIR_NW, // SW
+		PCP_NOT_ON_TRACK                         // NE
+	}, { // Y
 		PCP_NOT_ON_TRACK,
 		1 << DIR_NE | 1 << DIR_SE | 1 << DIR_SW,
 		PCP_NOT_ON_TRACK,
 		1 << DIR_SW | 1 << DIR_NW | 1 << DIR_NE
-	}, { /* UPPER */
+	}, { // UPPER
 		1 << DIR_E | 1 << DIR_N | 1 << DIR_S,
 		PCP_NOT_ON_TRACK,
 		PCP_NOT_ON_TRACK,
 		1 << DIR_W | 1 << DIR_N | 1 << DIR_S
-	}, { /* LOWER */
+	}, { // LOWER
 		PCP_NOT_ON_TRACK,
 		1 << DIR_E | 1 << DIR_N | 1 << DIR_S,
 		1 << DIR_W | 1 << DIR_N | 1 << DIR_S,
 		PCP_NOT_ON_TRACK
-	}, { /* LEFT */
+	}, { // LEFT
 		PCP_NOT_ON_TRACK,
 		PCP_NOT_ON_TRACK,
 		1 << DIR_S | 1 << DIR_E | 1 << DIR_W,
 		1 << DIR_N | 1 << DIR_E | 1 << DIR_W
-	}, { /* RIGHT */
+	}, { // RIGHT
 		1 << DIR_N | 1 << DIR_E | 1 << DIR_W,
 		1 << DIR_S | 1 << DIR_E | 1 << DIR_W,
 		PCP_NOT_ON_TRACK,
@@ -105,30 +105,30 @@ static byte PreferredPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
  * so there are certain tiles which we ignore. A straight line is found if
  * we have exactly two PPPs. */
 static byte IgnoredPCP[NUM_IGNORE_GROUPS][TLG_END][DIAGDIR_END] = {
-	{   /* Ignore group 1, X and Y tracks */
-		{     /* X even, Y even */
+	{   // Ignore group 1, X and Y tracks
+		{     // X even, Y even
 			IGNORE_NONE,
 			1 << DIR_NE | 1 << DIR_SW,
 			1 << DIR_NW | 1 << DIR_SE,
 			IGNORE_NONE
-		}, { /* X even, Y odd  */
+		}, { // X even, Y odd
 			IGNORE_NONE,
 			IGNORE_NONE,
 			1 << DIR_NW | 1 << DIR_SE,
 			1 << DIR_NE | 1 << DIR_SW
-		}, { /* X odd,  Y even */
+		}, { // X odd,  Y even
 			1 << DIR_NW | 1 << DIR_SE,
 			1 << DIR_NE | 1 << DIR_SW,
 			IGNORE_NONE,
 			IGNORE_NONE
-		}, { /* X odd,  Y odd  */
+		}, { // X odd,  Y odd
 			1 << DIR_NW | 1 << DIR_SE,
 			IGNORE_NONE,
 			IGNORE_NONE,
 			1 << DIR_NE | 1 << DIR_SW
 		}
 	},
-	{   /* Ignore group 2, LEFT and RIGHT tracks */
+	{   // Ignore group 2, LEFT and RIGHT tracks
 		{
 			1 << DIR_E | 1 << DIR_W,
 			IGNORE_NONE,
@@ -151,7 +151,7 @@ static byte IgnoredPCP[NUM_IGNORE_GROUPS][TLG_END][DIAGDIR_END] = {
 			1 << DIR_E | 1 << DIR_W
 		}
 	},
-	{   /* Ignore group 3, UPPER and LOWER tracks */
+	{   // Ignore group 3, UPPER and LOWER tracks
 		{
 			1 << DIR_N | 1 << DIR_S,
 			1 << DIR_N | 1 << DIR_S,
@@ -180,12 +180,12 @@ static byte IgnoredPCP[NUM_IGNORE_GROUPS][TLG_END][DIAGDIR_END] = {
 
 /** Which pylons can definately NOT be built */
 static byte DisallowedPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
-	{1 << DIR_SW | 1 << DIR_NE, 0,           1 << DIR_SW | 1 << DIR_NE, 0          }, /* X */
-	{0,           1 << DIR_NW | 1 << DIR_SE, 0,           1 << DIR_NW | 1 << DIR_SE}, /* Y */
-	{1 << DIR_W | 1 << DIR_E,  0,           0,           1 << DIR_W | 1 << DIR_E }, /* UPPER */
-	{0,           1 << DIR_W | 1 << DIR_E,  1 << DIR_W | 1 << DIR_E,  0          }, /* LOWER */
-	{0,           0,           1 << DIR_S | 1 << DIR_N,  1 << DIR_N | 1 << DIR_S }, /* LEFT */
-	{1 << DIR_S | 1 << DIR_N,  1 << DIR_S | 1 << DIR_N,  0,           0,         }, /* RIGHT */
+	{1 << DIR_SW | 1 << DIR_NE, 0,           1 << DIR_SW | 1 << DIR_NE, 0          }, // X
+	{0,           1 << DIR_NW | 1 << DIR_SE, 0,           1 << DIR_NW | 1 << DIR_SE}, // Y
+	{1 << DIR_W | 1 << DIR_E,  0,           0,           1 << DIR_W | 1 << DIR_E }, // UPPER
+	{0,           1 << DIR_W | 1 << DIR_E,  1 << DIR_W | 1 << DIR_E,  0          }, // LOWER
+	{0,           0,           1 << DIR_S | 1 << DIR_N,  1 << DIR_N | 1 << DIR_S }, // LEFT
+	{1 << DIR_S | 1 << DIR_N,  1 << DIR_S | 1 << DIR_N,  0,           0,         }, // RIGHT
 };
 
 /* This array stores which track bits can meet at a tile edge */
@@ -206,27 +206,27 @@ static const TileSource TrackSourceTile[DIAGDIR_END][NUM_TRACKS_AT_PCP] = {
 };
 
 /* Several PPPs maybe exist, here they are sorted in order of preference. */
-static const Direction PPPorder[DIAGDIR_END][TLG_END][DIR_END] = {    /*  X  -  Y  */
-	{   /* PCP 0 */
-		{DIR_NE, DIR_NW, DIR_SE, DIR_SW, DIR_N, DIR_E, DIR_S, DIR_W}, /* evn - evn */
-		{DIR_NE, DIR_SE, DIR_SW, DIR_NW, DIR_S, DIR_W, DIR_N, DIR_E}, /* evn - odd */
-		{DIR_SW, DIR_NW, DIR_NE, DIR_SE, DIR_S, DIR_W, DIR_N, DIR_E}, /* odd - evn */
-		{DIR_SW, DIR_SE, DIR_NE, DIR_NW, DIR_N, DIR_E, DIR_S, DIR_W}, /* odd - odd */
-	}, {/* PCP 1 */
-		{DIR_NE, DIR_NW, DIR_SE, DIR_SW, DIR_S, DIR_E, DIR_N, DIR_W}, /* evn - evn */
-		{DIR_NE, DIR_SE, DIR_SW, DIR_NW, DIR_N, DIR_W, DIR_S, DIR_E}, /* evn - odd */
-		{DIR_SW, DIR_NW, DIR_NE, DIR_SE, DIR_N, DIR_W, DIR_S, DIR_E}, /* odd - evn */
-		{DIR_SW, DIR_SE, DIR_NE, DIR_NW, DIR_S, DIR_E, DIR_N, DIR_W}, /* odd - odd */
-	}, {/* PCP 2 */
-		{DIR_NE, DIR_NW, DIR_SE, DIR_SW, DIR_S, DIR_W, DIR_N, DIR_E}, /* evn - evn */
-		{DIR_NE, DIR_SE, DIR_SW, DIR_NW, DIR_N, DIR_E, DIR_S, DIR_W}, /* evn - odd */
-		{DIR_SW, DIR_NW, DIR_NE, DIR_SE, DIR_N, DIR_E, DIR_S, DIR_W}, /* odd - evn */
-		{DIR_SW, DIR_SE, DIR_NE, DIR_NW, DIR_S, DIR_W, DIR_N, DIR_E}, /* odd - odd */
-	}, {/* PCP 3 */
-		{DIR_NE, DIR_NW, DIR_SE, DIR_SW, DIR_N, DIR_W, DIR_S, DIR_E}, /* evn - evn */
-		{DIR_NE, DIR_SE, DIR_SW, DIR_NW, DIR_S, DIR_E, DIR_N, DIR_W}, /* evn - odd */
-		{DIR_SW, DIR_NW, DIR_NE, DIR_SE, DIR_S, DIR_E, DIR_N, DIR_W}, /* odd - evn */
-		{DIR_SW, DIR_SE, DIR_NE, DIR_NW, DIR_N, DIR_W, DIR_S, DIR_E}, /* odd - odd */
+static const Direction PPPorder[DIAGDIR_END][TLG_END][DIR_END] = {    //  X  -  Y
+	{   // PCP 0
+		{DIR_NE, DIR_NW, DIR_SE, DIR_SW, DIR_N, DIR_E, DIR_S, DIR_W}, // evn - evn
+		{DIR_NE, DIR_SE, DIR_SW, DIR_NW, DIR_S, DIR_W, DIR_N, DIR_E}, // evn - odd
+		{DIR_SW, DIR_NW, DIR_NE, DIR_SE, DIR_S, DIR_W, DIR_N, DIR_E}, // odd - evn
+		{DIR_SW, DIR_SE, DIR_NE, DIR_NW, DIR_N, DIR_E, DIR_S, DIR_W}, // odd - odd
+	}, {// PCP 1
+		{DIR_NE, DIR_NW, DIR_SE, DIR_SW, DIR_S, DIR_E, DIR_N, DIR_W}, // evn - evn
+		{DIR_NE, DIR_SE, DIR_SW, DIR_NW, DIR_N, DIR_W, DIR_S, DIR_E}, // evn - odd
+		{DIR_SW, DIR_NW, DIR_NE, DIR_SE, DIR_N, DIR_W, DIR_S, DIR_E}, // odd - evn
+		{DIR_SW, DIR_SE, DIR_NE, DIR_NW, DIR_S, DIR_E, DIR_N, DIR_W}, // odd - odd
+	}, {// PCP 2
+		{DIR_NE, DIR_NW, DIR_SE, DIR_SW, DIR_S, DIR_W, DIR_N, DIR_E}, // evn - evn
+		{DIR_NE, DIR_SE, DIR_SW, DIR_NW, DIR_N, DIR_E, DIR_S, DIR_W}, // evn - odd
+		{DIR_SW, DIR_NW, DIR_NE, DIR_SE, DIR_N, DIR_E, DIR_S, DIR_W}, // odd - evn
+		{DIR_SW, DIR_SE, DIR_NE, DIR_NW, DIR_S, DIR_W, DIR_N, DIR_E}, // odd - odd
+	}, {// PCP 3
+		{DIR_NE, DIR_NW, DIR_SE, DIR_SW, DIR_N, DIR_W, DIR_S, DIR_E}, // evn - evn
+		{DIR_NE, DIR_SE, DIR_SW, DIR_NW, DIR_S, DIR_E, DIR_N, DIR_W}, // evn - odd
+		{DIR_SW, DIR_NW, DIR_NE, DIR_SE, DIR_S, DIR_E, DIR_N, DIR_W}, // odd - evn
+		{DIR_SW, DIR_SE, DIR_NE, DIR_NW, DIR_N, DIR_W, DIR_S, DIR_E}, // odd - odd
 	}
 };
 /* Geometric placement of the PCP relative to the tile origin */
@@ -317,41 +317,41 @@ enum {
 };
 
 static const SortableSpriteStruct CatenarySpriteData[] = {
-/* X direction */
-	/* Flat tiles: */
-		/* Wires */
+/* X direction
+	 * Flat tiles:
+		 * Wires */
 	{ WSO_X_SW,          0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! 0: Wire in X direction, pylon on the SW end only
 	{ WSO_X_NE,          0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! 1: Wire in X direction, pylon on the NE end
 	{ WSO_X_SHORT,       0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! 2: Wire in X direction, pylon on both ends
 
-	/* "up" tiles */
-		/* Wires */
+	/* "up" tiles
+		 * Wires */
 	{ WSO_X_SW_UP,       0,  7, 15,  8,  1, ELRAIL_ELEVRAISE }, //! 3: Wire in X pitch up, pylon on the SW end only
 	{ WSO_X_NE_UP,       0,  7, 15,  8,  1, ELRAIL_ELEVRAISE }, //! 4: Wire in X pitch up, pylon on the NE end
 	{ WSO_X_SHORT_UP,    0,  7, 15,  8,  1, ELRAIL_ELEVRAISE }, //! 5: Wire in X pitch up, pylon on both ends
 
-	/* "down" tiles */
-		/* Wires */
+	/* "down" tiles
+		 * Wires */
 	{ WSO_X_SW_DOWN,     0,  7, 15,  8,  1, ELRAIL_ELEVATION }, //! 6: Wire in X pitch down, pylon on the SW end
 	{ WSO_X_NE_DOWN,     0,  7, 15,  8,  1, ELRAIL_ELEVATION }, //! 7: Wire in X pitch down, pylon on the NE end
 	{ WSO_X_SHORT_DOWN,  0,  7, 15,  8,  1, ELRAIL_ELEVATION }, //! 8: Wire in X pitch down, pylon on both ends
 
 
-/* Y direction */
-	/* Flat tiles: */
-		/* Wires */
+/* Y direction
+	 * Flat tiles:
+		 * Wires */
 	{ WSO_Y_SE,          7,  0,  1, 15,  1, ELRAIL_ELEVATION }, //! 9: Wire in Y direction, pylon on the SE end only
 	{ WSO_Y_NW,          7,  0,  1, 15,  1, ELRAIL_ELEVATION }, //!10: Wire in Y direction, pylon on the NW end
 	{ WSO_Y_SHORT,       7,  0,  1, 15,  1, ELRAIL_ELEVATION }, //!11: Wire in Y direction, pylon on both ends
 
-	/* "up" tiles */
-		/* Wires */
+	/* "up" tiles
+		 * Wires */
 	{ WSO_Y_SE_UP,       7,  0,  8, 15,  1, ELRAIL_ELEVRAISE }, //!12: Wire in Y pitch up, pylon on the SE end only
 	{ WSO_Y_NW_UP,       7,  0,  8, 15,  1, ELRAIL_ELEVRAISE }, //!13: Wire in Y pitch up, pylon on the NW end
 	{ WSO_Y_SHORT_UP,    7,  0,  8, 15,  1, ELRAIL_ELEVRAISE }, //!14: Wire in Y pitch up, pylon on both ends
 
-	/* "down" tiles */
-		/* Wires */
+	/* "down" tiles
+		 * Wires */
 	{ WSO_Y_SE_DOWN,     7,  0,  8, 15,  1, ELRAIL_ELEVATION }, //!15: Wire in Y pitch down, pylon on the SE end
 	{ WSO_Y_NW_DOWN,     7,  0,  8, 15,  1, ELRAIL_ELEVATION }, //!16: Wire in Y pitch down, pylon on the NW end
 	{ WSO_Y_SHORT_DOWN,  7,  0,  8, 15,  1, ELRAIL_ELEVATION }, //!17: Wire in Y pitch down, pylon on both ends
@@ -456,35 +456,35 @@ enum CatenarySprite {
  * d) both
  * PCP exists.*/
 static const CatenarySprite Wires[5][TRACK_END][4] = {
-	{ /* Tileh == 0 */
+	{ // Tileh == 0
 		{INVALID_CATENARY, WIRE_X_FLAT_NE,   WIRE_X_FLAT_SW,   WIRE_X_FLAT_BOTH},
 		{INVALID_CATENARY, WIRE_Y_FLAT_SE,   WIRE_Y_FLAT_NW,   WIRE_Y_FLAT_BOTH},
 		{INVALID_CATENARY, WIRE_EW_N_W,      WIRE_EW_N_E,      WIRE_EW_N_BOTH},
 		{INVALID_CATENARY, WIRE_EW_S_E,      WIRE_EW_S_W,      WIRE_EW_S_BOTH},
 		{INVALID_CATENARY, WIRE_NS_W_S,      WIRE_NS_W_N,      WIRE_NS_W_BOTH},
 		{INVALID_CATENARY, WIRE_NS_E_N,      WIRE_NS_E_S,      WIRE_NS_E_BOTH},
-	}, { /* Tileh == 3 */
+	}, { // Tileh == 3
 		{INVALID_CATENARY, WIRE_X_UP_NE,     WIRE_X_UP_SW,     WIRE_X_UP_BOTH},
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},
-	}, { /* Tileh == 6 */
+	}, { // Tileh == 6
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},
 		{INVALID_CATENARY, WIRE_Y_UP_SE,     WIRE_Y_UP_NW,     WIRE_Y_UP_BOTH},
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},
-	}, { /* Tileh == 9 */
+	}, { // Tileh == 9
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},
 		{INVALID_CATENARY, WIRE_Y_DOWN_SE,   WIRE_Y_DOWN_NW,   WIRE_Y_DOWN_BOTH},
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},
-	}, { /* Tileh == 12 */
+	}, { // Tileh == 12
 		{INVALID_CATENARY, WIRE_X_DOWN_NE,   WIRE_X_DOWN_SW,   WIRE_X_DOWN_BOTH},
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},

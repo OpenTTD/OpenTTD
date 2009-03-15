@@ -1685,12 +1685,12 @@ static const char *const name_czech_real[] = {
 };
 
 
-/* The advanced hyperintelligent Czech town names generator! */
-/* The tables and MakeCzechTownName() is (c) Petr Baudis 2005 (GPL'd)
+/* The advanced hyperintelligent Czech town names generator!
+ * The tables and MakeCzechTownName() is (c) Petr Baudis 2005 (GPL'd)
  * Feel free to ask me about anything unclear or if you need help
  * with cloning this for your own language. */
 
-// Sing., pl.
+/* Sing., pl. */
 enum CzechGender {
 	CZG_SMASC,
 	CZG_SFEM,
@@ -1698,9 +1698,9 @@ enum CzechGender {
 	CZG_PMASC,
 	CZG_PFEM,
 	CZG_PNEUT,
-	// Special for substantive stems - the ending chooses the gender.
+	/* Special for substantive stems - the ending chooses the gender. */
 	CZG_FREE,
-	// Like CZG_FREE, but disallow CZG_SNEUT.
+	/* Like CZG_FREE, but disallow CZG_SNEUT. */
 	CZG_NFREE
 };
 
@@ -1711,8 +1711,8 @@ enum CzechPattern {
 };
 
 /* [CzechGender][CzechPattern] - replaces the last character of the adjective
- * by this. */
-// XXX: [CZG_SMASC][CZP_PRIVL] needs special handling: -ovX -> -uv.
+ * by this.
+ * XXX: [CZG_SMASC][CZP_PRIVL] needs special handling: -ovX -> -uv. */
 static const char *const name_czech_patmod[][3] = {
 	/* CZG_SMASC */ { "í", "ý", "X" },
 	/* CZG_SFEM */  { "í", "á", "a" },
@@ -1722,8 +1722,8 @@ static const char *const name_czech_patmod[][3] = {
 	/* CZG_PNEUT */ { "í", "á", "a" }
 };
 
-// This way the substantives can choose only some adjectives/endings:
-// At least one of these flags must be satisfied:
+/* This way the substantives can choose only some adjectives/endings:
+ * At least one of these flags must be satisfied: */
 enum CzechAllow {
 	CZA_SHORT = 1,
 	CZA_MIDDLE = 2,
@@ -1733,7 +1733,7 @@ enum CzechAllow {
 
 DECLARE_ENUM_AS_BIT_SET(CzechAllow);
 
-// All these flags must be satisfied (in the stem->others direction):
+/* All these flags must be satisfied (in the stem->others direction): */
 enum CzechChoose {
 	CZC_NONE = 0, // No requirements.
 	CZC_COLOR = 1,
@@ -1757,7 +1757,7 @@ struct CzechNameAdj {
 	const char *name;
 };
 
-// Some of items which should be common are doubled.
+/* Some of items which should be common are doubled. */
 static const CzechNameAdj name_czech_adj[] = {
 	{ CZP_JARNI, CZC_ANY, "Horní" },
 	{ CZP_JARNI, CZC_ANY, "Horní" },
@@ -1809,7 +1809,7 @@ static const CzechNameAdj name_czech_adj[] = {
 	{ CZP_PRIVL, CZC_ANY, "Sudovo" },
 };
 
-// Considered a stem for choose/allow matching purposes.
+/* Considered a stem for choose/allow matching purposes. */
 static const CzechNameSubst name_czech_subst_full[] = {
 	{ CZG_SMASC, CZA_ALL, CZC_COLOR, "Sedlec" },
 	{ CZG_SMASC, CZA_ALL, CZC_COLOR, "Brod" },
@@ -1829,7 +1829,7 @@ static const CzechNameSubst name_czech_subst_full[] = {
 	{ CZG_PNEUT, CZA_ALL, CZC_COLOR, "Pole" },
 };
 
-// TODO: More stems needed. --pasky
+/* TODO: More stems needed. --pasky */
 static const CzechNameSubst name_czech_subst_stem[] = {
 	{ CZG_SMASC,             CZA_MIDDLE,            CZC_COLOR, "Kostel" },
 	{ CZG_SMASC,             CZA_MIDDLE,            CZC_COLOR, "Klášter" },
@@ -1875,14 +1875,14 @@ static const CzechNameSubst name_czech_subst_stem[] = {
 	{ CZG_FREE,              CZA_MIDDLE | CZA_LONG, CZC_NONE, "Lip" },
 };
 
-// Optional postfix inserted between stem and ending.
+/* Optional postfix inserted between stem and ending. */
 static const char *const name_czech_subst_postfix[] = {
 	"av", "an", "at",
 	"ov", "on", "ot",
 	"ev", "en", "et",
 };
 
-// This array must have the both neutral genders at the end!
+/* This array must have the both neutral genders at the end! */
 static const CzechNameSubst name_czech_subst_ending[] = {
 	{ CZG_SMASC, CZA_SHORT | CZA_MIDDLE,            CZC_ANY, "ec" },
 	{ CZG_SMASC, CZA_SHORT | CZA_MIDDLE,            CZC_ANY, "ín" },
