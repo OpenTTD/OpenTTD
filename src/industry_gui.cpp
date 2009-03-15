@@ -728,7 +728,7 @@ protected:
 
 	/* Constants for sorting stations */
 	static const StringID sorter_names[];
-	static GUIIndustryList::SortFunction *const sorter_funcs[];
+	static GUIIndustryList::SortFunction * const sorter_funcs[];
 
 	GUIIndustryList industries;
 

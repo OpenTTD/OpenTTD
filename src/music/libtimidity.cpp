@@ -47,7 +47,7 @@ static void AudioOutCallback(void *buf, unsigned int _reqn, void *userdata)
 
 static FMusicDriver_LibTimidity iFMusicDriver_LibTimidity;
 
-const char *MusicDriver_LibTimidity::Start(const char *const *param)
+const char *MusicDriver_LibTimidity::Start(const char * const *param)
 {
 	_midi.status = MIDI_STOPPED;
 

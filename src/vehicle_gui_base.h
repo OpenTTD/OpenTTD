@@ -23,7 +23,7 @@ struct BaseVehicleListWindow: public Window {
 	VehicleType vehicle_type; ///< The vehicle type that is sorted
 
 	static const StringID vehicle_sorter_names[];
-	static GUIVehicleList::SortFunction *const vehicle_sorter_funcs[];
+	static GUIVehicleList::SortFunction * const vehicle_sorter_funcs[];
 
 	BaseVehicleListWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{

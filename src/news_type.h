@@ -94,7 +94,7 @@ enum NewsDisplay {
  * Per-NewsType data
  */
 struct NewsTypeData {
-	const char *const name; ///< Name
+	const char * const name; ///< Name
 	const byte age;         ///< Maximum age of news items (in days)
 	const SoundFx sound;    ///< Sound
 	NewsDisplay display;    ///< Display mode (off, summary, full)

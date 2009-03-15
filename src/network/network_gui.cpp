@@ -118,7 +118,7 @@ protected:
 	static Listing last_sorting;
 
 	/* Constants for sorting servers */
-	static GUIGameServerList::SortFunction *const sorter_funcs[];
+	static GUIGameServerList::SortFunction * const sorter_funcs[];
 
 	byte field;                  ///< selected text-field
 	NetworkGameList *server;     ///< selected server
@@ -760,7 +760,7 @@ public:
 };
 
 Listing NetworkGameWindow::last_sorting = {false, 5};
-GUIGameServerList::SortFunction *const NetworkGameWindow::sorter_funcs[] = {
+GUIGameServerList::SortFunction * const NetworkGameWindow::sorter_funcs[] = {
 	&NGameNameSorter,
 	&NGameClientSorter,
 	&NGameMapSizeSorter,

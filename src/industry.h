@@ -156,7 +156,7 @@ struct GRFFileProps {
  * Defines the data structure for constructing industry.
  */
 struct IndustrySpec {
-	const IndustryTileTable *const *table;///< List of the tiles composing the industry
+	const IndustryTileTable * const *table;///< List of the tiles composing the industry
 	byte num_table;                       ///< Number of elements in the table
 	uint8 cost_multiplier;                ///< Base construction cost multiplier.
 	uint32 removal_cost_multiplier;       ///< Base removal cost multiplier.

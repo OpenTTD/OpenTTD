@@ -1514,7 +1514,7 @@ void VehiclePayment(Vehicle *front_v)
 	}
 
 	/* Call the production machinery of industries only once for every vehicle chain */
-	const Industry *const *isend = industry_set.End();
+	const Industry * const *isend = industry_set.End();
 	for (Industry **iid = industry_set.Begin(); iid != isend; iid++) {
 		TriggerIndustryProduction(*iid);
 	}

@@ -122,7 +122,7 @@ protected:
 
 	/* Constants for sorting stations */
 	static const StringID sorter_names[];
-	static GUIStationList::SortFunction *const sorter_funcs[];
+	static GUIStationList::SortFunction * const sorter_funcs[];
 
 	GUIStationList stations;
 
@@ -569,7 +569,7 @@ uint32 CompanyStationsWindow::cargo_filter = UINT32_MAX;
 const Station *CompanyStationsWindow::last_station = NULL;
 
 /* Availible station sorting functions */
-GUIStationList::SortFunction *const CompanyStationsWindow::sorter_funcs[] = {
+GUIStationList::SortFunction * const CompanyStationsWindow::sorter_funcs[] = {
 	&StationNameSorter,
 	&StationTypeSorter,
 	&StationWaitingSorter,

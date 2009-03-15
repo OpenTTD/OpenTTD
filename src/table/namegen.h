@@ -4,14 +4,14 @@
 
 #include "../core/enum_type.hpp"
 
-static const char *const name_original_english_1[] = {
+static const char * const name_original_english_1[] = {
 	"Great ",
 	"Little ",
 	"New ",
 	"Fort ",
 };
 
-static const char *const name_original_english_2[] = {
+static const char * const name_original_english_2[] = {
 	"Wr",
 	"B",
 	"C",
@@ -40,7 +40,7 @@ static const char *const name_original_english_2[] = {
 	"W"
 };
 
-static const char *const name_original_english_3[] = {
+static const char * const name_original_english_3[] = {
 	"ar",
 	"a",
 	"e",
@@ -51,7 +51,7 @@ static const char *const name_original_english_3[] = {
 	"en"
 };
 
-static const char *const name_original_english_4[] = {
+static const char * const name_original_english_4[] = {
 	"n",
 	"ning",
 	"ding",
@@ -61,7 +61,7 @@ static const char *const name_original_english_4[] = {
 	"fing"
 };
 
-static const char *const name_original_english_5[] = {
+static const char * const name_original_english_5[] = {
 	"ville",
 	"ham",
 	"field",
@@ -87,7 +87,7 @@ static const char *const name_original_english_5[] = {
 	"burg",
 };
 
-static const char *const name_original_english_6[] = {
+static const char * const name_original_english_6[] = {
 	"-on-sea",
 	" Bay",
 	" Market",
@@ -99,7 +99,7 @@ static const char *const name_original_english_6[] = {
 	" Springs"
 };
 
-static const char *const name_additional_english_prefix[] = {
+static const char * const name_additional_english_prefix[] = {
 	"Great ",
 	"Little ",
 	"New ",
@@ -108,7 +108,7 @@ static const char *const name_additional_english_prefix[] = {
 	"Old "
 };
 
-static const char *const name_additional_english_1a[] = {
+static const char * const name_additional_english_1a[] = {
 	"Pen",
 	"Lough",
 	"Stam",
@@ -154,7 +154,7 @@ static const char *const name_additional_english_1a[] = {
 	"Stan"
 };
 
-static const char *const name_additional_english_1b1[] = {
+static const char * const name_additional_english_1b1[] = {
 	"Wr",
 	"B",
 	"C",
@@ -183,7 +183,7 @@ static const char *const name_additional_english_1b1[] = {
 	"W"
 };
 
-static const char *const name_additional_english_1b2[] = {
+static const char * const name_additional_english_1b2[] = {
 	"ar",
 	"a",
 	"e",
@@ -198,7 +198,7 @@ static const char *const name_additional_english_1b2[] = {
 	"en"
 };
 
-static const char *const name_additional_english_1b3a[] = {
+static const char * const name_additional_english_1b3a[] = {
 	"n",
 	"d",
 	"",
@@ -207,13 +207,13 @@ static const char *const name_additional_english_1b3a[] = {
 	""
 };
 
-static const char *const name_additional_english_1b3b[] = {
+static const char * const name_additional_english_1b3b[] = {
 	"ning",
 	"ding",
 	"fing"
 };
 
-static const char *const name_additional_english_2[] = {
+static const char * const name_additional_english_2[] = {
 	"ville",
 	"ham",
 	"field",
@@ -271,7 +271,7 @@ static const char *const name_additional_english_2[] = {
 	"thwaite"
 };
 
-static const char *const name_additional_english_3[] = {
+static const char * const name_additional_english_3[] = {
 	"-on-sea",
 	" Bay",
 	" Market",
@@ -292,7 +292,7 @@ static const char *const name_additional_english_3[] = {
 	" Springs"
 };
 
-static const char *const name_austrian_a1[] = {
+static const char * const name_austrian_a1[] = {
 	"Bad ",
 	"Deutsch ",
 	"Gross ",
@@ -301,7 +301,7 @@ static const char *const name_austrian_a1[] = {
 	"Maria "
 };
 
-static const char *const name_austrian_a2[] = {
+static const char * const name_austrian_a2[] = {
 	"Aus",
 	"Alten",
 	"Braun",
@@ -346,7 +346,7 @@ static const char *const name_austrian_a2[] = {
 	"Weissen"
 };
 
-static const char *const name_austrian_a3[] = {
+static const char * const name_austrian_a3[] = {
 	"see",
 	"bach",
 	"dorf",
@@ -365,7 +365,7 @@ static const char *const name_austrian_a3[] = {
 	"haag"
 };
 
-static const char *const name_austrian_a4[] = {
+static const char * const name_austrian_a4[] = {
 	"Bruck",
 	"Brunn",
 	"Gams",
@@ -380,12 +380,12 @@ static const char *const name_austrian_a4[] = {
 	"Wald"
 };
 
-static const char *const name_austrian_a5[] = {
+static const char * const name_austrian_a5[] = {
 	"St. ",
 	"Sankt "
 };
 
-static const char *const name_austrian_a6[] = {
+static const char * const name_austrian_a6[] = {
 	"Aegyd",
 	"Andrä",
 	"Georgen",
@@ -408,12 +408,12 @@ static const char *const name_austrian_a6[] = {
 	"Wolfgang"
 };
 
-static const char *const name_austrian_f1[] = {
+static const char * const name_austrian_f1[] = {
 	" an der ",
 	" ob der "
 };
 
-static const char *const name_austrian_f2[] = {
+static const char * const name_austrian_f2[] = {
 	"Donau",
 	"Steyr",
 	"Lafnitz",
@@ -429,11 +429,11 @@ static const char *const name_austrian_f2[] = {
 	"Ill"
 };
 
-static const char *const name_austrian_b1[] = {
+static const char * const name_austrian_b1[] = {
 	" am "
 };
 
-static const char *const name_austrian_b2[] = {
+static const char * const name_austrian_b2[] = {
 	"Brenner",
 	"Dachstein",
 	"Gebirge",
@@ -446,7 +446,7 @@ static const char *const name_austrian_b2[] = {
 	"Ziller"
 };
 
-static const char *const name_german_real[] = {
+static const char * const name_german_real[] = {
 	"Berlin",
 	"Bonn",
 	"Bremen",
@@ -470,13 +470,13 @@ static const char *const name_german_real[] = {
 	"Wiesbaden"
 };
 
-static const char *const name_german_pre[] = {
+static const char * const name_german_pre[] = {
 	"Bad ",
 	"Klein ",
 	"Neu "
 };
 
-static const char *const name_german_1[] = {
+static const char * const name_german_1[] = {
 	"Alb",
 	"Als",
 	"Ander",
@@ -572,7 +572,7 @@ static const char *const name_german_1[] = {
 	"Würz"
 };
 
-static const char *const name_german_2[] = {
+static const char * const name_german_2[] = {
 	"bach",
 	"berg",
 	"brück",
@@ -591,15 +591,15 @@ static const char *const name_german_2[] = {
 	"wald"
 };
 
-static const char *const name_german_3_an_der[] = {
+static const char * const name_german_3_an_der[] = {
 	" an der "
 };
 
-static const char *const name_german_3_am[] = {
+static const char * const name_german_3_am[] = {
 	" am "
 };
 
-static const char *const name_german_4_an_der[] = {
+static const char * const name_german_4_an_der[] = {
 	"Oder",
 	"Spree",
 	"Donau",
@@ -607,11 +607,11 @@ static const char *const name_german_4_an_der[] = {
 	"Elbe"
 };
 
-static const char *const name_german_4_am[] = {
+static const char * const name_german_4_am[] = {
 	"Main"
 };
 
-static const char *const name_spanish_real[] = {
+static const char * const name_spanish_real[] = {
 	"Caracas",
 	"Maracay",
 	"Maracaibo",
@@ -700,7 +700,7 @@ static const char *const name_spanish_real[] = {
 	"Santa Rosa"
 };
 
-static const char *const name_french_real[] = {
+static const char * const name_french_real[] = {
 	"Agincourt",
 	"Lille",
 	"Dinan",
@@ -773,7 +773,7 @@ static const char *const name_french_real[] = {
 	"Alençon"
 };
 
-static const char *const name_silly_1[] = {
+static const char * const name_silly_1[] = {
 	"Binky",
 	"Blubber",
 	"Bumble",
@@ -864,7 +864,7 @@ static const char *const name_silly_1[] = {
 	"Griddle"
 };
 
-static const char *const name_silly_2[] = {
+static const char * const name_silly_2[] = {
 	"ton",
 	"bury",
 	"bottom",
@@ -882,14 +882,14 @@ static const char *const name_silly_2[] = {
 	"bridge"
 };
 
-static const char *const name_swedish_1[] = {
+static const char * const name_swedish_1[] = {
 	"Gamla ",
 	"Lilla ",
 	"Nya ",
 	"Stora "
 };
 
-static const char *const name_swedish_2[] = {
+static const char * const name_swedish_2[] = {
 	"Boll",
 	"Bor",
 	"Ed",
@@ -930,7 +930,7 @@ static const char *const name_swedish_2[] = {
 	"Öster"
 };
 
-static const char *const name_swedish_2a[] = {
+static const char * const name_swedish_2a[] = {
 	"B",
 	"Br",
 	"D",
@@ -975,7 +975,7 @@ static const char *const name_swedish_2a[] = {
 	"Vr"
 };
 
-static const char *const name_swedish_2b[] = {
+static const char * const name_swedish_2b[] = {
 	"a",
 	"e",
 	"i",
@@ -987,7 +987,7 @@ static const char *const name_swedish_2b[] = {
 	"ö"
 };
 
-static const char *const name_swedish_2c[] = {
+static const char * const name_swedish_2c[] = {
 	"ck",
 	"d",
 	"dd",
@@ -1016,7 +1016,7 @@ static const char *const name_swedish_2c[] = {
 	"v"
 };
 
-static const char *const name_swedish_3[] = {
+static const char * const name_swedish_3[] = {
 	"arp",
 	"berg",
 	"boda",
@@ -1051,7 +1051,7 @@ static const char *const name_swedish_3[] = {
 	"ås"
 };
 
-static const char *const name_dutch_1[] = {
+static const char * const name_dutch_1[] = {
 	"Nieuw ",
 	"Oud ",
 	"Groot ",
@@ -1062,7 +1062,7 @@ static const char *const name_dutch_1[] = {
 	"Klein "
 };
 
-static const char *const name_dutch_2[] = {
+static const char * const name_dutch_2[] = {
 	"Hoog",
 	"Laag",
 	"Zuider",
@@ -1118,7 +1118,7 @@ static const char *const name_dutch_2[] = {
 	"Hil"
 };
 
-static const char *const name_dutch_3[] = {
+static const char * const name_dutch_3[] = {
 	"Drog",
 	"Nat",
 	"Valk",
@@ -1141,7 +1141,7 @@ static const char *const name_dutch_3[] = {
 	"Koning"
 };
 
-static const char *const name_dutch_4[] = {
+static const char * const name_dutch_4[] = {
 	"e",
 	"er",
 	"el",
@@ -1150,7 +1150,7 @@ static const char *const name_dutch_4[] = {
 	"s"
 };
 
-static const char *const name_dutch_5[] = {
+static const char * const name_dutch_5[] = {
 	"stad",
 	"vorst",
 	"dorp",
@@ -1209,7 +1209,7 @@ static const char *const name_dutch_5[] = {
 	"end"
 };
 
-static const char *const name_finnish_real[] = {
+static const char * const name_finnish_real[] = {
 	"Aijala",
 	"Kisko",
 	"Espoo",
@@ -1243,7 +1243,7 @@ static const char *const name_finnish_real[] = {
 	"Lieksa"
 };
 
-static const char *const name_finnish_1[] = {
+static const char * const name_finnish_1[] = {
 	"Hiekka",
 	"Haapa",
 	"Mylly",
@@ -1273,7 +1273,7 @@ static const char *const name_finnish_1[] = {
 	"Niini"
 };
 
-static const char *const name_finnish_2[] = {
+static const char * const name_finnish_2[] = {
 	"Lappeen",
 	"Lohjan",
 	"Savon",
@@ -1287,7 +1287,7 @@ static const char *const name_finnish_2[] = {
 	"Kangas"
 };
 
-static const char *const name_finnish_3[] = {
+static const char * const name_finnish_3[] = {
 	"harju",
 	"linna",
 	"järvi",
@@ -1309,7 +1309,7 @@ static const char *const name_finnish_3[] = {
 	"salo"
 };
 
-static const char *const name_polish_1_m[] = {
+static const char * const name_polish_1_m[] = {
 	"Wielki ",
 	"Mały ",
 	"Zły ",
@@ -1323,7 +1323,7 @@ static const char *const name_polish_1_m[] = {
 	"Dębowy "
 };
 
-static const char *const name_polish_1_f[] = {
+static const char * const name_polish_1_f[] = {
 	"Wielka ",
 	"Mała ",
 	"Zła ",
@@ -1337,7 +1337,7 @@ static const char *const name_polish_1_f[] = {
 	"Dębowa "
 };
 
-static const char *const name_polish_1_n[] = {
+static const char * const name_polish_1_n[] = {
 	"Wielkie ",
 	"Małe ",
 	"Złe ",
@@ -1351,7 +1351,7 @@ static const char *const name_polish_1_n[] = {
 	"Dębowe "
 };
 
-static const char *const name_polish_2_o[] = {
+static const char * const name_polish_2_o[] = {
 	"Frombork",
 	"Gniezno",
 	"Olsztyn",
@@ -1388,7 +1388,7 @@ static const char *const name_polish_2_o[] = {
 	"Wolsztyn"
 };
 
-static const char *const name_polish_2_m[] = {
+static const char * const name_polish_2_m[] = {
 	"Jarocin",
 	"Gogolin",
 	"Tomaszów",
@@ -1439,7 +1439,7 @@ static const char *const name_polish_2_m[] = {
 	"Garwolin"
 };
 
-static const char *const name_polish_2_f[] = {
+static const char * const name_polish_2_f[] = {
 	"Szprotawa",
 	"Pogorzelica",
 	"Motława",
@@ -1470,7 +1470,7 @@ static const char *const name_polish_2_f[] = {
 	"Pilawa"
 };
 
-static const char *const name_polish_2_n[] = {
+static const char * const name_polish_2_n[] = {
 	"Lipsko",
 	"Pilzno",
 	"Przodkowo",
@@ -1503,7 +1503,7 @@ static const char *const name_polish_2_n[] = {
 	"Opoczno"
 };
 
-static const char *const name_polish_3_m[] = {
+static const char * const name_polish_3_m[] = {
 	" Wybudowanie",
 	" Świętokrzyski",
 	" Górski",
@@ -1535,7 +1535,7 @@ static const char *const name_polish_3_m[] = {
 	" Lesny"
 };
 
-static const char *const name_polish_3_f[] = {
+static const char * const name_polish_3_f[] = {
 	" Wybudowanie",
 	" Świętokrzyska",
 	" Górska",
@@ -1567,7 +1567,7 @@ static const char *const name_polish_3_f[] = {
 	" Leśna"
 };
 
-static const char *const name_polish_3_n[] = {
+static const char * const name_polish_3_n[] = {
 	" Wybudowanie",
 	" Świetokrzyskie",
 	" Górskie",
@@ -1599,7 +1599,7 @@ static const char *const name_polish_3_n[] = {
 	" Leśne"
 };
 
-static const char *const name_czech_real[] = {
+static const char * const name_czech_real[] = {
 	"Aš",
 	"Benešov",
 	"Beroun",
@@ -1713,7 +1713,7 @@ enum CzechPattern {
 /* [CzechGender][CzechPattern] - replaces the last character of the adjective
  * by this.
  * XXX: [CZG_SMASC][CZP_PRIVL] needs special handling: -ovX -> -uv. */
-static const char *const name_czech_patmod[][3] = {
+static const char * const name_czech_patmod[][3] = {
 	/* CZG_SMASC */ { "í", "ý", "X" },
 	/* CZG_SFEM */  { "í", "á", "a" },
 	/* CZG_SNEUT */ { "í", "é", "o" },
@@ -1876,7 +1876,7 @@ static const CzechNameSubst name_czech_subst_stem[] = {
 };
 
 /* Optional postfix inserted between stem and ending. */
-static const char *const name_czech_subst_postfix[] = {
+static const char * const name_czech_subst_postfix[] = {
 	"av", "an", "at",
 	"ov", "on", "ot",
 	"ev", "en", "et",
@@ -1906,7 +1906,7 @@ static const CzechNameSubst name_czech_subst_ending[] = {
 	{ CZG_SNEUT,                          CZA_LONG, CZC_ANY, "iště" },
 };
 
-static const char *const name_czech_suffix[] = {
+static const char * const name_czech_suffix[] = {
 	"nad Cidlinou",
 	"nad Dyjí",
 	"nad Jihlavou",
@@ -1930,7 +1930,7 @@ static const char *const name_czech_suffix[] = {
 
 
 
-static const char *const name_romanian_real[] = {
+static const char * const name_romanian_real[] = {
 	"Adjud",
 	"Alba Iulia",
 	"Alexandria",
@@ -2027,7 +2027,7 @@ static const char *const name_romanian_real[] = {
 	"Zalãu"
 };
 
-static const char *const name_slovak_real[] = {
+static const char * const name_slovak_real[] = {
 	"Bratislava",
 	"Banovce nad Bebravou",
 	"Banska Bystrica",
@@ -2117,7 +2117,7 @@ static const char *const name_slovak_real[] = {
 	"Zvolen"
 };
 
-static const char *const name_norwegian_1[] = {
+static const char * const name_norwegian_1[] = {
 	"Arna",
 	"Aust",
 	"Bjørk",
@@ -2204,7 +2204,7 @@ static const char *const name_norwegian_1[] = {
 	"Våg"
 };
 
-static const char *const name_norwegian_2[] = {
+static const char * const name_norwegian_2[] = {
 	"aker",
 	"anger",
 	"bakken",
@@ -2274,7 +2274,7 @@ static const char *const name_norwegian_2[] = {
 	"åsen"
 };
 
-static const char *const name_norwegian_real[] = {
+static const char * const name_norwegian_real[] = {
 	"Alta",
 	"Arendal",
 	"Askim",
@@ -2371,7 +2371,7 @@ static const char *const name_norwegian_real[] = {
 	"Åndalsnes"
 };
 
-static const char *const name_hungarian_1[] = {
+static const char * const name_hungarian_1[] = {
 	"Nagy-",
 	"Kis-",
 	"Felső-",
@@ -2379,7 +2379,7 @@ static const char *const name_hungarian_1[] = {
 	"Új-"
 };
 
-static const char *const name_hungarian_2[] = {
+static const char * const name_hungarian_2[] = {
 	"Bodrog",
 	"Dráva",
 	"Duna",
@@ -2436,7 +2436,7 @@ static const char *const name_hungarian_2[] = {
 	"Vásáros"
 };
 
-static const char *const name_hungarian_3[] = {
+static const char * const name_hungarian_3[] = {
 	"apáti",
 	"bába",
 	"bikk",
@@ -2455,7 +2455,7 @@ static const char *const name_hungarian_3[] = {
 	"völgy"
 };
 
-static const char *const name_hungarian_4[] = {
+static const char * const name_hungarian_4[] = {
 	"alja",
 	"egyháza",
 	"háza",
@@ -2463,7 +2463,7 @@ static const char *const name_hungarian_4[] = {
 	"vár"
 };
 
-static const char *const name_hungarian_real[] = {
+static const char * const name_hungarian_real[] = {
 	"Ajka",
 	"Aszód",
 	"Badacsony",
@@ -2502,7 +2502,7 @@ static const char *const name_hungarian_real[] = {
 	"Zirc"
 };
 
-static const char *const name_swiss_real[] = {
+static const char * const name_swiss_real[] = {
 	"Aarau",
 	"Aesch",
 	"Altdorf",
@@ -2628,7 +2628,7 @@ static const char *const name_swiss_real[] = {
 	"Zug",
 };
 
-static const char *const name_danish_1[] = {
+static const char * const name_danish_1[] = {
 	"Gamle ",
 	"Lille ",
 	"Nye ",
@@ -2643,7 +2643,7 @@ static const char *const name_danish_1[] = {
 	"Kongens ",
 };
 
-static const char *const name_danish_2[] = {
+static const char * const name_danish_2[] = {
 	"Ager",
 	"Alle",
 	"Aske",
@@ -2727,7 +2727,7 @@ static const char *const name_danish_2[] = {
 	"Ål"
 };
 
-static const char *const name_danish_3[] = {
+static const char * const name_danish_3[] = {
 	"basse",
 	"borg",
 	"berg",
@@ -2760,7 +2760,7 @@ static const char *const name_danish_3[] = {
 	"skov"
 };
 
-static const char *const name_turkish_prefix[] = {
+static const char * const name_turkish_prefix[] = {
 	"Akça",
 	"Altın",
 	"Bahçe",
@@ -2779,7 +2779,7 @@ static const char *const name_turkish_prefix[] = {
 	"Yeni"
 };
 
-static const char *const name_turkish_middle[] = {
+static const char * const name_turkish_middle[] = {
 	"agaç",
 	"ayva",
 	"çam",
@@ -2789,7 +2789,7 @@ static const char *const name_turkish_middle[] = {
 	"yalı"
 };
 
-static const char *const name_turkish_suffix[] = {
+static const char * const name_turkish_suffix[] = {
 	"dere",
 	"hisar",
 	"kale",
@@ -2806,7 +2806,7 @@ static const char *const name_turkish_suffix[] = {
 	"yurt"
 };
 
-static const char *const name_turkish_real[] = {
+static const char * const name_turkish_real[] = {
 	"Adana",
 	"Adıyaman",
 	"Afyon",
@@ -2874,7 +2874,7 @@ static const char *const name_turkish_real[] = {
 	"Düzce"
 };
 
-static const char *const name_italian_real[] = {
+static const char * const name_italian_real[] = {
 	"Roma",
 	"Milano",
 	"Napoli",
@@ -2955,7 +2955,7 @@ static const char *const name_italian_real[] = {
 	"Grosseto",
 };
 
-static const char *const name_italian_pref[] = {
+static const char * const name_italian_pref[] = {
 	"Alpe ",
 	"Borgo ",
 	"Cascina ",
@@ -2970,7 +2970,7 @@ static const char *const name_italian_pref[] = {
 	"Villar ",
 };
 
-static const char *const name_italian_1m[] = {
+static const char * const name_italian_1m[] = {
 	"Bel",
 	"Borgo",
 	"Bosco",
@@ -2998,7 +2998,7 @@ static const char *const name_italian_1m[] = {
 	"Vico",
 };
 
-static const char *const name_italian_1f[] = {
+static const char * const name_italian_1f[] = {
 	"Acqua",
 	"Bra",
 	"Cala",
@@ -3024,7 +3024,7 @@ static const char *const name_italian_1f[] = {
 	"Villa",
 };
 
-static const char *const name_italian_2[] = {
+static const char * const name_italian_2[] = {
 	"bell",
 	"bianc",
 	"cald",
@@ -3054,7 +3054,7 @@ static const char *const name_italian_2[] = {
 	"viv",
 };
 
-static const char *const name_italian_2i[] = {
+static const char * const name_italian_2i[] = {
 	"",
 	"breve",
 	"brevi",
@@ -3081,7 +3081,7 @@ static const char *const name_italian_2i[] = {
 };
 
 
-static const char *const name_italian_3[] = {
+static const char * const name_italian_3[] = {
 	" Marittimo",
 	" Marittima",
 	" del Capo",
@@ -3105,14 +3105,14 @@ static const char *const name_italian_3[] = {
 	" Ticino",
 };
 
-static const char *const name_italian_river1[] = {
+static const char * const name_italian_river1[] = {
 	" del",
 	" sul",
 	" al",
 	" nel",
 };
 
-static const char *const name_italian_river2[] = {
+static const char * const name_italian_river2[] = {
 	"l'Adda",
 	"l'Adige",
 	"le Alpi",
@@ -3140,7 +3140,7 @@ static const char *const name_italian_river2[] = {
 	" Tevere",
 };
 
-static const char *const name_catalan_real[] = {
+static const char * const name_catalan_real[] = {
 	"Barcelona",
 	"Hospitalet",
 	"Cerdanyola",
@@ -3210,7 +3210,7 @@ static const char *const name_catalan_real[] = {
 	"Roses",
 };
 
-static const char *const name_catalan_pref[] = {
+static const char * const name_catalan_pref[] = {
 	"Pont de ",
 	"Parets de ",
 	"Canet de ",
@@ -3245,7 +3245,7 @@ static const char *const name_catalan_pref[] = {
 
 };
 
-static const char *const name_catalan_1m[] = {
+static const char * const name_catalan_1m[] = {
 	"Torrent",
 	"Cami",
 	"Mont",
@@ -3254,7 +3254,7 @@ static const char *const name_catalan_1m[] = {
 	"Riu",
 };
 
-static const char *const name_catalan_1f[] = {
+static const char * const name_catalan_1f[] = {
 	"Aigua",
 	"Selva ",
 	"Vall",
@@ -3265,7 +3265,7 @@ static const char *const name_catalan_1f[] = {
 	"Terra",
 };
 
-static const char *const name_catalan_2m[] = {
+static const char * const name_catalan_2m[] = {
 	"alt",
 	"baix",
 	"fosc",
@@ -3276,7 +3276,7 @@ static const char *const name_catalan_2m[] = {
 	"gris",
 };
 
-static const char *const name_catalan_2f[] = {
+static const char * const name_catalan_2f[] = {
 	"baixa",
 	"alta",
 	"fosca",
@@ -3287,7 +3287,7 @@ static const char *const name_catalan_2f[] = {
 	"freda",
 };
 
-static const char *const name_catalan_3[] = {
+static const char * const name_catalan_3[] = {
 	" despí",
 	" desvern",
 	" del camí",
@@ -3300,7 +3300,7 @@ static const char *const name_catalan_3[] = {
 	" de la plana",
 };
 
-static const char *const name_catalan_river1[] = {
+static const char * const name_catalan_river1[] = {
 	" d'Anoia",
 	" de Ter",
 	" de Llobregat",

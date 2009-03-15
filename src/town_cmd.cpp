@@ -151,7 +151,7 @@ static void TownDrawHouseLift(const TileInfo *ti)
 }
 
 typedef void TownDrawTileProc(const TileInfo *ti);
-static TownDrawTileProc *const _town_draw_tile_procs[1] = {
+static TownDrawTileProc * const _town_draw_tile_procs[1] = {
 	TownDrawHouseLift
 };
 
@@ -2330,7 +2330,7 @@ static void TownActionBribe(Town *t)
 }
 
 typedef void TownActionProc(Town *t);
-static TownActionProc *const _town_action_proc[] = {
+static TownActionProc * const _town_action_proc[] = {
 	TownActionAdvertiseSmall,
 	TownActionAdvertiseMedium,
 	TownActionAdvertiseLarge,
