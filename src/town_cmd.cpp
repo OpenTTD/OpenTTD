@@ -1374,15 +1374,16 @@ extern int _nb_orig_names;
  * Speeds things up a bit because these values are computed only once per name generation.
  */
 struct TownNameParams {
-	bool grf;            ///< true iff a newgrf is used to generate town name
 	uint32 grfid;        ///< newgrf ID
 	uint16 townnametype; ///< town name style
+	bool grf;            ///< true iff a newgrf is used to generate town name
 
-	TownNameParams(byte town_name) :
-		grf(town_name >= _nb_orig_names),
-		grfid(this->grf ? GetGRFTownNameId(town_name - _nb_orig_names) : 0),
-		townnametype(this->grf ? GetGRFTownNameType(town_name - _nb_orig_names) : SPECSTR_TOWNNAME_START + town_name)
-	{ }
+	TownNameParams(byte town_name)
+	{
+		this->grf = town_name >= _nb_orig_names;
+		this->grfid = this->grf ? GetGRFTownNameId(town_name - _nb_orig_names) : 0;
+		this->townnametype = this->grf ? GetGRFTownNameType(town_name - _nb_orig_names) : SPECSTR_TOWNNAME_START + town_name;
+	}
 };
 
 /**
