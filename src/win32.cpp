@@ -485,14 +485,15 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		output += seprintf(output, last,
 			"*** OpenTTD Crash Report ***\r\n"
 			"Date: %d-%.2d-%.2d %.2d:%.2d:%.2d\r\n"
-			"Build: %s built on " __DATE__ " " __TIME__ "\r\n",
+			"Build: %s (%d) built on " __DATE__ " " __TIME__ "\r\n",
 			time.wYear,
 			time.wMonth,
 			time.wDay,
 			time.wHour,
 			time.wMinute,
 			time.wSecond,
-			_openttd_revision
+			_openttd_revision,
+			_openttd_revision_modified
 		);
 	}
 
