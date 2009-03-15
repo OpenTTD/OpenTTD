@@ -113,12 +113,12 @@ static const Widget _transparency_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _transparency_desc = {
+static const WindowDesc _transparency_desc(
 	WDP_ALIGN_TBR, 94, 219, 49, 219, 49,
 	WC_TRANSPARENCY_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
-	_transparency_widgets,
-};
+	_transparency_widgets
+);
 
 void ShowTransparencyToolbar(void)
 {

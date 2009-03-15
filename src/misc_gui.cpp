@@ -51,12 +51,12 @@ static const Widget _land_info_widgets[] = {
 {    WIDGETS_END},
 };
 
-static const WindowDesc _land_info_desc = {
+static const WindowDesc _land_info_desc(
 	WDP_AUTO, WDP_AUTO, 300, 100, 300, 100,
 	WC_LAND_INFO, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_land_info_widgets,
-};
+	_land_info_widgets
+);
 
 class LandInfoWindow : public Window {
 	enum {
@@ -283,12 +283,12 @@ static const Widget _about_widgets[] = {
 {    WIDGETS_END},
 };
 
-static const WindowDesc _about_desc = {
+static const WindowDesc _about_desc(
 	WDP_CENTER, WDP_CENTER, 420, 272, 420, 272,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_about_widgets,
-};
+	_about_widgets
+);
 
 struct AboutWindow : public Window {
 	int scroll_height;
@@ -1178,12 +1178,12 @@ static const Widget _query_string_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _query_string_desc = {
+static const WindowDesc _query_string_desc(
 	190, 219, 260, 42, 260, 42,
 	WC_QUERY_STRING, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_query_string_widgets,
-};
+	_query_string_widgets
+);
 
 /** Show a query popup window with a textbox in it.
  * @param str StringID for the text shown in the textbox
@@ -1318,12 +1318,12 @@ static const Widget _query_widgets[] = {
 {   WIDGETS_END },
 };
 
-static const WindowDesc _query_desc = {
+static const WindowDesc _query_desc(
 	WDP_CENTER, WDP_CENTER, 210, 82, 210, 82,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_DEF_WIDGET | WDF_MODAL,
-	_query_widgets,
-};
+	_query_widgets
+);
 
 /** Show a modal confirmation window with standard 'yes' and 'no' buttons
  * The window is aligned to the centre of its parent.
@@ -1733,19 +1733,19 @@ public:
 	}
 };
 
-static const WindowDesc _load_dialog_desc = {
+static const WindowDesc _load_dialog_desc(
 	WDP_CENTER, WDP_CENTER, 257, 154, 257, 294,
 	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
-	_load_dialog_widgets,
-};
+	_load_dialog_widgets
+);
 
-static const WindowDesc _save_dialog_desc = {
+static const WindowDesc _save_dialog_desc(
 	WDP_CENTER, WDP_CENTER, 257, 180, 257, 320,
 	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
-	_save_dialog_widgets,
-};
+	_save_dialog_widgets
+);
 
 /** These values are used to convert the file/operations mode into a corresponding file type.
  * So each entry, as expressed by the related comment, is based on the enum   */

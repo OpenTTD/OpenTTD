@@ -151,12 +151,12 @@ public:
 	}
 };
 
-static const WindowDesc _select_game_desc = {
+static const WindowDesc _select_game_desc(
 	WDP_CENTER, WDP_CENTER, 336, 213, 336, 213,
 	WC_SELECT_GAME, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_select_game_widgets,
-};
+	_select_game_widgets
+);
 
 void ShowSelectGameWindow()
 {

@@ -325,12 +325,12 @@ static const Widget _news_type13_widgets[] = {
 {   WIDGETS_END},
 };
 
-static WindowDesc _news_type13_desc = {
+static WindowDesc _news_type13_desc(
 	WDP_CENTER, 476, 430, 170, 430, 170,
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
-	_news_type13_widgets,
-};
+	_news_type13_widgets
+);
 
 static const Widget _news_type2_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_WHITE,     0,   429,     0,   129, 0x0, STR_NULL},
@@ -338,12 +338,12 @@ static const Widget _news_type2_widgets[] = {
 {   WIDGETS_END},
 };
 
-static WindowDesc _news_type2_desc = {
+static WindowDesc _news_type2_desc(
 	WDP_CENTER, 476, 430, 130, 430, 130,
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
-	_news_type2_widgets,
-};
+	_news_type2_widgets
+);
 
 static const Widget _news_type0_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,     0,   279,    14,    86, 0x0,              STR_NULL},
@@ -353,12 +353,12 @@ static const Widget _news_type0_widgets[] = {
 {   WIDGETS_END},
 };
 
-static WindowDesc _news_type0_desc = {
+static WindowDesc _news_type0_desc(
 	WDP_CENTER, 476, 280, 87, 280, 87,
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
-	_news_type0_widgets,
-};
+	_news_type0_widgets
+);
 
 
 /** Open up an own newspaper window for the news item */
@@ -773,12 +773,12 @@ static const Widget _message_history_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _message_history_desc = {
+static const WindowDesc _message_history_desc(
 	240, 22, 400, 140, 400, 140,
 	WC_MESSAGE_HISTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_message_history_widgets,
-};
+	_message_history_widgets
+);
 
 /** Display window with news messages history */
 void ShowMessageHistory()
@@ -982,13 +982,13 @@ NEWS_SETTINGS_LINE(26, NT_GENERAL,          STR_020F_GENERAL_INFORMATION),
 {   WIDGETS_END},
 };
 
-static const WindowDesc _message_options_desc = {
+static const WindowDesc _message_options_desc(
 	270,  22,  410,  65 + NT_END * NEWS_SETTING_BASELINE_SKIP,
 	           410,  65 + NT_END * NEWS_SETTING_BASELINE_SKIP,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_message_options_widgets,
-};
+	_message_options_widgets
+);
 
 void ShowMessageOptions()
 {

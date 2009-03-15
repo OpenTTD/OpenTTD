@@ -166,19 +166,19 @@ static const Widget _highscore_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _highscore_desc = {
+static const WindowDesc _highscore_desc(
 	0, 0, 641, 481, 641, 481,
 	WC_HIGHSCORE, WC_NONE,
 	0,
-	_highscore_widgets,
-};
+	_highscore_widgets
+);
 
-static const WindowDesc _endgame_desc = {
+static const WindowDesc _endgame_desc(
 	0, 0, 641, 481, 641, 481,
 	WC_ENDSCREEN, WC_NONE,
 	0,
-	_highscore_widgets,
-};
+	_highscore_widgets
+);
 
 /** Show the highscore table for a given difficulty. When called from
  * endgame ranking is set to the top5 element that was newly added

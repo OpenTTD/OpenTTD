@@ -792,12 +792,12 @@ static const Widget _build_rail_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _build_rail_desc = {
+static const WindowDesc _build_rail_desc(
 	WDP_ALIGN_TBR, 22, 350, 36, 350, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	_build_rail_widgets,
-};
+	_build_rail_widgets
+);
 
 
 /** Configures the rail toolbar for railtype given
@@ -1334,20 +1334,20 @@ static const Widget _newstation_builder_widgets[] = {
 };
 
 /** High level window description of the default station-build window */
-static const WindowDesc _station_builder_desc = {
+static const WindowDesc _station_builder_desc(
 	WDP_AUTO, WDP_AUTO, 148, 200, 148, 200,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_station_builder_widgets,
-};
+	_station_builder_widgets
+);
 
 /** High level window description of the newGRF station-build window */
-static const WindowDesc _newstation_builder_desc = {
+static const WindowDesc _newstation_builder_desc(
 	WDP_AUTO, WDP_AUTO, 148, 290, 148, 290,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_newstation_builder_widgets,
-};
+	_newstation_builder_widgets
+);
 
 /** Open station build window */
 static void ShowStationBuilder(Window *parent)
@@ -1511,12 +1511,12 @@ static const Widget _signal_builder_widgets[] = {
 };
 
 /** Signal selection window description */
-static const WindowDesc _signal_builder_desc = {
+static const WindowDesc _signal_builder_desc(
 	WDP_AUTO, WDP_AUTO, 154, 68, 154, 68,
 	WC_BUILD_SIGNAL, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
-	_signal_builder_widgets,
-};
+	_signal_builder_widgets
+);
 
 /**
  * Open the signal selection window
@@ -1585,12 +1585,12 @@ static const Widget _build_depot_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _build_depot_desc = {
+static const WindowDesc _build_depot_desc(
 	WDP_AUTO, WDP_AUTO, 140, 122, 140, 122,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_build_depot_widgets,
-};
+	_build_depot_widgets
+);
 
 static void ShowBuildTrainDepotPicker(Window *parent)
 {
@@ -1686,12 +1686,12 @@ static const Widget _build_waypoint_widgets[] = {
 {    WIDGETS_END},
 };
 
-static const WindowDesc _build_waypoint_desc = {
+static const WindowDesc _build_waypoint_desc(
 	WDP_AUTO, WDP_AUTO, 344, 92, 344, 92,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_build_waypoint_widgets,
-};
+	_build_waypoint_widgets
+);
 
 static void ShowBuildWaypointPicker(Window *parent)
 {

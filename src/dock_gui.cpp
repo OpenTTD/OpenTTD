@@ -274,12 +274,12 @@ static const Widget _build_docks_toolb_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _build_docks_toolbar_desc = {
+static const WindowDesc _build_docks_toolbar_desc(
 	WDP_ALIGN_TBR, 22, 160, 36, 160, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	_build_docks_toolb_widgets,
-};
+	_build_docks_toolb_widgets
+);
 
 void ShowBuildDocksToolbar()
 {
@@ -309,12 +309,12 @@ static const Widget _build_docks_scen_toolb_widgets[] = {
 };
 
 /* Window definition for the build docks in scenario editor window */
-static const WindowDesc _build_docks_scen_toolbar_desc = {
+static const WindowDesc _build_docks_scen_toolbar_desc(
 	WDP_AUTO, WDP_AUTO, 115, 36, 115, 36,
 	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	_build_docks_scen_toolb_widgets,
-};
+	_build_docks_scen_toolb_widgets
+);
 
 void ShowBuildDocksScenToolbar()
 {
@@ -395,12 +395,12 @@ static const Widget _build_dock_station_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _build_dock_station_desc = {
+static const WindowDesc _build_dock_station_desc(
 	WDP_AUTO, WDP_AUTO, 148, 75, 148, 75,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_build_dock_station_widgets,
-};
+	_build_dock_station_widgets
+);
 
 static void ShowBuildDockStationPicker(Window *parent)
 {
@@ -469,12 +469,12 @@ static const Widget _build_docks_depot_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _build_docks_depot_desc = {
+static const WindowDesc _build_docks_depot_desc(
 	WDP_AUTO, WDP_AUTO, 204, 86, 204, 86,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_build_docks_depot_widgets,
-};
+	_build_docks_depot_widgets
+);
 
 
 static void ShowBuildDocksDepotPicker(Window *parent)

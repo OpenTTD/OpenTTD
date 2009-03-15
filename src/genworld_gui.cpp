@@ -637,19 +637,19 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 	}
 };
 
-static const WindowDesc _generate_landscape_desc = {
+static const WindowDesc _generate_landscape_desc(
 	WDP_CENTER, WDP_CENTER, 338, 313, 338, 313,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_generate_landscape_widgets,
-};
+	_generate_landscape_widgets
+);
 
-static const WindowDesc _heightmap_load_desc = {
+static const WindowDesc _heightmap_load_desc(
 	WDP_CENTER, WDP_CENTER, 338, 236, 338, 236,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
-	_heightmap_load_widgets,
-};
+	_heightmap_load_widgets
+);
 
 static void _ShowGenerateLandscape(glwp_modes mode)
 {
@@ -885,12 +885,12 @@ static const Widget _create_scenario_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _create_scenario_desc = {
+static const WindowDesc _create_scenario_desc(
 	WDP_CENTER, WDP_CENTER, 338, 170, 338, 170,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
-	_create_scenario_widgets,
-};
+	_create_scenario_widgets
+);
 
 void ShowCreateScenario()
 {
@@ -906,12 +906,12 @@ static const Widget _generate_progress_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _generate_progress_desc = {
+static const WindowDesc _generate_progress_desc(
 	WDP_CENTER, WDP_CENTER, 181, 97, 181, 97,
 	WC_GENERATE_PROGRESS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_generate_progress_widgets,
-};
+	_generate_progress_widgets
+);
 
 struct tp_info {
 	uint percent;

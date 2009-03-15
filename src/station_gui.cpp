@@ -612,12 +612,12 @@ static const Widget _company_stations_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _company_stations_desc = {
+static const WindowDesc _company_stations_desc(
 	WDP_AUTO, WDP_AUTO, 358, 162, 358, 162,
 	WC_STATION_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_company_stations_widgets,
-};
+	_company_stations_widgets
+);
 
 /**
  * Opens window with list of company's stations
@@ -983,12 +983,12 @@ struct StationViewWindow : public Window {
 };
 
 
-static const WindowDesc _station_view_desc = {
+static const WindowDesc _station_view_desc(
 	WDP_AUTO, WDP_AUTO, 249, 110, 249, 110,
 	WC_STATION_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_station_view_widgets,
-};
+	_station_view_widgets
+);
 
 /**
  * Opens StationViewWindow for given station
@@ -1199,12 +1199,12 @@ struct SelectStationWindow : Window {
 	}
 };
 
-static const WindowDesc _select_station_desc = {
+static const WindowDesc _select_station_desc(
 	WDP_AUTO, WDP_AUTO, 200, 92, 200, 182,
 	WC_SELECT_STATION, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	_select_station_widgets,
-};
+	_select_station_widgets
+);
 
 
 /**

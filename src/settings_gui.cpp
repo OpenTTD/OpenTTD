@@ -352,12 +352,12 @@ static const Widget _game_options_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _game_options_desc = {
+static const WindowDesc _game_options_desc(
 	WDP_CENTER, WDP_CENTER, 370, 243, 370, 243,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_game_options_widgets,
-};
+	_game_options_widgets
+);
 
 
 void ShowGameOptions()
@@ -386,12 +386,12 @@ static const Widget _game_difficulty_widgets[] = {
 };
 
 /* Window definition for the game difficulty settings window */
-static const WindowDesc _game_difficulty_desc = {
+static const WindowDesc _game_difficulty_desc(
 	WDP_CENTER, WDP_CENTER, 370, 279, 370, 279,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_game_difficulty_widgets,
-};
+	_game_difficulty_widgets
+);
 
 void SetDifficultyLevel(int mode, DifficultySettings *gm_opt);
 
@@ -1429,12 +1429,12 @@ static const Widget _settings_selection_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _settings_selection_desc = {
+static const WindowDesc _settings_selection_desc(
 	WDP_CENTER, WDP_CENTER, 412, 188, 450, 397,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
-	_settings_selection_widgets,
-};
+	_settings_selection_widgets
+);
 
 void ShowGameSettings()
 {
@@ -1662,12 +1662,12 @@ static const Widget _cust_currency_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _cust_currency_desc = {
+static const WindowDesc _cust_currency_desc(
 	WDP_CENTER, WDP_CENTER, 230, 120, 230, 120,
 	WC_CUSTOM_CURRENCY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_cust_currency_widgets,
-};
+	_cust_currency_widgets
+);
 
 static void ShowCustCurrency()
 {

@@ -52,6 +52,23 @@ bool _scrolling_viewport;
 
 byte _special_mouse_mode;
 
+/** Window description constructor. */
+WindowDesc::WindowDesc(int16 left, int16 top, int16 min_width, int16 min_height, int16 def_width, int16 def_height,
+			WindowClass window_class, WindowClass parent_class, uint32 flags, const Widget *widgets)
+{
+	this->left = left;
+	this->top = top;
+	this->minimum_width = min_width;
+	this->minimum_height = min_height;
+	this->default_width = def_width;
+	this->default_height = def_height;
+	this->cls = window_class;
+	this->parent_cls = parent_class;
+	this->flags = flags;
+	this->widgets = widgets;
+}
+
+
 /**
  * Set the window that has the focus
  * @param w The window to set the focus on

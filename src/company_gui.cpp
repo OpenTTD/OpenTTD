@@ -310,19 +310,19 @@ struct CompanyFinancesWindow : Window {
 	}
 };
 
-static const WindowDesc _company_finances_desc = {
+static const WindowDesc _company_finances_desc(
 	WDP_AUTO, WDP_AUTO, 407, 60 + 10, 407, 60 + 10,
 	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	_company_finances_widgets,
-};
+	_company_finances_widgets
+);
 
-static const WindowDesc _company_finances_small_desc = {
+static const WindowDesc _company_finances_small_desc(
 	WDP_AUTO, WDP_AUTO, 280, 60, 280, 60,
 	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	_company_finances_small_widgets,
-};
+	_company_finances_small_widgets
+);
 
 /**
  * Open the small/large finance window of the company
@@ -626,12 +626,12 @@ static const Widget _select_company_livery_widgets[] = {
 { WIDGETS_END },
 };
 
-static const WindowDesc _select_company_livery_desc = {
+static const WindowDesc _select_company_livery_desc(
 	WDP_AUTO, WDP_AUTO, 400, 49 + 1 * 14, 400, 49 + 1 * 14,
 	WC_COMPANY_COLOUR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_select_company_livery_widgets,
-};
+	_select_company_livery_widgets
+);
 
 /**
  * Draws the face of a company manager's face.
@@ -1093,20 +1093,20 @@ public:
 };
 
 /** normal/simple company manager face selection window description */
-static const WindowDesc _select_company_manager_face_desc = {
+static const WindowDesc _select_company_manager_face_desc(
 	WDP_AUTO, WDP_AUTO, 190, 163, 190, 163,
 	WC_COMPANY_MANAGER_FACE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
-	_select_company_manager_face_widgets,
-};
+	_select_company_manager_face_widgets
+);
 
 /** advanced company manager face selection window description */
-static const WindowDesc _select_company_manager_face_adv_desc = {
+static const WindowDesc _select_company_manager_face_adv_desc(
 	WDP_AUTO, WDP_AUTO, 220, 220, 220, 220,
 	WC_COMPANY_MANAGER_FACE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
-	_select_company_manager_face_adv_widgets,
-};
+	_select_company_manager_face_adv_widgets
+);
 
 /**
  * Open the simple/advanced company manager face selection window
@@ -1456,12 +1456,12 @@ struct CompanyWindow : Window
 	}
 };
 
-static const WindowDesc _company_desc = {
+static const WindowDesc _company_desc(
 	WDP_AUTO, WDP_AUTO, 360, 170, 360, 170,
 	WC_COMPANY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_company_widgets,
-};
+	_company_widgets
+);
 
 void ShowCompany(CompanyID company)
 {
@@ -1515,12 +1515,12 @@ static const Widget _buy_company_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _buy_company_desc = {
+static const WindowDesc _buy_company_desc(
 	153, 171, 334, 137, 334, 137,
 	WC_BUY_COMPANY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_buy_company_widgets,
-};
+	_buy_company_widgets
+);
 
 
 void ShowBuyCompanyDialog(CompanyID company)

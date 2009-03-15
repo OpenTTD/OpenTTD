@@ -111,12 +111,12 @@ static const Widget _waypoint_view_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _waypoint_view_desc = {
+static const WindowDesc _waypoint_view_desc(
 	WDP_AUTO, WDP_AUTO, 260, 118, 260, 118,
 	WC_WAYPOINT_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	_waypoint_view_widgets,
-};
+	_waypoint_view_widgets
+);
 
 void ShowWaypointWindow(const Waypoint *wp)
 {

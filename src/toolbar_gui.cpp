@@ -1180,12 +1180,12 @@ static const Widget _toolb_normal_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _toolb_normal_desc = {
+static const WindowDesc _toolb_normal_desc(
 	0, 0, 0, TBP_BUTTONHEIGHT, 640, TBP_BUTTONHEIGHT,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_NO_FOCUS,
-	_toolb_normal_widgets,
-};
+	_toolb_normal_widgets
+);
 
 
 /* --- Toolbar handling for the scenario editor */
@@ -1433,12 +1433,12 @@ static const Widget _toolb_scen_widgets[] = {
 {WIDGETS_END},
 };
 
-static const WindowDesc _toolb_scen_desc = {
+static const WindowDesc _toolb_scen_desc(
 	0, 0, 130, TBP_BUTTONHEIGHT, 640, TBP_BUTTONHEIGHT,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_NO_FOCUS,
-	_toolb_scen_widgets,
-};
+	_toolb_scen_widgets
+);
 
 /* --- Allocating the toolbar --- */
 

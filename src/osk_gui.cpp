@@ -308,12 +308,12 @@ static const Widget _osk_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _osk_desc = {
+static const WindowDesc _osk_desc(
 	WDP_CENTER, WDP_CENTER, 256, 140, 256, 140,
 	WC_OSK, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_osk_widgets,
-};
+	_osk_widgets
+);
 
 /**
  * Retrieve keyboard layout from language string or (if set) config file.

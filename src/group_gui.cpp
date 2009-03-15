@@ -700,12 +700,12 @@ public:
 };
 
 
-static WindowDesc _group_desc = {
+static WindowDesc _group_desc(
 	WDP_AUTO, WDP_AUTO, 460, 194, 460, 246,
 	WC_INVALID, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_group_widgets,
-};
+	_group_widgets
+);
 
 void ShowCompanyGroup(CompanyID company, VehicleType vehicle_type)
 {

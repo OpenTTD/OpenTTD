@@ -1087,12 +1087,12 @@ struct BuildVehicleWindow : Window {
 	}
 };
 
-static const WindowDesc _build_vehicle_desc = {
+static const WindowDesc _build_vehicle_desc(
 	WDP_AUTO, WDP_AUTO, 240, 174, 240, 256,
 	WC_BUILD_VEHICLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	_build_vehicle_widgets,
-};
+	_build_vehicle_widgets
+);
 
 void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 {

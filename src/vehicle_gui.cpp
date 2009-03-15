@@ -412,12 +412,12 @@ static const Widget _vehicle_refit_widgets[] = {
 	{   WIDGETS_END},
 };
 
-static const WindowDesc _vehicle_refit_desc = {
+static const WindowDesc _vehicle_refit_desc(
 	WDP_AUTO, WDP_AUTO, 240, 174, 240, 174,
 	WC_VEHICLE_REFIT, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	_vehicle_refit_widgets,
-};
+	_vehicle_refit_widgets
+);
 
 /** Show the refit window for a vehicle
  * @param *v The vehicle to show the refit window for
@@ -1134,12 +1134,12 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 	}
 };
 
-static WindowDesc _vehicle_list_desc = {
+static WindowDesc _vehicle_list_desc(
 	WDP_AUTO, WDP_AUTO, 260, 194, 260, 246,
 	WC_INVALID, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_vehicle_list_widgets,
-};
+	_vehicle_list_widgets
+);
 
 static void ShowVehicleListWindowLocal(CompanyID company, uint16 VLW_flag, VehicleType vehicle_type, uint16 unique_number)
 {
@@ -1544,12 +1544,12 @@ struct VehicleDetailsWindow : Window {
 };
 
 /** Vehicle details window descriptor. */
-static const WindowDesc _vehicle_details_desc = {
+static const WindowDesc _vehicle_details_desc(
 	WDP_AUTO, WDP_AUTO, 405, 113, 405, 113,
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_vehicle_details_widgets,
-};
+	_vehicle_details_widgets
+);
 
 /** Shows the vehicle details window of the given vehicle. */
 static void ShowVehicleDetailsWindow(const Vehicle *v)
@@ -1585,22 +1585,22 @@ static const Widget _vehicle_view_widgets[] = {
 
 
 /** Vehicle view window descriptor for all vehicles but trains. */
-static const WindowDesc _vehicle_view_desc = {
+static const WindowDesc _vehicle_view_desc(
 	WDP_AUTO, WDP_AUTO, 250, 116, 250, 116,
 	WC_VEHICLE_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_vehicle_view_widgets,
-};
+	_vehicle_view_widgets
+);
 
 /** Vehicle view window descriptor for trains. Only minimum_height and
  *  default_height are different for train view.
  */
-static const WindowDesc _train_view_desc = {
+static const WindowDesc _train_view_desc(
 	WDP_AUTO, WDP_AUTO, 250, 134, 250, 134,
 	WC_VEHICLE_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_vehicle_view_widgets,
-};
+	_vehicle_view_widgets
+);
 
 
 /* Just to make sure, nobody has changed the vehicle type constants, as we are

@@ -85,12 +85,12 @@ static const Widget _build_industry_widgets[] = {
 };
 
 /** Window definition of the dynamic place industries gui */
-static const WindowDesc _build_industry_desc = {
+static const WindowDesc _build_industry_desc(
 	WDP_AUTO, WDP_AUTO, 170, 212, 170, 212,
 	WC_BUILD_INDUSTRY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	_build_industry_widgets,
-};
+	_build_industry_widgets
+);
 
 class BuildIndustryWindow : public Window {
 	int selected_index;                         ///< index of the element in the matrix
@@ -673,12 +673,12 @@ static const Widget _industry_view_widgets[] = {
 };
 
 /** Window definition of the view industy gui */
-static const WindowDesc _industry_view_desc = {
+static const WindowDesc _industry_view_desc(
 	WDP_AUTO, WDP_AUTO, 260, 120, 260, 120,
 	WC_INDUSTRY_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_industry_view_widgets,
-};
+	_industry_view_widgets
+);
 
 void ShowIndustryViewWindow(int industry)
 {
@@ -985,12 +985,12 @@ const StringID IndustryDirectoryWindow::sorter_names[] = {
 
 
 /** Window definition of the industy directory gui */
-static const WindowDesc _industry_directory_desc = {
+static const WindowDesc _industry_directory_desc(
 	WDP_AUTO, WDP_AUTO, 428, 190, 428, 190,
 	WC_INDUSTRY_DIRECTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_industry_directory_widgets,
-};
+	_industry_directory_widgets
+);
 
 void ShowIndustryDirectory()
 {

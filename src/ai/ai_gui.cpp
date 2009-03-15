@@ -195,12 +195,12 @@ static const Widget _ai_list_widgets[] = {
 };
 
 /* Window definition for the ai list window. */
-static const WindowDesc _ai_list_desc = {
+static const WindowDesc _ai_list_desc(
 	WDP_CENTER, WDP_CENTER, 200, 234, 200, 234,
 	WC_AI_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_ai_list_widgets
-};
+);
 
 void ShowAIListWindow(CompanyID slot)
 {
@@ -377,12 +377,12 @@ static const Widget _ai_settings_widgets[] = {
 };
 
 /* Window definition for the AI settings window. */
-static const WindowDesc _ai_settings_desc = {
+static const WindowDesc _ai_settings_desc(
 	WDP_CENTER, WDP_CENTER, 200, 208, 500, 208,
 	WC_AI_SETTINGS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_ai_settings_widgets
-};
+);
 
 void ShowAISettingsWindow(CompanyID slot)
 {
@@ -405,12 +405,12 @@ static const Widget _ai_config_widgets[] = {
 };
 
 /* Window definition for the configure AI window. */
-static const WindowDesc _ai_config_desc = {
+static const WindowDesc _ai_config_desc(
 	WDP_CENTER, WDP_CENTER, 300, 172, 300, 172,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_ai_config_widgets
-};
+);
 
 /**
  * Window to configure which AIs will start.
@@ -768,12 +768,12 @@ static const Widget _ai_debug_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _ai_debug_desc = {
+static const WindowDesc _ai_debug_desc(
 	WDP_AUTO, WDP_AUTO, 299, 241, 299, 241,
 	WC_AI_DEBUG, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_ai_debug_widgets
-};
+);
 
 void ShowAIDebugWindow(CompanyID show_company)
 {

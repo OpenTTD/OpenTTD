@@ -138,12 +138,12 @@ static const Widget _air_toolbar_widgets[] = {
 };
 
 
-static const WindowDesc _air_toolbar_desc = {
+static const WindowDesc _air_toolbar_desc(
 	WDP_ALIGN_TBR, 22, 64, 36, 64, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	_air_toolbar_widgets,
-};
+	_air_toolbar_widgets
+);
 
 void ShowBuildAirToolbar()
 {
@@ -299,12 +299,12 @@ static const Widget _build_airport_picker_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _build_airport_desc = {
+static const WindowDesc _build_airport_desc(
 	WDP_AUTO, WDP_AUTO, 148, 240, 148, 240,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_build_airport_picker_widgets,
-};
+	_build_airport_picker_widgets
+);
 
 static void ShowBuildAirportPicker(Window *parent)
 {

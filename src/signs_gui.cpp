@@ -151,12 +151,12 @@ static const Widget _sign_list_widget[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _sign_list_desc = {
+static const WindowDesc _sign_list_desc(
 	WDP_AUTO, WDP_AUTO, 358, 138, 358, 138,
 	WC_SIGN_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_sign_list_widget,
-};
+	_sign_list_widget
+);
 
 
 void ShowSignList()
@@ -331,12 +331,12 @@ static const Widget _query_sign_edit_widgets[] = {
 { WIDGETS_END },
 };
 
-static const WindowDesc _query_sign_edit_desc = {
+static const WindowDesc _query_sign_edit_desc(
 	190, 170, 260, 42, 260, 42,
 	WC_QUERY_STRING, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_query_sign_edit_widgets,
-};
+	_query_sign_edit_widgets
+);
 
 void HandleClickOnSign(const Sign *si)
 {

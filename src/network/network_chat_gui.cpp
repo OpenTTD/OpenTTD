@@ -501,12 +501,12 @@ static const Widget _chat_window_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _chat_window_desc = {
+static const WindowDesc _chat_window_desc(
 	WDP_CENTER, -26, 320, 14, 640, 14, // x, y, width, height
 	WC_SEND_NETWORK_MSG, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
-	_chat_window_widgets,
-};
+	_chat_window_widgets
+);
 
 void ShowNetworkChatQueryWindow(DestType type, int dest)
 {

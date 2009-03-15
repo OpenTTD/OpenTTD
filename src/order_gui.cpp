@@ -1181,12 +1181,12 @@ static const Widget _orders_train_widgets[] = {
 	{   WIDGETS_END},
 };
 
-static const WindowDesc _orders_train_desc = {
+static const WindowDesc _orders_train_desc(
 	WDP_AUTO, WDP_AUTO, 386, 100, 386, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_orders_train_widgets,
-};
+	_orders_train_widgets
+);
 
 /**
  * Widget definition for "your" orders (!train)
@@ -1226,12 +1226,12 @@ static const Widget _orders_widgets[] = {
 	{   WIDGETS_END},
 };
 
-static const WindowDesc _orders_desc = {
+static const WindowDesc _orders_desc(
 	WDP_AUTO, WDP_AUTO, 386, 100, 386, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_orders_widgets,
-};
+	_orders_widgets
+);
 
 /**
  * Widget definition for competitor orders
@@ -1271,12 +1271,12 @@ static const Widget _other_orders_widgets[] = {
 	{   WIDGETS_END},
 };
 
-static const WindowDesc _other_orders_desc = {
+static const WindowDesc _other_orders_desc(
 	WDP_AUTO, WDP_AUTO, 386, 88, 386, 88,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	_other_orders_widgets,
-};
+	_other_orders_widgets
+);
 
 void ShowOrdersWindow(const Vehicle *v)
 {

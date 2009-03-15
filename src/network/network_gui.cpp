@@ -811,12 +811,12 @@ static const Widget _network_game_window_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _network_game_window_desc = {
+static const WindowDesc _network_game_window_desc(
 	WDP_CENTER, WDP_CENTER, 450, 264, 780, 264,
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
-	_network_game_window_widgets,
-};
+	_network_game_window_widgets
+);
 
 void ShowNetworkGameWindow()
 {
@@ -1135,12 +1135,12 @@ static const Widget _network_start_server_window_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _network_start_server_window_desc = {
+static const WindowDesc _network_start_server_window_desc(
 	WDP_CENTER, WDP_CENTER, 420, 244, 420, 244,
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_network_start_server_window_widgets,
-};
+	_network_start_server_window_widgets
+);
 
 static void ShowNetworkStartServerWindow()
 {
@@ -1361,12 +1361,12 @@ static const Widget _network_lobby_window_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _network_lobby_window_desc = {
+static const WindowDesc _network_lobby_window_desc(
 	WDP_CENTER, WDP_CENTER, 420, 235, 420, 235,
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_network_lobby_window_widgets,
-};
+	_network_lobby_window_widgets
+);
 
 /* Show the networklobbywindow with the selected server
  * @param ngl Selected game pointer which is passed to the new window */
@@ -1422,12 +1422,12 @@ static const Widget _client_list_popup_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _client_list_desc = {
+static const WindowDesc _client_list_desc(
 	WDP_AUTO, WDP_AUTO, 250, 1, 250, 1,
 	WC_CLIENT_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
-	_client_list_widgets,
-};
+	_client_list_widgets
+);
 
 /* Finds the Xth client-info that is active */
 static const NetworkClientInfo *NetworkFindClientInfo(byte client_no)
@@ -1847,12 +1847,12 @@ static const Widget _network_join_status_window_widget[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _network_join_status_window_desc = {
+static const WindowDesc _network_join_status_window_desc(
 	WDP_CENTER, WDP_CENTER, 250, 85, 250, 85,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_MODAL,
-	_network_join_status_window_widget,
-};
+	_network_join_status_window_widget
+);
 
 void ShowJoinStatusWindow()
 {
@@ -1960,12 +1960,12 @@ static const Widget _ncp_window_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _ncp_window_desc = {
+static const WindowDesc _ncp_window_desc(
 	WDP_AUTO, WDP_AUTO, 300, 63, 300, 63,
 	WC_COMPANY_PASSWORD_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	_ncp_window_widgets,
-};
+	_ncp_window_widgets
+);
 
 void ShowNetworkCompanyPasswordWindow(Window *parent)
 {

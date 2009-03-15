@@ -28,12 +28,12 @@ static const Widget _network_content_download_status_window_widget[] = {
 };
 
 /** Window description for the download window */
-static const WindowDesc _network_content_download_status_window_desc = {
+static const WindowDesc _network_content_download_status_window_desc(
 	WDP_CENTER, WDP_CENTER, 350, 85, 350, 85,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_MODAL,
-	_network_content_download_status_window_widget,
-};
+	_network_content_download_status_window_widget
+);
 
 /** Window for showing the download status of content */
 struct NetworkContentDownloadStatusWindow : public Window, ContentCallback {
@@ -760,12 +760,12 @@ static const Widget _network_content_list_widgets[] = {
 };
 
 /** Window description of the content list */
-static const WindowDesc _network_content_list_desc = {
+static const WindowDesc _network_content_list_desc(
 	WDP_CENTER, WDP_CENTER, 450, 278, 630, 460,
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
-	_network_content_list_widgets,
-};
+	_network_content_list_widgets
+);
 
 /**
  * Show the content list window with a given set of content

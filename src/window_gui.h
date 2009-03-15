@@ -38,7 +38,11 @@ extern Window *_focused_window;
 /**
  * High level window description
  */
-struct WindowDesc {
+struct WindowDesc : ZeroedMemoryAllocator {
+
+	WindowDesc(int16 left, int16 top, int16 min_width, int16 min_height, int16 def_width, int16 def_height,
+			WindowClass window_class, WindowClass parent_class, uint32 flags, const Widget *widgets);
+
 	int16 left;             ///< Prefered x position of left edge of the window, @see WindowDefaultPosition()
 	int16 top;              ///< Prefered y position of the top of the window, @see WindowDefaultPosition()
 	int16 minimum_width;    ///< Minimal width of the window

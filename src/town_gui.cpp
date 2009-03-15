@@ -205,12 +205,12 @@ public:
 	}
 };
 
-static const WindowDesc _town_authority_desc = {
+static const WindowDesc _town_authority_desc(
 	WDP_AUTO, WDP_AUTO, 317, 222, 317, 222,
 	WC_TOWN_AUTHORITY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_town_authority_widgets,
-};
+	_town_authority_widgets
+);
 
 static void ShowTownAuthorityWindow(uint town)
 {
@@ -432,12 +432,12 @@ static const Widget _town_view_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _town_view_desc = {
+static const WindowDesc _town_view_desc(
 	WDP_AUTO, WDP_AUTO, 260, TownViewWindow::TVW_HEIGHT_NORMAL, 260, TownViewWindow::TVW_HEIGHT_NORMAL,
 	WC_TOWN_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	_town_view_widgets,
-};
+	_town_view_widgets
+);
 
 void ShowTownViewWindow(TownID town)
 {
@@ -649,12 +649,12 @@ GUITownList::SortFunction * const TownDirectoryWindow::sorter_funcs[] = {
 	&TownPopulationSorter,
 };
 
-static const WindowDesc _town_directory_desc = {
+static const WindowDesc _town_directory_desc(
 	WDP_AUTO, WDP_AUTO, 208, 202, 208, 202,
 	WC_TOWN_DIRECTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_town_directory_widgets,
-};
+	_town_directory_widgets
+);
 
 void ShowTownDirectory()
 {
@@ -838,12 +838,12 @@ TownSize FoundTownWindow::town_size = TS_MEDIUM; // select medium-sized towns pe
 bool FoundTownWindow::city;
 TownLayout FoundTownWindow::town_layout;
 
-static const WindowDesc _found_town_desc = {
+static const WindowDesc _found_town_desc(
 	WDP_AUTO, WDP_AUTO, 160, 162, 160, 162,
 	WC_FOUND_TOWN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	_found_town_widgets,
-};
+	_found_town_widgets
+);
 
 void ShowBuildTownWindow()
 {

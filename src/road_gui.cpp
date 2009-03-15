@@ -644,12 +644,12 @@ static const Widget _build_road_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _build_road_desc = {
+static const WindowDesc _build_road_desc(
 	WDP_ALIGN_TBR, 22, 263, 36, 263, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	_build_road_widgets,
-};
+	_build_road_widgets
+);
 
 /** Widget definition of the build tram toolbar */
 static const Widget _build_tramway_widgets[] = {
@@ -672,12 +672,12 @@ static const Widget _build_tramway_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _build_tramway_desc = {
+static const WindowDesc _build_tramway_desc(
 	WDP_ALIGN_TBR, 22, 241, 36, 241, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	_build_tramway_widgets,
-};
+	_build_tramway_widgets
+);
 
 void ShowBuildRoadToolbar(RoadType roadtype)
 {
@@ -708,12 +708,12 @@ static const Widget _build_road_scen_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _build_road_scen_desc = {
+static const WindowDesc _build_road_scen_desc(
 	WDP_AUTO, WDP_AUTO, 197, 36, 197, 36,
 	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	_build_road_scen_widgets,
-};
+	_build_road_scen_widgets
+);
 
 void ShowBuildRoadScenToolbar()
 {
@@ -787,12 +787,12 @@ static const Widget _build_road_depot_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _build_road_depot_desc = {
+static const WindowDesc _build_road_depot_desc(
 	WDP_AUTO, WDP_AUTO, 140, 122, 140, 122,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_build_road_depot_widgets,
-};
+	_build_road_depot_widgets
+);
 
 static void ShowRoadDepotPicker(Window *parent)
 {
@@ -935,12 +935,12 @@ static const Widget _rv_station_picker_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _rv_station_picker_desc = {
+static const WindowDesc _rv_station_picker_desc(
 	WDP_AUTO, WDP_AUTO, 207, 177, 207, 177,
 	WC_BUS_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_rv_station_picker_widgets,
-};
+	_rv_station_picker_widgets
+);
 
 static void ShowRVStationPicker(Window *parent, RoadStopType rs)
 {

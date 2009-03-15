@@ -354,12 +354,12 @@ static const Widget _timetable_widgets[] = {
 	{    WIDGETS_END }
 };
 
-static const WindowDesc _timetable_desc = {
+static const WindowDesc _timetable_desc(
 	WDP_AUTO, WDP_AUTO, 400, 130, 400, 130,
 	WC_VEHICLE_TIMETABLE, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	_timetable_widgets,
-};
+	_timetable_widgets
+);
 
 void ShowTimetableWindow(const Vehicle *v)
 {
