@@ -5811,7 +5811,7 @@
 	   GetStockpiledCargo():      0
   Industry 1
     IsValidIndustry(): true
-    GetName():         Sadtown Forest
+    GetName():         Satown Forest
     GetLocation():     45122
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  72
@@ -5819,7 +5819,7 @@
 	   GetStockpiledCargo():      -1
   Industry 2
     IsValidIndustry(): true
-    GetName():         Fudinghattan Forest
+    GetName():         Fudhattan Forest
     GetLocation():     41929
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  108
@@ -5827,7 +5827,7 @@
 	   GetStockpiledCargo():      -1
   Industry 3
     IsValidIndustry(): true
-    GetName():         Benville Forest
+    GetName():         Beningville Forest
     GetLocation():     44640
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  80
@@ -5835,7 +5835,7 @@
 	   GetStockpiledCargo():      -1
   Industry 4
     IsValidIndustry(): true
-    GetName():         Netfingbridge Forest
+    GetName():         Nefingbridge Forest
     GetLocation():     8793
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  135
@@ -5843,7 +5843,7 @@
 	   GetStockpiledCargo():      -1
   Industry 5
     IsValidIndustry(): true
-    GetName():         Hutfingford Forest
+    GetName():         Hutford Forest
     GetLocation():     55429
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  99
@@ -5859,7 +5859,7 @@
 	   GetStockpiledCargo():      -1
   Industry 7
     IsValidIndustry(): true
-    GetName():         Tondston Forest
+    GetName():         Tonston Forest
     GetLocation():     27609
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  115
@@ -5878,7 +5878,7 @@
 	   GetStockpiledCargo():      -1
   Industry 9
     IsValidIndustry(): true
-    GetName():         Hutfingford Sawmill
+    GetName():         Hutford Sawmill
     GetLocation():     60050
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  -1
@@ -5889,7 +5889,7 @@
 	   GetStockpiledCargo():      -1
   Industry 10
     IsValidIndustry(): true
-    GetName():         Naborough Sawmill
+    GetName():         Natborough Sawmill
     GetLocation():     54184
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  -1
@@ -5911,7 +5911,7 @@
 	   GetStockpiledCargo():      -1
   Industry 12
     IsValidIndustry(): true
-    GetName():         Fraston Sawmill
+    GetName():         Fratston Sawmill
     GetLocation():     51419
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  -1
@@ -5968,7 +5968,7 @@
 	   GetStockpiledCargo():      -1
   Industry 18
     IsValidIndustry(): true
-    GetName():         Little Fruford Coal Mine
+    GetName():         Little Frutford Coal Mine
     GetLocation():     23682
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  126
@@ -5976,7 +5976,7 @@
 	   GetStockpiledCargo():      -1
   Industry 19
     IsValidIndustry(): true
-    GetName():         Hutfingford Coal Mine
+    GetName():         Hutford Coal Mine
     GetLocation():     57429
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  99
@@ -5984,7 +5984,7 @@
 	   GetStockpiledCargo():      -1
   Industry 20
     IsValidIndustry(): true
-    GetName():         Mendingston Coal Mine
+    GetName():         Mendston Coal Mine
     GetLocation():     8562
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  171
@@ -5992,7 +5992,7 @@
 	   GetStockpiledCargo():      -1
   Industry 21
     IsValidIndustry(): true
-    GetName():         Tondston Coal Mine
+    GetName():         Tonston Coal Mine
     GetLocation():     29147
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  117
@@ -6000,7 +6000,7 @@
 	   GetStockpiledCargo():      -1
   Industry 22
     IsValidIndustry(): true
-    GetName():         Quartfingfield Coal Mine
+    GetName():         Quarfingfield Coal Mine
     GetLocation():     27822
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  153
@@ -6024,7 +6024,7 @@
 	   GetStockpiledCargo():      -1
   Industry 25
     IsValidIndustry(): true
-    GetName():         Sadtown Power Station
+    GetName():         Satown Power Station
     GetLocation():     48182
     IsCargoAccepted(): true
 	   GetLastMonthProduction():  -1
@@ -6040,7 +6040,7 @@
 	   GetStockpiledCargo():      0
   Industry 27
     IsValidIndustry(): true
-    GetName():         Quartfingfield Power Station
+    GetName():         Quarfingfield Power Station
     GetLocation():     23714
     IsCargoAccepted(): true
 	   GetLastMonthProduction():  -1
@@ -6056,7 +6056,7 @@
 	   GetStockpiledCargo():      0
   Industry 29
     IsValidIndustry(): true
-    GetName():         Nuntfingburg Power Station
+    GetName():         Nuntburg Power Station
     GetLocation():     6685
     IsCargoAccepted(): true
 	   GetLastMonthProduction():  -1
@@ -6064,7 +6064,7 @@
 	   GetStockpiledCargo():      0
   Industry 30
     IsValidIndustry(): true
-    GetName():         Bedburg Power Station
+    GetName():         Beburg Power Station
     GetLocation():     29022
     IsCargoAccepted(): true
 	   GetLastMonthProduction():  -1
@@ -6072,7 +6072,7 @@
 	   GetStockpiledCargo():      0
   Industry 31
     IsValidIndustry(): true
-    GetName():         Benville Power Station
+    GetName():         Beningville Power Station
     GetLocation():     44160
     IsCargoAccepted(): true
 	   GetLastMonthProduction():  -1
@@ -6088,7 +6088,7 @@
 	   GetStockpiledCargo():      -1
   Industry 33
     IsValidIndustry(): true
-    GetName():         Nuntfingburg Oil Wells
+    GetName():         Nuntburg Oil Wells
     GetLocation():     5659
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  40
@@ -6096,7 +6096,7 @@
 	   GetStockpiledCargo():      -1
   Industry 34
     IsValidIndustry(): true
-    GetName():         Benville Oil Wells
+    GetName():         Beningville Oil Wells
     GetLocation():     36728
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  64
@@ -6120,7 +6120,7 @@
 	   GetStockpiledCargo():      -1
   Industry 37
     IsValidIndustry(): true
-    GetName():         Tondston Oil Wells
+    GetName():         Tonston Oil Wells
     GetLocation():     34237
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  108
@@ -6136,7 +6136,7 @@
 	   GetStockpiledCargo():      -1
   Industry 39
     IsValidIndustry(): true
-    GetName():         Tondston Iron Ore Mine
+    GetName():         Tonston Iron Ore Mine
     GetLocation():     25545
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  30
@@ -6144,7 +6144,7 @@
 	   GetStockpiledCargo():      -1
   Industry 40
     IsValidIndustry(): true
-    GetName():         Fudinghattan Iron Ore Mine
+    GetName():         Fudhattan Iron Ore Mine
     GetLocation():     47838
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  72
@@ -6152,7 +6152,7 @@
 	   GetStockpiledCargo():      -1
   Industry 41
     IsValidIndustry(): true
-    GetName():         Nuntfingburg Iron Ore Mine
+    GetName():         Nuntburg Iron Ore Mine
     GetLocation():     8763
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  72
@@ -6160,7 +6160,7 @@
 	   GetStockpiledCargo():      -1
   Industry 42
     IsValidIndustry(): true
-    GetName():         Lardborough Iron Ore Mine
+    GetName():         Larborough Iron Ore Mine
     GetLocation():     60866
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  81
@@ -6176,7 +6176,7 @@
 	   GetStockpiledCargo():      -1
   Industry 44
     IsValidIndustry(): true
-    GetName():         Chentfingbourne Iron Ore Mine
+    GetName():         Chenfingbourne Iron Ore Mine
     GetLocation():     19529
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  135
@@ -6184,7 +6184,7 @@
 	   GetStockpiledCargo():      -1
   Industry 45
     IsValidIndustry(): true
-    GetName():         Naborough Farm
+    GetName():         Natborough Farm
     GetLocation():     52931
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  81
@@ -6195,7 +6195,7 @@
 	   GetStockpiledCargo():      -1
   Industry 46
     IsValidIndustry(): true
-    GetName():         Lardborough Farm
+    GetName():         Larborough Farm
     GetLocation():     59604
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  81
@@ -6206,7 +6206,7 @@
 	   GetStockpiledCargo():      -1
   Industry 47
     IsValidIndustry(): true
-    GetName():         Chentfingbourne Farm
+    GetName():         Chenfingbourne Farm
     GetLocation():     24366
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  63
@@ -6217,7 +6217,7 @@
 	   GetStockpiledCargo():      -1
   Industry 48
     IsValidIndustry(): true
-    GetName():         Wrundtown Farm
+    GetName():         Wruntown Farm
     GetLocation():     36847
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  72
@@ -6228,7 +6228,7 @@
 	   GetStockpiledCargo():      -1
   Industry 49
     IsValidIndustry(): true
-    GetName():         Little Fruford Farm
+    GetName():         Little Frutford Farm
     GetLocation():     28287
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  90
@@ -6239,7 +6239,7 @@
 	   GetStockpiledCargo():      -1
   Industry 50
     IsValidIndustry(): true
-    GetName():         Hutfingford Farm
+    GetName():         Hutford Farm
     GetLocation():     57432
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  117
@@ -6250,7 +6250,7 @@
 	   GetStockpiledCargo():      -1
   Industry 51
     IsValidIndustry(): true
-    GetName():         Tondston Farm
+    GetName():         Tonston Farm
     GetLocation():     23519
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  81
@@ -6261,7 +6261,7 @@
 	   GetStockpiledCargo():      -1
   Industry 52
     IsValidIndustry(): true
-    GetName():         Nuntfingburg Farm
+    GetName():         Nuntburg Farm
     GetLocation():     10773
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  126
@@ -6272,7 +6272,7 @@
 	   GetStockpiledCargo():      -1
   Industry 53
     IsValidIndustry(): true
-    GetName():         Sadtown Farm
+    GetName():         Satown Farm
     GetLocation():     48206
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  40
@@ -6283,7 +6283,7 @@
 	   GetStockpiledCargo():      -1
   Industry 54
     IsValidIndustry(): true
-    GetName():         Quartfingfield Farm
+    GetName():         Quarfingfield Farm
     GetLocation():     24005
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  72
@@ -6294,7 +6294,7 @@
 	   GetStockpiledCargo():      -1
   Industry 55
     IsValidIndustry(): true
-    GetName():         Little Fruford Steel Mill
+    GetName():         Little Frutford Steel Mill
     GetLocation():     21107
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  0
@@ -6305,7 +6305,7 @@
 	   GetStockpiledCargo():      0
   Industry 56
     IsValidIndustry(): true
-    GetName():         Quartfingfield Steel Mill
+    GetName():         Quarfingfield Steel Mill
     GetLocation():     23727
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  0
@@ -6316,7 +6316,7 @@
 	   GetStockpiledCargo():      0
   Industry 57
     IsValidIndustry(): true
-    GetName():         Bedburg Steel Mill
+    GetName():         Beburg Steel Mill
     GetLocation():     41813
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  0
@@ -6338,7 +6338,7 @@
 	   GetStockpiledCargo():      0
   Industry 59
     IsValidIndustry(): true
-    GetName():         Lardborough Steel Mill
+    GetName():         Larborough Steel Mill
     GetLocation():     59867
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  0
@@ -6349,7 +6349,7 @@
 	   GetStockpiledCargo():      0
   Industry 60
     IsValidIndustry(): true
-    GetName():         Sadtown Steel Mill
+    GetName():         Satown Steel Mill
     GetLocation():     55360
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  0
@@ -6360,7 +6360,7 @@
 	   GetStockpiledCargo():      0
   Industry 61
     IsValidIndustry(): true
-    GetName():         Fraston Steel Mill
+    GetName():         Fratston Steel Mill
     GetLocation():     52953
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  0
@@ -6371,7 +6371,7 @@
 	   GetStockpiledCargo():      0
   Industry 62
     IsValidIndustry(): true
-    GetName():         Chentfingbourne Factory
+    GetName():         Chenfingbourne Factory
     GetLocation():     24893
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  -1
@@ -6405,7 +6405,7 @@
 	   GetStockpiledCargo():      0
   Industry 64
     IsValidIndustry(): true
-    GetName():         Fudinghattan Factory
+    GetName():         Fudhattan Factory
     GetLocation():     46278
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  -1
@@ -6490,7 +6490,7 @@
 	   GetStockpiledCargo():      0
   Industry 69
     IsValidIndustry(): true
-    GetName():         Wrundtown Oil Refinery
+    GetName():         Wruntown Oil Refinery
     GetLocation():     39663
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  0
@@ -6501,7 +6501,7 @@
 	   GetStockpiledCargo():      0
   Industry 70
     IsValidIndustry(): true
-    GetName():         Mendingston Power Station
+    GetName():         Mendston Power Station
     GetLocation():     6498
     IsCargoAccepted(): true
 	   GetLastMonthProduction():  -1
@@ -7212,7 +7212,7 @@
 --Station--
   IsValidStation(0):        true
   IsValidStation(1000):     false
-  GetName(0):               Benville Airport
+  GetName(0):               Beningville Airport
   SetName(0):               true
   GetName(0):               Look, a station
   GetLocation(1):           29253
@@ -7791,7 +7791,7 @@
     GetRating():     0
   Town 2
     IsValidTown():   true
-    GetName():       Tondston
+    GetName():       Tonston
     GetPopulation(): 380
     GetLocation():   28365
     GetHouseCount(): 19
@@ -7805,14 +7805,14 @@
     GetRating():     0
   Town 4
     IsValidTown():   true
-    GetName():       Wrundtown
+    GetName():       Wruntown
     GetPopulation(): 426
     GetLocation():   41450
     GetHouseCount(): 18
     GetRating():     0
   Town 5
     IsValidTown():   true
-    GetName():       Fraston
+    GetName():       Fratston
     GetPopulation(): 205
     GetLocation():   55007
     GetHouseCount(): 11
@@ -7826,14 +7826,14 @@
     GetRating():     0
   Town 7
     IsValidTown():   true
-    GetName():       Hutfingford
+    GetName():       Hutford
     GetPopulation(): 950
     GetLocation():   59234
     GetHouseCount(): 33
     GetRating():     0
   Town 8
     IsValidTown():   true
-    GetName():       Sadtown
+    GetName():       Satown
     GetPopulation(): 358
     GetLocation():   51267
     GetHouseCount(): 20
@@ -7847,7 +7847,7 @@
     GetRating():     0
   Town 10
     IsValidTown():   true
-    GetName():       Nuntfingburg
+    GetName():       Nuntburg
     GetPopulation(): 737
     GetLocation():   6446
     GetHouseCount(): 26
@@ -7861,7 +7861,7 @@
     GetRating():     0
   Town 12
     IsValidTown():   true
-    GetName():       Ginborough
+    GetName():       Gintborough
     GetPopulation(): 982
     GetLocation():   32740
     GetHouseCount(): 28
@@ -7882,7 +7882,7 @@
     GetRating():     0
   Town 15
     IsValidTown():   true
-    GetName():       Benville
+    GetName():       Beningville
     GetPopulation(): 807
     GetLocation():   42338
     GetHouseCount(): 33
@@ -7896,28 +7896,28 @@
     GetRating():     0
   Town 17
     IsValidTown():   true
-    GetName():       Quartfingfield
+    GetName():       Quarfingfield
     GetPopulation(): 218
     GetLocation():   24252
     GetHouseCount(): 13
     GetRating():     0
   Town 18
     IsValidTown():   true
-    GetName():       Netfingbridge
+    GetName():       Nefingbridge
     GetPopulation(): 262
     GetLocation():   10574
     GetHouseCount(): 13
     GetRating():     0
   Town 19
     IsValidTown():   true
-    GetName():       Mendingston
+    GetName():       Mendston
     GetPopulation(): 243
     GetLocation():   6511
     GetHouseCount(): 14
     GetRating():     0
   Town 20
     IsValidTown():   true
-    GetName():       Chentfingbourne
+    GetName():       Chenfingbourne
     GetPopulation(): 437
     GetLocation():   22585
     GetHouseCount(): 15
@@ -7931,21 +7931,21 @@
     GetRating():     0
   Town 22
     IsValidTown():   true
-    GetName():       Naborough
+    GetName():       Natborough
     GetPopulation(): 221
     GetLocation():   51891
     GetHouseCount(): 12
     GetRating():     0
   Town 23
     IsValidTown():   true
-    GetName():       Lardborough
+    GetName():       Larborough
     GetPopulation(): 652
     GetLocation():   59622
     GetHouseCount(): 27
     GetRating():     0
   Town 24
     IsValidTown():   true
-    GetName():       Little Fruford
+    GetName():       Little Frutford
     GetPopulation(): 668
     GetLocation():   19596
     GetHouseCount(): 34
@@ -7959,14 +7959,14 @@
     GetRating():     0
   Town 26
     IsValidTown():   true
-    GetName():       Bedburg
+    GetName():       Beburg
     GetPopulation(): 362
     GetLocation():   39505
     GetHouseCount(): 18
     GetRating():     0
   Town 27
     IsValidTown():   true
-    GetName():       Fudinghattan
+    GetName():       Fudhattan
     GetPopulation(): 390
     GetLocation():   45525
     GetHouseCount(): 19
