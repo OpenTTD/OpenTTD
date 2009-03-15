@@ -675,6 +675,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Nelze vy
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}... na mapě už není místo.
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Zvetšit velikost města
 STR_023C_EXPAND                                                 :{BLACK}Rozšířit
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Město nebude stavět silnice. Můžete to změnit přes Pokročilé nastavení->Ekonomika->Města.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Náhodné město
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Vybuduj město na nahodné pozici
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Nemůžeš zde stavět {STRING} ...
@@ -713,18 +714,18 @@ STR_02A1_SMALL                                                  :{BLACK}Malé
 STR_02A2_MEDIUM                                                 :{BLACK}Středni
 STR_02A3_LARGE                                                  :{BLACK}Velké
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Náhodná
-STR_FOUND_TOWN_CITY                                             :{BLACK}Město
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Velkoměsta rostou rychleji než běžná města{}V závislosti na nastavení jsou při založení větší
-STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Zvol velikost města:
+STR_FOUND_TOWN_CITY                                             :{BLACK}Velkoměsto
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Velkoměsta rostou rychleji než běžná města. V závislosti na nastavení jsou při založení větší
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Zvolte velikost města
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Velikost města:
 
 STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Silniční síť města:
 STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Zvolte rozvržení silniční sítě v tomto městě
 STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Původní
 STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Lepší silnice
-STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}mřížka 2x2
-STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}mřížka 3x3
-STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Náhodné
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}Mřížka 2x2
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}Mřížka 3x3
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Náhodná
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Ukázat poslední zprávu nebo článek
@@ -734,7 +735,6 @@ STR_FULL                                                        :Plná
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Seznam měst
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Vlastní
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1014,8 +1014,10 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Nejedno
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Pro simulaci těžkých vlaků vynásobit hmotnost nákladu: {ORANGE}{STRING}x
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Činitel rychlosti letadel: {ORANGE}1/{STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Stavba průjezdných zastávek na obecních silnicích: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Stavba průjezdných zastávek na silnicích vlastněných konkurencí: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Povolit stavění přilehlých stanic: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Více grafických setů s vozidly vedle sebe: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Toto nastavení nemůže být změněno, když jsou ve hře již nějaká vozidla.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Malá letiště se budou moci stále stavět: {ORANGE}{STRING}
 
@@ -1263,6 +1265,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Zde nelz
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Budovat koleje použitím režimu Autokoleje
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}... v tomto scénáři není ani jedno město
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Generování mapy zrušeno...{}...nebylo možné založit žádné město
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Hodně náhodných měst
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Pokryje krajinu mnoha náhodnými městy
@@ -2194,6 +2197,7 @@ STR_NUM_VERY_LOW                                                :velmi nízké
 STR_6816_LOW                                                    :nízké
 STR_6817_NORMAL                                                 :střední
 STR_6818_HIGH                                                   :vysoké
+STR_02BF_CUSTOM                                                 :Vlastní
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :velmi nízká
@@ -3240,6 +3244,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Chován�
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Mění délku vozidla '{1:ENGINE}', které není v depu.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' patřící '{COMPANY}' nemá platnou délku. Pravděpodobně to způsobila nějaká grafika. Hra se může desynchronizovat nebo spadnout.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}Grafika '{0:STRING}' poskytuje neplatné informace.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informace o nákladu/možnosti přestavby pro '{1:ENGINE}' se po nákupu změnily. To může způsobit problémy při automatické výměně vozidel.
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Hra byla uložena ve verzi bez podpory tramvají. Všechny tramvaje se odstraní.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastní měna
@@ -3650,6 +3657,7 @@ STR_AI_RANDOM_AI                                                :Náhodná AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametery AI
 STR_AI_AUTHOR                                                   :Autor:
 STR_AI_VERSION                                                  :Verze:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Některá z bežících AI skončila s chybou. Prosím oznamte toto autorovi AI spolu se screenshotem okna Ladění AI.
 ########
 
 ############ town controlled noise level

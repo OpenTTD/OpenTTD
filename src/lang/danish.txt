@@ -666,7 +666,6 @@ STR_FULL                                                        :Fuld
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Byoversigt
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Brugerdefineret
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -2124,6 +2123,7 @@ STR_NUM_VERY_LOW                                                :Meget lav
 STR_6816_LOW                                                    :Lav
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Høj
+STR_02BF_CUSTOM                                                 :Brugerdefineret
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Meget langsom
@@ -3164,6 +3164,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Denne Ne
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Den ændrer toglængden for '{1:ENGINE}' mens den ikke er i depot.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Toget '{VEHICLE}' fra firmaet '{COMPANY}' har ugyldig længde. Det skyldes sandsynligvis at problem med en NewGRF. Spillet går muligvis ned.
 
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spillet er gemt i en version uden sporveje. Alle sporveje er blevet fjernet.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Brugerdefineret møntfod
@@ -3548,6 +3549,10 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_CLOSE                                                    :{BLACK}Luk
+STR_AI_RESET                                                    :{BLACK}Nulstil
+STR_AI_AUTHOR                                                   :Skaber:
+STR_AI_VERSION                                                  :Version:
 ########
 
 ############ town controlled noise level

@@ -608,6 +608,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kan ikkj
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...det er ikkje meir plass på kartet
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Auk bystorleik
 STR_023C_EXPAND                                                 :{BLACK}Utvid
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Byen byggjer ikkje vegar. Du kan tillata veg-bygging i Avanserte innstillingar -> Økonomi -> Byar.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Lag tilfeldig by
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Bygg by ein tilfeldig stad
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kan ikkje byggja {STRING} her...
@@ -651,6 +652,8 @@ STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Store by
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Vel storleik på by
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Bystorleik:
 
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}By-veglayout:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Vel veg-layout nytta for denne byen
 STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Orginal
 STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Betre vegar
 STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 rutenett
@@ -843,7 +846,9 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Filforma
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vel kva format skjermdumpen skal lagrast i
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Basis-grafikksett
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Vel basis-grafikksett som skal nyttast
 
 STR_AUTOSAVE_1_MONTH                                            :Kvar månad
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autolagring gjekk gale
@@ -916,6 +921,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Orginal
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisk
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forby tog og skip mot å gjere 90-graderssvingar: {ORANGE}{STRING} {LTBLUE} (treng NGR)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Slå saman stasjoner som vert bygde på sida av einannan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Tillat samanbygging av ikkje direkte tilstøtande stasjonar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Bruk forbetra lastingsalgoritme: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Last køyretøy gradvis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflasjon: {ORANGE}{STRING}
@@ -941,8 +947,10 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ikkje-e
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Vektmultiplikator for frakt til å simulere tunge tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Flyfartfaktor: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillat å køyre gjennom stoppestadar på vegar som byane eig: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Tillat gjennomkøyrings-stasjonar på vegar eigd av konkurentar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillat å byggje stasjonar inntil andre: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Slå på fleire sett NewGRF grafikkmotorar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Endring av denne intstillinga er ikkje mogleg når det finst bilar.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Alltid tillat bygging av små flyplassar: {ORANGE}{STRING}
 
@@ -977,6 +985,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Høgdek
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mot klokka
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med klokka
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Høgden som eit flatt scenariokart får: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Tillat endring av landskap på kanten av kartet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ei eller fleire ruter på nordkanten er ikkje tomme
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ei eller fleire ruter på ein av kantane inneheld ikkje vatn
 
@@ -1020,6 +1029,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eige firma
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle firma
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Bruk rutetabellar for køyretøy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis rutetabell i klikk i staden for dagar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Hurtig-laging av køyrety-ordrar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard Jernbane / etter nytt spel / lasta spel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Vanleg jernbane
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Elekrisk Jernbane
@@ -1090,6 +1100,7 @@ STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Midtstilt
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Høgre
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Knipseradius for vindauge: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Knipseradius for vindauge: {ORANGE}deaktivert
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Ikkje fest vindauge til objekt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Flytande vindauge (ikkje fest til andre): {ORANGE}deaktivert
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Farten byar veks med: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ingen
@@ -3161,6 +3172,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Byter k�
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' eigd av '{COMPANY}' har ulovleg lengde. Dette er sansynlegvis forårsaka av eit problem med NewGRFer. Spelet kan bli desynkronisert eller krasja.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' gir gal informasjon.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last/istandsettings-informasjon for '{1:ENGINE}' er forskjellig frå kjøpslista etter konstruksjon. Dette kan føra til at autofornying/erstatning ikkje tilpasser riktig.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spelet har blitt lagra i ein versjon utan støtte for trikk. Alle trikkar har blitt fjerna.
 

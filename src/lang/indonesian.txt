@@ -667,7 +667,6 @@ STR_FULL                                                        :Penuh
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Daftar kota
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Bebas
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -2129,6 +2128,7 @@ STR_NUM_VERY_LOW                                                :Sangat sedikit
 STR_6816_LOW                                                    :Sedikit
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Padat
+STR_02BF_CUSTOM                                                 :Bebas
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Sangat lambat
@@ -3168,6 +3168,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Tidak me
 STR_NEWGRF_BROKEN                                               :{WHITE}Biasanya NewGRF '{0:STRING}' dapat menyebabkan de-sinkron dan atau crash.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ini akan mengubah panjang kereta '{1:ENGINE}' ketika tidak berada di dalam depo.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Kereta api '{VEHICLE}' milik '{COMPANY}' memiliki ukuran yang tidak sesuai. Hal ini mungkin disebabkan oleh masalah dengan NewGRF. Permainan mungkin akan rusak atau hang.
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game telah disimpan pada versi terdahulu tanpa dukungan alat transportasi trem. Semua Trem telah dihilangkan.
 

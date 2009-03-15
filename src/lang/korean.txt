@@ -668,7 +668,6 @@ STR_FULL                                                        :전체
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :마을 목록
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :사용자
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1199,6 +1198,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}이 웨�
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}자동 레일 기능으로 철로 만들기
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...시나리오에 도시가 없습니다.
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}맵 생성이 중지되었습니다...{}...마을 위치가 부적절합니다
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}도시 여러개를 무작위 건설
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}무작위로 도시를 건설합니다.
@@ -2130,6 +2130,7 @@ STR_NUM_VERY_LOW                                                :매우 적음
 STR_6816_LOW                                                    :낮음
 STR_6817_NORMAL                                                 :보통
 STR_6818_HIGH                                                   :높음
+STR_02BF_CUSTOM                                                 :사용자
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :매우 느림
@@ -3170,6 +3171,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'이/가 차고 안에 있지 않으면 차량 길이가 바뀝니다.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'의 열차 '{0:VEHICLE}'은/는 유효하지 않은 길이를 가지고 있습니다. NewGRF에 의한 문제일 수 있으며 비동기화/충돌을 일으킬 수 있습니다.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' 의 정보가 잘못되었습니다
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGINE}을 위한 화물/개조 정보가 건설 후 구매 목록과 다릅니다. 이것은 자동교체에서 개조를 실패를 초래할 수 있습니다.
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}전차를 지원하지 않는 버전으로 게임이 저장되었습니다. 모든 전차는 제거되었습니다.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}사용자 화폐 단위
@@ -3580,6 +3584,7 @@ STR_AI_RANDOM_AI                                                :무작위 인�
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}인공지능 파라미터
 STR_AI_AUTHOR                                                   :저자:
 STR_AI_VERSION                                                  :버젼:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}작동중인 인공지능 중 하나가 충돌했습니다. 인공지능 디버그 창에서 스샷을 찍어 인공지능 작가에게 보고하십시오.
 ########
 
 ############ town controlled noise level

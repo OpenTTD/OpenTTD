@@ -3171,6 +3171,8 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Verhalte
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Verändert die Fahrzeuglänge von '{1:ENGINE}' außerhalb eines Depots.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zug '{VEHICLE}' der Firma '{COMPANY}' hat eine ungültige Länge. Vermutlich ein NewGRF Problem. Spiel kann desynchronisieren oder abstürzen.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' liefert falsche Informationen
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fracht / Ersetzungs - Informationen für '{1:ENGINE}' weichen von der Einkaufsliste nach dem Kauf ab. Das kann dazu führen, dass das Umrüsten beim autmatisches Ersetzen oder Erneuern nicht korrekt funktioniert
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spiel wurde in einer Version ohne Straßenbahnunterstützung gespeichert. Alle Straßenbahnen wurden entfernt.
 
@@ -3582,6 +3584,7 @@ STR_AI_RANDOM_AI                                                :Zufällige KI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}KI Parameter
 STR_AI_AUTHOR                                                   :Autor:
 STR_AI_VERSION                                                  :Version:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Einer der laufenden KIs ist abgestürzt. Es ist nett, den Fehler dem Autor der KI mittels eines Screenshots vom KI-Debug-Fenster unter Angabe der OpenTTD-Versionsnummer zu melden.
 ########
 
 ############ town controlled noise level
