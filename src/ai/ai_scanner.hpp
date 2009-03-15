@@ -5,10 +5,11 @@
 #ifndef AI_SCANNER_HPP
 #define AI_SCANNER_HPP
 
+#include "../script/script_scanner.hpp"
 #include "../core/string_compare_type.hpp"
 #include <map>
 
-class AIScanner {
+class AIScanner : public ScriptScanner {
 public:
 	AIScanner();
 	~AIScanner();
@@ -56,16 +57,6 @@ public:
 	const AIInfoList *GetUniqueAIInfoList() { return &this->info_single_list; }
 
 	/**
-	 * Get the engine of the main squirrel handler (it indexes all available scripts).
-	 */
-	class Squirrel *GetEngine() { return this->engine; }
-
-	/**
-	 * Get the current main script the ScanDir is currently tracking.
-	 */
-	const char *GetMainScript() { return this->main_script; }
-
-	/**
 	 * Rescan the AI dir for scripts.
 	 */
 	void RescanAIDir();
@@ -81,21 +72,10 @@ private:
 	 */
 	void ScanAIDir();
 
-	/**
-	 * Scan a dir for AIs.
-	 *  For non-library-scan, if an AI is found, AIInfo is created, and the AI
-	 *    is registered to the central system.
-	 *  For library-scan, if a library is found, AILibrary is created, and the
-	 *    library is registered to the central system.
-	 */
-	void ScanDir(const char *dirname, bool library_dir);
-
 	AIInfo *info_dummy;
 	AIInfoList info_list;
 	AIInfoList info_single_list;
 	AILibraryList library_list;
-	class Squirrel *engine;
-	char main_script[1024];
 };
 
 #endif /* AI_SCANNER_HPP */

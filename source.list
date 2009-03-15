@@ -518,6 +518,10 @@ table/unmovable_land.h
 table/water_land.h
 
 # Script
+script/script_info.cpp
+script/script_info.hpp
+script/script_scanner.cpp
+script/script_scanner.hpp
 script/squirrel.cpp
 script/squirrel.hpp
 script/squirrel_class.hpp

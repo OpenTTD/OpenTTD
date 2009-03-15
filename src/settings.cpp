@@ -57,6 +57,7 @@
 #include "station_func.h"
 #include "settings_func.h"
 #include "ini_type.h"
+#include "ai/ai.hpp"
 #include "ai/ai_config.hpp"
 #include "newgrf.h"
 #include "engine_base.h"

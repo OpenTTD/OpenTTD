@@ -28,75 +28,15 @@ AIConfigItem _start_date_config = {
 	NULL
 };
 
-AIFileInfo::~AIFileInfo()
-{
-	free((void *)this->author);
-	free((void *)this->name);
-	free((void *)this->short_name);
-	free((void *)this->description);
-	free((void *)this->date);
-	free((void *)this->instance_name);
-	free(this->main_script);
-	free(this->SQ_instance);
-}
-
 AILibrary::~AILibrary()
 {
 	free((void *)this->category);
 }
 
-bool AIFileInfo::GetSettings()
+/* static */ SQInteger AIFileInfo::Constructor(HSQUIRRELVM vm, AIFileInfo *info)
 {
-	return this->engine->CallMethod(*this->SQ_instance, "GetSettings", NULL, -1);
-}
-
-bool AIFileInfo::CheckMethod(const char *name) const
-{
-	if (!this->engine->MethodExists(*this->SQ_instance, name)) {
-		char error[1024];
-		snprintf(error, sizeof(error), "your info.nut/library.nut doesn't have the method '%s'", name);
-		this->engine->ThrowError(error);
-		return false;
-	}
-	return true;
-}
-
-/* static */ SQInteger AIFileInfo::Constructor(HSQUIRRELVM vm, AIFileInfo *info, bool library)
-{
-	/* Set some basic info from the parent */
-	info->SQ_instance = MallocT<SQObject>(1);
-	Squirrel::GetInstance(vm, info->SQ_instance, 2);
-	/* Make sure the instance stays alive over time */
-	sq_addref(vm, info->SQ_instance);
+	ScriptFileInfo::Constructor(vm, info);
 	info->base = ((AIScanner *)Squirrel::GetGlobalPointer(vm));
-	info->engine = info->base->GetEngine();
-
-	static const char * const required_functions[] = {
-		"GetAuthor",
-		"GetName",
-		"GetShortName",
-		"GetDescription",
-		"GetVersion",
-		"GetDate",
-		"CreateInstance",
-	};
-	for (size_t i = 0; i < lengthof(required_functions); i++) {
-		if (!info->CheckMethod(required_functions[i])) return SQ_ERROR;
-	}
-	if (library) {
-		if (!info->CheckMethod("GetCategory")) return SQ_ERROR;
-	}
-
-	info->main_script = strdup(info->base->GetMainScript());
-
-	/* Cache the data the info file gives us. */
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAuthor", &info->author)) return SQ_ERROR;
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetName", &info->name)) return SQ_ERROR;
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetShortName", &info->short_name)) return SQ_ERROR;
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetDescription", &info->description)) return SQ_ERROR;
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetDate", &info->date)) return SQ_ERROR;
-	if (!info->engine->CallIntegerMethod(*info->SQ_instance, "GetVersion", &info->version)) return SQ_ERROR;
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "CreateInstance", &info->instance_name)) return SQ_ERROR;
 
 	return 0;
 }
@@ -108,7 +48,7 @@ bool AIFileInfo::CheckMethod(const char *name) const
 	if (SQ_FAILED(sq_getinstanceup(vm, 2, &instance, 0)) || instance == NULL) return sq_throwerror(vm, _SC("Pass an instance of a child class of AIInfo to RegisterAI"));
 	AIInfo *info = (AIInfo *)instance;
 
-	SQInteger res = AIFileInfo::Constructor(vm, info, false);
+	SQInteger res = AIFileInfo::Constructor(vm, info);
 	if (res != 0) return res;
 
 	AIConfigItem config = _start_date_config;
@@ -140,7 +80,7 @@ bool AIFileInfo::CheckMethod(const char *name) const
 	sq_getinstanceup(vm, 2, &instance, 0);
 	AIInfo *info = (AIInfo *)instance;
 
-	SQInteger res = AIFileInfo::Constructor(vm, info, false);
+	SQInteger res = AIFileInfo::Constructor(vm, info);
 	if (res != 0) return res;
 
 	/* Remove the link to the real instance, else it might get deleted by RegisterAI() */
@@ -148,6 +88,11 @@ bool AIFileInfo::CheckMethod(const char *name) const
 	/* Register the AI to the base system */
 	info->base->SetDummyAI(info);
 	return 0;
+}
+
+bool AIInfo::GetSettings()
+{
+	return this->engine->CallMethod(*this->SQ_instance, "GetSettings", NULL, -1);
 }
 
 AIInfo::~AIInfo()
@@ -360,14 +305,14 @@ int AIInfo::GetSettingDefaultValue(const char *name) const
 	/* Create a new AIFileInfo */
 	AILibrary *library = new AILibrary();
 
-	SQInteger res = AIFileInfo::Constructor(vm, library, true);
+	SQInteger res = AIFileInfo::Constructor(vm, library);
 	if (res != 0) {
 		delete library;
 		return res;
 	}
 
 	/* Cache the category */
-	if (!library->engine->CallStringMethodStrdup(*library->SQ_instance, "GetCategory", &library->category)) {
+	if (!library->CheckMethod("GetCategory") || !library->engine->CallStringMethodStrdup(*library->SQ_instance, "GetCategory", &library->category)) {
 		delete library;
 		return SQ_ERROR;
 	}

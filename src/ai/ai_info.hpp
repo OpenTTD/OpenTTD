@@ -7,7 +7,7 @@
 
 #include <list>
 #include "../core/smallmap_type.hpp"
-#include "api/ai_object.hpp"
+#include "../script/script_info.hpp"
 
 enum AIConfigFlags {
 	AICONFIG_NONE    = 0x0,
@@ -36,81 +36,15 @@ extern AIConfigItem _start_date_config;
 
 typedef std::list<AIConfigItem> AIConfigItemList;
 
-class AIFileInfo : public AIObject {
+class AIFileInfo : public ScriptFileInfo {
 public:
-	friend class AIInfo;
-	friend class AILibrary;
-
-	AIFileInfo() : SQ_instance(NULL), main_script(NULL), author(NULL), name(NULL), short_name(NULL), description(NULL), date(NULL), instance_name(NULL) {};
-	~AIFileInfo();
-
-	/**
-	 * Get the Author of the AI.
-	 */
-	const char *GetAuthor() const { return this->author; }
-
-	/**
-	 * Get the Name of the AI.
-	 */
-	const char *GetName() const { return this->name; }
-
-	/**
-	 * Get the 4 character long short name of the AI.
-	 */
-	const char *GetShortName() const { return this->short_name; }
-
-	/**
-	 * Get the description of the AI.
-	 */
-	const char *GetDescription() const { return this->description; }
-
-	/**
-	 * Get the version of the AI.
-	 */
-	int GetVersion() const { return this->version; }
-
-	/**
-	 * Get the settings of the AI.
-	 */
-	bool GetSettings();
-
-	/**
-	 * Get the date of the AI.
-	 */
-	const char *GetDate() const { return this->date; }
-
-	/**
-	 * Get the name of the instance of the AI to create.
-	 */
-	const char *GetInstanceName() const { return this->instance_name; }
-
-	/**
-	 * Get the filename of the main.nut script.
-	 */
-	const char *GetMainScript() const { return this->main_script; }
-
-	/**
-	 * Check if a given method exists.
-	 */
-	bool CheckMethod(const char *name) const;
-
 	/**
 	 * Process the creation of a FileInfo object.
 	 */
-	static SQInteger Constructor(HSQUIRRELVM vm, AIFileInfo *info, bool library);
+	static SQInteger Constructor(HSQUIRRELVM vm, AIFileInfo *info);
 
-private:
-	class Squirrel *engine;
-	HSQOBJECT *SQ_instance;
-	char *main_script;
+protected:
 	class AIScanner *base;
-	const char *author;
-	const char *name;
-	const char *short_name;
-	const char *description;
-	const char *date;
-	const char *instance_name;
-	int version;
 };
 
 class AIInfo : public AIFileInfo {
@@ -124,6 +58,11 @@ public:
 	 */
 	static SQInteger Constructor(HSQUIRRELVM vm);
 	static SQInteger DummyConstructor(HSQUIRRELVM vm);
+
+	/**
+	 * Get the settings of the AI.
+	 */
+	bool GetSettings();
 
 	/**
 	 * Get the config list for this AI.
