@@ -39,21 +39,21 @@
 #include "table/sprites.h"
 
 enum DisasterSubType {
-	ST_Zeppeliner,
-	ST_Zeppeliner_Shadow,
-	ST_Small_Ufo,
-	ST_Small_Ufo_Shadow,
-	ST_Airplane,
-	ST_Airplane_Shadow,
-	ST_Helicopter,
-	ST_Helicopter_Shadow,
-	ST_Helicopter_Rotors,
-	ST_Big_Ufo,
-	ST_Big_Ufo_Shadow,
-	ST_Big_Ufo_Destroyer,
-	ST_Big_Ufo_Destroyer_Shadow,
-	ST_Small_Submarine,
-	ST_Big_Submarine,
+	ST_ZEPPELINER,
+	ST_ZEPPELINER_SHADOW,
+	ST_SMALL_UFO,
+	ST_SMALL_UFO_SHADOW,
+	ST_AIRPLANE,
+	ST_AIRPLANE_SHADOW,
+	ST_HELICOPTER,
+	ST_HELICOPTER_SHADOW,
+	ST_HELICOPTER_ROTORS,
+	ST_BIG_UFO,
+	ST_BIG_UFO_SHADOW,
+	ST_BIG_UFO_DESTROYER,
+	ST_BIG_UFO_DESTROYER_SHADOW,
+	ST_SMALL_SUBMARINE,
+	ST_BIG_SUBMARINE,
 };
 
 static void DisasterClearSquare(TileIndex tile)
@@ -597,13 +597,13 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 		}
 		u = new DisasterVehicle();
 
-		InitializeDisasterVehicle(u, -6 * TILE_SIZE, v->y_pos, 135, DIR_SW, ST_Big_Ufo_Destroyer);
+		InitializeDisasterVehicle(u, -6 * TILE_SIZE, v->y_pos, 135, DIR_SW, ST_BIG_UFO_DESTROYER);
 		u->u.disaster.big_ufo_destroyer_target = v->index;
 
 		Vehicle *w = new DisasterVehicle();
 
 		u->SetNext(w);
-		InitializeDisasterVehicle(w, -6 * TILE_SIZE, v->y_pos, 0, DIR_SW, ST_Big_Ufo_Destroyer_Shadow);
+		InitializeDisasterVehicle(w, -6 * TILE_SIZE, v->y_pos, 0, DIR_SW, ST_BIG_UFO_DESTROYER_SHADOW);
 		w->vehstatus |= VS_SHADOW;
 	} else if (v->current_order.GetDestination() == 0) {
 		int x = TileX(v->dest_tile) * TILE_SIZE;
@@ -757,12 +757,12 @@ static void Disaster_Zeppeliner_Init()
 		}
 	}
 
-	InitializeDisasterVehicle(v, x, 0, 135, DIR_SE, ST_Zeppeliner);
+	InitializeDisasterVehicle(v, x, 0, 135, DIR_SE, ST_ZEPPELINER);
 
 	/* Allocate shadow */
 	Vehicle *u = new DisasterVehicle();
 	v->SetNext(u);
-	InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, ST_Zeppeliner_Shadow);
+	InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, ST_ZEPPELINER_SHADOW);
 	u->vehstatus |= VS_SHADOW;
 }
 
@@ -776,14 +776,14 @@ static void Disaster_Small_Ufo_Init()
 	Vehicle *v = new DisasterVehicle();
 	int x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 
-	InitializeDisasterVehicle(v, x, 0, 135, DIR_SE, ST_Small_Ufo);
+	InitializeDisasterVehicle(v, x, 0, 135, DIR_SE, ST_SMALL_UFO);
 	v->dest_tile = TileXY(MapSizeX() / 2, MapSizeY() / 2);
 	v->age = 0;
 
 	/* Allocate shadow */
 	Vehicle *u = new DisasterVehicle();
 	v->SetNext(u);
-	InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, ST_Small_Ufo_Shadow);
+	InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, ST_SMALL_UFO_SHADOW);
 	u->vehstatus |= VS_SHADOW;
 }
 
@@ -810,11 +810,11 @@ static void Disaster_Airplane_Init()
 	int x = (MapSizeX() + 9) * TILE_SIZE - 1;
 	int y = TileY(found->xy) * TILE_SIZE + 37;
 
-	InitializeDisasterVehicle(v, x, y, 135, DIR_NE, ST_Airplane);
+	InitializeDisasterVehicle(v, x, y, 135, DIR_NE, ST_AIRPLANE);
 
 	Vehicle *u = new DisasterVehicle();
 	v->SetNext(u);
-	InitializeDisasterVehicle(u, x, y, 0, DIR_SE, ST_Airplane_Shadow);
+	InitializeDisasterVehicle(u, x, y, 0, DIR_SE, ST_AIRPLANE_SHADOW);
 	u->vehstatus |= VS_SHADOW;
 }
 
@@ -840,16 +840,16 @@ static void Disaster_Helicopter_Init()
 	int x = -16 * TILE_SIZE;
 	int y = TileY(found->xy) * TILE_SIZE + 37;
 
-	InitializeDisasterVehicle(v, x, y, 135, DIR_SW, ST_Helicopter);
+	InitializeDisasterVehicle(v, x, y, 135, DIR_SW, ST_HELICOPTER);
 
 	Vehicle *u = new DisasterVehicle();
 	v->SetNext(u);
-	InitializeDisasterVehicle(u, x, y, 0, DIR_SW, ST_Helicopter_Shadow);
+	InitializeDisasterVehicle(u, x, y, 0, DIR_SW, ST_HELICOPTER_SHADOW);
 	u->vehstatus |= VS_SHADOW;
 
 	Vehicle *w = new DisasterVehicle();
 	u->SetNext(w);
-	InitializeDisasterVehicle(w, x, y, 140, DIR_SW, ST_Helicopter_Rotors);
+	InitializeDisasterVehicle(w, x, y, 140, DIR_SW, ST_HELICOPTER_ROTORS);
 }
 
 
@@ -863,14 +863,14 @@ static void Disaster_Big_Ufo_Init()
 	int x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 	int y = MapMaxX() * TILE_SIZE - 1;
 
-	InitializeDisasterVehicle(v, x, y, 135, DIR_NW, ST_Big_Ufo);
+	InitializeDisasterVehicle(v, x, y, 135, DIR_NW, ST_BIG_UFO);
 	v->dest_tile = TileXY(MapSizeX() / 2, MapSizeY() / 2);
 	v->age = 0;
 
 	/* Allocate shadow */
 	Vehicle *u = new DisasterVehicle();
 	v->SetNext(u);
-	InitializeDisasterVehicle(u, x, y, 0, DIR_NW, ST_Big_Ufo_Shadow);
+	InitializeDisasterVehicle(u, x, y, 0, DIR_NW, ST_BIG_UFO_SHADOW);
 	u->vehstatus |= VS_SHADOW;
 }
 
@@ -900,14 +900,14 @@ static void Disaster_Submarine_Init(DisasterSubType subtype)
 /* Curious submarine #1, just floats around */
 static void Disaster_Small_Submarine_Init()
 {
-	Disaster_Submarine_Init(ST_Small_Submarine);
+	Disaster_Submarine_Init(ST_SMALL_SUBMARINE);
 }
 
 
 /* Curious submarine #2, just floats around */
 static void Disaster_Big_Submarine_Init()
 {
-	Disaster_Submarine_Init(ST_Big_Submarine);
+	Disaster_Submarine_Init(ST_BIG_SUBMARINE);
 }
 
 
@@ -1014,7 +1014,7 @@ void ReleaseDisastersTargetingIndustry(IndustryID i)
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		/* primary disaster vehicles that have chosen target */
-		if (v->type == VEH_DISASTER && (v->subtype == ST_Airplane || v->subtype == ST_Helicopter)) {
+		if (v->type == VEH_DISASTER && (v->subtype == ST_AIRPLANE || v->subtype == ST_HELICOPTER)) {
 			/* if it has chosen target, and it is this industry (yes, dest_tile is IndustryID here), set order to "leaving map peacefully" */
 			if (v->current_order.GetDestination() > 0 && v->dest_tile == i) v->current_order.SetDestination(3);
 		}
