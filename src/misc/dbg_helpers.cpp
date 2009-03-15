@@ -65,8 +65,8 @@ CStrA TileStr(TileIndex tile)
 	return out.Transfer();
 }
 
-/** Keep track of the last assigned type_id. Used for anti-recursion. */
-/*static*/ size_t& DumpTarget::LastTypeId()
+/** Keep track of the last assigned type_id. Used for anti-recursion.
+ *static*/ size_t& DumpTarget::LastTypeId()
 {
 	static size_t last_type_id = 0;
 	return last_type_id;
@@ -77,7 +77,7 @@ CStrA DumpTarget::GetCurrentStructName()
 {
 	CStrA out;
 	if (!m_cur_struct.empty()) {
-		// we are inside some named struct, return its name
+		/* we are inside some named struct, return its name */
 		out = m_cur_struct.top();
 	}
 	return out.Transfer();

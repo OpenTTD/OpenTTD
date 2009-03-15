@@ -52,8 +52,8 @@ bool NetworkCoreInitialize()
 			}
 		}
 	}
-#endif // __AMIGA__
-#endif // __MORPHOS__ / __AMIGA__
+#endif /* __AMIGA__ */
+#endif /* __MORPHOS__ / __AMIGA__ */
 
 /* Let's load the network in windows */
 #ifdef WIN32

@@ -94,9 +94,9 @@ FORCEINLINE bool CBinaryHeapT<Titem_>::Push(Titem_& new_item)
 {
 	if (IsFull()) return false;
 
-	// make place for new item
+	/* make place for new item */
 	int gap = ++m_size;
-	// Heapify up
+	/* Heapify up */
 	for (int parent = gap / 2; (parent > 0) && (new_item < *m_items[parent]); gap = parent, parent /= 2)
 		m_items[gap] = m_items[parent];
 	m_items[gap] = &new_item;
@@ -109,35 +109,35 @@ FORCEINLINE void CBinaryHeapT<Titem_>::RemoveHead()
 {
 	assert(!IsEmpty());
 
-	// at index 1 we have a gap now
+	/* at index 1 we have a gap now */
 	int gap = 1;
 
-	// Heapify down:
-	//   last item becomes a candidate for the head. Call it new_item.
+	/* Heapify down:
+	 *   last item becomes a candidate for the head. Call it new_item. */
 	Titem_& new_item = *m_items[m_size--];
 
-	// now we must maintain relation between parent and its children:
-	//   parent <= any child
-	// from head down to the tail
+	/* now we must maintain relation between parent and its children:
+	 *   parent <= any child
+	 * from head down to the tail */
 	int child  = 2; // first child is at [parent * 2]
 
-	// while children are valid
+	/* while children are valid */
 	while (child <= m_size) {
-		// choose the smaller child
+		/* choose the smaller child */
 		if (child < m_size && *m_items[child + 1] < *m_items[child])
 			child++;
-		// is it smaller than our parent?
+		/* is it smaller than our parent? */
 		if (!(*m_items[child] < new_item)) {
-			// the smaller child is still bigger or same as parent => we are done
+			/* the smaller child is still bigger or same as parent => we are done */
 			break;
 		}
-		// if smaller child is smaller than parent, it will become new parent
+		/* if smaller child is smaller than parent, it will become new parent */
 		m_items[gap] = m_items[child];
 		gap = child;
-		// where do we have our new children?
+		/* where do we have our new children? */
 		child = gap * 2;
 	}
-	// move last item to the proper place
+	/* move last item to the proper place */
 	if (m_size > 0) m_items[gap] = &new_item;
 	CheckConsistency();
 }
@@ -145,45 +145,45 @@ FORCEINLINE void CBinaryHeapT<Titem_>::RemoveHead()
 template <class Titem_>
 inline void CBinaryHeapT<Titem_>::RemoveByIdx(int idx)
 {
-	// at position idx we have a gap now
+	/* at position idx we have a gap now */
 	int gap = idx;
 	Titem_& last = *m_items[m_size];
 	if (idx < m_size) {
 		assert(idx >= 1);
 		m_size--;
-		// and the candidate item for fixing this gap is our last item 'last'
-		// Move gap / last item up:
+		/* and the candidate item for fixing this gap is our last item 'last'
+		 * Move gap / last item up: */
 		while (gap > 1)
 		{
-			// compare [gap] with its parent
+			/* compare [gap] with its parent */
 			int parent = gap / 2;
 			if (last < *m_items[parent]) {
 				m_items[gap] = m_items[parent];
 				gap = parent;
 			} else {
-				// we don't need to continue upstairs
+				/* we don't need to continue upstairs */
 				break;
 			}
 		}
 
-		// Heapify (move gap) down:
+		/* Heapify (move gap) down: */
 		while (true) {
-			// where we do have our children?
+			/* where we do have our children? */
 			int child  = gap * 2; // first child is at [parent * 2]
 			if (child > m_size) break;
-			// choose the smaller child
+			/* choose the smaller child */
 			if (child < m_size && *m_items[child + 1] < *m_items[child])
 				child++;
-			// is it smaller than our parent?
+			/* is it smaller than our parent? */
 			if (!(*m_items[child] < last)) {
-				// the smaller child is still bigger or same as parent => we are done
+				/* the smaller child is still bigger or same as parent => we are done */
 				break;
 			}
-			// if smaller child is smaller than parent, it will become new parent
+			/* if smaller child is smaller than parent, it will become new parent */
 			m_items[gap] = m_items[child];
 			gap = child;
 		}
-		// move parent to the proper place
+		/* move parent to the proper place */
 		if (m_size > 0) m_items[gap] = &last;
 	}
 	else {
@@ -208,7 +208,7 @@ inline int CBinaryHeapT<Titem_>::FindLinear(const Titem_& item) const
 template <class Titem_>
 FORCEINLINE void CBinaryHeapT<Titem_>::CheckConsistency()
 {
-	// enable it if you suspect binary heap doesn't work well
+	/* enable it if you suspect binary heap doesn't work well */
 #if 0
 	for (int child = 2; child <= m_size; child++) {
 		int parent = child / 2;

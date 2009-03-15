@@ -52,7 +52,7 @@ struct DrawBuildingsTileStruct {
 	byte width;
 	byte height;
 	byte dz;
-	byte draw_proc;  /* this allows to specify a special drawing procedure.*/
+	byte draw_proc;  // this allows to specify a special drawing procedure.
 };
 
 /** Iterate through all DrawTileSeqStructs in DrawTileSprites. */

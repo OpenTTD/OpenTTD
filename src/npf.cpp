@@ -40,12 +40,12 @@ static uint NPFDistanceTrack(TileIndex t0, TileIndex t1)
 	const uint dx = Delta(TileX(t0), TileX(t1));
 	const uint dy = Delta(TileY(t0), TileY(t1));
 
-	const uint straightTracks = 2 * min(dx, dy); /* The number of straight (not full length) tracks */
+	const uint straightTracks = 2 * min(dx, dy); // The number of straight (not full length) tracks
 	/* OPTIMISATION:
 	 * Original: diagTracks = max(dx, dy) - min(dx,dy);
 	 * Proof:
 	 * (dx+dy) - straightTracks  == (min + max) - straightTracks = min + max - 2 * min = max - min */
-	const uint diagTracks = dx + dy - straightTracks; /* The number of diagonal (full tile length) tracks. */
+	const uint diagTracks = dx + dy - straightTracks; // The number of diagonal (full tile length) tracks.
 
 	/* Don't factor out NPF_TILE_LENGTH below, this will round values and lose
 	 * precision */
@@ -313,10 +313,10 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 			break;
 
 		case MP_RAILWAY:
-			cost = _trackdir_length[trackdir]; /* Should be different for diagonal tracks */
+			cost = _trackdir_length[trackdir]; // Should be different for diagonal tracks
 			break;
 
-		case MP_ROAD: /* Railway crossing */
+		case MP_ROAD: // Railway crossing
 			cost = NPF_TILE_LENGTH;
 			break;
 
@@ -393,7 +393,7 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 	/* Check for turns */
 	if (current->direction != NextTrackdir((Trackdir)parent->path.node.direction))
 		cost += _settings_game.pf.npf.npf_rail_curve_penalty;
-	/*TODO, with realistic acceleration, also the amount of straight track between
+	/* TODO, with realistic acceleration, also the amount of straight track between
 	 *      curves should be taken into account, as this affects the speed limit. */
 
 	/* Check for reverse in depot */
@@ -442,8 +442,8 @@ static int32 NPFFindStationOrTile(AyStar *as, OpenListNode *current)
 	/* If GetNeighbours said we could get here, we assume the station type
 	 * is correct */
 	if (
-		(fstd->station_index == INVALID_STATION && tile == fstd->dest_coords) || /* We've found the tile, or */
-		(IsTileType(tile, MP_STATION) && GetStationIndex(tile) == fstd->station_index) /* the station */
+		(fstd->station_index == INVALID_STATION && tile == fstd->dest_coords) || // We've found the tile, or
+		(IsTileType(tile, MP_STATION) && GetStationIndex(tile) == fstd->station_index) // the station
 	) {
 		return AYSTAR_FOUND_END_NODE;
 	} else {
@@ -548,11 +548,11 @@ static void NPFSaveTargetData(AyStar *as, OpenListNode *current)
  */
 static bool CanEnterTileOwnerCheck(Owner owner, TileIndex tile, DiagDirection enterdir)
 {
-	if (IsTileType(tile, MP_RAILWAY) ||             /* Rail tile (also rail depot) */
-			IsRailwayStationTile(tile) ||   /* Rail station tile */
-			IsRoadDepotTile(tile) ||        /* Road depot tile */
-			IsStandardRoadStopTile(tile)) { /* Road station tile (but not drive-through stops) */
-		return IsTileOwner(tile, owner); /* You need to own these tiles entirely to use them */
+	if (IsTileType(tile, MP_RAILWAY) || // Rail tile (also rail depot)
+			IsRailwayStationTile(tile) ||   // Rail station tile
+			IsRoadDepotTile(tile) ||        // Road depot tile
+			IsStandardRoadStopTile(tile)) { // Road station tile (but not drive-through stops)
+		return IsTileOwner(tile, owner);  // You need to own these tiles entirely to use them
 	}
 
 	switch (GetTileType(tile)) {
@@ -560,7 +560,7 @@ static bool CanEnterTileOwnerCheck(Owner owner, TileIndex tile, DiagDirection en
 			/* rail-road crossing : are we looking at the railway part? */
 			if (IsLevelCrossing(tile) &&
 					DiagDirToAxis(enterdir) != GetCrossingRoadAxis(tile)) {
-				return IsTileOwner(tile, owner); /* Railway needs owner check, while the street is public */
+				return IsTileOwner(tile, owner); // Railway needs owner check, while the street is public
 			}
 			break;
 
@@ -589,7 +589,7 @@ static DiagDirection GetDepotDirection(TileIndex tile, TransportType type)
 		case TRANSPORT_RAIL:  return GetRailDepotDirection(tile);
 		case TRANSPORT_ROAD:  return GetRoadDepotDirection(tile);
 		case TRANSPORT_WATER: return GetShipDepotDirection(tile);
-		default: return INVALID_DIAGDIR; /* Not reached */
+		default: return INVALID_DIAGDIR; // Not reached
 	}
 }
 
@@ -997,7 +997,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 	}
 
 	/* Initialize target */
-	target.station_index = INVALID_STATION; /* We will initialize dest_coords inside the loop below */
+	target.station_index = INVALID_STATION; // We will initialize dest_coords inside the loop below
 	_npf_aystar.user_target = &target;
 
 	/* Initialize user_data */
@@ -1007,7 +1007,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 
 	/* Initialize Start Node */
 	start.tile = tile;
-	start.direction = trackdir; /* We will initialize user_data inside the loop below */
+	start.direction = trackdir; // We will initialize user_data inside the loop below
 
 	/* Initialize Result */
 	_npf_aystar.user_path = &result;
@@ -1023,8 +1023,8 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 		if ( DistanceManhattan(tile, current->xy * NPF_TILE_LENGTH) > best_result.best_path_dist)
 			break;
 
-		/* Initialize Start Node */
-		/* We set this in case the target is also the start tile, we will just
+		/* Initialize Start Node
+		 * We set this in case the target is also the start tile, we will just
 		 * return a not found then */
 		start.user_data[NPF_TRACKDIR_CHOICE] = INVALID_TRACKDIR;
 		start.user_data[NPF_NODE_FLAGS] = 0;

@@ -31,8 +31,8 @@ void ShowMacDialog ( const char *title, const char *message, const char *buttonL
 void ShowMacAssertDialog ( const char *function, const char *file, const int line, const char *expression );
 void ShowMacErrorDialog(const char *error);
 
-// Since MacOS X users will never see an assert unless they started the game from a terminal
-// we're using a custom assert(e) macro.
+/* Since MacOS X users will never see an assert unless they started the game from a terminal
+ * we're using a custom assert(e) macro. */
 #undef assert
 
 #ifdef NDEBUG

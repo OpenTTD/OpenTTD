@@ -34,9 +34,9 @@ protected:
 	const uint max_blocks;      ///< The max amount of blocks this pool can have
 	const uint block_size_bits; ///< The size of each block in bits
 
-	/// Pointer to a function that is called after a new block is added
+	/** Pointer to a function that is called after a new block is added */
 	OldMemoryPoolNewBlock *new_block_proc;
-	/// Pointer to a function that is called to clean a block
+	/** Pointer to a function that is called to clean a block */
 	OldMemoryPoolCleanBlock *clean_block_proc;
 
 	uint current_blocks;        ///< How many blocks we have in our pool

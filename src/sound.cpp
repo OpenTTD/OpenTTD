@@ -17,7 +17,7 @@ static uint _file_count;
 static FileEntry *_files;
 MusicFileSettings msf;
 
-// Number of levels of panning per side
+/* Number of levels of panning per side */
 #define PANNING_LEVELS 16
 
 /** The number of sounds in the original sample.cat */

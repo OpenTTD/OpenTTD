@@ -86,7 +86,7 @@ public:
 template <class Tcls_>
 FORCEINLINE void CCountedPtr<Tcls_>::Assign(Tcls *pT)
 {
-	// if they are the same, we do nothing
+	/* if they are the same, we do nothing */
 	if (pT != m_pT) {
 		if (pT) pT->AddRef();        // AddRef new pointer if any
 		Tcls *pTold = m_pT;          // save original ptr

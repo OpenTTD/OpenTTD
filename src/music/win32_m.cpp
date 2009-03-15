@@ -109,7 +109,7 @@ static DWORD WINAPI MidiThread(LPVOID arg)
 			_midi.playing = MidiIntPlaySong(s);
 			s[0] = '\0';
 
-			// Delay somewhat in case we don't manage to play.
+			/* Delay somewhat in case we don't manage to play. */
 			if (!_midi.playing) WaitForMultipleObjects(1, &_midi.wait_obj, FALSE, 5000);
 		}
 

@@ -271,9 +271,9 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 			/* special widget handling for buttons*/
 			switch (wi->type) {
 				default: NOT_REACHED();
-				case WWT_PANEL   | WWB_PUSHBUTTON: /* WWT_PUSHBTN */
-				case WWT_IMGBTN  | WWB_PUSHBUTTON: /* WWT_PUSHIMGBTN */
-				case WWT_TEXTBTN | WWB_PUSHBUTTON: /* WWT_PUSHTXTBTN */
+				case WWT_PANEL   | WWB_PUSHBUTTON: // WWT_PUSHBTN
+				case WWT_IMGBTN  | WWB_PUSHBUTTON: // WWT_PUSHIMGBTN
+				case WWT_TEXTBTN | WWB_PUSHBUTTON: // WWT_PUSHTXTBTN
 					w->HandleButtonClick(widget);
 					break;
 			}
@@ -293,12 +293,12 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 		if (HideDropDownMenu(w) == widget) return;
 
 		if (w->desc_flags & WDF_STD_BTN) {
-			if (widget == 0) { /* 'X' */
+			if (widget == 0) { // 'X'
 				delete w;
 				return;
 			}
 
-			if (widget == 1) { /* 'Title bar' */
+			if (widget == 1) { // 'Title bar'
 				StartWindowDrag(w);
 				return;
 			}
@@ -1634,7 +1634,7 @@ static bool HandleViewportScroll()
 	if (w == FindWindowById(WC_MAIN_WINDOW, 0) && w->viewport->follow_vehicle != INVALID_VEHICLE) {
 		/* If the main window is following a vehicle, then first let go of it! */
 		const Vehicle *veh = GetVehicle(w->viewport->follow_vehicle);
-		ScrollMainWindowTo(veh->x_pos, veh->y_pos, true); /* This also resets follow_vehicle */
+		ScrollMainWindowTo(veh->x_pos, veh->y_pos, true); // This also resets follow_vehicle
 		return true;
 	}
 

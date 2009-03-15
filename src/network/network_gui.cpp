@@ -828,7 +828,7 @@ void ShowNetworkGameWindow()
 		char * const *srv;
 
 		first = false;
-		// add all servers from the config file to our list
+		/* add all servers from the config file to our list */
 		for (srv = &_network_host_list[0]; srv != endof(_network_host_list) && *srv != NULL; srv++) {
 			NetworkAddServer(*srv);
 		}
@@ -1391,16 +1391,16 @@ NetworkCompanyInfo *GetLobbyCompanyInfo(CompanyID company)
 	return (lobby != NULL && company < MAX_COMPANIES) ? &lobby->company_info[company] : NULL;
 }
 
-// The window below gives information about the connected clients
-//  and also makes able to give money to them, kick them (if server)
-//  and stuff like that.
+/* The window below gives information about the connected clients
+ *  and also makes able to give money to them, kick them (if server)
+ *  and stuff like that. */
 
 extern void DrawCompanyIcon(CompanyID cid, int x, int y);
 
-// Every action must be of this form
+/* Every action must be of this form */
 typedef void ClientList_Action_Proc(byte client_no);
 
-// Max 10 actions per client
+/* Max 10 actions per client */
 #define MAX_CLIENTLIST_ACTION 10
 
 enum {
@@ -1429,7 +1429,7 @@ static const WindowDesc _client_list_desc = {
 	_client_list_widgets,
 };
 
-// Finds the Xth client-info that is active
+/* Finds the Xth client-info that is active */
 static const NetworkClientInfo *NetworkFindClientInfo(byte client_no)
 {
 	const NetworkClientInfo *ci;
@@ -1442,7 +1442,7 @@ static const NetworkClientInfo *NetworkFindClientInfo(byte client_no)
 	return NULL;
 }
 
-// Here we start to define the options out of the menu
+/* Here we start to define the options out of the menu */
 static void ClientList_Kick(byte client_no)
 {
 	const NetworkClientInfo *ci = NetworkFindClientInfo(client_no);
@@ -1576,7 +1576,7 @@ struct NetworkClientListPopupWindow : Window {
 	{
 		int num = 0;
 
-		// Find the amount of actions
+		/* Find the amount of actions */
 		for (int i = 0; i < MAX_CLIENTLIST_ACTION; i++) {
 			if (this->action[i][0] == '\0') continue;
 			if (this->proc[i] == NULL) continue;
@@ -1677,7 +1677,7 @@ struct NetworkClientListWindow : Window
 
 		/* If height is changed */
 		if (this->height != CLNWND_OFFSET + num + 1) {
-			// XXX - magic unfortunately; (num + 2) has to be one bigger than heigh (num + 1)
+			/* XXX - magic unfortunately; (num + 2) has to be one bigger than heigh (num + 1) */
 			this->SetDirty();
 			this->widget[3].bottom = this->widget[3].top + num + 2;
 			this->height = CLNWND_OFFSET + num + 1;
@@ -1778,7 +1778,7 @@ void ShowNetworkNeedPassword(NetworkPasswordType npt)
 	ShowQueryString(STR_EMPTY, caption, 20, 180, FindWindowById(WC_NETWORK_STATUS_WINDOW, 0), CS_ALPHANUMERAL, QSF_NONE);
 }
 
-// Vars needed for the join-GUI
+/* Vars needed for the join-GUI */
 NetworkJoinStatus _network_join_status;
 uint8 _network_join_waiting;
 uint32 _network_join_bytes;
@@ -1812,7 +1812,7 @@ struct NetworkJoinStatusWindow : Window {
 				SetDParam(1, _network_join_bytes_total);
 				DrawStringCentered(125, 46, STR_NETWORK_CONNECTING_DOWNLOADING, TC_GREY);
 				/* Fallthrough */
-			default: /* Waiting is 15%, so the resting receivement of map is maximum 70% */
+			default: // Waiting is 15%, so the resting receivement of map is maximum 70%
 				progress = 15 + _network_join_bytes * (100 - 15) / _network_join_bytes_total;
 		}
 
@@ -1822,7 +1822,7 @@ struct NetworkJoinStatusWindow : Window {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget == 2) { //Disconnect button
+		if (widget == 2) { // Disconnect button
 			NetworkDisconnect();
 			SwitchToMode(SM_MENU);
 			ShowNetworkGameWindow();

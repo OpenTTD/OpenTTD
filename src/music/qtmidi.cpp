@@ -46,14 +46,14 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-// we need to include debug.h after CoreServices because defining DEBUG will break CoreServices in OSX 10.2
+/* we need to include debug.h after CoreServices because defining DEBUG will break CoreServices in OSX 10.2 */
 #include "../debug.h"
 
 static FMusicDriver_QtMidi iFMusicDriver_QtMidi;
 
 
 enum {
-	midiType = 'Midi' /**< OSType code for MIDI songs. */
+	midiType = 'Midi' ///< OSType code for MIDI songs.
 };
 
 
@@ -172,15 +172,15 @@ static void InitQuickTimeIfNeeded()
 
 /** Possible states of the QuickTime music driver. */
 enum {
-	QT_STATE_IDLE, /**< No file loaded. */
-	QT_STATE_PLAY, /**< File loaded, playing. */
-	QT_STATE_STOP, /**< File loaded, stopped. */
+	QT_STATE_IDLE, ///< No file loaded.
+	QT_STATE_PLAY, ///< File loaded, playing.
+	QT_STATE_STOP, ///< File loaded, stopped.
 };
 
 
-static Movie _quicktime_movie;                  /**< Current QuickTime @c Movie. */
-static byte  _quicktime_volume = 127;           /**< Current volume. */
-static int   _quicktime_state  = QT_STATE_IDLE; /**< Current player state. */
+static Movie _quicktime_movie;                  ///< Current QuickTime @c Movie.
+static byte  _quicktime_volume = 127;           ///< Current volume.
+static int   _quicktime_state  = QT_STATE_IDLE; ///< Current player state.
 
 
 /**

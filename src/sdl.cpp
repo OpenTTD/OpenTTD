@@ -14,7 +14,7 @@
 #include <signal.h>
 
 #ifdef __MORPHOS__
-	// The system supplied definition of SIG_DFL is wrong on MorphOS
+	/* The system supplied definition of SIG_DFL is wrong on MorphOS */
 	#undef SIG_DFL
 	#define SIG_DFL (void (*)(int))0
 #endif
@@ -76,7 +76,7 @@ static const char *LoadSdlDLL()
 	return NULL;
 }
 
-#endif // DYNAMICALLY_LOADED_SDL
+#endif /* DYNAMICALLY_LOADED_SDL */
 
 
 #ifdef UNIX

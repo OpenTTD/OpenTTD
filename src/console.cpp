@@ -691,7 +691,7 @@ void IConsoleVarExec(const IConsoleVar *var, byte tokencount, char *token[ICON_T
 	if (_stdlib_con_developer)
 		IConsolePrintF(CC_DEBUG, "condbg: requested command is a variable");
 
-	if (tokencount == 0) { /* Just print out value */
+	if (tokencount == 0) { // Just print out value
 		IConsoleVarPrintGetValue(var);
 		return;
 	}
@@ -784,7 +784,7 @@ void IConsoleCmdExec(const char *cmdstr)
 		if (t_index >= lengthof(tokens) || tstream_i >= lengthof(tokenstream)) break;
 
 		switch (*cmdptr) {
-		case ' ': /* Token seperator */
+		case ' ': // Token seperator
 			if (!foundtoken) break;
 
 			if (longtoken) {

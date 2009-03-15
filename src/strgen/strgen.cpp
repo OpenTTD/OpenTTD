@@ -93,12 +93,12 @@ static uint8 _lang_newgrflangid;
 static char _genders[MAX_NUM_GENDER][16];
 static uint _numgenders;
 
-// contains the name of all cases.
+/* contains the name of all cases. */
 #define MAX_NUM_CASES 50
 static char _cases[MAX_NUM_CASES][16];
 static uint _numcases;
 
-// for each plural value, this is the number of plural forms.
+/* for each plural value, this is the number of plural forms. */
 static const byte _plural_form_counts[] = { 2, 1, 2, 3, 3, 3, 3, 3, 4, 2 };
 
 static const char *_cur_ident;
@@ -114,7 +114,7 @@ struct ParsedCommandStruct {
 	const CmdStruct *cmd[32]; // ordered by param #
 };
 
-// Used when generating some advanced commands.
+/* Used when generating some advanced commands. */
 static ParsedCommandStruct _cur_pcs;
 static int _cur_argidx;
 
@@ -271,11 +271,11 @@ static void EmitSetXY(char *buf, int value)
 	PutByte((byte)y);
 }
 
-// The plural specifier looks like
-// {NUM} {PLURAL -1 passenger passengers} then it picks either passenger/passengers depending on the count in NUM
+/* The plural specifier looks like
+ * {NUM} {PLURAL -1 passenger passengers} then it picks either passenger/passengers depending on the count in NUM */
 
-// This is encoded like
-//  CommandByte <ARG#> <NUM> {Length of each string} {each string}
+/* This is encoded like
+ *  CommandByte <ARG#> <NUM> {Length of each string} {each string} */
 
 bool ParseRelNum(char **buf, int *value)
 {
@@ -300,7 +300,7 @@ bool ParseRelNum(char **buf, int *value)
 	return true;
 }
 
-// Parse out the next word, or NULL
+/* Parse out the next word, or NULL */
 char *ParseWord(char **buf)
 {
 	char *s = *buf, *r;
@@ -310,7 +310,7 @@ char *ParseWord(char **buf)
 
 	if (*s == '"') {
 		r = ++s;
-		// parse until next " or NUL
+		/* parse until next " or NUL */
 		for (;;) {
 			if (*s == '\0') break;
 			if (*s == '"') {
@@ -320,7 +320,7 @@ char *ParseWord(char **buf)
 			s++;
 		}
 	} else {
-		// proceed until whitespace or NUL
+		/* proceed until whitespace or NUL */
 		r = s;
 		for (;;) {
 			if (*s == '\0') break;
@@ -335,7 +335,7 @@ char *ParseWord(char **buf)
 	return r;
 }
 
-// Forward declaration
+/* Forward declaration */
 static int TranslateArgumentIdx(int arg);
 
 static void EmitWordList(const char * const *words, uint nw)
@@ -356,10 +356,10 @@ static void EmitPlural(char *buf, int value)
 	const char *words[5];
 	int nw = 0;
 
-	// Parse out the number, if one exists. Otherwise default to prev arg.
+	/* Parse out the number, if one exists. Otherwise default to prev arg. */
 	if (!ParseRelNum(&buf, &argidx)) argidx--;
 
-	// Parse each string
+	/* Parse each string */
 	for (nw = 0; nw < 5; nw++) {
 		words[nw] = ParseWord(&buf);
 		if (words[nw] == NULL) break;
@@ -398,19 +398,19 @@ static void EmitGender(char *buf, int value)
 	if (buf[0] == '=') {
 		buf++;
 
-		// This is a {G=DER} command
+		/* This is a {G=DER} command */
 		for (nw = 0; ; nw++) {
 			if (nw >= 8) error("G argument '%s' invalid", buf);
 			if (strcmp(buf, _genders[nw]) == 0) break;
 		}
-		// now nw contains the gender index
+		/* now nw contains the gender index */
 		PutUtf8(SCC_GENDER_INDEX);
 		PutByte(nw);
 	} else {
 		const char *words[8];
 
-		// This is a {G 0 foo bar two} command.
-		// If no relative number exists, default to +0
+		/* This is a {G 0 foo bar two} command.
+		 * If no relative number exists, default to +0 */
 		if (!ParseRelNum(&buf, &argidx)) {}
 
 		for (nw = 0; nw < 8; nw++) {
@@ -426,15 +426,15 @@ static void EmitGender(char *buf, int value)
 
 
 static const CmdStruct _cmd_structs[] = {
-	// Update position
+	/* Update position */
 	{"SETX",  EmitSetX,  SCC_SETX,  0, 0},
 	{"SETXY", EmitSetXY, SCC_SETXY, 0, 0},
 
-	// Font size
+	/* Font size */
 	{"TINYFONT", EmitSingleChar, SCC_TINYFONT, 0, 0},
 	{"BIGFONT",  EmitSingleChar, SCC_BIGFONT,  0, 0},
 
-	// Colors
+	/* Colors */
 	{"BLUE",    EmitSingleChar, SCC_BLUE,    0, 0},
 	{"SILVER",  EmitSingleChar, SCC_SILVER,  0, 0},
 	{"GOLD",    EmitSingleChar, SCC_GOLD,    0, 0},
@@ -487,7 +487,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"STRING", EmitSingleChar, SCC_STRING, 1, C_CASE},
 	{"RAW_STRING", EmitSingleChar, SCC_RAW_STRING_POINTER, 1, 0},
 
-	// Numbers
+	/* Numbers */
 	{"COMMA", EmitSingleChar, SCC_COMMA, 1, 0}, // Number with comma
 	{"NUM",   EmitSingleChar, SCC_NUM,   1, 0}, // Signed number
 	{"BYTES", EmitSingleChar, SCC_BYTES, 1, 0}, // Unsigned number with "bytes", i.e. "1.02 MiB or 123 KiB"
@@ -565,8 +565,8 @@ static uint ResolveCaseName(const char *str, uint len)
 }
 
 
-// returns NULL on eof
-// else returns command struct
+/* returns NULL on eof
+ * else returns command struct */
 static const CmdStruct *ParseCommandString(const char **str, char *param, int *argno, int *casei)
 {
 	const char *s = *str, *start;
@@ -576,7 +576,7 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 	*argno = -1;
 	*casei = -1;
 
-	// Scan to the next command, exit if there's no next command.
+	/* Scan to the next command, exit if there's no next command. */
 	for (; *s != '{'; s++) {
 		if (*s == '\0') return NULL;
 	}
@@ -590,7 +590,7 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 		s = end + 1;
 	}
 
-	// parse command name
+	/* parse command name */
 	start = s;
 	do {
 		c = *s++;
@@ -620,7 +620,7 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 
 	if (c != '}') {
 		if (c == '=') s--;
-		// copy params
+		/* copy params */
 		start = s;
 		for (;;) {
 			c = *s++;
@@ -714,12 +714,12 @@ static void ExtractCommandString(ParsedCommandStruct *p, const char *s, bool war
 	memset(p, 0, sizeof(*p));
 
 	for (;;) {
-		// read until next command from a.
+		/* read until next command from a. */
 		const CmdStruct *ar = ParseCommandString(&s, param, &argno, &casei);
 
 		if (ar == NULL) break;
 
-		// Sanity checking
+		/* Sanity checking */
 		if (argno != -1 && ar->consumes == 0) error("Non consumer param can't have a paramindex");
 
 		if (ar->consumes) {
@@ -767,19 +767,19 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 	ExtractCommandString(&templ, b, true);
 	ExtractCommandString(&lang, a, true);
 
-	// For each string in templ, see if we find it in lang
+	/* For each string in templ, see if we find it in lang */
 	if (templ.np != lang.np) {
 		strgen_warning("%s: template string and language string have a different # of commands", name);
 		result = false;
 	}
 
 	for (i = 0; i < templ.np; i++) {
-		// see if we find it in lang, and zero it out
+		/* see if we find it in lang, and zero it out */
 		bool found = false;
 		for (j = 0; j < lang.np; j++) {
 			if (templ.pairs[i].a == lang.pairs[j].a &&
 					strcmp(templ.pairs[i].v, lang.pairs[j].v) == 0) {
-				// it was found in both. zero it out from lang so we don't find it again
+				/* it was found in both. zero it out from lang so we don't find it again */
 				lang.pairs[j].a = NULL;
 				found = true;
 				break;
@@ -792,8 +792,8 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 		}
 	}
 
-	// if we reach here, all non consumer commands match up.
-	// Check if the non consumer commands match up also.
+	/* if we reach here, all non consumer commands match up.
+	 * Check if the non consumer commands match up also. */
 	for (i = 0; i < lengthof(templ.cmd); i++) {
 		if (TranslateCmdForCompare(templ.cmd[i]) != TranslateCmdForCompare(lang.cmd[i])) {
 			strgen_warning("%s: Param idx #%d '%s' doesn't match with template command '%s'", name, i,
@@ -817,7 +817,7 @@ static void HandleString(char *str, bool master)
 		return;
 	}
 
-	// Ignore comments & blank lines
+	/* Ignore comments & blank lines */
 	if (*str == ';' || *str == ' ' || *str == '\0') return;
 
 	s = strchr(str, ':');
@@ -826,8 +826,8 @@ static void HandleString(char *str, bool master)
 		return;
 	}
 
-	// Trim spaces.
-	// After this str points to the command name, and s points to the command contents
+	/* Trim spaces.
+	 * After this str points to the command name, and s points to the command contents */
 	for (t = s; t > str && (t[-1] == ' ' || t[-1] == '\t'); t--);
 	*t = 0;
 	s++;
@@ -842,12 +842,12 @@ static void HandleString(char *str, bool master)
 		}
 	}
 
-	// Check if the string has a case..
-	// The syntax for cases is IDENTNAME.case
+	/* Check if the string has a case..
+	 * The syntax for cases is IDENTNAME.case */
 	casep = strchr(str, '.');
 	if (casep) *casep++ = 0;
 
-	// Check if this string already exists..
+	/* Check if this string already exists.. */
 	ent = HashFind(str);
 
 	if (master) {
@@ -867,7 +867,7 @@ static void HandleString(char *str, bool master)
 				return;
 			}
 
-			// Allocate a new LangString
+			/* Allocate a new LangString */
 			ent = CallocT<LangString>(1);
 			_strings[_next_string_id] = ent;
 			ent->index = _next_string_id++;
@@ -900,10 +900,10 @@ static void HandleString(char *str, bool master)
 		}
 
 		if (s[0] == ':' && s[1] == '\0' && casep == NULL) {
-			// Special syntax :: means we should just inherit the master string
+			/* Special syntax :: means we should just inherit the master string */
 			ent->translated = strdup(ent->english);
 		} else {
-			// make sure that the commands match
+			/* make sure that the commands match */
 			if (!CheckCommandsMatch(s, ent->english, str)) return;
 
 			if (casep != NULL) {
@@ -942,8 +942,8 @@ static void ParseFile(const char *file, bool english)
 	_lang_textdir = TD_LTR;
 	_lang_winlangid = 0x0000; // neutral language code
 	_lang_newgrflangid = 0; // standard english
-	// TODO:!! We can't reset the cases. In case the translated strings
-	// derive some strings from english....
+	/* TODO:!! We can't reset the cases. In case the translated strings
+	 * derive some strings from english.... */
 
 	in = fopen(file, "r");
 	if (in == NULL) error("Cannot open file");
@@ -971,7 +971,7 @@ static uint32 MyHashStr(uint32 hash, const char *s)
 }
 
 
-// make a hash of the file to get a unique "version number"
+/* make a hash of the file to get a unique "version number" */
 static void MakeHashOfStrings()
 {
 	uint32 hash = 0;
@@ -1079,10 +1079,10 @@ static void WriteStringsH(const char *filename)
 	fclose(out);
 
 	if (CompareFiles("tmp.xxx", filename)) {
-		// files are equal. tmp.xxx is not needed
+		/* files are equal. tmp.xxx is not needed */
 		unlink("tmp.xxx");
 	} else {
-		// else rename tmp.xxx into filename
+		/* else rename tmp.xxx into filename */
 #if defined(WIN32) || defined(WIN64)
 		unlink(filename);
 #endif
@@ -1122,7 +1122,7 @@ static void PutCommandString(const char *str)
 	_cur_argidx = 0;
 
 	while (*str != '\0') {
-		// Process characters as they are until we encounter a {
+		/* Process characters as they are until we encounter a { */
 		if (*str != '{') {
 			PutByte(*str++);
 			continue;
@@ -1135,15 +1135,15 @@ static void PutCommandString(const char *str)
 			PutByte(casei);
 		}
 
-		// For params that consume values, we need to handle the argindex properly
+		/* For params that consume values, we need to handle the argindex properly */
 		if (cs->consumes > 0) {
-			// Check if we need to output a move-param command
+			/* Check if we need to output a move-param command */
 			if (argno != -1 && argno != _cur_argidx) {
 				_cur_argidx = argno;
 				PutArgidxCommand();
 			}
 
-			// Output the one from the master string... it's always accurate.
+			/* Output the one from the master string... it's always accurate. */
 			cs = _cur_pcs.cmd[_cur_argidx++];
 			if (cs == NULL) {
 				error("%s: No argument exists at position %d", _cur_ident, _cur_argidx - 1);
@@ -1186,7 +1186,7 @@ static void WriteLangfile(const char *filename)
 		hdr.offsets[i] = TO_LE16(n);
 	}
 
-	// see line 655: fprintf(..."\tLANGUAGE_PACK_IDENT = 0x474E414C,...)
+	/* see line 655: fprintf(..."\tLANGUAGE_PACK_IDENT = 0x474E414C,...) */
 	hdr.ident = TO_LE32(0x474E414C); // Big Endian value for 'LANG'
 	hdr.version = TO_LE32(_hash);
 	hdr.plural_form = _lang_pluralform;
@@ -1205,7 +1205,7 @@ static void WriteLangfile(const char *filename)
 			const Case *casep;
 			const char *cmdp;
 
-			// For undefined strings, just set that it's an empty string
+			/* For undefined strings, just set that it's an empty string */
 			if (ls == NULL) {
 				WriteLength(f, 0);
 				continue;
@@ -1214,7 +1214,7 @@ static void WriteLangfile(const char *filename)
 			_cur_ident = ls->name;
 			_cur_line = ls->line;
 
-			// Produce a message if a string doesn't have a translation.
+			/* Produce a message if a string doesn't have a translation. */
 			if (_show_todo > 0 && ls->translated == NULL) {
 				if ((_show_todo & 2) != 0) {
 					strgen_warning("'%s' is untranslated", ls->name);
@@ -1225,7 +1225,7 @@ static void WriteLangfile(const char *filename)
 				}
 			}
 
-			// Extract the strings and stuff from the english command string
+			/* Extract the strings and stuff from the english command string */
 			ExtractCommandString(&_cur_pcs, ls->english, false);
 
 			if (ls->translated_case != NULL || ls->translated != NULL) {
@@ -1242,28 +1242,28 @@ static void WriteLangfile(const char *filename)
 				const Case *c;
 				uint num;
 
-				// Need to output a case-switch.
-				// It has this format
-				// <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
-				// Each LEN is printed using 2 bytes in big endian order.
+				/* Need to output a case-switch.
+				 * It has this format
+				 * <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
+				 * Each LEN is printed using 2 bytes in big endian order. */
 				PutUtf8(SCC_SWITCH_CASE);
-				// Count the number of cases
+				/* Count the number of cases */
 				for (num = 0, c = casep; c; c = c->next) num++;
 				PutByte(num);
 
-				// Write each case
+				/* Write each case */
 				for (c = casep; c != NULL; c = c->next) {
 					int pos;
 
 					PutByte(c->caseidx);
-					// Make some space for the 16-bit length
+					/* Make some space for the 16-bit length */
 					pos = _put_pos;
 					PutByte(0);
 					PutByte(0);
-					// Write string
+					/* Write string */
 					PutCommandString(c->string);
 					PutByte(0); // terminate with a zero
-					// Fill in the length
+					/* Fill in the length */
 					_put_buf[pos + 0] = GB(_put_pos - (pos + 2), 8, 8);
 					_put_buf[pos + 1] = GB(_put_pos - (pos + 2), 0, 8);
 				}

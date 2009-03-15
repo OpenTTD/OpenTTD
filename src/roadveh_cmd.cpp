@@ -374,20 +374,20 @@ static bool EnumRoadSignalFindDepot(TileIndex tile, void *data, Trackdir trackdi
 static const Depot *FindClosestRoadDepot(const Vehicle *v)
 {
 	switch (_settings_game.pf.pathfinder_for_roadvehs) {
-		case VPF_YAPF: /* YAPF */
+		case VPF_YAPF: // YAPF
 			return YapfFindNearestRoadDepot(v);
 
-		case VPF_NPF: { /* NPF */
+		case VPF_NPF: { // NPF
 			/* See where we are now */
 			Trackdir trackdir = GetVehicleTrackdir(v);
 
 			NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, v->tile, ReverseTrackdir(trackdir), false, TRANSPORT_ROAD, v->u.road.compatible_roadtypes, v->owner, INVALID_RAILTYPES, 0);
 
-			if (ftd.best_bird_dist == 0) return GetDepotByTile(ftd.node.tile); /* Target found */
+			if (ftd.best_bird_dist == 0) return GetDepotByTile(ftd.node.tile); // Target found
 		} break;
 
 		default:
-		case VPF_OPF: { /* OPF */
+		case VPF_OPF: { // OPF
 			RoadFindDepotData rfdd;
 
 			rfdd.owner = v->owner;
@@ -402,7 +402,7 @@ static const Depot *FindClosestRoadDepot(const Vehicle *v)
 		} break;
 	}
 
-	return NULL; /* Target not found */
+	return NULL; // Target not found
 }
 
 bool RoadVehicle::FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse)
@@ -1101,18 +1101,18 @@ static Trackdir RoadFindPathToDest(Vehicle *v, TileIndex tile, DiagDirection ent
 	}
 
 	switch (_settings_game.pf.pathfinder_for_roadvehs) {
-		case VPF_YAPF: { /* YAPF */
+		case VPF_YAPF: { // YAPF
 			Trackdir trackdir = YapfChooseRoadTrack(v, tile, enterdir);
 			if (trackdir != INVALID_TRACKDIR) return_track(trackdir);
 			return_track(PickRandomBit(trackdirs));
 		} break;
 
-		case VPF_NPF: { /* NPF */
+		case VPF_NPF: { // NPF
 			NPFFindStationOrTileData fstd;
 
 			NPFFillWithOrderData(&fstd, v);
 			Trackdir trackdir = DiagDirToDiagTrackdir(enterdir);
-			//debug("Finding path. Enterdir: %d, Trackdir: %d", enterdir, trackdir);
+			/* debug("Finding path. Enterdir: %d, Trackdir: %d", enterdir, trackdir); */
 
 			NPFFoundTargetData ftd = PerfNPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, TRANSPORT_ROAD, v->u.road.compatible_roadtypes, v->owner, INVALID_RAILTYPES);
 			if (ftd.best_trackdir == INVALID_TRACKDIR) {
@@ -1130,7 +1130,7 @@ static Trackdir RoadFindPathToDest(Vehicle *v, TileIndex tile, DiagDirection ent
 		} break;
 
 		default:
-		case VPF_OPF: { /* OPF */
+		case VPF_OPF: { // OPF
 			DiagDirection dir;
 
 			if (IsTileType(desttile, MP_ROAD)) {

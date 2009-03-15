@@ -17,7 +17,7 @@ public:
 	typedef typename Node::Key Key;                      ///< key to hash tables
 
 protected:
-	/// to access inherited path finder
+	/** to access inherited path finder */
 	FORCEINLINE Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
@@ -35,7 +35,7 @@ public:
 		}
 	}
 
-	/// return debug report character to identify the transportation type
+	/** return debug report character to identify the transportation type */
 	FORCEINLINE char TransportTypeChar() const
 	{
 		return 'w';
@@ -43,44 +43,44 @@ public:
 
 	static Trackdir ChooseShipTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 	{
-		// handle special case - when next tile is destination tile
+		/* handle special case - when next tile is destination tile */
 		if (tile == v->dest_tile) {
-			// convert tracks to trackdirs
+			/* convert tracks to trackdirs */
 			TrackdirBits trackdirs = (TrackdirBits)(tracks | ((int)tracks << 8));
-			// choose any trackdir reachable from enterdir
+			/* choose any trackdir reachable from enterdir */
 			trackdirs &= DiagdirReachesTrackdirs(enterdir);
 			return (Trackdir)FindFirstBit2x64(trackdirs);
 		}
 
-		// move back to the old tile/trackdir (where ship is coming from)
+		/* move back to the old tile/trackdir (where ship is coming from) */
 		TileIndex src_tile = TILE_ADD(tile, TileOffsByDiagDir(ReverseDiagDir(enterdir)));
 		Trackdir trackdir = GetVehicleTrackdir(v);
 		assert(IsValidTrackdir(trackdir));
 
-		// convert origin trackdir to TrackdirBits
+		/* convert origin trackdir to TrackdirBits */
 		TrackdirBits trackdirs = TrackdirToTrackdirBits(trackdir);
-		// get available trackdirs on the destination tile
+		/* get available trackdirs on the destination tile */
 		TrackdirBits dest_trackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_WATER, 0));
 
-		// create pathfinder instance
+		/* create pathfinder instance */
 		Tpf pf;
-		// set origin and destination nodes
+		/* set origin and destination nodes */
 		pf.SetOrigin(src_tile, trackdirs);
 		pf.SetDestination(v->dest_tile, dest_trackdirs);
-		// find best path
+		/* find best path */
 		pf.FindPath(v);
 
 		Trackdir next_trackdir = INVALID_TRACKDIR; // this would mean "path not found"
 
 		Node *pNode = pf.GetBestNode();
 		if (pNode != NULL) {
-			// walk through the path back to the origin
+			/* walk through the path back to the origin */
 			Node *pPrevNode = NULL;
 			while (pNode->m_parent != NULL) {
 				pPrevNode = pNode;
 				pNode = pNode->m_parent;
 			}
-			// return trackdir from the best next node (direct child of origin)
+			/* return trackdir from the best next node (direct child of origin) */
 			Node& best_next_node = *pPrevNode;
 			assert(best_next_node.GetTile() == tile);
 			next_trackdir = best_next_node.GetTrackdir();
@@ -100,7 +100,7 @@ public:
 	typedef typename Node::Key Key;               ///< key to hash tables
 
 protected:
-	/// to access inherited path finder
+	/** to access inherited path finder */
 	Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
@@ -112,9 +112,9 @@ public:
 	 *  and stores the result into Node::m_cost member */
 	FORCEINLINE bool PfCalcCost(Node& n, const TrackFollower *tf)
 	{
-		// base tile cost depending on distance
+		/* base tile cost depending on distance */
 		int c = IsDiagonalTrackdir(n.GetTrackdir()) ? 10 : 7;
-		// additional penalty for curves
+		/* additional penalty for curves */
 		if (n.m_parent != NULL && n.GetTrackdir() != NextTrackdir(n.m_parent->GetTrackdir())) {
 			/* new trackdir does not match the next one when going straight */
 			c += 10;
@@ -122,7 +122,7 @@ public:
 
 		c += YAPF_TILE_LENGTH * tf->m_tiles_skipped;
 
-		// apply it
+		/* apply it */
 		n.m_cost = n.m_parent->m_cost + c;
 		return true;
 	}
@@ -152,21 +152,21 @@ struct CYapfShip_TypesT
 	typedef CYapfCostShipT<Types>             PfCost;        // cost provider
 };
 
-// YAPF type 1 - uses TileIndex/Trackdir as Node key, allows 90-deg turns
+/* YAPF type 1 - uses TileIndex/Trackdir as Node key, allows 90-deg turns */
 struct CYapfShip1 : CYapfT<CYapfShip_TypesT<CYapfShip1, CFollowTrackWater    , CShipNodeListTrackDir> > {};
-// YAPF type 2 - uses TileIndex/DiagDirection as Node key, allows 90-deg turns
+/* YAPF type 2 - uses TileIndex/DiagDirection as Node key, allows 90-deg turns */
 struct CYapfShip2 : CYapfT<CYapfShip_TypesT<CYapfShip2, CFollowTrackWater    , CShipNodeListExitDir > > {};
-// YAPF type 3 - uses TileIndex/Trackdir as Node key, forbids 90-deg turns
+/* YAPF type 3 - uses TileIndex/Trackdir as Node key, forbids 90-deg turns */
 struct CYapfShip3 : CYapfT<CYapfShip_TypesT<CYapfShip3, CFollowTrackWaterNo90, CShipNodeListTrackDir> > {};
 
 /** Ship controller helper - path finder invoker */
 Trackdir YapfChooseShipTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 {
-	// default is YAPF type 2
+	/* default is YAPF type 2 */
 	typedef Trackdir (*PfnChooseShipTrack)(const Vehicle*, TileIndex, DiagDirection, TrackBits);
 	PfnChooseShipTrack pfnChooseShipTrack = CYapfShip2::ChooseShipTrack; // default: ExitDir, allow 90-deg
 
-	// check if non-default YAPF type needed
+	/* check if non-default YAPF type needed */
 	if (_settings_game.pf.forbid_90_deg) {
 		pfnChooseShipTrack = &CYapfShip3::ChooseShipTrack; // Trackdir, forbid 90-deg
 	} else if (_settings_game.pf.yapf.disable_node_optimization) {

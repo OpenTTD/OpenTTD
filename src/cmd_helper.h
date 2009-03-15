@@ -21,7 +21,7 @@ template<> struct ExtractBits<RoadBits>      { static const uint Count =  4; };
 
 template<typename T, uint N, typename U> static inline T Extract(U v)
 {
-	// Check if there are enough bits in v
+	/* Check if there are enough bits in v */
 	ExtractValid<N + ExtractBits<T>::Count <= sizeof(U) * 8>();
 	return (T)GB(v, N, ExtractBits<T>::Count);
 }

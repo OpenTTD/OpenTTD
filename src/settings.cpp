@@ -309,8 +309,8 @@ static const void *string_to_val(const SettingDescBase *desc, const char *str)
 		/* if the first attempt of conversion from string to the appropriate value fails,
 		 * look if we have defined a converter from old value to new value. */
 		if (r == -1 && desc->proc_cnvt != NULL) r = desc->proc_cnvt(str);
-		if (r != -1) return (void*)r; //and here goes converted value
-		ShowInfoF("ini: invalid value '%s' for '%s'", str, desc->name); //sorry, we failed
+		if (r != -1) return (void*)r; // and here goes converted value
+		ShowInfoF("ini: invalid value '%s' for '%s'", str, desc->name); // sorry, we failed
 		return 0;
 	}
 	case SDT_MANYOFMANY: {
@@ -434,7 +434,7 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 		ptr = GetVariableAddress(object, sld);
 
 		switch (sdb->cmd) {
-		case SDT_BOOLX: /* All four are various types of (integer) numbers */
+		case SDT_BOOLX: // All four are various types of (integer) numbers
 		case SDT_NUMX:
 		case SDT_ONEOFMANY:
 		case SDT_MANYOFMANY:
@@ -543,7 +543,7 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 				default: NOT_REACHED();
 				}
 				break;
-			default: break; /* Assume the other types are always changed */
+			default: break; // Assume the other types are always changed
 			}
 		}
 
@@ -652,9 +652,9 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 	}
 }
 
-//***************************
-// OTTD specific INI stuff
-//***************************
+/****************************
+ * OTTD specific INI stuff
+ ****************************/
 
 /** Settings-macro usage:
  * The list might look daunting at first, but is in general easy to understand.
@@ -824,8 +824,8 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 #define NN SGF_NO_NETWORK
 #define NG SGF_NEWGAME_ONLY
 
-/* Begin - Callback Functions for the various settings */
-/* virtual PositionMainToolbar function, calls the right one.*/
+/* Begin - Callback Functions for the various settings
+ * virtual PositionMainToolbar function, calls the right one.*/
 static bool v_PositionMainToolbar(int32 p1)
 {
 	if (_game_mode != GM_MENU) PositionMainToolbar(NULL);
@@ -1667,7 +1667,7 @@ bool ConvertOldNewsSetting(const char *name, const char *value)
 		 * So the job is now to decrypt the value of the old news config
 		 * and give it to the two newly introduced ones*/
 
-		NewsDisplay display = ND_OFF;  //default
+		NewsDisplay display = ND_OFF; // default
 		if (strcasecmp(value, "full") == 0) {
 			display = ND_FULL;
 		} else if (strcasecmp(value, "summarized") == 0) {

@@ -37,19 +37,19 @@ public:
 	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
 	typedef typename Node::Key Key;               ///< key to hash tables
 
-	/// to access inherited path finder
+	/** to access inherited path finder */
 	Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
 	}
 
-	/// Called by YAPF to detect if node ends in the desired destination
+	/** Called by YAPF to detect if node ends in the desired destination */
 	FORCEINLINE bool PfDetectDestination(Node& n)
 	{
 		return PfDetectDestination(n.GetLastTile(), n.GetLastTrackdir());
 	}
 
-	/// Called by YAPF to detect if node ends in the desired destination
+	/** Called by YAPF to detect if node ends in the desired destination */
 	FORCEINLINE bool PfDetectDestination(TileIndex tile, Trackdir td)
 	{
 		bool bDest = IsRailDepotTile(tile);
@@ -75,19 +75,19 @@ public:
 	typedef typename Node::Key Key;               ///< key to hash tables
 	typedef typename Types::TrackFollower TrackFollower; ///< TrackFollower. Need to typedef for gcc 2.95
 
-	/// to access inherited path finder
+	/** to access inherited path finder */
 	Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
 	}
 
-	/// Called by YAPF to detect if node ends in the desired destination
+	/** Called by YAPF to detect if node ends in the desired destination */
 	FORCEINLINE bool PfDetectDestination(Node& n)
 	{
 		return PfDetectDestination(n.GetLastTile(), n.GetLastTrackdir());
 	}
 
-	/// Called by YAPF to detect if node ends in the desired destination
+	/** Called by YAPF to detect if node ends in the desired destination */
 	FORCEINLINE bool PfDetectDestination(TileIndex tile, Trackdir td)
 	{
 		return
@@ -118,7 +118,7 @@ protected:
 	TrackdirBits m_destTrackdirs;
 	StationID    m_dest_station_id;
 
-	/// to access inherited path finder
+	/** to access inherited path finder */
 	Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
@@ -160,13 +160,13 @@ public:
 		CYapfDestinationRailBase::SetDestination(v);
 	}
 
-	/// Called by YAPF to detect if node ends in the desired destination
+	/** Called by YAPF to detect if node ends in the desired destination */
 	FORCEINLINE bool PfDetectDestination(Node& n)
 	{
 		return PfDetectDestination(n.GetLastTile(), n.GetLastTrackdir());
 	}
 
-	/// Called by YAPF to detect if node ends in the desired destination
+	/** Called by YAPF to detect if node ends in the desired destination */
 	FORCEINLINE bool PfDetectDestination(TileIndex tile, Trackdir td)
 	{
 		bool bDest;

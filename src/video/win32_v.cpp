@@ -148,14 +148,14 @@ static bool AllocateDibSection(int w, int h);
 
 static void ClientSizeChanged(int w, int h)
 {
-	// allocate new dib section of the new size
+	/* allocate new dib section of the new size */
 	if (AllocateDibSection(w, h)) {
-		// mark all palette colors dirty
+		/* mark all palette colors dirty */
 		_pal_first_dirty = 0;
 		_pal_count_dirty = 256;
 		GameSizeChanged();
 
-		// redraw screen
+		/* redraw screen */
 		if (_wnd.running) {
 			_screen.dst_ptr = _wnd.buffer_bits;
 			UpdateWindows();
@@ -164,8 +164,8 @@ static void ClientSizeChanged(int w, int h)
 }
 
 #ifdef _DEBUG
-// Keep this function here..
-// It allows you to redraw the screen from within the MSVC debugger
+/* Keep this function here..
+ * It allows you to redraw the screen from within the MSVC debugger */
 int RedrawScreenDebug()
 {
 	HDC dc, dc2;
@@ -220,7 +220,7 @@ static bool MakeWindow(bool full_screen)
 {
 	_fullscreen = full_screen;
 
-	// recreate window?
+	/* recreate window? */
 	if ((full_screen || _wnd.fullscreen) && _wnd.main_wnd) {
 		DestroyWindow(_wnd.main_wnd);
 		_wnd.main_wnd = 0;
@@ -252,7 +252,7 @@ static bool MakeWindow(bool full_screen)
 			return false;  // the request failed
 		}
 	} else if (_wnd.fullscreen) {
-		// restore display?
+		/* restore display? */
 		ChangeDisplaySettings(NULL, 0);
 	}
 #endif
@@ -500,21 +500,21 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			return 0;
 		}
 
-		case WM_SYSKEYDOWN: /* user presses F10 or Alt, both activating the title-menu */
+		case WM_SYSKEYDOWN: // user presses F10 or Alt, both activating the title-menu
 			switch (wParam) {
 				case VK_RETURN:
-				case 'F': /* Full Screen on ALT + ENTER/F */
+				case 'F': // Full Screen on ALT + ENTER/F
 					ToggleFullScreen(!_wnd.fullscreen);
 					return 0;
 
-				case VK_MENU: /* Just ALT */
+				case VK_MENU: // Just ALT
 					return 0; // do nothing
 
-				case VK_F10: /* F10, ignore activation of menu */
+				case VK_F10: // F10, ignore activation of menu
 					HandleKeypress(MapWindowsKey(wParam) << 16);
 					return 0;
 
-				default: /* ALT in combination with something else */
+				default: // ALT in combination with something else
 					HandleKeypress(MapWindowsKey(wParam) << 16);
 					break;
 			}
@@ -590,13 +590,13 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		}
 #endif
 
-// needed for wheel
+/* needed for wheel */
 #if !defined(WM_MOUSEWHEEL)
 # define WM_MOUSEWHEEL 0x020A
-#endif  //WM_MOUSEWHEEL
+#endif  /* WM_MOUSEWHEEL */
 #if !defined(GET_WHEEL_DELTA_WPARAM)
 # define GET_WHEEL_DELTA_WPARAM(wparam) ((short)HIWORD(wparam))
-#endif  //GET_WHEEL_DELTA_WPARAM
+#endif  /* GET_WHEEL_DELTA_WPARAM */
 
 		case WM_MOUSEWHEEL: {
 			int delta = GET_WHEEL_DELTA_WPARAM(wParam);
@@ -723,8 +723,8 @@ static void FindResolutions()
 {
 	uint n = 0;
 #if defined(WINCE)
-	/* EnumDisplaySettingsW is only supported in CE 4.2+ */
-	/* XXX -- One might argue that we assume 4.2+ on every system. Then we can use this function safely */
+	/* EnumDisplaySettingsW is only supported in CE 4.2+
+	 * XXX -- One might argue that we assume 4.2+ on every system. Then we can use this function safely */
 #else
 	uint i;
 	DEVMODEA dm;
@@ -778,7 +778,7 @@ const char *VideoDriver_Win32::Start(const char * const *parm)
 
 	DEBUG(driver, 2, "Resolution for display: %dx%d", _cur_resolution.width, _cur_resolution.height);
 
-	// fullscreen uses those
+	/* fullscreen uses those */
 	_wnd.width_org  = _cur_resolution.width;
 	_wnd.height_org = _cur_resolution.height;
 
@@ -858,7 +858,7 @@ void VideoDriver_Win32::MainLoop()
 			_ctrl_pressed = _wnd.has_focus && GetAsyncKeyState(VK_CONTROL)<0;
 			_shift_pressed = _wnd.has_focus && GetAsyncKeyState(VK_SHIFT)<0;
 
-			// determine which directional keys are down
+			/* determine which directional keys are down */
 			if (_wnd.has_focus) {
 				_dirkeys =
 					(GetAsyncKeyState(VK_LEFT) < 0 ? 1 : 0) +

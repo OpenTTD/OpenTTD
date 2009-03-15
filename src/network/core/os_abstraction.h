@@ -50,7 +50,7 @@ typedef unsigned long in_addr_t;
 #	include <sys/ioctl.h>
 #	if defined(__BEOS__) && defined(BEOS_NET_SERVER)
 #		include <be/net/socket.h>
-#		include <be/kernel/OS.h> // snooze()
+#		include <be/kernel/OS.h> /* snooze() */
 #		include <be/net/netdb.h>
 		typedef unsigned long in_addr_t;
 #		define INADDR_NONE INADDR_BROADCAST
@@ -85,7 +85,7 @@ typedef unsigned long in_addr_t;
 #	include <errno.h>
 #	include <sys/time.h>
 #	include <netdb.h>
-#endif // UNIX
+#endif /* UNIX */
 
 #ifdef __BEOS__
 	typedef int socklen_t;
@@ -146,13 +146,13 @@ typedef unsigned long in_addr_t;
 /* MorphOS and Amiga stuff */
 #if defined(__MORPHOS__) || defined(__AMIGA__)
 #	include <exec/types.h>
-#	include <proto/exec.h>   // required for Open/CloseLibrary()
+#	include <proto/exec.h>   /* required for Open/CloseLibrary() */
 	/* MorphOS defines his network functions with UBYTE arrays while we
 	 *  use char arrays. This gives tons of unneeded warnings */
 #	define UBYTE char
 #	if defined(__MORPHOS__)
-#		include <sys/filio.h>  // FIO* defines
-#		include <sys/sockio.h> // SIO* defines
+#		include <sys/filio.h>  /* FIO* defines */
+#		include <sys/sockio.h> /* SIO* defines */
 #		include <netinet/in.h>
 #	else /* __AMIGA__ */
 #		include	<proto/socket.h>
@@ -174,7 +174,7 @@ typedef unsigned long in_addr_t;
 	extern struct MsgPort     *TimerPort;
 	extern struct timerequest *TimerRequest;
 #	endif
-#endif // __MORPHOS__ || __AMIGA__
+#endif /* __MORPHOS__ || __AMIGA__ */
 
 static inline bool SetNonBlocking(SOCKET d)
 {
@@ -193,7 +193,7 @@ static inline bool SetNonBlocking(SOCKET d)
 static inline bool SetNoDelay(SOCKET d)
 {
 	/* XXX should this be done at all? */
-#if !defined(BEOS_NET_SERVER) // not implemented on BeOS net_server
+#if !defined(BEOS_NET_SERVER) /* not implemented on BeOS net_server */
 	int b = 1;
 	/* The (const char*) cast is needed for windows */
 	return setsockopt(d, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b)) == 0;

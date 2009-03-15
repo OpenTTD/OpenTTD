@@ -316,8 +316,8 @@ public:
 			*item = MAX_CLIENT_SLOTS;
 		}
 
-		/* Then, try townnames */
-		/* Not that the following assumes all town indices are adjacent, ie no
+		/* Then, try townnames
+		 * Not that the following assumes all town indices are adjacent, ie no
 		 * towns have been deleted. */
 		if (*item <= (uint)MAX_CLIENT_SLOTS + GetMaxTownIndex()) {
 			const Town *t;

@@ -675,7 +675,7 @@ void RunTileLoop()
 		if (TileX(tile) < MapSizeX() - TILELOOP_SIZE) {
 			tile += TILELOOP_SIZE; // no overflow
 		} else {
-			tile = TILE_MASK(tile - TILELOOP_SIZE * (MapSizeX() / TILELOOP_SIZE - 1) + TileDiffXY(0, TILELOOP_SIZE)); /* x would overflow, also increase y */
+			tile = TILE_MASK(tile - TILELOOP_SIZE * (MapSizeX() / TILELOOP_SIZE - 1) + TileDiffXY(0, TILELOOP_SIZE)); // x would overflow, also increase y
 		}
 	} while (--count != 0);
 	assert((tile & ~TILELOOP_ASSERTMASK) == 0);

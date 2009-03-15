@@ -1128,7 +1128,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 			switch (t1->layout) {
 				default: NOT_REACHED();
 
-				case TL_3X3_GRID: /* Use 2x2 grid afterwards! */
+				case TL_3X3_GRID: // Use 2x2 grid afterwards!
 					GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir));
 					/* FALL THROUGH */
 
@@ -1137,7 +1137,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 					allow_house = (rcmd == ROAD_NONE);
 					break;
 
-				case TL_BETTER_ROADS: /* Use original afterwards! */
+				case TL_BETTER_ROADS: // Use original afterwards!
 					GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir));
 					/* FALL THROUGH */
 

@@ -100,7 +100,7 @@ extern uint32 _frame_counter;
 
 extern uint32 _last_sync_frame; // Used in the server to store the last time a sync packet was sent to clients.
 
-// networking settings
+/* networking settings */
 extern uint32 _broadcast_list[MAX_INTERFACES + 1];
 
 extern uint32 _network_server_bind_ip;
@@ -108,7 +108,7 @@ extern uint32 _network_server_bind_ip;
 extern uint32 _sync_seed_1, _sync_seed_2;
 extern uint32 _sync_frame;
 extern bool _network_first_time;
-// Vars needed for the join-GUI
+/* Vars needed for the join-GUI */
 extern NetworkJoinStatus _network_join_status;
 extern uint8 _network_join_waiting;
 extern uint32 _network_join_bytes;
@@ -146,7 +146,7 @@ void NetworkAddCommandQueue(CommandPacket cp, NetworkClientSocket *cs = NULL);
 void NetworkExecuteLocalCommandQueue();
 void NetworkFreeLocalCommandQueue();
 
-// from network.c
+/* from network.c */
 void NetworkCloseClient(NetworkClientSocket *cs);
 void NetworkTextMessage(NetworkAction action, ConsoleColour colour, bool self_send, const char *name, const char *str = "", int64 data = 0);
 void NetworkGetClientName(char *clientname, size_t size, const NetworkClientSocket *cs);
@@ -156,7 +156,7 @@ NetworkClientSocket *NetworkFindClientStateFromClientID(ClientID client_id);
 StringID GetNetworkErrorMsg(NetworkErrorCode err);
 bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH]);
 
-// Macros to make life a bit more easier
+/* Macros to make life a bit more easier */
 #define DEF_CLIENT_RECEIVE_COMMAND(type) NetworkRecvStatus NetworkPacketReceive_ ## type ## _command(Packet *p)
 #define DEF_CLIENT_SEND_COMMAND(type) void NetworkPacketSend_ ## type ## _command()
 #define DEF_CLIENT_SEND_COMMAND_PARAM(type) void NetworkPacketSend_ ## type ## _command

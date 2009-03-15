@@ -362,7 +362,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 	int speed = v->cur_speed * 10 / 16; // km-ish/h -> mp/h
 	int curvecount[2] = {0, 0};
 
-	/*first find the curve speed limit */
+	/* first find the curve speed limit */
 	int numcurve = 0;
 	int sum = 0;
 	int pos = 0;
@@ -387,7 +387,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 			lastpos = pos;
 		}
 
-		/*if we have a 90 degree turn, fix the speed limit to 60 */
+		/* if we have a 90 degree turn, fix the speed limit to 60 */
 		if (dirdiff == DIRDIFF_90LEFT || dirdiff == DIRDIFF_90RIGHT) {
 			max_speed = 61;
 		}
@@ -435,7 +435,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 	int power = v->u.rail.cached_power * 746;
 	max_speed = min(max_speed, v->u.rail.cached_max_speed);
 
-	int num = 0; //number of vehicles, change this into the number of axles later
+	int num = 0; // number of vehicles, change this into the number of axles later
 	int incl = 0;
 	int drag_coeff = 20; //[1e-4]
 	for (const Vehicle *u = v; u != NULL; u = u->Next()) {
@@ -445,7 +445,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 		if (u->u.rail.track == TRACK_BIT_DEPOT) max_speed = min(max_speed, 61);
 
 		if (HasBit(u->u.rail.flags, VRF_GOINGUP)) {
-			incl += u->u.rail.cached_veh_weight * 60; //3% slope, quite a bit actually
+			incl += u->u.rail.cached_veh_weight * 60; // 3% slope, quite a bit actually
 		} else if (HasBit(u->u.rail.flags, VRF_GOINGDOWN)) {
 			incl -= u->u.rail.cached_veh_weight * 60;
 		}
@@ -1379,7 +1379,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	CommandCost cost(EXPENSES_NEW_VEHICLES);
 	switch (p2) {
-		case 0: { /* Delete given wagon */
+		case 0: { // Delete given wagon
 			bool switch_engine = false;    // update second wagon to engine?
 
 			/* 1. Delete the engine, if it is dualheaded also delete the matching
@@ -1454,7 +1454,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 			}
 		} break;
-		case 1: { /* Delete wagon and all wagons after it given certain criteria */
+		case 1: { // Delete wagon and all wagons after it given certain criteria
 			/* Start deleting every vehicle after the selected one
 			 * If we encounter a matching rear-engine to a front-engine
 			 * earlier in the chain (before deletion), leave it alone */
@@ -2129,12 +2129,12 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 	if ((_settings_game.pf.reserve_paths || HasReservedTracks(v->tile, v->u.rail.track)) && pathfinder == VPF_NTP) pathfinder = VPF_NPF;
 
 	switch (pathfinder) {
-		case VPF_YAPF: { /* YAPF */
+		case VPF_YAPF: { // YAPF
 			bool found = YapfFindNearestRailDepotTwoWay(v, max_distance, NPF_INFINITE_PENALTY, &tfdd.tile, &tfdd.reverse);
 			tfdd.best_length = found ? max_distance / 2 : UINT_MAX; // some fake distance or NOT_FOUND
 		} break;
 
-		case VPF_NPF: { /* NPF */
+		case VPF_NPF: { // NPF
 			const Vehicle *last = GetLastVehicleInChain(v);
 			Trackdir trackdir = GetVehicleTrackdir(v);
 			Trackdir trackdir_rev = ReverseTrackdir(GetVehicleTrackdir(last));
@@ -2154,7 +2154,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 		} break;
 
 		default:
-		case VPF_NTP: { /* NTP */
+		case VPF_NTP: { // NTP
 			/* search in the forward direction first. */
 			DiagDirection i = TrainExitDir(v->direction, v->u.rail.track);
 			NewTrainPathfind(v->tile, 0, v->u.rail.compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
@@ -2588,7 +2588,7 @@ static Track DoTrainPathfind(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 	if (do_track_reservation && pathfinder == VPF_NTP) pathfinder = VPF_NPF;
 
 	switch (pathfinder) {
-		case VPF_YAPF: { /* YAPF */
+		case VPF_YAPF: { // YAPF
 			Trackdir trackdir = YapfChooseRailTrack(v, tile, enterdir, tracks, path_not_found, do_track_reservation, dest);
 			if (trackdir != INVALID_TRACKDIR) {
 				best_track = TrackdirToTrack(trackdir);
@@ -2597,7 +2597,7 @@ static Track DoTrainPathfind(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 			}
 		} break;
 
-		case VPF_NPF: { /* NPF */
+		case VPF_NPF: { // NPF
 			void *perf = NpfBeginInterval();
 
 			NPFFindStationOrTileData fstd;
@@ -2634,7 +2634,7 @@ static Track DoTrainPathfind(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 		} break;
 
 		default:
-		case VPF_NTP: { /* NTP */
+		case VPF_NTP: { // NTP
 			void *perf = NpfBeginInterval();
 
 			TrainTrackFollowerData fd;
@@ -3129,11 +3129,11 @@ static bool CheckReverseTrain(Vehicle *v)
 	assert(v->u.rail.track);
 
 	switch (_settings_game.pf.pathfinder_for_trains) {
-		case VPF_YAPF: /* YAPF */
+		case VPF_YAPF: // YAPF
 			reverse_best = YapfCheckReverseTrain(v);
 			break;
 
-		case VPF_NPF: { /* NPF */
+		case VPF_NPF: { // NPF
 			NPFFindStationOrTileData fstd;
 			NPFFoundTargetData ftd;
 			Vehicle *last = GetLastVehicleInChain(v);
@@ -3159,7 +3159,7 @@ static bool CheckReverseTrain(Vehicle *v)
 		} break;
 
 		default:
-		case VPF_NTP: { /* NTP */
+		case VPF_NTP: { // NTP
 			TrainTrackFollowerData fd;
 			FillWithStationData(&fd, v);
 
@@ -3409,7 +3409,7 @@ struct RailtypeSlowdownParams {
 };
 
 static const RailtypeSlowdownParams _railtype_slowdown[] = {
-	// normal accel
+	/* normal accel */
 	{256 / 4, 256 / 2, 256 / 4, 2}, ///< normal
 	{256 / 4, 256 / 2, 256 / 4, 2}, ///< electrified
 	{256 / 4, 256 / 2, 256 / 4, 2}, ///< monorail
@@ -4083,7 +4083,7 @@ static bool TrainApproachingLineEnd(Vehicle *v, bool signal)
 	 * for other directions, it will be 1, 3, 5, ..., 15 */
 	switch (v->direction) {
 		case DIR_N : x = ~x + ~y + 25; break;
-		case DIR_NW: x = y;            /* FALLTHROUGH */
+		case DIR_NW: x = y;            // FALLTHROUGH
 		case DIR_NE: x = ~x + 16;      break;
 		case DIR_E : x = ~x + y + 9;   break;
 		case DIR_SE: x = y;            break;

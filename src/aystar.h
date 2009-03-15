@@ -35,16 +35,16 @@ struct AyStarNode {
 	uint user_data[2];
 };
 
-// The resulting path has nodes looking like this.
+/* The resulting path has nodes looking like this. */
 struct PathNode {
 	AyStarNode node;
-	// The parent of this item
+	/* The parent of this item */
 	PathNode *parent;
 };
 
-// For internal use only
-// We do not save the h-value, because it is only needed to calculate the f-value.
-//  h-value should _always_ be the distance left to the end-tile.
+/* For internal use only
+ * We do not save the h-value, because it is only needed to calculate the f-value.
+ *  h-value should _always_ be the distance left to the end-tile. */
 struct OpenListNode {
 	int g;
 	PathNode path;
@@ -97,7 +97,7 @@ typedef void AyStar_GetNeighbours(AyStar *aystar, OpenListNode *current);
  */
 typedef void AyStar_FoundEndNode(AyStar *aystar, OpenListNode *current);
 
-// For internal use, see aystar.c
+/* For internal use, see aystar.cpp */
 typedef void AyStar_AddStartNode(AyStar *aystar, AyStarNode *start_node, uint g);
 typedef int AyStar_Main(AyStar *aystar);
 typedef int AyStar_Loop(AyStar *aystar);

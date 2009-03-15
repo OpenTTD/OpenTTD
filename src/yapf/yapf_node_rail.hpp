@@ -266,11 +266,11 @@ struct CYapfRailNodeT
 	}
 };
 
-// now define two major node types (that differ by key type)
+/* now define two major node types (that differ by key type) */
 typedef CYapfRailNodeT<CYapfNodeKeyExitDir>  CYapfRailNodeExitDir;
 typedef CYapfRailNodeT<CYapfNodeKeyTrackDir> CYapfRailNodeTrackDir;
 
-// Default NodeList types
+/* Default NodeList types */
 typedef CNodeList_HashTableT<CYapfRailNodeExitDir , 10, 12> CRailNodeListExitDir;
 typedef CNodeList_HashTableT<CYapfRailNodeTrackDir, 12, 16> CRailNodeListTrackDir;
 

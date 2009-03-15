@@ -6,7 +6,7 @@
 #define MACOS_STDAFX_H
 
 #include <CoreServices/CoreServices.h>
-// remove the variables that CoreServices defines, but we define ourselves too
+/* remove the variables that CoreServices defines, but we define ourselves too */
 #undef bool
 #undef false
 #undef true

@@ -1197,7 +1197,7 @@ Trackdir GetVehicleTrackdir(const Vehicle *v)
 
 		case VEH_SHIP:
 			if (v->IsInDepot())
-				// We'll assume the ship is facing outwards
+				/* We'll assume the ship is facing outwards */
 				return DiagDirToDiagTrackdir(GetShipDepotDirection(v->tile));
 
 			if (v->u.ship.state == TRACK_BIT_WORMHOLE) // ship on aqueduct, so just use his direction and assume a diagonal track

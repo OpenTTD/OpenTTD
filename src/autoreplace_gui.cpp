@@ -342,7 +342,7 @@ public:
 				this->SetDirty();
 				break;
 
-			case RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN: { /* Railtype selection dropdown menu */
+			case RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN: { // Railtype selection dropdown menu
 				const Company *c = GetCompany(_local_company);
 				DropDownList *list = new DropDownList();
 				for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
@@ -355,18 +355,18 @@ public:
 				break;
 			}
 
-			case RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE: /* toggle renew_keep_length */
+			case RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE: // toggle renew_keep_length
 				DoCommandP(0, 5, GetCompany(_local_company)->renew_keep_length ? 0 : 1, CMD_SET_AUTOREPLACE);
 				break;
 
-			case RVW_WIDGET_START_REPLACE: { /* Start replacing */
+			case RVW_WIDGET_START_REPLACE: { // Start replacing
 				EngineID veh_from = this->sel_engine[0];
 				EngineID veh_to = this->sel_engine[1];
 				DoCommandP(0, 3 + (this->sel_group << 16) , veh_from + (veh_to << 16), CMD_SET_AUTOREPLACE);
 				this->SetDirty();
 			} break;
 
-			case RVW_WIDGET_STOP_REPLACE: { /* Stop replacing */
+			case RVW_WIDGET_STOP_REPLACE: { // Stop replacing
 				EngineID veh_from = this->sel_engine[0];
 				DoCommandP(0, 3 + (this->sel_group << 16), veh_from + (INVALID_ENGINE << 16), CMD_SET_AUTOREPLACE);
 				this->SetDirty();

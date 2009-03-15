@@ -70,7 +70,7 @@ public:
 	int                  m_num_steps;          ///< this is there for debugging purposes (hope it doesn't hurt)
 
 public:
-	/// default constructor
+	/** default constructor */
 	FORCEINLINE CYapfBaseT()
 		: m_pBestDestNode(NULL)
 		, m_pBestIntermediateNode(NULL)
@@ -83,18 +83,18 @@ public:
 	{
 	}
 
-	/// default destructor
+	/** default destructor */
 	~CYapfBaseT() {}
 
 protected:
-	/// to access inherited path finder
+	/** to access inherited path finder */
 	FORCEINLINE Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
 	}
 
 public:
-	/// return current settings (can be custom - company based - but later)
+	/** return current settings (can be custom - company based - but later) */
 	FORCEINLINE const YAPFSettings& PfGetSettings() const
 	{
 		return *m_settings;
@@ -125,7 +125,7 @@ public:
 				break;
 			}
 
-			// if the best open node was worse than the best path found, we can finish
+			/* if the best open node was worse than the best path found, we can finish */
 			if (m_pBestDestNode != NULL && m_pBestDestNode->GetCost() < n->GetCostEstimate()) {
 				break;
 			}
@@ -187,13 +187,13 @@ public:
 	FORCEINLINE void AddStartupNode(Node& n)
 	{
 		Yapf().PfNodeCacheFetch(n);
-		// insert the new node only if it is not there
+		/* insert the new node only if it is not there */
 		if (m_nodes.FindOpenNode(n.m_key) == NULL) {
 			m_nodes.InsertOpenNode(n);
 		} else {
-			// if we are here, it means that node is already there - how it is possible?
-			//   probably the train is in the position that both its ends point to the same tile/exit-dir
-			//   very unlikely, but it happened
+			/* if we are here, it means that node is already there - how it is possible?
+			 *   probably the train is in the position that both its ends point to the same tile/exit-dir
+			 *   very unlikely, but it happened */
 		}
 	}
 
@@ -213,7 +213,7 @@ public:
 	 *  Nodes are evaluated here and added into open list */
 	void AddNewNode(Node &n, const TrackFollower &tf)
 	{
-		// evaluate the node
+		/* evaluate the node */
 		bool bCached = Yapf().PfNodeCacheFetch(n);
 		if (!bCached) {
 			m_stats_cost_calcs++;
@@ -229,10 +229,10 @@ public:
 
 		if (bValid) bValid = Yapf().PfCalcEstimate(n);
 
-		// have the cost or estimate callbacks marked this node as invalid?
+		/* have the cost or estimate callbacks marked this node as invalid? */
 		if (!bValid) return;
 
-		// detect the destination
+		/* detect the destination */
 		bool bDestination = Yapf().PfDetectDestination(n);
 		if (bDestination) {
 			if (m_pBestDestNode == NULL || n < *m_pBestDestNode) {
@@ -246,43 +246,43 @@ public:
 			m_pBestIntermediateNode = &n;
 		}
 
-		// check new node against open list
+		/* check new node against open list */
 		Node *openNode = m_nodes.FindOpenNode(n.GetKey());
 		if (openNode != NULL) {
-			// another node exists with the same key in the open list
-			// is it better than new one?
+			/* another node exists with the same key in the open list
+			 * is it better than new one? */
 			if (n.GetCostEstimate() < openNode->GetCostEstimate()) {
-				// update the old node by value from new one
+				/* update the old node by value from new one */
 				m_nodes.PopOpenNode(n.GetKey());
 				*openNode = n;
-				// add the updated old node back to open list
+				/* add the updated old node back to open list */
 				m_nodes.InsertOpenNode(*openNode);
 			}
 			return;
 		}
 
-		// check new node against closed list
+		/* check new node against closed list */
 		Node *closedNode = m_nodes.FindClosedNode(n.GetKey());
 		if (closedNode != NULL) {
-			// another node exists with the same key in the closed list
-			// is it better than new one?
+			/* another node exists with the same key in the closed list
+			 * is it better than new one? */
 			int node_est = n.GetCostEstimate();
 			int closed_est = closedNode->GetCostEstimate();
 			if (node_est < closed_est) {
-				// If this assert occurs, you have probably problem in
-				// your Tderived::PfCalcCost() or Tderived::PfCalcEstimate().
-				// The problem could be:
-				//  - PfCalcEstimate() gives too large numbers
-				//  - PfCalcCost() gives too small numbers
-				//  - You have used negative cost penalty in some cases (cost bonus)
+				/* If this assert occurs, you have probably problem in
+				 * your Tderived::PfCalcCost() or Tderived::PfCalcEstimate().
+				 * The problem could be:
+				 *  - PfCalcEstimate() gives too large numbers
+				 *  - PfCalcCost() gives too small numbers
+				 *  - You have used negative cost penalty in some cases (cost bonus) */
 				assert(0);
 
 				return;
 			}
 			return;
 		}
-		// the new node is really new
-		// add it to the open list
+		/* the new node is really new
+		 * add it to the open list */
 		m_nodes.InsertOpenNode(n);
 	}
 
@@ -297,13 +297,13 @@ public:
 		dmp.WriteLine("m_num_steps = %d", m_num_steps);
 	}
 
-	// methods that should be implemented at derived class Types::Tpf (derived from CYapfBaseT)
+	/* methods that should be implemented at derived class Types::Tpf (derived from CYapfBaseT) */
 
 #if 0
 	/** Example: PfSetStartupNodes() - set source (origin) nodes */
 	FORCEINLINE void PfSetStartupNodes()
 	{
-		// example:
+		/* example: */
 		Node& n1 = *base::m_nodes.CreateNewNode();
 		.
 		. // setup node members here
@@ -327,9 +327,9 @@ public:
 	/** Example: PfCalcCost() - set path cost from origin to the given node */
 	FORCEINLINE bool PfCalcCost(Node& n)
 	{
-		// evaluate last step cost
+		/* evaluate last step cost */
 		int cost = ...;
-		// set the node cost as sum of parent's cost and last step cost
+		/* set the node cost as sum of parent's cost and last step cost */
 		n.m_cost = n.m_parent->m_cost + cost;
 		return true; // true if node is valid follower (i.e. no obstacle was found)
 	}
@@ -337,9 +337,9 @@ public:
 	/** Example: PfCalcEstimate() - set path cost estimate from origin to the target through given node */
 	FORCEINLINE bool PfCalcEstimate(Node& n)
 	{
-		// evaluate the distance to our destination
+		/* evaluate the distance to our destination */
 		int distance = ...;
-		// set estimate as sum of cost from origin + distance to the target
+		/* set estimate as sum of cost from origin + distance to the target */
 		n.m_estimate = n.m_cost + distance;
 		return true; // true if node is valid (i.e. not too far away :)
 	}

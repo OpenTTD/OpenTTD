@@ -51,7 +51,7 @@ public:
 protected:
 	LocalCache      m_local_cache;
 
-	/// to access inherited path finder
+	/** to access inherited path finder */
 	FORCEINLINE Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
@@ -157,7 +157,7 @@ protected:
 
 	FORCEINLINE CYapfSegmentCostCacheGlobalT() : m_global_cache(stGetGlobalCache()) {};
 
-	/// to access inherited path finder
+	/** to access inherited path finder */
 	FORCEINLINE Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
@@ -169,14 +169,14 @@ protected:
 		static Date last_date = 0;
 		static Cache C;
 
-		// some statistics
+		/* some statistics */
 		if (last_date != _date) {
 			last_date = _date;
 			DEBUG(yapf, 2, "Pf time today: %5d ms", _total_pf_time_us / 1000);
 			_total_pf_time_us = 0;
 		}
 
-		// delete the cache sometimes...
+		/* delete the cache sometimes... */
 		if (last_rail_change_counter != Cache::s_rail_change_counter) {
 			last_rail_change_counter = Cache::s_rail_change_counter;
 			C.Flush();

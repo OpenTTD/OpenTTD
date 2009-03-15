@@ -286,7 +286,7 @@ struct CompanyFinancesWindow : Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case CFW_WIDGET_TOGGLE_SIZE: {/* toggle size */
+			case CFW_WIDGET_TOGGLE_SIZE: {// toggle size
 				bool new_mode = !this->small;
 				bool stickied = !!(this->flags4 & WF_STICKY);
 				int oldtop = this->top;   ///< current top position of the window before closing it
@@ -299,11 +299,11 @@ struct CompanyFinancesWindow : Window {
 			}
 			break;
 
-			case CFW_WIDGET_INCREASE_LOAN: /* increase loan */
+			case CFW_WIDGET_INCREASE_LOAN: // increase loan
 				DoCommandP(0, 0, _ctrl_pressed, CMD_INCREASE_LOAN | CMD_MSG(STR_702C_CAN_T_BORROW_ANY_MORE_MONEY));
 				break;
 
-			case CFW_WIDGET_REPAY_LOAN: /* repay loan */
+			case CFW_WIDGET_REPAY_LOAN: // repay loan
 				DoCommandP(0, 0, _ctrl_pressed, CMD_DECREASE_LOAN | CMD_MSG(STR_702F_CAN_T_REPAY_LOAN));
 				break;
 		}
@@ -550,11 +550,11 @@ public:
 				break;
 			}
 
-			case SCLW_WIDGET_PRI_COL_DROPDOWN: /* First colour dropdown */
+			case SCLW_WIDGET_PRI_COL_DROPDOWN: // First colour dropdown
 				ShowColourDropDownMenu(SCLW_WIDGET_PRI_COL_DROPDOWN);
 				break;
 
-			case SCLW_WIDGET_SEC_COL_DROPDOWN: /* Second colour dropdown */
+			case SCLW_WIDGET_SEC_COL_DROPDOWN: // Second colour dropdown
 				ShowColourDropDownMenu(SCLW_WIDGET_SEC_COL_DROPDOWN);
 				break;
 
@@ -667,7 +667,7 @@ void DrawCompanyManagerFace(CompanyManagerFace cmf, int colour, int x, int y)
 	for (CompanyManagerFaceVariable cmfv = CMFV_CHEEKS; cmfv < CMFV_END; cmfv++) {
 		switch (cmfv) {
 			case CMFV_MOUSTACHE:   if (!has_moustache)   continue; break;
-			case CMFV_LIPS:        /* FALL THROUGH */
+			case CMFV_LIPS:        // FALL THROUGH
 			case CMFV_NOSE:        if (has_moustache)    continue; break;
 			case CMFV_TIE_EARRING: if (!has_tie_earring) continue; break;
 			case CMFV_GLASSES:     if (!has_glasses)     continue; break;
@@ -1268,7 +1268,7 @@ struct CompanyWindow : Window
 		this->SetWidgetHiddenState(CW_WIDGET_PRESIDENT_NAME, !local);
 		this->SetWidgetHiddenState(CW_WIDGET_COMPANY_NAME,   !local);
 		this->widget[CW_WIDGET_BUILD_VIEW_HQ].data = (local && c->location_of_HQ == INVALID_TILE) ? STR_706F_BUILD_HQ : STR_7072_VIEW_HQ;
-		if (local && c->location_of_HQ != INVALID_TILE) this->widget[CW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; //HQ is already built.
+		if (local && c->location_of_HQ != INVALID_TILE) this->widget[CW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; // HQ is already built.
 		this->SetWidgetDisabledState(CW_WIDGET_BUILD_VIEW_HQ, !local && c->location_of_HQ == INVALID_TILE);
 		this->SetWidgetHiddenState(CW_WIDGET_RELOCATE_HQ,      !local || c->location_of_HQ == INVALID_TILE);
 		this->SetWidgetHiddenState(CW_WIDGET_BUY_SHARE,        local);

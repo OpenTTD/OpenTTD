@@ -11,7 +11,7 @@
 #include "table/control_codes.h"
 
 #include <stdarg.h>
-#include <ctype.h> // required for tolower()
+#include <ctype.h> /* required for tolower() */
 
 /**
  * Safer implementation of vsnprintf; same as vsnprintf except:
@@ -300,7 +300,7 @@ size_t Utf8Decode(WChar *c, const char *s)
 		}
 	}
 
-	//DEBUG(misc, 1, "[utf8] invalid UTF-8 sequence");
+	/* DEBUG(misc, 1, "[utf8] invalid UTF-8 sequence"); */
 	*c = '?';
 	return 1;
 }
@@ -333,7 +333,7 @@ size_t Utf8Encode(char *buf, WChar c)
 		return 4;
 	}
 
-	//DEBUG(misc, 1, "[utf8] can't UTF-8 encode value 0x%X", c);
+	/* DEBUG(misc, 1, "[utf8] can't UTF-8 encode value 0x%X", c); */
 	*buf = '?';
 	return 1;
 }

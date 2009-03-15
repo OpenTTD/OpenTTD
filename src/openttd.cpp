@@ -907,11 +907,11 @@ void SwitchToMode(SwitchMode new_mode)
 	if (new_mode != SM_SAVE) AI::KillAll();
 
 	switch (new_mode) {
-		case SM_EDITOR: /* Switch to scenario editor */
+		case SM_EDITOR: // Switch to scenario editor
 			MakeNewEditorWorld();
 			break;
 
-		case SM_NEWGAME: /* New Game --> 'Random game' */
+		case SM_NEWGAME: // New Game --> 'Random game'
 #ifdef ENABLE_NETWORK
 			if (_network_server) {
 				snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "Random Map");
@@ -920,7 +920,7 @@ void SwitchToMode(SwitchMode new_mode)
 			MakeNewGame(false);
 			break;
 
-		case SM_START_SCENARIO: /* New Game --> Choose one of the preset scenarios */
+		case SM_START_SCENARIO: // New Game --> Choose one of the preset scenarios
 #ifdef ENABLE_NETWORK
 			if (_network_server) {
 				snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "%s (Loaded scenario)", _file_to_saveload.title);
@@ -929,7 +929,7 @@ void SwitchToMode(SwitchMode new_mode)
 			StartScenario();
 			break;
 
-		case SM_LOAD: { /* Load game, Play Scenario */
+		case SM_LOAD: { // Load game, Play Scenario
 			ResetGRFConfig(true);
 			ResetWindowSystem();
 
@@ -957,7 +957,7 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 		}
 
-		case SM_START_HEIGHTMAP: /* Load a heightmap and start a new game from it */
+		case SM_START_HEIGHTMAP: // Load a heightmap and start a new game from it
 #ifdef ENABLE_NETWORK
 			if (_network_server) {
 				snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "%s (Heightmap)", _file_to_saveload.title);
@@ -966,14 +966,14 @@ void SwitchToMode(SwitchMode new_mode)
 			MakeNewGame(true);
 			break;
 
-		case SM_LOAD_HEIGHTMAP: /* Load heightmap from scenario editor */
+		case SM_LOAD_HEIGHTMAP: // Load heightmap from scenario editor
 			SetLocalCompany(OWNER_NONE);
 
 			GenerateWorld(GW_HEIGHTMAP, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 			MarkWholeScreenDirty();
 			break;
 
-		case SM_LOAD_SCENARIO: { /* Load scenario from scenario editor */
+		case SM_LOAD_SCENARIO: { // Load scenario from scenario editor
 			if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR, NO_DIRECTORY)) {
 				SetLocalCompany(OWNER_NONE);
 				_settings_newgame.game_creation.starting_year = _cur_year;
@@ -984,11 +984,11 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 		}
 
-		case SM_MENU: /* Switch to game intro menu */
+		case SM_MENU: // Switch to game intro menu
 			LoadIntroGame();
 			break;
 
-		case SM_SAVE: /* Save game */
+		case SM_SAVE: // Save game
 			/* Make network saved games on pause compatible to singleplayer */
 			if (_networking && _pause_game == 1) _pause_game = 2;
 			if (SaveOrLoad(_file_to_saveload.name, SL_SAVE, NO_DIRECTORY) != SL_OK) {
@@ -1000,7 +1000,7 @@ void SwitchToMode(SwitchMode new_mode)
 			if (_networking && _pause_game == 2) _pause_game = 1;
 			break;
 
-		case SM_GENRANDLAND: /* Generate random land within scenario editor */
+		case SM_GENRANDLAND: // Generate random land within scenario editor
 			SetLocalCompany(OWNER_NONE);
 			GenerateWorld(GW_RANDOM, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 			/* XXX: set date */

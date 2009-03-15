@@ -15,4 +15,4 @@ struct SongSpecs {
 
 extern const SongSpecs _origin_songs_specs[];
 
-#endif //MUSIC_H
+#endif /* MUSIC_H */

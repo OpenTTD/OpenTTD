@@ -485,8 +485,8 @@ static void TarAddLink(const std::string &srcParam, const std::string &destParam
 		/* Link to file. Process the link like the destination file. */
 		_tar_filelist.insert(TarFileList::value_type(src, dest_file->second));
 	} else {
-		/* Destination file not found. Assume 'link to directory' */
-		/* Append PATHSEPCHAR to 'src' and 'dest' if needed */
+		/* Destination file not found. Assume 'link to directory'
+		 * Append PATHSEPCHAR to 'src' and 'dest' if needed */
 		const std::string src_path = ((*src.rbegin() == PATHSEPCHAR) ? src : src + PATHSEPCHAR);
 		const std::string dst_path = (dest.length() == 0 ? "" : ((*dest.rbegin() == PATHSEPCHAR) ? dest : dest + PATHSEPCHAR));
 		_tar_linklist.insert(TarLinkList::value_type(src_path, dst_path));

@@ -36,10 +36,10 @@ extern const byte _signal_on_track[] = {
  * track entering in this direction (including those making 90 degree turns)
  */
 extern const TrackdirBits _exitdir_reaches_trackdirs[] = {
-	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_LEFT_N,  /* DIAGDIR_NE */
-	TRACKDIR_BIT_Y_SE | TRACKDIR_BIT_LEFT_S  | TRACKDIR_BIT_UPPER_E, /* DIAGDIR_SE */
-	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_RIGHT_S, /* DIAGDIR_SW */
-	TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_RIGHT_N | TRACKDIR_BIT_LOWER_W  /* DIAGDIR_NW */
+	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_LEFT_N,  // DIAGDIR_NE
+	TRACKDIR_BIT_Y_SE | TRACKDIR_BIT_LEFT_S  | TRACKDIR_BIT_UPPER_E, // DIAGDIR_SE
+	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_RIGHT_S, // DIAGDIR_SW
+	TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_RIGHT_N | TRACKDIR_BIT_LOWER_W  // DIAGDIR_NW
 };
 
 extern const Trackdir _next_trackdir[TRACKDIR_END] = {
@@ -49,22 +49,22 @@ extern const Trackdir _next_trackdir[TRACKDIR_END] = {
 
 /* Maps a trackdir to all trackdirs that make 90 deg turns with it. */
 extern const TrackdirBits _track_crosses_trackdirs[TRACKDIR_END] = {
-	TRACKDIR_BIT_Y_SE     | TRACKDIR_BIT_Y_NW,                                                   /* TRACK_X     */
-	TRACKDIR_BIT_X_NE     | TRACKDIR_BIT_X_SW,                                                   /* TRACK_Y     */
-	TRACKDIR_BIT_RIGHT_N  | TRACKDIR_BIT_RIGHT_S  | TRACKDIR_BIT_LEFT_N  | TRACKDIR_BIT_LEFT_S,  /* TRACK_UPPER */
-	TRACKDIR_BIT_RIGHT_N  | TRACKDIR_BIT_RIGHT_S  | TRACKDIR_BIT_LEFT_N  | TRACKDIR_BIT_LEFT_S,  /* TRACK_LOWER */
-	TRACKDIR_BIT_UPPER_W  | TRACKDIR_BIT_UPPER_E  | TRACKDIR_BIT_LOWER_W | TRACKDIR_BIT_LOWER_E, /* TRACK_LEFT  */
-	TRACKDIR_BIT_UPPER_W  | TRACKDIR_BIT_UPPER_E  | TRACKDIR_BIT_LOWER_W | TRACKDIR_BIT_LOWER_E  /* TRACK_RIGHT */
+	TRACKDIR_BIT_Y_SE     | TRACKDIR_BIT_Y_NW,                                                   // TRACK_X
+	TRACKDIR_BIT_X_NE     | TRACKDIR_BIT_X_SW,                                                   // TRACK_Y
+	TRACKDIR_BIT_RIGHT_N  | TRACKDIR_BIT_RIGHT_S  | TRACKDIR_BIT_LEFT_N  | TRACKDIR_BIT_LEFT_S,  // TRACK_UPPER
+	TRACKDIR_BIT_RIGHT_N  | TRACKDIR_BIT_RIGHT_S  | TRACKDIR_BIT_LEFT_N  | TRACKDIR_BIT_LEFT_S,  // TRACK_LOWER
+	TRACKDIR_BIT_UPPER_W  | TRACKDIR_BIT_UPPER_E  | TRACKDIR_BIT_LOWER_W | TRACKDIR_BIT_LOWER_E, // TRACK_LEFT
+	TRACKDIR_BIT_UPPER_W  | TRACKDIR_BIT_UPPER_E  | TRACKDIR_BIT_LOWER_W | TRACKDIR_BIT_LOWER_E  // TRACK_RIGHT
 };
 
 /* Maps a track to all tracks that make 90 deg turns with it. */
 extern const TrackBits _track_crosses_tracks[] = {
-	TRACK_BIT_Y,    /* TRACK_X     */
-	TRACK_BIT_X,    /* TRACK_Y     */
-	TRACK_BIT_VERT, /* TRACK_UPPER */
-	TRACK_BIT_VERT, /* TRACK_LOWER */
-	TRACK_BIT_HORZ, /* TRACK_LEFT  */
-	TRACK_BIT_HORZ  /* TRACK_RIGHT */
+	TRACK_BIT_Y,    // TRACK_X
+	TRACK_BIT_X,    // TRACK_Y
+	TRACK_BIT_VERT, // TRACK_UPPER
+	TRACK_BIT_VERT, // TRACK_LOWER
+	TRACK_BIT_HORZ, // TRACK_LEFT
+	TRACK_BIT_HORZ  // TRACK_RIGHT
 };
 
 /* Maps a trackdir to the (4-way) direction the tile is exited when following

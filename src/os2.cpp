@@ -134,13 +134,13 @@ void ShowInfo(const char *str)
 	HMQ hmq;
 	ULONG rc;
 
-	// init PM env.
+	/* init PM env. */
 	hmq = WinCreateMsgQueue((hab = WinInitialize(0)), 0);
 
-	// display the box
+	/* display the box */
 	rc = WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, (const unsigned char *)str, (const unsigned char *)"OpenTTD", 0, MB_OK | MB_MOVEABLE | MB_INFORMATION);
 
-	// terminate PM env.
+	/* terminate PM env. */
 	WinDestroyMsgQueue(hmq);
 	WinTerminate(hab);
 }
@@ -151,13 +151,13 @@ void ShowOSErrorBox(const char *buf, bool system)
 	HMQ hmq;
 	ULONG rc;
 
-	// init PM env.
+	/* init PM env. */
 	hmq = WinCreateMsgQueue((hab = WinInitialize(0)), 0);
 
-	// display the box
+	/* display the box */
 	rc = WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, (const unsigned char *)buf, (const unsigned char *)"OpenTTD", 0, MB_OK | MB_MOVEABLE | MB_ERROR);
 
-	// terminate PM env.
+	/* terminate PM env. */
 	WinDestroyMsgQueue(hmq);
 	WinTerminate(hab);
 }

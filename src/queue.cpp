@@ -289,7 +289,7 @@ void init_BinaryHeap(Queue *q, uint max_size)
 #endif
 }
 
-// Because we don't want anyone else to bother with our defines
+/* Because we don't want anyone else to bother with our defines */
 #undef BIN_HEAP_ARR
 
 /*
@@ -502,14 +502,14 @@ void *Hash_Delete(Hash *h, uint key1, uint key2)
 			free(next);
 #endif
 		} else {
-			/* This was the last in this bucket */
-			/* Mark it as empty */
+			/* This was the last in this bucket
+			 * Mark it as empty */
 			uint hash = h->hash(key1, key2);
 			h->buckets_in_use[hash] = false;
 		}
 	} else {
-		/* It is in another node */
-		/* Save the value */
+		/* It is in another node
+		 * Save the value */
 		result = node->value;
 		/* Link previous and next nodes */
 		prev->next = node->next;

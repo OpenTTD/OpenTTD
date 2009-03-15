@@ -20,10 +20,10 @@ enum {
 
 /* Modes for GenerateWorld */
 enum GenerateWorldMode {
-	GW_NEWGAME   = 0,    /* Generate a map for a new game */
-	GW_EMPTY     = 1,    /* Generate an empty map (sea-level) */
-	GW_RANDOM    = 2,    /* Generate a random map for SE */
-	GW_HEIGHTMAP = 3,    /* Generate a newgame from a heightmap */
+	GW_NEWGAME   = 0,    ///< Generate a map for a new game
+	GW_EMPTY     = 1,    ///< Generate an empty map (sea-level)
+	GW_RANDOM    = 2,    ///< Generate a random map for SE
+	GW_HEIGHTMAP = 3,    ///< Generate a newgame from a heightmap
 };
 
 typedef void gw_done_proc();

@@ -332,7 +332,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		if (new_owner != INVALID_OWNER) {
 			if (HasBit(t->have_ratings, old_owner)) {
 				if (HasBit(t->have_ratings, new_owner)) {
-					// use max of the two ratings.
+					/* use max of the two ratings. */
 					t->ratings[new_owner] = max(t->ratings[new_owner], t->ratings[old_owner]);
 				} else {
 					SetBit(t->have_ratings, new_owner);
@@ -1889,8 +1889,8 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1,
 {
 	CommandCost cost(EXPENSES_OTHER);
 
-	/* Check if buying shares is allowed (protection against modified clients) */
-	/* Cannot buy own shares */
+	/* Check if buying shares is allowed (protection against modified clients)
+	 * Cannot buy own shares */
 	if (!IsValidCompanyID((CompanyID)p1) || !_settings_game.economy.allow_shares || _current_company == (CompanyID)p1) return CMD_ERROR;
 
 	Company *c = GetCompany((CompanyID)p1);
@@ -1909,7 +1909,7 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1,
 		OwnerByte *b = c->share_owners;
 		int i;
 
-		while (*b != COMPANY_SPECTATOR) b++; /* share owners is guaranteed to contain at least one COMPANY_SPECTATOR */
+		while (*b != COMPANY_SPECTATOR) b++; // share owners is guaranteed to contain at least one COMPANY_SPECTATOR
 		*b = _current_company;
 
 		for (i = 0; c->share_owners[i] == _current_company;) {
@@ -1932,8 +1932,8 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1,
  */
 CommandCost CmdSellShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	/* Check if selling shares is allowed (protection against modified clients) */
-	/* Cannot sell own shares */
+	/* Check if selling shares is allowed (protection against modified clients)
+	 * Cannot sell own shares */
 	if (!IsValidCompanyID((CompanyID)p1) || !_settings_game.economy.allow_shares || _current_company == (CompanyID)p1) return CMD_ERROR;
 
 	Company *c = GetCompany((CompanyID)p1);

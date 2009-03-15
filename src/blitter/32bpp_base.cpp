@@ -128,7 +128,7 @@ void Blitter_32bppBase::ScrollBuffer(void *video, int &left, int &top, int &widt
 	uint32 *dst;
 
 	if (scroll_y > 0) {
-		/*Calculate pointers */
+		/* Calculate pointers */
 		dst = (uint32 *)video + left + (top + height - 1) * _screen.pitch;
 		src = dst - scroll_y * _screen.pitch;
 

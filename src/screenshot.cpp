@@ -34,9 +34,9 @@ struct ScreenshotFormat {
 	ScreenshotHandlerProc *proc;
 };
 
-//************************************************
-//*** SCREENSHOT CODE FOR WINDOWS BITMAP (.BMP)
-//************************************************
+/*************************************************
+ **** SCREENSHOT CODE FOR WINDOWS BITMAP (.BMP)
+ *************************************************/
 #if defined(_MSC_VER) || defined(__WATCOMC__)
 #pragma pack(push, 1)
 #endif
@@ -153,9 +153,9 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 	return true;
 }
 
-//********************************************************
-//*** SCREENSHOT CODE FOR PORTABLE NETWORK GRAPHICS (.PNG)
-//********************************************************
+/*********************************************************
+ **** SCREENSHOT CODE FOR PORTABLE NETWORK GRAPHICS (.PNG)
+ *********************************************************/
 #if defined(WITH_PNG)
 #include <png.h>
 
@@ -276,9 +276,9 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 #endif /* WITH_PNG */
 
 
-//************************************************
-//*** SCREENSHOT CODE FOR ZSOFT PAINTBRUSH (.PCX)
-//************************************************
+/*************************************************
+ **** SCREENSHOT CODE FOR ZSOFT PAINTBRUSH (.PCX)
+ *************************************************/
 
 struct PcxHeader {
 	byte manufacturer;
@@ -423,9 +423,9 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	return success;
 }
 
-//************************************************
-//*** GENERIC SCREENSHOT CODE
-//************************************************
+/*************************************************
+ **** GENERIC SCREENSHOT CODE
+ *************************************************/
 
 static const ScreenshotFormat _screenshot_formats[] = {
 #if defined(WITH_PNG)

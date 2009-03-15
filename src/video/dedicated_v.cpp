@@ -44,7 +44,7 @@ static void OS2_SwitchToConsoleMode()
 
 	DosGetInfoBlocks(&tib, &pib);
 
-	// Change flag from PM to VIO
+	/* Change flag from PM to VIO */
 	pib->pib_ultype = 3;
 }
 #endif
@@ -144,14 +144,14 @@ const char *VideoDriver_Dedicated::Start(const char * const *parm)
 #if defined(WINCE)
 	/* WinCE doesn't support console stuff */
 #elif defined(WIN32)
-	// For win32 we need to allocate a console (debug mode does the same)
+	/* For win32 we need to allocate a console (debug mode does the same) */
 	CreateConsole();
 	CreateWindowsConsoleThread();
 	SetConsoleTitle(_T("OpenTTD Dedicated Server"));
 #endif
 
 #ifdef __OS2__
-	// For OS/2 we also need to switch to console mode instead of PM mode
+	/* For OS/2 we also need to switch to console mode instead of PM mode */
 	OS2_SwitchToConsoleMode();
 #endif
 
@@ -252,7 +252,7 @@ void VideoDriver_Dedicated::MainLoop()
 	signal(SIGQUIT, DedicatedSignalHandler);
 #endif
 
-	// Load the dedicated server stuff
+	/* Load the dedicated server stuff */
 	_is_network_server = true;
 	_network_dedicated = true;
 	_network_playas = COMPANY_SPECTATOR;
@@ -277,7 +277,7 @@ void VideoDriver_Dedicated::MainLoop()
 		}
 	}
 
-	// Done loading, start game!
+	/* Done loading, start game! */
 
 	if (!_networking) {
 		DEBUG(net, 0, "Dedicated server could not be started, aborting");

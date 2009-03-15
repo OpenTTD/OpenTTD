@@ -835,7 +835,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	{
 		/* See if this is a valid track combination for signals, (ie, no overlap) */
 		TrackBits trackbits = GetTrackBits(tile);
-		if (KillFirstBit(trackbits) != TRACK_BIT_NONE && /* More than one track present */
+		if (KillFirstBit(trackbits) != TRACK_BIT_NONE && // More than one track present
 				trackbits != TRACK_BIT_HORZ &&
 				trackbits != TRACK_BIT_VERT) {
 			return_cmd_error(STR_1005_NO_SUITABLE_RAILROAD_TRACK);
@@ -1051,7 +1051,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 
 	if (CmdFailed(ValidateAutoDrag(&trackdir, tile, end_tile))) return CMD_ERROR;
 
-	track = TrackdirToTrack(trackdir); /* trackdir might have changed, keep track in sync */
+	track = TrackdirToTrack(trackdir); // trackdir might have changed, keep track in sync
 	Trackdir start_trackdir = trackdir;
 
 	/* Must start on a valid track to be able to avoid loops */
@@ -1519,12 +1519,12 @@ static void DrawSingleSignal(TileIndex tile, Track track, byte condition, uint i
 {
 	bool side = (_settings_game.vehicle.road_side != 0) && _settings_game.construction.signal_side;
 	static const Point SignalPositions[2][12] = {
-		{      /* Signals on the left side */
+		{ // Signals on the left side
 		/*  LEFT      LEFT      RIGHT     RIGHT     UPPER     UPPER */
 			{ 8,  5}, {14,  1}, { 1, 14}, { 9, 11}, { 1,  0}, { 3, 10},
 		/*  LOWER     LOWER     X         X         Y         Y     */
 			{11,  4}, {14, 14}, {11,  3}, { 4, 13}, { 3,  4}, {11, 13}
-		}, {   /* Signals on the right side */
+		}, { // Signals on the right side
 		/*  LEFT      LEFT      RIGHT     RIGHT     UPPER     UPPER */
 			{14,  1}, {12, 10}, { 4,  6}, { 1, 14}, {10,  4}, { 0,  1},
 		/*  LOWER     LOWER     X         X         Y         Y     */
@@ -2458,8 +2458,8 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *v, TileIndex tile, int
 	/* depot direction */
 	dir = GetRailDepotDirection(tile);
 
-	/* calculate the point where the following wagon should be activated */
-	/* this depends on the length of the current vehicle */
+	/* calculate the point where the following wagon should be activated
+	 * this depends on the length of the current vehicle */
 	length = v->u.rail.cached_veh_length;
 
 	fract_coord_leave =
@@ -2477,7 +2477,7 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *v, TileIndex tile, int
 		if (DiagDirToDir(ReverseDiagDir(dir)) == v->direction) {
 			/* enter the depot */
 			v->u.rail.track = TRACK_BIT_DEPOT,
-			v->vehstatus |= VS_HIDDEN; /* hide it */
+			v->vehstatus |= VS_HIDDEN; // hide it
 			v->direction = ReverseDir(v->direction);
 			if (v->Next() == NULL) VehicleEnterDepot(v);
 			v->tile = tile;
@@ -2608,18 +2608,18 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlag flags, uint
 
 
 extern const TileTypeProcs _tile_type_rail_procs = {
-	DrawTile_Track,           /* draw_tile_proc */
-	GetSlopeZ_Track,          /* get_slope_z_proc */
-	ClearTile_Track,          /* clear_tile_proc */
-	GetAcceptedCargo_Track,   /* get_accepted_cargo_proc */
-	GetTileDesc_Track,        /* get_tile_desc_proc */
-	GetTileTrackStatus_Track, /* get_tile_track_status_proc */
-	ClickTile_Track,          /* click_tile_proc */
-	AnimateTile_Track,        /* animate_tile_proc */
-	TileLoop_Track,           /* tile_loop_clear */
-	ChangeTileOwner_Track,    /* change_tile_owner_clear */
-	NULL,                     /* get_produced_cargo_proc */
-	VehicleEnter_Track,       /* vehicle_enter_tile_proc */
-	GetFoundation_Track,      /* get_foundation_proc */
-	TerraformTile_Track,      /* terraform_tile_proc */
+	DrawTile_Track,           // draw_tile_proc
+	GetSlopeZ_Track,          // get_slope_z_proc
+	ClearTile_Track,          // clear_tile_proc
+	GetAcceptedCargo_Track,   // get_accepted_cargo_proc
+	GetTileDesc_Track,        // get_tile_desc_proc
+	GetTileTrackStatus_Track, // get_tile_track_status_proc
+	ClickTile_Track,          // click_tile_proc
+	AnimateTile_Track,        // animate_tile_proc
+	TileLoop_Track,           // tile_loop_clear
+	ChangeTileOwner_Track,    // change_tile_owner_clear
+	NULL,                     // get_produced_cargo_proc
+	VehicleEnter_Track,       // vehicle_enter_tile_proc
+	GetFoundation_Track,      // get_foundation_proc
+	TerraformTile_Track,      // terraform_tile_proc
 };

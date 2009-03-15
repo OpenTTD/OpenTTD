@@ -180,7 +180,7 @@ void InjectDParam(uint amount)
 	memmove(_decode_parameters + amount, _decode_parameters, sizeof(_decode_parameters) - amount * sizeof(uint64));
 }
 
-// TODO
+/* TODO */
 static char *FormatCommaNumber(char *buff, int64 number, const char *last)
 {
 	uint64 divisor = 10000000000000000000ULL;
@@ -216,7 +216,7 @@ static char *FormatCommaNumber(char *buff, int64 number, const char *last)
 	return buff;
 }
 
-// TODO
+/* TODO */
 static char *FormatNoCommaNumber(char *buff, int64 number, const char *last)
 {
 	uint64 divisor = 10000000000000000000ULL;
@@ -465,7 +465,7 @@ static int DeterminePluralForm(int64 count)
 
 static const char *ParseStringChoice(const char *b, uint form, char *dst, int *dstlen)
 {
-	//<NUM> {Length of each string} {each string}
+	/* <NUM> {Length of each string} {each string} */
 	uint n = (byte)*b++;
 	uint pos, i, mylen = 0, mypos = 0;
 
@@ -1320,8 +1320,8 @@ bool ReadLanguagePack(int lang_index)
 	return true;
 }
 
-/* Win32 implementation in win32.cpp. */
-/* OS X implementation in os/macosx/macos.mm. */
+/* Win32 implementation in win32.cpp.
+ * OS X implementation in os/macosx/macos.mm. */
 #if !(defined(WIN32) || defined(__APPLE__))
 /** Determine the current charset based on the environment
  * First check some default values, after this one we passed ourselves

@@ -358,8 +358,8 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		AdjustTileh(neighbour, &tileh[TS_NEIGHBOUR]);
 
 		/* If we have a straight (and level) track, we want a pylon only every 2 tiles
-		 * Delete the PCP if this is the case. */
-		/* Level means that the slope is the same, or the track is flat */
+		 * Delete the PCP if this is the case.
+		 * Level means that the slope is the same, or the track is flat */
 		if (tileh[TS_HOME] == tileh[TS_NEIGHBOUR] || (isflat[TS_HOME] && isflat[TS_NEIGHBOUR])) {
 			for (uint k = 0; k < NUM_IGNORE_GROUPS; k++) {
 				if (PPPpreferred[i] == IgnoredPCP[k][tlg][i]) ClrBit(PCPstatus, i);
@@ -394,13 +394,13 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 					if (!HasBit(OwnedPPPonPCP[i], temp)) {
 						/* We have a neighour that will draw it, bail out */
 						if (trackconfig[TS_NEIGHBOUR] != TRACK_BIT_NONE) break;
-						continue; /* No neighbour, go looking for a better position */
+						continue; // No neighbour, go looking for a better position
 					}
 
 					AddSortableSpriteToDraw(pylon_base + pylon_sprites[temp], PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE,
 						elevation, IsTransparencySet(TO_CATENARY), -1, -1);
 
-					break; /* We already have drawn a pylon, bail out */
+					break; // We already have drawn a pylon, bail out
 				}
 			}
 		}
@@ -425,9 +425,9 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 				(HasBit(PCPstatus, PCPpositions[t][1]) << 1);
 
 			const SortableSpriteStruct *sss;
-			int tileh_selector = !(tileh[TS_HOME] % 3) * tileh[TS_HOME] / 3; /* tileh for the slopes, 0 otherwise */
+			int tileh_selector = !(tileh[TS_HOME] % 3) * tileh[TS_HOME] / 3; // tileh for the slopes, 0 otherwise
 
-			assert(PCPconfig != 0); /* We have a pylon on neither end of the wire, that doesn't work (since we have no sprites for that) */
+			assert(PCPconfig != 0); // We have a pylon on neither end of the wire, that doesn't work (since we have no sprites for that)
 			assert(!IsSteepSlope(tileh[TS_HOME]));
 			sss = &CatenarySpriteData[Wires[tileh_selector][t][PCPconfig]];
 
@@ -478,8 +478,8 @@ void DrawCatenaryOnBridge(const TileInfo *ti)
 
 	SpriteID pylon_base = GetPylonBase(start);
 
-	/* Finished with wires, draw pylons */
-	/* every other tile needs a pylon on the northern end */
+	/* Finished with wires, draw pylons
+	 * every other tile needs a pylon on the northern end */
 	if (num % 2) {
 		DiagDirection PCPpos = (axis == AXIS_X ? DIAGDIR_NE : DIAGDIR_NW);
 		Direction PPPpos = (axis == AXIS_X ? DIR_NW : DIR_NE);

@@ -860,7 +860,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 				this->widget[VLW_WIDGET_CAPTION].data  = STR_VEH_WITH_SHARED_ORDERS_LIST;
 				break;
 
-			case VLW_STANDARD: /* Company Name - standard widget setup */
+			case VLW_STANDARD: // Company Name - standard widget setup
 				switch (this->vehicle_type) {
 					case VEH_TRAIN:    this->widget[VLW_WIDGET_CAPTION].data = STR_881B_TRAINS;        break;
 					case VEH_ROAD:     this->widget[VLW_WIDGET_CAPTION].data = STR_9001_ROAD_VEHICLES; break;
@@ -874,7 +874,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 				this->widget[VLW_WIDGET_CAPTION].data = STR_WAYPOINT_VIEWPORT_LIST;
 				break;
 
-			case VLW_STATION_LIST: /* Station Name */
+			case VLW_STATION_LIST: // Station Name
 				switch (this->vehicle_type) {
 					case VEH_TRAIN:    this->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_TRAINS;        break;
 					case VEH_ROAD:     this->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_ROAD_VEHICLES; break;
@@ -954,7 +954,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 
 		/* draw the widgets */
 		switch (window_type) {
-			case VLW_SHARED_ORDERS: /* Shared Orders */
+			case VLW_SHARED_ORDERS: // Shared Orders
 				if (this->vehicles.Length() == 0) {
 					/* We can't open this window without vehicles using this order
 					 * and we should close the window when deleting the order      */
@@ -963,7 +963,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 				SetDParam(0, this->vscroll.count);
 				break;
 
-			case VLW_STANDARD: /* Company Name */
+			case VLW_STANDARD: // Company Name
 				SetDParam(0, owner);
 				SetDParam(1, this->vscroll.count);
 				break;
@@ -973,7 +973,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 				SetDParam(1, this->vscroll.count);
 				break;
 
-			case VLW_STATION_LIST: /* Station Name */
+			case VLW_STATION_LIST: // Station Name
 				SetDParam(0, index);
 				SetDParam(1, this->vscroll.count);
 				break;
@@ -1015,14 +1015,14 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case VLW_WIDGET_SORT_ORDER: /* Flip sorting method ascending/descending */
+			case VLW_WIDGET_SORT_ORDER: // Flip sorting method ascending/descending
 				this->vehicles.ToggleSortOrder();
 				this->SetDirty();
 				break;
-			case VLW_WIDGET_SORT_BY_PULLDOWN:/* Select sorting criteria dropdown menu */
+			case VLW_WIDGET_SORT_BY_PULLDOWN:// Select sorting criteria dropdown menu
 				ShowDropDownMenu(this, this->vehicle_sorter_names, this->vehicles.SortType(), VLW_WIDGET_SORT_BY_PULLDOWN, 0, (this->vehicle_type == VEH_TRAIN || this->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
 				return;
-			case VLW_WIDGET_LIST: { /* Matrix to show vehicles */
+			case VLW_WIDGET_LIST: { // Matrix to show vehicles
 				uint32 id_v = (pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / this->resize.step_height;
 				const Vehicle *v;
 
@@ -1079,15 +1079,15 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 				assert(this->vehicles.Length() != 0);
 
 				switch (index) {
-					case 0: /* Replace window */
+					case 0: // Replace window
 						ShowReplaceGroupVehicleWindow(DEFAULT_GROUP, this->vehicle_type);
 						break;
-					case 1: /* Send for servicing */
+					case 1: // Send for servicing
 						DoCommandP(0, GB(this->window_number, 16, 16) /* StationID or OrderID (depending on VLW) */,
 							(this->window_number & VLW_MASK) | DEPOT_MASS_SEND | DEPOT_SERVICE,
 							GetCmdSendToDepot(this->vehicle_type));
 						break;
-					case 2: /* Send to Depots */
+					case 2: // Send to Depots
 						DoCommandP(0, GB(this->window_number, 16, 16) /* StationID or OrderID (depending on VLW) */,
 							(this->window_number & VLW_MASK) | DEPOT_MASS_SEND,
 							GetCmdSendToDepot(this->vehicle_type));
@@ -1951,7 +1951,7 @@ struct VehicleViewWindow : Window {
 				DoCommandP(v->tile, v->index, 0,
 										_vehicle_command_translation_table[VCT_CMD_START_STOP][v->type]);
 				break;
-			case VVW_WIDGET_CENTER_MAIN_VIEH: {/* center main view */
+			case VVW_WIDGET_CENTER_MAIN_VIEH: {// center main view
 				const Window *mainwindow = FindWindowById(WC_MAIN_WINDOW, 0);
 				/* code to allow the main window to 'follow' the vehicle if the ctrl key is pressed */
 				if (_ctrl_pressed && mainwindow->viewport->zoom == ZOOM_LVL_NORMAL) {

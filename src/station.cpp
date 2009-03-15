@@ -306,8 +306,8 @@ bool StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
 			top = bottom = y;
 		}
 	} else if (!PtInExtendedRect(x, y)) {
-		/* current rect is not empty and new point is outside this rect */
-		/* make new spread-out rectangle */
+		/* current rect is not empty and new point is outside this rect
+		 * make new spread-out rectangle */
 		Rect new_rect = {min(x, left), min(y, top), max(x, right), max(y, bottom)};
 
 		/* check new rect dimensions against preset max */
@@ -345,7 +345,7 @@ bool StationRect::BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mo
  * @param bottom_a Maximal tile Y edge of the rectangle (inclusive)
  * @return \c true if a station tile with the given \a st_id exists in the rectangle, \c false otherwise
  */
-/*static*/ bool StationRect::ScanForStationTiles(StationID st_id, int left_a, int top_a, int right_a, int bottom_a)
+/* static */ bool StationRect::ScanForStationTiles(StationID st_id, int left_a, int top_a, int right_a, int bottom_a)
 {
 	TileIndex top_left = TileXY(left_a, top_a);
 	int width = right_a - left_a + 1;

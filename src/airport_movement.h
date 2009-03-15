@@ -6,8 +6,8 @@
 #define AIRPORT_MOVEMENT_H
 
 
-// state machine input struct (from external file, etc.)
-// Finite sTate mAchine --> FTA
+/* state machine input struct (from external file, etc.)
+ * Finite sTate mAchine --> FTA */
 struct AirportFTAbuildup {
 	byte position; // the position that an airplane is at
 	byte heading;  // the current orders (eg. TAKEOFF, HANGAR, ENDLANDING, etc.)
@@ -25,7 +25,7 @@ static const AirportMovingData _airport_moving_data_dummy[] = {
 	{   96,    0, AMED_NOSPDCLAMP | AMED_SLOWTURN,     {DIR_N} },
 };
 
-// Country Airfield (small) 4x3
+/* Country Airfield (small) 4x3 */
 static const AirportMovingData _airport_moving_data_country[22] = {
 	{   53,    3, AMED_EXACTPOS,                   {DIR_SE} }, // 00 In Hangar
 	{   53,   27, 0,                               {DIR_N} }, // 01 Taxi to right outside depot
@@ -51,7 +51,7 @@ static const AirportMovingData _airport_moving_data_country[22] = {
 	{   44,   40, AMED_HELI_LOWER,                 {DIR_N} }, // 21 Helicopter landing
 };
 
-// Commuter Airfield (small) 5x4
+/* Commuter Airfield (small) 5x4 */
 static const AirportMovingData _airport_moving_data_commuter[37] = {
 	{   69,    3, AMED_EXACTPOS,                   {DIR_SE} }, // 00 In Hangar
 	{   72,   22, 0,                               {DIR_N} }, // 01 Taxi to right outside depot
@@ -78,7 +78,7 @@ static const AirportMovingData _airport_moving_data_commuter[37] = {
 	{    1,    6, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 22 Fly around waiting for a landing spot (north-west)
 	{  193,    6, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 23 Fly around waiting for a landing spot (south-west)
 	{  225,   81, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 24 Fly around waiting for a landing spot (south)
-	// Helicopter
+	/* Helicopter */
 	{   80,    0, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 25 Bufferspace before helipad
 	{   80,    0, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 26 Bufferspace before helipad
 	{   32,    8, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 27 Get in position for Helipad1
@@ -93,7 +93,7 @@ static const AirportMovingData _airport_moving_data_commuter[37] = {
 	{   56,    8, AMED_EXACTPOS,                   {DIR_N} }, // pre-helitakeoff helipad 2
 };
 
-// City Airport (large) 6x6
+/* City Airport (large) 6x6 */
 static const AirportMovingData _airport_moving_data_town[] = {
 	{   85,    3, AMED_EXACTPOS,                   {DIR_SE} }, // 00 In Hangar
 	{   85,   27, 0,                               {DIR_N} }, // 01 Taxi to right outside depot
@@ -111,7 +111,7 @@ static const AirportMovingData _airport_moving_data_town[] = {
 	{  177,   87, AMED_HOLD       | AMED_SLOWTURN, {DIR_N} }, // 13 Fly to landing position in air
 	{   89,   87, AMED_HOLD       | AMED_LAND,     {DIR_N} }, // 14 Going down for land
 	{   20,   87, AMED_NOSPDCLAMP | AMED_BRAKE,    {DIR_N} }, // 15 Just landed, brake until end of runway
-	{   20,   87, 0,                               {DIR_N} }, // 16 Just landed, turn around and taxi 1 square /* NOT USED */
+	{   20,   87, 0,                               {DIR_N} }, // 16 Just landed, turn around and taxi 1 square // NOT USED
 	{   36,   71, 0,                               {DIR_N} }, // 17 Taxi from runway to crossing
 	{  160,   87, AMED_HOLD       | AMED_SLOWTURN, {DIR_N} }, // 18 Fly around waiting for a landing spot (north-east)
 	{  140,    1, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 19 Final approach fix
@@ -127,7 +127,7 @@ static const AirportMovingData _airport_moving_data_town[] = {
 	{  -32,  120, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 29 Initial approach fix (east)
 };
 
-// Metropolitan Airport (metropolitan) - 2 runways
+/* Metropolitan Airport (metropolitan) - 2 runways */
 static const AirportMovingData _airport_moving_data_metropolitan[27] = {
 	{   85,    3, AMED_EXACTPOS,                   {DIR_SE} }, // 00 In Hangar
 	{   85,   27, 0,                               {DIR_N} }, // 01 Taxi to right outside depot
@@ -158,7 +158,7 @@ static const AirportMovingData _airport_moving_data_metropolitan[27] = {
 	{   15,   54, AMED_HELI_LOWER,                 {DIR_N} }, // 26 Helicopter landing
 };
 
-// International Airport (international) - 2 runways, 6 terminals, dedicated helipod
+/* International Airport (international) - 2 runways, 6 terminals, dedicated helipod */
 static const AirportMovingData _airport_moving_data_international[51] = {
 	{    7,   55, AMED_EXACTPOS,                   {DIR_SE} }, // 00 In Hangar 1
 	{  100,   21, AMED_EXACTPOS,                   {DIR_SE} }, // 01 In Hangar 2
@@ -201,7 +201,7 @@ static const AirportMovingData _airport_moving_data_international[51] = {
 	{    1,    6, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 38 Fly around waiting for a landing spot (north-west)
 	{  273,    6, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 39 Fly around waiting for a landing spot (south-west)
 	{  305,   81, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 40 Fly around waiting for a landing spot (south)
-	// Helicopter
+	/* Helicopter */
 	{  128,   80, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 41 Bufferspace before helipad
 	{  128,   80, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 42 Bufferspace before helipad
 	{   96,   71, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 43 Get in position for Helipad1
@@ -214,7 +214,7 @@ static const AirportMovingData _airport_moving_data_international[51] = {
 	{  104,   32, AMED_HELI_LOWER,                 {DIR_N} }, // 50 Land in HANGAR2_AREA to go to hangar
 };
 
-// Intercontinental Airport - 4 runways, 8 terminals, 2 dedicated helipads
+/* Intercontinental Airport - 4 runways, 8 terminals, 2 dedicated helipads */
 static const AirportMovingData _airport_moving_data_intercontinental[77] = {
 	{    7,   87, AMED_EXACTPOS,                   {DIR_SE} }, // 00 In Hangar 1
 	{  135,   72, AMED_EXACTPOS,                   {DIR_SE} }, // 01 In Hangar 2
@@ -263,7 +263,7 @@ static const AirportMovingData _airport_moving_data_intercontinental[77] = {
 	{ -200,   88, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 44 Fly around waiting for a landing spot (north-west)
 	{   56, -168, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 45 Fly around waiting for a landing spot (south-west)
 	{  312,   88, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 46 Fly around waiting for a landing spot (south)
-	// Helicopter
+	/* Helicopter */
 	{   96,   40, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 47 Bufferspace before helipad
 	{   96,   40, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 48 Bufferspace before helipad
 	{   82,   54, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 49 Get in position for Helipad1
@@ -297,7 +297,7 @@ static const AirportMovingData _airport_moving_data_intercontinental[77] = {
 };
 
 
-// Heliport (heliport)
+/* Heliport (heliport) */
 static const AirportMovingData _airport_moving_data_heliport[9] = {
 	{    5,    9, AMED_EXACTPOS,                   {DIR_NE} }, // 0 - At heliport terminal
 	{    2,    9, AMED_HELI_RAISE,                 {DIR_N} }, // 1 - Take off (play sound)
@@ -310,7 +310,7 @@ static const AirportMovingData _airport_moving_data_heliport[9] = {
 	{   70,    9, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 8 - Circle #4 (south)
 };
 
-// HeliDepot 2x2 (heliport)
+/* HeliDepot 2x2 (heliport) */
 static const AirportMovingData _airport_moving_data_helidepot[18] = {
 	{   24,    4, AMED_EXACTPOS,                   {DIR_NE} }, // 0 - At depot
 	{   24,   28, 0,                               {DIR_N} }, // 1 Taxi to right outside depot
@@ -332,7 +332,7 @@ static const AirportMovingData _airport_moving_data_helidepot[18] = {
 	{    8,   24, AMED_SLOWTURN | AMED_EXACTPOS,   {DIR_E} }, // 17 - turn on helipad1 for takeoff
 };
 
-// HeliDepot 2x2 (heliport)
+/* HeliDepot 2x2 (heliport) */
 static const AirportMovingData _airport_moving_data_helistation[33] = {
 	{    8,    3, AMED_EXACTPOS,                   {DIR_SE} }, // 00 In Hangar2
 	{    8,   22, 0,                               {DIR_N} }, // 01 outside hangar 2
@@ -369,7 +369,7 @@ static const AirportMovingData _airport_moving_data_helistation[33] = {
 	{  132,  -24, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 32 Fly around waiting for a landing spot (north-east)
 };
 
-// Oilrig
+/* Oilrig */
 static const AirportMovingData _airport_moving_data_oilrig[9] = {
 	{   31,    9, AMED_EXACTPOS,                   {DIR_NE} }, // 0 - At oilrig terminal
 	{   28,    9, AMED_HELI_RAISE,                 {DIR_N} }, // 1 - Take off (play sound)
@@ -406,17 +406,17 @@ static const AirportFTAbuildup _airport_fta_country[] = {
 	{  4, 255, AIRPORT_BUSY_block, 0 }, { 4, TERM2, 0, 5 }, { 4, HANGAR, 0, 1 }, { 4, TAKEOFF, 0, 6 }, { 4, HELITAKEOFF, 0, 1 },
 	{  5, 255, AIRPORT_BUSY_block, 0 }, { 5, TERM2, TERM2_block, 3 }, { 5, 0, 0, 4 },
 	{  6, 0, AIRPORT_BUSY_block, 7 },
-	// takeoff
+	/* takeoff */
 	{  7, TAKEOFF, AIRPORT_BUSY_block, 8 },
 	{  8, STARTTAKEOFF, NOTHING_block, 9 },
 	{  9, ENDTAKEOFF, NOTHING_block, 0 },
-	// landing
+	/* landing */
 	{ 10, FLYING, NOTHING_block, 15 }, { 10, LANDING, 0, 11 }, { 10, HELILANDING, 0, 20 },
 	{ 11, LANDING, AIRPORT_BUSY_block, 12 },
 	{ 12, 0, AIRPORT_BUSY_block, 13 },
 	{ 13, ENDLANDING, AIRPORT_BUSY_block, 14 }, { 13, TERM2, 0, 5 }, { 13, 0, 0, 14 },
 	{ 14, 0, AIRPORT_BUSY_block, 1 },
-	// In air
+	/* In air */
 	{ 15, 0, NOTHING_block, 16 },
 	{ 16, 0, NOTHING_block, 17 },
 	{ 17, 0, NOTHING_block, 18 },
@@ -444,31 +444,31 @@ static const AirportFTAbuildup _airport_fta_commuter[] = {
 	{  9, 255, TAXIWAY_BUSY_block, 9 }, { 9, TAKEOFF, TAXIWAY_BUSY_block, 10 }, { 9, HANGAR, TAXIWAY_BUSY_block, 10 }, { 9, TERM2, TERM2_block, 4 }, { 9, HELIPAD1, HELIPAD1_block, 6 }, { 9, HELITAKEOFF, HELIPAD1_block, 6 }, { 9, TERM1, TAXIWAY_BUSY_block, 8 }, { 9, 0, TAXIWAY_BUSY_block, 10 },
 	{ 10, 255, TAXIWAY_BUSY_block, 10 }, { 10, TERM3, TERM3_block, 5 }, { 10, HELIPAD1, 0, 9 }, { 10, HELIPAD2, HELIPAD2_block, 7 }, { 10, HELITAKEOFF, HELIPAD2_block, 7 }, { 10, TAKEOFF, TAXIWAY_BUSY_block, 1 }, { 10, HANGAR, TAXIWAY_BUSY_block, 1 }, { 10, 0, TAXIWAY_BUSY_block, 9 },
 	{ 11, 0, OUT_WAY_block, 12 },
-	// takeoff
+	/* takeoff */
 	{ 12, TAKEOFF, RUNWAY_IN_OUT_block, 13 },
 	{ 13, 0, RUNWAY_IN_OUT_block, 14 },
 	{ 14, STARTTAKEOFF, RUNWAY_IN_OUT_block, 15 },
 	{ 15, ENDTAKEOFF, NOTHING_block, 0 },
-	// landing
+	/* landing */
 	{ 16, FLYING, NOTHING_block, 21 }, { 16, LANDING, IN_WAY_block, 17 }, { 16, HELILANDING, 0, 25 },
 	{ 17, LANDING, RUNWAY_IN_OUT_block, 18 },
 	{ 18, 0, RUNWAY_IN_OUT_block, 19 },
 	{ 19, 0, RUNWAY_IN_OUT_block, 20 },
 	{ 20, ENDLANDING, IN_WAY_block, 2 },
-	// In Air
+	/* In Air */
 	{ 21, 0, NOTHING_block, 22 },
 	{ 22, 0, NOTHING_block, 23 },
 	{ 23, 0, NOTHING_block, 24 },
 	{ 24, 0, NOTHING_block, 16 },
-	// Helicopter -- stay in air in special place as a buffer to choose from helipads
+	/* Helicopter -- stay in air in special place as a buffer to choose from helipads */
 	{ 25, HELILANDING, PRE_HELIPAD_block, 26 },
 	{ 26, HELIENDLANDING, PRE_HELIPAD_block, 26 }, { 26, HELIPAD1, 0, 27 }, { 26, HELIPAD2, 0, 28 }, { 26, HANGAR, 0, 33 },
-	{ 27, 0, NOTHING_block, 29 }, //helipad1 approach
+	{ 27, 0, NOTHING_block, 29 }, // helipad1 approach
 	{ 28, 0, NOTHING_block, 30 },
-	// landing
+	/* landing */
 	{ 29, 255, NOTHING_block, 0 }, { 29, HELIPAD1, HELIPAD1_block, 6 },
 	{ 30, 255, NOTHING_block, 0 }, { 30, HELIPAD2, HELIPAD2_block, 7 },
-	// Helicopter -- takeoff
+	/* Helicopter -- takeoff */
 	{ 31, HELITAKEOFF, NOTHING_block, 0 },
 	{ 32, HELITAKEOFF, NOTHING_block, 0 },
 	{ 33, 0, TAXIWAY_BUSY_block, 34 }, // need to go to hangar when waiting in air
@@ -492,22 +492,22 @@ static const AirportFTAbuildup _airport_fta_city[] = {
 	{  7, 255, TAXIWAY_BUSY_block, 0 }, { 7, TERM1, TERM1_block, 2 }, { 7, TAKEOFF, OUT_WAY_block, 8 }, { 7, HELITAKEOFF, 0, 22 }, { 7, HANGAR, 0, 1 }, { 7, 0, 0, 6 },
 	{  8, 0, OUT_WAY_block, 9 },
 	{  9, 0, RUNWAY_IN_OUT_block, 10 },
-	// takeoff
+	/* takeoff */
 	{ 10, TAKEOFF, RUNWAY_IN_OUT_block, 11 },
 	{ 11, STARTTAKEOFF, NOTHING_block, 12 },
 	{ 12, ENDTAKEOFF, NOTHING_block, 0 },
-	// landing
+	/* landing */
 	{ 13, FLYING, NOTHING_block, 18 }, { 13, LANDING, 0, 14 }, { 13, HELILANDING, 0, 23 },
 	{ 14, LANDING, RUNWAY_IN_OUT_block, 15 },
 	{ 15, 0, RUNWAY_IN_OUT_block, 17 },
-	{ 16, 0, RUNWAY_IN_OUT_block, 17 }, /* not used, left for compatibility */
+	{ 16, 0, RUNWAY_IN_OUT_block, 17 }, // not used, left for compatibility
 	{ 17, ENDLANDING, IN_WAY_block, 7 },
-	// In Air
+	/* In Air */
 	{ 18, 0, NOTHING_block, 25 },
 	{ 19, 0, NOTHING_block, 20 },
 	{ 20, 0, NOTHING_block, 21 },
 	{ 21, 0, NOTHING_block, 13 },
-	// helicopter
+	/* helicopter */
 	{ 22, HELITAKEOFF, NOTHING_block, 0 },
 	{ 23, HELILANDING, IN_WAY_block, 24 },
 	{ 24, HELIENDLANDING, IN_WAY_block, 17 },
@@ -533,23 +533,23 @@ static const AirportFTAbuildup _airport_fta_metropolitan[] = {
 	{  7, 255, TAXIWAY_BUSY_block, 0 }, { 7, TERM1, TERM1_block, 2 }, { 7, TAKEOFF, 0, 8 }, { 7, HELITAKEOFF, 0, 23 }, { 7, HANGAR, 0, 1 }, { 7, 0, 0, 6 },
 	{  8, 0, OUT_WAY_block, 9 },
 	{  9, 0, RUNWAY_OUT_block, 10 },
-	// takeoff
+	/* takeoff */
 	{ 10, TAKEOFF, RUNWAY_OUT_block, 11 },
 	{ 11, STARTTAKEOFF, NOTHING_block, 12 },
 	{ 12, ENDTAKEOFF, NOTHING_block, 0 },
-	// landing
+	/* landing */
 	{ 13, FLYING, NOTHING_block, 19 }, { 13, LANDING, 0, 14 }, { 13, HELILANDING, 0, 25 },
 	{ 14, LANDING, RUNWAY_IN_block, 15 },
 	{ 15, 0, RUNWAY_IN_block, 16 },
 	{ 16, 255, RUNWAY_IN_block, 0 }, { 16, ENDLANDING, IN_WAY_block, 17 },
 	{ 17, 255, RUNWAY_OUT_block, 0 }, { 17, ENDLANDING, IN_WAY_block, 18 },
 	{ 18, ENDLANDING, IN_WAY_block, 7 },
-	// In Air
+	/* In Air */
 	{ 19, 0, NOTHING_block, 20 },
 	{ 20, 0, NOTHING_block, 21 },
 	{ 21, 0, NOTHING_block, 22 },
 	{ 22, 0, NOTHING_block, 13 },
-	// helicopter
+	/* helicopter */
 	{ 23, 0, NOTHING_block, 24 },
 	{ 24, HELITAKEOFF, NOTHING_block, 0 },
 	{ 25, HELILANDING, IN_WAY_block, 26 },
@@ -590,31 +590,31 @@ static const AirportFTAbuildup _airport_fta_international[] = {
 	{ 25, 255, TERM_GROUP1_block, 0 }, { 25, TERM3, TERM3_block, 6 }, { 25, TAKEOFF, 0, 26 }, { 25, 0, 0, 24 },
 	{ 26, 255, TAXIWAY_BUSY_block, 0 }, { 26, TAKEOFF, 0, 27 }, { 26, 0, 0, 25 },
 	{ 27, 0, OUT_WAY_block, 28 },
-	// takeoff
+	/* takeoff */
 	{ 28, TAKEOFF, OUT_WAY_block, 29 },
 	{ 29, 0, RUNWAY_OUT_block, 30 },
 	{ 30, STARTTAKEOFF, NOTHING_block, 31 },
 	{ 31, ENDTAKEOFF, NOTHING_block, 0 },
-	// landing
+	/* landing */
 	{ 32, FLYING, NOTHING_block, 37 }, { 32, LANDING, 0, 33 }, { 32, HELILANDING, 0, 41 },
 	{ 33, LANDING, RUNWAY_IN_block, 34 },
 	{ 34, 0, RUNWAY_IN_block, 35 },
 	{ 35, 0, RUNWAY_IN_block, 36 },
 	{ 36, ENDLANDING, IN_WAY_block, 36 }, { 36, 255, TERM_GROUP1_block, 0 }, { 36, 255, TERM_GROUP2_ENTER1_block, 1 }, { 36, TERM4, 0, 12 }, { 36, TERM5, 0, 12 }, { 36, TERM6, 0, 12 }, { 36, 0, 0, 2 },
-	// In Air
+	/* In Air */
 	{ 37, 0, NOTHING_block, 38 },
 	{ 38, 0, NOTHING_block, 39 },
 	{ 39, 0, NOTHING_block, 40 },
 	{ 40, 0, NOTHING_block, 32 },
-	// Helicopter -- stay in air in special place as a buffer to choose from helipads
+	/* Helicopter -- stay in air in special place as a buffer to choose from helipads */
 	{ 41, HELILANDING, PRE_HELIPAD_block, 42 },
 	{ 42, HELIENDLANDING, PRE_HELIPAD_block, 42 }, { 42, HELIPAD1, 0, 43 }, { 42, HELIPAD2, 0, 44 }, { 42, HANGAR, 0, 49 },
 	{ 43, 0, NOTHING_block, 45 },
 	{ 44, 0, NOTHING_block, 46 },
-	// landing
+	/* landing */
 	{ 45, 255, NOTHING_block, 0 }, { 45, HELIPAD1, HELIPAD1_block, 10 },
 	{ 46, 255, NOTHING_block, 0 }, { 46, HELIPAD2, HELIPAD2_block, 11 },
-	// Helicopter -- takeoff
+	/* Helicopter -- takeoff */
 	{ 47, HELITAKEOFF, NOTHING_block, 0 },
 	{ 48, HELITAKEOFF, NOTHING_block, 0 },
 	{ 49, 0, HANGAR2_AREA_block, 50 }, // need to go to hangar when waiting in air
@@ -622,7 +622,7 @@ static const AirportFTAbuildup _airport_fta_international[] = {
 	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
 };
 
-// intercontinental
+/* intercontinental */
 static const TileIndexDiffC _airport_depots_intercontinental[] = { { 0, 5 }, { 8, 4 } };
 static const byte _airport_terminal_intercontinental[] = { 2, 4, 4 };
 static const byte _airport_helipad_intercontinental[] = { 1, 2 };
@@ -660,12 +660,12 @@ static const AirportFTAbuildup _airport_fta_intercontinental[] = {
 	{ 29, 255, TERM_GROUP1_block, 0 }, { 29, TERM4, TERM4_block, 7 }, { 29, HANGAR, HANGAR1_AREA_block, 27 }, { 29, TAKEOFF, 0, 30 }, { 29, 0, 0, 28 },
 	{ 30, 0, OUT_WAY_block2, 31 },
 	{ 31, 0, OUT_WAY_block, 32 },
-	// takeoff
+	/* takeoff */
 	{ 32, TAKEOFF, RUNWAY_OUT_block, 33 },
 	{ 33, 0, RUNWAY_OUT_block, 34 },
 	{ 34, STARTTAKEOFF, NOTHING_block, 35 },
 	{ 35, ENDTAKEOFF, NOTHING_block, 0 },
-	// landing
+	/* landing */
 	{ 36, 0, 0, 0 },
 	{ 37, LANDING, RUNWAY_IN_block, 38 },
 	{ 38, 0, RUNWAY_IN_block, 39 },
@@ -673,32 +673,32 @@ static const AirportFTAbuildup _airport_fta_intercontinental[] = {
 	{ 40, ENDLANDING, RUNWAY_IN_block, 41 },
 	{ 41, 0, IN_WAY_block, 42 },
 	{ 42, 255, IN_WAY_block, 0 }, { 42, 255, TERM_GROUP1_block, 0 }, { 42, 255, TERM_GROUP1_block, 1 }, { 42, HANGAR, 0, 2 }, { 42, 0, 0, 26 },
-	// In Air
+	/* In Air */
 	{ 43, 0, 0, 44 },
 	{ 44, FLYING, 0, 45 }, { 44, HELILANDING, 0, 47 }, { 44, LANDING, 0, 69 }, { 44, 0, 0, 45 },
 	{ 45, 0, 0, 46 },
 	{ 46, FLYING, 0, 43 }, { 46, LANDING, 0, 76 }, { 46, 0, 0, 43 },
-	// Helicopter -- stay in air in special place as a buffer to choose from helipads
+	/* Helicopter -- stay in air in special place as a buffer to choose from helipads */
 	{ 47, HELILANDING, PRE_HELIPAD_block, 48 },
 	{ 48, HELIENDLANDING, PRE_HELIPAD_block, 48 }, { 48, HELIPAD1, 0, 49 }, { 48, HELIPAD2, 0, 50 }, { 48, HANGAR, 0, 55 },
 	{ 49, 0, NOTHING_block, 51 },
 	{ 50, 0, NOTHING_block, 52 },
-	// landing
+	/* landing */
 	{ 51, 255, NOTHING_block, 0 }, { 51, HELIPAD1, HELIPAD1_block, 12 }, { 51, HANGAR, 0, 55 }, { 51, 0, 0, 12 },
 	{ 52, 255, NOTHING_block, 0 }, { 52, HELIPAD2, HELIPAD2_block, 13 }, { 52, HANGAR, 0, 55 }, { 52, 0, 0, 13 },
-	// Helicopter -- takeoff
+	/* Helicopter -- takeoff */
 	{ 53, HELITAKEOFF, NOTHING_block, 0 },
 	{ 54, HELITAKEOFF, NOTHING_block, 0 },
 	{ 55, 0, HANGAR2_AREA_block, 56 }, // need to go to hangar when waiting in air
 	{ 56, 0, HANGAR2_AREA_block, 3 },
-	// runway 2 out support
+	/* runway 2 out support */
 	{ 57, 255, OUT_WAY2_block, 0 }, { 57, TAKEOFF, 0, 58 }, { 57, 0, 0, 58 },
 	{ 58, 0, OUT_WAY2_block, 59 },
 	{ 59, TAKEOFF, RUNWAY_OUT2_block, 60 }, // takeoff
 	{ 60, 0, RUNWAY_OUT2_block, 61 },
 	{ 61, STARTTAKEOFF, NOTHING_block, 62 },
 	{ 62, ENDTAKEOFF, NOTHING_block, 0 },
-	// runway 2 in support
+	/* runway 2 in support */
 	{ 63, LANDING, RUNWAY_IN2_block, 64 },
 	{ 64, 0, RUNWAY_IN2_block, 65 },
 	{ 65, 0, RUNWAY_IN2_block, 66 },
@@ -717,7 +717,7 @@ static const AirportFTAbuildup _airport_fta_intercontinental[] = {
 };
 
 
-// heliports, oilrigs don't have depots
+/* heliports, oilrigs don't have depots */
 static const byte _airport_helipad_heliport_oilrig[] = { 1, 1 };
 static const byte _airport_entries_heliport_oilrig[] = { 7, 7, 7, 7 };
 static const AirportFTAbuildup _airport_fta_heliport_oilrig[] = {
@@ -726,7 +726,7 @@ static const AirportFTAbuildup _airport_fta_heliport_oilrig[] = {
 	{ 2, 255, AIRPORT_BUSY_block, 0 }, { 2, HELILANDING, 0, 3 }, { 2, HELITAKEOFF, 0, 1 },
 	{ 3, HELILANDING, AIRPORT_BUSY_block, 4 },
 	{ 4, HELIENDLANDING, AIRPORT_BUSY_block, 4 }, { 4, HELIPAD1, HELIPAD1_block, 0 }, { 4, HELITAKEOFF, 0, 2 },
-	// In Air
+	/* In Air */
 	{ 5, 0, NOTHING_block, 6 },
 	{ 6, 0, NOTHING_block, 7 },
 	{ 7, 0, NOTHING_block, 8 },
@@ -734,7 +734,7 @@ static const AirportFTAbuildup _airport_fta_heliport_oilrig[] = {
 	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
 };
 
-// helidepots
+/* helidepots */
 static const TileIndexDiffC _airport_depots_helidepot[] = { { 1, 0 } };
 static const byte _airport_helipad_helidepot[] = { 1, 1 };
 static const byte _airport_entries_helidepot[] = { 4, 4, 4, 4 };
@@ -742,18 +742,18 @@ static const AirportFTAbuildup _airport_fta_helidepot[] = {
 	{  0, HANGAR, NOTHING_block, 1 },
 	{  1, 255, HANGAR2_AREA_block, 0 }, { 1, HANGAR, 0, 0 }, { 1, HELIPAD1, HELIPAD1_block, 14 }, { 1, HELITAKEOFF, 0, 15 }, { 1, 0, 0, 0 },
 	{  2, FLYING, NOTHING_block, 3 }, { 2, HELILANDING, PRE_HELIPAD_block, 7 }, { 2, HANGAR, 0, 12 }, { 2, HELITAKEOFF, NOTHING_block, 16 },
-	// In Air
+	/* In Air */
 	{  3, 0, NOTHING_block, 4 },
 	{  4, 0, NOTHING_block, 5 },
 	{  5, 0, NOTHING_block, 6 },
 	{  6, 0, NOTHING_block, 2 },
-	// Helicopter -- stay in air in special place as a buffer to choose from helipads
+	/* Helicopter -- stay in air in special place as a buffer to choose from helipads */
 	{  7, HELILANDING, PRE_HELIPAD_block, 8 },
 	{  8, HELIENDLANDING, PRE_HELIPAD_block, 8 }, { 8, HELIPAD1, 0, 9 }, { 8, HANGAR, 0, 12 }, { 8, 0, 0, 2 },
 	{  9, 0, NOTHING_block, 10 },
-	// landing
+	/* landing */
 	{ 10, 255, NOTHING_block, 10 }, { 10, HELIPAD1, HELIPAD1_block, 14 }, { 10, HANGAR, 0, 1 }, { 10, 0, 0, 14 },
-	// Helicopter -- takeoff
+	/* Helicopter -- takeoff */
 	{ 11, HELITAKEOFF, NOTHING_block, 0 },
 	{ 12, 0, HANGAR2_AREA_block, 13 }, // need to go to hangar when waiting in air
 	{ 13, 0, HANGAR2_AREA_block, 1 },
@@ -764,16 +764,16 @@ static const AirportFTAbuildup _airport_fta_helidepot[] = {
 	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
 };
 
-// helistation
+/* helistation */
 static const TileIndexDiffC _airport_depots_helistation[] = { { 0, 0 } };
 static const byte _airport_helipad_helistation[] = { 1, 3 };
 static const byte _airport_entries_helistation[] = { 25, 25, 25, 25 };
 static const AirportFTAbuildup _airport_fta_helistation[] = {
 	{  0, HANGAR, NOTHING_block, 8 },    { 0, HELIPAD1, 0, 1 }, { 0, HELIPAD2, 0, 1 }, { 0, HELIPAD3, 0, 1 }, { 0, HELITAKEOFF, 0, 1 }, { 0, 0, 0, 0 },
 	{  1, 255, HANGAR2_AREA_block, 0 },  { 1, HANGAR, 0, 0 }, { 1, HELITAKEOFF, 0, 3 }, { 1, 0, 0, 4 },
-	// landing
+	/* landing */
 	{  2, FLYING, NOTHING_block, 28 },   { 2, HELILANDING, 0, 15 }, { 2, 0, 0, 28 },
-	// helicopter side
+	/* helicopter side */
 	{  3, HELITAKEOFF, NOTHING_block, 0 }, // helitakeoff outside hangar2
 	{  4, 255, TAXIWAY_BUSY_block, 0 },  { 4, HANGAR, HANGAR2_AREA_block, 1 }, { 4, HELITAKEOFF, 0, 1 }, { 4, 0, 0, 5 },
 	{  5, 255, TAXIWAY_BUSY_block, 0 },  { 5, HELIPAD1, HELIPAD1_block, 6 }, { 5, HELIPAD2, HELIPAD2_block, 7 }, { 5, HELIPAD3, HELIPAD3_block, 8 }, { 5, 0, 0, 4 },
@@ -786,13 +786,13 @@ static const AirportFTAbuildup _airport_fta_helistation[] = {
 	{ 12, HELITAKEOFF, NOTHING_block, 0 },
 	{ 13, HELITAKEOFF, NOTHING_block, 0 },
 	{ 14, HELITAKEOFF, NOTHING_block, 0 },
-	// heli - in flight moves
+	/* heli - in flight moves */
 	{ 15, HELILANDING, PRE_HELIPAD_block, 16 },
 	{ 16, HELIENDLANDING, PRE_HELIPAD_block, 16 }, { 16, HELIPAD1, 0, 17 }, { 16, HELIPAD2, 0, 18 }, { 16, HELIPAD3, 0, 19 }, { 16, HANGAR, 0, 23 },
 	{ 17, 0, NOTHING_block, 20 },
 	{ 18, 0, NOTHING_block, 21 },
 	{ 19, 0, NOTHING_block, 22 },
-	// heli landing
+	/* heli landing */
 	{ 20, 255, NOTHING_block, 0 }, { 20, HELIPAD1, HELIPAD1_block, 6 }, { 20, HANGAR, 0, 23 }, { 20, 0, 0, 6 },
 	{ 21, 255, NOTHING_block, 0 }, { 21, HELIPAD2, HELIPAD2_block, 7 }, { 21, HANGAR, 0, 23 }, { 21, 0, 0, 7 },
 	{ 22, 255, NOTHING_block, 0 }, { 22, HELIPAD3, HELIPAD3_block, 8 }, { 22, HANGAR, 0, 23 }, { 22, 0, 0, 8 },

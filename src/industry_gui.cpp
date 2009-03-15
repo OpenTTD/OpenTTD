@@ -382,7 +382,7 @@ public:
 		if (--this->callback_timer == 0) {
 			/* We have just passed another day.
 			 * See if we need to update availability of currently selected industry */
-			this->callback_timer = DAY_TICKS;  //restart counter
+			this->callback_timer = DAY_TICKS; // restart counter
 
 			const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
 

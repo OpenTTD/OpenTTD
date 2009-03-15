@@ -495,13 +495,13 @@ public:
 				_left_button_clicked = false;
 			} break;
 
-			case MW_SHUFFLE: //toggle shuffle
+			case MW_SHUFFLE: // toggle shuffle
 				msf.shuffle ^= 1;
 				StopMusic();
 				SelectSongToPlay();
 				break;
 
-			case MW_PROGRAMME: //show track selection
+			case MW_PROGRAMME: // show track selection
 				ShowMusicTrackSelection();
 				break;
 

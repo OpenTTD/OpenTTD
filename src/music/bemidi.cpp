@@ -6,7 +6,7 @@
 #include "../openttd.h"
 #include "bemidi.h"
 
-// BeOS System Includes
+/* BeOS System Includes */
 #include <MidiSynthFile.h>
 
 static BMidiSynthFile midiSynthFile;

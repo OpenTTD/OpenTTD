@@ -948,33 +948,33 @@ static void SplitToolbar(Window *w)
 typedef void MenuClickedProc(int index);
 
 static MenuClickedProc * const _menu_clicked_procs[] = {
-	NULL,                 /* 0 */
-	NULL,                 /* 1 */
-	MenuClickSettings,    /* 2 */
-	MenuClickSaveLoad,    /* 3 */
-	MenuClickMap,         /* 4 */
-	MenuClickTown,        /* 5 */
-	MenuClickSubsidies,   /* 6 */
-	MenuClickStations,    /* 7 */
-	MenuClickFinances,    /* 8 */
-	MenuClickCompany,     /* 9 */
-	MenuClickGraphs,      /* 10 */
-	MenuClickLeague,      /* 11 */
-	MenuClickIndustry,    /* 12 */
-	MenuClickShowTrains,  /* 13 */
-	MenuClickShowRoad,    /* 14 */
-	MenuClickShowShips,   /* 15 */
-	MenuClickShowAir,     /* 16 */
-	MenuClickMap,         /* 17 */
-	NULL,                 /* 18 */
-	MenuClickBuildRail,   /* 19 */
-	MenuClickBuildRoad,   /* 20 */
-	MenuClickBuildWater,  /* 21 */
-	MenuClickBuildAir,    /* 22 */
-	MenuClickForest,      /* 23 */
-	MenuClickMusicWindow, /* 24 */
-	MenuClickNewspaper,   /* 25 */
-	MenuClickHelp,        /* 26 */
+	NULL,                 // 0
+	NULL,                 // 1
+	MenuClickSettings,    // 2
+	MenuClickSaveLoad,    // 3
+	MenuClickMap,         // 4
+	MenuClickTown,        // 5
+	MenuClickSubsidies,   // 6
+	MenuClickStations,    // 7
+	MenuClickFinances,    // 8
+	MenuClickCompany,     // 9
+	MenuClickGraphs,      // 10
+	MenuClickLeague,      // 11
+	MenuClickIndustry,    // 12
+	MenuClickShowTrains,  // 13
+	MenuClickShowRoad,    // 14
+	MenuClickShowShips,   // 15
+	MenuClickShowAir,     // 16
+	MenuClickMap,         // 17
+	NULL,                 // 18
+	MenuClickBuildRail,   // 19
+	MenuClickBuildRoad,   // 20
+	MenuClickBuildWater,  // 21
+	MenuClickBuildAir,    // 22
+	MenuClickForest,      // 23
+	MenuClickMusicWindow, // 24
+	MenuClickNewspaper,   // 25
+	MenuClickHelp,        // 26
 };
 
 /* --- Toolbar handling for the 'normal' case */

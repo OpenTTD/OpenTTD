@@ -23,11 +23,11 @@ struct CYapfRoadNodeT
 	}
 };
 
-// now define two major node types (that differ by key type)
+/* now define two major node types (that differ by key type) */
 typedef CYapfRoadNodeT<CYapfNodeKeyExitDir>  CYapfRoadNodeExitDir;
 typedef CYapfRoadNodeT<CYapfNodeKeyTrackDir> CYapfRoadNodeTrackDir;
 
-// Default NodeList types
+/* Default NodeList types */
 typedef CNodeList_HashTableT<CYapfRoadNodeExitDir , 8, 12> CRoadNodeListExitDir;
 typedef CNodeList_HashTableT<CYapfRoadNodeTrackDir, 10, 14> CRoadNodeListTrackDir;
 

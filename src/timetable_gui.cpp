@@ -256,18 +256,18 @@ struct TimetableWindow : Window {
 		const Vehicle *v = this->vehicle;
 
 		switch (widget) {
-			case TTV_ORDER_VIEW: /* Order view button */
+			case TTV_ORDER_VIEW: // Order view button
 				ShowOrdersWindow(v);
 				break;
 
-			case TTV_TIMETABLE_PANEL: { /* Main panel. */
+			case TTV_TIMETABLE_PANEL: { // Main panel.
 				int selected = GetOrderFromTimetableWndPt(pt.y, v);
 
 				this->DeleteChildWindows();
 				this->sel_index = (selected == INVALID_ORDER || selected == this->sel_index) ? -1 : selected;
 			} break;
 
-			case TTV_CHANGE_TIME: { /* "Wait For" button. */
+			case TTV_CHANGE_TIME: { // "Wait For" button.
 				int selected = this->sel_index;
 				VehicleOrderID real = (selected + 1) / 2;
 
@@ -289,16 +289,16 @@ struct TimetableWindow : Window {
 				ShowQueryString(current, STR_TIMETABLE_CHANGE_TIME, 31, 150, this, CS_NUMERAL, QSF_NONE);
 			} break;
 
-			case TTV_CLEAR_TIME: { /* Clear waiting time button. */
+			case TTV_CLEAR_TIME: { // Clear waiting time button.
 				uint32 p1 = PackTimetableArgs(v, this->sel_index);
 				DoCommandP(0, p1, 0, CMD_CHANGE_TIMETABLE | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
 			} break;
 
-			case TTV_RESET_LATENESS: /* Reset the vehicle's late counter. */
+			case TTV_RESET_LATENESS: // Reset the vehicle's late counter.
 				DoCommandP(0, v->index, 0, CMD_SET_VEHICLE_ON_TIME | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
 				break;
 
-			case TTV_AUTOFILL: { /* Autofill the timetable. */
+			case TTV_AUTOFILL: { // Autofill the timetable.
 				uint32 p2 = 0;
 				if (!HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE)) SetBit(p2, 0);
 				if (_ctrl_pressed) SetBit(p2, 1);

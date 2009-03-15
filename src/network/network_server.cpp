@@ -26,25 +26,25 @@
 
 #include "table/strings.h"
 
-// This file handles all the server-commands
+/* This file handles all the server-commands */
 
 static void NetworkHandleCommandQueue(NetworkClientSocket *cs);
 
-// **********
-// Sending functions
-//   DEF_SERVER_SEND_COMMAND has parameter: NetworkClientSocket *cs
-// **********
+/***********
+ * Sending functions
+ *   DEF_SERVER_SEND_COMMAND has parameter: NetworkClientSocket *cs
+ ************/
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CLIENT_INFO)(NetworkClientSocket *cs, NetworkClientInfo *ci)
 {
-	//
-	// Packet: SERVER_CLIENT_INFO
-	// Function: Sends info about a client
-	// Data:
-	//    uint32:  The identifier of the client (always unique on a server. 1 = server, 0 is invalid)
-	//    uint8:  As which company the client is playing
-	//    String: The name of the client
-	//
+	/*
+	 * Packet: SERVER_CLIENT_INFO
+	 * Function: Sends info about a client
+	 * Data:
+	 *    uint32:  The identifier of the client (always unique on a server. 1 = server, 0 is invalid)
+	 *    uint8:  As which company the client is playing
+	 *    String: The name of the client
+	 */
 
 	if (ci->client_id != INVALID_CLIENT_ID) {
 		Packet *p = NetworkSend_Init(PACKET_SERVER_CLIENT_INFO);
@@ -58,11 +58,11 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CLIENT_INFO)(NetworkClientSocket *cs
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 {
-	//
-	// Packet: SERVER_COMPANY_INFO
-	// Function: Sends info about the companies
-	// Data:
-	//
+	/*
+	 * Packet: SERVER_COMPANY_INFO
+	 * Function: Sends info about the companies
+	 * Data:
+	 */
 
 	/* Fetch the latest version of the stats */
 	NetworkCompanyStats company_stats[MAX_COMPANIES];
@@ -125,12 +125,12 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, NetworkErrorCode error)
 {
-	//
-	// Packet: SERVER_ERROR
-	// Function: The client made an error
-	// Data:
-	//    uint8:  ErrorID (see network_data.h, NetworkErrorCode)
-	//
+	/*
+	 * Packet: SERVER_ERROR
+	 * Function: The client made an error
+	 * Data:
+	 *    uint8:  ErrorID (see network_data.h, NetworkErrorCode)
+	 */
 
 	char str[100];
 	Packet *p = NetworkSend_Init(PACKET_SERVER_ERROR);
@@ -141,7 +141,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, Netw
 	StringID strid = GetNetworkErrorMsg(error);
 	GetString(str, strid, lastof(str));
 
-	// Only send when the current client was in game
+	/* Only send when the current client was in game */
 	if (cs->status > STATUS_AUTH) {
 		NetworkClientSocket *new_cs;
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
@@ -154,8 +154,8 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, Netw
 
 		FOR_ALL_CLIENT_SOCKETS(new_cs) {
 			if (new_cs->status > STATUS_AUTH && new_cs != cs) {
-				// Some errors we filter to a more general error. Clients don't have to know the real
-				//  reason a joining failed.
+				/* Some errors we filter to a more general error. Clients don't have to know the real
+				 *  reason a joining failed. */
 				if (error == NETWORK_ERROR_NOT_AUTHORIZED || error == NETWORK_ERROR_NOT_EXPECTED || error == NETWORK_ERROR_WRONG_REVISION)
 					error = NETWORK_ERROR_ILLEGAL_PACKET;
 
@@ -168,24 +168,24 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, Netw
 
 	cs->has_quit = true;
 
-	// Make sure the data get's there before we close the connection
+	/* Make sure the data get's there before we close the connection */
 	cs->Send_Packets();
 
-	// The client made a mistake, so drop his connection now!
+	/* The client made a mistake, so drop his connection now! */
 	NetworkCloseClient(cs);
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHECK_NEWGRFS)(NetworkClientSocket *cs)
 {
-	//
-	// Packet: PACKET_SERVER_CHECK_NEWGRFS
-	// Function: Sends info about the used GRFs to the client
-	// Data:
-	//      uint8:  Amount of GRFs
-	//    And then for each GRF:
-	//      uint32: GRF ID
-	// 16 * uint8:  MD5 checksum of the GRF
-	//
+	/*
+	 * Packet: PACKET_SERVER_CHECK_NEWGRFS
+	 * Function: Sends info about the used GRFs to the client
+	 * Data:
+	 *      uint8:  Amount of GRFs
+	 *    And then for each GRF:
+	 *      uint32: GRF ID
+	 * 16 * uint8:  MD5 checksum of the GRF
+	 */
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_CHECK_NEWGRFS);
 	const GRFConfig *c;
@@ -205,12 +205,12 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHECK_NEWGRFS)(NetworkClientSocket *
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkClientSocket *cs, NetworkPasswordType type)
 {
-	//
-	// Packet: SERVER_NEED_PASSWORD
-	// Function: Indication to the client that the server needs a password
-	// Data:
-	//    uint8:  Type of password
-	//
+	/*
+	 * Packet: SERVER_NEED_PASSWORD
+	 * Function: Indication to the client that the server needs a password
+	 * Data:
+	 *    uint8:  Type of password
+	 */
 
 	/* Invalid packet when status is AUTH or higher */
 	if (cs->status >= STATUS_AUTH) return;
@@ -226,17 +226,17 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkClientSocket *
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 {
-	//
-	// Packet: SERVER_WELCOME
-	// Function: The client is joined and ready to receive his map
-	// Data:
-	//    uint32:  Own Client identifier
-	//
+	/*
+	 * Packet: SERVER_WELCOME
+	 * Function: The client is joined and ready to receive his map
+	 * Data:
+	 *    uint32:  Own Client identifier
+	 */
 
 	Packet *p;
 	NetworkClientSocket *new_cs;
 
-	// Invalid packet when status is AUTH or higher
+	/* Invalid packet when status is AUTH or higher */
 	if (cs->status >= STATUS_AUTH) return;
 
 	cs->status = STATUS_AUTH;
@@ -248,29 +248,29 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 	p->Send_string(_settings_client.network.network_id);
 	cs->Send_Packet(p);
 
-		// Transmit info about all the active clients
+		/* Transmit info about all the active clients */
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
 		if (new_cs != cs && new_cs->status > STATUS_AUTH)
 			SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, new_cs->GetInfo());
 	}
-	// Also send the info of the server
+	/* Also send the info of the server */
 	SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER));
 }
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WAIT)
 {
-	//
-	// Packet: PACKET_SERVER_WAIT
-	// Function: The client can not receive the map at the moment because
-	//             someone else is already receiving the map
-	// Data:
-	//    uint8:  Clients awaiting map
-	//
+	/*
+	 * Packet: PACKET_SERVER_WAIT
+	 * Function: The client can not receive the map at the moment because
+	 *             someone else is already receiving the map
+	 * Data:
+	 *    uint8:  Clients awaiting map
+	 */
 	int waiting = 0;
 	NetworkClientSocket *new_cs;
 	Packet *p;
 
-	// Count how many clients are waiting in the queue
+	/* Count how many clients are waiting in the queue */
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
 		if (new_cs->status == STATUS_MAP_WAIT) waiting++;
 	}
@@ -280,28 +280,28 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WAIT)
 	cs->Send_Packet(p);
 }
 
-// This sends the map to the client
+/* This sends the map to the client */
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 {
-	//
-	// Packet: SERVER_MAP
-	// Function: Sends the map to the client, or a part of it (it is splitted in
-	//   a lot of multiple packets)
-	// Data:
-	//    uint8:  packet-type (MAP_PACKET_START, MAP_PACKET_NORMAL and MAP_PACKET_END)
-	//  if MAP_PACKET_START:
-	//    uint32: The current FrameCounter
-	//  if MAP_PACKET_NORMAL:
-	//    piece of the map (till max-size of packet)
-	//  if MAP_PACKET_END:
-	//    nothing
-	//
+	/*
+	 * Packet: SERVER_MAP
+	 * Function: Sends the map to the client, or a part of it (it is splitted in
+	 *   a lot of multiple packets)
+	 * Data:
+	 *    uint8:  packet-type (MAP_PACKET_START, MAP_PACKET_NORMAL and MAP_PACKET_END)
+	 *  if MAP_PACKET_START:
+	 *    uint32: The current FrameCounter
+	 *  if MAP_PACKET_NORMAL:
+	 *    piece of the map (till max-size of packet)
+	 *  if MAP_PACKET_END:
+	 *    nothing
+	 */
 
 	static FILE *file_pointer;
 	static uint sent_packets; // How many packets we did send succecfully last time
 
 	if (cs->status < STATUS_AUTH) {
-		// Illegal call, return error and ignore the packet
+		/* Illegal call, return error and ignore the packet */
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
 		return;
 	}
@@ -310,7 +310,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 		const char *filename = "network_server.tmp";
 		Packet *p;
 
-		// Make a dump of the current game
+		/* Make a dump of the current game */
 		if (SaveOrLoad(filename, SL_SAVE, AUTOSAVE_DIR) != SL_OK) usererror("network savedump failed");
 
 		file_pointer = FioFOpenFile(filename, "rb", AUTOSAVE_DIR);
@@ -318,7 +318,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 
 		if (ftell(file_pointer) == 0) usererror("network savedump failed - zero sized savegame?");
 
-		// Now send the _frame_counter and how many packets are coming
+		/* Now send the _frame_counter and how many packets are coming */
 		p = NetworkSend_Init(PACKET_SERVER_MAP);
 		p->Send_uint8 (MAP_PACKET_START);
 		p->Send_uint32(_frame_counter);
@@ -348,49 +348,49 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 			p->size += res;
 			cs->Send_Packet(p);
 			if (feof(file_pointer)) {
-				// Done reading!
+				/* Done reading! */
 				Packet *p = NetworkSend_Init(PACKET_SERVER_MAP);
 				p->Send_uint8(MAP_PACKET_END);
 				cs->Send_Packet(p);
 
-				// Set the status to DONE_MAP, no we will wait for the client
-				//  to send it is ready (maybe that happens like never ;))
+				/* Set the status to DONE_MAP, no we will wait for the client
+				 *  to send it is ready (maybe that happens like never ;)) */
 				cs->status = STATUS_DONE_MAP;
 				fclose(file_pointer);
 
 				{
 					NetworkClientSocket *new_cs;
 					bool new_map_client = false;
-					// Check if there is a client waiting for receiving the map
-					//  and start sending him the map
+					/* Check if there is a client waiting for receiving the map
+					 *  and start sending him the map */
 					FOR_ALL_CLIENT_SOCKETS(new_cs) {
 						if (new_cs->status == STATUS_MAP_WAIT) {
-							// Check if we already have a new client to send the map to
+							/* Check if we already have a new client to send the map to */
 							if (!new_map_client) {
-								// If not, this client will get the map
+								/* If not, this client will get the map */
 								new_cs->status = STATUS_AUTH;
 								new_map_client = true;
 								SEND_COMMAND(PACKET_SERVER_MAP)(new_cs);
 							} else {
-								// Else, send the other clients how many clients are in front of them
+								/* Else, send the other clients how many clients are in front of them */
 								SEND_COMMAND(PACKET_SERVER_WAIT)(new_cs);
 							}
 						}
 					}
 				}
 
-				// There is no more data, so break the for
+				/* There is no more data, so break the for */
 				break;
 			}
 		}
 
-		// Send all packets (forced) and check if we have send it all
+		/* Send all packets (forced) and check if we have send it all */
 		cs->Send_Packets();
 		if (cs->IsPacketQueueEmpty()) {
-			// All are sent, increase the sent_packets
+			/* All are sent, increase the sent_packets */
 			sent_packets *= 2;
 		} else {
-			// Not everything is sent, decrease the sent_packets
+			/* Not everything is sent, decrease the sent_packets */
 			if (sent_packets > 1) sent_packets /= 2;
 		}
 	}
@@ -398,14 +398,14 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_JOIN)(NetworkClientSocket *cs, ClientID client_id)
 {
-	//
-	// Packet: SERVER_JOIN
-	// Function: A client is joined (all active clients receive this after a
-	//     PACKET_CLIENT_MAP_OK) Mostly what directly follows is a
-	//     PACKET_SERVER_CLIENT_INFO
-	// Data:
-	//    uint32:  Client-identifier
-	//
+	/*
+	 * Packet: SERVER_JOIN
+	 * Function: A client is joined (all active clients receive this after a
+	 *     PACKET_CLIENT_MAP_OK) Mostly what directly follows is a
+	 *     PACKET_SERVER_CLIENT_INFO
+	 * Data:
+	 *    uint32:  Client-identifier
+	 */
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_JOIN);
 
@@ -417,16 +417,16 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_JOIN)(NetworkClientSocket *cs, Clien
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_FRAME)
 {
-	//
-	// Packet: SERVER_FRAME
-	// Function: Sends the current frame-counter to the client
-	// Data:
-	//    uint32: Frame Counter
-	//    uint32: Frame Counter Max (how far may the client walk before the server?)
-	//    [uint32: general-seed-1]
-	//    [uint32: general-seed-2]
-	//      (last two depends on compile-settings, and are not default settings)
-	//
+	/*
+	 * Packet: SERVER_FRAME
+	 * Function: Sends the current frame-counter to the client
+	 * Data:
+	 *    uint32: Frame Counter
+	 *    uint32: Frame Counter Max (how far may the client walk before the server?)
+	 *    [uint32: general-seed-1]
+	 *    [uint32: general-seed-2]
+	 *      (last two depends on compile-settings, and are not default settings)
+	 */
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_FRAME);
 	p->Send_uint32(_frame_counter);
@@ -442,15 +442,15 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_FRAME)
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SYNC)
 {
-	//
-	// Packet: SERVER_SYNC
-	// Function: Sends a sync-check to the client
-	// Data:
-	//    uint32: Frame Counter
-	//    uint32: General-seed-1
-	//    [uint32: general-seed-2]
-	//      (last one depends on compile-settings, and are not default settings)
-	//
+	/*
+	 * Packet: SERVER_SYNC
+	 * Function: Sends a sync-check to the client
+	 * Data:
+	 *    uint32: Frame Counter
+	 *    uint32: General-seed-1
+	 *    [uint32: general-seed-2]
+	 *      (last one depends on compile-settings, and are not default settings)
+	 */
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_SYNC);
 	p->Send_uint32(_frame_counter);
@@ -464,19 +464,19 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SYNC)
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkClientSocket *cs, const CommandPacket *cp)
 {
-	//
-	// Packet: SERVER_COMMAND
-	// Function: Sends a DoCommand to the client
-	// Data:
-	//    uint8:  CompanyID (0..MAX_COMPANIES-1)
-	//    uint32: CommandID (see command.h)
-	//    uint32: P1 (free variables used in DoCommand)
-	//    uint32: P2
-	//    uint32: Tile
-	//    string: text
-	//    uint8:  CallBackID (see callback_table.c)
-	//    uint32: Frame of execution
-	//
+	/*
+	 * Packet: SERVER_COMMAND
+	 * Function: Sends a DoCommand to the client
+	 * Data:
+	 *    uint8:  CompanyID (0..MAX_COMPANIES-1)
+	 *    uint32: CommandID (see command.h)
+	 *    uint32: P1 (free variables used in DoCommand)
+	 *    uint32: P2
+	 *    uint32: Tile
+	 *    string: text
+	 *    uint8:  CallBackID (see callback_table.c)
+	 *    uint32: Frame of execution
+	 */
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_COMMAND);
 
@@ -489,15 +489,15 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkClientSocket *cs, co
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkClientSocket *cs, NetworkAction action, ClientID client_id, bool self_send, const char *msg, int64 data)
 {
-	//
-	// Packet: SERVER_CHAT
-	// Function: Sends a chat-packet to the client
-	// Data:
-	//    uint8:  ActionID (see network_data.h, NetworkAction)
-	//    uint32: Client-identifier
-	//    String: Message (max NETWORK_CHAT_LENGTH)
-	//    uint64: Arbitrary data
-	//
+	/*
+	 * Packet: SERVER_CHAT
+	 * Function: Sends a chat-packet to the client
+	 * Data:
+	 *    uint8:  ActionID (see network_data.h, NetworkAction)
+	 *    uint32: Client-identifier
+	 *    String: Message (max NETWORK_CHAT_LENGTH)
+	 *    uint64: Arbitrary data
+	 */
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_CHAT);
 
@@ -512,14 +512,14 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkClientSocket *cs, Netwo
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkClientSocket *cs, ClientID client_id, NetworkErrorCode errorno)
 {
-	//
-	// Packet: SERVER_ERROR_QUIT
-	// Function: One of the clients made an error and is quiting the game
-	//      This packet informs the other clients of that.
-	// Data:
-	//    uint32:  Client-identifier
-	//    uint8:  ErrorID (see network_data.h, NetworkErrorCode)
-	//
+	/*
+	 * Packet: SERVER_ERROR_QUIT
+	 * Function: One of the clients made an error and is quiting the game
+	 *      This packet informs the other clients of that.
+	 * Data:
+	 *    uint32:  Client-identifier
+	 *    uint8:  ErrorID (see network_data.h, NetworkErrorCode)
+	 */
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_ERROR_QUIT);
 
@@ -531,13 +531,13 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkClientSocket *cs,
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_QUIT)(NetworkClientSocket *cs, ClientID client_id)
 {
-	//
-	// Packet: SERVER_ERROR_QUIT
-	// Function: A client left the game, and this packets informs the other clients
-	//      of that.
-	// Data:
-	//    uint32:  Client-identifier
-	//
+	/*
+	 * Packet: SERVER_ERROR_QUIT
+	 * Function: A client left the game, and this packets informs the other clients
+	 *      of that.
+	 * Data:
+	 *    uint32:  Client-identifier
+	 */
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_QUIT);
 
@@ -548,12 +548,12 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_QUIT)(NetworkClientSocket *cs, Clien
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SHUTDOWN)
 {
-	//
-	// Packet: SERVER_SHUTDOWN
-	// Function: Let the clients know that the server is closing
-	// Data:
-	//     <none>
-	//
+	/*
+	 * Packet: SERVER_SHUTDOWN
+	 * Function: Let the clients know that the server is closing
+	 * Data:
+	 *     <none>
+	 */
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_SHUTDOWN);
 	cs->Send_Packet(p);
@@ -561,12 +561,12 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SHUTDOWN)
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_NEWGAME)
 {
-	//
-	// Packet: PACKET_SERVER_NEWGAME
-	// Function: Let the clients know that the server is loading a new map
-	// Data:
-	//     <none>
-	//
+	/*
+	 * Packet: PACKET_SERVER_NEWGAME
+	 * Function: Let the clients know that the server is loading a new map
+	 * Data:
+	 *     <none>
+	 */
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_NEWGAME);
 	cs->Send_Packet(p);
@@ -607,10 +607,10 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_CONFIG_UPDATE)
 	cs->Send_Packet(p);
 }
 
-// **********
-// Receiving functions
-//   DEF_SERVER_RECEIVE_COMMAND has parameter: NetworkClientSocket *cs, Packet *p
-// **********
+/***********
+ * Receiving functions
+ *   DEF_SERVER_RECEIVE_COMMAND has parameter: NetworkClientSocket *cs, Packet *p
+ ************/
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 {
@@ -656,9 +656,9 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 
 	p->Recv_string(client_revision, sizeof(client_revision));
 
-	// Check if the client has revision control enabled
+	/* Check if the client has revision control enabled */
 	if (!IsNetworkCompatibleVersion(client_revision)) {
-		// Different revisions!!
+		/* Different revisions!! */
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_REVISION);
 		return;
 	}
@@ -670,21 +670,21 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 
 	if (cs->has_quit) return;
 
-	// join another company does not affect these values
+	/* join another company does not affect these values */
 	switch (playas) {
-		case COMPANY_NEW_COMPANY: /* New company */
+		case COMPANY_NEW_COMPANY: // New company
 			if (ActiveCompanyCount() >= _settings_client.network.max_companies) {
 				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
 				return;
 			}
 			break;
-		case COMPANY_SPECTATOR: /* Spectator */
+		case COMPANY_SPECTATOR: // Spectator
 			if (NetworkSpectatorCount() >= _settings_client.network.max_spectators) {
 				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
 				return;
 			}
 			break;
-		default: /* Join another company (companies 1-8 (index 0-7)) */
+		default: // Join another company (companies 1-8 (index 0-7))
 			if (!IsValidCompanyID(playas) || !IsHumanCompany(playas)) {
 				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_COMPANY_MISMATCH);
 				return;
@@ -692,11 +692,11 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 			break;
 	}
 
-	// We need a valid name.. make it Player
+	/* We need a valid name.. make it Player */
 	if (StrEmpty(name)) strecpy(name, "Player", lastof(name));
 
 	if (!NetworkFindName(name)) { // Change name if duplicate
-		// We could not create a name for this client
+		/* We could not create a name for this client */
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NAME_IN_USE);
 		return;
 	}
@@ -728,9 +728,9 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 	p->Recv_string(password, sizeof(password));
 
 	if (cs->status == STATUS_AUTHORIZING && type == NETWORK_GAME_PASSWORD) {
-		// Check game-password
+		/* Check game-password */
 		if (strcmp(password, _settings_client.network.server_password) != 0) {
-			// Password is invalid
+			/* Password is invalid */
 			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
 			return;
 		}
@@ -742,14 +742,14 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 			return;
 		}
 
-		// Valid password, allow user
+		/* Valid password, allow user */
 		SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
 		return;
 	} else if (cs->status == STATUS_AUTHORIZING && type == NETWORK_COMPANY_PASSWORD) {
 		ci = cs->GetInfo();
 
 		if (strcmp(password, _network_company_states[ci->client_playas].password) != 0) {
-			// Password is invalid
+			/* Password is invalid */
 			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
 			return;
 		}
@@ -767,30 +767,30 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
 {
 	NetworkClientSocket *new_cs;
 
-	// The client was never joined.. so this is impossible, right?
-	//  Ignore the packet, give the client a warning, and close his connection
+	/* The client was never joined.. so this is impossible, right?
+	 *  Ignore the packet, give the client a warning, and close his connection */
 	if (cs->status < STATUS_AUTH || cs->has_quit) {
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
 		return;
 	}
 
-	// Check if someone else is receiving the map
+	/* Check if someone else is receiving the map */
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
 		if (new_cs->status == STATUS_MAP) {
-			// Tell the new client to wait
+			/* Tell the new client to wait */
 			cs->status = STATUS_MAP_WAIT;
 			SEND_COMMAND(PACKET_SERVER_WAIT)(cs);
 			return;
 		}
 	}
 
-	// We receive a request to upload the map.. give it to the client!
+	/* We receive a request to upload the map.. give it to the client! */
 	SEND_COMMAND(PACKET_SERVER_MAP)(cs);
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 {
-	// Client has the map, now start syncing
+	/* Client has the map, now start syncing */
 	if (cs->status == STATUS_DONE_MAP && !cs->has_quit) {
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 		NetworkClientSocket *new_cs;
@@ -799,15 +799,15 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 
 		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, client_name);
 
-		// Mark the client as pre-active, and wait for an ACK
-		//  so we know he is done loading and in sync with us
+		/* Mark the client as pre-active, and wait for an ACK
+		 *  so we know he is done loading and in sync with us */
 		cs->status = STATUS_PRE_ACTIVE;
 		NetworkHandleCommandQueue(cs);
 		SEND_COMMAND(PACKET_SERVER_FRAME)(cs);
 		SEND_COMMAND(PACKET_SERVER_SYNC)(cs);
 
-		// This is the frame the client receives
-		//  we need it later on to make sure the client is not too slow
+		/* This is the frame the client receives
+		 *  we need it later on to make sure the client is not too slow */
 		cs->last_frame = _frame_counter;
 		cs->last_frame_server = _frame_counter;
 
@@ -831,7 +831,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 		/* quickly update the syncing client with company details */
 		SEND_COMMAND(PACKET_SERVER_COMPANY_UPDATE)(cs);
 	} else {
-		// Wrong status for this packet, give a warning to client, and close connection
+		/* Wrong status for this packet, give a warning to client, and close connection */
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 	}
 }
@@ -844,8 +844,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 {
 	NetworkClientSocket *new_cs;
 
-	// The client was never joined.. so this is impossible, right?
-	//  Ignore the packet, give the client a warning, and close his connection
+	/* The client was never joined.. so this is impossible, right?
+	 *  Ignore the packet, give the client a warning, and close his connection */
 	if (cs->status < STATUS_DONE_MAP || cs->has_quit) {
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 		return;
@@ -912,19 +912,19 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		cp.p2 = cs->client_id;
 	}
 
-	// The frame can be executed in the same frame as the next frame-packet
-	//  That frame just before that frame is saved in _frame_counter_max
+	/* The frame can be executed in the same frame as the next frame-packet
+	 *  That frame just before that frame is saved in _frame_counter_max */
 	cp.frame = _frame_counter_max + 1;
 	cp.next  = NULL;
 
 	CommandCallback *callback = cp.callback;
 
-	// Queue the command for the clients (are send at the end of the frame
-	//   if they can handle it ;))
+	/* Queue the command for the clients (are send at the end of the frame
+	 *   if they can handle it ;)) */
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
 		if (new_cs->status >= STATUS_MAP) {
-			// Callbacks are only send back to the client who sent them in the
-			//  first place. This filters that out.
+			/* Callbacks are only send back to the client who sent them in the
+			 *  first place. This filters that out. */
 			cp.callback = (new_cs != cs) ? NULL : callback;
 			cp.my_cmd = (new_cs == cs);
 			NetworkAddCommandQueue(cp, new_cs);
@@ -938,14 +938,14 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 {
-	// This packets means a client noticed an error and is reporting this
-	//  to us. Display the error and report it to the other clients
+	/* This packets means a client noticed an error and is reporting this
+	 *  to us. Display the error and report it to the other clients */
 	NetworkClientSocket *new_cs;
 	char str[100];
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 	NetworkErrorCode errorno = (NetworkErrorCode)p->Recv_uint8();
 
-	// The client was never joined.. thank the client for the packet, but ignore it
+	/* The client was never joined.. thank the client for the packet, but ignore it */
 	if (cs->status < STATUS_DONE_MAP || cs->has_quit) {
 		cs->has_quit = true;
 		return;
@@ -971,12 +971,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 {
-	// The client wants to leave. Display this and report it to the other
-	//  clients.
+	/* The client wants to leave. Display this and report it to the other
+	 *  clients. */
 	NetworkClientSocket *new_cs;
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
-	// The client was never joined.. thank the client for the packet, but ignore it
+	/* The client was never joined.. thank the client for the packet, but ignore it */
 	if (cs->status < STATUS_DONE_MAP || cs->has_quit) {
 		cs->has_quit = true;
 		return;
@@ -1024,9 +1024,9 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 		IConsoleCmdExec("exec scripts/on_server_connect.scr 0");
 	}
 
-	// The client received the frame, make note of it
+	/* The client received the frame, make note of it */
 	cs->last_frame = frame;
-	// With those 2 values we can calculate the lag realtime
+	/* With those 2 values we can calculate the lag realtime */
 	cs->last_frame_server = _frame_counter;
 }
 
@@ -1055,7 +1055,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			}
 		}
 
-		// Display the message locally (so you know you have sent it)
+		/* Display the message locally (so you know you have sent it) */
 		if (from_id != (ClientID)dest) {
 			if (from_id == CLIENT_ID_SERVER) {
 				ci = NetworkFindClientInfoFromClientID(from_id);
@@ -1074,8 +1074,8 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		break;
 	case DESTTYPE_TEAM: {
 		bool show_local = true; // If this is false, the message is already displayed
-														// on the client who did sent it.
-		/* Find all clients that belong to this company */
+														/* on the client who did sent it.
+		 * Find all clients that belong to this company */
 		ci_to = NULL;
 		FOR_ALL_CLIENT_SOCKETS(cs) {
 			ci = cs->GetInfo();
@@ -1097,7 +1097,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		/* There is no such client */
 		if (ci_to == NULL) break;
 
-		// Display the message locally (so you know you have sent it)
+		/* Display the message locally (so you know you have sent it) */
 		if (ci != NULL && show_local) {
 			if (from_id == CLIENT_ID_SERVER) {
 				char name[NETWORK_NAME_LENGTH];
@@ -1199,7 +1199,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
 	if (cs->has_quit) return;
 
 	if (ci != NULL) {
-		// Display change
+		/* Display change */
 		if (NetworkFindName(client_name)) {
 			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, client_name);
 			strecpy(ci->client_name, client_name, lastof(ci->client_name));
@@ -1255,56 +1255,56 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MOVE)
 	NetworkServerDoMove(cs->client_id, company_id);
 }
 
-// The layout for the receive-functions by the server
+/* The layout for the receive-functions by the server */
 typedef void NetworkServerPacket(NetworkClientSocket *cs, Packet *p);
 
 
-// This array matches PacketType. At an incoming
-//  packet it is matches against this array
-//  and that way the right function to handle that
-//  packet is found.
+/* This array matches PacketType. At an incoming
+ *  packet it is matches against this array
+ *  and that way the right function to handle that
+ *  packet is found. */
 static NetworkServerPacket * const _network_server_packet[] = {
-	NULL, /*PACKET_SERVER_FULL,*/
-	NULL, /*PACKET_SERVER_BANNED,*/
+	NULL, // PACKET_SERVER_FULL,
+	NULL, // PACKET_SERVER_BANNED,
 	RECEIVE_COMMAND(PACKET_CLIENT_JOIN),
-	NULL, /*PACKET_SERVER_ERROR,*/
+	NULL, // PACKET_SERVER_ERROR,
 	RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO),
-	NULL, /*PACKET_SERVER_COMPANY_INFO,*/
-	NULL, /*PACKET_SERVER_CLIENT_INFO,*/
-	NULL, /*PACKET_SERVER_NEED_PASSWORD,*/
+	NULL, // PACKET_SERVER_COMPANY_INFO,
+	NULL, // PACKET_SERVER_CLIENT_INFO,
+	NULL, // PACKET_SERVER_NEED_PASSWORD,
 	RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD),
-	NULL, /*PACKET_SERVER_WELCOME,*/
+	NULL, // PACKET_SERVER_WELCOME,
 	RECEIVE_COMMAND(PACKET_CLIENT_GETMAP),
-	NULL, /*PACKET_SERVER_WAIT,*/
-	NULL, /*PACKET_SERVER_MAP,*/
+	NULL, // PACKET_SERVER_WAIT,
+	NULL, // PACKET_SERVER_MAP,
 	RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK),
-	NULL, /*PACKET_SERVER_JOIN,*/
-	NULL, /*PACKET_SERVER_FRAME,*/
-	NULL, /*PACKET_SERVER_SYNC,*/
+	NULL, // PACKET_SERVER_JOIN,
+	NULL, // PACKET_SERVER_FRAME,
+	NULL, // PACKET_SERVER_SYNC,
 	RECEIVE_COMMAND(PACKET_CLIENT_ACK),
 	RECEIVE_COMMAND(PACKET_CLIENT_COMMAND),
-	NULL, /*PACKET_SERVER_COMMAND,*/
+	NULL, // PACKET_SERVER_COMMAND,
 	RECEIVE_COMMAND(PACKET_CLIENT_CHAT),
-	NULL, /*PACKET_SERVER_CHAT,*/
+	NULL, // PACKET_SERVER_CHAT,
 	RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD),
 	RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME),
 	RECEIVE_COMMAND(PACKET_CLIENT_QUIT),
 	RECEIVE_COMMAND(PACKET_CLIENT_ERROR),
-	NULL, /*PACKET_SERVER_QUIT,*/
-	NULL, /*PACKET_SERVER_ERROR_QUIT,*/
-	NULL, /*PACKET_SERVER_SHUTDOWN,*/
-	NULL, /*PACKET_SERVER_NEWGAME,*/
-	NULL, /*PACKET_SERVER_RCON,*/
+	NULL, // PACKET_SERVER_QUIT,
+	NULL, // PACKET_SERVER_ERROR_QUIT,
+	NULL, // PACKET_SERVER_SHUTDOWN,
+	NULL, // PACKET_SERVER_NEWGAME,
+	NULL, // PACKET_SERVER_RCON,
 	RECEIVE_COMMAND(PACKET_CLIENT_RCON),
-	NULL, /*PACKET_CLIENT_CHECK_NEWGRFS,*/
+	NULL, // PACKET_CLIENT_CHECK_NEWGRFS,
 	RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED),
-	NULL, /*PACKET_SERVER_MOVE,*/
+	NULL, // PACKET_SERVER_MOVE,
 	RECEIVE_COMMAND(PACKET_CLIENT_MOVE),
-	NULL, /*PACKET_SERVER_COMPANY_UPDATE,*/
-	NULL, /*PACKET_SERVER_CONFIG_UPDATE,*/
+	NULL, // PACKET_SERVER_COMPANY_UPDATE,
+	NULL, // PACKET_SERVER_CONFIG_UPDATE,
 };
 
-// If this fails, check the array above with network_data.h
+/* If this fails, check the array above with network_data.h */
 assert_compile(lengthof(_network_server_packet) == PACKET_END);
 
 void NetworkSocketHandler::Send_CompanyInformation(Packet *p, const Company *c, const NetworkCompanyStats *stats)
@@ -1373,7 +1373,7 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 		stats[v->owner].num_vehicle[type]++;
 	}
 
-	// Go through all stations and count the types of stations
+	/* Go through all stations and count the types of stations */
 	FOR_ALL_STATIONS(s) {
 		if (IsValidCompanyID(s->owner)) {
 			NetworkCompanyStats *npi = &stats[s->owner];
@@ -1387,7 +1387,7 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 	}
 }
 
-// Send a packet to all clients with updated info about this client_id
+/* Send a packet to all clients with updated info about this client_id */
 void NetworkUpdateClientInfo(ClientID client_id)
 {
 	NetworkClientSocket *cs;
@@ -1465,8 +1465,8 @@ static void NetworkAutoCleanCompanies()
 	}
 }
 
-// This function changes new_name to a name that is unique (by adding #1 ...)
-//  and it returns true if that succeeded.
+/* This function changes new_name to a name that is unique (by adding #1 ...)
+ *  and it returns true if that succeeded. */
 bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 {
 	bool found_name = false;
@@ -1530,7 +1530,7 @@ bool NetworkServerChangeClientName(ClientID client_id, const char *new_name)
 	return true;
 }
 
-// Reads a packet from the stream
+/* Reads a packet from the stream */
 bool NetworkServer_ReadPackets(NetworkClientSocket *cs)
 {
 	Packet *p;
@@ -1548,7 +1548,7 @@ bool NetworkServer_ReadPackets(NetworkClientSocket *cs)
 	return true;
 }
 
-// Handle the local command-queue
+/* Handle the local command-queue */
 static void NetworkHandleCommandQueue(NetworkClientSocket *cs)
 {
 	CommandPacket *cp;
@@ -1561,7 +1561,7 @@ static void NetworkHandleCommandQueue(NetworkClientSocket *cs)
 	}
 }
 
-// This is called every tick if this is a _network_server
+/* This is called every tick if this is a _network_server */
 void NetworkServer_Tick(bool send_frame)
 {
 	NetworkClientSocket *cs;
@@ -1576,23 +1576,23 @@ void NetworkServer_Tick(bool send_frame)
 	}
 #endif
 
-	// Now we are done with the frame, inform the clients that they can
-	//  do their frame!
+	/* Now we are done with the frame, inform the clients that they can
+	 *  do their frame! */
 	FOR_ALL_CLIENT_SOCKETS(cs) {
-		// Check if the speed of the client is what we can expect from a client
+		/* Check if the speed of the client is what we can expect from a client */
 		if (cs->status == STATUS_ACTIVE) {
-			// 1 lag-point per day
+			/* 1 lag-point per day */
 			int lag = NetworkCalculateLag(cs) / DAY_TICKS;
 			if (lag > 0) {
 				if (lag > 3) {
-					// Client did still not report in after 4 game-day, drop him
-					//  (that is, the 3 of above, + 1 before any lag is counted)
+					/* Client did still not report in after 4 game-day, drop him
+					 *  (that is, the 3 of above, + 1 before any lag is counted) */
 					IConsolePrintF(CC_ERROR,"Client #%d is dropped because the client did not respond for more than 4 game-days", cs->client_id);
 					NetworkCloseClient(cs);
 					continue;
 				}
 
-				// Report once per time we detect the lag
+				/* Report once per time we detect the lag */
 				if (cs->lag_test == 0) {
 					IConsolePrintF(CC_WARNING,"[%d] Client #%d is slow, try increasing *net_frame_freq to a higher value!", _frame_counter, cs->client_id);
 					cs->lag_test = 1;
@@ -1615,14 +1615,14 @@ void NetworkServer_Tick(bool send_frame)
 		}
 
 		if (cs->status >= STATUS_PRE_ACTIVE) {
-			// Check if we can send command, and if we have anything in the queue
+			/* Check if we can send command, and if we have anything in the queue */
 			NetworkHandleCommandQueue(cs);
 
-			// Send an updated _frame_counter_max to the client
+			/* Send an updated _frame_counter_max to the client */
 			if (send_frame) SEND_COMMAND(PACKET_SERVER_FRAME)(cs);
 
 #ifndef ENABLE_NETWORK_SYNC_EVERY_FRAME
-			// Send a sync-check packet
+			/* Send a sync-check packet */
 			if (send_sync) SEND_COMMAND(PACKET_SERVER_SYNC)(cs);
 #endif
 		}

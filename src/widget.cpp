@@ -426,7 +426,7 @@ void Window::DrawWidgets() const
 			GfxFillRect(r.left, r.top + 5, r.left, r.bottom - 1, c1);
 			GfxFillRect(r.left + 1, r.top + 6, r.left + 1, r.bottom - 2, c2);
 
-			/*Line from upper right corner to bottom right corner */
+			/* Line from upper right corner to bottom right corner */
 			GfxFillRect(r.right - 1, r.top + 5, r.right - 1, r.bottom - 2, c1);
 			GfxFillRect(r.right, r.top + 4, r.right, r.bottom - 1, c2);
 

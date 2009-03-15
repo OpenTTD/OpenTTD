@@ -371,7 +371,7 @@ struct DepotWindow : Window {
 			DrawTrainImage(v, x + 50, y, this->sel, this->hscroll.cap - 29, 0);
 			DrawString(x, y + 2, STR_8816, TC_FROMSTRING);
 
-			/*Draw the train counter */
+			/* Draw the train counter */
 			i = 0;
 			u = v;
 			do i++; while ((u = u->Next()) != NULL); // Determine length of train

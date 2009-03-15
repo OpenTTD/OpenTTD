@@ -179,7 +179,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, const char *str)
 			case 0x98: d += Utf8Encode(d, SCC_BLACK);   break;
 			case 0x9A:
 				switch (*str++) {
-					case 0: /* FALL THROUGH */
+					case 0: // FALL THROUGH
 					case 1:
 						d += Utf8Encode(d, SCC_NEWGRF_PRINT_QWORD_CURRENCY);
 						break;
@@ -343,7 +343,7 @@ const char *GetGRFStringPtr(uint16 stringid)
 	/* Remember this grfid in case the string has included text */
 	_last_grfid = _grf_text[stringid].grfid;
 
-	/*Search the list of lang-strings of this stringid for current lang */
+	/* Search the list of lang-strings of this stringid for current lang */
 	for (search_text = _grf_text[stringid].textholder; search_text != NULL; search_text = search_text->next) {
 		if (search_text->langid == _currentLangID) {
 			return search_text->text;

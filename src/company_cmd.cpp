@@ -129,7 +129,7 @@ bool IsValidCompanyManagerFace(CompanyManagerFace cmf)
 	for (CompanyManagerFaceVariable cmfv = CMFV_CHEEKS; cmfv < CMFV_END; cmfv++) {
 		switch (cmfv) {
 			case CMFV_MOUSTACHE:   if (!has_moustache)   continue; break;
-			case CMFV_LIPS:        /* FALL THROUGH */
+			case CMFV_LIPS:        // FALL THROUGH
 			case CMFV_NOSE:        if (has_moustache)    continue; break;
 			case CMFV_TIE_EARRING: if (!has_tie_earring) continue; break;
 			case CMFV_GLASSES:     if (!has_glasses)     continue; break;
@@ -718,7 +718,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
 
 	switch (p1) {
-		case 0: { /* Create a new company */
+		case 0: { // Create a new company
 			/* This command is only executed in a multiplayer game */
 			if (!_networking) return CMD_ERROR;
 
@@ -816,13 +816,13 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 #endif /* ENABLE_NETWORK */
 		} break;
 
-		case 1: /* Make a new AI company */
+		case 1: // Make a new AI company
 			if (!(flags & DC_EXEC)) return CommandCost();
 
 			DoStartupNewCompany(true);
 			break;
 
-		case 2: { /* Delete a company */
+		case 2: { // Delete a company
 			Company *c;
 
 			if (!IsValidCompanyID((CompanyID)p2)) return CMD_ERROR;
@@ -851,7 +851,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			AI::BroadcastNewEvent(new AIEventCompanyBankrupt(c_index));
 		} break;
 
-		case 3: { /* Merge a company (#1) into another company (#2), elimination company #1 */
+		case 3: { // Merge a company (#1) into another company (#2), elimination company #1
 			CompanyID cid_old = (CompanyID)GB(p2,  0, 16);
 			CompanyID cid_new = (CompanyID)GB(p2, 16, 16);
 

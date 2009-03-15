@@ -172,7 +172,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 			GrfID = GetIndustrySpec(current->type)->grf_prop.grffile->grfid;
 			/* Fall through */
 
-		default: //use the grfid specified in register 100h
+		default: // use the grfid specified in register 100h
 			SetBit(param_setID, 7); // bit 7 means it is not an old type
 			ind_index = MapNewGRFIndustryType(param_setID, GrfID);
 			break;
@@ -327,7 +327,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x85: DEBUG(grf, 0, "NewGRFs shouldn't be doing pointer magic"); break; // not supported
 		case 0x86: return industry->width;
 		case 0x87: return industry->height;// xy dimensions
-		/*  */
+
 		case 0x88:
 		case 0x89: return industry->produced_cargo[variable - 0x88];
 		case 0x8A: return industry->produced_cargo_waiting[0];

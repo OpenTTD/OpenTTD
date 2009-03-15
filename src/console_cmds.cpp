@@ -37,18 +37,18 @@
 	#include "table/strings.h"
 #endif /* ENABLE_NETWORK */
 
-// ** scriptfile handling ** //
+/* scriptfile handling */
 static FILE *_script_file;
 static bool _script_running;
 
-// ** console command / variable defines ** //
+/* console command / variable defines */
 #define DEF_CONSOLE_CMD(function) static bool function(byte argc, char *argv[])
 #define DEF_CONSOLE_HOOK(function) static bool function()
 
 
-/* **************************** */
-/* variable and command hooks   */
-/* **************************** */
+/*****************************
+ * variable and command hooks
+ *****************************/
 
 #ifdef ENABLE_NETWORK
 
@@ -343,7 +343,7 @@ DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 		return true;
 	}
 
-	// XXX - Workaround for broken file handling
+	/* XXX - Workaround for broken file handling */
 	FiosGetSavegameList(SLD_LOAD_GAME);
 	FiosFreeSavegameList();
 
@@ -365,9 +365,9 @@ DEF_CONSOLE_CMD(ConClearBuffer)
 }
 
 
-// ********************************* //
-// * Network Core Console Commands * //
-// ********************************* //
+/**********************************
+ * Network Core Console Commands
+ **********************************/
 #ifdef ENABLE_NETWORK
 
 DEF_CONSOLE_CMD(ConBan)
@@ -798,9 +798,9 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 
 #endif /* ENABLE_NETWORK */
 
-/* ******************************** */
-/*   script file console commands   */
-/* ******************************** */
+/*********************************
+ *  script file console commands
+ *********************************/
 
 DEF_CONSOLE_CMD(ConExec)
 {
@@ -853,9 +853,9 @@ DEF_CONSOLE_CMD(ConReturn)
 	return true;
 }
 
-/* **************************** */
-/*   default console commands   */
-/* **************************** */
+/*****************************
+ *  default console commands
+ ******************************/
 extern bool CloseConsoleLogIfActive();
 
 DEF_CONSOLE_CMD(ConScript)
@@ -1678,9 +1678,9 @@ DEF_CONSOLE_CMD(ConGamelogPrint)
 }
 
 #ifdef _DEBUG
-/* ****************************************** */
-/*  debug commands and variables */
-/* ****************************************** */
+/*******************************************
+ *  debug commands and variables
+ ********************************************/
 
 static void IConsoleDebugLibRegister()
 {
@@ -1695,9 +1695,9 @@ static void IConsoleDebugLibRegister()
 }
 #endif
 
-/* ****************************************** */
-/*  console command and variable registration */
-/* ****************************************** */
+/*******************************************
+ * console command and variable registration
+ ********************************************/
 
 void IConsoleStdLibRegister()
 {
@@ -1846,7 +1846,7 @@ void IConsoleStdLibRegister()
 	IConsoleAliasRegister("reload_cfg",            "setting reload_cfg %+");
 #endif /* ENABLE_NETWORK */
 
-	// debugging stuff
+	/* debugging stuff */
 #ifdef _DEBUG
 	IConsoleDebugLibRegister();
 #endif

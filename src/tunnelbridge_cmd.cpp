@@ -1534,18 +1534,18 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlag flag
 }
 
 extern const TileTypeProcs _tile_type_tunnelbridge_procs = {
-	DrawTile_TunnelBridge,           /* draw_tile_proc */
-	GetSlopeZ_TunnelBridge,          /* get_slope_z_proc */
-	ClearTile_TunnelBridge,          /* clear_tile_proc */
-	GetAcceptedCargo_TunnelBridge,   /* get_accepted_cargo_proc */
-	GetTileDesc_TunnelBridge,        /* get_tile_desc_proc */
-	GetTileTrackStatus_TunnelBridge, /* get_tile_track_status_proc */
-	ClickTile_TunnelBridge,          /* click_tile_proc */
-	AnimateTile_TunnelBridge,        /* animate_tile_proc */
-	TileLoop_TunnelBridge,           /* tile_loop_clear */
-	ChangeTileOwner_TunnelBridge,    /* change_tile_owner_clear */
-	NULL,                            /* get_produced_cargo_proc */
-	VehicleEnter_TunnelBridge,       /* vehicle_enter_tile_proc */
-	GetFoundation_TunnelBridge,      /* get_foundation_proc */
-	TerraformTile_TunnelBridge,      /* terraform_tile_proc */
+	DrawTile_TunnelBridge,           // draw_tile_proc
+	GetSlopeZ_TunnelBridge,          // get_slope_z_proc
+	ClearTile_TunnelBridge,          // clear_tile_proc
+	GetAcceptedCargo_TunnelBridge,   // get_accepted_cargo_proc
+	GetTileDesc_TunnelBridge,        // get_tile_desc_proc
+	GetTileTrackStatus_TunnelBridge, // get_tile_track_status_proc
+	ClickTile_TunnelBridge,          // click_tile_proc
+	AnimateTile_TunnelBridge,        // animate_tile_proc
+	TileLoop_TunnelBridge,           // tile_loop_clear
+	ChangeTileOwner_TunnelBridge,    // change_tile_owner_clear
+	NULL,                            // get_produced_cargo_proc
+	VehicleEnter_TunnelBridge,       // vehicle_enter_tile_proc
+	GetFoundation_TunnelBridge,      // get_foundation_proc
+	TerraformTile_TunnelBridge,      // terraform_tile_proc
 };

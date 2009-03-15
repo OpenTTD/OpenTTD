@@ -22,8 +22,8 @@ static inline uint32 SeedModChance(int shift_by, int max, uint32 seed)
 	 * SeedChance() and SeedModChance(). Do not get dicouraged by the
 	 * never-use-modulo myths, which hold true only for the linear
 	 * congruential generators (and Random() isn't such a generator).
-	 * --pasky */
-	// TODO: Perhaps we should use it for all the name generators? --pasky
+	 * --pasky
+	 * TODO: Perhaps we should use it for all the name generators? --pasky */
 	return (seed >> shift_by) % max;
 }
 
@@ -361,8 +361,8 @@ static byte MakePolishTownName(char *buf, uint32 seed, const char *last)
 
 static byte MakeCzechTownName(char *buf, uint32 seed, const char *last)
 {
-	/* Probability of prefixes/suffixes */
-	/* 0..11 prefix, 12..13 prefix+suffix, 14..17 suffix, 18..31 nothing */
+	/* Probability of prefixes/suffixes
+	 * 0..11 prefix, 12..13 prefix+suffix, 14..17 suffix, 18..31 nothing */
 	int prob_tails;
 	bool do_prefix, do_suffix, dynamic_subst;
 	/* IDs of the respective parts */

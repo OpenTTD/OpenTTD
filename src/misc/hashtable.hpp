@@ -22,7 +22,7 @@ struct CHashTableSlotT
 	{
 		for (const Titem_ *pItem = m_pFirst; pItem != NULL; pItem = pItem->GetHashNext()) {
 			if (pItem->GetKey() == key) {
-				// we have found the item, return it
+				/* we have found the item, return it */
 				return pItem;
 			}
 		}
@@ -34,7 +34,7 @@ struct CHashTableSlotT
 	{
 		for (Titem_ *pItem = m_pFirst; pItem != NULL; pItem = pItem->GetHashNext()) {
 			if (pItem->GetKey() == key) {
-				// we have found the item, return it
+				/* we have found the item, return it */
 				return pItem;
 			}
 		}
@@ -74,22 +74,22 @@ struct CHashTableSlotT
 	/** hash table slot helper - remove and return item from a slot */
 	FORCEINLINE Titem_ *Detach(const Key& key)
 	{
-		// do we have any items?
+		/* do we have any items? */
 		if (m_pFirst == NULL) {
 			return NULL;
 		}
-		// is it our first item?
+		/* is it our first item? */
 		if (m_pFirst->GetKey() == key) {
 			Titem_& ret_item = *m_pFirst;
 			m_pFirst = m_pFirst->GetHashNext();
 			ret_item.SetHashNext(NULL);
 			return &ret_item;
 		}
-		// find it in the following items
+		/* find it in the following items */
 		Titem_ *pPrev = m_pFirst;
 		for (Titem_ *pItem = m_pFirst->GetHashNext(); pItem != NULL; pPrev = pItem, pItem = pItem->GetHashNext()) {
 			if (pItem->GetKey() == key) {
-				// we have found the item, unlink and return it
+				/* we have found the item, unlink and return it */
 				pPrev->SetHashNext(pItem->GetHashNext());
 				pItem->SetHashNext(NULL);
 				return pItem;
@@ -137,10 +137,10 @@ protected:
 	int   m_num_items; // item counter
 
 public:
-	// default constructor
+	/* default constructor */
 	FORCEINLINE CHashTableT()
 	{
-		// construct all slots
+		/* construct all slots */
 		m_slots = new Slot[Tcapacity];
 		m_num_items = 0;
 	}

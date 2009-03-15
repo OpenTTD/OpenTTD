@@ -1710,7 +1710,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 
 		/* General tactic is to first save the game to memory, then use an available writer
 		 * to write it to file, either in threaded mode if possible, or single-threaded */
-		if (mode == SL_SAVE) { /* SAVE game */
+		if (mode == SL_SAVE) { // SAVE game
 			DEBUG(desync, 1, "save: %s\n", filename);
 			fmt = GetSavegameFormat("memory"); // write to memory
 
@@ -1737,7 +1737,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 
 				return result;
 			}
-		} else { /* LOAD game */
+		} else { // LOAD game
 			assert(mode == SL_LOAD);
 			DEBUG(desync, 1, "load: %s\n", filename);
 

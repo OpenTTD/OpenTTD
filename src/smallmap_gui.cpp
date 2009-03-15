@@ -596,7 +596,7 @@ public:
 			_owner_colours[OWNER_TOWN] = MKCOLOUR(0xB4B4B4B4);
 			_owner_colours[OWNER_NONE] = MKCOLOUR(0x54545454);
 			_owner_colours[OWNER_WATER] = MKCOLOUR(0xCACACACA);
-			_owner_colours[OWNER_END]   = MKCOLOUR(0x20202020); /* industry */
+			_owner_colours[OWNER_END]   = MKCOLOUR(0x20202020); // industry
 
 			/* now fill with the company colours */
 			FOR_ALL_COMPANIES(c) {
@@ -646,7 +646,7 @@ public:
 			/* distance from right edge */
 			t = dpi->width - x;
 			if (t < 4) {
-				if (t <= 0) break; /* exit loop */
+				if (t <= 0) break; // exit loop
 				/* mask to use at the right edge */
 				mask &= _smallmap_mask_right[t - 1];
 			}

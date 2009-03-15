@@ -200,7 +200,7 @@ void NetworkFindBroadcastIPs(uint32 *broadcast, int limit)
 	/* Now display to the debug all the detected ips */
 	DEBUG(net, 3, "Detected broadcast addresses:");
 	for (int i = 0; broadcast[i] != 0; i++) {
-		DEBUG(net, 3, "%d) %s", i, inet_ntoa(*(struct in_addr *)&broadcast[i])); //inet_ntoa(inaddr));
+		DEBUG(net, 3, "%d) %s", i, inet_ntoa(*(struct in_addr *)&broadcast[i])); // inet_ntoa(inaddr));
 	}
 }
 

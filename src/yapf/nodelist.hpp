@@ -74,11 +74,11 @@ public:
 	/** notify the nodelist, that we don't want to discard the given node */
 	FORCEINLINE void FoundBestNode(Titem_& item)
 	{
-		// for now it is enough to invalidate m_new_node if it is our given node
+		/* for now it is enough to invalidate m_new_node if it is our given node */
 		if (&item == m_new_node) {
 			m_new_node = NULL;
 		}
-		// TODO: do we need to store best nodes found in some extra list/array? Probably not now.
+		/* TODO: do we need to store best nodes found in some extra list/array? Probably not now. */
 	}
 
 	/** insert given item as open node (into m_open and m_open_queue) */
@@ -86,7 +86,7 @@ public:
 	{
 		assert(m_closed.Find(item.GetKey()) == NULL);
 		m_open.Push(item);
-		// TODO: check if m_open_queue is not full
+		/* TODO: check if m_open_queue is not full */
 		assert(!m_open_queue.IsFull());
 		m_open_queue.Push(item);
 		if (&item == m_new_node) {

@@ -96,13 +96,13 @@ SpriteID Ship::GetImage(Direction direction) const
 
 static const Depot *FindClosestShipDepot(const Vehicle *v)
 {
-	if (_settings_game.pf.pathfinder_for_ships == VPF_NPF) { /* NPF is used */
+	if (_settings_game.pf.pathfinder_for_ships == VPF_NPF) { // NPF is used
 		Trackdir trackdir = GetVehicleTrackdir(v);
 		NPFFoundTargetData ftd = NPFRouteToDepotTrialError(v->tile, trackdir, false, TRANSPORT_WATER, 0, v->owner, INVALID_RAILTYPES);
 
-		if (ftd.best_bird_dist == 0) return GetDepotByTile(ftd.node.tile); /* Found target */
+		if (ftd.best_bird_dist == 0) return GetDepotByTile(ftd.node.tile); // Found target
 
-		return NULL; /* Did not find target */
+		return NULL; // Did not find target
 	}
 
 	/* OPF or YAPF - find the closest depot */
@@ -312,7 +312,7 @@ static bool ShipAccelerate(Vehicle *v)
 
 	spd = min(v->cur_speed + 1, GetVehicleProperty(v, 0x0B, v->max_speed));
 
-	/*updates statusbar only if speed have changed to save CPU time */
+	/* updates statusbar only if speed have changed to save CPU time */
 	if (spd != v->cur_speed) {
 		v->cur_speed = spd;
 		if (_settings_client.gui.vehicle_speed)
@@ -452,12 +452,12 @@ static Track ChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 	assert(IsValidDiagDirection(enterdir));
 
 	switch (_settings_game.pf.pathfinder_for_ships) {
-		case VPF_YAPF: { /* YAPF */
+		case VPF_YAPF: { // YAPF
 			Trackdir trackdir = YapfChooseShipTrack(v, tile, enterdir, tracks);
 			if (trackdir != INVALID_TRACKDIR) return TrackdirToTrack(trackdir);
 		} break;
 
-		case VPF_NPF: { /* NPF */
+		case VPF_NPF: { // NPF
 			NPFFindStationOrTileData fstd;
 			Trackdir trackdir = GetVehicleTrackdir(v);
 			assert(trackdir != INVALID_TRACKDIR); // Check that we are not in a depot
@@ -470,11 +470,11 @@ static Track ChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 			 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,
 			 * we did not find our target, but ftd.best_trackdir contains the direction leading
 			 * to the tile closest to our target. */
-			if (ftd.best_trackdir != 0xff) return TrackdirToTrack(ftd.best_trackdir); /* TODO: Wrapper function? */
+			if (ftd.best_trackdir != 0xff) return TrackdirToTrack(ftd.best_trackdir); // TODO: Wrapper function?
 		} break;
 
 		default:
-		case VPF_OPF: { /* OPF */
+		case VPF_OPF: { // OPF
 			TileIndex tile2 = TILE_ADD(tile, -TileOffsByDiagDir(enterdir));
 			Track track;
 
@@ -494,7 +494,7 @@ static Track ChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 		} break;
 	}
 
-	return INVALID_TRACK; /* We could better reverse */
+	return INVALID_TRACK; // We could better reverse
 }
 
 static const Direction _new_vehicle_direction_table[] = {
@@ -896,7 +896,7 @@ CommandCost CmdRefitShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 {
 	Vehicle *v;
 	CommandCost cost(EXPENSES_SHIP_RUN);
-	CargoID new_cid = GB(p2, 0, 8); //gets the cargo number
+	CargoID new_cid = GB(p2, 0, 8); // gets the cargo number
 	byte new_subtype = GB(p2, 8, 8);
 	uint16 capacity = CALLBACK_FAILED;
 

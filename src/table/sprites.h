@@ -1086,10 +1086,10 @@ enum Sprites {
 	SPR_CARGO_WOOD                  = 4304,
 	SPR_CARGO_IRON_ORE              = 4305,
 	SPR_CARGO_STEEL                 = 4306,
-	SPR_CARGO_VALUES_GOLD           = 4307,  //shared between temperate and arctic
+	SPR_CARGO_VALUES_GOLD           = 4307,  // shared between temperate and arctic
 	SPR_CARGO_FRUIT                 = 4308,
 	SPR_CARGO_COPPER_ORE            = 4309,
-	SPR_CARGO_WATERCOLA             = 4310,  //shared between desert and toyland
+	SPR_CARGO_WATERCOLA             = 4310,  // shared between desert and toyland
 	SPR_CARGO_DIAMONDS              = 4311,
 	SPR_CARGO_FOOD                  = 4312,
 	SPR_CARGO_PAPER                 = 4313,

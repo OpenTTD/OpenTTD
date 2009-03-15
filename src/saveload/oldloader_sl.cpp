@@ -1260,14 +1260,14 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			uint type = ReadByte(ls);
 			switch (type) {
 				default: return false;
-				case 0x00 /*VEH_INVALID */: v = new (_current_vehicle_id) InvalidVehicle();  break;
-				case 0x25 /* MONORAIL   */:
-				case 0x20 /*VEH_TRAIN   */: v = new (_current_vehicle_id) Train();           break;
-				case 0x21 /*VEH_ROAD    */: v = new (_current_vehicle_id) RoadVehicle();     break;
-				case 0x22 /*VEH_SHIP    */: v = new (_current_vehicle_id) Ship();            break;
-				case 0x23 /*VEH_AIRCRAFT*/: v = new (_current_vehicle_id) Aircraft();        break;
-				case 0x24 /*VEH_EFFECT  */: v = new (_current_vehicle_id) EffectVehicle();   break;
-				case 0x26 /*VEH_DISASTER*/: v = new (_current_vehicle_id) DisasterVehicle(); break;
+				case 0x00 /* VEH_INVALID */: v = new (_current_vehicle_id) InvalidVehicle();  break;
+				case 0x25 /* MONORAIL     */:
+				case 0x20 /* VEH_TRAIN    */: v = new (_current_vehicle_id) Train();           break;
+				case 0x21 /* VEH_ROAD     */: v = new (_current_vehicle_id) RoadVehicle();     break;
+				case 0x22 /* VEH_SHIP     */: v = new (_current_vehicle_id) Ship();            break;
+				case 0x23 /* VEH_AIRCRAFT */: v = new (_current_vehicle_id) Aircraft();        break;
+				case 0x24 /* VEH_EFFECT   */: v = new (_current_vehicle_id) EffectVehicle();   break;
+				case 0x26 /* VEH_DISASTER */: v = new (_current_vehicle_id) DisasterVehicle(); break;
 			}
 
 			if (!LoadChunk(ls, v, vehicle_chunk)) return false;
@@ -1336,13 +1336,13 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			/* Read the vehicle type and allocate the right vehicle */
 			switch (ReadByte(ls)) {
 				default: NOT_REACHED();
-				case 0x00 /*VEH_INVALID */: v = new (_current_vehicle_id) InvalidVehicle();  break;
-				case 0x10 /*VEH_TRAIN   */: v = new (_current_vehicle_id) Train();           break;
-				case 0x11 /*VEH_ROAD    */: v = new (_current_vehicle_id) RoadVehicle();     break;
-				case 0x12 /*VEH_SHIP    */: v = new (_current_vehicle_id) Ship();            break;
-				case 0x13 /*VEH_AIRCRAFT*/: v = new (_current_vehicle_id) Aircraft();        break;
-				case 0x14 /*VEH_EFFECT  */: v = new (_current_vehicle_id) EffectVehicle();   break;
-				case 0x15 /*VEH_DISASTER*/: v = new (_current_vehicle_id) DisasterVehicle(); break;
+				case 0x00 /* VEH_INVALID */: v = new (_current_vehicle_id) InvalidVehicle();  break;
+				case 0x10 /* VEH_TRAIN   */: v = new (_current_vehicle_id) Train();           break;
+				case 0x11 /* VEH_ROAD    */: v = new (_current_vehicle_id) RoadVehicle();     break;
+				case 0x12 /* VEH_SHIP    */: v = new (_current_vehicle_id) Ship();            break;
+				case 0x13 /* VEH_AIRCRAFT*/: v = new (_current_vehicle_id) Aircraft();        break;
+				case 0x14 /* VEH_EFFECT  */: v = new (_current_vehicle_id) EffectVehicle();   break;
+				case 0x15 /* VEH_DISASTER*/: v = new (_current_vehicle_id) DisasterVehicle(); break;
 			}
 			if (!LoadChunk(ls, v, vehicle_chunk)) return false;
 

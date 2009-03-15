@@ -5,8 +5,8 @@
 #ifndef COCOA_KEYS_H
 #define COCOA_KEYS_H
 
-/* From SDL_QuartzKeys.h */
-/* These are the Macintosh key scancode constants -- from Inside Macintosh */
+/* From SDL_QuartzKeys.h
+ * These are the Macintosh key scancode constants -- from Inside Macintosh */
 
 #define QZ_ESCAPE       0x35
 #define QZ_F1           0x7A

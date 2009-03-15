@@ -838,7 +838,7 @@ void ShowBuildRailToolbar(RailType railtype, int button)
 	if (!IsValidCompanyID(_local_company)) return;
 	if (!ValParamRailtype(railtype)) return;
 
-	// don't recreate the window if we're clicking on a button and the window exists.
+	/* don't recreate the window if we're clicking on a button and the window exists. */
 	if (button < 0 || !(w = dynamic_cast<BuildRailToolbarWindow*>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL)))) {
 		DeleteWindowByClass(WC_BUILD_TOOLBAR);
 		_cur_railtype = railtype;

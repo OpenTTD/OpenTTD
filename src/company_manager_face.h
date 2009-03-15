@@ -57,8 +57,8 @@ struct CompanyManagerFaceBitsInfo {
 
 /** Lookup table for indices into the CompanyManagerFace, valid ranges and sprites */
 static const CompanyManagerFaceBitsInfo _cmf_info[] = {
-	/* Index                   off len   WM  WF  BM  BF         WM     WF     BM     BF */
-	/* CMFV_GENDER          */ {  0, 1, {  2,  2,  2,  2 }, {     0,     0,     0,     0 } }, ///< 0 = male, 1 = female
+	/* Index                   off len   WM  WF  BM  BF         WM     WF     BM     BF
+	 * CMFV_GENDER          */ {  0, 1, {  2,  2,  2,  2 }, {     0,     0,     0,     0 } }, ///< 0 = male, 1 = female
 	/* CMFV_ETHNICITY       */ {  1, 2, {  2,  2,  2,  2 }, {     0,     0,     0,     0 } }, ///< 0 = (Western-)Caucasian, 1 = African(-American)/Black
 	/* CMFV_GEN_ETHN        */ {  0, 3, {  4,  4,  4,  4 }, {     0,     0,     0,     0 } }, ///< Shortcut to get/set gender _and_ ethnicity
 	/* CMFV_HAS_MOUSTACHE   */ {  3, 1, {  2,  0,  2,  0 }, {     0,     0,     0,     0 } }, ///< Females do not have a moustache

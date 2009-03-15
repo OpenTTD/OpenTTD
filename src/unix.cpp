@@ -42,7 +42,7 @@ ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
 
 #if defined(__APPLE__)
 	#if defined(WITH_SDL)
-		/*the mac implementation needs this file included in the same file as main() */
+		/* the mac implementation needs this file included in the same file as main() */
 		#include <SDL.h>
 	#endif
 #endif
@@ -273,7 +273,7 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 	extern struct Device      *TimerBase    = NULL;
 	extern struct MsgPort     *TimerPort    = NULL;
 	extern struct timerequest *TimerRequest = NULL;
-#endif // __AMIGA__
+#endif /* __AMIGA__ */
 
 void CSleep(int milliseconds)
 {

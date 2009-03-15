@@ -69,7 +69,7 @@ protected:
 		, m_disable_cache(false)
 		, m_stopped_on_first_two_way_signal(false)
 	{
-		// pre-compute look-ahead penalties into array
+		/* pre-compute look-ahead penalties into array */
 		int p0 = Yapf().PfGetSettings().rail_look_ahead_signal_p0;
 		int p1 = Yapf().PfGetSettings().rail_look_ahead_signal_p1;
 		int p2 = Yapf().PfGetSettings().rail_look_ahead_signal_p2;
@@ -79,7 +79,7 @@ protected:
 		}
 	}
 
-	/// to access inherited path finder
+	/** to access inherited path finder */
 	Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
@@ -100,10 +100,10 @@ public:
 		int cost = 0;
 		if (TrackFollower::Allow90degTurns()
 				&& ((TrackdirToTrackdirBits(td2) & (TrackdirBits)TrackdirCrossesTrackdirs(td1)) != 0)) {
-			// 90-deg curve penalty
+			/* 90-deg curve penalty */
 			cost += Yapf().PfGetSettings().rail_curve90_penalty;
 		} else if (td2 != NextTrackdir(td1)) {
-			// 45-deg curve penalty
+			/* 45-deg curve penalty */
 			cost += Yapf().PfGetSettings().rail_curve45_penalty;
 		}
 		return cost;
@@ -123,7 +123,7 @@ public:
 	FORCEINLINE int OneTileCost(TileIndex& tile, Trackdir trackdir)
 	{
 		int cost = 0;
-		// set base cost
+		/* set base cost */
 		if (IsDiagonalTrackdir(trackdir)) {
 			cost += YAPF_TILE_LENGTH;
 			switch (GetTileType(tile)) {
@@ -138,7 +138,7 @@ public:
 					break;
 			}
 		} else {
-			// non-diagonal trackdir
+			/* non-diagonal trackdir */
 			cost = YAPF_TILE_CORNER_LENGTH;
 		}
 		return cost;
@@ -172,33 +172,33 @@ public:
 	int SignalCost(Node& n, TileIndex tile, Trackdir trackdir)
 	{
 		int cost = 0;
-		// if there is one-way signal in the opposite direction, then it is not our way
+		/* if there is one-way signal in the opposite direction, then it is not our way */
 		CPerfStart perf_cost(Yapf().m_perf_other_cost);
 		if (IsTileType(tile, MP_RAILWAY)) {
 			bool has_signal_against = HasSignalOnTrackdir(tile, ReverseTrackdir(trackdir));
 			bool has_signal_along = HasSignalOnTrackdir(tile, trackdir);
 			if (has_signal_against && !has_signal_along && IsOnewaySignal(tile, TrackdirToTrack(trackdir))) {
-				// one-way signal in opposite direction
+				/* one-way signal in opposite direction */
 				n.m_segment->m_end_segment_reason |= ESRB_DEAD_END;
 			} else {
 				if (has_signal_along) {
 					SignalState sig_state = GetSignalStateByTrackdir(tile, trackdir);
-					// cache the look-ahead polynomial constant only if we didn't pass more signals than the look-ahead limit is
+					/* cache the look-ahead polynomial constant only if we didn't pass more signals than the look-ahead limit is */
 					int look_ahead_cost = (n.m_num_signals_passed < m_sig_look_ahead_costs.Size()) ? m_sig_look_ahead_costs.Data()[n.m_num_signals_passed] : 0;
 					if (sig_state != SIGNAL_STATE_RED) {
-						// green signal
+						/* green signal */
 						n.flags_u.flags_s.m_last_signal_was_red = false;
-						// negative look-ahead red-signal penalties would cause problems later, so use them as positive penalties for green signal
+						/* negative look-ahead red-signal penalties would cause problems later, so use them as positive penalties for green signal */
 						if (look_ahead_cost < 0) {
-							// add its negation to the cost
+							/* add its negation to the cost */
 							cost -= look_ahead_cost;
 						}
 					} else {
 						SignalType sig_type = GetSignalType(tile, TrackdirToTrack(trackdir));
-						// we have a red signal in our direction
-						// was it first signal which is two-way?
+						/* we have a red signal in our direction
+						 * was it first signal which is two-way? */
 						if (!IsPbsSignal(sig_type) && Yapf().TreatFirstRedTwoWaySignalAsEOL() && n.flags_u.flags_s.m_choice_seen && has_signal_against && n.m_num_signals_passed == 0) {
-							// yes, the first signal is two-way red signal => DEAD END
+							/* yes, the first signal is two-way red signal => DEAD END */
 							n.m_segment->m_end_segment_reason |= ESRB_DEAD_END;
 							Yapf().m_stopped_on_first_two_way_signal = true;
 							return -1;
@@ -206,13 +206,13 @@ public:
 						n.m_last_red_signal_type = sig_type;
 						n.flags_u.flags_s.m_last_signal_was_red = true;
 
-						// look-ahead signal penalty
+						/* look-ahead signal penalty */
 						if (!IsPbsSignal(sig_type) && look_ahead_cost > 0) {
-							// add the look ahead penalty only if it is positive
+							/* add the look ahead penalty only if it is positive */
 							cost += look_ahead_cost;
 						}
 
-						// special signal penalties
+						/* special signal penalties */
 						if (n.m_num_signals_passed == 0) {
 							switch (sig_type) {
 								case SIGTYPE_COMBO:
@@ -246,10 +246,10 @@ public:
 		assert(v->u.rail.cached_total_length != 0);
 		int needed_platform_length = (v->u.rail.cached_total_length + TILE_SIZE - 1) / TILE_SIZE;
 		if (platform_length > needed_platform_length) {
-			// apply penalty for longer platform than needed
+			/* apply penalty for longer platform than needed */
 			cost += Yapf().PfGetSettings().rail_longer_platform_penalty;
 		} else if (needed_platform_length > platform_length) {
-			// apply penalty for shorter platform than needed
+			/* apply penalty for shorter platform than needed */
 			cost += Yapf().PfGetSettings().rail_shorter_platform_penalty;
 		}
 		return cost;
@@ -313,10 +313,10 @@ public:
 
 		const Vehicle *v = Yapf().GetVehicle();
 
-		// start at n.m_key.m_tile / n.m_key.m_td and walk to the end of segment
+		/* start at n.m_key.m_tile / n.m_key.m_td and walk to the end of segment */
 		TILE cur(n.m_key.m_tile, n.m_key.m_td);
 
-		// the previous tile will be needed for transition cost calculations
+		/* the previous tile will be needed for transition cost calculations */
 		TILE prev = !has_parent ? TILE() : TILE(n.m_parent->GetLastTile(), n.m_parent->GetLastTrackdir());
 
 		EndSegmentReasonBits end_segment_reason = ESRB_NONE;
@@ -529,10 +529,10 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			/* Last-red and last-red-exit penalties. */
 			if (n.flags_u.flags_s.m_last_signal_was_red) {
 				if (n.m_last_red_signal_type == SIGTYPE_EXIT) {
-					// last signal was red pre-signal-exit
+					/* last signal was red pre-signal-exit */
 					extra_cost += Yapf().PfGetSettings().rail_lastred_exit_penalty;
 				} else {
-					// last signal was red, but not exit
+					/* last signal was red, but not exit */
 					extra_cost += Yapf().PfGetSettings().rail_lastred_penalty;
 				}
 			}
@@ -549,7 +549,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			}
 		}
 
-		// total node cost
+		/* total node cost */
 		n.m_cost = parent_cost + segment_entry_cost + segment_cost + extra_cost;
 
 		return true;

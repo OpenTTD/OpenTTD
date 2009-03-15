@@ -243,12 +243,12 @@ static bool FindNearIndustryName(TileIndex tile, void *user_data)
 static StringID GenerateStationName(Station *st, TileIndex tile, int flag)
 {
 	static const uint32 _gen_station_name_bits[] = {
-		0,                                      /* 0 */
-		1 << M(STR_SV_STNAME_AIRPORT),          /* 1 */
-		1 << M(STR_SV_STNAME_OILFIELD),         /* 2 */
-		1 << M(STR_SV_STNAME_DOCKS),            /* 3 */
-		0x1FF << M(STR_SV_STNAME_BUOY_1),       /* 4 */
-		1 << M(STR_SV_STNAME_HELIPORT),         /* 5 */
+		0,                                      // 0
+		1 << M(STR_SV_STNAME_AIRPORT),          // 1
+		1 << M(STR_SV_STNAME_OILFIELD),         // 2
+		1 << M(STR_SV_STNAME_DOCKS),            // 3
+		0x1FF << M(STR_SV_STNAME_BUOY_1),       // 4
+		1 << M(STR_SV_STNAME_HELIPORT),         // 5
 	};
 
 	const Town *t = st->town;
@@ -675,7 +675,7 @@ static void UpdateStationSignCoord(Station *st)
 {
 	const StationRect *r = &st->rect;
 
-	if (r->IsEmpty()) return; /* no tiles belong to this station */
+	if (r->IsEmpty()) return; // no tiles belong to this station
 
 	/* clamp sign coord to be inside the station rect */
 	st->xy = TileXY(ClampU(TileX(st->xy), r->left, r->right), ClampU(TileY(st->xy), r->top, r->bottom));
@@ -1511,7 +1511,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		RoadStop **currstop = FindRoadStopSpot(type, st);
 		*currstop = road_stop;
 
-		/*initialize an empty station */
+		/* initialize an empty station */
 		st->AddFacility((type) ? FACIL_TRUCK_STOP : FACIL_BUS_STOP, tile);
 
 		st->rect.BeforeAddTile(tile, StationRect::ADD_TRY);
@@ -2236,7 +2236,6 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		if (st->dock_tile != INVALID_TILE) return_cmd_error(STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK);
 	} else {
 		/* allocate and initialize new station */
-		/* allocate and initialize new station */
 		if (!Station::CanAllocateItem()) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
 
 		if (flags & DC_EXEC) {
@@ -2669,7 +2668,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 			if (y == TILE_SIZE / 2) {
 				if (dir != DIAGDIR_SE && dir != DIAGDIR_SW) x = TILE_SIZE - 1 - x;
 				int stop = TILE_SIZE - (v->u.rail.cached_veh_length + 1) / 2;
-				if (x == stop) return VETSB_ENTERED_STATION | (VehicleEnterTileStatus)(station_id << VETS_STATION_ID_OFFSET); /* enter station */
+				if (x == stop) return VETSB_ENTERED_STATION | (VehicleEnterTileStatus)(station_id << VETS_STATION_ID_OFFSET); // enter station
 				if (x < stop) {
 					uint16 spd;
 
@@ -2707,8 +2706,8 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 					return VETSB_CONTINUE;
 				}
 
-				/* For normal (non drive-through) road stops */
-				/* Check if station is busy or if there are no free bays or whether it is a articulated vehicle. */
+				/* For normal (non drive-through) road stops
+				 * Check if station is busy or if there are no free bays or whether it is a articulated vehicle. */
 				if (rs->IsEntranceBusy() || !rs->HasFreeBay() || RoadVehHasArticPart(v)) return VETSB_CANNOT_ENTER;
 
 				SetBit(v->u.road.state, RVS_IN_ROAD_STOP);
@@ -3276,18 +3275,18 @@ static CommandCost TerraformTile_Station(TileIndex tile, DoCommandFlag flags, ui
 
 
 extern const TileTypeProcs _tile_type_station_procs = {
-	DrawTile_Station,           /* draw_tile_proc */
-	GetSlopeZ_Station,          /* get_slope_z_proc */
-	ClearTile_Station,          /* clear_tile_proc */
-	GetAcceptedCargo_Station,   /* get_accepted_cargo_proc */
-	GetTileDesc_Station,        /* get_tile_desc_proc */
-	GetTileTrackStatus_Station, /* get_tile_track_status_proc */
-	ClickTile_Station,          /* click_tile_proc */
-	AnimateTile_Station,        /* animate_tile_proc */
-	TileLoop_Station,           /* tile_loop_clear */
-	ChangeTileOwner_Station,    /* change_tile_owner_clear */
-	NULL,                       /* get_produced_cargo_proc */
-	VehicleEnter_Station,       /* vehicle_enter_tile_proc */
-	GetFoundation_Station,      /* get_foundation_proc */
-	TerraformTile_Station,      /* terraform_tile_proc */
+	DrawTile_Station,           // draw_tile_proc
+	GetSlopeZ_Station,          // get_slope_z_proc
+	ClearTile_Station,          // clear_tile_proc
+	GetAcceptedCargo_Station,   // get_accepted_cargo_proc
+	GetTileDesc_Station,        // get_tile_desc_proc
+	GetTileTrackStatus_Station, // get_tile_track_status_proc
+	ClickTile_Station,          // click_tile_proc
+	AnimateTile_Station,        // animate_tile_proc
+	TileLoop_Station,           // tile_loop_clear
+	ChangeTileOwner_Station,    // change_tile_owner_clear
+	NULL,                       // get_produced_cargo_proc
+	VehicleEnter_Station,       // vehicle_enter_tile_proc
+	GetFoundation_Station,      // get_foundation_proc
+	TerraformTile_Station,      // terraform_tile_proc
 };

@@ -554,7 +554,7 @@ bool AIScanner::HasAI(const ContentInfo *ci, bool md5sum)
  * @param md5sum whether to check the MD5 checksum
  * @return true iff we have an AI (library) matching.
  */
-/*static */ bool AI::HasAI(const ContentInfo *ci, bool md5sum)
+/* static */ bool AI::HasAI(const ContentInfo *ci, bool md5sum)
 {
 	return AI::ai_scanner->HasAI(ci, md5sum);
 }

@@ -75,18 +75,18 @@ static CommandCost TerraformTile_Dummy(TileIndex tile, DoCommandFlag flags, uint
 }
 
 extern const TileTypeProcs _tile_type_dummy_procs = {
-	DrawTile_Dummy,           /* draw_tile_proc */
-	GetSlopeZ_Dummy,          /* get_slope_z_proc */
-	ClearTile_Dummy,          /* clear_tile_proc */
-	GetAcceptedCargo_Dummy,   /* get_accepted_cargo_proc */
-	GetTileDesc_Dummy,        /* get_tile_desc_proc */
-	GetTileTrackStatus_Dummy, /* get_tile_track_status_proc */
-	ClickTile_Dummy,          /* click_tile_proc */
-	AnimateTile_Dummy,        /* animate_tile_proc */
-	TileLoop_Dummy,           /* tile_loop_clear */
-	ChangeTileOwner_Dummy,    /* change_tile_owner_clear */
-	NULL,                     /* get_produced_cargo_proc */
-	NULL,                     /* vehicle_enter_tile_proc */
-	GetFoundation_Dummy,      /* get_foundation_proc */
-	TerraformTile_Dummy,      /* terraform_tile_proc */
+	DrawTile_Dummy,           // draw_tile_proc
+	GetSlopeZ_Dummy,          // get_slope_z_proc
+	ClearTile_Dummy,          // clear_tile_proc
+	GetAcceptedCargo_Dummy,   // get_accepted_cargo_proc
+	GetTileDesc_Dummy,        // get_tile_desc_proc
+	GetTileTrackStatus_Dummy, // get_tile_track_status_proc
+	ClickTile_Dummy,          // click_tile_proc
+	AnimateTile_Dummy,        // animate_tile_proc
+	TileLoop_Dummy,           // tile_loop_clear
+	ChangeTileOwner_Dummy,    // change_tile_owner_clear
+	NULL,                     // get_produced_cargo_proc
+	NULL,                     // vehicle_enter_tile_proc
+	GetFoundation_Dummy,      // get_foundation_proc
+	TerraformTile_Dummy,      // terraform_tile_proc
 };

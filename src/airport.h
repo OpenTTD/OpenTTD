@@ -69,8 +69,8 @@ enum {
 	HELIPAD4       = 22
 };
 
-/* Movement Blocks on Airports */
-/* blocks (eg_airport_flags) */
+/* Movement Blocks on Airports
+ * blocks (eg_airport_flags) */
 static const uint64
 	TERM1_block              = 1ULL <<  0,
 	TERM2_block              = 1ULL <<  1,

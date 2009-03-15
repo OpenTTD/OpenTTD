@@ -26,10 +26,10 @@
 
 #include "table/strings.h"
 
-// This file handles all the client-commands
+/* This file handles all the client-commands */
 
 
-// So we don't make too much typos ;)
+/* So we don't make too much typos ;) */
 #define MY_CLIENT GetNetworkClientSocket(0)
 
 static uint32 last_ack_frame;
@@ -94,19 +94,19 @@ void HashCurrentCompanyPassword(const char *password)
 }
 
 
-// **********
-// Sending functions
-//   DEF_CLIENT_SEND_COMMAND has no parameters
-// **********
+/***********
+ * Sending functions
+ *   DEF_CLIENT_SEND_COMMAND has no parameters
+ ************/
 
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 {
-	//
-	// Packet: CLIENT_COMPANY_INFO
-	// Function: Request company-info (in detail)
-	// Data:
-	//    <none>
-	//
+	/*
+	 * Packet: CLIENT_COMPANY_INFO
+	 * Function: Request company-info (in detail)
+	 * Data:
+	 *    <none>
+	 */
 	Packet *p;
 	_network_join_status = NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO;
 	InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
@@ -117,16 +117,16 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 {
-	//
-	// Packet: CLIENT_JOIN
-	// Function: Try to join the server
-	// Data:
-	//    String: OpenTTD Revision (norev000 if no revision)
-	//    String: Client Name (max NETWORK_NAME_LENGTH)
-	//    uint8:  Play as Company id (1..MAX_COMPANIES)
-	//    uint8:  Language ID
-	//    String: Unique id to find the client back in server-listing
-	//
+	/*
+	 * Packet: CLIENT_JOIN
+	 * Function: Try to join the server
+	 * Data:
+	 *    String: OpenTTD Revision (norev000 if no revision)
+	 *    String: Client Name (max NETWORK_NAME_LENGTH)
+	 *    uint8:  Play as Company id (1..MAX_COMPANIES)
+	 *    uint8:  Language ID
+	 *    String: Unique id to find the client back in server-listing
+	 */
 
 	Packet *p;
 	_network_join_status = NETWORK_JOIN_STATUS_AUTHORIZING;
@@ -143,11 +143,11 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
 {
-	//
-	// Packet: CLIENT_NEWGRFS_CHECKED
-	// Function: Tell the server that we have the required GRFs
-	// Data:
-	//
+	/*
+	 * Packet: CLIENT_NEWGRFS_CHECKED
+	 * Function: Tell the server that we have the required GRFs
+	 * Data:
+	 */
 
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_NEWGRFS_CHECKED);
 	MY_CLIENT->Send_Packet(p);
@@ -155,13 +155,13 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
 
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_PASSWORD)(NetworkPasswordType type, const char *password)
 {
-	//
-	// Packet: CLIENT_PASSWORD
-	// Function: Send a password to the server to authorize
-	// Data:
-	//    uint8:  NetworkPasswordType
-	//    String: Password
-	//
+	/*
+	 * Packet: CLIENT_PASSWORD
+	 * Function: Send a password to the server to authorize
+	 * Data:
+	 *    uint8:  NetworkPasswordType
+	 *    String: Password
+	 */
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_PASSWORD);
 	p->Send_uint8 (type);
 	p->Send_string(type == NETWORK_GAME_PASSWORD ? password : GenerateCompanyPasswordHash(password));
@@ -170,12 +170,12 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_PASSWORD)(NetworkPasswordType type, 
 
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_GETMAP)
 {
-	//
-	// Packet: CLIENT_GETMAP
-	// Function: Request the map from the server
-	// Data:
-	//    <none>
-	//
+	/*
+	 * Packet: CLIENT_GETMAP
+	 * Function: Request the map from the server
+	 * Data:
+	 *    <none>
+	 */
 
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_GETMAP);
 	MY_CLIENT->Send_Packet(p);
@@ -183,12 +183,12 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_GETMAP)
 
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_MAP_OK)
 {
-	//
-	// Packet: CLIENT_MAP_OK
-	// Function: Tell the server that we are done receiving/loading the map
-	// Data:
-	//    <none>
-	//
+	/*
+	 * Packet: CLIENT_MAP_OK
+	 * Function: Tell the server that we are done receiving/loading the map
+	 * Data:
+	 *    <none>
+	 */
 
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_MAP_OK);
 	MY_CLIENT->Send_Packet(p);
@@ -196,12 +196,12 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_MAP_OK)
 
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_ACK)
 {
-	//
-	// Packet: CLIENT_ACK
-	// Function: Tell the server we are done with this frame
-	// Data:
-	//    uint32: current FrameCounter of the client
-	//
+	/*
+	 * Packet: CLIENT_ACK
+	 * Function: Tell the server we are done with this frame
+	 * Data:
+	 *    uint32: current FrameCounter of the client
+	 */
 
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_ACK);
 
@@ -209,21 +209,21 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_ACK)
 	MY_CLIENT->Send_Packet(p);
 }
 
-// Send a command packet to the server
+/* Send a command packet to the server */
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(const CommandPacket *cp)
 {
-	//
-	// Packet: CLIENT_COMMAND
-	// Function: Send a DoCommand to the Server
-	// Data:
-	//    uint8:  CompanyID (0..MAX_COMPANIES-1)
-	//    uint32: CommandID (see command.h)
-	//    uint32: P1 (free variables used in DoCommand)
-	//    uint32: P2
-	//    uint32: Tile
-	//    string: text
-	//    uint8:  CallBackID (see callback_table.c)
-	//
+	/*
+	 * Packet: CLIENT_COMMAND
+	 * Function: Send a DoCommand to the Server
+	 * Data:
+	 *    uint8:  CompanyID (0..MAX_COMPANIES-1)
+	 *    uint32: CommandID (see command.h)
+	 *    uint32: P1 (free variables used in DoCommand)
+	 *    uint32: P2
+	 *    uint32: Tile
+	 *    string: text
+	 *    uint8:  CallBackID (see callback_table.c)
+	 */
 
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_COMMAND);
 	MY_CLIENT->Send_Command(p, cp);
@@ -231,19 +231,19 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(const CommandPacket *cp)
 	MY_CLIENT->Send_Packet(p);
 }
 
-// Send a chat-packet over the network
+/* Send a chat-packet over the network */
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType type, int dest, const char *msg, int64 data)
 {
-	//
-	// Packet: CLIENT_CHAT
-	// Function: Send a chat-packet to the serve
-	// Data:
-	//    uint8:  ActionID (see network_data.h, NetworkAction)
-	//    uint8:  Destination Type (see network_data.h, DestType);
-	//    uint32: Destination CompanyID/Client-identifier
-	//    String: Message (max NETWORK_CHAT_LENGTH)
-	//    uint64: Some arbitrary number
-	//
+	/*
+	 * Packet: CLIENT_CHAT
+	 * Function: Send a chat-packet to the serve
+	 * Data:
+	 *    uint8:  ActionID (see network_data.h, NetworkAction)
+	 *    uint8:  Destination Type (see network_data.h, DestType);
+	 *    uint32: Destination CompanyID/Client-identifier
+	 *    String: Message (max NETWORK_CHAT_LENGTH)
+	 *    uint64: Some arbitrary number
+	 */
 
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_CHAT);
 
@@ -256,15 +256,15 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType
 	MY_CLIENT->Send_Packet(p);
 }
 
-// Send an error-packet over the network
+/* Send an error-packet over the network */
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_ERROR)(NetworkErrorCode errorno)
 {
-	//
-	// Packet: CLIENT_ERROR
-	// Function: The client made an error and is quiting the game
-	// Data:
-	//    uint8:  ErrorID (see network_data.h, NetworkErrorCode)
-	//
+	/*
+	 * Packet: CLIENT_ERROR
+	 * Function: The client made an error and is quiting the game
+	 * Data:
+	 *    uint8:  ErrorID (see network_data.h, NetworkErrorCode)
+	 */
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_ERROR);
 
 	p->Send_uint8(errorno);
@@ -273,12 +273,12 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_ERROR)(NetworkErrorCode errorno)
 
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_PASSWORD)(const char *password)
 {
-	//
-	// Packet: PACKET_CLIENT_SET_PASSWORD
-	// Function: Set the password for the clients current company
-	// Data:
-	//    String: Password
-	//
+	/*
+	 * Packet: PACKET_CLIENT_SET_PASSWORD
+	 * Function: Set the password for the clients current company
+	 * Data:
+	 *    String: Password
+	 */
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_SET_PASSWORD);
 
 	p->Send_string(GenerateCompanyPasswordHash(password));
@@ -287,26 +287,26 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_PASSWORD)(const char *password)
 
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_NAME)(const char *name)
 {
-	//
-	// Packet: PACKET_CLIENT_SET_NAME
-	// Function: Gives the client a new name
-	// Data:
-	//    String: Name
-	//
+	/*
+	 * Packet: PACKET_CLIENT_SET_NAME
+	 * Function: Gives the client a new name
+	 * Data:
+	 *    String: Name
+	 */
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_SET_NAME);
 
 	p->Send_string(name);
 	MY_CLIENT->Send_Packet(p);
 }
 
-// Send an quit-packet over the network
+/* Send an quit-packet over the network */
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_QUIT)()
 {
-	//
-	// Packet: CLIENT_QUIT
-	// Function: The client is quiting the game
-	// Data:
-	//
+	/*
+	 * Packet: CLIENT_QUIT
+	 * Function: The client is quiting the game
+	 * Data:
+	 */
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_QUIT);
 
 	MY_CLIENT->Send_Packet(p);
@@ -329,17 +329,17 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_MOVE)(CompanyID company, const char 
 }
 
 
-// **********
-// Receiving functions
-//   DEF_CLIENT_RECEIVE_COMMAND has parameter: Packet *p
-// **********
+/***********
+ * Receiving functions
+ *   DEF_CLIENT_RECEIVE_COMMAND has parameter: Packet *p
+ ************/
 
 extern bool SafeSaveOrLoad(const char *filename, int mode, GameMode newgm, Subdirectory subdir);
 extern StringID _switch_mode_errorstr;
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_FULL)
 {
-	// We try to join a server which is full
+	/* We try to join a server which is full */
 	_switch_mode_errorstr = STR_NETWORK_ERR_SERVER_FULL;
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 
@@ -348,7 +348,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_FULL)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_BANNED)
 {
-	// We try to join a server where we are banned
+	/* We try to join a server where we are banned */
 	_switch_mode_errorstr = STR_NETWORK_ERR_SERVER_BANNED;
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 
@@ -391,9 +391,9 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	return NETWORK_RECV_STATUS_CLOSE_QUERY;
 }
 
-// This packet contains info about the client (playas and name)
-//  as client we save this in NetworkClientInfo, linked via 'client_id'
-//  which is always an unique number on a server.
+/* This packet contains info about the client (playas and name)
+ *  as client we save this in NetworkClientInfo, linked via 'client_id'
+ *  which is always an unique number on a server. */
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 {
 	NetworkClientInfo *ci;
@@ -411,11 +411,11 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 	ci = NetworkFindClientInfoFromClientID(client_id);
 	if (ci != NULL) {
 		if (playas == ci->client_playas && strcmp(name, ci->client_name) != 0) {
-			// Client name changed, display the change
+			/* Client name changed, display the change */
 			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, name);
 		} else if (playas != ci->client_playas) {
-			// The client changed from client-player..
-			// Do not display that for now
+			/* The client changed from client-player..
+			 * Do not display that for now */
 		}
 
 		ci->client_playas = playas;
@@ -426,7 +426,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 		return NETWORK_RECV_STATUS_OKAY;
 	}
 
-	// We don't have this client_id yet, find an empty client_id, and put the data there
+	/* We don't have this client_id yet, find an empty client_id, and put the data there */
 	ci = new NetworkClientInfo(client_id);
 	ci->client_playas = playas;
 	if (client_id == _network_own_client_id) MY_CLIENT->SetInfo(ci);
@@ -531,7 +531,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WELCOME)
 	_password_game_seed = p->Recv_uint32();
 	p->Recv_string(_password_server_unique_id, sizeof(_password_server_unique_id));
 
-	// Start receiving the map
+	/* Start receiving the map */
 	SEND_COMMAND(PACKET_CLIENT_GETMAP)();
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -542,7 +542,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WAIT)
 	_network_join_waiting = p->Recv_uint8();
 	InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
 
-	// We are put on hold for receiving the map.. we need GUI for this ;)
+	/* We are put on hold for receiving the map.. we need GUI for this ;) */
 	DEBUG(net, 1, "The server is currently busy sending the map to someone else, please wait..." );
 	DEBUG(net, 1, "There are %d clients in front of you", _network_join_waiting);
 
@@ -559,7 +559,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 	if (MY_CLIENT->has_quit) return NETWORK_RECV_STATUS_CONN_LOST;
 
-	// First packet, init some stuff
+	/* First packet, init some stuff */
 	if (maptype == MAP_PACKET_START) {
 		file_pointer = FioFOpenFile("network_client.tmp", "wb", AUTOSAVE_DIR);;
 		if (file_pointer == NULL) {
@@ -583,12 +583,12 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		_network_join_status = NETWORK_JOIN_STATUS_DOWNLOADING;
 		InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
 
-		// The first packet does not contain any more data
+		/* The first packet does not contain any more data */
 		return NETWORK_RECV_STATUS_OKAY;
 	}
 
 	if (maptype == MAP_PACKET_NORMAL) {
-		// We are still receiving data, put it to the file
+		/* We are still receiving data, put it to the file */
 		if (fwrite(p->buffer + p->pos, 1, p->size - p->pos, file_pointer) != (size_t)(p->size - p->pos)) {
 			_switch_mode_errorstr = STR_NETWORK_ERR_SAVEGAMEERROR;
 			return NETWORK_RECV_STATUS_SAVEGAME;
@@ -598,7 +598,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
 	}
 
-	// Check if this was the last packet
+	/* Check if this was the last packet */
 	if (maptype == MAP_PACKET_END) {
 		fclose(file_pointer);
 
@@ -614,7 +614,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		/* If the savegame has successfully loaded, ALL windows have been removed,
 		 * only toolbar/statusbar and gamefield are visible */
 
-		// Say we received the map and loaded it correctly!
+		/* Say we received the map and loaded it correctly! */
 		SEND_COMMAND(PACKET_CLIENT_MAP_OK)();
 
 		/* New company/spectator (invalid company) or company we want to join is not active
@@ -630,7 +630,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 				NetworkSend_Command(0, 0, 0, CMD_COMPANY_CTRL, NULL, NULL);
 			}
 		} else {
-			// take control over an existing company
+			/* take control over an existing company */
 			SetLocalCompany(_network_playas);
 		}
 	}
@@ -643,8 +643,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_FRAME)
 	_frame_counter_server = p->Recv_uint32();
 	_frame_counter_max = p->Recv_uint32();
 #ifdef ENABLE_NETWORK_SYNC_EVERY_FRAME
-	// Test if the server supports this option
-	//  and if we are at the frame the server is
+	/* Test if the server supports this option
+	 *  and if we are at the frame the server is */
 	if (p->pos < p->size) {
 		_sync_frame = _frame_counter_server;
 		_sync_seed_1 = p->Recv_uint32();
@@ -655,8 +655,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_FRAME)
 #endif
 	DEBUG(net, 5, "Received FRAME %d", _frame_counter_server);
 
-	// Let the server know that we received this frame correctly
-	//  We do this only once per day, to save some bandwidth ;)
+	/* Let the server know that we received this frame correctly
+	 *  We do this only once per day, to save some bandwidth ;) */
 	if (!_network_first_time && last_ack_frame < _frame_counter) {
 		last_ack_frame = _frame_counter + DAY_TICKS;
 		DEBUG(net, 4, "Sent ACK at %d", _frame_counter);
@@ -690,8 +690,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMMAND)
 		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	}
 
-	// The server did send us this command..
-	//  queue it in our own queue, so we can handle it in the upcoming frame!
+	/* The server did send us this command..
+	 *  queue it in our own queue, so we can handle it in the upcoming frame! */
 	NetworkAddCommandQueue(cp);
 
 	return NETWORK_RECV_STATUS_OKAY;
@@ -776,7 +776,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_QUIT)
 
 	InvalidateWindow(WC_CLIENT_LIST, 0);
 
-	// If we come here it means we could not locate the client.. strange :s
+	/* If we come here it means we could not locate the client.. strange :s */
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -802,10 +802,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_SHUTDOWN)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEWGAME)
 {
-	// To trottle the reconnects a bit, every clients waits
-	//  his _local_company value before reconnecting
-	// COMPANY_SPECTATOR is currently 255, so to avoid long wait periods
-	//  set the max to 10.
+	/* To trottle the reconnects a bit, every clients waits
+	 *  his _local_company value before reconnecting
+	 * COMPANY_SPECTATOR is currently 255, so to avoid long wait periods
+	 *  set the max to 10. */
 	_network_reconnect = min(_local_company + 1, 10);
 	_switch_mode_errorstr = STR_NETWORK_SERVER_REBOOT;
 
@@ -868,69 +868,69 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_UPDATE)
 }
 
 
-// The layout for the receive-functions by the client
+/* The layout for the receive-functions by the client */
 typedef NetworkRecvStatus NetworkClientPacket(Packet *p);
 
-// This array matches PacketType. At an incoming
-//  packet it is matches against this array
-//  and that way the right function to handle that
-//  packet is found.
+/* This array matches PacketType. At an incoming
+ *  packet it is matches against this array
+ *  and that way the right function to handle that
+ *  packet is found. */
 static NetworkClientPacket * const _network_client_packet[] = {
 	RECEIVE_COMMAND(PACKET_SERVER_FULL),
 	RECEIVE_COMMAND(PACKET_SERVER_BANNED),
-	NULL, /*PACKET_CLIENT_JOIN,*/
+	NULL, // PACKET_CLIENT_JOIN,
 	RECEIVE_COMMAND(PACKET_SERVER_ERROR),
-	NULL, /*PACKET_CLIENT_COMPANY_INFO,*/
+	NULL, // PACKET_CLIENT_COMPANY_INFO,
 	RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO),
 	RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO),
 	RECEIVE_COMMAND(PACKET_SERVER_NEED_PASSWORD),
-	NULL, /*PACKET_CLIENT_PASSWORD,*/
+	NULL, // PACKET_CLIENT_PASSWORD,
 	RECEIVE_COMMAND(PACKET_SERVER_WELCOME),
-	NULL, /*PACKET_CLIENT_GETMAP,*/
+	NULL, // PACKET_CLIENT_GETMAP,
 	RECEIVE_COMMAND(PACKET_SERVER_WAIT),
 	RECEIVE_COMMAND(PACKET_SERVER_MAP),
-	NULL, /*PACKET_CLIENT_MAP_OK,*/
+	NULL, // PACKET_CLIENT_MAP_OK,
 	RECEIVE_COMMAND(PACKET_SERVER_JOIN),
 	RECEIVE_COMMAND(PACKET_SERVER_FRAME),
 	RECEIVE_COMMAND(PACKET_SERVER_SYNC),
-	NULL, /*PACKET_CLIENT_ACK,*/
-	NULL, /*PACKET_CLIENT_COMMAND,*/
+	NULL, // PACKET_CLIENT_ACK,
+	NULL, // PACKET_CLIENT_COMMAND,
 	RECEIVE_COMMAND(PACKET_SERVER_COMMAND),
-	NULL, /*PACKET_CLIENT_CHAT,*/
+	NULL, // PACKET_CLIENT_CHAT,
 	RECEIVE_COMMAND(PACKET_SERVER_CHAT),
-	NULL, /*PACKET_CLIENT_SET_PASSWORD,*/
-	NULL, /*PACKET_CLIENT_SET_NAME,*/
-	NULL, /*PACKET_CLIENT_QUIT,*/
-	NULL, /*PACKET_CLIENT_ERROR,*/
+	NULL, // PACKET_CLIENT_SET_PASSWORD,
+	NULL, // PACKET_CLIENT_SET_NAME,
+	NULL, // PACKET_CLIENT_QUIT,
+	NULL, // PACKET_CLIENT_ERROR,
 	RECEIVE_COMMAND(PACKET_SERVER_QUIT),
 	RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT),
 	RECEIVE_COMMAND(PACKET_SERVER_SHUTDOWN),
 	RECEIVE_COMMAND(PACKET_SERVER_NEWGAME),
 	RECEIVE_COMMAND(PACKET_SERVER_RCON),
-	NULL, /*PACKET_CLIENT_RCON,*/
+	NULL, // PACKET_CLIENT_RCON,
 	RECEIVE_COMMAND(PACKET_SERVER_CHECK_NEWGRFS),
-	NULL, /*PACKET_CLIENT_NEWGRFS_CHECKED,*/
+	NULL, // PACKET_CLIENT_NEWGRFS_CHECKED,
 	RECEIVE_COMMAND(PACKET_SERVER_MOVE),
-	NULL, /* PACKET_CLIENT_MOVE */
+	NULL, // PACKET_CLIENT_MOVE
 	RECEIVE_COMMAND(PACKET_SERVER_COMPANY_UPDATE),
 	RECEIVE_COMMAND(PACKET_SERVER_CONFIG_UPDATE),
 };
 
-// If this fails, check the array above with network_data.h
+/* If this fails, check the array above with network_data.h */
 assert_compile(lengthof(_network_client_packet) == PACKET_END);
 
-// Is called after a client is connected to the server
+/* Is called after a client is connected to the server */
 void NetworkClient_Connected()
 {
-	// Set the frame-counter to 0 so nothing happens till we are ready
+	/* Set the frame-counter to 0 so nothing happens till we are ready */
 	_frame_counter = 0;
 	_frame_counter_server = 0;
 	last_ack_frame = 0;
-	// Request the game-info
+	/* Request the game-info */
 	SEND_COMMAND(PACKET_CLIENT_JOIN)();
 }
 
-// Reads the packets from the socket-stream, if available
+/* Reads the packets from the socket-stream, if available */
 NetworkRecvStatus NetworkClient_ReadPackets(NetworkClientSocket *cs)
 {
 	Packet *p;

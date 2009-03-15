@@ -64,7 +64,7 @@ public:
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case WAYPVW_CENTERVIEW: /* scroll to location */
+			case WAYPVW_CENTERVIEW: // scroll to location
 				if (_ctrl_pressed) {
 					ShowExtraViewPortWindow(this->wp->xy);
 				} else {
@@ -72,12 +72,12 @@ public:
 				}
 				break;
 
-			case WAYPVW_RENAME: /* rename */
+			case WAYPVW_RENAME: // rename
 				SetDParam(0, this->wp->index);
 				ShowQueryString(STR_WAYPOINT_RAW, STR_EDIT_WAYPOINT_NAME, MAX_LENGTH_WAYPOINT_NAME_BYTES, MAX_LENGTH_WAYPOINT_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
-			case WAYPVW_SHOW_TRAINS: /* show list of trains having this waypoint in their orders*/
+			case WAYPVW_SHOW_TRAINS: // show list of trains having this waypoint in their orders
 				ShowVehicleListWindow(this->wp);
 				break;
 		}

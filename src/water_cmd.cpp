@@ -1157,18 +1157,18 @@ static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlag flags, uint
 
 
 extern const TileTypeProcs _tile_type_water_procs = {
-	DrawTile_Water,           /* draw_tile_proc */
-	GetSlopeZ_Water,          /* get_slope_z_proc */
-	ClearTile_Water,          /* clear_tile_proc */
-	GetAcceptedCargo_Water,   /* get_accepted_cargo_proc */
-	GetTileDesc_Water,        /* get_tile_desc_proc */
-	GetTileTrackStatus_Water, /* get_tile_track_status_proc */
-	ClickTile_Water,          /* click_tile_proc */
-	AnimateTile_Water,        /* animate_tile_proc */
-	TileLoop_Water,           /* tile_loop_clear */
-	ChangeTileOwner_Water,    /* change_tile_owner_clear */
-	NULL,                     /* get_produced_cargo_proc */
-	VehicleEnter_Water,       /* vehicle_enter_tile_proc */
-	GetFoundation_Water,      /* get_foundation_proc */
-	TerraformTile_Water,      /* terraform_tile_proc */
+	DrawTile_Water,           // draw_tile_proc
+	GetSlopeZ_Water,          // get_slope_z_proc
+	ClearTile_Water,          // clear_tile_proc
+	GetAcceptedCargo_Water,   // get_accepted_cargo_proc
+	GetTileDesc_Water,        // get_tile_desc_proc
+	GetTileTrackStatus_Water, // get_tile_track_status_proc
+	ClickTile_Water,          // click_tile_proc
+	AnimateTile_Water,        // animate_tile_proc
+	TileLoop_Water,           // tile_loop_clear
+	ChangeTileOwner_Water,    // change_tile_owner_clear
+	NULL,                     // get_produced_cargo_proc
+	VehicleEnter_Water,       // vehicle_enter_tile_proc
+	GetFoundation_Water,      // get_foundation_proc
+	TerraformTile_Water,      // terraform_tile_proc
 };

@@ -428,7 +428,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
 		InvalidateWindow(WC_COMPANY, v->owner);
 		if (IsLocalCompany())
-			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); //updates the replace Aircraft window
+			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Aircraft window
 
 		GetCompany(_current_company)->num_engines[p1]++;
 	}
@@ -1622,9 +1622,9 @@ static void AircraftEventHandler_Flying(Vehicle *v, const AirportFTAClass *apc)
 	if (apc->flags & (v->subtype == AIR_HELICOPTER ? AirportFTAClass::HELICOPTERS : AirportFTAClass::AIRPLANES) &&
 			st->airport_tile != INVALID_TILE &&
 			(st->owner == OWNER_NONE || st->owner == v->owner)) {
-		// {32,FLYING,NOTHING_block,37}, {32,LANDING,N,33}, {32,HELILANDING,N,41},
-		// if it is an airplane, look for LANDING, for helicopter HELILANDING
-		// it is possible to choose from multiple landing runways, so loop until a free one is found
+		/* {32,FLYING,NOTHING_block,37}, {32,LANDING,N,33}, {32,HELILANDING,N,41},
+		 * if it is an airplane, look for LANDING, for helicopter HELILANDING
+		 * it is possible to choose from multiple landing runways, so loop until a free one is found */
 		byte landingtype = (v->subtype == AIR_HELICOPTER) ? HELILANDING : LANDING;
 		const AirportFTA *current = apc->layout[v->u.air.pos].next;
 		while (current != NULL) {

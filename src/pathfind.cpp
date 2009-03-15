@@ -660,7 +660,7 @@ start_at:
 
 			/* Check if this rail is an upwards slope. If it is, then add a penalty. */
 			if (IsDiagonalTrackdir(track) && IsUphillTrackdir(GetTileSlope(tile, NULL), track)) {
-				// upwards slope. add some penalty.
+				/* upwards slope. add some penalty. */
 				si.cur_length += 4 * DIAG_FACTOR;
 			}
 

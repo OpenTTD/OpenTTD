@@ -752,7 +752,7 @@ bool AfterLoadGame()
 			switch (GetTileType(t)) {
 				case MP_ROAD:
 					if (fix_roadtypes) SetRoadTypes(t, (RoadTypes)GB(_me[t].m7, 5, 3));
-					SB(_me[t].m7, 5, 1, GB(_m[t].m3, 7, 1)); //snow/desert
+					SB(_me[t].m7, 5, 1, GB(_m[t].m3, 7, 1)); // snow/desert
 					switch (GetRoadTileType(t)) {
 						default: NOT_REACHED();
 						case ROAD_TILE_NORMAL:
@@ -1009,7 +1009,7 @@ bool AfterLoadGame()
 					}
 					break;
 
-				case MP_STATION: /* Clear PBS reservation on station */
+				case MP_STATION: // Clear PBS reservation on station
 					ClrBit(_m[t].m3, 6);
 					break;
 
@@ -1182,7 +1182,7 @@ bool AfterLoadGame()
 						 SetIndustryAnimationState(t, _m[t].m1);
 						 break;
 
-					default: /* No animation states to change */
+					default: // No animation states to change
 						break;
 				}
 			}
@@ -1649,15 +1649,15 @@ bool AfterLoadGame()
 					}
 					break;
 
-				case MP_ROAD: /* Clear PBS reservation on crossing */
+				case MP_ROAD: // Clear PBS reservation on crossing
 					if (IsLevelCrossing(t)) SetCrossingReservation(t, false);
 					break;
 
-				case MP_STATION: /* Clear PBS reservation on station */
+				case MP_STATION: // Clear PBS reservation on station
 					if (IsRailwayStation(t)) SetRailwayStationReservation(t, false);
 					break;
 
-				case MP_TUNNELBRIDGE: /* Clear PBS reservation on tunnels/birdges */
+				case MP_TUNNELBRIDGE: // Clear PBS reservation on tunnels/birdges
 					if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) SetTunnelBridgeReservation(t, false);
 					break;
 

@@ -1720,11 +1720,11 @@ enum {
 
 static const byte _numof_industry_table[NB_DIFFICULTY_LEVEL][NB_NUMOFINDUSTRY] = {
 	/* difficulty settings for number of industries */
-	{0, 0, 0, 0, 0, 0, 0, 0,  0,  0,  0},   //none
-	{0, 1, 1, 1, 1, 1, 1, 1,  1,  1,  1},   //very low
-	{0, 1, 1, 1, 2, 2, 3, 3,  4,  4,  5},   //low
-	{0, 1, 2, 3, 4, 5, 6, 7,  8,  9, 10},   //normal
-	{0, 2, 3, 4, 6, 7, 8, 9, 10, 10, 10},   //high
+	{0, 0, 0, 0, 0, 0, 0, 0,  0,  0,  0},   // none
+	{0, 1, 1, 1, 1, 1, 1, 1,  1,  1,  1},   // very low
+	{0, 1, 1, 1, 2, 2, 3, 3,  4,  4,  5},   // low
+	{0, 1, 2, 3, 4, 5, 6, 7,  8,  9, 10},   // normal
+	{0, 2, 3, 4, 6, 7, 8, 9, 10, 10, 10},   // high
 };
 
 /** This function is the one who really do the creation work
@@ -1848,7 +1848,7 @@ struct ProbabilityHelper {
  */
 static void MaybeNewIndustry(void)
 {
-	Industry *ind;               //will receive the industry's creation pointer
+	Industry *ind;               // will receive the industry's creation pointer
 	IndustryType rndtype, j;     // Loop controlers
 	const IndustrySpec *ind_spc;
 	uint num = 0;
@@ -2377,18 +2377,18 @@ static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlag flags, u
 }
 
 extern const TileTypeProcs _tile_type_industry_procs = {
-	DrawTile_Industry,           /* draw_tile_proc */
-	GetSlopeZ_Industry,          /* get_slope_z_proc */
-	ClearTile_Industry,          /* clear_tile_proc */
-	GetAcceptedCargo_Industry,   /* get_accepted_cargo_proc */
-	GetTileDesc_Industry,        /* get_tile_desc_proc */
-	GetTileTrackStatus_Industry, /* get_tile_track_status_proc */
-	ClickTile_Industry,          /* click_tile_proc */
-	AnimateTile_Industry,        /* animate_tile_proc */
-	TileLoop_Industry,           /* tile_loop_proc */
-	ChangeTileOwner_Industry,    /* change_tile_owner_proc */
-	GetProducedCargo_Industry,   /* get_produced_cargo_proc */
-	NULL,                        /* vehicle_enter_tile_proc */
-	GetFoundation_Industry,      /* get_foundation_proc */
-	TerraformTile_Industry,      /* terraform_tile_proc */
+	DrawTile_Industry,           // draw_tile_proc
+	GetSlopeZ_Industry,          // get_slope_z_proc
+	ClearTile_Industry,          // clear_tile_proc
+	GetAcceptedCargo_Industry,   // get_accepted_cargo_proc
+	GetTileDesc_Industry,        // get_tile_desc_proc
+	GetTileTrackStatus_Industry, // get_tile_track_status_proc
+	ClickTile_Industry,          // click_tile_proc
+	AnimateTile_Industry,        // animate_tile_proc
+	TileLoop_Industry,           // tile_loop_proc
+	ChangeTileOwner_Industry,    // change_tile_owner_proc
+	GetProducedCargo_Industry,   // get_produced_cargo_proc
+	NULL,                        // vehicle_enter_tile_proc
+	GetFoundation_Industry,      // get_foundation_proc
+	TerraformTile_Industry,      // terraform_tile_proc
 };

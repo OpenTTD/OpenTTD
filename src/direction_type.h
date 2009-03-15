@@ -35,7 +35,7 @@ DECLARE_POSTFIX_INCREMENT(Direction);
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<Direction> : MakeEnumPropsT<Direction, byte, DIR_BEGIN, DIR_END, INVALID_DIR> {};
-typedef TinyEnumT<Direction> DirectionByte; //typedefing-enumification of Direction
+typedef TinyEnumT<Direction> DirectionByte; // typedefing-enumification of Direction
 
 
 /**
@@ -85,7 +85,7 @@ DECLARE_POSTFIX_INCREMENT(DiagDirection);
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<DiagDirection> : MakeEnumPropsT<DiagDirection, byte, DIAGDIR_BEGIN, DIAGDIR_END, INVALID_DIAGDIR> {};
-typedef TinyEnumT<DiagDirection> DiagDirectionByte; //typedefing-enumification of DiagDirection
+typedef TinyEnumT<DiagDirection> DiagDirectionByte; // typedefing-enumification of DiagDirection
 
 
 /**

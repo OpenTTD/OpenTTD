@@ -30,13 +30,13 @@ public:
 };
 
 /** ::strlen wrapper specialization for char */
-template <> /*static*/ inline size_t CStrApiBaseT<char>::StrLen(const char *s)
+template <> /* static */ inline size_t CStrApiBaseT<char>::StrLen(const char *s)
 {
 	return ::strlen(s);
 }
 
 /** ::vsprintf wrapper specialization for char */
-template <> /*static*/ inline int CStrApiBaseT<char>::SPrintFL(char *buf, size_t count, const char *fmt, va_list args)
+template <> /* static */ inline int CStrApiBaseT<char>::SPrintFL(char *buf, size_t count, const char *fmt, va_list args)
 {
 #if defined(_MSC_VER) && !defined(WINCE)
 	return ::vsnprintf_s(buf, count, count - 1, fmt, args);
@@ -47,13 +47,13 @@ template <> /*static*/ inline int CStrApiBaseT<char>::SPrintFL(char *buf, size_t
 
 #if defined(HAS_WCHAR)
 /** ::strlen wrapper specialization for wchar_t */
-template <> /*static*/ inline size_t CStrApiBaseT<wchar_t>::StrLen(const wchar_t *s)
+template <> /* static */ inline size_t CStrApiBaseT<wchar_t>::StrLen(const wchar_t *s)
 {
 	return ::wcslen(s);
 }
 
 /** ::vsprintf wrapper specialization for wchar_t */
-template <> /*static*/ inline int CStrApiBaseT<wchar_t>::SPrintFL(wchar_t *buf, size_t count, const wchar_t *fmt, va_list args)
+template <> /* static */ inline int CStrApiBaseT<wchar_t>::SPrintFL(wchar_t *buf, size_t count, const wchar_t *fmt, va_list args)
 {
 #if defined(_MSC_VER) && !defined(WINCE)
 	return ::_vsnwprintf_s(buf, count, count - 1, fmt, args);
@@ -76,23 +76,23 @@ public:
 	static int StrCmp(const Tchar *s1, const Tchar *s2);
 };
 
-template <> /*static*/ inline int CStrApiT<char, false>::StrCmp(const char *s1, const char *s2)
+template <> /* static */ inline int CStrApiT<char, false>::StrCmp(const char *s1, const char *s2)
 {
 	return ::strcmp(s1, s2);
 }
 
-template <> /*static*/ inline int CStrApiT<char, true>::StrCmp(const char *s1, const char *s2)
+template <> /* static */ inline int CStrApiT<char, true>::StrCmp(const char *s1, const char *s2)
 {
 	return ::_stricmp(s1, s2);
 }
 
 #if defined(HAS_WCHAR)
-template <> /*static*/ inline int CStrApiT<wchar_t, false>::StrCmp(const wchar_t *s1, const wchar_t *s2)
+template <> /* static */ inline int CStrApiT<wchar_t, false>::StrCmp(const wchar_t *s1, const wchar_t *s2)
 {
 	return ::wcscmp(s1, s2);
 }
 
-template <> /*static*/ inline int CStrApiT<wchar_t, true>::StrCmp(const wchar_t *s1, const wchar_t *s2)
+template <> /* static */ inline int CStrApiT<wchar_t, true>::StrCmp(const wchar_t *s1, const wchar_t *s2)
 {
 	return ::_wcsicmp(s1, s2);
 }

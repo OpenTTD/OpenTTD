@@ -255,7 +255,7 @@ struct GameOptionsWindow : Window {
 	virtual void OnDropdownSelect(int widget, int index)
 	{
 		switch (widget) {
-			case GAMEOPT_CURRENCY_BTN: /* Currency */
+			case GAMEOPT_CURRENCY_BTN: // Currency
 				if (index == CUSTOM_CURRENCY_ID) ShowCustCurrency();
 				this->opt->locale.currency = index;
 				MarkWholeScreenDirty();
@@ -485,7 +485,7 @@ public:
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case GDW_SETTING_BG: { /* Difficulty settings widget, decode click */
+			case GDW_SETTING_BG: { // Difficulty settings widget, decode click
 				/* Don't allow clients to make any changes */
 				if (_networking && !_network_server) return;
 
@@ -1625,7 +1625,7 @@ struct CustomCurrencyWindow : Window {
 				_custom_currency.rate = Clamp(atoi(str), 1, UINT16_MAX);
 				break;
 
-			case CUSTCURR_SEPARATOR: /* Thousands seperator */
+			case CUSTCURR_SEPARATOR: // Thousands seperator
 				_custom_currency.separator = StrEmpty(str) ? ' ' : str[0];
 				strecpy(this->separator, str, lastof(this->separator));
 				break;
@@ -1638,7 +1638,7 @@ struct CustomCurrencyWindow : Window {
 				strecpy(_custom_currency.suffix, str, lastof(_custom_currency.suffix));
 				break;
 
-			case CUSTCURR_TO_EURO: { /* Year to switch to euro */
+			case CUSTCURR_TO_EURO: { // Year to switch to euro
 				int val = atoi(str);
 
 				_custom_currency.to_euro = (val < 2000 ? CF_NOEURO : min(val, MAX_YEAR));

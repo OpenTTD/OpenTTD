@@ -1044,8 +1044,8 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 	switch (trigger) {
 		case VEHICLE_TRIGGER_NEW_CARGO:
 			/* All vehicles in chain get ANY_NEW_CARGO trigger now.
-			 * So we call it for the first one and they will recurse. */
-			/* Indexing part of vehicle random bits needs to be
+			 * So we call it for the first one and they will recurse.
+			 * Indexing part of vehicle random bits needs to be
 			 * same for all triggered vehicles in the chain (to get
 			 * all the random-cargo wagons carry the same cargo,
 			 * i.e.), so we give them all the NEW_CARGO triggered

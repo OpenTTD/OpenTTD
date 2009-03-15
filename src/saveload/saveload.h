@@ -178,7 +178,7 @@ enum SaveLoadTypes {
 	SL_ARR         =  2,
 	SL_STR         =  3,
 	SL_LST         =  4,
-	// non-normal save-load types
+	/* non-normal save-load types */
 	SL_WRITEBYTE   =  8,
 	SL_VEH_INCLUDE =  9,
 	SL_END         = 15

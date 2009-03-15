@@ -50,7 +50,7 @@ bool NetworkUDPSocketHandler::Listen(const uint32 host, const uint16 port, const
 	if (broadcast) {
 		/* Enable broadcast */
 		unsigned long val = 1;
-#ifndef BEOS_NET_SERVER // will work around this, some day; maybe.
+#ifndef BEOS_NET_SERVER /* will work around this, some day; maybe. */
 		setsockopt(this->sock, SOL_SOCKET, SO_BROADCAST, (char *) &val , sizeof(val));
 #endif
 	}
@@ -233,7 +233,7 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 				*dst = c;
 				dst = &c->next;
 			}
-		} /* Fallthrough */
+		} // Fallthrough
 		case 3:
 			info->game_date      = Clamp(p->Recv_uint32(), 0, MAX_DATE);
 			info->start_date     = Clamp(p->Recv_uint32(), 0, MAX_DATE);

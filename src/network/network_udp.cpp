@@ -69,7 +69,7 @@ public:
 
 DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
 {
-	// Just a fail-safe.. should never happen
+	/* Just a fail-safe.. should never happen */
 	if (!_network_udp_server) {
 		return;
 	}
@@ -101,7 +101,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
 	Packet packet(PACKET_UDP_SERVER_RESPONSE);
 	this->Send_NetworkGameInfo(&packet, &ngi);
 
-	// Let the client know that we are here
+	/* Let the client know that we are here */
 	this->SendPacket(&packet, client_addr);
 
 	DEBUG(net, 2, "[udp] queried from '%s'", inet_ntoa(client_addr->sin_addr));
@@ -109,7 +109,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
 
 DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 {
-	// Just a fail-safe.. should never happen
+	/* Just a fail-safe.. should never happen */
 	if (!_network_udp_server) return;
 
 	Packet packet(PACKET_UDP_SERVER_DETAIL_INFO);
@@ -214,12 +214,12 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 {
 	NetworkGameList *item;
 
-	// Just a fail-safe.. should never happen
+	/* Just a fail-safe.. should never happen */
 	if (_network_udp_server) return;
 
 	DEBUG(net, 4, "[udp] server response from %s:%d", inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
 
-	// Find next item
+	/* Find next item */
 	item = NetworkGameListAddItem(inet_addr(inet_ntoa(client_addr->sin_addr)), ntohs(client_addr->sin_port));
 
 	this->Recv_NetworkGameInfo(p, &item->info);
@@ -347,7 +347,7 @@ void ClientNetworkUDPSocketHandler::HandleIncomingNetworkGameInfoGRFConfig(GRFCo
 	SetBit(config->flags, GCF_COPY);
 }
 
-// Close UDP connection
+/* Close UDP connection */
 void NetworkUDPCloseAll()
 {
 	DEBUG(net, 1, "[udp] closed listeners");
@@ -362,7 +362,7 @@ void NetworkUDPCloseAll()
 	_network_udp_broadcast = 0;
 }
 
-// Broadcast to all ips
+/* Broadcast to all ips */
 static void NetworkUDPBroadCast(NetworkUDPSocketHandler *socket)
 {
 	uint i;
@@ -382,7 +382,7 @@ static void NetworkUDPBroadCast(NetworkUDPSocketHandler *socket)
 }
 
 
-// Request the the server-list from the master server
+/* Request the the server-list from the master server */
 void NetworkUDPQueryMasterServer()
 {
 	struct sockaddr_in out_addr;
@@ -397,7 +397,7 @@ void NetworkUDPQueryMasterServer()
 	out_addr.sin_port = htons(NETWORK_MASTER_SERVER_PORT);
 	out_addr.sin_addr.s_addr = NetworkResolveHost(NETWORK_MASTER_SERVER_HOST);
 
-	// packet only contains protocol version
+	/* packet only contains protocol version */
 	p.Send_uint8(NETWORK_MASTER_SERVER_VERSION);
 
 	_udp_client_socket->SendPacket(&p, &out_addr);
@@ -405,13 +405,13 @@ void NetworkUDPQueryMasterServer()
 	DEBUG(net, 2, "[udp] master server queried at %s:%d", inet_ntoa(out_addr.sin_addr), ntohs(out_addr.sin_port));
 }
 
-// Find all servers
+/* Find all servers */
 void NetworkUDPSearchGame()
 {
-	// We are still searching..
+	/* We are still searching.. */
 	if (_network_udp_broadcast > 0) return;
 
-	// No UDP-socket yet..
+	/* No UDP-socket yet.. */
 	if (!_udp_client_socket->IsConnected()) {
 		if (!_udp_client_socket->Listen(0, 0, true)) return;
 	}
@@ -465,7 +465,7 @@ void NetworkUDPQueryServerThread(void *pntr)
 
 void NetworkUDPQueryServer(NetworkAddress address, bool manually)
 {
-	// No UDP-socket yet..
+	/* No UDP-socket yet.. */
 	if (!_udp_client_socket->IsConnected()) {
 		if (!_udp_client_socket->Listen(0, 0, true)) return;
 	}

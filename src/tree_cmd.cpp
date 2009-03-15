@@ -333,7 +333,7 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	/* Check the tree type. It can be random or some valid value within the current climate */
 	if (p1 != UINT_MAX && p1 - _tree_base_by_landscape[_settings_game.game_creation.landscape] >= _tree_count_by_landscape[_settings_game.game_creation.landscape]) return CMD_ERROR;
 
-	// make sure sx,sy are smaller than ex,ey
+	/* make sure sx,sy are smaller than ex, ey */
 	ex = TileX(tile);
 	ey = TileY(tile);
 	sx = TileX(p2);
@@ -650,18 +650,18 @@ static void TileLoop_Trees(TileIndex tile)
 	SetTreeCounter(tile, 0);
 
 	switch (GetTreeGrowth(tile)) {
-		case 3: /* regular sized tree */
+		case 3: // regular sized tree
 			if (_settings_game.game_creation.landscape == LT_TROPIC &&
 					GetTreeType(tile) != TREE_CACTUS &&
 					GetTropicZone(tile) == TROPICZONE_DESERT) {
 				AddTreeGrowth(tile, 1);
 			} else {
 				switch (GB(Random(), 0, 3)) {
-					case 0: /* start destructing */
+					case 0: // start destructing
 						AddTreeGrowth(tile, 1);
 						break;
 
-					case 1: /* add a tree */
+					case 1: // add a tree
 						if (GetTreeCount(tile) < 4) {
 							AddTreeCount(tile, 1);
 							SetTreeGrowth(tile, 0);
@@ -669,7 +669,7 @@ static void TileLoop_Trees(TileIndex tile)
 						}
 						/* FALL THROUGH */
 
-					case 2: { /* add a neighbouring tree */
+					case 2: { // add a neighbouring tree
 						TreeType treetype = GetTreeType(tile);
 
 						tile += TileOffsByDir((Direction)(Random() & 7));
@@ -691,7 +691,7 @@ static void TileLoop_Trees(TileIndex tile)
 			}
 			break;
 
-		case 6: /* final stage of tree destruction */
+		case 6: // final stage of tree destruction
 			if (GetTreeCount(tile) > 1) {
 				/* more than one tree, delete it */
 				AddTreeCount(tile, -1);
@@ -770,18 +770,18 @@ static CommandCost TerraformTile_Trees(TileIndex tile, DoCommandFlag flags, uint
 
 
 extern const TileTypeProcs _tile_type_trees_procs = {
-	DrawTile_Trees,           /* draw_tile_proc */
-	GetSlopeZ_Trees,          /* get_slope_z_proc */
-	ClearTile_Trees,          /* clear_tile_proc */
-	GetAcceptedCargo_Trees,   /* get_accepted_cargo_proc */
-	GetTileDesc_Trees,        /* get_tile_desc_proc */
-	GetTileTrackStatus_Trees, /* get_tile_track_status_proc */
-	ClickTile_Trees,          /* click_tile_proc */
-	AnimateTile_Trees,        /* animate_tile_proc */
-	TileLoop_Trees,           /* tile_loop_clear */
-	ChangeTileOwner_Trees,    /* change_tile_owner_clear */
-	NULL,                     /* get_produced_cargo_proc */
-	NULL,                     /* vehicle_enter_tile_proc */
-	GetFoundation_Trees,      /* get_foundation_proc */
-	TerraformTile_Trees,      /* terraform_tile_proc */
+	DrawTile_Trees,           // draw_tile_proc
+	GetSlopeZ_Trees,          // get_slope_z_proc
+	ClearTile_Trees,          // clear_tile_proc
+	GetAcceptedCargo_Trees,   // get_accepted_cargo_proc
+	GetTileDesc_Trees,        // get_tile_desc_proc
+	GetTileTrackStatus_Trees, // get_tile_track_status_proc
+	ClickTile_Trees,          // click_tile_proc
+	AnimateTile_Trees,        // animate_tile_proc
+	TileLoop_Trees,           // tile_loop_clear
+	ChangeTileOwner_Trees,    // change_tile_owner_clear
+	NULL,                     // get_produced_cargo_proc
+	NULL,                     // vehicle_enter_tile_proc
+	GetFoundation_Trees,      // get_foundation_proc
+	TerraformTile_Trees,      // terraform_tile_proc
 };

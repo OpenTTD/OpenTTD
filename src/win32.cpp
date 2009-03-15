@@ -15,7 +15,7 @@
 #include <winnt.h>
 #include <wininet.h>
 #include <fcntl.h>
-#include <shlobj.h> // SHGetFolderPath
+#include <shlobj.h> /* SHGetFolderPath */
 #include "variables.h"
 #include "win32.h"
 #include "core/alloc_func.hpp"
@@ -396,9 +396,9 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 		} return TRUE;
 		case WM_COMMAND:
 			switch (wParam) {
-				case 12: /* Close */
+				case 12: // Close
 					ExitProcess(0);
-				case 13: /* Emergency save */
+				case 13: // Emergency save
 					if (DoEmergencySave(wnd)) {
 						MessageBox(wnd, _save_succeeded, _T("Save successful"), MB_ICONINFORMATION);
 					} else {
@@ -407,7 +407,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 					break;
 /* Disable the crash-save submit code as it's not used */
 #if 0
-				case 14: { /* Submit crash report */
+				case 14: { // Submit crash report
 					const TCHAR *s;
 
 					SetCursor(LoadCursor(NULL, IDC_WAIT));
@@ -418,10 +418,10 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 						break;
 					}
 
-					// try to submit emergency savegame
+					/* try to submit emergency savegame */
 					if (_did_emerg_save || DoEmergencySave(wnd)) SubmitFile(wnd, _T("crash.sav"));
 
-					// try to submit the autosaved game
+					/* try to submit the autosaved game */
 					if (_opt.autosave) {
 						TCHAR buf[40];
 						_sntprintf(buf, lengthof(buf), _T("autosave%d.sav"), (_autosave_ctr - 1) & 3);
@@ -432,7 +432,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 					MessageBox(wnd, _T("Crash report submitted. Thank you."), _T("Crash Report"), MB_ICONINFORMATION);
 				} break;
 #endif /* Disabled crash-submit procedures */
-				case 15: /* Expand window to show crash-message */
+				case 15: // Expand window to show crash-message
 					_expanded ^= 1;
 					SetWndSize(wnd, _expanded);
 					break;
@@ -584,7 +584,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		for (j = 0; j != 24; j++) {
 			for (i = 0; i != 8; i++) {
 				if (IsBadReadPtr(b, sizeof(uint32))) {
-					output += seprintf(output, last, " ????????"); //OCR: WAS - , 0);
+					output += seprintf(output, last, " ????????"); // OCR: WAS - , 0);
 				} else {
 					output += seprintf(output, last, " %.8X", *b);
 				}
@@ -1330,7 +1330,7 @@ HRESULT OTTDSHGetFolderPath(HWND hwnd, int csidl, HANDLE hToken, DWORD dwFlags, 
 	{
 		DWORD ret;
 		switch (csidl) {
-			case CSIDL_FONTS: /* Get the system font path, eg %WINDIR%\Fonts */
+			case CSIDL_FONTS: // Get the system font path, eg %WINDIR%\Fonts
 				ret = GetEnvironmentVariable(_T("WINDIR"), pszPath, MAX_PATH);
 				if (ret == 0) break;
 				_tcsncat(pszPath, _T("\\Fonts"), MAX_PATH);

@@ -121,8 +121,8 @@ void ShowNetworkGiveMoneyWindow(CompanyID company)
 #endif /* ENABLE_NETWORK */
 
 
-/* Zooms a viewport in a window in or out */
-/* No button handling or what so ever */
+/* Zooms a viewport in a window in or out
+ * No button handling or what so ever */
 bool DoZoomInOutWindow(int how, Window *w)
 {
 	ViewPort *vp;

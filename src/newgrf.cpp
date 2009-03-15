@@ -1217,7 +1217,6 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, byte
 
 					if (length == 0 || number == 0) break;
 
-					//debug("l %d > %d ?", length, stat->lengths);
 					if (length > statspec->lengths) {
 						statspec->platforms = ReallocT(statspec->platforms, length);
 						memset(statspec->platforms + statspec->lengths, 0, length - statspec->lengths);
@@ -1230,7 +1229,6 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, byte
 					}
 					l = length - 1; // index is zero-based
 
-					//debug("p %d > %d ?", number, stat->platforms[l]);
 					if (number > statspec->platforms[l]) {
 						statspec->layouts[l] = ReallocT(statspec->layouts[l], number);
 						/* We expect NULL being 0 here, but C99 guarantees that. */
@@ -1895,7 +1893,7 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, byte **
 		CargoSpec *cs = &_cargo[cid + i];
 
 		switch (prop) {
-			case 0x08: /* Bit number of cargo */
+			case 0x08: // Bit number of cargo
 				cs->bitnum = grf_load_byte(&buf);
 				if (cs->IsValid()) {
 					cs->grffile = _cur_grffile;
@@ -1905,12 +1903,12 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, byte **
 				}
 				break;
 
-			case 0x09: /* String ID for cargo type name */
+			case 0x09: // String ID for cargo type name
 				cs->name = grf_load_word(&buf);
 				_string_to_grf_mapping[&cs->name] = _cur_grffile->grfid;
 				break;
 
-			case 0x0A: /* String for 1 unit of cargo */
+			case 0x0A: // String for 1 unit of cargo
 				cs->name_single = grf_load_word(&buf);
 				_string_to_grf_mapping[&cs->name_single] = _cur_grffile->grfid;
 				break;
@@ -1922,58 +1920,58 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, byte **
 				_string_to_grf_mapping[&cs->units_volume] = _cur_grffile->grfid;
 				break;
 
-			case 0x0C: /* String for quantity of cargo (e.g. 10 tonnes of coal) */
+			case 0x0C: // String for quantity of cargo (e.g. 10 tonnes of coal)
 				cs->quantifier = grf_load_word(&buf);
 				_string_to_grf_mapping[&cs->quantifier] = _cur_grffile->grfid;
 				break;
 
-			case 0x0D: /* String for two letter cargo abbreviation */
+			case 0x0D: // String for two letter cargo abbreviation
 				cs->abbrev = grf_load_word(&buf);
 				_string_to_grf_mapping[&cs->abbrev] = _cur_grffile->grfid;
 				break;
 
-			case 0x0E: /* Sprite ID for cargo icon */
+			case 0x0E: // Sprite ID for cargo icon
 				cs->sprite = grf_load_word(&buf);
 				break;
 
-			case 0x0F: /* Weight of one unit of cargo */
+			case 0x0F: // Weight of one unit of cargo
 				cs->weight = grf_load_byte(&buf);
 				break;
 
-			case 0x10: /* Used for payment calculation */
+			case 0x10: // Used for payment calculation
 				cs->transit_days[0] = grf_load_byte(&buf);
 				break;
 
-			case 0x11: /* Used for payment calculation */
+			case 0x11: // Used for payment calculation
 				cs->transit_days[1] = grf_load_byte(&buf);
 				break;
 
-			case 0x12: /* Base cargo price */
+			case 0x12: // Base cargo price
 				cs->initial_payment = grf_load_dword(&buf);
 				break;
 
-			case 0x13: /* Colour for station rating bars */
+			case 0x13: // Colour for station rating bars
 				cs->rating_colour = MapDOSColour(grf_load_byte(&buf));
 				break;
 
-			case 0x14: /* Colour for cargo graph */
+			case 0x14: // Colour for cargo graph
 				cs->legend_colour = MapDOSColour(grf_load_byte(&buf));
 				break;
 
-			case 0x15: /* Freight status */
+			case 0x15: // Freight status
 				cs->is_freight = (grf_load_byte(&buf) != 0);
 				break;
 
-			case 0x16: /* Cargo classes */
+			case 0x16: // Cargo classes
 				cs->classes = grf_load_word(&buf);
 				break;
 
-			case 0x17: /* Cargo label */
+			case 0x17: // Cargo label
 				cs->label = grf_load_dword(&buf);
 				cs->label = BSWAP32(cs->label);
 				break;
 
-			case 0x18: { /* Town growth substitute type */
+			case 0x18: { // Town growth substitute type
 				uint8 substitute_type = grf_load_byte(&buf);
 
 				switch (substitute_type) {
@@ -1988,11 +1986,11 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, byte **
 				}
 			} break;
 
-			case 0x19: /* Town growth coefficient */
+			case 0x19: // Town growth coefficient
 				cs->multipliertowngrowth = grf_load_word(&buf);
 				break;
 
-			case 0x1A: /* Bitmask of callbacks to use */
+			case 0x1A: // Bitmask of callbacks to use
 				cs->callback_mask = grf_load_byte(&buf);
 				break;
 
@@ -2253,8 +2251,8 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 
 						if (itt[k].ti.x == 0xFE && k == 0) {
 							/* This means we have to borrow the layout from an old industry */
-							IndustryType type = grf_load_byte(&buf);  //industry holding required layout
-							byte laynbr = grf_load_byte(&buf);        //layout number to borrow
+							IndustryType type = grf_load_byte(&buf);  // industry holding required layout
+							byte laynbr = grf_load_byte(&buf);        // layout number to borrow
 
 							copy_from = (IndustryTileTable*)_origin_industry_specs[type].table[laynbr];
 							for (size = 1;; size++) {
@@ -2486,7 +2484,7 @@ static void FeatureChangeInfo(byte *buf, size_t len)
 		/* GSF_GLOBALVAR */    GlobalVarChangeInfo,
 		/* GSF_INDUSTRYTILES */IndustrytilesChangeInfo,
 		/* GSF_INDUSTRIES */   IndustriesChangeInfo,
-		/* GSF_CARGOS */       NULL, /* Cargo is handled during reservation */
+		/* GSF_CARGOS */       NULL, // Cargo is handled during reservation
 		/* GSF_SOUNDFX */      SoundEffectChangeInfo,
 	};
 
@@ -4000,8 +3998,8 @@ static void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig *c)
 	ClearTemporaryNewGRFData(GetFileByGRFID(c->grfid));
 }
 
-/* Action 0x07 */
-/* Action 0x09 */
+/* Action 0x07
+ * Action 0x09 */
 static void SkipIf(byte *buf, size_t len)
 {
 	/* <07/09> <param-num> <param-size> <condition-type> <value> <num-sprites>
@@ -4629,7 +4627,7 @@ static void ParamSet(byte *buf, size_t len)
 								src1 = PerformGRM(&_grm_engines[_engine_offsets[feature]], _engine_counts[feature], count, op, target, "vehicles");
 								if (_skip_sprites == -1) return;
 							} else {
-								// GRM does not apply for dynamic engine allocation.
+								/* GRM does not apply for dynamic engine allocation. */
 								switch (op) {
 									case 2:
 									case 3:
@@ -5913,8 +5911,8 @@ static void FinaliseIndustriesArray()
 
 /* Here we perform initial decoding of some special sprites (as are they
  * described at http://www.ttdpatch.net/src/newgrf.txt, but this is only a very
- * partial implementation yet). */
-/* XXX: We consider GRF files trusted. It would be trivial to exploit OTTD by
+ * partial implementation yet).
+ * XXX: We consider GRF files trusted. It would be trivial to exploit OTTD by
  * a crafted invalid GRF file. We should tell that to the user somehow, or
  * better make this more robust in the future. */
 static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
@@ -5927,8 +5925,8 @@ static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
 	 * overwritten after action 3 associates them. But overwriting happens
 	 * in an earlier stage than associating, so...  We just process actions
 	 * 1 and 2 in stage 2 now, let's hope that won't get us into problems.
-	 * --pasky */
-	/* We need a pre-stage to set up GOTO labels of Action 0x10 because the grf
+	 * --pasky
+	 * We need a pre-stage to set up GOTO labels of Action 0x10 because the grf
 	 * is not in memory and scanning the file every time would be too expensive.
 	 * In other stages we skip action 0x10 since it's already dealt with. */
 	static const SpecialSpriteHandler handlers[][GLS_END] = {

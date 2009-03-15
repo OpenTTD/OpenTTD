@@ -353,7 +353,7 @@ public:
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case TVW_CENTERVIEW: /* scroll to location */
+			case TVW_CENTERVIEW: // scroll to location
 				if (_ctrl_pressed) {
 					ShowExtraViewPortWindow(this->town->xy);
 				} else {
@@ -361,20 +361,20 @@ public:
 				}
 				break;
 
-			case TVW_SHOWAUTORITY: /* town authority */
+			case TVW_SHOWAUTORITY: // town authority
 				ShowTownAuthorityWindow(this->window_number);
 				break;
 
-			case TVW_CHANGENAME: /* rename */
+			case TVW_CHANGENAME: // rename
 				SetDParam(0, this->window_number);
 				ShowQueryString(STR_TOWN, STR_2007_RENAME_TOWN, MAX_LENGTH_TOWN_NAME_BYTES, MAX_LENGTH_TOWN_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
-			case TVW_EXPAND: /* expand town - only available on Scenario editor */
+			case TVW_EXPAND: // expand town - only available on Scenario editor
 				ExpandTown(this->town);
 				break;
 
-			case TVW_DELETE: /* delete town - only available on Scenario editor */
+			case TVW_DELETE: // delete town - only available on Scenario editor
 				delete this->town;
 				break;
 		}
@@ -581,7 +581,7 @@ public:
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case TDW_SORTNAME: /* Sort by Name ascending/descending */
+			case TDW_SORTNAME: // Sort by Name ascending/descending
 				if (this->towns.SortType() == 0) {
 					this->towns.ToggleSortOrder();
 				} else {
@@ -590,7 +590,7 @@ public:
 				this->SetDirty();
 				break;
 
-			case TDW_SORTPOPULATION: /* Sort by Population ascending/descending */
+			case TDW_SORTPOPULATION: // Sort by Population ascending/descending
 				if (this->towns.SortType() == 1) {
 					this->towns.ToggleSortOrder();
 				} else {
@@ -599,7 +599,7 @@ public:
 				this->SetDirty();
 				break;
 
-			case TDW_CENTERTOWN: { /* Click on Town Matrix */
+			case TDW_CENTERTOWN: { // Click on Town Matrix
 				uint16 id_v = (pt.y - 28) / 10;
 
 				if (id_v >= this->vscroll.cap) return; // click out of bounds

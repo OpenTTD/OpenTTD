@@ -7,4 +7,4 @@
 
 void AllocateToolbar();
 
-#endif /*TOOLBAR_GUI_H*/
+#endif /* TOOLBAR_GUI_H */

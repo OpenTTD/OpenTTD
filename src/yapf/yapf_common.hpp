@@ -18,21 +18,21 @@ protected:
 	TileIndex    m_orgTile;                       ///< origin tile
 	TrackdirBits m_orgTrackdirs;                  ///< origin trackdir mask
 
-	/// to access inherited path finder
+	/** to access inherited path finder */
 	FORCEINLINE Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
 	}
 
 public:
-	/// Set origin tile / trackdir mask
+	/** Set origin tile / trackdir mask */
 	void SetOrigin(TileIndex tile, TrackdirBits trackdirs)
 	{
 		m_orgTile = tile;
 		m_orgTrackdirs = trackdirs;
 	}
 
-	/// Called when YAPF needs to place origin nodes into open list
+	/** Called when YAPF needs to place origin nodes into open list */
 	void PfSetStartupNodes()
 	{
 		bool is_choice = (KillFirstBit(m_orgTrackdirs) != TRACKDIR_BIT_NONE);
@@ -62,14 +62,14 @@ protected:
 	int         m_reverse_penalty;                ///< penalty to be added for using the reversed origin
 	bool        m_treat_first_red_two_way_signal_as_eol; ///< in some cases (leaving station) we need to handle first two-way signal differently
 
-	/// to access inherited path finder
+	/** to access inherited path finder */
 	FORCEINLINE Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
 	}
 
 public:
-	/// set origin (tiles, trackdirs, etc.)
+	/** set origin (tiles, trackdirs, etc.) */
 	void SetOrigin(TileIndex tile, Trackdir td, TileIndex tiler = INVALID_TILE, Trackdir tdr = INVALID_TRACKDIR, int reverse_penalty = 0, bool treat_first_red_two_way_signal_as_eol = true)
 	{
 		m_orgTile = tile;
@@ -80,7 +80,7 @@ public:
 		m_treat_first_red_two_way_signal_as_eol = treat_first_red_two_way_signal_as_eol;
 	}
 
-	/// Called when YAPF needs to place origin nodes into open list
+	/** Called when YAPF needs to place origin nodes into open list */
 	void PfSetStartupNodes()
 	{
 		if (m_orgTile != INVALID_TILE && m_orgTd != INVALID_TRACKDIR) {
@@ -96,7 +96,7 @@ public:
 		}
 	}
 
-	/// return true if first two-way signal should be treated as dead end
+	/** return true if first two-way signal should be treated as dead end */
 	FORCEINLINE bool TreatFirstRedTwoWaySignalAsEOL()
 	{
 		return Yapf().PfGetSettings().rail_firstred_twoway_eol && m_treat_first_red_two_way_signal_as_eol;
@@ -117,7 +117,7 @@ protected:
 	TrackdirBits m_destTrackdirs;                 ///< destination trackdir mask
 
 public:
-	/// set the destination tile / more trackdirs
+	/** set the destination tile / more trackdirs */
 	void SetDestination(TileIndex tile, TrackdirBits trackdirs)
 	{
 		m_destTile = tile;
@@ -125,14 +125,14 @@ public:
 	}
 
 protected:
-	/// to access inherited path finder
+	/** to access inherited path finder */
 	Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
 	}
 
 public:
-	/// Called by YAPF to detect if node ends in the desired destination
+	/** Called by YAPF to detect if node ends in the desired destination */
 	FORCEINLINE bool PfDetectDestination(Node& n)
 	{
 		bool bDest = (n.m_key.m_tile == m_destTile) && ((m_destTrackdirs & TrackdirToTrackdirBits(n.GetTrackdir())) != TRACKDIR_BIT_NONE);

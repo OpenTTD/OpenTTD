@@ -563,7 +563,7 @@ CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  */
 CommandCost CmdChangeServiceInt(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	uint16 serv_int = GetServiceIntervalClamped(p2); /* Double check the service interval from the user-input */
+	uint16 serv_int = GetServiceIntervalClamped(p2); // Double check the service interval from the user-input
 
 	if (serv_int != p2 || !IsValidVehicleID(p1)) return CMD_ERROR;
 
