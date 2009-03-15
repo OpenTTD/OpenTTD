@@ -65,6 +65,8 @@ Please include the following information in your bug report:
           version without the bug and the first version including
           the bug. That way we can fix it quicker by looking at the
           changes made.
+        - Attach crash.dmp, crash.log and crash.sav from the data
+          directory if they exist.
 
 2.2) Reporting Desyncs:
 ---- ------------------
@@ -251,9 +253,11 @@ features known from TTDPatch (http://www.ttdpatch.net/).
 
 Several important non-standard controls:
 
-* Use Ctrl to place semaphore signals
+* Ctrl makes much commands more powerful. For example Ctrl clicking on signals
+  with the build signal tool on signals changes their behaviour.
 * Ingame console. More information at
   http://wiki.openttd.org/index.php/Console
+* Right clicking shows tooltips
 
 
 5.1) Logging of potentially dangerous actions:
@@ -291,6 +295,9 @@ OpenTTD in debug mode.
 The configuration file for OpenTTD (openttd.cfg) is in a simple Windows-like
 .INI format. It's mostly undocumented. Almost all settings can be changed
 ingame by using the 'Advanced Settings' window.
+When you can not find openttd.cfg you should look in the directories as
+described in section 4.2. If you do not have an openttd.cfg OpenTTD will
+create one after closing.
 
 
 7.0) Compiling:
