@@ -875,12 +875,10 @@ static void Disaster_Big_Ufo_Init()
 }
 
 
-/* Curious submarine #1, just floats around */
-static void Disaster_Small_Submarine_Init()
+static void Disaster_Submarine_Init(DisasterSubType subtype)
 {
 	if (!Vehicle::CanAllocateItem()) return;
 
-	Vehicle *v = new DisasterVehicle();
 	int y;
 	Direction dir;
 	uint32 r = Random();
@@ -893,31 +891,23 @@ static void Disaster_Small_Submarine_Init()
 		y = TILE_SIZE / 2;
 		dir = DIR_SE;
 	}
-	InitializeDisasterVehicle(v, x, y, 0, dir, ST_Small_Submarine);
+
+	Vehicle *v = new DisasterVehicle();
+	InitializeDisasterVehicle(v, x, y, 0, dir, subtype);
 	v->age = 0;
+}
+
+/* Curious submarine #1, just floats around */
+static void Disaster_Small_Submarine_Init()
+{
+	Disaster_Submarine_Init(ST_Small_Submarine);
 }
 
 
 /* Curious submarine #2, just floats around */
 static void Disaster_Big_Submarine_Init()
 {
-	if (!Vehicle::CanAllocateItem()) return;
-
-	Vehicle *v = new DisasterVehicle();
-	int y;
-	Direction dir;
-	uint32 r = Random();
-	int x = TileX(r) * TILE_SIZE + TILE_SIZE / 2;
-
-	if (HasBit(r, 31)) {
-		y = MapMaxX() * TILE_SIZE - TILE_SIZE / 2 - 1;
-		dir = DIR_NW;
-	} else {
-		y = TILE_SIZE / 2;
-		dir = DIR_SE;
-	}
-	InitializeDisasterVehicle(v, x, y, 0, dir, ST_Big_Submarine);
-	v->age = 0;
+	Disaster_Submarine_Init(ST_Big_Submarine);
 }
 
 
