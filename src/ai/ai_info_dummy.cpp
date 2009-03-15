@@ -31,7 +31,7 @@ class DummyAI extends AIController {                                            
   function Start() {                                                                            \n\
     AILog.Error(\"No suitable AI found to load.\");                                             \n\
     AILog.Error(\"This AI is a dummy AI and won't do anything.\");                              \n\
-    AILog.Error(\"Please add one or several AIs in your ai/ directory.\");                      \n\
+    AILog.Error(\"You can download several via the 'Online Content' system.\");                 \n\
   }                                                                                             \n\
 }                                                                                               \n\
 ");
