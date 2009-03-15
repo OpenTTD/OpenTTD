@@ -137,7 +137,7 @@ TileHighlightData _thd;
 static TileInfo *_cur_ti;
 bool _draw_bounding_boxes = false;
 
-static Point MapXYZToViewport(const ViewPort *vp, uint x, uint y, uint z)
+static Point MapXYZToViewport(const ViewPort *vp, int x, int y, int z)
 {
 	Point p = RemapCoords(x, y, z);
 	p.x -= vp->virtual_width / 2;
@@ -2065,10 +2065,12 @@ void PlaceObject()
 
 
 /* scrolls the viewport in a window to a given location */
-bool ScrollWindowTo(int x , int y, Window *w, bool instant)
+bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant)
 {
 	/* The slope cannot be acquired outside of the map, so make sure we are always within the map. */
-	Point pt = MapXYZToViewport(w->viewport, x, y, GetSlopeZ(Clamp(x, 0, MapSizeX() * TILE_SIZE - 1), Clamp(y, 0, MapSizeY() * TILE_SIZE - 1)));
+	if (z == -1) z = GetSlopeZ(Clamp(x, 0, MapSizeX() * TILE_SIZE - 1), Clamp(y, 0, MapSizeY() * TILE_SIZE - 1));
+
+	Point pt = MapXYZToViewport(w->viewport, x, y, z);
 	w->viewport->follow_vehicle = INVALID_VEHICLE;
 
 	if (w->viewport->dest_scrollpos_x == pt.x && w->viewport->dest_scrollpos_y == pt.y)
@@ -2086,7 +2088,7 @@ bool ScrollWindowTo(int x , int y, Window *w, bool instant)
 
 bool ScrollMainWindowToTile(TileIndex tile, bool instant)
 {
-	return ScrollMainWindowTo(TileX(tile) * TILE_SIZE + TILE_SIZE / 2, TileY(tile) * TILE_SIZE + TILE_SIZE / 2, instant);
+	return ScrollMainWindowTo(TileX(tile) * TILE_SIZE + TILE_SIZE / 2, TileY(tile) * TILE_SIZE + TILE_SIZE / 2, -1, instant);
 }
 
 void SetRedErrorSquare(TileIndex tile)

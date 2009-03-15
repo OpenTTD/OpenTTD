@@ -1957,7 +1957,7 @@ struct VehicleViewWindow : Window {
 				if (_ctrl_pressed && mainwindow->viewport->zoom == ZOOM_LVL_NORMAL) {
 					mainwindow->viewport->follow_vehicle = v->index;
 				} else {
-					ScrollMainWindowTo(v->x_pos, v->y_pos);
+					ScrollMainWindowTo(v->x_pos, v->y_pos, v->z_pos);
 				}
 			} break;
 
@@ -2037,7 +2037,7 @@ void StopGlobalFollowVehicle(const Vehicle *v)
 {
 	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 	if (w != NULL && w->viewport->follow_vehicle == v->index) {
-		ScrollMainWindowTo(v->x_pos, v->y_pos, true); // lock the main view on the vehicle's last position
+		ScrollMainWindowTo(v->x_pos, v->y_pos, v->z_pos, true); // lock the main view on the vehicle's last position
 		w->viewport->follow_vehicle = INVALID_VEHICLE;
 	}
 }

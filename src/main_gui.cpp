@@ -176,7 +176,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 
 		Point pt = GetTileZoomCenterWindow(in, w);
 		if (pt.x != -1) {
-			ScrollWindowTo(pt.x, pt.y, w, true);
+			ScrollWindowTo(pt.x, pt.y, -1, w, true);
 
 			DoZoomInOutWindow(in ? ZOOM_IN : ZOOM_OUT, w);
 		}

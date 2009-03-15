@@ -1214,9 +1214,17 @@ void ShowExtraViewPortWindow(TileIndex tile)
 	new ExtraViewportWindow(&_extra_view_port_desc, i, tile);
 }
 
-bool ScrollMainWindowTo(int x, int y, bool instant)
+/**
+ * Scrolls the main window to given coordinates.
+ * @param x x coordinate
+ * @param y y coordinate
+ * @param z z coordinate; -1 to scroll to terrain height
+ * @param instant scroll instantly (meaningful only when smooth_scrolling is active)
+ * @return did the viewport position change?
+ */
+bool ScrollMainWindowTo(int x, int y, int z, bool instant)
 {
-	bool res = ScrollWindowTo(x, y, FindWindowById(WC_MAIN_WINDOW, 0), instant);
+	bool res = ScrollWindowTo(x, y, z, FindWindowById(WC_MAIN_WINDOW, 0), instant);
 
 	/* If a user scrolls to a tile (via what way what so ever) and already is on
 	 *  that tile (e.g.: pressed twice), move the smallmap to that location,

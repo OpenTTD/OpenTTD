@@ -53,10 +53,10 @@ Vehicle *CheckMouseOverVehicle();
 
 void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom);
 
-bool ScrollWindowTo(int x, int y, Window *w, bool instant = false);
+bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant = false);
 
 bool ScrollMainWindowToTile(TileIndex tile, bool instant = false);
-bool ScrollMainWindowTo(int x, int y, bool instant = false);
+bool ScrollMainWindowTo(int x, int y, int z = -1, bool instant = false);
 
 extern Point _tile_fract_coords;
 
