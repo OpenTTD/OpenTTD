@@ -35,7 +35,8 @@ AILibrary::~AILibrary()
 
 /* static */ SQInteger AIFileInfo::Constructor(HSQUIRRELVM vm, AIFileInfo *info)
 {
-	ScriptFileInfo::Constructor(vm, info);
+	SQInteger res = ScriptFileInfo::Constructor(vm, info);
+	if (res != 0) return res;
 	info->base = ((AIScanner *)Squirrel::GetGlobalPointer(vm));
 
 	return 0;
