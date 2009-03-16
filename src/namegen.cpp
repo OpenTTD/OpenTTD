@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "namegen_func.h"
 #include "string_func.h"
+#include "core/alloc_func.hpp"
 
 #include "table/namegen.h"
 
@@ -156,7 +157,6 @@ static char *MakeEnglishAdditionalTownName(char *buf, const char *last, uint32 s
 	/* optional last segment */
 	i = SeedChanceBias(15, lengthof(_name_additional_english_3), seed, 60);
 	if (i >= 0) buf = strecpy(buf, _name_additional_english_3[i], last);
-
 
 	assert(buf - orig >= 4);
 	ReplaceEnglishWords(orig, false);
@@ -462,29 +462,29 @@ static char *MakePolishTownName(char *buf, const char *last, uint32 seed)
  */
 static char *MakeCzechTownName(char *buf, const char *last, uint32 seed)
 {
-	const char *orig = buf;
-
-	/* Probability of prefixes/suffixes
-	 * 0..11 prefix, 12..13 prefix+suffix, 14..17 suffix, 18..31 nothing */
-	int prob_tails;
-	bool do_prefix, do_suffix, dynamic_subst;
-	/* IDs of the respective parts */
-	int prefix = 0, ending = 0, suffix = 0;
-	uint postfix = 0;
-	uint stem;
-	/* The select criteria. */
-	CzechGender gender;
-	CzechChoose choose;
-	CzechAllow allow;
-
 	/* 1:3 chance to use a real name. */
 	if (SeedModChance(0, 4, seed) == 0) {
 		return strecpy(buf, _name_czech_real[SeedModChance(4, lengthof(_name_czech_real), seed)], last);
 	}
 
-	prob_tails = SeedModChance(2, 32, seed);
-	do_prefix = prob_tails < 12;
-	do_suffix = prob_tails > 11 && prob_tails < 17;
+	const char *orig = buf;
+
+	/* Probability of prefixes/suffixes
+	 * 0..11 prefix, 12..13 prefix+suffix, 14..17 suffix, 18..31 nothing */
+	int prob_tails = SeedModChance(2, 32, seed);
+	bool do_prefix = prob_tails < 12;
+	bool do_suffix = prob_tails > 11 && prob_tails < 17;
+	bool dynamic_subst;
+
+	/* IDs of the respective parts */
+	int prefix = 0, ending = 0, suffix = 0;
+	uint postfix = 0;
+	uint stem;
+
+	/* The select criteria. */
+	CzechGender gender;
+	CzechChoose choose;
+	CzechAllow allow;
 
 	if (do_prefix) prefix = SeedModChance(5, lengthof(_name_czech_adj) * 12, seed) / 12;
 	if (do_suffix) suffix = SeedModChance(7, lengthof(_name_czech_suffix), seed);
@@ -869,29 +869,35 @@ static char *MakeCatalanTownName(char *buf, const char *last, uint32 seed)
 
 typedef char *TownNameGenerator(char *buf, const char *last, uint32 seed);
 
+/** Contains pointer to generator and minimum buffer size (not incl. terminating '\0') */
+struct TownNameGeneratorParams {
+	byte min; ///< minimum number of characters that need to be printed for generator to work correctly
+	TownNameGenerator *proc; ///< generator itself
+};
+
 /** Town name generators */
-static TownNameGenerator * const _town_name_generators[] = {
-	MakeEnglishOriginalTownName,
-	MakeFrenchTownName,
-	MakeGermanTownName,
-	MakeEnglishAdditionalTownName,
-	MakeSpanishTownName,
-	MakeSillyTownName,
-	MakeSwedishTownName,
-	MakeDutchTownName,
-	MakeFinnishTownName,
-	MakePolishTownName,
-	MakeSlovakTownName,
-	MakeNorwegianTownName,
-	MakeHungarianTownName,
-	MakeAustrianTownName,
-	MakeRomanianTownName,
-	MakeCzechTownName,
-	MakeSwissTownName,
-	MakeDanishTownName,
-	MakeTurkishTownName,
-	MakeItalianTownName,
-	MakeCatalanTownName,
+static const TownNameGeneratorParams _town_name_generators[] = {
+	{  4, MakeEnglishOriginalTownName},  // replaces first 4 characters of name
+	{  0, MakeFrenchTownName},
+	{  0, MakeGermanTownName},
+	{  4, MakeEnglishAdditionalTownName}, // replaces first 4 characters of name
+	{  0, MakeSpanishTownName},
+	{  0, MakeSillyTownName},
+	{  0, MakeSwedishTownName},
+	{  0, MakeDutchTownName},
+	{  8, MakeFinnishTownName}, // _name_finnish_1
+	{  0, MakePolishTownName},
+	{  0, MakeSlovakTownName},
+	{  0, MakeNorwegianTownName},
+	{  0, MakeHungarianTownName},
+	{  0, MakeAustrianTownName},
+	{  0, MakeRomanianTownName},
+	{ 28, MakeCzechTownName}, // _name_czech_adj + _name_czech_patmod + 1 + _name_czech_subst_stem + _name_czech_subst_postfix
+	{  0, MakeSwissTownName},
+	{  0, MakeDanishTownName},
+	{  0, MakeTurkishTownName},
+	{  0, MakeItalianTownName},
+	{  0, MakeCatalanTownName},
 };
 
 
@@ -910,12 +916,14 @@ char *GenerateTownNameString(char *buf, const char *last, size_t lang, uint32 se
 	/* Some generators need at least 9 bytes in buffer.  English generators need 5 for
 	 * string replacing, others use constructions like strlen(buf)-3 and so on.
 	 * Finnish generator needs to fit all strings from _name_finnish_1.
+	 * Czech generator needs to fit almost whole town name...
 	 * These would break. Using another temporary buffer results in ~40% slower code,
 	 * so use it only when really needed. */
-	if (last - buf >= 9) return _town_name_generators[lang](buf, last, seed);
+	const TownNameGeneratorParams *par = &_town_name_generators[lang];
+	if (last >= buf + par->min) return par->proc(buf, last, seed);
 
-	char buffer[10]; // only at most 9 bytes will be needed anyway
-	_town_name_generators[lang](buffer, lastof(buffer), seed);
+	char *buffer = AllocaM(char, par->min + 1);
+	par->proc(buffer, buffer + par->min, seed);
 
 	return strecpy(buf, buffer, last);
 }
