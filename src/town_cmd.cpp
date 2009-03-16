@@ -1636,19 +1636,18 @@ bool GenerateTowns(TownLayout layout)
 	uint num = 0;
 	uint difficulty = _settings_game.difficulty.number_towns;
 	uint n = (difficulty == (uint)CUSTOM_TOWN_NUMBER_DIFFICULTY) ? _settings_game.game_creation.custom_town_number : ScaleByMapSize(_num_initial_towns[difficulty] + (Random() & 7));
-	uint num_cities = _settings_game.economy.larger_towns == 0 ? 0 : n / _settings_game.economy.larger_towns;
 
 	SetGeneratingWorldProgress(GWP_TOWN, n);
 
 	do {
+		bool city = (_settings_game.economy.larger_towns != 0 && Chance16(1, _settings_game.economy.larger_towns));
 		IncreaseGeneratingWorldProgress(GWP_TOWN);
 		/* try 20 times to create a random-sized town for the first loop. */
-		if (CreateRandomTown(20, TS_RANDOM, num_cities > 0, layout) != NULL) num++;
-		if (num_cities > 0) num_cities--;
+		if (CreateRandomTown(20, TS_RANDOM, city, layout) != NULL) num++;
 	} while (--n);
 
 	/* give it a last try, but now more aggressive */
-	if (num == 0 && CreateRandomTown(10000, TS_RANDOM, false, layout) == NULL) {
+	if (num == 0 && CreateRandomTown(10000, TS_RANDOM, _settings_game.economy.larger_towns != 0, layout) == NULL) {
 		if (GetNumTowns() == 0) {
 			if (_game_mode != GM_EDITOR) {
 				extern StringID _switch_mode_errorstr;
