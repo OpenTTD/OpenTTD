@@ -7,6 +7,7 @@
 
 #include "../../core/overflowsafe_type.hpp"
 #include "../../company_type.h"
+#include "../../script/fake_squirrel_types.hpp"
 
 /* Define all types here, so we don't have to include the whole _type.h maze */
 typedef uint BridgeType;     //!< Internal name, not of any use for you.
@@ -29,13 +30,5 @@ typedef uint16 WaypointID;   //!< The ID of a waypoint.
 typedef uint AIErrorType;    //!< The types of errors inside the NoAI framework.
 typedef BridgeType BridgeID; //!< The ID of a bridge.
 typedef uint16 SubsidyID;    //!< The ID of a subsidy.
-
-#ifndef _SQUIRREL_H_
-/* Life becomes easier when we can tell about a function it needs the VM, but
- *  without really including 'squirrel.h'. */
-typedef struct SQVM *HSQUIRRELVM;  //!< Pointer to Squirrel Virtual Machine.
-typedef int SQInteger;             //!< Squirrel Integer.
-typedef struct SQObject HSQOBJECT; //!< Squirrel Object (fake declare)
-#endif
 
 #endif /* AI_TYPES_HPP */

@@ -518,6 +518,7 @@ table/unmovable_land.h
 table/water_land.h
 
 # Script
+script/fake_squirrel_types.hpp
 script/script_info.cpp
 script/script_info.hpp
 script/script_scanner.cpp
