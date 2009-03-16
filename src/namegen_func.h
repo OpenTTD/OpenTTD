@@ -2,11 +2,9 @@
 
 /** @file namegen_func.h Town name generator stuff. */
 
-#ifndef NAMEGEN_H
-#define NAMEGEN_H
+#ifndef NAMEGEN_FUNC_H
+#define NAMEGEN_FUNC_H
 
-typedef byte TownNameGenerator(char *buf, uint32 seed, const char *last);
+char *GenerateTownNameString(char *buf, const char *last, size_t lang, uint32 seed);
 
-extern TownNameGenerator * const _town_name_generators[];
-
-#endif /* NAMEGEN_H */
+#endif /* NAMEGEN_FUNC_H */

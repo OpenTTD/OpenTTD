@@ -8,12 +8,28 @@
 
 #include "table/namegen.h"
 
-static inline uint32 SeedChance(int shift_by, int max, uint32 seed)
+
+/**
+ * Generates a number from given seed.
+ * @param shift_by number of bits seed is shifted to the right
+ * @param max generated number is in interval 0...max-1
+ * @param seed seed
+ * @return seed transformed to a number from given range
+ */
+static inline uint32 SeedChance(byte shift_by, int max, uint32 seed)
 {
 	return (GB(seed, shift_by, 16) * max) >> 16;
 }
 
-static inline uint32 SeedModChance(int shift_by, int max, uint32 seed)
+
+/**
+ * Generates a number from given seed. Uses different algorithm than SeedChance().
+ * @param shift_by number of bits seed is shifted to the right
+ * @param max generated number is in interval 0...max-1
+ * @param seed seed
+ * @return seed transformed to a number from given range
+ */
+static inline uint32 SeedModChance(byte shift_by, int max, uint32 seed)
 {
 	/* This actually gives *MUCH* more even distribution of the values
 	 * than SeedChance(), which is absolutely horrible in that. If
@@ -27,340 +43,427 @@ static inline uint32 SeedModChance(int shift_by, int max, uint32 seed)
 	return (seed >> shift_by) % max;
 }
 
-static inline int32 SeedChanceBias(int shift_by, int max, uint32 seed, int bias)
+
+/**
+ * Generates a number from given seed.
+ * @param shift_by number of bits seed is shifted to the right
+ * @param max generated number is in interval -bias...max-1
+ * @param seed seed
+ * @param bias minimum value that can be returned
+ * @return seed transformed to a number from given range
+ */
+static inline int32 SeedChanceBias(byte shift_by, int max, uint32 seed, int bias)
 {
 	return SeedChance(shift_by, max + bias, seed) - bias;
 }
 
+
+/**
+ * Replaces a string beginning in 'org' with 'rep'.
+ * @param org string to replace, has to be 4 characters long
+ * @param rep string to be replaced with, has to be 4 characters long
+ * @param buf buffer with string
+ */
 static void ReplaceWords(const char *org, const char *rep, char *buf)
 {
 	if (strncmp(buf, org, 4) == 0) strncpy(buf, rep, 4); // Safe as the string in buf is always more than 4 characters long.
 }
 
-static byte MakeEnglishOriginalTownName(char *buf, uint32 seed, const char *last)
-{
-	int i;
 
-	/* null terminates the string for strcat */
-	strecpy(buf, "", last);
+/**
+ * Replaces english curses and ugly letter combinations by nicer ones.
+ * @param buf buffer with town name
+ * @param original English (Original) generator was used
+ */
+static void ReplaceEnglishWords(char *buf, bool original)
+{
+	ReplaceWords("Cunt", "East", buf);
+	ReplaceWords("Slag", "Pits", buf);
+	ReplaceWords("Slut", "Edin", buf);
+	if (!original) ReplaceWords("Fart", "Boot", buf); // never happens with 'English (Original)'
+	ReplaceWords("Drar", "Quar", buf);
+	ReplaceWords("Dreh", "Bash", buf);
+	ReplaceWords("Frar", "Shor", buf);
+	ReplaceWords("Grar", "Aber", buf);
+	ReplaceWords("Brar", "Over", buf);
+	ReplaceWords("Wrar", original ? "Inve" : "Stan", buf);
+}
+
+/**
+ * Generates English (Original) town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeEnglishOriginalTownName(char *buf, const char *last, uint32 seed)
+{
+	char *orig = buf;
 
 	/* optional first segment */
-	i = SeedChanceBias(0, lengthof(_name_original_english_1), seed, 50);
-	if (i >= 0)
-		strecat(buf, _name_original_english_1[i], last);
+	int i = SeedChanceBias(0, lengthof(_name_original_english_1), seed, 50);
+	if (i >= 0) buf = strecpy(buf, _name_original_english_1[i], last);
 
 	/* mandatory middle segments */
-	strecat(buf, _name_original_english_2[SeedChance(4,  lengthof(_name_original_english_2), seed)], last);
-	strecat(buf, _name_original_english_3[SeedChance(7,  lengthof(_name_original_english_3), seed)], last);
-	strecat(buf, _name_original_english_4[SeedChance(10, lengthof(_name_original_english_4), seed)], last);
-	strecat(buf, _name_original_english_5[SeedChance(13, lengthof(_name_original_english_5), seed)], last);
+	buf = strecpy(buf, _name_original_english_2[SeedChance(4,  lengthof(_name_original_english_2), seed)], last);
+	buf = strecpy(buf, _name_original_english_3[SeedChance(7,  lengthof(_name_original_english_3), seed)], last);
+	buf = strecpy(buf, _name_original_english_4[SeedChance(10, lengthof(_name_original_english_4), seed)], last);
+	buf = strecpy(buf, _name_original_english_5[SeedChance(13, lengthof(_name_original_english_5), seed)], last);
 
 	/* optional last segment */
 	i = SeedChanceBias(15, lengthof(_name_original_english_6), seed, 60);
-	if (i >= 0)
-		strecat(buf, _name_original_english_6[i], last);
+	if (i >= 0) buf = strecpy(buf, _name_original_english_6[i], last);
 
-	if (buf[0] == 'C' && (buf[1] == 'e' || buf[1] == 'i'))
-		buf[0] = 'K';
+	/* Ce, Ci => Ke, Ki */
+	if (orig[0] == 'C' && (orig[1] == 'e' || orig[1] == 'i')) {
+		orig[0] = 'K';
+	}
 
-	ReplaceWords("Cunt", "East", buf);
-	ReplaceWords("Slag", "Pits", buf);
-	ReplaceWords("Slut", "Edin", buf);
-	//ReplaceWords("Fart", "Boot", buf);
-	ReplaceWords("Drar", "Quar", buf);
-	ReplaceWords("Dreh", "Bash", buf);
-	ReplaceWords("Frar", "Shor", buf);
-	ReplaceWords("Grar", "Aber", buf);
-	ReplaceWords("Brar", "Over", buf);
-	ReplaceWords("Wrar", "Inve", buf);
+	assert(buf - orig >= 4);
+	ReplaceEnglishWords(orig, true);
 
-	return 0;
+	return buf;
 }
 
 
-static byte MakeEnglishAdditionalTownName(char *buf, uint32 seed, const char *last)
+/**
+ * Generates English (Additional) town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeEnglishAdditionalTownName(char *buf, const char *last, uint32 seed)
 {
-	int i;
-
-	/* null terminates the string for strcat */
-	strecpy(buf, "", last);
+	char *orig = buf;
 
 	/* optional first segment */
-	i = SeedChanceBias(0, lengthof(_name_additional_english_prefix), seed, 50);
-	if (i >= 0)
-		strecat(buf, _name_additional_english_prefix[i], last);
+	int i = SeedChanceBias(0, lengthof(_name_additional_english_prefix), seed, 50);
+	if (i >= 0) buf = strecpy(buf, _name_additional_english_prefix[i], last);
 
 	if (SeedChance(3, 20, seed) >= 14) {
-		strecat(buf, _name_additional_english_1a[SeedChance(6, lengthof(_name_additional_english_1a), seed)], last);
+		buf = strecpy(buf, _name_additional_english_1a[SeedChance(6, lengthof(_name_additional_english_1a), seed)], last);
 	} else {
-		strecat(buf, _name_additional_english_1b1[SeedChance(6, lengthof(_name_additional_english_1b1), seed)], last);
-		strecat(buf, _name_additional_english_1b2[SeedChance(9, lengthof(_name_additional_english_1b2), seed)], last);
+		buf = strecpy(buf, _name_additional_english_1b1[SeedChance(6, lengthof(_name_additional_english_1b1), seed)], last);
+		buf = strecpy(buf, _name_additional_english_1b2[SeedChance(9, lengthof(_name_additional_english_1b2), seed)], last);
 		if (SeedChance(11, 20, seed) >= 4) {
-			strecat(buf, _name_additional_english_1b3a[SeedChance(12, lengthof(_name_additional_english_1b3a), seed)], last);
+			buf = strecpy(buf, _name_additional_english_1b3a[SeedChance(12, lengthof(_name_additional_english_1b3a), seed)], last);
 		} else {
-			strecat(buf, _name_additional_english_1b3b[SeedChance(12, lengthof(_name_additional_english_1b3b), seed)], last);
+			buf = strecpy(buf, _name_additional_english_1b3b[SeedChance(12, lengthof(_name_additional_english_1b3b), seed)], last);
 		}
 	}
 
-	strecat(buf, _name_additional_english_2[SeedChance(14, lengthof(_name_additional_english_2), seed)], last);
+	buf = strecpy(buf, _name_additional_english_2[SeedChance(14, lengthof(_name_additional_english_2), seed)], last);
 
 	/* optional last segment */
 	i = SeedChanceBias(15, lengthof(_name_additional_english_3), seed, 60);
-	if (i >= 0)
-		strecat(buf, _name_additional_english_3[i], last);
+	if (i >= 0) buf = strecpy(buf, _name_additional_english_3[i], last);
 
-	ReplaceWords("Cunt", "East", buf);
-	ReplaceWords("Slag", "Pits", buf);
-	ReplaceWords("Slut", "Edin", buf);
-	ReplaceWords("Fart", "Boot", buf);
-	ReplaceWords("Drar", "Quar", buf);
-	ReplaceWords("Dreh", "Bash", buf);
-	ReplaceWords("Frar", "Shor", buf);
-	ReplaceWords("Grar", "Aber", buf);
-	ReplaceWords("Brar", "Over", buf);
-	ReplaceWords("Wrar", "Stan", buf);
 
-	return 0;
+	assert(buf - orig >= 4);
+	ReplaceEnglishWords(orig, false);
+
+	return buf;
 }
 
-static byte MakeAustrianTownName(char *buf, uint32 seed, const char *last)
-{
-	int i, j = 0;
-	strecpy(buf, "", last);
 
+/**
+ * Generates Austrian town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeAustrianTownName(char *buf, const char *last, uint32 seed)
+{
 	/* Bad, Maria, Gross, ... */
-	i = SeedChanceBias(0, lengthof(_name_austrian_a1), seed, 15);
-	if (i >= 0) strecat(buf, _name_austrian_a1[i], last);
+	int i = SeedChanceBias(0, lengthof(_name_austrian_a1), seed, 15);
+	if (i >= 0) buf = strecpy(buf, _name_austrian_a1[i], last);
+
+	int j = 0;
 
 	i = SeedChance(4, 6, seed);
 	if (i >= 4) {
 		/* Kaisers-kirchen */
-		strecat(buf, _name_austrian_a2[SeedChance( 7, lengthof(_name_austrian_a2), seed)], last);
-		strecat(buf, _name_austrian_a3[SeedChance(13, lengthof(_name_austrian_a3), seed)], last);
+		buf = strecpy(buf, _name_austrian_a2[SeedChance( 7, lengthof(_name_austrian_a2), seed)], last);
+		buf = strecpy(buf, _name_austrian_a3[SeedChance(13, lengthof(_name_austrian_a3), seed)], last);
 	} else if (i >= 2) {
 		/* St. Johann */
-		strecat(buf, _name_austrian_a5[SeedChance( 7, lengthof(_name_austrian_a5), seed)], last);
-		strecat(buf, _name_austrian_a6[SeedChance( 9, lengthof(_name_austrian_a6), seed)], last);
+		buf = strecpy(buf, _name_austrian_a5[SeedChance( 7, lengthof(_name_austrian_a5), seed)], last);
+		buf = strecpy(buf, _name_austrian_a6[SeedChance( 9, lengthof(_name_austrian_a6), seed)], last);
 		j = 1; // More likely to have a " an der " or " am "
 	} else {
 		/* Zell */
-		strecat(buf, _name_austrian_a4[SeedChance( 7, lengthof(_name_austrian_a4), seed)], last);
+		buf = strecpy(buf, _name_austrian_a4[SeedChance( 7, lengthof(_name_austrian_a4), seed)], last);
 	}
 
 	i = SeedChance(1, 6, seed);
 	if (i >= 4 - j) {
 		/* an der Donau (rivers) */
-		strecat(buf, _name_austrian_f1[SeedChance(4, lengthof(_name_austrian_f1), seed)], last);
-		strecat(buf, _name_austrian_f2[SeedChance(5, lengthof(_name_austrian_f2), seed)], last);
+		buf = strecpy(buf, _name_austrian_f1[SeedChance(4, lengthof(_name_austrian_f1), seed)], last);
+		buf = strecpy(buf, _name_austrian_f2[SeedChance(5, lengthof(_name_austrian_f2), seed)], last);
 	} else if (i >= 2 - j) {
 		/* am Dachstein (mountains) */
-		strecat(buf, _name_austrian_b1[SeedChance(4, lengthof(_name_austrian_b1), seed)], last);
-		strecat(buf, _name_austrian_b2[SeedChance(5, lengthof(_name_austrian_b2), seed)], last);
+		buf = strecpy(buf, _name_austrian_b1[SeedChance(4, lengthof(_name_austrian_b1), seed)], last);
+		buf = strecpy(buf, _name_austrian_b2[SeedChance(5, lengthof(_name_austrian_b2), seed)], last);
 	}
 
-	return 0;
+	return buf;
 }
 
-static byte MakeGermanTownName(char *buf, uint32 seed, const char *last)
+
+/**
+ * Generates German town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeGermanTownName(char *buf, const char *last, uint32 seed)
 {
-	uint i;
-	uint seed_derivative;
-
-	/* null terminates the string for strcat */
-	strecpy(buf, "", last);
-
-	seed_derivative = SeedChance(7, 28, seed);
+	uint seed_derivative = SeedChance(7, 28, seed);
 
 	/* optional prefix */
 	if (seed_derivative == 12 || seed_derivative == 19) {
-		i = SeedChance(2, lengthof(_name_german_pre), seed);
-		strecat(buf, _name_german_pre[i], last);
+		uint i = SeedChance(2, lengthof(_name_german_pre), seed);
+		buf = strecpy(buf, _name_german_pre[i], last);
 	}
 
 	/* mandatory middle segments including option of hardcoded name */
-	i = SeedChance(3, lengthof(_name_german_real) + lengthof(_name_german_1), seed);
+	uint i = SeedChance(3, lengthof(_name_german_real) + lengthof(_name_german_1), seed);
 	if (i < lengthof(_name_german_real)) {
-		strecat(buf, _name_german_real[i], last);
+		buf = strecpy(buf, _name_german_real[i], last);
 	} else {
-		strecat(buf, _name_german_1[i - lengthof(_name_german_real)], last);
+		buf = strecpy(buf, _name_german_1[i - lengthof(_name_german_real)], last);
 
 		i = SeedChance(5, lengthof(_name_german_2), seed);
-		strecat(buf, _name_german_2[i], last);
+		buf = strecpy(buf, _name_german_2[i], last);
 	}
 
 	/* optional suffix */
 	if (seed_derivative == 24) {
-		i = SeedChance(9,
-			lengthof(_name_german_4_an_der) + lengthof(_name_german_4_am), seed);
+		i = SeedChance(9, lengthof(_name_german_4_an_der) + lengthof(_name_german_4_am), seed);
 		if (i < lengthof(_name_german_4_an_der)) {
-			strecat(buf, _name_german_3_an_der[0], last);
-			strecat(buf, _name_german_4_an_der[i], last);
+			buf = strecpy(buf, _name_german_3_an_der[0], last);
+			buf = strecpy(buf, _name_german_4_an_der[i], last);
 		} else {
-			strecat(buf, _name_german_3_am[0], last);
-			strecat(buf, _name_german_4_am[i - lengthof(_name_german_4_an_der)], last);
+			buf = strecpy(buf, _name_german_3_am[0], last);
+			buf = strecpy(buf, _name_german_4_am[i - lengthof(_name_german_4_an_der)], last);
 		}
 	}
-	return 0;
+
+	return buf;
 }
 
-static byte MakeSpanishTownName(char *buf, uint32 seed, const char *last)
+
+/**
+ * Generates Latin-American town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeSpanishTownName(char *buf, const char *last, uint32 seed)
 {
-	strecpy(buf, _name_spanish_real[SeedChance(0, lengthof(_name_spanish_real), seed)], last);
-	return 0;
+	return strecpy(buf, _name_spanish_real[SeedChance(0, lengthof(_name_spanish_real), seed)], last);
 }
 
-static byte MakeFrenchTownName(char *buf, uint32 seed, const char *last)
+
+/**
+ * Generates French town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeFrenchTownName(char *buf, const char *last, uint32 seed)
 {
-	strecpy(buf, _name_french_real[SeedChance(0, lengthof(_name_french_real), seed)], last);
-	return 0;
+	return strecpy(buf, _name_french_real[SeedChance(0, lengthof(_name_french_real), seed)], last);
 }
 
-static byte MakeSillyTownName(char *buf, uint32 seed, const char *last)
+
+/**
+ * Generates Silly town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeSillyTownName(char *buf, const char *last, uint32 seed)
 {
-	strecpy(buf, _name_silly_1[SeedChance( 0, lengthof(_name_silly_1), seed)], last);
-	strecat(buf, _name_silly_2[SeedChance(16, lengthof(_name_silly_2), seed)], last);
-	return 0;
+	buf = strecpy(buf, _name_silly_1[SeedChance( 0, lengthof(_name_silly_1), seed)], last);
+	buf = strecpy(buf, _name_silly_2[SeedChance(16, lengthof(_name_silly_2), seed)], last);
+
+	return buf;
 }
 
-static byte MakeSwedishTownName(char *buf, uint32 seed, const char *last)
+
+/**
+ * Generates Swedish town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeSwedishTownName(char *buf, const char *last, uint32 seed)
 {
-	int i;
-
-	/* null terminates the string for strcat */
-	strecpy(buf, "", last);
-
 	/* optional first segment */
-	i = SeedChanceBias(0, lengthof(_name_swedish_1), seed, 50);
-	if (i >= 0)
-		strecat(buf, _name_swedish_1[i], last);
+	int i = SeedChanceBias(0, lengthof(_name_swedish_1), seed, 50);
+	if (i >= 0) buf = strecpy(buf, _name_swedish_1[i], last);
 
 	/* mandatory middle segments including option of hardcoded name */
 	if (SeedChance(4, 5, seed) >= 3) {
-		strecat(buf, _name_swedish_2[SeedChance( 7, lengthof(_name_swedish_2), seed)], last);
+		buf = strecpy(buf, _name_swedish_2[SeedChance( 7, lengthof(_name_swedish_2), seed)], last);
 	} else {
-		strecat(buf, _name_swedish_2a[SeedChance( 7, lengthof(_name_swedish_2a), seed)], last);
-		strecat(buf, _name_swedish_2b[SeedChance(10, lengthof(_name_swedish_2b), seed)], last);
-		strecat(buf, _name_swedish_2c[SeedChance(13, lengthof(_name_swedish_2c), seed)], last);
+		buf = strecpy(buf, _name_swedish_2a[SeedChance( 7, lengthof(_name_swedish_2a), seed)], last);
+		buf = strecpy(buf, _name_swedish_2b[SeedChance(10, lengthof(_name_swedish_2b), seed)], last);
+		buf = strecpy(buf, _name_swedish_2c[SeedChance(13, lengthof(_name_swedish_2c), seed)], last);
 	}
 
-	strecat(buf, _name_swedish_3[SeedChance(16, lengthof(_name_swedish_3), seed)], last);
+	buf = strecpy(buf, _name_swedish_3[SeedChance(16, lengthof(_name_swedish_3), seed)], last);
 
-	return 0;
+	return buf;
 }
 
-static byte MakeDutchTownName(char *buf, uint32 seed, const char *last)
+
+/**
+ * Generates Dutch town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeDutchTownName(char *buf, const char *last, uint32 seed)
 {
-	int i;
-
-	/* null terminates the string for strcat */
-	strecpy(buf, "", last);
-
 	/* optional first segment */
-	i = SeedChanceBias(0, lengthof(_name_dutch_1), seed, 50);
-	if (i >= 0)
-		strecat(buf, _name_dutch_1[i], last);
+	int i = SeedChanceBias(0, lengthof(_name_dutch_1), seed, 50);
+	if (i >= 0) buf = strecpy(buf, _name_dutch_1[i], last);
 
 	/* mandatory middle segments including option of hardcoded name */
 	if (SeedChance(6, 9, seed) > 4) {
-		strecat(buf, _name_dutch_2[SeedChance( 9, lengthof(_name_dutch_2), seed)], last);
+		buf = strecpy(buf, _name_dutch_2[SeedChance( 9, lengthof(_name_dutch_2), seed)], last);
 	} else {
-		strecat(buf, _name_dutch_3[SeedChance( 9, lengthof(_name_dutch_3), seed)], last);
-		strecat(buf, _name_dutch_4[SeedChance(12, lengthof(_name_dutch_4), seed)], last);
+		buf = strecpy(buf, _name_dutch_3[SeedChance( 9, lengthof(_name_dutch_3), seed)], last);
+		buf = strecpy(buf, _name_dutch_4[SeedChance(12, lengthof(_name_dutch_4), seed)], last);
 	}
-	strecat(buf, _name_dutch_5[SeedChance(15, lengthof(_name_dutch_5), seed)], last);
 
-	return 0;
+	buf = strecpy(buf, _name_dutch_5[SeedChance(15, lengthof(_name_dutch_5), seed)], last);
+
+	return buf;
 }
 
-static byte MakeFinnishTownName(char *buf, uint32 seed, const char *last)
+
+/**
+ * Generates Finnish town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeFinnishTownName(char *buf, const char *last, uint32 seed)
 {
-	/* null terminates the string for strcat */
-	strecpy(buf, "", last);
+	char *orig = buf;
 
 	/* Select randomly if town name should consists of one or two parts. */
 	if (SeedChance(0, 15, seed) >= 10) {
-		strecat(buf, _name_finnish_real[SeedChance(2, lengthof(_name_finnish_real), seed)], last);
-	} else if (SeedChance(0, 15, seed) >= 5) {
+		return strecpy(buf, _name_finnish_real[SeedChance(2, lengthof(_name_finnish_real), seed)], last);
+	}
+
+	if (SeedChance(0, 15, seed) >= 5) {
 		/* A two-part name by combining one of _name_finnish_1 + "la"/"lä"
 		 * The reason for not having the contents of _name_finnish_{1,2} in the same table is
 		 * that the ones in _name_finnish_2 are not good for this purpose. */
 		uint sel = SeedChance( 0, lengthof(_name_finnish_1), seed);
-		char *end;
-		strecat(buf, _name_finnish_1[sel], last);
-		end = &buf[strlen(buf)-1];
-		if (*end == 'i')
-			*end = 'e';
-		if (strstr(buf, "a") || strstr(buf, "o") || strstr(buf, "u") ||
-			strstr(buf, "A") || strstr(buf, "O") || strstr(buf, "U"))
-		{
-			strecat(buf, "la", last);
+		buf = strecpy(buf, _name_finnish_1[sel], last);
+		char *end = buf - 1;
+		assert(end >= orig);
+		if (*end == 'i') *end = 'e';
+		if (strstr(orig, "a") != NULL || strstr(orig, "o") != NULL || strstr(orig, "u") != NULL ||
+				strstr(orig, "A") != NULL || strstr(orig, "O") != NULL || strstr(orig, "U")  != NULL) {
+			buf = strecpy(buf, "la", last);
 		} else {
-			strecat(buf, "lä", last);
+			buf = strecpy(buf, "lä", last);
 		}
-	} else {
-		/* A two-part name by combining one of _name_finnish_{1,2} + _name_finnish_3.
-		 * Why aren't _name_finnish_{1,2} just one table? See above. */
-		uint sel = SeedChance(2,
-			lengthof(_name_finnish_1) + lengthof(_name_finnish_2), seed);
-		if (sel >= lengthof(_name_finnish_1)) {
-			strecat(buf, _name_finnish_2[sel - lengthof(_name_finnish_1)], last);
-		} else {
-			strecat(buf, _name_finnish_1[sel], last);
-		}
-		strecat(buf, _name_finnish_3[SeedChance(10, lengthof(_name_finnish_3), seed)], last);
+		return buf;
 	}
 
-	return 0;
+	/* A two-part name by combining one of _name_finnish_{1,2} + _name_finnish_3.
+	 * Why aren't _name_finnish_{1,2} just one table? See above. */
+	uint sel = SeedChance(2, lengthof(_name_finnish_1) + lengthof(_name_finnish_2), seed);
+	if (sel >= lengthof(_name_finnish_1)) {
+		buf = strecpy(buf, _name_finnish_2[sel - lengthof(_name_finnish_1)], last);
+	} else {
+		buf = strecpy(buf, _name_finnish_1[sel], last);
+	}
+
+	buf = strecpy(buf, _name_finnish_3[SeedChance(10, lengthof(_name_finnish_3), seed)], last);
+
+	return buf;
 }
 
-static byte MakePolishTownName(char *buf, uint32 seed, const char *last)
+
+/**
+ * Generates Polish town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakePolishTownName(char *buf, const char *last, uint32 seed)
 {
-	uint i;
-	uint j;
-
-	/* null terminates the string for strcat */
-	strecpy(buf, "", last);
-
 	/* optional first segment */
-	i = SeedChance(0,
-		lengthof(_name_polish_2_o) + lengthof(_name_polish_2_m) +
-		lengthof(_name_polish_2_f) + lengthof(_name_polish_2_n),
-		seed);
-	j = SeedChance(2, 20, seed);
+	uint i = SeedChance(0,
+			lengthof(_name_polish_2_o) + lengthof(_name_polish_2_m) +
+			lengthof(_name_polish_2_f) + lengthof(_name_polish_2_n),
+			seed);
+	uint j = SeedChance(2, 20, seed);
 
 
 	if (i < lengthof(_name_polish_2_o)) {
-		strecat(buf, _name_polish_2_o[SeedChance(3, lengthof(_name_polish_2_o), seed)], last);
-	} else if (i < lengthof(_name_polish_2_m) + lengthof(_name_polish_2_o)) {
-		if (j < 4)
-			strecat(buf, _name_polish_1_m[SeedChance(5, lengthof(_name_polish_1_m), seed)], last);
-
-		strecat(buf, _name_polish_2_m[SeedChance(7, lengthof(_name_polish_2_m), seed)], last);
-
-		if (j >= 4 && j < 16)
-			strecat(buf, _name_polish_3_m[SeedChance(10, lengthof(_name_polish_3_m), seed)], last);
-	} else if (i < lengthof(_name_polish_2_f) + lengthof(_name_polish_2_m) + lengthof(_name_polish_2_o)) {
-		if (j < 4)
-			strecat(buf, _name_polish_1_f[SeedChance(5, lengthof(_name_polish_1_f), seed)], last);
-
-		strecat(buf, _name_polish_2_f[SeedChance(7, lengthof(_name_polish_2_f), seed)], last);
-
-		if (j >= 4 && j < 16)
-			strecat(buf, _name_polish_3_f[SeedChance(10, lengthof(_name_polish_3_f), seed)], last);
-	} else {
-		if (j < 4)
-			strecat(buf, _name_polish_1_n[SeedChance(5, lengthof(_name_polish_1_n), seed)], last);
-
-		strecat(buf, _name_polish_2_n[SeedChance(7, lengthof(_name_polish_2_n), seed)], last);
-
-		if (j >= 4 && j < 16)
-			strecat(buf, _name_polish_3_n[SeedChance(10, lengthof(_name_polish_3_n), seed)], last);
+		return strecpy(buf, _name_polish_2_o[SeedChance(3, lengthof(_name_polish_2_o), seed)], last);
 	}
-	return 0;
+
+	if (i < lengthof(_name_polish_2_m) + lengthof(_name_polish_2_o)) {
+		if (j < 4) {
+			buf = strecpy(buf, _name_polish_1_m[SeedChance(5, lengthof(_name_polish_1_m), seed)], last);
+		}
+
+		buf = strecpy(buf, _name_polish_2_m[SeedChance(7, lengthof(_name_polish_2_m), seed)], last);
+
+		if (j >= 4 && j < 16) {
+			buf = strecpy(buf, _name_polish_3_m[SeedChance(10, lengthof(_name_polish_3_m), seed)], last);
+		}
+
+		return buf;
+	}
+
+	if (i < lengthof(_name_polish_2_f) + lengthof(_name_polish_2_m) + lengthof(_name_polish_2_o)) {
+		if (j < 4) {
+			buf = strecpy(buf, _name_polish_1_f[SeedChance(5, lengthof(_name_polish_1_f), seed)], last);
+		}
+
+		buf = strecpy(buf, _name_polish_2_f[SeedChance(7, lengthof(_name_polish_2_f), seed)], last);
+
+		if (j >= 4 && j < 16) {
+			buf = strecpy(buf, _name_polish_3_f[SeedChance(10, lengthof(_name_polish_3_f), seed)], last);
+		}
+
+		return buf;
+	}
+
+	if (j < 4) {
+		buf = strecpy(buf, _name_polish_1_n[SeedChance(5, lengthof(_name_polish_1_n), seed)], last);
+	}
+
+	buf = strecpy(buf, _name_polish_2_n[SeedChance(7, lengthof(_name_polish_2_n), seed)], last);
+
+	if (j >= 4 && j < 16) {
+		buf = strecpy(buf, _name_polish_3_n[SeedChance(10, lengthof(_name_polish_3_n), seed)], last);
+	}
+
+	return buf;
 }
 
-static byte MakeCzechTownName(char *buf, uint32 seed, const char *last)
+
+/**
+ * Generates Czech town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeCzechTownName(char *buf, const char *last, uint32 seed)
 {
+	const char *orig = buf;
+
 	/* Probability of prefixes/suffixes
 	 * 0..11 prefix, 12..13 prefix+suffix, 14..17 suffix, 18..31 nothing */
 	int prob_tails;
@@ -376,12 +479,8 @@ static byte MakeCzechTownName(char *buf, uint32 seed, const char *last)
 
 	/* 1:3 chance to use a real name. */
 	if (SeedModChance(0, 4, seed) == 0) {
-		strecpy(buf, _name_czech_real[SeedModChance(4, lengthof(_name_czech_real), seed)], last);
-		return 0;
+		return strecpy(buf, _name_czech_real[SeedModChance(4, lengthof(_name_czech_real), seed)], last);
 	}
-
-	/* NUL terminates the string for strcat() */
-	strecpy(buf, "", last);
 
 	prob_tails = SeedModChance(2, 32, seed);
 	do_prefix = prob_tails < 12;
@@ -391,8 +490,8 @@ static byte MakeCzechTownName(char *buf, uint32 seed, const char *last)
 	if (do_suffix) suffix = SeedModChance(7, lengthof(_name_czech_suffix), seed);
 	/* 3:1 chance 3:1 to use dynamic substantive */
 	stem = SeedModChance(9,
-		lengthof(_name_czech_subst_full) + 3 * lengthof(_name_czech_subst_stem),
-		seed);
+			lengthof(_name_czech_subst_full) + 3 * lengthof(_name_czech_subst_stem),
+			seed);
 	if (stem < lengthof(_name_czech_subst_full)) {
 		/* That was easy! */
 		dynamic_subst = false;
@@ -402,7 +501,6 @@ static byte MakeCzechTownName(char *buf, uint32 seed, const char *last)
 	} else {
 		unsigned int map[lengthof(_name_czech_subst_ending)];
 		int ending_start = -1, ending_stop = -1;
-		int i;
 
 		/* Load the substantive */
 		dynamic_subst = true;
@@ -430,15 +528,15 @@ static byte MakeCzechTownName(char *buf, uint32 seed, const char *last)
 		}
 
 		/* Localize the array segment containing a good gender */
-		for (ending = 0; ending < (int) lengthof(_name_czech_subst_ending); ending++) {
+		for (ending = 0; ending < (int)lengthof(_name_czech_subst_ending); ending++) {
 			const CzechNameSubst *e = &_name_czech_subst_ending[ending];
 
 			if (gender == CZG_FREE ||
 					(gender == CZG_NFREE && e->gender != CZG_SNEUT && e->gender != CZG_PNEUT) ||
-					gender == e->gender) {
-				if (ending_start < 0)
+					 gender == e->gender) {
+				if (ending_start < 0) {
 					ending_start = ending;
-
+				}
 			} else if (ending_start >= 0) {
 				ending_stop = ending - 1;
 				break;
@@ -450,12 +548,13 @@ static byte MakeCzechTownName(char *buf, uint32 seed, const char *last)
 		}
 
 		/* Make a sequential map of the items with good mask */
-		i = 0;
+		size_t i = 0;
 		for (ending = ending_start; ending <= ending_stop; ending++) {
 			const CzechNameSubst *e = &_name_czech_subst_ending[ending];
 
-			if ((e->choose & choose) == choose && (e->allow & allow) != 0)
+			if ((e->choose & choose) == choose && (e->allow & allow) != 0) {
 				map[i++] = ending;
+			}
 		}
 		assert(i > 0);
 
@@ -473,267 +572,305 @@ static byte MakeCzechTownName(char *buf, uint32 seed, const char *last)
 	}
 
 	/* Now finally construct the name */
-
 	if (do_prefix) {
 		CzechPattern pattern = _name_czech_adj[prefix].pattern;
-		size_t endpos;
 
-		strecat(buf, _name_czech_adj[prefix].name, last);
-		endpos = strlen(buf) - 1;
+		buf = strecpy(buf, _name_czech_adj[prefix].name, last);
+
+		char *endpos = buf - 1;
 		/* Find the first character in a UTF-8 sequence */
-		while (GB(buf[endpos], 6, 2) == 2) endpos--;
+		while (GB(*endpos, 6, 2) == 2) endpos--;
+
 		if (gender == CZG_SMASC && pattern == CZP_PRIVL) {
+			assert(endpos >= orig + 2);
 			/* -ovX -> -uv */
-			buf[endpos - 2] = 'u';
-			assert(buf[endpos - 1] == 'v');
-			buf[endpos] = '\0';
+			*(endpos - 2) = 'u';
+			assert(*(endpos - 1) == 'v');
+			*endpos = '\0';
 		} else {
-			strecpy(buf + endpos, _name_czech_patmod[gender][pattern], last);
+			assert(endpos >= orig);
+			endpos = strecpy(endpos, _name_czech_patmod[gender][pattern], last);
 		}
 
-		strecat(buf, " ", last);
+		buf = strecpy(endpos, " ", last);
 	}
 
 	if (dynamic_subst) {
-		strecat(buf, _name_czech_subst_stem[stem].name, last);
+		buf = strecpy(buf, _name_czech_subst_stem[stem].name, last);
 		if (postfix < lengthof(_name_czech_subst_postfix)) {
 			const char *poststr = _name_czech_subst_postfix[postfix];
 			const char *endstr = _name_czech_subst_ending[ending].name;
-			size_t postlen, endlen;
 
-			postlen = strlen(poststr);
-			endlen = strlen(endstr);
+			size_t postlen = strlen(poststr);
+			size_t endlen = strlen(endstr);
 			assert(postlen > 0 && endlen > 0);
 
 			/* Kill the "avava" and "Jananna"-like cases */
-			if (postlen < 2 || postlen > endlen || (
-						(poststr[1] != 'v' || poststr[1] != endstr[1]) &&
-						poststr[2] != endstr[1])
-					) {
-				size_t buflen;
-				strecat(buf, poststr, last);
-				buflen = strlen(buf);
+			if (postlen < 2 || postlen > endlen ||
+					((poststr[1] != 'v' || poststr[1] != endstr[1]) &&
+					poststr[2] != endstr[1])) {
+				buf = strecpy(buf, poststr, last);
 
 				/* k-i -> c-i, h-i -> z-i */
 				if (endstr[0] == 'i') {
-					switch (buf[buflen - 1]) {
-						case 'k': buf[buflen - 1] = 'c'; break;
-						case 'h': buf[buflen - 1] = 'z'; break;
+					switch (*(buf - 1)) {
+						case 'k': *(buf - 1) = 'c'; break;
+						case 'h': *(buf - 1) = 'z'; break;
 						default: break;
 					}
 				}
 			}
 		}
-		strecat(buf, _name_czech_subst_ending[ending].name, last);
+		buf = strecpy(buf, _name_czech_subst_ending[ending].name, last);
 	} else {
-		strecat(buf, _name_czech_subst_full[stem].name, last);
+		buf = strecpy(buf, _name_czech_subst_full[stem].name, last);
 	}
 
 	if (do_suffix) {
-		strecat(buf, " ", last);
-		strecat(buf, _name_czech_suffix[suffix], last);
+		buf = strecpy(buf, " ", last);
+		buf = strecpy(buf, _name_czech_suffix[suffix], last);
 	}
 
-	return 0;
+	return buf;
 }
 
-static byte MakeRomanianTownName(char *buf, uint32 seed, const char *last)
+
+/**
+ * Generates Romanian town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeRomanianTownName(char *buf, const char *last, uint32 seed)
 {
-	strecpy(buf, _name_romanian_real[SeedChance(0, lengthof(_name_romanian_real), seed)], last);
-	return 0;
+	return strecpy(buf, _name_romanian_real[SeedChance(0, lengthof(_name_romanian_real), seed)], last);
 }
 
-static byte MakeSlovakTownName(char *buf, uint32 seed, const char *last)
+
+/**
+ * Generates Slovakish town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeSlovakTownName(char *buf, const char *last, uint32 seed)
 {
-	strecpy(buf, _name_slovak_real[SeedChance(0, lengthof(_name_slovak_real), seed)], last);
-	return 0;
+	return strecpy(buf, _name_slovak_real[SeedChance(0, lengthof(_name_slovak_real), seed)], last);
 }
 
-static byte MakeNorwegianTownName(char *buf, uint32 seed, const char *last)
-{
-	strecpy(buf, "", last);
 
+/**
+ * Generates Norwegian town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeNorwegianTownName(char *buf, const char *last, uint32 seed)
+{
 	/* Use first 4 bit from seed to decide whether or not this town should
 	 * have a real name 3/16 chance.  Bit 0-3 */
 	if (SeedChance(0, 15, seed) < 3) {
 		/* Use 7bit for the realname table index.  Bit 4-10 */
-		strecat(buf, _name_norwegian_real[SeedChance(4, lengthof(_name_norwegian_real), seed)], last);
-	} else {
-		/* Use 7bit for the first fake part.  Bit 4-10 */
-		strecat(buf, _name_norwegian_1[SeedChance(4, lengthof(_name_norwegian_1), seed)], last);
-		/* Use 7bit for the last fake part.  Bit 11-17 */
-		strecat(buf, _name_norwegian_2[SeedChance(11, lengthof(_name_norwegian_2), seed)], last);
+		return strecpy(buf, _name_norwegian_real[SeedChance(4, lengthof(_name_norwegian_real), seed)], last);
 	}
 
-	return 0;
+	/* Use 7bit for the first fake part.  Bit 4-10 */
+	buf = strecpy(buf, _name_norwegian_1[SeedChance(4, lengthof(_name_norwegian_1), seed)], last);
+	/* Use 7bit for the last fake part.  Bit 11-17 */
+	buf = strecpy(buf, _name_norwegian_2[SeedChance(11, lengthof(_name_norwegian_2), seed)], last);
+
+	return buf;
 }
 
-static byte MakeHungarianTownName(char *buf, uint32 seed, const char *last)
+
+/**
+ * Generates Hungarian town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeHungarianTownName(char *buf, const char *last, uint32 seed)
 {
-	uint i;
-
-	/* null terminates the string for strcat */
-	strecpy(buf, "", last);
-
 	if (SeedChance(12, 15, seed) < 3) {
-		strecat(buf, _name_hungarian_real[SeedChance(0, lengthof(_name_hungarian_real), seed)], last);
-	} else {
-		/* optional first segment */
-		i = SeedChance(3, lengthof(_name_hungarian_1) * 3, seed);
-		if (i < lengthof(_name_hungarian_1))
-			strecat(buf, _name_hungarian_1[i], last);
-
-		/* mandatory middle segments */
-		strecat(buf, _name_hungarian_2[SeedChance(3, lengthof(_name_hungarian_2), seed)], last);
-		strecat(buf, _name_hungarian_3[SeedChance(6, lengthof(_name_hungarian_3), seed)], last);
-
-		/* optional last segment */
-		i = SeedChance(10, lengthof(_name_hungarian_4) * 3, seed);
-		if (i < lengthof(_name_hungarian_4)) {
-			strecat(buf, _name_hungarian_4[i], last);
-		}
+		return strecpy(buf, _name_hungarian_real[SeedChance(0, lengthof(_name_hungarian_real), seed)], last);
 	}
-
-	return 0;
-}
-
-static byte MakeSwissTownName(char *buf, uint32 seed, const char *last)
-{
-	strecpy(buf, _name_swiss_real[SeedChance(0, lengthof(_name_swiss_real), seed)], last);
-	return 0;
-}
-
-static byte MakeDanishTownName(char *buf, uint32 seed, const char *last)
-{
-	int i;
-
-	/* null terminates the string for strcat */
-	strecpy(buf, "", last);
 
 	/* optional first segment */
-	i = SeedChanceBias(0, lengthof(_name_danish_1), seed, 50);
-	if (i >= 0)
-		strecat(buf, _name_danish_1[i], last);
+	uint i = SeedChance(3, lengthof(_name_hungarian_1) * 3, seed);
+	if (i < lengthof(_name_hungarian_1)) buf = strecpy(buf, _name_hungarian_1[i], last);
+
+	/* mandatory middle segments */
+	buf = strecpy(buf, _name_hungarian_2[SeedChance(3, lengthof(_name_hungarian_2), seed)], last);
+	buf = strecpy(buf, _name_hungarian_3[SeedChance(6, lengthof(_name_hungarian_3), seed)], last);
+
+	/* optional last segment */
+	i = SeedChance(10, lengthof(_name_hungarian_4) * 3, seed);
+	if (i < lengthof(_name_hungarian_4)) {
+		buf = strecpy(buf, _name_hungarian_4[i], last);
+	}
+
+	return buf;
+}
+
+
+/**
+ * Generates Swiss town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeSwissTownName(char *buf, const char *last, uint32 seed)
+{
+	return strecpy(buf, _name_swiss_real[SeedChance(0, lengthof(_name_swiss_real), seed)], last);
+}
+
+
+/**
+ * Generates Danish town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeDanishTownName(char *buf, const char *last, uint32 seed)
+{
+	/* optional first segment */
+	int i = SeedChanceBias(0, lengthof(_name_danish_1), seed, 50);
+	if (i >= 0) buf = strecpy(buf, _name_danish_1[i], last);
 
 	/* middle segments removed as this algorithm seems to create much more realistic names */
-	strecat(buf, _name_danish_2[SeedChance( 7, lengthof(_name_danish_2), seed)], last);
-	strecat(buf, _name_danish_3[SeedChance(16, lengthof(_name_danish_3), seed)], last);
+	buf = strecpy(buf, _name_danish_2[SeedChance( 7, lengthof(_name_danish_2), seed)], last);
+	buf = strecpy(buf, _name_danish_3[SeedChance(16, lengthof(_name_danish_3), seed)], last);
 
-	return 0;
+	return buf;
 }
 
-static byte MakeTurkishTownName(char *buf, uint32 seed, const char *last)
+
+/**
+ * Generates Turkish town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeTurkishTownName(char *buf, const char *last, uint32 seed)
 {
-	uint i;
+	uint i = SeedModChance(0, 5, seed);
 
-	/* null terminates the string for strcat */
-	strecpy(buf, "", last);
+	switch (i) {
+		case 0:
+			buf = strecpy(buf, _name_turkish_prefix[SeedModChance( 2, lengthof(_name_turkish_prefix), seed)], last);
 
-	if ((i = SeedModChance(0, 5, seed)) == 0) {
-		strecat(buf, _name_turkish_prefix[SeedModChance( 2, lengthof(_name_turkish_prefix), seed)], last);
+			/* middle segment */
+			buf = strecpy(buf, _name_turkish_middle[SeedModChance( 4, lengthof(_name_turkish_middle), seed)], last);
 
-		/* middle segment */
-		strecat(buf, _name_turkish_middle[SeedModChance( 4, lengthof(_name_turkish_middle), seed)], last);
+			/* optional suffix */
+			if (SeedModChance(0, 7, seed) == 0) {
+				buf = strecpy(buf, _name_turkish_suffix[SeedModChance( 10, lengthof(_name_turkish_suffix), seed)], last);
+			}
+			break;
 
-		/* optional suffix */
-		if (SeedModChance(0, 7, seed) == 0) {
-			strecat(buf, _name_turkish_suffix[SeedModChance( 10, lengthof(_name_turkish_suffix), seed)], last);
-		}
-	} else {
-		if (i == 1 || i == 2) {
-			strecat(buf, _name_turkish_prefix[SeedModChance( 2, lengthof(_name_turkish_prefix), seed)], last);
-			strecat(buf, _name_turkish_suffix[SeedModChance( 4, lengthof(_name_turkish_suffix), seed)], last);
-		} else {
-			strecat(buf, _name_turkish_real[SeedModChance( 4, lengthof(_name_turkish_real), seed)], last);
-		}
+		case 1: case 2:
+			buf = strecpy(buf, _name_turkish_prefix[SeedModChance( 2, lengthof(_name_turkish_prefix), seed)], last);
+			buf = strecpy(buf, _name_turkish_suffix[SeedModChance( 4, lengthof(_name_turkish_suffix), seed)], last);
+			break;
+
+		default:
+			buf = strecpy(buf, _name_turkish_real[SeedModChance( 4, lengthof(_name_turkish_real), seed)], last);
+			break;
 	}
-	return 0;
+
+	return buf;
 }
 
-static const char *mascul_femin_italian[] = {
-	"o",
-	"a",
-};
 
-static byte MakeItalianTownName(char *buf, uint32 seed, const char *last)
+/**
+ * Generates Italian town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeItalianTownName(char *buf, const char *last, uint32 seed)
 {
-	strecpy(buf, "", last);
-
 	if (SeedModChance(0, 6, seed) == 0) { // real city names
-		strecat(buf, _name_italian_real[SeedModChance(4, lengthof(_name_italian_real), seed)], last);
+		return strecpy(buf, _name_italian_real[SeedModChance(4, lengthof(_name_italian_real), seed)], last);
+	}
+
+	static const char * const mascul_femin_italian[] = {
+		"o",
+		"a",
+	};
+
+	if (SeedModChance(0, 8, seed) == 0) { // prefix
+		buf = strecpy(buf, _name_italian_pref[SeedModChance(11, lengthof(_name_italian_pref), seed)], last);
+	}
+
+	uint i = SeedChance(0, 2, seed);
+	if (i == 0) { // masculine form
+		buf = strecpy(buf, _name_italian_1m[SeedModChance(4, lengthof(_name_italian_1m), seed)], last);
+	} else { // feminine form
+		buf = strecpy(buf, _name_italian_1f[SeedModChance(4, lengthof(_name_italian_1f), seed)], last);
+	}
+
+	if (SeedModChance(3, 3, seed) == 0) {
+		buf = strecpy(buf, _name_italian_2[SeedModChance(11, lengthof(_name_italian_2), seed)], last);
+		buf = strecpy(buf, mascul_femin_italian[i], last);
 	} else {
-		uint i;
+		buf = strecpy(buf, _name_italian_2i[SeedModChance(16, lengthof(_name_italian_2i), seed)], last);
+	}
 
-		if (SeedModChance(0, 8, seed) == 0) { // prefix
-			strecat(buf, _name_italian_pref[SeedModChance(11, lengthof(_name_italian_pref), seed)], last);
-		}
-
-		i = SeedChance(0, 2, seed);
-		if (i == 0) { // masculine form
-			strecat(buf, _name_italian_1m[SeedModChance(4, lengthof(_name_italian_1m), seed)], last);
-		} else { // feminine form
-			strecat(buf, _name_italian_1f[SeedModChance(4, lengthof(_name_italian_1f), seed)], last);
-		}
-
-		if (SeedModChance(3, 3, seed) == 0) {
-			strecat(buf, _name_italian_2[SeedModChance(11, lengthof(_name_italian_2), seed)], last);
-			strecat(buf, mascul_femin_italian[i], last);
-		} else {
-			strecat(buf, _name_italian_2i[SeedModChance(16, lengthof(_name_italian_2i), seed)], last);
-		}
-
-		if (SeedModChance(15, 4, seed) == 0) {
-			if (SeedModChance(5, 2, seed) == 0) { // generic suffix
-				strecat(buf, _name_italian_3[SeedModChance(4, lengthof(_name_italian_3), seed)], last);
-			} else { // river name suffix
-				strecat(buf, _name_italian_river1[SeedModChance(4, lengthof(_name_italian_river1), seed)], last);
-				strecat(buf, _name_italian_river2[SeedModChance(16, lengthof(_name_italian_river2), seed)], last);
-			}
+	if (SeedModChance(15, 4, seed) == 0) {
+		if (SeedModChance(5, 2, seed) == 0) { // generic suffix
+			buf = strecpy(buf, _name_italian_3[SeedModChance(4, lengthof(_name_italian_3), seed)], last);
+		} else { // river name suffix
+			buf = strecpy(buf, _name_italian_river1[SeedModChance(4, lengthof(_name_italian_river1), seed)], last);
+			buf = strecpy(buf, _name_italian_river2[SeedModChance(16, lengthof(_name_italian_river2), seed)], last);
 		}
 	}
 
-	return 0;
+	return buf;
 }
 
-static byte MakeCatalanTownName(char *buf, uint32 seed, const char *last)
-{
-	strecpy(buf, "", last);
 
+/**
+ * Generates Catalan town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char *MakeCatalanTownName(char *buf, const char *last, uint32 seed)
+{
 	if (SeedModChance(0, 3, seed) == 0) { // real city names
-		strecat(buf, _name_catalan_real[SeedModChance(4, lengthof(_name_catalan_real), seed)], last);
-	} else {
-		uint i;
+		return strecpy(buf, _name_catalan_real[SeedModChance(4, lengthof(_name_catalan_real), seed)], last);
+	}
 
-		if (SeedModChance(0, 2, seed) == 0) { // prefix
-			strecat(buf, _name_catalan_pref[SeedModChance(11, lengthof(_name_catalan_pref), seed)], last);
-		}
+	if (SeedModChance(0, 2, seed) == 0) { // prefix
+		buf = strecpy(buf, _name_catalan_pref[SeedModChance(11, lengthof(_name_catalan_pref), seed)], last);
+	}
 
-		i = SeedChance(0, 2, seed);
-		if (i == 0) { // masculine form
-			strecat(buf, _name_catalan_1m[SeedModChance(4, lengthof(_name_catalan_1m), seed)], last);
-			strecat(buf, _name_catalan_2m[SeedModChance(11, lengthof(_name_catalan_2m), seed)], last);
-		} else { // feminine form
-			strecat(buf, _name_catalan_1f[SeedModChance(4, lengthof(_name_catalan_1f), seed)], last);
-			strecat(buf, _name_catalan_2f[SeedModChance(11, lengthof(_name_catalan_2f), seed)], last);
-		}
+	uint i = SeedChance(0, 2, seed);
+	if (i == 0) { // masculine form
+		buf = strecpy(buf, _name_catalan_1m[SeedModChance(4, lengthof(_name_catalan_1m), seed)], last);
+		buf = strecpy(buf, _name_catalan_2m[SeedModChance(11, lengthof(_name_catalan_2m), seed)], last);
+	} else { // feminine form
+		buf = strecpy(buf, _name_catalan_1f[SeedModChance(4, lengthof(_name_catalan_1f), seed)], last);
+		buf = strecpy(buf, _name_catalan_2f[SeedModChance(11, lengthof(_name_catalan_2f), seed)], last);
+	}
 
-
-		if (SeedModChance(15, 5, seed) == 0) {
-			if (SeedModChance(5, 2, seed) == 0) { // generic suffix
-				strecat(buf, _name_catalan_3[SeedModChance(4, lengthof(_name_catalan_3), seed)], last);
-			} else { // river name suffix
-				strecat(buf, _name_catalan_river1[SeedModChance(4, lengthof(_name_catalan_river1), seed)], last);
-			}
+	if (SeedModChance(15, 5, seed) == 0) {
+		if (SeedModChance(5, 2, seed) == 0) { // generic suffix
+			buf = strecpy(buf, _name_catalan_3[SeedModChance(4, lengthof(_name_catalan_3), seed)], last);
+		} else { // river name suffix
+			buf = strecpy(buf, _name_catalan_river1[SeedModChance(4, lengthof(_name_catalan_river1), seed)], last);
 		}
 	}
 
-	return 0;
+	return buf;
 }
 
 
+typedef char *TownNameGenerator(char *buf, const char *last, uint32 seed);
 
-TownNameGenerator * const _town_name_generators[] =
-{
+/** Town name generators */
+static TownNameGenerator * const _town_name_generators[] = {
 	MakeEnglishOriginalTownName,
 	MakeFrenchTownName,
 	MakeGermanTownName,
@@ -756,3 +893,29 @@ TownNameGenerator * const _town_name_generators[] =
 	MakeItalianTownName,
 	MakeCatalanTownName,
 };
+
+
+/**
+ * Generates town name from given seed. a language.
+ * @param buf output buffer
+ * @param last end of buffer
+ * @param lang town name language
+ * @param seed generation seed
+ * @return last character ('/0')
+ */
+char *GenerateTownNameString(char *buf, const char *last, size_t lang, uint32 seed)
+{
+	assert(lang < lengthof(_town_name_generators));
+
+	/* Some generators need at least 9 bytes in buffer.  English generators need 5 for
+	 * string replacing, others use constructions like strlen(buf)-3 and so on.
+	 * Finnish generator needs to fit all strings from _name_finnish_1.
+	 * These would break. Using another temporary buffer results in ~40% slower code,
+	 * so use it only when really needed. */
+	if (last - buf >= 9) return _town_name_generators[lang](buf, last, seed);
+
+	char buffer[10]; // only at most 9 bytes will be needed anyway
+	_town_name_generators[lang](buffer, lastof(buffer), seed);
+
+	return strecpy(buf, buffer, last);
+}

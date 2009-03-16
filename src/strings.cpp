@@ -1084,10 +1084,7 @@ static char *StationGetSpecialString(char *buff, int x, const char *last)
 
 static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const char *last)
 {
-	char name[512];
-
-	_town_name_generators[ind](name, seed, lastof(name));
-	return strecpy(buff, name, last);
+	return GenerateTownNameString(buff, last, ind, seed);
 }
 
 static const char * const _silly_company_names[] = {
