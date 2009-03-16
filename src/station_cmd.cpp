@@ -1632,6 +1632,8 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 			((GetRoadStopDir(tile) == DIAGDIR_NE) ? ROAD_X : ROAD_Y) :
 			DiagDirToRoadBits(GetRoadStopDir(tile));
 
+	Owner road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
+	Owner tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
 	CommandCost ret = RemoveRoadStop(st, flags, tile);
 
 	/* If the stop was a drive-through stop replace the road */
@@ -1640,7 +1642,7 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		 * removed by the owner of the roadstop, _current_company is the
 		 * owner of the road stop. */
 		MakeRoadNormal(tile, road_bits, rts, ClosestTownFromTile(tile, UINT_MAX)->index,
-				GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM));
+				road_owner, tram_owner);
 	}
 
 	return ret;
