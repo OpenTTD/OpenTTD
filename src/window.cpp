@@ -1375,8 +1375,6 @@ static bool HandleWindowDragging()
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
 		if (w->flags4 & WF_DRAGGING) {
-			const Widget *t = &w->widget[1]; // the title bar ... ugh
-
 			/* Stop the dragging if the left mouse button was released */
 			if (!_left_button_down) {
 				w->flags4 &= ~WF_DRAGGING;
@@ -1466,10 +1464,18 @@ static bool HandleWindowDragging()
 				}
 			}
 
-			/* Make sure the window doesn't leave the screen
-			 * 13 is the height of the title bar */
-			nx = Clamp(nx, 13 - t->right, _screen.width - 13 - t->left);
-			ny = Clamp(ny, 0, _screen.height - 13);
+			/* Search for the title bar */
+			const Widget *t = w->widget;
+			while (t->type != WWT_CAPTION && t->type != WWT_LAST) t++;
+			assert(t->type == WWT_CAPTION);
+
+			/* The minimum number of pixels of the title bar must be visible
+			 * in both the X or Y direction */
+			static const int MIN_VISIBLE_TITLE_BAR = 13;
+
+			/* Make sure the window doesn't leave the screen */
+			nx = Clamp(nx, MIN_VISIBLE_TITLE_BAR - t->right, _screen.width - MIN_VISIBLE_TITLE_BAR - t->left);
+			ny = Clamp(ny, 0, _screen.height - MIN_VISIBLE_TITLE_BAR);
 
 			/* Make sure the title bar isn't hidden by behind the main tool bar */
 			Window *v = FindWindowById(WC_MAIN_TOOLBAR, 0);
@@ -1477,18 +1483,18 @@ static bool HandleWindowDragging()
 				int v_bottom = v->top + v->height;
 				int v_right = v->left + v->width;
 				if (ny + t->top >= v->top && ny + t->top < v_bottom) {
-					if ((v->left < 13 && nx + t->left < v->left) ||
-							(v_right > _screen.width - 13 && nx + t->right > v_right)) {
+					if ((v->left < MIN_VISIBLE_TITLE_BAR && nx + t->left < v->left) ||
+							(v_right > _screen.width - MIN_VISIBLE_TITLE_BAR && nx + t->right > v_right)) {
 						ny = v_bottom;
 					} else {
-						if (nx + t->left > v->left - 13 &&
-								nx + t->right < v_right + 13) {
+						if (nx + t->left > v->left - MIN_VISIBLE_TITLE_BAR &&
+								nx + t->right < v_right + MIN_VISIBLE_TITLE_BAR) {
 							if (w->top >= v_bottom) {
 								ny = v_bottom;
 							} else if (w->left < nx) {
-								nx = v->left - 13 - t->left;
+								nx = v->left - MIN_VISIBLE_TITLE_BAR - t->left;
 							} else {
-								nx = v_right + 13 - t->right;
+								nx = v_right + MIN_VISIBLE_TITLE_BAR - t->right;
 							}
 						}
 					}
