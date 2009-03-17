@@ -668,7 +668,6 @@ STR_FULL                                                        :Completo
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Directorio de poblaciones
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Personalizado
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1199,6 +1198,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}No se pu
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Construir tramos de ferrocarril usando modo Autorraíl
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...no hay poblaciones en este escenario
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Generación de mapa abortada...{}...localización para ciudades no adecuada
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Varias poblaciones al azar
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Cubre el mapa con poblaciones colocadas al azar
@@ -2130,6 +2130,7 @@ STR_NUM_VERY_LOW                                                :Muy bajo
 STR_6816_LOW                                                    :Baja
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Alta
+STR_02BF_CUSTOM                                                 :Personalizado
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Muy lenta
@@ -3170,6 +3171,8 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Problema
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Cambia la longitud del vehículo para '{1:ENGINE}' cuando no está dentro de un depósito
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren '{VEHICLE}' perteneciente a '{COMPANY}' tiene una longitud incorrecta. Puede ser debido a problemas con los NewGRF. El juego puede fallar.
 
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Información de carga/recarga para '{1:ENGINE}' difiere de la lista de compra después de la construcción. Esto puede causar que la autorenovación/cambio falle.
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}El juego ha sido grabado en una versión sin soporte de tranvía. Todos los tranvías serán eliminados.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalizada
@@ -3580,6 +3583,7 @@ STR_AI_RANDOM_AI                                                :IA aleatoria
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parámetros de la IA
 STR_AI_AUTHOR                                                   :Autor:
 STR_AI_VERSION                                                  :Versión:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Una de las AI ejecutadas ha fallado. Por favor, reporte el fallo al autor de la misma desde la ventana AI Debug.
 ########
 
 ############ town controlled noise level

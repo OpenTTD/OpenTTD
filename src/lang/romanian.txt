@@ -667,7 +667,6 @@ STR_FULL                                                        :Pe larg
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Lista oraşelor (F5)
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Propriu
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1198,6 +1197,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Nu se po
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Construieşte cale ferată în modul automat
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...în acest scenariu nu există nici un oraş
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Generarea hărţii a eşuat...{}...nici o locaţie potrivită pentru oraş
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Mai multe orase aleatoare
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Umple harta cu orase generate aleator
@@ -2129,6 +2129,7 @@ STR_NUM_VERY_LOW                                                :Foarte putine
 STR_6816_LOW                                                    :scăzut
 STR_6817_NORMAL                                                 :normal
 STR_6818_HIGH                                                   :ridicat
+STR_02BF_CUSTOM                                                 :Propriu
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :foarte încet
@@ -3169,6 +3170,8 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Comporta
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifica lungimea vehicolului pentru '{1:ENGINE}' cand nu este in depou.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trenul '{VEHICLE}', apartinand '{COMPANY}' nu are o lungima valida. Crobabila este o problema cu fisierele NewGRF. Jocul s-ar putea desincroniza sau prabusi.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' produce informaţii incorecte.
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Jocul a fost salvat într-o versiune fără suport pentru tramvaie. Toate tramvaiele au fost eliminate.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Monedă proprie
@@ -3579,6 +3582,7 @@ STR_AI_RANDOM_AI                                                :IA aleator
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametri IA
 STR_AI_AUTHOR                                                   :Autor:
 STR_AI_VERSION                                                  :Versiune:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}O Inteligentă Artificială s-a oprit în mod eronat. Raportează această problemă autorului împreună cu o captură de ecran a ferestrei Depanare IA
 ########
 
 ############ town controlled noise level

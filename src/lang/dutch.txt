@@ -1197,6 +1197,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Kan hier
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Bouw spoor met de Autorail-methode
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...er is geen stad in dit scenario
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Map maken afgebroken...{}...geen geschikte dorplokaties
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Veel willekeurige steden
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Bedek de kaart met willekeurig geplaatste steden
@@ -3169,6 +3170,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Gedrag v
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Het verandert de lengte van voertuig '{1:ENGINE}' wanneer niet in een depot.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{VEHICLE}' behorend bij '{COMPANY}' heeft een ongeldige lengte. Het is waarschijnlijk veroorzaakt door problemen metNewGRFs. Het spel kan desync krijgen of crash.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' geeft onjuiste informatie.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}vracht/ombouw informatie voor '{1:ENGINE}' wijkt af van aanschaflijst na het bouwen. Dit kan resulteren in problemen bij ombouwen door autovernieuw/-vervang
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spel was opgeslagen in een versie zonder tram ondersteuning. Alle trams zijn verwijderd.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Aangepaste valuta
@@ -3579,6 +3583,7 @@ STR_AI_RANDOM_AI                                                :Willekeurige AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
 STR_AI_AUTHOR                                                   :Maker:
 STR_AI_VERSION                                                  :Versie:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Een van de draaiende AI's is gecrashed. Meldt dit bij de schrijver van deze AI met een schermprint van het AI Debugscherm.
 ########
 
 ############ town controlled noise level

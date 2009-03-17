@@ -3170,6 +3170,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}' için hangar içinde değilken araç uzunluğunu değiştirir.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{VEHICLE}' adlı tren '{COMPANY}' şirketine ait olup uzunluğu geçersizdir. Muhtemelen NewGRF'lerle ilgili bir problemden kaynaklanıyor. Oyun senkron kaybına uğrayabilir ya da çakılabilir.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' geçersiz bilgi vermektedir.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}'{1:ENGINE}' için kargo tür değişim bilgisi yapımdan sonraki alım listesinden farklı. Bu otomatik yenileme-değiştirmenin kargo türünü doğru şekilde değiştirmesine engel olabilir.
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Oyun tramvay desteği olmayan bir sürümde kaydedilmiş. Tüm tramvaylar kaldırılmıştır.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Özel Para Birimi
@@ -3580,6 +3583,7 @@ STR_AI_RANDOM_AI                                                :Rastgele YZ
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}YZ Parametreleri
 STR_AI_AUTHOR                                                   :Yazar:
 STR_AI_VERSION                                                  :Sürüm:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Çalışan YZ'lerden biri çakıldı. Lütfen bu durumu AI Hata Ayıklama Penceresi görüntüsüyle birlikte YZ'nin yazarına bildirin.
 ########
 
 ############ town controlled noise level

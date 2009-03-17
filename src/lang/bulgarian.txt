@@ -668,7 +668,6 @@ STR_FULL                                                        :Пълно
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Списък от градовете
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Изборен
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -916,6 +915,8 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Тер�
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}По-реалистична зона за обслужване: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Разрушаване на повече градска собственост: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Много дълги влакове: {ORANGE}{STRING.p}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Оригинален
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Реалистичен
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Забрана 90 градусови завои: {ORANGE}{STRING.f}{LTBLUE} (трябва NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Обединяване на гари построени една до друга: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Позволено е присъединяването на станции, които не се допират: {ORANGE}{STRING}
@@ -1059,6 +1060,7 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Без 
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Цветни нови се появяват през: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Начална година: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Разреши купуване на акции от други компании: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Поставяне семафори всеки: {ORANGE}{STRING} плочк{P а и}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Поставяне на семафори преди: {ORANGE}{STRING} година
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Инструменти за сигналите: {ORANGE}{STRING.p}
@@ -1071,11 +1073,13 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Само нор
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Само напреднат
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Всички
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Пътно оформление за нови градове: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :default
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :по-добри пътища
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2х2 мрежа
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3х3 мрежа
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :случаен
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Градове са разрешени да изграждат пътища: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Градовете контролират нивото на шум от летищата: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Позиция на лентата за инструменти: {ORANGE}{STRING}
@@ -1102,6 +1106,14 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Авт�
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Станции
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Икономика
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Съперници
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Покажи опциите
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Взаимодействие
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Сигнали
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Компютърни играчи
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршрутизация
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Влакове
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Градове
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Индустрии
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Пътенамирач за влакове: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(не се препоръчва)
@@ -1407,6 +1419,7 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Въве
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сървъра е защитен. Въведете парола
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компанията е защитена. Въведете парола
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Списък с играчите
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Нова Фирма
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Не са открити мрежови устройства или е компилирано без ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Не може да открия мрежови игри
@@ -1655,6 +1668,7 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Цент
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Промяна на име на град
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Пасажери през последния месец: {ORANGE}{COMMA}{BLACK}  максимум: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Поща през последния месец: {ORANGE}{COMMA}{BLACK}  максимум: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} необходим
 STR_200F_TALL_OFFICE_BLOCK                                      :Висока офис сграда
 STR_2010_OFFICE_BLOCK                                           :Офис сграда
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Малък жилищен блок
@@ -2095,6 +2109,7 @@ STR_NUM_VERY_LOW                                                :мн. малк�
 STR_6816_LOW                                                    :малко
 STR_6817_NORMAL                                                 :нормално
 STR_6818_HIGH                                                   :голямо
+STR_02BF_CUSTOM                                                 :Изборен
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :много бавно
@@ -3063,6 +3078,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Сума
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Натрупани точки от общия възможен брой
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF настройки
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Покажи NewGRF настройки
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf настройки
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Прилагане на промените
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Превключване на палитрата
@@ -3092,6 +3108,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unexpected spri
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknown Action 0 property.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Attempt to use invalid ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} съдържа повреден обект. Вскички повредени обекти ще бъдат показани като червена въпросителна (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Съдържа множество Действие 8 вписвания.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Зареди избрания шаблон
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Запиши шаблон
@@ -3131,6 +3148,8 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Може
 STR_NEWGRF_BROKEN                                               :{WHITE}Поведението на NewGRF '{STRING}' вероятно ще предизвика десинхронизции и/или сривове
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Смяна на дължината на превозното средство '{1:ENGINE}', когато не е в депо.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Влак '{VEHICLE}' на '{COMPANY}' има невалидна дължина. Това вероятно е породено от проблеми с  NewGRFs. Играта може да загуби синхронизация или да забие.
+
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' дава невярна информация.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Играта бе записана във версия без поддръжка на трамваи. Всички трамваи са изтрити.
 
@@ -3318,6 +3337,13 @@ STR_SMALLMAP_CENTER                                             :{BLACK}Цент
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 # Strings for map borders at game generation
+STR_NORTHWEST                                                   :{BLACK}Северозапад
+STR_NORTHEAST                                                   :{BLACK}Североизток
+STR_SOUTHEAST                                                   :{BLACK}Югоизток
+STR_SOUTHWEST                                                   :{BLACK}Югозапад
+STR_BORDER_WATER                                                :{BLACK}Вода
+STR_BORDER_RANDOM                                               :{BLACK}Случаен
+STR_BORDER_RANDOMIZE                                            :{BLACK}Случаен
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Малко
@@ -3506,6 +3532,25 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!?+"%=:/_№І
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI Настройки
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Покажи AI настройки
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Име на AI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Презареждане AI
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI Конфигурация
+STR_AI_CHANGE                                                   :{BLACK}Изберете AI
+STR_AI_CONFIGURE                                                :{BLACK}Конфигуриране
+STR_AI_CHANGE_TIP                                               :{BLACK}Зареди друг AI
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Конфигурирайте параметрите на AI
+STR_AI_AILIST_TIP                                               :{BLACK}Кликнете за да изберете AI
+STR_AI_ACCEPT                                                   :{BLACK}Приеми
+STR_AI_CANCEL                                                   :{BLACK}Отмени
+STR_AI_CANCEL_TIP                                               :{BLACK}Не променяй AI
+STR_AI_CLOSE                                                    :{BLACK}Затвари
+STR_AI_HUMAN_PLAYER                                             :Човешки играч
+STR_AI_RANDOM_AI                                                :Случаен AI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Параметри
+STR_AI_AUTHOR                                                   :Автор:
+STR_AI_VERSION                                                  :Версия:
 ########
 
 ############ town controlled noise level
@@ -3514,6 +3559,25 @@ STR_STATION_NOISE                                               :{BLACK}Прои
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :AI библиотека
+STR_CONTENT_TYPE_SCENARIO                                       :Сценарий
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Вид
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Вид на съдържанието
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Име
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Име на съдържанието
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Избери всички
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Премахнете всички
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Вие вече имате това
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Това е подмяна на съществуващ {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Име: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Версия: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Описание: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Вид: {WHITE}{STRING}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Избрани поради: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Зависимости: {WHITE}{STRING}
 
 
 
