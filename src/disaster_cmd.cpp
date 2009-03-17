@@ -481,6 +481,12 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 			return;
 		}
 
+		if (!IsValidTile(v->dest_tile)) {
+			/* Make sure we don't land outside the map. */
+			delete v;
+			return;
+		}
+
 		byte z = GetSlopeZ(v->x_pos, v->y_pos);
 		if (z < v->z_pos) {
 			SetDisasterVehiclePos(v, v->x_pos, v->y_pos, v->z_pos - 1);
