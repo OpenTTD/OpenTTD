@@ -141,8 +141,6 @@ static void InitializeDisasterVehicle(Vehicle *v, int x, int y, byte z, Directio
 
 static void SetDisasterVehiclePos(Vehicle *v, int x, int y, byte z)
 {
-	Vehicle *u;
-
 	v->x_pos = x;
 	v->y_pos = y;
 	v->z_pos = z;
@@ -151,7 +149,8 @@ static void SetDisasterVehiclePos(Vehicle *v, int x, int y, byte z)
 	DisasterVehicleUpdateImage(v);
 	VehicleMove(v, true);
 
-	if ((u = v->Next()) != NULL) {
+	Vehicle *u = v->Next();
+	if (u != NULL) {
 		int safe_x = Clamp(x, 0, MapMaxX() * TILE_SIZE);
 		int safe_y = Clamp(y - 1, 0, MapMaxY() * TILE_SIZE);
 
@@ -183,11 +182,6 @@ static void SetDisasterVehiclePos(Vehicle *v, int x, int y, byte z)
  */
 static void DisasterTick_Zeppeliner(Vehicle *v)
 {
-	Station *st;
-	int x, y;
-	byte z;
-	TileIndex tile;
-
 	v->tick_counter++;
 
 	if (v->current_order.GetDestination() < 2) {
@@ -206,20 +200,18 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 			if (GB(v->tick_counter, 0, 3) == 0) CreateEffectVehicleRel(v, 0, -17, 2, EV_SMOKE);
 
 		} else if (v->current_order.GetDestination() == 0) {
-			tile = v->tile;
-
-			if (IsValidTile(tile) &&
-					IsTileType(tile, MP_STATION) &&
-					IsAirport(tile)) {
+			if (IsValidTile(v->tile) &&
+					IsTileType(v->tile, MP_STATION) &&
+					IsAirport(v->tile)) {
 				v->current_order.SetDestination(1);
 				v->age = 0;
 
-				SetDParam(0, GetStationIndex(tile));
+				SetDParam(0, GetStationIndex(v->tile));
 				AddNewsItem(STR_B000_ZEPPELIN_DISASTER_AT,
 					NS_ACCIDENT_VEHICLE,
 					v->index,
 					0);
-				AI::NewEvent(GetTileOwner(tile), new AIEventDisasterZeppelinerCrashed(GetStationIndex(tile)));
+				AI::NewEvent(GetTileOwner(v->tile), new AIEventDisasterZeppelinerCrashed(GetStationIndex(v->tile)));
 			}
 		}
 
@@ -230,14 +222,12 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 	if (v->current_order.GetDestination() > 2) {
 		if (++v->age <= 13320) return;
 
-		tile = v->tile;
-
-		if (IsValidTile(tile) &&
-				IsTileType(tile, MP_STATION) &&
-				IsAirport(tile)) {
-			st = GetStationByTile(tile);
+		if (IsValidTile(v->tile) &&
+				IsTileType(v->tile, MP_STATION) &&
+				IsAirport(v->tile)) {
+			Station *st = GetStationByTile(v->tile);
 			CLRBITS(st->airport_flags, RUNWAY_IN_block);
-			AI::NewEvent(GetTileOwner(tile), new AIEventDisasterZeppelinerCleared(st->index));
+			AI::NewEvent(GetTileOwner(v->tile), new AIEventDisasterZeppelinerCleared(st->index));
 		}
 
 		SetDisasterVehiclePos(v, v->x_pos, v->y_pos, v->z_pos);
@@ -245,9 +235,9 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 		return;
 	}
 
-	x = v->x_pos;
-	y = v->y_pos;
-	z = GetSlopeZ(x, y);
+	int x = v->x_pos;
+	int y = v->y_pos;
+	byte z = GetSlopeZ(x, y);
 	if (z < v->z_pos) z = v->z_pos - 1;
 	SetDisasterVehiclePos(v, x, y, z);
 
@@ -272,12 +262,10 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 		v->age = 0;
 	}
 
-	tile = v->tile;
-	if (IsValidTile(tile) &&
-			IsTileType(tile, MP_STATION) &&
-			IsAirport(tile)) {
-		st = GetStationByTile(tile);
-		SETBITS(st->airport_flags, RUNWAY_IN_block);
+	if (IsValidTile(v->tile) &&
+			IsTileType(v->tile, MP_STATION) &&
+			IsAirport(v->tile)) {
+		SETBITS(GetStationByTile(v->tile)->airport_flags, RUNWAY_IN_block);
 	}
 }
 
@@ -289,10 +277,6 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
  */
 static void DisasterTick_Ufo(Vehicle *v)
 {
-	Vehicle *u;
-	uint dist;
-	byte z;
-
 	v->u.disaster.image_override = (HasBit(++v->tick_counter, 3)) ? SPR_UFO_SMALL_SCOUT_DARKER : SPR_UFO_SMALL_SCOUT;
 
 	if (v->current_order.GetDestination() == 0) {
@@ -311,6 +295,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 		}
 		v->current_order.SetDestination(1);
 
+		Vehicle *u;
 		FOR_ALL_VEHICLES(u) {
 			if (u->type == VEH_ROAD && IsRoadVehFront(u)) {
 				v->dest_tile = u->index;
@@ -322,13 +307,13 @@ static void DisasterTick_Ufo(Vehicle *v)
 		delete v;
 	} else {
 		/* Target a vehicle */
-		u = GetVehicle(v->dest_tile);
+		Vehicle *u = GetVehicle(v->dest_tile);
 		if (u->type != VEH_ROAD || !IsRoadVehFront(u)) {
 			delete v;
 			return;
 		}
 
-		dist = Delta(v->x_pos, u->x_pos) + Delta(v->y_pos, u->y_pos);
+		uint dist = Delta(v->x_pos, u->x_pos) + Delta(v->y_pos, u->y_pos);
 
 		if (dist < TILE_SIZE && !(u->vehstatus & VS_HIDDEN) && u->breakdown_ctr == 0) {
 			u->breakdown_ctr = 3;
@@ -338,7 +323,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 		v->direction = GetDirectionTowards(v, u->x_pos, u->y_pos);
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 
-		z = v->z_pos;
+		byte z = v->z_pos;
 		if (dist <= TILE_SIZE && z > u->z_pos) z--;
 		SetDisasterVehiclePos(v, gp.x, gp.y, z);
 
@@ -372,9 +357,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 
 static void DestructIndustry(Industry *i)
 {
-	TileIndex tile;
-
-	for (tile = 0; tile != MapSize(); tile++) {
+	for (TileIndex tile = 0; tile != MapSize(); tile++) {
 		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == i->index) {
 			ResetIndustryConstructionStage(tile);
 			MarkTileDirtyByTile(tile);
@@ -383,23 +366,27 @@ static void DestructIndustry(Industry *i)
 }
 
 /**
- * Airplane handling, v->current_order.dest states:
- * 0: Fly towards the targetted oil refinery
+ * Aircraft handling, v->current_order.dest states:
+ * 0: Fly towards the targetted industry
  * 1: If within 15 tiles, fire away rockets and destroy industry
- * 2: Refinery explosions
+ * 2: Industry explosions
  * 3: Fly out of the map
- * If the industry was removed in the meantime just fly to the end of the map
+ * If the industry was removed in the meantime just fly to the end of the map.
+ * @param v The disaster vehicle.
+ * @param image_override The image at the time the aircraft is firing.
+ * @param leave_at_top True iff the vehicle leaves the map at the north side.
+ * @param news_message The string that's used as news message.
+ * @param industry_flag Only attack industries that have this flag set.
  */
-static void DisasterTick_Airplane(Vehicle *v)
+static void DisasterTick_Aircraft(Vehicle *v, uint16 image_override, bool leave_at_top, StringID news_message, IndustryBehaviour industry_flag)
 {
 	v->tick_counter++;
-	v->u.disaster.image_override =
-		(v->current_order.GetDestination() == 1 && HasBit(v->tick_counter, 2)) ? SPR_F_15_FIRING : 0;
+	v->u.disaster.image_override = (v->current_order.GetDestination() == 1 && HasBit(v->tick_counter, 2)) ? image_override : 0;
 
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
-	if (gp.x < (-10 * TILE_SIZE)) {
+	if ((leave_at_top && gp.x < (-10 * TILE_SIZE)) || (!leave_at_top && gp.x > (int)MapSizeX() * TILE_SIZE + 9 * TILE_SIZE - 1)) {
 		delete v;
 		return;
 	}
@@ -421,112 +408,45 @@ static void DisasterTick_Airplane(Vehicle *v)
 		}
 	} else if (v->current_order.GetDestination() == 1) {
 		if (++v->age == 112) {
-			Industry *i;
-
 			v->current_order.SetDestination(2);
 			v->age = 0;
 
-			i = GetIndustry(v->dest_tile);
+			Industry *i = GetIndustry(v->dest_tile);
 			DestructIndustry(i);
 
 			SetDParam(0, i->town->index);
-			AddNewsItem(STR_B002_OIL_REFINERY_EXPLOSION, NS_ACCIDENT_TILE, i->xy, 0);
+			AddNewsItem(news_message, NS_ACCIDENT_TILE, i->xy, 0);
 			SndPlayTileFx(SND_12_EXPLOSION, i->xy);
 		}
 	} else if (v->current_order.GetDestination() == 0) {
-		int x, y;
-		TileIndex tile;
-		uint ind;
+		int x = v->x_pos - (15 * TILE_SIZE);
+		int y = v->y_pos;
 
-		x = v->x_pos - (15 * TILE_SIZE);
-		y = v->y_pos;
+		if ((uint)x > MapMaxX() * TILE_SIZE - 1) return;
 
-		if ( (uint)x > MapMaxX() * TILE_SIZE - 1) return;
-
-		tile = TileVirtXY(x, y);
+		TileIndex tile = TileVirtXY(x, y);
 		if (!IsTileType(tile, MP_INDUSTRY)) return;
 
-		ind = GetIndustryIndex(tile);
+		IndustryID ind = GetIndustryIndex(tile);
 		v->dest_tile = ind;
 
-		if (GetIndustrySpec(GetIndustry(ind)->type)->behaviour & INDUSTRYBEH_AIRPLANE_ATTACKS) {
+		if (GetIndustrySpec(GetIndustry(ind)->type)->behaviour & industry_flag) {
 			v->current_order.SetDestination(1);
 			v->age = 0;
 		}
 	}
 }
 
-/**
- * Helicopter handling, v->current_order.dest states:
- * 0: Fly towards the targetted factory
- * 1: If within 15 tiles, fire away rockets and destroy industry
- * 2: Factory explosions
- * 3: Fly out of the map
- */
+/** Airplane handling. */
+static void DisasterTick_Airplane(Vehicle *v)
+{
+	DisasterTick_Aircraft(v, SPR_F_15_FIRING, true, STR_B002_OIL_REFINERY_EXPLOSION, INDUSTRYBEH_AIRPLANE_ATTACKS);
+}
+
+/** Helicopter handling. */
 static void DisasterTick_Helicopter(Vehicle *v)
 {
-	v->tick_counter++;
-	v->u.disaster.image_override =
-		(v->current_order.GetDestination() == 1 && HasBit(v->tick_counter, 2)) ? SPR_AH_64A_FIRING : 0;
-
-	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
-	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
-
-	if (gp.x > (int)MapSizeX() * TILE_SIZE + 9 * TILE_SIZE - 1) {
-		delete v;
-		return;
-	}
-
-	if (v->current_order.GetDestination() == 2) {
-		if (GB(v->tick_counter, 0, 2) == 0) {
-			Industry *i = GetIndustry(v->dest_tile);
-			int x = TileX(i->xy) * TILE_SIZE;
-			int y = TileY(i->xy) * TILE_SIZE;
-			uint32 r = Random();
-
-			CreateEffectVehicleAbove(
-				GB(r,  0, 6) + x,
-				GB(r,  6, 6) + y,
-				GB(r, 12, 4),
-				EV_EXPLOSION_SMALL);
-
-			if (++v->age >= 55) v->current_order.SetDestination(3);
-		}
-	} else if (v->current_order.GetDestination() == 1) {
-		if (++v->age == 112) {
-			Industry *i;
-
-			v->current_order.SetDestination(2);
-			v->age = 0;
-
-			i = GetIndustry(v->dest_tile);
-			DestructIndustry(i);
-
-			SetDParam(0, i->town->index);
-			AddNewsItem(STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS, NS_ACCIDENT_TILE, i->xy, 0);
-			SndPlayTileFx(SND_12_EXPLOSION, i->xy);
-		}
-	} else if (v->current_order.GetDestination() == 0) {
-		int x, y;
-		TileIndex tile;
-		uint ind;
-
-		x = v->x_pos + (15 * TILE_SIZE);
-		y = v->y_pos;
-
-		if ( (uint)x > MapMaxX() * TILE_SIZE - 1) return;
-
-		tile = TileVirtXY(x, y);
-		if (!IsTileType(tile, MP_INDUSTRY)) return;
-
-		ind = GetIndustryIndex(tile);
-		v->dest_tile = ind;
-
-		if (GetIndustrySpec(GetIndustry(ind)->type)->behaviour & INDUSTRYBEH_CHOPPER_ATTACKS) {
-			v->current_order.SetDestination(1);
-			v->age = 0;
-		}
-	}
+	DisasterTick_Aircraft(v, SPR_AH_64A_FIRING, false, STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS, INDUSTRYBEH_CHOPPER_ATTACKS);
 }
 
 /** Helicopter rotor blades; keep these spinning */
@@ -548,11 +468,6 @@ static void DisasterTick_Helicopter_Rotors(Vehicle *v)
  */
 static void DisasterTick_Big_Ufo(Vehicle *v)
 {
-	byte z;
-	Town *t;
-	TileIndex tile;
-	TileIndex tile_org;
-
 	v->tick_counter++;
 
 	if (v->current_order.GetDestination() == 1) {
@@ -566,7 +481,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 			return;
 		}
 
-		z = GetSlopeZ(v->x_pos, v->y_pos);
+		byte z = GetSlopeZ(v->x_pos, v->y_pos);
 		if (z < v->z_pos) {
 			SetDisasterVehiclePos(v, v->x_pos, v->y_pos, v->z_pos - 1);
 			return;
@@ -584,7 +499,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 			}
 		}
 
-		t = ClosestTownFromTile(v->dest_tile, UINT_MAX);
+		Town *t = ClosestTownFromTile(v->dest_tile, UINT_MAX);
 		SetDParam(0, t->index);
 		AddNewsItem(STR_B004_UFO_LANDS_NEAR,
 			NS_ACCIDENT_TILE,
@@ -621,7 +536,8 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 		}
 		v->current_order.SetDestination(1);
 
-		tile_org = tile = RandomTile();
+		TileIndex tile_org = RandomTile();
+		TileIndex tile = tile_org;
 		do {
 			if (IsTileType(tile, MP_RAILWAY) &&
 					IsPlainRailTile(tile) &&
@@ -632,8 +548,6 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 		} while (tile != tile_org);
 		v->dest_tile = tile;
 		v->age = 0;
-	} else {
-		return;
 	}
 }
 
@@ -643,9 +557,6 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
  */
 static void DisasterTick_Big_Ufo_Destroyer(Vehicle *v)
 {
-	Vehicle *u;
-	int i;
-
 	v->tick_counter++;
 
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
@@ -657,7 +568,7 @@ static void DisasterTick_Big_Ufo_Destroyer(Vehicle *v)
 	}
 
 	if (v->current_order.GetDestination() == 0) {
-		u = GetVehicle(v->u.disaster.big_ufo_destroyer_target);
+		Vehicle *u = GetVehicle(v->u.disaster.big_ufo_destroyer_target);
 		if (Delta(v->x_pos, u->x_pos) > TILE_SIZE) return;
 		v->current_order.SetDestination(1);
 
@@ -666,7 +577,7 @@ static void DisasterTick_Big_Ufo_Destroyer(Vehicle *v)
 
 		delete u;
 
-		for (i = 0; i != 80; i++) {
+		for (int i = 0; i != 80; i++) {
 			uint32 r = Random();
 			CreateEffectVehicleAbove(
 				GB(r, 0, 6) + v->x_pos - 32,
@@ -690,8 +601,6 @@ static void DisasterTick_Big_Ufo_Destroyer(Vehicle *v)
  */
 static void DisasterTick_Submarine(Vehicle *v)
 {
-	TileIndex tile;
-
 	v->tick_counter++;
 
 	if (++v->age > 8880) {
@@ -701,7 +610,7 @@ static void DisasterTick_Submarine(Vehicle *v)
 
 	if (!HasBit(v->tick_counter, 0)) return;
 
-	tile = v->tile + TileOffsByDiagDir(DirToDiagDir(v->direction));
+	TileIndex tile = v->tile + TileOffsByDiagDir(DirToDiagDir(v->direction));
 	if (IsValidTile(tile)) {
 		TrackBits trackbits = TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0));
 		if (trackbits == TRACK_BIT_ALL && !Chance16(1, 90)) {
@@ -744,12 +653,10 @@ static void Disaster_Zeppeliner_Init()
 {
 	if (!Vehicle::CanAllocateItem(2)) return;
 
-	Vehicle *v = new DisasterVehicle();
-	Station *st;
-
 	/* Pick a random place, unless we find a small airport */
 	int x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 
+	Station *st;
 	FOR_ALL_STATIONS(st) {
 		if (st->airport_tile != INVALID_TILE && (st->airport_type == AT_SMALL || st->airport_type == AT_LARGE)) {
 			x = (TileX(st->airport_tile) + 2) * TILE_SIZE;
@@ -757,6 +664,7 @@ static void Disaster_Zeppeliner_Init()
 		}
 	}
 
+	Vehicle *v = new DisasterVehicle();
 	InitializeDisasterVehicle(v, x, 0, 135, DIR_SE, ST_ZEPPELINER);
 
 	/* Allocate shadow */
@@ -945,46 +853,35 @@ static void Disaster_CoalMine_Init()
 	}
 }
 
-static DisasterInitProc * const _disaster_initprocs[] = {
-	Disaster_Zeppeliner_Init,
-	Disaster_Small_Ufo_Init,
-	Disaster_Airplane_Init,
-	Disaster_Helicopter_Init,
-	Disaster_Big_Ufo_Init,
-	Disaster_Small_Submarine_Init,
-	Disaster_Big_Submarine_Init,
-	Disaster_CoalMine_Init,
+struct Disaster {
+	DisasterInitProc *init_proc; ///< The init function for this disaster.
+	Year min_year;               ///< The first year this disaster will occur.
+	Year max_year;               ///< The last year this disaster will occur.
 };
 
-static const struct {
-	Year min;
-	Year max;
-} _dis_years[] = {
-	{ 1930, 1955 }, ///< zeppeliner
-	{ 1940, 1970 }, ///< ufo (small)
-	{ 1960, 1990 }, ///< airplane
-	{ 1970, 2000 }, ///< helicopter
-	{ 2000, 2100 }, ///< ufo (big)
-	{ 1940, 1965 }, ///< submarine (small)
-	{ 1975, 2010 }, ///< submarine (big)
-	{ 1950, 1985 }  ///< coalmine
+static const Disaster _disasters[] = {
+	{Disaster_Zeppeliner_Init,      1930, 1955}, // zeppeliner
+	{Disaster_Small_Ufo_Init,       1940, 1970}, // ufo (small)
+	{Disaster_Airplane_Init,        1960, 1990}, // airplane
+	{Disaster_Helicopter_Init,      1970, 2000}, // helicopter
+	{Disaster_Big_Ufo_Init,         2000, 2100}, // ufo (big)
+	{Disaster_Small_Submarine_Init, 1940, 1965}, // submarine (small)
+	{Disaster_Big_Submarine_Init,   1975, 2010}, // submarine (big)
+	{Disaster_CoalMine_Init,        1950, 1985}, // coalmine
 };
-
 
 static void DoDisaster()
 {
-	byte buf[lengthof(_dis_years)];
-	uint i;
-	uint j;
+	byte buf[lengthof(_disasters)];
 
-	j = 0;
-	for (i = 0; i != lengthof(_dis_years); i++) {
-		if (_cur_year >= _dis_years[i].min && _cur_year < _dis_years[i].max) buf[j++] = i;
+	size_t j = 0;
+	for (size_t i = 0; i != lengthof(_disasters); i++) {
+		if (_cur_year >= _disasters[i].min_year && _cur_year < _disasters[i].max_year) buf[j++] = i;
 	}
 
 	if (j == 0) return;
 
-	_disaster_initprocs[buf[RandomRange(j)]]();
+	_disasters[buf[RandomRange(j)]].init_proc();
 }
 
 
