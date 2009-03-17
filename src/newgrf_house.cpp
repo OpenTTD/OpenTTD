@@ -22,7 +22,7 @@
 #include "animated_tile_func.h"
 #include "company_base.h"
 
-static BuildingCounts    _building_counts;
+static BuildingCounts<uint32> _building_counts;
 static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];
 
 HouseOverrideManager _house_mngr(NEW_HOUSE_OFFSET, HOUSE_MAX, INVALID_HOUSE_ID);
@@ -61,20 +61,13 @@ void IncreaseBuildingCount(Town *t, HouseID house_id)
 
 	if (!_loaded_newgrf_features.has_newhouses) return;
 
-	/* If there are 255 buildings of this type in this town, there are also
-	 * at least that many houses of the same class in the town, and
-	 * therefore on the map as well. */
-	if (t->building_counts.id_count[house_id] == 255) return;
-
 	t->building_counts.id_count[house_id]++;
-	if (_building_counts.id_count[house_id] < 255) _building_counts.id_count[house_id]++;
+	_building_counts.id_count[house_id]++;
 
-	/* Similarly, if there are 255 houses of this class in this town, there
-	 * must be at least that number on the map too. */
-	if (class_id == HOUSE_NO_CLASS || t->building_counts.class_count[class_id] == 255) return;
+	if (class_id == HOUSE_NO_CLASS) return;
 
 	t->building_counts.class_count[class_id]++;
-	if (_building_counts.class_count[class_id] < 255) _building_counts.class_count[class_id]++;
+	_building_counts.class_count[class_id]++;
 }
 
 /**
@@ -121,10 +114,10 @@ static uint32 GetNumHouses(HouseID house_id, const Town *town)
 	uint8 map_id_count, town_id_count, map_class_count, town_class_count;
 	HouseClassID class_id = GetHouseSpecs(house_id)->class_id;
 
-	map_id_count     = _building_counts.id_count[house_id];
-	map_class_count  = _building_counts.class_count[class_id];
-	town_id_count    = town->building_counts.id_count[house_id];
-	town_class_count = town->building_counts.class_count[class_id];
+	map_id_count     = ClampU(_building_counts.id_count[house_id], 0, 255);
+	map_class_count  = ClampU(_building_counts.class_count[class_id], 0, 255);
+	town_id_count    = ClampU(town->building_counts.id_count[house_id], 0, 255);
+	town_class_count = ClampU(town->building_counts.class_count[class_id], 0, 255);
 
 	return map_class_count << 24 | town_class_count << 16 | map_id_count << 8 | town_id_count;
 }

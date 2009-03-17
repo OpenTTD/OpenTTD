@@ -90,9 +90,10 @@ enum HouseExtraFlags {
 
 DECLARE_ENUM_AS_BIT_SET(HouseExtraFlags)
 
+template <typename T>
 struct BuildingCounts {
-	uint8 id_count[HOUSE_MAX];
-	uint8 class_count[HOUSE_CLASS_MAX];
+	T id_count[HOUSE_MAX];
+	T class_count[HOUSE_CLASS_MAX];
 };
 
 static const uint CUSTOM_TOWN_NUMBER_DIFFICULTY  = 4; ///< value for custom town number in difficulty settings
@@ -176,7 +177,7 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	uint32 squared_town_zone_radius[HZB_END];
 
 	/* NOSAVE: The number of each type of building in the town. */
-	BuildingCounts building_counts;
+	BuildingCounts<uint16> building_counts;
 
 	/**
 	 * Creates a new town
