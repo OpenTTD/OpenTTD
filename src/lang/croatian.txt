@@ -672,6 +672,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Nije mog
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...nema više mjesta na karti
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Povećaj veličinu grada
 STR_023C_EXPAND                                                 :{BLACK}Proširi
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Grad neće graditi ceste. Možete uključiti gradnju cesta putem Naprednih postavki -> Ekonomija -> Gradovi
 STR_023D_RANDOM_TOWN                                            :{BLACK}Nasumičan grad
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Izgradi grad na nasumično odabranom pložaju
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Ovdje nije moguće izgraditi {STRING}...
@@ -731,7 +732,6 @@ STR_FULL                                                        :Puno
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Popis gradova
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Proizvoljno
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1012,8 +1012,10 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Neujedn
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Težinski množitelj za teret za simulaciju teških vlakova: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor brzine zrakoplova: {ORANGE}1/{STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Dopusti prolazne postaje na cestama u vlasništvu gradova: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Dozboli prolazne znakove na cestama koje su vlasništvo konkurencije: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Dopusti izgradnju pridruženih postaja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Omogući više NewGRF setova strojeva: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Mjenjanje ovih postavki nije moguće kad postoje vozila
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Uvijek dopusti male zračne luke: {ORANGE}{STRING}
 
@@ -1261,6 +1263,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Nije mog
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Izgradi željezničku prugu koristeći Autorail način
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...u ovom scenariju nema gradova
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Generiranje karte prekinuto...{}...ne postoje prigodne lokacije za gradove
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Mnogo nasumičnih gradova
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Popuni kartu nasumično raspoređenim gradovima
@@ -1749,6 +1752,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrira
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Promijeni ime grada
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Putnika prošli mjesec: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Pošte prošli mjesec: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Potrebno tereta za rast grada:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} potrebno
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} isporučeno prošli mjesec
 STR_200F_TALL_OFFICE_BLOCK                                      :Visoki uredski blok
 STR_2010_OFFICE_BLOCK                                           :Uredski blok
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Mali stambeni blok
@@ -2189,6 +2195,7 @@ STR_NUM_VERY_LOW                                                :Vrlo nisko
 STR_6816_LOW                                                    :Nisko
 STR_6817_NORMAL                                                 :Normalno
 STR_6818_HIGH                                                   :Visoko
+STR_02BF_CUSTOM                                                 :Proizvoljno
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Vrlo sporo
@@ -3229,6 +3236,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Ponašan
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ovo mijenja dužinu vozila za '{1:ENGINE}' kada vozilo nije unutar spremišta.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak'{VEHICLE}' koji pripada tvrtci '{COMPANY}' neispravne je dužine. Uzrok problema je vjerojatno u NewGRF-ovima. Igra će se možda deharmonizirati ili srušiti.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' daje netočne informacije.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacija tereta/obnavljanja za '{1:ENGINE}' je različita od kupovne liste nakon konstrukcije. Zbog toga bi automatsko obnavljanje/zamjena mogla biti neuspješna
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Igra je bila spremljena u verziji bez podrške za tramvaje. Zbog toga su svi tramvaji uklonjeni.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Proizvoljna valuta
@@ -3639,6 +3649,7 @@ STR_AI_RANDOM_AI                                                :Nasumična UI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametri UI
 STR_AI_AUTHOR                                                   :Autor:
 STR_AI_VERSION                                                  :Verzija:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Jedan od igrača sa UI se srušio. Molimo vas da prijavite ovo autoru UI sa screenshotom AI Debug prozora
 ########
 
 ############ town controlled noise level

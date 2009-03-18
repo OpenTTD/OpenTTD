@@ -668,7 +668,6 @@ STR_FULL                                                        :Pilns
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Pilsētu saraksts
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Speciālie
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -948,8 +947,10 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ne-unif
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Svara koeficients kravām, lai simulētu smagus vilcienus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Lidaparātu ātruma koeficients: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Atļaut braukt cauri pilsētai piederošiem slēgtiem ceļiem: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Atļaut caurbraucošas pieturas uz konkurentu ceļiem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Atļaut būvēt vienu otrai piekļautas stacijas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Iespējot vairākus NewGRF transporta līdzekļu komplektus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Šo parametru nav iespējams izmainīt, kad tur ir transportlīdzekļi.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Vienmēr atļaut mazas lidostas: {ORANGE}{STRING}
 
@@ -1197,6 +1198,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Nevar š
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Būvēt dzelzceļu izmantojot autosliežu režīmu
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...šajā scenārijā nav pilsētu
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Kartes ģenerēšana apturēta...{}...nav piemērotas pozīcijas pilsētām
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Daudz nejauši izveidotu pilsētu
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Pāklāt karti ar nejauši izvietotām pilsētām
@@ -1685,6 +1687,8 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Iecentr�
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Pārsaukt pilsētu
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Pasažieru sk. pagājušā mēnesī: {ORANGE}{COMMA}{BLACK}  Maks. sk.: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Pasts pagājušā mēnesī: {ORANGE}{COMMA}{BLACK}  Maks. apjoms: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Krava nepieciešama pilsētas attīstībai:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} nepieciešams
 STR_200F_TALL_OFFICE_BLOCK                                      :Augstceltne
 STR_2010_OFFICE_BLOCK                                           :Biroju ēka
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Maza dzīvokļu ēka
@@ -2125,6 +2129,7 @@ STR_NUM_VERY_LOW                                                :Ļoti zems
 STR_6816_LOW                                                    :Zems
 STR_6817_NORMAL                                                 :Normāls
 STR_6818_HIGH                                                   :Augsts
+STR_02BF_CUSTOM                                                 :Speciālie
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Ļoti lēns
@@ -3164,6 +3169,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Atpauzē
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF uzvedība '{0:STRING}' visticamāk notikusi desinhronizācijas vai avārijas dēļ
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Tas maina transportlīdzekļa garumu par '{1:ENGINE}' kad tas neatrodas depo ēkā.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vilciens '{VEHICLE}' kas pieder '{COMPANY}' ir ar nepareizu garumu. Iespējams vainīga problēma ar JaunoGRF. Spēle var pilnībā nedarboties.
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spēle bija saglabāta bez tramvaju atbalsta. Visi tramvaji tikuši aizvākti.
 

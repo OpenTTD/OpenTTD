@@ -169,7 +169,7 @@ STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}Itquay
 STR_00C8_YES                                                    :{BLACK}Esyay
 STR_00C9_NO                                                     :{BLACK}Onay
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Areway ouyay uresay ouyay antway otay abandonway isthay amegay andway eturnray otay {STRING}?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Areway ouyay uresay ouyay antway otay exitway OpenTTDWAY andway eturnray otay {STRING}?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
@@ -387,7 +387,7 @@ STR_0170                                                        :{TINYFONT}{STRI
 STR_0171_PAUSE_GAME                                             :{BLACK}Ausepay amegay
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Avesay amegay, abandonway amegay, itquay
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Isplayday istlay ofway ompany'scay ationsstay
-STR_0174_DISPLAY_MAP                                            :{BLACK}Isplayday apmay
+STR_0174_DISPLAY_MAP                                            :{BLACK}Isplayday apmay, extraway iewportvay orway istlay ofway ignssay
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Isplayday apmay, owntay irectoryday
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Isplayday owntay irectoryday
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Isplayday ompanycay inancesfay informationway
@@ -620,8 +620,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Antplay 
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Aceplay ockyray areasway onway andscapelay
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Aceplay ighthouselay
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Aceplay ansmittertray
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Efineday esertday areaway.{}Esspray andway oldhay CTRLay otay emoveray itway
-STR_CREATE_LAKE                                                 :{BLACK}Efineday aterway areaway.{}Akemay away analcay, unlessway CTRLay isway eldhay ownday atway easay evellay, enwhay itway illway oodflay ethay urroundingssay insteadway
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Efineday esertday areaway.{}Esspray andway oldhay Ctrlay otay emoveray itway
+STR_CREATE_LAKE                                                 :{BLACK}Efineday aterway areaway.{}Akemay away analcay, unlessway Ctrlay isway eldhay ownday atway easay evellay, enwhay itway illway oodflay ethay urroundingssay insteadway
 STR_CREATE_RIVER                                                :{BLACK}Aceplay iversray.
 STR_0290_DELETE                                                 :{BLACK}Eleteday
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Eleteday isthay owntay ompletelycay
@@ -690,8 +690,8 @@ STR_02D5_LAND_BLOCK_INFO                                        :Andlay areaway 
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Oggletay Onsolecay
 STR_AI_DEBUG_MENU                                               :AIWAY Ebugday
-STR_02D7_SCREENSHOT_CTRL_S                                      :Eenshotscray (Ctrlay-Say)
-STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Iantgay Eenshotscray (Ctrlay-Gay)
+STR_02D7_SCREENSHOT_CTRL_S                                      :Eenshotscray (Ctrlay+Say)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Iantgay Eenshotscray (Ctrlay+Gay)
 STR_02D9_ABOUT_OPENTTD                                          :Aboutway 'OpenTTD'WAY
 ############ range ends here
 
@@ -747,7 +747,7 @@ STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Electsay
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Electsay 'ubsay-arctic'WAY andscapelay ylestay
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Electsay 'ubsay-opical'tray andscapelay ylestay
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Electsay 'oyland'tay andscapelay ylestay
-STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Undfay onstructioncay ofway ewnay industryway
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Undfay onstructioncay ofway ewnay industryway orway istlay allway industriesway
 
 ############ range for menu starts
 STR_INDUSTRY_DIR                                                :Industryway Irectoryday
@@ -822,7 +822,7 @@ STR_CURR_ROL                                                    :Omanianray Eula
 STR_CURR_RUR                                                    :Ussianray Ublesray (URRay)
 STR_CURR_SIT                                                    :Ovenianslay Olartay (ITSay)
 STR_CURR_SEK                                                    :Edishsway Onakray (EKSay)
-STR_CURR_TRY                                                    :Urkishtay Iralay (RYTay)
+STR_CURR_TRY                                                    :Urkishtay Iralay (YTRay)
 STR_CURR_SKK                                                    :Ovakslay Orunakay (SKKay)
 STR_CURR_BRL                                                    :Azilianbray Ealray (BRLay)
 STR_CURR_EEK                                                    :Estonianway Oonikray (EEKWAY)
@@ -918,7 +918,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Enablew
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Aintray accelerationway odelmay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originalway
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Ealisticray
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Orbidfay ainstray andway ipsshay otay akemay 90 egday urnstay: {ORANGE}{STRING} {LTBLUE} (equiresray NPFay)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Orbidfay ainstray andway ipsshay otay akemay 90 egday urnstay: {ORANGE}{STRING} {LTBLUE} (otnay ithway NTPay)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Oinjay aintray ationsstay uiltbay extnay otay eachway otherway: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Allowway otay oinjay ationsstay otnay irectlyday adjacentway: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Useway improvedway oadinglay algorithmway: {ORANGE}{STRING}
@@ -961,7 +961,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ofway allway eh
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Arnway ifway away ehicle'svay incomeway isway egativenay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Ehiclesvay evernay expireway: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenewway ehiclevay enwhay itway etsgay oldway: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autorenewway enwhay ehicevay isway {ORANGE}{STRING}{LTBLUE} onthsmay eforebay/afterway axmay ageway
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autorenewway enwhay ehiclevay isway {ORANGE}{STRING}{LTBLUE} onthsmay eforebay/afterway axmay ageway
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Autorenewway inimummay eedednay oneymay orfay enewray: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Urationday ofway errorway essagemay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Owshay owntay opulationpay inway ethay owntay amenay abellay: {ORANGE}{STRING}
@@ -1006,8 +1006,8 @@ STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Offway
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Apmay ollwheelscray eedspay: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Ightray-ickclay emulationway: {ORANGE}{STRING}
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Ommandcay-ickclay
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ontrolcay-ickclay
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Ommandcay+Ickclay
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrlay+Ickclay
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Offway
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Eftlay-ickclay ollingscray: {ORANGE}{STRING}
@@ -1022,7 +1022,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Useway 
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Offway
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Ownway ompanycay
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Allway ompaniescay
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Useway oadinglay indicatorsway:{ORANGE}{STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Useway oadinglay indicatorsway: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Offway
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Ownway ompanycay
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Allway ompaniescay
@@ -1041,7 +1041,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Owshay 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Eepkay uildingbay oolstay activeway afterway usageway: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Oupgray expensesway inway ompanycay inancefay indowway: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Owshay uildingbay oolstay enwhay onay uitablesay ehiclesvay:{ORANGE}{STRING}
+STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Owshay uildingbay oolstay enwhay onay uitablesay ehiclesvay areway availableway: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Axmay ainstray erpay ayerplay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Axmay oadray ehiclesvay erpay ayerplay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Axmay aircraftway erpay ayerplay: {ORANGE}{STRING}
@@ -1081,11 +1081,11 @@ STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Athpay ignalssa
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Oneway-ayway athpay ignalssay
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Yclecay oughthray ignalsay ypestay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Ockblay ignalssay onlyway
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Advancedway onlyway
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Athpay ignalssay onlyway
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Allway
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Oadray ayoutlay orfay ewnay ownstay: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :efaultday
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :originalway
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :etterbay oadsray
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2xay2 idgray
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3xay3 idgray
@@ -1110,7 +1110,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Eryvay astfay
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Oportionpray ofway ownstay atthay illway ecomebay itiescay: {ORANGE}1 inway {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Oportionpray ofway ownstay atthay illway ecomebay itiescay: {ORANGE}Onenay
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initialway itycay izesay ultipliermay: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Emoveray absurdway oadray-elementsway uringday hetay oadray onstructioncay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Emoveray absurdway oadray-elementsway uringday ethay oadray onstructioncay: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfaceway
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Onstructioncay
@@ -1131,17 +1131,17 @@ STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Ownstay
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriesway
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Athfinderpay orfay ainstray: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Otnay Ecommendedray)
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Ecommendedray)
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTPay {RED}(Otnay ecommendedray)
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPFay
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPFay {BLUE}(Ecommendedray)
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Athfinderpay orfay oadray ehiclesvay: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Originalway {RED}(Otnay Ecommendedray)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Ecommendedray)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Originalway {RED}(Otnay ecommendedray)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPFay
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPFay {BLUE}(Ecommendedray)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Athfinderpay orfay ipsshay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Originalway {BLUE}(Ecommendedray)
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Otnay Ecommendedray)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPFay
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPFay {RED}(Otnay ecommendedray)
 
 STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Xay-izesay ofway apmay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Yay-izesay ofway apmay: {ORANGE}{STRING}
@@ -1184,7 +1184,7 @@ STR_WAYPOINT                                                    :{WHITE}Aypointw
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Electsay aypointway ypetay
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Rain{P "" s}tay
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Ain{P "" s}tray
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editway aypointway amenay
@@ -1221,12 +1221,12 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}An'tcay 
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Uildbay ockslay
 STR_LANDINFO_LOCK                                               :Ocklay
 
-STR_CANT_PLACE_RIVERS                                           :{WHITE}Ancay otnay lacepay iversray erehay...
+STR_CANT_PLACE_RIVERS                                           :{WHITE}An'tcay aceplay iversray erehay...
 STR_LANDINFO_RIVER                                              :Iverray
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...uoybay isway inway useway!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Oordinatescay: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LANDINFO_COORDS                                             :{BLACK}Oordinatescay: {LTBLUE}{NUM}xay{NUM}xay{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}An'tcay emoveray artpay ofway ationstay...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}An'tcay onvertcay ailtyperay erehay...
@@ -1249,7 +1249,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% ansportedtray)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% ansportedtray)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
-STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industryway amesnay - lickcay onway amenay otay entrecay iewvay onway industryway
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industryway amesnay - ickclay onway amenay otay entrecay iewvay onway industryway
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...ootay oseclay otay anotherway industryway
 
@@ -1277,8 +1277,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Amenay
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Amenay ofway ethay amegay
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Anguagelay, erversay ersionvay, etcway.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Ickclay away amegay omfray ethay istlay otay electsay itway
-STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Hetay erversay ouyay oinedjay astlay imetay:
-STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Lickcay otay electsay hetay erversay ouyay layedpay astlay imetay
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Ethay erversay ouyay oinedjay astlay imetay:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Ickclay otay electsay ethay erversay ouyay ayedplay astlay imetay
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Indfay erversay
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Earchsay etworknay orfay away erversay
@@ -1290,15 +1290,15 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Ientsclay
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Ientsclay onlineway / ientsclay axmay{}Ompaniescay onlineway / ompaniescay axmay
 
-STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}ybay{COMMA}
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}xay{COMMA}
 STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Apmay izesay
-STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Apmay izesay ofway hetay amegay{}Lickcay otay ortsay ybay areaway
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Apmay izesay ofway ethay amegay{}Ickclay otay ortsay ybay areaway
 
 STR_NETWORK_DATE_CAPTION                                        :{BLACK}Ateday
 STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Urrentcay ateday
 
 STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Earsyay
-STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Umbernay ofway earsyay{}hetay amegay isway unningray
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Umbernay ofway earsyay{}ethay amegay isway unningray
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}EGAMay INFOWAY
 STR_NETWORK_CLIENTS                                             :{SILVER}Ientsclay:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -1490,7 +1490,7 @@ STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} as
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} ashay eftlay ethay amegay ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} ashay angedchay ishay/erhay amenay otay {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} avegay ouryay ompanycay {2:CURRENCY}
-STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Ouyay avegay {1:STRING} {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Ouyay avegay {1:RAW_STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Eamtay] :
 STR_NETWORK_CHAT_COMPANY                                        :[Eamtay] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Eamtay] Otay {STRING}: {WHITE}{STRING}
@@ -1521,12 +1521,12 @@ STR_NETWORK_SEND                                                :{BLACK}Endsay
 
 ##### PNG-MAP-Loader
 
-STR_PNGMAP_ERROR                                                :{WHITE}Annotcay oadlay andscapelay omfray PNGay...
+STR_PNGMAP_ERROR                                                :{WHITE}An'tcay oadlay andscapelay omfray PNGay...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...ilefay otnay oundfay.
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...ouldcay otnay onvertcay imageway ypetay. 8 orway 24-itbay PNGay imageway eedednay.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...omethingsay ustjay entway ongwray. Orrysay. (obablypray orruptedcay ilefay)
 
-STR_BMPMAP_ERROR                                                :{WHITE}Annotcay oadlay andscapelay omfray BMPay...
+STR_BMPMAP_ERROR                                                :{WHITE}An'tcay oadlay andscapelay omfray BMPay...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...ouldcay otnay onvertcay imageway ypetay.
 
 ##id 0x0800
@@ -1553,8 +1553,8 @@ STR_0810_DESERT                                                 :Esertday
 STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Andlay opedslay inway ongwray irectionday
 STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Impossibleway acktray ombinationcay
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Excavationway ouldway amageday unneltay
-STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Alreadyway atway easay-evellay
-STR_1004_TOO_HIGH                                               :{WHITE}Ootay ighhay
+STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}... alreadyway atway easay evellay
+STR_1004_TOO_HIGH                                               :{WHITE}... ootay ighhay
 STR_ALREADY_LEVELLED                                            :{WHITE}... alreadyway atflay
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Onay uitablesay ailwayray acktray
 STR_1007_ALREADY_BUILT                                          :{WHITE}...alreadyway uiltbay
@@ -1563,7 +1563,7 @@ STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Oadray i
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Ailwayray Onstructioncay
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Electrifiedway Ailwayray Onstructioncay
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Onorailmay Onstructioncay
-STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}AgLevmay Onstructioncay
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Aglevmay Onstructioncay
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Electsay Ailray Idgebray
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}An'tcay uildbay aintray epotday erehay...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}An'tcay uildbay ailwayray ationstay erehay...
@@ -1575,7 +1575,7 @@ STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Aintray 
 STR_1015_RAILROAD_CONSTRUCTION                                  :Ailwayray onstructioncay
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Electrifiedway Ailwayray onstructioncay
 STR_1016_MONORAIL_CONSTRUCTION                                  :Onorailmay onstructioncay
-STR_1017_MAGLEV_CONSTRUCTION                                    :AgLevmay onstructioncay
+STR_1017_MAGLEV_CONSTRUCTION                                    :Aglevmay onstructioncay
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Uildbay ailwayray acktray
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Uildbay aintray epotday (orfay uildingbay andway ervicingsay ainstray)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Uildbay ailwayray ationstay
@@ -1588,24 +1588,24 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Electsay
 STR_1021_RAILROAD_TRACK                                         :Ailwayray acktray
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Ailwayray aintray epotday
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...areaway isway ownedway ybay anotherway ompanycay
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ailwayray acktray ithway ormalnay ignalssay
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ailwayray acktray ithway ockblay ignalssay
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ailwayray acktray ithway epray-ignalssay
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ailwayray acktray ithway exitway-ignalssay
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ailwayray acktray ithway ombocay-ignalssay
 STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Ailwayray acktray ithway athpay ignalssay
 STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Ailwayray acktray ithway oneway-ayway athpay ignalssay
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Ailwayray acktray ithway ormalnay andway epray-ignalssay
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Ailwayray acktray ithway ormalnay andway exitway-ignalssay
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Ailwayray acktray ithway ormalnay andway ombocay-ignalssay
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Ailwayray acktray ithway ockblay andway epray-ignalssay
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Ailwayray acktray ithway ockblay andway exitway-ignalssay
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Ailwayray acktray ithway ockblay andway ombocay-ignalssay
 STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Ailwayray acktray ithway ockblay andway athpay ignalssay
 STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Ailwayray acktray ithway ockblay andway oneway-ayway athpay ignalssay
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Ailwayray acktray ithway epray- andway exitway-ignalssay
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Ailwayray acktray ithway epray- andway ombocay-ignalssay
-STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Ailwayray racktay ithway repay- andway athpay ignalssay
-STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Ailwayray racktay ithway repay- andway one-ayway athpay ignalssay
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Ailwayray acktray ithway epray- andway athpay ignalssay
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Ailwayray acktray ithway epray- andway oneway-ayway athpay ignalssay
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Ailwayray acktray ithway exitway- andway ombocay-ignalssay
-STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Ailwayray racktay ithway exitway- andway athpay ignalssay
-STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Ailwayray racktay ithway exitway- andway one-ayway athpay ignalssay
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Ailwayray acktray ithway exitway- andway athpay ignalssay
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Ailwayray acktray ithway exitway- andway oneway-ayway athpay ignalssay
 STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Ailwayray acktray ithway ombocay- andway athpay ignalssay
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Ailwayray acktray ithway ombocay- andway oneway-ayway athpay ignalssay
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Ailwayray acktray ithway athpay andway oneway-ayway athpay ignalssay
@@ -1788,7 +1788,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}An'tcay 
 STR_280A_SIGN                                                   :Ignsay
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Editway ignsay exttay
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}An'tcay angechay ignsay amenay...
-STR_CAN_T_DELETE_SIGN                                           :{WHITE}Anay otnay eleteday ignsay...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}An'tcay eleteday ignsay...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Electsay eetray ypetay otay antplay
 STR_280E_TREES                                                  :Eestray
 STR_280F_RAINFOREST                                             :Ainforestray
@@ -1860,7 +1860,7 @@ STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Entrecay
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Owshay ationstay atingsray
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Angechay amenay ofway ationstay
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Owshay istlay ofway acceptedway argocay
-STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Ationstay amesnay - ickclay onway amenay otay entrecay ainmay iewvay onway ationstay
+STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Ationstay amesnay - ickclay onway amenay otay entrecay iewvay onway ationstay
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Electsay izesay/ypetay ofway airportway
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
@@ -1878,7 +1878,7 @@ STR_3069_BUOY                                                   :Uoybay
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...uoybay inway ethay ayway
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...ationstay ootay eadspray outway
 STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...onuniformnay ationsstay isabledday
-STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Oldhay ownday CTRLay otay electsay oremay anthay oneway itemway
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Oldhay ownday Ctrlay otay electsay oremay anthay oneway itemway
 
 STR_UNDEFINED                                                   :(undefinedway ingstray)
 STR_STAT_CLASS_DFLT                                             :Efaultday ationstay
@@ -1920,7 +1920,7 @@ STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Eleteday
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Avesay ethay urrentcay amegay, usingway ethay electedsay amenay
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Enerategay andomray ewnay amegay
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Oadlay Eightmaphay
-STR_SAVE_OSKTITLE                                               :{BLACK}Enterway away amenay orfay hetay avesay-amegay
+STR_SAVE_OSKTITLE                                               :{BLACK}Enterway away amenay orfay ethay avegamesay
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} inway ethay ayway
@@ -2003,7 +2003,7 @@ STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Unneltay
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Unableway otay excavateway andlay orfay otherway endway ofway unneltay
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Ustmay emolishday unneltay irstfay
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Ustmay emolishday idgebray irstfay
-STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Annotcay artstay andway endway inway ethay amesay otspay
+STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}An'tcay artstay andway endway inway ethay amesay otspay
 STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Idgebray eadshay otnay atway ethay amesay evellay
 STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Idgebray isway ootay owlay orfay ethay erraintay
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Artstay andway endway ustmay ebay inway inelay
@@ -2335,7 +2335,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Owshay i
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Owshay aircraftway olourcay emesschay
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Oosechay ethay imarypray olourcay orfay ethay electedsay emeschay
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Oosechay ethay econdarysay olourcay orfay ethay electedsay emeschay
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Electsay away olourcay emeschay otay angechay, orway ultiplemay emesschay ithway CTRLay+ickclay. Ickclay onway ethay oxbay otay oggletay useway ofway ethay emeschay
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Electsay away olourcay emeschay otay angechay, orway ultiplemay emesschay ithway Ctrlay+Ickclay. Ickclay onway ethay oxbay otay oggletay useway ofway ethay emeschay
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Irbykay Aulpay Anktay (Eamstay)
@@ -2610,20 +2610,20 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Aintray inway ethay ayway
 STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
-STR_ORDER_NON_STOP                                              :{BLACK}Onay-topsay
+STR_ORDER_NON_STOP                                              :{BLACK}Onnay-opstay
 STR_ORDER_GO_TO                                                 :Ogay otay
-STR_ORDER_GO_NON_STOP_TO                                        :Ogay onay-topsay otay
+STR_ORDER_GO_NON_STOP_TO                                        :Ogay onnay-opstay otay
 STR_ORDER_GO_VIA                                                :Ogay iavay
-STR_ORDER_GO_NON_STOP_VIA                                       :Ogay onay-topsay iavay
+STR_ORDER_GO_NON_STOP_VIA                                       :Ogay onnay-opstay iavay
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Ullfay oadlay anyway argocay
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Oadlay ifwawy availableway
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Oadlay ifway availableway
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Ullfay oadlay allway argocay
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Ullfay oadlay anyway argocay
 STR_ORDER_DROP_NO_LOADING                                       :Onay oadinglay
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Unloadway allway
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Unloadway ifway acceptedway
 STR_ORDER_DROP_UNLOAD                                           :Unloadway allway
-STR_ORDER_DROP_TRANSFER                                         :Ransfertay
+STR_ORDER_DROP_TRANSFER                                         :Ansfertray
 STR_ORDER_DROP_NO_UNLOADING                                     :Onay unloadingway
 STR_ORDER_FULL_LOAD                                             :(Ullfay oadlay)
 STR_ORDER_FULL_LOAD_ANY                                         :(Ullfay oadlay anyway argocay)
@@ -2720,17 +2720,17 @@ STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Ailray E
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Uildbay Ehiclevay
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Oneclay Ehiclevay
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Isthay illway uildbay away opycay ofway ethay oadray ehiclevay. Ontrolcay-ickclay illway areshay ethay ordersway
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Isthay illway uildbay away opycay ofway away oadray ehiclevay. Ickclay isthay uttonbay andway enthay onway away oadray ehiclevay insideway orway outsideway ethay epotday. Ontrolcay-ickclay illway areshay ethay ordersway
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Isthay illway uildbay away opycay ofway ethay oadray ehiclevay. Ctrlay+Ickclay illway areshay ethay ordersway
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Isthay illway uildbay away opycay ofway away oadray ehiclevay. Ickclay isthay uttonbay andway enthay onway away oadray ehiclevay insideway orway outsideway ethay epotday. Ctrlay+Ickclay illway areshay ethay ordersway
 STR_CLONE_TRAIN                                                 :{BLACK}Oneclay Aintray
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Isthay illway uildbay away opycay ofway ethay aintray includingway allway arscay. Ontrolcay-ickclay illway areshay ethay ordersway
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Isthay illway uildbay away opycay ofway away aintray includingway allway arscay. Ickclay isthay uttonbay andway enthay onway away aintray insideway orway outsideway ethay epotday. Ontrolcay-ickclay illway areshay ethay ordersway
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Isthay illway uildbay away opycay ofway ethay aintray includingway allway arscay. Ctrlay+Ickclay illway areshay ethay ordersway
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Isthay illway uildbay away opycay ofway away aintray includingway allway arscay. Ickclay isthay uttonbay andway enthay onway away aintray insideway orway outsideway ethay epotday. Ctrlay+Ickclay illway areshay ethay ordersway
 STR_8820_RENAME                                                 :{BLACK}Enameray
 STR_8823_SKIP                                                   :{BLACK}Ipskay
 STR_8824_DELETE                                                 :{BLACK}Eleteday
 STR_8826_GO_TO                                                  :{BLACK}Ogay Otay
 STR_REFIT                                                       :{BLACK}Efitray
-STR_REFIT_TIP                                                   :{BLACK}Electsay atwhay argocay ypetay otay efitray otay inway isthay orderway. Ontrolcay ickclay otay emoveray efitray instructionway
+STR_REFIT_TIP                                                   :{BLACK}Electsay atwhay argocay ypetay otay efitray otay inway isthay orderway. Ctrlay+Ickclay otay emoveray efitray instructionway
 STR_REFIT_ORDER                                                 :(Efitray otay {STRING})
 STR_REFIT_STOP_ORDER                                            :(Efitray otay {STRING} andway opstay)
 STR_STOP_ORDER                                                  :(Opstay)
@@ -2779,7 +2779,7 @@ STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Enameray
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Urrentcay aintray actionway - ickclay erehay otay opstay/artstay aintray
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Owshay ain'stray ordersway
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Entrecay ainmay iewvay onway ain'stray ocationlay
-STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Endsay aintray otay epotday. CTRLay+ickclay illway onlyway ervicesay
+STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Endsay aintray otay epotday. Ctrlay+Ickclay illway onlyway ervicesay
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Orcefay aintray otay oceedpray ithoutway aitingway orfay ignalsay otay earclay itway
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Everseray irectionday ofway aintray
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Owshay aintray etailsday
@@ -2789,8 +2789,8 @@ STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Owshay e
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Owshay etailsday ofway aintray ehiclesvay
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Owshay apacitiescay ofway eachway ehiclevay
 STR_SHOW_TOTAL_CARGO                                            :{BLACK}Owshay otaltay apacitycay ofway aintray, itsplay ybay argocay ypetay
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordersway istlay - ickclay onway anway orderway otay ighlighthay itway. CTRLay + ickclay ollsscray otay ethay ationstay
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Ipskay ethay urrentcay orderway, andway artstay ethay extnay. CTRLay + ickclay ipsskay otay ethay electedsay orderway
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordersway istlay - ickclay onway anway orderway otay ighlighthay itway. Ctrlay+Ickclay ollsscray otay ethay ationstay
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Ipskay ethay urrentcay orderway, andway artstay ethay extnay. Ctrlay+Ickclay ipsskay otay ethay electedsay orderway
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Eleteday ethay ighlightedhay orderway
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insertway away ewnay orderway eforebay ethay ighlightedhay orderway, orway addway otay endway ofway istlay
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Imetabletay - ickclay onway anway orderway otay ighlighthay itway.
@@ -2816,7 +2816,7 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}An'tcay everseray irectionday ofway aintray...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Enameray aintray ehiclevay ypetay
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}An'tcay enameray aintray ehiclevay ypetay...
-STR_CLEAR_TIME                                                  :{BLACK}Angechay Imetay
+STR_CLEAR_TIME                                                  :{BLACK}Earclay Imetay
 STR_RESET_LATENESS                                              :{BLACK}Esetray Atelay Ountercay
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Angechay aypointway amenay
 
@@ -2834,7 +2834,7 @@ STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Ewnay {S
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}An'tcay ellsay estroyedday ehiclevay...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}An'tcay efitray estroyedday ehiclevay...
 
-STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Ancay otnay imetabletay ehiclevay...
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}An'tcay imetabletay ehiclevay...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Ehiclesvay ancay onlyway aitway atway ationsstay.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Isthay ehiclevay isway otnay oppingstay atway isthay ationstay.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Angechay Imetay
@@ -2844,7 +2844,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Isthay ehicleva
 STR_TIMETABLE_TOTAL_TIME                                        :Isthay imetabletay illway aketay {STRING} otay ompletecay
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Isthay imetabletay illway aketay atway eastlay {STRING} otay ompletecay (otnay allway imetabledtay)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofillway
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Illfay ethay imetabletay automaticallyway ithway ethay aluesvay omfray ethay extnay ourneyjay (CTRLay-ickclay otay ytray otay eepkay aitingway imestay)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Illfay ethay imetabletay automaticallyway ithway ethay aluesvay omfray ethay extnay ourneyjay (Ctrlay+Ickclay otay ytray otay eepkay aitingway imestay)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Oadray ehiclevay inway ethay ayway
@@ -2876,7 +2876,7 @@ STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Oadray e
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Urrentcay ehiclevay actionway - ickclay erehay otay opstay/artstay ehiclevay
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Owshay ehicle'svay ordersway
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Entrecay ainmay iewvay onway ehicle'svay ocationlay
-STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Endsay ehiclevay otay epotday. CTRLay+ickclay illway onlyway ervicesay
+STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Endsay ehiclevay otay epotday. Ctrlay+Ickclay illway onlyway ervicesay
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Orcefay ehiclevay otay urntay aroundway
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Owshay oadray ehiclevay etailsday
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Ehiclesvay - ickclay onway ehiclevay orfay informationway
@@ -2925,8 +2925,8 @@ STR_9805_SHIPS                                                  :{WHITE}{COMPANY
 STR_9808_NEW_SHIPS                                              :{WHITE}Ewnay Ipsshay
 STR_9809_BUILD_SHIP                                             :{BLACK}Uildbay Ipshay
 STR_CLONE_SHIP                                                  :{BLACK}Oneclay Ipshay
-STR_CLONE_SHIP_INFO                                             :{BLACK}Isthay illway uildbay away opycay ofway ethay ipshay. Ontrolcay-ickclay illway areshay ethay ordersway
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Isthay illway uildbay away opycay ofway away ipshay. Ickclay isthay uttonbay andway enthay onway away ipshay insideway orway outsideway ethay epotday. Ontrolcay-ickclay illway areshay ethay ordersway
+STR_CLONE_SHIP_INFO                                             :{BLACK}Isthay illway uildbay away opycay ofway ethay ipshay. Ctrlay+Ickclay illway areshay ethay ordersway
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Isthay illway uildbay away opycay ofway away ipshay. Ickclay isthay uttonbay andway enthay onway away ipshay insideway orway outsideway ethay epotday. Ctrlay+Ickclay illway areshay ethay ordersway
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Ipshay ustmay ebay oppedstay inway epotday
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}An'tcay ellsay ipshay...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}An'tcay uildbay ipshay...
@@ -2959,7 +2959,7 @@ STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Uildbay 
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Urrentcay ipshay actionway - ickclay erehay otay opstay/artstay ipshay
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Owshay ip'sshay ordersway
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Entrecay ainmay iewvay onway ip'sshay ocationlay
-STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Endsay ipshay otay epotday. CTRLay+ickclay illway onlyway ervicesay
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Endsay ipshay otay epotday. Ctrlay+Ickclay illway onlyway ervicesay
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Owshay ipshay etailsday
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ostcay: {CURRENCY} Axmay. Eedspay: {VELOCITY}{}Apacitycay: {CARGO}{}Unningray Ostcay: {CURRENCY}/yray
 STR_982F_NAME_SHIP                                              :{BLACK}Amenay ipshay
@@ -2991,8 +2991,8 @@ STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}An'tcay 
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Aircraftway Angarhay
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Ewnay Aircraftway
 STR_CLONE_AIRCRAFT                                              :{BLACK}Oneclay Aircraftway
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Isthay illway uildbay away opycay ofway ethay aircraftway. Ontrolcay-ickclay illway areshay ethay ordersway
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Isthay illway uildbay away opycay ofway anway aircraftway. Ickclay isthay uttonbay andway enthay onway anway aircraftway insideway orway outsideway ethay angarhay. Ontrolcay-ickclay illway areshay ethay ordersway
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Isthay illway uildbay away opycay ofway ethay aircraftway. Ctrlay+Ickclay illway areshay ethay ordersway
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Isthay illway uildbay away opycay ofway anway aircraftway. Ickclay isthay uttonbay andway enthay onway anway aircraftway insideway orway outsideway ethay angarhay. Ctrlay+Ickclay illway areshay ethay ordersway
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Ewnay Aircraftway
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Uildbay Aircraftway
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}An'tcay uildbay aircraftway...
@@ -3029,7 +3029,7 @@ STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Uildbay 
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Urrentcay aircraftway actionway - ickclay erehay otay opstay/artstay aircraftway
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Owshay aircraft'sway ordersway
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Entrecay ainmay iewvay onway aircraft'sway ocationlay
-STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Endsay aircraftway otay angarhay. CTRLay+ickclay illway onlyway ervicesay
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Endsay aircraftway otay angarhay. Ctrlay+Ickclay illway onlyway ervicesay
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Owshay aircraftway etailsday
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ostcay: {CURRENCY} Axmay. Eedspay: {VELOCITY}{}Apacitycay: {COMMA} assengerspay, {COMMA} agsbay ofway ailmay{}Unningray Ostcay: {CURRENCY}/yray
 
@@ -3123,7 +3123,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} ustmay ebay oadedlay afterway {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} equiresray OpenTTDWAY ersionvay {STRING} orway etterbay.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :ethay GRFay ilefay itway asway esignedday otay anslatetray
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Ootay anymay NewGRFs areway oadedlay.
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Ootay anymay EwGRFsnay areway oadedlay.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Oadinglay {STRING} asway aticstay EwGRFnay ithway {STRING} ouldcay ausecay esyncsday.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unexpectedway itespray.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknownway Actionway 0 opertypray.
@@ -3155,7 +3155,7 @@ STR_NEWGRF_ADD_FILE                                             :{BLACK}Addway o
 STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Addway ethay electedsay EwGRFnay ilefay otay ouryay onfigurationcay
 STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Escanray ilesfay
 STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Updateway ethay istlay ofway availableway EwGRFnay ilesfay
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Annotcay addway ilefay: uplicateday GRFay IDWAY
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}An'tcay addway ilefay: uplicateday GRFay IDWAY
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Atchingmay ilefay otnay oundfay
 STR_NEWGRF_DISABLED                                             :{RED}Isabledday
@@ -3163,14 +3163,14 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Atching
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Ompatiblecay GRFay(say) oadedlay orfay issingmay ilesfay
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Issingmay GRFay ilefay(say) avehay eenbay isabledday
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Issingmay GRF filesay
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausingway ancay ashcray OpenTTD. Oday otnay ilefay ugbay eportsray orfay ubsequentsay ashescray.{}Oday ouyay eallyray antway otay unpauseway?
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Issingmay GRFay ilefay(say)
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausingway ancay ashcray OpenTTDWAY. Oday otnay ilefay ugbay eportsray orfay ubsequentsay ashescray.{}Oday ouyay eallyray antway otay unpauseway?
 
-STR_NEWGRF_BROKEN                                               :{WHITE}Ehaviourbay ofway EwGRFnay '{0:STRING}' isway ikelylay otay ausecay esyncsday andway/orway ashescray.
+STR_NEWGRF_BROKEN                                               :{WHITE}Ehaviourbay ofway EwGRFnay '{0:RAW_STRING}' isway ikelylay otay ausecay esyncsday andway/orway ashescray.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Itway angeschay ehiclevay engthlay orfay '{1:ENGINE}' enwhay otnay insideway away epotday.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Aintray '{VEHICLE}' elongingbay otay '{COMPANY}' ashay invalidway engthlay. Itway isway obablypray ausedcay ybay oblemspray ithway EwGRFsnay. Amegay aymay esyncday orway ashcray.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}EwGRFnay '{0:STRING}' ovidespray incorrectway informationway.
+STR_NEWGRF_BUGGY                                                :{WHITE}EwGRFnay '{0:RAW_STRING}' ovidespray incorrectway informationway.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Argocay/efitray informationway orfay '{1:ENGINE}' iffersday omfray urchasepay istlay afterway onstructioncay. Isthay ightmay ausecay autorenewway/-eplaceray otay ailfay efittingray orrectlycay.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Amegay asway avedsay inway ersionvay ithoutway amtray upportsay. Allway amstray avehay eenbay emovedray.
@@ -3397,7 +3397,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Areaway:
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
-STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
+STR_DATE_ISO                                                    :{2:NUM}-{1:RAW_STRING}-{0:RAW_STRING}
 
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
@@ -3409,15 +3409,15 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...istha
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...oadray acingfay inway ethay ongwray irectionday
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Ansparencytray Optionsway
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Oggletay ansparencytray orfay ationstay ignssay
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Oggletay ansparencytray orfay eestray
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Oggletay ansparencytray orfay ouseshay
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Oggletay ansparencytray orfay industriesway
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Oggletay ansparencytray orfay uildablesbay ikelay ationsstay, epotsday, aypointsway andway atenarycay
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Oggletay ansparencytray orfay idgesbray
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Oggletay ansparencytray orfay ucturesstray ikelay ighthouseslay andway antennasway, aybemay inway uturefay orfay eyecandyway
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Oggletay ansparencytray orfay atenarycay. CTRLay+ickclay otay ocklay.
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Oggletay ansparencytray orfay oadinglay indicatorsway
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Oggletay ansparencytray orfay ationstay ignssay. Ctrlay+Ickclay otay ocklay.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Oggletay ansparencytray orfay eestray. Ctrlay+Ickclay otay ocklay.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Oggletay ansparencytray orfay ouseshay. Ctrlay+Ickclay otay ocklay.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Oggletay ansparencytray orfay industriesway. Ctrlay+Ickclay otay ocklay.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Oggletay ansparencytray orfay uildablesbay ikelay ationsstay, epotsday andway aypointsway. Ctrlay+Ickclay otay ocklay.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Oggletay ansparencytray orfay idgesbray. Ctrlay+Ickclay otay ocklay.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Oggletay ansparencytray orfay ucturesstray ikelay ighthouseslay andway antennasway. Ctrlay+Ickclay otay ocklay.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Oggletay ansparencytray orfay atenarycay. Ctrlay+Ickclay otay ocklay.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Oggletay ansparencytray orfay oadinglay indicatorsway. Ctrlay+Ickclay otay ocklay.
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Etsay objectsway invisibleway insteadway ofway ansparenttray
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3455,7 +3455,7 @@ STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}An'tcay 
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}An'tcay addway ethay ehiclevay otay isthay oupgray...
 STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}An'tcay addway aredshay ehiclesvay otay oupgray...
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Oupsgray - Ickclay onway away oupgray otay istlay allway ehiclesvay ofway isthay oupgray
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Oupsgray - ickclay onway away oupgray otay istlay allway ehiclesvay ofway isthay oupgray
 STR_GROUP_CREATE_TIP                                            :{BLACK}Ickclay otay eatecray away oupgray
 STR_GROUP_DELETE_TIP                                            :{BLACK}Eleteday ethay electedsay oupgray
 STR_GROUP_RENAME_TIP                                            :{BLACK}Enameray ethay electedsay oupgray
@@ -3545,7 +3545,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Exitway-
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Ombocay-Ignalsay (electricway){}Ethay ombocay ignalsay implysay actsway asway othbay anway entryway andway exitway ignalsay. Isthay allowsway ouyay otay uildbay argelay "eestray" ofway esignalspray.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Athpay Ignalsay (electricway){}Away athpay ignalsay allowsway oremay anthay oneway aintray otay enterway away ignalsay ockblay atway ethay amesay imetay, ifway ethay aintray ancay eserveray away athpay otay away afesay oppingstay ointpay. Andardstay athpay ignalssay ancay ebay assedpay omfray ethay ackbay idesay.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Oneway-ayway Athpay Ignalsay (electricway){}Away athpay ignalsay allowsway oremay anthay oneway aintray otay enterway away ignalsay ockblay atway ethay amesay imetay, ifway ethay aintray ancay eserveray away athpay otay away afesay oppingstay ointpay. Oneway-ayway athpay ignalssay an'tcay ebay assedpay omfray ethay ackbay idesay.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Ignalsay Onvertcay{}Enwhay electedsay, ickingclay anway existingway ignalsay illway onvertcay itway otay ethay electedsay ignalsay ypetay andway ariantvay, CTRLay-ickclay illway oggletay ethay existingway ariantvay.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Ignalsay Onvertcay{}Enwhay electedsay, ickingclay anway existingway ignalsay illway onvertcay itway otay ethay electedsay ignalsay ypetay andway ariantvay, Ctrlay+Ickclay illway oggletay ethay existingway ariantvay.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Aggingdray ignalsay ensityday
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Ecreaseday aggingdray ignalsay ensityday
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Increaseway aggingdray ignalsay ensityday
@@ -3557,7 +3557,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|E
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}AIWAY ettingssay
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}AIWAY Ettingssay
 STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Isplayday AIWAY ettingssay
 STR_AI_DEBUG                                                    :{WHITE}AIWAY Ebugday
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Amenay ofway ethay AIWAY
@@ -3608,8 +3608,8 @@ STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Amenay o
 STR_CONTENT_MATRIX_TIP                                          :{BLACK}Ickclay onway away inelay otay eesay ethay etailsday{}Ickclay onway ethay eckboxchay otay electsay itway orfay ownloadingday
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Electsay allway
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Arkmay allway ontentcay otay ebay ownloadedday
-STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Electsay updatesway
-STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Arkmay allway ontentcay atthay isway anway updateway orfay existingway ontentcay otay ebay ownloadedday
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Electsay upgradesway
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Arkmay allway ontentcay atthay isway anway upgradeway orfay existingway ontentcay otay ebay ownloadedday
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Unselectway allway
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Arkmay allway ontentcay otay ebay otnay ownloadedday
 STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Enterway ilterfay ingstray
@@ -3647,7 +3647,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... onne
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... ilefay otnay itablewray
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Ouldcay otnay ecompressday ethay ownloadedday ilefay
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Eckchay onlineway ontentcay
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Eckchay Onlineway Ontentcay
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Eckchay orfay ewnay andway updatedway ontentcay otay ownloadday
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Indfay issingmay ontentcay onlineway
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Eckchay etherwhay ethay issingmay ontentcay ancay ebay oundfay onlineway

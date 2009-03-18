@@ -669,7 +669,6 @@ STR_FULL                                                        :Полно
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Список городов
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Свои
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1200,6 +1199,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Нево
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Строить ж/д путь, используя режим Авторельса
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...в этом сценарии нет городов
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Генерация карты остановлена...{}...нет доступных мест для размещения городов
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Много случайных городов
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Случайно разместить на карте города
@@ -2135,6 +2135,7 @@ STR_NUM_VERY_LOW                                                :Очень ни
 STR_6816_LOW                                                    :Низкое
 STR_6817_NORMAL                                                 :Среднее
 STR_6818_HIGH                                                   :Большое
+STR_02BF_CUSTOM                                                 :Свои
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Очень медленная
@@ -3182,6 +3183,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Пове
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Меняется длина транспорта '{1:ENGINE}' находящегося вне депо.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Поезд '{VEHICLE}' принадлежащий '{COMPANY}' имеет неправильную длину. Вероятно, это вызвано проблемами в файле новой графики. Игра может рассинхронизироваться или вылететь.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' указывает неверную информацию.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Информация о вместимости/переоборудовании для локомотива'{1:ENGINE}' после постройки отличается от сведений в списке покупки, что может помешать функции автообновления/автозамены корректно произвести переоборудование.
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Игра была сохранена в игре без поддержки трамваев. Все трамваи были отключены.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Своя валюта
@@ -3592,6 +3596,7 @@ STR_AI_RANDOM_AI                                                :Случ. ИИ
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Параметры ИИ
 STR_AI_AUTHOR                                                   :Автор:
 STR_AI_VERSION                                                  :Версия:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Один из запущенных ИИ выполнил недопустимую операцию и был закрыт. Пожалуйста сообщите об этом автору ИИ приложив скриншот окна ИИ отладки.
 ########
 
 ############ town controlled noise level

@@ -1197,6 +1197,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Tidak da
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Membangun rel kereta menggunakan mode Rel Otomatis
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...disana tidak ada kota dalam skenario ini
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Pebuatan peta dibatalkan...{}...tak ada lokasi kota yang cocok
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Buat kota secara acak
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Dukung Peta dengan penempatan kota secara otomatis
@@ -3169,6 +3170,8 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Biasanya
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ini akan mengubah panjang kereta '{1:ENGINE}' ketika tidak berada di dalam depo.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Kereta api '{VEHICLE}' milik '{COMPANY}' memiliki ukuran yang tidak sesuai. Hal ini mungkin disebabkan oleh masalah dengan NewGRF. Permainan mungkin akan rusak atau hang.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' memberikan informasi yang salah.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informasi muat ulang untuk '{1:ENGINE}' berbeda dengan daftar beli setelah konstruksi. Ini menyebabkan pembaruan otomatis gagal memuat ulang dengan benar..
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game telah disimpan pada versi terdahulu tanpa dukungan alat transportasi trem. Semua Trem telah dihilangkan.
 
@@ -3580,6 +3583,7 @@ STR_AI_RANDOM_AI                                                :AI Acak
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parameter AI
 STR_AI_AUTHOR                                                   :Pembuat:
 STR_AI_VERSION                                                  :Versi:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Salah satu AI gagal. Laporkan ini kepada AI Author dengan potongan layar dari Jendela Debug AI.
 ########
 
 ############ town controlled noise level
