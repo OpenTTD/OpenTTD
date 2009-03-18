@@ -451,7 +451,11 @@ void Window::DrawWidgets() const
 
 			clicked = !!(this->flags4 & WF_SIZING);
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawSprite(SPR_WINDOW_RESIZE, PAL_NONE, r.left + 3 + clicked, r.top + 3 + clicked);
+			if (wi->left < (this->width / 2)) {
+				DrawSprite(SPR_WINDOW_RESIZE_LEFT, PAL_NONE, r.left + 2, r.top + 3 + clicked);
+			} else {
+				DrawSprite(SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.left + 3 + clicked, r.top + 3 + clicked);
+			}
 			break;
 
 		case WWT_CLOSEBOX: {

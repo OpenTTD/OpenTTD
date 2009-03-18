@@ -587,15 +587,17 @@ enum WindowFlags {
 	WF_SCROLL_UP         = 1 <<  4, ///< Upper scroll button has been pressed, @see ScrollbarClickHandler()
 	WF_SCROLL_DOWN       = 1 <<  5, ///< Lower scroll button has been pressed, @see ScrollbarClickHandler()
 	WF_SCROLL_MIDDLE     = 1 <<  6, ///< Scrollbar scrolling, @see ScrollbarClickHandler()
-	WF_HSCROLL           = 1 <<  7,
-	WF_SIZING            = 1 <<  8, ///< Window is being resized.
-	WF_STICKY            = 1 <<  9, ///< Window is made sticky by user
+	WF_SCROLL2           = 1 <<  7,
+	WF_HSCROLL           = 1 <<  8,
+	WF_SIZING_RIGHT      = 1 <<  9, ///< Window is being resized towards the right.
+	WF_SIZING_LEFT       = 1 << 10, ///< Window is being resized towards the left.
+	WF_SIZING            = WF_SIZING_RIGHT | WF_SIZING_LEFT, ///< Window is being resized.
+	WF_STICKY            = 1 << 11, ///< Window is made sticky by user
 
-	WF_DISABLE_VP_SCROLL = 1 << 10, ///< Window does not do autoscroll, @see HandleAutoscroll()
+	WF_DISABLE_VP_SCROLL = 1 << 12, ///< Window does not do autoscroll, @see HandleAutoscroll()
 
-	WF_WHITE_BORDER_ONE  = 1 << 11,
-	WF_WHITE_BORDER_MASK = 1 << 12 | WF_WHITE_BORDER_ONE,
-	WF_SCROLL2           = 1 << 13,
+	WF_WHITE_BORDER_ONE  = 1 << 13,
+	WF_WHITE_BORDER_MASK = 1 << 14 | WF_WHITE_BORDER_ONE,
 };
 
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);
