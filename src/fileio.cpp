@@ -829,7 +829,7 @@ void ChangeWorkingDirectory(const char *exe)
 void DetermineBasePaths(const char *exe)
 {
 	char tmp[MAX_PATH];
-#if defined(__MORPHOS__) || defined(__AMIGA__) || defined(DOS) || !defined(WITH_PERSONAL_DIR)
+#if defined(__MORPHOS__) || defined(__AMIGA__) || defined(DOS) || defined(OS2) || !defined(WITH_PERSONAL_DIR)
 	_searchpaths[SP_PERSONAL_DIR] = NULL;
 #else
 	const char *homedir = getenv("HOME");
@@ -867,7 +867,7 @@ void DetermineBasePaths(const char *exe)
 	AppendPathSeparator(tmp, MAX_PATH);
 	_searchpaths[SP_BINARY_DIR] = strdup(tmp);
 
-#if defined(__MORPHOS__) || defined(__AMIGA__) || defined(DOS)
+#if defined(__MORPHOS__) || defined(__AMIGA__) || defined(DOS) || defined(OS2)
 	_searchpaths[SP_INSTALLATION_DIR] = NULL;
 #else
 	snprintf(tmp, MAX_PATH, "%s", GLOBAL_DATA_DIR);

@@ -1285,6 +1285,9 @@ void ScreenSizeChanged()
 
 void UndrawMouseCursor()
 {
+	/* Don't undraw the mouse cursor if the screen is not ready */
+	if (_screen.dst_ptr == NULL) return;
+
 	if (_cursor.visible) {
 		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 		_cursor.visible = false;
@@ -1299,6 +1302,9 @@ void DrawMouseCursor()
 	/* Don't ever draw the mouse for WinCE, as we work with a stylus */
 	return;
 #endif
+
+	/* Don't draw the mouse cursor if the screen is not ready */
+	if (_screen.dst_ptr == NULL) return;
 
 	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	int x;

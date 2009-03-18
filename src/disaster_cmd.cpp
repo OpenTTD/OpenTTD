@@ -566,6 +566,12 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 			return;
 		}
 
+		if (!IsValidTile(v->dest_tile)) {
+			/* Make sure we don't land outside the map. */
+			delete v;
+			return;
+		}
+
 		z = GetSlopeZ(v->x_pos, v->y_pos);
 		if (z < v->z_pos) {
 			SetDisasterVehiclePos(v, v->x_pos, v->y_pos, v->z_pos - 1);
@@ -885,7 +891,7 @@ static void Disaster_Submarine_Init(DisasterSubType subtype)
 	int x = TileX(r) * TILE_SIZE + TILE_SIZE / 2;
 
 	if (HasBit(r, 31)) {
-		y = MapMaxX() * TILE_SIZE - TILE_SIZE / 2 - 1;
+		y = MapMaxY() * TILE_SIZE - TILE_SIZE / 2 - 1;
 		dir = DIR_NW;
 	} else {
 		y = TILE_SIZE / 2;
