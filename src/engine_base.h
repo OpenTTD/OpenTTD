@@ -53,6 +53,7 @@ struct Engine : PoolItem<Engine, EngineID, &_Engine_pool> {
 
 	CargoID GetDefaultCargoType() const;
 	bool CanCarryCargo() const;
+	uint GetDisplayDefaultCapacity() const;
 	Money GetRunningCost() const;
 	Money GetCost() const;
 	uint GetDisplayMaxSpeed() const;

@@ -295,7 +295,7 @@ static byte MakeFinnishTownName(char *buf, uint32 seed, const char *last)
 		{
 			strecat(buf, "la", last);
 		} else {
-			strecat(buf, "lä", last);
+			strecat(buf, "l\xC3\xA4", last);
 		}
 	} else {
 		/* A two-part name by combining one of _name_finnish_{1,2} + _name_finnish_3.

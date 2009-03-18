@@ -10,40 +10,40 @@
 
 #include "table/strings.h"
 
-	/*   exchange rate    prefix             symbol_pos
-	 *   |  separator        |     postfix   |
-	 *   |   |    Euro year  |       |       |    name
-	 *   |   |    |          |       |       |    | */
+	/*   exchange rate    prefix                      symbol_pos
+	 *   |  separator        |           postfix          |
+	 *   |   |   Euro year   |              |             | name
+	 *   |   |    |          |              |             |  | */
 static const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
-	{    1, ',', CF_NOEURO, "£",    "",      0,  STR_CURR_GBP    }, ///< british pounds
-	{    2, ',', CF_NOEURO, "$",    "",      0,  STR_CURR_USD    }, ///< us dollars
-	{    2, ',', CF_ISEURO, "€",    "",      0,  STR_CURR_EUR    }, ///< Euro
-	{  220, ',', CF_NOEURO, "¥",    "",      0,  STR_CURR_YEN    }, ///< yen
-	{   20, ',', 2002,      "",     " S.",   1,  STR_CURR_ATS    }, ///< austrian schilling
-	{   59, ',', 2002,      "BEF ", "",      0,  STR_CURR_BEF    }, ///< belgian franc
-	{    2, ',', CF_NOEURO, "CHF ", "",      0,  STR_CURR_CHF    }, ///< swiss franc
-	{   41, ',', CF_NOEURO, "",     " Kč",   1,  STR_CURR_CZK    }, ///< czech koruna
-	{    3, '.', 2002,      "DM ",  "",      0,  STR_CURR_DEM    }, ///< deutsche mark
-	{   11, '.', CF_NOEURO, "",     " kr",   1,  STR_CURR_DKK    }, ///< danish krone
-	{  245, '.', 2002,      "Pts ", "",      0,  STR_CURR_ESP    }, ///< spanish pesetas
-	{    9, ',', 2002,      "",     " mk",   1,  STR_CURR_FIM    }, ///< finnish markka
-	{   10, '.', 2002,      "FF ",  "",      0,  STR_CURR_FRF    }, ///< french francs
-	{  500, ',', 2002,      "",     "Dr.",   1,  STR_CURR_GRD    }, ///< greek drachma
-	{  378, ',', CF_NOEURO, "",     " Ft",   1,  STR_CURR_HUF    }, ///< hungarian forint
-	{  130, '.', CF_NOEURO, "",     " Kr",   1,  STR_CURR_ISK    }, ///< icelandic krona
-	{ 2850, ',', 2002,      "",     " L.",   1,  STR_CURR_ITL    }, ///< italian lira
-	{    3, ',', 2002,      "NLG ", "",      0,  STR_CURR_NLG    }, ///< dutch gulden
-	{   12, '.', CF_NOEURO, "",     " Kr",   1,  STR_CURR_NOK    }, ///< norwegian krone
-	{    6, ' ', CF_NOEURO, "",     " zl",   1,  STR_CURR_PLN    }, ///< polish zloty
-	{    5, '.', CF_NOEURO, "",     " Lei",  1,  STR_CURR_ROL    }, ///< romanian Lei
-	{   50, ' ', CF_NOEURO, "",     " p",    1,  STR_CURR_RUR    }, ///< russian rouble
-	{  352, '.', 2007,      "",     " SIT",  1,  STR_CURR_SIT    }, ///< slovenian tolar
-	{   13, '.', CF_NOEURO, "",     " Kr",   1,  STR_CURR_SEK    }, ///< swedish krona
-	{    3, '.', CF_NOEURO, "",     " TL",   1,  STR_CURR_TRY    }, ///< turkish lira
-	{   52, ',', 2009,      "",     " Sk",   1,  STR_CURR_SKK    }, ///< slovak koruna
-	{    4, ',', CF_NOEURO, "R$ ",  "",      0,  STR_CURR_BRL    }, ///< brazil real
-	{   20, '.', CF_NOEURO, "",     " EEK",  1,  STR_CURR_EEK    }, ///< estonian krooni
-	{    1, ' ', CF_NOEURO, "",     "",      2,  STR_CURR_CUSTOM }, ///< custom currency
+	{    1, ',', CF_NOEURO, "\xC2\xA3",     "",           0, STR_CURR_GBP    }, ///< british pounds
+	{    2, ',', CF_NOEURO, "$",            "",           0, STR_CURR_USD    }, ///< us dollars
+	{    2, ',', CF_ISEURO, "\xE2\x82\xAC", "",           0, STR_CURR_EUR    }, ///< Euro
+	{  220, ',', CF_NOEURO, "\xC2\xA5",     "",           0, STR_CURR_YEN    }, ///< yen
+	{   20, ',', 2002,      "",             " S.",        1, STR_CURR_ATS    }, ///< austrian schilling
+	{   59, ',', 2002,      "BEF ",         "",           0, STR_CURR_BEF    }, ///< belgian franc
+	{    2, ',', CF_NOEURO, "CHF ",         "",           0, STR_CURR_CHF    }, ///< swiss franc
+	{   41, ',', CF_NOEURO, "",             " K\xC4\x8D", 1, STR_CURR_CZK    }, ///< czech koruna
+	{    3, '.', 2002,      "DM ",          "",           0, STR_CURR_DEM    }, ///< deutsche mark
+	{   11, '.', CF_NOEURO, "",             " kr",        1, STR_CURR_DKK    }, ///< danish krone
+	{  245, '.', 2002,      "Pts ",         "",           0, STR_CURR_ESP    }, ///< spanish pesetas
+	{    9, ',', 2002,      "",             " mk",        1, STR_CURR_FIM    }, ///< finnish markka
+	{   10, '.', 2002,      "FF ",          "",           0, STR_CURR_FRF    }, ///< french francs
+	{  500, ',', 2002,      "",             "Dr.",        1, STR_CURR_GRD    }, ///< greek drachma
+	{  378, ',', CF_NOEURO, "",             " Ft",        1, STR_CURR_HUF    }, ///< hungarian forint
+	{  130, '.', CF_NOEURO, "",             " Kr",        1, STR_CURR_ISK    }, ///< icelandic krona
+	{ 2850, ',', 2002,      "",             " L.",        1, STR_CURR_ITL    }, ///< italian lira
+	{    3, ',', 2002,      "NLG ",         "",           0, STR_CURR_NLG    }, ///< dutch gulden
+	{   12, '.', CF_NOEURO, "",             " Kr",        1, STR_CURR_NOK    }, ///< norwegian krone
+	{    6, ' ', CF_NOEURO, "",             " zl",        1, STR_CURR_PLN    }, ///< polish zloty
+	{    5, '.', CF_NOEURO, "",             " Lei",       1, STR_CURR_ROL    }, ///< romanian Lei
+	{   50, ' ', CF_NOEURO, "",             " p",         1, STR_CURR_RUR    }, ///< russian rouble
+	{  352, '.', 2007,      "",             " SIT",       1, STR_CURR_SIT    }, ///< slovenian tolar
+	{   13, '.', CF_NOEURO, "",             " Kr",        1, STR_CURR_SEK    }, ///< swedish krona
+	{    3, '.', CF_NOEURO, "",             " TL",        1, STR_CURR_TRY    }, ///< turkish lira
+	{   52, ',', 2009,      "",             " Sk",        1, STR_CURR_SKK    }, ///< slovak koruna
+	{    4, ',', CF_NOEURO, "R$ ",          "",           0, STR_CURR_BRL    }, ///< brazil real
+	{   20, '.', CF_NOEURO, "",             " EEK",       1, STR_CURR_EEK    }, ///< estonian krooni
+	{    1, ' ', CF_NOEURO, "",             "",           2, STR_CURR_CUSTOM }, ///< custom currency
 };
 
 /* Array of currencies used by the system */

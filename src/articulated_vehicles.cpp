@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "train.h"
 #include "roadveh.h"
-#include "aircraft.h"
 #include "newgrf_engine.h"
 #include "vehicle_func.h"
 
@@ -52,22 +51,7 @@ static inline uint16 GetVehicleDefaultCapacity(EngineID engine, VehicleType type
 	CargoID cargo = (e->CanCarryCargo() ? e->GetDefaultCargoType() : (CargoID)CT_INVALID);
 	if (cargo_type != NULL) *cargo_type = cargo;
 	if (cargo == CT_INVALID) return 0;
-	switch (type) {
-		case VEH_TRAIN:
-			return GetEngineProperty(engine, 0x14, e->u.rail.capacity) + (e->u.rail.railveh_type == RAILVEH_MULTIHEAD ? e->u.rail.capacity : 0);
-
-		case VEH_ROAD:
-			return GetEngineProperty(engine, 0x0F, e->u.road.capacity);
-
-		case VEH_SHIP:
-			return GetEngineProperty(engine, 0x0D, e->u.ship.capacity);
-
-		case VEH_AIRCRAFT:
-			return AircraftDefaultCargoCapacity(cargo, &e->u.air);
-
-		default: NOT_REACHED();
-	}
-
+	return e->GetDisplayDefaultCapacity();
 }
 
 /**

@@ -122,7 +122,8 @@ const GRFFile *GetEngineGRF(EngineID engine)
  */
 uint32 GetEngineGRFID(EngineID engine)
 {
-	return GetEngineGRF(engine)->grfid;
+	const GRFFile *file = GetEngineGRF(engine);
+	return file == NULL ? 0 : file->grfid;
 }
 
 
@@ -500,6 +501,9 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 	/* Calculated vehicle parameters */
 	switch (variable) {
+		case 0x25: // Get engine GRF ID
+			return GetEngineGRFID(v->engine_type);
+
 		case 0x40: // Get length of consist
 			if (!HasBit(v->cache_valid, 0)) {
 				v->cached_var40 = PositionHelper(v, false);
