@@ -14,7 +14,6 @@
 #include "engine_gui.h"
 #include "articulated_vehicles.h"
 #include "rail.h"
-#include "aircraft.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -151,7 +150,7 @@ static void DrawAircraftEngineInfo(EngineID engine, int x, int y, int maxw)
 	if (cargo == CT_INVALID || cargo == CT_PASSENGERS) {
 		SetDParam(0, e->GetCost());
 		SetDParam(1, e->GetDisplayMaxSpeed());
-		SetDParam(2, e->u.air.passenger_capacity);
+		SetDParam(2, e->GetDisplayDefaultCapacity());
 		SetDParam(3, e->u.air.mail_capacity);
 		SetDParam(4, e->GetRunningCost());
 
@@ -160,7 +159,7 @@ static void DrawAircraftEngineInfo(EngineID engine, int x, int y, int maxw)
 		SetDParam(0, e->GetCost());
 		SetDParam(1, e->GetDisplayMaxSpeed());
 		SetDParam(2, cargo);
-		SetDParam(3, AircraftDefaultCargoCapacity(cargo, &e->u.air));
+		SetDParam(3, e->GetDisplayDefaultCapacity());
 		SetDParam(4, e->GetRunningCost());
 
 		DrawStringMultiCenter(x, y, STR_982E_COST_MAX_SPEED_CAPACITY, maxw);
@@ -187,13 +186,12 @@ static void DrawRoadVehEngineInfo(EngineID engine, int x, int y, int maxw)
 
 static void DrawShipEngineInfo(EngineID engine, int x, int y, int maxw)
 {
-	const ShipVehicleInfo *svi = ShipVehInfo(engine);
 	const Engine *e = GetEngine(engine);
 
 	SetDParam(0, e->GetCost());
 	SetDParam(1, e->GetDisplayMaxSpeed());
 	SetDParam(2, e->GetDefaultCargoType());
-	SetDParam(3, GetEngineProperty(engine, 0x0D, svi->capacity));
+	SetDParam(3, e->GetDisplayDefaultCapacity());
 	SetDParam(4, e->GetRunningCost());
 	DrawStringMultiCenter(x, y, STR_982E_COST_MAX_SPEED_CAPACITY, maxw);
 }

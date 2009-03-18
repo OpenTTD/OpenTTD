@@ -225,8 +225,11 @@ static int CDECL RoadVehEngineCapacitySorter(const void *a, const void *b)
 /* Ship vehicle sorting functions */
 static int CDECL ShipEngineCapacitySorter(const void *a, const void *b)
 {
-	int va = ShipVehInfo(*(const EngineID*)a)->capacity;
-	int vb = ShipVehInfo(*(const EngineID*)b)->capacity;
+	const Engine *e_a = GetEngine(*(const EngineID*)a);
+	const Engine *e_b = GetEngine(*(const EngineID*)b);
+
+	int va = e_a->GetDisplayDefaultCapacity();
+	int vb = e_b->GetDisplayDefaultCapacity();
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -240,8 +243,8 @@ static int CDECL AircraftEngineCargoSorter(const void *a, const void *b)
 	const Engine *e_a = GetEngine(*(const EngineID*)a);
 	const Engine *e_b = GetEngine(*(const EngineID*)b);
 
-	int va = AircraftDefaultCargoCapacity(e_a->GetDefaultCargoType(), &e_a->u.air);
-	int vb = AircraftDefaultCargoCapacity(e_b->GetDefaultCargoType(), &e_b->u.air);
+	int va = e_a->GetDisplayDefaultCapacity();
+	int vb = e_b->GetDisplayDefaultCapacity();
 	int r = va - vb;
 
 	if (r == 0) {
@@ -383,7 +386,7 @@ static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const
 	/* Wagon weight - (including cargo) */
 	uint weight = e->GetDisplayWeight();
 	SetDParam(0, weight);
-	uint cargo_weight = (e->CanCarryCargo() ? GetCargo(e->GetDefaultCargoType())->weight * GetEngineProperty(engine_number, 0x14, rvi->capacity) >> 4 : 0);
+	uint cargo_weight = (e->CanCarryCargo() ? GetCargo(e->GetDefaultCargoType())->weight * e->GetDisplayDefaultCapacity() >> 4 : 0);
 	SetDParam(1, cargo_weight + weight);
 	DrawString(x, y, STR_PURCHASE_INFO_WEIGHT_CWEIGHT, TC_FROMSTRING);
 	y += 10;
@@ -482,7 +485,7 @@ static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const Ship
 
 	/* Cargo type + capacity */
 	SetDParam(0, e->GetDefaultCargoType());
-	SetDParam(1, GetEngineProperty(engine_number, 0x0D, svi->capacity));
+	SetDParam(1, e->GetDisplayDefaultCapacity());
 	SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 	DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
 	y += 10;
@@ -509,14 +512,14 @@ static int DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number, const 
 
 	/* Cargo capacity */
 	if (cargo == CT_INVALID || cargo == CT_PASSENGERS) {
-		SetDParam(0, avi->passenger_capacity);
+		SetDParam(0, e->GetDisplayDefaultCapacity());
 		SetDParam(1, avi->mail_capacity);
 		DrawString(x, y, STR_PURCHASE_INFO_AIRCRAFT_CAPACITY, TC_FROMSTRING);
 	} else {
 		/* Note, if the default capacity is selected by the refit capacity
 		 * callback, then the capacity shown is likely to be incorrect. */
 		SetDParam(0, cargo);
-		SetDParam(1, AircraftDefaultCargoCapacity(cargo, avi));
+		SetDParam(1, e->GetDisplayDefaultCapacity());
 		SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 		DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
 	}

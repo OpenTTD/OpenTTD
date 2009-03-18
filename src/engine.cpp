@@ -177,6 +177,36 @@ bool Engine::CanCarryCargo() const
 	return this->GetDefaultCargoType() != CT_INVALID;
 }
 
+/**
+ * Determines the default cargo capacity of an engine for display purposes.
+ *
+ * For planes carrying both passenger and mail this is the passenger capacity.
+ * For multiheaded engines this is the capacity of both heads.
+ * For articulated engines use GetCapacityOfArticulatedParts
+ *
+ * @return The default capacity
+ * @see GetDefaultCargoType
+ */
+uint Engine::GetDisplayDefaultCapacity() const
+{
+	if (!this->CanCarryCargo()) return 0;
+	switch (type) {
+		case VEH_TRAIN:
+			return GetEngineProperty(this->index, 0x14, this->u.rail.capacity) + (this->u.rail.railveh_type == RAILVEH_MULTIHEAD ? this->u.rail.capacity : 0);
+
+		case VEH_ROAD:
+			return GetEngineProperty(this->index, 0x0F, this->u.road.capacity);
+
+		case VEH_SHIP:
+			return GetEngineProperty(this->index, 0x0D, this->u.ship.capacity);
+
+		case VEH_AIRCRAFT:
+			return AircraftDefaultCargoCapacity(this->GetDefaultCargoType(), &this->u.air);
+
+		default: NOT_REACHED();
+	}
+}
+
 Money Engine::GetRunningCost() const
 {
 	switch (this->type) {

@@ -3,9 +3,11 @@
 /** @file ai_event_types.cpp Implementation of all EventTypes. */
 
 #include "ai_event_types.hpp"
+#include "../../command_type.h"
 #include "../../strings_func.h"
 #include "../../settings_type.h"
-#include "../../aircraft.h"
+#include "../../rail.h"
+#include "../../engine_base.h"
 #include "../../articulated_vehicles.h"
 #include "table/strings.h"
 
@@ -41,11 +43,8 @@ int32 AIEventEnginePreview::GetCapacity()
 		} break;
 
 		case VEH_SHIP:
-			return e->u.ship.capacity;
-			break;
-
 		case VEH_AIRCRAFT:
-			return AircraftDefaultCargoCapacity(e->GetDefaultCargoType(), &e->u.air);
+			return e->GetDisplayDefaultCapacity();
 			break;
 
 		default: NOT_REACHED();
