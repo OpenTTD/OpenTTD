@@ -299,7 +299,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	}
 
 	const char *english_name = GetEnglishFontName(logfont);
-	const char *font_name = WIDE_TO_MB(logfont->elfFullName);
+	const char *font_name = WIDE_TO_MB((const TCHAR*)logfont->elfFullName);
 	DEBUG(freetype, 1, "Fallback font: %s (%s)", font_name, english_name);
 
 	strecpy(info->settings->small_font,  font_name, lastof(info->settings->small_font));
