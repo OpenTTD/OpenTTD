@@ -372,7 +372,7 @@ static char *MakeFinnishTownName(char *buf, const char *last, uint32 seed)
 				strstr(orig, "A") != NULL || strstr(orig, "O") != NULL || strstr(orig, "U")  != NULL) {
 			buf = strecpy(buf, "la", last);
 		} else {
-			buf = strecpy(buf, "lä", last);
+			buf = strecpy(buf, "l\xC3\xA4", last);
 		}
 		return buf;
 	}
