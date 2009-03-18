@@ -172,6 +172,8 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 		if (err != FT_Err_Ok) break;
 
 		if (strncasecmp(font_name, (*face)->family_name, strlen((*face)->family_name)) == 0) break;
+		/* Try english name if font name failed */
+		if (strncasecmp(font_name + strlen(font_name) + 1, (*face)->family_name, strlen((*face)->family_name)) == 0) break;
 		err = FT_Err_Cannot_Open_Resource;
 
 	} while ((FT_Long)++index != (*face)->num_faces);
@@ -296,12 +298,18 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 		if ((fs.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (fs.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) return 1;
 	}
 
-	const char *font_name = GetEnglishFontName(logfont);
-	DEBUG(freetype, 1, "Fallback font: %s", font_name);
+	const char *english_name = GetEnglishFontName(logfont);
+	const char *font_name = WIDE_TO_MB(logfont->elfFullName);
+	DEBUG(freetype, 1, "Fallback font: %s (%s)", font_name, english_name);
 
 	strecpy(info->settings->small_font,  font_name, lastof(info->settings->small_font));
 	strecpy(info->settings->medium_font, font_name, lastof(info->settings->medium_font));
 	strecpy(info->settings->large_font,  font_name, lastof(info->settings->large_font));
+
+	/* Add english name after font name */
+	strecpy(info->settings->small_font + strlen(info->settings->small_font) + 1, english_name, lastof(info->settings->small_font));
+	strecpy(info->settings->medium_font + strlen(info->settings->medium_font) + 1, english_name, lastof(info->settings->medium_font));
+	strecpy(info->settings->large_font + strlen(info->settings->large_font) + 1, english_name, lastof(info->settings->large_font));
 	return 0; // stop enumerating
 }
 
