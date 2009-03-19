@@ -3231,7 +3231,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Kaireje 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagono pasalinimas: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Pakeitimo metu išlaikyti traukinio ilgį atjungiant vagonus (pradedant juo priekio), jeigu pakeitus garvežį traukinys pailgėtų.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Keicima: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERIMENTINĖ GALIMYBĖ {}Pereidinėti tarp garvežių ir vagonų pakeitimo langų.{}Vagonai bus pakeičiami tik tada, jeigu naujasis vagonas galės gabenti tą patį krovinio tipą kaip ir senasis. Tai atliekama patikrinant kiekvieną vagoną jo keitimo metu.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Pereidinėti tarp garvežių ir vagonų pakeitimo langų
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Transporto priemonė negalima
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Transporto priemonė negalima
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Laivas negalimas

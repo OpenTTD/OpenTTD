@@ -3234,7 +3234,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Viser hv
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Fjern vogn: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Få autoudskift til at bevare længden af tog ved at fjerne vogne (startende fra fronten), hvis autoudskiftningen gør toget længere.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Udskifter: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERIMENTEL EGENSKAB {}Skift imellem lokomotiv- og vogn-udskiftningsvindue.{}Vognudskiftning vil kun finde sted hvis den nye vogn kan ændres til at transportere samme godstype som den gamle vogn. Dette bliver checket for hver vogn, når udskiftningen finder sted.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skift imellem lokomotiv- og vogn-udskiftningsvindue
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Tog er ikke tilgængeligt
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vejkøretøj er ikke tilgængeligt
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Skib er ikke tilgængeligt

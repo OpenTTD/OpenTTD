@@ -3242,7 +3242,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Isplaysd
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Agonway emovalray: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Akemay autoreplaceway eepkay ethay engthlay ofway away aintray ethay amesay ybay emovingray agonsway (artingstay atway ethay ontfray), ifway eplacingray ethay engineway ouldway akemay ethay aintray ongerlay.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Eplacingray: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTALWAY EATUREFay {}Itchsway etweenbay engineway andway agonway eplacementray indowsway.{}Agonway eplacementray illway onlyway ebay oneday ifway ethay ewnay agonway ancay ebay efittedray intoway arryingcay ethay amesay ypetay ofway argocay asway ethay oldway oneway. Isthay isway eckedchay orfay eachway agonway enwhay ethay actualway eplacementray akestay aceplay.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}{}Itchsway etweenbay engineway andway agonway eplacementray indowsway
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Ehiclevay isway otnay availableway
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Ehiclevay isway otnay availableway
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Ipshay isway otnay availableway

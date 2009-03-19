@@ -3240,7 +3240,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Parāda,
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagona noņemšana: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Auto-aizvietošana saglabās vilciena garumu, aizvācot vagonus (sākot no priekšas), ja mainot lokomatīvi, tas kļūtu garāks.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Aizvietošana: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERIMENTĀLA METODE {}Parslēgties starp dzinēja un vagona aizvietošanas logiem. {}Vagona aizvietošana notiks tikai tad,ja jaunais vagons pārvietos to pašu kravu ko vecais vagons. Tas tiks pārbaudīts katram vagonam, kad notiks reāla nomaiņa.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Parslēgties starp dzinēja un vagona aizvietošanas logiem
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Tranportl. nav pieejams
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Mašīna nav pieejama
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Kuģis nav pieejams

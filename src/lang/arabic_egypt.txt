@@ -3239,7 +3239,6 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK} اعر�
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK} ازالة العربات: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK} المحافظة على طول القطار بازالة عربات ابتداء من المقدمة عند التبديل - عندما يكون التبدل ينتج قطارا اطول.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK} تبديل:  {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}  المميزات التجريبية {} بدل بين اطار المحركات و اطار  العربات {} تبديل العربات سوف يكون ممكنا اذا كان يحمل نفس نوع الشحنة السابقة. هذا سيكون لكل العربات عند بدأ التبديل.
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}العربة غير متاحة
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE} العربات غير متاحة
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE} السفن غير متاحة

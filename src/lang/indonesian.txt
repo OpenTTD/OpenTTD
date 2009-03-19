@@ -3242,7 +3242,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Menampil
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Membuang gerbong: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Membuat panjang kereta tetap sama saat penggantian secara otomatis dengan cara membuang gerbong(dihitung dari bagian depan), jika penggantian lokomotif membuat kereta lebih panjang.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Mengganti: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} Fitur Percobaan {}Pindah tampilan penggantian lokomitif atau gerbong.{}Penggantian gerbong hanya akan terlaksana jika gerbong baru dapat digunakan untuk jenis kargo yang sama. Hal ini akan diperiksa saat masing-masing gerbong mengalami pergantian.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Pindah tampilan penggantian lokomitif atau gerbong
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Kereta tidak tersedia
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Bus/truk tidak tersedia
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Kapal tidak tersedia

@@ -3242,7 +3242,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Soldaki 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon kaldırma: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Otomatik yenilemede tren boyutunun artması gerekiyorsa vagonları kaldır(en önden başlayarak yeterli sayıda vagon silinir).
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Değiştiriyor: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} DENEYSEL ÖZELLiK {}Lokomotif ve vagon değişimi pencereleri arasında geçiş yap.{}Vagon değişimi sadece yeni vagon eskisinin taşıdığı türde yükü taşıyabiliyorsa yapılir. Değiştirme işlemi sırasında tüm vagonlar için bu durum kontrol edilir.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Lokomotif ve vagon değişimi pencereleri arasında geçiş yap.
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Tren kullanılamaz
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Araba kullanılamaz
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Gemi kullanılamaz

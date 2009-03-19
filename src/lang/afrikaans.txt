@@ -3165,7 +3165,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Toon aan
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wa verwydering: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Maak autoreplace hou die lengte van 'n trein dieselfde deur verwyder waens (begin by die voor), indien vervang die enjin sal die trein langer maak
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vervang: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERIMENTELE KENMERK {} Skakel tussen enjin en wa vervang vensters. {} Wa vervang sal alleen gedoen word indien die nuwe wa kan wees herpas binne-in dra dieselfde tipe van cargo as die ou een. Hierdie is gemerk vir elke wa wanneer die vervang plaasvind.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skakel tussen enjin en wa vervang vensters
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Voertuig is nie beskikbaar nie
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Voertuig is nie beskikbaar nie
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Skip is nie beskikbaar

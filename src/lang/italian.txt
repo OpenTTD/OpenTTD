@@ -3244,7 +3244,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra c
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimozione vagoni: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fa sì che il rimpiazzamento automatico mantenga costante la lunghezza dei treni rimuovendo vagoni (iniziando dalla testa) nel caso in cui la sostituzione della locomotiva rendesse il treno più lungo
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Rimpiazza: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FUNZIONALITÀ SPERIMENTALE {}Scambia tra loro le finestre di rimpiazzamento delle locomotive e dei vagoni. {}Il rimpiazzamento del vagone avverrà solo se il nuovo vagone può essere riadattato per il trasporto dello stesso tipo di carico di quello vecchio. Questo controllo viene eseguito per ogni vagone al momento della sostituzione.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Scambia tra loro le finestre di rimpiazzamento delle locomotive e dei vagoni
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Il veicolo non è disponibile
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}L'automezzo non è disponibile
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}La nave non è disponibile

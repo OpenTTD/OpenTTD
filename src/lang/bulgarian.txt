@@ -3220,7 +3220,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Пока
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Премахване на вагон: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Автоматичната замяна ще запази дължината на влака като премахне вагони (започвайки от предните), ако замяната довежда до по-дълъг влак.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Замяна: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} ЕКСПЕРИМЕНТАЛНА ВЪЗМОЖНОСТ {}Превключване между замяна на локомотиви и вагони.{}Замяната на вагони ще бъде направена само ако новия тип вагони може да се преустрои да превозва същия тип товар като старите. Това се проверява за всеки вагон когато замяната се случва.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Превключване между замяна на локомотиви и вагони
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Превозното средство не е на разположение
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Превозното средство не е на разположение
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Корабът не е на разположение

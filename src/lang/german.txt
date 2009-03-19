@@ -3243,7 +3243,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Hier wir
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon-Entfernung: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ursprüngliche Länge des Zugs beibehalten, indem (vorne beginnend) Waggons entfernt werden, falls das Ersetzen der Lokomotive den Zug verlängern würde.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ersetzen: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTELLE FUNKTION {}Umschalter für Lok- oder Waggonersetzung{}Waggons werden nur ersetzt, wenn der neue Waggon den selben Warentyp transportieren kann wie der alte. Dies wird beim Ersetzen eines jeden Waggons einzeln geprüft.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Umschalter für Lok- oder Waggonersetzung
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Fahrzeug nicht verfügbar
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Fahrzeug nicht verfügbar
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Schiff nicht verfügbar

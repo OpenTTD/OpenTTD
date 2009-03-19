@@ -3308,7 +3308,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Prikazuj
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Uklanjanje vagona: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ukoliko bi zamjena lokomotive učinla vlak dužim, neka automatska zamjena zadrži istu dužinu vlaka tako da ukloni suvišne vagone (počevši od naprijed).
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zamjenjujem:{ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} POKUSNA FUNKCIJA {} Prebaci između prozora za izmjenu lokomotiva i vagona.{}Izmjena vagona izvršit će se samo ako novi vagon može biti prenamijenjen za prijevoz istog tipa tereta kao i stari vagon. Ovo se provjerava za svaki vagon kada se stvarna zamjena odvija.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Prebaci između prozora za izmjenu lokomotiva i vagona
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vozilo nije dostupno
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vozilo nije dostupno
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Brod nije dostupan

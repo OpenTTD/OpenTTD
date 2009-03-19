@@ -3242,7 +3242,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Näyttä
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vaunun poisto: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automaattikorvaus pitäköön junan vakiopituisena poistamalla vaunuja (edestä) jos veturi pidentäisi junaa.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Korvataan: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} ERIKOIS OMINAISUUS {} Vaihda toiseen korvausikkunaan. {} Vaunu vaihdetaan ainoastaan jos uusi vaunu kuljettaa samaa rahtia. Tämä tarkistetaan, joka kerta kun vaunu korvataan.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Vaihda toiseen korvausikkunaan
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Juna tai vaunu ei ole saatavilla
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Ajoneuvo ei ole saatavilla
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Laiva ei ole saatavilla
