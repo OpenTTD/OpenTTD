@@ -432,10 +432,13 @@ STR_AGE                                                         :{COMMA} jaro{P 
 STR_AGE_RED                                                     :{RED}{COMMA} jaro{P "" j} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Vojveturilo
-STR_019D_AIRCRAFT                                               :Aviadilo
-STR_019E_SHIP                                                   :Ŝipo
 STR_019F_TRAIN                                                  :Trajno
+STR_019C_ROAD_VEHICLE                                           :Vojveturilo
+STR_019E_SHIP                                                   :Ŝipo
+STR_019D_AIRCRAFT                                               :Aviadilo
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} malnoviĝis
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} tre malnoviĝis
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} tro malnoviĝis kaj postulas anstataŭiĝon
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Landregionaj informoj
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Forviŝkosto: {LTBLUE}ne eblas
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Forviŝkosto: {RED}{CURRENCY}
@@ -541,6 +544,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Unua ve
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Unua veturilo atingas konkurantan stacion
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Akcidentoj / katastrofoj
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Kompaniaj informoj
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Malfermiĝo de industrioj
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Fermiĝo de industrioj
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomiaj ŝanĝoj
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Novaj veturiloj
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Ŝarĝakceptado ŝanĝiĝas
@@ -628,9 +633,11 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...amba�
 STR_02A1_SMALL                                                  :{BLACK}Malgranda
 STR_02A2_MEDIUM                                                 :{BLACK}Mezgranda
 STR_02A3_LARGE                                                  :{BLACK}Granda
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Arbitre
 STR_FOUND_TOWN_CITY                                             :{BLACK}Urbo
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Elektu urban grandecon
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Urba grandeco:
+
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Montru lastan mesaĝon aŭ novaĵon
@@ -640,7 +647,6 @@ STR_FULL                                                        :Plene
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Urbaro
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Ŝanĝitaj
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -813,6 +819,7 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Ekranfot
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Elektu uzotan ekranfotan formaton
 
+
 STR_AUTOSAVE_1_MONTH                                            :Je ĉiu monato
 STR_AUTOSAVE_FAILED                                             :{WHITE}Fiaskis aŭtomate konservi
 
@@ -920,6 +927,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Altecma
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Maldekstrume
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Dekstrume
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Kiom alta fariĝos scenara mapo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Unu ay pli da xeloj en norda parto ne malplenas
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maksimuma stacivasteco: {ORANGE}{STRING} {RED}Atentu: Pli alte, malpli rapide
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Aŭtomate prizorgu helikopterojn sur helikopterejoj: {ORANGE}{STRING}
@@ -936,6 +944,8 @@ STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zomi mapon
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Skroli mapon
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Malaktiva
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Mapskrolrada rapido: {ORANGE}{STRING}
+
+
 
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Aŭtomate paŭzu startante novan ludon: {ORANGE}{STRING}
@@ -955,6 +965,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Malebli
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Malebligu ŝipojn por la komputilo: {ORANGE}{STRING}
 
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Prizorgintervala procentaĵo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Defaŭlta prizorgintervalo por trajnoj: {ORANGE}{STRING} tagoj/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Defaŭlta prizorgintervalo por trajnoj: {ORANGE}malaktiva
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Defaŭlta prizorgintervalo por vojveturiloj: {ORANGE}{STRING} tagoj/%
@@ -1003,14 +1014,19 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veturil
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stacioj
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomio
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurantoj
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Urboj
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrioj
 
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(malrekomenda)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-grandeco de la mapo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-grandeco de la mapo: {ORANGE}{STRING}
+
+############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :malaktiva
 STR_CONFIG_SETTING_INT32                                        :{NUM}
 STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Ŝanĝu agord-valoron
-
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(malrekomenda)
 
 STR_TEMPERATE_LANDSCAPE                                         :Modera landaspekto
 STR_SUB_ARCTIC_LANDSCAPE                                        :Arktikeca landaspekto
@@ -1101,7 +1117,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Listo da
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Malaktivigu ĉiujn
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Aktivigu ĉiujn
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrioj
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportite)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportite)
@@ -1114,9 +1129,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Transfor
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Elektu ŝarĝospecon portotan de la trajno
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Transformu trajnon por porti la elektitan ŝarĝotipon
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Ne povas transformi la trajnon...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Prizorgintervala procentaĵo: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ŝanĝu produktadon
-
 
 ############ network gui strings
 
@@ -1318,6 +1331,8 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :forbatite de se
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :provis uzi filudaĵon
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servilo plenas
 ############ End of leave-in-this-order
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Teamo] :
 STR_NETWORK_CHAT_COMPANY                                        :[Teamo] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Teamo] Al {STRING}: {WHITE}{STRING}
@@ -1344,11 +1359,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privata mesaĝo
 STR_NETWORK_SEND                                                :{BLACK}Sendu
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-grandeco de la mapo: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-grandeco de la mapo: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -1886,6 +1896,7 @@ STR_NUM_VERY_LOW                                                :Tre malalte
 STR_6816_LOW                                                    :Malalte
 STR_6817_NORMAL                                                 :Normale
 STR_6818_HIGH                                                   :Alte
+STR_02BF_CUSTOM                                                 :Ŝanĝitaj
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Tre Malrapide
@@ -2768,6 +2779,7 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manka(j)
 
 
 
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Alia monunuo
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Interŝanĝa valoro: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Dividilo:
@@ -2948,6 +2960,8 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Alteco d
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrigu la mapeton al la nuna loko
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
+# Strings for map borders at game generation
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Malgranda flughaveno
 STR_CITY_AIRPORT                                                :{BLACK}Urba flughaveno
@@ -3053,5 +3067,14 @@ STR_FACE_MOUSTACHE                                              :Liphararo:
 ############ on screen keyboard
 ########
 
+############ AI GUI
+########
+
 ############ town controlled noise level
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

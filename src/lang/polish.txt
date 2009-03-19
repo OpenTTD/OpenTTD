@@ -708,7 +708,6 @@ STR_FULL                                                        :Pełne
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Lista miast
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Własne
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -887,7 +886,9 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format z
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Wybierz format zrzutu ekranu
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Główny zestaw grafik
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Wybierz główny zestaw grafik do użycia
 
 STR_AUTOSAVE_1_MONTH                                            :Co 1 miesiąc
 STR_AUTOSAVE_FAILED                                             :{WHITE}Błąd autozapisu
@@ -986,6 +987,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Wspolcz
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Pozwól na budowę przystanków typu ro-ro na drogach miejskich: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Pozwól na budowę stacji przyległych do stacji przeciwnika (z CTRL): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Zezwol na wiele zestawow NewGRF: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Zmiana tego ustawienia nie jest możliwa, gdy znajdują się tutaj pojazdy.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Zawsze zezwalaj budować małe lotniska: {ORANGE}{STRING}
 
@@ -1046,6 +1048,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Wyłączona
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Przewijanie lewym przyciskiem myszy: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Użyj {ORANGE}{STRING}{LTBLUE} formatu daty dla nazw zapisów gry.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :długa (31 grudnia 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :krótka (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatycznie włącz pauzę przy rozpoczęciu nowej gry: {ORANGE}{STRING}
@@ -1111,6 +1115,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Tylko zwykle
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Tylko zaawansowane
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Wszystkie
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Układ dróg dla nowych miast: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :standardowy
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :lepsze drogi
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :siatka 2x2
@@ -1704,6 +1709,7 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centruj 
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Zmień nazwę miasta
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Pasażerów w zeszłym miesiącu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Poczta w zeszłym miesiącu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} required
 STR_200F_TALL_OFFICE_BLOCK                                      :Wysoki biurowiec
 STR_2010_OFFICE_BLOCK                                           :Biurowiec
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Mały blok mieszkalny
@@ -2178,6 +2184,7 @@ STR_NUM_VERY_LOW                                                :Bardzo mało
 STR_6816_LOW                                                    :Mało
 STR_6817_NORMAL                                                 :Średnio
 STR_6818_HIGH                                                   :Dużo
+STR_02BF_CUSTOM                                                 :Własne
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Bardzo wolno
@@ -3220,6 +3227,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Wyłącz
 STR_NEWGRF_BROKEN                                               :{WHITE}Zachowanie NewGRF '{0:STRING}' może powodować desynchronizacje i/lub błędy.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmienia długość pojazdu dla '{1:ENGINE}' gdy nie jest w zajezdni.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg '{VEHICLE}' należący do '{COMPANY}' ma niepoprawną długość. Prawdopodobnie problemem powoduje NewGRFs. Gra może działać niestabilnie lub się zawiesić.
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Gra została zapisana w wersji nie obsługującej tramwajów. Wszystkie tramwaje zostały usunięte.
 

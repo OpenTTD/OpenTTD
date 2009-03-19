@@ -3237,6 +3237,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Správan
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmenilo dlžku vozidla '{1:ENGINE}' mimo depa.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' patriaci '{COMPANY}' má neplatnu dlžku. Pravdeposobne to sposobil problém s NewGRF. Je možná desynchronizácia alebo pád hry.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' poskytuje nekorektné informácie.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informácia o zmene nákladu pre'{1:ENGINE}' sa líši od kúpneho listu. Môže to spôsobiť, že nové vozidlá sa nebudú prerábať na určitý tovar korektne.
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Hra bola uložená vo verzii bez elektriciek. Vsetky elektricky boli odstránené.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastná mena
@@ -3647,6 +3650,7 @@ STR_AI_RANDOM_AI                                                :Náhodná AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametre AI
 STR_AI_AUTHOR                                                   :Autor:
 STR_AI_VERSION                                                  :Verzia:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Jedna z AI padla. Prosím nahláste to autorovi AI a priložte screenshot Debugovacej obrazovky AI.
 ########
 
 ############ town controlled noise level

@@ -1490,7 +1490,7 @@ STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} as
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} ashay eftlay ethay amegay ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} ashay angedchay ishay/erhay amenay otay {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} avegay ouryay ompanycay {2:CURRENCY}
-STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Ouyay avegay {1:RAW_STRING} {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Ouyay avegay {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Eamtay] :
 STR_NETWORK_CHAT_COMPANY                                        :[Eamtay] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Eamtay] Otay {STRING}: {WHITE}{STRING}
@@ -3166,11 +3166,11 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Issingma
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Issingmay GRFay ilefay(say)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausingway ancay ashcray OpenTTDWAY. Oday otnay ilefay ugbay eportsray orfay ubsequentsay ashescray.{}Oday ouyay eallyray antway otay unpauseway?
 
-STR_NEWGRF_BROKEN                                               :{WHITE}Ehaviourbay ofway EwGRFnay '{0:RAW_STRING}' isway ikelylay otay ausecay esyncsday andway/orway ashescray.
+STR_NEWGRF_BROKEN                                               :{WHITE}Ehaviourbay ofway EwGRFnay '{0:STRING}' isway ikelylay otay ausecay esyncsday andway/orway ashescray.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Itway angeschay ehiclevay engthlay orfay '{1:ENGINE}' enwhay otnay insideway away epotday.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Aintray '{VEHICLE}' elongingbay otay '{COMPANY}' ashay invalidway engthlay. Itway isway obablypray ausedcay ybay oblemspray ithway EwGRFsnay. Amegay aymay esyncday orway ashcray.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}EwGRFnay '{0:RAW_STRING}' ovidespray incorrectway informationway.
+STR_NEWGRF_BUGGY                                                :{WHITE}EwGRFnay '{0:STRING}' ovidespray incorrectway informationway.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Argocay/efitray informationway orfay '{1:ENGINE}' iffersday omfray urchasepay istlay afterway onstructioncay. Isthay ightmay ausecay autorenewway/-eplaceray otay ailfay efittingray orrectlycay.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Amegay asway avedsay inway ersionvay ithoutway amtray upportsay. Allway amstray avehay eenbay emovedray.
@@ -3397,7 +3397,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Areaway:
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
-STR_DATE_ISO                                                    :{2:NUM}-{1:RAW_STRING}-{0:RAW_STRING}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}

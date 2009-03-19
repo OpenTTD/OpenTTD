@@ -668,7 +668,6 @@ STR_FULL                                                        :ممتلئ
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :دليل المدن
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :اختياري
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1199,6 +1198,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}لا ي�
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}بناء سكة القطار باستخدام البناء التلقائي
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}... لا يوجد مدن في هذه الخريطة
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}مولد الخريطة توقف ... {} ... لا يوجد مواقع مناسبة للمدن
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}العديد من المدن العشوائية
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}غطي الخريطة عشوائيا بمدن
@@ -2130,6 +2130,7 @@ STR_NUM_VERY_LOW                                                :منخفض جد
 STR_6816_LOW                                                    :قليل
 STR_6817_NORMAL                                                 :طبيعي
 STR_6818_HIGH                                                   :عالي
+STR_02BF_CUSTOM                                                 :اختياري
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :بطيء جدا
@@ -2855,7 +2856,7 @@ STR_9004_NEW_VEHICLES                                           :{BLACK}عربا
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}عربات جديدة
 STR_9007_BUILD_VEHICLE                                          :{BLACK}شراء عربة
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}لا يمكن شراء عربة ...
-STR_900C_DETAILS                                                :{WHITE}{VEHICLE} )التفاصيل(
+STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (التفاصيل)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}العمر: {LTBLUE}{STRING}{BLACK}       تكلفة التشغيل: {LTBLUE}{CURRENCY}/سنة
 STR_900E_MAX_SPEED                                              :{BLACK}السرعة القصوى: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}الدخل هذة السنة: {LTBLUE}{CURRENCY}          (السنة الماضية{CURRENCY})
@@ -3169,6 +3170,9 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}عدم �
 STR_NEWGRF_BROKEN                                               :{WHITE}حركات NewGFR '{0:STRING}'قد تتسبب في اخطاء او توقف للعبة
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}يغير طول العربة من '{1:ENGINE}' عندما تكون داخل المستودع
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE} قطار '{VEHICLE}' المملوك ل'{COMPANY}' لدية طول غير مسرح . غالبا نتج عن مشكلة في NewGRF. اللعبة قد تتوقف او تتعطل .
+
+STR_NEWGRF_BUGGY                                                :{WHITE} الرسوميات الجديدة  '{0:STRING}'  تعطي معلومات غير صحيحة.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE} التكلفة \ السعة ل '{1:ENGINE}'  تختلف ما بين قائمة الشراء و مابعد البناء. قد يتسبب هذا في فشل التبديل الذاتي.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}اللعبة حفظت بنسخة لا تدعم الترام. كل ما يتعلق بالترام حذف.
 
@@ -3579,6 +3583,7 @@ STR_AI_RANDOM_AI                                                :ذكاء صنا
 STR_AI_SETTINGS_CAPTION                                         :{WHITE} خصائص الذكاء الصناعي
 STR_AI_AUTHOR                                                   :المحرر:
 STR_AI_VERSION                                                  :النسخة:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE} واحد من الذكاء الصناعي فشل. الرجاء ابلاغ المبرمج عنه مصحوبا بصورة من شاشة مصحح الاخطاء.
 ########
 
 ############ town controlled noise level

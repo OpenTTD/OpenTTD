@@ -607,6 +607,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kan inte
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...det finns ingen plats kvar på kartan
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Öka stadens storlek
 STR_023C_EXPAND                                                 :{BLACK}Utöka
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Staden kommer inte bygga vägar. Du kan tillåta att staden bygger vägar via Avanserade Inställningar  ->Ekonomi->Städer.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Slumpmässig stad
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Bygg stad på slumpmässig plats
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kan inte bygga {STRING} här...
@@ -666,7 +667,6 @@ STR_FULL                                                        :Full
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Lista med städer
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Egna
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -946,6 +946,7 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Icke-re
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Godsfaktor för att simulera tunga tåg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Hastighetsfaktor för flygplan: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillåt genomfarts-stop på stadsägda vägar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Tillåt dina fordon att köra genom motståndarens hållplatser: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillåt byggande av närliggande stationer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Tillåt flera NewGRF-set: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det är inte möjligt att ändra denna inställning när det finns fordon
@@ -1196,6 +1197,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Kan inte
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Bygg järnvägspår genom att använda Autorail-funktionen
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...det finns ingen stad i detta scenario
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Generering av kartan avbruten...{}...ingen lämplig plats för någon stad
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Många slumpmässiga städer
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Täck kartan med slumpmässigt placerade städer
@@ -2127,6 +2129,7 @@ STR_NUM_VERY_LOW                                                :Väldigt låg
 STR_6816_LOW                                                    :Låg
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Hög
+STR_02BF_CUSTOM                                                 :Egna
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Väldigt långsam
@@ -3167,6 +3170,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE}'Beteend
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Byter fordonlängd för  '{1:ENGINE}' utanför en depå.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig länd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NyGRF '{STRING}' ger felaktig information.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last/återställnings information för '{1:ENGINE}' är skilld ifrån köp lista efter konstruktion. Detta kan leda till att den automatiska förnyelsen slår fel
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spelet sparades i en version som ej stöder spårvagn. Alla spårvagnar har tagits bort
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Egen valuta
@@ -3577,6 +3583,7 @@ STR_AI_RANDOM_AI                                                :Slumpa datorspe
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Datorspelarens parametrar
 STR_AI_AUTHOR                                                   :Upphovsman:
 STR_AI_VERSION                                                  :Version:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}En av AI'erna som körs har krachat. Vänligen raportera detta till AIs skapare med en screenshot på "AI Debug Fönsteret".
 ########
 
 ############ town controlled noise level

@@ -608,6 +608,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Impossí
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...não há mais espaço no mapa
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Aumentar o tamanho da cidade
 STR_023C_EXPAND                                                 :{BLACK}Expandir
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}A cidade não irá construir estradas. Você pode ativar essa opção através de Config. Avançadas>Economia>Cidades.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Cidade Aleatória
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Construir cidade num local aleatório
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Impossível construir {STRING} aqui...
@@ -667,7 +668,6 @@ STR_FULL                                                        :Completo
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Lista de cidades
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Personalizado
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1198,6 +1198,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Impossí
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Construir ferrovias usando o modo automático
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...não existe cidade neste cenário
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Geração do mapa abortada... {}... não há locais para criação de cidades
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Várias cidades aleatórias
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Cobrir o mapa com cidades colocadas aleatoriamente
@@ -2129,6 +2130,7 @@ STR_NUM_VERY_LOW                                                :Muito baixo
 STR_6816_LOW                                                    :Baixo
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Alto
+STR_02BF_CUSTOM                                                 :Personalizado
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Muito Lento
@@ -3169,6 +3171,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE} '{0:STR
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Muda o tamanho de um veículo para '{1:ENGINE}' apesar de não estar em um depósito.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trem '{VEHICLE}' de '{COMPANY}' tem um tamanho inválido. Provavelmente causado por um NewGRF. O jogo pode travar ou sair de sincronia.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}O NewGRF '{0:STRING}' retorna informação incorreta.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A informação de adaptação para '{1:ENGINE}' difere da lista de compras após a construção. Isso pode causar erros na autosubstituição/autoadaptação.
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Jogo foi salvo numa versão sem suporte a bondes. Todos os bondes foram removidos.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda Modificada
@@ -3579,6 +3584,7 @@ STR_AI_RANDOM_AI                                                :IA Randômica
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parâmetros da IA
 STR_AI_AUTHOR                                                   :Progamador:
 STR_AI_VERSION                                                  :Versão:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Uma das IA's travou. Favor relatar ao autor da IA com uma screenshot da Janela de Debug da IA.
 ########
 
 ############ town controlled noise level
