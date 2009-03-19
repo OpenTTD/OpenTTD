@@ -95,7 +95,7 @@ public:
 					/* Yes... these are the NewGRF windows */
 					InvalidateWindowClasses(WC_SAVELOAD);
 					InvalidateWindowData(WC_GAME_OPTIONS, 0, 1);
-					InvalidateWindowData(WC_NETWORK_WINDOW, 0, 2);
+					InvalidateWindowData(WC_NETWORK_WINDOW, 1, 2);
 					break;
 
 				case CONTENT_TYPE_SCENARIO:
@@ -319,7 +319,7 @@ public:
 	 * Create the content list window.
 	 * @param desc the window description to pass to Window's constructor.
 	 */
-	NetworkContentListWindow(const WindowDesc *desc, bool select_all) : QueryStringBaseWindow(EDITBOX_MAX_SIZE, desc), selected(NULL), list_pos(0)
+	NetworkContentListWindow(const WindowDesc *desc, bool select_all) : QueryStringBaseWindow(EDITBOX_MAX_SIZE, desc, 1), selected(NULL), list_pos(0)
 	{
 		ttd_strlcpy(this->edit_str_buf, "", this->edit_str_size);
 		this->afilter = CS_ALPHANUMERAL;
@@ -383,7 +383,7 @@ public:
 			}
 		}
 
-		this->SetWidgetDisabledState(NCLWW_DOWNLOAD, filesize == 0);
+		this->SetWidgetDisabledState(NCLWW_DOWNLOAD, filesize == 0 || FindWindowById(WC_NETWORK_STATUS_WINDOW, 0) != NULL);
 		this->SetWidgetDisabledState(NCLWW_UNSELECT, filesize == 0);
 		this->SetWidgetDisabledState(NCLWW_SELECT_ALL, !show_select_all);
 		this->SetWidgetDisabledState(NCLWW_SELECT_UPDATE, !show_select_upgrade);
@@ -594,7 +594,7 @@ public:
 				break;
 
 			case NCLWW_DOWNLOAD:
-				new NetworkContentDownloadStatusWindow();
+				if (BringWindowToFrontById(WC_NETWORK_STATUS_WINDOW, 0) == NULL) new NetworkContentDownloadStatusWindow();
 				break;
 		}
 	}
@@ -782,6 +782,7 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type)
 		_network_content_client.RequestContentList(cv, true);
 	}
 
+	DeleteWindowById(WC_NETWORK_WINDOW, 1);
 	new NetworkContentListWindow(&_network_content_list_desc, cv != NULL);
 #else
 	ShowErrorMessage(STR_CONTENT_NO_ZLIB_SUB, STR_CONTENT_NO_ZLIB, 0, 0);

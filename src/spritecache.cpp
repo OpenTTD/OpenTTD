@@ -80,8 +80,9 @@ static void CompactSpriteCache();
  * Skip the given amount of sprite graphics data.
  * @param type the type of sprite (compressed etc)
  * @param num the amount of sprites to skip
+ * @return true if the data could be correctly skipped.
  */
-void SkipSpriteData(byte type, uint16 num)
+bool SkipSpriteData(byte type, uint16 num)
 {
 	if (type & 2) {
 		FioSkipBytes(num);
@@ -90,6 +91,7 @@ void SkipSpriteData(byte type, uint16 num)
 			int8 i = FioReadByte();
 			if (i >= 0) {
 				int size = (i == 0) ? 0x80 : i;
+				if (size > num) return false;
 				num -= size;
 				FioSkipBytes(size);
 			} else {
@@ -99,6 +101,7 @@ void SkipSpriteData(byte type, uint16 num)
 			}
 		}
 	}
+	return true;
 }
 
 /**
@@ -120,9 +123,7 @@ static SpriteType ReadSpriteHeaderSkipData()
 	}
 
 	FioSkipBytes(7);
-	SkipSpriteData(type, num - 8);
-
-	return ST_NORMAL;
+	return SkipSpriteData(type, num - 8) ? ST_NORMAL : ST_INVALID;
 }
 
 /* Check if the given Sprite ID exists */

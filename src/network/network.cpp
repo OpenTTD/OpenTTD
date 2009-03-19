@@ -346,7 +346,7 @@ static uint NetworkCountActiveClients()
 static bool _min_active_clients_paused = false;
 
 /* Check if the minimum number of active clients has been reached and pause or unpause the game as appropriate */
-void CheckMinActiveClients()
+static void CheckMinActiveClients()
 {
 	if (!_network_dedicated) return;
 
@@ -466,8 +466,6 @@ void NetworkCloseClient(NetworkClientSocket *cs)
 
 	delete cs->GetInfo();
 	delete cs;
-
-	CheckMinActiveClients();
 }
 
 /* For the server, to accept new clients */
@@ -820,7 +818,6 @@ bool NetworkServerStart()
 	if (_network_dedicated) IConsoleCmdExec("exec scripts/on_dedicated.scr 0");
 
 	_min_active_clients_paused = false;
-	CheckMinActiveClients();
 
 	/* Try to register us to the master server */
 	_network_last_advertise_frame = 0;
@@ -1028,6 +1025,7 @@ void NetworkGameLoop()
 			cp->company = (CompanyID)company;
 		}
 #endif /* DEBUG_DUMP_COMMANDS */
+		CheckMinActiveClients();
 
 		bool send_frame = false;
 
