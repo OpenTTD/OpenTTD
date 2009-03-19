@@ -255,7 +255,9 @@ void AIInstance::Died()
 	this->engine = NULL;
 
 	ShowAIDebugWindow(_current_company);
-	ShowErrorMessage(INVALID_STRING_ID, STR_AI_PLEASE_REPORT_CRASH, 0, 0);
+	if (strcmp(GetCompany(_current_company)->ai_info->GetMainScript(), "%_dummy") != 0) {
+		ShowErrorMessage(INVALID_STRING_ID, STR_AI_PLEASE_REPORT_CRASH, 0, 0);
+	}
 }
 
 void AIInstance::GameLoop()
