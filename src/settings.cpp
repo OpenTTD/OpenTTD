@@ -1280,7 +1280,7 @@ static const SettingDesc _gameopt_settings[] = {
 	 * 'SLE_FILE_I16 | SLE_VAR_U16' in "diff_custom" is needed to get around SlArray() hack
 	 * for savegames version 0 - though it is an array, it has to go through the byteswap process */
 	 SDTG_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, SLE_FILE_I16 | SLE_VAR_U16,    C, 0, _old_diff_custom, 17, 0, 0, 0, 0, NULL, STR_NULL, NULL, 0,  3),
-	 SDTG_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, SLE_UINT16,                    C, 0, _old_diff_custom, 18, 0, 0, 0, 0, NULL, STR_NULL, NULL, 4, 96),
+	 SDTG_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, SLE_UINT16,                    C, 0, _old_diff_custom, 18, 0, 0, 0, 0, NULL, STR_NULL, NULL, 4, SL_MAX_VERSION),
 
 	      SDT_VAR(GameSettings, difficulty.diff_level,    SLE_UINT8,                     0, 0, 0, 0,  3, 0, STR_NULL, NULL),
 	    SDT_OMANY(GameSettings, locale.currency,          SLE_UINT8,                     N, 0, 0, CUSTOM_CURRENCY_ID, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRL|EEK|custom", STR_NULL, NULL, NULL),
@@ -1908,15 +1908,16 @@ void LoadFromConfig()
 	IniFile *ini = IniLoadConfig();
 	ResetCurrencies(false); // Initialize the array of curencies, without preserving the custom one
 
-	PrepareOldDiffCustom();
-	ini_load_settings(ini, _gameopt_settings, "gameopt",  &_settings_newgame);
-	HandleOldDiffCustom(false);
-
 	HandleSettingDescs(ini, ini_load_settings, ini_load_setting_list);
 	_grfconfig_newgame = GRFLoadConfig(ini, "newgrf", false);
 	_grfconfig_static  = GRFLoadConfig(ini, "newgrf-static", true);
 	NewsDisplayLoadConfig(ini, "news_display");
 	AILoadConfig(ini, "ai_players");
+
+	PrepareOldDiffCustom();
+	ini_load_settings(ini, _gameopt_settings, "gameopt",  &_settings_newgame);
+	HandleOldDiffCustom(false);
+
 	CheckDifficultyLevels();
 	delete ini;
 }
