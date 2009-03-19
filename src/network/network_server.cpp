@@ -1018,8 +1018,6 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "", CLIENT_ID_SERVER, NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT);
 		}
 
-		CheckMinActiveClients();
-
 		/* Execute script for, e.g. MOTD */
 		IConsoleCmdExec("exec scripts/on_server_connect.scr 0");
 	}
@@ -1752,8 +1750,6 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 
 	NetworkAction action = (company_id == COMPANY_SPECTATOR) ? NETWORK_ACTION_COMPANY_SPECTATOR : NETWORK_ACTION_COMPANY_JOIN;
 	NetworkServerSendChat(action, DESTTYPE_BROADCAST, 0, "", client_id, company_id + 1);
-
-	CheckMinActiveClients();
 }
 
 void NetworkServerSendRcon(ClientID client_id, ConsoleColour colour_code, const char *string)

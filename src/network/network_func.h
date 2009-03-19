@@ -24,7 +24,6 @@ extern char *_network_host_list[10];
 extern char *_network_ban_list[25];
 
 byte NetworkSpectatorCount();
-void CheckMinActiveClients();
 void NetworkUpdateClientName();
 bool NetworkCompanyHasClients(CompanyID company);
 bool NetworkChangeCompanyPassword(byte argc, char *argv[]);
