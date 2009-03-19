@@ -58,6 +58,6 @@ struct DrawBuildingsTileStruct {
 /** Iterate through all DrawTileSeqStructs in DrawTileSprites. */
 #define foreach_draw_tile_seq(idx, list) for (idx = list; ((byte) idx->delta_x) != 0x80; idx++)
 
-void SkipSpriteData(byte type, uint16 num);
+bool SkipSpriteData(byte type, uint16 num);
 
 #endif /* SPRITE_H */
