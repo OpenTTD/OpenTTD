@@ -607,6 +607,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kan ikke
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...der er ikke mere plads på kortet
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Forøg størrelsen af byen
 STR_023C_EXPAND                                                 :{BLACK}Udvid
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Byen vil ikke kunne bygge veje. Du kan tillade byer at bygge veje via Avancerede indstillinger->Økonomi->Byer.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Tilfældig by
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Byg en by på en tilfældig placering
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kan ikke bygge {STRING} her...
@@ -688,6 +689,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Gennem
 STR_02D5_LAND_BLOCK_INFO                                        :Landområde information
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Tænd/Sluk konsol
+STR_AI_DEBUG_MENU                                               :Computerspiller-debug
 STR_02D7_SCREENSHOT_CTRL_S                                      :Skærmbillede (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Kæmpe skærmbillede (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Om 'OpenTTD'
@@ -944,6 +946,7 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ikke un
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Vægtfaktor for fragt for at simulere tunge tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Fly-hastighedsfaktor: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillad gennemkørsels-stop på veje ejet af en by: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Tillad gennemkørsels-stoppesteder på veje ejet af konkurrenter: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillad bygning af tilstødende stationer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Muliggør flere NewGRF køretøjssæt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Denne indstilling kan ikke ændres, når der er køretøjer.
@@ -1049,6 +1052,8 @@ STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Deaktiv
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Deaktiver fly for computeren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Deaktiver skibe for computeren: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillad computerspillere i netværksspil: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Antal instruktioner før computerspilleren standses: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Service intervaller er i procent: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard service interval for tog: {ORANGE}{STRING} dage/%
@@ -1192,6 +1197,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Kan ikke
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Byg jernbane med auto-jernbane-værktøj
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...der er ingen byer i dette scenarie
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Kortgenerering afbrudt...{}...ingen brugbare lokaliteter til byer
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Mange tilfældige byer
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Dæk kortet med tilfældigt placerede byer
@@ -3164,6 +3170,8 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Denne Ne
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Den ændrer toglængden for '{1:ENGINE}' mens den ikke er i depot.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Toget '{VEHICLE}' fra firmaet '{COMPANY}' har ugyldig længde. Det skyldes sandsynligvis at problem med en NewGRF. Spillet går muligvis ned.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' indeholder forkert information.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Gods-/ombygningsinformation for '{1:ENGINE}' afviger fra indkøbslisten efter konstruktion. Dette kan medføre, at autofornyelse ikke fungerer korrekt.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spillet er gemt i en version uden sporveje. Alle sporveje er blevet fjernet.
 
@@ -3549,10 +3557,33 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}Computerspiller-indstillinger
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Vis indstillinger for computerstyrede spillere
+STR_AI_DEBUG                                                    :{WHITE}Computerspiller-debug
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Navn på computerspilleren
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Genindlæs computerspiller
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Stop computerspilleren, genindlæs scriptet og genstart computerspilleren
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Computerspiller-debugvindue er kun tilgængeligt på serveren
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Computerspiller-konfiguration
+STR_AI_CHANGE                                                   :{BLACK}Vælg computerspiller
+STR_AI_CONFIGURE                                                :{BLACK}Konfigurer computerspiller
+STR_AI_CHANGE_TIP                                               :{BLACK}Indlæs en anden computerspiller
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Konfigurer parametre for computerspiller
+STR_AI_LIST_TIP                                                 :{BLACK}Alle computerstyrede spillere der vil blive indlæst i næste spil
+STR_AI_LIST_CAPTION                                             :{WHITE}Tilgængelige computerspillere
+STR_AI_AILIST_TIP                                               :{BLACK}Klik for at vælge en computerstyret spiller
+STR_AI_ACCEPT                                                   :{BLACK}Accepter
+STR_AI_ACCEPT_TIP                                               :{BLACK}Vælg markeret computerstyret spiller
+STR_AI_CANCEL                                                   :{BLACK}Afbryd
+STR_AI_CANCEL_TIP                                               :{BLACK}Skift ikke computerstyret spiller
 STR_AI_CLOSE                                                    :{BLACK}Luk
 STR_AI_RESET                                                    :{BLACK}Nulstil
+STR_AI_HUMAN_PLAYER                                             :Menneskelig spiller
+STR_AI_RANDOM_AI                                                :Tilfældig computerspiller
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Computerspiller-parametre
 STR_AI_AUTHOR                                                   :Skaber:
 STR_AI_VERSION                                                  :Version:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}En computerstyret spiller gik ned. Rapporter det venligst til udvikleren af computerspilleren med et skærmbilledet af computerspiller-debugvinduet.
 ########
 
 ############ town controlled noise level
@@ -3565,6 +3596,8 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... det er ikke muligt at downloade indhold!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Basisgrafik
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :Computerspiller
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Computerspiller-resourcefil
 STR_CONTENT_TYPE_SCENARIO                                       :Scenarie
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Højdekort
 STR_CONTENT_TITLE                                               :{WHITE}Download af indhold
