@@ -12,13 +12,13 @@
 
 #include "table/strings.h"
 
-void DropDownListItem::Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
+void DropDownListItem::Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 {
 	int c1 = _colour_gradient[bg_colour][3];
 	int c2 = _colour_gradient[bg_colour][7];
 
-	GfxFillRect(x + 1, y + 3, x + width - 2, y + 3, c1);
-	GfxFillRect(x + 1, y + 4, x + width - 2, y + 4, c2);
+	GfxFillRect(left + 1, top + 3, right - 1, top + 3, c1);
+	GfxFillRect(left + 1, top + 4, right - 1, top + 4, c2);
 }
 
 uint DropDownListStringItem::Width() const
@@ -28,9 +28,9 @@ uint DropDownListStringItem::Width() const
 	return GetStringBoundingBox(buffer).width;
 }
 
-void DropDownListStringItem::Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
+void DropDownListStringItem::Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 {
-	DrawStringTruncated(x + 2, y, this->String(), sel ? TC_WHITE : TC_BLACK, width);
+	DrawString(left + 2, right - 2, top, this->String(), sel ? TC_WHITE : TC_BLACK);
 }
 
 StringID DropDownListParamStringItem::String() const
@@ -44,9 +44,9 @@ uint DropDownListCharStringItem::Width() const
 	return GetStringBoundingBox(this->string).width;
 }
 
-void DropDownListCharStringItem::Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
+void DropDownListCharStringItem::Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 {
-	DoDrawStringTruncated(this->string, x + 2, y, sel ? TC_WHITE : TC_BLACK, width);
+	DrawString(left + 2, right - 2, top, this->string, sel ? TC_WHITE : TC_BLACK);
 }
 
 /**
@@ -133,7 +133,8 @@ struct DropdownWindow : Window {
 
 		int sel    = this->selected_index;
 		int width  = this->widget[0].right - 2;
-		int height = this->widget[0].bottom;
+		int right  = this->widget[0].right;
+		int bottom = this->widget[0].bottom;
 		int pos    = this->vscroll.pos;
 
 		DropDownList *list = this->list;
@@ -146,12 +147,12 @@ struct DropdownWindow : Window {
 			if (--pos >= 0) continue;
 
 			if (y + item_height < height) {
-				if (sel == item->result) GfxFillRect(x + 1, y, x + width - 1, y + item_height - 1, 0);
+				if (sel == item->result) GfxFillRect(x + 1, y, right - 1, y + item_height - 1, 0);
 
-				item->Draw(x, y, width, height, sel == item->result, (TextColour)this->widget[0].colour);
+				item->Draw(0, right, y, bottom, sel == item->result, (TextColour)this->widget[0].colour);
 
 				if (item->masked) {
-					GfxFillRect(x, y, x + width - 1, y + item_height - 1,
+					GfxFillRect(x, y, right - 1, y + item_height - 1,
 						_colour_gradient[this->widget[0].colour][5], FILLRECT_CHECKER
 					);
 				}

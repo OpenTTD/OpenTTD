@@ -399,10 +399,10 @@ public:
 		return true;
 	}
 
-	void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
+	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 	{
-		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + this->result, x + 16, y + 7);
-		DrawStringTruncated(x + 32, y + 3, this->String(), sel ? TC_WHITE : TC_BLACK, width - 30);
+		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + this->result, left + 16, top + 7);
+		DrawString(left + 32, right - 2, top + 3, this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
 };
 

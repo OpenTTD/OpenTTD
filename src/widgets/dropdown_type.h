@@ -23,7 +23,7 @@ public:
 	virtual bool Selectable() const { return false; }
 	virtual uint Height(uint width) const { return 10; }
 	virtual uint Width() const { return 0; }
-	virtual void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const;
+	virtual void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const;
 };
 
 /**
@@ -38,7 +38,7 @@ public:
 
 	virtual bool Selectable() const { return true; }
 	virtual uint Width() const;
-	virtual void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const;
+	virtual void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const;
 	virtual StringID String() const { return this->string; }
 };
 
@@ -68,7 +68,7 @@ public:
 
 	virtual bool Selectable() const { return true; }
 	virtual uint Width() const;
-	virtual void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const;
+	virtual void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const;
 };
 
 /**

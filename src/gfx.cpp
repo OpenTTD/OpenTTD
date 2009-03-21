@@ -342,7 +342,7 @@ static int TruncateString(char *str, int maxw)
 		if (IsPrintable(c)) {
 			w += GetCharacterWidth(size, c);
 
-			if (w >= maxw) {
+			if (w > maxw) {
 				/* string got too big... insert dotdotdot, but make sure we do not
 				 * print anything beyond the string termination character. */
 				for (int i = 0; *ddd_pos != '\0' && i < 3; i++, ddd_pos++) *ddd_pos = '.';

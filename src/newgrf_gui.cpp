@@ -274,9 +274,9 @@ public:
 		return true;
 	}
 
-	void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
+	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 	{
-		DoDrawStringTruncated(_grf_preset_list[this->result], x + 2, y, sel ? TC_WHITE : TC_BLACK, x + width);
+		DrawString(left + 2, right + 2, top, _grf_preset_list[this->result], sel ? TC_WHITE : TC_BLACK);
 	}
 };
 

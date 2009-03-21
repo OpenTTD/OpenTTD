@@ -129,12 +129,12 @@ public:
 
 	virtual ~DropDownListCheckedItem() {}
 
-	void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
+	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 	{
 		if (checked) {
-			DrawString(x + 2, y, STR_CHECKMARK, sel ? TC_WHITE : TC_BLACK);
+			DrawString(left + 2, right - 2, top, STR_CHECKMARK, sel ? TC_WHITE : TC_BLACK);
 		}
-		DrawStringTruncated(x + 2, y, this->String(), sel ? TC_WHITE : TC_BLACK, width);
+		DrawString(left + 2, right - 2, top, this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
 };
 
@@ -164,10 +164,10 @@ public:
 		return GetStringBoundingBox(buffer).width + 19;
 	}
 
-	void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
+	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 	{
 		CompanyID company = (CompanyID)result;
-		DrawCompanyIcon(company, x + 2, y + 1);
+		DrawCompanyIcon(company, left + 2, top + 1);
 
 		SetDParam(0, company);
 		SetDParam(1, company);
@@ -177,7 +177,7 @@ public:
 		} else {
 			col = sel ? TC_WHITE : TC_BLACK;
 		}
-		DrawStringTruncated(x + 19, y, STR_7021, col, width - 17);
+		DrawString(left + 19, right - 2, top, STR_7021, col);
 	}
 };
 
