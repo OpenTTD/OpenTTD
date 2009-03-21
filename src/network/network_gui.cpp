@@ -248,13 +248,13 @@ protected:
 			SetDParam(1, cur_item->info.clients_max);
 			SetDParam(2, cur_item->info.companies_on);
 			SetDParam(3, cur_item->info.companies_max);
-			DrawStringCentered(this->widget[NGWW_CLIENTS].left + 39, y, STR_NETWORK_GENERAL_ONLINE, TC_GOLD);
+			DrawString(this->widget[NGWW_CLIENTS].left, this->widget[NGWW_CLIENTS].right, y, STR_NETWORK_GENERAL_ONLINE, TC_GOLD, SA_CENTER);
 
 			/* map size */
 			if (!this->IsWidgetHidden(NGWW_MAPSIZE)) {
 				SetDParam(0, cur_item->info.map_width);
 				SetDParam(1, cur_item->info.map_height);
-				DrawStringCentered(this->widget[NGWW_MAPSIZE].left + 39, y, STR_NETWORK_MAP_SIZE_SHORT, TC_BLACK);
+				DrawString(this->widget[NGWW_MAPSIZE].left, this->widget[NGWW_MAPSIZE].right, y, STR_NETWORK_MAP_SIZE_SHORT, TC_BLACK, SA_CENTER);
 			}
 
 			/* current date */
@@ -262,7 +262,7 @@ protected:
 				YearMonthDay ymd;
 				ConvertDateToYMD(cur_item->info.game_date, &ymd);
 				SetDParam(0, ymd.year);
-				DrawStringCentered(this->widget[NGWW_DATE].left + 29, y, STR_JUST_INT, TC_BLACK);
+				DrawString(this->widget[NGWW_DATE].left, this->widget[NGWW_DATE].right, y, STR_JUST_INT, TC_BLACK, SA_CENTER);
 			}
 
 			/* number of years the game is running */
@@ -271,7 +271,7 @@ protected:
 				ConvertDateToYMD(cur_item->info.game_date, &ymd_cur);
 				ConvertDateToYMD(cur_item->info.start_date, &ymd_start);
 				SetDParam(0, ymd_cur.year - ymd_start.year);
-				DrawStringCentered(this->widget[NGWW_YEARS].left + 29, y, STR_JUST_INT, TC_BLACK);
+				DrawString(this->widget[NGWW_YEARS].left, this->widget[NGWW_YEARS].right, y, STR_JUST_INT, TC_BLACK, SA_CENTER);
 			}
 
 			/* draw a lock if the server is password protected */
@@ -394,17 +394,17 @@ public:
 		/* Draw the right menu */
 		GfxFillRect(this->widget[NGWW_DETAILS].left + 1, 43, this->widget[NGWW_DETAILS].right - 1, 92, 157);
 		if (sel == NULL) {
-			DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, 58, STR_NETWORK_GAME_INFO, TC_FROMSTRING);
+			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 58, STR_NETWORK_GAME_INFO, TC_FROMSTRING, SA_CENTER);
 		} else if (!sel->online) {
 			SetDParamStr(0, sel->info.server_name);
-			DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, 68, STR_JUST_RAW_STRING, TC_ORANGE); // game name
+			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 68, STR_JUST_RAW_STRING, TC_ORANGE, SA_CENTER); // game name
 
-			DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, 132, STR_NETWORK_SERVER_OFFLINE, TC_FROMSTRING); // server offline
+			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 132, STR_NETWORK_SERVER_OFFLINE, TC_FROMSTRING, SA_CENTER); // server offline
 		} else { // show game info
 			uint16 y = 100;
 			const uint16 x = this->widget[NGWW_DETAILS].left + 5;
 
-			DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, 48, STR_NETWORK_GAME_INFO, TC_FROMSTRING);
+			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 48, STR_NETWORK_GAME_INFO, TC_FROMSTRING, SA_CENTER);
 
 
 			SetDParamStr(0, sel->info.server_name);
@@ -453,12 +453,12 @@ public:
 			y += 2;
 
 			if (!sel->info.compatible) {
-				DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, y, sel->info.version_compatible ? STR_NETWORK_GRF_MISMATCH : STR_NETWORK_VERSION_MISMATCH, TC_FROMSTRING); // server mismatch
+				DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, y, sel->info.version_compatible ? STR_NETWORK_GRF_MISMATCH : STR_NETWORK_VERSION_MISMATCH, TC_FROMSTRING, SA_CENTER); // server mismatch
 			} else if (sel->info.clients_on == sel->info.clients_max) {
 				/* Show: server full, when clients_on == max_clients */
-				DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, y, STR_NETWORK_SERVER_FULL, TC_FROMSTRING); // server full
+				DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, y, STR_NETWORK_SERVER_FULL, TC_FROMSTRING, SA_CENTER); // server full
 			} else if (sel->info.use_password) {
-				DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, y, STR_NETWORK_PASSWORD, TC_FROMSTRING); // password warning
+				DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, y, STR_NETWORK_PASSWORD, TC_FROMSTRING, SA_CENTER); // password warning
 			}
 
 			y += 10;
@@ -1229,9 +1229,9 @@ struct NetworkLobbyWindow : public Window {
 
 		/* Draw info about selected company when it is selected in the left window */
 		GfxFillRect(174, 39, 403, 75, 157);
-		DrawStringCentered(290, 50, STR_NETWORK_COMPANY_INFO, TC_FROMSTRING);
+		DrawString(this->widget[NLWW_DETAILS].left + 10, this->widget[NLWW_DETAILS].right - 10, 50, STR_NETWORK_COMPANY_INFO, TC_FROMSTRING, SA_CENTER);
 		if (this->company != INVALID_COMPANY && !StrEmpty(this->company_info[this->company].company_name)) {
-			const uint x = 183;
+			const uint x = this->widget[NLWW_DETAILS].left + 10;
 			y = 80;
 
 			SetDParam(0, gi->clients_on);

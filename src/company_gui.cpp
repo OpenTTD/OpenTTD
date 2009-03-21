@@ -92,7 +92,7 @@ static void DrawCompanyEconomyStats(const Company *c, bool small)
 
 	if (!small) { // normal sized economics window
 		/* draw categories */
-		DrawStringCenterUnderline(61, 15, STR_700F_EXPENDITURE_INCOME, TC_FROMSTRING);
+		DrawString(0, 122, 15, STR_700F_EXPENDITURE_INCOME, TC_FROMSTRING, SA_CENTER, true);
 
 		y = 27;
 		for (i = 0; i < _expenses_list_types[type].length; i++) {
@@ -832,8 +832,8 @@ class SelectCompanyManagerFaceWindow : public Window
 			}
 
 			/* Draw the value/bool in white (0xC). If the button clicked adds 1px to x and y text coordinates (IsWindowWidgetLowered()). */
-			DrawStringCentered(this->widget[widget_index].left + (this->widget[widget_index].right - this->widget[widget_index].left) / 2 +
-				this->IsWidgetLowered(widget_index), this->widget[widget_index].top + 1 + this->IsWidgetLowered(widget_index), str, TC_WHITE);
+			DrawString(this->widget[widget_index].left + this->IsWidgetLowered(widget_index), this->widget[widget_index].right - this->IsWidgetLowered(widget_index),
+				this->widget[widget_index].top + 1 + this->IsWidgetLowered(widget_index), str, TC_WHITE, SA_CENTER);
 		}
 	}
 

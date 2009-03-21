@@ -275,13 +275,13 @@ protected:
 			}
 		} else {
 			/* Draw the label under the data point rather than on the grid line. */
-			x = this->gd_left + GRAPH_X_POSITION_BEGINNING + (GRAPH_X_POSITION_SEPARATION / 2) + 1;
+			x = this->gd_left + GRAPH_X_POSITION_BEGINNING;
 			y = this->gd_top + this->gd_height + 1;
 			uint16 label = this->x_values_start;
 
 			for (int i = 0; i < this->num_on_x_axis; i++) {
 				SetDParam(0, label);
-				DrawStringCentered(x, y, STR_01CB, graph_axis_label_colour);
+				DrawString(x + 1, x + GRAPH_X_POSITION_SEPARATION - 1, y, STR_01CB, graph_axis_label_colour, SA_CENTER);
 
 				label += this->x_values_increment;
 				x += GRAPH_X_POSITION_SEPARATION;
@@ -1002,7 +1002,7 @@ public:
 
 			/* Draw it */
 			SetDParam(0, x);
-			DrawStringCentered(137, y, STR_PERFORMANCE_DETAIL_PERCENT, TC_FROMSTRING);
+			DrawString(112, 162, y, STR_PERFORMANCE_DETAIL_PERCENT, TC_FROMSTRING, SA_CENTER);
 
 			/* SCORE_LOAN is inversed */
 			if (i == SCORE_LOAN) val = needed - val;

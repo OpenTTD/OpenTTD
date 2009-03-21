@@ -250,7 +250,7 @@ void Window::DrawWidgets() const
 
 			if ((wi->type & WWT_MASK) == WWT_TEXTBTN_2 && clicked) str++;
 
-			DrawStringCentered(((r.left + r.right + 1) >> 1) + clicked, ((r.top + r.bottom + 1) >> 1) - 5 + clicked, str, TC_FROMSTRING);
+			DrawString(r.left + clicked, r.right + clicked, ((r.top + r.bottom + 1) >> 1) - 5 + clicked, str, TC_FROMSTRING, SA_CENTER);
 			break;
 		}
 

@@ -966,15 +966,15 @@ public:
 		DrawFrameRect(19, 20, (this->width - 18), 37, COLOUR_GREY, FR_BORDERONLY);
 		DrawFrameRect(20, 21, (int)((this->width - 40) * _tp.percent / 100) + 20, 36, COLOUR_MAUVE, FR_NONE);
 		SetDParam(0, _tp.percent);
-		DrawStringCentered(90, 25, STR_PROGRESS, TC_FROMSTRING);
+		DrawString(this->widget[GPWW_BACKGROUND].left, this->widget[GPWW_BACKGROUND].right, 25, STR_PROGRESS, TC_FROMSTRING, SA_CENTER);
 
 		/* Tell which class we are generating */
-		DrawStringCentered(90, 46, _tp.cls, TC_FROMSTRING);
+		DrawString(this->widget[GPWW_BACKGROUND].left, this->widget[GPWW_BACKGROUND].right, 46, _tp.cls, TC_FROMSTRING, SA_CENTER);
 
 		/* And say where we are in that class */
 		SetDParam(0, _tp.current);
 		SetDParam(1, _tp.total);
-		DrawStringCentered(90, 58, STR_GENERATION_PROGRESS, TC_FROMSTRING);
+		DrawString(this->widget[GPWW_BACKGROUND].left, this->widget[GPWW_BACKGROUND].right, 58, STR_GENERATION_PROGRESS, TC_FROMSTRING, SA_CENTER);
 
 		this->SetDirty();
 	}

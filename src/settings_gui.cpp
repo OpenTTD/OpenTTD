@@ -1458,8 +1458,8 @@ void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clic
 
 	DrawFrameRect(x,      y + 1, x +  9, y + 9, button_colour, (state == 1) ? FR_LOWERED : FR_NONE);
 	DrawFrameRect(x + 10, y + 1, x + 19, y + 9, button_colour, (state == 2) ? FR_LOWERED : FR_NONE);
-	DrawStringCentered(x +  5, y + 1, STR_6819, TC_FROMSTRING); // [<]
-	DrawStringCentered(x + 15, y + 1, STR_681A, TC_FROMSTRING); // [>]
+	DrawString(x,      x +  9, y + 1, STR_6819, TC_FROMSTRING, SA_CENTER); // [<]
+	DrawString(x + 10, x + 19, y + 1, STR_681A, TC_FROMSTRING, SA_CENTER); // [>]
 
 	/* Grey out the buttons that aren't clickable */
 	if (!clickable_left) {

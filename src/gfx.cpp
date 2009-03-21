@@ -424,7 +424,7 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 			break;
 
 		case SA_CENTER:
-			left += (right - left - w) / 2;
+			left += (right - left - w + 1) / 2;
 			right = left + w;
 			break;
 
@@ -507,55 +507,6 @@ int DrawStringRightAligned(int x, int y, StringID str, TextColour colour)
 int DrawStringRightAlignedUnderline(int x, int y, StringID str, TextColour colour)
 {
 	return DrawString(0, x, y, str, colour, SA_RIGHT, true);
-}
-
-/**
- * Draw string centered.
- *
- * @param x      X position of center of the string
- * @param y      Y position of center of the string
- * @param str    String to draw
- * @param colour Colour used for drawing the string, see DoDrawString() for details
- */
-int DrawStringCentered(int x, int y, StringID str, TextColour colour)
-{
-	char buffer[DRAW_STRING_BUFFER];
-	GetString(buffer, str, lastof(buffer));
-	int w = GetStringBoundingBox(buffer).width;
-	return DrawString(x - w, x + w, y, buffer, lastof(buffer), colour, SA_CENTER);
-}
-
-/**
- * Draw string centered.
- *
- * @param x      X position of center of the string
- * @param y      Y position of center of the string
- * @param str    String to draw
- * @param colour Colour used for drawing the string, see DoDrawString() for details
- */
-int DoDrawStringCentered(int x, int y, const char *str, TextColour colour)
-{
-	char buffer[DRAW_STRING_BUFFER];
-	strecpy(buffer, str, lastof(buffer));
-
-	int w = GetStringBoundingBox(buffer).width;
-	return DrawString(x - w, x + w, y, buffer, lastof(buffer), colour, SA_CENTER);
-}
-
-/**
- * Draw string centered, with additional line underneath it
- *
- * @param x      X position of center of the string
- * @param y      Y position of center of the string
- * @param str    String to draw
- * @param colour Colour used for drawing the string, see DoDrawString() for details
- */
-int DrawStringCenterUnderline(int x, int y, StringID str, TextColour colour)
-{
-	char buffer[DRAW_STRING_BUFFER];
-	GetString(buffer, str, lastof(buffer));
-	int w = GetStringBoundingBox(buffer).width;
-	return DrawString(x - w, y + w, y, buffer, lastof(buffer), colour, SA_CENTER, true);
 }
 
 /**

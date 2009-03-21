@@ -230,10 +230,10 @@ public:
 		GfxFillRect(  3, 23, 3 + 177,   23 + 191, 0);
 		GfxFillRect(251, 23, 251 + 177, 23 + 191, 0);
 
-		DrawStringCentered(92, 15, STR_01EE_TRACK_INDEX, TC_FROMSTRING);
+		DrawString(this->widget[MTSW_LIST_LEFT].left + 2, this->widget[MTSW_LIST_LEFT].right - 2, 15, STR_01EE_TRACK_INDEX, TC_FROMSTRING, SA_CENTER);
 
 		SetDParam(0, STR_01D5_ALL + msf.playlist);
-		DrawStringCentered(340, 15, STR_01EF_PROGRAM, TC_FROMSTRING);
+		DrawString(this->widget[MTSW_LIST_RIGHT].left + 2, this->widget[MTSW_LIST_RIGHT].right - 2, 15, STR_01EF_PROGRAM, TC_FROMSTRING, SA_CENTER);
 
 		for (i = 1; i <= NUM_SONGS_AVAILABLE; i++) {
 			SetDParam(0, i);
@@ -243,12 +243,12 @@ public:
 		}
 
 		for (i = 0; i != 6; i++) {
-			DrawStringCentered(216, 45 + i * 8, STR_01D5_ALL + i, (i == msf.playlist) ? TC_WHITE : TC_BLACK);
+			DrawString(this->widget[MTSW_ALL].left + 2, this->widget[MTSW_ALL].right - 2, 45 + i * 8, STR_01D5_ALL + i, (i == msf.playlist) ? TC_WHITE : TC_BLACK, SA_CENTER);
 		}
 
-		DrawStringCentered(216, 45 + 8 * 6 + 16, STR_01F0_CLEAR, TC_FROMSTRING);
+		DrawString(this->widget[MTSW_ALL].left + 2, this->widget[MTSW_ALL].right - 2, 45 + 8 * 6 + 16, STR_01F0_CLEAR, TC_FROMSTRING, SA_CENTER);
 #if 0
-		DrawStringCentered(216, 45 + 8 * 6 + 16 * 2, STR_01F1_SAVE, TC_FROMSTRING);
+		DrawString(this->widget[MTSW_SAVE].left + 2, this->widget[MTSW_SAVE].right - 2, 45 + 8 * 6 + 16 * 2, STR_01F1_SAVE, TC_FROMSTRING, SA_CENTER);
 #endif
 
 		y = 23;
@@ -424,21 +424,21 @@ public:
 			SetDParam(0, SPECSTR_SONGNAME);
 			SetDParam(1, _music_wnd_cursong);
 		}
-		DrawStringCentered(155, 46, str, TC_FROMSTRING);
+		DrawString(this->widget[MW_INFO].left, this->widget[MW_INFO].right, 46, str, TC_FROMSTRING, SA_CENTER);
 
 
 		DrawString(60, 38, STR_01E8_TRACK_XTITLE, TC_FROMSTRING);
 
 		for (i = 0; i != 6; i++) {
-			DrawStringCentered(25 + i * 50, 59, STR_01D5_ALL + i, msf.playlist == i ? TC_WHITE : TC_BLACK);
+			DrawString(this->widget[i + MW_ALL].left, this->widget[i + MW_ALL].right, 59, STR_01D5_ALL + i, msf.playlist == i ? TC_WHITE : TC_BLACK, SA_CENTER);
 		}
 
-		DrawStringCentered( 31, 43, STR_01E9_SHUFFLE, (msf.shuffle ? TC_WHITE : TC_BLACK));
-		DrawStringCentered(269, 43, STR_01EA_PROGRAM, TC_FROMSTRING);
-		DrawStringCentered(141, 15, STR_01DB_MUSIC_VOLUME, TC_FROMSTRING);
-		DrawStringCentered(141, 29, STR_01DD_MIN_MAX, TC_FROMSTRING);
-		DrawStringCentered(247, 15, STR_01DC_EFFECTS_VOLUME, TC_FROMSTRING);
-		DrawStringCentered(247, 29, STR_01DD_MIN_MAX, TC_FROMSTRING);
+		DrawString(this->widget[MW_NEXT].left, this->widget[MW_NEXT].right, 43, STR_01E9_SHUFFLE, (msf.shuffle ? TC_WHITE : TC_BLACK), SA_CENTER);
+		DrawString(this->widget[MW_PROGRAMME].left, this->widget[MW_PROGRAMME].right, 43, STR_01EA_PROGRAM, TC_FROMSTRING, SA_CENTER);
+		DrawString(108, 174, 15, STR_01DB_MUSIC_VOLUME, TC_FROMSTRING, SA_CENTER);
+		DrawString(108, 174, 29, STR_01DD_MIN_MAX, TC_FROMSTRING, SA_CENTER);
+		DrawString(214, 280, 15, STR_01DC_EFFECTS_VOLUME, TC_FROMSTRING, SA_CENTER);
+		DrawString(214, 280, 29, STR_01DD_MIN_MAX, TC_FROMSTRING, SA_CENTER);
 
 		DrawFrameRect(108, 23, 174, 26, COLOUR_GREY, FR_LOWERED);
 		DrawFrameRect(214, 23, 280, 26, COLOUR_GREY, FR_LOWERED);

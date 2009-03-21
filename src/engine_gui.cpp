@@ -83,7 +83,7 @@ struct EnginePreviewWindow : Window {
 		DrawStringMultiCenter(150, 44, STR_8101_WE_HAVE_JUST_DESIGNED_A, 296);
 
 		SetDParam(0, engine);
-		DrawString(this->widget[EPW_BACKGROUND].left + 2, this->widget[EPW_BACKGROUND].right - 2, 80, STR_ENGINE_NAME, TC_BLACK);
+		DrawString(this->widget[EPW_BACKGROUND].left + 2, this->widget[EPW_BACKGROUND].right - 2, 80, STR_ENGINE_NAME, TC_BLACK, SA_CENTER);
 
 		const DrawEngineInfo *dei = &_draw_engine_list[GetEngine(engine)->type];
 

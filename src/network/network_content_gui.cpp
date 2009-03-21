@@ -128,17 +128,17 @@ public:
 		SetDParam(0, this->downloaded_bytes);
 		SetDParam(1, this->total_bytes);
 		SetDParam(2, this->downloaded_bytes * 100 / this->total_bytes);
-		DrawStringCentered(this->width / 2, 35, STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, TC_GREY);
+		DrawString(this->widget[NCDSWW_BACKGROUND].left + 2, this->widget[NCDSWW_BACKGROUND].right - 2, 35, STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, TC_GREY, SA_CENTER);
 
 		if  (this->downloaded_bytes == this->total_bytes) {
-			DrawStringCentered(this->width / 2, 50, STR_CONTENT_DOWNLOAD_COMPLETE, TC_GREY);
+			DrawString(this->widget[NCDSWW_BACKGROUND].left + 2, this->widget[NCDSWW_BACKGROUND].right - 2, 50, STR_CONTENT_DOWNLOAD_COMPLETE, TC_GREY, SA_CENTER);
 		} else if (!StrEmpty(this->name)) {
 			SetDParamStr(0, this->name);
 			SetDParam(1, this->downloaded_files);
 			SetDParam(2, this->total_files);
 			DrawStringMultiCenter(this->width / 2, 50, STR_CONTENT_DOWNLOAD_FILE, this->width);
 		} else {
-			DrawStringCentered(this->width / 2, 50, STR_CONTENT_DOWNLOAD_INITIALISE, TC_GREY);
+			DrawString(this->widget[NCDSWW_BACKGROUND].left + 2, this->widget[NCDSWW_BACKGROUND].right - 2, 50, STR_CONTENT_DOWNLOAD_INITIALISE, TC_GREY, SA_CENTER);
 		}
 	}
 
@@ -430,7 +430,7 @@ public:
 
 		/* Create the nice grayish rectangle at the details top */
 		GfxFillRect(this->widget[NCLWW_DETAILS].left + 1, this->widget[NCLWW_DETAILS].top + 1, this->widget[NCLWW_DETAILS].right - 1, this->widget[NCLWW_DETAILS].top + 50, 157);
-		DrawStringCentered((this->widget[NCLWW_DETAILS].left + this->widget[NCLWW_DETAILS].right) / 2, this->widget[NCLWW_DETAILS].top + 11, STR_CONTENT_DETAIL_TITLE, TC_FROMSTRING);
+		DrawString(this->widget[NCLWW_DETAILS].left + 2, this->widget[NCLWW_DETAILS].right - 2, this->widget[NCLWW_DETAILS].top + 11, STR_CONTENT_DETAIL_TITLE, TC_FROMSTRING, SA_CENTER);
 
 		if (this->selected == NULL) return;
 

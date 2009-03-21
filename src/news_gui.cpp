@@ -57,7 +57,7 @@ static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 
 	switch (ni->subtype) {
 		case NS_COMPANY_TROUBLE:
-			DrawStringCentered(w->width >> 1, 1, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE, TC_FROMSTRING);
+			DrawString(0, w->width, 1, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE, TC_FROMSTRING, SA_CENTER);
 
 			SetDParam(0, ni->params[2]);
 
@@ -69,7 +69,7 @@ static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 			break;
 
 		case NS_COMPANY_MERGER:
-			DrawStringCentered(w->width >> 1, 1, STR_7059_TRANSPORT_COMPANY_MERGER, TC_FROMSTRING);
+			DrawString(0, w->width, 1, STR_7059_TRANSPORT_COMPANY_MERGER, TC_FROMSTRING, SA_CENTER);
 			SetDParam(0, ni->params[2]);
 			SetDParam(1, ni->params[3]);
 			SetDParam(2, ni->params[4]);
@@ -81,7 +81,7 @@ static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 			break;
 
 		case NS_COMPANY_BANKRUPT:
-			DrawStringCentered(w->width >> 1, 1, STR_705C_BANKRUPT, TC_FROMSTRING);
+			DrawString(0, w->width, 1, STR_705C_BANKRUPT, TC_FROMSTRING, SA_CENTER);
 			SetDParam(0, ni->params[2]);
 			DrawStringMultiCenter(
 				((w->width - 101) >> 1) + 98,
@@ -91,7 +91,7 @@ static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 			break;
 
 		case NS_COMPANY_NEW:
-			DrawStringCentered(w->width >> 1, 1, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED, TC_FROMSTRING);
+			DrawString(0, w->width, 1, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED, TC_FROMSTRING, SA_CENTER);
 			SetDParam(0, ni->params[2]);
 			SetDParam(1, ni->params[3]);
 			DrawStringMultiCenter(
@@ -842,9 +842,7 @@ struct MessageOptionsWindow : Window {
 
 		/* Draw the string of each setting on each button. */
 		for (int i = 0, y = 26; i < NT_END; i++, y += 12) {
-			/* 51 comes from 13 + 89 (left and right of the button)+1, shiefted by one as to get division,
-			 * which will give centered position */
-			DrawStringCentered(51, y + 1, _message_opt[_news_type_data[i].display], TC_BLACK);
+			DrawString(this->widget[WIDGET_NEWSOPT_START_OPTION + 1].left, this->widget[WIDGET_NEWSOPT_START_OPTION + 1].right, y + 1, _message_opt[_news_type_data[i].display], TC_BLACK, SA_CENTER);
 		}
 	}
 

@@ -334,17 +334,16 @@ public:
 
 			cg_ofst = HasBit(this->cargo_filter, c) ? 2 : 1;
 			GfxFillRect(x + cg_ofst, y + cg_ofst, x + cg_ofst + 10 , y + cg_ofst + 7, cs->rating_colour);
-			DrawStringCentered(x + 6 + cg_ofst, y + cg_ofst, cs->abbrev, TC_BLACK);
+			DrawString(x + cg_ofst, x + 12 + cg_ofst, y + cg_ofst, cs->abbrev, TC_BLACK, SA_CENTER);
 			x += 14;
 			i++;
 		}
 
-		x += 6;
 		cg_ofst = this->IsWidgetLowered(SLW_NOCARGOWAITING) ? 2 : 1;
-		DrawStringCentered(x + cg_ofst, y + cg_ofst, STR_ABBREV_NONE, TC_BLACK);
+		DrawString(x + cg_ofst, x + cg_ofst + 12, y + cg_ofst, STR_ABBREV_NONE, TC_BLACK, SA_CENTER);
 		x += 14;
 		cg_ofst = this->IsWidgetLowered(SLW_CARGOALL) ? 2 : 1;
-		DrawStringCentered(x + cg_ofst, y + cg_ofst, STR_ABBREV_ALL, TC_BLACK);
+		DrawString(x + cg_ofst, x + cg_ofst + 12, y + cg_ofst, STR_ABBREV_ALL, TC_BLACK, SA_CENTER);
 
 		cg_ofst = this->IsWidgetLowered(SLW_FACILALL) ? 2 : 1;
 		DrawString(71 + cg_ofst, y + cg_ofst, STR_ABBREV_ALL, TC_BLACK);
