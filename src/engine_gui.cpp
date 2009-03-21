@@ -30,12 +30,21 @@ StringID GetEngineCategoryName(EngineID engine)
 	}
 }
 
+/** Widgets used for the engine preview window */
+enum EnginePreviewWidgets {
+	EPW_CLOSE,      ///< Close button
+	EPW_CAPTION,    ///< Title bar/caption
+	EPW_BACKGROUND, ///< Background
+	EPW_NO,         ///< No button
+	EPW_YES,        ///< Yes button
+};
+
 static const Widget _engine_preview_widgets[] = {
-{   WWT_CLOSEBOX,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,    0,   10,    0,   13, STR_00C5,                                  STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,   11,  299,    0,   13, STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,    0,  299,   14,  191, 0x0,                                       STR_NULL},
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,   85,  144,  172,  183, STR_00C9_NO,                               STR_NULL},
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,  155,  214,  172,  183, STR_00C8_YES,                              STR_NULL},
+{   WWT_CLOSEBOX,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,    0,   10,    0,   13, STR_00C5,                                  STR_018B_CLOSE_WINDOW},           // EPW_CLOSE
+{    WWT_CAPTION,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,   11,  299,    0,   13, STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE, STR_018C_WINDOW_TITLE_DRAG_THIS}, // EPW_CAPTION
+{      WWT_PANEL,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,    0,  299,   14,  191, 0x0,                                       STR_NULL},                        // EPW_BACKGROUND
+{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,   85,  144,  172,  183, STR_00C9_NO,                               STR_NULL},                        // EPW_NO
+{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,  155,  214,  172,  183, STR_00C8_YES,                              STR_NULL},                        // EPW_YES
 {   WIDGETS_END},
 };
 
@@ -74,7 +83,7 @@ struct EnginePreviewWindow : Window {
 		DrawStringMultiCenter(150, 44, STR_8101_WE_HAVE_JUST_DESIGNED_A, 296);
 
 		SetDParam(0, engine);
-		DrawStringCentered(this->width >> 1, 80, STR_ENGINE_NAME, TC_BLACK);
+		DrawString(this->widget[EPW_BACKGROUND].left + 2, this->widget[EPW_BACKGROUND].right - 2, 80, STR_ENGINE_NAME, TC_BLACK);
 
 		const DrawEngineInfo *dei = &_draw_engine_list[GetEngine(engine)->type];
 
@@ -86,10 +95,10 @@ struct EnginePreviewWindow : Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case 4:
+			case EPW_YES:
 				DoCommandP(0, this->window_number, 0, CMD_WANT_ENGINE_PREVIEW);
 				/* Fallthrough */
-			case 3:
+			case EPW_NO:
 				delete this;
 				break;
 		}
