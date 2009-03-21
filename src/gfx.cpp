@@ -325,7 +325,8 @@ static void HandleBiDiAndArabicShapes(char *buffer, const char *lastof)
  * If the string is truncated, add three dots ('...') to show this.
  * @param *str string that is checked and possibly truncated
  * @param maxw maximum width in pixels of the string
- * @return new width of (truncated) string */
+ * @return new width of (truncated) string
+ */
 static int TruncateString(char *str, int maxw)
 {
 	int w = 0;
@@ -375,22 +376,6 @@ static int TruncateString(char *str, int maxw)
 }
 
 /**
- * Write string to output buffer, truncating it to specified maximal width in pixels if it is too long.
- *
- * @param src   String to truncate
- * @param dest  Start of character output buffer where truncated string is stored
- * @param maxw  Maximal allowed length of the string in pixels
- * @param last  Address of last character in output buffer
- *
- * @return Actual width of the (possibly) truncated string in pixels
- */
-static inline int TruncateStringID(StringID src, char *dest, int maxw, const char *last)
-{
-	GetString(dest, src, last);
-	return TruncateString(dest, maxw);
-}
-
-/**
  * Draw string starting at position (x,y).
  *
  * @param x      X position to start drawing
@@ -412,20 +397,104 @@ int DrawString(int x, int y, StringID str, TextColour colour)
 /**
  * Draw string, possibly truncated to make it fit in its allocated space
  *
+ * @param left   The left most position to draw on.
+ * @param right  The right most position to draw on.
+ * @param top    The top most position to draw on.
+ * @param str    String to draw.
+ * @param last   The end of the string buffer to draw.
+ * @param colour Colour used for drawing the string, see DoDrawString() for details
+ * @param align  The alignment of the string when drawing left-to-right. In the
+ *               case a right-to-left language is chosen this is inverted so it
+ *               will be drawn in the right direction.
+ * @param underline Whether to underline what has been drawn or not.
+ *
+ * @return In case of left or center alignment the right most pixel we have drawn to.
+ *         In case of right alignment the left most pixel we have drawn to.
+ */
+static int DrawString(int left, int right, int top, char *str, const char *last, TextColour colour, TextAlignment align, bool underline = false)
+{
+	TruncateString(str, right - left);
+	HandleBiDiAndArabicShapes(str, last);
+
+	int w = GetStringBoundingBox(str).width;
+
+	switch (align) {
+		case TA_LEFT:
+			right = left + w;
+			break;
+
+		case TA_CENTER:
+			left += (right - left - w) / 2;
+			right = left + w;
+			break;
+
+		case TA_RIGHT:
+			left = right - w;
+			break;
+
+		default:
+			NOT_REACHED();
+	}
+	ReallyDoDrawString(str, left, top, colour);
+	if (underline) {
+		GfxFillRect(left, top + 10, right, top + 10, _string_colourremap[1]);
+	}
+
+	return align == TA_RIGHT ? left : right;
+}
+
+/**
+ * Draw string, possibly truncated to make it fit in its allocated space
+ *
+ * @param left   The left most position to draw on.
+ * @param right  The right most position to draw on.
+ * @param top    The top most position to draw on.
+ * @param str    String to draw.
+ * @param colour Colour used for drawing the string, see DoDrawString() for details
+ * @param align  The alignment of the string when drawing left-to-right. In the
+ *               case a right-to-left language is chosen this is inverted so it
+ *               will be drawn in the right direction.
+ * @param underline Whether to underline what has been drawn or not.
+ */
+int DrawString(int left, int right, int top, const char *str, TextColour colour, TextAlignment align, bool underline)
+{
+	char buffer[DRAW_STRING_BUFFER];
+	strecpy(buffer, str, lastof(buffer));
+	return DrawString(left, right, top, buffer, lastof(buffer), colour, align, underline);
+}
+
+/**
+ * Draw string, possibly truncated to make it fit in its allocated space
+ *
+ * @param left   The left most position to draw on.
+ * @param right  The right most position to draw on.
+ * @param top    The top most position to draw on.
+ * @param str    String to draw.
+ * @param colour Colour used for drawing the string, see DoDrawString() for details
+ * @param align  The alignment of the string when drawing left-to-right. In the
+ *               case a right-to-left language is chosen this is inverted so it
+ *               will be drawn in the right direction.
+ * @param underline Whether to underline what has been drawn or not.
+ */
+int DrawString(int left, int right, int top, StringID str, TextColour colour, TextAlignment align, bool underline)
+{
+	char buffer[DRAW_STRING_BUFFER];
+	GetString(buffer, str, lastof(buffer));
+	return DrawString(left, right, top, buffer, lastof(buffer), colour, align, underline);
+}
+
+/**
+ * Draw string, possibly truncated to make it fit in its allocated space
+ *
  * @param x      X position to start drawing
  * @param y      Y position to start drawing
  * @param str    String to draw
  * @param colour Colour used for drawing the string, see DoDrawString() for details
  * @param maxw   Maximal width of the string
- *
- * @return Horizontal coordinate after drawing the (possibly truncated) string
  */
 int DrawStringTruncated(int x, int y, StringID str, TextColour colour, uint maxw)
 {
-	char buffer[DRAW_STRING_BUFFER];
-	TruncateStringID(str, buffer, maxw, lastof(buffer));
-	HandleBiDiAndArabicShapes(buffer, lastof(buffer));
-	return ReallyDoDrawString(buffer, x, y, colour);
+	return DrawString(x, x + maxw, y, str, colour, TA_LEFT, false);
 }
 
 /**
@@ -435,21 +504,10 @@ int DrawStringTruncated(int x, int y, StringID str, TextColour colour, uint maxw
  * @param y      Y position of the string
  * @param str    String to draw
  * @param colour Colour used for drawing the string, see DoDrawString() for details
- *
- * @return Width of drawn string in pixels
  */
 int DrawStringRightAligned(int x, int y, StringID str, TextColour colour)
 {
-	char buffer[DRAW_STRING_BUFFER];
-	int w;
-
-	GetString(buffer, str, lastof(buffer));
-	HandleBiDiAndArabicShapes(buffer, lastof(buffer));
-
-	w = GetStringBoundingBox(buffer).width;
-	ReallyDoDrawString(buffer, x - w, y, colour);
-
-	return w;
+	return DrawString(0, x, y, str, colour, TA_RIGHT, false);
 }
 
 /**
@@ -461,13 +519,9 @@ int DrawStringRightAligned(int x, int y, StringID str, TextColour colour)
  * @param colour Colour used for drawing the string, see DoDrawString() for details
  * @param maxw   Maximal width of the string
  */
-void DrawStringRightAlignedTruncated(int x, int y, StringID str, TextColour colour, uint maxw)
+int DrawStringRightAlignedTruncated(int x, int y, StringID str, TextColour colour, uint maxw)
 {
-	char buffer[DRAW_STRING_BUFFER];
-
-	TruncateStringID(str, buffer, maxw, lastof(buffer));
-	HandleBiDiAndArabicShapes(buffer, lastof(buffer));
-	ReallyDoDrawString(buffer, x - GetStringBoundingBox(buffer).width, y, colour);
+	return DrawString(x - maxw, x, y, str, colour, TA_RIGHT, false);
 }
 
 /**
@@ -478,10 +532,9 @@ void DrawStringRightAlignedTruncated(int x, int y, StringID str, TextColour colo
  * @param str    String to draw
  * @param colour Colour used for drawing the string, see DoDrawString() for details
  */
-void DrawStringRightAlignedUnderline(int x, int y, StringID str, TextColour colour)
+int DrawStringRightAlignedUnderline(int x, int y, StringID str, TextColour colour)
 {
-	int w = DrawStringRightAligned(x, y, str, colour);
-	GfxFillRect(x - w, y + 10, x, y + 10, _string_colourremap[1]);
+	return DrawString(0, x, y, str, colour, TA_RIGHT, true);
 }
 
 /**
@@ -491,21 +544,13 @@ void DrawStringRightAlignedUnderline(int x, int y, StringID str, TextColour colo
  * @param y      Y position of center of the string
  * @param str    String to draw
  * @param colour Colour used for drawing the string, see DoDrawString() for details
- *
- * @return Width of the drawn string in pixels
  */
 int DrawStringCentered(int x, int y, StringID str, TextColour colour)
 {
 	char buffer[DRAW_STRING_BUFFER];
-	int w;
-
 	GetString(buffer, str, lastof(buffer));
-	HandleBiDiAndArabicShapes(buffer, lastof(buffer));
-
-	w = GetStringBoundingBox(buffer).width;
-	ReallyDoDrawString(buffer, x - w / 2, y, colour);
-
-	return w;
+	int w = GetStringBoundingBox(buffer).width;
+	return DrawString(x - w, x + w, y, buffer, lastof(buffer), colour, TA_CENTER);
 }
 
 /**
@@ -517,16 +562,11 @@ int DrawStringCentered(int x, int y, StringID str, TextColour colour)
  * @param str    String to draw
  * @param colour Colour used for drawing the string, see DoDrawString() for details
  *
- * @return Right-most coordinate of the (possibly truncated) drawn string
+ * @return Width of the drawn string in pixels
  */
 int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, TextColour colour)
 {
-	char buffer[DRAW_STRING_BUFFER];
-	TruncateStringID(str, buffer, xr - xl, lastof(buffer));
-	HandleBiDiAndArabicShapes(buffer, lastof(buffer));
-
-	int w = GetStringBoundingBox(buffer).width;
-	return ReallyDoDrawString(buffer, (xl + xr - w) / 2, y, colour);
+	return DrawString(xl, xr, y, str, colour, TA_CENTER, false);
 }
 
 /**
@@ -536,18 +576,14 @@ int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, TextColour 
  * @param y      Y position of center of the string
  * @param str    String to draw
  * @param colour Colour used for drawing the string, see DoDrawString() for details
- *
- * @return Width of the drawn string in pixels
  */
 int DoDrawStringCentered(int x, int y, const char *str, TextColour colour)
 {
 	char buffer[DRAW_STRING_BUFFER];
 	strecpy(buffer, str, lastof(buffer));
-	HandleBiDiAndArabicShapes(buffer, lastof(buffer));
 
 	int w = GetStringBoundingBox(buffer).width;
-	ReallyDoDrawString(buffer, x - w / 2, y, colour);
-	return w;
+	return DrawString(x - w, x + w, y, buffer, lastof(buffer), colour, TA_CENTER);
 }
 
 /**
@@ -558,10 +594,12 @@ int DoDrawStringCentered(int x, int y, const char *str, TextColour colour)
  * @param str    String to draw
  * @param colour Colour used for drawing the string, see DoDrawString() for details
  */
-void DrawStringCenterUnderline(int x, int y, StringID str, TextColour colour)
+int DrawStringCenterUnderline(int x, int y, StringID str, TextColour colour)
 {
-	int w = DrawStringCentered(x, y, str, colour);
-	GfxFillRect(x - (w >> 1), y + 10, x - (w >> 1) + w, y + 10, _string_colourremap[1]);
+	char buffer[DRAW_STRING_BUFFER];
+	GetString(buffer, str, lastof(buffer));
+	int w = GetStringBoundingBox(buffer).width;
+	return DrawString(x - w, y + w, y, buffer, lastof(buffer), colour, TA_CENTER, true);
 }
 
 /**
@@ -573,10 +611,9 @@ void DrawStringCenterUnderline(int x, int y, StringID str, TextColour colour)
  * @param str    String to draw
  * @param colour Colour used for drawing the string, see DoDrawString() for details
  */
-void DrawStringCenterUnderlineTruncated(int xl, int xr, int y, StringID str, TextColour colour)
+int DrawStringCenterUnderlineTruncated(int xl, int xr, int y, StringID str, TextColour colour)
 {
-	int w = DrawStringCenteredTruncated(xl, xr, y, str, colour);
-	GfxFillRect((xl + xr - w) / 2, y + 10, (xl + xr + w) / 2, y + 10, _string_colourremap[1]);
+	return DrawString(xl, xr, y, str, colour, TA_CENTER, true);
 }
 
 /**

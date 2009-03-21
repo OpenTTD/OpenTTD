@@ -85,6 +85,16 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
 void DrawSprite(SpriteID img, SpriteID pal, int x, int y, const SubSprite *sub = NULL);
 
+/** How to align the to-be drawn text. */
+enum TextAlignment {
+	TA_LEFT,   ///< Left align the text
+	TA_CENTER, ///< Center the text
+	TA_RIGHT,  ///< Right align the text
+};
+
+int DrawString(int left, int right, int top, const char *str, TextColour colour, TextAlignment align = TA_LEFT, bool underline = false);
+int DrawString(int left, int right, int top, StringID str, TextColour colour, TextAlignment align = TA_LEFT, bool underline = false);
+
 int DrawStringCentered(int x, int y, StringID str, TextColour colour);
 int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, TextColour colour);
 int DoDrawStringCentered(int x, int y, const char *str, TextColour colour);
@@ -95,12 +105,12 @@ int DrawStringTruncated(int x, int y, StringID str, TextColour colour, uint maxw
 int DoDrawString(const char *string, int x, int y, TextColour colour, bool parse_string_also_when_clipped = false);
 int DoDrawStringTruncated(const char *str, int x, int y, TextColour colour, uint maxw);
 
-void DrawStringCenterUnderline(int x, int y, StringID str, TextColour colour);
-void DrawStringCenterUnderlineTruncated(int xl, int xr, int y, StringID str, TextColour colour);
+int DrawStringCenterUnderline(int x, int y, StringID str, TextColour colour);
+int DrawStringCenterUnderlineTruncated(int xl, int xr, int y, StringID str, TextColour colour);
 
 int DrawStringRightAligned(int x, int y, StringID str, TextColour colour);
-void DrawStringRightAlignedTruncated(int x, int y, StringID str, TextColour colour, uint maxw);
-void DrawStringRightAlignedUnderline(int x, int y, StringID str, TextColour colour);
+int DrawStringRightAlignedTruncated(int x, int y, StringID str, TextColour colour, uint maxw);
+int DrawStringRightAlignedUnderline(int x, int y, StringID str, TextColour colour);
 
 void DrawCharCentered(uint32 c, int x, int y, TextColour colour);
 
