@@ -392,7 +392,7 @@ public:
 
 		/* Edit box to filter for keywords */
 		this->DrawEditBox(NCLWW_FILTER);
-		DrawStringRightAligned(this->widget[NCLWW_FILTER].left - 8, this->widget[NCLWW_FILTER].top + 2, STR_CONTENT_FILTER_TITLE, TC_FROMSTRING);
+		DrawString(this->widget[NCLWW_MATRIX].left, this->widget[NCLWW_FILTER].left - 8, this->widget[NCLWW_FILTER].top + 2, STR_CONTENT_FILTER_TITLE, TC_FROMSTRING, SA_RIGHT);
 
 		switch (this->content.SortType()) {
 			case NCLWW_CHECKBOX - NCLWW_CHECKBOX: this->DrawSortButtonState(NCLWW_CHECKBOX, arrow); break;

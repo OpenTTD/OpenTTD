@@ -817,10 +817,10 @@ struct StationViewWindow : public Window {
 					if (HasBit(transfers, cd->cargo)) {
 						/* This cargo has transfers waiting so show the expand or shrink 'button' */
 						const char *sym = HasBit(this->cargo, cd->cargo) ? "-" : "+";
-						DrawStringRightAligned(x + width - 8, y, STR_0009, TC_FROMSTRING);
-						DoDrawString(sym, x + width - 6, y, TC_YELLOW);
+						DrawString(this->widget[SVW_WAITING].left, this->widget[SVW_WAITING].right - 12, y, STR_0009, TC_FROMSTRING, SA_RIGHT);
+						DrawString(this->widget[SVW_WAITING].right - 10, this->widget[SVW_WAITING].right, y, sym, TC_YELLOW);
 					} else {
-						DrawStringRightAligned(x + width, y, STR_0009, TC_FROMSTRING);
+						DrawString(this->widget[SVW_WAITING].left, this->widget[SVW_WAITING].right - 4, y, STR_0009, TC_FROMSTRING, SA_RIGHT);
 					}
 				} else {
 					SetDParam(0, cd->cargo);

@@ -248,7 +248,7 @@ protected:
 		for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
 			SetDParam(0, this->format_str_y_axis);
 			SetDParam(1, y_label);
-			DrawStringRightAligned(x, y, STR_0170, graph_axis_label_colour);
+			DrawString(x - GRAPH_X_POSITION_BEGINNING, x, y, STR_0170, graph_axis_label_colour, SA_RIGHT);
 
 			y_label -= y_label_separation;
 			y += (this->gd_height / (GRAPH_NUM_LINES_Y - 1));
@@ -982,7 +982,7 @@ public:
 
 			/* Draw the score */
 			SetDParam(0, score);
-			DrawStringRightAligned(107, y, STR_PERFORMANCE_DETAIL_INT, TC_FROMSTRING);
+			DrawString(0, 107, y, STR_PERFORMANCE_DETAIL_INT, TC_FROMSTRING, SA_RIGHT);
 
 			/* Calculate the %-bar */
 			x = Clamp(val, 0, needed) * 50 / needed;

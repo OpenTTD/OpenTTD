@@ -99,7 +99,7 @@ static void DrawCompanyEconomyStats(const Company *c, bool small)
 			ExpensesType et = _expenses_list_types[type].et[i];
 			if (et == INVALID_EXPENSES) {
 				y += 2;
-				DrawStringRightAligned(111, y, STR_7020_TOTAL, TC_FROMSTRING);
+				DrawString(0, 111, y, STR_7020_TOTAL, TC_FROMSTRING, SA_RIGHT);
 				y += 20;
 			} else {
 				DrawString(2, y, STR_7011_CONSTRUCTION + et, TC_FROMSTRING);
@@ -107,7 +107,7 @@ static void DrawCompanyEconomyStats(const Company *c, bool small)
 			}
 		}
 
-		DrawStringRightAligned(111, y + 2, STR_7020_TOTAL, TC_FROMSTRING);
+		DrawString(0, 111, y + 2, STR_7020_TOTAL, TC_FROMSTRING, SA_RIGHT);
 
 		/* draw the price columns */
 		year = _cur_year - 2;
@@ -118,7 +118,7 @@ static void DrawCompanyEconomyStats(const Company *c, bool small)
 		do {
 			if (year >= c->inaugurated_year) {
 				SetDParam(0, year);
-				DrawStringRightAlignedUnderline(x, 15, STR_7010, TC_FROMSTRING);
+				DrawString(x - 75, x, 15, STR_7010, TC_FROMSTRING, SA_RIGHT, true);
 
 				Money sum = 0;
 				Money subtotal = 0;
@@ -144,7 +144,7 @@ static void DrawCompanyEconomyStats(const Company *c, bool small)
 						str = STR_701E;
 						if (cost < 0) { cost = -cost; str++; }
 						SetDParam(0, cost);
-						DrawStringRightAligned(x, y, str, TC_FROMSTRING);
+						DrawString(x - 75, x, y, str, TC_FROMSTRING, SA_RIGHT);
 					}
 					y += (et == INVALID_EXPENSES) ? 20 : 10;
 				}
@@ -152,7 +152,7 @@ static void DrawCompanyEconomyStats(const Company *c, bool small)
 				str = STR_701E;
 				if (sum < 0) { sum = -sum; str++; }
 				SetDParam(0, sum);
-				DrawStringRightAligned(x, y + 2, str, TC_FROMSTRING);
+				DrawString(x - 75, x, y + 2, str, TC_FROMSTRING, SA_RIGHT);
 
 				GfxFillRect(x - 75, y, x, y, 215);
 				x += 95;
@@ -172,20 +172,20 @@ static void DrawCompanyEconomyStats(const Company *c, bool small)
 
 	DrawString(2, y, STR_7026_BANK_BALANCE, TC_FROMSTRING);
 	SetDParam(0, c->money);
-	DrawStringRightAligned(182, y, STR_7028, TC_FROMSTRING);
+	DrawString(182 - 75, 182, y, STR_7028, TC_FROMSTRING, SA_RIGHT);
 
 	y += 10;
 
 	DrawString(2, y, STR_7027_LOAN, TC_FROMSTRING);
 	SetDParam(0, c->current_loan);
-	DrawStringRightAligned(182, y, STR_7028, TC_FROMSTRING);
+	DrawString(182 - 75, 182, y, STR_7028, TC_FROMSTRING, SA_RIGHT);
 
 	y += 12;
 
 	GfxFillRect(182 - 75, y - 2, 182, y - 2, 215);
 
 	SetDParam(0, c->money - c->current_loan);
-	DrawStringRightAligned(182, y, STR_7028, TC_FROMSTRING);
+	DrawString(182 - 75, 182, y, STR_7028, TC_FROMSTRING, SA_RIGHT);
 }
 
 enum CompanyFinancesWindowWidgets {
@@ -819,7 +819,7 @@ class SelectCompanyManagerFaceWindow : public Window
 	void DrawFaceStringLabel(byte widget_index, StringID str, uint8 val, bool is_bool_widget)
 	{
 		/* Write the label in gold (0x2) to the left of the button. */
-		DrawStringRightAligned(this->widget[widget_index].left - (is_bool_widget ? 5 : 14), this->widget[widget_index].top + 1, str, TC_GOLD);
+		DrawString(0, this->widget[widget_index].left - (is_bool_widget ? 5 : 14), this->widget[widget_index].top + 1, str, TC_GOLD, SA_RIGHT);
 
 		if (!this->IsWidgetDisabled(widget_index)) {
 			if (is_bool_widget) {

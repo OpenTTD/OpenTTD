@@ -445,7 +445,7 @@ public:
 		this->DrawWidgets();
 
 		assert((uint)this->dtype < lengthof(chat_captions));
-		DrawStringRightAligned(this->widget[NWCW_TEXTBOX].left - 2, this->widget[NWCW_TEXTBOX].top + 1, chat_captions[this->dtype], TC_BLACK);
+		DrawString(this->widget[NWCW_BACKGROUND].left, this->widget[NWCW_TEXTBOX].left - 2, this->widget[NWCW_TEXTBOX].top + 1, chat_captions[this->dtype], TC_BLACK, SA_RIGHT);
 		this->DrawEditBox(NWCW_TEXTBOX);
 	}
 

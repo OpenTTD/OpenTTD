@@ -484,32 +484,6 @@ int DrawString(int left, int right, int top, StringID str, TextColour colour, St
 }
 
 /**
- * Draw string right-aligned.
- *
- * @param x      Right-most x position of the string
- * @param y      Y position of the string
- * @param str    String to draw
- * @param colour Colour used for drawing the string, see DoDrawString() for details
- */
-int DrawStringRightAligned(int x, int y, StringID str, TextColour colour)
-{
-	return DrawString(0, x, y, str, colour, SA_RIGHT, false);
-}
-
-/**
- * Draw string right-aligned with a line underneath it.
- *
- * @param x      Right-most x position of the string
- * @param y      Y position of the string
- * @param str    String to draw
- * @param colour Colour used for drawing the string, see DoDrawString() for details
- */
-int DrawStringRightAlignedUnderline(int x, int y, StringID str, TextColour colour)
-{
-	return DrawString(0, x, y, str, colour, SA_RIGHT, true);
-}
-
-/**
  * 'Correct' a string to a maximum length. Longer strings will be cut into
  * additional lines at whitespace characters if possible. The string parameter
  * is modified with terminating characters mid-string which are the

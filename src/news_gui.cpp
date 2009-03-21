@@ -216,7 +216,7 @@ struct NewsWindow : Window {
 				DrawString(2, 1, STR_00C6, TC_FROMSTRING);
 
 				SetDParam(0, this->ni->date);
-				DrawStringRightAligned(428, 1, STR_01FF, TC_FROMSTRING);
+				DrawString(1, this->width - 1, 1, STR_01FF, TC_FROMSTRING, SA_RIGHT);
 
 				if (!(this->ni->flags & NF_VIEWPORT)) {
 					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));

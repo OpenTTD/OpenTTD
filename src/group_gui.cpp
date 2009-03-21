@@ -430,7 +430,7 @@ public:
 
 			/* draw the number of vehicles of the group */
 			SetDParam(0, g->num_vehicle);
-			DrawStringRightAligned(187, y1 + 1, STR_GROUP_TINY_NUM, (this->group_sel == g->index) ? TC_WHITE : TC_BLACK);
+			DrawString(this->widget[GRP_WIDGET_LIST_GROUP].left, this->widget[GRP_WIDGET_LIST_GROUP].right, y1 + 1, STR_GROUP_TINY_NUM, (this->group_sel == g->index) ? TC_WHITE : TC_BLACK, SA_RIGHT);
 		}
 
 		this->DrawSortButtonState(GRP_WIDGET_SORT_BY_ORDER, this->vehicles.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
