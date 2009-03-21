@@ -1797,6 +1797,8 @@ bool AfterLoadGame()
 		}
 	}
 
+	AfterLoadLabelMaps();
+
 	GamelogPrintDebug(1);
 
 	bool ret = InitializeWindowsAndCaches();
