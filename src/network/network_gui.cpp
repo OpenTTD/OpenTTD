@@ -1785,6 +1785,13 @@ uint8 _network_join_waiting;
 uint32 _network_join_bytes;
 uint32 _network_join_bytes_total;
 
+/** Widgets used for the join status window. */
+enum NetworkJoinStatusWidgets {
+	NJSW_CAPTION,    ///< Caption of the window
+	NJSW_BACKGROUND, ///< Background
+	NJSW_CANCELOK,   ///< Cancel/OK button
+};
+
 struct NetworkJoinStatusWindow : Window {
 	NetworkJoinStatusWindow(const WindowDesc *desc) : Window(desc)
 	{
@@ -1797,7 +1804,7 @@ struct NetworkJoinStatusWindow : Window {
 		uint8 progress; // used for progress bar
 		this->DrawWidgets();
 
-		DrawStringCentered(125, 35, STR_NETWORK_CONNECTING_1 + _network_join_status, TC_GREY);
+		DrawString(this->widget[NJSW_BACKGROUND].left + 2, this->widget[NJSW_BACKGROUND].right - 2, 35, STR_NETWORK_CONNECTING_1 + _network_join_status, TC_GREY, SA_CENTER);
 		switch (_network_join_status) {
 			case NETWORK_JOIN_STATUS_CONNECTING: case NETWORK_JOIN_STATUS_AUTHORIZING:
 			case NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO:
@@ -1805,13 +1812,13 @@ struct NetworkJoinStatusWindow : Window {
 				break;
 			case NETWORK_JOIN_STATUS_WAITING:
 				SetDParam(0, _network_join_waiting);
-				DrawStringCentered(125, 46, STR_NETWORK_CONNECTING_WAITING, TC_GREY);
+				DrawString(this->widget[NJSW_BACKGROUND].left + 2, this->widget[NJSW_BACKGROUND].right - 2, 46, STR_NETWORK_CONNECTING_WAITING, TC_GREY, SA_CENTER);
 				progress = 15; // third stage is 15%
 				break;
 			case NETWORK_JOIN_STATUS_DOWNLOADING:
 				SetDParam(0, _network_join_bytes);
 				SetDParam(1, _network_join_bytes_total);
-				DrawStringCentered(125, 46, STR_NETWORK_CONNECTING_DOWNLOADING, TC_GREY);
+				DrawString(this->widget[NJSW_BACKGROUND].left + 2, this->widget[NJSW_BACKGROUND].right - 2, 46, STR_NETWORK_CONNECTING_DOWNLOADING, TC_GREY, SA_CENTER);
 				/* Fallthrough */
 			default: // Waiting is 15%, so the resting receivement of map is maximum 70%
 				progress = 15 + _network_join_bytes * (100 - 15) / _network_join_bytes_total;
@@ -1823,7 +1830,7 @@ struct NetworkJoinStatusWindow : Window {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget == 2) { // Disconnect button
+		if (widget == NJSW_CANCELOK) { // Disconnect button
 			NetworkDisconnect();
 			SwitchToMode(SM_MENU);
 			ShowNetworkGameWindow();
@@ -1842,9 +1849,9 @@ struct NetworkJoinStatusWindow : Window {
 };
 
 static const Widget _network_join_status_window_widget[] = {
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,      0,   249,     0,    13, STR_NETWORK_CONNECTING, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,      0,   249,    14,    84, 0x0,                    STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_WHITE,    75,   175,    69,    80, STR_NETWORK_DISCONNECT, STR_NULL},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,      0,   249,     0,    13, STR_NETWORK_CONNECTING, STR_018C_WINDOW_TITLE_DRAG_THIS}, // NSJW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,      0,   249,    14,    84, 0x0,                    STR_NULL},                        // NJSW_BACKGROUND
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_WHITE,    75,   175,    69,    80, STR_NETWORK_DISCONNECT, STR_NULL},                        // NJSW_CANCELOK
 {   WIDGETS_END},
 };
 
