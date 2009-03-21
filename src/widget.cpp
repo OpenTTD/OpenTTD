@@ -478,7 +478,7 @@ void Window::DrawWidgets() const
 				GfxFillRect(r.left + 2, r.top + 2, r.right - 2, r.bottom - 2, _colour_gradient[_company_colours[this->owner]][4]);
 			}
 
-			DrawStringCenteredTruncated(r.left + 2, r.right - 2, r.top + 2, wi->data, TC_FROMSTRING);
+			DrawString(r.left + 2, r.right - 2, r.top + 2, wi->data, TC_FROMSTRING, TA_CENTER);
 			break;
 
 		case WWT_DROPDOWN: {

@@ -421,7 +421,7 @@ public:
 			DrawSprite(sprite, pal, this->widget[NCLWW_CHECKBOX].left + (pal == PAL_NONE ? 3 : 4), y + (pal == PAL_NONE ? 1 : 0));
 
 			StringID str = STR_CONTENT_TYPE_BASE_GRAPHICS + ci->type - CONTENT_TYPE_BASE_GRAPHICS;
-			DrawStringCenteredTruncated(this->widget[NCLWW_TYPE].left, this->widget[NCLWW_TYPE].right, y, str, TC_BLACK);
+			DrawString(this->widget[NCLWW_TYPE].left, this->widget[NCLWW_TYPE].right, y, str, TC_BLACK, TA_CENTER);
 
 			SetDParamStr(0, ci->name);
 			DrawStringTruncated(this->widget[NCLWW_NAME].left + 5, y, STR_JUST_RAW_STRING, TC_BLACK, this->widget[NCLWW_NAME].right - this->widget[NCLWW_NAME].left - 5);

@@ -96,7 +96,6 @@ int DrawString(int left, int right, int top, const char *str, TextColour colour,
 int DrawString(int left, int right, int top, StringID str, TextColour colour, TextAlignment align = TA_LEFT, bool underline = false);
 
 int DrawStringCentered(int x, int y, StringID str, TextColour colour);
-int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, TextColour colour);
 int DoDrawStringCentered(int x, int y, const char *str, TextColour colour);
 
 int DrawString(int x, int y, StringID str, TextColour colour);
@@ -106,7 +105,6 @@ int DoDrawString(const char *string, int x, int y, TextColour colour, bool parse
 int DoDrawStringTruncated(const char *str, int x, int y, TextColour colour, uint maxw);
 
 int DrawStringCenterUnderline(int x, int y, StringID str, TextColour colour);
-int DrawStringCenterUnderlineTruncated(int xl, int xr, int y, StringID str, TextColour colour);
 
 int DrawStringRightAligned(int x, int y, StringID str, TextColour colour);
 int DrawStringRightAlignedTruncated(int x, int y, StringID str, TextColour colour, uint maxw);
