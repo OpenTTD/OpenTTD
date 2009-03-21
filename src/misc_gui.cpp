@@ -44,10 +44,17 @@ static bool _fios_path_changed;
 static bool _savegame_sort_dirty;
 int _caret_timer;
 
+/** Widgets for the land info window. */
+enum LandInfoWidgets {
+	LIW_CLOSE,      ///< Close the window
+	LIW_CAPTION,    ///< Title bar of the window
+	LIW_BACKGROUND, ///< Background to draw on
+};
+
 static const Widget _land_info_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   299,     0,    13, STR_01A3_LAND_AREA_INFORMATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL, RESIZE_BOTTOM,  COLOUR_GREY,     0,   299,    14,    99, 0x0,                            STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},           // LIW_CLOSE
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   299,     0,    13, STR_01A3_LAND_AREA_INFORMATION, STR_018C_WINDOW_TITLE_DRAG_THIS}, // LIW_CAPTION
+{      WWT_PANEL, RESIZE_BOTTOM,  COLOUR_GREY,     0,   299,    14,    99, 0x0,                            STR_NULL},                        // LIW_BACKGROUND
 {    WIDGETS_END},
 };
 
@@ -78,7 +85,7 @@ public:
 		for (uint i = 0; i < LAND_INFO_CENTERED_LINES; i++) {
 			if (StrEmpty(this->landinfo_data[i])) break;
 
-			DoDrawStringCentered(150, y, this->landinfo_data[i], i == 0 ? TC_LIGHT_BLUE : TC_FROMSTRING);
+			DrawString(this->widget[LIW_BACKGROUND].left + 2, this->widget[LIW_BACKGROUND].right - 2, y, this->landinfo_data[i], i == 0 ? TC_LIGHT_BLUE : TC_FROMSTRING, SA_CENTER);
 			y += i == 0 ? 16 : 12;
 		}
 
@@ -275,11 +282,19 @@ void PlaceLandBlockInfo()
 	}
 }
 
+/** Widgets for the land info window. */
+enum AboutWidgets {
+	AW_CLOSE,      ///< Close the window
+	AW_CAPTION,    ///< Title bar of the window
+	AW_BACKGROUND, ///< Background to draw on
+	AW_FRAME,      ///< The scrolling frame with goodies
+};
+
 static const Widget _about_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   419,     0,    13, STR_015B_OPENTTD, STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   419,    14,   271, 0x0,              STR_NULL},
-{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,     5,   414,    40,   245, STR_NULL,         STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},           // AW_CLOSE
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   419,     0,    13, STR_015B_OPENTTD, STR_018C_WINDOW_TITLE_DRAG_THIS}, // AW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   419,    14,   271, 0x0,              STR_NULL},                        // AW_BACKGROUND
+{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,     5,   414,    40,   245, STR_NULL,         STR_NULL},                        // AW_FRAME
 {    WIDGETS_END},
 };
 
@@ -363,15 +378,15 @@ struct AboutWindow : public Window {
 		this->DrawWidgets();
 
 		/* Show original copyright and revision version */
-		DrawStringCentered(210, 17, STR_00B6_ORIGINAL_COPYRIGHT, TC_FROMSTRING);
-		DrawStringCentered(210, 17 + 10, STR_00B7_VERSION, TC_FROMSTRING);
+		DrawString(this->widget[AW_BACKGROUND].left + 2, this->widget[AW_BACKGROUND].right - 2, 17, STR_00B6_ORIGINAL_COPYRIGHT, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->widget[AW_BACKGROUND].left + 2, this->widget[AW_BACKGROUND].right - 2, 17 + 10, STR_00B7_VERSION, TC_FROMSTRING, SA_CENTER);
 
 		int y = this->scroll_height;
 
 		/* Show all scrolling credits */
 		for (uint i = 0; i < lengthof(credits); i++) {
 			if (y >= 50 && y < (this->height - 40)) {
-				DoDrawString(credits[i], 10, y, TC_BLACK);
+				DrawString(this->widget[AW_FRAME].left + 5, this->widget[AW_FRAME].right - 5, y, credits[i], TC_BLACK);
 			}
 			y += 10;
 		}
@@ -379,8 +394,8 @@ struct AboutWindow : public Window {
 		/* If the last text has scrolled start a new from the start */
 		if (y < 50) this->scroll_height = this->height - 40;
 
-		DoDrawStringCentered(210, this->height - 25, "Website: http://www.openttd.org", TC_BLACK);
-		DrawStringCentered(210, this->height - 15, STR_00BA_COPYRIGHT_OPENTTD, TC_FROMSTRING);
+		DrawString(this->widget[AW_BACKGROUND].left + 2, this->widget[AW_BACKGROUND].right - 2, this->height - 25, "Website: http://www.openttd.org", TC_BLACK, SA_CENTER);
+		DrawString(this->widget[AW_BACKGROUND].left + 2, this->widget[AW_BACKGROUND].right - 2, this->height - 15, STR_00BA_COPYRIGHT_OPENTTD, TC_FROMSTRING, SA_CENTER);
 	}
 
 	virtual void OnTick()
