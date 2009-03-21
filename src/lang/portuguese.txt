@@ -667,7 +667,6 @@ STR_FULL                                                        :Completo
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Lista de cidades
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Personalizado
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -846,7 +845,9 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formato 
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Seleccione o formato de captura de ecrã que deseja utilizar
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Conjunto de gráficos base
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selecione o conjunto de gráficos base a usar
 
 STR_AUTOSAVE_1_MONTH                                            :Cada mês
 STR_AUTOSAVE_FAILED                                             :{WHITE}Falha ao guardar automaticamente
@@ -945,6 +946,7 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Estaç�
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para simular comboios pesados: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor de velocidade de aviões: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permitir estações de passagem em estradas das cidades: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Permitir a passagem para estradas do adversário: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permitir construção de estações adjacentes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Utilizar múltiplos conjuntos NewGRF de veículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Não é possivel mudar quando se encontram veículos.
@@ -1195,6 +1197,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Não é 
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Construir caminhos-de-ferro usando o modo automático
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...não existe nenhuma cidade neste cenário
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Geração de mapa abortada...{}...não há locais apropriados para cidades
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Várias cidades aleatórias
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Cobrir o mapa com cidades colocadas aleatoriamente
@@ -2126,6 +2129,7 @@ STR_NUM_VERY_LOW                                                :Muito baixo
 STR_6816_LOW                                                    :Baixo
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Alto
+STR_02BF_CUSTOM                                                 :Personalizado
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Muito Lento
@@ -3095,6 +3099,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Tem um e
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total de pontos sobre o máximo de pontos
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Definições NewGRF
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Mostrar definições de NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Definições Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar alterações
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Alternar palete
@@ -3164,6 +3169,8 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Sair da 
 STR_NEWGRF_BROKEN                                               :{WHITE}Os ficheiros NewGRF '{0:STRING}' podem causar erros e/ou perda de sincronismo da aplicação.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifica o comprimento do veículo para '{1:ENGINE}' quando fora do depósito.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O Comboio '{VEHICLE}' pertencente a '{COMPANY}' tem um comprimento inválido. Possivelmente devido a problemas com os novos NewGRFs. Podem ocorrer erros de sincronização e a aplicação pode terminar.
+
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informação de carga para '{1:ENGINE}', é diferente da que consta na lista de véiculos. Isto poderá causar problemas ao ser automaticamente renovado/substituído.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}O jogo foi salvo numa versão sem suporte a eléctricos.Todos os eléctricos foram removidos.
 
@@ -3575,6 +3582,7 @@ STR_AI_RANDOM_AI                                                :AI Aleatória
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parâmetros da AI
 STR_AI_AUTHOR                                                   :Autor:
 STR_AI_VERSION                                                  :Versão:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Um dos jogadores computador teve um erro. Por favor relate isto ao autor do jogador com uma imagem da janela de depuramento de erros.
 ########
 
 ############ town controlled noise level
@@ -3603,6 +3611,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Seleccio
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Marcar todo o conteúdo que seja actualização ao conteúdo existente a ser descarregado
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Desseleccionar tudo
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Marcar todo o conteúdo que não deva ser descarregado
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Insira uma frase para filtrar por
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Insira uma palavra chave para filtrar a lista por
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtrar por nomes:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descarregar
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Iniciar a descarga do conteudo seleccionado

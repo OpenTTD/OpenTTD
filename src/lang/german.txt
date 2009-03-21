@@ -170,7 +170,7 @@ STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}Verlassen
 STR_00C8_YES                                                    :{BLACK}Ja
 STR_00C9_NO                                                     :{BLACK}Nein
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Das Spiel wirklich abbrechen und zu {STRING} zurückkehren?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Das Spiel wirklich abbrechen und zu {}{STRING} zurückkehren?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
@@ -315,7 +315,7 @@ STR_015B_OPENTTD                                                :{WHITE}OpenTTD
 STR_015C_SAVE_GAME                                              :Spiel speichern
 STR_015D_LOAD_GAME                                              :Spiel laden
 STR_015E_QUIT_GAME                                              :Spiel beenden
-STR_015F_QUIT                                                   :Beenden
+STR_015F_QUIT                                                   :OpenTTD beenden
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Das Spiel wirklich beenden?
 STR_0161_QUIT_GAME                                              :{WHITE}Spiel beenden
 STR_SORT_ORDER_TIP                                              :{BLACK}Sortierreihenfolge auswählen (absteigend/aufsteigend)

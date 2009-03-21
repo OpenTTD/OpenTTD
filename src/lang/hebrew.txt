@@ -3,9 +3,9 @@
 ##isocode he_IL
 ##winlangid 0x040d
 ##grflangid 0x61
-##plural 0
-##gender m f
+##plural 2
 ##textdir rtl
+##gender m f
 
 #
 
@@ -259,6 +259,7 @@ STR_013C_CARGO                                                  :{BLACK}משא
 STR_013D_INFORMATION                                            :{BLACK}מידע
 STR_013E_CAPACITIES                                             :{BLACK}קיבולות
 STR_TOTAL_CARGO                                                 :{BLACK}סה"כ סחורה
+STR_013F_CAPACITY                                               :{BLACK}קיבולת: {LTBLUE}{CARGO}{STRING}
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}:סה"כ קיבולת הסחורה ברכבת זאת
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -644,10 +645,14 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...קצ�
 STR_02A1_SMALL                                                  :{BLACK}קטן
 STR_02A2_MEDIUM                                                 :{BLACK}בינוני
 STR_02A3_LARGE                                                  :{BLACK}גדול
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}אקראי
 STR_FOUND_TOWN_CITY                                             :{BLACK}עיר
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}בחר את גודל העיר
 STR_02A5_TOWN_SIZE                                              :{YELLOW}:גודל העיר
 
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}מקורי
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}כבישים טובים יותר
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}אקראי
 
 STR_02B6                                                        :{1:STRING}  -  {0:STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}הצג הודעה או חדשות אחרונים
@@ -657,7 +662,6 @@ STR_FULL                                                        :מלא
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :מדריך הערים
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :אחר
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -726,6 +730,7 @@ STR_02FA_EVERY_12_MONTHS                                        :כל 12 חוד�
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}התחל משחק חדש
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}טען משחק שמור
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}צור מפה/סצנריו מותאמים אישית
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}התחל משחק מרובה משתתפים
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}הצג הגדרות משחק
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}הצג הגדרות קושי
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}התחל משחק חדש עם סצנריו מותאם אישית
@@ -835,6 +840,10 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}פורמ
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}בחר את הפורמט של צילום המסך
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}סט גרפיקה בסיסי
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}בחר בסט גרפיקה בסיסי לשימוש
+
 STR_AUTOSAVE_1_MONTH                                            :מידי חודש
 STR_AUTOSAVE_FAILED                                             :{WHITE}שמירה אוטומטית נכשלה
 
@@ -934,6 +943,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{ORANGE}1 / {ST
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{ORANGE}{STRING}{LTBLUE} :אפשר מעבר דרך תחנות על כבישים בבעלות עירונית
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{ORANGE}{STRING}{LTBLUE} :אפשר בניית תחנות בשכנות
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Enable multiple NewGRF engine sets: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}החלפת הגדרה זו לא אפשרית כאשר יש רכבים
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{ORANGE}{STRING}{LTBLUE} :אפשר בניית שדות תעופה קטנים בכל עת
 
@@ -944,6 +954,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :כן,למעט �
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :עבור כל הרכבים
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{ORANGE}{STRING}{LTBLUE} :התרע על רכבים בעלי הכנסה שלילית
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{ORANGE}{STRING}{LTBLUE} :בטל התיישנות כלי רכב
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}חידוש עצמי של רכב כשהוא נהיה ישן: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}חידוש עצמי של כלי רכב כשהוא {ORANGE}{STRING}{LTBLUE} חודשים לפני\אחרי הגיל המקסימלי.
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}סכום הכסף המינימלי הנדרש בשביל חידוש: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}משך הצגת הודעת שגיאה: {ORANGE}{STRING}
@@ -1038,6 +1049,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{ORANGE}{STRING
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{ORANGE}{STRING}{LTBLUE} :אפשר שחקני מחשב במשחק רשת
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes before AI is suspended: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{ORANGE}{STRING}{LTBLUE} :הצג מרווחי טיפול באחוזים
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{ORANGE}%/ימים {STRING}{LTBLUE} :מרווח בין טיפולים עבור רכבות
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{ORANGE}מבוטל {LTBLUE} :מרווח בין טיפולים עבור רכבות
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{ORANGE}%/ימים {STRING}{LTBLUE} :מרווח בין טיפולים עבור אוטובוסים/משאיות
@@ -1052,6 +1064,7 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{ORANGE}{STRING
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{ORANGE}{STRING}{LTBLUE} :הצג חדשות צבעוניות החל משנת
 STR_CONFIG_SETTING_STARTING_YEAR                                :{ORANGE}{STRING}{LTBLUE} :שנת התחלה
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}אפשר קניית מניות מחברות אחרות: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{ORANGE}משבצ(ו)ת {STRING}{LTBLUE} :בעת גרירה, הצג רמזורים בכל
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{ORANGE}{STRING}{LTBLUE} :בנה רמזורים מכאניים לפני
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{ORANGE}{STRING}{LTBLUE} :אפשר ממשק ויזואלי עבור רמזורים
@@ -1069,6 +1082,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :כבישים מ
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 רשת
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 רשת
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :אקראית
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{ORANGE}{STRING}{LTBLUE} :אפשר שליטה של הערים ברמת הרעש בשדות תעופה
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{ORANGE}{STRING}{LTBLUE} :מיקום הסרגל העיקרי
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :שמאל
@@ -1106,12 +1120,6 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}רכב�
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}ערים
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}תעשיות
 
-STR_CONFIG_SETTING_DISABLED                                     :מבוטל
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}שנה ערך
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{ORANGE}{STRING}{LTBLUE} :אלגורתם איתור נתיב לרכבות
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(לא מומלץ)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1124,6 +1132,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{ORANGE}{STRING
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :{BLUE}(מקורי (מומלץ
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(לא מומלץ)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-גודל המפה: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-גודל המפה: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :מבוטל
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}שנה ערך
 
 STR_TEMPERATE_LANDSCAPE                                         :אקלים ממוזג
 STR_SUB_ARCTIC_LANDSCAPE                                        :אקלים קר
@@ -1217,7 +1234,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}רשימ
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}השתק את כולן
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}הצג את כולן
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}תעשיות
 STR_INDUSTRYDIR_ITEM                                            :{YELLOW}(שונעו {NBSP}{3:COMMA}%){BLACK} ({1:CARGO}{2:STRING}) {ORANGE}{0:INDUSTRY}
 STR_INDUSTRYDIR_ITEM_TWO                                        :{YELLOW}(שונעו {NBSP} {6:COMMA}%/{5:COMMA}%) {BLACK} ({3:CARGO}{4:STRING}/{1:CARGO}{2:STRING}) {ORANGE}{0:INDUSTRY}
@@ -1231,7 +1247,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}התאם
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}בחר את סוג המשא עבור הרכבת
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}התאם את הרכבת לנשיאת המשא שנבחר
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}...לא ניתן להתאים את הרכבת
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{ORANGE}{STRING}{LTBLUE} :הצג מרווחי טיפול באחוזים
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}שנה תפוקה
 
 ############ network gui strings
@@ -1493,11 +1508,6 @@ STR_NETWORK_SEND                                                :{BLACK}שלח
 
 ############ end network gui strings
 
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-גודל המפה: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-גודל המפה: {ORANGE}{STRING}
-
-
 ##### PNG-MAP-Loader
 
 STR_PNGMAP_ERROR                                                :{WHITE}לא יכול לטעון שטח אדמה מקובץ...
@@ -1665,6 +1675,7 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}מקד �
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}שנה את שם העיר
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{ORANGE}{1:COMMA}{BLACK} :מספר מירבי {ORANGE}{0:COMMA}{BLACK} :נוסעים בחודש שעבר
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{ORANGE}{1:COMMA}{BLACK} :מספר מירבי {ORANGE}{0:COMMA}{BLACK} :שקי דואר בחודש שעבר
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}המטען שצריך בשביל גידול עיר
 STR_200F_TALL_OFFICE_BLOCK                                      :בניין משרדים גבוה
 STR_2010_OFFICE_BLOCK                                           :בניין משרדים
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :בניין דירות
@@ -2105,6 +2116,7 @@ STR_NUM_VERY_LOW                                                :נמוך מאו
 STR_6816_LOW                                                    :נמוך
 STR_6817_NORMAL                                                 :רגיל
 STR_6818_HIGH                                                   :גבוה
+STR_02BF_CUSTOM                                                 :אחר
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :איטי ביותר
@@ -2836,6 +2848,7 @@ STR_900E_MAX_SPEED                                              :{LTBLUE}{VELOCI
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :({1:CURRENCY} :בשנה שעברה) {LTBLUE}{0:CURRENCY}{BLACK} :רווח השנה
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{LTBLUE}{1:COMMA}{BLACK} :תקלות ממועד הטיפול האחרון {LTBLUE}{0:COMMA}%{BLACK} :אמינות
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{2:CURRENCY}{BLACK} :שווי  {LTBLUE}{1:NUM}{BLACK} :שנת בנייה{LTBLUE}{0:ENGINE}
+STR_9012_CAPACITY                                               :{BLACK}קיבולת: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...חייב לעצור בתוך מוסך לכלי רכב
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}...לא ניתן למכור כלי רכב
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}...לא ניתן לעצור/להמשיך בנסיעה
@@ -2912,6 +2925,7 @@ STR_9813_MAX_SPEED                                              :{LTBLUE}{VELOCI
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :({1:CURRENCY} :בשנה שעברה) {LTBLUE}{0:CURRENCY}{BLACK} :רווח השנה
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{LTBLUE}{1:COMMA}{BLACK} :תקלות ממועד הטיפול האחרון {LTBLUE}{0:COMMA}%{BLACK} :אמינות
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{2:CURRENCY}{BLACK} :שווי  {LTBLUE}{1:NUM}{BLACK} :שנת בנייה{LTBLUE}{0:ENGINE}
+STR_9817_CAPACITY                                               :{BLACK}קיבולת: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}לא ניתן לעצור/להפעיל את כלי השייט
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE} לא ניתן לשלוח את כלי השייט למבדוק
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}לא ניתן למצוא מבדוק קרוב
@@ -2986,6 +3000,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE} ממת�
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}כלי טייס חוסם את הדרך
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}לא ניתן לעצור/להפעיל את כלי הטייס
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}נמצא בטיסה
+STR_A019_CAPACITY                                               :{BLACK}קיבולת: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}קיבולת: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}המטוס צריך להמצא בעצירה בסככת מטוסים
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}לא ניתן למכור את כלי הטייס
 STR_A01D_AIRPORT_CONSTRUCTION                                   :בניית שדה תעופה
@@ -3139,6 +3155,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}?הפש�
 STR_NEWGRF_BROKEN                                               :{WHITE}Behaviour of NewGRF '{0:STRING}' is likely to cause desyncs and/or crashes.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}It changes vehicle length for '{1:ENGINE}' when not inside a depot.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Train '{VEHICLE}' belonging to '{COMPANY}' has invalid length. It is probably caused by problems with NewGRFs. Game may desync or crash.
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game was saved in version without tram support. All trams have been removed.
 
@@ -3551,7 +3568,6 @@ STR_AI_VERSION                                                  :: גירסה
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{ORANGE}{STRING}{LTBLUE} :אפשר שליטה של הערים ברמת הרעש בשדות תעופה
 STR_NOISE_IN_TOWN                                               :{ORANGE}{1:COMMA}{BLACK} :מירבית {ORANGE}{0:COMMA}{BLACK} :רמת הרעש המותרת בעיר זו
 STR_STATION_NOISE                                               :{GOLD}{COMMA}{BLACK} :רמת הרעש
 ########
@@ -3577,6 +3593,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK} בחר 
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK} בחר רת כל התכנים המהווים שדרוג לבחירה קיימת
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK} בטל בחירה
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK} בטל את כל הבחירות להורדה
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}סינון תוית\שם:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK} הורד
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK} החל בהורדת התכנים שנבחרו
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{WHITE}{BYTES}{SILVER} :גודל ההורדה

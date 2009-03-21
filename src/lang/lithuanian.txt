@@ -3433,6 +3433,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupės 
 STR_GROUP_CREATE_TIP                                            :{BLACK}Spragtelk, kad sukurti grupę
 STR_GROUP_DELETE_TIP                                            :{BLACK}Pašalinti pasirinktą grupę
 STR_GROUP_RENAME_TIP                                            :{BLACK}Pervadinti pasirinktą grupę
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Paspauskite čia, kad apsaugoti grupę nuo bendro auto-pakeitimo
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
@@ -3516,52 +3517,76 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI Nustatymai
 STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Rodyti AI nustatymus
+STR_AI_DEBUG                                                    :{WHITE}DI Derinimas
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}AI vardas
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Perkrauti AI
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Išbraukti DI, perkrauti skritpą, ir perkrauti DI
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}DI derinimo langas yra pasiekiamas tik iš serverio
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI Nustatymai
 STR_AI_CHANGE                                                   :{BLACK}Pasirinkti AI
 STR_AI_CONFIGURE                                                :{BLACK}Derinti
 STR_AI_CHANGE_TIP                                               :{BLACK}Įkelti kitą AI
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Suderinti DI nustatymus
+STR_AI_LIST_TIP                                                 :{BLACK}Visi DI bus įkelti į sekantį žaidimą
+STR_AI_LIST_CAPTION                                             :{WHITE}Galimi DI
+STR_AI_AILIST_TIP                                               :{BLACK}Paspauskite, kad pasirinkti DI
 STR_AI_ACCEPT                                                   :{BLACK}Priimti
+STR_AI_ACCEPT_TIP                                               :{BLACK}Pasirinkti pažymėtą DI
 STR_AI_CANCEL                                                   :{BLACK}Atšaukti
+STR_AI_CANCEL_TIP                                               :{BLACK}Nekeisti DI
 STR_AI_CLOSE                                                    :{BLACK}Uždaryti
 STR_AI_RESET                                                    :{BLACK}Atstatyti
 STR_AI_HUMAN_PLAYER                                             :Žaidėjas Žmogus
+STR_AI_RANDOM_AI                                                :Atsitiktinis DI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parametrai
 STR_AI_AUTHOR                                                   :Autorius:
 STR_AI_VERSION                                                  :Versija:
 ########
 
 ############ town controlled noise level
+STR_NOISE_IN_TOWN                                               :{BLACK}Triukšmo limitas mieste: {ORANGE}{COMMA}{BLACK}  daugiausia: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Sukeltas triukšmas: {GOLD}{COMMA}
 ########
 
 ############ Downloading of content from the central server
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD pagaminta be "zlib" pagalbos...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... atsiųsti turinio neįmanoma!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Bazinė grafika
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :DI biblioteka
 STR_CONTENT_TYPE_SCENARIO                                       :Scenarijus
-STR_CONTENT_TITLE                                               :{WHITE}Turinys siunčiasi
+STR_CONTENT_TITLE                                               :{WHITE}Turinio atsisiuntimas
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipas
 STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Turinio tipas
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Vardas
 STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Turinio vardas
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Pažymėti viską
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Pažymėti visą turinį atsisiuntimui
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pažymėti atnaujinimus
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Pažymėti visą turinį, atnaujinimui skirtą turinį atsisiuntimui
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Nieko nežymėti
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Pažymėti visą turinį kaip neatsisiųstą
 STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Įveskite filtro eilutę
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Įveskite raktažodį filtruoti sąrašui dėl
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtro pavadinimas:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Atsisiųsti
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Pradedama siųsti pažymėta turinį
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Bendras siuntimo dydis: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}TURINIO INFORMACIJA
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Jūs nepasirinkote tai, kad atsisiųsti
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Jūs pasirinkote tai atsisiųsti
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Ši priklausomybė buvo pasirinkta atsisiuntimui
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Tu jau tai turi
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Šis turinys yra netinkamas ir negali būti parsiustas su OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Tai yra pakeitimas egzistuojančiam {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Vardas: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versija: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Aprašymas: {WHITE}{STRING}
 STR_CONTENT_DETAIL_URL                                          :{SILVER}Nuoroda: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tpas: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Siuntinio dydis: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Pasirinktas nes: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Priklausomybės: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Žymės: {WHITE}{STRING}
 
@@ -3578,5 +3603,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fail
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nepavyko išpakuoti parsiųsta fialą
 
 STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Patikrinti interneto turinį
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Patikrinti dėl naujų ir atnaujintą turinį atsisiuntimui
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Rasti ieškomą turinį tinkle
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Patikrinti trukstamą turinį  internete
 ########

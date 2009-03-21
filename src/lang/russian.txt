@@ -1806,7 +1806,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Слиш
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Присоединяется более чем к одной существующей станции
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Слишком много станций и остановок в этом городе. Переименуйте существующие.
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Слишком много станций и остановок
-STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Too many railway station parts
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Слишком большая ЖД станция
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Слишком много автобусных остановок
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Слишком много погрузочных станций
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Слишком близко к другой станции
