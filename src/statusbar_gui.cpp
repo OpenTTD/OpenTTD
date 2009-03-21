@@ -107,11 +107,11 @@ struct StatusBarWindow : Window {
 
 		/* Draw status bar */
 		if (this->saving) { // true when saving is active
-			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_SAVING_GAME, TC_FROMSTRING, TA_CENTER);
+			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_SAVING_GAME, TC_FROMSTRING, SA_CENTER);
 		} else if (_do_autosave) {
-			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_032F_AUTOSAVE, TC_FROMSTRING, TA_CENTER);
+			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_032F_AUTOSAVE, TC_FROMSTRING, SA_CENTER);
 		} else if (_pause_game) {
-			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_0319_PAUSED, TC_FROMSTRING, TA_CENTER);
+			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_0319_PAUSED, TC_FROMSTRING, SA_CENTER);
 		} else if (this->ticker_scroll > TICKER_STOP && FindWindowById(WC_NEWS_WINDOW, 0) == NULL && _statusbar_news_item.string_id != 0) {
 			/* Draw the scrolling news text */
 			if (!DrawScrollingStatusText(&_statusbar_news_item, this->ticker_scroll, this->widget[SBW_MIDDLE].right - this->widget[SBW_MIDDLE].left - 2)) {
@@ -119,14 +119,14 @@ struct StatusBarWindow : Window {
 				if (c != NULL) {
 					/* This is the default text */
 					SetDParam(0, c->index);
-					DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_02BA, TC_FROMSTRING, TA_CENTER);
+					DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_02BA, TC_FROMSTRING, SA_CENTER);
 				}
 			}
 		} else {
 			if (c != NULL) {
 				/* This is the default text */
 				SetDParam(0, c->index);
-				DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_02BA, TC_FROMSTRING, TA_CENTER);
+				DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_02BA, TC_FROMSTRING, SA_CENTER);
 			}
 		}
 

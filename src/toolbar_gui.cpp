@@ -1243,13 +1243,13 @@ public:
 		this->DrawWidgets();
 
 		SetDParam(0, ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
-		DrawString(this->widget[TBSE_DATEBACKWARD].right, this->widget[TBSE_DATEFORWARD].left, 6, STR_00AF, TC_FROMSTRING, TA_CENTER);
+		DrawString(this->widget[TBSE_DATEBACKWARD].right, this->widget[TBSE_DATEFORWARD].left, 6, STR_00AF, TC_FROMSTRING, SA_CENTER);
 
 		/* We hide this panel when the toolbar space gets too small */
 		const Widget *panel = &this->widget[TBSE_SPACERPANEL];
 		if (panel->left != panel->right) {
-			DrawString(panel->left + 1, panel->right - 1,  1, STR_0221_OPENTTD, TC_FROMSTRING, TA_CENTER);
-			DrawString(panel->left + 1, panel->right - 1, 11, STR_0222_SCENARIO_EDITOR, TC_FROMSTRING, TA_CENTER);
+			DrawString(panel->left + 1, panel->right - 1,  1, STR_0221_OPENTTD, TC_FROMSTRING, SA_CENTER);
+			DrawString(panel->left + 1, panel->right - 1, 11, STR_0222_SCENARIO_EDITOR, TC_FROMSTRING, SA_CENTER);
 		}
 	}
 

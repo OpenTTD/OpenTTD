@@ -86,14 +86,14 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 void DrawSprite(SpriteID img, SpriteID pal, int x, int y, const SubSprite *sub = NULL);
 
 /** How to align the to-be drawn text. */
-enum TextAlignment {
-	TA_LEFT,   ///< Left align the text
-	TA_CENTER, ///< Center the text
-	TA_RIGHT,  ///< Right align the text
+enum StringAlignment {
+	SA_LEFT,   ///< Left align the text
+	SA_CENTER, ///< Center the text
+	SA_RIGHT,  ///< Right align the text
 };
 
-int DrawString(int left, int right, int top, const char *str, TextColour colour, TextAlignment align = TA_LEFT, bool underline = false);
-int DrawString(int left, int right, int top, StringID str, TextColour colour, TextAlignment align = TA_LEFT, bool underline = false);
+int DrawString(int left, int right, int top, const char *str, TextColour colour, StringAlignment align = SA_LEFT, bool underline = false);
+int DrawString(int left, int right, int top, StringID str, TextColour colour, StringAlignment align = SA_LEFT, bool underline = false);
 
 int DrawStringCentered(int x, int y, StringID str, TextColour colour);
 int DoDrawStringCentered(int x, int y, const char *str, TextColour colour);

@@ -411,7 +411,7 @@ int DrawString(int x, int y, StringID str, TextColour colour)
  * @return In case of left or center alignment the right most pixel we have drawn to.
  *         In case of right alignment the left most pixel we have drawn to.
  */
-static int DrawString(int left, int right, int top, char *str, const char *last, TextColour colour, TextAlignment align, bool underline = false)
+static int DrawString(int left, int right, int top, char *str, const char *last, TextColour colour, StringAlignment align, bool underline = false)
 {
 	TruncateString(str, right - left);
 	HandleBiDiAndArabicShapes(str, last);
@@ -419,16 +419,16 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 	int w = GetStringBoundingBox(str).width;
 
 	switch (align) {
-		case TA_LEFT:
+		case SA_LEFT:
 			right = left + w;
 			break;
 
-		case TA_CENTER:
+		case SA_CENTER:
 			left += (right - left - w) / 2;
 			right = left + w;
 			break;
 
-		case TA_RIGHT:
+		case SA_RIGHT:
 			left = right - w;
 			break;
 
@@ -440,7 +440,7 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 		GfxFillRect(left, top + 10, right, top + 10, _string_colourremap[1]);
 	}
 
-	return align == TA_RIGHT ? left : right;
+	return align == SA_RIGHT ? left : right;
 }
 
 /**
@@ -456,7 +456,7 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
  *               will be drawn in the right direction.
  * @param underline Whether to underline what has been drawn or not.
  */
-int DrawString(int left, int right, int top, const char *str, TextColour colour, TextAlignment align, bool underline)
+int DrawString(int left, int right, int top, const char *str, TextColour colour, StringAlignment align, bool underline)
 {
 	char buffer[DRAW_STRING_BUFFER];
 	strecpy(buffer, str, lastof(buffer));
@@ -476,7 +476,7 @@ int DrawString(int left, int right, int top, const char *str, TextColour colour,
  *               will be drawn in the right direction.
  * @param underline Whether to underline what has been drawn or not.
  */
-int DrawString(int left, int right, int top, StringID str, TextColour colour, TextAlignment align, bool underline)
+int DrawString(int left, int right, int top, StringID str, TextColour colour, StringAlignment align, bool underline)
 {
 	char buffer[DRAW_STRING_BUFFER];
 	GetString(buffer, str, lastof(buffer));
@@ -494,7 +494,7 @@ int DrawString(int left, int right, int top, StringID str, TextColour colour, Te
  */
 int DrawStringTruncated(int x, int y, StringID str, TextColour colour, uint maxw)
 {
-	return DrawString(x, x + maxw, y, str, colour, TA_LEFT, false);
+	return DrawString(x, x + maxw, y, str, colour, SA_LEFT, false);
 }
 
 /**
@@ -507,7 +507,7 @@ int DrawStringTruncated(int x, int y, StringID str, TextColour colour, uint maxw
  */
 int DrawStringRightAligned(int x, int y, StringID str, TextColour colour)
 {
-	return DrawString(0, x, y, str, colour, TA_RIGHT, false);
+	return DrawString(0, x, y, str, colour, SA_RIGHT, false);
 }
 
 /**
@@ -521,7 +521,7 @@ int DrawStringRightAligned(int x, int y, StringID str, TextColour colour)
  */
 int DrawStringRightAlignedTruncated(int x, int y, StringID str, TextColour colour, uint maxw)
 {
-	return DrawString(x - maxw, x, y, str, colour, TA_RIGHT, false);
+	return DrawString(x - maxw, x, y, str, colour, SA_RIGHT, false);
 }
 
 /**
@@ -534,7 +534,7 @@ int DrawStringRightAlignedTruncated(int x, int y, StringID str, TextColour colou
  */
 int DrawStringRightAlignedUnderline(int x, int y, StringID str, TextColour colour)
 {
-	return DrawString(0, x, y, str, colour, TA_RIGHT, true);
+	return DrawString(0, x, y, str, colour, SA_RIGHT, true);
 }
 
 /**
@@ -550,7 +550,7 @@ int DrawStringCentered(int x, int y, StringID str, TextColour colour)
 	char buffer[DRAW_STRING_BUFFER];
 	GetString(buffer, str, lastof(buffer));
 	int w = GetStringBoundingBox(buffer).width;
-	return DrawString(x - w, x + w, y, buffer, lastof(buffer), colour, TA_CENTER);
+	return DrawString(x - w, x + w, y, buffer, lastof(buffer), colour, SA_CENTER);
 }
 
 /**
@@ -566,7 +566,7 @@ int DrawStringCentered(int x, int y, StringID str, TextColour colour)
  */
 int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, TextColour colour)
 {
-	return DrawString(xl, xr, y, str, colour, TA_CENTER, false);
+	return DrawString(xl, xr, y, str, colour, SA_CENTER, false);
 }
 
 /**
@@ -583,7 +583,7 @@ int DoDrawStringCentered(int x, int y, const char *str, TextColour colour)
 	strecpy(buffer, str, lastof(buffer));
 
 	int w = GetStringBoundingBox(buffer).width;
-	return DrawString(x - w, x + w, y, buffer, lastof(buffer), colour, TA_CENTER);
+	return DrawString(x - w, x + w, y, buffer, lastof(buffer), colour, SA_CENTER);
 }
 
 /**
@@ -599,7 +599,7 @@ int DrawStringCenterUnderline(int x, int y, StringID str, TextColour colour)
 	char buffer[DRAW_STRING_BUFFER];
 	GetString(buffer, str, lastof(buffer));
 	int w = GetStringBoundingBox(buffer).width;
-	return DrawString(x - w, y + w, y, buffer, lastof(buffer), colour, TA_CENTER, true);
+	return DrawString(x - w, y + w, y, buffer, lastof(buffer), colour, SA_CENTER, true);
 }
 
 /**
@@ -613,7 +613,7 @@ int DrawStringCenterUnderline(int x, int y, StringID str, TextColour colour)
  */
 int DrawStringCenterUnderlineTruncated(int xl, int xr, int y, StringID str, TextColour colour)
 {
-	return DrawString(xl, xr, y, str, colour, TA_CENTER, true);
+	return DrawString(xl, xr, y, str, colour, SA_CENTER, true);
 }
 
 /**
