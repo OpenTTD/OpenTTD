@@ -94,6 +94,7 @@ enum StringAlignment {
 
 int DrawString(int left, int right, int top, const char *str, TextColour colour, StringAlignment align = SA_LEFT, bool underline = false);
 int DrawString(int left, int right, int top, StringID str, TextColour colour, StringAlignment align = SA_LEFT, bool underline = false);
+int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, StringAlignment align = SA_LEFT);
 
 int DrawString(int x, int y, StringID str, TextColour colour);
 

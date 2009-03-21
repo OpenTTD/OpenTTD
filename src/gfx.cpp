@@ -376,25 +376,6 @@ static int TruncateString(char *str, int maxw)
 }
 
 /**
- * Draw string starting at position (x,y).
- *
- * @param x      X position to start drawing
- * @param y      Y position to start drawing
- * @param str    String to draw
- * @param colour Colour used for drawing the string, see DoDrawString() for details
- *
- * @return Horizontal coordinate after drawing the string
- */
-int DrawString(int x, int y, StringID str, TextColour colour)
-{
-	char buffer[DRAW_STRING_BUFFER];
-
-	GetString(buffer, str, lastof(buffer));
-	HandleBiDiAndArabicShapes(buffer, lastof(buffer));
-	return ReallyDoDrawString(buffer, x, y, colour);
-}
-
-/**
  * Draw string, possibly truncated to make it fit in its allocated space
  *
  * @param left   The left most position to draw on.
@@ -411,9 +392,9 @@ int DrawString(int x, int y, StringID str, TextColour colour)
  * @return In case of left or center alignment the right most pixel we have drawn to.
  *         In case of right alignment the left most pixel we have drawn to.
  */
-static int DrawString(int left, int right, int top, char *str, const char *last, TextColour colour, StringAlignment align, bool underline = false)
+static int DrawString(int left, int right, int top, char *str, const char *last, TextColour colour, StringAlignment align, bool underline = false, bool truncate = true)
 {
-	TruncateString(str, right - left);
+	if (truncate) TruncateString(str, right - left);
 	HandleBiDiAndArabicShapes(str, last);
 
 	int w = GetStringBoundingBox(str).width;
@@ -435,12 +416,27 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 		default:
 			NOT_REACHED();
 	}
-	ReallyDoDrawString(str, left, top, colour);
+	ReallyDoDrawString(str, left, top, colour, !truncate);
 	if (underline) {
 		GfxFillRect(left, top + 10, right, top + 10, _string_colourremap[1]);
 	}
 
 	return align == SA_RIGHT ? left : right;
+}
+
+/**
+ * Draw string starting at position (x,y).
+ *
+ * @param x      X position to start drawing
+ * @param y      Y position to start drawing
+ * @param str    String to draw
+ * @param colour Colour used for drawing the string, see DoDrawString() for details
+ *
+ * @return Horizontal coordinate after drawing the string
+ */
+int DrawString(int x, int y, StringID str, TextColour colour)
+{
+	return DrawString(x, INT32_MAX, y, str, colour);
 }
 
 /**
@@ -604,45 +600,59 @@ int GetStringHeight(StringID str, int maxw)
 }
 
 
-/** Draw a given string with the centre around the given (x,y) coordinates
- * @param x Centre the string around this pixel width
- * @param y Centre the string around this pixel height
- * @param str String to draw
- * @param maxw Maximum width the string can have before it is wrapped */
-void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
+/**
+ * Draw string, possibly over multiple lines.
+ *
+ * @param left   The left most position to draw on.
+ * @param right  The right most position to draw on.
+ * @param top    The top most position to draw on.
+ * @param bottom The bottom most position to draw on.
+ * @param str    String to draw.
+ * @param colour Colour used for drawing the string, see DoDrawString() for details
+ * @param align  The alignment of the string when drawing left-to-right. In the
+ *               case a right-to-left language is chosen this is inverted so it
+ *               will be drawn in the right direction.
+ *
+ * @return The bottom to where we have written.
+ */
+int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, StringAlignment align)
 {
-	char buffer[DRAW_STRING_BUFFER];
-	uint32 tmp;
-	int num, mt;
-	const char *src;
-	WChar c;
+	int maxw = right - left;
+	int maxh = bottom - top;
 
+	char buffer[DRAW_STRING_BUFFER];
 	GetString(buffer, str, lastof(buffer));
 
-	tmp = FormatStringLinebreaks(buffer, maxw);
-	num = GB(tmp, 0, 16);
+	uint32 tmp = FormatStringLinebreaks(buffer, maxw);
+	int num = GB(tmp, 0, 16);
 
-	mt = GetCharacterHeight((FontSize)GB(tmp, 16, 16));
+	int mt = GetCharacterHeight((FontSize)GB(tmp, 16, 16));
+	int total_height = (num + 1) * mt;
 
-	y -= (mt >> 1) * num;
+	if (maxh != -1 && (int)total_height > maxh) {
+		/* Check there's room enough for at least one line. */
+		if (maxh < mt) return 0;
 
-	src = buffer;
+		num = maxh / mt - 1;
+		total_height = (num + 1) * mt;
+	}
+
+	int y = top;
+	const char *src = buffer;
 
 	for (;;) {
 		char buf2[DRAW_STRING_BUFFER];
 		strecpy(buf2, src, lastof(buf2));
-		HandleBiDiAndArabicShapes(buf2, lastof(buf2));
-		int w = GetStringBoundingBox(buf2).width;
-		ReallyDoDrawString(buf2, x - (w >> 1), y, TC_FROMSTRING, true);
+		DrawString(left, right, y, buf2, lastof(buf2), TC_FROMSTRING, align, false, false);
 		_cur_fontsize = _last_fontsize;
 
 		for (;;) {
-			c = Utf8Consume(&src);
+			WChar c = Utf8Consume(&src);
 			if (c == 0) {
 				y += mt;
 				if (--num < 0) {
 					_cur_fontsize = FS_NORMAL;
-					return;
+					return top + total_height;
 				}
 				break;
 			} else if (c == SCC_SETX) {
@@ -654,57 +664,19 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 	}
 }
 
+/** Draw a given string with the centre around the given (x,y) coordinates
+ * @param x Centre the string around this pixel width
+ * @param y Centre the string around this pixel height
+ * @param str String to draw
+ * @param maxw Maximum width the string can have before it is wrapped */
+void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
+{
+	DrawStringMultiLine(x - maxw / 2, x + maxw / 2, y, INT32_MAX, str, SA_CENTER);
+}
 
 uint DrawStringMultiLine(int x, int y, StringID str, int maxw, int maxh)
 {
-	char buffer[DRAW_STRING_BUFFER];
-	uint32 tmp;
-	int num, mt;
-	uint total_height;
-	const char *src;
-	WChar c;
-
-	GetString(buffer, str, lastof(buffer));
-
-	tmp = FormatStringLinebreaks(buffer, maxw);
-	num = GB(tmp, 0, 16);
-
-	mt = GetCharacterHeight((FontSize)GB(tmp, 16, 16));
-	total_height = (num + 1) * mt;
-
-	if (maxh != -1 && (int)total_height > maxh) {
-		/* Check there's room enough for at least one line. */
-		if (maxh < mt) return 0;
-
-		num = maxh / mt - 1;
-		total_height = (num + 1) * mt;
-	}
-
-	src = buffer;
-
-	for (;;) {
-		char buf2[DRAW_STRING_BUFFER];
-		strecpy(buf2, src, lastof(buf2));
-		HandleBiDiAndArabicShapes(buf2, lastof(buf2));
-		ReallyDoDrawString(buf2, x, y, TC_FROMSTRING, true);
-		_cur_fontsize = _last_fontsize;
-
-		for (;;) {
-			c = Utf8Consume(&src);
-			if (c == 0) {
-				y += mt;
-				if (--num < 0) {
-					_cur_fontsize = FS_NORMAL;
-					return total_height;
-				}
-				break;
-			} else if (c == SCC_SETX) {
-				src++;
-			} else if (c == SCC_SETXY) {
-				src += 2;
-			}
-		}
-	}
+	return DrawStringMultiLine(x, x + maxw, y, y + maxh, str, SA_LEFT) - y;
 }
 
 /** Return the string dimension in pixels. The height and width are returned
