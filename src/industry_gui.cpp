@@ -226,7 +226,7 @@ public:
 		}
 
 		if (this->selected_type == INVALID_INDUSTRYTYPE) {
-			DrawStringMultiLine(x_str, y_str, STR_RANDOM_INDUSTRIES_TIP, max_width, wi->bottom - wi->top - 40);
+			DrawStringMultiLine(x_str, x_str + max_width, y_str, wi->bottom, STR_RANDOM_INDUSTRIES_TIP);
 			return;
 		}
 
@@ -280,7 +280,7 @@ public:
 		str = this->text[this->selected_index];
 		if (str != STR_NULL && str != STR_UNDEFINED) {
 			SetDParam(0, str);
-			DrawStringMultiLine(x_str, y_str, STR_JUST_STRING, max_width, wi->bottom - wi->top - 40);
+			DrawStringMultiLine(x_str, x_str + max_width, y_str, wi->bottom, STR_JUST_STRING);
 		}
 	}
 
@@ -551,7 +551,7 @@ public:
 
 					PrepareTextRefStackUsage(6);
 					/* Use all the available space left from where we stand up to the end of the window */
-					y += DrawStringMultiLine(2, y, message, wi->right - wi->left - 4, -1);
+					y = DrawStringMultiLine(wi->left + 2, wi->right -2, y, wi->bottom, message);
 					StopTextRefStackUsage();
 				}
 			}

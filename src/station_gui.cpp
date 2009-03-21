@@ -863,7 +863,7 @@ struct StationViewWindow : public Window {
 			assert(b < endof(string));
 
 			SetDParamStr(0, string);
-			DrawStringMultiLine(2, this->widget[SVW_ACCEPTLIST].top + 1, STR_JUST_RAW_STRING, this->widget[SVW_ACCEPTLIST].right - this->widget[SVW_ACCEPTLIST].left);
+			DrawStringMultiLine(this->widget[SVW_ACCEPTLIST].left + 2, this->widget[SVW_ACCEPTLIST].right - 2, this->widget[SVW_ACCEPTLIST].bottom - 1, this->widget[SVW_ACCEPTLIST].top + 1, STR_JUST_RAW_STRING);
 		} else { // extended window with list of cargo ratings
 			y = this->widget[SVW_RATINGLIST].top + 1;
 

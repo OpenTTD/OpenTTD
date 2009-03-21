@@ -748,7 +748,7 @@ static int DrawStationCoverageText(const AcceptedCargo cargo,
 	assert(b < endof(string));
 
 	SetDParamStr(0, string);
-	return DrawStringMultiLine(str_x, str_y, STR_JUST_RAW_STRING, 144);
+	return DrawStringMultiLine(str_x, str_x + 144, str_y, INT32_MAX, STR_JUST_RAW_STRING);
 }
 
 /**

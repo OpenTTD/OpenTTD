@@ -169,7 +169,7 @@ public:
 		if (this->sel_index != -1) {
 			SetDParam(1, (_price.build_industry >> 8) * _town_action_costs[this->sel_index]);
 			SetDParam(0, STR_2046_SMALL_ADVERTISING_CAMPAIGN + this->sel_index);
-			DrawStringMultiLine(2, this->widget[TWA_ACTION_INFO].top + 1, STR_204D_INITIATE_A_SMALL_LOCAL + this->sel_index, 313);
+			DrawStringMultiLine(this->widget[TWA_ACTION_INFO].left + 2, this->widget[TWA_ACTION_INFO].right - 2, this->widget[TWA_ACTION_INFO].top + 1, this->widget[TWA_ACTION_INFO].bottom - 1, STR_204D_INITIATE_A_SMALL_LOCAL + this->sel_index);
 		}
 	}
 

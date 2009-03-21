@@ -109,7 +109,6 @@ uint32 FormatStringLinebreaks(char *str, int maxw);
 int GetStringHeight(StringID str, int maxw);
 void LoadStringWidthTable();
 void DrawStringMultiCenter(int x, int y, StringID str, int maxw);
-uint DrawStringMultiLine(int x, int y, StringID str, int maxw, int maxh = -1);
 
 /**
  * Let the dirty blocks repainting by the video driver.

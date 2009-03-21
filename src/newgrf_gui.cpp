@@ -67,24 +67,24 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bott
 		GetString(message, c->error->custom_message == NULL ? c->error->message : STR_JUST_RAW_STRING, lastof(message));
 
 		SetDParamStr(0, message);
-		y += DrawStringMultiLine(x, y, c->error->severity, w, bottom - y);
+		y = DrawStringMultiLine(x, x + w, y, bottom, c->error->severity);
 	}
 
 	/* Draw filename or not if it is not known (GRF sent over internet) */
 	if (c->filename != NULL) {
 		SetDParamStr(0, c->filename);
-		y += DrawStringMultiLine(x, y, STR_NEWGRF_FILENAME, w, bottom - y);
+		y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_FILENAME);
 	}
 
 	/* Prepare and draw GRF ID */
 	snprintf(buff, lengthof(buff), "%08X", BSWAP32(c->grfid));
 	SetDParamStr(0, buff);
-	y += DrawStringMultiLine(x, y, STR_NEWGRF_GRF_ID, w, bottom - y);
+	y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_GRF_ID);
 
 	/* Prepare and draw MD5 sum */
 	md5sumToString(buff, lastof(buff), c->md5sum);
 	SetDParamStr(0, buff);
-	y += DrawStringMultiLine(x, y, STR_NEWGRF_MD5SUM, w, bottom - y);
+	y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_MD5SUM);
 
 	/* Show GRF parameter list */
 	if (show_params) {
@@ -95,25 +95,25 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bott
 		} else {
 			SetDParam(0, STR_01A9_NONE);
 		}
-		y += DrawStringMultiLine(x, y, STR_NEWGRF_PARAMETER, w, bottom - y);
+		y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_PARAMETER);
 
 		/* Draw the palette of the NewGRF */
 		SetDParamStr(0, c->windows_paletted ? "Windows" : "DOS");
-		y += DrawStringMultiLine(x, y, STR_NEWGRF_PALETTE, w, bottom - y);
+		y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_PALETTE);
 	}
 
 	/* Show flags */
-	if (c->status == GCS_NOT_FOUND)        y += DrawStringMultiLine(x, y, STR_NEWGRF_NOT_FOUND, w, bottom - y);
-	if (c->status == GCS_DISABLED)         y += DrawStringMultiLine(x, y, STR_NEWGRF_DISABLED, w, bottom - y);
-	if (HasBit(c->flags, GCF_COMPATIBLE)) y += DrawStringMultiLine(x, y, STR_NEWGRF_COMPATIBLE_LOADED, w, bottom - y);
+	if (c->status == GCS_NOT_FOUND)       y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_NOT_FOUND);
+	if (c->status == GCS_DISABLED)        y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_DISABLED);
+	if (HasBit(c->flags, GCF_COMPATIBLE)) y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_COMPATIBLE_LOADED);
 
 	/* Draw GRF info if it exists */
 	if (c->info != NULL && !StrEmpty(c->info)) {
 		SetDParam(0, STR_JUST_RAW_STRING);
 		SetDParamStr(1, c->info);
-		y += DrawStringMultiLine(x, y, STR_02BD, w, bottom - y);
+		y = DrawStringMultiLine(x, x + w, y, bottom, STR_02BD);
 	} else {
-		y += DrawStringMultiLine(x, y, STR_NEWGRF_NO_INFO, w, bottom - y);
+		y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_NO_INFO);
 	}
 }
 

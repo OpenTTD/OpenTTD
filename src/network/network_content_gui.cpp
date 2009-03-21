@@ -443,34 +443,34 @@ public:
 
 		if (this->selected->upgrade) {
 			SetDParam(0, STR_CONTENT_TYPE_BASE_GRAPHICS + this->selected->type - CONTENT_TYPE_BASE_GRAPHICS);
-			y += DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, y, STR_CONTENT_DETAIL_UPDATE, this->widget[NCLWW_DETAILS].right - this->widget[NCLWW_DETAILS].left - 5, max_y - y);
+			y = DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, this->widget[NCLWW_DETAILS].right - 5, y, max_y, STR_CONTENT_DETAIL_UPDATE);
 			y += 11;
 		}
 
 		SetDParamStr(0, this->selected->name);
-		y += DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, y, STR_CONTENT_DETAIL_NAME, this->widget[NCLWW_DETAILS].right - this->widget[NCLWW_DETAILS].left - 5, max_y - y);
+		y = DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, this->widget[NCLWW_DETAILS].right - 5, y, max_y, STR_CONTENT_DETAIL_NAME);
 
 		if (!StrEmpty(this->selected->version)) {
 			SetDParamStr(0, this->selected->version);
-			y += DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, y, STR_CONTENT_DETAIL_VERSION, this->widget[NCLWW_DETAILS].right - this->widget[NCLWW_DETAILS].left - 5, max_y - y);
+			y = DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, this->widget[NCLWW_DETAILS].right - 5, y, max_y, STR_CONTENT_DETAIL_VERSION);
 		}
 
 		if (!StrEmpty(this->selected->description)) {
 			SetDParamStr(0, this->selected->description);
-			y += DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, y, STR_CONTENT_DETAIL_DESCRIPTION, this->widget[NCLWW_DETAILS].right - this->widget[NCLWW_DETAILS].left - 5, max_y - y);
+			y = DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, this->widget[NCLWW_DETAILS].right - 5, y, max_y, STR_CONTENT_DETAIL_DESCRIPTION);
 		}
 
 		if (!StrEmpty(this->selected->url)) {
 			SetDParamStr(0, this->selected->url);
-			y += DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, y, STR_CONTENT_DETAIL_URL, this->widget[NCLWW_DETAILS].right - this->widget[NCLWW_DETAILS].left - 5, max_y - y);
+			y = DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, this->widget[NCLWW_DETAILS].right - 5, y, max_y, STR_CONTENT_DETAIL_URL);
 		}
 
 		SetDParam(0, STR_CONTENT_TYPE_BASE_GRAPHICS + this->selected->type - CONTENT_TYPE_BASE_GRAPHICS);
-		y += DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, y, STR_CONTENT_DETAIL_TYPE, this->widget[NCLWW_DETAILS].right - this->widget[NCLWW_DETAILS].left - 5, max_y - y);
+		y = DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, this->widget[NCLWW_DETAILS].right - 5, y, max_y, STR_CONTENT_DETAIL_TYPE);
 
 		y += 11;
 		SetDParam(0, this->selected->filesize);
-		y += DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, y, STR_CONTENT_DETAIL_FILESIZE, this->widget[NCLWW_DETAILS].right - this->widget[NCLWW_DETAILS].left - 5, max_y - y);
+		y = DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, this->widget[NCLWW_DETAILS].right - 5, y, max_y, STR_CONTENT_DETAIL_FILESIZE);
 
 		if (this->selected->dependency_count != 0) {
 			/* List dependencies */
@@ -490,7 +490,7 @@ public:
 				}
 			}
 			SetDParamStr(0, buf);
-			y += DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, y, STR_CONTENT_DETAIL_DEPENDENCIES, this->widget[NCLWW_DETAILS].right - this->widget[NCLWW_DETAILS].left - 5, max_y - y);
+			y = DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, this->widget[NCLWW_DETAILS].right - 5, y, max_y, STR_CONTENT_DETAIL_DEPENDENCIES);
 		}
 
 		if (this->selected->tag_count != 0) {
@@ -501,7 +501,7 @@ public:
 				p += seprintf(p, lastof(buf), i == 0 ? "%s" : ", %s", this->selected->tags[i]);
 			}
 			SetDParamStr(0, buf);
-			y += DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, y, STR_CONTENT_DETAIL_TAGS, this->widget[NCLWW_DETAILS].right - this->widget[NCLWW_DETAILS].left - 5, max_y - y);
+			y = DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, this->widget[NCLWW_DETAILS].right - 5, y, max_y, STR_CONTENT_DETAIL_TAGS);
 		}
 
 		if (this->selected->IsSelected()) {
@@ -519,7 +519,7 @@ public:
 			}
 			if (p != buf) {
 				SetDParamStr(0, buf);
-				y += DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, y, STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF, this->widget[NCLWW_DETAILS].right - this->widget[NCLWW_DETAILS].left - 5, max_y - y);
+				y = DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, this->widget[NCLWW_DETAILS].right - 5, y, max_y, STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF);
 			}
 		}
 

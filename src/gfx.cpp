@@ -631,7 +631,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 
 	if (maxh != -1 && (int)total_height > maxh) {
 		/* Check there's room enough for at least one line. */
-		if (maxh < mt) return 0;
+		if (maxh < mt) return top;
 
 		num = maxh / mt - 1;
 		total_height = (num + 1) * mt;
@@ -672,11 +672,6 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 {
 	DrawStringMultiLine(x - maxw / 2, x + maxw / 2, y, INT32_MAX, str, SA_CENTER);
-}
-
-uint DrawStringMultiLine(int x, int y, StringID str, int maxw, int maxh)
-{
-	return DrawStringMultiLine(x, x + maxw, y, y + maxh, str, SA_LEFT) - y;
 }
 
 /** Return the string dimension in pixels. The height and width are returned

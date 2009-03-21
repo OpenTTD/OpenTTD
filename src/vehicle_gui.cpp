@@ -439,9 +439,9 @@ uint ShowAdditionalText(int x, int y, uint w, EngineID engine)
 	/* STR_02BD is used to start the string with {BLACK} */
 	SetDParam(0, GetGRFStringID(GetEngineGRFID(engine), 0xD000 + callback));
 	PrepareTextRefStackUsage(0);
-	uint result = DrawStringMultiLine(x, y, STR_02BD, w);
+	uint result = DrawStringMultiLine(x, x + w, y, INT32_MAX, STR_02BD);
 	StopTextRefStackUsage();
-	return result;
+	return result - y;
 }
 
 /** Display list of cargo types of the engine, for the purchase information window */
@@ -492,7 +492,7 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 	assert(b < endof(string));
 
 	SetDParamStr(0, string);
-	return DrawStringMultiLine(x, y, STR_JUST_RAW_STRING, w);
+	return DrawStringMultiLine(x, x + w, y, INT32_MAX, STR_JUST_RAW_STRING);
 }
 
 /** Get the cargo subtype text from NewGRF for the vehicle details window. */

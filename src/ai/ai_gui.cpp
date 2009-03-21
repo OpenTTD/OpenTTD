@@ -104,7 +104,7 @@ struct AIListWindow : public Window {
 			DrawString(x + 5, this->widget[AIL_WIDGET_LIST].right - 4, y, buf, TC_BLACK);
 			y += 13;
 			SetDParamStr(0, selected_info->GetDescription());
-			DrawStringMultiLine(4, y, STR_JUST_RAW_STRING, this->width - 8, this->widget[AIL_WIDGET_INFO_BG].bottom - y);
+			DrawStringMultiLine(4, this->width - 8, y, this->widget[AIL_WIDGET_INFO_BG].bottom, STR_JUST_RAW_STRING);
 		}
 	}
 
