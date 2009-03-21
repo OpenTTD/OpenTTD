@@ -280,7 +280,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 	}
 
 	SetDParam(0, order_index + 1);
-	DrawStringTruncated(2, y, str, selected ? TC_WHITE : TC_BLACK, width);
+	DrawString(2, width + 2, y, str, selected ? TC_WHITE : TC_BLACK);
 }
 
 

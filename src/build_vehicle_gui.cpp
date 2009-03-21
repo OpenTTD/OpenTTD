@@ -668,19 +668,17 @@ void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *
 		default: NOT_REACHED();
 	}
 
-	uint maxw = r - x - x_offset;
-
 	for (; min < max; min++, y += step_size) {
 		const EngineID engine = (*eng_list)[min];
 		/* Note: num_engines is only used in the autoreplace GUI, so it is correct to use _local_company here. */
 		const uint num_engines = GetGroupNumEngines(_local_company, selected_group, engine);
 
 		SetDParam(0, engine);
-		DrawStringTruncated(x + x_offset, y, STR_ENGINE_NAME, engine == selected_id ? TC_WHITE : TC_BLACK, maxw);
+		DrawString(x + x_offset, r, y, STR_ENGINE_NAME, engine == selected_id ? TC_WHITE : TC_BLACK);
 		DrawVehicleEngine(type, x, y + y_offset, engine, (count_location != 0 && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_company));
 		if (count_location != 0) {
 			SetDParam(0, num_engines);
-			DrawStringRightAligned(count_location, y + (GetVehicleListHeight(type) == 14 ? 3 : 8), STR_TINY_BLACK, TC_FROMSTRING);
+			DrawString(x, count_location, y + (GetVehicleListHeight(type) == 14 ? 3 : 8), STR_TINY_BLACK, TC_FROMSTRING, SA_RIGHT);
 		}
 	}
 }

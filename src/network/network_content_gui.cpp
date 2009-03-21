@@ -424,7 +424,7 @@ public:
 			DrawString(this->widget[NCLWW_TYPE].left, this->widget[NCLWW_TYPE].right, y, str, TC_BLACK, SA_CENTER);
 
 			SetDParamStr(0, ci->name);
-			DrawStringTruncated(this->widget[NCLWW_NAME].left + 5, y, STR_JUST_RAW_STRING, TC_BLACK, this->widget[NCLWW_NAME].right - this->widget[NCLWW_NAME].left - 5);
+			DrawString(this->widget[NCLWW_NAME].left + 5, this->widget[NCLWW_NAME].right, y, STR_JUST_RAW_STRING, TC_BLACK);
 			y += this->resize.step_height;
 		}
 

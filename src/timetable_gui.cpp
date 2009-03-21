@@ -205,7 +205,7 @@ struct TimetableWindow : Window {
 					string = STR_TIMETABLE_TRAVEL_FOR;
 				}
 
-				DrawStringTruncated(2, y, string, (i == selected) ? TC_WHITE : TC_BLACK, this->widget[TTV_TIMETABLE_PANEL].right - 4);
+				DrawString(this->widget[TTV_TIMETABLE_PANEL].left + 2, this->widget[TTV_TIMETABLE_PANEL].right - 2, y, string, (i == selected) ? TC_WHITE : TC_BLACK);
 
 				if (final_order) break;
 			}

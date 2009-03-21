@@ -171,7 +171,7 @@ struct NewGRFAddWindow : public Window {
 
 				/* Draw selection background */
 				if (h) GfxFillRect(3, y, this->width - 15, y + 9, 156);
-				DoDrawStringTruncated(text, 4, y, h ? TC_WHITE : TC_ORANGE, this->width - 18);
+				DrawString(4, this->width - 22, y, text, h ? TC_WHITE : TC_ORANGE);
 				y += 10;
 			}
 		}
@@ -448,7 +448,7 @@ struct NewGRFWindow : public Window {
 				DrawSprite(SPR_SQUARE, pal, 5, y + 2);
 				if (c->error != NULL) DrawSprite(SPR_WARNING_SIGN, 0, 20, y + 2);
 				txtoffset = c->error != NULL ? 35 : 25;
-				DoDrawStringTruncated(text, txtoffset, y + 3, this->sel == c ? TC_WHITE : TC_BLACK, this->width - txtoffset - 10);
+				DrawString(txtoffset, this->widget[SNGRFS_FILE_LIST].right - 2, y + 3, text, this->sel == c ? TC_WHITE : TC_BLACK);
 				y += 14;
 			}
 		}

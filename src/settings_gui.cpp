@@ -849,7 +849,7 @@ uint SettingEntry::Draw(GameSettings *settings_ptr, int base_x, int base_y, int 
 		case SEF_SUBTREE_KIND:
 			if (cur_row >= first_row) {
 				DrawSprite((this->d.sub.folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, x, y);
-				DrawStringTruncated(x + 12, y, this->d.sub.title, TC_FROMSTRING, max_x - x - 12);
+				DrawString(x + 12, max_x, y, this->d.sub.title, TC_FROMSTRING);
 			}
 			cur_row++;
 			if (!this->d.sub.folded) {
@@ -916,7 +916,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 			SetDParam(1, value);
 		}
 	}
-	DrawStringTruncated(x + 25, y, (sdb->str) + disabled, TC_FROMSTRING, max_x - x - 25);
+	DrawString(x + 25, max_x, y, (sdb->str) + disabled, TC_FROMSTRING);
 }
 
 

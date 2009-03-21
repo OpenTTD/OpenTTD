@@ -1078,9 +1078,9 @@ public:
 						GfxFillRect(8, y - 2, 127, y + 10, 0, FILLRECT_CHECKER);
 					}
 
-					DrawStringTruncated(9, y, statspec->name, i == _railstation.station_type ? TC_WHITE : TC_BLACK, 118);
+					DrawString(9, 127, y, statspec->name, i == _railstation.station_type ? TC_WHITE : TC_BLACK);
 				} else {
-					DrawStringTruncated(9, y, STR_STAT_CLASS_DFLT, i == _railstation.station_type ? TC_WHITE : TC_BLACK, 118);
+					DrawString(9, 127, y, STR_STAT_CLASS_DFLT, i == _railstation.station_type ? TC_WHITE : TC_BLACK);
 				}
 
 				y += 14;

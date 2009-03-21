@@ -107,12 +107,12 @@ struct SubsidyListWindow : Window {
 
 		ConvertDateToYMD(_date, &ymd);
 
-		int width = this->width - 13;  // scroll bar = 11 + pixel each side
+		int right = this->width - 12;  // scroll bar = 11 + pixel each side
 		int y = 15;
 		int x = 1;
 
 		/* Section for drawing the offered subisidies */
-		DrawStringTruncated(x, y, STR_2026_SUBSIDIES_ON_OFFER_FOR, TC_FROMSTRING, width);
+		DrawString(x, right, y, STR_2026_SUBSIDIES_ON_OFFER_FOR, TC_FROMSTRING);
 		y += 10;
 		uint num = 0;
 
@@ -122,12 +122,12 @@ struct SubsidyListWindow : Window {
 
 				/* Displays the two offered towns */
 				SetupSubsidyDecodeParam(s, 1);
-				x2 = DrawStringTruncated(x + 2, y, STR_2027_FROM_TO, TC_FROMSTRING, width - 2);
+				x2 = DrawString(x + 2, right - 2, y, STR_2027_FROM_TO, TC_FROMSTRING);
 
 				if (width - x2 > 10) {
 					/* Displays the deadline before voiding the proposal */
 					SetDParam(0, _date - ymd.day + 384 - s->age * 32);
-					DrawStringTruncated(x2, y, STR_2028_BY, TC_FROMSTRING, width - x2);
+					DrawString(x2, right, y, STR_2028_BY, TC_FROMSTRING);
 				}
 
 				y += 10;
@@ -136,12 +136,12 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (num == 0) {
-			DrawStringTruncated(x + 2, y, STR_202A_NONE, TC_FROMSTRING, width - 2);
+			DrawString(x + 2, right - 2, y, STR_202A_NONE, TC_FROMSTRING);
 			y += 10;
 		}
 
 		/* Section for drawing the already granted subisidies */
-		DrawStringTruncated(x, y + 1, STR_202B_SERVICES_ALREADY_SUBSIDISED, TC_FROMSTRING, width);
+		DrawString(x, right, y + 1, STR_202B_SERVICES_ALREADY_SUBSIDISED, TC_FROMSTRING);
 		y += 10;
 		num = 0;
 
@@ -154,19 +154,19 @@ struct SubsidyListWindow : Window {
 				SetDParam(3, GetStation(s->to)->owner);
 
 				/* Displays the two connected stations */
-				xt = DrawStringTruncated(x + 2, y, STR_202C_FROM_TO, TC_FROMSTRING, width - 2);
+				xt = DrawString(x + 2, right - 2, y, STR_202C_FROM_TO, TC_FROMSTRING);
 
 				/* Displays the date where the granted subsidy will end */
 				if ((xt > 3) && (width - xt) > 9 ) { // do not draw if previous drawing failed or if it will overlap on scrollbar
 					SetDParam(0, _date - ymd.day + 768 - s->age * 32);
-					DrawStringTruncated(xt, y, STR_202D_UNTIL, TC_FROMSTRING, width - xt);
+					DrawString(xt, right, y, STR_202D_UNTIL, TC_FROMSTRING);
 				}
 				y += 10;
 				num++;
 			}
 		}
 
-		if (num == 0) DrawStringTruncated(x + 2, y, STR_202A_NONE, TC_FROMSTRING, width - 2);
+		if (num == 0) DrawString(x + 2, right - 2, y, STR_202A_NONE, TC_FROMSTRING);
 	}
 };
 

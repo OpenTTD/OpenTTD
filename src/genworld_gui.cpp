@@ -388,8 +388,6 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 		this->DrawEditBox(GLAND_RANDOM_EDITBOX);
 
 		if (mode != GLWP_GENERATE) {
-			char buffer[512];
-
 			if (_settings_newgame.game_creation.heightmap_rotation == HM_CLOCKWISE) {
 				SetDParam(0, this->y);
 				SetDParam(1, this->x);
@@ -397,12 +395,11 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				SetDParam(0, this->x);
 				SetDParam(1, this->y);
 			}
-			GetString(buffer, STR_HEIGHTMAP_SIZE, lastof(buffer));
-			DrawStringRightAligned(326, 91, STR_HEIGHTMAP_SIZE, TC_BLACK);
+			int right = DrawString(0, 326, 91, STR_HEIGHTMAP_SIZE, TC_BLACK, SA_RIGHT);
 
 			DrawString( 12,  91, STR_HEIGHTMAP_NAME, TC_BLACK);
 			SetDParamStr(0, this->name);
-			DrawStringTruncated(114,  91, STR_JUST_RAW_STRING, TC_ORANGE, 326 - 114 - GetStringBoundingBox(buffer).width - 5);
+			DrawString(114, right - 5, 91, STR_JUST_RAW_STRING, TC_ORANGE);
 		}
 	}
 

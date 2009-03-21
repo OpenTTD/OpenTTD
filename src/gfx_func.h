@@ -99,15 +99,12 @@ int DrawStringCentered(int x, int y, StringID str, TextColour colour);
 int DoDrawStringCentered(int x, int y, const char *str, TextColour colour);
 
 int DrawString(int x, int y, StringID str, TextColour colour);
-int DrawStringTruncated(int x, int y, StringID str, TextColour colour, uint maxw);
 
 int DoDrawString(const char *string, int x, int y, TextColour colour, bool parse_string_also_when_clipped = false);
-int DoDrawStringTruncated(const char *str, int x, int y, TextColour colour, uint maxw);
 
 int DrawStringCenterUnderline(int x, int y, StringID str, TextColour colour);
 
 int DrawStringRightAligned(int x, int y, StringID str, TextColour colour);
-int DrawStringRightAlignedTruncated(int x, int y, StringID str, TextColour colour, uint maxw);
 int DrawStringRightAlignedUnderline(int x, int y, StringID str, TextColour colour);
 
 void DrawCharCentered(uint32 c, int x, int y, TextColour colour);

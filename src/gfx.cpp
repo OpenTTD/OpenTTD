@@ -484,20 +484,6 @@ int DrawString(int left, int right, int top, StringID str, TextColour colour, St
 }
 
 /**
- * Draw string, possibly truncated to make it fit in its allocated space
- *
- * @param x      X position to start drawing
- * @param y      Y position to start drawing
- * @param str    String to draw
- * @param colour Colour used for drawing the string, see DoDrawString() for details
- * @param maxw   Maximal width of the string
- */
-int DrawStringTruncated(int x, int y, StringID str, TextColour colour, uint maxw)
-{
-	return DrawString(x, x + maxw, y, str, colour, SA_LEFT, false);
-}
-
-/**
  * Draw string right-aligned.
  *
  * @param x      Right-most x position of the string
@@ -508,20 +494,6 @@ int DrawStringTruncated(int x, int y, StringID str, TextColour colour, uint maxw
 int DrawStringRightAligned(int x, int y, StringID str, TextColour colour)
 {
 	return DrawString(0, x, y, str, colour, SA_RIGHT, false);
-}
-
-/**
- * Draw string right-aligned, possibly truncated to make it fit in its allocated space
- *
- * @param x      Right-most x position to start drawing
- * @param y      Y position to start drawing
- * @param str    String to draw
- * @param colour Colour used for drawing the string, see DoDrawString() for details
- * @param maxw   Maximal width of the string
- */
-int DrawStringRightAlignedTruncated(int x, int y, StringID str, TextColour colour, uint maxw)
-{
-	return DrawString(x - maxw, x, y, str, colour, SA_RIGHT, false);
 }
 
 /**
@@ -551,22 +523,6 @@ int DrawStringCentered(int x, int y, StringID str, TextColour colour)
 	GetString(buffer, str, lastof(buffer));
 	int w = GetStringBoundingBox(buffer).width;
 	return DrawString(x - w, x + w, y, buffer, lastof(buffer), colour, SA_CENTER);
-}
-
-/**
- * Draw string centered, possibly truncated to fit in the assigned space.
- *
- * @param xl     Left-most x position
- * @param xr     Right-most x position
- * @param y      Y position of the string
- * @param str    String to draw
- * @param colour Colour used for drawing the string, see DoDrawString() for details
- *
- * @return Width of the drawn string in pixels
- */
-int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, TextColour colour)
-{
-	return DrawString(xl, xr, y, str, colour, SA_CENTER, false);
 }
 
 /**
@@ -600,20 +556,6 @@ int DrawStringCenterUnderline(int x, int y, StringID str, TextColour colour)
 	GetString(buffer, str, lastof(buffer));
 	int w = GetStringBoundingBox(buffer).width;
 	return DrawString(x - w, y + w, y, buffer, lastof(buffer), colour, SA_CENTER, true);
-}
-
-/**
- * Draw string centered possibly truncated, with additional line underneath it
- *
- * @param xl     Left x position of the string
- * @param xr     Right x position of the string
- * @param y      Y position of center of the string
- * @param str    String to draw
- * @param colour Colour used for drawing the string, see DoDrawString() for details
- */
-int DrawStringCenterUnderlineTruncated(int xl, int xr, int y, StringID str, TextColour colour)
-{
-	return DrawString(xl, xr, y, str, colour, SA_CENTER, true);
 }
 
 /**
@@ -1005,26 +947,6 @@ skip_cont:;
 			DEBUG(misc, 0, "[utf8] unknown string command character %d", c);
 		}
 	}
-}
-
-/**
- * Draw the string of the character buffer, starting at position (x,y) with a given maximal width.
- * String is truncated if it is too long.
- *
- * @param str  Character buffer containing the string
- * @param x    Left-most x coordinate to start drawing
- * @param y    Y coordinate to draw the string
- * @param colour Colour to use, see DoDrawString() for details.
- * @param maxw  Maximal width in pixels that may be used for drawing
- *
- * @return Right-most x position after drawing the (possibly truncated) string
- */
-int DoDrawStringTruncated(const char *str, int x, int y, TextColour colour, uint maxw)
-{
-	char buffer[DRAW_STRING_BUFFER];
-	strecpy(buffer, str, lastof(buffer));
-	TruncateString(buffer, maxw);
-	return DoDrawString(buffer, x, y, colour);
 }
 
 /**

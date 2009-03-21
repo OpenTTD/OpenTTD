@@ -257,7 +257,7 @@ void Window::DrawWidgets() const
 		case WWT_TEXT: {
 			const StringID str = wi->data;
 
-			if (str != STR_NULL) DrawStringTruncated(r.left, r.top, str, (TextColour)wi->colour, r.right - r.left);
+			if (str != STR_NULL) DrawString(r.left, r.right, r.top, str, (TextColour)wi->colour);
 			break;
 		}
 
@@ -265,7 +265,7 @@ void Window::DrawWidgets() const
 			const StringID str = wi->data;
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_LOWERED | FR_DARKENED);
 
-			if (str != STR_NULL) DrawStringTruncated(r.left + 2, r.top + 1, str, TC_FROMSTRING, r.right - r.left - 10);
+			if (str != STR_NULL) DrawString(r.left + 2, r.right - 2, r.top + 1, str, TC_FROMSTRING);
 			break;
 		}
 
@@ -488,7 +488,7 @@ void Window::DrawWidgets() const
 			DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, wi->colour, FR_NONE);
 			DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, wi->colour, clicked ? FR_LOWERED : FR_NONE);
 			DrawString(r.right - (clicked ? 8 : 9), r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
-			if (str != STR_NULL) DrawStringTruncated(r.left + 2, r.top + 1, str, TC_BLACK, r.right - r.left - 12);
+			if (str != STR_NULL) DrawString(r.left + 2, r.right - 14, r.top + 1, str, TC_BLACK);
 			break;
 		}
 
@@ -499,7 +499,7 @@ void Window::DrawWidgets() const
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_LOWERED | FR_DARKENED);
 			DrawFrameRect(r.right - 11, r.top + 1, r.right - 1, r.bottom - 1, wi->colour, clicked ? FR_LOWERED : FR_NONE);
 			DrawString(r.right - (clicked ? 8 : 9), r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
-			if (str != STR_NULL) DrawStringTruncated(r.left + 2, r.top + 2, str, TC_BLACK, r.right - r.left - 12);
+			if (str != STR_NULL) DrawString(r.left + 2, r.right - 13, r.top + 2, str, TC_BLACK);
 			break;
 		}
 		}

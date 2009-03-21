@@ -1409,7 +1409,7 @@ static void DrawFiosTexts(uint maxw)
 
 	if (str != STR_4006_UNABLE_TO_READ_DRIVE) SetDParam(0, tot);
 	DrawString(2, 37, str, TC_FROMSTRING);
-	DoDrawStringTruncated(path, 2, 27, TC_BLACK, maxw);
+	DrawString(2, 2 + maxw, 27, path, TC_BLACK);
 }
 
 static void MakeSortedSaveGameList()
@@ -1570,7 +1570,7 @@ public:
 		for (uint pos = this->vscroll.pos; pos < _fios_items.Length(); pos++) {
 			const FiosItem *item = _fios_items.Get(pos);
 
-			DoDrawStringTruncated(item->title, 4, y, _fios_colours[item->type], this->width - 18);
+			DrawString(4, widg->right - 2, y, item->title, _fios_colours[item->type]);
 			y += 10;
 			if (y >= this->vscroll.cap * 10 + widg->top + 1) break;
 		}

@@ -698,7 +698,7 @@ static void DrawNewsString(int x, int y, TextColour colour, const NewsItem *ni, 
 
 	*dest = '\0';
 	/* Truncate and show string; postfixed by '...' if neccessary */
-	DoDrawStringTruncated(buffer2, x, y, colour, maxw);
+	DrawString(x, x + maxw, y, buffer2, colour);
 }
 
 

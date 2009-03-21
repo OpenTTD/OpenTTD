@@ -65,7 +65,7 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 		}
 
 		SetDParamStr(0, capacity);
-		DrawStringTruncated(x, y + 10 + y_offset, STR_JUST_RAW_STRING, TC_BLUE, 380 - x);
+		DrawString(x, 300, y + 10 + y_offset, STR_JUST_RAW_STRING, TC_BLUE);
 
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 			if (u->cargo_cap == 0) continue;

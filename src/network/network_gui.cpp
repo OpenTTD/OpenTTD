@@ -240,7 +240,7 @@ protected:
 		if (highlight) GfxFillRect(this->widget[NGWW_NAME].left + 1, y - 2, this->widget[NGWW_INFO].right - 1, y + 9, 10);
 
 		SetDParamStr(0, cur_item->info.server_name);
-		DrawStringTruncated(this->widget[NGWW_NAME].left + 5, y, STR_JUST_RAW_STRING, TC_BLACK, this->widget[NGWW_NAME].right - this->widget[NGWW_NAME].left - 5);
+		DrawString(this->widget[NGWW_NAME].left + 5, this->widget[NGWW_NAME].right, y, STR_JUST_RAW_STRING, TC_BLACK);
 
 		/* only draw details if the server is online */
 		if (cur_item->online) {
@@ -1215,7 +1215,7 @@ struct NetworkLobbyWindow : public Window {
 				GfxFillRect(11, y - 1, 154, y + 10, 10); // show highlighted item with a different colour
 			}
 
-			DoDrawStringTruncated(this->company_info[company].company_name, 13, y, TC_BLACK, 135 - 13);
+			DrawString(13, 135, y, this->company_info[company].company_name, TC_BLACK);
 			if (this->company_info[company].use_password != 0) DrawSprite(SPR_LOCK, PAL_NONE, 135, y);
 
 			/* If the company's income was positive puts a green dot else a red dot */
@@ -1232,7 +1232,6 @@ struct NetworkLobbyWindow : public Window {
 		DrawStringCentered(290, 50, STR_NETWORK_COMPANY_INFO, TC_FROMSTRING);
 		if (this->company != INVALID_COMPANY && !StrEmpty(this->company_info[this->company].company_name)) {
 			const uint x = 183;
-			const uint trunc_width = this->widget[NLWW_DETAILS].right - x;
 			y = 80;
 
 			SetDParam(0, gi->clients_on);
@@ -1243,27 +1242,27 @@ struct NetworkLobbyWindow : public Window {
 			y += 10;
 
 			SetDParamStr(0, this->company_info[this->company].company_name);
-			DrawStringTruncated(x, y, STR_NETWORK_COMPANY_NAME, TC_GOLD, trunc_width);
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_COMPANY_NAME, TC_GOLD);
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].inaugurated_year);
-			DrawString(x, y, STR_NETWORK_INAUGURATION_YEAR, TC_GOLD); // inauguration year
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_INAUGURATION_YEAR, TC_GOLD); // inauguration year
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].company_value);
-			DrawString(x, y, STR_NETWORK_VALUE, TC_GOLD); // company value
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_VALUE, TC_GOLD); // company value
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].money);
-			DrawString(x, y, STR_NETWORK_CURRENT_BALANCE, TC_GOLD); // current balance
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_CURRENT_BALANCE, TC_GOLD); // current balance
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].income);
-			DrawString(x, y, STR_NETWORK_LAST_YEARS_INCOME, TC_GOLD); // last year's income
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_LAST_YEARS_INCOME, TC_GOLD); // last year's income
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].performance);
-			DrawString(x, y, STR_NETWORK_PERFORMANCE, TC_GOLD); // performance
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_PERFORMANCE, TC_GOLD); // performance
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].num_vehicle[0]);
@@ -1271,7 +1270,7 @@ struct NetworkLobbyWindow : public Window {
 			SetDParam(2, this->company_info[this->company].num_vehicle[2]);
 			SetDParam(3, this->company_info[this->company].num_vehicle[3]);
 			SetDParam(4, this->company_info[this->company].num_vehicle[4]);
-			DrawString(x, y, STR_NETWORK_VEHICLES, TC_GOLD); // vehicles
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_VEHICLES, TC_GOLD); // vehicles
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].num_station[0]);
@@ -1279,11 +1278,11 @@ struct NetworkLobbyWindow : public Window {
 			SetDParam(2, this->company_info[this->company].num_station[2]);
 			SetDParam(3, this->company_info[this->company].num_station[3]);
 			SetDParam(4, this->company_info[this->company].num_station[4]);
-			DrawString(x, y, STR_NETWORK_STATIONS, TC_GOLD); // stations
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_STATIONS, TC_GOLD); // stations
 			y += 10;
 
 			SetDParamStr(0, this->company_info[this->company].clients);
-			DrawStringTruncated(x, y, STR_NETWORK_PLAYERS, TC_GOLD, trunc_width); // players
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_PLAYERS, TC_GOLD); // players
 		}
 	}
 

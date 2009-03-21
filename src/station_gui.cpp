@@ -827,7 +827,7 @@ struct StationViewWindow : public Window {
 					SetDParam(0, cd->cargo);
 					SetDParam(1, cd->count);
 					SetDParam(2, cd->source);
-					DrawStringRightAlignedTruncated(x + width, y, STR_EN_ROUTE_FROM, TC_FROMSTRING, width);
+					DrawString(x, x + width, y, STR_EN_ROUTE_FROM, TC_FROMSTRING, SA_RIGHT);
 				}
 
 				y += 10;
@@ -1143,7 +1143,7 @@ struct SelectStationWindow : Window {
 
 		uint y = 17;
 		if (this->vscroll.pos == 0) {
-			DrawStringTruncated(3, y, STR_CREATE_SPLITTED_STATION, TC_FROMSTRING, this->widget[JSW_PANEL].right - 5);
+			DrawString(3, this->widget[JSW_PANEL].right - 2, y, STR_CREATE_SPLITTED_STATION, TC_FROMSTRING);
 			y += 10;
 		}
 
@@ -1154,7 +1154,7 @@ struct SelectStationWindow : Window {
 			const Station *st = GetStation(_stations_nearby_list[i - 1]);
 			SetDParam(0, st->index);
 			SetDParam(1, st->facilities);
-			DrawStringTruncated(3, y, STR_3049_0, TC_FROMSTRING, this->widget[JSW_PANEL].right - 5);
+			DrawString(3, this->widget[JSW_PANEL].right - 2, y, STR_3049_0, TC_FROMSTRING);
 		}
 	}
 
