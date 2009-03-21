@@ -162,24 +162,25 @@ struct IConsoleWindow : Window
 
 	virtual void OnPaint()
 	{
-		int max = (this->height / ICON_LINE_HEIGHT) - 1;
+		const int max = (this->height / ICON_LINE_HEIGHT) - 1;
+		const int right = this->width - 1;
+
 		const IConsoleLine *print = IConsoleLine::Get(IConsoleWindow::scroll);
 		GfxFillRect(this->left, this->top, this->width, this->height - 1, 0);
 		for (int i = 0; i < max && print != NULL; i++, print = print->previous) {
-			DoDrawString(print->buffer, 5,
-				this->height - (2 + i) * ICON_LINE_HEIGHT, print->colour);
+			DrawString(5, right, this->height - (2 + i) * ICON_LINE_HEIGHT, print->buffer, print->colour);
 		}
 		/* If the text is longer than the window, don't show the starting ']' */
 		int delta = this->width - 10 - _iconsole_cmdline.width - ICON_RIGHT_BORDERWIDTH;
 		if (delta > 0) {
-			DoDrawString("]", 5, this->height - ICON_LINE_HEIGHT, (TextColour)CC_COMMAND);
+			DrawString(5, right, this->height - ICON_LINE_HEIGHT, "]", (TextColour)CC_COMMAND);
 			delta = 0;
 		}
 
-		DoDrawString(_iconsole_cmdline.buf, 10 + delta, this->height - ICON_LINE_HEIGHT, (TextColour)CC_COMMAND);
+		DrawString(10 + delta, right, this->height - ICON_LINE_HEIGHT, _iconsole_cmdline.buf, (TextColour)CC_COMMAND);
 
 		if (_focused_window == this && _iconsole_cmdline.caret) {
-			DoDrawString("_", 10 + delta + _iconsole_cmdline.caretxoffs, this->height - ICON_LINE_HEIGHT, TC_WHITE);
+			DrawString(10 + delta + _iconsole_cmdline.caretxoffs, right, this->height - ICON_LINE_HEIGHT, "_", TC_WHITE);
 		}
 	}
 

@@ -96,7 +96,6 @@ int DrawString(int left, int right, int top, const char *str, TextColour colour,
 int DrawString(int left, int right, int top, StringID str, TextColour colour, StringAlignment align = SA_LEFT, bool underline = false);
 
 int DrawString(int x, int y, StringID str, TextColour colour);
-int DoDrawString(const char *string, int x, int y, TextColour colour, bool parse_string_also_when_clipped = false);
 
 void DrawCharCentered(uint32 c, int x, int y, TextColour colour);
 

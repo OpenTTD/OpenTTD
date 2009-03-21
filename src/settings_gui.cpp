@@ -1495,6 +1495,7 @@ struct CustomCurrencyWindow : Window {
 
 	virtual void OnPaint()
 	{
+		int const right = this->width - 1;
 		int x;
 		int y = 20;
 		this->DrawWidgets();
@@ -1503,37 +1504,37 @@ struct CustomCurrencyWindow : Window {
 		DrawArrowButtons(10, y, COLOUR_YELLOW, GB(this->click, 0, 2), true, true);
 		SetDParam(0, 1);
 		SetDParam(1, 1);
-		DrawString(35, y + 1, STR_CURRENCY_EXCHANGE_RATE, TC_FROMSTRING);
+		DrawString(35, right, y + 1, STR_CURRENCY_EXCHANGE_RATE, TC_FROMSTRING);
 		y += 12;
 
 		/* separator */
 		DrawFrameRect(10, y + 1, 29, y + 9, COLOUR_DARK_BLUE, GB(this->click, 2, 2) ? FR_LOWERED : FR_NONE);
-		x = DrawString(35, y + 1, STR_CURRENCY_SEPARATOR, TC_FROMSTRING);
-		DoDrawString(this->separator, x + 4, y + 1, TC_ORANGE);
+		x = DrawString(35, right, y + 1, STR_CURRENCY_SEPARATOR, TC_FROMSTRING);
+		DrawString(x + 4, right, y + 1, this->separator, TC_ORANGE);
 		y += 12;
 
 		/* prefix */
 		DrawFrameRect(10, y + 1, 29, y + 9, COLOUR_DARK_BLUE, GB(this->click, 4, 2) ? FR_LOWERED : FR_NONE);
-		x = DrawString(35, y + 1, STR_CURRENCY_PREFIX, TC_FROMSTRING);
-		DoDrawString(_custom_currency.prefix, x + 4, y + 1, TC_ORANGE);
+		x = DrawString(35, right, y + 1, STR_CURRENCY_PREFIX, TC_FROMSTRING);
+		DrawString(right, x + 4, y + 1, _custom_currency.prefix, TC_ORANGE);
 		y += 12;
 
 		/* suffix */
 		DrawFrameRect(10, y + 1, 29, y + 9, COLOUR_DARK_BLUE, GB(this->click, 6, 2) ? FR_LOWERED : FR_NONE);
-		x = DrawString(35, y + 1, STR_CURRENCY_SUFFIX, TC_FROMSTRING);
-		DoDrawString(_custom_currency.suffix, x + 4, y + 1, TC_ORANGE);
+		x = DrawString(35, right, y + 1, STR_CURRENCY_SUFFIX, TC_FROMSTRING);
+		DrawString(x + 4, right, y + 1, _custom_currency.suffix, TC_ORANGE);
 		y += 12;
 
 		/* switch to euro */
 		DrawArrowButtons(10, y, COLOUR_YELLOW, GB(this->click, 8, 2), true, true);
 		SetDParam(0, _custom_currency.to_euro);
-		DrawString(35, y + 1, (_custom_currency.to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER, TC_FROMSTRING);
+		DrawString(35, right, y + 1, (_custom_currency.to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER, TC_FROMSTRING);
 		y += 12;
 
 		/* Preview */
 		y += 12;
 		SetDParam(0, 10000);
-		DrawString(35, y + 1, STR_CURRENCY_PREVIEW, TC_FROMSTRING);
+		DrawString(35, right, y + 1, STR_CURRENCY_PREVIEW, TC_FROMSTRING);
 	}
 
 	virtual void OnClick(Point pt, int widget)

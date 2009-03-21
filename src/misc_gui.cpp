@@ -1064,8 +1064,8 @@ void QueryString::DrawEditBox(Window *w, int wid)
 
 	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
 
-	DoDrawString(tb->buf, delta, 0, TC_YELLOW);
-	if (HasEditBoxFocus(w, wid) && tb->caret) DoDrawString("_", tb->caretxoffs + delta, 0, TC_WHITE);
+	DrawString(delta, tb->width, 0, tb->buf, TC_YELLOW);
+	if (HasEditBoxFocus(w, wid) && tb->caret) DrawString(tb->caretxoffs + delta, tb->width + 10, 0, "_", TC_WHITE);
 
 	_cur_dpi = old_dpi;
 }

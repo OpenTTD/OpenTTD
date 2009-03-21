@@ -766,32 +766,6 @@ void DrawCharCentered(WChar c, int x, int y, TextColour colour)
 /** Draw a string at the given coordinates with the given colour.
  *  While drawing the string, parse it in case some formatting is specified,
  *  like new colour, new size or even positionning.
- * @param string              The string to draw. This is not yet bidi reordered.
- * @param x                   Offset from left side of the screen
- * @param y                   Offset from top side of the screen
- * @param colour              Colour of the string, see _string_colourmap in
- *                            table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
- * @param parse_string_also_when_clipped
- *                            By default, always test the available space where to draw the string.
- *                            When in multipline drawing, it would already be done,
- *                            so no need to re-perform the same kind (more or less) of verifications.
- *                            It's not only an optimisation, it's also a way to ensures the string will be parsed
- *                            (as there are certain side effects on global variables, which are important for the next line)
- * @return                    the x-coordinates where the drawing has finished.
- *                            If nothing is drawn, the originally passed x-coordinate is returned
- */
-int DoDrawString(const char *string, int x, int y, TextColour colour, bool parse_string_also_when_clipped)
-{
-	char buffer[DRAW_STRING_BUFFER];
-	strecpy(buffer, string, lastof(buffer));
-	HandleBiDiAndArabicShapes(buffer, lastof(buffer));
-
-	return ReallyDoDrawString(buffer, x, y, colour, parse_string_also_when_clipped);
-}
-
-/** Draw a string at the given coordinates with the given colour.
- *  While drawing the string, parse it in case some formatting is specified,
- *  like new colour, new size or even positionning.
  * @param string              The string to draw. This is already bidi reordered.
  * @param x                   Offset from left side of the screen
  * @param y                   Offset from top side of the screen

@@ -906,7 +906,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		this->DrawEditBox(NSSW_GAMENAME);
 
 		/* if password is set, draw red '*' next to 'Set password' button */
-		if (!StrEmpty(_settings_client.network.server_password)) DoDrawString("*", 408, 23, TC_RED);
+		if (!StrEmpty(_settings_client.network.server_password)) DrawString(408, this->width - 2, 23, "*", TC_RED);
 
 		/* draw list of maps */
 		GfxFillRect(11, 63, 258, 215, 0xD7);  // black background of maps list
@@ -919,7 +919,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			if (pos == 0) {
 				DrawString(14, y, STR_4010_GENERATE_RANDOM_NEW_GAME, TC_DARK_GREEN);
 			} else {
-				DoDrawString(item->title, 14, y, _fios_colours[item->type] );
+				DrawString(14, this->width - 1, y, item->title, _fios_colours[item->type] );
 			}
 			y += NSSWND_ROWSIZE;
 
@@ -1609,7 +1609,7 @@ struct NetworkClientListPopupWindow : Window {
 				colour = TC_BLACK;
 			}
 
-			DoDrawString(this->action[i], 4, y, colour);
+			DrawString(4, this->width - 4, y, this->action[i], colour);
 		}
 	}
 
@@ -1718,7 +1718,7 @@ struct NetworkClientListWindow : Window
 			/* Filter out spectators */
 			if (IsValidCompanyID(ci->client_playas)) DrawCompanyIcon(ci->client_playas, 64, y + 1);
 
-			DoDrawString(ci->client_name, 81, y, colour);
+			DrawString(81, this->width - 2, y, ci->client_name, colour);
 
 			y += CLNWND_ROWSIZE;
 		}

@@ -317,11 +317,11 @@ void Window::DrawWidgets() const
 			/* draw up/down buttons */
 			clicked = ((this->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP);
 			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			DoDrawString(UPARROW, r.left + 2 + clicked, r.top + clicked, TC_BLACK);
+			DrawString(r.left + 2 + clicked, r.right, r.top + clicked, UPARROW, TC_BLACK);
 
 			clicked = (((this->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN));
 			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			DoDrawString(DOWNARROW, r.left + 2 + clicked, r.bottom - 9 + clicked, TC_BLACK);
+			DrawString(r.left + 2 + clicked, r.right, r.bottom - 9 + clicked, DOWNARROW, TC_BLACK);
 
 			int c1 = _colour_gradient[wi->colour & 0xF][3];
 			int c2 = _colour_gradient[wi->colour & 0xF][7];
@@ -348,11 +348,11 @@ void Window::DrawWidgets() const
 			/* draw up/down buttons */
 			clicked = ((this->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2));
 			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->colour,  (clicked) ? FR_LOWERED : FR_NONE);
-			DoDrawString(UPARROW, r.left + 2 + clicked, r.top + clicked, TC_BLACK);
+			DrawString(r.left + 2 + clicked, r.right, r.top + clicked, UPARROW, TC_BLACK);
 
 			clicked = ((this->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2));
 			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->colour,  (clicked) ? FR_LOWERED : FR_NONE);
-			DoDrawString(DOWNARROW, r.left + 2 + clicked, r.bottom - 9 + clicked, TC_BLACK);
+			DrawString(r.left + 2 + clicked, r.right, r.bottom - 9 + clicked, DOWNARROW, TC_BLACK);
 
 			int c1 = _colour_gradient[wi->colour & 0xF][3];
 			int c2 = _colour_gradient[wi->colour & 0xF][7];
@@ -625,5 +625,5 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
 	if (state == SBS_OFF) return;
 
 	int offset = this->IsWidgetLowered(widget) ? 1 : 0;
-	DoDrawString(state == SBS_DOWN ? DOWNARROW : UPARROW, this->widget[widget].right - 11 + offset, this->widget[widget].top + 1 + offset, TC_BLACK);
+	DrawString(this->widget[widget].right - 11 + offset, this->widget[widget].right, this->widget[widget].top + 1 + offset, state == SBS_DOWN ? DOWNARROW : UPARROW, TC_BLACK);
 }
