@@ -3,36 +3,36 @@
 /** @file table/settings.h Settings to save in the savegame and config file. */
 
 /* Begin - Callback Functions for the various settings */
-bool v_PositionMainToolbar(int32 p1);
-bool PopulationInLabelActive(int32 p1);
-bool RedrawScreen(int32 p1);
-bool InvalidateDetailsWindow(int32 p1);
-bool InvalidateStationBuildWindow(int32 p1);
-bool InvalidateBuildIndustryWindow(int32 p1);
-bool CloseSignalGUI(int32 p1);
-bool InvalidateTownViewWindow(int32 p1);
-bool DeleteSelectStationWindow(int32 p1);
-bool UpdateConsists(int32 p1);
-bool CheckInterval(int32 p1);
-bool EngineRenewUpdate(int32 p1);
-bool EngineRenewMonthsUpdate(int32 p1);
-bool EngineRenewMoneyUpdate(int32 p1);
-bool TrainAccelerationModelChanged(int32 p1);
-bool DragSignalsDensityChanged(int32);
-bool DifficultyReset(int32 level);
-bool DifficultyChange(int32);
-bool DifficultyNoiseChange(int32 i);
-bool CheckRoadSide(int p1);
-int32 ConvertLandscape(const char *value);
-int32 CheckNoiseToleranceLevel(const char *value);
-bool CheckFreeformEdges(int32 p1);
-bool ChangeDynamicEngines(int32 p1);
+static bool v_PositionMainToolbar(int32 p1);
+static bool PopulationInLabelActive(int32 p1);
+static bool RedrawScreen(int32 p1);
+static bool InvalidateDetailsWindow(int32 p1);
+static bool InvalidateStationBuildWindow(int32 p1);
+static bool InvalidateBuildIndustryWindow(int32 p1);
+static bool CloseSignalGUI(int32 p1);
+static bool InvalidateTownViewWindow(int32 p1);
+static bool DeleteSelectStationWindow(int32 p1);
+static bool UpdateConsists(int32 p1);
+static bool CheckInterval(int32 p1);
+static bool EngineRenewUpdate(int32 p1);
+static bool EngineRenewMonthsUpdate(int32 p1);
+static bool EngineRenewMoneyUpdate(int32 p1);
+static bool TrainAccelerationModelChanged(int32 p1);
+static bool DragSignalsDensityChanged(int32);
+static bool DifficultyReset(int32 level);
+static bool DifficultyChange(int32);
+static bool DifficultyNoiseChange(int32 i);
+static bool CheckRoadSide(int p1);
+static int32 ConvertLandscape(const char *value);
+static int32 CheckNoiseToleranceLevel(const char *value);
+static bool CheckFreeformEdges(int32 p1);
+static bool ChangeDynamicEngines(int32 p1);
 
 #ifdef ENABLE_NETWORK
-bool UpdateClientName(int32 p1);
-bool UpdateServerPassword(int32 p1);
-bool UpdateRconPassword(int32 p1);
-bool UpdateClientConfigValues(int32 p1);
+static bool UpdateClientName(int32 p1);
+static bool UpdateServerPassword(int32 p1);
+static bool UpdateRconPassword(int32 p1);
+static bool UpdateClientConfigValues(int32 p1);
 #endif /* ENABLE_NETWORK */
 /* End - Callback Functions for the various settings */
 
