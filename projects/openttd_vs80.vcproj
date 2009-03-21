@@ -1672,6 +1672,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\core\math_func.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\core\math_func.hpp"
 				>
 			</File>

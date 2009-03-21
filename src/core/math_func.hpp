@@ -264,4 +264,7 @@ static FORCEINLINE void Swap(T &a, T &b)
 	b = t;
 }
 
+int LeastCommonMultiple(int a, int b);
+int GreatestCommonDivisor(int a, int b);
+
 #endif /* MATH_FUNC_HPP */
