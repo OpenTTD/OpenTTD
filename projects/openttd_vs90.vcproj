@@ -2225,6 +2225,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\table\settings.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\table\sprites.h"
 				>
 			</File>
