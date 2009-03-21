@@ -50,9 +50,8 @@
 
 	/* Tiles not neighbouring */
 	if (::DistanceManhattan(t1, t2) != 1) return false;
-	if (t1 > t2) Swap(t1, t2);
 
-	DiagDirection to_other_tile = (TileX(t1) == TileX(t2)) ? DIAGDIR_SE : DIAGDIR_SW;
+	DiagDirection to_other_tile = ::DiagdirBetweenTiles(t1, t2);
 
 	/* Determine the reachable tracks from the shared edge */
 	TrackBits gtts2 = ::TrackStatusToTrackBits(::GetTileTrackStatus(t2, TRANSPORT_WATER, 0, to_other_tile)) & ::DiagdirReachesTracks(to_other_tile);

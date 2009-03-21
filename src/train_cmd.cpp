@@ -3362,14 +3362,6 @@ static const Direction _new_vehicle_direction_table[11] = {
 	DIR_E , DIR_SE, DIR_S
 };
 
-static inline Direction GetNewVehicleDirectionByTile(TileIndex new_tile, TileIndex old_tile)
-{
-	uint offs = (TileY(new_tile) - TileY(old_tile) + 1) * 4 +
-							TileX(new_tile) - TileX(old_tile) + 1;
-	assert(offs < 11);
-	return _new_vehicle_direction_table[offs];
-}
-
 static inline int GetDirectionToVehicle(const Vehicle *v, int x, int y)
 {
 	byte offs;
@@ -3664,8 +3656,7 @@ static void TrainController(Vehicle *v, Vehicle *nomove)
 				/* A new tile is about to be entered. */
 
 				/* Determine what direction we're entering the new tile from */
-				Direction dir = GetNewVehicleDirectionByTile(gp.new_tile, gp.old_tile);
-				enterdir = DirToDiagDir(dir);
+				enterdir = DiagdirBetweenTiles(gp.old_tile, gp.new_tile);
 				assert(IsValidDiagDirection(enterdir));
 
 				/* Get the status of the tracks in the new tile and mask
