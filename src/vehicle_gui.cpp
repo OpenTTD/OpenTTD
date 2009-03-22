@@ -1041,10 +1041,11 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 			VLW_WIDGET_START_ALL,
 			WIDGET_LIST_END);
 
+		/* Set text of sort by dropdown widget. */
+		this->widget[VLW_WIDGET_SORT_BY_PULLDOWN].data = this->vehicle_sorter_names[this->vehicles.SortType()];
+
 		this->DrawWidgets();
 
-		/* draw sorting criteria string */
-		DrawString(85, this->widget[VLW_WIDGET_SORT_ORDER].right, 15, this->vehicle_sorter_names[this->vehicles.SortType()], TC_BLACK);
 		/* draw arrow pointing up/down for ascending/descending sorting */
 		this->DrawSortButtonState(VLW_WIDGET_SORT_ORDER, this->vehicles.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
