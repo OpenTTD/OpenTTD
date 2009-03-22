@@ -22,21 +22,27 @@
 
 void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, int count_location, GroupID selected_group);
 
+/** Widget numbers of the autoreplace GUI. */
 enum ReplaceVehicleWindowWidgets {
-	RVW_WIDGET_LEFT_MATRIX = 3,
+	RVW_WIDGET_CLOSEBOX,
+	RVW_WIDGET_CAPTION,
+	RVW_WIDGET_STICKY,
+
+	/* Left and right matrix + details. */
+	RVW_WIDGET_LEFT_MATRIX,
 	RVW_WIDGET_LEFT_SCROLLBAR,
 	RVW_WIDGET_RIGHT_MATRIX,
 	RVW_WIDGET_RIGHT_SCROLLBAR,
 	RVW_WIDGET_LEFT_DETAILS,
 	RVW_WIDGET_RIGHT_DETAILS,
 
-	/* Button row */
+	/* Button row. */
 	RVW_WIDGET_START_REPLACE,
 	RVW_WIDGET_INFO_TAB,
 	RVW_WIDGET_STOP_REPLACE,
 	RVW_WIDGET_RESIZE,
 
-	/* Train only widgets */
+	/* Train only widgets. */
 	RVW_WIDGET_TRAIN_ENGINEWAGON_TOGGLE,
 	RVW_WIDGET_TRAIN_FLUFF_LEFT,
 	RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN,
@@ -446,27 +452,27 @@ public:
 };
 
 static const Widget _replace_vehicle_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   443,     0,    13, STR_REPLACE_VEHICLES_WHITE,      STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   444,   455,     0,    13, STR_NULL,                        STR_STICKY_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},                // RVW_WIDGET_CLOSEBOX
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   443,     0,    13, STR_REPLACE_VEHICLES_WHITE,      STR_018C_WINDOW_TITLE_DRAG_THIS},      // RVW_WIDGET_CAPTION
+{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   444,   455,     0,    13, STR_NULL,                        STR_STICKY_BUTTON},                    // RVW_WIDGET_STICKY
 
-{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   215,    14,    13, 0x1,                             STR_REPLACE_HELP_LEFT_ARRAY},
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_GREY,   216,   227,    14,    13, STR_NULL,                        STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_MATRIX,    RESIZE_LRB,  COLOUR_GREY,   228,   443,    14,    13, 0x1,                             STR_REPLACE_HELP_RIGHT_ARRAY},
-{ WWT_SCROLL2BAR,    RESIZE_LRB,  COLOUR_GREY,   444,   455,    14,    13, STR_NULL,                        STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,     0,   227,    14,   105, 0x0,                             STR_NULL},
-{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,   228,   455,    14,   105, 0x0,                             STR_NULL},
+{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   215,    14,    13, 0x1,                             STR_REPLACE_HELP_LEFT_ARRAY},          // RVW_WIDGET_LEFT_MATRIX
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_GREY,   216,   227,    14,    13, STR_NULL,                        STR_0190_SCROLL_BAR_SCROLLS_LIST},     // RVW_WIDGET_LEFT_SCROLLBAR
+{     WWT_MATRIX,    RESIZE_LRB,  COLOUR_GREY,   228,   443,    14,    13, 0x1,                             STR_REPLACE_HELP_RIGHT_ARRAY},         // RVW_WIDGET_RIGHT_MATRIX
+{ WWT_SCROLL2BAR,    RESIZE_LRB,  COLOUR_GREY,   444,   455,    14,    13, STR_NULL,                        STR_0190_SCROLL_BAR_SCROLLS_LIST},     // RVW_WIDGET_RIGHT_SCROLLBAR
+{      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,     0,   227,    14,   105, 0x0,                             STR_NULL},                             // RVW_WIDGET_LEFT_DETAILS
+{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,   228,   455,    14,   105, 0x0,                             STR_NULL},                             // RVW_WIDGET_RIGHT_DETAILS
 
-{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   138,   106,   117, STR_REPLACE_VEHICLES_START,      STR_REPLACE_HELP_START_BUTTON},
-{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,   139,   305,   106,   117, 0x0,                             STR_REPLACE_HELP_REPLACE_INFO_TAB},
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,  COLOUR_GREY,   306,   443,   106,   117, STR_REPLACE_VEHICLES_STOP,       STR_REPLACE_HELP_STOP_BUTTON},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   444,   455,   106,   117, STR_NULL,                        STR_RESIZE_BUTTON},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   138,   106,   117, STR_REPLACE_VEHICLES_START,      STR_REPLACE_HELP_START_BUTTON},        // RVW_WIDGET_START_REPLACE
+{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,   139,   305,   106,   117, 0x0,                             STR_REPLACE_HELP_REPLACE_INFO_TAB},    // RVW_WIDGET_INFO_TAB
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,  COLOUR_GREY,   306,   443,   106,   117, STR_REPLACE_VEHICLES_STOP,       STR_REPLACE_HELP_STOP_BUTTON},         // RVW_WIDGET_STOP_REPLACE
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   444,   455,   106,   117, STR_NULL,                        STR_RESIZE_BUTTON},                    // RVW_WIDGET_RESIZE
 
-{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   138,   128,   139, STR_REPLACE_ENGINE_WAGON_SELECT, STR_REPLACE_ENGINE_WAGON_SELECT_HELP},
-{      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,   139,   153,   128,   139, 0x0,                             STR_NULL},
-{   WWT_DROPDOWN,    RESIZE_RTB,  COLOUR_GREY,   154,   289,   128,   139, 0x0,                             STR_REPLACE_HELP_RAILTYPE},
-{      WWT_PANEL,   RESIZE_LRTB,  COLOUR_GREY,   290,   305,   128,   139, 0x0,                             STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,  COLOUR_GREY,   306,   443,   128,   139, STR_REPLACE_REMOVE_WAGON,        STR_REPLACE_REMOVE_WAGON_HELP},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   138,   128,   139, STR_REPLACE_ENGINE_WAGON_SELECT, STR_REPLACE_ENGINE_WAGON_SELECT_HELP}, // RVW_WIDGET_TRAIN_ENGINEWAGON_TOGGLE
+{      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,   139,   153,   128,   139, 0x0,                             STR_NULL},                             // RVW_WIDGET_TRAIN_FLUFF_LEFT
+{   WWT_DROPDOWN,    RESIZE_RTB,  COLOUR_GREY,   154,   289,   128,   139, 0x0,                             STR_REPLACE_HELP_RAILTYPE},            // RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN
+{      WWT_PANEL,   RESIZE_LRTB,  COLOUR_GREY,   290,   305,   128,   139, 0x0,                             STR_NULL},                             // RVW_WIDGET_TRAIN_FLUFF_RIGHT
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,  COLOUR_GREY,   306,   443,   128,   139, STR_REPLACE_REMOVE_WAGON,        STR_REPLACE_REMOVE_WAGON_HELP},        // RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE
 {   WIDGETS_END},
 };
 
