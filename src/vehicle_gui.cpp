@@ -431,21 +431,21 @@ void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *pare
 }
 
 /** Display additional text from NewGRF in the purchase information window */
-uint ShowAdditionalText(int x, int y, uint w, EngineID engine)
+uint ShowAdditionalText(int left, int right, int y, EngineID engine)
 {
 	uint16 callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, NULL);
-	if (callback == CALLBACK_FAILED) return 0;
+	if (callback == CALLBACK_FAILED) return y;
 
 	/* STR_02BD is used to start the string with {BLACK} */
 	SetDParam(0, GetGRFStringID(GetEngineGRFID(engine), 0xD000 + callback));
 	PrepareTextRefStackUsage(0);
-	uint result = DrawStringMultiLine(x, x + w, y, INT32_MAX, STR_02BD);
+	uint result = DrawStringMultiLine(left, right, y, INT32_MAX, STR_02BD);
 	StopTextRefStackUsage();
-	return result - y;
+	return result;
 }
 
 /** Display list of cargo types of the engine, for the purchase information window */
-uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
+uint ShowRefitOptionsList(int left, int right, int y, EngineID engine)
 {
 	/* List of cargo types of this engine */
 	uint32 cmask = GetUnionOfArticulatedRefitMasks(engine, GetEngine(engine)->type, false);
@@ -455,7 +455,7 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 	char *b = string;
 
 	/* Draw nothing if the engine is not refittable */
-	if (CountBits(cmask) <= 1) return 0;
+	if (CountBits(cmask) <= 1) return y;
 
 	b = InlineString(b, STR_PURCHASE_INFO_REFITTABLE_TO);
 
@@ -492,7 +492,7 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 	assert(b < endof(string));
 
 	SetDParamStr(0, string);
-	return DrawStringMultiLine(x, x + w, y, INT32_MAX, STR_JUST_RAW_STRING);
+	return DrawStringMultiLine(left, right, y, INT32_MAX, STR_JUST_RAW_STRING);
 }
 
 /** Get the cargo subtype text from NewGRF for the vehicle details window. */

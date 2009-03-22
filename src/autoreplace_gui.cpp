@@ -327,7 +327,7 @@ public:
 			/* Also draw the details if an engine is selected */
 			if (this->sel_engine[i] != INVALID_ENGINE) {
 				const Widget *wi = &this->widget[i == 0 ? RVW_WIDGET_LEFT_DETAILS : RVW_WIDGET_RIGHT_DETAILS];
-				int text_end = DrawVehiclePurchaseInfo(wi->left + 2, wi->top + 1, wi->right - wi->left - 2, this->sel_engine[i]);
+				int text_end = DrawVehiclePurchaseInfo(wi->left + 2, wi->right - 2, wi->top + 1, this->sel_engine[i]);
 
 				if (text_end > wi->bottom) {
 					this->SetDirty();

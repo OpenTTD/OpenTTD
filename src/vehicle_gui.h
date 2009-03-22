@@ -51,7 +51,7 @@ static inline bool ValidVLWFlags(uint16 flags)
 	return (flags == VLW_STANDARD || flags == VLW_SHARED_ORDERS || flags == VLW_STATION_LIST || flags == VLW_DEPOT_LIST || flags == VLW_GROUP_LIST);
 }
 
-int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number);
+int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number);
 
 void DrawTrainImage(const Vehicle *v, int x, int y, VehicleID selection, int count, int skip);
 void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection, int count);
@@ -60,8 +60,8 @@ void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection);
 
 void ShowBuildVehicleWindow(TileIndex tile, VehicleType type);
 
-uint ShowAdditionalText(int x, int y, uint w, EngineID engine);
-uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine);
+uint ShowAdditionalText(int left, int right, int y, EngineID engine);
+uint ShowRefitOptionsList(int left, int right, int y, EngineID engine);
 StringID GetCargoSubtypeText(const Vehicle *v);
 
 void ShowVehicleListWindow(const Vehicle *v);
