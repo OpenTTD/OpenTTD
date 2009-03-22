@@ -132,6 +132,14 @@ static const Widget _cheat_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_cheat_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, 0),
+		NWidget(WWT_CAPTION, COLOUR_GREY, 1), SetDataTip(STR_CHEATS, STR_018C_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, 2), SetMinimalSize(400, 156), SetDataTip(0x0, STR_CHEATS_TIP), EndContainer(),
+};
+
 struct CheatWindow : Window {
 	int clicked;
 
@@ -238,7 +246,7 @@ static const WindowDesc _cheats_desc(
 	240, 22, 400, 170, 400, 170,
 	WC_CHEATS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_cheat_widgets
+	_cheat_widgets, _nested_cheat_widgets, lengthof(_nested_cheat_widgets)
 );
 
 

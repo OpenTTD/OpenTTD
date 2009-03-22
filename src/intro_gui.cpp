@@ -59,29 +59,30 @@ static inline void SetNewLandscapeType(byte landscape)
 	InvalidateWindowClasses(WC_SELECT_GAME);
 }
 
-struct SelectGameWindow : public Window {
-private:
-	enum SelectGameIntroWidgets {
-		SGI_GENERATE_GAME = 2,
-		SGI_LOAD_GAME,
-		SGI_PLAY_SCENARIO,
-		SGI_PLAY_HEIGHTMAP,
-		SGI_EDIT_SCENARIO,
-		SGI_PLAY_NETWORK,
-		SGI_TEMPERATE_LANDSCAPE,
-		SGI_ARCTIC_LANDSCAPE,
-		SGI_TROPIC_LANDSCAPE,
-		SGI_TOYLAND_LANDSCAPE,
-		SGI_OPTIONS,
-		SGI_DIFFICULTIES,
-		SGI_SETTINGS_OPTIONS,
-		SGI_GRF_SETTINGS,
-		SGI_CONTENT_DOWNLOAD,
-		SGI_AI_SETTINGS,
-		SGI_EXIT,
-	};
+enum SelectGameIntroWidgets {
+	SGI_CLOSE,
+	SGI_CAPTION,
+	SGI_GENERATE_GAME,
+	SGI_LOAD_GAME,
+	SGI_PLAY_SCENARIO,
+	SGI_PLAY_HEIGHTMAP,
+	SGI_EDIT_SCENARIO,
+	SGI_PLAY_NETWORK,
+	SGI_TEMPERATE_LANDSCAPE,
+	SGI_ARCTIC_LANDSCAPE,
+	SGI_TROPIC_LANDSCAPE,
+	SGI_TOYLAND_LANDSCAPE,
+	SGI_OPTIONS,
+	SGI_DIFFICULTIES,
+	SGI_SETTINGS_OPTIONS,
+	SGI_GRF_SETTINGS,
+	SGI_CONTENT_DOWNLOAD,
+	SGI_AI_SETTINGS,
+	SGI_EXIT,
+};
 
-public:
+struct SelectGameWindow : public Window {
+
 	SelectGameWindow(const WindowDesc *desc) : Window(desc)
 	{
 		this->LowerWidget(_settings_newgame.game_creation.landscape + SGI_TEMPERATE_LANDSCAPE);
@@ -151,11 +152,121 @@ public:
 	}
 };
 
+static const NWidgetPart _nested_select_game_widgets[] = {
+	NWidget(WWT_CAPTION, COLOUR_BROWN, SGI_CLOSE), SetMinimalSize(336, 14), SetDataTip(STR_0307_OPENTTD, STR_NULL),
+	NWidget(WWT_PANEL, COLOUR_BROWN, SGI_CAPTION),
+
+		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+
+		/* 'generate game' and 'load game' buttons */
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_GENERATE_GAME), SetMinimalSize(158, 12),
+								SetDataTip(STR_0140_NEW_GAME, STR_02FB_START_A_NEW_GAME),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_LOAD_GAME), SetMinimalSize(158, 12),
+								SetDataTip(STR_0141_LOAD_GAME, STR_02FC_LOAD_A_SAVED_GAME),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+		EndContainer(),
+
+		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
+
+		/* 'play scenario' and 'play heightmap' buttons */
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_PLAY_SCENARIO), SetMinimalSize(158, 12),
+								SetDataTip(STR_029A_PLAY_SCENARIO, STR_0303_START_A_NEW_GAME_USING),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_PLAY_HEIGHTMAP), SetMinimalSize(158, 12),
+								SetDataTip(STR_PLAY_HEIGHTMAP, STR_PLAY_HEIGHTMAP_HINT),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+		EndContainer(),
+
+		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
+
+		/* 'edit scenario' and 'play multiplayer' buttons */
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_EDIT_SCENARIO), SetMinimalSize(158, 12),
+								SetDataTip(STR_SCENARIO_EDITOR, STR_02FE_CREATE_A_CUSTOMIZED_GAME),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_PLAY_NETWORK), SetMinimalSize(158, 12),
+								SetDataTip(STR_MULTIPLAYER, STR_0300_SELECT_MULTIPLAYER_GAME),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+		EndContainer(),
+
+		NWidget(NWID_SPACER), SetMinimalSize(0, 7),
+
+		/* climate selection buttons */
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+			NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, SGI_TEMPERATE_LANDSCAPE), SetMinimalSize(77, 55),
+								SetDataTip(SPR_SELECT_TEMPERATE, STR_030E_SELECT_TEMPERATE_LANDSCAPE),
+			NWidget(NWID_SPACER), SetMinimalSize(3, 0),
+			NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, SGI_ARCTIC_LANDSCAPE), SetMinimalSize(77, 55),
+								SetDataTip(SPR_SELECT_SUB_ARCTIC, STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE),
+			NWidget(NWID_SPACER), SetMinimalSize(3, 0),
+			NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, SGI_TROPIC_LANDSCAPE), SetMinimalSize(77, 55),
+								SetDataTip(SPR_SELECT_SUB_TROPICAL, STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE),
+			NWidget(NWID_SPACER), SetMinimalSize(3, 0),
+			NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, SGI_TOYLAND_LANDSCAPE), SetMinimalSize(77, 55),
+								SetDataTip(SPR_SELECT_TOYLAND, STR_0311_SELECT_TOYLAND_LANDSCAPE),
+		EndContainer(),
+
+		NWidget(NWID_SPACER), SetMinimalSize(0, 7),
+
+		/* 'game options' and 'difficulty options' buttons */
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_OPTIONS), SetMinimalSize(158, 12),
+								SetDataTip(STR_0148_GAME_OPTIONS, STR_0301_DISPLAY_GAME_OPTIONS),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_DIFFICULTIES), SetMinimalSize(158, 12),
+								SetDataTip(STR_01FE_DIFFICULTY, STR_0302_DISPLAY_DIFFICULTY_OPTIONS),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+		EndContainer(),
+
+		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
+
+		/* 'advanced settings' and 'newgrf settings' buttons */
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_SETTINGS_OPTIONS), SetMinimalSize(158, 12),
+								SetDataTip(STR_CONFIG_SETTING, STR_CONFIG_SETTING_TIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_GRF_SETTINGS), SetMinimalSize(158, 12),
+								SetDataTip(STR_NEWGRF_SETTINGS_BUTTON, STR_NEWGRF_SETTINGS_BUTTON_TIP),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+		EndContainer(),
+
+		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
+
+		/* 'online content' and 'ai settings' buttons */
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_CONTENT_DOWNLOAD), SetMinimalSize(158, 12),
+								SetDataTip(STR_CONTENT_INTRO_BUTTON, STR_CONTENT_INTRO_BUTTON_TIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_AI_SETTINGS), SetMinimalSize(158, 12),
+								SetDataTip(STR_AI_SETTINGS_BUTTON, STR_AI_SETTINGS_BUTTON_TIP),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+		EndContainer(),
+
+		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
+
+		/* 'exit program' button */
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(104, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_EXIT), SetMinimalSize(128, 12),
+								SetDataTip(STR_0304_QUIT, STR_0305_QUIT_OPENTTD),
+			NWidget(NWID_SPACER), SetMinimalSize(104, 0),
+		EndContainer(),
+
+		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+
+	EndContainer(),
+};
+
 static const WindowDesc _select_game_desc(
 	WDP_CENTER, WDP_CENTER, 336, 213, 336, 213,
 	WC_SELECT_GAME, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_select_game_widgets
+	_select_game_widgets,
+	_nested_select_game_widgets, lengthof(_nested_select_game_widgets)
 );
 
 void ShowSelectGameWindow()

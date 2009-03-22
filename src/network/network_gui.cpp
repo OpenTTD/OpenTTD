@@ -307,6 +307,22 @@ protected:
 public:
 	NetworkGameWindow(const WindowDesc *desc) : QueryStringBaseWindow(NETWORK_NAME_LENGTH, desc)
 	{
+		this->widget[NGWW_CLIENTS].left = this->widget[NGWW_NAME].right + 1;
+		this->widget[NGWW_MAPSIZE].left = this->widget[NGWW_NAME].right + 1;
+		this->widget[NGWW_DATE].left = this->widget[NGWW_NAME].right + 1;
+		this->widget[NGWW_YEARS].left = this->widget[NGWW_NAME].right + 1;
+
+		this->widget[NGWW_CLIENTS].right = this->widget[NGWW_INFO].left - 1;
+		this->widget[NGWW_MAPSIZE].right = this->widget[NGWW_INFO].left - 1;
+		this->widget[NGWW_DATE].right = this->widget[NGWW_INFO].left - 1 - 20;
+		this->widget[NGWW_YEARS].right = this->widget[NGWW_INFO].left - 1 - 20;
+
+		this->widget[NGWW_NAME].display_flags &= ~RESIZE_LRTB;
+		this->widget[NGWW_CLIENTS].display_flags &= ~RESIZE_LRTB;
+		this->widget[NGWW_MAPSIZE].display_flags &= ~RESIZE_LRTB;
+		this->widget[NGWW_DATE].display_flags &= ~RESIZE_LRTB;
+		this->widget[NGWW_YEARS].display_flags &= ~RESIZE_LRTB;
+
 		ttd_strlcpy(this->edit_str_buf, _settings_client.network.client_name, this->edit_str_size);
 		this->afilter = CS_ALPHANUMERAL;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 120);
@@ -813,11 +829,119 @@ static const Widget _network_game_window_widgets[] = {
 {   WIDGETS_END},
 };
 
+/* Generates incorrect display_flags for widgets NGWW_NAME, and incorrect
+ * display_flags and/or left/right side for the overlapping widgets
+ * NGWW_CLIENTS through NGWW_YEARS.
+ */
+NWidgetPart _nested_network_game_widgets[] = {
+	/* TOP */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NGWW_CLOSE),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NGWW_CAPTION), SetMinimalSize(439, 14), SetDataTip(STR_NETWORK_MULTIPLAYER, STR_NULL), // XXX Add default caption tooltip!
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NGWW_MAIN),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 8), SetResize(1, 0),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(9, 0),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0,1), // Text is one pixel further down
+				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NGWW_CONNECTION), SetMinimalSize(77, 13), SetDataTip(STR_NETWORK_CONNECTION, STR_NULL),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(4, 0),
+			NWidget(NWID_VERTICAL),
+				NWidget(WWT_DROPDOWNIN, COLOUR_LIGHT_BLUE, NGWW_CONN_BTN), SetMinimalSize(92, 12),
+									SetDataTip(STR_NETWORK_LAN_INTERNET_COMBO, STR_NETWORK_CONNECTION_TIP),
+				NWidget(NWID_SPACER), SetMinimalSize(0,2), // Text ends two pixels further down
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(108, 0), SetFill(1,0), SetResize(1,0),
+			NWidget(NWID_VERTICAL),
+				NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, NGWW_CLIENT), SetMinimalSize(151, 12),
+									SetDataTip(STR_NETWORK_PLAYER_NAME_OSKTITLE, STR_NETWORK_ENTER_NAME_TIP),
+				NWidget(NWID_SPACER), SetMinimalSize(0,2), // Text ends two pixels further down
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(9, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 6), SetResize(1, 0),
+		NWidget(NWID_HORIZONTAL),
+			/* LEFT SIDE */
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0), SetResize(0, 1),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_NAME), SetMinimalSize(61, 12), SetResize(1, 0),
+									SetDataTip(STR_NETWORK_GAME_NAME, STR_NETWORK_GAME_NAME_TIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_CLIENTS), SetMinimalSize(20, 12),
+									SetDataTip(STR_NETWORK_CLIENTS_CAPTION, STR_NETWORK_CLIENTS_CAPTION_TIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_MAPSIZE), SetMinimalSize(20, 12),
+									SetDataTip(STR_NETWORK_MAP_SIZE_CAPTION, STR_NETWORK_MAP_SIZE_CAPTION_TIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_DATE), SetMinimalSize(20, 12), SetDataTip(STR_NETWORK_DATE_CAPTION, STR_NETWORK_DATE_CAPTION_TIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_YEARS), SetMinimalSize(20, 12), SetDataTip(STR_NETWORK_YEARS_CAPTION, STR_NETWORK_YEARS_CAPTION_TIP),
+					NWidget(NWID_SPACER), SetMinimalSize(0, 0), SetFill(0, 0), SetResize(1, 0),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_INFO), SetMinimalSize(40, 12), SetDataTip(STR_EMPTY, STR_NETWORK_INFO_ICONS_TIP),
+				EndContainer(),
+				NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, NGWW_MATRIX), SetMinimalSize(181, 155), SetResize(1,1),
+									SetDataTip((11 << 8) + 1, STR_NETWORK_CLICK_GAME_TO_SELECT),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 2), SetResize(1, 0),
+				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NGWW_LASTJOINED_LABEL), SetMinimalSize(181, 12), SetFill(1,0),
+									SetDataTip(STR_NETWORK_LAST_JOINED_SERVER, STR_NULL), SetResize(1, 0),
+				NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NGWW_LASTJOINED), SetMinimalSize(181, 14), SetFill(1,0), SetResize(1, 0),
+									SetDataTip(0x0, STR_NETWORK_CLICK_TO_SELECT_LAST),
+				EndContainer(),
+			EndContainer(),
+			NWidget(NWID_VERTICAL),
+				NWidget(WWT_SCROLLBAR, COLOUR_LIGHT_BLUE, NGWW_SCROLLBAR), SetMinimalSize(12, 165),
+				NWidget(NWID_SPACER), SetMinimalSize(0,28),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(7, 0), SetResize(0, 1),
+			/* RIGHT SIDE */
+			NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NGWW_DETAILS),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 155), SetResize(0, 1),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(NWID_SPACER), SetMinimalSize(120, 0),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_NEWGRF), SetMinimalSize(106, 12), SetDataTip(STR_NEWGRF_SETTINGS_BUTTON, STR_NULL),
+					NWidget(NWID_SPACER), SetMinimalSize(5, 0),
+				EndContainer(),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 6),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(NWID_SPACER), SetMinimalSize(5, 0),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_JOIN), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_JOIN_GAME, STR_NULL),
+					NWidget(NWID_SPACER), SetMinimalSize(14, 0),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_REFRESH), SetMinimalSize(106, 12), SetDataTip(STR_NETWORK_REFRESH, STR_NETWORK_REFRESH_TIP),
+					NWidget(NWID_SPACER), SetMinimalSize(5, 0),
+				EndContainer(),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 10),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(9, 0), SetResize(0, 1),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 9), SetResize(1, 0),
+		/* BOTTOM */
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_FIND), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_FIND_SERVER, STR_NETWORK_FIND_SERVER_TIP),
+					NWidget(NWID_SPACER), SetMinimalSize(7, 0),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_ADD), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_ADD_SERVER, STR_NETWORK_ADD_SERVER_TIP),
+					NWidget(NWID_SPACER), SetMinimalSize(7, 0),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_START), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_START_SERVER, STR_NETWORK_START_SERVER_TIP),
+					NWidget(NWID_SPACER), SetMinimalSize(7, 0),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_CANCEL), SetMinimalSize(101, 12), SetDataTip(STR_012E_CANCEL, STR_NULL),
+				EndContainer(),
+				NWidget(NWID_SPACER), SetMinimalSize(0,6),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(3, 0), SetResize(1, 0),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 6),
+				NWidget(WWT_RESIZEBOX, COLOUR_LIGHT_BLUE, NGWW_RESIZE),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+};
+
 static const WindowDesc _network_game_window_desc(
 	WDP_CENTER, WDP_CENTER, 450, 264, 780, 264,
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
-	_network_game_window_widgets
+	_network_game_window_widgets, _nested_network_game_widgets, lengthof(_nested_network_game_widgets)
 );
 
 void ShowNetworkGameWindow()

@@ -55,6 +55,30 @@ static const Widget _build_vehicle_widgets[] = {
 	{   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_build_vehicle_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, BUILD_VEHICLE_WIDGET_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, BUILD_VEHICLE_WIDGET_CAPTION), SetFill(1, 0), SetResize(1, 0), SetDataTip(0x0, STR_018C_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	/* Sort order + criteria button row. */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING), SetMinimalSize(81, 12), SetDataTip(STR_SORT_BY, STR_SORT_ORDER_TIP),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN), SetMinimalSize(159, 12), SetResize(1, 0), SetDataTip(0x0, STR_SORT_CRITERIA_TIP),
+	EndContainer(),
+	/* Vehicle list. */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_MATRIX, COLOUR_GREY, BUILD_VEHICLE_WIDGET_LIST), SetMinimalSize(228, 14), SetResize(1, 1), SetDataTip(0x101, STR_NULL),
+		NWidget(WWT_SCROLLBAR, COLOUR_GREY, BUILD_VEHICLE_WIDGET_SCROLLBAR),
+	EndContainer(),
+	/* Panel with details. */
+	NWidget(WWT_PANEL, COLOUR_GREY, BUILD_VEHICLE_WIDGET_PANEL), SetMinimalSize(240, 122), SetResize(1, 0), EndContainer(),
+	/* Build/rename buttons, resize button. */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BUILD_VEHICLE_WIDGET_BUILD), SetMinimalSize(115, 12),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BUILD_VEHICLE_WIDGET_RENAME), SetMinimalSize(113, 12), SetResize(1, 0),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY, BUILD_VEHICLE_WIDGET_RESIZE),
+	EndContainer(),
+};
 
 static bool _internal_sort_order; // descending/ascending
 static byte _last_sort_criteria[]    = {0, 0, 0, 0};
@@ -1091,7 +1115,7 @@ static const WindowDesc _build_vehicle_desc(
 	WDP_AUTO, WDP_AUTO, 240, 174, 240, 256,
 	WC_BUILD_VEHICLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	_build_vehicle_widgets
+	_build_vehicle_widgets, _nested_build_vehicle_widgets, lengthof(_nested_build_vehicle_widgets)
 );
 
 void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)

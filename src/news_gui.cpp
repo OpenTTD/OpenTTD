@@ -336,11 +336,34 @@ static const Widget _news_type0_widgets[] = {
 {   WIDGETS_END},
 };
 
+static NWidgetPart _nested_news_type0_widgets[] = {
+	/* Caption + close box */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, 1), SetMinimalSize(11, 14), SetDataTip(STR_00C5, STR_018B_CLOSE_WINDOW),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, 2), SetMinimalSize(269, 14), SetDataTip(STR_012C_MESSAGE, STR_NULL),
+	EndContainer(),
+
+	/* Main part */
+	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, 0),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+
+			NWidget(WWT_INSET, COLOUR_LIGHT_BLUE, 3), SetMinimalSize(276, 49),
+			EndContainer(),
+
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 22),
+	EndContainer(),
+};
+
 static WindowDesc _news_type0_desc(
 	WDP_CENTER, 476, 280, 87, 280, 87,
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
-	_news_type0_widgets
+	_news_type0_widgets,
+	_nested_news_type0_widgets, lengthof(_nested_news_type0_widgets)
 );
 
 
@@ -756,11 +779,29 @@ static const Widget _message_history_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_message_history[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, 0), SetMinimalSize(11, 14), SetDataTip(STR_00C5, STR_018B_CLOSE_WINDOW),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, 1), SetMinimalSize(377, 14), SetDataTip(STR_MESSAGE_HISTORY, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_BROWN, 2), SetMinimalSize(12, 14), SetDataTip(0x0, STR_STICKY_BUTTON),
+	EndContainer(),
+
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_BROWN, 3), SetMinimalSize(388, 125), SetDataTip(0x0, STR_MESSAGE_HISTORY_TIP), SetResize(1, 1),
+		EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(WWT_SCROLLBAR, COLOUR_BROWN, 4), SetMinimalSize(12, 114), SetDataTip(0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST), SetResize(0, 1),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, 5), SetMinimalSize(12, 12), SetDataTip(0x0, STR_RESIZE_BUTTON),
+		EndContainer(),
+	EndContainer(),
+};
+
 static const WindowDesc _message_history_desc(
 	240, 22, 400, 140, 400, 140,
 	WC_MESSAGE_HISTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_message_history_widgets
+	_message_history_widgets,
+	_nested_message_history, lengthof(_nested_message_history)
 );
 
 /** Display window with news messages history */

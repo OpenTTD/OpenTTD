@@ -267,12 +267,33 @@ static const Widget _build_bridge_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_build_bridge_widgets[] = {
+	/* Header */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BBSW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BBSW_CAPTION), SetFill(1, 0), SetDataTip(STR_100D_SELECT_RAIL_BRIDGE, STR_018C_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	/* Sort order + criteria buttons */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, BBSW_DROPDOWN_ORDER), SetMinimalSize(81, 12), SetDataTip(STR_SORT_BY, STR_SORT_ORDER_TIP),
+		NWidget(WWT_DROPDOWN, COLOUR_DARK_GREEN, BBSW_DROPDOWN_CRITERIA), SetMinimalSize(119, 12), SetDataTip(0x0, STR_SORT_CRITERIA_TIP),
+	EndContainer(),
+	/* Matrix + scrollbar */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, BBSW_BRIDGE_LIST), SetMinimalSize(188, 88), SetResize(0, 1), SetDataTip(0x401, STR_101F_BRIDGE_SELECTION_CLICK),
+		NWidget(NWID_VERTICAL),
+			NWidget(WWT_SCROLLBAR, COLOUR_DARK_GREEN, BBSW_SCROLLBAR), SetFill(0, 1),
+			NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN, BBSW_RESIZEBOX),
+		EndContainer(),
+	EndContainer(),
+};
+
 /* Window definition for the rail bridge selection window */
 static const WindowDesc _build_bridge_desc(
 	WDP_AUTO, WDP_AUTO, 200, 114, 200, 114,
 	WC_BUILD_BRIDGE, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	_build_bridge_widgets
+	_build_bridge_widgets, _nested_build_bridge_widgets, lengthof(_nested_build_bridge_widgets)
 );
 
 /**
