@@ -425,21 +425,6 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 }
 
 /**
- * Draw string starting at position (x,y).
- *
- * @param x      X position to start drawing
- * @param y      Y position to start drawing
- * @param str    String to draw
- * @param colour Colour used for drawing the string, see DoDrawString() for details
- *
- * @return Horizontal coordinate after drawing the string
- */
-int DrawString(int x, int y, StringID str, TextColour colour)
-{
-	return DrawString(x, INT32_MAX, y, str, colour);
-}
-
-/**
  * Draw string, possibly truncated to make it fit in its allocated space
  *
  * @param left   The left most position to draw on.
