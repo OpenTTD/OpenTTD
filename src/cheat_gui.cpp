@@ -128,7 +128,6 @@ static const CheatEntry _cheats_ui[] = {
 static const Widget _cheat_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,   STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   399,     0,    13, STR_CHEATS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   399,    14,   169, 0x0,        STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   399,    14,   169, 0x0,        STR_CHEATS_TIP},
 {   WIDGETS_END},
 };
