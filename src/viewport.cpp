@@ -1460,11 +1460,15 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 
 		/* The maximum width of the string */
 		int w = GB(ss->width, 0, 15);
-		if (w == 0) w = UINT16_MAX;
+		if (w == 0) {
+			char buffer[DRAW_STRING_BUFFER];
+			GetString(buffer, ss->string, lastof(buffer));
+			w = GetStringBoundingBox(buffer).width;
+		}
 
 		DrawString(
 			UnScaleByZoom(ss->x, zoom), UnScaleByZoom(ss->x, zoom) + w, UnScaleByZoom(ss->y, zoom) - (ss->width & 0x8000 ? 2 : 0),
-			ss->string, colour
+			ss->string, colour, SA_CENTER
 		);
 	}
 }
