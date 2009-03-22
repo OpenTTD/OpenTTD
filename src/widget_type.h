@@ -95,10 +95,9 @@ enum WidgetType {
 	WWT_EDITBOX,    ///< a textbox for typing
 	WWT_LAST,       ///< Last Item. use WIDGETS_END to fill up padding!!
 
-	WWT_MASK = 0x1F,
+	WWT_MASK = 0x7F,
 
-	WWB_PUSHBUTTON  = 1 << 5,
-	WWB_MASK        = 0xE0,
+	WWB_PUSHBUTTON  = 1 << 7,
 
 	WWT_PUSHBTN     = WWT_PANEL   | WWB_PUSHBUTTON,
 	WWT_PUSHTXTBTN  = WWT_TEXTBTN | WWB_PUSHBUTTON,

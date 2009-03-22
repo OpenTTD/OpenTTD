@@ -284,7 +284,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 			}
 		}
 
-		if (wi->type & WWB_MASK) {
+		if (wi->type & WWB_PUSHBUTTON) {
 			/* special widget handling for buttons*/
 			switch (wi->type) {
 				default: NOT_REACHED();
