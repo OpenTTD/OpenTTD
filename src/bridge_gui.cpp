@@ -170,7 +170,7 @@ public:
 			SetDParam(0, b->material);
 
 			DrawSprite(b->sprite, b->pal, 3, y);
-			DrawString(44, this->width, y, STR_500D, TC_FROMSTRING);
+			DrawStringMultiLine(44, this->widget[BBSW_BRIDGE_LIST].right, y, y + this->resize.step_height, STR_500D);
 			y += this->resize.step_height;
 
 		}
