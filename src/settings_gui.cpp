@@ -179,7 +179,7 @@ struct GameOptionsWindow : Window {
 		SetDParamStr(9, GetGraphicsSetName(GetIndexOfCurrentGraphicsSet()));
 
 		this->DrawWidgets();
-		DrawString(20, 175, STR_OPTIONS_FULLSCREEN, TC_FROMSTRING); // fullscreen
+		DrawString(20, this->width / 2, 175, STR_OPTIONS_FULLSCREEN, TC_FROMSTRING); // fullscreen
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -475,7 +475,7 @@ public:
 
 			value += sdb->str;
 			SetDParam(0, value);
-			DrawString(30, y, str, TC_FROMSTRING);
+			DrawString(30, this->width, y, str, TC_FROMSTRING);
 
 			y += GAMEDIFF_WND_ROWSIZE + 2; // space items apart a bit
 			str++;

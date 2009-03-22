@@ -180,7 +180,7 @@ struct NewsWindow : Window {
 		GfxFillRect(left,  top,    right, top,    0xD7);
 		GfxFillRect(left,  bottom, right, bottom, 0xD7);
 
-		DrawString(left + 2, top + 1, STR_00C6, TC_FROMSTRING);
+		DrawString(left + 2, right - 2, top + 1, STR_00C6, TC_FROMSTRING);
 	}
 
 	virtual void OnPaint()
@@ -197,10 +197,10 @@ struct NewsWindow : Window {
 					break;
 				}
 
-				DrawString(2, 1, STR_00C6, TC_FROMSTRING);
+				DrawString(2, this->width - 1, 1, STR_00C6, TC_FROMSTRING);
 
 				SetDParam(0, this->ni->date);
-				DrawString(1, this->width - 1, 1, STR_01FF, TC_FROMSTRING, SA_RIGHT);
+				DrawString(2, this->width - 1, 1, STR_01FF, TC_FROMSTRING, SA_RIGHT);
 
 				if (!(this->ni->flags & NF_VIEWPORT)) {
 					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
@@ -715,7 +715,7 @@ struct MessageHistoryWindow : Window {
 
 		for (int n = this->vscroll.cap; n > 0; n--) {
 			SetDParam(0, ni->date);
-			DrawString(4, y, STR_SHORT_DATE, TC_WHITE);
+			DrawString(4, 82, y, STR_SHORT_DATE, TC_WHITE);
 
 			DrawNewsString(82, y, TC_WHITE, ni, this->width - 95);
 			y += 12;

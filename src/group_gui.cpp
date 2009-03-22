@@ -410,11 +410,11 @@ public:
 				break;
 			default: NOT_REACHED();
 		}
-		DrawString(10, y1, str_all_veh, IsAllGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
+		DrawString(this->widget[GRP_WIDGET_LIST_GROUP].left + 10, this->widget[GRP_WIDGET_LIST_GROUP].right, y1, str_all_veh, IsAllGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
 
 		y1 += 13;
 
-		DrawString(10, y1, str_no_group_veh, IsDefaultGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
+		DrawString(this->widget[GRP_WIDGET_LIST_GROUP].left + 10, this->widget[GRP_WIDGET_LIST_GROUP].right, y1, str_no_group_veh, IsDefaultGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
 
 		max = min(this->vscroll2.pos + this->vscroll2.cap, this->groups.Length());
 		for (i = this->vscroll2.pos ; i < max ; ++i) {
@@ -426,7 +426,7 @@ public:
 
 			/* draw the selected group in white, else we draw it in black */
 			SetDParam(0, g->index);
-			DrawString(10, y1, STR_GROUP_NAME, (this->group_sel == g->index) ? TC_WHITE : TC_BLACK);
+			DrawString(this->widget[GRP_WIDGET_LIST_GROUP].left + 10, this->widget[GRP_WIDGET_LIST_GROUP].right, y1, STR_GROUP_NAME, (this->group_sel == g->index) ? TC_WHITE : TC_BLACK);
 
 			/* draw the number of vehicles of the group */
 			SetDParam(0, g->num_vehicle);

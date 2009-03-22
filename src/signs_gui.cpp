@@ -96,7 +96,7 @@ struct SignListWindow : Window, SignList {
 		/* No signs? */
 		int y = 16; // offset from top of widget
 		if (this->vscroll.count == 0) {
-			DrawString(2, y, STR_304A_NONE, TC_FROMSTRING);
+			DrawString(2, 346, y, STR_304A_NONE, TC_FROMSTRING);
 			return;
 		}
 
@@ -107,7 +107,7 @@ struct SignListWindow : Window, SignList {
 			if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, 4, y + 1);
 
 			SetDParam(0, si->index);
-			DrawString(22, y, STR_SIGN_NAME, TC_YELLOW);
+			DrawString(22, 346, y, STR_SIGN_NAME, TC_YELLOW);
 			y += 10;
 		}
 	}

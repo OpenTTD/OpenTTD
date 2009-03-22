@@ -409,7 +409,7 @@ void Window::DrawWidgets() const
 			const StringID str = wi->data;
 			int x2 = r.left; // by default the left side is the left side of the widget
 
-			if (str != STR_NULL) x2 = DrawString(r.left + 6, r.top, str, TC_FROMSTRING);
+			if (str != STR_NULL) x2 = DrawString(r.left + 6, r.right - 6, r.top, str, TC_FROMSTRING);
 
 			int c1 = _colour_gradient[wi->colour][3];
 			int c2 = _colour_gradient[wi->colour][7];
@@ -465,7 +465,7 @@ void Window::DrawWidgets() const
 			assert(r.right - r.left == 10); // To ensure the same sizes are used everywhere
 
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_NONE);
-			DrawString(r.left + 2, r.top + 2, str, TC_FROMSTRING);
+			DrawString(r.left + 2, r.right, r.top + 2, str, TC_FROMSTRING);
 			break;
 		}
 
@@ -487,7 +487,7 @@ void Window::DrawWidgets() const
 			StringID str = wi->data;
 			DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, wi->colour, FR_NONE);
 			DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, wi->colour, clicked ? FR_LOWERED : FR_NONE);
-			DrawString(r.right - (clicked ? 8 : 9), r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
+			DrawString(r.right - (clicked ? 8 : 9), r.right, r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
 			if (str != STR_NULL) DrawString(r.left + 2, r.right - 14, r.top + 1, str, TC_BLACK);
 			break;
 		}
@@ -498,7 +498,7 @@ void Window::DrawWidgets() const
 			StringID str = wi->data;
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_LOWERED | FR_DARKENED);
 			DrawFrameRect(r.right - 11, r.top + 1, r.right - 1, r.bottom - 1, wi->colour, clicked ? FR_LOWERED : FR_NONE);
-			DrawString(r.right - (clicked ? 8 : 9), r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
+			DrawString(r.right - (clicked ? 8 : 9), r.right, r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
 			if (str != STR_NULL) DrawString(r.left + 2, r.right - 13, r.top + 2, str, TC_BLACK);
 			break;
 		}

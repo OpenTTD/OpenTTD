@@ -365,7 +365,7 @@ public:
 		/* Edit box to set client name */
 		this->DrawEditBox(NGWW_CLIENT);
 
-		DrawString(this->widget[NGWW_CLIENT].left - 100, 23, STR_NETWORK_PLAYER_NAME, TC_GOLD);
+		DrawString(0, this->widget[NGWW_CLIENT].left - 5, 23, STR_NETWORK_PLAYER_NAME, TC_GOLD, SA_RIGHT);
 
 		/* Sort based on widgets: name, clients, compatibility */
 		switch (this->servers.SortType()) {
@@ -417,37 +417,37 @@ public:
 			SetDParam(1, sel->info.clients_max);
 			SetDParam(2, sel->info.companies_on);
 			SetDParam(3, sel->info.companies_max);
-			DrawString(x, y, STR_NETWORK_CLIENTS, TC_GOLD);
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_CLIENTS, TC_GOLD);
 			y += 10;
 
 			SetDParam(0, STR_NETWORK_LANG_ANY + sel->info.server_lang);
-			DrawString(x, y, STR_NETWORK_LANGUAGE, TC_GOLD); // server language
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_LANGUAGE, TC_GOLD); // server language
 			y += 10;
 
 			SetDParam(0, STR_TEMPERATE_LANDSCAPE + sel->info.map_set);
-			DrawString(x, y, STR_NETWORK_TILESET, TC_GOLD); // tileset
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_TILESET, TC_GOLD); // tileset
 			y += 10;
 
 			SetDParam(0, sel->info.map_width);
 			SetDParam(1, sel->info.map_height);
-			DrawString(x, y, STR_NETWORK_MAP_SIZE, TC_GOLD); // map size
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_MAP_SIZE, TC_GOLD); // map size
 			y += 10;
 
 			SetDParamStr(0, sel->info.server_revision);
-			DrawString(x, y, STR_NETWORK_SERVER_VERSION, TC_GOLD); // server version
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_VERSION, TC_GOLD); // server version
 			y += 10;
 
 			SetDParamStr(0, sel->info.hostname);
 			SetDParam(1, sel->port);
-			DrawString(x, y, STR_NETWORK_SERVER_ADDRESS, TC_GOLD); // server address
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_ADDRESS, TC_GOLD); // server address
 			y += 10;
 
 			SetDParam(0, sel->info.start_date);
-			DrawString(x, y, STR_NETWORK_START_DATE, TC_GOLD); // start date
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_START_DATE, TC_GOLD); // start date
 			y += 10;
 
 			SetDParam(0, sel->info.game_date);
-			DrawString(x, y, STR_NETWORK_CURRENT_DATE, TC_GOLD); // current date
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_CURRENT_DATE, TC_GOLD); // current date
 			y += 10;
 
 			y += 2;
@@ -917,7 +917,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 				GfxFillRect(11, y - 1, 258, y + 10, 155); // show highlighted item with a different colour
 
 			if (pos == 0) {
-				DrawString(14, y, STR_4010_GENERATE_RANDOM_NEW_GAME, TC_DARK_GREEN);
+				DrawString(14, this->width - 1, y, STR_4010_GENERATE_RANDOM_NEW_GAME, TC_DARK_GREEN);
 			} else {
 				DrawString(14, this->width - 1, y, item->title, _fios_colours[item->type] );
 			}
@@ -1238,7 +1238,7 @@ struct NetworkLobbyWindow : public Window {
 			SetDParam(1, gi->clients_max);
 			SetDParam(2, gi->companies_on);
 			SetDParam(3, gi->companies_max);
-			DrawString(x, y, STR_NETWORK_CLIENTS, TC_GOLD);
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_CLIENTS, TC_GOLD);
 			y += 10;
 
 			SetDParamStr(0, this->company_info[this->company].company_name);
@@ -1710,9 +1710,9 @@ struct NetworkClientListWindow : Window
 			}
 
 			if (ci->client_id == CLIENT_ID_SERVER) {
-				DrawString(4, y, STR_NETWORK_SERVER, colour);
+				DrawString(4, 81, y, STR_NETWORK_SERVER, colour);
 			} else {
-				DrawString(4, y, STR_NETWORK_CLIENT, colour);
+				DrawString(4, 81, y, STR_NETWORK_CLIENT, colour);
 			}
 
 			/* Filter out spectators */
