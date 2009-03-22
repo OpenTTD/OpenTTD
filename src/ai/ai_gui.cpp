@@ -683,7 +683,7 @@ struct AIDebugWindow : public Window {
 				default:                  colour = TC_BLACK;  break;
 			}
 
-			DrawString(this->widget[AID_WIDGET_LOG_PANEL].right + 7, this->widget[AID_WIDGET_LOG_PANEL].left - 7, this->widget[AID_WIDGET_LOG_PANEL].top + y, log->lines[pos], colour);
+			DrawString(this->widget[AID_WIDGET_LOG_PANEL].left + 7, this->widget[AID_WIDGET_LOG_PANEL].right - 7, this->widget[AID_WIDGET_LOG_PANEL].top + y, log->lines[pos], colour);
 			y += 12;
 		}
 	}
