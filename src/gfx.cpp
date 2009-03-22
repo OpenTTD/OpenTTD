@@ -637,7 +637,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 		total_height = (num + 1) * mt;
 	}
 
-	int y = top;
+	int y = (align == SA_CENTER) ? (bottom + top - num * mt) / 2 : top;
 	const char *src = buffer;
 
 	for (;;) {
@@ -652,7 +652,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 				y += mt;
 				if (--num < 0) {
 					_cur_fontsize = FS_NORMAL;
-					return top + total_height;
+					return y + mt;
 				}
 				break;
 			} else if (c == SCC_SETX) {
@@ -671,7 +671,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
  * @param maxw Maximum width the string can have before it is wrapped */
 void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 {
-	DrawStringMultiLine(x - maxw / 2, x + maxw / 2, y, INT32_MAX, str, SA_CENTER);
+	DrawStringMultiLine(x - maxw / 2, x + maxw / 2, y - 1024, y + 1024, str, SA_CENTER);
 }
 
 /** Return the string dimension in pixels. The height and width are returned
