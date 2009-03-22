@@ -66,9 +66,10 @@ enum {
 };
 
 /**
- * Window widget types
+ * Window widget types, nested widget types, and nested widget part types.
  */
 enum WidgetType {
+	/* Window widget types. */
 	WWT_EMPTY,      ///< Empty widget, place holder to reserve space in widget array
 
 	WWT_PANEL,      ///< Simple depressed panel
@@ -95,6 +96,22 @@ enum WidgetType {
 	WWT_EDITBOX,    ///< a textbox for typing
 	WWT_LAST,       ///< Last Item. use WIDGETS_END to fill up padding!!
 
+	/* Nested widget types. */
+	NWID_HORIZONTAL,  ///< Horizontal container.
+	NWID_VERTICAL,    ///< Vertical container.
+	NWID_SPACER,      ///< Invisible widget that takes some space.
+
+	/* Nested widget part types. */
+	WPT_RESIZE,       ///< Widget part for specifying resizing.
+	WPT_RESIZE_PTR,   ///< Widget part for specifying resizing via a pointer.
+	WPT_MINSIZE,      ///< Widget part for specifying minimal size.
+	WPT_MINSIZE_PTR,  ///< Widget part for specifying minimal size via a pointer.
+	WPT_FILL,         ///< Widget part for specifying fill.
+	WPT_DATATIP,      ///< Widget part for specifying data and tooltip.
+	WPT_DATATIP_PTR,  ///< Widget part for specifying data and tooltip via a pointer.
+	WPT_ENDCONTAINER, ///< Widget part to denote end of a container.
+
+	/* Pushable window widget types. */
 	WWT_MASK = 0x7F,
 
 	WWB_PUSHBUTTON  = 1 << 7,
@@ -121,5 +138,308 @@ struct Widget {
 	uint16 data;                      ///< The String/Image or special code (list-matrixes) of a widget
 	StringID tooltips;                ///< Tooltips that are shown when rightclicking on a widget
 };
+
+/**
+ * Baseclass for nested widgets.
+ */
+class NWidgetBase : public ZeroedMemoryAllocator {
+public:
+	NWidgetBase(WidgetType tp);
+
+	virtual int ComputeMinimalSize() = 0;
+	virtual void AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl) = 0;
+
+	virtual void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl) = 0;
+
+	WidgetType type;   ///< Type of the widget / nested widget.
+	uint min_x;        ///< Minimal horizontal size.
+	uint min_y;        ///< Minimal vertical size.
+	bool fill_x;       ///< Allow horizontal filling from initial size.
+	bool fill_y;       ///< Allow vertical filling from initial size.
+	uint resize_x;     ///< Horizontal resize step (\c 0 means not resizable).
+	uint resize_y;     ///< Vertical resize step (\c 0 means not resizable).
+
+	uint pos_x;        ///< Horizontal position of top-left corner of the widget in the window.
+	uint pos_y;        ///< Vertical position of top-left corner of the widget in the window.
+
+	NWidgetBase *next; ///< Pointer to next widget in container. Managed by parent container widget.
+	NWidgetBase *prev; ///< Pointer to previous widget in container. Managed by parent container widget.
+};
+
+/** Base class for a resizable nested widget. */
+class NWidgetResizeBase : public NWidgetBase {
+public:
+	NWidgetResizeBase(WidgetType tp, bool fill_x, bool fill_y);
+
+	void SetMinimalSize(uint min_x, uint min_y);
+	void SetFill(bool fill_x, bool fill_y);
+	void SetResize(uint resize_x, uint resize_y);
+
+	void AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+};
+
+/** Base class for a 'real' widget. */
+class NWidgetCore : public NWidgetResizeBase {
+public:
+	NWidgetCore(WidgetType tp, Colours colour, bool def_fill_x, bool def_fill_y, uint16 widget_data, StringID tool_tip);
+
+	void SetIndex(int index);
+	void SetDataTip(uint16 widget_data, StringID tool_tip);
+
+	int ComputeMinimalSize();
+	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
+
+	Colours colour;     ///< Colour of this widget.
+	int index;          ///< Index of the nested widget in the widget array of the window (\c -1 means 'not used').
+	uint16 widget_data; ///< Data of the widget. @see Widget::data
+	StringID tool_tip;  ///< Tooltip of the widget. @see Widget::tootips
+};
+
+/** Baseclass for container widgets. */
+class NWidgetContainer : public NWidgetBase {
+public:
+	NWidgetContainer(WidgetType tp);
+	~NWidgetContainer();
+
+	void Add(NWidgetBase *wid);
+protected:
+	NWidgetBase *head; ///< Pointer to first widget in container.
+	NWidgetBase *tail; ///< Pointer to last widget in container.
+};
+
+/** Horizontal container. */
+class NWidgetHorizontal : public NWidgetContainer {
+public:
+	NWidgetHorizontal();
+
+	int ComputeMinimalSize();
+	void AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+
+	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
+};
+
+/** Vertical container */
+class NWidgetVertical : public NWidgetContainer {
+public:
+	NWidgetVertical();
+
+	int ComputeMinimalSize();
+	void AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+
+	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
+};
+
+
+/** Spacer widget */
+class NWidgetSpacer : public NWidgetResizeBase {
+public:
+	NWidgetSpacer(int length, int height);
+
+	int ComputeMinimalSize();
+	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
+};
+
+/** Nested widget with a child. */
+class NWidgetBackground : public NWidgetCore {
+public:
+	NWidgetBackground(WidgetType tp, Colours colour, int index, NWidgetContainer *child = NULL);
+	~NWidgetBackground();
+
+	void Add(NWidgetBase *nwid);
+
+	int ComputeMinimalSize();
+	void AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+
+	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
+private:
+	NWidgetContainer *child; ///< Child widget.
+};
+
+/** Leaf widget. */
+class NWidgetLeaf : public NWidgetCore {
+public:
+	NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, StringID tip);
+};
+
+Widget *InitializeNWidgets(NWidgetBase *nwid, bool rtl = false);
+bool CompareWidgetArrays(const Widget *orig, const Widget *gen, bool report = true);
+
+/* == Nested widget parts == */
+
+/** Widget part for storing data and tooltip information. */
+struct NWidgetPartDataTip {
+	uint16 data;      ///< Data value of the widget.
+	StringID tooltip; ///< Tooltip of the widget.
+};
+
+/** Widget part for storing basic widget information. */
+struct NWidgetPartWidget {
+	Colours colour; ///< Widget colour.
+	int16 index;    ///< Widget index in the widget array.
+};
+
+/** Partial widget specification to allow NWidgets to be written nested. */
+struct NWidgetPart {
+	WidgetType type;                         ///< Type of the part. @see NWidgetPartType.
+	union {
+		Point xy;                        ///< Part with an x/y size.
+		Point *xy_ptr;                   ///< Part with a pointer to an x/y size.
+		NWidgetPartDataTip data_tip;     ///< Part with a data/tooltip.
+		NWidgetPartDataTip *datatip_ptr; ///< Part with a pointer to data/tooltip.
+		NWidgetPartWidget widget;        ///< Part with a start of a widget.
+	} u;
+};
+
+/**
+ * Widget part function for setting the resize step.
+ * @param dx Horizontal resize step. 0 means no horizontal resizing.
+ * @param dy Vertical resize step. 0 means no horizontal resizing.
+ */
+static inline NWidgetPart SetResize(int16 dx, int16 dy)
+{
+	NWidgetPart part;
+
+	part.type = WPT_RESIZE;
+	part.u.xy.x = dx;
+	part.u.xy.y = dy;
+
+	return part;
+}
+
+/**
+ * Widget part function for using a pointer to set the resize step.
+ * @param ptr Pointer to horizontal and vertical resize step.
+ */
+static inline NWidgetPart SetResize(Point *ptr)
+{
+	NWidgetPart part;
+
+	part.type = WPT_RESIZE_PTR;
+	part.u.xy_ptr = ptr;
+
+	return part;
+}
+
+/**
+ * Widget part function for setting the minimal size.
+ * @param dx Horizontal minimal size.
+ * @param dy Vertical minimal size.
+ */
+static inline NWidgetPart SetMinimalSize(int16 x, int16 y)
+{
+	NWidgetPart part;
+
+	part.type = WPT_MINSIZE;
+	part.u.xy.x = x;
+	part.u.xy.y = y;
+
+	return part;
+}
+
+/**
+ * Widget part function for using a pointer to set the minimal size.
+ * @param ptr Pointer to horizontal and vertical minimal size.
+ */
+static inline NWidgetPart SetMinimalSize(Point *ptr)
+{
+	NWidgetPart part;
+
+	part.type = WPT_MINSIZE_PTR;
+	part.u.xy_ptr = ptr;
+
+	return part;
+}
+
+/**
+ * Widget part function for setting filling.
+ * @param x_fill Allow horizontal filling from minimal size.
+ * @param y_fill Allow vertical filling from minimal size.
+ */
+static inline NWidgetPart SetFill(bool x_fill, bool y_fill)
+{
+	NWidgetPart part;
+
+	part.type = WPT_FILL;
+	part.u.xy.x = x_fill;
+	part.u.xy.y = y_fill;
+
+	return part;
+}
+
+/**
+ * Widget part function for denoting the end of a container
+ * (horizontal, vertical, WWT_FRAME, WWT_INSET, or WWT_PANEL).
+ */
+static inline NWidgetPart EndContainer()
+{
+	NWidgetPart part;
+
+	part.type = WPT_ENDCONTAINER;
+
+	return part;
+}
+
+/** Widget part function for setting the data and tooltip.
+ * @param data Data of the widget.
+ * @param tip  Tooltip of the widget.
+ */
+static inline NWidgetPart SetDataTip(uint16 data, StringID tip)
+{
+	NWidgetPart part;
+
+	part.type = WPT_DATATIP;
+	part.u.data_tip.data = data;
+	part.u.data_tip.tooltip = tip;
+
+	return part;
+}
+
+/**
+ * Widget part function for setting the data and tooltip via a pointer.
+ * @param ptr Pointer to the data and tooltip of the widget.
+ */
+static inline NWidgetPart SetDataTip(NWidgetPartDataTip *ptr)
+{
+	NWidgetPart part;
+
+	part.type = WPT_DATATIP_PTR;
+	part.u.datatip_ptr = ptr;
+
+	return part;
+}
+
+/**
+ * Widget part function for starting a new 'real' widget.
+ * @param tp  Type of the new nested widget.
+ * @param col Colour of the new widget.
+ * @param idx Index of the widget in the widget array.
+ * @note with #WWT_PANEL, #WWT_FRAME, #WWT_INSET, a new container is started.
+ *       Child widgets must have a index bigger than the parent index.
+ */
+static inline NWidgetPart NWidget(WidgetType tp, Colours col, int16 idx)
+{
+	NWidgetPart part;
+
+	part.type = tp;
+	part.u.widget.colour = col;
+	part.u.widget.index = idx;
+
+	return part;
+}
+
+/**
+ * Widget part function for starting a new horizontal container, vertical container, or spacer widget.
+ * @param tp Type of the new nested widget, #NWID_HORIZONTAL, #NWID_VERTICAL, or #NWID_SPACER
+ */
+static inline NWidgetPart NWidget(WidgetType tp)
+{
+	NWidgetPart part;
+
+	part.type = tp;
+
+	return part;
+}
+
+NWidgetContainer *MakeNWidgets(const NWidgetPart *parts, int count);
 
 #endif /* WIDGET_TYPE_H */

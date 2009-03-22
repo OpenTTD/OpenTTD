@@ -41,18 +41,26 @@ extern Window *_focused_window;
 struct WindowDesc : ZeroedMemoryAllocator {
 
 	WindowDesc(int16 left, int16 top, int16 min_width, int16 min_height, int16 def_width, int16 def_height,
-			WindowClass window_class, WindowClass parent_class, uint32 flags, const Widget *widgets);
+			WindowClass window_class, WindowClass parent_class, uint32 flags, const Widget *widgets,
+			const NWidgetPart *nwid_parts = NULL, int16 nwid_length = 0);
 
-	int16 left;             ///< Prefered x position of left edge of the window, @see WindowDefaultPosition()
-	int16 top;              ///< Prefered y position of the top of the window, @see WindowDefaultPosition()
-	int16 minimum_width;    ///< Minimal width of the window
-	int16 minimum_height;   ///< Minimal height of the window
-	int16 default_width;    ///< Prefered initial width of the window
-	int16 default_height;   ///< Prefered initial height of the window
-	WindowClass cls;        ///< Class of the window, @see WindowClass
-	WindowClass parent_cls; ///< Class of the parent window, @see WindowClass
-	uint32 flags;           ///< Flags, @see WindowDefaultFlags
-	const Widget *widgets;  ///< List of widgets with their position and size for the window
+	~WindowDesc();
+
+	int16 left;                    ///< Prefered x position of left edge of the window. @see WindowDefaultPosition()
+	int16 top;                     ///< Prefered y position of the top of the window. @see WindowDefaultPosition()
+	int16 minimum_width;           ///< Minimal width of the window.
+	int16 minimum_height;          ///< Minimal height of the window.
+	int16 default_width;           ///< Prefered initial width of the window.
+	int16 default_height;          ///< Prefered initial height of the window.
+	WindowClass cls;               ///< Class of the window, @see WindowClass.
+	WindowClass parent_cls;        ///< Class of the parent window. @see WindowClass
+	uint32 flags;                  ///< Flags. @see WindowDefaultFlags
+	const Widget *widgets;         ///< List of widgets with their position and size for the window.
+	const NWidgetPart *nwid_parts; ///< Nested widget parts describing the window.
+	int16 nwid_length;             ///< Length of the #nwid_parts array.
+	mutable Widget *new_widgets;   ///< Widgets generated from #nwid_parts.
+
+	const Widget *GetWidgets() const;
 };
 
 /**

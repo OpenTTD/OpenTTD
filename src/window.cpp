@@ -54,7 +54,8 @@ byte _special_mouse_mode;
 
 /** Window description constructor. */
 WindowDesc::WindowDesc(int16 left, int16 top, int16 min_width, int16 min_height, int16 def_width, int16 def_height,
-			WindowClass window_class, WindowClass parent_class, uint32 flags, const Widget *widgets)
+			WindowClass window_class, WindowClass parent_class, uint32 flags, const Widget *widgets,
+			const NWidgetPart *nwid_parts, int16 nwid_length)
 {
 	this->left = left;
 	this->top = top;
@@ -66,8 +67,45 @@ WindowDesc::WindowDesc(int16 left, int16 top, int16 min_width, int16 min_height,
 	this->parent_cls = parent_class;
 	this->flags = flags;
 	this->widgets = widgets;
+	this->nwid_parts = nwid_parts;
+	this->nwid_length = nwid_length;
+	this->new_widgets = NULL;
 }
 
+/** Get widget array of the window description. */
+const Widget *WindowDesc::GetWidgets() const
+{
+	const bool rtl = false; // Direction of the language is left-to-right
+
+	/* If nested widgets are present, convert them to a widget array. */
+	if (this->nwid_parts != NULL && nwid_length > 0 && this->new_widgets == NULL) {
+		NWidgetContainer *nwid = MakeNWidgets(this->nwid_parts, this->nwid_length);
+		this->new_widgets = InitializeNWidgets(nwid, rtl);
+
+		if (!rtl && this->widgets != NULL) {
+			/* There are two descriptions, compare them.
+			 * Comparing only makes sense when using a left-to-right language.
+			 */
+			bool ok = CompareWidgetArrays(this->widgets, this->new_widgets, false);
+			if (ok) {
+				DEBUG(misc, 1, "Nested widgets are equal, min-size(%u, %u)", nwid->min_x, nwid->min_y);
+			} else {
+				DEBUG(misc, 0, "Nested widgets give different results");
+				CompareWidgetArrays(this->widgets, this->new_widgets, true);
+			}
+		}
+		delete nwid;
+	}
+
+	const Widget *wids = (this->new_widgets != NULL) ? this->new_widgets : this->widgets;
+	assert(wids != NULL);
+	return wids;
+}
+
+WindowDesc::~WindowDesc()
+{
+	free(this->new_widgets);
+}
 
 /**
  * Set the window that has the focus
@@ -1159,7 +1197,7 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int window_number)
 Window::Window(const WindowDesc *desc, WindowNumber window_number)
 {
 	Point pt = LocalGetWindowPlacement(desc, window_number);
-	this->Initialize(pt.x, pt.y, desc->minimum_width, desc->minimum_height, desc->cls, desc->widgets, window_number);
+	this->Initialize(pt.x, pt.y, desc->minimum_width, desc->minimum_height, desc->cls, desc->GetWidgets(), window_number);
 	this->desc_flags = desc->flags;
 }
 
