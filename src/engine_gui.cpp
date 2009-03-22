@@ -80,7 +80,7 @@ struct EnginePreviewWindow : Window {
 
 		EngineID engine = this->window_number;
 		SetDParam(0, GetEngineCategoryName(engine));
-		DrawStringMultiLine(this->widget[EPW_BACKGROUND].left + 2, this->widget[EPW_BACKGROUND].right - 2, 14, 74, STR_8101_WE_HAVE_JUST_DESIGNED_A, SA_CENTER);
+		DrawStringMultiLine(this->widget[EPW_BACKGROUND].left + 2, this->widget[EPW_BACKGROUND].right - 2, 18, 80, STR_8101_WE_HAVE_JUST_DESIGNED_A, SA_CENTER);
 
 		SetDParam(0, engine);
 		DrawString(this->widget[EPW_BACKGROUND].left + 2, this->widget[EPW_BACKGROUND].right - 2, 80, STR_ENGINE_NAME, TC_BLACK, SA_CENTER);
@@ -89,7 +89,7 @@ struct EnginePreviewWindow : Window {
 
 		int width = this->width;
 		dei->engine_proc(width >> 1, 100, engine, 0);
-		dei->info_proc(engine, this->widget[EPW_BACKGROUND].left + 26, this->widget[EPW_BACKGROUND].right - 26, 100, 160);
+		dei->info_proc(engine, this->widget[EPW_BACKGROUND].left + 26, this->widget[EPW_BACKGROUND].right - 26, 100, 170);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -211,16 +211,16 @@ void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
 	const DrawEngineInfo *dei = &_draw_engine_list[GetEngine(engine)->type];
 
 	SetDParam(0, GetEngineCategoryName(engine));
-	DrawStringMultiLine(1, w->width - 2, 0, 40, STR_NEW_VEHICLE_NOW_AVAILABLE, SA_CENTER);
+	DrawStringMultiLine(1, w->width - 2, 0, 56, STR_NEW_VEHICLE_NOW_AVAILABLE, SA_CENTER);
 
 	GfxFillRect(25, 56, w->width - 25, w->height - 2, 10);
 
 	SetDParam(0, engine);
-	DrawStringMultiLine(1, w->width - 2, 40, 74, STR_NEW_VEHICLE_TYPE, SA_CENTER);
+	DrawStringMultiLine(1, w->width - 2, 56, 88, STR_NEW_VEHICLE_TYPE, SA_CENTER);
 
 	dei->engine_proc(w->width >> 1, 88, engine, 0);
 	GfxFillRect(25, 56, w->width - 56, 112, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOUR);
-	dei->info_proc(engine, 26, w->width - 26, 100, 160);
+	dei->info_proc(engine, 26, w->width - 26, 100, 170);
 }
 
 

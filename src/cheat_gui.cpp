@@ -144,7 +144,7 @@ struct CheatWindow : Window {
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
-		DrawStringMultiCenter(200, 25, STR_CHEATS_WARNING, width - 50);
+		DrawStringMultiLine(20, this->width - 40, 15, 45, STR_CHEATS_WARNING, SA_CENTER);
 
 		for (int i = 0, x = 0, y = 45; i != lengthof(_cheats_ui); i++) {
 			const CheatEntry *ce = &_cheats_ui[i];

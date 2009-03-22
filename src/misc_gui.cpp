@@ -89,11 +89,9 @@ public:
 			y += i == 0 ? 16 : 12;
 		}
 
-		y += 6;
-
 		if (!StrEmpty(this->landinfo_data[LAND_INFO_MULTICENTER_LINE])) {
 			SetDParamStr(0, this->landinfo_data[LAND_INFO_MULTICENTER_LINE]);
-			DrawStringMultiCenter(150, y, STR_JUST_RAW_STRING, this->width - 4);
+			DrawStringMultiLine(this->widget[LIW_BACKGROUND].left + 2, this->widget[LIW_BACKGROUND].right - 2, y, y + 22, STR_JUST_RAW_STRING, SA_CENTER);
 		}
 	}
 
@@ -436,7 +434,7 @@ private:
 	StringID message_2;
 	bool show_company_manager_face;
 
-	int y[2];
+	int y[4];
 
 public:
 	ErrmsgWindow(Point pt, int width, int height, StringID msg1, StringID msg2, const Widget *widget, bool show_company_manager_face) :
@@ -454,22 +452,23 @@ public:
 
 		assert(msg2 != INVALID_STRING_ID);
 
-		int h2 = 3 + GetStringHeight(msg2, width - 2); // msg2 is printed first
-		int h1 = (msg1 == INVALID_STRING_ID) ? 0 : 3 + GetStringHeight(msg1, width - 2);
+		int h2 = GetStringHeight(msg2, width - 2); // msg2 is printed first
+		int h1 = (msg1 == INVALID_STRING_ID) ? 0 : GetStringHeight(msg1, width - 2);
 
 		SwitchToNormalRefStack();
 
-		int h = 15 + h1 + h2;
+		int h = 20 + h1 + h2;
 		height = max<int>(height, h);
 
 		if (msg1 == INVALID_STRING_ID) {
-			/* only 1 line will be printed */
-			y[1] = (height - 15) / 2 + 15 - 5;
+			y[2] = 14 + 1;
+			y[3] = height - 1;
 		} else {
-			int over = (height - h) / 4;
-
-			y[1] = 15 + h2 / 2 + 1 - 5 + over;
-			y[0] = height - 3 - h1 / 2 - 5 - over;
+			int over = (height - 16 - h1 - h2) / 2;
+			y[1] = height - 1;
+			y[0] = y[1] - h1 - over;
+			y[2] = 14 + 1;
+			y[3] = y[2] + h2 + over;
 		}
 
 		this->FindWindowPlacementAndResize(width, height);
@@ -492,8 +491,8 @@ public:
 			DrawCompanyManagerFace(c->face, c->colour, 2, 16);
 		}
 
-		DrawStringMultiCenter(this->width - 120, y[1], this->message_2, this->width - 2);
-		if (this->message_1 != INVALID_STRING_ID) DrawStringMultiCenter(this->width - 120, y[0], this->message_1, this->width - 2);
+		DrawStringMultiLine(1, this->width - 1, y[2], y[3] , this->message_2, SA_CENTER);
+		if (this->message_1 != INVALID_STRING_ID) DrawStringMultiLine(1, this->width - 1, y[0], y[1], this->message_1, SA_CENTER);
 
 		/* Switch back to the normal text ref. stack for NewGRF texts */
 		SwitchToNormalRefStack();
@@ -664,7 +663,7 @@ struct TooltipsWindow : public Window
 		for (uint arg = 0; arg < this->paramcount; arg++) {
 			SetDParam(arg, this->params[arg]);
 		}
-		DrawStringMultiCenter((this->width >> 1), (this->height >> 1) - 5, this->string_id, this->width - 2);
+		DrawStringMultiLine(1, this->width - 1, 0, this->height, this->string_id, SA_CENTER);
 	}
 
 	virtual void OnMouseLoop()
@@ -1279,7 +1278,7 @@ struct QueryWindow : public Window {
 		this->DrawWidgets();
 		CopyInDParam(0, this->params, lengthof(this->params));
 
-		DrawStringMultiCenter(this->width / 2, (this->height / 2) - 10, this->message, this->width - 2);
+		DrawStringMultiLine(1, this->width - 1, 14, 62, this->message, SA_CENTER);
 	}
 
 	virtual void OnClick(Point pt, int widget)
