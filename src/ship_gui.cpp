@@ -35,23 +35,24 @@ void CcBuildShip(bool success, TileIndex tile, uint32 p1, uint32 p2)
 }
 
 /**
- * Draw the details for the given vehicle at the position (x, y)
+ * Draw the details for the given vehicle at the given position
  *
- * @param v current vehicle
- * @param x The x coordinate
- * @param y The y coordinate
+ * @param v     current vehicle
+ * @param left  The left most coordinate to draw
+ * @param right The right most coordinate to draw
+ * @param y     The y coordinate
  */
-void DrawShipDetails(const Vehicle *v, int x, int y)
+void DrawShipDetails(const Vehicle *v, int left, int right, int y)
 {
 	SetDParam(0, v->engine_type);
 	SetDParam(1, v->build_year);
 	SetDParam(2, v->value);
-	DrawString(x, y, STR_9816_BUILT_VALUE, TC_FROMSTRING);
+	DrawString(left, right, y, STR_9816_BUILT_VALUE, TC_FROMSTRING);
 
 	SetDParam(0, v->cargo_type);
 	SetDParam(1, v->cargo_cap);
 	SetDParam(2, GetCargoSubtypeText(v));
-	DrawString(x, y + 10, STR_9817_CAPACITY, TC_FROMSTRING);
+	DrawString(left, right, y + 10, STR_9817_CAPACITY, TC_FROMSTRING);
 
 	StringID str = STR_8812_EMPTY;
 	if (!v->cargo.Empty()) {
@@ -60,9 +61,9 @@ void DrawShipDetails(const Vehicle *v, int x, int y)
 		SetDParam(2, v->cargo.Source());
 		str = STR_8813_FROM;
 	}
-	DrawString(x, y + 21, str, TC_FROMSTRING);
+	DrawString(left, right, y + 21, str, TC_FROMSTRING);
 
 	/* Draw Transfer credits text */
 	SetDParam(0, v->cargo.FeederShare());
-	DrawString(x, y + 33, STR_FEEDER_CARGO_VALUE, TC_FROMSTRING);
+	DrawString(left, right, y + 33, STR_FEEDER_CARGO_VALUE, TC_FROMSTRING);
 }

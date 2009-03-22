@@ -14,7 +14,15 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-void DrawRoadVehDetails(const Vehicle *v, int x, int y)
+/**
+ * Draw the details for the given vehicle at the given position
+ *
+ * @param v     current vehicle
+ * @param left  The left most coordinate to draw
+ * @param right The right most coordinate to draw
+ * @param y     The y coordinate
+ */
+void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 {
 	uint y_offset = RoadVehHasArticPart(v) ? 15 : 0;
 	StringID str;
@@ -23,7 +31,7 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 	SetDParam(0, v->engine_type);
 	SetDParam(1, v->build_year);
 	SetDParam(2, v->value);
-	DrawString(x, y + y_offset, STR_9011_BUILT_VALUE, TC_FROMSTRING);
+	DrawString(left, right, y + y_offset, STR_9011_BUILT_VALUE, TC_FROMSTRING);
 
 	if (RoadVehHasArticPart(v)) {
 		AcceptedCargo max_cargo;
@@ -65,7 +73,7 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 		}
 
 		SetDParamStr(0, capacity);
-		DrawString(x, 300, y + 10 + y_offset, STR_JUST_RAW_STRING, TC_BLUE);
+		DrawString(left, right, y + 10 + y_offset, STR_JUST_RAW_STRING, TC_BLUE);
 
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 			if (u->cargo_cap == 0) continue;
@@ -78,7 +86,7 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 				str = STR_8813_FROM;
 				feeder_share += u->cargo.FeederShare();
 			}
-			DrawString(x, y + 21 + y_offset, str, TC_FROMSTRING);
+			DrawString(left, right, y + 21 + y_offset, str, TC_FROMSTRING);
 
 			y_offset += 11;
 		}
@@ -88,7 +96,7 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 		SetDParam(0, v->cargo_type);
 		SetDParam(1, v->cargo_cap);
 		SetDParam(2, GetCargoSubtypeText(v));
-		DrawString(x, y + 10 + y_offset, STR_9012_CAPACITY, TC_FROMSTRING);
+		DrawString(left, right, y + 10 + y_offset, STR_9012_CAPACITY, TC_FROMSTRING);
 
 		str = STR_8812_EMPTY;
 		if (!v->cargo.Empty()) {
@@ -98,12 +106,12 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 			str = STR_8813_FROM;
 			feeder_share += v->cargo.FeederShare();
 		}
-		DrawString(x, y + 21 + y_offset, str, TC_FROMSTRING);
+		DrawString(left, right, y + 21 + y_offset, str, TC_FROMSTRING);
 	}
 
 	/* Draw Transfer credits text */
 	SetDParam(0, feeder_share);
-	DrawString(x, y + 33 + y_offset, STR_FEEDER_CARGO_VALUE, TC_FROMSTRING);
+	DrawString(left, right, y + 33 + y_offset, STR_FEEDER_CARGO_VALUE, TC_FROMSTRING);
 }
 
 

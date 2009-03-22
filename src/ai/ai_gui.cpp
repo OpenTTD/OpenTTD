@@ -95,10 +95,10 @@ struct AIListWindow : public Window {
 		/* Some info about the currently selected AI. */
 		if (selected_info != NULL) {
 			int y = this->widget[AIL_WIDGET_INFO_BG].top + 6;
-			int x = DrawString(4, y, STR_AI_AUTHOR, TC_BLACK);
+			int x = DrawString(this->widget[AIL_WIDGET_LIST].left + 4, this->widget[AIL_WIDGET_LIST].right - 4, y, STR_AI_AUTHOR, TC_BLACK);
 			DrawString(x + 5, this->widget[AIL_WIDGET_LIST].right - 4, y, selected_info->GetAuthor(), TC_BLACK);
 			y += 13;
-			x = DrawString(4, y, STR_AI_VERSION, TC_BLACK);
+			x = DrawString(this->widget[AIL_WIDGET_LIST].left + 4, this->widget[AIL_WIDGET_LIST].right - 4, y, STR_AI_VERSION, TC_BLACK);
 			static char buf[8];
 			sprintf(buf, "%d", selected_info->GetVersion());
 			DrawString(x + 5, this->widget[AIL_WIDGET_LIST].right - 4, y, buf, TC_BLACK);
@@ -461,7 +461,7 @@ struct AIConfigWindow : public Window {
 		byte max_competitors = _settings_newgame.difficulty.max_no_competitors;
 		DrawArrowButtons(10, 18, COLOUR_YELLOW, this->clicked_button ? 1 + !!this->clicked_increase : 0, max_competitors > 0, max_competitors < MAX_COMPANIES - 1);
 		SetDParam(0, _settings_newgame.difficulty.max_no_competitors);
-		DrawString(36, 18, STR_6805_MAXIMUM_NO_COMPETITORS, TC_FROMSTRING);
+		DrawString(36, this->widget[AIC_WIDGET_BACKGROUND].right, 18, STR_6805_MAXIMUM_NO_COMPETITORS, TC_FROMSTRING);
 
 		int y = this->widget[AIC_WIDGET_LIST].top;
 		for (int i = this->vscroll.pos; i < this->vscroll.pos + this->vscroll.cap && i < MAX_COMPANIES; i++) {

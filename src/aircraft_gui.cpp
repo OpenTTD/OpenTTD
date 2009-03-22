@@ -15,13 +15,14 @@
 #include "table/strings.h"
 
 /**
- * Draw the details for the given vehicle at the position (x, y)
+ * Draw the details for the given vehicle at the given position
  *
- * @param v current vehicle
- * @param x The x coordinate
- * @param y The y coordinate
+ * @param v     current vehicle
+ * @param left  The left most coordinate to draw
+ * @param right The right most coordinate to draw
+ * @param y     The y coordinate
  */
-void DrawAircraftDetails(const Vehicle *v, int x, int y)
+void DrawAircraftDetails(const Vehicle *v, int left, int right, int y)
 {
 	int y_offset = (v->Next()->cargo_cap != 0) ? -11 : 0;
 	Money feeder_share = 0;
@@ -31,14 +32,14 @@ void DrawAircraftDetails(const Vehicle *v, int x, int y)
 			SetDParam(0, u->engine_type);
 			SetDParam(1, u->build_year);
 			SetDParam(2, u->value);
-			DrawString(x, y, STR_A011_BUILT_VALUE, TC_FROMSTRING);
+			DrawString(left, right, y, STR_A011_BUILT_VALUE, TC_FROMSTRING);
 
 			SetDParam(0, u->cargo_type);
 			SetDParam(1, u->cargo_cap);
 			SetDParam(2, u->Next()->cargo_type);
 			SetDParam(3, u->Next()->cargo_cap);
 			SetDParam(4, GetCargoSubtypeText(u));
-			DrawString(x, y + 10, (u->Next()->cargo_cap != 0) ? STR_A019_CAPACITY : STR_A01A_CAPACITY, TC_FROMSTRING);
+			DrawString(left, right, y + 10, (u->Next()->cargo_cap != 0) ? STR_A019_CAPACITY : STR_A01A_CAPACITY, TC_FROMSTRING);
 		}
 
 		if (u->cargo_cap != 0) {
@@ -50,14 +51,14 @@ void DrawAircraftDetails(const Vehicle *v, int x, int y)
 				SetDParam(0, u->cargo_type);
 				SetDParam(1, cargo_count);
 				SetDParam(2, u->cargo.Source());
-				DrawString(x, y + 21 + y_offset, STR_8813_FROM, TC_FROMSTRING);
+				DrawString(left, right, y + 21 + y_offset, STR_8813_FROM, TC_FROMSTRING);
 				feeder_share += u->cargo.FeederShare();
 			}
 		}
 	}
 
 	SetDParam(0, feeder_share);
-	DrawString(x, y + 33 + y_offset, STR_FEEDER_CARGO_VALUE, TC_FROMSTRING);
+	DrawString(left, right, y + 33 + y_offset, STR_FEEDER_CARGO_VALUE, TC_FROMSTRING);
 }
 
 

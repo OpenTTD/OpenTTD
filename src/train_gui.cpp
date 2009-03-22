@@ -110,7 +110,15 @@ void DrawTrainImage(const Vehicle *v, int x, int y, VehicleID selection, int cou
 	_cur_dpi = old_dpi;
 }
 
-static void TrainDetailsCargoTab(const Vehicle *v, int x, int y)
+/**
+ * Draw the details cargo tab for the given vehicle at the given position
+ *
+ * @param v     current vehicle
+ * @param left  The left most coordinate to draw
+ * @param right The right most coordinate to draw
+ * @param y     The y coordinate
+ */
+static void TrainDetailsCargoTab(const Vehicle *v, int left, int right, int y)
 {
 	if (v->cargo_cap != 0) {
 		StringID str = STR_8812_EMPTY;
@@ -122,32 +130,48 @@ static void TrainDetailsCargoTab(const Vehicle *v, int x, int y)
 			SetDParam(3, _settings_game.vehicle.freight_trains);
 			str = FreightWagonMult(v->cargo_type) > 1 ? STR_FROM_MULT : STR_8813_FROM;
 		}
-		DrawString(x, y, str, TC_FROMSTRING);
+		DrawString(left, right, y, str, TC_FROMSTRING);
 	}
 }
 
-static void TrainDetailsInfoTab(const Vehicle *v, int x, int y)
+/**
+ * Draw the details info tab for the given vehicle at the given position
+ *
+ * @param v     current vehicle
+ * @param left  The left most coordinate to draw
+ * @param right The right most coordinate to draw
+ * @param y     The y coordinate
+ */
+static void TrainDetailsInfoTab(const Vehicle *v, int left, int right, int y)
 {
 	if (RailVehInfo(v->engine_type)->railveh_type == RAILVEH_WAGON) {
 		SetDParam(0, v->engine_type);
 		SetDParam(1, v->value);
-		DrawString(x, y, STR_882D_VALUE, TC_BLACK);
+		DrawString(left, right, y, STR_882D_VALUE, TC_BLACK);
 	} else {
 		SetDParam(0, v->engine_type);
 		SetDParam(1, v->build_year);
 		SetDParam(2, v->value);
-		DrawString(x, y, STR_882C_BUILT_VALUE, TC_BLACK);
+		DrawString(left, right, y, STR_882C_BUILT_VALUE, TC_BLACK);
 	}
 }
 
-static void TrainDetailsCapacityTab(const Vehicle *v, int x, int y)
+/**
+ * Draw the details capacity tab for the given vehicle at the given position
+ *
+ * @param v     current vehicle
+ * @param left  The left most coordinate to draw
+ * @param right The right most coordinate to draw
+ * @param y     The y coordinate
+ */
+static void TrainDetailsCapacityTab(const Vehicle *v, int left, int right, int y)
 {
 	if (v->cargo_cap != 0) {
 		SetDParam(0, v->cargo_type);
 		SetDParam(1, v->cargo_cap);
 		SetDParam(2, GetCargoSubtypeText(v));
 		SetDParam(3, _settings_game.vehicle.freight_trains);
-		DrawString(x, y, FreightWagonMult(v->cargo_type) > 1 ? STR_CAPACITY_MULT : STR_013F_CAPACITY, TC_FROMSTRING);
+		DrawString(left, right, y, FreightWagonMult(v->cargo_type) > 1 ? STR_CAPACITY_MULT : STR_013F_CAPACITY, TC_FROMSTRING);
 	}
 }
 
@@ -182,12 +206,20 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, byte det_tab)
 	return num;
 }
 
-void DrawTrainDetails(const Vehicle *v, int x, int y, int vscroll_pos, uint16 vscroll_cap, byte det_tab)
+/**
+ * Draw the details for the given vehicle at the given position
+ *
+ * @param v     current vehicle
+ * @param left  The left most coordinate to draw
+ * @param right The right most coordinate to draw
+ * @param y     The y coordinate
+ */
+void DrawTrainDetails(const Vehicle *v, int left, int right, int y, int vscroll_pos, uint16 vscroll_cap, byte det_tab)
 {
 	/* draw the first 3 details tabs */
 	if (det_tab != 3) {
 		const Vehicle *u = v;
-		x = 1;
+		int x = 1;
 		for (;;) {
 			if (--vscroll_pos < 0 && vscroll_pos >= -vscroll_cap) {
 				int dx = 0;
@@ -204,14 +236,14 @@ void DrawTrainDetails(const Vehicle *v, int x, int y, int vscroll_pos, uint16 vs
 				int py = y + 2;
 				switch (det_tab) {
 					default: NOT_REACHED();
-					case 0: TrainDetailsCargoTab(   v, px, py); break;
+					case 0: TrainDetailsCargoTab(   v, px, right, py); break;
 					case 1:
 						/* Only show name and value for the 'real' part */
 						if (!IsArticulatedPart(v)) {
-							TrainDetailsInfoTab(v, px, py);
+							TrainDetailsInfoTab(v, px, right, py);
 						}
 						break;
-					case 2: TrainDetailsCapacityTab(v, px, py); break;
+					case 2: TrainDetailsCapacityTab(v, px, right, py); break;
 				}
 				y += 14;
 
@@ -239,7 +271,7 @@ void DrawTrainDetails(const Vehicle *v, int x, int y, int vscroll_pos, uint16 vs
 		}
 
 		/* draw total cargo tab */
-		DrawString(x, y + 2, STR_TOTAL_CAPACITY_TEXT, TC_FROMSTRING);
+		DrawString(left, right, y + 2, STR_TOTAL_CAPACITY_TEXT, TC_FROMSTRING);
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (max_cargo[i] > 0 && --vscroll_pos < 0 && vscroll_pos > -vscroll_cap) {
 				y += 14;
@@ -248,10 +280,10 @@ void DrawTrainDetails(const Vehicle *v, int x, int y, int vscroll_pos, uint16 vs
 				SetDParam(2, i);            // {SHORTCARGO} #1
 				SetDParam(3, max_cargo[i]); // {SHORTCARGO} #2
 				SetDParam(4, _settings_game.vehicle.freight_trains);
-				DrawString(x, y + 2, FreightWagonMult(i) > 1 ? STR_TOTAL_CAPACITY_MULT : STR_TOTAL_CAPACITY, TC_FROMSTRING);
+				DrawString(left, right, y + 2, FreightWagonMult(i) > 1 ? STR_TOTAL_CAPACITY_MULT : STR_TOTAL_CAPACITY, TC_FROMSTRING);
 			}
 		}
 		SetDParam(0, feeder_share);
-		DrawString(x, y + 15, STR_FEEDER_CARGO_VALUE, TC_FROMSTRING);
+		DrawString(left, right, y + 15, STR_FEEDER_CARGO_VALUE, TC_FROMSTRING);
 	}
 }

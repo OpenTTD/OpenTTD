@@ -1275,10 +1275,10 @@ static const StringID _vehicle_translation_table[][4] = {
 
 
 extern int GetTrainDetailsWndVScroll(VehicleID veh_id, byte det_tab);
-extern void DrawTrainDetails(const Vehicle *v, int x, int y, int vscroll_pos, uint16 vscroll_cap, byte det_tab);
-extern void DrawRoadVehDetails(const Vehicle *v, int x, int y);
-extern void DrawShipDetails(const Vehicle *v, int x, int y);
-extern void DrawAircraftDetails(const Vehicle *v, int x, int y);
+extern void DrawTrainDetails(const Vehicle *v, int left, int right, int y, int vscroll_pos, uint16 vscroll_cap, byte det_tab);
+extern void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y);
+extern void DrawShipDetails(const Vehicle *v, int left, int right, int y);
+extern void DrawAircraftDetails(const Vehicle *v, int left, int right, int y);
 
 struct VehicleDetailsWindow : Window {
 	int tab;
@@ -1359,22 +1359,23 @@ struct VehicleDetailsWindow : Window {
 	}
 
 	/**
-	 * Draw the details for the given vehicle at the position (x, y) of the Details windows
+	 * Draw the details for the given vehicle at the position of the Details windows
 	 *
-	 * @param v current vehicle
-	 * @param x The x coordinate
-	 * @param y The y coordinate
+	 * @param v     current vehicle
+	 * @param left  The left most coordinate to draw
+	 * @param right The right most coordinate to draw
+	 * @param y     The y coordinate
 	 * @param vscroll_pos (train only)
 	 * @param vscroll_cap (train only)
 	 * @param det_tab (train only)
 	 */
-	static void DrawVehicleDetails(const Vehicle *v, int x, int y, int vscroll_pos, uint vscroll_cap, byte det_tab)
+	static void DrawVehicleDetails(const Vehicle *v, int left, int right, int y, int vscroll_pos, uint vscroll_cap, byte det_tab)
 	{
 		switch (v->type) {
-			case VEH_TRAIN:    DrawTrainDetails(v, x, y, vscroll_pos, vscroll_cap, det_tab);  break;
-			case VEH_ROAD:     DrawRoadVehDetails(v, x, y);  break;
-			case VEH_SHIP:     DrawShipDetails(v, x, y);     break;
-			case VEH_AIRCRAFT: DrawAircraftDetails(v, x, y); break;
+			case VEH_TRAIN:    DrawTrainDetails(v, left, right, y, vscroll_pos, vscroll_cap, det_tab);  break;
+			case VEH_ROAD:     DrawRoadVehDetails(v, left, right, y);  break;
+			case VEH_SHIP:     DrawShipDetails(v, left, right, y);     break;
+			case VEH_AIRCRAFT: DrawAircraftDetails(v, left, right, y); break;
 			default: NOT_REACHED();
 		}
 	}
@@ -1457,14 +1458,14 @@ struct VehicleDetailsWindow : Window {
 
 		switch (v->type) {
 			case VEH_TRAIN:
-				DrawVehicleDetails(v, 2, 57, this->vscroll.pos, this->vscroll.cap, det_tab);
+				DrawVehicleDetails(v, 2, this->width - 2, 57, this->vscroll.pos, this->vscroll.cap, det_tab);
 				break;
 
 			case VEH_ROAD:
 			case VEH_SHIP:
 			case VEH_AIRCRAFT:
 				DrawVehicleImage(v, 3, 57, INVALID_VEHICLE, 0, 0);
-				DrawVehicleDetails(v, 75, 57, this->vscroll.pos, this->vscroll.cap, det_tab);
+				DrawVehicleDetails(v, 75, this->width - 2, 57, this->vscroll.pos, this->vscroll.cap, det_tab);
 				break;
 
 			default: NOT_REACHED();
