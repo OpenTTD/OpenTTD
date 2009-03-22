@@ -239,7 +239,7 @@ public:
 			SetDParam(0, i);
 			SetDParam(2, i);
 			SetDParam(1, SPECSTR_SONGNAME);
-			DrawString(4, 23 + (i - 1) * 6, (i < 10) ? STR_01EC_0 : STR_01ED, TC_FROMSTRING);
+			DrawString(this->widget[MTSW_LIST_RIGHT].left + 2, this->widget[MTSW_LIST_RIGHT].right - 2, 23 + (i - 1) * 6, (i < 10) ? STR_01EC_0 : STR_01ED, TC_FROMSTRING);
 		}
 
 		for (i = 0; i != 6; i++) {
@@ -256,7 +256,7 @@ public:
 			SetDParam(0, i);
 			SetDParam(1, SPECSTR_SONGNAME);
 			SetDParam(2, i);
-			DrawString(252, y, (i < 10) ? STR_01EC_0 : STR_01ED, TC_FROMSTRING);
+			DrawString(this->widget[MTSW_LIST_LEFT].left + 2, this->widget[MTSW_LIST_LEFT].right - 2, y, (i < 10) ? STR_01EC_0 : STR_01ED, TC_FROMSTRING);
 			y += 6;
 		}
 	}
@@ -416,7 +416,7 @@ public:
 			SetDParam(0, _music_wnd_cursong);
 			str = (_music_wnd_cursong < 10) ? STR_01E4_0 : STR_01E5;
 		}
-		DrawString(62, 46, str, TC_FROMSTRING);
+		DrawString(this->widget[MW_INFO].left + 3, this->widget[MW_INFO].right - 3, 46, str, TC_FROMSTRING);
 
 		str = STR_01E6;
 		if (_song_is_active != 0 && _music_wnd_cursong != 0) {
@@ -426,8 +426,7 @@ public:
 		}
 		DrawString(this->widget[MW_INFO].left, this->widget[MW_INFO].right, 46, str, TC_FROMSTRING, SA_CENTER);
 
-
-		DrawString(60, 38, STR_01E8_TRACK_XTITLE, TC_FROMSTRING);
+		DrawString(this->widget[MW_INFO].left + 1, this->widget[MW_INFO].right, 38, STR_01E8_TRACK_XTITLE, TC_FROMSTRING);
 
 		for (i = 0; i != 6; i++) {
 			DrawString(this->widget[i + MW_ALL].left, this->widget[i + MW_ALL].right, 59, STR_01D5_ALL + i, msf.playlist == i ? TC_WHITE : TC_BLACK, SA_CENTER);

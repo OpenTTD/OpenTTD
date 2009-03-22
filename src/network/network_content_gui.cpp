@@ -525,7 +525,7 @@ public:
 
 		/* Draw the total download size */
 		SetDParam(0, filesize);
-		DrawString(this->widget[NCLWW_DETAILS].left + 5, this->widget[NCLWW_DETAILS].bottom - 12, STR_CONTENT_TOTAL_DOWNLOAD_SIZE, TC_BLACK);
+		DrawString(this->widget[NCLWW_DETAILS].left + 5, this->widget[NCLWW_DETAILS].right - 5, this->widget[NCLWW_DETAILS].bottom - 12, STR_CONTENT_TOTAL_DOWNLOAD_SIZE, TC_BLACK);
 	}
 
 	virtual void OnDoubleClick(Point pt, int widget)

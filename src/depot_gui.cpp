@@ -297,7 +297,7 @@ struct DepotWindow : Window {
 		DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, x + diff_x, y + diff_y);
 
 		SetDParam(0, v->unitnumber);
-		DrawString(x, y + 2, (uint16)(v->max_age - DAYS_IN_LEAP_YEAR) >= v->age ? STR_00E2 : STR_00E3, TC_FROMSTRING);
+		DrawString(x, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 2, (uint16)(v->max_age - DAYS_IN_LEAP_YEAR) >= v->age ? STR_00E2 : STR_00E3, TC_FROMSTRING);
 	}
 
 	void DrawDepotWindow(Window *w)
@@ -369,7 +369,7 @@ struct DepotWindow : Window {
 			const Vehicle *u;
 
 			DrawTrainImage(v, x + 50, y, this->sel, this->hscroll.cap - 29, 0);
-			DrawString(x, y + 2, STR_8816, TC_FROMSTRING);
+			DrawString(x, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 2, STR_8816, TC_FROMSTRING);
 
 			/* Draw the train counter */
 			i = 0;

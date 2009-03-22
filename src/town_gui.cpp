@@ -109,7 +109,7 @@ public:
 
 		int y = this->widget[TWA_RATING_INFO].top + 1;
 
-		DrawString(2, y, STR_2023_TRANSPORT_COMPANY_RATINGS, TC_FROMSTRING);
+		DrawString(this->widget[TWA_RATING_INFO].left + 2, this->widget[TWA_RATING_INFO].right - 2, y, STR_2023_TRANSPORT_COMPANY_RATINGS, TC_FROMSTRING);
 		y += 10;
 
 		/* Draw list of companies */
@@ -137,7 +137,7 @@ public:
 					DrawSprite(SPR_BLOT, PALETTE_TO_RED, 18, y);
 				}
 
-				DrawString(28, y, STR_2024, TC_FROMSTRING);
+				DrawString(this->widget[TWA_RATING_INFO].left + 28, this->widget[TWA_RATING_INFO].right - 2, y, STR_2024, TC_FROMSTRING);
 				y += 10;
 			}
 		}
@@ -153,7 +153,7 @@ public:
 		int pos = this->vscroll.pos;
 
 		if (--pos < 0) {
-			DrawString(2, y, STR_2045_ACTIONS_AVAILABLE, TC_FROMSTRING);
+			DrawString(this->widget[TWA_COMMAND_LIST].left + 2, this->widget[TWA_COMMAND_LIST].right - 2, y, STR_2045_ACTIONS_AVAILABLE, TC_FROMSTRING);
 			y += 10;
 		}
 
@@ -161,7 +161,7 @@ public:
 			if (pos <= -5) break; ///< Draw only the 5 fitting lines
 
 			if ((buttons & 1) && --pos < 0) {
-				DrawString(3, y, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i, TC_ORANGE);
+				DrawString(this->widget[TWA_COMMAND_LIST].left + 3, this->widget[TWA_COMMAND_LIST].right - 2, y, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i, TC_ORANGE);
 				y += 10;
 			}
 		}
@@ -277,15 +277,15 @@ public:
 
 		SetDParam(0, this->town->population);
 		SetDParam(1, this->town->num_houses);
-		DrawString(2, y, STR_2006_POPULATION, TC_FROMSTRING);
+		DrawString(2, this->width - 2, y, STR_2006_POPULATION, TC_FROMSTRING);
 
 		SetDParam(0, this->town->act_pass);
 		SetDParam(1, this->town->max_pass);
-		DrawString(2, y += 10, STR_200D_PASSENGERS_LAST_MONTH_MAX, TC_FROMSTRING);
+		DrawString(2, this->width - 2, y += 10, STR_200D_PASSENGERS_LAST_MONTH_MAX, TC_FROMSTRING);
 
 		SetDParam(0, this->town->act_mail);
 		SetDParam(1, this->town->max_mail);
-		DrawString(2, y += 10, STR_200E_MAIL_LAST_MONTH_MAX, TC_FROMSTRING);
+		DrawString(2, this->width - 2, y += 10, STR_200E_MAIL_LAST_MONTH_MAX, TC_FROMSTRING);
 
 		uint cargo_needed_for_growth = 0;
 		switch (_settings_game.game_creation.landscape) {
@@ -301,7 +301,7 @@ public:
 		}
 
 		if (cargo_needed_for_growth > 0) {
-			DrawString(2, y += 10, STR_CARGO_FOR_TOWNGROWTH, TC_FROMSTRING);
+			DrawString(2, this->width - 2, y += 10, STR_CARGO_FOR_TOWNGROWTH, TC_FROMSTRING);
 
 			CargoID first_food_cargo = CT_INVALID;
 			StringID food_name = STR_001E_FOOD;
@@ -322,20 +322,20 @@ public:
 			if (first_food_cargo != CT_INVALID && this->town->act_food > 0) {
 				SetDParam(0, first_food_cargo);
 				SetDParam(1, this->town->act_food);
-				DrawString(2, y += 10, STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH, TC_FROMSTRING);
+				DrawString(2, this->width - 2, y += 10, STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH, TC_FROMSTRING);
 			} else {
 				SetDParam(0, food_name);
-				DrawString(2, y += 10, STR_CARGO_FOR_TOWNGROWTH_REQUIRED, TC_FROMSTRING);
+				DrawString(2, this->width - 2, y += 10, STR_CARGO_FOR_TOWNGROWTH_REQUIRED, TC_FROMSTRING);
 			}
 
 			if (cargo_needed_for_growth > 1) {
 				if (first_water_cargo != CT_INVALID && this->town->act_water > 0) {
 					SetDParam(0, first_water_cargo);
 					SetDParam(1, this->town->act_water);
-					DrawString(2, y += 10, STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH, TC_FROMSTRING);
+					DrawString(2, this->width - 2, y += 10, STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH, TC_FROMSTRING);
 				} else {
 					SetDParam(0, water_name);
-					DrawString(2, y += 10, STR_CARGO_FOR_TOWNGROWTH_REQUIRED, TC_FROMSTRING);
+					DrawString(2, this->width - 2, y += 10, STR_CARGO_FOR_TOWNGROWTH_REQUIRED, TC_FROMSTRING);
 				}
 			}
 		}
@@ -346,7 +346,7 @@ public:
 		if (_settings_game.economy.station_noise_level) {
 			SetDParam(0, this->town->noise_reached);
 			SetDParam(1, this->town->MaxTownNoise());
-			DrawString(2, y += 10, STR_NOISE_IN_TOWN, TC_FROMSTRING);
+			DrawString(2, this->width - 2, y += 10, STR_NOISE_IN_TOWN, TC_FROMSTRING);
 		}
 	}
 
@@ -566,7 +566,7 @@ public:
 
 				SetDParam(0, t->index);
 				SetDParam(1, t->population);
-				DrawString(2, y, STR_2057, TC_FROMSTRING);
+				DrawString(2, this->width - 2, y, STR_2057, TC_FROMSTRING);
 
 				y += 10;
 				i++;
@@ -574,7 +574,7 @@ public:
 			}
 
 			SetDParam(0, GetWorldPopulation());
-			DrawString(3, this->height - 12 + 2, STR_TOWN_POPULATION, TC_FROMSTRING);
+			DrawString(3, this->width - 3, this->height - 12 + 2, STR_TOWN_POPULATION, TC_FROMSTRING);
 		}
 	}
 

@@ -170,7 +170,7 @@ public:
 			SetDParam(0, b->material);
 
 			DrawSprite(b->sprite, b->pal, 3, y);
-			DrawString(44, y, STR_500D, TC_FROMSTRING);
+			DrawString(44, this->width, y, STR_500D, TC_FROMSTRING);
 			y += this->resize.step_height;
 
 		}

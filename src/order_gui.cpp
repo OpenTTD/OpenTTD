@@ -833,7 +833,7 @@ public:
 
 		if (i - this->vscroll.pos < this->vscroll.cap) {
 			str = shared_orders ? STR_END_OF_SHARED_ORDERS : STR_882A_END_OF_ORDERS;
-			DrawString(2, y, str, (i == this->selected_order) ? TC_WHITE : TC_BLACK);
+			DrawString(this->widget[ORDER_WIDGET_ORDER_LIST].left + 2, this->widget[ORDER_WIDGET_ORDER_LIST].right - 2, y, str, (i == this->selected_order) ? TC_WHITE : TC_BLACK);
 		}
 	}
 

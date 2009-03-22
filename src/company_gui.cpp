@@ -99,10 +99,10 @@ static void DrawCompanyEconomyStats(const Company *c, bool small)
 			ExpensesType et = _expenses_list_types[type].et[i];
 			if (et == INVALID_EXPENSES) {
 				y += 2;
-				DrawString(0, 111, y, STR_7020_TOTAL, TC_FROMSTRING, SA_RIGHT);
+				DrawString(2, 111, y, STR_7020_TOTAL, TC_FROMSTRING, SA_RIGHT);
 				y += 20;
 			} else {
-				DrawString(2, y, STR_7011_CONSTRUCTION + et, TC_FROMSTRING);
+				DrawString(2, 111, y, STR_7011_CONSTRUCTION + et, TC_FROMSTRING);
 				y += 10;
 			}
 		}
@@ -165,18 +165,18 @@ static void DrawCompanyEconomyStats(const Company *c, bool small)
 
 		/* draw max loan aligned to loan below (y += 10) */
 		SetDParam(0, _economy.max_loan);
-		DrawString(202, y + 10, STR_MAX_LOAN, TC_FROMSTRING);
+		DrawString(202, 406, y + 10, STR_MAX_LOAN, TC_FROMSTRING);
 	} else {
 		y = 15;
 	}
 
-	DrawString(2, y, STR_7026_BANK_BALANCE, TC_FROMSTRING);
+	DrawString(2, 182, y, STR_7026_BANK_BALANCE, TC_FROMSTRING);
 	SetDParam(0, c->money);
 	DrawString(182 - 75, 182, y, STR_7028, TC_FROMSTRING, SA_RIGHT);
 
 	y += 10;
 
-	DrawString(2, y, STR_7027_LOAN, TC_FROMSTRING);
+	DrawString(2, 182, y, STR_7027_LOAN, TC_FROMSTRING);
 	SetDParam(0, c->current_loan);
 	DrawString(182 - 75, 182, y, STR_7028, TC_FROMSTRING, SA_RIGHT);
 
@@ -201,8 +201,8 @@ static const Widget _company_finances_widgets[] = {
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   379,       0,      13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   380,   394,       0,      13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
 {  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   395,   406,       0,      13, 0x0,                    STR_STICKY_BUTTON},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   406,      14, 13 + 10, 0x0,    STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   406, 14 + 10, 47 + 10, 0x0, STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   406,      14, 13 + 10, 0x0,                    STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   406, 14 + 10, 47 + 10, 0x0,                    STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   202, 48 + 10, 59 + 10, STR_7029_BORROW,        STR_7035_INCREASE_SIZE_OF_LOAN},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   203,   406, 48 + 10, 59 + 10, STR_702A_REPAY,         STR_7036_REPAY_PART_OF_LOAN},
 {   WIDGETS_END},
@@ -496,14 +496,14 @@ public:
 					DrawSprite(c->livery[scheme].in_use ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, 2, y);
 				}
 
-				DrawString(15, y, STR_LIVERY_DEFAULT + scheme, sel ? TC_WHITE : TC_BLACK);
+				DrawString(15, 165, y, STR_LIVERY_DEFAULT + scheme, sel ? TC_WHITE : TC_BLACK);
 
 				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(c->livery[scheme].colour1), 152, y);
-				DrawString(165, y, STR_00D1_DARK_BLUE + c->livery[scheme].colour1, sel ? TC_WHITE : TC_GOLD);
+				DrawString(165, 290, y, STR_00D1_DARK_BLUE + c->livery[scheme].colour1, sel ? TC_WHITE : TC_GOLD);
 
 				if (!this->IsWidgetHidden(SCLW_WIDGET_SEC_COL_DROPDOWN)) {
 					DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(c->livery[scheme].colour2), 277, y);
-					DrawString(290, y, STR_00D1_DARK_BLUE + c->livery[scheme].colour2, sel ? TC_WHITE : TC_GOLD);
+					DrawString(290, this->width, y, STR_00D1_DARK_BLUE + c->livery[scheme].colour2, sel ? TC_WHITE : TC_GOLD);
 				}
 
 				y += 14;
@@ -1164,7 +1164,7 @@ static const Widget _company_widgets[] = {
  * Draws text "Vehicles:" and number of all vehicle types, or "(none)"
  * @param company ID of company to print statistics of
  */
-static void DrawCompanyVehiclesAmount(CompanyID company)
+static void DrawCompanyVehiclesAmount(CompanyID company, int right)
 {
 	const int x = 110;
 	int y = 63;
@@ -1174,7 +1174,7 @@ static void DrawCompanyVehiclesAmount(CompanyID company)
 	uint air   = 0;
 	uint ship  = 0;
 
-	DrawString(x, y, STR_7039_VEHICLES, TC_FROMSTRING);
+	DrawString(x, right, y, STR_7039_VEHICLES, TC_FROMSTRING);
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->owner == company) {
@@ -1189,29 +1189,29 @@ static void DrawCompanyVehiclesAmount(CompanyID company)
 	}
 
 	if (train + road + air + ship == 0) {
-		DrawString(x + 70, y, STR_7042_NONE, TC_FROMSTRING);
+		DrawString(x + 70, right, y, STR_7042_NONE, TC_FROMSTRING);
 	} else {
 		if (train != 0) {
 			SetDParam(0, train);
-			DrawString(x + 70, y, STR_TRAINS, TC_FROMSTRING);
+			DrawString(x + 70, right, y, STR_TRAINS, TC_FROMSTRING);
 			y += 10;
 		}
 
 		if (road != 0) {
 			SetDParam(0, road);
-			DrawString(x + 70, y, STR_ROAD_VEHICLES, TC_FROMSTRING);
+			DrawString(x + 70, right, y, STR_ROAD_VEHICLES, TC_FROMSTRING);
 			y += 10;
 		}
 
 		if (air != 0) {
 			SetDParam(0, air);
-			DrawString(x + 70, y, STR_AIRCRAFT, TC_FROMSTRING);
+			DrawString(x + 70, right, y, STR_AIRCRAFT, TC_FROMSTRING);
 			y += 10;
 		}
 
 		if (ship != 0) {
 			SetDParam(0, ship);
-			DrawString(x + 70, y, STR_SHIPS, TC_FROMSTRING);
+			DrawString(x + 70, right, y, STR_SHIPS, TC_FROMSTRING);
 		}
 	}
 }
@@ -1240,7 +1240,7 @@ static void DrawCompanyOwnerText(const Company *c)
 			SetDParam(0, amt * 25);
 			SetDParam(1, c2->index);
 
-			DrawString(120, (num++) * height + 116, STR_707D_OWNED_BY, TC_FROMSTRING);
+			DrawString(120, 359, (num++) * height + 116, STR_707D_OWNED_BY, TC_FROMSTRING);
 		}
 	}
 }
@@ -1316,19 +1316,19 @@ struct CompanyWindow : Window
 
 		/* "Inaugurated:" */
 		SetDParam(0, c->inaugurated_year);
-		DrawString(110, 23, STR_7038_INAUGURATED, TC_FROMSTRING);
+		DrawString(110, this->width, 23, STR_7038_INAUGURATED, TC_FROMSTRING);
 
 		/* "Colour scheme:" */
-		DrawString(110, 43, STR_7006_COLOUR_SCHEME, TC_FROMSTRING);
+		DrawString(110, this->width, 43, STR_7006_COLOUR_SCHEME, TC_FROMSTRING);
 		/* Draw company-colour bus */
 		DrawSprite(SPR_VEH_BUS_SW_VIEW, COMPANY_SPRITE_COLOUR(c->index), 215, 44);
 
 		/* "Vehicles:" */
-		DrawCompanyVehiclesAmount((CompanyID)this->window_number);
+		DrawCompanyVehiclesAmount((CompanyID)this->window_number, this->width);
 
 		/* "Company value:" */
 		SetDParam(0, CalculateCompanyValue(c));
-		DrawString(110, 106, STR_7076_COMPANY_VALUE, TC_FROMSTRING);
+		DrawString(110, this->width, 106, STR_7076_COMPANY_VALUE, TC_FROMSTRING);
 
 		/* Shares list */
 		DrawCompanyOwnerText(c);

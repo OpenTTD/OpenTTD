@@ -1422,7 +1422,7 @@ static void DrawFiosTexts(uint maxw)
 	}
 
 	if (str != STR_4006_UNABLE_TO_READ_DRIVE) SetDParam(0, tot);
-	DrawString(2, 37, str, TC_FROMSTRING);
+	DrawString(2, 2 + maxw, 37, str, TC_FROMSTRING);
 	DrawString(2, 2 + maxw, 27, path, TC_BLACK);
 }
 
