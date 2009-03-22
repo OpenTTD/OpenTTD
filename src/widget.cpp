@@ -7,6 +7,7 @@
 #include "gfx_func.h"
 #include "window_gui.h"
 #include "debug.h"
+#include "strings_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -415,13 +416,23 @@ void Window::DrawWidgets() const
 			int c1 = _colour_gradient[wi->colour][3];
 			int c2 = _colour_gradient[wi->colour][7];
 
-			/* Line from upper left corner to start of text */
-			GfxFillRect(r.left, r.top + 4, r.left + 4, r.top + 4, c1);
-			GfxFillRect(r.left + 1, r.top + 5, r.left + 4, r.top + 5, c2);
+			if (_dynlang.text_dir == TD_LTR) {
+				/* Line from upper left corner to start of text */
+				GfxFillRect(r.left, r.top + 4, r.left + 4, r.top + 4, c1);
+				GfxFillRect(r.left + 1, r.top + 5, r.left + 4, r.top + 5, c2);
 
-			/* Line from end of text to upper right corner */
-			GfxFillRect(x2, r.top + 4, r.right - 1, r.top + 4, c1);
-			GfxFillRect(x2, r.top + 5, r.right - 2, r.top + 5, c2);
+				/* Line from end of text to upper right corner */
+				GfxFillRect(x2, r.top + 4, r.right - 1, r.top + 4, c1);
+				GfxFillRect(x2, r.top + 5, r.right - 2, r.top + 5, c2);
+			} else {
+				/* Line from upper left corner to start of text */
+				GfxFillRect(r.left, r.top + 4, x2, r.top + 4, c1);
+				GfxFillRect(r.left + 1, r.top + 5, x2, r.top + 5, c2);
+
+				/* Line from end of text to upper right corner */
+				GfxFillRect(r.right - 5, r.top + 4, r.right - 1, r.top + 4, c1);
+				GfxFillRect(r.right - 5, r.top + 5, r.right - 2, r.top + 5, c2);
+			}
 
 			/* Line from upper left corner to bottom left corner */
 			GfxFillRect(r.left, r.top + 5, r.left, r.bottom - 1, c1);
@@ -486,10 +497,17 @@ void Window::DrawWidgets() const
 			assert(r.bottom - r.top == 11); // ensure consistent size
 
 			StringID str = wi->data;
-			DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, wi->colour, FR_NONE);
-			DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, wi->colour, clicked ? FR_LOWERED : FR_NONE);
-			DrawString(r.right - (clicked ? 8 : 9), r.right, r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
-			if (str != STR_NULL) DrawString(r.left + 2, r.right - 14, r.top + 1, str, TC_BLACK);
+			if (_dynlang.text_dir == TD_LTR) {
+				DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, wi->colour, FR_NONE);
+				DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, wi->colour, clicked ? FR_LOWERED : FR_NONE);
+				DrawString(r.right - (clicked ? 8 : 9), r.right, r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
+				if (str != STR_NULL) DrawString(r.left + 2, r.right - 14, r.top + 1, str, TC_BLACK);
+			} else {
+				DrawFrameRect(r.left + 12, r.top, r.right, r.bottom, wi->colour, FR_NONE);
+				DrawFrameRect(r.left, r.top, r.left + 11, r.bottom, wi->colour, clicked ? FR_LOWERED : FR_NONE);
+				DrawString(r.left + 1, r.left + (clicked ? 10 : 11), r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
+				if (str != STR_NULL) DrawString(r.left + 14, r.right - 2, r.top + 1, str, TC_BLACK);
+			}
 			break;
 		}
 
@@ -497,10 +515,17 @@ void Window::DrawWidgets() const
 			assert(r.bottom - r.top == 11); // ensure consistent size
 
 			StringID str = wi->data;
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_LOWERED | FR_DARKENED);
-			DrawFrameRect(r.right - 11, r.top + 1, r.right - 1, r.bottom - 1, wi->colour, clicked ? FR_LOWERED : FR_NONE);
-			DrawString(r.right - (clicked ? 8 : 9), r.right, r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
-			if (str != STR_NULL) DrawString(r.left + 2, r.right - 13, r.top + 2, str, TC_BLACK);
+			if (_dynlang.text_dir == TD_LTR) {
+				DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_LOWERED | FR_DARKENED);
+				DrawFrameRect(r.right - 11, r.top + 1, r.right - 1, r.bottom - 1, wi->colour, clicked ? FR_LOWERED : FR_NONE);
+				DrawString(r.right - (clicked ? 8 : 9), r.right, r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
+				if (str != STR_NULL) DrawString(r.left + 2, r.right - 13, r.top + 2, str, TC_BLACK);
+			} else {
+				DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_LOWERED | FR_DARKENED);
+				DrawFrameRect(r.left + 1, r.top + 1, r.left + 11, r.bottom - 1, wi->colour, clicked ? FR_LOWERED : FR_NONE);
+				DrawString(r.left + 1, r.left + (clicked ? 10 : 11), r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
+				if (str != STR_NULL) DrawString(r.left + 14, r.right - 2, r.top + 2, str, TC_BLACK);
+			}
 			break;
 		}
 		}
