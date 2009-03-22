@@ -1457,8 +1457,13 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 		} else {
 			colour = TC_BLACK;
 		}
+
+		/* The maximum width of the string */
+		int w = GB(ss->width, 0, 15);
+		if (w == 0) w = UINT16_MAX;
+
 		DrawString(
-			UnScaleByZoom(ss->x, zoom), UnScaleByZoom(ss->y, zoom) - (ss->width & 0x8000 ? 2 : 0),
+			UnScaleByZoom(ss->x, zoom), UnScaleByZoom(ss->x, zoom) + w, UnScaleByZoom(ss->y, zoom) - (ss->width & 0x8000 ? 2 : 0),
 			ss->string, colour
 		);
 	}
