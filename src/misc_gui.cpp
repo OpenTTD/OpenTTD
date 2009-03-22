@@ -770,7 +770,7 @@ int DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad
 		} else {
 			GetAcceptanceAroundTiles(cargo, tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE , rad);
 		}
-		return sy + DrawStationCoverageText(cargo, sx, sy, sct, supplies);
+		return DrawStationCoverageText(cargo, sx, sy, sct, supplies);
 	}
 
 	return sy;
