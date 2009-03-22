@@ -1033,17 +1033,18 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		if (!StrEmpty(_settings_client.network.server_password)) DrawString(408, this->width - 2, 23, "*", TC_RED);
 
 		/* draw list of maps */
-		GfxFillRect(11, 63, 258, 215, 0xD7);  // black background of maps list
+		GfxFillRect(this->widget[NSSW_SELMAP].left + 1, this->widget[NSSW_SELMAP].top + 1, this->widget[NSSW_SELMAP].right - 1, this->widget[NSSW_SELMAP].bottom - 1, 0xD7);  // black background of maps list
 
 		for (uint pos = this->vscroll.pos; pos < _fios_items.Length() + 1; pos++) {
 			item = _fios_items.Get(pos - 1);
-			if (item == this->map || (pos == 0 && this->map == NULL))
-				GfxFillRect(11, y - 1, 258, y + 10, 155); // show highlighted item with a different colour
+			if (item == this->map || (pos == 0 && this->map == NULL)) {
+				GfxFillRect(this->widget[NSSW_SELMAP].left + 1, y - 1, this->widget[NSSW_SELMAP].right - 1, y + 10, 155); // show highlighted item with a different colour
+			}
 
 			if (pos == 0) {
-				DrawString(14, this->width - 1, y, STR_4010_GENERATE_RANDOM_NEW_GAME, TC_DARK_GREEN);
+				DrawString(this->widget[NSSW_SELMAP].left + 4, this->widget[NSSW_SELMAP].right - 4, y, STR_4010_GENERATE_RANDOM_NEW_GAME, TC_DARK_GREEN);
 			} else {
-				DrawString(14, this->width - 1, y, item->title, _fios_colours[item->type] );
+				DrawString(this->widget[NSSW_SELMAP].left + 4, this->widget[NSSW_SELMAP].right - 4, y, item->title, _fios_colours[item->type] );
 			}
 			y += NSSWND_ROWSIZE;
 
@@ -1232,25 +1233,25 @@ static const Widget _network_start_server_window_widgets[] = {
 {  WWT_SCROLLBAR,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   259,   270,    63,   215, 0x0,                                STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
 /* Combo/selection boxes to control Connection Type / Max Clients / Max Companies / Max Observers / Language */
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   419,    63,    75, STR_NETWORK_CONNECTION,             STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    63,    75, STR_NETWORK_CONNECTION,             STR_NULL},
 { WWT_DROPDOWNIN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    77,    88, STR_NETWORK_LAN_INTERNET_COMBO,     STR_NETWORK_CONNECTION_TIP},           // NSSW_CONNTYPE_BTN
 
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   419,    95,   107, STR_NETWORK_NUMBER_OF_CLIENTS,      STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    95,   107, STR_NETWORK_NUMBER_OF_CLIENTS,      STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   291,   109,   120, SPR_ARROW_DOWN,                     STR_NETWORK_NUMBER_OF_CLIENTS_TIP},    // NSSW_CLIENTS_BTND
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   292,   397,   109,   120, STR_NETWORK_CLIENTS_SELECT,         STR_NETWORK_NUMBER_OF_CLIENTS_TIP},    // NSSW_CLIENTS_TXT
 {     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   398,   410,   109,   120, SPR_ARROW_UP,                       STR_NETWORK_NUMBER_OF_CLIENTS_TIP},    // NSSW_CLIENTS_BTNU
 
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   419,   127,   139, STR_NETWORK_NUMBER_OF_COMPANIES,    STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   127,   139, STR_NETWORK_NUMBER_OF_COMPANIES,    STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   291,   141,   152, SPR_ARROW_DOWN,                     STR_NETWORK_NUMBER_OF_COMPANIES_TIP},  // NSSW_COMPANIES_BTND
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   292,   397,   141,   152, STR_NETWORK_COMPANIES_SELECT,       STR_NETWORK_NUMBER_OF_COMPANIES_TIP},  // NSSW_COMPANIES_TXT
 {     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   398,   410,   141,   152, SPR_ARROW_UP,                       STR_NETWORK_NUMBER_OF_COMPANIES_TIP},  // NSSW_COMPANIES_BTNU
 
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   419,   159,   171, STR_NETWORK_NUMBER_OF_SPECTATORS,   STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   159,   171, STR_NETWORK_NUMBER_OF_SPECTATORS,   STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   291,   173,   184, SPR_ARROW_DOWN,                     STR_NETWORK_NUMBER_OF_SPECTATORS_TIP}, // NSSW_SPECTATORS_BTND
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   292,   397,   173,   184, STR_NETWORK_SPECTATORS_SELECT,      STR_NETWORK_NUMBER_OF_SPECTATORS_TIP}, // NSSW_SPECTATORS_TXT
 {     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   398,   410,   173,   184, SPR_ARROW_UP,                       STR_NETWORK_NUMBER_OF_SPECTATORS_TIP}, // NSSW_SPECTATORS_BTNU
 
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   419,   191,   203, STR_NETWORK_LANGUAGE_SPOKEN,        STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   191,   203, STR_NETWORK_LANGUAGE_SPOKEN,        STR_NULL},
 { WWT_DROPDOWNIN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   205,   216, STR_NETWORK_LANGUAGE_COMBO,         STR_NETWORK_LANGUAGE_TIP},             // NSSW_LANGUAGE_BTN
 
 /* Buttons Start / Load / Cancel */
