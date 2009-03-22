@@ -3170,6 +3170,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Os fiche
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifica o comprimento do veículo para '{1:ENGINE}' quando fora do depósito.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O Comboio '{VEHICLE}' pertencente a '{COMPANY}' tem um comprimento inválido. Possivelmente devido a problemas com os novos NewGRFs. Podem ocorrer erros de sincronização e a aplicação pode terminar.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' fornece informação incorrecta.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informação de carga para '{1:ENGINE}', é diferente da que consta na lista de véiculos. Isto poderá causar problemas ao ser automaticamente renovado/substituído.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}O jogo foi salvo numa versão sem suporte a eléctricos.Todos os eléctricos foram removidos.

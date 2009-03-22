@@ -3171,6 +3171,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifica
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trenul '{VEHICLE}', apartinand '{COMPANY}' nu are o lungima valida. Crobabila este o problema cu fisierele NewGRF. Jocul s-ar putea desincroniza sau prabusi.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' produce informaţii incorecte.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE} Informatii despre Cargo/regarnisire penteru '{1:ENGINE}' difera de la lista de cumparare dupa constructie. Acest lucru ar putea provoca autorenovarea /- schimbarea sa nu reuseasca la regarnisirea corecta.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Jocul a fost salvat într-o versiune fără suport pentru tramvaie. Toate tramvaiele au fost eliminate.
 
