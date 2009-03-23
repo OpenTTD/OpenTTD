@@ -606,6 +606,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}市町�
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...地図に空のスペースがありません
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}町のサイズをあげます
 STR_023C_EXPAND                                                 :{BLACK}拡大
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}この町は道路を建設しません。「詳細の設定->経済->市町村」によって道路の建設を入にすることができます。
 STR_023D_RANDOM_TOWN                                            :{BLACK}ランダムな町
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}ランダムなところに町を建設します
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}ここに{STRING}が建設できません
@@ -643,10 +644,18 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...橋�
 STR_02A1_SMALL                                                  :{BLACK}村
 STR_02A2_MEDIUM                                                 :{BLACK}町
 STR_02A3_LARGE                                                  :{BLACK}市
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}ランダム
 STR_FOUND_TOWN_CITY                                             :{BLACK}市町村
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}市は町と比べて、より早く拡大します。{}設定によって、基礎のときの大きさもより大きいです。
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}町のサイズを選択します
 STR_02A5_TOWN_SIZE                                              :{YELLOW}町のサイズ：
 
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}市町村の道路配置
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}この市町村の道路配置を選択してください。
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}オリジナル
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}改善した道路
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2の格子
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}ランダム
 
 STR_02B6                                                        :{STRING} - {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}最後のメッセージ／報道を表示します
@@ -656,7 +665,6 @@ STR_FULL                                                        :完全
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :市町村のリスト
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :カスタム
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -679,6 +687,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}標示
 STR_02D5_LAND_BLOCK_INFO                                        :地域情報
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :コンソールのオンオフ
+STR_AI_DEBUG_MENU                                               :AI のデバッグ
 STR_02D7_SCREENSHOT_CTRL_S                                      :スクリーンショット（Ctrl-S）
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :大型スクリーンショット（Ctrl-G）
 STR_02D9_ABOUT_OPENTTD                                          :OpenTTDについて
@@ -724,6 +733,7 @@ STR_02FA_EVERY_12_MONTHS                                        :毎12月
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}新規ゲームを開始します
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}ゲームを開きます
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}カスタムシナリオを作成します
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}多人数プレヤーゲームを開始
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}ゲームの設定を表示します
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}難易度の設定を表示します
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}カスタムシナリオを使用して新規ゲームを開始します
@@ -833,6 +843,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}スク�
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}スクリーンショットのファイルフォーマットを選択します
 
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}使用するGRFの選択
 
 STR_AUTOSAVE_1_MONTH                                            :毎月
 STR_AUTOSAVE_FAILED                                             :{WHITE}自動保存に失敗しました
@@ -876,10 +888,13 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} は無効な指令があります。
 STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} は重複している指令があります。
 STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} の指令の中で、無効な駅があります。
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}{VEHICLE} の自動交換が失敗しました。{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} は交換後に長過ぎます。
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE} 自動交換/更新の規則は適用されませんでした。
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(資金の限度)
 
@@ -895,6 +910,9 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}建物�
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}より現実的な受入れ地域を使用：{ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}より多くの町有の道路／橋などの破壊を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}超長型列車の作成を許容：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}電車の加速モデル：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :オリジナル
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :現実的
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}列車／船舶が直角に曲がらないようにする：{ORANGE}{STRING}{LTBLUE}（NPF/YAPFが必要）
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}隣接した駅を一つの駅に統合：{ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}改良された積載アルゴリズムを使用：{ORANGE}{STRING}
@@ -922,6 +940,7 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}不統�
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}重い列車のシミュレーションのための重量乗数の設定：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}飛行機のスピード係数: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}町有道路上に通過点の建設を許容：{ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}他社の所有する道路上にドライブスルー型バス停/荷役所の設置を許可する：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}隣接した駅の建設を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}複数の NewGRF エンジンセットを有効にする: {ORANGE}{STRING}
 
@@ -958,6 +977,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}ハイ�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :反時計回り
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :時計回り
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}平地シナリオの高さ：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}マップの端のタイルの地形変更を有効にする： {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}駅の幅の上限：{ORANGE}{STRING} {RED}注意：高い数はパフォーマンスに悪影響を与えます
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}ヘリコプターを自動的ヘリパッドで修理：{ORANGE}{STRING}
@@ -981,6 +1001,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :コマンド＋
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :コントロール＋クリック
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :切
 
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}右クリックスクロール：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}セーブ時{LTBLUE}に次のような日付のフォーマットを使用：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :長
@@ -998,6 +1019,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :自分
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :すべて
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}車両の時刻表を使用：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}日の代わりに時刻表をティックで表示：{ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}【駅を選択】をデフォルトでONにする： {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}デフォルトの鉄道の種類（新規ゲーム後／ゲームの読み込み後）：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :通常の鉄道
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :電鉄
@@ -1396,6 +1418,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}送金�
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}サーバへ接続するにはパスワードを入力してください
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}会社の経営に参加するにはパスワードを入力してください
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}クライアントリスト
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}傍観モード
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新会社
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}ネットワークデバイスが見つかりませんでした。ENABLE_NETWORK を切にしてコンパイルされた可能性もあります。
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE}ネットワークゲームが見つかりませんでした
@@ -1442,6 +1466,9 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :ゲーム停止
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :退出
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} は参加してきました
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} が 会社 #{2:NUM} の経営に参加しました。
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} が傍観者として参加しました。
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} が新会社 (#{2:NUM}) を設立しました。
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} は退出してきました（{2:STRING}）
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} は名前を {STRING} に変更しました
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} は {2:CURRENCY} を送金してくれました
@@ -1547,13 +1574,26 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :通常信号の
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :前位信号のある線路
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :後位信号のある線路
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :統合信号のある線路
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :パス信号のある線路
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :一方通行パス信号のある線路
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :通常信号と入口従属信号のある鉄道
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :通常信号と出口従属信号のある鉄道
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :通常信号と結合信号のある鉄道
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :通常信号とパス信号のある線路
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :通常信号と一方通行パス信号のある線路
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :入口従属信号と出口従属信号のある鉄道
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :入口従属信号と結合信号のある鉄道
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :入口信号とパス信号のある線路
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :入口信号と一方通行パス信号のある線路
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :出口従属信号と結合信号のある鉄道
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :出口信号とパス信号のある線路
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :出口信号と一方通行パス信号のある線路
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :コンボ信号とパス信号のある線路
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :コンボ信号と一方通行パス信号のある線路
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :パス信号と一方通行パス信号のある線路
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}先に駅を破壊しなければなりません
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}結合しない
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}駅を統合
 
 
 
@@ -1628,6 +1668,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}画面�
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}町名を変更します
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}先月の旅客：{ORANGE}{COMMA}人{BLACK}　最大：{ORANGE}{COMMA}人
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}先月の郵便袋：{ORANGE}{COMMA}袋{BLACK}　最大：{ORANGE}{COMMA}袋
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}町の成長に必要な貨物：
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} required
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :先月 {SETX 20}{ORANGE}{CARGO}{BLACK} が配送された
 STR_200F_TALL_OFFICE_BLOCK                                      :超高層ビル
 STR_2010_OFFICE_BLOCK                                           :オフィスビル
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :アパート
@@ -1666,6 +1709,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}今後一年間{STRING}を運ぶ{STATION}から{STATION}行き一便は{}２００％の助成金を受ける！
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}今後一年間{STRING}を運ぶ{STATION}から{STATION}行き一便は{}３００％の助成金を受ける！
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN}町議会は町内に他の空港の建設を許可しません
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} の地方自治体は騒音公害の心配によって空港の建設を許可しません。
 STR_2036_COTTAGES                                               :小屋
 STR_2037_HOUSES                                                 :家屋
 STR_2038_FLATS                                                  :アパート
@@ -1742,6 +1786,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}他の�
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}複数のすでに存在している駅／バス停／荷役所に接しています
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}町内の駅／バス停／荷役所が多すぎます
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}駅／バス停／荷役所が多すぎます
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}駅の部分が多すぎます。
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}バス停が多すぎます
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}荷役所が多すぎます
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}他の駅／荷役所に近すぎます
@@ -1839,6 +1884,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}ゲー�
 STR_4002_SAVE                                                   :{BLACK}保存
 STR_4003_DELETE                                                 :{BLACK}削除
 STR_4004                                                        :{COMPANY}、{STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :観客、{SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} 使用可能
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}ドライブが読み込めません
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}ゲームの保存に失敗しました{}{STRING}
@@ -1849,6 +1895,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :壊れている
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :セーブゲームはより新しいバージョンによって保存されました
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :ファイルを読み込むことができません
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :ファイルに書き込むことができません
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :データインテグリティチェック失敗
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}ドライブ、フォルダ、ゲームファイルのリスト
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}ゲームのファイル名
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}選択したゲームを削除します
@@ -1934,6 +1981,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 
 ##id 0x5000
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}他のトンネルがすでにあります
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}トンネルの突き当たりは地図の外にあります。
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}向こうの土地を掘削できません
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}先にトンネルを破壊しなければなりません
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}先に橋を破壊しなければなりません
@@ -2002,7 +2050,7 @@ STR_SV_STNAME_HALT                                              :{STRING}停車�
 STR_SV_STNAME_VALLEY                                            :{STRING}谷
 STR_SV_STNAME_HEIGHTS                                           :{STRING}丘
 STR_SV_STNAME_WOODS                                             :{STRING}森
-STR_SV_STNAME_LAKESIDE                                          :{STRING}川
+STR_SV_STNAME_LAKESIDE                                          :{STRING}湖畔
 STR_SV_STNAME_EXCHANGE                                          :{STRING}公園
 STR_SV_STNAME_AIRPORT                                           :{STRING}空港
 STR_SV_STNAME_OILFIELD                                          :{STRING}油田
@@ -2063,6 +2111,7 @@ STR_NUM_VERY_LOW                                                :特に低い
 STR_6816_LOW                                                    :低い
 STR_6817_NORMAL                                                 :通常
 STR_6818_HIGH                                                   :高い
+STR_02BF_CUSTOM                                                 :カスタム
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :特に遅い
@@ -2102,6 +2151,7 @@ STR_HOSTILE                                                     :対立
 
 ##id 0x7000
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :（会社 {COMMA}）
 STR_7004_NEW_FACE                                               :{BLACK}新規顔
 STR_7005_COLOUR_SCHEME                                          :{BLACK}カラースキーム
 STR_7006_COLOUR_SCHEME                                          :{GOLD}カラースキーム：
@@ -2212,6 +2262,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}会社�
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}会社の本部ビルを建設できません...
 STR_7072_VIEW_HQ                                                :{BLACK}本部ビルを見る
 STR_RELOCATE_HQ                                                 :{BLACK}本部ビルを移動
+STR_COMPANY_JOIN                                                :{BLACK}参加
+STR_COMPANY_JOIN_TIP                                            :{BLACK}この会社に参加します
 STR_COMPANY_PASSWORD                                            :{BLACK}パスワード
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}他のプレヤーがこの会社の経営に参加できないようにするには、パスワードで保護します
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}会社のパスワードを設定
@@ -2538,7 +2590,29 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}�
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀{}初列車が{STATION}駅に到着！
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}列車があります
+STR_8804                                                        :{SETX 10}{COMMA}：{SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}：{SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}直行便
+STR_ORDER_GO_TO                                                 :行く
+STR_ORDER_GO_NON_STOP_TO                                        :無停車で行く
+STR_ORDER_GO_VIA                                                :経由停車点
+STR_ORDER_GO_NON_STOP_VIA                                       :無停車で行くの経由停車点
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}いずれかを全積載
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :可能なら積載
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :全積載
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :いずれかを全積載
+STR_ORDER_DROP_NO_LOADING                                       :積載しない
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}全て降ろす
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :受入有なら降ろす
+STR_ORDER_DROP_UNLOAD                                           :全て降ろす
+STR_ORDER_DROP_NO_UNLOADING                                     :降ろさない
+STR_ORDER_FULL_LOAD                                             :(全積載)
+STR_ORDER_FULL_LOAD_ANY                                         :(いずれか一種の貨物を全積載するまで待つ)
+STR_ORDER_NO_LOAD                                               :(積載しない)
+STR_ORDER_UNLOAD                                                :(降ろして積載する)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(降ろして全積載まで待つ)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(降ろしていずれか一種のを全積載)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(降ろして空荷のまま出発)
 STR_ORDER_NO_UNLOAD                                             :（積み荷を降ろせずに貨物を積む）
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :（積み荷を降ろせずに満載する）
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :（積み荷を降ろせずにいかに満載する）
@@ -2556,6 +2630,7 @@ STR_ORDER_SERVICE_AT                                            :修理：
 STR_ORDER_SERVICE_NON_STOP_AT                                   :回送して修理：
 STR_ORDER_TRAIN_DEPOT                                           :電車庫
 STR_ORDER_ROAD_DEPOT                                            :車庫
+STR_ORDER_SHIP_DEPOT                                            :造船所
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} 格納庫
@@ -2564,6 +2639,7 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :常に行く
 STR_ORDER_DROP_SERVICE_DEPOT                                    :必要であれば修理
 STR_ORDER_DROP_HALT_DEPOT                                       :停止
 
+STR_ORDER_CONDITIONAL                                           :条件ジャンプ
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}乗り物のデータと比較する値
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}比較に用いる値を入力
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :積載率
@@ -2758,6 +2834,7 @@ STR_9012_CAPACITY                                               :{BLACK}容量�
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...車庫内に停止しなければなりません
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}道路車両を売却できません...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}道路車両を始動／停止できません...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} は車庫で待機しています
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}{TOWN}車庫へ回送
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}{TOWN}車庫へ回送、{VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}{TOWN}車庫で修理
@@ -2837,6 +2914,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}{TOWN}�
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}{TOWN}造船所へ回送、{VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN}造船所で修理
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN}造船所で修理、{VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} は造船所で待機しています。
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}埠頭を建設します
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}造船所を建設します（船舶の購入、修理などのため）
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}船舶のリスト - 情報を見るには船舶をクリックします
@@ -2899,6 +2977,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATIO
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION}格納庫へ行く、{VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}{STATION}格納庫で修理
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}{STATION}格納庫で修理、{VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} は格納庫の中に待機しています。
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}飛行機があります
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}飛行機が始動／停止できません...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}飛行中です
@@ -2988,6 +3067,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}この�
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}最大ポイントから合計ポイント
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRFの設定
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}NewGRF の設定を表示
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRFの設定
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}変更を適用
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}パレットを切り替える
@@ -3015,7 +3095,9 @@ STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :読み込んだ
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{0:STRING} を {1:STRING} を含む固定的な NewGRF として開くと、desync が行う可能性があります。
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :予期しないスプライトを見つけました。
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :不明な Action 0 プロパティ。
+STR_NEWGRF_ERROR_INVALID_ID                                     :無効な ID が含む
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} は壊れたスプライトを含みます。壊れたスプライトは赤疑問符として表示されます。
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :複数の Action 8 の項目が含む
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}選択したプリセットを開きます
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}プリセットを保存
@@ -3054,6 +3136,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}ポー�
 
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' のビヘービアは desync もしくはクラッシュを行わせる可能性があります！
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}「{1:COMPANY}」が所有している「{0:VEHICLE}」という電車は無効な長さがあります。使用している NewGRF が原因であるかもしれません。desync もしくはクラッシュが行う可能性があります！
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}このゲームは路面電車に対応していないバージョンで保存されましたので、すべての路面電車が削除されました。
 
@@ -3124,7 +3207,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}選択�
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}列車の縮小：{ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}自動交換によって列車の長さが長くなる場合は、列車の長さを保守するには客車／貨車を取り除くことができます。列車の先頭から開始します。
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}交換：{ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}実験的機能{}機関車／貨車のウィンドウに切り替えます。{}貨車交換は新貨車が旧貨車と同様の貨物種類に再装備できるときのみに行います。自動交換中に各貨車を検査します。
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}機関車／貨車のウィンドウに切り替えます。
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}車を買えません
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}車を買えません
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}船を買えません
@@ -3462,6 +3545,7 @@ STR_AI_RANDOM_AI                                                :ランダムな
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI のパラメータ
 STR_AI_AUTHOR                                                   :作成者：
 STR_AI_VERSION                                                  :バージョン：
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}実行中の AI の一つは予期せずに終了しました。AI の作者に AI デバッグのウインドウのスクリーンショットが含む電子メールをご送信ください。
 ########
 
 ############ town controlled noise level
@@ -3497,7 +3581,27 @@ STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}ダウ�
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}選択した項目のダウンロードを開始します。
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}合計ダウンロードサイズ：{WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}項目の情報
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}項目名：{WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}バージョン：{WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}説明：{WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL：{WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}種類：{WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}サイズ：{WHITE}{BYTES}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}前提項目：{WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}タグ：{WHITE}{STRING}
 
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}項目をダウンロード中...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}ダウンロードを初期化中...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}{STRING} をダウンロード中（{2:NUM} の {1:NUM}）
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}ダウンロード完了
 
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}サーバに接続することができませんでした...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}ダウンロード失敗...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}...接続が解除されました
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}...ファイルに書くアクセス権がありません
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}ダウンロードしたファイルを開展することができませんでした
 
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}オンラインの項目を確認
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}抜けている項目をオンラインで検索
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}抜けている項目はインターネットで検索します。
 ########

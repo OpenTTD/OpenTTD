@@ -1197,6 +1197,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Kan hier
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Bouw spoor met de Autorail-methode
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...er is geen stad in dit scenario
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Map maken afgebroken...{}...geen geschikte dorplokaties
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Veel willekeurige steden
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Bedek de kaart met willekeurig geplaatste steden
@@ -3169,6 +3170,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Gedrag v
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Het verandert de lengte van voertuig '{1:ENGINE}' wanneer niet in een depot.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{VEHICLE}' behorend bij '{COMPANY}' heeft een ongeldige lengte. Het is waarschijnlijk veroorzaakt door problemen metNewGRFs. Het spel kan desync krijgen of crash.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' geeft onjuiste informatie.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}vracht/ombouw informatie voor '{1:ENGINE}' wijkt af van aanschaflijst na het bouwen. Dit kan resulteren in problemen bij ombouwen door autovernieuw/-vervang
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spel was opgeslagen in een versie zonder tram ondersteuning. Alle trams zijn verwijderd.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Aangepaste valuta
@@ -3238,7 +3242,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dit geef
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons verwijderen: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te vervangen trein behoudt zijn lengte door wagons weg te halen (startend aan de voorkant), als het vervangen de trein langer zou maken
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Aan het vervangen: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTEEL {}Wissel tussen motor- en wagonvervangvensters.{}Wagonvervanging wordt alleen uitgevoerd als de nieuwe wagon omgebouwd kan worden om hetzelfde ladingtype te dragen als de oude wagon. Dit wordt gecontroleerd voor elke wagon wanneer de daadwerkelijke vervanging plaats vindt.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wissel tussen motor- en wagonvervangvensters
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Trein is niet beschikbaar
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Voertuig is niet beschikbaar
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Schip is niet beschikbaar
@@ -3579,6 +3583,7 @@ STR_AI_RANDOM_AI                                                :Willekeurige AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
 STR_AI_AUTHOR                                                   :Maker:
 STR_AI_VERSION                                                  :Versie:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Een van de draaiende AI's is gecrashed. Meldt dit bij de schrijver van deze AI met een schermprint van het AI Debugscherm.
 ########
 
 ############ town controlled noise level

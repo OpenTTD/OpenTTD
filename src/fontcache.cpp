@@ -206,42 +206,47 @@ static const char *GetEnglishFontName(const ENUMLOGFONTEX *logfont)
 	static char font_name[MAX_PATH];
 	const char *ret_font_name = NULL;
 	uint pos = 0;
+	HDC dc;
+	HGDIOBJ oldfont;
+	byte *buf;
+	DWORD dw;
+	uint16 format, count, stringOffset, platformId, encodingId, languageId, nameId, length, offset;
 
 	HFONT font = CreateFontIndirect(&logfont->elfLogFont);
 	if (font == NULL) goto err1;
 
-	HDC dc = GetDC(NULL);
-	HGDIOBJ oldfont = SelectObject(dc, font);
-	DWORD dw = GetFontData(dc, 'eman', 0, NULL, 0);
+	dc = GetDC(NULL);
+	oldfont = SelectObject(dc, font);
+	dw = GetFontData(dc, 'eman', 0, NULL, 0);
 	if (dw == GDI_ERROR) goto err2;
 
-	byte *buf = MallocT<byte>(dw);
+	buf = MallocT<byte>(dw);
 	dw = GetFontData(dc, 'eman', 0, buf, dw);
 	if (dw == GDI_ERROR) goto err3;
 
-	uint16 format = buf[pos++] << 8;
+	format = buf[pos++] << 8;
 	format += buf[pos++];
 	assert(format == 0);
-	uint16 count = buf[pos++] << 8;
+	count = buf[pos++] << 8;
 	count += buf[pos++];
-	uint16 stringOffset = buf[pos++] << 8;
+	stringOffset = buf[pos++] << 8;
 	stringOffset += buf[pos++];
 	for (uint i = 0; i < count; i++) {
-		uint16 platformId = buf[pos++] << 8;
+		platformId = buf[pos++] << 8;
 		platformId += buf[pos++];
-		uint16 encodingId = buf[pos++] << 8;
+		encodingId = buf[pos++] << 8;
 		encodingId += buf[pos++];
-		uint16 languageId = buf[pos++] << 8;
+		languageId = buf[pos++] << 8;
 		languageId += buf[pos++];
-		uint16 nameId = buf[pos++] << 8;
+		nameId = buf[pos++] << 8;
 		nameId += buf[pos++];
 		if (nameId != 1) {
 			pos += 4; // skip length and offset
 			continue;
 		}
-		uint16 length = buf[pos++] << 8;
+		length = buf[pos++] << 8;
 		length += buf[pos++];
-		uint16 offset = buf[pos++] << 8;
+		offset = buf[pos++] << 8;
 		offset += buf[pos++];
 
 		/* Don't buffer overflow */

@@ -3220,7 +3220,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Näitab 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagunite eemaldus: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Sunni automaatset asendust hoidma rongi pikkust selleks (eest alustades) veeremit eemaldades, juhul kui uus vagun muudaks rongi pikemaks.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Asendamisel: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} TESTIMISEL! {}Vaheta aken mootori ja vaguni asendamise aknate vahel.{}Vaguni vahetus tehakse ainult siis kui uus vagun suudetakse muuta kandmaks sama tüüpi kaupa kui vana vagun. See valitakse igale vagunile kui tegelik vahetus käib
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Vaheta aken mootori ja vaguni asendamise aknate vahel
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Sõiduk pole saadaval
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Sõiduk pole saadaval
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Laev pole saadaval

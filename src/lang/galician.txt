@@ -3146,7 +3146,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra q
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Eliminar os vagóns: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Facer que a autosubstitución manteña a lonxitude do tren quitando vagóns (empezando polo principio), se ó substituír a máquina o tren é máis longo.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituíndo: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FUNCIÓN EXPERIMENTAL {}Cambia entre as fiestras de substitución de máquinas e vagóns.{}A substitución de vagóns só se fará se o novo vagón pode reaxustarse para levar o mismo tipo de carga que o antigo. Compróbase para cada vagón cando se fai a substitución.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Cambia entre as fiestras de substitución de máquinas e vagóns
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}O vehículo non está dispoñible
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}O vehículo non está dispoñible
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}O barco non está dispoñible

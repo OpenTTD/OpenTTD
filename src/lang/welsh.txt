@@ -3238,7 +3238,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dangoswc
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Tynnu wagenni: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gwneud i awtoddisodli gadw hyd y trên yr un peth drwy dynnu wagenni (gan ddechrau yn y blaen), os byddai disodli'r injan yn gwneud y trên yn hirach.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Disodli: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTAL FEATURE {}Newid rhwng y sgrin ddisodli wagenni a'r un injans.{}Bydd wagenni'n cael eu disodli'n unig os bydd wagenni newydd yn gallu cael eu ailffitio i gario'r un math o lwyth ar hen rai. Bydd hyn yn cael ei wirio bob tro mae'r disodli'n digwydd.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Newid rhwng y sgrin ddisodli wagenni a'r un injans.
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Nid yw'r cerbyd ar gael
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Nid yw'r cerbyd ar gael
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Nid yw'r llong ar gael

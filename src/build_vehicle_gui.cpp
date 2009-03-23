@@ -120,8 +120,8 @@ static int CDECL EngineReliabilitySorter(const void *a, const void *b)
 
 static int CDECL EngineCostSorter(const void *a, const void *b)
 {
-	int va = GetEngine(*(const EngineID*)a)->GetRunningCost();
-	int vb = GetEngine(*(const EngineID*)b)->GetRunningCost();
+	Money va = GetEngine(*(const EngineID*)a)->GetCost();
+	Money vb = GetEngine(*(const EngineID*)b)->GetCost();
 	int r = ClampToI32(va - vb);
 
 	/* Use EngineID to sort instead since we want consistent sorting */

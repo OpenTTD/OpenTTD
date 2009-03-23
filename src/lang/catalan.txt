@@ -3242,7 +3242,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra q
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure vagons: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la substitució automàtica mantingui la llargària del tren eliminant vagons (començant pel front), si substituint la màquina el tren es fa més llarg
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituint: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} CARACTERÍSTICA EXPERIMENTAL {}Alterna entre finestres de substitució de vagons i de motors{}La substitució del vagó només tindrà lloc si el nou vagó pot ser remodelat per admetre el mateix tipus de càrrega que el vell. Això es comprova per a cada vagó quan la substitució es produeix.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Alterna entre finestres de substitució de vagons i de motors
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}El tren no està disponible
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}El vehicle no està disponible
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}El vaixell no està disponible
