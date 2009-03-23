@@ -16,7 +16,7 @@ void InitNewsItemStructs();
 extern NewsItem _statusbar_news_item;
 extern bool _news_ticker_sound;
 
-extern NewsTypeData _news_type_data[NT_END];
+extern NewsTypeData _news_type_data[];
 
 /**
  * Delete a news item type about a vehicle

@@ -104,7 +104,7 @@ struct NewsSubtypeData {
 /**
  * Data common to all news items of a given subtype (actual data)
  */
-static const struct NewsSubtypeData _news_subtype_data[NS_END] = {
+static const NewsSubtypeData _news_subtype_data[] = {
 	/* type,               display_mode, flags,                  callback */
 	{ NT_ARRIVAL_COMPANY,  NM_THIN,     NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ARRIVAL_COMPANY
 	{ NT_ARRIVAL_OTHER,    NM_THIN,     NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ARRIVAL_OTHER
@@ -127,10 +127,12 @@ static const struct NewsSubtypeData _news_subtype_data[NS_END] = {
 	{ NT_GENERAL,          NM_NORMAL,   NF_TILE,                NULL                    }, ///< NS_GENERAL
 };
 
+assert_compile(lengthof(_news_subtype_data) == NS_END);
+
 /**
  * Per-NewsType data
  */
-NewsTypeData _news_type_data[NT_END] = {
+NewsTypeData _news_type_data[] = {
 	/* name,              age, sound,           display */
 	{ "arrival_player",    60, SND_1D_APPLAUSE, ND_FULL },  ///< NT_ARRIVAL_COMPANY
 	{ "arrival_other",     60, SND_1D_APPLAUSE, ND_FULL },  ///< NT_ARRIVAL_OTHER
@@ -148,6 +150,8 @@ NewsTypeData _news_type_data[NT_END] = {
 	{ "subsidies",        180, SND_BEGIN,       ND_FULL },  ///< NT_SUBSIDIES
 	{ "general",           60, SND_BEGIN,       ND_FULL },  ///< NT_GENERAL
 };
+
+assert_compile(lengthof(_news_type_data) == NT_END);
 
 struct NewsWindow : Window {
 	uint16 chat_height;
