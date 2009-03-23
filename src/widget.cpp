@@ -319,11 +319,11 @@ void Window::DrawWidgets() const
 			/* draw up/down buttons */
 			clicked = ((this->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP);
 			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawString(r.left + 2 + clicked, r.right, r.top + clicked, UPARROW, TC_BLACK);
+			DrawString(r.left + clicked, r.right + clicked, r.top + clicked, UPARROW, TC_BLACK, SA_CENTER);
 
 			clicked = (((this->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN));
 			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawString(r.left + 2 + clicked, r.right, r.bottom - 9 + clicked, DOWNARROW, TC_BLACK);
+			DrawString(r.left + clicked, r.right + clicked, r.bottom - 9 + clicked, DOWNARROW, TC_BLACK, SA_CENTER);
 
 			int c1 = _colour_gradient[wi->colour & 0xF][3];
 			int c2 = _colour_gradient[wi->colour & 0xF][7];
@@ -350,11 +350,11 @@ void Window::DrawWidgets() const
 			/* draw up/down buttons */
 			clicked = ((this->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2));
 			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->colour,  (clicked) ? FR_LOWERED : FR_NONE);
-			DrawString(r.left + 2 + clicked, r.right, r.top + clicked, UPARROW, TC_BLACK);
+			DrawString(r.left + clicked, r.right + clicked, r.top + clicked, UPARROW, TC_BLACK, SA_CENTER);
 
 			clicked = ((this->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2));
 			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->colour,  (clicked) ? FR_LOWERED : FR_NONE);
-			DrawString(r.left + 2 + clicked, r.right, r.bottom - 9 + clicked, DOWNARROW, TC_BLACK);
+			DrawString(r.left + clicked, r.right + clicked, r.bottom - 9 + clicked, DOWNARROW, TC_BLACK, SA_CENTER);
 
 			int c1 = _colour_gradient[wi->colour & 0xF][3];
 			int c2 = _colour_gradient[wi->colour & 0xF][7];
@@ -477,7 +477,7 @@ void Window::DrawWidgets() const
 			assert(r.right - r.left == 10); // To ensure the same sizes are used everywhere
 
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_NONE);
-			DrawString(r.left + 2, r.right, r.top + 2, str, TC_FROMSTRING);
+			DrawString(r.left, r.right, r.top + 2, str, TC_FROMSTRING, SA_CENTER);
 			break;
 		}
 
@@ -500,12 +500,12 @@ void Window::DrawWidgets() const
 			if (_dynlang.text_dir == TD_LTR) {
 				DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, wi->colour, FR_NONE);
 				DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, wi->colour, clicked ? FR_LOWERED : FR_NONE);
-				DrawString(r.right - (clicked ? 8 : 9), r.right, r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
+				DrawString(r.right - (clicked ? 10 : 11), r.right, r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK, SA_CENTER);
 				if (str != STR_NULL) DrawString(r.left + 2, r.right - 14, r.top + 1, str, TC_BLACK);
 			} else {
 				DrawFrameRect(r.left + 12, r.top, r.right, r.bottom, wi->colour, FR_NONE);
 				DrawFrameRect(r.left, r.top, r.left + 11, r.bottom, wi->colour, clicked ? FR_LOWERED : FR_NONE);
-				DrawString(r.left + 1, r.left + (clicked ? 10 : 11), r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
+				DrawString(r.left + clicked, r.left + 11, r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK, SA_CENTER);
 				if (str != STR_NULL) DrawString(r.left + 14, r.right - 2, r.top + 1, str, TC_BLACK);
 			}
 			break;
