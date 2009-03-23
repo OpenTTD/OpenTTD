@@ -426,8 +426,8 @@ void Window::DrawWidgets() const
 				GfxFillRect(x2, r.top + 5, r.right - 2, r.top + 5, c2);
 			} else {
 				/* Line from upper left corner to start of text */
-				GfxFillRect(r.left, r.top + 4, x2, r.top + 4, c1);
-				GfxFillRect(r.left + 1, r.top + 5, x2, r.top + 5, c2);
+				GfxFillRect(r.left, r.top + 4, x2 - 2, r.top + 4, c1);
+				GfxFillRect(r.left + 1, r.top + 5, x2 - 2, r.top + 5, c2);
 
 				/* Line from end of text to upper right corner */
 				GfxFillRect(r.right - 5, r.top + 4, r.right - 1, r.top + 4, c1);
