@@ -91,8 +91,7 @@ enum WidgetType {
 	WWT_SCROLL2BAR, ///< 2nd vertical scrollbar
 	WWT_RESIZEBOX,  ///< Resize box (normally at bottom-right of a window)
 	WWT_CLOSEBOX,   ///< Close box (at top-left of a window)
-	WWT_DROPDOWN,   ///< Raised drop down list (regular)
-	WWT_DROPDOWNIN, ///< Inset drop down list (used on game options only)
+	WWT_DROPDOWN,   ///< Drop down list
 	WWT_EDITBOX,    ///< a textbox for typing
 	WWT_LAST,       ///< Last Item. use WIDGETS_END to fill up padding!!
 

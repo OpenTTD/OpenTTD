@@ -793,7 +793,7 @@ static const Widget _network_game_window_widgets[] = {
 {      WWT_PANEL,   RESIZE_RB,     COLOUR_LIGHT_BLUE,     0,   449,    14,   263, 0x0,                              STR_NULL},                         // NGWW_MAIN
 
 {       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     9,    85,    23,    35, STR_NETWORK_CONNECTION,           STR_NULL},                         // NGWW_CONNECTION
-{ WWT_DROPDOWNIN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    90,   181,    22,    33, STR_NETWORK_LAN_INTERNET_COMBO,   STR_NETWORK_CONNECTION_TIP},       // NGWW_CONN_BTN
+{   WWT_DROPDOWN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    90,   181,    22,    33, STR_NETWORK_LAN_INTERNET_COMBO,   STR_NETWORK_CONNECTION_TIP},       // NGWW_CONN_BTN
 
 {    WWT_EDITBOX,   RESIZE_LR,     COLOUR_LIGHT_BLUE,   290,   440,    22,    33, STR_NETWORK_PLAYER_NAME_OSKTITLE, STR_NETWORK_ENTER_NAME_TIP},       // NGWW_CLIENT
 
@@ -849,7 +849,7 @@ NWidgetPart _nested_network_game_widgets[] = {
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(4, 0),
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_DROPDOWNIN, COLOUR_LIGHT_BLUE, NGWW_CONN_BTN), SetMinimalSize(92, 12),
+				NWidget(WWT_DROPDOWN, COLOUR_LIGHT_BLUE, NGWW_CONN_BTN), SetMinimalSize(92, 12),
 									SetDataTip(STR_NETWORK_LAN_INTERNET_COMBO, STR_NETWORK_CONNECTION_TIP),
 				NWidget(NWID_SPACER), SetMinimalSize(0,2), // Text ends two pixels further down
 			EndContainer(),
@@ -1234,7 +1234,7 @@ static const Widget _network_start_server_window_widgets[] = {
 
 /* Combo/selection boxes to control Connection Type / Max Clients / Max Companies / Max Observers / Language */
 {       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    63,    75, STR_NETWORK_CONNECTION,             STR_NULL},
-{ WWT_DROPDOWNIN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    77,    88, STR_NETWORK_LAN_INTERNET_COMBO,     STR_NETWORK_CONNECTION_TIP},           // NSSW_CONNTYPE_BTN
+{   WWT_DROPDOWN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    77,    88, STR_NETWORK_LAN_INTERNET_COMBO,     STR_NETWORK_CONNECTION_TIP},           // NSSW_CONNTYPE_BTN
 
 {       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    95,   107, STR_NETWORK_NUMBER_OF_CLIENTS,      STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   291,   109,   120, SPR_ARROW_DOWN,                     STR_NETWORK_NUMBER_OF_CLIENTS_TIP},    // NSSW_CLIENTS_BTND
@@ -1252,7 +1252,7 @@ static const Widget _network_start_server_window_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   398,   410,   173,   184, SPR_ARROW_UP,                       STR_NETWORK_NUMBER_OF_SPECTATORS_TIP}, // NSSW_SPECTATORS_BTNU
 
 {       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   191,   203, STR_NETWORK_LANGUAGE_SPOKEN,        STR_NULL},
-{ WWT_DROPDOWNIN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   205,   216, STR_NETWORK_LANGUAGE_COMBO,         STR_NETWORK_LANGUAGE_TIP},             // NSSW_LANGUAGE_BTN
+{   WWT_DROPDOWN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   205,   216, STR_NETWORK_LANGUAGE_COMBO,         STR_NETWORK_LANGUAGE_TIP},             // NSSW_LANGUAGE_BTN
 
 /* Buttons Start / Load / Cancel */
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         40,   140,   224,   235, STR_NETWORK_START_GAME,             STR_NETWORK_START_GAME_TIP},           // NSSW_START

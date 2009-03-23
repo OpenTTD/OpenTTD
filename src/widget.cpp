@@ -510,24 +510,6 @@ void Window::DrawWidgets() const
 			}
 			break;
 		}
-
-		case WWT_DROPDOWNIN: {
-			assert(r.bottom - r.top == 11); // ensure consistent size
-
-			StringID str = wi->data;
-			if (_dynlang.text_dir == TD_LTR) {
-				DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_LOWERED | FR_DARKENED);
-				DrawFrameRect(r.right - 11, r.top + 1, r.right - 1, r.bottom - 1, wi->colour, clicked ? FR_LOWERED : FR_NONE);
-				DrawString(r.right - (clicked ? 8 : 9), r.right, r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
-				if (str != STR_NULL) DrawString(r.left + 2, r.right - 13, r.top + 2, str, TC_BLACK);
-			} else {
-				DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_LOWERED | FR_DARKENED);
-				DrawFrameRect(r.left + 1, r.top + 1, r.left + 11, r.bottom - 1, wi->colour, clicked ? FR_LOWERED : FR_NONE);
-				DrawString(r.left + 1, r.left + (clicked ? 10 : 11), r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
-				if (str != STR_NULL) DrawString(r.left + 14, r.right - 2, r.top + 2, str, TC_BLACK);
-			}
-			break;
-		}
 		}
 
 		if (this->IsWidgetDisabled(i)) {
@@ -1242,7 +1224,6 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 			break;
 
 		case WWT_DROPDOWN:
-		case WWT_DROPDOWNIN:
 			this->SetFill(false, false);
 			this->min_y = 12;
 			break;
