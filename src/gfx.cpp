@@ -399,18 +399,26 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 
 	int w = GetStringBoundingBox(str).width;
 
+	/* right is the right most position to draw on. In this case we want to do
+	 * calculations with the width of the string. In comparison right can be
+	 * seen as lastof(todraw) and width as lengthof(todraw). They differ by 1.
+	 * So most +1/-1 additions are to move from lengthof to 'indices'.
+	 */
 	switch (align) {
 		case SA_LEFT:
-			right = left + w;
+			/* right + 1 = left + w */
+			right = left + w - 1;
 			break;
 
 		case SA_CENTER:
-			left += (right - left - w + 1) / 2;
-			right = left + w;
+			/* The second + 1 is to round to the closest number */
+			left  = (right + 1 + left - w + 1) / 2;
+			/* right + 1 = left + w */
+			right = left + w - 1;
 			break;
 
 		case SA_RIGHT:
-			left = right - w;
+			left = right + 1 - w;
 			break;
 
 		default:
