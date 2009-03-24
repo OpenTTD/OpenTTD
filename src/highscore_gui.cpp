@@ -140,8 +140,6 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 
 		this->SetupHighScoreEndWindow(&x, &y);
 
-		const int right = this->left + this->width - 1;
-
 		SetDParam(0, ORIGINAL_END_YEAR);
 		SetDParam(1, this->window_number + STR_6801_EASY);
 		DrawStringMultiLine(x + 70, x + 570, y, y + 140, !_networking ? STR_0211_TOP_COMPANIES_WHO_REACHED : STR_TOP_COMPANIES_NETWORK_GAME, SA_CENTER);
@@ -149,15 +147,15 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 		/* Draw Highscore peepz */
 		for (uint8 i = 0; i < lengthof(_highscore_table[0]); i++) {
 			SetDParam(0, i + 1);
-			DrawString(x + 40, right, y + 140 + (i * 55), STR_0212, TC_BLACK);
+			DrawString(x + 40, x + 600, y + 140 + (i * 55), STR_0212, TC_BLACK);
 
 			if (hs[i].company[0] != '\0') {
 				TextColour colour = (this->rank == i) ? TC_RED : TC_BLACK; // draw new highscore in red
 
-				DrawString(x + 71, right, y + 140 + (i * 55), hs[i].company, colour);
+				DrawString(x + 71, x + 569, y + 140 + (i * 55), hs[i].company, colour);
 				SetDParam(0, hs[i].title);
 				SetDParam(1, hs[i].score);
-				DrawString(x + 71, right, y + 160 + (i * 55), STR_HIGHSCORE_STATS, colour);
+				DrawString(x + 71, x + 569, y + 160 + (i * 55), STR_HIGHSCORE_STATS, colour);
 			}
 		}
 	}
