@@ -1034,12 +1034,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Kotiranj
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvencije
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subvencije u toku (u vezi preuzimanja navedenog tovara):
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} iz naselja {STRING} u naselje {STRING}
-STR_2028_BY                                                     :{YELLOW} (pre {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} iz naselja {STRING} u naselje {STRING}{YELLOW} (pre {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Nema
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Odobrene subvencije:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} između stanica {STATION} i {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} između stanica {STATION} i {STATION}{YELLOW} ({COMPANY}{YELLOW}, do {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Ponuda subvencije istekla:{}{}{STRING} iz naselja {STRING} u naselje {STRING} je zatvorena za dalje interesente.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subvencija povučena:{}{}{STRING} usluga transporta između stanica {STATION} i {STATION} više nije u opticaju.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Ponuda subvencije:{}{}Preduzimač koji prvi preveze {STRING.gen} od naselja {STRING} do naselja {STRING} stiče pravo na dodatni profit tokom sledeća 24 meseca!

@@ -710,10 +710,6 @@ STR_201E_STADIUM                                                :ورزشگاه
 STR_201F_OLD_HOUSES                                             :خانه قدیمی
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK} امتیازات شرکت
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} از {STRING} به {STRING}
-STR_2028_BY                                                     :{YELLOW} (by {DATE_SHORT})
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} از {STATION} به {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, تا {DATE_SHORT})
 STR_2036_COTTAGES                                               :کلبه ها
 STR_2037_HOUSES                                                 :خانه ها
 STR_2039_TALL_OFFICE_BLOCK                                      :ساختمان اداری بلند
@@ -1578,8 +1574,6 @@ STR_AI_RESET                                                    :{BLACK}بازن
 STR_AI_HUMAN_PLAYER                                             :بازیکن آدمیزاد
 STR_AI_RANDOM_AI                                                :انتخاب هوش مصنوعی به صورت اتفاقی
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}پارامترهای هوش مصنوعی
-STR_AI_AUTHOR                                                   :نویسنده:
-STR_AI_VERSION                                                  :version:
 ########
 
 ############ town controlled noise level

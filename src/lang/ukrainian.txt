@@ -1838,12 +1838,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Рейт
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Субсидії
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Пропонуються субсидії:
-STR_2027_FROM_TO                                                :{ORANGE}Перевезення {STRING.r} з {STRING} до {STRING}
-STR_2028_BY                                                     :{YELLOW} ({DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}Перевезення {STRING.r} з {STRING} до {STRING}{YELLOW} ({DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}немає
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Призначені субсидії:
-STR_202C_FROM_TO                                                :{ORANGE}Перевезення {STRING.r} з {STATION} до {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, по {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}Перевезення {STRING.r} з {STATION} до {STATION}{YELLOW} ({COMPANY}{YELLOW}, по {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Субсидію відмінено:{}{}Перевезення {STRING.r} з {STRING} до {STRING}.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Субсидія вже не надається:{}{}Перевезення {STRING.r} з {STATION} до {STATION}.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Пропонується річна субсидія {}{}компанії, яка першою привезе {STRING.z} з {STRING} до {STRING}!
@@ -3339,9 +3337,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Гра �
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Вибір грошової одиниці
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Валютний курс: {ORANGE}{CURRENCY} = Ј {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Роздільник:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Префікс:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суфікс:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Роздільник: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Префікс: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суфікс: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Перехід на євро: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Перехід на євро: {ORANGE}ні
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Відображення: {ORANGE}{CURRENCY}
@@ -3743,8 +3741,8 @@ STR_AI_RESET                                                    :{BLACK}Скид
 STR_AI_HUMAN_PLAYER                                             :Гравець-людина
 STR_AI_RANDOM_AI                                                :Випадковий AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Параметри AI
-STR_AI_AUTHOR                                                   :Автор:
-STR_AI_VERSION                                                  :Версія:
+STR_AI_AUTHOR                                                   :Автор: {STRING}
+STR_AI_VERSION                                                  :Версія: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Один з поточних AI зазнав краху. Будь ласка, повідомте про це автора AI зі знімком налагоджувального вікна AI.
 ########
 

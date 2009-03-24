@@ -1700,12 +1700,8 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK} :מדד
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}סובסידיות
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK} :סובסידיות למימון שירותי הובלה
-STR_2027_FROM_TO                                                :{ORANGE}{1:STRING} ל {STRING} מ {NBSP} {0:STRING}
-STR_2028_BY                                                     :{YELLOW} ( {DATE_SHORT} עד תאריך)
 STR_202A_NONE                                                   :{ORANGE}אין
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK} :שירותים מסובסדים
-STR_202C_FROM_TO                                                :{YELLOW} ({3:COMPANY}) {ORANGE} {2:STATION} ל {NBSP}{1:STATION} מ {NBSP}{0:STRING}
-STR_202D_UNTIL                                                  :{YELLOW}{DATE_SHORT}) עד
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}.פג תוקפה של הצעה למתן סובסידיה{}{}{NBSP}לא תזכה עוד לסבסוד{NBSP} {2:STRING} ל {NBSP}{1:STRING} מ {NBSP}{0:STRING} הובלת
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}.פג תוקפה של  סובסידיה{}{}{NBSP}לא תסובסד עוד{NBSP} {2:STATION} ל {NBSP}{1:STATION} מ {NBSP}{0:STRING} הובלת
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}.הצעה למתן סובסידיה{}{}{NBSP}!יזכה לסובסידיה בת שנה מהרשות המקומית {NBSP} {2:STRING} ל {NBSP}{1:STRING} מ {NBSP}{0:STRING} שירות הובלה ראשון של
@@ -3161,9 +3157,6 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game was
 
 STR_CURRENCY_WINDOW                                             :{WHITE}מטבע מותאם אישית
 STR_CURRENCY_EXCHANGE_RATE                                      :{ORANGE}{0:CURRENCY} =£{1:COMMA} {LTBLUE} :שער חליפין
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE} :מפריד
-STR_CURRENCY_PREFIX                                             :{LTBLUE} :קידומת
-STR_CURRENCY_SUFFIX                                             :{LTBLUE} :סיומת
 STR_CURRENCY_SWITCH_TO_EURO                                     :{ORANGE}{NUM} {LTBLUE} :החלפה ליורו
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{ORANGE} ללא {LTBLUE} :החלפה ליורו
 STR_CURRENCY_PREVIEW                                            :{ORANGE}{CURRENCY}{LTBLUE} :צפיה מקדימה
@@ -3563,8 +3556,6 @@ STR_AI_RESET                                                    :{BLACK}אתחל
 STR_AI_HUMAN_PLAYER                                             :שחקן אנושי
 STR_AI_RANDOM_AI                                                :בינה מלאכותית אקראית
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}פרמטרים של בינה מלאכותית
-STR_AI_AUTHOR                                                   ::מחבר
-STR_AI_VERSION                                                  :: גירסה
 ########
 
 ############ town controlled noise level

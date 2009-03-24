@@ -1695,12 +1695,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}会社�
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}：{ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}助成金
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}次の運送経路に助成金を提案：
-STR_2027_FROM_TO                                                :{ORANGE}{STRING}を{STRING}から{STRING}へ
-STR_2028_BY                                                     :{YELLOW}（有効期限：{DATE_SHORT}）
+STR_2027_FROM_TO                                                :{ORANGE}{STRING}を{STRING}から{STRING}へ{YELLOW}（有効期限：{DATE_SHORT}）
 STR_202A_NONE                                                   :{ORANGE}なし
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}すでに助成金を受けている運送経路：
-STR_202C_FROM_TO                                                :{ORANGE}{STRING}を{STATION}から{STATION}へ{YELLOW}（{COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}、{DATE_SHORT}まで）
+STR_202C_FROM_TO                                                :{ORANGE}{STRING}を{STATION}から{STATION}へ{YELLOW}（{COMPANY}{YELLOW}、{DATE_SHORT}まで）
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}助成金提案の有効期限満了：{}{STRING}を運ぶ{STRING}から{STRING}行き一便は{}今後助成金を受けず
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}助成金の終止{}{STRING}を運ぶ{STATION}から{STATION}行き一便の{}助成金は終了しました
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}助成金提案の報告{}{STRING}を運ぶ{STRING}から{STRING}行き{}先駆の一便は一年間助成金を受ける！
@@ -3142,9 +3140,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}この�
 
 STR_CURRENCY_WINDOW                                             :{WHITE}カスタム通貨
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}為替レート：{ORANGE}{CURRENCY} ＝ £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}分離記号：
-STR_CURRENCY_PREFIX                                             :{LTBLUE}接頭文字：
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}接尾文字：
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}分離記号： {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}接頭文字： {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}接尾文字： {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}ユーロに切替え：{ORANGE}{NUM}年
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}ユーロに切替え：{ORANGE}しない
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}プレビュー：{ORANGE}{CURRENCY}
@@ -3543,8 +3541,8 @@ STR_AI_RESET                                                    :{BLACK}リセ�
 STR_AI_HUMAN_PLAYER                                             :人間のプレヤー
 STR_AI_RANDOM_AI                                                :ランダムな AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI のパラメータ
-STR_AI_AUTHOR                                                   :作成者：
-STR_AI_VERSION                                                  :バージョン：
+STR_AI_AUTHOR                                                   :作成者： {STRING}
+STR_AI_VERSION                                                  :バージョン： {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}実行中の AI の一つは予期せずに終了しました。AI の作者に AI デバッグのウインドウのスクリーンショットが含む電子メールをご送信ください。
 ########
 

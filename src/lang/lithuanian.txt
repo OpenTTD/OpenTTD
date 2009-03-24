@@ -1728,12 +1728,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transpor
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidijos
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Dar nepanaudotos subsidijos:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} iš {STRING} į {STRING}
-STR_2028_BY                                                     :{YELLOW} (iki {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} iš {STRING} į {STRING}{YELLOW} (iki {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Niekas
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Jau subsidijuojama:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} iš {STATION} į {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, iki {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} iš {STATION} į {STATION}{YELLOW} ({COMPANY}{YELLOW}, iki {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsidijų pasiūlymas baigėsi:{}{}{STRING.ko} pervežimas iš {STRING.ko} į {STRING.ka} daugiau nebesubsidijuojamas.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidijų laikas baigėsi:{}{}{STRING.ko} transportavimas iš {STATION} į {STATION} daugiau nebesubsidijuojama.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subsidijų pasiūlymas:{}{}Pirmasis pervežęs {STRING.ka} iš {STRING} į {STRING} gaus metinę vietinės valdžios subsidiją!
@@ -3166,9 +3164,9 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Tai pake
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Pasirinkti valiuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Keitimo santykis: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Skyriklis:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Priesdelis:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Pavadinimas:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Skyriklis: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Priesdelis: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Pavadinimas: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Pereiti prie Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Pereiti prie Euro: {ORANGE}niekada
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Perziura: {ORANGE}{CURRENCY}
@@ -3539,8 +3537,8 @@ STR_AI_RESET                                                    :{BLACK}Atstatyt
 STR_AI_HUMAN_PLAYER                                             :Žaidėjas Žmogus
 STR_AI_RANDOM_AI                                                :Atsitiktinis DI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parametrai
-STR_AI_AUTHOR                                                   :Autorius:
-STR_AI_VERSION                                                  :Versija:
+STR_AI_AUTHOR                                                   :Autorius: {STRING}
+STR_AI_VERSION                                                  :Versija: {NUM}
 ########
 
 ############ town controlled noise level

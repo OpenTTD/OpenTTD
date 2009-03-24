@@ -1708,12 +1708,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Einkunni
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Samstarfssamningar
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Samstarfssamningar í boði fyrir eftirfarandi þjónustur:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} frá {STRING} til {STRING}
-STR_2028_BY                                                     :{YELLOW} (til {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} frá {STRING} til {STRING}{YELLOW} (til {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Enginn
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Samningar þegar í gildi:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} frá {STATION} til {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, þangað til {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} frá {STATION} til {STATION}{YELLOW} ({COMPANY}{YELLOW}, þangað til {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Tilboð til samstarfssamnings runnið út:{}{}{STRING} frá {STRING} til {STRING} mun ekki vera samningsbundið.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Samsarfssamningur gerður ógildur:{}{} {STRING}flutningur frá {STATION} til {STATION} er ekki lengur samningsbundinn.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nýtt tilboð til samstarfssamnings: {}{}Fyrsti {STRING}flutningur frá {STRING} til {STRING} mun stofna til eins árs samstarfssamnings við bæjaryfirvöld!
@@ -3153,9 +3151,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Leikurin
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Sérvalinn gjaldeyrir
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Gengi: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Aðskilnaðarmerki:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Forskeyti:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Viðskeyti:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Aðskilnaðarmerki: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Forskeyti: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Viðskeyti: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Skipta í Evrur: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Skipta í Evrur: {ORANGE}aldrei
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Dæmi: {ORANGE}{CURRENCY}
@@ -3535,8 +3533,8 @@ STR_AI_ACCEPT                                                   :{BLACK}Í lagi
 STR_AI_CANCEL                                                   :{BLACK}Hætta við
 STR_AI_CLOSE                                                    :{BLACK}Loka
 STR_AI_HUMAN_PLAYER                                             :Menskur spilari
-STR_AI_AUTHOR                                                   :Höfundur:
-STR_AI_VERSION                                                  :Útgáfa:
+STR_AI_AUTHOR                                                   :Höfundur: {STRING}
+STR_AI_VERSION                                                  :Útgáfa: {NUM}
 ########
 
 ############ town controlled noise level

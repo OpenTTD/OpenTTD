@@ -1755,12 +1755,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ocene pr
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvencije
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Ponudba subvencije za storitev:
-STR_2027_FROM_TO                                                :{ORANGE}Prevoz {STRING.r} iz {STRING} v {STRING}
-STR_2028_BY                                                     :{YELLOW} (do {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}Prevoz {STRING.r} iz {STRING} v {STRING}{YELLOW} (do {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Brez
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Že subvencionirane storitve:
-STR_202C_FROM_TO                                                :{ORANGE}Prevoz {STRING.r} od {STATION} do {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}Prevoz {STRING.r} od {STATION} do {STATION}{YELLOW} ({COMPANY}{YELLOW}, do {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Ponudba subvencije potekla: {}{}Prevoz {STRING.r} od {STRING} do {STRING} ni več subvencioniran.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subvencija zaključena:{}{}Prevoz {STRING.r} od {STATION} do {STATION} ni več subvencioniran.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nova ponujena subvencija:{}{}Prvi prevoz {STRING.r} od {STRING} do {STRING} bo{}subvencioniran s strani mestnega sveta!
@@ -3257,9 +3255,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Igra je 
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Valuta po meri
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Menjalni tečaj: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ločitev:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Predpona:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Zapona:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ločitev: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Predpona: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Zapona: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Preklop na Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Preklop na Euro: {ORANGE}nikoli
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Predogled: {ORANGE}{CURRENCY}
@@ -3661,8 +3659,8 @@ STR_AI_RESET                                                    :{BLACK}Resetira
 STR_AI_HUMAN_PLAYER                                             :Igralec
 STR_AI_RANDOM_AI                                                :Naključni UI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}UI parametri
-STR_AI_AUTHOR                                                   :Avtor:
-STR_AI_VERSION                                                  :Verzija:
+STR_AI_AUTHOR                                                   :Avtor: {STRING}
+STR_AI_VERSION                                                  :Verzija: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Ena izmed zagnanih UI se je sesula. Prosim, javi to avtorju UI s priloženo sliko zaslona v orodju za čiščenje UI.
 ########
 

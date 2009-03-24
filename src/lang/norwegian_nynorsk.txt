@@ -1714,12 +1714,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Vurderin
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidiar
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Tilbydde subsidiar:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} frå {STRING} til {STRING}
-STR_2028_BY                                                     :{YELLOW} (innan {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} frå {STRING} til {STRING}{YELLOW} (innan {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Ingen
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Tenester som er subsidierte frå før:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} frå {STATION} til {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, til {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} frå {STATION} til {STATION}{YELLOW} ({COMPANY}{YELLOW}, til {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Tilbod om subsidie har gått ut:{}{}{STRING} frå {STRING} til {STRING} vil ikkje lenger vere subsidiert.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidie trekt attende:{}{}Transport av {STRING} frå {STATION} til {STATION} er ikkje subsidiert lenger.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subsidie-tilbod:{}{}Første transport av {STRING} frå {STRING} til {STRING} vil vere subsidiert i eit år av bystyret!
@@ -3178,9 +3176,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spelet h
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vanleg valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffiks:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffiks: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Byt til euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Byt til euro: {ORANGE}aldri
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eksempel: {ORANGE}{CURRENCY}
@@ -3582,8 +3580,8 @@ STR_AI_RESET                                                    :{BLACK}Tilbakes
 STR_AI_HUMAN_PLAYER                                             :Menneskeleg spelar
 STR_AI_RANDOM_AI                                                :Vilkårleg AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parametrar
-STR_AI_AUTHOR                                                   :Forfattar:
-STR_AI_VERSION                                                  :Versjon:
+STR_AI_AUTHOR                                                   :Forfattar: {STRING}
+STR_AI_VERSION                                                  :Versjon: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Ein AI har krasja. Venleg rapporter dette til produsenten av AIen med eit skjermbilete av "AI Debug"-vindauget.
 ########
 

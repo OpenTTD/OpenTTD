@@ -1664,12 +1664,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Vervoer 
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidiee
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subsidiee op aanbod vir diens opneming:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} van {STRING} tot {STRING}
-STR_2028_BY                                                     :{YELLOW} (voor {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} van {STRING} tot {STRING}{YELLOW} (voor {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Geen
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Dienste reeds gesubsidieer:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} van {STATION} tot {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, tot {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} van {STATION} tot {STATION}{YELLOW} ({COMPANY}{YELLOW}, tot {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Aanbod van subsidie verval:{}{}{STRING} van {STRING} tot {STRING} sal nou nie 'n subsidie aantrek nie.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidie terugtrek:{}{}{STRING} diens van {STATION} tot {STATION} is nie meer gesubsideieer nie.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Diens subsidie aanbod:{}{}Eerste {STRING} diens van {STRING} tot {STRING} sal 'n jaar se subsidie van die plaaslike raad kry!
@@ -3100,9 +3098,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Speeletj
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Gewoonte koers
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wissel koers: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Afskeier
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Vervoegsel:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Agtervoegsel:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Afskeier {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Vervoegsel: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Agtervoegsel: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Verwissel na Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Verwissel na Euro: {ORANGE}nooit
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Voorskou: {ORANGE}{CURRENCY}

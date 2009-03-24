@@ -1713,12 +1713,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Graddfey
 STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Cymorthdaliadau
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Cymorthdaliadau sy'n cael eu cynnig ar gyfer cludo:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} o {STRING} i {STRING}
-STR_2028_BY                                                     :{YELLOW} (erbyn {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} o {STRING} i {STRING}{YELLOW} (erbyn {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Dim
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Gwasanaethau sydd eisoes yn derbyn cymhorthdal:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} o {STATION} i {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, tan {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} o {STATION} i {STATION}{YELLOW} ({COMPANY}{YELLOW}, tan {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Cynnig cymhorthdal ar ben: {}{}Ni fydd cludo {STRING} o {STRING} i {STRING} bellach yn derbyn cymhorthdal.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Cymhorthdal wedi'i dynnu'n ôl: {}{}Ni fydd y gwasanaeth {STRING} o {STATION} i {STATION} bellach yn derbyn cymhorthdal.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Cymhorthdal yn cael ei gynnig:{}{}bydd y gwasanaeth {STRING} cyntaf o {STRING} i {STRING} yn derbyn blwyddyn o gymhorthdal oddi wrth yr awdurdod lleol!
@@ -3173,9 +3171,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Cafodd y
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Arian cyfaddas
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Cyfradd gyfnewid: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Gwahanydd:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Rhagddodiad:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Olddodiad:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Gwahanydd: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Rhagddodiad: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Olddodiad: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Newid i'r Ewro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Newid i'r Ewro: {ORANGE}byth
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Rhagolwg: {ORANGE}{CURRENCY}
@@ -3577,8 +3575,8 @@ STR_AI_RESET                                                    :{BLACK}Ailosod
 STR_AI_HUMAN_PLAYER                                             :Chwaraewr dynol
 STR_AI_RANDOM_AI                                                :AI ar hap
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paramedrau AI
-STR_AI_AUTHOR                                                   :Awdur:
-STR_AI_VERSION                                                  :Fersiwn:
+STR_AI_AUTHOR                                                   :Awdur: {STRING}
+STR_AI_VERSION                                                  :Fersiwn: {NUM}
 ########
 
 ############ town controlled noise level

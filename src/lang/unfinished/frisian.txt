@@ -851,12 +851,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transpor
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsydzjes
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subsydzjes dy't oanbean wurde:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} fan {STRING} nei {STRING}
-STR_2028_BY                                                     :{YELLOW} (foar {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} fan {STRING} nei {STRING}{YELLOW} (foar {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Gjin
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Tsjinsten dy't al subsydzje krije:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} fan {STATION} nei {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, oant {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} fan {STATION} nei {STATION}{YELLOW} ({COMPANY}{YELLOW}, oant {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsydzje oanbieding ferrûn:{}{}{STRING} fan {STRING} nei {STRING} sil no net in subsydzje krije.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsydzje ôfrûn:{}{}{STRING} tsjinst fan {STATION} nei {STATION} krijt gjin subsydzje mear.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subsydzje oanbean:{}{}Earste{STRING} tsjinst fan {STRING} nei {STRING} krijt in jier subsydzje fan 'e gemeente!

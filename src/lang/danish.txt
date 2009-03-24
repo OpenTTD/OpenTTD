@@ -1713,12 +1713,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transpor
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Tilskudsordninger
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Tilskudsordninger i licitation:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} fra {STRING} til {STRING}
-STR_2028_BY                                                     :{YELLOW} (inden {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} fra {STRING} til {STRING}{YELLOW} (inden {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Ingen
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Tilskudsordninger der allerede er vundet:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} fra {STATION} til {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, indtil {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} fra {STATION} til {STATION}{YELLOW} ({COMPANY}{YELLOW}, indtil {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Licitation af tilskudsordning udløbet:{}{}{STRING} fra {STRING} til {STRING} vil ikke længere udløse tilskud.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Tilskudsordning tilbagetrukket:{}{}{STRING} fragt fra {STATION} til {STATION} modtager ikke længere tilskud.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Tilskudsordning i licitation:{}{}Første {STRING} fragt fra {STRING} til {STRING} vil udløse et års tilskud fra de lokale myndigheder!
@@ -3177,9 +3175,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spillet 
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Brugerdefineret møntfod
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurs: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Tilskuer:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Præfiks:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Endetillæg:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Tilskuer: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Præfiks: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Endetillæg: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Skift til Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Skift til Euro: {ORANGE}aldrig
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eksempel: {ORANGE}{CURRENCY}
@@ -3581,8 +3579,8 @@ STR_AI_RESET                                                    :{BLACK}Nulstil
 STR_AI_HUMAN_PLAYER                                             :Menneskelig spiller
 STR_AI_RANDOM_AI                                                :Tilfældig computerspiller
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Computerspiller-parametre
-STR_AI_AUTHOR                                                   :Skaber:
-STR_AI_VERSION                                                  :Version:
+STR_AI_AUTHOR                                                   :Skaber: {STRING}
+STR_AI_VERSION                                                  :Version: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}En computerstyret spiller gik ned. Rapporter det venligst til udvikleren af computerspilleren med et skærmbilledet af computerspiller-debugvinduet.
 ########
 

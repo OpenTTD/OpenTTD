@@ -1503,12 +1503,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Takso de
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvencioj
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subvencioj haveblas por jenaj servoj:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} al {STRING}
-STR_2028_BY                                                     :{YELLOW} (antaŭ {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} al {STRING}{YELLOW} (antaŭ {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Neniu
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Servoj subvenciataj:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} de {STATION} al {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, ĝis {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} de {STATION} al {STATION}{YELLOW} ({COMPANY}{YELLOW}, ĝis {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subvencia oferto ne plu validas:{}{}{STRING} de {STRING} al {STRING} ne estos subvenciata.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subvencio retiriĝis:{}{}Servo de {STRING} de {STATION} al {STATION} ne plu estas subvenciata.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subvencia oferto:{}{}Unua servo de {STRING} de {STRING} al {STRING} ricevos subvencion de jaro de la lokaj estroj!
@@ -2782,9 +2780,9 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manka(j)
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Alia monunuo
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Interŝanĝa valoro: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Dividilo:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefikso:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufikso:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Dividilo: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefikso: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufikso: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Ŝanĝu al Eŭroj: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Ŝanĝu al Eŭroj: {ORANGE}neniam
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Antaŭvido: {ORANGE}{CURRENCY}

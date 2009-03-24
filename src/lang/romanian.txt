@@ -1713,12 +1713,9 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Evaluare
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvenţii (F6)
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subvenţii disponibile:
-STR_2027_FROM_TO                                                :{ORANGE}- {STRING} de la {STRING} la {STRING}
-STR_2028_BY                                                     :{YELLOW} (data limită: {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}- nici una
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Subvenţii acordate la ora actuală:
-STR_202C_FROM_TO                                                :{ORANGE}- {STRING} de la {STATION} la {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, până în {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}- {STRING} de la {STATION} la {STATION}{YELLOW} ({COMPANY}{YELLOW}, până în {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Ofertă expirată:{}{}Transportul de {STRING} de la {STRING} la {STRING} nu va mai primi subvenţie
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Ofertă închisă:{}{}Transportul de {STRING} de la {STATION} la {STATION} nu va mai fi subvenţionat
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subvenţie oferită:{}{}Primul transport de {STRING} de la {STRING} la {STRING} va primi o subvenţie pe un an din partea autorităţilor locale
@@ -3177,9 +3174,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Jocul a 
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Monedă proprie
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Curs de schimb: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufix:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufix: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Aderă la Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Aderă la Euro: {ORANGE}niciodată
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Previzualizare: {ORANGE}{CURRENCY}
@@ -3581,8 +3578,8 @@ STR_AI_RESET                                                    :{BLACK}Reseteaz
 STR_AI_HUMAN_PLAYER                                             :Jucator uman
 STR_AI_RANDOM_AI                                                :IA aleator
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametri IA
-STR_AI_AUTHOR                                                   :Autor:
-STR_AI_VERSION                                                  :Versiune:
+STR_AI_AUTHOR                                                   :Autor: {STRING}
+STR_AI_VERSION                                                  :Versiune: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}O Inteligentă Artificială s-a oprit în mod eronat. Raportează această problemă autorului împreună cu o captură de ecran a ferestrei Depanare IA
 ########
 

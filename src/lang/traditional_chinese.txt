@@ -1706,12 +1706,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}運輸�
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}：{ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}補助資訊
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}提供補助的運輸服務：
-STR_2027_FROM_TO                                                :{ORANGE}將 {STRING} 從 {STRING} 運到 {STRING}
-STR_2028_BY                                                     :{YELLOW} (在 {DATE_SHORT} 之前)
+STR_2027_FROM_TO                                                :{ORANGE}將 {STRING} 從 {STRING} 運到 {STRING}{YELLOW} (在 {DATE_SHORT} 之前)
 STR_202A_NONE                                                   :{ORANGE}無
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}已獲補助的服務：
-STR_202C_FROM_TO                                                :{ORANGE}將 {STRING} 從 {STATION} 運到 {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}，補助到 {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}將 {STRING} 從 {STATION} 運到 {STATION}{YELLOW} ({COMPANY}{YELLOW}，補助到 {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}補助過期：{}{}將 {STRING} 從 {STRING} 運到 {STRING} 從此不再提供補助。
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}補助結束：{}{}將 {STRING} 從 {STATION} 運到 {STATION} 不再提供補助。
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}提供補助：{}{}首先將 {STRING} 從 {STRING} 運到 {STRING} 的公司將得到地方政府補助一年！
@@ -3165,9 +3163,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}此存�
 
 STR_CURRENCY_WINDOW                                             :{WHITE}自訂幣值
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}匯率：{ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}分隔符號：
-STR_CURRENCY_PREFIX                                             :{LTBLUE}前置字：
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}後置字：
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}分隔符號： {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}前置字： {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}後置字： {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}改用歐元：{ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}改用歐元：{ORANGE}永不改用
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}預覽：{ORANGE}{CURRENCY}
@@ -3569,8 +3567,8 @@ STR_AI_RESET                                                    :{BLACK}重設
 STR_AI_HUMAN_PLAYER                                             :人類玩家
 STR_AI_RANDOM_AI                                                :隨機 AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI 參數
-STR_AI_AUTHOR                                                   :作者：
-STR_AI_VERSION                                                  :版本：
+STR_AI_AUTHOR                                                   :作者： {STRING}
+STR_AI_VERSION                                                  :版本： {NUM}
 ########
 
 ############ town controlled noise level

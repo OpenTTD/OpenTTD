@@ -800,10 +800,7 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} �
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}เงินอุดหนุน
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}ให้เงินอุดหนุนสำหรับการบริการ:
-STR_2028_BY                                                     :{YELLOW} (by {DATE_SHORT})
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}การบริการได้เงินอุดหนุนเรียบร้อยแล้ว:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} เดินทางจาก{STATION} ถึง {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, จนถึง {DATE_SHORT})
 
 
 ##id 0x2800

@@ -1715,12 +1715,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Рейт
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Субсидии
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Свободные субсидии
-STR_2027_FROM_TO                                                :{ORANGE}{STRING.p} по маршруту из {STRING} в {STRING}
-STR_2028_BY                                                     :{YELLOW} (по {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING.p} по маршруту из {STRING} в {STRING}{YELLOW} (по {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}нет
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Субсидируемые маршруты:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} по маршруту из {STATION} в {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, до {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} по маршруту из {STATION} в {STATION}{YELLOW} ({COMPANY}{YELLOW}, до {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Предложение субсидии истекло:{}{}{STRING} по маршруту {STRING} - {STRING} субсидироваться не будет.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Срок субсидии истек:{}{}{STRING} по маршруту {STATION} - {STATION} больше не субсидируется.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Предложена субсидия:{}{}Первая компания, которая повезет {STRING} по маршруту {STRING} - {STRING} получит годовую субсидию от местных властей!
@@ -3190,9 +3188,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Игра
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Своя валюта
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменный курс: {ORANGE}{CURRENCY} = £{COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделитель:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Префикс:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суффикс:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделитель: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Префикс: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суффикс: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Переход на евро: {ORANGE}с {NUM} года
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Переход на евро: {ORANGE}никогда
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Образец: {ORANGE}{CURRENCY}
@@ -3594,8 +3592,8 @@ STR_AI_RESET                                                    :{BLACK}Сбро
 STR_AI_HUMAN_PLAYER                                             :Человек
 STR_AI_RANDOM_AI                                                :Случ. ИИ
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Параметры ИИ
-STR_AI_AUTHOR                                                   :Автор:
-STR_AI_VERSION                                                  :Версия:
+STR_AI_AUTHOR                                                   :Автор: {STRING}
+STR_AI_VERSION                                                  :Версия: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Один из запущенных ИИ выполнил недопустимую операцию и был закрыт. Пожалуйста сообщите об этом автору ИИ приложив скриншот окна ИИ отладки.
 ########
 

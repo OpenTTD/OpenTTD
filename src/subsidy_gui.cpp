@@ -118,17 +118,10 @@ struct SubsidyListWindow : Window {
 
 		for (s = _subsidies; s != endof(_subsidies); s++) {
 			if (s->cargo_type != CT_INVALID && s->age < 12) {
-				int x2;
-
 				/* Displays the two offered towns */
 				SetupSubsidyDecodeParam(s, 1);
-				x2 = DrawString(x + 2, right - 2, y, STR_2027_FROM_TO, TC_FROMSTRING);
-
-				if (width - x2 > 10) {
-					/* Displays the deadline before voiding the proposal */
-					SetDParam(0, _date - ymd.day + 384 - s->age * 32);
-					DrawString(x2, right, y, STR_2028_BY, TC_FROMSTRING);
-				}
+				SetDParam(7, _date - ymd.day + 384 - s->age * 32);
+				DrawString(x + 2, right - 2, y, STR_2027_FROM_TO, TC_FROMSTRING);
 
 				y += 10;
 				num++;
@@ -147,20 +140,13 @@ struct SubsidyListWindow : Window {
 
 		for (s = _subsidies; s != endof(_subsidies); s++) {
 			if (s->cargo_type != CT_INVALID && s->age >= 12) {
-				int xt;
-
 				SetupSubsidyDecodeParam(s, 1);
-
 				SetDParam(3, GetStation(s->to)->owner);
+				SetDParam(4, _date - ymd.day + 768 - s->age * 32);
 
 				/* Displays the two connected stations */
-				xt = DrawString(x + 2, right - 2, y, STR_202C_FROM_TO, TC_FROMSTRING);
+				DrawString(x + 2, right - 2, y, STR_202C_FROM_TO, TC_FROMSTRING);
 
-				/* Displays the date where the granted subsidy will end */
-				if ((xt > 3) && (width - xt) > 9 ) { // do not draw if previous drawing failed or if it will overlap on scrollbar
-					SetDParam(0, _date - ymd.day + 768 - s->age * 32);
-					DrawString(xt, right, y, STR_202D_UNTIL, TC_FROMSTRING);
-				}
 				y += 10;
 				num++;
 			}

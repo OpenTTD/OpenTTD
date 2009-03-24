@@ -1714,12 +1714,9 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}회사 �
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}보조금
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}제공되는 보조금:
-STR_2027_FROM_TO                                                :{ORANGE}{1:STRING}에서 {2:STRING}까지 {0:STRING} 수송
-STR_2028_BY                                                     :{YELLOW} ({DATE_SHORT}까지)
 STR_202A_NONE                                                   :{ORANGE}없음
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}이미 지급된 보조금:
-STR_202C_FROM_TO                                                :{ORANGE}{1:STATION}에서 {2:STATION}까지 {0:STRING} 수송{YELLOW} ({3:COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, {DATE_SHORT}까지)
+STR_202C_FROM_TO                                                :{ORANGE}{1:STATION}에서 {2:STATION}까지 {0:STRING} 수송{YELLOW} ({3:COMPANY}{YELLOW}, {DATE_SHORT}까지)
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}보조금 제공 계약 파기:{}{}{1:STRING}에서 {2:STRING}까지의 {0:STRING} 수송은 더이상 보조금을 지급하지 않습니다.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}보조금 제공 철회:{}{}지역 당국은 {1:STATION}에서 {2:STATION}까지의 {0:STRING} 수송에 대한 보조금을 철회하였습니다.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}보조금 제공 안내:{}{}처음으로 {1:STRING}에서 {2:STRING}까지의 {0:STRING}을/를 수송하는 회사는 지역 당국으로부터 보조금을 받게 될 것입니다!
@@ -3178,9 +3175,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}전차�
 
 STR_CURRENCY_WINDOW                                             :{WHITE}사용자 화폐 단위
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}환율: {ORANGE}{CURRENCY} = {COMMA}파운드
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}단위구분:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}접두어:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}접미어:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}단위구분: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}접두어: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}접미어: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}유로화로 전환: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}유로화로 전환: {ORANGE}안함
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}미리보기: {ORANGE}{CURRENCY}
@@ -3582,8 +3579,8 @@ STR_AI_RESET                                                    :{BLACK}초기�
 STR_AI_HUMAN_PLAYER                                             :사용자 플레이어
 STR_AI_RANDOM_AI                                                :무작위 인공지능
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}인공지능 파라미터
-STR_AI_AUTHOR                                                   :저자:
-STR_AI_VERSION                                                  :버젼:
+STR_AI_AUTHOR                                                   :저자: {STRING}
+STR_AI_VERSION                                                  :버젼: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}작동중인 인공지능 중 하나가 충돌했습니다. 인공지능 디버그 창에서 스샷을 찍어 인공지능 작가에게 보고하십시오.
 ########
 

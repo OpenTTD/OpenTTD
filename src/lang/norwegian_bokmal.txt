@@ -1696,12 +1696,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Vurderin
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidier
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subsidietilbud:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} fra {STRING} til {STRING}
-STR_2028_BY                                                     :{YELLOW} (innen {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} fra {STRING} til {STRING}{YELLOW} (innen {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Ingen
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Tjenester som allerede subsidieres:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} fra {STATION} til {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, inntil {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} fra {STATION} til {STATION}{YELLOW} ({COMPANY}{YELLOW}, inntil {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsidietilbud har gått ut:{}{}{STRING} fra {STRING} til {STRING} vil ikke lenger gi subsidier.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidie trukket tilbake:{}{}Frakt av {STRING} fra {STATION} til {STATION} subsidieres ikke lenger.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subsidietilbud:{}{}Første frakt av {STRING} fra {STRING} til {STRING} vil subsidieres i et år av bystyret!
@@ -3154,9 +3152,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spillet 
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vanlig valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Deler:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffiks:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Deler: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffiks: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Bytt til euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Bytt til euro: {ORANGE}aldri
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Forhåndsvis: {ORANGE}{CURRENCY}
@@ -3551,7 +3549,7 @@ STR_AI_CLOSE                                                    :{BLACK}Lukk
 STR_AI_RESET                                                    :{BLACK}Tilbakestill
 STR_AI_RANDOM_AI                                                :Tilfeldig AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI-parametere
-STR_AI_VERSION                                                  :Versjon
+STR_AI_VERSION                                                  :Versjon {NUM}
 ########
 
 ############ town controlled noise level

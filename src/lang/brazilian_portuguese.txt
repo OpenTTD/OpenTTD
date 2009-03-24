@@ -1714,12 +1714,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Avaliaç
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsídios
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Ofertas de transporte subsidiados
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} para {STRING}
-STR_2028_BY                                                     :{YELLOW} (em {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} para {STRING}{YELLOW} (em {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Nenhum
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Transporte subsidiados:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} de {STATION} para {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, até {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} de {STATION} para {STATION}{YELLOW} ({COMPANY}{YELLOW}, até {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}A oferta do subsídio expirou:{}{} Transporte de {STRING} de {STRING} para {STRING} não será mais subsidiado.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsídio removido:{}{} Transporte de {STRING} de {STATION} para {STATION} não será mais subsidiado.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Oferta de transporte subsidiado:{}{} Primeiro transporte de {STRING} de {STRING} para {STRING} receberá o subsídio de um ano da autoridade local!
@@ -3178,9 +3176,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Jogo foi
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda Modificada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de câmbio: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufixo:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufixo: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Mudar para Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Mudar para Euro: {ORANGE}nunca
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prevêr: {ORANGE}{CURRENCY}
@@ -3582,8 +3580,8 @@ STR_AI_RESET                                                    :{BLACK}Resetar
 STR_AI_HUMAN_PLAYER                                             :Jogador Humano
 STR_AI_RANDOM_AI                                                :IA Randômica
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parâmetros da IA
-STR_AI_AUTHOR                                                   :Progamador:
-STR_AI_VERSION                                                  :Versão:
+STR_AI_AUTHOR                                                   :Progamador: {STRING}
+STR_AI_VERSION                                                  :Versão: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Uma das IA's travou. Favor relatar ao autor da IA com uma screenshot da Janela de Debug da IA.
 ########
 

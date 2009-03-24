@@ -1552,12 +1552,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ποσο
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Χρηματοδοτήσεις
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Τρέχουσες χρηματοδοτήσεις για υπηρεσίες παίρνοντας:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} από {STRING} πρός {STRING}
-STR_2028_BY                                                     :{YELLOW} (έως {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} από {STRING} πρός {STRING}{YELLOW} (έως {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Κανένα
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Υπηρεσίες που έχουν χρηματοδοτηθεί:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} από το σταθμό {STATION} προς το σταθμό {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, έως {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} από το σταθμό {STATION} προς το σταθμό {STATION}{YELLOW} ({COMPANY}{YELLOW}, έως {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Έληξε προσφορά χρηματοδότησης:{}{}{STRING} από {STRING} πρός {STRING} δεν θα προσελκύουν χρηματοδότηση πια.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Η χρηματοδότηση αποσύρθηκε:{}{}{STRING} υπηρεσία {STATION} προς {STATION} δεν χρηματοδοτείται πια.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Προσφορά χρηματοδότησης υπηρεσίας:{}{}Η πρώτη υπηρεσία για {STRING} από {STRING} προς {STRING} επιχορηγείται για ένα έτος από την τοπική αρχή!

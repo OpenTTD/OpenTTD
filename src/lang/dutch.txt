@@ -1713,12 +1713,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Reputati
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidies
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Beschikbare subsidies:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} van {STRING} naar {STRING}
-STR_2028_BY                                                     :{YELLOW} (voor {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} van {STRING} naar {STRING}{YELLOW} (voor {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Geen
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Bestaande subsidies:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} van {STATION} naar {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, tot {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} van {STATION} naar {STATION}{YELLOW} ({COMPANY}{YELLOW}, tot {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsidieaanbod is verlopen:{}{}{STRING} van {STRING} naar {STRING} wordt nu niet meer gesubsidieerd.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidie teruggetrokken:{}{}{STRING}route van {STATION} naar {STATION} is nu niet meer gesubsidieerd.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subsidie aangeboden:{}{}Eerste {STRING}route van {STRING} naar {STRING} krijgt een jaar lang subsidie van de gemeente!
@@ -3177,9 +3175,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spel was
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Aangepaste valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselkoers: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Scheidingsteken:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Voorvoegsel:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Achtervoegsel:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Scheidingsteken: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Voorvoegsel: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Achtervoegsel: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Overgaan op de Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Overgaan op de Euro: {ORANGE}nooit
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Voorbeeld: {ORANGE}{CURRENCY}
@@ -3581,8 +3579,8 @@ STR_AI_RESET                                                    :{BLACK}Herstel
 STR_AI_HUMAN_PLAYER                                             :Menselijke speler
 STR_AI_RANDOM_AI                                                :Willekeurige AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
-STR_AI_AUTHOR                                                   :Maker:
-STR_AI_VERSION                                                  :Versie:
+STR_AI_AUTHOR                                                   :Maker: {STRING}
+STR_AI_VERSION                                                  :Versie: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Een van de draaiende AI's is gecrashed. Meldt dit bij de schrijver van deze AI met een schermprint van het AI Debugscherm.
 ########
 

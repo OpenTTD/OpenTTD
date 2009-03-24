@@ -1713,12 +1713,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Kuljetus
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Tuet
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Tarjotut tuet:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} välille {STRING}-{STRING}
-STR_2028_BY                                                     :{YELLOW} ({DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} välille {STRING}-{STRING}{YELLOW} ({DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Ei mitään
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Käytetyt tuet-
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} välille {STATION}-{STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, {DATE_SHORT} asti)
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} välille {STATION}-{STATION}{YELLOW} ({COMPANY}{YELLOW}, {DATE_SHORT} asti)
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Tuki päättynyt:{}{}{STRING} väli {STRING} - {STRING} ei ole enää tuettu.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Tuki vedetty pois:{}{}{STRING} kuljetuspalvelu välille {STATION}-{STATION} ei ole enää tuettu.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Tuki tarjottu:{}{}Ensimmäinen {STRING}kuljetus välillä {STRING} - {STRING} saa vuoden mittaisen tuen paikallisviranomaisilta!
@@ -3177,9 +3175,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Peli tal
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Oma valuutta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vaihtokurssi: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Välimerkki:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Etuliite:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Jälkiliite:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Välimerkki: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Etuliite: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Jälkiliite: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Vaihda euroon: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Vaihda euroon: {ORANGE}ei koskaan
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Esikatselu: {ORANGE}{CURRENCY}
@@ -3581,8 +3579,8 @@ STR_AI_RESET                                                    :{BLACK}Palauta
 STR_AI_HUMAN_PLAYER                                             :Ihmispelaaja
 STR_AI_RANDOM_AI                                                :Sattumanvarainen tekoäly
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Tekoälyn parametrit
-STR_AI_AUTHOR                                                   :Tekijä:
-STR_AI_VERSION                                                  :Versio:
+STR_AI_AUTHOR                                                   :Tekijä: {STRING}
+STR_AI_VERSION                                                  :Versio: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Yksi käynnissä olevista tekoälyistä kaatui. Ole hyvä ja kerro tästä tekoälyn tekijälle, sekä ota kuvankaappaus Tekoalyn Virheenkorjaus ikkunasta.
 ########
 

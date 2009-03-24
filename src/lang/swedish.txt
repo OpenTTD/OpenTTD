@@ -1713,12 +1713,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transpor
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subventioner
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Aktuella subventioner:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} från {STRING} till {STRING}
-STR_2028_BY                                                     :{YELLOW} (tills {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} från {STRING} till {STRING}{YELLOW} (tills {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Inga
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Redan subventionerade rutter:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} från {STATION} till {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, tills {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} från {STATION} till {STATION}{YELLOW} ({COMPANY}{YELLOW}, tills {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subventionen har gått ut:{}{}{STRING} från {STRING} till {STRING} är inte längre subventionerad
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subventionen gäller inte mer:{}{}{STRING} från {STATION} till {STATION} är inte längre subventionerad
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Ny subvention:{}{}Första transporten av {STRING} från {STRING} till {STRING} får ett års subvention från kommunen!
@@ -3177,9 +3175,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spelet s
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Egen valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Växlingskurs: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Avskiljare:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Ändelse:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Avskiljare: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Ändelse: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Går över till Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Går över till Euro: {ORANGE}aldrig
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Förhandsgranska: {ORANGE}{CURRENCY}
@@ -3581,8 +3579,8 @@ STR_AI_RESET                                                    :{BLACK}Återst�
 STR_AI_HUMAN_PLAYER                                             :Mänsklig spelare
 STR_AI_RANDOM_AI                                                :Slumpa datorspelare
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Datorspelarens parametrar
-STR_AI_AUTHOR                                                   :Upphovsman:
-STR_AI_VERSION                                                  :Version:
+STR_AI_AUTHOR                                                   :Upphovsman: {STRING}
+STR_AI_VERSION                                                  :Version: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}En av AI'erna som körs har krachat. Vänligen raportera detta till AIs skapare med en screenshot på "AI Debug Fönsteret".
 ########
 

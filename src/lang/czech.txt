@@ -1781,12 +1781,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Hodnocen
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Dotace
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Nabídnuté dotace pro službu:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING.big} z {STRING} do {STRING}
-STR_2028_BY                                                     :{YELLOW} (do {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING.big} z {STRING} do {STRING}{YELLOW} (do {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Nic
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Již přiznané dotace:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING.big} z {STATION} do {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING.big} z {STATION} do {STATION}{YELLOW} ({COMPANY}{YELLOW}, do {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Nabídka dotace přepravy vypršela:{}{}Dotace dopravy {STRING.gen} z{NBSP}{STRING} do {STRING} nebude dále nabízena.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Ukončení dotování dopravy:{}{}Dotace pro {STRING} z{NBSP}{STATION} do {STATION} již nebude dále poskytována.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nabídka dotace:{}{}Doprava {STRING.gen} z{NBSP}{STRING} do {STRING} bude jeden rok dotována místní správou!
@@ -3251,9 +3249,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Hra byla
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastní měna
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz měny: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Oddělovač:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Předpona:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Přípona:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Oddělovač: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Předpona: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Přípona: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Přechod k euru: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Přechod k euru: {ORANGE}nikdy
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Náhled: {ORANGE}{CURRENCY}
@@ -3655,8 +3653,8 @@ STR_AI_RESET                                                    :{BLACK}Obnovit 
 STR_AI_HUMAN_PLAYER                                             :Lidský hráč
 STR_AI_RANDOM_AI                                                :Náhodná AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametery AI
-STR_AI_AUTHOR                                                   :Autor:
-STR_AI_VERSION                                                  :Verze:
+STR_AI_AUTHOR                                                   :Autor: {STRING}
+STR_AI_VERSION                                                  :Verze: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Některá z bežících AI skončila s chybou. Prosím oznamte toto autorovi AI spolu se screenshotem okna Ladění AI.
 ########
 

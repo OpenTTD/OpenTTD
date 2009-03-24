@@ -1747,12 +1747,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Vélemé
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Támogatások
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Támogatás jár
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} szállításáért {STRING} és {STRING} között
-STR_2028_BY                                                     :{YELLOW} ({DATE_SHORT}ig)
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} szállításáért {STRING} és {STRING} között{YELLOW} ({DATE_SHORT}ig)
 STR_202A_NONE                                                   :{ORANGE}---
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Már támogatást kap
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} szállításáért {STATION} és {STATION} között {YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW} ({DATE_SHORT}ig)
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} szállításáért {STATION} és {STATION} között {YELLOW} ({COMPANY}{YELLOW} ({DATE_SHORT}ig)
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}A támogatás határideje lejárt:{}{}{STRING} szállításáért {STRING} és {STRING} között már nem jár támogatás.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Támogatás visszavonva:{}{}{STRING} szállítása {STATION} és {STATION} között már nem támogatott.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Támogatási ajánlat:{}{}Az első {STRING} szállító {STRING} és {STRING} között egy éves támogatást kap a helyi önkormányzattól!
@@ -3248,9 +3246,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}A játé
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Saját pénznem
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Értékarány: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Elválasztó:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Előtag:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Előtag:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Elválasztó: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Előtag: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Előtag: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Euróra váltás: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Euróra váltás: {ORANGE}soha
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Előnézet: {ORANGE}{CURRENCY}
@@ -3652,8 +3650,8 @@ STR_AI_RESET                                                    :{BLACK}Visszaá
 STR_AI_HUMAN_PLAYER                                             :Játékos
 STR_AI_RANDOM_AI                                                :Véletlenszerűen választott MI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}MI paraméterek
-STR_AI_AUTHOR                                                   :Készítő:
-STR_AI_VERSION                                                  :Verzió:
+STR_AI_AUTHOR                                                   :Készítő: {STRING}
+STR_AI_VERSION                                                  :Verzió: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Az egyik futó MI futása közben hiba történt. Kérjük jelezd ezt az MI készítőjének az MI nyomkövetés ablakról készített képpel.
 ########
 

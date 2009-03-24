@@ -1713,12 +1713,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transpor
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidies
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subsidies on offer for services taking:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} from {STRING} to {STRING}
-STR_2028_BY                                                     :{YELLOW} (by {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} from {STRING} to {STRING}{YELLOW} (by {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}None
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Services already subsidized:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} from {STATION} to {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, until {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} from {STATION} to {STATION}{YELLOW} ({COMPANY}{YELLOW}, until {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Offer of subsidy expired:{}{}{STRING} from {STRING} to {STRING} will now not attract a subsidy.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidy withdrawn:{}{}{STRING} service from {STATION} to {STATION} is no longer subsidized.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Service subsidy offered:{}{}First {STRING} service from {STRING} to {STRING} will attract a year's subsidy from the local authority!
@@ -3177,9 +3175,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game was
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Custom currency
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Exchange rate: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Switch to Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Switch to Euro: {ORANGE}never
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Preview: {ORANGE}{CURRENCY}
@@ -3581,8 +3579,8 @@ STR_AI_RESET                                                    :{BLACK}Reset
 STR_AI_HUMAN_PLAYER                                             :Human player
 STR_AI_RANDOM_AI                                                :Random AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
-STR_AI_AUTHOR                                                   :Author:
-STR_AI_VERSION                                                  :Version:
+STR_AI_AUTHOR                                                   :Author: {STRING}
+STR_AI_VERSION                                                  :Version: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}One of the running AIs crashed. Please report this to the AI author with a screenshot of the AI Debug Window.
 ########
 

@@ -1714,12 +1714,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Qualité
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subventions
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Offres de subvention pour le transport de:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} à {STRING}
-STR_2028_BY                                                     :{YELLOW} (avant {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} à {STRING}{YELLOW} (avant {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Aucune
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Subventions déjà accordées:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} de {STATION} à {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, jusqu'à {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} de {STATION} à {STATION}{YELLOW} ({COMPANY}{YELLOW}, jusqu'à {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Offre de subvention expirée:{}{}Le transport de {STRING} entre {STRING} et {STRING} n'est désormais plus subventionné.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Abandon de la subvention:{}{}Le transport de {STRING} entre {STATION} et {STATION} n'est plus subventionné.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Offre de subvention:{}{}Le premier service de {STRING} entre {STRING} et {STRING} sera subventionné pendant un an!
@@ -3178,9 +3176,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Partie s
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Devise personnalisée
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taux de change : {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Séparateur :
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Préfixe :
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffixe :
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Séparateur : {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Préfixe : {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffixe : {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Passer à l'Euro : {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Passer à l'Euro : {ORANGE}jamais
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prévisualisation : {ORANGE}{CURRENCY}
@@ -3582,8 +3580,8 @@ STR_AI_RESET                                                    :{BLACK}Réiniti
 STR_AI_HUMAN_PLAYER                                             :Joueur Humain
 STR_AI_RANDOM_AI                                                :IA aléatoire
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paramètres IA
-STR_AI_AUTHOR                                                   :Auteur:
-STR_AI_VERSION                                                  :Version:
+STR_AI_AUTHOR                                                   :Auteur: {STRING}
+STR_AI_VERSION                                                  :Version: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}L'une des IA a rencontré un problème. Merci de rapporter ceci à l'auteur de l'IA avec une capture d'écran de la fenêtre de débogage d'IA.
 ########
 

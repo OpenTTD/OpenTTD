@@ -1713,12 +1713,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Peringka
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidi
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Penawaran subsidi jasa transportasi:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} dari {STRING} ke {STRING}
-STR_2028_BY                                                     :{YELLOW} (sebelum {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} dari {STRING} ke {STRING}{YELLOW} (sebelum {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Belum ada
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Jasa transportasi bersubsidi:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} dari {STATION} ke {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, hingga {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} dari {STATION} ke {STATION}{YELLOW} ({COMPANY}{YELLOW}, hingga {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Penawaran subsidi berakhir:{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} mulai sekarang tidak lagi mendapat subsidi.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidi selesai:{}{}Jasa transportasi {STRING} dari {STATION} ke {STATION} tidak lagi mendapat subsidi.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Penawaran subsidi:{}{}Jasa transportasi {STRING} pertama dari {STRING} ke {STRING} akan mendapat subsidi selama setahun dari pemkot setempat!
@@ -3177,9 +3175,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game tel
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Atur Mata Uang
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Nilai tukar: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Pemisah:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Awalan:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Akhiran:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Pemisah: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Awalan: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Akhiran: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Menggunakan Euro tahun: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Menggunakan Euro: {ORANGE}tidak pernah
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Contoh: {ORANGE}{CURRENCY}
@@ -3581,8 +3579,8 @@ STR_AI_RESET                                                    :{BLACK}Reset
 STR_AI_HUMAN_PLAYER                                             :Pemain Manusia
 STR_AI_RANDOM_AI                                                :AI Acak
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parameter AI
-STR_AI_AUTHOR                                                   :Pembuat:
-STR_AI_VERSION                                                  :Versi:
+STR_AI_AUTHOR                                                   :Pembuat: {STRING}
+STR_AI_VERSION                                                  :Versi: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Salah satu AI gagal. Laporkan ini kepada AI Author dengan potongan layar dari Jendela Debug AI.
 ########
 

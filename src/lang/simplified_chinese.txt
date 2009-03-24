@@ -1707,12 +1707,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}对运�
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}财政补贴项目
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}尚未中标的项目：
-STR_2027_FROM_TO                                                :{ORANGE}将 {STRING} 从 {STRING} 运送到 {STRING}
-STR_2028_BY                                                     :{YELLOW} (截止日期为 {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}将 {STRING} 从 {STRING} 运送到 {STRING}{YELLOW} (截止日期为 {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}没有
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}已经中标的项目：
-STR_202C_FROM_TO                                                :{ORANGE}将 {STRING} 从 {STATION} 运送到 {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}，截止日期为 {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}将 {STRING} 从 {STATION} 运送到 {STATION}{YELLOW} ({COMPANY}{YELLOW}，截止日期为 {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}财政补贴项目到期：{}{}将 {STRING} 从 {STRING} 运送到 {STRING} 将不再获得财政补贴。
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}财政补贴项目流标：{}{}将 {STRING} 从 {STATION} 运送到 {STATION} 将不是财政补贴项目。
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}财政补贴项目招标：{}{}第一个将 {STRING} 从 {STRING} 运送到 {STRING} 的公司将获得地方政府为期一年的财政补贴！
@@ -3167,9 +3165,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}游戏�
 
 STR_CURRENCY_WINDOW                                             :{WHITE}自定义货币
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}兑换汇率： {ORANGE}{CURRENCY} = ￡ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}分隔符：
-STR_CURRENCY_PREFIX                                             :{LTBLUE}前缀：
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}后缀：
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}分隔符： {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}前缀： {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}后缀： {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}转换为欧元： {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}转换为欧元： {ORANGE}不转换
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}预览：{ORANGE}{CURRENCY}
@@ -3571,8 +3569,8 @@ STR_AI_RESET                                                    :{BLACK}重设
 STR_AI_HUMAN_PLAYER                                             :玩家
 STR_AI_RANDOM_AI                                                :随机 AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI 特征
-STR_AI_AUTHOR                                                   :作者:
-STR_AI_VERSION                                                  :版本:
+STR_AI_AUTHOR                                                   :作者: {STRING}
+STR_AI_VERSION                                                  :版本: {NUM}
 ########
 
 ############ town controlled noise level

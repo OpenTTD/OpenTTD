@@ -1693,12 +1693,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Рейт
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Субсидии
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Субсидии за превоз на:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} от {STRING} до {STRING}
-STR_2028_BY                                                     :{YELLOW} (от{DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} от {STRING} до {STRING}{YELLOW} (от{DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Николко
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Субсидирани превози на:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} от {STATION} до {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, до {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} от {STATION} до {STATION}{YELLOW} ({COMPANY}{YELLOW}, до {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Предложението за субсидия изтече:{}{}Превоз на {STRING} от {STRING} до {STRING} няма да спечели субсидия.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Изтеглена субсидия:{}{}Превоз на {STRING} от {STATION} до {STATION} вече не се субсидира.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Предложена субсидия:{}{}Първият превоз на {STRING} от {STRING} до {STRING} ще спечели едногодишна субсидия от местните власти!
@@ -3155,9 +3153,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Игра
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Парична единица
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменен курс: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделител:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Представка:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Надставка:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделител: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Представка: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Надставка: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Преобразуване в евро: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Преобразуване в евро: {ORANGE}никога
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Преглед: {ORANGE}{CURRENCY}
@@ -3549,8 +3547,8 @@ STR_AI_CLOSE                                                    :{BLACK}Затв
 STR_AI_HUMAN_PLAYER                                             :Човешки играч
 STR_AI_RANDOM_AI                                                :Случаен AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Параметри
-STR_AI_AUTHOR                                                   :Автор:
-STR_AI_VERSION                                                  :Версия:
+STR_AI_AUTHOR                                                   :Автор: {STRING}
+STR_AI_VERSION                                                  :Версия: {NUM}
 ########
 
 ############ town controlled noise level

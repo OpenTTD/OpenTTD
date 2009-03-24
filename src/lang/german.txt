@@ -1714,12 +1714,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Bewertun
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subventionen
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subventionsangebot für:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} von {STRING} nach {STRING}
-STR_2028_BY                                                     :{YELLOW} (bis {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} von {STRING} nach {STRING}{YELLOW} (bis {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Keine
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Bereits vergebene Subventionen:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} von {STATION} nach {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, bis {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} von {STATION} nach {STATION}{YELLOW} ({COMPANY}{YELLOW}, bis {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subventionsangebot abgelaufen:{}{}{STRING}transport von {STRING} nach {STRING} wird nicht mehr subventioniert.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subventionsende:{}{}{STRING}transport von {STATION} nach {STATION} wird nicht mehr subventioniert.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subventionsangebot:{}{}Erster {STRING}transport von {STRING} nach {STRING} wird ein Jahr von den örtlichen Behörden subventioniert!
@@ -3178,9 +3176,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spiel wu
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Eigene Währung
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wechselkurs: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Trennsymbol:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Präfix:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Trennsymbol: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Präfix: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Umstellung auf Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Umstellung auf Euro: {ORANGE}nie
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vorschau: {ORANGE}{CURRENCY}
@@ -3582,8 +3580,8 @@ STR_AI_RESET                                                    :{BLACK}Rückset
 STR_AI_HUMAN_PLAYER                                             :menschlicher Spieler
 STR_AI_RANDOM_AI                                                :Zufällige KI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}KI Parameter
-STR_AI_AUTHOR                                                   :Autor:
-STR_AI_VERSION                                                  :Version:
+STR_AI_AUTHOR                                                   :Autor: {STRING}
+STR_AI_VERSION                                                  :Version: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Einer der laufenden KIs ist abgestürzt. Es ist nett, den Fehler dem Autor der KI mittels eines Screenshots vom KI-Debug-Fenster unter Angabe der OpenTTD-Versionsnummer zu melden.
 ########
 

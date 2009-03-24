@@ -1755,12 +1755,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ocena tr
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsydia
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Oferta subsydiów dla usługi przewozu:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} z {STRING} do {STRING}
-STR_2028_BY                                                     :{YELLOW} (do {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} z {STRING} do {STRING}{YELLOW} (do {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Żadne
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Usługi już subsydiowane:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} z {STATION} do {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} z {STATION} do {STATION}{YELLOW} ({COMPANY}{YELLOW}, do {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsydiowanie wygasło:{}{}{STRING} z {STRING} do {STRING} już nie będzie dotowane.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Koniec dotacji:{}{}Przewóz {STRING.d} z {STATION} do {STATION} już nie jest subsydiowany.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Oferta usługi dotowanej:{}{}Pierwszy przewóz {STRING.d} z {STRING} do {STRING} będzie dotowany przez rok przez lokalne władze!
@@ -3260,9 +3258,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Gra zost
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Własna waluta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Współczynnik wymiany: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Przejście na Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Przejście na Euro: {ORANGE}nigdy
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Podgląd: {ORANGE}{CURRENCY}
@@ -3664,8 +3662,8 @@ STR_AI_RESET                                                    :{BLACK}Resetuj
 STR_AI_HUMAN_PLAYER                                             :Ludzki gracz
 STR_AI_RANDOM_AI                                                :Losowe SI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametry SI
-STR_AI_AUTHOR                                                   :Autor:
-STR_AI_VERSION                                                  :Wersja:
+STR_AI_AUTHOR                                                   :Autor: {STRING}
+STR_AI_VERSION                                                  :Wersja: {NUM}
 ########
 
 ############ town controlled noise level

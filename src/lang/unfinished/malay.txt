@@ -1005,7 +1005,6 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} m
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Penarafan syarikat pengangkutan:
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidi
-STR_202D_UNTIL                                                  :{YELLOW}, sehingga {DATE_SHORT})
 STR_2038_FLATS                                                  :Pangsapuri
 STR_203C_THEATER                                                :Panggung Wayang
 STR_203D_STADIUM                                                :Stadium

@@ -95,13 +95,11 @@ struct AIListWindow : public Window {
 		/* Some info about the currently selected AI. */
 		if (selected_info != NULL) {
 			int y = this->widget[AIL_WIDGET_INFO_BG].top + 6;
-			int x = DrawString(this->widget[AIL_WIDGET_LIST].left + 4, this->widget[AIL_WIDGET_LIST].right - 4, y, STR_AI_AUTHOR, TC_BLACK);
-			DrawString(x + 5, this->widget[AIL_WIDGET_LIST].right - 4, y, selected_info->GetAuthor(), TC_BLACK);
+			SetDParamStr(0, selected_info->GetAuthor());
+			DrawString(4, this->widget[AIL_WIDGET_INFO_BG].right - 4, y, STR_AI_AUTHOR, TC_BLACK);
 			y += 13;
-			x = DrawString(this->widget[AIL_WIDGET_LIST].left + 4, this->widget[AIL_WIDGET_LIST].right - 4, y, STR_AI_VERSION, TC_BLACK);
-			static char buf[8];
-			sprintf(buf, "%d", selected_info->GetVersion());
-			DrawString(x + 5, this->widget[AIL_WIDGET_LIST].right - 4, y, buf, TC_BLACK);
+			SetDParam(0, selected_info->GetVersion());
+			DrawString(4, this->widget[AIL_WIDGET_INFO_BG].right - 4, y, STR_AI_VERSION, TC_BLACK);
 			y += 13;
 			SetDParamStr(0, selected_info->GetDescription());
 			DrawStringMultiLine(4, this->width - 8, y, this->widget[AIL_WIDGET_INFO_BG].bottom, STR_JUST_RAW_STRING);

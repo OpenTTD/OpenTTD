@@ -1713,12 +1713,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ratis de
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvencions
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subvencions per prestació de serveis oferts:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} a {STRING}
-STR_2028_BY                                                     :{YELLOW} (per {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} a {STRING}{YELLOW} (per {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Cap
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Serveis ja subvencionats:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} des de {STATION} fins a {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, fins a {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} des de {STATION} fins a {STATION}{YELLOW} ({COMPANY}{YELLOW}, fins a {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Oferiment de subvenció caducada: {}{}{STRING} des de {STRING} fins a {STRING} s'ha declarat desert.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subvenció retirada:{}{}{STRING} des de {STATION} fins a {STATION} ja no està subvencionat.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subvenció per un servei oferta:{}{} El primer servei de {STRING} des de {STRING} fins a {STRING} tindrà una subvenció d'un any de l'autoritat local!
@@ -3177,9 +3175,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}El joc s
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalitzada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Canvi de moneda: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufix:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufix: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Canvi a Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Canvi a Euro: {ORANGE}mai
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vista prèvia: {ORANGE}{CURRENCY}
@@ -3581,8 +3579,8 @@ STR_AI_RESET                                                    :{BLACK}Reset
 STR_AI_HUMAN_PLAYER                                             :Jugador humà
 STR_AI_RANDOM_AI                                                :IA Aleatòria
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paràmetres IA
-STR_AI_AUTHOR                                                   :Autor:
-STR_AI_VERSION                                                  :Versió:
+STR_AI_AUTHOR                                                   :Autor: {STRING}
+STR_AI_VERSION                                                  :Versió: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Una de les IAs s'ha penjat. Si us plau reporta això a l'autor de la IA amb una captura de pantalla de la finestra de depuració IA.
 ########
 

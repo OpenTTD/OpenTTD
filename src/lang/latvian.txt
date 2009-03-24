@@ -1713,12 +1713,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transpor
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsīdijas
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Piedāvājumā esošās subsīdijas par pakalpojumu nodrošināšanu:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} no {STRING} līdz {STRING}
-STR_2028_BY                                                     :{YELLOW} (no {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} no {STRING} līdz {STRING}{YELLOW} (no {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Neviens
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Pašlaik subsidētie pakalpojumi:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} no {STATION} uz {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, līdz {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} no {STATION} uz {STATION}{YELLOW} ({COMPANY}{YELLOW}, līdz {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsīdijas piedāvājums beidzies:{}{}{STRING} no {STRING} uz {STRING} vairāk netiks subsidēts.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidēšana atcelta:{}{}{STRING} pārvadājumi no {STATION} uz {STATION} vairs netiek subsidēti.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subsīdijas piedāvājums:{}{}Pirmais {STRING} pārvadātājs no {STRING} uz {STRING} vienu gadu saņems pašvaldības subsīdijas!
@@ -3176,9 +3174,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spēle b
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Cita valūta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Maiņas kurss: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Atdalītājs:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefikss:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffikss:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Atdalītājs: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefikss: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffikss: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Pariet uz Eiro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Pariet uz Eiro: {ORANGE}nekad
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Priekšskatījums: {ORANGE}{CURRENCY}
@@ -3580,8 +3578,8 @@ STR_AI_RESET                                                    :{BLACK}Pārspie
 STR_AI_HUMAN_PLAYER                                             :Spēlētājs-cilvēks
 STR_AI_RANDOM_AI                                                :Nejaušš Al
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Ala Parametri
-STR_AI_AUTHOR                                                   :Autors:
-STR_AI_VERSION                                                  :Versija:
+STR_AI_AUTHOR                                                   :Autors: {STRING}
+STR_AI_VERSION                                                  :Versija: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Viens no mākslīgā intelekta spēlētājiem nobruka. Lūdzu paziņojiet par šo gadījumu mākslīgā intelekta autoram, pievienojot ekrānšāviņu ar mākslīgā intelekta atkļūdošanas logu.
 ########
 

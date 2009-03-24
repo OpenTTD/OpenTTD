@@ -1713,12 +1713,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ansportt
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Ubsidiessay
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Ubsidiessay onway offerway orfay ervicessay akingtay:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} omfray {STRING} otay {STRING}
-STR_2028_BY                                                     :{YELLOW} (ybay {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} omfray {STRING} otay {STRING}{YELLOW} (ybay {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Onenay
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Ervicessay alreadyway ubsidisedsay:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} omfray {STATION} otay {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, untilway {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} omfray {STATION} otay {STATION}{YELLOW} ({COMPANY}{YELLOW}, untilway {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Offerway ofway ubsidysay expiredway:{}{}{STRING} omfray {STRING} otay {STRING} illway ownay otnay attractway away ubsidysay.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Ubsidysay ithdrawnway:{}{}{STRING} ervicesay omfray {STATION} otay {STATION} isway onay ongerlay ubsidisedsay.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Ervicesay ubsidysay offeredway:{}{}Irstfay {STRING} ervicesay omfray {STRING} otay {STRING} illway attractway away ear'syay ubsidysay omfray ethay ocallay authorityway!
@@ -3177,9 +3175,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Amegay a
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Ustomcay urrencycay
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Exchangeway ateray: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Eparatorsay:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Efixpray:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Uffixsay:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Eparatorsay: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Efixpray: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Uffixsay: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Itchsway otay Euroway: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Itchsway otay Euroway: {ORANGE}evernay
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eviewpray: {ORANGE}{CURRENCY}
@@ -3581,8 +3579,8 @@ STR_AI_RESET                                                    :{BLACK}Esetray
 STR_AI_HUMAN_PLAYER                                             :Umanhay ayerplay
 STR_AI_RANDOM_AI                                                :Andomray AIWAY
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AIWAY Arameterspay
-STR_AI_AUTHOR                                                   :Authorway:
-STR_AI_VERSION                                                  :Ersionvay:
+STR_AI_AUTHOR                                                   :Authorway: {STRING}
+STR_AI_VERSION                                                  :Ersionvay: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Oneway ofway ethay unningray AIsway ashedcray. Easeplay eportray isthay otay ethay AIWAY authorway ithway away eenshotscray ofway ethay AIWAY Ebugday Indowway.
 ########
 

@@ -1713,12 +1713,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Taşıma
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Sübvansiyonlar
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Teklif edilmiş sübvansiyonlar:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} {STRING} -> {STRING}
-STR_2028_BY                                                     :{YELLOW} ({DATE_SHORT} tarihinden itibaren)
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} {STRING} -> {STRING}{YELLOW} ({DATE_SHORT} tarihinden itibaren)
 STR_202A_NONE                                                   :{ORANGE}Yok
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Verilen sübvansiyonlar:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} {STATION} -> {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, {DATE_SHORT} tarihine kadar)
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} {STATION} -> {STATION}{YELLOW} ({COMPANY}{YELLOW}, {DATE_SHORT} tarihine kadar)
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Sübvansiyon zamanı doldu: {}{}{STRING} {STRING} -> {STRING} artık fazla gelir getirmeyecek.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Sübvansiyon geri çekildi:{}{}{STRING} servisi {STATION} -> {STATION} arasında fazla gelir getirmeyecek.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Servis ihalesi önerildi: {}{} ilk {STRING} servisi {STRING} -> {STRING} arasında belediyeden prim alacak!
@@ -3177,9 +3175,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Oyun tra
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Özel Para Birimi
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Çarpan: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ayraç:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Önek:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sonek:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ayraç: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Önek: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sonek: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Euro'ya geç: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Euro'ya geç: {ORANGE}hiçbir zaman
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Önizleme: {ORANGE}{CURRENCY}
@@ -3581,8 +3579,8 @@ STR_AI_RESET                                                    :{BLACK}Yeniden 
 STR_AI_HUMAN_PLAYER                                             :İnsan oyuncu
 STR_AI_RANDOM_AI                                                :Rastgele YZ
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}YZ Parametreleri
-STR_AI_AUTHOR                                                   :Yazar:
-STR_AI_VERSION                                                  :Sürüm:
+STR_AI_AUTHOR                                                   :Yazar: {STRING}
+STR_AI_VERSION                                                  :Sürüm: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Çalışan YZ'lerden biri çakıldı. Lütfen bu durumu AI Hata Ayıklama Penceresi görüntüsüyle birlikte YZ'nin yazarına bildirin.
 ########
 

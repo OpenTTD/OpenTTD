@@ -1496,7 +1496,6 @@ struct CustomCurrencyWindow : Window {
 	virtual void OnPaint()
 	{
 		int const right = this->width - 1;
-		int x;
 		int y = 20;
 		this->DrawWidgets();
 
@@ -1509,20 +1508,20 @@ struct CustomCurrencyWindow : Window {
 
 		/* separator */
 		DrawFrameRect(10, y + 1, 29, y + 9, COLOUR_DARK_BLUE, GB(this->click, 2, 2) ? FR_LOWERED : FR_NONE);
-		x = DrawString(35, right, y + 1, STR_CURRENCY_SEPARATOR, TC_FROMSTRING);
-		DrawString(x + 4, right, y + 1, this->separator, TC_ORANGE);
+		SetDParamStr(0, this->separator);
+		DrawString(35, right, y + 1, STR_CURRENCY_SEPARATOR, TC_FROMSTRING);
 		y += 12;
 
 		/* prefix */
 		DrawFrameRect(10, y + 1, 29, y + 9, COLOUR_DARK_BLUE, GB(this->click, 4, 2) ? FR_LOWERED : FR_NONE);
-		x = DrawString(35, right, y + 1, STR_CURRENCY_PREFIX, TC_FROMSTRING);
-		DrawString(right, x + 4, y + 1, _custom_currency.prefix, TC_ORANGE);
+		SetDParamStr(0, _custom_currency.prefix);
+		DrawString(35, right, y + 1, STR_CURRENCY_PREFIX, TC_FROMSTRING);
 		y += 12;
 
 		/* suffix */
 		DrawFrameRect(10, y + 1, 29, y + 9, COLOUR_DARK_BLUE, GB(this->click, 6, 2) ? FR_LOWERED : FR_NONE);
-		x = DrawString(35, right, y + 1, STR_CURRENCY_SUFFIX, TC_FROMSTRING);
-		DrawString(x + 4, right, y + 1, _custom_currency.suffix, TC_ORANGE);
+		SetDParamStr(0, _custom_currency.suffix);
+		DrawString(35, right, y + 1, STR_CURRENCY_SUFFIX, TC_FROMSTRING);
 		y += 12;
 
 		/* switch to euro */

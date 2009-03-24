@@ -1711,12 +1711,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ettevõt
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Toetused
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Pakutavad toetused teenusepakkumise eest:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} kohast {STRING} kohta {STRING}
-STR_2028_BY                                                     :{YELLOW} (kuni {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} kohast {STRING} kohta {STRING}{YELLOW} (kuni {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Mitte ühtegi
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Juba toetatavad veoteenused:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} kohast {STATION} kohta {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, kuni {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} kohast {STATION} kohta {STATION}{YELLOW} ({COMPANY}{YELLOW}, kuni {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Toetuse pakkumine lõppes: {}{}{STRING.g} kohast {STRING} kohta {STRING} veoste eest ei maksta enam toetusi.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Toetuse maksmise aeg sai läbi:{}{}{STRING}kohast {STATION} kohta {STATION} eest ei maksta enam edaspidi toetust.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Veoteenusele pakutakse toetust:{}{}{STRING.g}veo eest linnast {STRING} linna {STRING}. Esimesele teenusepakkujale makstakse aasta läbi toetusi!
@@ -3155,9 +3153,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Mäng sa
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Isiklik valuuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vahetuskurss: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Vahemärk:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Eesliide:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Lõpuliide:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Vahemärk: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Eesliide: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Lõpuliide: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Vaheta üle eurole: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Vaheta üle eurole: {ORANGE}Mitte kunagi
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eelvaade: {ORANGE}{CURRENCY}
@@ -3539,8 +3537,8 @@ STR_AI_CANCEL                                                   :{BLACK}Loobu
 STR_AI_CLOSE                                                    :{BLACK}Sulge
 STR_AI_RESET                                                    :{BLACK}Nulli
 STR_AI_HUMAN_PLAYER                                             :Inimmängija
-STR_AI_AUTHOR                                                   :Autor:
-STR_AI_VERSION                                                  :Versioon:
+STR_AI_AUTHOR                                                   :Autor: {STRING}
+STR_AI_VERSION                                                  :Versioon: {NUM}
 ########
 
 ############ town controlled noise level

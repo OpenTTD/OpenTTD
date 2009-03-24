@@ -1637,12 +1637,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Puntuaci
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidios
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Sibsidios en oferta para sevicios que transporten:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} dende {STRING} ata {STRING}
-STR_2028_BY                                                     :{YELLOW} (antes de {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} dende {STRING} ata {STRING}{YELLOW} (antes de {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Ningún
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Servicios que xa teñen subsidio:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} dende {STATION} ata {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, ata {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} dende {STATION} ata {STATION}{YELLOW} ({COMPANY}{YELLOW}, ata {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Oferta de subsidio esgotada:{}{}{STRING} dende {STRING} ata {STRING} non será subsidiada.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidio retirado:{}{}O servicio de transporte de {STRING} dende {STATION} ata {STATION} xa non ten subsidio.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}¡Oferta de subsidio:{}{}O primeiro servicio de transporte de {STRING} dende {STRING} ata {STRING} será subsidiado pola autoridade local!
@@ -3081,9 +3079,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}A partid
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda persoalizada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de cambio: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador:
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufixo:
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufixo: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Cambiar a Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Camiar a Euro: {ORANGE}nunca
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vista previa: {ORANGE}{CURRENCY}

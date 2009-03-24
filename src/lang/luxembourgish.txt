@@ -1602,12 +1602,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transpor
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subventiounen
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subventiounen fir den Service:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} vun {STRING} op {STRING}
-STR_2028_BY                                                     :{YELLOW} (by {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} vun {STRING} op {STRING}{YELLOW} (by {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Keng
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Servicer mat Subventiounen:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} vun {STATION} op {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, bis {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} vun {STATION} op {STATION}{YELLOW} ({COMPANY}{YELLOW}, bis {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subventioun oofgelaaf:{}{}{STRING} vun {STRING} op {STRING} gët nët méi subventionéiert.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subventioun entzunn:{}{}{STRING} Service vun {STATION} op {STATION} gët nët méi subventionéiert.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subventioun offréiert:{}{}Eischten {STRING} Service vun {STRING} op {STRING} gëtt mat énger Subventioun vun 1 Joër belount.!
@@ -3104,8 +3102,8 @@ STR_AI_RESET                                                    :{BLACK}Reset
 STR_AI_HUMAN_PLAYER                                             :Mënschlechen Spiller
 STR_AI_RANDOM_AI                                                :Zoufälleg KI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}KI Anstellungen
-STR_AI_AUTHOR                                                   :Autor:
-STR_AI_VERSION                                                  :Versioun:
+STR_AI_AUTHOR                                                   :Autor: {STRING}
+STR_AI_VERSION                                                  :Versioun: {NUM}
 ########
 
 ############ town controlled noise level
