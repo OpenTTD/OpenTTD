@@ -559,7 +559,7 @@ static char *MakeCzechTownName(char *buf, const char *last, uint32 seed)
 		assert(i > 0);
 
 		/* Load the ending */
-		ending = map[SeedModChance(16, i, seed)];
+		ending = map[SeedModChance(16, (int)i, seed)];
 		/* Override possible CZG_*FREE; this must be a real gender,
 		 * otherwise we get overflow when modifying the adjectivum. */
 		gender = _name_czech_subst_ending[ending].gender;

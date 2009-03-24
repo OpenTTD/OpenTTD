@@ -880,9 +880,9 @@ static void DoDisaster()
 {
 	byte buf[lengthof(_disasters)];
 
-	size_t j = 0;
+	byte j = 0;
 	for (size_t i = 0; i != lengthof(_disasters); i++) {
-		if (_cur_year >= _disasters[i].min_year && _cur_year < _disasters[i].max_year) buf[j++] = i;
+		if (_cur_year >= _disasters[i].min_year && _cur_year < _disasters[i].max_year) buf[j++] = (byte)i;
 	}
 
 	if (j == 0) return;
