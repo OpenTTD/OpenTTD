@@ -3170,6 +3170,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF u
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Tas maina transportlīdzekļa garumu par '{1:ENGINE}' kad tas neatrodas depo ēkā.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vilciens '{VEHICLE}' kas pieder '{COMPANY}' ir ar nepareizu garumu. Iespējams vainīga problēma ar JaunoGRF. Spēle var pilnībā nedarboties.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' sniedz nekorektu informāciju.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spēle bija saglabāta bez tramvaju atbalsta. Visi tramvaji tikuši aizvākti.
 
@@ -3581,6 +3582,7 @@ STR_AI_RANDOM_AI                                                :Nejaušš Al
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Ala Parametri
 STR_AI_AUTHOR                                                   :Autors:
 STR_AI_VERSION                                                  :Versija:
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Viens no mākslīgā intelekta spēlētājiem nobruka. Lūdzu paziņojiet par šo gadījumu mākslīgā intelekta autoram, pievienojot ekrānšāviņu ar mākslīgā intelekta atkļūdošanas logu.
 ########
 
 ############ town controlled noise level
