@@ -18,6 +18,7 @@
 #include "core/sort_func.hpp"
 #include "landscape_type.h"
 #include "network/network_func.h"
+#include "core/smallvec_type.hpp"
 
 #include "table/palettes.h"
 #include "table/sprites.h"
@@ -394,42 +395,113 @@ static int TruncateString(char *str, int maxw)
  */
 static int DrawString(int left, int right, int top, char *str, const char *last, TextColour colour, StringAlignment align, bool underline = false, bool truncate = true)
 {
+	/* We need the outer limits of both left/right */
+	int min_left = INT32_MAX;
+	int max_right = INT32_MIN;
+
+	int initial_left = left;
+	int initial_right = right;
+	int initial_top = top;
+
 	if (truncate) TruncateString(str, right - left);
-	HandleBiDiAndArabicShapes(str, last);
 
-	int w = GetStringBoundingBox(str).width;
-
-	/* right is the right most position to draw on. In this case we want to do
-	 * calculations with the width of the string. In comparison right can be
-	 * seen as lastof(todraw) and width as lengthof(todraw). They differ by 1.
-	 * So most +1/-1 additions are to move from lengthof to 'indices'.
+	/*
+	 * To support SETX and SETXY properly with RTL languages we have to
+	 * calculate the offsets from the right. To do this we need to split
+	 * the string and draw the parts separated by SETX(Y).
+	 * So here we split
 	 */
-	switch (align) {
-		case SA_LEFT:
-			/* right + 1 = left + w */
-			right = left + w - 1;
-			break;
+	static SmallVector<char *, 4> setx_offsets;
+	setx_offsets.Clear();
+	*setx_offsets.Append() = str;
 
-		case SA_CENTER:
-			/* The second + 1 is to round to the closest number */
-			left  = (right + 1 + left - w + 1) / 2;
-			/* right + 1 = left + w */
-			right = left + w - 1;
-			break;
+	char *loc = str;
+	for (;;) {
+		WChar c;
+		/* We cannot use Utf8Consume as we need the location of the SETX(Y) */
+		size_t len = Utf8Decode(&c, loc);
+		if (c == '\0') break;
+		if (c != SCC_SETX && c != SCC_SETXY) {
+			loc += len;
+			continue;
+		}
 
-		case SA_RIGHT:
-			left = right + 1 - w;
-			break;
+		if (align != SA_LEFT) {
+			DEBUG(grf, 1, "Using SETX and/or SETXY when not aligned to the left. Fixing alignment...");
+			align = SA_LEFT;
+		}
 
-		default:
-			NOT_REACHED();
+		/* We add the begin of the string, but don't add it twice */
+		if (loc != str) *setx_offsets.Append() = loc;
+
+		/* Skip the SCC_SETX(Y) ... */
+		loc += len;
+		/* ... skip the x coordinate ... */
+		loc++;
+		/* ... and finally the y coordinate if it exists */
+		if (c == SCC_SETXY) loc++;
 	}
-	ReallyDoDrawString(str, left, top, colour, !truncate);
-	if (underline) {
-		GfxFillRect(left, top + 10, right, top + 10, _string_colourremap[1]);
+
+	/* In case we have a RTL language we swap the alignment. */
+	if (_dynlang.text_dir == TD_RTL && align != SA_CENTER) align = (StringAlignment)(align ^ 2);
+
+	/* Now draw the parts. This is done in the reverse order so we can give the
+	 * BiDi algorithm the room to replace characters. It also simplifies
+	 * 'ending' the strings. */
+	for (char **iter = setx_offsets.End(); iter-- != setx_offsets.Begin(); ) {
+		char *to_draw = *iter;
+		WChar c;
+		size_t len = Utf8Decode(&c, to_draw);
+		int offset = 0;
+
+		/* Skip the SETX(Y) and set the appropriate offsets. */
+		if (c == SCC_SETX || c == SCC_SETXY) {
+			*to_draw = '\0';
+			to_draw += len;
+			offset = *to_draw++;
+			if (c == SCC_SETXY) top = initial_top + *to_draw++;
+		}
+
+		HandleBiDiAndArabicShapes(to_draw, last);
+		int w = GetStringBoundingBox(to_draw).width;
+
+		/* right is the right most position to draw on. In this case we want to do
+		 * calculations with the width of the string. In comparison right can be
+		 * seen as lastof(todraw) and width as lengthof(todraw). They differ by 1.
+		 * So most +1/-1 additions are to move from lengthof to 'indices'.
+		 */
+		switch (align) {
+			case SA_LEFT:
+				/* right + 1 = left + w */
+				left = initial_left + offset;
+				right = left + w - 1;
+				break;
+
+			case SA_CENTER:
+				/* The second + 1 is to round to the closest number */
+				left  = (initial_right + 1 + initial_left - w + 1) / 2;
+				/* right + 1 = left + w */
+				right = left + w - 1;
+				break;
+
+			case SA_RIGHT:
+				left = initial_right + 1 - w - offset;
+				break;
+
+			default:
+				NOT_REACHED();
+		}
+
+		min_left  = min(left, min_left);
+		max_right = max(right, max_right);
+
+		ReallyDoDrawString(to_draw, left, top, colour, !truncate);
+		if (underline) {
+			GfxFillRect(left, top + 10, right, top + 10, _string_colourremap[1]);
+		}
 	}
 
-	return align == SA_RIGHT ? left : right;
+	return align == SA_RIGHT ? min_left : max_right;
 }
 
 /**
