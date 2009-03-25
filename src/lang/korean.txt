@@ -517,7 +517,7 @@ STR_01E4_0                                                      :{DKGREEN}{TINYF
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
-STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}트랙{SETX 88}제목
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}트랙{SETX 88}{BLACK}{TINYFONT}제목
 STR_01E9_SHUFFLE                                                :{TINYFONT}무작위
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}프로그램
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}음악 프로그램 선택

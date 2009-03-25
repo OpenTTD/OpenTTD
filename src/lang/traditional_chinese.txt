@@ -515,7 +515,7 @@ STR_01E4_0                                                      :{DKGREEN}{TINYF
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}「{STRING}」
-STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}音軌{SETX 88}標題
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}音軌{SETX 88}{BLACK}{TINYFONT}標題
 STR_01E9_SHUFFLE                                                :{TINYFONT}亂序
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}播放清單
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}背景音樂播放清單選擇

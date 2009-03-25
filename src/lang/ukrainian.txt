@@ -641,7 +641,7 @@ STR_01E4_0                                                      :{DKGREEN}{TINYF
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
-STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Доріжка{SETX 88}Заголовок
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Доріжка{SETX 88}{BLACK}{TINYFONT}Заголовок
 STR_01E9_SHUFFLE                                                :{TINYFONT}Випадково
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Програма
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Вибір музичної програми

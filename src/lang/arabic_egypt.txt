@@ -517,7 +517,7 @@ STR_01E4_0                                                      :{DKGREEN}{TINYF
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}-----
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
-STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT} مسار  {SETX 88} عنوان
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT} مسار  {SETX 88}{BLACK}{TINYFONT} عنوان
 STR_01E9_SHUFFLE                                                :{TINYFONT} عشوائي
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK} برنامج
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}برنامج اختيار الموسيقى

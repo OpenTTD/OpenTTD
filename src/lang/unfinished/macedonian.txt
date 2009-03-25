@@ -501,7 +501,7 @@ STR_01E4_0                                                      :{DKGREEN}{TINYF
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
-STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Песна{SETX 88}Наслов
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Песна{SETX 88}{BLACK}{TINYFONT}Наслов
 STR_01E9_SHUFFLE                                                :{TINYFONT}Измешај
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Програм
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Избор на музички програм

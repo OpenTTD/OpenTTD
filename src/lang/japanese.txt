@@ -515,7 +515,7 @@ STR_01E4_0                                                      :{DKGREEN}{TINYF
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
-STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}曲{SETX 88}タイトル
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}曲{SETX 88}{BLACK}{TINYFONT}タイトル
 STR_01E9_SHUFFLE                                                :{TINYFONT}シャッフル
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}プレイリスト
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}プレイリストの選択

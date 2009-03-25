@@ -517,7 +517,7 @@ STR_01E4_0                                                      :{DKGREEN}{TINYF
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
-STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}רצועה{SETX 88}כותרת
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}רצועה{SETX 88}{BLACK}{TINYFONT}כותרת
 STR_01E9_SHUFFLE                                                :{TINYFONT}ערבב
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}תכנית
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}בחירת תכנית מנגינה

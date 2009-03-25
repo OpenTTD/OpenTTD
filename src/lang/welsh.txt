@@ -516,7 +516,7 @@ STR_01E4_0                                                      :{DKGREEN}{TINYF
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
-STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Teitl{SETX 88}Trac
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Teitl{SETX 88}{BLACK}{TINYFONT}Trac
 STR_01E9_SHUFFLE                                                :{TINYFONT}Cymysgu Trefn
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Rhaglen
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Dewisiadau Rhaglen Gerddoriaeth

@@ -584,7 +584,7 @@ STR_01E4_0                                                      :{DKGREEN}{TINYF
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
-STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Skladba{SETX 88}Název
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Skladba{SETX 88}{BLACK}{TINYFONT}Název
 STR_01E9_SHUFFLE                                                :{TINYFONT}Náhodně
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Volba programu hudby

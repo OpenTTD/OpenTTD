@@ -516,7 +516,7 @@ STR_01E4_0                                                      :{DKGREEN}{TINYF
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
-STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Acktray{SETX 88}Itletay
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Acktray{SETX 88}{BLACK}{TINYFONT}Itletay
 STR_01E9_SHUFFLE                                                :{TINYFONT}Uffleshay
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Ogrammepray
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Usicmay Ogrammepray Electionsay
