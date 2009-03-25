@@ -577,6 +577,7 @@ const SettingDesc _settings[] = {
 	 SDTC_BOOL(network.autoclean_companies,              S, NO, false,                        STR_NULL,                                       NULL),
 	  SDTC_VAR(network.autoclean_unprotected, SLE_UINT8, S,D0|NO,  12,     0,         240, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.autoclean_protected,   SLE_UINT8, S,D0|NO,  36,     0,         240, 0, STR_NULL,                                       NULL),
+	  SDTC_VAR(network.autoclean_novehicles,  SLE_UINT8, S,D0|NO,   0,     0,         240, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.max_companies,         SLE_UINT8, S, NO,     8,     1,MAX_COMPANIES,0, STR_NULL,                                       UpdateClientConfigValues),
 	  SDTC_VAR(network.max_clients,           SLE_UINT8, S, NO,    16,     2, MAX_CLIENTS, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.max_spectators,        SLE_UINT8, S, NO,     8,     0, MAX_CLIENTS, 0, STR_NULL,                                       UpdateClientConfigValues),
