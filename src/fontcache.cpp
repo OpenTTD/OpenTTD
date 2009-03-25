@@ -13,6 +13,9 @@
 #include "table/sprites.h"
 #include "table/control_codes.h"
 
+/** Semi-constant for the height of the different sizes of fonts. */
+int _font_height[FS_END];
+
 #ifdef WITH_FREETYPE
 #include <ft2build.h>
 #include FT_FREETYPE_H
@@ -26,9 +29,6 @@ static FT_Library _library = NULL;
 static FT_Face _face_small = NULL;
 static FT_Face _face_medium = NULL;
 static FT_Face _face_large = NULL;
-
-/** Semi-constant for the height of the different sizes of fonts. */
-int _font_height[FS_END];
 
 FreeTypeSettings _freetype;
 
