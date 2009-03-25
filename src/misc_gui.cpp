@@ -1410,7 +1410,7 @@ void BuildFileList()
 	}
 }
 
-static void DrawFiosTexts(uint maxw)
+static void DrawFiosTexts(int left, int right)
 {
 	static const char *path = NULL;
 	static StringID str = STR_4006_UNABLE_TO_READ_DRIVE;
@@ -1422,8 +1422,8 @@ static void DrawFiosTexts(uint maxw)
 	}
 
 	if (str != STR_4006_UNABLE_TO_READ_DRIVE) SetDParam(0, tot);
-	DrawString(2, 2 + maxw, 37, str, TC_FROMSTRING);
-	DrawString(2, 2 + maxw, 27, path, TC_BLACK);
+	DrawString(left + 2, right - 2, 37, str, TC_FROMSTRING);
+	DrawString(left + 2, right - 2, 27, path, TC_BLACK);
 }
 
 static void MakeSortedSaveGameList()
@@ -1459,6 +1459,7 @@ private:
 		SLWW_WINDOWTITLE,
 		SLWW_SORT_BYNAME,
 		SLWW_SORT_BYDATE,
+		SLWW_BACKGROUND,
 		SLWW_HOME_BUTTON = 6,
 		SLWW_DRIVES_DIRECTORIES_LIST,
 		SLWW_CONTENT_DOWNLOAD = 9, ///< only available for play scenario/heightmap (content download)
@@ -1569,7 +1570,7 @@ public:
 
 		SetVScrollCount(this, _fios_items.Length());
 		this->DrawWidgets();
-		DrawFiosTexts(this->width);
+		DrawFiosTexts(this->widget[SLWW_BACKGROUND].left, this->widget[SLWW_BACKGROUND].right);
 
 		if (_savegame_sort_dirty) {
 			_savegame_sort_dirty = false;
@@ -1584,7 +1585,7 @@ public:
 		for (uint pos = this->vscroll.pos; pos < _fios_items.Length(); pos++) {
 			const FiosItem *item = _fios_items.Get(pos);
 
-			DrawString(4, widg->right - 2, y, item->title, _fios_colours[item->type]);
+			DrawString(widg->left + 4, widg->right - 2, y, item->title, _fios_colours[item->type]);
 			y += 10;
 			if (y >= this->vscroll.cap * 10 + widg->top + 1) break;
 		}
