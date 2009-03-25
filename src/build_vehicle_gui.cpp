@@ -388,7 +388,7 @@ static int DrawCargoCapacityInfo(int left, int right, int y, EngineID engine, Ve
 		SetDParam(1, cap[c]);
 		SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 		DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
-		y += 10;
+		y += FONT_HEIGHT_NORMAL;
 
 		/* Only show as refittable once */
 		refittable = false;
@@ -405,7 +405,7 @@ static int DrawRailWagonPurchaseInfo(int left, int right, int y, EngineID engine
 	/* Purchase cost */
 	SetDParam(0, e->GetCost());
 	DrawString(left, right, y, STR_PURCHASE_INFO_COST, TC_FROMSTRING);
-	y += 10;
+	y += FONT_HEIGHT_NORMAL;
 
 	/* Wagon weight - (including cargo) */
 	uint weight = e->GetDisplayWeight();
@@ -413,7 +413,7 @@ static int DrawRailWagonPurchaseInfo(int left, int right, int y, EngineID engine
 	uint cargo_weight = (e->CanCarryCargo() ? GetCargo(e->GetDefaultCargoType())->weight * e->GetDisplayDefaultCapacity() >> 4 : 0);
 	SetDParam(1, cargo_weight + weight);
 	DrawString(left, right, y, STR_PURCHASE_INFO_WEIGHT_CWEIGHT, TC_FROMSTRING);
-	y += 10;
+	y += FONT_HEIGHT_NORMAL;
 
 	/* Wagon speed limit, displayed if above zero */
 	if (_settings_game.vehicle.wagon_speed_limits) {
@@ -421,7 +421,7 @@ static int DrawRailWagonPurchaseInfo(int left, int right, int y, EngineID engine
 		if (max_speed > 0) {
 			SetDParam(0, max_speed);
 			DrawString(left, right, y, STR_PURCHASE_INFO_SPEED, TC_FROMSTRING);
-			y += 10;
+			y += FONT_HEIGHT_NORMAL;
 		}
 	}
 
@@ -429,7 +429,7 @@ static int DrawRailWagonPurchaseInfo(int left, int right, int y, EngineID engine
 	if (rvi->running_cost_class != 0xFF) {
 		SetDParam(0, e->GetRunningCost());
 		DrawString(left, right, y, STR_PURCHASE_INFO_RUNNINGCOST, TC_FROMSTRING);
-		y += 10;
+		y += FONT_HEIGHT_NORMAL;
 	}
 
 	return y;
@@ -444,26 +444,26 @@ static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engin
 	SetDParam(0, e->GetCost());
 	SetDParam(1, e->GetDisplayWeight());
 	DrawString(left, right, y, STR_PURCHASE_INFO_COST_WEIGHT, TC_FROMSTRING);
-	y += 10;
+	y += FONT_HEIGHT_NORMAL;
 
 	/* Max speed - Engine power */
 	SetDParam(0, e->GetDisplayMaxSpeed());
 	SetDParam(1, e->GetPower());
 	DrawString(left, right, y, STR_PURCHASE_INFO_SPEED_POWER, TC_FROMSTRING);
-	y += 10;
+	y += FONT_HEIGHT_NORMAL;
 
 	/* Max tractive effort - not applicable if old acceleration or maglev */
 	if (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && rvi->railtype != RAILTYPE_MAGLEV) {
 		SetDParam(0, e->GetDisplayMaxTractiveEffort());
 		DrawString(left, right, y, STR_PURCHASE_INFO_MAX_TE, TC_FROMSTRING);
-		y += 10;
+		y += FONT_HEIGHT_NORMAL;
 	}
 
 	/* Running cost */
 	if (rvi->running_cost_class != 0xFF) {
 		SetDParam(0, e->GetRunningCost());
 		DrawString(left, right, y, STR_PURCHASE_INFO_RUNNINGCOST, TC_FROMSTRING);
-		y += 10;
+		y += FONT_HEIGHT_NORMAL;
 	}
 
 	/* Powered wagons power - Powered wagons extra weight */
@@ -471,7 +471,7 @@ static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engin
 		SetDParam(0, rvi->pow_wag_power);
 		SetDParam(1, rvi->pow_wag_weight);
 		DrawString(left, right, y, STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT, TC_FROMSTRING);
-		y += 10;
+		y += FONT_HEIGHT_NORMAL;
 	};
 
 	return y;
@@ -486,12 +486,12 @@ static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_n
 	SetDParam(0, e->GetCost());
 	SetDParam(1, e->GetDisplayMaxSpeed());
 	DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED, TC_FROMSTRING);
-	y += 10;
+	y += FONT_HEIGHT_NORMAL;
 
 	/* Running cost */
 	SetDParam(0, e->GetRunningCost());
 	DrawString(left, right, y, STR_PURCHASE_INFO_RUNNINGCOST, TC_FROMSTRING);
-	y += 10;
+	y += FONT_HEIGHT_NORMAL;
 
 	return y;
 }
@@ -505,19 +505,19 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
 	SetDParam(0, e->GetCost());
 	SetDParam(1, e->GetDisplayMaxSpeed());
 	DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED, TC_FROMSTRING);
-	y += 10;
+	y += FONT_HEIGHT_NORMAL;
 
 	/* Cargo type + capacity */
 	SetDParam(0, e->GetDefaultCargoType());
 	SetDParam(1, e->GetDisplayDefaultCapacity());
 	SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 	DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
-	y += 10;
+	y += FONT_HEIGHT_NORMAL;
 
 	/* Running cost */
 	SetDParam(0, e->GetRunningCost());
 	DrawString(left, right, y, STR_PURCHASE_INFO_RUNNINGCOST, TC_FROMSTRING);
-	y += 10;
+	y += FONT_HEIGHT_NORMAL;
 
 	return y;
 }
@@ -532,7 +532,7 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
 	SetDParam(0, e->GetCost());
 	SetDParam(1, e->GetDisplayMaxSpeed());
 	DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED, TC_FROMSTRING);
-	y += 10;
+	y += FONT_HEIGHT_NORMAL;
 
 	/* Cargo capacity */
 	if (cargo == CT_INVALID || cargo == CT_PASSENGERS) {
@@ -547,12 +547,12 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
 		SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 		DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
 	}
-	y += 10;
+	y += FONT_HEIGHT_NORMAL;
 
 	/* Running cost */
 	SetDParam(0, e->GetRunningCost());
 	DrawString(left, right, y, STR_PURCHASE_INFO_RUNNINGCOST, TC_FROMSTRING);
-	y += 10;
+	y += FONT_HEIGHT_NORMAL;
 
 	return y;
 }
@@ -587,7 +587,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 				SetDParam(0, CT_INVALID);
 				SetDParam(2, STR_EMPTY);
 				DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
-				y += 10;
+				y += FONT_HEIGHT_NORMAL;
 			} else {
 				y = new_y;
 			}
@@ -603,7 +603,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 				SetDParam(0, CT_INVALID);
 				SetDParam(2, STR_EMPTY);
 				DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
-				y += 10;
+				y += FONT_HEIGHT_NORMAL;
 			} else {
 				y = new_y;
 			}
@@ -623,12 +623,12 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 		SetDParam(0, ymd.year);
 		SetDParam(1, e->lifelength);
 		DrawString(left, right, y, STR_PURCHASE_INFO_DESIGNED_LIFE, TC_FROMSTRING);
-		y += 10;
+		y += FONT_HEIGHT_NORMAL;
 
 		/* Reliability */
 		SetDParam(0, e->reliability * 100 >> 16);
 		DrawString(left, right, y, STR_PURCHASE_INFO_RELIABILITY, TC_FROMSTRING);
-		y += 10;
+		y += FONT_HEIGHT_NORMAL;
 	}
 
 	/* Additional text from NewGRF */

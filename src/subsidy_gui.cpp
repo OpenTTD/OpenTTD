@@ -34,7 +34,7 @@ struct SubsidyListWindow : Window {
 		uint num = 0;
 		for (const Subsidy *s = _subsidies; s != endof(_subsidies); s++) {
 			if (s->cargo_type != CT_INVALID && s->age < 12) {
-				y -= 10;
+				y -= FONT_HEIGHT_NORMAL;
 				if (y < 0) {
 					this->HandleClick(s);
 					return;
@@ -44,7 +44,7 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (num == 0) {
-			y -= 10; // "None"
+			y -= FONT_HEIGHT_NORMAL; // "None"
 			if (y < 0) return;
 		}
 
@@ -53,7 +53,7 @@ struct SubsidyListWindow : Window {
 
 		for (const Subsidy *s = _subsidies; s != endof(_subsidies); s++) {
 			if (s->cargo_type != CT_INVALID && s->age >= 12) {
-				y -= 10;
+				y -= FONT_HEIGHT_NORMAL;
 				if (y < 0) {
 					this->HandleClick(s);
 					return;
@@ -113,7 +113,7 @@ struct SubsidyListWindow : Window {
 
 		/* Section for drawing the offered subisidies */
 		DrawString(x, right, y, STR_2026_SUBSIDIES_ON_OFFER_FOR, TC_FROMSTRING);
-		y += 10;
+		y += FONT_HEIGHT_NORMAL;
 		uint num = 0;
 
 		for (s = _subsidies; s != endof(_subsidies); s++) {
@@ -123,19 +123,19 @@ struct SubsidyListWindow : Window {
 				SetDParam(7, _date - ymd.day + 384 - s->age * 32);
 				DrawString(x + 2, right - 2, y, STR_2027_FROM_TO, TC_FROMSTRING);
 
-				y += 10;
+				y += FONT_HEIGHT_NORMAL;
 				num++;
 			}
 		}
 
 		if (num == 0) {
 			DrawString(x + 2, right - 2, y, STR_202A_NONE, TC_FROMSTRING);
-			y += 10;
+			y += FONT_HEIGHT_NORMAL;
 		}
 
 		/* Section for drawing the already granted subisidies */
 		DrawString(x, right, y + 1, STR_202B_SERVICES_ALREADY_SUBSIDISED, TC_FROMSTRING);
-		y += 10;
+		y += FONT_HEIGHT_NORMAL;
 		num = 0;
 
 		for (s = _subsidies; s != endof(_subsidies); s++) {
@@ -147,7 +147,7 @@ struct SubsidyListWindow : Window {
 				/* Displays the two connected stations */
 				DrawString(x + 2, right - 2, y, STR_202C_FROM_TO, TC_FROMSTRING);
 
-				y += 10;
+				y += FONT_HEIGHT_NORMAL;
 				num++;
 			}
 		}
