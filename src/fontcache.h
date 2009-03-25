@@ -16,6 +16,8 @@ void SetUnicodeGlyph(FontSize size, uint32 key, SpriteID sprite);
 /** Initialize the glyph map */
 void InitializeUnicodeGlyphMap();
 
+void ResetFontSizes();
+
 #ifdef WITH_FREETYPE
 
 struct FreeTypeSettings {
@@ -51,8 +53,8 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 #else
 
 /* Stub for initializiation */
-static inline void InitFreeType() {}
-static inline void UninitFreeType() {}
+static inline void InitFreeType() { ResetFontSizes(); }
+static inline void UninitFreeType() { ResetFontSizes(); }
 
 /** Get the Sprite for a glyph */
 static inline const Sprite *GetGlyph(FontSize size, uint32 key)

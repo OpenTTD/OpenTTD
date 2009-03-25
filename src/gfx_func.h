@@ -158,13 +158,14 @@ byte GetCharacterWidth(FontSize size, uint32 key);
  */
 static inline byte GetCharacterHeight(FontSize size)
 {
-	switch (size) {
-		default: NOT_REACHED();
-		case FS_NORMAL: return 10;
-		case FS_SMALL:  return 6;
-		case FS_LARGE:  return 18;
-	}
+	assert(size < FS_END);
+	extern int _font_height[FS_END];
+	return _font_height[size];
 }
+
+#define FONT_HEIGHT_SMALL  (GetCharacterHeight(FS_SMALL))
+#define FONT_HEIGHT_NORMAL (GetCharacterHeight(FS_NORMAL))
+#define FONT_HEIGHT_LARGE  (GetCharacterHeight(FS_LARGE))
 
 extern DrawPixelInfo *_cur_dpi;
 

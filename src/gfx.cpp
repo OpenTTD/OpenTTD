@@ -816,7 +816,7 @@ static int ReallyDoDrawString(const char *string, int x, int y, TextColour colou
 		 * So if the string cannot be drawn, return the original start to say so.*/
 		if (x >= dpi->left + dpi->width || y >= dpi->top + dpi->height) return x;
 
-		if (colour != TC_INVALID) { // the invalid colour flag test should not  really occur.  But better be safe
+		if (colour != TC_INVALID) { // the invalid colour flag test should not really occur. But better be safe
 switch_colour:;
 			SetColourRemap(colour);
 		}

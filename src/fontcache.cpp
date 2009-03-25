@@ -27,6 +27,9 @@ static FT_Face _face_small = NULL;
 static FT_Face _face_medium = NULL;
 static FT_Face _face_large = NULL;
 
+/** Semi-constant for the height of the different sizes of fonts. */
+int _font_height[FS_END];
+
 FreeTypeSettings _freetype;
 
 enum {
@@ -529,6 +532,8 @@ static void LoadFreeTypeFont(const char *font_name, FT_Face *face, const char *t
 
 void InitFreeType()
 {
+	ResetFontSizes();
+
 	if (StrEmpty(_freetype.small_font) && StrEmpty(_freetype.medium_font) && StrEmpty(_freetype.large_font)) {
 		DEBUG(freetype, 1, "No font faces specified, using sprite fonts instead");
 		return;
@@ -547,9 +552,18 @@ void InitFreeType()
 	LoadFreeTypeFont(_freetype.large_font,  &_face_large,  "large");
 
 	/* Set each font size */
-	if (_face_small  != NULL) FT_Set_Pixel_Sizes(_face_small,  0, _freetype.small_size);
-	if (_face_medium != NULL) FT_Set_Pixel_Sizes(_face_medium, 0, _freetype.medium_size);
-	if (_face_large  != NULL) FT_Set_Pixel_Sizes(_face_large,  0, _freetype.large_size);
+	if (_face_small != NULL) {
+		FT_Set_Pixel_Sizes(_face_small, 0, _freetype.small_size);
+		_font_height[FS_SMALL] = _freetype.small_size;
+	}
+	if (_face_medium != NULL) {
+		FT_Set_Pixel_Sizes(_face_medium, 0, _freetype.medium_size);
+		_font_height[FS_NORMAL] = _freetype.medium_size;
+	}
+	if (_face_large != NULL) {
+		FT_Set_Pixel_Sizes(_face_large, 0, _freetype.large_size);
+		_font_height[FS_LARGE] = _freetype.large_size;
+	}
 }
 
 static void ResetGlyphCache();
@@ -571,6 +585,7 @@ static void UnloadFace(FT_Face *face)
  */
 void UninitFreeType()
 {
+	ResetFontSizes();
 	ResetGlyphCache();
 
 	UnloadFace(&_face_small);
@@ -782,6 +797,14 @@ uint GetGlyphWidth(FontSize size, WChar key)
 
 
 #endif /* WITH_FREETYPE */
+
+/** Reset the font sizes to the defaults of the sprite based fonts. */
+void ResetFontSizes()
+{
+	_font_height[FS_SMALL]  =  6;
+	_font_height[FS_NORMAL] = 10;
+	_font_height[FS_LARGE]  = 18;
+}
 
 /* Sprite based glyph mapping */
 
