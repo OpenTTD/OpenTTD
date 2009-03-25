@@ -46,16 +46,13 @@ struct RailVehicleInfo {
 	byte capacity;                  ///< Cargo capacity of vehicle; For multiheaded engines the capacity of each single engine.
 	CargoID cargo_type;
 	byte ai_rank;
-	byte ai_passenger_only; ///< Bit value to tell AI that this engine is for passenger use only
-	uint16 pow_wag_power;
-	byte pow_wag_weight;
-	byte visual_effect; // NOTE: this is not 100% implemented yet, at the moment it is only used as a 'fallback' value
-	                    //       for when the 'powered wagon' callback fails. But it should really also determine what
-	                    //       kind of visual effect to generate for a vehicle (default, steam, diesel, electric).
-	                    //       Same goes for the callback result, which atm is only used to check if a wagon is powered.
-	byte shorten_factor;   ///< length on main map for this type is 8 - shorten_factor
-	byte tractive_effort;  ///< Tractive effort coefficient
-	byte user_def_data;    ///< Property 0x25: "User-defined bit mask" Used only for (very few) NewGRF vehicles
+	byte ai_passenger_only;         ///< Bit value to tell AI that this engine is for passenger use only
+	uint16 pow_wag_power;           ///< Extra power applied to consist if wagon should be powered
+	byte pow_wag_weight;            ///< Extra weight applied to consist if wagon should be powered
+	byte visual_effect;             ///< Bitstuffed NewGRF visual effect data
+	byte shorten_factor;            ///< length on main map for this type is 8 - shorten_factor
+	byte tractive_effort;           ///< Tractive effort coefficient
+	byte user_def_data;             ///< Property 0x25: "User-defined bit mask" Used only for (very few) NewGRF vehicles
 };
 
 struct ShipVehicleInfo {
