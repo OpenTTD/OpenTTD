@@ -655,7 +655,7 @@ struct AIDebugWindow : public Window {
 		assert(info != NULL);
 		char name[1024];
 		snprintf(name, sizeof(name), "%s (v%d)", info->GetName(), info->GetVersion());
-		DrawString(7, this->widget[AID_WIDGET_VIEW].right, 47, name, TC_BLACK);
+		DrawString(this->widget[AID_WIDGET_NAME_TEXT].left + 7, this->widget[AID_WIDGET_NAME_TEXT].right - 7, 47, name, TC_BLACK, SA_CENTER);
 
 		CompanyID old_company = _current_company;
 		_current_company = ai_debug_company;
@@ -681,7 +681,7 @@ struct AIDebugWindow : public Window {
 				default:                  colour = TC_BLACK;  break;
 			}
 
-			DrawString(this->widget[AID_WIDGET_LOG_PANEL].left + 7, this->widget[AID_WIDGET_LOG_PANEL].right - 7, this->widget[AID_WIDGET_LOG_PANEL].top + y, log->lines[pos], colour);
+			DrawString(this->widget[AID_WIDGET_LOG_PANEL].left + 7, this->widget[AID_WIDGET_LOG_PANEL].right - 7, this->widget[AID_WIDGET_LOG_PANEL].top + y, log->lines[pos], colour, SA_LEFT | SA_FORCE);
 			y += 12;
 		}
 	}

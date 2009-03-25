@@ -426,7 +426,7 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 			continue;
 		}
 
-		if (align != SA_LEFT) {
+		if ((align & SA_MASK) != SA_LEFT) {
 			DEBUG(grf, 1, "Using SETX and/or SETXY when not aligned to the left. Fixing alignment...");
 			align = SA_LEFT;
 		}
@@ -443,7 +443,7 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 	}
 
 	/* In case we have a RTL language we swap the alignment. */
-	if (_dynlang.text_dir == TD_RTL && align != SA_CENTER) align = (StringAlignment)(align ^ 2);
+	if (!(align & SA_FORCE) && _dynlang.text_dir == TD_RTL && align != SA_CENTER) align ^= SA_RIGHT;
 
 	/* Now draw the parts. This is done in the reverse order so we can give the
 	 * BiDi algorithm the room to replace characters. It also simplifies
@@ -470,7 +470,7 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 		 * seen as lastof(todraw) and width as lengthof(todraw). They differ by 1.
 		 * So most +1/-1 additions are to move from lengthof to 'indices'.
 		 */
-		switch (align) {
+		switch (align & SA_MASK) {
 			case SA_LEFT:
 				/* right + 1 = left + w */
 				left = initial_left + offset;
