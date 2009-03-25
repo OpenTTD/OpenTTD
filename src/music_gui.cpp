@@ -432,8 +432,8 @@ public:
 			DrawString(this->widget[i + MW_ALL].left, this->widget[i + MW_ALL].right, 59, STR_01D5_ALL + i, msf.playlist == i ? TC_WHITE : TC_BLACK, SA_CENTER);
 		}
 
-		DrawString(this->widget[MW_NEXT].left, this->widget[MW_NEXT].right, 43, STR_01E9_SHUFFLE, (msf.shuffle ? TC_WHITE : TC_BLACK), SA_CENTER);
-		DrawString(this->widget[MW_PROGRAMME].left, this->widget[MW_PROGRAMME].right, 43, STR_01EA_PROGRAM, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->widget[MW_SHUFFLE].left, this->widget[MW_SHUFFLE].right, this->widget[MW_SHUFFLE].top + 1, STR_01E9_SHUFFLE, (msf.shuffle ? TC_WHITE : TC_BLACK), SA_CENTER);
+		DrawString(this->widget[MW_PROGRAMME].left, this->widget[MW_PROGRAMME].right, this->widget[MW_PROGRAMME].top + 1, STR_01EA_PROGRAM, TC_FROMSTRING, SA_CENTER);
 		DrawString(108, 174, 15, STR_01DB_MUSIC_VOLUME, TC_FROMSTRING, SA_CENTER);
 		DrawString(108, 174, 29, STR_01DD_MIN_MAX, TC_FROMSTRING, SA_CENTER);
 		DrawString(214, 280, 15, STR_01DC_EFFECTS_VOLUME, TC_FROMSTRING, SA_CENTER);
