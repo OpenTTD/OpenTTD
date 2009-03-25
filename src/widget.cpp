@@ -633,7 +633,8 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
 	if (state == SBS_OFF) return;
 
 	int offset = this->IsWidgetLowered(widget) ? 1 : 0;
-	DrawString(this->widget[widget].right - 11 + offset, this->widget[widget].right, this->widget[widget].top + 1 + offset, state == SBS_DOWN ? DOWNARROW : UPARROW, TC_BLACK);
+	int base = offset + (_dynlang.text_dir == TD_LTR ? this->widget[widget].right - 11 : this->widget[widget].left);
+	DrawString(base, base + 11, this->widget[widget].top + 1 + offset, state == SBS_DOWN ? DOWNARROW : UPARROW, TC_BLACK, SA_CENTER);
 }
 
 
