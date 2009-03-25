@@ -16,20 +16,21 @@
 
 #include "table/strings.h"
 
+/** Widget definitions for the waypoint window. */
+enum WaypointWindowWidgets {
+	WAYPVW_CLOSEBOX = 0,
+	WAYPVW_CAPTION,
+	WAYPVW_STICKY,
+	WAYPVW_VIEWPORTPANEL,
+	WAYPVW_SPACER,
+	WAYPVW_CENTERVIEW,
+	WAYPVW_RENAME,
+	WAYPVW_SHOW_TRAINS,
+};
+
 struct WaypointWindow : Window {
 private:
 	Waypoint *wp;
-
-	enum WaypointViewWidget {
-		WAYPVW_CLOSEBOX = 0,
-		WAYPVW_CAPTION,
-		WAYPVW_STICKY,
-		WAYPVW_VIEWPORTPANEL,
-		WAYPVW_SPACER,
-		WAYPVW_CENTERVIEW,
-		WAYPVW_RENAME,
-		WAYPVW_SHOW_TRAINS,
-	};
 
 public:
 	WaypointWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
@@ -111,11 +112,34 @@ static const Widget _waypoint_view_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_waypoint_view_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, WAYPVW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WAYPVW_CAPTION), SetMinimalSize(237, 14), SetDataTip(STR_WAYPOINT_VIEWPORT, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY, WAYPVW_STICKY),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, WAYPVW_VIEWPORTPANEL),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+			NWidget(WWT_INSET, COLOUR_GREY, WAYPVW_SPACER), SetMinimalSize(256, 88), SetResize(1, 1),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_CENTERVIEW), SetMinimalSize(122, 12), SetDataTip(STR_00E4_LOCATION, STR_3053_CENTER_MAIN_VIEW_ON_STATION),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_RENAME), SetMinimalSize(123, 12), SetDataTip(STR_0130_RENAME, STR_CHANGE_WAYPOINT_NAME),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_SHOW_TRAINS), SetMinimalSize(15, 12), SetDataTip(STR_TRAIN, STR_SCHEDULED_TRAINS_TIP),
+	EndContainer(),
+};
+
 static const WindowDesc _waypoint_view_desc(
 	WDP_AUTO, WDP_AUTO, 260, 118, 260, 118,
 	WC_WAYPOINT_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	_waypoint_view_widgets
+	_waypoint_view_widgets, _nested_waypoint_view_widgets, lengthof(_nested_waypoint_view_widgets)
 );
 
 void ShowWaypointWindow(const Waypoint *wp)
