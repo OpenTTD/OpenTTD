@@ -784,20 +784,18 @@ void ShowBuildRoadScenToolbar()
 	AllocateWindowDescFront<BuildRoadToolbarWindow>(&_build_road_scen_desc, 0);
 }
 
-struct BuildRoadDepotWindow : public PickerWindowBase {
-private:
-	/** Enum referring to the widgets of the build road depot window */
-	enum BuildRoadDepotWidgets {
-		BRDW_CLOSEBOX = 0,
-		BRDW_CAPTION,
-		BRDW_BACKGROUND,
-		BRDW_DEPOT_NE,
-		BRDW_DEPOT_SE,
-		BRDW_DEPOT_SW,
-		BRDW_DEPOT_NW,
-	};
+/** Enum referring to the widgets of the build road depot window */
+enum BuildRoadDepotWidgets {
+	BRDW_CLOSEBOX = 0,
+	BRDW_CAPTION,
+	BRDW_BACKGROUND,
+	BRDW_DEPOT_NE,
+	BRDW_DEPOT_SE,
+	BRDW_DEPOT_SW,
+	BRDW_DEPOT_NW,
+};
 
-public:
+struct BuildRoadDepotWindow : public PickerWindowBase {
 	BuildRoadDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
 		this->LowerWidget(_road_depot_orientation + BRDW_DEPOT_NE);
@@ -812,10 +810,10 @@ public:
 	{
 		this->DrawWidgets();
 
-		DrawRoadDepotSprite(70, 17, DIAGDIR_NE, _cur_roadtype);
-		DrawRoadDepotSprite(70, 69, DIAGDIR_SE, _cur_roadtype);
-		DrawRoadDepotSprite( 2, 69, DIAGDIR_SW, _cur_roadtype);
-		DrawRoadDepotSprite( 2, 17, DIAGDIR_NW, _cur_roadtype);
+		DrawRoadDepotSprite(this->widget[BRDW_DEPOT_NE].left - 1, this->widget[BRDW_DEPOT_NE].top, DIAGDIR_NE, _cur_roadtype);
+		DrawRoadDepotSprite(this->widget[BRDW_DEPOT_SE].left - 1, this->widget[BRDW_DEPOT_SE].top, DIAGDIR_SE, _cur_roadtype);
+		DrawRoadDepotSprite(this->widget[BRDW_DEPOT_SW].left - 1, this->widget[BRDW_DEPOT_SW].top, DIAGDIR_SW, _cur_roadtype);
+		DrawRoadDepotSprite(this->widget[BRDW_DEPOT_NW].left - 1, this->widget[BRDW_DEPOT_NW].top, DIAGDIR_NW, _cur_roadtype);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -850,11 +848,41 @@ static const Widget _build_road_depot_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_build_road_depot_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BRDW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BRDW_CAPTION), SetMinimalSize(129, 14), SetDataTip(STR_1806_ROAD_DEPOT_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRDW_BACKGROUND),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
+		NWidget(NWID_HORIZONTAL_LTR),
+			NWidget(NWID_SPACER), SetMinimalSize(3, 0),
+			NWidget(NWID_VERTICAL),
+				NWidget(WWT_PANEL, COLOUR_GREY, BRDW_DEPOT_NW), SetMinimalSize(66, 50), SetDataTip(0x0, STR_1813_SELECT_ROAD_VEHICLE_DEPOT),
+				EndContainer(),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+				NWidget(WWT_PANEL, COLOUR_GREY, BRDW_DEPOT_SW), SetMinimalSize(66, 50), SetDataTip(0x0, STR_1813_SELECT_ROAD_VEHICLE_DEPOT),
+				EndContainer(),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+			NWidget(NWID_VERTICAL),
+				NWidget(WWT_PANEL, COLOUR_GREY, BRDW_DEPOT_NE), SetMinimalSize(66, 50), SetDataTip(0x0, STR_1813_SELECT_ROAD_VEHICLE_DEPOT),
+				EndContainer(),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+				NWidget(WWT_PANEL, COLOUR_GREY, BRDW_DEPOT_SE), SetMinimalSize(66, 50), SetDataTip(0x0, STR_1813_SELECT_ROAD_VEHICLE_DEPOT),
+				EndContainer(),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(3, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
+	EndContainer(),
+};
+
 static const WindowDesc _build_road_depot_desc(
 	WDP_AUTO, WDP_AUTO, 140, 122, 140, 122,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_build_road_depot_widgets
+	_build_road_depot_widgets, _nested_build_road_depot_widgets, lengthof(_nested_build_road_depot_widgets)
 );
 
 static void ShowRoadDepotPicker(Window *parent)

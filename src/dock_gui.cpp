@@ -407,16 +407,17 @@ static void ShowBuildDockStationPicker(Window *parent)
 	new BuildDocksStationWindow(&_build_dock_station_desc, parent);
 }
 
+/** Widgets for the build ship depot window. */
+enum BuildDockDepotWidgets {
+	BDDW_CLOSE,
+	BDDW_CAPTION,
+	BDDW_BACKGROUND,
+	BDDW_X,
+	BDDW_Y,
+};
+
 struct BuildDocksDepotWindow : public PickerWindowBase {
 private:
-	enum BuildDockDepotWidgets {
-		BDDW_CLOSE,
-		BDDW_CAPTION,
-		BDDW_BACKGROUND,
-		BDDW_X,
-		BDDW_Y,
-	};
-
 	static void UpdateDocksDirection()
 	{
 		if (_ship_depot_direction != AXIS_X) {
@@ -469,11 +470,31 @@ static const Widget _build_docks_depot_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_build_docks_depot_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BDDW_CLOSE),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BDDW_CAPTION), SetMinimalSize(193, 14), SetDataTip(STR_3800_SHIP_DEPOT_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BDDW_BACKGROUND),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
+		NWidget(NWID_HORIZONTAL_LTR),
+			NWidget(NWID_SPACER), SetMinimalSize(3, 0),
+			NWidget(WWT_PANEL, COLOUR_GREY, BDDW_X), SetMinimalSize(98, 66), SetDataTip(0x0, STR_3803_SELECT_SHIP_DEPOT_ORIENTATION),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+			NWidget(WWT_PANEL, COLOUR_GREY, BDDW_Y), SetMinimalSize(98, 66), SetDataTip(0x0, STR_3803_SELECT_SHIP_DEPOT_ORIENTATION),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(3, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
+	EndContainer(),
+};
+
 static const WindowDesc _build_docks_depot_desc(
 	WDP_AUTO, WDP_AUTO, 204, 86, 204, 86,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_build_docks_depot_widgets
+	_build_docks_depot_widgets, _nested_build_docks_depot_widgets, lengthof(_nested_build_docks_depot_widgets)
 );
 
 
