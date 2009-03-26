@@ -342,16 +342,21 @@ STR_SORT_BY_LIFE_TIME                                           :Reschtlaafzäit
 STR_SORT_BY_FACILITY                                            :Statiounstyp
 STR_SORT_BY_WAITING                                             :Luedungswert
 STR_SORT_BY_RATING_MAX                                          :Luedungsbewertung
+STR_ENGINE_SORT_ENGINE_ID                                       :LokID (klassësch Sortéierung)
 STR_ENGINE_SORT_COST                                            :Käschten
+STR_ENGINE_SORT_POWER                                           :Kraaft
 STR_ENGINE_SORT_INTRO_DATE                                      :Aféirungsdatum
 STR_ENGINE_SORT_RUNNING_COST                                    :Betriebskäschten
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Kraaft/Betriebskäschten
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Luedungskapazitéit
 STR_NO_WAITING_CARGO                                            :{BLACK}Kéng Luedung
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Selektéier all d'Fabriken
+STR_SELECT_ALL_TYPES                                            :{BLACK}Wielt all Luedungstyp (ouni Luedung déi waart)
 STR_AVAILABLE_TRAINS                                            :{BLACK}Verfügbar Zich
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Verfügbar Gefiehrer
 STR_AVAILABLE_SHIPS                                             :{BLACK}Verfügbar Schëffer
 STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Verfügbar Fligern
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Lëscht vun allen Lokbauarten fir dëssen Typ weisen.
 STR_MANAGE_LIST                                                 :{BLACK}Verwaltungslëscht
 STR_MANAGE_LIST_TIP                                             :{BLACK}Schéckt d'Instructiounen un all Gefiehrer an der Lëscht
 STR_REPLACE_VEHICLES                                            :Gefiehrer ersetzen
@@ -548,14 +553,19 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmeni
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Industrieeröffnung
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Industrie gët zougemaacht
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Wirtschaftsännerungen
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Produktiounswiesel vun der Industrie dei vun der Firma betreit gët
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produktiounswiesel vun der Industrie dei vun der Konkurenz betreit gët
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Aanern Industriellen Produktiounswiesel
 STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Hinweis / Informatioun iwert Firmengefiehrter
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nei Gefhierter
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Ännerungen vun acceptéiert Luedungen
 STR_020E_SUBSIDIES                                              :{YELLOW}Subventiounen
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Generel Informatiounen
 STR_MESSAGES_ALL                                                :{YELLOW}Stellt all d'Meldungstypen op: Aus / Resumé / Ganz
+STR_MESSAGE_SOUND                                               :{YELLOW}Sound oofspillen fir zesummengefaasten Meldungen
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...ze wäit vun läschter destinatioun
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top Firmen dei {NUM} erreescht hun{}({STRING} Level)
+STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Firmenligatabell an {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Kaafmann
 STR_0214_ENTREPRENEUR                                           :Entrepreneur

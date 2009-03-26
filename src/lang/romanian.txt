@@ -1713,6 +1713,7 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Evaluare
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvenţii (F6)
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subvenţii disponibile:
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} de la {STRING} la {STRING}{YELLOW} (după {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}- nici una
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Subvenţii acordate la ora actuală:
 STR_202C_FROM_TO                                                :{ORANGE}- {STRING} de la {STATION} la {STATION}{YELLOW} ({COMPANY}{YELLOW}, până în {DATE_SHORT})
@@ -3168,7 +3169,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifica
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trenul '{VEHICLE}', apartinand '{COMPANY}' nu are o lungima valida. Crobabila este o problema cu fisierele NewGRF. Jocul s-ar putea desincroniza sau prabusi.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' produce informaţii incorecte.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE} Informatii despre Cargo/regarnisire penteru '{1:ENGINE}' difera de la lista de cumparare dupa constructie. Acest lucru ar putea provoca autorenovarea /- schimbarea sa nu reuseasca la regarnisirea corecta.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE} Datele despre marfa/regarnisire pentru '{1:ENGINE}' diferă de valorile iniţiale după construcţie. Acest lucru ar putea cauza eşuarea autorenovarii/schimbarii.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Jocul a fost salvat într-o versiune fără suport pentru tramvaie. Toate tramvaiele au fost eliminate.
 

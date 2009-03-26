@@ -3664,6 +3664,7 @@ STR_AI_RANDOM_AI                                                :Losowe SI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametry SI
 STR_AI_AUTHOR                                                   :Autor: {STRING}
 STR_AI_VERSION                                                  :Wersja: {NUM}
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Jedna z działających SI przestała działać. Prosimy o zaraportowanie tego autorowi SI dołączając zrzut ekranu okna debuga SI.
 ########
 
 ############ town controlled noise level

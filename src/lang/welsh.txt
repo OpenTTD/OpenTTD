@@ -667,7 +667,6 @@ STR_FULL                                                        :Llawn
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Cyfeiriadur Trefi
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Addasedig
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1198,6 +1197,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Does dim
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Adeiladu trac yn defnyddio'r modd Awtoreilffordd
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...nid oes tref yn y senario hwn
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Ataliwyd creu map...{}...nid oedd lleoliadau addas ar gyfer trefi
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Llawer o drefi ar hap
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Gorchuddio'r map gyda threfi wedi'i lleoli ar hap
@@ -2127,6 +2127,7 @@ STR_NUM_VERY_LOW                                                :Isel iawn
 STR_6816_LOW                                                    :Isel
 STR_6817_NORMAL                                                 :Arferol
 STR_6818_HIGH                                                   :Anodd
+STR_02BF_CUSTOM                                                 :Addasedig
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Araf Iawn
@@ -3167,6 +3168,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Mae ymdd
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Bydd yn newid hyd cerbyd i '{1:ENGINE}' pan na fyddd o fewn y depo.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Mae gan y trên'{VEHICLE}' sy'n eiddo i '{COMPANY}' hyd annilys. Mwy na thebyg fe'u hachoswyd gan NewGRFau. Gall y gêm ddadsyncroneiddio neu grasio.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}Mae NewGRF '{0:STRING}' yn darparu gwybodaeth anghywir.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Mae'r wybodaeth cargo/ailffitio ar gyfer '{1:ENGINE}' yn wahanol i'r rhestr brynu wedi'r adeiladu. Gall hyn beri i awtoadnewyddy/-ddisodli fethu ag ailfitio'n gywir.
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Cafodd y gêm ei gadw mewn fersiwn heb dram. Cafodd y tramiau eu dileu.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Arian cyfaddas
@@ -3577,6 +3581,7 @@ STR_AI_RANDOM_AI                                                :AI ar hap
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paramedrau AI
 STR_AI_AUTHOR                                                   :Awdur: {STRING}
 STR_AI_VERSION                                                  :Fersiwn: {NUM}
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Mae un o'r AIau a oedd yn rhedeg wedi crashio. Gyrrwch adroddiad am hyn i awdur yr AI ynghyd á llun sgrin o'r Ffenestr Ddadfygio.
 ########
 
 ############ town controlled noise level

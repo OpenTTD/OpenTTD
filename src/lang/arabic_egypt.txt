@@ -1714,8 +1714,10 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}تقيي
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}العروض
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}العروض المتاحة للخدمة:
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} من {STRING} الى {STRING}{YELLOW}  - حتى {DATE_SHORT} -
 STR_202A_NONE                                                   :{ORANGE}بدون
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}العروض المأخوذة
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} من {STATION} الى {STATION}{YELLOW} - {COMPANY}{YELLOW}, حتى  {DATE_SHORT}-
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT} اعلان عن انتهاء عرض {}{} نقل {STRING} من {STRING} الى {STRING} لن يعطي ارباح اضافية بعد الآن .
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}  تم سحب العرض {}{} نقل {STRING} من {STATION} الى {STATION} لم يعد معروض
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}اعلان عن عرض {}{} نقل اول {STRING} من {STRING} الى {STRING} سوف يعطي زيادة ارباح في السنة القادمة.
@@ -3174,6 +3176,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}اللع
 
 STR_CURRENCY_WINDOW                                             :{WHITE}عمله مخصصه
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}معامل التبديل: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE} فاصل العملة: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE} علامة العملة السابقة: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}  علامة العملة الاخيرة: {STRING}
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}حول إلى يورو : {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}حول إلى يورو : {ORANGE}أبدا
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}عرض: {ORANGE}{CURRENCY}
@@ -3236,6 +3241,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK} اعر�
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK} ازالة العربات: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK} المحافظة على طول القطار بازالة عربات ابتداء من المقدمة عند التبديل - عندما يكون التبدل ينتج قطارا اطول.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK} تبديل:  {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} بدل بين نافذة استبدال المحركات و العربات
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}العربة غير متاحة
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE} العربات غير متاحة
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE} السفن غير متاحة
@@ -3574,6 +3580,8 @@ STR_AI_RESET                                                    :{BLACK} اعا�
 STR_AI_HUMAN_PLAYER                                             :لاعب انساني
 STR_AI_RANDOM_AI                                                :ذكاء صناعي عشوائي
 STR_AI_SETTINGS_CAPTION                                         :{WHITE} خصائص الذكاء الصناعي
+STR_AI_AUTHOR                                                   :المؤلف: {STRING}
+STR_AI_VERSION                                                  :الاصدار:  {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE} واحد من الذكاء الصناعي فشل. الرجاء ابلاغ المبرمج عنه مصحوبا بصورة من شاشة مصحح الاخطاء.
 ########
 
