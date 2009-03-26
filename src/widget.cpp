@@ -1196,7 +1196,7 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 			this->SetFill(true, false);
 			this->SetResize(1, 0);
 			this->min_y = 14;
-			this->SetDataTip(0x0, STR_018C_WINDOW_TITLE_DRAG_THIS);
+			this->SetDataTip(data, STR_018C_WINDOW_TITLE_DRAG_THIS);
 			break;
 
 		case WWT_HSCROLLBAR:
