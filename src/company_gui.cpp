@@ -188,35 +188,39 @@ static void DrawCompanyEconomyStats(const Company *c, bool small)
 	DrawString(182 - 75, 182, y, STR_7028, TC_FROMSTRING, SA_RIGHT);
 }
 
+/** Widgets of the company finances windows */
 enum CompanyFinancesWindowWidgets {
-	CFW_WIDGET_TOGGLE_SIZE   = 2,
-	CFW_WIDGET_EXPS_PANEL    = 4,
-	CFW_WIDGET_TOTAL_PANEL   = 5,
-	CFW_WIDGET_INCREASE_LOAN = 6,
-	CFW_WIDGET_REPAY_LOAN    = 7,
+	CFW_CLOSEBOX = 0,  ///< Close the window
+	CFW_CAPTION,       ///< Caption of the window
+	CFW_TOGGLE_SIZE,   ///< Toggle windows size
+	CFW_STICKY,        ///< Sticky button
+	CFW_EXPS_PANEL,    ///< Panel for expenses
+	CFW_TOTAL_PANEL,   ///< Panel for totals
+	CFW_INCREASE_LOAN, ///< Increase loan
+	CFW_REPAY_LOAN,    ///< Decrease loan
 };
 
 static const Widget _company_finances_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,       0,      13, STR_00C5,               STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   379,       0,      13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   380,   394,       0,      13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   395,   406,       0,      13, 0x0,                    STR_STICKY_BUTTON},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   406,      14, 13 + 10, 0x0,                    STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   406, 14 + 10, 47 + 10, 0x0,                    STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   202, 48 + 10, 59 + 10, STR_7029_BORROW,        STR_7035_INCREASE_SIZE_OF_LOAN},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   203,   406, 48 + 10, 59 + 10, STR_702A_REPAY,         STR_7036_REPAY_PART_OF_LOAN},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},              // CFW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   379,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},    // CFW_CAPTION
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   380,   394,     0,    13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW}, // CFW_TOGGLE_SIZE
+{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   395,   406,     0,    13, 0x0,                    STR_STICKY_BUTTON},                  // CFW_STICKY
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   406,    14,    14, 0x0,                    STR_NULL},                           // CFW_EXPS_PANEL
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   406,    14,    47, 0x0,                    STR_NULL},                           // CFW_TOTAL_PANEL
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   202,    48,    59, STR_7029_BORROW,        STR_7035_INCREASE_SIZE_OF_LOAN},     // CFW_INCREASE_LOAN
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   203,   406,    48,    59, STR_702A_REPAY,         STR_7036_REPAY_PART_OF_LOAN},        // CFW_REPAY_LOAN
 {   WIDGETS_END},
 };
 
 static const Widget _company_finances_small_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   253,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   254,   267,     0,    13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   268,   279,     0,    13, 0x0,                    STR_STICKY_BUTTON},
-{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                    STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   279,    14,    47, STR_NULL,               STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   139,    48,    59, STR_7029_BORROW,        STR_7035_INCREASE_SIZE_OF_LOAN},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   140,   279,    48,    59, STR_702A_REPAY,         STR_7036_REPAY_PART_OF_LOAN},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},              // CFW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   253,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},    // CFW_CAPTION
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   254,   267,     0,    13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW}, // CFW_TOGGLE_SIZE
+{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   268,   279,     0,    13, 0x0,                    STR_STICKY_BUTTON},                  // CFW_STICKY
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                    STR_NULL},                           // CFW_EXPS_PANEL
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   279,    14,    47, STR_NULL,               STR_NULL},                           // CFW_TOTAL_PANEL
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   139,    48,    59, STR_7029_BORROW,        STR_7035_INCREASE_SIZE_OF_LOAN},     // CFW_INCREASE_LOAN
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   140,   279,    48,    59, STR_702A_REPAY,         STR_7036_REPAY_PART_OF_LOAN},        // CFW_REPAY_LOAN
 {   WIDGETS_END},
 };
 
@@ -248,32 +252,32 @@ struct CompanyFinancesWindow : Window {
 
 		if (!small) {
 			int type = _settings_client.gui.expenses_layout;
-			int height = this->widget[CFW_WIDGET_EXPS_PANEL].bottom - this->widget[CFW_WIDGET_EXPS_PANEL].top + 1;
+			int height = this->widget[CFW_EXPS_PANEL].bottom - this->widget[CFW_EXPS_PANEL].top + 1;
 			if (_expenses_list_types[type].height + 26 != height) {
 				this->SetDirty();
-				ResizeWindowForWidget(this, CFW_WIDGET_EXPS_PANEL, 0, _expenses_list_types[type].height - height + 26);
+				ResizeWindowForWidget(this, CFW_EXPS_PANEL, 0, _expenses_list_types[type].height - height + 26);
 				this->SetDirty();
 				return;
 			}
 		}
 
 		/* Recheck the size of the window as it might need to be resized due to the local company changing */
-		int new_height = this->widget[(company == _local_company) ? CFW_WIDGET_INCREASE_LOAN : CFW_WIDGET_TOTAL_PANEL].bottom + 1;
+		int new_height = this->widget[(company == _local_company) ? CFW_INCREASE_LOAN : CFW_TOTAL_PANEL].bottom + 1;
 		if (this->height != new_height) {
 			/* Make window dirty before and after resizing */
 			this->SetDirty();
 			this->height = new_height;
 			this->SetDirty();
 
-			this->SetWidgetHiddenState(CFW_WIDGET_INCREASE_LOAN, company != _local_company);
-			this->SetWidgetHiddenState(CFW_WIDGET_REPAY_LOAN,    company != _local_company);
+			this->SetWidgetHiddenState(CFW_INCREASE_LOAN, company != _local_company);
+			this->SetWidgetHiddenState(CFW_REPAY_LOAN,    company != _local_company);
 		}
 
 		/* Borrow button only shows when there is any more money to loan */
-		this->SetWidgetDisabledState(CFW_WIDGET_INCREASE_LOAN, c->current_loan == _economy.max_loan);
+		this->SetWidgetDisabledState(CFW_INCREASE_LOAN, c->current_loan == _economy.max_loan);
 
 		/* Repay button only shows when there is any more money to repay */
-		this->SetWidgetDisabledState(CFW_WIDGET_REPAY_LOAN, company != _local_company || c->current_loan == 0);
+		this->SetWidgetDisabledState(CFW_REPAY_LOAN, company != _local_company || c->current_loan == 0);
 
 		SetDParam(0, c->index);
 		SetDParam(1, c->index);
@@ -286,7 +290,7 @@ struct CompanyFinancesWindow : Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case CFW_WIDGET_TOGGLE_SIZE: {// toggle size
+			case CFW_TOGGLE_SIZE: {// toggle size
 				bool new_mode = !this->small;
 				bool stickied = !!(this->flags4 & WF_STICKY);
 				int oldtop = this->top;   ///< current top position of the window before closing it
@@ -299,11 +303,11 @@ struct CompanyFinancesWindow : Window {
 			}
 			break;
 
-			case CFW_WIDGET_INCREASE_LOAN: // increase loan
+			case CFW_INCREASE_LOAN: // increase loan
 				DoCommandP(0, 0, _ctrl_pressed, CMD_INCREASE_LOAN | CMD_MSG(STR_702C_CAN_T_BORROW_ANY_MORE_MONEY));
 				break;
 
-			case CFW_WIDGET_REPAY_LOAN: // repay loan
+			case CFW_REPAY_LOAN: // repay loan
 				DoCommandP(0, 0, _ctrl_pressed, CMD_DECREASE_LOAN | CMD_MSG(STR_702F_CAN_T_REPAY_LOAN));
 				break;
 		}
@@ -311,7 +315,7 @@ struct CompanyFinancesWindow : Window {
 };
 
 static const WindowDesc _company_finances_desc(
-	WDP_AUTO, WDP_AUTO, 407, 60 + 10, 407, 60 + 10,
+	WDP_AUTO, WDP_AUTO, 407, 60, 407, 60,
 	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_company_finances_widgets
