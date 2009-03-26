@@ -97,12 +97,12 @@ struct StatusBarWindow : Window {
 
 		this->DrawWidgets();
 		SetDParam(0, _date);
-		DrawString(this->widget[SBW_RIGHT].left + 1, this->widget[SBW_RIGHT].right - 1, 1, (_pause_game || _settings_client.gui.status_long_date) ? STR_00AF : STR_00AE, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->widget[SBW_LEFT].left + 1, this->widget[SBW_LEFT].right - 1, 1, (_pause_game || _settings_client.gui.status_long_date) ? STR_00AF : STR_00AE, TC_FROMSTRING, SA_CENTER);
 
 		if (c != NULL) {
 			/* Draw company money */
 			SetDParam(0, c->money);
-			DrawString(this->widget[SBW_LEFT].left + 1, this->widget[SBW_LEFT].right - 1, 1, STR_0004, TC_FROMSTRING, SA_CENTER);
+			DrawString(this->widget[SBW_RIGHT].left + 1, this->widget[SBW_RIGHT].right - 1, 1, STR_0004, TC_FROMSTRING, SA_CENTER);
 		}
 
 		/* Draw status bar */
