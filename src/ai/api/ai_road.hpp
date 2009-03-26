@@ -57,6 +57,14 @@ public:
 	};
 
 	/**
+	 * Determines whether a busstop or a truckstop is needed to transport a certain cargo.
+	 * @param cargo_type The cargo to test.
+	 * @pre AICargo::IsValidCargo(cargo_type).
+	 * @return The road vehicle type needed to transport the cargo.
+	 */
+	static RoadVehicleType GetRoadVehicleTypeForCargo(CargoID cargo_type);
+
+	/**
 	 * Checks whether the given tile is actually a tile with road that can be
 	 *  used to traverse a tile. This excludes road depots and 'normal' road
 	 *  stations, but includes drive through stations.

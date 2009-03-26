@@ -5,11 +5,17 @@
 #include "ai_road.hpp"
 #include "ai_map.hpp"
 #include "ai_station.hpp"
+#include "ai_cargo.hpp"
 #include "../../station_map.h"
 #include "../../command_type.h"
 #include "../../settings_type.h"
 #include "../../company_func.h"
 #include "../../script/squirrel_helper_type.hpp"
+
+/* static */ AIRoad::RoadVehicleType AIRoad::GetRoadVehicleTypeForCargo(CargoID cargo_type)
+{
+	return AICargo::HasCargoClass(cargo_type, AICargo::CC_PASSENGERS) ? ROADVEHTYPE_BUS : ROADVEHTYPE_TRUCK;
+}
 
 /* static */ bool AIRoad::IsRoadTile(TileIndex tile)
 {
