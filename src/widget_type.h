@@ -96,9 +96,10 @@ enum WidgetType {
 	WWT_LAST,       ///< Last Item. use WIDGETS_END to fill up padding!!
 
 	/* Nested widget types. */
-	NWID_HORIZONTAL,  ///< Horizontal container.
-	NWID_VERTICAL,    ///< Vertical container.
-	NWID_SPACER,      ///< Invisible widget that takes some space.
+	NWID_HORIZONTAL,     ///< Horizontal container.
+	NWID_HORIZONTAL_LTR, ///< Horizontal container that doesn't change the order of the widgets for RTL languages.
+	NWID_VERTICAL,       ///< Vertical container.
+	NWID_SPACER,         ///< Invisible widget that takes some space.
 
 	/* Nested widget part types. */
 	WPT_RESIZE,       ///< Widget part for specifying resizing.
@@ -212,6 +213,16 @@ public:
 	NWidgetHorizontal();
 
 	int ComputeMinimalSize();
+	void AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+
+	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
+};
+
+/** Horizontal container that doesn't change the direction of the widgets for RTL languages. */
+class NWidgetHorizontalLTR : public NWidgetHorizontal {
+public:
+	NWidgetHorizontalLTR();
+
 	void AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
 
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
@@ -428,7 +439,7 @@ static inline NWidgetPart NWidget(WidgetType tp, Colours col, int16 idx)
 
 /**
  * Widget part function for starting a new horizontal container, vertical container, or spacer widget.
- * @param tp Type of the new nested widget, #NWID_HORIZONTAL, #NWID_VERTICAL, or #NWID_SPACER
+ * @param tp Type of the new nested widget, #NWID_HORIZONTAL(_LTR), #NWID_VERTICAL, or #NWID_SPACER
  */
 static inline NWidgetPart NWidget(WidgetType tp)
 {

@@ -960,6 +960,21 @@ void NWidgetHorizontal::StoreWidgets(Widget *widgets, int length, bool left_movi
 	}
 }
 
+NWidgetHorizontalLTR::NWidgetHorizontalLTR() : NWidgetHorizontal()
+{
+	this->type = NWID_HORIZONTAL_LTR;
+}
+
+void NWidgetHorizontalLTR::AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+{
+	NWidgetHorizontal::AssignMinimalPosition(x, y, given_width, given_height, allow_resize_x, allow_resize_y, false);
+}
+
+void NWidgetHorizontalLTR::StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl)
+{
+	NWidgetHorizontal::StoreWidgets(widgets, length, left_moving, top_moving, false);
+}
+
 NWidgetVertical::NWidgetVertical() : NWidgetContainer(NWID_VERTICAL)
 {
 }
@@ -1346,6 +1361,11 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest)
 				*dest = new NWidgetHorizontal();
 				break;
 
+			case NWID_HORIZONTAL_LTR:
+				if (*dest != NULL) return num_used;
+				*dest = new NWidgetHorizontalLTR();
+				break;
+
 			case WWT_PANEL:
 			case WWT_INSET:
 			case WWT_FRAME:
@@ -1464,7 +1484,7 @@ static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase *pare
 
 		/* If sub-widget is a container, recursively fill that container. */
 		WidgetType tp = sub_widget->type;
-		if (tp == NWID_HORIZONTAL || tp == NWID_VERTICAL || tp == WWT_PANEL || tp == WWT_FRAME || tp == WWT_INSET) {
+		if (tp == NWID_HORIZONTAL || tp == NWID_HORIZONTAL_LTR || tp == NWID_VERTICAL || tp == WWT_PANEL || tp == WWT_FRAME || tp == WWT_INSET) {
 			int num_used = MakeWidgetTree(parts, count - total_used, sub_widget);
 			parts += num_used;
 			total_used += num_used;
