@@ -83,42 +83,62 @@ static const ExpensesList _expenses_list_types[] = {
 	{ _expenses_list_2, lengthof(_expenses_list_2), lengthof(_expenses_list_2) * 10 + 3 * 12 },
 };
 
-static void DrawCompanyEconomyStats(const Company *c, bool small)
+/** Widgets of the company finances windows */
+enum CompanyFinancesWindowWidgets {
+	CFW_CLOSEBOX = 0,  ///< Close the window
+	CFW_CAPTION,       ///< Caption of the window
+	CFW_TOGGLE_SIZE,   ///< Toggle windows size
+	CFW_STICKY,        ///< Sticky button
+	CFW_EXPS_PANEL,    ///< Panel for expenses
+	CFW_EXPS_CATEGORY, ///< Column for expenses category strings
+	CFW_EXPS_PRICE1,   ///< Column for year Y-2 expenses
+	CFW_EXPS_PRICE2,   ///< Column for year Y-1 expenses
+	CFW_EXPS_PRICE3,   ///< Column for year Y expenses
+	CFW_TOTAL_PANEL,   ///< Panel for totals
+	CFW_TOTAL_LABELS,  ///< Column for totals labels
+	CFW_TOTAL_VALUES,  ///< Column for totals values
+	CFW_TOTAL_MAXLOAN, ///< Column for max loan string
+	CFW_INCREASE_LOAN, ///< Increase loan
+	CFW_REPAY_LOAN,    ///< Decrease loan
+};
+
+static void DrawCompanyEconomyStats(const Company *c, bool small, const Widget *widget)
 {
 	int type = _settings_client.gui.expenses_layout;
-	int x, y, i, j, year;
+	int y;
 	const Money (*tbl)[EXPENSES_END];
 	StringID str;
 
 	if (!small) { // normal sized economics window
+		const Widget *w = &widget[CFW_EXPS_CATEGORY];
 		/* draw categories */
-		DrawString(0, 122, 15, STR_700F_EXPENDITURE_INCOME, TC_FROMSTRING, SA_CENTER, true);
+		DrawString(w->left, w->right, 15, STR_700F_EXPENDITURE_INCOME, TC_FROMSTRING, SA_CENTER, true);
 
 		y = 27;
-		for (i = 0; i < _expenses_list_types[type].length; i++) {
+		for (int i = 0; i < _expenses_list_types[type].length; i++) {
 			ExpensesType et = _expenses_list_types[type].et[i];
 			if (et == INVALID_EXPENSES) {
 				y += 2;
-				DrawString(2, 111, y, STR_7020_TOTAL, TC_FROMSTRING, SA_RIGHT);
+				DrawString(w->left + 2, w->right - 2, y, STR_7020_TOTAL, TC_FROMSTRING, SA_RIGHT);
 				y += 20;
 			} else {
-				DrawString(2, 111, y, STR_7011_CONSTRUCTION + et, TC_FROMSTRING);
+				DrawString(w->left + 2, w->right - 2, y, STR_7011_CONSTRUCTION + et, TC_FROMSTRING);
 				y += 10;
 			}
 		}
 
-		DrawString(0, 111, y + 2, STR_7020_TOTAL, TC_FROMSTRING, SA_RIGHT);
+		DrawString(w->left + 2, w->right - 2, y + 2, STR_7020_TOTAL, TC_FROMSTRING, SA_RIGHT);
 
 		/* draw the price columns */
-		year = _cur_year - 2;
-		j = 3;
-		x = 215;
+		int year = _cur_year - 2;
+		int j = 3;
+		w++;
 		tbl = c->yearly_expenses + 2;
 
 		do {
 			if (year >= c->inaugurated_year) {
 				SetDParam(0, year);
-				DrawString(x - 75, x, 15, STR_7010, TC_FROMSTRING, SA_RIGHT, true);
+				DrawString(w->left, w->right, 15, STR_7010, TC_FROMSTRING, SA_RIGHT, true);
 
 				Money sum = 0;
 				Money subtotal = 0;
@@ -130,7 +150,7 @@ static void DrawCompanyEconomyStats(const Company *c, bool small)
 					Money cost;
 
 					if (et == INVALID_EXPENSES) {
-						GfxFillRect(x - 75, y, x, y, 215);
+						GfxFillRect(w->left, y, w->right, y, 215);
 						cost = subtotal;
 						subtotal = 0;
 						y += 2;
@@ -144,7 +164,7 @@ static void DrawCompanyEconomyStats(const Company *c, bool small)
 						str = STR_701E;
 						if (cost < 0) { cost = -cost; str++; }
 						SetDParam(0, cost);
-						DrawString(x - 75, x, y, str, TC_FROMSTRING, SA_RIGHT);
+						DrawString(w->left, w->right, y, str, TC_FROMSTRING, SA_RIGHT);
 					}
 					y += (et == INVALID_EXPENSES) ? 20 : 10;
 				}
@@ -152,10 +172,10 @@ static void DrawCompanyEconomyStats(const Company *c, bool small)
 				str = STR_701E;
 				if (sum < 0) { sum = -sum; str++; }
 				SetDParam(0, sum);
-				DrawString(x - 75, x, y + 2, str, TC_FROMSTRING, SA_RIGHT);
+				DrawString(w->left, w->right, y + 2, str, TC_FROMSTRING, SA_RIGHT);
 
-				GfxFillRect(x - 75, y, x, y, 215);
-				x += 95;
+				GfxFillRect(w->left, y, w->right, y, 215);
+				w++;
 			}
 			year++;
 			tbl--;
@@ -165,48 +185,43 @@ static void DrawCompanyEconomyStats(const Company *c, bool small)
 
 		/* draw max loan aligned to loan below (y += 10) */
 		SetDParam(0, _economy.max_loan);
-		DrawString(202, 406, y + 10, STR_MAX_LOAN, TC_FROMSTRING);
+		DrawString(widget[CFW_TOTAL_MAXLOAN].left, widget[CFW_TOTAL_MAXLOAN].right, y + 10, STR_MAX_LOAN, TC_FROMSTRING);
 	} else {
 		y = 15;
 	}
 
-	DrawString(2, 182, y, STR_7026_BANK_BALANCE, TC_FROMSTRING);
+	DrawString(widget[CFW_TOTAL_LABELS].left, widget[CFW_TOTAL_LABELS].right, y, STR_7026_BANK_BALANCE, TC_FROMSTRING);
 	SetDParam(0, c->money);
-	DrawString(182 - 75, 182, y, STR_7028, TC_FROMSTRING, SA_RIGHT);
+	DrawString(widget[CFW_TOTAL_VALUES].left, widget[CFW_TOTAL_VALUES].right, y, STR_7028, TC_FROMSTRING, SA_RIGHT);
 
 	y += 10;
 
-	DrawString(2, 182, y, STR_7027_LOAN, TC_FROMSTRING);
+	DrawString(widget[CFW_TOTAL_LABELS].left, widget[CFW_TOTAL_LABELS].right, y, STR_7027_LOAN, TC_FROMSTRING);
 	SetDParam(0, c->current_loan);
-	DrawString(182 - 75, 182, y, STR_7028, TC_FROMSTRING, SA_RIGHT);
+	DrawString(widget[CFW_TOTAL_VALUES].left, widget[CFW_TOTAL_VALUES].right, y, STR_7028, TC_FROMSTRING, SA_RIGHT);
 
 	y += 12;
 
-	GfxFillRect(182 - 75, y - 2, 182, y - 2, 215);
+	GfxFillRect(widget[CFW_TOTAL_VALUES].left, y - 2, widget[CFW_TOTAL_VALUES].right, y - 2, 215);
 
 	SetDParam(0, c->money - c->current_loan);
-	DrawString(182 - 75, 182, y, STR_7028, TC_FROMSTRING, SA_RIGHT);
+	DrawString(widget[CFW_TOTAL_VALUES].left, widget[CFW_TOTAL_VALUES].right, y, STR_7028, TC_FROMSTRING, SA_RIGHT);
 }
-
-/** Widgets of the company finances windows */
-enum CompanyFinancesWindowWidgets {
-	CFW_CLOSEBOX = 0,  ///< Close the window
-	CFW_CAPTION,       ///< Caption of the window
-	CFW_TOGGLE_SIZE,   ///< Toggle windows size
-	CFW_STICKY,        ///< Sticky button
-	CFW_EXPS_PANEL,    ///< Panel for expenses
-	CFW_TOTAL_PANEL,   ///< Panel for totals
-	CFW_INCREASE_LOAN, ///< Increase loan
-	CFW_REPAY_LOAN,    ///< Decrease loan
-};
 
 static const Widget _company_finances_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},              // CFW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   379,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},    // CFW_CAPTION
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   380,   394,     0,    13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW}, // CFW_TOGGLE_SIZE
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   380,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},    // CFW_CAPTION
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   381,   394,     0,    13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW}, // CFW_TOGGLE_SIZE
 {  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   395,   406,     0,    13, 0x0,                    STR_STICKY_BUTTON},                  // CFW_STICKY
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   406,    14,    14, 0x0,                    STR_NULL},                           // CFW_EXPS_PANEL
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,   122,    14,    14, 0x0,                    STR_NULL},                           // CFW_EXPS_CATEGORY
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,   130,   215,    14,    14, 0x0,                    STR_NULL},                           // CFW_EXPS_PRICE1
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,   225,   310,    14,    14, 0x0,                    STR_NULL},                           // CFW_EXPS_PRICE2
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,   320,   405,    14,    14, 0x0,                    STR_NULL},                           // CFW_EXPS_PRICE3
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   406,    14,    47, 0x0,                    STR_NULL},                           // CFW_TOTAL_PANEL
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     2,    96,    14,    47, 0x0,                    STR_NULL},                           // CFW_TOTAL_LABELS
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,    97,   182,    14,    47, 0x0,                    STR_NULL},                           // CFW_TOTAL_VALUES
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,   202,   406,    14,    47, 0x0,                    STR_NULL},                           // CFW_TOTAL_MAXLOAN
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   202,    48,    59, STR_7029_BORROW,        STR_7035_INCREASE_SIZE_OF_LOAN},     // CFW_INCREASE_LOAN
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   203,   406,    48,    59, STR_702A_REPAY,         STR_7036_REPAY_PART_OF_LOAN},        // CFW_REPAY_LOAN
 {   WIDGETS_END},
@@ -218,7 +233,14 @@ static const Widget _company_finances_small_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   254,   267,     0,    13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW}, // CFW_TOGGLE_SIZE
 {  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   268,   279,     0,    13, 0x0,                    STR_STICKY_BUTTON},                  // CFW_STICKY
 {      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                    STR_NULL},                           // CFW_EXPS_PANEL
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   279,    14,    47, STR_NULL,               STR_NULL},                           // CFW_TOTAL_PANEL
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                    STR_NULL},                           // CFW_EXPS_CATEGORY
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                    STR_NULL},                           // CFW_EXPS_PRICE1
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                    STR_NULL},                           // CFW_EXPS_PRICE2
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                    STR_NULL},                           // CFW_EXPS_PRICE3
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   279,    14,    47, 0x0,                    STR_NULL},                           // CFW_TOTAL_PANEL
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     2,    96,    14,    47, 0x0,                    STR_NULL},                           // CFW_TOTAL_LABELS
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,    97,   182,    14,    47, 0x0,                    STR_NULL},                           // CFW_TOTAL_VALUES
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                    STR_NULL},                           // CFW_TOTAL_MAXLOAN
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   139,    48,    59, STR_7029_BORROW,        STR_7035_INCREASE_SIZE_OF_LOAN},     // CFW_INCREASE_LOAN
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   140,   279,    48,    59, STR_702A_REPAY,         STR_7036_REPAY_PART_OF_LOAN},        // CFW_REPAY_LOAN
 {   WIDGETS_END},
@@ -284,7 +306,7 @@ struct CompanyFinancesWindow : Window {
 		SetDParam(2, LOAN_INTERVAL);
 		this->DrawWidgets();
 
-		DrawCompanyEconomyStats(c, this->small);
+		DrawCompanyEconomyStats(c, this->small, this->widget);
 	}
 
 	virtual void OnClick(Point pt, int widget)
