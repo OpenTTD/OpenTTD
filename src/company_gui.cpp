@@ -208,6 +208,40 @@ static void DrawCompanyEconomyStats(const Company *c, bool small, const Widget *
 	DrawString(widget[CFW_TOTAL_VALUES].left, widget[CFW_TOTAL_VALUES].right, y, STR_7028, TC_FROMSTRING, SA_RIGHT);
 }
 
+static const NWidgetPart _nested_company_finances_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CFW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, CFW_CAPTION), SetMinimalSize(369, 14), SetDataTip(STR_700E_FINANCES, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, CFW_TOGGLE_SIZE), SetMinimalSize(14, 14), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY, CFW_STICKY),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, CFW_EXPS_PANEL),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_CATEGORY), SetMinimalSize(123, 0),
+			NWidget(NWID_SPACER), SetMinimalSize(7, 0),
+			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE1), SetMinimalSize(86, 0),
+			NWidget(NWID_SPACER), SetMinimalSize(9, 0),
+			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE2), SetMinimalSize(86, 0),
+			NWidget(NWID_SPACER), SetMinimalSize(9, 0),
+			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE3), SetMinimalSize(86, 0),
+			NWidget(NWID_SPACER), SetMinimalSize(1, 0),
+		EndContainer(),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, CFW_TOTAL_PANEL),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_TOTAL_LABELS), SetMinimalSize(95, 34),
+			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_TOTAL_VALUES), SetMinimalSize(86, 34),
+			NWidget(NWID_SPACER), SetMinimalSize(19, 0),
+			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_TOTAL_MAXLOAN), SetMinimalSize(205, 34),
+		EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CFW_INCREASE_LOAN), SetMinimalSize(203, 12), SetDataTip(STR_7029_BORROW, STR_7035_INCREASE_SIZE_OF_LOAN),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CFW_REPAY_LOAN), SetMinimalSize(204, 12), SetDataTip(STR_702A_REPAY, STR_7036_REPAY_PART_OF_LOAN),
+	EndContainer(),
+};
+
 static const Widget _company_finances_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},              // CFW_CLOSEBOX
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   380,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},    // CFW_CAPTION
@@ -225,6 +259,32 @@ static const Widget _company_finances_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   202,    48,    59, STR_7029_BORROW,        STR_7035_INCREASE_SIZE_OF_LOAN},     // CFW_INCREASE_LOAN
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   203,   406,    48,    59, STR_702A_REPAY,         STR_7036_REPAY_PART_OF_LOAN},        // CFW_REPAY_LOAN
 {   WIDGETS_END},
+};
+
+static const NWidgetPart _nested_company_finances_small_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CFW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, CFW_CAPTION), SetMinimalSize(243, 14), SetDataTip(STR_700E_FINANCES, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, CFW_TOGGLE_SIZE), SetMinimalSize(14, 14), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY, CFW_STICKY),
+	EndContainer(),
+	NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PANEL),
+	NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_CATEGORY),
+	NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE1),
+	NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE2),
+	NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE3),
+	NWidget(WWT_PANEL, COLOUR_GREY, CFW_TOTAL_PANEL),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_TOTAL_LABELS), SetMinimalSize(95, 34),
+			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_TOTAL_VALUES), SetMinimalSize(86, 34),
+			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_TOTAL_MAXLOAN), SetMinimalSize(97, 0),
+		EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CFW_INCREASE_LOAN), SetMinimalSize(140, 12), SetDataTip(STR_7029_BORROW, STR_7035_INCREASE_SIZE_OF_LOAN),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CFW_REPAY_LOAN), SetMinimalSize(140, 12), SetDataTip(STR_702A_REPAY, STR_7036_REPAY_PART_OF_LOAN),
+	EndContainer(),
 };
 
 static const Widget _company_finances_small_widgets[] = {
@@ -274,6 +334,9 @@ struct CompanyFinancesWindow : Window {
 
 		if (!small) {
 			int type = _settings_client.gui.expenses_layout;
+			if (this->widget[CFW_EXPS_PANEL].bottom < this->widget[CFW_EXPS_PANEL].top) {
+				this->widget[CFW_EXPS_PANEL].bottom = this->widget[CFW_EXPS_PANEL].top;
+			}
 			int height = this->widget[CFW_EXPS_PANEL].bottom - this->widget[CFW_EXPS_PANEL].top + 1;
 			if (_expenses_list_types[type].height + 26 != height) {
 				this->SetDirty();
@@ -340,14 +403,14 @@ static const WindowDesc _company_finances_desc(
 	WDP_AUTO, WDP_AUTO, 407, 60, 407, 60,
 	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	_company_finances_widgets
+	_company_finances_widgets, _nested_company_finances_widgets, lengthof(_nested_company_finances_widgets)
 );
 
 static const WindowDesc _company_finances_small_desc(
 	WDP_AUTO, WDP_AUTO, 280, 60, 280, 60,
 	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	_company_finances_small_widgets
+	_company_finances_small_widgets, _nested_company_finances_small_widgets, lengthof(_nested_company_finances_small_widgets)
 );
 
 /**
