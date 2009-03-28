@@ -17,8 +17,9 @@ void DropDownListItem::Draw(int left, int right, int top, int bottom, bool sel, 
 	int c1 = _colour_gradient[bg_colour][3];
 	int c2 = _colour_gradient[bg_colour][7];
 
-	GfxFillRect(left + 1, top + 3, right - 1, top + 3, c1);
-	GfxFillRect(left + 1, top + 4, right - 1, top + 4, c2);
+	int mid = top + this->Height(0) / 2;
+	GfxFillRect(left + 1, mid - 2, right - 1, mid - 2, c1);
+	GfxFillRect(left + 1, mid - 1, right - 1, mid - 1, c2);
 }
 
 uint DropDownListStringItem::Width() const

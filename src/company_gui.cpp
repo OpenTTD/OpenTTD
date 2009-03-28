@@ -480,7 +480,7 @@ public:
 
 	uint Height(uint width) const
 	{
-		return 14;
+		return max(FONT_HEIGHT_NORMAL, (byte)14);
 	}
 
 	bool Selectable() const
@@ -491,7 +491,7 @@ public:
 	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 	{
 		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + this->result, left + 16, top + 7);
-		DrawString(left + 32, right - 2, top + 3, this->String(), sel ? TC_WHITE : TC_BLACK);
+		DrawString(left + 32, right - 2, top + max(0, 13 - FONT_HEIGHT_NORMAL), this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
 };
 
