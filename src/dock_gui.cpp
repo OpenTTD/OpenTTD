@@ -289,7 +289,7 @@ void ShowBuildDocksToolbar()
 	AllocateWindowDescFront<BuildDocksToolbarWindow>(&_build_docks_toolbar_desc, TRANSPORT_WATER);
 }
 
-/* Widget definition for the build docks in scenario editor window */
+/** Widget definition for the build docks in scenario editor window. */
 static const Widget _build_docks_scen_toolb_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_00C5,                           STR_018B_CLOSE_WINDOW},           // DTW_CLOSEBOX
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   102,     0,    13, STR_9801_WATERWAYS_CONSTRUCTION_SE, STR_018C_WINDOW_TITLE_DRAG_THIS}, // DTW_CAPTION
@@ -308,7 +308,7 @@ static const Widget _build_docks_scen_toolb_widgets[] = {
 {   WIDGETS_END},
 };
 
-/* Window definition for the build docks in scenario editor window */
+/** Window definition for the build docks in scenario editor window. */
 static const WindowDesc _build_docks_scen_toolbar_desc(
 	WDP_AUTO, WDP_AUTO, 115, 36, 115, 36,
 	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
