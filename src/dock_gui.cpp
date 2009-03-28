@@ -389,8 +389,8 @@ static const Widget _build_dock_station_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},             // BDSW_CLOSE
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   147,     0,    13, STR_3068_DOCK,                    STR_018C_WINDOW_TITLE_DRAG_THIS},   // BDSW_CAPTION
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,   147,    14,    74, 0x0,                              STR_NULL},                          // BDSW_BACKGROUND
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          14,    73,    30,    40, STR_02DB_OFF,                     STR_3065_DON_T_HIGHLIGHT_COVERAGE}, // BDSW_LT_OFF
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          74,   133,    30,    40, STR_02DA_ON,                      STR_3064_HIGHLIGHT_COVERAGE_AREA},  // BDSW_LT_ON
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          14,    73,    31,    42, STR_02DB_OFF,                     STR_3065_DON_T_HIGHLIGHT_COVERAGE}, // BDSW_LT_OFF
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          74,   133,    31,    42, STR_02DA_ON,                      STR_3064_HIGHLIGHT_COVERAGE_AREA},  // BDSW_LT_ON
 {      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,   147,    17,    30, STR_3066_COVERAGE_AREA_HIGHLIGHT, STR_NULL},                          // BDSW_INFO
 {   WIDGETS_END},
 };
