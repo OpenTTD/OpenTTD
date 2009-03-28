@@ -743,12 +743,15 @@
     GetMinLength():     -1
   Valid Bridges:        10
   IsBridgeTile():       false
+  GetBridgeID():        -1
   RemoveBridge():       false
   GetLastErrorString(): ERR_PRECONDITION_FAILED
   GetOtherBridgeEnd():  -1
   BuildBridge():        true
   IsBridgeTile():       true
+  GetBridgeID():        5
   IsBridgeTile():       true
+  GetBridgeID():        5
   GetOtherBridgeEnd():  33155
   BuildBridge():        false
   GetLastErrorString(): ERR_ALREADY_BUILT

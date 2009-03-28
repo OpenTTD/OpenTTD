@@ -256,12 +256,15 @@ function Regression::Bridge()
 	print("  Valid Bridges:        " + j);
 
 	print("  IsBridgeTile():       " + AIBridge.IsBridgeTile(33160));
+	print("  GetBridgeID():        " + AIBridge.GetBridgeID(33160));
 	print("  RemoveBridge():       " + AIBridge.RemoveBridge(33155));
 	print("  GetLastErrorString(): " + AIError.GetLastErrorString());
 	print("  GetOtherBridgeEnd():  " + AIBridge.GetOtherBridgeEnd(33160));
 	print("  BuildBridge():        " + AIBridge.BuildBridge(AIVehicle.VT_ROAD, 5, 33160, 33155));
 	print("  IsBridgeTile():       " + AIBridge.IsBridgeTile(33160));
+	print("  GetBridgeID():        " + AIBridge.GetBridgeID(33160));
 	print("  IsBridgeTile():       " + AIBridge.IsBridgeTile(33155));
+	print("  GetBridgeID():        " + AIBridge.GetBridgeID(33155));
 	print("  GetOtherBridgeEnd():  " + AIBridge.GetOtherBridgeEnd(33160));
 	print("  BuildBridge():        " + AIBridge.BuildBridge(AIVehicle.VT_ROAD, 5, 33160, 33155));
 	print("  GetLastErrorString(): " + AIError.GetLastErrorString());

@@ -23,6 +23,12 @@
 	return ::IsBridgeTile(tile);
 }
 
+/* static */ BridgeID AIBridge::GetBridgeID(TileIndex tile)
+{
+	if (!IsBridgeTile(tile)) return -1;
+	return (BridgeID)::GetBridgeType(tile);
+}
+
 static void _DoCommandReturnBuildBridge2(class AIInstance *instance)
 {
 	if (!AIBridge::_BuildBridgeRoad2()) {
