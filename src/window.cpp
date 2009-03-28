@@ -285,7 +285,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 		/* If clicked on a window that previously did dot have focus */
 		if (_focused_window != w &&
 				(w->desc_flags & WDF_NO_FOCUS) == 0 &&           // Don't lose focus to toolbars
-				!(w->desc_flags & WDF_STD_BTN && widget == 0)) { // Don't change focused window if 'X' (close button) was clicked
+				!(w->desc_flags & WDF_STD_BTN && w->widget[widget].type == WWT_CLOSEBOX)) { // Don't change focused window if 'X' (close button) was clicked
 			focused_widget_changed = true;
 			if (_focused_window != NULL) {
 				_focused_window->OnFocusLost();
@@ -348,12 +348,12 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 		if (HideDropDownMenu(w) == widget) return;
 
 		if (w->desc_flags & WDF_STD_BTN) {
-			if (widget == 0) { // 'X'
+			if (w->widget[widget].type == WWT_CLOSEBOX) { // 'X'
 				delete w;
 				return;
 			}
 
-			if (widget == 1) { // 'Title bar'
+			if (w->widget[widget].type == WWT_CAPTION) { // 'Title bar'
 				StartWindowDrag(w);
 				return;
 			}
