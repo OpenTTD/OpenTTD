@@ -25,7 +25,7 @@
 
 /* static */ BridgeID AIBridge::GetBridgeID(TileIndex tile)
 {
-	if (!IsBridgeTile(tile)) return -1;
+	if (!IsBridgeTile(tile)) return (BridgeID)-1;
 	return (BridgeID)::GetBridgeType(tile);
 }
 
