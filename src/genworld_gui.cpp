@@ -895,6 +895,11 @@ void ShowCreateScenario()
 	new CreateScenarioWindow(&_create_scenario_desc, GLWP_SCENARIO);
 }
 
+enum GenerationProgressWindowWidgets {
+	GPWW_CAPTION,
+	GPWW_BACKGROUND,
+	GPWW_ABORT,
+};
 
 static const Widget _generate_progress_widgets[] = {
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    0,   180,     0,    13, STR_GENERATION_WORLD,   STR_018C_WINDOW_TITLE_DRAG_THIS}, // GPWW_CAPTION
@@ -903,11 +908,23 @@ static const Widget _generate_progress_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_generate_progress_widgets[] = {
+	NWidget(WWT_CAPTION, COLOUR_GREY, GPWW_CAPTION), SetDataTip(STR_GENERATION_WORLD, STR_018C_WINDOW_TITLE_DRAG_THIS),
+	NWidget(WWT_PANEL, COLOUR_GREY, GPWW_BACKGROUND),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 60),
+		NWidget(NWID_HORIZONTAL), SetPIP(20, 0, 19),
+			NWidget(WWT_TEXTBTN, COLOUR_WHITE, GPWW_ABORT), SetMinimalSize(142, 12), SetDataTip(STR_GENERATION_ABORT, STR_NULL),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 11),
+	EndContainer(),
+};
+
+
 static const WindowDesc _generate_progress_desc(
 	WDP_CENTER, WDP_CENTER, 181, 97, 181, 97,
 	WC_GENERATE_PROGRESS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_generate_progress_widgets
+	_generate_progress_widgets, _nested_generate_progress_widgets, lengthof(_nested_generate_progress_widgets)
 );
 
 struct tp_info {
@@ -930,14 +947,7 @@ static void AbortGeneratingWorldCallback(Window *w, bool confirmed)
 }
 
 struct GenerateProgressWindow : public Window {
-private:
-	enum GenerationProgressWindowWidgets {
-		GPWW_CAPTION,
-		GPWW_BACKGROUND,
-		GPWW_ABORT,
-	};
 
-public:
 	GenerateProgressWindow() : Window(&_generate_progress_desc)
 	{
 		this->FindWindowPlacementAndResize(&_generate_progress_desc);
