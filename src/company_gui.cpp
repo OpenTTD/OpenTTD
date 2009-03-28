@@ -804,6 +804,7 @@ enum SelectCompanyManagerFaceWidgets {
 	SCMFW_WIDGET_FEMALE,
 	SCMFW_WIDGET_RANDOM_NEW_FACE,
 	SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON,
+	SCMFM_WIDGET_FACE,
 	/* from here is the advanced company manager face selection window */
 	SCMFW_WIDGET_LOAD,
 	SCMFW_WIDGET_FACECODE,
@@ -855,7 +856,7 @@ static const NWidgetPart _nested_select_company_manager_face_widgets[] = {
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 			NWidget(NWID_VERTICAL),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 123),
+				NWidget(WWT_EMPTY, COLOUR_GREY, SCMFM_WIDGET_FACE), SetMinimalSize(92, 119), SetPadding(2, 0, 2, 0),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_RANDOM_NEW_FACE), SetMinimalSize(92, 12), SetDataTip(STR_7046_NEW_FACE, STR_704B_GENERATE_RANDOM_NEW_FACE),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 			EndContainer(),
@@ -889,6 +890,7 @@ static const Widget _select_company_manager_face_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    95,   187,    87,    98, STR_7045_FEMALE,         STR_704A_SELECT_FEMALE_FACES},       // SCMFW_WIDGET_FEMALE
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     2,    93,   137,   148, STR_7046_NEW_FACE,       STR_704B_GENERATE_RANDOM_NEW_FACE},  // SCMFW_WIDGET_RANDOM_NEW_FACE
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    95,   187,    16,    27, STR_FACE_ADVANCED,       STR_FACE_ADVANCED_TIP},              // SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     2,    93,    16,   134, 0x0,                     STR_NULL},                           // SCMFW_WIDGET_FACE
 {   WIDGETS_END},
 };
 
@@ -902,7 +904,7 @@ static const NWidgetPart _nested_select_company_manager_face_adv_widgets[] = {
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 			NWidget(NWID_VERTICAL),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 123),
+				NWidget(WWT_EMPTY, COLOUR_GREY, SCMFM_WIDGET_FACE), SetMinimalSize(92, 119), SetPadding(2, 0, 2, 0),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_RANDOM_NEW_FACE), SetMinimalSize(92, 12), SetDataTip(STR_RANDOM, STR_704B_GENERATE_RANDOM_NEW_FACE),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 9),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_LOAD), SetMinimalSize(92, 12), SetDataTip(STR_FACE_LOAD, STR_FACE_LOAD_TIP),
@@ -1011,6 +1013,7 @@ static const Widget _select_company_manager_face_adv_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   157,   217,    32,    43, STR_7045_FEMALE,         STR_704A_SELECT_FEMALE_FACES},       // SCMFW_WIDGET_FEMALE
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     2,    93,   137,   148, STR_RANDOM,              STR_704B_GENERATE_RANDOM_NEW_FACE},  // SCMFW_WIDGET_RANDOM_NEW_FACE
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    95,   217,    16,    27, STR_FACE_SIMPLE,         STR_FACE_SIMPLE_TIP},                // SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     2,    93,    16,   134, 0x0,                     STR_NULL},                           // SCMFW_WIDGET_FACE
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     2,    93,   158,   169, STR_FACE_LOAD,           STR_FACE_LOAD_TIP},                  // SCMFW_WIDGET_LOAD
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     2,    93,   170,   181, STR_FACE_FACECODE,       STR_FACE_FACECODE_TIP},              // SCMFW_WIDGET_FACECODE
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     2,    93,   182,   193, STR_FACE_SAVE,           STR_FACE_SAVE_TIP},                  // SCMFW_WIDGET_SAVE
@@ -1208,7 +1211,7 @@ public:
 		}
 
 		/* Draw the company manager face picture */
-		DrawCompanyManagerFace(this->face, GetCompany((CompanyID)this->window_number)->colour, 2, 16);
+		DrawCompanyManagerFace(this->face, GetCompany((CompanyID)this->window_number)->colour, this->widget[SCMFM_WIDGET_FACE].left, this->widget[SCMFM_WIDGET_FACE].top);
 	}
 
 	virtual void OnClick(Point pt, int widget)
