@@ -70,6 +70,16 @@ struct SignList {
 
 const Sign *SignList::last_sign = NULL;
 
+/** Enum referring to the widgets of the sign list window */
+enum SignListWidgets {
+	SLW_CLOSEBOX = 0,
+	SLW_CAPTION,
+	SLW_STICKY,
+	SLW_LIST,
+	SLW_SCROLLBAR,
+	SLW_RESIZE,
+};
+
 struct SignListWindow : Window, SignList {
 	SignListWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
@@ -94,9 +104,9 @@ struct SignListWindow : Window, SignList {
 		this->DrawWidgets();
 
 		/* No signs? */
-		int y = 16; // offset from top of widget
+		int y = this->widget[SLW_LIST].top + 2; // offset from top of widget
 		if (this->vscroll.count == 0) {
-			DrawString(2, 346, y, STR_304A_NONE, TC_FROMSTRING);
+			DrawString(this->widget[SLW_LIST].left + 2, this->widget[SLW_LIST].right, y, STR_304A_NONE, TC_FROMSTRING);
 			return;
 		}
 
@@ -104,18 +114,18 @@ struct SignListWindow : Window, SignList {
 		for (uint16 i = this->vscroll.pos; i < this->vscroll.cap + this->vscroll.pos && i < this->vscroll.count; i++) {
 			const Sign *si = this->signs[i];
 
-			if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, 4, y + 1);
+			if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, this->widget[SLW_LIST].left + 4, y + 1);
 
 			SetDParam(0, si->index);
-			DrawString(22, 346, y, STR_SIGN_NAME, TC_YELLOW);
+			DrawString(this->widget[SLW_LIST].left + 22, this->widget[SLW_LIST].right, y, STR_SIGN_NAME, TC_YELLOW);
 			y += 10;
 		}
 	}
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget == 3) {
-			uint32 id_v = (pt.y - 15) / 10;
+		if (widget == SLW_LIST) {
+			uint32 id_v = (pt.y - this->widget[SLW_LIST].top - 1) / 10;
 
 			if (id_v >= this->vscroll.cap) return;
 			id_v += this->vscroll.pos;
