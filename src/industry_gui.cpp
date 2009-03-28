@@ -84,12 +84,29 @@ static const Widget _build_industry_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_build_industry_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, DPIW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, DPIW_CAPTION), SetMinimalSize(159, 14), SetDataTip(STR_0314_FUND_NEW_INDUSTRY, STR_018C_WINDOW_TITLE_DRAG_THIS), SetResize(1, 0),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, DPIW_MATRIX_WIDGET), SetMinimalSize(158, 105), SetDataTip(0x801, STR_INDUSTRY_SELECTION_HINT), SetResize(1, 1),
+		NWidget(WWT_SCROLLBAR, COLOUR_DARK_GREEN, DPIW_SCROLLBAR), SetResize(0, 1),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, DPIW_INFOPANEL), SetMinimalSize(170, 81), SetResize(1, 0),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, DPIW_FUND_WIDGET), SetMinimalSize(158, 12), SetResize(1, 0), SetDataTip(STR_FUND_NEW_INDUSTRY, STR_NULL),
+		NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN, DPIW_RESIZE_WIDGET),
+	EndContainer(),
+};
+
 /** Window definition of the dynamic place industries gui */
 static const WindowDesc _build_industry_desc(
 	WDP_AUTO, WDP_AUTO, 170, 212, 170, 212,
 	WC_BUILD_INDUSTRY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	_build_industry_widgets
+	_build_industry_widgets, _nested_build_industry_widgets, lengthof(_nested_build_industry_widgets)
 );
 
 class BuildIndustryWindow : public Window {
@@ -673,12 +690,31 @@ static const Widget _industry_view_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_industry_view_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_CREAM, IVW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_CREAM, IVW_CAPTION), SetMinimalSize(237, 14), SetDataTip(STR_4801, STR_018C_WINDOW_TITLE_DRAG_THIS), SetResize(1, 0),
+		NWidget(WWT_STICKYBOX, COLOUR_CREAM, IVW_STICKY),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_CREAM, IVW_BACKGROUND),
+		NWidget(WWT_INSET, COLOUR_CREAM, IVW_VIEWPORT), SetMinimalSize(256, 88), SetPadding(2, 2, 2, 2), SetResize(1, 1),
+		EndContainer(),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_CREAM, IVW_INFO), SetMinimalSize(260, 2), SetResize(1, 0),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_CREAM, IVW_GOTO), SetMinimalSize(130, 12), SetDataTip(STR_00E4_LOCATION, STR_482C_CENTER_THE_MAIN_VIEW_ON),
+		NWidget(WWT_PANEL, COLOUR_CREAM, IVW_SPACER), /*SetMinimalSize(118, 12),*/ SetResize(1, 0), EndContainer(),
+		NWidget(WWT_RESIZEBOX, COLOUR_CREAM, IVW_RESIZE),
+	EndContainer(),
+};
+
 /** Window definition of the view industy gui */
 static const WindowDesc _industry_view_desc(
 	WDP_AUTO, WDP_AUTO, 260, 120, 260, 120,
 	WC_INDUSTRY_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_industry_view_widgets
+	_industry_view_widgets, _nested_industry_view_widgets, lengthof(_nested_industry_view_widgets)
 );
 
 void ShowIndustryViewWindow(int industry)
@@ -709,10 +745,34 @@ static const Widget _industry_directory_widgets[] = {
 {   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_BROWN,    81,   243,    14,    25, 0x0,                     STR_SORT_CRITERIA_TIP},             // IDW_DROPDOWN_CRITERIA
 {      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_BROWN,   244,   415,    14,    25, 0x0,                     STR_NULL},                          // IDW_SPACER
 
-{      WWT_PANEL,     RESIZE_RB,  COLOUR_BROWN,     0,   415,    26,   189, 0x0,                     STR_INDUSTRYDIR_LIST_CAPTION},      // IDW_INDUSRTY_LIST
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_BROWN,     0,   415,    26,   189, 0x0,                     STR_INDUSTRYDIR_LIST_CAPTION},      // IDW_INDUSTRY_LIST
 {  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_BROWN,   416,   427,    14,   177, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST},  // IDW_SCROLLBAR
 {  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_BROWN,   416,   427,   178,   189, 0x0,                     STR_RESIZE_BUTTON},                 // IDW_RESIZE
 {   WIDGETS_END},
+};
+
+static const NWidgetPart _nested_industry_directory_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, IDW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, IDW_CAPTION), SetMinimalSize(405, 14), SetDataTip(STR_INDUSTRYDIR_CAPTION, STR_018C_WINDOW_TITLE_DRAG_THIS), SetResize(1, 0),
+		NWidget(WWT_STICKYBOX, COLOUR_BROWN, IDW_STICKY),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_TEXTBTN, COLOUR_BROWN, IDW_DROPDOWN_ORDER), SetMinimalSize(81, 12), SetDataTip(STR_SORT_BY, STR_SORT_ORDER_TIP),
+				NWidget(WWT_DROPDOWN, COLOUR_BROWN, IDW_DROPDOWN_CRITERIA), SetMinimalSize(163, 12), SetDataTip(0x0, STR_SORT_CRITERIA_TIP),
+				NWidget(WWT_PANEL , COLOUR_BROWN, IDW_SPACER), SetResize(1, 0),
+				EndContainer(),
+			EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_BROWN, IDW_INDUSTRY_LIST), SetMinimalSize(416, 164), SetDataTip(0x0, STR_INDUSTRYDIR_LIST_CAPTION), SetResize(1, 1),
+			EndContainer(),
+		EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(WWT_SCROLLBAR, COLOUR_BROWN, IDW_SCROLLBAR), SetResize(0, 1),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, IDW_RESIZE),
+		EndContainer(),
+	EndContainer(),
 };
 
 typedef GUIList<const Industry*> GUIIndustryList;
@@ -990,7 +1050,7 @@ static const WindowDesc _industry_directory_desc(
 	WDP_AUTO, WDP_AUTO, 428, 190, 428, 190,
 	WC_INDUSTRY_DIRECTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_industry_directory_widgets
+	_industry_directory_widgets, _nested_industry_directory_widgets, lengthof(_nested_industry_directory_widgets)
 );
 
 void ShowIndustryDirectory()
