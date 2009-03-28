@@ -83,7 +83,7 @@ static const ExpensesList _expenses_list_types[] = {
 	{ _expenses_list_2, lengthof(_expenses_list_2), lengthof(_expenses_list_2) * 10 + 3 * 12 },
 };
 
-/** Widgets of the company finances windows */
+/** Widgets of the company finances windows. */
 enum CompanyFinancesWindowWidgets {
 	CFW_CLOSEBOX = 0,  ///< Close the window
 	CFW_CAPTION,       ///< Caption of the window
@@ -495,25 +495,26 @@ public:
 	}
 };
 
+/** Widgets of the select company livery window. */
+enum SelectCompanyLiveryWindowWidgets {
+	SCLW_WIDGET_CLOSE,
+	SCLW_WIDGET_CAPTION,
+	SCLW_WIDGET_CLASS_GENERAL,
+	SCLW_WIDGET_CLASS_RAIL,
+	SCLW_WIDGET_CLASS_ROAD,
+	SCLW_WIDGET_CLASS_SHIP,
+	SCLW_WIDGET_CLASS_AIRCRAFT,
+	SCLW_WIDGET_SPACER_CLASS,
+	SCLW_WIDGET_SPACER_DROPDOWN,
+	SCLW_WIDGET_PRI_COL_DROPDOWN,
+	SCLW_WIDGET_SEC_COL_DROPDOWN,
+	SCLW_WIDGET_MATRIX,
+};
+
 struct SelectCompanyLiveryWindow : public Window {
 private:
 	uint32 sel;
 	LiveryClass livery_class;
-
-	enum SelectCompanyLiveryWindowWidgets {
-		SCLW_WIDGET_CLOSE,
-		SCLW_WIDGET_CAPTION,
-		SCLW_WIDGET_CLASS_GENERAL,
-		SCLW_WIDGET_CLASS_RAIL,
-		SCLW_WIDGET_CLASS_ROAD,
-		SCLW_WIDGET_CLASS_SHIP,
-		SCLW_WIDGET_CLASS_AIRCRAFT,
-		SCLW_WIDGET_SPACER_CLASS,
-		SCLW_WIDGET_SPACER_DROPDOWN,
-		SCLW_WIDGET_PRI_COL_DROPDOWN,
-		SCLW_WIDGET_SEC_COL_DROPDOWN,
-		SCLW_WIDGET_MATRIX,
-	};
 
 	void ShowColourDropDownMenu(uint32 widget)
 	{
@@ -699,6 +700,27 @@ public:
 	}
 };
 
+static const NWidgetPart _nested_select_company_livery_widgets [] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, SCLW_WIDGET_CLOSE),
+		NWidget(WWT_CAPTION, COLOUR_GREY, SCLW_WIDGET_CAPTION), SetMinimalSize(389, 14), SetDataTip(STR_7007_NEW_COLOUR_SCHEME, STR_018C_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_GENERAL), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_COMPANY_GENERAL, STR_LIVERY_GENERAL_TIP),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_RAIL), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_TRAINLIST, STR_LIVERY_TRAIN_TIP),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_ROAD), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_TRUCKLIST, STR_LIVERY_ROADVEH_TIP),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_SHIP), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_SHIPLIST, STR_LIVERY_SHIP_TIP),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_AIRCRAFT), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_AIRPLANESLIST, STR_LIVERY_AIRCRAFT_TIP),
+		NWidget(WWT_PANEL, COLOUR_GREY, SCLW_WIDGET_SPACER_CLASS), SetMinimalSize(290, 22), EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_GREY, SCLW_WIDGET_SPACER_DROPDOWN), SetMinimalSize(150, 12), EndContainer(),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, SCLW_WIDGET_PRI_COL_DROPDOWN), SetMinimalSize(125, 12), SetDataTip(STR_02BD, STR_LIVERY_PRIMARY_TIP),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, SCLW_WIDGET_SEC_COL_DROPDOWN), SetMinimalSize(125, 12), SetDataTip(STR_02E1, STR_LIVERY_SECONDARY_TIP),
+	EndContainer(),
+	NWidget(WWT_MATRIX, COLOUR_GREY, SCLW_WIDGET_MATRIX), SetMinimalSize(400, 15), SetDataTip((1 << 8) | 1, STR_LIVERY_PANEL_TIP),
+};
+
 static const Widget _select_company_livery_widgets[] = {
 { WWT_CLOSEBOX, RESIZE_NONE,  COLOUR_GREY,   0,  10,   0,  13, STR_00C5,                   STR_018B_CLOSE_WINDOW },
 {  WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,  11, 399,   0,  13, STR_7007_NEW_COLOUR_SCHEME, STR_018C_WINDOW_TITLE_DRAG_THIS },
@@ -719,7 +741,7 @@ static const WindowDesc _select_company_livery_desc(
 	WDP_AUTO, WDP_AUTO, 400, 49 + 1 * 14, 400, 49 + 1 * 14,
 	WC_COMPANY_COLOUR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_select_company_livery_widgets
+	_select_company_livery_widgets, _nested_select_company_livery_widgets, lengthof(_nested_select_company_livery_widgets)
 );
 
 /**
@@ -766,6 +788,94 @@ void DrawCompanyManagerFace(CompanyManagerFace cmf, int colour, int x, int y)
 	}
 }
 
+/**
+ * Names of the widgets. Keep them in the same order as in the widget array.
+ * Do not change the order of the widgets from SCMFW_WIDGET_HAS_MOUSTACHE_EARRING to SCMFW_WIDGET_GLASSES_R,
+ * this order is needed for the WE_CLICK event of DrawFaceStringLabel().
+ */
+enum SelectCompanyManagerFaceWidgets {
+	SCMFW_WIDGET_CLOSEBOX = 0,
+	SCMFW_WIDGET_CAPTION,
+	SCMFW_WIDGET_TOGGLE_LARGE_SMALL,
+	SCMFW_WIDGET_SELECT_FACE,
+	SCMFW_WIDGET_CANCEL,
+	SCMFW_WIDGET_ACCEPT,
+	SCMFW_WIDGET_MALE,
+	SCMFW_WIDGET_FEMALE,
+	SCMFW_WIDGET_RANDOM_NEW_FACE,
+	SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON,
+	/* from here is the advanced company manager face selection window */
+	SCMFW_WIDGET_LOAD,
+	SCMFW_WIDGET_FACECODE,
+	SCMFW_WIDGET_SAVE,
+	SCMFW_WIDGET_ETHNICITY_EUR,
+	SCMFW_WIDGET_ETHNICITY_AFR,
+	SCMFW_WIDGET_HAS_MOUSTACHE_EARRING,
+	SCMFW_WIDGET_HAS_GLASSES,
+	SCMFW_WIDGET_EYECOLOUR_L,
+	SCMFW_WIDGET_EYECOLOUR,
+	SCMFW_WIDGET_EYECOLOUR_R,
+	SCMFW_WIDGET_CHIN_L,
+	SCMFW_WIDGET_CHIN,
+	SCMFW_WIDGET_CHIN_R,
+	SCMFW_WIDGET_EYEBROWS_L,
+	SCMFW_WIDGET_EYEBROWS,
+	SCMFW_WIDGET_EYEBROWS_R,
+	SCMFW_WIDGET_LIPS_MOUSTACHE_L,
+	SCMFW_WIDGET_LIPS_MOUSTACHE,
+	SCMFW_WIDGET_LIPS_MOUSTACHE_R,
+	SCMFW_WIDGET_NOSE_L,
+	SCMFW_WIDGET_NOSE,
+	SCMFW_WIDGET_NOSE_R,
+	SCMFW_WIDGET_HAIR_L,
+	SCMFW_WIDGET_HAIR,
+	SCMFW_WIDGET_HAIR_R,
+	SCMFW_WIDGET_JACKET_L,
+	SCMFW_WIDGET_JACKET,
+	SCMFW_WIDGET_JACKET_R,
+	SCMFW_WIDGET_COLLAR_L,
+	SCMFW_WIDGET_COLLAR,
+	SCMFW_WIDGET_COLLAR_R,
+	SCMFW_WIDGET_TIE_EARRING_L,
+	SCMFW_WIDGET_TIE_EARRING,
+	SCMFW_WIDGET_TIE_EARRING_R,
+	SCMFW_WIDGET_GLASSES_L,
+	SCMFW_WIDGET_GLASSES,
+	SCMFW_WIDGET_GLASSES_R,
+};
+
+static const NWidgetPart _nested_select_company_manager_face_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, SCMFW_WIDGET_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, SCMFW_WIDGET_CAPTION), SetMinimalSize(164, 14), SetDataTip(STR_7043_FACE_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, SCMFW_WIDGET_TOGGLE_LARGE_SMALL), SetMinimalSize(15, 14), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_FACE_ADVANCED_TIP),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, SCMFW_WIDGET_SELECT_FACE),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 123),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_RANDOM_NEW_FACE), SetMinimalSize(92, 12), SetDataTip(STR_7046_NEW_FACE, STR_704B_GENERATE_RANDOM_NEW_FACE),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(1, 0),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON), SetMinimalSize(93, 12), SetDataTip(STR_FACE_ADVANCED, STR_FACE_ADVANCED_TIP),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 47),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, SCMFW_WIDGET_MALE), SetMinimalSize(93, 12), SetDataTip(STR_7044_MALE, STR_7049_SELECT_MALE_FACES),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, SCMFW_WIDGET_FEMALE), SetMinimalSize(93, 12), SetDataTip(STR_7045_FEMALE, STR_704A_SELECT_FEMALE_FACES),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 52),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+		EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_CANCEL), SetMinimalSize(95, 12), SetDataTip(STR_012E_CANCEL, STR_7047_CANCEL_NEW_FACE_SELECTION),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_ACCEPT), SetMinimalSize(95, 12), SetDataTip(STR_012F_OK, STR_7048_ACCEPT_NEW_FACE_SELECTION),
+	EndContainer(),
+};
+
 /** Widget description for the normal/simple company manager face selection dialog */
 static const Widget _select_company_manager_face_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},              // SCMFW_WIDGET_CLOSEBOX
@@ -779,6 +889,113 @@ static const Widget _select_company_manager_face_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     2,    93,   137,   148, STR_7046_NEW_FACE,       STR_704B_GENERATE_RANDOM_NEW_FACE},  // SCMFW_WIDGET_RANDOM_NEW_FACE
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    95,   187,    16,    27, STR_FACE_ADVANCED,       STR_FACE_ADVANCED_TIP},              // SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON
 {   WIDGETS_END},
+};
+
+static const NWidgetPart _nested_select_company_manager_face_adv_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, SCMFW_WIDGET_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, SCMFW_WIDGET_CAPTION), SetMinimalSize(194, 14), SetDataTip(STR_7043_FACE_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, SCMFW_WIDGET_TOGGLE_LARGE_SMALL), SetMinimalSize(15, 14), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_FACE_SIMPLE_TIP),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, SCMFW_WIDGET_SELECT_FACE),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 123),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_RANDOM_NEW_FACE), SetMinimalSize(92, 12), SetDataTip(STR_RANDOM, STR_704B_GENERATE_RANDOM_NEW_FACE),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 9),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_LOAD), SetMinimalSize(92, 12), SetDataTip(STR_FACE_LOAD, STR_FACE_LOAD_TIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_FACECODE), SetMinimalSize(92, 12), SetDataTip(STR_FACE_FACECODE, STR_FACE_FACECODE_TIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_SAVE), SetMinimalSize(92, 12), SetDataTip(STR_FACE_SAVE, STR_FACE_SAVE_TIP),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 14),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(1, 0),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON), SetMinimalSize(123, 12), SetDataTip(STR_FACE_SIMPLE, STR_FACE_SIMPLE_TIP),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
+					NWidget(NWID_VERTICAL),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_TEXTBTN, COLOUR_GREY, SCMFW_WIDGET_MALE), SetMinimalSize(61, 12), SetDataTip(STR_7044_MALE, STR_7049_SELECT_MALE_FACES),
+							NWidget(WWT_TEXTBTN, COLOUR_GREY, SCMFW_WIDGET_FEMALE), SetMinimalSize(61, 12), SetDataTip(STR_7045_FEMALE, STR_704A_SELECT_FEMALE_FACES),
+						EndContainer(),
+						NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_TEXTBTN, COLOUR_GREY, SCMFW_WIDGET_ETHNICITY_EUR), SetMinimalSize(61, 12), SetDataTip(STR_FACE_EUROPEAN, STR_FACE_SELECT_EUROPEAN),
+							NWidget(WWT_TEXTBTN, COLOUR_GREY, SCMFW_WIDGET_ETHNICITY_AFR), SetMinimalSize(61, 12), SetDataTip(STR_FACE_AFRICAN, STR_FACE_SELECT_AFRICAN),
+						EndContainer(),
+					EndContainer(),
+				EndContainer(),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(NWID_SPACER), SetMinimalSize(80, 0),
+					NWidget(NWID_VERTICAL),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_HAS_MOUSTACHE_EARRING), SetMinimalSize(43, 12), SetDataTip(STR_EMPTY, STR_FACE_MOUSTACHE_EARRING_TIP),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_HAS_GLASSES), SetMinimalSize(43, 12), SetDataTip(STR_EMPTY, STR_FACE_GLASSES_TIP),
+						NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_HAIR_L), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_LEFT, STR_FACE_HAIR_TIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_HAIR), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_HAIR_TIP),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_HAIR_R), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_RIGHT, STR_FACE_HAIR_TIP),
+						EndContainer(),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_EYEBROWS_L), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_LEFT, STR_FACE_EYEBROWS_TIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_EYEBROWS), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_EYEBROWS_TIP),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_EYEBROWS_R), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_RIGHT, STR_FACE_EYEBROWS_TIP),
+						EndContainer(),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_EYECOLOUR_L), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_LEFT, STR_FACE_EYECOLOUR_TIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_EYECOLOUR), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_EYECOLOUR_TIP),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_EYECOLOUR_R), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_RIGHT, STR_FACE_EYECOLOUR_TIP),
+						EndContainer(),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_GLASSES_L), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_LEFT, STR_FACE_GLASSES_TIP_2),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_GLASSES), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_GLASSES_TIP_2),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_GLASSES_R), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_RIGHT, STR_FACE_GLASSES_TIP_2),
+						EndContainer(),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_NOSE_L), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_LEFT, STR_FACE_NOSE_TIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_NOSE), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_NOSE_TIP),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_NOSE_R), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_RIGHT, STR_FACE_NOSE_TIP),
+						EndContainer(),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_LIPS_MOUSTACHE_L), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_LEFT, STR_FACE_LIPS_MOUSTACHE_TIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_LIPS_MOUSTACHE), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_LIPS_MOUSTACHE_TIP),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_LIPS_MOUSTACHE_R), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_RIGHT, STR_FACE_LIPS_MOUSTACHE_TIP),
+						EndContainer(),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_CHIN_L), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_LEFT, STR_FACE_CHIN_TIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_CHIN), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_CHIN_TIP),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_CHIN_R), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_RIGHT, STR_FACE_CHIN_TIP),
+						EndContainer(),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_JACKET_L), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_LEFT, STR_FACE_JACKET_TIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_JACKET), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_JACKET_TIP),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_JACKET_R), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_RIGHT, STR_FACE_JACKET_TIP),
+						EndContainer(),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_COLLAR_L), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_LEFT, STR_FACE_COLLAR_TIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_COLLAR), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_COLLAR_TIP),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_COLLAR_R), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_RIGHT, STR_FACE_COLLAR_TIP),
+						EndContainer(),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_TIE_EARRING_L), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_LEFT, STR_FACE_TIE_EARRING_TIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_TIE_EARRING), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_TIE_EARRING_TIP),
+							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SCMFW_WIDGET_TIE_EARRING_R), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_RIGHT, STR_FACE_TIE_EARRING_TIP),
+						EndContainer(),
+					EndContainer(),
+				EndContainer(),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+		EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_CANCEL), SetMinimalSize(95, 12), SetDataTip(STR_012E_CANCEL, STR_7047_CANCEL_NEW_FACE_SELECTION),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_ACCEPT), SetMinimalSize(125, 12), SetDataTip(STR_012F_OK, STR_7048_ACCEPT_NEW_FACE_SELECTION),
+	EndContainer(),
 };
 
 /** Widget description for the advanced company manager face selection dialog */
@@ -842,61 +1059,6 @@ class SelectCompanyManagerFaceWindow : public Window
 	bool is_female;
 	bool is_moust_male;
 
-	/**
-	 * Names of the widgets. Keep them in the same order as in the widget array.
-	 * Do not change the order of the widgets from SCMFW_WIDGET_HAS_MOUSTACHE_EARRING to SCMFW_WIDGET_GLASSES_R,
-	 * this order is needed for the WE_CLICK event of DrawFaceStringLabel().
-	 */
-	enum SelectCompanyManagerFaceWidgets {
-		SCMFW_WIDGET_CLOSEBOX = 0,
-		SCMFW_WIDGET_CAPTION,
-		SCMFW_WIDGET_TOGGLE_LARGE_SMALL,
-		SCMFW_WIDGET_SELECT_FACE,
-		SCMFW_WIDGET_CANCEL,
-		SCMFW_WIDGET_ACCEPT,
-		SCMFW_WIDGET_MALE,
-		SCMFW_WIDGET_FEMALE,
-		SCMFW_WIDGET_RANDOM_NEW_FACE,
-		SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON,
-		/* from here is the advanced company manager face selection window */
-		SCMFW_WIDGET_LOAD,
-		SCMFW_WIDGET_FACECODE,
-		SCMFW_WIDGET_SAVE,
-		SCMFW_WIDGET_ETHNICITY_EUR,
-		SCMFW_WIDGET_ETHNICITY_AFR,
-		SCMFW_WIDGET_HAS_MOUSTACHE_EARRING,
-		SCMFW_WIDGET_HAS_GLASSES,
-		SCMFW_WIDGET_EYECOLOUR_L,
-		SCMFW_WIDGET_EYECOLOUR,
-		SCMFW_WIDGET_EYECOLOUR_R,
-		SCMFW_WIDGET_CHIN_L,
-		SCMFW_WIDGET_CHIN,
-		SCMFW_WIDGET_CHIN_R,
-		SCMFW_WIDGET_EYEBROWS_L,
-		SCMFW_WIDGET_EYEBROWS,
-		SCMFW_WIDGET_EYEBROWS_R,
-		SCMFW_WIDGET_LIPS_MOUSTACHE_L,
-		SCMFW_WIDGET_LIPS_MOUSTACHE,
-		SCMFW_WIDGET_LIPS_MOUSTACHE_R,
-		SCMFW_WIDGET_NOSE_L,
-		SCMFW_WIDGET_NOSE,
-		SCMFW_WIDGET_NOSE_R,
-		SCMFW_WIDGET_HAIR_L,
-		SCMFW_WIDGET_HAIR,
-		SCMFW_WIDGET_HAIR_R,
-		SCMFW_WIDGET_JACKET_L,
-		SCMFW_WIDGET_JACKET,
-		SCMFW_WIDGET_JACKET_R,
-		SCMFW_WIDGET_COLLAR_L,
-		SCMFW_WIDGET_COLLAR,
-		SCMFW_WIDGET_COLLAR_R,
-		SCMFW_WIDGET_TIE_EARRING_L,
-		SCMFW_WIDGET_TIE_EARRING,
-		SCMFW_WIDGET_TIE_EARRING_R,
-		SCMFW_WIDGET_GLASSES_L,
-		SCMFW_WIDGET_GLASSES,
-		SCMFW_WIDGET_GLASSES_R,
-	};
 	/**
 	 * Draw dynamic a label to the left of the button and a value in the button
 	 *
@@ -1186,7 +1348,7 @@ static const WindowDesc _select_company_manager_face_desc(
 	WDP_AUTO, WDP_AUTO, 190, 163, 190, 163,
 	WC_COMPANY_MANAGER_FACE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
-	_select_company_manager_face_widgets
+	_select_company_manager_face_widgets, _nested_select_company_manager_face_widgets, lengthof(_nested_select_company_manager_face_widgets)
 );
 
 /** advanced company manager face selection window description */
@@ -1194,7 +1356,7 @@ static const WindowDesc _select_company_manager_face_adv_desc(
 	WDP_AUTO, WDP_AUTO, 220, 220, 220, 220,
 	WC_COMPANY_MANAGER_FACE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
-	_select_company_manager_face_adv_widgets
+	_select_company_manager_face_adv_widgets, _nested_select_company_manager_face_adv_widgets, lengthof(_nested_select_company_manager_face_adv_widgets)
 );
 
 /**
