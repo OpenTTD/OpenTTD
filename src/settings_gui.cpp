@@ -366,11 +366,60 @@ static const Widget _game_options_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_game_options_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, GOW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, GOW_CAPTION), SetDataTip(STR_00B1_GAME_OPTIONS, STR_018C_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, GOW_BACKGROUND),
+		NWidget(NWID_HORIZONTAL), SetPIP(10, 10, 10),
+			NWidget(NWID_VERTICAL), SetPIP(6, 6, 10),
+				NWidget(WWT_FRAME, COLOUR_GREY, GOW_CURRENCY_FRAME), SetDataTip(STR_02E0_CURRENCY_UNITS, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_CURRENCY_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_02E1, STR_02E2_CURRENCY_UNITS_SELECTION), SetPadding(14, 10, 10, 10),
+				EndContainer(),
+				NWidget(WWT_FRAME, COLOUR_GREY, GOW_ROADSIDE_FRAME), SetDataTip(STR_02E6_ROAD_VEHICLES, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_ROADSIDE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_02E7, STR_02E8_SELECT_SIDE_OF_ROAD_FOR), SetPadding(14, 10, 10, 10),
+				EndContainer(),
+				NWidget(WWT_FRAME, COLOUR_GREY, GOW_AUTOSAVE_FRAME), SetDataTip(STR_02F4_AUTOSAVE, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_AUTOSAVE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_02F5, STR_02F6_SELECT_INTERVAL_BETWEEN), SetPadding(14, 10, 10, 10),
+				EndContainer(),
+				NWidget(WWT_FRAME, COLOUR_GREY, GOW_RESOLUTION_FRAME), SetDataTip(STR_OPTIONS_RES, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_RESOLUTION_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_OPTIONS_RES_CBO, STR_OPTIONS_RES_TIP), SetPadding(14, 10, 3, 10),
+					NWidget(NWID_HORIZONTAL),
+						NWidget(WWT_TEXT, COLOUR_GREY, GOW_FULLSCREEN_LABEL), SetMinimalSize(0, 12), SetFill(true, false), SetDataTip(STR_OPTIONS_FULLSCREEN, STR_NULL), SetPadding(0, 2, 4, 10),
+						NWidget(WWT_TEXTBTN, COLOUR_GREY, GOW_FULLSCREEN_BUTTON), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_OPTIONS_FULLSCREEN_TIP), SetPadding(0, 10, 4, 0),
+					EndContainer(),
+				EndContainer(),
+				NWidget(WWT_FRAME, COLOUR_GREY, GOW_BASE_GRF_FRAME), SetDataTip(STR_OPTIONS_BASE_GRF, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_BASE_GRF_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_OPTIONS_BASE_GRF_CBO, STR_OPTIONS_BASE_GRF_TIP), SetPadding(14, 10, 10, 10),
+				EndContainer(),
+			EndContainer(),
+
+			NWidget(NWID_VERTICAL), SetPIP(6, 6, 10),
+				NWidget(WWT_FRAME, COLOUR_GREY, GOW_DISTANCE_FRAME), SetDataTip(STR_MEASURING_UNITS, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_DISTANCE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_02E4, STR_MEASURING_UNITS_SELECTION), SetPadding(14, 10, 10, 10),
+				EndContainer(),
+				NWidget(WWT_FRAME, COLOUR_GREY, GOW_TOWNNAME_FRAME), SetDataTip(STR_02EB_TOWN_NAMES, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_TOWNNAME_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_02EC, STR_02ED_SELECT_STYLE_OF_TOWN_NAMES), SetPadding(14, 10, 10, 10),
+				EndContainer(),
+				NWidget(WWT_FRAME, COLOUR_GREY, GOW_LANG_FRAME), SetDataTip(STR_OPTIONS_LANG, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_LANG_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_OPTIONS_LANG_CBO, STR_OPTIONS_LANG_TIP), SetPadding(14, 10, 10, 10),
+				EndContainer(),
+				NWidget(WWT_FRAME, COLOUR_GREY, GOW_SCREENSHOT_FRAME), SetDataTip(STR_OPTIONS_SCREENSHOT_FORMAT, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_SCREENSHOT_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_OPTIONS_SCREENSHOT_FORMAT_CBO, STR_OPTIONS_SCREENSHOT_FORMAT_TIP), SetPadding(14, 10, 10, 10),
+					NWidget(NWID_SPACER), SetMinimalSize(0, 9),
+				EndContainer(),
+				NWidget(NWID_SPACER), SetFill(false, true),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+};
+
 static const WindowDesc _game_options_desc(
 	WDP_CENTER, WDP_CENTER, 370, 243, 370, 243,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_game_options_widgets
+	_game_options_widgets, _nested_game_options_widgets, lengthof(_nested_game_options_widgets)
 );
 
 
