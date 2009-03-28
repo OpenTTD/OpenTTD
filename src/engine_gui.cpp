@@ -48,6 +48,21 @@ static const Widget _engine_preview_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_engine_preview_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, EPW_CLOSE),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, EPW_CAPTION), SetDataTip(STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE, STR_018C_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, EPW_BACKGROUND),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 158),
+		NWidget(NWID_HORIZONTAL), SetPIP(85, 10, 85),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, EPW_NO), SetMinimalSize(60, 12), SetDataTip(STR_00C9_NO, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, EPW_YES), SetMinimalSize(60, 12), SetDataTip(STR_00C8_YES, STR_NULL),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+	EndContainer(),
+};
+
 typedef void DrawEngineProc(int x, int y, EngineID engine, SpriteID pal);
 typedef void DrawEngineInfoProc(EngineID, int left, int right, int top, int bottom);
 
@@ -109,7 +124,7 @@ static const WindowDesc _engine_preview_desc(
 	WDP_CENTER, WDP_CENTER, 300, 192, 300, 192,
 	WC_ENGINE_PREVIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_engine_preview_widgets
+	_engine_preview_widgets, _nested_engine_preview_widgets, lengthof(_nested_engine_preview_widgets)
 );
 
 
