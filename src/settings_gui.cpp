@@ -385,7 +385,6 @@ extern void StartupEconomy();
 
 /* Names of the game difficulty settings window */
 enum GameDifficultyWidgets {
-	GDW_CLOSEBOX = 0,
 	GDW_CAPTION,
 	GDW_UPPER_BG,
 	GDW_LVL_EASY,
@@ -401,8 +400,7 @@ enum GameDifficultyWidgets {
 
 /* Widget definition for the game difficulty settings window */
 static const Widget _game_difficulty_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_MAUVE,      0,    10,     0,    13, STR_00C5,                     STR_018B_CLOSE_WINDOW},           // GDW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_MAUVE,     11,   369,     0,    13, STR_6800_DIFFICULTY_LEVEL,    STR_018C_WINDOW_TITLE_DRAG_THIS}, // GDW_CAPTION
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_MAUVE,      0,   369,     0,    13, STR_6800_DIFFICULTY_LEVEL,    STR_018C_WINDOW_TITLE_DRAG_THIS}, // GDW_CAPTION
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_MAUVE,      0,   369,    14,    41, 0x0,                          STR_NULL},                        // GDW_UPPER_BG
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,    10,    96,    16,    27, STR_6801_EASY,                STR_NULL},                        // GDW_LVL_EASY
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,    97,   183,    16,    27, STR_6802_MEDIUM,              STR_NULL},                        // GDW_LVL_MEDIUM
@@ -417,10 +415,7 @@ static const Widget _game_difficulty_widgets[] = {
 };
 
 static const NWidgetPart _nested_game_difficulty_widgets[] = {
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE, GDW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE, GDW_CAPTION), SetMinimalSize(359, 14), SetDataTip(STR_6800_DIFFICULTY_LEVEL, STR_018C_WINDOW_TITLE_DRAG_THIS),
-	EndContainer(),
+	NWidget(WWT_CAPTION, COLOUR_MAUVE, GDW_CAPTION), SetMinimalSize(370, 14), SetDataTip(STR_6800_DIFFICULTY_LEVEL, STR_018C_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_MAUVE, GDW_UPPER_BG),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 		NWidget(NWID_HORIZONTAL),
@@ -487,9 +482,6 @@ public:
 		this->clicked_increase = false;
 		this->clicked_button = NO_SETTINGS_BUTTON;
 		this->timeout = 0;
-		/* Hide the closebox to make sure that the user aborts or confirms his changes */
-		this->HideWidget(GDW_CLOSEBOX);
-		this->widget[GDW_CAPTION].left = 0;
 		/* Setup disabled buttons when creating window
 		 * disable all other difficulty buttons during gameplay except for 'custom' */
 		this->SetWidgetsDisabledState(_game_mode == GM_NORMAL,
