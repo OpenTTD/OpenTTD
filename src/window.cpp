@@ -920,13 +920,10 @@ void Window::FindWindowPlacementAndResize(int def_width, int def_height)
 
 		ResizeWindow(this, enlarge_x, enlarge_y);
 
-		Point size;
 		Point diff;
-		size.x = this->width;
-		size.y = this->height;
 		diff.x = enlarge_x;
 		diff.y = enlarge_y;
-		this->OnResize(size, diff);
+		this->OnResize(diff);
 	}
 
 	int nx = this->left;
@@ -1600,13 +1597,10 @@ static bool HandleWindowDragging()
 			/* ResizeWindow sets both pre- and after-size to dirty for redrawal */
 			ResizeWindow(w, x, y);
 
-			Point size;
 			Point diff;
-			size.x = x + w->width;
-			size.y = y + w->height;
 			diff.x = x;
 			diff.y = y;
-			w->OnResize(size, diff);
+			w->OnResize(diff);
 			return false;
 		}
 	}
@@ -2478,13 +2472,10 @@ void RelocateAllWindows(int neww, int newh)
 				if (neww - w->width != 0) {
 					ResizeWindow(w, min(neww, 640) - w->width, 0);
 
-					Point size;
 					Point delta;
-					size.x = w->width;
-					size.y = w->height;
 					delta.x = neww - w->width;
 					delta.y = 0;
-					w->OnResize(size, delta);
+					w->OnResize(delta);
 				}
 
 				top = w->top;

@@ -325,7 +325,7 @@ struct TimetableWindow : Window {
 		DoCommandP(0, p1, p2, CMD_CHANGE_TIMETABLE | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		/* Update the scroll + matrix */
 		this->vscroll.cap = (this->widget[TTV_TIMETABLE_PANEL].bottom - this->widget[TTV_TIMETABLE_PANEL].top) / 10;

@@ -352,7 +352,7 @@ public:
 		}
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		/* Adjust the number of items in the matrix depending of the rezise */
 		this->vscroll.cap  += delta.y / (int)this->resize.step_height;
@@ -643,7 +643,7 @@ public:
 		this->SetDirty();
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		this->viewport->width            += delta.x;
 		this->viewport->height           += delta.y;
@@ -1008,7 +1008,7 @@ public:
 		}
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		this->vscroll.cap += delta.y / 10;
 	}

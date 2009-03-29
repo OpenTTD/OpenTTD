@@ -722,7 +722,7 @@ public:
 		}
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;
 

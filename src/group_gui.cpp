@@ -670,7 +670,7 @@ public:
 		DoCommandP(0, this->group_sel, 0, CMD_RENAME_GROUP | CMD_MSG(STR_GROUP_CAN_T_RENAME), NULL, str);
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		this->vscroll2.cap += delta.y / PLY_WND_PRC__SIZE_OF_ROW_TINY;
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;

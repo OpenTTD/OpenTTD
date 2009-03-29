@@ -546,7 +546,7 @@ public:
 		this->SetDirty();
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		this->vscroll.cap += delta.y / 10;
 	}
@@ -975,7 +975,7 @@ struct StationViewWindow : public Window {
 		DoCommandP(0, this->window_number, 0, CMD_RENAME_STATION | CMD_MSG(STR_3031_CAN_T_RENAME_STATION), NULL, str);
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		if (delta.x != 0) ResizeButtons(this, SVW_LOCATION, SVW_RENAME);
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;
@@ -1187,7 +1187,7 @@ struct SelectStationWindow : Window {
 		}
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		this->vscroll.cap = (this->widget[JSW_PANEL].bottom - this->widget[JSW_PANEL].top) / 10;
 	}

@@ -625,7 +625,7 @@ public:
 		this->SetDirty();
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		this->vscroll.cap += delta.y / 10;
 	}

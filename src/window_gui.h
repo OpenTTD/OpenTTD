@@ -497,11 +497,10 @@ public:
 
 
 	/**
-	 * Called when the window got resized.
-	 * @param new_size the new size of the window.
-	 * @param delta    the amount of which the window size changed.
+	 * Called after the window got resized.
+	 * @param delta The amount of which the window size changed.
 	 */
-	virtual void OnResize(Point new_size, Point delta) {}
+	virtual void OnResize(Point delta) {}
 
 	/**
 	 * A dropdown option associated to this window has been selected.

@@ -167,7 +167,7 @@ struct AIListWindow : public Window {
 		}
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		if (delta.x != 0) {
 			ResizeButtons(this, AIL_WIDGET_ACCEPT, AIL_WIDGET_CANCEL);
@@ -365,7 +365,7 @@ struct AISettingsWindow : public Window {
 		this->SetDirty();
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		if (delta.x != 0) {
 			ResizeButtons(this, AIS_WIDGET_ACCEPT, AIS_WIDGET_RESET);
@@ -588,7 +588,7 @@ struct AIConfigWindow : public Window {
 		}
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		this->vscroll.cap += delta.y / 14;
 		this->widget[AIC_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
@@ -777,7 +777,7 @@ struct AIDebugWindow : public Window {
 		if (data == -1 || ai_debug_company == data) this->SetDirty();
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;
 	}

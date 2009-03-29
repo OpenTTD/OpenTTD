@@ -1046,7 +1046,7 @@ public:
 		this->SetDirty();
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		if (delta.x != 0 && this->map_type == SMT_INDUSTRY) this->ResizeLegend();
 	}
@@ -1166,7 +1166,7 @@ public:
 		}
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		this->viewport->width          += delta.x;
 		this->viewport->height         += delta.y;

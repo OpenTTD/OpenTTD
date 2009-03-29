@@ -1727,7 +1727,7 @@ public:
 		}
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		/* Widget 2 and 3 have to go with halve speed, make it so obiwan */
 		uint diff = delta.x / 2;

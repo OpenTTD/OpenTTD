@@ -684,7 +684,7 @@ struct NewGRFWindow : public Window {
 		}
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		if (delta.x != 0) {
 			ResizeButtons(this, SNGRFS_ADD, SNGRFS_MOVE_DOWN);

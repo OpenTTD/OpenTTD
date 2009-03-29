@@ -392,7 +392,7 @@ struct RefitWindow : public Window {
 		}
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;
 		this->widget[3].data = (this->vscroll.cap << 8) + 1;
@@ -1152,7 +1152,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 		}
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;
 		this->widget[VLW_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
@@ -1575,7 +1575,7 @@ struct VehicleDetailsWindow : Window {
 		DoCommandP(0, this->window_number, 0, CMD_RENAME_VEHICLE | CMD_MSG(_name_vehicle_error[GetVehicle(this->window_number)->type]), NULL, str);
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		if (delta.x != 0) ResizeButtons(this, VLD_WIDGET_DETAILS_CARGO_CARRIED, VLD_WIDGET_DETAILS_TOTAL_CARGO);
 		if (delta.y == 0) return;
@@ -2037,7 +2037,7 @@ struct VehicleViewWindow : Window {
 		}
 	}
 
-	virtual void OnResize(Point new_size, Point delta)
+	virtual void OnResize(Point delta)
 	{
 		this->viewport->width          += delta.x;
 		this->viewport->height         += delta.y;
