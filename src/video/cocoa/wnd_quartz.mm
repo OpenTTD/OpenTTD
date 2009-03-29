@@ -65,7 +65,7 @@ class WindowQuartzSubdriver;
 - (void)appDidHide:(NSNotification*)note;
 - (void)appWillUnhide:(NSNotification*)note;
 - (void)appDidUnhide:(NSNotification*)note;
-- (id)initWithContentRect:(NSRect)contentRect styleMask:(unsigned int)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag;
+- (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag;
 @end
 
 /* Delegate for our NSWindow to send ask for quit on close */
@@ -264,7 +264,7 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 }
 
 
-- (id)initWithContentRect:(NSRect)contentRect styleMask:(unsigned int)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag
+- (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag
 {
 	/* Make our window subclass receive these application notifications */
 	[ [ NSNotificationCenter defaultCenter ] addObserver:self
@@ -336,7 +336,7 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 	CGImageRef    clippedImage;
 	NSRect        rect;
 	const NSRect *dirtyRects;
-	int           dirtyRectCount;
+	NSInteger     dirtyRectCount;
 	int           n;
 	CGRect        clipRect;
 	CGRect        blitRect;

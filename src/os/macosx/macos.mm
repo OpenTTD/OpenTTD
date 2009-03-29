@@ -33,7 +33,7 @@ static char *GetOSString()
 	const char *CPU;
 	char OS[20];
 	char newgrf[125];
-	long sysVersion;
+	SInt32 sysVersion;
 
 	// get the hardware info
 	host_basic_info_data_t hostInfo;
@@ -201,7 +201,7 @@ const char *GetCurrentLocale(const char *)
  */
 static long GetMacOSVersion()
 {
-	static long sysVersion = -1;
+	static SInt32 sysVersion = -1;
 
 	if (sysVersion != -1) return sysVersion;
 
@@ -211,7 +211,7 @@ static long GetMacOSVersion()
 
 long GetMacOSVersionMajor()
 {
-	static long sysVersion = -1;
+	static SInt32 sysVersion = -1;
 
 	if (sysVersion != -1) return sysVersion;
 
@@ -229,7 +229,7 @@ long GetMacOSVersionMajor()
 
 long GetMacOSVersionMinor()
 {
-	static long sysVersion = -1;
+	static SInt32 sysVersion = -1;
 
 	if (sysVersion != -1) return sysVersion;
 
@@ -247,7 +247,7 @@ long GetMacOSVersionMinor()
 
 long GetMacOSVersionBugfix()
 {
-	static long sysVersion = -1;
+	static SInt32 sysVersion = -1;
 
 	if (sysVersion != -1) return sysVersion;
 

@@ -5,6 +5,10 @@
 #ifndef STDAFX_H
 #define STDAFX_H
 
+#if defined(__APPLE__)
+	#include "os/macosx/osx_stdafx.h"
+#endif /* __APPLE__ */
+
 #if defined(__NDS__)
 	#include <nds/jtypes.h>
 	/* NDS' types for uint32/int32 are based on longs, which causes
@@ -103,10 +107,6 @@
 	 *  (mismatch linkage of C++ and C between this include and unistd.h). */
 	#define CLIB_USERGROUP_PROTOS_H
 #endif /* __MORPHOS__ */
-
-#if defined(__APPLE__)
-	#include "os/macosx/osx_stdafx.h"
-#endif /* __APPLE__ */
 
 #if defined(PSP)
 	/* PSP can only have 10 file-descriptors open at any given time, but this

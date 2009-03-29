@@ -299,7 +299,7 @@ class FullscreenSubdriver: public CocoaSubdriver {
 
 	bool SetVideoMode(int w, int h)
 	{
-		int exact_match;
+		boolean_t exact_match;
 		CFNumberRef number;
 		int bpp;
 		int gamma_error;
