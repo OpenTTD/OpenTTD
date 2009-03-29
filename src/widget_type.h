@@ -209,11 +209,13 @@ public:
 	~NWidgetContainer();
 
 	void Add(NWidgetBase *wid);
+	void SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post);
 
+protected:
 	uint8 pip_pre;     ///< Amount of space before first widget.
 	uint8 pip_inter;   ///< Amount of space between widgets.
 	uint8 pip_post;    ///< Amount of space after last widget.
-protected:
+
 	NWidgetBase *head; ///< Pointer to first widget in container.
 	NWidgetBase *tail; ///< Pointer to last widget in container.
 };
@@ -267,6 +269,7 @@ public:
 	~NWidgetBackground();
 
 	void Add(NWidgetBase *nwid);
+	void SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post);
 
 	int ComputeMinimalSize();
 	void AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);

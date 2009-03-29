@@ -862,6 +862,22 @@ void NWidgetContainer::Add(NWidgetBase *wid)
 	}
 }
 
+/**
+ * Set additional pre/inter/post space for the container.
+ *
+ * @param pip_pre   Additional space in front of the first child widget (above
+ *                  for the vertical container, at the left for the horizontal container).
+ * @param pip_inter Additional space between two child widgets.
+ * @param pip_post  Additional space after the last child widget (below for the
+ *                  vertical container, at the right for the horizontal container).
+ */
+void NWidgetContainer::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
+{
+	this->pip_pre = pip_pre;
+	this->pip_inter = pip_inter;
+	this->pip_post = pip_post;
+}
+
 NWidgetHorizontal::NWidgetHorizontal() : NWidgetContainer(NWID_HORIZONTAL)
 {
 }
@@ -1143,6 +1159,24 @@ void NWidgetBackground::Add(NWidgetBase *nwid)
 		this->child = new NWidgetVertical();
 	}
 	this->child->Add(nwid);
+}
+
+/**
+ * Set additional pre/inter/post space for the background widget.
+ *
+ * @param pip_pre   Additional space in front of the first child widget (above
+ *                  for the vertical container, at the left for the horizontal container).
+ * @param pip_inter Additional space between two child widgets.
+ * @param pip_post  Additional space after the last child widget (below for the
+ *                  vertical container, at the right for the horizontal container).
+ * @note Using this function implies that the widget has (or will have) child widgets.
+ */
+void NWidgetBackground::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
+{
+	if (this->child == NULL) {
+		this->child = new NWidgetVertical();
+	}
+	this->child->SetPIP(pip_pre, pip_inter, pip_post);
 }
 
 int NWidgetBackground::ComputeMinimalSize()
@@ -1476,11 +1510,10 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest)
 
 			case WPT_PIPSPACE: {
 				NWidgetContainer *nwc = dynamic_cast<NWidgetContainer *>(*dest);
-				if (nwc != NULL) {
-					nwc->pip_pre = parts->u.pip.pre;
-					nwc->pip_inter = parts->u.pip.inter;
-					nwc->pip_post = parts->u.pip.post;
-				}
+				if (nwc != NULL) nwc->SetPIP(parts->u.pip.pre,  parts->u.pip.inter, parts->u.pip.post);
+
+				NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(*dest);
+				if (nwb != NULL) nwb->SetPIP(parts->u.pip.pre,  parts->u.pip.inter, parts->u.pip.post);
 				break;
 			}
 
