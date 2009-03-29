@@ -160,7 +160,7 @@ public:
 		int dy = abs(y1 - y2);
 		int dmin = min(dx, dy);
 		int dxy = abs(dx - dy);
-		int d = dmin * 7 + (dxy - 1) * (10 / 2);
+		int d = dmin * YAPF_TILE_CORNER_LENGTH + (dxy - 1) * (YAPF_TILE_LENGTH / 2);
 		n.m_estimate = n.m_cost + d;
 		assert(n.m_estimate >= n.m_parent->m_estimate);
 		return true;
