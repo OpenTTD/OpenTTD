@@ -1535,6 +1535,31 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	UpdateAirportsNoise();
 }
 
+/**
+ * Checks if it's possible to place a town at given tile
+ * @param tile tile to check
+ * @return error value or zero cost
+ */
+static CommandCost TownCanBePlacedHere(TileIndex tile)
+{
+	/* Check if too close to the edge of map */
+	if (DistanceFromEdge(tile) < 12) {
+		return_cmd_error(STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP);
+	}
+
+	/* Check distance to all other towns. */
+	if (IsCloseToTown(tile, 20)) {
+		return_cmd_error(STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN);
+	}
+
+	/* Can only build on clear flat areas, possibly with trees. */
+	if ((!IsTileType(tile, MP_CLEAR) && !IsTileType(tile, MP_TREES)) || GetTileSlope(tile, NULL) != SLOPE_FLAT) {
+		return_cmd_error(STR_0239_SITE_UNSUITABLE);
+	}
+
+	return CommandCost();
+}
+
 /** Create a new town.
  * This obviously only works in the scenario editor. Function not removed
  * as it might be possible in the future to fund your own town :)
@@ -1558,22 +1583,11 @@ CommandCost CmdBuildTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	if (size > TS_RANDOM) return CMD_ERROR;
 	if (layout > TL_RANDOM) return CMD_ERROR;
+
 	if (!VerifyTownName(townnameparts, &par)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 
-	/* Check if too close to the edge of map */
-	if (DistanceFromEdge(tile) < 12) {
-		return_cmd_error(STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP);
-	}
-
-	/* Check distance to all other towns. */
-	if (IsCloseToTown(tile, 20)) {
-		return_cmd_error(STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN);
-	}
-
-	/* Can only build on clear flat areas, possibly with trees. */
-	if ((!IsTileType(tile, MP_CLEAR) && !IsTileType(tile, MP_TREES)) || GetTileSlope(tile, NULL) != SLOPE_FLAT) {
-		return_cmd_error(STR_0239_SITE_UNSUITABLE);
-	}
+	CommandCost cost = TownCanBePlacedHere(tile);
+	if (CmdFailed(cost)) return cost;
 
 	/* Allocate town struct */
 	if (!Town::CanAllocateItem()) return_cmd_error(STR_023A_TOO_MANY_TOWNS);
@@ -1606,16 +1620,11 @@ Town *CreateRandomTown(uint attempts, TownSize size, bool city, TownLayout layou
 				break;
 			default: break;
 		}
-		if (DistanceFromEdge(tile) < 20) continue;
 
-		/* Make sure the tile is plain */
-		if (!IsTileType(tile, MP_CLEAR) || GetTileSlope(tile, NULL) != SLOPE_FLAT) continue;
-
-		/* Check not too close to a town */
-		if (IsCloseToTown(tile, 20)) continue;
+		/* Make sure town can be placed here */
+		if (CmdFailed(TownCanBePlacedHere(tile))) continue;
 
 		uint32 townnameparts;
-
 		/* Get a unique name for the town. */
 		if (!GenerateTownName(&townnameparts)) break;
 
