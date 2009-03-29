@@ -846,7 +846,6 @@ video/null_v.cpp
 #end
 
 # Music
-music/null_m.cpp
 #if DEDICATED
 #else
 #if ALLEGRO
@@ -855,6 +854,10 @@ music/null_m.cpp
 #if DIRECTMUSIC
 	music/dmusic.cpp
 #end
+#end
+music/null_m.cpp
+#if DEDICATED
+#else
 #if WIN32
 	music/win32_m.cpp
 #else

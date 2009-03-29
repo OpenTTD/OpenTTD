@@ -3448,11 +3448,11 @@
 			Name="Music"
 			>
 			<File
-				RelativePath=".\..\src\music\null_m.cpp"
+				RelativePath=".\..\src\music\dmusic.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\music\dmusic.cpp"
+				RelativePath=".\..\src\music\null_m.cpp"
 				>
 			</File>
 			<File
