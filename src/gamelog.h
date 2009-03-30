@@ -14,6 +14,7 @@ enum GamelogActionType {
 	GLAT_CHEAT,        ///< Cheat was used
 	GLAT_SETTING,      ///< Setting changed
 	GLAT_GRFBUG,       ///< GRF bug was triggered
+	GLAT_EMERGENCY,    ///< Emergency savegame
 	GLAT_END,          ///< So we know how many GLATs are there
 	GLAT_NONE  = 0xFF, ///< No logging active; in savegames, end of list
 };
@@ -28,6 +29,9 @@ void GamelogPrint(GamelogPrintProc *proc); // needed for WIN32 / WINCE crash.log
 
 void GamelogPrintDebug(int level);
 void GamelogPrintConsole();
+
+void GamelogEmergency();
+bool GamelogTestEmergency();
 
 void GamelogRevision();
 void GamelogMode();

@@ -135,6 +135,7 @@ static const char *la_text[] = {
 	"cheat was used",
 	"settings changed",
 	"GRF bug triggered",
+	"emergency savegame",
 };
 
 assert_compile(lengthof(la_text) == GLAT_END);
@@ -249,6 +250,9 @@ void GamelogPrint(GamelogPrintProc *proc)
 							PrintGrfFilename(buf, lc->grfbug.grfid);
 							break;
 					}
+
+				case GLCT_EMERGENCY:
+					break;
 			}
 
 			proc(buf);
@@ -316,6 +320,31 @@ static LoggedChange *GamelogChange(GamelogChangeType ct)
 	return lc;
 }
 
+
+/** Logs a emergency savegame
+ */
+void GamelogEmergency()
+{
+	assert(_gamelog_action_type == GLAT_EMERGENCY);
+	GamelogChange(GLCT_EMERGENCY);
+}
+
+/** Finds out if current game is a loaded emergency savegame.
+ */
+bool GamelogTestEmergency()
+{
+	const LoggedChange *emergency = NULL;
+
+	const LoggedAction *laend = &_gamelog_action[_gamelog_actions];
+	for (const LoggedAction *la = _gamelog_action; la != laend; la++) {
+		const LoggedChange *lcend = &la->change[la->changes];
+		for (const LoggedChange *lc = la->change; lc != lcend; lc++) {
+			if (lc->ct == GLCT_EMERGENCY) emergency = lc;
+		}
+	}
+
+	return (emergency != NULL);
+}
 
 /** Logs a change in game revision
  * @param revision new revision string

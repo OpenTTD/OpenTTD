@@ -76,6 +76,10 @@ static const SaveLoad _glog_grfbug_desc[] = {
 	SLE_END()
 };
 
+static const SaveLoad _glog_emergency_desc[] = {
+	SLE_END()
+};
+
 static const SaveLoad *_glog_desc[] = {
 	_glog_mode_desc,
 	_glog_revision_desc,
@@ -87,6 +91,7 @@ static const SaveLoad *_glog_desc[] = {
 	_glog_grfparam_desc,
 	_glog_grfmove_desc,
 	_glog_grfbug_desc,
+	_glog_emergency_desc,
 };
 
 assert_compile(lengthof(_glog_desc) == GLCT_END);

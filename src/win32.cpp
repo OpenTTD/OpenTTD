@@ -234,8 +234,15 @@ static const TCHAR _save_succeeded[] =
 	_T("Be aware that critical parts of the internal game state may have become ")
 	_T("corrupted. The saved game is not guaranteed to work.");
 
+static const TCHAR _emergency_crash[] =
+	_T("A serious fault condition occured in the game. The game will shut down.\n")
+	_T("As you loaded an emergency savegame no crash information will be generated.\n");
+
 static bool EmergencySave()
 {
+	GamelogStartAction(GLAT_EMERGENCY);
+	GamelogEmergency();
+	GamelogStopAction();
 	SaveOrLoad("crash.sav", SL_SAVE, BASE_DIR);
 	return true;
 }
@@ -471,6 +478,10 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	static bool had_exception = false;
 
 	if (had_exception) ExitProcess(0);
+	if (GamelogTestEmergency()) {
+		MessageBox(NULL, _emergency_crash, _T("Fatal Application Failure"), MB_ICONERROR);
+		ExitProcess(0);
+	}
 	had_exception = true;
 
 	_ident = GetTickCount(); // something pretty unique
