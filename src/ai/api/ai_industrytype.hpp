@@ -113,6 +113,30 @@ public:
 	 * @note If true is returned the money is paid, whether a new industry was build or not.
 	 */
 	static bool ProspectIndustry(IndustryType industry_type);
+
+	/**
+	 * Is this type of industry built on water.
+	 * @param industry_type The type of the industry.
+	 * @pre IsValidIndustryType(industry_type).
+	 * @return True when this type is built on water.
+	 */
+	static bool IsBuiltOnWater(IndustryType industry_type);
+
+	/**
+	 * Does this type of industry have a heliport?
+	 * @param industry_type The type of the industry.
+	 * @pre IsValidIndustryType(industry_type).
+	 * @return True when this type has a heliport.
+	 */
+	static bool HasHeliport(IndustryType industry_type);
+
+	/**
+	 * Does this type of industry have a dock?
+	 * @param industry_type The type of the industry.
+	 * @pre IsValidIndustryType(industry_type).
+	 * @return True when this type has a dock.
+	 */
+	static bool HasDock(IndustryType industry_type);
 };
 
 #endif /* AI_INDUSTRYTYPE_HPP */

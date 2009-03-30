@@ -6926,6 +6926,9 @@
     GetName():               Farm
     CanBuildIndustry():      false
     CanProspectIndustry():   false
+    IsBuiltOnWater():        false
+    HasHeliport():           false
+    HasDock():               false
     Id:                      5
     IsRawIndustry():         true
     ProductionCanIncrease(): true
@@ -6933,6 +6936,9 @@
     GetName():               Oil Rig
     CanBuildIndustry():      false
     CanProspectIndustry():   false
+    IsBuiltOnWater():        true
+    HasHeliport():           true
+    HasDock():               true
     Id:                      12
     IsRawIndustry():         false
     ProductionCanIncrease(): true
@@ -6940,6 +6946,9 @@
     GetName():               Bank
     CanBuildIndustry():      true
     CanProspectIndustry():   false
+    IsBuiltOnWater():        false
+    HasHeliport():           false
+    HasDock():               false
     Id:                      11
     IsRawIndustry():         true
     ProductionCanIncrease(): false
@@ -6947,6 +6956,9 @@
     GetName():               Oil Wells
     CanBuildIndustry():      false
     CanProspectIndustry():   false
+    IsBuiltOnWater():        false
+    HasHeliport():           false
+    HasDock():               false
     Id:                      1
     IsRawIndustry():         false
     ProductionCanIncrease(): true
@@ -6954,6 +6966,9 @@
     GetName():               Power Station
     CanBuildIndustry():      true
     CanProspectIndustry():   false
+    IsBuiltOnWater():        false
+    HasHeliport():           false
+    HasDock():               false
     Id:                      3
     IsRawIndustry():         true
     ProductionCanIncrease(): true
@@ -6961,6 +6976,9 @@
     GetName():               Forest
     CanBuildIndustry():      false
     CanProspectIndustry():   false
+    IsBuiltOnWater():        false
+    HasHeliport():           false
+    HasDock():               false
     Id:                      2
     IsRawIndustry():         false
     ProductionCanIncrease(): true
@@ -6968,6 +6986,9 @@
     GetName():               Sawmill
     CanBuildIndustry():      true
     CanProspectIndustry():   false
+    IsBuiltOnWater():        false
+    HasHeliport():           false
+    HasDock():               false
     Id:                      18
     IsRawIndustry():         true
     ProductionCanIncrease(): true
@@ -6975,6 +6996,9 @@
     GetName():               Iron Ore Mine
     CanBuildIndustry():      false
     CanProspectIndustry():   false
+    IsBuiltOnWater():        false
+    HasHeliport():           false
+    HasDock():               false
     Id:                      0
     IsRawIndustry():         true
     ProductionCanIncrease(): true
@@ -6982,6 +7006,9 @@
     GetName():               Coal Mine
     CanBuildIndustry():      false
     CanProspectIndustry():   false
+    IsBuiltOnWater():        false
+    HasHeliport():           false
+    HasDock():               false
     Id:                      8
     IsRawIndustry():         false
     ProductionCanIncrease(): true
@@ -6989,6 +7016,9 @@
     GetName():               Steel Mill
     CanBuildIndustry():      true
     CanProspectIndustry():   false
+    IsBuiltOnWater():        false
+    HasHeliport():           false
+    HasDock():               false
     Id:                      4
     IsRawIndustry():         false
     ProductionCanIncrease(): true
@@ -6996,6 +7026,9 @@
     GetName():               Oil Refinery
     CanBuildIndustry():      true
     CanProspectIndustry():   false
+    IsBuiltOnWater():        false
+    HasHeliport():           false
+    HasDock():               false
     Id:                      6
     IsRawIndustry():         false
     ProductionCanIncrease(): true
@@ -7003,6 +7036,9 @@
     GetName():               Factory
     CanBuildIndustry():      true
     CanProspectIndustry():   false
+    IsBuiltOnWater():        false
+    HasHeliport():           false
+    HasDock():               false
 
 --Map--
   GetMapSize():     65536

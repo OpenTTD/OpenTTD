@@ -635,6 +635,9 @@ function Regression::IndustryTypeList()
 		print("    GetName():               " + AIIndustryType.GetName(i));
 		print("    CanBuildIndustry():      " + AIIndustryType.CanBuildIndustry(i));
 		print("    CanProspectIndustry():   " + AIIndustryType.CanProspectIndustry(i));
+		print("    IsBuiltOnWater():        " + AIIndustryType.IsBuiltOnWater(i));
+		print("    HasHeliport():           " + AIIndustryType.HasHeliport(i));
+		print("    HasDock():               " + AIIndustryType.HasDock(i));
 	}
 }
 

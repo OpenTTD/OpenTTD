@@ -28,6 +28,9 @@ void SQAIIndustryType_Register(Squirrel *engine) {
 	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::CanProspectIndustry,   "CanProspectIndustry",   2, ".i");
 	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::BuildIndustry,         "BuildIndustry",         3, ".ii");
 	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::ProspectIndustry,      "ProspectIndustry",      2, ".i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::IsBuiltOnWater,        "IsBuiltOnWater",        2, ".i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::HasHeliport,           "HasHeliport",           2, ".i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::HasDock,               "HasDock",               2, ".i");
 
 	SQAIIndustryType.PostRegister(engine);
 }
