@@ -113,11 +113,11 @@ public:
 	FORCEINLINE bool PfCalcCost(Node& n, const TrackFollower *tf)
 	{
 		/* base tile cost depending on distance */
-		int c = IsDiagonalTrackdir(n.GetTrackdir()) ? 10 : 7;
+		int c = IsDiagonalTrackdir(n.GetTrackdir()) ? YAPF_TILE_LENGTH : YAPF_TILE_CORNER_LENGTH;
 		/* additional penalty for curves */
 		if (n.m_parent != NULL && n.GetTrackdir() != NextTrackdir(n.m_parent->GetTrackdir())) {
 			/* new trackdir does not match the next one when going straight */
-			c += 10;
+			c += YAPF_TILE_LENGTH;
 		}
 
 		c += YAPF_TILE_LENGTH * tf->m_tiles_skipped;

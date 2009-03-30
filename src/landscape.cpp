@@ -815,8 +815,6 @@ static void GenerateTerrain(int type, uint flag)
 			} while (--w != 0);
 			break;
 	}
-
-	FixSlopes();
 }
 
 
@@ -930,6 +928,7 @@ void GenerateLandscape(byte mode)
 		}
 	}
 
+	FixSlopes();
 	ConvertGroundTilesIntoWaterTiles();
 
 	if (_settings_game.game_creation.landscape == LT_TROPIC) CreateDesertOrRainForest();

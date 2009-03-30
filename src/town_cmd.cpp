@@ -1948,14 +1948,24 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 	/* Generate a list of all possible houses that can be built. */
 	for (uint i = 0; i < HOUSE_MAX; i++) {
 		const HouseSpec *hs = GetHouseSpecs(i);
+
 		/* Verify that the candidate house spec matches the current tile status */
-		if ((~hs->building_availability & bitmask) == 0 && hs->enabled) {
-			/* Without NewHouses, all houses have probability '1' */
-			uint cur_prob = (_loaded_newgrf_features.has_newhouses ? hs->probability : 1);
-			probability_max += cur_prob;
-			probs[num] = cur_prob;
-			houses[num++] = (HouseID)i;
+		if ((~hs->building_availability & bitmask) != 0 || !hs->enabled) continue;
+
+		/* Don't let these counters overflow. Global counters are 32bit, there will never be that many houses. */
+		if (hs->class_id != HOUSE_NO_CLASS) {
+			/* id_count is always <= class_count, so it doesn't need to be checked */
+			if (t->building_counts.class_count[hs->class_id] == UINT16_MAX) continue;
+		} else {
+			/* If the house has no class, check id_count instead */
+			if (t->building_counts.id_count[i] == UINT16_MAX) continue;
 		}
+
+		/* Without NewHouses, all houses have probability '1' */
+		uint cur_prob = (_loaded_newgrf_features.has_newhouses ? hs->probability : 1);
+		probability_max += cur_prob;
+		probs[num] = cur_prob;
+		houses[num++] = (HouseID)i;
 	}
 
 	uint maxz = GetTileMaxZ(tile);

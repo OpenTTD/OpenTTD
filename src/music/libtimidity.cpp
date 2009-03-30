@@ -50,6 +50,7 @@ static FMusicDriver_LibTimidity iFMusicDriver_LibTimidity;
 const char *MusicDriver_LibTimidity::Start(const char * const *param)
 {
 	_midi.status = MIDI_STOPPED;
+	_midi.song = NULL;
 
 	if (mid_init(param == NULL ? NULL : (char *)param[0]) < 0) {
 		/* If init fails, it can be because no configuration was found.
@@ -81,15 +82,14 @@ const char *MusicDriver_LibTimidity::Start(const char * const *param)
 
 void MusicDriver_LibTimidity::Stop()
 {
-	if (_midi.status == MIDI_PLAYING) {
-		_midi.status = MIDI_STOPPED;
-		mid_song_free(_midi.song);
-	}
+	if (_midi.status == MIDI_PLAYING) this->StopSong();
 	mid_exit();
 }
 
 void MusicDriver_LibTimidity::PlaySong(const char *filename)
 {
+	this->StopSong();
+
 	_midi.stream = mid_istream_open_file(filename);
 	if (_midi.stream == NULL) {
 		DEBUG(driver, 0, "Could not open music file");
@@ -112,7 +112,9 @@ void MusicDriver_LibTimidity::PlaySong(const char *filename)
 void MusicDriver_LibTimidity::StopSong()
 {
 	_midi.status = MIDI_STOPPED;
-	mid_song_free(_midi.song);
+	/* mid_song_free cannot handle NULL! */
+	if (_midi.song != NULL) mid_song_free(_midi.song);
+	_midi.song = NULL;
 }
 
 bool MusicDriver_LibTimidity::IsSongPlaying()
@@ -130,6 +132,5 @@ bool MusicDriver_LibTimidity::IsSongPlaying()
 
 void MusicDriver_LibTimidity::SetVolume(byte vol)
 {
-	if (_midi.song != NULL)
-		mid_song_set_volume(_midi.song, vol);
+	if (_midi.song != NULL) mid_song_set_volume(_midi.song, vol);
 }
