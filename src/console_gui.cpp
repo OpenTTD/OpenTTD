@@ -147,12 +147,9 @@ struct IConsoleWindow : Window
 {
 	static int scroll;
 
-	IConsoleWindow(const WindowDesc *desc) : Window(desc)
+	IConsoleWindow() : Window(0, 0, _screen.width, _screen.height / 3, WC_CONSOLE, NULL)
 	{
 		_iconsole_mode = ICONSOLE_OPENED;
-
-		this->height = _screen.height / 3;
-		this->width  = _screen.width;
 	}
 
 	~IConsoleWindow()
@@ -314,17 +311,6 @@ struct IConsoleWindow : Window
 
 int IConsoleWindow::scroll = 0;
 
-static const Widget _iconsole_window_widgets[] = {
-	{WIDGETS_END}
-};
-
-static const WindowDesc _iconsole_window_desc(
-	0, 0, 2, 2, 2, 2,
-	WC_CONSOLE, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_iconsole_window_widgets
-);
-
 void IConsoleGUIInit()
 {
 	_iconsole_historypos = ICON_HISTORY_SIZE - 1;
@@ -376,7 +362,7 @@ void IConsoleSwitch()
 {
 	switch (_iconsole_mode) {
 		case ICONSOLE_CLOSED:
-			new IConsoleWindow(&_iconsole_window_desc);
+			new IConsoleWindow();
 			break;
 
 		case ICONSOLE_OPENED: case ICONSOLE_FULL:
