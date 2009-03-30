@@ -1,6 +1,6 @@
 ##name Serbian
 ##ownname Srpski
-##isocode sr_RS
+##isocode srp
 ##winlangid 0x7c1a
 ##grflangid 0x0d
 ##plural 6
@@ -259,22 +259,38 @@ STR_004D_FIZZY_DRINK                                            :gazirano piće
 STR_004D_FIZZY_DRINK.aku                                        :gazirano piće
 STR_004D_FIZZY_DRINK.big                                        :Gazirano piće
 STR_004D_FIZZY_DRINK.gen                                        :gaziranog pića
+STR_QUANTITY_PASSENGERS                                         :{COMMA} putnik{P "" a a}
 STR_QUANTITY_COAL                                               :{WEIGHT} nad ugalj
+STR_QUANTITY_MAIL                                               :{COMMA} džak{P "" a ova} pošte
 STR_QUANTITY_OIL                                                :{VOLUME} nad ulje
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} grl{P o a a} stoke
+STR_QUANTITY_GOODS                                              :{COMMA} sanduk{P "" a a} robe
 STR_QUANTITY_GRAIN                                              :{WEIGHT} nad zrno
 STR_QUANTITY_WOOD                                               :{WEIGHT} of drvo
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} železne rude
 STR_QUANTITY_STEEL                                              :{WEIGHT} čelika
+STR_QUANTITY_VALUABLES                                          :{COMMA} džak{P "" a ova} dragocenosti
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} bakarne rude
+STR_QUANTITY_MAIZE                                              :{WEIGHT} kukuruza
+STR_QUANTITY_FRUIT                                              :{WEIGHT} voća
+STR_QUANTITY_DIAMONDS                                           :{COMMA} džak{P "" a ova} dijamanata
+STR_QUANTITY_FOOD                                               :{WEIGHT} hrane
 STR_QUANTITY_PAPER                                              :{WEIGHT} nad papir
+STR_QUANTITY_GOLD                                               :{COMMA} džak{P "" a ova} zlata
 STR_QUANTITY_WATER                                              :{VOLUME} nad voda
 STR_QUANTITY_WHEAT                                              :{WEIGHT} nad pšenica
 STR_QUANTITY_RUBBER                                             :{VOLUME} nad guma
 STR_QUANTITY_SUGAR                                              :{WEIGHT} nad zasladiti
+STR_QUANTITY_TOYS                                               :{COMMA} igrač{P ka ke aka}
+STR_QUANTITY_SWEETS                                             :{COMMA} džak{P "" a ova} slatkiša
 STR_QUANTITY_COLA                                               :{VOLUME} nad kola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} nad candyfloss
+STR_QUANTITY_BUBBLES                                            :{COMMA} mehur{P "" a ova}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} nad karamela
+STR_QUANTITY_BATTERIES                                          :{COMMA} baterij{P a e a}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} nad plastika
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} gaziran{P o a a} pić{P 0 e a a}
+STR_ABBREV_NOTHING                                              :
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
@@ -407,11 +423,21 @@ STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}ks
 STR_UNITS_POWER_METRIC                                          :{COMMA}ks
+STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P a e a}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lit{P ra re ara}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Grafikon operativnog profita
@@ -421,6 +447,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Grafikon istori
 STR_0158_COMPANY_VALUE_GRAPH                                    :Grafikon vrednosti kompanije
 STR_0159_CARGO_PAYMENT_RATES                                    :Stope naplate tovara
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Tabela lige kompanija
+STR_PERFORMANCE_DETAIL_MENU                                     :Detaljan pergled poslovanja
 ############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}O OpenTTD-u
@@ -428,8 +455,56 @@ STR_015C_SAVE_GAME                                              :Sačuvaj igru
 STR_015D_LOAD_GAME                                              :Učitaj igru
 STR_015E_QUIT_GAME                                              :Napusti igru
 STR_015F_QUIT                                                   :Izađi
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Da li stvarno želite da napustite ovu partiju?
 STR_0161_QUIT_GAME                                              :{WHITE}Napusti igru
+STR_SORT_ORDER_TIP                                              :{BLACK}Odaberite način sortiranja (opadajući/rastući)
+STR_SORT_CRITERIA_TIP                                           :{BLACK}Odaberite kriterijum za sortiranje
+STR_SORT_BY                                                     :{BLACK}Sortiraj po
 
+STR_SORT_BY_POPULATION                                          :{BLACK}Naseljenost
+STR_SORT_BY_PRODUCTION                                          :Proizvodnja
+STR_SORT_BY_TYPE                                                :Vrsta
+STR_SORT_BY_TRANSPORTED                                         :Transportovano
+STR_SORT_BY_NAME                                                :{BLACK}Ime
+STR_SORT_BY_DROPDOWN_NAME                                       :Ime
+STR_SORT_BY_DATE                                                :{BLACK}Datum
+STR_SORT_BY_NUMBER                                              :Broj
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zarada prošle godine
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Zarada ove godine
+STR_SORT_BY_AGE                                                 :Starost
+STR_SORT_BY_RELIABILITY                                         :Pouzdanost
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Ukupna nosivost po vrsti tovara
+STR_SORT_BY_MAX_SPEED                                           :Nejvećoj brzini
+STR_SORT_BY_MODEL                                               :Model
+STR_SORT_BY_VALUE                                               :Vrednost
+STR_SORT_BY_LENGTH                                              :Dužina
+STR_SORT_BY_LIFE_TIME                                           :Preostao životni vek
+STR_SORT_BY_FACILITY                                            :Vrsta stanice
+STR_SORT_BY_WAITING                                             :Vrednost tovara na čekanju
+STR_SORT_BY_RATING_MAX                                          :Kvalitet usluge
+STR_ENGINE_SORT_ENGINE_ID                                       :ID mašine (standardno)
+STR_ENGINE_SORT_COST                                            :Cena
+STR_ENGINE_SORT_POWER                                           :Snaga
+STR_ENGINE_SORT_INTRO_DATE                                      :Datum proizvodnje
+STR_ENGINE_SORT_RUNNING_COST                                    :Troškovi održavanja
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Snaga/Troškovi održavanja
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapacitet tovara
+STR_NO_WAITING_CARGO                                            :{BLACK}Nijedna vrsta tovara nije na čekanju
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Odaberi sve objekte
+STR_SELECT_ALL_TYPES                                            :{BLACK}Odaberi sve vrste tovara (uključujući i one bez tovara)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Dostupni Vozovi
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Dostupna Drumska Vozila
+STR_AVAILABLE_SHIPS                                             :{BLACK}Dostupni Brodovi
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Dostupne Letelice
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Pogledajte listu raspoloživih mašina za ovu vrstu vozila.
+STR_MANAGE_LIST                                                 :{BLACK}Upravljanje
+STR_MANAGE_LIST_TIP                                             :{BLACK}Pošaljite naredbu svim vozilima na ovoj listi
+STR_REPLACE_VEHICLES                                            :Obnovi vozila
+STR_SEND_TRAIN_TO_DEPOT                                         :Pošalji u Depo
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Pošalji u Depo
+STR_SEND_SHIP_TO_DEPOT                                          :Pošalji u Depo
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Pošalji u Hangar
+STR_SEND_FOR_SERVICING                                          :Pošalji na Servisiranje
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -477,10 +552,14 @@ STR_0189                                                        :{BLACK}{SMALLDO
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Servisni interval nije moguće promeniti...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Zatvori prozor
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Naslov - povucite mišem da biste pomerili prozor
+STR_STICKY_BUTTON                                               :{BLACK}Pridenite kako bi ovaj prozor ostao otvoren prilikom pritiska na dugme za zatvaranje svih prozora
+STR_RESIZE_BUTTON                                               :{BLACK}Pritisnite i povucite kako bi prozor promenio veličinu
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Pritisnite ovde kako bi ste otišli u uobičajni direktorijum za čuvanje pozicije
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Sruši građevinu i sl. na kvadratu tla
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Spusti ugao tla
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Podigni ugao tla
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Skrol - pomera spisak gore/dole
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Klizač - pomera spisak levo/desno
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Prikaži konture tla na mapi
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Prikaži vozila na mapi
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Prikaži industrije na mapi
@@ -491,6 +570,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Uključi
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Ovogodišnja zarada: {CURRENCY} (prošle godine: {CURRENCY})
 
 ############ range for service numbers starts
+STR_AGE                                                         :{COMMA} godin{P a e a} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} godin{P a e a} ({COMMA})
 ############ range for service numbers ends
 
 STR_019F_TRAIN                                                  :voz
@@ -513,8 +594,12 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Prikaži informacije o zemljištu
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cena čišćenja: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cena čišćenja: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Dobit po uklanjanju: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Vlasnik: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Vlasnik kolovoza: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Vlasnik tramvajske pruge: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Vlasnuk železničke pruge: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokalna vlast: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Nema
 STR_01AA_NAME                                                   :{BLACK}Ime
@@ -599,6 +684,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Izaberi 
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Obriši tekući program (samo korisnički-definisani programi)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Sačuvaj podešavanja muzike
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klik na numeru je dodaje u tekući program (samo za korisnički-definisane programe)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Pritisnite na muzičku numeru kako biste je uklonili sa trenutnog rasporeda (samo za Custom1 ili Custom2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Uključi/isključi nasumičan izbor pri puštanju
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Prikaži prozor za izbor muzičkih numera
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klik na uslugu centrira pogled na industriju/naselje
@@ -606,6 +692,7 @@ STR_01FE_DIFFICULTY                                             :{BLACK}Težina 
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Poslednja poruka/izveštaj
 STR_0201_MESSAGE_SETTINGS                                       :Podešavanja poruka
+STR_MESSAGE_HISTORY_MENU                                        :Istorija Obaveštenja
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Prikaži poslednju poruku/izveštaj, prikaži opcije poruka
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Opcije poruka
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Vrste poruka:
@@ -613,14 +700,22 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Dolazak
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Dolazak prvog vozila na suparničku stanicu
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Udesi/nepogode
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informacije o kompaniji
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Otvaranje nove industrije
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Zatvaranje industrije
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Promene u ekonomiji
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Promene u proizvodnji usluženih industrija
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Promene u proizvodnji industrija usluženih konkurencijom
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Promene u proizvodnji ostalih industrija
 STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Izveštaji o vozilima kompanije
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nova vozila
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Promene u prihvatanju tovara
 STR_020E_SUBSIDIES                                              :{YELLOW}Subvencije
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Opšte informacije
+STR_MESSAGES_ALL                                                :{YELLOW}Podesi sva obaveštenja na: Isključeno / Sažeto / Potpuno
+STR_MESSAGE_SOUND                                               :{YELLOW}Zvučni signal za sažeta novinska obaveštenja
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...previše udaljeno od prethodne destinacije
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Najbolje kompanije koje su dostigle {NUM}{}({STRING} nivo)
+STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}{NUM} u Tabeli Lige Kompanija
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Biznismen
 STR_0213_BUSINESSMAN.gen                                        :biznismena
@@ -636,6 +731,8 @@ STR_0218_MOGUL                                                  :Mogul
 STR_0218_MOGUL.gen                                              :mogula
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Tajkun veka
 STR_0219_TYCOON_OF_THE_CENTURY.gen                              :tajkuna veka
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} dostiže status '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME}, vlasnik kompanije {COMPANY} je dostigao status '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
@@ -703,7 +800,6 @@ STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Prikaži
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Popis naselja
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Prilagođen
 
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Opcije
@@ -1361,6 +1457,7 @@ STR_6815_DISASTERS                                              :{LTBLUE}Katastr
 STR_6816_LOW                                                    :niski
 STR_6817_NORMAL                                                 :normalni
 STR_6818_HIGH                                                   :visoki
+STR_02BF_CUSTOM                                                 :Prilagođen
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :jako spora
@@ -1612,6 +1709,7 @@ STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pouzdano
 STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
 
 
 

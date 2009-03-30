@@ -608,6 +608,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Get ekki
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...það er ekkert laust svæði á kortinu
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Stækka bæ
 STR_023C_EXPAND                                                 :{BLACK}Stækka
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Bærinn getur ekki lagt vegi. Því er hægt að breyta í Þróaðri stillingar->Efnahagur->Bæir.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Handahófskenndur bær
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Byggja bæ á handahófskenndum stað
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Get ekki byggt {STRING} hérna...
@@ -946,6 +947,7 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Órétt
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Margfalda þyngd farms til að líkja eftir þyngri lestum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Hraðastuðull flugvéla: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Leyfa strætóstöðvar á gangstéttum bæja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Leyfa stöðvar á gangstéttum vega í eigu keppinauta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Heimila sambyggingu stöðva: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Virkja mörg NewGRF vélasöfn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ekki er hægt að breyta þessari stillingu þegar til eru farartæki.
@@ -1046,10 +1048,10 @@ STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Bifrei�
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Flugvélar á leikmann mest: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Skip á leikmann mest: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Útiloka lestir fyrir tölvu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Útiloka bifreiðir fyrir tölvu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Útiloka flugvélar fyrir tölvu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Útiloka skip fyrir tölvu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Útiloka lestir frá tölvu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Útiloka bifreiðir frá tölvu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Útiloka flugvélar frá tölvu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Útiloka skip frá tölvu: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Leyfa gervigreind í fjölspilun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Fjöldi aðgerðanúmera áður en slökkt er á gervigreind: {ORANGE}{STRING}
@@ -3546,20 +3548,23 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI Stillingar
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Sýna AI stillingar
-STR_AI_DEBUG                                                    :{WHITE}AI Villuprófun
-STR_AI_DEBUG_NAME_TIP                                           :{BLACK}AI heiti
-STR_AI_DEBUG_RELOAD                                             :{BLACK}Endurhlaða AI
-STR_AI_CHANGE                                                   :{BLACK}Velja AI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}Stillingar gervigreindar
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Sýna stillingar gervigreindar
+STR_AI_DEBUG                                                    :{WHITE}Aflúsun gervigreindar
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nafn gervigreindar
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Endurhlaða gervigreind
+STR_AI_CHANGE                                                   :{BLACK}Velja gervigreind
 STR_AI_CONFIGURE                                                :{BLACK}Stilla
-STR_AI_CHANGE_TIP                                               :{BLACK}Hlaða aðra AI
+STR_AI_CHANGE_TIP                                               :{BLACK}Velja aðra gervigreind
 STR_AI_ACCEPT                                                   :{BLACK}Í lagi
 STR_AI_CANCEL                                                   :{BLACK}Hætta við
 STR_AI_CLOSE                                                    :{BLACK}Loka
-STR_AI_HUMAN_PLAYER                                             :Menskur spilari
+STR_AI_HUMAN_PLAYER                                             :Mennskur leikmaður
+STR_AI_RANDOM_AI                                                :Gervigreind af handahófi
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Stillingar gervigreindar
 STR_AI_AUTHOR                                                   :Höfundur: {STRING}
 STR_AI_VERSION                                                  :Útgáfa: {NUM}
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Ein af gervigreindunum hrundi. Vinsamlega gerðu höfundi gervigreindarinnar viðvart og sendu inn mynd af aflúsunarglugga gervigreindarinnar.
 ########
 
 ############ town controlled noise level
@@ -3573,19 +3578,37 @@ STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ekki
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Venjuleg grafík
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
-STR_CONTENT_TYPE_AI_LIBRARY                                     :AI safn
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Safn gervigreinda
+STR_CONTENT_TYPE_SCENARIO                                       :Kort
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Hæðar-kort
 STR_CONTENT_TITLE                                               :{WHITE}Niðurhel efni
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Týpa
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Tegund pakka
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Heiti
 STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Heiti efnis
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Smelltu á pakka fyrir frekari upplýsingar{}Smelltu í reitinn til að velja pakka til niðurhals
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Velja allt
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Velja allt til niðurhals
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Velja uppfærslur
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Velja til niðurhals allar uppfærslur fyrir pakka sem nú þegar hefur verið náð í
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Af-velja allt
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Afvelja allt frá niðurhali
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Sláðu inn leitarstreng
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Sláðu inn leitarstreng til að sía listann
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Leitarstrengur:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Niðurhala
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Hefja niðurhal á völdum pökkum
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Stærð niðurhals: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}UPPLÝSINGAR
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Pakkinn er ekki valinn til niðurhals
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Pakkinn er valinn til niðurhals
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Þessi pakki er nauðsynlegur undirstaða fyrir annan pakka sem er valinn til niðurhals
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Þú hefur þetta nú þegar
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Þessi pakki er óþekktur og ekki er hægt að ná í hann gegnum OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Þetta er uppfærsla fyrir {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Heiti: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Útgáfa: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Lýsing: {WHITE}{STRING}
 STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Týpa: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Stærð niðurhals: {WHITE}{BYTES}
@@ -3596,4 +3619,8 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Niðurha
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} af {BYTES} niðurhalað ({NUM} %)
 
 
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Ná í viðbætur af netinu
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Skoða viðbætur sem hægt er að ná í af netinu
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Leita á netinu að efni sem vantar
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Skoða hvort hægt sé að ná í það sem vantar af netinu
 ########

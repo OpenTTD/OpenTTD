@@ -989,11 +989,11 @@ STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Pozwól
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Pozwól na wysyłanie pieniędzy do innych firm:: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Niejednolite stacje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Mnożnik wagi dla symulacji ciężkich pociągów towarowych: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Wspolczynnik predkosci samolotu: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Współczynnik prędkości samolotu: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Pozwól na budowę przystanków typu ro-ro na drogach miejskich: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Zezwól na przejazd przez przystanki należące do przeciwników: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Pozwól na budowę stacji przyległych do stacji przeciwnika (z CTRL): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Zezwol na wiele zestawow NewGRF: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Zezwól na wiele zestawów NewGRF: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Zmiana tego ustawienia nie jest możliwa, gdy znajdują się tutaj pojazdy.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Zawsze zezwalaj budować małe lotniska: {ORANGE}{STRING}
@@ -1058,8 +1058,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Wyłączona
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Przewijanie lewym przyciskiem myszy: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Użyj {ORANGE}{STRING}{LTBLUE} formatu daty dla nazw zapisów gry.
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :długa (31 grudnia 2008)
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :krótka (31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :długiego (31 grudnia 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :krótkiego (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatycznie włącz pauzę przy rozpoczęciu nowej gry: {ORANGE}{STRING}
@@ -1098,6 +1098,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Samolot
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Statki niedostępne dla komputera: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Pozwól na AI w grze wieloosobowej (testowe): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes przed zawieszeniem SI: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Okres między serwisowaniami w procentach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Domyślny okres między serwis. dla pociągów: {ORANGE}{STRING} dni
@@ -1160,8 +1161,8 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Pojazdy
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stacje
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomia
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Zawodnicy
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Wyświetl opcje
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Oddziaływanie
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Opcje wyświetlania
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakcja
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sygnały
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Obsługa ładunków
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Gracze komputerowi
@@ -3441,15 +3442,15 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 
 # Strings for map borders at game generation
 STR_BORDER_TYPE                                                 :{BLACK}Krańce mapy:
-STR_NORTHWEST                                                   :{BLACK}Północny zachód
-STR_NORTHEAST                                                   :{BLACK}Północny wschód
-STR_SOUTHEAST                                                   :{BLACK}Południowy wschód
-STR_SOUTHWEST                                                   :{BLACK}Południowy zachód
-STR_BORDER_FREEFORM                                             :{BLACK}Wolna forma
+STR_NORTHWEST                                                   :{BLACK}Płn.-zach.
+STR_NORTHEAST                                                   :{BLACK}Płn.-wsch.
+STR_SOUTHEAST                                                   :{BLACK}Płd.-wsch.
+STR_SOUTHWEST                                                   :{BLACK}Płd.-zach.
+STR_BORDER_FREEFORM                                             :{BLACK}Dowolne
 STR_BORDER_WATER                                                :{BLACK}Woda
-STR_BORDER_RANDOM                                               :{BLACK}Losowo
+STR_BORDER_RANDOM                                               :{BLACK}Losowe
 STR_BORDER_RANDOMIZE                                            :{BLACK}Losowo
-STR_BORDER_MANUAL                                               :{BLACK}Ręcznie
+STR_BORDER_MANUAL                                               :{BLACK}Własne
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Małe

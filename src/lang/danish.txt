@@ -416,8 +416,8 @@ STR_STICKY_BUTTON                                               :{BLACK}Marker d
 STR_RESIZE_BUTTON                                               :{BLACK}Klik og træk for at ændre vinduets størrelse
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik her for at gå til det nuværende standard gemme/hente bibliotek
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Nedriv bygninger osv. på et stykke land
-STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Sænk et hjørne af landet
-STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Hæv et hjørne af landet
+STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Sænk punkter i landskabet
+STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Hæv punkter i landskabet
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Scrollbar - scroller listen op/ned
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Scroll bar - flytter listen mod venstre/højre
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Vis landskabskonturer på kortet

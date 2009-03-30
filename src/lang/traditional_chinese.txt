@@ -665,7 +665,6 @@ STR_FULL                                                        :詳細
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :市鎮清冊
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :自訂
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -2120,6 +2119,7 @@ STR_NUM_VERY_LOW                                                :非常少
 STR_6816_LOW                                                    :低
 STR_6817_NORMAL                                                 :普通
 STR_6818_HIGH                                                   :高
+STR_02BF_CUSTOM                                                 :自訂
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :非常慢
@@ -3158,6 +3158,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}取消�
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' 的行為可能會造成失去同步或當機
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}' 不在機廠內卻發生列車長度的變動
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}' 所擁有的列車 '{0:VEHICLE}' 長度無效。這個錯誤可能是 NewGRFs 有問題所致，遊戲可能會無法同步或當機
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}此存檔版本不支援路面電車，已移除所有路面電車
 
