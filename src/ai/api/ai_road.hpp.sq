@@ -46,6 +46,7 @@ void SQAIRoad_Register(Squirrel *engine) {
 	AIError::RegisterErrorMapString(AIRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD,           "ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD");
 	AIError::RegisterErrorMapString(AIRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS, "ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS");
 
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::GetRoadVehicleTypeForCargo,     "GetRoadVehicleTypeForCargo",     2, ".i");
 	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::IsRoadTile,                     "IsRoadTile",                     2, ".i");
 	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::IsRoadDepotTile,                "IsRoadDepotTile",                2, ".i");
 	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::IsRoadStationTile,              "IsRoadStationTile",              2, ".i");

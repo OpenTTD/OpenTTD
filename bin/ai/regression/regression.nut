@@ -256,12 +256,15 @@ function Regression::Bridge()
 	print("  Valid Bridges:        " + j);
 
 	print("  IsBridgeTile():       " + AIBridge.IsBridgeTile(33160));
+	print("  GetBridgeID():        " + AIBridge.GetBridgeID(33160));
 	print("  RemoveBridge():       " + AIBridge.RemoveBridge(33155));
 	print("  GetLastErrorString(): " + AIError.GetLastErrorString());
 	print("  GetOtherBridgeEnd():  " + AIBridge.GetOtherBridgeEnd(33160));
 	print("  BuildBridge():        " + AIBridge.BuildBridge(AIVehicle.VT_ROAD, 5, 33160, 33155));
 	print("  IsBridgeTile():       " + AIBridge.IsBridgeTile(33160));
+	print("  GetBridgeID():        " + AIBridge.GetBridgeID(33160));
 	print("  IsBridgeTile():       " + AIBridge.IsBridgeTile(33155));
+	print("  GetBridgeID():        " + AIBridge.GetBridgeID(33155));
 	print("  GetOtherBridgeEnd():  " + AIBridge.GetOtherBridgeEnd(33160));
 	print("  BuildBridge():        " + AIBridge.BuildBridge(AIVehicle.VT_ROAD, 5, 33160, 33155));
 	print("  GetLastErrorString(): " + AIError.GetLastErrorString());
@@ -329,6 +332,7 @@ function Regression::Cargo()
 		print("    GetCargoIncome(10, 10):  " + AICargo.GetCargoIncome(i, 10, 10));
 		print("    GetCargoIncome(100, 10): " + AICargo.GetCargoIncome(i, 100, 10));
 		print("    GetCargoIncome(10, 100): " + AICargo.GetCargoIncome(i, 10, 100));
+		print("    GetRoadVehicleTypeForCargo(): " + AIRoad.GetRoadVehicleTypeForCargo(i));
 	}
 }
 
@@ -631,6 +635,9 @@ function Regression::IndustryTypeList()
 		print("    GetName():               " + AIIndustryType.GetName(i));
 		print("    CanBuildIndustry():      " + AIIndustryType.CanBuildIndustry(i));
 		print("    CanProspectIndustry():   " + AIIndustryType.CanProspectIndustry(i));
+		print("    IsBuiltOnWater():        " + AIIndustryType.IsBuiltOnWater(i));
+		print("    HasHeliport():           " + AIIndustryType.HasHeliport(i));
+		print("    HasDock():               " + AIIndustryType.HasDock(i));
 	}
 }
 

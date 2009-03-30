@@ -18,7 +18,7 @@ public:
 	 * The classes of cargo (from newgrf_cargo.h).
 	 */
 	enum CargoClass {
-		CC_PASSENGERS   = 1 <<  0, //!< Passengers
+		CC_PASSENGERS   = 1 <<  0, //!< Passengers. Cargos of this class appear at bus stops. Cargos not of this class appear at truck stops.
 		CC_MAIL         = 1 <<  1, //!< Mail
 		CC_EXPRESS      = 1 <<  2, //!< Express cargo (Goods, Food, Candy, but also possible for passengers)
 		CC_ARMOURED     = 1 <<  3, //!< Armoured cargo (Valuables, Gold, Diamonds)
@@ -52,6 +52,7 @@ public:
 	/**
 	 * Gets the string representation of the cargo label.
 	 * @param cargo_type The cargo to get the string representation of.
+	 * @pre AICargo::IsValidCargo(cargo_type).
 	 * @return The cargo label.
 	 * @note Never use this to check if it is a certain cargo. NewGRF can
 	 *  redefine all of the names.
@@ -60,7 +61,10 @@ public:
 
 	/**
 	 * Checks whether the give cargo is a freight or not.
+	 * This defines whether the "freight train weight multiplier" will apply to
+	 * trains transporting this cargo.
 	 * @param cargo_type The cargo to check on.
+	 * @pre AICargo::IsValidCargo(cargo_type).
 	 * @return True if and only if the cargo is freight.
 	 */
 	static bool IsFreight(CargoID cargo_type);
@@ -68,6 +72,7 @@ public:
 	/**
 	 * Check if this cargo is in the requested cargo class.
 	 * @param cargo_type The cargo to check on.
+	 * @pre AICargo::IsValidCargo(cargo_type).
 	 * @param cargo_class The class to check for.
 	 * @return True if and only if the cargo is in the cargo class.
 	 */
@@ -76,6 +81,7 @@ public:
 	/**
 	 * Get the effect this cargo has on a town.
 	 * @param cargo_type The cargo to check on.
+	 * @pre AICargo::IsValidCargo(cargo_type).
 	 * @return The effect this cargo has on a town, or TE_NONE if it has no effect.
 	 */
 	static TownEffect GetTownEffect(CargoID cargo_type);
@@ -84,6 +90,7 @@ public:
 	 * Get the income for transporting a piece of cargo over the
 	 *   given distance within the specified time.
 	 * @param cargo_type The cargo to transport.
+	 * @pre AICargo::IsValidCargo(cargo_type).
 	 * @param distance The distance the cargo travels from begin to end.
 	 * @param days_in_transit Amount of (game) days the cargo is in transit. The max value of this variable is 637. Any value higher returns the same as 637 would.
 	 * @return The amount of money that would be earned by this trip.

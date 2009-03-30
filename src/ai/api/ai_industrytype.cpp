@@ -111,3 +111,24 @@
 	uint32 seed = ::InteractiveRandom();
 	return AIObject::DoCommand(0, industry_type, seed, CMD_BUILD_INDUSTRY);
 }
+
+/* static */ bool AIIndustryType::IsBuiltOnWater(IndustryType industry_type)
+{
+	if (!IsValidIndustryType(industry_type)) return false;
+
+	return (::GetIndustrySpec(industry_type)->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0;
+}
+
+/* static */ bool AIIndustryType::HasHeliport(IndustryType industry_type)
+{
+	if (!IsValidIndustryType(industry_type)) return false;
+
+	return (::GetIndustrySpec(industry_type)->behaviour & INDUSTRYBEH_AI_AIRSHIP_ROUTES) != 0;
+}
+
+/* static */ bool AIIndustryType::HasDock(IndustryType industry_type)
+{
+	if (!IsValidIndustryType(industry_type)) return false;
+
+	return (::GetIndustrySpec(industry_type)->behaviour & INDUSTRYBEH_AI_AIRSHIP_ROUTES) != 0;
+}

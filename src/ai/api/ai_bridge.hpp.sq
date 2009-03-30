@@ -36,6 +36,7 @@ void SQAIBridge_Register(Squirrel *engine) {
 
 	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::IsValidBridge,     "IsValidBridge",     2, ".i");
 	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::IsBridgeTile,      "IsBridgeTile",      2, ".i");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetBridgeID,       "GetBridgeID",       2, ".i");
 	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetName,           "GetName",           2, ".i");
 	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetMaxSpeed,       "GetMaxSpeed",       2, ".i");
 	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetPrice,          "GetPrice",          3, ".ii");

@@ -1418,6 +1418,7 @@ static void NetworkAutoCleanCompanies()
 	const NetworkClientInfo *ci;
 	const Company *c;
 	bool clients_in_company[MAX_COMPANIES];
+	int vehicles_in_company[MAX_COMPANIES];
 
 	if (!_settings_client.network.autoclean_companies) return;
 
@@ -1433,6 +1434,16 @@ static void NetworkAutoCleanCompanies()
 		if (IsValidCompanyID(ci->client_playas)) clients_in_company[ci->client_playas] = true;
 	}
 
+	if (_settings_client.network.autoclean_novehicles != 0) {
+		memset(vehicles_in_company, 0, sizeof(vehicles_in_company));
+
+		const Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (!IsValidCompanyID(v->owner) || !v->IsPrimaryVehicle()) continue;
+			vehicles_in_company[v->owner]++;
+		}
+	}
+
 	/* Go through all the comapnies */
 	FOR_ALL_COMPANIES(c) {
 		/* Skip the non-active once */
@@ -1446,7 +1457,7 @@ static void NetworkAutoCleanCompanies()
 			if (_settings_client.network.autoclean_unprotected != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_unprotected && StrEmpty(_network_company_states[c->index].password)) {
 				/* Shut the company down */
 				DoCommandP(0, 2, c->index, CMD_COMPANY_CTRL);
-				IConsolePrintF(CC_DEFAULT, "Auto-cleaned company #%d", c->index + 1);
+				IConsolePrintF(CC_DEFAULT, "Auto-cleaned company #%d with no password", c->index + 1);
 			}
 			/* Is the company empty for autoclean_protected-months, and there is a protection? */
 			if (_settings_client.network.autoclean_protected != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_protected && !StrEmpty(_network_company_states[c->index].password)) {
@@ -1455,6 +1466,12 @@ static void NetworkAutoCleanCompanies()
 				IConsolePrintF(CC_DEFAULT, "Auto-removed protection from company #%d", c->index + 1);
 				_network_company_states[c->index].months_empty = 0;
 				NetworkServerUpdateCompanyPassworded(c->index, false);
+			}
+			/* Is the company empty for autoclean_novehicles-months, and has no vehicles? */
+			if (_settings_client.network.autoclean_novehicles != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_novehicles && vehicles_in_company[c->index] == 0) {
+				/* Shut the company down */
+				DoCommandP(0, 2, c->index, CMD_COMPANY_CTRL);
+				IConsolePrintF(CC_DEFAULT, "Auto-cleaned company #%d with no vehicles", c->index + 1);
 			}
 		} else {
 			/* It is not empty, reset the date */

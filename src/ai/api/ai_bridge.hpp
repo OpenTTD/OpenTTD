@@ -52,6 +52,14 @@ public:
 	static bool IsBridgeTile(TileIndex tile);
 
 	/**
+	 * Get the BridgeID of a bridge at a given tile.
+	 * @param tile The tile to get the BridgeID from.
+	 * @pre IsBridgeTile(tile).
+	 * @return The BridgeID from the bridge at tile 'tile'.
+	 */
+	static BridgeID GetBridgeID(TileIndex tile);
+
+	/**
 	 * Get the name of a bridge.
 	 * @param bridge_id The bridge to get the name of.
 	 * @pre IsValidBridge(bridge_id).

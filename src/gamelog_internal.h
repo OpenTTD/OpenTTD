@@ -19,6 +19,7 @@ enum GamelogChangeType {
 	GLCT_GRFPARAM,    ///< GRF parameter changed
 	GLCT_GRFMOVE,     ///< GRF order changed
 	GLCT_GRFBUG,      ///< GRF bug triggered
+	GLCT_EMERGENCY,   ///< Emergency savegame
 	GLCT_END,         ///< So we know how many GLCTs are there
 	GLCT_NONE = 0xFF, ///< In savegames, end of list
 };
