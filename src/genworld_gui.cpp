@@ -697,25 +697,29 @@ void StartNewGameWithoutGUI(uint seed)
 	StartGeneratingLandscape(GLWP_GENERATE);
 }
 
+/** Widget numbers of the create scenario window. */
 enum CreateScenarioWindowWidgets {
-	CSCEN_TEMPERATE = 3,
-	CSCEN_ARCTIC,
-	CSCEN_TROPICAL,
-	CSCEN_TOYLAND,
-	CSCEN_EMPTY_WORLD,
-	CSCEN_RANDOM_WORLD,
-	CSCEN_MAPSIZE_X_TEXT,
-	CSCEN_MAPSIZE_X_PULLDOWN,
-	CSCEN_MAPSIZE_Y_TEXT,
-	CSCEN_MAPSIZE_Y_PULLDOWN,
-	CSCEN_START_DATE_LABEL,
-	CSCEN_START_DATE_DOWN,
-	CSCEN_START_DATE_TEXT,
-	CSCEN_START_DATE_UP,
-	CSCEN_FLAT_LAND_HEIGHT_LABEL,
-	CSCEN_FLAT_LAND_HEIGHT_DOWN,
-	CSCEN_FLAT_LAND_HEIGHT_TEXT,
-	CSCEN_FLAT_LAND_HEIGHT_UP
+	CSCEN_CLOSEBOX,               ///< Close button.
+	CSCEN_CAPTION,                ///< Title bar.
+	CSCEN_BACKGROUND,             ///< Background panel.
+	CSCEN_TEMPERATE,              ///< Select temperate landscape style.
+	CSCEN_ARCTIC,                 ///< Select arctic landscape style.
+	CSCEN_TROPICAL,               ///< Select tropical landscape style.
+	CSCEN_TOYLAND,                ///< Select toy-land landscape style.
+	CSCEN_EMPTY_WORLD,            ///< Generate an empty flat world.
+	CSCEN_RANDOM_WORLD,           ///< Generate random land button
+	CSCEN_MAPSIZE_X_TEXT,         ///< Clickable currently selected x map size.
+	CSCEN_MAPSIZE_X_PULLDOWN,     ///< Pull-down arrow for x map size.
+	CSCEN_MAPSIZE_Y_TEXT,         ///< Clickable currently selected y map size.
+	CSCEN_MAPSIZE_Y_PULLDOWN,     ///< Pull-down arrow for y map size.
+	CSCEN_START_DATE_LABEL,       ///< 'Date' label
+	CSCEN_START_DATE_DOWN,        ///< Decrease start year (start earlier).
+	CSCEN_START_DATE_TEXT,        ///< Clickable start date value.
+	CSCEN_START_DATE_UP,          ///< Increase start year (start later).
+	CSCEN_FLAT_LAND_HEIGHT_LABEL, ///< 'Height of flat land' label.
+	CSCEN_FLAT_LAND_HEIGHT_DOWN,  ///< Decrease flat land height.
+	CSCEN_FLAT_LAND_HEIGHT_TEXT,  ///< Clickable flat land height value.
+	CSCEN_FLAT_LAND_HEIGHT_UP     ///< Increase flat land height.
 };
 
 
@@ -847,9 +851,9 @@ struct CreateScenarioWindow : public Window
 };
 
 static const Widget _create_scenario_widgets[] = {
-{   WWT_CLOSEBOX, RESIZE_NONE, COLOUR_BROWN,    0,  10,   0,  13, STR_00C5,                STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION, RESIZE_NONE, COLOUR_BROWN,   11, 337,   0,  13, STR_SE_CAPTION,          STR_NULL},
-{      WWT_PANEL, RESIZE_NONE, COLOUR_BROWN,    0, 337,  14, 169, 0x0,                     STR_NULL},
+{   WWT_CLOSEBOX, RESIZE_NONE, COLOUR_BROWN,    0,  10,   0,  13, STR_00C5,                STR_018B_CLOSE_WINDOW},                  // CSCEN_CLOSEBOX
+{    WWT_CAPTION, RESIZE_NONE, COLOUR_BROWN,   11, 337,   0,  13, STR_SE_CAPTION,          STR_NULL},                               // CSCEN_CAPTION
+{      WWT_PANEL, RESIZE_NONE, COLOUR_BROWN,    0, 337,  14, 169, 0x0,                     STR_NULL},                               // CSCEN_BACKGROUND
 
 /* Landscape selection */
 {   WWT_IMGBTN_2, RESIZE_NONE, COLOUR_ORANGE,  10,  86,  24,  78, SPR_SELECT_TEMPERATE,    STR_030E_SELECT_TEMPERATE_LANDSCAPE},    // CSCEN_TEMPERATE
