@@ -886,11 +886,69 @@ static const Widget _create_scenario_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_create_scenario_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, CSCEN_CLOSEBOX), // 0
+		NWidget(WWT_CAPTION, COLOUR_BROWN, CSCEN_CAPTION), SetDataTip(STR_SE_CAPTION, STR_NULL), // 1
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_BROWN, CSCEN_BACKGROUND), // 2
+		NWidget(NWID_SPACER), SetMinimalSize(0, 10),
+		/* Landscape style selection. */
+		NWidget(NWID_HORIZONTAL), SetPIP(10, 3, 11),
+			NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, CSCEN_TEMPERATE), SetMinimalSize(77, 55), SetDataTip(SPR_SELECT_TEMPERATE, STR_030E_SELECT_TEMPERATE_LANDSCAPE), // 3
+			NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, CSCEN_ARCTIC), SetMinimalSize(77, 55), SetDataTip(SPR_SELECT_SUB_ARCTIC, STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE), // 4
+			NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, CSCEN_TROPICAL), SetMinimalSize(77, 55), SetDataTip(SPR_SELECT_SUB_TROPICAL, STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE),
+			NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, CSCEN_TOYLAND), SetMinimalSize(77, 55), SetDataTip(SPR_SELECT_TOYLAND, STR_0311_SELECT_TOYLAND_LANDSCAPE), // 6
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL), SetPIP(12, 19, 11),
+			/* Green generation type buttons: 'Flat land' and 'Random land'. */
+			NWidget(NWID_VERTICAL), SetPIP(16, 6, 9),
+				NWidget(WWT_TEXTBTN, COLOUR_GREEN, CSCEN_EMPTY_WORLD), SetMinimalSize(104, 30), SetDataTip(STR_SE_FLAT_WORLD, STR_SE_FLAT_WORLD_TIP), // 7
+				NWidget(WWT_TEXTBTN, COLOUR_GREEN, CSCEN_RANDOM_WORLD), SetMinimalSize(104, 30), SetDataTip(STR_SE_RANDOM_LAND, STR_022A_GENERATE_RANDOM_LAND), // 8
+			EndContainer(),
+			/* Labels + setting drop-downs */
+			NWidget(NWID_VERTICAL), SetPIP(16, 6, 0),
+				/* Map size. */
+				NWidget(NWID_HORIZONTAL),
+					NWidget(WWT_TEXT, COLOUR_ORANGE, CSCEN_MAPSIZE_X_TEXT), SetMinimalSize(78, 11), // 9
+												SetDataTip(STR_MAPSIZE, STR_NULL), SetPadding(1, 0, 0, 0),
+					NWidget(NWID_SPACER), SetFill(1, 0),
+					NWidget(WWT_DROPDOWN, COLOUR_ORANGE, CSCEN_MAPSIZE_X_PULLDOWN), SetMinimalSize(48, 12), // 10
+												SetDataTip(STR_NUM_1, STR_NULL), SetPadding(0, 4, 0, 0),
+					NWidget(WWT_TEXT, COLOUR_ORANGE, CSCEN_MAPSIZE_Y_TEXT), SetMinimalSize(9, 11), // 11
+												SetDataTip(STR_BY, STR_NULL), SetPadding(1, 2, 0, 0),
+					NWidget(WWT_DROPDOWN, COLOUR_ORANGE, CSCEN_MAPSIZE_Y_PULLDOWN), SetMinimalSize(48, 12), // 12
+												SetDataTip(STR_NUM_2, STR_NULL),
+				EndContainer(),
+				/* Date. */
+				NWidget(NWID_HORIZONTAL),
+					NWidget(WWT_TEXT, COLOUR_ORANGE, CSCEN_START_DATE_LABEL), SetMinimalSize(78, 11), // 13
+												SetDataTip(STR_DATE, STR_NULL), SetPadding(1, 0, 0, 0),
+					NWidget(NWID_SPACER), SetFill(1, 0),
+					NWidget(WWT_IMGBTN, COLOUR_ORANGE, CSCEN_START_DATE_DOWN), SetMinimalSize(12, 12), SetDataTip(SPR_ARROW_DOWN, STR_029E_MOVE_THE_STARTING_DATE),
+					NWidget(WWT_TEXTBTN, COLOUR_ORANGE, CSCEN_START_DATE_TEXT), SetMinimalSize(87, 12), SetDataTip(STR_GENERATE_DATE, STR_NULL), // 15
+					NWidget(WWT_IMGBTN, COLOUR_ORANGE, CSCEN_START_DATE_UP), SetMinimalSize(12, 12), SetDataTip(SPR_ARROW_UP, STR_029F_MOVE_THE_STARTING_DATE),
+				EndContainer(),
+				/* Flat map height. */
+				NWidget(NWID_HORIZONTAL),
+					NWidget(WWT_TEXT, COLOUR_ORANGE, CSCEN_FLAT_LAND_HEIGHT_LABEL), SetMinimalSize(144, 11), // 17
+												SetDataTip(STR_FLAT_WORLD_HEIGHT, STR_NULL), SetPadding(1, 0, 0, 0),
+					NWidget(NWID_SPACER), SetFill(1, 0),
+					NWidget(WWT_IMGBTN, COLOUR_ORANGE, CSCEN_FLAT_LAND_HEIGHT_DOWN), SetMinimalSize(12, 12), SetDataTip(SPR_ARROW_DOWN, STR_FLAT_WORLD_HEIGHT_DOWN),
+					NWidget(WWT_TEXTBTN, COLOUR_ORANGE, CSCEN_FLAT_LAND_HEIGHT_TEXT), SetMinimalSize(21, 12), SetDataTip(STR_NUM_3, STR_NULL), // 19
+					NWidget(WWT_IMGBTN, COLOUR_ORANGE, CSCEN_FLAT_LAND_HEIGHT_UP), SetMinimalSize(12, 12), SetDataTip(SPR_ARROW_UP, STR_FLAT_WORLD_HEIGHT_UP), // 20
+				EndContainer(),
+				NWidget(NWID_SPACER), SetFill(1, 1),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+};
+
 static const WindowDesc _create_scenario_desc(
 	WDP_CENTER, WDP_CENTER, 338, 170, 338, 170,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
-	_create_scenario_widgets
+	_create_scenario_widgets, _nested_create_scenario_widgets, lengthof(_nested_create_scenario_widgets)
 );
 
 void ShowCreateScenario()
