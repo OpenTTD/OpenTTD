@@ -469,6 +469,7 @@ public:
 		EventState state = ES_NOT_HANDLED;
 		if (keycode == WKC_TAB) {
 			ChatTabCompletion();
+			state = ES_HANDLED;
 		} else {
 			_chat_tab_completion_active = false;
 			switch (this->HandleEditBoxKey(NWCW_TEXTBOX, key, keycode, state)) {
