@@ -51,7 +51,11 @@ static inline void SetNewLandscapeType(byte landscape)
 }
 
 enum GenerateLandscapeWindowWidgets {
-	GLAND_TEMPERATE = 3,
+	GLAND_CLOSEBOX,
+	GLAND_TITLEBAR,
+	GLAND_BACKGROUND,
+
+	GLAND_TEMPERATE,
 	GLAND_ARCTIC,
 	GLAND_TROPICAL,
 	GLAND_TOYLAND,
@@ -109,9 +113,9 @@ enum GenerateLandscapeWindowWidgets {
 };
 
 static const Widget _generate_landscape_widgets[] = {
-{  WWT_CLOSEBOX,  RESIZE_NONE, COLOUR_BROWN,    0,  10,   0,  13, STR_00C5,                     STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION, RESIZE_NONE, COLOUR_BROWN,   11, 337,   0,  13, STR_WORLD_GENERATION_CAPTION, STR_NULL},
-{      WWT_PANEL, RESIZE_NONE, COLOUR_BROWN,    0, 337,  14, 313, 0x0,                          STR_NULL},
+{  WWT_CLOSEBOX,  RESIZE_NONE, COLOUR_BROWN,    0,  10,   0,  13, STR_00C5,                     STR_018B_CLOSE_WINDOW},                  // GLAND_CLOSEBOX
+{    WWT_CAPTION, RESIZE_NONE, COLOUR_BROWN,   11, 337,   0,  13, STR_WORLD_GENERATION_CAPTION, STR_NULL},                               // GLAND_TITLEBAR
+{      WWT_PANEL, RESIZE_NONE, COLOUR_BROWN,    0, 337,  14, 313, 0x0,                          STR_NULL},                               // GLAND_BACKGROUND
 
 /* Landscape selection */
 {   WWT_IMGBTN_2, RESIZE_NONE, COLOUR_ORANGE,  10,  86,  24,  78, SPR_SELECT_TEMPERATE,         STR_030E_SELECT_TEMPERATE_LANDSCAPE},    // GLAND_TEMPERATE
@@ -189,9 +193,9 @@ static const Widget _generate_landscape_widgets[] = {
 };
 
 static const Widget _heightmap_load_widgets[] = {
-{   WWT_CLOSEBOX, RESIZE_NONE, COLOUR_BROWN,    0,  10,   0,  13, STR_00C5,                     STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION, RESIZE_NONE, COLOUR_BROWN,   11, 337,   0,  13, STR_WORLD_GENERATION_CAPTION, STR_NULL},
-{      WWT_PANEL, RESIZE_NONE, COLOUR_BROWN,    0, 337,  14, 235, 0x0,                          STR_NULL},
+{   WWT_CLOSEBOX, RESIZE_NONE, COLOUR_BROWN,    0,  10,   0,  13, STR_00C5,                     STR_018B_CLOSE_WINDOW},                 // GLAND_CLOSEBOX
+{    WWT_CAPTION, RESIZE_NONE, COLOUR_BROWN,   11, 337,   0,  13, STR_WORLD_GENERATION_CAPTION, STR_NULL},                              // GLAND_TITLEBAR
+{      WWT_PANEL, RESIZE_NONE, COLOUR_BROWN,    0, 337,  14, 235, 0x0,                          STR_NULL},                              // GLAND_BACKGROUND
 
 /* Landscape selection */
 {   WWT_IMGBTN_2, RESIZE_NONE, COLOUR_ORANGE,  10,  86,  24,  78, SPR_SELECT_TEMPERATE,        STR_030E_SELECT_TEMPERATE_LANDSCAPE},    // GLAND_TEMPERATE
