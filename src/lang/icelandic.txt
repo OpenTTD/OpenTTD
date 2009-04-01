@@ -628,7 +628,7 @@ STR_0290_DELETE                                                 :{BLACK}Eyða
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Eyða þessum bæ algjörlega
 STR_0292_SAVE_SCENARIO                                          :Vista kort
 STR_0293_LOAD_SCENARIO                                          :Opna kort
-STR_MENU_LOAD_HEIGHTMAP                                         :Hlaða hæðarkorti
+STR_MENU_LOAD_HEIGHTMAP                                         :Hlaða hæðakorti
 STR_0294_QUIT_EDITOR                                            :Hætta í kortagerð
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Hætta
@@ -636,8 +636,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Vista ko
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Opna kort
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Vista kort
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Spila kort
-STR_PLAY_HEIGHTMAP                                              :{BLACK}Spila á hæðarkorti
-STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Hefja nýjan leik byggðan á hæðarkorti
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Spila á hæðakorti
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Hefja nýjan leik byggðan á hæðakorti
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Ertu viss um að þú viljir hætta í þessu korti ?
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...aðeins hægt að byggja í bæjum með fleiri en 1200 íbúum
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Færa byrjunardagsetninguna aftur um 1 ár
@@ -666,7 +666,7 @@ STR_OFF                                                         :Af
 STR_SUMMARY                                                     :Úrtak
 STR_FULL                                                        :Allt
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Bæjarmappa
+STR_02BB_TOWN_DIRECTORY                                         :Listi yfir bæi
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -676,7 +676,7 @@ STR_02C6_DIFFICULTY_SETTINGS                                    :Erfiðleikastig
 STR_MENU_CONFIG_SETTINGS                                        :Þróaðri stillingar
 STR_NEWGRF_SETTINGS                                             :NewGRF stillingar
 STR_TRANSPARENCY_OPTIONS                                        :Gegnsæisstillingar
-STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Bæjarnöfn sýnd
+STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Bæjanöfn sýnd
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Stöðvarnöfn sýnd
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Skilti sýnd
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Millistöðvar sýndar
@@ -703,7 +703,7 @@ STR_02DD_SUBSIDIES                                              :Samstarfssamnin
 STR_02DE_MAP_OF_WORLD                                           :Heimskort
 STR_EXTRA_VIEW_PORT                                             :Auka sjónarhorn
 STR_SIGN_LIST                                                   :Skiltalisti
-STR_02DF_TOWN_DIRECTORY                                         :Bæjarmappa
+STR_02DF_TOWN_DIRECTORY                                         :Listi yfir bæi
 STR_TOWN_POPULATION                                             :{BLACK}Heildaríbúafjöldi: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Sjónarhorn {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Afrita í sjónarhorn
@@ -722,7 +722,7 @@ STR_02E7                                                        :{BLACK}{SKIP}{S
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Aksturstefna bifreiða
 STR_02E9_DRIVE_ON_LEFT                                          :Vinstristefna
 STR_02EA_DRIVE_ON_RIGHT                                         :Hægristefna
-STR_02EB_TOWN_NAMES                                             :{BLACK}Bæjarnöfn
+STR_02EB_TOWN_NAMES                                             :{BLACK}Bæjanöfn
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Tungumál bæjarnafna
 
@@ -989,7 +989,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Leyfa l
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Einn eða fleiri reitir við norðurjaðarinn eru ekki tómir
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Einn eða fleiri reitir við eina hlið kortsins hafa ekki vatn
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Dreyfing stöðva mest: {ORANGE}{STRING} {RED}Ath.: Há stilling hægir á leiknum
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Hámarksdreifing stöðva: {ORANGE}{STRING} {RED}Ath.: Há stilling hægir á leiknum
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Skoða þyrlur sjálfvirkt á þyrlupalli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Opna landmótunarglugga samhliða öðrum framkvæmdum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Færa sjónarhorn í öfuga átt miðað við mús: {ORANGE}{STRING}
@@ -1682,7 +1682,7 @@ STR_2006_POPULATION                                             :{BLACK}Íbúafj
 STR_2007_RENAME_TOWN                                            :Endurskíra bæ
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Get ekki endurskírt bæ...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} bæjaryfirvöld leyfa þetta ekki
-STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Bæjarnöfn - ýttu á nafn til að færa sjónarhorn að viðkomandi bæ
+STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Bæjanöfn - smelltu á nafn til að færa sjónarhorn að viðkomandi bæ
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Færa sjónarhorn á staðsetningu bæjar
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Breyta nafni bæjar
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Farþegar síðasta mánaðar: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
@@ -3064,6 +3064,7 @@ STR_BRIBE_FAILED                                                :{WHITE}Tilraun 
 STR_BRIBE_FAILED_2                                              :{WHITE}uppgvötuð af héraðsrannsóknarmanni
 STR_BUILD_DATE                                                  :{BLACK}Byggt: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Tegund stöðvar: {LTBLUE}{STRING}
 STR_TILEDESC_STATION_TYPE                                       :{BLACK}Tegund stöðvar: {LTBLUE}{STRING}
 STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
@@ -3122,6 +3123,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} þarf OpenTTD útgáfu {STRING} eða nýrri.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF skránni sem það var hannað til að þýða
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Of mörg NewGRF eru hlaðin.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ef {STRING} er hlaðið sem kyrrstæðu NewGRF ásamt {STRING} gætu orðið hnökrar á keyrslu leiksins.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Óviðbúin hreyfimynd.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Óþekktur „Action 0“ eiginleiki
 STR_NEWGRF_ERROR_INVALID_ID                                     :Reyndi að notast við rangt ID
@@ -3163,6 +3165,7 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Týndar 
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Vantar GRF skrá(r)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}OpenTTD getur hrunið ef leikur er settur af stað. Ekki skrá villufærslur fyrir eftirfarandi hrun.{}Ertu viss um að þú viljir setja leikinn af stað?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Hegðun NewGRF '{0:STRING}' er líkleg til að valda hnökrum og/eða hruni á kreyslu leiksins.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Breytir lengd á farartæki '{1:ENGINE}' þegar það er ekki í skýli.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Lest '{VEHICLE}' sem tilheyrir '{COMPANY}' er ekki af réttri lengd. Þessu valda sennilega NewGRF vandamál. Leikurinn kann að missa samband eða hrynja.
 
@@ -3263,6 +3266,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Smelltu 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Merkjalisti - {COMMA} merki
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}{VEHICLE} stöðvaði vegna óframkvæmanlegrar endurnýjunar
 
 ############ Lists rail types
 
@@ -3532,10 +3536,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Hefðbun
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Komumerki{}Hleypir í gegn uns ekkert frámerki er eftir opið.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Frámerki{}Virkar eins og hefðbundið merki en er nauðsynlegt til að fá rétta virkni fyrir komu- og fjölmerki.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Fjölmerki{}Fjölmerkin virka bæði sem komu- og frámerki sem gerir þér kleyft að hanna stór "tré" af formerkjum.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Leiðarmerki (skilti){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á svæði án umferðarmerkja ef þær finna örugga leið út af því aftur. Lestir geta farið framhjá venjulegum skiltum aftanfrá.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Einstefnuleiðarmerki (skilti){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á svæði án umferðarmerkja ef þær finna örugga leið út af því aftur. Lestir geta ekki farið framhjá einstefnuskiltum aftanfrá.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Hefðbundin ljós{}Ljós eru nauðsynleg til að koma í veg fyrir að lestir lendi í árekstri.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Komuljós{}Hleypir í gegn uns ekkert fráljós er lengur grænt.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Fráljós{}Virkar eins og hefðbundið ljós en er naðusynlegt til að fá rétta virkni fyrir komu- og fjölljós.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Fjölljós{}Fjölljósið virkar bæði sem komu- og fráljós sem gerir þér kleyft að hanna stór "tré" af forljósum.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Leiðarmerki (ljós){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á svæði án umferðarmerkja ef þær finna örugga leið út af því aftur. Lestir geta farið framhjá venjulegum skiltum aftanfrá.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Einstefnuleiðarmerki (ljós){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á svæði án umferðarmerkja ef þær finna örugga leið út af því aftur. Lestir geta ekki farið framhjá einstefnuskiltum aftanfrá.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Breyting ljósa{}Þegar valið þá breytist merki sem til er fyrir í valda gerð og tegund. CTRL-smellur mun rúlla í gegnum núverandi tegund.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Þéttleiki dreginna ljósa
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Minnka þéttleika dreginna ljósa
@@ -3553,12 +3561,22 @@ STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Sýna st
 STR_AI_DEBUG                                                    :{WHITE}Aflúsun gervigreindar
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nafn gervigreindar
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Endurhlaða gervigreind
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Stöðva gervigreindina, endurhlaða skriftunni og ræsa gervigreindina á ný
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Aflúsunargluggi gervigreindar er aðeins aðgengilegur á þjóni
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Stilling gervigreindar
 STR_AI_CHANGE                                                   :{BLACK}Velja gervigreind
 STR_AI_CONFIGURE                                                :{BLACK}Stilla
 STR_AI_CHANGE_TIP                                               :{BLACK}Velja aðra gervigreind
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Stilltu eiginleika gervigreindarinnar
+STR_AI_LIST_TIP                                                 :{BLACK}Gervigreindir sem notaðar verða í næsta leik
+STR_AI_LIST_CAPTION                                             :{WHITE}Tiltækar gervigreindir
+STR_AI_AILIST_TIP                                               :{BLACK}Smelltu til að merkja gervigreind
 STR_AI_ACCEPT                                                   :{BLACK}Í lagi
+STR_AI_ACCEPT_TIP                                               :{BLACK}Velja merkta gervigreind
 STR_AI_CANCEL                                                   :{BLACK}Hætta við
+STR_AI_CANCEL_TIP                                               :{BLACK}Hætta við breytingar
 STR_AI_CLOSE                                                    :{BLACK}Loka
+STR_AI_RESET                                                    :{BLACK}Frumstilla
 STR_AI_HUMAN_PLAYER                                             :Mennskur leikmaður
 STR_AI_RANDOM_AI                                                :Gervigreind af handahófi
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Stillingar gervigreindar
@@ -3577,10 +3595,10 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ekki hægt að hlaða niður efni!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Venjuleg grafík
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
-STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI                                             :Gervigreind
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Safn gervigreinda
 STR_CONTENT_TYPE_SCENARIO                                       :Kort
-STR_CONTENT_TYPE_HEIGHTMAP                                      :Hæðar-kort
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Hæðakort
 STR_CONTENT_TITLE                                               :{WHITE}Niðurhel efni
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Týpa
 STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Tegund pakka
@@ -3612,12 +3630,21 @@ STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Lýsing
 STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Týpa: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Stærð niðurhals: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Valinn vegna: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Byggir á: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Stikkorð: {WHITE}{STRING}
 
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Hel niður efni...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Bið um skrár...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Næ í {STRING} ({NUM} af {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Niðurhali lokið
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} af {BYTES} niðurhalað ({NUM} %)
 
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Gat ekki tengst í efnisveitu...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Niðurhal mistókst...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... tenging slitnaði
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... skráin er ekki skrifanleg
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Gat ekki afþjappað niðurhöluðu skránni
 
 STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Ná í viðbætur af netinu
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Skoða viðbætur sem hægt er að ná í af netinu

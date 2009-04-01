@@ -884,15 +884,52 @@ STR_7                                                           :{BLACK}7
 ############ start of townname region
 ############ end of townname region
 
+STR_CURR_SKK                                                    :Slovačka Kruna (SKK)
+STR_CURR_BRL                                                    :Brazilski Real (BRL)
+STR_CURR_EEK                                                    :Estonska Kruna (EEK)
 
+STR_CURR_CUSTOM                                                 :Sopstvena...
 
+STR_OPTIONS_LANG                                                :{BLACK}Jezik
+STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_LANG_TIP                                            :{BLACK}Odaberite jezik koji će se koristiti
 
+STR_OPTIONS_FULLSCREEN                                          :{BLACK}Ceo ekran
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Pritisnite ovde kako bi ste igrali OpenTTD na celom ekranu
+STR_FULLSCREEN_FAILED                                           :{WHITE}Neuspešno prebacivanje u ceo ekran
 
+STR_OPTIONS_RES                                                 :{BLACK}Veličina ekrana
+STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_RES_TIP                                             :{BLACK}Odaberite željenu veličinu ekrana
 
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format slike ekrana
+STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Odaberite željeni format slike ekrana
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Osnovni skup grafika
+STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Odaberite željeni skup osnovnih grafika
 
+STR_AUTOSAVE_1_MONTH                                            :Svaki mesec
+STR_AUTOSAVE_FAILED                                             :{WHITE}Neuspešno automatsko čuvanje
 
+STR_MONTH_JAN                                                   :Januar
+STR_MONTH_FEB                                                   :Februar
+STR_MONTH_MAR                                                   :Mart
+STR_MONTH_APR                                                   :April
+STR_MONTH_MAY                                                   :Maj
+STR_MONTH_JUN                                                   :Jun
+STR_MONTH_JUL                                                   :Jul
+STR_MONTH_AUG                                                   :Avgust
+STR_MONTH_SEP                                                   :Septembar
+STR_MONTH_OCT                                                   :Oktobar
+STR_MONTH_NOV                                                   :Novembar
+STR_MONTH_DEC                                                   :Decembar
 
+STR_HEADING_FOR_STATION                                         :{LTBLUE}Ide ka {STATION}
+STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Ide ka {STATION}, {VELOCITY}
+STR_NO_ORDERS                                                   :{LTBLUE}Nema naredbi
+STR_NO_ORDERS_VEL                                               :{LTBLUE}Nema naredbi, {VELOCITY}
 
 
 
