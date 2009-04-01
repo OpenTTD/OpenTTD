@@ -416,8 +416,8 @@ STR_STICKY_BUTTON                                               :{BLACK}Marker d
 STR_RESIZE_BUTTON                                               :{BLACK}Klik og træk for at ændre vinduets størrelse
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik her for at gå til det nuværende standard gemme/hente bibliotek
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Nedriv bygninger osv. på et stykke land
-STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Sænk et hjørne af landet
-STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Hæv et hjørne af landet
+STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Sænk punkter i landskabet
+STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Hæv punkter i landskabet
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Scrollbar - scroller listen op/ned
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Scroll bar - flytter listen mod venstre/højre
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Vis landskabskonturer på kortet
@@ -700,14 +700,14 @@ STR_02DA_ON                                                     :{BLACK}Til
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Vis tilskudsordninger
 STR_02DD_SUBSIDIES                                              :Tilskudsordninger
 STR_02DE_MAP_OF_WORLD                                           :Kort over verden
-STR_EXTRA_VIEW_PORT                                             :Flere lokalitetsvinduer
+STR_EXTRA_VIEW_PORT                                             :Nyt lokalitetsvindue
 STR_SIGN_LIST                                                   :Liste over skilte
 STR_02DF_TOWN_DIRECTORY                                         :Byoversigt
 STR_TOWN_POPULATION                                             :{BLACK}Verdens befolkning: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Lokalitetsvindue {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Gå til lokalitetsvindue
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Hent global
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Hent lokalitet fra global visning
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Hent fra lokalitetsvindue
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Sæt global
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopier lokaliteten af dette vindue til det globale vindue
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Valutaenhed
@@ -938,7 +938,7 @@ STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Vis sig
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Vis finansvinduet i slutningen af året: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nye ordrer er 'uden stop' som standard: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Kødannelse af køretøjer (med kvanteeffekt): {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Pannorer vindue når musen er ved kanten: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Panorér vindue når musen er ved kanten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Tillad bestikkelse af de lokale myndigheder: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Tillad køb af eksklusive transportrettigheder: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillad at sende penge til andre firmaer: {ORANGE}{STRING}

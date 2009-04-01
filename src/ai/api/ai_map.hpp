@@ -17,6 +17,9 @@ public:
 		TILE_INVALID = INVALID_TILE, //!< Invalid TileIndex.
 	};
 #endif /* DEFINE_SCRIPT_FILES */
+#ifdef DOXYGEN_SKIP
+	const static TileIndex TILE_INVALID; //!< Invalid TileIndex.
+#endif
 
 	static const char *GetClassName() { return "AIMap"; }
 

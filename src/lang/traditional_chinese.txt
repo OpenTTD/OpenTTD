@@ -665,7 +665,6 @@ STR_FULL                                                        :詳細
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :市鎮清冊
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :自訂
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -2122,6 +2121,7 @@ STR_NUM_VERY_LOW                                                :非常少
 STR_6816_LOW                                                    :低
 STR_6817_NORMAL                                                 :普通
 STR_6818_HIGH                                                   :高
+STR_02BF_CUSTOM                                                 :自訂
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :非常慢

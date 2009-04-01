@@ -153,7 +153,8 @@ public:
 	 * Return the location of a company's HQ.
 	 * @param company The company the get the HQ of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
-	 * @return The tile of the company's HQ, this tile is the most nothern tile of that HQ, or TILE_INVALID if there is no HQ yet.
+	 * @return The tile of the company's HQ, this tile is the most nothern tile
+	 *  of that HQ, or AIMap::TILE_INVALID if there is no HQ yet.
 	 */
 	static TileIndex GetCompanyHQ(CompanyID company);
 

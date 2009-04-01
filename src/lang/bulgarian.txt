@@ -3567,8 +3567,21 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Вид
 STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Вид на съдържанието
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Име
 STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Име на съдържанието
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Кликни върху линията за да видиш детайлите{}Сложи отметка за да избереш за сваляне
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Избери всички
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Избери всичко за сваляне
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Избери обновявания
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Избери всичко, което ще обновнови вече инстралирани компоненти
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Премахнете всички
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Размаркирай всичко
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Въведете филтър
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Въведете ключова дума за филтър на списъка
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Филтър по таг/име:
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Сваляне
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Започни свалянето на избраните модули
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Общо за сваляне: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}ИНФОРМАЦИЯ
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Не сте избрали този модул за сваляне
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Вие вече имате това
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Това е подмяна на съществуващ {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Име: {WHITE}{STRING}

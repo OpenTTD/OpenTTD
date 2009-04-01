@@ -908,8 +908,8 @@ STR_CONFIG_SETTING                                              :{BLACK}고급 �
 STR_CONFIG_SETTING_TIP                                          :{BLACK}고급 설정 표시
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}고급 설정
 
-STR_CONFIG_SETTING_OFF                                          :Off
-STR_CONFIG_SETTING_ON                                           :On
+STR_CONFIG_SETTING_OFF                                          :꺼짐
+STR_CONFIG_SETTING_ON                                           :켜짐
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}상태바에 차량 속도를 표시 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}경사/해안가 건설을 허용 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}건물, 트랙 등의 하부 지형 편집 허용 (자동 슬로프): {ORANGE}{STRING}

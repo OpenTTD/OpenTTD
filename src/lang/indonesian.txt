@@ -30,10 +30,10 @@ STR_0013_LIVESTOCK                                              :Ternak
 STR_0014_GOODS                                                  :Barang jadi
 STR_0015_GRAIN                                                  :Gandum
 STR_0016_WOOD                                                   :Kayu
-STR_0017_IRON_ORE                                               :Bijih besi
+STR_0017_IRON_ORE                                               :Biji besi
 STR_0018_STEEL                                                  :Baja
 STR_0019_VALUABLES                                              :Barang berharga
-STR_001A_COPPER_ORE                                             :Bijih Tembaga
+STR_001A_COPPER_ORE                                             :Biji Tembaga
 STR_001B_MAIZE                                                  :Jagung
 STR_001C_FRUIT                                                  :Buah
 STR_001D_DIAMONDS                                               :Intan
@@ -49,7 +49,7 @@ STR_0026_CANDY                                                  :Manisan
 STR_0027_COLA                                                   :Cola
 STR_0028_COTTON_CANDY                                           :Harum manis
 STR_0029_BUBBLES                                                :Gelembung
-STR_002A_TOFFEE                                                 :Kopi Toffee
+STR_002A_TOFFEE                                                 :Gula-gula
 STR_002B_BATTERIES                                              :Baterai
 STR_002C_PLASTIC                                                :Plastik
 STR_002D_FIZZY_DRINKS                                           :Minuman berdesis
@@ -62,10 +62,10 @@ STR_0033_LIVESTOCK                                              :Ternak
 STR_0034_GOODS                                                  :Barang jadi
 STR_0035_GRAIN                                                  :Gandum
 STR_0036_WOOD                                                   :Kayu
-STR_0037_IRON_ORE                                               :Bijih besi
+STR_0037_IRON_ORE                                               :Biji besi
 STR_0038_STEEL                                                  :Baja
 STR_0039_VALUABLES                                              :Barang berharga
-STR_003A_COPPER_ORE                                             :Bijih Tembaga
+STR_003A_COPPER_ORE                                             :Biji Tembaga
 STR_003B_MAIZE                                                  :Jagung
 STR_003C_FRUIT                                                  :Buah
 STR_003D_DIAMOND                                                :Intan
@@ -81,7 +81,7 @@ STR_0046_CANDY                                                  :Manisan
 STR_0047_COLA                                                   :Cola
 STR_0048_COTTON_CANDY                                           :Harum manis
 STR_0049_BUBBLE                                                 :Gelembung
-STR_004A_TOFFEE                                                 :Kopi Toffee
+STR_004A_TOFFEE                                                 :Gula-gula
 STR_004B_BATTERY                                                :Baterai
 STR_004C_PLASTIC                                                :Plastik
 STR_004D_FIZZY_DRINK                                            :Minuman berdesis

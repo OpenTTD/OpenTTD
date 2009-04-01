@@ -973,7 +973,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max afs
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Sneeuwhoogte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Ruwheid van het terrein (alleen Terra Genesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erg vlak
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :vlak
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Vlak
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ruig
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Erg ruig
 STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Boomplaatser algoritme: {ORANGE}{STRING}

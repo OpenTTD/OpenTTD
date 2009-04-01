@@ -1,3 +1,19 @@
+0.7.0 (2009-04-01)
+------------------------------------------------------------------------
+- Feature: Watermark crash.sav and do not generate crash information if a loaded crash.sav causes a crash so the real crash report does not get overwritten (r15893)
+- Feature: Add autoclean_novehicles setting which will, when autoclean_companies is true, remove any company with no vehicles and no active client after autoclean_novehicles-months (r15848)
+- Add: [NoAI] AIIndustryType::IsBuiltOnWater(), HasHeliport() and HasDock(). Just like AIIndustry (r15901)
+- Add: [NoAI] AIBridge::GetBridgeID() so AIs can get the type of bridge that are already build (r15875)
+- Add: [NoAI] AIRoad::GetRoadVehicleTypeForCargo() to tell whether a certain cargo needs a bus- or a truckstop (r15860)
+- Fix: Chat completion got called twice causing tab completion to seemingly fail (r15905)
+- Fix: YAPF did not apply the platform length (too long/too short) penalties (r15900)
+- Fix: Fixing the slopes was done a bit more often than intended making map generation with the original generator horribly slow (r15895)
+- Fix: YAPF used different penalties for aqueducts than for other water tiles (r15891)
+- Fix: Round the production rate up, so e.g. oilrigs always produce some passengers on lowest production level [FS#2772] (r15888)
+- Fix: Libtimidity cannot handle frees of NULL (in contrast of most other frees) [FS#2770] (r15886)
+- Fix: Make sure house class/ID counters do not overflow (r15831)
+
+
 0.7.0-RC2 (2009-03-23)
 ------------------------------------------------------------------------
 - Change: [NewGRF] Expose GRF ID of engines in var action property 0x25 (r15739)
