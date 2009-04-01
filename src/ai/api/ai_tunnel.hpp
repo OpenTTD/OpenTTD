@@ -50,7 +50,7 @@ public:
 	 * @param tile The tile that is an entrance to a tunnel or the tile where you may want to build a tunnel.
 	 * @pre AIMap::IsValidTile(tile).
 	 * @return The TileIndex that is the other end of the (would be) tunnel, or
-	 *  TILE_INVALID if no other end was found (can't build tunnel).
+	 *  AIMap::TILE_INVALID if no other end was found (can't build tunnel).
 	 */
 	static TileIndex GetOtherTunnelEnd(TileIndex tile);
 
