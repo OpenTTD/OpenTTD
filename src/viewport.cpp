@@ -1467,7 +1467,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 		}
 
 		DrawString(
-			UnScaleByZoom(ss->x, zoom), UnScaleByZoom(ss->x, zoom) + w, UnScaleByZoom(ss->y, zoom) - (ss->width & 0x8000 ? 2 : 0),
+			UnScaleByZoom(ss->x, zoom), UnScaleByZoom(ss->x, zoom) + w - 1, UnScaleByZoom(ss->y, zoom) - (ss->width & 0x8000 ? 2 : 0),
 			ss->string, colour, SA_CENTER
 		);
 	}
