@@ -5,6 +5,10 @@
 #ifndef MACOS_STDAFX_H
 #define MACOS_STDAFX_H
 
+/* We need to include this first as that "depends" on the compiler's setting
+ * of __LP64__. So before we define __LP64__ so it can be used. */
+#include <sys/cdefs.h>
+
 /* __LP64__ only exists in 10.5 and higher */
 #if defined(__APPLE__) && !defined(__LP64__)
 #	define __LP64__ 0
