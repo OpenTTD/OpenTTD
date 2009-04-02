@@ -65,7 +65,7 @@ static void NetworkGameListHandleDelayedInsert()
  * @return a point to the newly added or already existing item */
 NetworkGameList *NetworkGameListAddItem(NetworkAddress address)
 {
-	if (!address.IsResolved()) return NULL;
+	if (StrEmpty(address.GetHostname())) return NULL;
 
 	NetworkGameList *item, *prev_item;
 

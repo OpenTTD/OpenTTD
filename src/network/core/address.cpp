@@ -21,17 +21,6 @@ const char *NetworkAddress::GetHostname()
 	return this->hostname;
 }
 
-uint32 NetworkAddress::GetIP()
-{
-	assert(this->address.ss_family == AF_INET);
-
-	if (!this->resolved) {
-		((struct sockaddr_in *)&this->address)->sin_addr.s_addr = NetworkResolveHost(this->hostname);
-		this->resolved = true;
-	}
-	return ((struct sockaddr_in *)&this->address)->sin_addr.s_addr;
-}
-
 uint16 NetworkAddress::GetPort() const
 {
 	switch (this->address.ss_family) {
@@ -66,7 +55,10 @@ const char *NetworkAddress::GetAddressAsString()
 
 const sockaddr_storage *NetworkAddress::GetAddress()
 {
-	if (!this->resolved) this->GetIP();
+	if (!this->resolved) {
+		((struct sockaddr_in *)&this->address)->sin_addr.s_addr = NetworkResolveHost(this->hostname);
+		this->resolved = true;
+	}
 	return &this->address;
 }
 

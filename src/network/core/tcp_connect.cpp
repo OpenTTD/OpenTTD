@@ -41,13 +41,8 @@ void TCPConnecter::Connect()
 
 	if (!SetNoDelay(this->sock)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
 
-	struct sockaddr_in sin;
-	sin.sin_family = AF_INET;
-	sin.sin_addr.s_addr = address.GetIP();
-	sin.sin_port = htons(address.GetPort());
-
 	/* We failed to connect for which reason what so ever */
-	if (connect(this->sock, (struct sockaddr*) &sin, sizeof(sin)) != 0) {
+	if (connect(this->sock, (struct sockaddr*)this->address.GetAddress(), sizeof(*this->address.GetAddress())) != 0) {
 		closesocket(this->sock);
 		this->sock = INVALID_SOCKET;
 		this->aborted = true;

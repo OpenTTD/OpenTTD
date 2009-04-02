@@ -1090,7 +1090,6 @@ void NetworkStartDebugLog(NetworkAddress address)
 {
 	extern SOCKET _debug_socket;  // Comes from debug.c
 	SOCKET s;
-	struct sockaddr_in sin;
 
 	DEBUG(net, 0, "Redirecting DEBUG() to %s:%d", address.GetHostname(), address.GetPort());
 
@@ -1102,12 +1101,8 @@ void NetworkStartDebugLog(NetworkAddress address)
 
 	if (!SetNoDelay(s)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
 
-	sin.sin_family = AF_INET;
-	sin.sin_addr.s_addr = address.GetIP();
-	sin.sin_port = htons(address.GetPort());
-
-	if (connect(s, (struct sockaddr *)&sin, sizeof(sin)) != 0) {
-		DEBUG(net, 0, "Failed to redirection DEBUG() to %s:%d", address.GetHostname(), address.GetPort());
+	if (connect(s, (struct sockaddr *)address.GetAddress(), sizeof(*address.GetAddress())) != 0) {
+		DEBUG(net, 0, "Failed to redirection DEBUG() to %s", address.GetAddressAsString());
 		return;
 	}
 

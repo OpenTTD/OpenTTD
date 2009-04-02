@@ -429,7 +429,7 @@ void NetworkUDPQueryServerThread(void *pntr)
 
 	/* Clear item in gamelist */
 	NetworkGameList *item = CallocT<NetworkGameList>(1);
-	item->address = NetworkAddress(*info);
+	item->address = *info;
 	strecpy(item->info.server_name, info->GetHostname(), lastof(item->info.server_name));
 	strecpy(item->info.hostname, info->GetHostname(), lastof(item->info.hostname));
 	item->manually = info->manually;

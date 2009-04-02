@@ -98,13 +98,6 @@ public:
 	const sockaddr_storage *GetAddress();
 
 	/**
-	 * Get the IP address. If the IP has not been resolved yet this will resolve
-	 * it possibly blocking this function for a while
-	 * @return the IP address
-	 */
-	uint32 GetIP();
-
-	/**
 	 * Get the port
 	 * @return the port
 	 */
@@ -131,12 +124,20 @@ public:
 	 */
 	bool operator == (NetworkAddress &address)
 	{
-		if (this->IsResolved() != address.IsResolved()) return false;
-
-		if (this->IsResolved()) return memcmp(&this->address, &address.address, sizeof(this->address)) == 0;
-
+		if (this->IsResolved() && address.IsResolved()) return memcmp(&this->address, &address.address, sizeof(this->address)) == 0;
 		return this->GetPort() == address.GetPort() && strcmp(this->GetHostname(), address.GetHostname()) == 0;
 	}
+
+	NetworkAddress& operator = (const NetworkAddress &other)
+	{
+		if (this != &other) { // protect against invalid self-assignment
+			free(this->hostname);
+			memcpy(this, &other, sizeof(*this));
+			if (other.hostname != NULL) this->hostname = strdup(other.hostname);
+		}
+		return *this;
+	}
+
 };
 
 #endif /* ENABLE_NETWORK */
