@@ -33,7 +33,7 @@ public:
 		memset(&this->address, 0, sizeof(this->address));
 		this->address.ss_family = AF_INET;
 		((struct sockaddr_in*)&this->address)->sin_addr.s_addr = ip;
-		((struct sockaddr_in*)&this->address)->sin_port = htons(port);
+		this->SetPort(port);
 	}
 
 	/**
@@ -58,7 +58,7 @@ public:
 	{
 		memset(&this->address, 0, sizeof(this->address));
 		this->address.ss_family = AF_INET;
-		((struct sockaddr_in*)&this->address)->sin_port = htons(port);
+		this->SetPort(port);
 	}
 
 	/**
@@ -111,12 +111,31 @@ public:
 	uint16 GetPort() const;
 
 	/**
+	 * Set the port
+	 * @param port set the port number
+	 */
+	void SetPort(uint16 port);
+
+	/**
 	 * Check whether the IP address has been resolved already
 	 * @return true iff the port has been resolved
 	 */
 	bool IsResolved() const
 	{
 		return this->resolved;
+	}
+
+	/**
+	 * Compare the address of this class with the address of another.
+	 * @param address the other address.
+	 */
+	bool operator == (NetworkAddress &address)
+	{
+		if (this->IsResolved() != address.IsResolved()) return false;
+
+		if (this->IsResolved()) return memcmp(&this->address, &address.address, sizeof(this->address)) == 0;
+
+		return this->GetPort() == address.GetPort() && strcmp(this->GetHostname(), address.GetHostname()) == 0;
 	}
 };
 

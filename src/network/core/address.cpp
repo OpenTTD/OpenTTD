@@ -14,7 +14,9 @@
 const char *NetworkAddress::GetHostname()
 {
 	if (this->hostname == NULL) {
-		this->hostname = strdup(inet_ntoa(((struct sockaddr_in *)&this->address)->sin_addr));
+		char buf[NETWORK_HOSTNAME_LENGTH] = { '\0' };
+		getnameinfo((struct sockaddr *)&this->address, sizeof(this->address), buf, sizeof(buf), NULL, 0, NI_NUMERICHOST);
+		this->hostname = strdup(buf);
 	}
 	return this->hostname;
 }
@@ -35,6 +37,18 @@ uint16 NetworkAddress::GetPort() const
 	switch (this->address.ss_family) {
 		case AF_INET:
 			return ntohs(((struct sockaddr_in *)&this->address)->sin_port);
+
+		default:
+			NOT_REACHED();
+	}
+}
+
+void NetworkAddress::SetPort(uint16 port)
+{
+	switch (this->address.ss_family) {
+		case AF_INET:
+			((struct sockaddr_in*)&this->address)->sin_port = htons(port);
+			break;
 
 		default:
 			NOT_REACHED();

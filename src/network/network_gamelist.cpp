@@ -41,7 +41,7 @@ static void NetworkGameListHandleDelayedInsert()
 		NetworkGameList *ins_item = _network_game_delayed_insertion_list;
 		_network_game_delayed_insertion_list = ins_item->next;
 
-		NetworkGameList *item = NetworkGameListAddItem(ins_item->ip, ins_item->port);
+		NetworkGameList *item = NetworkGameListAddItem(ins_item->address);
 
 		if (item != NULL) {
 			if (StrEmpty(item->info.server_name)) {
@@ -63,22 +63,21 @@ static void NetworkGameListHandleDelayedInsert()
  * @param ip the IP-address (inet_addr) of the to-be added item
  * @param port the port the server is running on
  * @return a point to the newly added or already existing item */
-NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port)
+NetworkGameList *NetworkGameListAddItem(NetworkAddress address)
 {
-	if (ip == 0) return NULL;
+	if (!address.IsResolved()) return NULL;
 
 	NetworkGameList *item, *prev_item;
 
 	prev_item = NULL;
 	for (item = _network_game_list; item != NULL; item = item->next) {
-		if (item->ip == ip && item->port == port) return item;
+		if (item->address == address) return item;
 		prev_item = item;
 	}
 
 	item = CallocT<NetworkGameList>(1);
 	item->next = NULL;
-	item->ip = ip;
-	item->port = port;
+	item->address = address;
 
 	if (prev_item == NULL) {
 		_network_game_list = item;
@@ -142,7 +141,7 @@ void NetworkGameListRequery()
 
 		/* item gets mostly zeroed by NetworkUDPQueryServer */
 		uint8 retries = item->retries;
-		NetworkUDPQueryServer(NetworkAddress(item->ip, item->port));
+		NetworkUDPQueryServer(NetworkAddress(item->address));
 		item->retries = (retries >= REFRESH_GAMEINFO_X_REQUERIES) ? 0 : retries;
 	}
 }

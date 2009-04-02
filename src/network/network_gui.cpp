@@ -403,7 +403,7 @@ public:
 			y += NET_PRC__SIZE_OF_ROW;
 		}
 
-		const NetworkGameList *last_joined = NetworkGameListAddItem(inet_addr(_settings_client.network.last_host), _settings_client.network.last_port);
+		const NetworkGameList *last_joined = NetworkGameListAddItem(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
 		/* Draw the last joined server, if any */
 		if (last_joined != NULL) this->DrawServerLine(last_joined, y = this->widget[NGWW_LASTJOINED].top + 3, last_joined == sel);
 
@@ -454,7 +454,7 @@ public:
 			y += 10;
 
 			SetDParamStr(0, sel->info.hostname);
-			SetDParam(1, sel->port);
+			SetDParam(1, sel->address.GetPort());
 			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_ADDRESS, TC_GOLD); // server address
 			y += 10;
 
@@ -523,7 +523,7 @@ public:
 			} break;
 
 			case NGWW_LASTJOINED: {
-				NetworkGameList *last_joined = NetworkGameListAddItem(inet_addr(_settings_client.network.last_host), _settings_client.network.last_port);
+				NetworkGameList *last_joined = NetworkGameListAddItem(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
 				if (last_joined != NULL) {
 					this->server = last_joined;
 
@@ -562,14 +562,14 @@ public:
 
 			case NGWW_JOIN: // Join Game
 				if (this->server != NULL) {
-					snprintf(_settings_client.network.last_host, sizeof(_settings_client.network.last_host), "%s", inet_ntoa(*(struct in_addr *)&this->server->ip));
-					_settings_client.network.last_port = this->server->port;
+					snprintf(_settings_client.network.last_host, sizeof(_settings_client.network.last_host), "%s", this->server->address.GetHostname());
+					_settings_client.network.last_port = this->server->address.GetPort();
 					ShowNetworkLobbyWindow(this->server);
 				}
 				break;
 
 			case NGWW_REFRESH: // Refresh
-				if (this->server != NULL) NetworkUDPQueryServer(NetworkAddress(this->server->info.hostname, this->server->port));
+				if (this->server != NULL) NetworkUDPQueryServer(this->server->address);
 				break;
 
 			case NGWW_NEWGRF: // NewGRF Settings

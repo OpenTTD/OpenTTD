@@ -220,7 +220,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 	DEBUG(net, 4, "[udp] server response from %s", client_addr->GetAddressAsString());
 
 	/* Find next item */
-	item = NetworkGameListAddItem(client_addr->GetIP(), client_addr->GetPort());
+	item = NetworkGameListAddItem(*client_addr);
 
 	this->Recv_NetworkGameInfo(p, &item->info);
 
@@ -254,8 +254,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 				this->Send_GRFIdentifier(&packet, in_request[i]);
 			}
 
-			NetworkAddress out_addr(item->ip, item->port);
-			this->SendPacket(&packet, &out_addr);
+			this->SendPacket(&packet, &item->address);
 		}
 	}
 
@@ -428,12 +427,9 @@ void NetworkUDPQueryServerThread(void *pntr)
 {
 	NetworkUDPQueryServerInfo *info = (NetworkUDPQueryServerInfo*)pntr;
 
-	NetworkAddress out_addr(info->GetIP(), info->GetPort());
-
 	/* Clear item in gamelist */
 	NetworkGameList *item = CallocT<NetworkGameList>(1);
-	item->ip = info->GetIP();
-	item->port = info->GetPort();
+	item->address = NetworkAddress(*info);
 	strecpy(item->info.server_name, info->GetHostname(), lastof(item->info.server_name));
 	strecpy(item->info.hostname, info->GetHostname(), lastof(item->info.hostname));
 	item->manually = info->manually;
@@ -442,7 +438,7 @@ void NetworkUDPQueryServerThread(void *pntr)
 	_network_udp_mutex->BeginCritical();
 	/* Init the packet */
 	Packet p(PACKET_UDP_CLIENT_FIND_SERVER);
-	if (_udp_client_socket != NULL) _udp_client_socket->SendPacket(&p, &out_addr);
+	if (_udp_client_socket != NULL) _udp_client_socket->SendPacket(&p, info);
 	_network_udp_mutex->EndCritical();
 
 	delete info;

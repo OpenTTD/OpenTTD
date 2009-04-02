@@ -5,24 +5,24 @@
 #ifndef NETWORK_GAMELIST_H
 #define NETWORK_GAMELIST_H
 
+#include "core/address.h"
 #include "network_type.h"
 
 /** Structure with information shown in the game list (GUI) */
 struct NetworkGameList {
-	NetworkGameInfo info;  ///< The game information of this server
-	uint32 ip;             ///< The IP of the game server
-	uint16 port;           ///< The port of the game server
-	bool online;           ///< False if the server did not respond (default status)
-	bool manually;         ///< True if the server was added manually
-	uint8 retries;         ///< Number of retries (to stop requerying)
-	NetworkGameList *next; ///< Next pointer to make a linked game list
+	NetworkGameInfo info;   ///< The game information of this server
+	NetworkAddress address; ///< The connection info of the game server
+	bool online;            ///< False if the server did not respond (default status)
+	bool manually;          ///< True if the server was added manually
+	uint8 retries;          ///< Number of retries (to stop requerying)
+	NetworkGameList *next;  ///< Next pointer to make a linked game list
 };
 
 /** Game list of this client */
 extern NetworkGameList *_network_game_list;
 
 void NetworkGameListAddItemDelayed(NetworkGameList *item);
-NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port);
+NetworkGameList *NetworkGameListAddItem(NetworkAddress address);
 void NetworkGameListRemoveItem(NetworkGameList *remove);
 void NetworkGameListRequery();
 

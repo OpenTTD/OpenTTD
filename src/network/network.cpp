@@ -714,7 +714,7 @@ void NetworkRebuildHostList()
 	while (item != NULL && i != lengthof(_network_host_list)) {
 		if (item->manually) {
 			free(_network_host_list[i]);
-			_network_host_list[i++] = str_fmt("%s:%i", item->info.hostname, item->port);
+			_network_host_list[i++] = str_fmt("%s:%i", item->info.hostname, item->address.GetPort());
 		}
 		item = item->next;
 	}
