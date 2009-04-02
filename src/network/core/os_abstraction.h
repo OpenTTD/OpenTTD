@@ -23,6 +23,25 @@
 	/* Windows has some different names for some types */
 	typedef SSIZE_T ssize_t;
 	typedef int socklen_t;
+#else
+#include "../../win32.h"
+
+static inline int OTTDgetnameinfo(const struct sockaddr *sa, socklen_t salen, char *host, DWORD hostlen, char *serv, DWORD servlen, int flags)
+{
+	static int (WINAPI *getnameinfo)(const struct sockaddr *, socklen_t, char *, DWORD, char *, DWORD, int) = NULL;
+	static bool first_time = true;
+
+	if (first_time) {
+		LoadLibraryList((Function*)&getnameinfo, "ws2_32.dll\0getnameinfo\0\0");
+		first_time = false;
+	}
+
+	if (getnameinfo != NULL) return getnameinfo(sa, salen, host, hostlen, serv, servlen, flags);
+
+	strncpy(host, inet_ntoa(((struct sockaddr_in *)sa)->sin_addr), hostlen);
+	return 0;
+}
+#define getnameinfo OTTDgetnameinfo
 #endif
 
 #define GET_LAST_ERROR() WSAGetLastError()

@@ -101,7 +101,7 @@ struct ContentInfo {
 /** Base socket handler for all Content TCP sockets */
 class NetworkContentSocketHandler : public NetworkTCPSocketHandler {
 protected:
-	struct NetworkAddress client_addr; ///< The address we're connected to.
+	NetworkAddress client_addr; ///< The address we're connected to.
 	virtual void Close();
 
 	/**
