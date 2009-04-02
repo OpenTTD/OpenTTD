@@ -67,6 +67,7 @@
 #ifdef ENABLE_NETWORK
 
 #include "os_abstraction.h"
+#include "address.h"
 #include "core.h"
 #include "game.h"
 #include "packet.h"
@@ -88,8 +89,8 @@ enum PacketUDPType {
 	PACKET_UDP_END                   ///< Must ALWAYS be on the end of this list!! (period)
 };
 
-#define DECLARE_UDP_RECEIVE_COMMAND(type) virtual void NetworkPacketReceive_## type ##_command(Packet *p, const struct sockaddr_in *)
-#define DEF_UDP_RECEIVE_COMMAND(cls, type) void cls ##NetworkUDPSocketHandler::NetworkPacketReceive_ ## type ## _command(Packet *p, const struct sockaddr_in *client_addr)
+#define DECLARE_UDP_RECEIVE_COMMAND(type) virtual void NetworkPacketReceive_## type ##_command(Packet *p, NetworkAddress *client_addr)
+#define DEF_UDP_RECEIVE_COMMAND(cls, type) void cls ##NetworkUDPSocketHandler::NetworkPacketReceive_ ## type ## _command(Packet *p, NetworkAddress *client_addr)
 
 /** Base socket handler for all UDP sockets */
 class NetworkUDPSocketHandler : public NetworkSocketHandler {
@@ -110,7 +111,7 @@ protected:
 	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_NEWGRFS);
 	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_NEWGRFS);
 
-	void HandleUDPPacket(Packet *p, const struct sockaddr_in *client_addr);
+	void HandleUDPPacket(Packet *p, NetworkAddress *client_addr);
 
 	/**
 	 * Function that is called for every GRFConfig that is read when receiving
@@ -127,7 +128,7 @@ public:
 	bool Listen(uint32 host, uint16 port, bool broadcast);
 	void Close();
 
-	void SendPacket(Packet *p, const struct sockaddr_in *recv);
+	void SendPacket(Packet *p, NetworkAddress *recv);
 	void ReceivePackets();
 
 	void Send_NetworkGameInfo(Packet *p, const NetworkGameInfo *info);

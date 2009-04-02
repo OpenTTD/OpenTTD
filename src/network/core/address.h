@@ -16,10 +16,9 @@
  */
 class NetworkAddress {
 private:
-	bool resolved;  ///< Has the IP address been resolved
-	char *hostname; ///< The hostname, NULL if there isn't one
-	uint32 ip;      ///< The resolved IP address
-	uint16 port;    ///< The port associated with the address
+	bool resolved;            ///< Has the IP address been resolved
+	char *hostname;           ///< The hostname, NULL if there isn't one
+	sockaddr_storage address; ///< The resolved address
 
 public:
 	/**
@@ -29,9 +28,22 @@ public:
 	 */
 	NetworkAddress(in_addr_t ip, uint16 port) :
 		resolved(true),
+		hostname(NULL)
+	{
+		memset(&this->address, 0, sizeof(this->address));
+		this->address.ss_family = AF_INET;
+		((struct sockaddr_in*)&this->address)->sin_addr.s_addr = ip;
+		((struct sockaddr_in*)&this->address)->sin_port = htons(port);
+	}
+
+	/**
+	 * Create a network address based on a resolved IP and port
+	 * @param address the IP address with port
+	 */
+	NetworkAddress(struct sockaddr_storage &address) :
+		resolved(true),
 		hostname(NULL),
-		ip(ip),
-		port(port)
+		address(address)
 	{
 	}
 
@@ -42,10 +54,11 @@ public:
 	 */
 	NetworkAddress(const char *hostname = NULL, uint16 port = 0) :
 		resolved(false),
-		hostname(hostname == NULL ? NULL : strdup(hostname)),
-		ip(0),
-		port(port)
+		hostname(hostname == NULL ? NULL : strdup(hostname))
 	{
+		memset(&this->address, 0, sizeof(this->address));
+		this->address.ss_family = AF_INET;
+		((struct sockaddr_in*)&this->address)->sin_port = htons(port);
 	}
 
 	/**
@@ -55,8 +68,7 @@ public:
 	NetworkAddress(const NetworkAddress &address) :
 		resolved(address.resolved),
 		hostname(address.hostname == NULL ? NULL : strdup(address.hostname)),
-		ip(address.ip),
-		port(address.port)
+		address(address.address)
 	{
 	}
 
@@ -71,13 +83,19 @@ public:
 	 * IPv4 dotted representation is given.
 	 * @return the hostname
 	 */
-	const char *GetHostname() const;
+	const char *GetHostname();
 
 	/**
 	 * Get the address as a string, e.g. 127.0.0.1:12345.
 	 * @return the address
 	 */
-	const char *GetAddressAsString() const;
+	const char *GetAddressAsString();
+
+	/**
+	 * Get the address in it's internal representation.
+	 * @return the address
+	 */
+	const sockaddr_storage *GetAddress();
 
 	/**
 	 * Get the IP address. If the IP has not been resolved yet this will resolve
@@ -90,10 +108,7 @@ public:
 	 * Get the port
 	 * @return the port
 	 */
-	uint16 GetPort() const
-	{
-		return this->port;
-	}
+	uint16 GetPort() const;
 
 	/**
 	 * Check whether the IP address has been resolved already

@@ -104,7 +104,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
 	/* Let the client know that we are here */
 	this->SendPacket(&packet, client_addr);
 
-	DEBUG(net, 2, "[udp] queried from '%s'", inet_ntoa(client_addr->sin_addr));
+	DEBUG(net, 2, "[udp] queried from '%s'", client_addr->GetHostname());
 }
 
 DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
@@ -154,7 +154,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 	uint8 in_reply_count = 0;
 	size_t packet_len = 0;
 
-	DEBUG(net, 6, "[udp] newgrf data request from %s:%d", inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
+	DEBUG(net, 6, "[udp] newgrf data request from %s", client_addr->GetAddressAsString());
 
 	num_grfs = p->Recv_uint8 ();
 	if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
@@ -217,10 +217,10 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 	/* Just a fail-safe.. should never happen */
 	if (_network_udp_server) return;
 
-	DEBUG(net, 4, "[udp] server response from %s:%d", inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
+	DEBUG(net, 4, "[udp] server response from %s", client_addr->GetAddressAsString());
 
 	/* Find next item */
-	item = NetworkGameListAddItem(inet_addr(inet_ntoa(client_addr->sin_addr)), ntohs(client_addr->sin_port));
+	item = NetworkGameListAddItem(client_addr->GetIP(), client_addr->GetPort());
 
 	this->Recv_NetworkGameInfo(p, &item->info);
 
@@ -236,7 +236,6 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 		const GRFConfig *in_request[NETWORK_MAX_GRF_COUNT];
 		const GRFConfig *c;
 		uint in_request_count = 0;
-		struct sockaddr_in out_addr;
 
 		for (c = item->info.grfconfig; c != NULL; c = c->next) {
 			if (c->status == GCS_NOT_FOUND) item->info.compatible = false;
@@ -255,15 +254,13 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 				this->Send_GRFIdentifier(&packet, in_request[i]);
 			}
 
-			out_addr.sin_family      = AF_INET;
-			out_addr.sin_port        = htons(item->port);
-			out_addr.sin_addr.s_addr = item->ip;
+			NetworkAddress out_addr(item->ip, item->port);
 			this->SendPacket(&packet, &out_addr);
 		}
 	}
 
 	if (item->info.hostname[0] == '\0')
-		snprintf(item->info.hostname, sizeof(item->info.hostname), "%s", inet_ntoa(client_addr->sin_addr));
+		snprintf(item->info.hostname, sizeof(item->info.hostname), "%s", client_addr->GetHostname());
 
 	/* Check if we are allowed on this server based on the revision-match */
 	item->info.version_compatible = IsNetworkCompatibleVersion(item->info.server_revision);
@@ -302,7 +299,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_NEWGRFS)
 	uint8 num_grfs;
 	uint i;
 
-	DEBUG(net, 6, "[udp] newgrf data reply from %s:%d", inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
+	DEBUG(net, 6, "[udp] newgrf data reply from %s", client_addr->GetAddressAsString());
 
 	num_grfs = p->Recv_uint8 ();
 	if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
@@ -369,13 +366,9 @@ static void NetworkUDPBroadCast(NetworkUDPSocketHandler *socket)
 
 	for (i = 0; _broadcast_list[i] != 0; i++) {
 		Packet p(PACKET_UDP_CLIENT_FIND_SERVER);
-		struct sockaddr_in out_addr;
+		NetworkAddress out_addr(_broadcast_list[i], _settings_client.network.server_port);
 
-		out_addr.sin_family = AF_INET;
-		out_addr.sin_port = htons(_settings_client.network.server_port);
-		out_addr.sin_addr.s_addr = _broadcast_list[i];
-
-		DEBUG(net, 4, "[udp] broadcasting to %s", inet_ntoa(out_addr.sin_addr));
+		DEBUG(net, 4, "[udp] broadcasting to %s", out_addr.GetHostname());
 
 		socket->SendPacket(&p, &out_addr);
 	}
@@ -385,24 +378,19 @@ static void NetworkUDPBroadCast(NetworkUDPSocketHandler *socket)
 /* Request the the server-list from the master server */
 void NetworkUDPQueryMasterServer()
 {
-	struct sockaddr_in out_addr;
-
 	if (!_udp_client_socket->IsConnected()) {
 		if (!_udp_client_socket->Listen(0, 0, true)) return;
 	}
 
 	Packet p(PACKET_UDP_CLIENT_GET_LIST);
-
-	out_addr.sin_family = AF_INET;
-	out_addr.sin_port = htons(NETWORK_MASTER_SERVER_PORT);
-	out_addr.sin_addr.s_addr = NetworkResolveHost(NETWORK_MASTER_SERVER_HOST);
+	NetworkAddress out_addr(NETWORK_MASTER_SERVER_HOST, NETWORK_MASTER_SERVER_PORT);
 
 	/* packet only contains protocol version */
 	p.Send_uint8(NETWORK_MASTER_SERVER_VERSION);
 
 	_udp_client_socket->SendPacket(&p, &out_addr);
 
-	DEBUG(net, 2, "[udp] master server queried at %s:%d", inet_ntoa(out_addr.sin_addr), ntohs(out_addr.sin_port));
+	DEBUG(net, 2, "[udp] master server queried at %s", out_addr.GetAddressAsString());
 }
 
 /* Find all servers */
@@ -440,10 +428,7 @@ void NetworkUDPQueryServerThread(void *pntr)
 {
 	NetworkUDPQueryServerInfo *info = (NetworkUDPQueryServerInfo*)pntr;
 
-	struct sockaddr_in out_addr;
-	out_addr.sin_family = AF_INET;
-	out_addr.sin_port = htons(info->GetPort());
-	out_addr.sin_addr.s_addr = info->GetIP();
+	NetworkAddress out_addr(info->GetIP(), info->GetPort());
 
 	/* Clear item in gamelist */
 	NetworkGameList *item = CallocT<NetworkGameList>(1);
@@ -481,10 +466,7 @@ void NetworkUDPRemoveAdvertiseThread(void *pntr)
 	DEBUG(net, 1, "[udp] removing advertise from master server");
 
 	/* Find somewhere to send */
-	struct sockaddr_in out_addr;
-	out_addr.sin_family = AF_INET;
-	out_addr.sin_port = htons(NETWORK_MASTER_SERVER_PORT);
-	out_addr.sin_addr.s_addr = NetworkResolveHost(NETWORK_MASTER_SERVER_HOST);
+	NetworkAddress out_addr(NETWORK_MASTER_SERVER_HOST, NETWORK_MASTER_SERVER_PORT);
 
 	/* Send the packet */
 	Packet p(PACKET_UDP_SERVER_UNREGISTER);
@@ -516,10 +498,7 @@ void NetworkUDPRemoveAdvertise()
 void NetworkUDPAdvertiseThread(void *pntr)
 {
 	/* Find somewhere to send */
-	struct sockaddr_in out_addr;
-	out_addr.sin_family = AF_INET;
-	out_addr.sin_port = htons(NETWORK_MASTER_SERVER_PORT);
-	out_addr.sin_addr.s_addr = NetworkResolveHost(NETWORK_MASTER_SERVER_HOST);
+	NetworkAddress out_addr(NETWORK_MASTER_SERVER_HOST, NETWORK_MASTER_SERVER_PORT);
 
 	DEBUG(net, 1, "[udp] advertising to master server");
 

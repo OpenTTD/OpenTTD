@@ -82,14 +82,14 @@ NetworkRecvStatus NetworkUDPSocketHandler::CloseConnection()
  * @param p    the packet to send
  * @param recv the receiver (target) of the packet
  */
-void NetworkUDPSocketHandler::SendPacket(Packet *p, const struct sockaddr_in *recv)
+void NetworkUDPSocketHandler::SendPacket(Packet *p, NetworkAddress *recv)
 {
 	int res;
 
 	p->PrepareToSend();
 
 	/* Send the buffer */
-	res = sendto(this->sock, (const char*)p->buffer, p->size, 0, (struct sockaddr *)recv, sizeof(*recv));
+	res = sendto(this->sock, (const char*)p->buffer, p->size, 0, (struct sockaddr *)recv->GetAddress(), sizeof(*recv->GetAddress()));
 
 	/* Check for any errors, but ignore it otherwise */
 	if (res == -1) DEBUG(net, 1, "[udp] sendto failed with: %i", GET_LAST_ERROR());
@@ -100,7 +100,7 @@ void NetworkUDPSocketHandler::SendPacket(Packet *p, const struct sockaddr_in *re
  */
 void NetworkUDPSocketHandler::ReceivePackets()
 {
-	struct sockaddr_in client_addr;
+	struct sockaddr_storage client_addr;
 	socklen_t client_len;
 	int nbytes;
 	Packet p(this);
@@ -117,19 +117,18 @@ void NetworkUDPSocketHandler::ReceivePackets()
 
 	/* We got some bytes for the base header of the packet. */
 	if (nbytes > 2) {
+		NetworkAddress address(client_addr);
 		p.PrepareToRead();
 
 		/* If the size does not match the packet must be corrupted.
 		 * Otherwise it will be marked as corrupted later on. */
 		if (nbytes != p.size) {
-			DEBUG(net, 1, "received a packet with mismatching size from %s:%d",
-					inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port));
-
+			DEBUG(net, 1, "received a packet with mismatching size from %s", address.GetAddressAsString());
 			return;
 		}
 
 		/* Handle the packet */
-		this->HandleUDPPacket(&p, &client_addr);
+		this->HandleUDPPacket(&p, &address);
 	}
 }
 
@@ -277,7 +276,7 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
  * @param p the received packet
  * @param client_addr the sender of the packet
  */
-void NetworkUDPSocketHandler::HandleUDPPacket(Packet *p, const struct sockaddr_in *client_addr)
+void NetworkUDPSocketHandler::HandleUDPPacket(Packet *p, NetworkAddress *client_addr)
 {
 	PacketUDPType type;
 
@@ -301,9 +300,9 @@ void NetworkUDPSocketHandler::HandleUDPPacket(Packet *p, const struct sockaddr_i
 
 		default:
 			if (this->HasClientQuit()) {
-				DEBUG(net, 0, "[udp] received invalid packet type %d from %s:%d", type,  inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
+				DEBUG(net, 0, "[udp] received invalid packet type %d from %s", type, client_addr->GetAddressAsString());
 			} else {
-				DEBUG(net, 0, "[udp] received illegal packet from %s:%d", inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
+				DEBUG(net, 0, "[udp] received illegal packet from %s", client_addr->GetAddressAsString());
 			}
 			break;
 	}
@@ -317,9 +316,9 @@ void NetworkUDPSocketHandler::HandleUDPPacket(Packet *p, const struct sockaddr_i
  */
 #define DEFINE_UNAVAILABLE_UDP_RECEIVE_COMMAND(type) \
 void NetworkUDPSocketHandler::NetworkPacketReceive_## type ##_command(\
-		Packet *p, const struct sockaddr_in *client_addr) { \
-	DEBUG(net, 0, "[udp] received packet type %d on wrong port from %s:%d", \
-			type, inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port)); \
+		Packet *p, NetworkAddress *client_addr) { \
+	DEBUG(net, 0, "[udp] received packet type %d on wrong port from %s", \
+			type, client_addr->GetAddressAsString()); \
 }
 
 DEFINE_UNAVAILABLE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER);
