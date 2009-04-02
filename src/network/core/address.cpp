@@ -10,6 +10,7 @@
 #include "config.h"
 #include "host.h"
 #include "../../string_func.h"
+#include "../../debug.h"
 
 const char *NetworkAddress::GetHostname()
 {
@@ -60,6 +61,45 @@ const sockaddr_storage *NetworkAddress::GetAddress()
 		this->resolved = true;
 	}
 	return &this->address;
+}
+
+SOCKET NetworkAddress::Connect()
+{
+	DEBUG(net, 1, "Connecting to %s", this->GetAddressAsString());
+
+	struct addrinfo *ai;
+	struct addrinfo hints;
+	memset(&hints, 0, sizeof (hints));
+	hints.ai_flags    = AI_ADDRCONFIG;
+	hints.ai_socktype = SOCK_STREAM;
+
+	/* The port needs to be a string. Six is enough to contain all characters + '\0'. */
+	char port_name[6];
+	seprintf(port_name, lastof(port_name), "%u", this->GetPort());
+
+	int e = getaddrinfo(this->GetHostname(), port_name, &hints, &ai);
+	if (e != 0) {
+		DEBUG(net, 0, "getaddrinfo failed: %s", gai_strerror(e));
+		return false;
+	}
+
+	SOCKET sock = INVALID_SOCKET;
+	for (struct addrinfo *runp = ai; runp != NULL; runp = runp->ai_next) {
+		sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
+		if (sock == INVALID_SOCKET) continue;
+
+		if (!SetNoDelay(sock)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
+
+		if (connect(sock, runp->ai_addr, runp->ai_addrlen) != 0) continue;
+
+		/* Connection succeeded */
+		if (!SetNonBlocking(sock)) DEBUG(net, 0, "Setting non-blocking mode failed");
+
+		break;
+	}
+	freeaddrinfo (ai);
+
+	return sock;
 }
 
 #endif /* ENABLE_NETWORK */

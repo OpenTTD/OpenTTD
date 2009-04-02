@@ -31,27 +31,12 @@ TCPConnecter::TCPConnecter(const NetworkAddress &address) :
 
 void TCPConnecter::Connect()
 {
-	DEBUG(net, 1, "Connecting to %s %d", address.GetHostname(), address.GetPort());
-
-	this->sock = socket(AF_INET, SOCK_STREAM, 0);
+	this->sock = this->address.Connect();
 	if (this->sock == INVALID_SOCKET) {
 		this->aborted = true;
-		return;
+	} else {
+		this->connected = true;
 	}
-
-	if (!SetNoDelay(this->sock)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
-
-	/* We failed to connect for which reason what so ever */
-	if (connect(this->sock, (struct sockaddr*)this->address.GetAddress(), sizeof(*this->address.GetAddress())) != 0) {
-		closesocket(this->sock);
-		this->sock = INVALID_SOCKET;
-		this->aborted = true;
-		return;
-	}
-
-	if (!SetNonBlocking(this->sock)) DEBUG(net, 0, "Setting non-blocking mode failed");
-
-	this->connected = true;
 }
 
 

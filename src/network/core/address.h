@@ -128,6 +128,11 @@ public:
 		return this->GetPort() == address.GetPort() && strcmp(this->GetHostname(), address.GetHostname()) == 0;
 	}
 
+	/**
+	 * Assign another address to ourself
+	 * @param other obviously the address to assign to us
+	 * @return 'this'
+	 */
 	NetworkAddress& operator = (const NetworkAddress &other)
 	{
 		if (this != &other) { // protect against invalid self-assignment
@@ -138,6 +143,11 @@ public:
 		return *this;
 	}
 
+	/**
+	 * Connect to the given address.
+	 * @return the connected socket or INVALID_SOCKET.
+	 */
+	SOCKET Connect();
 };
 
 #endif /* ENABLE_NETWORK */
