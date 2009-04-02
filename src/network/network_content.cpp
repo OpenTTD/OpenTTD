@@ -426,7 +426,7 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_CONTENT)
  * @param sin the IP/port of the server
  */
 ClientNetworkContentSocketHandler::ClientNetworkContentSocketHandler() :
-	NetworkContentSocketHandler(INVALID_SOCKET, NULL),
+	NetworkContentSocketHandler(),
 	curFile(NULL),
 	curInfo(NULL),
 	isConnecting(false)

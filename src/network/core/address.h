@@ -40,9 +40,9 @@ public:
 	 * @param ip the unresolved hostname
 	 * @param port the port
 	 */
-	NetworkAddress(const char *hostname, uint16 port) :
+	NetworkAddress(const char *hostname = NULL, uint16 port = 0) :
 		resolved(false),
-		hostname(strdup(hostname)),
+		hostname(hostname == NULL ? NULL : strdup(hostname)),
 		ip(0),
 		port(port)
 	{
@@ -72,6 +72,12 @@ public:
 	 * @return the hostname
 	 */
 	const char *GetHostname() const;
+
+	/**
+	 * Get the address as a string, e.g. 127.0.0.1:12345.
+	 * @return the address
+	 */
+	const char *GetAddressAsString() const;
 
 	/**
 	 * Get the IP address. If the IP has not been resolved yet this will resolve

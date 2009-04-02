@@ -101,7 +101,7 @@ struct ContentInfo {
 /** Base socket handler for all Content TCP sockets */
 class NetworkContentSocketHandler : public NetworkTCPSocketHandler {
 protected:
-	struct sockaddr_in client_addr; ///< The address we're connected to.
+	struct NetworkAddress client_addr; ///< The address we're connected to.
 	virtual void Close();
 
 	/**
@@ -187,12 +187,12 @@ public:
 	/**
 	 * Create a new cs socket handler for a given cs
 	 * @param s  the socket we are connected with
-	 * @param sin IP etc. of the client
+	 * @param address IP etc. of the client
 	 */
-	NetworkContentSocketHandler(SOCKET s, const struct sockaddr_in *sin) :
-		NetworkTCPSocketHandler(s)
+	NetworkContentSocketHandler(SOCKET s = INVALID_SOCKET, const NetworkAddress &address = NetworkAddress()) :
+		NetworkTCPSocketHandler(s),
+		client_addr(address)
 	{
-		if (sin != NULL) this->client_addr = *sin;
 	}
 
 	/** On destructing of this class, the socket needs to be closed */

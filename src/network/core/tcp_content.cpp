@@ -84,9 +84,9 @@ bool NetworkContentSocketHandler::HandlePacket(Packet *p)
 
 		default:
 			if (this->HasClientQuit()) {
-				DEBUG(net, 0, "[tcp/content] received invalid packet type %d from %s:%d", type,  inet_ntoa(this->client_addr.sin_addr), ntohs(this->client_addr.sin_port));
+				DEBUG(net, 0, "[tcp/content] received invalid packet type %d from %s", type, this->client_addr.GetAddressAsString());
 			} else {
-				DEBUG(net, 0, "[tcp/content] received illegal packet from %s:%d", inet_ntoa(this->client_addr.sin_addr), ntohs(this->client_addr.sin_port));
+				DEBUG(net, 0, "[tcp/content] received illegal packet from %s", this->client_addr.GetAddressAsString());
 			}
 			return false;
 	}
@@ -114,8 +114,8 @@ void NetworkContentSocketHandler::Recv_Packets()
  */
 #define DEFINE_UNAVAILABLE_CONTENT_RECEIVE_COMMAND(type) \
 bool NetworkContentSocketHandler::NetworkPacketReceive_## type ##_command(Packet *p) { \
-	DEBUG(net, 0, "[tcp/content] received illegal packet type %d from %s:%d", \
-			type, inet_ntoa(this->client_addr.sin_addr), ntohs(this->client_addr.sin_port)); \
+	DEBUG(net, 0, "[tcp/content] received illegal packet type %d from %s", \
+			type, this->client_addr.GetAddressAsString()); \
 	return false; \
 }
 
