@@ -480,6 +480,7 @@ static void NetworkAcceptClients()
 	assert(_listensocket != INVALID_SOCKET);
 
 	for (;;) {
+		memset(&sin, 0, sizeof(sin));
 		socklen_t sin_len = sizeof(sin);
 		SOCKET s = accept(_listensocket, (struct sockaddr*)&sin, &sin_len);
 		if (s == INVALID_SOCKET) return;

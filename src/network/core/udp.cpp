@@ -101,6 +101,8 @@ void NetworkUDPSocketHandler::SendPacket(Packet *p, NetworkAddress *recv)
 void NetworkUDPSocketHandler::ReceivePackets()
 {
 	struct sockaddr_storage client_addr;
+	memset(&client_addr, 0, sizeof(client_addr));
+
 	socklen_t client_len;
 	int nbytes;
 	Packet p(this);
