@@ -27,8 +27,12 @@ const char *NetworkAddress::GetHostname()
 uint16 NetworkAddress::GetPort() const
 {
 	switch (this->address.ss_family) {
+		case AF_UNSPEC:
 		case AF_INET:
 			return ntohs(((struct sockaddr_in *)&this->address)->sin_port);
+
+		case AF_INET6:
+			return ntohs(((struct sockaddr_in6 *)&this->address)->sin6_port);
 
 		default:
 			NOT_REACHED();
@@ -38,8 +42,13 @@ uint16 NetworkAddress::GetPort() const
 void NetworkAddress::SetPort(uint16 port)
 {
 	switch (this->address.ss_family) {
+		case AF_UNSPEC:
 		case AF_INET:
 			((struct sockaddr_in*)&this->address)->sin_port = htons(port);
+			break;
+
+		case AF_INET6:
+			((struct sockaddr_in6*)&this->address)->sin6_port = htons(port);
 			break;
 
 		default:

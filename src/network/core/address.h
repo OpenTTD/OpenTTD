@@ -79,13 +79,14 @@ public:
 	 * Create a network address based on a unresolved host and port
 	 * @param ip the unresolved hostname
 	 * @param port the port
+	 * @param family the address family
 	 */
-	NetworkAddress(const char *hostname = "0.0.0.0", uint16 port = 0) :
+	NetworkAddress(const char *hostname = "0.0.0.0", uint16 port = 0, int family = AF_INET) :
 		hostname(strdup(hostname)),
 		address_length(0)
 	{
 		memset(&this->address, 0, sizeof(this->address));
-		this->address.ss_family = AF_INET;
+		this->address.ss_family = family;
 		this->SetPort(port);
 	}
 
