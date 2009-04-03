@@ -79,7 +79,7 @@ static int NetworkFindBroadcastIPsInternal(NetworkAddress *broadcast, int limit)
 			if (ip != INADDR_LOOPBACK && ip != INADDR_ANY) {
 				sockaddr_storage address;
 				memset(&address, 0, sizeof(address));
-				((sockaddr_in*)&storage)->sin_addr.s_addr = htonl(ip | ~netmask);
+				((sockaddr_in*)&address)->sin_addr.s_addr = htonl(ip | ~netmask);
 				broadcast[index] = NetworkAddress(address, sizeof(sockaddr));
 				index++;
 			}
@@ -137,7 +137,7 @@ static int NetworkFindBroadcastIPsInternal(NetworkAddress *broadcast, int limit)
 		sockaddr_storage address;
 		memset(&address, 0, sizeof(address));
 		/* iiBroadcast is unusable, because it always seems to be set to 255.255.255.255. */
-		((sockaddr_in*)&storage)->sin_addr.s_addr = ifo[j].iiAddress.AddressIn.sin_addr.s_addr | ~ifo[j].iiNetmask.AddressIn.sin_addr.s_addr;
+		((sockaddr_in*)&address)->sin_addr.s_addr = ifo[j].iiAddress.AddressIn.sin_addr.s_addr | ~ifo[j].iiNetmask.AddressIn.sin_addr.s_addr;
 		broadcast[index] = NetworkAddress(address, sizeof(sockaddr));
 	}
 

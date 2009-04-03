@@ -5,6 +5,7 @@
  */
 
 #ifndef NETWORK_CORE_HOST_H
+#define NETWORK_CORE_HOST_H
 
 void NetworkFindBroadcastIPs(NetworkAddress *broadcast, int limit);
 
