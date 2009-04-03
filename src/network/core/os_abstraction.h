@@ -19,12 +19,20 @@
 #include <ws2tcpip.h>
 #include <windows.h>
 
+#define GET_LAST_ERROR() WSAGetLastError()
+#define EWOULDBLOCK WSAEWOULDBLOCK
+/* Windows has some different names for some types */
+typedef unsigned long in_addr_t;
+
 #if !(defined(__MINGW32__) || defined(__CYGWIN__))
 	/* Windows has some different names for some types */
 	typedef SSIZE_T ssize_t;
 	typedef int socklen_t;
 #else
 #include "../../win32.h"
+#include "../../core/alloc_func.hpp"
+
+#define AI_ADDRCONFIG   0x00000400  // Resolution only if global address configured
 
 static inline int OTTDgetnameinfo(const struct sockaddr *sa, socklen_t salen, char *host, DWORD hostlen, char *serv, DWORD servlen, int flags)
 {
@@ -42,12 +50,70 @@ static inline int OTTDgetnameinfo(const struct sockaddr *sa, socklen_t salen, ch
 	return 0;
 }
 #define getnameinfo OTTDgetnameinfo
-#endif
 
-#define GET_LAST_ERROR() WSAGetLastError()
-#define EWOULDBLOCK WSAEWOULDBLOCK
-/* Windows has some different names for some types */
-typedef unsigned long in_addr_t;
+static inline int OTTDgetaddrinfo(const char *nodename, const char *servname, const struct addrinfo *hints, struct addrinfo **res)
+{
+	static int (WINAPI *getaddrinfo)(const char *, const char *, const struct addrinfo *, struct addrinfo **) = NULL;
+	static bool first_time = true;
+
+	if (first_time) {
+		LoadLibraryList((Function*)&getaddrinfo, "ws2_32.dll\0getaddrinfo\0\0");
+		first_time = false;
+	}
+
+	if (getaddrinfo != NULL) return getaddrinfo(nodename, servname, hints, res);
+
+	*res = NULL;
+
+	in_addr_t ip = inet_addr(nodename);
+	if (ip == INADDR_NONE) {
+		struct hostent *he = gethostbyname(nodename);
+		if (he == NULL) return EAI_NONAME;
+		ip = (*(struct in_addr *)he->h_addr).s_addr;
+	}
+
+	struct sockaddr_in *sin = CallocT<struct sockaddr_in>(1);
+	sin->sin_family = AF_INET;
+	sin->sin_port = htons(strtoul(servname, NULL, 10));
+	sin->sin_addr.s_addr = ip;
+
+	struct addrinfo *ai = CallocT<struct addrinfo>(1);
+	ai->ai_family = PF_INET;
+	ai->ai_addr = (struct sockaddr*)sin;
+	ai->ai_addrlen = sizeof(*sin);
+	ai->ai_socktype = hints->ai_socktype;
+
+	*res = ai;
+	return 0;
+}
+#define getaddrinfo OTTDgetaddrinfo
+
+static inline void OTTDfreeaddrinfo(struct addrinfo *ai)
+{
+	static int (WINAPI *freeaddrinfo)(struct addrinfo *) = NULL;
+	static bool first_time = true;
+
+	if (ai == NULL) return;
+
+	if (first_time) {
+		LoadLibraryList((Function*)&freeaddrinfo, "ws2_32.dll\freeaddrinfo\0\0");
+		first_time = false;
+	}
+
+	if (freeaddrinfo != NULL) {
+		freeaddrinfo(ai);
+		return;
+	}
+
+	do {
+		struct addrinfo *next = ai->ai_next;
+		free(ai->ai_addr);
+		free(ai);
+		ai = next;
+	} while(ai != NULL);
+}
+#define freeaddrinfo OTTDfreeaddrinfo
+#endif /* __MINGW32__ && __CYGWIN__ */
 #endif /* WIN32 */
 
 /* UNIX stuff */

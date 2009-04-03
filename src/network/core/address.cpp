@@ -88,7 +88,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, LoopProc fun
 
 	int e = getaddrinfo(this->GetHostname(), port_name, &hints, &ai);
 	if (e != 0) {
-		DEBUG(net, 0, "getaddrinfo failed: %s", gai_strerror(e));
+		DEBUG(net, 0, "getaddrinfo failed: %s", FS2OTTD(gai_strerror(e)));
 		return INVALID_SOCKET;
 	}
 
