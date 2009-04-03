@@ -267,4 +267,6 @@ public:
 	}
 };
 
+typedef AutoFreeSmallVector<char*, 4> StringList;
+
 #endif /* SMALLVEC_TYPE_HPP */

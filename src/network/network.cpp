@@ -55,8 +55,8 @@ ClientID _redirect_console_to_client;
 bool _network_need_advertise;
 uint32 _network_last_advertise_frame;
 uint8 _network_reconnect;
-char *_network_host_list[10];
-char *_network_ban_list[25];
+StringList _network_host_list;
+StringList _network_ban_list;
 uint32 _frame_counter_server; // The frame_counter of the server, if in network-mode
 uint32 _frame_counter_max; // To where we may go with our clients
 uint32 _frame_counter;
@@ -492,11 +492,9 @@ static void NetworkAcceptClients()
 
 		/* Check if the client is banned */
 		banned = false;
-		for (i = 0; i < lengthof(_network_ban_list); i++) {
-			if (_network_ban_list[i] == NULL) continue;
-
+		for (char **iter = _network_ban_list.Begin(); iter != _network_ban_list.End(); iter++) {
 			/* Check for CIDR separator */
-			char *chr_cidr = strchr(_network_ban_list[i], '/');
+			char *chr_cidr = strchr(*iter, '/');
 			if (chr_cidr != NULL) {
 				int cidr = atoi(chr_cidr + 1);
 
@@ -505,7 +503,7 @@ static void NetworkAcceptClients()
 
 				/* Remove and then replace the / so that inet_addr() works on the IP portion */
 				*chr_cidr = '\0';
-				uint32 ban_ip = inet_addr(_network_ban_list[i]);
+				uint32 ban_ip = inet_addr(*iter);
 				*chr_cidr = '/';
 
 				/* Convert CIDR to mask in network format */
@@ -513,14 +511,14 @@ static void NetworkAcceptClients()
 				if ((sin.sin_addr.s_addr & mask) == (ban_ip & mask)) banned = true;
 			} else {
 				/* No CIDR used, so just perform a simple IP test */
-				if (sin.sin_addr.s_addr == inet_addr(_network_ban_list[i])) banned = true;
+				if (sin.sin_addr.s_addr == inet_addr(*iter)) banned = true;
 			}
 
 			if (banned) {
 				Packet p(PACKET_SERVER_BANNED);
 				p.PrepareToSend();
 
-				DEBUG(net, 1, "Banned ip tried to join (%s), refused", _network_ban_list[i]);
+				DEBUG(net, 1, "Banned ip tried to join (%s), refused", *iter);
 
 				send(s, (const char*)p.buffer, p.size, 0);
 				closesocket(s);
@@ -690,19 +688,10 @@ void NetworkAddServer(const char *b)
  * by the function that generates the config file. */
 void NetworkRebuildHostList()
 {
-	uint i = 0;
-	const NetworkGameList *item = _network_game_list;
-	while (item != NULL && i != lengthof(_network_host_list)) {
-		if (item->manually) {
-			free(_network_host_list[i]);
-			_network_host_list[i++] = str_fmt("%s:%i", item->info.hostname, item->address.GetPort());
-		}
-		item = item->next;
-	}
+	_network_host_list.Clear();
 
-	for (; i < lengthof(_network_host_list); i++) {
-		free(_network_host_list[i]);
-		_network_host_list[i] = NULL;
+	for (NetworkGameList *item = _network_game_list; item != NULL; item = item->next) {
+		if (item->manually) *_network_host_list.Append() = strdup(item->address.GetAddressAsString());
 	}
 }
 

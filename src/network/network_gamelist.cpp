@@ -50,7 +50,7 @@ static void NetworkGameListHandleDelayedInsert()
 				strecpy(item->info.hostname, ins_item->info.hostname, lastof(item->info.hostname));
 				item->online = false;
 			}
-			item->manually = ins_item->manually;
+			item->manually |= ins_item->manually;
 			UpdateNetworkGameWindow(false);
 		}
 		free(ins_item);

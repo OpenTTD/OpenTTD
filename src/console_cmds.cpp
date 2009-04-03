@@ -422,7 +422,6 @@ DEF_CONSOLE_CMD(ConBan)
 
 DEF_CONSOLE_CMD(ConUnBan)
 {
-	uint i, index;
 
 	if (argc == 0) {
 		IConsoleHelp("Unban a client from a network game. Usage: 'unban <ip | client-id>'");
@@ -432,15 +431,14 @@ DEF_CONSOLE_CMD(ConUnBan)
 
 	if (argc != 2) return false;
 
-	index = (strchr(argv[1], '.') == NULL) ? atoi(argv[1]) : 0;
+	uint index = (strchr(argv[1], '.') == NULL) ? atoi(argv[1]) : 0;
 	index--;
+	uint i = 0;
 
-	for (i = 0; i < lengthof(_network_ban_list); i++) {
-		if (_network_ban_list[i] == NULL) continue;
-
+	for (char **iter = _network_ban_list.Begin(); iter != _network_ban_list.End(); iter++, i++) {
 		if (strcmp(_network_ban_list[i], argv[1]) == 0 || index == i) {
 			free(_network_ban_list[i]);
-			_network_ban_list[i] = NULL;
+			_network_ban_list.Erase(iter);
 			IConsolePrint(CC_DEFAULT, "IP unbanned.");
 			return true;
 		}
@@ -452,8 +450,6 @@ DEF_CONSOLE_CMD(ConUnBan)
 
 DEF_CONSOLE_CMD(ConBanList)
 {
-	uint i;
-
 	if (argc == 0) {
 		IConsoleHelp("List the IP's of banned clients: Usage 'banlist'");
 		return true;
@@ -461,9 +457,9 @@ DEF_CONSOLE_CMD(ConBanList)
 
 	IConsolePrint(CC_DEFAULT, "Banlist: ");
 
-	for (i = 0; i < lengthof(_network_ban_list); i++) {
-		if (_network_ban_list[i] != NULL)
-			IConsolePrintF(CC_DEFAULT, "  %d) %s", i + 1, _network_ban_list[i]);
+	uint i = 1;
+	for (char **iter = _network_ban_list.Begin(); iter != _network_ban_list.End(); iter++, i++) {
+		IConsolePrintF(CC_DEFAULT, "  %d) %s", i, *iter);
 	}
 
 	return true;

@@ -1798,12 +1798,7 @@ void NetworkServerBanIP(const char *banip)
 	}
 
 	/* Add user to ban-list */
-	for (uint index = 0; index < lengthof(_network_ban_list); index++) {
-		if (_network_ban_list[index] == NULL) {
-			_network_ban_list[index] = strdup(banip);
-			break;
-		}
-	}
+	*_network_ban_list.Append() = strdup(banip);
 }
 
 bool NetworkCompanyHasClients(CompanyID company)

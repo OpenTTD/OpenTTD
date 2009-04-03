@@ -68,9 +68,8 @@ ClientSettings _settings_client;
 GameSettings _settings_game;
 GameSettings _settings_newgame;
 
-typedef const char *SettingListCallbackProc(const IniItem *item, uint index);
 typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const char *grpname, void *object);
-typedef void SettingDescProcList(IniFile *ini, const char *grpname, char **list, uint len, SettingListCallbackProc proc);
+typedef void SettingDescProcList(IniFile *ini, const char *grpname, StringList *list);
 
 static bool IsSignedVarMemType(VarType vt);
 
@@ -598,27 +597,18 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
  * @param ini IniFile handle to the ini file with the source data
  * @param grpname character string identifying the section-header of the ini
  * file that will be parsed
- * @param list pointer to an string(pointer) array that will store the parsed
  * entries of the given section
- * @param len the maximum number of items available for the above list
- * @param proc callback function that can override how the values are stored
- * inside the list */
-static void ini_load_setting_list(IniFile *ini, const char *grpname, char **list, uint len, SettingListCallbackProc proc)
+ */
+static void ini_load_setting_list(IniFile *ini, const char *grpname, StringList *list)
 {
 	IniGroup *group = ini->GetGroup(grpname);
-	IniItem *item;
-	const char *entry;
-	uint i, j;
 
-	if (group == NULL) return;
+	if (group == NULL || list == NULL) return;
 
-	for (i = j = 0, item = group->item; item != NULL; item = item->next) {
-		entry = (proc != NULL) ? proc(item, i++) : item->name;
+	list->Clear();
 
-		if (entry == NULL || list == NULL) continue;
-
-		if (j == len) break;
-		list[j++] = strdup(entry);
+	for (const IniItem *item = group->item; item != NULL; item = item->next) {
+		if (item->name != NULL) *list->Append() = strdup(item->name);
 	}
 }
 
@@ -629,24 +619,16 @@ static void ini_load_setting_list(IniFile *ini, const char *grpname, char **list
  * @param grpname character string identifying the section-header of the ini file
  * @param list pointer to an string(pointer) array that will be used as the
  *             source to be saved into the relevant ini section
- * @param len the maximum number of items available for the above list
- * @param proc callback function that can will provide the source data if defined */
-static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list, uint len, SettingListCallbackProc proc)
+ */
+static void ini_save_setting_list(IniFile *ini, const char *grpname, StringList *list)
 {
 	IniGroup *group = ini->GetGroup(grpname);
-	const char *entry;
-	uint i;
 
-	if (proc == NULL && list == NULL) return;
-	if (group == NULL) return;
+	if (group == NULL || list == NULL) return;
 	group->Clear();
 
-	for (i = 0; i != len; i++) {
-		entry = (proc != NULL) ? proc(NULL, i) : list[i];
-
-		if (entry == NULL || *entry == '\0') continue;
-
-		group->GetItem(entry, true)->SetValue("");
+	for (char **iter = list->Begin(); iter != list->End(); iter++) {
+		group->GetItem(*iter, true)->SetValue("");
 	}
 }
 
@@ -1295,8 +1277,8 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 	proc(ini, _currency_settings,"currency", &_custom_currency);
 
 #ifdef ENABLE_NETWORK
-	proc_list(ini, "servers", _network_host_list, lengthof(_network_host_list), NULL);
-	proc_list(ini, "bans",    _network_ban_list,  lengthof(_network_ban_list), NULL);
+	proc_list(ini, "servers", &_network_host_list);
+	proc_list(ini, "bans",    &_network_ban_list);
 #endif /* ENABLE_NETWORK */
 }
 

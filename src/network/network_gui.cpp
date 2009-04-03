@@ -951,13 +951,11 @@ void ShowNetworkGameWindow()
 
 	/* Only show once */
 	if (first) {
-		char * const *srv;
-
 		first = false;
 		/* add all servers from the config file to our list */
-		for (srv = &_network_host_list[0]; srv != endof(_network_host_list) && *srv != NULL; srv++) {
-			NetworkAddServer(*srv);
-		}
+		for (char **iter = _network_host_list.Begin(); iter != _network_host_list.End(); iter++) {
+			NetworkAddServer(*iter);
+  }
 	}
 
 	new NetworkGameWindow(&_network_game_window_desc);
