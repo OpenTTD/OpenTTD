@@ -168,6 +168,23 @@ public:
 	}
 
 	/**
+	 * Compare the address of this class with the address of another.
+	 * @param address the other address.
+	 */
+	bool operator < (NetworkAddress &address)
+	{
+		int r = this->address.ss_family - address.address.ss_family;
+		if (r == 0 && this->IsResolved() && address.IsResolved()) {
+			r = this->address_length - address.address_length;
+			if (r == 0) r = memcmp(&this->address, &address.address, this->address_length) == 0;
+		} else {
+			r = strcmp(this->GetHostname(), address.GetHostname());
+		}
+		if (r == 0) r = this->GetPort() - address.GetPort();
+		return r < 0;
+	}
+
+	/**
 	 * Assign another address to ourself
 	 * @param other obviously the address to assign to us
 	 * @return 'this'
