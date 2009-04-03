@@ -773,10 +773,12 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Postavi 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Postavi svetionik
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Postavi predajnik
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definiši pustinjsku oblast.{}Pritisni i drži Ctrl da je ukloniš
+STR_CREATE_RIVER                                                :{BLACK}Mjesto reka.
 STR_0290_DELETE                                                 :{BLACK}Obriši
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Potpuno ukloni ovo naselje
 STR_0292_SAVE_SCENARIO                                          :Sačuvaj scenario
 STR_0293_LOAD_SCENARIO                                          :Učitaj scenario
+STR_MENU_LOAD_HEIGHTMAP                                         :Teret visina
 STR_0294_QUIT_EDITOR                                            :Napusti editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Napusti
@@ -784,6 +786,9 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Sačuvaj
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Učitaj scenario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Sačuvaj scenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Igraj scenario
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Igra Visina
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start jedan nov igra , pomoću jedan visina ace krajolik
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Biti te siguran te oskudica za slobodan današji scenarij?
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...dozvoljeno izgraditi samo u naseljima sa populacijom od najmanje 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Pomeranje datuma početka za jednu godinu unazad
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Pomeranje datuma početka za jednu godinu unapred
@@ -791,29 +796,50 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...oba k
 STR_02A1_SMALL                                                  :{BLACK}Malo
 STR_02A2_MEDIUM                                                 :{BLACK}Srednje
 STR_02A3_LARGE                                                  :{BLACK}Veliko
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Slučajan
+STR_FOUND_TOWN_CITY                                             :{BLACK}Grad
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Gradovi rasti brže nego pravilan gradski stanovništvo{}Ovisno o postavljanje , oni biti veći našto valjan
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Izbor veličine naselja
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Veličina naselja:
 
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Grad cesta raspored:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Izabrati cesta raspored iskorišten umjesto današji grad
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Originalan
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Bolji rub ceste
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 rešetka
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 rešetka
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Slučajan
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Prikaži poslednju poruku ili izveštaj
+STR_OFF                                                         :Undress
+STR_SUMMARY                                                     :kratak pregled
+STR_FULL                                                        :Puni
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Popis naselja
 STR_02BD                                                        :{BLACK}{STRING}
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Opcije
 STR_02C6_DIFFICULTY_SETTINGS                                    :Podešavanje težine
+STR_MENU_CONFIG_SETTINGS                                        :Napredan Postavljanje
+STR_NEWGRF_SETTINGS                                             :NewGRF Postavljanje
+STR_TRANSPARENCY_OPTIONS                                        :Providnost Opcije
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Prikazana imena naselja
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Prikazana imena stanica
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Prikazani znakovi
+STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Waypoints izložen
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Puna animacija
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Svi detalji
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Providne zgrade
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Banner stajalište znak
 ############ range ends here
 
 ############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Podaci o zemljištu
+STR_CONSOLE_SETTING                                             :Mijenjati Utešiti
+STR_AI_DEBUG_MENU                                               :umjetni inteligencija ukloniti tehničke greške
 STR_02D7_SCREENSHOT_CTRL_S                                      :Sačuvaj sliku (Ctrl+S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Sačuvaj sliku u velikom formatu (Ctrl+G)
 STR_02D9_ABOUT_OPENTTD                                          :O OpenTTD-u
@@ -824,7 +850,10 @@ STR_02DA_ON                                                     :{BLACK}On
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Prikaži subvencije
 STR_02DD_SUBSIDIES                                              :Subvencije
 STR_02DE_MAP_OF_WORLD                                           :Mapa sveta
+STR_EXTRA_VIEW_PORT                                             :Dodatni gledište
+STR_SIGN_LIST                                                   :Znak Foil
 STR_02DF_TOWN_DIRECTORY                                         :Popis naselja
+STR_TOWN_POPULATION                                             :{BLACK}Svet Populacija: {COMMA}
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Valuta
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}

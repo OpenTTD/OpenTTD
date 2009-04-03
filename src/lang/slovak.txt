@@ -2676,10 +2676,10 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak v c
 STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
-STR_ORDER_GO_TO                                                 :Chod do
-STR_ORDER_GO_NON_STOP_TO                                        :Chod non-stop do
-STR_ORDER_GO_VIA                                                :Chod cez
-STR_ORDER_GO_NON_STOP_VIA                                       :Chdo non-stop cez
+STR_ORDER_GO_TO                                                 :Choď do
+STR_ORDER_GO_NON_STOP_TO                                        :Choď non-stop do
+STR_ORDER_GO_VIA                                                :Choď cez
+STR_ORDER_GO_NON_STOP_VIA                                       :Choď non-stop cez
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Plne nalož cokolvek
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Nalož pri dostupnosti
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Plne nalož všetko
@@ -2710,8 +2710,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Zmenit s
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Vložit zložitejší príkaz
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Chod do najbližšieho depa
-STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Chod do najbližšieho hangáru
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Choď do najbližšieho depa
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Choď do najbližšieho hangáru
 STR_ORDER_NEAREST_DEPOT                                         :najbližší
 STR_ORDER_NEAREST_HANGAR                                        :najbližší hangár
 STR_ORDER_SERVICE_AT                                            :Servis v
@@ -2793,7 +2793,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Vytvori 
 STR_8820_RENAME                                                 :{BLACK}Premenovat
 STR_8823_SKIP                                                   :{BLACK}Preskocit
 STR_8824_DELETE                                                 :{BLACK}Vynechat
-STR_8826_GO_TO                                                  :{BLACK}Chod do
+STR_8826_GO_TO                                                  :{BLACK}Choď do
 STR_REFIT                                                       :{BLACK}Prestavba
 STR_REFIT_TIP                                                   :{BLACK}Vyberte typ nákladu na prestavbu v tomto poradí. CTRL+klik na odstránenie príkazu prestavby
 STR_REFIT_ORDER                                                 :(Prestavba na {STRING})

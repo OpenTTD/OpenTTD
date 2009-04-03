@@ -2128,7 +2128,7 @@ STR_NUM_VERY_LOW                                                :Mjög lág
 STR_6816_LOW                                                    :Fáir
 STR_6817_NORMAL                                                 :Miðlungs
 STR_6818_HIGH                                                   :Margir
-STR_02BF_CUSTOM                                                 :Breytt
+STR_02BF_CUSTOM                                                 :Sérstillt
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Mjög hægt
@@ -3365,8 +3365,8 @@ STR_SOUTHEAST                                                   :{BLACK}Suðaust
 STR_SOUTHWEST                                                   :{BLACK}Suðvestur
 STR_BORDER_FREEFORM                                             :{BLACK}Frjálsar
 STR_BORDER_WATER                                                :{BLACK}Vatn
-STR_BORDER_RANDOM                                               :{BLACK}Handahófkenndar
-STR_BORDER_RANDOMIZE                                            :{BLACK}Handahóf
+STR_BORDER_RANDOM                                               :{BLACK}Slembin
+STR_BORDER_RANDOMIZE                                            :{BLACK}Slembnar
 STR_BORDER_MANUAL                                               :{BLACK}Forvaldar
 
 ########### String for new airports

@@ -1453,6 +1453,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Atsijungti
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Įveskite kiekį pinigų, kuriuos norite gauti
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveris apsaugotas. Įvesk slaptažodį
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Kompanija apsaugota. Įvesk slaptažodį
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Žaidėjų sąrašas
@@ -2659,6 +2660,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Grįžti į art
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Skristi į artimiausią angarą
 STR_ORDER_NEAREST_DEPOT                                         :artimiausias
 STR_ORDER_NEAREST_HANGAR                                        :artimiausias Angaras
+STR_ORDER_SERVICE_AT                                            :Aptarnavimas
 STR_ORDER_TRAIN_DEPOT                                           :Lokomotyvų depas
 STR_ORDER_ROAD_DEPOT                                            :Automobilių garažas
 STR_ORDER_SHIP_DEPOT                                            :Laivų statykla
@@ -2670,6 +2672,7 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Važiuoti be su
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Taisytis, jei reikia
 STR_ORDER_DROP_HALT_DEPOT                                       :Sustoti
 
+STR_ORDER_CONDITIONAL                                           :Sąlyginis užsakymo šuolis
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Įveskite kainą palyginti su
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Krovimosi kiekis (proc)
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Patikimumas
