@@ -15,8 +15,10 @@
 const char *NetworkAddress::GetHostname()
 {
 	if (this->hostname == NULL) {
+		assert(this->address_length != 0);
+
 		char buf[NETWORK_HOSTNAME_LENGTH] = { '\0' };
-		getnameinfo((struct sockaddr *)&this->address, sizeof(this->address), buf, sizeof(buf), NULL, 0, NI_NUMERICHOST);
+		getnameinfo((struct sockaddr *)&this->address, this->address_length, buf, sizeof(buf), NULL, 0, NI_NUMERICHOST);
 		this->hostname = strdup(buf);
 	}
 	return this->hostname;
@@ -56,9 +58,9 @@ const char *NetworkAddress::GetAddressAsString()
 
 const sockaddr_storage *NetworkAddress::GetAddress()
 {
-	if (!this->resolved) {
+	if (!this->IsResolved()) {
 		((struct sockaddr_in *)&this->address)->sin_addr.s_addr = NetworkResolveHost(this->hostname);
-		this->resolved = true;
+		this->address_length = sizeof(sockaddr);
 	}
 	return &this->address;
 }
@@ -90,11 +92,18 @@ SOCKET NetworkAddress::Connect()
 
 		if (!SetNoDelay(sock)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
 
-		if (connect(sock, runp->ai_addr, runp->ai_addrlen) != 0) continue;
+		if (connect(sock, runp->ai_addr, runp->ai_addrlen) != 0) {
+			closesocket(sock);
+			sock = INVALID_SOCKET;
+			continue;
+		}
 
 		/* Connection succeeded */
 		if (!SetNonBlocking(sock)) DEBUG(net, 0, "Setting non-blocking mode failed");
 
+		this->address_length = runp->ai_addrlen;
+		assert(sizeof(this->address) >= runp->ai_addrlen);
+		memcpy(&this->address, runp->ai_addr, runp->ai_addrlen);
 		break;
 	}
 	freeaddrinfo (ai);

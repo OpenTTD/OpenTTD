@@ -1090,24 +1090,15 @@ static void NetworkGenerateUniqueId()
 void NetworkStartDebugLog(NetworkAddress address)
 {
 	extern SOCKET _debug_socket;  // Comes from debug.c
-	SOCKET s;
 
 	DEBUG(net, 0, "Redirecting DEBUG() to %s:%d", address.GetHostname(), address.GetPort());
 
-	s = socket(AF_INET, SOCK_STREAM, 0);
+	SOCKET s = address.Connect();
 	if (s == INVALID_SOCKET) {
 		DEBUG(net, 0, "Failed to open socket for redirection DEBUG()");
 		return;
 	}
 
-	if (!SetNoDelay(s)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
-
-	if (connect(s, (struct sockaddr *)address.GetAddress(), sizeof(*address.GetAddress())) != 0) {
-		DEBUG(net, 0, "Failed to redirection DEBUG() to %s", address.GetAddressAsString());
-		return;
-	}
-
-	if (!SetNonBlocking(s)) DEBUG(net, 0, "Setting non-blocking mode failed");
 	_debug_socket = s;
 
 	DEBUG(net, 0, "DEBUG() is now redirected");

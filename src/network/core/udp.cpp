@@ -89,7 +89,7 @@ void NetworkUDPSocketHandler::SendPacket(Packet *p, NetworkAddress *recv)
 	p->PrepareToSend();
 
 	/* Send the buffer */
-	res = sendto(this->sock, (const char*)p->buffer, p->size, 0, (struct sockaddr *)recv->GetAddress(), sizeof(*recv->GetAddress()));
+	res = sendto(this->sock, (const char*)p->buffer, p->size, 0, (struct sockaddr *)recv->GetAddress(), recv->GetAddressLength());
 
 	/* Check for any errors, but ignore it otherwise */
 	if (res == -1) DEBUG(net, 1, "[udp] sendto failed with: %i", GET_LAST_ERROR());
@@ -119,7 +119,7 @@ void NetworkUDPSocketHandler::ReceivePackets()
 
 	/* We got some bytes for the base header of the packet. */
 	if (nbytes > 2) {
-		NetworkAddress address(client_addr);
+		NetworkAddress address(client_addr, client_len);
 		p.PrepareToRead();
 
 		/* If the size does not match the packet must be corrupted.

@@ -16,8 +16,8 @@
  */
 class NetworkAddress {
 private:
-	bool resolved;            ///< Has the IP address been resolved
 	char *hostname;           ///< The hostname, NULL if there isn't one
+	size_t address_length;    ///< The length of the resolved address
 	sockaddr_storage address; ///< The resolved address
 
 public:
@@ -27,8 +27,8 @@ public:
 	 * @param port the port
 	 */
 	NetworkAddress(in_addr_t ip, uint16 port) :
-		resolved(true),
-		hostname(NULL)
+		hostname(NULL),
+		address_length(sizeof(sockaddr))
 	{
 		memset(&this->address, 0, sizeof(this->address));
 		this->address.ss_family = AF_INET;
@@ -40,9 +40,9 @@ public:
 	 * Create a network address based on a resolved IP and port
 	 * @param address the IP address with port
 	 */
-	NetworkAddress(struct sockaddr_storage &address) :
-		resolved(true),
+	NetworkAddress(struct sockaddr_storage &address, size_t address_length) :
 		hostname(NULL),
+		address_length(address_length),
 		address(address)
 	{
 	}
@@ -53,8 +53,8 @@ public:
 	 * @param port the port
 	 */
 	NetworkAddress(const char *hostname = NULL, uint16 port = 0) :
-		resolved(false),
-		hostname(hostname == NULL ? NULL : strdup(hostname))
+		hostname(hostname == NULL ? NULL : strdup(hostname)),
+		address_length(0)
 	{
 		memset(&this->address, 0, sizeof(this->address));
 		this->address.ss_family = AF_INET;
@@ -66,8 +66,8 @@ public:
 	 * @param address the address to clone
 	 */
 	NetworkAddress(const NetworkAddress &address) :
-		resolved(address.resolved),
 		hostname(address.hostname == NULL ? NULL : strdup(address.hostname)),
+		address_length(address.address_length),
 		address(address.address)
 	{
 	}
@@ -98,6 +98,17 @@ public:
 	const sockaddr_storage *GetAddress();
 
 	/**
+	 * Get the (valid) length of the address.
+	 * @return the length
+	 */
+	size_t GetAddressLength()
+	{
+		/* Resolve it if we didn't do it already */
+		if (!this->IsResolved()) this->GetAddress();
+		return this->address_length;
+	}
+
+	/**
 	 * Get the port
 	 * @return the port
 	 */
@@ -115,7 +126,7 @@ public:
 	 */
 	bool IsResolved() const
 	{
-		return this->resolved;
+		return this->address_length != 0;
 	}
 
 	/**
