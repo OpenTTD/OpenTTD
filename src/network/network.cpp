@@ -61,7 +61,7 @@ uint32 _frame_counter_server; // The frame_counter of the server, if in network-
 uint32 _frame_counter_max; // To where we may go with our clients
 uint32 _frame_counter;
 uint32 _last_sync_frame; // Used in the server to store the last time a sync packet was sent to clients.
-uint32 _broadcast_list[MAX_INTERFACES + 1];
+NetworkAddress _broadcast_list[MAX_INTERFACES + 1];
 uint32 _sync_seed_1, _sync_seed_2;
 uint32 _sync_frame;
 bool _network_first_time;

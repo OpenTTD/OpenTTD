@@ -363,13 +363,12 @@ static void NetworkUDPBroadCast(NetworkUDPSocketHandler *socket)
 {
 	uint i;
 
-	for (i = 0; _broadcast_list[i] != 0; i++) {
+	for (i = 0; !StrEmpty(_broadcast_list[i].GetHostname()); i++) {
 		Packet p(PACKET_UDP_CLIENT_FIND_SERVER);
-		NetworkAddress out_addr(_broadcast_list[i], _settings_client.network.server_port);
 
-		DEBUG(net, 4, "[udp] broadcasting to %s", out_addr.GetHostname());
+		DEBUG(net, 4, "[udp] broadcasting to %s", _broadcast_list[i].GetHostname());
 
-		socket->SendPacket(&p, &out_addr);
+		socket->SendPacket(&p, &_broadcast_list[i]);
 	}
 }
 

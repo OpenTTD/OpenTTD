@@ -64,6 +64,18 @@ public:
 	}
 
 	/**
+	 * Create a network address based on a resolved IP and port
+	 * @param address the IP address with port
+	 */
+	NetworkAddress(sockaddr *address, size_t address_length) :
+		hostname(NULL),
+		address_length(address_length)
+	{
+		memset(&this->address, 0, sizeof(this->address));
+		memcpy(&this->address, address, address_length);
+	}
+
+	/**
 	 * Create a network address based on a unresolved host and port
 	 * @param ip the unresolved hostname
 	 * @param port the port
