@@ -17,45 +17,26 @@
 
 /**
  * Start listening on the given host and port.
- * @param host      the host (ip) to listen on
- * @param port      the port to listen on
+ * @param address the host to listen on
  * @param broadcast whether to allow broadcast sending/receiving
  * @return true if the listening succeeded
  */
-bool NetworkUDPSocketHandler::Listen(const uint32 host, const uint16 port, const bool broadcast)
+bool NetworkUDPSocketHandler::Listen(NetworkAddress address, bool broadcast)
 {
-	struct sockaddr_in sin;
-
 	/* Make sure socket is closed */
 	this->Close();
 
-	this->sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-	if (!this->IsConnected()) {
-		DEBUG(net, 0, "[udp] failed to start UDP listener");
-		return false;
-	}
-
-	SetNonBlocking(this->sock);
-
-	sin.sin_family = AF_INET;
-	/* Listen on all IPs */
-	sin.sin_addr.s_addr = host;
-	sin.sin_port = htons(port);
-
-	if (bind(this->sock, (struct sockaddr*)&sin, sizeof(sin)) != 0) {
-		DEBUG(net, 0, "[udp] bind failed on %s:%i", inet_ntoa(*(struct in_addr *)&host), port);
-		return false;
-	}
+	this->sock = address.Listen(AF_INET, SOCK_DGRAM);
 
 	if (broadcast) {
 		/* Enable broadcast */
 		unsigned long val = 1;
 #ifndef BEOS_NET_SERVER /* will work around this, some day; maybe. */
-		setsockopt(this->sock, SOL_SOCKET, SO_BROADCAST, (char *) &val , sizeof(val));
+		setsockopt(this->sock, SOL_SOCKET, SO_BROADCAST, (char *) &val, sizeof(val));
 #endif
 	}
 
-	DEBUG(net, 1, "[udp] listening on port %s:%d", inet_ntoa(*(struct in_addr *)&host), port);
+	DEBUG(net, 1, "[udp] listening on port %s", address.GetAddressAsString());
 
 	return true;
 }

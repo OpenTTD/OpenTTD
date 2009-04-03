@@ -82,7 +82,7 @@ SOCKET NetworkAddress::Connect()
 	int e = getaddrinfo(this->GetHostname(), port_name, &hints, &ai);
 	if (e != 0) {
 		DEBUG(net, 0, "getaddrinfo failed: %s", gai_strerror(e));
-		return false;
+		return INVALID_SOCKET;
 	}
 
 	SOCKET sock = INVALID_SOCKET;
@@ -93,6 +93,62 @@ SOCKET NetworkAddress::Connect()
 		if (!SetNoDelay(sock)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
 
 		if (connect(sock, runp->ai_addr, runp->ai_addrlen) != 0) {
+			closesocket(sock);
+			sock = INVALID_SOCKET;
+			continue;
+		}
+
+		/* Connection succeeded */
+		if (!SetNonBlocking(sock)) DEBUG(net, 0, "Setting non-blocking mode failed");
+
+		this->address_length = runp->ai_addrlen;
+		assert(sizeof(this->address) >= runp->ai_addrlen);
+		memcpy(&this->address, runp->ai_addr, runp->ai_addrlen);
+		break;
+	}
+	freeaddrinfo (ai);
+
+	return sock;
+}
+
+SOCKET NetworkAddress::Listen(int family, int socktype)
+{
+	struct addrinfo *ai;
+	struct addrinfo hints;
+	memset(&hints, 0, sizeof (hints));
+	hints.ai_family   = family;
+	hints.ai_flags    = AI_ADDRCONFIG | AI_PASSIVE;
+	hints.ai_socktype = socktype;
+
+	/* The port needs to be a string. Six is enough to contain all characters + '\0'. */
+	char port_name[6] = { '0' };
+	seprintf(port_name, lastof(port_name), "%u", this->GetPort());
+
+	int e = getaddrinfo(this->GetHostname(), port_name, &hints, &ai);
+	if (e != 0) {
+		DEBUG(net, 0, "getaddrinfo failed: %s", gai_strerror(e));
+		return INVALID_SOCKET;
+	}
+
+	SOCKET sock = INVALID_SOCKET;
+	for (struct addrinfo *runp = ai; runp != NULL; runp = runp->ai_next) {
+		sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
+		if (sock == INVALID_SOCKET) {
+			DEBUG(net, 1, "could not create socket: %s", strerror(errno));
+			continue;
+		}
+
+		if (!SetNoDelay(sock)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
+
+		if (bind(sock, runp->ai_addr, runp->ai_addrlen) != 0) {
+			DEBUG(net, 1, "could not bind: %s", strerror(errno));
+			closesocket(sock);
+			sock = INVALID_SOCKET;
+			continue;
+		}
+
+		if (socktype != SOCK_DGRAM && listen(sock, 1) != 0) {
+			DEBUG(net, 1, "could not listen: %s", strerror(errno));
 			closesocket(sock);
 			sock = INVALID_SOCKET;
 			continue;

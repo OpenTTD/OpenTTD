@@ -125,7 +125,7 @@ public:
 	/** On destructing of this class, the socket needs to be closed */
 	virtual ~NetworkUDPSocketHandler() { this->Close(); }
 
-	bool Listen(uint32 host, uint16 port, bool broadcast);
+	bool Listen(NetworkAddress address, bool broadcast);
 	void Close();
 
 	void SendPacket(Packet *p, NetworkAddress *recv);

@@ -556,39 +556,20 @@ static void NetworkAcceptClients()
 /* Set up the listen socket for the server */
 static bool NetworkListen()
 {
-	SOCKET ls;
-	struct sockaddr_in sin;
+	NetworkAddress address(_settings_client.network.server_bind_ip, _settings_client.network.server_port);
 
-	DEBUG(net, 1, "Listening on %s:%d", _settings_client.network.server_bind_ip, _settings_client.network.server_port);
+	DEBUG(net, 1, "Listening on %s", address.GetAddressAsString());
 
-	ls = socket(AF_INET, SOCK_STREAM, 0);
+	SOCKET ls = address.Listen(AF_INET, SOCK_STREAM);
 	if (ls == INVALID_SOCKET) {
-		ServerStartError("socket() on listen socket failed");
+		ServerStartError("Could not create listening socket");
 		return false;
 	}
 
-	{ // reuse the socket
-		int reuse = 1;
-		/* The (const char*) cast is needed for windows!! */
-		if (setsockopt(ls, SOL_SOCKET, SO_REUSEADDR, (const char*)&reuse, sizeof(reuse)) == -1) {
-			ServerStartError("setsockopt() on listen socket failed");
-			return false;
-		}
-	}
-
-	if (!SetNonBlocking(ls)) DEBUG(net, 0, "Setting non-blocking mode failed"); // XXX should this be an error?
-
-	sin.sin_family = AF_INET;
-	sin.sin_addr.s_addr = _network_server_bind_ip;
-	sin.sin_port = htons(_settings_client.network.server_port);
-
-	if (bind(ls, (struct sockaddr*)&sin, sizeof(sin)) != 0) {
-		ServerStartError("bind() failed");
-		return false;
-	}
-
-	if (listen(ls, 1) != 0) {
-		ServerStartError("listen() failed");
+	int reuse = 1;
+	/* The (const char*) cast is needed for windows!! */
+	if (setsockopt(ls, SOL_SOCKET, SO_REUSEADDR, (const char*)&reuse, sizeof(reuse)) == -1) {
+		ServerStartError("setsockopt() on listen socket failed");
 		return false;
 	}
 
@@ -795,7 +776,7 @@ bool NetworkServerStart()
 
 	/* Try to start UDP-server */
 	_network_udp_server = true;
-	_network_udp_server = _udp_server_socket->Listen(_network_server_bind_ip, _settings_client.network.server_port, false);
+	_network_udp_server = _udp_server_socket->Listen(NetworkAddress(_network_server_bind_ip, _settings_client.network.server_port), false);
 
 	_network_company_states = CallocT<NetworkCompanyState>(MAX_COMPANIES);
 	_network_server = true;

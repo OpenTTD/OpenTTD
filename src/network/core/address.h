@@ -52,8 +52,8 @@ public:
 	 * @param ip the unresolved hostname
 	 * @param port the port
 	 */
-	NetworkAddress(const char *hostname = NULL, uint16 port = 0) :
-		hostname(hostname == NULL ? NULL : strdup(hostname)),
+	NetworkAddress(const char *hostname = "0.0.0.0", uint16 port = 0) :
+		hostname(strdup(hostname)),
 		address_length(0)
 	{
 		memset(&this->address, 0, sizeof(this->address));
@@ -159,6 +159,14 @@ public:
 	 * @return the connected socket or INVALID_SOCKET.
 	 */
 	SOCKET Connect();
+
+	/**
+	 * Make the given socket listen.
+	 * @param family the type of 'protocol' (IPv4, IPv6)
+	 * @param socktype the type of socket (TCP, UDP, etc)
+	 * @return the listening socket or INVALID_SOCKET.
+	 */
+	SOCKET Listen(int family, int socktype);
 };
 
 #endif /* ENABLE_NETWORK */
