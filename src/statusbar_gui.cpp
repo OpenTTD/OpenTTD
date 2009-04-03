@@ -63,6 +63,12 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int pos, int width)
 	return x > 0;
 }
 
+enum StatusbarWidget {
+	SBW_LEFT,   ///< left part of the statusbar; date is shown there
+	SBW_MIDDLE, ///< middle part; current news or company name or *** SAVING *** or *** PAUSED ***
+	SBW_RIGHT,  ///< right part; bank balance
+};
+
 struct StatusBarWindow : Window {
 	bool saving;
 	int ticker_scroll;
@@ -74,12 +80,6 @@ struct StatusBarWindow : Window {
 		REMINDER_START =    91, ///< initial value of the reminder counter (right dot on the right)
 		REMINDER_STOP  =     0, ///< reminder disappears when counter reaches this value
 		COUNTER_STEP   =     2, ///< this is subtracted from active counters every tick
-	};
-
-	enum StatusbarWidget {
-		SBW_LEFT,   ///< left part of the statusbar; date is shown there
-		SBW_MIDDLE, ///< middle part; current news or company name or *** SAVING *** or *** PAUSED ***
-		SBW_RIGHT,  ///< right part; bank balance
 	};
 
 	StatusBarWindow(const WindowDesc *desc) : Window(desc)
