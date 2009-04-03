@@ -20,6 +20,22 @@ private:
 	size_t address_length;    ///< The length of the resolved address
 	sockaddr_storage address; ///< The resolved address
 
+	/**
+	 * Helper function to resolve something to a socket.
+	 * @param runp information about the socket to try not
+	 * @return the opened socket or INVALID_SOCKET
+	 */
+	typedef SOCKET (*LoopProc)(addrinfo *runp);
+
+	/**
+	 * Resolve this address into a socket
+	 * @param family the type of 'protocol' (IPv4, IPv6)
+	 * @param socktype the type of socket (TCP, UDP, etc)
+	 * @param flags the flags to send to getaddrinfo
+	 * @param func the inner working while looping over the address info
+	 * @return the resolved socket or INVALID_SOCKET.
+	 */
+	SOCKET Resolve(int family, int socktype, int flags, LoopProc func);
 public:
 	/**
 	 * Create a network address based on a resolved IP and port

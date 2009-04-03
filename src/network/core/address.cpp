@@ -56,24 +56,31 @@ const char *NetworkAddress::GetAddressAsString()
 	return buf;
 }
 
+/**
+ * Helper function to resolve without opening a socket.
+ * @param runp information about the socket to try not
+ * @return the opened socket or INVALID_SOCKET
+ */
+static SOCKET ResolveLoopProc(addrinfo *runp)
+{
+	/* We just want the first 'entry', so return a valid socket. */
+	return !INVALID_SOCKET;
+}
+
 const sockaddr_storage *NetworkAddress::GetAddress()
 {
-	if (!this->IsResolved()) {
-		((struct sockaddr_in *)&this->address)->sin_addr.s_addr = NetworkResolveHost(this->hostname);
-		this->address_length = sizeof(sockaddr);
-	}
+	if (!this->IsResolved()) this->Resolve(this->address.ss_family, 0, AI_ADDRCONFIG, ResolveLoopProc);
 	return &this->address;
 }
 
-SOCKET NetworkAddress::Connect()
+SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, LoopProc func)
 {
-	DEBUG(net, 1, "Connecting to %s", this->GetAddressAsString());
-
 	struct addrinfo *ai;
 	struct addrinfo hints;
 	memset(&hints, 0, sizeof (hints));
-	hints.ai_flags    = AI_ADDRCONFIG;
-	hints.ai_socktype = SOCK_STREAM;
+	hints.ai_family   = family;
+	hints.ai_flags    = flags;
+	hints.ai_socktype = socktype;
 
 	/* The port needs to be a string. Six is enough to contain all characters + '\0'. */
 	char port_name[6];
@@ -87,19 +94,8 @@ SOCKET NetworkAddress::Connect()
 
 	SOCKET sock = INVALID_SOCKET;
 	for (struct addrinfo *runp = ai; runp != NULL; runp = runp->ai_next) {
-		sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
+		sock = func(runp);
 		if (sock == INVALID_SOCKET) continue;
-
-		if (!SetNoDelay(sock)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
-
-		if (connect(sock, runp->ai_addr, runp->ai_addrlen) != 0) {
-			closesocket(sock);
-			sock = INVALID_SOCKET;
-			continue;
-		}
-
-		/* Connection succeeded */
-		if (!SetNonBlocking(sock)) DEBUG(net, 0, "Setting non-blocking mode failed");
 
 		this->address_length = runp->ai_addrlen;
 		assert(sizeof(this->address) >= runp->ai_addrlen);
@@ -111,60 +107,75 @@ SOCKET NetworkAddress::Connect()
 	return sock;
 }
 
-SOCKET NetworkAddress::Listen(int family, int socktype)
+/**
+ * Helper function to resolve a connected socket.
+ * @param runp information about the socket to try not
+ * @return the opened socket or INVALID_SOCKET
+ */
+static SOCKET ConnectLoopProc(addrinfo *runp)
 {
-	struct addrinfo *ai;
-	struct addrinfo hints;
-	memset(&hints, 0, sizeof (hints));
-	hints.ai_family   = family;
-	hints.ai_flags    = AI_ADDRCONFIG | AI_PASSIVE;
-	hints.ai_socktype = socktype;
-
-	/* The port needs to be a string. Six is enough to contain all characters + '\0'. */
-	char port_name[6] = { '0' };
-	seprintf(port_name, lastof(port_name), "%u", this->GetPort());
-
-	int e = getaddrinfo(this->GetHostname(), port_name, &hints, &ai);
-	if (e != 0) {
-		DEBUG(net, 0, "getaddrinfo failed: %s", gai_strerror(e));
+	SOCKET sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
+	if (sock == INVALID_SOCKET) {
+		DEBUG(net, 1, "Could not create socket: %s", strerror(errno));
 		return INVALID_SOCKET;
 	}
 
-	SOCKET sock = INVALID_SOCKET;
-	for (struct addrinfo *runp = ai; runp != NULL; runp = runp->ai_next) {
-		sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
-		if (sock == INVALID_SOCKET) {
-			DEBUG(net, 1, "could not create socket: %s", strerror(errno));
-			continue;
-		}
+	if (!SetNoDelay(sock)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
 
-		if (!SetNoDelay(sock)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
-
-		if (bind(sock, runp->ai_addr, runp->ai_addrlen) != 0) {
-			DEBUG(net, 1, "could not bind: %s", strerror(errno));
-			closesocket(sock);
-			sock = INVALID_SOCKET;
-			continue;
-		}
-
-		if (socktype != SOCK_DGRAM && listen(sock, 1) != 0) {
-			DEBUG(net, 1, "could not listen: %s", strerror(errno));
-			closesocket(sock);
-			sock = INVALID_SOCKET;
-			continue;
-		}
-
-		/* Connection succeeded */
-		if (!SetNonBlocking(sock)) DEBUG(net, 0, "Setting non-blocking mode failed");
-
-		this->address_length = runp->ai_addrlen;
-		assert(sizeof(this->address) >= runp->ai_addrlen);
-		memcpy(&this->address, runp->ai_addr, runp->ai_addrlen);
-		break;
+	if (connect(sock, runp->ai_addr, runp->ai_addrlen) != 0) {
+		DEBUG(net, 1, "Could not connect socket: %s", strerror(errno));
+		return INVALID_SOCKET;
 	}
-	freeaddrinfo (ai);
+
+	/* Connection succeeded */
+	if (!SetNonBlocking(sock)) DEBUG(net, 0, "Setting non-blocking mode failed");
 
 	return sock;
+}
+
+SOCKET NetworkAddress::Connect()
+{
+	DEBUG(net, 1, "Connecting to %s", this->GetAddressAsString());
+
+	return this->Resolve(0, SOCK_STREAM, AI_ADDRCONFIG, ConnectLoopProc);
+}
+
+/**
+ * Helper function to resolve a listening.
+ * @param runp information about the socket to try not
+ * @return the opened socket or INVALID_SOCKET
+ */
+static SOCKET ListenLoopProc(addrinfo *runp)
+{
+	SOCKET sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
+	if (sock == INVALID_SOCKET) {
+		DEBUG(net, 1, "Could not create socket: %s", strerror(errno));
+		return INVALID_SOCKET;
+	}
+
+	if (!SetNoDelay(sock)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
+
+	if (bind(sock, runp->ai_addr, runp->ai_addrlen) != 0) {
+		DEBUG(net, 1, "Could not bind: %s", strerror(errno));
+		closesocket(sock);
+		return INVALID_SOCKET;
+	}
+
+	if (runp->ai_socktype != SOCK_DGRAM && listen(sock, 1) != 0) {
+		DEBUG(net, 1, "Could not listen: %s", strerror(errno));
+		closesocket(sock);
+		return INVALID_SOCKET;
+	}
+
+	/* Connection succeeded */
+	if (!SetNonBlocking(sock)) DEBUG(net, 0, "Setting non-blocking mode failed");
+
+	return sock;
+}
+
+SOCKET NetworkAddress::Listen(int family, int socktype)
+{
+	return this->Resolve(family, socktype, AI_ADDRCONFIG | AI_PASSIVE, ListenLoopProc);
 }
 
 #endif /* ENABLE_NETWORK */
