@@ -28,11 +28,13 @@ typedef unsigned long in_addr_t;
 	/* Windows has some different names for some types */
 	typedef SSIZE_T ssize_t;
 	typedef int socklen_t;
+#	define IPPROTO_IPV6 41
 #else
 #include "../../win32.h"
 #include "../../core/alloc_func.hpp"
 
 #define AI_ADDRCONFIG   0x00000400  // Resolution only if global address configured
+#define IPV6_V6ONLY 27
 
 static inline int OTTDgetnameinfo(const struct sockaddr *sa, socklen_t salen, char *host, DWORD hostlen, char *serv, DWORD servlen, int flags)
 {
