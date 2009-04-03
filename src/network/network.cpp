@@ -472,7 +472,6 @@ static void NetworkAcceptClients()
 {
 	struct sockaddr_in sin;
 	NetworkClientSocket *cs;
-	uint i;
 	bool banned;
 
 	/* Should never ever happen.. is it possible?? */
