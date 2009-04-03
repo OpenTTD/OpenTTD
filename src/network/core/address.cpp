@@ -172,12 +172,15 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 
 	if (!SetNoDelay(sock)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
 
-	int reuse = 1;
+	int on = 1;
 	/* The (const char*) cast is needed for windows!! */
-	if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (const char*)&reuse, sizeof(reuse)) == -1) {
-		DEBUG(net, 1, "Could not bind, setsockopt() failed:", strerror(errno));
-		closesocket(sock);
-		return INVALID_SOCKET;
+	if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (const char*)&on, sizeof(on)) == -1) {
+		DEBUG(net, 1, "Could not set reusable sockets: %s", strerror(errno));
+	}
+
+	if (runp->ai_family == AF_INET6 &&
+			setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&on, sizeof(on)) == -1) {
+		DEBUG(net, 1, "Could not disable IPv4 over IPv6: %s", strerror(errno));
 	}
 
 	if (bind(sock, runp->ai_addr, runp->ai_addrlen) != 0) {
