@@ -182,11 +182,19 @@ static const Widget _main_status_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_main_status_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_GREY, SBW_LEFT), SetMinimalSize(140, 12), EndContainer(),
+		NWidget(WWT_PUSHBTN, COLOUR_GREY, SBW_MIDDLE), SetMinimalSize(40, 12), SetDataTip(0x0, STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS), SetResize(1, 0),
+		NWidget(WWT_PUSHBTN, COLOUR_GREY, SBW_RIGHT), SetMinimalSize(140, 12),
+	EndContainer(),
+};
+
 static WindowDesc _main_status_desc(
 	WDP_CENTER, 0, 320, 12, 640, 12,
 	WC_STATUS_BAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_NO_FOCUS,
-	_main_status_widgets
+	_main_status_widgets, _nested_main_status_widgets, lengthof(_nested_main_status_widgets)
 );
 
 /**
