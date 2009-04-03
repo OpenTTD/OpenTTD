@@ -69,7 +69,14 @@ static SOCKET ResolveLoopProc(addrinfo *runp)
 
 const sockaddr_storage *NetworkAddress::GetAddress()
 {
-	if (!this->IsResolved()) this->Resolve(this->address.ss_family, 0, AI_ADDRCONFIG, ResolveLoopProc);
+	if (!this->IsResolved()) {
+		/* Here we try to resolve a network address. We use SOCK_STREAM as
+		 * socket type because some stupid OSes, like Solaris, cannot be
+		 * bothered to implement the specifications and allow '0' as value
+		 * that means "don't care whether it is SOCK_STREAM or SOCK_DGRAM".
+		 */
+		this->Resolve(this->address.ss_family, SOCK_STREAM, AI_ADDRCONFIG, ResolveLoopProc);
+	}
 	return &this->address;
 }
 
