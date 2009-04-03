@@ -163,6 +163,14 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 
 	if (!SetNoDelay(sock)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
 
+	int reuse = 1;
+	/* The (const char*) cast is needed for windows!! */
+	if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (const char*)&reuse, sizeof(reuse)) == -1) {
+		DEBUG(net, 1, "Could not bind, setsockopt() failed:", strerror(errno));
+		closesocket(sock);
+		return INVALID_SOCKET;
+	}
+
 	if (bind(sock, runp->ai_addr, runp->ai_addrlen) != 0) {
 		DEBUG(net, 1, "Could not bind: %s", strerror(errno));
 		closesocket(sock);

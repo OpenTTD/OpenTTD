@@ -562,13 +562,6 @@ static bool NetworkListen()
 		return false;
 	}
 
-	int reuse = 1;
-	/* The (const char*) cast is needed for windows!! */
-	if (setsockopt(ls, SOL_SOCKET, SO_REUSEADDR, (const char*)&reuse, sizeof(reuse)) == -1) {
-		ServerStartError("setsockopt() on listen socket failed");
-		return false;
-	}
-
 	_listensocket = ls;
 
 	return true;
