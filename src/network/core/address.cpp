@@ -124,6 +124,7 @@ static SOCKET ConnectLoopProc(addrinfo *runp)
 
 	if (connect(sock, runp->ai_addr, runp->ai_addrlen) != 0) {
 		DEBUG(net, 1, "Could not connect socket: %s", strerror(errno));
+		closesocket(sock);
 		return INVALID_SOCKET;
 	}
 

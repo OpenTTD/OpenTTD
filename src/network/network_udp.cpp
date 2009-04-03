@@ -483,7 +483,7 @@ void NetworkUDPRemoveAdvertise()
 
 	/* check for socket */
 	if (!_udp_master_socket->IsConnected()) {
-		if (!_udp_master_socket->Listen(NetworkAddress(_network_server_bind_ip, 0), false)) return;
+		if (!_udp_master_socket->Listen(NetworkAddress(_settings_client.network.server_bind_ip, 0), false)) return;
 	}
 
 	if (!ThreadObject::New(NetworkUDPRemoveAdvertiseThread, NULL)) {
@@ -520,7 +520,7 @@ void NetworkUDPAdvertise()
 
 	/* check for socket */
 	if (!_udp_master_socket->IsConnected()) {
-		if (!_udp_master_socket->Listen(NetworkAddress(_network_server_bind_ip, 0), false)) return;
+		if (!_udp_master_socket->Listen(NetworkAddress(_settings_client.network.server_bind_ip, 0), false)) return;
 	}
 
 	if (_network_need_advertise) {

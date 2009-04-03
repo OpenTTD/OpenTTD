@@ -103,8 +103,6 @@ extern uint32 _last_sync_frame; // Used in the server to store the last time a s
 /* networking settings */
 extern uint32 _broadcast_list[MAX_INTERFACES + 1];
 
-extern uint32 _network_server_bind_ip;
-
 extern uint32 _sync_seed_1, _sync_seed_2;
 extern uint32 _sync_frame;
 extern bool _network_first_time;

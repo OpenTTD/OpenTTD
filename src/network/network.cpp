@@ -62,7 +62,6 @@ uint32 _frame_counter_max; // To where we may go with our clients
 uint32 _frame_counter;
 uint32 _last_sync_frame; // Used in the server to store the last time a sync packet was sent to clients.
 uint32 _broadcast_list[MAX_INTERFACES + 1];
-uint32 _network_server_bind_ip;
 uint32 _sync_seed_1, _sync_seed_2;
 uint32 _sync_frame;
 bool _network_first_time;
@@ -776,7 +775,7 @@ bool NetworkServerStart()
 
 	/* Try to start UDP-server */
 	_network_udp_server = true;
-	_network_udp_server = _udp_server_socket->Listen(NetworkAddress(_network_server_bind_ip, _settings_client.network.server_port), false);
+	_network_udp_server = _udp_server_socket->Listen(NetworkAddress(_settings_client.network.server_bind_ip, _settings_client.network.server_port), false);
 
 	_network_company_states = CallocT<NetworkCompanyState>(MAX_COMPANIES);
 	_network_server = true;
@@ -1097,10 +1096,10 @@ void NetworkStartUp()
 	_network_need_advertise = true;
 	_network_advertise_retries = 0;
 
-	/* Load the ip from the openttd.cfg */
-	_network_server_bind_ip = inet_addr(_settings_client.network.server_bind_ip);
-	/* And put the data back in it in case it was an invalid ip */
-	snprintf(_settings_client.network.server_bind_ip, sizeof(_settings_client.network.server_bind_ip), "%s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
+	/* Set an ip when the hostname is empty */
+	if (StrEmpty(_settings_client.network.server_bind_ip)) {
+		snprintf(_settings_client.network.server_bind_ip, sizeof(_settings_client.network.server_bind_ip), "%s", NetworkAddress().GetHostname());
+	}
 
 	/* Generate an unique id when there is none yet */
 	if (StrEmpty(_settings_client.network.network_id)) NetworkGenerateUniqueId();
