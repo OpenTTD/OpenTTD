@@ -175,7 +175,7 @@ public:
 	{
 		int r = this->GetAddressLength() - address.GetAddressLength();
 		if (r == 0) r = this->address.ss_family - address.address.ss_family;
-		if (r == 0) r = memcmp(&this->address, &address.address, this->address_length) == 0;
+		if (r == 0) r = memcmp(&this->address, &address.address, this->address_length);
 		if (r == 0) r = this->GetPort() - address.GetPort();
 		return r;
 	}
