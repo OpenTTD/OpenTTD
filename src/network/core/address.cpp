@@ -89,6 +89,60 @@ const sockaddr_storage *NetworkAddress::GetAddress()
 	return &this->address;
 }
 
+bool NetworkAddress::IsInNetmask(char *netmask)
+{
+	/* Resolve it if we didn't do it already */
+	if (!this->IsResolved()) this->GetAddress();
+
+	int cidr = this->address.ss_family == AF_INET ? 32 : 128;
+
+	NetworkAddress mask_address;
+
+	/* Check for CIDR separator */
+	char *chr_cidr = strchr(netmask, '/');
+	if (chr_cidr != NULL) {
+		int tmp_cidr = atoi(chr_cidr + 1);
+
+		/* Invalid CIDR, treat as single host */
+		if (tmp_cidr > 0 || tmp_cidr < cidr) cidr = tmp_cidr;
+
+		/* Remove and then replace the / so that NetworkAddress works on the IP portion */
+		*chr_cidr = '\0';
+		mask_address = NetworkAddress(netmask, 0, this->address.ss_family);
+		*chr_cidr = '/';
+	} else {
+		mask_address = NetworkAddress(netmask, 0, this->address.ss_family);
+	}
+
+	if (mask_address.GetAddressLength() == 0) return false;
+
+	uint32 *ip;
+	uint32 *mask;
+	switch (this->address.ss_family) {
+		case AF_INET:
+			ip = &((struct sockaddr_in*)&this->address)->sin_addr.s_addr;
+			mask = &((struct sockaddr_in*)&mask_address.address)->sin_addr.s_addr;
+			break;
+
+		case AF_INET6:
+			ip = ((struct sockaddr_in6*)&this->address)->sin6_addr.s6_addr32;
+			mask = ((struct sockaddr_in6*)&mask_address.address)->sin6_addr.s6_addr32;
+			break;
+
+		default:
+			NOT_REACHED();
+	}
+
+	while (cidr > 0) {
+		uint32 msk = cidr >= 32 ? -1 : htonl(-(1 << (32 - cidr)));
+		if ((*mask & msk) != (*ip & msk)) return false;
+
+		cidr -= 32;
+	}
+
+	return true;
+}
+
 SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, LoopProc func)
 {
 	struct addrinfo *ai;
@@ -104,7 +158,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, LoopProc fun
 
 	int e = getaddrinfo(this->GetHostname(), port_name, &hints, &ai);
 	if (e != 0) {
-		DEBUG(net, 0, "getaddrinfo failed: %s", FS2OTTD(gai_strerror(e)));
+		DEBUG(net, 0, "getaddrinfo(%s, %s) failed: %s", this->GetHostname(), port_name, FS2OTTD(gai_strerror(e)));
 		return INVALID_SOCKET;
 	}
 

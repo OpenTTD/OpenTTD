@@ -470,7 +470,6 @@ void NetworkCloseClient(NetworkClientSocket *cs)
 /* For the server, to accept new clients */
 static void NetworkAcceptClients()
 {
-	struct sockaddr_in sin;
 	NetworkClientSocket *cs;
 	bool banned;
 
@@ -478,6 +477,7 @@ static void NetworkAcceptClients()
 	assert(_listensocket != INVALID_SOCKET);
 
 	for (;;) {
+		struct sockaddr_storage sin;
 		memset(&sin, 0, sizeof(sin));
 		socklen_t sin_len = sizeof(sin);
 		SOCKET s = accept(_listensocket, (struct sockaddr*)&sin, &sin_len);
@@ -485,34 +485,15 @@ static void NetworkAcceptClients()
 
 		SetNonBlocking(s); // XXX error handling?
 
-		DEBUG(net, 1, "Client connected from %s on frame %d", inet_ntoa(sin.sin_addr), _frame_counter);
+		NetworkAddress address(sin, sin_len);
+		DEBUG(net, 1, "Client connected from %s on frame %d", address.GetHostname(), _frame_counter);
 
 		SetNoDelay(s); // XXX error handling?
 
 		/* Check if the client is banned */
 		banned = false;
 		for (char **iter = _network_ban_list.Begin(); iter != _network_ban_list.End(); iter++) {
-			/* Check for CIDR separator */
-			char *chr_cidr = strchr(*iter, '/');
-			if (chr_cidr != NULL) {
-				int cidr = atoi(chr_cidr + 1);
-
-				/* Invalid CIDR, treat as single host */
-				if (cidr <= 0 || cidr > 32) cidr = 32;
-
-				/* Remove and then replace the / so that inet_addr() works on the IP portion */
-				*chr_cidr = '\0';
-				uint32 ban_ip = inet_addr(*iter);
-				*chr_cidr = '/';
-
-				/* Convert CIDR to mask in network format */
-				uint32 mask = htonl(-(1 << (32 - cidr)));
-				if ((sin.sin_addr.s_addr & mask) == (ban_ip & mask)) banned = true;
-			} else {
-				/* No CIDR used, so just perform a simple IP test */
-				if (sin.sin_addr.s_addr == inet_addr(*iter)) banned = true;
-			}
-
+			banned = address.IsInNetmask(*iter);
 			if (banned) {
 				Packet p(PACKET_SERVER_BANNED);
 				p.PrepareToSend();
@@ -545,7 +526,7 @@ static void NetworkAcceptClients()
 		 *  the client stays inactive */
 		cs->status = STATUS_INACTIVE;
 
-		cs->GetInfo()->client_ip = sin.sin_addr.s_addr; // Save the IP of the client
+		cs->GetInfo()->client_ip = ((sockaddr_in*)&sin)->sin_addr.s_addr; // Save the IP of the client
 	}
 }
 

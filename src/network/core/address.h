@@ -159,6 +159,14 @@ public:
 	}
 
 	/**
+	 * Checks whether this IP address is contained by the given netmask.
+	 * @param netmask the netmask in CIDR notation to test against.
+	 * @note netmask without /n assumes all bits need to match.
+	 * @return true if this IP is within the netmask.
+	 */
+	bool IsInNetmask(char *netmask);
+
+	/**
 	 * Compare the address of this class with the address of another.
 	 * @param address the other address.
 	 */
