@@ -1038,7 +1038,7 @@ bool NetworkMaxSpectatorsReached()
  */
 void NetworkPrintClients()
 {
-	const NetworkClientInfo *ci;
+	NetworkClientInfo *ci;
 	FOR_ALL_CLIENT_INFOS(ci) {
 		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  company: %1d  IP: %s",
 				ci->client_id,

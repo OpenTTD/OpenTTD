@@ -1554,9 +1554,9 @@ static const WindowDesc _client_list_desc(
 );
 
 /* Finds the Xth client-info that is active */
-static const NetworkClientInfo *NetworkFindClientInfo(byte client_no)
+static NetworkClientInfo *NetworkFindClientInfo(byte client_no)
 {
-	const NetworkClientInfo *ci;
+	NetworkClientInfo *ci;
 
 	FOR_ALL_CLIENT_INFOS(ci) {
 		if (client_no == 0) return ci;
@@ -1578,7 +1578,7 @@ static void ClientList_Kick(byte client_no)
 
 static void ClientList_Ban(byte client_no)
 {
-	const NetworkClientInfo *ci = NetworkFindClientInfo(client_no);
+	NetworkClientInfo *ci = NetworkFindClientInfo(client_no);
 
 	if (ci == NULL) return;
 

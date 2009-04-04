@@ -62,7 +62,7 @@ bool NetworkServerChangeClientName(ClientID client_id, const char *new_name);
 NetworkClientInfo *NetworkFindClientInfoFromIndex(ClientIndex index);
 NetworkClientInfo *NetworkFindClientInfoFromClientID(ClientID client_id);
 NetworkClientInfo *NetworkFindClientInfoFromIP(const char *ip);
-const char *GetClientIP(const NetworkClientInfo *ci);
+const char *GetClientIP(NetworkClientInfo *ci);
 
 void NetworkServerDoMove(ClientID client_id, CompanyID company_id);
 void NetworkServerSendRcon(ClientID client_id, ConsoleColour colour_code, const char *string);

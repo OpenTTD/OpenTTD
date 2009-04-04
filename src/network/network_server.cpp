@@ -856,7 +856,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 
 	if (cs->has_quit) return;
 
-	const NetworkClientInfo *ci = cs->GetInfo();
+	NetworkClientInfo *ci = cs->GetInfo();
 
 	if (err != NULL) {
 		IConsolePrintF(CC_ERROR, "WARNING: %s from client %d (IP: %s).", err, ci->client_id, GetClientIP(ci));
@@ -1143,7 +1143,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 	p->Recv_string(msg, NETWORK_CHAT_LENGTH);
 	int64 data = p->Recv_uint64();
 
-	const NetworkClientInfo *ci = cs->GetInfo();
+	NetworkClientInfo *ci = cs->GetInfo();
 	switch (action) {
 		case NETWORK_ACTION_GIVE_MONEY:
 			if (!IsValidCompanyID(ci->client_playas)) break;
@@ -1678,12 +1678,9 @@ void NetworkServerChangeOwner(Owner current_owner, Owner new_owner)
 	}
 }
 
-const char *GetClientIP(const NetworkClientInfo *ci)
+const char *GetClientIP(NetworkClientInfo *ci)
 {
-	struct in_addr addr;
-
-	addr.s_addr = ci->client_ip;
-	return inet_ntoa(addr);
+	return ci->client_address.GetHostname();
 }
 
 void NetworkServerShowStatusToConsole()
@@ -1702,7 +1699,7 @@ void NetworkServerShowStatusToConsole()
 	NetworkClientSocket *cs;
 	FOR_ALL_CLIENT_SOCKETS(cs) {
 		int lag = NetworkCalculateLag(cs);
-		const NetworkClientInfo *ci = cs->GetInfo();
+		NetworkClientInfo *ci = cs->GetInfo();
 		const char *status;
 
 		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
@@ -1787,12 +1784,11 @@ void NetworkServerKickClient(ClientID client_id)
 
 void NetworkServerBanIP(const char *banip)
 {
-	const NetworkClientInfo *ci;
-	uint32 ip_number = inet_addr(banip);
+	NetworkClientInfo *ci;
 
 	/* There can be multiple clients with the same IP, kick them all */
 	FOR_ALL_CLIENT_INFOS(ci) {
-		if (ci->client_ip == ip_number) {
+		if (ci->client_address.IsInNetmask((char*)banip)) {
 			NetworkServerKickClient(ci->client_id);
 		}
 	}

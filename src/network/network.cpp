@@ -123,10 +123,12 @@ NetworkClientInfo *NetworkFindClientInfoFromClientID(ClientID client_id)
 NetworkClientInfo *NetworkFindClientInfoFromIP(const char *ip)
 {
 	NetworkClientInfo *ci;
-	uint32 ip_number = inet_addr(ip);
+	NetworkAddress address(ip);
+
+	if (address.GetAddressLength() == 0) return NULL;
 
 	FOR_ALL_CLIENT_INFOS(ci) {
-		if (ci->client_ip == ip_number) return ci;
+		if (ci->client_address == address) return ci;
 	}
 
 	return NULL;
@@ -526,7 +528,7 @@ static void NetworkAcceptClients()
 		 *  the client stays inactive */
 		cs->status = STATUS_INACTIVE;
 
-		cs->GetInfo()->client_ip = ((sockaddr_in*)&sin)->sin_addr.s_addr; // Save the IP of the client
+		cs->GetInfo()->client_address = address; // Save the IP of the client
 	}
 }
 

@@ -385,7 +385,7 @@ DEF_CONSOLE_CMD(ConBan)
 
 	if (argc != 2) return false;
 
-	if (strchr(argv[1], '.') == NULL) { // banning with ID
+	if (strchr(argv[1], '.') == NULL && strchr(argv[1], ':') == NULL) { // banning with ID
 		client_id = (ClientID)atoi(argv[1]);
 		ci = NetworkFindClientInfoFromClientID(client_id);
 	} else { // banning IP
