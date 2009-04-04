@@ -403,7 +403,7 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 	int initial_right = right;
 	int initial_top = top;
 
-	if (truncate) TruncateString(str, right - left);
+	if (truncate) TruncateString(str, right - left + 1);
 
 	/*
 	 * To support SETX and SETXY properly with RTL languages we have to
