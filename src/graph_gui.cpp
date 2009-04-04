@@ -414,6 +414,15 @@ public:
 	}
 };
 
+/** Widget numbers of a base graph window. */
+enum CompanyValueWidgets {
+	BGW_CLOSEBOX,
+	BGW_CAPTION,
+	BGW_KEY_BUTTON,
+	BGW_BACKGROUND,
+};
+
+
 /********************/
 /* OPERATING PROFIT */
 /********************/
@@ -439,11 +448,20 @@ static const Widget _operating_profit_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_operating_profit_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, BGW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, BGW_CAPTION), SetDataTip(STR_7025_OPERATING_PROFIT_GRAPH, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BGW_KEY_BUTTON), SetMinimalSize(50, 14), SetDataTip(STR_704C_KEY, STR_704D_SHOW_KEY_TO_GRAPHS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND), SetMinimalSize(576, 160), EndContainer(),
+};
+
 static const WindowDesc _operating_profit_desc(
 	WDP_AUTO, WDP_AUTO, 576, 174, 576, 174,
 	WC_OPERATING_PROFIT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_operating_profit_widgets
+	_operating_profit_widgets, _nested_operating_profit_widgets, lengthof(_nested_operating_profit_widgets)
 );
 
 
@@ -478,11 +496,21 @@ static const Widget _income_graph_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_income_graph_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, BGW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, BGW_CAPTION), SetDataTip(STR_7022_INCOME_GRAPH, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BGW_KEY_BUTTON), SetMinimalSize(50, 14), SetDataTip(STR_704C_KEY, STR_704D_SHOW_KEY_TO_GRAPHS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND), SetMinimalSize(576, 128), EndContainer(),
+};
+
+
 static const WindowDesc _income_graph_desc(
 	WDP_AUTO, WDP_AUTO, 576, 142, 576, 142,
 	WC_INCOME_GRAPH, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_income_graph_widgets
+	_income_graph_widgets, _nested_income_graph_widgets, lengthof(_nested_income_graph_widgets)
 );
 
 void ShowIncomeGraph()
@@ -515,11 +543,20 @@ static const Widget _delivered_cargo_graph_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_delivered_cargo_graph_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, BGW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, BGW_CAPTION), SetDataTip(STR_7050_UNITS_OF_CARGO_DELIVERED, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BGW_KEY_BUTTON), SetMinimalSize(50, 14), SetDataTip(STR_704C_KEY, STR_704D_SHOW_KEY_TO_GRAPHS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND), SetMinimalSize(576, 128), EndContainer(),
+};
+
 static const WindowDesc _delivered_cargo_graph_desc(
 	WDP_AUTO, WDP_AUTO, 576, 142, 576, 142,
 	WC_DELIVERED_CARGO, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_delivered_cargo_graph_widgets
+	_delivered_cargo_graph_widgets, _nested_delivered_cargo_graph_widgets, lengthof(_nested_delivered_cargo_graph_widgets)
 );
 
 void ShowDeliveredCargoGraph()
@@ -596,11 +633,20 @@ static const Widget _company_value_graph_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_company_value_graph_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, BGW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, BGW_CAPTION), SetDataTip(STR_7052_COMPANY_VALUES, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BGW_KEY_BUTTON), SetMinimalSize(50, 14), SetDataTip(STR_704C_KEY, STR_704D_SHOW_KEY_TO_GRAPHS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND), SetMinimalSize(576, 224), EndContainer(),
+};
+
 static const WindowDesc _company_value_graph_desc(
 	WDP_AUTO, WDP_AUTO, 576, 238, 576, 238,
 	WC_COMPANY_VALUE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_company_value_graph_widgets
+	_company_value_graph_widgets, _nested_company_value_graph_widgets, lengthof(_nested_company_value_graph_widgets)
 );
 
 void ShowCompanyValueGraph()
