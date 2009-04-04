@@ -169,28 +169,33 @@ public:
 	/**
 	 * Compare the address of this class with the address of another.
 	 * @param address the other address.
+	 * @return < 0 if address is less, 0 if equal and > 0 if address is more
 	 */
-	bool operator == (NetworkAddress &address)
+	int CompareTo(NetworkAddress address)
 	{
-		if (this->IsResolved() && address.IsResolved()) return memcmp(&this->address, &address.address, sizeof(this->address)) == 0;
-		return this->GetPort() == address.GetPort() && strcmp(this->GetHostname(), address.GetHostname()) == 0;
+		int r = this->GetAddressLength() - address.GetAddressLength();
+		if (r == 0) r = this->address.ss_family - address.address.ss_family;
+		if (r == 0) r = memcmp(&this->address, &address.address, this->address_length) == 0;
+		if (r == 0) r = this->GetPort() - address.GetPort();
+		return r;
 	}
 
 	/**
 	 * Compare the address of this class with the address of another.
 	 * @param address the other address.
 	 */
-	bool operator < (NetworkAddress &address)
+	bool operator == (NetworkAddress address)
 	{
-		int r = this->address.ss_family - address.address.ss_family;
-		if (r == 0 && this->IsResolved() && address.IsResolved()) {
-			r = this->address_length - address.address_length;
-			if (r == 0) r = memcmp(&this->address, &address.address, this->address_length) == 0;
-		} else {
-			r = strcmp(this->GetHostname(), address.GetHostname());
-		}
-		if (r == 0) r = this->GetPort() - address.GetPort();
-		return r < 0;
+		return this->CompareTo(address) == 0;
+	}
+
+	/**
+	 * Compare the address of this class with the address of another.
+	 * @param address the other address.
+	 */
+	bool operator < (NetworkAddress address)
+	{
+		return this->CompareTo(address) < 0;
 	}
 
 	/**
