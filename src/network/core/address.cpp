@@ -125,8 +125,8 @@ bool NetworkAddress::IsInNetmask(char *netmask)
 			break;
 
 		case AF_INET6:
-			ip = (uint32*)((struct sockaddr_in6*)&this->address)->sin6_addr.s6_addr32;
-			mask = (uint32*)((struct sockaddr_in6*)&mask_address.address)->sin6_addr.s6_addr32;
+			ip = (uint32*)&((struct sockaddr_in6*)&this->address)->sin6_addr;
+			mask = (uint32*)&((struct sockaddr_in6*)&mask_address.address)->sin6_addr;
 			break;
 
 		default:
