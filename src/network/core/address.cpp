@@ -120,13 +120,13 @@ bool NetworkAddress::IsInNetmask(char *netmask)
 	uint32 *mask;
 	switch (this->address.ss_family) {
 		case AF_INET:
-			ip = &((struct sockaddr_in*)&this->address)->sin_addr.s_addr;
-			mask = &((struct sockaddr_in*)&mask_address.address)->sin_addr.s_addr;
+			ip = (uint32*)&((struct sockaddr_in*)&this->address)->sin_addr.s_addr;
+			mask = (uint32*)&((struct sockaddr_in*)&mask_address.address)->sin_addr.s_addr;
 			break;
 
 		case AF_INET6:
-			ip = ((struct sockaddr_in6*)&this->address)->sin6_addr.s6_addr32;
-			mask = ((struct sockaddr_in6*)&mask_address.address)->sin6_addr.s6_addr32;
+			ip = (uint32*)((struct sockaddr_in6*)&this->address)->sin6_addr.s6_addr32;
+			mask = (uint32*)((struct sockaddr_in6*)&mask_address.address)->sin6_addr.s6_addr32;
 			break;
 
 		default:
@@ -134,7 +134,7 @@ bool NetworkAddress::IsInNetmask(char *netmask)
 	}
 
 	while (cidr > 0) {
-		uint32 msk = cidr >= 32 ? -1 : htonl(-(1 << (32 - cidr)));
+		uint32 msk = cidr >= 32 ? (uint32)-1 : htonl(-(1 << (32 - cidr)));
 		if ((*mask & msk) != (*ip & msk)) return false;
 
 		cidr -= 32;
