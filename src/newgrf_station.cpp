@@ -655,7 +655,9 @@ SpriteID GetCustomStationGroundRelocation(const StationSpec *statspec, const Sta
 	ResolverObject object;
 
 	NewStationResolver(&object, statspec, st, tile);
-	object.callback_param1 = 1; // Indicate we are resolving the ground sprite
+	if (HasBit(statspec->flags, SSF_SEPARATE_GROUND)) {
+		object.callback_param1 = 1; // Indicate we are resolving the ground sprite
+	}
 
 	group = ResolveStation(&object);
 	if (group == NULL || group->type != SGT_RESULT) return 0;
