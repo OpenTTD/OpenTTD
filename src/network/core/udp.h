@@ -86,6 +86,7 @@ enum PacketUDPType {
 	PACKET_UDP_SERVER_UNREGISTER,    ///< Request to be removed from the server-list
 	PACKET_UDP_CLIENT_GET_NEWGRFS,   ///< Requests the name for a list of GRFs (GRF_ID and MD5)
 	PACKET_UDP_SERVER_NEWGRFS,       ///< Sends the list of NewGRF's requested.
+	PACKET_UDP_MASTER_SESSION_KEY,   ///< Sends a fresh session key to the client
 	PACKET_UDP_END                   ///< Must ALWAYS be on the end of this list!! (period)
 };
 
@@ -110,6 +111,7 @@ protected:
 	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_UNREGISTER);
 	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_NEWGRFS);
 	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_NEWGRFS);
+	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_SESSION_KEY);
 
 	void HandleUDPPacket(Packet *p, NetworkAddress *client_addr);
 

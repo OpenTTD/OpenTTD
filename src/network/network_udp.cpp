@@ -28,6 +28,9 @@
 
 ThreadMutex *_network_udp_mutex = ThreadMutex::New();
 
+/** Session key to register ourselves to the master server */
+static uint64 _session_key = 0;
+
 enum {
 	ADVERTISE_NORMAL_INTERVAL = 30000, // interval between advertising in ticks (15 minutes)
 	ADVERTISE_RETRY_INTERVAL  =   300, // readvertise when no response after this many ticks (9 seconds)
@@ -43,6 +46,7 @@ NetworkUDPSocketHandler *_udp_master_socket = NULL; ///< udp master socket
 class MasterNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
 protected:
 	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_ACK_REGISTER);
+	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_SESSION_KEY);
 public:
 	virtual ~MasterNetworkUDPSocketHandler() {}
 };
@@ -54,6 +58,12 @@ DEF_UDP_RECEIVE_COMMAND(Master, PACKET_UDP_MASTER_ACK_REGISTER)
 
 	/* We are advertised, but we don't want to! */
 	if (!_settings_client.network.server_advertise) NetworkUDPRemoveAdvertise();
+}
+
+DEF_UDP_RECEIVE_COMMAND(Master, PACKET_UDP_MASTER_SESSION_KEY)
+{
+	_session_key = p->Recv_uint64();
+	DEBUG(net, 2, "[udp] received new session key from master server");
 }
 
 ///*** Communication with clients (we are server) ***/
@@ -503,6 +513,7 @@ void NetworkUDPAdvertiseThread(void *pntr)
 	p.Send_string(NETWORK_MASTER_SERVER_WELCOME_MESSAGE);
 	p.Send_uint8 (NETWORK_MASTER_SERVER_VERSION);
 	p.Send_uint16(_settings_client.network.server_port);
+	p.Send_uint64(_session_key);
 
 	_network_udp_mutex->BeginCritical();
 	if (_udp_master_socket != NULL) _udp_master_socket->SendPacket(&p, &out_addr);
