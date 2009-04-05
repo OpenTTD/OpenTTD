@@ -2310,6 +2310,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Női arc
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Véletlenszerű új arc létrehozása
 STR_704C_KEY                                                    :{BLACK}Jelkulcs
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}A grafikonok jelmagyarázata
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Részletes teljesítményértékelés mutatása
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Jelmagyarázat a grafikonokhoz
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}A vállalat adatainak mutatása/elrejtése a grafikonon
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Elszállított áruk mennyisége
@@ -3241,6 +3242,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}A '{1:CO
 
 STR_NEWGRF_BUGGY                                                :{WHITE}A(z) '{0:STRING}' NewGRF helytelen információt tartalmaz.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A(z) '{1:ENGINE}' rakomány/átalakítás információja a gyártás után különbözik a vételi listán találhatótól. Ez hibát okozhat az automatikus felújítás/lecserélés során az átalakításban.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' végtelen ciklust okozott a termelés folyamatnál.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}A játék olyan verzióban lett elmentve, ami nem támogatja a villamosokat . Az összes villamos törölve lett.
 

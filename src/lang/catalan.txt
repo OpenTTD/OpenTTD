@@ -2239,6 +2239,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Seleccio
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Genera una nova cara aleatòria
 STR_704C_KEY                                                    :{BLACK}Llegenda
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Mostra la llegenda als gràfics
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Mostra ratis de rendiment detallats
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Llegenda dels gràfics de la companyia
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Clica aquí per activar/desactivar l'entrada als gràfics de la companyia
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Unitats de càrrega entregada
@@ -2613,18 +2614,18 @@ STR_ORDER_GO_TO                                                 :Ves a
 STR_ORDER_GO_NON_STOP_TO                                        :Ves sense parar a
 STR_ORDER_GO_VIA                                                :Ves via
 STR_ORDER_GO_NON_STOP_VIA                                       :Ves sense parar via
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Càrrega completa de qualsevol càrrega
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Carrega del tot qualsevol càrrega
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carrega si està disponible
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Carrega del tot totes les càrregues
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Càrrega completa de qualsevol càrrega
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Carrega del tot qualsevol càrrega
 STR_ORDER_DROP_NO_LOADING                                       :No carreguis
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Descarrega tot
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descarrega si s'accepta
 STR_ORDER_DROP_UNLOAD                                           :Descarrega tot
 STR_ORDER_DROP_TRANSFER                                         :Transfereix
 STR_ORDER_DROP_NO_UNLOADING                                     :No descarreguis
-STR_ORDER_FULL_LOAD                                             :(Càrrega completa)
-STR_ORDER_FULL_LOAD_ANY                                         :(Càrrega completa de qualsevol càrrega)
+STR_ORDER_FULL_LOAD                                             :(Carrega del tot)
+STR_ORDER_FULL_LOAD_ANY                                         :(Carrega del tot qualsevol càrrega)
 STR_ORDER_NO_LOAD                                               :(No carregar)
 STR_ORDER_UNLOAD                                                :(Descarrega i agafa la càrrega)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Descarrega i espera carregar del tot)

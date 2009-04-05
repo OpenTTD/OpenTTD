@@ -2240,6 +2240,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}اختر
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}اختر وجة عشوائي
 STR_704C_KEY                                                    :{BLACK}مفتاح
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}اظهار مفتاح الرسم البياني
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}عرض كامل تفاصيل الأداء
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}مفتاح الشركات في الرسم البياني
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}اضغط لعرض/اخفاء الشركة في الرسم
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}عدد الوحدات المنقولة
@@ -3171,6 +3172,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE} قطا�
 
 STR_NEWGRF_BUGGY                                                :{WHITE} الرسوميات الجديدة  '{0:STRING}'  تعطي معلومات غير صحيحة.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE} التكلفة \ السعة ل '{1:ENGINE}'  تختلف ما بين قائمة الشراء و مابعد البناء. قد يتسبب هذا في فشل التبديل الذاتي.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' تسبب بدورة غير منتهية في نداء الانتاج
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}اللعبة حفظت بنسخة لا تدعم الترام. كل ما يتعلق بالترام حذف.
 

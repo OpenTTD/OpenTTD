@@ -2240,6 +2240,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Choisir 
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Génère un visage au hasard
 STR_704C_KEY                                                    :{BLACK}Légende
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Affiche la légende
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Afficher le détail de l'évaluation de la performance
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Légende du graphique des compagnies
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Cliquer ici pour activer/désactiver l'affichage de la compagnie
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Cargaison livrée
@@ -3171,6 +3172,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Le train
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Le NewGRF '{0:STRING}' fournit une information incorrecte.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}L'information de cargaison/réaménagement pour '{1:ENGINE}' après sa construction est différent de la liste d'achat. Cela peut causer un échec de réaménagement lors de l'auto-renouvèlement/remplacement.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' a causé une boucle infinie dans la fonction de rappel de production.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Partie sauvegardée avec une version sans support des tramways. Tous les tramways ont été supprimés.
 

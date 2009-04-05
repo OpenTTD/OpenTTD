@@ -715,7 +715,6 @@ STR_FULL                                                        :Täielik
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Linnanimistu
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Omatehtud
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -2120,6 +2119,7 @@ STR_NUM_VERY_LOW                                                :Väga madal
 STR_6816_LOW                                                    :Madal
 STR_6817_NORMAL                                                 :Harilik
 STR_6818_HIGH                                                   :Kõrge
+STR_02BF_CUSTOM                                                 :Omatehtud
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Väga aeglane
@@ -3148,6 +3148,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Seisatus
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}' käitumine põhjustab tõenäoliselt sünkrooni katkemisi ja/või mängu kokkujooksmiseid.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Depoost väljas asudes muudab sõiduki '{1:ENGINE}' pikkust.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Ettevõtte '{1:COMPANY}' rongil '{0:VEHICLE}' on ebasobiv pikkus. See on tõenäoliselt põhjustatud problemaatilistest NewGRF-dest. Mäng võib kokku joosta või
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Mäng salvestati trammide toetuseta versioonis. Kõik trammid eemaldati.
 

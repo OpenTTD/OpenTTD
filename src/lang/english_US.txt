@@ -2239,6 +2239,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Select f
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Generate random new face
 STR_704C_KEY                                                    :{BLACK}Key
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Show key to graphs
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Show detailed performance ratings
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Key to company graphs
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Click here to toggle company's entry on graph on/off
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Units of cargo delivered

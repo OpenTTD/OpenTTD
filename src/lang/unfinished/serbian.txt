@@ -746,6 +746,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Smanji p
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generiši nov nasumičan teren
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Obnovi reljef
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Obnovi reljef
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Ukoni sve objekte u vlasništvu igrača na mapi
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Da li sigurno želite da uklonite sve objekte u vlasništvu igrača?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generisanje reljefa
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generator naselja
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generator industrija
@@ -758,8 +760,11 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...previ
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...drugo naselje je previše blizu
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...mesto je neadekvatno
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...previše naselja
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Ne mogu da napravim naselje
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...više ne postoji slobodnog prostora na mapi
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Uvećaj površinu naselja
 STR_023C_EXPAND                                                 :{BLACK}Proširi
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Naselje neće graditi kolovoze. Možete uključiti gradnju kolovoza preko Napredna Podešavalja->Ekonomija->Naselja.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Nasumično naselje
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Izgradi naselje na nasumičnoj lokaciji
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE} {STRING} je nemoguće izgraditi ovde...
@@ -773,6 +778,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Postavi 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Postavi svetionik
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Postavi predajnik
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definiši pustinjsku oblast.{}Pritisni i drži Ctrl da je ukloniš
+STR_CREATE_LAKE                                                 :{BLACK}Vodena površina.{}Napravite kanal, ukoliko držite i Ctrl dok ste na nivou mora, tada popunjavate okolinu vodom
 STR_CREATE_RIVER                                                :{BLACK}Mjesto reka.
 STR_0290_DELETE                                                 :{BLACK}Obriši
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Potpuno ukloni ovo naselje
@@ -838,6 +844,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Banner
 
 ############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Podaci o zemljištu
+STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Mijenjati Utešiti
 STR_AI_DEBUG_MENU                                               :umjetni inteligencija ukloniti tehničke greške
 STR_02D7_SCREENSHOT_CTRL_S                                      :Sačuvaj sliku (Ctrl+S)
@@ -854,6 +861,11 @@ STR_EXTRA_VIEW_PORT                                             :Dodatni glediš
 STR_SIGN_LIST                                                   :Znak Foil
 STR_02DF_TOWN_DIRECTORY                                         :Popis naselja
 STR_TOWN_POPULATION                                             :{BLACK}Svet Populacija: {COMMA}
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pogled{COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Premesti u pogled
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Premestite pogled na trenutnu lokaciju
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Prebaci se
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Pređite na lokaciju na kojoj je pogled
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Valuta
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
@@ -970,6 +982,16 @@ STR_NO_ORDERS_VEL                                               :{LTBLUE}Nema na
 
 
 
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Dozvoljeno podmićivanje lokalnih vlasti: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Dozvoljena kupovina ekskluzivnih prava za transport: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Dozvoljeno slanje novca drugim kompanijama: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Dozvoljene stanice različitih oblika: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Množilac težine tovara za simulaciju opterećenja vozova: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Delitelj brzine leta aviona: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Dozvoljene ulične stanice na kolovozima u vlasništvu naselja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Dozvoljene ulične stanice na kolovozima u vlasništvu drugih kompanija: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Dozvoljena gradnja stanica jedne pored druge: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Dozvoljeno više NewGRF kolekcija mišina: {ORANGE}{STRING}
 
 
 
@@ -1743,7 +1765,17 @@ STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 
 
 
+STR_8813_FROM                                                   :{LTBLUE}{CARGO} sa {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} sa {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} čeka u depou
+STR_8815_NEW_VEHICLES                                           :{BLACK}Nova Vozila
+STR_8816                                                        :{BLACK}-
+STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Voz je predugačak
+STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vozovi se mogu izmeniti samo kada su zaustavljeni u depou
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Voz{P "" a ova}
 
+STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nova Železnička Vozila
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nova Železnička Električna Vozila
 
 
 
@@ -1778,13 +1810,43 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
+STR_NEWGRF_PARAMETER                                            :{BLACK}Parametri: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Unesite NewGRF parametre
+STR_NEWGRF_NO_INFO                                              :{BLACK}Informacije nepostoje
 
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Dostupne NewGRF datoteke
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Dodaj na listu
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Dodajte odabranu NewGRF datoteku na vaš listu
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Osveži izbor
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Osvežite izbor dostupnih NewGRF datoteka
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nemoguće dodati: duplicirani GRF ID
 
+STR_NEWGRF_NOT_FOUND                                            :{RED}Odabrana datoteka nije nađena
+STR_NEWGRF_DISABLED                                             :{RED}Isključen
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odabrana datoteka nije nađena (kompatibilan GRF učitan)
 
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilni GRF(ovi) učitani umesto nepronađenih datoteka
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Nepronađene GRF datoteke su isključene
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Nepronađene GRF datoteke
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Nastavljenje može da krahira OpenTTD. Nemojte čuvati izveštaje o ovom mogućem krahu.{}Da li stvarno želite da nastavite?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' može izazvati desinhronizacije i/ili krahove.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Pokušava da promeni dužinu '{1:ENGINE}' dok je van depoa.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Voz '{VEHICLE}' kompanije '{COMPANY}' je neispravne dužine. Verovatno je izazvana nekim problemima sa NewGRF(ovima). Igra može da krahira ili da se desinhronizuje.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' sadrži neispravne informacije.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Podaci o tovaru/prenameni za '{1:ENGINE}' se posle izgradnje razlikuju od nabavne liste. Ovo može izazvati neispravnu automatsku zamenu/preuređenje.
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Partija je sačuvana u vreziji bez podrške za tramvaje. Svi tramvaji su uklonjeni.
 
+STR_CURRENCY_WINDOW                                             :{WHITE}Sopstvena moneta
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Devizni kurs: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Razdelnik: {STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks: {STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Pelazak na Euro: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Prelazak na Euro: {ORANGE}nikada
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Primer: {ORANGE}{CURRENCY}
 
 
 

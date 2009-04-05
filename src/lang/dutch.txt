@@ -2239,6 +2239,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Selectee
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Genereer willekeurig nieuw gezicht
 STR_704C_KEY                                                    :{BLACK}Legenda
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Laat grafieklegenda zien
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Toon gedetaileerde prestatiewaarderingen
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Legenda voor bedrijfsgrafieken
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klik hier om dit bedrijf weer te geven of te verbergen op de grafiek
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Eenheden van goederen afgeleverd

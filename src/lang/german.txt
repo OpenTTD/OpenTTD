@@ -2240,6 +2240,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Wähle w
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Wähle zufälliges neues Gesicht
 STR_704C_KEY                                                    :{BLACK}Legende
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Legende des Diagramms
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Zeige detailierte Leistungsaufschlüsselung
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Legende des Firmendiagramms
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Graph der Firma ein-/ausblenden
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Beförderte Frachteinheiten

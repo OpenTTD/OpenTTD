@@ -2241,6 +2241,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Selezion
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Genera una nuova faccia a caso
 STR_704C_KEY                                                    :{BLACK}Legenda
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Mostra la legenda del grafico
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Mostra valutazione dettagliata prestazioni
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Legenda grafico compagnie
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Fare clic per attivare/disattivare la visualizzazione di una compagnia sul grafico
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Unità di merce consegnate
@@ -3172,6 +3173,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Il treno
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Informazioni scorrette fornite dal NewGRF '{0:STRING}'
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}I dati su carico e riadattamento di '{1:ENGINE}' sono diversi da quelli indicati prima della costruzione. Il rinnovo/rimpiazzo automatico potrebbe fallire.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha causato un ciclo infinito nel callback di produzione.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}La partita è stata salvata in una versione senza il supporto per i tram. Tutte le tranvie sono state rimosse.
 
