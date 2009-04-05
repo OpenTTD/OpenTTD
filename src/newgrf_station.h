@@ -29,6 +29,14 @@ typedef TinyEnumT<StationClassID> StationClassIDByte;
 /** Allow incrementing of StationClassID variables */
 DECLARE_POSTFIX_INCREMENT(StationClassID);
 
+enum StationSpecFlags {
+	SSF_SEPARATE_GROUND,      ///< Use different sprite set for ground sprites.
+	SSF_DIV_BY_STATION_SIZE,  ///< Divide cargo amount by station size.
+	SSF_CB141_RANDOM_BITS,    ///< Callback 141 needs random bits.
+	SSF_CUSTOM_FOUNDATIONS,   ///< Draw custom foundations.
+	SSF_EXTENDED_FOUNDATIONS, ///< Extended foundation block instead of simple.
+};
+
 /* Station layout for given dimensions - it is a two-dimensional array
  * where index is computed as (x * platforms) + platform. */
 typedef byte *StationLayout;
