@@ -589,6 +589,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Verkleng
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generéier en zoufalls Land
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Setz d'Landschaft zerèck
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Setz d'Landschaft zerèck
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Huel all Grondstècker vun den Spiller ewesch
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Sidd der sëcher dass der all Grondstècker vun den Spiller ewesch huelen wëllt?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landschaftserstellung
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stadterstellung
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrieerstellung
@@ -605,6 +607,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kann ken
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...ët ass keng Plaatz mei op der Kaart
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Stadt mei grouss maachen
 STR_023C_EXPAND                                                 :{BLACK}Erweideren
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Stiedt bauen keng Stroossen. Dir kënnt den Bau iwert Erweidert Anstellungen->Economie->Stiedt anschalten
 STR_023D_RANDOM_TOWN                                            :{BLACK}Zoufallsstadt
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Bau d'Stadt op enger zoufälleger Plaatz
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kann {STRING} nët hei bauen...
@@ -618,6 +621,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Fielsen 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Liichttuerm bauen
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sender bauen
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Zone fir Wüst défineieren.{}CTRL unhaalen fir se ze läschen
+STR_CREATE_LAKE                                                 :{BLACK}Waasser définéieren.{}Mëscht en Kanal. Mat CTRL gedreckt haalen um Mieresspiigel klicken, iwerflut d'Géigent
 STR_CREATE_RIVER                                                :{BLACK}Setzt Flëss
 STR_0290_DELETE                                                 :{BLACK}Läschen
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Dës Stadt ganz läschen
@@ -648,6 +652,7 @@ STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Wiel d'S
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Stadtgréisst:
 
 STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Stadt Stroosenlayout
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Stroosenlayout fir dëss Stadt wielen
 STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Original
 STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Besser Stroossen
 STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 Gitter
@@ -673,6 +678,7 @@ STR_TRANSPARENCY_OPTIONS                                        :Transparenz Opt
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Stiedtnimm ungewisen
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Statiounennimm ungewisen
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Schëlder ungewisen
+STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Weepunkten unweisen
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Ganz Animatiounen
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Ganz Detailer
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Transparent Gebäier
@@ -907,17 +913,41 @@ STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Weisst 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Erlaabt d'Bauen op Küsten an op Oofhäng: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Erlaabt Landforumng ënnert Gebäier, Stroossen, etc. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Erlaabt méi realistësch Staugréisstplaatzen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Erlaabt d'ewesch huelen vun méi Stroosen, Brècken, etc. vun der Stadt: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Bau vun ganz groussen Zich anschalten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Zuchbeschleunegung: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistësch
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zich an Schëffer dierfen këng 90 graad Kéieren maachen: {ORANGE}{STRING} {LTBLUE} (nët mat NTP)
+STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Noopergaren zesummen setzen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Erlaabt Statiounen zesummen ze setzen och wann se nët direkten uneneen leien: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Benotz verbesserten Luedalgorithmus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Lued d'Gefiehrer graduell: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflatioun: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Luedung nëmmen oofliweren wann ët gebraucht gët: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Erlaab ganz laang Brècken: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Erlaab Depot Opträg: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manuel Primär Industriebau Method: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :keng
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :wei aaner Industrien
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Erkundung
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Erlaabt méi gläich Industrien pro Stadt: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Industrien vum gläichen Typ kënnen méi noo beieneen gebaut ginn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Ëmmer den laangen Datum an der Statusbar unweisen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Weist d'Signaler op der Fuerersäit: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Weist d'Finanzen um Ënn vum Joër: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Néi Opträg sinn 'non-stop': {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Stroossengefiehrerschlaang (mat Quanteneffekter): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}D'Fenster schwenken wann d'Maus um Rand ass: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Erlaabt Bestiechung vun den Gemengen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Erlaabt Exclusiv Transportrechter ze kaafen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Erlaabt d'Schecken vun Suen un aner Firmen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Nëtuniform Statiounen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Gewiichtsmultiplizéierer fir Luedungen fir schweier Zich: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Fliger Geschwindegkeetsfaktor: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Erlaabt d'Iwerfueren vun Stopschëlder op Stroossen vun der Stadt: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Erlaabt d'Iwerfueren vun Stopschëlder op Stroossen vun der Konkurenz: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Erlaabt ungrenzent Statiounen: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Erlaab ëmmer kléng Flughäfen: {ORANGE}{STRING}
 

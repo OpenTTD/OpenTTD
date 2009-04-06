@@ -2239,6 +2239,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Valitse 
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Luo satunnaiset kasvot.
 STR_704C_KEY                                                    :{BLACK}Selite
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Näytä kuvaajan selite
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Näytä tarkat suorituskyky arviot
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Selite yhtiön kuvaajiin
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Napsauta tässä laittaaksesi yhtiön merkinnän graafissa päälle/pois.
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Rahtia kuljetettu (yksikköä)
@@ -3170,6 +3171,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Yhtiöll
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' antaa väärää tietoa.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Rahti/uudelleensovitus tiedot kulkuneuvolle '{1:ENGINE}' ovat eri kuin ostolistassa rakentamisen jälkeen. Tämä voi aiheuttaa, että kulkuneuvon korvaus ei uudelleensovita oikein.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' aiheutti ikuisen silmukan tuotannon callback-funktiossa.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Peli tallennettiin versiossa, joka ei tue raitiovaunuja. Kaikki raitiovaunut on poistettu.
 

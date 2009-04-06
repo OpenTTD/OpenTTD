@@ -908,6 +908,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Finansiranje iz
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Finansiranje izgradnje nove industrije
+STR_JUST_INT                                                    :{NUM}
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...gradnja je dozvoljena samo u područjima pod tropskim šumama
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...gradnja je dozvoljena samo u pustinjskim oblastima
 STR_0319_PAUSED                                                 :{YELLOW}* * PAUZA * *
@@ -917,14 +918,62 @@ STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Slika ni
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Kupovina zemljišta za kasnije korišćenje
 STR_032F_AUTOSAVE                                               :{RED}AUTO-ČUVANJE
+STR_SAVING_GAME                                                 :{RED}*  *  ČUVAM PARTIJU  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Čuvanje je još u toku,{}molim sačekajte dok se ne završi!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Izbor programa 'lagane stvari'
 
 STR_6                                                           :{BLACK}6
 STR_7                                                           :{BLACK}7
 
 ############ start of townname region
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Engleska (Originalna)
+STR_TOWNNAME_FRENCH                                             :Francuska
+STR_TOWNNAME_GERMAN                                             :Nemačka
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Engleska (Dodatna)
+STR_TOWNNAME_LATIN_AMERICAN                                     :Latinoamerička
+STR_TOWNNAME_SILLY                                              :Šašava
+STR_TOWNNAME_SWEDISH                                            :Švedska
+STR_TOWNNAME_DUTCH                                              :Holandska
+STR_TOWNNAME_FINNISH                                            :Finska
+STR_TOWNNAME_POLISH                                             :Poljska
+STR_TOWNNAME_SLOVAKISH                                          :Slovačka
+STR_TOWNNAME_NORWEGIAN                                          :Norveška
+STR_TOWNNAME_HUNGARIAN                                          :Mađarska
+STR_TOWNNAME_AUSTRIAN                                           :Austrijanska
+STR_TOWNNAME_ROMANIAN                                           :Rumunska
+STR_TOWNNAME_CZECH                                              :Češka
+STR_TOWNNAME_SWISS                                              :Švajcerska
+STR_TOWNNAME_DANISH                                             :Danska
+STR_TOWNNAME_TURKISH                                            :Turska
+STR_TOWNNAME_ITALIAN                                            :Italijanska
+STR_TOWNNAME_CATALAN                                            :Katalonska
 ############ end of townname region
 
+STR_CURR_GBP                                                    :Funta (£)
+STR_CURR_USD                                                    :Dolar ($)
+STR_CURR_EUR                                                    :Euro (€)
+STR_CURR_YEN                                                    :Jen (¥)
+STR_CURR_ATS                                                    :Austrijski Šiling (ATS)
+STR_CURR_BEF                                                    :Belgijski Franak (BEF)
+STR_CURR_CHF                                                    :Švajcarski Franak (CHF)
+STR_CURR_CZK                                                    :Češka Kruna (CZK)
+STR_CURR_DEM                                                    :Nemačka Marka (DEM)
+STR_CURR_DKK                                                    :Danska Kruna (DKK)
+STR_CURR_ESP                                                    :Pezeta (ESP)
+STR_CURR_FIM                                                    :Finski Marka (FIM)
+STR_CURR_FRF                                                    :Franak (FRF)
+STR_CURR_GRD                                                    :Grčka Drahma (GRD)
+STR_CURR_HUF                                                    :Mađarska Forinta (HUF)
+STR_CURR_ISK                                                    :Islandska Kruna (ISK)
+STR_CURR_ITL                                                    :Italijanska Lira (ITL)
+STR_CURR_NLG                                                    :Holandski Gulden (NLG)
+STR_CURR_NOK                                                    :Norveška Kruna (NOK)
+STR_CURR_PLN                                                    :Poljski Zlot (PLN)
+STR_CURR_ROL                                                    :Rumunska Lej (ROL)
+STR_CURR_RUR                                                    :Ruska Rublja (RUR)
+STR_CURR_SIT                                                    :Slovenački Tolar (SIT)
+STR_CURR_SEK                                                    :Švedska Kruna (SEK)
+STR_CURR_TRY                                                    :Turska Lira (TRY)
 STR_CURR_SKK                                                    :Slovačka Kruna (SKK)
 STR_CURR_BRL                                                    :Brazilski Real (BRL)
 STR_CURR_EEK                                                    :Estonska Kruna (EEK)
@@ -972,16 +1021,67 @@ STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Ide ka 
 STR_NO_ORDERS                                                   :{LTBLUE}Nema naredbi
 STR_NO_ORDERS_VEL                                               :{LTBLUE}Nema naredbi, {VELOCITY}
 
+STR_PASSENGERS                                                  :putnike
+STR_BAGS                                                        :džakove
+STR_TONS                                                        :tona
+STR_LITERS                                                      :litara
+STR_ITEMS                                                       :komada
+STR_CRATES                                                      :sanduka
+STR_RES_OTHER                                                   :drugo
+STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
+STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Lista naredbi se ne može deliti...
+STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Lista naredbi se ne može kopirati...
+STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Kraj Zajedničkih Naredbi - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} ne može da nađe put za dalje.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} se izgubio.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} je prošle godine imao profit od {CURRENCY}
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Evropska Monetarna Unija!{}{}Euro je uveden kao jedina valuta za uobičajne transakcije u vašoj zemlji!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} ima premalo naredbi u voznom redu
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} ima neodređenu naredbu
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} ima dupliciranu naredbu
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} ima neodgovarajuću stanicu u naredbi
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Automatska obnova nije uspela za {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} je predugačak posle zamene
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Automatska zamena/obnova nije primenjena.
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(novčano ograničenje)
 
+STR_CONFIG_SETTING                                              :{BLACK}Napredna Podešavanja
+STR_CONFIG_SETTING_TIP                                          :{BLACK}Prikazuje prozor sa detaljnim podešavanjima
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredna Podešavanja
 
+STR_CONFIG_SETTING_OFF                                          :Ne
+STR_CONFIG_SETTING_ON                                           :Da
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Prikazivanje brzine vozila na statusnoj liniji: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Dozvoljena gradnja na kosinama i obalama: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Dozvoljena izmena nagiba ispod zgrada, koloseka, itd. (autoslope): {ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Realističnije veličine prihvatnih površina: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dozvoljeno uklanjanje više gradskih kolovoza, zgrada, itd.: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Moguća gradnja veoma dugačkih vozova: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model ubrzavanja vozova: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originalan
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realističan
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zabranjemo okretanje brodova i vozova za 90 stepeni: {ORANGE}{STRING} {LTBLUE} (ne uz NTP)
+STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Sjedini železničke stanice sagrađene jedna pored druge: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Dozvoljeno sjedninjavanje udaljenih stanica: {ORANGE}{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Koristi poboljšan algoritam utovara: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Postepeno utovarivanje u vozilo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflacija: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Dostavi tovar na stanicu samo ako ima potražnje: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Dozvoljena gradnja veoma dugačkih mostova: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Dozvoljene naredbe za odlazak u depo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metod izgradnje finansiranih primarnih industrija: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nikakav
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :uobičajan
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :istraživački
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Dozvoljeno podmićivanje lokalnih vlasti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Dozvoljena kupovina ekskluzivnih prava za transport: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Dozvoljeno slanje novca drugim kompanijama: {ORANGE}{STRING}

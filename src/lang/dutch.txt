@@ -3171,6 +3171,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' geeft onjuiste informatie.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}vracht/ombouw informatie voor '{1:ENGINE}' wijkt af van aanschaflijst na het bouwen. Dit kan resulteren in problemen bij ombouwen door autovernieuw/-vervang
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' Een eindeloze loop gevonden in de productie-callback.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spel was opgeslagen in een versie zonder tram ondersteuning. Alle trams zijn verwijderd.
 

@@ -657,7 +657,6 @@ STR_FULL                                                        :Vol
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Dorp gids
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Bestelling
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1640,6 +1639,7 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Senter s
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Verander dorp naam
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passasiers verlede maand: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Pos verlede maand: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} gelewer laas maand
 STR_200F_TALL_OFFICE_BLOCK                                      :Hoog kantoor blok
 STR_2010_OFFICE_BLOCK                                           :Kantoor blok
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Klein blok van woonstelle
@@ -1752,6 +1752,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Te naby 
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Grens aan meer as een bestaande stasie/laai area
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Te veel stasies/laai areas in die stad
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Te veel stasies/laai areas
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Te veel treinstasie deele
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Te veel bushalte
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Te veel vragmotor stasies
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Te naby aan 'n ander stasie/laai area
@@ -1945,6 +1946,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 
 ##id 0x5000
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Ander tonnel in die pad
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tonnel so op die einde van die kaart eindig
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Kan nie daal vir ander einde van tonnel te uitgrawe nie
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Moet eers tonnel afbreek
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Moet eers brug afbreek
@@ -2074,6 +2076,7 @@ STR_NUM_VERY_LOW                                                :Baie laag
 STR_6816_LOW                                                    :Laag
 STR_6817_NORMAL                                                 :Normaal
 STR_6818_HIGH                                                   :Hoog
+STR_02BF_CUSTOM                                                 :Bestelling
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Baie Stadig
@@ -2223,6 +2226,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Herbou m
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Maatskappy hoofkwartiers kan nie hier gebou word nie...
 STR_7072_VIEW_HQ                                                :{BLACK}Wys HK
 STR_RELOCATE_HQ                                                 :{BLACK}Beweeg HQ
+STR_COMPANY_JOIN                                                :{BLACK}Bind
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Bind en speel as maatskapy
 STR_COMPANY_PASSWORD                                            :{BLACK}Wagwoord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Wagwoord-beskerm jou maatskappy om onmagtig gebruikers te belet van verbinding
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Stel maatskappy wagwoord
@@ -2945,6 +2950,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Op pad 
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Op pad na {STATION} Hangar, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Diens by {STATION} Hangar
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Diens by {STATION} Hangar, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} wag in die vliegtuig hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Vliegtuig in die pad
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan nie vliegtuig stop/aanskakel nie...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Vliegtuig is opvlug
@@ -3034,6 +3040,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Die bedr
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Totaale punte uit van moontlike punte
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Stellings
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Wys NewGRF stellings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF stellings
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Wend aan veranderings
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Tokkel pallet
@@ -3064,6 +3071,11 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Pooging om onvo
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} het 'n korrupte "sprite". Alle korrupte "sprites" sal gewys word as 'n rooi vraag teken (?).
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Laai die gekose voorafstel
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Stoor voorafstel
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Stoor die huidige lys as 'n voorafstel
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Sleutel 'n naam vir die voorafstel in
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Vee voorafstel uit
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Vee die huidige gekose voorafstel uit
 STR_NEWGRF_ADD                                                  :{BLACK}Voeg
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Voeg 'n NewGRF na die lys
 STR_NEWGRF_REMOVE                                               :{BLACK}Verwyder
@@ -3093,6 +3105,7 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Vermis G
 
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Dit verander voertuig lengte vier '{1:ENGINE}' wanneer die nie in diensstasie is nie.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{VEHICLE}' wat aan '{COMPANY}' behoort het 'n onaanvaarbare lengte. Dit is heel waarskeinlik veroorsaak deur probleme met NewGRFs. Speeletjie mag uit  sinkrone gaan of  hang.
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Speeletjie was gesoor in 'n weergawe sonder trem toelaating. Alle tremme was verwyder.
 
@@ -3231,6 +3244,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Verander
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Wêreld generasie
 STR_RANDOM_SEED                                                 :{BLACK}Lukraak Saad:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Kliek om 'n lukraak saad in te voeg
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Sleutel 'n lukraak saad in
 STR_LAND_GENERATOR                                              :{BLACK}Daal genereerder:
 STR_TREE_PLACER                                                 :{BLACK}Boom algoritme:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Hoogtekaart rotasie:
@@ -3278,12 +3292,15 @@ STR_SMALLMAP_CENTER                                             :{BLACK}Senter d
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 # Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Kaart kante:
 STR_NORTHWEST                                                   :{BLACK}Noordwes
 STR_NORTHEAST                                                   :{BLACK}Noordoos
 STR_SOUTHEAST                                                   :{BLACK}Suidoos
 STR_SOUTHWEST                                                   :{BLACK}Suidwes
 STR_BORDER_FREEFORM                                             :{BLACK}Vryeform
 STR_BORDER_WATER                                                :{BLACK}Water
+STR_BORDER_RANDOM                                               :{BLACK}Lukraak
+STR_BORDER_RANDOMIZE                                            :{BLACK}Lukraak
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Klein
@@ -3313,6 +3330,9 @@ STR_DATE_TINY                                                   :{STRING}-{STRIN
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}oordra Krediete: {LTBLUE}{CURRENCY}
@@ -3445,6 +3465,9 @@ STR_SIGNAL_SELECTION                                            :{WHITE}Sein sel
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Kan nie seine hier verander nie...
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Een-rigting pad sein (elektries){}'n Pad sein laat meer as een trein in 'n sein block op die selfde tyd, as die trein 'n pad kan vind na 'n veiligge stop punt. Een-rigting seine kan nie  van die agterkant verby gevat word nie.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Sein verander{}Wanneer geselekteer is, 'n kliek askei op die sein sal die sein verander na die geselekteerde sein tiepe en waarde, CTRL-kliek sal die bestaande waarde tokkel.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Sein sleep digtheid
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Verminder sein sleep digtheid
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Verhoog sein sleep digtheid
 ########
 
 ############ on screen keyboard
@@ -3453,6 +3476,20 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI Stellings
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Wys AI stellings
+STR_AI_DEBUG                                                    :{WHITE}AI ontfout
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Naam van die AI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaai AI
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Maak die AI dood, herlaai die skrif en herlaai die AI
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Die AI ontfout venster is net beskikbaar vir die dienaar
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI konfigurasie
+STR_AI_CHANGE                                                   :{BLACK}Kies AI
+STR_AI_CONFIGURE                                                :{BLACK}Konfigureer
+STR_AI_CHANGE_TIP                                               :{BLACK}Laai nog 'n AI
+STR_AI_LIST_TIP                                                 :{BLACK}Alle AIs wat in die volgende spel sal gelaai word
+STR_AI_LIST_CAPTION                                             :{WHITE}Beskikbaare AIs
+STR_AI_AILIST_TIP                                               :{BLACK}Kliek om 'n AI te kies
 STR_AI_ACCEPT                                                   :{BLACK}Aanvaar
 STR_AI_CANCEL                                                   :{BLACK}Kanseleer
 ########

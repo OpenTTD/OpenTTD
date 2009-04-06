@@ -1022,9 +1022,9 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Toto nas
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Malá letiště se budou moci stále stavět: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Varovat, pokud vlak nenajde cestu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Obnovení příkazů vozidla: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Kontrolovat příkazy vozidel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ne
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ano, kromě zastavených vozidel (v depu)
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ano, kromě zastavených vozidel
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ano, u všech vozidel
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Varovat, pokud vozidlo prodělává: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vozidlům se nikdy nezastaví výroba ('nezastarají'): {ORANGE}{STRING}
@@ -2195,12 +2195,12 @@ STR_NUM_VERY_LOW                                                :velmi nízké
 STR_6816_LOW                                                    :nízké
 STR_6817_NORMAL                                                 :střední
 STR_6818_HIGH                                                   :vysoké
-STR_02BF_CUSTOM                                                 :Vlastní
+STR_02BF_CUSTOM                                                 :vlastní
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :velmi nízká
 STR_681C_SLOW                                                   :nízká
-STR_681D_MEDIUM                                                 :středně vysoká
+STR_681D_MEDIUM                                                 :střední
 STR_681E_FAST                                                   :vysoká
 STR_681F_VERY_FAST                                              :velmi vysoká
 STR_VERY_LOW                                                    :velmi nízká
@@ -2306,7 +2306,8 @@ STR_7049_SELECT_MALE_FACES                                      :{BLACK}Zvolit m
 STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Zvolit ženské obličeje
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Vytvořit náhodnou novou tvář
 STR_704C_KEY                                                    :{BLACK}Legenda
-STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Ukázat legendu ke grafům
+STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Zobrazit legendu ke grafům
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Zobrazit podrobné hodnocení výkonu
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Legenda ke grafům společností
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klepni zde pro přepnuti zobrazení společnosti na grafu
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Doručeno jednotek zboží
@@ -3181,7 +3182,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Jméno s
 STR_NEWGRF_PALETTE                                              :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Právě se chystáš změnit nastavení grafik za běžící hry; může to shodit OpenTTD.{}Jsi si s tím opravdu jist/a?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Právě se chystáš změnit nastavení grafik za běžící hry; může to shodit OpenTTD.{}Jsi si tím opravdu jist(a)?
 
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varování: {SILVER}{STRING}
@@ -3244,6 +3245,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{V
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Grafika '{0:STRING}' poskytuje neplatné informace.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informace o nákladu/možnosti přestavby pro '{1:ENGINE}' se po nákupu změnily. To může způsobit problémy při automatické výměně vozidel.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' způsobil(a) nekonečnou smyčku v callbacku produkce průmyslu.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Hra byla uložena ve verzi bez podpory tramvají. Všechny tramvaje se odstraní.
 

@@ -2319,6 +2319,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Izberi �
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Naredi naključno novo sliko
 STR_704C_KEY                                                    :{BLACK}Ključ
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Prikaži ključe grafov
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Prikaz detajliranih ocen uspeha
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Ključi grafov podjetij
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klikni sem za vklop/izklop prikaza grafov podjetja
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Enot dostavljenega tovora
@@ -3250,6 +3251,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{V
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' javlja napačno informacijo.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacija o predelavi tovornih zmogljivosti za '{1:ENGINE}' je različna od seznama nakupa po konstrukciji. To lahko povzroči, da bi samoobnova ne uspela pravilno.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' hrošč je povzročil neskončen povratni ciklus proizvodnje.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Igra je bila shranjena brez podpore za tramvaj. Vsi tramvaji so bili odstranjeni.
 
