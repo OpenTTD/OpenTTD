@@ -10,10 +10,11 @@
 #include "os_abstraction.h"
 #include "config.h"
 #include "../../string_func.h"
-#include "../../core/smallvec_type.hpp"
+#include "../../core/smallmap_type.hpp"
 
 class NetworkAddress;
 typedef SmallVector<NetworkAddress, 4> NetworkAddressList;
+typedef SmallMap<NetworkAddress, SOCKET, 4> SocketList;
 
 /**
  * Wrapper for (un)resolved network addresses; there's no reason to transform
@@ -38,10 +39,11 @@ private:
 	 * @param family the type of 'protocol' (IPv4, IPv6)
 	 * @param socktype the type of socket (TCP, UDP, etc)
 	 * @param flags the flags to send to getaddrinfo
+	 * @param sockets the list of sockets to add the sockets to
 	 * @param func the inner working while looping over the address info
 	 * @return the resolved socket or INVALID_SOCKET.
 	 */
-	SOCKET Resolve(int family, int socktype, int flags, LoopProc func);
+	SOCKET Resolve(int family, int socktype, int flags, SocketList *sockets, LoopProc func);
 public:
 	/**
 	 * Create a network address based on a resolved IP and port
@@ -217,9 +219,10 @@ public:
 	 * Make the given socket listen.
 	 * @param family the type of 'protocol' (IPv4, IPv6)
 	 * @param socktype the type of socket (TCP, UDP, etc)
-	 * @return the listening socket or INVALID_SOCKET.
+	 * @param sockets the list of sockets to add the sockets to
+	 * @return the socket (if sockets != NULL)
 	 */
-	SOCKET Listen(int family, int socktype);
+	SOCKET Listen(int family, int socktype, SocketList *sockets = NULL);
 };
 
 #endif /* ENABLE_NETWORK */
