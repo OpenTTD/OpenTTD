@@ -4,8 +4,9 @@
 ##winlangid 0x0422
 ##grflangid 0x33
 ##plural 6
-##gender m f s mn
+##textdir ltr
 ##case r d z
+##gender m f s mn
 
 #
 

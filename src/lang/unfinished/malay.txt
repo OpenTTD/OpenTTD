@@ -4,6 +4,7 @@
 ##winlangid 0x043a
 ##grflangid 0x3c
 ##plural 0
+##textdir ltr
 
 #
 
@@ -576,10 +577,10 @@ STR_02A3_LARGE                                                  :{BLACK}Besar
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Pilih saiz bandar
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Saiz bandar
 
+
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Tunjukkan utusan atau laporan berita terakhir
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Direktori Bandar
-STR_02BF_CUSTOM                                                 :Custom
 
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Pilihan permainan
@@ -710,6 +711,7 @@ STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{S
 
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 
+
 STR_AUTOSAVE_1_MONTH                                            :Setiap bulan
 
 STR_MONTH_JAN                                                   :Januari
@@ -807,10 +809,11 @@ STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stesen
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
 
-
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Tidak dicadangkan)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+
+
+############ generic strings for settings
 
 
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain sebagai syarikat tersebut: {ORANGE}{COMMA}
@@ -845,7 +848,6 @@ STR_LANDINFO_RIVER                                              :Sungai
 
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Tidak boleh tukar jenis landasan di sini...
 STR_CONVERT_RAIL_TIP                                            :{BLACK}Menukarkan/Meningkatkan jenis landasan
-
 
 
 
@@ -914,9 +916,6 @@ STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :sambungan terhi
 
 
 ############ end network gui strings
-
-
-
 
 ##### PNG-MAP-Loader
 
@@ -1108,6 +1107,7 @@ STR_SV_STNAME_NORTH                                             :{STRING} Utara
 ############ range for difficulty settings starts
 ############ range for difficulty settings ends
 
+STR_02BF_CUSTOM                                                 :Custom
 
 ##id 0x7000
 
@@ -1168,6 +1168,7 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
+
 ### depot strings
 
 
@@ -1211,6 +1212,8 @@ STR_SHORT_DATE                                                  :{WHITE}{DATE_TI
 ########### String for New Landscape Generator
 
 
+
+# Strings for map borders at game generation
 
 ########### String for new airports
 

@@ -4,6 +4,7 @@
 ##winlangid 0x0408
 ##grflangid 0x1e
 ##plural 0
+##textdir ltr
 ##gender m f n
 
 #
@@ -667,7 +668,6 @@ STR_FULL                                                        :Ολόκληρ�
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Καταλογος πόλεων
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Προσαρμοσμέν{G ος η ο}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1893,6 +1893,7 @@ STR_NONE                                                        :Κανένα
 STR_6816_LOW                                                    :Χαμηλό
 STR_6817_NORMAL                                                 :Κανονικό
 STR_6818_HIGH                                                   :Υψηλό
+STR_02BF_CUSTOM                                                 :Προσαρμοσμέν{G ος η ο}
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Πολύ αργό
@@ -2215,6 +2216,7 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 
 
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Τρένο'{VEHICLE}' που ανήκει στην '{COMPANY}' έχει μη έγκυρο μήκος. Πιθανόν να προέρχεται από πρόβλημα του NewGRFs. Το Παιχνίδι μπορεί ν΄αποσυγχρονιστεί ή να κρασάρει.
+
 
 
 

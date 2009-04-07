@@ -4,6 +4,7 @@
 ##winlangid 0x0405
 ##grflangid 0x15
 ##plural 10
+##textdir ltr
 ##case nom gen dat acc voc loc ins big small
 ##gender m f n
 

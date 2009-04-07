@@ -4,6 +4,7 @@
 ##winlangid 0x0804
 ##grflangid 0x56
 ##plural 1
+##textdir ltr
 
 #
 
@@ -666,7 +667,6 @@ STR_FULL                                                        :完全
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :城镇地图
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :自定义
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -2121,6 +2121,7 @@ STR_NUM_VERY_LOW                                                :很低
 STR_6816_LOW                                                    :低
 STR_6817_NORMAL                                                 :一般
 STR_6818_HIGH                                                   :高
+STR_02BF_CUSTOM                                                 :自定义
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :非常慢
@@ -3160,6 +3161,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}取消�
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}'的行为可能造成同步错误或是崩溃。
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}当车辆不在车库中时,这将改变 '{1:ENGINE}' 的车辆长度.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}列车 '{VEHICLE}' 属于 '{COMPANY}' 使长度无效化了. 这可能是NewGRF导致的. 有可能会发生崩溃或同步错误.
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}游戏保存为了无电车版. 所有电车都被去掉了。
 

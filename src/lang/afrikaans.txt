@@ -4,6 +4,7 @@
 ##winlangid 0x0436
 ##grflangid 0x1b
 ##plural 0
+##textdir ltr
 ##gender male
 
 #

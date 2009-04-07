@@ -4,6 +4,7 @@
 ##winlangid 0x0000
 ##grflangid 0x06
 ##plural 0
+##textdir ltr
 
 #
 
@@ -304,7 +305,6 @@ STR_019D_AIRCRAFT                                               :Aeroplani
 
 
 
-
 ############ network gui strings
 
 
@@ -461,6 +461,7 @@ STR_7039_VEHICLES                                               :{GOLD}Vehili:
 STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
 
 
 

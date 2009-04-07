@@ -4,6 +4,7 @@
 ##winlangid 0x0456
 ##grflangid 0x31
 ##plural 0
+##textdir ltr
 ##gender m f n
 
 #
@@ -648,6 +649,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Cidade
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Selecciona o tamaño da cidade:
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Tamaño da cidade:
 
+
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Amosa-la última mesaxe ou noticia
 STR_OFF                                                         :Apagado
@@ -656,7 +658,6 @@ STR_FULL                                                        :Completo
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Directorio de cidades
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Persoalizado
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -833,6 +834,7 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formato 
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selecciona o formato a utilizar nas capturas de pantalla
 
+
 STR_AUTOSAVE_1_MONTH                                            :Cada mes
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autograbado fallido
 
@@ -955,10 +957,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Esquerda
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Dereita
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Nivel de altitude dun escenario chairo: {ORANGE}{STRING}
 
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-# End of map water border strings.
-
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Extensión Max. Estación: {ORANGE}{STRING} {RED}Aviso: Valores altos reducen rendemento
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Face-lo servicio os helicópteros no heliporto automáticam.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Unir barra de paisaxe as barras de raíl/estrada/auga/aeroporto: {ORANGE}{STRING}
@@ -1016,6 +1014,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Deshabi
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Deshabilita-los barcos para o ordenador: {ORANGE}{STRING}
 
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervalos de servicio en porcentaxes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de servicio para os trens: {ORANGE}{STRING} días/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de servicio para os trens: {ORANGE}deshabilitado
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Intervalo de servicio para os vehículos de estrada: {ORANGE}{STRING} días/%
@@ -1049,6 +1048,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :mellores estrad
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Reixa 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Reixa 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleatorio
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir á cidade controla-lo nivel de ruído dos aeroportos: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posición da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Esquerda
@@ -1074,12 +1074,6 @@ STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Estaci�
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economía
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidores
 
-STR_CONFIG_SETTING_DISABLED                                     :deshabilitado
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Cambia-lo valor
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Buscador de ruta para trens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Non recomendado)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -1092,6 +1086,15 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Buscado
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orixinal {BLUE}(Recomendado)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Non recomendado)
+
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Tamaño X do mapa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Tamaño Y do mapa: {ORANGE}{STRING}
+
+############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :deshabilitado
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Cambia-lo valor
 
 STR_TEMPERATE_LANDSCAPE                                         :Escenario temperado
 STR_SUB_ARCTIC_LANDSCAPE                                        :Escenario sub-ártico
@@ -1185,7 +1188,6 @@ STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Unha lis
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Desactivar todo
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Activar todo
 
-
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrias
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportado)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportado)
@@ -1199,7 +1201,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Reaxusta
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona o tipo de carga que levará o tren
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Reaxusta-lo tren para o tipo de carga seleccionado
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}No se pode reaxusta-lo tren...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervalos de servicio en porcentaxes: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambiar producción
 
 ############ network gui strings
@@ -1442,11 +1443,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Mensaxe privada
 STR_NETWORK_SEND                                                :{BLACK}Enviar
 
 ############ end network gui strings
-
-
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Tamaño X do mapa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Tamaño Y do mapa: {ORANGE}{STRING}
-
 
 ##### PNG-MAP-Loader
 
@@ -2046,6 +2042,7 @@ STR_NUM_VERY_LOW                                                :Moi baixo
 STR_6816_LOW                                                    :Baixo
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Alto
+STR_02BF_CUSTOM                                                 :Persoalizado
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Moi Lento
@@ -3075,6 +3072,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}O compor
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Cambia a lonxitude do vehículo a '{1:ENGINE}' cando non está nun depósito
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O tren '{VEHICLE}' pertencente a '{COMPANY}' ten unha lonxitude incorrecta. Esto está causado probablemente por problemas con NewGRFs. O xogo pode desincronizarse ou colgarse.
 
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}A partida grabouse nunha versión sen soporte para tranvías. Quitáronse tódolos tranvías.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda persoalizada
@@ -3258,6 +3256,8 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Altura d
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centra-lo mapa pequeno na posición actual
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+
+# Strings for map borders at game generation
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Pequeno
@@ -3445,7 +3445,6 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir á cidade controla-lo nivel de ruído dos aeroportos: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Límite de ruído na cidade: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Ruído xerado: {GOLD}{COMMA}
 ########

@@ -4,6 +4,7 @@
 ##winlangid 0x041f
 ##grflangid 0x3e
 ##plural 1
+##textdir ltr
 
 #
 

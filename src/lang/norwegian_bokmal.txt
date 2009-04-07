@@ -4,6 +4,7 @@
 ##winlangid 0x0414
 ##grflangid 0x2f
 ##plural 0
+##textdir ltr
 
 #
 
@@ -665,7 +666,6 @@ STR_FULL                                                        :Fullt
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Byoversikt
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Egendefinert
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -2109,6 +2109,7 @@ STR_NUM_VERY_LOW                                                :Veldig lav
 STR_6816_LOW                                                    :Lite
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Høyt
+STR_02BF_CUSTOM                                                 :Egendefinert
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Veldig sent
@@ -3147,6 +3148,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Å slå 
 STR_NEWGRF_BROKEN                                               :{WHITE}Oppførselen av ny graffikk '{STRING}' er sansynlig til å skape forstyrrelse og/eller kollisjoner.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Det endrer kjøretøyets lengde for '{1:ENGINE}' når ikke i ett depo.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' tilhører '{COMPANY}' har ugyldig lengde. Det er sannsynligvis forårsaket av problemer med ny grafikk. Spillet kan desynkronisere eller kollidere.
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spillet ble lagret i versjon uten trikk støtte. Alle trikker har blitt fjernet.
 

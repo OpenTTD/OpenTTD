@@ -4,6 +4,7 @@
 ##winlangid 0x0462
 ##grflangid 0x32
 ##plural 0
+##textdir ltr
 
 #
 
@@ -533,7 +534,6 @@ STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Lit lês
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Stêden list
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Oars
 
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Spul Opsjes
@@ -1139,6 +1139,7 @@ STR_NONE                                                        :Gjin
 STR_6816_LOW                                                    :Leech
 STR_6817_NORMAL                                                 :Gewoan
 STR_6818_HIGH                                                   :Heech
+STR_02BF_CUSTOM                                                 :Oars
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Traach
@@ -1443,6 +1444,7 @@ STR_8073_PLASTIC_TRUCK                                          :Plestikwein
 STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
 
 
 

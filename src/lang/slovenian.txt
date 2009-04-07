@@ -4,6 +4,7 @@
 ##winlangid 0x0424
 ##grflangid 0x2c
 ##plural 8
+##textdir ltr
 ##case r d t
 
 #

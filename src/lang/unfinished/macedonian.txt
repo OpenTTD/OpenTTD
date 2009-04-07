@@ -4,6 +4,7 @@
 ##winlangid 0x042f
 ##grflangid 0x26
 ##plural 0
+##textdir ltr
 
 #
 
@@ -426,10 +427,10 @@ STR_AGE                                                         :{COMMA} год�
 STR_AGE_RED                                                     :{RED}{COMMA} година{P "" s} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Патно возило
-STR_019D_AIRCRAFT                                               :Летало
-STR_019E_SHIP                                                   :Брод
 STR_019F_TRAIN                                                  :Воз
+STR_019C_ROAD_VEHICLE                                           :Патно возило
+STR_019E_SHIP                                                   :Брод
+STR_019D_AIRCRAFT                                               :Летало
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Информации за земјишна област
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Цена за чистење: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Цена за чистење: {RED}{CURRENCY}
@@ -581,6 +582,7 @@ STR_023D_RANDOM_TOWN                                            :{BLACK}Случ
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Игради град на случајна локација
 
 
+
 ############ range for menu starts
 ############ range ends here
 
@@ -599,6 +601,7 @@ STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Игра
 
 ############ start of townname region
 ############ end of townname region
+
 
 
 
@@ -643,6 +646,9 @@ STR_AUTOREPLACE_MONEY_LIMIT                                     :(лимит н�
 
 
 
+############ generic strings for settings
+
+
 
 
 
@@ -659,8 +665,6 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Изгр
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Не може да се направи канал овде...
 STR_BUILD_CANALS_TIP                                            :{BLACK}Гради канали.
-
-
 
 
 
@@ -707,15 +711,14 @@ STR_BUILD_CANALS_TIP                                            :{BLACK}Град
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 
 
 
 
 ############ end network gui strings
-
-
-
 
 ##### PNG-MAP-Loader
 
@@ -915,6 +918,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Возо
 
 
 
+
 STR_BUS                                                         :{BLACK}{BUS}
 
 
@@ -947,6 +951,8 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Авио
 ########### String for New Landscape Generator
 
 
+
+# Strings for map borders at game generation
 
 ########### String for new airports
 
@@ -986,5 +992,14 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Комб
 ############ on screen keyboard
 ########
 
+############ AI GUI
+########
+
 ############ town controlled noise level
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

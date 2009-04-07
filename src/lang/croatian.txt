@@ -4,6 +4,7 @@
 ##winlangid 0x041a
 ##grflangid 0x38
 ##plural 6
+##textdir ltr
 ##case nom gen dat aku vok lok ins
 ##gender male female middle
 

@@ -424,7 +424,6 @@ STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK} اخر�
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :لیست شهر ها
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :انتخابی
 
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :تنظیمات بازی
@@ -947,6 +946,7 @@ STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}تعد�
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}حد اکثر وام اولیه: {ORANGE}{CURRENCY}
 ############ range for difficulty settings ends
 
+STR_02BF_CUSTOM                                                 :انتخابی
 
 ##id 0x7000
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} هواپیما
@@ -1471,6 +1471,7 @@ STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}نمی �
 STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
 
 
 

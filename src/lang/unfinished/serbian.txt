@@ -4,6 +4,7 @@
 ##winlangid 0x7c1a
 ##grflangid 0x0d
 ##plural 6
+##textdir ltr
 ##case nom big gen dat aku vok lok ins
 ##gender muški ženski srednji
 

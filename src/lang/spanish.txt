@@ -4,6 +4,7 @@
 ##winlangid 0x0c0a
 ##grflangid 0x04
 ##plural 0
+##textdir ltr
 ##gender masculino femenino
 
 #

@@ -468,6 +468,7 @@ STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}زمین
 
 
 
+
 ### depot strings
 
 
