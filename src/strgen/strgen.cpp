@@ -99,7 +99,7 @@ static char _cases[MAX_NUM_CASES][16];
 static uint _numcases;
 
 /* for each plural value, this is the number of plural forms. */
-static const byte _plural_form_counts[] = { 2, 1, 2, 3, 3, 3, 3, 3, 4, 2 };
+static const byte _plural_form_counts[] = { 2, 1, 2, 3, 3, 3, 3, 3, 4, 2, 3 };
 
 static const char *_cur_ident;
 
