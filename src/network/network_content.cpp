@@ -457,7 +457,7 @@ public:
 		assert(_network_content_client.sock == INVALID_SOCKET);
 		_network_content_client.isConnecting = false;
 		_network_content_client.sock = s;
-		_network_content_client.has_quit = false;
+		_network_content_client.Reopen();
 		_network_content_client.OnConnect(true);
 	}
 };

@@ -29,7 +29,7 @@ NetworkTCPSocketHandler::~NetworkTCPSocketHandler()
 NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection()
 {
 	this->writable = false;
-	this->has_quit = true;
+	NetworkSocketHandler::CloseConnection();
 
 	/* Free all pending and partially received packets */
 	while (this->packet_queue != NULL) {

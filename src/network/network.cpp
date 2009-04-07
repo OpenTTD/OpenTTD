@@ -274,7 +274,7 @@ static void NetworkClientError(NetworkRecvStatus res, NetworkClientSocket *cs)
 
 	/* We just want to close the connection.. */
 	if (res == NETWORK_RECV_STATUS_CLOSE_QUERY) {
-		cs->has_quit = true;
+		cs->CloseConnection();
 		NetworkCloseClient(cs);
 		_networking = false;
 
@@ -434,7 +434,7 @@ void NetworkCloseClient(NetworkClientSocket *cs)
 
 	DEBUG(net, 1, "Closed client connection %d", cs->client_id);
 
-	if (!cs->has_quit && _network_server && cs->status > STATUS_INACTIVE) {
+	if (!cs->HasClientQuit() && _network_server && cs->status > STATUS_INACTIVE) {
 		/* We did not receive a leave message from this client... */
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 		NetworkClientSocket *new_cs;
@@ -844,7 +844,7 @@ static bool NetworkReceive()
 				NetworkRecvStatus res;
 
 				/* The client already was quiting! */
-				if (cs->has_quit) return false;
+				if (cs->HasClientQuit()) return false;
 
 				res = NetworkClient_ReadPackets(cs);
 				if (res != NETWORK_RECV_STATUS_OKAY) {

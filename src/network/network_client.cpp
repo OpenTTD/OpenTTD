@@ -359,7 +359,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 {
 	byte company_info_version = p->Recv_uint8();
 
-	if (!MY_CLIENT->has_quit && company_info_version == NETWORK_COMPANY_INFO_VERSION) {
+	if (!MY_CLIENT->HasClientQuit() && company_info_version == NETWORK_COMPANY_INFO_VERSION) {
 		/* We have received all data... (there are no more packets coming) */
 		if (!p->Recv_bool()) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
@@ -403,7 +403,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 
 	p->Recv_string(name, sizeof(name));
 
-	if (MY_CLIENT->has_quit) return NETWORK_RECV_STATUS_CONN_LOST;
+	if (MY_CLIENT->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
 
 	/* Do we receive a change of data? Most likely we changed playas */
 	if (client_id == _network_own_client_id) _network_playas = playas;
@@ -513,7 +513,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEED_PASSWORD)
 			/* Initialize the password hash salting variables. */
 			_password_game_seed = p->Recv_uint32();
 			p->Recv_string(_password_server_unique_id, sizeof(_password_server_unique_id));
-			if (MY_CLIENT->has_quit) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+			if (MY_CLIENT->HasClientQuit()) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 		case NETWORK_GAME_PASSWORD:
 			ShowNetworkNeedPassword(type);
@@ -557,7 +557,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 	maptype = p->Recv_uint8();
 
-	if (MY_CLIENT->has_quit) return NETWORK_RECV_STATUS_CONN_LOST;
+	if (MY_CLIENT->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
 
 	/* First packet, init some stuff */
 	if (maptype == MAP_PACKET_START) {
@@ -577,7 +577,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		 * do a division by zero. When the connection is lost, we just return
 		 * that. If kbytes_total is 0, the packet must be malformed as a
 		 * savegame less than 1 kilobyte is practically impossible. */
-		if (MY_CLIENT->has_quit) return NETWORK_RECV_STATUS_CONN_LOST;
+		if (MY_CLIENT->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
 		if (_network_join_bytes_total == 0) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 		_network_join_status = NETWORK_JOIN_STATUS_DOWNLOADING;
@@ -938,7 +938,7 @@ NetworkRecvStatus NetworkClient_ReadPackets(NetworkClientSocket *cs)
 
 	while (res == NETWORK_RECV_STATUS_OKAY && (p = cs->Recv_Packet(&res)) != NULL) {
 		byte type = p->Recv_uint8();
-		if (type < PACKET_END && _network_client_packet[type] != NULL && !MY_CLIENT->has_quit) {
+		if (type < PACKET_END && _network_client_packet[type] != NULL && !MY_CLIENT->HasClientQuit()) {
 			res = _network_client_packet[type](p);
 		} else {
 			res = NETWORK_RECV_STATUS_MALFORMED_PACKET;

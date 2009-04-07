@@ -36,10 +36,9 @@ struct Packet;
  * SocketHandler for all network sockets in OpenTTD.
  */
 class NetworkSocketHandler {
-public:
-	/* TODO: make socket & has_quit protected once the TCP stuff
-	 *is in a real class too */
 	bool has_quit; ///< Whether the current client has quit/send a bad packet
+public:
+	/* TODO: make socket protected once the TCP stuff is in a real class too */
 	SOCKET sock;   ///< The socket currently connected to
 public:
 	/** Create a new unbound socket */
@@ -71,6 +70,11 @@ public:
 	 * @return true when the current client has quit, false otherwise
 	 */
 	bool HasClientQuit() const { return this->has_quit; }
+
+	/**
+	 * Reopen the socket so we can send/receive stuff again.
+	 */
+	void Reopen() { this->has_quit = false; }
 
 	void Send_GRFIdentifier(Packet *p, const GRFIdentifier *grf);
 	void Recv_GRFIdentifier(Packet *p, GRFIdentifier *grf);

@@ -54,7 +54,7 @@ void NetworkUDPSocketHandler::Close()
 
 NetworkRecvStatus NetworkUDPSocketHandler::CloseConnection()
 {
-	this->has_quit = true;
+	NetworkSocketHandler::CloseConnection();
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -264,7 +264,7 @@ void NetworkUDPSocketHandler::HandleUDPPacket(Packet *p, NetworkAddress *client_
 	PacketUDPType type;
 
 	/* New packet == new client, which has not quit yet */
-	this->has_quit = false;
+	this->Reopen();
 
 	type = (PacketUDPType)p->Recv_uint8();
 

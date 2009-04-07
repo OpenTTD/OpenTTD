@@ -166,7 +166,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, Netw
 		DEBUG(net, 1, "Client %d made an error and has been disconnected. Reason: '%s'", cs->client_id, str);
 	}
 
-	cs->has_quit = true;
+	cs->CloseConnection();
 
 	/* Make sure the data get's there before we close the connection */
 	cs->Send_Packets();
@@ -668,7 +668,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	client_lang = (NetworkLanguage)p->Recv_uint8();
 	p->Recv_string(unique_id, sizeof(unique_id));
 
-	if (cs->has_quit) return;
+	if (cs->HasClientQuit()) return;
 
 	/* join another company does not affect these values */
 	switch (playas) {
@@ -769,7 +769,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
 
 	/* The client was never joined.. so this is impossible, right?
 	 *  Ignore the packet, give the client a warning, and close his connection */
-	if (cs->status < STATUS_AUTH || cs->has_quit) {
+	if (cs->status < STATUS_AUTH || cs->HasClientQuit()) {
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
 		return;
 	}
@@ -791,7 +791,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 {
 	/* Client has the map, now start syncing */
-	if (cs->status == STATUS_DONE_MAP && !cs->has_quit) {
+	if (cs->status == STATUS_DONE_MAP && !cs->HasClientQuit()) {
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 		NetworkClientSocket *new_cs;
 
@@ -846,7 +846,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 
 	/* The client was never joined.. so this is impossible, right?
 	 *  Ignore the packet, give the client a warning, and close his connection */
-	if (cs->status < STATUS_DONE_MAP || cs->has_quit) {
+	if (cs->status < STATUS_DONE_MAP || cs->HasClientQuit()) {
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 		return;
 	}
@@ -854,7 +854,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	CommandPacket cp;
 	const char *err = cs->Recv_Command(p, &cp);
 
-	if (cs->has_quit) return;
+	if (cs->HasClientQuit()) return;
 
 	NetworkClientInfo *ci = cs->GetInfo();
 
@@ -946,8 +946,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 	NetworkErrorCode errorno = (NetworkErrorCode)p->Recv_uint8();
 
 	/* The client was never joined.. thank the client for the packet, but ignore it */
-	if (cs->status < STATUS_DONE_MAP || cs->has_quit) {
-		cs->has_quit = true;
+	if (cs->status < STATUS_DONE_MAP || cs->HasClientQuit()) {
+		cs->CloseConnection();
 		return;
 	}
 
@@ -966,7 +966,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 		}
 	}
 
-	cs->has_quit = true;
+	cs->CloseConnection();
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
@@ -977,8 +977,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
 	/* The client was never joined.. thank the client for the packet, but ignore it */
-	if (cs->status < STATUS_DONE_MAP || cs->has_quit) {
-		cs->has_quit = true;
+	if (cs->status < STATUS_DONE_MAP || cs->HasClientQuit()) {
+		cs->CloseConnection();
 		return;
 	}
 
@@ -992,7 +992,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 		}
 	}
 
-	cs->has_quit = true;
+	cs->CloseConnection();
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
@@ -1194,7 +1194,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
 	p->Recv_string(client_name, sizeof(client_name));
 	ci = cs->GetInfo();
 
-	if (cs->has_quit) return;
+	if (cs->HasClientQuit()) return;
 
 	if (ci != NULL) {
 		/* Display change */
@@ -1552,7 +1552,7 @@ bool NetworkServer_ReadPackets(NetworkClientSocket *cs)
 	NetworkRecvStatus res;
 	while ((p = cs->Recv_Packet(&res)) != NULL) {
 		byte type = p->Recv_uint8();
-		if (type < PACKET_END && _network_server_packet[type] != NULL && !cs->has_quit) {
+		if (type < PACKET_END && _network_server_packet[type] != NULL && !cs->HasClientQuit()) {
 			_network_server_packet[type](cs, p);
 		} else {
 			DEBUG(net, 0, "[server] received invalid packet type %d", type);
