@@ -38,11 +38,8 @@ struct Packet;
 class NetworkSocketHandler {
 	bool has_quit; ///< Whether the current client has quit/send a bad packet
 public:
-	/* TODO: make socket protected once the TCP stuff is in a real class too */
-	SOCKET sock;   ///< The socket currently connected to
-public:
 	/** Create a new unbound socket */
-	NetworkSocketHandler(SOCKET s = INVALID_SOCKET) { this->sock = s; this->has_quit = false; }
+	NetworkSocketHandler() { this->has_quit = false; }
 
 	/** Close the socket when distructing the socket handler */
 	virtual ~NetworkSocketHandler() { this->Close(); }
@@ -56,12 +53,6 @@ public:
 	 * @return new status of the connection.
 	 */
 	virtual NetworkRecvStatus CloseConnection() { this->has_quit = true; return NETWORK_RECV_STATUS_OKAY; }
-
-	/**
-	 * Whether this socket is currently bound to a socket.
-	 * @return true when the socket is bound, false otherwise
-	 */
-	bool IsConnected() const { return this->sock != INVALID_SOCKET; }
 
 	/**
 	 * Whether the current client connected to the socket has quit.

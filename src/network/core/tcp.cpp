@@ -13,8 +13,9 @@
 #include "tcp.h"
 
 NetworkTCPSocketHandler::NetworkTCPSocketHandler(SOCKET s) :
-		NetworkSocketHandler(s),
-		packet_queue(NULL), packet_recv(NULL), writable(false)
+		NetworkSocketHandler(),
+		packet_queue(NULL), packet_recv(NULL),
+		sock(s), writable(false)
 {
 }
 

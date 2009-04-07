@@ -74,6 +74,7 @@ protected:
 	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO);
 	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_NEWGRFS);
 public:
+	ServerNetworkUDPSocketHandler(NetworkAddressList *addresses) : NetworkUDPSocketHandler(addresses) {}
 	virtual ~ServerNetworkUDPSocketHandler() {}
 };
 
@@ -376,7 +377,7 @@ static void NetworkUDPBroadCast(NetworkUDPSocketHandler *socket)
 
 		DEBUG(net, 4, "[udp] broadcasting to %s", addr->GetHostname());
 
-		socket->SendPacket(&p, addr);
+		socket->SendPacket(&p, addr, true, true);
 	}
 }
 
@@ -384,10 +385,6 @@ static void NetworkUDPBroadCast(NetworkUDPSocketHandler *socket)
 /* Request the the server-list from the master server */
 void NetworkUDPQueryMasterServer()
 {
-	if (!_udp_client_socket->IsConnected()) {
-		if (!_udp_client_socket->Listen(NetworkAddress(), true)) return;
-	}
-
 	Packet p(PACKET_UDP_CLIENT_GET_LIST);
 	NetworkAddress out_addr(NETWORK_MASTER_SERVER_HOST, NETWORK_MASTER_SERVER_PORT);
 
@@ -404,11 +401,6 @@ void NetworkUDPSearchGame()
 {
 	/* We are still searching.. */
 	if (_network_udp_broadcast > 0) return;
-
-	/* No UDP-socket yet.. */
-	if (!_udp_client_socket->IsConnected()) {
-		if (!_udp_client_socket->Listen(NetworkAddress(), true)) return;
-	}
 
 	DEBUG(net, 0, "[udp] searching server");
 
@@ -453,11 +445,6 @@ void NetworkUDPQueryServerThread(void *pntr)
 
 void NetworkUDPQueryServer(NetworkAddress address, bool manually)
 {
-	/* No UDP-socket yet.. */
-	if (!_udp_client_socket->IsConnected()) {
-		if (!_udp_client_socket->Listen(NetworkAddress(), true)) return;
-	}
-
 	NetworkUDPQueryServerInfo *info = new NetworkUDPQueryServerInfo(address, manually);
 	if (address.IsResolved() || !ThreadObject::New(NetworkUDPQueryServerThread, info)) {
 		NetworkUDPQueryServerThread(info);
@@ -487,11 +474,6 @@ void NetworkUDPRemoveAdvertise()
 {
 	/* Check if we are advertising */
 	if (!_networking || !_network_server || !_network_udp_server) return;
-
-	/* check for socket */
-	if (!_udp_master_socket->IsConnected()) {
-		if (!_udp_master_socket->Listen(NetworkAddress(_settings_client.network.server_bind_ip, 0), false)) return;
-	}
 
 	if (!ThreadObject::New(NetworkUDPRemoveAdvertiseThread, NULL)) {
 		NetworkUDPRemoveAdvertiseThread(NULL);
@@ -526,11 +508,6 @@ void NetworkUDPAdvertise()
 	if (!_networking || !_network_server || !_network_udp_server || !_settings_client.network.server_advertise)
 		return;
 
-	/* check for socket */
-	if (!_udp_master_socket->IsConnected()) {
-		if (!_udp_master_socket->Listen(NetworkAddress(_settings_client.network.server_bind_ip, 0), false)) return;
-	}
-
 	if (_network_need_advertise) {
 		_network_need_advertise = false;
 		_network_advertise_retries = ADVERTISE_RETRY_TIMES;
@@ -559,8 +536,12 @@ void NetworkUDPInitialize()
 	assert(_udp_client_socket == NULL && _udp_server_socket == NULL && _udp_master_socket == NULL);
 
 	_network_udp_mutex->BeginCritical();
+
+	NetworkAddressList server;
+	*server.Append() = NetworkAddress(_settings_client.network.server_bind_ip, _settings_client.network.server_port);
+
 	_udp_client_socket = new ClientNetworkUDPSocketHandler();
-	_udp_server_socket = new ServerNetworkUDPSocketHandler();
+	_udp_server_socket = new ServerNetworkUDPSocketHandler(&server);
 	_udp_master_socket = new MasterNetworkUDPSocketHandler();
 
 	_network_udp_server = false;

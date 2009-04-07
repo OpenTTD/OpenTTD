@@ -274,7 +274,7 @@ static void NetworkClientError(NetworkRecvStatus res, NetworkClientSocket *cs)
 
 	/* We just want to close the connection.. */
 	if (res == NETWORK_RECV_STATUS_CLOSE_QUERY) {
-		cs->CloseConnection();
+		cs->NetworkSocketHandler::CloseConnection();
 		NetworkCloseClient(cs);
 		_networking = false;
 
@@ -738,8 +738,7 @@ bool NetworkServerStart()
 	if (!NetworkListen()) return false;
 
 	/* Try to start UDP-server */
-	_network_udp_server = true;
-	_network_udp_server = _udp_server_socket->Listen(NetworkAddress(_settings_client.network.server_bind_ip, _settings_client.network.server_port), false);
+	_network_udp_server = _udp_server_socket->Listen();
 
 	_network_company_states = CallocT<NetworkCompanyState>(MAX_COMPANIES);
 	_network_server = true;

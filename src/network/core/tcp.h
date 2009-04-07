@@ -20,7 +20,14 @@ private:
 	Packet *packet_queue;     ///< Packets that are awaiting delivery
 	Packet *packet_recv;      ///< Partially received packet
 public:
+	SOCKET sock;              ///< The socket currently connected to
 	bool writable;            ///< Can we write to this socket?
+
+	/**
+	 * Whether this socket is currently bound to a socket.
+	 * @return true when the socket is bound, false otherwise
+	 */
+	bool IsConnected() const { return this->sock != INVALID_SOCKET; }
 
 	virtual NetworkRecvStatus CloseConnection();
 	void Send_Packet(Packet *packet);

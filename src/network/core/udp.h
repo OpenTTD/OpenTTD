@@ -96,6 +96,11 @@ enum PacketUDPType {
 /** Base socket handler for all UDP sockets */
 class NetworkUDPSocketHandler : public NetworkSocketHandler {
 protected:
+	/** The address to bind to. */
+	NetworkAddressList bind;
+	/** The opened sockets. */
+	SocketList sockets;
+
 	NetworkRecvStatus CloseConnection();
 
 	/* Declare all possible packets here. If it can be received by the
@@ -124,13 +129,15 @@ protected:
 	 */
 	virtual void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config) { NOT_REACHED(); }
 public:
+	NetworkUDPSocketHandler(NetworkAddressList *bind = NULL);
+
 	/** On destructing of this class, the socket needs to be closed */
 	virtual ~NetworkUDPSocketHandler() { this->Close(); }
 
-	bool Listen(NetworkAddress address, bool broadcast);
+	bool Listen();
 	void Close();
 
-	void SendPacket(Packet *p, NetworkAddress *recv);
+	void SendPacket(Packet *p, NetworkAddress *recv, bool all = false, bool broadcast = false);
 	void ReceivePackets();
 
 	void Send_NetworkGameInfo(Packet *p, const NetworkGameInfo *info);
