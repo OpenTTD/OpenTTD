@@ -8,6 +8,8 @@
 #ifdef ENABLE_NETWORK
 
 #include "os_abstraction.h"
+#include "config.h"
+#include "../../string_func.h"
 
 /**
  * Wrapper for (un)resolved network addresses; there's no reason to transform
@@ -16,9 +18,9 @@
  */
 class NetworkAddress {
 private:
-	char *hostname;           ///< The hostname, NULL if there isn't one
-	size_t address_length;    ///< The length of the resolved address
-	sockaddr_storage address; ///< The resolved address
+	char hostname[NETWORK_HOSTNAME_LENGTH]; ///< The hostname
+	size_t address_length;                  ///< The length of the resolved address
+	sockaddr_storage address;               ///< The resolved address
 
 	/**
 	 * Helper function to resolve something to a socket.
@@ -43,9 +45,9 @@ public:
 	 * @param port the port
 	 */
 	NetworkAddress(in_addr_t ip, uint16 port) :
-		hostname(NULL),
 		address_length(sizeof(sockaddr))
 	{
+		*this->hostname = '\0';
 		memset(&this->address, 0, sizeof(this->address));
 		this->address.ss_family = AF_INET;
 		((struct sockaddr_in*)&this->address)->sin_addr.s_addr = ip;
@@ -57,10 +59,10 @@ public:
 	 * @param address the IP address with port
 	 */
 	NetworkAddress(struct sockaddr_storage &address, size_t address_length) :
-		hostname(NULL),
 		address_length(address_length),
 		address(address)
 	{
+		*this->hostname = '\0';
 	}
 
 	/**
@@ -68,9 +70,9 @@ public:
 	 * @param address the IP address with port
 	 */
 	NetworkAddress(sockaddr *address, size_t address_length) :
-		hostname(NULL),
 		address_length(address_length)
 	{
+		*this->hostname = '\0';
 		memset(&this->address, 0, sizeof(this->address));
 		memcpy(&this->address, address, address_length);
 	}
@@ -82,9 +84,9 @@ public:
 	 * @param family the address family
 	 */
 	NetworkAddress(const char *hostname = "0.0.0.0", uint16 port = 0, int family = AF_INET) :
-		hostname(strdup(hostname)),
 		address_length(0)
 	{
+		strecpy(this->hostname, StrEmpty(hostname) ? "" : hostname, lastof(this->hostname));
 		memset(&this->address, 0, sizeof(this->address));
 		this->address.ss_family = family;
 		this->SetPort(port);
@@ -94,17 +96,9 @@ public:
 	 * Make a clone of another address
 	 * @param address the address to clone
 	 */
-	NetworkAddress(const NetworkAddress &address) :
-		hostname(address.hostname == NULL ? NULL : strdup(address.hostname)),
-		address_length(address.address_length),
-		address(address.address)
+	NetworkAddress(const NetworkAddress &address)
 	{
-	}
-
-	/** Clean up our mess */
-	~NetworkAddress()
-	{
-		free(hostname);
+		memcpy(this, &address, sizeof(*this));
 	}
 
 	/**
@@ -183,6 +177,7 @@ public:
 	/**
 	 * Compare the address of this class with the address of another.
 	 * @param address the other address.
+	 * @return true if both match.
 	 */
 	bool operator == (NetworkAddress address)
 	{
@@ -192,25 +187,20 @@ public:
 	/**
 	 * Compare the address of this class with the address of another.
 	 * @param address the other address.
+	 * @return true if both match.
+	 */
+	bool operator == (NetworkAddress address) const
+	{
+		return const_cast<NetworkAddress*>(this)->CompareTo(address) == 0;
+	}
+
+	/**
+	 * Compare the address of this class with the address of another.
+	 * @param address the other address.
 	 */
 	bool operator < (NetworkAddress address)
 	{
 		return this->CompareTo(address) < 0;
-	}
-
-	/**
-	 * Assign another address to ourself
-	 * @param other obviously the address to assign to us
-	 * @return 'this'
-	 */
-	NetworkAddress& operator = (const NetworkAddress &other)
-	{
-		if (this != &other) { // protect against invalid self-assignment
-			free(this->hostname);
-			memcpy(this, &other, sizeof(*this));
-			if (other.hostname != NULL) this->hostname = strdup(other.hostname);
-		}
-		return *this;
 	}
 
 	/**
