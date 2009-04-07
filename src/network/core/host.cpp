@@ -15,14 +15,12 @@
  * Internal implementation for finding the broadcast IPs.
  * This function is implemented multiple times for multiple targets.
  * @param broadcast the list of broadcasts to write into.
- * @param limit     the maximum number of items to add.
  */
-static int NetworkFindBroadcastIPsInternal(NetworkAddress *broadcast, int limit);
+static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast);
 
 #if defined(PSP)
-static int NetworkFindBroadcastIPsInternal(NetworkAddress *broadcast, int limit) // PSP implementation
+static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // PSP implementation
 {
-	return 0;
 }
 
 #elif defined(BEOS_NET_SERVER) /* doesn't have neither getifaddrs or net/if.h */
@@ -39,27 +37,25 @@ int seek_past_header(char **pos, const char *header)
 	return B_OK;
 }
 
-static int NetworkFindBroadcastIPsInternal(NetworkAddress *broadcast, int limit) // BEOS implementation
+static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // BEOS implementation
 {
 	int sock = socket(AF_INET, SOCK_DGRAM, 0);
 
 	if (sock < 0) {
 		DEBUG(net, 0, "[core] error creating socket");
-		return 0;
+		return;
 	}
 
 	char *output_pointer = NULL;
 	int output_length = _netstat(sock, &output_pointer, 1);
 	if (output_length < 0) {
 		DEBUG(net, 0, "[core] error running _netstat");
-		return 0;
+		return;
 	}
 
-	int index;
 	char **output = &output_pointer;
 	if (seek_past_header(output, "IP Interfaces:") == B_OK) {
-		while (index != limit) {
-
+		for (;;) {
 			uint32 n, fields, read;
 			uint8 i1, i2, i3, i4, j1, j2, j3, j4;
 			struct in_addr inaddr;
@@ -80,7 +76,7 @@ static int NetworkFindBroadcastIPsInternal(NetworkAddress *broadcast, int limit)
 				sockaddr_storage address;
 				memset(&address, 0, sizeof(address));
 				((sockaddr_in*)&address)->sin_addr.s_addr = htonl(ip | ~netmask);
-				broadcast[index] = NetworkAddress(address, sizeof(sockaddr));
+				*broadcast->Append() = NetworkAddress(address, sizeof(sockaddr));
 				index++;
 			}
 			if (read < 0) {
@@ -90,47 +86,40 @@ static int NetworkFindBroadcastIPsInternal(NetworkAddress *broadcast, int limit)
 		}
 		closesocket(sock);
 	}
-
-	return index;
 }
 
 #elif defined(HAVE_GETIFADDRS)
-static int NetworkFindBroadcastIPsInternal(NetworkAddress *broadcast, int limit) // GETIFADDRS implementation
+static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // GETIFADDRS implementation
 {
 	struct ifaddrs *ifap, *ifa;
 
-	if (getifaddrs(&ifap) != 0) return 0;
+	if (getifaddrs(&ifap) != 0) return;
 
-	int index = 0;
-	for (ifa = ifap; ifa != NULL && index != limit; ifa = ifa->ifa_next) {
+	for (ifa = ifap; ifa != NULL; ifa = ifa->ifa_next) {
 		if (!(ifa->ifa_flags & IFF_BROADCAST)) continue;
 		if (ifa->ifa_broadaddr == NULL) continue;
 		if (ifa->ifa_broadaddr->sa_family != AF_INET) continue;
 
-		broadcast[index] = NetworkAddress(ifa->ifa_broadaddr, sizeof(sockaddr));
-		index++;
+		*broadcast->Append() = NetworkAddress(ifa->ifa_broadaddr, sizeof(sockaddr));
 	}
 	freeifaddrs(ifap);
-
-	return index;
 }
 
 #elif defined(WIN32)
-static int NetworkFindBroadcastIPsInternal(NetworkAddress *broadcast, int limit) // Win32 implementation
+static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // Win32 implementation
 {
 	SOCKET sock = socket(AF_INET, SOCK_DGRAM, 0);
-	if (sock == INVALID_SOCKET) return 0;
+	if (sock == INVALID_SOCKET) return;
 
 	DWORD len = 0;
 	INTERFACE_INFO *ifo = AllocaM(INTERFACE_INFO, limit);
 	memset(ifo, 0, limit * sizeof(*ifo));
 	if ((WSAIoctl(sock, SIO_GET_INTERFACE_LIST, NULL, 0, &ifo[0], limit * sizeof(*ifo), &len, NULL, NULL)) != 0) {
 		closesocket(sock);
-		return 0;
+		return;
 	}
 
-	int index = 0;
-	for (uint j = 0; j < len / sizeof(*ifo) && index != limit; j++) {
+	for (uint j = 0; j < len / sizeof(*ifo); j++) {
 		if (ifo[j].iiFlags & IFF_LOOPBACK) continue;
 		if (!(ifo[j].iiFlags & IFF_BROADCAST)) continue;
 
@@ -139,22 +128,20 @@ static int NetworkFindBroadcastIPsInternal(NetworkAddress *broadcast, int limit)
 		/* iiBroadcast is unusable, because it always seems to be set to 255.255.255.255. */
 		memcpy(&address, &ifo[j].iiAddress.Address, sizeof(sockaddr));
 		((sockaddr_in*)&address)->sin_addr.s_addr = ifo[j].iiAddress.AddressIn.sin_addr.s_addr | ~ifo[j].iiNetmask.AddressIn.sin_addr.s_addr;
-		broadcast[index] = NetworkAddress(address, sizeof(sockaddr));
-		index++;
+		*broadcast->Append() = NetworkAddress(address, sizeof(sockaddr));
 	}
 
 	closesocket(sock);
-	return index;
 }
 
 #else /* not HAVE_GETIFADDRS */
 
 #include "../../string_func.h"
 
-static int NetworkFindBroadcastIPsInternal(NetworkAddress *broadcast, int limit) // !GETIFADDRS implementation
+static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // !GETIFADDRS implementation
 {
 	SOCKET sock = socket(AF_INET, SOCK_DGRAM, 0);
-	if (sock == INVALID_SOCKET) return 0;
+	if (sock == INVALID_SOCKET) return;
 
 	char buf[4 * 1024]; // Arbitrary buffer size
 	struct ifconf ifconf;
@@ -163,12 +150,11 @@ static int NetworkFindBroadcastIPsInternal(NetworkAddress *broadcast, int limit)
 	ifconf.ifc_buf = buf;
 	if (ioctl(sock, SIOCGIFCONF, &ifconf) == -1) {
 		closesocket(sock);
-		return 0;
+		return;
 	}
 
 	const char *buf_end = buf + ifconf.ifc_len;
-	int index = 0;
-	for (const char *p = buf; p < buf_end && index != limit;) {
+	for (const char *p = buf; p < buf_end;) {
 		const struct ifreq *req = (const struct ifreq*)p;
 
 		if (req->ifr_addr.sa_family == AF_INET) {
@@ -178,7 +164,7 @@ static int NetworkFindBroadcastIPsInternal(NetworkAddress *broadcast, int limit)
 			if (ioctl(sock, SIOCGIFFLAGS, &r) != -1 &&
 					r.ifr_flags & IFF_BROADCAST &&
 					ioctl(sock, SIOCGIFBRDADDR, &r) != -1) {
-				broadcast[index++] = NetworkAddress(&r.ifr_broadaddr, sizeof(sockaddr));
+				*broadcast->Append() = NetworkAddress(&r.ifr_broadaddr, sizeof(sockaddr));
 			}
 		}
 
@@ -189,8 +175,6 @@ static int NetworkFindBroadcastIPsInternal(NetworkAddress *broadcast, int limit)
 	}
 
 	closesocket(sock);
-
-	return index;
 }
 #endif /* all NetworkFindBroadcastIPsInternals */
 
@@ -198,19 +182,17 @@ static int NetworkFindBroadcastIPsInternal(NetworkAddress *broadcast, int limit)
  * Find the IPv4 broadcast addresses; IPv6 uses a completely different
  * strategy for broadcasting.
  * @param broadcast the list of broadcasts to write into.
- * @param limit     the maximum number of items to add.
  */
-void NetworkFindBroadcastIPs(NetworkAddress *broadcast, int limit)
+void NetworkFindBroadcastIPs(NetworkAddressList *broadcast)
 {
-	int count = NetworkFindBroadcastIPsInternal(broadcast, limit);
-
-	/* Make sure the list is terminated. */
-	broadcast[count] = NetworkAddress("");
+	NetworkFindBroadcastIPsInternal(broadcast);
 
 	/* Now display to the debug all the detected ips */
 	DEBUG(net, 3, "Detected broadcast addresses:");
-	for (int i = 0; !StrEmpty(broadcast[i].GetHostname()); i++) {
-		DEBUG(net, 3, "%d) %s", i, broadcast[i].GetHostname());
+	int i = 0;
+	for (NetworkAddress *addr = broadcast->Begin(); addr != broadcast->End(); addr++) {
+		addr->SetPort(NETWORK_DEFAULT_PORT);
+		DEBUG(net, 3, "%d) %s", i++, addr->GetHostname());
 	}
 }
 

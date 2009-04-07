@@ -10,6 +10,10 @@
 #include "os_abstraction.h"
 #include "config.h"
 #include "../../string_func.h"
+#include "../../core/smallvec_type.hpp"
+
+class NetworkAddress;
+typedef SmallVector<NetworkAddress, 4> NetworkAddressList;
 
 /**
  * Wrapper for (un)resolved network addresses; there's no reason to transform

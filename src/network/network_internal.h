@@ -101,7 +101,7 @@ extern uint32 _frame_counter;
 extern uint32 _last_sync_frame; // Used in the server to store the last time a sync packet was sent to clients.
 
 /* networking settings */
-extern NetworkAddress _broadcast_list[MAX_INTERFACES + 1];
+extern NetworkAddressList _broadcast_list;
 
 extern uint32 _sync_seed_1, _sync_seed_2;
 extern uint32 _sync_frame;

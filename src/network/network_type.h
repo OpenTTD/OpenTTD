@@ -26,9 +26,6 @@ enum {
 	 */
 	MAX_CLIENT_SLOTS = 256,
 
-	/** Maximum number of internet interfaces supported. */
-	MAX_INTERFACES = 9,
-
 	/** How many vehicle/station types we put over the network */
 	NETWORK_VEHICLE_TYPES = 5,
 	NETWORK_STATION_TYPES = 5,

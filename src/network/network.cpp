@@ -61,7 +61,7 @@ uint32 _frame_counter_server; // The frame_counter of the server, if in network-
 uint32 _frame_counter_max; // To where we may go with our clients
 uint32 _frame_counter;
 uint32 _last_sync_frame; // Used in the server to store the last time a sync packet was sent to clients.
-NetworkAddress _broadcast_list[MAX_INTERFACES + 1];
+NetworkAddressList _broadcast_list;
 uint32 _sync_seed_1, _sync_seed_2;
 uint32 _sync_frame;
 bool _network_first_time;
@@ -1073,7 +1073,7 @@ void NetworkStartUp()
 	NetworkUDPInitialize();
 	NetworkInitialize();
 	DEBUG(net, 3, "[core] network online, multiplayer available");
-	NetworkFindBroadcastIPs(_broadcast_list, MAX_INTERFACES);
+	NetworkFindBroadcastIPs(&_broadcast_list);
 }
 
 /** This shuts the network down */
