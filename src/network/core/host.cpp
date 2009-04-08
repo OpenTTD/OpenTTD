@@ -112,11 +112,18 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // Wi
 	if (sock == INVALID_SOCKET) return;
 
 	DWORD len = 0;
-	INTERFACE_INFO *ifo = AllocaM(INTERFACE_INFO, limit);
-	memset(ifo, 0, limit * sizeof(*ifo));
-	if ((WSAIoctl(sock, SIO_GET_INTERFACE_LIST, NULL, 0, &ifo[0], limit * sizeof(*ifo), &len, NULL, NULL)) != 0) {
-		closesocket(sock);
-		return;
+	int num = 2;
+	INTERFACE_INFO *ifo = CallocT<INTERFACE_INFO>(num);
+
+	for(;;) {
+		if (WSAIoctl(sock, SIO_GET_INTERFACE_LIST, NULL, 0, ifo, num * sizeof(*ifo), &len, NULL, NULL) == 0) break;
+		free(ifo);
+		if (WSAGetLastError() != WSAEFAULT) {
+			closesocket(sock);
+			return;
+		}
+		num *= 2;
+		ifo = CallocT<INTERFACE_INFO>(num);
 	}
 
 	for (uint j = 0; j < len / sizeof(*ifo); j++) {
@@ -131,6 +138,7 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // Wi
 		*broadcast->Append() = NetworkAddress(address, sizeof(sockaddr));
 	}
 
+	free(ifo);
 	closesocket(sock);
 }
 
