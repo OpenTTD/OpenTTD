@@ -245,46 +245,46 @@ SOCKET NetworkAddress::Connect()
  */
 static SOCKET ListenLoopProc(addrinfo *runp)
 {
+	const char *type = runp->ai_socktype == SOCK_STREAM ? "tcp" : "udp";
+	const char *address = NetworkAddress(runp->ai_addr, runp->ai_addrlen).GetAddressAsString();
+
 	SOCKET sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
 	if (sock == INVALID_SOCKET) {
-		DEBUG(net, 1, "Could not create socket: %s", strerror(errno));
+		DEBUG(net, 1, "[%s] Could not create socket on port %s: %s", type, address, strerror(errno));
 		return INVALID_SOCKET;
 	}
 
 	if (runp->ai_socktype == SOCK_STREAM && !SetNoDelay(sock)) {
-		DEBUG(net, 1, "Setting TCP_NODELAY failed");
+		DEBUG(net, 1, "[%s] Setting TCP_NODELAY failed for port %s", type, address);
 	}
 
 	int on = 1;
 	/* The (const char*) cast is needed for windows!! */
 	if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (const char*)&on, sizeof(on)) == -1) {
-		DEBUG(net, 1, "Could not set reusable sockets: %s", strerror(errno));
+		DEBUG(net, 1, "[%s] Could not set reusable sockets for port %s: %s", type, address, strerror(errno));
 	}
 
 	if (runp->ai_family == AF_INET6 &&
 			setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&on, sizeof(on)) == -1) {
-		DEBUG(net, 1, "Could not disable IPv4 over IPv6: %s", strerror(errno));
+		DEBUG(net, 1, "[%s] Could not disable IPv4 over IPv6 on port %s: %s", type, address, strerror(errno));
 	}
 
 	if (bind(sock, runp->ai_addr, runp->ai_addrlen) != 0) {
-		DEBUG(net, 1, "Could not bind: %s", strerror(errno));
+		DEBUG(net, 1, "[%s] Could not bind on port %s: %s", type, address, strerror(errno));
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
 
 	if (runp->ai_socktype != SOCK_DGRAM && listen(sock, 1) != 0) {
-		DEBUG(net, 1, "Could not listen: %s", strerror(errno));
+		DEBUG(net, 1, "[%s] Could not listen at port %s: %s", type, address, strerror(errno));
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
 
 	/* Connection succeeded */
-	if (!SetNonBlocking(sock)) DEBUG(net, 0, "Setting non-blocking mode failed");
+	if (!SetNonBlocking(sock)) DEBUG(net, 0, "[%s] Setting non-blocking mode failed for port %s", type, address);
 
-	DEBUG(net, 1, "[%s] Listening on port %s",
-			runp->ai_socktype == SOCK_STREAM ? "tcp" : "udp",
-			NetworkAddress(runp->ai_addr, runp->ai_addrlen).GetAddressAsString());
-
+	DEBUG(net, 1, "[%s] Listening on port %s", type, address);
 	return sock;
 }
 
