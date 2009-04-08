@@ -1308,7 +1308,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}언어:
 STR_NETWORK_TILESET                                             :{SILVER}기후:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}맵 크기:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}서버 버전:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}서버 주소:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}서버 주소:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}시작 날짜:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}현재 날짜:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}암호가 걸려있습니다!

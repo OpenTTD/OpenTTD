@@ -1307,7 +1307,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma:
 STR_NETWORK_TILESET                                             :{SILVER}Grup de cel·les:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Mida del mapa:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versió del servidor:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adreça del servidor:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adreça del servidor:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Data inicial:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data actual:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Protegit per contrasenya!

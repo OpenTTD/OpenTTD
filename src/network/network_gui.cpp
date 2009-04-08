@@ -352,7 +352,7 @@ public:
 
 	virtual void OnPaint()
 	{
-		const NetworkGameList *sel = this->server;
+		NetworkGameList *sel = this->server;
 		const SortButtonState arrow = this->servers.IsDescSortOrder() ? SBS_DOWN : SBS_UP;
 
 		if (this->servers.NeedRebuild()) {
@@ -453,8 +453,7 @@ public:
 			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_VERSION, TC_GOLD); // server version
 			y += 10;
 
-			SetDParamStr(0, sel->info.hostname);
-			SetDParam(1, sel->address.GetPort());
+			SetDParamStr(0, sel->address.GetAddressAsString());
 			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_ADDRESS, TC_GOLD); // server address
 			y += 10;
 

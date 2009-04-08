@@ -1308,7 +1308,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Språk:
 STR_NETWORK_TILESET                                             :{SILVER}Brikkesett:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Kartstorleik:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Tenarversjon:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adressa til tenaren:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adressa til tenaren:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Starta:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Noverande dato:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Passordbeskytta!

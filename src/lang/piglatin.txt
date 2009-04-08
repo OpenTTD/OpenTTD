@@ -1307,7 +1307,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Anguage
 STR_NETWORK_TILESET                                             :{SILVER}Ilesettay:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Apmay izesay:  {WHITE}{COMMA}xay{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Erversay ersionvay:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Erversay addressway:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Erversay addressway:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Artstay ateday:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Urrentcay ateday:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Asswordpay otectedpray!

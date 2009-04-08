@@ -1309,7 +1309,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Lingua:
 STR_NETWORK_TILESET                                             :{SILVER}Paesaggio:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Dimensione mappa:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versione server:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Indirizzo del server:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Indirizzo del server:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Data di inizio:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data corrente:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Protetto da password!

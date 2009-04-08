@@ -1275,7 +1275,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Taal:  
 STR_NETWORK_TILESET                                             :{SILVER}Blokkiestel:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Kaart groote:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Verskaffer hersiening:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Verskaffer adres:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Verskaffer adres:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Begin datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Huidige datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Wagwoord beskerm!

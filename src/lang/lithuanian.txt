@@ -1328,7 +1328,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Kalba: 
 STR_NETWORK_TILESET                                             :{SILVER}Pavadinimas:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Žemėlapio dydis:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Serverio versija:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serverio adresas:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serverio adresas:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Žaidimo pradžia:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Dabartinė data:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Apsaugota slaptazodžiu!

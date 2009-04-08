@@ -1302,7 +1302,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}語言�
 STR_NETWORK_TILESET                                             :{SILVER}圖格組：{WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}地圖大小：{WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}伺服器版本：{WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}伺服器位址：{WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}伺服器位址：{WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}開始日期：{WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}目前日期：{WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}受密碼保護！

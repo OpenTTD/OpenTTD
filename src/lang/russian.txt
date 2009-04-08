@@ -1309,7 +1309,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Язы�
 STR_NETWORK_TILESET                                             :{SILVER}Климат:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Размер карты:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версия сервера:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адрес сервера:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адрес сервера:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Дата начала:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Текущая дата:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Защищено паролем!

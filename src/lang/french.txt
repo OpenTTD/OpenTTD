@@ -1308,7 +1308,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Langue:
 STR_NETWORK_TILESET                                             :{SILVER}Terrain:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Taille de la carte :  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Version du serveur :  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresse du serveur :  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresse du serveur :  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Date de début :  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Date courante :  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Protégée par mot de passe !

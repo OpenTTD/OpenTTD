@@ -1341,7 +1341,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Nyelv: 
 STR_NETWORK_TILESET                                             :{SILVER}Tájtípus:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}A pálya nagysága:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Szerver verzió:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}A szerver címe:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}A szerver címe:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Kezdési dátum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Jelenlegi dátum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Jelszóval védve!

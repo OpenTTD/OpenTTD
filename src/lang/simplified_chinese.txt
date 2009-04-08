@@ -1303,7 +1303,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}语　�
 STR_NETWORK_TILESET                                             :{SILVER}场景类型：   {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}地图类型：   {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}服务器版本： {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}服务器地址： {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}服务器地址： {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}开始日期：   {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}当前日期：   {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}有密码保护！

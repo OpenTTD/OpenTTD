@@ -1307,7 +1307,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Limba: 
 STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Marimea hartii:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versiune server:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa serverului:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa serverului:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Data de inceput:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data curentă:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Protejat cu parola!

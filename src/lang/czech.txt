@@ -1375,7 +1375,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Jazyk: 
 STR_NETWORK_TILESET                                             :{SILVER}Prostředí:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Velikost mapy:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Verze hry na serveru:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa serveru:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa serveru:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Počáteční datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Současné datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Chráněno heslem!

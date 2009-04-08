@@ -1374,7 +1374,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Jazyk: 
 STR_NETWORK_TILESET                                             :{SILVER}Prostredie:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Velkost mapy:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Verzia servera:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa servera:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa servera:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Datum zaciatku:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Aktualny datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Heslo:

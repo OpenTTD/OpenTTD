@@ -1307,7 +1307,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Iaith: 
 STR_NETWORK_TILESET                                             :{SILVER}Set Teils:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Maint Map:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Fersiwn Gweinydd:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Cyfeiriad Gweinydd:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Cyfeiriad Gweinydd:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Dyddiad Cychwyn:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Dyddiad Presennol:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Wedi'i Ddiogelu gan Gyfrinair!

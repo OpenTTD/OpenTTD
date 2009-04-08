@@ -1307,7 +1307,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Sprog: 
 STR_NETWORK_TILESET                                             :{SILVER}Klima:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Størrelse:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Server version:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serveradresse:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serveradresse:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Start dato:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Nuværende dato:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Beskyttet af kodeord!

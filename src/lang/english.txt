@@ -1307,7 +1307,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Languag
 STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Map size:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Server version:  {WHITE}{RAW_STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server address:  {WHITE}{RAW_STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server address:  {WHITE}{RAW_STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Start date:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Current date:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Password protected!

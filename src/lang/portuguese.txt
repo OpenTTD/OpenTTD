@@ -1307,7 +1307,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma:
 STR_NETWORK_TILESET                                             :{SILVER}Conjunto de blocos:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Tamanho do Mapa:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versão do servidor:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Endereço do servidor:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Endereço do servidor:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Data de início:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data actual:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Protegido por password!

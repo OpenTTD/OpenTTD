@@ -1307,7 +1307,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Dil:  {
 STR_NETWORK_TILESET                                             :{SILVER}Set:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Harita boyutu:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Sunucu sürümü:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Sunucu adresi:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Sunucu adresi:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Başlama tarihi:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Şimdiki tarih:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Parola korumalı!

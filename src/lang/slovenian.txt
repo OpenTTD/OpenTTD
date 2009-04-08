@@ -1349,7 +1349,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Jezik: 
 STR_NETWORK_TILESET                                             :{SILVER}Nabor ploščic:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Velikost ozemlja:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Različica strežnika:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Naslov strežnika:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Naslov strežnika:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Začetni datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Tekoči datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Zaščiten z geslom!

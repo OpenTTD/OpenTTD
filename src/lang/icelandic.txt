@@ -1308,7 +1308,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Tungum�
 STR_NETWORK_TILESET                                             :{SILVER}Landslag:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Stærð:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Útgáfa þjóns:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Veffang þjóns:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Veffang þjóns:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Upphafsdagsetning:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Núverandi dagsetning:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Varið með lykilorði!

@@ -1292,7 +1292,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Språk:
 STR_NETWORK_TILESET                                             :{SILVER}Brikkesett:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Kartstørrelse:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Tjenerversjon:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server addresse:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server addresse:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Startet:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Nettverksdato:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Passordbeskyttet!

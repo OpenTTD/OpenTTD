@@ -1289,7 +1289,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}国語�
 STR_NETWORK_TILESET                                             :{SILVER}タイルセット：{WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}地図のサイズ：{WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}サーババージョン：{WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}サーバアドレス：{WHITE}{STRING}：{NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}サーバアドレス：{WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}開始の日付：{WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}現在の日付：{WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}パスワードが必要！

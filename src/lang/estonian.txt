@@ -1338,7 +1338,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Keel:  
 STR_NETWORK_TILESET                                             :{SILVER}Ruudustik:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Kaardi suurus:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Serveri versioon:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serveri aadress:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serveri aadress:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Aeg alguses:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Aeg hetkel:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Parooliga kaitstud!

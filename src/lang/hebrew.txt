@@ -1295,7 +1295,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}שפה:
 STR_NETWORK_TILESET                                             :{WHITE}{STRING}{SILVER} :סוג הקרקע
 STR_NETWORK_MAP_SIZE                                            :{SILVER}גודל המפה:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}גרסת השרת:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}כתובת השרת:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}כתובת השרת:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}תאריך התחלה:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}תאריך נוכחי:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}מוגן בסיסמה!

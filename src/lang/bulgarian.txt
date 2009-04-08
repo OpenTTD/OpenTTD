@@ -1291,7 +1291,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Ези�
 STR_NETWORK_TILESET                                             :{SILVER}Терен:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Големина на картата:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версия на сървъра:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адрес на сървъра:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адрес на сървъра:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Начална дата:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Текуща дата:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Защитено с парола!

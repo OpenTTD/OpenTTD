@@ -1373,7 +1373,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Jezik: 
 STR_NETWORK_TILESET                                             :{SILVER}Set pločica:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Veličina karte:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Verzija poslužitelja:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa poslužitelja:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa poslužitelja:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Datum početka:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Trenutni datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Zaštićeno zaporkom!

@@ -1307,7 +1307,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}الل�
 STR_NETWORK_TILESET                                             :{SILVER}مجموعة المربعات: {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}حجم الخريطة:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}نسخة الخادم:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}عنوان الخادم:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}عنوان الخادم:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}تاريخ البداية: {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}التاريخ الحالي:   {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}كلمت السر محمية!

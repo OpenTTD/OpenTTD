@@ -1307,7 +1307,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Taal:  
 STR_NETWORK_TILESET                                             :{SILVER}Klimaat:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Kaartgrootte:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Server versie:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server adres:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server adres:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Start datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Huidige datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Beveiligd met wachtwoord!

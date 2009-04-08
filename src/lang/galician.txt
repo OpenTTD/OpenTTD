@@ -1249,7 +1249,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma:
 STR_NETWORK_TILESET                                             :{SILVER}Set de Terreo:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Tamaño:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versión do servidor:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Dirección do servidor:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Dirección do servidor:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Data de comezo:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data actual:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}¡Protexido con clave!

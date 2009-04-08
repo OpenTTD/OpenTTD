@@ -1432,7 +1432,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Мов�
 STR_NETWORK_TILESET                                             :{SILVER}Шаблон:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Розмір карти:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версія серверу:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адреса серверу:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адреса серверу:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Дата початку:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Поточна дата:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Захищено паролем!

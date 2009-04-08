@@ -1287,7 +1287,7 @@ STR_NETWORK_CLIENTS                                             :{SILVER}Συμ�
 STR_NETWORK_LANGUAGE                                            :{SILVER}Γλώσσα:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Μέγεθος χάρτη:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Έκδοση διακομιστή:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Διεύθυνση διακομιστή:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Διεύθυνση διακομιστή:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Ημερομηνία έναρξης:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Τρέχουσα ημερομηνία:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Προστατευμένο με κωδικό!

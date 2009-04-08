@@ -1307,7 +1307,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Språk:
 STR_NETWORK_TILESET                                             :{SILVER}Klimat:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Kartstorlek:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Serverversion:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server adress:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server adress:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Startdatum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Nuvarande datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Lösenordsskyddat!

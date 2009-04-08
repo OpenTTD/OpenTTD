@@ -1308,7 +1308,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Valoda:
 STR_NETWORK_TILESET                                             :{SILVER}Attēlu komplekts:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Kartes izmērs:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Servera versija:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Servera adrese:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Servera adrese:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Sākuma datums:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Šībrīža datums:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Aizsargāts ar paroli!

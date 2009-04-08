@@ -1307,7 +1307,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Bahasa:
 STR_NETWORK_TILESET                                             :{SILVER}Ukuran "Tileset":  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Ukuran Peta:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versi Server:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Alamat Server:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Alamat Server:  {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Tanggal mulai:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Tanggal sekarang:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Terproteksi dengan kata kunci!
