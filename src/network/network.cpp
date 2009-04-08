@@ -374,14 +374,25 @@ static void CheckMinActiveClients()
  * occupied by connection_string. */
 void ParseConnectionString(const char **company, const char **port, char *connection_string)
 {
+	bool ipv6 = false;
 	char *p;
 	for (p = connection_string; *p != '\0'; p++) {
 		switch (*p) {
+			case '[':
+				ipv6 = true;
+				break;
+
+			case ']':
+				ipv6 = false;
+				break;
+
 			case '#':
 				*company = p + 1;
 				*p = '\0';
 				break;
+
 			case ':':
+				if (ipv6) break;
 				*port = p + 1;
 				*p = '\0';
 				break;

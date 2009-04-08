@@ -96,7 +96,7 @@ public:
 		if (StrEmpty(hostname)) hostname = "";
 		if (*hostname == '[') hostname++;
 		strecpy(this->hostname, StrEmpty(hostname) ? "" : hostname, lastof(this->hostname));
-		char *tmp = strrchr(hostname, ']');
+		char *tmp = strrchr(this->hostname, ']');
 		if (tmp != NULL) *tmp = '\0';
 
 		memset(&this->address, 0, sizeof(this->address));
