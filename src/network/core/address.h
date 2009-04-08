@@ -92,7 +92,13 @@ public:
 	NetworkAddress(const char *hostname = "0.0.0.0", uint16 port = 0, int family = AF_INET) :
 		address_length(0)
 	{
+		/* Also handle IPv6 bracket enclosed hostnames */
+		if (StrEmpty(hostname)) hostname = "";
+		if (*hostname == '[') hostname++;
 		strecpy(this->hostname, StrEmpty(hostname) ? "" : hostname, lastof(this->hostname));
+		char *tmp = strrchr(hostname, ']');
+		if (tmp != NULL) *tmp = '\0';
+
 		memset(&this->address, 0, sizeof(this->address));
 		this->address.ss_family = family;
 		this->SetPort(port);
@@ -157,6 +163,13 @@ public:
 	{
 		return this->address_length != 0;
 	}
+
+	/**
+	 * Checks of this address is of the given family.
+	 * @param family the family to check against
+	 * @return true if it is of the given family
+	 */
+	bool IsFamily(int family);
 
 	/**
 	 * Checks whether this IP address is contained by the given netmask.

@@ -26,6 +26,9 @@ NetworkUDPSocketHandler::NetworkUDPSocketHandler(NetworkAddressList *bind)
 			*this->bind.Append() = *addr;
 		}
 	} else {
+		/* As hostname NULL and port 0/NULL don't go well when
+		 * resolving it we need to add an address for each of
+		 * the address families we support. */
 		*this->bind.Append() = NetworkAddress(NULL, 0, AF_INET);
 	}
 }
@@ -76,8 +79,12 @@ void NetworkUDPSocketHandler::SendPacket(Packet *p, NetworkAddress *recv, bool a
 	if (this->sockets.Length() == 0) this->Listen();
 
 	for (SocketList::iterator s = this->sockets.Begin(); s != this->sockets.End(); s++) {
+		/* Make a local copy because if we resolve it we cannot
+		 * easily unresolve it so we can resolve it later again. */
+		NetworkAddress send(*recv);
+
 		/* Not the same type */
-		if (s->first.GetAddress()->ss_family != recv->GetAddress()->ss_family) continue;
+		if (!send.IsFamily(s->first.GetAddress()->ss_family)) continue;
 
 		p->PrepareToSend();
 
@@ -90,10 +97,11 @@ void NetworkUDPSocketHandler::SendPacket(Packet *p, NetworkAddress *recv, bool a
 #endif
 
 		/* Send the buffer */
-		int res = sendto(s->second, (const char*)p->buffer, p->size, 0, (struct sockaddr *)recv->GetAddress(), recv->GetAddressLength());
+		int res = sendto(s->second, (const char*)p->buffer, p->size, 0, (struct sockaddr *)send.GetAddress(), send.GetAddressLength());
+		DEBUG(net, 7, "[udp] sendto(%s)", send.GetAddressAsString());
 
 		/* Check for any errors, but ignore it otherwise */
-		if (res == -1) DEBUG(net, 1, "[udp] sendto(%s) failed with: %i", recv->GetAddressAsString(), GET_LAST_ERROR());
+		if (res == -1) DEBUG(net, 1, "[udp] sendto(%s) failed with: %i", send.GetAddressAsString(), GET_LAST_ERROR());
 
 		if (!all) break;
 	}

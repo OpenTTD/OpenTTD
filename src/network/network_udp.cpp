@@ -391,7 +391,7 @@ void NetworkUDPQueryMasterServer()
 	/* packet only contains protocol version */
 	p.Send_uint8(NETWORK_MASTER_SERVER_VERSION);
 
-	_udp_client_socket->SendPacket(&p, &out_addr);
+	_udp_client_socket->SendPacket(&p, &out_addr, true);
 
 	DEBUG(net, 2, "[udp] master server queried at %s", out_addr.GetAddressAsString());
 }
@@ -465,7 +465,7 @@ void NetworkUDPRemoveAdvertiseThread(void *pntr)
 	p.Send_uint16(_settings_client.network.server_port);
 
 	_network_udp_mutex->BeginCritical();
-	if (_udp_master_socket != NULL) _udp_master_socket->SendPacket(&p, &out_addr);
+	if (_udp_master_socket != NULL) _udp_master_socket->SendPacket(&p, &out_addr, true);
 	_network_udp_mutex->EndCritical();
 }
 
@@ -496,7 +496,7 @@ void NetworkUDPAdvertiseThread(void *pntr)
 	p.Send_uint64(_session_key);
 
 	_network_udp_mutex->BeginCritical();
-	if (_udp_master_socket != NULL) _udp_master_socket->SendPacket(&p, &out_addr);
+	if (_udp_master_socket != NULL) _udp_master_socket->SendPacket(&p, &out_addr, true);
 	_network_udp_mutex->EndCritical();
 }
 

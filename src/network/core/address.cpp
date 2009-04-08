@@ -16,7 +16,10 @@ const char *NetworkAddress::GetHostname()
 {
 	if (StrEmpty(this->hostname)) {
 		assert(this->address_length != 0);
-		getnameinfo((struct sockaddr *)&this->address, this->address_length, this->hostname, sizeof(this->hostname), NULL, 0, NI_NUMERICHOST);
+		char *buf = this->hostname;
+		if (this->address.ss_family == AF_INET6) buf = strecpy(buf, "[", lastof(this->hostname));
+		getnameinfo((struct sockaddr *)&this->address, this->address_length, buf, lastof(this->hostname) - buf, NULL, 0, NI_NUMERICHOST);
+		if (this->address.ss_family == AF_INET6) strecat(buf, "]", lastof(this->hostname));
 	}
 	return this->hostname;
 }
@@ -90,6 +93,14 @@ const sockaddr_storage *NetworkAddress::GetAddress()
 		this->Resolve(this->address.ss_family, SOCK_STREAM, AI_ADDRCONFIG, NULL, ResolveLoopProc);
 	}
 	return &this->address;
+}
+
+bool NetworkAddress::IsFamily(int family)
+{
+	if (!this->IsResolved()) {
+		this->Resolve(family, SOCK_STREAM, AI_ADDRCONFIG, NULL, ResolveLoopProc);
+	}
+	return this->address.ss_family == family;
 }
 
 bool NetworkAddress::IsInNetmask(char *netmask)
