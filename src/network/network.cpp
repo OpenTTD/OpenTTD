@@ -374,7 +374,7 @@ static void CheckMinActiveClients()
  * occupied by connection_string. */
 void ParseConnectionString(const char **company, const char **port, char *connection_string)
 {
-	bool ipv6 = false;
+	bool ipv6 = (strchr(connection_string, ':') != strrchr(connection_string, ':'));
 	char *p;
 	for (p = connection_string; *p != '\0'; p++) {
 		switch (*p) {
@@ -675,7 +675,7 @@ void NetworkRebuildHostList()
 	_network_host_list.Clear();
 
 	for (NetworkGameList *item = _network_game_list; item != NULL; item = item->next) {
-		if (item->manually) *_network_host_list.Append() = strdup(item->address.GetAddressAsString());
+		if (item->manually) *_network_host_list.Append() = strdup(item->address.GetAddressAsString(false));
 	}
 }
 

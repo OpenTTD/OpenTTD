@@ -56,18 +56,22 @@ void NetworkAddress::SetPort(uint16 port)
 	}
 }
 
-const char *NetworkAddress::GetAddressAsString()
+const char *NetworkAddress::GetAddressAsString(bool with_family)
 {
 	/* 6 = for the : and 5 for the decimal port number */
 	static char buf[NETWORK_HOSTNAME_LENGTH + 6 + 7];
 
-	char family;
-	switch (this->address.ss_family) {
-		case AF_INET:  family = '4'; break;
-		case AF_INET6: family = '6'; break;
-		default:       family = '?'; break;
+	if (with_family) {
+		char family;
+		switch (this->address.ss_family) {
+			case AF_INET:  family = '4'; break;
+			case AF_INET6: family = '6'; break;
+			default:       family = '?'; break;
+		}
+		seprintf(buf, lastof(buf), "%s:%d (IPv%c)", this->GetHostname(), this->GetPort(), family);
+	} else {
+		seprintf(buf, lastof(buf), "%s:%d", this->GetHostname(), this->GetPort());
 	}
-	seprintf(buf, lastof(buf), "%s:%d (IPv%c)", this->GetHostname(), this->GetPort(), family);
 	return buf;
 }
 

@@ -122,9 +122,10 @@ public:
 
 	/**
 	 * Get the address as a string, e.g. 127.0.0.1:12345.
+	 * @param with_family whether to add the family (e.g. IPvX).
 	 * @return the address
 	 */
-	const char *GetAddressAsString();
+	const char *GetAddressAsString(bool with_family = true);
 
 	/**
 	 * Get the address in it's internal representation.
