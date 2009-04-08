@@ -520,6 +520,9 @@ void NetworkUDPAdvertise()
 
 void NetworkUDPInitialize()
 {
+	/* If not closed, then do it. */
+	if (_udp_server_socket != NULL) NetworkUDPClose();
+
 	DEBUG(net, 1, "[udp] initializing listeners");
 	assert(_udp_client_socket == NULL && _udp_server_socket == NULL && _udp_master_socket == NULL);
 

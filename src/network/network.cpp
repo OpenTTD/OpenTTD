@@ -587,7 +587,6 @@ static void NetworkClose()
 		_listensockets.Clear();
 		DEBUG(net, 1, "Closed listener");
 	}
-	NetworkUDPClose();
 
 	TCPConnecter::KillAll();
 
@@ -1088,6 +1087,7 @@ void NetworkStartUp()
 void NetworkShutDown()
 {
 	NetworkDisconnect();
+	NetworkUDPClose();
 
 	DEBUG(net, 3, "[core] shutting down network");
 
