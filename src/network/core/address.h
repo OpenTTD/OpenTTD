@@ -47,21 +47,6 @@ private:
 public:
 	/**
 	 * Create a network address based on a resolved IP and port
-	 * @param ip the resolved ip
-	 * @param port the port
-	 */
-	NetworkAddress(in_addr_t ip, uint16 port) :
-		address_length(sizeof(sockaddr))
-	{
-		*this->hostname = '\0';
-		memset(&this->address, 0, sizeof(this->address));
-		this->address.ss_family = AF_INET;
-		((struct sockaddr_in*)&this->address)->sin_addr.s_addr = ip;
-		this->SetPort(port);
-	}
-
-	/**
-	 * Create a network address based on a resolved IP and port
 	 * @param address the IP address with port
 	 */
 	NetworkAddress(struct sockaddr_storage &address, size_t address_length) :

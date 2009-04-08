@@ -270,8 +270,13 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 		}
 	}
 
-	if (item->info.hostname[0] == '\0')
+	if (item->info.hostname[0] == '\0') {
 		snprintf(item->info.hostname, sizeof(item->info.hostname), "%s", client_addr->GetHostname());
+	}
+
+	if (client_addr->GetAddress()->ss_family == AF_INET6) {
+		strecat(item->info.server_name, " (IPv6)", lastof(item->info.server_name));
+	}
 
 	/* Check if we are allowed on this server based on the revision-match */
 	item->info.version_compatible = IsNetworkCompatibleVersion(item->info.server_revision);
@@ -294,12 +299,25 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_MASTER_RESPONSE_LIST)
 
 	if (type < SLT_END) {
 		for (int i = p->Recv_uint16(); i != 0 ; i--) {
-			uint32 ip = TO_LE32(p->Recv_uint32());
-			uint16 port = p->Recv_uint16();
+			sockaddr_storage addr_storage;
+			memset(&addr_storage, 0, sizeof(addr_storage));
+
+			if (type == SLT_IPv4) {
+				addr_storage.ss_family = AF_INET;
+				((sockaddr_in*)&addr_storage)->sin_addr.s_addr = TO_LE32(p->Recv_uint32());
+			} else {
+				assert(type == SLT_IPv6);
+				addr_storage.ss_family = AF_INET6;
+				byte *addr = (byte*)&((sockaddr_in6*)&addr_storage)->sin6_addr;
+				for (uint i = 0; i < sizeof(in6_addr); i++) *addr++ = p->Recv_uint8();
+			}
+			NetworkAddress addr(addr_storage, type == SLT_IPv4 ? sizeof(sockaddr_in) : sizeof(sockaddr_in6));
+			addr.SetPort(p->Recv_uint16());
 
 			/* Somehow we reached the end of the packet */
 			if (this->HasClientQuit()) return;
-			NetworkUDPQueryServer(NetworkAddress(ip, port));
+
+			NetworkUDPQueryServer(addr);
 		}
 	}
 }

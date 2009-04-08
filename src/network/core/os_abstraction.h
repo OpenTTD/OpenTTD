@@ -289,6 +289,10 @@ static inline bool SetNoDelay(SOCKET d)
 #endif
 }
 
+/* Make sure these structures have the size we expect them to be */
+assert_compile(sizeof(in_addr)  ==  4);
+assert_compile(sizeof(in6_addr) == 16);
+
 #endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CORE_OS_ABSTRACTION_H */
