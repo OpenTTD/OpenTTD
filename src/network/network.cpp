@@ -587,7 +587,7 @@ static void NetworkClose()
 		_listensockets.Clear();
 		DEBUG(net, 1, "Closed listener");
 	}
-	NetworkUDPCloseAll();
+	NetworkUDPClose();
 
 	TCPConnecter::KillAll();
 
@@ -606,6 +606,7 @@ static void NetworkClose()
 static void NetworkInitialize()
 {
 	InitializeNetworkPools();
+	NetworkUDPInitialize();
 
 	_sync_frame = 0;
 	_network_first_time = true;
@@ -743,6 +744,7 @@ bool NetworkServerStart()
 	IConsoleCmdExec("exec scripts/pre_server.scr 0");
 	if (_network_dedicated) IConsoleCmdExec("exec scripts/pre_dedicated.scr 0");
 
+	NetworkDisconnect();
 	NetworkInitialize();
 	if (!NetworkListen()) return false;
 
@@ -1077,7 +1079,6 @@ void NetworkStartUp()
 
 	memset(&_network_game_info, 0, sizeof(_network_game_info));
 
-	NetworkUDPInitialize();
 	NetworkInitialize();
 	DEBUG(net, 3, "[core] network online, multiplayer available");
 	NetworkFindBroadcastIPs(&_broadcast_list);
@@ -1087,7 +1088,6 @@ void NetworkStartUp()
 void NetworkShutDown()
 {
 	NetworkDisconnect();
-	NetworkUDPShutdown();
 
 	DEBUG(net, 3, "[core] shutting down network");
 

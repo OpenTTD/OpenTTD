@@ -13,7 +13,7 @@ void NetworkUDPQueryMasterServer();
 void NetworkUDPQueryServer(NetworkAddress address, bool manually = false);
 void NetworkUDPAdvertise();
 void NetworkUDPRemoveAdvertise();
-void NetworkUDPShutdown();
+void NetworkUDPClose();
 
 #endif /* ENABLE_NETWORK */
 

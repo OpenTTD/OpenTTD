@@ -48,6 +48,7 @@ protected:
 	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_ACK_REGISTER);
 	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_SESSION_KEY);
 public:
+	MasterNetworkUDPSocketHandler(NetworkAddressList *addresses) : NetworkUDPSocketHandler(addresses) {}
 	virtual ~MasterNetworkUDPSocketHandler() {}
 };
 
@@ -354,21 +355,6 @@ void ClientNetworkUDPSocketHandler::HandleIncomingNetworkGameInfoGRFConfig(GRFCo
 	SetBit(config->flags, GCF_COPY);
 }
 
-/* Close UDP connection */
-void NetworkUDPCloseAll()
-{
-	DEBUG(net, 1, "[udp] closed listeners");
-
-	_network_udp_mutex->BeginCritical();
-	_udp_server_socket->Close();
-	_udp_master_socket->Close();
-	_udp_client_socket->Close();
-	_network_udp_mutex->EndCritical();
-
-	_network_udp_server = false;
-	_network_udp_broadcast = 0;
-}
-
 /* Broadcast to all ips */
 static void NetworkUDPBroadCast(NetworkUDPSocketHandler *socket)
 {
@@ -534,6 +520,7 @@ void NetworkUDPAdvertise()
 
 void NetworkUDPInitialize()
 {
+	DEBUG(net, 1, "[udp] initializing listeners");
 	assert(_udp_client_socket == NULL && _udp_server_socket == NULL && _udp_master_socket == NULL);
 
 	_network_udp_mutex->BeginCritical();
@@ -543,18 +530,23 @@ void NetworkUDPInitialize()
 
 	_udp_client_socket = new ClientNetworkUDPSocketHandler();
 	_udp_server_socket = new ServerNetworkUDPSocketHandler(&server);
-	_udp_master_socket = new MasterNetworkUDPSocketHandler();
+
+	for (NetworkAddress *iter = server.Begin(); iter != server.End(); iter++) {
+		iter->SetPort(0);
+	}
+	_udp_master_socket = new MasterNetworkUDPSocketHandler(&server);
 
 	_network_udp_server = false;
 	_network_udp_broadcast = 0;
 	_network_udp_mutex->EndCritical();
 }
 
-void NetworkUDPShutdown()
+void NetworkUDPClose()
 {
-	NetworkUDPCloseAll();
-
 	_network_udp_mutex->BeginCritical();
+	_udp_server_socket->Close();
+	_udp_master_socket->Close();
+	_udp_client_socket->Close();
 	delete _udp_client_socket;
 	delete _udp_server_socket;
 	delete _udp_master_socket;
@@ -562,6 +554,10 @@ void NetworkUDPShutdown()
 	_udp_server_socket = NULL;
 	_udp_master_socket = NULL;
 	_network_udp_mutex->EndCritical();
+
+	_network_udp_server = false;
+	_network_udp_broadcast = 0;
+	DEBUG(net, 1, "[udp] closed listeners");
 }
 
 #endif /* ENABLE_NETWORK */
