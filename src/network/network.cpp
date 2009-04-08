@@ -79,7 +79,7 @@ extern NetworkUDPSocketHandler *_udp_server_socket; ///< udp server socket
 extern NetworkUDPSocketHandler *_udp_master_socket; ///< udp master socket
 
 /* The listen socket for the server */
-static SOCKET _listensocket;
+static SocketList _listensockets;
 
 /* The amount of clients connected */
 static byte _network_clients_connected = 0;
@@ -470,19 +470,16 @@ void NetworkCloseClient(NetworkClientSocket *cs)
 }
 
 /* For the server, to accept new clients */
-static void NetworkAcceptClients()
+static void NetworkAcceptClients(SOCKET ls)
 {
 	NetworkClientSocket *cs;
 	bool banned;
-
-	/* Should never ever happen.. is it possible?? */
-	assert(_listensocket != INVALID_SOCKET);
 
 	for (;;) {
 		struct sockaddr_storage sin;
 		memset(&sin, 0, sizeof(sin));
 		socklen_t sin_len = sizeof(sin);
-		SOCKET s = accept(_listensocket, (struct sockaddr*)&sin, &sin_len);
+		SOCKET s = accept(ls, (struct sockaddr*)&sin, &sin_len);
 		if (s == INVALID_SOCKET) return;
 
 		SetNonBlocking(s); // XXX error handling?
@@ -535,17 +532,16 @@ static void NetworkAcceptClients()
 /* Set up the listen socket for the server */
 static bool NetworkListen()
 {
+	assert(_listensockets.Length() == 0);
+
 	NetworkAddress address(_settings_client.network.server_bind_ip, _settings_client.network.server_port);
 
-	DEBUG(net, 1, "Listening on %s", address.GetAddressAsString());
+	address.Listen(SOCK_STREAM, &_listensockets);
 
-	SOCKET ls = address.Listen(SOCK_STREAM);
-	if (ls == INVALID_SOCKET) {
+	if (_listensockets.Length() == 0) {
 		ServerStartError("Could not create listening socket");
 		return false;
 	}
-
-	_listensocket = ls;
 
 	return true;
 }
@@ -574,8 +570,10 @@ static void NetworkClose()
 
 	if (_network_server) {
 		/* We are a server, also close the listensocket */
-		closesocket(_listensocket);
-		_listensocket = INVALID_SOCKET;
+		for (SocketList::iterator s = _listensockets.Begin(); s != _listensockets.End(); s++) {
+			closesocket(s->second);
+		}
+		_listensockets.Clear();
 		DEBUG(net, 1, "Closed listener");
 	}
 	NetworkUDPCloseAll();
@@ -820,7 +818,9 @@ static bool NetworkReceive()
 	}
 
 	/* take care of listener port */
-	if (_network_server) FD_SET(_listensocket, &read_fd);
+	for (SocketList::iterator s = _listensockets.Begin(); s != _listensockets.End(); s++) {
+		FD_SET(s->second, &read_fd);
+	}
 
 	tv.tv_sec = tv.tv_usec = 0; // don't block at all.
 #if !defined(__MORPHOS__) && !defined(__AMIGA__)
@@ -831,7 +831,9 @@ static bool NetworkReceive()
 	if (n == -1 && !_network_server) NetworkError(STR_NETWORK_ERR_LOSTCONNECTION);
 
 	/* accept clients.. */
-	if (_network_server && FD_ISSET(_listensocket, &read_fd)) NetworkAcceptClients();
+	for (SocketList::iterator s = _listensockets.Begin(); s != _listensockets.End(); s++) {
+		if (FD_ISSET(s->second, &read_fd)) NetworkAcceptClients(s->second);
+	}
 
 	/* read stuff from clients */
 	FOR_ALL_CLIENT_SOCKETS(cs) {
@@ -1058,11 +1060,6 @@ void NetworkStartUp()
 	_network_last_advertise_frame = 0;
 	_network_need_advertise = true;
 	_network_advertise_retries = 0;
-
-	/* Set an ip when the hostname is empty */
-	if (StrEmpty(_settings_client.network.server_bind_ip)) {
-		snprintf(_settings_client.network.server_bind_ip, sizeof(_settings_client.network.server_bind_ip), "%s", NetworkAddress().GetHostname());
-	}
 
 	/* Generate an unique id when there is none yet */
 	if (StrEmpty(_settings_client.network.network_id)) NetworkGenerateUniqueId();
