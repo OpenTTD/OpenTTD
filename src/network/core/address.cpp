@@ -58,9 +58,9 @@ const char *NetworkAddress::GetAddressAsString(bool with_family)
 	/* 6 = for the : and 5 for the decimal port number */
 	static char buf[NETWORK_HOSTNAME_LENGTH + 6 + 7];
 	char *p = buf;
-	if (this->address.ss_family == AF_INET6) p = strecpy(p, "[", lastof(buf));
+	if (this->GetAddress()->ss_family == AF_INET6) p = strecpy(p, "[", lastof(buf));
 	p = strecpy(p, this->GetHostname(), lastof(buf));
-	if (this->address.ss_family == AF_INET6) p = strecpy(p, "]", lastof(buf));
+	if (this->GetAddress()->ss_family == AF_INET6) p = strecpy(p, "]", lastof(buf));
 	p += seprintf(p, lastof(buf), ":%d", this->GetPort());
 
 	if (with_family) {

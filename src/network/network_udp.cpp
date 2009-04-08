@@ -286,12 +286,12 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_MASTER_RESPONSE_LIST)
 	/* packet begins with the protocol version (uint8)
 	 * then an uint16 which indicates how many
 	 * ip:port pairs are in this packet, after that
-	 * an uint32 (ip) and an uint16 (port) for each pair
+	 * an uint32 (ip) and an uint16 (port) for each pair.
 	 */
 
-	uint8 ver = p->Recv_uint8();
+	ServerListType type = (ServerListType)(p->Recv_uint8() - 1);
 
-	if (ver == 1) {
+	if (type < SLT_END) {
 		for (int i = p->Recv_uint16(); i != 0 ; i--) {
 			uint32 ip = TO_LE32(p->Recv_uint32());
 			uint16 port = p->Recv_uint16();
@@ -390,6 +390,7 @@ void NetworkUDPQueryMasterServer()
 
 	/* packet only contains protocol version */
 	p.Send_uint8(NETWORK_MASTER_SERVER_VERSION);
+	p.Send_uint8(SLT_AUTODETECT);
 
 	_udp_client_socket->SendPacket(&p, &out_addr, true);
 

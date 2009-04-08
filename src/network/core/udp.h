@@ -90,6 +90,15 @@ enum PacketUDPType {
 	PACKET_UDP_END                   ///< Must ALWAYS be on the end of this list!! (period)
 };
 
+/** The types of server lists we can get */
+enum ServerListType {
+	SLT_IPv4 = 0,   ///< Get the IPv4 addresses
+	SLT_IPv6 = 1,   ///< Get the IPv6 addresses
+	SLT_AUTODETECT, ///< Autodetect the type based on the connection
+
+	SLT_END = SLT_AUTODETECT ///< End of 'arrays' marker
+};
+
 #define DECLARE_UDP_RECEIVE_COMMAND(type) virtual void NetworkPacketReceive_## type ##_command(Packet *p, NetworkAddress *client_addr)
 #define DEF_UDP_RECEIVE_COMMAND(cls, type) void cls ##NetworkUDPSocketHandler::NetworkPacketReceive_ ## type ## _command(Packet *p, NetworkAddress *client_addr)
 
