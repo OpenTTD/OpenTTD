@@ -4,7 +4,6 @@
 ##winlangid 0x0c0a
 ##grflangid 0x04
 ##plural 0
-##textdir ltr
 ##gender masculino femenino
 
 #
@@ -2241,6 +2240,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Seleccio
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Generar cara al azar
 STR_704C_KEY                                                    :{BLACK}Clave
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Mostrar clave en gráficos
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Mostrar detalles de rendimiento
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Clave de los gráficos
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Click aquí para intercambiar la entrada de la compañía
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Unidades de carga entregadas
@@ -3172,6 +3172,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren '{V
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' da información incorrecta.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Información de carga/recarga para '{1:ENGINE}' difiere de la lista de compra después de la construcción. Esto puede causar que la autorenovación/cambio falle.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha causado un bucle sin fin en la llamada de producción.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}El juego ha sido grabado en una versión sin soporte de tranvía. Todos los tranvías serán eliminados.
 

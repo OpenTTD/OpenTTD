@@ -4,7 +4,6 @@
 ##winlangid 0x0409
 ##grflangid 0x00
 ##plural 0
-##textdir ltr
 
 #
 
@@ -3172,6 +3171,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Train '{
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' provides incorrect information.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Cargo/refit information for '{1:ENGINE}' differs from purchase list after construction. This might cause autorenew/-replace to fail refitting correctly.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' caused an endless loop in the production callback.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game was saved in version without streetcar support. All streetcars have been removed.
 

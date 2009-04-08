@@ -4,7 +4,6 @@
 ##winlangid 0x0456
 ##grflangid 0x31
 ##plural 0
-##textdir ltr
 ##gender m f n
 
 #
@@ -894,6 +893,8 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permiti
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permitir áreas de captura máis realistas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permiti-la eliminación de máis estradas, etc... das cidades: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permiti-la construcción de trens moi largos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Orixinal
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realista
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prohibir os trens e os barcos xirar 90 graos: {ORANGE}{STRING} {LTBLUE} (require NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Xunta-las estacións construídas xuntas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Usa-lo algoritmo de carga mellorado: {ORANGE}{STRING}
@@ -931,6 +932,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Revisa-
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :non
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :si, pero exclúe os vehículos parados
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de tódolos vehículos
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Avisar se os ingresos dun vehículo son negativos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Os vehículos nunca caducan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenova-los vehículos cando envellezan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autorenovar {ORANGE}{STRING}{LTBLUE} meses antes/despois da idade máxima
@@ -1073,6 +1075,10 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehícu
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Estacións
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economía
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidores
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinais
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trens
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Cidades
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrias
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Buscador de ruta para trens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Non recomendado)

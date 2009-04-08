@@ -4,7 +4,6 @@
 ##winlangid 0x0425
 ##grflangid 0x34
 ##plural 0
-##textdir ltr
 ##case g in
 
 #
@@ -1329,7 +1328,7 @@ STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Mängu k
 STR_NETWORK_DATE_CAPTION                                        :{BLACK}Kuupäev
 STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Kuupäev hetkel
 
-STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Aastaid
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Kestnud
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Mitu aastat{}on mäng kestnud
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}MÄNGU ANDMED

@@ -4,7 +4,6 @@
 ##winlangid 0x043a
 ##grflangid 0x3c
 ##plural 0
-##textdir ltr
 
 #
 
@@ -991,6 +990,7 @@ STR_2013_LARGE_OFFICE_BLOCK                                     :Bangunan pejaba
 STR_2014_TOWN_HOUSES                                            :Rumah
 STR_2015_HOTEL                                                  :Hotel
 STR_2016_STATUE                                                 :Patung
+STR_2017_FOUNTAIN                                               :Air Pancur
 STR_2018_PARK                                                   :Taman
 STR_2019_OFFICE_BLOCK                                           :Bangunan pejabat
 STR_201A_SHOPS_AND_OFFICES                                      :Kedai dan pejabat
@@ -1000,6 +1000,7 @@ STR_201D_OFFICE_BLOCK                                           :Bangunan pejaba
 STR_201E_STADIUM                                                :Stadium
 STR_201F_OLD_HOUSES                                             :Rumah usang
 STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Majlis tempatan
+STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Papar maklumat pihak berkuasa tempatan
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} majlis tempatan
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Penarafan syarikat pengangkutan:
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}

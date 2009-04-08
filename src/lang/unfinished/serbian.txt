@@ -4,7 +4,6 @@
 ##winlangid 0x7c1a
 ##grflangid 0x0d
 ##plural 6
-##textdir ltr
 ##case nom big gen dat aku vok lok ins
 ##gender muški ženski srednji
 
@@ -909,6 +908,8 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Finansiranje iz
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Finansiranje izgradnje nove industrije
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...gradnja je dozvoljena samo u područjima pod tropskim šumama
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...gradnja je dozvoljena samo u pustinjskim oblastima
