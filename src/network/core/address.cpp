@@ -162,13 +162,13 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 	/* Setting both hostname to NULL and port to 0 is not allowed.
 	 * As port 0 means bind to any port, the other must mean that
 	 * we want to bind to 'all' IPs. */
-	if (this->address_length == 0 && StrEmpty(this->hostname)) {
+	if (this->address_length == 0 && this->GetPort() == 0) {
 		strecpy(this->hostname, this->address.ss_family == AF_INET ? "0.0.0.0" : "::", lastof(this->hostname));
 	}
 
-	int e = getaddrinfo(this->GetHostname(), port_name, &hints, &ai);
+	int e = getaddrinfo(StrEmpty(this->hostname) ? NULL : this->hostname, port_name, &hints, &ai);
 	if (e != 0) {
-		DEBUG(net, 0, "getaddrinfo(%s, %s) failed: %s", this->GetHostname(), port_name, FS2OTTD(gai_strerror(e)));
+		DEBUG(net, 0, "getaddrinfo(%s, %s) failed: %s", this->hostname, port_name, FS2OTTD(gai_strerror(e)));
 		return INVALID_SOCKET;
 	}
 
@@ -270,12 +270,16 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 	/* Connection succeeded */
 	if (!SetNonBlocking(sock)) DEBUG(net, 0, "Setting non-blocking mode failed");
 
+	DEBUG(net, 1, "[%s] Listening on port %s",
+			runp->ai_socktype == SOCK_STREAM ? "tcp" : "udp",
+			NetworkAddress(runp->ai_addr, runp->ai_addrlen).GetAddressAsString());
+
 	return sock;
 }
 
-SOCKET NetworkAddress::Listen(int family, int socktype, SocketList *sockets)
+SOCKET NetworkAddress::Listen(int socktype, SocketList *sockets)
 {
-	return this->Resolve(family, socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
+	return this->Resolve(AF_UNSPEC, socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
 }
 
 #endif /* ENABLE_NETWORK */

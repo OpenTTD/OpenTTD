@@ -41,11 +41,7 @@ bool NetworkUDPSocketHandler::Listen()
 	this->Close();
 
 	for (NetworkAddress *addr = this->bind.Begin(); addr != this->bind.End(); addr++) {
-		addr->Listen(AF_UNSPEC, SOCK_DGRAM, &this->sockets);
-	}
-
-	for (SocketList::iterator s = this->sockets.Begin(); s != this->sockets.End(); s++) {
-		DEBUG(net, 1, "[udp] listening on port %s", s->first.GetAddressAsString());
+		addr->Listen(SOCK_DGRAM, &this->sockets);
 	}
 
 	return this->sockets.Length() != 0;

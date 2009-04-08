@@ -217,12 +217,11 @@ public:
 
 	/**
 	 * Make the given socket listen.
-	 * @param family the type of 'protocol' (IPv4, IPv6)
 	 * @param socktype the type of socket (TCP, UDP, etc)
 	 * @param sockets the list of sockets to add the sockets to
 	 * @return the socket (if sockets != NULL)
 	 */
-	SOCKET Listen(int family, int socktype, SocketList *sockets = NULL);
+	SOCKET Listen(int socktype, SocketList *sockets = NULL);
 };
 
 #endif /* ENABLE_NETWORK */

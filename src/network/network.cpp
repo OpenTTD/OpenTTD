@@ -539,7 +539,7 @@ static bool NetworkListen()
 
 	DEBUG(net, 1, "Listening on %s", address.GetAddressAsString());
 
-	SOCKET ls = address.Listen(AF_INET, SOCK_STREAM);
+	SOCKET ls = address.Listen(SOCK_STREAM);
 	if (ls == INVALID_SOCKET) {
 		ServerStartError("Could not create listening socket");
 		return false;
