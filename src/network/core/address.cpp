@@ -187,6 +187,13 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 
 	SOCKET sock = INVALID_SOCKET;
 	for (struct addrinfo *runp = ai; runp != NULL; runp = runp->ai_next) {
+		/* When we are binding to multiple sockets, make sure we do not
+		 * connect to one with exactly the same address twice. That's
+		 * ofcourse totally unneeded ;) */
+		if (sockets != NULL) {
+			NetworkAddress address(runp->ai_addr, runp->ai_addrlen);
+			if (sockets->Find(address) != sockets->End()) continue;
+		}
 		sock = func(runp);
 		if (sock == INVALID_SOCKET) continue;
 
