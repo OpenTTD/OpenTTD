@@ -65,7 +65,14 @@ static void NetworkGameListHandleDelayedInsert()
  * @return a point to the newly added or already existing item */
 NetworkGameList *NetworkGameListAddItem(NetworkAddress address)
 {
-	if (StrEmpty(address.GetHostname())) return NULL;
+	const char *hostname = address.GetHostname();
+
+	/* Do not query the 'any' address. */
+	if (StrEmpty(hostname) ||
+			strcmp(hostname, "0.0.0.0") == 0 ||
+			strcmp(hostname, "::") == 0) {
+		return NULL;
+	}
 
 	NetworkGameList *item, *prev_item;
 
