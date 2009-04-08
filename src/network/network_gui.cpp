@@ -305,7 +305,7 @@ protected:
 	}
 
 public:
-	NetworkGameWindow(const WindowDesc *desc) : QueryStringBaseWindow(NETWORK_NAME_LENGTH, desc)
+	NetworkGameWindow(const WindowDesc *desc) : QueryStringBaseWindow(NETWORK_CLIENT_NAME_LENGTH, desc)
 	{
 		this->widget[NGWW_CLIENTS].left = this->widget[NGWW_NAME].right + 1;
 		this->widget[NGWW_MAPSIZE].left = this->widget[NGWW_NAME].right + 1;

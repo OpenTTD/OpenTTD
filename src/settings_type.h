@@ -119,7 +119,7 @@ struct NetworkSettings {
 	char   rcon_password[NETWORK_PASSWORD_LENGTH];        ///< passowrd for rconsole (server side)
 	bool   server_advertise;                              ///< advertise the server to the masterserver
 	uint8  lan_internet;                                  ///< search on the LAN or internet for servers
-	char   client_name[NETWORK_NAME_LENGTH];              ///< name of the player (as client)
+	char   client_name[NETWORK_CLIENT_NAME_LENGTH];       ///< name of the player (as client)
 	char   default_company_pass[NETWORK_PASSWORD_LENGTH]; ///< default password for new companies in encrypted form
 	char   connect_to_ip[NETWORK_HOSTNAME_LENGTH];        ///< default for the "Add server" query
 	char   network_id[NETWORK_UNIQUE_ID_LENGTH];          ///< semi-unique ID of the client
