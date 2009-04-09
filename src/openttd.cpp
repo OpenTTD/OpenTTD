@@ -1124,6 +1124,8 @@ static void DoAutosave()
 		GenerateDefaultSaveName(buf, lastof(buf));
 		strecat(buf, ".sav", lastof(buf));
 	} else {
+		static int _autosave_ctr = 0;
+
 		/* generate a savegame name and number according to _settings_client.gui.max_num_autosaves */
 		snprintf(buf, sizeof(buf), "autosave%d.sav", _autosave_ctr);
 

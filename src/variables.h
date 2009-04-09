@@ -31,7 +31,6 @@ VARDEF int _palette_animation_counter;
 VARDEF uint32 _realtime_tick;
 
 VARDEF bool _do_autosave;
-VARDEF int _autosave_ctr;
 
 VARDEF byte _display_opt;
 
