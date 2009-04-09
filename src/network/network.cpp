@@ -483,9 +483,6 @@ void NetworkCloseClient(NetworkClientSocket *cs)
 /* For the server, to accept new clients */
 static void NetworkAcceptClients(SOCKET ls)
 {
-	NetworkClientSocket *cs;
-	bool banned;
-
 	for (;;) {
 		struct sockaddr_storage sin;
 		memset(&sin, 0, sizeof(sin));
@@ -501,7 +498,7 @@ static void NetworkAcceptClients(SOCKET ls)
 		SetNoDelay(s); // XXX error handling?
 
 		/* Check if the client is banned */
-		banned = false;
+		bool banned = false;
 		for (char **iter = _network_ban_list.Begin(); iter != _network_ban_list.End(); iter++) {
 			banned = address.IsInNetmask(*iter);
 			if (banned) {
@@ -518,7 +515,7 @@ static void NetworkAcceptClients(SOCKET ls)
 		/* If this client is banned, continue with next client */
 		if (banned) continue;
 
-		cs = NetworkAllocClient(s);
+		NetworkClientSocket *cs = NetworkAllocClient(s);
 		if (cs == NULL) {
 			/* no more clients allowed?
 			 * Send to the client that we are full! */
@@ -817,7 +814,6 @@ void NetworkDisconnect()
 static bool NetworkReceive()
 {
 	NetworkClientSocket *cs;
-	int n;
 	fd_set read_fd, write_fd;
 	struct timeval tv;
 
@@ -836,9 +832,9 @@ static bool NetworkReceive()
 
 	tv.tv_sec = tv.tv_usec = 0; // don't block at all.
 #if !defined(__MORPHOS__) && !defined(__AMIGA__)
-	n = select(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv);
+	int n = select(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv);
 #else
-	n = WaitSelect(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv, NULL);
+	int n = WaitSelect(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv, NULL);
 #endif
 	if (n == -1 && !_network_server) NetworkError(STR_NETWORK_ERR_LOSTCONNECTION);
 
@@ -1037,8 +1033,9 @@ static void NetworkGenerateUniqueId()
 	checksum.Append((const uint8*)coding_string, strlen(coding_string));
 	checksum.Finish(digest);
 
-	for (di = 0; di < 16; ++di)
+	for (di = 0; di < 16; ++di) {
 		sprintf(hex_output + di * 2, "%02x", digest[di]);
+	}
 
 	/* _network_unique_id is our id */
 	snprintf(_settings_client.network.network_id, sizeof(_settings_client.network.network_id), "%s", hex_output);
