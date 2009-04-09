@@ -567,8 +567,10 @@ public:
 					y += 10;
 
 					PrepareTextRefStackUsage(6);
-					/* Use all the available space left from where we stand up to the end of the window */
-					y = DrawStringMultiLine(wi->left + 2, wi->right -2, y, wi->bottom, message);
+					/* Use all the available space left from where we stand up to the
+					 * end of the window. We ALSO enlarge the window if needed, so we
+					 * can 'go' wild with the bottom of the window. */
+					y = DrawStringMultiLine(wi->left + 2, wi->right - 2, y, UINT16_MAX, message);
 					StopTextRefStackUsage();
 				}
 			}
