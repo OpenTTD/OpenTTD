@@ -14,7 +14,7 @@
 
 const char *NetworkAddress::GetHostname()
 {
-	if (StrEmpty(this->hostname)) {
+	if (StrEmpty(this->hostname) && this->address.ss_family != AF_UNSPEC) {
 		assert(this->address_length != 0);
 		getnameinfo((struct sockaddr *)&this->address, this->address_length, this->hostname, sizeof(this->hostname), NULL, 0, NI_NUMERICHOST);
 	}
