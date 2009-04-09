@@ -895,6 +895,13 @@ public:
 	}
 };
 
+/** Widget numbers for the company league window. */
+enum CompanyLeagueWidgets {
+	CLW_CLOSEBOX,
+	CLW_CAPTION,
+	CLW_STICKYBOX,
+	CLW_BACKGROUND,
+};
 
 static const Widget _company_league_widgets[] = {
 {   WWT_CLOSEBOX, RESIZE_NONE,  COLOUR_GREY,   0,  10,  0,  13, STR_00C5,                      STR_018B_CLOSE_WINDOW},
@@ -904,11 +911,20 @@ static const Widget _company_league_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_company_league_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CLW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, CLW_CAPTION), SetDataTip(STR_7053_COMPANY_LEAGUE_TABLE, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY, CLW_STICKYBOX),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, CLW_BACKGROUND), SetMinimalSize(400, 153),
+};
+
 static const WindowDesc _company_league_desc(
 	WDP_AUTO, WDP_AUTO, 400, 167, 400, 167,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
-	_company_league_widgets
+	_company_league_widgets, _nested_company_league_widgets, lengthof(_nested_company_league_widgets)
 );
 
 void ShowCompanyLeagueTable()
