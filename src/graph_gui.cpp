@@ -30,11 +30,20 @@ static const uint INVALID_DATAPOINT_POS = UINT_MAX;  // Used to determine if the
 /* GRAPH LEGEND */
 /****************/
 
+/** Widget numbers of the graph legend window. */
+enum GraphLegendWidgetNumbers {
+	GLW_CLOSEBOX,
+	GLW_CAPTION,
+	GLW_BACKGROUND,
+
+	GLW_FIRST_COMPANY,
+};
+
 struct GraphLegendWindow : Window {
 	GraphLegendWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		for (uint i = 3; i < this->widget_count; i++) {
-			if (!HasBit(_legend_excluded_companies, i - 3)) this->LowerWidget(i);
+		for (uint i = GLW_FIRST_COMPANY; i < this->widget_count; i++) {
+			if (!HasBit(_legend_excluded_companies, i - GLW_FIRST_COMPANY)) this->LowerWidget(i);
 		}
 
 		this->FindWindowPlacementAndResize(desc);
@@ -46,7 +55,7 @@ struct GraphLegendWindow : Window {
 			if (IsValidCompanyID(c)) continue;
 
 			SetBit(_legend_excluded_companies, c);
-			this->RaiseWidget(c + 3);
+			this->RaiseWidget(c + GLW_FIRST_COMPANY);
 		}
 
 		this->DrawWidgets();
@@ -63,9 +72,9 @@ struct GraphLegendWindow : Window {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (!IsInsideMM(widget, 3, MAX_COMPANIES + 3)) return;
+		if (!IsInsideMM(widget, GLW_FIRST_COMPANY, MAX_COMPANIES + GLW_FIRST_COMPANY)) return;
 
-		ToggleBit(_legend_excluded_companies, widget - 3);
+		ToggleBit(_legend_excluded_companies, widget - GLW_FIRST_COMPANY);
 		this->ToggleWidgetLoweredState(widget);
 		this->SetDirty();
 		InvalidateWindow(WC_INCOME_GRAPH, 0);
