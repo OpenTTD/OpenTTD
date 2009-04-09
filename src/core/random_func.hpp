@@ -108,7 +108,7 @@ static FORCEINLINE uint32 InteractiveRandomRange(uint16 max)
  * Checks if a given randomize-number is below a given probability.
  *
  * This function is used to check if the given probability by the fraction of (a/b)
- * is greater than low 16 bits of the given randomize-number v.
+ * is greater than low 16 bits of the given randomize-number r.
  *
  * Do not use this function twice on the same random 16 bits as it will yield
  * the same result. One can use a random number for two calls to Chance16I,
@@ -117,12 +117,12 @@ static FORCEINLINE uint32 InteractiveRandomRange(uint16 max)
  * @param a The numerator of the fraction
  * @param b The denominator of the fraction, must of course not be null
  * @param r The given randomize-number
- * @return True if v is less or equals (a/b)
+ * @return True if the probability given by r is less or equal to (a/b)
  */
 static FORCEINLINE bool Chance16I(const uint a, const uint b, const uint32 r)
 {
 	assert(b != 0);
-	return (uint16)r < (uint16)(((a << 16) + b / 2) / b);
+	return (((uint16)r * b + b / 2) >> 16) < a;
 }
 
 /**
