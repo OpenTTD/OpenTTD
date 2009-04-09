@@ -74,7 +74,7 @@ public:
 	 * @param port the port
 	 * @param family the address family
 	 */
-	NetworkAddress(const char *hostname = "0.0.0.0", uint16 port = 0, int family = AF_INET) :
+	NetworkAddress(const char *hostname = "", uint16 port = 0, int family = AF_UNSPEC) :
 		address_length(0)
 	{
 		/* Also handle IPv6 bracket enclosed hostnames */

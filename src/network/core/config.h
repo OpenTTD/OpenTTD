@@ -24,7 +24,7 @@ enum {
 
 	NETWORK_GAME_INFO_VERSION     =    4, ///< What version of game-info do we use?
 	NETWORK_COMPANY_INFO_VERSION  =    5, ///< What version of company info is this?
-	NETWORK_MASTER_SERVER_VERSION =    1, ///< What version of master-server-protocol do we use?
+	NETWORK_MASTER_SERVER_VERSION =    2, ///< What version of master-server-protocol do we use?
 
 	NETWORK_NAME_LENGTH           =   80, ///< The maximum length of the server name and map name, in bytes including '\0'
 	NETWORK_COMPANY_NAME_LENGTH   =   31, ///< The maximum length of the company name, in bytes including '\0'

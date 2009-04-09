@@ -563,7 +563,7 @@ const SettingDesc _settings[] = {
 	  SDTC_VAR(network.frame_freq,            SLE_UINT8,C|S,NO,     0,        0,      100, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.max_join_time,        SLE_UINT16, S, NO,   500,        0,    32000, 0, STR_NULL,                                       NULL),
 	 SDTC_BOOL(network.pause_on_join,                    S, NO,  true,                        STR_NULL,                                       NULL),
-	  SDTC_STR(network.server_bind_ip,         SLE_STRB, S, NO, "0.0.0.0",                    STR_NULL,                                       NULL),
+	  SDTC_STR(network.server_bind_ip,         SLE_STRB, S, NO,    "",                        STR_NULL,                                       NULL),
 	  SDTC_VAR(network.server_port,          SLE_UINT16, S, NO,NETWORK_DEFAULT_PORT,0,65535,0,STR_NULL,                                       NULL),
 	 SDTC_BOOL(network.server_advertise,                 S, NO, false,                        STR_NULL,                                       NULL),
 	  SDTC_VAR(network.lan_internet,          SLE_UINT8, S, NO,     0,        0,        1, 0, STR_NULL,                                       NULL),
@@ -585,7 +585,7 @@ const SettingDesc _settings[] = {
 	  SDTC_VAR(network.min_active_clients,    SLE_UINT8, S, NO,     0,     0, MAX_CLIENTS, 0, STR_NULL,                                       NULL),
 	SDTC_OMANY(network.server_lang,           SLE_UINT8, S, NO,     0,    35, "ANY|ENGLISH|GERMAN|FRENCH|BRAZILIAN|BULGARIAN|CHINESE|CZECH|DANISH|DUTCH|ESPERANTO|FINNISH|HUNGARIAN|ICELANDIC|ITALIAN|JAPANESE|KOREAN|LITHUANIAN|NORWEGIAN|POLISH|PORTUGUESE|ROMANIAN|RUSSIAN|SLOVAK|SLOVENIAN|SPANISH|SWEDISH|TURKISH|UKRAINIAN|AFRIKAANS|CROATIAN|CATALAN|ESTONIAN|GALICIAN|GREEK|LATVIAN", STR_NULL, NULL),
 	 SDTC_BOOL(network.reload_cfg,                       S, NO, false,                        STR_NULL,                                       NULL),
-	  SDTC_STR(network.last_host,              SLE_STRB, S,  0, "0.0.0.0",                    STR_NULL,                                       NULL),
+	  SDTC_STR(network.last_host,              SLE_STRB, S,  0,    "",                        STR_NULL,                                       NULL),
 	  SDTC_VAR(network.last_port,            SLE_UINT16, S,  0,     0,     0,  UINT16_MAX, 0, STR_NULL,                                       NULL),
 #endif /* ENABLE_NETWORK */
 
