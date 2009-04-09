@@ -759,6 +759,13 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	}
 };
 
+/** Widget numbers of the cargo payment rates. */
+enum CargoPaymentRatesWidgets {
+	CPW_CLOSEBOX,
+	CPW_CAPTION,
+	CPW_BACKGROUND,
+};
+
 static const Widget _cargo_payment_rates_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                     STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   567,     0,    13, STR_7061_CARGO_PAYMENT_RATES, STR_018C_WINDOW_TITLE_DRAG_THIS},
@@ -766,11 +773,19 @@ static const Widget _cargo_payment_rates_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_cargo_payment_rates_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CPW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, CPW_CAPTION), SetDataTip(STR_7061_CARGO_PAYMENT_RATES, STR_018C_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, CPW_BACKGROUND), SetMinimalSize(568, 32), SetResize(0, 1), EndContainer(),
+};
+
 static const WindowDesc _cargo_payment_rates_desc(
 	WDP_AUTO, WDP_AUTO, 568, 46, 568, 46,
 	WC_PAYMENT_RATES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_cargo_payment_rates_widgets
+	_cargo_payment_rates_widgets, _nested_cargo_payment_rates_widgets, lengthof(_nested_cargo_payment_rates_widgets)
 );
 
 
