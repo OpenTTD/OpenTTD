@@ -181,7 +181,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 	/* Setting both hostname to NULL and port to 0 is not allowed.
 	 * As port 0 means bind to any port, the other must mean that
 	 * we want to bind to 'all' IPs. */
-	if (this->address_length == 0 && this->GetPort() == 0) {
+	if (StrEmpty(this->hostname) && this->address_length == 0 && this->GetPort() == 0) {
 		strecpy(this->hostname, this->address.ss_family == AF_INET ? "0.0.0.0" : "::", lastof(this->hostname));
 	}
 
