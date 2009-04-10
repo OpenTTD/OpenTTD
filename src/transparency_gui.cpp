@@ -18,7 +18,10 @@ TransparencyOptionBits _invisibility_opt;
 class TransparenciesWindow : public Window
 {
 	enum TransparencyToolbarWidgets{
-		TTW_WIDGET_SIGNS = 3,    ///< Make signs background transparent
+		TTW_WIDGET_CLOSEBOX,     ///< Closebox
+		TTW_WIDGET_CAPTION,      ///< Titlebar caption
+		TTW_WIDGET_STICKYBOX,    ///< Stickybox
+		TTW_WIDGET_SIGNS,        ///< Make signs background transparent
 		TTW_WIDGET_TREES,        ///< Make trees transparent
 		TTW_WIDGET_HOUSES,       ///< Make houses transparent
 		TTW_WIDGET_INDUSTRIES,   ///< Make Industries transparent
