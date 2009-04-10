@@ -15,27 +15,28 @@ TransparencyOptionBits _transparency_opt;
 TransparencyOptionBits _transparency_lock;
 TransparencyOptionBits _invisibility_opt;
 
+/** Widget numbers of the transparency window. */
+enum TransparencyToolbarWidgets {
+	TTW_WIDGET_CLOSEBOX,     ///< Closebox
+	TTW_WIDGET_CAPTION,      ///< Titlebar caption
+	TTW_WIDGET_STICKYBOX,    ///< Stickybox
+	TTW_WIDGET_SIGNS,        ///< Make signs background transparent
+	TTW_WIDGET_TREES,        ///< Make trees transparent
+	TTW_WIDGET_HOUSES,       ///< Make houses transparent
+	TTW_WIDGET_INDUSTRIES,   ///< Make Industries transparent
+	TTW_WIDGET_BUILDINGS,    ///< Make company buildings and structures transparent
+	TTW_WIDGET_BRIDGES,      ///< Make bridges transparent
+	TTW_WIDGET_STRUCTURES,   ///< Make unmovable structures transparent
+	TTW_WIDGET_CATENARY,     ///< Make catenary transparent
+	TTW_WIDGET_LOADING,      ///< Make loading indicators transparent
+	TTW_WIDGET_END,          ///< End of toggle buttons
+
+	/* Panel with buttons for invisibility */
+	TTW_BUTTONS = 12,        ///< Panel with 'invisibility' buttons
+};
+
 class TransparenciesWindow : public Window
 {
-	enum TransparencyToolbarWidgets{
-		TTW_WIDGET_CLOSEBOX,     ///< Closebox
-		TTW_WIDGET_CAPTION,      ///< Titlebar caption
-		TTW_WIDGET_STICKYBOX,    ///< Stickybox
-		TTW_WIDGET_SIGNS,        ///< Make signs background transparent
-		TTW_WIDGET_TREES,        ///< Make trees transparent
-		TTW_WIDGET_HOUSES,       ///< Make houses transparent
-		TTW_WIDGET_INDUSTRIES,   ///< Make Industries transparent
-		TTW_WIDGET_BUILDINGS,    ///< Make company buildings and structures transparent
-		TTW_WIDGET_BRIDGES,      ///< Make bridges transparent
-		TTW_WIDGET_STRUCTURES,   ///< Make unmovable structures transparent
-		TTW_WIDGET_CATENARY,     ///< Make catenary transparent
-		TTW_WIDGET_LOADING,      ///< Make loading indicators transparent
-		TTW_WIDGET_END,          ///< End of toggle buttons
-
-		/* Panel with buttons for invisibility */
-		TTW_BUTTONS = 12,        ///< Panel with 'invisibility' buttons
-	};
-
 public:
 	TransparenciesWindow(const WindowDesc *desc, int window_number) : Window(desc, window_number)
 	{
