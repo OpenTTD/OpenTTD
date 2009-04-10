@@ -586,7 +586,7 @@ static void NetworkClose()
 			closesocket(s->second);
 		}
 		_listensockets.Clear();
-		DEBUG(net, 1, "Closed listener");
+		DEBUG(net, 1, "[tcp] closed listeners");
 	}
 
 	TCPConnecter::KillAll();
@@ -813,8 +813,11 @@ void NetworkReboot()
 	NetworkClose();
 }
 
-/* We want to disconnect from the host/clients */
-void NetworkDisconnect()
+/**
+ * We want to disconnect from the host/clients.
+ * @param blocking whether to wait till everything has been closed
+ */
+void NetworkDisconnect(bool blocking)
 {
 	if (_network_server) {
 		NetworkClientSocket *cs;
@@ -824,7 +827,7 @@ void NetworkDisconnect()
 		}
 	}
 
-	if (_settings_client.network.server_advertise) NetworkUDPRemoveAdvertise();
+	if (_settings_client.network.server_advertise) NetworkUDPRemoveAdvertise(blocking);
 
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 
@@ -1104,7 +1107,7 @@ void NetworkStartUp()
 /** This shuts the network down */
 void NetworkShutDown()
 {
-	NetworkDisconnect();
+	NetworkDisconnect(true);
 	NetworkUDPClose();
 
 	DEBUG(net, 3, "[core] shutting down network");

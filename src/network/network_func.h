@@ -30,7 +30,7 @@ void NetworkUpdateClientName();
 bool NetworkCompanyHasClients(CompanyID company);
 bool NetworkChangeCompanyPassword(byte argc, char *argv[]);
 void NetworkReboot();
-void NetworkDisconnect();
+void NetworkDisconnect(bool blocking = false);
 void NetworkGameLoop();
 void NetworkUDPGameLoop();
 void NetworkUDPCloseAll();

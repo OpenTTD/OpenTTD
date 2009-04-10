@@ -58,7 +58,7 @@ DEF_UDP_RECEIVE_COMMAND(Master, PACKET_UDP_MASTER_ACK_REGISTER)
 	DEBUG(net, 2, "[udp] advertising on master server successful");
 
 	/* We are advertised, but we don't want to! */
-	if (!_settings_client.network.server_advertise) NetworkUDPRemoveAdvertise();
+	if (!_settings_client.network.server_advertise) NetworkUDPRemoveAdvertise(false);
 }
 
 DEF_UDP_RECEIVE_COMMAND(Master, PACKET_UDP_MASTER_SESSION_KEY)
@@ -474,13 +474,16 @@ void NetworkUDPRemoveAdvertiseThread(void *pntr)
 	_network_udp_mutex->EndCritical();
 }
 
-/* Remove our advertise from the master-server */
-void NetworkUDPRemoveAdvertise()
+/**
+ * Remove our advertise from the master-server.
+ * @param blocking whether to wait until the removal has finished.
+ */
+void NetworkUDPRemoveAdvertise(bool blocking)
 {
 	/* Check if we are advertising */
 	if (!_networking || !_network_server || !_network_udp_server) return;
 
-	if (!ThreadObject::New(NetworkUDPRemoveAdvertiseThread, NULL)) {
+	if (blocking || !ThreadObject::New(NetworkUDPRemoveAdvertiseThread, NULL)) {
 		NetworkUDPRemoveAdvertiseThread(NULL);
 	}
 }
