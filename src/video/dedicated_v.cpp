@@ -222,7 +222,7 @@ static void DedicatedHandleKeyInput()
 #else
 	/* Handle console input, and singal console thread, it can accept input again */
 	assert_compile(lengthof(_win_console_thread_buffer) <= lengthof(input_line));
-	strcpy(input_line, _win_console_thread_buffer);
+	strecpy(input_line, _win_console_thread_buffer, lastof(input_line));
 	SetEvent(_hWaitForInputHandling);
 #endif
 

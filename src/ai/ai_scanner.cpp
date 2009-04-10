@@ -52,7 +52,7 @@ AIScanner::AIScanner() :
 
 	/* Create the dummy AI */
 	this->engine->ResetCrashed();
-	strcpy(this->main_script, "%_dummy");
+	strecpy(this->main_script, "%_dummy", lastof(this->main_script));
 	extern void AI_CreateAIInfoDummy(HSQUIRRELVM vm);
 	AI_CreateAIInfoDummy(this->engine->GetVM());
 }

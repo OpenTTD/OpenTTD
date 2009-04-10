@@ -1508,7 +1508,7 @@ public:
 				this->vscroll.cap--;
 
 			case SLD_SAVE_GAME:     this->GenerateFileName(); break;
-			case SLD_SAVE_SCENARIO: strcpy(this->edit_str_buf, "UNNAMED"); break;
+			case SLD_SAVE_SCENARIO: strecpy(this->edit_str_buf, "UNNAMED", &this->edit_str_buf[edit_str_size - 1]); break;
 			default:                break;
 		}
 

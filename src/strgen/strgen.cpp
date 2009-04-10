@@ -1193,9 +1193,9 @@ static void WriteLangfile(const char *filename)
 	hdr.text_dir = _lang_textdir;
 	hdr.winlangid = TO_LE16(_lang_winlangid);
 	hdr.newgrflangid = _lang_newgrflangid;
-	strcpy(hdr.name, _lang_name);
-	strcpy(hdr.own_name, _lang_ownname);
-	strcpy(hdr.isocode, _lang_isocode);
+	strecpy(hdr.name, _lang_name, lastof(hdr.name));
+	strecpy(hdr.own_name, _lang_ownname, lastof(hdr.own_name));
+	strecpy(hdr.isocode, _lang_isocode, lastof(hdr.isocode));
 
 	fwrite(&hdr, sizeof(hdr), 1, f);
 
