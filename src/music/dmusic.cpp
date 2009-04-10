@@ -56,8 +56,9 @@ const char *MusicDriver_DMusic::Start(const char * const *parm)
 	if (performance != NULL) return NULL;
 
 	if (proc.CoCreateInstance == NULL) {
-		if (!LoadLibraryList((Function*)&proc, ole_files))
+		if (!LoadLibraryList((Function*)&proc, ole_files)) {
 			return "ole32.dll load failed";
+		}
 	}
 
 	/* Initialize COM */

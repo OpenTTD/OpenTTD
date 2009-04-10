@@ -52,8 +52,9 @@ void MusicDriver_ExtMidi::StopSong()
 
 bool MusicDriver_ExtMidi::IsSongPlaying()
 {
-	if (this->pid != -1 && waitpid(this->pid, NULL, WNOHANG) == this->pid)
+	if (this->pid != -1 && waitpid(this->pid, NULL, WNOHANG) == this->pid) {
 		this->pid = -1;
+	}
 	if (this->pid == -1 && this->song[0] != '\0') this->DoPlay();
 	return this->pid != -1;
 }
@@ -68,10 +69,8 @@ void MusicDriver_ExtMidi::DoPlay()
 	this->pid = fork();
 	switch (this->pid) {
 		case 0: {
-			int d;
-
 			close(0);
-			d = open("/dev/null", O_RDONLY);
+			int d = open("/dev/null", O_RDONLY);
 			if (d != -1 && dup2(d, 1) != -1 && dup2(d, 2) != -1) {
 				#if defined(MIDI_ARG)
 					execlp(this->command, "extmidi", MIDI_ARG, this->song, (char*)0);

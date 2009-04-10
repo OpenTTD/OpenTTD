@@ -38,8 +38,9 @@ void MusicDriver_OS2::PlaySong(const char *filename)
 {
 	MidiSendCommand("close all");
 
-	if (MidiSendCommand("open %s type sequencer alias song", filename) != 0)
+	if (MidiSendCommand("open %s type sequencer alias song", filename) != 0) {
 		return;
+	}
 
 	MidiSendCommand("play song from 0");
 }

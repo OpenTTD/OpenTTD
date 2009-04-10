@@ -121,8 +121,9 @@ static bool LoadMovieForMIDIFile(const char *path, Movie *moov)
 	if (ret < 4) return false;
 
 	DEBUG(driver, 3, "qtmidi: header is '%.4s'", magic);
-	if (magic[0] != 'M' || magic[1] != 'T' || magic[2] != 'h' || magic[3] != 'd')
+	if (magic[0] != 'M' || magic[1] != 'T' || magic[2] != 'h' || magic[3] != 'd') {
 		return false;
+	}
 
 	if (noErr != FSPathMakeRef((const UInt8 *) path, &fsref, NULL)) return false;
 	SetMIDITypeIfNeeded(&fsref);
@@ -218,13 +219,15 @@ bool MusicDriver_QtMidi::IsSongPlaying()
 		case QT_STATE_STOP:
 			/* Do nothing. */
 			break;
+
 		case QT_STATE_PLAY:
 			MoviesTask(_quicktime_movie, 0);
 			/* Check wether movie ended. */
 			if (IsMovieDone(_quicktime_movie) ||
 					(GetMovieTime(_quicktime_movie, NULL) >=
-					 GetMovieDuration(_quicktime_movie)))
+					 GetMovieDuration(_quicktime_movie))) {
 				_quicktime_state = QT_STATE_STOP;
+			}
 	}
 
 	return _quicktime_state == QT_STATE_PLAY;
@@ -247,8 +250,11 @@ void MusicDriver_QtMidi::Stop()
 			DEBUG(driver, 3, "qtmidi: stopping not needed, already idle");
 			/* Do nothing. */
 			break;
+
 		case QT_STATE_PLAY:
 			StopSong();
+			/* Fall-through */
+
 		case QT_STATE_STOP:
 			DisposeMovie(_quicktime_movie);
 	}
@@ -272,12 +278,14 @@ void MusicDriver_QtMidi::PlaySong(const char *filename)
 		case QT_STATE_PLAY:
 			StopSong();
 			DEBUG(driver, 3, "qtmidi: previous tune stopped");
-			/* XXX Fall-through -- no break needed. */
+			/* Fall-through -- no break needed. */
+
 		case QT_STATE_STOP:
 			DisposeMovie(_quicktime_movie);
 			DEBUG(driver, 3, "qtmidi: previous tune disposed");
 			_quicktime_state = QT_STATE_IDLE;
-			/* XXX Fall-through -- no break needed. */
+			/* Fall-through -- no break needed. */
+
 		case QT_STATE_IDLE:
 			LoadMovieForMIDIFile(filename, &_quicktime_movie);
 			SetMovieVolume(_quicktime_movie, VOLUME);
@@ -297,11 +305,13 @@ void MusicDriver_QtMidi::StopSong()
 
 	switch (_quicktime_state) {
 		case QT_STATE_IDLE:
-			/* XXX Fall-through -- no break needed. */
+			/* Fall-through -- no break needed. */
+
 		case QT_STATE_STOP:
 			DEBUG(driver, 3, "qtmidi: stop requested, but already idle");
 			/* Do nothing. */
 			break;
+
 		case QT_STATE_PLAY:
 			StopMovie(_quicktime_movie);
 			_quicktime_state = QT_STATE_STOP;
@@ -330,6 +340,7 @@ void MusicDriver_QtMidi::SetVolume(byte vol)
 		case QT_STATE_IDLE:
 			/* Do nothing. */
 			break;
+
 		case QT_STATE_PLAY:
 		case QT_STATE_STOP:
 			SetMovieVolume(_quicktime_movie, VOLUME);
