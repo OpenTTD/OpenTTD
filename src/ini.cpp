@@ -283,7 +283,8 @@ bool IniFile::SaveToDisk(const char *filename)
 			if (item->comment != NULL) fputs(item->comment, f);
 
 			/* protect item->name with quotes if needed */
-			if (strchr(item->name, ' ') != NULL) {
+			if (strchr(item->name, ' ') != NULL ||
+					item->name[0] == '[') {
 				fprintf(f, "\"%s\"", item->name);
 			} else {
 				fprintf(f, "%s", item->name);

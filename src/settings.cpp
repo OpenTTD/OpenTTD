@@ -80,6 +80,7 @@ static const char *_list_group_names[] = {
 	"bans",
 	"newgrf",
 	"servers",
+	"server_bind_addresses",
 	NULL
 };
 
