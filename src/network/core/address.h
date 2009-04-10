@@ -227,9 +227,8 @@ public:
 	 * Make the given socket listen.
 	 * @param socktype the type of socket (TCP, UDP, etc)
 	 * @param sockets the list of sockets to add the sockets to
-	 * @return the socket (if sockets != NULL)
 	 */
-	SOCKET Listen(int socktype, SocketList *sockets = NULL);
+	void Listen(int socktype, SocketList *sockets);
 };
 
 #endif /* ENABLE_NETWORK */

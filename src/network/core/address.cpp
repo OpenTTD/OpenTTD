@@ -178,14 +178,21 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 	char port_name[6];
 	seprintf(port_name, lastof(port_name), "%u", this->GetPort());
 
+	bool reset_hostname = false;
 	/* Setting both hostname to NULL and port to 0 is not allowed.
 	 * As port 0 means bind to any port, the other must mean that
 	 * we want to bind to 'all' IPs. */
 	if (StrEmpty(this->hostname) && this->address_length == 0 && this->GetPort() == 0) {
-		strecpy(this->hostname, this->address.ss_family == AF_INET ? "0.0.0.0" : "::", lastof(this->hostname));
+		reset_hostname = true;
+		int fam = this->address.ss_family;
+		if (fam == AF_UNSPEC) fam = family;
+		strecpy(this->hostname, fam == AF_INET ? "0.0.0.0" : "::", lastof(this->hostname));
 	}
 
 	int e = getaddrinfo(StrEmpty(this->hostname) ? NULL : this->hostname, port_name, &hints, &ai);
+
+	if (reset_hostname) strecpy(this->hostname, "", lastof(this->hostname));
+
 	if (e != 0) {
 		if (func != ResolveLoopProc) {
 			DEBUG(net, 0, "getaddrinfo(%s, %s) failed: %s", this->hostname, port_name, FS2OTTD(gai_strerror(e)));
@@ -305,9 +312,20 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 	return sock;
 }
 
-SOCKET NetworkAddress::Listen(int socktype, SocketList *sockets)
+void NetworkAddress::Listen(int socktype, SocketList *sockets)
 {
-	return this->Resolve(AF_UNSPEC, socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
+	assert(sockets != NULL);
+
+	/* Setting both hostname to NULL and port to 0 is not allowed.
+	 * As port 0 means bind to any port, the other must mean that
+	 * we want to bind to 'all' IPs. */
+	if (this->address_length == 0 && this->address.ss_family == AF_UNSPEC &&
+			StrEmpty(this->hostname) && this->GetPort() == 0) {
+		this->Resolve(AF_INET,  socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
+		this->Resolve(AF_INET6, socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
+	} else {
+		this->Resolve(AF_UNSPEC, socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
+	}
 }
 
 #endif /* ENABLE_NETWORK */
