@@ -192,25 +192,23 @@ void MusicLoop()
 	}
 }
 
-struct MusicTrackSelectionWindow : public Window {
-private:
-	enum MusicTrackSelectionWidgets {
-		MTSW_CLOSE,
-		MTSW_CAPTION,
-		MTSW_BACKGROUND,
-		MTSW_LIST_LEFT,
-		MTSW_LIST_RIGHT,
-		MTSW_ALL,
-		MTSW_OLD,
-		MTSW_NEW,
-		MTSW_EZY,
-		MTSW_CUSTOM1,
-		MTSW_CUSTOM2,
-		MTSW_CLEAR,
-		MTSW_SAVE,
-	};
+enum MusicTrackSelectionWidgets {
+	MTSW_CLOSE,
+	MTSW_CAPTION,
+	MTSW_BACKGROUND,
+	MTSW_LIST_LEFT,
+	MTSW_LIST_RIGHT,
+	MTSW_ALL,
+	MTSW_OLD,
+	MTSW_NEW,
+	MTSW_EZY,
+	MTSW_CUSTOM1,
+	MTSW_CUSTOM2,
+	MTSW_CLEAR,
+	MTSW_SAVE,
+};
 
-public:
+struct MusicTrackSelectionWindow : public Window {
 	MusicTrackSelectionWindow(const WindowDesc *desc, WindowNumber number) : Window(desc, number)
 	{
 		this->FindWindowPlacementAndResize(desc);
@@ -350,30 +348,28 @@ static void ShowMusicTrackSelection()
 	AllocateWindowDescFront<MusicTrackSelectionWindow>(&_music_track_selection_desc, 0);
 }
 
-struct MusicWindow : public Window {
-private:
-	enum MusicWidgets {
-		MW_CLOSE,
-		MW_CAPTION,
-		MW_PREV,
-		MW_NEXT,
-		MW_STOP,
-		MW_PLAY,
-		MW_SLIDERS,
-		MW_GAUGE,
-		MW_BACKGROUND,
-		MW_INFO,
-		MW_SHUFFLE,
-		MW_PROGRAMME,
-		MW_ALL,
-		MW_OLD,
-		MW_NEW,
-		MW_EZY,
-		MW_CUSTOM1,
-		MW_CUSTOM2,
-	};
+enum MusicWidgets {
+	MW_CLOSE,
+	MW_CAPTION,
+	MW_PREV,
+	MW_NEXT,
+	MW_STOP,
+	MW_PLAY,
+	MW_SLIDERS,
+	MW_GAUGE,
+	MW_BACKGROUND,
+	MW_INFO,
+	MW_SHUFFLE,
+	MW_PROGRAMME,
+	MW_ALL,
+	MW_OLD,
+	MW_NEW,
+	MW_EZY,
+	MW_CUSTOM1,
+	MW_CUSTOM2,
+};
 
-public:
+struct MusicWindow : public Window {
 	MusicWindow(const WindowDesc *desc, WindowNumber number) : Window(desc, number)
 	{
 		this->FindWindowPlacementAndResize(desc);
