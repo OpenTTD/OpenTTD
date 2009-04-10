@@ -218,10 +218,6 @@ public:
 
 	virtual void OnPaint()
 	{
-		const byte *p;
-		uint i;
-		int y;
-
 		this->SetWidgetDisabledState(MTSW_CLEAR, msf.playlist <= 3);
 		this->LowerWidget(MTSW_LIST_LEFT);
 		this->LowerWidget(MTSW_LIST_RIGHT);
@@ -235,14 +231,14 @@ public:
 		SetDParam(0, STR_01D5_ALL + msf.playlist);
 		DrawString(this->widget[MTSW_LIST_RIGHT].left + 2, this->widget[MTSW_LIST_RIGHT].right - 2, 15, STR_01EF_PROGRAM, TC_FROMSTRING, SA_CENTER);
 
-		for (i = 1; i <= NUM_SONGS_AVAILABLE; i++) {
+		for (uint i = 1; i <= NUM_SONGS_AVAILABLE; i++) {
 			SetDParam(0, i);
 			SetDParam(2, i);
 			SetDParam(1, SPECSTR_SONGNAME);
 			DrawString(this->widget[MTSW_LIST_LEFT].left + 2, this->widget[MTSW_LIST_LEFT].right - 2, 23 + (i - 1) * 6, (i < 10) ? STR_01EC_0 : STR_01ED, TC_FROMSTRING);
 		}
 
-		for (i = 0; i != 6; i++) {
+		for (uint i = 0; i != 6; i++) {
 			DrawString(this->widget[MTSW_ALL].left + 2, this->widget[MTSW_ALL].right - 2, 45 + i * 8, STR_01D5_ALL + i, (i == msf.playlist) ? TC_WHITE : TC_BLACK, SA_CENTER);
 		}
 
@@ -251,9 +247,9 @@ public:
 		DrawString(this->widget[MTSW_SAVE].left + 2, this->widget[MTSW_SAVE].right - 2, 45 + 8 * 6 + 16 * 2, STR_01F1_SAVE, TC_FROMSTRING, SA_CENTER);
 #endif
 
-		y = 23;
-		for (p = _playlists[msf.playlist]; *p != 0; p++) {
-			i = *p;
+		int y = 23;
+		for (const byte *p = _playlists[msf.playlist]; *p != 0; p++) {
+			uint i = *p;
 			SetDParam(0, i);
 			SetDParam(1, SPECSTR_SONGNAME);
 			SetDParam(2, i);
@@ -267,14 +263,12 @@ public:
 		switch (widget) {
 			case MTSW_LIST_LEFT: { // add to playlist
 				int y = (pt.y - 23) / 6;
-				uint i;
-				byte *p;
 
 				if (msf.playlist < 4) return;
 				if (!IsInsideMM(y, 0, NUM_SONGS_AVAILABLE)) return;
 
-				p = _playlists[msf.playlist];
-				for (i = 0; i != NUM_SONGS_PLAYLIST - 1; i++) {
+				byte *p = _playlists[msf.playlist];
+				for (uint i = 0; i != NUM_SONGS_PLAYLIST - 1; i++) {
 					if (p[i] == 0) {
 						p[i] = y + 1;
 						p[i + 1] = 0;
@@ -287,14 +281,12 @@ public:
 
 			case MTSW_LIST_RIGHT: { // remove from playlist
 				int y = (pt.y - 23) / 6;
-				uint i;
-				byte *p;
 
 				if (msf.playlist < 4) return;
 				if (!IsInsideMM(y, 0, NUM_SONGS_AVAILABLE)) return;
 
-				p = _playlists[msf.playlist];
-				for (i = y; i != NUM_SONGS_PLAYLIST - 1; i++) {
+				byte *p = _playlists[msf.playlist];
+				for (uint i = y; i != NUM_SONGS_PLAYLIST - 1; i++) {
 					p[i] = p[i + 1];
 				}
 
@@ -389,16 +381,13 @@ public:
 
 	virtual void OnPaint()
 	{
-		uint i;
-		StringID str;
-
 		this->RaiseWidget(MW_GAUGE);
 		this->RaiseWidget(MW_INFO);
 		this->DrawWidgets();
 
 		GfxFillRect(187, 16, 200, 33, 0);
 
-		for (i = 0; i != 8; i++) {
+		for (uint i = 0; i != 8; i++) {
 			int colour = 0xD0;
 			if (i > 4) {
 				colour = 0xBF;
@@ -411,7 +400,7 @@ public:
 
 		GfxFillRect(60, 46, 239, 52, 0);
 
-		str = STR_01E3;
+		StringID str = STR_01E3;
 		if (_song_is_active != 0 && _music_wnd_cursong != 0) {
 			SetDParam(0, _music_wnd_cursong);
 			str = (_music_wnd_cursong < 10) ? STR_01E4_0 : STR_01E5;
@@ -428,7 +417,7 @@ public:
 
 		DrawString(this->widget[MW_INFO].left + 1, this->widget[MW_INFO].right, 38, STR_01E8_TRACK_XTITLE, TC_FROMSTRING);
 
-		for (i = 0; i != 6; i++) {
+		for (uint i = 0; i != 6; i++) {
 			DrawString(this->widget[i + MW_ALL].left, this->widget[i + MW_ALL].right, 59, STR_01D5_ALL + i, msf.playlist == i ? TC_WHITE : TC_BLACK, SA_CENTER);
 		}
 
@@ -473,18 +462,16 @@ public:
 				break;
 
 			case MW_SLIDERS: { // volume sliders
-				byte *vol, new_vol;
 				int x = pt.x - 88;
-
 				if (x < 0) return;
 
-				vol = &msf.music_vol;
+				byte *vol = &msf.music_vol;
 				if (x >= 106) {
 					vol = &msf.effect_vol;
 					x -= 106;
 				}
 
-				new_vol = min(max(x - 21, 0) * 2, 127);
+				byte new_vol = min(max(x - 21, 0) * 2, 127);
 				if (new_vol != *vol) {
 					*vol = new_vol;
 					if (vol == &msf.music_vol) MusicVolumeChanged(new_vol);
