@@ -336,11 +336,51 @@ static const Widget _music_track_selection_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_music_track_selection_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, MTSW_CLOSE),
+		NWidget(WWT_CAPTION, COLOUR_GREY, MTSW_CAPTION), SetDataTip(STR_01EB_MUSIC_PROGRAM_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, MTSW_BACKGROUND),
+		NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
+			/* Left panel. */
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 8), // Space for the left heading text.
+				NWidget(WWT_PANEL, COLOUR_GREY, MTSW_LIST_LEFT), SetMinimalSize(180, 194), SetDataTip(0x0, STR_01FA_CLICK_ON_MUSIC_TRACK_TO), EndContainer(),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+			EndContainer(),
+			/* Middle buttons. */
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 30), // Space above the first button from the title bar.
+				NWidget(WWT_PUSHBTN, COLOUR_GREY, MTSW_ALL), SetMinimalSize(60, 8), SetDataTip(0x0, STR_01F3_SELECT_ALL_TRACKS_PROGRAM),
+				NWidget(WWT_PUSHBTN, COLOUR_GREY, MTSW_OLD), SetMinimalSize(60, 8), SetDataTip(0x0, STR_01F4_SELECT_OLD_STYLE_MUSIC),
+				NWidget(WWT_PUSHBTN, COLOUR_GREY, MTSW_NEW), SetMinimalSize(60, 8), SetDataTip(0x0, STR_01F5_SELECT_NEW_STYLE_MUSIC),
+				NWidget(WWT_PUSHBTN, COLOUR_GREY, MTSW_EZY), SetMinimalSize(60, 8), SetDataTip(0x0, STR_0330_SELECT_EZY_STREET_STYLE),
+				NWidget(WWT_PUSHBTN, COLOUR_GREY, MTSW_CUSTOM1), SetMinimalSize(60, 8), SetDataTip(0x0, STR_01F6_SELECT_CUSTOM_1_USER_DEFINED),
+				NWidget(WWT_PUSHBTN, COLOUR_GREY, MTSW_CUSTOM2), SetMinimalSize(60, 8), SetDataTip(0x0, STR_01F7_SELECT_CUSTOM_2_USER_DEFINED),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 16), // Space above 'clear' button
+				NWidget(WWT_PUSHBTN, COLOUR_GREY, MTSW_CLEAR), SetMinimalSize(60, 8), SetDataTip(0x0, STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1),
+#if 0
+				NWidget(NWID_SPACER), SetMinimalSize(0, 8), // Space above 'save' button
+				NWidget(WWT_PUSHBTN, COLOUR_GREY, MTSW_SAVE), SetMinimalSize(60, 8), SetDataTip(0x0, STR_01F9_SAVE_MUSIC_SETTINGS),
+#endif
+				NWidget(NWID_SPACER), SetFill(0, 1),
+			EndContainer(),
+			/* Right panel. */
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 8), // Space for the right heading text.
+				NWidget(WWT_PANEL, COLOUR_GREY, MTSW_LIST_RIGHT), SetMinimalSize(180, 194), SetDataTip(0x0, STR_CLICK_ON_TRACK_TO_REMOVE), EndContainer(),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+};
+
 static const WindowDesc _music_track_selection_desc(
 	104, 131, 432, 218, 432, 218,
 	WC_MUSIC_TRACK_SELECTION, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_music_track_selection_widgets
+	_music_track_selection_widgets, _nested_music_track_selection_widgets, lengthof(_nested_music_track_selection_widgets)
 );
 
 static void ShowMusicTrackSelection()
@@ -528,11 +568,49 @@ static const Widget _music_window_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_music_window_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, MW_CLOSE),
+		NWidget(WWT_CAPTION, COLOUR_GREY, MW_CAPTION), SetDataTip(STR_01D2_JAZZ_JUKEBOX, STR_018C_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, MW_PREV), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_SKIP_TO_PREV, STR_01DE_SKIP_TO_PREVIOUS_TRACK),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, MW_NEXT), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_SKIP_TO_NEXT, STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, MW_STOP), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_STOP_MUSIC, STR_01E0_STOP_PLAYING_MUSIC),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, MW_PLAY), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_PLAY_MUSIC, STR_01E1_START_PLAYING_MUSIC),
+		NWidget(WWT_PANEL, COLOUR_GREY, MW_SLIDERS),   SetDataTip(0x0, STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC),
+			NWidget(WWT_PANEL, COLOUR_GREY, MW_GAUGE), SetMinimalSize(16, 20), SetPadding(1, 98, 1, 98), EndContainer(),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetFill(1, 0),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, MW_BACKGROUND),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_PUSHBTN, COLOUR_GREY, MW_SHUFFLE), SetMinimalSize(50, 8), SetDataTip(0x0, STR_01FB_TOGGLE_PROGRAM_SHUFFLE), SetPadding(6, 3, 8, 6),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 9),
+				NWidget(WWT_PANEL, COLOUR_GREY, MW_INFO), SetMinimalSize(182, 9), SetFill(0, 0), EndContainer(),
+				NWidget(NWID_SPACER), SetFill(0, 1),
+			EndContainer(),
+			NWidget(WWT_PUSHBTN, COLOUR_GREY, MW_PROGRAMME), SetMinimalSize(50, 8), SetDataTip(0x0, STR_01FC_SHOW_MUSIC_TRACK_SELECTION), SetPadding(6, 0, 8, 3),
+			NWidget(NWID_SPACER), SetFill(1, 0),
+		EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHBTN, COLOUR_GREY, MW_ALL), SetMinimalSize(50, 8), SetDataTip(0x0, STR_01F3_SELECT_ALL_TRACKS_PROGRAM),
+		NWidget(WWT_PUSHBTN, COLOUR_GREY, MW_OLD), SetMinimalSize(50, 8), SetDataTip(0x0, STR_01F4_SELECT_OLD_STYLE_MUSIC),
+		NWidget(WWT_PUSHBTN, COLOUR_GREY, MW_NEW), SetMinimalSize(50, 8), SetDataTip(0x0, STR_01F5_SELECT_NEW_STYLE_MUSIC),
+		NWidget(WWT_PUSHBTN, COLOUR_GREY, MW_EZY), SetMinimalSize(50, 8), SetDataTip(0x0, STR_0330_SELECT_EZY_STREET_STYLE),
+		NWidget(WWT_PUSHBTN, COLOUR_GREY, MW_CUSTOM1), SetMinimalSize(50, 8), SetDataTip(0x0, STR_01F6_SELECT_CUSTOM_1_USER_DEFINED),
+		NWidget(WWT_PUSHBTN, COLOUR_GREY, MW_CUSTOM2), SetMinimalSize(50, 8), SetDataTip(0x0, STR_01F7_SELECT_CUSTOM_2_USER_DEFINED),
+	EndContainer(),
+};
+
 static const WindowDesc _music_window_desc(
 	0, 22, 300, 66, 300, 66,
 	WC_MUSIC_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_music_window_widgets
+	_music_window_widgets, _nested_music_window_widgets, lengthof(_nested_music_window_widgets)
 );
 
 void ShowMusicWindow()
