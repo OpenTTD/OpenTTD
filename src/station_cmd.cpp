@@ -922,6 +922,8 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 	}
 
 	StationID station_to_join = GB(p2, 16, 16);
+	bool reuse = (station_to_join != NEW_STATION);
+	if (!reuse) station_to_join = INVALID_STATION;
 	bool distant_join = (station_to_join != INVALID_STATION);
 
 	if (distant_join && (!_settings_game.station.distant_join_stations || !IsValidStationID(station_to_join))) return CMD_ERROR;
@@ -975,7 +977,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 	if (st == NULL && distant_join) st = GetStation(station_to_join);
 
 	/* See if there is a deleted station close to us. */
-	if (st == NULL) st = GetClosestDeletedStation(tile_org);
+	if (st == NULL && reuse) st = GetClosestDeletedStation(tile_org);
 
 	if (st != NULL) {
 		/* Reuse an existing station. */
@@ -1403,6 +1405,8 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	bool build_over_road  = is_drive_through && IsNormalRoadTile(tile);
 	RoadTypes rts = (RoadTypes)GB(p2, 2, 2);
 	StationID station_to_join = GB(p2, 16, 16);
+	bool reuse = (station_to_join != NEW_STATION);
+	if (!reuse) station_to_join = INVALID_STATION;
 	bool distant_join = (station_to_join != INVALID_STATION);
 	Owner tram_owner = _current_company;
 	Owner road_owner = _current_company;
@@ -1470,7 +1474,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if (st == NULL && distant_join) st = GetStation(station_to_join);
 
 	/* Find a deleted station close to us */
-	if (st == NULL) st = GetClosestDeletedStation(tile);
+	if (st == NULL && reuse) st = GetClosestDeletedStation(tile);
 
 	/* give us a road stop in the list, and check if something went wrong */
 	if (!RoadStop::CanAllocateItem()) return_cmd_error(type ? STR_TOO_MANY_TRUCK_STOPS : STR_TOO_MANY_BUS_STOPS);
@@ -1855,6 +1859,8 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 {
 	bool airport_upgrade = true;
 	StationID station_to_join = GB(p2, 16, 16);
+	bool reuse = (station_to_join != NEW_STATION);
+	if (!reuse) station_to_join = INVALID_STATION;
 	bool distant_join = (station_to_join != INVALID_STATION);
 
 	if (distant_join && (!_settings_game.station.distant_join_stations || !IsValidStationID(station_to_join))) return CMD_ERROR;
@@ -1919,7 +1925,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (st == NULL && distant_join) st = GetStation(station_to_join);
 
 	/* Find a deleted station close to us */
-	if (st == NULL) st = GetClosestDeletedStation(tile);
+	if (st == NULL && reuse) st = GetClosestDeletedStation(tile);
 
 	if (st != NULL) {
 		if (st->owner != _current_company) {
@@ -2175,6 +2181,8 @@ static const byte _dock_h_chk[4] = { 1, 2, 1, 2 };
 CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	StationID station_to_join = GB(p2, 16, 16);
+	bool reuse = (station_to_join != NEW_STATION);
+	if (!reuse) station_to_join = INVALID_STATION;
 	bool distant_join = (station_to_join != INVALID_STATION);
 
 	if (distant_join && (!_settings_game.station.distant_join_stations || !IsValidStationID(station_to_join))) return CMD_ERROR;
@@ -2224,7 +2232,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (st == NULL && distant_join) st = GetStation(station_to_join);
 
 	/* Find a deleted station close to us */
-	if (st == NULL) st = GetClosestDeletedStation(tile);
+	if (st == NULL && reuse) st = GetClosestDeletedStation(tile);
 
 	if (st != NULL) {
 		if (st->owner != _current_company) {
