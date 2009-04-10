@@ -870,7 +870,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Pređite
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Valuta
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Izbor valute
+STR_MEASURING_UNITS                                             :{BLACK}Merne jedinice
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Izbor svetskih najzastupljenijih mernih jedinica
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Drumska vozila
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Izaberi stranu puta kojom će se kretati drumska vozila
@@ -890,6 +892,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Svakih 12 mesec
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Započni novu igru
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Učitaj staru poziciju
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Kreiraj svet/scenario u igri po svom ukusu
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Pokreće mrežnu igru sa više igrača
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Prikaži opcije igre
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Prikaži opcije težine igre
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Započni novu igru, koristeći prethodno prilagođen scenario
@@ -904,6 +907,7 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Izbor 'z
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Finansiranje izgradnje nove industrije, spisak svih industrija
 
 ############ range for menu starts
+STR_INDUSTRY_DIR                                                :Spisak Industrija
 STR_0313_FUND_NEW_INDUSTRY                                      :Finansiranje izgradnje nove industrije
 ############ range ends here
 
@@ -1084,6 +1088,14 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metod i
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nikakav
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :uobičajan
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :istraživački
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Dozvoljeno više industrija iste vrste na teritoriji jednog naselja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Dozvoljena gradnja industrije iste vrste u blizini jeda drugoj: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Uvek prikazan pun datum na statusnoj liniji: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Prikazivanje semafora na strani smera voženje: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Prikazivanje finansijskog stanja na kraju godine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nove naredbe su postavljene sa 'direktno': {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Vozila čekaju u koloni (na zauzetim stanicama): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Pomeranje prozora kada miš priđe ivicama: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Dozvoljeno podmićivanje lokalnih vlasti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Dozvoljena kupovina ekskluzivnih prava za transport: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Dozvoljeno slanje novca drugim kompanijama: {ORANGE}{STRING}
@@ -1094,10 +1106,48 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Dozvolj
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Dozvoljene ulične stanice na kolovozima u vlasništvu drugih kompanija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Dozvoljena gradnja stanica jedne pored druge: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Dozvoljeno više NewGRF kolekcija mišina: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Promena ovog podešavanja nije moguća dok postoje vozila.
 
+STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Uvek dostupni mali aerodromi: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Upozorenje ako se voz izgubi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Provera naredbi vozila: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nijedno
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :samo aktivna
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :sva
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Upozorenje ukoliko vozilo pravi gubitke: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vozila su uvek dostupna: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automatksa zamena kada vozilo ostari: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automatska zamena nakon {ORANGE}{STRING}{LTBLUE} meseci po ostarenju
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Najmanja potrebna količina novca za zamenu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Dužina ispisa poruka o grešci: {ORANGE}{STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Prikazivanje broja populacije pored naziva naselja: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generator zemljišta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originalni
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Neveća udaljenost Naftnih Rafinerija od ivica mape {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Nivo snežnog pokrivača: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Vrste terena (samo za TerraGenesis) : {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ravničarski
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Brežuljkasti
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Planinski
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Kršni
+STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Algoritam posađivanja drveća: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nikakav
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originalan
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Unapređen
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Orjentacija visinske mape: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Suprotno okretanju skazaljke na satu
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Ka okretanju skazaljke na satu
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Visina ravne mape je: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Dozvoljena izmena reljefa na ivicama mape: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedan ili više sektora na severnoj ivici nije prazan
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedn ili više sektora na jednoj od ivica nije voda
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Nejveća površina stanica: {ORANGE}{STRING} {RED}Upozorenje: Visoka vrednost usporava igru
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Automatsko servisiranje helikoptera na heliodromima: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Poveži traku alatki za reljef sa železničkim/drumskim/brodskim/avionskim trakama: {ORANGE}{STRING}
 
 
 

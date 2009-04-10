@@ -4,7 +4,6 @@
 ##winlangid 0x041f
 ##grflangid 0x3e
 ##plural 1
-##textdir ltr
 
 #
 
@@ -2240,6 +2239,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Bayan su
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Rastgele surat yap
 STR_704C_KEY                                                    :{BLACK}Anahtar
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Grafik anahtarını göster
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Detaylı performans oranlarını göster
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Şirket grafikleri anahtari
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Grafikte şirketi göstermek/gizlemek için tıkla
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Taşınan kargo
@@ -3171,6 +3171,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{VEHICL
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' geçersiz bilgi vermektedir.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}'{1:ENGINE}' için kargo tür değişim bilgisi yapımdan sonraki alım listesinden farklı. Bu otomatik yenileme-değiştirmenin kargo türünü doğru şekilde değiştirmesine engel olabilir.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' üretim yordamında sonsuz döngüye neden oldu.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Oyun tramvay desteği olmayan bir sürümde kaydedilmiş. Tüm tramvaylar kaldırılmıştır.
 

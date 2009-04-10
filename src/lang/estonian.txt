@@ -1514,7 +1514,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Mäng jätkub (
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :lahkub
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} liitus mänguga
-STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} liitus ettevõtte #{2:NUM}ga
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} liitus {2:NUM}. ettevõttega
 STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} liitus vaatajatega
 STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} alustas uue ettevõtte (#{2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} lahkus mängust ({2:STRING})
@@ -2102,15 +2102,15 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} lennuv
 STR_SV_STNAME_OILFIELD                                          :{STRING} naftaväli
 STR_SV_STNAME_MINES                                             :{STRING} kaevandused
 STR_SV_STNAME_DOCKS                                             :{STRING} dokid
-STR_SV_STNAME_BUOY_1                                            :{STRING} poi #1
-STR_SV_STNAME_BUOY_2                                            :{STRING} poi #2
-STR_SV_STNAME_BUOY_3                                            :{STRING} poi #3
-STR_SV_STNAME_BUOY_4                                            :{STRING} poi #4
-STR_SV_STNAME_BUOY_5                                            :{STRING} poi #5
-STR_SV_STNAME_BUOY_6                                            :{STRING} poi #6
-STR_SV_STNAME_BUOY_7                                            :{STRING} poi #7
-STR_SV_STNAME_BUOY_8                                            :{STRING} poi #8
-STR_SV_STNAME_BUOY_9                                            :{STRING} poi #9
+STR_SV_STNAME_BUOY_1                                            :{STRING} 1. poi
+STR_SV_STNAME_BUOY_2                                            :{STRING} 2. poi
+STR_SV_STNAME_BUOY_3                                            :{STRING} 3. poi
+STR_SV_STNAME_BUOY_4                                            :{STRING} 4. poi
+STR_SV_STNAME_BUOY_5                                            :{STRING} 5. poi
+STR_SV_STNAME_BUOY_6                                            :{STRING} 6. poi
+STR_SV_STNAME_BUOY_7                                            :{STRING} 7. poi
+STR_SV_STNAME_BUOY_8                                            :{STRING} 8. poi
+STR_SV_STNAME_BUOY_9                                            :{STRING} 9. poi
 STR_SV_STNAME_ANNEXE                                            :{STRING} juurdeehitis
 STR_SV_STNAME_SIDINGS                                           :{STRING} hargnemine
 STR_SV_STNAME_BRANCH                                            :{STRING} filiaal
@@ -2118,7 +2118,7 @@ STR_SV_STNAME_UPPER                                             :Ülemine {STRIN
 STR_SV_STNAME_LOWER                                             :Alumine {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Kopteriväljak
 STR_SV_STNAME_FOREST                                            :{STRING} mets
-STR_SV_STNAME_FALLBACK                                          :{STRING} Jaam #{NUM}
+STR_SV_STNAME_FALLBACK                                          :{STRING} {NUM}. jaam
 
 ############ end of savegame specific region!
 
