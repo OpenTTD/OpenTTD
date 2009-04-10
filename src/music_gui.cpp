@@ -239,7 +239,7 @@ public:
 			SetDParam(0, i);
 			SetDParam(2, i);
 			SetDParam(1, SPECSTR_SONGNAME);
-			DrawString(this->widget[MTSW_LIST_RIGHT].left + 2, this->widget[MTSW_LIST_RIGHT].right - 2, 23 + (i - 1) * 6, (i < 10) ? STR_01EC_0 : STR_01ED, TC_FROMSTRING);
+			DrawString(this->widget[MTSW_LIST_LEFT].left + 2, this->widget[MTSW_LIST_LEFT].right - 2, 23 + (i - 1) * 6, (i < 10) ? STR_01EC_0 : STR_01ED, TC_FROMSTRING);
 		}
 
 		for (i = 0; i != 6; i++) {
@@ -256,7 +256,7 @@ public:
 			SetDParam(0, i);
 			SetDParam(1, SPECSTR_SONGNAME);
 			SetDParam(2, i);
-			DrawString(this->widget[MTSW_LIST_LEFT].left + 2, this->widget[MTSW_LIST_LEFT].right - 2, y, (i < 10) ? STR_01EC_0 : STR_01ED, TC_FROMSTRING);
+			DrawString(this->widget[MTSW_LIST_RIGHT].left + 2, this->widget[MTSW_LIST_RIGHT].right - 2, y, (i < 10) ? STR_01EC_0 : STR_01ED, TC_FROMSTRING);
 			y += 6;
 		}
 	}
