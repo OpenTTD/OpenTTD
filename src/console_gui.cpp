@@ -18,7 +18,7 @@
 
 enum {
 	ICON_HISTORY_SIZE       = 20,
-	ICON_LINE_HEIGHT        = 12,
+	ICON_LINE_SPACING       =  2,
 	ICON_RIGHT_BORDERWIDTH  = 10,
 	ICON_BOTTOM_BORDERWIDTH = 12,
 };
@@ -146,10 +146,13 @@ static void IConsoleHistoryNavigate(int direction);
 struct IConsoleWindow : Window
 {
 	static int scroll;
+	int line_height;
 
 	IConsoleWindow() : Window(0, 0, _screen.width, _screen.height / 3, WC_CONSOLE, NULL)
 	{
 		_iconsole_mode = ICONSOLE_OPENED;
+
+		this->line_height = FONT_HEIGHT_NORMAL + ICON_LINE_SPACING;
 	}
 
 	~IConsoleWindow()
@@ -159,25 +162,25 @@ struct IConsoleWindow : Window
 
 	virtual void OnPaint()
 	{
-		const int max = (this->height / ICON_LINE_HEIGHT) - 1;
+		const int max = (this->height / this->line_height) - 1;
 		const int right = this->width - 5;
 
 		const IConsoleLine *print = IConsoleLine::Get(IConsoleWindow::scroll);
 		GfxFillRect(this->left, this->top, this->width, this->height - 1, 0);
 		for (int i = 0; i < max && print != NULL; i++, print = print->previous) {
-			DrawString(5, right, this->height - (2 + i) * ICON_LINE_HEIGHT, print->buffer, print->colour, SA_LEFT | SA_FORCE);
+			DrawString(5, right, this->height - (2 + i) * this->line_height, print->buffer, print->colour, SA_LEFT | SA_FORCE);
 		}
 		/* If the text is longer than the window, don't show the starting ']' */
 		int delta = this->width - 10 - _iconsole_cmdline.width - ICON_RIGHT_BORDERWIDTH;
 		if (delta > 0) {
-			DrawString(5, right, this->height - ICON_LINE_HEIGHT, "]", (TextColour)CC_COMMAND, SA_LEFT | SA_FORCE);
+			DrawString(5, right, this->height - this->line_height, "]", (TextColour)CC_COMMAND, SA_LEFT | SA_FORCE);
 			delta = 0;
 		}
 
-		DrawString(10 + delta, right, this->height - ICON_LINE_HEIGHT, _iconsole_cmdline.buf, (TextColour)CC_COMMAND, SA_LEFT | SA_FORCE);
+		DrawString(10 + delta, right, this->height - this->line_height, _iconsole_cmdline.buf, (TextColour)CC_COMMAND, SA_LEFT | SA_FORCE);
 
 		if (_focused_window == this && _iconsole_cmdline.caret) {
-			DrawString(10 + delta + _iconsole_cmdline.caretxoffs, right, this->height - ICON_LINE_HEIGHT, "_", TC_WHITE, SA_LEFT | SA_FORCE);
+			DrawString(10 + delta + _iconsole_cmdline.caretxoffs, right, this->height - this->line_height, "_", TC_WHITE, SA_LEFT | SA_FORCE);
 		}
 	}
 
@@ -185,7 +188,7 @@ struct IConsoleWindow : Window
 	{
 		if (IConsoleLine::Truncate() &&
 				(IConsoleWindow::scroll > IConsoleLine::size)) {
-			IConsoleWindow::scroll = max(0, IConsoleLine::size - (this->height / ICON_LINE_HEIGHT) + 1);
+			IConsoleWindow::scroll = max(0, IConsoleLine::size - (this->height / this->line_height) + 1);
 			this->SetDirty();
 		}
 	}
@@ -199,7 +202,7 @@ struct IConsoleWindow : Window
 	{
 		if (_focused_window != this) return ES_NOT_HANDLED;
 
-		const int scroll_height = (this->height / ICON_LINE_HEIGHT) - 1;
+		const int scroll_height = (this->height / this->line_height) - 1;
 		switch (keycode) {
 			case WKC_UP:
 				IConsoleHistoryNavigate(1);
