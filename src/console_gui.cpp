@@ -147,12 +147,14 @@ struct IConsoleWindow : Window
 {
 	static int scroll;
 	int line_height;
+	int line_offset;
 
 	IConsoleWindow() : Window(0, 0, _screen.width, _screen.height / 3, WC_CONSOLE, NULL)
 	{
 		_iconsole_mode = ICONSOLE_OPENED;
 
 		this->line_height = FONT_HEIGHT_NORMAL + ICON_LINE_SPACING;
+		this->line_offset = GetStringBoundingBox("] ").width + 5;
 	}
 
 	~IConsoleWindow()
@@ -171,16 +173,16 @@ struct IConsoleWindow : Window
 			DrawString(5, right, this->height - (2 + i) * this->line_height, print->buffer, print->colour, SA_LEFT | SA_FORCE);
 		}
 		/* If the text is longer than the window, don't show the starting ']' */
-		int delta = this->width - 10 - _iconsole_cmdline.width - ICON_RIGHT_BORDERWIDTH;
+		int delta = this->width - this->line_offset - _iconsole_cmdline.width - ICON_RIGHT_BORDERWIDTH;
 		if (delta > 0) {
 			DrawString(5, right, this->height - this->line_height, "]", (TextColour)CC_COMMAND, SA_LEFT | SA_FORCE);
 			delta = 0;
 		}
 
-		DrawString(10 + delta, right, this->height - this->line_height, _iconsole_cmdline.buf, (TextColour)CC_COMMAND, SA_LEFT | SA_FORCE);
+		DrawString(this->line_offset + delta, right, this->height - this->line_height, _iconsole_cmdline.buf, (TextColour)CC_COMMAND, SA_LEFT | SA_FORCE);
 
 		if (_focused_window == this && _iconsole_cmdline.caret) {
-			DrawString(10 + delta + _iconsole_cmdline.caretxoffs, right, this->height - this->line_height, "_", TC_WHITE, SA_LEFT | SA_FORCE);
+			DrawString(this->line_offset + delta + _iconsole_cmdline.caretxoffs, right, this->height - this->line_height, "_", TC_WHITE, SA_LEFT | SA_FORCE);
 		}
 	}
 
