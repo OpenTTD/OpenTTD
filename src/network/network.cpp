@@ -55,6 +55,7 @@ ClientID _redirect_console_to_client;
 bool _network_need_advertise;
 uint32 _network_last_advertise_frame;
 uint8 _network_reconnect;
+StringList _network_bind_list;
 StringList _network_host_list;
 StringList _network_ban_list;
 uint32 _frame_counter_server; // The frame_counter of the server, if in network-mode
@@ -542,9 +543,12 @@ static bool NetworkListen()
 {
 	assert(_listensockets.Length() == 0);
 
-	NetworkAddress address(_settings_client.network.server_bind_ip, _settings_client.network.server_port);
+	NetworkAddressList addresses;
+	GetBindAddresses(&addresses, _settings_client.network.server_port);
 
-	address.Listen(SOCK_STREAM, &_listensockets);
+	for (NetworkAddress *address = addresses.Begin(); address != addresses.End(); address++) {
+		address->Listen(SOCK_STREAM, &_listensockets);
+	}
 
 	if (_listensockets.Length() == 0) {
 		ServerStartError("Could not create listening socket");
@@ -661,6 +665,23 @@ void NetworkAddServer(const char *b)
 		if (port != NULL) rport = atoi(port);
 
 		NetworkUDPQueryServer(NetworkAddress(host, rport), true);
+	}
+}
+
+/**
+ * Get the addresses to bind to.
+ * @param addresses the list to write to.
+ * @param port the port to bind to.
+ */
+void GetBindAddresses(NetworkAddressList *addresses, uint16 port)
+{
+	for (char **iter = _network_bind_list.Begin(); iter != _network_bind_list.End(); iter++) {
+		*addresses->Append() = NetworkAddress(*iter, port);
+	}
+
+	/* No address, so bind to everything. */
+	if (addresses->Length() == 0) {
+		*addresses->Append() = NetworkAddress("", port);
 	}
 }
 

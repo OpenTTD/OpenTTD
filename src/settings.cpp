@@ -1277,6 +1277,7 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 	proc(ini, _currency_settings,"currency", &_custom_currency);
 
 #ifdef ENABLE_NETWORK
+	proc_list(ini, "server_bind_addresses", &_network_bind_list);
 	proc_list(ini, "servers", &_network_host_list);
 	proc_list(ini, "bans",    &_network_ban_list);
 #endif /* ENABLE_NETWORK */

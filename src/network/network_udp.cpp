@@ -546,15 +546,14 @@ void NetworkUDPInitialize()
 
 	_network_udp_mutex->BeginCritical();
 
-	NetworkAddressList server;
-	*server.Append() = NetworkAddress(_settings_client.network.server_bind_ip, _settings_client.network.server_port);
-
 	_udp_client_socket = new ClientNetworkUDPSocketHandler();
+
+	NetworkAddressList server;
+	GetBindAddresses(&server, _settings_client.network.server_port);
 	_udp_server_socket = new ServerNetworkUDPSocketHandler(&server);
 
-	for (NetworkAddress *iter = server.Begin(); iter != server.End(); iter++) {
-		iter->SetPort(0);
-	}
+	server.Clear();
+	GetBindAddresses(&server, 0);
 	_udp_master_socket = new MasterNetworkUDPSocketHandler(&server);
 
 	_network_udp_server = false;

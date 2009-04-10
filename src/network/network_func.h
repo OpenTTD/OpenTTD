@@ -21,6 +21,7 @@ extern ClientID _redirect_console_to_client;
 extern bool _network_need_advertise;
 extern uint32 _network_last_advertise_frame;
 extern uint8 _network_reconnect;
+extern StringList _network_bind_list;
 extern StringList _network_host_list;
 extern StringList _network_ban_list;
 

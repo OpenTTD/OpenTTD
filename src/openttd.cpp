@@ -544,7 +544,10 @@ int ttd_main(int argc, char *argv[])
 	if (_cur_resolution.height <= 0) _cur_resolution.height = 1;
 
 #if defined(ENABLE_NETWORK)
-	if (dedicated_host) snprintf(_settings_client.network.server_bind_ip, sizeof(_settings_client.network.server_bind_ip), "%s", dedicated_host);
+	if (dedicated_host) {
+		_network_bind_list.Clear();
+		*_network_bind_list.Append() = strdup(dedicated_host);
+	}
 	if (dedicated_port) _settings_client.network.server_port = dedicated_port;
 	if (_dedicated_forks && !dedicated) _dedicated_forks = false;
 #endif /* ENABLE_NETWORK */
