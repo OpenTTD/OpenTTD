@@ -252,7 +252,8 @@ public:
 #endif
 
 		y = 23;
-		for (p = _playlists[msf.playlist], i = 0; (i = *p) != 0; p++) {
+		for (p = _playlists[msf.playlist]; *p != 0; p++) {
+			i = *p;
 			SetDParam(0, i);
 			SetDParam(1, SPECSTR_SONGNAME);
 			SetDParam(2, i);
@@ -410,9 +411,8 @@ public:
 
 		GfxFillRect(60, 46, 239, 52, 0);
 
-		if (_song_is_active == 0 || _music_wnd_cursong == 0) {
-			str = STR_01E3;
-		} else {
+		str = STR_01E3;
+		if (_song_is_active != 0 && _music_wnd_cursong != 0) {
 			SetDParam(0, _music_wnd_cursong);
 			str = (_music_wnd_cursong < 10) ? STR_01E4_0 : STR_01E5;
 		}
