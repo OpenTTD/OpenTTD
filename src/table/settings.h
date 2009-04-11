@@ -272,6 +272,19 @@ static const SettingDescGlobVarList _misc_settings[] = {
 static const uint GAME_DIFFICULTY_NUM = 18;
 uint16 _old_diff_custom[GAME_DIFFICULTY_NUM];
 
+/* Most of these strings are used both for gameopt-backward compatability
+ * and the settings tables. The rest is here for consistency. */
+static const char *_locale_currencies = "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRL|EEK|custom";
+static const char *_locale_units = "imperial|metric|si";
+static const char *_town_names = "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish|italian|catalan";
+static const char *_climates = "temperate|arctic|tropic|toyland";
+static const char *_autosave_interval = "off|monthly|quarterly|half year|yearly";
+static const char *_roadsides = "left|right";
+static const char *_savegame_date = "long|short|iso";
+#ifdef ENABLE_NETWORK
+static const char *_server_langs = "ANY|ENGLISH|GERMAN|FRENCH|BRAZILIAN|BULGARIAN|CHINESE|CZECH|DANISH|DUTCH|ESPERANTO|FINNISH|HUNGARIAN|ICELANDIC|ITALIAN|JAPANESE|KOREAN|LITHUANIAN|NORWEGIAN|POLISH|PORTUGUESE|ROMANIAN|RUSSIAN|SLOVAK|SLOVENIAN|SPANISH|SWEDISH|TURKISH|UKRAINIAN|AFRIKAANS|CROATIAN|CATALAN|ESTONIAN|GALICIAN|GREEK|LATVIAN";
+#endif /* ENABLE_NETWORK */
+
 static const SettingDesc _gameopt_settings[] = {
 	/* In version 4 a new difficulty setting has been added to the difficulty settings,
 	 * town attitude towards demolishing. Needs special handling because some dimwit thought
@@ -286,15 +299,15 @@ static const SettingDesc _gameopt_settings[] = {
 	 SDTG_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, SLE_UINT16,                    C, 0, _old_diff_custom, 18, 0, 0, 0, 0, NULL, STR_NULL, NULL, 4, SL_MAX_VERSION),
 
 	      SDT_VAR(GameSettings, difficulty.diff_level,    SLE_UINT8,                     0, 0, 0, 0,  3, 0, STR_NULL, NULL),
-	    SDT_OMANY(GameSettings, locale.currency,          SLE_UINT8,                     N, 0, 0, CUSTOM_CURRENCY_ID, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRL|EEK|custom", STR_NULL, NULL, NULL),
-	    SDT_OMANY(GameSettings, locale.units,             SLE_UINT8,                     N, 0, 1, 2, "imperial|metric|si", STR_NULL, NULL, NULL),
+	    SDT_OMANY(GameSettings, locale.currency,          SLE_UINT8,                     N, 0, 0, CUSTOM_CURRENCY_ID, _locale_currencies, STR_NULL, NULL, NULL),
+	    SDT_OMANY(GameSettings, locale.units,             SLE_UINT8,                     N, 0, 1, 2, _locale_units, STR_NULL, NULL, NULL),
 	/* There are only 21 predefined town_name values (0-20), but you can have more with newgrf action F so allow these bigger values (21-255). Invalid values will fallback to english on use and (undefined string) in GUI. */
-	    SDT_OMANY(GameSettings, game_creation.town_name,  SLE_UINT8,                     0, 0, 0, 255, "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish|italian|catalan", STR_NULL, NULL, NULL),
-	    SDT_OMANY(GameSettings, game_creation.landscape,  SLE_UINT8,                     0, 0, 0, 3, "temperate|arctic|tropic|toyland", STR_NULL, NULL, ConvertLandscape),
+	    SDT_OMANY(GameSettings, game_creation.town_name,  SLE_UINT8,                     0, 0, 0, 255, _town_names, STR_NULL, NULL, NULL),
+	    SDT_OMANY(GameSettings, game_creation.landscape,  SLE_UINT8,                     0, 0, 0, 3, _climates, STR_NULL, NULL, ConvertLandscape),
 	      SDT_VAR(GameSettings, game_creation.snow_line,  SLE_UINT8,                     0, 0, 7 * TILE_HEIGHT, 2 * TILE_HEIGHT, 13 * TILE_HEIGHT, 0, STR_NULL, NULL),
 	 SDT_CONDNULL(                                                1,  0, 22),
- SDTC_CONDOMANY(              gui.autosave,             SLE_UINT8, 23, SL_MAX_VERSION, S, 0, 1, 4, "off|monthly|quarterly|half year|yearly", STR_NULL, NULL),
-	    SDT_OMANY(GameSettings, vehicle.road_side,        SLE_UINT8,                     0, 0, 1, 1, "left|right", STR_NULL, NULL, NULL),
+ SDTC_CONDOMANY(              gui.autosave,             SLE_UINT8, 23, SL_MAX_VERSION, S, 0, 1, 4, _autosave_interval, STR_NULL, NULL),
+	    SDT_OMANY(GameSettings, vehicle.road_side,        SLE_UINT8,                     0, 0, 1, 1, _roadsides, STR_NULL, NULL, NULL),
 	    SDT_END()
 };
 
@@ -332,10 +345,10 @@ const SettingDesc _settings[] = {
 	 SDT_CONDVAR(GameSettings, difficulty.diff_level,                SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     0,     0,      3,  0, STR_NULL,                                  DifficultyReset),
 
 	/* There are only 21 predefined town_name values (0-20), but you can have more with newgrf action F so allow these bigger values (21-255). Invalid values will fallback to english on use and (undefined string) in GUI. */
- SDT_CONDOMANY(GameSettings, game_creation.town_name,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 0, 255, "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish|italian|catalan", STR_NULL, NULL, NULL),
- SDT_CONDOMANY(GameSettings, game_creation.landscape,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 0,   3, "temperate|arctic|tropic|toyland", STR_NULL, NULL, ConvertLandscape),
-	 SDT_CONDVAR(GameSettings, game_creation.snow_line,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 7 * TILE_HEIGHT, 2 * TILE_HEIGHT, 13 * TILE_HEIGHT, 0, STR_NULL, NULL),
- SDT_CONDOMANY(GameSettings, vehicle.road_side,                    SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 1,   1, "left|right", STR_NULL, CheckRoadSide, NULL),
+ SDT_CONDOMANY(GameSettings, game_creation.town_name,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 0, 255, _town_names,      STR_NULL,                                  NULL, NULL),
+ SDT_CONDOMANY(GameSettings, game_creation.landscape,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 0,   3, _climates,        STR_NULL,                                  NULL, ConvertLandscape),
+	 SDT_CONDVAR(GameSettings, game_creation.snow_line,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 7 * TILE_HEIGHT, 2 * TILE_HEIGHT, 13 * TILE_HEIGHT, 0, STR_NULL,     NULL),
+ SDT_CONDOMANY(GameSettings, vehicle.road_side,                    SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 1,   1, _roadsides,       STR_NULL,                                  CheckRoadSide, NULL),
 
 	    SDT_BOOL(GameSettings, construction.build_on_slopes,                                        0,NN,  true,                    STR_CONFIG_SETTING_BUILDONSLOPES,          NULL),
 	SDT_CONDBOOL(GameSettings, construction.autoslope,                          75, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_AUTOSLOPE,              NULL),
@@ -495,13 +508,13 @@ const SettingDesc _settings[] = {
 	 SDT_CONDVAR(GameSettings, game_creation.water_borders,                   SLE_UINT8,111, SL_MAX_VERSION, 0, 0,    15,                     0,      16, 0, STR_NULL,                                 NULL),
 	 SDT_CONDVAR(GameSettings, game_creation.custom_town_number,             SLE_UINT16,115, SL_MAX_VERSION, 0, 0,     1,                     1,    5000, 0, STR_NULL,                                 NULL),
 
- SDT_CONDOMANY(GameSettings, locale.currency,                               SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 0, CUSTOM_CURRENCY_ID, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRR|custom", STR_NULL, NULL, NULL),
- SDT_CONDOMANY(GameSettings, locale.units,                                  SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 1, 2, "imperial|metric|si", STR_NULL, NULL, NULL),
+ SDT_CONDOMANY(GameSettings, locale.currency,                               SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 0, CUSTOM_CURRENCY_ID, _locale_currencies, STR_NULL, NULL, NULL),
+ SDT_CONDOMANY(GameSettings, locale.units,                                  SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 1, 2, _locale_units,                       STR_NULL, NULL, NULL),
 
 	/***************************************************************************/
 	/* Unsaved setting variables. */
-	SDTC_OMANY(gui.autosave,                  SLE_UINT8, S,  0, 1, 4, "off|monthly|quarterly|half year|yearly", STR_NULL,                     NULL),
-	SDTC_OMANY(gui.date_format_in_default_names,SLE_UINT8,S,MS, 0, 2, "long|short|iso",       STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES,   NULL),
+	SDTC_OMANY(gui.autosave,                  SLE_UINT8, S,  0, 1, 4, _autosave_interval,     STR_NULL,                                       NULL),
+	SDTC_OMANY(gui.date_format_in_default_names,SLE_UINT8,S,MS, 0, 2, _savegame_date,         STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES,   NULL),
 	 SDTC_BOOL(gui.vehicle_speed,                        S,  0,  true,                        STR_CONFIG_SETTING_VEHICLESPEED,                NULL),
 	 SDTC_BOOL(gui.status_long_date,                     S,  0,  true,                        STR_CONFIG_SETTING_LONGDATE,                    NULL),
 	 SDTC_BOOL(gui.show_finances,                        S,  0,  true,                        STR_CONFIG_SETTING_SHOWFINANCES,                NULL),
@@ -582,7 +595,7 @@ const SettingDesc _settings[] = {
 	  SDTC_VAR(network.max_spectators,        SLE_UINT8, S, NO,     8,     0, MAX_CLIENTS, 0, STR_NULL,                                       UpdateClientConfigValues),
 	  SDTC_VAR(network.restart_game_year,     SLE_INT32, S,D0|NO|NC,0, MIN_YEAR, MAX_YEAR, 1, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.min_active_clients,    SLE_UINT8, S, NO,     0,     0, MAX_CLIENTS, 0, STR_NULL,                                       NULL),
-	SDTC_OMANY(network.server_lang,           SLE_UINT8, S, NO,     0,    35, "ANY|ENGLISH|GERMAN|FRENCH|BRAZILIAN|BULGARIAN|CHINESE|CZECH|DANISH|DUTCH|ESPERANTO|FINNISH|HUNGARIAN|ICELANDIC|ITALIAN|JAPANESE|KOREAN|LITHUANIAN|NORWEGIAN|POLISH|PORTUGUESE|ROMANIAN|RUSSIAN|SLOVAK|SLOVENIAN|SPANISH|SWEDISH|TURKISH|UKRAINIAN|AFRIKAANS|CROATIAN|CATALAN|ESTONIAN|GALICIAN|GREEK|LATVIAN", STR_NULL, NULL),
+	SDTC_OMANY(network.server_lang,           SLE_UINT8, S, NO,     0,    35, _server_langs,  STR_NULL,                                       NULL),
 	 SDTC_BOOL(network.reload_cfg,                       S, NO, false,                        STR_NULL,                                       NULL),
 	  SDTC_STR(network.last_host,              SLE_STRB, S,  0,    "",                        STR_NULL,                                       NULL),
 	  SDTC_VAR(network.last_port,            SLE_UINT16, S,  0,     0,     0,  UINT16_MAX, 0, STR_NULL,                                       NULL),
