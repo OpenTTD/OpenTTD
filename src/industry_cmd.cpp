@@ -1872,6 +1872,9 @@ static void MaybeNewIndustry(void)
 		}
 	}
 
+	/* Abort if there is no industry buildable */
+	if (probability_max == 0) return;
+
 	/* Find a random type, with maximum being what has been evaluate above*/
 	rndtype = RandomRange(probability_max);
 	for (j = 0; j < NUM_INDUSTRYTYPES; j++) {
