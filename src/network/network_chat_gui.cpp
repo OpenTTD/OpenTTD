@@ -27,7 +27,7 @@
 assert_compile((int)DRAW_STRING_BUFFER >= (int)NETWORK_CHAT_LENGTH + NETWORK_NAME_LENGTH + 40);
 
 enum {
-	NETWORK_CHAT_LINE_HEIGHT = 13,
+	NETWORK_CHAT_LINE_SPACING = 3,
 };
 
 struct ChatMessage {
@@ -113,7 +113,7 @@ void NetworkInitChatMessage()
 	_chatmsg_box.x      = 10;
 	_chatmsg_box.y      = 30;
 	_chatmsg_box.width  = _settings_client.gui.network_chat_box_width;
-	_chatmsg_box.height = _settings_client.gui.network_chat_box_height * NETWORK_CHAT_LINE_HEIGHT + 2;
+	_chatmsg_box.height = _settings_client.gui.network_chat_box_height * (FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING) + 2;
 	_chatmessage_backup = ReallocT(_chatmessage_backup, _chatmsg_box.width * _chatmsg_box.height * BlitterFactoryBase::GetCurrentBlitter()->GetBytesPerPixel());
 
 	for (uint i = 0; i < MAX_CHAT_MESSAGES; i++) {
@@ -229,14 +229,14 @@ void NetworkDrawChatMessage()
 	/* Paint a half-transparent box behind the chat messages */
 	GfxFillRect(
 			_chatmsg_box.x,
-			_screen.height - _chatmsg_box.y - count * NETWORK_CHAT_LINE_HEIGHT - 2,
+			_screen.height - _chatmsg_box.y - count * (FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING) - 2,
 			_chatmsg_box.x + _chatmsg_box.width - 1,
 			_screen.height - _chatmsg_box.y - 2,
 			PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOUR // black, but with some alpha for background
 		);
 
 	/* Paint the chat messages starting with the lowest at the bottom */
-	for (uint y = NETWORK_CHAT_LINE_HEIGHT; count-- != 0; y += NETWORK_CHAT_LINE_HEIGHT) {
+	for (uint y = FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING; count-- != 0; y += (FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING)) {
 		DrawString(_chatmsg_box.x + 3, _chatmsg_box.x + _chatmsg_box.width - 1, _screen.height - _chatmsg_box.y - y + 1, _chatmsg_list[count].message, _chatmsg_list[count].colour);
 	}
 
