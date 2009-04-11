@@ -58,11 +58,19 @@ static const Widget _land_info_widgets[] = {
 {    WIDGETS_END},
 };
 
+static const NWidgetPart _nested_land_info_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, LIW_CLOSE),
+		NWidget(WWT_CAPTION, COLOUR_GREY, LIW_CAPTION), SetDataTip(STR_01A3_LAND_AREA_INFORMATION, STR_018C_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, LIW_BACKGROUND), SetMinimalSize(300, 86), SetResize(0, 1), EndContainer(),
+};
+
 static const WindowDesc _land_info_desc(
 	WDP_AUTO, WDP_AUTO, 300, 100, 300, 100,
 	WC_LAND_INFO, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_land_info_widgets
+	_land_info_widgets, _nested_land_info_widgets, lengthof(_nested_land_info_widgets)
 );
 
 class LandInfoWindow : public Window {
@@ -296,11 +304,21 @@ static const Widget _about_widgets[] = {
 {    WIDGETS_END},
 };
 
+static const NWidgetPart _nested_about_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, AW_CLOSE),
+		NWidget(WWT_CAPTION, COLOUR_GREY, AW_CAPTION), SetDataTip(STR_015B_OPENTTD, STR_018C_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, AW_BACKGROUND),
+		NWidget(WWT_FRAME, COLOUR_GREY, AW_FRAME), SetMinimalSize(410, 206), SetPadding(26, 5, 26, 5), EndContainer(),
+	EndContainer(),
+};
+
 static const WindowDesc _about_desc(
 	WDP_CENTER, WDP_CENTER, 420, 272, 420, 272,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_about_widgets
+	_about_widgets, _nested_about_widgets, lengthof(_nested_about_widgets)
 );
 
 struct AboutWindow : public Window {
@@ -1198,11 +1216,26 @@ static const Widget _query_string_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_query_string_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, QUERY_STR_WIDGET_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, QUERY_STR_WIDGET_CAPTION), SetDataTip(STR_012D, STR_NULL),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, QUERY_STR_WIDGET_BACKGROUND),
+		NWidget(WWT_EDITBOX, COLOUR_GREY, QUERY_STR_WIDGET_TEXT), SetMinimalSize(256, 12), SetPadding(2, 2, 2, 2),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_DEFAULT), SetMinimalSize(87, 12), SetDataTip(STR_DEFAULT, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_CANCEL), SetMinimalSize(86, 12), SetDataTip(STR_012E_CANCEL, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_OK), SetMinimalSize(87, 12), SetDataTip(STR_012F_OK, STR_NULL),
+	EndContainer(),
+};
+
 static const WindowDesc _query_string_desc(
 	190, 219, 260, 42, 260, 42,
 	WC_QUERY_STRING, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_query_string_widgets
+	_query_string_widgets, _nested_query_string_widgets, lengthof(_nested_query_string_widgets)
 );
 
 /** Show a query popup window with a textbox in it.
@@ -1340,11 +1373,26 @@ static const Widget _query_widgets[] = {
 {   WIDGETS_END },
 };
 
+static const NWidgetPart _nested_query_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_RED, QUERY_WIDGET_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_RED, QUERY_WIDGET_CAPTION), SetDataTip(STR_NULL, STR_NULL),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_RED, QUERY_WIDGET_BACKGROUND),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 48),
+		NWidget(NWID_HORIZONTAL), SetPIP(20, 29, 19),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, QUERY_WIDGET_NO), SetMinimalSize(71, 12), SetDataTip(STR_00C9_NO, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, QUERY_WIDGET_YES), SetMinimalSize(71, 12), SetDataTip(STR_00C8_YES, STR_NULL),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+	EndContainer(),
+};
+
 static const WindowDesc _query_desc(
 	WDP_CENTER, WDP_CENTER, 210, 82, 210, 82,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_DEF_WIDGET | WDF_MODAL,
-	_query_widgets
+	_query_widgets, _nested_query_widgets, lengthof(_nested_query_widgets)
 );
 
 /** Show a modal confirmation window with standard 'yes' and 'no' buttons
