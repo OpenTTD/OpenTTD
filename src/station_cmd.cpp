@@ -148,8 +148,12 @@ static bool CMSAMine(TileIndex tile)
 	if ((GetIndustrySpec(ind->type)->life_type & INDUSTRYLIFE_EXTRACTIVE) == 0) return false;
 
 	for (uint i = 0; i < lengthof(ind->produced_cargo); i++) {
-		/* The industry extracts something non-liquid, i.e. no oil or plastic, so it is a mine */
-		if (ind->produced_cargo[i] != CT_INVALID && (GetCargo(ind->produced_cargo[i])->classes & CC_LIQUID) == 0) return true;
+		/* The industry extracts something non-liquid, i.e. no oil or plastic, so it is a mine.
+		 * Also the production of passengers and mail is ignored. */
+		if (ind->produced_cargo[i] != CT_INVALID &&
+				(GetCargo(ind->produced_cargo[i])->classes & (CC_LIQUID | CC_PASSENGERS | CC_MAIL)) == 0) {
+			return true;
+		}
 	}
 
 	return false;
