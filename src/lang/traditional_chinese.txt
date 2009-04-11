@@ -4,7 +4,6 @@
 ##winlangid 0x0404
 ##grflangid 0x0c
 ##plural 1
-##textdir ltr
 
 #
 
@@ -1009,7 +1008,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :無
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}滑鼠左鍵捲動：{ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}使用 {ORANGE}{STRING}{LTBLUE} 時間格式作為存檔檔名。
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}使用 {ORANGE}{STRING}{LTBLUE} 時間格式作為存檔檔名
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :長格式 (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :短格式 (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :國際格式 (2008-12-31)
@@ -1087,7 +1086,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :較佳規劃
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :２x２網格
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :３x３網格
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :隨機
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}市鎮可以興建道路{ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}市鎮可以興建道路：{ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}允許市鎮限制機場噪音：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}主工具列位置：{ORANGE}{STRING}
@@ -1194,6 +1193,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}無法�
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}以自動鋪軌模式建造鐵軌
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...這個地圖沒有市鎮
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}地圖產生失敗...{}...找不到合適的市鎮位址
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}許多隨機市鎮
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}以隨機分佈的市鎮佈滿地圖
@@ -1682,6 +1682,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}將市�
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}修改市鎮名稱
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}上月乘客：{ORANGE}{COMMA}{BLACK}  最多：{ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}上月郵件：{ORANGE}{COMMA}{BLACK}  最多：{ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}市鎮成長還需貨物：
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{BLACK}還需要 {ORANGE}{STRING}
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{BLACK}上個月已運送 {ORANGE}{CARGO}
 STR_200F_TALL_OFFICE_BLOCK                                      :摩天辦公大樓
 STR_2010_OFFICE_BLOCK                                           :辦公大樓
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :小平房
@@ -3119,6 +3122,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :將 {STRING} �
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :未預期的 sprite
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :未知的動作 0 屬性
 STR_NEWGRF_ERROR_INVALID_ID                                     :嘗試使用的 ID 無效
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 包含了毀損的 sprite。所有毀損的 sprite會以紅色問號 (？) 顯示。
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :包含8個多重指令
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}載入所選的設定值
@@ -3160,6 +3164,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}' 不在機廠內卻發生列車長度的變動
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}' 所擁有的列車 '{0:VEHICLE}' 長度無效。這個錯誤可能是 NewGRFs 有問題所致，遊戲可能會無法同步或當機
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF「{0:STRING}」提供了錯誤的資訊。
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}此存檔版本不支援路面電車，已移除所有路面電車
 
