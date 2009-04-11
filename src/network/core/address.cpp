@@ -206,20 +206,20 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 		 * connect to one with exactly the same address twice. That's
 		 * ofcourse totally unneeded ;) */
 		if (sockets != NULL) {
-			NetworkAddress address(runp->ai_addr, runp->ai_addrlen);
+			NetworkAddress address(runp->ai_addr, (int)runp->ai_addrlen);
 			if (sockets->Find(address) != sockets->End()) continue;
 		}
 		sock = func(runp);
 		if (sock == INVALID_SOCKET) continue;
 
 		if (sockets == NULL) {
-			this->address_length = runp->ai_addrlen;
+			this->address_length = (int)runp->ai_addrlen;
 			assert(sizeof(this->address) >= runp->ai_addrlen);
 			memcpy(&this->address, runp->ai_addr, runp->ai_addrlen);
 			break;
 		}
 
-		NetworkAddress addr(runp->ai_addr, runp->ai_addrlen);
+		NetworkAddress addr(runp->ai_addr, (int)runp->ai_addrlen);
 		(*sockets)[addr] = sock;
 		sock = INVALID_SOCKET;
 	}
@@ -243,7 +243,7 @@ static SOCKET ConnectLoopProc(addrinfo *runp)
 
 	if (!SetNoDelay(sock)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
 
-	if (connect(sock, runp->ai_addr, runp->ai_addrlen) != 0) {
+	if (connect(sock, runp->ai_addr, (int)runp->ai_addrlen) != 0) {
 		DEBUG(net, 1, "Could not connect socket: %s", strerror(errno));
 		closesocket(sock);
 		return INVALID_SOCKET;
@@ -270,7 +270,7 @@ SOCKET NetworkAddress::Connect()
 static SOCKET ListenLoopProc(addrinfo *runp)
 {
 	const char *type = runp->ai_socktype == SOCK_STREAM ? "tcp" : "udp";
-	const char *address = NetworkAddress(runp->ai_addr, runp->ai_addrlen).GetAddressAsString();
+	const char *address = NetworkAddress(runp->ai_addr, (int)runp->ai_addrlen).GetAddressAsString();
 
 	SOCKET sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
 	if (sock == INVALID_SOCKET) {
@@ -293,7 +293,7 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 		DEBUG(net, 3, "[%s] Could not disable IPv4 over IPv6 on port %s: %s", type, address, strerror(errno));
 	}
 
-	if (bind(sock, runp->ai_addr, runp->ai_addrlen) != 0) {
+	if (bind(sock, runp->ai_addr, (int)runp->ai_addrlen) != 0) {
 		DEBUG(net, 1, "[%s] Could not bind on port %s: %s", type, address, strerror(errno));
 		closesocket(sock);
 		return INVALID_SOCKET;
