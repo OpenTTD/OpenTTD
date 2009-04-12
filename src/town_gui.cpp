@@ -251,17 +251,22 @@ public:
 		InitializeWindowViewport(this, this->widget[TVW_VIEWPORTINSET].left + 1, this->widget[TVW_VIEWPORTINSET].top + 1, width, height, this->town->xy, ZOOM_LVL_TOWN);
 
 		if (this->town->larger_town) this->widget[TVW_CAPTION].data = STR_CITY;
-		this->SetWidgetHiddenState(TVW_DELETE, ingame);  // hide delete button on game mode
-		this->SetWidgetHiddenState(TVW_EXPAND, ingame);  // hide expand button on game mode
-		this->SetWidgetHiddenState(TVW_SHOWAUTHORITY, !ingame); // hide autority button on editor mode
 
 		if (ingame) {
-			/* resize caption bar */
+			/* Hide the expand button, and put the authority button over it. */
+			this->HideWidget(TVW_EXPAND);
+			this->widget[TVW_SHOWAUTHORITY].right = this->widget[TVW_EXPAND].right;
+			/* Resize caption bar */
 			this->widget[TVW_CAPTION].right = this->widget[TVW_STICKY].left -1;
-			/* move the rename from top on scenario to bottom in game */
+			/* Hide the delete button, and move the rename button from top on scenario to bottom in game. */
+			this->HideWidget(TVW_DELETE);
 			this->widget[TVW_CHANGENAME].top = this->widget[TVW_EXPAND].top;
 			this->widget[TVW_CHANGENAME].bottom = this->widget[TVW_EXPAND].bottom;
 			this->widget[TVW_CHANGENAME].right = this->widget[TVW_STICKY].right;
+		} else {
+			/* Hide the authority button, and put the expand button over it. */
+			this->HideWidget(TVW_SHOWAUTHORITY);
+			this->widget[TVW_EXPAND].left = this->widget[TVW_SHOWAUTHORITY].left;
 		}
 
 		this->ResizeWindowAsNeeded();
@@ -423,15 +428,15 @@ public:
 
 static const Widget _town_view_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},                // TVW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_BROWN,    11,   172,     0,    13, STR_2005,                 STR_018C_WINDOW_TITLE_DRAG_THIS},      // TVW_CAPTION
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_BROWN,    11,   171,     0,    13, STR_2005,                 STR_018C_WINDOW_TITLE_DRAG_THIS},      // TVW_CAPTION
 {  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_BROWN,   248,   259,     0,    13, 0x0,                      STR_STICKY_BUTTON},                    // TVW_STICKY
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_BROWN,     0,   259,    14,   105, 0x0,                      STR_NULL},                             // TVW_VIEWPORTPANEL
 {      WWT_INSET,   RESIZE_NONE,  COLOUR_BROWN,     2,   257,    16,   103, 0x0,                      STR_NULL},                             // TVW_VIEWPORTINSET
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_BROWN,     0,   259,   106,   137, 0x0,                      STR_NULL},                             // TVW_INFOPANEL
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,     0,    85,   138,   149, STR_00E4_LOCATION,        STR_200B_CENTER_THE_MAIN_VIEW_ON},     // TVW_CENTERVIEW
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,    86,   171,   138,   149, STR_2020_LOCAL_AUTHORITY, STR_2021_SHOW_INFORMATION_ON_LOCAL},   // TVW_SHOWAUTHORITY
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,    86,   127,   138,   149, STR_2020_LOCAL_AUTHORITY, STR_2021_SHOW_INFORMATION_ON_LOCAL},   // TVW_SHOWAUTHORITY
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,   172,   247,     0,    13, STR_0130_RENAME,          STR_200C_CHANGE_TOWN_NAME},            // TVW_CHANGENAME
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,    86,   171,   138,   149, STR_023C_EXPAND,          STR_023B_INCREASE_SIZE_OF_TOWN},       // TVW_EXPAND
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,   128,   171,   138,   149, STR_023C_EXPAND,          STR_023B_INCREASE_SIZE_OF_TOWN},       // TVW_EXPAND
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,   172,   259,   138,   149, STR_0290_DELETE,          STR_0291_DELETE_THIS_TOWN_COMPLETELY}, // TVW_DELETE
 {   WIDGETS_END},
 };
