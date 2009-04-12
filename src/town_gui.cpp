@@ -246,7 +246,9 @@ public:
 		bool ingame = _game_mode != GM_EDITOR;
 
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
-		InitializeWindowViewport(this, 3, 17, 254, 86, this->town->xy, ZOOM_LVL_TOWN);
+		int width = this->widget[TVW_VIEWPORTINSET].right - this->widget[TVW_VIEWPORTINSET].left - 1;
+		int height = this->widget[TVW_VIEWPORTINSET].bottom - this->widget[TVW_VIEWPORTINSET].top - 1;
+		InitializeWindowViewport(this, this->widget[TVW_VIEWPORTINSET].left + 1, this->widget[TVW_VIEWPORTINSET].top + 1, width, height, this->town->xy, ZOOM_LVL_TOWN);
 
 		if (this->town->larger_town) this->widget[TVW_CAPTION].data = STR_CITY;
 		this->SetWidgetHiddenState(TVW_DELETE, ingame);  // hide delete button on game mode
