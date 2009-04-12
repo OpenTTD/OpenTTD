@@ -7,7 +7,7 @@
 
 #include "sortlist_type.h"
 
-typedef GUIList<EngineID> GUIEngineList;
+typedef GUIList<EngineID, CargoID> GUIEngineList;
 
 typedef int CDECL EngList_SortTypeFunction(const void*, const void*); ///< argument type for EngList_Sort()
 void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare);  ///< qsort of the engine list

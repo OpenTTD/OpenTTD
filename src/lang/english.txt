@@ -320,6 +320,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Are you
 STR_0161_QUIT_GAME                                              :{WHITE}Abandon Game
 STR_SORT_ORDER_TIP                                              :{BLACK}Select sorting order (descending/ascending)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Select sorting criteria
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Select filtering criteria
 STR_SORT_BY                                                     :{BLACK}Sort by
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Population

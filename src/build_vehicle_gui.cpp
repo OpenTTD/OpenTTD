@@ -29,8 +29,10 @@
 enum BuildVehicleWidgets {
 	BUILD_VEHICLE_WIDGET_CLOSEBOX = 0,
 	BUILD_VEHICLE_WIDGET_CAPTION,
+	BUILD_VEHICLE_WIDGET_LIST_CONTROL,
 	BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING,
 	BUILD_VEHICLE_WIDGET_SORT_DROPDOWN,
+	BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN,
 	BUILD_VEHICLE_WIDGET_LIST,
 	BUILD_VEHICLE_WIDGET_SCROLLBAR,
 	BUILD_VEHICLE_WIDGET_PANEL,
@@ -43,15 +45,18 @@ enum BuildVehicleWidgets {
 static const Widget _build_vehicle_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,     STR_018B_CLOSE_WINDOW },            // BUILD_VEHICLE_WIDGET_CLOSEBOX
 	{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   239,     0,    13, 0x0,          STR_018C_WINDOW_TITLE_DRAG_THIS },  // BUILD_VEHICLE_WIDGET_CAPTION
+	{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,     0,   239,    14,    37, 0x0,          STR_NULL },                         // BUILD_VEHICLE_WIDGET_LIST_CONTROL
 	{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    80,    14,    25, STR_SORT_BY,  STR_SORT_ORDER_TIP},                // BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING
 	{   WWT_DROPDOWN,  RESIZE_RIGHT,  COLOUR_GREY,    81,   239,    14,    25, 0x0,          STR_SORT_CRITERIA_TIP},             // BUILD_VEHICLE_WIDGET_SORT_DROPDOWN
-	{     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,     0,   227,    26,    39, 0x101,        STR_NULL },                         // BUILD_VEHICLE_WIDGET_LIST
-	{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   228,   239,    26,    39, 0x0,          STR_0190_SCROLL_BAR_SCROLLS_LIST }, // BUILD_VEHICLE_WIDGET_SCROLLBAR
-	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,     0,   239,    40,   161, 0x0,          STR_NULL },                         // BUILD_VEHICLE_WIDGET_PANEL
+	{   WWT_DROPDOWN,  RESIZE_RIGHT,  COLOUR_GREY,    81,   239,    26,    37, 0x0,          STR_FILTER_CRITERIA_TIP},           // BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN
+	{     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,     0,   227,    38,    51, 0x101,        STR_NULL },                         // BUILD_VEHICLE_WIDGET_LIST
+	{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   228,   239,    38,    51, 0x0,          STR_0190_SCROLL_BAR_SCROLLS_LIST }, // BUILD_VEHICLE_WIDGET_SCROLLBAR
 
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   114,   162,   173, 0x0,          STR_NULL },                         // BUILD_VEHICLE_WIDGET_BUILD
-	{ WWT_PUSHTXTBTN,    RESIZE_RTB,  COLOUR_GREY,   115,   227,   162,   173, 0x0,          STR_NULL },                         // BUILD_VEHICLE_WIDGET_RENAME
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   228,   239,   162,   173, 0x0,          STR_RESIZE_BUTTON },                // BUILD_VEHICLE_WIDGET_RESIZE
+	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,     0,   239,    52,   173, 0x0,          STR_NULL },                         // BUILD_VEHICLE_WIDGET_PANEL
+
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   114,   174,   185, 0x0,          STR_NULL },                         // BUILD_VEHICLE_WIDGET_BUILD
+	{ WWT_PUSHTXTBTN,    RESIZE_RTB,  COLOUR_GREY,   115,   227,   174,   185, 0x0,          STR_NULL },                         // BUILD_VEHICLE_WIDGET_RENAME
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   228,   239,   174,   185, 0x0,          STR_RESIZE_BUTTON },                // BUILD_VEHICLE_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
 
@@ -60,10 +65,17 @@ static const NWidgetPart _nested_build_vehicle_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, BUILD_VEHICLE_WIDGET_CLOSEBOX),
 		NWidget(WWT_CAPTION, COLOUR_GREY, BUILD_VEHICLE_WIDGET_CAPTION), SetFill(1, 0), SetResize(1, 0), SetDataTip(0x0, STR_018C_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	/* Sort order + criteria button row. */
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING), SetMinimalSize(81, 12), SetDataTip(STR_SORT_BY, STR_SORT_ORDER_TIP),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN), SetMinimalSize(159, 12), SetResize(1, 0), SetDataTip(0x0, STR_SORT_CRITERIA_TIP),
+	NWidget(WWT_PANEL, COLOUR_GREY, BUILD_VEHICLE_WIDGET_LIST_CONTROL),
+		/* Sort order + criteria button row. */
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING), SetMinimalSize(81, 12), SetDataTip(STR_SORT_BY, STR_SORT_ORDER_TIP),
+			NWidget(WWT_DROPDOWN, COLOUR_GREY, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN), SetMinimalSize(159, 12), SetResize(1, 0), SetDataTip(0x0, STR_SORT_CRITERIA_TIP),
+		EndContainer(),
+		/* Filter criteria row. */
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetFill(1, 0),
+			NWidget(WWT_DROPDOWN, COLOUR_GREY, BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN), SetMinimalSize(159, 12), SetResize(1, 0), SetDataTip(0x0, STR_FILTER_CRITERIA_TIP),
+		EndContainer(),
 	EndContainer(),
 	/* Vehicle list. */
 	NWidget(NWID_HORIZONTAL),
@@ -80,9 +92,16 @@ static const NWidgetPart _nested_build_vehicle_widgets[] = {
 	EndContainer(),
 };
 
+/** Special cargo filter criteria */
+enum {
+	CF_ANY  = CT_NO_REFIT, ///< Show all vehicles independent of carried cargo (i.e. no filtering)
+	CF_NONE = CT_INVALID,  ///< Show only vehicles which do not carry cargo (e.g. train engines)
+};
+
 static bool _internal_sort_order; // descending/ascending
 static byte _last_sort_criteria[]    = {0, 0, 0, 0};
 static bool _last_sort_order[]       = {false, false, false, false};
+static byte _last_filter_criteria[]  = {0, 0, 0, 0};
 
 static int CDECL EngineNumberSorter(const void *a, const void *b)
 {
@@ -376,6 +395,18 @@ static const StringID _sort_listing[][11] = {{
 	STR_ENGINE_SORT_CARGO_CAPACITY,
 	INVALID_STRING_ID
 }};
+
+/** Cargo filter functions */
+static bool CargoFilter(const EngineID *eid, const CargoID cid)
+{
+	if (cid == CF_ANY) return true;
+	uint32 refit_mask = GetUnionOfArticulatedRefitMasks(*eid, GetEngine(*eid)->type, true);
+	return (cid == CF_NONE ? refit_mask == 0 : HasBit(refit_mask, cid));
+}
+
+static GUIEngineList::FilterFunction * const _filter_funcs[] = {
+	&CargoFilter,
+};
 
 static int DrawCargoCapacityInfo(int left, int right, int y, EngineID engine, VehicleType type, bool refittable)
 {
@@ -720,6 +751,9 @@ struct BuildVehicleWindow : Window {
 	EngineID sel_engine;
 	EngineID rename_engine;
 	GUIEngineList eng_list;
+	CargoID cargo_filter[NUM_CARGO + 2];        ///< Available cargo filters; CargoID or CF_ANY or CF_NONE
+	StringID cargo_filter_texts[NUM_CARGO + 3]; ///< Texts for filter_cargo, terminated by INVALID_STRING_ID
+	byte cargo_filter_criteria;                 ///< Selected cargo filter
 
 	BuildVehicleWindow(const WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc, tile == INVALID_TILE ? (int)type : tile)
 	{
@@ -740,6 +774,39 @@ struct BuildVehicleWindow : Window {
 
 		this->sort_criteria         = _last_sort_criteria[type];
 		this->descending_sort_order = _last_sort_order[type];
+		this->cargo_filter_criteria = _last_filter_criteria[type];
+
+		/* Populate filter list */
+		uint filter_items = 0;
+
+		/* Add item for disabling filtering */
+		this->cargo_filter[filter_items] = CF_ANY;
+		this->cargo_filter_texts[filter_items] = STR_PURCHASE_INFO_ALL_TYPES;
+		filter_items++;
+
+		/* Add item for vehicles not carrying anything, e.g. train engines.
+		 * This could also be useful for eyecandy vehicles of other types, but is likely too confusing for joe, */
+		if (type == VEH_TRAIN) {
+			this->cargo_filter[filter_items] = CF_NONE;
+			this->cargo_filter_texts[filter_items] = STR_01A9_NONE;
+			filter_items++;
+		}
+
+		/* Collect available cargo types for filtering */
+		for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
+			const CargoSpec *cargo = GetCargo(cid);
+			if (!cargo->IsValid()) continue;
+			if (IsCargoInClass(cid, CC_SPECIAL)) continue; // exclude fake cargo types
+			this->cargo_filter[filter_items] = cid;
+			this->cargo_filter_texts[filter_items] = cargo->name;
+			filter_items++;
+		}
+
+		this->cargo_filter_texts[filter_items] = INVALID_STRING_ID;
+		if (this->cargo_filter_criteria >= filter_items) this->cargo_filter_criteria = 0;
+
+		this->eng_list.SetFilterFuncs(_filter_funcs);
+		this->eng_list.SetFilterState(this->cargo_filter[this->cargo_filter_criteria] != CF_ANY);
 
 		switch (type) {
 			default: NOT_REACHED();
@@ -820,6 +887,24 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
+	/** Filter the engine list against the currently selected cargo filter */
+	void FilterEngineList()
+	{
+		this->eng_list.Filter(this->cargo_filter[this->cargo_filter_criteria]);
+		if (0 == this->eng_list.Length()) { // no engine passed through the filter, invalidate the previously selected engine
+			this->sel_engine = INVALID_ENGINE;
+		} else if (!this->eng_list.Contains(this->sel_engine)) { // previously selected engine didn't pass the filter, select the first engine of the list
+			this->sel_engine = this->eng_list[0];
+		}
+	}
+
+	/** Filter a single engine */
+	bool FilterSingleEngine(EngineID eid)
+	{
+		CargoID filter_type = this->cargo_filter[this->cargo_filter_criteria];
+		return (filter_type == CF_ANY || CargoFilter(&eid, filter_type));
+	}
+
 	/* Figure out what train EngineIDs to put in the list */
 	void GenerateBuildTrainList()
 	{
@@ -842,6 +927,9 @@ struct BuildVehicleWindow : Window {
 
 			if (this->filter.railtype != RAILTYPE_END && !HasPowerOnRail(rvi->railtype, this->filter.railtype)) continue;
 			if (!IsEngineBuildable(eid, VEH_TRAIN, _local_company)) continue;
+
+			/* Filter now! So num_engines and num_wagons is valid */
+			if (!FilterSingleEngine(eid)) continue;
 
 			*this->eng_list.Append() = eid;
 
@@ -952,6 +1040,9 @@ struct BuildVehicleWindow : Window {
 				this->GenerateBuildAircraftList();
 				break;
 		}
+
+		this->FilterEngineList();
+
 		_internal_sort_order = this->descending_sort_order;
 		EngList_Sort(&this->eng_list, _sorter[this->vehicle_type][this->sort_criteria]);
 
@@ -979,6 +1070,10 @@ struct BuildVehicleWindow : Window {
 
 			case BUILD_VEHICLE_WIDGET_SORT_DROPDOWN: // Select sorting criteria dropdown menu
 				ShowDropDownMenu(this, _sort_listing[this->vehicle_type], this->sort_criteria, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN, 0, 0);
+				break;
+
+			case BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN: // Select cargo filtering criteria dropdown menu
+				ShowDropDownMenu(this, this->cargo_filter_texts, this->cargo_filter_criteria, BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN, 0, 0);
 				break;
 
 			case BUILD_VEHICLE_WIDGET_BUILD: {
@@ -1050,6 +1145,9 @@ struct BuildVehicleWindow : Window {
 		/* Set text of sort by dropdown */
 		this->widget[BUILD_VEHICLE_WIDGET_SORT_DROPDOWN].data = _sort_listing[this->vehicle_type][this->sort_criteria];
 
+		/* Set text of 'cargo filter by' dropdown */
+		this->widget[BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN].data = this->cargo_filter_texts[this->cargo_filter_criteria];
+
 		this->DrawWidgets();
 
 		DrawEngineList(this->vehicle_type, this->widget[BUILD_VEHICLE_WIDGET_LIST].left + 2, this->widget[BUILD_VEHICLE_WIDGET_LIST].right, this->widget[BUILD_VEHICLE_WIDGET_LIST].top + 1, &this->eng_list, this->vscroll.pos, max, this->sel_engine, 0, DEFAULT_GROUP);
@@ -1093,10 +1191,24 @@ struct BuildVehicleWindow : Window {
 
 	virtual void OnDropdownSelect(int widget, int index)
 	{
-		if (this->sort_criteria != index) {
-			this->sort_criteria = index;
-			_last_sort_criteria[this->vehicle_type] = this->sort_criteria;
-			this->eng_list.ForceRebuild();
+		switch (widget) {
+			case BUILD_VEHICLE_WIDGET_SORT_DROPDOWN:
+				if (this->sort_criteria != index) {
+					this->sort_criteria = index;
+					_last_sort_criteria[this->vehicle_type] = this->sort_criteria;
+					this->eng_list.ForceRebuild();
+				}
+				break;
+
+			case BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN: // Select a cargo filter criteria
+				if (this->cargo_filter_criteria != index) {
+					this->cargo_filter_criteria = index;
+					_last_filter_criteria[this->vehicle_type] = this->cargo_filter_criteria;
+					/* deactivate filter if criteria is 'Show All', activate it otherwise */
+					this->eng_list.SetFilterState(this->cargo_filter[this->cargo_filter_criteria] != CF_ANY);
+					this->eng_list.ForceRebuild();
+				}
+				break;
 		}
 		this->SetDirty();
 	}
@@ -1114,7 +1226,7 @@ struct BuildVehicleWindow : Window {
 };
 
 static const WindowDesc _build_vehicle_desc(
-	WDP_AUTO, WDP_AUTO, 240, 174, 240, 256,
+	WDP_AUTO, WDP_AUTO, 240, 186, 240, 268,
 	WC_BUILD_VEHICLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE | WDF_CONSTRUCTION,
 	_build_vehicle_widgets, _nested_build_vehicle_widgets, lengthof(_nested_build_vehicle_widgets)
