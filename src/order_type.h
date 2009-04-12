@@ -72,6 +72,16 @@ enum OrderNonStopFlags {
 };
 
 /**
+ * Where to stop the trains.
+ */
+enum OrderStopLocation {
+	OSL_PLATFORM_NEAR_END = 0, ///< Stop at the near end of the platform
+	OSL_PLATFORM_MIDDLE   = 1, ///< Stop at the middle of the platform
+	OSL_PLATFORM_FAR_END  = 2, ///< Stop at the far end of the platform
+	OSL_END
+};
+
+/**
  * Reasons that could cause us to go to the depot.
  */
 enum OrderDepotTypeFlags {
@@ -122,7 +132,8 @@ enum OrderConditionComparator {
  * Enumeration for the data to set in CmdModifyOrder.
  */
 enum ModifyOrderFlags {
-	MOF_NON_STOP,        ///< Passes a OrderNonStopFlags.
+	MOF_NON_STOP,        ///< Passes an OrderNonStopFlags.
+	MOF_STOP_LOCATION,   ///< Passes an OrderStopLocation.
 	MOF_UNLOAD,          ///< Passes an OrderUnloadType.
 	MOF_LOAD,            ///< Passes an OrderLoadType
 	MOF_DEPOT_ACTION,    ///< Selects the OrderDepotAction

@@ -354,6 +354,55 @@ enum AccelType {
 	AM_BRAKE
 };
 
+/**
+ * Get the stop location of (the center) of the front vehicle of a train at
+ * a platform of a station.
+ * @param station_id     the ID of the station where we're stopping
+ * @param tile           the tile where the vehicle currently is
+ * @param v              the vehicle to get the stop location of
+ * @param station_ahead  'return' the amount of 1/16th tiles in front of the train
+ * @param station_length 'return' the station length in 1/16th tiles
+ * @return the location, calculated from the begin of the station to stop at.
+ */
+int GetTrainStopLocation(StationID station_id, TileIndex tile, const Vehicle *v, int *station_ahead, int *station_length)
+{
+	const Station *st = GetStation(station_id);
+	*station_ahead  = st->GetPlatformLength(tile, DirToDiagDir(v->direction)) * TILE_SIZE;
+	*station_length = st->GetPlatformLength(tile) * TILE_SIZE;
+
+	/* Default to the middle of the station for stations stops that are not in
+	 * the order list like intermediate stations when non-stop is disabled */
+	OrderStopLocation osl = OSL_PLATFORM_MIDDLE;
+	if (v->u.rail.cached_total_length >= *station_length) {
+		/* The train is longer than the station, make it stop at the far end of the platform */
+		osl = OSL_PLATFORM_FAR_END;
+	} else if (v->current_order.IsType(OT_GOTO_STATION) && v->current_order.GetDestination() == station_id) {
+		osl = v->current_order.GetStopLocation();
+	}
+
+	/* The stop location of the FRONT! of the train */
+	int stop;
+	switch (osl) {
+		default: NOT_REACHED();
+
+		case OSL_PLATFORM_NEAR_END:
+			stop = v->u.rail.cached_total_length;
+			break;
+
+		case OSL_PLATFORM_MIDDLE:
+			stop = *station_length - (*station_length - v->u.rail.cached_total_length) / 2;
+			break;
+
+		case OSL_PLATFORM_FAR_END:
+			stop = *station_length;
+			break;
+	}
+
+	/* Substract half the front vehicle length of the train so we get the real
+	 * stop location of the train. */
+	return stop - (v->u.rail.cached_veh_length + 1) / 2;
+}
+
 /** new acceleration*/
 static int GetTrainAcceleration(Vehicle *v, bool mode)
 {
@@ -416,17 +465,23 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 	}
 
 	if (IsTileType(v->tile, MP_STATION) && IsFrontEngine(v)) {
-		if (v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile))) {
-			int station_length = GetStationByTile(v->tile)->GetPlatformLength(v->tile, DirToDiagDir(v->direction));
+		StationID sid = GetStationIndex(v->tile);
+		if (v->current_order.ShouldStopAtStation(v, sid)) {
+			int station_ahead;
+			int station_length;
+			int stop_at = GetTrainStopLocation(sid, v->tile, v, &station_ahead, &station_length);
 
+			/* The distance to go is whatever is still ahead of the train minus the
+			 * distance from the train's stop location to the end of the platform */
+			int distance_to_go = station_ahead / TILE_SIZE - (station_length - stop_at) / TILE_SIZE;
 			int st_max_speed = 120;
 
-			int delta_v = v->cur_speed / (station_length + 1);
+			int delta_v = v->cur_speed / (distance_to_go + 1);
 			if (v->max_speed > (v->cur_speed - delta_v)) {
 				st_max_speed = v->cur_speed - (delta_v / 10);
 			}
 
-			st_max_speed = max(st_max_speed, 25 * station_length);
+			st_max_speed = max(st_max_speed, 25 * distance_to_go);
 			max_speed = min(max_speed, st_max_speed);
 		}
 	}
@@ -3780,6 +3835,11 @@ static void TrainController(Vehicle *v, Vehicle *nomove)
 
 					/* Always try to extend the reservation when entering a tile. */
 					CheckNextTrainTile(v);
+				}
+
+				if (HasBit(r, VETS_ENTERED_STATION)) {
+					/* The new position is the location where we want to stop */
+					TrainEnterStation(v, r >> VETS_STATION_ID_OFFSET);
 				}
 			}
 		} else {

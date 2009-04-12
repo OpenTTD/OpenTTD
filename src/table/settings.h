@@ -550,6 +550,7 @@ const SettingDesc _settings[] = {
 	  SDTC_VAR(gui.autorenew_money,            SLE_UINT, S, CR,100000,        0,  2000000, 0, STR_CONFIG_SETTING_AUTORENEW_MONEY,             EngineRenewMoneyUpdate),
 	 SDTC_BOOL(gui.always_build_infrastructure,          S,  0, false,                        STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE, RedrawScreen),
 	 SDTC_BOOL(gui.new_nonstop,                          S,  0, false,                        STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT,          NULL),
+	  SDTC_VAR(gui.stop_location,             SLE_UINT8, S, MS,     2,        0,        2, 1, STR_CONFIG_SETTING_STOP_LOCATION,               NULL),
 	 SDTC_BOOL(gui.keep_all_autosave,                    S,  0, false,                        STR_NULL,                                       NULL),
 	 SDTC_BOOL(gui.autosave_on_exit,                     S,  0, false,                        STR_NULL,                                       NULL),
 	  SDTC_VAR(gui.max_num_autosaves,         SLE_UINT8, S,  0,    16,        0,      255, 0, STR_NULL,                                       NULL),

@@ -300,6 +300,8 @@ void CheckTrainsLengths();
 void FreeTrainTrackReservation(const Vehicle *v, TileIndex origin = INVALID_TILE, Trackdir orig_td = INVALID_TRACKDIR);
 bool TryPathReserve(Vehicle *v, bool mark_as_stuck = false, bool first_tile_okay = false);
 
+int GetTrainStopLocation(StationID station_id, TileIndex tile, const Vehicle *v, int *station_ahead, int *station_length);
+
 /**
  * This class 'wraps' Vehicle; you do not actually instantiate this class.
  * You create a Vehicle using AllocateVehicle, so it is added to the pool

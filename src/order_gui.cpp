@@ -202,6 +202,9 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 				}
 			} else {
 				SetDParam(4, (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) ? STR_EMPTY : _station_load_types[unload][load]);
+				if (v->type == VEH_TRAIN) {
+					SetDParam(6, order->GetStopLocation() + STR_ORDER_STOP_LOCATION_NEAR_END);
+				}
 			}
 		} break;
 
@@ -361,6 +364,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 				order.MakeGoToStation(st_index);
 				if (_ctrl_pressed) order.SetLoadType(OLF_FULL_LOAD_ANY);
 				if (_settings_client.gui.new_nonstop && (v->type == VEH_TRAIN || v->type == VEH_ROAD)) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+				order.SetStopLocation(v->type == VEH_TRAIN ? (OrderStopLocation)(_settings_client.gui.stop_location) : OSL_PLATFORM_FAR_END);
 				return order;
 			}
 		}
@@ -868,9 +872,15 @@ public:
 				this->DeleteChildWindows();
 				HideDropDownMenu(this);
 
-				if (sel == INVALID_ORDER || sel == this->selected_order) {
+				if (sel == INVALID_ORDER) {
 					/* Deselect clicked order */
 					this->selected_order = -1;
+				} else if (sel == this->selected_order) {
+					if (this->vehicle->type == VEH_TRAIN) {
+						DoCommandP(this->vehicle->tile, this->vehicle->index + (sel << 16),
+								MOF_STOP_LOCATION | ((GetVehicleOrder(this->vehicle, sel)->GetStopLocation() + 1) % OSL_END) << 4,
+								CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+					}
 				} else {
 					/* Select clicked order */
 					this->selected_order = sel;

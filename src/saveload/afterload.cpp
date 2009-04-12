@@ -1797,6 +1797,14 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Trains could now stop in a specific location. */
+	if (CheckSavegameVersion(117)) {
+		Order *o;
+		FOR_ALL_ORDERS(o) {
+			if (o->IsType(OT_GOTO_STATION)) o->SetStopLocation(OSL_PLATFORM_FAR_END);
+		}
+	}
+
 	AfterLoadLabelMaps();
 
 	GamelogPrintDebug(1);

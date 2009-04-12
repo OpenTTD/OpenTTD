@@ -43,6 +43,7 @@ struct GUISettings {
 	bool   show_finances;                    ///< show finances at end of year
 	bool   sg_new_nonstop;                   ///< ttdpatch compatible nonstop handling read from pre v93 savegames
 	bool   new_nonstop;                      ///< ttdpatch compatible nonstop handling
+	uint8  stop_location;                    ///< what is the default stop location of trains?
 	bool   autoscroll;                       ///< scroll when moving mouse to the edge
 	byte   errmsg_duration;                  ///< duration of error message
 	bool   link_terraform_toolbar;           ///< display terraform toolbar when displaying rail, road, water and airport toolbars

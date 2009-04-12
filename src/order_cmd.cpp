@@ -454,6 +454,20 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				case OUF_UNLOAD_IF_POSSIBLE: case OUFB_UNLOAD: case OUFB_TRANSFER: case OUFB_NO_UNLOAD: break;
 				default: return CMD_ERROR;
 			}
+
+			/* Filter invalid stop locations */
+			switch (new_order.GetStopLocation()) {
+				case OSL_PLATFORM_NEAR_END:
+				case OSL_PLATFORM_MIDDLE:
+					if (v->type != VEH_TRAIN) return CMD_ERROR;
+					/* FALL THROUGH */
+				case OSL_PLATFORM_FAR_END:
+					break;
+
+				default:
+					return CMD_ERROR;
+			}
+
 			break;
 		}
 
@@ -878,6 +892,11 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			if (data == order->GetNonStopType()) return CMD_ERROR;
 			break;
 
+		case MOF_STOP_LOCATION:
+			if (v->type != VEH_TRAIN) return CMD_ERROR;
+			if (data >= OSL_END) return CMD_ERROR;
+			break;
+
 		case MOF_UNLOAD:
 			if ((data & ~(OUFB_UNLOAD | OUFB_TRANSFER | OUFB_NO_UNLOAD)) != 0) return CMD_ERROR;
 			/* Unload and no-unload are mutual exclusive and so are transfer and no unload. */
@@ -937,6 +956,10 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		switch (mof) {
 			case MOF_NON_STOP:
 				order->SetNonStopType((OrderNonStopFlags)data);
+				break;
+
+			case MOF_STOP_LOCATION:
+				order->SetStopLocation((OrderStopLocation)data);
 				break;
 
 			case MOF_UNLOAD:

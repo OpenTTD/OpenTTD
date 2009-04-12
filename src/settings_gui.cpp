@@ -1280,6 +1280,7 @@ static SettingEntry _settings_vehicles_trains[] = {
 	SettingEntry("vehicle.wagon_speed_limits"),
 	SettingEntry("vehicle.disable_elrails"),
 	SettingEntry("vehicle.freight_trains"),
+	SettingEntry("gui.stop_location"),
 };
 /** Trains sub-page */
 static SettingsPage _settings_vehicles_trains_page = {_settings_vehicles_trains, lengthof(_settings_vehicles_trains)};

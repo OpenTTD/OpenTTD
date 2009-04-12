@@ -2671,25 +2671,35 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 
 	if (v->type == VEH_TRAIN) {
 		if (!v->current_order.ShouldStopAtStation(v, station_id)) return VETSB_CONTINUE;
-		if (IsRailwayStation(tile) && IsFrontEngine(v) &&
-				!IsCompatibleTrainStationTile(tile + TileOffsByDiagDir(DirToDiagDir(v->direction)), tile)) {
-			DiagDirection dir = DirToDiagDir(v->direction);
+		if (!IsRailwayStation(tile) || !IsFrontEngine(v)) return VETSB_CONTINUE;
 
-			x &= 0xF;
-			y &= 0xF;
+		int station_ahead;
+		int station_length;
+		int stop = GetTrainStopLocation(station_id, tile, v, &station_ahead, &station_length);
 
-			if (DiagDirToAxis(dir) != AXIS_X) Swap(x, y);
-			if (y == TILE_SIZE / 2) {
-				if (dir != DIAGDIR_SE && dir != DIAGDIR_SW) x = TILE_SIZE - 1 - x;
-				int stop = TILE_SIZE - (v->u.rail.cached_veh_length + 1) / 2;
-				if (x == stop) return VETSB_ENTERED_STATION | (VehicleEnterTileStatus)(station_id << VETS_STATION_ID_OFFSET); // enter station
-				if (x < stop) {
-					uint16 spd;
+		/* Stop whenever that amount of station ahead + the distance from the
+		 * begin of the platform to the stop location is longer than the length
+		 * of the platform. Station ahead 'includes' the current tile where the
+		 * vehicle is on, so we need to substract that. */
+		if (station_length <= stop + station_ahead - TILE_SIZE) return VETSB_CONTINUE;
 
-					v->vehstatus |= VS_TRAIN_SLOWING;
-					spd = max(0, (stop - x) * 20 - 15);
-					if (spd < v->cur_speed) v->cur_speed = spd;
-				}
+		DiagDirection dir = DirToDiagDir(v->direction);
+
+		x &= 0xF;
+		y &= 0xF;
+
+		if (DiagDirToAxis(dir) != AXIS_X) Swap(x, y);
+		if (y == TILE_SIZE / 2) {
+			if (dir != DIAGDIR_SE && dir != DIAGDIR_SW) x = TILE_SIZE - 1 - x;
+			stop &= TILE_SIZE - 1;
+
+			if (x == stop) return VETSB_ENTERED_STATION | (VehicleEnterTileStatus)(station_id << VETS_STATION_ID_OFFSET); // enter station
+			if (x < stop) {
+				uint16 spd;
+
+				v->vehstatus |= VS_TRAIN_SLOWING;
+				spd = max(0, (stop - x) * 20 - 15);
+				if (spd < v->cur_speed) v->cur_speed = spd;
 			}
 		}
 	} else if (v->type == VEH_ROAD) {

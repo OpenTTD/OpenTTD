@@ -39,6 +39,8 @@ void Order::ConvertFromOldSavegame()
 			this->SetLoadType(_settings_client.gui.sg_full_load_any || CheckSavegameVersion(22) ? OLF_FULL_LOAD_ANY : OLFB_FULL_LOAD);
 		}
 
+		if (this->IsType(OT_GOTO_STATION)) this->SetStopLocation(OSL_PLATFORM_FAR_END);
+
 		/* Finally fix the unload flags */
 		if ((old_flags & 1) != 0) { // OFB_TRANSFER
 			this->SetUnloadType(OUFB_TRANSFER);
