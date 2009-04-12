@@ -921,8 +921,8 @@ void AgeVehicle(Vehicle *v)
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-	/* Don't warn about non-primary or not ours vehicles */
-	if (v->Previous() != NULL || v->owner != _local_company) return;
+	/* Don't warn about non-primary or not ours vehicles or vehicles that are crashed */
+	if (v->Previous() != NULL || v->owner != _local_company || (v->vehstatus & VS_CRASHED) != 0) return;
 
 	/* Don't warn if a renew is active */
 	if (GetCompany(v->owner)->engine_renew && GetEngine(v->engine_type)->company_avail != 0) return;
