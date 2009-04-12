@@ -819,7 +819,7 @@ STR_CURR_ITL                                                    :Lira Eidalaidd 
 STR_CURR_NLG                                                    :Guilder (NLG)
 STR_CURR_NOK                                                    :Krone Norwyaidd (NOK)
 STR_CURR_PLN                                                    :Zloty Pwylaidd (PLN)
-STR_CURR_ROL                                                    :Leu Rwmanaidd (ROL)
+STR_CURR_RON                                                    :Leu Rwmanaidd (RON)
 STR_CURR_RUR                                                    :Rwbl Rwsaidd (RUR)
 STR_CURR_SIT                                                    :Tolar Slofenaidd (SIT)
 STR_CURR_SEK                                                    :Krona Swedaidd (SEK)

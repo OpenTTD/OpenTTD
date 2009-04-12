@@ -853,7 +853,7 @@ STR_CURR_ITL                                                    :Italu liros (IT
 STR_CURR_NLG                                                    :Olandijos guldenai (NLG)
 STR_CURR_NOK                                                    :Norvegijos kronos (NOK)
 STR_CURR_PLN                                                    :Lenkijos zlotai (PLN)
-STR_CURR_ROL                                                    :Rumunijos lejos (ROL)
+STR_CURR_RON                                                    :Rumunijos lejos (RON)
 STR_CURR_RUR                                                    :Rusijos rubliai (RUR)
 STR_CURR_SIT                                                    :Slovėnijos tolarai (SIT)
 STR_CURR_SEK                                                    :Svedijos kronos (SEK)

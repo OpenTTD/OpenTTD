@@ -818,7 +818,7 @@ STR_CURR_ITL                                                    :Liră italiană
 STR_CURR_NLG                                                    :Gulden olandez (NLG)
 STR_CURR_NOK                                                    :Coroană norvegiană (NOK)
 STR_CURR_PLN                                                    :Zlot polonez (PLN)
-STR_CURR_ROL                                                    :Leu românesc (ROL)
+STR_CURR_RON                                                    :Leu românesc (RON)
 STR_CURR_RUR                                                    :Rublă rusească (RUR)
 STR_CURR_SIT                                                    :Tolar Sloven (SIT)
 STR_CURR_SEK                                                    :Coroană suedeză (SEK)

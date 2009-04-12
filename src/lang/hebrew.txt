@@ -813,7 +813,7 @@ STR_CURR_ITL                                                    :(ITL) לירה 
 STR_CURR_NLG                                                    :(NLG) גילדן הולנדי
 STR_CURR_NOK                                                    :(NOK) קרונה נורווגית
 STR_CURR_PLN                                                    :(PLN) זלוטי פולני
-STR_CURR_ROL                                                    :(ROL) ליו רומני
+STR_CURR_RON                                                    :(RON) ליו רומני
 STR_CURR_RUR                                                    :(RUR) רובל רוסי
 STR_CURR_SIT                                                    :(SIT) טולר סלובני
 STR_CURR_SEK                                                    :(SEK) קרונה שוודית

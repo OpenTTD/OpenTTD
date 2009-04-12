@@ -819,7 +819,7 @@ STR_CURR_ITL                                                    :Ιταλική 
 STR_CURR_NLG                                                    :Ολλανδικό Φιορίνι (NLG)
 STR_CURR_NOK                                                    :Νορβηγική Κορώνα (NOK)
 STR_CURR_PLN                                                    :Πολωνικό Zloty (PLN)
-STR_CURR_ROL                                                    :Ρουμάνικο Λευ (ROL)
+STR_CURR_RON                                                    :Ρουμάνικο Λευ (RON)
 STR_CURR_RUR                                                    :Ρώσσικες Ρούβλες (RUR)
 STR_CURR_SIT                                                    :Σλοβένικο Tolar (SIT)
 STR_CURR_SEK                                                    :Σουηδική Κορώνα (SEK)

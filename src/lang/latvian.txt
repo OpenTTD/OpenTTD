@@ -820,7 +820,7 @@ STR_CURR_ITL                                                    :Itālijas liras
 STR_CURR_NLG                                                    :Nīderlandes guldeņi(NLG)
 STR_CURR_NOK                                                    :Norvēģijas kronas (NOK)
 STR_CURR_PLN                                                    :Polijas zloti (PLN)
-STR_CURR_ROL                                                    :Rumānijas lejas (ROL)
+STR_CURR_RON                                                    :Rumānijas lejas (RON)
 STR_CURR_RUR                                                    :Krievijas rubļii (RUR)
 STR_CURR_SIT                                                    :Slovēnijas tolārs (SIT)
 STR_CURR_SEK                                                    :Zviedrijas kronas (SEK)

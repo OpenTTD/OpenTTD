@@ -794,7 +794,7 @@ STR_CURR_ITL                                                    :Italaj Liroj (I
 STR_CURR_NLG                                                    :Nederlandaj Guldenoj (NLG)
 STR_CURR_NOK                                                    :Norvegaj Kronoj (NOK)
 STR_CURR_PLN                                                    :Polaj Zlotoj (PLN)
-STR_CURR_ROL                                                    :Rumanaj Leŭoj (ROL)
+STR_CURR_RON                                                    :Rumanaj Leŭoj (RON)
 STR_CURR_RUR                                                    :Rusaj Rubloj (RUR)
 STR_CURR_SIT                                                    :Slovenaj Tolaroj (SIT)
 STR_CURR_SEK                                                    :Svedaj Kronoj (SEK)

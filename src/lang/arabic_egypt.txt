@@ -819,7 +819,7 @@ STR_CURR_ITL                                                    :ليرة ايط
 STR_CURR_NLG                                                    :غلدر هولندي (NLG)
 STR_CURR_NOK                                                    :كرونا نرويجية (NOK)
 STR_CURR_PLN                                                    :زلوتي بولندي (PLN)
-STR_CURR_ROL                                                    :لور يوناني (ROL)
+STR_CURR_RON                                                    :لور يوناني (RON)
 STR_CURR_RUR                                                    :روبل روسي (RUR)
 STR_CURR_SIT                                                    :تولار سوفاني (SIT)
 STR_CURR_SEK                                                    :كرونا سويدية (SEK)

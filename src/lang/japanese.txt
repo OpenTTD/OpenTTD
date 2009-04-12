@@ -817,7 +817,7 @@ STR_CURR_ITL                                                    :イタリアリ
 STR_CURR_NLG                                                    :オランダギルダー（NLG）
 STR_CURR_NOK                                                    :ノルウェイクローネ（NOK）
 STR_CURR_PLN                                                    :ポーランドズロティ（PLN）
-STR_CURR_ROL                                                    :ルーマニアレイ（ROL）
+STR_CURR_RON                                                    :ルーマニアレイ（RON）
 STR_CURR_RUR                                                    :ロシアルーブル（RUR）
 STR_CURR_SIT                                                    :スロベニアトラール（SIT）
 STR_CURR_SEK                                                    :スウェーデンクローナ（SEK）

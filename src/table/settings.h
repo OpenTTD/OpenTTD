@@ -274,7 +274,7 @@ uint16 _old_diff_custom[GAME_DIFFICULTY_NUM];
 
 /* Most of these strings are used both for gameopt-backward compatability
  * and the settings tables. The rest is here for consistency. */
-static const char *_locale_currencies = "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRL|EEK|custom";
+static const char *_locale_currencies = "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|RON|RUR|SIT|SEK|YTL|SKK|BRL|EEK|custom";
 static const char *_locale_units = "imperial|metric|si";
 static const char *_town_names = "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish|italian|catalan";
 static const char *_climates = "temperate|arctic|tropic|toyland";

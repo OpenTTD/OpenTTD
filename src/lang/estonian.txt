@@ -869,7 +869,7 @@ STR_CURR_ITL                                                    :Itaalia liir (I
 STR_CURR_NLG                                                    :Hollandi kulden (NLG)
 STR_CURR_NOK                                                    :Norra kroon (NOK)
 STR_CURR_PLN                                                    :Poola Zlott (PLN)
-STR_CURR_ROL                                                    :Rumeenia Leu (ROL)
+STR_CURR_RON                                                    :Rumeenia Leu (RON)
 STR_CURR_RUR                                                    :Vene rubla (RUR)
 STR_CURR_SIT                                                    :Sloveenia Talaar (SIT)
 STR_CURR_SEK                                                    :Rootsi kroon (SEK)

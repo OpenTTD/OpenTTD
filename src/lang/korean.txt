@@ -820,7 +820,7 @@ STR_CURR_ITL                                                    :이탈리아 �
 STR_CURR_NLG                                                    :네덜란드 길더 (NLG)
 STR_CURR_NOK                                                    :노르웨이 크로네 (NOK)
 STR_CURR_PLN                                                    :폴란드 즐로티 (PLN)
-STR_CURR_ROL                                                    :루마니아 레우 (ROL)
+STR_CURR_RON                                                    :루마니아 레우 (RON)
 STR_CURR_RUR                                                    :러시아 루블 (RUR)
 STR_CURR_SIT                                                    :슬로바키아 톨라 (SIT)
 STR_CURR_SEK                                                    :스웨덴 크로나 (SEK)

@@ -820,7 +820,7 @@ STR_CURR_ITL                                                    :Lira Italiana (
 STR_CURR_NLG                                                    :Guilda Holandesa (NLG)
 STR_CURR_NOK                                                    :Coroa Norueguesa (NOK)
 STR_CURR_PLN                                                    :Zloty Polaco (PLN)
-STR_CURR_ROL                                                    :Lei Romeno (ROL)
+STR_CURR_RON                                                    :Lei Romeno (RON)
 STR_CURR_RUR                                                    :Rublo Russo (RUR)
 STR_CURR_SIT                                                    :Tolar Eslovênio (SIT)
 STR_CURR_SEK                                                    :Coroa Sueca (SEK)

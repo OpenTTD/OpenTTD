@@ -819,7 +819,7 @@ STR_CURR_ITL                                                    :Italianway Iral
 STR_CURR_NLG                                                    :Utchday Uildergay (NLGay)
 STR_CURR_NOK                                                    :Orwegiannay Onekray (OKNay)
 STR_CURR_PLN                                                    :Olishpay Otyzlay (PLNay)
-STR_CURR_ROL                                                    :Omanianray Eulay (OLRay)
+STR_CURR_RON                                                    :Omanianray Eulay (OLRay)
 STR_CURR_RUR                                                    :Ussianray Ublesray (URRay)
 STR_CURR_SIT                                                    :Ovenianslay Olartay (ITSay)
 STR_CURR_SEK                                                    :Edishsway Onakray (EKSay)

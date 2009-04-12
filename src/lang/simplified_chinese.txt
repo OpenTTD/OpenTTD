@@ -818,7 +818,7 @@ STR_CURR_ITL                                                    :意大利里拉
 STR_CURR_NLG                                                    :荷兰盾 (NLG)
 STR_CURR_NOK                                                    :挪威克郎 (NOK)
 STR_CURR_PLN                                                    :波兰兹罗提 (PLN)
-STR_CURR_ROL                                                    :罗马尼亚列伊 (ROL)
+STR_CURR_RON                                                    :罗马尼亚列伊 (RON)
 STR_CURR_RUR                                                    :卢布 (RUR)
 STR_CURR_SIT                                                    :斯洛文尼亚托拉尔 (SIT)
 STR_CURR_SEK                                                    :瑞典克郎 (SEK)
