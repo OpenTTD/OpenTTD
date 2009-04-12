@@ -341,7 +341,6 @@ STR_SORT_BY_LENGTH                                              :Uzunluk
 STR_SORT_BY_LIFE_TIME                                           :Kalan ömür
 STR_SORT_BY_FACILITY                                            :İstasyon türü
 STR_SORT_BY_WAITING                                             :Bekleyen kargo değeri
-STR_SORT_BY_RATING_MAX                                          :Kargo reytingi
 STR_ENGINE_SORT_ENGINE_ID                                       :Lokoismi (klasik sira)
 STR_ENGINE_SORT_COST                                            :Fiyat
 STR_ENGINE_SORT_POWER                                           :Güç

@@ -341,7 +341,6 @@ STR_SORT_BY_LENGTH                                              :Llargada
 STR_SORT_BY_LIFE_TIME                                           :Temps de vida restant
 STR_SORT_BY_FACILITY                                            :Tipus de estació
 STR_SORT_BY_WAITING                                             :Valor de espera de càrrega
-STR_SORT_BY_RATING_MAX                                          :Rati de càrrega
 STR_ENGINE_SORT_ENGINE_ID                                       :IDMotor (ordre clàssic)
 STR_ENGINE_SORT_COST                                            :Cost
 STR_ENGINE_SORT_POWER                                           :Potència

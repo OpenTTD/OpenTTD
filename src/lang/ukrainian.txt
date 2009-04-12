@@ -467,7 +467,6 @@ STR_SORT_BY_LENGTH                                              :за довжи
 STR_SORT_BY_LIFE_TIME                                           :Залишок строку служби
 STR_SORT_BY_FACILITY                                            :за типом станції
 STR_SORT_BY_WAITING                                             :за ціною вантажу
-STR_SORT_BY_RATING_MAX                                          :Рейтинг вантажів
 STR_ENGINE_SORT_ENGINE_ID                                       :за ID (класичне)
 STR_ENGINE_SORT_COST                                            :за ціною
 STR_ENGINE_SORT_POWER                                           :за потужністю

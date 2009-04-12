@@ -342,7 +342,6 @@ STR_SORT_BY_LENGTH                                              :Engthlay
 STR_SORT_BY_LIFE_TIME                                           :Emainingray ifelay imetay
 STR_SORT_BY_FACILITY                                            :Ationstay ypetay
 STR_SORT_BY_WAITING                                             :Aitingway argocay aluevay
-STR_SORT_BY_RATING_MAX                                          :Argocay atingray
 STR_ENGINE_SORT_ENGINE_ID                                       :EngineIDWAY (assicclay ortsay)
 STR_ENGINE_SORT_COST                                            :Ostcay
 STR_ENGINE_SORT_POWER                                           :Owerpay

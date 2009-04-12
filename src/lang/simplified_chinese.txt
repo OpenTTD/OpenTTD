@@ -342,7 +342,6 @@ STR_SORT_BY_LENGTH                                              :长度
 STR_SORT_BY_LIFE_TIME                                           :剩余寿命年限
 STR_SORT_BY_FACILITY                                            :车站类型
 STR_SORT_BY_WAITING                                             :等待的货物价值
-STR_SORT_BY_RATING_MAX                                          :货物评价
 STR_ENGINE_SORT_ENGINE_ID                                       :引擎ID (默认方式)
 STR_ENGINE_SORT_COST                                            :费用
 STR_ENGINE_SORT_POWER                                           :功率

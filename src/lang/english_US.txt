@@ -341,7 +341,6 @@ STR_SORT_BY_LENGTH                                              :Length
 STR_SORT_BY_LIFE_TIME                                           :Remaining life time
 STR_SORT_BY_FACILITY                                            :Station type
 STR_SORT_BY_WAITING                                             :Waiting cargo value
-STR_SORT_BY_RATING_MAX                                          :Cargo rating
 STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (classic sort)
 STR_ENGINE_SORT_COST                                            :Cost
 STR_ENGINE_SORT_POWER                                           :Power

@@ -376,7 +376,6 @@ STR_SORT_BY_LENGTH                                              :Hossz
 STR_SORT_BY_LIFE_TIME                                           :Élettartamból hátralévő idő
 STR_SORT_BY_FACILITY                                            :Állomás típus
 STR_SORT_BY_WAITING                                             :Várakozó rakomány értéke
-STR_SORT_BY_RATING_MAX                                          :Várakozó rakomány
 STR_ENGINE_SORT_ENGINE_ID                                       :JárműID
 STR_ENGINE_SORT_COST                                            :Ár
 STR_ENGINE_SORT_POWER                                           :Telj.

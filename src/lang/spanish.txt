@@ -342,7 +342,6 @@ STR_SORT_BY_LENGTH                                              :Longitud
 STR_SORT_BY_LIFE_TIME                                           :Tiempo de vida remanente
 STR_SORT_BY_FACILITY                                            :Tipo de estación
 STR_SORT_BY_WAITING                                             :Esperando valor de la carga
-STR_SORT_BY_RATING_MAX                                          :Clasificación de la carga
 STR_ENGINE_SORT_ENGINE_ID                                       :ID Locomotora (ordenación clásia)
 STR_ENGINE_SORT_COST                                            :Coste
 STR_ENGINE_SORT_POWER                                           :Potencia

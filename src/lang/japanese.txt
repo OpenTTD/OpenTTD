@@ -342,7 +342,6 @@ STR_SORT_BY_LENGTH                                              :長さ
 STR_SORT_BY_LIFE_TIME                                           :残りライフタイム
 STR_SORT_BY_FACILITY                                            :駅の種類
 STR_SORT_BY_WAITING                                             :到着待ち貨物の価値
-STR_SORT_BY_RATING_MAX                                          :貨物評価
 STR_ENGINE_SORT_ENGINE_ID                                       :EngineID（旧式）
 STR_ENGINE_SORT_COST                                            :値段
 STR_ENGINE_SORT_POWER                                           :出力

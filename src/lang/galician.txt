@@ -342,7 +342,6 @@ STR_SORT_BY_LENGTH                                              :Lonxitude
 STR_SORT_BY_LIFE_TIME                                           :Tempo de vida restante
 STR_SORT_BY_FACILITY                                            :Tipo de estación
 STR_SORT_BY_WAITING                                             :Valor da carga en espera
-STR_SORT_BY_RATING_MAX                                          :Puntuación da carga
 STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (ordeación clásica)
 STR_ENGINE_SORT_COST                                            :Coste
 STR_ENGINE_SORT_POWER                                           :Potencia

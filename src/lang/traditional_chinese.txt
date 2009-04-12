@@ -341,7 +341,6 @@ STR_SORT_BY_LENGTH                                              :長度
 STR_SORT_BY_LIFE_TIME                                           :剩餘年限
 STR_SORT_BY_FACILITY                                            :車站種類
 STR_SORT_BY_WAITING                                             :等候客貨總值
-STR_SORT_BY_RATING_MAX                                          :酬載評價
 STR_ENGINE_SORT_ENGINE_ID                                       :引擎編號
 STR_ENGINE_SORT_COST                                            :價值
 STR_ENGINE_SORT_POWER                                           :功率

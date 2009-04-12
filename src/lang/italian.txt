@@ -344,7 +344,6 @@ STR_SORT_BY_LENGTH                                              :Lunghezza
 STR_SORT_BY_LIFE_TIME                                           :Vita rimanente
 STR_SORT_BY_FACILITY                                            :Tipo di stazione
 STR_SORT_BY_WAITING                                             :Merci in attesa
-STR_SORT_BY_RATING_MAX                                          :Valutazione servizi
 STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (ord. classico)
 STR_ENGINE_SORT_COST                                            :Costo
 STR_ENGINE_SORT_POWER                                           :Potenza

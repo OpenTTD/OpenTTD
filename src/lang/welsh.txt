@@ -342,7 +342,6 @@ STR_SORT_BY_LENGTH                                              :Hyd
 STR_SORT_BY_LIFE_TIME                                           :Oes yn weddill
 STR_SORT_BY_FACILITY                                            :Math Gorsaf
 STR_SORT_BY_WAITING                                             :Gwerth y cargo sy'n Disgwyl
-STR_SORT_BY_RATING_MAX                                          :Graddfa Llwythi
 STR_ENGINE_SORT_ENGINE_ID                                       :ID Injan (math clasurol)
 STR_ENGINE_SORT_COST                                            :Côst
 STR_ENGINE_SORT_POWER                                           :Pŵer

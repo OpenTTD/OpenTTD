@@ -343,7 +343,6 @@ STR_SORT_BY_LENGTH                                              :Lengd
 STR_SORT_BY_LIFE_TIME                                           :Líftími eftir
 STR_SORT_BY_FACILITY                                            :Tegund stöðvar
 STR_SORT_BY_WAITING                                             :Verðgildi farms á stöð
-STR_SORT_BY_RATING_MAX                                          :Flutningur farms
 STR_ENGINE_SORT_ENGINE_ID                                       :Einkenni (hefðbundin röðun)
 STR_ENGINE_SORT_COST                                            :Kostnaður
 STR_ENGINE_SORT_POWER                                           :Afl

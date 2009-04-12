@@ -343,7 +343,6 @@ STR_SORT_BY_LENGTH                                              :Lengde
 STR_SORT_BY_LIFE_TIME                                           :Gjenståande levetid
 STR_SORT_BY_FACILITY                                            :Stasjonstype
 STR_SORT_BY_WAITING                                             :Verdien av ventande last
-STR_SORT_BY_RATING_MAX                                          :Vurdering av last
 STR_ENGINE_SORT_ENGINE_ID                                       :MaskinID (klassisk type)
 STR_ENGINE_SORT_COST                                            :Kostnad
 STR_ENGINE_SORT_POWER                                           :Kraft

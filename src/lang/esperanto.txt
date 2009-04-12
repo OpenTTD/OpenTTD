@@ -340,7 +340,6 @@ STR_SORT_BY_VALUE                                               :Valoro
 STR_SORT_BY_LENGTH                                              :Longo
 STR_SORT_BY_FACILITY                                            :Stacidoma tipo
 STR_SORT_BY_WAITING                                             :Valoro de atendanta ŝarĝo
-STR_SORT_BY_RATING_MAX                                          :Takso de ŝarĝo
 STR_ENGINE_SORT_ENGINE_ID                                       :Maŝina ID (klasika ordigo)
 STR_ENGINE_SORT_COST                                            :Kosto
 STR_ENGINE_SORT_POWER                                           :Potenco

@@ -219,6 +219,20 @@ protected:
 		return maxr1 - maxr2;
 	}
 
+	/** Sort stations by their rating */
+	static int CDECL StationRatingMinSorter(const Station * const *a, const Station * const *b)
+	{
+		byte minr1 = 0;
+		byte minr2 = 0;
+
+		for (CargoID j = 0; j < NUM_CARGO; j++) {
+			if (HasBit((*a)->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) minr1 = min(minr1, (*a)->goods[j].rating);
+			if (HasBit((*b)->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) minr2 = min(minr2, (*b)->goods[j].rating);
+		}
+
+		return minr1 - minr2;
+	}
+
 	/** Sort the stations list */
 	void SortStationsList()
 	{
@@ -573,7 +587,8 @@ GUIStationList::SortFunction * const CompanyStationsWindow::sorter_funcs[] = {
 	&StationNameSorter,
 	&StationTypeSorter,
 	&StationWaitingSorter,
-	&StationRatingMaxSorter
+	&StationRatingMaxSorter,
+	&StationRatingMinSorter
 };
 
 /* Names of the sorting functions */
@@ -582,6 +597,7 @@ const StringID CompanyStationsWindow::sorter_names[] = {
 	STR_SORT_BY_FACILITY,
 	STR_SORT_BY_WAITING,
 	STR_SORT_BY_RATING_MAX,
+	STR_SORT_BY_RATING_MIN,
 	INVALID_STRING_ID
 };
 

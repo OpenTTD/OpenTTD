@@ -409,7 +409,6 @@ STR_SORT_BY_LENGTH                                              :Dlžka
 STR_SORT_BY_LIFE_TIME                                           :Zostávajúca životnost
 STR_SORT_BY_FACILITY                                            :Typ stanice
 STR_SORT_BY_WAITING                                             :Mnozstvo cakajuceho nakladu
-STR_SORT_BY_RATING_MAX                                          :Hodnotenie prepravy
 STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (netriedené)
 STR_ENGINE_SORT_COST                                            :Cena
 STR_ENGINE_SORT_POWER                                           :Výkon

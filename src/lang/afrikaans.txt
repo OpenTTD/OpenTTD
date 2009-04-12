@@ -343,7 +343,6 @@ STR_SORT_BY_LENGTH                                              :Lengte
 STR_SORT_BY_LIFE_TIME                                           :Leeftyd oor
 STR_SORT_BY_FACILITY                                            :Stasie tipe
 STR_SORT_BY_WAITING                                             :Wagtend vrag waarde
-STR_SORT_BY_RATING_MAX                                          :Vrag gradering
 STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (klassieke sorteer)
 STR_ENGINE_SORT_COST                                            :Koste
 STR_ENGINE_SORT_POWER                                           :Krag

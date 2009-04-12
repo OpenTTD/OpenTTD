@@ -387,7 +387,6 @@ STR_SORT_BY_LENGTH                                              :Dlugosc
 STR_SORT_BY_LIFE_TIME                                           :Pozostaly czas zycia
 STR_SORT_BY_FACILITY                                            :Typ stacji
 STR_SORT_BY_WAITING                                             :Wartość czekającego ładunku
-STR_SORT_BY_RATING_MAX                                          :Ocena ładunku
 STR_ENGINE_SORT_ENGINE_ID                                       :ID pojazdu
 STR_ENGINE_SORT_COST                                            :Cena
 STR_ENGINE_SORT_POWER                                           :Moc

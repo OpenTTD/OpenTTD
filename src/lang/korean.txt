@@ -343,7 +343,6 @@ STR_SORT_BY_LENGTH                                              :길이
 STR_SORT_BY_LIFE_TIME                                           :남은 수명
 STR_SORT_BY_FACILITY                                            :역 종류
 STR_SORT_BY_WAITING                                             :대기 화물량
-STR_SORT_BY_RATING_MAX                                          :화물 성취도
 STR_ENGINE_SORT_ENGINE_ID                                       :기관차ID
 STR_ENGINE_SORT_COST                                            :가격
 STR_ENGINE_SORT_POWER                                           :힘

@@ -342,7 +342,6 @@ STR_SORT_BY_LENGTH                                              :Längt
 STR_SORT_BY_LIFE_TIME                                           :Reschtlaafzäit
 STR_SORT_BY_FACILITY                                            :Statiounstyp
 STR_SORT_BY_WAITING                                             :Luedungswert
-STR_SORT_BY_RATING_MAX                                          :Luedungsbewertung
 STR_ENGINE_SORT_ENGINE_ID                                       :LokID (klassësch Sortéierung)
 STR_ENGINE_SORT_COST                                            :Käschten
 STR_ENGINE_SORT_POWER                                           :Kraaft

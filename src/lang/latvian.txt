@@ -344,7 +344,6 @@ STR_SORT_BY_LENGTH                                              :Garuma
 STR_SORT_BY_LIFE_TIME                                           :Atlikušā ekspluatācijas laika
 STR_SORT_BY_FACILITY                                            :Stacijas veida
 STR_SORT_BY_WAITING                                             :Gaidošās kravas vērtības
-STR_SORT_BY_RATING_MAX                                          :Kravas reitinga
 STR_ENGINE_SORT_ENGINE_ID                                       :DzinējaID (klasiskais veids)
 STR_ENGINE_SORT_COST                                            :Izmaksas
 STR_ENGINE_SORT_POWER                                           :Jauda

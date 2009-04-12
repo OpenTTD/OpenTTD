@@ -395,7 +395,6 @@ STR_SORT_BY_LENGTH                                              :Pikkus
 STR_SORT_BY_LIFE_TIME                                           :Allesjäänud eluaeg
 STR_SORT_BY_FACILITY                                            :Jaama tüüp
 STR_SORT_BY_WAITING                                             :Ootava kauba väärtus
-STR_SORT_BY_RATING_MAX                                          :Kauba hinnang
 STR_ENGINE_SORT_ENGINE_ID                                       :MootoriID (klassikaline)
 STR_ENGINE_SORT_COST                                            :Hind
 STR_ENGINE_SORT_POWER                                           :Võimsus

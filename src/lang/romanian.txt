@@ -341,7 +341,6 @@ STR_SORT_BY_LENGTH                                              :Lungime
 STR_SORT_BY_LIFE_TIME                                           :Durată de viaţă rămasă
 STR_SORT_BY_FACILITY                                            :Tipul de statie
 STR_SORT_BY_WAITING                                             :Valoarea mărfii în aşteptare
-STR_SORT_BY_RATING_MAX                                          :Evaluare încãrcãturã
 STR_ENGINE_SORT_ENGINE_ID                                       :IDMotor (model clasic)
 STR_ENGINE_SORT_COST                                            :Cost
 STR_ENGINE_SORT_POWER                                           :Putere

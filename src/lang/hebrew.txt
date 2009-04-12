@@ -342,7 +342,6 @@ STR_SORT_BY_LENGTH                                              :אורך
 STR_SORT_BY_LIFE_TIME                                           :זמן חיים נותר
 STR_SORT_BY_FACILITY                                            :סוג תחנה
 STR_SORT_BY_WAITING                                             :ערך הסחורה שמחכה
-STR_SORT_BY_RATING_MAX                                          :דירוג הסחורה
 STR_ENGINE_SORT_ENGINE_ID                                       :מספר קטר
 STR_ENGINE_SORT_COST                                            :מחיר
 STR_ENGINE_SORT_POWER                                           :כח

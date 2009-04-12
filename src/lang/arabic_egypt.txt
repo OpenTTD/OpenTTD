@@ -342,7 +342,6 @@ STR_SORT_BY_LENGTH                                              :الطول
 STR_SORT_BY_LIFE_TIME                                           :العمر المتبقي
 STR_SORT_BY_FACILITY                                            :نوع المحطة
 STR_SORT_BY_WAITING                                             :قيمة الشحنة المنتظرة
-STR_SORT_BY_RATING_MAX                                          :معدل الشحن
 STR_ENGINE_SORT_ENGINE_ID                                       :نوع المحرك (قياسي(
 STR_ENGINE_SORT_COST                                            :التكلفة
 STR_ENGINE_SORT_POWER                                           :الطاقة

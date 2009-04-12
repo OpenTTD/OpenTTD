@@ -342,7 +342,6 @@ STR_SORT_BY_LENGTH                                              :Pituus
 STR_SORT_BY_LIFE_TIME                                           :Jäljelläoleva elinikä
 STR_SORT_BY_FACILITY                                            :Asematyyppi
 STR_SORT_BY_WAITING                                             :Odottavan lastin arvo
-STR_SORT_BY_RATING_MAX                                          :Rahtauksen arvosana
 STR_ENGINE_SORT_ENGINE_ID                                       :VeturiD (perinteinen lajittelu)
 STR_ENGINE_SORT_COST                                            :Hinta
 STR_ENGINE_SORT_POWER                                           :Teho

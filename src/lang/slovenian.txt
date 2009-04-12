@@ -384,7 +384,6 @@ STR_SORT_BY_LENGTH                                              :Dolžina
 STR_SORT_BY_LIFE_TIME                                           :Ostala življenjska doba
 STR_SORT_BY_FACILITY                                            :Tip postaje
 STR_SORT_BY_WAITING                                             :Čakanje vrednosti tovora
-STR_SORT_BY_RATING_MAX                                          :Ocene tovora
 STR_ENGINE_SORT_ENGINE_ID                                       :ID motorja (klasično urejanje)
 STR_ENGINE_SORT_COST                                            :Cena
 STR_ENGINE_SORT_POWER                                           :Moč
