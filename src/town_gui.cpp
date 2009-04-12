@@ -32,6 +32,17 @@
 
 typedef GUIList<const Town*> GUITownList;
 
+/** Widget numbers of the town authority window. */
+enum TownAuthorityWidgets {
+	TWA_CLOSEBOX,
+	TWA_CAPTION,
+	TWA_RATING_INFO,
+	TWA_COMMAND_LIST,
+	TWA_SCROLLBAR,
+	TWA_ACTION_INFO,
+	TWA_EXECUTE,
+};
+
 static const Widget _town_authority_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},              // TWA_CLOSEBOX
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_BROWN,    11,   316,     0,    13, STR_2022_LOCAL_AUTHORITY, STR_018C_WINDOW_TITLE_DRAG_THIS},    // TWA_CAPTION
@@ -49,16 +60,6 @@ struct TownAuthorityWindow : Window {
 private:
 	Town *town;
 	int sel_index;
-
-	enum TownAuthorityWidget {
-		TWA_CLOSEBOX = 0,
-		TWA_CAPTION,
-		TWA_RATING_INFO,
-		TWA_COMMAND_LIST,
-		TWA_SCROLLBAR,
-		TWA_ACTION_INFO,
-		TWA_EXECUTE,
-	};
 
 	/**
 	 * Get the position of the Nth set bit.
@@ -217,23 +218,24 @@ static void ShowTownAuthorityWindow(uint town)
 	AllocateWindowDescFront<TownAuthorityWindow>(&_town_authority_desc, town);
 }
 
+/** Widget numbers of the town view window. */
+enum TownViewWidgets {
+	TVW_CLOSEBOX,
+	TVW_CAPTION,
+	TVW_STICKY,
+	TVW_VIEWPORTPANEL,
+	TVW_VIEWPORTINSET,
+	TVW_INFOPANEL,
+	TVW_CENTERVIEW,
+	TVW_SHOWAUTHORITY,
+	TVW_CHANGENAME,
+	TVW_EXPAND,
+	TVW_DELETE,
+};
+
 struct TownViewWindow : Window {
 private:
 	Town *town;
-
-	enum TownViewWidget {
-		TVW_CLOSEBOX,
-		TVW_CAPTION,
-		TVW_STICKY,
-		TVW_VIEWPORTPANEL,
-		TVW_VIEWPORTINSET,
-		TVW_INFOPANEL,
-		TVW_CENTERVIEW,
-		TVW_SHOWAUTHORITY,
-		TVW_CHANGENAME,
-		TVW_EXPAND,
-		TVW_DELETE,
-	};
 
 public:
 	enum {
@@ -453,6 +455,19 @@ void ShowTownViewWindow(TownID town)
 	AllocateWindowDescFront<TownViewWindow>(&_town_view_desc, town);
 }
 
+/** Widget numbers of town directory window. */
+enum TownDirectoryWidgets {
+	TDW_CLOSEBOX,
+	TDW_CAPTION,
+	TDW_STICKYBOX,
+	TDW_SORTNAME,
+	TDW_SORTPOPULATION,
+	TDW_CENTERTOWN,
+	TDW_SCROLLBAR,
+	TDW_EMPTYBOTTOM,
+	TDW_RESIZEBOX,
+};
+
 static const Widget _town_directory_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},             // TDW_CLOSEBOX
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_BROWN,    11,   195,     0,    13, STR_2000_TOWNS,         STR_018C_WINDOW_TITLE_DRAG_THIS},   // TDW_CAPTION
@@ -469,18 +484,6 @@ static const Widget _town_directory_widgets[] = {
 
 struct TownDirectoryWindow : public Window {
 private:
-	enum TownDirectoryWidget {
-		TDW_CLOSEBOX,
-		TDW_CAPTION,
-		TDW_STICKYBOX,
-		TDW_SORTNAME,
-		TDW_SORTPOPULATION,
-		TDW_CENTERTOWN,
-		TDW_SCROLLBAR,
-		TDW_EMPTYBOTTOM,
-		TDW_RESIZEBOX,
-	};
-
 	/* Runtime saved values */
 	static Listing last_sorting;
 	static const Town *last_town;
@@ -685,6 +688,29 @@ void CcBuildTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	}
 }
 
+/** Widget numbers of town scenario editor window. */
+enum TownScenarioEditorWidgets {
+	TSEW_CLOSEBOX,
+	TSEW_CAPTION,
+	TSEW_STICKYBOX,
+	TSEW_BACKGROUND,
+	TSEW_NEWTOWN,
+	TSEW_RANDOMTOWN,
+	TSEW_MANYRANDOMTOWNS,
+	TSEW_TOWNSIZE,
+	TSEW_SIZE_SMALL,
+	TSEW_SIZE_MEDIUM,
+	TSEW_SIZE_LARGE,
+	TSEW_SIZE_RANDOM,
+	TSEW_CITY,
+	TSEW_TOWNLAYOUT,
+	TSEW_LAYOUT_ORIGINAL,
+	TSEW_LAYOUT_BETTER,
+	TSEW_LAYOUT_GRID2,
+	TSEW_LAYOUT_GRID3,
+	TSEW_LAYOUT_RANDOM,
+};
+
 static const Widget _found_town_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},                  // TSEW_CLOSEBOX
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,   11,   147,     0,    13, STR_0233_TOWN_GENERATION, STR_018C_WINDOW_TITLE_DRAG_THIS},        // TSEW_CAPTION
@@ -715,28 +741,6 @@ static const Widget _found_town_widgets[] = {
 struct FoundTownWindow : Window
 {
 private:
-	enum TownScenarioEditorWidget {
-		TSEW_CLOSEBOX,
-		TSEW_CAPTION,
-		TSEW_STICKYBOX,
-		TSEW_BACKGROUND,
-		TSEW_NEWTOWN,
-		TSEW_RANDOMTOWN,
-		TSEW_MANYRANDOMTOWNS,
-		TSEW_TOWNSIZE,
-		TSEW_SIZE_SMALL,
-		TSEW_SIZE_MEDIUM,
-		TSEW_SIZE_LARGE,
-		TSEW_SIZE_RANDOM,
-		TSEW_CITY,
-		TSEW_TOWNLAYOUT,
-		TSEW_LAYOUT_ORIGINAL,
-		TSEW_LAYOUT_BETTER,
-		TSEW_LAYOUT_GRID2,
-		TSEW_LAYOUT_GRID3,
-		TSEW_LAYOUT_RANDOM,
-	};
-
 	static TownSize town_size;
 	static bool city;
 	static TownLayout town_layout;
