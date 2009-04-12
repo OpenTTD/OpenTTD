@@ -98,7 +98,7 @@ static inline void OTTDfreeaddrinfo(struct addrinfo *ai)
 	if (ai == NULL) return;
 
 	if (first_time) {
-		LoadLibraryList((Function*)&freeaddrinfo, "ws2_32.dll\freeaddrinfo\0\0");
+		LoadLibraryList((Function*)&freeaddrinfo, "ws2_32.dll\0freeaddrinfo\0\0");
 		first_time = false;
 	}
 
