@@ -397,7 +397,7 @@ static const StringID _sort_listing[][11] = {{
 }};
 
 /** Cargo filter functions */
-static bool CargoFilter(const EngineID *eid, const CargoID cid)
+static bool CDECL CargoFilter(const EngineID *eid, const CargoID cid)
 {
 	if (cid == CF_ANY) return true;
 	uint32 refit_mask = GetUnionOfArticulatedRefitMasks(*eid, GetEngine(*eid)->type, true);
