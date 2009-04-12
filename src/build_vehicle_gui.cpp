@@ -716,7 +716,6 @@ struct BuildVehicleWindow : Window {
 	} filter;
 	bool descending_sort_order;
 	byte sort_criteria;
-	bool regenerate_list;
 	bool listview_mode;
 	EngineID sel_engine;
 	EngineID rename_engine;
@@ -738,7 +737,6 @@ struct BuildVehicleWindow : Window {
 		this->owner = (tile != INVALID_TILE) ? GetTileOwner(tile) : _local_company;
 
 		this->sel_engine      = INVALID_ENGINE;
-		this->regenerate_list = false;
 
 		this->sort_criteria         = _last_sort_criteria[type];
 		this->descending_sort_order = _last_sort_order[type];
@@ -770,6 +768,7 @@ struct BuildVehicleWindow : Window {
 			ResizeButtons(this, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RENAME);
 		}
 
+		this->eng_list.ForceRebuild();
 		this->GenerateBuildList(); // generate the list, since we need it in the next line
 		/* Select the first engine in the list as default when opening the window */
 		if (this->eng_list.Length() > 0) this->sel_engine = this->eng_list[0];
@@ -935,10 +934,13 @@ struct BuildVehicleWindow : Window {
 	/* Generate the list of vehicles */
 	void GenerateBuildList()
 	{
+		if (!this->eng_list.NeedRebuild()) return;
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
 			case VEH_TRAIN:
 				this->GenerateBuildTrainList();
+				this->eng_list.Compact();
+				this->eng_list.RebuildDone();
 				return; // trains should not reach the last sorting
 			case VEH_ROAD:
 				this->GenerateBuildRoadVehList();
@@ -952,6 +954,9 @@ struct BuildVehicleWindow : Window {
 		}
 		_internal_sort_order = this->descending_sort_order;
 		EngList_Sort(&this->eng_list, _sorter[this->vehicle_type][this->sort_criteria]);
+
+		this->eng_list.Compact();
+		this->eng_list.RebuildDone();
 	}
 
 	void OnClick(Point pt, int widget)
@@ -960,7 +965,7 @@ struct BuildVehicleWindow : Window {
 			case BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING:
 				this->descending_sort_order ^= true;
 				_last_sort_order[this->vehicle_type] = this->descending_sort_order;
-				this->regenerate_list = true;
+				this->eng_list.ForceRebuild();
 				this->SetDirty();
 				break;
 
@@ -1023,15 +1028,12 @@ struct BuildVehicleWindow : Window {
 
 	virtual void OnInvalidateData(int data)
 	{
-		this->regenerate_list = true;
+		this->eng_list.ForceRebuild();
 	}
 
 	virtual void OnPaint()
 	{
-		if (this->regenerate_list) {
-			this->regenerate_list = false;
-			this->GenerateBuildList();
-		}
+		this->GenerateBuildList();
 
 		uint max = min(this->vscroll.pos + this->vscroll.cap, this->eng_list.Length());
 
@@ -1094,7 +1096,7 @@ struct BuildVehicleWindow : Window {
 		if (this->sort_criteria != index) {
 			this->sort_criteria = index;
 			_last_sort_criteria[this->vehicle_type] = this->sort_criteria;
-			this->regenerate_list = true;
+			this->eng_list.ForceRebuild();
 		}
 		this->SetDirty();
 	}
