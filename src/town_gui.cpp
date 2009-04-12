@@ -227,7 +227,7 @@ private:
 		TVW_VIEWPORTPANEL,
 		TVW_INFOPANEL = 5,
 		TVW_CENTERVIEW,
-		TVW_SHOWAUTORITY,
+		TVW_SHOWAUTHORITY,
 		TVW_CHANGENAME,
 		TVW_EXPAND,
 		TVW_DELETE,
@@ -249,7 +249,7 @@ public:
 		if (this->town->larger_town) this->widget[TVW_CAPTION].data = STR_CITY;
 		this->SetWidgetHiddenState(TVW_DELETE, ingame);  // hide delete button on game mode
 		this->SetWidgetHiddenState(TVW_EXPAND, ingame);  // hide expand button on game mode
-		this->SetWidgetHiddenState(TVW_SHOWAUTORITY, !ingame); // hide autority button on editor mode
+		this->SetWidgetHiddenState(TVW_SHOWAUTHORITY, !ingame); // hide autority button on editor mode
 
 		if (ingame) {
 			/* resize caption bar */
@@ -361,7 +361,7 @@ public:
 				}
 				break;
 
-			case TVW_SHOWAUTORITY: // town authority
+			case TVW_SHOWAUTHORITY: // town authority
 				ShowTownAuthorityWindow(this->window_number);
 				break;
 
