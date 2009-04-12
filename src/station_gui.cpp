@@ -212,6 +212,7 @@ protected:
 		byte maxr2 = 0;
 
 		for (CargoID j = 0; j < NUM_CARGO; j++) {
+			if (!HasBit(cargo_filter, j)) continue;
 			if (HasBit((*a)->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) maxr1 = max(maxr1, (*a)->goods[j].rating);
 			if (HasBit((*b)->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) maxr2 = max(maxr2, (*b)->goods[j].rating);
 		}
@@ -222,15 +223,16 @@ protected:
 	/** Sort stations by their rating */
 	static int CDECL StationRatingMinSorter(const Station * const *a, const Station * const *b)
 	{
-		byte minr1 = 0;
-		byte minr2 = 0;
+		byte minr1 = 255;
+		byte minr2 = 255;
 
 		for (CargoID j = 0; j < NUM_CARGO; j++) {
+			if (!HasBit(cargo_filter, j)) continue;
 			if (HasBit((*a)->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) minr1 = min(minr1, (*a)->goods[j].rating);
 			if (HasBit((*b)->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) minr2 = min(minr2, (*b)->goods[j].rating);
 		}
 
-		return minr1 - minr2;
+		return -(minr1 - minr2);
 	}
 
 	/** Sort the stations list */
