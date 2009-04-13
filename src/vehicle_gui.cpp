@@ -263,6 +263,18 @@ static RefitOption *DrawVehicleRefitWindow(const RefitList *list, int sel, uint 
 	return selected;
 }
 
+/** Widget numbers of the vehicle refit window. */
+enum VehicleRefitWidgets {
+	VRW_CLOSEBOX,
+	VRW_CAPTION,
+	VRW_SELECTHEADER,
+	VRW_MATRIX,
+	VRW_SCROLLBAR,
+	VRW_INFOPANEL,
+	VRW_REFITBUTTON,
+	VRW_RESIZEBOX,
+};
+
 struct RefitWindow : public Window {
 	int sel;
 	RefitOption *cargo;
@@ -399,16 +411,15 @@ struct RefitWindow : public Window {
 	}
 };
 
-
 static const Widget _vehicle_refit_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                            STR_018B_CLOSE_WINDOW},
-	{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   239,     0,    13, STR_983B_REFIT,                      STR_018C_WINDOW_TITLE_DRAG_THIS},
-	{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   239,    14,    27, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, STR_983D_SELECT_TYPE_OF_CARGO_FOR},
-	{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   227,    28,   139, 0x801,                               STR_EMPTY},
-	{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_GREY,   228,   239,    28,   139, 0x0,                                 STR_0190_SCROLL_BAR_SCROLLS_LIST},
-	{      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,     0,   239,   140,   161, 0x0,                                 STR_NULL},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   227,   162,   173, 0x0,                                 STR_NULL},
-	{  WWT_RESIZEBOX,     RESIZE_TB,  COLOUR_GREY,   228,   239,   162,   173, 0x0,                                 STR_RESIZE_BUTTON},
+	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                            STR_018B_CLOSE_WINDOW},             // VRW_CLOSEBOX
+	{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   239,     0,    13, STR_983B_REFIT,                      STR_018C_WINDOW_TITLE_DRAG_THIS},   // VRW_CAPTION
+	{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   239,    14,    27, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, STR_983D_SELECT_TYPE_OF_CARGO_FOR}, // VRW_SELECTHEADER
+	{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   227,    28,   139, 0x801,                               STR_EMPTY},                         // VRW_MATRIX
+	{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_GREY,   228,   239,    28,   139, 0x0,                                 STR_0190_SCROLL_BAR_SCROLLS_LIST},  // VRW_SCROLLBAR
+	{      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,     0,   239,   140,   161, 0x0,                                 STR_NULL},                          // VRW_INFOPANEL
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   227,   162,   173, 0x0,                                 STR_NULL},                          // VRW_REFITBUTTON
+	{  WWT_RESIZEBOX,     RESIZE_TB,  COLOUR_GREY,   228,   239,   162,   173, 0x0,                                 STR_RESIZE_BUTTON},                 // VRW_RESIZEBOX
 	{   WIDGETS_END},
 };
 
