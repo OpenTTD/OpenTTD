@@ -876,7 +876,7 @@ public:
 					/* Deselect clicked order */
 					this->selected_order = -1;
 				} else if (sel == this->selected_order) {
-					if (this->vehicle->type == VEH_TRAIN) {
+					if (this->vehicle->type == VEH_TRAIN && sel < this->vehicle->GetNumOrders()) {
 						DoCommandP(this->vehicle->tile, this->vehicle->index + (sel << 16),
 								MOF_STOP_LOCATION | ((GetVehicleOrder(this->vehicle, sel)->GetStopLocation() + 1) % OSL_END) << 4,
 								CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
