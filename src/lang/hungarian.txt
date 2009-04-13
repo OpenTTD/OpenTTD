@@ -971,6 +971,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Mindig 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Jelzők a menetirány szerinti oldalon legyenek: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Pénzügyi összesítés minden év végén: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Minden új utasítás alapból 'non-stop': {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}A vonatok a platformok {ORANGE}{STRING}{LTBLUE} állnak meg
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :elején
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :közepén
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :végén
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Közúti járművek sorbanállása: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Ablakmozgatás, ha az egér a képernyő szélén van: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Önkormányzatok lefizethetősége: {ORANGE}{STRING}

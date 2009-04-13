@@ -1553,7 +1553,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Hra pozastavena
 STR_NETWORK_CLIENT_LEAVING                                      :odpojování
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} jde hrát
 STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} se přidává ke společnosti č. {2:NUM}
-STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} má nové pozorovatele
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} se stává pozorovatelem
 STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} zakládá novou společnost (č. {2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} opouští hru ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} si mění jméno na {STRING}

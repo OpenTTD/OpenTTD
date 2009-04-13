@@ -321,6 +321,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Êtes v
 STR_0161_QUIT_GAME                                              :{WHITE}Abandonner la partie
 STR_SORT_ORDER_TIP                                              :{BLACK}Choisir l'ordre de tri croissant/décroissant
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Choisir le critère de tri
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Choisir le critère de filtrage
 STR_SORT_BY                                                     :{BLACK}Trier par
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Population
@@ -343,6 +344,8 @@ STR_SORT_BY_LENGTH                                              :Longueur
 STR_SORT_BY_LIFE_TIME                                           :Durée de vie restante
 STR_SORT_BY_FACILITY                                            :Type de station
 STR_SORT_BY_WAITING                                             :Marchandise en attente
+STR_SORT_BY_RATING_MAX                                          :Plus grande notation de marchandise
+STR_SORT_BY_RATING_MIN                                          :Plus petite notation de marchandise
 STR_ENGINE_SORT_ENGINE_ID                                       :ID Engin (tri classique)
 STR_ENGINE_SORT_COST                                            :Prix
 STR_ENGINE_SORT_POWER                                           :Puissance
@@ -938,6 +941,9 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Affiche
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Signaux ferroviaires du côté du sens de conduite: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Afficher le bilan de finances en fin d'année: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Les nouveaux ordres sont 'sans-arrêt' par défaut: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :{G=f}queue
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :{G=m}milieu
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :{G=f}tête
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Mise en file Véhicules Routiers (+ effets quantiques): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Défiler la vue horizontalement avec le pointeur: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permettre la corruption de la municipalité: {ORANGE}{STRING}
@@ -2615,6 +2621,9 @@ STR_ORDER_GO_TO                                                 :Aller à
 STR_ORDER_GO_NON_STOP_TO                                        :Aller sans arrêt à
 STR_ORDER_GO_VIA                                                :Passer par
 STR_ORDER_GO_NON_STOP_VIA                                       :Passer sans arrêt par
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[queue]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[milieu]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[tête]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Chargement complet par un seul type
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Charger si possible
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Chargement complet

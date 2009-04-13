@@ -10,7 +10,7 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Auserhalb vun der Kaart
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Ausserhalb vun der Kaart
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Ze noo um Bord vun der Kaart
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nët genuch Geld - dëss Aktioun kascht {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
@@ -948,6 +948,8 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Fliger 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Erlaabt d'Iwerfueren vun Stopschëlder op Stroossen vun der Stadt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Erlaabt d'Iwerfueren vun Stopschëlder op Stroossen vun der Konkurenz: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Erlaabt ungrenzent Statiounen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Verschidden NewGRF-Päck aktivéiren: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Déi Astellung kann net geännert gin wann do Gefierter sin.
 
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Erlaab ëmmer kléng Flughäfen: {ORANGE}{STRING}
 
@@ -959,12 +961,14 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :vun allen Gefie
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Warnen wann en Gefiehrt en negativen Akommen huet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Gefiehrer laafen nie oof: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Gefiehrt automatësch ernéieren wann ët aal gët: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimalen Budget fir d'automatesch Erneierung: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Dauer vun Fehlermeldungen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Weist Bewunnerzuel am Numm vun der Stadt: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landgenerator: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}D'maximal Distanz fiir Uelesch Raffinerien vum Bord vun der Kaart {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ganz Eben
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Eben
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Oneben
@@ -975,7 +979,11 @@ STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Verbessert
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Entgéint der Auer
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Matt der Auer
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Een oder méi Tiles um nördlechsten Bord sin net eidel
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een oder méi Tiles op engem Eck sin keen Waasser
 
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Automatesch Maintenance vun Helicopteren: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Deen aaneren Wee scrollen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Weis Firmentracht: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Keng
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eegen Firma
@@ -1046,6 +1054,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Faarweg
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Startjoër: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Gläichmässeg Economie anschalten (méi oft an kléng Wiessel): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Undeeler vun aaneren Firmen kaafen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Mein Zéien, all: {ORANGE}{STRING} Tile(s) e Signal platzéiren.
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blocksignaler
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Pfadsignaler
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Pfadsignaler an éng Richtung
@@ -1061,15 +1070,20 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 Gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Zoufälleg
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Stiedt därfen Stroossen bauen: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Positioun vun der Haap-Toolbar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Lénks
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Zentréiert
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Riets
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Fensteren rasten an bei: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Stadt-Wuestum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Keen
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lues
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Schnell
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Ganz Schnell
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Dierfer déi zu Staaten gin: {ORANGE}1 vun {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Dierfer déi zu Staaten gin: {ORANGE}Keng
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Ufangs-Gréißt vun Stiet mulitiplizéiren mat: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruktioun
@@ -1151,24 +1165,41 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Weepunkt
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Kann den Weepunktnumm nët änneren...
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Konvertéiert d'Schinnen zum Weepunkt
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Kann keen Zuchweepunkt héi bauen...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Kann den Wee-Punkt hei net oofrappen...
 
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Schinnen am automatëschen Modus bauen
 
+STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}... et ass keen Duerf an dësem
 
+STR_MANY_RANDOM_TOWNS                                           :{BLACK}Vill zoufälleg Dierfer
+STR_RANDOM_TOWNS_TIP                                            :{BLACK}D'Kaart zoufälleg mat Dierfer fëllen
+STR_MANY_RANDOM_INDUSTRIES                                      :Vill zoufälleg Industrien
+STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}D'Kaart mat villen zoufällegen Industrien fëllen
+STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Kann keng Industrien erzeugen...
 
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landschaftsbau
+STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Land planéiren
 
 
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Zoufälleg Beem
+STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Zoufälleg Beem planzen
 
+STR_CANT_BUILD_CANALS                                           :{WHITE}Kann hei keen Kanal bauen...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Kanal bauen.
 STR_LANDINFO_CANAL                                              :Kanal
 
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Kann hei keen Floss platzéiren...
 STR_LANDINFO_RIVER                                              :Floss
 
+STR_BUOY_IS_IN_USE                                              :{WHITE}...Boje ass am Gebrauch!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Koordinaten: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
+STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Kann den Deel vun der Gare net oofrappen...
 STR_CONVERT_RAIL_TIP                                            :{BLACK}Konvertéiert den Typ vun Schinnen
 
+STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Locomotive heihinner zéien fir de ganzen Zuch ze läschen
 
 STR_DRAG_DROP                                                   :{BLACK}Drag & Drop
 STR_STATION_DRAG_DROP                                           :{BLACK}D'Statioun per drag & drop bauen
@@ -1270,10 +1301,15 @@ STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (Werben)
 STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} Spiller
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max Spiller:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Maximal Unzuel vun den Clients. Et muss net all Slot gefëllt sin.
 STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} Firm{P a en}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max Firmen:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}D'Unzuel vun den Entreprisen limitéieren
 STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} Zuschauer
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max Zuschauer:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}D'Unzuel vun den Spectateuren limitéiren
+STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Geschwaaten Sprooch:
+STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Aaner Leit gesin wei eng Sprooch um Server geschwaat gëtt
 STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Spill starten
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Eng néi Partie iwert d'Netzwierk starten
@@ -1319,8 +1355,10 @@ STR_NETWORK_LANG_GREEK                                          :Grieschësch
 STR_NETWORK_LANG_LATVIAN                                        :Lettësch
 ############ End of leave-in-this-order
 
+STR_NETWORK_GAME_LOBBY                                          :{WHITE}Multiplayer-Spill Empfang
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Préparéiert fir bäizetrieden:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Eng Lëscht vun den Entreprisen an dësem Spill. Du kanns enger bäitrieden oder eng nei opmaachen.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Néi Firma
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Néi Firma erstellen
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Dëm Spill nookucken

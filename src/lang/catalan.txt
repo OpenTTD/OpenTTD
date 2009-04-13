@@ -4,6 +4,7 @@
 ##winlangid 0x0403
 ##grflangid 0x22
 ##plural 0
+##textdir ltr
 
 #
 
@@ -319,6 +320,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Estàs 
 STR_0161_QUIT_GAME                                              :{WHITE}Abandona el Joc
 STR_SORT_ORDER_TIP                                              :{BLACK}Selecciona ordre de classificació (descendent/ascendent)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Selecciona criteri de classificació
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Selecciona el criteri de filtratge
 STR_SORT_BY                                                     :{BLACK}Ordenar per
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Població
@@ -341,6 +343,8 @@ STR_SORT_BY_LENGTH                                              :Llargada
 STR_SORT_BY_LIFE_TIME                                           :Temps de vida restant
 STR_SORT_BY_FACILITY                                            :Tipus de estació
 STR_SORT_BY_WAITING                                             :Valor de espera de càrrega
+STR_SORT_BY_RATING_MAX                                          :Rati de càrrega més alt
+STR_SORT_BY_RATING_MIN                                          :Rati de càrrega més baix
 STR_ENGINE_SORT_ENGINE_ID                                       :IDMotor (ordre clàssic)
 STR_ENGINE_SORT_COST                                            :Cost
 STR_ENGINE_SORT_POWER                                           :Potència
@@ -936,6 +940,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Mostra 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Mostra senyals en el sentit de la marxa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Mostra finestra de balanç al finalitzar cada any: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Les noves ordres són 'sense parada' per defecte: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Noves ordres del tren parar per defecte {ORANGE}{STRING}{LTBLUE} de la plataforma
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :a prop del final
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :a la meitat
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :lluny del final
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Cues d'automòbils (amb efectes quàntics): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Finestra d'avis quan el ratolí és al marc del programa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permet subornar a les autoritats locals: {ORANGE}{STRING}
@@ -2613,6 +2621,9 @@ STR_ORDER_GO_TO                                                 :Ves a
 STR_ORDER_GO_NON_STOP_TO                                        :Ves sense parar a
 STR_ORDER_GO_VIA                                                :Ves via
 STR_ORDER_GO_NON_STOP_VIA                                       :Ves sense parar via
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[a prop del final]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[a la meitat]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[lluny del final]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Carrega del tot qualsevol càrrega
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carrega si està disponible
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Carrega del tot totes les càrregues

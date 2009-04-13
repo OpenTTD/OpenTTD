@@ -320,6 +320,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Lopetet
 STR_0161_QUIT_GAME                                              :{WHITE}Lopeta peli
 STR_SORT_ORDER_TIP                                              :{BLACK}Valitse järjestys (laskeva/nouseva).
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Valitse järjestyskriteeri.
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Valitse suodatuskriteerit
 STR_SORT_BY                                                     :{BLACK}Lajittele
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Asukasluku
@@ -342,6 +343,8 @@ STR_SORT_BY_LENGTH                                              :Pituus
 STR_SORT_BY_LIFE_TIME                                           :Jäljelläoleva elinikä
 STR_SORT_BY_FACILITY                                            :Asematyyppi
 STR_SORT_BY_WAITING                                             :Odottavan lastin arvo
+STR_SORT_BY_RATING_MAX                                          :Korkein rahtiluokitus
+STR_SORT_BY_RATING_MIN                                          :Matalin rahtiluokitus
 STR_ENGINE_SORT_ENGINE_ID                                       :VeturiD (perinteinen lajittelu)
 STR_ENGINE_SORT_COST                                            :Hinta
 STR_ENGINE_SORT_POWER                                           :Teho
@@ -937,6 +940,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Näytä
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Näytä opastimet ajokaistalla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Näytä rahoitusikkuna vuoden lopussa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Uudet määräykset ovat oletusarvoisesti nonstop-tyyppisiä: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Uudet junien käskyt pysäyttävät junan aseman {ORANGE}{STRING}{LTBLUE}
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :loppuun
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :keskelle
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :aivan loppuun
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Ajoneuvojonotus (kvanttitehostein): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Vieritä ikkunaa, kun hiiri osuu reunaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Salli viranomaisten lahjominen: {ORANGE}{STRING}
@@ -2614,6 +2621,9 @@ STR_ORDER_GO_TO                                                 :Mene
 STR_ORDER_GO_NON_STOP_TO                                        :Mene pysäyksettä
 STR_ORDER_GO_VIA                                                :Mene kautta
 STR_ORDER_GO_NON_STOP_VIA                                       :Mene pysäyksettä kautta
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[loppuun]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[keskelle]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[aivan loppuun]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Lastaa täyteen mikä tahansa rahtityyppi
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lastaa jos saatavilla
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Lastaa täyteen kaikki rahtityypit

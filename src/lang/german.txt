@@ -321,6 +321,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Das Spi
 STR_0161_QUIT_GAME                                              :{WHITE}Spiel beenden
 STR_SORT_ORDER_TIP                                              :{BLACK}Sortierreihenfolge auswählen (absteigend/aufsteigend)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Sortierkriterium auswählen
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Filterkriterien auswählen
 STR_SORT_BY                                                     :{BLACK}Sortieren
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Bevölkerung
@@ -343,6 +344,8 @@ STR_SORT_BY_LENGTH                                              :Länge
 STR_SORT_BY_LIFE_TIME                                           :Verbleibende Betriebsdauer
 STR_SORT_BY_FACILITY                                            :Stationsart
 STR_SORT_BY_WAITING                                             :Menge der wartenden Fracht
+STR_SORT_BY_RATING_MAX                                          :Beste Bewertung
+STR_SORT_BY_RATING_MIN                                          :Schlechteste Bewertung
 STR_ENGINE_SORT_ENGINE_ID                                       :Baureihe
 STR_ENGINE_SORT_COST                                            :Kosten
 STR_ENGINE_SORT_POWER                                           :Leistung
@@ -938,6 +941,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Lange D
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Signale auf der Seite der Straßenverkehrsrichtung anzeigen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Zeige Firmenfinanzen am Ende des Jahres: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Aufträge standardmäßig ohne Zwischenhalt anfahren: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Bei neuen Aufträgen: der Zug hält standardmäßig {ORANGE}{STRING}{LTBLUE} des Bahnsteigs
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :am Anfang
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :in der Mitte
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :am Ende
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Fahrzeugwarteschlange (mit Überlagerung): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Spielfeld scrollen, wenn die Maus am Bildrand anstößt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Bestechen der Stadtverwaltung erlauben: {ORANGE}{STRING}
@@ -2615,6 +2622,9 @@ STR_ORDER_GO_TO                                                 :Fahre zu
 STR_ORDER_GO_NON_STOP_TO                                        :Fahre ohne Halt nach
 STR_ORDER_GO_VIA                                                :Fahre über
 STR_ORDER_GO_NON_STOP_VIA                                       :Fahre ohne Halt über
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[am Anfang]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[in der Mitte]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[am Ende]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Vollladen einer Fracht
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lade wenn verfügbar
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Vollladen jeder Fracht
