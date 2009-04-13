@@ -296,27 +296,27 @@ struct RefitWindow : public Window {
 
 		switch (v->type) {
 			case VEH_TRAIN:
-				this->widget[3].tooltips = STR_RAIL_SELECT_TYPE_OF_CARGO_FOR;
-				this->widget[6].data     = STR_RAIL_REFIT_VEHICLE;
-				this->widget[6].tooltips = STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED;
+				this->widget[VRW_MATRIX].tooltips = STR_RAIL_SELECT_TYPE_OF_CARGO_FOR;
+				this->widget[VRW_REFITBUTTON].data = STR_RAIL_REFIT_VEHICLE;
+				this->widget[VRW_REFITBUTTON].tooltips = STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED;
 				break;
 
 			case VEH_ROAD:
-				this->widget[3].tooltips = STR_ROAD_SELECT_TYPE_OF_CARGO_FOR;
-				this->widget[6].data     = STR_REFIT_ROAD_VEHICLE;
-				this->widget[6].tooltips = STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED;
+				this->widget[VRW_MATRIX].tooltips = STR_ROAD_SELECT_TYPE_OF_CARGO_FOR;
+				this->widget[VRW_REFITBUTTON].data = STR_REFIT_ROAD_VEHICLE;
+				this->widget[VRW_REFITBUTTON].tooltips = STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED;
 				break;
 
 			case VEH_SHIP:
-				this->widget[3].tooltips = STR_983D_SELECT_TYPE_OF_CARGO_FOR;
-				this->widget[6].data     = STR_983C_REFIT_SHIP;
-				this->widget[6].tooltips = STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED;
+				this->widget[VRW_MATRIX].tooltips = STR_983D_SELECT_TYPE_OF_CARGO_FOR;
+				this->widget[VRW_REFITBUTTON].data = STR_983C_REFIT_SHIP;
+				this->widget[VRW_REFITBUTTON].tooltips = STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED;
 				break;
 
 			case VEH_AIRCRAFT:
-				this->widget[3].tooltips = STR_A03E_SELECT_TYPE_OF_CARGO_FOR;
-				this->widget[6].data     = STR_A03D_REFIT_AIRCRAFT;
-				this->widget[6].tooltips = STR_A03F_REFIT_AIRCRAFT_TO_CARRY;
+				this->widget[VRW_MATRIX].tooltips = STR_A03E_SELECT_TYPE_OF_CARGO_FOR;
+				this->widget[VRW_REFITBUTTON].data = STR_A03D_REFIT_AIRCRAFT;
+				this->widget[VRW_REFITBUTTON].tooltips = STR_A03F_REFIT_AIRCRAFT_TO_CARRY;
 				break;
 
 			default: NOT_REACHED();
@@ -364,7 +364,7 @@ struct RefitWindow : public Window {
 				SetDParam(0, this->cargo->cargo);
 				SetDParam(1, _returned_refit_capacity);
 				SetDParam(2, cost.GetCost());
-				DrawString(2, this->width - 2, this->widget[5].top + 1, STR_9840_NEW_CAPACITY_COST_OF_REFIT, TC_FROMSTRING);
+				DrawString(2, this->width - 2, this->widget[VRW_INFOPANEL].top + 1, STR_9840_NEW_CAPACITY_COST_OF_REFIT, TC_FROMSTRING);
 			}
 		}
 	}
@@ -372,8 +372,8 @@ struct RefitWindow : public Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case 3: { // listbox
-				int y = pt.y - this->widget[3].top;
+			case VRW_MATRIX: { // listbox
+				int y = pt.y - this->widget[VRW_MATRIX].top;
 				if (y >= 0) {
 					this->sel = (y / (int)this->resize.step_height) + this->vscroll.pos;
 					this->SetDirty();
@@ -381,7 +381,7 @@ struct RefitWindow : public Window {
 				break;
 			}
 
-			case 6: // refit button
+			case VRW_REFITBUTTON: // refit button
 				if (this->cargo != NULL) {
 					const Vehicle *v = GetVehicle(this->window_number);
 
@@ -407,7 +407,7 @@ struct RefitWindow : public Window {
 	virtual void OnResize(Point delta)
 	{
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;
-		this->widget[3].data = (this->vscroll.cap << 8) + 1;
+		this->widget[VRW_MATRIX].data = (this->vscroll.cap << 8) + 1;
 	}
 };
 
@@ -1284,7 +1284,7 @@ static const Widget _vehicle_details_widgets[] = {
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,  96, 194, 113, 124, STR_013D_INFORMATION, STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES},// VLD_WIDGET_DETAILS_TRAIN_VEHICLES
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY, 195, 293, 113, 124, STR_013E_CAPACITIES,  STR_8851_SHOW_CAPACITIES_OF_EACH},       // VLD_WIDGET_DETAILS_CAPACITY_OF_EACH
 	{ WWT_PUSHTXTBTN,    RESIZE_RTB,  COLOUR_GREY, 294, 392, 113, 124, STR_TOTAL_CARGO,      STR_SHOW_TOTAL_CARGO},                   // VLD_WIDGET_DETAILS_TOTAL_CARGO
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY, 393, 404, 113, 124, 0x0,                  STR_RESIZE_BUTTON},                      // VLD_RESIZE
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY, 393, 404, 113, 124, 0x0,                  STR_RESIZE_BUTTON},                      // VLD_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
 
