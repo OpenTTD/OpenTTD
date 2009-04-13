@@ -423,11 +423,29 @@ static const Widget _vehicle_refit_widgets[] = {
 	{   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_vehicle_refit_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, VRW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, VRW_CAPTION), SetDataTip(STR_983B_REFIT, STR_018C_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_TEXTBTN, COLOUR_GREY, VRW_SELECTHEADER), SetMinimalSize(240, 14), SetDataTip(STR_983F_SELECT_CARGO_TYPE_TO_CARRY, STR_983D_SELECT_TYPE_OF_CARGO_FOR),
+	/* Matrix + scrollbar. */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_MATRIX, COLOUR_GREY, VRW_MATRIX), SetMinimalSize(228, 112), SetResize(0, 14), SetDataTip(0x801, STR_EMPTY),
+		NWidget(WWT_SCROLLBAR, COLOUR_GREY, VRW_SCROLLBAR),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, VRW_INFOPANEL), SetMinimalSize(240, 22), EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VRW_REFITBUTTON), SetMinimalSize(228, 12),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY, VRW_RESIZEBOX),
+	EndContainer(),
+};
+
 static const WindowDesc _vehicle_refit_desc(
 	WDP_AUTO, WDP_AUTO, 240, 174, 240, 174,
 	WC_VEHICLE_REFIT, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	_vehicle_refit_widgets
+	_vehicle_refit_widgets, _nested_vehicle_refit_widgets, lengthof(_nested_vehicle_refit_widgets)
 );
 
 /** Show the refit window for a vehicle
@@ -1288,6 +1306,33 @@ static const Widget _vehicle_details_widgets[] = {
 	{   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_vehicle_details_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, VLD_WIDGET_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, VLD_WIDGET_CAPTION),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_RENAME_VEHICLE), SetMinimalSize(40, 14), SetDataTip(STR_01AA_NAME, STR_NULL /* filled in later */),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY, VLD_WIDGET_STICKY),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, VLD_WIDGET_TOP_DETAILS), SetResize(1, 0), SetMinimalSize(405, 42), EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_MATRIX, COLOUR_GREY, VLD_WIDGET_MIDDLE_DETAILS), SetResize(1, 1), SetMinimalSize(393, 45), SetDataTip(0x701, STR_NULL),
+		NWidget(WWT_SCROLLBAR, COLOUR_GREY, VLD_WIDGET_SCROLLBAR),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_VERTICAL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_INCREASE_SERVICING_INTERVAL), SetMinimalSize(11, 6), SetDataTip(STR_0188, STR_884D_INCREASE_SERVICING_INTERVAL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_DECREASE_SERVICING_INTERVAL), SetMinimalSize(11, 6), SetDataTip(STR_0189, STR_884E_DECREASE_SERVICING_INTERVAL),
+		EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_GREY, VLD_WIDGET_BOTTOM_RIGHT), SetFill(1, 1), SetResize(1, 0), EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_DETAILS_CARGO_CARRIED), SetMinimalSize(96, 12), SetDataTip(STR_013C_CARGO, STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_DETAILS_TRAIN_VEHICLES), SetMinimalSize(99, 12), SetDataTip(STR_013D_INFORMATION, STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_DETAILS_CAPACITY_OF_EACH), SetMinimalSize(99, 12), SetDataTip(STR_013E_CAPACITIES, STR_8851_SHOW_CAPACITIES_OF_EACH),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_DETAILS_TOTAL_CARGO), SetMinimalSize(99, 12), SetDataTip(STR_TOTAL_CARGO, STR_SHOW_TOTAL_CARGO), SetResize(1, 0),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY, VLD_WIDGET_RESIZE),
+	EndContainer(),
+};
 
 /** Command indices for the _vehicle_command_translation_table. */
 enum VehicleStringTranslation {
@@ -1601,7 +1646,7 @@ static const WindowDesc _vehicle_details_desc(
 	WDP_AUTO, WDP_AUTO, 405, 113, 405, 113,
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_vehicle_details_widgets
+	_vehicle_details_widgets, _nested_vehicle_details_widgets, lengthof(_nested_vehicle_details_widgets)
 );
 
 /** Shows the vehicle details window of the given vehicle. */
