@@ -474,15 +474,18 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 			/* The distance to go is whatever is still ahead of the train minus the
 			 * distance from the train's stop location to the end of the platform */
 			int distance_to_go = station_ahead / TILE_SIZE - (station_length - stop_at) / TILE_SIZE;
-			int st_max_speed = 120;
 
-			int delta_v = v->cur_speed / (distance_to_go + 1);
-			if (v->max_speed > (v->cur_speed - delta_v)) {
-				st_max_speed = v->cur_speed - (delta_v / 10);
+			if (distance_to_go > 0) {
+				int st_max_speed = 120;
+
+				int delta_v = v->cur_speed / (distance_to_go + 1);
+				if (v->max_speed > (v->cur_speed - delta_v)) {
+					st_max_speed = v->cur_speed - (delta_v / 10);
+				}
+
+				st_max_speed = max(st_max_speed, 25 * distance_to_go);
+				max_speed = min(max_speed, st_max_speed);
 			}
-
-			st_max_speed = max(st_max_speed, 25 * distance_to_go);
-			max_speed = min(max_speed, st_max_speed);
 		}
 	}
 

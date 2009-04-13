@@ -2681,7 +2681,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 		 * begin of the platform to the stop location is longer than the length
 		 * of the platform. Station ahead 'includes' the current tile where the
 		 * vehicle is on, so we need to substract that. */
-		if (station_length <= stop + station_ahead - TILE_SIZE) return VETSB_CONTINUE;
+		if (!IsInsideBS(stop + station_ahead, station_length, TILE_SIZE)) return VETSB_CONTINUE;
 
 		DiagDirection dir = DirToDiagDir(v->direction);
 
