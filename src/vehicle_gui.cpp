@@ -883,21 +883,6 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 		this->vehicle_type = (VehicleType)GB(this->window_number, 11, 5);
 		this->owner = company;
 
-		/* Hide the widgets that we will not use in this window
-		 * Some windows contains actions only fit for the owner */
-		if (company == _local_company) {
-			this->HideWidget(VLW_WIDGET_OTHER_COMPANY_FILLER);
-			this->SetWidgetDisabledState(VLW_WIDGET_AVAILABLE_VEHICLES, window_type != VLW_STANDARD);
-		} else {
-			this->SetWidgetsHiddenState(true,
-				VLW_WIDGET_AVAILABLE_VEHICLES,
-				VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
-				VLW_WIDGET_STOP_ALL,
-				VLW_WIDGET_START_ALL,
-				VLW_WIDGET_EMPTY_BOTTOM_RIGHT,
-				WIDGET_LIST_END);
-		}
-
 		/* Set up the window widgets */
 		switch (this->vehicle_type) {
 			case VEH_TRAIN:
@@ -1064,11 +1049,25 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 			default: NOT_REACHED(); break;
 		}
 
-		this->SetWidgetsDisabledState(this->vehicles.Length() == 0,
+		/* Hide the widgets that we will not use in this window
+		 * Some windows contains actions only fit for the owner */
+		this->SetWidgetsHiddenState(this->owner != _local_company,
+			VLW_WIDGET_AVAILABLE_VEHICLES,
 			VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
 			VLW_WIDGET_STOP_ALL,
 			VLW_WIDGET_START_ALL,
+			VLW_WIDGET_EMPTY_BOTTOM_RIGHT,
 			WIDGET_LIST_END);
+		this->SetWidgetHiddenState(VLW_WIDGET_OTHER_COMPANY_FILLER, this->owner == _local_company);
+		if (this->owner == _local_company) {
+			this->SetWidgetDisabledState(VLW_WIDGET_AVAILABLE_VEHICLES, window_type != VLW_STANDARD);
+			this->SetWidgetsDisabledState(this->vehicles.Length() == 0,
+				VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
+				VLW_WIDGET_STOP_ALL,
+				VLW_WIDGET_START_ALL,
+				WIDGET_LIST_END);
+		}
+
 
 		/* Set text of sort by dropdown widget. */
 		this->widget[VLW_WIDGET_SORT_BY_PULLDOWN].data = this->vehicle_sorter_names[this->vehicles.SortType()];
