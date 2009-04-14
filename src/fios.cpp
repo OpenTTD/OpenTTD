@@ -8,6 +8,7 @@
 #include "openttd.h"
 #include "fios.h"
 #include "fileio_func.h"
+#include "tar_type.h"
 #include "string_func.h"
 #include <sys/stat.h>
 
@@ -469,7 +470,31 @@ static FiosType FiosGetHeightmapListCallback(SaveLoadDialogMode mode, const char
 
 	if (strcasecmp(ext, ".bmp") == 0) type = FIOS_TYPE_BMP;
 
-	if (type != FIOS_TYPE_INVALID) GetFileTitle(file, title, last);
+	if (type == FIOS_TYPE_INVALID) return FIOS_TYPE_INVALID;
+
+	TarFileList::iterator it = _tar_filelist.find(file);
+	if (it != _tar_filelist.end()) {
+		/* If the file is in a tar and that tar is not in a heightmap
+		 * directory we are for sure not supposed to see it.
+		 * Examples of this are pngs part of documentation within
+		 * collections of NewGRFs or 32 bpp graphics replacement PNGs.
+		 */
+		bool match = false;
+		Searchpath sp;
+		FOR_ALL_SEARCHPATHS(sp) {
+			char buf[MAX_PATH];
+			FioAppendDirectory(buf, sizeof(buf), sp, HEIGHTMAP_DIR);
+
+			if (strncmp(buf, it->second.tar_filename, strlen(buf)) == 0) {
+				match = true;
+				break;
+			}
+		}
+
+		if (!match) return FIOS_TYPE_INVALID;
+	}
+
+	GetFileTitle(file, title, last);
 
 	return type;
 }
