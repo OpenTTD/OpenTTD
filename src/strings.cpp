@@ -439,7 +439,7 @@ static int DeterminePluralForm(int64 count)
 
 		/* Three forms, special cases for numbers ending in 1 and 2, 3, 4, except those ending in 1[1-4]
 		 * Used in:
-		 *   Croatian, Czech, Russian, Slovak, Ukrainian */
+		 *   Croatian, Russian, Slovak, Ukrainian */
 		case 6:
 			return n % 10 == 1 && n % 100 != 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2;
 
@@ -460,6 +460,12 @@ static int DeterminePluralForm(int64 count)
 		 *   Icelandic */
 		case 9:
 			return n % 10 == 1 && n % 100 != 11 ? 0 : 1;
+
+		/* Three forms, special cases for one and 2, 3, or 4
+		 * Used in:
+		 *   Czech */
+		case 10:
+			return n == 1 ? 0 : n >= 2 && n <= 4 ? 1 : 2;
 	}
 }
 

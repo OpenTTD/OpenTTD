@@ -456,7 +456,7 @@ const char *GetScreenshotFormatDesc(int i)
 void SetScreenshotFormat(int i)
 {
 	_cur_screenshot_format = i;
-	strcpy(_screenshot_format_name, _screenshot_formats[i].extension);
+	strecpy(_screenshot_format_name, _screenshot_formats[i].extension, lastof(_screenshot_format_name));
 }
 
 /* screenshot generator that dumps the current video buffer */

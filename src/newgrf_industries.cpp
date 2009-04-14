@@ -17,6 +17,8 @@
 #include "town.h"
 #include "company_base.h"
 #include "command_func.h"
+#include "gui.h"
+#include "strings_func.h"
 
 #include "table/strings.h"
 
@@ -570,6 +572,18 @@ void IndustryProductionCallback(Industry *ind, int reason)
 	object.callback_param2 = reason;
 
 	for (uint loop = 0;; loop++) {
+		/* limit the number of calls to break infinite loops.
+		 * 'loop' is provided as 16 bits to the newgrf, so abort when those are exceeded. */
+		if (loop >= 0x10000) {
+			/* display error message */
+			SetDParamStr(0, spec->grf_prop.grffile->filename);
+			SetDParam(1, spec->name);
+			ShowErrorMessage(STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK, STR_NEWGRF_BUGGY, 0, 0);
+
+			/* abort the function early, this error isn't critical and will allow the game to continue to run */
+			break;
+		}
+
 		SB(object.callback_param2, 8, 16, loop);
 		const SpriteGroup *group = Resolve(spec->grf_prop.spritegroup, &object);
 		if (group == NULL || group->type != SGT_INDUSTRY_PRODUCTION) break;

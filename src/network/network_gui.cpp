@@ -305,7 +305,7 @@ protected:
 	}
 
 public:
-	NetworkGameWindow(const WindowDesc *desc) : QueryStringBaseWindow(NETWORK_NAME_LENGTH, desc)
+	NetworkGameWindow(const WindowDesc *desc) : QueryStringBaseWindow(NETWORK_CLIENT_NAME_LENGTH, desc)
 	{
 		ttd_strlcpy(this->edit_str_buf, _settings_client.network.client_name, this->edit_str_size);
 		this->afilter = CS_ALPHANUMERAL;

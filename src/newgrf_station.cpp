@@ -558,7 +558,7 @@ static const SpriteGroup *StationResolveReal(const ResolverObject *object, const
 			break;
 	}
 
-	if (HasBit(statspec->flags, 1)) cargo /= (st->trainst_w + st->trainst_h);
+	if (HasBit(statspec->flags, SSF_DIV_BY_STATION_SIZE)) cargo /= (st->trainst_w + st->trainst_h);
 	cargo = min(0xfff, cargo);
 
 	if (cargo > statspec->cargo_threshold) {
@@ -655,7 +655,9 @@ SpriteID GetCustomStationGroundRelocation(const StationSpec *statspec, const Sta
 	ResolverObject object;
 
 	NewStationResolver(&object, statspec, st, tile);
-	object.callback_param1 = 1; // Indicate we are resolving the ground sprite
+	if (HasBit(statspec->flags, SSF_SEPARATE_GROUND)) {
+		object.callback_param1 = 1; // Indicate we are resolving the ground sprite
+	}
 
 	group = ResolveStation(&object);
 	if (group == NULL || group->type != SGT_RESULT) return 0;
@@ -904,7 +906,7 @@ void AnimateStationTile(TileIndex tile)
 	bool frame_set_by_callback = false;
 
 	if (HasBit(ss->callbackmask, CBM_STATION_ANIMATION_NEXT_FRAME)) {
-		uint32 param = HasBit(ss->flags, 2) ? Random() : 0;
+		uint32 param = HasBit(ss->flags, SSF_CB141_RANDOM_BITS) ? Random() : 0;
 		uint16 callback = GetStationCallback(CBID_STATION_ANIM_NEXT_FRAME, param, 0, ss, st, tile);
 
 		if (callback != CALLBACK_FAILED) {

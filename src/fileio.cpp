@@ -363,7 +363,7 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 		char resolved_name[MAX_RESOLVED_LENGTH];
 
 		/* Filenames in tars are always forced to be lowercase */
-		strcpy(resolved_name, filename);
+		strecpy(resolved_name, filename, lastof(resolved_name));
 		strtolower(resolved_name);
 
 		size_t resolved_len = strlen(resolved_name);
@@ -376,9 +376,9 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 				/* Apply link */
 				char resolved_name2[MAX_RESOLVED_LENGTH];
 				const std::string &dest = link->second;
-				strcpy(resolved_name2, &(resolved_name[len]));
-				strcpy(resolved_name, dest.c_str());
-				strcpy(&(resolved_name[dest.length()]), resolved_name2);
+				strecpy(resolved_name2, &(resolved_name[len]), lastof(resolved_name2));
+				strecpy(resolved_name, dest.c_str(), lastof(resolved_name));
+				strecpy(&(resolved_name[dest.length()]), resolved_name2, lastof(resolved_name));
 				break; // Only resolve one level
 			}
 		}
@@ -640,7 +640,7 @@ bool TarListAddFile(const char *filename)
 
 				/* Process relative path.
 				 * Note: The destination of links must not contain any directory-links. */
-				strcpy(dest, name);
+				strecpy(dest, name, lastof(dest));
 				char *destpos = strrchr(dest, PATHSEPCHAR);
 				if (destpos == NULL) destpos = dest;
 				*destpos = '\0';
