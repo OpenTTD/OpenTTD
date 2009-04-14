@@ -322,6 +322,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Si è s
 STR_0161_QUIT_GAME                                              :{WHITE}Abbandona partita
 STR_SORT_ORDER_TIP                                              :{BLACK}Seleziona l'ordinamento (discendente/ascendente)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Seleziona il criterio di ordinamento
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Seleziona il criterio di filtraggio
 STR_SORT_BY                                                     :{BLACK}Ordina per
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Popolazione
@@ -344,6 +345,8 @@ STR_SORT_BY_LENGTH                                              :Lunghezza
 STR_SORT_BY_LIFE_TIME                                           :Vita rimanente
 STR_SORT_BY_FACILITY                                            :Tipo di stazione
 STR_SORT_BY_WAITING                                             :Merci in attesa
+STR_SORT_BY_RATING_MAX                                          :Valutazione maggiore
+STR_SORT_BY_RATING_MIN                                          :Valutazione minore
 STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (ord. classico)
 STR_ENGINE_SORT_COST                                            :Costo
 STR_ENGINE_SORT_POWER                                           :Potenza
@@ -939,6 +942,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Mostra 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Mostra i segnali sul lato di guida: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Mostra la finestra delle finanze alla fine dell'anno: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Crea sempre i nuovi ordini 'no-stop': {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Crea i nuovi ordini dei treni con arresto {ORANGE}{STRING}{LTBLUE} della banchina
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :all'inizio
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :al centro
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :alla fine
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Accodamento automezzi fuori da una stazione occupata: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Scorri la visuale quando il mouse è su un bordo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Consenti la corruzione dell'autorità locale: {ORANGE}{STRING}
@@ -2616,6 +2623,9 @@ STR_ORDER_GO_TO                                                 :Vai a
 STR_ORDER_GO_NON_STOP_TO                                        :Vai no-stop a
 STR_ORDER_GO_VIA                                                :Passa per
 STR_ORDER_GO_NON_STOP_VIA                                       :Passa no-stop per
+STR_ORDER_STOP_LOCATION_NEAR_END                                :(inizio)
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :(centro)
+STR_ORDER_STOP_LOCATION_FAR_END                                 :(fine)
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Attendi carico
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carica se possibile
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Attendi pieno carico

@@ -320,6 +320,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er du s
 STR_0161_QUIT_GAME                                              :{WHITE}Forlad spillet
 STR_SORT_ORDER_TIP                                              :{BLACK}Vælg sorteringsorden (faldende/stigende)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Vælg sorteringskriterie
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Vælg filtreringskriterier
 STR_SORT_BY                                                     :{BLACK}Sortér på
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Indbyggertal
@@ -937,6 +938,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Vis alt
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Vis signaler i kørselssiden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Vis finansvinduet i slutningen af året: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nye ordrer er 'uden stop' som standard: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nye togordrer stopper som standard ved {ORANGE}{STRING}{LTBLUE} af perronen
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :den nærmeste ende
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :midten
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :den fjerneste ende
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Kødannelse af køretøjer (med kvanteeffekt): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Panorér vindue når musen er ved kanten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Tillad bestikkelse af de lokale myndigheder: {ORANGE}{STRING}
@@ -2613,6 +2618,9 @@ STR_ORDER_GO_TO                                                 :Gå til
 STR_ORDER_GO_NON_STOP_TO                                        :Gå uden stop til
 STR_ORDER_GO_VIA                                                :Gå via
 STR_ORDER_GO_NON_STOP_VIA                                       :Gå uden stop via
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[nærmeste ende]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midten]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[fjerneste ende]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Fuld last af hvilken som helst type
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Åbn hvis tilgængelig
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Fuld last af alt gods
@@ -3170,6 +3178,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Toget '{
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' indeholder forkert information.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Gods-/ombygningsinformation for '{1:ENGINE}' afviger fra indkøbslisten efter konstruktion. Dette kan medføre, at autofornyelse ikke fungerer korrekt.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsagede en uendelig løkke i produktions-callback'en.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spillet er gemt i en version uden sporveje. Alle sporveje er blevet fjernet.
 

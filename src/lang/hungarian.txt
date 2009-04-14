@@ -353,7 +353,8 @@ STR_015F_QUIT                                                   :Kilépés
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Biztosan kilépsz ebből a játékból ?
 STR_0161_QUIT_GAME                                              :{WHITE}Kilépés a játékból
 STR_SORT_ORDER_TIP                                              :{BLACK}Csökkenő/növekvő sorbarendezés
-STR_SORT_CRITERIA_TIP                                           :{BLACK}Sorbarendezési kritérium
+STR_SORT_CRITERIA_TIP                                           :{BLACK}Sorbarendezési feltétel
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Szűrési feltétel kiválasztása
 STR_SORT_BY                                                     :{BLACK}Rendezés
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Lakosság
@@ -376,6 +377,8 @@ STR_SORT_BY_LENGTH                                              :Hossz
 STR_SORT_BY_LIFE_TIME                                           :Élettartamból hátralévő idő
 STR_SORT_BY_FACILITY                                            :Állomás típus
 STR_SORT_BY_WAITING                                             :Várakozó rakomány értéke
+STR_SORT_BY_RATING_MAX                                          :Legtöbb áru szerint
+STR_SORT_BY_RATING_MIN                                          :Legkevesebb áru szerint
 STR_ENGINE_SORT_ENGINE_ID                                       :JárműID
 STR_ENGINE_SORT_COST                                            :Ár
 STR_ENGINE_SORT_POWER                                           :Telj.
@@ -971,7 +974,7 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Mindig 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Jelzők a menetirány szerinti oldalon legyenek: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Pénzügyi összesítés minden év végén: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Minden új utasítás alapból 'non-stop': {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}A vonatok a platformok {ORANGE}{STRING}{LTBLUE} állnak meg
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}A vonatok a peronok {ORANGE}{STRING}{LTBLUE} állnak meg
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :elején
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :közepén
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :végén
@@ -2689,6 +2692,9 @@ STR_ORDER_GO_TO                                                 :Menj
 STR_ORDER_GO_NON_STOP_TO                                        :Nonstop - Megállás nélkül menj
 STR_ORDER_GO_VIA                                                :Via - Megállás nélkül menj át
 STR_ORDER_GO_NON_STOP_VIA                                       :Nonstop via - Megállás nélkül menj és hajts át
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[közeli vég]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[közép]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[távoli vég]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Telepakol bármelyikből
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :felpakol, ha lehetséges
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :telepakol mindent
@@ -3167,7 +3173,7 @@ STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}A két �
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Az utóbbi 12 negyedév legalacsonyabb havi profitja
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Az utóbbi 12 negyedév legjövedelmezőbb havi profitja
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Utolsó négy negyedévben elszállított rakomány.
-STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Az utolsó negyedévben elszállított árúk típusa.
+STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Az utolsó negyedévben elszállított áruk típusa.
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Elérhető készpénz
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Magas kölcsönöd van?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Megszerzett pontok az elérhető pontokból

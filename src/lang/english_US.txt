@@ -4,6 +4,7 @@
 ##winlangid 0x0409
 ##grflangid 0x00
 ##plural 0
+##textdir ltr
 
 #
 
@@ -319,6 +320,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Are you
 STR_0161_QUIT_GAME                                              :{WHITE}Quit Game
 STR_SORT_ORDER_TIP                                              :{BLACK}Select sorting order (descending/ascending)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Select sorting criteria
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Select filtering criteria
 STR_SORT_BY                                                     :{BLACK}Sort by
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Population
@@ -341,6 +343,8 @@ STR_SORT_BY_LENGTH                                              :Length
 STR_SORT_BY_LIFE_TIME                                           :Remaining life time
 STR_SORT_BY_FACILITY                                            :Station type
 STR_SORT_BY_WAITING                                             :Waiting cargo value
+STR_SORT_BY_RATING_MAX                                          :Highest cargo rating
+STR_SORT_BY_RATING_MIN                                          :Lowest cargo rating
 STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (classic sort)
 STR_ENGINE_SORT_COST                                            :Cost
 STR_ENGINE_SORT_POWER                                           :Power
@@ -936,6 +940,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Always 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Show signals on the drive side: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Show finances window at the end of the year: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}New orders are 'non-stop' by default: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}New train orders stop by default at the {ORANGE}{STRING}{LTBLUE} of the platform
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :near end
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :middle
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :far end
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Road vehicle queueing (with quantum effects): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Pan window when mouse is at the edge: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Allow bribing of the local authority: {ORANGE}{STRING}
@@ -2613,6 +2621,9 @@ STR_ORDER_GO_TO                                                 :Go to
 STR_ORDER_GO_NON_STOP_TO                                        :Go non-stop to
 STR_ORDER_GO_VIA                                                :Go via
 STR_ORDER_GO_NON_STOP_VIA                                       :Go non-stop via
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[near end]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[middle]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[far end]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Full load any cargo
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Load if available
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Full load all cargo

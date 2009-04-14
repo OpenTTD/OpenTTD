@@ -320,6 +320,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Weet je
 STR_0161_QUIT_GAME                                              :{WHITE}Spel stoppen
 STR_SORT_ORDER_TIP                                              :{BLACK}Selecteer sorteerrichting (aflopend/oplopend)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Selecteer sorteringscriteria
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Kies filter criteria
 STR_SORT_BY                                                     :{BLACK}Sorteer op
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Inwoners
@@ -342,6 +343,8 @@ STR_SORT_BY_LENGTH                                              :Lengte
 STR_SORT_BY_LIFE_TIME                                           :Resterende levensverwachting
 STR_SORT_BY_FACILITY                                            :Station type
 STR_SORT_BY_WAITING                                             :Waarde van wachtende vracht
+STR_SORT_BY_RATING_MAX                                          :Hoogste vracht waardering
+STR_SORT_BY_RATING_MIN                                          :Laagste vracht waardering
 STR_ENGINE_SORT_ENGINE_ID                                       :Motor ID (klassieke soort)
 STR_ENGINE_SORT_COST                                            :Kosten
 STR_ENGINE_SORT_POWER                                           :Kracht
@@ -937,6 +940,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Altijd 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Seinen aan rijzijde plaatsen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Financieel overzicht aan het eind van het jaar weergeven: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nieuwe orders zijn standaard 'non-stop': {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nieuwe trein oders, stopt de trein standaard {ORANGE}{STRING}{LTBLUE} van het station
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :vlak bij het einde
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :in het midden
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :aan het einde
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Rijvorming bij wegvoertuigen (met bijwerkingen): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Verschuif scherm als muis aan de rand is: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Omkopen van de gemeente toestaan: {ORANGE}{STRING}
@@ -2614,6 +2621,9 @@ STR_ORDER_GO_TO                                                 :Ga naar
 STR_ORDER_GO_NON_STOP_TO                                        :Ga non-stop naar
 STR_ORDER_GO_VIA                                                :Ga via
 STR_ORDER_GO_NON_STOP_VIA                                       :Ga non-stop via
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[vlak bij einde]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midden]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[einde]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Alle vracht vol laden
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Laden wanneer beschikbaar
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Volledig laden
