@@ -2405,7 +2405,7 @@ int main() {
 }
 EOF
 	execute="$cxx_host $CFLAGS -c tmp.iconv.cpp -o tmp.iconv -DTESTING 2>&1"
-	eval $execute >&/dev/null
+	eval $execute > /dev/null
 	ret=$?
 	log 2 "executing $execute"
 	log 2 "  exit code $ret"
@@ -2426,7 +2426,7 @@ int main() {
 }
 EOF
 	execute="$cxx_host $CFLAGS tmp.iconv.cpp -o tmp.iconv -DTESTING 2>&1"
-	eval $execute >&/dev/null
+	eval $execute > /dev/null
 	ret=$?
 	log 2 "executing $execute"
 	log 2 "  exit code $ret"

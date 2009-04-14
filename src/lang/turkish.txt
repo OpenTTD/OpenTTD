@@ -818,7 +818,7 @@ STR_CURR_ITL                                                    :İtalyan Lirasi
 STR_CURR_NLG                                                    :Hollanda Guilder (NLG)
 STR_CURR_NOK                                                    :Norweç Krone (NOK)
 STR_CURR_PLN                                                    :Polon Zilotu (PLN)
-STR_CURR_ROL                                                    :Romanya Leusu (ROL)
+STR_CURR_RON                                                    :Romanya Leusu (RON)
 STR_CURR_RUR                                                    :Rus Rublesi (RUR)
 STR_CURR_SIT                                                    :Slovenya Toları (SIT)
 STR_CURR_SEK                                                    :İsveç Kronasi (SEK)

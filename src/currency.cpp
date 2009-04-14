@@ -35,7 +35,7 @@ static const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
 	{    3, ',', 2002,      "NLG ",         "",           0, STR_CURR_NLG    }, ///< dutch gulden
 	{   12, '.', CF_NOEURO, "",             " Kr",        1, STR_CURR_NOK    }, ///< norwegian krone
 	{    6, ' ', CF_NOEURO, "",             " zl",        1, STR_CURR_PLN    }, ///< polish zloty
-	{    5, '.', CF_NOEURO, "",             " Lei",       1, STR_CURR_ROL    }, ///< romanian Lei
+	{    5, '.', CF_NOEURO, "",             " Lei",       1, STR_CURR_RON    }, ///< romanian Lei
 	{   50, ' ', CF_NOEURO, "",             " p",         1, STR_CURR_RUR    }, ///< russian rouble
 	{  352, '.', 2007,      "",             " SIT",       1, STR_CURR_SIT    }, ///< slovenian tolar
 	{   13, '.', CF_NOEURO, "",             " Kr",        1, STR_CURR_SEK    }, ///< swedish krona
@@ -76,7 +76,7 @@ enum {
 	CURR_NLG,
 	CURR_NOK,
 	CURR_PLN,
-	CURR_ROL,
+	CURR_RON,
 	CURR_RUR,
 	CURR_SIT,
 	CURR_SEK,
