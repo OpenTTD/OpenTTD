@@ -702,6 +702,12 @@ int ttd_main(int argc, char *argv[])
 	/* Reset windowing system, stop drivers, free used memory, ... */
 	ShutdownGame();
 
+	free(graphics_set);
+	free(musicdriver);
+	free(sounddriver);
+	free(videodriver);
+	free(blitter);
+
 	return 0;
 }
 
