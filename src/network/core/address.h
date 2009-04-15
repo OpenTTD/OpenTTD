@@ -179,7 +179,7 @@ public:
 	 * @param address the other address.
 	 * @return < 0 if address is less, 0 if equal and > 0 if address is more
 	 */
-	int CompareTo(NetworkAddress address)
+	int CompareTo(NetworkAddress &address)
 	{
 		int r = this->GetAddressLength() - address.GetAddressLength();
 		if (r == 0) r = this->address.ss_family - address.address.ss_family;
@@ -193,7 +193,7 @@ public:
 	 * @param address the other address.
 	 * @return true if both match.
 	 */
-	bool operator == (NetworkAddress address)
+	bool operator == (NetworkAddress &address)
 	{
 		return this->CompareTo(address) == 0;
 	}
@@ -203,7 +203,7 @@ public:
 	 * @param address the other address.
 	 * @return true if both match.
 	 */
-	bool operator == (NetworkAddress address) const
+	bool operator == (NetworkAddress &address) const
 	{
 		return const_cast<NetworkAddress*>(this)->CompareTo(address) == 0;
 	}
@@ -212,7 +212,7 @@ public:
 	 * Compare the address of this class with the address of another.
 	 * @param address the other address.
 	 */
-	bool operator < (NetworkAddress address)
+	bool operator < (NetworkAddress &address)
 	{
 		return this->CompareTo(address) < 0;
 	}

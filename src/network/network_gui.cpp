@@ -120,10 +120,11 @@ protected:
 	/* Constants for sorting servers */
 	static GUIGameServerList::SortFunction * const sorter_funcs[];
 
-	byte field;                  ///< selected text-field
-	NetworkGameList *server;     ///< selected server
-	GUIGameServerList servers;   ///< list with game servers.
-	ServerListPosition list_pos; ///< position of the selected server
+	byte field;                   ///< selected text-field
+	NetworkGameList *server;      ///< selected server
+	NetworkGameList *last_joined; ///< the last joined server
+	GUIGameServerList servers;    ///< list with game servers.
+	ServerListPosition list_pos;  ///< position of the selected server
 
 	/**
 	 * (Re)build the network game list as its amount has changed because
@@ -337,6 +338,8 @@ public:
 		this->server = NULL;
 		this->list_pos = SLP_INVALID;
 
+		this->last_joined = NetworkGameListAddItem(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
+
 		this->servers.SetListing(this->last_sorting);
 		this->servers.SetSortFuncs(this->sorter_funcs);
 		this->servers.ForceRebuild();
@@ -403,9 +406,8 @@ public:
 			y += NET_PRC__SIZE_OF_ROW;
 		}
 
-		const NetworkGameList *last_joined = NetworkGameListAddItem(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
 		/* Draw the last joined server, if any */
-		if (last_joined != NULL) this->DrawServerLine(last_joined, y = this->widget[NGWW_LASTJOINED].top + 3, last_joined == sel);
+		if (this->last_joined != NULL) this->DrawServerLine(this->last_joined, y = this->widget[NGWW_LASTJOINED].top + 3, this->last_joined == sel);
 
 		/* Draw the right menu */
 		GfxFillRect(this->widget[NGWW_DETAILS].left + 1, 43, this->widget[NGWW_DETAILS].right - 1, 92, 157);
