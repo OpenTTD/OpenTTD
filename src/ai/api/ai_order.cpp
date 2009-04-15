@@ -268,6 +268,7 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 			order.MakeGoToStation(::GetStationIndex(destination));
 			order.SetLoadType((OrderLoadFlags)GB(order_flags, 5, 3));
 			order.SetUnloadType((OrderUnloadFlags)GB(order_flags, 2, 3));
+			order.SetStopLocation(OSL_PLATFORM_FAR_END);
 			break;
 
 		case OT_GOTO_WAYPOINT:
