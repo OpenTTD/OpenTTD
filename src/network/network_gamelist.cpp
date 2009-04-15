@@ -44,6 +44,7 @@ static void NetworkGameListHandleDelayedInsert()
 		NetworkGameList *item = NetworkGameListAddItem(ins_item->address);
 
 		if (item != NULL) {
+			ClearGRFConfigList(&item->info.grfconfig);
 			if (StrEmpty(item->info.server_name)) {
 				memset(&item->info, 0, sizeof(item->info));
 				strecpy(item->info.server_name, ins_item->info.server_name, lastof(item->info.server_name));
