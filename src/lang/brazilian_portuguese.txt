@@ -321,6 +321,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Tem cer
 STR_0161_QUIT_GAME                                              :{WHITE}Abandonar jogo
 STR_SORT_ORDER_TIP                                              :{BLACK}Selecionar forma de ordenação (descendente/ascendente)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Selecionar um critério de classificação
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Selecionar critério para filtração
 STR_SORT_BY                                                     :{BLACK}Ordenar por
 
 STR_SORT_BY_POPULATION                                          :{BLACK}População
@@ -343,6 +344,8 @@ STR_SORT_BY_LENGTH                                              :Tamanho
 STR_SORT_BY_LIFE_TIME                                           :Vida útil restante
 STR_SORT_BY_FACILITY                                            :Tipo de estação
 STR_SORT_BY_WAITING                                             :Valor da carga aguardando
+STR_SORT_BY_RATING_MAX                                          :Maior avaliação de carga
+STR_SORT_BY_RATING_MIN                                          :Menor avaliação de carga
 STR_ENGINE_SORT_ENGINE_ID                                       :No de Reg (padrão)
 STR_ENGINE_SORT_COST                                            :Custo
 STR_ENGINE_SORT_POWER                                           :Potência
@@ -938,6 +941,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Sempre 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Exibir sinais no lado da circulação: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Exibir janela das finanças no fim do ano: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Novas ordens são 'sem parar' por padrão: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Novas ordens de trem param no {ORANGE}{STRING}{LTBLUE} da plataforma
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :início
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :meio
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :fim
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Fila de automóveis (com efeitos de quantidade): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Deslocar janela quando o cursor está na borda do mapa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permitir o suborno da autoridade local: {ORANGE}{STRING}
@@ -2240,6 +2247,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Rostos f
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Gerar novo rosto aleatoriamente
 STR_704C_KEY                                                    :{BLACK}Legenda
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Exibir legenda dos gráficos
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Exibir avaliações de performance detalhadas
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Legendas dos gráficos da empresa
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Clique aqui para alternar exibir/ocultar empresas no gráfico
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Unidades de carga entregues
@@ -2614,6 +2622,9 @@ STR_ORDER_GO_TO                                                 :Vá para
 STR_ORDER_GO_NON_STOP_TO                                        :Ir sem parar para
 STR_ORDER_GO_VIA                                                :Vá via
 STR_ORDER_GO_NON_STOP_VIA                                       :Ir sem parar via
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[início]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[meio]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[fim]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Carregar qualquer carga
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carregar se disponível
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Carregar tudo
@@ -3171,6 +3182,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trem '{V
 
 STR_NEWGRF_BUGGY                                                :{WHITE}O NewGRF '{0:STRING}' retorna informação incorreta.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A informação de adaptação para '{1:ENGINE}' difere da lista de compras após a construção. Isso pode causar erros na autosubstituição/autoadaptação.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' causou um loop infinito no callback da produção.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Jogo foi salvo numa versão sem suporte a bondes. Todos os bondes foram removidos.
 

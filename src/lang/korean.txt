@@ -938,6 +938,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}날짜�
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}신호기를 차량 통행 방향에 설치 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}연말에 재정 창을 띄움 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}새 경로는 기본으로 직통 처리: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}새 기차 명령에 대해 기본적으로 플랫폼의 {ORANGE}{STRING}{LTBLUE}에서 정지합니다
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :가까운쪽
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :중간
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :먼쪽
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}(획기적 방법으로) 자동차를 대기하게 하기 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}가장자리에 마우스를 가져가면 화면 움직이기 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}지역 당국에 뇌물을 주는 행위 허용 : {ORANGE}{STRING}
@@ -2239,6 +2243,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}여성�
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}얼굴을 만듭니다.
 STR_704C_KEY                                                    :{BLACK}키
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}그래프의 키를 보여줍니다.
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}상세 성취도를 봅니다
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}회사 그래프의 키를 보여줍니다.
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}특정 회사의 그래프를 켜거나 숨기려면 클릭하세요
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}수송 화물량
@@ -2613,6 +2618,9 @@ STR_ORDER_GO_TO                                                 :완행
 STR_ORDER_GO_NON_STOP_TO                                        :직행
 STR_ORDER_GO_VIA                                                :완행 경유
 STR_ORDER_GO_NON_STOP_VIA                                       :직행 경유
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[가까운쪽]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[중간]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[먼쪽]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}아무 화물이나 가득 싣기
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :가능한것만 적재
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :모든 화물을 가득 실음

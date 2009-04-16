@@ -362,6 +362,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Zagotov
 STR_0161_QUIT_GAME                                              :{WHITE}Zapusti igro
 STR_SORT_ORDER_TIP                                              :{BLACK}Izberi nacin sortiranja (padajoče/naraščajoce)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Izberi kriterij za sortiranje
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Izberi način filtriranja
 STR_SORT_BY                                                     :{BLACK}Sortiraj po
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Prebivalstvo
@@ -384,6 +385,8 @@ STR_SORT_BY_LENGTH                                              :Dolžina
 STR_SORT_BY_LIFE_TIME                                           :Ostala življenjska doba
 STR_SORT_BY_FACILITY                                            :Tip postaje
 STR_SORT_BY_WAITING                                             :Čakanje vrednosti tovora
+STR_SORT_BY_RATING_MAX                                          :Najvišja ocena tovora
+STR_SORT_BY_RATING_MIN                                          :Najnižja ocena tovora
 STR_ENGINE_SORT_ENGINE_ID                                       :ID motorja (klasično urejanje)
 STR_ENGINE_SORT_COST                                            :Cena
 STR_ENGINE_SORT_POWER                                           :Moč
@@ -979,6 +982,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Vedno p
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Prikaz signalov na vozni smeri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Prikaz okna financ na koncu leta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Novi ukazi so privzeti 'non-stop': {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Novi ukazi predvidevajo postanek vlaka na {ORANGE}{STRING}{LTBLUE} perona
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :začetni strani
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :sredini
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :koncu
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Cestna vozila v vrsti (s quantum efekti): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Premakni okno, ko je miška na robu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Dovoli podkupovanje mestnih oblasti: {ORANGE}{STRING}
@@ -2694,6 +2701,9 @@ STR_ORDER_GO_TO                                                 :Pojdi do
 STR_ORDER_GO_NON_STOP_TO                                        :Pojdi non-stop do
 STR_ORDER_GO_VIA                                                :Pojdi preko
 STR_ORDER_GO_NON_STOP_VIA                                       :Pojdi non-stop preko
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[začetna stran]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[sredina]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[konec]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Napolni vse vrste tovora
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Napolni, če je na voljo
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Napolni ves tovor
