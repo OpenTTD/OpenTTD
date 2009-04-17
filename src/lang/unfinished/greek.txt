@@ -12,12 +12,12 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Απο την άκρη του χάρτη
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Πολυ κοντά στην άκρη του χάρτη
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Πολύ κοντά στην άκρη του χάρτη
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Δεν υπάρχουν αρκετά χρήματα - απαιτούνται {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}.
 STR_EMPTY                                                       :
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Απαιτείται επίπεδο εδαφος
-STR_0008_WAITING                                                :{BLACK}Αναμονη: {WHITE}{STRING}
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Απαιτείται επίπεδο έδαφος
+STR_0008_WAITING                                                :{BLACK}Αναμονή: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} καθ οδόν από το {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Δέχεται: {WHITE}
@@ -25,18 +25,18 @@ STR_000D_ACCEPTS                                                :{BLACK}Δέχε
 STR_SUPPLIES                                                    :{BLACK}Προμηθειών : {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Επιβάτες
-STR_0010_COAL                                                   :Άνθρακας
-STR_0011_MAIL                                                   :Ταχυδρομικούς Σάκκους
+STR_0010_COAL                                                   :Κάρβουνο
+STR_0011_MAIL                                                   :Ταχυδρομείο
 STR_0012_OIL                                                    :Πετρέλαιο
 STR_0013_LIVESTOCK                                              :Ζώα
 STR_0014_GOODS                                                  :Αγαθά
 STR_0015_GRAIN                                                  :Σιτάρι
 STR_0016_WOOD                                                   :Ξυλεία
-STR_0017_IRON_ORE                                               :Μεταλλεύματα Σιδήρου
+STR_0017_IRON_ORE                                               :Σιδηρομετάλλευμα
 STR_0018_STEEL                                                  :Χάλυβας
 STR_0019_VALUABLES                                              :Τιμαλφή
-STR_001A_COPPER_ORE                                             :Μεταλλεύματα Χαλκού
-STR_001B_MAIZE                                                  :Αραβόσιτος
+STR_001A_COPPER_ORE                                             :Μετάλλευμα Χαλκού
+STR_001B_MAIZE                                                  :Καλαμπόκι
 STR_001C_FRUIT                                                  :Φρούτα
 STR_001D_DIAMONDS                                               :Διαμάντια
 STR_001E_FOOD                                                   :Τρόφιμα
@@ -44,12 +44,12 @@ STR_001F_PAPER                                                  :Χαρτί
 STR_0020_GOLD                                                   :Χρυσός
 STR_0021_WATER                                                  :Νερό
 STR_0022_WHEAT                                                  :Σιτάρι
-STR_0023_RUBBER                                                 :Ελαστικά
+STR_0023_RUBBER                                                 :Kαουτσούκ
 STR_0024_SUGAR                                                  :Ζάχαρη
 STR_0025_TOYS                                                   :Παιχνίδια
 STR_0026_CANDY                                                  :Γλυκίσματα
 STR_0027_COLA                                                   :Κόλα
-STR_0028_COTTON_CANDY                                           :Μαλλί της Γριάς
+STR_0028_COTTON_CANDY                                           :Ινοποιημένη ζάχαρη
 STR_0029_BUBBLES                                                :Φυσαλίδες
 STR_002A_TOFFEE                                                 :Καραμέλα
 STR_002B_BATTERIES                                              :Μπαταρίες
@@ -57,14 +57,14 @@ STR_002C_PLASTIC                                                :Πλαστικ�
 STR_002D_FIZZY_DRINKS                                           :Ανθρακούχα ποτά
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Επιβάτης
-STR_0030_COAL                                                   :Άνθρακας
-STR_0031_MAIL                                                   :Ταχυδρομικές Υπηρεσίες
+STR_0030_COAL                                                   :Κάρβουνο
+STR_0031_MAIL                                                   :Ταχυδρομείο
 STR_0032_OIL                                                    :Πετρέλαιο
 STR_0033_LIVESTOCK                                              :Ζώα
 STR_0034_GOODS                                                  :Βιομηχανικα Προϊόντα
 STR_0035_GRAIN                                                  :Σιτάρι
 STR_0036_WOOD                                                   :Ξυλεία
-STR_0037_IRON_ORE                                               :Μετάλλευμα Σιδήρου
+STR_0037_IRON_ORE                                               :Σιδηρομετάλλευμα
 STR_0038_STEEL                                                  :Χάλυβας
 STR_0039_VALUABLES                                              :Τιμαλφή
 STR_003A_COPPER_ORE                                             :Μετάλλευμα Χαλκού
@@ -78,10 +78,10 @@ STR_0041_WATER                                                  :Νερό
 STR_0042_WHEAT                                                  :Σιτάρι
 STR_0043_RUBBER                                                 :Καουτσούκ
 STR_0044_SUGAR                                                  :Ζάχαρη
-STR_0045_TOY                                                    :Παιχνίδια
+STR_0045_TOY                                                    :Παιχνίδι
 STR_0046_CANDY                                                  :Γλυκό
 STR_0047_COLA                                                   :Κόλα
-STR_0048_COTTON_CANDY                                           :Μαλλί της Γριάς
+STR_0048_COTTON_CANDY                                           :Ινοποιημένη ζάχαρη
 STR_0049_BUBBLE                                                 :Φυσαλίδα
 STR_004A_TOFFEE                                                 :Καραμέλα
 STR_004B_BATTERY                                                :Μπαταρία
@@ -178,7 +178,7 @@ STR_00CD_3                                                      :{BLACK}3
 STR_00CE_4                                                      :{BLACK}4
 STR_00CF_5                                                      :{BLACK}5
 STR_00D0_NOTHING                                                :Τίποτα
-STR_00D1_DARK_BLUE                                              :Σκούρο Μπλέ
+STR_00D1_DARK_BLUE                                              :Σκούρο Μπλε
 STR_00D2_PALE_GREEN                                             :Ανοικτό Πράσινο
 STR_00D3_PINK                                                   :Ροζ
 STR_00D4_YELLOW                                                 :Κίτρινο
@@ -186,10 +186,10 @@ STR_00D5_RED                                                    :Κόκκινο
 STR_00D6_LIGHT_BLUE                                             :Ανοιχτό μπλέ
 STR_00D7_GREEN                                                  :Πράσινο
 STR_00D8_DARK_GREEN                                             :Σκούρο Πράσινο
-STR_00D9_BLUE                                                   :Μπλέ
+STR_00D9_BLUE                                                   :Μπλε
 STR_00DA_CREAM                                                  :Κρεμ
 STR_00DB_MAUVE                                                  :Μωβ
-STR_00DC_PURPLE                                                 :Βυσσινί
+STR_00DC_PURPLE                                                 :Πορφυρό
 STR_00DD_ORANGE                                                 :Πορτοκαλί
 STR_00DE_BROWN                                                  :Καφέ
 STR_00DF_GREY                                                   :Γκρι
@@ -209,11 +209,11 @@ STR_00EC_RAILROADS                                              :{BLACK}{TINYFON
 STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Σταθμοί/Αεροδρόμια/Λιμάνια
 STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Κτήρια/Βιομηχανίες
 STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Οχήματα
-STR_00F0_100M                                                   :{BLACK}{TINYFONT}100 μ
-STR_00F1_200M                                                   :{BLACK}{TINYFONT}200 μ
-STR_00F2_300M                                                   :{BLACK}{TINYFONT}300 μ
-STR_00F3_400M                                                   :{BLACK}{TINYFONT}400 μ
-STR_00F4_500M                                                   :{BLACK}{TINYFONT}500 μ
+STR_00F0_100M                                                   :{BLACK}{TINYFONT}100μ
+STR_00F1_200M                                                   :{BLACK}{TINYFONT}200μ
+STR_00F2_300M                                                   :{BLACK}{TINYFONT}300μ
+STR_00F3_400M                                                   :{BLACK}{TINYFONT}400μ
+STR_00F4_500M                                                   :{BLACK}{TINYFONT}500μ
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Τραίνα
 STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Οχήματα
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Πλοία
@@ -318,7 +318,7 @@ STR_015D_LOAD_GAME                                              :Φόρτωση 
 STR_015E_QUIT_GAME                                              :Έξοδος από το παιχνίδι
 STR_015F_QUIT                                                   :Έξοδος
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Είστε σίγουρος ότι θέλετε να εγκαταλείψετε το παιχνίδι;
-STR_0161_QUIT_GAME                                              :{WHITE}Έξοδος από το Παιχνίδι
+STR_0161_QUIT_GAME                                              :{WHITE}Εγκατάλειψη Παιχνιδιού
 STR_SORT_ORDER_TIP                                              :{BLACK}Επιλογή σειράς ταξινόμησης  (καθοδικά/ανοδικά)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Επιλογή κριτηρίου ταξινόμησης
 STR_SORT_BY                                                     :{BLACK}Ταξινόμηση κατά
@@ -403,9 +403,9 @@ STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Μεγέ
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Σμίκρυνση εικόνας
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Κατασκευή σιδηρόδρομου
 STR_0182_BUILD_ROADS                                            :{BLACK}Κατασκευή δρόμων
-STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Κατασκευή αποβάθρας
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Κατασκευή λιμένων
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Κατασκευή αεροδρομίων
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Τοποθέτηση δεντρων, πινακίδων κλπ
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Τοποθέτηση δεντρων, πινακίδων κλπ.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Πληροφορίες περιοχής
 STR_0187_OPTIONS                                                :{BLACK}Επιλογές
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
@@ -436,11 +436,11 @@ STR_AGE_RED                                                     :{RED}{COMMA} χ
 ############ range for service numbers ends
 
 STR_019F_TRAIN                                                  :Τραίνο
-STR_019C_ROAD_VEHICLE                                           :Όχημα δρόμου
+STR_019C_ROAD_VEHICLE                                           :Όχημα
 STR_019E_SHIP                                                   :Πλοίο
 STR_019D_AIRCRAFT                                               :Αεροσκάφος
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} πάλιωσε
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} ξεπέρασε το όριο ηλικίας
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} παλαιώνει
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} ξεπερνά το όριο ηλικίας
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} πάλιωσε πολύ και χρειάζεται επειγόντως αλλαγή
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Πληροφορίες Περιοχής Εδάφους
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Κόστος καθαρισμού: {LTBLUE}Μ/Δ

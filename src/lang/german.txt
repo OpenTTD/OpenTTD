@@ -625,7 +625,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Felsige 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Leuchtturm errichten
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sendemast errichten
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Wüstengebiet anlegen{}Zum Entfernen Strg-Taste drücken
-STR_CREATE_LAKE                                                 :{BLACK}Wasser erzeugen.{}Baut einen Kanal. Bei gedrückter Strg-Taste wird ein Wasserfeld erzeugt, das umliegendes Land flutet.
+STR_CREATE_LAKE                                                 :{BLACK}Wasser erzeugen.{}Baut einen Kanal. Auf Meereshöhe wird bei gedrückter Strg-Taste ein Wasserfeld erzeugt, dass das umliegendes Land flutet.
 STR_CREATE_RIVER                                                :{BLACK}Flüsse platzieren.
 STR_0290_DELETE                                                 :{BLACK}Löschen
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Diese Stadt vollständig löschen
@@ -1984,7 +1984,7 @@ STR_4828_PRODUCES                                               :{BLACK}Produzie
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion im letzten Monat:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% befördert)
-STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Hauptansicht zum Industriegebiet scrollen
+STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Hauptansicht zur Industrie scrollen
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Neue{G r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} gebaut!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Neue{G r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} angepflanzt!
 STR_482F_COST                                                   :{BLACK}Kosten: {YELLOW}{CURRENCY}
@@ -2789,7 +2789,7 @@ STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Umbenenn
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Laufende Zugbewegung - Klicke hier, um den Zug anzuhalten / zu starten
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Anzeige der Aufträge
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Hauptansicht zum Zug scrollen
-STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Zug ins Depot schicken
+STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Zug ins Depot schicken. Strg+Klick um dort nur Wartung durchzuführen.
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Zug zur Weiterfahrt zwingen, ohne das Signal zu beachten
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Fahrtrichtung umkehren
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Zeige Einzelheiten des Zuges
@@ -2885,8 +2885,8 @@ STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Fahrzeug
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Straßenfahrzeuge - für Einzelheiten auf das Fahrzeug klicken
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Laufende Fahrzeugbewegung - Klick zum Anhalten bzw. Losschicken
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Aufträge für das Fahrzeug anzeigen
-STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Hauptansicht auf das Fahrzeug richten
-STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Das Fahrzeug ins Depot schicken
+STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Hauptansicht zum Fahrzeug scrollen
+STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Das Fahrzeug ins Depot schicken. Strg+Klick um dort nur Wartung durchzuführen.
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Das Fahrzeug zur Umkehr zwingen
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Einzelheiten des Fahrzeuges anzeigen
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Straßenfahrzeuge - für Einzelheiten auf das Fahrzeug klicken

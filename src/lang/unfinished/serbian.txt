@@ -4,6 +4,7 @@
 ##winlangid 0x7c1a
 ##grflangid 0x0d
 ##plural 6
+##textdir ltr
 ##case nom big gen dat aku vok lok ins
 ##gender muški ženski srednji
 
@@ -1207,29 +1208,139 @@ STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Najviš
 
 
 
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Naseljima je dozvoljeno da grade kolovoze: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Naseljima je dozvoljeno da kontrolišu nivo buke aerodroma: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Lokacija glavne trake sa alatima: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Levo
+STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :U sredini
+STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Desno
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radijus prijanjanje prozora: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radijus prijanjanje prozora: {ORANGE}isključen
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Najviše otvorenih prozora (nepridenutih): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Najviše otvorenih prozora (nepridenutih): {ORANGE}isključeno
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Brzina razvoja naselja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nimalo
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Sporo
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normalno
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Brzo
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Veoma brzo
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Broj naselja koje treba voditi kao gradove: {ORANGE}1 od {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Broj naselja koje treba voditi kao gradove: {ORANGE}Nijedan
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Inicijalni množilac razvoja gradova: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Uklanjati besmislene kolovoze u naseljima: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_GUI                                          :{ORANGE}Okruženje
+STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Izgradnja
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozila
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stanice
+STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomija
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Suparnici
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Prikazivanje
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakcija
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signali
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Baratanje teretom
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računar
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automatska zamena
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servsiranje
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routiranje
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vozovi
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Naselja
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrije
 
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pretraživanje putanja vozova: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Nepreporučuje se)
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Preporučuje se)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Pretraživajne putanja drumskih vozila: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Originalno {RED}(Nepreporučuje se)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Preporučuje se)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pretraživanje putanja brodova: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Originalno {BLUE}(Preporučuje se)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nepreporučuje se)
 
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-veličina mape: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-veličina mape: {ORANGE}{STRING}
 
 ############ generic strings for settings
+STR_CONFIG_SETTING_DISABLED                                     :isključeno
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Promena vrednosti
+
+STR_TEMPERATE_LANDSCAPE                                         :Umereni klimatski pojas
+STR_SUB_ARCTIC_LANDSCAPE                                        :Subpolarni klimatki pojas
+STR_SUB_TROPICAL_LANDSCAPE                                      :Suptropski klimatski pojas
+STR_TOYLAND_LANDSCAPE                                           :Zemlja igračaka
+
+STR_CHEATS                                                      :{WHITE}Varanja
+STR_CHEATS_TIP                                                  :{BLACK}Štiklirano polje označava da ste i renije koristili ovu opciju
+STR_CHEATS_WARNING                                              :{BLACK}Upozorenje! Upravo ćete revariti vaše saradnike. Imajte na umu da će takav loš postupak biti trajno upamćen.
+STR_CHEAT_MONEY                                                 :{LTBLUE}Dodati još {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Upravljanje kompanijom: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magični buldožer (uklonite industrije, nepokretnosti): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneli mogu da se ukrštaju: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Moguća gradnja dok je pauzirano: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Veliki avioni se neće (često) rušiti kod malih aerodorma: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Promena klime: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Promena datuma: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Dozvoliti promenu količine proizvodnje: {ORANGE}{STRING}
+
+STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Ide ka {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Ide ka {WAYPOINT}, {VELOCITY}
+
+STR_GO_TO_WAYPOINT                                              :Idi preko {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT                                     :Idi direktno preko {WAYPOINT}
+
+STR_WAYPOINTNAME_CITY                                           :Čvorište {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :Čvorište {TOWN} #{COMMA}
+STR_LANDINFO_WAYPOINT                                           :Čvorište
+
+STR_WAYPOINT                                                    :{WHITE}Čvorište
+STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Odaberite izgled čvorišta
+
+STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Voz{P "" a ova}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_RAW                                                :{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Promena naziva čvorišta
+
+STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Neuspešana promena naziva čvorišta...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Postavljanje čvorišta na prugu
+STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Ovde se ne može izgraditi čvorište...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Odavde se ne može ukloniti čvorište...
+
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Gradite prugu koristeći automatsko određivanje pravca
+
+STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...nepostoji nijedno naselje u ovom scenariju
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Kreiranje mape otkazano...{}...nepostoje prikladne lokacije za naselja
+
+STR_MANY_RANDOM_TOWNS                                           :{BLACK}Mnogo nasumičnih naselja
+STR_RANDOM_TOWNS_TIP                                            :{BLACK}Popunite mapu sa nasumično rasporđenim naseljima
+STR_MANY_RANDOM_INDUSTRIES                                      :Mnogo nasumičnih industrija
+STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Popunite mapu sa nasumično rasporđenim industrijama
+STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Nemoguće generisanje industrija...
+
+STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Otvorite traku sa oblikovanje reljefa kako bi ste posadili drveće, uzdigli/snizili zemljište, itd.
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Oblikovanje reljefa
+STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Nivo zemljišta
 
 
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Drveće proizvoljne vrste
+STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Posadite drveće proizvoljne vrste
 
+STR_CANT_BUILD_CANALS                                           :{WHITE}Ovde je nemoguća izgradnja kanala...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Izgradite kanale.
+STR_LANDINFO_CANAL                                              :Kanal
 
+STR_CANT_BUILD_LOCKS                                            :{WHITE}Ovde je nemoguća izgradnja brane...
+STR_BUILD_LOCKS_TIP                                             :{BLACK}Izgradite brane
+STR_LANDINFO_LOCK                                               :Brana
 
-
-
-
-
-
-
-
-
-
-
-
-
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Ovde je nemoguće postavljanje reke...
+STR_LANDINFO_RIVER                                              :Reka
 
 
 
