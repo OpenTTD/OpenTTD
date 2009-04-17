@@ -3768,12 +3768,18 @@ static void TrainController(Vehicle *v, Vehicle *nomove)
 							chosen_track = prev->u.rail.track;
 						}
 					} else {
-						/* Choose the track that leads to the tile where prev is. */
+						/* Choose the track that leads to the tile where prev is.
+						 * This case is active if 'prev' is already on the second next tile, when 'v' just enters the next tile.
+						 * I.e. when the tile between them has only space for a single vehicle like
+						 *  1) horizontal/vertical track tiles and
+						 *  2) some orientations of tunnelentries, where the vehicle is already inside the wormhole at 8/16 from the tileedge.
+						 *     Is also the train just reversing, the wagon inside the tunnel is 'on' the tile of the opposite tunnelentry.
+						 */
 						static const TrackBits _connecting_track[DIAGDIR_END][DIAGDIR_END] = {
-							{TRACK_BIT_Y,     TRACK_BIT_LOWER, TRACK_BIT_NONE,  TRACK_BIT_LEFT },
-							{TRACK_BIT_UPPER, TRACK_BIT_X,     TRACK_BIT_LEFT,  TRACK_BIT_NONE },
-							{TRACK_BIT_NONE,  TRACK_BIT_RIGHT, TRACK_BIT_Y,     TRACK_BIT_UPPER},
-							{TRACK_BIT_RIGHT, TRACK_BIT_NONE,  TRACK_BIT_LOWER, TRACK_BIT_X    }
+							{TRACK_BIT_X,     TRACK_BIT_LOWER, TRACK_BIT_NONE,  TRACK_BIT_LEFT },
+							{TRACK_BIT_UPPER, TRACK_BIT_Y,     TRACK_BIT_LEFT,  TRACK_BIT_NONE },
+							{TRACK_BIT_NONE,  TRACK_BIT_RIGHT, TRACK_BIT_X,     TRACK_BIT_UPPER},
+							{TRACK_BIT_RIGHT, TRACK_BIT_NONE,  TRACK_BIT_LOWER, TRACK_BIT_Y    }
 						};
 						DiagDirection exitdir = DiagdirBetweenTiles(gp.new_tile, prev->tile);
 						assert(IsValidDiagDirection(exitdir));
