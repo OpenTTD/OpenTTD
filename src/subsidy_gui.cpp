@@ -177,11 +177,26 @@ static const Widget _subsidies_list_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_subsidies_list_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, SLW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, SLW_CAPTION), SetDataTip(STR_2025_SUBSIDIES, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_BROWN, SLW_STICKYBOX),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_BROWN, SLW_PANEL), SetMinimalSize(308, 113), SetDataTip(0x0, STR_01FD_CLICK_ON_SERVICE_TO_CENTER), SetResize(1, 1), EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(WWT_SCROLLBAR, COLOUR_BROWN, SLW_SCROLLBAR),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, SLW_RESIZEBOX),
+		EndContainer(),
+	EndContainer(),
+};
+
 static const WindowDesc _subsidies_list_desc(
 	WDP_AUTO, WDP_AUTO, 320, 127, 320, 127,
 	WC_SUBSIDIES_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_subsidies_list_widgets
+	_subsidies_list_widgets, _nested_subsidies_list_widgets, lengthof(_nested_subsidies_list_widgets)
 );
 
 
