@@ -37,7 +37,7 @@ struct SubsidyListWindow : Window {
 	{
 		if (widget != SLW_PANEL) return;
 
-		int y = pt.y - 25;
+		int y = pt.y - this->widget[SLW_PANEL].top - FONT_HEIGHT_NORMAL - 1; // Skip 'subsidies on offer' line
 
 		if (y < 0) return;
 
@@ -117,9 +117,9 @@ struct SubsidyListWindow : Window {
 
 		ConvertDateToYMD(_date, &ymd);
 
-		int right = this->width - 12;  // scroll bar = 11 + pixel each side
-		int y = 15;
-		int x = 1;
+		int right = this->widget[SLW_PANEL].right;
+		int y = this->widget[SLW_PANEL].top + 1;
+		int x = this->widget[SLW_PANEL].left + 1;
 
 		/* Section for drawing the offered subisidies */
 		DrawString(x, right, y, STR_2026_SUBSIDIES_ON_OFFER_FOR, TC_FROMSTRING);
