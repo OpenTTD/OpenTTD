@@ -28,6 +28,7 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
+/** Widget numbers of the order window. */
 enum OrderWindowWidgets {
 	ORDER_WIDGET_CLOSEBOX = 0,
 	ORDER_WIDGET_CAPTION,
@@ -375,6 +376,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	return order;
 }
 
+/** Order window code. */
 struct OrdersWindow : public Window {
 private:
 	static const int ORDER_LIST_LINE_HEIGHT = 10; ///< Height of a line in the ORDER_WIDGET_ORDER_LIST panel.
@@ -406,9 +408,7 @@ private:
 	 *  the position of the scrollbar.
 	 *
 	 * @param y Y-value of the click relative to the window origin
-	 * @param v current vehicle
-	 * @return the new selected order if the order is valid else return that
-	 *  an invalid one has been selected.
+	 * @return The selected order if the order is valid, else return \c INVALID_ORDER.
 	 */
 	int GetOrderFromPt(int y)
 	{
