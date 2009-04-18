@@ -87,37 +87,37 @@ STR_004B_BATTERY                                                :电池
 STR_004C_PLASTIC                                                :塑料
 STR_004D_FIZZY_DRINK                                            :跳跳水
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA}位旅客
+STR_QUANTITY_PASSENGERS                                         :{COMMA} 位旅客
 STR_QUANTITY_COAL                                               :{WEIGHT}煤炭
-STR_QUANTITY_MAIL                                               :{COMMA}包邮件
+STR_QUANTITY_MAIL                                               :{COMMA} 包邮件
 STR_QUANTITY_OIL                                                :{VOLUME}原油
-STR_QUANTITY_LIVESTOCK                                          :{COMMA}头牲畜
-STR_QUANTITY_GOODS                                              :{COMMA}件货物
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} 头牲畜
+STR_QUANTITY_GOODS                                              :{COMMA} 件货物
 STR_QUANTITY_GRAIN                                              :{WEIGHT}谷物
 STR_QUANTITY_WOOD                                               :{WEIGHT}木材
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT}铁矿石
 STR_QUANTITY_STEEL                                              :{WEIGHT}钢材
-STR_QUANTITY_VALUABLES                                          :{COMMA}包金块
+STR_QUANTITY_VALUABLES                                          :{COMMA} 包金块
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT}铜矿石
 STR_QUANTITY_MAIZE                                              :{WEIGHT}玉米
 STR_QUANTITY_FRUIT                                              :{WEIGHT}水果
-STR_QUANTITY_DIAMONDS                                           :{COMMA}包钻石
+STR_QUANTITY_DIAMONDS                                           :{COMMA} 包钻石
 STR_QUANTITY_FOOD                                               :{WEIGHT}食品
 STR_QUANTITY_PAPER                                              :{WEIGHT}纸张
-STR_QUANTITY_GOLD                                               :{COMMA}包黄金
+STR_QUANTITY_GOLD                                               :{COMMA} 包黄金
 STR_QUANTITY_WATER                                              :{VOLUME}饮用水
 STR_QUANTITY_WHEAT                                              :{WEIGHT}小麦
 STR_QUANTITY_RUBBER                                             :{VOLUME}橡胶
 STR_QUANTITY_SUGAR                                              :{WEIGHT}蔗糖
-STR_QUANTITY_TOYS                                               :{COMMA}件玩具
-STR_QUANTITY_SWEETS                                             :{COMMA}包糖果
+STR_QUANTITY_TOYS                                               :{COMMA} 件玩具
+STR_QUANTITY_SWEETS                                             :{COMMA} 包糖果
 STR_QUANTITY_COLA                                               :{VOLUME}可乐
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT}棉花糖
-STR_QUANTITY_BUBBLES                                            :{COMMA}个泡泡
+STR_QUANTITY_BUBBLES                                            :{COMMA} 个泡泡
 STR_QUANTITY_TOFFEE                                             :{WEIGHT}太妃糖
-STR_QUANTITY_BATTERIES                                          :{COMMA}箱电池
+STR_QUANTITY_BATTERIES                                          :{COMMA} 箱电池
 STR_QUANTITY_PLASTIC                                            :{VOLUME}塑料
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA}瓶跳跳水
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} 瓶跳跳水
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}客
 STR_ABBREV_COAL                                                 :{TINYFONT}煤
@@ -282,23 +282,23 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} 英里/
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} 千米/小时
 STR_UNITS_VELOCITY_SI                                           :{COMMA} 米/秒
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}马力
-STR_UNITS_POWER_METRIC                                          :{COMMA}马力
-STR_UNITS_POWER_SI                                              :{COMMA}千瓦
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA} 马力
+STR_UNITS_POWER_METRIC                                          :{COMMA} 马力
+STR_UNITS_POWER_SI                                              :{COMMA} 千瓦
 
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}吨
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}千克
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} 吨
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} 千克
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}吨
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}千克
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} 吨
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} 千克
 
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}升
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}立方米
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} 升
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} 立方米
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}升
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}立方米
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} 升
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} 立方米
 
-STR_UNITS_FORCE_SI                                              :{COMMA}千牛顿
+STR_UNITS_FORCE_SI                                              :{COMMA} 千牛顿
 
 ############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :利润图表
@@ -1204,6 +1204,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}不能�
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}使用全向路轨工具铺设铁轨
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}当前场景中没有城镇……
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}放弃生成场景！无合适地点建设城镇。
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}大量随机城镇
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}在地图上随机创建大量城镇
@@ -1694,7 +1695,7 @@ STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}上月�
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}上月邮包数量：{ORANGE}{COMMA}{BLACK}  最大值：{ORANGE}{COMMA}
 STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}城镇发展所必需的货物：
 STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{BLACK} 需要： {ORANGE}{STRING}
-STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{BLACK} 上个月已送达： {ORANGE}{CARGO}
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{BLACK} 上个月已运到： {ORANGE}{CARGO}
 STR_200F_TALL_OFFICE_BLOCK                                      :高层写字楼
 STR_2010_OFFICE_BLOCK                                           :写字楼
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :底层住宅

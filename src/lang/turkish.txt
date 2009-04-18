@@ -4,6 +4,7 @@
 ##winlangid 0x041f
 ##grflangid 0x3e
 ##plural 1
+##textdir ltr
 
 #
 
@@ -319,6 +320,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Oyunu b
 STR_0161_QUIT_GAME                                              :{WHITE}Ana Menüye Dön
 STR_SORT_ORDER_TIP                                              :{BLACK}Sıralama türü seçin (azalan/artan)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Sıralama kriteri seçin
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Süzme kriterini seçin
 STR_SORT_BY                                                     :{BLACK}Sırala
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Nüfus
@@ -341,6 +343,8 @@ STR_SORT_BY_LENGTH                                              :Uzunluk
 STR_SORT_BY_LIFE_TIME                                           :Kalan ömür
 STR_SORT_BY_FACILITY                                            :İstasyon türü
 STR_SORT_BY_WAITING                                             :Bekleyen kargo değeri
+STR_SORT_BY_RATING_MAX                                          :En yüksek kargo puanı
+STR_SORT_BY_RATING_MIN                                          :En düşük kargo puanı
 STR_ENGINE_SORT_ENGINE_ID                                       :Lokoismi (klasik sira)
 STR_ENGINE_SORT_COST                                            :Fiyat
 STR_ENGINE_SORT_POWER                                           :Güç
@@ -936,6 +940,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Durum �
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Sinyalizasyon sürüş yönünde olsun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Sene sonunda ekonomik durumu göster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Yeni emirler için 'durmaksızın' varsayılır: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Yeni tren emirleri için varsayılan durma yeri platformun {ORANGE}{STRING}{LTBLUE} kısmıdır
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :yakın uç
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :orta
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :uzak uç
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Karayolu taşıtları kuyruğa girsin (içiçe geçerek): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Fare kenardayken pencere etkin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Belediye rüşveti izinli: {ORANGE}{STRING}
@@ -2613,6 +2621,9 @@ STR_ORDER_GO_TO                                                 :Git
 STR_ORDER_GO_NON_STOP_TO                                        :Durmaksızın git
 STR_ORDER_GO_VIA                                                :Üzerinden git
 STR_ORDER_GO_NON_STOP_VIA                                       :Durmadan üzerinden git
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[yakın uç]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[orta]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[uzak uç]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Herhangi bir kargoyu tam doldur
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Mümkünse yükle
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Tüm kargoyu yükle

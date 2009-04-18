@@ -2621,19 +2621,19 @@ STR_ORDER_GO_NON_STOP_VIA                                       :Gå uden stop v
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[nærmeste ende]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midten]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[fjerneste ende]
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Fuld last af hvilken som helst type
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Åbn hvis tilgængelig
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Vilkårlig fuld last
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Last hvis muligt
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Fuld last af alt gods
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Fuld last af hvilket som helst gods
-STR_ORDER_DROP_NO_LOADING                                       :Ingen lastning
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Fuld last vilkårligt gods
+STR_ORDER_DROP_NO_LOADING                                       :Ingen last
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Los alt
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Los hvis gods accepteres
 STR_ORDER_DROP_UNLOAD                                           :Aflæs alt
 STR_ORDER_DROP_TRANSFER                                         :Overfør
 STR_ORDER_DROP_NO_UNLOADING                                     :Ingen losning
 STR_ORDER_FULL_LOAD                                             :(Fuld last)
-STR_ORDER_FULL_LOAD_ANY                                         :(Fuld last af hvilket som helst gods)
-STR_ORDER_NO_LOAD                                               :(Ingen lastning)
+STR_ORDER_FULL_LOAD_ANY                                         :(Fuld last vilkårligt gods)
+STR_ORDER_NO_LOAD                                               :(Ingen last)
 STR_ORDER_UNLOAD                                                :(Los og medtag gods)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Los og vent på fuld last)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Los og vent på fuld last af hvilket som helst gods)
