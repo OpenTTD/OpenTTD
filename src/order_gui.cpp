@@ -377,6 +377,8 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 struct OrdersWindow : public Window {
 private:
+	static const int ORDER_LIST_LINE_HEIGHT = 10; ///< Height of a line in the ORDER_WIDGET_ORDER_LIST panel.
+
 	/** Under what reason are we using the PlaceObject functionality? */
 	enum OrderPlaceObjectState {
 		OPOS_GOTO,
@@ -410,12 +412,7 @@ private:
 	 */
 	int GetOrderFromPt(int y)
 	{
-		/*
-		 * Calculation description:
-		 * 15 = 14 (w->widget[ORDER_WIDGET_ORDER_LIST].top) + 1 (frame-line)
-		 * 10 = order text hight
-		 */
-		int sel = (y - this->widget[ORDER_WIDGET_ORDER_LIST].top - 1) / 10;
+		int sel = (y - this->widget[ORDER_WIDGET_ORDER_LIST].top - 1) / ORDER_LIST_LINE_HEIGHT; // Selected line in the ORDER_WIDGET_ORDER_LIST panel.
 
 		if ((uint)sel >= this->vscroll.cap) return INVALID_ORDER;
 
@@ -629,7 +626,7 @@ public:
 	{
 		this->owner = v->owner;
 		this->vscroll.cap = 6;
-		this->resize.step_height = 10;
+		this->resize.step_height = ORDER_LIST_LINE_HEIGHT;
 		this->selected_order = -1;
 		this->vehicle = v;
 
@@ -829,7 +826,7 @@ public:
 			if (i - this->vscroll.pos >= this->vscroll.cap) break;
 
 			DrawOrderString(this->vehicle, order, i, y, i == this->selected_order, false, this->widget[ORDER_WIDGET_ORDER_LIST].right - 4);
-			y += 10;
+			y += ORDER_LIST_LINE_HEIGHT;
 
 			i++;
 			order = order->next;
@@ -1138,7 +1135,7 @@ public:
 	virtual void OnResize(Point delta)
 	{
 		/* Update the scroll + matrix */
-		this->vscroll.cap = (this->widget[ORDER_WIDGET_ORDER_LIST].bottom - this->widget[ORDER_WIDGET_ORDER_LIST].top) / 10;
+		this->vscroll.cap = (this->widget[ORDER_WIDGET_ORDER_LIST].bottom - this->widget[ORDER_WIDGET_ORDER_LIST].top) / ORDER_LIST_LINE_HEIGHT;
 	}
 
 	virtual void OnTimeout()
