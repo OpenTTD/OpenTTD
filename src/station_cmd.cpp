@@ -538,17 +538,6 @@ void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile,
 	}
 }
 
-static inline void MergePoint(Rect *rect, TileIndex tile)
-{
-	int x = TileX(tile);
-	int y = TileY(tile);
-
-	if (rect->left   > x) rect->left   = x;
-	if (rect->bottom > y) rect->bottom = y;
-	if (rect->right  < x) rect->right  = x;
-	if (rect->top    < y) rect->top    = y;
-}
-
 /** Update the acceptance for a station.
  * @param st Station to update
  * @param show_msg controls whether to display a message that acceptance was changed.
@@ -558,56 +547,17 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	/* Don't update acceptance for a buoy */
 	if (st->IsBuoy()) return;
 
-	Rect rect;
-	rect.left   = MapSizeX();
-	rect.bottom = MapSizeY();
-	rect.right  = 0;
-	rect.top    = 0;
-
 	/* old accepted goods types */
 	uint old_acc = GetAcceptanceMask(st);
 
-	/* Put all the tiles that span an area in the table. */
-	if (st->train_tile != INVALID_TILE) {
-		MergePoint(&rect, st->train_tile);
-		MergePoint(&rect, st->train_tile + TileDiffXY(st->trainst_w - 1, st->trainst_h - 1));
-	}
-
-	if (st->airport_tile != INVALID_TILE) {
-		const AirportFTAClass *afc = st->Airport();
-
-		MergePoint(&rect, st->airport_tile);
-		MergePoint(&rect, st->airport_tile + TileDiffXY(afc->size_x - 1, afc->size_y - 1));
-	}
-
-	if (st->dock_tile != INVALID_TILE) {
-		MergePoint(&rect, st->dock_tile);
-		if (IsDockTile(st->dock_tile)) {
-			MergePoint(&rect, st->dock_tile + TileOffsByDiagDir(GetDockDirection(st->dock_tile)));
-		} // else OilRig
-	}
-
-	for (const RoadStop *rs = st->bus_stops; rs != NULL; rs = rs->next) {
-		MergePoint(&rect, rs->xy);
-	}
-
-	for (const RoadStop *rs = st->truck_stops; rs != NULL; rs = rs->next) {
-		MergePoint(&rect, rs->xy);
-	}
-
 	/* And retrieve the acceptance. */
 	AcceptedCargo accepts;
-	assert((rect.right >= rect.left) == !st->rect.IsEmpty());
-	if (rect.right >= rect.left) {
-		assert(rect.left == st->rect.left);
-		assert(rect.top == st->rect.bottom);
-		assert(rect.right == st->rect.right);
-		assert(rect.bottom == st->rect.top);
+	if (!st->rect.IsEmpty()) {
 		GetAcceptanceAroundTiles(
 			accepts,
-			TileXY(rect.left, rect.bottom),
-			rect.right - rect.left   + 1,
-			rect.top   - rect.bottom + 1,
+			TileXY(st->rect.left, st->rect.top),
+			st->rect.right  - st->rect.left + 1,
+			st->rect.bottom - st->rect.top  + 1,
 			st->GetCatchmentRadius()
 		);
 	} else {
