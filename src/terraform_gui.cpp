@@ -325,11 +325,29 @@ static const Widget _terraform_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_terraform_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, TTW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, TTW_CAPTION), SetDataTip(STR_LANDSCAPING_TOOLBAR, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, TTW_STICKY),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_LOWER_LAND), SetMinimalSize(22,22), SetDataTip(SPR_IMG_TERRAFORM_DOWN, STR_018E_LOWER_A_CORNER_OF_LAND),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_RAISE_LAND), SetMinimalSize(22,22), SetDataTip(SPR_IMG_TERRAFORM_UP, STR_018F_RAISE_A_CORNER_OF_LAND),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_LEVEL_LAND), SetMinimalSize(22,22), SetDataTip(SPR_IMG_LEVEL_LAND, STR_LEVEL_LAND_TOOLTIP),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, TTW_SEPERATOR), SetMinimalSize(4, 22), EndContainer(),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_DEMOLISH), SetMinimalSize(22,22), SetDataTip(SPR_IMG_DYNAMITE, STR_018D_DEMOLISH_BUILDINGS_ETC),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_BUY_LAND), SetMinimalSize(22,22), SetDataTip(SPR_IMG_BUY_LAND, STR_0329_PURCHASE_LAND_FOR_FUTURE),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_PLANT_TREES), SetMinimalSize(22,22), SetDataTip(SPR_IMG_PLANTTREES, STR_0185_PLANT_TREES_PLACE_SIGNS),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_PLACE_SIGN), SetMinimalSize(22,22), SetDataTip(SPR_IMG_SIGN, STR_0289_PLACE_SIGN),
+	EndContainer(),
+};
+
 static const WindowDesc _terraform_desc(
 	WDP_ALIGN_TBR, 22 + 36, 158, 36, 158, 36,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	_terraform_widgets
+	_terraform_widgets, _nested_terraform_widgets, lengthof(_nested_terraform_widgets)
 );
 
 void ShowTerraformToolbar(Window *link)
@@ -503,6 +521,39 @@ enum EditorTerraformToolbarWidgets {
 	ETTW_DECREASE_SIZE,                    ///< Downwards arrow button to decrease terraforming size
 	ETTW_NEW_SCENARIO,                     ///< Button for generating a new scenario
 	ETTW_RESET_LANDSCAPE,                  ///< Button for removing all company-owned property
+};
+
+static const NWidgetPart _nested_scen_edit_land_gen_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, ETTW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, ETTW_CAPTION), SetDataTip(STR_0223_LAND_GENERATION, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, ETTW_STICKY),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, ETTW_BACKGROUND),
+		NWidget(NWID_HORIZONTAL), SetPadding(2, 0, 0, 2),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_DEMOLISH), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_018D_DEMOLISH_BUILDINGS_ETC),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_LOWER_LAND), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_TERRAFORM_DOWN, STR_018E_LOWER_A_CORNER_OF_LAND),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_RAISE_LAND), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_TERRAFORM_UP, STR_018F_RAISE_A_CORNER_OF_LAND),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_LEVEL_LAND), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_LEVEL_LAND, STR_LEVEL_LAND_TOOLTIP),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_PLACE_ROCKS), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_ROCKS, STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_PLACE_DESERT_LIGHTHOUSE), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_LIGHTHOUSE_DESERT, STR_NULL),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_PLACE_TRANSMITTER), SetMinimalSize(23, 22), SetDataTip(SPR_IMG_TRANSMITTER, STR_028E_PLACE_TRANSMITTER),
+			NWidget(NWID_SPACER), SetFill(1, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 7),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetFill(1, 0), // Makes room for displaying the size of the land area affected.
+			NWidget(NWID_VERTICAL),
+				NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_INCREASE_SIZE), SetMinimalSize(12, 12), SetDataTip(SPR_ARROW_UP, STR_0228_INCREASE_SIZE_OF_LAND_AREA),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
+				NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_DECREASE_SIZE), SetMinimalSize(12, 12), SetDataTip(SPR_ARROW_DOWN, STR_0229_DECREASE_SIZE_OF_LAND_AREA),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(1, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, ETTW_NEW_SCENARIO), SetMinimalSize(160, 12), SetDataTip(STR_SE_NEW_WORLD, STR_022A_GENERATE_RANDOM_LAND), SetPadding(0, 1, 0, 2),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, ETTW_RESET_LANDSCAPE), SetMinimalSize(160, 12), SetDataTip(STR_022B_RESET_LANDSCAPE, STR_RESET_LANDSCAPE_TOOLTIP), SetPadding(1, 1, 2, 2),
+	EndContainer(),
 };
 
 /**
@@ -710,7 +761,7 @@ static const WindowDesc _scen_edit_land_gen_desc(
 	WDP_AUTO, WDP_AUTO, 163, 103, 163, 103,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	_scen_edit_land_gen_widgets
+	_scen_edit_land_gen_widgets, _nested_scen_edit_land_gen_widgets, lengthof(_nested_scen_edit_land_gen_widgets)
 );
 
 void ShowEditorTerraformToolbar()
