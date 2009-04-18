@@ -1320,9 +1320,11 @@ static SettingsPage _settings_main_page = {_settings_main, lengthof(_settings_ma
 
 /** Widget numbers of settings window */
 enum GameSettingsWidgets {
-	SETTINGSEL_OPTIONSPANEL = 2, ///< Panel widget containing the option lists
-	SETTINGSEL_SCROLLBAR,        ///< Scrollbar
-	SETTINGSEL_RESIZE,           ///< Resize button
+	SETTINGSEL_CLOSEBOX,     ///< Close box at top-left
+	SETTINGSEL_CAPTION,      ///< Title bar
+	SETTINGSEL_OPTIONSPANEL, ///< Panel widget containing the option lists
+	SETTINGSEL_SCROLLBAR,    ///< Scrollbar
+	SETTINGSEL_RESIZE,       ///< Resize button
 };
 
 struct GameSettingsWindow : Window {
@@ -1514,11 +1516,11 @@ const int GameSettingsWindow::SETTINGTREE_LEFT_OFFSET = 5;
 const int GameSettingsWindow::SETTINGTREE_TOP_OFFSET = 19;
 
 static const Widget _settings_selection_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_MAUVE,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_MAUVE,    11,   411,     0,    13, STR_CONFIG_SETTING_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     RESIZE_RB,  COLOUR_MAUVE,     0,   399,    14,   187, 0x0,                             STR_NULL}, // SETTINGSEL_OPTIONSPANEL
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_MAUVE,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},            // SETTINGSEL_CLOSEBOX
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_MAUVE,    11,   411,     0,    13, STR_CONFIG_SETTING_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},  // SETTINGSEL_CAPTION
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_MAUVE,     0,   399,    14,   187, 0x0,                             STR_NULL},                         // SETTINGSEL_OPTIONSPANEL
 {  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_MAUVE,   400,   411,    14,   175, 0x0,                             STR_0190_SCROLL_BAR_SCROLLS_LIST}, // SETTINGSEL_SCROLLBAR
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_MAUVE,   400,   411,   176,   187, 0x0,                             STR_RESIZE_BUTTON}, // SETTINGSEL_RESIZE
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_MAUVE,   400,   411,   176,   187, 0x0,                             STR_RESIZE_BUTTON},                // SETTINGSEL_RESIZE
 {   WIDGETS_END},
 };
 
