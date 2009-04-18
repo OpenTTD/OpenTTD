@@ -202,7 +202,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 				}
 			} else {
 				SetDParam(4, (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) ? STR_EMPTY : _station_load_types[unload][load]);
-				if (v->type == VEH_TRAIN) {
+				if (v->type == VEH_TRAIN && (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) == 0) {
 					SetDParam(6, order->GetStopLocation() + STR_ORDER_STOP_LOCATION_NEAR_END);
 				}
 			}
