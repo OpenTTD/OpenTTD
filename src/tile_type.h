@@ -8,9 +8,10 @@
 #include "core/enum_type.hpp"
 
 enum {
-	TILE_SIZE   = 16,   ///< Tiles are 16x16 "units" in size
-	TILE_PIXELS = 32,   ///< a tile is 32x32 pixels
-	TILE_HEIGHT =  8,   ///< The standard height-difference between tiles on two levels is 8 (z-diff 8)
+	TILE_SIZE      = 16,            ///< Tiles are 16x16 "units" in size
+	TILE_UNIT_MASK = TILE_SIZE - 1, ///< for masking in/out the inner-tile units.
+	TILE_PIXELS    = 32,            ///< a tile is 32x32 pixels
+	TILE_HEIGHT    =  8,            ///< The standard height-difference between tiles on two levels is 8 (z-diff 8)
 
 	MAX_TILE_HEIGHT     = 15,                    ///< Maximum allowed tile height
 	MAX_SNOWLINE_HEIGHT = (MAX_TILE_HEIGHT - 2), ///< Maximum allowed snowline height

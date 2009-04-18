@@ -39,6 +39,7 @@ enum HighLightStyle {
 	HT_DIR_HL = 3,    ///< horizontal lower
 	HT_DIR_VL = 4,    ///< vertical left
 	HT_DIR_VR = 5,    ///< vertical right
+	HT_DIR_END,       ///< end marker
 	HT_DIR_MASK = 0x7 ///< masks the drag-direction
 };
 DECLARE_ENUM_AS_BIT_SET(HighLightStyle);
@@ -59,9 +60,9 @@ struct TileHighlightData {
 	byte dirty;
 	byte sizelimit;
 
-	byte drawstyle;      // lower bits 0-3 are reserved for detailed highlight information information
-	byte new_drawstyle;  // only used in UpdateTileSelection() to as a buffer to compare if there was a change between old and new
-	byte next_drawstyle; // queued, but not yet drawn style
+	HighLightStyle drawstyle;      // lower bits 0-3 are reserved for detailed highlight information information
+	HighLightStyle new_drawstyle;  // only used in UpdateTileSelection() to as a buffer to compare if there was a change between old and new
+	HighLightStyle next_drawstyle; // queued, but not yet drawn style
 
 	ViewportHighlightMode place_mode;
 	bool make_square_red;

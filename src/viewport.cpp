@@ -902,15 +902,15 @@ static void DrawTileSelection(const TileInfo *ti)
 			DrawSelectionSprite(_cur_dpi->zoom <= ZOOM_LVL_DETAIL ? SPR_DOT : SPR_DOT_SMALL, PAL_NONE, ti, z, foundation_part);
 		} else if (_thd.drawstyle & HT_RAIL /* && _thd.place_mode == VHM_RAIL*/) {
 			/* autorail highlight piece under cursor */
-			uint type = _thd.drawstyle & 0xF;
-			assert(type <= 5);
+			HighLightStyle type = _thd.drawstyle & HT_DIR_MASK;
+			assert(type < HT_DIR_END);
 			DrawAutorailSelection(ti, _autorail_type[type][0]);
 		} else if (IsPartOfAutoLine(ti->x, ti->y)) {
 			/* autorail highlighting long line */
-			int dir = _thd.drawstyle & ~0xF0;
+			HighLightStyle dir = _thd.drawstyle & HT_DIR_MASK;
 			uint side;
 
-			if (dir < 2) {
+			if (dir == HT_DIR_X || dir == HT_DIR_Y) {
 				side = 0;
 			} else {
 				TileIndex start = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
@@ -942,8 +942,8 @@ static void ViewportAddLandscape()
 	_cur_ti = &ti;
 
 	/* Transform into tile coordinates and round to closest full tile */
-	x = ((_vd.dpi.top >> 1) - (_vd.dpi.left >> 2)) & ~0xF;
-	y = ((_vd.dpi.top >> 1) + (_vd.dpi.left >> 2) - 0x10) & ~0xF;
+	x = ((_vd.dpi.top >> 1) - (_vd.dpi.left >> 2)) & ~TILE_UNIT_MASK;
+	y = ((_vd.dpi.top >> 1) + (_vd.dpi.left >> 2) - TILE_SIZE) & ~TILE_UNIT_MASK;
 
 	/* determine size of area */
 	{
@@ -2065,8 +2065,8 @@ void PlaceObject()
 		pt.y += 8;
 	}
 
-	_tile_fract_coords.x = pt.x & 0xF;
-	_tile_fract_coords.y = pt.y & 0xF;
+	_tile_fract_coords.x = pt.x & TILE_UNIT_MASK;
+	_tile_fract_coords.y = pt.y & TILE_UNIT_MASK;
 
 	w = GetCallbackWnd();
 	if (w != NULL) w->OnPlaceObject(pt, TileVirtXY(pt.x, pt.y));
@@ -2132,7 +2132,7 @@ void SetTileSelectBigSize(int ox, int oy, int sx, int sy)
 /** returns the best autorail highlight type from map coordinates */
 static HighLightStyle GetAutorailHT(int x, int y)
 {
-	return HT_RAIL | _autorail_piece[x & 0xF][y & 0xF];
+	return HT_RAIL | _autorail_piece[x & TILE_UNIT_MASK][y & TILE_UNIT_MASK];
 }
 
 /**
@@ -2147,16 +2147,16 @@ void UpdateTileSelection()
 	int x1;
 	int y1;
 
-	_thd.new_drawstyle = 0;
+	_thd.new_drawstyle = HT_NONE;
 
 	if (_thd.place_mode == VHM_SPECIAL) {
 		x1 = _thd.selend.x;
 		y1 = _thd.selend.y;
 		if (x1 != -1) {
-			int x2 = _thd.selstart.x & ~0xF;
-			int y2 = _thd.selstart.y & ~0xF;
-			x1 &= ~0xF;
-			y1 &= ~0xF;
+			int x2 = _thd.selstart.x & ~TILE_UNIT_MASK;
+			int y2 = _thd.selstart.y & ~TILE_UNIT_MASK;
+			x1 &= ~TILE_UNIT_MASK;
+			y1 &= ~TILE_UNIT_MASK;
 
 			if (x1 >= x2) Swap(x1, x2);
 			if (y1 >= y2) Swap(y1, y2);
@@ -2177,8 +2177,8 @@ void UpdateTileSelection()
 					break;
 				case VHM_POINT:
 					_thd.new_drawstyle = HT_POINT;
-					x1 += 8;
-					y1 += 8;
+					x1 += TILE_SIZE / 2;
+					y1 += TILE_SIZE / 2;
 					break;
 				case VHM_RAIL:
 					_thd.new_drawstyle = GetAutorailHT(pt.x, pt.y); // draw one highlighted tile
@@ -2187,8 +2187,8 @@ void UpdateTileSelection()
 					NOT_REACHED();
 					break;
 			}
-			_thd.new_pos.x = x1 & ~0xF;
-			_thd.new_pos.y = y1 & ~0xF;
+			_thd.new_pos.x = x1 & ~TILE_UNIT_MASK;
+			_thd.new_pos.y = y1 & ~TILE_UNIT_MASK;
 		}
 	}
 
@@ -2290,30 +2290,30 @@ static void VpStartPreSizing()
 static HighLightStyle Check2x1AutoRail(int mode)
 {
 	int fxpy = _tile_fract_coords.x + _tile_fract_coords.y;
-	int sxpy = (_thd.selend.x & 0xF) + (_thd.selend.y & 0xF);
+	int sxpy = (_thd.selend.x & TILE_UNIT_MASK) + (_thd.selend.y & TILE_UNIT_MASK);
 	int fxmy = _tile_fract_coords.x - _tile_fract_coords.y;
-	int sxmy = (_thd.selend.x & 0xF) - (_thd.selend.y & 0xF);
+	int sxmy = (_thd.selend.x & TILE_UNIT_MASK) - (_thd.selend.y & TILE_UNIT_MASK);
 
 	switch (mode) {
 		default: NOT_REACHED();
 		case 0: // end piece is lower right
-			if (fxpy >= 20 && sxpy <= 12) { /*SwapSelection(); DoRailroadTrack(0); */return HT_DIR_HL; }
-			if (fxmy < -3 && sxmy > 3) {/* DoRailroadTrack(0); */return HT_DIR_VR; }
+			if (fxpy >= 20 && sxpy <= 12) return HT_DIR_HL;
+			if (fxmy < -3 && sxmy > 3) return HT_DIR_VR;
 			return HT_DIR_Y;
 
 		case 1:
-			if (fxmy > 3 && sxmy < -3) { /*SwapSelection(); DoRailroadTrack(0); */return HT_DIR_VL; }
-			if (fxpy <= 12 && sxpy >= 20) { /*DoRailroadTrack(0); */return HT_DIR_HU; }
+			if (fxmy > 3 && sxmy < -3) return HT_DIR_VL;
+			if (fxpy <= 12 && sxpy >= 20) return HT_DIR_HU;
 			return HT_DIR_Y;
 
 		case 2:
-			if (fxmy > 3 && sxmy < -3) { /*DoRailroadTrack(3);*/ return HT_DIR_VL; }
-			if (fxpy >= 20 && sxpy <= 12) { /*SwapSelection(); DoRailroadTrack(0); */return HT_DIR_HL; }
+			if (fxmy > 3 && sxmy < -3) return HT_DIR_VL;
+			if (fxpy >= 20 && sxpy <= 12) return HT_DIR_HL;
 			return HT_DIR_X;
 
 		case 3:
-			if (fxmy < -3 && sxmy > 3) { /*SwapSelection(); DoRailroadTrack(3);*/ return HT_DIR_VR; }
-			if (fxpy <= 12 && sxpy >= 20) { /*DoRailroadTrack(0); */return HT_DIR_HU; }
+			if (fxmy < -3 && sxmy > 3) return HT_DIR_VR;
+			if (fxpy <= 12 && sxpy >= 20) return HT_DIR_HU;
 			return HT_DIR_X;
 	}
 }
@@ -2440,12 +2440,11 @@ static const StringID measure_strings_length[] = {STR_NULL, STR_MEASURE_LENGTH, 
 static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int method)
 {
 	HighLightStyle b;
-	uint w, h;
 
-	int dx = thd->selstart.x - (thd->selend.x & ~0xF);
-	int dy = thd->selstart.y - (thd->selend.y & ~0xF);
-	w = abs(dx) + 16;
-	h = abs(dy) + 16;
+	int dx = thd->selstart.x - (thd->selend.x & ~TILE_UNIT_MASK);
+	int dy = thd->selstart.y - (thd->selend.y & ~TILE_UNIT_MASK);
+	uint w = abs(dx) + TILE_SIZE;
+	uint h = abs(dy) + TILE_SIZE;
 
 	if (TileVirtXY(thd->selstart.x, thd->selstart.y) == TileVirtXY(x, y)) { // check if we're only within one tile
 		if (method == VPM_RAILDIRS) {
@@ -2453,19 +2452,19 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 		} else { // rect for autosignals on one tile
 			b = HT_RECT;
 		}
-	} else if (h == 16) { // Is this in X direction?
-		if (dx == 16) { // 2x1 special handling
+	} else if (h == TILE_SIZE) { // Is this in X direction?
+		if (dx == TILE_SIZE) { // 2x1 special handling
 			b = (Check2x1AutoRail(3)) | HT_LINE;
-		} else if (dx == -16) {
+		} else if (dx == -TILE_SIZE) {
 			b = (Check2x1AutoRail(2)) | HT_LINE;
 		} else {
 			b = HT_LINE | HT_DIR_X;
 		}
 		y = thd->selstart.y;
-	} else if (w == 16) { // Or Y direction?
-		if (dy == 16) { // 2x1 special handling
+	} else if (w == TILE_SIZE) { // Or Y direction?
+		if (dy == TILE_SIZE) { // 2x1 special handling
 			b = (Check2x1AutoRail(1)) | HT_LINE;
-		} else if (dy == -16) { // 2x1 other direction
+		} else if (dy == -TILE_SIZE) { // 2x1 other direction
 			b = (Check2x1AutoRail(0)) | HT_LINE;
 		} else {
 			b = HT_LINE | HT_DIR_Y;
@@ -2479,27 +2478,26 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 		x = thd->selstart.x;
 	} else { // complicated direction
 		int d = w - h;
-		thd->selend.x = thd->selend.x & ~0xF;
-		thd->selend.y = thd->selend.y & ~0xF;
+		thd->selend.x = thd->selend.x & ~TILE_UNIT_MASK;
+		thd->selend.y = thd->selend.y & ~TILE_UNIT_MASK;
 
 		/* four cases. */
 		if (x > thd->selstart.x) {
 			if (y > thd->selstart.y) {
 				/* south */
 				if (d == 0) {
-					b = (x & 0xF) > (y & 0xF) ? HT_LINE | HT_DIR_VL : HT_LINE | HT_DIR_VR;
+					b = (x & TILE_UNIT_MASK) > (y & TILE_UNIT_MASK) ? HT_LINE | HT_DIR_VL : HT_LINE | HT_DIR_VR;
 				} else if (d >= 0) {
 					x = thd->selstart.x + h;
 					b = HT_LINE | HT_DIR_VL;
-					// return px == py || px == py + 16;
 				} else {
 					y = thd->selstart.y + w;
 					b = HT_LINE | HT_DIR_VR;
-				} // return px == py || px == py - 16;
+				}
 			} else {
 				/* west */
 				if (d == 0) {
-					b = (x & 0xF) + (y & 0xF) >= 0x10 ? HT_LINE | HT_DIR_HL : HT_LINE | HT_DIR_HU;
+					b = (x & TILE_UNIT_MASK) + (y & TILE_UNIT_MASK) >= TILE_SIZE ? HT_LINE | HT_DIR_HL : HT_LINE | HT_DIR_HU;
 				} else if (d >= 0) {
 					x = thd->selstart.x + h;
 					b = HT_LINE | HT_DIR_HL;
@@ -2512,27 +2510,25 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 			if (y > thd->selstart.y) {
 				/* east */
 				if (d == 0) {
-					b = (x & 0xF) + (y & 0xF) >= 0x10 ? HT_LINE | HT_DIR_HL : HT_LINE | HT_DIR_HU;
+					b = (x & TILE_UNIT_MASK) + (y & TILE_UNIT_MASK) >= TILE_SIZE ? HT_LINE | HT_DIR_HL : HT_LINE | HT_DIR_HU;
 				} else if (d >= 0) {
 					x = thd->selstart.x - h;
 					b = HT_LINE | HT_DIR_HU;
-					// return px == -py || px == -py - 16;
 				} else {
 					y = thd->selstart.y + w;
 					b = HT_LINE | HT_DIR_HL;
-				} // return px == -py || px == -py + 16;
+				}
 			} else {
 				/* north */
 				if (d == 0) {
-					b = (x & 0xF) > (y & 0xF) ? HT_LINE | HT_DIR_VL : HT_LINE | HT_DIR_VR;
+					b = (x & TILE_UNIT_MASK) > (y & TILE_UNIT_MASK) ? HT_LINE | HT_DIR_VL : HT_LINE | HT_DIR_VR;
 				} else if (d >= 0) {
 					x = thd->selstart.x - h;
 					b = HT_LINE | HT_DIR_VR;
-					// return px == py || px == py - 16;
 				} else {
 					y = thd->selstart.y - w;
 					b = HT_LINE | HT_DIR_VL;
-				} // return px == py || px == py + 16;
+				}
 			}
 		}
 	}
