@@ -629,6 +629,8 @@ enum AIDebugWindowWidgets {
 struct AIDebugWindow : public Window {
 	static CompanyID ai_debug_company;
 	int redraw_timer;
+	int last_vscroll_pos;
+	bool autoscroll;
 
 	AIDebugWindow(const WindowDesc *desc, WindowNumber number) : Window(desc, number)
 	{
@@ -641,6 +643,8 @@ struct AIDebugWindow : public Window {
 		this->vscroll.cap = 14;
 		this->vscroll.pos = 0;
 		this->resize.step_height = 12;
+		this->last_vscroll_pos = 0;
+		this->autoscroll = true;
 
 		if (ai_debug_company != INVALID_COMPANY) this->LowerWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
 
@@ -722,9 +726,17 @@ struct AIDebugWindow : public Window {
 		this->InvalidateWidget(AID_WIDGET_SCROLLBAR);
 		if (log == NULL) return;
 
+		/* Detect when the user scrolls the window. Enable autoscroll when the
+		 * bottom-most line becomes visible. */
+		if (this->last_vscroll_pos != this->vscroll.pos) {
+			this->autoscroll = this->vscroll.pos >= log->used - this->vscroll.cap;
+		}
+		if (this->autoscroll) this->vscroll.pos = max(0, log->used - this->vscroll.cap);
+		last_vscroll_pos = this->vscroll.pos;
+
 		int y = 6;
-		for (int i = this->vscroll.pos; i < (this->vscroll.cap + this->vscroll.pos); i++) {
-			uint pos = (log->count + log->pos - i) % log->count;
+		for (int i = this->vscroll.pos; i < (this->vscroll.cap + this->vscroll.pos) && i < log->used; i++) {
+			uint pos = (i + log->pos + 1 - log->used + log->count) % log->count;
 			if (log->lines[pos] == NULL) break;
 
 			TextColour colour;
@@ -747,6 +759,8 @@ struct AIDebugWindow : public Window {
 		this->RaiseWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
 		ai_debug_company = show_ai;
 		this->LowerWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
+		this->autoscroll = true;
+		this->last_vscroll_pos = this->vscroll.pos;
 		this->SetDirty();
 	}
 
