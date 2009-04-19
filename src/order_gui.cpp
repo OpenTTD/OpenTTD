@@ -1135,10 +1135,73 @@ public:
 		}
 	}
 
+	/**
+	 * Set the left and right edge of a widget in the window.
+	 * @param widnum Number of the widget to modify.
+	 * @param left   New offset of the left edge of the widget.
+	 * @param right  New offset of the right edge of the widget.
+	 */
+	void SetWidgetLeftRight(int widnum, int left, int right)
+	{
+		assert(this->widget[widnum].type != WWT_EMPTY);
+		this->widget[widnum].left = left;
+		this->widget[widnum].right = right;
+	}
+
 	virtual void OnResize(Point delta)
 	{
 		/* Update the scroll + matrix */
 		this->vscroll.cap = (this->widget[ORDER_WIDGET_ORDER_LIST].bottom - this->widget[ORDER_WIDGET_ORDER_LIST].top - 1) / ORDER_LIST_LINE_HEIGHT;
+
+		/* Update the button bars. */
+		if (this->vehicle->owner == _local_company) {
+			const int arrow_width = 12; // Space needed by the down arrow.
+
+			/* ORDER_WIDGET_ORDER_LIST widget has the same left and right positions as the whole button bars. */
+			const int leftmost = this->widget[ORDER_WIDGET_ORDER_LIST].left;       // The left edge of the button bar.
+			const int rightmost = this->widget[ORDER_WIDGET_ORDER_LIST].right + 1; // One pixel beyond the right edge of the button bar.
+			const int one_third = leftmost + (rightmost - leftmost) / 3;           // Start of the middle section.
+			const int two_third = one_third + (rightmost - one_third) / 2;         // Start of the right section.
+
+			/* Left 1/3 buttons. */
+			SetWidgetLeftRight(ORDER_WIDGET_SKIP, leftmost, one_third - 1);
+			SetWidgetLeftRight(ORDER_WIDGET_COND_VARIABLE, leftmost, one_third - 1);
+			/* Middle 1/3 buttons. */
+			SetWidgetLeftRight(ORDER_WIDGET_DELETE, one_third, two_third - 1);
+			SetWidgetLeftRight(ORDER_WIDGET_COND_COMPARATOR, one_third, two_third - 1);
+			/* Right 1/3 buttons. */
+			SetWidgetLeftRight(ORDER_WIDGET_GOTO_DROPDOWN, two_third, rightmost - 1);
+			SetWidgetLeftRight(ORDER_WIDGET_GOTO, two_third, rightmost - 1 - arrow_width);
+			SetWidgetLeftRight(ORDER_WIDGET_COND_VALUE, two_third, rightmost - 1);
+
+			if (this->vehicle->type == VEH_TRAIN || this->vehicle->type == VEH_ROAD) {
+				/* Window displays orders of your train/road vehicle. */
+				/* Left 1/3 buttons. */
+				SetWidgetLeftRight(ORDER_WIDGET_NON_STOP_DROPDOWN, leftmost, one_third - 1);
+				SetWidgetLeftRight(ORDER_WIDGET_NON_STOP, leftmost, one_third - 1 - arrow_width);
+				/* Middle 1/3 buttons. */
+				SetWidgetLeftRight(ORDER_WIDGET_FULL_LOAD_DROPDOWN, one_third, two_third - 1);
+				SetWidgetLeftRight(ORDER_WIDGET_FULL_LOAD, one_third, two_third - 1 - arrow_width);
+				SetWidgetLeftRight(ORDER_WIDGET_REFIT, one_third, two_third - 1);
+				/* Right 1/3 buttons. */
+				SetWidgetLeftRight(ORDER_WIDGET_UNLOAD_DROPDOWN, two_third, rightmost - 1);
+				SetWidgetLeftRight(ORDER_WIDGET_UNLOAD, two_third, rightmost - 1 - arrow_width);
+				SetWidgetLeftRight(ORDER_WIDGET_SERVICE_DROPDOWN, two_third, rightmost - 1);
+				SetWidgetLeftRight(ORDER_WIDGET_SERVICE, two_third, rightmost - 1 - arrow_width);
+			} else {
+				/* Window displays orders of your ship/plane vehicle. */
+				const int middle = (rightmost - leftmost) / 2; // Start of second half.
+				/* Left 1/2 buttons. */
+				SetWidgetLeftRight(ORDER_WIDGET_FULL_LOAD_DROPDOWN, leftmost, middle - 1);
+				SetWidgetLeftRight(ORDER_WIDGET_FULL_LOAD, leftmost, middle - 1 - arrow_width);
+				SetWidgetLeftRight(ORDER_WIDGET_REFIT, leftmost, middle - 1);
+				/* Right 1/2 buttons. */
+				SetWidgetLeftRight(ORDER_WIDGET_UNLOAD_DROPDOWN, middle, rightmost - 1);
+				SetWidgetLeftRight(ORDER_WIDGET_UNLOAD, middle, rightmost - 1 - arrow_width);
+				SetWidgetLeftRight(ORDER_WIDGET_SERVICE_DROPDOWN, middle, rightmost - 1);
+				SetWidgetLeftRight(ORDER_WIDGET_SERVICE, middle, rightmost - 1 - arrow_width);
+			}
+		}
 	}
 
 	virtual void OnTimeout()
