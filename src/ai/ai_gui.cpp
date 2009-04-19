@@ -727,8 +727,14 @@ struct AIDebugWindow : public Window {
 		AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
 		_current_company = old_company;
 
-		SetVScrollCount(this, (log == NULL) ? 0 : log->used);
-		this->InvalidateWidget(AID_WIDGET_SCROLLBAR);
+		int scroll_count = (log == NULL) ? 0 : log->used;
+		if (this->vscroll.count != scroll_count) {
+			SetVScrollCount(this, scroll_count);
+
+			/* We need a repaint */
+			this->InvalidateWidget(AID_WIDGET_SCROLLBAR);
+		}
+
 		if (log == NULL) return;
 
 		/* Detect when the user scrolls the window. Enable autoscroll when the
@@ -736,7 +742,15 @@ struct AIDebugWindow : public Window {
 		if (this->last_vscroll_pos != this->vscroll.pos) {
 			this->autoscroll = this->vscroll.pos >= log->used - this->vscroll.cap;
 		}
-		if (this->autoscroll) this->vscroll.pos = max(0, log->used - this->vscroll.cap);
+		if (this->autoscroll) {
+			int scroll_pos = max(0, log->used - this->vscroll.cap);
+			if (scroll_pos != this->vscroll.pos) {
+				this->vscroll.pos = scroll_pos;
+
+				/* We need a repaint */
+				this->InvalidateWidget(AID_WIDGET_SCROLLBAR);
+			}
+		}
 		last_vscroll_pos = this->vscroll.pos;
 
 		int y = 6;
@@ -799,6 +813,7 @@ struct AIDebugWindow : public Window {
 	virtual void OnResize(Point delta)
 	{
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;
+		SetVScrollCount(this, this->vscroll.count); // vscroll.pos should be in a valid range
 	}
 };
 
