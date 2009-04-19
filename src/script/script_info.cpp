@@ -19,6 +19,7 @@ ScriptFileInfo::~ScriptFileInfo()
 	free((void *)this->description);
 	free((void *)this->date);
 	free((void *)this->instance_name);
+	free((void *)this->url);
 	free(this->main_script);
 	free(this->SQ_instance);
 }
@@ -67,6 +68,11 @@ bool ScriptFileInfo::CheckMethod(const char *name) const
 	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetDate", &info->date)) return SQ_ERROR;
 	if (!info->engine->CallIntegerMethod(*info->SQ_instance, "GetVersion", &info->version)) return SQ_ERROR;
 	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "CreateInstance", &info->instance_name)) return SQ_ERROR;
+
+	/* The GetURL function is optional. */
+	if (info->engine->MethodExists(*info->SQ_instance, "GetURL")) {
+		if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetURL", &info->url)) return SQ_ERROR;
+	}
 
 	return 0;
 }

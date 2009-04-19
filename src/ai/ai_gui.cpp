@@ -101,6 +101,11 @@ struct AIListWindow : public Window {
 			SetDParam(0, selected_info->GetVersion());
 			DrawString(4, this->widget[AIL_WIDGET_INFO_BG].right - 4, y, STR_AI_VERSION, TC_BLACK);
 			y += 13;
+			if (selected_info->GetURL() != NULL) {
+				SetDParamStr(0, selected_info->GetURL());
+				DrawString(4, this->widget[AIL_WIDGET_INFO_BG].right - 4, y, STR_AI_URL, TC_BLACK);
+				y += 13;
+			}
 			SetDParamStr(0, selected_info->GetDescription());
 			DrawStringMultiLine(4, this->width - 8, y, this->widget[AIL_WIDGET_INFO_BG].bottom, STR_JUST_RAW_STRING);
 		}

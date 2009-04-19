@@ -17,7 +17,8 @@ public:
 		short_name(NULL),
 		description(NULL),
 		date(NULL),
-		instance_name(NULL)
+		instance_name(NULL),
+		url(NULL)
 	{}
 	~ScriptFileInfo();
 
@@ -57,6 +58,11 @@ public:
 	const char *GetInstanceName() const { return this->instance_name; }
 
 	/**
+	 * Get the website for this script.
+	 */
+	const char *GetURL() const { return this->url; }
+
+	/**
 	 * Get the filename of the main.nut script.
 	 */
 	const char *GetMainScript() const { return this->main_script; }
@@ -83,6 +89,7 @@ private:
 	const char *date;
 	const char *instance_name;
 	int version;
+	const char *url;
 };
 
 #endif /* SCRIPT_INFO */
