@@ -49,14 +49,17 @@ enum {
 
 /** Viewport place method (type of highlighted area and placed objects) */
 enum ViewportPlaceMethod {
-	VPM_X_OR_Y          = 0, ///< drag in X or Y direction
-	VPM_FIX_X           = 1, ///< drag only in X axis
-	VPM_FIX_Y           = 2, ///< drag only in Y axis
-	VPM_RAILDIRS        = 3, ///< all rail directions
-	VPM_X_AND_Y         = 4, ///< area of land in X and Y directions
-	VPM_X_AND_Y_LIMITED = 5, ///< area of land of limited size
-	VPM_SIGNALDIRS      = 6, ///< similiar to VMP_RAILDIRS, but with different cursor
+	VPM_X_OR_Y          =    0, ///< drag in X or Y direction
+	VPM_FIX_X           =    1, ///< drag only in X axis
+	VPM_FIX_Y           =    2, ///< drag only in Y axis
+	VPM_X_AND_Y         =    3, ///< area of land in X and Y directions
+	VPM_X_AND_Y_LIMITED =    4, ///< area of land of limited size
+	VPM_FIX_HORIZONTAL  =    5, ///< drag only in horizontal direction
+	VPM_FIX_VERTICAL    =    6, ///< drag only in vertical direction
+	VPM_RAILDIRS        = 0x40, ///< all rail directions
+	VPM_SIGNALDIRS      = 0x80, ///< similiar to VMP_RAILDIRS, but with different cursor
 };
+DECLARE_ENUM_AS_BIT_SET(ViewportPlaceMethod);
 
 /** Drag and drop selection process, or, what to do with an area of land when
  * you've selected it. */
@@ -73,9 +76,7 @@ enum ViewportDragDropSelectionProcess {
 	DDSP_BUILD_BRIDGE,
 
 	/* Rail specific actions */
-	DDSP_PLACE_RAIL_NE,
-	DDSP_PLACE_RAIL_NW,
-	DDSP_PLACE_AUTORAIL,
+	DDSP_PLACE_RAIL,
 	DDSP_BUILD_SIGNALS,
 	DDSP_BUILD_STATION,
 	DDSP_REMOVE_STATION,

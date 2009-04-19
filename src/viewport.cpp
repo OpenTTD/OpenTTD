@@ -900,7 +900,7 @@ static void DrawTileSelection(const TileInfo *ti)
 				}
 			}
 			DrawSelectionSprite(_cur_dpi->zoom <= ZOOM_LVL_DETAIL ? SPR_DOT : SPR_DOT_SMALL, PAL_NONE, ti, z, foundation_part);
-		} else if (_thd.drawstyle & HT_RAIL /* && _thd.place_mode == VHM_RAIL*/) {
+		} else if (_thd.drawstyle & HT_RAIL) {
 			/* autorail highlight piece under cursor */
 			HighLightStyle type = _thd.drawstyle & HT_DIR_MASK;
 			assert(type < HT_DIR_END);
@@ -2171,7 +2171,7 @@ void UpdateTileSelection()
 		x1 = pt.x;
 		y1 = pt.y;
 		if (x1 != -1) {
-			switch (_thd.place_mode) {
+			switch (_thd.place_mode & HT_DRAG_MASK) {
 				case HT_RECT:
 					_thd.new_drawstyle = HT_RECT;
 					break;
@@ -2181,7 +2181,28 @@ void UpdateTileSelection()
 					y1 += TILE_SIZE / 2;
 					break;
 				case HT_RAIL:
-					_thd.new_drawstyle = GetAutorailHT(pt.x, pt.y); // draw one highlighted tile
+					/* Draw one highlighted tile in any direction */
+					_thd.new_drawstyle = GetAutorailHT(pt.x, pt.y);
+					break;
+				case HT_LINE:
+					switch (_thd.place_mode & HT_DIR_MASK) {
+						case HT_DIR_X: _thd.new_drawstyle = HT_LINE | HT_DIR_X; break;
+						case HT_DIR_Y: _thd.new_drawstyle = HT_LINE | HT_DIR_Y; break;
+
+						case HT_DIR_HU:
+						case HT_DIR_HL:
+							_thd.new_drawstyle = (pt.x & TILE_UNIT_MASK) + (pt.y & TILE_UNIT_MASK) <= TILE_SIZE ? HT_LINE | HT_DIR_HU : HT_LINE | HT_DIR_HL;
+							break;
+
+						case HT_DIR_VL:
+						case HT_DIR_VR:
+							_thd.new_drawstyle = (pt.x & TILE_UNIT_MASK) > (pt.y & TILE_UNIT_MASK) ? HT_LINE | HT_DIR_VL : HT_LINE | HT_DIR_VR;
+							break;
+
+						default: NOT_REACHED();
+					}
+					_thd.selstart.x = x1 & ~TILE_UNIT_MASK;
+					_thd.selstart.y = y1 & ~TILE_UNIT_MASK;
 					break;
 				default:
 					NOT_REACHED();
@@ -2246,7 +2267,10 @@ void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, ViewportDrag
 	if (_thd.place_mode == HT_RECT) {
 		_thd.place_mode = HT_SPECIAL;
 		_thd.next_drawstyle = HT_RECT;
-	} else if (_thd.place_mode == HT_RAIL) { // autorail one piece
+	} else if (_thd.place_mode & HT_RAIL) {
+		_thd.place_mode = HT_SPECIAL;
+		_thd.next_drawstyle = HT_RAIL;
+	} else if (_thd.place_mode & HT_LINE) {
 		_thd.place_mode = HT_SPECIAL;
 		_thd.next_drawstyle = _thd.drawstyle;
 	} else {
@@ -2436,6 +2460,35 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 
 static const StringID measure_strings_length[] = {STR_NULL, STR_MEASURE_LENGTH, STR_MEASURE_LENGTH_HEIGHTDIFF};
 
+/**
+ * Check for underflowing the map.
+ * @param test  the variable to test for underflowing
+ * @param other the other variable to update to keep the line
+ * @param mult  the constant to multiply the difference by for \c other
+ */
+static void CheckUnderflow(int &test, int &other, int mult)
+{
+	if (test >= 0) return;
+
+	other += mult * test;
+	test = 0;
+}
+
+/**
+ * Check for overflowing the map.
+ * @param test  the variable to test for overflowing
+ * @param other the other variable to update to keep the line
+ * @param max   the maximum value for the \c test variable
+ * @param mult  the constant to multiply the difference by for \c other
+ */
+static void CheckOverflow(int &test, int &other, int max, int mult)
+{
+	if (test <= max) return;
+
+	other += mult * (test - max);
+	test = max;
+}
+
 /** while dragging */
 static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int method)
 {
@@ -2446,8 +2499,97 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 	uint w = abs(dx) + TILE_SIZE;
 	uint h = abs(dy) + TILE_SIZE;
 
-	if (TileVirtXY(thd->selstart.x, thd->selstart.y) == TileVirtXY(x, y)) { // check if we're only within one tile
-		if (method == VPM_RAILDIRS) {
+	if (method & ~(VPM_RAILDIRS | VPM_SIGNALDIRS)) {
+		/* We 'force' a selection direction; first four rail buttons. */
+		method &= ~(VPM_RAILDIRS | VPM_SIGNALDIRS);
+		int raw_dx = thd->selstart.x - thd->selend.x;
+		int raw_dy = thd->selstart.y - thd->selend.y;
+		switch (method) {
+			case VPM_FIX_X:
+				b = HT_LINE | HT_DIR_Y;
+				x = thd->selstart.x;
+				break;
+
+			case VPM_FIX_Y:
+				b = HT_LINE | HT_DIR_X;
+				y = thd->selstart.y;
+				break;
+
+			case VPM_FIX_HORIZONTAL:
+				if (dx == -dy) {
+					/* We are on a straight horizontal line. Determine the 'rail'
+					 * to build based the sub tile location. */
+					b = (x & TILE_UNIT_MASK) + (y & TILE_UNIT_MASK) >= TILE_SIZE ? HT_LINE | HT_DIR_HL : HT_LINE | HT_DIR_HU;
+				} else {
+					/* We are not on a straight line. Determine the rail to build
+					 * based on whether we are above or below it. */
+					b = dx + dy >= TILE_SIZE ? HT_LINE | HT_DIR_HU : HT_LINE | HT_DIR_HL;
+
+					/* Calculate where a horizontal line through the start point and
+					 * a vertical line from the selected end point intersect and
+					 * use that point as the end point. */
+					int offset = (raw_dx - raw_dy) / 2;
+					x = thd->selstart.x - (offset & ~TILE_UNIT_MASK);
+					y = thd->selstart.y + (offset & ~TILE_UNIT_MASK);
+
+					/* 'Build' the last half rail tile if needed */
+					if ((offset & TILE_UNIT_MASK) > (TILE_SIZE / 2)) {
+						if (dx + dy >= TILE_SIZE) {
+							x += (dx + dy < 0) ? TILE_SIZE : -TILE_SIZE;
+						} else {
+							y += (dx + dy < 0) ? TILE_SIZE : -TILE_SIZE;
+						}
+					}
+
+					/* Make sure we do not overflow the map! */
+					CheckUnderflow(x, y, 1);
+					CheckUnderflow(y, x, 1);
+					CheckOverflow(x, y, (MapMaxX() - 1) * TILE_SIZE, 1);
+					CheckOverflow(y, x, (MapMaxY() - 1) * TILE_SIZE, 1);
+					assert(x >= 0 && y >= 0 && x <= (int)MapMaxX() * TILE_SIZE && y <= (int)MapMaxY() * TILE_SIZE);
+				}
+				break;
+
+			case VPM_FIX_VERTICAL:
+				if (dx == dy) {
+					/* We are on a straight vertical line. Determine the 'rail'
+					 * to build based the sub tile location. */
+					b = (x & TILE_UNIT_MASK) > (y & TILE_UNIT_MASK) ? HT_LINE | HT_DIR_VL : HT_LINE | HT_DIR_VR;
+				} else {
+					/* We are not on a straight line. Determine the rail to build
+					 * based on whether we are left or right from it. */
+					b = dx < dy ? HT_LINE | HT_DIR_VL : HT_LINE | HT_DIR_VR;
+
+					/* Calculate where a vertical line through the start point and
+					 * a horizontal line from the selected end point intersect and
+					 * use that point as the end point. */
+					int offset = (raw_dx + raw_dy + TILE_SIZE) / 2;
+					x = thd->selstart.x - (offset & ~TILE_UNIT_MASK);
+					y = thd->selstart.y - (offset & ~TILE_UNIT_MASK);
+
+					/* 'Build' the last half rail tile if needed */
+					if ((offset & TILE_UNIT_MASK) > (TILE_SIZE / 2)) {
+						if (dx - dy < 0) {
+							y += (dx > dy) ? TILE_SIZE : -TILE_SIZE;
+						} else {
+							x += (dx < dy) ? TILE_SIZE : -TILE_SIZE;
+						}
+					}
+
+					/* Make sure we do not overflow the map! */
+					CheckUnderflow(x, y, -1);
+					CheckUnderflow(y, x, -1);
+					CheckOverflow(x, y, (MapMaxX() - 1) * TILE_SIZE, -1);
+					CheckOverflow(y, x, (MapMaxY() - 1) * TILE_SIZE, -1);
+					assert(x >= 0 && y >= 0 && x <= (int)MapMaxX() * TILE_SIZE && y <= (int)MapMaxY() * TILE_SIZE);
+				}
+				break;
+
+			default:
+				NOT_REACHED();
+		}
+	} else if (TileVirtXY(thd->selstart.x, thd->selstart.y) == TileVirtXY(x, y)) { // check if we're only within one tile
+		if (method & VPM_RAILDIRS) {
 			b = GetAutorailHT(x, y);
 		} else { // rect for autosignals on one tile
 			b = HT_RECT;
@@ -2578,7 +2720,7 @@ void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method)
 	}
 
 	/* Special handling of drag in any (8-way) direction */
-	if (method == VPM_RAILDIRS || method == VPM_SIGNALDIRS) {
+	if (method & (VPM_RAILDIRS | VPM_SIGNALDIRS)) {
 		_thd.selend.x = x;
 		_thd.selend.y = y;
 		CalcRaildirsDrawstyle(&_thd, x, y, method);
@@ -2710,12 +2852,10 @@ bool VpHandlePlaceSizingDrag()
 	_special_mouse_mode = WSM_NONE;
 	if (_thd.next_drawstyle == HT_RECT) {
 		_thd.place_mode = HT_RECT;
-	} else if (_thd.select_method == VPM_SIGNALDIRS) { // some might call this a hack... -- Dominik
+	} else if (_thd.select_method & VPM_SIGNALDIRS) {
 		_thd.place_mode = HT_RECT;
-	} else if (_thd.next_drawstyle & HT_LINE) {
-		_thd.place_mode = HT_RAIL;
-	} else if (_thd.next_drawstyle & HT_RAIL) {
-		_thd.place_mode = HT_RAIL;
+	} else if (_thd.select_method & VPM_RAILDIRS) {
+		_thd.place_mode = (_thd.select_method & ~VPM_RAILDIRS) ? _thd.next_drawstyle : HT_RAIL;
 	} else {
 		_thd.place_mode = HT_POINT;
 	}

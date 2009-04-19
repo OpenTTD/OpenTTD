@@ -76,29 +76,27 @@ static void GenericPlaceRail(TileIndex tile, int cmd)
 
 static void PlaceRail_N(TileIndex tile)
 {
-	int cmd = _tile_fract_coords.x > _tile_fract_coords.y ? 4 : 5;
-	GenericPlaceRail(tile, cmd);
+	VpStartPlaceSizing(tile, VPM_FIX_VERTICAL | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 }
 
 static void PlaceRail_NE(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_FIX_Y, DDSP_PLACE_RAIL_NE);
+	VpStartPlaceSizing(tile, VPM_FIX_Y | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 }
 
 static void PlaceRail_E(TileIndex tile)
 {
-	int cmd = _tile_fract_coords.x + _tile_fract_coords.y <= 15 ? 2 : 3;
-	GenericPlaceRail(tile, cmd);
+	VpStartPlaceSizing(tile, VPM_FIX_HORIZONTAL | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 }
 
 static void PlaceRail_NW(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_FIX_X, DDSP_PLACE_RAIL_NW);
+	VpStartPlaceSizing(tile, VPM_FIX_X | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 }
 
 static void PlaceRail_AutoRail(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_RAILDIRS, DDSP_PLACE_AUTORAIL);
+	VpStartPlaceSizing(tile, VPM_RAILDIRS, DDSP_PLACE_RAIL);
 }
 
 /**
@@ -332,7 +330,7 @@ static bool RailToolbar_CtrlChanged(Window *w)
  */
 static void BuildRailClick_N(Window *w)
 {
-	HandlePlacePushButton(w, RTW_BUILD_NS, GetRailTypeInfo(_cur_railtype)->cursor.rail_ns, HT_RECT, PlaceRail_N);
+	HandlePlacePushButton(w, RTW_BUILD_NS, GetRailTypeInfo(_cur_railtype)->cursor.rail_ns, HT_LINE | HT_DIR_VL, PlaceRail_N);
 }
 
 /**
@@ -342,7 +340,7 @@ static void BuildRailClick_N(Window *w)
  */
 static void BuildRailClick_NE(Window *w)
 {
-	HandlePlacePushButton(w, RTW_BUILD_X, GetRailTypeInfo(_cur_railtype)->cursor.rail_swne, HT_RECT, PlaceRail_NE);
+	HandlePlacePushButton(w, RTW_BUILD_X, GetRailTypeInfo(_cur_railtype)->cursor.rail_swne, HT_LINE | HT_DIR_X, PlaceRail_NE);
 }
 
 /**
@@ -352,7 +350,7 @@ static void BuildRailClick_NE(Window *w)
  */
 static void BuildRailClick_E(Window *w)
 {
-	HandlePlacePushButton(w, RTW_BUILD_EW, GetRailTypeInfo(_cur_railtype)->cursor.rail_ew, HT_RECT, PlaceRail_E);
+	HandlePlacePushButton(w, RTW_BUILD_EW, GetRailTypeInfo(_cur_railtype)->cursor.rail_ew, HT_LINE | HT_DIR_HL, PlaceRail_E);
 }
 
 /**
@@ -362,7 +360,7 @@ static void BuildRailClick_E(Window *w)
  */
 static void BuildRailClick_NW(Window *w)
 {
-	HandlePlacePushButton(w, RTW_BUILD_Y, GetRailTypeInfo(_cur_railtype)->cursor.rail_nwse, HT_RECT, PlaceRail_NW);
+	HandlePlacePushButton(w, RTW_BUILD_Y, GetRailTypeInfo(_cur_railtype)->cursor.rail_nwse, HT_LINE | HT_DIR_Y, PlaceRail_NW);
 }
 
 /**
@@ -704,7 +702,7 @@ struct BuildRailToolbarWindow : Window {
 					ShowBuildBridgeWindow(start_tile, end_tile, TRANSPORT_RAIL, _cur_railtype);
 					break;
 
-				case DDSP_PLACE_AUTORAIL:
+				case DDSP_PLACE_RAIL:
 					HandleAutodirPlacement();
 					break;
 
@@ -727,11 +725,6 @@ struct BuildRailToolbarWindow : Window {
 						break;
 					}
 					HandleStationPlacement(start_tile, end_tile);
-					break;
-
-				case DDSP_PLACE_RAIL_NE:
-				case DDSP_PLACE_RAIL_NW:
-					DoRailroadTrack(select_proc == DDSP_PLACE_RAIL_NE ? TRACK_X : TRACK_Y);
 					break;
 			}
 		}
