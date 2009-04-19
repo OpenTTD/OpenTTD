@@ -59,7 +59,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date)
 
 	AllocateMap(size_x, size_y);
 
-	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
+	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 
 	_pause_game = 0;
 	_fast_forward = 0;

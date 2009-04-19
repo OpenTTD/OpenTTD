@@ -10,26 +10,16 @@
 #include "window_type.h"
 #include "tile_type.h"
 
-/** Viewport highlight mode (for highlighting tiles below cursor) */
-enum ViewportHighlightMode {
-	VHM_NONE    = 0, ///< default
-	VHM_RECT    = 1, ///< rectangle (stations, depots, ...)
-	VHM_POINT   = 2, ///< point (lower land, raise land, level land, ...)
-	VHM_SPECIAL = 3, ///< special mode used for highlighting while dragging (and for tunnels/docks)
-	VHM_DRAG    = 4, ///< dragging items in the depot windows
-	VHM_RAIL    = 5, ///< rail pieces
-};
-
 /** Highlighting draw styles */
 enum HighLightStyle {
-	HT_NONE   = 0x00,
-	HT_RECT   = 0x80,
-	HT_POINT  = 0x40,
-	HT_LINE   = 0x20,    ///< used for autorail highlighting (longer streches)
-	                     ///< (uses lower bits to indicate direction)
-	HT_RAIL   = 0x10,    ///< autorail (one piece)
-	                     ///< (uses lower bits to indicate direction)
-	HT_DRAG_MASK = 0xF0, ///< masks the drag-type
+	HT_NONE      = 0x00, ///< default
+	HT_RECT      = 0x10, ///< rectangle (stations, depots, ...)
+	HT_POINT     = 0x20, ///< point (lower land, raise land, level land, ...)
+	HT_SPECIAL   = 0x30, ///< special mode used for highlighting while dragging (and for tunnels/docks)
+	HT_DRAG      = 0x40, ///< dragging items in the depot windows
+	HT_LINE      = 0x08, ///< used for autorail highlighting (longer streches), lower bits: direction
+	HT_RAIL      = 0x80, ///< autorail (one piece), lower bits: direction
+	HT_DRAG_MASK = 0xF8, ///< masks the drag-type
 
 	/* lower bits (used with HT_LINE and HT_RAIL):
 	 * (see ASCII art in autorail.h for a visual interpretation) */
@@ -64,7 +54,7 @@ struct TileHighlightData {
 	HighLightStyle new_drawstyle;  // only used in UpdateTileSelection() to as a buffer to compare if there was a change between old and new
 	HighLightStyle next_drawstyle; // queued, but not yet drawn style
 
-	ViewportHighlightMode place_mode;
+	HighLightStyle place_mode;
 	bool make_square_red;
 	WindowClass window_class;
 	WindowNumber window_number;

@@ -102,13 +102,13 @@ public:
 			case BTW_TYPE_31: case BTW_TYPE_32: case BTW_TYPE_33: case BTW_TYPE_34:
 				if (widget - BTW_TYPE_11 >= this->count) break;
 
-				if (HandlePlacePushButton(this, widget, SPR_CURSOR_TREE, VHM_RECT, NULL)) {
+				if (HandlePlacePushButton(this, widget, SPR_CURSOR_TREE, HT_RECT, NULL)) {
 					this->tree_to_plant = this->base + widget - BTW_TYPE_11;
 				}
 				break;
 
 			case BTW_TYPE_RANDOM: // tree of random type.
-				if (HandlePlacePushButton(this, BTW_TYPE_RANDOM, SPR_CURSOR_TREE, VHM_RECT, NULL)) {
+				if (HandlePlacePushButton(this, BTW_TYPE_RANDOM, SPR_CURSOR_TREE, HT_RECT, NULL)) {
 					this->tree_to_plant = UINT_MAX;
 				}
 				break;

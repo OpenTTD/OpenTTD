@@ -284,7 +284,7 @@ void PlaceLandBlockInfo()
 		ResetObjectToPlace();
 	} else {
 		_place_proc = Place_LandInfo;
-		SetObjectToPlace(SPR_CURSOR_QUERY, PAL_NONE, VHM_RECT, WC_MAIN_TOOLBAR, 0);
+		SetObjectToPlace(SPR_CURSOR_QUERY, PAL_NONE, HT_RECT, WC_MAIN_TOOLBAR, 0);
 	}
 }
 
@@ -1546,7 +1546,7 @@ public:
 		this->resize.step_width = 2;
 		this->resize.step_height = 10;
 
-		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
+		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 
 		/* Use an array to define what will be the current file type being handled
 		 * by current file mode */

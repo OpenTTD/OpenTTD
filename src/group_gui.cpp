@@ -546,7 +546,7 @@ public:
 				this->vehicle_sel = v->index;
 
 				if (v->IsValid()) {
-					SetObjectToPlaceWnd(v->GetImage(DIR_W), GetVehiclePalette(v), VHM_DRAG, this);
+					SetObjectToPlaceWnd(v->GetImage(DIR_W), GetVehiclePalette(v), HT_DRAG, this);
 					_cursor.vehchain = true;
 				}
 

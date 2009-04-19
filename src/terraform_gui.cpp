@@ -202,27 +202,27 @@ enum TerraformToolbarWidgets {
 
 static void TerraformClick_Lower(Window *w)
 {
-	HandlePlacePushButton(w, TTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, VHM_POINT, PlaceProc_LowerLand);
+	HandlePlacePushButton(w, TTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT, PlaceProc_LowerLand);
 }
 
 static void TerraformClick_Raise(Window *w)
 {
-	HandlePlacePushButton(w, TTW_RAISE_LAND, ANIMCURSOR_RAISELAND, VHM_POINT, PlaceProc_RaiseLand);
+	HandlePlacePushButton(w, TTW_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT, PlaceProc_RaiseLand);
 }
 
 static void TerraformClick_Level(Window *w)
 {
-	HandlePlacePushButton(w, TTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, VHM_POINT, PlaceProc_LevelLand);
+	HandlePlacePushButton(w, TTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT, PlaceProc_LevelLand);
 }
 
 static void TerraformClick_Dynamite(Window *w)
 {
-	HandlePlacePushButton(w, TTW_DEMOLISH, ANIMCURSOR_DEMOLISH , VHM_RECT, PlaceProc_DemolishArea);
+	HandlePlacePushButton(w, TTW_DEMOLISH, ANIMCURSOR_DEMOLISH , HT_RECT, PlaceProc_DemolishArea);
 }
 
 static void TerraformClick_BuyLand(Window *w)
 {
-	HandlePlacePushButton(w, TTW_BUY_LAND, SPR_CURSOR_BUY_LAND, VHM_RECT, PlaceProc_BuyLand);
+	HandlePlacePushButton(w, TTW_BUY_LAND, SPR_CURSOR_BUY_LAND, HT_RECT, PlaceProc_BuyLand);
 }
 
 static void TerraformClick_Trees(Window *w)
@@ -233,7 +233,7 @@ static void TerraformClick_Trees(Window *w)
 
 static void TerraformClick_PlaceSign(Window *w)
 {
-	HandlePlacePushButton(w, TTW_PLACE_SIGN, SPR_CURSOR_SIGN, VHM_RECT, PlaceProc_Sign);
+	HandlePlacePushButton(w, TTW_PLACE_SIGN, SPR_CURSOR_SIGN, HT_RECT, PlaceProc_Sign);
 }
 
 static OnButtonClick * const _terraform_button_proc[] = {
@@ -562,37 +562,37 @@ static const NWidgetPart _nested_scen_edit_land_gen_widgets[] = {
  */
 static void EditorTerraformClick_Dynamite(Window *w)
 {
-	HandlePlacePushButton(w, ETTW_DEMOLISH, ANIMCURSOR_DEMOLISH, VHM_RECT, PlaceProc_DemolishArea);
+	HandlePlacePushButton(w, ETTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, PlaceProc_DemolishArea);
 }
 
 static void EditorTerraformClick_LowerBigLand(Window *w)
 {
-	HandlePlacePushButton(w, ETTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, VHM_POINT, PlaceProc_LowerBigLand);
+	HandlePlacePushButton(w, ETTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT, PlaceProc_LowerBigLand);
 }
 
 static void EditorTerraformClick_RaiseBigLand(Window *w)
 {
-	HandlePlacePushButton(w, ETTW_RAISE_LAND, ANIMCURSOR_RAISELAND, VHM_POINT, PlaceProc_RaiseBigLand);
+	HandlePlacePushButton(w, ETTW_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT, PlaceProc_RaiseBigLand);
 }
 
 static void EditorTerraformClick_LevelLand(Window *w)
 {
-	HandlePlacePushButton(w, ETTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, VHM_POINT, PlaceProc_LevelLand);
+	HandlePlacePushButton(w, ETTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT, PlaceProc_LevelLand);
 }
 
 static void EditorTerraformClick_RockyArea(Window *w)
 {
-	HandlePlacePushButton(w, ETTW_PLACE_ROCKS, SPR_CURSOR_ROCKY_AREA, VHM_RECT, PlaceProc_RockyArea);
+	HandlePlacePushButton(w, ETTW_PLACE_ROCKS, SPR_CURSOR_ROCKY_AREA, HT_RECT, PlaceProc_RockyArea);
 }
 
 static void EditorTerraformClick_DesertLightHouse(Window *w)
 {
-	HandlePlacePushButton(w, ETTW_PLACE_DESERT_LIGHTHOUSE, SPR_CURSOR_LIGHTHOUSE, VHM_RECT, (_settings_game.game_creation.landscape == LT_TROPIC) ? PlaceProc_DesertArea : PlaceProc_LightHouse);
+	HandlePlacePushButton(w, ETTW_PLACE_DESERT_LIGHTHOUSE, SPR_CURSOR_LIGHTHOUSE, HT_RECT, (_settings_game.game_creation.landscape == LT_TROPIC) ? PlaceProc_DesertArea : PlaceProc_LightHouse);
 }
 
 static void EditorTerraformClick_Transmitter(Window *w)
 {
-	HandlePlacePushButton(w, ETTW_PLACE_TRANSMITTER, SPR_CURSOR_TRANSMITTER, VHM_RECT, PlaceProc_Transmitter);
+	HandlePlacePushButton(w, ETTW_PLACE_TRANSMITTER, SPR_CURSOR_TRANSMITTER, HT_RECT, PlaceProc_Transmitter);
 }
 
 static const uint16 _editor_terraform_keycodes[] = {

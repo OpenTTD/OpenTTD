@@ -107,46 +107,46 @@ enum DockToolbarWidgets {
 static void BuildDocksClick_Canal(Window *w)
 {
 
-	HandlePlacePushButton(w, DTW_CANAL, SPR_CURSOR_CANAL, VHM_RECT, PlaceDocks_BuildCanal);
+	HandlePlacePushButton(w, DTW_CANAL, SPR_CURSOR_CANAL, HT_RECT, PlaceDocks_BuildCanal);
 }
 
 static void BuildDocksClick_Lock(Window *w)
 {
-	HandlePlacePushButton(w, DTW_LOCK, SPR_CURSOR_LOCK, VHM_RECT, PlaceDocks_BuildLock);
+	HandlePlacePushButton(w, DTW_LOCK, SPR_CURSOR_LOCK, HT_RECT, PlaceDocks_BuildLock);
 }
 
 static void BuildDocksClick_Demolish(Window *w)
 {
-	HandlePlacePushButton(w, DTW_DEMOLISH, ANIMCURSOR_DEMOLISH, VHM_RECT, PlaceProc_DemolishArea);
+	HandlePlacePushButton(w, DTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, PlaceProc_DemolishArea);
 }
 
 static void BuildDocksClick_Depot(Window *w)
 {
 	if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
-	if (HandlePlacePushButton(w, DTW_DEPOT, SPR_CURSOR_SHIP_DEPOT, VHM_RECT, PlaceDocks_Depot)) ShowBuildDocksDepotPicker(w);
+	if (HandlePlacePushButton(w, DTW_DEPOT, SPR_CURSOR_SHIP_DEPOT, HT_RECT, PlaceDocks_Depot)) ShowBuildDocksDepotPicker(w);
 }
 
 static void BuildDocksClick_Dock(Window *w)
 {
 	if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
-	if (HandlePlacePushButton(w, DTW_STATION, SPR_CURSOR_DOCK, VHM_SPECIAL, PlaceDocks_Dock)) ShowBuildDockStationPicker(w);
+	if (HandlePlacePushButton(w, DTW_STATION, SPR_CURSOR_DOCK, HT_SPECIAL, PlaceDocks_Dock)) ShowBuildDockStationPicker(w);
 }
 
 static void BuildDocksClick_Buoy(Window *w)
 {
 	if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
-	HandlePlacePushButton(w, DTW_BUOY, SPR_CURSOR_BOUY, VHM_RECT, PlaceDocks_Buoy);
+	HandlePlacePushButton(w, DTW_BUOY, SPR_CURSOR_BOUY, HT_RECT, PlaceDocks_Buoy);
 }
 
 static void BuildDocksClick_River(Window *w)
 {
 	if (_game_mode != GM_EDITOR) return;
-	HandlePlacePushButton(w, DTW_RIVER, SPR_CURSOR_RIVER, VHM_RECT, PlaceDocks_BuildRiver);
+	HandlePlacePushButton(w, DTW_RIVER, SPR_CURSOR_RIVER, HT_RECT, PlaceDocks_BuildRiver);
 }
 
 static void BuildDocksClick_Aqueduct(Window *w)
 {
-	HandlePlacePushButton(w, DTW_BUILD_AQUEDUCT, SPR_CURSOR_AQUEDUCT, VHM_RECT, PlaceDocks_Aqueduct);
+	HandlePlacePushButton(w, DTW_BUILD_AQUEDUCT, SPR_CURSOR_AQUEDUCT, HT_RECT, PlaceDocks_Aqueduct);
 }
 
 

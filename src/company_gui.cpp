@@ -1616,7 +1616,7 @@ struct CompanyWindow : Window
 				TileIndex tile = GetCompany((CompanyID)this->window_number)->location_of_HQ;
 				if (tile == INVALID_TILE) {
 					if ((byte)this->window_number != _local_company) return;
-					SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, VHM_RECT, this);
+					SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, HT_RECT, this);
 					SetTileSelectSize(2, 2);
 					this->LowerWidget(CW_WIDGET_BUILD_VIEW_HQ);
 					this->InvalidateWidget(CW_WIDGET_BUILD_VIEW_HQ);
@@ -1631,7 +1631,7 @@ struct CompanyWindow : Window
 			}
 
 			case CW_WIDGET_RELOCATE_HQ:
-				SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, VHM_RECT, this);
+				SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, HT_RECT, this);
 				SetTileSelectSize(2, 2);
 				this->LowerWidget(CW_WIDGET_RELOCATE_HQ);
 				this->InvalidateWidget(CW_WIDGET_RELOCATE_HQ);

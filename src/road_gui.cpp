@@ -293,7 +293,7 @@ static bool RoadToolbar_CtrlChanged(Window *w)
  */
 static void BuildRoadClick_X_Dir(Window *w)
 {
-	HandlePlacePushButton(w, RTW_ROAD_X, _road_type_infos[_cur_roadtype].cursor_nwse, VHM_RECT, PlaceRoad_X_Dir);
+	HandlePlacePushButton(w, RTW_ROAD_X, _road_type_infos[_cur_roadtype].cursor_nwse, HT_RECT, PlaceRoad_X_Dir);
 }
 
 /**
@@ -304,7 +304,7 @@ static void BuildRoadClick_X_Dir(Window *w)
  */
 static void BuildRoadClick_Y_Dir(Window *w)
 {
-	HandlePlacePushButton(w, RTW_ROAD_Y, _road_type_infos[_cur_roadtype].cursor_nesw, VHM_RECT, PlaceRoad_Y_Dir);
+	HandlePlacePushButton(w, RTW_ROAD_Y, _road_type_infos[_cur_roadtype].cursor_nesw, HT_RECT, PlaceRoad_Y_Dir);
 }
 
 /**
@@ -315,30 +315,30 @@ static void BuildRoadClick_Y_Dir(Window *w)
  */
 static void BuildRoadClick_AutoRoad(Window *w)
 {
-	HandlePlacePushButton(w, RTW_AUTOROAD, _road_type_infos[_cur_roadtype].cursor_autoroad, VHM_RECT, PlaceRoad_AutoRoad);
+	HandlePlacePushButton(w, RTW_AUTOROAD, _road_type_infos[_cur_roadtype].cursor_autoroad, HT_RECT, PlaceRoad_AutoRoad);
 }
 
 static void BuildRoadClick_Demolish(Window *w)
 {
-	HandlePlacePushButton(w, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, VHM_RECT, PlaceProc_DemolishArea);
+	HandlePlacePushButton(w, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, PlaceProc_DemolishArea);
 }
 
 static void BuildRoadClick_Depot(Window *w)
 {
 	if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD)) return;
-	if (HandlePlacePushButton(w, RTW_DEPOT, SPR_CURSOR_ROAD_DEPOT, VHM_RECT, PlaceRoad_Depot)) ShowRoadDepotPicker(w);
+	if (HandlePlacePushButton(w, RTW_DEPOT, SPR_CURSOR_ROAD_DEPOT, HT_RECT, PlaceRoad_Depot)) ShowRoadDepotPicker(w);
 }
 
 static void BuildRoadClick_BusStation(Window *w)
 {
 	if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD)) return;
-	if (HandlePlacePushButton(w, RTW_BUS_STATION, SPR_CURSOR_BUS_STATION, VHM_RECT, PlaceRoad_BusStation)) ShowRVStationPicker(w, ROADSTOP_BUS);
+	if (HandlePlacePushButton(w, RTW_BUS_STATION, SPR_CURSOR_BUS_STATION, HT_RECT, PlaceRoad_BusStation)) ShowRVStationPicker(w, ROADSTOP_BUS);
 }
 
 static void BuildRoadClick_TruckStation(Window *w)
 {
 	if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD)) return;
-	if (HandlePlacePushButton(w, RTW_TRUCK_STATION, SPR_CURSOR_TRUCK_STATION, VHM_RECT, PlaceRoad_TruckStation)) ShowRVStationPicker(w, ROADSTOP_TRUCK);
+	if (HandlePlacePushButton(w, RTW_TRUCK_STATION, SPR_CURSOR_TRUCK_STATION, HT_RECT, PlaceRoad_TruckStation)) ShowRVStationPicker(w, ROADSTOP_TRUCK);
 }
 
 /**
@@ -357,12 +357,12 @@ static void BuildRoadClick_OneWay(Window *w)
 
 static void BuildRoadClick_Bridge(Window *w)
 {
-	HandlePlacePushButton(w, RTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, VHM_RECT, PlaceRoad_Bridge);
+	HandlePlacePushButton(w, RTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, HT_RECT, PlaceRoad_Bridge);
 }
 
 static void BuildRoadClick_Tunnel(Window *w)
 {
-	HandlePlacePushButton(w, RTW_BUILD_TUNNEL, SPR_CURSOR_ROAD_TUNNEL, VHM_SPECIAL, PlaceRoad_Tunnel);
+	HandlePlacePushButton(w, RTW_BUILD_TUNNEL, SPR_CURSOR_ROAD_TUNNEL, HT_SPECIAL, PlaceRoad_Tunnel);
 }
 
 static void BuildRoadClick_Remove(Window *w)

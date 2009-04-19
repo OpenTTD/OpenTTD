@@ -577,7 +577,7 @@ void Window::DeleteChildWindows() const
  */
 Window::~Window()
 {
-	if (_thd.place_mode != VHM_NONE &&
+	if (_thd.place_mode != HT_NONE &&
 			_thd.window_class == this->window_class &&
 			_thd.window_number == this->window_number) {
 		ResetObjectToPlace();
@@ -1994,7 +1994,7 @@ void MouseLoop(MouseClick click, int mousewheel)
 			case MC_DOUBLE_LEFT:
 			case MC_LEFT:
 				DEBUG(misc, 2, "Cursor: 0x%X (%d)", _cursor.sprite, _cursor.sprite);
-				if (_thd.place_mode != VHM_NONE &&
+				if (_thd.place_mode != HT_NONE &&
 						/* query button and place sign button work in pause mode */
 						_cursor.sprite != SPR_CURSOR_QUERY &&
 						_cursor.sprite != SPR_CURSOR_SIGN &&
@@ -2003,7 +2003,7 @@ void MouseLoop(MouseClick click, int mousewheel)
 					return;
 				}
 
-				if (_thd.place_mode == VHM_NONE) {
+				if (_thd.place_mode == HT_NONE) {
 					if (!HandleViewportClicked(vp, x, y) &&
 							!(w->flags4 & WF_DISABLE_VP_SCROLL) &&
 							_settings_client.gui.left_mouse_btn_scrolling) {

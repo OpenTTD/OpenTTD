@@ -487,7 +487,7 @@ struct DepotWindow : Window {
 		DepotGUIAction mode = this->GetVehicleFromDepotWndPt(x, y, &v, &gdvp);
 
 		/* share / copy orders */
-		if (_thd.place_mode != VHM_NONE && mode != MODE_ERROR) {
+		if (_thd.place_mode != HT_NONE && mode != MODE_ERROR) {
 			_place_clicked_vehicle = (this->type == VEH_TRAIN ? gdvp.head : v);
 			return;
 		}
@@ -509,7 +509,7 @@ struct DepotWindow : Window {
 
 					this->sel = v->index;
 					this->SetDirty();
-					SetObjectToPlaceWnd(image, GetVehiclePalette(v), VHM_DRAG, this);
+					SetObjectToPlaceWnd(image, GetVehiclePalette(v), HT_DRAG, this);
 
 					switch (v->type) {
 						case VEH_TRAIN:
@@ -783,7 +783,7 @@ struct DepotWindow : Window {
 					};
 
 					_place_clicked_vehicle = NULL;
-					SetObjectToPlaceWnd(clone_icons[this->type], PAL_NONE, VHM_RECT, this);
+					SetObjectToPlaceWnd(clone_icons[this->type], PAL_NONE, HT_RECT, this);
 				} else {
 					ResetObjectToPlace();
 				}

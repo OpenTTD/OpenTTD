@@ -87,7 +87,7 @@ void HandleOnEditText(const char *str)
  * @param placeproc Procedure which will be called when someone clicks on the map
  * @return true if the button is clicked, false if it's unclicked
  */
-bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, ViewportHighlightMode mode, PlaceProc *placeproc)
+bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, HighLightStyle mode, PlaceProc *placeproc)
 {
 	if (w->IsWidgetDisabled(widget)) return false;
 

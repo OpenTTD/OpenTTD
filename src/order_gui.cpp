@@ -454,7 +454,7 @@ private:
 		w->ToggleWidgetLoweredState(ORDER_WIDGET_GOTO);
 		if (w->IsWidgetLowered(ORDER_WIDGET_GOTO)) {
 			_place_clicked_vehicle = NULL;
-			SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, VHM_RECT, w);
+			SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_RECT, w);
 			w->goto_type = OPOS_GOTO;
 		} else {
 			ResetObjectToPlace();
@@ -522,7 +522,7 @@ private:
 	{
 		w->InvalidateWidget(ORDER_WIDGET_GOTO);
 		w->LowerWidget(ORDER_WIDGET_GOTO);
-		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, VHM_RECT, w);
+		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_RECT, w);
 		w->goto_type = OPOS_CONDITIONAL;
 	}
 
@@ -884,7 +884,7 @@ public:
 
 					if (this->vehicle->owner == _local_company) {
 						/* Activate drag and drop */
-						SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, VHM_DRAG, this);
+						SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
 					}
 				}
 

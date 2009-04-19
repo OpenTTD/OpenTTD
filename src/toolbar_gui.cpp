@@ -238,7 +238,7 @@ static void SelectSignTool()
 	if (_cursor.sprite == SPR_CURSOR_SIGN) {
 		ResetObjectToPlace();
 	} else {
-		SetObjectToPlace(SPR_CURSOR_SIGN, PAL_NONE, VHM_RECT, WC_MAIN_TOOLBAR, 0);
+		SetObjectToPlace(SPR_CURSOR_SIGN, PAL_NONE, HT_RECT, WC_MAIN_TOOLBAR, 0);
 		_place_proc = PlaceProc_Sign;
 	}
 }

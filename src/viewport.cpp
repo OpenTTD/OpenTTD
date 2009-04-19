@@ -2060,7 +2060,7 @@ void PlaceObject()
 	pt = GetTileBelowCursor();
 	if (pt.x == -1) return;
 
-	if (_thd.place_mode == VHM_POINT) {
+	if (_thd.place_mode == HT_POINT) {
 		pt.x += 8;
 		pt.y += 8;
 	}
@@ -2149,7 +2149,7 @@ void UpdateTileSelection()
 
 	_thd.new_drawstyle = HT_NONE;
 
-	if (_thd.place_mode == VHM_SPECIAL) {
+	if (_thd.place_mode == HT_SPECIAL) {
 		x1 = _thd.selend.x;
 		y1 = _thd.selend.y;
 		if (x1 != -1) {
@@ -2166,21 +2166,21 @@ void UpdateTileSelection()
 			_thd.new_size.y = y2 - y1 + TILE_SIZE;
 			_thd.new_drawstyle = _thd.next_drawstyle;
 		}
-	} else if (_thd.place_mode != VHM_NONE) {
+	} else if (_thd.place_mode != HT_NONE) {
 		Point pt = GetTileBelowCursor();
 		x1 = pt.x;
 		y1 = pt.y;
 		if (x1 != -1) {
 			switch (_thd.place_mode) {
-				case VHM_RECT:
+				case HT_RECT:
 					_thd.new_drawstyle = HT_RECT;
 					break;
-				case VHM_POINT:
+				case HT_POINT:
 					_thd.new_drawstyle = HT_POINT;
 					x1 += TILE_SIZE / 2;
 					y1 += TILE_SIZE / 2;
 					break;
-				case VHM_RAIL:
+				case HT_RAIL:
 					_thd.new_drawstyle = GetAutorailHT(pt.x, pt.y); // draw one highlighted tile
 					break;
 				default:
@@ -2243,14 +2243,14 @@ void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, ViewportDrag
 		_thd.selstart.y += TILE_SIZE / 2;
 	}
 
-	if (_thd.place_mode == VHM_RECT) {
-		_thd.place_mode = VHM_SPECIAL;
+	if (_thd.place_mode == HT_RECT) {
+		_thd.place_mode = HT_SPECIAL;
 		_thd.next_drawstyle = HT_RECT;
-	} else if (_thd.place_mode == VHM_RAIL) { // autorail one piece
-		_thd.place_mode = VHM_SPECIAL;
+	} else if (_thd.place_mode == HT_RAIL) { // autorail one piece
+		_thd.place_mode = HT_SPECIAL;
 		_thd.next_drawstyle = _thd.drawstyle;
 	} else {
-		_thd.place_mode = VHM_SPECIAL;
+		_thd.place_mode = HT_SPECIAL;
 		_thd.next_drawstyle = HT_POINT;
 	}
 	_special_mouse_mode = WSM_SIZING;
@@ -2709,15 +2709,15 @@ bool VpHandlePlaceSizingDrag()
 	 * keep the selected tool, but reset it to the original mode. */
 	_special_mouse_mode = WSM_NONE;
 	if (_thd.next_drawstyle == HT_RECT) {
-		_thd.place_mode = VHM_RECT;
+		_thd.place_mode = HT_RECT;
 	} else if (_thd.select_method == VPM_SIGNALDIRS) { // some might call this a hack... -- Dominik
-		_thd.place_mode = VHM_RECT;
+		_thd.place_mode = HT_RECT;
 	} else if (_thd.next_drawstyle & HT_LINE) {
-		_thd.place_mode = VHM_RAIL;
+		_thd.place_mode = HT_RAIL;
 	} else if (_thd.next_drawstyle & HT_RAIL) {
-		_thd.place_mode = VHM_RAIL;
+		_thd.place_mode = HT_RAIL;
 	} else {
-		_thd.place_mode = VHM_POINT;
+		_thd.place_mode = HT_POINT;
 	}
 	SetTileSelectSize(1, 1);
 
@@ -2726,17 +2726,17 @@ bool VpHandlePlaceSizingDrag()
 	return false;
 }
 
-void SetObjectToPlaceWnd(CursorID icon, SpriteID pal, ViewportHighlightMode mode, Window *w)
+void SetObjectToPlaceWnd(CursorID icon, SpriteID pal, HighLightStyle mode, Window *w)
 {
 	SetObjectToPlace(icon, pal, mode, w->window_class, w->window_number);
 }
 
 #include "table/animcursors.h"
 
-void SetObjectToPlace(CursorID icon, SpriteID pal, ViewportHighlightMode mode, WindowClass window_class, WindowNumber window_num)
+void SetObjectToPlace(CursorID icon, SpriteID pal, HighLightStyle mode, WindowClass window_class, WindowNumber window_num)
 {
 	/* undo clicking on button and drag & drop */
-	if (_thd.place_mode != VHM_NONE || _special_mouse_mode == WSM_DRAGDROP) {
+	if (_thd.place_mode != HT_NONE || _special_mouse_mode == WSM_DRAGDROP) {
 		Window *w = FindWindowById(_thd.window_class, _thd.window_number);
 		if (w != NULL) {
 			/* Call the abort function, but set the window class to something
@@ -2753,8 +2753,8 @@ void SetObjectToPlace(CursorID icon, SpriteID pal, ViewportHighlightMode mode, W
 
 	_thd.make_square_red = false;
 
-	if (mode == VHM_DRAG) { // VHM_DRAG is for dragdropping trains in the depot window
-		mode = VHM_NONE;
+	if (mode == HT_DRAG) { // HT_DRAG is for dragdropping trains in the depot window
+		mode = HT_NONE;
 		_special_mouse_mode = WSM_DRAGDROP;
 	} else {
 		_special_mouse_mode = WSM_NONE;
@@ -2764,7 +2764,7 @@ void SetObjectToPlace(CursorID icon, SpriteID pal, ViewportHighlightMode mode, W
 	_thd.window_class = window_class;
 	_thd.window_number = window_num;
 
-	if (mode == VHM_SPECIAL) // special tools, like tunnels or docks start with presizing mode
+	if (mode == HT_SPECIAL) // special tools, like tunnels or docks start with presizing mode
 		VpStartPreSizing();
 
 	if ((int)icon < 0) {
@@ -2777,5 +2777,5 @@ void SetObjectToPlace(CursorID icon, SpriteID pal, ViewportHighlightMode mode, W
 
 void ResetObjectToPlace()
 {
-	SetObjectToPlace(SPR_CURSOR_MOUSE, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
+	SetObjectToPlace(SPR_CURSOR_MOUSE, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 }
