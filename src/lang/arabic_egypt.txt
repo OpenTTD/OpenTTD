@@ -785,7 +785,7 @@ STR_TOWNNAME_SWEDISH                                            :سويدي
 STR_TOWNNAME_DUTCH                                              :هولندي
 STR_TOWNNAME_FINNISH                                            :فنلندي
 STR_TOWNNAME_POLISH                                             :بلغاري
-STR_TOWNNAME_SLOVAKISH                                          :سلوفاكي
+STR_TOWNNAME_SLOVAK                                             :سلوفاكي
 STR_TOWNNAME_NORWEGIAN                                          :نرويجي
 STR_TOWNNAME_HUNGARIAN                                          :هنغاري
 STR_TOWNNAME_AUSTRIAN                                           :نمساوي

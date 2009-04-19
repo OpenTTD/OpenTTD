@@ -788,7 +788,7 @@ STR_TOWNNAME_SWEDISH                                            :İsveççe
 STR_TOWNNAME_DUTCH                                              :Hollandaca
 STR_TOWNNAME_FINNISH                                            :Fince
 STR_TOWNNAME_POLISH                                             :Polonca
-STR_TOWNNAME_SLOVAKISH                                          :Slovakça
+STR_TOWNNAME_SLOVAK                                             :Slovakça
 STR_TOWNNAME_NORWEGIAN                                          :Norveççe
 STR_TOWNNAME_HUNGARIAN                                          :Macarca
 STR_TOWNNAME_AUSTRIAN                                           :Avusturyaca

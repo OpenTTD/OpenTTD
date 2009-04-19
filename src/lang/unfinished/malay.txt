@@ -676,7 +676,7 @@ STR_TOWNNAME_SWEDISH                                            :Swedish
 STR_TOWNNAME_DUTCH                                              :Dutch
 STR_TOWNNAME_FINNISH                                            :Finnish
 STR_TOWNNAME_POLISH                                             :Polish
-STR_TOWNNAME_SLOVAKISH                                          :Slovakish
+STR_TOWNNAME_SLOVAK                                             :Slovak
 STR_TOWNNAME_NORWEGIAN                                          :Norwegian
 STR_TOWNNAME_HUNGARIAN                                          :Hungarian
 STR_TOWNNAME_AUSTRIAN                                           :Austrian

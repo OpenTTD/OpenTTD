@@ -910,7 +910,7 @@ STR_TOWNNAME_SWEDISH                                            :Шведськ�
 STR_TOWNNAME_DUTCH                                              :Голландські
 STR_TOWNNAME_FINNISH                                            :Фінські
 STR_TOWNNAME_POLISH                                             :Польські
-STR_TOWNNAME_SLOVAKISH                                          :Словацькі
+STR_TOWNNAME_SLOVAK                                             :Словацькі
 STR_TOWNNAME_NORWEGIAN                                          :Норвезькі
 STR_TOWNNAME_HUNGARIAN                                          :Угорські
 STR_TOWNNAME_AUSTRIAN                                           :Австрійські

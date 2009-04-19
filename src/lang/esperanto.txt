@@ -760,7 +760,7 @@ STR_TOWNNAME_SWEDISH                                            :Svede
 STR_TOWNNAME_DUTCH                                              :Nederlande
 STR_TOWNNAME_FINNISH                                            :Finne
 STR_TOWNNAME_POLISH                                             :Pole
-STR_TOWNNAME_SLOVAKISH                                          :Slovake
+STR_TOWNNAME_SLOVAK                                             :Slovake
 STR_TOWNNAME_NORWEGIAN                                          :Norvege
 STR_TOWNNAME_HUNGARIAN                                          :Hungare
 STR_TOWNNAME_AUSTRIAN                                           :Aŭstrie

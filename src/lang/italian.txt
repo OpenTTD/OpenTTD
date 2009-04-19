@@ -790,7 +790,7 @@ STR_TOWNNAME_SWEDISH                                            :Svedesi
 STR_TOWNNAME_DUTCH                                              :Olandesi
 STR_TOWNNAME_FINNISH                                            :Finlandesi
 STR_TOWNNAME_POLISH                                             :Polacchi
-STR_TOWNNAME_SLOVAKISH                                          :Slovacchi
+STR_TOWNNAME_SLOVAK                                             :Slovacchi
 STR_TOWNNAME_NORWEGIAN                                          :Norvegesi
 STR_TOWNNAME_HUNGARIAN                                          :Ungheresi
 STR_TOWNNAME_AUSTRIAN                                           :Austriaci

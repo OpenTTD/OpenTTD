@@ -822,7 +822,7 @@ STR_TOWNNAME_SWEDISH                                            :Svéd
 STR_TOWNNAME_DUTCH                                              :Holland
 STR_TOWNNAME_FINNISH                                            :Finn
 STR_TOWNNAME_POLISH                                             :Lengyel
-STR_TOWNNAME_SLOVAKISH                                          :Szlovák
+STR_TOWNNAME_SLOVAK                                             :Szlovák
 STR_TOWNNAME_NORWEGIAN                                          :Norvég
 STR_TOWNNAME_HUNGARIAN                                          :Magyar
 STR_TOWNNAME_AUSTRIAN                                           :Osztrák

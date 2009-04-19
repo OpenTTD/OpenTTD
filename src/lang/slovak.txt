@@ -852,7 +852,7 @@ STR_TOWNNAME_SWEDISH                                            :Svedske
 STR_TOWNNAME_DUTCH                                              :Holandske
 STR_TOWNNAME_FINNISH                                            :Finske
 STR_TOWNNAME_POLISH                                             :Polske
-STR_TOWNNAME_SLOVAKISH                                          :Slovenske
+STR_TOWNNAME_SLOVAK                                             :Slovenske
 STR_TOWNNAME_NORWEGIAN                                          :Norske
 STR_TOWNNAME_HUNGARIAN                                          :Madarske
 STR_TOWNNAME_AUSTRIAN                                           :Rakuske

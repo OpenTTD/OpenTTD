@@ -789,7 +789,7 @@ STR_TOWNNAME_SWEDISH                                            :Schwedisch
 STR_TOWNNAME_DUTCH                                              :Niederländisch
 STR_TOWNNAME_FINNISH                                            :Finnisch
 STR_TOWNNAME_POLISH                                             :Polnisch
-STR_TOWNNAME_SLOVAKISH                                          :Slovakisch
+STR_TOWNNAME_SLOVAK                                             :Slovakisch
 STR_TOWNNAME_NORWEGIAN                                          :Norwegisch
 STR_TOWNNAME_HUNGARIAN                                          :Ungarisch
 STR_TOWNNAME_AUSTRIAN                                           :Österreichisch

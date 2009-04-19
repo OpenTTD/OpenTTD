@@ -648,7 +648,7 @@ static char *MakeRomanianTownName(char *buf, const char *last, uint32 seed)
 
 
 /**
- * Generates Slovakish town name from given seed.
+ * Generates Slovak town name from given seed.
  * @param buf output buffer
  * @param seed town name seed
  * @param last end of buffer

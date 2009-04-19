@@ -785,7 +785,7 @@ STR_TOWNNAME_SWEDISH                                            :Edishsway
 STR_TOWNNAME_DUTCH                                              :Utchday
 STR_TOWNNAME_FINNISH                                            :Innishfay
 STR_TOWNNAME_POLISH                                             :Olishpay
-STR_TOWNNAME_SLOVAKISH                                          :Ovakishslay
+STR_TOWNNAME_SLOVAK                                             :Ovakishslay
 STR_TOWNNAME_NORWEGIAN                                          :Orwegiannay
 STR_TOWNNAME_HUNGARIAN                                          :Ungarianhay
 STR_TOWNNAME_AUSTRIAN                                           :Austrianway

@@ -779,7 +779,7 @@ STR_TOWNNAME_SWEDISH                                            :שוודית
 STR_TOWNNAME_DUTCH                                              :הולנדית
 STR_TOWNNAME_FINNISH                                            :פינית
 STR_TOWNNAME_POLISH                                             :פולנית
-STR_TOWNNAME_SLOVAKISH                                          :סלובקית
+STR_TOWNNAME_SLOVAK                                             :סלובקית
 STR_TOWNNAME_NORWEGIAN                                          :נורבגית
 STR_TOWNNAME_HUNGARIAN                                          :הונגרית
 STR_TOWNNAME_AUSTRIAN                                           :אוסטרית

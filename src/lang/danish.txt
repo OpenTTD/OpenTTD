@@ -786,7 +786,7 @@ STR_TOWNNAME_SWEDISH                                            :Svenske
 STR_TOWNNAME_DUTCH                                              :Hollandske
 STR_TOWNNAME_FINNISH                                            :Finske
 STR_TOWNNAME_POLISH                                             :Polske
-STR_TOWNNAME_SLOVAKISH                                          :Slovakiske
+STR_TOWNNAME_SLOVAK                                             :Slovakiske
 STR_TOWNNAME_NORWEGIAN                                          :Norske
 STR_TOWNNAME_HUNGARIAN                                          :Ungarske
 STR_TOWNNAME_AUSTRIAN                                           :Østrigske

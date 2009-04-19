@@ -617,7 +617,7 @@ STR_TOWNNAME_SWEDISH                                            :สวีดิ
 STR_TOWNNAME_DUTCH                                              :ดัชต์
 STR_TOWNNAME_FINNISH                                            :ฟินน์
 STR_TOWNNAME_POLISH                                             :โปลิช
-STR_TOWNNAME_SLOVAKISH                                          :สโลวากิช
+STR_TOWNNAME_SLOVAK                                             :สโลวากิช
 STR_TOWNNAME_NORWEGIAN                                          :นอร์วิเจียน
 STR_TOWNNAME_HUNGARIAN                                          :ฮังกาเรียน
 STR_TOWNNAME_AUSTRIAN                                           :ออสเตรียน

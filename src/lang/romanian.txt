@@ -784,7 +784,7 @@ STR_TOWNNAME_SWEDISH                                            :Suedeze
 STR_TOWNNAME_DUTCH                                              :Olandeza
 STR_TOWNNAME_FINNISH                                            :Finlandeza
 STR_TOWNNAME_POLISH                                             :Poloneze
-STR_TOWNNAME_SLOVAKISH                                          :Slovace
+STR_TOWNNAME_SLOVAK                                             :Slovace
 STR_TOWNNAME_NORWEGIAN                                          :Norvegian
 STR_TOWNNAME_HUNGARIAN                                          :Unguresti
 STR_TOWNNAME_AUSTRIAN                                           :Austriece

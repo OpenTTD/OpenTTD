@@ -785,7 +785,7 @@ STR_TOWNNAME_SWEDISH                                            :Σουηδικ�
 STR_TOWNNAME_DUTCH                                              :Ολλανδικά
 STR_TOWNNAME_FINNISH                                            :Φινλανδικά
 STR_TOWNNAME_POLISH                                             :Πολωνικά
-STR_TOWNNAME_SLOVAKISH                                          :Σλοβάκικα
+STR_TOWNNAME_SLOVAK                                             :Σλοβάκικα
 STR_TOWNNAME_NORWEGIAN                                          :Νορβηγικά
 STR_TOWNNAME_HUNGARIAN                                          :Όυγγαρικά
 STR_TOWNNAME_AUSTRIAN                                           :Αυστριακά

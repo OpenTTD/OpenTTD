@@ -819,7 +819,7 @@ STR_TOWNNAME_SWEDISH                                            :Švedų
 STR_TOWNNAME_DUTCH                                              :Olandų
 STR_TOWNNAME_FINNISH                                            :Suomių
 STR_TOWNNAME_POLISH                                             :Lenkų
-STR_TOWNNAME_SLOVAKISH                                          :Slovakų
+STR_TOWNNAME_SLOVAK                                             :Slovakų
 STR_TOWNNAME_NORWEGIAN                                          :Norvegų
 STR_TOWNNAME_HUNGARIAN                                          :Vengrų
 STR_TOWNNAME_AUSTRIAN                                           :Austrų

@@ -788,7 +788,7 @@ STR_TOWNNAME_SWEDISH                                            :瑞典
 STR_TOWNNAME_DUTCH                                              :荷兰
 STR_TOWNNAME_FINNISH                                            :芬兰
 STR_TOWNNAME_POLISH                                             :波兰
-STR_TOWNNAME_SLOVAKISH                                          :斯洛伐克
+STR_TOWNNAME_SLOVAK                                             :斯洛伐克
 STR_TOWNNAME_NORWEGIAN                                          :挪威
 STR_TOWNNAME_HUNGARIAN                                          :匈牙利
 STR_TOWNNAME_AUSTRIAN                                           :澳大利亚

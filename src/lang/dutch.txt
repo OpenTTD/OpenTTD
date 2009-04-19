@@ -788,7 +788,7 @@ STR_TOWNNAME_SWEDISH                                            :Zweeds
 STR_TOWNNAME_DUTCH                                              :Nederlands
 STR_TOWNNAME_FINNISH                                            :Fins
 STR_TOWNNAME_POLISH                                             :Pools
-STR_TOWNNAME_SLOVAKISH                                          :Slowaaks
+STR_TOWNNAME_SLOVAK                                             :Slowaaks
 STR_TOWNNAME_NORWEGIAN                                          :Noors
 STR_TOWNNAME_HUNGARIAN                                          :Hongaars
 STR_TOWNNAME_AUSTRIAN                                           :Oostenrijks

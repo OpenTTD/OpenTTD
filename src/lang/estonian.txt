@@ -841,7 +841,7 @@ STR_TOWNNAME_SWEDISH                                            :Rootsi
 STR_TOWNNAME_DUTCH                                              :Hollandi
 STR_TOWNNAME_FINNISH                                            :Soome
 STR_TOWNNAME_POLISH                                             :Poola
-STR_TOWNNAME_SLOVAKISH                                          :Slovakkia
+STR_TOWNNAME_SLOVAK                                             :Slovakkia
 STR_TOWNNAME_NORWEGIAN                                          :Norra
 STR_TOWNNAME_HUNGARIAN                                          :Ungari
 STR_TOWNNAME_AUSTRIAN                                           :Austria

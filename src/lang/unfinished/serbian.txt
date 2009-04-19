@@ -942,7 +942,7 @@ STR_TOWNNAME_SWEDISH                                            :Švedska
 STR_TOWNNAME_DUTCH                                              :Holandska
 STR_TOWNNAME_FINNISH                                            :Finska
 STR_TOWNNAME_POLISH                                             :Poljska
-STR_TOWNNAME_SLOVAKISH                                          :Slovačka
+STR_TOWNNAME_SLOVAK                                             :Slovačka
 STR_TOWNNAME_NORWEGIAN                                          :Norveška
 STR_TOWNNAME_HUNGARIAN                                          :Mađarska
 STR_TOWNNAME_AUSTRIAN                                           :Austrijanska

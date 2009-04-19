@@ -783,7 +783,7 @@ STR_TOWNNAME_SWEDISH                                            :スウェーデ
 STR_TOWNNAME_DUTCH                                              :オランダ
 STR_TOWNNAME_FINNISH                                            :フィンランド
 STR_TOWNNAME_POLISH                                             :ポーランド
-STR_TOWNNAME_SLOVAKISH                                          :スロバキア
+STR_TOWNNAME_SLOVAK                                             :スロバキア
 STR_TOWNNAME_NORWEGIAN                                          :ノルウェー
 STR_TOWNNAME_HUNGARIAN                                          :ハンガリー
 STR_TOWNNAME_AUSTRIAN                                           :オーストリア
