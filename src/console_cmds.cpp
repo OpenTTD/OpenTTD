@@ -778,8 +778,8 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 		/* From a user pov 0 is a new company, internally it's different and all
 		 * companies are offset by one to ease up on users (eg companies 1-8 not 0-7) */
 		if (_network_playas != COMPANY_SPECTATOR) {
+			if (_network_playas > MAX_COMPANIES) return false;
 			_network_playas--;
-			if (!IsValidCompanyID(_network_playas)) return false;
 		}
 	}
 	if (port != NULL) {
