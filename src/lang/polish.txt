@@ -303,8 +303,6 @@ STR_013C_CARGO                                                  :{BLACK}Ładunek
 STR_013D_INFORMATION                                            :{BLACK}Informacja
 STR_013E_CAPACITIES                                             :{BLACK}Pojemność
 STR_TOTAL_CARGO                                                 :{BLACK}Całkowity ładunek
-STR_013F_CAPACITY                                               :{BLACK}Pojemność: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Pojemność: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Calkowita pojemność tego pociągu:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2882,12 +2880,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Usuń il
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Wyzeruj licznik spóźnienia, aby pojazd podróżował zgodnie z rozkładem jazdy
 STR_SERVICE_HINT                                                :{BLACK}Pomiń to polecenie jesli serwis nie jest wymagany
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Koszt: {CURRENCY} Waga: {WEIGHT_S}{}Prędkość: {VELOCITY}  Moc: {POWER}{}Utrzymanie: {CURRENCY}/rok{}Pojemność: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Awaria
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Utrzymanie: {LTBLUE}{CURRENCY}/rok
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Waga: {LTBLUE}{WEIGHT_S}  {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Max. prędkość: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Waga: {LTBLUE}{WEIGHT_S} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Max. prędkość: {LTBLUE}{VELOCITY} {BLACK}Max. S.P.: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY}  (w ostatnim roku: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Niezawodność: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Zatrzymany
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Nie można przepościć pociągu za sygnał, niebezpieczeństwo...
 STR_8863_CRASHED                                                :{RED}Wypadek!
@@ -2939,12 +2931,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nowy Sam
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Zbuduj pojazd
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nie można zbudować samochodu...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Szczegóły)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Utrzymanie: {LTBLUE}{CURRENCY}/rok
-STR_900E_MAX_SPEED                                              :{BLACK}Max. prędkość: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY}  (ostatni rok: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Niezawodność: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Zbudowany: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Pojemność: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...musi być zatrzymany w zajezdni samochodowej
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nie można sprzedać samochodu...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nie można zatrzymać/ruszyć samochodu...
@@ -2968,7 +2954,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Przecią
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centruj główne okno na pozycji zajezdni samochodowej
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista wyboru samochodów - klik na pojeździe po więcej informacji
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Zbuduj wybrany samochód
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Koszt: {CURRENCY}{}Prędkość: {VELOCITY}{}Utrzymanie: {CURRENCY}/rok{}Pojemność: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Pojemność: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3016,12 +3001,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nie moż
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Statek na drodze
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Szczegóły)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Utrzymanie: {LTBLUE}{CURRENCY}/rok
-STR_9813_MAX_SPEED                                              :{BLACK}Max. prędkość: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY}  (w ostatnim roku: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Niezawodność: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Wybudowany: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Pojemność: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nie można zatrzymać/ruszyć statku...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nie można wysłać statku do stoczni...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nie można znaleźć stoczni
@@ -3044,7 +3023,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Pokaż p
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centruj główne okno na pozycji statku
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Wyślij statek do stoczni
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Pokaż szczegóły statku
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koszt: {CURRENCY} Max. Prędkość: {VELOCITY}{}Pojemność: {CARGO}{}Utrzymanie: {CURRENCY}/rok
 STR_982F_NAME_SHIP                                              :{BLACK}Nazwa statku
 
 STR_9831_NAME_SHIP                                              :{WHITE}Nazwa statku
@@ -3082,11 +3060,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nie moż
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Samolot
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Szczegóły)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Utrzymanie: {LTBLUE}{CURRENCY}/rok
-STR_A00E_MAX_SPEED                                              :{BLACK}Max. prędkość: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY}  (w ostatnim roku: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Niezawodność: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Zbudowany: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nie można wysłać samolotu do hangaru...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Zmierza do hangaru w {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Zmierza do hangaru w {STATION}, {VELOCITY}
@@ -3096,8 +3069,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Samolot jest na drodze
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nie można zatrzymać/ruszyć samolotu
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Samolot jest w locie
-STR_A019_CAPACITY                                               :{BLACK}Pojemność: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Pojemność: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Samolot musi być zatrzymany w hangarze
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nie można sprzedać samolotu...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Konstrukcje lotnicze
@@ -3114,7 +3085,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Pokaż p
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centruj główne okno na pozycji samolotu
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Wyślij samolot do hangaru
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Pokaż szczegóły samolotu
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koszt: {CURRENCY} Max. Prędkość: {VELOCITY}{}Pojemność: {COMMA} pasażerów, {COMMA} paczek poczty{}Utrzymanie: {CURRENCY}/rok
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nazwa samolotu
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Nie można zmienić nazwy samolotu...

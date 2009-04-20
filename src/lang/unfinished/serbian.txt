@@ -398,8 +398,6 @@ STR_013C_CARGO                                                  :{BLACK}Tovar
 STR_013D_INFORMATION                                            :{BLACK}Informacija
 STR_013E_CAPACITIES                                             :{BLACK}Kapaciteti
 STR_TOTAL_CARGO                                                 :{BLACK}Zbir Tovar
-STR_013F_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Zbir tovar kapacitet nad ova trenirati:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2106,9 +2104,6 @@ STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nova Že
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Napraviti Letelicu
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Letelice se ne može napraviti
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Leteluca
-STR_A00E_MAX_SPEED                                              :{BLACK}Maks. Brzina: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit ove godine: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pouzdanost: {LTBLUE}{COMMA}%  {BLACK}Kvarovi od prošle posete: {LTBLUE}{COMMA}
 
 
 

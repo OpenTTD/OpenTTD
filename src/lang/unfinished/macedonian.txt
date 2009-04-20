@@ -257,8 +257,6 @@ STR_013C_CARGO                                                  :{BLACK}Това
 STR_013D_INFORMATION                                            :{BLACK}Информација
 STR_013E_CAPACITIES                                             :{BLACK}Капацитети
 STR_TOTAL_CARGO                                                 :{BLACK}Вкупно Товар
-STR_013F_CAPACITY                                               :{BLACK}Капацитет: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Капацитет: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Вкупен капацитет на овој воз:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -843,17 +841,10 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Не м�
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Авион
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Details)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Старост: {LTBLUE}{STRING}{BLACK}   Трошок за оперирање: {LTBLUE}{CURRENCY}/година
-STR_A00E_MAX_SPEED                                              :{BLACK}Макс. брзина: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Профит оваа година: {LTBLUE}{CURRENCY}  (минатата година: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Сигурност: {LTBLUE}{COMMA}%  {BLACK}Кварови од последното сервисирање до сега: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Изградба: {LTBLUE}{NUM}{BLACK} Вредност: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Не може да се прати авионот во гаража...
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Авион на патот
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Не може да сопре/тргне авионот...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Авионот е во лет
-STR_A019_CAPACITY                                               :{BLACK}Капацитет: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Капацитет: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Авионот мора да се сопре во хангар
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Не може да се продаде авионот...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Изградба на аеродром
@@ -870,7 +861,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Прик
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Прикажи го авионот на средина
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Прати го авионот во хангар. CTRL+клик ќе го прати само на сервис
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Прикажи детали за авионот
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Цена: {CURRENCY} Макс. брзина: {VELOCITY}{}Капацитет: {COMMA} патници, {COMMA} торби пошта{}Трошок за оперирање: {CURRENCY}/година
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Име на авионот
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Не може да се именува авионот...

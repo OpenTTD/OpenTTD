@@ -292,8 +292,6 @@ STR_013C_CARGO                                                  :{BLACK}Keliamoj
 STR_013D_INFORMATION                                            :{BLACK}Informacija
 STR_013E_CAPACITIES                                             :{BLACK}Talpumas
 STR_TOTAL_CARGO                                                 :{BLACK}Visa keliamoji galia
-STR_013F_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Talpa: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Visa traukinio keliamoji galia:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2796,12 +2794,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Iterpti 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Grafikas - spausti ant nurodymo paryškinant jį.
 STR_SERVICE_HINT                                                :{BLACK}Nevykdyti sios uzduoties iki tol, kol nereikes remonto
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kaina: {CURRENCY} Svoris: {WEIGHT_S}{}Greitis: {VELOCITY}  Galia: {POWER}{}Eksplotacijos išlaidos: {CURRENCY}/metus{}Talpa: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Sugedo
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Amzius: {LTBLUE}{STRING}{BLACK}   Eksploatacijos islaidos: {LTBLUE}{CURRENCY}/met
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Svoris: {LTBLUE}{WEIGHT_S}  {BLACK}Galia: {LTBLUE}{POWER}{BLACK} Did. greitis: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Svoris: {LTBLUE}{WEIGHT_S} {BLACK}Galia: {LTBLUE}{POWER}{BLACK} Did. greitis {LTBLUE}{VELOCITY} {BLACK}Did. K.G.: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Pelnas šiais metais: {LTBLUE}{CURRENCY}  (pernai: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Gedimai nuo praeito remonto: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Sustabdyta
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Neimanoma priversti traukinio vaziuoti nesaugiai...
 STR_8863_CRASHED                                                :{RED}Avarija!
@@ -2852,12 +2844,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nauji au
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Isigyti priemone
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Automobilio isigyti negalima...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detaliau)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Amzius: {LTBLUE}{STRING}{BLACK}   Eksploatacijos islaidos: {LTBLUE}{CURRENCY}/met
-STR_900E_MAX_SPEED                                              :{BLACK}Maks. greitis: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Pelnas šiais metais: {LTBLUE}{CURRENCY}  (pernai: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Sugedo po paskutinio remonto: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Pastatytas: {LTBLUE}{NUM}{BLACK} Verte: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...automobilis turi buti sustabdytas garaze
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Automobilio parduoti negalima...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Automobilio sustabdyti/paleisti negalima...
@@ -2881,7 +2867,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Nutempk 
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Rodyti automobiliu garaza ekrano centre
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Automobiliu pasirinkimo sarasas - paspausk ant automobilio jei nori detalesnes informacijos
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Isigyti pazymeta automobili
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kaina: {CURRENCY}{}Greitis: {VELOCITY}{}Eksploatavimo kaina: {CURRENCY}/met{}Talpa: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Talpa: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2928,12 +2913,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Laivo is
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Laivas kelyje
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detaliau)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Amzius: {LTBLUE}{STRING}{BLACK}   Eksploatavimo islaidos: {LTBLUE}{CURRENCY}/met
-STR_9813_MAX_SPEED                                              :{BLACK}Maks. greitis: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Pelnas šiais metais: {LTBLUE}{CURRENCY}  (pernai: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Gedimai po paskutinio remonto: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Pastatytas: {LTBLUE}{NUM}{BLACK} Verte: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Sustabdyti/paleisti laivo negalima...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nusiusti i laivu depa negalima...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Negali rasti artimiausio laivu depo
@@ -2956,7 +2935,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Rodyti l
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Rodyti laiva ekrano centre
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Nukreipti laiva i depa
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Rodyti laivo informacija
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kainuoja: {CURRENCY} Maks. Greitis: {VELOCITY}{}Talpa: {CARGO}{}Vaziavimo kaina: {CURRENCY}/m
 STR_982F_NAME_SHIP                                              :{BLACK}Laivo vardas
 
 STR_9831_NAME_SHIP                                              :{WHITE}Laivo vardas
@@ -2994,11 +2972,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Negalima
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Lektuvai
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detaliau)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Amzius: {LTBLUE}{STRING}{BLACK}   Eksploatacijos islaidos: {LTBLUE}{CURRENCY}/met.
-STR_A00E_MAX_SPEED                                              :{BLACK}Maks. greitis: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Pelnas šiais metais: {LTBLUE}{CURRENCY}  (pernai: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Gedimai po paskutinio remonto: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Pastatytas: {LTBLUE}{NUM}{BLACK} Verte: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Negalima lektuvo nusiusti i angara...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Kursas: {STATION} angaras
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Kursas: {STATION} angarasangar, {VELOCITY}
@@ -3008,8 +2981,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Oro uostai
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Negalima cia statyti oro uosto...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lektuvas dabar skrenda
-STR_A019_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Lektuvas turi buti sustabdytas angare
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Negalima parduoti lektuvo...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Oro uostu konstr.
@@ -3026,7 +2997,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Rodyti l
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Rodyti lektuva ektrano centre
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Siusti lektuva i angara
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Rodyti lektuvo informacija
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kaina: {CURRENCY} Maks. greitis: {VELOCITY}{}Talpa: {COMMA} keleiviu, {COMMA} pasto maisail{}Eksploatacijos islaidos: {CURRENCY}/met.
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Pervardinti lektuva
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Negalima pervardinti lektuvo...

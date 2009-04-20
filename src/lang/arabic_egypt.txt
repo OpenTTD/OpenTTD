@@ -258,8 +258,6 @@ STR_013C_CARGO                                                  :{BLACK}بضاع
 STR_013D_INFORMATION                                            :{BLACK}معلومات
 STR_013E_CAPACITIES                                             :{BLACK} السعة
 STR_TOTAL_CARGO                                                 :{BLACK}مجموع الحمولة
-STR_013F_CAPACITY                                               :{BLACK}  سعة  : {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}السعة: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}الحمولة القصوى لهذا القطار:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2798,12 +2796,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}مسح �
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}عدل وقت التاخير للعداد حتى تصل المركبة في الوقت المحدد
 STR_SERVICE_HINT                                                :{BLACK}تجاوز هذا الامر الا اذا لم تكن الصيانة مطلوبة
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK} التكلفة: {CURRENCY} الوزن: {WEIGHT_S} {} السرعة: {VELOCITY}  الطاقة: {POWER}{} كلفة التشغيل: {CURRENCY} / سنة {} السعة: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED} متعطل
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}العمر: {LTBLUE}{STRING}{BLACK}      تكلفة التشغيل: {LTBLUE}{CURRENCY}/سنة
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK} الوزن: {LTBLUE}{WEIGHT_S}  {BLACK} الطاقة: {LTBLUE}{POWER}{BLACK} السرعة القصوى:  {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK} الوزن:  {LTBLUE}{WEIGHT_S}  {BLACK} الطاقة:  {LTBLUE}{POWER}{BLACK}  السرعة القصوى:  {LTBLUE}{VELOCITY} {BLACK} قدرة السحب القصوى:  {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK} الدخل هذه السنة: {LTBLUE}{CURRENCY}       (السنة السابقة{CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}الصلاحية: {LTBLUE}{COMMA}%  {BLACK} مرات التعطيل منذ الصيانة السابقة: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED} متوقف
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}لا يمكن السماح للقطار بالعبور من الاشارة في وضع الخطر
 STR_8863_CRASHED                                                :{RED}تحطم!
@@ -2855,12 +2847,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}عربا
 STR_9007_BUILD_VEHICLE                                          :{BLACK}شراء عربة
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}لا يمكن شراء عربة ...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (التفاصيل)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}العمر: {LTBLUE}{STRING}{BLACK}       تكلفة التشغيل: {LTBLUE}{CURRENCY}/سنة
-STR_900E_MAX_SPEED                                              :{BLACK}السرعة القصوى: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}الدخل هذة السنة: {LTBLUE}{CURRENCY}          (السنة الماضية{CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}الصلاحية: {LTBLUE}{COMMA}% {BLACK}عدد مرات التوقف من الصيانة السابقة: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}تاريخ الشراء: {LTBLUE}{NUM}{BLACK}القيمة: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE} ... يجب ان يوقف داخل ورشة الصيانة.
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}لا يمكن بيع العربة...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}لا يمكن ايقاف / تشغيل العربة
@@ -2884,7 +2870,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}اسحب
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}ضع ورشة الصيانة في وسط الشاشة
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}قائمة اختيار العربات - اضغط على العربة لاظهار معلوماتها
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}شراء العربة
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}التكلفة: {CURRENCY}{}السرعة: {VELOCITY}{}تكلفة التشغيل: {CURRENCY}/ سنة{}السعة {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}السعة: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2932,12 +2917,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}لا ي�
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}سفينة في الطريق
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (التفاصيل)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}العمر: {LTBLUE}{STRING}{BLACK}       التكلفة التشغيلية: {LTBLUE}{CURRENCY}/ سنة
-STR_9813_MAX_SPEED                                              :{BLACK}السرعة القصوى:  {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK} الدخل هذة السنة: {LTBLUE}{CURRENCY}        (السنة الماضية: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}الصلاحية: {LTBLUE}{COMMA} %   {BLACK}الأعطال منذ آخر صيانة: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK} سنة الشراء: {LTBLUE}{NUM}{BLACK} القيمة: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}لا يمكن توقيف/ تشغيل السفينة ...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}لا يمكن ارسال السفينة الى حوض الصيانة ...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}لا يمكن ايجاد حوض صيانة قريب
@@ -2960,7 +2939,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}عرض �
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}عرض السفينة في مركز الشاشة
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}ارسال السفينة الى حوض الصيانة. اضغط مفتاح التحكم (كنترول) + الضغط لارسالة للصيانة فقط
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}عرض تفاصيل السفينة
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}التكلفة: {CURRENCY} السرعة القصوى: {VELOCITY}{} السعة: {CARGO}{}تكلفة التشغيل: {CURRENCY}/ سنة
 STR_982F_NAME_SHIP                                              :{BLACK}تسمية السفينة
 
 STR_9831_NAME_SHIP                                              :{WHITE}تسمية السفينة
@@ -2998,11 +2976,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}لا ي�
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} طائرة
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (تفاصيل)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}العمر: {LTBLUE}{STRING}{BLACK}        تكلفة التشغيل: {LTBLUE}{CURRENCY} / سنة
-STR_A00E_MAX_SPEED                                              :{BLACK} السرعة القصوى: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}الدخل هذه السنة: {LTBLUE}{CURRENCY}         (السنة الماضية: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}الصلاحية: {LTBLUE}{COMMA} %  {BLACK}الاعطال من آخر فترة صيانة: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}سنة الشراء:  {LTBLUE}{NUM}{BLACK} القيمة: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}لا يمكن ارسال الطائرة لحظيرةالصيانة
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}متوجه لحظيرة {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}تتوجة الى حظيرة {STATION}, {VELOCITY}
@@ -3012,8 +2985,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}طائرة في الطريق
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}لا يمكن توقيف / تشغيل الطائرة
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}الطائرة تقوم بالطيران الآن
-STR_A019_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO} ،  {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}يجب ان تكون الطائرة متوقفة في الحظيرة
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}لا يمكن بيع الطائرة
 STR_A01D_AIRPORT_CONSTRUCTION                                   :بناء المطار
@@ -3030,7 +3001,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}عرض �
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}وضع الطائرة في مركز الشاشة
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}ارسل الطائرة الى حظيرة الصيانة - مفتاح التحكم (كنترول) + الضغط يرسلها للصيانة فقط
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}عرض تفاصيل الطائرة
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}التكلفة: {CURRENCY}السرعة القصوى: {VELOCITY}{}السعة: {COMMA} راكب, {COMMA}طرود ريد: {}التكلفة التشغيلية: {CURRENCY} / سنة
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}تسمية الطائرة
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}لا يمكن تسمية الطائرة ...

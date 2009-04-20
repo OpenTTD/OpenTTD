@@ -257,8 +257,6 @@ STR_013C_CARGO                                                  :{BLACK}Ŝarĝo
 STR_013D_INFORMATION                                            :{BLACK}Informoj
 STR_013E_CAPACITIES                                             :{BLACK}Kapabloj
 STR_TOTAL_CARGO                                                 :{BLACK}Tuta Ŝarĝo
-STR_013F_CAPACITY                                               :{BLACK}Enhavkapablo: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Tuta ŝarĝkapablo de ĉi tiu trajno:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2456,12 +2454,6 @@ STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Forviŝu
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Enigu novan ordenon antaŭ la elektita ordeno, aŭ aldonu fine de la listo
 STR_SERVICE_HINT                                                :{BLACK}Transsaltu ordenon ĝis prizorgo necesos
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kosto: {CURRENCY} Pezo: {WEIGHT_S}{}Rapideco: {VELOCITY}  Forto: {POWER}{}Irkosto: po {CURRENCY} jare{}Kapablo: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Rompite
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}po {CURRENCY} jare
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pezo: {LTBLUE}{WEIGHT_S}  {BLACK}Forto: {LTBLUE}{POWER}{BLACK} Pleja rapideco: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pezo: {LTBLUE}{WEIGHT_S} {BLACK}Forto: {LTBLUE}{POWER}{BLACK} Pleja rapido: {LTBLUE}{VELOCITY} {BLACK}Pleja tiro: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ĉi-jara gajno: {LTBLUE}{CURRENCY}  (lastjara: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fidebleco: {LTBLUE}{COMMA}%  {BLACK}Rompiĝoj post lasta prizorgo: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Haltis
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Ne povas igi trajnon transiri signalon je danĝero...
 STR_8863_CRASHED                                                :{RED}Kraŝis!
@@ -2497,12 +2489,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Novaj Vo
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Kreu Veturilon
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ne povas krei vojveturilon
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detaloj)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}po {CURRENCY} jare
-STR_900E_MAX_SPEED                                              :{BLACK}Maksimuma rapideco: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ĉi-jara gajno: {LTBLUE}{CURRENCY}  (lastjara: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fidebleco: {LTBLUE}{COMMA}%  {BLACK}Rompiĝoj post lasta prizorgo: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...devas esti haltigata en vojveturila deponejo
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ne povas vendi vojveturilon...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ne povas haltigi/starti vojveturilon...
@@ -2525,7 +2511,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Tiru voj
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centre vidu vojveturilan deponejon en la ĉefvido
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Vojveturilelektan liston - alklaku veturilon por informoj
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Kreu la elektitan vojveturilon
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kosto: {CURRENCY}{}Rapideco: {VELOCITY}{}Irkosto: po {CURRENCY} jare{}Kapablo: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacito: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2568,12 +2553,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Ne povas
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Ŝipo okupas la lokon
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detaloj)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}po {CURRENCY} jare
-STR_9813_MAX_SPEED                                              :{BLACK}Maksimuma rapideco: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ĉi-jara gajno: {LTBLUE}{CURRENCY}  (lastjara: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fidebleco: {LTBLUE}{COMMA}%  {BLACK}Rompiĝoj post lasta prizorgo: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Ne povas haltigi/starti ŝipon...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Ne povas sendi ŝipon al deponejo...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ne eblas trovi lokan deponejon
@@ -2595,7 +2574,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Montru �
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centre vidu ŝipon en ĉefvido
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Sendu ŝipon al deponejo. CTRL+klako nur prizorgos
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Montru ŝipajn detalojn
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosto: {CURRENCY} Maksimuma rapideco: {VELOCITY}{}Kapablo: {CARGO}{}Irkosto: po {CURRENCY} jare
 STR_982F_NAME_SHIP                                              :{BLACK}Nomu ŝipon
 
 STR_9831_NAME_SHIP                                              :{WHITE}Nomu ŝipon
@@ -2631,11 +2609,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Ne povas
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Aviadiloj
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detaloj)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}po {CURRENCY} jare
-STR_A00E_MAX_SPEED                                              :{BLACK}Maksimuma rapideco: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ĉi-jara gajno: {LTBLUE}{CURRENCY}  (lastjara: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fidebleco: {LTBLUE}{COMMA}%  {BLACK}Rompiĝoj post lasta prizorgo: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Ne povas sendi aviadilon al hangaro...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Irante al {STATION} Hangaro
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Irante al {STATION} Hangaro, {VELOCITY}
@@ -2644,8 +2617,6 @@ STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Prizorg
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aviadilo okupas la lokon
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Ne povas haltigi/starti aviadilon...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aviadilo flugas
-STR_A019_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Aviadilo devas esti haltigata en la hangaro
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Ne povas vendi aviadilon...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Flughavena konstruado
@@ -2662,7 +2633,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Montru a
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centre vidu aviadilon en la ĉefvido
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Sendu aviadilon al hangaro. CTRL+klako nur prizorgos
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Montru aviadilajn detalojn
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosto: {CURRENCY} Maksimuma rapideco: {VELOCITY}{}Kapablo: {COMMA} pasaĝeroj, {COMMA} sakoj da poŝto{}Irkosto: po {CURRENCY} jare
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nomu aviadilon
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Ne povas nomi aviadilon...

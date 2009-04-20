@@ -258,8 +258,6 @@ STR_013C_CARGO                                                  :{BLACK}Last
 STR_013D_INFORMATION                                            :{BLACK}Informasjon
 STR_013E_CAPACITIES                                             :{BLACK}Kapasitet
 STR_TOTAL_CARGO                                                 :{BLACK}Total last
-STR_013F_CAPACITY                                               :{BLACK}Kapasitet: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Kapasitet: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Total kapasitet på dette toget:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2778,12 +2776,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Fjern va
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nullstill senhetstelleren slik at kjøretøyet ankommer i tide
 STR_SERVICE_HINT                                                :{BLACK}Hopp over ordren med mindre vedlikehold trengs.
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Koster: {CURRENCY} Vekt: {WEIGHT_S}{}Fart: {VELOCITY}  Kraft: {POWER}{}Driftkostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Havarert
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftkostnad: {LTBLUE}{CURRENCY}/år
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vekt: {LTBLUE}{WEIGHT_S}  {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks. fart: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vekt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Høyeste fart: {LTBLUE}{VELOCITY} {BLACK}Høyeste hastighet.: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (sist år: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Havarier siden forrige vedlikehold: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stoppet
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kan ikke tvinge tog til å kjøre på rødt lys ved fare...
 STR_8863_CRASHED                                                :{RED}Krasjet
@@ -2835,12 +2827,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nye kjø
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Kjøp kjøretøy
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan ikke kjøpe kjøretøy...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (detaljer)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftkostnader: {LTBLUE}{CURRENCY}/år
-STR_900E_MAX_SPEED                                              :{BLACK}Maks. fart: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (sist år: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Havarier siden forrige vedlikehold: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapasitet: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...må være stoppet i en garasje
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan ikke selge kjøretøy...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan ikke starte/stoppe kjøretøy...
@@ -2864,7 +2850,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Dra kjø
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Vis hvor garasjen ligger
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Kjøretøyliste - trykk på kjøretøy for mer informasjon
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Bygg det valgte kjøretøyet
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Koster: {CURRENCY}{}Fart: {VELOCITY}{}Driftkostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasitet: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2912,12 +2897,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan ikke
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Det er et skip i veien
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftkostnader: {LTBLUE}{CURRENCY}/år
-STR_9813_MAX_SPEED                                              :{BLACK}Maks. fart: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (sist år: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Havarier siden forrige vedlikehold: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapasitet: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan ikke starte/stoppe skip...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan ikke sende skip til depotet...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finne et depot i nærheten
@@ -2940,7 +2919,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Vis skip
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Vis skipets gjeldende posisjon
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Send skipet til depotet
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Vis detaljer om skipet
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koster: {CURRENCY} Maks. fart: {VELOCITY}{}Kapasitet: {CARGO}{}Driftkostnader: {CURRENCY}/år
 STR_982F_NAME_SHIP                                              :{BLACK}Navngi skip
 
 STR_9831_NAME_SHIP                                              :{WHITE}Navngi skip
@@ -2978,11 +2956,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kan ikke
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} fly
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (detaljer)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftkostnader: {LTBLUE}{CURRENCY}/år
-STR_A00E_MAX_SPEED                                              :{BLACK}Maks. fart: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (forrige år: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Havarier siden forrige vedlikehold: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan ikke sende fly til hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Er på vei til {STATION} hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Er på vei til {STATION} hangar, {VELOCITY}
@@ -2992,8 +2965,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Det er et fly i veien
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan ikke stoppe/starte flyet...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Flyet er i luften
-STR_A019_CAPACITY                                               :{BLACK}Kapasitet: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Kapasitet: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Må stå i en hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Kan ikke selge fly...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Bygg flyplass
@@ -3010,7 +2981,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Vis flye
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Vis flyets gjeldende posisjon
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Send fly til hangar. CTRL-klikk for kun å utføre vedlikehold
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Vis detaljer om flyet
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koster: {CURRENCY} Maks. fart: {VELOCITY}{}Kapasitet: {COMMA} passasjerer, {COMMA} sekker post {}Driftkostnader: {CURRENCY}/år
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Navngi fly
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Kan ikke navngi fly...

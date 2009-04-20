@@ -258,8 +258,6 @@ STR_013C_CARGO                                                  :{BLACK}Last
 STR_013D_INFORMATION                                            :{BLACK}Information
 STR_013E_CAPACITIES                                             :{BLACK}Lasteevner
 STR_TOTAL_CARGO                                                 :{BLACK}Samlet last
-STR_013F_CAPACITY                                               :{BLACK}Lasteevne: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Samlet last (lasteevne) på dette tog:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2805,12 +2803,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Nulstil 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nulstil forsinkelses-tæller, så transportmidlet kommer til tiden
 STR_SERVICE_HINT                                                :{BLACK}Spring denne ordre over medmindre der er behov for service
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Pris: {CURRENCY} Vægt: {WEIGHT_S}{}Hastighed: {VELOCITY}  Styrke: {POWER}{}Driftsomkostninger: {CURRENCY}/år{}Kapacitet: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Gået i stykker
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vægt: {LTBLUE}{WEIGHT_S}  {BLACK}Styrke: {LTBLUE}{POWER}{BLACK} Maks. hastighed: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vægt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks. hast.: {LTBLUE}{VELOCITY} {BLACK}Maks. t.k.: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Afkast i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed {LTBLUE}{COMMA}%  {BLACK}nedbrud siden sidste service: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stoppet
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kan ikke få toget til at passere signalet...
 STR_8863_CRASHED                                                :{RED}Forulykket!
@@ -2862,12 +2854,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nye kør
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Byg køretøj
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan ikke bygge køretøj...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
-STR_900E_MAX_SPEED                                              :{BLACK}Maks. hastighed: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Afkast i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...skal være stoppet inde i et værksted først
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan ikke sælge køretøj...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan ikke stoppe/starte køretøj...
@@ -2891,7 +2877,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Træk k�
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrer skærmen over værkstedets lokalitet
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Liste over køretøjstyper - klik på køretøj for information
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Byg det markerede køretøj
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Pris: {CURRENCY}{}Hastighed: {VELOCITY}{}Driftsomkostninger: {CURRENCY}/år{}Kapacitet: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacitet: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2939,12 +2924,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan ikke
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Der er et skib i vejen
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
-STR_9813_MAX_SPEED                                              :{BLACK}Maks. hastighed: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Afkast i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan ikke stoppe/starte skibet...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan ikke sende skibet til dok...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finde lokal dok
@@ -2967,7 +2946,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Vis skib
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrer skærmen over skibets lokalitet
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Send skibet til dok. CTRL+klik vil kun servicere
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Vis detaljer omkring skibet
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Pris: {CURRENCY} Maks. hastighed: {VELOCITY}{}Kapacitet: {CARGO}{}Driftsomkostninger: {CURRENCY}/år
 STR_982F_NAME_SHIP                                              :{BLACK}Giv skibet et navn
 
 STR_9831_NAME_SHIP                                              :{WHITE}Giv skibet et navn
@@ -3005,11 +2983,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kan ikke
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Fly
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
-STR_A00E_MAX_SPEED                                              :{BLACK}Maks. hastighed: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Afkast i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan ikke sende flyet til en hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Flyver til {STATION} hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Flyver til {STATION} hangar, {VELOCITY}
@@ -3019,8 +2992,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Fly i vejen
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan ikke stoppe/starte fly...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Flyet er i luften
-STR_A019_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Flyet skal være stoppet i en hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Kan ikke sælge flyet...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Lufthavnskonstruktion
@@ -3037,7 +3008,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Vis flye
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centrer skærmen over flyets lokalitet
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Send flyet til en hangar. CTRL+klik vil kun servicere
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Vis detaljet omkring flyet
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Pris: {CURRENCY} Maks. hastighed: {VELOCITY}{}Kapacitet: {COMMA} passagerer, {COMMA} sække post{}Driftsomkostninger: {CURRENCY}/år
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Navngiv flyet
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Kan ikke navngive flyet...

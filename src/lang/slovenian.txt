@@ -300,8 +300,6 @@ STR_013C_CARGO                                                  :{BLACK}Tovor
 STR_013D_INFORMATION                                            :{BLACK}Informacije
 STR_013E_CAPACITIES                                             :{BLACK}Zmogljivosti
 STR_TOTAL_CARGO                                                 :{BLACK}Skupni tovor
-STR_013F_CAPACITY                                               :{BLACK}Zmogljivost: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Zmogljivost: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Skupna tovorna zmogljivost tega vlaka:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2888,12 +2886,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Počisti
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Resetiraj števec zamud, da bodo vozila točna
 STR_SERVICE_HINT                                                :{BLACK}Preskoči ta ukaz, razen če je potreben servis
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Teža: {WEIGHT_S}{}Hitrost: {VELOCITY}  Moč: {POWER}{}Cena delovanja: {CURRENCY}/leto{}Zmogljivost: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}V okvari
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Cena delovanja: {LTBLUE}{CURRENCY}/leto
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Teža: {LTBLUE}{WEIGHT_S}  {BLACK}Moč: {LTBLUE}{POWER}{BLACK} Max. hitrost: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Teža: {LTBLUE}{WEIGHT_S} {BLACK}Moč: {LTBLUE}{POWER}{BLACK} Največja hitrost: {LTBLUE}{VELOCITY} {BLACK}Max. v.sila: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Letošnji dobiček: {LTBLUE}{CURRENCY}  (lanski: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zanseljivost: {LTBLUE}{COMMA}%  {BLACK}Št. okvar od zadnjega servisa: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Ustavljeno
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Ni mogoče, da vlak v nevarnosti pelje mimo semaforjev ...
 STR_8863_CRASHED                                                :{RED}Uničen!
@@ -2945,12 +2937,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nova ces
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Zgradi vozilo
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ni mogoče zgraditi cestnega vozila ...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Podrobnosti)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Cena delovanja: {LTBLUE}{CURRENCY}/leto
-STR_900E_MAX_SPEED                                              :{BLACK}Max. hitrost: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Letošnji dobiček: {LTBLUE}{CURRENCY}  (lanski: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zanesljivost: {LTBLUE}{COMMA}%  {BLACK}Št. okvar od zadnjega servisa: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Zgrajen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Zmogljivost: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE} ... mora biti ustavljen v garaži
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ni mogoče prodati cestnega vozila...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ni mogoče ustaviti/zagnati cestnega vozila ...
@@ -2974,7 +2960,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Povleci 
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Pogled na garažo
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Seznam cestnih vozil - klikni na vozilo za informacije
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Zgradi izbrano cestno vozilo
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Hitrost: {VELOCITY}{}Cena delovanja: {CURRENCY}/leto{}Zmogljivost: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Zmogljivost: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3022,12 +3007,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Ni mogo�
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Ladja v napoto
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Podrobnosti)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Cena delovanja: {LTBLUE}{CURRENCY}/leto
-STR_9813_MAX_SPEED                                              :{BLACK}Max. hitrost: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Dobiček letos: {LTBLUE}{CURRENCY}  (lani: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zanesljivost: {LTBLUE}{COMMA}%  {BLACK}Št. okvar po zadnjem servisu: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Zgrajen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Zmogljivost: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Ni mogoče ustaviti/zagnati ladje...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Ni mogoče poslati ladje v garažo...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ni moč najti lokalne garaže
@@ -3050,7 +3029,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Prikaži
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Pogled na ladjo
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Pošlji ladjo v ladjedelnico. CTRL+klik samo na servis
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Prikaži podrobnosti ladje
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cena: {CURRENCY} Max. hitrost: {VELOCITY}{}Zmogljivost: {CARGO}{}Cena delovanja: {CURRENCY}/leto
 STR_982F_NAME_SHIP                                              :{BLACK}Poimenuj ladjo
 
 STR_9831_NAME_SHIP                                              :{WHITE}Poimenuj ladjo
@@ -3088,11 +3066,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Ni mogo�
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Letal{P o i a ""}
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Podrobnosti)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Cena delovanja: {LTBLUE}{CURRENCY}/leto
-STR_A00E_MAX_SPEED                                              :{BLACK}Max. hitrost: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Dobiček letos: {LTBLUE}{CURRENCY}  (lani: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zanesljivost: {LTBLUE}{COMMA}%  {BLACK}Št. okvar po zadnjem servisu: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Zgrajeno: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Ni mogoče poslati letala v hangar ...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Na poti v {STATION} hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Na poti v {STATION} hangar, {VELOCITY}
@@ -3102,8 +3075,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Letalo v napoto
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Ni mogoče ustaviti/zagnati letala ...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Letalo v letu
-STR_A019_CAPACITY                                               :{BLACK}Zmogljivost: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Zmogljivost: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Letalo mora biti ustavljeno v hangarju
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Ni mogoče prodati letala ...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Gradnja letališča
@@ -3120,7 +3091,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Prikaži
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Pogled na letalo
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Pošlji letalo v hangar. CTRL+klik samo na servis
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Prikaži podrobnosti letala
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cena: {CURRENCY} Max. hitrost: {VELOCITY}{}Zmogljivost: {COMMA} potnikov, {COMMA} vreč pošte{}Cena delovanja: {CURRENCY}/leto
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Poimenuj letalo
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Ni mogoče poimenovati letala ...

@@ -312,8 +312,6 @@ STR_013C_CARGO                                                  :{BLACK}Laadung
 STR_013D_INFORMATION                                            :{BLACK}Andmed
 STR_013E_CAPACITIES                                             :{BLACK}Kandevõimed
 STR_TOTAL_CARGO                                                 :{BLACK}Veoseid kokku
-STR_013F_CAPACITY                                               :{BLACK}Kandevõime: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Kandevõime: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Selle rongi kandevõime:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2862,12 +2860,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Tühista
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Tühista hilinemisloendur, et sõiduk ei jääks hiljaks
 STR_SERVICE_HINT                                                :{BLACK}Jäta see käsk vahele, kui hooldust ei vajata
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Hind: {CURRENCY} Tühimass: {WEIGHT_S}{}Tippkiirus: {VELOCITY}  Võimsus: {POWER}{}Käituskulud: {CURRENCY}/aastas{}Kandevõime: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Rike
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Käituskulud: {LTBLUE}{CURRENCY}/aastas
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Mass: {LTBLUE}{WEIGHT_S}  {BLACK}Võimsus: {LTBLUE}{POWER}{BLACK} Tippkiirus: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Mass: {LTBLUE}{WEIGHT_S} {BLACK}Võimsus: {LTBLUE}{POWER}{BLACK} Tippkiirus: {LTBLUE}{VELOCITY} {BLACK}Veojõud: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Selle aasta kasum: {LTBLUE}{CURRENCY}  (eelmisel aastal: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tehnoseisund: {LTBLUE}{COMMA}%  {BLACK}Rikkeid eelmisest hooldusest: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Peatatud
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Rongi ei saa ohu korral sundida signaale eirama...
 STR_8863_CRASHED                                                :{RED}Kokkupõrge!
@@ -2919,12 +2911,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Uued moo
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Ehita veovahend
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Mootorsõidukit ei saa ehitada...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (täpsustused)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Käituskulud: {LTBLUE}{CURRENCY}/aastas
-STR_900E_MAX_SPEED                                              :{BLACK}Tippkiirus: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Selle aasta kasum: {LTBLUE}{CURRENCY}  (eelmisel aastal: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tehnoseisund: {LTBLUE}{COMMA}%  {BLACK}Rikkeid eelmisest hooldusest: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Ehitatud: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kandevõime: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...peab garaaþis olema
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ei saa veokit müüa...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ei saa veokit peatada, ega startida...
@@ -2948,7 +2934,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Et müü
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Vii vaade garaaþi asukohale
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Mootorsõiduki valimisnimekiri - andmete saamiseks klõpsa sõidukile
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Ehita valitud mootorsõiduk
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Hind: {CURRENCY}{}Tippkiirus: {VELOCITY}{}Käituskulud: {CURRENCY}/aastas{}Kandevõime: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kandevõime: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2996,12 +2981,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Ei saa l
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Laev on ees
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (täpsustused)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Käituskulud: {LTBLUE}{CURRENCY}/aastas
-STR_9813_MAX_SPEED                                              :{BLACK}Tippkiirus: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Selle aasta kasum: {LTBLUE}{CURRENCY}  (viimasel: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tehnoseisund: {LTBLUE}{COMMA}%  {BLACK}Rikkeid eelmisest hooldusest: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Ehitati: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kandevõime: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Ei saa peatada/käivitada laeva...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Ei saa laeva angaari saata...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ei leia kohalikku laevaangaari
@@ -3024,7 +3003,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Näita l
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Vii vaade laeva asukohale
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Saada laev angaari. CTRL+klikk ainult teenindab.
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Näita laeva täpsustusi
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Hind: {CURRENCY} Tippkiirus: {VELOCITY}{}Kandevõime: {CARGO}{}Käituskulud: {CURRENCY}/aastas
 STR_982F_NAME_SHIP                                              :{BLACK}Anna laevale nimi
 
 STR_9831_NAME_SHIP                                              :{WHITE}Anna laevale nimi
@@ -3062,11 +3040,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Ei saa e
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} lennuk{P "" it}
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (täpsustused)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Käituskulud: {LTBLUE}{CURRENCY}/aastas
-STR_A00E_MAX_SPEED                                              :{BLACK}Tippkiirus: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Selle aasta kasum: {LTBLUE}{CURRENCY}  (eelmisel aastal: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tehnoseisund: {LTBLUE}{COMMA}%  {BLACK}Rikkeid eelmisest hooldusest: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Ehitusaasta: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Ei saa lennukit angaari saata...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Suundub {STATION} Angaari
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Suundub {STATION} angaari, {VELOCITY}
@@ -3076,8 +3049,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lennuk on teel
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Ei saa lennukit peatada/käivitada...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lennuk on õhus
-STR_A019_CAPACITY                                               :{BLACK}Kandevõime: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Kandevõime: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Lennuk peab olema peatatud angaari sees
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Ei saa lennukit müüa...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Lennuväljade ehitamine
@@ -3094,7 +3065,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Näita l
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Vii peavaade lennukile
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Saada lennuk angaari
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Näita lennuki täpsustusi
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Hind: {CURRENCY} Tippkiirus: {VELOCITY}{}Kandevõime: {COMMA} reisijat, {COMMA} kotti kirju{}Käituskulud: {CURRENCY}/aastas
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Anna lennukile nimi
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Ei saa lennukile nime anda

@@ -260,8 +260,6 @@ STR_013C_CARGO                                                  :{BLACK}Груз
 STR_013D_INFORMATION                                            :{BLACK}Информация
 STR_013E_CAPACITIES                                             :{BLACK}Вместимость
 STR_TOTAL_CARGO                                                 :{BLACK}Общий груз
-STR_013F_CAPACITY                                               :{BLACK}Вместимость: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Емкость: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Общая загруженность этого транспорта:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} (Всего: {SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2810,12 +2808,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Очис
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Сбросить задержку счетчика, так чтобы транспорт прибыл вовремя.
 STR_SERVICE_HINT                                                :{BLACK}Пропустить это задание, если обслуживание не требуется
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Цена: {CURRENCY} Вес: {WEIGHT_S}{}Скорость: {VELOCITY}  Мощность: {POWER}{}Цена обслуж.: {CURRENCY}/год{}Емкость: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Поломка
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Возраст: {LTBLUE}{STRING}{BLACK} Стоимость обслуживания: {LTBLUE}{CURRENCY}/год
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вес: {LTBLUE}{WEIGHT_S} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вес: {LTBLUE}{WEIGHT_S} {BLACK}Мощн.: {LTBLUE}{POWER}{BLACK} Макс. ск.: {LTBLUE}{VELOCITY} {BLACK}Макс. ТУ: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломок с последнего ремонта: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Остановлен
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Невозможно игнорировать сигнал. Опасно ...
 STR_8863_CRASHED                                                :{RED}Потерпел крушение!
@@ -2867,12 +2859,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Нова
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Построить
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Невозможно построить машину...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Детали)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Возраст: {LTBLUE}{STRING}{BLACK} Цена обслуживания: {LTBLUE}{CURRENCY}/год
-STR_900E_MAX_SPEED                                              :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломок с последнего ремонта: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Построено: {LTBLUE}{NUM}{BLACK} Цена: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Емкость: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...должен быть остановлен в гараже
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Невозможно продать автомобиль...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Невозможно остановить/пустить автомобиль...
@@ -2896,7 +2882,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Пере
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Показать гараж в главном окне
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Список автотранспорта - кликните для получения информации
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Построить выделенный автомобиль
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Цена: {CURRENCY}{}Скорость: {VELOCITY}{}Стоимость обслуживания: {CURRENCY}/год{}Емкость: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Емкость: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2944,12 +2929,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Нево
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Корабль на пути
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Детали)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Возраст: {LTBLUE}{STRING}{BLACK}  Стоимость обслуживания: {LTBLUE}{CURRENCY}/год
-STR_9813_MAX_SPEED                                              :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломок с последнего обслуж.: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Построено: {LTBLUE}{NUM}{BLACK} Стоимость: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Емкость: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Не могу остановить/запустить корабль...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Не могу отправить корабль в док...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Невозможно найти док
@@ -2972,7 +2951,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Пока
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Показать корабль в главном окне
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Отправить корабль в док. CTRL+клик - только для обслуживания
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Показать информацию о корабле
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Цена: {CURRENCY} Макс. Скорость: {VELOCITY}{}Емкость: {CARGO}{}Стоимость обслуживания: {CURRENCY}/год
 STR_982F_NAME_SHIP                                              :{BLACK}Название корабля
 
 STR_9831_NAME_SHIP                                              :{WHITE}Название корабля
@@ -3010,11 +2988,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Нево
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Единиц{P 2 а ы ""} авиатранспорта
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Детали)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Возраст: {LTBLUE}{STRING}{BLACK} Стоимость обслуживания: {LTBLUE}{CURRENCY}/год
-STR_A00E_MAX_SPEED                                              :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломок с последнего ремонта: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Построено: {LTBLUE}{NUM}{BLACK} Цена: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Невозможно отправить его в ангар...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Летит в Ангар {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Следует в Ангар {STATION}, {VELOCITY}
@@ -3024,8 +2997,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}ОН ЛЕТИТ!
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Невозможно остановить/запустить авиатранспорт...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Самолет в полете
-STR_A019_CAPACITY                                               :{BLACK}Емкость: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Емкость: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Самолет должен быть остановлен в ангаре
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Не могу продать авиатранспорт...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Строительство аэропорта
@@ -3042,7 +3013,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Пока
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Показать транспорт в главном окне
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Послать авиатранспорт в ангар. CTRL+клик - только для обслуживания.
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Показать сведения об авиатранспорте.
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Цена: {CURRENCY} Макс. Скорость: {VELOCITY}{}Емкость: {COMMA} пассажиров, {COMMA} почты{}Цена обслуживания: {CURRENCY}/год
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Название самолета
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Не могу назвать самолет...

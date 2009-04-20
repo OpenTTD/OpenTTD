@@ -258,8 +258,6 @@ STR_013C_CARGO                                                  :{BLACK}貨物
 STR_013D_INFORMATION                                            :{BLACK}情報
 STR_013E_CAPACITIES                                             :{BLACK}容量
 STR_TOTAL_CARGO                                                 :{BLACK}合計貨物
-STR_013F_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}積載量：{LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}この列車の貨物最大容量：
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2767,12 +2765,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}選択�
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}遅刻回数をリセットして、車両が定刻になります
 STR_SERVICE_HINT                                                :{BLACK}修理が必要でないとこの指令をスキップ
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}価格：{CURRENCY}　重量：{WEIGHT_S}{}最大速度：{VELOCITY}　出力：{POWER}{}運転費：一年間{CURRENCY}{}容量：{CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}故障
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}使用年数：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}1年間に{CURRENCY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重量：{LTBLUE}{WEIGHT_S}　{BLACK}出力：{LTBLUE}{POWER}{BLACK}　最大速度：{LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量：{LTBLUE}{WEIGHT_S}　{BLACK}出力：{LTBLUE}{POWER}　{BLACK}最大速度：{LTBLUE}{VELOCITY} {BLACK}最大T.E.：{LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の損益：{LTBLUE}{CURRENCY}（昨年：{CURRENCY}）
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障回数：{LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}停止中
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}信号を無視して列車を進行させることができません...
 STR_8863_CRASHED                                                :{RED}事故！
@@ -2823,12 +2815,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}新規�
 STR_9007_BUILD_VEHICLE                                          :{BLACK}車両を購入
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}道路車両が購入できません...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}使用年数：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}一年間{CURRENCY}
-STR_900E_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の損益：{LTBLUE}{CURRENCY}（昨年：{CURRENCY}）
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障回数：{LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}　購入年：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...車庫内に停止しなければなりません
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}道路車両を売却できません...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}道路車両を始動／停止できません...
@@ -2852,7 +2838,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}販売�
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}主の画面を車庫の場所に移動します
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}道路車両のリスト - 情報を見るには車両をクリックします
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}選択した道路車両を購入します
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}価格：{CURRENCY}{}最大速度：{VELOCITY}{}運転費：一年間{CURRENCY}{}容量：{CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}容量：{LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2899,12 +2884,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}船舶�
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}船舶があります
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}使用年数：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}一年間{CURRENCY}
-STR_9813_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の損益：{LTBLUE}{CURRENCY}（昨年：{CURRENCY}）
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障回数：{LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}　購入年：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}船舶を始動／停止できません...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}船舶を造船所へ回送できません...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}付近に造船所が見つかりません
@@ -2927,7 +2906,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}船舶�
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}主の画面を船舶の場所に移動します
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}船舶を造船所へ回送します。Contorl+クリックすると修理のみをします
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}船舶の情報を表示
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}価格：{CURRENCY}　最大速度：{VELOCITY}{}容量：{CARGO}{}運転費：一年間{CURRENCY}
 STR_982F_NAME_SHIP                                              :{BLACK}船舶を名付ける
 
 STR_9831_NAME_SHIP                                              :{WHITE}船舶を名付ける
@@ -2965,11 +2943,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}飛行�
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - 飛行機{COMMA}台
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}使用年数：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}一年間{CURRENCY}
-STR_A00E_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の損益：{LTBLUE}{CURRENCY}（昨年：{CURRENCY}）
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障回数：{LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}　購入年：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}飛行機を格納庫へ回送できません...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATION}格納庫へ行く
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION}格納庫へ行く、{VELOCITY}
@@ -2979,8 +2952,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}飛行機があります
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}飛行機が始動／停止できません...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}飛行中です
-STR_A019_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}、{CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}飛行機を格納庫内で停止しなければなりません
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}飛行機を売却できません...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :空港の建設
@@ -2997,7 +2968,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}飛行�
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}メイン画面を飛行機の場所に移動します
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}飛行機を格納庫へ回送します。Control+クリックすると修理のみします
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}飛行機の情報を表示
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}価格：{CURRENCY}　最大速度：{VELOCITY}{}容量：{COMMA}人の乗客、{COMMA}袋の郵便袋{}運転費：一年間{CURRENCY}
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}飛行機を名付ける
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}飛行機を名付けられません...

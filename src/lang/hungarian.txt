@@ -292,8 +292,6 @@ STR_013C_CARGO                                                  :{BLACK}Rakomán
 STR_013D_INFORMATION                                            :{BLACK}Információ
 STR_013E_CAPACITIES                                             :{BLACK}Kapacitás
 STR_TOTAL_CARGO                                                 :{BLACK}Teljes rakomány
-STR_013F_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Kapacitás: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Teljes rakomány-kapacitása ennek a vonatnak:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2879,12 +2877,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}A kijel�
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Késés-számláló nullázása, azaz a jármű pontos lesz
 STR_SERVICE_HINT                                                :{BLACK}Célpont kihagyása, ha javítás szükséges
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ár: {CURRENCY}    Súly: {WEIGHT_S}{}Sebesség: {VELOCITY}    Teljesítmény: {POWER}{}Működtetési költség: {CURRENCY}/év{}Kapacitás: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Lerobbant
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Működtetési költség: {LTBLUE}{CURRENCY}/év
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Súly: {LTBLUE}{WEIGHT_S}   {BLACK}Teljesítmény: {LTBLUE}{POWER}{BLACK}   Végsebesség: {LTBLUE} {VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Súly: {LTBLUE}{WEIGHT_S} {BLACK}Telj.: {LTBLUE}{POWER}{BLACK} Max. seb.: {LTBLUE}{VELOCITY} {BLACK}Vonóerő: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Idei haszon: {LTBLUE}{CURRENCY}  (tavalyi: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Áll
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Nem indíthatod el a vonatot veszélyben...
 STR_8863_CRASHED                                                :{RED}Balesetet szenvedett!
@@ -2936,12 +2928,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Új köz
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Megvesz
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nem veheted meg a közúti járművet...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} adatai
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Működtetési költség: {LTBLUE}{CURRENCY}/év
-STR_900E_MAX_SPEED                                              :{BLACK}Végsebesség: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Idei haszon: {LTBLUE}{CURRENCY}  (tavalyi: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Vásárlás éve: {LTBLUE}{NUM}{BLACK}   Érték: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...garázsban kellene állnia ehhez
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nem adhatod el a közúti járművet...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nem indíthatod el/ állíthatod meg a közúti járművet...
@@ -2965,7 +2951,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Dobj ide
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}A fő nézetet a garázsra állítja
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Közúti jármű kiválasztása - kattints egy járműre az adataihoz
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}A kijelölt közúti jármű megvétele
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Ár: {CURRENCY}{}Sebesség: {VELOCITY}{}Működtetési költség: {CURRENCY}/év{}Kapacitás: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacitás: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3013,12 +2998,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nem vehe
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Hajó van az útban
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} adatai
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Működtetési költség: {LTBLUE}{CURRENCY}/év
-STR_9813_MAX_SPEED                                              :{BLACK}Végsebesség: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Idei haszon: {LTBLUE}{CURRENCY}  (tavalyi: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Vásárlás éve: {LTBLUE}{NUM}{BLACK}   Érték: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nem indíthatod el/ állíthatod meg a hajót...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nem küldheted a hajót a dokkba...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nem találom a helyi dokkot
@@ -3041,7 +3020,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}A hajó 
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}A fő nézetet a hajóra állítja
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Dokkba küldi a hajót
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}A hajó adatai
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ár: {CURRENCY}    Végsebesség: {VELOCITY}{}Kapacitás: {CARGO}{}Működtetési költség: {CURRENCY}/év
 STR_982F_NAME_SHIP                                              :{BLACK}Hajó átnevezése
 
 STR_9831_NAME_SHIP                                              :{WHITE}Hajó átnevezése
@@ -3079,11 +3057,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nem vehe
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} repülőgépei - {COMMA}
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} adatai
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Működtetési költség: {LTBLUE}{CURRENCY}/év
-STR_A00E_MAX_SPEED                                              :{BLACK}Végsebesség: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Idei haszon: {LTBLUE}{CURRENCY}  (tavalyi: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Vásárlás éve: {LTBLUE}{NUM}{BLACK}   Érték: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nem küldheted a repülőgépet a hangárba...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Úton {STATION} hangárjába
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Úton {STATION} hangárjába, {VELOCITY}
@@ -3093,8 +3066,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Repülőgép van az útban
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nem indíthatod el/ állíthatod meg a repülőgépet...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}... a levegőben van
-STR_A019_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}A hangárban kellene állnia ehhez
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nem adhatod el a repülőgépet...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Repülőtér építése
@@ -3111,7 +3082,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}A repül
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}A fő nézetet a repülőgépre állítja
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Hangárba küldi a repülőgépet
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}A repülőgép adatai
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ár: {CURRENCY}    Végsebesség: {VELOCITY}{}Kapacitás: {COMMA} utas, {COMMA} csomag levél{}Működtetési költség: {CURRENCY}/év
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Repülőgép átnevezése
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Nem nevezheted át a repülőgépet...

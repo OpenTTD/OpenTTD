@@ -259,8 +259,6 @@ STR_013C_CARGO                                                  :{BLACK}화물
 STR_013D_INFORMATION                                            :{BLACK}정보
 STR_013E_CAPACITIES                                             :{BLACK}수용량
 STR_TOTAL_CARGO                                                 :{BLACK}총 화물량
-STR_013F_CAPACITY                                               :{BLACK}수용량: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}수용량: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}이 열차의 총 수용량:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2805,12 +2803,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택�
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}지각 카운터 초기화, 차량은 제시간으로 운행합니다.
 STR_SERVICE_HINT                                                :{BLACK}점검이 필요하면 이 경로를 건너뜁니다.
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}가격: {CURRENCY} 무게: {WEIGHT_S}{}속도: {VELOCITY}  힘: {POWER}{}운행비용: {CURRENCY}/년{}수송량: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}고장
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}무게: {LTBLUE}{WEIGHT_S}  {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속력: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}중량: {LTBLUE}{WEIGHT_S} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속도: {LTBLUE}{VELOCITY} {BLACK}최고 견인 효과: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}올해 수익: {LTBLUE}{CURRENCY}  (작년: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}정지함
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}너무 위험해서 신호를 무시할 수 없습니다...
 STR_8863_CRASHED                                                :{RED}충돌!!
@@ -2862,12 +2854,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}새 자�
 STR_9007_BUILD_VEHICLE                                          :{BLACK}차량 만들기
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}자동차를 만들 수 없습니다...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (상세정보)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
-STR_900E_MAX_SPEED                                              :{BLACK}최고속력: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}올해 수익: {LTBLUE}{CURRENCY}  (작년: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}수송량: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...차고 안에서 정지해있어야 합니다!
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}자동차를 팔 수 없습니다...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}자동차를 운행/정지시킬 수 없습니다...
@@ -2891,7 +2877,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}자동�
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}이 차고가 있는 곳으로 이동
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}자동차 선택 목록 - 차량 정보를 보려면 클릭
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}선택한 자동차 만들기
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}가격: {CURRENCY}{}속력: {VELOCITY}{}운행비용: {CURRENCY}/년{}수송량: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}수송량: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2939,12 +2924,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}선박�
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}중간에 선박이 있습니다
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (상세정보)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
-STR_9813_MAX_SPEED                                              :{BLACK}최고속력: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}올해 수익: {LTBLUE}{CURRENCY}  (작년: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}수송량: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}선박을 운행/중지시킬 수 없습니다...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}선박을 정박소로 보낼 수 없습니다...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}인접한 정박소를 찾을 수 없습니다
@@ -2967,7 +2946,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}선박�
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}이 선박이 있는 곳으로 이동합니다
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}선박을 정박소로 보냅니다. CTRL+클릭하면 점검만 합니다.
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}선박 상세정보 보기
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}가격: {CURRENCY} 최고속력: {VELOCITY}{}수송량: {CARGO}{}운행비용: {CURRENCY}/년
 STR_982F_NAME_SHIP                                              :{BLACK}선박 이름 지정
 
 STR_9831_NAME_SHIP                                              :{WHITE}선박 이름 지정
@@ -3005,11 +2983,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}항공�
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA}대의 항공기
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (상세정보)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
-STR_A00E_MAX_SPEED                                              :{BLACK}최고속력: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}올해 수익: {LTBLUE}{CURRENCY}  (작년: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}항공기를 격납고로 보낼 수 없습니다...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATION}공항 격납고로 가는 중
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION}공항 격납고로 가는 중 ({VELOCITY})
@@ -3019,8 +2992,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}중간에 항공기가 있습니다
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}항공기를 운행/중지시킬 수 없습니다...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}항공기가 운항중입니다
-STR_A019_CAPACITY                                               :{BLACK}수송량: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}수송량: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}격납고 내에서 정지해있어야합니다
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}항공기를 팔 수 없습니다...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :공항 건설
@@ -3037,7 +3008,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}항공�
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}이 항공기가 있는 곳으로 이동
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}항공기를 격납고로 보냅니다. CTRL+클릭하면 점검만 합니다
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}항공기 상세정보 보기
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}가격: {CURRENCY} 최고속력: {VELOCITY}{}수송량: 승객 {COMMA}명, 우편 {COMMA}가방{}운행비용: {CURRENCY}/년
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}항공기 이름 지정
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}항공기의 이름을 지정할 수 없습니다...

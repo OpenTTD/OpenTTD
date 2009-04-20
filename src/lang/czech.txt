@@ -326,8 +326,6 @@ STR_013C_CARGO                                                  :{BLACK}Náklad
 STR_013D_INFORMATION                                            :{BLACK}Informace
 STR_013E_CAPACITIES                                             :{BLACK}Kapacity
 STR_TOTAL_CARGO                                                 :{BLACK}Celkový náklad
-STR_013F_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Celková kapacita tohoto vlaku:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2872,12 +2870,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Zrušit 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Smazat zpoždění, takže vozidlo pojede na čas
 STR_SERVICE_HINT                                                :{BLACK}Přeskoč tento cíl, pokud není potřeba pravidelná údržba
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Hmotnost: {WEIGHT_S}{}Rychlost: {VELOCITY}  Výkon: {POWER}{}Cena provozu: {CURRENCY} ročně{}Kapacita: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Porucha
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Stáří: {LTBLUE}{STRING}{BLACK}   Cena provozu: {LTBLUE}{CURRENCY} ročně
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_S}  {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rychlost: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_S} {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rychlost: {LTBLUE}{VELOCITY} {BLACK}Max. tažná síla: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Příjem tento rok: {LTBLUE}{CURRENCY}  (minulý rok: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Zastaveno
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Nemohu vlak nechat projet semafory v nebezpečí...
 STR_8863_CRASHED                                                :{RED}Nehoda!
@@ -2929,12 +2921,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nová si
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Koupit silniční vozidlo
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nemohu koupit nové silniční vozidlo...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Stáří: {LTBLUE}{STRING}{BLACK}   Cena provozu: {LTBLUE}{CURRENCY} ročně
-STR_900E_MAX_SPEED                                              :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Příjem tento rok: {LTBLUE}{CURRENCY}  (minulý rok: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Koupen: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}... musí být zastaven v garáži
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nemohu prodat silniční vozidlo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nemohu zastavit/rozjet silniční vozidlo...
@@ -2958,7 +2944,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Přesuň
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Nastav pohled na garáž
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Seznam silničních vozidel - klepni na vozidlo pro informace
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Koupit označené vozidlo
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Rychlost: {VELOCITY}{}Cena provozu: {CURRENCY} ročně{}Kapacita: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacita: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3006,12 +2991,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nelze ko
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Loď v cestě
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Stáří: {LTBLUE}{STRING}{BLACK}   Cena provozu: {LTBLUE}{CURRENCY} ročně
-STR_9813_MAX_SPEED                                              :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Příjem tento rok: {LTBLUE}{CURRENCY}  (minulý rok: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Koupeno: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nelze rozjet/zastavit loď...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nelze poslat loď do depa...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemohu najít místní depo
@@ -3034,7 +3013,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Ukázat 
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Nastavit pohled na loď
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Poslat loď do doku
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Ukázat detaily lodi
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {CARGO}{}Cena provozu: {CURRENCY} ročně
 STR_982F_NAME_SHIP                                              :{BLACK}Přejmenovat loď
 
 STR_9831_NAME_SHIP                                              :{WHITE}Přejemnovat loď
@@ -3072,11 +3050,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nelze ko
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} letad{P lo la el}
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Stáří: {LTBLUE}{STRING}{BLACK}   Cena provozu: {LTBLUE}{CURRENCY} ročně
-STR_A00E_MAX_SPEED                                              :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Příjem tento rok: {LTBLUE}{CURRENCY}  (minulý rok: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Koupeno: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nelze poslat letadlo do hangáru...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Jedu do hangáru {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Jedu do hangáru {STATION}, {VELOCITY}
@@ -3086,8 +3059,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Letadlo v cestě
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nemohu rozjet/zastavit letadlo...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Letadlo letí
-STR_A019_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Letadlo musí být zastaveno v hangáru
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nelze prodat letadlo...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Stavba letiště
@@ -3104,7 +3075,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Ukázat 
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Nastavit pohled na letadlo
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Poslat letadlo do hangáru
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Ukázat detaily letadla
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {COMMA} cestující{P "" "" ch}, {COMMA} balík{P "" y ů} pošty{}Cena provozu: {CURRENCY} ročně
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Přejmenovat letadlo
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Nelze přejmenovat letadlo

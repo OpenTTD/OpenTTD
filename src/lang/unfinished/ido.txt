@@ -171,7 +171,6 @@ STR_0130_RENAME                                                 :{BLACK}Rinomiza
 STR_013C_CARGO                                                  :{BLACK}Kargajo
 STR_013D_INFORMATION                                            :{BLACK}Informo
 STR_013E_CAPACITIES                                             :{BLACK}Kapacesi
-STR_013F_CAPACITY                                               :{BLACK}Kapaceso: {LTBLUE}{CARGO}{STRING}
 STR_0140_NEW_GAME                                               :{BLACK}Nova Ludo
 STR_0141_LOAD_GAME                                              :{BLACK}Charjas Ludo
 

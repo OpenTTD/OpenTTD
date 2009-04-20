@@ -259,8 +259,6 @@ STR_013C_CARGO                                                  :{BLACK}Farmur
 STR_013D_INFORMATION                                            :{BLACK}Upplýsingar
 STR_013E_CAPACITIES                                             :{BLACK}Burðargeta
 STR_TOTAL_CARGO                                                 :{BLACK}Heildarfarmur
-STR_013F_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Farmur alls (burðargeta) þessarar lestar:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2798,12 +2796,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Hreinsa 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Endurstilla seinkunarteljara, svo farartækið verði á réttum tíma
 STR_SERVICE_HINT                                                :{BLACK}Sleppa þessarri skipun nema þörf sé á viðgerð
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Verð: {CURRENCY} Þyngd: {WEIGHT_S}{}Hraði: {VELOCITY}  Afl: {POWER}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Bilaður
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY} á ári
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Þyngd: {LTBLUE}{WEIGHT_S}  {BLACK}Afl: {LTBLUE}{POWER}{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Þyngd: {LTBLUE}{WEIGHT_S} {BLACK}Afl: {LTBLUE}{POWER}{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY} {BLACK}Hámarks togkraftur: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Hagnaður á þessu ári: {LTBLUE}{CURRENCY}  (síðasta ár: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA}%  {BLACK}Bilanir frá síðustu viðgerð: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stöðvaður
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Get ekki látið lest fara framhjá hættumerki...
 STR_8863_CRASHED                                                :{RED}Árekstur!
@@ -2855,12 +2847,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Bifreið
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Kaupa bifreið
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Get ekki byggt bíl...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Upplýsingar)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY} á ári
-STR_900E_MAX_SPEED                                              :{BLACK}Hámarkshraði: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Hagnaður á þessu ári: {LTBLUE}{CURRENCY}  (síðasta ár: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA}%  {BLACK}Bilanir frá síðustu viðgerð: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Byggður: {LTBLUE}{NUM}{BLACK} Virði: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...verður að stöðvast í bifreiðaskýli
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Get ekki selt bifreið...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Get ekki stöðvað/ræst bifreið...
@@ -2884,7 +2870,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Dragðu 
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Miðja aðalsjónarhorn á bifreiðaskýli
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Bifreiðalisti - ýttu á bifreið fyrir nánari upplýsingar
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Smíða valda bifreið
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Verð: {CURRENCY}{}Hraði: {VELOCITY}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Rými: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2932,12 +2917,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Get ekki
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Skip er fyrir
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Upplýsingar)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY}á ári
-STR_9813_MAX_SPEED                                              :{BLACK}Hámarkshraði: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Tekjur þessa árs: {LTBLUE}{CURRENCY}  (síðasta ár: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA}%  {BLACK}Bilanir frá síðustu skoðun: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Smíðað: {LTBLUE}{NUM}{BLACK} Verðmæti: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Get ekki stöðvað/ræst skip...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Get ekki sent skip í slipp...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Finnur ekkert nálægt skýli
@@ -2960,7 +2939,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Sýna sk
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Miðja aðalsjónarhorn á staðsetningu skips
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Senda skipið í slipp
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Sýna nánari upplýsingar um skip
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Verð: {CURRENCY} Hámarkshraði: {VELOCITY}{}Burðargeta: {CARGO}{}Rekstrarkostnaður: {CURRENCY}á ári
 STR_982F_NAME_SHIP                                              :{BLACK}Nefna skip
 
 STR_9831_NAME_SHIP                                              :{WHITE}Nefna skip
@@ -2998,11 +2976,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Get ekki
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Flugvél
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Upplýsingar)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY}á ári
-STR_A00E_MAX_SPEED                                              :{BLACK}Hámarkshraði: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Hagnaður í ár: {LTBLUE}{CURRENCY}  (í fyrra: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA}%  {BLACK}Bilanir frá síðustu skoðun: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Smíðuð: {LTBLUE}{NUM}{BLACK} Virði: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Get ekki sent flugvél í flugskýli...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Stefnir á {STATION} flugskýli
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Stefnir á {STATION} flugskýli, {VELOCITY}
@@ -3012,8 +2985,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Flugvél er fyrir
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Get ekki stöðvað/ræst flugvél...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}flugvélin er á flugi
-STR_A019_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Flugvélin verður að vera stöðvuð í flugskýli
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Get ekki selt flugvélina...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Flugvallarframkvæmdir
@@ -3030,7 +3001,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Sýna sk
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Miðja aðalsjónarhorn á flugvélina
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Senda flugvélina i flugskýli
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Sýna nánari upplýsingar um skip
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Verð: {CURRENCY} Hámarkshraði: {VELOCITY}{}Burðargeta: {COMMA} farþegar, {COMMA} pokar af pósti{}Rekstrarkostnaður: {CURRENCY}á ári
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nefna flugvélina
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Get ekki nefnt flugvélina...

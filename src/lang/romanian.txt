@@ -258,8 +258,6 @@ STR_013C_CARGO                                                  :{BLACK}Încărc
 STR_013D_INFORMATION                                            :{BLACK}Informatii
 STR_013E_CAPACITIES                                             :{BLACK}Capacităţi
 STR_TOTAL_CARGO                                                 :{BLACK}Încãrcãturi
-STR_013F_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Capacitate: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Încãrcãtura totalã (capacitatea) acestui tren:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2808,12 +2806,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Elimina 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reinitializeaza contorul de intarziere, astfel ca vehiculul sa ajunga la timp
 STR_SERVICE_HINT                                                :{BLACK}Sari peste aceastã comandã dacã nu este necesar un service
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {CURRENCY} Greutate: {WEIGHT_S}{}Vitezã: {VELOCITY}  Putere: {POWER}{}Cost de rulare: {CURRENCY}/an{}Capacitate: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Defectiune
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vechimea: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Greutate: {LTBLUE}{WEIGHT_S}  {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Vitezã max.: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Greutate: {LTBLUE}{WEIGHT_S} {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Viteza max.: {LTBLUE}{VELOCITY} {BLACK}E.T. max.: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficienţă: {LTBLUE}{COMMA}%  {BLACK}Defecţiuni de la ultimul service: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Oprit
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Nu se poate permite trenului să treacă în caz de pericol...
 STR_8863_CRASHED                                                :{RED}Accident!
@@ -2865,12 +2857,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Autovehi
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Cumpără vehicul
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nu pot cumpăra autovehicul...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detalii)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Vârsta: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
-STR_900E_MAX_SPEED                                              :{BLACK}Viteză max.: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficienţă: {LTBLUE}{COMMA}%  {BLACK}Defecţiuni de la ultimul service: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Cumpărat: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...trebuie oprit într-o autobază
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nu se poate vinde autovehiculul...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nu se poate opri/porni autovehiculul...
@@ -2894,7 +2880,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Mută un
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrează imaginea pe locaţia acestei autobaze
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Listă selecţie vehicule rutiere - apasă pe vehicul pentru informaţii
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Cumpără autovehiculul selectat
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Preţ: {CURRENCY}{}Viteză: {VELOCITY}{}Cost de rulare: {CURRENCY}/an{}Capacitate: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacitate: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2942,12 +2927,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nu pot c
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Navă în cale
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detalii)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Vechime: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
-STR_9813_MAX_SPEED                                              :{BLACK}Viteza max.: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficienţă: {LTBLUE}{COMMA}%  {BLACK}Defecţiuni de la ultimul service: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Construit: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nu pot opri/porni nava...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nu pot trimite nava în şantier...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nu pot găsi un şantier apropiat
@@ -2970,7 +2949,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Afişeaz
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrează imaginea pe locaţia curentă a navei
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Trimite nava în şantier. Ctrl+clic pentru întreţinere
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Afişează detaliile navei
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Preţ: {CURRENCY} Viteza max.: {VELOCITY}{}Capacitate: {CARGO}{}Cost de rulare: {CURRENCY}/an
 STR_982F_NAME_SHIP                                              :{BLACK}Denumeşte această navă
 
 STR_9831_NAME_SHIP                                              :{WHITE}Denumeşte această navă
@@ -3008,11 +2986,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nu se po
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Aeronave
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detalii)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Vârstă: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
-STR_A00E_MAX_SPEED                                              :{BLACK}Viteză max.: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficienţă: {LTBLUE}{COMMA}%  {BLACK}Defecţiuni de la ultimul service: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Cumpărat în: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nu se poate trimite aeronava la hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Merge la Hangarul {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Merge la Hangarul {STATION}, {VELOCITY}
@@ -3022,8 +2995,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronavă în cale
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nu se poate opri/porni aeronava...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aeronava se află în zbor
-STR_A019_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Aeronava trebuie să staţioneze într-un hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nu se poate vinde aeronava...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Construire aeroport
@@ -3040,7 +3011,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Afişeaz
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centrează imaginea pe locaţia curentă a aeronavei
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Trimite aeronava la hangar. Ctrl+clic pentru întreţinere
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Afişează detaliile aeronavei
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Preţ: {CURRENCY} Viteza max.: {VELOCITY}{}Capacitate: {COMMA} călători, {COMMA} saci de poştă{}Cost de rulare: {CURRENCY}/an
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Denumeşte aeronava
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Nu pot denumi aeronava...

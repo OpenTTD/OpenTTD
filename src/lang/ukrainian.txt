@@ -383,8 +383,6 @@ STR_013C_CARGO                                                  :{BLACK}Вант
 STR_013D_INFORMATION                                            :{BLACK}Інформація
 STR_013E_CAPACITIES                                             :{BLACK}Місткість
 STR_TOTAL_CARGO                                                 :{BLACK}Повна місткість
-STR_013F_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Місткість:{LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Повна місткість цього поїзду:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2959,12 +2957,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Очис
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Очистити лічильник запізнення, щоб транспорт встигнув
 STR_SERVICE_HINT                                                :{BLACK}Пропустити це завдання, доки не буде потрібне обслуговування
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ціна: {CURRENCY} Вага: {WEIGHT_S}{}Швидкість: {VELOCITY}{}Потужність: {POWER}{}Вартість експлуатації: {CURRENCY}/рік{}Місткість: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Зламався
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Транспортні витрати: {LTBLUE}{CURRENCY}/рік
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага: {LTBLUE}{WEIGHT_S}  {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага: {LTBLUE}{WEIGHT_S} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Макс. T.E.: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибуток: {LTBLUE}{CURRENCY}  (торік: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Зупинений
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Неможливо проїхати сигнал - небезпечно...
 STR_8863_CRASHED                                                :{RED}Аварія!
@@ -3016,12 +3008,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Нове
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Будувати
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Неможливо будувати авто...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Детально)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Транспортні витрати: {LTBLUE}{CURRENCY}/рік
-STR_900E_MAX_SPEED                                              :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибуток цього року: {LTBLUE}{CURRENCY}  (минулого року: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...авто повинно стояти в депо
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Неможливо продати авто...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Неможливо зупинити авто...
@@ -3045,7 +3031,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Пере
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Показати автомобільне депо в центрі екрану
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Список авто - натисніть на авто для інформації
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Будувати вибране авто
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Ціна: {CURRENCY}{}Швидкість: {VELOCITY}{}Транспортні витрати: {CURRENCY}/рік{}Місткість: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Місткість: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3093,12 +3078,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Немо
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Корабель на шляху
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Деталі)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Транспортні витрати: {LTBLUE}{CURRENCY}/рік
-STR_9813_MAX_SPEED                                              :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибуток цього року: {LTBLUE}{CURRENCY}  (минулого року: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Неможливо зупинити корабель...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Неможливо направити корабель в депо...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Неможливо знайти місцеве депо
@@ -3121,7 +3100,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Пока
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Показати корабель в центрі екрану
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Направити корабель в депо
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Показати корабель детально
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ціна: {CURRENCY} Макс. швидкість: {VELOCITY}{}Місткість: {CARGO}{}Транспортні витрати: {CURRENCY}/рік
 STR_982F_NAME_SHIP                                              :{BLACK}Назвати корабель
 
 STR_9831_NAME_SHIP                                              :{WHITE}Назвати корабель
@@ -3159,11 +3137,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Немо
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} літак{P "" и ів}
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Детально)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}  Транспортні витрати: {LTBLUE}{CURRENCY}/рік
-STR_A00E_MAX_SPEED                                              :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибуток цього року: {LTBLUE}{CURRENCY}  (минулого року: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Неможливо направити літак до ангару...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Летить до {STATION} ангару
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Летить до {STATION} ангару, {VELOCITY}
@@ -3173,8 +3146,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Літак на шляху
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Неможливо зупинити літак...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Літак у польоті
-STR_A019_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Літак повинен стояти в ангарі
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Неможливо продати літак...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Будувати аеропорт
@@ -3191,7 +3162,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Пока
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Показати літак в центрі екрану
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Направити літак в ангар
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Показати літак детально
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ціна: {CURRENCY} Макс. швидкість: {VELOCITY}{}Місткість: {COMMA} пасажирів, {COMMA} мішків пошти{}Транспортні витрати: {CURRENCY}/рік
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Назвати літак
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Неможливо назвати...

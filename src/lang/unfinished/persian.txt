@@ -188,7 +188,6 @@ STR_013B_OWNED_BY                                               :{WHITE} صاح�
 STR_013C_CARGO                                                  :{BLACK}محموله
 STR_013D_INFORMATION                                            :{BLACK}اطلاعات
 STR_013E_CAPACITIES                                             :{BLACK}ضرفیت ها
-STR_013F_CAPACITY                                               :{BLACK}ضرفیت: {LTBLUE}{CARGO}{STRING}
 STR_0140_NEW_GAME                                               :{BLACK}بازی جدید
 STR_0141_LOAD_GAME                                              :{BLACK}ادامه بازی های قبلی
 
@@ -1312,9 +1311,6 @@ STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}لیست
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}لغو دستور فعلی و شروع بعدی. Ctrl+Click دستور انتخاب شده را لغو می کند
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}پاک کردن دستور مشخص شده
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}وارد کردن دستور جدید قبل از دستور مشخص شده. یا اضافه کردن آن به آخر لیست
-STR_885C_BROKEN_DOWN                                            :{RED}از کار افتاده
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}سود این سال: {LTBLUE}{CURRENCY}  (سال قبل: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}قابلیت: {LTBLUE}{COMMA}%  {BLACK}دفعات خراب شدن از آخرین سرویس {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}متوقف شده
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}در هنگام خطر نمی توان علامت عبور قطار را داد
 STR_8863_CRASHED                                                :{RED}تصادف کرده!
@@ -1340,11 +1336,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}ماشی
 STR_9007_BUILD_VEHICLE                                          :{BLACK}ساخت وسیله نقلیه
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}نمی شود ماشین ساخت...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (اطلاعات)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}سن: {LTBLUE}{STRING}{BLACK}   هزینه ی جا به جایی: {LTBLUE}{CURRENCY}/yr
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}سود امسال : {LTBLUE}{CURRENCY}  (lپارسال: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}ضریب اطمینان: {LTBLUE}{COMMA}%  {BLACK}خرابی ها بعد از آخرین سرویس: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}  ساخته شده: {LTBLUE}{NUM}{BLACK} قیمت: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}ضرفیت: {LTBLUE}{CARGO}{STRING}
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}نمیشود ماشین را فروخت...
 
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}نام گذاری ماشین
@@ -1365,12 +1356,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}نمی �
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}قطار در راه است
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (اطلاعات)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}سن: {LTBLUE}{STRING}{BLACK}   هزینه ناوبری: {LTBLUE}{CURRENCY}/yr
-STR_9813_MAX_SPEED                                              :{BLACK}حد اکثر سرعت: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}سود امسال: {LTBLUE}{CURRENCY}  (lپارسال: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}ضریب اطمینان: {LTBLUE}{COMMA}%  {BLACK}خرابی ها بعد از آخرین سرویس: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   ساخت: {LTBLUE}{NUM}{BLACK} قیمت: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}ظرفیت: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}نمی شود کشتی را حرکت داد / متوقف کرد ...
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}ساخت بندر
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}کشی ها -برای اطلاعات بر روی کشتی کلیک کنید
@@ -1385,7 +1370,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}نمای
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}نمای اصلی از جایگاه کشتی
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}فرستادن کشتی به لنگرگاه. ctrl+click فقط سرویس میکند
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}نمایش مشخصات کشتی
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}بها : {CURRENCY} حد اکثر سرعت:{VELOCITY}{}ظرفیت: {CARGO}{}هزینه راه اندازی {CURRENCY}/سال
 STR_982F_NAME_SHIP                                              :{BLACK}نام گذاری کشتی
 
 STR_9831_NAME_SHIP                                              :{WHITE}نام گذاری کشتی
@@ -1418,17 +1402,11 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}نمی �
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} هواپیما
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (مشخصات)
-STR_A00E_MAX_SPEED                                              :{BLACK}حداکثر سرعت:  {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}سود امسال:{LTBLUE}{CURRENCY} (سال قبل {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}قابلیت اطمینان: {LTBLUE}{COMMA}%  {BLACK}از کار افتادگی از آخرین سرویس: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK} ساخته شده :{LTBLUE}{NUM}{BLACK}  قیمت:  {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}نمیتوان هواپیما را به آشیانه فرستاد. . .
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE}در آشیانه در حال انتظار است
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}هواپیما در راه است
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}نمیتوان هواپاما را متوقف/آغاز به کار کرد
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}هواپاما در حال پرواز است
-STR_A019_CAPACITY                                               :{BLACK}ظرفیت: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}ظرفیت: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}هواپیما باید در آشیانه متوقف شود
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}نمیتوان هواپیما را فروخت
 STR_A01D_AIRPORT_CONSTRUCTION                                   :ساختمان فرودگاه
@@ -1445,7 +1423,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}نمای
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}نمای اصلی از جایگاه هواپیما
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}ارسال هواپیما به آشیانه. Ctrl+Click  فقط سرویس می کند
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}نمایش مشخصات هوا پیما
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}بها: {CURRENCY} حد اکثر سرعت: {VELOCITY}{}ظرفیت: {COMMA} مسافر, {COMMA} بسته های نامه{} هزینه براه اندازی : {CURRENCY}/سال
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}نامگذاری هواپیما
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}. . . نمیتوان نام هواپیما را انتخاب کرد

@@ -258,8 +258,6 @@ STR_013C_CARGO                                                  :{BLACK}货物
 STR_013D_INFORMATION                                            :{BLACK}信息
 STR_013E_CAPACITIES                                             :{BLACK}装载能力
 STR_TOTAL_CARGO                                                 :{BLACK}全部货物
-STR_013F_CAPACITY                                               :{BLACK}装载能力：{LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}装载能力：{LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}全车的装载能力为：
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2808,12 +2806,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}清除�
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}重置晚点计数器，从而使车辆准时到达
 STR_SERVICE_HINT                                                :{BLACK}除非需要在此处保养，否则跳过这一项目
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}售价：{CURRENCY} 重量：{WEIGHT_S}{}速度：{VELOCITY}  功率：{POWER}{}运行费用：{CURRENCY}/年{}装载量: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}抛锚
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}年龄: {LTBLUE}{STRING}{BLACK}   运行成本: {LTBLUE}{CURRENCY}/年
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重量：{LTBLUE}{WEIGHT_S}  {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最大速度：{LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量: {LTBLUE}{WEIGHT_S} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最大速度：{LTBLUE}{VELOCITY} {BLACK}最大牵引力：{LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年利润: {LTBLUE}{CURRENCY}  (去年利润: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}可靠性: {LTBLUE}{COMMA}%  {BLACK}上次保养后抛锚的次数: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}停运
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}不能让列车冒险通过信号...
 STR_8863_CRASHED                                                :{RED}撞毁!
@@ -2865,12 +2857,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}购买�
 STR_9007_BUILD_VEHICLE                                          :{BLACK}购买汽车
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}不能购买汽车...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (详细资料)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}年龄: {LTBLUE}{STRING}{BLACK}   运行成本: {LTBLUE}{CURRENCY}/年
-STR_900E_MAX_SPEED                                              :{BLACK}最大时速: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年的利润: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}可靠性: {LTBLUE}{COMMA}%  {BLACK}上次保养后抛锚的次数: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   建造年份: {LTBLUE}{NUM}{BLACK} 价值: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}装载能力：{LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...必须完全停在一个车库中
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}不能出售汽车...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}不能 停止/启动 汽车...
@@ -2894,7 +2880,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}将汽�
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}将屏幕中心移动到车库所在的位置
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}汽车列表 - 点击可以查看详细信息
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}购买选定的汽车
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}价格：{CURRENCY}{}速度：{VELOCITY}{}运行成本：{CURRENCY}/年{}装载能力：{CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}运力： {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2942,12 +2927,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}不能�
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}前方有另一艘船只……
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (详情)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}年龄：{LTBLUE}{STRING}{BLACK}   运行费用：{LTBLUE}{CURRENCY}/年
-STR_9813_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年利润：{LTBLUE}{CURRENCY}  (去年利润：{CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}可靠性：{LTBLUE}{COMMA}%  {BLACK}上次保养后的故障次数：{LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   建造时间：{LTBLUE}{NUM}{BLACK} 价值：{LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}运载能力： {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}不能 停止/启动 船只……
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}不能命令船只前往船坞……
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}找不到附近的船坞
@@ -2970,7 +2949,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}显示�
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}将屏幕中心移动到船只所在的位置
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}命令船只前往船坞{}Ctrl+单击 时船只只进行保养
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}显示船只的详情
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}价格：{CURRENCY} 最大速度：{VELOCITY}{}装载能力：{CARGO}{}运行费用：{CURRENCY}/yr
 STR_982F_NAME_SHIP                                              :{BLACK}命名船只
 
 STR_9831_NAME_SHIP                                              :{WHITE}命名船只
@@ -3008,11 +2986,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}不能�
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} 飞机
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (详情)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}年龄：{LTBLUE}{STRING}{BLACK}   运行成本：{LTBLUE}{CURRENCY}/年
-STR_A00E_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年利润：{LTBLUE}{CURRENCY}  (去年利润：{CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}可靠性：{LTBLUE}{COMMA}%  {BLACK}上次保养后的故障次数：{LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   制造年份：{LTBLUE}{NUM}{BLACK} 价值：{LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}不能命令飞机返回机库……
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}正在前往 {STATION} 的机库
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}正在前往 {STATION} 的机库，{VELOCITY}
@@ -3022,8 +2995,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}指定位置有飞机
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}不能 启动/停止 飞机
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}飞机正在飞行
-STR_A019_CAPACITY                                               :{BLACK}运载能力：{LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}运载能力：{LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}飞机必须在机库中停止
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}不能出售飞机……
 STR_A01D_AIRPORT_CONSTRUCTION                                   :机场建设
@@ -3040,7 +3011,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}显示�
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}将屏幕中心移动到飞机所在的位置
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}命令飞机前往机库{}Ctrl+单击 时飞机只进行保养
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}显示飞机的详情
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}价格：{CURRENCY} 最大速度：{VELOCITY}{}运载能力：{COMMA} 位旅客，{COMMA} 包邮件{}运行费用：{CURRENCY}/年
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}命名飞机
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}不能为飞机命名……

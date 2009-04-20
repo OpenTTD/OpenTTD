@@ -258,8 +258,6 @@ STR_013C_CARGO                                                  :{BLACK}Luedung
 STR_013D_INFORMATION                                            :{BLACK}Informatioun
 STR_013E_CAPACITIES                                             :{BLACK}Kapazitéiten
 STR_TOTAL_CARGO                                                 :{BLACK}Total Luedung
-STR_013F_CAPACITY                                               :{BLACK}Kapazitéit: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Kapazitéit: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Total Luedplaatz fir dëssen Zuch:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2753,10 +2751,6 @@ STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Optragsl
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Iwersprang den momentanen Optrag. CTRL+Klick iwerspréngt op den ungewieltenen Optrag
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Läscht den ungewieltenen Optrag
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Sëtzt en neien Optrag firun den ungewieltenen Optrag, oder un d'Ënn vun der Lëscht an
-STR_885C_BROKEN_DOWN                                            :{RED}Futti
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}   Betriebskäschten: {LTBLUE}{CURRENCY}/joër
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit dësst Joër: {LTBLUE}{CURRENCY}  (läscht Joër: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zouverlässegkeet: {LTBLUE}{COMMA}%  {BLACK}Pannen säit läschter Wartung: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Gestoppt
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kann den Zuch nët bei Gefohr lanscht d'Signal schécken...
 STR_8863_CRASHED                                                :{RED}Onfall!
@@ -2785,12 +2779,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Néi Str
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Gefiehrt bauen
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kann d'Stroossengefiehrt nët bauen...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detailer)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}   Betriebskäschten: {LTBLUE}{CURRENCY}/joër
-STR_900E_MAX_SPEED                                              :{BLACK}Max. Geschwindegkeet: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit dësst Joër: {LTBLUE}{CURRENCY}  (läscht Joër: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zouverlässegkeet: {LTBLUE}{COMMA}%  {BLACK}Pannen säit läschter Wartung: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapazitéit: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...muss an engem Depot stoen
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kann d'Stroossengefiehrt nët verkaafen...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kann d'Stroossengefiehrt nët stoppen/starten...
@@ -2810,7 +2798,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Zitt d'S
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Zentréiert d'Unsiicht op den Depot
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Stroossengefiehrt Lëscht - klcikt op en Gefiehrt fir Informatiounen
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Baut dat ungewieltent Stroossengefiehrt
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Käschten: {CURRENCY}{}Geschwindegkeet: {VELOCITY}{}Betriibskäschten: {CURRENCY}/joër{}Kapazitéit: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Stroossengefiehrt benennen
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kann d'Stroossengefiehrt nët bennenen...
@@ -2842,12 +2829,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kann Sch
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Schëff am Wee
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detailer)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}   Betriebskäschten: {LTBLUE}{CURRENCY}/joër
-STR_9813_MAX_SPEED                                              :{BLACK}Max. Geschwindegkeet: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit dësst Joër: {LTBLUE}{CURRENCY}  (läscht Joër: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zouverlässegkeet: {LTBLUE}{COMMA}%  {BLACK}Pannen säit läschter Wartung: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapazitéit: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kann d'Schëff nët stoppen/starten...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kann d'Schëff nët an den Depot schècken...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kann d'Depot nët fannen
@@ -2866,7 +2847,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Weist d'
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Zentréiert d'Unsiicht op d'Schëff
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Schéck d'Schëff an den Depot. CTRL+Klick fir nëmmen Wartung
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Weist Schëffdetailer
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Käschten: {CURRENCY} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO}{}Betriibskäschten: {CURRENCY}/joër
 STR_982F_NAME_SHIP                                              :{BLACK}Schëff benennen
 
 STR_9831_NAME_SHIP                                              :{WHITE}Schëff benennen
@@ -2899,18 +2879,11 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kann dë
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Fliiger
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detailer)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}   Betriebskäschten: {LTBLUE}{CURRENCY}/joër
-STR_A00E_MAX_SPEED                                              :{BLACK}Max. Geschwindegkeet: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit dësst Joër: {LTBLUE}{CURRENCY}  (läscht Joër: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zouverlässegkeet: {LTBLUE}{COMMA}%  {BLACK}Pannen säit läschter Eartung: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kann den Fliiger nët an den Hangar schécken...
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} waart am Hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Fliiger am Wee
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kann den Fliiger nët stoppen/starten...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Fliiger ass am fluch
-STR_A019_CAPACITY                                               :{BLACK}Kapazitéit: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Kapazitéit: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Fliiger muss am Hangar sinn
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Kann dën Fliiger nët verkaafen...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Flughafenbau
@@ -2927,7 +2900,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Weist d'
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Zentréiert d'Unsiicht op den Fliiger
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Schéckt den Fliiger an den Hangar. CTRL+Click fir nëmmen Wartung
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Weisst d'Fliigerdetailer
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Käschten: {CURRENCY} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {COMMA} Passagéier, {COMMA} Postsäck{}Betriebskäschten: {CURRENCY}/joër
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Fliiger benennen
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Kann den Fliiger nët benennen...

@@ -47,12 +47,12 @@ void DrawShipDetails(const Vehicle *v, int left, int right, int y)
 	SetDParam(0, v->engine_type);
 	SetDParam(1, v->build_year);
 	SetDParam(2, v->value);
-	DrawString(left, right, y, STR_9816_BUILT_VALUE, TC_FROMSTRING);
+	DrawString(left, right, y, STR_VEHICLE_INFO_BUILT_VALUE, TC_FROMSTRING);
 
 	SetDParam(0, v->cargo_type);
 	SetDParam(1, v->cargo_cap);
-	SetDParam(2, GetCargoSubtypeText(v));
-	DrawString(left, right, y + 10, STR_9817_CAPACITY, TC_FROMSTRING);
+	SetDParam(4, GetCargoSubtypeText(v));
+	DrawString(left, right, y + 10, STR_VEHICLE_INFO_CAPACITY, TC_FROMSTRING);
 
 	StringID str = STR_8812_EMPTY;
 	if (!v->cargo.Empty()) {

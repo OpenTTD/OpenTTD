@@ -258,8 +258,6 @@ STR_013C_CARGO                                                  :{BLACK}Llwyth
 STR_013D_INFORMATION                                            :{BLACK}Gwybodaeth
 STR_013E_CAPACITIES                                             :{BLACK}Cyfansymau Gallu Cludo
 STR_TOTAL_CARGO                                                 :{BLACK}Cyfanswm Cargo
-STR_013F_CAPACITY                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Cyfanswm cynhwysedd cargo y trên hwn:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2797,12 +2795,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Clirio f
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Ailosod y mesurydd hwyrni, fel y bydd y cerbyd ar amser
 STR_SERVICE_HINT                                                :{BLACK}Hepgor y gorchymyn hwn os nad oes angen gwasanaeth
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Côst: {CURRENCY} Pwysau: {WEIGHT_S}{}Cyflymder: {VELOCITY}  Pŵer: {POWER}{}Côst Rhedeg: {CURRENCY}/bl{}Gallu cludo: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Wedi torri i lawr
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Oed: {LTBLUE}{STRING}{BLACK}   Côst Rhedeg: {LTBLUE}{CURRENCY}/bl
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pwysau: {LTBLUE}{WEIGHT_S}  {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflymder uchaf: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pwysau: {LTBLUE}{WEIGHT_S} {BLACK}Pwer: {LTBLUE}{POWER}{BLACK} Cyflymder Uchaf: {LTBLUE}{VELOCITY} {BLACK}Uchafswm T.E.: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Elw eleni: {LTBLUE}{CURRENCY}  (llynedd: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Dibynadwyedd: {LTBLUE}{COMMA}%  {BLACK}Torri i lawr ers y gwasanaeth diwethaf: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Wedi stopio
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Does dim modd gwneud i drên basio signal pan fo perygl...
 STR_8863_CRASHED                                                :{RED}Wedi crashio!
@@ -2854,12 +2846,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Cerbydau
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Adeiladu Cerbyd
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Methu adeiladu cerbyd...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Manylion)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Oed: {LTBLUE}{STRING}{BLACK}   Côst Rhedeg: {LTBLUE}{CURRENCY}/bl
-STR_900E_MAX_SPEED                                              :{BLACK}Cyflymder uchaf: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Elw eleni: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Dibynadwyedd: {LTBLUE}{COMMA}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Adeiladwyd: {LTBLUE}{NUM}{BLACK} Gwerth: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...rhaid iddo fod wedi'i stopio mewn depo cerbyd ffordd
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Methu gwerthu cerbyd ffordd...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Methu stop/start cerbyd ffordd...
@@ -2883,7 +2869,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Llusgwch
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Canoli'r brif olygfa ar leoliad y depo cerbyd ffordd
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Rhestr dewis cerbydau ffordd  - cliciwch ar gerbyd am wybodaeth
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Adeiladu'r cerbyd ffordd sydd wedi'i amlygu
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Côst: {CURRENCY}{}Cyflymder: {VELOCITY}{}Côst Rhedeg: {CURRENCY}/bl{}Gallu cludo: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Cynhwysedd: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2931,12 +2916,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Methu ad
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Llong yn y ffordd
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Manylion)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Oed: {LTBLUE}{STRING}{BLACK}   Côst Rhedeg: {LTBLUE}{CURRENCY}/bl
-STR_9813_MAX_SPEED                                              :{BLACK}Cyflymder uchaf: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Elw eleni: {LTBLUE}{CURRENCY}  (llynedd: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Dibynadwyedd: {LTBLUE}{COMMA}%  {BLACK}Torri i lawr ers y gwasanaeth diwethaf: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Adeiladwyd: {LTBLUE}{NUM}{BLACK} Gwerth: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}methu cychwyn/stopio llong...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Methu gyrru llong i ddepo...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Methu dod o hyd i'r depo lleol
@@ -2959,7 +2938,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Dangos g
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Canoli'r brif olygfa ar leoliad y llong
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Gyrru'r llong i ddepo. Bydd CTRL+clic yn rhoi gwasanaeth iddo'n unig
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Dangos manylion llong
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Côst: {CURRENCY} Cyflymder uchaf: {VELOCITY}{}Gallu cludo: {CARGO}{}Côst Rhedeg: {CURRENCY}/bl
 STR_982F_NAME_SHIP                                              :{BLACK}Enwi llong
 
 STR_9831_NAME_SHIP                                              :{WHITE}Enwi llong
@@ -2997,11 +2975,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Methu ad
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Awyrennau
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Manylion)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Oed: {LTBLUE}{STRING}{BLACK}   Côst Rhedeg: {LTBLUE}{CURRENCY}/bl
-STR_A00E_MAX_SPEED                                              :{BLACK}Cyflymder uchaf: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Elw eleni: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Dibynadwyedd: {LTBLUE}{COMMA}%  {BLACK}Torri i lawr ers y gwasanaeth diwethaf: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Adeiladwyd: {LTBLUE}{NUM}{BLACK} Gwerth: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Methu gyrru awyren i awyrendy...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Mynd am Awyrendy {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Mynd am Awyrendy {STATION}, {VELOCITY}
@@ -3011,8 +2984,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Mae {VEH
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Awyren yn y ffordd
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Methu stopio/cychwyn awyren...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}mae'r awyren yn hedfan
-STR_A019_CAPACITY                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Gallu cludo: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Rhaid i awyrennau rhaid i awyrennau fod wedi'i stopio mewn awyrendy
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}methu gwerthu awyren...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Adeiladu Maes Awyr
@@ -3029,7 +3000,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Dangos g
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Canoli'r prif olygfa ar leoliad yr awyren
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Anfon awyren to awyrendy. Bydd CTRL+click yn rhoi gwasanaeth iddo'n unig
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Dangos manylion awyren
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Côst: {CURRENCY} Uchafswm Cyflymder: {VELOCITY}{}Gallu cludo: {COMMA} teithwyr, {COMMA} bagiau o bost{}Côst Rhedeg: {CURRENCY}/bl
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Enwi awyren
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Methu enwi awyren...

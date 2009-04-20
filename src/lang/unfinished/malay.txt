@@ -219,8 +219,6 @@ STR_013C_CARGO                                                  :{BLACK}Kargo
 STR_013D_INFORMATION                                            :{BLACK}Maklumat
 STR_013E_CAPACITIES                                             :{BLACK}Kapasiti
 STR_TOTAL_CARGO                                                 :{BLACK}Jumlah Kargo
-STR_013F_CAPACITY                                               :{BLACK}Kapasiti: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Kapasiti: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Jumlah kapasiti kargo keretapi ini:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -1141,8 +1139,6 @@ STR_02BF_CUSTOM                                                 :Custom
 
 
 ##id 0xA000
-STR_A019_CAPACITY                                               :{BLACK}Kapasiti: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Kapasiti: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Bina Lapangan Terbang
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nama kapal terbang

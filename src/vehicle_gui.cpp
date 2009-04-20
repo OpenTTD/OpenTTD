@@ -1333,42 +1333,6 @@ static const NWidgetPart _nested_vehicle_details_widgets[] = {
 	EndContainer(),
 };
 
-/** Command indices for the _vehicle_command_translation_table. */
-enum VehicleStringTranslation {
-	VST_VEHICLE_AGE_RUNNING_COST_YR,
-	VST_VEHICLE_MAX_SPEED,
-	VST_VEHICLE_PROFIT_THIS_YEAR_LAST_YEAR,
-	VST_VEHICLE_RELIABILITY_BREAKDOWNS,
-};
-
-/** Command codes for the shared buttons indexed by VehicleCommandTranslation and vehicle type. */
-static const StringID _vehicle_translation_table[][4] = {
-	{ // VST_VEHICLE_AGE_RUNNING_COST_YR
-		STR_885D_AGE_RUNNING_COST_YR,
-		STR_900D_AGE_RUNNING_COST_YR,
-		STR_9812_AGE_RUNNING_COST_YR,
-		STR_A00D_AGE_RUNNING_COST_YR,
-	},
-	{ // VST_VEHICLE_MAX_SPEED
-		STR_NULL,
-		STR_900E_MAX_SPEED,
-		STR_9813_MAX_SPEED,
-		STR_A00E_MAX_SPEED,
-	},
-	{ // VST_VEHICLE_PROFIT_THIS_YEAR_LAST_YEAR
-		STR_885F_PROFIT_THIS_YEAR_LAST_YEAR,
-		STR_900F_PROFIT_THIS_YEAR_LAST_YEAR,
-		STR_9814_PROFIT_THIS_YEAR_LAST_YEAR,
-		STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR,
-	},
-	{ // VST_VEHICLE_RELIABILITY_BREAKDOWNS
-		STR_8860_RELIABILITY_BREAKDOWNS,
-		STR_9010_RELIABILITY_BREAKDOWNS,
-		STR_9815_RELIABILITY_BREAKDOWNS,
-		STR_A010_RELIABILITY_BREAKDOWNS,
-	},
-};
-
 
 extern int GetTrainDetailsWndVScroll(VehicleID veh_id, byte det_tab);
 extern void DrawTrainDetails(const Vehicle *v, int left, int right, int y, int vscroll_pos, uint16 vscroll_cap, byte det_tab);
@@ -1513,7 +1477,7 @@ struct VehicleDetailsWindow : Window {
 		SetDParam(0, (v->age + DAYS_IN_YEAR < v->max_age) ? STR_AGE : STR_AGE_RED);
 		SetDParam(2, v->max_age / DAYS_IN_LEAP_YEAR);
 		SetDParam(3, v->GetDisplayRunningCost());
-		DrawString(2, this->width - 2, 15, _vehicle_translation_table[VST_VEHICLE_AGE_RUNNING_COST_YR][v->type], TC_FROMSTRING);
+		DrawString(2, this->width - 2, 15, STR_VEHICLE_INFO_AGE_RUNNING_COST_YR, TC_FROMSTRING);
 
 		/* Draw max speed */
 		switch (v->type) {
@@ -1531,7 +1495,7 @@ struct VehicleDetailsWindow : Window {
 			case VEH_SHIP:
 			case VEH_AIRCRAFT:
 				SetDParam(0, v->GetDisplayMaxSpeed());
-				DrawString(2, this->width - 2, 25, _vehicle_translation_table[VST_VEHICLE_MAX_SPEED][v->type], TC_FROMSTRING);
+				DrawString(2, this->width - 2, 25, STR_VEHICLE_INFO_MAX_SPEED, TC_FROMSTRING);
 				break;
 
 			default: NOT_REACHED();
@@ -1540,12 +1504,12 @@ struct VehicleDetailsWindow : Window {
 		/* Draw profit */
 		SetDParam(0, v->GetDisplayProfitThisYear());
 		SetDParam(1, v->GetDisplayProfitLastYear());
-		DrawString(2, this->width - 2, 35, _vehicle_translation_table[VST_VEHICLE_PROFIT_THIS_YEAR_LAST_YEAR][v->type], TC_FROMSTRING);
+		DrawString(2, this->width - 2, 35, STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR, TC_FROMSTRING);
 
 		/* Draw breakdown & reliability */
 		SetDParam(0, v->reliability * 100 >> 16);
 		SetDParam(1, v->breakdowns_since_last_service);
-		DrawString(2, this->width - 2, 45, _vehicle_translation_table[VST_VEHICLE_RELIABILITY_BREAKDOWNS][v->type], TC_FROMSTRING);
+		DrawString(2, this->width - 2, 45, STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS, TC_FROMSTRING);
 
 		/* Draw service interval text */
 		SetDParam(0, v->service_interval);

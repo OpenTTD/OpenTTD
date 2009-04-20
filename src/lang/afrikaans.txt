@@ -259,8 +259,6 @@ STR_013C_CARGO                                                  :{BLACK}Vrag
 STR_013D_INFORMATION                                            :{BLACK}Inligting
 STR_013E_CAPACITIES                                             :{BLACK}Kapasiteite
 STR_TOTAL_CARGO                                                 :{BLACK}Totaale Vrag
-STR_013F_CAPACITY                                               :{BLACK}Kapasiteit: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Kapasiteit: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Totaale vrag kapasitiet van die trein:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2742,12 +2740,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Vee uit 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Herstel die laat teller, so dat die  voertuig op tyd is
 STR_SERVICE_HINT                                                :{BLACK}Sprong die opdraag tensy 'n diens nodig is
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kos: {CURRENCY} Gewig: {WEIGHT_S}{}Spoed: {VELOCITY}  Krag: {POWER}{}Loopkoste: {CURRENCY}/jr{}Kapasitiet: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Komplikasies
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Ouderdom: {LTBLUE}{STRING}{BLACK}   Loopkoste: {LTBLUE}{CURRENCY}/Jr
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewig: {LTBLUE}{WEIGHT_S}  {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Max. spoed: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewig: {LTBLUE}{WEIGHT_S} {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Max. spoed: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profyt die jaar: {LTBLUE}{CURRENCY}  (verlede jaar: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betroubaarheid: {LTBLUE}{COMMA}%  {BLACK}Komplikasies na laaste diens: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Gestop
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kan nie trein forseer om sein te vermy op gevaar...
 STR_8863_CRASHED                                                :{RED}Botsing!
@@ -2799,12 +2791,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nuwe Pad
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Bou Voertuig
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan nie pad voertuig bou nie...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Aanwyse)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Ouderdom: {LTBLUE}{STRING}{BLACK}   Loopkoste: {LTBLUE}{CURRENCY}/Jr
-STR_900E_MAX_SPEED                                              :{BLACK}Max. spoed: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profyt die jaar: {LTBLUE}{CURRENCY}  (verlede jaar: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betroubaarheid: {LTBLUE}{COMMA}% {BLACK}Komplikasies na laaste diens: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Gebou: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapasitiet: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...moet gestop binne 'n pad voertuig depot wees
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan nie pad voertuig verkoop nie
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kani nie pad voertuig stop/aanskakel nie...
@@ -2827,7 +2813,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Sleep pa
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Senter skerm op pad voertuig depot
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Pad voertuig keuse lys - kliek op voertuig vir inligting
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Bou die verlig pad voertuig
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Koste: {CURRENCY}{}Spoed: {VELOCITY}{}Loopkoste: {CURRENCY}/jr{}Kapasitiet: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasiteit: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2875,12 +2860,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan nie 
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Skip in die pad
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Aanwyse)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Ouderdom: {LTBLUE}{STRING}{BLACK}   Loopkoste: {LTBLUE}{CURRENCY}/Jr
-STR_9813_MAX_SPEED                                              :{BLACK}Max. spoed: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profyt die jaar: {LTBLUE}{CURRENCY}  (verlede jaar: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betroubaarheid: {LTBLUE}{COMMA}%  {BLACK}Komplikasies na laaste diens: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Gebou: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapasitiet: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan nie skip stop/aanskakel nie
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan nie skip na depot stuur nie...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan nie plaaslike depot vind nie
@@ -2902,7 +2881,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Wys skip
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Senter skerm op skip
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Stuur skip na depot
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Wys skip se aanwyse
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koste: {CURRENCY} Max. Spoed: {VELOCITY}{}Kapasitiet: {CARGO}{}Loopkoste: {CURRENCY}/yr
 STR_982F_NAME_SHIP                                              :{BLACK}Benaam skip
 
 STR_9831_NAME_SHIP                                              :{WHITE}Benaam skip
@@ -2940,11 +2918,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kan nie 
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Vliegtuie
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Aanwyse)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Ouderdom: {LTBLUE}{STRING}{BLACK}   Loopkoste: {LTBLUE}{CURRENCY}/Jr
-STR_A00E_MAX_SPEED                                              :{BLACK}Max. spoed: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profyt die jaar: {LTBLUE}{CURRENCY}  (verlede jaar: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betroubaarheid: {LTBLUE}{COMMA}%  {BLACK}Komplikasies na laaste diens: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Gebou: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan nie vlietuig na hangar stuur nie...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Op pad na {STATION} Hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Op pad na {STATION} Hangar, {VELOCITY}
@@ -2954,8 +2927,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Vliegtuig in die pad
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan nie vliegtuig stop/aanskakel nie...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Vliegtuig is opvlug
-STR_A019_CAPACITY                                               :{BLACK}Kapasiteit: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Kapasiteit: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Vliegtuig moet in hangar gestop wees
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Vliegtuig kan nie verkoop word nie...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Lughawe konstruksie
@@ -2972,7 +2943,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Toon vli
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Senter skerm op vliegtuig
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Stuur vliegtuig na hangar. CTRL+kliek sal net diens
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Toon vliegtuig aanwyse
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koste: {CURRENCY} Max. Spoed: {VELOCITY}{}Kapasiteit: {COMMA} passasiers, {COMMA} sakke van pos{}Loopkoste: {CURRENCY}/Jr
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Benaam vliegtuig
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Vliegtuig kan nie benaam word nie...

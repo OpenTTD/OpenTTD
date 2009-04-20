@@ -259,8 +259,6 @@ STR_013C_CARGO                                                  :{BLACK}Φορτ
 STR_013D_INFORMATION                                            :{BLACK}Πληροφορίες
 STR_013E_CAPACITIES                                             :{BLACK}Χωρητικότητες
 STR_TOTAL_CARGO                                                 :{BLACK}Συνολικό Φορτίο
-STR_013F_CAPACITY                                               :{BLACK}Χωρητικότητα: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Χωριτηκότητα: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Συνολική χωρητικότητα φορτίου του τραίνου:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})

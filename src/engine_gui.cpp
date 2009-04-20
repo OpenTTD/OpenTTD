@@ -178,7 +178,7 @@ static void DrawAircraftEngineInfo(EngineID engine, int left, int right, int top
 		SetDParam(3, e->u.air.mail_capacity);
 		SetDParam(4, e->GetRunningCost());
 
-		DrawStringMultiLine(left, right, top, bottom, STR_A02E_COST_MAX_SPEED_CAPACITY, SA_CENTER);
+		DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST, SA_CENTER);
 	} else {
 		SetDParam(0, e->GetCost());
 		SetDParam(1, e->GetDisplayMaxSpeed());
@@ -186,7 +186,7 @@ static void DrawAircraftEngineInfo(EngineID engine, int left, int right, int top
 		SetDParam(3, e->GetDisplayDefaultCapacity());
 		SetDParam(4, e->GetRunningCost());
 
-		DrawStringMultiLine(left, right, top, bottom, STR_982E_COST_MAX_SPEED_CAPACITY, SA_CENTER);
+		DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST, SA_CENTER);
 	}
 }
 
@@ -196,16 +196,16 @@ static void DrawRoadVehEngineInfo(EngineID engine, int left, int right, int top,
 
 	SetDParam(0, e->GetCost());
 	SetDParam(1, e->GetDisplayMaxSpeed());
-	SetDParam(2, e->GetRunningCost());
 	uint capacity = GetTotalCapacityOfArticulatedParts(engine, VEH_ROAD);
 	if (capacity != 0) {
-		SetDParam(3, e->GetDefaultCargoType());
-		SetDParam(4, capacity);
+		SetDParam(2, e->GetDefaultCargoType());
+		SetDParam(3, capacity);
 	} else {
-		SetDParam(3, CT_INVALID);
+		SetDParam(2, CT_INVALID);
 	}
+	SetDParam(4, e->GetRunningCost());
 
-	DrawStringMultiLine(left, right, top, bottom, STR_902A_COST_SPEED_RUNNING_COST, SA_CENTER);
+	DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST, SA_CENTER);
 }
 
 static void DrawShipEngineInfo(EngineID engine, int left, int right, int top, int bottom)
@@ -217,7 +217,7 @@ static void DrawShipEngineInfo(EngineID engine, int left, int right, int top, in
 	SetDParam(2, e->GetDefaultCargoType());
 	SetDParam(3, e->GetDisplayDefaultCapacity());
 	SetDParam(4, e->GetRunningCost());
-	DrawStringMultiLine(left, right, top, bottom, STR_982E_COST_MAX_SPEED_CAPACITY, SA_CENTER);
+	DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST, SA_CENTER);
 }
 
 void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)

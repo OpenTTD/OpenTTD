@@ -259,8 +259,6 @@ STR_013C_CARGO                                                  :{BLACK}Carga
 STR_013D_INFORMATION                                            :{BLACK}Información
 STR_013E_CAPACITIES                                             :{BLACK}Capacidades
 STR_TOTAL_CARGO                                                 :{BLACK}Carga total
-STR_013F_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}{STRING}
-STR_CAPACITY_MULT                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Carga total (capacidad) de este tren:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -2799,12 +2797,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Limpiar 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reajustar el contador del retraso, así el vehículo estará en horario
 STR_SERVICE_HINT                                                :{BLACK}Saltar esta orden a menos que el servicio sea necesario
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Coste: {CURRENCY} Peso: {WEIGHT_S}{}Velocidad: {VELOCITY}  Potencia: {POWER}{}Coste Operativo: {CURRENCY}/año{}Capacidad: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Averiado
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Edad: {LTBLUE}{STRING}{BLACK}   Coste Operativo: {LTBLUE}{CURRENCY}/año
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_S}  {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Velocidad Máx.: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Max. velocidad: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Beneficio este año: {LTBLUE}{CURRENCY}  (último año: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde último mantenimiento: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Parado
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}No se puede pasar la señal en peligro al tren...
 STR_8863_CRASHED                                                :{RED}¡Siniestrado!
@@ -2856,12 +2848,6 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nuevos v
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Construir vehículo
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}No se puede construir vehículo...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detalles)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Edad: {LTBLUE}{STRING}{BLACK}   Coste Operativo: {LTBLUE}{CURRENCY}/año
-STR_900E_MAX_SPEED                                              :{BLACK}Velocidad Máx.: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Beneficio este año: {LTBLUE}{CURRENCY}  (último año: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde último despacho: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Const.: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...debe estar detenido dentro de un depósito
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}No se puede vender vehículo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}No se puede detener/arrancar vehículo...
@@ -2885,7 +2871,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Arrastra
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrar vista en posición del depósito
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista de selección de vehículos - click en vehículo para información
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construir el vehículo resaltado
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Coste: {CURRENCY}{}Velocidad: {VELOCITY}{}Coste Operativo: {CURRENCY}/año{}Capacidad: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacidad: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2933,12 +2918,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}No se pu
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Barco en camino
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detalles)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Edad: {LTBLUE}{STRING}{BLACK}   Coste Operativo: {LTBLUE}{CURRENCY}/año
-STR_9813_MAX_SPEED                                              :{BLACK}Velocidad Máx.: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Beneficio este año: {LTBLUE}{CURRENCY}  (año anterior: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde último despacho: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Const.: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}No se puede detener/arrancar barco...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}No se puede mandar barco a astillero...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}No se puede encontrar ruta al astillero
@@ -2961,7 +2940,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Ver órd
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrar vista en posición del barco
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Mandar barco al astillero
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Mostrar detalles del barco
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Coste: {CURRENCY} Velocidad Máx.: {VELOCITY}{}Capacidad: {CARGO}{}Coste Operativo: {CURRENCY}/año
 STR_982F_NAME_SHIP                                              :{BLACK}Nombrar barco
 
 STR_9831_NAME_SHIP                                              :{WHITE}Nombrar barco
@@ -2999,11 +2977,6 @@ STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}No se pu
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Aeronave
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detalles)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Edad: {LTBLUE}{STRING}{BLACK}   Coste Operativo: {LTBLUE}{CURRENCY}/año
-STR_A00E_MAX_SPEED                                              :{BLACK}Velocidad Máx.: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Beneficio este año: {LTBLUE}{CURRENCY}  (año anterior: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde último despacho: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Const.: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}No se puede enviar la aeronave al hangar
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Ir al hangar de {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Ir al hangar de {STATION}, {VELOCITY}
@@ -3013,8 +2986,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronave en camino
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}No se puede detener/arrancar aeronave...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}La aeronave está en vuelo
-STR_A019_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}La aeronave debe estar parada en hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}No se puede vender la aeronave...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Construir aeropuerto
@@ -3031,7 +3002,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Ver órd
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centrar vista en posición de la aeronave
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Enviar aeronave al hangar
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Mostrar detalles de la aeronave
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Coste: {CURRENCY} Velocidad Máx.: {VELOCITY}{}Capacidad: {COMMA} pasajeros, {COMMA} sacas de correo{}Coste Operativo: {CURRENCY}/año
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nombrar aeronave
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}No se puede nombrar aeronave...
