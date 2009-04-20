@@ -3593,6 +3593,7 @@ STR_AI_RANDOM_AI                                                :Random AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
 STR_AI_AUTHOR                                                   :Author: {STRING}
 STR_AI_VERSION                                                  :Version: {NUM}
+STR_AI_URL                                                      :URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}One of the running AIs crashed. Please report this to the AI author with a screenshot of the AI Debug Window.
 ########
 

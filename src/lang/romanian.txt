@@ -320,6 +320,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Eşti s
 STR_0161_QUIT_GAME                                              :{WHITE}Iesire din joc
 STR_SORT_ORDER_TIP                                              :{BLACK}Alegeti ordinea de sortare ascendenta/descendenta
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Alege criteriul de sortare
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Selectează criteriul de filtrare
 STR_SORT_BY                                                     :{BLACK}Ordonează
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populatia
@@ -342,6 +343,8 @@ STR_SORT_BY_LENGTH                                              :Lungime
 STR_SORT_BY_LIFE_TIME                                           :Durată de viaţă rămasă
 STR_SORT_BY_FACILITY                                            :Tipul de statie
 STR_SORT_BY_WAITING                                             :Valoarea mărfii în aşteptare
+STR_SORT_BY_RATING_MAX                                          :Cel mai mare rating
+STR_SORT_BY_RATING_MIN                                          :Cel mai mic rating
 STR_ENGINE_SORT_ENGINE_ID                                       :IDMotor (model clasic)
 STR_ENGINE_SORT_COST                                            :Cost
 STR_ENGINE_SORT_POWER                                           :Putere
@@ -937,6 +940,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Afişea
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Afişează semafoarele pe partea de circulaţie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Afişează finanţele la sfârşitul fiecărui an: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Ordinele noi prestabilite sunt 'fără oprire': {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Noile ordine opresc trenurile {ORANGE}{STRING}{LTBLUE} platformei
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :la capătul apropiat al
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :la mijlocul
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :la capătul îndepartat al
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Autovehiculele pot forma cozi (cu efecte cuantice): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Mută imaginea când mouse-ul este la marginea ecranului: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permite mituirea autorităţilor locale: {ORANGE}{STRING}
@@ -2614,6 +2621,9 @@ STR_ORDER_GO_TO                                                 :Du-te la
 STR_ORDER_GO_NON_STOP_TO                                        :Du-te fără oprire la
 STR_ORDER_GO_VIA                                                :Du-te prin
 STR_ORDER_GO_NON_STOP_VIA                                       :Du-te fără oprire prin
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[la capatul apropiat]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[la mijloc]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[la capătul îndepărtat]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Încarcă orice produs
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Incarca daca este disponibil
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Încarcă toate produsele

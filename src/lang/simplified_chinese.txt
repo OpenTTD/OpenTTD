@@ -1204,7 +1204,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}不能�
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}使用全向路轨工具铺设铁轨
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}当前场景中没有城镇……
-STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}放弃生成场景！无合适地点建设城镇。
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}生成场景失败！无合适地点建设城镇。
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}大量随机城镇
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}在地图上随机创建大量城镇

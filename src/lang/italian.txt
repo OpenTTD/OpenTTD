@@ -3595,6 +3595,7 @@ STR_AI_RANDOM_AI                                                :IA casuale
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametri IA
 STR_AI_AUTHOR                                                   :Autore: {STRING}
 STR_AI_VERSION                                                  :Versione: {NUM}
+STR_AI_URL                                                      :URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Una delle IA in funzione è andata in crash. Si prega di inviare una segnalazione all'autore della IA con uno screenshot della finestra Debug IA.
 ########
 

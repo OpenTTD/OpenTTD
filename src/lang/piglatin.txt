@@ -320,6 +320,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Areway 
 STR_0161_QUIT_GAME                                              :{WHITE}Abandonway Amegay
 STR_SORT_ORDER_TIP                                              :{BLACK}Electsay ortingsay orderway (escendingday/ascendingway)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Electsay ortingsay iteriacray
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Electsay ilteringfay iteriacray
 STR_SORT_BY                                                     :{BLACK}Ortsay ybay
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Opulationpay
@@ -342,6 +343,8 @@ STR_SORT_BY_LENGTH                                              :Engthlay
 STR_SORT_BY_LIFE_TIME                                           :Emainingray ifelay imetay
 STR_SORT_BY_FACILITY                                            :Ationstay ypetay
 STR_SORT_BY_WAITING                                             :Aitingway argocay aluevay
+STR_SORT_BY_RATING_MAX                                          :Ighesthay argocay atingray
+STR_SORT_BY_RATING_MIN                                          :Owestlay argocay atingray
 STR_ENGINE_SORT_ENGINE_ID                                       :EngineIDWAY (assicclay ortsay)
 STR_ENGINE_SORT_COST                                            :Ostcay
 STR_ENGINE_SORT_POWER                                           :Owerpay
@@ -937,6 +940,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Alwaysw
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Owshay ignalssay onway ethay ivedray idesay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Owshay inancesfay indowway atway ethay endway ofway ethay earyay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Ewnay ordersway areway 'onnay-op'stay ybay efaultday: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Ewnay aintray ordersway opstay ybay efaultday atway ethay {ORANGE}{STRING}{LTBLUE} ofway ethay atformplay
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :earnay endway
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :iddlemay
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :arfay endway
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Oadray ehiclevay eueingquay (ithway antumquay effectsway): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Anpay indowway enwhay ousemay isway atway ethay edgeway: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Allowway ibingbray ofway ethay ocallay authorityway: {ORANGE}{STRING}
@@ -2239,6 +2246,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Electsay
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Enerategay andomray ewnay acefay
 STR_704C_KEY                                                    :{BLACK}Eykay
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Owshay eykay otay aphsgray
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Owshay etailedday erformancepay atingsray
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Eykay otay ompanycay aphsgray
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Ickclay erehay otay oggletay ompany'scay entryway onway aphgray onway/offway
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Unitsway ofway argocay eliveredday
@@ -2613,6 +2621,9 @@ STR_ORDER_GO_TO                                                 :Ogay otay
 STR_ORDER_GO_NON_STOP_TO                                        :Ogay onnay-opstay otay
 STR_ORDER_GO_VIA                                                :Ogay iavay
 STR_ORDER_GO_NON_STOP_VIA                                       :Ogay onnay-opstay iavay
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[earnay endway]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[iddlemay]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[arfay endway]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Ullfay oadlay anyway argocay
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Oadlay ifway availableway
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Ullfay oadlay allway argocay
@@ -3170,6 +3181,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Aintray 
 
 STR_NEWGRF_BUGGY                                                :{WHITE}EwGRFnay '{0:STRING}' ovidespray incorrectway informationway.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Argocay/efitray informationway orfay '{1:ENGINE}' iffersday omfray urchasepay istlay afterway onstructioncay. Isthay ightmay ausecay autorenewway/-eplaceray otay ailfay efittingray orrectlycay.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ausedcay anway endlessway ooplay inway ethay oductionpray allbackcay.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Amegay asway avedsay inway ersionvay ithoutway amtray upportsay. Allway amstray avehay eenbay emovedray.
 
@@ -3581,6 +3593,7 @@ STR_AI_RANDOM_AI                                                :Andomray AIWAY
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AIWAY Arameterspay
 STR_AI_AUTHOR                                                   :Authorway: {STRING}
 STR_AI_VERSION                                                  :Ersionvay: {NUM}
+STR_AI_URL                                                      :URLWAY: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Oneway ofway ethay unningray AIsway ashedcray. Easeplay eportray isthay otay ethay AIWAY authorway ithway away eenshotscray ofway ethay AIWAY Ebugday Indowway.
 ########
 

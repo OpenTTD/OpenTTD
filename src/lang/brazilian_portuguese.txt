@@ -3594,6 +3594,7 @@ STR_AI_RANDOM_AI                                                :IA Randômica
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parâmetros da IA
 STR_AI_AUTHOR                                                   :Progamador: {STRING}
 STR_AI_VERSION                                                  :Versão: {NUM}
+STR_AI_URL                                                      :URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Uma das IA's travou. Favor relatar ao autor da IA com uma screenshot da Janela de Debug da IA.
 ########
 

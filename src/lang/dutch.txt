@@ -3593,6 +3593,7 @@ STR_AI_RANDOM_AI                                                :Willekeurige AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
 STR_AI_AUTHOR                                                   :Maker: {STRING}
 STR_AI_VERSION                                                  :Versie: {NUM}
+STR_AI_URL                                                      :URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Een van de draaiende AI's is gecrashed. Meldt dit bij de schrijver van deze AI met een schermprint van het AI Debugscherm.
 ########
 

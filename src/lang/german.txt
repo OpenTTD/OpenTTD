@@ -24,26 +24,26 @@ STR_000C_ACCEPTS                                                :{BLACK}Akzeptie
 STR_000D_ACCEPTS                                                :{BLACK}Akzeptiert: {GOLD}
 STR_SUPPLIES                                                    :{BLACK}Liefert: {GOLD}
 STR_000E                                                        :
-STR_000F_PASSENGERS                                             :Passagiere
-STR_0010_COAL                                                   :Kohle
-STR_0011_MAIL                                                   :Post
-STR_0012_OIL                                                    :Öl
-STR_0013_LIVESTOCK                                              :Vieh
-STR_0014_GOODS                                                  :Waren
-STR_0015_GRAIN                                                  :Getreide
-STR_0016_WOOD                                                   :Holz
-STR_0017_IRON_ORE                                               :Eisenerz
-STR_0018_STEEL                                                  :Stahl
-STR_0019_VALUABLES                                              :Wertsachen
-STR_001A_COPPER_ORE                                             :Kupfererz
-STR_001B_MAIZE                                                  :Mais
-STR_001C_FRUIT                                                  :Früchte
-STR_001D_DIAMONDS                                               :Diamanten
-STR_001E_FOOD                                                   :Nahrungsmittel
-STR_001F_PAPER                                                  :Papier
-STR_0020_GOLD                                                   :Gold
-STR_0021_WATER                                                  :Wasser
-STR_0022_WHEAT                                                  :Weizen
+STR_000F_PASSENGERS                                             :{G=w}Passagiere
+STR_0010_COAL                                                   :{G=w}Kohle
+STR_0011_MAIL                                                   :{G=w}Post
+STR_0012_OIL                                                    :{G=n}Öl
+STR_0013_LIVESTOCK                                              :{G=n}Vieh
+STR_0014_GOODS                                                  :{G=w}Waren
+STR_0015_GRAIN                                                  :{G=n}Getreide
+STR_0016_WOOD                                                   :{G=n}Holz
+STR_0017_IRON_ORE                                               :{G=n}Eisenerz
+STR_0018_STEEL                                                  :{G=n}Stahl
+STR_0019_VALUABLES                                              :{G=w}Wertsachen
+STR_001A_COPPER_ORE                                             :{G=n}Kupfererz
+STR_001B_MAIZE                                                  :{G=m}Mais
+STR_001C_FRUIT                                                  :{G=w}Früchte
+STR_001D_DIAMONDS                                               :{G=w}Diamanten
+STR_001E_FOOD                                                   :{G=w}Nahrungsmittel
+STR_001F_PAPER                                                  :{G=n}Papier
+STR_0020_GOLD                                                   :{G=n}Gold
+STR_0021_WATER                                                  :{G=n}Wasser
+STR_0022_WHEAT                                                  :{G=m}Weizen
 STR_0023_RUBBER                                                 :Kautschuk
 STR_0024_SUGAR                                                  :Zucker
 STR_0025_TOYS                                                   :Spielwaren
@@ -57,25 +57,25 @@ STR_002C_PLASTIC                                                :Plastik
 STR_002D_FIZZY_DRINKS                                           :Limonaden
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Passagier
-STR_0030_COAL                                                   :Kohle
-STR_0031_MAIL                                                   :Post
-STR_0032_OIL                                                    :Öl
-STR_0033_LIVESTOCK                                              :Vieh
-STR_0034_GOODS                                                  :Waren
-STR_0035_GRAIN                                                  :Getreide
-STR_0036_WOOD                                                   :Holz
-STR_0037_IRON_ORE                                               :Eisenerz
-STR_0038_STEEL                                                  :Stahl
-STR_0039_VALUABLES                                              :Wertsachen
-STR_003A_COPPER_ORE                                             :Kupfererz
-STR_003B_MAIZE                                                  :Mais
-STR_003C_FRUIT                                                  :Früchte
-STR_003D_DIAMOND                                                :Diamanten
-STR_003E_FOOD                                                   :Nahrungsmittel
-STR_003F_PAPER                                                  :Papier
-STR_0040_GOLD                                                   :Gold
-STR_0041_WATER                                                  :Wasser
-STR_0042_WHEAT                                                  :Weizen
+STR_0030_COAL                                                   :{G=w}Kohle
+STR_0031_MAIL                                                   :{G=w}Post
+STR_0032_OIL                                                    :{G=n}Öl
+STR_0033_LIVESTOCK                                              :{G=n}Vieh
+STR_0034_GOODS                                                  :{G=w}Waren
+STR_0035_GRAIN                                                  :{G=n}Getreide
+STR_0036_WOOD                                                   :{G=n}Holz
+STR_0037_IRON_ORE                                               :{G=n}Eisenerz
+STR_0038_STEEL                                                  :{G=n}Stahl
+STR_0039_VALUABLES                                              :{G=w}Wertsachen
+STR_003A_COPPER_ORE                                             :{G=n}Kupfererz
+STR_003B_MAIZE                                                  :{G=m}Mais
+STR_003C_FRUIT                                                  :{G=w}Früchte
+STR_003D_DIAMOND                                                :{G=w}Diamanten
+STR_003E_FOOD                                                   :{G=w}Nahrungsmittel
+STR_003F_PAPER                                                  :{G=n}Papier
+STR_0040_GOLD                                                   :{G=n}Gold
+STR_0041_WATER                                                  :{G=n}Wasser
+STR_0042_WHEAT                                                  :{G=n}Weizen
 STR_0043_RUBBER                                                 :Kautschuk
 STR_0044_SUGAR                                                  :Zucker
 STR_0045_TOY                                                    :Spielware
@@ -223,7 +223,7 @@ STR_00FC_FOREST                                                 :{BLACK}{TINYFON
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Bahnhof
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Lkw-Ladestation
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Busbahnhof
-STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Flughafen / Heliport
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Flughafen / Hubschrauberlandeplatz
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Hafen
 STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Unebenes Land
 STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Wiesen
@@ -593,7 +593,7 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Landflä
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Erzeuge Land durch Zufall
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Landfläche wiederherstellen
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Landfläche wiederherstellen
-STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Das gesamte Spielereigentum von der Karte entfernen
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Das gesamte Spielereigentum vom Spielfeld entfernen
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Soll wirklich das gesamte Spielereigentum entfernt werden?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landfläche erzeugen
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stadt gründen
@@ -652,7 +652,7 @@ STR_02A3_LARGE                                                  :{BLACK}Groß
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Zufällig
 STR_FOUND_TOWN_CITY                                             :{BLACK}Stadt
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Städte wachsen schneller als normale Orte{}Abhängig von den Einstellungen sind diese größer wenn sie gegründet werden
-STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Stadtgröße bestimmen
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Stadtgröße festlegen
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Stadtgröße:
 
 STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Städtischer Straßenbauplan:
@@ -685,8 +685,8 @@ STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Schild
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Wegpunkte anzeigen
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Vollständige Animation
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Vollständige Detailansicht
-STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Durchsichtige Gebäude
-STR_TRANSPARENT_SIGNS                                           :{SETX 12}Durchsichtige Stationsnamen
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Transparente Gebäude
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transparente Stationsnamen
 ############ range ends here
 
 ############ range for menu starts
@@ -789,7 +789,7 @@ STR_TOWNNAME_SWEDISH                                            :Schwedisch
 STR_TOWNNAME_DUTCH                                              :Niederländisch
 STR_TOWNNAME_FINNISH                                            :Finnisch
 STR_TOWNNAME_POLISH                                             :Polnisch
-STR_TOWNNAME_SLOVAK                                             :Slovakisch
+STR_TOWNNAME_SLOVAK                                             :Slowakisch
 STR_TOWNNAME_NORWEGIAN                                          :Norwegisch
 STR_TOWNNAME_HUNGARIAN                                          :Ungarisch
 STR_TOWNNAME_AUSTRIAN                                           :Österreichisch
@@ -851,7 +851,7 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Format a
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Standard Grafik
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Wähle die Grafik, die du nutzen möchtest
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Zu benutzendes Set an Basisgrafiken auswählen
 
 STR_AUTOSAVE_1_MONTH                                            :Jeden Monat
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosicherung fehlgeschlagen
@@ -874,7 +874,7 @@ STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Unterwe
 STR_NO_ORDERS                                                   :{LTBLUE}Keine Aufträge
 STR_NO_ORDERS_VEL                                               :{LTBLUE}Keine Aufträge, {VELOCITY}
 
-STR_PASSENGERS                                                  :Passagiere
+STR_PASSENGERS                                                  :{G=w}Passagiere
 STR_BAGS                                                        :Säcke
 STR_TONS                                                        :Tonnen
 STR_LITERS                                                      :Liter
@@ -997,7 +997,7 @@ STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE} Eines o
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE} Eines oder mehrere Felder am Spielfeldrand sind nicht Wasser
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maximale Stationsgröße: {ORANGE}{STRING} {RED}(Hoher Wert verlangsamt das Spiel)
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Helipads automatisch warten: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Landeplatz automatisch warten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Werkzeugleiste für Landschaftsbau an die Bauwerkzeuge binden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Bei Rechtsklick Ansicht in die Gegenrichtung verschieben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Optimierten Bildlauf in den Ansichten verwenden: {ORANGE}{STRING}
@@ -1205,7 +1205,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Wegpunkt
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Gleise legen mit automatischer Wahl der Ausrichtung
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...in diesem Szenario gibt es keine Stadt
-STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Kartengenerierung wurde abgebrochen... {} ...kein brauchbarer Platz für eine Stadt gefunden
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Spielfeldgenerierung wurde abgebrochen... {} ...kein brauchbarer Platz für eine Stadt gefunden
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Viele zufällige Städte
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Das Spielfeld mit zufällig platzierten Städten füllen
@@ -1837,8 +1837,8 @@ STR_303C_OUTSTANDING                                            :Hervorragend
 ############ range for rating ends
 
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
-STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} akzeptiert keine {STRING} mehr
-STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} akzeptiert keine {STRING} und keine {STRING} mehr
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} akzeptiert kein{G "en" "e" "" "e"} {STRING} mehr
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} akzeptiert kein{G "en" "e" "" ""} {STRING} und kein{G "en" "e" "" "e"} {STRING} mehr
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} akzeptiert jetzt auch {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} akzeptiert jetzt auch {STRING} und {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Ausrichtung Busbahnhof
@@ -1875,7 +1875,7 @@ STR_305F_AIRCRAFT_HANGAR                                        :Flugzeughangar
 STR_3060_AIRPORT                                                :Flughafen
 STR_3061_TRUCK_LOADING_AREA                                     :Lkw-Ladeplatz
 STR_3062_BUS_STATION                                            :Busbahnhof
-STR_3063_SHIP_DOCK                                              :Schiffshafen
+STR_3063_SHIP_DOCK                                              :Hafen
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Einzugsgebiet anzeigen
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Einzugsgebiet nicht angezeigen
 STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Einzugsgebiet anzeigen
@@ -1895,7 +1895,7 @@ STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Ausricht
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...muss auf Wasser gebaut werden
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Werft kann hier nicht gebaut werden...
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Ausrichtung der Werft auswählen
-STR_3804_WATER                                                  :Wasser
+STR_3804_WATER                                                  :{G=n}Wasser
 STR_3805_COAST_OR_RIVERBANK                                     :Küste oder Flussufer
 STR_3806_SHIP_DEPOT                                             :Werft
 STR_AQUEDUCT                                                    :Aquädukt
@@ -1919,7 +1919,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Spielstandsdate
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spielstand wurde mit neuerer Version erstellt
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datei kann nicht gelesen werden
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Datei kann nicht geschrieben werden
-STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Prüfung der Dateningetrität fehlgeschlagen
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Prüfung der Datenintegrität fehlgeschlagen
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Liste der Laufwerke, Verzeichnisse und gespeicherten Spiele
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Ausgewählter Spielname
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Lösche gewählten Spielstand
@@ -2005,14 +2005,14 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 
 ##id 0x5000
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Ein anderer Tunnel ist im Weg
-STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunnel würde außerhalb der Karte enden
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunnel würde außerhalb des Spielfelds enden
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Land kann am anderen Ende des Tunnels nicht angehoben werden
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Der Tunnel muss zuerst abgerissen werden
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Die Brücke muss erst abgerissen werden
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Anfang und Ende können nicht im selben Feld liegen
 STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Brückenköpfe nicht auf einer Höhe
 STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Die Brücke ist zu niedrig für diese Umgebung
-STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Anfang und Ende müssen auf einer Ebene liegen
+STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Anfang und Ende müssen auf einer Linie liegen
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Platz ist nicht für einen Tunnel geeignet
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_500E_SUSPENSION_STEEL                                       :Stahlhängebrücke
@@ -2050,7 +2050,7 @@ STR_5803_COMPANY_HEADQUARTERS                                   :Firmensitz
 STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...Firmensitz ist im Weg
 STR_5805_COMPANY_OWNED_LAND                                     :Firmeneigenes Gelände
 STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Das Land kann nicht erworben werden...
-STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...ist bereits im eigenen Firma!
+STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...ist bereits im Besitz der eigenen Firma!
 
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -2116,7 +2116,7 @@ STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Max. Ge
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Städteanzahl: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Industriedichte: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Höhe des Anfangskredites: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Kreditzinsen: {ORANGE}{COMMA}%
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}anfänglicher Zinssatz auf Kredite: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Fahrzeugbetriebskosten: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Baugeschwindigkeit der Gegenspieler: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Fahrzeugpannen: {ORANGE}{STRING}
@@ -2342,7 +2342,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Schiffsf
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Flugzeugfarbschema anzeigen
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Wähle die Hauptfarbe für das gewählte Schema aus.
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Wähle die Nebenfarbe für das ausgewählte Schema.
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Wähle ein Farbschema oder mehrere Farbschemen(mit Strg+Klick) aus, um diese zu ändern. Klicke in das Kästchen um ein Schema zu aktivieren.
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Wähle ein Farbschema oder mehrere Farbschemata mittels Strg+Klick aus, um diese zu ändern. Klicke in das Kästchen um ein Schema zu aktivieren.
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Dampf)
@@ -3351,7 +3351,7 @@ STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / 
 STR_WORLD_GENERATION                                            :{BLACK}Spielfeldgenerierung
 STR_TREE_GENERATION                                             :{BLACK}Baumerzeugung
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Unbewegliche Objekte werden erzeugt
-STR_CLEARING_TILES                                              :{BLACK}Leere, felsige Landschaft wird erzeugt
+STR_CLEARING_TILES                                              :{BLACK}Raue, felsige Landschaft wird erzeugt
 STR_SETTINGUP_GAME                                              :{BLACK}Spiel wird vorbereitet
 STR_PREPARING_TILELOOP                                          :{BLACK}Spielfeld wird belebt
 STR_PREPARING_GAME                                              :{BLACK}Spiel wird vorbereitet
@@ -3370,7 +3370,7 @@ STR_SMALLMAP_CENTER                                             :{BLACK}Zusatzan
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 # Strings for map borders at game generation
-STR_BORDER_TYPE                                                 :{BLACK}Kartenränder:
+STR_BORDER_TYPE                                                 :{BLACK}Spielfeldränder:
 STR_NORTHWEST                                                   :{BLACK}Nordwesten
 STR_NORTHEAST                                                   :{BLACK}Nordosten
 STR_SOUTHEAST                                                   :{BLACK}Südosten
@@ -3415,21 +3415,21 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
-STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer-Kredit: {LTBLUE}{CURRENCY}
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer-Einnahmen: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...diese Straße ist in kommunaler Trägerschaft
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...Straße verläuft in die falsche Richtung
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Transparenzoptionen
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Transparenz für Stationsschilder einstellen
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Transparenz für Bäume einstellen
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Transparenz für Häuser einstellen
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Transparenz für Industrien einstellen
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Transparenz für Gebäude wie Bahnhöfe, Depots, Wegpunkte und Oberleitung einstellen
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Transparenz für Brücken einstellen
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparenz für Bauten wie Leuchttürme und Antennen, evtl. in der Zukunft auch für Sehenswürdigkeiten, einstellen
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Transparente Oberleitungen. Strg+Klick zum feststellen.
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparenz für Ladestandsanzeige einstellen
-STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Objekte unsichtbar machen anstelle von transparent
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Transparenz für Stationsschilder einstellen.  Strg+Klick, um zu Umschalten zu verhindern.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Transparenz für Bäume einstellen. Strg+Klick, um zu Umschalten zu verhindern.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Transparenz für Häuser einstellen. Strg+Klick, um zu Umschalten zu verhindern.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Transparenz für Industrien einstellen.  Strg+Klick, um zu Umschalten zu verhindern.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Transparenz für Gebäude wie Bahnhöfe, Depots und Wegpunkte einstellen.  Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Transparenz für Brücken einstellen. Strg+Klick, um zu Umschalten zu verhindern.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparenz für Bauten wie Leuchttürme und Sendemasten einstellen.  Strg+Klick, um zu Umschalten zu verhindern.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Transparente Oberleitungen. Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparenz für Ladestandsanzeige einstellen.  Strg+Klick, um zu Umschalten zu verhindern.
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Objekte unsichtbar statt transparent machen
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3500,15 +3500,15 @@ STR_FACE_SIMPLE                                                 :{BLACK}Einfach
 STR_FACE_SIMPLE_TIP                                             :{BLACK}Einfache Wahl des Gesichts
 STR_FACE_LOAD                                                   :{BLACK}Laden
 STR_FACE_LOAD_TIP                                               :{BLACK}Lade bevorzugtes Gesicht
-STR_FACE_LOAD_DONE                                              :{WHITE}Dein bevorzugtes Gesicht wurde aus der OpenTTD-Konfigurationsdatei geladen.
+STR_FACE_LOAD_DONE                                              :{WHITE}Das bevorzugte Gesicht wurde aus der OpenTTD-Konfigurationsdatei geladen.
 STR_FACE_FACECODE                                               :{BLACK}Gesichtsnummer
-STR_FACE_FACECODE_TIP                                           :{BLACK}Betrachte / Setze Nummer des Gesichts
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Betrachte / Setze Nummer des Gesichts
+STR_FACE_FACECODE_TIP                                           :{BLACK}Nummer des Gesichts anschauen / setzen
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Nummer des Gesichts anschauen / setzen
 STR_FACE_FACECODE_SET                                           :{WHITE}Neue Nummer wurde für das Gesicht registriert.
 STR_FACE_FACECODE_ERR                                           :{WHITE}Konnte keine Nummer für das Gesicht registrieren, sie muss zwischen 0 und 4.294.967.295 liegen!
 STR_FACE_SAVE                                                   :{BLACK}Speichern
 STR_FACE_SAVE_TIP                                               :{BLACK}Speichere bevorzugtes Gesicht
-STR_FACE_SAVE_DONE                                              :{WHITE}Dieses Gesicht wird als bevorzugtes Gesicht in der OpenTTD-Konfigurationsdatei gespiechert.
+STR_FACE_SAVE_DONE                                              :{WHITE}Dieses Gesicht wird als bevorzugtes Gesicht in der OpenTTD-Konfigurationsdatei gespeichert.
 STR_FACE_EUROPEAN                                               :{BLACK}Europäisch
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Auswahl europäischer Gesichter
 STR_FACE_AFRICAN                                                :{BLACK}Afrikanisch
@@ -3544,11 +3544,11 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Krawatte
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Signalauswahl
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Kann Signale hier nicht umbauen...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standardsignal (Formsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Schienensystem.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Blocksignal (Formsignal){}Dieses ist der einfachste Signaltyp. Er erlaubt nur einem Zug zu einem gegebenen Zeitpunkt den Signalblock zu durchfahren.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Einfahrsignal (Formsignal){}Zeigt grün, wenn im folgenden Block mindestens Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Ausfahrsignal (Formsignal){}Verhält sich wie ein normales Signal, wird jedoch benötigt, um Einfahr- oder Combosignalen den Block als "frei" zu melden.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combosignal (Formsignal){}Das Combosignal ist gleichzeitig Ausfahr- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Pfadsignal (Formsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern ein Pfad reserviert werden kann. Pfadsignale können von hinten durchfahren werden.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Pfadsignal (Formsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalblock zu befahren, sofern ein Pfad reserviert werden kann. Pfadsignale können von hinten durchfahren werden.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Einseitiges Pfadsignal (Formsignal):{}Erlaubt mehreren Zügen, einen Signalblock zu befahren, sofern ein Pfad reserviert werden kann. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standardsignal (Lichtsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Schienensystem.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
@@ -3574,7 +3574,7 @@ STR_AI_DEBUG                                                    :{WHITE}KI Debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Name der KI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}KI erneut laden
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Stoppe die KI, lade das Script neu und starte de KI erneut
-STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}KI Debug-Fenster ist nur auf dem Server vorhanden
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}KI Debug-Fenster ist nur auf dem Server verfügbar
 STR_AI_CONFIG_CAPTION                                           :{WHITE}KI einstellen
 STR_AI_CHANGE                                                   :{BLACK}KI wählen
 STR_AI_CONFIGURE                                                :{BLACK}Einstellungen
@@ -3594,6 +3594,7 @@ STR_AI_RANDOM_AI                                                :Zufällige KI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}KI Parameter
 STR_AI_AUTHOR                                                   :Autor: {STRING}
 STR_AI_VERSION                                                  :Version: {NUM}
+STR_AI_URL                                                      :URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Einer der laufenden KIs ist abgestürzt. Es ist nett, den Fehler dem Autor der KI mittels eines Screenshots vom KI-Debug-Fenster unter Angabe der OpenTTD-Versionsnummer zu melden.
 ########
 
