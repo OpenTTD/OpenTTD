@@ -358,7 +358,9 @@ static void _DoCommandReturnSetOrderFlags(class AIInstance *instance)
 	switch (order->GetType()) {
 		case OT_GOTO_DEPOT:
 			if ((current & AIOF_SERVICE_IF_NEEDED) != (order_flags & AIOF_SERVICE_IF_NEEDED)) {
-				return AIObject::DoCommand(0, vehicle_id | (order_position << 16), MOF_DEPOT_ACTION, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnSetOrderFlags);
+				uint data = DA_ALWAYS_GO;
+				if (order_flags & AIOF_SERVICE_IF_NEEDED) data = DA_SERVICE;
+				return AIObject::DoCommand(0, vehicle_id | (order_position << 16), (data << 4) | MOF_DEPOT_ACTION, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnSetOrderFlags);
 			}
 			break;
 
