@@ -57,6 +57,8 @@ public:
 
 		/** Service the vehicle when needed, otherwise skip this order; only for depots. */
 		AIOF_SERVICE_IF_NEEDED = 1 << 2,
+		/** Stop in the depot instead of only go there for servicing; only for depots. */
+		AIOF_STOP_IN_DEPOT     = 1 << 3,
 
 		/** All flags related to non-stop settings. */
 		AIOF_NON_STOP_FLAGS    = AIOF_NON_STOP_INTERMEDIATE | AIOF_NON_STOP_DESTINATION,
@@ -64,6 +66,8 @@ public:
 		AIOF_UNLOAD_FLAGS      = AIOF_TRANSFER | AIOF_UNLOAD | AIOF_NO_UNLOAD,
 		/** All flags related to loading. */
 		AIOF_LOAD_FLAGS        = AIOF_FULL_LOAD | AIOF_FULL_LOAD_ANY | AIOF_NO_LOAD,
+		/** All flags related to depots. */
+		AIOF_DEPOT_FLAGS       = AIOF_SERVICE_IF_NEEDED | AIOF_STOP_IN_DEPOT,
 
 		/** For marking invalid order flags */
 		AIOF_INVALID           = 0xFFFF,

@@ -74,7 +74,10 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 					(((order_flags & AIOF_NO_UNLOAD)     == 0) || ((order_flags & AIOF_NO_LOAD)   == 0)) &&
 					(((order_flags & AIOF_FULL_LOAD_ANY) == 0) || ((order_flags & AIOF_NO_LOAD)   == 0));
 
-		case OT_GOTO_DEPOT:    return (order_flags & ~(AIOF_NON_STOP_FLAGS | AIOF_SERVICE_IF_NEEDED)) == 0;
+		case OT_GOTO_DEPOT:
+			return ((order_flags & ~(AIOF_NON_STOP_FLAGS | AIOF_DEPOT_FLAGS)) == 0) &&
+					(((order_flags & AIOF_SERVICE_IF_NEEDED) == 0) || ((order_flags & AIOF_STOP_IN_DEPOT) == 0));
+
 		case OT_GOTO_WAYPOINT: return (order_flags & ~(AIOF_NON_STOP_FLAGS)) == 0;
 		default:               return false;
 	}
@@ -145,6 +148,7 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 	switch (order->GetType()) {
 		case OT_GOTO_DEPOT:
 			if (order->GetDepotOrderType() & ODTFB_SERVICE) order_flags |= AIOF_SERVICE_IF_NEEDED;
+			if (order->GetDepotActionType() & ODATFB_HALT) order_flags |= AIOF_STOP_IN_DEPOT;
 			break;
 
 		case OT_GOTO_STATION:
@@ -260,9 +264,12 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 
 	Order order;
 	switch (::GetOrderTypeByTile(destination)) {
-		case OT_GOTO_DEPOT:
-			order.MakeGoToDepot(::GetDepotByTile(destination)->index, (OrderDepotTypeFlags)(ODTFB_PART_OF_ORDERS | ((order_flags & AIOF_SERVICE_IF_NEEDED) ? ODTFB_SERVICE : 0)));
+		case OT_GOTO_DEPOT: {
+			OrderDepotTypeFlags odtf = (OrderDepotTypeFlags)(ODTFB_PART_OF_ORDERS | ((order_flags & AIOF_SERVICE_IF_NEEDED) ? ODTFB_SERVICE : 0));
+			OrderDepotActionFlags odaf = (OrderDepotActionFlags)(ODATF_SERVICE_ONLY | ((order_flags & AIOF_STOP_IN_DEPOT) ? ODATFB_HALT : 0));
+			order.MakeGoToDepot(::GetDepotByTile(destination)->index, odtf, odaf);
 			break;
+		}
 
 		case OT_GOTO_STATION:
 			order.MakeGoToStation(::GetStationIndex(destination));
@@ -357,9 +364,10 @@ static void _DoCommandReturnSetOrderFlags(class AIInstance *instance)
 
 	switch (order->GetType()) {
 		case OT_GOTO_DEPOT:
-			if ((current & AIOF_SERVICE_IF_NEEDED) != (order_flags & AIOF_SERVICE_IF_NEEDED)) {
+			if ((current & AIOF_DEPOT_FLAGS) != (order_flags & AIOF_DEPOT_FLAGS)) {
 				uint data = DA_ALWAYS_GO;
 				if (order_flags & AIOF_SERVICE_IF_NEEDED) data = DA_SERVICE;
+				if (order_flags & AIOF_STOP_IN_DEPOT) data = DA_STOP;
 				return AIObject::DoCommand(0, vehicle_id | (order_position << 16), (data << 4) | MOF_DEPOT_ACTION, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnSetOrderFlags);
 			}
 			break;
