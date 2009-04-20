@@ -174,9 +174,11 @@ static void DrawAircraftEngineInfo(EngineID engine, int left, int right, int top
 	if (cargo == CT_INVALID || cargo == CT_PASSENGERS) {
 		SetDParam(0, e->GetCost());
 		SetDParam(1, e->GetDisplayMaxSpeed());
-		SetDParam(2, e->GetDisplayDefaultCapacity());
-		SetDParam(3, e->u.air.mail_capacity);
-		SetDParam(4, e->GetRunningCost());
+		SetDParam(2, CT_PASSENGERS),
+		SetDParam(3, e->GetDisplayDefaultCapacity());
+		SetDParam(4, CT_MAIL),
+		SetDParam(5, e->u.air.mail_capacity);
+		SetDParam(6, e->GetRunningCost());
 
 		DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST, SA_CENTER);
 	} else {
