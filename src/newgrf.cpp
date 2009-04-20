@@ -259,7 +259,7 @@ StringIDToGRFIDMapping _string_to_grf_mapping;
 StringID MapGRFStringID(uint32 grfid, StringID str)
 {
 	/* StringID table for TextIDs 0x4E->0x6D */
-	static StringID units_volume[] = {
+	static const StringID units_volume[] = {
 		STR_NOTHING,    STR_PASSENGERS, STR_TONS,       STR_BAGS,
 		STR_LITERS,     STR_ITEMS,      STR_CRATES,     STR_TONS,
 		STR_TONS,       STR_TONS,       STR_TONS,       STR_BAGS,
