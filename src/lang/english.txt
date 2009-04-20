@@ -761,7 +761,7 @@ STR_JUST_RAW_STRING                                             :{RAW_STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...can only be built in rainforest areas
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...can only be built in desert areas
-STR_0319_PAUSED                                                 :{YELLOW}* *  PAUSED  *  *
+STR_0319_PAUSED                                                 :{YELLOW}*  *  PAUSED  *  *
 
 STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot successfully saved as '{RAW_STRING}'
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screenshot failed!
@@ -1306,14 +1306,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Years
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Number of years{}the game is running
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}GAME INFO
-STR_NETWORK_CLIENTS                                             :{SILVER}Clients:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Language:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Map size:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Server version:  {WHITE}{RAW_STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server address:  {WHITE}{RAW_STRING}
-STR_NETWORK_START_DATE                                          :{SILVER}Start date:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Current date:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CLIENTS                                             :{SILVER}Clients: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Language: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Tileset: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Map size: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Server version: {WHITE}{RAW_STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server address: {WHITE}{RAW_STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}Start date: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Current date: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Password protected!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER FULL
@@ -1395,7 +1395,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Latvian
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Multiplayer game lobby
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparing to join:   {ORANGE}{RAW_STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparing to join: {ORANGE}{RAW_STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}A list of all companies currently in this game. You can either join one or start a new one if there is a free company slot
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}New company
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Create a new company
@@ -1408,16 +1408,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Refresh 
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}COMPANY INFO
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Company name:  {WHITE}{RAW_STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inauguration:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Company value:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Current balance:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Last year's income:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Performance:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Company name: {WHITE}{RAW_STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inauguration: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Company value: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Current balance: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Last year's income: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Performance: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Vehicles:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Stations:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Players:  {WHITE}{RAW_STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Vehicles: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Stations: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Players: {WHITE}{RAW_STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Connecting...
 
@@ -1444,23 +1444,23 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Client L
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spectate
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}New Company
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} No network devices found or compiled without ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Could not find any network games
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} The server didn't answer the request
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Could not connect due to NewGRF mismatch
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Network-Game synchronisation failed
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Network-Game connection lost
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Could not load savegame
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Could not start the server
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Could not connect
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Connection #{NUM} timed out
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} A protocol-error was made and the connection was closed
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} The revision of this client does not match the server's revision
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Wrong password
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} The server is full
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} You are banned from this server
-STR_NETWORK_ERR_KICKED                                          :{WHITE} You were kicked out of the game
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Cheating is not allowed on this server
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}No network devices found or compiled without ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Could not find any network games
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}The server didn't answer the request
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Could not connect due to NewGRF mismatch
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Network-Game synchronisation failed
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Network-Game connection lost
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Could not load savegame
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Could not start the server
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Could not connect
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Connection #{NUM} timed out
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}A protocol-error was made and the connection was closed
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}The revision of this client does not match the server's revision
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Wrong password
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}The server is full
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}You are banned from this server
+STR_NETWORK_ERR_KICKED                                          :{WHITE}You were kicked out of the game
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}Cheating is not allowed on this server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :general error
@@ -2209,7 +2209,7 @@ STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Operating Profit Graph
 STR_7026_BANK_BALANCE                                           :{WHITE}Bank Balance
 STR_7027_LOAN                                                   :{WHITE}Loan
-STR_MAX_LOAN                                                    :{WHITE}Max Loan:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Max Loan: {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Borrow {SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Repay {SKIP}{SKIP}{CURRENCY}
@@ -3274,14 +3274,14 @@ STR_MAGLEV_VEHICLES                                             :Maglev Vehicles
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Weight: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Speed: {GOLD}{VELOCITY}{BLACK}   Power: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Speed: {GOLD}{VELOCITY}{BLACK} Power: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Speed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Running Cost: {GOLD}{CURRENCY}/yr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacity: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designed: {GOLD}{NUM}{BLACK} Life: {GOLD}{COMMA} years
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Reliability: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Weight: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Weight: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Speed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacity: {GOLD}{COMMA} passengers, {COMMA} bags of mail
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Powered Wagons: {GOLD}+{POWER}{BLACK} Weight: {GOLD}+{WEIGHT_S}
