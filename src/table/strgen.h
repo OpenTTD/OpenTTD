@@ -1,4 +1,4 @@
-/* $Id: namegen.h 15762 2009-03-18 17:55:47Z glx $ */
+/* $Id$ */
 
 /** @file table/strgen.h Tables of commands for strgen */
 
