@@ -124,11 +124,36 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 	}
 
 	switch (order->GetType()) {
-		case OT_GOTO_DEPOT:
+		case OT_GOTO_DEPOT: {
 			if (v->type != VEH_AIRCRAFT) return ::GetDepot(order->GetDestination())->xy;
-			/* FALL THROUGH: aircraft's hangars are referenced by StationID, not DepotID */
+			/* Aircraft's hangars are referenced by StationID, not DepotID */
+			const Station *st = ::GetStation(order->GetDestination());
+			const AirportFTAClass *airport = st->Airport();
+			if (airport == NULL || airport->nof_depots == 0) return INVALID_TILE;
+			return st->airport_tile + ::ToTileIndexDiff(st->Airport()->airport_depots[0]);
+		}
 
-		case OT_GOTO_STATION:  return ::GetStation(order->GetDestination())->xy;
+		case OT_GOTO_STATION: {
+			const Station *st = ::GetStation(order->GetDestination());
+			if (st->train_tile != INVALID_TILE) {
+				for (uint i = 0; i < st->trainst_w; i++) {
+					TileIndex t = st->train_tile + TileDiffXY(i, 0);
+					if (st->TileBelongsToRailStation(t)) return t;
+				}
+			} else if (st->dock_tile != INVALID_TILE) {
+				return st->dock_tile;
+			} else if (st->bus_stops != NULL) {
+				return st->bus_stops->xy;
+			} else if (st->truck_stops != NULL) {
+				return st->truck_stops->xy;
+			} else if (st->airport_tile != INVALID_TILE) {
+				const AirportFTAClass *fta = st->Airport();
+				BEGIN_TILE_LOOP(tile, fta->size_x, fta->size_y, st->airport_tile) {
+					if (!::IsHangar(tile)) return tile;
+				} END_TILE_LOOP(tile, fta->size_x, fta->size_y, st->airport_tile)
+			}
+			return INVALID_TILE;
+		}
 		case OT_GOTO_WAYPOINT: return ::GetWaypoint(order->GetDestination())->xy;
 		default:               return INVALID_TILE;
 	}
