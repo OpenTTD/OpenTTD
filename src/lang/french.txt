@@ -730,6 +730,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Sauvegar
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Sélectionner l'intervalle de temps entre les sauvegardes automatiques
 STR_02F7_OFF                                                    :Désactivé
+STR_AUTOSAVE_1_MONTH                                            :Tous les mois
 STR_02F8_EVERY_3_MONTHS                                         :Tous les 3 mois
 STR_02F9_EVERY_6_MONTHS                                         :Tous les 6 mois
 STR_02FA_EVERY_12_MONTHS                                        :Tous les 12 mois
@@ -850,7 +851,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Graphiqu
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Sélectionner les graphiques de base à utiliser
 
-STR_AUTOSAVE_1_MONTH                                            :Tous les mois
 STR_AUTOSAVE_FAILED                                             :{WHITE}Enregistrement automatique échoué
 
 STR_MONTH_JAN                                                   :Janvier
@@ -2801,6 +2801,19 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Annuler 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Remet à zéro le compteur de retard, le véhicule sera donc à l'heure
 STR_SERVICE_HINT                                                :{BLACK}Sauter cet ordre tant qu'aucun entretien n'est requis
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Prix: {CURRENCY} Poids: {WEIGHT_S}{}Vitesse: {VELOCITY}  Puissance: {POWER}{}Coût d'entretien: {CURRENCY}/an{}Capacité: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Prix: {CURRENCY} Vitesse max.: {VELOCITY}{}Capacité: {CARGO}, {CARGO}{}Coût d'entretien: {CURRENCY}/an
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Prix: {CURRENCY} Vitesse max.: {VELOCITY}{}Capacité: {CARGO}{}Coût d'entretien: {CURRENCY}/an
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Âge: {LTBLUE}{STRING}{BLACK}   Coût d'entretien: {LTBLUE}{CURRENCY}/an
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Vitesse max.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Poids: {LTBLUE}{WEIGHT_S} {BLACK}Puissance: {LTBLUE}{POWER}{BLACK} Vitesse max.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Poids: {LTBLUE}{WEIGHT_S} {BLACK}Puissance: {LTBLUE}{POWER}{BLACK} Vitesse max.: {LTBLUE}{VELOCITY} {BLACK}E.T. max.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit cette année: {LTBLUE}{CURRENCY} (année précédente: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilité: {LTBLUE}{COMMA}%  {BLACK}Pannes depuis le dernier entretien: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}{BLACK}Construit: {LTBLUE}{NUM}{BLACK} Valeur: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacité: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacité: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacité: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_885C_BROKEN_DOWN                                            :{RED}En Panne
 STR_8861_STOPPED                                                :{RED}Stoppé
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Impossible de forcer le train à avancer sous le danger...
 STR_8863_CRASHED                                                :{RED}Crashé!
@@ -3259,6 +3272,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilit
 STR_PURCHASE_INFO_COST                                          :{BLACK}Prix: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Poids: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Prix: {GOLD}{CURRENCY}{BLACK} Vitesse: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacité: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Wagons Motorisés: {GOLD}+{POWER}{BLACK} Poids: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Réaménageable pour: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tous les types de cargaison
@@ -3551,6 +3565,7 @@ STR_AI_RANDOM_AI                                                :IA aléatoire
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paramètres IA
 STR_AI_AUTHOR                                                   :Auteur: {STRING}
 STR_AI_VERSION                                                  :Version: {NUM}
+STR_AI_URL                                                      :URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}L'une des IA a rencontré un problème. Merci de rapporter ceci à l'auteur de l'IA avec une capture d'écran de la fenêtre de débogage d'IA.
 ########
 

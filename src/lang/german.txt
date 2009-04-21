@@ -17,71 +17,71 @@ STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nicht ge
 STR_0004                                                        :{WHITE}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Ebenes Land erforderlich
-STR_0008_WAITING                                                :{BLACK}Wartend:  {WHITE}{STRING}
+STR_0008_WAITING                                                :{BLACK}Wartend: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} unterwegs von {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Akzeptiert: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Akzeptiert: {GOLD}
 STR_SUPPLIES                                                    :{BLACK}Liefert: {GOLD}
 STR_000E                                                        :
-STR_000F_PASSENGERS                                             :{G=w}Passagiere
+STR_000F_PASSENGERS                                             :{G=p}Passagiere
 STR_0010_COAL                                                   :{G=w}Kohle
 STR_0011_MAIL                                                   :{G=w}Post
 STR_0012_OIL                                                    :{G=n}Öl
 STR_0013_LIVESTOCK                                              :{G=n}Vieh
-STR_0014_GOODS                                                  :{G=w}Waren
+STR_0014_GOODS                                                  :{G=p}Waren
 STR_0015_GRAIN                                                  :{G=n}Getreide
 STR_0016_WOOD                                                   :{G=n}Holz
 STR_0017_IRON_ORE                                               :{G=n}Eisenerz
-STR_0018_STEEL                                                  :{G=n}Stahl
-STR_0019_VALUABLES                                              :{G=w}Wertsachen
+STR_0018_STEEL                                                  :{G=m}Stahl
+STR_0019_VALUABLES                                              :{G=p}Wertsachen
 STR_001A_COPPER_ORE                                             :{G=n}Kupfererz
 STR_001B_MAIZE                                                  :{G=m}Mais
-STR_001C_FRUIT                                                  :{G=w}Früchte
-STR_001D_DIAMONDS                                               :{G=w}Diamanten
-STR_001E_FOOD                                                   :{G=w}Nahrungsmittel
+STR_001C_FRUIT                                                  :{G=p}Früchte
+STR_001D_DIAMONDS                                               :{G=p}Diamanten
+STR_001E_FOOD                                                   :{G=p}Nahrungsmittel
 STR_001F_PAPER                                                  :{G=n}Papier
 STR_0020_GOLD                                                   :{G=n}Gold
 STR_0021_WATER                                                  :{G=n}Wasser
 STR_0022_WHEAT                                                  :{G=m}Weizen
-STR_0023_RUBBER                                                 :Kautschuk
-STR_0024_SUGAR                                                  :Zucker
-STR_0025_TOYS                                                   :Spielwaren
+STR_0023_RUBBER                                                 :{G=m}Kautschuk
+STR_0024_SUGAR                                                  :{G=m}Zucker
+STR_0025_TOYS                                                   :{G=p}Spielwaren
 STR_0026_CANDY                                                  :Bonbons
 STR_0027_COLA                                                   :Cola
-STR_0028_COTTON_CANDY                                           :Zuckerwatte
+STR_0028_COTTON_CANDY                                           :{G=w}Zuckerwatte
 STR_0029_BUBBLES                                                :Luftblasen
 STR_002A_TOFFEE                                                 :Karamell
 STR_002B_BATTERIES                                              :Batterien
 STR_002C_PLASTIC                                                :Plastik
-STR_002D_FIZZY_DRINKS                                           :Limonaden
+STR_002D_FIZZY_DRINKS                                           :Limonade
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Passagier
 STR_0030_COAL                                                   :{G=w}Kohle
 STR_0031_MAIL                                                   :{G=w}Post
 STR_0032_OIL                                                    :{G=n}Öl
 STR_0033_LIVESTOCK                                              :{G=n}Vieh
-STR_0034_GOODS                                                  :{G=w}Waren
+STR_0034_GOODS                                                  :{G=p}Waren
 STR_0035_GRAIN                                                  :{G=n}Getreide
 STR_0036_WOOD                                                   :{G=n}Holz
 STR_0037_IRON_ORE                                               :{G=n}Eisenerz
-STR_0038_STEEL                                                  :{G=n}Stahl
-STR_0039_VALUABLES                                              :{G=w}Wertsachen
+STR_0038_STEEL                                                  :{G=m}Stahl
+STR_0039_VALUABLES                                              :{G=p}Wertsachen
 STR_003A_COPPER_ORE                                             :{G=n}Kupfererz
 STR_003B_MAIZE                                                  :{G=m}Mais
-STR_003C_FRUIT                                                  :{G=w}Früchte
-STR_003D_DIAMOND                                                :{G=w}Diamanten
-STR_003E_FOOD                                                   :{G=w}Nahrungsmittel
+STR_003C_FRUIT                                                  :{G=p}Früchte
+STR_003D_DIAMOND                                                :{G=p}Diamanten
+STR_003E_FOOD                                                   :{G=p}Nahrungsmittel
 STR_003F_PAPER                                                  :{G=n}Papier
 STR_0040_GOLD                                                   :{G=n}Gold
 STR_0041_WATER                                                  :{G=n}Wasser
 STR_0042_WHEAT                                                  :{G=n}Weizen
-STR_0043_RUBBER                                                 :Kautschuk
-STR_0044_SUGAR                                                  :Zucker
+STR_0043_RUBBER                                                 :{G=m}Kautschuk
+STR_0044_SUGAR                                                  :{G=m}Zucker
 STR_0045_TOY                                                    :Spielware
 STR_0046_CANDY                                                  :Bonbon
 STR_0047_COLA                                                   :Cola
-STR_0048_COTTON_CANDY                                           :Zuckerwatte
+STR_0048_COTTON_CANDY                                           :{G=w}Zuckerwatte
 STR_0049_BUBBLE                                                 :Luftblase
 STR_004A_TOFFEE                                                 :Karamell
 STR_004B_BATTERY                                                :Batterie
@@ -675,7 +675,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 STR_02C4_GAME_OPTIONS                                           :Spieleinstellungen
 STR_02C6_DIFFICULTY_SETTINGS                                    :Schwierigkeitsgrad
 STR_MENU_CONFIG_SETTINGS                                        :Erweiterte Einstellungen
-STR_NEWGRF_SETTINGS                                             :Newgrf-Einstellungen
+STR_NEWGRF_SETTINGS                                             :NewGRF-Einstellungen
 STR_TRANSPARENCY_OPTIONS                                        :Transparenzeinstellungen
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Städtenamen anzeigen
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Stationsnamen anzeigen
@@ -683,8 +683,8 @@ STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Schild
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Wegpunkte anzeigen
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Vollständige Animation
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Vollständige Detailansicht
-STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Transparente Gebäude
-STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transparente Stationsnamen
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Transparenz für Gebäude
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transparenz für Stationsnamen
 ############ range ends here
 
 ############ range for menu starts
@@ -730,6 +730,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Autosich
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Abstand zwischen den automatischen Spielesicherungen wählen
 STR_02F7_OFF                                                    :Aus
+STR_AUTOSAVE_1_MONTH                                            :Jeden Monat
 STR_02F8_EVERY_3_MONTHS                                         :Alle  3 Monate
 STR_02F9_EVERY_6_MONTHS                                         :Alle  6 Monate
 STR_02FA_EVERY_12_MONTHS                                        :Alle 12 Monate
@@ -850,7 +851,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Standard
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Zu benutzendes Set an Basisgrafiken auswählen
 
-STR_AUTOSAVE_1_MONTH                                            :Jeden Monat
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosicherung fehlgeschlagen
 
 STR_MONTH_JAN                                                   :Januar
@@ -871,7 +871,7 @@ STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Unterwe
 STR_NO_ORDERS                                                   :{LTBLUE}Keine Aufträge
 STR_NO_ORDERS_VEL                                               :{LTBLUE}Keine Aufträge, {VELOCITY}
 
-STR_PASSENGERS                                                  :{G=w}Passagiere
+STR_PASSENGERS                                                  :Passagiere
 STR_BAGS                                                        :Säcke
 STR_TONS                                                        :Tonnen
 STR_LITERS                                                      :Liter
@@ -1835,7 +1835,7 @@ STR_303C_OUTSTANDING                                            :Hervorragend
 
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} akzeptiert kein{G "en" "e" "" "e"} {STRING} mehr
-STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} akzeptiert kein{G "en" "e" "" ""} {STRING} und kein{G "en" "e" "" "e"} {STRING} mehr
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} akzeptiert kein{G "en" "e" "" "e"} {STRING} und kein{G "en" "e" "" "e"} {STRING} mehr
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} akzeptiert jetzt auch {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} akzeptiert jetzt auch {STRING} und {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Ausrichtung Busbahnhof
@@ -1892,7 +1892,7 @@ STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Ausricht
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...muss auf Wasser gebaut werden
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Werft kann hier nicht gebaut werden...
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Ausrichtung der Werft auswählen
-STR_3804_WATER                                                  :{G=n}Wasser
+STR_3804_WATER                                                  :}Wasser
 STR_3805_COAST_OR_RIVERBANK                                     :Küste oder Flussufer
 STR_3806_SHIP_DEPOT                                             :Werft
 STR_AQUEDUCT                                                    :Aquädukt
@@ -2113,7 +2113,7 @@ STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Max. Ge
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Städteanzahl: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Industriedichte: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Höhe des Anfangskredites: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}anfänglicher Zinssatz auf Kredite: {ORANGE}{COMMA}%
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Anfänglicher Zinssatz auf Kredite: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Fahrzeugbetriebskosten: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Baugeschwindigkeit der Gegenspieler: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Fahrzeugpannen: {ORANGE}{STRING}
@@ -2215,7 +2215,7 @@ STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...Kredi
 STR_702E_REQUIRED                                               :{WHITE}...erfordert {CURRENCY}
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Kredit kann nicht getilgt werden...
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}Von der Bank geliehenes Geld kann nicht abgegeben werden...
-STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Neues Profil für Manager aussuchen
+STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Neues Portrait für Manager aussuchen
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Firmenfarbe ändern
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Managername ändern
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Firmenname ändern
@@ -2769,7 +2769,7 @@ STR_8838_N_A                                                    :k.A.{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Schienenfahrzeug kann nicht verkauft werden...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Weg zum Depot kann nicht gefunden werden
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Zug kann nicht angehalten {} oder losgeschickt werden ...
-STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Wartungsintervall: {LTBLUE}{COMMA}Tage {BLACK} Letzte Wartung: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Wartungsintervall: {LTBLUE}{COMMA}Tag{P "" e} {BLACK} Letzte Wartung: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Wartungsintervall: {LTBLUE}{COMMA}%{BLACK}   Letzte Wartung: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Züge - für Einzelheiten auf den jeweiligen Zug klicken
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Züge - für Einzelheiten auf den Zug klicken; Waggon ziehen, um ihn an-/abzukoppeln
@@ -2802,6 +2802,19 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Zeitrahm
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Verspätungsmelder zurücksetzen (das Fahrzeug gilt dann als pünktlich).
 STR_SERVICE_HINT                                                :{BLACK}Überspringe diesen Auftrag, sofern keine Wartung benötigt wird
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kosten: {CURRENCY}   Gewicht: {WEIGHT_S}{}Geschwindigk.: {VELOCITY} Leistung: {POWER}{}Betriebskosten: {CURRENCY} pro Jahr{}Kapazität: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Preis: {CURRENCY} Max. Geschw.: {VELOCITY}{}Kapazität: {CARGO}, {CARGO}{}Betriebskosten: {CURRENCY}/yr
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Preis: {CURRENCY} Max. Geschw.: {VELOCITY}{}Kapazität: {CARGO}{}Betriebskosten: {CURRENCY}/Jahr
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}   Betriebskosten: {LTBLUE}{CURRENCY}/Jahr
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. Geschw.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S} {BLACK}Leistung: {LTBLUE}{POWER}{BLACK} Max. Geschw.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S} {BLACK}Leistung: {LTBLUE}{POWER}{BLACK} Max. Geschw.: {LTBLUE}{VELOCITY} {BLACK}Max. Zugkraft: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Gewinn dieses Jahr: {LTBLUE}{CURRENCY} (letztes Jahr: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Zuverlässigkeit: {LTBLUE}{COMMA}%  {BLACK}Pannen seit der letzten Wartung: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapazität: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapazität: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapazität: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_885C_BROKEN_DOWN                                            :{RED}Panne
 STR_8861_STOPPED                                                :{RED}Angehalten
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Der Zug kann das Signal nicht ohne Gefahr passieren...
 STR_8863_CRASHED                                                :{RED}Unfall!
@@ -2809,7 +2822,7 @@ STR_8863_CRASHED                                                :{RED}Unfall!
 STR_8865_NAME_TRAIN                                             :{WHITE}Name des Zuges
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Zug kann nicht benannt werden...
 STR_8867_NAME_TRAIN                                             :{BLACK}Name des Zuges
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Zugunglück!{}{COMMA} sterben in einem Feuerball nach Zusammenstoß
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Zugunglück!{}{COMMA} {P stirbt sterben} in einem Feuerball nach Zusammenstoß
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Die Zugbewegung kann nicht umgekehrt werden...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zugtyp umbenennen
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Zugtyp kann nicht umbenannt werden...
@@ -2888,7 +2901,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Die erste Straßenbahn erreicht {STATION}!
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Die erste Frachtstraßenbahn erreicht {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Fahrzeug verunglückt!{}Fahrer stirbt in Inferno nach Zusammenstoß mit Zug
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Fahrzeug verunglückt!{}{COMMA} sterben in Inferno nach Zusammenstoß mit Zug
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Fahrzeug verunglückt!{}{COMMA} {P stirbt sterben} in Inferno nach Zusammenstoß mit Zug
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Das Fahrzeug kann nicht wenden...
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Fahrzeuge, die aus mehreren Einheiten bestehen, können nicht wenden.
 STR_9034_RENAME                                                 :{BLACK}Umbenennen
@@ -3006,8 +3019,8 @@ STR_A030_NAME_AIRCRAFT                                          :{WHITE}Flugzeug
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Flugzeug kann nicht benannt werden...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Flugzeugname
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Das erste Flugzeug startet von {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Flugzeugabsturz!{}{COMMA} sterben in einem Feuerball auf {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Flugzeugabsturz!{}Dem Flugzeug ging der Treibstoff aus, {COMMA} sterben in einem Feuerball!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Flugzeugabsturz!{}{COMMA} {P stirbt sterben} in einem Feuerball auf {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Flugzeugabsturz!{}Dem Flugzeug ging der Treibstoff aus, {COMMA} {P stirbt sterben} in einem Feuerball!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Umbenennen
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Flugzeug umbenennen
@@ -3091,7 +3104,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Falscher 
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} muss vor {STRING} geladen werden.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} muss nach {STRING} geladen werden.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} Benötigt OpenTTD-Version {STRING} oder höher.
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :der GRF-Datei, die es übersetzen soll,
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :der NewGRF-Datei, die es übersetzen soll,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Zu viele NewGRFs geladen.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Das Laden von {STRING} als statisches NewGRF mit {STRING} könnte Synchronisationsfehler hervorrufen.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unerwartetes Sprite.
@@ -3124,14 +3137,14 @@ STR_NEWGRF_ADD_FILE                                             :{BLACK}Zur Ausw
 STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Ausgewählte NewGRF-Datei zur Konfiguration hinzufügen
 STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Dateiliste aktualisieren
 STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Liste der verfügbaren NewGRF-Dateien aktualisieren
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Datei kann nicht hinzugefügt werden: GRF-ID bereits vergeben
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Datei kann nicht hinzugefügt werden: NewGRF-ID bereits vergeben
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Zugehörige Datei nicht gefunden
 STR_NEWGRF_DISABLED                                             :{RED}Deaktiviert
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Passende Datei nicht gefunden (kompatible GRF geladen)
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Passende Datei nicht gefunden (kompatible NewGRF geladen)
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatible GRF(s) für fehlende Dateien geladen
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fehlende GRF-Dateien wurden deaktiviert.
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatible NewGRF(s) für fehlende Dateien geladen
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fehlende NewGRF-Dateien wurden deaktiviert.
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF-Datei(en) fehlen
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Das Beenden der Pause kann OpenTTD zum Absturz bringen. Bitte keine Fehlerberichte bei auftretenden Fehlern senden. {}Pause wirklich beenden?
 
@@ -3196,7 +3209,7 @@ STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Alle Flu
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} {P Zug Züge}
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Fahrzeug{P "" e}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Schiff{P "" e}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Flugzeug
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Flugzeug{P "" e}
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} ersetzen
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Fahrzeugersetzung an
@@ -3255,11 +3268,12 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.:
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Geschwindigkeit: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Betriebskosten: {GOLD}{CURRENCY} pro Jahr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapazität: {GOLD}{CARGO} {STRING}
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Entwurf: {GOLD}{NUM}{BLACK} Betriebsdauer: {GOLD}{COMMA} Jahre
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Entwurf: {GOLD}{NUM}{BLACK} Betriebsdauer: {GOLD}{COMMA} Jahr{P "" e}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Zuverlässigkeit: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kosten: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Geschw.: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapazität: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Angetriebene Waggons: {GOLD}+{POWER}{BLACK} Gewicht: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Umrüstbar auf: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle Frachtarten
@@ -3377,16 +3391,16 @@ STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...diese Straße ist in kommunaler Trägerschaft
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...Straße verläuft in die falsche Richtung
 
-STR_TRANSPARENCY_TOOLB                                          :{WHITE}Transparenzoptionen
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Transparenz für Stationsschilder einstellen.  Strg+Klick, um zu Umschalten zu verhindern.
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Transparenz für Bäume einstellen. Strg+Klick, um zu Umschalten zu verhindern.
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Transparenz für Häuser einstellen. Strg+Klick, um zu Umschalten zu verhindern.
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Transparenz für Industrien einstellen.  Strg+Klick, um zu Umschalten zu verhindern.
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Transparenzeinstellungen
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Transparenz für Stationsschilder einstellen.  Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Transparenz für Bäume einstellen. Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Transparenz für Häuser einstellen. Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Transparenz für Industrien einstellen.  Strg+Klick, um Umschalten zu verhindern.
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Transparenz für Gebäude wie Bahnhöfe, Depots und Wegpunkte einstellen.  Strg+Klick, um Umschalten zu verhindern.
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Transparenz für Brücken einstellen. Strg+Klick, um zu Umschalten zu verhindern.
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparenz für Bauten wie Leuchttürme und Sendemasten einstellen.  Strg+Klick, um zu Umschalten zu verhindern.
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Transparente Oberleitungen. Strg+Klick, um Umschalten zu verhindern.
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparenz für Ladestandsanzeige einstellen.  Strg+Klick, um zu Umschalten zu verhindern.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Transparenz für Brücken einstellen. Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparenz für Bauten wie Leuchttürme und Sendemasten einstellen.  Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Transparenz für Oberleitungen. Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparenz für Ladestandsanzeige einstellen.  Strg+Klick, um Umschalten zu verhindern.
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Objekte unsichtbar statt transparent machen
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}

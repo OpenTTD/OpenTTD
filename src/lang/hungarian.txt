@@ -763,6 +763,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Automati
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Az automatikus mentések közötti időtartam kiválasztása
 STR_02F7_OFF                                                    :Nincs
+STR_AUTOSAVE_1_MONTH                                            :Minden hónapban
 STR_02F8_EVERY_3_MONTHS                                         :3 havonta
 STR_02F9_EVERY_6_MONTHS                                         :6 havonta
 STR_02FA_EVERY_12_MONTHS                                        :12 havonta
@@ -883,7 +884,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Grafikus
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Kiválaszthatod melyik grafikus alapcsomagot szeretnéd használni
 
-STR_AUTOSAVE_1_MONTH                                            :Minden hónapban
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatikus mentés sikertelen
 
 STR_MONTH_JAN                                                   :január
@@ -2872,6 +2872,19 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}A kijel�
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Késés-számláló nullázása, azaz a jármű pontos lesz
 STR_SERVICE_HINT                                                :{BLACK}Célpont kihagyása, ha javítás szükséges
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ár: {CURRENCY}    Súly: {WEIGHT_S}{}Sebesség: {VELOCITY}    Teljesítmény: {POWER}{}Működtetési költség: {CURRENCY}/év{}Kapacitás: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Ár: {CURRENCY} Végsebesség: {VELOCITY}{}Kapacitás: {CARGO}, {CARGO}{}Üzemeltetés: {CURRENCY}/év
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Ár: {CURRENCY} Végsebesség: {VELOCITY}{}Kapacitás: {CARGO}{}Üzemeltetés: {CURRENCY}/év
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Üzemeltetés: {LTBLUE}{CURRENCY}/év
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Végsebesség: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Tömeg: {LTBLUE}{WEIGHT_S} {BLACK}Teljesítmény: {LTBLUE}{POWER}{BLACK} Végsebesség: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Tömeg: {LTBLUE}{WEIGHT_S} {BLACK}Teljesítmény: {LTBLUE}{POWER}{BLACK} Végsebesség: {LTBLUE}{VELOCITY} {BLACK}Vonóerő: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Idei haszon: {LTBLUE}{CURRENCY} (tavalyi: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%  {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Vásárlás éve: {LTBLUE}{NUM}{BLACK} Érték: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapacitás: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapacitás: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacitás: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_885C_BROKEN_DOWN                                            :{RED}Lerobbant
 STR_8861_STOPPED                                                :{RED}Áll
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Nem indíthatod el a vonatot veszélyben...
 STR_8863_CRASHED                                                :{RED}Balesetet szenvedett!
@@ -3622,6 +3635,7 @@ STR_AI_RANDOM_AI                                                :Véletlenszerű
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}MI paraméterek
 STR_AI_AUTHOR                                                   :Készítő: {STRING}
 STR_AI_VERSION                                                  :Verzió: {NUM}
+STR_AI_URL                                                      :URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Az egyik futó MI futása közben hiba történt. Kérjük jelezd ezt az MI készítőjének az MI nyomkövetés ablakról készített képpel.
 ########
 
