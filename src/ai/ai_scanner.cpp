@@ -243,20 +243,31 @@ void AIScanner::RegisterAI(AIInfo *info)
 
 AIInfo *AIScanner::SelectRandomAI()
 {
-	if (this->info_single_list.size() == 0) {
+	uint num_random_ais = 0;
+	for (AIInfoList::iterator it = this->info_single_list.begin(); it != this->info_single_list.end(); it++) {
+		if (it->second->UseAsRandomAI()) num_random_ais++;
+	}
+
+	if (num_random_ais == 0) {
 		DEBUG(ai, 0, "No suitable AI found, loading 'dummy' AI.");
 		return this->info_dummy;
 	}
 
 	/* Find a random AI */
 	uint pos;
-	if (_networking) pos = InteractiveRandomRange((uint16)this->info_single_list.size());
-	else             pos =            RandomRange((uint16)this->info_single_list.size());
+	if (_networking) {
+		pos = InteractiveRandomRange(num_random_ais);
+	} else {
+		pos = RandomRange(num_random_ais);
+	}
 
 	/* Find the Nth item from the array */
 	AIInfoList::iterator it = this->info_single_list.begin();
-	for (; pos > 0; pos--) it++;
-	AIInfoList::iterator first_it = it;
+	while (!it->second->UseAsRandomAI()) it++;
+	for (; pos > 0; pos--) {
+		it++;
+		while (!it->second->UseAsRandomAI()) it++;
+	}
 	return (*it).second;
 }
 

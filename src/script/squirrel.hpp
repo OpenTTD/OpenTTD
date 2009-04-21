@@ -116,6 +116,7 @@ public:
 	bool CallMethod(HSQOBJECT instance, const char *method_name, int suspend = -1) { return this->CallMethod(instance, method_name, NULL, suspend); }
 	bool CallStringMethodStrdup(HSQOBJECT instance, const char *method_name, const char **res, int suspend = -1);
 	bool CallIntegerMethod(HSQOBJECT instance, const char *method_name, int *res, int suspend = -1);
+	bool CallBoolMethod(HSQOBJECT instance, const char *method_name, bool *res, int suspend = -1);
 
 	/**
 	 * Check if a method exists in an instance.
@@ -160,6 +161,11 @@ public:
 	 * Convert a Squirrel-object to an integer.
 	 */
 	static int ObjectToInteger(HSQOBJECT *ptr) { return sq_objtointeger(ptr); }
+
+	/**
+	 * Convert a Squirrel-object to a bool.
+	 */
+	static bool ObjectToBool(HSQOBJECT *ptr) { return sq_objtobool(ptr) == 1; }
 
 	/**
 	 * Sets a pointer in the VM that is reachable from where ever you are in SQ.

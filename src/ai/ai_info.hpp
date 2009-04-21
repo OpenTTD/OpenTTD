@@ -94,9 +94,15 @@ public:
 	 */
 	int GetSettingDefaultValue(const char *name) const;
 
+	/**
+	 * Use this AI as a random AI.
+	 */
+	bool UseAsRandomAI() const { return this->use_as_random; }
+
 private:
 	AIConfigItemList config_list;
 	int min_loadable_version;
+	bool use_as_random;
 };
 
 class AILibrary : public AIFileInfo {

@@ -66,6 +66,12 @@ AILibrary::~AILibrary()
 	} else {
 		info->min_loadable_version = info->GetVersion();
 	}
+	/* When there is an UseAsRandomAI function, call it. */
+	if (info->engine->MethodExists(*info->SQ_instance, "UseAsRandomAI")) {
+		if (!info->engine->CallBoolMethod(*info->SQ_instance, "UseAsRandomAI", &info->use_as_random)) return SQ_ERROR;
+	} else {
+		info->use_as_random = true;
+	}
 
 	/* Remove the link to the real instance, else it might get deleted by RegisterAI() */
 	sq_setinstanceup(vm, 2, NULL);
