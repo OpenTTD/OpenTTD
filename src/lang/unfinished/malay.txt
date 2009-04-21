@@ -605,7 +605,6 @@ STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Tunjukka
 STR_02DD_SUBSIDIES                                              :Subsidi
 STR_02DE_MAP_OF_WORLD                                           :Peta Dunia
 STR_SIGN_LIST                                                   :Senarai isyarat
-STR_02DF_TOWN_DIRECTORY                                         :Direktori bandar
 STR_TOWN_POPULATION                                             :{BLACK}Populasi Dunia: {COMMA}
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unit kewangan

@@ -857,7 +857,6 @@ STR_02DD_SUBSIDIES                                              :Subvencije
 STR_02DE_MAP_OF_WORLD                                           :Mapa sveta
 STR_EXTRA_VIEW_PORT                                             :Dodatni gledište
 STR_SIGN_LIST                                                   :Znak Foil
-STR_02DF_TOWN_DIRECTORY                                         :Popis naselja
 STR_TOWN_POPULATION                                             :{BLACK}Svet Populacija: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pogled{COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Premesti u pogled
@@ -1879,10 +1878,6 @@ STR_682C_HILLY                                                  :brdovit
 STR_682D_MOUNTAINOUS                                            :planinski
 STR_682E_STEADY                                                 :ujednačena
 STR_682F_FLUCTUATING                                            :promenljiva
-STR_6830_IMMEDIATE                                              :odmah
-STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 meseca nakon igrača
-STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 meseci nakon igrača
-STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 meseci nakon igrača
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :na kraju pruge, kao i na stanicama
 STR_6835_AT_END_OF_LINE_ONLY                                    :samo na kraju pruge
 STR_6836_OFF                                                    :Off

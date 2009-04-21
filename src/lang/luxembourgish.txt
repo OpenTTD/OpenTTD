@@ -700,7 +700,6 @@ STR_02DD_SUBSIDIES                                              :Subventiounen
 STR_02DE_MAP_OF_WORLD                                           :Weltkaart
 STR_EXTRA_VIEW_PORT                                             :Extra Unsiicht
 STR_SIGN_LIST                                                   :Schëlderlëscht
-STR_02DF_TOWN_DIRECTORY                                         :Stiedtverzeeschniss
 STR_TOWN_POPULATION                                             :{BLACK}Weltbevölkerung: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Unsiicht {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopéiert op d'Unsiicht
@@ -2117,10 +2116,6 @@ STR_682C_HILLY                                                  :Hiwelech
 STR_682D_MOUNTAINOUS                                            :Bierger
 STR_682E_STEADY                                                 :Konstant
 STR_682F_FLUCTUATING                                            :Variabel
-STR_6830_IMMEDIATE                                              :Direkt
-STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 Méint nom Start
-STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 Méint nom Start
-STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 Méint nom Start
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Um Ënn vun der Streck, an an den Statiounen
 STR_6835_AT_END_OF_LINE_ONLY                                    :Um Ënn vun der Streck nëmmen
 STR_6836_OFF                                                    :Aus
@@ -2772,13 +2767,11 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zäit wi
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Stroossengefiehrt am Wee
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Gefiehr{P t er}
-STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Stroossendepot
 STR_9004_NEW_VEHICLES                                           :{BLACK}Néi Gefiehrer
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Néi Stroossengefiehrer
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Gefiehrt bauen
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kann d'Stroossengefiehrt nët bauen...
-STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detailer)
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...muss an engem Depot stoen
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kann d'Stroossengefiehrt nët verkaafen...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kann d'Stroossengefiehrt nët stoppen/starten...
@@ -2827,8 +2820,6 @@ STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Schëff 
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Kann Schëff nët verkaafen...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kann Schëff nët bauen...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Schëff am Wee
-STR_980F                                                        :{WHITE}{VEHICLE}
-STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detailer)
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kann d'Schëff nët stoppen/starten...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kann d'Schëff nët an den Depot schècken...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kann d'Depot nët fannen
@@ -2877,8 +2868,6 @@ STR_A005_NEW_AIRCRAFT                                           :{WHITE}Néien F
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Fliiger bauen
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kann dën Fliiger nët bauen...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Fliiger
-STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detailer)
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kann den Fliiger nët an den Hangar schécken...
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} waart am Hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Fliiger am Wee

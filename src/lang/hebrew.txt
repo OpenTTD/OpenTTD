@@ -695,7 +695,6 @@ STR_02DD_SUBSIDIES                                              :סובסידי�
 STR_02DE_MAP_OF_WORLD                                           :מפת העולם
 STR_EXTRA_VIEW_PORT                                             :השקפה נוספת
 STR_SIGN_LIST                                                   :רשימת שלטים
-STR_02DF_TOWN_DIRECTORY                                         :מדריך ערים
 STR_TOWN_POPULATION                                             :{BLACK}אוכלוסיית העולם: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}השקפה {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}העתק להשקפה
@@ -2135,10 +2134,6 @@ STR_682C_HILLY                                                  :נוף גבעו
 STR_682D_MOUNTAINOUS                                            :הררי
 STR_682E_STEADY                                                 :יציבה
 STR_682F_FLUCTUATING                                            :הפכפכה
-STR_6830_IMMEDIATE                                              :מייד
-STR_6831_3_MONTHS_AFTER_PLAYER                                  :שלושה חודשים מתחילת המשחק
-STR_6832_6_MONTHS_AFTER_PLAYER                                  :שישה חודשים מתחילת המשחק
-STR_6833_9_MONTHS_AFTER_PLAYER                                  :תשעה חודשים מתחילת המשחק
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :בסוף המסלול ובתחנות
 STR_6835_AT_END_OF_LINE_ONLY                                    :בסוף המסלול בלבד
 STR_6836_OFF                                                    :ללא
@@ -2824,13 +2819,11 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK} מלא 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}כלי רכב חוסם את הדרך
 STR_9001_ROAD_VEHICLES                                          :{WHITE}כלי רכב {NBSP}{1:COMMA} - {0:COMPANY}
-STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} מוסך כלי רכב
 STR_9004_NEW_VEHICLES                                           :{BLACK}כלי רכב חדשים
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}כלי רכב חדשים
 STR_9007_BUILD_VEHICLE                                          :{BLACK}בנה כלי רכב
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}לא ניתן לבנות כלי רכב...
-STR_900C_DETAILS                                                :{WHITE}(פרטים){VEHICLE}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...חייב לעצור בתוך מוסך לכלי רכב
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}...לא ניתן למכור כלי רכב
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}...לא ניתן לעצור/להמשיך בנסיעה
@@ -2899,8 +2892,6 @@ STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}כלי �
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}לא ניתן למכור כלי שייט זה
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}לא ניתן לבנות כלי שייט זה
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}כלי שייט חוסם את הדרך
-STR_980F                                                        :{WHITE}{VEHICLE}
-STR_9811_DETAILS                                                :{WHITE}(פרטים) {VEHICLE}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}לא ניתן לעצור/להפעיל את כלי השייט
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE} לא ניתן לשלוח את כלי השייט למבדוק
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}לא ניתן למצוא מבדוק קרוב
@@ -2958,8 +2949,6 @@ STR_A005_NEW_AIRCRAFT                                           :{WHITE}כלי �
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}בנה כלי טייס
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}לא ניתן לבנות כלי טייס
 STR_A009_AIRCRAFT                                               ::{WHITE}כלי טייס {NBSP}{1:COMMA} - {0:COMPANY}
-STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00C_DETAILS                                                :{WHITE}(פרטים){VEHICLE}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}...לא ניתן לשלוח את כלי הטייס לסככת המטוסים
 STR_HEADING_FOR_HANGAR                                          :{ORANGE} {STATION} בדרך אל סככת המטוסים ב
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{1:VELOCITY} מהירות ,  {NBSP}{0:STATION} בדרך אל סככת המטוסים ב

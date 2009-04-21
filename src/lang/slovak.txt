@@ -767,7 +767,6 @@ STR_02DD_SUBSIDIES                                              :Dotacie
 STR_02DE_MAP_OF_WORLD                                           :Mapa sveta
 STR_EXTRA_VIEW_PORT                                             :Dalsi pohlad
 STR_SIGN_LIST                                                   :Zoznam popisov
-STR_02DF_TOWN_DIRECTORY                                         :Zoznam miest
 STR_TOWN_POPULATION                                             :{BLACK}Svetova populacia: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pohlad {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Pohlad podla mapy
@@ -2217,10 +2216,6 @@ STR_682C_HILLY                                                  :Kopcovity
 STR_682D_MOUNTAINOUS                                            :Horsky
 STR_682E_STEADY                                                 :Stabilna
 STR_682F_FLUCTUATING                                            :Kolisava
-STR_6830_IMMEDIATE                                              :Ihned
-STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 mesiace po hracovi
-STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 mesiacov po hracovi
-STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 mesiacov po hracovi
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Na konci trate a v stanicach
 STR_6835_AT_END_OF_LINE_ONLY                                    :Len na konci trate
 STR_6836_OFF                                                    :Vyp.
@@ -2906,13 +2901,11 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}NaplÅˆ Ä
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automobil v ceste
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Automobil{P "" y ov}
-STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Garaz
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nove vozidla
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nove automobily
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Zakupit vozidlo
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nie je mozne zakupit automobil ...
-STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}... musi byt zastaveny v garazi
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nemozno predat automobil ...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nemozno zastavit/spustit automobil ...
@@ -2981,8 +2974,6 @@ STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Lod musi
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Nemozno predat lod ...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nemozno vyrobit lod...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Lod v ceste
-STR_980F                                                        :{WHITE}{VEHICLE}
-STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nemozno zastavit/spustit lod ...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nemozno poslat lod do lodenice ...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemozno najst miestnu lodenicu
@@ -3040,8 +3031,6 @@ STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nove Lie
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Vyrobit lietadlo
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nemozno vyrobit lietadlo...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Lietad{P lo la iel}
-STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nemozno poslat lietadlo do hangaru ...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Smeruje do {STATION} hangaru
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Smeruje do {STATION} hangaru, {VELOCITY}

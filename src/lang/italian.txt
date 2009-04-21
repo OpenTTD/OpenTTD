@@ -705,7 +705,6 @@ STR_02DD_SUBSIDIES                                              :Sussidi
 STR_02DE_MAP_OF_WORLD                                           :Mappa del mondo
 STR_EXTRA_VIEW_PORT                                             :Mini visuale extra
 STR_SIGN_LIST                                                   :Elenco cartelli
-STR_02DF_TOWN_DIRECTORY                                         :Elenco città
 STR_TOWN_POPULATION                                             :{BLACK}Popolazione mondiale: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Mini visuale {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copia nella mini visuale
@@ -2159,10 +2158,6 @@ STR_682C_HILLY                                                  :Collinoso
 STR_682D_MOUNTAINOUS                                            :Montagnoso
 STR_682E_STEADY                                                 :Stabile
 STR_682F_FLUCTUATING                                            :Fluttuante
-STR_6830_IMMEDIATE                                              :Immediata
-STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 mesi dopo il giocatore
-STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 mesi dopo il giocatore
-STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 mesi dopo il giocatore
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Alla fine della linea, e alle stazioni
 STR_6835_AT_END_OF_LINE_ONLY                                    :Solo alla fine della linea
 STR_6836_OFF                                                    :No
@@ -2852,13 +2847,11 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Riempie 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automezzo di mezzo
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} automezz{P 2 o i}
-STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}Deposito automezzi di {TOWN}
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nuovi veicoli
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nuovi automezzi
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Costruisci veicolo
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Impossibile costruire l'automezzo...
-STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Dettagli)
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...deve essere fermo nel deposito automezzi
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Impossibile vendere l'automezzo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Impossibile fermare/avviare l'automezzo...
@@ -2927,8 +2920,6 @@ STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}La nave 
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Impossibile vendere la nave...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Impossibile costruire la nave...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Nave di mezzo
-STR_980F                                                        :{WHITE}{VEHICLE}
-STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Dettagli)
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Impossibile fermare/avviare la nave...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Impossibile mandare la nave al deposito...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Impossibile trovare il deposito più vicino
@@ -2986,8 +2977,6 @@ STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nuovo ae
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Costruisci aeromobile
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Impossibile costruire l'aeromobile...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} aeromobil{P 2 e i}
-STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Dettagli)
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Impossibile mandare l'aeromobile all'hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Diretto all'Hangar di {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Diretto all'Hangar di {STATION}, {VELOCITY}

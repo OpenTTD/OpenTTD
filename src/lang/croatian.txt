@@ -765,7 +765,6 @@ STR_02DD_SUBSIDIES                                              :Subvencije
 STR_02DE_MAP_OF_WORLD                                           :Karta svijeta
 STR_EXTRA_VIEW_PORT                                             :Dodatni pogled
 STR_SIGN_LIST                                                   :Popis znakova
-STR_02DF_TOWN_DIRECTORY                                         :Direktorij gradova
 STR_TOWN_POPULATION                                             :{BLACK}Svjetsko stanovništvo: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pogled {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiraj u pogled
@@ -2216,10 +2215,6 @@ STR_682C_HILLY                                                  :Brežuljkasto
 STR_682D_MOUNTAINOUS                                            :Brdovito
 STR_682E_STEADY                                                 :Stabilno
 STR_682F_FLUCTUATING                                            :Promjenjivo
-STR_6830_IMMEDIATE                                              :Odmah
-STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 mjeseca nakon igrača
-STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 mjeseci nakon igrača
-STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 mjeseci nakon igrača
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Na kraju pruge, i na postaji
 STR_6835_AT_END_OF_LINE_ONLY                                    :Isključivo na kraju pruge
 STR_6836_OFF                                                    :Isključeno
@@ -2905,13 +2900,11 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Automats
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Cestovno vozilo na putu
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} cestovn{P o a ih} vozil{P o a a}
-STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}Spremište cestovnih vozila grada {TOWN}a
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nova vozila
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nova cestovna vozila
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Izgradi vozilo
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nije moguće izgraditi cestovno vozilo...
-STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detalji)
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...mora biti zaustavljen unutar spremišta cestovnih vozila
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nije moguće prodati cestovno vozilo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nije moguće zaustaviti/pokrenuti cestovno vozilo...
@@ -2980,8 +2973,6 @@ STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Brod mor
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Nije moguće prodati brod...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nije moguće izgraditi brod...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Smeta brod
-STR_980F                                                        :{WHITE}{VEHICLE}
-STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detalji)
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nije moguće pokrenuti/zaustaviti brod...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nije moguće poslati brod u spremište...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ne mogu pronaći lokalno spremište
@@ -3039,8 +3030,6 @@ STR_A005_NEW_AIRCRAFT                                           :{WHITE}Novi zra
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Izgradi zrakoplov
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nije moguće izgraditi zrakoplov...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} zrakoplova
-STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detalji)
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nije moguće poslati zrakoplov u hangar
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Putuje prema hangaru {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Putuje prema hangaru {STATION}, {VELOCITY}

@@ -701,7 +701,6 @@ STR_02DD_SUBSIDIES                                              :보조금
 STR_02DE_MAP_OF_WORLD                                           :전체 지도 보기
 STR_EXTRA_VIEW_PORT                                             :외부 화면
 STR_SIGN_LIST                                                   :팻말 목록
-STR_02DF_TOWN_DIRECTORY                                         :마을 목록
 STR_TOWN_POPULATION                                             :{BLACK}세계 인구: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}외부 화면 {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}외부 화면에 복사
@@ -2154,10 +2153,6 @@ STR_682C_HILLY                                                  :언덕
 STR_682D_MOUNTAINOUS                                            :산
 STR_682E_STEADY                                                 :안정됨
 STR_682F_FLUCTUATING                                            :불안정함
-STR_6830_IMMEDIATE                                              :즉각
-STR_6831_3_MONTHS_AFTER_PLAYER                                  :플레이어 이후 3개월 뒤
-STR_6832_6_MONTHS_AFTER_PLAYER                                  :플레이어 이후 6개월 뒤
-STR_6833_9_MONTHS_AFTER_PLAYER                                  :플레이어 이후 9개월 뒤
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :선로 끝과 역에서의 회차 가능
 STR_6835_AT_END_OF_LINE_ONLY                                    :선로 끝에서만 회차 가능
 STR_6836_OFF                                                    :끔
@@ -2847,13 +2842,11 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}다음 �
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}중간에 자동차가 있습니다.
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA}대의 자동차
-STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} 차고
 STR_9004_NEW_VEHICLES                                           :{BLACK}새 차량
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}새 자동차
 STR_9007_BUILD_VEHICLE                                          :{BLACK}차량 만들기
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}자동차를 만들 수 없습니다...
-STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (상세정보)
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...차고 안에서 정지해있어야 합니다!
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}자동차를 팔 수 없습니다...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}자동차를 운행/정지시킬 수 없습니다...
@@ -2922,8 +2915,6 @@ STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}정박�
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}선박을 팔 수 없습니다...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}선박을 만들 수 없습니다...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}중간에 선박이 있습니다
-STR_980F                                                        :{WHITE}{VEHICLE}
-STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (상세정보)
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}선박을 운행/중지시킬 수 없습니다...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}선박을 정박소로 보낼 수 없습니다...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}인접한 정박소를 찾을 수 없습니다
@@ -2981,8 +2972,6 @@ STR_A005_NEW_AIRCRAFT                                           :{WHITE}새 항�
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}항공기 만들기
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}항공기를 만들 수 없습니다...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA}대의 항공기
-STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (상세정보)
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}항공기를 격납고로 보낼 수 없습니다...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATION}공항 격납고로 가는 중
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION}공항 격납고로 가는 중 ({VELOCITY})

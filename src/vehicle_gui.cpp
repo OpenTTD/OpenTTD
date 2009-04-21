@@ -1288,7 +1288,7 @@ enum VehicleDetailsWindowWidgets {
 /** Vehicle details widgets. */
 static const Widget _vehicle_details_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,   0,  10,   0,  13, STR_00C5,             STR_018B_CLOSE_WINDOW},                  // VLD_WIDGET_CLOSEBOX
-	{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,  11, 352,   0,  13, 0x0,                  STR_018C_WINDOW_TITLE_DRAG_THIS},        // VLD_WIDGET_CAPTION
+	{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,  11, 352,   0,  13, STR_8802_DETAILS,     STR_018C_WINDOW_TITLE_DRAG_THIS},        // VLD_WIDGET_CAPTION
 	{ WWT_PUSHTXTBTN,     RESIZE_LR,  COLOUR_GREY, 353, 392,   0,  13, STR_01AA_NAME,        STR_NULL /* filled in later */},         // VLD_WIDGET_RENAME_VEHICLE
 	{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY, 393, 404,   0,  13, STR_NULL,             STR_STICKY_BUTTON},                      // VLD_WIDGET_STICKY
 	{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,   0, 404,  14,  55, 0x0,                  STR_NULL},                               // VLD_WIDGET_TOP_DETAILS
@@ -1308,7 +1308,7 @@ static const Widget _vehicle_details_widgets[] = {
 static const NWidgetPart _nested_vehicle_details_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, VLD_WIDGET_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, VLD_WIDGET_CAPTION),
+		NWidget(WWT_CAPTION, COLOUR_GREY, VLD_WIDGET_CAPTION), SetDataTip(STR_8802_DETAILS, STR_018C_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_RENAME_VEHICLE), SetMinimalSize(40, 14), SetDataTip(STR_01AA_NAME, STR_NULL /* filled in later */),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY, VLD_WIDGET_STICKY),
 	EndContainer(),
@@ -1358,11 +1358,9 @@ struct VehicleDetailsWindow : Window {
 				this->resize.height = this->height - 14 * 2; // Minimum of 4 wagons in the display
 
 				this->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_8867_NAME_TRAIN;
-				this->widget[VLD_WIDGET_CAPTION].data = STR_8802_DETAILS;
 				break;
 
 			case VEH_ROAD: {
-				this->widget[VLD_WIDGET_CAPTION].data = STR_900C_DETAILS;
 				this->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_902E_NAME_ROAD_VEHICLE;
 
 				if (!RoadVehHasArticPart(v)) break;
@@ -1381,13 +1379,11 @@ struct VehicleDetailsWindow : Window {
 
 			case VEH_SHIP:
 				this->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_982F_NAME_SHIP;
-				this->widget[VLD_WIDGET_CAPTION].data = STR_9811_DETAILS;
 				break;
 
 			case VEH_AIRCRAFT:
 				ResizeWindow(this, 0, 11);
 				this->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_A032_NAME_AIRCRAFT;
-				this->widget[VLD_WIDGET_CAPTION].data = STR_A00C_DETAILS;
 				break;
 			default: NOT_REACHED();
 		}
@@ -1626,7 +1622,7 @@ static void ShowVehicleDetailsWindow(const Vehicle *v)
 /** Vehicle view widgets. */
 static const Widget _vehicle_view_widgets[] = {
 	{   WWT_CLOSEBOX,  RESIZE_NONE,  COLOUR_GREY,   0,  10,   0,  13, STR_00C5,                 STR_018B_CLOSE_WINDOW },           // VVW_WIDGET_CLOSEBOX
-	{    WWT_CAPTION, RESIZE_RIGHT,  COLOUR_GREY,  11, 237,   0,  13, 0x0 /* filled later */,   STR_018C_WINDOW_TITLE_DRAG_THIS }, // VVW_WIDGET_CAPTION
+	{    WWT_CAPTION, RESIZE_RIGHT,  COLOUR_GREY,  11, 237,   0,  13, STR_882E,                 STR_018C_WINDOW_TITLE_DRAG_THIS }, // VVW_WIDGET_CAPTION
 	{  WWT_STICKYBOX,    RESIZE_LR,  COLOUR_GREY, 238, 249,   0,  13, 0x0,                      STR_STICKY_BUTTON },               // VVW_WIDGET_STICKY
 	{      WWT_PANEL,    RESIZE_RB,  COLOUR_GREY,   0, 231,  14, 103, 0x0,                      STR_NULL },                        // VVW_WIDGET_PANEL
 	{      WWT_INSET,    RESIZE_RB,  COLOUR_GREY,   2, 229,  16, 101, 0x0,                      STR_NULL },                        // VVW_WIDGET_VIEWPORT
@@ -1751,8 +1747,6 @@ struct VehicleViewWindow : Window {
 		 */
 		switch (v->type) {
 			case VEH_TRAIN:
-				this->widget[VVW_WIDGET_CAPTION].data = STR_882E;
-
 				this->widget[VVW_WIDGET_START_STOP_VEH].tooltips = STR_8846_CURRENT_TRAIN_ACTION_CLICK;
 
 				this->widget[VVW_WIDGET_CENTER_MAIN_VIEH].tooltips = STR_8848_CENTER_MAIN_VIEW_ON_TRAIN;
@@ -1799,8 +1793,6 @@ struct VehicleViewWindow : Window {
 				break;
 
 			case VEH_ROAD:
-				this->widget[VVW_WIDGET_CAPTION].data = STR_9002;
-
 				this->widget[VVW_WIDGET_START_STOP_VEH].tooltips = STR_901C_CURRENT_VEHICLE_ACTION;
 
 				this->widget[VVW_WIDGET_CENTER_MAIN_VIEH].tooltips = STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE;
@@ -1821,8 +1813,6 @@ struct VehicleViewWindow : Window {
 				break;
 
 			case VEH_SHIP:
-				this->widget[VVW_WIDGET_CAPTION].data = STR_980F;
-
 				this->widget[VVW_WIDGET_START_STOP_VEH].tooltips = STR_9827_CURRENT_SHIP_ACTION_CLICK;
 
 				this->widget[VVW_WIDGET_CENTER_MAIN_VIEH].tooltips = STR_9829_CENTER_MAIN_VIEW_ON_SHIP;
@@ -1846,8 +1836,6 @@ struct VehicleViewWindow : Window {
 				break;
 
 			case VEH_AIRCRAFT:
-				this->widget[VVW_WIDGET_CAPTION].data = STR_A00A;
-
 				this->widget[VVW_WIDGET_START_STOP_VEH].tooltips = STR_A027_CURRENT_AIRCRAFT_ACTION;
 
 				this->widget[VVW_WIDGET_CENTER_MAIN_VIEH].tooltips = STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT;

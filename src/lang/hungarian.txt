@@ -737,7 +737,6 @@ STR_02DD_SUBSIDIES                                              :Támogatások
 STR_02DE_MAP_OF_WORLD                                           :Világtérkép
 STR_EXTRA_VIEW_PORT                                             :Extra látkép
 STR_SIGN_LIST                                                   :Feliratok listája
-STR_02DF_TOWN_DIRECTORY                                         :Városlista
 STR_TOWN_POPULATION                                             :{BLACK}Világnépesség: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}{COMMA}. látkép
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Látkép aktualizálása
@@ -2228,10 +2227,6 @@ STR_682C_HILLY                                                  :Dombos
 STR_682D_MOUNTAINOUS                                            :Hegyes
 STR_682E_STEADY                                                 :Stabil
 STR_682F_FLUCTUATING                                            :Változó
-STR_6830_IMMEDIATE                                              :Azonnal
-STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 hónappal utánad
-STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 hónappal utánad
-STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 hónappal utánad
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Vonal végén és állomásokon
 STR_6835_AT_END_OF_LINE_ONLY                                    :Csak vonal végén
 STR_6836_OFF                                                    :Ki
@@ -2921,13 +2916,11 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Menetren
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Közúti jármű van az útban
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} közúti járművei - {COMMA}
-STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN}i garázs
 STR_9004_NEW_VEHICLES                                           :{BLACK}Új járművek
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Új közúti járművek
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Megvesz
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nem veheted meg a közúti járművet...
-STR_900C_DETAILS                                                :{WHITE}{VEHICLE} adatai
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...garázsban kellene állnia ehhez
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nem adhatod el a közúti járművet...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nem indíthatod el/ állíthatod meg a közúti járművet...
@@ -2996,8 +2989,6 @@ STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}A dokkba
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Nem adhatod el a hajót...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nem veheted meg a hajót...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Hajó van az útban
-STR_980F                                                        :{WHITE}{VEHICLE}
-STR_9811_DETAILS                                                :{WHITE}{VEHICLE} adatai
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nem indíthatod el/ állíthatod meg a hajót...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nem küldheted a hajót a dokkba...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nem találom a helyi dokkot
@@ -3055,8 +3046,6 @@ STR_A005_NEW_AIRCRAFT                                           :{WHITE}Új rep�
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Megvesz
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nem veheted meg a repülőgépet...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} repülőgépei - {COMMA}
-STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} adatai
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nem küldheted a repülőgépet a hangárba...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Úton {STATION} hangárjába
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Úton {STATION} hangárjába, {VELOCITY}

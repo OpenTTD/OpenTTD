@@ -825,7 +825,6 @@ STR_02DD_SUBSIDIES                                              :Субсиді�
 STR_02DE_MAP_OF_WORLD                                           :Карта світу
 STR_EXTRA_VIEW_PORT                                             :Додаткове вікно
 STR_SIGN_LIST                                                   :Список позначень
-STR_02DF_TOWN_DIRECTORY                                         :Список міст
 STR_TOWN_POPULATION                                             :{BLACK}Населення світу: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Вікно {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Копіювати до вікна
@@ -2312,10 +2311,6 @@ STR_682C_HILLY                                                  :горбкув�
 STR_682D_MOUNTAINOUS                                            :гористий
 STR_682E_STEADY                                                 :стабільна
 STR_682F_FLUCTUATING                                            :нестійка
-STR_6830_IMMEDIATE                                              :відразу
-STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 місяці після гравця
-STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 місяців після гравця
-STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 місяців після гравця
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :в кінці лінії, або на станціях
 STR_6835_AT_END_OF_LINE_ONLY                                    :лише в кінці лінії
 STR_6836_OFF                                                    :відкл.
@@ -3001,13 +2996,11 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Авто
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}На шляху авто
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} автомобіл{P ь і ів}
-STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Гараж
 STR_9004_NEW_VEHICLES                                           :{BLACK}Новий транспорт
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Нове авто
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Будувати
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Неможливо будувати авто...
-STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Детально)
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...авто повинно стояти в депо
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Неможливо продати авто...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Неможливо зупинити авто...
@@ -3076,8 +3069,6 @@ STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Кора
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Неможливо продати корабель...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Неможливо будувати корабель...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Корабель на шляху
-STR_980F                                                        :{WHITE}{VEHICLE}
-STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Деталі)
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Неможливо зупинити корабель...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Неможливо направити корабель в депо...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Неможливо знайти місцеве депо
@@ -3135,8 +3126,6 @@ STR_A005_NEW_AIRCRAFT                                           :{WHITE}Нові
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Будувати
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Неможливо будувати літак...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} літак{P "" и ів}
-STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Детально)
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Неможливо направити літак до ангару...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Летить до {STATION} ангару
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Летить до {STATION} ангару, {VELOCITY}

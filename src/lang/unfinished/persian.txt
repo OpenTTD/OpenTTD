@@ -446,7 +446,6 @@ STR_02D9_ABOUT_OPENTTD                                          :'OpenTTD' در�
 STR_02DB_OFF                                                    :{BLACK}خاموش
 STR_02DA_ON                                                     :{BLACK}روشن
 STR_02DE_MAP_OF_WORLD                                           :نقشه ی دنیا
-STR_02DF_TOWN_DIRECTORY                                         :لیست شهر ها
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}واحد پول
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
@@ -1330,12 +1329,10 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}نمی �
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}ماشین در جاده است
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} ماشین{P "" s}
-STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9004_NEW_VEHICLES                                           :{BLACK}وسایل نقلیه ی جدید
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}ماشین های جدید
 STR_9007_BUILD_VEHICLE                                          :{BLACK}ساخت وسیله نقلیه
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}نمی شود ماشین ساخت...
-STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (اطلاعات)
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}نمیشود ماشین را فروخت...
 
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}نام گذاری ماشین
@@ -1354,8 +1351,6 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}نمی �
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}کشتی فروخته نمی شود...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}نمی شود کشتی ساخت...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}قطار در راه است
-STR_980F                                                        :{WHITE}{VEHICLE}
-STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (اطلاعات)
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}نمی شود کشتی را حرکت داد / متوقف کرد ...
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}ساخت بندر
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}کشی ها -برای اطلاعات بر روی کشتی کلیک کنید
@@ -1400,8 +1395,6 @@ STR_A005_NEW_AIRCRAFT                                           :{WHITE}هواپ
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}ساخت هواپیما
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}نمی توان هواپیما را ساخت
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} هواپیما
-STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (مشخصات)
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}نمیتوان هواپیما را به آشیانه فرستاد. . .
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE}در آشیانه در حال انتظار است
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}هواپیما در راه است

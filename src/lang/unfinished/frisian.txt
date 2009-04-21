@@ -559,7 +559,6 @@ STR_02DA_ON                                                     :{BLACK}Oan
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Lit Subsydzjes sjen
 STR_02DD_SUBSIDIES                                              :Subsydzjes
 STR_02DE_MAP_OF_WORLD                                           :Kaart fan 'e wrâld
-STR_02DF_TOWN_DIRECTORY                                         :Stêden list
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Muntienheid
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
@@ -1163,10 +1162,6 @@ STR_682C_HILLY                                                  :Heuvelachtich
 STR_682D_MOUNTAINOUS                                            :Bergachtich
 STR_682E_STEADY                                                 :Stabyl
 STR_682F_FLUCTUATING                                            :Wikseljend
-STR_6830_IMMEDIATE                                              :Fuortendaliks
-STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 moannen nei spyler
-STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 moannen nei spyler
-STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 moannen nei spyler
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Oan ein fan'e line en op stasjons
 STR_6835_AT_END_OF_LINE_ONLY                                    :Allinich oan ein fan'e line
 STR_6836_OFF                                                    :Út

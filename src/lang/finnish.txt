@@ -703,7 +703,6 @@ STR_02DD_SUBSIDIES                                              :Tuet
 STR_02DE_MAP_OF_WORLD                                           :Maailmankartta
 STR_EXTRA_VIEW_PORT                                             :Lisänäkymä
 STR_SIGN_LIST                                                   :Kylttilista
-STR_02DF_TOWN_DIRECTORY                                         :Kaupunkihakemisto
 STR_TOWN_POPULATION                                             :{BLACK}Maailman asukasluku: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Näkymä {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopioi näkymään
@@ -2157,10 +2156,6 @@ STR_682C_HILLY                                                  :Kukkulainen
 STR_682D_MOUNTAINOUS                                            :Vuoristoinen
 STR_682E_STEADY                                                 :Vakaa
 STR_682F_FLUCTUATING                                            :Vaihteleva
-STR_6830_IMMEDIATE                                              :Välitön
-STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 kuukautta pelaajan jälkeen
-STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 kuukautta pelaajan jälkeen
-STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 kuukautta pelaajan jälkeen
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Radan päässä ja asemilla
 STR_6835_AT_END_OF_LINE_ONLY                                    :Vain radan päässä
 STR_6836_OFF                                                    :Pois
@@ -2850,13 +2845,11 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Täytä 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Ajoneuvo tiellä.
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} ajoneuvoa
-STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} huoltoasema
 STR_9004_NEW_VEHICLES                                           :{BLACK}Uusia ajoneuvoja
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Uusia ajoneuvoja
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Rakenna ajoneuvo
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ajoneuvoa ei voi rakentaa...
-STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (yksityiskohdat)
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...sen pitää olla pysähtyneenä huoltoasemalle.
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ajoneuvoa ei voi myydä...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ajoneuvoa ei voi pysäyttää/laitta liikkeelle...
@@ -2925,8 +2918,6 @@ STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Laivan p
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Laivaa ei voi myydä...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Laivaa ei voi rakentaa...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Laiva on tiellä.
-STR_980F                                                        :{WHITE}{VEHICLE}
-STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (tiedot)
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Laivaa ei voi pysäyttää/laittaa liikkeelle...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Laivaa ei voi lähettää telakalle...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Paikallista telakkaa ei löydy
@@ -2984,8 +2975,6 @@ STR_A005_NEW_AIRCRAFT                                           :{WHITE}Uusi len
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Rakenna lentokone
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Lentokonetta ei voi rakentaa...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} lentokonetta
-STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (tiedot)
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Lentokonetta ei voi lähettää lentokonehalliin...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Suuntana lentokonehalli, {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Suuntana lentokonehalli, {STATION}, {VELOCITY}

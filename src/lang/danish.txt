@@ -701,7 +701,6 @@ STR_02DD_SUBSIDIES                                              :Tilskudsordning
 STR_02DE_MAP_OF_WORLD                                           :Kort over verden
 STR_EXTRA_VIEW_PORT                                             :Nyt lokalitetsvindue
 STR_SIGN_LIST                                                   :Liste over skilte
-STR_02DF_TOWN_DIRECTORY                                         :Byoversigt
 STR_TOWN_POPULATION                                             :{BLACK}Verdens befolkning: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Lokalitetsvindue {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Hent global
@@ -2155,10 +2154,6 @@ STR_682C_HILLY                                                  :Bakket
 STR_682D_MOUNTAINOUS                                            :Bjergrigt
 STR_682E_STEADY                                                 :Rolig
 STR_682F_FLUCTUATING                                            :Svingende
-STR_6830_IMMEDIATE                                              :Med det samme
-STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 måneder efter spilleren
-STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 måneder efter spilleren
-STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 måneder efter spilleren
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Ved slutningen af jernbanespor, og ved stationer
 STR_6835_AT_END_OF_LINE_ONLY                                    :Kun ved slutningen af jernbanespor
 STR_6836_OFF                                                    :Fra
@@ -2847,13 +2842,11 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Udfyld a
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Køretøj i vejen
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Køretøj{P "" er}
-STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} værksted
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nye køretøjer
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nye køretøjer
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Byg køretøj
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan ikke bygge køretøj...
-STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...skal være stoppet inde i et værksted først
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan ikke sælge køretøj...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan ikke stoppe/starte køretøj...
@@ -2922,8 +2915,6 @@ STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Skibet s
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Kan ikke sælge skibet...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan ikke bygge skibet...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Der er et skib i vejen
-STR_980F                                                        :{WHITE}{VEHICLE}
-STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan ikke stoppe/starte skibet...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan ikke sende skibet til dok...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finde lokal dok
@@ -2981,8 +2972,6 @@ STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nyt fly
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Byg et fly
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kan ikke bygge fly...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Fly
-STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan ikke sende flyet til en hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Flyver til {STATION} hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Flyver til {STATION} hangar, {VELOCITY}

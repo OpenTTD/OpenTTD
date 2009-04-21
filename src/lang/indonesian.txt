@@ -700,7 +700,6 @@ STR_02DD_SUBSIDIES                                              :Subsidi
 STR_02DE_MAP_OF_WORLD                                           :Peta Dunia
 STR_EXTRA_VIEW_PORT                                             :Viewport ekstra
 STR_SIGN_LIST                                                   :Daftar Tanda
-STR_02DF_TOWN_DIRECTORY                                         :Daftar Kota
 STR_TOWN_POPULATION                                             :{BLACK}Populasi Dunia: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Viewport {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Simpan ke viewport
@@ -2150,10 +2149,6 @@ STR_682C_HILLY                                                  :Berbukit
 STR_682D_MOUNTAINOUS                                            :Pegunungan
 STR_682E_STEADY                                                 :Stabil
 STR_682F_FLUCTUATING                                            :Fluktuatif
-STR_6830_IMMEDIATE                                              :Segera
-STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 bulan setelah bermain
-STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 bulan setelah bermain
-STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 bulan setelah bermain
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Pada ujung rel, dan pada stasiun
 STR_6835_AT_END_OF_LINE_ONLY                                    :Hanya pada ujung rel
 STR_6836_OFF                                                    :Non-aktifkan
@@ -2839,13 +2834,11 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi jadw
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Bus/truk sedang berjalan
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Bus/truk
-STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Bengkel Bus/truk
 STR_9004_NEW_VEHICLES                                           :{BLACK}Kendaraan Baru
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Bus/truk Baru
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Membuat Kendaraan
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Tidak dapat membuat bus/truk...
-STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detail)
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...harus dihentikan didalam bengkel bus/truk
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Tidak dapat menjual kendaraan...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Tidak dapat menghentikan/menjalankan kendaraan...
@@ -2914,8 +2907,6 @@ STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Kapal ha
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Tidak dapat menjual kapal...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Tidak dapat membuat kapal...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Kapal sedang berjalan
-STR_980F                                                        :{WHITE}{VEHICLE}
-STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detail)
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Tidak dapat menghentikan / menjalankan kapal...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Tidak dapat mengirim kapal ke galangan...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Tidak dapat menemukan galangan terdekat
@@ -2973,8 +2964,6 @@ STR_A005_NEW_AIRCRAFT                                           :{WHITE}Buat Pes
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Buat Pesawat
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Tidak dapat membuat pesawat ...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Pesawat
-STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detail)
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Tidak dapat mengirim pesawat ke hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Menuju ke hangar di {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Menuju ke hangar di {STATION}, {VELOCITY}
