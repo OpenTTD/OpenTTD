@@ -389,7 +389,7 @@ STR_0170                                                        :{TINYFONT}{STRI
 STR_0171_PAUSE_GAME                                             :{BLACK}Spiel anhalten
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Spiel speichern, Spiel laden, Spiel abbrechen, (OpenTTD) Beenden
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Liste der Firmenbahnhöfe anzeigen
-STR_0174_DISPLAY_MAP                                            :{BLACK}Weltkarte anzeigen
+STR_0174_DISPLAY_MAP                                            :{BLACK}Weltkarte, zusätzliche Fenster oder Schilderliste anzeigen
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Weltkarte anzeigen, Städteverzeichnis
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Städteverzeichnis anzeigen
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Firmenfinanzen anzeigen
@@ -762,7 +762,7 @@ STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...kann nur im Regenwaldgebiet errichtet werden
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...kann nur im Wüstengebiet errichtet werden
-STR_0319_PAUSED                                                 :{YELLOW}* *  ANGEHALTEN  *  *
+STR_0319_PAUSED                                                 :{YELLOW}*  *  ANGEHALTEN  *  *
 
 STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot gespeichert als '{STRING}'
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screenshot fehlgeschlagen
@@ -1446,20 +1446,20 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Neue Fir
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Keine Netzwerkschnittstellen gefunden oder ohne ENABLE_NETWORK kompiliert
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Keine Netzwerkspiele gefunden
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Der Server antwortet nicht
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Verbindung konnte nicht hergestellt werden, da die NewGRF-Versionen nicht übereinstimmen.
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Der Server antwortet nicht
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Verbindung konnte nicht hergestellt werden, da die NewGRF-Versionen nicht übereinstimmen.
 STR_NETWORK_ERR_DESYNC                                          :{WHITE}Synchronisation des Netzwerkspiels fehlgeschlagen
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Verbindung zum Netzwerkspiel verloren
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Spielstand konnte nicht vom Server geladen werden
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Server konnte nicht gestartet werden
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Verbindung konnte nicht hergestellt werden
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Verbindung #{NUM} hat das Zeitlimit überschritten
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Verbindung #{NUM} hat das Zeitlimit überschritten
 STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Protokollfehler: Die Verbindung musste getrennt werden
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Diese Version des Spiels entspricht nicht der des Servers
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Falsches Passwort
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}Der Server ist voll
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Sie sind auf diesem Server gesperrt
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Sie wurden vom Server hinausgeworfen
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Sie wurden vom Server hinausgeworfen
 STR_NETWORK_ERR_CHEATER                                         :{WHITE}Mogeln ist auf diesem Server nicht erlaubt
 
 ############ Leave those lines in this order!!

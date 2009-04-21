@@ -762,7 +762,7 @@ STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...peut seulement être construit en forêt tropicale
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...peut seulement être construit dans les endroits désertiques
-STR_0319_PAUSED                                                 :{YELLOW}* *  SUSPENDU  * *
+STR_0319_PAUSED                                                 :{YELLOW}*  *  SUSPENDU  *  *
 
 STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Copie d'écran enregistrée avec succès sous '{STRING}'
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Copie d'écran a échoué!
