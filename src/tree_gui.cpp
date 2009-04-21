@@ -138,7 +138,7 @@ public:
 	{
 		if (pt.x != -1 && select_proc == DDSP_PLANT_TREES) {
 			DoCommandP(end_tile, this->tree_to_plant, start_tile,
-				CMD_PLANT_TREE | CMD_MSG(STR_2805_CAN_T_PLANT_TREE_HERE));
+				CMD_PLANT_TREE | CMD_MSG(STR_ERROR_CAN_T_PLANT_TREE_HERE));
 		}
 	}
 
@@ -155,30 +155,30 @@ public:
 };
 
 static const Widget _build_trees_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},              // BTW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11,   142,     0,    13, STR_2802_TREES,        STR_018C_WINDOW_TITLE_DRAG_THIS},    // BTW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,   142,    14,   183, 0x0,                   STR_NULL},                           // BTW_BACKGROUND
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         2,    35,    16,    61, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_11
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        37,    70,    16,    61, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_12
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        72,   105,    16,    61, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_13
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       107,   140,    16,    61, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_14
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         2,    35,    63,   108, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_21
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        37,    70,    63,   108, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_22
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        72,   105,    63,   108, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_23
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       107,   140,    63,   108, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_24
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         2,    35,   110,   155, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_31
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        37,    70,   110,   155, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_32
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        72,   105,   110,   155, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_33
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       107,   140,   110,   155, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_34
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         2,   140,   157,   168, STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TIP},          // BTW_TYPE_RANDOM
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         2,   140,   170,   181, STR_028A_RANDOM_TREES, STR_028B_PLANT_TREES_RANDOMLY_OVER}, // BTW_MANY_RANDOM
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,    10,     0,    13, STR_BLACK_CROSS,               STR_TOOLTIP_CLOSE_WINDOW},           // BTW_CLOSE
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11,   142,     0,    13, STR_PLANT_TREE_CAPTION,        STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // BTW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,   142,    14,   183, 0x0,                           STR_NULL},                           // BTW_BACKGROUND
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         2,    35,    16,    61, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_11
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        37,    70,    16,    61, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_12
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        72,   105,    16,    61, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_13
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       107,   140,    16,    61, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_14
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         2,    35,    63,   108, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_21
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        37,    70,    63,   108, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_22
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        72,   105,    63,   108, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_23
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       107,   140,    63,   108, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_24
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         2,    35,   110,   155, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_31
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        37,    70,   110,   155, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_32
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        72,   105,   110,   155, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_33
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       107,   140,   110,   155, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_34
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         2,   140,   157,   168, STR_TREES_RANDOM_TYPE,         STR_TREES_RANDOM_TYPE_TIP},          // BTW_TYPE_RANDOM
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         2,   140,   170,   181, STR_TREES_RANDOM_TREES_BUTTON, STR_TREES_RANDOM_TREES_TOOLTIP},     // BTW_MANY_RANDOM
 {    WIDGETS_END},
 };
 
 static const NWidgetPart _nested_build_trees_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BTW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BTW_CAPTION), SetMinimalSize(132, 14), SetDataTip(STR_2802_TREES, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BTW_CAPTION), SetMinimalSize(132, 14), SetDataTip(STR_PLANT_TREE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BTW_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
@@ -186,50 +186,50 @@ static const NWidgetPart _nested_build_trees_widgets[] = {
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_11), SetMinimalSize(34, 46), SetDataTip(0x0, STR_280D_SELECT_TREE_TYPE_TO_PLANT),
+					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_11), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_12), SetMinimalSize(34, 46), SetDataTip(0x0, STR_280D_SELECT_TREE_TYPE_TO_PLANT),
+					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_12), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_13), SetMinimalSize(34, 46), SetDataTip(0x0, STR_280D_SELECT_TREE_TYPE_TO_PLANT),
+					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_13), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_14), SetMinimalSize(34, 46), SetDataTip(0x0, STR_280D_SELECT_TREE_TYPE_TO_PLANT),
+					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_14), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_21), SetMinimalSize(34, 46), SetDataTip(0x0, STR_280D_SELECT_TREE_TYPE_TO_PLANT),
+					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_21), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_22), SetMinimalSize(34, 46), SetDataTip(0x0, STR_280D_SELECT_TREE_TYPE_TO_PLANT),
+					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_22), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_23), SetMinimalSize(34, 46), SetDataTip(0x0, STR_280D_SELECT_TREE_TYPE_TO_PLANT),
+					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_23), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_24), SetMinimalSize(34, 46), SetDataTip(0x0, STR_280D_SELECT_TREE_TYPE_TO_PLANT),
+					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_24), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_31), SetMinimalSize(34, 46), SetDataTip(0x0, STR_280D_SELECT_TREE_TYPE_TO_PLANT),
+					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_31), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_32), SetMinimalSize(34, 46), SetDataTip(0x0, STR_280D_SELECT_TREE_TYPE_TO_PLANT),
+					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_32), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_33), SetMinimalSize(34, 46), SetDataTip(0x0, STR_280D_SELECT_TREE_TYPE_TO_PLANT),
+					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_33), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_34), SetMinimalSize(34, 46), SetDataTip(0x0, STR_280D_SELECT_TREE_TYPE_TO_PLANT),
+					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_34), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(WWT_TEXTBTN, COLOUR_GREY, BTW_TYPE_RANDOM), SetMinimalSize(139, 12), SetDataTip(STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TIP),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, BTW_MANY_RANDOM), SetMinimalSize(139, 12), SetDataTip(STR_028A_RANDOM_TREES, STR_028B_PLANT_TREES_RANDOMLY_OVER),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, BTW_MANY_RANDOM), SetMinimalSize(139, 12), SetDataTip(STR_TREES_RANDOM_TREES_BUTTON, STR_TREES_RANDOM_TREES_TOOLTIP),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),

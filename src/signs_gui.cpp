@@ -106,7 +106,7 @@ struct SignListWindow : Window, SignList {
 		/* No signs? */
 		int y = this->widget[SLW_LIST].top + 2; // offset from top of widget
 		if (this->vscroll.count == 0) {
-			DrawString(this->widget[SLW_LIST].left + 2, this->widget[SLW_LIST].right, y, STR_304A_NONE, TC_FROMSTRING);
+			DrawString(this->widget[SLW_LIST].left + 2, this->widget[SLW_LIST].right, y, STR_STATION_LIST_NONE, TC_FROMSTRING);
 			return;
 		}
 
@@ -152,11 +152,11 @@ struct SignListWindow : Window, SignList {
 };
 
 static const Widget _sign_list_widget[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   345,     0,    13, STR_SIGN_LIST_CAPTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,       STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   345,     0,    13, STR_SIGN_LIST_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   346,   357,     0,    13, 0x0,                   STR_STICKY_BUTTON},
 {      WWT_PANEL,     RESIZE_RB,  COLOUR_GREY,     0,   345,    14,   137, 0x0,                   STR_NULL},
-{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   346,   357,    14,   125, 0x0,                   STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   346,   357,    14,   125, 0x0,                   STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   346,   357,   126,   137, 0x0,                   STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
@@ -183,7 +183,7 @@ void ShowSignList()
 static bool RenameSign(SignID index, const char *text)
 {
 	bool remove = StrEmpty(text);
-	DoCommandP(0, index, 0, CMD_RENAME_SIGN | (StrEmpty(text) ? CMD_MSG(STR_CAN_T_DELETE_SIGN) : CMD_MSG(STR_280C_CAN_T_CHANGE_SIGN_NAME)), NULL, text);
+	DoCommandP(0, index, 0, CMD_RENAME_SIGN | (StrEmpty(text) ? CMD_MSG(STR_ERROR_CAN_T_DELETE_SIGN) : CMD_MSG(STR_ERROR_CAN_T_CHANGE_SIGN_NAME)), NULL, text);
 	return remove;
 }
 
@@ -201,7 +201,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 
 	SignWindow(const WindowDesc *desc, const Sign *si) : QueryStringBaseWindow(MAX_LENGTH_SIGN_NAME_BYTES, desc)
 	{
-		this->caption = STR_280B_EDIT_SIGN_TEXT;
+		this->caption = STR_EDIT_SIGN_CAPTION;
 		this->afilter = CS_ALPHANUMERAL;
 		this->LowerWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
 
@@ -328,16 +328,16 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 };
 
 static const Widget _query_sign_edit_widgets[] = {
-{ WWT_CLOSEBOX, RESIZE_NONE,  COLOUR_GREY,   0,  10,   0,  13, STR_00C5,          STR_018B_CLOSE_WINDOW},
-{  WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,  11, 259,   0,  13, STR_012D,          STR_NULL },
-{    WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,   0, 259,  14,  29, STR_NULL,          STR_NULL },
-{  WWT_EDITBOX, RESIZE_NONE,  COLOUR_GREY,   2, 257,  16,  27, STR_SIGN_OSKTITLE, STR_NULL },  // Text field
-{  WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,   0,  60,  30,  41, STR_012F_OK,       STR_NULL },
-{  WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,  61, 120,  30,  41, STR_012E_CANCEL,   STR_NULL },
-{  WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY, 121, 180,  30,  41, STR_0290_DELETE,   STR_NULL },
-{    WWT_PANEL, RESIZE_NONE,  COLOUR_GREY, 181, 237,  30,  41, STR_NULL,          STR_NULL },
-{  WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY, 238, 248,  30,  41, STR_6819,          STR_PREVIOUS_SIGN_TOOLTIP },
-{  WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY, 249, 259,  30,  41, STR_681A,          STR_NEXT_SIGN_TOOLTIP },
+{ WWT_CLOSEBOX, RESIZE_NONE,  COLOUR_GREY,   0,  10,   0,  13, STR_BLACK_CROSS,             STR_TOOLTIP_CLOSE_WINDOW},
+{  WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,  11, 259,   0,  13, STR_QUERY_CAPTION,           STR_NULL },
+{    WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,   0, 259,  14,  29, STR_NULL,                    STR_NULL },
+{  WWT_EDITBOX, RESIZE_NONE,  COLOUR_GREY,   2, 257,  16,  27, STR_SIGN_OSKTITLE,           STR_NULL },  // Text field
+{  WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,   0,  60,  30,  41, STR_QUERY_OK,                STR_NULL },
+{  WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,  61, 120,  30,  41, STR_QUERY_CANCEL,            STR_NULL },
+{  WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY, 121, 180,  30,  41, STR_TOWN_VIEW_DELETE_BUTTON, STR_NULL },
+{    WWT_PANEL, RESIZE_NONE,  COLOUR_GREY, 181, 237,  30,  41, STR_NULL,                    STR_NULL },
+{  WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY, 238, 248,  30,  41, STR_ARROW_LEFT_SMALL,        STR_PREVIOUS_SIGN_TOOLTIP },
+{  WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY, 249, 259,  30,  41, STR_ARROW_RIGHT_SMALL,       STR_NEXT_SIGN_TOOLTIP },
 { WIDGETS_END },
 };
 

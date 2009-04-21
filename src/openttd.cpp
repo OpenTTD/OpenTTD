@@ -728,9 +728,9 @@ static void ShowScreenshotResult(bool b)
 	if (b) {
 		extern char _screenshot_name[];
 		SetDParamStr(0, _screenshot_name);
-		ShowErrorMessage(INVALID_STRING_ID, STR_031B_SCREENSHOT_SUCCESSFULLY, 0, 0);
+		ShowErrorMessage(INVALID_STRING_ID, STR_MESSAGE_SCREENSHOT_SUCCESSFULLY, 0, 0);
 	} else {
-		ShowErrorMessage(INVALID_STRING_ID, STR_031C_SCREENSHOT_FAILED, 0, 0);
+		ShowErrorMessage(INVALID_STRING_ID, STR_ERROR_SCREENSHOT_FAILED, 0, 0);
 	}
 
 }

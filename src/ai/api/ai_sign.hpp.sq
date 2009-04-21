@@ -24,7 +24,7 @@ void SQAISign_Register(Squirrel *engine) {
 	SQAISign.DefSQConst(engine, AISign::ERR_SIGN_BASE,           "ERR_SIGN_BASE");
 	SQAISign.DefSQConst(engine, AISign::ERR_SIGN_TOO_MANY_SIGNS, "ERR_SIGN_TOO_MANY_SIGNS");
 
-	AIError::RegisterErrorMap(STR_2808_TOO_MANY_SIGNS, AISign::ERR_SIGN_TOO_MANY_SIGNS);
+	AIError::RegisterErrorMap(STR_ERROR_TOO_MANY_SIGNS, AISign::ERR_SIGN_TOO_MANY_SIGNS);
 
 	AIError::RegisterErrorMapString(AISign::ERR_SIGN_TOO_MANY_SIGNS, "ERR_SIGN_TOO_MANY_SIGNS");
 

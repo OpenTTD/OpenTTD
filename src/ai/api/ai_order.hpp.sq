@@ -67,8 +67,8 @@ void SQAIOrder_Register(Squirrel *engine) {
 	SQAIOrder.DefSQConst(engine, AIOrder::ORDER_CURRENT,                                    "ORDER_CURRENT");
 	SQAIOrder.DefSQConst(engine, AIOrder::ORDER_INVALID,                                    "ORDER_INVALID");
 
-	AIError::RegisterErrorMap(STR_8831_NO_MORE_SPACE_FOR_ORDERS,         AIOrder::ERR_ORDER_TOO_MANY);
-	AIError::RegisterErrorMap(STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO, AIOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION);
+	AIError::RegisterErrorMap(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS,         AIOrder::ERR_ORDER_TOO_MANY);
+	AIError::RegisterErrorMap(STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION, AIOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION);
 
 	AIError::RegisterErrorMapString(AIOrder::ERR_ORDER_TOO_MANY,                               "ERR_ORDER_TOO_MANY");
 	AIError::RegisterErrorMapString(AIOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION, "ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION");

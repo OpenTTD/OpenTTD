@@ -43,27 +43,27 @@ enum BuildVehicleWidgets {
 };
 
 static const Widget _build_vehicle_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,     STR_018B_CLOSE_WINDOW },            // BUILD_VEHICLE_WIDGET_CLOSEBOX
-	{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   239,     0,    13, 0x0,          STR_018C_WINDOW_TITLE_DRAG_THIS },  // BUILD_VEHICLE_WIDGET_CAPTION
-	{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,     0,   239,    14,    37, 0x0,          STR_NULL },                         // BUILD_VEHICLE_WIDGET_LIST_CONTROL
-	{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    80,    14,    25, STR_SORT_BY,  STR_SORT_ORDER_TIP},                // BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING
-	{   WWT_DROPDOWN,  RESIZE_RIGHT,  COLOUR_GREY,    81,   239,    14,    25, 0x0,          STR_SORT_CRITERIA_TIP},             // BUILD_VEHICLE_WIDGET_SORT_DROPDOWN
-	{   WWT_DROPDOWN,  RESIZE_RIGHT,  COLOUR_GREY,    81,   239,    26,    37, 0x0,          STR_FILTER_CRITERIA_TIP},           // BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN
-	{     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,     0,   227,    38,    51, 0x101,        STR_NULL },                         // BUILD_VEHICLE_WIDGET_LIST
-	{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   228,   239,    38,    51, 0x0,          STR_0190_SCROLL_BAR_SCROLLS_LIST }, // BUILD_VEHICLE_WIDGET_SCROLLBAR
+	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW },            // BUILD_VEHICLE_WIDGET_CLOSEBOX
+	{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   239,     0,    13, 0x0,             STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS },  // BUILD_VEHICLE_WIDGET_CAPTION
+	{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,     0,   239,    14,    37, 0x0,             STR_NULL },                            // BUILD_VEHICLE_WIDGET_LIST_CONTROL
+	{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    80,    14,    25, STR_SORT_BY,     STR_SORT_ORDER_TIP},                   // BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING
+	{   WWT_DROPDOWN,  RESIZE_RIGHT,  COLOUR_GREY,    81,   239,    14,    25, 0x0,             STR_SORT_CRITERIA_TIP},                // BUILD_VEHICLE_WIDGET_SORT_DROPDOWN
+	{   WWT_DROPDOWN,  RESIZE_RIGHT,  COLOUR_GREY,    81,   239,    26,    37, 0x0,             STR_FILTER_CRITERIA_TIP},              // BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN
+	{     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,     0,   227,    38,    51, 0x101,           STR_NULL },                            // BUILD_VEHICLE_WIDGET_LIST
+	{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   228,   239,    38,    51, 0x0,             STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST },// BUILD_VEHICLE_WIDGET_SCROLLBAR
 
-	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,     0,   239,    52,   173, 0x0,          STR_NULL },                         // BUILD_VEHICLE_WIDGET_PANEL
+	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,     0,   239,    52,   173, 0x0,             STR_NULL },                            // BUILD_VEHICLE_WIDGET_PANEL
 
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   114,   174,   185, 0x0,          STR_NULL },                         // BUILD_VEHICLE_WIDGET_BUILD
-	{ WWT_PUSHTXTBTN,    RESIZE_RTB,  COLOUR_GREY,   115,   227,   174,   185, 0x0,          STR_NULL },                         // BUILD_VEHICLE_WIDGET_RENAME
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   228,   239,   174,   185, 0x0,          STR_RESIZE_BUTTON },                // BUILD_VEHICLE_WIDGET_RESIZE
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   114,   174,   185, 0x0,             STR_NULL },                            // BUILD_VEHICLE_WIDGET_BUILD
+	{ WWT_PUSHTXTBTN,    RESIZE_RTB,  COLOUR_GREY,   115,   227,   174,   185, 0x0,             STR_NULL },                            // BUILD_VEHICLE_WIDGET_RENAME
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   228,   239,   174,   185, 0x0,             STR_RESIZE_BUTTON },                   // BUILD_VEHICLE_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_build_vehicle_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, BUILD_VEHICLE_WIDGET_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, BUILD_VEHICLE_WIDGET_CAPTION), SetFill(1, 0), SetResize(1, 0), SetDataTip(0x0, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, BUILD_VEHICLE_WIDGET_CAPTION), SetFill(1, 0), SetResize(1, 0), SetDataTip(0x0, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, BUILD_VEHICLE_WIDGET_LIST_CONTROL),
 		/* Sort order + criteria button row. */
@@ -417,7 +417,7 @@ static int DrawCargoCapacityInfo(int left, int right, int y, EngineID engine, Ve
 
 		SetDParam(0, c);
 		SetDParam(1, cap[c]);
-		SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
+		SetDParam(2, refittable ? STR_REFITTABLE : STR_EMPTY);
 		DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
 		y += FONT_HEIGHT_NORMAL;
 
@@ -541,7 +541,7 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
 	/* Cargo type + capacity */
 	SetDParam(0, e->GetDefaultCargoType());
 	SetDParam(1, e->GetDisplayDefaultCapacity());
-	SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
+	SetDParam(2, refittable ? STR_REFITTABLE : STR_EMPTY);
 	DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
 	y += FONT_HEIGHT_NORMAL;
 
@@ -577,7 +577,7 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
 		 * callback, then the capacity shown is likely to be incorrect. */
 		SetDParam(0, cargo);
 		SetDParam(1, e->GetDisplayDefaultCapacity());
-		SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
+		SetDParam(2, refittable ? STR_REFITTABLE : STR_EMPTY);
 		DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
 	}
 	y += FONT_HEIGHT_NORMAL;
@@ -790,7 +790,7 @@ struct BuildVehicleWindow : Window {
 		 * This could also be useful for eyecandy vehicles of other types, but is likely too confusing for joe, */
 		if (type == VEH_TRAIN) {
 			this->cargo_filter[filter_items] = CF_NONE;
-			this->cargo_filter_texts[filter_items] = STR_01A9_NONE;
+			this->cargo_filter_texts[filter_items] = STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE;
 			filter_items++;
 		}
 
@@ -853,38 +853,38 @@ struct BuildVehicleWindow : Window {
 
 			case VEH_TRAIN:
 				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = this->listview_mode ? STR_AVAILABLE_TRAINS : STR_JUST_STRING;
-				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_8843_TRAIN_VEHICLE_SELECTION;
-				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_881F_BUILD_VEHICLE;
-				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_8820_RENAME;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_8845_RENAME_TRAIN_VEHICLE_TYPE;
+				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP;
+				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON;
+				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP;
 				break;
 
 			case VEH_ROAD:
-				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = this->listview_mode ? STR_AVAILABLE_ROAD_VEHICLES : STR_9006_NEW_ROAD_VEHICLES;
-				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_9026_ROAD_VEHICLE_SELECTION;
-				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_9007_BUILD_VEHICLE;
-				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_9027_BUILD_THE_HIGHLIGHTED_ROAD;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_9034_RENAME;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_9035_RENAME_ROAD_VEHICLE_TYPE;
+				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = this->listview_mode ? STR_AVAILABLE_ROAD_VEHICLES : STR_BUILD_VEHICLE_ROAD_CAPTION;
+				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP;
+				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON;
+				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP;
 				break;
 
 			case VEH_SHIP:
-				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = this->listview_mode ? STR_AVAILABLE_SHIPS : STR_9808_NEW_SHIPS;
-				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_9825_SHIP_SELECTION_LIST_CLICK;
-				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_9809_BUILD_SHIP;
-				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_9826_BUILD_THE_HIGHLIGHTED_SHIP;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_9836_RENAME;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_9837_RENAME_SHIP_TYPE;
+				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = this->listview_mode ? STR_AVAILABLE_SHIPS : STR_BUILD_VEHICLE_SHIP_CAPTION;
+				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP;
+				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON;
+				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP;
 				break;
 
 			case VEH_AIRCRAFT:
-				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = this->listview_mode ? STR_AVAILABLE_AIRCRAFT : STR_A005_NEW_AIRCRAFT;
-				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_A025_AIRCRAFT_SELECTION_LIST;
-				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_A006_BUILD_AIRCRAFT;
-				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_A037_RENAME;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_A038_RENAME_AIRCRAFT_TYPE;
+				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = this->listview_mode ? STR_AVAILABLE_AIRCRAFT : STR_BUILD_VEHICLE_AIRCRAFT_CAPTION;
+				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP;
+				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON;
+				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP;
 				break;
 		}
 	}
@@ -1085,17 +1085,17 @@ struct BuildVehicleWindow : Window {
 						default: NOT_REACHED();
 						case VEH_TRAIN:
 							DoCommandP(this->window_number, sel_eng, 0,
-									CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE),
+									CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE),
 									(RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) ? CcBuildWagon : CcBuildLoco);
 							break;
 						case VEH_ROAD:
-							DoCommandP(this->window_number, sel_eng, 0, CMD_BUILD_ROAD_VEH | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE), CcBuildRoadVeh);
+							DoCommandP(this->window_number, sel_eng, 0, CMD_BUILD_ROAD_VEH | CMD_MSG(STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE), CcBuildRoadVeh);
 							break;
 						case VEH_SHIP:
-							DoCommandP(this->window_number, sel_eng, 0, CMD_BUILD_SHIP | CMD_MSG(STR_980D_CAN_T_BUILD_SHIP), CcBuildShip);
+							DoCommandP(this->window_number, sel_eng, 0, CMD_BUILD_SHIP | CMD_MSG(STR_ERROR_CAN_T_BUILD_SHIP), CcBuildShip);
 							break;
 						case VEH_AIRCRAFT:
-							DoCommandP(this->window_number, sel_eng, 0, CMD_BUILD_AIRCRAFT | CMD_MSG(STR_A008_CAN_T_BUILD_AIRCRAFT), CcBuildAircraft);
+							DoCommandP(this->window_number, sel_eng, 0, CMD_BUILD_AIRCRAFT | CMD_MSG(STR_ERROR_CAN_T_BUILD_AIRCRAFT), CcBuildAircraft);
 							break;
 					}
 				}
@@ -1110,10 +1110,10 @@ struct BuildVehicleWindow : Window {
 					this->rename_engine = sel_eng;
 					switch (this->vehicle_type) {
 						default: NOT_REACHED();
-						case VEH_TRAIN:    str = STR_886A_RENAME_TRAIN_VEHICLE_TYPE; break;
-						case VEH_ROAD:     str = STR_9036_RENAME_ROAD_VEHICLE_TYPE;  break;
-						case VEH_SHIP:     str = STR_9838_RENAME_SHIP_TYPE;          break;
-						case VEH_AIRCRAFT: str = STR_A039_RENAME_AIRCRAFT_TYPE;      break;
+						case VEH_TRAIN:    str = STR_QUERY_RENAME_TRAIN_TYPE_CAPTION; break;
+						case VEH_ROAD:     str = STR_QUERY_RENAME_ROAD_TYPE_CAPTION;  break;
+						case VEH_SHIP:     str = STR_QUERY_RENAME_SHIP_TYPE_CAPTION;          break;
+						case VEH_AIRCRAFT: str = STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION;      break;
 					}
 					SetDParam(0, sel_eng);
 					ShowQueryString(STR_ENGINE_NAME, str, MAX_LENGTH_ENGINE_NAME_BYTES, MAX_LENGTH_ENGINE_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
@@ -1137,7 +1137,7 @@ struct BuildVehicleWindow : Window {
 		SetVScrollCount(this, this->eng_list.Length());
 		if (this->vehicle_type == VEH_TRAIN) {
 			if (this->filter.railtype == RAILTYPE_END) {
-				SetDParam(0, STR_ALL_AVAIL_RAIL_VEHICLES);
+				SetDParam(0, STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION);
 			} else {
 				const RailtypeInfo *rti = GetRailTypeInfo(this->filter.railtype);
 				SetDParam(0, rti->strings.build_caption);
@@ -1183,10 +1183,10 @@ struct BuildVehicleWindow : Window {
 		StringID err_str = STR_NULL;
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
-			case VEH_TRAIN:    err_str = STR_886B_CAN_T_RENAME_TRAIN_VEHICLE; break;
-			case VEH_ROAD:     err_str = STR_9037_CAN_T_RENAME_ROAD_VEHICLE;  break;
-			case VEH_SHIP:     err_str = STR_9839_CAN_T_RENAME_SHIP_TYPE;     break;
-			case VEH_AIRCRAFT: err_str = STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE; break;
+			case VEH_TRAIN:    err_str = STR_ERROR_CAN_T_RENAME_TRAIN_TYPE; break;
+			case VEH_ROAD:     err_str = STR_ERROR_CAN_T_RENAME_ROAD_TYPE;  break;
+			case VEH_SHIP:     err_str = STR_ERROR_CAN_T_RENAME_SHIP_TYPE;     break;
+			case VEH_AIRCRAFT: err_str = STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE; break;
 		}
 		DoCommandP(0, this->rename_engine, 0, CMD_RENAME_ENGINE | CMD_MSG(err_str), NULL, str);
 	}

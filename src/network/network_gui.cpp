@@ -789,7 +789,7 @@ GUIGameServerList::SortFunction * const NetworkGameWindow::sorter_funcs[] = {
 
 static const Widget _network_game_window_widgets[] = {
 /* TOP */
-{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},            // NGWW_CLOSE
+{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_BLACK_CROSS,                  STR_TOOLTIP_CLOSE_WINDOW},         // NGWW_CLOSE
 {    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_LIGHT_BLUE,    11,   449,     0,    13, STR_NETWORK_MULTIPLAYER,          STR_NULL},                         // NGWW_CAPTION
 {      WWT_PANEL,   RESIZE_RB,     COLOUR_LIGHT_BLUE,     0,   449,    14,   263, 0x0,                              STR_NULL},                         // NGWW_MAIN
 
@@ -807,7 +807,7 @@ static const Widget _network_game_window_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_WHITE,        151,   190,    42,    53, STR_EMPTY,                        STR_NETWORK_INFO_ICONS_TIP},       // NGWW_INFO
 
 {     WWT_MATRIX,   RESIZE_RB,     COLOUR_LIGHT_BLUE,    10,   190,    54,   208, (11 << 8) + 1,                    STR_NETWORK_CLICK_GAME_TO_SELECT}, // NGWW_MATRIX
-{  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_LIGHT_BLUE,   191,   202,    42,   208, 0x0,                              STR_0190_SCROLL_BAR_SCROLLS_LIST}, // NGWW_SCROLLBAR
+{  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_LIGHT_BLUE,   191,   202,    42,   208, 0x0,                              STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // NGWW_SCROLLBAR
 {       WWT_TEXT,   RESIZE_RTB,    COLOUR_LIGHT_BLUE,    10,   190,   211,   222, STR_NETWORK_LAST_JOINED_SERVER,   STR_NULL},                         // NGWW_LASTJOINED_LABEL
 {      WWT_PANEL,   RESIZE_RTB,    COLOUR_LIGHT_BLUE,    10,   190,   223,   236, 0x0,                              STR_NETWORK_CLICK_TO_SELECT_LAST}, // NGWW_LASTJOINED
 
@@ -823,7 +823,7 @@ static const Widget _network_game_window_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,         10,   110,   246,   257, STR_NETWORK_FIND_SERVER,          STR_NETWORK_FIND_SERVER_TIP},      // NGWW_FIND
 { WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,        118,   218,   246,   257, STR_NETWORK_ADD_SERVER,           STR_NETWORK_ADD_SERVER_TIP},       // NGWW_ADD
 { WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,        226,   326,   246,   257, STR_NETWORK_START_SERVER,         STR_NETWORK_START_SERVER_TIP},     // NGWW_START
-{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,        334,   434,   246,   257, STR_012E_CANCEL,                  STR_NULL},                         // NGWW_CANCEL
+{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,        334,   434,   246,   257, STR_QUERY_CANCEL,                 STR_NULL},                         // NGWW_CANCEL
 
 {  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_LIGHT_BLUE,   438,   449,   252,   263, 0x0,                              STR_RESIZE_BUTTON },               // NGWW_RESIZE
 
@@ -925,7 +925,7 @@ NWidgetPart _nested_network_game_widgets[] = {
 					NWidget(NWID_SPACER), SetMinimalSize(7, 0),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_START), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_START_SERVER, STR_NETWORK_START_SERVER_TIP),
 					NWidget(NWID_SPACER), SetMinimalSize(7, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_CANCEL), SetMinimalSize(101, 12), SetDataTip(STR_012E_CANCEL, STR_NULL),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_CANCEL), SetMinimalSize(101, 12), SetDataTip(STR_QUERY_CANCEL, STR_NULL),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0,6),
 			EndContainer(),
@@ -1041,7 +1041,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			}
 
 			if (pos == 0) {
-				DrawString(this->widget[NSSW_SELMAP].left + 4, this->widget[NSSW_SELMAP].right - 4, y, STR_4010_GENERATE_RANDOM_NEW_GAME, TC_DARK_GREEN);
+				DrawString(this->widget[NSSW_SELMAP].left + 4, this->widget[NSSW_SELMAP].right - 4, y, STR_NETWORK_SERVER_RANDOM_GAME, TC_DARK_GREEN);
 			} else {
 				DrawString(this->widget[NSSW_SELMAP].left + 4, this->widget[NSSW_SELMAP].right - 4, y, item->title, _fios_colours[item->type] );
 			}
@@ -1217,7 +1217,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 
 static const Widget _network_start_server_window_widgets[] = {
 /* Window decoration and background panel */
-{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_00C5,                           STR_018B_CLOSE_WINDOW },               // NSSW_CLOSE
+{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_BLACK_CROSS,                    STR_TOOLTIP_CLOSE_WINDOW },               // NSSW_CLOSE
 {    WWT_CAPTION,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    11,   419,     0,    13, STR_NETWORK_START_GAME_WINDOW,      STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,   419,    14,   243, 0x0,                                STR_NULL},
 
@@ -1229,7 +1229,7 @@ static const Widget _network_start_server_window_widgets[] = {
 /* List of playable scenarios */
 {       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   110,    43,    55, STR_NETWORK_SELECT_MAP,             STR_NULL},
 {      WWT_INSET,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   271,    62,   216, STR_NULL,                           STR_NETWORK_SELECT_MAP_TIP},           // NSSW_SELMAP
-{  WWT_SCROLLBAR,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   259,   270,    63,   215, 0x0,                                STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_SCROLLBAR,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   259,   270,    63,   215, 0x0,                                STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},
 
 /* Combo/selection boxes to control Connection Type / Max Clients / Max Companies / Max Observers / Language */
 {       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    63,    75, STR_NETWORK_CONNECTION,             STR_NULL},
@@ -1256,7 +1256,7 @@ static const Widget _network_start_server_window_widgets[] = {
 /* Buttons Start / Load / Cancel */
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         40,   140,   224,   235, STR_NETWORK_START_GAME,             STR_NETWORK_START_GAME_TIP},           // NSSW_START
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        150,   250,   224,   235, STR_NETWORK_LOAD_GAME,              STR_NETWORK_LOAD_GAME_TIP},            // NSSW_LOAD
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        260,   360,   224,   235, STR_012E_CANCEL,                    STR_NULL},                             // NSSW_CANCEL
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        260,   360,   224,   235, STR_QUERY_CANCEL,                   STR_NULL},                             // NSSW_CANCEL
 
 {   WIDGETS_END},
 };
@@ -1463,7 +1463,7 @@ struct NetworkLobbyWindow : public Window {
 };
 
 static const Widget _network_lobby_window_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_00C5,                    STR_018B_CLOSE_WINDOW },           // NLWW_CLOSE
+{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_BLACK_CROSS,             STR_TOOLTIP_CLOSE_WINDOW },        // NLWW_CLOSE
 {    WWT_CAPTION,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    11,   419,     0,    13, STR_NETWORK_GAME_LOBBY,      STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,   419,    14,   234, 0x0,                         STR_NULL},
 {       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   419,    22,    34, STR_NETWORK_PREPARE_TO_JOIN, STR_NULL},
@@ -1471,7 +1471,7 @@ static const Widget _network_lobby_window_widgets[] = {
 /* company list */
 {      WWT_PANEL,   RESIZE_NONE,   COLOUR_WHITE,         10,   155,    38,    49, 0x0,                         STR_NULL},
 {     WWT_MATRIX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   155,    50,   190, (10 << 8) + 1,               STR_NETWORK_COMPANY_LIST_TIP},     // NLWW_MATRIX
-{  WWT_SCROLLBAR,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   156,   167,    38,   190, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_SCROLLBAR,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   156,   167,    38,   190, 0x0,                         STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},
 
 /* company info */
 {      WWT_PANEL,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   173,   404,    38,   190, 0x0,                         STR_NULL},                         // NLWW_DETAILS
@@ -1481,7 +1481,7 @@ static const Widget _network_lobby_window_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         10,   151,   215,   226, STR_NETWORK_NEW_COMPANY,     STR_NETWORK_NEW_COMPANY_TIP},      // NLWW_NEW
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        158,   268,   200,   211, STR_NETWORK_SPECTATE_GAME,   STR_NETWORK_SPECTATE_GAME_TIP},    // NLWW_SPECTATE
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        158,   268,   215,   226, STR_NETWORK_REFRESH,         STR_NETWORK_REFRESH_TIP},          // NLWW_REFRESH
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        278,   388,   200,   211, STR_012E_CANCEL,             STR_NULL},                         // NLWW_CANCEL
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        278,   388,   200,   211, STR_QUERY_CANCEL,            STR_NULL},                         // NLWW_CANCEL
 
 {   WIDGETS_END},
 };
@@ -1534,8 +1534,8 @@ enum {
 };
 
 static const Widget _client_list_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   237,     0,    13, STR_NETWORK_CLIENT_LIST,  STR_018C_WINDOW_TITLE_DRAG_THIS},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,          STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   237,     0,    13, STR_NETWORK_CLIENT_LIST,  STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   238,   249,     0,    13, STR_NULL,                 STR_STICKY_BUTTON},
 
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   249,    14,    14 + CLNWND_ROWSIZE + 1, 0x0, STR_NULL},
@@ -1973,7 +1973,7 @@ struct NetworkJoinStatusWindow : Window {
 };
 
 static const Widget _network_join_status_window_widget[] = {
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,      0,   249,     0,    13, STR_NETWORK_CONNECTING, STR_018C_WINDOW_TITLE_DRAG_THIS}, // NSJW_CAPTION
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,      0,   249,     0,    13, STR_NETWORK_CONNECTING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // NSJW_CAPTION
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,      0,   249,    14,    84, 0x0,                    STR_NULL},                        // NJSW_BACKGROUND
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_WHITE,    75,   175,    69,    80, STR_NETWORK_DISCONNECT, STR_NULL},                        // NJSW_CANCELOK
 {   WIDGETS_END},
@@ -2081,14 +2081,14 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 };
 
 static const Widget _ncp_window_widgets[] = {
-{   WWT_CLOSEBOX,  RESIZE_NONE,  COLOUR_GREY,   0,  10,  0, 13, STR_00C5,                          STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_NONE,  COLOUR_GREY,  11, 299,  0, 13, STR_COMPANY_PASSWORD_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},
+{   WWT_CLOSEBOX,  RESIZE_NONE,  COLOUR_GREY,   0,  10,  0, 13, STR_BLACK_CROSS,                   STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_NONE,  COLOUR_GREY,  11, 299,  0, 13, STR_COMPANY_PASSWORD_CAPTION,      STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
 {      WWT_PANEL,  RESIZE_NONE,  COLOUR_GREY,   0, 299, 14, 50, 0x0,                               STR_NULL},
 {       WWT_TEXT,  RESIZE_NONE,  COLOUR_GREY,   5, 100, 19, 30, STR_COMPANY_PASSWORD,              STR_NULL},
 {    WWT_EDITBOX,  RESIZE_NONE,  COLOUR_GREY, 101, 294, 19, 30, STR_SET_COMPANY_PASSWORD,          STR_NULL},
 {    WWT_TEXTBTN,  RESIZE_NONE,  COLOUR_GREY, 101, 294, 35, 46, STR_MAKE_DEFAULT_COMPANY_PASSWORD, STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP},
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_GREY,   0, 149, 51, 62, STR_012E_CANCEL,                   STR_COMPANY_PASSWORD_CANCEL},
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_GREY, 150, 299, 51, 62, STR_012F_OK,                       STR_COMPANY_PASSWORD_OK},
+{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_GREY,   0, 149, 51, 62, STR_QUERY_CANCEL,                  STR_COMPANY_PASSWORD_CANCEL},
+{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_GREY, 150, 299, 51, 62, STR_QUERY_OK,                      STR_COMPANY_PASSWORD_OK},
 {   WIDGETS_END},
 };
 

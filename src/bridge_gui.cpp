@@ -101,7 +101,7 @@ private:
 			default: break;
 		}
 		DoCommandP(this->end_tile, this->start_tile, this->type | this->bridges->Get(i)->index,
-					CMD_BUILD_BRIDGE | CMD_MSG(STR_5015_CAN_T_BUILD_BRIDGE_HERE), CcBuildBridge);
+					CMD_BUILD_BRIDGE | CMD_MSG(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE), CcBuildBridge);
 	}
 
 	/** Sort the builable bridges */
@@ -131,7 +131,7 @@ public:
 		this->SortBridgeList();
 
 		/* Change the data, or the caption of the gui. Set it to road or rail, accordingly */
-		this->widget[BBSW_CAPTION].data = (GB(this->type, 15, 2) == TRANSPORT_ROAD) ? STR_1803_SELECT_ROAD_BRIDGE : STR_100D_SELECT_RAIL_BRIDGE;
+		this->widget[BBSW_CAPTION].data = (GB(this->type, 15, 2) == TRANSPORT_ROAD) ? STR_SELECT_ROAD_BRIDGE_CAPTION : STR_SELECT_RAIL_BRIDGE_CAPTION;
 
 		this->resize.step_height = 22;
 		this->vscroll.count = bl->Length();
@@ -170,7 +170,7 @@ public:
 			SetDParam(0, b->material);
 
 			DrawSprite(b->sprite, b->pal, 3, y);
-			DrawStringMultiLine(44, this->widget[BBSW_BRIDGE_LIST].right, y, y + this->resize.step_height, STR_500D);
+			DrawStringMultiLine(44, this->widget[BBSW_BRIDGE_LIST].right, y, y + this->resize.step_height, STR_BUILD_BRIDGE_INFO);
 			y += this->resize.step_height;
 
 		}
@@ -255,15 +255,15 @@ const StringID BuildBridgeWindow::sorter_names[] = {
 
 /* Widget definition for the rail bridge selection window */
 static const Widget _build_bridge_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,  10,   0,  13, STR_00C5,                    STR_018B_CLOSE_WINDOW},            // BBSW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11, 199,   0,  13, STR_100D_SELECT_RAIL_BRIDGE, STR_018C_WINDOW_TITLE_DRAG_THIS},  // BBSW_CAPTION
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,  10,   0,  13, STR_BLACK_CROSS,                STR_TOOLTIP_CLOSE_WINDOW},             // BBSW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11, 199,   0,  13, STR_SELECT_RAIL_BRIDGE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // BBSW_CAPTION
 
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,  80,  14,  25, STR_SORT_BY,                 STR_SORT_ORDER_TIP},               // BBSW_DROPDOWN_ORDER
-{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_DARK_GREEN,  81, 199,  14,  25, 0x0,                         STR_SORT_CRITERIA_TIP},            // BBSW_DROPDOWN_CRITERIA
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,  80,  14,  25, STR_SORT_BY,                    STR_SORT_ORDER_TIP},                   // BBSW_DROPDOWN_ORDER
+{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_DARK_GREEN,  81, 199,  14,  25, 0x0,                            STR_SORT_CRITERIA_TIP},                // BBSW_DROPDOWN_CRITERIA
 
-{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_DARK_GREEN,   0, 187,  26, 113, 0x401,                       STR_101F_BRIDGE_SELECTION_CLICK},  // BBSW_BRIDGE_LIST
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_DARK_GREEN, 188, 199,  26, 101, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST}, // BBSW_SCROLLBAR
-{  WWT_RESIZEBOX,     RESIZE_TB,  COLOUR_DARK_GREEN, 188, 199, 102, 113, 0x0,                         STR_RESIZE_BUTTON},                // BBSW_RESIZEBOX
+{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_DARK_GREEN,   0, 187,  26, 113, 0x401,                          STR_BUILD_BRIDGE_SELECTION_TOOLTIP},   // BBSW_BRIDGE_LIST
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_DARK_GREEN, 188, 199,  26, 101, 0x0,                            STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // BBSW_SCROLLBAR
+{  WWT_RESIZEBOX,     RESIZE_TB,  COLOUR_DARK_GREEN, 188, 199, 102, 113, 0x0,                            STR_RESIZE_BUTTON},                    // BBSW_RESIZEBOX
 {   WIDGETS_END},
 };
 
@@ -271,7 +271,7 @@ static const NWidgetPart _nested_build_bridge_widgets[] = {
 	/* Header */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BBSW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BBSW_CAPTION), SetFill(1, 0), SetDataTip(STR_100D_SELECT_RAIL_BRIDGE, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BBSW_CAPTION), SetFill(1, 0), SetDataTip(STR_SELECT_RAIL_BRIDGE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	/* Sort order + criteria buttons */
 	NWidget(NWID_HORIZONTAL),
@@ -280,7 +280,7 @@ static const NWidgetPart _nested_build_bridge_widgets[] = {
 	EndContainer(),
 	/* Matrix + scrollbar */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, BBSW_BRIDGE_LIST), SetMinimalSize(188, 88), SetResize(0, 1), SetDataTip(0x401, STR_101F_BRIDGE_SELECTION_CLICK),
+		NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, BBSW_BRIDGE_LIST), SetMinimalSize(188, 88), SetResize(0, 1), SetDataTip(0x401, STR_BUILD_BRIDGE_SELECTION_TOOLTIP),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_DARK_GREEN, BBSW_SCROLLBAR), SetFill(0, 1),
 			NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN, BBSW_RESIZEBOX),
@@ -331,7 +331,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 		default: break; // water ways and air routes don't have bridge types
 	}
 	if (_ctrl_pressed && CheckBridge_Stuff(last_bridge_type, bridge_len)) {
-		DoCommandP(end, start, type | last_bridge_type, CMD_BUILD_BRIDGE | CMD_MSG(STR_5015_CAN_T_BUILD_BRIDGE_HERE), CcBuildBridge);
+		DoCommandP(end, start, type | last_bridge_type, CMD_BUILD_BRIDGE | CMD_MSG(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE), CcBuildBridge);
 		return;
 	}
 
@@ -367,6 +367,6 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 		new BuildBridgeWindow(&_build_bridge_desc, start, end, type, bl);
 	} else {
 		if (bl != NULL) delete bl;
-		ShowErrorMessage(errmsg, STR_5015_CAN_T_BUILD_BRIDGE_HERE, TileX(end) * TILE_SIZE, TileY(end) * TILE_SIZE);
+		ShowErrorMessage(errmsg, STR_ERROR_CAN_T_BUILD_BRIDGE_HERE, TileX(end) * TILE_SIZE, TileY(end) * TILE_SIZE);
 	}
 }

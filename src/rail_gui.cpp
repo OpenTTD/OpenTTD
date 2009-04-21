@@ -68,8 +68,8 @@ static void GenericPlaceRail(TileIndex tile, int cmd)
 {
 	DoCommandP(tile, _cur_railtype, cmd,
 		_remove_button_clicked ?
-		CMD_REMOVE_SINGLE_RAIL | CMD_MSG(STR_1012_CAN_T_REMOVE_RAILROAD_TRACK) :
-		CMD_BUILD_SINGLE_RAIL | CMD_MSG(STR_1011_CAN_T_BUILD_RAILROAD_TRACK),
+		CMD_REMOVE_SINGLE_RAIL | CMD_MSG(STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK) :
+		CMD_BUILD_SINGLE_RAIL | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK),
 		CcPlaySound1E
 	);
 }
@@ -142,7 +142,7 @@ void CcRailDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 static void PlaceRail_Depot(TileIndex tile)
 {
 	DoCommandP(tile, _cur_railtype, _build_depot_direction,
-		CMD_BUILD_TRAIN_DEPOT | CMD_MSG(STR_100E_CAN_T_BUILD_TRAIN_DEPOT),
+		CMD_BUILD_TRAIN_DEPOT | CMD_MSG(STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT),
 		CcRailDepot);
 }
 
@@ -180,7 +180,7 @@ static void PlaceRail_Station(TileIndex tile)
 		int h = _settings_client.gui.station_platlength;
 		if (!_railstation.orientation) Swap(w, h);
 
-		CommandContainer cmdcont = { tile, p1, p2, CMD_BUILD_RAILROAD_STATION | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION), CcStation, "" };
+		CommandContainer cmdcont = { tile, p1, p2, CMD_BUILD_RAILROAD_STATION | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION), CcStation, "" };
 		ShowSelectStationIfNeeded(cmdcont, w, h);
 	}
 }
@@ -205,7 +205,7 @@ static void GenericPlaceSignals(TileIndex tile)
 	Track track = FindFirstTrack(trackbits);
 
 	if (_remove_button_clicked) {
-		DoCommandP(tile, track, 0, CMD_REMOVE_SIGNALS | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM), CcPlaySound1E);
+		DoCommandP(tile, track, 0, CMD_REMOVE_SIGNALS | CMD_MSG(STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM), CcPlaySound1E);
 	} else {
 		const Window *w = FindWindowById(WC_BUILD_SIGNAL, 0);
 
@@ -231,7 +231,7 @@ static void GenericPlaceSignals(TileIndex tile)
 		}
 
 		DoCommandP(tile, p1, 0, CMD_BUILD_SIGNALS |
-			CMD_MSG((w != NULL && _convert_signal_button) ? STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE : STR_1010_CAN_T_BUILD_SIGNALS_HERE),
+			CMD_MSG((w != NULL && _convert_signal_button) ? STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE : STR_ERROR_CAN_T_BUILD_SIGNALS_HERE),
 			CcPlaySound1E);
 	}
 }
@@ -254,7 +254,7 @@ void CcBuildRailTunnel(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceRail_Tunnel(TileIndex tile)
 {
-	DoCommandP(tile, _cur_railtype, 0, CMD_BUILD_TUNNEL | CMD_MSG(STR_5016_CAN_T_BUILD_TUNNEL_HERE), CcBuildRailTunnel);
+	DoCommandP(tile, _cur_railtype, 0, CMD_BUILD_TUNNEL | CMD_MSG(STR_ERROR_CAN_T_BUILD_TUNNEL_HERE), CcBuildRailTunnel);
 }
 
 static void PlaceRail_ConvertRail(TileIndex tile)
@@ -505,8 +505,8 @@ static void DoRailroadTrack(int mode)
 {
 	DoCommandP(TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), _cur_railtype | (mode << 4),
 		_remove_button_clicked ?
-		CMD_REMOVE_RAILROAD_TRACK | CMD_MSG(STR_1012_CAN_T_REMOVE_RAILROAD_TRACK) :
-		CMD_BUILD_RAILROAD_TRACK  | CMD_MSG(STR_1011_CAN_T_BUILD_RAILROAD_TRACK)
+		CMD_REMOVE_RAILROAD_TRACK | CMD_MSG(STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK) :
+		CMD_BUILD_RAILROAD_TRACK  | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK)
 	);
 }
 
@@ -563,8 +563,8 @@ static void HandleAutoSignalPlacement()
 		TileVirtXY(thd->selend.x, thd->selend.y),
 		p2,
 		_remove_button_clicked ?
-			CMD_REMOVE_SIGNAL_TRACK | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM) :
-			CMD_BUILD_SIGNAL_TRACK  | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE),
+			CMD_REMOVE_SIGNAL_TRACK | CMD_MSG(STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM) :
+			CMD_BUILD_SIGNAL_TRACK  | CMD_MSG(STR_ERROR_CAN_T_BUILD_SIGNALS_HERE),
 		CcPlaySound1E);
 }
 
@@ -759,28 +759,28 @@ struct BuildRailToolbarWindow : Window {
 
 /** Widget definition for the rail toolbar */
 static const Widget _build_rail_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},                   // RTW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   337,     0,    13, STR_100A_RAILROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},         // RTW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   338,   349,     0,    13, 0x0,                            STR_STICKY_BUTTON},                       // RTW_STICKY
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_BLACK_CROSS,                STR_TOOLTIP_CLOSE_WINDOW},                      // RTW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   337,     0,    13, STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // RTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   338,   349,     0,    13, 0x0,                            STR_STICKY_BUTTON},                             // RTW_STICKY
 
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   110,   113,    14,    35, 0x0,                            STR_NULL},                                // RTW_SPACER
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   110,   113,    14,    35, 0x0,                            STR_NULL},                                      // RTW_SPACER
 
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    21,    14,    35, SPR_IMG_RAIL_NS,                STR_1018_BUILD_RAILROAD_TRACK},           // RTW_BUILD_NS
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    22,    43,    14,    35, SPR_IMG_RAIL_NE,                STR_1018_BUILD_RAILROAD_TRACK},           // RTW_BUILD_X
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    44,    65,    14,    35, SPR_IMG_RAIL_EW,                STR_1018_BUILD_RAILROAD_TRACK},           // RTW_BUILD_EW
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    66,    87,    14,    35, SPR_IMG_RAIL_NW,                STR_1018_BUILD_RAILROAD_TRACK},           // RTW_BUILD_Y
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    88,   109,    14,    35, SPR_IMG_AUTORAIL,               STR_BUILD_AUTORAIL_TIP},                  // RTW_AUTORAIL
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    21,    14,    35, SPR_IMG_RAIL_NS,                STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK}, // RTW_BUILD_NS
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    22,    43,    14,    35, SPR_IMG_RAIL_NE,                STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK}, // RTW_BUILD_X
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    44,    65,    14,    35, SPR_IMG_RAIL_EW,                STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK}, // RTW_BUILD_EW
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    66,    87,    14,    35, SPR_IMG_RAIL_NW,                STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK}, // RTW_BUILD_Y
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    88,   109,    14,    35, SPR_IMG_AUTORAIL,               STR_BUILD_AUTORAIL_TIP},                        // RTW_AUTORAIL
 
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   114,   135,    14,    35, SPR_IMG_DYNAMITE,               STR_018D_DEMOLISH_BUILDINGS_ETC},         // RTW_DEMOLISH
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   136,   157,    14,    35, SPR_IMG_DEPOT_RAIL,             STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING}, // RTW_BUILD_DEPOT
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   158,   179,    14,    35, SPR_IMG_WAYPOINT,               STR_CONVERT_RAIL_TO_WAYPOINT_TIP},        // RTW_BUILD_WAYPOINT
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   114,   135,    14,    35, SPR_IMG_DYNAMITE,               STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC},            // RTW_DEMOLISH
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   136,   157,    14,    35, SPR_IMG_DEPOT_RAIL,             STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING}, // RTW_BUILD_DEPOT
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   158,   179,    14,    35, SPR_IMG_WAYPOINT,               STR_CONVERT_RAIL_TO_WAYPOINT_TIP},              // RTW_BUILD_WAYPOINT
 
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   180,   221,    14,    35, SPR_IMG_RAIL_STATION,           STR_101A_BUILD_RAILROAD_STATION},         // RTW_BUILD_STATION
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   222,   243,    14,    35, SPR_IMG_RAIL_SIGNALS,           STR_101B_BUILD_RAILROAD_SIGNALS},         // RTW_BUILD_SIGNALS
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   244,   285,    14,    35, SPR_IMG_BRIDGE,                 STR_101C_BUILD_RAILROAD_BRIDGE},          // RTW_BUILD_BRIDGE
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   286,   305,    14,    35, SPR_IMG_TUNNEL_RAIL,            STR_101D_BUILD_RAILROAD_TUNNEL},          // RTW_BUILD_TUNNEL
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   306,   327,    14,    35, SPR_IMG_REMOVE,                 STR_101E_TOGGLE_BUILD_REMOVE_FOR},        // RTW_REMOVE
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   328,   349,    14,    35, SPR_IMG_CONVERT_RAIL,           STR_CONVERT_RAIL_TIP},                    // RTW_CONVERT_RAIL
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   180,   221,    14,    35, SPR_IMG_RAIL_STATION,           STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION},  // RTW_BUILD_STATION
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   222,   243,    14,    35, SPR_IMG_RAIL_SIGNALS,           STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS},  // RTW_BUILD_SIGNALS
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   244,   285,    14,    35, SPR_IMG_BRIDGE,                 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE},   // RTW_BUILD_BRIDGE
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   286,   305,    14,    35, SPR_IMG_TUNNEL_RAIL,            STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL},   // RTW_BUILD_TUNNEL
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   306,   327,    14,    35, SPR_IMG_REMOVE,                 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR}, // RTW_REMOVE
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   328,   349,    14,    35, SPR_IMG_CONVERT_RAIL,           STR_CONVERT_RAIL_TIP},                             // RTW_CONVERT_RAIL
 
 {   WIDGETS_END},
 };
@@ -869,7 +869,7 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 	uint32 p1 = _cur_railtype | _railstation.orientation << 4 | _ctrl_pressed << 24;
 	uint32 p2 = _railstation.station_class | _railstation.station_type << 8 | INVALID_STATION << 16;
 
-	CommandContainer cmdcont = { TileXY(sx, sy), p1 | numtracks << 8 | platlength << 16, p2, CMD_BUILD_RAILROAD_STATION | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION), CcStation, "" };
+	CommandContainer cmdcont = { TileXY(sx, sy), p1 | numtracks << 8 | platlength << 16, p2, CMD_BUILD_RAILROAD_STATION | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION), CcStation, "" };
 	ShowSelectStationIfNeeded(cmdcont, w, h);
 }
 
@@ -1047,10 +1047,10 @@ public:
 			_cur_dpi = old_dpi;
 		}
 
-		DrawString(this->widget[BRSW_PLATFORM_LEN_1].left, this->widget[BRSW_PLATFORM_LEN_7].right, 15 + y_offset, STR_3002_ORIENTATION, TC_FROMSTRING, SA_CENTER);
-		DrawString(this->widget[BRSW_PLATFORM_LEN_1].left, this->widget[BRSW_PLATFORM_LEN_7].right, 76 + y_offset, STR_3003_NUMBER_OF_TRACKS, TC_FROMSTRING, SA_CENTER);
-		DrawString(this->widget[BRSW_PLATFORM_LEN_1].left, this->widget[BRSW_PLATFORM_LEN_7].right, 101 + y_offset, STR_3004_PLATFORM_LENGTH, TC_FROMSTRING, SA_CENTER);
-		DrawString(this->widget[BRSW_PLATFORM_LEN_1].left, this->widget[BRSW_PLATFORM_LEN_7].right, 141 + y_offset, STR_3066_COVERAGE_AREA_HIGHLIGHT, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->widget[BRSW_PLATFORM_LEN_1].left, this->widget[BRSW_PLATFORM_LEN_7].right, 15 + y_offset, STR_STATION_BUILD_ORIENTATION, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->widget[BRSW_PLATFORM_LEN_1].left, this->widget[BRSW_PLATFORM_LEN_7].right, 76 + y_offset, STR_STATION_BUILD_NUMBER_OF_TRACKS, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->widget[BRSW_PLATFORM_LEN_1].left, this->widget[BRSW_PLATFORM_LEN_7].right, 101 + y_offset, STR_STATION_BUILD_PLATFORM_LENGTH, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->widget[BRSW_PLATFORM_LEN_1].left, this->widget[BRSW_PLATFORM_LEN_7].right, 141 + y_offset, STR_STATION_BUILD_COVERAGE_AREA_TITLE, TC_FROMSTRING, SA_CENTER);
 
 		int text_end = DrawStationCoverageAreaText(2, 166 + y_offset, SCT_ALL, rad, false);
 		text_end = DrawStationCoverageAreaText(2, text_end + 4, SCT_ALL, rad, true) + 4;
@@ -1263,66 +1263,66 @@ public:
 
 /** Widget definition of the standard build rail station window */
 static const Widget _station_builder_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},               // BRSW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11,   147,     0,    13, STR_3000_RAIL_STATION_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},     // BRSW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,   147,    14,   199, 0x0,                             STR_NULL},                            // BRSW_BACKGROUND
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         7,    72,    26,    73, 0x0,                             STR_304E_SELECT_RAILROAD_STATION},    // BRSW_PLATFORM_DIR_X
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        75,   140,    26,    73, 0x0,                             STR_304E_SELECT_RAILROAD_STATION},    // BRSW_PLATFORM_DIR_Y
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,    10,     0,    13, STR_BLACK_CROSS,                STR_TOOLTIP_CLOSE_WINDOW},                  // BRSW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11,   147,     0,    13, STR_STATION_BUILD_RAIL_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},        // BRSW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,   147,    14,   199, 0x0,                            STR_NULL},                                  // BRSW_BACKGROUND
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         7,    72,    26,    73, 0x0,                            STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP}, // BRSW_PLATFORM_DIR_X
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        75,   140,    26,    73, 0x0,                            STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP}, // BRSW_PLATFORM_DIR_Y
 
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        22,    36,    87,    98, STR_00CB_1,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS}, // BRSW_PLATFORM_NUM_1
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        37,    51,    87,    98, STR_00CC_2,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS}, // BRSW_PLATFORM_NUM_2
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        52,    66,    87,    98, STR_00CD_3,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS}, // BRSW_PLATFORM_NUM_3
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        67,    81,    87,    98, STR_00CE_4,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS}, // BRSW_PLATFORM_NUM_4
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        82,    96,    87,    98, STR_00CF_5,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS}, // BRSW_PLATFORM_NUM_5
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        97,   111,    87,    98, STR_6,                           STR_304F_SELECT_NUMBER_OF_PLATFORMS}, // BRSW_PLATFORM_NUM_6
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,       112,   126,    87,    98, STR_7,                           STR_304F_SELECT_NUMBER_OF_PLATFORMS}, // BRSW_PLATFORM_NUM_7
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        22,    36,    87,    98, STR_BLACK_1,                    STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP}, // BRSW_PLATFORM_NUM_1
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        37,    51,    87,    98, STR_BLACK_2,                    STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP}, // BRSW_PLATFORM_NUM_2
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        52,    66,    87,    98, STR_BLACK_3,                    STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP}, // BRSW_PLATFORM_NUM_3
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        67,    81,    87,    98, STR_BLACK_4,                    STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP}, // BRSW_PLATFORM_NUM_4
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        82,    96,    87,    98, STR_BLACK_5,                    STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP}, // BRSW_PLATFORM_NUM_5
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        97,   111,    87,    98, STR_6,                          STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP}, // BRSW_PLATFORM_NUM_6
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,       112,   126,    87,    98, STR_7,                          STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP}, // BRSW_PLATFORM_NUM_7
 
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        22,    36,   112,   123, STR_00CB_1,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},  // BRSW_PLATFORM_LEN_1
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        37,    51,   112,   123, STR_00CC_2,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},  // BRSW_PLATFORM_LEN_2
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        52,    66,   112,   123, STR_00CD_3,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},  // BRSW_PLATFORM_LEN_3
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        67,    81,   112,   123, STR_00CE_4,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},  // BRSW_PLATFORM_LEN_4
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        82,    96,   112,   123, STR_00CF_5,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},  // BRSW_PLATFORM_LEN_5
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        97,   111,   112,   123, STR_6,                           STR_3050_SELECT_LENGTH_OF_RAILROAD},  // BRSW_PLATFORM_LEN_6
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,       112,   126,   112,   123, STR_7,                           STR_3050_SELECT_LENGTH_OF_RAILROAD},  // BRSW_PLATFORM_LEN_7
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        22,    36,   112,   123, STR_BLACK_1,                    STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP},  // BRSW_PLATFORM_LEN_1
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        37,    51,   112,   123, STR_BLACK_2,                    STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP},  // BRSW_PLATFORM_LEN_2
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        52,    66,   112,   123, STR_BLACK_3,                    STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP},  // BRSW_PLATFORM_LEN_3
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        67,    81,   112,   123, STR_BLACK_4,                    STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP},  // BRSW_PLATFORM_LEN_4
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        82,    96,   112,   123, STR_BLACK_5,                    STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP},  // BRSW_PLATFORM_LEN_5
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        97,   111,   112,   123, STR_6,                          STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP},  // BRSW_PLATFORM_LEN_6
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,       112,   126,   112,   123, STR_7,                          STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP},  // BRSW_PLATFORM_LEN_7
 
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        37,   111,   126,   137, STR_DRAG_DROP,                   STR_STATION_DRAG_DROP},               // BRSW_PLATFORM_DRAG_N_DROP
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        14,    73,   152,   163, STR_02DB_OFF,                    STR_3065_DON_T_HIGHLIGHT_COVERAGE},   // BRSW_HIGHLIGHT_OFF
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        74,   133,   152,   163, STR_02DA_ON,                     STR_3064_HIGHLIGHT_COVERAGE_AREA},    // BRSW_HIGHLIGHT_ON
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        37,   111,   126,   137, STR_DRAG_DROP,                  STR_STATION_DRAG_DROP},                      // BRSW_PLATFORM_DRAG_N_DROP
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        14,    73,   152,   163, STR_STATION_BUILD_COVERAGE_OFF, STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP},// BRSW_HIGHLIGHT_OFF
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        74,   133,   152,   163, STR_STATION_BUILD_COVERAGE_ON,  STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP}, // BRSW_HIGHLIGHT_ON
 {   WIDGETS_END},
 };
 
 /** Widget definition of the build NewGRF rail station window */
 static const Widget _newstation_builder_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},               // BRSW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11,   147,     0,    13, STR_3000_RAIL_STATION_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},     // BRSW_CAPTION
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,    10,     0,    13, STR_BLACK_CROSS,                 STR_TOOLTIP_CLOSE_WINDOW},               // BRSW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11,   147,     0,    13, STR_STATION_BUILD_RAIL_CAPTION,  STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},     // BRSW_CAPTION
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,   147,    14,   289, 0x0,                             STR_NULL},                            // BRSW_BACKGROUND
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         7,    72,   116,   163, 0x0,                             STR_304E_SELECT_RAILROAD_STATION},    // BRSW_PLATFORM_DIR_X
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        75,   140,   116,   163, 0x0,                             STR_304E_SELECT_RAILROAD_STATION},    // BRSW_PLATFORM_DIR_Y
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         7,    72,   116,   163, 0x0,                             STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP},    // BRSW_PLATFORM_DIR_X
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        75,   140,   116,   163, 0x0,                             STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP},    // BRSW_PLATFORM_DIR_Y
 
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        22,    36,   177,   188, STR_00CB_1,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS}, // BRSW_PLATFORM_NUM_1
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        37,    51,   177,   188, STR_00CC_2,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS}, // BRSW_PLATFORM_NUM_2
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        52,    66,   177,   188, STR_00CD_3,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS}, // BRSW_PLATFORM_NUM_3
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        67,    81,   177,   188, STR_00CE_4,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS}, // BRSW_PLATFORM_NUM_4
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        82,    96,   177,   188, STR_00CF_5,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS}, // BRSW_PLATFORM_NUM_5
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        97,   111,   177,   188, STR_6,                           STR_304F_SELECT_NUMBER_OF_PLATFORMS}, // BRSW_PLATFORM_NUM_6
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,       112,   126,   177,   188, STR_7,                           STR_304F_SELECT_NUMBER_OF_PLATFORMS}, // BRSW_PLATFORM_NUM_7
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        22,    36,   177,   188, STR_BLACK_1,                     STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP}, // BRSW_PLATFORM_NUM_1
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        37,    51,   177,   188, STR_BLACK_2,                     STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP}, // BRSW_PLATFORM_NUM_2
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        52,    66,   177,   188, STR_BLACK_3,                     STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP}, // BRSW_PLATFORM_NUM_3
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        67,    81,   177,   188, STR_BLACK_4,                     STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP}, // BRSW_PLATFORM_NUM_4
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        82,    96,   177,   188, STR_BLACK_5,                     STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP}, // BRSW_PLATFORM_NUM_5
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        97,   111,   177,   188, STR_6,                           STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP}, // BRSW_PLATFORM_NUM_6
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,       112,   126,   177,   188, STR_7,                           STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP}, // BRSW_PLATFORM_NUM_7
 
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        22,    36,   202,   213, STR_00CB_1,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},  // BRSW_PLATFORM_LEN_1
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        37,    51,   202,   213, STR_00CC_2,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},  // BRSW_PLATFORM_LEN_2
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        52,    66,   202,   213, STR_00CD_3,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},  // BRSW_PLATFORM_LEN_3
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        67,    81,   202,   213, STR_00CE_4,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},  // BRSW_PLATFORM_LEN_4
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        82,    96,   202,   213, STR_00CF_5,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},  // BRSW_PLATFORM_LEN_5
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        97,   111,   202,   213, STR_6,                           STR_3050_SELECT_LENGTH_OF_RAILROAD},  // BRSW_PLATFORM_LEN_6
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,       112,   126,   202,   213, STR_7,                           STR_3050_SELECT_LENGTH_OF_RAILROAD},  // BRSW_PLATFORM_LEN_7
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        22,    36,   202,   213, STR_BLACK_1,                     STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP},  // BRSW_PLATFORM_LEN_1
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        37,    51,   202,   213, STR_BLACK_2,                     STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP},  // BRSW_PLATFORM_LEN_2
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        52,    66,   202,   213, STR_BLACK_3,                     STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP},  // BRSW_PLATFORM_LEN_3
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        67,    81,   202,   213, STR_BLACK_4,                     STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP},  // BRSW_PLATFORM_LEN_4
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        82,    96,   202,   213, STR_BLACK_5,                     STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP},  // BRSW_PLATFORM_LEN_5
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        97,   111,   202,   213, STR_6,                           STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP},  // BRSW_PLATFORM_LEN_6
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,       112,   126,   202,   213, STR_7,                           STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP},  // BRSW_PLATFORM_LEN_7
 
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        37,   111,   216,   227, STR_DRAG_DROP,                   STR_STATION_DRAG_DROP},               // BRSW_PLATFORM_DRAG_N_DROP
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        14,    73,   242,   253, STR_02DB_OFF,                    STR_3065_DON_T_HIGHLIGHT_COVERAGE},   // BRSW_HIGHLIGHT_OFF
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        74,   133,   242,   253, STR_02DA_ON,                     STR_3064_HIGHLIGHT_COVERAGE_AREA},    // BRSW_HIGHLIGHT_ON
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        37,   111,   216,   227, STR_DRAG_DROP,                   STR_STATION_DRAG_DROP},                       // BRSW_PLATFORM_DRAG_N_DROP
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        14,    73,   242,   253, STR_STATION_BUILD_COVERAGE_OFF,  STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP}, // BRSW_HIGHLIGHT_OFF
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        74,   133,   242,   253, STR_STATION_BUILD_COVERAGE_ON,   STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP},  // BRSW_HIGHLIGHT_ON
 
 /* newstations gui additions */
-{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,         7,   140,    17,    28, STR_02BD,                        STR_SELECT_STATION_CLASS_TIP},        // BRSW_NEWST_DROPDOWN
-{     WWT_MATRIX,   RESIZE_NONE,  COLOUR_GREY,         7,   128,    32,   102, 0x501,                           STR_SELECT_STATION_TYPE_TIP},         // BRSW_NEWST_LIST
-{  WWT_SCROLLBAR,   RESIZE_NONE,  COLOUR_GREY,       129,   140,    32,   102, 0x0,                             STR_0190_SCROLL_BAR_SCROLLS_LIST},    // BRSW_NEWST_SCROLL
+{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,         7,   140,    17,    28, STR_BLACK_STRING,                STR_SELECT_STATION_CLASS_TIP},                // BRSW_NEWST_DROPDOWN
+{     WWT_MATRIX,   RESIZE_NONE,  COLOUR_GREY,         7,   128,    32,   102, 0x501,                           STR_SELECT_STATION_TYPE_TIP},                 // BRSW_NEWST_LIST
+{  WWT_SCROLLBAR,   RESIZE_NONE,  COLOUR_GREY,       129,   140,    32,   102, 0x0,                             STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},        // BRSW_NEWST_SCROLL
 {   WIDGETS_END},
 };
 
@@ -1477,8 +1477,8 @@ public:
 
 /** Widget definition of the build signal window */
 static const Widget _signal_builder_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,  10,   0,  13, STR_00C5,               STR_018B_CLOSE_WINDOW},                 // BSW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11, 153,   0,  13, STR_SIGNAL_SELECTION,   STR_018C_WINDOW_TITLE_DRAG_THIS},       // BSW_CAPTION
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,  10,   0,  13, STR_BLACK_CROSS,        STR_TOOLTIP_CLOSE_WINDOW},              // BSW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11, 153,   0,  13, STR_SIGNAL_SELECTION,   STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},    // BSW_CAPTION
 
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,  21,  14,  40, STR_NULL,               STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP},   // BSW_SEMAPHORE_NORM
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,  22,  43,  14,  40, STR_NULL,               STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP},  // BSW_SEMAPHORE_ENTRY
@@ -1565,38 +1565,38 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 
 /** Widget definition of the build rail depot window */
 static const Widget _build_depot_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},                     // BRDW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11,   139,     0,    13, STR_1014_TRAIN_DEPOT_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS},           // BRDW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,   139,    14,   121, 0x0,                              STR_NULL},                                  // BRDW_BACKGROUND
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        71,   136,    17,    66, 0x0,                              STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO}, // BRDW_DEPOT_NE
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        71,   136,    69,   118, 0x0,                              STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO}, // BRDW_DEPOT_SE
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         3,    68,    69,   118, 0x0,                              STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO}, // BRDW_DEPOT_SW
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         3,    68,    17,    66, 0x0,                              STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO}, // BRDW_DEPOT_NW
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,    10,     0,    13, STR_BLACK_CROSS,                  STR_TOOLTIP_CLOSE_WINDOW},          // BRDW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11,   139,     0,    13, STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // BRDW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,   139,    14,   121, 0x0,                              STR_NULL},                          // BRDW_BACKGROUND
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        71,   136,    17,    66, 0x0,                              STR_BUILD_DEPOT_TRAIN_ORIENTATION}, // BRDW_DEPOT_NE
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        71,   136,    69,   118, 0x0,                              STR_BUILD_DEPOT_TRAIN_ORIENTATION}, // BRDW_DEPOT_SE
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         3,    68,    69,   118, 0x0,                              STR_BUILD_DEPOT_TRAIN_ORIENTATION}, // BRDW_DEPOT_SW
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         3,    68,    17,    66, 0x0,                              STR_BUILD_DEPOT_TRAIN_ORIENTATION}, // BRDW_DEPOT_NW
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_build_depot_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BRDW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BRDW_CAPTION), SetMinimalSize(129, 14), SetDataTip(STR_1014_TRAIN_DEPOT_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BRDW_CAPTION), SetMinimalSize(129, 14), SetDataTip(STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRDW_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
 		NWidget(NWID_HORIZONTAL_LTR),
 			NWidget(NWID_SPACER), SetMinimalSize(3, 0),
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PANEL, COLOUR_GREY, BRDW_DEPOT_NW), SetMinimalSize(66, 50), SetDataTip(0x0, STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO),
+				NWidget(WWT_PANEL, COLOUR_GREY, BRDW_DEPOT_NW), SetMinimalSize(66, 50), SetDataTip(0x0, STR_BUILD_DEPOT_TRAIN_ORIENTATION),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
-				NWidget(WWT_PANEL, COLOUR_GREY, BRDW_DEPOT_SW), SetMinimalSize(66, 50), SetDataTip(0x0, STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO),
+				NWidget(WWT_PANEL, COLOUR_GREY, BRDW_DEPOT_SW), SetMinimalSize(66, 50), SetDataTip(0x0, STR_BUILD_DEPOT_TRAIN_ORIENTATION),
 				EndContainer(),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PANEL, COLOUR_GREY, BRDW_DEPOT_NE), SetMinimalSize(66, 50), SetDataTip(0x0, STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO),
+				NWidget(WWT_PANEL, COLOUR_GREY, BRDW_DEPOT_NE), SetMinimalSize(66, 50), SetDataTip(0x0, STR_BUILD_DEPOT_TRAIN_ORIENTATION),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
-				NWidget(WWT_PANEL, COLOUR_GREY, BRDW_DEPOT_SE), SetMinimalSize(66, 50), SetDataTip(0x0, STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO),
+				NWidget(WWT_PANEL, COLOUR_GREY, BRDW_DEPOT_SE), SetMinimalSize(66, 50), SetDataTip(0x0, STR_BUILD_DEPOT_TRAIN_ORIENTATION),
 				EndContainer(),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(3, 0),
@@ -1692,17 +1692,17 @@ public:
 
 /** Widget definition for the build NewGRF rail waypoint window */
 static const Widget _build_waypoint_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_00C5,     STR_018B_CLOSE_WINDOW},            // BRWW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   343,     0,    13, STR_WAYPOINT, STR_018C_WINDOW_TITLE_DRAG_THIS},  // BRWW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,   343,    14,    91, 0x0,          STR_NULL},                         // BRWW_BACKGROUND
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW},           // BRWW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   343,     0,    13, STR_WAYPOINT,    STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // BRWW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,   343,    14,    91, 0x0,             STR_NULL},                           // BRWW_BACKGROUND
 
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,     3,    68,    17,    76, 0x0,          STR_WAYPOINT_GRAPHICS_TIP},        // BRWW_WAYPOINT_1
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    71,   136,    17,    76, 0x0,          STR_WAYPOINT_GRAPHICS_TIP},        // BRWW_WAYPOINT_2
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   139,   204,    17,    76, 0x0,          STR_WAYPOINT_GRAPHICS_TIP},        // BRWW_WAYPOINT_3
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   207,   272,    17,    76, 0x0,          STR_WAYPOINT_GRAPHICS_TIP},        // BRWW_WAYPOINT_4
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   275,   340,    17,    76, 0x0,          STR_WAYPOINT_GRAPHICS_TIP},        // BRWW_WAYPOINT_5
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,     3,    68,    17,    76, 0x0,             STR_WAYPOINT_GRAPHICS_TIP},          // BRWW_WAYPOINT_1
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    71,   136,    17,    76, 0x0,             STR_WAYPOINT_GRAPHICS_TIP},          // BRWW_WAYPOINT_2
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   139,   204,    17,    76, 0x0,             STR_WAYPOINT_GRAPHICS_TIP},          // BRWW_WAYPOINT_3
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   207,   272,    17,    76, 0x0,             STR_WAYPOINT_GRAPHICS_TIP},          // BRWW_WAYPOINT_4
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   275,   340,    17,    76, 0x0,             STR_WAYPOINT_GRAPHICS_TIP},          // BRWW_WAYPOINT_5
 
-{ WWT_HSCROLLBAR,   RESIZE_NONE,  COLOUR_DARK_GREEN,     1,   343,     80,    91, 0x0,          STR_HSCROLL_BAR_SCROLLS_LIST},     // BRWW_SCROLL
+{ WWT_HSCROLLBAR,   RESIZE_NONE,  COLOUR_DARK_GREEN,     1,   343,     80,    91, 0x0,            STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST}, // BRWW_SCROLL
 {    WIDGETS_END},
 };
 

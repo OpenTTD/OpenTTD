@@ -521,7 +521,7 @@ static bool ClickTile_Town(TileIndex tile)
 
 static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
 {
-	if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
+	if (flags & DC_AUTO) return_cmd_error(STR_ERROR_BUILDING_MUST_BE_DEMOLISHED);
 	if (!CanDeleteHouse(tile)) return CMD_ERROR;
 
 	const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
@@ -536,7 +536,7 @@ static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
 	if (IsValidCompanyID(_current_company)) {
 		if (rating > t->ratings[_current_company] && !(flags & DC_NO_TEST_TOWN_RATING) && !_cheats.magic_bulldozer.value) {
 			SetDParam(0, t->index);
-			return_cmd_error(STR_2009_LOCAL_AUTHORITY_REFUSES);
+			return_cmd_error(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS);
 		}
 	}
 
@@ -636,7 +636,7 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 
 	if (!house_completed) {
 		SetDParamX(td->dparam, 0, td->str);
-		td->str = STR_2058_UNDER_CONSTRUCTION;
+		td->str = STR_TOWN_DESCRIPTION_UNDER_CONSTRUCTION;
 	}
 
 	if (hs->grffile != NULL) {
@@ -1544,17 +1544,17 @@ static CommandCost TownCanBePlacedHere(TileIndex tile)
 {
 	/* Check if too close to the edge of map */
 	if (DistanceFromEdge(tile) < 12) {
-		return_cmd_error(STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP);
+		return_cmd_error(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB);
 	}
 
 	/* Check distance to all other towns. */
 	if (IsCloseToTown(tile, 20)) {
-		return_cmd_error(STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN);
+		return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN);
 	}
 
 	/* Can only build on clear flat areas, possibly with trees. */
 	if ((!IsTileType(tile, MP_CLEAR) && !IsTileType(tile, MP_TREES)) || GetTileSlope(tile, NULL) != SLOPE_FLAT) {
-		return_cmd_error(STR_0239_SITE_UNSUITABLE);
+		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 
 	return CommandCost();
@@ -1590,7 +1590,7 @@ CommandCost CmdBuildTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (CmdFailed(cost)) return cost;
 
 	/* Allocate town struct */
-	if (!Town::CanAllocateItem()) return_cmd_error(STR_023A_TOO_MANY_TOWNS);
+	if (!Town::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_TOWNS);
 
 	/* Create the town */
 	if (flags & DC_EXEC) {
@@ -2241,7 +2241,7 @@ static void TownActionRoadRebuild(Town *t)
 	SetDParam(0, t->index);
 	SetDParamStr(1, cn);
 
-	AddNewsItem(STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING, NS_GENERAL, t->xy, 0, cn);
+	AddNewsItem(STR_NEWS_ROAD_REBUILDING, NS_GENERAL, t->xy, 0, cn);
 }
 
 static bool DoBuildStatueOfCompany(TileIndex tile, TownID town_id)
@@ -2572,7 +2572,7 @@ bool CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags)
 
 	if (t->ratings[_current_company] > RATING_VERYPOOR) return true;
 
-	_error_message = STR_2009_LOCAL_AUTHORITY_REFUSES;
+	_error_message = STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS;
 	SetDParam(0, t->index);
 
 	return false;
@@ -2715,7 +2715,7 @@ bool CheckforTownRating(DoCommandFlag flags, Town *t, byte type)
 
 	if (GetRating(t) < 16 + modemod && !(flags & DC_NO_TEST_TOWN_RATING)) {
 		SetDParam(0, t->index);
-		_error_message = STR_2009_LOCAL_AUTHORITY_REFUSES;
+		_error_message = STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS;
 		return false;
 	}
 

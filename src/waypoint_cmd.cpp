@@ -153,7 +153,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 				(axis = AXIS_X, GetTrackBits(tile) != TRACK_BIT_X) &&
 				(axis = AXIS_Y, GetTrackBits(tile) != TRACK_BIT_Y)
 			)) {
-		return_cmd_error(STR_1005_NO_SUITABLE_RAILROAD_TRACK);
+		return_cmd_error(STR_ERROR_NO_SUITABLE_RAILROAD_TRACK);
 	}
 
 	Owner owner = GetTileOwner(tile);
@@ -163,10 +163,10 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 	tileh = GetTileSlope(tile, NULL);
 	if (tileh != SLOPE_FLAT &&
 			(!_settings_game.construction.build_on_slopes || IsSteepSlope(tileh) || !(tileh & (0x3 << axis)) || !(tileh & ~(0x3 << axis)))) {
-		return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
+		return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
 	}
 
-	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
 	/* Check if there is an already existing, deleted, waypoint close to us that we can reuse. */
 	wp = FindDeletedWaypointCloseTo(tile);

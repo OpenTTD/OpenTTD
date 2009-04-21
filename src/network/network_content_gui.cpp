@@ -21,9 +21,9 @@
 
 /** Widgets for the download window */
 static const Widget _network_content_download_status_window_widget[] = {
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,      0,   349,     0,    13, STR_CONTENT_DOWNLOAD_TITLE, STR_018C_WINDOW_TITLE_DRAG_THIS}, // NCDSWW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,      0,   349,    14,    84, 0x0,                        STR_NULL},                        // NCDSWW_BACKGROUND
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_WHITE,   125,   225,    69,    80, STR_012E_CANCEL,            STR_NULL},                        // NCDSWW_CANCELOK
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,      0,   349,     0,    13, STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // NCDSWW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,      0,   349,    14,    84, 0x0,                        STR_NULL},                           // NCDSWW_BACKGROUND
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_WHITE,   125,   225,    69,    80, STR_QUERY_CANCEL,           STR_NULL},                           // NCDSWW_CANCELOK
 {   WIDGETS_END},
 };
 
@@ -117,7 +117,7 @@ public:
 	{
 		/* When downloading is finished change cancel in ok */
 		if (this->downloaded_bytes == this->total_bytes) {
-			this->widget[NCDSWW_CANCELOK].data = STR_012F_OK;
+			this->widget[NCDSWW_CANCELOK].data = STR_QUERY_OK;
 		}
 
 		this->DrawWidgets();
@@ -730,7 +730,7 @@ NetworkContentListWindow::GUIContentList::FilterFunction * const NetworkContentL
 /** Widgets used for the content list */
 static const Widget _network_content_list_widgets[] = {
 /* TOP */
-{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_00C5,                           STR_018B_CLOSE_WINDOW},                  // NCLWW_CLOSE
+{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_BLACK_CROSS,                    STR_TOOLTIP_CLOSE_WINDOW},               // NCLWW_CLOSE
 {    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_LIGHT_BLUE,    11,   449,     0,    13, STR_CONTENT_TITLE,                  STR_NULL},                               // NCLWW_CAPTION
 {      WWT_PANEL,   RESIZE_RB,     COLOUR_LIGHT_BLUE,     0,   449,    14,   277, 0x0,                                STR_NULL},                               // NCLWW_BACKGROUND
 
@@ -742,7 +742,7 @@ static const Widget _network_content_list_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_RIGHT,  COLOUR_WHITE,        111,   190,    36,    47, STR_CONTENT_NAME_CAPTION,           STR_CONTENT_NAME_CAPTION_TIP},           // NCLWW_NAME
 
 {     WWT_MATRIX,   RESIZE_RB,     COLOUR_LIGHT_BLUE,     8,   190,    48,   244, (14 << 8) | 1,                      STR_CONTENT_MATRIX_TIP},                 // NCLWW_MATRIX
-{  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_LIGHT_BLUE,   191,   202,    36,   244, 0x0,                                STR_0190_SCROLL_BAR_SCROLLS_LIST},       // NCLWW_SCROLLBAR
+{  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_LIGHT_BLUE,   191,   202,    36,   244, 0x0,                                STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},   // NCLWW_SCROLLBAR
 
 /* RIGHT SIDE */
 {      WWT_PANEL,   RESIZE_LRB,    COLOUR_LIGHT_BLUE,   210,   440,    36,   244, 0x0,                                STR_NULL},                               // NCLWW_DETAILS
@@ -751,7 +751,7 @@ static const Widget _network_content_list_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,         10,   110,   252,   263, STR_CONTENT_SELECT_ALL_CAPTION,     STR_CONTENT_SELECT_ALL_CAPTION_TIP},     // NCLWW_SELECT_ALL
 { WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,         10,   110,   252,   263, STR_CONTENT_SELECT_UPDATES_CAPTION, STR_CONTENT_SELECT_UPDATES_CAPTION_TIP}, // NCLWW_SELECT_UPDATES
 { WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,        118,   218,   252,   263, STR_CONTENT_UNSELECT_ALL_CAPTION,   STR_CONTENT_UNSELECT_ALL_CAPTION_TIP},   // NCLWW_UNSELECT
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        226,   326,   252,   263, STR_012E_CANCEL,                    STR_NULL},                               // NCLWW_CANCEL
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        226,   326,   252,   263, STR_QUERY_CANCEL,                   STR_NULL},                               // NCLWW_CANCEL
 { WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        334,   434,   252,   263, STR_CONTENT_DOWNLOAD_CAPTION,       STR_CONTENT_DOWNLOAD_CAPTION_TIP},       // NCLWW_DOWNLOAD
 
 {  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_LIGHT_BLUE,   438,   449,   266,   277, 0x0,                                STR_RESIZE_BUTTON },                     // NCLWW_RESIZE

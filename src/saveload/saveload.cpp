@@ -1568,7 +1568,7 @@ const char *GetSaveLoadErrorString()
 	SetDParamStr(1, _sl.extra_msg);
 
 	static char err_str[512];
-	GetString(err_str, _sl.save ? STR_4007_GAME_SAVE_FAILED : STR_4009_GAME_LOAD_FAILED, lastof(err_str));
+	GetString(err_str, _sl.save ? STR_ERROR_GAME_SAVE_FAILED : STR_ERROR_GAME_LOAD_FAILED, lastof(err_str));
 	return err_str;
 }
 
@@ -1873,7 +1873,7 @@ void GenerateDefaultSaveName(char *buf, const char *last)
 	SetDParam(2, _date);
 
 	/* Get the correct string (special string for when there's not company) */
-	GetString(buf, !IsValidCompanyID(cid) ? STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME : STR_4004, last);
+	GetString(buf, !IsValidCompanyID(cid) ? STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME : STR_DEFAULT_SAVEGAME_NAME, last);
 	SanitizeFilename(buf);
 }
 

@@ -10,173 +10,173 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Exter la bordo del mapo
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Tro proxim la bordo del mapo
-STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Ne sat pekunio - requizitas {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Plata tereno requizitita
-STR_0008_WAITING                                                :{BLACK}Vartabas: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{CARGO}
-STR_000C_ACCEPTS                                                :{BLACK}Aceptas: {WHITE}
-STR_000D_ACCEPTS                                                :{BLACK}Aceptas: {GOLD}
-STR_000F_PASSENGERS                                             :Pasajero
-STR_0010_COAL                                                   :Karbono
-STR_0011_MAIL                                                   :Posto
-STR_0012_OIL                                                    :Petrolo
-STR_0013_LIVESTOCK                                              :Brutaro
-STR_0014_GOODS                                                  :Havaji
-STR_0015_GRAIN                                                  :Semino
-STR_0016_WOOD                                                   :Ligno
-STR_0017_IRON_ORE                                               :Fer-erco
-STR_0018_STEEL                                                  :Stalo
-STR_0019_VALUABLES                                              :Valoraji
-STR_001A_COPPER_ORE                                             :Kupr-erco
-STR_001B_MAIZE                                                  :Maizo
-STR_001C_FRUIT                                                  :Frukto
-STR_001D_DIAMONDS                                               :Diamanti
-STR_001E_FOOD                                                   :Nutrajo
-STR_001F_PAPER                                                  :Papero
-STR_0020_GOLD                                                   :Oro
-STR_0021_WATER                                                  :Aquo
-STR_0022_WHEAT                                                  :Frumento
-STR_0023_RUBBER                                                 :Kauchuko
-STR_0024_SUGAR                                                  :Sukro
-STR_0025_TOYS                                                   :Ludili
-STR_0026_CANDY                                                  :Bonboni
-STR_0028_COTTON_CANDY                                           :Kandi-lanugo
-STR_0029_BUBBLES                                                :Buli
-STR_002A_TOFFEE                                                 :Karamelo
-STR_002B_BATTERIES                                              :Baterii
-STR_002C_PLASTIC                                                :Plastiko
-STR_002D_FIZZY_DRINKS                                           :Gasoza Drinkaji
-STR_002F_PASSENGER                                              :Pasajero
-STR_0030_COAL                                                   :Karbono
-STR_0031_MAIL                                                   :Posto
-STR_0032_OIL                                                    :Petrolo
-STR_0033_LIVESTOCK                                              :Brutaro
-STR_0034_GOODS                                                  :Havaji
-STR_0035_GRAIN                                                  :Semino
-STR_0036_WOOD                                                   :Ligno
-STR_0037_IRON_ORE                                               :Fer-erco
-STR_0038_STEEL                                                  :Stalo
-STR_0039_VALUABLES                                              :Valoraji
-STR_003A_COPPER_ORE                                             :Kupr-erco
-STR_003B_MAIZE                                                  :Maizo
-STR_003C_FRUIT                                                  :Frukto
-STR_003D_DIAMOND                                                :Diamanto
-STR_003E_FOOD                                                   :Nutrajo
-STR_003F_PAPER                                                  :Papero
-STR_0040_GOLD                                                   :Oro
-STR_0041_WATER                                                  :Aquo
-STR_0042_WHEAT                                                  :Frumento
-STR_0043_RUBBER                                                 :Kauchuko
-STR_0044_SUGAR                                                  :Sukro
-STR_0045_TOY                                                    :Ludilo
-STR_0046_CANDY                                                  :Bonbono
-STR_0048_COTTON_CANDY                                           :Kandi-lanugo
-STR_0049_BUBBLE                                                 :Bulo
-STR_004A_TOFFEE                                                 :Karamelo
-STR_004B_BATTERY                                                :Baterio
-STR_004C_PLASTIC                                                :Plastiko
-STR_004D_FIZZY_DRINK                                            :Gasoza Drinkajo
-STR_00AE                                                        :{WHITE}{DATE_SHORT}
-STR_00AF                                                        :{WHITE}{DATE_LONG}
-STR_00B0_MAP                                                    :{WHITE}Mapo - {STRING}
-STR_00B1_GAME_OPTIONS                                           :{WHITE}Ludo Selekti
-STR_00B2_MESSAGE                                                :{YELLOW}Sendajo
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Sendajo de {STRING}
-STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ne povas facas ca...
-STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Ne povas netigas ca areo....
-STR_00B7_VERSION                                                :{BLACK}OpenTTD versiono {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 La kruo OpenTTD
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Exter la bordo del mapo
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Tro proxim la bordo del mapo
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Ne sat pekunio - requizitas {CURRENCY}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Plata tereno requizitita
+STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Vartabas: {WHITE}{STRING}
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aceptas: {WHITE}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas: {GOLD}
+STR_CARGO_PLURAL_PASSENGERS                                     :Pasajero
+STR_CARGO_PLURAL_COAL                                           :Karbono
+STR_CARGO_PLURAL_MAIL                                           :Posto
+STR_CARGO_PLURAL_OIL                                            :Petrolo
+STR_CARGO_PLURAL_LIVESTOCK                                      :Brutaro
+STR_CARGO_PLURAL_GOODS                                          :Havaji
+STR_CARGO_PLURAL_GRAIN                                          :Semino
+STR_CARGO_PLURAL_WOOD                                           :Ligno
+STR_CARGO_PLURAL_IRON_ORE                                       :Fer-erco
+STR_CARGO_PLURAL_STEEL                                          :Stalo
+STR_CARGO_PLURAL_VALUABLES                                      :Valoraji
+STR_CARGO_PLURAL_COPPER_ORE                                     :Kupr-erco
+STR_CARGO_PLURAL_MAIZE                                          :Maizo
+STR_CARGO_PLURAL_FRUIT                                          :Frukto
+STR_CARGO_PLURAL_DIAMONDS                                       :Diamanti
+STR_CARGO_PLURAL_FOOD                                           :Nutrajo
+STR_CARGO_PLURAL_PAPER                                          :Papero
+STR_CARGO_PLURAL_GOLD                                           :Oro
+STR_CARGO_PLURAL_WATER                                          :Aquo
+STR_CARGO_PLURAL_WHEAT                                          :Frumento
+STR_CARGO_PLURAL_RUBBER                                         :Kauchuko
+STR_CARGO_PLURAL_SUGAR                                          :Sukro
+STR_CARGO_PLURAL_TOYS                                           :Ludili
+STR_CARGO_PLURAL_CANDY                                          :Bonboni
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Kandi-lanugo
+STR_CARGO_PLURAL_BUBBLES                                        :Buli
+STR_CARGO_PLURAL_TOFFEE                                         :Karamelo
+STR_CARGO_PLURAL_BATTERIES                                      :Baterii
+STR_CARGO_PLURAL_PLASTIC                                        :Plastiko
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Gasoza Drinkaji
+STR_CARGO_SINGULAR_PASSENGER                                    :Pasajero
+STR_CARGO_SINGULAR_COAL                                         :Karbono
+STR_CARGO_SINGULAR_MAIL                                         :Posto
+STR_CARGO_SINGULAR_OIL                                          :Petrolo
+STR_CARGO_SINGULAR_LIVESTOCK                                    :Brutaro
+STR_CARGO_SINGULAR_GOODS                                        :Havaji
+STR_CARGO_SINGULAR_GRAIN                                        :Semino
+STR_CARGO_SINGULAR_WOOD                                         :Ligno
+STR_CARGO_SINGULAR_IRON_ORE                                     :Fer-erco
+STR_CARGO_SINGULAR_STEEL                                        :Stalo
+STR_CARGO_SINGULAR_VALUABLES                                    :Valoraji
+STR_CARGO_SINGULAR_COPPER_ORE                                   :Kupr-erco
+STR_CARGO_SINGULAR_MAIZE                                        :Maizo
+STR_CARGO_SINGULAR_FRUIT                                        :Frukto
+STR_CARGO_SINGULAR_DIAMOND                                      :Diamanto
+STR_CARGO_SINGULAR_FOOD                                         :Nutrajo
+STR_CARGO_SINGULAR_PAPER                                        :Papero
+STR_CARGO_SINGULAR_GOLD                                         :Oro
+STR_CARGO_SINGULAR_WATER                                        :Aquo
+STR_CARGO_SINGULAR_WHEAT                                        :Frumento
+STR_CARGO_SINGULAR_RUBBER                                       :Kauchuko
+STR_CARGO_SINGULAR_SUGAR                                        :Sukro
+STR_CARGO_SINGULAR_TOY                                          :Ludilo
+STR_CARGO_SINGULAR_CANDY                                        :Bonbono
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Kandi-lanugo
+STR_CARGO_SINGULAR_BUBBLE                                       :Bulo
+STR_CARGO_SINGULAR_TOFFEE                                       :Karamelo
+STR_CARGO_SINGULAR_BATTERY                                      :Baterio
+STR_CARGO_SINGULAR_PLASTIC                                      :Plastiko
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gasoza Drinkajo
+STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
+STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
+STR_SMALLMAP_CAPTION                                            :{WHITE}Mapo - {STRING}
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludo Selekti
+STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Sendajo
+STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Sendajo de {STRING}
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ne povas facas ca...
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Ne povas netigas ca areo....
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versiono {REV}
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 La kruo OpenTTD
 
-STR_00C5                                                        :{BLACK}{CROSS}
-STR_00C6                                                        :{SILVER}{CROSS}
-STR_00C7_QUIT                                                   :{WHITE}Livas
-STR_00C8_YES                                                    :{BLACK}Yes
-STR_00C9_NO                                                     :{BLACK}Ne
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Kad tu esas certa ke tu volas livar OpenTTD ed rivenar a {STRING}?
-STR_00CB_1                                                      :{BLACK}1
-STR_00CC_2                                                      :{BLACK}2
-STR_00CD_3                                                      :{BLACK}3
-STR_00CE_4                                                      :{BLACK}4
-STR_00CF_5                                                      :{BLACK}5
-STR_00D0_NOTHING                                                :Nulo
-STR_00D1_DARK_BLUE                                              :Obskur-blua
-STR_00D2_PALE_GREEN                                             :Pal-verda
-STR_00D3_PINK                                                   :Rozea
-STR_00D4_YELLOW                                                 :Flava
-STR_00D5_RED                                                    :Reda
-STR_00D6_LIGHT_BLUE                                             :Klar-Blua
-STR_00D7_GREEN                                                  :Verda
-STR_00D8_DARK_GREEN                                             :Obskur-verda
-STR_00D9_BLUE                                                   :Blua
-STR_00DA_CREAM                                                  :Kremea
-STR_00DB_MAUVE                                                  :Malva
-STR_00DC_PURPLE                                                 :Purpuro
-STR_00DD_ORANGE                                                 :Orangea
-STR_00DE_BROWN                                                  :Bruna
-STR_00DF_GREY                                                   :Griza
-STR_00E0_WHITE                                                  :Blanka
-STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Tro multa vehili en la ludo
-STR_00E2                                                        :{BLACK}{COMMA}
-STR_00E3                                                        :{RED}{COMMA}
-STR_00E4_LOCATION                                               :{BLACK}Loko
-STR_00E5_CONTOURS                                               :Konturi
-STR_00E6_VEHICLES                                               :Vehili
-STR_00E7_INDUSTRIES                                             :Industrii
-STR_00E8_ROUTES                                                 :Voyi
-STR_00E9_VEGETATION                                             :Vejetado
-STR_00EA_OWNERS                                                 :Proprietanto
-STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Voyi
-STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Fervoyo
-STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Stacioni/Aeroportua/Doko
-STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Edifici/Industrii
-STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Vehili
-STR_00F0_100M                                                   :{BLACK}{TINYFONT}100m
-STR_00F1_200M                                                   :{BLACK}{TINYFONT}200m
-STR_00F2_300M                                                   :{BLACK}{TINYFONT}300m
-STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
-STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
-STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Treni
-STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Voy-Vehili
-STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Bateli
-STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Aeroplani
-STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Transport-voyi
-STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Foresto
-STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Fervoyala Staciono
-STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Kamiono-Kayo
-STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Autobuso Staciono
-STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Aeroportuo/Heliportuo
-STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Portuo
-STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Ruda Tereno
-STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Herbo
-STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}Nudiga Tereno
-STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}Agri
-STR_0124_TREES                                                  :{BLACK}{TINYFONT}Arbori
-STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}Roki
-STR_0126_WATER                                                  :{BLACK}{TINYFONT}Aquo
-STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}Ne proprietanto
-STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}Urbi
-STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}Industrii
-STR_012A_DESERT                                                 :{BLACK}{TINYFONT}Dezerto
-STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Nivo
-STR_012C_MESSAGE                                                :{WHITE}Sendajo
-STR_012D                                                        :{WHITE}{STRING}
-STR_012E_CANCEL                                                 :{BLACK}Anular
-STR_012F_OK                                                     :{BLACK}OK
-STR_0130_RENAME                                                 :{BLACK}Rinomizar
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_QUIT_CAPTION                                                :{WHITE}Livas
+STR_YES                                                         :{BLACK}Yes
+STR_NO                                                          :{BLACK}Ne
+STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Kad tu esas certa ke tu volas livar OpenTTD ed rivenar a {STRING}?
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_JUST_NOTHING                                                :Nulo
+STR_COLOUR_DARK_BLUE                                            :Obskur-blua
+STR_COLOUR_PALE_GREEN                                           :Pal-verda
+STR_COLOUR_PINK                                                 :Rozea
+STR_COLOUR_YELLOW                                               :Flava
+STR_COLOUR_RED                                                  :Reda
+STR_COLOUR_LIGHT_BLUE                                           :Klar-Blua
+STR_COLOUR_GREEN                                                :Verda
+STR_COLOUR_DARK_GREEN                                           :Obskur-verda
+STR_COLOUR_BLUE                                                 :Blua
+STR_COLOUR_CREAM                                                :Kremea
+STR_COLOUR_MAUVE                                                :Malva
+STR_COLOUR_PURPLE                                               :Purpuro
+STR_COLOUR_ORANGE                                               :Orangea
+STR_COLOUR_BROWN                                                :Bruna
+STR_COLOUR_GREY                                                 :Griza
+STR_COLOUR_WHITE                                                :Blanka
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tro multa vehili en la ludo
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BUTTON_LOCATION                                             :{BLACK}Loko
+STR_SMALLMAP_TYPE_CONTOURS                                      :Konturi
+STR_SMALLMAP_TYPE_VEHICLES                                      :Vehili
+STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrii
+STR_SMALLMAP_TYPE_ROUTES                                        :Voyi
+STR_SMALLMAP_TYPE_VEGETATION                                    :Vejetado
+STR_SMALLMAP_TYPE_OWNERS                                        :Proprietanto
+STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}Voyi
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}Fervoyo
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}Stacioni/Aeroportua/Doko
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}Edifici/Industrii
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}Vehili
+STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100m
+STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}200m
+STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}300m
+STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}400m
+STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}500m
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}Treni
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}Voy-Vehili
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}Bateli
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}Aeroplani
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}Transport-voyi
+STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}Foresto
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}Fervoyala Staciono
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}Kamiono-Kayo
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}Autobuso Staciono
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}Aeroportuo/Heliportuo
+STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}Portuo
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}Ruda Tereno
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}Herbo
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}Nudiga Tereno
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}Agri
+STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}Arbori
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}Roki
+STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}Aquo
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}Ne proprietanto
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}Urbi
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}Industrii
+STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}Dezerto
+STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}Nivo
+STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Sendajo
+STR_QUERY_CAPTION                                               :{WHITE}{STRING}
+STR_QUERY_CANCEL                                                :{BLACK}Anular
+STR_QUERY_OK                                                    :{BLACK}OK
+STR_QUERY_RENAME                                                :{BLACK}Rinomizar
 
 
-STR_013C_CARGO                                                  :{BLACK}Kargajo
-STR_013D_INFORMATION                                            :{BLACK}Informo
-STR_013E_CAPACITIES                                             :{BLACK}Kapacesi
-STR_0140_NEW_GAME                                               :{BLACK}Nova Ludo
-STR_0141_LOAD_GAME                                              :{BLACK}Charjas Ludo
+STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Kargajo
+STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informo
+STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapacesi
+STR_INTRO_NEW_GAME                                              :{BLACK}Nova Ludo
+STR_INTRO_LOAD_GAME                                             :{BLACK}Charjas Ludo
 
-STR_0148_GAME_OPTIONS                                           :{BLACK}Ludo Selekti
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Ludo Selekti
 
-STR_0150_SOMEONE                                                :ulu{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :ulu{SKIP}{SKIP}
 
 
 
@@ -187,8 +187,8 @@ STR_0150_SOMEONE                                                :ulu{SKIP}{SKIP}
 
 
 ############ range for menu starts
-STR_0155_INCOME_GRAPH                                           :Revenuo grafiko
-STR_0156_DELIVERED_CARGO_GRAPH                                  :Livrita kargajo grafiko
+STR_GRAPH_MENU_INCOME_GRAPH                                     :Revenuo grafiko
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Livrita kargajo grafiko
 ############ range for menu ends
 
 
@@ -196,19 +196,19 @@ STR_0156_DELIVERED_CARGO_GRAPH                                  :Livrita kargajo
 ############ range for months starts
 ############ range for months ends
 
-STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Montrar transport-voyi ad la mapo
-STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Montrar vejetado ad la mapo
-STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Montrar proprietanti ad la mapo
-STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Montrar nam-urbi ad la mapo
-STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Profito to yaro: {CURRENCY} (lasta yaro: {CURRENCY})
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Montrar transport-voyi ad la mapo
+STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Montrar vejetado ad la mapo
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Montrar proprietanti ad la mapo
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Montrar nam-urbi ad la mapo
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Profito to yaro: {CURRENCY} (lasta yaro: {CURRENCY})
 
 ############ range for service numbers starts
 ############ range for service numbers ends
 
-STR_019F_TRAIN                                                  :Treni
-STR_019C_ROAD_VEHICLE                                           :Voy-vehili
-STR_019E_SHIP                                                   :Bateli
-STR_019D_AIRCRAFT                                               :Aeroplani
+STR_VEHICLE_TRAIN                                               :Treni
+STR_VEHICLE_ROAD_VEHICLE                                        :Voy-vehili
+STR_VEHICLE_SHIP                                                :Bateli
+STR_VEHICLE_AIRCRAFT                                            :Aeroplani
 
 ############ range for days starts
 ############ range for days ends
@@ -388,7 +388,7 @@ STR_019D_AIRCRAFT                                               :Aeroplani
 ##id 0x5000
 
 ##id 0x5800
-STR_5802_LIGHTHOUSE                                             :Faro
+STR_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                            :Faro
 
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -404,23 +404,23 @@ STR_5802_LIGHTHOUSE                                             :Faro
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6813_ECONOMY                                                :{LTBLUE}Ekonomio: {ORANGE}{STRING}
-STR_6815_DISASTERS                                              :{LTBLUE}Dizastri: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomio: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Dizastri: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_6816_LOW                                                    :Basa
-STR_6817_NORMAL                                                 :Normala
-STR_6818_HIGH                                                   :Alta
-STR_681C_SLOW                                                   :Lenta
-STR_681D_MEDIUM                                                 :Meza
-STR_681E_FAST                                                   :Rapida
-STR_6820_LOW                                                    :Basa
-STR_6821_MEDIUM                                                 :Meza
-STR_6822_HIGH                                                   :Alta
+STR_NUM_LOW                                                     :Basa
+STR_NUM_NORMAL                                                  :Normala
+STR_NUM_HIGH                                                    :Alta
+STR_AI_SPEED_SLOW                                               :Lenta
+STR_AI_SPEED_MEDIUM                                             :Meza
+STR_AI_SPEED_FAST                                               :Rapida
+STR_SEA_LEVEL_LOW                                               :Basa
+STR_SEA_LEVEL_MEDIUM                                            :Meza
+STR_SEA_LEVEL_HIGH                                              :Alta
 
 ##id 0x7000
-STR_7027_LOAN                                                   :{WHITE}Prest-ajo
-STR_7039_VEHICLES                                               :{GOLD}Vehili:
+STR_FINANCES_LOAN_TITLE                                         :{WHITE}Prest-ajo
+STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehili:
 
 
 

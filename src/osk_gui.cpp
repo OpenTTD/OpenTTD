@@ -232,14 +232,14 @@ struct OskWindow : public Window {
 
 static const Widget _osk_widgets[] = {
 {      WWT_EMPTY, RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,               STR_NULL},
-{    WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,     0,   255,     0,    13, STR_012D,          STR_NULL},
+{    WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,     0,   255,     0,    13, STR_QUERY_CAPTION, STR_NULL},
 {      WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,     0,   255,    14,    29, 0x0,               STR_NULL},
 {    WWT_EDITBOX, RESIZE_NONE,  COLOUR_GREY,     2,   253,    16,    27, 0x0,               STR_NULL},
 
 {      WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,     0,   255,    30,   139, 0x0,               STR_NULL},
 
-{    WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,     3,   108,    35,    46, STR_012E_CANCEL,   STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,   111,   216,    35,    46, STR_012F_OK,       STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,     3,   108,    35,    46, STR_QUERY_CANCEL,  STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,   111,   216,    35,    46, STR_QUERY_OK,      STR_NULL},
 { WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   219,   252,    35,    46, SPR_OSK_BACKSPACE, STR_NULL},
 
 { WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,     3,    27,    67,    82, SPR_OSK_SPECIAL,   STR_NULL},

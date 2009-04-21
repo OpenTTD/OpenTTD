@@ -142,7 +142,7 @@ CommandCost CmdIncreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (c->current_loan >= _economy.max_loan) {
 		SetDParam(0, _economy.max_loan);
-		return_cmd_error(STR_702B_MAXIMUM_PERMITTED_LOAN);
+		return_cmd_error(STR_ERROR_MAXIMUM_PERMITTED_LOAN);
 	}
 
 	Money loan;
@@ -184,7 +184,7 @@ CommandCost CmdDecreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 {
 	Company *c = GetCompany(_current_company);
 
-	if (c->current_loan == 0) return_cmd_error(STR_702D_LOAN_ALREADY_REPAYED);
+	if (c->current_loan == 0) return_cmd_error(STR_ERROR_LOAN_ALREADY_REPAYED);
 
 	Money loan;
 	switch (p2) {
@@ -204,7 +204,7 @@ CommandCost CmdDecreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (c->money < loan) {
 		SetDParam(0, loan);
-		return_cmd_error(STR_702E_REQUIRED);
+		return_cmd_error(STR_ERROR_CURRENCY_REQUIRED);
 	}
 
 	if (flags & DC_EXEC) {

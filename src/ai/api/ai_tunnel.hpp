@@ -24,16 +24,16 @@ public:
 		ERR_TUNNEL_BASE = AIError::ERR_CAT_TUNNEL << AIError::ERR_CAT_BIT_SIZE,
 
 		/** Can't build tunnels on water */
-		ERR_TUNNEL_CANNOT_BUILD_ON_WATER,            // [STR_3807_CAN_T_BUILD_ON_WATER]
+		ERR_TUNNEL_CANNOT_BUILD_ON_WATER,            // [STR_ERROR_CAN_T_BUILD_ON_WATER]
 
 		/** The start tile must slope either North, South, West or East */
-		ERR_TUNNEL_START_SITE_UNSUITABLE,            // [STR_500B_SITE_UNSUITABLE_FOR_TUNNEL]
+		ERR_TUNNEL_START_SITE_UNSUITABLE,            // [STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL]
 
 		/** An other tunnel is in the way */
-		ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY,        // [STR_5003_ANOTHER_TUNNEL_IN_THE_WAY]
+		ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY,        // [STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY]
 
 		/** Unable to excavate land at the end to create the tunnel's exit */
-		ERR_TUNNEL_END_SITE_UNSUITABLE,              // [STR_5005_UNABLE_TO_EXCAVATE_LAND]
+		ERR_TUNNEL_END_SITE_UNSUITABLE,              // [STR_ERROR_UNABLE_TO_EXCAVATE_LAND]
 	};
 
 	/**

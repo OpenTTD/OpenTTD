@@ -23,10 +23,10 @@ public:
 		ERR_ORDER_BASE = AIError::ERR_CAT_ORDER << AIError::ERR_CAT_BIT_SIZE,
 
 		/** No more space for orders */
-		ERR_ORDER_TOO_MANY,                                  // [STR_8831_NO_MORE_SPACE_FOR_ORDERS]
+		ERR_ORDER_TOO_MANY,                                  // [STR_ERROR_NO_MORE_SPACE_FOR_ORDERS]
 
 		/** Destination of new order is to far away from the previous order */
-		ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION,    // [STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO]
+		ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION,    // [STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION]
 	};
 
 	/**

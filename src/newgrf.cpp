@@ -289,8 +289,8 @@ StringID MapGRFStringID(uint32 grfid, StringID str)
 
 #define TEXID_TO_STRINGID(begin, end, stringid) if (str >= begin && str <= end) return str + (stringid - begin)
 	/* We have some changes in our cargo strings, resulting in some missing. */
-	TEXID_TO_STRINGID(0x000E, 0x002D, STR_000E);
-	TEXID_TO_STRINGID(0x002E, 0x004D, STR_002E);
+	TEXID_TO_STRINGID(0x000E, 0x002D, STR_CARGO_PLURAL_NOTHING);
+	TEXID_TO_STRINGID(0x002E, 0x004D, STR_CARGO_SINGULAR_NOTHING);
 	if (str >= 0x004E && str <= 0x006D) str = units_volume[str - 0x004E];
 	TEXID_TO_STRINGID(0x006E, 0x008D, STR_QUANTITY_NOTHING);
 	TEXID_TO_STRINGID(0x008E, 0x00AD, STR_ABBREV_NOTHING);
@@ -298,12 +298,12 @@ StringID MapGRFStringID(uint32 grfid, StringID str)
 	/* Map building names according to our lang file changes. There are several
 	 * ranges of house ids, all of which need to be remapped to allow newgrfs
 	 * to use original house names. */
-	TEXID_TO_STRINGID(0x200F, 0x201F, STR_200F_TALL_OFFICE_BLOCK);
-	TEXID_TO_STRINGID(0x2036, 0x2041, STR_2036_COTTAGES);
-	TEXID_TO_STRINGID(0x2059, 0x205C, STR_2059_IGLOO);
+	TEXID_TO_STRINGID(0x200F, 0x201F, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1);
+	TEXID_TO_STRINGID(0x2036, 0x2041, STR_TOWN_BUILDING_NAME_COTTAGES_1);
+	TEXID_TO_STRINGID(0x2059, 0x205C, STR_TOWN_BUILDING_NAME_IGLOO_1);
 
-	/* Same thing for industries, since the introduction of 4 new strings above STR_482A_PRODUCTION_LAST_MONTH */
-	TEXID_TO_STRINGID(0x482A, 0x483B, STR_482A_PRODUCTION_LAST_MONTH);
+	/* Same thing for industries, since the introduction of 4 new strings above STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE */
+	TEXID_TO_STRINGID(0x482A, 0x483B, STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE);
 #undef TEXTID_TO_STRINGID
 
 	if (str == STR_NULL) return STR_EMPTY;

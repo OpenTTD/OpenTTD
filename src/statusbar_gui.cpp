@@ -97,21 +97,21 @@ struct StatusBarWindow : Window {
 
 		this->DrawWidgets();
 		SetDParam(0, _date);
-		DrawString(this->widget[SBW_LEFT].left + 1, this->widget[SBW_LEFT].right - 1, 1, (_pause_game || _settings_client.gui.status_long_date) ? STR_00AF : STR_00AE, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->widget[SBW_LEFT].left + 1, this->widget[SBW_LEFT].right - 1, 1, (_pause_game || _settings_client.gui.status_long_date) ? STR_DATE_LONG_WHITE : STR_DATE_SHORT_WHITE, TC_FROMSTRING, SA_CENTER);
 
 		if (c != NULL) {
 			/* Draw company money */
 			SetDParam(0, c->money);
-			DrawString(this->widget[SBW_RIGHT].left + 1, this->widget[SBW_RIGHT].right - 1, 1, STR_0004, TC_FROMSTRING, SA_CENTER);
+			DrawString(this->widget[SBW_RIGHT].left + 1, this->widget[SBW_RIGHT].right - 1, 1, STR_COMPANY_MONEY, TC_FROMSTRING, SA_CENTER);
 		}
 
 		/* Draw status bar */
 		if (this->saving) { // true when saving is active
-			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_SAVING_GAME, TC_FROMSTRING, SA_CENTER);
+			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_STATUSBAR_SAVING_GAME, TC_FROMSTRING, SA_CENTER);
 		} else if (_do_autosave) {
-			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_032F_AUTOSAVE, TC_FROMSTRING, SA_CENTER);
+			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_STATUSBAR_AUTOSAVE, TC_FROMSTRING, SA_CENTER);
 		} else if (_pause_game) {
-			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_0319_PAUSED, TC_FROMSTRING, SA_CENTER);
+			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_STATUSBAR_PAUSED, TC_FROMSTRING, SA_CENTER);
 		} else if (this->ticker_scroll > TICKER_STOP && FindWindowById(WC_NEWS_WINDOW, 0) == NULL && _statusbar_news_item.string_id != 0) {
 			/* Draw the scrolling news text */
 			if (!DrawScrollingStatusText(&_statusbar_news_item, this->ticker_scroll, this->widget[SBW_MIDDLE].right - this->widget[SBW_MIDDLE].left - 2)) {
@@ -119,14 +119,14 @@ struct StatusBarWindow : Window {
 				if (c != NULL) {
 					/* This is the default text */
 					SetDParam(0, c->index);
-					DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_02BA, TC_FROMSTRING, SA_CENTER);
+					DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_STATUSBAR_COMPANY_NAME, TC_FROMSTRING, SA_CENTER);
 				}
 			}
 		} else {
 			if (c != NULL) {
 				/* This is the default text */
 				SetDParam(0, c->index);
-				DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_02BA, TC_FROMSTRING, SA_CENTER);
+				DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_STATUSBAR_COMPANY_NAME, TC_FROMSTRING, SA_CENTER);
 			}
 		}
 
@@ -177,7 +177,7 @@ struct StatusBarWindow : Window {
 
 static const Widget _main_status_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,   COLOUR_GREY,     0,   139,     0,    11, 0x0, STR_NULL},
-{    WWT_PUSHBTN,   RESIZE_RIGHT,  COLOUR_GREY,   140,   179,     0,    11, 0x0, STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS},
+{    WWT_PUSHBTN,   RESIZE_RIGHT,  COLOUR_GREY,   140,   179,     0,    11, 0x0, STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS},
 {    WWT_PUSHBTN,   RESIZE_LR,     COLOUR_GREY,   180,   319,     0,    11, 0x0, STR_NULL},
 {   WIDGETS_END},
 };
@@ -185,7 +185,7 @@ static const Widget _main_status_widgets[] = {
 static const NWidgetPart _nested_main_status_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, SBW_LEFT), SetMinimalSize(140, 12), EndContainer(),
-		NWidget(WWT_PUSHBTN, COLOUR_GREY, SBW_MIDDLE), SetMinimalSize(40, 12), SetDataTip(0x0, STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS), SetResize(1, 0),
+		NWidget(WWT_PUSHBTN, COLOUR_GREY, SBW_MIDDLE), SetMinimalSize(40, 12), SetDataTip(0x0, STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS), SetResize(1, 0),
 		NWidget(WWT_PUSHBTN, COLOUR_GREY, SBW_RIGHT), SetMinimalSize(140, 12),
 	EndContainer(),
 };

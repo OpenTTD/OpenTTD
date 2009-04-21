@@ -11,137 +11,137 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}نقشے کے کنارے سے باہر
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}نقشے کے کنارے سے زیادہ قریب
-STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}ناکافی پیسہ - {CURRENCY} مزید چاہیے
-STR_0004                                                        :{WHITE}{CURRENCY}
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}نقشے کے کنارے سے باہر
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}نقشے کے کنارے سے زیادہ قریب
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}ناکافی پیسہ - {CURRENCY} مزید چاہیے
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_EMPTY                                                       :
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}ہموار زمین چاہیے
-STR_0008_WAITING                                                :{BLACK}منتظر: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{CARGO}
-STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} سے براستہ ہے {STATION})
-STR_000C_ACCEPTS                                                :{BLACK}منظور کرتا ہے: {WHITE}
-STR_000D_ACCEPTS                                                :{BLACK}منظور کرتا ہے: {GOLD}
-STR_SUPPLIES                                                    :{BLACK}فراہم کرتا ہے: {GOLD}
-STR_000E                                                        :
-STR_000F_PASSENGERS                                             :مسافر
-STR_0010_COAL                                                   :کویلہ
-STR_0011_MAIL                                                   :ڈاک
-STR_0012_OIL                                                    :تیل
-STR_0013_LIVESTOCK                                              :مویشی
-STR_0014_GOODS                                                  :سامان تجارت
-STR_0015_GRAIN                                                  :گیہوں
-STR_0016_WOOD                                                   :لکڑی
-STR_0017_IRON_ORE                                               :خام لوہا
-STR_0018_STEEL                                                  :فولاد
-STR_0019_VALUABLES                                              :قیمتی اشیا
-STR_001A_COPPER_ORE                                             :خام تانبا
-STR_001B_MAIZE                                                  :مکی
-STR_001C_FRUIT                                                  :پھل
-STR_001D_DIAMONDS                                               :ہیرے
-STR_001E_FOOD                                                   :کھانا
-STR_001F_PAPER                                                  :کاغذ
-STR_0020_GOLD                                                   :سونا
-STR_0021_WATER                                                  :پانی
-STR_0022_WHEAT                                                  :گندم
-STR_0023_RUBBER                                                 :ربر
-STR_0024_SUGAR                                                  :چینی
-STR_0025_TOYS                                                   :کھلونے
-STR_0026_CANDY                                                  :مٹھایاں
-STR_0027_COLA                                                   :کولا
-STR_0028_COTTON_CANDY                                           :لچھا
-STR_0029_BUBBLES                                                :بلبلے
-STR_002A_TOFFEE                                                 :ٹافی
-STR_002B_BATTERIES                                              :بیٹریاں
-STR_002C_PLASTIC                                                :پلاسٹک
-STR_002D_FIZZY_DRINKS                                           :گیسی مشروب
-STR_002E                                                        :
-STR_002F_PASSENGER                                              :مسافر
-STR_0030_COAL                                                   :کویلہ
-STR_0031_MAIL                                                   :ڈاک
-STR_0032_OIL                                                    :تیل
-STR_0033_LIVESTOCK                                              :مویشی
-STR_0034_GOODS                                                  :سامان
-STR_0035_GRAIN                                                  :گیہوں
-STR_0036_WOOD                                                   :لکڑی
-STR_0037_IRON_ORE                                               :خام لوہا
-STR_0038_STEEL                                                  :فولاد
-STR_0039_VALUABLES                                              :نوادرات
-STR_003A_COPPER_ORE                                             :خام تانبا
-STR_003B_MAIZE                                                  :مکیی
-STR_003C_FRUIT                                                  :بھل
-STR_003D_DIAMOND                                                :ہیرا
-STR_003E_FOOD                                                   :کھانا
-STR_003F_PAPER                                                  :کاغذ
-STR_0040_GOLD                                                   :سونا
-STR_0041_WATER                                                  :پانی
-STR_0042_WHEAT                                                  :گندم
-STR_0043_RUBBER                                                 :ربر
-STR_0044_SUGAR                                                  :چینی
-STR_0045_TOY                                                    :کھلونا
-STR_0046_CANDY                                                  :مٹھایی
-STR_0047_COLA                                                   :کولا
-STR_0048_COTTON_CANDY                                           :لچھا
-STR_0049_BUBBLE                                                 :بلبلہ
-STR_004A_TOFFEE                                                 :ٹافی
-STR_004B_BATTERY                                                :بیٹری
-STR_004C_PLASTIC                                                :پلاسٹک
-STR_004D_FIZZY_DRINK                                            :گیسی مشروب
+STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}ہموار زمین چاہیے
+STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}منتظر: {WHITE}{STRING}
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} سے براستہ ہے {STATION})
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}منظور کرتا ہے: {WHITE}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}منظور کرتا ہے: {GOLD}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}فراہم کرتا ہے: {GOLD}
+STR_CARGO_PLURAL_NOTHING                                        :
+STR_CARGO_PLURAL_PASSENGERS                                     :مسافر
+STR_CARGO_PLURAL_COAL                                           :کویلہ
+STR_CARGO_PLURAL_MAIL                                           :ڈاک
+STR_CARGO_PLURAL_OIL                                            :تیل
+STR_CARGO_PLURAL_LIVESTOCK                                      :مویشی
+STR_CARGO_PLURAL_GOODS                                          :سامان تجارت
+STR_CARGO_PLURAL_GRAIN                                          :گیہوں
+STR_CARGO_PLURAL_WOOD                                           :لکڑی
+STR_CARGO_PLURAL_IRON_ORE                                       :خام لوہا
+STR_CARGO_PLURAL_STEEL                                          :فولاد
+STR_CARGO_PLURAL_VALUABLES                                      :قیمتی اشیا
+STR_CARGO_PLURAL_COPPER_ORE                                     :خام تانبا
+STR_CARGO_PLURAL_MAIZE                                          :مکی
+STR_CARGO_PLURAL_FRUIT                                          :پھل
+STR_CARGO_PLURAL_DIAMONDS                                       :ہیرے
+STR_CARGO_PLURAL_FOOD                                           :کھانا
+STR_CARGO_PLURAL_PAPER                                          :کاغذ
+STR_CARGO_PLURAL_GOLD                                           :سونا
+STR_CARGO_PLURAL_WATER                                          :پانی
+STR_CARGO_PLURAL_WHEAT                                          :گندم
+STR_CARGO_PLURAL_RUBBER                                         :ربر
+STR_CARGO_PLURAL_SUGAR                                          :چینی
+STR_CARGO_PLURAL_TOYS                                           :کھلونے
+STR_CARGO_PLURAL_CANDY                                          :مٹھایاں
+STR_CARGO_PLURAL_COLA                                           :کولا
+STR_CARGO_PLURAL_COTTON_CANDY                                   :لچھا
+STR_CARGO_PLURAL_BUBBLES                                        :بلبلے
+STR_CARGO_PLURAL_TOFFEE                                         :ٹافی
+STR_CARGO_PLURAL_BATTERIES                                      :بیٹریاں
+STR_CARGO_PLURAL_PLASTIC                                        :پلاسٹک
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :گیسی مشروب
+STR_CARGO_SINGULAR_NOTHING                                      :
+STR_CARGO_SINGULAR_PASSENGER                                    :مسافر
+STR_CARGO_SINGULAR_COAL                                         :کویلہ
+STR_CARGO_SINGULAR_MAIL                                         :ڈاک
+STR_CARGO_SINGULAR_OIL                                          :تیل
+STR_CARGO_SINGULAR_LIVESTOCK                                    :مویشی
+STR_CARGO_SINGULAR_GOODS                                        :سامان
+STR_CARGO_SINGULAR_GRAIN                                        :گیہوں
+STR_CARGO_SINGULAR_WOOD                                         :لکڑی
+STR_CARGO_SINGULAR_IRON_ORE                                     :خام لوہا
+STR_CARGO_SINGULAR_STEEL                                        :فولاد
+STR_CARGO_SINGULAR_VALUABLES                                    :نوادرات
+STR_CARGO_SINGULAR_COPPER_ORE                                   :خام تانبا
+STR_CARGO_SINGULAR_MAIZE                                        :مکیی
+STR_CARGO_SINGULAR_FRUIT                                        :بھل
+STR_CARGO_SINGULAR_DIAMOND                                      :ہیرا
+STR_CARGO_SINGULAR_FOOD                                         :کھانا
+STR_CARGO_SINGULAR_PAPER                                        :کاغذ
+STR_CARGO_SINGULAR_GOLD                                         :سونا
+STR_CARGO_SINGULAR_WATER                                        :پانی
+STR_CARGO_SINGULAR_WHEAT                                        :گندم
+STR_CARGO_SINGULAR_RUBBER                                       :ربر
+STR_CARGO_SINGULAR_SUGAR                                        :چینی
+STR_CARGO_SINGULAR_TOY                                          :کھلونا
+STR_CARGO_SINGULAR_CANDY                                        :مٹھایی
+STR_CARGO_SINGULAR_COLA                                         :کولا
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :لچھا
+STR_CARGO_SINGULAR_BUBBLE                                       :بلبلہ
+STR_CARGO_SINGULAR_TOFFEE                                       :ٹافی
+STR_CARGO_SINGULAR_BATTERY                                      :بیٹری
+STR_CARGO_SINGULAR_PLASTIC                                      :پلاسٹک
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :گیسی مشروب
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} مسافر{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} کویلہ
-STR_00B4_CAN_T_DO_THIS                                          :{WHITE}یہ نہیں کر سکتا۔۔۔
-STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}یہ جگہ صاف نہیں کر سکتا۔۔۔
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}یہ نہیں کر سکتا۔۔۔
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}یہ جگہ صاف نہیں کر سکتا۔۔۔
 
-STR_00C5                                                        :{BLACK}{CROSS}
-STR_00C6                                                        :{SILVER}{CROSS}
-STR_00C7_QUIT                                                   :{WHITE}باہر نکلو
-STR_00C8_YES                                                    :{BLACK}ہاں
-STR_00C9_NO                                                     :{BLACK}نہیں
-STR_00CB_1                                                      :{BLACK}۱
-STR_00CC_2                                                      :{BLACK}۲
-STR_00CD_3                                                      :{BLACK}۳
-STR_00CE_4                                                      :{BLACK}۴
-STR_00CF_5                                                      :{BLACK}۵
-STR_00D0_NOTHING                                                :کچھ نہیں
-STR_00D1_DARK_BLUE                                              :گہرا نیلا
-STR_00D2_PALE_GREEN                                             :ہلکا سبز
-STR_00D3_PINK                                                   :گلابی
-STR_00D4_YELLOW                                                 :پیلا
-STR_00D5_RED                                                    :سرخ
-STR_00D6_LIGHT_BLUE                                             :ہلکا نیلا
-STR_00D7_GREEN                                                  :سبز
-STR_00D8_DARK_GREEN                                             :گہرا سبز
-STR_00D9_BLUE                                                   :نیلا
-STR_00DC_PURPLE                                                 :جامنی
-STR_00DD_ORANGE                                                 :نارنجی
-STR_00DE_BROWN                                                  :بھورا
-STR_00DF_GREY                                                   :سلیٹی
-STR_00E0_WHITE                                                  :سفید
-STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}کھیل میں بہت زیادہ سواریاں
-STR_00E2                                                        :{BLACK}{COMMA}
-STR_00E3                                                        :{RED}{COMMA}
-STR_00E4_LOCATION                                               :{BLACK}جگہ
-STR_00E6_VEHICLES                                               :سواریاں
-STR_00E7_INDUSTRIES                                             :صنعتیں
-STR_00E8_ROUTES                                                 :راستے
-STR_00E9_VEGETATION                                             :سبزہ
-STR_00EA_OWNERS                                                 :مالکین
-STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}سڑکیں
-STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}اڈے/ہوایی اڈے/بندرگاہیں
-STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}عمارتیں/صنعتیں
-STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}سواریاں
-STR_00F0_100M                                                   :{BLACK}{TINYFONT}۱۰۰ میٹر
-STR_00F1_200M                                                   :{BLACK}{TINYFONT}۲۰۰ میٹر
-STR_00F2_300M                                                   :{BLACK}{TINYFONT}۳۰۰میٹر
-STR_00F3_400M                                                   :{BLACK}{TINYFONT}۴۰۰ میٹر
-STR_00F4_500M                                                   :{BLACK}{TINYFONT}۵۰۰ میٹر
-STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}ریل گاڑیاں
-STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}سڑک کی گاڑیاں
-STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}کشتیاں
-STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}ہوایی جہاز
-STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}مواصلاتی راستے
-STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}جنگل
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_QUIT_CAPTION                                                :{WHITE}باہر نکلو
+STR_YES                                                         :{BLACK}ہاں
+STR_NO                                                          :{BLACK}نہیں
+STR_BLACK_1                                                     :{BLACK}۱
+STR_BLACK_2                                                     :{BLACK}۲
+STR_BLACK_3                                                     :{BLACK}۳
+STR_BLACK_4                                                     :{BLACK}۴
+STR_BLACK_5                                                     :{BLACK}۵
+STR_JUST_NOTHING                                                :کچھ نہیں
+STR_COLOUR_DARK_BLUE                                            :گہرا نیلا
+STR_COLOUR_PALE_GREEN                                           :ہلکا سبز
+STR_COLOUR_PINK                                                 :گلابی
+STR_COLOUR_YELLOW                                               :پیلا
+STR_COLOUR_RED                                                  :سرخ
+STR_COLOUR_LIGHT_BLUE                                           :ہلکا نیلا
+STR_COLOUR_GREEN                                                :سبز
+STR_COLOUR_DARK_GREEN                                           :گہرا سبز
+STR_COLOUR_BLUE                                                 :نیلا
+STR_COLOUR_PURPLE                                               :جامنی
+STR_COLOUR_ORANGE                                               :نارنجی
+STR_COLOUR_BROWN                                                :بھورا
+STR_COLOUR_GREY                                                 :سلیٹی
+STR_COLOUR_WHITE                                                :سفید
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}کھیل میں بہت زیادہ سواریاں
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BUTTON_LOCATION                                             :{BLACK}جگہ
+STR_SMALLMAP_TYPE_VEHICLES                                      :سواریاں
+STR_SMALLMAP_TYPE_INDUSTRIES                                    :صنعتیں
+STR_SMALLMAP_TYPE_ROUTES                                        :راستے
+STR_SMALLMAP_TYPE_VEGETATION                                    :سبزہ
+STR_SMALLMAP_TYPE_OWNERS                                        :مالکین
+STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}سڑکیں
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}اڈے/ہوایی اڈے/بندرگاہیں
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}عمارتیں/صنعتیں
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}سواریاں
+STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}۱۰۰ میٹر
+STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}۲۰۰ میٹر
+STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}۳۰۰میٹر
+STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}۴۰۰ میٹر
+STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}۵۰۰ میٹر
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}ریل گاڑیاں
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}سڑک کی گاڑیاں
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}کشتیاں
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}ہوایی جہاز
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}مواصلاتی راستے
+STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}جنگل
 
 
 
@@ -156,16 +156,16 @@ STR_00FC_FOREST                                                 :{BLACK}{TINYFON
 
 
 ############ range for menu starts
-STR_0159_CARGO_PAYMENT_RATES                                    :سامان کی ادایگی کا تناسب
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :سامان کی ادایگی کا تناسب
 ############ range for menu ends
 
-STR_015B_OPENTTD                                                :{WHITE}اوپن ٹی ٹی ڈی کے متعلق
-STR_015C_SAVE_GAME                                              :کھیل محفوظ کرو
-STR_015D_LOAD_GAME                                              :کھیل دوبارہ چڑھاو
-STR_015E_QUIT_GAME                                              :کھیل چھوڑ دو
-STR_015F_QUIT                                                   :باہر نکلو
+STR_ABOUT_OPENTTD                                               :{WHITE}اوپن ٹی ٹی ڈی کے متعلق
+STR_FILE_MENU_SAVE_GAME                                         :کھیل محفوظ کرو
+STR_FILE_MENU_LOAD_GAME                                         :کھیل دوبارہ چڑھاو
+STR_FILE_MENU_QUIT_GAME                                         :کھیل چھوڑ دو
+STR_FILE_MENU_EXIT                                              :باہر نکلو
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}کیا آپ کو یقین ہے کہ آپ اس کھیل کو چھوڑنا چاہ رہے ہیں؟
-STR_0161_QUIT_GAME                                              :{WHITE}کھیل چھوڑ دو
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}کھیل چھوڑ دو
 STR_SORT_ORDER_TIP                                              :{BLACK} (ترتیب کا طریقہ منتخب کریں (کم ہوتا/بڑھتا
 STR_SORT_CRITERIA_TIP                                           :{BLACK}ترتیب کا طریقہ منتخب کریں
 STR_SORT_BY                                                     :{BLACK}سے ترتیب دو
@@ -193,27 +193,27 @@ STR_MANAGE_LIST                                                 :{BLACK}فہرس
 ############ range for months starts
 ############ range for months ends
 
-STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}کمپنی کی مالیاتی معلومات دکھاو
-STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}کمپنی کی عام معلومات دکھاو
-STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}کمپنی کی ریل گاڑیوں کی فہرست دکھاو
-STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}کمپنی کی سڑک کی سواریوں کی فہرست دکھاو
-STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}کمپنی کی کشتیوں کی فہرست دکھاو
-STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}کمپنی کے ہوای جہازوں کی فہرست دکھاو
-STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}بڑا کر کے دکھاو
-STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}چھوٹا کر کے دکھاو
-STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}ریل کی پٹری بچھاو
-STR_0182_BUILD_ROADS                                            :{BLACK}سڑکیں بناو
-STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}بندرگاہیں بناو
-STR_0184_BUILD_AIRPORTS                                         :{BLACK}ہوای اڈے بناو
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}درخت اگاو، اشارے لگاو، وغیرہ
-STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}زمینی رقبہ کی معلومات
-STR_0188                                                        :{BLACK}{SMALLUPARROW}
-STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
-STR_018B_CLOSE_WINDOW                                           :{BLACK}کھڑکی بند کرو
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}کھڑکی کا نام - کھڑکی کو ہلانے کیلیے اسے پکڑ کر ہلاو
-STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}زمین کے ایک مربے پر عمارتیں وغیرہ گراو
-STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}زمین کا ایک کنارہ نیچے کرو
-STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}زمین کا ایک کنارہ اونچا کرو
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}کمپنی کی مالیاتی معلومات دکھاو
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}کمپنی کی عام معلومات دکھاو
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}کمپنی کی ریل گاڑیوں کی فہرست دکھاو
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}کمپنی کی سڑک کی سواریوں کی فہرست دکھاو
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}کمپنی کی کشتیوں کی فہرست دکھاو
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}کمپنی کے ہوای جہازوں کی فہرست دکھاو
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}بڑا کر کے دکھاو
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}چھوٹا کر کے دکھاو
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}ریل کی پٹری بچھاو
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}سڑکیں بناو
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}بندرگاہیں بناو
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ہوای اڈے بناو
+STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}درخت اگاو، اشارے لگاو، وغیرہ
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}زمینی رقبہ کی معلومات
+STR_SMALL_ARROW_UP                                              :{BLACK}{SMALLUPARROW}
+STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDOWNARROW}
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}کھڑکی بند کرو
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}کھڑکی کا نام - کھڑکی کو ہلانے کیلیے اسے پکڑ کر ہلاو
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}زمین کے ایک مربے پر عمارتیں وغیرہ گراو
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}زمین کا ایک کنارہ نیچے کرو
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}زمین کا ایک کنارہ اونچا کرو
 
 ############ range for service numbers starts
 ############ range for service numbers ends

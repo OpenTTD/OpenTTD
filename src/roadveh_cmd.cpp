@@ -186,7 +186,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
 
 	if (!Vehicle::AllocateList(vl, num_vehicles)) {
-		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 	}
 
 	v = vl[0];
@@ -194,7 +194,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	/* find the first free roadveh id */
 	unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_ROAD);
 	if (unit_num > _settings_game.vehicle.max_roadveh)
-		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 
 	if (flags & DC_EXEC) {
 		int x;
@@ -333,7 +333,7 @@ CommandCost CmdSellRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (HASBITS(v->vehstatus, VS_CRASHED)) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
 
 	if (!v->IsStoppedInDepot()) {
-		return_cmd_error(STR_9013_MUST_BE_STOPPED_INSIDE);
+		return_cmd_error(STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT);
 	}
 
 	CommandCost ret(EXPENSES_NEW_VEHICLES, -v->value);
@@ -610,7 +610,7 @@ static void RoadVehCrash(Vehicle *v)
 	SetDParam(0, pass);
 	AddNewsItem(
 		(pass == 1) ?
-			STR_9031_ROAD_VEHICLE_CRASH_DRIVER : STR_9032_ROAD_VEHICLE_CRASH_DIE,
+			STR_NEWS_ROAD_CRASH_DRIVER : STR_NEWS_ROAD_CRASH,
 		NS_ACCIDENT_VEHICLE,
 		v->index,
 		0
@@ -788,7 +788,7 @@ static void RoadVehArrivesAt(const Vehicle *v, Station *st)
 			st->had_vehicle_of_type |= HVOT_BUS;
 			SetDParam(0, st->index);
 			AddNewsItem(
-				v->u.road.roadtype == ROADTYPE_ROAD ? STR_902F_CITIZENS_CELEBRATE_FIRST : STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM,
+				v->u.road.roadtype == ROADTYPE_ROAD ? STR_NEWS_FIRST_ROAD_BUS_ARRIVAL : STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL,
 				(v->owner == _local_company) ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
 				v->index,
 				st->index
@@ -801,7 +801,7 @@ static void RoadVehArrivesAt(const Vehicle *v, Station *st)
 			st->had_vehicle_of_type |= HVOT_TRUCK;
 			SetDParam(0, st->index);
 			AddNewsItem(
-				v->u.road.roadtype == ROADTYPE_ROAD ? STR_9030_CITIZENS_CELEBRATE_FIRST : STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM,
+				v->u.road.roadtype == ROADTYPE_ROAD ? STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL : STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL,
 				(v->owner == _local_company) ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
 				v->index,
 				st->index
@@ -1991,7 +1991,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_ROAD || !CheckOwnership(v->owner)) return CMD_ERROR;
-	if (!v->IsStoppedInDepot()) return_cmd_error(STR_9013_MUST_BE_STOPPED_INSIDE);
+	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT);
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_REFIT_DESTROYED_VEHICLE);
 
 	if (new_cid >= NUM_CARGO) return CMD_ERROR;

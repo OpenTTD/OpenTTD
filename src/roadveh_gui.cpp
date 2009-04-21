@@ -78,12 +78,12 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 			if (u->cargo_cap == 0) continue;
 
-			str = STR_8812_EMPTY;
+			str = STR_VEHICLE_DETAILS_CARGO_EMPTY;
 			if (!u->cargo.Empty()) {
 				SetDParam(0, u->cargo_type);
 				SetDParam(1, u->cargo.Count());
 				SetDParam(2, u->cargo.Source());
-				str = STR_8813_FROM;
+				str = STR_VEHICLE_DETAILS_CARGO_FROM;
 				feeder_share += u->cargo.FeederShare();
 			}
 			DrawString(left, right, y + 21 + y_offset, str, TC_FROMSTRING);
@@ -98,12 +98,12 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 		SetDParam(4, GetCargoSubtypeText(v));
 		DrawString(left, right, y + 10 + y_offset, STR_VEHICLE_INFO_CAPACITY, TC_FROMSTRING);
 
-		str = STR_8812_EMPTY;
+		str = STR_VEHICLE_DETAILS_CARGO_EMPTY;
 		if (!v->cargo.Empty()) {
 			SetDParam(0, v->cargo_type);
 			SetDParam(1, v->cargo.Count());
 			SetDParam(2, v->cargo.Source());
-			str = STR_8813_FROM;
+			str = STR_VEHICLE_DETAILS_CARGO_FROM;
 			feeder_share += v->cargo.FeederShare();
 		}
 		DrawString(left, right, y + 21 + y_offset, str, TC_FROMSTRING);

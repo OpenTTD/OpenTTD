@@ -52,16 +52,16 @@ enum LandInfoWidgets {
 };
 
 static const Widget _land_info_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},           // LIW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   299,     0,    13, STR_01A3_LAND_AREA_INFORMATION, STR_018C_WINDOW_TITLE_DRAG_THIS}, // LIW_CAPTION
-{      WWT_PANEL, RESIZE_BOTTOM,  COLOUR_GREY,     0,   299,    14,    99, 0x0,                            STR_NULL},                        // LIW_BACKGROUND
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,                   STR_TOOLTIP_CLOSE_WINDOW},           // LIW_CLOSE
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   299,     0,    13, STR_LAND_AREA_INFORMATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // LIW_CAPTION
+{      WWT_PANEL, RESIZE_BOTTOM,  COLOUR_GREY,     0,   299,    14,    99, 0x0,                               STR_NULL},                           // LIW_BACKGROUND
 {    WIDGETS_END},
 };
 
 static const NWidgetPart _nested_land_info_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, LIW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_GREY, LIW_CAPTION), SetDataTip(STR_01A3_LAND_AREA_INFORMATION, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, LIW_CAPTION), SetDataTip(STR_LAND_AREA_INFORMATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, LIW_BACKGROUND), SetMinimalSize(300, 86), SetResize(0, 1), EndContainer(),
 };
@@ -122,7 +122,7 @@ public:
 		 *  - drivethrough roadstops can be build on town owned roads (up to 2 owners) and
 		 *  - roads can have up to four owners (railroad, road, tram, 3rd-roadtype "highway").
 		 */
-		td.owner_type[0] = STR_01A7_OWNER; // At least one owner is displayed, though it might be "N/A".
+		td.owner_type[0] = STR_LAND_AREA_INFORMATION_OWNER; // At least one owner is displayed, though it might be "N/A".
 		td.owner_type[1] = STR_NULL;       // STR_NULL results in skipping the owner
 		td.owner_type[2] = STR_NULL;
 		td.owner_type[3] = STR_NULL;
@@ -150,21 +150,21 @@ public:
 		for (uint i = 0; i < 4; i++) {
 			if (td.owner_type[i] == STR_NULL) continue;
 
-			SetDParam(0, STR_01A6_N_A);
+			SetDParam(0, STR_LAND_AREA_INFORMATION_OWNER_N_A);
 			if (td.owner[i] != OWNER_NONE && td.owner[i] != OWNER_WATER) GetNameOfOwner(td.owner[i], tile);
 			GetString(this->landinfo_data[line_nr], td.owner_type[i], lastof(this->landinfo_data[line_nr]));
 			line_nr++;
 		}
 
 		/* Cost to clear/revenue when cleared */
-		StringID str = STR_01A4_COST_TO_CLEAR_N_A;
+		StringID str = STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A;
 		if (CmdSucceeded(costclear)) {
 			Money cost = costclear.GetCost();
 			if (cost < 0) {
 				cost = -cost; // Negate negative cost to a positive revenue
 				str = STR_REVENUE_WHEN_CLEARED;
 			} else {
-				str = STR_01A5_COST_TO_CLEAR;
+				str = STR_LAND_AREA_INFORMATION_COST_TO_CLEAR;
 			}
 			SetDParam(0, cost);
 		}
@@ -182,12 +182,12 @@ public:
 		line_nr++;
 
 		/* Local authority */
-		SetDParam(0, STR_01A9_NONE);
+		SetDParam(0, STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE);
 		if (t != NULL && t->IsValid()) {
 			SetDParam(0, STR_TOWN);
 			SetDParam(1, t->index);
 		}
-		GetString(this->landinfo_data[line_nr], STR_01A8_LOCAL_AUTHORITY, lastof(this->landinfo_data[line_nr]));
+		GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY, lastof(this->landinfo_data[line_nr]));
 		line_nr++;
 
 		/* Build date */
@@ -224,7 +224,7 @@ public:
 		this->landinfo_data[line_nr][0] = '\0';
 
 		/* Cargo acceptance is displayed in a extra multiline */
-		char *strp = GetString(this->landinfo_data[LAND_INFO_MULTICENTER_LINE], STR_01CE_CARGO_ACCEPTED, lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
+		char *strp = GetString(this->landinfo_data[LAND_INFO_MULTICENTER_LINE], STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED, lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
 		bool found = false;
 
 		for (CargoID i = 0; i < NUM_CARGO; ++i) {
@@ -240,7 +240,7 @@ public:
 				if (ac[i] < 8) {
 					SetDParam(0, ac[i]);
 					SetDParam(1, GetCargo(i)->name);
-					strp = GetString(strp, STR_01D1_8, lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
+					strp = GetString(strp, STR_LAND_AREA_INFORMATION_CARGO_EIGHTS, lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
 				} else {
 					strp = GetString(strp, GetCargo(i)->name, lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
 				}
@@ -297,17 +297,17 @@ enum AboutWidgets {
 };
 
 static const Widget _about_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},           // AW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   419,     0,    13, STR_015B_OPENTTD, STR_018C_WINDOW_TITLE_DRAG_THIS}, // AW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   419,    14,   271, 0x0,              STR_NULL},                        // AW_BACKGROUND
-{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,     5,   414,    40,   245, STR_NULL,         STR_NULL},                        // AW_FRAME
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,   STR_TOOLTIP_CLOSE_WINDOW},           // AW_CLOSE
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   419,     0,    13, STR_ABOUT_OPENTTD, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // AW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   419,    14,   271, 0x0,               STR_NULL},                           // AW_BACKGROUND
+{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,     5,   414,    40,   245, STR_NULL,          STR_NULL},                           // AW_FRAME
 {    WIDGETS_END},
 };
 
 static const NWidgetPart _nested_about_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, AW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_GREY, AW_CAPTION), SetDataTip(STR_015B_OPENTTD, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, AW_CAPTION), SetDataTip(STR_ABOUT_OPENTTD, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, AW_BACKGROUND),
 		NWidget(WWT_FRAME, COLOUR_GREY, AW_FRAME), SetMinimalSize(410, 206), SetPadding(26, 5, 26, 5), EndContainer(),
@@ -394,8 +394,8 @@ struct AboutWindow : public Window {
 		this->DrawWidgets();
 
 		/* Show original copyright and revision version */
-		DrawString(this->widget[AW_BACKGROUND].left + 2, this->widget[AW_BACKGROUND].right - 2, 17, STR_00B6_ORIGINAL_COPYRIGHT, TC_FROMSTRING, SA_CENTER);
-		DrawString(this->widget[AW_BACKGROUND].left + 2, this->widget[AW_BACKGROUND].right - 2, 17 + 10, STR_00B7_VERSION, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->widget[AW_BACKGROUND].left + 2, this->widget[AW_BACKGROUND].right - 2, 17, STR_ABOUT_ORIGINAL_COPYRIGHT, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->widget[AW_BACKGROUND].left + 2, this->widget[AW_BACKGROUND].right - 2, 17 + 10, STR_ABOUT_VERSION, TC_FROMSTRING, SA_CENTER);
 
 		int y = this->scroll_height;
 
@@ -411,7 +411,7 @@ struct AboutWindow : public Window {
 		if (y < 50) this->scroll_height = this->height - 40;
 
 		DrawString(this->widget[AW_BACKGROUND].left + 2, this->widget[AW_BACKGROUND].right - 2, this->height - 25, "Website: http://www.openttd.org", TC_BLACK, SA_CENTER);
-		DrawString(this->widget[AW_BACKGROUND].left + 2, this->widget[AW_BACKGROUND].right - 2, this->height - 15, STR_00BA_COPYRIGHT_OPENTTD, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->widget[AW_BACKGROUND].left + 2, this->widget[AW_BACKGROUND].right - 2, this->height - 15, STR_ABOUT_COPYRIGHT_OPENTTD, TC_FROMSTRING, SA_CENTER);
 	}
 
 	virtual void OnTick()
@@ -431,15 +431,15 @@ void ShowAboutWindow()
 }
 
 static const Widget _errmsg_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    COLOUR_RED,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    COLOUR_RED,    11,   239,     0,    13, STR_00B2_MESSAGE, STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    COLOUR_RED,     0,    10,     0,    13, STR_BLACK_CROSS,         STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    COLOUR_RED,    11,   239,     0,    13, STR_ERROR_MESSAGE_CAPTION, STR_NULL},
 {      WWT_PANEL,   RESIZE_BOTTOM,  COLOUR_RED,     0,   239,    14,    45, 0x0,              STR_NULL},
 {    WIDGETS_END},
 };
 
 static const Widget _errmsg_face_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    COLOUR_RED,     0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    COLOUR_RED,    11,   333,     0,    13, STR_00B3_MESSAGE_FROM, STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    COLOUR_RED,     0,    10,     0,    13, STR_BLACK_CROSS,              STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    COLOUR_RED,    11,   333,     0,    13, STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_NULL},
 {      WWT_PANEL,   RESIZE_BOTTOM,  COLOUR_RED,     0,   333,    14,   136, 0x0,                   STR_NULL},
 {   WIDGETS_END},
 };
@@ -552,7 +552,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 	Point pt;
 	const ViewPort *vp;
 
-	if (msg_1 != STR_013B_OWNED_BY || GetDParam(2) >= 8) {
+	if (msg_1 != STR_ERROR_OWNED_BY || GetDParam(2) >= 8) {
 		if ((x | y) != 0) {
 			pt = RemapCoords2(x, y);
 			vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
@@ -586,11 +586,11 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 
 void ShowEstimatedCostOrIncome(Money cost, int x, int y)
 {
-	StringID msg = STR_0805_ESTIMATED_COST;
+	StringID msg = STR_MESSAGE_ESTIMATED_COST;
 
 	if (cost < 0) {
 		cost = -cost;
-		msg = STR_0807_ESTIMATED_INCOME;
+		msg = STR_MESSAGE_ESTIMATED_INCOME;
 	}
 	SetDParam(0, cost);
 	ShowErrorMessage(INVALID_STRING_ID, msg, x, y);
@@ -599,11 +599,11 @@ void ShowEstimatedCostOrIncome(Money cost, int x, int y)
 void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost)
 {
 	Point pt = RemapCoords(x, y, z);
-	StringID msg = STR_0801_COST;
+	StringID msg = STR_INCOME_FLOAT_COST;
 
 	if (cost < 0) {
 		cost = -cost;
-		msg = STR_0803_INCOME;
+		msg = STR_INCOME_FLOAT_INCOME;
 	}
 	SetDParam(0, cost);
 	AddTextEffect(msg, pt.x, pt.y, 0x250, TE_RISING);
@@ -734,7 +734,7 @@ static int DrawStationCoverageText(const AcceptedCargo cargo,
 	bool first = true;
 
 	char string[512];
-	char *b = InlineString(string, supplies ? STR_SUPPLIES : STR_000D_ACCEPTS);
+	char *b = InlineString(string, supplies ? STR_STATION_BUILD_SUPPLIES_CARGO : STR_STATION_BUILD_ACCEPTS_CARGO);
 
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		if (b >= lastof(string) - (1 + 2 * 4)) break; // ',' or ' ' and two calls to Utf8Encode()
@@ -757,7 +757,7 @@ static int DrawStationCoverageText(const AcceptedCargo cargo,
 	}
 
 	/* If first is still true then no cargo is accepted */
-	if (first) b = InlineString(b, STR_00D0_NOTHING);
+	if (first) b = InlineString(b, STR_JUST_NOTHING);
 
 	*b = '\0';
 
@@ -1206,28 +1206,28 @@ struct QueryStringWindow : public QueryStringBaseWindow
 };
 
 static const Widget _query_string_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,        STR_018B_CLOSE_WINDOW}, // QUERY_STR_WIDGET_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   259,     0,    13, STR_012D,        STR_NULL},              // QUERY_STR_WIDGET_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   259,    14,    29, 0x0,             STR_NULL},              // QUERY_STR_WIDGET_BACKGROUND
-{    WWT_EDITBOX,   RESIZE_NONE,  COLOUR_GREY,     2,   257,    16,    27, 0x0,             STR_NULL},              // QUERY_STR_WIDGET_TEXT
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    86,    30,    41, STR_DEFAULT,     STR_NULL},              // QUERY_STR_WIDGET_DEFAULT
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    87,   172,    30,    41, STR_012E_CANCEL, STR_NULL},              // QUERY_STR_WIDGET_CANCEL
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   173,   259,    30,    41, STR_012F_OK,     STR_NULL},              // QUERY_STR_WIDGET_OK
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,   STR_TOOLTIP_CLOSE_WINDOW}, // QUERY_STR_WIDGET_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   259,     0,    13, STR_QUERY_CAPTION, STR_NULL},              // QUERY_STR_WIDGET_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   259,    14,    29, 0x0,               STR_NULL},              // QUERY_STR_WIDGET_BACKGROUND
+{    WWT_EDITBOX,   RESIZE_NONE,  COLOUR_GREY,     2,   257,    16,    27, 0x0,               STR_NULL},              // QUERY_STR_WIDGET_TEXT
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    86,    30,    41, STR_DEFAULT,       STR_NULL},              // QUERY_STR_WIDGET_DEFAULT
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    87,   172,    30,    41, STR_QUERY_CANCEL,  STR_NULL},              // QUERY_STR_WIDGET_CANCEL
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   173,   259,    30,    41, STR_QUERY_OK,      STR_NULL},              // QUERY_STR_WIDGET_OK
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_query_string_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, QUERY_STR_WIDGET_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, QUERY_STR_WIDGET_CAPTION), SetDataTip(STR_012D, STR_NULL),
+		NWidget(WWT_CAPTION, COLOUR_GREY, QUERY_STR_WIDGET_CAPTION), SetDataTip(STR_QUERY_CAPTION, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, QUERY_STR_WIDGET_BACKGROUND),
 		NWidget(WWT_EDITBOX, COLOUR_GREY, QUERY_STR_WIDGET_TEXT), SetMinimalSize(256, 12), SetPadding(2, 2, 2, 2),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_DEFAULT), SetMinimalSize(87, 12), SetDataTip(STR_DEFAULT, STR_NULL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_CANCEL), SetMinimalSize(86, 12), SetDataTip(STR_012E_CANCEL, STR_NULL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_OK), SetMinimalSize(87, 12), SetDataTip(STR_012F_OK, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_CANCEL), SetMinimalSize(86, 12), SetDataTip(STR_QUERY_CANCEL, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_OK), SetMinimalSize(87, 12), SetDataTip(STR_QUERY_OK, STR_NULL),
 	EndContainer(),
 };
 
@@ -1365,11 +1365,11 @@ struct QueryWindow : public Window {
 
 
 static const Widget _query_widgets[] = {
-{  WWT_CLOSEBOX, RESIZE_NONE,  COLOUR_RED,      0,  10,   0,  13, STR_00C5,        STR_018B_CLOSE_WINDOW}, // QUERY_WIDGET_CLOSEBOX
+{  WWT_CLOSEBOX, RESIZE_NONE,  COLOUR_RED,      0,  10,   0,  13, STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW}, // QUERY_WIDGET_CLOSEBOX
 {   WWT_CAPTION, RESIZE_NONE,  COLOUR_RED,     11, 209,   0,  13, STR_NULL,        STR_NULL},              // QUERY_WIDGET_CAPTION
 {     WWT_PANEL, RESIZE_NONE,  COLOUR_RED,      0, 209,  14,  81, 0x0, /*OVERRIDE*/STR_NULL},              // QUERY_WIDGET_BACKGROUND
-{WWT_PUSHTXTBTN, RESIZE_NONE,  COLOUR_YELLOW,  20,  90,  62,  73, STR_00C9_NO,     STR_NULL},              // QUERY_WIDGET_NO
-{WWT_PUSHTXTBTN, RESIZE_NONE,  COLOUR_YELLOW, 120, 190,  62,  73, STR_00C8_YES,    STR_NULL},              // QUERY_WIDGET_YES
+{WWT_PUSHTXTBTN, RESIZE_NONE,  COLOUR_YELLOW,  20,  90,  62,  73, STR_NO,          STR_NULL},              // QUERY_WIDGET_NO
+{WWT_PUSHTXTBTN, RESIZE_NONE,  COLOUR_YELLOW, 120, 190,  62,  73, STR_YES,         STR_NULL},              // QUERY_WIDGET_YES
 {   WIDGETS_END },
 };
 
@@ -1381,8 +1381,8 @@ static const NWidgetPart _nested_query_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_RED, QUERY_WIDGET_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 48),
 		NWidget(NWID_HORIZONTAL), SetPIP(20, 29, 19),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, QUERY_WIDGET_NO), SetMinimalSize(71, 12), SetDataTip(STR_00C9_NO, STR_NULL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, QUERY_WIDGET_YES), SetMinimalSize(71, 12), SetDataTip(STR_00C8_YES, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, QUERY_WIDGET_NO), SetMinimalSize(71, 12), SetDataTip(STR_NO, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, QUERY_WIDGET_YES), SetMinimalSize(71, 12), SetDataTip(STR_YES, STR_NULL),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
 	EndContainer(),
@@ -1411,35 +1411,35 @@ void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallback
 
 
 static const Widget _load_dialog_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   256,     0,    13, STR_NULL,                 STR_018C_WINDOW_TITLE_DRAG_THIS},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,          STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   256,     0,    13, STR_NULL,                 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   127,    14,    25, STR_SORT_BY_NAME,         STR_SORT_ORDER_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   128,   256,    14,    25, STR_SORT_BY_DATE,         STR_SORT_ORDER_TIP},
 {      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,     0,   256,    26,    47, 0x0,                      STR_NULL},
 {      WWT_PANEL,     RESIZE_RB,  COLOUR_GREY,     0,   256,    48,   153, 0x0,                      STR_NULL},
 { WWT_PUSHIMGBTN,     RESIZE_LR,  COLOUR_GREY,   245,   256,    48,    59, SPR_HOUSE_ICON,           STR_SAVELOAD_HOME_BUTTON},
-{      WWT_INSET,     RESIZE_RB,  COLOUR_GREY,     2,   243,    50,   139, 0x0,                      STR_400A_LIST_OF_DRIVES_DIRECTORIES},
-{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   245,   256,    60,   141, 0x0,                      STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_INSET,     RESIZE_RB,  COLOUR_GREY,     2,   243,    50,   139, 0x0,                      STR_SAVELOAD_LIST_TOOLTIP},
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   245,   256,    60,   141, 0x0,                      STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,    RESIZE_RTB,  COLOUR_GREY,     0,   243,   142,   153, STR_CONTENT_INTRO_BUTTON, STR_CONTENT_INTRO_BUTTON_TIP},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   245,   256,   142,   153, 0x0,                      STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const Widget _save_dialog_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   256,     0,    13, STR_NULL,         STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   127,    14,    25, STR_SORT_BY_NAME, STR_SORT_ORDER_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   128,   256,    14,    25, STR_SORT_BY_DATE, STR_SORT_ORDER_TIP},
-{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,     0,   256,    26,    47, 0x0,              STR_NULL},
-{      WWT_PANEL,     RESIZE_RB,  COLOUR_GREY,     0,   256,    48,   167, 0x0,              STR_NULL},
-{ WWT_PUSHIMGBTN,     RESIZE_LR,  COLOUR_GREY,   245,   256,    48,    59, SPR_HOUSE_ICON,   STR_SAVELOAD_HOME_BUTTON},
-{      WWT_INSET,     RESIZE_RB,  COLOUR_GREY,     2,   243,    50,   150, 0x0,              STR_400A_LIST_OF_DRIVES_DIRECTORIES},
-{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   245,   256,    60,   151, 0x0,              STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,     0,   256,   152,     0, 0x0,              STR_NULL},
-{    WWT_EDITBOX,    RESIZE_RTB,  COLOUR_GREY,     2,   254,   154,   165, STR_SAVE_OSKTITLE, STR_400B_CURRENTLY_SELECTED_NAME},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   127,   168,   179, STR_4003_DELETE,  STR_400C_DELETE_THE_CURRENTLY_SELECTED},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   128,   244,   168,   179, STR_4002_SAVE,    STR_400D_SAVE_THE_CURRENT_GAME_USING},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   245,   256,   168,   179, 0x0,              STR_RESIZE_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,            STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   256,     0,    13, STR_NULL,                   STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   127,    14,    25, STR_SORT_BY_NAME,           STR_SORT_ORDER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   128,   256,    14,    25, STR_SORT_BY_DATE,           STR_SORT_ORDER_TIP},
+{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,     0,   256,    26,    47, 0x0,                        STR_NULL},
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_GREY,     0,   256,    48,   167, 0x0,                        STR_NULL},
+{ WWT_PUSHIMGBTN,     RESIZE_LR,  COLOUR_GREY,   245,   256,    48,    59, SPR_HOUSE_ICON,             STR_SAVELOAD_HOME_BUTTON},
+{      WWT_INSET,     RESIZE_RB,  COLOUR_GREY,     2,   243,    50,   150, 0x0,                        STR_SAVELOAD_LIST_TOOLTIP},
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   245,   256,    60,   151, 0x0,                        STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,     0,   256,   152,     0, 0x0,                        STR_NULL},
+{    WWT_EDITBOX,    RESIZE_RTB,  COLOUR_GREY,     2,   254,   154,   165, STR_SAVE_OSKTITLE,          STR_SAVELOAD_EDITBOX_TOOLTIP},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   127,   168,   179, STR_SAVELOAD_DELETE_BUTTON, STR_SAVELOAD_DELETE_TOOLTIP},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   128,   244,   168,   179, STR_SAVELOAD_SAVE_BUTTON,   STR_SAVELOAD_SAVE_TOOLTIP},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   245,   256,   168,   179, 0x0,                        STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -1469,7 +1469,7 @@ void BuildFileList()
 static void DrawFiosTexts(int left, int right)
 {
 	static const char *path = NULL;
-	static StringID str = STR_4006_UNABLE_TO_READ_DRIVE;
+	static StringID str = STR_ERROR_UNABLE_TO_READ_DRIVE;
 	static uint64 tot = 0;
 
 	if (_fios_path_changed) {
@@ -1477,7 +1477,7 @@ static void DrawFiosTexts(int left, int right)
 		_fios_path_changed = false;
 	}
 
-	if (str != STR_4006_UNABLE_TO_READ_DRIVE) SetDParam(0, tot);
+	if (str != STR_ERROR_UNABLE_TO_READ_DRIVE) SetDParam(0, tot);
 	DrawString(left + 2, right - 2, 37, str, TC_FROMSTRING);
 	DrawString(left + 2, right - 2, 27, path, TC_BLACK);
 }
@@ -1535,10 +1535,10 @@ public:
 	SaveLoadWindow(const WindowDesc *desc, SaveLoadDialogMode mode) : QueryStringBaseWindow(64, desc)
 	{
 		static const StringID saveload_captions[] = {
-			STR_4001_LOAD_GAME,
-			STR_0298_LOAD_SCENARIO,
-			STR_4000_SAVE_GAME,
-			STR_0299_SAVE_SCENARIO,
+			STR_SAVELOAD_LOAD_CAPTION,
+			STR_SAVELOAD_LOAD_SCENARIO,
+			STR_SAVELOAD_SAVE_CAPTION,
+			STR_SAVELOAD_SAVE_SCENARIO,
 			STR_LOAD_HEIGHTMAP,
 		};
 
@@ -1762,7 +1762,7 @@ public:
 
 		if (this->IsWidgetLowered(SLWW_DELETE_SELECTION)) { // Delete button clicked
 			if (!FiosDelete(this->text.buf)) {
-				ShowErrorMessage(INVALID_STRING_ID, STR_4008_UNABLE_TO_DELETE_FILE, 0, 0);
+				ShowErrorMessage(INVALID_STRING_ID, STR_ERROR_UNABLE_TO_DELETE_FILE, 0, 0);
 			} else {
 				BuildFileList();
 				/* Reset file name to current date on successful delete */

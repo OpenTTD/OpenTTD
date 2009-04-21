@@ -74,7 +74,7 @@ void FiosFreeSavegameList()
 StringID FiosGetDescText(const char **path, uint64 *total_free)
 {
 	*path = _fios_path;
-	return FiosGetDiskFreeSpace(*path, total_free) ? STR_4005_BYTES_FREE : STR_4006_UNABLE_TO_READ_DRIVE;
+	return FiosGetDiskFreeSpace(*path, total_free) ? STR_SAVELOAD_BYTES_FREE : STR_ERROR_UNABLE_TO_READ_DRIVE;
 }
 
 /* Browse to a new path based on the passed FiosItem struct

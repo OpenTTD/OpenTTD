@@ -176,7 +176,7 @@ static int DepotActionStringIndex(const Order *order)
 
 void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int y, bool selected, bool timetable, int width)
 {
-	StringID str = (v->cur_order_index == order_index) ? STR_8805 : STR_8804;
+	StringID str = (v->cur_order_index == order_index) ? STR_ORDER_SELECTED : STR_ORDER;
 	SetDParam(6, STR_EMPTY);
 
 	switch (order->GetType()) {
@@ -476,7 +476,7 @@ private:
 		if (load_type < 0) {
 			load_type = order->GetLoadType() == OLF_LOAD_IF_POSSIBLE ? OLF_FULL_LOAD_ANY : OLF_LOAD_IF_POSSIBLE;
 		}
-		DoCommandP(w->vehicle->tile, w->vehicle->index + (sel_ord << 16), MOF_LOAD | (load_type << 4), CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+		DoCommandP(w->vehicle->tile, w->vehicle->index + (sel_ord << 16), MOF_LOAD | (load_type << 4), CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
 	}
 
 	/**
@@ -493,7 +493,7 @@ private:
 			if (order == NULL) return;
 			i = (order->GetDepotOrderType() & ODTFB_SERVICE) ? DA_ALWAYS_GO : DA_SERVICE;
 		}
-		DoCommandP(w->vehicle->tile, w->vehicle->index + (sel_ord << 16), MOF_DEPOT_ACTION | (i << 4), CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+		DoCommandP(w->vehicle->tile, w->vehicle->index + (sel_ord << 16), MOF_DEPOT_ACTION | (i << 4), CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
 	}
 
 	/**
@@ -509,7 +509,7 @@ private:
 		order.MakeGoToDepot(0, ODTFB_PART_OF_ORDERS);
 		order.SetDepotActionType(ODATFB_NEAREST_DEPOT);
 
-		DoCommandP(w->vehicle->tile, w->vehicle->index + (w->OrderGetSel() << 16), order.Pack(), CMD_INSERT_ORDER | CMD_MSG(STR_8833_CAN_T_INSERT_NEW_ORDER));
+		DoCommandP(w->vehicle->tile, w->vehicle->index + (w->OrderGetSel() << 16), order.Pack(), CMD_INSERT_ORDER | CMD_MSG(STR_ERROR_CAN_T_INSERT_NEW_ORDER));
 	}
 
 	/**
@@ -541,7 +541,7 @@ private:
 			unload_type = order->GetUnloadType() == OUF_UNLOAD_IF_POSSIBLE ? OUFB_UNLOAD : OUF_UNLOAD_IF_POSSIBLE;
 		}
 
-		DoCommandP(w->vehicle->tile, w->vehicle->index + (sel_ord << 16), MOF_UNLOAD | (unload_type << 4), CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+		DoCommandP(w->vehicle->tile, w->vehicle->index + (sel_ord << 16), MOF_UNLOAD | (unload_type << 4), CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
 	}
 
 	/**
@@ -563,7 +563,7 @@ private:
 		}
 
 		w->InvalidateWidget(ORDER_WIDGET_NON_STOP);
-		DoCommandP(w->vehicle->tile, w->vehicle->index + (sel_ord << 16), MOF_NON_STOP | non_stop << 4,  CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+		DoCommandP(w->vehicle->tile, w->vehicle->index + (sel_ord << 16), MOF_NON_STOP | non_stop << 4,  CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
 	}
 
 	/**
@@ -580,7 +580,7 @@ private:
 		if (w->vehicle->GetNumOrders() <= 1) return;
 
 		DoCommandP(w->vehicle->tile, w->vehicle->index, _ctrl_pressed ? w->OrderGetSel() : ((w->vehicle->cur_order_index + 1) % w->vehicle->GetNumOrders()),
-				CMD_SKIP_TO_ORDER | CMD_MSG(_ctrl_pressed ? STR_CAN_T_SKIP_TO_ORDER : STR_CAN_T_SKIP_ORDER));
+				CMD_SKIP_TO_ORDER | CMD_MSG(_ctrl_pressed ? STR_ERROR_CAN_T_SKIP_TO_ORDER : STR_ERROR_CAN_T_SKIP_ORDER));
 	}
 
 	/**
@@ -593,7 +593,7 @@ private:
 		/* When networking, move one order lower */
 		int selected = w->selected_order + (int)_networking;
 
-		if (DoCommandP(w->vehicle->tile, w->vehicle->index, w->OrderGetSel(), CMD_DELETE_ORDER | CMD_MSG(STR_8834_CAN_T_DELETE_THIS_ORDER))) {
+		if (DoCommandP(w->vehicle->tile, w->vehicle->index, w->OrderGetSel(), CMD_DELETE_ORDER | CMD_MSG(STR_ERROR_CAN_T_DELETE_THIS_ORDER))) {
 			w->selected_order = selected >= w->vehicle->GetNumOrders() ? -1 : selected;
 		}
 	}
@@ -836,7 +836,7 @@ public:
 		}
 
 		if (i - this->vscroll.pos < this->vscroll.cap) {
-			str = shared_orders ? STR_END_OF_SHARED_ORDERS : STR_882A_END_OF_ORDERS;
+			str = shared_orders ? STR_END_OF_SHARED_ORDERS : STR_ORDERS_END_OF_ORDERS;
 			DrawString(this->widget[ORDER_WIDGET_ORDER_LIST].left + 2, this->widget[ORDER_WIDGET_ORDER_LIST].right - 2, y, str, (i == this->selected_order) ? TC_WHITE : TC_BLACK);
 		}
 	}
@@ -879,7 +879,7 @@ public:
 					if (this->vehicle->type == VEH_TRAIN && sel < this->vehicle->GetNumOrders()) {
 						DoCommandP(this->vehicle->tile, this->vehicle->index + (sel << 16),
 								MOF_STOP_LOCATION | ((GetVehicleOrder(this->vehicle, sel)->GetStopLocation() + 1) % OSL_END) << 4,
-								CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+								CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
 					}
 				} else {
 					/* Select clicked order */
@@ -992,7 +992,7 @@ public:
 				default:
 					break;
 			}
-			DoCommandP(this->vehicle->tile, this->vehicle->index + (sel << 16), MOF_COND_VALUE | Clamp(value, 0, 2047) << 4, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+			DoCommandP(this->vehicle->tile, this->vehicle->index + (sel << 16), MOF_COND_VALUE | Clamp(value, 0, 2047) << 4, CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
 		}
 	}
 
@@ -1025,11 +1025,11 @@ public:
 				break;
 
 			case ORDER_WIDGET_COND_VARIABLE:
-				DoCommandP(this->vehicle->tile, this->vehicle->index + (this->OrderGetSel() << 16), MOF_COND_VARIABLE | index << 4,  CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+				DoCommandP(this->vehicle->tile, this->vehicle->index + (this->OrderGetSel() << 16), MOF_COND_VARIABLE | index << 4,  CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
 				break;
 
 			case ORDER_WIDGET_COND_COMPARATOR:
-				DoCommandP(this->vehicle->tile, this->vehicle->index + (this->OrderGetSel() << 16), MOF_COND_COMPARATOR | index << 4,  CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+				DoCommandP(this->vehicle->tile, this->vehicle->index + (this->OrderGetSel() << 16), MOF_COND_COMPARATOR | index << 4,  CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
 				break;
 		}
 	}
@@ -1042,7 +1042,7 @@ public:
 				int to_order = this->GetOrderFromPt(pt.y);
 
 				if (!(from_order == to_order || from_order == INVALID_ORDER || from_order > this->vehicle->GetNumOrders() || to_order == INVALID_ORDER || to_order > this->vehicle->GetNumOrders()) &&
-						DoCommandP(this->vehicle->tile, this->vehicle->index, from_order | (to_order << 16), CMD_MOVE_ORDER | CMD_MSG(STR_CAN_T_MOVE_THIS_ORDER))) {
+						DoCommandP(this->vehicle->tile, this->vehicle->index, from_order | (to_order << 16), CMD_MOVE_ORDER | CMD_MSG(STR_ERROR_CAN_T_MOVE_THIS_ORDER))) {
 					this->selected_order = -1;
 				}
 			} break;
@@ -1088,7 +1088,7 @@ public:
 			const Order cmd = GetOrderCmdFromTile(this->vehicle, tile);
 			if (!cmd.IsValid()) return;
 
-			if (DoCommandP(this->vehicle->tile, this->vehicle->index + (this->OrderGetSel() << 16), cmd.Pack(), CMD_INSERT_ORDER | CMD_MSG(STR_8833_CAN_T_INSERT_NEW_ORDER))) {
+			if (DoCommandP(this->vehicle->tile, this->vehicle->index + (this->OrderGetSel() << 16), cmd.Pack(), CMD_INSERT_ORDER | CMD_MSG(STR_ERROR_CAN_T_INSERT_NEW_ORDER))) {
 				/* With quick goto the Go To button stays active */
 				if (!_settings_client.gui.quick_goto) ResetObjectToPlace();
 			}
@@ -1110,7 +1110,7 @@ public:
 					order.index = 0;
 					order.MakeConditional(order_id);
 
-					DoCommandP(this->vehicle->tile, this->vehicle->index + (this->OrderGetSel() << 16), order.Pack(), CMD_INSERT_ORDER | CMD_MSG(STR_8833_CAN_T_INSERT_NEW_ORDER));
+					DoCommandP(this->vehicle->tile, this->vehicle->index + (this->OrderGetSel() << 16), order.Pack(), CMD_INSERT_ORDER | CMD_MSG(STR_ERROR_CAN_T_INSERT_NEW_ORDER));
 				}
 			}
 		}
@@ -1220,36 +1220,36 @@ public:
  * Widget definition for "your" train orders
  */
 static const Widget _orders_train_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},               // ORDER_WIDGET_CLOSEBOX
-	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   371,     0,    13, STR_8829_ORDERS,         STR_018C_WINDOW_TITLE_DRAG_THIS},     // ORDER_WIDGET_CAPTION
-	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   311,   371,     0,    13, STR_TIMETABLE_VIEW,      STR_TIMETABLE_VIEW_TOOLTIP},          // ORDER_WIDGET_TIMETABLE_VIEW
-	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   372,   383,     0,    13, STR_NULL,                STR_STICKY_BUTTON},                   // ORDER_WIDGET_STICKY
+	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,            STR_TOOLTIP_CLOSE_WINDOW},                 // ORDER_WIDGET_CLOSEBOX
+	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   371,     0,    13, STR_ORDERS_CAPTION,         STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},       // ORDER_WIDGET_CAPTION
+	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   311,   371,     0,    13, STR_TIMETABLE_VIEW,         STR_TIMETABLE_VIEW_TOOLTIP},               // ORDER_WIDGET_TIMETABLE_VIEW
+	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   372,   383,     0,    13, STR_NULL,                   STR_STICKY_BUTTON},                        // ORDER_WIDGET_STICKY
 
-	{      WWT_PANEL,   RESIZE_RB,     COLOUR_GREY,     0,   371,    14,    75, 0x0,                     STR_8852_ORDERS_LIST_CLICK_ON_ORDER}, // ORDER_WIDGET_ORDER_LIST
+	{      WWT_PANEL,   RESIZE_RB,     COLOUR_GREY,     0,   371,    14,    75, 0x0,                        STR_ORDERS_LIST_TOOLTIP},                  // ORDER_WIDGET_ORDER_LIST
 
-	{  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_GREY,   372,   383,    14,    75, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST},    // ORDER_WIDGET_SCROLLBAR
+	{  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_GREY,   372,   383,    14,    75, 0x0,                        STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},     // ORDER_WIDGET_SCROLLBAR
 
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,     0,   123,    88,    99, STR_8823_SKIP,           STR_8853_SKIP_THE_CURRENT_ORDER},     // ORDER_WIDGET_SKIP
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    88,    99, STR_8824_DELETE,         STR_8854_DELETE_THE_HIGHLIGHTED},     // ORDER_WIDGET_DELETE
-	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,     0,   123,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_NON_STOP},          // ORDER_WIDGET_NON_STOP_DROPDOWN
-	{    WWT_TEXTBTN,   RESIZE_TB,     COLOUR_GREY,     0,   111,    76,    87, STR_ORDER_NON_STOP,      STR_ORDER_TOOLTIP_NON_STOP},          // ORDER_WIDGET_NON_STOP
-	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    88,    99, STR_EMPTY,               STR_ORDER_GO_TO_DROPDOWN_TOOLTIP},    // ORDER_WIDGET_GOTO_DROPDOWN
-	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   359,    88,    99, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},  // ORDER_WIDGET_GOTO
-	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_FULL_LOAD},         // ORDER_WIDGET_FULL_LOAD_DROPDOWN
-	{    WWT_TEXTBTN,   RESIZE_TB,     COLOUR_GREY,   124,   235,    76,    87, STR_ORDER_TOGGLE_FULL_LOAD, STR_ORDER_TOOLTIP_FULL_LOAD},      // ORDER_WIDGET_FULL_LOAD
-	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD_DROPDOWN
-	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   359,    76,    87, STR_ORDER_TOGGLE_UNLOAD, STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
-	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    76,    87, STR_NULL,                STR_SERVICE_HINT},                    // ORDER_WIDGET_SERVICE_DROPDOWN
-	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   359,    76,    87, STR_SERVICE,             STR_SERVICE_HINT},                    // ORDER_WIDGET_SERVICE
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,     0,   123,    88,    99, STR_ORDERS_SKIP_BUTTON,     STR_ORDERS_SKIP_TOOLTIP},                  // ORDER_WIDGET_SKIP
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    88,    99, STR_ORDERS_DELETE_BUTTON,   STR_ORDERS_DELETE_TOOLTIP},                // ORDER_WIDGET_DELETE
+	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,     0,   123,    76,    87, STR_NULL,                   STR_ORDER_TOOLTIP_NON_STOP},               // ORDER_WIDGET_NON_STOP_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_TB,     COLOUR_GREY,     0,   111,    76,    87, STR_ORDER_NON_STOP,         STR_ORDER_TOOLTIP_NON_STOP},               // ORDER_WIDGET_NON_STOP
+	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    88,    99, STR_EMPTY,                  STR_ORDER_GO_TO_DROPDOWN_TOOLTIP},         // ORDER_WIDGET_GOTO_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   359,    88,    99, STR_ORDERS_GO_TO_BUTTON,    STR_ORDERS_GO_TO_TOOLTIP},                 // ORDER_WIDGET_GOTO
+	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    76,    87, STR_NULL,                   STR_ORDER_TOOLTIP_FULL_LOAD},              // ORDER_WIDGET_FULL_LOAD_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_TB,     COLOUR_GREY,   124,   235,    76,    87, STR_ORDER_TOGGLE_FULL_LOAD, STR_ORDER_TOOLTIP_FULL_LOAD},              // ORDER_WIDGET_FULL_LOAD
+	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    76,    87, STR_NULL,                   STR_ORDER_TOOLTIP_UNLOAD},                 // ORDER_WIDGET_UNLOAD_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   359,    76,    87, STR_ORDER_TOGGLE_UNLOAD,    STR_ORDER_TOOLTIP_UNLOAD},                 // ORDER_WIDGET_UNLOAD
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    76,    87, STR_REFIT,                  STR_REFIT_TIP},                            // ORDER_WIDGET_REFIT
+	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    76,    87, STR_NULL,                   STR_SERVICE_HINT},                         // ORDER_WIDGET_SERVICE_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   359,    76,    87, STR_SERVICE,                STR_SERVICE_HINT},                         // ORDER_WIDGET_SERVICE
 
-	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,     0,   123,    76,    87, STR_NULL,                STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP},   // ORDER_WIDGET_COND_VARIABLE
-	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    76,    87, STR_NULL,                STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP}, // ORDER_WIDGET_COND_COMPARATOR
-	{ WWT_PUSHTXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    76,    87, STR_CONDITIONAL_VALUE,   STR_ORDER_CONDITIONAL_VALUE_TOOLTIP},      // ORDER_WIDGET_COND_VALUE
+	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,     0,   123,    76,    87, STR_NULL,                   STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP},   // ORDER_WIDGET_COND_VARIABLE
+	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    76,    87, STR_NULL,                   STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP}, // ORDER_WIDGET_COND_COMPARATOR
+	{ WWT_PUSHTXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    76,    87, STR_CONDITIONAL_VALUE,      STR_ORDER_CONDITIONAL_VALUE_TOOLTIP},      // ORDER_WIDGET_COND_VALUE
 
-	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP}, // ORDER_WIDGET_SHARED_ORDER_LIST
+	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    76,    87, SPR_SHARED_ORDERS_ICON,     STR_VEH_WITH_SHARED_ORDERS_LIST_TIP},      // ORDER_WIDGET_SHARED_ORDER_LIST
 
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    88,    99, 0x0,                     STR_RESIZE_BUTTON},                   // ORDER_WIDGET_RESIZE
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    88,    99, 0x0,                        STR_RESIZE_BUTTON},                        // ORDER_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
 
@@ -1264,36 +1264,36 @@ static const WindowDesc _orders_train_desc(
  * Widget definition for "your" orders (!train)
  */
 static const Widget _orders_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},               // ORDER_WIDGET_CLOSEBOX
-	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   371,     0,    13, STR_8829_ORDERS,         STR_018C_WINDOW_TITLE_DRAG_THIS},     // ORDER_WIDGET_CAPTION
-	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   311,   371,     0,    13, STR_TIMETABLE_VIEW,      STR_TIMETABLE_VIEW_TOOLTIP},          // ORDER_WIDGET_TIMETABLE_VIEW
-	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   372,   383,     0,    13, STR_NULL,                STR_STICKY_BUTTON},                   // ORDER_WIDGET_STICKY
+	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,            STR_TOOLTIP_CLOSE_WINDOW},                 // ORDER_WIDGET_CLOSEBOX
+	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   371,     0,    13, STR_ORDERS_CAPTION,         STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},       // ORDER_WIDGET_CAPTION
+	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   311,   371,     0,    13, STR_TIMETABLE_VIEW,         STR_TIMETABLE_VIEW_TOOLTIP},               // ORDER_WIDGET_TIMETABLE_VIEW
+	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   372,   383,     0,    13, STR_NULL,                   STR_STICKY_BUTTON},                        // ORDER_WIDGET_STICKY
 
-	{      WWT_PANEL,   RESIZE_RB,     COLOUR_GREY,     0,   371,    14,    75, 0x0,                     STR_8852_ORDERS_LIST_CLICK_ON_ORDER}, // ORDER_WIDGET_ORDER_LIST
+	{      WWT_PANEL,   RESIZE_RB,     COLOUR_GREY,     0,   371,    14,    75, 0x0,                        STR_ORDERS_LIST_TOOLTIP},                  // ORDER_WIDGET_ORDER_LIST
 
-	{  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_GREY,   372,   383,    14,    75, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST},    // ORDER_WIDGET_SCROLLBAR
+	{  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_GREY,   372,   383,    14,    75, 0x0,                        STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},     // ORDER_WIDGET_SCROLLBAR
 
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,     0,   123,    88,    99, STR_8823_SKIP,           STR_8853_SKIP_THE_CURRENT_ORDER},     // ORDER_WIDGET_SKIP
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    88,    99, STR_8824_DELETE,         STR_8854_DELETE_THE_HIGHLIGHTED},     // ORDER_WIDGET_DELETE
-	{      WWT_EMPTY,   RESIZE_TB,     COLOUR_GREY,     0,     0,    76,    87, 0x0,                     0x0},                                 // ORDER_WIDGET_NON_STOP_DROPDOWN
-	{      WWT_EMPTY,   RESIZE_TB,     COLOUR_GREY,     0,     0,    76,    87, 0x0,                     0x0},                                 // ORDER_WIDGET_NON_STOP
-	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    88,    99, STR_EMPTY,               STR_ORDER_GO_TO_DROPDOWN_TOOLTIP},    // ORDER_WIDGET_GOTO_DROPDOWN
-	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   359,    88,    99, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},  // ORDER_WIDGET_GOTO
-	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,     0,   185,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_FULL_LOAD},         // ORDER_WIDGET_FULL_LOAD_DROPDOWN
-	{    WWT_TEXTBTN,   RESIZE_TB,     COLOUR_GREY,     0,   173,    76,    87, STR_ORDER_TOGGLE_FULL_LOAD, STR_ORDER_TOOLTIP_FULL_LOAD},      // ORDER_WIDGET_FULL_LOAD
-	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   186,   371,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD_DROPDOWN
-	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   186,   359,    76,    87, STR_ORDER_TOGGLE_UNLOAD, STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,     0,   185,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
-	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   186,   371,    76,    87, STR_NULL,                STR_SERVICE_HINT},                    // ORDER_WIDGET_SERVICE_DROPDOWN
-	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   186,   359,    76,    87, STR_SERVICE,             STR_SERVICE_HINT},                    // ORDER_WIDGET_SERVICE
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,     0,   123,    88,    99, STR_ORDERS_SKIP_BUTTON,     STR_ORDERS_SKIP_TOOLTIP},                  // ORDER_WIDGET_SKIP
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    88,    99, STR_ORDERS_DELETE_BUTTON,   STR_ORDERS_DELETE_TOOLTIP},                // ORDER_WIDGET_DELETE
+	{      WWT_EMPTY,   RESIZE_TB,     COLOUR_GREY,     0,     0,    76,    87, 0x0,                        0x0},                                      // ORDER_WIDGET_NON_STOP_DROPDOWN
+	{      WWT_EMPTY,   RESIZE_TB,     COLOUR_GREY,     0,     0,    76,    87, 0x0,                        0x0},                                      // ORDER_WIDGET_NON_STOP
+	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    88,    99, STR_EMPTY,                  STR_ORDER_GO_TO_DROPDOWN_TOOLTIP},         // ORDER_WIDGET_GOTO_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   359,    88,    99, STR_ORDERS_GO_TO_BUTTON,    STR_ORDERS_GO_TO_TOOLTIP},                 // ORDER_WIDGET_GOTO
+	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,     0,   185,    76,    87, STR_NULL,                   STR_ORDER_TOOLTIP_FULL_LOAD},              // ORDER_WIDGET_FULL_LOAD_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_TB,     COLOUR_GREY,     0,   173,    76,    87, STR_ORDER_TOGGLE_FULL_LOAD, STR_ORDER_TOOLTIP_FULL_LOAD},              // ORDER_WIDGET_FULL_LOAD
+	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   186,   371,    76,    87, STR_NULL,                   STR_ORDER_TOOLTIP_UNLOAD},                 // ORDER_WIDGET_UNLOAD_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   186,   359,    76,    87, STR_ORDER_TOGGLE_UNLOAD,    STR_ORDER_TOOLTIP_UNLOAD},                 // ORDER_WIDGET_UNLOAD
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,     0,   185,    76,    87, STR_REFIT,                  STR_REFIT_TIP},                            // ORDER_WIDGET_REFIT
+	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   186,   371,    76,    87, STR_NULL,                   STR_SERVICE_HINT},                         // ORDER_WIDGET_SERVICE_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   186,   359,    76,    87, STR_SERVICE,                STR_SERVICE_HINT},                         // ORDER_WIDGET_SERVICE
 
-	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,     0,   123,    76,    87, STR_NULL,                STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP},   // ORDER_WIDGET_COND_VARIABLE
-	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    76,    87, STR_NULL,                STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP}, // ORDER_WIDGET_COND_COMPARATOR
-	{ WWT_PUSHTXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    76,    87, STR_CONDITIONAL_VALUE,   STR_ORDER_CONDITIONAL_VALUE_TOOLTIP},      // ORDER_WIDGET_COND_VALUE
+	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,     0,   123,    76,    87, STR_NULL,                   STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP},   // ORDER_WIDGET_COND_VARIABLE
+	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    76,    87, STR_NULL,                   STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP}, // ORDER_WIDGET_COND_COMPARATOR
+	{ WWT_PUSHTXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    76,    87, STR_CONDITIONAL_VALUE,      STR_ORDER_CONDITIONAL_VALUE_TOOLTIP},      // ORDER_WIDGET_COND_VALUE
 
-	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP}, // ORDER_WIDGET_SHARED_ORDER_LIST
+	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    76,    87, SPR_SHARED_ORDERS_ICON,     STR_VEH_WITH_SHARED_ORDERS_LIST_TIP},      // ORDER_WIDGET_SHARED_ORDER_LIST
 
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    88,    99, 0x0,                     STR_RESIZE_BUTTON},                   // ORDER_WIDGET_RESIZE
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    88,    99, 0x0,                     STR_RESIZE_BUTTON},                           // ORDER_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
 
@@ -1308,36 +1308,36 @@ static const WindowDesc _orders_desc(
  * Widget definition for competitor orders
  */
 static const Widget _other_orders_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_00C5,           STR_018B_CLOSE_WINDOW},               // ORDER_WIDGET_CLOSEBOX
-	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   371,     0,    13, STR_8829_ORDERS,    STR_018C_WINDOW_TITLE_DRAG_THIS},     // ORDER_WIDGET_CAPTION
-	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   311,   371,     0,    13, STR_TIMETABLE_VIEW, STR_TIMETABLE_VIEW_TOOLTIP},          // ORDER_WIDGET_TIMETABLE_VIEW
-	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   372,   383,     0,    13, STR_NULL,           STR_STICKY_BUTTON},                   // ORDER_WIDGET_STICKY
+	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,    STR_TOOLTIP_CLOSE_WINDOW},             // ORDER_WIDGET_CLOSEBOX
+	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   371,     0,    13, STR_ORDERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // ORDER_WIDGET_CAPTION
+	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   311,   371,     0,    13, STR_TIMETABLE_VIEW, STR_TIMETABLE_VIEW_TOOLTIP},           // ORDER_WIDGET_TIMETABLE_VIEW
+	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   372,   383,     0,    13, STR_NULL,           STR_STICKY_BUTTON},                    // ORDER_WIDGET_STICKY
 
-	{      WWT_PANEL,   RESIZE_RB,     COLOUR_GREY,     0,   371,    14,    85, 0x0,                STR_8852_ORDERS_LIST_CLICK_ON_ORDER}, // ORDER_WIDGET_ORDER_LIST
+	{      WWT_PANEL,   RESIZE_RB,     COLOUR_GREY,     0,   371,    14,    85, 0x0,                STR_ORDERS_LIST_TOOLTIP},              // ORDER_WIDGET_ORDER_LIST
 
-	{  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_GREY,   372,   383,    14,    73, 0x0,                STR_0190_SCROLL_BAR_SCROLLS_LIST},    // ORDER_WIDGET_SCROLLBAR
+	{  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_GREY,   372,   383,    14,    73, 0x0,                STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // ORDER_WIDGET_SCROLLBAR
 
-	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SKIP
-	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_DELETE
-	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_NON_STOP_DROPDOWN
-	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_NON_STOP
-	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_GOTO_DROPDOWN
-	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_GOTO
-	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_FULL_LOAD_DROPDOWN
-	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_FULL_LOAD
-	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_UNLOAD_DROPDOWN
-	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_UNLOAD
-	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_REFIT
-	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SERVICE_DROPDOWN
-	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SERVICE
+	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                             // ORDER_WIDGET_SKIP
+	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                             // ORDER_WIDGET_DELETE
+	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                             // ORDER_WIDGET_NON_STOP_DROPDOWN
+	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                             // ORDER_WIDGET_NON_STOP
+	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                             // ORDER_WIDGET_GOTO_DROPDOWN
+	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                             // ORDER_WIDGET_GOTO
+	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                             // ORDER_WIDGET_FULL_LOAD_DROPDOWN
+	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                             // ORDER_WIDGET_FULL_LOAD
+	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                             // ORDER_WIDGET_UNLOAD_DROPDOWN
+	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                             // ORDER_WIDGET_UNLOAD
+	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                             // ORDER_WIDGET_REFIT
+	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                             // ORDER_WIDGET_SERVICE_DROPDOWN
+	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                             // ORDER_WIDGET_SERVICE
 
-	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_COND_VARIABLE
-	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_COND_COMPARATOR
-	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_COND_VALUE
+	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                             // ORDER_WIDGET_COND_VARIABLE
+	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                             // ORDER_WIDGET_COND_COMPARATOR
+	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                             // ORDER_WIDGET_COND_VALUE
 
-	{      WWT_EMPTY,   RESIZE_TB,     COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SHARED_ORDER_LIST
+	{      WWT_EMPTY,   RESIZE_TB,     COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                             // ORDER_WIDGET_SHARED_ORDER_LIST
 
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    74,    85, 0x0,                STR_RESIZE_BUTTON},                   // ORDER_WIDGET_RESIZE
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    74,    85, 0x0,                STR_RESIZE_BUTTON},                    // ORDER_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
 

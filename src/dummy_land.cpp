@@ -28,7 +28,7 @@ static Foundation GetFoundation_Dummy(TileIndex tile, Slope tileh)
 
 static CommandCost ClearTile_Dummy(TileIndex tile, DoCommandFlag flags)
 {
-	return_cmd_error(STR_0001_OFF_EDGE_OF_MAP);
+	return_cmd_error(STR_ERROR_OFF_EDGE_OF_MAP);
 }
 
 
@@ -71,7 +71,7 @@ static TrackStatus GetTileTrackStatus_Dummy(TileIndex tile, TransportType mode, 
 
 static CommandCost TerraformTile_Dummy(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
-	return_cmd_error(STR_0001_OFF_EDGE_OF_MAP);
+	return_cmd_error(STR_ERROR_OFF_EDGE_OF_MAP);
 }
 
 extern const TileTypeProcs _tile_type_dummy_procs = {

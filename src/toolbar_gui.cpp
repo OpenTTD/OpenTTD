@@ -160,7 +160,7 @@ public:
 		CompanyID company = (CompanyID)result;
 		SetDParam(0, company);
 		SetDParam(1, company);
-		GetString(buffer, STR_7021, lastof(buffer));
+		GetString(buffer, STR_COMPANY_NAME_COMPANY_NUM, lastof(buffer));
 		return GetStringBoundingBox(buffer).width + 19;
 	}
 
@@ -177,7 +177,7 @@ public:
 		} else {
 			col = sel ? TC_WHITE : TC_BLACK;
 		}
-		DrawString(left + 19, right - 2, top, STR_7021, col);
+		DrawString(left + 19, right - 2, top, STR_COMPANY_NAME_COMPANY_NUM, col);
 	}
 };
 
@@ -281,20 +281,20 @@ enum OptionMenuEntries {
 static void ToolbarOptionsClick(Window *w)
 {
 	DropDownList *list = new DropDownList();
-	list->push_back(new DropDownListStringItem(STR_02C4_GAME_OPTIONS,        OME_GAMEOPTIONS, false));
-	list->push_back(new DropDownListStringItem(STR_02C6_DIFFICULTY_SETTINGS, OME_DIFFICULTIES, false));
-	list->push_back(new DropDownListStringItem(STR_MENU_CONFIG_SETTINGS,      OME_SETTINGS, false));
-	list->push_back(new DropDownListStringItem(STR_NEWGRF_SETTINGS,          OME_NEWGRFSETTINGS, false));
-	list->push_back(new DropDownListStringItem(STR_TRANSPARENCY_OPTIONS,     OME_TRANSPARENCIES, false));
+	list->push_back(new DropDownListStringItem(STR_SETTINGS_MENU_GAME_OPTIONS,             OME_GAMEOPTIONS, false));
+	list->push_back(new DropDownListStringItem(STR_SETTINGS_MENU_DIFFICULTY_SETTINGS,      OME_DIFFICULTIES, false));
+	list->push_back(new DropDownListStringItem(STR_SETTINGS_MENU_CONFIG_SETTINGS,          OME_SETTINGS, false));
+	list->push_back(new DropDownListStringItem(STR_SETTINGS_MENU_NEWGRF_SETTINGS,          OME_NEWGRFSETTINGS, false));
+	list->push_back(new DropDownListStringItem(STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS,     OME_TRANSPARENCIES, false));
 	list->push_back(new DropDownListItem(-1, false));
-	list->push_back(new DropDownListCheckedItem(STR_02CA_TOWN_NAMES_DISPLAYED,    OME_SHOW_TOWNNAMES, false, HasBit(_display_opt, DO_SHOW_TOWN_NAMES)));
-	list->push_back(new DropDownListCheckedItem(STR_02CC_STATION_NAMES_DISPLAYED, OME_SHOW_STATIONNAMES, false, HasBit(_display_opt, DO_SHOW_STATION_NAMES)));
-	list->push_back(new DropDownListCheckedItem(STR_02CE_SIGNS_DISPLAYED,         OME_SHOW_SIGNS, false, HasBit(_display_opt, DO_SHOW_SIGNS)));
-	list->push_back(new DropDownListCheckedItem(STR_WAYPOINTS_DISPLAYED2,         OME_SHOW_WAYPOINTNAMES, false, HasBit(_display_opt, DO_WAYPOINTS)));
-	list->push_back(new DropDownListCheckedItem(STR_02D0_FULL_ANIMATION,          OME_FULL_ANIMATION, false, HasBit(_display_opt, DO_FULL_ANIMATION)));
-	list->push_back(new DropDownListCheckedItem(STR_02D2_FULL_DETAIL,             OME_FULL_DETAILS, false, HasBit(_display_opt, DO_FULL_DETAIL)));
-	list->push_back(new DropDownListCheckedItem(STR_02D4_TRANSPARENT_BUILDINGS,   OME_TRANSPARENTBUILDINGS, false, IsTransparencySet(TO_HOUSES)));
-	list->push_back(new DropDownListCheckedItem(STR_TRANSPARENT_SIGNS,            OME_SHOW_STATIONSIGNS, false, IsTransparencySet(TO_SIGNS)));
+	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED,    OME_SHOW_TOWNNAMES, false, HasBit(_display_opt, DO_SHOW_TOWN_NAMES)));
+	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED, OME_SHOW_STATIONNAMES, false, HasBit(_display_opt, DO_SHOW_STATION_NAMES)));
+	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_SIGNS_DISPLAYED,         OME_SHOW_SIGNS, false, HasBit(_display_opt, DO_SHOW_SIGNS)));
+	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED,     OME_SHOW_WAYPOINTNAMES, false, HasBit(_display_opt, DO_WAYPOINTS)));
+	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_FULL_ANIMATION,          OME_FULL_ANIMATION, false, HasBit(_display_opt, DO_FULL_ANIMATION)));
+	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_FULL_DETAIL,             OME_FULL_DETAILS, false, HasBit(_display_opt, DO_FULL_DETAIL)));
+	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS,   OME_TRANSPARENTBUILDINGS, false, IsTransparencySet(TO_HOUSES)));
+	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_TRANSPARENT_SIGNS,       OME_SHOW_STATIONSIGNS, false, IsTransparencySet(TO_SIGNS)));
 
 	ShowDropDownList(w, list, 0, TBN_SETTINGS, 140, true, true);
 	SndPlayFx(SND_15_BEEP);
@@ -342,12 +342,12 @@ enum SaveLoadNormalMenuEntries {
 
 static void ToolbarSaveClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_SAVEGAME, STR_015C_SAVE_GAME, SLNME_MENUCOUNT);
+	PopupMainToolbMenu(w, TBN_SAVEGAME, STR_FILE_MENU_SAVE_GAME, SLNME_MENUCOUNT);
 }
 
 static void ToolbarScenSaveOrLoad(Window *w)
 {
-	PopupMainToolbMenu(w, TBSE_SAVESCENARIO, STR_0292_SAVE_SCENARIO, SLEME_MENUCOUNT);
+	PopupMainToolbMenu(w, TBSE_SAVESCENARIO, STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO, SLEME_MENUCOUNT);
 }
 
 static void MenuClickSaveLoad(int index = 0)
@@ -383,12 +383,12 @@ enum MapMenuEntries {
 
 static void ToolbarMapClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_SMALLMAP, STR_02DE_MAP_OF_WORLD, MME_MENUCOUNT_NORMAL);
+	PopupMainToolbMenu(w, TBN_SMALLMAP, STR_MAP_MENU_MAP_OF_WORLD, MME_MENUCOUNT_NORMAL);
 }
 
 static void ToolbarScenMapTownDir(Window *w)
 {
-	PopupMainToolbMenu(w, TBSE_SMALLMAP, STR_02DE_MAP_OF_WORLD, MME_MENUCOUNT_EDITOR);
+	PopupMainToolbMenu(w, TBSE_SMALLMAP, STR_MAP_MENU_MAP_OF_WORLD, MME_MENUCOUNT_EDITOR);
 }
 
 static void MenuClickMap(int index)
@@ -405,7 +405,7 @@ static void MenuClickMap(int index)
 
 static void ToolbarTownClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_TOWNDIRECTORY, STR_02BB_TOWN_DIRECTORY, 1);
+	PopupMainToolbMenu(w, TBN_TOWNDIRECTORY, STR_TOWN_MENU_TOWN_DIRECTORY, 1);
 }
 
 static void MenuClickTown(int index)
@@ -417,7 +417,7 @@ static void MenuClickTown(int index)
 
 static void ToolbarSubsidiesClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_SUBSIDIES, STR_02DD_SUBSIDIES, 1);
+	PopupMainToolbMenu(w, TBN_SUBSIDIES, STR_SUBSIDIES_MENU_SUBSIDIES, 1);
 }
 
 static void MenuClickSubsidies(int index)
@@ -491,7 +491,7 @@ static void MenuClickCompany(int index)
 
 static void ToolbarGraphsClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_GRAPHICS, STR_0154_OPERATING_PROFIT_GRAPH, (_toolbar_mode == TB_NORMAL) ? 6 : 8);
+	PopupMainToolbMenu(w, TBN_GRAPHICS, STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH, (_toolbar_mode == TB_NORMAL) ? 6 : 8);
 }
 
 static void MenuClickGraphs(int index)
@@ -513,7 +513,7 @@ static void MenuClickGraphs(int index)
 
 static void ToolbarLeagueClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_LEAGUE, STR_015A_COMPANY_LEAGUE_TABLE, 2);
+	PopupMainToolbMenu(w, TBN_LEAGUE, STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE, 2);
 }
 
 static void MenuClickLeague(int index)
@@ -529,7 +529,7 @@ static void MenuClickLeague(int index)
 static void ToolbarIndustryClick(Window *w)
 {
 	/* Disable build-industry menu if we are a spectator */
-	PopupMainToolbMenu(w, TBN_INDUSTRIES, STR_INDUSTRY_DIR, (_local_company == COMPANY_SPECTATOR) ? 1 : 2);
+	PopupMainToolbMenu(w, TBN_INDUSTRIES, STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, (_local_company == COMPANY_SPECTATOR) ? 1 : 2);
 }
 
 static void MenuClickIndustry(int index)
@@ -650,7 +650,7 @@ static void ToolbarBuildRoadClick(Window *w)
 	DropDownList *list = new DropDownList();
 	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
 		/* The standard road button is *always* available */
-		list->push_back(new DropDownListStringItem(STR_180A_ROAD_CONSTRUCTION + rt, rt, !(HasBit(c->avail_roadtypes, rt) || rt == ROADTYPE_ROAD)));
+		list->push_back(new DropDownListStringItem(STR_ROAD_MENU_ROAD_CONSTRUCTION + rt, rt, !(HasBit(c->avail_roadtypes, rt) || rt == ROADTYPE_ROAD)));
 	}
 	ShowDropDownList(w, list, _last_built_roadtype, TBN_ROADS, 140, true, true);
 	SndPlayFx(SND_15_BEEP);
@@ -666,7 +666,7 @@ static void MenuClickBuildRoad(int index)
 
 static void ToolbarBuildWaterClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_WATER, STR_9800_WATERWAYS_CONSTRUCTION, 1);
+	PopupMainToolbMenu(w, TBN_WATER, STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION, 1);
 }
 
 static void MenuClickBuildWater(int index)
@@ -678,7 +678,7 @@ static void MenuClickBuildWater(int index)
 
 static void ToolbarBuildAirClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_AIR, STR_A01D_AIRPORT_CONSTRUCTION, 1);
+	PopupMainToolbMenu(w, TBN_AIR, STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION, 1);
 }
 
 static void MenuClickBuildAir(int index)
@@ -690,7 +690,7 @@ static void MenuClickBuildAir(int index)
 
 static void ToolbarForestClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_LANDSCAPE, STR_LANDSCAPING, 3);
+	PopupMainToolbMenu(w, TBN_LANDSCAPE, STR_LANDSCAPING_MENU_LANDSCAPING, 3);
 }
 
 static void MenuClickForest(int index)
@@ -706,7 +706,7 @@ static void MenuClickForest(int index)
 
 static void ToolbarMusicClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_MUSICSOUND, STR_01D3_SOUND_MUSIC, 1);
+	PopupMainToolbMenu(w, TBN_MUSICSOUND, STR_TOOLBAR_SOUND_MUSIC, 1);
 }
 
 static void MenuClickMusicWindow(int index)
@@ -718,7 +718,7 @@ static void MenuClickMusicWindow(int index)
 
 static void ToolbarNewspaperClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_NEWSREPORT, STR_0200_LAST_MESSAGE_NEWS_REPORT, 3);
+	PopupMainToolbMenu(w, TBN_NEWSREPORT, STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT, 3);
 }
 
 static void MenuClickNewspaper(int index)
@@ -734,7 +734,7 @@ static void MenuClickNewspaper(int index)
 
 static void ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_HELP, STR_02D5_LAND_BLOCK_INFO, 7);
+	PopupMainToolbMenu(w, TBN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, 7);
 }
 
 static void MenuClickSmallScreenshot()
@@ -1143,40 +1143,40 @@ struct MainToolbarWindow : Window {
 };
 
 static const Widget _toolb_normal_widgets[] = {
-{     WWT_IMGBTN,   RESIZE_LEFT,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_PAUSE,           STR_0171_PAUSE_GAME},               // TBN_PAUSE
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_FASTFORWARD,     STR_FAST_FORWARD},                  // TBN_FASTFORWARD
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_SETTINGS,        STR_0187_OPTIONS},                  // TBN_SETTINGS
-{   WWT_IMGBTN_2,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_SAVE,            STR_0172_SAVE_GAME_ABANDON_GAME},   // TBN_SAVEGAME
+{     WWT_IMGBTN,   RESIZE_LEFT,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_PAUSE,           STR_TOOLBAR_TOOLTIP_PAUSE_GAME},               // TBN_PAUSE
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_FASTFORWARD,     STR_FAST_FORWARD},                             // TBN_FASTFORWARD
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_SETTINGS,        STR_TOOLBAR_TOOLTIP_OPTIONS},                  // TBN_SETTINGS
+{   WWT_IMGBTN_2,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_SAVE,            STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME},   // TBN_SAVEGAME
 
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_SMALLMAP,        STR_0174_DISPLAY_MAP},              // TBN_SMALLMAP
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_TOWN,            STR_0176_DISPLAY_TOWN_DIRECTORY},   // TBN_TOWNDIRECTORY
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_SUBSIDIES,       STR_02DC_DISPLAY_SUBSIDIES},        // TBN_SUBSIDIES
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_COMPANY_LIST,    STR_0173_DISPLAY_LIST_OF_COMPANY},  // TBN_STATIONS
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_SMALLMAP,        STR_TOOLBAR_TOOLTIP_DISPLAY_MAP},              // TBN_SMALLMAP
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_TOWN,            STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY},   // TBN_TOWNDIRECTORY
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_SUBSIDIES,       STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES},        // TBN_SUBSIDIES
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_COMPANY_LIST,    STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS},  // TBN_STATIONS
 
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_COMPANY_FINANCE, STR_0177_DISPLAY_COMPANY_FINANCES}, // TBN_FINANCES
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_COMPANY_GENERAL, STR_0178_DISPLAY_COMPANY_GENERAL},  // TBN_COMPANIES
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_GRAPHS,          STR_0179_DISPLAY_GRAPHS},           // TBN_GRAPHICS
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_COMPANY_LEAGUE,  STR_017A_DISPLAY_COMPANY_LEAGUE},   // TBN_LEAGUE
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_INDUSTRY,        STR_0312_FUND_CONSTRUCTION_OF_NEW}, // TBN_INDUSTRIES
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_COMPANY_FINANCE, STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES}, // TBN_FINANCES
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_COMPANY_GENERAL, STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL},  // TBN_COMPANIES
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_GRAPHS,          STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS},           // TBN_GRAPHICS
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_COMPANY_LEAGUE,  STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE},   // TBN_LEAGUE
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_INDUSTRY,        STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW}, // TBN_INDUSTRIES
 
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_TRAINLIST,       STR_017B_DISPLAY_LIST_OF_COMPANY},  // TBN_TRAINS
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_TRUCKLIST,       STR_017C_DISPLAY_LIST_OF_COMPANY},  // TBN_ROADVEHS
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_SHIPLIST,        STR_017D_DISPLAY_LIST_OF_COMPANY},  // TBN_SHIPS
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_AIRPLANESLIST,   STR_017E_DISPLAY_LIST_OF_COMPANY},  // TBN_AIRCRAFTS
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_TRAINLIST,       STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS},         // TBN_TRAINS
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_TRUCKLIST,       STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES},  // TBN_ROADVEHS
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_SHIPLIST,        STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS},          // TBN_SHIPS
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_AIRPLANESLIST,   STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT},       // TBN_AIRCRAFTS
 
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_ZOOMIN,          STR_017F_ZOOM_THE_VIEW_IN},         // TBN_ZOOMIN
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_ZOOMOUT,         STR_0180_ZOOM_THE_VIEW_OUT},        // TBN_ZOOMOUT
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_ZOOMIN,          STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN},         // TBN_ZOOMIN
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_ZOOMOUT,         STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT},        // TBN_ZOOMOUT
 
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_BUILDRAIL,       STR_0181_BUILD_RAILROAD_TRACK},     // TBN_RAILS
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_BUILDROAD,       STR_0182_BUILD_ROADS},              // TBN_ROADS
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_BUILDWATER,      STR_0183_BUILD_SHIP_DOCKS},         // TBN_WATER
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_BUILDAIR,        STR_0184_BUILD_AIRPORTS},           // TBN_AIR
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_LANDSCAPING,     STR_LANDSCAPING_TOOLBAR_TIP},       // TBN_LANDSCAPE tree icon is SPR_IMG_PLANTTREES
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_BUILDRAIL,       STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK},     // TBN_RAILS
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_BUILDROAD,       STR_TOOLBAR_TOOLTIP_BUILD_ROADS},              // TBN_ROADS
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_BUILDWATER,      STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS},         // TBN_WATER
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_BUILDAIR,        STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS},           // TBN_AIR
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_LANDSCAPING,     STR_LANDSCAPING_TOOLBAR_TIP},                  // TBN_LANDSCAPE tree icon is SPR_IMG_PLANTTREES
 
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_MUSIC,           STR_01D4_SHOW_SOUND_MUSIC_WINDOW},  // TBN_MUSICSOUND
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_MESSAGES,        STR_0203_SHOW_LAST_MESSAGE_NEWS},   // TBN_NEWSREPORT
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_QUERY,           STR_0186_LAND_BLOCK_INFORMATION},   // TBN_HELP
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_SWITCH_TOOLBAR,      STR_EMPTY},                         // TBN_SWITCHBAR
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_MUSIC,           STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW},  // TBN_MUSICSOUND
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_MESSAGES,        STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS},   // TBN_NEWSREPORT
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_QUERY,           STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION},   // TBN_HELP
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_SWITCH_TOOLBAR,      STR_EMPTY},                                    // TBN_SWITCHBAR
 {   WIDGETS_END},
 };
 
@@ -1243,13 +1243,13 @@ public:
 		this->DrawWidgets();
 
 		SetDParam(0, ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
-		DrawString(this->widget[TBSE_DATEBACKWARD].right, this->widget[TBSE_DATEFORWARD].left, 6, STR_00AF, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->widget[TBSE_DATEBACKWARD].right, this->widget[TBSE_DATEFORWARD].left, 6, STR_DATE_LONG_WHITE, TC_FROMSTRING, SA_CENTER);
 
 		/* We hide this panel when the toolbar space gets too small */
 		const Widget *panel = &this->widget[TBSE_SPACERPANEL];
 		if (panel->left != panel->right) {
-			DrawString(panel->left + 1, panel->right - 1,  1, STR_0221_OPENTTD, TC_FROMSTRING, SA_CENTER);
-			DrawString(panel->left + 1, panel->right - 1, 11, STR_0222_SCENARIO_EDITOR, TC_FROMSTRING, SA_CENTER);
+			DrawString(panel->left + 1, panel->right - 1,  1, STR_SCENEDIT_TOOLBAR_OPENTTD, TC_FROMSTRING, SA_CENTER);
+			DrawString(panel->left + 1, panel->right - 1, 11, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_CENTER);
 		}
 	}
 
@@ -1397,29 +1397,29 @@ public:
 };
 
 static const Widget _toolb_scen_widgets[] = {
-{  WWT_IMGBTN, RESIZE_LEFT,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_PAUSE,       STR_0171_PAUSE_GAME},                  // TBSE_PAUSE
-{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_FASTFORWARD, STR_FAST_FORWARD},                     // TBSE_FASTFORWARD
-{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_SETTINGS,    STR_0187_OPTIONS},
-{WWT_IMGBTN_2, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_SAVE,        STR_0297_SAVE_SCENARIO_LOAD_SCENARIO}, // TBSE_SAVESCENARIO
+{  WWT_IMGBTN, RESIZE_LEFT,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_PAUSE,       STR_TOOLBAR_TOOLTIP_PAUSE_GAME},                  // TBSE_PAUSE
+{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_FASTFORWARD, STR_FAST_FORWARD},                                // TBSE_FASTFORWARD
+{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_SETTINGS,    STR_TOOLBAR_TOOLTIP_OPTIONS},
+{WWT_IMGBTN_2, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_SAVE,        STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO}, // TBSE_SAVESCENARIO
 
-{   WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, 0x0,                 STR_NULL},                             // TBSE_SPACERPANEL
+{   WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, 0x0,                 STR_NULL},                                        // TBSE_SPACERPANEL
 
-{   WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,   0, 129,  0, 21, 0x0,                 STR_NULL},                             // TBSE_DATEPANEL
-{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   3,  14,  5, 16, SPR_ARROW_DOWN,      STR_029E_MOVE_THE_STARTING_DATE},      // TBSE_DATEBACKWARD
-{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY, 113, 125,  5, 16, SPR_ARROW_UP,        STR_029F_MOVE_THE_STARTING_DATE},      // TBSE_DATEFORWARD
+{   WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,   0, 129,  0, 21, 0x0,                 STR_NULL},                                        // TBSE_DATEPANEL
+{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   3,  14,  5, 16, SPR_ARROW_DOWN,      STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD}, // TBSE_DATEBACKWARD
+{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY, 113, 125,  5, 16, SPR_ARROW_UP,        STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD},  // TBSE_DATEFORWARD
 
-{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_SMALLMAP,    STR_0175_DISPLAY_MAP_TOWN_DIRECTORY},  // TBSE_SMALLMAP
+{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_SMALLMAP,    STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY},  // TBSE_SMALLMAP
 
-{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_ZOOMIN,      STR_017F_ZOOM_THE_VIEW_IN},            // TBSE_ZOOMIN
-{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_ZOOMOUT,     STR_0180_ZOOM_THE_VIEW_OUT},           // TBSE_ZOOMOUT
+{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_ZOOMIN,      STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN},            // TBSE_ZOOMIN
+{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_ZOOMOUT,     STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT},           // TBSE_ZOOMOUT
 
-{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_LANDSCAPING, STR_022E_LANDSCAPE_GENERATION},        // TBSE_LANDGENERATE
-{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_TOWN,        STR_022F_TOWN_GENERATION},             // TBSE_TOWNGENERATE
-{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_INDUSTRY,    STR_0230_INDUSTRY_GENERATION},         // TBSE_INDUSTRYGENERATE
-{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_BUILDROAD,   STR_0231_ROAD_CONSTRUCTION},           // TBSE_BUILDROAD
-{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_BUILDWATER,  STR_0183_BUILD_SHIP_DOCKS},            // TBSE_BUILDDOCKS
-{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_PLANTTREES,  STR_0288_PLANT_TREES},                 // TBSE_PLANTTREES
-{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_SIGN,        STR_0289_PLACE_SIGN},                  // TBSE_PLACESIGNS
+{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_LANDSCAPING, STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION},       // TBSE_LANDGENERATE
+{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_TOWN,        STR_SCENEDIT_TOOLBAR_TOWN_GENERATION},            // TBSE_TOWNGENERATE
+{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_INDUSTRY,    STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION},        // TBSE_INDUSTRYGENERATE
+{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_BUILDROAD,   STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION},          // TBSE_BUILDROAD
+{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_BUILDWATER,  STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS},            // TBSE_BUILDDOCKS
+{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_PLANTTREES,  STR_SCENEDIT_TOOLBAR_PLANT_TREES},                // TBSE_PLANTTREES
+{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_SIGN,        STR_SCENEDIT_TOOLBAR_PLACE_SIGN},                 // TBSE_PLACESIGNS
 
 {   WWT_EMPTY, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0,  0, 0x0,                 STR_NULL},
 {   WWT_EMPTY, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0,  0, 0x0,                 STR_NULL},
@@ -1427,9 +1427,9 @@ static const Widget _toolb_scen_widgets[] = {
 {   WWT_EMPTY, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0,  0, 0x0,                 STR_NULL},
 {   WWT_EMPTY, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0,  0, 0x0,                 STR_NULL},
 {   WWT_EMPTY, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_MUSIC,       STR_01D4_SHOW_SOUND_MUSIC_WINDOW},
+{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_MUSIC,       STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW},
 {   WWT_EMPTY, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_QUERY,       STR_0186_LAND_BLOCK_INFORMATION},
+{  WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_QUERY,       STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION},
 {WIDGETS_END},
 };
 

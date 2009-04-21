@@ -93,7 +93,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bott
 			SetDParam(0, STR_JUST_RAW_STRING);
 			SetDParamStr(1, buff);
 		} else {
-			SetDParam(0, STR_01A9_NONE);
+			SetDParam(0, STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE);
 		}
 		y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_PARAMETER);
 
@@ -111,7 +111,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bott
 	if (c->info != NULL && !StrEmpty(c->info)) {
 		SetDParam(0, STR_JUST_RAW_STRING);
 		SetDParamStr(1, c->info);
-		y = DrawStringMultiLine(x, x + w, y, bottom, STR_02BD);
+		y = DrawStringMultiLine(x, x + w, y, bottom, STR_BLACK_STRING);
 	} else {
 		y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_NO_INFO);
 	}
@@ -241,8 +241,8 @@ struct NewGRFAddWindow : public Window {
 
 /* Widget definition for the add a newgrf window */
 static const Widget _newgrf_add_dlg_widgets[] = {
-{   WWT_CLOSEBOX,    RESIZE_NONE,  COLOUR_GREY,   0,  10,   0,  13, STR_00C5,                STR_018B_CLOSE_WINDOW },           // ANGRFW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,  11, 306,   0,  13, STR_NEWGRF_ADD_CAPTION,  STR_018C_WINDOW_TITLE_DRAG_THIS }, // ANGRFW_CAPTION
+{   WWT_CLOSEBOX,    RESIZE_NONE,  COLOUR_GREY,   0,  10,   0,  13, STR_BLACK_CROSS,         STR_TOOLTIP_CLOSE_WINDOW },        // ANGRFW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,  11, 306,   0,  13, STR_NEWGRF_ADD_CAPTION,  STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS }, // ANGRFW_CAPTION
 {      WWT_PANEL,      RESIZE_RB,  COLOUR_GREY,   0, 294,  14, 121, 0x0,                     STR_NULL },                        // ANGRFW_BACKGROUND
 {      WWT_INSET,      RESIZE_RB,  COLOUR_GREY,   2, 292,  16, 119, 0x0,                     STR_NULL },                        // ANGRFW_GRF_LIST
 {  WWT_SCROLLBAR,     RESIZE_LRB,  COLOUR_GREY, 295, 306,  14, 121, 0x0,                     STR_NULL },                        // ANGRFW_SCROLLBAR
@@ -389,7 +389,7 @@ struct NewGRFWindow : public Window {
 		}
 
 		if (this->preset == -1) {
-			this->widget[SNGRFS_PRESET_LIST].data = STR_02BF_CUSTOM;
+			this->widget[SNGRFS_PRESET_LIST].data = STR_NUM_CUSTOM;
 		} else {
 			SetDParamStr(0, _grf_preset_list[this->preset]);
 			this->widget[SNGRFS_PRESET_LIST].data = STR_JUST_RAW_STRING;
@@ -730,8 +730,8 @@ struct NewGRFWindow : public Window {
 
 /* Widget definition of the manage newgrfs window */
 static const Widget _newgrf_widgets[] = {
-{   WWT_CLOSEBOX,  RESIZE_NONE,  COLOUR_MAUVE,    0,  10,   0,  13, STR_00C5,                    STR_018B_CLOSE_WINDOW },            // SNGRFS_CLOSEBOX
-{    WWT_CAPTION, RESIZE_RIGHT,  COLOUR_MAUVE,   11, 299,   0,  13, STR_NEWGRF_SETTINGS_CAPTION, STR_018C_WINDOW_TITLE_DRAG_THIS },  // SNGRFS_CAPTION
+{   WWT_CLOSEBOX,  RESIZE_NONE,  COLOUR_MAUVE,    0,  10,   0,  13, STR_BLACK_CROSS,             STR_TOOLTIP_CLOSE_WINDOW },         // SNGRFS_CLOSEBOX
+{    WWT_CAPTION, RESIZE_RIGHT,  COLOUR_MAUVE,   11, 299,   0,  13, STR_NEWGRF_SETTINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS }, // SNGRFS_CAPTION
 {      WWT_PANEL, RESIZE_RIGHT,  COLOUR_MAUVE,    0, 299,  14,  41, STR_NULL,                    STR_NULL },                         // SNGRFS_BACKGROUND1
 {   WWT_DROPDOWN, RESIZE_RIGHT,  COLOUR_YELLOW,  10, 103,  16,  27, STR_EMPTY,                   STR_NEWGRF_PRESET_LIST_TIP },       // SNGRFS_PRESET_LIST
 { WWT_PUSHTXTBTN,    RESIZE_LR,  COLOUR_YELLOW, 104, 196,  16,  27, STR_NEWGRF_PRESET_SAVE,      STR_NEWGRF_PRESET_SAVE_TIP },       // SNGRFS_PRESET_SAVE
@@ -742,7 +742,7 @@ static const Widget _newgrf_widgets[] = {
 { WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_YELLOW, 150, 219,  32,  43, STR_NEWGRF_MOVEUP,           STR_NEWGRF_MOVEUP_TIP },            // SNGRFS_MOVE_UP
 { WWT_PUSHTXTBTN, RESIZE_RIGHT,  COLOUR_YELLOW, 220, 289,  32,  43, STR_NEWGRF_MOVEDOWN,         STR_NEWGRF_MOVEDOWN_TIP },          // SNGRFS_MOVE_DOWN
 {     WWT_MATRIX,    RESIZE_RB,  COLOUR_MAUVE,    0, 287,  46, 115, 0x501,                       STR_NEWGRF_FILE_TIP },              // SNGRFS_FILE_LIST
-{  WWT_SCROLLBAR,   RESIZE_LRB,  COLOUR_MAUVE,  288, 299,  46, 115, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST }, // SNGRFS_SCROLLBAR
+{  WWT_SCROLLBAR,   RESIZE_LRB,  COLOUR_MAUVE,  288, 299,  46, 115, 0x0,                         STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST }, // SNGRFS_SCROLLBAR
 {      WWT_PANEL,   RESIZE_RTB,  COLOUR_MAUVE,    0, 299, 116, 238, STR_NULL,                    STR_NULL },                         // SNGRFS_NEWGRF_INFO
 { WWT_PUSHTXTBTN,    RESIZE_TB,  COLOUR_MAUVE,    0,  99, 239, 250, STR_NEWGRF_SET_PARAMETERS,   STR_NULL },                         // SNGRFS_SET_PARAMETERS
 { WWT_PUSHTXTBTN,   RESIZE_RTB,  COLOUR_MAUVE,  100, 199, 239, 250, STR_NEWGRF_TOGGLE_PALETTE,   STR_NEWGRF_TOGGLE_PALETTE_TIP },    // SNGRFS_TOGGLE_PALETTE

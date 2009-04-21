@@ -79,7 +79,7 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 		case VEH_AIRCRAFT:
 			/* cannot stop airplane when in flight, or when taking off / landing */
-			if (v->u.air.state >= STARTTAKEOFF && v->u.air.state < TERM7) return_cmd_error(STR_A017_AIRCRAFT_IS_IN_FLIGHT);
+			if (v->u.air.state >= STARTTAKEOFF && v->u.air.state < TERM7) return_cmd_error(STR_ERROR_AIRCRAFT_IS_IN_FLIGHT);
 			break;
 
 		default: return CMD_ERROR;
@@ -95,10 +95,10 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 	if (flags & DC_EXEC) {
 		static const StringID vehicle_waiting_in_depot[] = {
-			STR_8814_TRAIN_IS_WAITING_IN_DEPOT,
-			STR_9016_ROAD_VEHICLE_IS_WAITING,
-			STR_981C_SHIP_IS_WAITING_IN_DEPOT,
-			STR_A014_AIRCRAFT_IS_WAITING_IN,
+			STR_VEHICLE_STATUS_WAITING_IN_DEPOT,
+			STR_NEWS_ROAD_VEHICLE_IS_WAITING,
+			STR_NEWS_SHIP_IS_WAITING,
+			STR_NEWS_AIRCRAFT_IS_WAITING,
 		};
 
 		static const WindowClass vehicle_list[] = {
@@ -362,7 +362,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		} while ((v = v->Next()) != NULL);
 
 		if (!Vehicle::AllocateList(NULL, veh_counter)) {
-			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+			return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 		}
 	}
 

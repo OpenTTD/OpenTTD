@@ -25,10 +25,10 @@ public:
 		ERR_TILE_BASE = AIError::ERR_CAT_TILE << AIError::ERR_CAT_BIT_SIZE,
 
 		/** Tile can't be raised any higher */
-		ERR_TILE_TOO_HIGH,                     // [STR_1003_ALREADY_AT_SEA_LEVEL]
+		ERR_TILE_TOO_HIGH,                     // [STR_ERROR_ALREADY_AT_SEA_LEVEL]
 
 		/** Tile can't be lowered any lower */
-		ERR_TILE_TOO_LOW,                      // [STR_1003_ALREADY_AT_SEA_LEVEL]
+		ERR_TILE_TOO_LOW,                      // [STR_ERROR_ALREADY_AT_SEA_LEVEL]
 	};
 
 	/**

@@ -23,7 +23,7 @@ public:
 		ERR_MARINE_BASE = AIError::ERR_CAT_MARINE << AIError::ERR_CAT_BIT_SIZE,
 
 		/** Infrastructure must be built on water */
-		ERR_MARINE_MUST_BE_BUILT_ON_WATER,                  // [STR_3801_MUST_BE_BUILT_ON_WATER]
+		ERR_MARINE_MUST_BE_BUILT_ON_WATER,                  // [STR_ERROR_MUST_BE_BUILT_ON_WATER]
 	};
 
 	/**

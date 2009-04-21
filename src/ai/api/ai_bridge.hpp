@@ -25,10 +25,10 @@ public:
 		 * The bridge you want to build is not available yet,
 		 * or it is not available for the requested length.
 		 */
-		ERR_BRIDGE_TYPE_UNAVAILABLE,         // [STR_5015_CAN_T_BUILD_BRIDGE_HERE]
+		ERR_BRIDGE_TYPE_UNAVAILABLE,         // [STR_ERROR_CAN_T_BUILD_BRIDGE_HERE]
 
 		/** One (or more) of the bridge head(s) ends in water. */
-		ERR_BRIDGE_CANNOT_END_IN_WATER,      // [STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH]
+		ERR_BRIDGE_CANNOT_END_IN_WATER,      // [STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH]
 
 		/** The bride heads need to be on the same height */
 		ERR_BRIDGE_HEADS_NOT_ON_SAME_HEIGHT, // [STR_BRIDGEHEADS_NOT_SAME_HEIGHT]

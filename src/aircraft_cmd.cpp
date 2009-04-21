@@ -269,12 +269,12 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	 * vl[0] = aircraft, vl[1] = shadow, [vl[2] = rotor] */
 	Vehicle *vl[3];
 	if (!Vehicle::AllocateList(vl, avi->subtype & AIR_CTOL ? 2 : 3)) {
-		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 	}
 
 	UnitID unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_AIRCRAFT);
 	if (unit_num > _settings_game.vehicle.max_aircraft)
-		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 
 	if (flags & DC_EXEC) {
 		Vehicle *v = vl[0]; // aircraft
@@ -451,7 +451,7 @@ CommandCost CmdSellAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	Vehicle *v = GetVehicle(p1);
 
 	if (v->type != VEH_AIRCRAFT || !CheckOwnership(v->owner)) return CMD_ERROR;
-	if (!v->IsStoppedInDepot()) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
+	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_AIRCRAFT_MUST_BE_STOPPED);
 
 	if (HASBITS(v->vehstatus, VS_CRASHED)) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
 
@@ -529,7 +529,7 @@ CommandCost CmdRefitAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	Vehicle *v = GetVehicle(p1);
 
 	if (v->type != VEH_AIRCRAFT || !CheckOwnership(v->owner)) return CMD_ERROR;
-	if (!v->IsStoppedInDepot()) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
+	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_AIRCRAFT_MUST_BE_STOPPED);
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_REFIT_DESTROYED_VEHICLE);
 
 	/* Check cargo */
@@ -1316,7 +1316,7 @@ static void CrashAirplane(Vehicle *v)
 		crash_reason = AIEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT;
 	} else {
 		SetDParam(1, st->index);
-		newsitem = STR_A034_PLANE_CRASH_DIE_IN_FIREBALL;
+		newsitem = STR_NEWS_AIRCRAFT_CRASH;
 		crash_reason = AIEventVehicleCrashed::CRASH_PLANE_LANDING;
 	}
 
@@ -1367,7 +1367,7 @@ static void AircraftEntersTerminal(Vehicle *v)
 		SetDParam(0, st->index);
 		/* show newsitem of celebrating citizens */
 		AddNewsItem(
-			STR_A033_CITIZENS_CELEBRATE_FIRST,
+			STR_NEWS_FIRST_AIRCRAFT_ARRIVAL,
 			(v->owner == _local_company) ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
 			v->index,
 			st->index

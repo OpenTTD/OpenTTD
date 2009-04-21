@@ -95,7 +95,7 @@ static Station *GetStationAround(TileIndex tile, int w, int h, StationID closest
 			if (closest_station == INVALID_STATION) {
 				closest_station = t;
 			} else if (closest_station != t) {
-				_error_message = STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING;
+				_error_message = STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING;
 				return CHECK_STATIONS_ERR;
 			}
 		}
@@ -392,7 +392,7 @@ static void UpdateStationVirtCoord(Station *st)
 
 	SetDParam(0, st->index);
 	SetDParam(1, st->facilities);
-	UpdateViewportSignPos(&st->sign, pt.x, pt.y, STR_305C_0);
+	UpdateViewportSignPos(&st->sign, pt.x, pt.y, STR_STATION_SIGN);
 }
 
 /** Update the virtual coords needed to draw the station sign for all stations. */
@@ -587,12 +587,12 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 		/* List of accept and reject strings for different number of
 		 * cargo types */
 		static const StringID accept_msg[] = {
-			STR_3040_NOW_ACCEPTS,
-			STR_3041_NOW_ACCEPTS_AND,
+			STR_NEWS_STATION_NOW_ACCEPTS_CARGO,
+			STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO,
 		};
 		static const StringID reject_msg[] = {
-			STR_303E_NO_LONGER_ACCEPTS,
-			STR_303F_NO_LONGER_ACCEPTS_OR,
+			STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO,
+			STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO,
 		};
 
 		/* Array of accepted and rejected cargo types */
@@ -670,7 +670,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag fla
 
 	BEGIN_TILE_LOOP(tile_cur, w, h, tile) {
 		if (MayHaveBridgeAbove(tile_cur) && IsBridgeAbove(tile_cur)) {
-			return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+			return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 		}
 
 		if (!EnsureNoVehicleOnGround(tile_cur)) return CMD_ERROR;
@@ -684,7 +684,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag fla
 		 */
 		if (IsSteepSlope(tileh) ||
 				((!_settings_game.construction.build_on_slopes) && tileh != SLOPE_FLAT)) {
-			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
+			return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
 		}
 
 		int flat_z = z;
@@ -695,7 +695,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag fla
 			    (HasBit(invalid_dirs, DIAGDIR_SE) && !(tileh & SLOPE_SE)) ||
 			    (HasBit(invalid_dirs, DIAGDIR_SW) && !(tileh & SLOPE_SW)) ||
 			    (HasBit(invalid_dirs, DIAGDIR_NW) && !(tileh & SLOPE_NW))) {
-				return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
+				return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
 			}
 			cost.AddCost(_price.terraform);
 			flat_z += TILE_HEIGHT;
@@ -706,7 +706,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag fla
 			/* first tile */
 			allowed_z = flat_z;
 		} else if (allowed_z != flat_z) {
-			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
+			return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
 		}
 
 		/* if station is set, then we have special handling to allow building on top of already existing stations.
@@ -720,7 +720,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag fla
 				if (*station == INVALID_STATION) {
 					*station = st;
 				} else if (*station != st) {
-					return_cmd_error(STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING);
+					return_cmd_error(STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING);
 				}
 			}
 		} else if (check_clear) {
@@ -786,7 +786,7 @@ static bool CanExpandRailroadStation(const Station *st, uint *fin, Axis axis)
 	}
 	/* make sure the final size is not too big. */
 	if (curw > _settings_game.station.station_spread || curh > _settings_game.station.station_spread) {
-		_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
+		_error_message = STR_ERROR_STATION_TOO_SPREAD_OUT;
 		return false;
 	}
 
@@ -936,12 +936,12 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 	if (st != NULL) {
 		/* Reuse an existing station. */
 		if (st->owner != _current_company)
-			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
+			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION);
 
 		if (st->train_tile != INVALID_TILE) {
 			/* check if we want to expanding an already existing station? */
 			if (!_settings_game.station.join_stations)
-				return_cmd_error(STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD);
+				return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD);
 			if (!CanExpandRailroadStation(st, finalvalues, axis))
 				return CMD_ERROR;
 		}
@@ -950,7 +950,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 		if (!st->rect.BeforeAddRect(tile_org, w_org, h_org, StationRect::ADD_TEST)) return CMD_ERROR;
 	} else {
 		/* allocate and initialize new station */
-		if (!Station::CanAllocateItem()) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
+		if (!Station::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 
 		if (flags & DC_EXEC) {
 			st = new Station(tile_org);
@@ -970,7 +970,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 	/* Check if we can allocate a custom stationspec to this station */
 	const StationSpec *statspec = GetCustomStationSpec((StationClassID)GB(p2, 0, 8), GB(p2, 8, 8));
 	int specindex = AllocateSpecToStation(statspec, st, (flags & DC_EXEC) != 0);
-	if (specindex == -1) return_cmd_error(STR_TOO_MANY_STATION_SPECS);
+	if (specindex == -1) return_cmd_error(STR_ERROR_TOO_MANY_STATION_SPECS);
 
 	if (statspec != NULL) {
 		/* Perform NewStation checks */
@@ -1431,22 +1431,22 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if (st == NULL && reuse) st = GetClosestDeletedStation(tile);
 
 	/* give us a road stop in the list, and check if something went wrong */
-	if (!RoadStop::CanAllocateItem()) return_cmd_error(type ? STR_TOO_MANY_TRUCK_STOPS : STR_TOO_MANY_BUS_STOPS);
+	if (!RoadStop::CanAllocateItem()) return_cmd_error(type ? STR_ERROR_TOO_MANY_TRUCK_STOPS : STR_ERROR_TOO_MANY_BUS_STOPS);
 
 	if (st != NULL &&
 			GetNumRoadStopsInStation(st, ROADSTOP_BUS) + GetNumRoadStopsInStation(st, ROADSTOP_TRUCK) >= RoadStop::LIMIT) {
-		return_cmd_error(type ? STR_TOO_MANY_TRUCK_STOPS : STR_TOO_MANY_BUS_STOPS);
+		return_cmd_error(type ? STR_ERROR_TOO_MANY_TRUCK_STOPS : STR_ERROR_TOO_MANY_BUS_STOPS);
 	}
 
 	if (st != NULL) {
 		if (st->owner != _current_company) {
-			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
+			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION);
 		}
 
 		if (!st->rect.BeforeAddTile(tile, StationRect::ADD_TEST)) return CMD_ERROR;
 	} else {
 		/* allocate and initialize new station */
-		if (!Station::CanAllocateItem()) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
+		if (!Station::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 
 		if (flags & DC_EXEC) {
 			st = new Station(tile);
@@ -1833,7 +1833,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	Station *st = NULL;
 
 	if (w > _settings_game.station.station_spread || h > _settings_game.station.station_spread) {
-		_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
+		_error_message = STR_ERROR_STATION_TOO_SPREAD_OUT;
 		return CMD_ERROR;
 	}
 
@@ -1859,7 +1859,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			if (st->town == t && st->facilities & FACIL_AIRPORT && st->airport_type != AT_OILRIG) num++;
 		}
 		if (num >= 2) {
-			authority_refuse_message = STR_2035_LOCAL_AUTHORITY_REFUSES;
+			authority_refuse_message = STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT;
 		}
 	}
 
@@ -1883,19 +1883,19 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (st != NULL) {
 		if (st->owner != _current_company) {
-			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
+			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION);
 		}
 
 		if (!st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TEST)) return CMD_ERROR;
 
 		if (st->airport_tile != INVALID_TILE) {
-			return_cmd_error(STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT);
+			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT);
 		}
 	} else {
 		airport_upgrade = false;
 
 		/* allocate and initialize new station */
-		if (!Station::CanAllocateItem()) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
+		if (!Station::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 
 		if (flags & DC_EXEC) {
 			st = new Station(tile);
@@ -2024,13 +2024,13 @@ static CommandCost RemoveAirport(Station *st, DoCommandFlag flags)
  */
 CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsWaterTile(tile) || tile == 0) return_cmd_error(STR_0239_SITE_UNSUITABLE);
-	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+	if (!IsWaterTile(tile) || tile == 0) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
-	if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_0239_SITE_UNSUITABLE);
+	if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 
 	/* allocate and initialize new station */
-	if (!Station::CanAllocateItem()) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
+	if (!Station::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 
 	if (flags & DC_EXEC) {
 		Station *st = new Station(tile);
@@ -2142,25 +2142,25 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (distant_join && (!_settings_game.station.distant_join_stations || !IsValidStationID(station_to_join))) return CMD_ERROR;
 
 	DiagDirection direction = GetInclinedSlopeDirection(GetTileSlope(tile, NULL));
-	if (direction == INVALID_DIAGDIR) return_cmd_error(STR_0239_SITE_UNSUITABLE);
+	if (direction == INVALID_DIAGDIR) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	direction = ReverseDiagDir(direction);
 
 	/* Docks cannot be placed on rapids */
-	if (IsWaterTile(tile)) return_cmd_error(STR_0239_SITE_UNSUITABLE);
+	if (IsWaterTile(tile)) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 
 	if (!CheckIfAuthorityAllowsNewStation(tile, flags)) return CMD_ERROR;
 
-	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
 	if (CmdFailed(DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR))) return CMD_ERROR;
 
 	TileIndex tile_cur = tile + TileOffsByDiagDir(direction);
 
 	if (!IsTileType(tile_cur, MP_WATER) || GetTileSlope(tile_cur, NULL) != SLOPE_FLAT) {
-		return_cmd_error(STR_0239_SITE_UNSUITABLE);
+		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 
-	if (MayHaveBridgeAbove(tile_cur) && IsBridgeAbove(tile_cur)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+	if (MayHaveBridgeAbove(tile_cur) && IsBridgeAbove(tile_cur)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
 	/* Get the water class of the water tile before it is cleared.*/
 	WaterClass wc = GetWaterClass(tile_cur);
@@ -2169,7 +2169,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	tile_cur += TileOffsByDiagDir(direction);
 	if (!IsTileType(tile_cur, MP_WATER) || GetTileSlope(tile_cur, NULL) != SLOPE_FLAT) {
-		return_cmd_error(STR_0239_SITE_UNSUITABLE);
+		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 
 	/* middle */
@@ -2190,17 +2190,17 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	if (st != NULL) {
 		if (st->owner != _current_company) {
-			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
+			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION);
 		}
 
 		if (!st->rect.BeforeAddRect(
 				tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
 				_dock_w_chk[direction], _dock_h_chk[direction], StationRect::ADD_TEST)) return CMD_ERROR;
 
-		if (st->dock_tile != INVALID_TILE) return_cmd_error(STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK);
+		if (st->dock_tile != INVALID_TILE) return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK);
 	} else {
 		/* allocate and initialize new station */
-		if (!Station::CanAllocateItem()) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
+		if (!Station::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 
 		if (flags & DC_EXEC) {
 			st = new Station(tile);
@@ -2454,12 +2454,12 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 				(road_owner != INVALID_OWNER && road_owner != td->owner[0])) {
 			uint i = 1;
 			if (road_owner != INVALID_OWNER) {
-				td->owner_type[i] = STR_ROAD_OWNER;
+				td->owner_type[i] = STR_LAND_AREA_INFORMATION_ROAD_OWNER;
 				td->owner[i] = road_owner;
 				i++;
 			}
 			if (tram_owner != INVALID_OWNER) {
-				td->owner_type[i] = STR_TRAM_OWNER;
+				td->owner_type[i] = STR_LAND_AREA_INFORMATION_TRAM_OWNER;
 				td->owner[i] = tram_owner;
 			}
 		}
@@ -2481,15 +2481,15 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 	StringID str;
 	switch (GetStationType(tile)) {
 		default: NOT_REACHED();
-		case STATION_RAIL:    str = STR_305E_RAILROAD_STATION; break;
+		case STATION_RAIL:    str = STR_STATION_DESCRIPTION_RAILROAD_STATION; break;
 		case STATION_AIRPORT:
-			str = (IsHangar(tile) ? STR_305F_AIRCRAFT_HANGAR : STR_3060_AIRPORT);
+			str = (IsHangar(tile) ? STR_STATION_DESCRIPTION_AIRCRAFT_HANGAR : STR_STATION_DESCRIPTION_AIRPORT);
 			break;
-		case STATION_TRUCK:   str = STR_3061_TRUCK_LOADING_AREA; break;
-		case STATION_BUS:     str = STR_3062_BUS_STATION; break;
-		case STATION_OILRIG:  str = STR_4807_OIL_RIG; break;
-		case STATION_DOCK:    str = STR_3063_SHIP_DOCK; break;
-		case STATION_BUOY:    str = STR_3069_BUOY; break;
+		case STATION_TRUCK:   str = STR_STATION_DESCRIPTION_TRUCK_LOADING_AREA; break;
+		case STATION_BUS:     str = STR_STATION_DESCRIPTION_BUS_STATION; break;
+		case STATION_OILRIG:  str = STR_INDUSTRY_NAME_OIL_RIG; break;
+		case STATION_DOCK:    str = STR_STATION_DESCRIPTION_SHIP_DOCK; break;
+		case STATION_BUOY:    str = STR_STATION_DESCRIPTION_BUOY; break;
 	}
 	td->str = str;
 }
@@ -3166,15 +3166,15 @@ static CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
 {
 	if (flags & DC_AUTO) {
 		switch (GetStationType(tile)) {
-			case STATION_RAIL:    return_cmd_error(STR_300B_MUST_DEMOLISH_RAILROAD);
-			case STATION_AIRPORT: return_cmd_error(STR_300E_MUST_DEMOLISH_AIRPORT_FIRST);
-			case STATION_TRUCK:   return_cmd_error(HasTileRoadType(tile, ROADTYPE_TRAM) ? STR_MUST_DEMOLISH_CARGO_TRAM_STATION : STR_3047_MUST_DEMOLISH_TRUCK_STATION);
-			case STATION_BUS:     return_cmd_error(HasTileRoadType(tile, ROADTYPE_TRAM) ? STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION : STR_3046_MUST_DEMOLISH_BUS_STATION);
-			case STATION_BUOY:    return_cmd_error(STR_306A_BUOY_IN_THE_WAY);
-			case STATION_DOCK:    return_cmd_error(STR_304D_MUST_DEMOLISH_DOCK_FIRST);
+			case STATION_RAIL:    return_cmd_error(STR_ERROR_MUST_DEMOLISH_RAILROAD);
+			case STATION_AIRPORT: return_cmd_error(STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST);
+			case STATION_TRUCK:   return_cmd_error(HasTileRoadType(tile, ROADTYPE_TRAM) ? STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST : STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST);
+			case STATION_BUS:     return_cmd_error(HasTileRoadType(tile, ROADTYPE_TRAM) ? STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST : STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST);
+			case STATION_BUOY:    return_cmd_error(STR_ERROR_BUOY_IN_THE_WAY);
+			case STATION_DOCK:    return_cmd_error(STR_ERROR_MUST_DEMOLISH_DOCK_FIRST);
 			case STATION_OILRIG:
-				SetDParam(0, STR_4807_OIL_RIG);
-				return_cmd_error(STR_4800_IN_THE_WAY);
+				SetDParam(0, STR_INDUSTRY_NAME_OIL_RIG);
+				return_cmd_error(STR_OBJECT_IN_THE_WAY);
 		}
 	}
 
@@ -3185,11 +3185,11 @@ static CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
 		case STATION_AIRPORT: return RemoveAirport(st, flags);
 		case STATION_TRUCK:
 			if (IsDriveThroughStopTile(tile) && !CanRemoveRoadWithStop(tile, flags))
-				return_cmd_error(STR_3047_MUST_DEMOLISH_TRUCK_STATION);
+				return_cmd_error(STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST);
 			return RemoveRoadStop(st, flags, tile);
 		case STATION_BUS:
 			if (IsDriveThroughStopTile(tile) && !CanRemoveRoadWithStop(tile, flags))
-				return_cmd_error(STR_3046_MUST_DEMOLISH_BUS_STATION);
+				return_cmd_error(STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST);
 			return RemoveRoadStop(st, flags, tile);
 		case STATION_BUOY:    return RemoveBuoy(st, flags);
 		case STATION_DOCK:    return RemoveDock(st, flags);

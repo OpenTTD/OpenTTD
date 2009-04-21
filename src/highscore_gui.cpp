@@ -102,11 +102,11 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 			SetDParam(0, c->index);
 			SetDParam(1, c->index);
 			SetDParam(2, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history));
-			DrawStringMultiLine(x, x + 640, y + 140, y + 206, STR_021C_OF_ACHIEVES_STATUS, SA_CENTER);
+			DrawStringMultiLine(x, x + 640, y + 140, y + 206, STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS, SA_CENTER);
 		} else {
 			SetDParam(0, c->index);
 			SetDParam(1, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history));
-			DrawStringMultiLine(x, x + 640, y + 90, y + 210, STR_021B_ACHIEVES_STATUS, SA_CENTER);
+			DrawStringMultiLine(x, x + 640, y + 90, y + 210, STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS, SA_CENTER);
 		}
 	}
 };
@@ -141,13 +141,13 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 		this->SetupHighScoreEndWindow(&x, &y);
 
 		SetDParam(0, ORIGINAL_END_YEAR);
-		SetDParam(1, this->window_number + STR_6801_EASY);
-		DrawStringMultiLine(x + 70, x + 570, y, y + 140, !_networking ? STR_0211_TOP_COMPANIES_WHO_REACHED : STR_TOP_COMPANIES_NETWORK_GAME, SA_CENTER);
+		SetDParam(1, this->window_number + STR_DIFFICULTY_LEVEL_EASY);
+		DrawStringMultiLine(x + 70, x + 570, y, y + 140, !_networking ? STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED : STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME, SA_CENTER);
 
 		/* Draw Highscore peepz */
 		for (uint8 i = 0; i < lengthof(_highscore_table[0]); i++) {
 			SetDParam(0, i + 1);
-			DrawString(x + 40, x + 600, y + 140 + (i * 55), STR_0212, TC_BLACK);
+			DrawString(x + 40, x + 600, y + 140 + (i * 55), STR_HIGHSCORE_POSITION, TC_BLACK);
 
 			if (hs[i].company[0] != '\0') {
 				TextColour colour = (this->rank == i) ? TC_RED : TC_BLACK; // draw new highscore in red

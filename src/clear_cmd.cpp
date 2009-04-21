@@ -329,18 +329,18 @@ static TrackStatus GetTileTrackStatus_Clear(TileIndex tile, TransportType mode, 
 }
 
 static const StringID _clear_land_str[] = {
-	STR_080D_GRASS,
-	STR_080B_ROUGH_LAND,
-	STR_080A_ROCKS,
-	STR_080E_FIELDS,
-	STR_080F_SNOW_COVERED_LAND,
-	STR_0810_DESERT
+	STR_CLEAR_LAND_DESCRIPTION_GRASS,
+	STR_CLEAR_LAND_DESCRIPTION_ROUGH_LAND,
+	STR_CLEAR_LAND_DESCRIPTION_ROCKS,
+	STR_CLEAR_LAND_DESCRIPTION_FIELDS,
+	STR_CLEAR_LAND_DESCRIPTION_SNOW_COVERED_LAND,
+	STR_CLEAR_LAND_DESCRIPTION_DESERT
 };
 
 static void GetTileDesc_Clear(TileIndex tile, TileDesc *td)
 {
 	if (IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) == 0) {
-		td->str = STR_080C_BARE_LAND;
+		td->str = STR_CLEAR_LAND_DESCRIPTION_BARE_LAND;
 	} else {
 		td->str = _clear_land_str[GetClearGround(tile)];
 	}

@@ -434,9 +434,9 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			if (st->owner != OWNER_NONE && !CheckOwnership(st->owner)) return CMD_ERROR;
 
-			if (!CanVehicleUseStation(v, st)) return_cmd_error(STR_CAN_T_ADD_ORDER);
+			if (!CanVehicleUseStation(v, st)) return_cmd_error(STR_ERROR_CAN_T_ADD_ORDER);
 			for (Vehicle *u = v->FirstShared(); u != NULL; u = u->NextShared()) {
-				if (!CanVehicleUseStation(u, st)) return_cmd_error(STR_CAN_T_ADD_ORDER_SHARED);
+				if (!CanVehicleUseStation(u, st)) return_cmd_error(STR_ERROR_CAN_T_ADD_ORDER_SHARED);
 			}
 
 			/* Non stop not allowed for non-trains. */
@@ -564,9 +564,9 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	if (sel_ord > v->GetNumOrders()) return CMD_ERROR;
 
-	if (v->GetNumOrders() >= MAX_VEH_ORDER_ID) return_cmd_error(STR_8832_TOO_MANY_ORDERS);
-	if (!Order::CanAllocateItem()) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
-	if (v->orders.list == NULL && !OrderList::CanAllocateItem()) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
+	if (v->GetNumOrders() >= MAX_VEH_ORDER_ID) return_cmd_error(STR_ERROR_TOO_MANY_ORDERS);
+	if (!Order::CanAllocateItem()) return_cmd_error(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS);
+	if (v->orders.list == NULL && !OrderList::CanAllocateItem()) return_cmd_error(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS);
 
 	if (v->type == VEH_SHIP && _settings_game.pf.pathfinder_for_ships != VPF_NPF) {
 		/* Make sure the new destination is not too far away from the previous */
@@ -584,7 +584,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		if (prev != NULL) {
 			uint dist = GetOrderDistance(prev, &new_order, v);
 			if (dist >= 130) {
-				return_cmd_error(STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO);
+				return_cmd_error(STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION);
 			}
 		}
 	}
@@ -1110,7 +1110,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			FOR_VEHICLE_ORDERS(src, order) {
 				if (OrderGoesToStation(dst, order) &&
 						!CanVehicleUseStation(dst, GetStation(order->GetDestination()))) {
-					return_cmd_error(STR_CAN_T_COPY_SHARE_ORDER);
+					return_cmd_error(STR_ERROR_CAN_T_COPY_SHARE_ORDER);
 				}
 			}
 
@@ -1148,7 +1148,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			FOR_VEHICLE_ORDERS(src, order) {
 				if (OrderGoesToStation(dst, order) &&
 						!CanVehicleUseStation(dst, GetStation(order->GetDestination()))) {
-					return_cmd_error(STR_CAN_T_COPY_SHARE_ORDER);
+					return_cmd_error(STR_ERROR_CAN_T_COPY_SHARE_ORDER);
 				}
 			}
 
@@ -1156,7 +1156,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			delta = dst->IsOrderListShared() ? src->GetNumOrders() + 1 : src->GetNumOrders() - dst->GetNumOrders();
 			if (!Order::CanAllocateItem(delta) ||
 					((dst->orders.list == NULL || dst->IsOrderListShared()) && !OrderList::CanAllocateItem())) {
-				return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
+				return_cmd_error(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS);
 			}
 
 			if (flags & DC_EXEC) {

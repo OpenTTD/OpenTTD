@@ -473,7 +473,7 @@ void Window::DrawWidgets() const
 		case WWT_CLOSEBOX: {
 			const StringID str = wi->data;
 
-			assert(str == STR_00C5 || str == STR_00C6); // black or silver cross
+			assert(str == STR_BLACK_CROSS || str == STR_SILVER_CROSS); // black or silver cross
 			assert(r.right - r.left == 10); // To ensure the same sizes are used everywhere
 
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_NONE);
@@ -500,12 +500,12 @@ void Window::DrawWidgets() const
 			if (_dynlang.text_dir == TD_LTR) {
 				DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, wi->colour, FR_NONE);
 				DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, wi->colour, clicked ? FR_LOWERED : FR_NONE);
-				DrawString(r.right - (clicked ? 10 : 11), r.right, r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK, SA_CENTER);
+				DrawString(r.right - (clicked ? 10 : 11), r.right, r.top + (clicked ? 2 : 1), STR_ARROW_DOWN, TC_BLACK, SA_CENTER);
 				if (str != STR_NULL) DrawString(r.left + 2, r.right - 14, r.top + 1, str, TC_BLACK);
 			} else {
 				DrawFrameRect(r.left + 12, r.top, r.right, r.bottom, wi->colour, FR_NONE);
 				DrawFrameRect(r.left, r.top, r.left + 11, r.bottom, wi->colour, clicked ? FR_LOWERED : FR_NONE);
-				DrawString(r.left + clicked, r.left + 11, r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK, SA_CENTER);
+				DrawString(r.left + clicked, r.left + 11, r.top + (clicked ? 2 : 1), STR_ARROW_DOWN, TC_BLACK, SA_CENTER);
 				if (str != STR_NULL) DrawString(r.left + 14, r.right - 2, r.top + 1, str, TC_BLACK);
 			}
 			break;
@@ -1263,21 +1263,21 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 			this->SetFill(false, true);
 			this->SetResize(0, 1);
 			this->min_x = 12;
-			this->SetDataTip(0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST);
+			this->SetDataTip(0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST);
 			break;
 
 		case WWT_CAPTION:
 			this->SetFill(true, false);
 			this->SetResize(1, 0);
 			this->min_y = 14;
-			this->SetDataTip(data, STR_018C_WINDOW_TITLE_DRAG_THIS);
+			this->SetDataTip(data, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
 			break;
 
 		case WWT_HSCROLLBAR:
 			this->SetFill(true, false);
 			this->SetResize(1, 0);
 			this->min_y = 12;
-			this->SetDataTip(0x0, STR_HSCROLL_BAR_SCROLLS_LIST);
+			this->SetDataTip(0x0, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
 			break;
 
 		case WWT_STICKYBOX:
@@ -1295,7 +1295,7 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 		case WWT_CLOSEBOX:
 			this->SetFill(false, false);
 			this->SetMinimalSize(11, 14);
-			this->SetDataTip(STR_00C5, STR_018B_CLOSE_WINDOW);
+			this->SetDataTip(STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW);
 			break;
 
 		case WWT_DROPDOWN:

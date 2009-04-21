@@ -333,13 +333,13 @@ struct TimetableWindow : Window {
 };
 
 static const Widget _timetable_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},                // TTV_WIDGET_CLOSEBOX
-	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   326,     0,    13, STR_TIMETABLE_TITLE,        STR_018C_WINDOW_TITLE_DRAG_THIS},      // TTV_CAPTION
+	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,            STR_TOOLTIP_CLOSE_WINDOW},             // TTV_WIDGET_CLOSEBOX
+	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   326,     0,    13, STR_TIMETABLE_TITLE,        STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // TTV_CAPTION
 	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   327,   387,     0,    13, STR_ORDER_VIEW,             STR_ORDER_VIEW_TOOLTIP},               // TTV_ORDER_VIEW
 	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   388,   399,     0,    13, STR_NULL,                   STR_STICKY_BUTTON},                    // TTV_STICKY
 
 	{      WWT_PANEL,   RESIZE_RB,     COLOUR_GREY,     0,   387,    14,    95, STR_NULL,                   STR_TIMETABLE_TOOLTIP},                // TTV_TIMETABLE_PANEL
-	{  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_GREY,   388,   399,    14,    95, STR_NULL,                   STR_0190_SCROLL_BAR_SCROLLS_LIST},     // TTV_SCROLLBAR
+	{  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_GREY,   388,   399,    14,    95, STR_NULL,                   STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // TTV_SCROLLBAR
 
 	{      WWT_PANEL,   RESIZE_RTB,    COLOUR_GREY,     0,   399,    96,   117, STR_NULL,                   STR_NULL},                             // TTV_SUMMARY_PANEL
 

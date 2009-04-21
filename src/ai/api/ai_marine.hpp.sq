@@ -24,7 +24,7 @@ void SQAIMarine_Register(Squirrel *engine) {
 	SQAIMarine.DefSQConst(engine, AIMarine::ERR_MARINE_BASE,                   "ERR_MARINE_BASE");
 	SQAIMarine.DefSQConst(engine, AIMarine::ERR_MARINE_MUST_BE_BUILT_ON_WATER, "ERR_MARINE_MUST_BE_BUILT_ON_WATER");
 
-	AIError::RegisterErrorMap(STR_3801_MUST_BE_BUILT_ON_WATER, AIMarine::ERR_MARINE_MUST_BE_BUILT_ON_WATER);
+	AIError::RegisterErrorMap(STR_ERROR_MUST_BE_BUILT_ON_WATER, AIMarine::ERR_MARINE_MUST_BE_BUILT_ON_WATER);
 
 	AIError::RegisterErrorMapString(AIMarine::ERR_MARINE_MUST_BE_BUILT_ON_WATER, "ERR_MARINE_MUST_BE_BUILT_ON_WATER");
 

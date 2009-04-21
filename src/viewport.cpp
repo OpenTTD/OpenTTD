@@ -1111,7 +1111,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 						top    < st->sign.top + 12 &&
 						right  > st->sign.left &&
 						left   < st->sign.left + st->sign.width_1) {
-					AddStation(st, STR_305C_0, st->sign.width_1);
+					AddStation(st, STR_STATION_SIGN, st->sign.width_1);
 				}
 			}
 			break;
@@ -1124,7 +1124,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 						top    < st->sign.top + 24 &&
 						right  > st->sign.left &&
 						left   < st->sign.left + st->sign.width_1 * 2) {
-					AddStation(st, STR_305C_0, st->sign.width_1);
+					AddStation(st, STR_STATION_SIGN, st->sign.width_1);
 				}
 			}
 			break;
@@ -1175,7 +1175,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 						top    < si->sign.top + 12 &&
 						right  > si->sign.left &&
 						left   < si->sign.left + si->sign.width_1) {
-					AddSign(si, STR_2806, si->sign.width_1);
+					AddSign(si, STR_SIGN_WHITE, si->sign.width_1);
 				}
 			}
 			break;
@@ -1188,7 +1188,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 						top    < si->sign.top + 24 &&
 						right  > si->sign.left &&
 						left   < si->sign.left + si->sign.width_1 * 2) {
-					AddSign(si, STR_2806, si->sign.width_1);
+					AddSign(si, STR_SIGN_WHITE, si->sign.width_1);
 				}
 			}
 			break;
@@ -1203,7 +1203,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 						top    < si->sign.top + ScaleByZoom(12, dpi->zoom) &&
 						right  > si->sign.left &&
 						left   < si->sign.left + ScaleByZoom(si->sign.width_2, dpi->zoom)) {
-					AddSign(si, IsTransparencySet(TO_SIGNS) ? STR_2002_WHITE : STR_2002, si->sign.width_2 | 0x8000);
+					AddSign(si, IsTransparencySet(TO_SIGNS) ? STR_SIGN_SMALL_WHITE : STR_SIGN_SMALL_BLACK, si->sign.width_2 | 0x8000);
 				}
 			}
 			break;
@@ -1422,7 +1422,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 
 		if (ss->width != 0) {
 			/* Do not draw signs nor station names if they are set invisible */
-			if (IsInvisibilitySet(TO_SIGNS) && ss->string != STR_2806) continue;
+			if (IsInvisibilitySet(TO_SIGNS) && ss->string != STR_SIGN_WHITE) continue;
 
 			int x = UnScaleByZoom(ss->x, zoom) - 1;
 			int y = UnScaleByZoom(ss->y, zoom) - 1;
@@ -1437,8 +1437,8 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 			}
 
 		/* Draw the rectangle if 'tranparent station signs' is off,
-		 * or if we are drawing a general text sign (STR_2806) */
-			if (!IsTransparencySet(TO_SIGNS) || ss->string == STR_2806) {
+		 * or if we are drawing a general text sign (STR_SIGN_WHITE) */
+			if (!IsTransparencySet(TO_SIGNS) || ss->string == STR_SIGN_WHITE) {
 				DrawFrameRect(
 					x, y, x + w, bottom, (Colours)ss->colour,
 					IsTransparencySet(TO_SIGNS) ? FR_TRANSPARENT : FR_NONE
@@ -1450,7 +1450,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 		SetDParam(1, ss->params[1]);
 		/* if we didn't draw a rectangle, or if transparant building is on,
 		 * draw the text in the colour the rectangle would have */
-		if (IsTransparencySet(TO_SIGNS) && ss->string != STR_2806 && ss->width != 0) {
+		if (IsTransparencySet(TO_SIGNS) && ss->string != STR_SIGN_WHITE && ss->width != 0) {
 			/* Real colours need the IS_PALETTE_COLOUR flag
 			 * otherwise colours from _string_colourmap are assumed. */
 			colour = (TextColour)_colour_gradient[ss->colour][6] | IS_PALETTE_COLOUR;

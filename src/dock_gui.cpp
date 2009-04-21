@@ -49,18 +49,18 @@ static void PlaceDocks_Dock(TileIndex tile)
 	uint32 p2 = INVALID_STATION << 16; // no station to join
 
 	/* tile is always the land tile, so need to evaluate _thd.pos */
-	CommandContainer cmdcont = { tile, _ctrl_pressed, p2, CMD_BUILD_DOCK | CMD_MSG(STR_9802_CAN_T_BUILD_DOCK_HERE), CcBuildDocks, "" };
+	CommandContainer cmdcont = { tile, _ctrl_pressed, p2, CMD_BUILD_DOCK | CMD_MSG(STR_ERROR_CAN_T_BUILD_DOCK_HERE), CcBuildDocks, "" };
 	ShowSelectStationIfNeeded(cmdcont, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE);
 }
 
 static void PlaceDocks_Depot(TileIndex tile)
 {
-	DoCommandP(tile, _ship_depot_direction, 0, CMD_BUILD_SHIP_DEPOT | CMD_MSG(STR_3802_CAN_T_BUILD_SHIP_DEPOT), CcBuildDocks);
+	DoCommandP(tile, _ship_depot_direction, 0, CMD_BUILD_SHIP_DEPOT | CMD_MSG(STR_ERROR_CAN_T_BUILD_SHIP_DEPOT), CcBuildDocks);
 }
 
 static void PlaceDocks_Buoy(TileIndex tile)
 {
-	DoCommandP(tile, 0, 0, CMD_BUILD_BUOY | CMD_MSG(STR_9835_CAN_T_POSITION_BUOY_HERE), CcBuildDocks);
+	DoCommandP(tile, 0, 0, CMD_BUILD_BUOY | CMD_MSG(STR_ERROR_CAN_T_POSITION_BUOY_HERE), CcBuildDocks);
 }
 
 static void PlaceDocks_BuildCanal(TileIndex tile)
@@ -257,20 +257,20 @@ struct BuildDocksToolbarWindow : Window {
 };
 
 static const Widget _build_docks_toolb_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},                  // DTW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   147,     0,    13, STR_9801_WATERWAYS_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},        // DTW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   148,   159,     0,    13, 0x0,                             STR_STICKY_BUTTON},                      // DTW_STICKY
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    21,    14,    35, SPR_IMG_BUILD_CANAL,             STR_BUILD_CANALS_TIP},                   // DTW_CANAL
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    22,    43,    14,    35, SPR_IMG_BUILD_LOCK,              STR_BUILD_LOCKS_TIP},                    // DTW_LOCK
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_BLACK_CROSS,               STR_TOOLTIP_CLOSE_WINDOW},                  // DTW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   147,     0,    13, STR_WATERWAYS_TOOLBAR_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},        // DTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   148,   159,     0,    13, 0x0,                           STR_STICKY_BUTTON},                         // DTW_STICKY
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    21,    14,    35, SPR_IMG_BUILD_CANAL,           STR_BUILD_CANALS_TIP},                      // DTW_CANAL
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    22,    43,    14,    35, SPR_IMG_BUILD_LOCK,            STR_BUILD_LOCKS_TIP},                       // DTW_LOCK
 
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    44,    48,    14,    35, 0x0,                             STR_NULL},                               // DTW_SEPERATOR
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    44,    48,    14,    35, 0x0,                           STR_NULL},                                  // DTW_SEPERATOR
 
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    49,    70,    14,    35, SPR_IMG_DYNAMITE,                STR_018D_DEMOLISH_BUILDINGS_ETC},        // DTW_DEMOLISH
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    71,    92,    14,    35, SPR_IMG_SHIP_DEPOT,              STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING}, // DTW_DEPOT
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    93,   114,    14,    35, SPR_IMG_SHIP_DOCK,               STR_981D_BUILD_SHIP_DOCK},               // DTW_STATION
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   115,   136,    14,    35, SPR_IMG_BOUY,                    STR_9834_POSITION_BUOY_WHICH_CAN},       // DTW_BUOY
-{     WWT_EMPTY,    RESIZE_NONE,  COLOUR_DARK_GREEN,     0,     0,     0,     0, 0x0,                             STR_NULL},                               // DTW_RIVER
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   137,   159,    14,    35, SPR_IMG_AQUEDUCT,                STR_BUILD_AQUEDUCT},                     // DTW_BUILD_AQUEDUCT
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    49,    70,    14,    35, SPR_IMG_DYNAMITE,              STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC},        // DTW_DEMOLISH
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    71,    92,    14,    35, SPR_IMG_SHIP_DEPOT,            STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP}, // DTW_DEPOT
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    93,   114,    14,    35, SPR_IMG_SHIP_DOCK,             STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP},  // DTW_STATION
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   115,   136,    14,    35, SPR_IMG_BOUY,                  STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP},        // DTW_BUOY
+{     WWT_EMPTY,    RESIZE_NONE,  COLOUR_DARK_GREEN,     0,     0,     0,     0, 0x0,                           STR_NULL},                                  // DTW_RIVER
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   137,   159,    14,    35, SPR_IMG_AQUEDUCT,              STR_BUILD_AQUEDUCT},                        // DTW_BUILD_AQUEDUCT
 {   WIDGETS_END},
 };
 
@@ -281,17 +281,17 @@ static const Widget _build_docks_toolb_widgets[] = {
 static const NWidgetPart _nested_build_docks_toolbar_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, DTW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, DTW_CAPTION), SetMinimalSize(80, 14), SetFill(1, 0), SetDataTip(STR_9801_WATERWAYS_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, DTW_CAPTION), SetMinimalSize(80, 14), SetFill(1, 0), SetDataTip(STR_WATERWAYS_TOOLBAR_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, DTW_STICKY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL_LTR),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_CANAL), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_BUILD_CANAL, STR_BUILD_CANALS_TIP),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_LOCK), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_BUILD_LOCK, STR_BUILD_LOCKS_TIP),
 		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, DTW_SEPERATOR), SetMinimalSize(5, 22), EndContainer(),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_DEMOLISH), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_018D_DEMOLISH_BUILDINGS_ETC),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_DEPOT), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_SHIP_DEPOT, STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_STATION), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_SHIP_DOCK, STR_981D_BUILD_SHIP_DOCK),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_BUOY), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_BOUY, STR_9834_POSITION_BUOY_WHICH_CAN),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_DEMOLISH), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_DEPOT), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_SHIP_DEPOT, STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_STATION), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_SHIP_DOCK, STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_BUOY), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_BOUY, STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP),
 		NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, DTW_RIVER), SetMinimalSize(0, 0),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_BUILD_AQUEDUCT), SetMinimalSize(23, 22), SetDataTip(SPR_IMG_AQUEDUCT, STR_BUILD_AQUEDUCT),
 	EndContainer(),
@@ -314,20 +314,20 @@ void ShowBuildDocksToolbar()
 
 /** Widget definition for the build docks in scenario editor window. */
 static const Widget _build_docks_scen_toolb_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_00C5,                           STR_018B_CLOSE_WINDOW},           // DTW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   102,     0,    13, STR_9801_WATERWAYS_CONSTRUCTION_SE, STR_018C_WINDOW_TITLE_DRAG_THIS}, // DTW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   103,   114,     0,    13, 0x0,                                STR_STICKY_BUTTON},               // DTW_STICKY
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    21,    14,    35, SPR_IMG_BUILD_CANAL,                STR_CREATE_LAKE},                 // DTW_CANAL
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    22,    43,    14,    35, SPR_IMG_BUILD_LOCK,                 STR_BUILD_LOCKS_TIP},             // DTW_LOCK
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_BLACK_CROSS,                  STR_TOOLTIP_CLOSE_WINDOW},           // DTW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   102,     0,    13, STR_WATERWAYS_TOOLBAR_CAPTION_SE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // DTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   103,   114,     0,    13, 0x0,                              STR_STICKY_BUTTON},                  // DTW_STICKY
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    21,    14,    35, SPR_IMG_BUILD_CANAL,              STR_CREATE_LAKE},                    // DTW_CANAL
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    22,    43,    14,    35, SPR_IMG_BUILD_LOCK,               STR_BUILD_LOCKS_TIP},                // DTW_LOCK
 
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    44,    48,    14,    35, 0x0,                                STR_NULL},                        // DTW_SEPERATOR
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    44,    48,    14,    35, 0x0,                              STR_NULL},                           // DTW_SEPERATOR
 
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    49,    70,    14,    35, SPR_IMG_DYNAMITE,                   STR_018D_DEMOLISH_BUILDINGS_ETC}, // DTW_DEMOLISH
-{     WWT_EMPTY,    RESIZE_NONE,  COLOUR_DARK_GREEN,     0,     0,     0,     0, 0x0,                                STR_NULL},                        // DTW_DEPOT
-{     WWT_EMPTY,    RESIZE_NONE,  COLOUR_DARK_GREEN,     0,     0,     0,     0, 0x0,                                STR_NULL},                        // DTW_STATION
-{     WWT_EMPTY,    RESIZE_NONE,  COLOUR_DARK_GREEN,     0,     0,     0,     0, 0x0,                                STR_NULL},                        // DTW_BUOY
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    71,    92,    14,    35, SPR_IMG_BUILD_RIVER,                STR_CREATE_RIVER},                // DTW_RIVER
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    93,   114,    14,    35, SPR_IMG_AQUEDUCT,                   STR_BUILD_AQUEDUCT},              // DTW_BUILD_AQUEDUCT
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    49,    70,    14,    35, SPR_IMG_DYNAMITE,                 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC}, // DTW_DEMOLISH
+{     WWT_EMPTY,    RESIZE_NONE,  COLOUR_DARK_GREEN,     0,     0,     0,     0, 0x0,                              STR_NULL},                           // DTW_DEPOT
+{     WWT_EMPTY,    RESIZE_NONE,  COLOUR_DARK_GREEN,     0,     0,     0,     0, 0x0,                              STR_NULL},                           // DTW_STATION
+{     WWT_EMPTY,    RESIZE_NONE,  COLOUR_DARK_GREEN,     0,     0,     0,     0, 0x0,                              STR_NULL},                           // DTW_BUOY
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    71,    92,    14,    35, SPR_IMG_BUILD_RIVER,              STR_CREATE_RIVER},                   // DTW_RIVER
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    93,   114,    14,    35, SPR_IMG_AQUEDUCT,                 STR_BUILD_AQUEDUCT},                 // DTW_BUILD_AQUEDUCT
 {   WIDGETS_END},
 };
 
@@ -338,14 +338,14 @@ static const Widget _build_docks_scen_toolb_widgets[] = {
 static const NWidgetPart _nested_build_docks_scen_toolbar_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, DTW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, DTW_CAPTION), SetMinimalSize(80, 14), SetFill(1, 0), SetDataTip(STR_9801_WATERWAYS_CONSTRUCTION_SE, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, DTW_CAPTION), SetMinimalSize(80, 14), SetFill(1, 0), SetDataTip(STR_WATERWAYS_TOOLBAR_CAPTION_SE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, DTW_STICKY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_CANAL), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_BUILD_CANAL, STR_CREATE_LAKE),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_LOCK), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_BUILD_LOCK, STR_BUILD_LOCKS_TIP),
 		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, DTW_SEPERATOR), SetMinimalSize(5, 22), EndContainer(),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_DEMOLISH), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_018D_DEMOLISH_BUILDINGS_ETC),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_DEMOLISH), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
 		NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, DTW_DEPOT), SetMinimalSize(0, 0),
 		NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, DTW_STATION), SetMinimalSize(0, 0),
 		NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, DTW_BUOY), SetMinimalSize(0, 0),
@@ -432,12 +432,12 @@ public:
 };
 
 static const Widget _build_dock_station_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},             // BDSW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   147,     0,    13, STR_3068_DOCK,                    STR_018C_WINDOW_TITLE_DRAG_THIS},   // BDSW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,   147,    14,    74, 0x0,                              STR_NULL},                          // BDSW_BACKGROUND
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          14,    73,    31,    42, STR_02DB_OFF,                     STR_3065_DON_T_HIGHLIGHT_COVERAGE}, // BDSW_LT_OFF
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          74,   133,    31,    42, STR_02DA_ON,                      STR_3064_HIGHLIGHT_COVERAGE_AREA},  // BDSW_LT_ON
-{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,   147,    17,    30, STR_3066_COVERAGE_AREA_HIGHLIGHT, STR_NULL},                          // BDSW_INFO
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_BLACK_CROSS,                       STR_TOOLTIP_CLOSE_WINDOW},                    // BDSW_CLOSE
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   147,     0,    13, STR_STATION_BUILD_DOCK_CAPTION,        STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},          // BDSW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,   147,    14,    74, 0x0,                                   STR_NULL},                                    // BDSW_BACKGROUND
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          14,    73,    31,    42, STR_STATION_BUILD_COVERAGE_OFF,        STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP}, // BDSW_LT_OFF
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          74,   133,    31,    42, STR_STATION_BUILD_COVERAGE_ON,         STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP},  // BDSW_LT_ON
+{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,   147,    17,    30, STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL},                                    // BDSW_INFO
 {   WIDGETS_END},
 };
 
@@ -445,14 +445,14 @@ static const Widget _build_dock_station_widgets[] = {
 static const NWidgetPart _nested_build_dock_station_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BDSW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BDSW_CAPTION), SetDataTip(STR_3068_DOCK, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BDSW_CAPTION), SetDataTip(STR_STATION_BUILD_DOCK_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BDSW_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BDSW_INFO), SetMinimalSize(148, 14), SetDataTip( STR_3066_COVERAGE_AREA_HIGHLIGHT, STR_NULL),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BDSW_INFO), SetMinimalSize(148, 14), SetDataTip( STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL),
 		NWidget(NWID_HORIZONTAL), SetPIP(14, 0, 14),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, BDSW_LT_OFF), SetMinimalSize(40, 12), SetFill(1, 0), SetDataTip(STR_02DB_OFF, STR_3065_DON_T_HIGHLIGHT_COVERAGE),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, BDSW_LT_ON), SetMinimalSize(40, 12), SetFill(1, 0), SetDataTip(STR_02DA_ON, STR_3064_HIGHLIGHT_COVERAGE_AREA),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, BDSW_LT_OFF), SetMinimalSize(40, 12), SetFill(1, 0), SetDataTip(STR_STATION_BUILD_COVERAGE_OFF, STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, BDSW_LT_ON), SetMinimalSize(40, 12), SetFill(1, 0), SetDataTip(STR_STATION_BUILD_COVERAGE_ON, STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 32),
 	EndContainer(),
@@ -525,27 +525,27 @@ public:
 };
 
 static const Widget _build_docks_depot_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},                  // BDDW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   203,     0,    13, STR_3800_SHIP_DEPOT_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS},        // BDDW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,   203,    14,    85, 0x0,                             STR_NULL},                               // BDDW_BACKGROUND
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,           3,   100,    17,    82, 0x0,                             STR_3803_SELECT_SHIP_DEPOT_ORIENTATION}, // BDDW_X
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         103,   200,    17,    82, 0x0,                             STR_3803_SELECT_SHIP_DEPOT_ORIENTATION}, // BDDW_Y
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_BLACK_CROSS,              STR_TOOLTIP_CLOSE_WINDOW},                 // BDDW_CLOSE
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   203,     0,    13, STR_DEPOT_BUILD_SHIP_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},       // BDDW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,   203,    14,    85, 0x0,                          STR_NULL},                                 // BDDW_BACKGROUND
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,           3,   100,    17,    82, 0x0,                          STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP}, // BDDW_X
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         103,   200,    17,    82, 0x0,                          STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP}, // BDDW_Y
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_build_docks_depot_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BDDW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BDDW_CAPTION), SetMinimalSize(193, 14), SetDataTip(STR_3800_SHIP_DEPOT_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BDDW_CAPTION), SetMinimalSize(193, 14), SetDataTip(STR_DEPOT_BUILD_SHIP_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BDDW_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
 		NWidget(NWID_HORIZONTAL_LTR),
 			NWidget(NWID_SPACER), SetMinimalSize(3, 0),
-			NWidget(WWT_PANEL, COLOUR_GREY, BDDW_X), SetMinimalSize(98, 66), SetDataTip(0x0, STR_3803_SELECT_SHIP_DEPOT_ORIENTATION),
+			NWidget(WWT_PANEL, COLOUR_GREY, BDDW_X), SetMinimalSize(98, 66), SetDataTip(0x0, STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
-			NWidget(WWT_PANEL, COLOUR_GREY, BDDW_Y), SetMinimalSize(98, 66), SetDataTip(0x0, STR_3803_SELECT_SHIP_DEPOT_ORIENTATION),
+			NWidget(WWT_PANEL, COLOUR_GREY, BDDW_Y), SetMinimalSize(98, 66), SetDataTip(0x0, STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(3, 0),
 		EndContainer(),

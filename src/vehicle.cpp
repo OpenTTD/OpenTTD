@@ -139,10 +139,10 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 StringID VehicleInTheWayErrMsg(const Vehicle *v)
 {
 	switch (v->type) {
-		case VEH_TRAIN:    return STR_8803_TRAIN_IN_THE_WAY;
-		case VEH_ROAD:     return STR_9000_ROAD_VEHICLE_IN_THE_WAY;
-		case VEH_AIRCRAFT: return STR_A015_AIRCRAFT_IN_THE_WAY;
-		default:           return STR_980E_SHIP_IN_THE_WAY;
+		case VEH_TRAIN:    return STR_ERROR_TRAIN_IN_THE_WAY;
+		case VEH_ROAD:     return STR_ERROR_ROAD_VEHICLE_IN_THE_WAY;
+		case VEH_AIRCRAFT: return STR_ERROR_AIRCRAFT_IN_THE_WAY;
+		default:           return STR_ERROR_SHIP_IN_THE_WAY;
 	}
 }
 
@@ -675,7 +675,7 @@ void CallVehicleTicks()
 		StringID error_message = res.GetErrorMessage();
 		if (error_message == STR_AUTOREPLACE_NOTHING_TO_DO || error_message == INVALID_STRING_ID) continue;
 
-		if (error_message == STR_0003_NOT_ENOUGH_CASH_REQUIRES) error_message = STR_AUTOREPLACE_MONEY_LIMIT;
+		if (error_message == STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY) error_message = STR_AUTOREPLACE_MONEY_LIMIT;
 
 		StringID message;
 		if (error_message == STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT) {
@@ -929,11 +929,11 @@ void AgeVehicle(Vehicle *v)
 
 	StringID str;
 	if (age == -DAYS_IN_LEAP_YEAR) {
-		str = STR_01A0_IS_GETTING_OLD;
+		str = STR_VEHICLE_IS_GETTING_OLD;
 	} else if (age == 0) {
-		str = STR_01A1_IS_GETTING_VERY_OLD;
+		str = STR_VEHICLE_IS_GETTING_VERY_OLD;
 	} else if (age > 0 && (age % DAYS_IN_LEAP_YEAR) == 0) {
-		str = STR_01A2_IS_GETTING_VERY_OLD_AND;
+		str = STR_VEHICLE_IS_GETTING_VERY_OLD_AND;
 	} else {
 		return;
 	}
@@ -1069,10 +1069,10 @@ void VehicleEnterDepot(Vehicle *v)
 				StringID string;
 
 				switch (v->type) {
-					case VEH_TRAIN:    string = STR_8814_TRAIN_IS_WAITING_IN_DEPOT; break;
-					case VEH_ROAD:     string = STR_9016_ROAD_VEHICLE_IS_WAITING;   break;
-					case VEH_SHIP:     string = STR_981C_SHIP_IS_WAITING_IN_DEPOT;  break;
-					case VEH_AIRCRAFT: string = STR_A014_AIRCRAFT_IS_WAITING_IN;    break;
+					case VEH_TRAIN:    string = STR_VEHICLE_STATUS_WAITING_IN_DEPOT; break;
+					case VEH_ROAD:     string = STR_NEWS_ROAD_VEHICLE_IS_WAITING;   break;
+					case VEH_SHIP:     string = STR_NEWS_SHIP_IS_WAITING;  break;
+					case VEH_AIRCRAFT: string = STR_NEWS_AIRCRAFT_IS_WAITING;    break;
 					default: NOT_REACHED(); string = STR_EMPTY; // Set the string to something to avoid a compiler warning
 				}
 
@@ -1609,7 +1609,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 	TileIndex location;
 	DestinationID destination;
 	bool reverse;
-	static const StringID no_depot[] = {STR_883A_UNABLE_TO_FIND_ROUTE_TO, STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT, STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT, STR_A012_CAN_T_SEND_AIRCRAFT_TO};
+	static const StringID no_depot[] = {STR_ERROR_UNABLE_TO_FIND_ROUTE_TO, STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT, STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT, STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR};
 	if (!this->FindClosestDepot(&location, &destination, &reverse)) return_cmd_error(no_depot[this->type]);
 
 	if (flags & DC_EXEC) {

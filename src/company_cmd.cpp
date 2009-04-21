@@ -155,7 +155,7 @@ bool CheckCompanyHasMoney(CommandCost cost)
 		CompanyID company = _current_company;
 		if (IsValidCompanyID(company) && cost.GetCost() > GetCompany(company)->money) {
 			SetDParam(0, cost.GetCost());
-			_error_message = STR_0003_NOT_ENOUGH_CASH_REQUIRES;
+			_error_message = STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY;
 			return false;
 		}
 	}
@@ -212,7 +212,7 @@ void GetNameOfOwner(Owner owner, TileIndex tile)
 
 	if (owner != OWNER_TOWN) {
 		if (!IsValidCompanyID(owner)) {
-			SetDParam(0, STR_0150_SOMEONE);
+			SetDParam(0, STR_COMPANY_SOMEONE);
 		} else {
 			SetDParam(0, STR_COMPANY_NAME);
 			SetDParam(1, owner);
@@ -231,7 +231,7 @@ bool CheckOwnership(Owner owner)
 	assert(owner < OWNER_END);
 
 	if (owner == _current_company) return true;
-	_error_message = STR_013B_OWNED_BY;
+	_error_message = STR_ERROR_OWNED_BY;
 	GetNameOfOwner(owner, 0);
 	return false;
 }
@@ -243,7 +243,7 @@ bool CheckTileOwnership(TileIndex tile)
 	assert(owner < OWNER_END);
 
 	if (owner == _current_company) return true;
-	_error_message = STR_013B_OWNED_BY;
+	_error_message = STR_ERROR_OWNED_BY;
 
 	/* no need to get the name of the owner unless we're the local company (saves some time) */
 	if (IsLocalCompany()) GetNameOfOwner(owner, tile);
@@ -288,11 +288,11 @@ set_name:;
 		if (!IsHumanCompany(c->index)) {
 			CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
 			cni->FillData(c);
-			SetDParam(0, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED);
-			SetDParam(1, STR_705F_STARTS_CONSTRUCTION_NEAR);
+			SetDParam(0, STR_NEWS_COMPANY_LAUNCH_TITLE);
+			SetDParam(1, STR_NEWS_COMPANY_LAUNCH_DESCRIPTION);
 			SetDParamStr(2, cni->company_name);
 			SetDParam(3, t->index);
-			AddNewsItem(STR_02B6, NS_COMPANY_NEW, c->last_build_coordinate, 0, cni);
+			AddNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_NEW, c->last_build_coordinate, 0, cni);
 		}
 		AI::BroadcastNewEvent(new AIEventCompanyNew(c->index), c->index);
 		return;
@@ -684,7 +684,7 @@ void CompanyNewsInformation::FillData(const Company *c, const Company *other)
 	}
 
 	SetDParam(0, c->index);
-	GetString(this->president_name, STR_7058_PRESIDENT, lastof(this->president_name));
+	GetString(this->president_name, STR_PRESIDENT_NAME_MANAGER, lastof(this->president_name));
 
 	this->colour = c->colour;
 	this->face = c->face;
@@ -837,10 +837,10 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			cni->FillData(c);
 
 			/* Show the bankrupt news */
-			SetDParam(0, STR_705C_BANKRUPT);
-			SetDParam(1, STR_705D_HAS_BEEN_CLOSED_DOWN_BY);
+			SetDParam(0, STR_NEWS_COMPANY_BANKRUPT_TITLE);
+			SetDParam(1, STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION);
 			SetDParamStr(2, cni->company_name);
-			AddNewsItem(STR_02B6, NS_COMPANY_BANKRUPT, 0, 0, cni);
+			AddNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_BANKRUPT, 0, 0, cni);
 
 			/* Remove the company */
 			ChangeOwnershipOfCompanyItems(c->index, INVALID_OWNER);

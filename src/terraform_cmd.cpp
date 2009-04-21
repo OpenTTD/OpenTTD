@@ -149,8 +149,8 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
 	assert(tile < MapSize());
 
 	/* Check range of destination height */
-	if (height < 0) return_cmd_error(STR_1003_ALREADY_AT_SEA_LEVEL);
-	if (height > MAX_TILE_HEIGHT) return_cmd_error(STR_1004_TOO_HIGH);
+	if (height < 0) return_cmd_error(STR_ERROR_ALREADY_AT_SEA_LEVEL);
+	if (height > MAX_TILE_HEIGHT) return_cmd_error(STR_ERROR_TOO_HIGH);
 
 	/*
 	 * Check if the terraforming has any effect.
@@ -169,7 +169,7 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
 		if (x == 1) x = 0;
 		if (y == 1) y = 0;
 		_terraform_err_tile = TileXY(x, y);
-		return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
+		return_cmd_error(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP);
 	}
 
 	/* Mark incident tiles, that are involved in the terraforming */
@@ -300,12 +300,12 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			if (direction == 1 && MayHaveBridgeAbove(tile) && IsBridgeAbove(tile) &&
 					GetBridgeHeight(GetSouthernBridgeEnd(tile)) <= z_max * TILE_HEIGHT) {
 				_terraform_err_tile = tile; // highlight the tile under the bridge
-				return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+				return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 			}
 			/* Check if tunnel would take damage */
 			if (direction == -1 && IsTunnelInWay(tile, z_min * TILE_HEIGHT)) {
 				_terraform_err_tile = tile; // highlight the tile above the tunnel
-				return_cmd_error(STR_1002_EXCAVATION_WOULD_DAMAGE);
+				return_cmd_error(STR_ERROR_EXCAVATION_WOULD_DAMAGE);
 			}
 			/* Check tiletype-specific things, and add extra-cost */
 			const bool curr_gen = _generating_world;
@@ -367,7 +367,7 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	uint h = oldh + p2;
 
 	/* Check range of destination height */
-	if (h > MAX_TILE_HEIGHT) return_cmd_error((oldh == 0) ? STR_1003_ALREADY_AT_SEA_LEVEL : STR_1004_TOO_HIGH);
+	if (h > MAX_TILE_HEIGHT) return_cmd_error((oldh == 0) ? STR_ERROR_ALREADY_AT_SEA_LEVEL : STR_ERROR_TOO_HIGH);
 	if (p2 == 0) _error_message = STR_ALREADY_LEVELLED;
 
 	/* make sure sx,sy are smaller than ex,ey */

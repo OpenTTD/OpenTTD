@@ -22,9 +22,9 @@ StringID GetEngineCategoryName(EngineID engine)
 {
 	switch (GetEngine(engine)->type) {
 		default: NOT_REACHED();
-		case VEH_ROAD:              return STR_8103_ROAD_VEHICLE;
-		case VEH_AIRCRAFT:          return STR_8104_AIRCRAFT;
-		case VEH_SHIP:              return STR_8105_SHIP;
+		case VEH_ROAD:              return STR_ENGINE_PREVIEW_ROAD_VEHICLE;
+		case VEH_AIRCRAFT:          return STR_ENGINE_PREVIEW_AIRCRAFT;
+		case VEH_SHIP:              return STR_ENGINE_PREVIEW_SHIP;
 		case VEH_TRAIN:
 			return GetRailTypeInfo(RailVehInfo(engine)->railtype)->strings.new_loco;
 	}
@@ -40,24 +40,24 @@ enum EnginePreviewWidgets {
 };
 
 static const Widget _engine_preview_widgets[] = {
-{   WWT_CLOSEBOX,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,    0,   10,    0,   13, STR_00C5,                                  STR_018B_CLOSE_WINDOW},           // EPW_CLOSE
-{    WWT_CAPTION,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,   11,  299,    0,   13, STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE, STR_018C_WINDOW_TITLE_DRAG_THIS}, // EPW_CAPTION
-{      WWT_PANEL,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,    0,  299,   14,  191, 0x0,                                       STR_NULL},                        // EPW_BACKGROUND
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,   85,  144,  172,  183, STR_00C9_NO,                               STR_NULL},                        // EPW_NO
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,  155,  214,  172,  183, STR_00C8_YES,                              STR_NULL},                        // EPW_YES
+{   WWT_CLOSEBOX,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,    0,   10,    0,   13, STR_BLACK_CROSS,            STR_TOOLTIP_CLOSE_WINDOW},           // EPW_CLOSE
+{    WWT_CAPTION,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,   11,  299,    0,   13, STR_ENGINE_PREVIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // EPW_CAPTION
+{      WWT_PANEL,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,    0,  299,   14,  191, 0x0,                        STR_NULL},                           // EPW_BACKGROUND
+{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,   85,  144,  172,  183, STR_NO,                     STR_NULL},                           // EPW_NO
+{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,  155,  214,  172,  183, STR_YES,                    STR_NULL},                           // EPW_YES
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_engine_preview_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, EPW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, EPW_CAPTION), SetDataTip(STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, EPW_CAPTION), SetDataTip(STR_ENGINE_PREVIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, EPW_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 158),
 		NWidget(NWID_HORIZONTAL), SetPIP(85, 10, 85),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, EPW_NO), SetMinimalSize(60, 12), SetDataTip(STR_00C9_NO, STR_NULL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, EPW_YES), SetMinimalSize(60, 12), SetDataTip(STR_00C8_YES, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, EPW_NO), SetMinimalSize(60, 12), SetDataTip(STR_NO, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, EPW_YES), SetMinimalSize(60, 12), SetDataTip(STR_YES, STR_NULL),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
 	EndContainer(),
@@ -95,7 +95,7 @@ struct EnginePreviewWindow : Window {
 
 		EngineID engine = this->window_number;
 		SetDParam(0, GetEngineCategoryName(engine));
-		DrawStringMultiLine(this->widget[EPW_BACKGROUND].left + 2, this->widget[EPW_BACKGROUND].right - 2, 18, 80, STR_8101_WE_HAVE_JUST_DESIGNED_A, SA_CENTER);
+		DrawStringMultiLine(this->widget[EPW_BACKGROUND].left + 2, this->widget[EPW_BACKGROUND].right - 2, 18, 80, STR_ENGINE_PREVIEW_MESSAGE, SA_CENTER);
 
 		SetDParam(0, engine);
 		DrawString(this->widget[EPW_BACKGROUND].left + 2, this->widget[EPW_BACKGROUND].right - 2, 80, STR_ENGINE_NAME, TC_BLACK, SA_CENTER);

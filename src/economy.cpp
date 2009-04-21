@@ -478,20 +478,20 @@ static void CompanyCheckBankrupt(Company *c)
 			break;
 
 		case 2:
-			SetDParam(0, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE);
-			SetDParam(1, STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED);
+			SetDParam(0, STR_NEWS_COMPANY_IN_TROUBLE_TITLE);
+			SetDParam(1, STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION);
 			SetDParamStr(2, cni->company_name);
-			AddNewsItem(STR_02B6, NS_COMPANY_TROUBLE, 0, 0, cni);
+			AddNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_TROUBLE, 0, 0, cni);
 			AI::BroadcastNewEvent(new AIEventCompanyInTrouble(c->index));
 			break;
 		case 3: {
 			/* XXX - In multiplayer, should we ask other companies if it wants to take
 		          over when it is a human company? -- TrueLight */
 			if (IsHumanCompany(c->index)) {
-				SetDParam(0, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE);
-				SetDParam(1, STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED);
+				SetDParam(0, STR_NEWS_COMPANY_IN_TROUBLE_TITLE);
+				SetDParam(1, STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION);
 				SetDParamStr(2, cni->company_name);
-				AddNewsItem(STR_02B6, NS_COMPANY_TROUBLE, 0, 0, cni);
+				AddNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_TROUBLE, 0, 0, cni);
 				break;
 			}
 
@@ -523,10 +523,10 @@ static void CompanyCheckBankrupt(Company *c)
 			DeleteCompanyWindows(c->index);
 
 			/* Show bankrupt news */
-			SetDParam(0, STR_705C_BANKRUPT);
-			SetDParam(1, STR_705D_HAS_BEEN_CLOSED_DOWN_BY);
+			SetDParam(0, STR_NEWS_COMPANY_BANKRUPT_TITLE);
+			SetDParam(1, STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION);
 			SetDParamStr(2, cni->company_name);
-			AddNewsItem(STR_02B6, NS_COMPANY_BANKRUPT, 0, 0, cni);
+			AddNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_BANKRUPT, 0, 0, cni);
 
 			/* Remove the company */
 			ChangeNetworkOwner(c->index, COMPANY_SPECTATOR);
@@ -668,10 +668,10 @@ static void HandleEconomyFluctuations()
 
 	if (--_economy.fluct == 0) {
 		_economy.fluct = -(int)GB(Random(), 0, 2);
-		AddNewsItem(STR_7073_WORLD_RECESSION_FINANCIAL, NS_ECONOMY, 0, 0);
+		AddNewsItem(STR_NEWS_BEGIN_OF_RECESSION, NS_ECONOMY, 0, 0);
 	} else if (_economy.fluct == -12) {
 		_economy.fluct = GB(Random(), 0, 8) + 312;
-		AddNewsItem(STR_7074_RECESSION_OVER_UPTURN_IN, NS_ECONOMY, 0, 0);
+		AddNewsItem(STR_NEWS_END_OF_RECESSION, NS_ECONOMY, 0, 0);
 	}
 }
 
@@ -1064,7 +1064,7 @@ static void SubsidyMonthlyHandler()
 
 		if (s->age == 12 - 1) {
 			pair = SetupSubsidyDecodeParam(s, 1);
-			AddNewsItem(STR_202E_OFFER_OF_SUBSIDY_EXPIRED, NS_SUBSIDIES, pair.a, pair.b);
+			AddNewsItem(STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED, NS_SUBSIDIES, pair.a, pair.b);
 			s->cargo_type = CT_INVALID;
 			modified = true;
 			AI::BroadcastNewEvent(new AIEventSubsidyOfferExpired(s - _subsidies));
@@ -1072,7 +1072,7 @@ static void SubsidyMonthlyHandler()
 			st = GetStation(s->to);
 			if (st->owner == _local_company) {
 				pair = SetupSubsidyDecodeParam(s, 1);
-				AddNewsItem(STR_202F_SUBSIDY_WITHDRAWN_SERVICE, NS_SUBSIDIES, pair.a, pair.b);
+				AddNewsItem(STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE, NS_SUBSIDIES, pair.a, pair.b);
 			}
 			s->cargo_type = CT_INVALID;
 			modified = true;
@@ -1112,7 +1112,7 @@ static void SubsidyMonthlyHandler()
 				if (!CheckSubsidyDuplicate(s)) {
 					s->age = 0;
 					pair = SetupSubsidyDecodeParam(s, 0);
-					AddNewsItem(STR_2030_SERVICE_SUBSIDY_OFFERED, NS_SUBSIDIES, pair.a, pair.b);
+					AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NS_SUBSIDIES, pair.a, pair.b);
 					AI::BroadcastNewEvent(new AIEventSubsidyOffer(s - _subsidies));
 					modified = true;
 					break;
@@ -1327,7 +1327,7 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 
 			SetDParam(0, _current_company);
 			AddNewsItem(
-				STR_2031_SERVICE_SUBSIDY_AWARDED + _settings_game.difficulty.subsidy_multiplier,
+				STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF + _settings_game.difficulty.subsidy_multiplier,
 				NS_SUBSIDIES,
 				pair.a, pair.b
 			);
@@ -1839,12 +1839,12 @@ static void DoAcquireCompany(Company *c)
 	CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
 	cni->FillData(c, GetCompany(_current_company));
 
-	SetDParam(0, STR_7059_TRANSPORT_COMPANY_MERGER);
-	SetDParam(1, c->bankrupt_value == 0 ? STR_707F_HAS_BEEN_TAKEN_OVER_BY : STR_705A_HAS_BEEN_SOLD_TO_FOR);
+	SetDParam(0, STR_NEWS_COMPANY_MERGER_TITLE);
+	SetDParam(1, c->bankrupt_value == 0 ? STR_NEWS_MERGER_TAKEOVER_TITLE : STR_NEWS_COMPANY_MERGER_DESCRIPTION);
 	SetDParamStr(2, cni->company_name);
 	SetDParamStr(3, cni->other_company_name);
 	SetDParam(4, c->bankrupt_value);
-	AddNewsItem(STR_02B6, NS_COMPANY_MERGER, 0, 0, cni);
+	AddNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_MERGER, 0, 0, cni);
 	AI::BroadcastNewEvent(new AIEventCompanyMerger(ci, _current_company));
 
 	/* original code does this a little bit differently */

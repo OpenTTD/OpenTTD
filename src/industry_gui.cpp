@@ -74,20 +74,20 @@ enum DynamicPlaceIndustriesWidgets {
 
 /** Widget definition of the dynamic place industries gui */
 static const Widget _build_industry_widgets[] = {
-{   WWT_CLOSEBOX,    RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},            // DPIW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_DARK_GREEN,    11,   169,     0,    13, STR_0314_FUND_NEW_INDUSTRY,     STR_018C_WINDOW_TITLE_DRAG_THIS},  // DPIW_CAPTION
-{     WWT_MATRIX,      RESIZE_RB,  COLOUR_DARK_GREEN,     0,   157,    14,   118, 0x801,                          STR_INDUSTRY_SELECTION_HINT},      // DPIW_MATRIX_WIDGET
-{  WWT_SCROLLBAR,     RESIZE_LRB,  COLOUR_DARK_GREEN,   158,   169,    14,   118, 0x0,                            STR_0190_SCROLL_BAR_SCROLLS_LIST}, // DPIW_SCROLLBAR
-{      WWT_PANEL,     RESIZE_RTB,  COLOUR_DARK_GREEN,     0,   169,   119,   199, 0x0,                            STR_NULL},                         // DPIW_INFOPANEL
-{    WWT_TEXTBTN,     RESIZE_RTB,  COLOUR_DARK_GREEN,     0,   157,   200,   211, STR_FUND_NEW_INDUSTRY,          STR_NULL},                         // DPIW_FUND_WIDGET
-{  WWT_RESIZEBOX,    RESIZE_LRTB,  COLOUR_DARK_GREEN,   158,   169,   200,   211, 0x0,                            STR_RESIZE_BUTTON},                // DPIW_RESIZE_WIDGET
+{   WWT_CLOSEBOX,    RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_BLACK_CROSS,           STR_TOOLTIP_CLOSE_WINDOW},             // DPIW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_DARK_GREEN,    11,   169,     0,    13, STR_FUND_INDUSTRY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // DPIW_CAPTION
+{     WWT_MATRIX,      RESIZE_RB,  COLOUR_DARK_GREEN,     0,   157,    14,   118, 0x801,                     STR_INDUSTRY_SELECTION_HINT},          // DPIW_MATRIX_WIDGET
+{  WWT_SCROLLBAR,     RESIZE_LRB,  COLOUR_DARK_GREEN,   158,   169,    14,   118, 0x0,                       STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // DPIW_SCROLLBAR
+{      WWT_PANEL,     RESIZE_RTB,  COLOUR_DARK_GREEN,     0,   169,   119,   199, 0x0,                       STR_NULL},                             // DPIW_INFOPANEL
+{    WWT_TEXTBTN,     RESIZE_RTB,  COLOUR_DARK_GREEN,     0,   157,   200,   211, STR_FUND_NEW_INDUSTRY,     STR_NULL},                             // DPIW_FUND_WIDGET
+{  WWT_RESIZEBOX,    RESIZE_LRTB,  COLOUR_DARK_GREEN,   158,   169,   200,   211, 0x0,                       STR_RESIZE_BUTTON},                    // DPIW_RESIZE_WIDGET
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_build_industry_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, DPIW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, DPIW_CAPTION), SetMinimalSize(159, 14), SetDataTip(STR_0314_FUND_NEW_INDUSTRY, STR_018C_WINDOW_TITLE_DRAG_THIS), SetResize(1, 0),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, DPIW_CAPTION), SetMinimalSize(159, 14), SetDataTip(STR_FUND_INDUSTRY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS), SetResize(1, 0),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, DPIW_MATRIX_WIDGET), SetMinimalSize(158, 105), SetDataTip(0x801, STR_INDUSTRY_SELECTION_HINT), SetResize(1, 1),
@@ -249,14 +249,14 @@ public:
 
 		if (_game_mode != GM_EDITOR) {
 			SetDParam(0, indsp->GetConstructionCost());
-			DrawString(x_str, right, y_str, STR_482F_COST, TC_FROMSTRING);
+			DrawString(x_str, right, y_str, STR_INDUSTRY_BUILD_COST, TC_FROMSTRING);
 			y_str += 11;
 		}
 
 		/* Draw the accepted cargos, if any. Otherwhise, will print "Nothing" */
-		StringID str = STR_4827_REQUIRES;
+		StringID str = STR_INDUSTRY_VIEW_REQUIRES_CARGO;
 		byte p = 0;
-		SetDParam(0, STR_00D0_NOTHING);
+		SetDParam(0, STR_JUST_NOTHING);
 		SetDParam(1, STR_EMPTY);
 		for (byte j = 0; j < lengthof(indsp->accepts_cargo); j++) {
 			if (indsp->accepts_cargo[j] == CT_INVALID) continue;
@@ -268,9 +268,9 @@ public:
 		y_str += 11;
 
 		/* Draw the produced cargos, if any. Otherwhise, will print "Nothing" */
-		str = STR_4827_PRODUCES;
+		str = STR_INDUSTRY_VIEW_PRODUCES_CARGO;
 		p = 0;
-		SetDParam(0, STR_00D0_NOTHING);
+		SetDParam(0, STR_JUST_NOTHING);
 		SetDParam(1, STR_EMPTY);
 		for (byte j = 0; j < lengthof(indsp->produced_cargo); j++) {
 			if (indsp->produced_cargo[j] == CT_INVALID) continue;
@@ -335,7 +335,7 @@ public:
 					this->HandleButtonClick(DPIW_FUND_WIDGET);
 
 					if (GetNumTowns() == 0) {
-						ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_CAN_T_GENERATE_INDUSTRIES, 0, 0);
+						ShowErrorMessage(STR_ERROR_MUST_BUILD_TOWN_FIRST, STR_CAN_T_GENERATE_INDUSTRIES, 0, 0);
 					} else {
 						extern void GenerateIndustries();
 						_generating_world = true;
@@ -343,7 +343,7 @@ public:
 						_generating_world = false;
 					}
 				} else if (_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && GetIndustrySpec(this->selected_type)->IsRawIndustry()) {
-					DoCommandP(0, this->selected_type, InteractiveRandom(), CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+					DoCommandP(0, this->selected_type, InteractiveRandom(), CMD_BUILD_INDUSTRY | CMD_MSG(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY));
 					this->HandleButtonClick(DPIW_FUND_WIDGET);
 				} else {
 					HandlePlacePushButton(this, DPIW_FUND_WIDGET, SPR_CURSOR_INDUSTRY, HT_RECT, NULL);
@@ -370,23 +370,23 @@ public:
 			/* Show error if no town exists at all */
 			if (GetNumTowns() == 0) {
 				SetDParam(0, indsp->name);
-				ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_0285_CAN_T_BUILD_HERE, pt.x, pt.y);
+				ShowErrorMessage(STR_ERROR_MUST_BUILD_TOWN_FIRST, STR_ERROR_CAN_T_BUILD_HERE, pt.x, pt.y);
 				return;
 			}
 
 			_current_company = OWNER_NONE;
 			_generating_world = true;
 			_ignore_restrictions = true;
-			success = DoCommandP(tile, (InteractiveRandomRange(indsp->num_table) << 16) | this->selected_type, seed, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+			success = DoCommandP(tile, (InteractiveRandomRange(indsp->num_table) << 16) | this->selected_type, seed, CMD_BUILD_INDUSTRY | CMD_MSG(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY));
 			if (!success) {
 				SetDParam(0, indsp->name);
-				ShowErrorMessage(_error_message, STR_0285_CAN_T_BUILD_HERE, pt.x, pt.y);
+				ShowErrorMessage(_error_message, STR_ERROR_CAN_T_BUILD_HERE, pt.x, pt.y);
 			}
 
 			_ignore_restrictions = false;
 			_generating_world = false;
 		} else {
-			success = DoCommandP(tile, (InteractiveRandomRange(indsp->num_table) << 16) | this->selected_type, seed, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+			success = DoCommandP(tile, (InteractiveRandomRange(indsp->num_table) << 16) | this->selected_type, seed, CMD_BUILD_INDUSTRY | CMD_MSG(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY));
 		}
 
 		/* If an industry has been built, just reset the cursor and the system */
@@ -505,18 +505,18 @@ public:
 				if (i->accepts_cargo[j] == CT_INVALID) continue;
 				has_accept = true;
 				if (first) {
-					DrawString(2, this->widget[IVW_INFO].right, y, STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING, TC_FROMSTRING);
+					DrawString(2, this->widget[IVW_INFO].right, y, STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING, TC_FROMSTRING);
 					y += 10;
 					first = false;
 				}
 				SetDParam(0, i->accepts_cargo[j]);
 				SetDParam(1, i->incoming_cargo_waiting[j]);
 				SetDParam(2, GetCargoSuffix(j, CST_VIEW, i, i->type, ind));
-				DrawString(4, this->widget[IVW_INFO].right, y, STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO, TC_FROMSTRING);
+				DrawString(4, this->widget[IVW_INFO].right, y, STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO, TC_FROMSTRING);
 				y += 10;
 			}
 		} else {
-			StringID str = STR_4827_REQUIRES;
+			StringID str = STR_INDUSTRY_VIEW_REQUIRES_CARGO;
 			byte p = 0;
 			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
 				if (i->accepts_cargo[j] == CT_INVALID) continue;
@@ -536,7 +536,7 @@ public:
 			if (i->produced_cargo[j] == CT_INVALID) continue;
 			if (first) {
 				if (has_accept) y += 10;
-				DrawString(2, this->widget[IVW_INFO].right, y, STR_482A_PRODUCTION_LAST_MONTH, TC_FROMSTRING);
+				DrawString(2, this->widget[IVW_INFO].right, y, STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE, TC_FROMSTRING);
 				y += 10;
 				this->production_offset_y = y;
 				first = false;
@@ -548,7 +548,7 @@ public:
 
 			SetDParam(3, i->last_month_pct_transported[j] * 100 >> 8);
 			uint x = 4 + (IsProductionAlterable(i) ? 30 : 0);
-			DrawString(x, this->widget[IVW_INFO].right, y, STR_482B_TRANSPORTED, TC_FROMSTRING);
+			DrawString(x, this->widget[IVW_INFO].right, y, STR_INDUSTRY_VIEW_TRANSPORTED, TC_FROMSTRING);
 			/* Let's put out those buttons.. */
 			if (IsProductionAlterable(i)) {
 				DrawArrowButtons(5, y, COLOUR_YELLOW, (this->clicked_line == j + 1) ? this->clicked_button : 0,
@@ -680,22 +680,22 @@ static void UpdateIndustryProduction(Industry *i)
 
 /** Widget definition of the view industy gui */
 static const Widget _industry_view_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_CREAM,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},            // IVW_CLOSEBOX
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_CREAM,    11,   247,     0,    13, STR_4801,          STR_018C_WINDOW_TITLE_DRAG_THIS},  // IVW_CAPTION
-{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_CREAM,   248,   259,     0,    13, 0x0,               STR_STICKY_BUTTON},                // IVW_STICKY
-{      WWT_PANEL,     RESIZE_RB,  COLOUR_CREAM,     0,   259,    14,   105, 0x0,               STR_NULL},                         // IVW_BACKGROUND
-{      WWT_INSET,     RESIZE_RB,  COLOUR_CREAM,     2,   257,    16,   103, 0x0,               STR_NULL},                         // IVW_VIEWPORT
-{      WWT_PANEL,    RESIZE_RTB,  COLOUR_CREAM,     0,   259,   106,   107, 0x0,               STR_NULL},                         // IVW_INFO
-{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_CREAM,     0,   129,   108,   119, STR_00E4_LOCATION, STR_482C_CENTER_THE_MAIN_VIEW_ON}, // IVW_GOTO
-{      WWT_PANEL,    RESIZE_RTB,  COLOUR_CREAM,   130,   247,   108,   119, 0x0,               STR_NULL},                         // IVW_SPACER
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_CREAM,   248,   259,   108,   119, 0x0,               STR_RESIZE_BUTTON},                // IVW_RESIZE
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_CREAM,     0,    10,     0,    13, STR_BLACK_CROSS,           STR_TOOLTIP_CLOSE_WINDOW},           // IVW_CLOSEBOX
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_CREAM,    11,   247,     0,    13, STR_INDUSTRY_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // IVW_CAPTION
+{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_CREAM,   248,   259,     0,    13, 0x0,                       STR_STICKY_BUTTON},                  // IVW_STICKY
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_CREAM,     0,   259,    14,   105, 0x0,                       STR_NULL},                           // IVW_BACKGROUND
+{      WWT_INSET,     RESIZE_RB,  COLOUR_CREAM,     2,   257,    16,   103, 0x0,                       STR_NULL},                           // IVW_VIEWPORT
+{      WWT_PANEL,    RESIZE_RTB,  COLOUR_CREAM,     0,   259,   106,   107, 0x0,                       STR_NULL},                           // IVW_INFO
+{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_CREAM,     0,   129,   108,   119, STR_BUTTON_LOCATION,       STR_INDUSTRY_VIEW_LOCATION_TOOLTIP}, // IVW_GOTO
+{      WWT_PANEL,    RESIZE_RTB,  COLOUR_CREAM,   130,   247,   108,   119, 0x0,                       STR_NULL},                           // IVW_SPACER
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_CREAM,   248,   259,   108,   119, 0x0,                       STR_RESIZE_BUTTON},                  // IVW_RESIZE
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_industry_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_CREAM, IVW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_CREAM, IVW_CAPTION), SetMinimalSize(237, 14), SetDataTip(STR_4801, STR_018C_WINDOW_TITLE_DRAG_THIS), SetResize(1, 0),
+		NWidget(WWT_CAPTION, COLOUR_CREAM, IVW_CAPTION), SetMinimalSize(237, 14), SetDataTip(STR_INDUSTRY_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS), SetResize(1, 0),
 		NWidget(WWT_STICKYBOX, COLOUR_CREAM, IVW_STICKY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_CREAM, IVW_BACKGROUND),
@@ -705,7 +705,7 @@ static const NWidgetPart _nested_industry_view_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_CREAM, IVW_INFO), SetMinimalSize(260, 2), SetResize(1, 0),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_CREAM, IVW_GOTO), SetMinimalSize(130, 12), SetDataTip(STR_00E4_LOCATION, STR_482C_CENTER_THE_MAIN_VIEW_ON),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_CREAM, IVW_GOTO), SetMinimalSize(130, 12), SetDataTip(STR_BUTTON_LOCATION, STR_INDUSTRY_VIEW_LOCATION_TOOLTIP),
 		NWidget(WWT_PANEL, COLOUR_CREAM, IVW_SPACER), /*SetMinimalSize(118, 12),*/ SetResize(1, 0), EndContainer(),
 		NWidget(WWT_RESIZEBOX, COLOUR_CREAM, IVW_RESIZE),
 	EndContainer(),
@@ -739,24 +739,24 @@ enum IndustryDirectoryWidgets {
 
 /** Widget definition of the industy directory gui */
 static const Widget _industry_directory_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},             // IDW_CLOSEBOX
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_BROWN,    11,   415,     0,    13, STR_INDUSTRYDIR_CAPTION, STR_018C_WINDOW_TITLE_DRAG_THIS},   // IDW_CAPTION
-{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_BROWN,   416,   427,     0,    13, 0x0,                     STR_STICKY_BUTTON},                 // IDW_STICKY
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_BLACK_CROSS,         STR_TOOLTIP_CLOSE_WINDOW},             // IDW_CLOSEBOX
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_BROWN,    11,   415,     0,    13, STR_INDUSTRYDIR_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // IDW_CAPTION
+{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_BROWN,   416,   427,     0,    13, 0x0,                     STR_STICKY_BUTTON},                    // IDW_STICKY
 
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_BROWN,     0,    80,    14,    25, STR_SORT_BY,             STR_SORT_ORDER_TIP},                // IDW_DROPDOWN_ORDER
-{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_BROWN,    81,   243,    14,    25, 0x0,                     STR_SORT_CRITERIA_TIP},             // IDW_DROPDOWN_CRITERIA
-{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_BROWN,   244,   415,    14,    25, 0x0,                     STR_NULL},                          // IDW_SPACER
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_BROWN,     0,    80,    14,    25, STR_SORT_BY,             STR_SORT_ORDER_TIP},                   // IDW_DROPDOWN_ORDER
+{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_BROWN,    81,   243,    14,    25, 0x0,                     STR_SORT_CRITERIA_TIP},                // IDW_DROPDOWN_CRITERIA
+{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_BROWN,   244,   415,    14,    25, 0x0,                     STR_NULL},                             // IDW_SPACER
 
-{      WWT_PANEL,     RESIZE_RB,  COLOUR_BROWN,     0,   415,    26,   189, 0x0,                     STR_INDUSTRYDIR_LIST_CAPTION},      // IDW_INDUSTRY_LIST
-{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_BROWN,   416,   427,    14,   177, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST},  // IDW_SCROLLBAR
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_BROWN,   416,   427,   178,   189, 0x0,                     STR_RESIZE_BUTTON},                 // IDW_RESIZE
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_BROWN,     0,   415,    26,   189, 0x0,                     STR_INDUSTRYDIR_LIST_CAPTION},         // IDW_INDUSTRY_LIST
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_BROWN,   416,   427,    14,   177, 0x0,                     STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // IDW_SCROLLBAR
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_BROWN,   416,   427,   178,   189, 0x0,                     STR_RESIZE_BUTTON},                    // IDW_RESIZE
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_industry_directory_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, IDW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, IDW_CAPTION), SetMinimalSize(405, 14), SetDataTip(STR_INDUSTRYDIR_CAPTION, STR_018C_WINDOW_TITLE_DRAG_THIS), SetResize(1, 0),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, IDW_CAPTION), SetMinimalSize(405, 14), SetDataTip(STR_INDUSTRYDIR_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS), SetResize(1, 0),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN, IDW_STICKY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),

@@ -620,7 +620,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 		if (res2.GetCost() != 0 && tile != 0) ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res2.GetCost());
 		if (_additional_cash_required != 0) {
 			SetDParam(0, _additional_cash_required);
-			if (my_cmd) ShowErrorMessage(STR_0003_NOT_ENOUGH_CASH_REQUIRES, error_part1, x, y);
+			if (my_cmd) ShowErrorMessage(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY, error_part1, x, y);
 			if (res2.GetCost() == 0) goto callb_err;
 		}
 	}

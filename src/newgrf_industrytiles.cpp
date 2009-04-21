@@ -282,9 +282,9 @@ bool PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind_tile, 
 	SwitchToNormalRefStack();
 
 	switch (callback_res) {
-		case 0x401: _error_message = STR_0239_SITE_UNSUITABLE;                 return false;
-		case 0x402: _error_message = STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST; return false;
-		case 0x403: _error_message = STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT;     return false;
+		case 0x401: _error_message = STR_ERROR_SITE_UNSUITABLE;                 return false;
+		case 0x402: _error_message = STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST; return false;
+		case 0x403: _error_message = STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT;     return false;
 		default: _error_message = GetGRFStringID(its->grf_prop.grffile->grfid, 0xD000 + callback_res); return false;
 	}
 }

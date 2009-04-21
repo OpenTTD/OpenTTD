@@ -349,7 +349,7 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				case MP_TREES:
 					/* no more space for trees? */
 					if (_game_mode != GM_EDITOR && GetTreeCount(tile) == 4) {
-						msg = STR_2803_TREE_ALREADY_HERE;
+						msg = STR_ERROR_TREE_ALREADY_HERE;
 						continue;
 					}
 
@@ -363,13 +363,13 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 				case MP_WATER:
 					if (!IsCoast(tile) || IsSlopeWithOneCornerRaised(GetTileSlope(tile, NULL))) {
-						msg = STR_3807_CAN_T_BUILD_ON_WATER;
+						msg = STR_ERROR_CAN_T_BUILD_ON_WATER;
 						continue;
 					}
 				/* FALL THROUGH */
 				case MP_CLEAR:
 					if (IsBridgeAbove(tile)) {
-						msg = STR_0239_SITE_UNSUITABLE;
+						msg = STR_ERROR_SITE_UNSUITABLE;
 						continue;
 					}
 
@@ -414,7 +414,7 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					break;
 
 				default:
-					msg = STR_0239_SITE_UNSUITABLE;
+					msg = STR_ERROR_SITE_UNSUITABLE;
 					break;
 			}
 		}
@@ -554,9 +554,9 @@ static void GetTileDesc_Trees(TileIndex tile, TileDesc *td)
 	TreeType tt = GetTreeType(tile);
 
 	if (IsInsideMM(tt, TREE_RAINFOREST, TREE_CACTUS)) {
-		td->str = STR_280F_RAINFOREST;
+		td->str = STR_TREE_NAME_RAINFOREST;
 	} else {
-		td->str = tt == TREE_CACTUS ? STR_2810_CACTUS_PLANTS : STR_280E_TREES;
+		td->str = tt == TREE_CACTUS ? STR_TREE_NAME_CACTUS_PLANTS : STR_TREE_NAME_TREES;
 	}
 
 	td->owner[0] = GetTileOwner(tile);

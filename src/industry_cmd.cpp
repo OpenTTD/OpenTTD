@@ -398,7 +398,7 @@ static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 	td->str = is->name;
 	if (!IsIndustryCompleted(tile)) {
 		SetDParamX(td->dparam, 0, td->str);
-		td->str = STR_2058_UNDER_CONSTRUCTION;
+		td->str = STR_TOWN_DESCRIPTION_UNDER_CONSTRUCTION;
 	}
 
 	if (is->grf_prop.grffile != NULL) {
@@ -423,7 +423,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlag flags)
 				((indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) ||
 				HasBit(GetIndustryTileSpec(GetIndustryGfx(tile))->slopes_refused, 5)))) {
 		SetDParam(0, indspec->name);
-		return_cmd_error(flags & DC_AUTO ? STR_4800_IN_THE_WAY : INVALID_STRING_ID);
+		return_cmd_error(flags & DC_AUTO ? STR_OBJECT_IN_THE_WAY : INVALID_STRING_ID);
 	}
 
 	if (flags & DC_EXEC) {
@@ -1088,7 +1088,7 @@ static bool CheckNewIndustry_Forest(TileIndex tile)
 {
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
 		if (GetTileZ(tile) < HighestSnowLine() + TILE_HEIGHT * 2U) {
-			_error_message = STR_4831_FOREST_CAN_ONLY_BE_PLANTED;
+			_error_message = STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED;
 			return false;
 		}
 	}
@@ -1100,7 +1100,7 @@ static bool CheckNewIndustry_OilRefinery(TileIndex tile)
 	if (_game_mode == GM_EDITOR) return true;
 	if (DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _settings_game.game_creation.oil_refinery_limit) return true;
 
-	_error_message = STR_483B_CAN_ONLY_BE_POSITIONED;
+	_error_message = STR_ERROR_CAN_ONLY_BE_POSITIONED;
 	return false;
 }
 
@@ -1112,7 +1112,7 @@ static bool CheckNewIndustry_OilRig(TileIndex tile)
 	if (TileHeight(tile) == 0 &&
 			DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _settings_game.game_creation.oil_refinery_limit) return true;
 
-	_error_message = STR_483B_CAN_ONLY_BE_POSITIONED;
+	_error_message = STR_ERROR_CAN_ONLY_BE_POSITIONED;
 	return false;
 }
 
@@ -1120,7 +1120,7 @@ static bool CheckNewIndustry_Farm(TileIndex tile)
 {
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
 		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= HighestSnowLine()) {
-			_error_message = STR_0239_SITE_UNSUITABLE;
+			_error_message = STR_ERROR_SITE_UNSUITABLE;
 			return false;
 		}
 	}
@@ -1130,7 +1130,7 @@ static bool CheckNewIndustry_Farm(TileIndex tile)
 static bool CheckNewIndustry_Plantation(TileIndex tile)
 {
 	if (GetTropicZone(tile) == TROPICZONE_DESERT) {
-		_error_message = STR_0239_SITE_UNSUITABLE;
+		_error_message = STR_ERROR_SITE_UNSUITABLE;
 		return false;
 	}
 
@@ -1140,7 +1140,7 @@ static bool CheckNewIndustry_Plantation(TileIndex tile)
 static bool CheckNewIndustry_Water(TileIndex tile)
 {
 	if (GetTropicZone(tile) != TROPICZONE_DESERT) {
-		_error_message = STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT;
+		_error_message = STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT;
 		return false;
 	}
 
@@ -1150,7 +1150,7 @@ static bool CheckNewIndustry_Water(TileIndex tile)
 static bool CheckNewIndustry_Lumbermill(TileIndex tile)
 {
 	if (GetTropicZone(tile) != TROPICZONE_RAINFOREST) {
-		_error_message = STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST;
+		_error_message = STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST;
 		return false;
 	}
 	return true;
@@ -1186,7 +1186,7 @@ static const Town *CheckMultipleIndustryInTown(TileIndex tile, int type)
 	FOR_ALL_INDUSTRIES(i) {
 		if (i->type == (byte)type &&
 				i->town == t) {
-			_error_message = STR_0287_ONLY_ONE_ALLOWED_PER_TOWN;
+			_error_message = STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN;
 			return NULL;
 		}
 	}
@@ -1213,7 +1213,7 @@ bool IsSlopeRefused(Slope current, Slope refused)
 
 static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, uint itspec_index, int type, bool *custom_shape_check = NULL)
 {
-	_error_message = STR_0239_SITE_UNSUITABLE;
+	_error_message = STR_ERROR_SITE_UNSUITABLE;
 	bool refused_slope = false;
 	bool custom_shape = false;
 
@@ -1255,7 +1255,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 			if ((ind_behav & (INDUSTRYBEH_ONLY_INTOWN | INDUSTRYBEH_TOWN1200_MORE)) || // Tile must be a house
 					((ind_behav & INDUSTRYBEH_ONLY_NEARTOWN) && IsTileType(cur_tile, MP_HOUSE))) { // Tile is allowed to be a house (and it is a house)
 				if (!IsTileType(cur_tile, MP_HOUSE)) {
-					_error_message = STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS;
+					_error_message = STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS;
 					return false;
 				}
 
@@ -1286,12 +1286,12 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 static bool CheckIfIndustryIsAllowed(TileIndex tile, int type, const Town *t)
 {
 	if ((GetIndustrySpec(type)->behaviour & INDUSTRYBEH_TOWN1200_MORE) && t->population < 1200) {
-		_error_message = STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS;
+		_error_message = STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200;
 		return false;
 	}
 
 	if ((GetIndustrySpec(type)->behaviour & INDUSTRYBEH_ONLY_NEARTOWN) && DistanceMax(t->xy, tile) > 9) {
-		_error_message = STR_0239_SITE_UNSUITABLE;
+		_error_message = STR_ERROR_SITE_UNSUITABLE;
 		return false;
 	}
 
@@ -1679,7 +1679,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		const IndustryTileTable * const *itt = indspec->table;
 		int num = Clamp(GB(p1, 16, 16), 0, count - 1);
 
-		_error_message = STR_0239_SITE_UNSUITABLE;
+		_error_message = STR_ERROR_SITE_UNSUITABLE;
 		do {
 			if (--count < 0) return CMD_ERROR;
 			if (--num < 0) num = indspec->num_table - 1;
@@ -2047,7 +2047,7 @@ static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int 
 	SetDParam(0, GetCargo(type)->name);
 	SetDParam(1, ind->index);
 	AddNewsItem(
-		percent >= 0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
+		percent >= 0 ? STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH : STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH,
 		ns,
 		ind->xy + TileDiffXY(1, 1), 0
 	);

@@ -66,7 +66,7 @@ struct GraphLegendWindow : Window {
 
 			SetDParam(0, c->index);
 			SetDParam(1, c->index);
-			DrawString(21, this->width - 4, 17 + c->index * 12, STR_7021, HasBit(_legend_excluded_companies, c->index) ? TC_BLACK : TC_WHITE);
+			DrawString(21, this->width - 4, 17 + c->index * 12, STR_COMPANY_NAME_COMPANY_NUM, HasBit(_legend_excluded_companies, c->index) ? TC_BLACK : TC_WHITE);
 		}
 	}
 
@@ -86,24 +86,24 @@ struct GraphLegendWindow : Window {
 };
 
 static const Widget _graph_legend_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   249,     0,    13, STR_704E_KEY_TO_COMPANY_GRAPHS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   249,    14,   195, 0x0,                            STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    16,    27, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    28,    39, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    40,    51, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    52,    63, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    64,    75, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    76,    87, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    88,    99, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   100,   111, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   112,   123, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   124,   135, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   136,   147, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   148,   159, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   160,   171, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   172,   183, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   184,   195, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,       STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   249,     0,    13, STR_GRAPH_KEY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   249,    14,   195, 0x0,                   STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    16,    27, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    28,    39, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    40,    51, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    52,    63, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    64,    75, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    76,    87, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    88,    99, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   100,   111, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   112,   123, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   124,   135, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   136,   147, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   148,   159, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   160,   171, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   172,   183, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   184,   195, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
 {   WIDGETS_END},
 };
 
@@ -257,7 +257,7 @@ protected:
 		for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
 			SetDParam(0, this->format_str_y_axis);
 			SetDParam(1, y_label);
-			DrawString(x - GRAPH_X_POSITION_BEGINNING, x, y, STR_0170, graph_axis_label_colour, SA_RIGHT);
+			DrawString(x - GRAPH_X_POSITION_BEGINNING, x, y, STR_GRAPH_Y_LABEL, graph_axis_label_colour, SA_RIGHT);
 
 			y_label -= y_label_separation;
 			y += (this->gd_height / (GRAPH_NUM_LINES_Y - 1));
@@ -270,10 +270,10 @@ protected:
 			byte month = this->month;
 			Year year  = this->year;
 			for (int i = 0; i < this->num_on_x_axis; i++) {
-				SetDParam(0, month + STR_0162_JAN);
-				SetDParam(1, month + STR_0162_JAN + 2);
+				SetDParam(0, month + STR_MONTH_ABBREV_JAN);
+				SetDParam(1, month + STR_MONTH_ABBREV_JAN + 2);
 				SetDParam(2, year);
-				DrawString(x, x + GRAPH_X_POSITION_SEPARATION, y, month == 0 ? STR_016F : STR_016E, graph_axis_label_colour);
+				DrawString(x, x + GRAPH_X_POSITION_SEPARATION, y, month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, graph_axis_label_colour);
 
 				month += 3;
 				if (month >= 12) {
@@ -290,7 +290,7 @@ protected:
 
 			for (int i = 0; i < this->num_on_x_axis; i++) {
 				SetDParam(0, label);
-				DrawString(x + 1, x + GRAPH_X_POSITION_SEPARATION - 1, y, STR_01CB, graph_axis_label_colour, SA_CENTER);
+				DrawString(x + 1, x + GRAPH_X_POSITION_SEPARATION - 1, y, STR_GRAPH_Y_LABEL_NUMBER, graph_axis_label_colour, SA_CENTER);
 
 				label += this->x_values_increment;
 				x += GRAPH_X_POSITION_SEPARATION;
@@ -450,18 +450,18 @@ struct OperatingProfitGraphWindow : BaseGraphWindow {
 };
 
 static const Widget _operating_profit_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   525,     0,    13, STR_7025_OPERATING_PROFIT_GRAPH, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   526,   575,     0,    13, STR_704C_KEY,                    STR_704D_SHOW_KEY_TO_GRAPHS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   575,    14,   173, 0x0,                             STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,                    STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   525,     0,    13, STR_GRAPH_OPERATING_PROFIT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   526,   575,     0,    13, STR_GRAPH_KEY_BUTTON,               STR_GRAPH_KEY_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   575,    14,   173, 0x0,                                STR_NULL},
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_operating_profit_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, BGW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, BGW_CAPTION), SetDataTip(STR_7025_OPERATING_PROFIT_GRAPH, STR_018C_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BGW_KEY_BUTTON), SetMinimalSize(50, 14), SetDataTip(STR_704C_KEY, STR_704D_SHOW_KEY_TO_GRAPHS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, BGW_CAPTION), SetDataTip(STR_GRAPH_OPERATING_PROFIT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BGW_KEY_BUTTON), SetMinimalSize(50, 14), SetDataTip(STR_GRAPH_KEY_BUTTON, STR_GRAPH_KEY_TOOLTIP),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND), SetMinimalSize(576, 160), EndContainer(),
 };
@@ -498,18 +498,18 @@ struct IncomeGraphWindow : BaseGraphWindow {
 };
 
 static const Widget _income_graph_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   525,     0,    13, STR_7022_INCOME_GRAPH, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   526,   575,     0,    13, STR_704C_KEY,          STR_704D_SHOW_KEY_TO_GRAPHS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   575,    14,   141, 0x0,                   STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,          STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   525,     0,    13, STR_GRAPH_INCOME_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   526,   575,     0,    13, STR_GRAPH_KEY_BUTTON,     STR_GRAPH_KEY_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   575,    14,   141, 0x0,                      STR_NULL},
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_income_graph_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, BGW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, BGW_CAPTION), SetDataTip(STR_7022_INCOME_GRAPH, STR_018C_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BGW_KEY_BUTTON), SetMinimalSize(50, 14), SetDataTip(STR_704C_KEY, STR_704D_SHOW_KEY_TO_GRAPHS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, BGW_CAPTION), SetDataTip(STR_GRAPH_INCOME_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BGW_KEY_BUTTON), SetMinimalSize(50, 14), SetDataTip(STR_GRAPH_KEY_BUTTON, STR_GRAPH_KEY_TOOLTIP),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND), SetMinimalSize(576, 128), EndContainer(),
 };
@@ -533,7 +533,7 @@ void ShowIncomeGraph()
 
 struct DeliveredCargoGraphWindow : BaseGraphWindow {
 	DeliveredCargoGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, window_number, 2, 18, 104, false, STR_7024)
+			BaseGraphWindow(desc, window_number, 2, 18, 104, false, STR_JUST_COMMA)
 	{
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -545,9 +545,9 @@ struct DeliveredCargoGraphWindow : BaseGraphWindow {
 };
 
 static const Widget _delivered_cargo_graph_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                          STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   525,     0,    13, STR_7050_UNITS_OF_CARGO_DELIVERED, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   526,   575,     0,    13, STR_704C_KEY,                      STR_704D_SHOW_KEY_TO_GRAPHS},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,                   STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   525,     0,    13, STR_GRAPH_CARGO_DELIVERED_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   526,   575,     0,    13, STR_GRAPH_KEY_BUTTON,              STR_GRAPH_KEY_TOOLTIP},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   575,    14,   141, 0x0,                               STR_NULL},
 {   WIDGETS_END},
 };
@@ -555,8 +555,8 @@ static const Widget _delivered_cargo_graph_widgets[] = {
 static const NWidgetPart _nested_delivered_cargo_graph_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, BGW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, BGW_CAPTION), SetDataTip(STR_7050_UNITS_OF_CARGO_DELIVERED, STR_018C_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BGW_KEY_BUTTON), SetMinimalSize(50, 14), SetDataTip(STR_704C_KEY, STR_704D_SHOW_KEY_TO_GRAPHS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, BGW_CAPTION), SetDataTip(STR_GRAPH_CARGO_DELIVERED_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BGW_KEY_BUTTON), SetMinimalSize(50, 14), SetDataTip(STR_GRAPH_KEY_BUTTON, STR_GRAPH_KEY_TOOLTIP),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND), SetMinimalSize(576, 128), EndContainer(),
 };
@@ -579,7 +579,7 @@ void ShowDeliveredCargoGraph()
 
 struct PerformanceHistoryGraphWindow : BaseGraphWindow {
 	PerformanceHistoryGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, window_number, 2, 18, 200, false, STR_7024)
+			BaseGraphWindow(desc, window_number, 2, 18, 200, false, STR_JUST_COMMA)
 	{
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -597,11 +597,11 @@ struct PerformanceHistoryGraphWindow : BaseGraphWindow {
 };
 
 static const Widget _performance_history_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                             STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   475,     0,    13, STR_7051_COMPANY_PERFORMANCE_RATINGS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   526,   575,     0,    13, STR_704C_KEY,                         STR_704D_SHOW_KEY_TO_GRAPHS},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   476,   525,     0,    13, STR_PERFORMANCE_DETAIL_KEY,           STR_SHOW_DETAILED_PERFORMANCE_RATINGS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   575,    14,   237, 0x0,                                  STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,                               STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   475,     0,    13, STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   526,   575,     0,    13, STR_GRAPH_KEY_BUTTON,                          STR_GRAPH_KEY_TOOLTIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   476,   525,     0,    13, STR_PERFORMANCE_DETAIL_KEY,                    STR_SHOW_DETAILED_PERFORMANCE_RATINGS},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   575,    14,   237, 0x0,                                           STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -635,18 +635,18 @@ struct CompanyValueGraphWindow : BaseGraphWindow {
 };
 
 static const Widget _company_value_graph_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   525,     0,    13, STR_7052_COMPANY_VALUES, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   526,   575,     0,    13, STR_704C_KEY,            STR_704D_SHOW_KEY_TO_GRAPHS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   575,    14,   237, 0x0,                     STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,                  STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   525,     0,    13, STR_GRAPH_COMPANY_VALUES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   526,   575,     0,    13, STR_GRAPH_KEY_BUTTON,             STR_GRAPH_KEY_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   575,    14,   237, 0x0,                              STR_NULL},
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_company_value_graph_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, BGW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, BGW_CAPTION), SetDataTip(STR_7052_COMPANY_VALUES, STR_018C_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BGW_KEY_BUTTON), SetMinimalSize(50, 14), SetDataTip(STR_704C_KEY, STR_704D_SHOW_KEY_TO_GRAPHS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, BGW_CAPTION), SetDataTip(STR_GRAPH_COMPANY_VALUES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BGW_KEY_BUTTON), SetMinimalSize(50, 14), SetDataTip(STR_GRAPH_KEY_BUTTON, STR_GRAPH_KEY_TOOLTIP),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND), SetMinimalSize(576, 224), EndContainer(),
 };
@@ -695,7 +695,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 			wi->top      = 24 + i * 8;
 			wi->bottom   = wi->top + 7;
 			wi->data     = 0;
-			wi->tooltips = STR_7064_TOGGLE_GRAPH_FOR_CARGO;
+			wi->tooltips = STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO;
 
 			if (!HasBit(_legend_excluded_cargo, i)) this->LowerWidget(i + 3);
 		}
@@ -739,7 +739,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 				GfxFillRect(x + clk_dif, y + clk_dif, x + 8 + clk_dif, y + 5 + clk_dif, 0);
 				GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, cs->legend_colour);
 				SetDParam(0, cs->name);
-				DrawString(x + 14 + clk_dif, this->width, y + clk_dif, STR_7065, TC_FROMSTRING);
+				DrawString(x + 14 + clk_dif, this->width, y + clk_dif, STR_GRAPH_CARGO_PAYMENT_CARGO, TC_FROMSTRING);
 				y += 8;
 			}
 
@@ -754,8 +754,8 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 		this->DrawGraph();
 
-		DrawString(2 + 46, this->width, 24 + this->gd_height + 7, STR_7062_DAYS_IN_TRANSIT, TC_FROMSTRING);
-		DrawString(2 + 84, this->width, 24 - 9, STR_7063_PAYMENT_FOR_DELIVERING, TC_FROMSTRING);
+		DrawString(2 + 46, this->width, 24 + this->gd_height + 7, STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL, TC_FROMSTRING);
+		DrawString(2 + 84, this->width, 24 - 9, STR_GRAPH_CARGO_PAYMENT_RATES_TITLE, TC_FROMSTRING);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -776,16 +776,16 @@ enum CargoPaymentRatesWidgets {
 };
 
 static const Widget _cargo_payment_rates_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                     STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   567,     0,    13, STR_7061_CARGO_PAYMENT_RATES, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL, RESIZE_BOTTOM,  COLOUR_GREY,     0,   567,    14,    45, 0x0,                          STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,                       STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   567,     0,    13, STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL, RESIZE_BOTTOM,  COLOUR_GREY,     0,   567,    14,    45, 0x0,                                   STR_NULL},
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CPW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, CPW_CAPTION), SetDataTip(STR_7061_CARGO_PAYMENT_RATES, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, CPW_CAPTION), SetDataTip(STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, CPW_BACKGROUND), SetMinimalSize(568, 32), SetResize(0, 1), EndContainer(),
 };
@@ -808,22 +808,22 @@ void ShowCargoPaymentRates()
 /************************/
 
 static const StringID _performance_titles[] = {
-	STR_7066_ENGINEER,
-	STR_7066_ENGINEER,
-	STR_7067_TRAFFIC_MANAGER,
-	STR_7067_TRAFFIC_MANAGER,
-	STR_7068_TRANSPORT_COORDINATOR,
-	STR_7068_TRANSPORT_COORDINATOR,
-	STR_7069_ROUTE_SUPERVISOR,
-	STR_7069_ROUTE_SUPERVISOR,
-	STR_706A_DIRECTOR,
-	STR_706A_DIRECTOR,
-	STR_706B_CHIEF_EXECUTIVE,
-	STR_706B_CHIEF_EXECUTIVE,
-	STR_706C_CHAIRMAN,
-	STR_706C_CHAIRMAN,
-	STR_706D_PRESIDENT,
-	STR_706E_TYCOON,
+	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER,
+	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER,
+	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER,
+	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER,
+	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR,
+	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR,
+	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR,
+	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR,
+	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR,
+	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR,
+	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE,
+	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE,
+	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN,
+	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN,
+	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT,
+	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON,
 };
 
 static inline StringID GetPerformanceTitleFromValue(uint value)
@@ -877,12 +877,12 @@ public:
 
 		for (uint i = 0; i != this->companies.Length(); i++) {
 			const Company *c = this->companies[i];
-			SetDParam(0, i + STR_01AC_1ST);
+			SetDParam(0, i + STR_ORDINAL_NUMBER_1ST);
 			SetDParam(1, c->index);
 			SetDParam(2, c->index);
 			SetDParam(3, GetPerformanceTitleFromValue(c->old_economy[1].performance_history));
 
-			DrawString(2, this->width, 15 + i * 10, i == 0 ? STR_7054 : STR_7055, TC_FROMSTRING);
+			DrawString(2, this->width, 15 + i * 10, i == 0 ? STR_COMPANY_LEAGUE_FIRST : STR_COMPANY_LEAGUE_OTHER, TC_FROMSTRING);
 			DrawCompanyIcon(c->index, 27, 16 + i * 10);
 		}
 	}
@@ -913,17 +913,17 @@ enum CompanyLeagueWidgets {
 };
 
 static const Widget _company_league_widgets[] = {
-{   WWT_CLOSEBOX, RESIZE_NONE,  COLOUR_GREY,   0,  10,  0,  13, STR_00C5,                      STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,  11, 387,  0,  13, STR_7053_COMPANY_LEAGUE_TABLE, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX, RESIZE_NONE,  COLOUR_GREY, 388, 399,  0,  13, STR_NULL,                      STR_STICKY_BUTTON},
-{      WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,   0, 399, 14, 166, 0x0,                           STR_NULL},
+{   WWT_CLOSEBOX, RESIZE_NONE,  COLOUR_GREY,   0,  10,  0,  13, STR_BLACK_CROSS,                  STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,  11, 387,  0,  13, STR_COMPANY_LEAGUE_TABLE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX, RESIZE_NONE,  COLOUR_GREY, 388, 399,  0,  13, STR_NULL,                         STR_STICKY_BUTTON},
+{      WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,   0, 399, 14, 166, 0x0,                              STR_NULL},
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_company_league_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CLW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, CLW_CAPTION), SetDataTip(STR_7053_COMPANY_LEAGUE_TABLE, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, CLW_CAPTION), SetDataTip(STR_COMPANY_LEAGUE_TABLE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY, CLW_STICKYBOX),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, CLW_BACKGROUND), SetMinimalSize(400, 153),
@@ -1141,8 +1141,8 @@ CompanyID PerformanceRatingDetailWindow::company = INVALID_COMPANY;
 
 
 static const Widget _performance_rating_detail_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   298,     0,    13, STR_PERFORMANCE_DETAIL, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,        STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   298,     0,    13, STR_PERFORMANCE_DETAIL, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    14,    40, 0x0,                    STR_NULL},
 
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    41,    60, 0x0,                    STR_PERFORMANCE_DETAIL_VEHICLES_TIP},
@@ -1156,21 +1156,21 @@ static const Widget _performance_rating_detail_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   201,   220, 0x0,                    STR_PERFORMANCE_DETAIL_LOAN_TIP},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   221,   240, 0x0,                    STR_PERFORMANCE_DETAIL_TOTAL_TIP},
 
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,    38,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    39,    75,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    76,   112,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   113,   149,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   150,   186,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   187,   223,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   224,   260,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   261,   297,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,    38,    27,    39, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    39,    75,    27,    39, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    76,   112,    27,    39, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   113,   149,    27,    39, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   150,   186,    27,    39, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   187,   223,    27,    39, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   224,   260,    27,    39, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,    38,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    39,    75,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    76,   112,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   113,   149,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   150,   186,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   187,   223,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   224,   260,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   261,   297,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,    38,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    39,    75,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    76,   112,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   113,   149,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   150,   186,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   187,   223,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   224,   260,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
 {   WIDGETS_END},
 };
 

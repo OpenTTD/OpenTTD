@@ -110,14 +110,14 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	tile2 = tile + (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 
 	if (!IsWaterTile(tile) || !IsWaterTile(tile2)) {
-		return_cmd_error(STR_3801_MUST_BE_BUILT_ON_WATER);
+		return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);
 	}
 
-	if (IsBridgeAbove(tile) || IsBridgeAbove(tile2)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+	if (IsBridgeAbove(tile) || IsBridgeAbove(tile2)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
 	if (GetTileSlope(tile, NULL) != SLOPE_FLAT || GetTileSlope(tile2, NULL) != SLOPE_FLAT) {
 		/* Prevent depots on rapids */
-		return_cmd_error(STR_0239_SITE_UNSUITABLE);
+		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 
 	WaterClass wc1 = GetWaterClass(tile);
@@ -204,7 +204,7 @@ static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, DoCommandF
 	ret = DoCommand(tile - delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 	if (GetTileSlope(tile - delta, NULL) != SLOPE_FLAT) {
-		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+		return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 
 	/* upper tile */
@@ -213,13 +213,13 @@ static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, DoCommandF
 	ret = DoCommand(tile + delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 	if (GetTileSlope(tile + delta, NULL) != SLOPE_FLAT) {
-		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+		return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 
 	if ((MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) ||
 	    (MayHaveBridgeAbove(tile - delta) && IsBridgeAbove(tile - delta)) ||
 	    (MayHaveBridgeAbove(tile + delta) && IsBridgeAbove(tile + delta))) {
-		return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+		return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 	}
 
 	if (flags & DC_EXEC) {
@@ -266,10 +266,10 @@ static CommandCost RemoveShiplift(TileIndex tile, DoCommandFlag flags)
 CommandCost CmdBuildLock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile, NULL));
-	if (dir == INVALID_DIAGDIR) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+	if (dir == INVALID_DIAGDIR) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	/* Disallow building of locks on river rapids */
-	if (IsWaterTile(tile)) return_cmd_error(STR_0239_SITE_UNSUITABLE);
+	if (IsWaterTile(tile)) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 
 	return DoBuildShiplift(tile, dir, flags);
 }
@@ -311,7 +311,7 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 		Slope slope = GetTileSlope(tile, NULL);
 		if (slope != SLOPE_FLAT && (p2 != 2 || !IsInclinedSlope(slope))) {
-			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
+			return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
 		}
 
 		/* can't make water of water! */
@@ -337,7 +337,7 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	} END_TILE_LOOP(tile, size_x, size_y, 0);
 
 	if (cost.GetCost() == 0) {
-		return_cmd_error(STR_1007_ALREADY_BUILT);
+		return_cmd_error(STR_ERROR_ALREADY_BUILT);
 	} else {
 		return cost;
 	}
@@ -347,12 +347,12 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 {
 	switch (GetWaterTileType(tile)) {
 		case WATER_TILE_CLEAR:
-			if (flags & DC_NO_WATER) return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
+			if (flags & DC_NO_WATER) return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
 
 			/* Make sure freeform edges are allowed or it's not an edge tile. */
 			if (!_settings_game.construction.freeform_edges && (!IsInsideMM(TileX(tile), 1, MapMaxX() - 1) ||
 					!IsInsideMM(TileY(tile), 1, MapMaxY() - 1))) {
-				return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
+				return_cmd_error(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP);
 			}
 
 			/* Make sure no vehicle is on the tile */
@@ -390,14 +390,14 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 				{ 1,  0}, {0, -1}, {-1, 0}, {0,  1}, // upper
 			};
 
-			if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
+			if (flags & DC_AUTO) return_cmd_error(STR_ERROR_BUILDING_MUST_BE_DEMOLISHED);
 			if (_current_company == OWNER_WATER) return CMD_ERROR;
 			/* move to the middle tile.. */
 			return RemoveShiplift(tile + ToTileIndexDiff(_shiplift_tomiddle_offs[GetSection(tile)]), flags);
 		}
 
 		case WATER_TILE_DEPOT:
-			if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
+			if (flags & DC_AUTO) return_cmd_error(STR_ERROR_BUILDING_MUST_BE_DEMOLISHED);
 			return RemoveShipDepot(tile, flags);
 
 		default:
@@ -691,15 +691,15 @@ static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 	switch (GetWaterTileType(tile)) {
 		case WATER_TILE_CLEAR:
 			switch (GetWaterClass(tile)) {
-				case WATER_CLASS_SEA:   td->str = STR_3804_WATER;     break;
+				case WATER_CLASS_SEA:   td->str = STR_WATER_DESCRIPTION_WATER;     break;
 				case WATER_CLASS_CANAL: td->str = STR_LANDINFO_CANAL; break;
 				case WATER_CLASS_RIVER: td->str = STR_LANDINFO_RIVER; break;
 				default: assert(0); break;
 			}
 			break;
-		case WATER_TILE_COAST: td->str = STR_3805_COAST_OR_RIVERBANK; break;
+		case WATER_TILE_COAST: td->str = STR_WATER_DESCRIPTION_COAST_OR_RIVERBANK; break;
 		case WATER_TILE_LOCK : td->str = STR_LANDINFO_LOCK;           break;
-		case WATER_TILE_DEPOT: td->str = STR_3806_SHIP_DEPOT;         break;
+		case WATER_TILE_DEPOT: td->str = STR_WATER_DESCRIPTION_SHIP_DEPOT;         break;
 		default: assert(0); break;
 	}
 
@@ -841,7 +841,7 @@ static void FloodVehicle(Vehicle *v)
 
 		AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_FLOODED));
 		SetDParam(0, pass);
-		AddNewsItem(STR_B006_FLOOD_VEHICLE_DESTROYED,
+		AddNewsItem(STR_NEWS_DISASTER_FLOOD_VEHICLE,
 			NS_ACCIDENT_VEHICLE,
 			v->index,
 			0);

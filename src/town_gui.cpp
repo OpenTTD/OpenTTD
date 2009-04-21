@@ -44,28 +44,28 @@ enum TownAuthorityWidgets {
 };
 
 static const Widget _town_authority_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},              // TWA_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_BROWN,    11,   316,     0,    13, STR_2022_LOCAL_AUTHORITY, STR_018C_WINDOW_TITLE_DRAG_THIS},    // TWA_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_BROWN,     0,   316,    14,   105, 0x0,                      STR_NULL},                           // TWA_RATING_INFO
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_BROWN,     0,   304,   106,   157, 0x0,                      STR_2043_LIST_OF_THINGS_TO_DO_AT},   // TWA_COMMAND_LIST
-{  WWT_SCROLLBAR,   RESIZE_NONE,  COLOUR_BROWN,   305,   316,   106,   157, 0x0,                      STR_0190_SCROLL_BAR_SCROLLS_LIST},   // TWA_SCROLLBAR
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_BROWN,     0,   316,   158,   209, 0x0,                      STR_NULL},                           // TWA_ACTION_INFO
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,     0,   316,   210,   221, STR_2042_DO_IT,           STR_2044_CARRY_OUT_THE_HIGHLIGHTED}, // TWA_EXECUTE
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_BLACK_CROSS,             STR_TOOLTIP_CLOSE_WINDOW},               // TWA_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_BROWN,    11,   316,     0,    13, STR_LOCAL_AUTHORITY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},     // TWA_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_BROWN,     0,   316,    14,   105, 0x0,                         STR_NULL},                               // TWA_RATING_INFO
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_BROWN,     0,   304,   106,   157, 0x0,                         STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP},    // TWA_COMMAND_LIST
+{  WWT_SCROLLBAR,   RESIZE_NONE,  COLOUR_BROWN,   305,   316,   106,   157, 0x0,                         STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},   // TWA_SCROLLBAR
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_BROWN,     0,   316,   158,   209, 0x0,                         STR_NULL},                               // TWA_ACTION_INFO
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,     0,   316,   210,   221, STR_LOCAL_AUTHORITY_DO_IT_BUTTON, STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP}, // TWA_EXECUTE
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_town_authority_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, TWA_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, TWA_CAPTION), SetDataTip(STR_2022_LOCAL_AUTHORITY, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, TWA_CAPTION), SetDataTip(STR_LOCAL_AUTHORITY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, TWA_RATING_INFO), SetMinimalSize(317, 92), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, TWA_COMMAND_LIST), SetMinimalSize(305, 52), SetDataTip(0x0, STR_2043_LIST_OF_THINGS_TO_DO_AT), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_BROWN, TWA_COMMAND_LIST), SetMinimalSize(305, 52), SetDataTip(0x0, STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP), EndContainer(),
 		NWidget(WWT_SCROLLBAR, COLOUR_BROWN, TWA_SCROLLBAR),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, TWA_ACTION_INFO), SetMinimalSize(317, 52), EndContainer(),
-	NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TWA_EXECUTE),  SetMinimalSize(317, 12), SetDataTip(STR_2042_DO_IT, STR_2044_CARRY_OUT_THE_HIGHLIGHTED),
+	NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TWA_EXECUTE),  SetMinimalSize(317, 12), SetDataTip(STR_LOCAL_AUTHORITY_DO_IT_BUTTON, STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP),
 };
 
 extern const byte _town_action_costs[8];
@@ -124,7 +124,7 @@ public:
 
 		int y = this->widget[TWA_RATING_INFO].top + 1;
 
-		DrawString(this->widget[TWA_RATING_INFO].left + 2, this->widget[TWA_RATING_INFO].right - 2, y, STR_2023_TRANSPORT_COMPANY_RATINGS, TC_FROMSTRING);
+		DrawString(this->widget[TWA_RATING_INFO].left + 2, this->widget[TWA_RATING_INFO].right - 2, y, STR_LOCAL_AUTHORITY_COMPANY_RATINGS, TC_FROMSTRING);
 		y += 10;
 
 		/* Draw list of companies */
@@ -138,7 +138,7 @@ public:
 
 				int r = this->town->ratings[c->index];
 				StringID str;
-				(str = STR_3035_APPALLING, r <= RATING_APPALLING) || // Apalling
+				(str = STR_CARGO_RATING_APPALLING, r <= RATING_APPALLING) || // Apalling
 				(str++,                    r <= RATING_VERYPOOR)  || // Very Poor
 				(str++,                    r <= RATING_POOR)      || // Poor
 				(str++,                    r <= RATING_MEDIOCRE)  || // Mediocore
@@ -152,7 +152,7 @@ public:
 					DrawSprite(SPR_BLOT, PALETTE_TO_RED, 18, y);
 				}
 
-				DrawString(this->widget[TWA_RATING_INFO].left + 28, this->widget[TWA_RATING_INFO].right - 2, y, STR_2024, TC_FROMSTRING);
+				DrawString(this->widget[TWA_RATING_INFO].left + 28, this->widget[TWA_RATING_INFO].right - 2, y, STR_LOCAL_AUTHORITY_COMPANY_RATING, TC_FROMSTRING);
 				y += 10;
 			}
 		}
@@ -168,7 +168,7 @@ public:
 		int pos = this->vscroll.pos;
 
 		if (--pos < 0) {
-			DrawString(this->widget[TWA_COMMAND_LIST].left + 2, this->widget[TWA_COMMAND_LIST].right - 2, y, STR_2045_ACTIONS_AVAILABLE, TC_FROMSTRING);
+			DrawString(this->widget[TWA_COMMAND_LIST].left + 2, this->widget[TWA_COMMAND_LIST].right - 2, y, STR_LOCAL_AUTHORITY_ACTIONS_TITLE, TC_FROMSTRING);
 			y += 10;
 		}
 
@@ -176,15 +176,15 @@ public:
 			if (pos <= -5) break; ///< Draw only the 5 fitting lines
 
 			if ((buttons & 1) && --pos < 0) {
-				DrawString(this->widget[TWA_COMMAND_LIST].left + 3, this->widget[TWA_COMMAND_LIST].right - 2, y, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i, TC_ORANGE);
+				DrawString(this->widget[TWA_COMMAND_LIST].left + 3, this->widget[TWA_COMMAND_LIST].right - 2, y, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i, TC_ORANGE);
 				y += 10;
 			}
 		}
 
 		if (this->sel_index != -1) {
 			SetDParam(1, (_price.build_industry >> 8) * _town_action_costs[this->sel_index]);
-			SetDParam(0, STR_2046_SMALL_ADVERTISING_CAMPAIGN + this->sel_index);
-			DrawStringMultiLine(this->widget[TWA_ACTION_INFO].left + 2, this->widget[TWA_ACTION_INFO].right - 2, this->widget[TWA_ACTION_INFO].top + 1, this->widget[TWA_ACTION_INFO].bottom - 1, STR_204D_INITIATE_A_SMALL_LOCAL + this->sel_index);
+			SetDParam(0, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + this->sel_index);
+			DrawStringMultiLine(this->widget[TWA_ACTION_INFO].left + 2, this->widget[TWA_ACTION_INFO].right - 2, this->widget[TWA_ACTION_INFO].top + 1, this->widget[TWA_ACTION_INFO].bottom - 1, STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING + this->sel_index);
 		}
 	}
 
@@ -209,7 +209,7 @@ public:
 			}
 
 			case TWA_EXECUTE:
-				DoCommandP(this->town->xy, this->window_number, this->sel_index, CMD_DO_TOWN_ACTION | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
+				DoCommandP(this->town->xy, this->window_number, this->sel_index, CMD_DO_TOWN_ACTION | CMD_MSG(STR_ERROR_CAN_T_DO_THIS));
 				break;
 		}
 	}
@@ -266,7 +266,7 @@ public:
 		int height = this->widget[TVW_VIEWPORTINSET].bottom - this->widget[TVW_VIEWPORTINSET].top - 1;
 		InitializeWindowViewport(this, this->widget[TVW_VIEWPORTINSET].left + 1, this->widget[TVW_VIEWPORTINSET].top + 1, width, height, this->town->xy, ZOOM_LVL_TOWN);
 
-		if (this->town->larger_town) this->widget[TVW_CAPTION].data = STR_CITY;
+		if (this->town->larger_town) this->widget[TVW_CAPTION].data = STR_TOWN_VIEW_CITY_CAPTION;
 
 		if (ingame) {
 			/* Hide the expand button, and put the authority button over it. */
@@ -302,15 +302,15 @@ public:
 
 		SetDParam(0, this->town->population);
 		SetDParam(1, this->town->num_houses);
-		DrawString(2, this->width - 2, y, STR_2006_POPULATION, TC_FROMSTRING);
+		DrawString(2, this->width - 2, y, STR_TOWN_VIEW_POPULATION_HOUSES, TC_FROMSTRING);
 
 		SetDParam(0, this->town->act_pass);
 		SetDParam(1, this->town->max_pass);
-		DrawString(2, this->width - 2, y += 10, STR_200D_PASSENGERS_LAST_MONTH_MAX, TC_FROMSTRING);
+		DrawString(2, this->width - 2, y += 10, STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX, TC_FROMSTRING);
 
 		SetDParam(0, this->town->act_mail);
 		SetDParam(1, this->town->max_mail);
-		DrawString(2, this->width - 2, y += 10, STR_200E_MAIL_LAST_MONTH_MAX, TC_FROMSTRING);
+		DrawString(2, this->width - 2, y += 10, STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX, TC_FROMSTRING);
 
 		uint cargo_needed_for_growth = 0;
 		switch (_settings_game.game_creation.landscape) {
@@ -329,9 +329,9 @@ public:
 			DrawString(2, this->width - 2, y += 10, STR_CARGO_FOR_TOWNGROWTH, TC_FROMSTRING);
 
 			CargoID first_food_cargo = CT_INVALID;
-			StringID food_name = STR_001E_FOOD;
+			StringID food_name = STR_CARGO_PLURAL_FOOD;
 			CargoID first_water_cargo = CT_INVALID;
-			StringID water_name = STR_0021_WATER;
+			StringID water_name = STR_CARGO_PLURAL_WATER;
 			for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
 				const CargoSpec *cs = GetCargo(cid);
 				if (first_food_cargo == CT_INVALID && cs->town_effect == TE_FOOD) {
@@ -392,7 +392,7 @@ public:
 
 			case TVW_CHANGENAME: // rename
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_TOWN, STR_2007_RENAME_TOWN, MAX_LENGTH_TOWN_NAME_BYTES, MAX_LENGTH_TOWN_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
+				ShowQueryString(STR_TOWN, STR_TOWN_VIEW_RENAME_TOWN_BUTTON, MAX_LENGTH_TOWN_NAME_BYTES, MAX_LENGTH_TOWN_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
 			case TVW_EXPAND: // expand town - only available on Scenario editor
@@ -437,31 +437,31 @@ public:
 	{
 		if (str == NULL) return;
 
-		DoCommandP(0, this->window_number, 0, CMD_RENAME_TOWN | CMD_MSG(STR_2008_CAN_T_RENAME_TOWN), NULL, str);
+		DoCommandP(0, this->window_number, 0, CMD_RENAME_TOWN | CMD_MSG(STR_ERROR_CAN_T_RENAME_TOWN), NULL, str);
 	}
 };
 
 
 static const Widget _town_view_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},                // TVW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_BROWN,    11,   171,     0,    13, STR_2005,                 STR_018C_WINDOW_TITLE_DRAG_THIS},      // TVW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_BROWN,   248,   259,     0,    13, 0x0,                      STR_STICKY_BUTTON},                    // TVW_STICKY
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_BROWN,     0,   259,    14,   105, 0x0,                      STR_NULL},                             // TVW_VIEWPORTPANEL
-{      WWT_INSET,   RESIZE_NONE,  COLOUR_BROWN,     2,   257,    16,   103, 0x0,                      STR_NULL},                             // TVW_VIEWPORTINSET
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_BROWN,     0,   259,   106,   137, 0x0,                      STR_NULL},                             // TVW_INFOPANEL
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,     0,    85,   138,   149, STR_00E4_LOCATION,        STR_200B_CENTER_THE_MAIN_VIEW_ON},     // TVW_CENTERVIEW
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,    86,   127,   138,   149, STR_2020_LOCAL_AUTHORITY, STR_2021_SHOW_INFORMATION_ON_LOCAL},   // TVW_SHOWAUTHORITY
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,   172,   247,     0,    13, STR_0130_RENAME,          STR_200C_CHANGE_TOWN_NAME},            // TVW_CHANGENAME
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,   128,   171,   138,   149, STR_023C_EXPAND,          STR_023B_INCREASE_SIZE_OF_TOWN},       // TVW_EXPAND
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,   172,   259,   138,   149, STR_0290_DELETE,          STR_0291_DELETE_THIS_TOWN_COMPLETELY}, // TVW_DELETE
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_BLACK_CROSS,                      STR_TOOLTIP_CLOSE_WINDOW},              // TVW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_BROWN,    11,   171,     0,    13, STR_TOWN_VIEW_TOWN_CAPTION,           STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},    // TVW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_BROWN,   248,   259,     0,    13, 0x0,                                  STR_STICKY_BUTTON},                     // TVW_STICKY
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_BROWN,     0,   259,    14,   105, 0x0,                                  STR_NULL},                              // TVW_VIEWPORTPANEL
+{      WWT_INSET,   RESIZE_NONE,  COLOUR_BROWN,     2,   257,    16,   103, 0x0,                                  STR_NULL},                              // TVW_VIEWPORTINSET
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_BROWN,     0,   259,   106,   137, 0x0,                                  STR_NULL},                              // TVW_INFOPANEL
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,     0,    85,   138,   149, STR_BUTTON_LOCATION,                  STR_TOWN_VIEW_CENTER_TOOLTIP},          // TVW_CENTERVIEW
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,    86,   127,   138,   149, STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON, STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP}, // TVW_SHOWAUTHORITY
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,   172,   247,     0,    13, STR_QUERY_RENAME,                     STR_TOWN_VIEW_RENAME_TOOLTIP},          // TVW_CHANGENAME
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,   128,   171,   138,   149, STR_TOWN_VIEW_EXPAND_BUTTON,          STR_TOWN_VIEW_EXPAND_TOOLTIP},          // TVW_EXPAND
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,   172,   259,   138,   149, STR_TOWN_VIEW_DELETE_BUTTON,          STR_TOWN_VIEW_DELETE_TOOLTIP},          // TVW_DELETE
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_town_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, TVW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, TVW_CAPTION), SetDataTip(STR_2005, STR_018C_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_CHANGENAME), SetMinimalSize(76, 14), SetDataTip(STR_0130_RENAME, STR_200C_CHANGE_TOWN_NAME),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, TVW_CAPTION), SetDataTip(STR_TOWN_VIEW_TOWN_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_CHANGENAME), SetMinimalSize(76, 14), SetDataTip(STR_QUERY_RENAME, STR_TOWN_VIEW_RENAME_TOOLTIP),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN, TVW_STICKY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, TVW_VIEWPORTPANEL),
@@ -469,10 +469,10 @@ static const NWidgetPart _nested_town_view_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, TVW_INFOPANEL), SetMinimalSize(260, 32), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_CENTERVIEW), SetMinimalSize(86, 12), SetDataTip(STR_00E4_LOCATION, STR_200B_CENTER_THE_MAIN_VIEW_ON),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_SHOWAUTHORITY), SetMinimalSize(42, 12), SetDataTip(STR_2020_LOCAL_AUTHORITY, STR_2021_SHOW_INFORMATION_ON_LOCAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_EXPAND), SetMinimalSize(44, 12), SetDataTip(STR_023C_EXPAND, STR_023B_INCREASE_SIZE_OF_TOWN),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_DELETE), SetMinimalSize(88, 12), SetDataTip(STR_0290_DELETE, STR_0291_DELETE_THIS_TOWN_COMPLETELY),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_CENTERVIEW), SetMinimalSize(86, 12), SetDataTip(STR_BUTTON_LOCATION, STR_TOWN_VIEW_CENTER_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_SHOWAUTHORITY), SetMinimalSize(42, 12), SetDataTip(STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON, STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_EXPAND), SetMinimalSize(44, 12), SetDataTip(STR_TOWN_VIEW_EXPAND_BUTTON, STR_TOWN_VIEW_EXPAND_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_DELETE), SetMinimalSize(88, 12), SetDataTip(STR_TOWN_VIEW_DELETE_BUTTON, STR_TOWN_VIEW_DELETE_TOOLTIP),
 	EndContainer(),
 };
 
@@ -502,22 +502,22 @@ enum TownDirectoryWidgets {
 };
 
 static const Widget _town_directory_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},             // TDW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_BROWN,    11,   195,     0,    13, STR_2000_TOWNS,         STR_018C_WINDOW_TITLE_DRAG_THIS},   // TDW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_BROWN,   196,   207,     0,    13, 0x0,                    STR_STICKY_BUTTON},                 // TDW_STICKYBOX
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,     0,    98,    14,    25, STR_SORT_BY_NAME,       STR_SORT_ORDER_TIP},                // TDW_SORTNAME
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,    99,   195,    14,    25, STR_SORT_BY_POPULATION, STR_SORT_ORDER_TIP},                // TDW_SORTPOPULATION
-{      WWT_PANEL, RESIZE_BOTTOM,  COLOUR_BROWN,     0,   195,    26,   189, 0x0,                    STR_200A_TOWN_NAMES_CLICK_ON_NAME}, // TDW_CENTERTOWN
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_BROWN,   196,   207,    14,   189, 0x0,                    STR_0190_SCROLL_BAR_SCROLLS_LIST},  // TDW_SCROLLBAR
-{      WWT_PANEL,     RESIZE_TB,  COLOUR_BROWN,     0,   195,   190,   201, 0x0,                    STR_NULL},                          // TDW_EMPTYBOTTOM
-{  WWT_RESIZEBOX,     RESIZE_TB,  COLOUR_BROWN,   196,   207,   190,   201, 0x0,                    STR_RESIZE_BUTTON},                 // TDW_RESIZEBOX
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_BLACK_CROSS,            STR_TOOLTIP_CLOSE_WINDOW},             // TDW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_BROWN,    11,   195,     0,    13, STR_TOWN_DIRECTORY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // TDW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_BROWN,   196,   207,     0,    13, 0x0,                        STR_STICKY_BUTTON},                    // TDW_STICKYBOX
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,     0,    98,    14,    25, STR_SORT_BY_NAME,           STR_SORT_ORDER_TIP},                   // TDW_SORTNAME
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,    99,   195,    14,    25, STR_SORT_BY_POPULATION,     STR_SORT_ORDER_TIP},                   // TDW_SORTPOPULATION
+{      WWT_PANEL, RESIZE_BOTTOM,  COLOUR_BROWN,     0,   195,    26,   189, 0x0,                        STR_TOWN_DIRECTORY_LIST_TOOLTIP},      // TDW_CENTERTOWN
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_BROWN,   196,   207,    14,   189, 0x0,                        STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // TDW_SCROLLBAR
+{      WWT_PANEL,     RESIZE_TB,  COLOUR_BROWN,     0,   195,   190,   201, 0x0,                        STR_NULL},                             // TDW_EMPTYBOTTOM
+{  WWT_RESIZEBOX,     RESIZE_TB,  COLOUR_BROWN,   196,   207,   190,   201, 0x0,                        STR_RESIZE_BUTTON},                    // TDW_RESIZEBOX
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_town_directory_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, TDW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, TDW_CAPTION), SetDataTip(STR_2000_TOWNS, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, TDW_CAPTION), SetDataTip(STR_TOWN_DIRECTORY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN, TDW_STICKYBOX),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -526,7 +526,7 @@ static const NWidgetPart _nested_town_directory_widgets[] = {
 				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TDW_SORTNAME), SetMinimalSize(99, 12), SetDataTip(STR_SORT_BY_NAME, STR_SORT_ORDER_TIP),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TDW_SORTPOPULATION), SetMinimalSize(97, 12), SetDataTip(STR_SORT_BY_POPULATION, STR_SORT_ORDER_TIP),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_BROWN, TDW_CENTERTOWN), SetMinimalSize(196, 164), SetDataTip(0x0, STR_200A_TOWN_NAMES_CLICK_ON_NAME),
+			NWidget(WWT_PANEL, COLOUR_BROWN, TDW_CENTERTOWN), SetMinimalSize(196, 164), SetDataTip(0x0, STR_TOWN_DIRECTORY_LIST_TOOLTIP),
 							SetResize(0, 10), EndContainer(),
 		EndContainer(),
 		NWidget(WWT_SCROLLBAR, COLOUR_BROWN, TDW_SCROLLBAR),
@@ -639,7 +639,7 @@ public:
 
 				SetDParam(0, t->index);
 				SetDParam(1, t->population);
-				DrawString(2, this->width - 2, y, STR_2057, TC_FROMSTRING);
+				DrawString(2, this->width - 2, y, STR_TOWN_DIRECTORY_TOWN, TC_FROMSTRING);
 
 				y += 10;
 				i++;
@@ -767,28 +767,28 @@ enum TownScenarioEditorWidgets {
 };
 
 static const Widget _found_town_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},                  // TSEW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,   11,   147,     0,    13, STR_0233_TOWN_GENERATION, STR_018C_WINDOW_TITLE_DRAG_THIS},        // TSEW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,  148,   159,     0,    13, 0x0,                      STR_STICKY_BUTTON},                      // TSEW_STICKYBOX
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   159,    14,   161, 0x0,                      STR_NULL},                               // TSEW_BACKGROUND
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,    10,     0,    13, STR_BLACK_CROSS,                           STR_TOOLTIP_CLOSE_WINDOW},            // TSEW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,   11,   147,     0,    13, STR_FOUND_TOWN_CAPTION,                    STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},  // TSEW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,  148,   159,     0,    13, 0x0,                                       STR_STICKY_BUTTON},                   // TSEW_STICKYBOX
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   159,    14,   161, 0x0,                                       STR_NULL},                            // TSEW_BACKGROUND
 
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    16,    27, STR_0234_NEW_TOWN,        STR_0235_CONSTRUCT_NEW_TOWN},            // TSEW_NEWTOWN
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    29,    40, STR_023D_RANDOM_TOWN,     STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION}, // TSEW_RANDOMTOWN
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    42,    53, STR_MANY_RANDOM_TOWNS,    STR_RANDOM_TOWNS_TIP},                   // TSEW_MANYRANDOMTOWNS
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    16,    27, STR_FOUND_TOWN_NEW_TOWN_BUTTON,            STR_FOUND_TOWN_NEW_TOWN_TOOLTIP},     // TSEW_NEWTOWN
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    29,    40, STR_FOUND_TOWN_RANDOM_TOWN_BUTTON,         STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP},  // TSEW_RANDOMTOWN
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    42,    53, STR_MANY_RANDOM_TOWNS,                     STR_RANDOM_TOWNS_TIP},                // TSEW_MANYRANDOMTOWNS
 
-{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   147,    54,    67, STR_02A5_TOWN_SIZE,          STR_NULL},                            // TSEW_TOWNSIZE
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,    68,    79, STR_02A1_SMALL,              STR_02A4_SELECT_TOWN_SIZE},           // TSEW_SIZE_SMALL
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,    68,    79, STR_02A2_MEDIUM,             STR_02A4_SELECT_TOWN_SIZE},           // TSEW_SIZE_MEDIUM
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,    81,    92, STR_02A3_LARGE,              STR_02A4_SELECT_TOWN_SIZE},           // TSEW_SIZE_LARGE
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,    81,    92, STR_SELECT_TOWN_SIZE_RANDOM, STR_02A4_SELECT_TOWN_SIZE},           // TSEW_SIZE_RANDOM
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    96,   107, STR_FOUND_TOWN_CITY,         STR_FOUND_TOWN_CITY_TOOLTIP},         // TSEW_CITY
+{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   147,    54,    67, STR_FOUND_TOWN_INITIAL_SIZE_TITLE,         STR_NULL},                            // TSEW_TOWNSIZE
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,    68,    79, STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON,  STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP}, // TSEW_SIZE_SMALL
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,    68,    79, STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON, STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP}, // TSEW_SIZE_MEDIUM
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,    81,    92, STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON,  STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP}, // TSEW_SIZE_LARGE
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,    81,    92, STR_SELECT_TOWN_SIZE_RANDOM,               STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP}, // TSEW_SIZE_RANDOM
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    96,   107, STR_FOUND_TOWN_CITY,                       STR_FOUND_TOWN_CITY_TOOLTIP},         // TSEW_CITY
 
-{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   147,   108,   121, STR_TOWN_ROAD_LAYOUT,           STR_NULL},                         // TSEW_TOWNLAYOUT
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,   122,   133, STR_SELECT_LAYOUT_ORIGINAL,     STR_SELECT_TOWN_ROAD_LAYOUT},      // TSEW_LAYOUT_ORIGINAL
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,   122,   133, STR_SELECT_LAYOUT_BETTER_ROADS, STR_SELECT_TOWN_ROAD_LAYOUT},      // TSEW_LAYOUT_BETTER
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,   135,   146, STR_SELECT_LAYOUT_2X2_GRID,     STR_SELECT_TOWN_ROAD_LAYOUT},      // TSEW_LAYOUT_GRID2
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,   135,   146, STR_SELECT_LAYOUT_3X3_GRID,     STR_SELECT_TOWN_ROAD_LAYOUT},      // TSEW_LAYOUT_GRID3
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,   148,   159, STR_SELECT_LAYOUT_RANDOM,       STR_SELECT_TOWN_ROAD_LAYOUT},      // TSEW_LAYOUT_RANDOM
+{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   147,   108,   121, STR_TOWN_ROAD_LAYOUT,                      STR_NULL},                            // TSEW_TOWNLAYOUT
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,   122,   133, STR_SELECT_LAYOUT_ORIGINAL,                STR_SELECT_TOWN_ROAD_LAYOUT},         // TSEW_LAYOUT_ORIGINAL
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,   122,   133, STR_SELECT_LAYOUT_BETTER_ROADS,            STR_SELECT_TOWN_ROAD_LAYOUT},         // TSEW_LAYOUT_BETTER
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,   135,   146, STR_SELECT_LAYOUT_2X2_GRID,                STR_SELECT_TOWN_ROAD_LAYOUT},         // TSEW_LAYOUT_GRID2
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,   135,   146, STR_SELECT_LAYOUT_3X3_GRID,                STR_SELECT_TOWN_ROAD_LAYOUT},         // TSEW_LAYOUT_GRID3
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,   148,   159, STR_SELECT_LAYOUT_RANDOM,                  STR_SELECT_TOWN_ROAD_LAYOUT},         // TSEW_LAYOUT_RANDOM
 
 {   WIDGETS_END},
 };
@@ -796,29 +796,29 @@ static const Widget _found_town_widgets[] = {
 static const NWidgetPart _nested_found_town_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, TSEW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, TSEW_CAPTION), SetDataTip(STR_0233_TOWN_GENERATION, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, TSEW_CAPTION), SetDataTip(STR_FOUND_TOWN_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, TSEW_STICKYBOX),
 	EndContainer(),
 	/* Construct new town(s) buttons. */
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, TSEW_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_NEWTOWN), SetMinimalSize(156, 12), SetDataTip(STR_0234_NEW_TOWN, STR_0235_CONSTRUCT_NEW_TOWN), SetPadding(0, 2, 1, 2),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_NEWTOWN), SetMinimalSize(156, 12), SetDataTip(STR_FOUND_TOWN_NEW_TOWN_BUTTON, STR_FOUND_TOWN_NEW_TOWN_TOOLTIP), SetPadding(0, 2, 1, 2),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_RANDOMTOWN), SetMinimalSize(156, 12),
-										SetDataTip(STR_023D_RANDOM_TOWN, STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION), SetPadding(0, 2, 1, 2),
+										SetDataTip(STR_FOUND_TOWN_RANDOM_TOWN_BUTTON, STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP), SetPadding(0, 2, 1, 2),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_MANYRANDOMTOWNS), SetMinimalSize(156, 12), SetDataTip(STR_MANY_RANDOM_TOWNS, STR_RANDOM_TOWNS_TIP), SetPadding(0, 2, 0, 2),
 		/* Town size selection. */
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_LABEL, COLOUR_DARK_GREEN, TSEW_TOWNSIZE), SetMinimalSize(148, 14), SetDataTip(STR_02A5_TOWN_SIZE, STR_NULL),
+			NWidget(WWT_LABEL, COLOUR_DARK_GREEN, TSEW_TOWNSIZE), SetMinimalSize(148, 14), SetDataTip(STR_FOUND_TOWN_INITIAL_SIZE_TITLE, STR_NULL),
 			NWidget(NWID_SPACER), SetFill(1, 0),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL), SetPIP(2, 0, 2),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_SIZE_SMALL), SetMinimalSize(78, 12), SetDataTip(STR_02A1_SMALL, STR_02A4_SELECT_TOWN_SIZE),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_SIZE_MEDIUM), SetMinimalSize(78, 12), SetDataTip(STR_02A2_MEDIUM, STR_02A4_SELECT_TOWN_SIZE),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_SIZE_SMALL), SetMinimalSize(78, 12), SetDataTip(STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON, STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_SIZE_MEDIUM), SetMinimalSize(78, 12), SetDataTip(STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON, STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 		NWidget(NWID_HORIZONTAL), SetPIP(2, 0, 2),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_SIZE_LARGE), SetMinimalSize(78, 12), SetDataTip(STR_02A3_LARGE, STR_02A4_SELECT_TOWN_SIZE),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_SIZE_RANDOM), SetMinimalSize(78, 12), SetDataTip(STR_SELECT_TOWN_SIZE_RANDOM, STR_02A4_SELECT_TOWN_SIZE),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_SIZE_LARGE), SetMinimalSize(78, 12), SetDataTip(STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON, STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_SIZE_RANDOM), SetMinimalSize(78, 12), SetDataTip(STR_SELECT_TOWN_SIZE_RANDOM, STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_CITY), SetPadding(0, 2, 0, 2), SetMinimalSize(156, 12),
@@ -955,11 +955,11 @@ public:
 	{
 		uint32 townnameparts;
 		if (!GenerateTownName(&townnameparts)) {
-			ShowErrorMessage(STR_023A_TOO_MANY_TOWNS, STR_0236_CAN_T_BUILD_TOWN_HERE, 0, 0);
+			ShowErrorMessage(STR_ERROR_TOO_MANY_TOWNS, STR_ERROR_CAN_T_BUILD_TOWN_HERE, 0, 0);
 			return;
 		}
 
-		DoCommandP(tile, town_size | city << 2 | town_layout << 3, townnameparts, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE), CcBuildTown);
+		DoCommandP(tile, town_size | city << 2 | town_layout << 3, townnameparts, CMD_BUILD_TOWN | CMD_MSG(STR_ERROR_CAN_T_BUILD_TOWN_HERE), CcBuildTown);
 	}
 };
 

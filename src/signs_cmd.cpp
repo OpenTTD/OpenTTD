@@ -29,7 +29,7 @@ SignID _new_sign_id;
 CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Try to locate a new sign */
-	if (!Sign::CanAllocateItem()) return_cmd_error(STR_2808_TOO_MANY_SIGNS);
+	if (!Sign::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_SIGNS);
 
 	/* Check sign text length if any */
 	if (!StrEmpty(text) && strlen(text) >= MAX_LENGTH_SIGN_NAME_BYTES) return CMD_ERROR;
@@ -124,5 +124,5 @@ void CcPlaceSign(bool success, TileIndex tile, uint32 p1, uint32 p2)
  */
 void PlaceProc_Sign(TileIndex tile)
 {
-	DoCommandP(tile, 0, 0, CMD_PLACE_SIGN | CMD_MSG(STR_2809_CAN_T_PLACE_SIGN_HERE), CcPlaceSign);
+	DoCommandP(tile, 0, 0, CMD_PLACE_SIGN | CMD_MSG(STR_ERROR_CAN_T_PLACE_SIGN_HERE), CcPlaceSign);
 }

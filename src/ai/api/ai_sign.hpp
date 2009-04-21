@@ -25,7 +25,7 @@ public:
 		ERR_SIGN_BASE = AIError::ERR_CAT_SIGN << AIError::ERR_CAT_BIT_SIZE,
 
 		/** Too many signs have been placed */
-		ERR_SIGN_TOO_MANY_SIGNS,             // [STR_2808_TOO_MANY_SIGNS]
+		ERR_SIGN_TOO_MANY_SIGNS,             // [STR_ERROR_TOO_MANY_SIGNS]
 	};
 
 	/**

@@ -298,7 +298,7 @@ static char *FormatYmdString(char *buff, Date date, const char *last)
 	YearMonthDay ymd;
 	ConvertDateToYMD(date, &ymd);
 
-	int64 args[3] = { ymd.day + STR_01AC_1ST - 1, STR_0162_JAN + ymd.month, ymd.year };
+	int64 args[3] = { ymd.day + STR_ORDINAL_NUMBER_1ST - 1, STR_MONTH_ABBREV_JAN + ymd.month, ymd.year };
 	return FormatString(buff, GetStringPtr(STR_DATE_LONG), args, 0, last);
 }
 
@@ -760,7 +760,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 				 *   8bit   - cargo type
 				 *   16-bit - cargo count */
 				CargoID cargo = GetInt32(&argv);
-				StringID cargo_str = (cargo == CT_INVALID) ? STR_8838_N_A : GetCargo(cargo)->quantifier;
+				StringID cargo_str = (cargo == CT_INVALID) ? STR_CARGO_N_A : GetCargo(cargo)->quantifier;
 				buff = GetStringWithArgs(buff, cargo_str, argv++, last);
 				break;
 			}
@@ -1000,7 +1000,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 				if (si->name != NULL) {
 					buff = strecpy(buff, si->name, last);
 				} else {
-					buff = GetStringWithArgs(buff, STR_280A_SIGN, NULL, last);
+					buff = GetStringWithArgs(buff, STR_SIGN_DEFAULT, NULL, last);
 				}
 				break;
 			}
@@ -1025,7 +1025,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 				if (IsValidCompanyID(company) && IsHumanCompany(company)) {
 					int64 args[1];
 					args[0] = company + 1;
-					buff = GetStringWithArgs(buff, STR_7002_COMPANY, args, last);
+					buff = GetStringWithArgs(buff, STR_COMPANY_NUM, args, last);
 				}
 				break;
 			}

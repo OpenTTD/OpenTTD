@@ -207,7 +207,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 				v->age = 0;
 
 				SetDParam(0, GetStationIndex(v->tile));
-				AddNewsItem(STR_B000_ZEPPELIN_DISASTER_AT,
+				AddNewsItem(STR_NEWS_DISASTER_ZEPPELIN,
 					NS_ACCIDENT_VEHICLE,
 					v->index,
 					0);
@@ -332,7 +332,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 			if (u->u.road.crashed_ctr == 0) {
 				u->u.road.crashed_ctr++;
 
-				AddNewsItem(STR_B001_ROAD_VEHICLE_DESTROYED,
+				AddNewsItem(STR_NEWS_DISASTER_SMALL_UFO,
 					NS_ACCIDENT_VEHICLE,
 					u->index,
 					0);
@@ -440,13 +440,13 @@ static void DisasterTick_Aircraft(Vehicle *v, uint16 image_override, bool leave_
 /** Airplane handling. */
 static void DisasterTick_Airplane(Vehicle *v)
 {
-	DisasterTick_Aircraft(v, SPR_F_15_FIRING, true, STR_B002_OIL_REFINERY_EXPLOSION, INDUSTRYBEH_AIRPLANE_ATTACKS);
+	DisasterTick_Aircraft(v, SPR_F_15_FIRING, true, STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY, INDUSTRYBEH_AIRPLANE_ATTACKS);
 }
 
 /** Helicopter handling. */
 static void DisasterTick_Helicopter(Vehicle *v)
 {
-	DisasterTick_Aircraft(v, SPR_AH_64A_FIRING, false, STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS, INDUSTRYBEH_CHOPPER_ATTACKS);
+	DisasterTick_Aircraft(v, SPR_AH_64A_FIRING, false, STR_NEWS_DISASTER_HELICOPTER_FACTORY, INDUSTRYBEH_CHOPPER_ATTACKS);
 }
 
 /** Helicopter rotor blades; keep these spinning */
@@ -507,7 +507,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 
 		Town *t = ClosestTownFromTile(v->dest_tile, UINT_MAX);
 		SetDParam(0, t->index);
-		AddNewsItem(STR_B004_UFO_LANDS_NEAR,
+		AddNewsItem(STR_NEWS_DISASTER_BIG_UFO,
 			NS_ACCIDENT_TILE,
 			v->tile,
 			0);
@@ -840,7 +840,7 @@ static void Disaster_CoalMine_Init()
 		FOR_ALL_INDUSTRIES(i) {
 			if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_CAN_SUBSIDENCE) && --index < 0) {
 				SetDParam(0, i->town->index);
-				AddNewsItem(STR_B005_COAL_MINE_SUBSIDENCE_LEAVES,
+				AddNewsItem(STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE,
 					NS_ACCIDENT_TILE, i->xy + TileDiffXY(1, 1), 0);
 
 				{

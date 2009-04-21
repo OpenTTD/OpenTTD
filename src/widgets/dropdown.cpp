@@ -65,7 +65,7 @@ static void DeleteDropDownList(DropDownList *list)
 
 static const Widget _dropdown_menu_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_END,     0, 0,     0, 0, 0x0, STR_NULL},
-{  WWT_SCROLLBAR,   RESIZE_NONE,  COLOUR_END,     0, 0,     0, 0, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_SCROLLBAR,   RESIZE_NONE,  COLOUR_END,     0, 0,     0, 0, 0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},
 {   WIDGETS_END},
 };
 

@@ -121,14 +121,14 @@ void DrawTrainImage(const Vehicle *v, int x, int y, VehicleID selection, int cou
 static void TrainDetailsCargoTab(const Vehicle *v, int left, int right, int y)
 {
 	if (v->cargo_cap != 0) {
-		StringID str = STR_8812_EMPTY;
+		StringID str = STR_VEHICLE_DETAILS_CARGO_EMPTY;
 
 		if (!v->cargo.Empty()) {
 			SetDParam(0, v->cargo_type);
 			SetDParam(1, v->cargo.Count());
 			SetDParam(2, v->cargo.Source());
 			SetDParam(3, _settings_game.vehicle.freight_trains);
-			str = FreightWagonMult(v->cargo_type) > 1 ? STR_FROM_MULT : STR_8813_FROM;
+			str = FreightWagonMult(v->cargo_type) > 1 ? STR_VEHICLE_DETAILS_CARGO_FROM_MULT : STR_VEHICLE_DETAILS_CARGO_FROM;
 		}
 		DrawString(left, right, y, str, TC_FROMSTRING);
 	}
@@ -147,12 +147,12 @@ static void TrainDetailsInfoTab(const Vehicle *v, int left, int right, int y)
 	if (RailVehInfo(v->engine_type)->railveh_type == RAILVEH_WAGON) {
 		SetDParam(0, v->engine_type);
 		SetDParam(1, v->value);
-		DrawString(left, right, y, STR_882D_VALUE, TC_BLACK);
+		DrawString(left, right, y, STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE, TC_BLACK);
 	} else {
 		SetDParam(0, v->engine_type);
 		SetDParam(1, v->build_year);
 		SetDParam(2, v->value);
-		DrawString(left, right, y, STR_882C_BUILT_VALUE, TC_BLACK);
+		DrawString(left, right, y, STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE, TC_BLACK);
 	}
 }
 

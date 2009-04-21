@@ -84,7 +84,7 @@ Engine::Engine(VehicleType type, EngineID base)
 		case VEH_TRAIN:
 			this->u.rail = _orig_rail_vehicle_info[base];
 			this->image_index = this->u.rail.image_index;
-			this->info.string_id = STR_8000_KIRBY_PAUL_TANK_STEAM + base;
+			this->info.string_id = STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM + base;
 
 			/* Set the default model life of original wagons to "infinite" */
 			if (this->u.rail.railveh_type == RAILVEH_WAGON) this->info.base_life = 0xFF;
@@ -94,19 +94,19 @@ Engine::Engine(VehicleType type, EngineID base)
 		case VEH_ROAD:
 			this->u.road = _orig_road_vehicle_info[base];
 			this->image_index = this->u.road.image_index;
-			this->info.string_id = STR_8074_MPS_REGAL_BUS + base;
+			this->info.string_id = STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS + base;
 			break;
 
 		case VEH_SHIP:
 			this->u.ship = _orig_ship_vehicle_info[base];
 			this->image_index = this->u.ship.image_index;
-			this->info.string_id = STR_80CC_MPS_OIL_TANKER + base;
+			this->info.string_id = STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER + base;
 			break;
 
 		case VEH_AIRCRAFT:
 			this->u.air = _orig_aircraft_vehicle_info[base];
 			this->image_index = this->u.air.image_index;
-			this->info.string_id = STR_80D7_SAMPSON_U52 + base;
+			this->info.string_id = STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52 + base;
 			break;
 	}
 }

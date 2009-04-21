@@ -1416,7 +1416,7 @@ DEF_CONSOLE_CMD(ConCompanies)
 		char buffer[512];
 		const NetworkCompanyStats *stats = &company_stats[c->index];
 
-		GetString(buffer, STR_00D1_DARK_BLUE + _company_colours[c->index], lastof(buffer));
+		GetString(buffer, STR_COLOUR_DARK_BLUE + _company_colours[c->index], lastof(buffer));
 		IConsolePrintF(CC_INFO, "#:%d(%s) Company Name: '%s'  Year Founded: %d  Money: %" OTTD_PRINTF64 "d  Loan: %" OTTD_PRINTF64 "d  Value: %" OTTD_PRINTF64 "d  (T:%d, R:%d, P:%d, S:%d) %sprotected",
 			c->index + 1, buffer, company_name, c->inaugurated_year, (int64)c->money, (int64)c->current_loan, (int64)CalculateCompanyValue(c),
 			/* trains      */ stats->num_vehicle[0],

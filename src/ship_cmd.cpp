@@ -338,7 +338,7 @@ static void ShipArrivesAt(const Vehicle *v, Station *st)
 
 		SetDParam(0, st->index);
 		AddNewsItem(
-			STR_9833_CITIZENS_CELEBRATE_FIRST,
+			STR_NEWS_FIRST_SHIP_ARRIVAL,
 			(v->owner == _local_company) ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
 			v->index,
 			st->index
@@ -746,7 +746,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_SHIP);
 
 	if (!Vehicle::CanAllocateItem() || unit_num > _settings_game.vehicle.max_ships)
-		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 
 	if (flags & DC_EXEC) {
 		int x;
@@ -832,7 +832,7 @@ CommandCost CmdSellShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p
 	if (HASBITS(v->vehstatus, VS_CRASHED)) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
 
 	if (!v->IsStoppedInDepot()) {
-		return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
+		return_cmd_error(STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT);
 	}
 
 	CommandCost ret(EXPENSES_NEW_VEHICLES, -v->value);
@@ -905,7 +905,7 @@ CommandCost CmdRefitShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_SHIP || !CheckOwnership(v->owner)) return CMD_ERROR;
-	if (!v->IsStoppedInDepot()) return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
+	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT);
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_REFIT_DESTROYED_VEHICLE);
 
 	/* Check cargo */

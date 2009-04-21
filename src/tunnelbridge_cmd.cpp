@@ -234,27 +234,27 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 	/* check if valid, and make sure that (x,y) are smaller than (sx,sy) */
 	if (x == sx) {
-		if (y == sy) return_cmd_error(STR_5008_CANNOT_START_AND_END_ON);
+		if (y == sy) return_cmd_error(STR_ERROR_CANNOT_START_AND_END_ON);
 		direction = AXIS_Y;
 		if (y > sy) Swap(y, sy);
 	} else if (y == sy) {
 		direction = AXIS_X;
 		if (x > sx) Swap(x, sx);
 	} else {
-		return_cmd_error(STR_500A_START_AND_END_MUST_BE_IN);
+		return_cmd_error(STR_ERROR_START_AND_END_MUST_BE_IN);
 	}
 
 	bridge_len = sx + sy - x - y - 1;
 	if (transport_type != TRANSPORT_WATER) {
 		/* set and test bridge length, availability */
-		if (!CheckBridge_Stuff(bridge_type, bridge_len, flags)) return_cmd_error(STR_5015_CAN_T_BUILD_BRIDGE_HERE);
+		if (!CheckBridge_Stuff(bridge_type, bridge_len, flags)) return_cmd_error(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE);
 	}
 
 	/* retrieve landscape height and ensure it's on land */
 	tile_start = TileXY(x, y);
 	tile_end = TileXY(sx, sy);
 	if (IsWaterTile(tile_start) || IsWaterTile(tile_end)) {
-		return_cmd_error(STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH);
+		return_cmd_error(STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH);
 	}
 
 	tileh_start = GetTileSlope(tile_start, &z_start);
@@ -272,7 +272,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 		/* If this is a railway bridge, make sure the railtypes match. */
 		if (transport_type == TRANSPORT_RAIL && GetRailType(tile_start) != railtype) {
-			return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+			return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 		}
 
 		/* Do not replace town bridges with lower speed bridges. */
@@ -284,18 +284,18 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 				return CMD_ERROR;
 			} else {
 				SetDParam(0, t->index);
-				return_cmd_error(STR_2009_LOCAL_AUTHORITY_REFUSES);
+				return_cmd_error(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS);
 			}
 		}
 
 		/* Do not replace the bridge with the same bridge type. */
 		if (!(flags & DC_QUERY_COST) && bridge_type == GetBridgeType(tile_start)) {
-			return_cmd_error(STR_1007_ALREADY_BUILT);
+			return_cmd_error(STR_ERROR_ALREADY_BUILT);
 		}
 
 		/* Do not allow replacing another company's bridges. */
 		if (!IsTileOwner(tile_start, _current_company) && !IsTileOwner(tile_start, OWNER_TOWN)) {
-			return_cmd_error(STR_1024_AREA_IS_OWNED_BY_ANOTHER);
+			return_cmd_error(STR_ERROR_AREA_IS_OWNED_BY_ANOTHER);
 		}
 
 		cost.AddCost((bridge_len + 1) * _price.clear_bridge); // The cost of clearing the current bridge.
@@ -315,7 +315,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		cost = ret;
 
 		if (CmdFailed(terraform_cost_north) || (terraform_cost_north.GetCost() != 0 && !allow_on_slopes))
-			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+			return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 		cost.AddCost(terraform_cost_north);
 
 		/* Try and clear the end landscape */
@@ -325,10 +325,10 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 		/* false - end tile slope check */
 		if (CmdFailed(terraform_cost_south) || (terraform_cost_south.GetCost() != 0 && !allow_on_slopes))
-			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+			return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 		cost.AddCost(terraform_cost_south);
 
-		if (transport_type == TRANSPORT_WATER && (tileh_start == SLOPE_FLAT || tileh_end == SLOPE_FLAT)) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+		if (transport_type == TRANSPORT_WATER && (tileh_start == SLOPE_FLAT || tileh_end == SLOPE_FLAT)) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 
 	if (!replace_bridge) {
@@ -340,10 +340,10 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 				if (IsBridgeAbove(Heads[i])) {
 					TileIndex north_head = GetNorthernBridgeEnd(Heads[i]);
 
-					if (direction == GetBridgeAxis(Heads[i])) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+					if (direction == GetBridgeAxis(Heads[i])) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
 					if (z_start + TILE_HEIGHT == GetBridgeHeight(north_head)) {
-						return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+						return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 					}
 				}
 			}
@@ -385,7 +385,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 		if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile) && !replace_bridge) {
 			/* Disallow crossing bridges for the time being */
-			return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+			return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 		}
 
 		switch (GetTileType(tile)) {
@@ -485,9 +485,9 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 
 	start_tileh = GetTileSlope(start_tile, &start_z);
 	direction = GetInclinedSlopeDirection(start_tileh);
-	if (direction == INVALID_DIAGDIR) return_cmd_error(STR_500B_SITE_UNSUITABLE_FOR_TUNNEL);
+	if (direction == INVALID_DIAGDIR) return_cmd_error(STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL);
 
-	if (IsWaterTile(start_tile)) return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
+	if (IsWaterTile(start_tile)) return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
 
 	ret = DoCommand(start_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return ret;
@@ -522,7 +522,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 		if (start_z == end_z) break;
 
 		if (!_cheats.crossing_tunnels.value && IsTunnelInWayDir(end_tile, start_z, tunnel_in_way_dir)) {
-			return_cmd_error(STR_5003_ANOTHER_TUNNEL_IN_THE_WAY);
+			return_cmd_error(STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY);
 		}
 
 		tiles++;
@@ -542,7 +542,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 	/* if the command fails from here on we want the end tile to be highlighted */
 	_build_tunnel_endtile = end_tile;
 
-	if (IsWaterTile(end_tile)) return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
+	if (IsWaterTile(end_tile)) return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
 
 	/* slope of end tile must be complementary to the slope of the start tile */
 	if (end_tileh != ComplementSlope(start_tileh)) {
@@ -551,10 +551,10 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 		 *       the tree on end_tile.
 		 */
 		ret = DoCommand(end_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR);
-		if (CmdFailed(ret)) return_cmd_error(STR_5005_UNABLE_TO_EXCAVATE_LAND);
+		if (CmdFailed(ret)) return_cmd_error(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
 
 		ret = DoCommand(end_tile, end_tileh & start_tileh, 0, flags, CMD_TERRAFORM_LAND);
-		if (CmdFailed(ret)) return_cmd_error(STR_5005_UNABLE_TO_EXCAVATE_LAND);
+		if (CmdFailed(ret)) return_cmd_error(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
 	} else {
 		ret = DoCommand(end_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (CmdFailed(ret)) return ret;
@@ -628,7 +628,7 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 		 * Removal depends on difficulty settings */
 		if (!CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE)) {
 			SetDParam(0, t->index);
-			return_cmd_error(STR_2009_LOCAL_AUTHORITY_REFUSES);
+			return_cmd_error(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS);
 		}
 	}
 
@@ -694,7 +694,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 		 * Removal depends on difficulty settings */
 		if (!CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE)) {
 			SetDParam(0, t->index);
-			return_cmd_error(STR_2009_LOCAL_AUTHORITY_REFUSES);
+			return_cmd_error(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS);
 		}
 	}
 
@@ -747,10 +747,10 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 static CommandCost ClearTile_TunnelBridge(TileIndex tile, DoCommandFlag flags)
 {
 	if (IsTunnel(tile)) {
-		if (flags & DC_AUTO) return_cmd_error(STR_5006_MUST_DEMOLISH_TUNNEL_FIRST);
+		if (flags & DC_AUTO) return_cmd_error(STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST);
 		return DoClearTunnel(tile, flags);
 	} else { // IsBridge(tile)
-		if (flags & DC_AUTO) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+		if (flags & DC_AUTO) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 		return DoClearBridge(tile, flags);
 	}
 
@@ -1255,9 +1255,9 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 	TransportType tt = GetTunnelBridgeTransportType(tile);
 
 	if (IsTunnel(tile)) {
-		td->str = (tt == TRANSPORT_RAIL) ? STR_5017_RAILROAD_TUNNEL : STR_5018_ROAD_TUNNEL;
+		td->str = (tt == TRANSPORT_RAIL) ? STR_TUNNEL_DESCRIPTION_RAILROAD : STR_TUNNEL_DESCRIPTION_ROAD;
 	} else { // IsBridge(tile)
-		td->str = (tt == TRANSPORT_WATER) ? STR_AQUEDUCT : GetBridgeSpec(GetBridgeType(tile))->transport_name[tt];
+		td->str = (tt == TRANSPORT_WATER) ? STR_BRIDGE_DESCRIPTION_AQUEDUCT : GetBridgeSpec(GetBridgeType(tile))->transport_name[tt];
 	}
 	td->owner[0] = GetTileOwner(tile);
 
@@ -1272,12 +1272,12 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 			(road_owner != INVALID_OWNER && road_owner != td->owner[0])) {
 		uint i = 1;
 		if (road_owner != INVALID_OWNER) {
-			td->owner_type[i] = STR_ROAD_OWNER;
+			td->owner_type[i] = STR_LAND_AREA_INFORMATION_ROAD_OWNER;
 			td->owner[i] = road_owner;
 			i++;
 		}
 		if (tram_owner != INVALID_OWNER) {
-			td->owner_type[i] = STR_TRAM_OWNER;
+			td->owner_type[i] = STR_LAND_AREA_INFORMATION_TRAM_OWNER;
 			td->owner[i] = tram_owner;
 		}
 	}

@@ -263,7 +263,7 @@ public:
 										!EngineHasReplacementForCompany(c, selected_id[0], selected_group));
 
 		/* now the actual drawing of the window itself takes place */
-		SetDParam(0, STR_019F_TRAIN + this->window_number);
+		SetDParam(0, STR_VEHICLE_TRAIN + this->window_number);
 
 		if (this->window_number == VEH_TRAIN) {
 			/* set on/off for renew_keep_length */
@@ -297,7 +297,7 @@ public:
 			SetDParam(0, STR_NOT_REPLACING_VEHICLE_SELECTED);
 		}
 
-		DrawString(this->widget[RVW_WIDGET_INFO_TAB].left + 6, this->widget[RVW_WIDGET_INFO_TAB].right - 6, this->widget[RVW_WIDGET_INFO_TAB].top + 1, STR_02BD, TC_BLACK);
+		DrawString(this->widget[RVW_WIDGET_INFO_TAB].left + 6, this->widget[RVW_WIDGET_INFO_TAB].right - 6, this->widget[RVW_WIDGET_INFO_TAB].top + 1, STR_BLACK_STRING, TC_BLACK);
 
 		/* Draw the lists */
 		for (byte i = 0; i < 2; i++) {
@@ -437,14 +437,14 @@ public:
 };
 
 static const Widget _replace_vehicle_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},                // RVW_WIDGET_CLOSEBOX
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   443,     0,    13, STR_REPLACE_VEHICLES_WHITE,      STR_018C_WINDOW_TITLE_DRAG_THIS},      // RVW_WIDGET_CAPTION
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,                 STR_TOOLTIP_CLOSE_WINDOW},             // RVW_WIDGET_CLOSEBOX
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   443,     0,    13, STR_REPLACE_VEHICLES_WHITE,      STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // RVW_WIDGET_CAPTION
 {  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   444,   455,     0,    13, STR_NULL,                        STR_STICKY_BUTTON},                    // RVW_WIDGET_STICKY
 
 {     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   215,    14,    13, 0x1,                             STR_REPLACE_HELP_LEFT_ARRAY},          // RVW_WIDGET_LEFT_MATRIX
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_GREY,   216,   227,    14,    13, STR_NULL,                        STR_0190_SCROLL_BAR_SCROLLS_LIST},     // RVW_WIDGET_LEFT_SCROLLBAR
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_GREY,   216,   227,    14,    13, STR_NULL,                        STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // RVW_WIDGET_LEFT_SCROLLBAR
 {     WWT_MATRIX,    RESIZE_LRB,  COLOUR_GREY,   228,   443,    14,    13, 0x1,                             STR_REPLACE_HELP_RIGHT_ARRAY},         // RVW_WIDGET_RIGHT_MATRIX
-{ WWT_SCROLL2BAR,    RESIZE_LRB,  COLOUR_GREY,   444,   455,    14,    13, STR_NULL,                        STR_0190_SCROLL_BAR_SCROLLS_LIST},     // RVW_WIDGET_RIGHT_SCROLLBAR
+{ WWT_SCROLL2BAR,    RESIZE_LRB,  COLOUR_GREY,   444,   455,    14,    13, STR_NULL,                        STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // RVW_WIDGET_RIGHT_SCROLLBAR
 {      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,     0,   227,    14,   105, 0x0,                             STR_NULL},                             // RVW_WIDGET_LEFT_DETAILS
 {      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,   228,   455,    14,   105, 0x0,                             STR_NULL},                             // RVW_WIDGET_RIGHT_DETAILS
 
@@ -464,7 +464,7 @@ static const Widget _replace_vehicle_widgets[] = {
 static const NWidgetPart _nested_replace_rail_vehicle_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, RVW_WIDGET_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, RVW_WIDGET_CAPTION), SetMinimalSize(433, 14), SetDataTip(STR_REPLACE_VEHICLES_WHITE, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, RVW_WIDGET_CAPTION), SetMinimalSize(433, 14), SetDataTip(STR_REPLACE_VEHICLES_WHITE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY, RVW_WIDGET_STICKY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -507,7 +507,7 @@ static const WindowDesc _replace_rail_vehicle_desc(
 static const NWidgetPart _nested_replace_vehicle_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, RVW_WIDGET_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, RVW_WIDGET_CAPTION), SetMinimalSize(433, 14), SetDataTip(STR_REPLACE_VEHICLES_WHITE, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, RVW_WIDGET_CAPTION), SetMinimalSize(433, 14), SetDataTip(STR_REPLACE_VEHICLES_WHITE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY, RVW_WIDGET_STICKY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),

@@ -315,7 +315,7 @@ bool StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
 		int h = new_rect.bottom - new_rect.top + 1;
 		if (mode != ADD_FORCE && (w > _settings_game.station.station_spread || h > _settings_game.station.station_spread)) {
 			assert(mode != ADD_TRY);
-			_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
+			_error_message = STR_ERROR_STATION_TOO_SPREAD_OUT;
 			return false;
 		}
 

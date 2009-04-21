@@ -122,7 +122,7 @@ struct SubsidyListWindow : Window {
 		int x = this->widget[SLW_PANEL].left + 1;
 
 		/* Section for drawing the offered subisidies */
-		DrawString(x, right, y, STR_2026_SUBSIDIES_ON_OFFER_FOR, TC_FROMSTRING);
+		DrawString(x, right, y, STR_SUBSIDIES_OFFERED_TITLE, TC_FROMSTRING);
 		y += FONT_HEIGHT_NORMAL;
 		uint num = 0;
 
@@ -131,7 +131,7 @@ struct SubsidyListWindow : Window {
 				/* Displays the two offered towns */
 				SetupSubsidyDecodeParam(s, 1);
 				SetDParam(7, _date - ymd.day + 384 - s->age * 32);
-				DrawString(x + 2, right - 2, y, STR_2027_FROM_TO, TC_FROMSTRING);
+				DrawString(x + 2, right - 2, y, STR_SUBSIDIES_OFFERED_FROM_TO, TC_FROMSTRING);
 
 				y += FONT_HEIGHT_NORMAL;
 				num++;
@@ -139,12 +139,12 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (num == 0) {
-			DrawString(x + 2, right - 2, y, STR_202A_NONE, TC_FROMSTRING);
+			DrawString(x + 2, right - 2, y, STR_SUBSIDIES_NONE, TC_FROMSTRING);
 			y += FONT_HEIGHT_NORMAL;
 		}
 
 		/* Section for drawing the already granted subisidies */
-		DrawString(x, right, y + 1, STR_202B_SERVICES_ALREADY_SUBSIDISED, TC_FROMSTRING);
+		DrawString(x, right, y + 1, STR_SUBSIDIES_SUBSIDISED_TITLE, TC_FROMSTRING);
 		y += FONT_HEIGHT_NORMAL;
 		num = 0;
 
@@ -155,24 +155,24 @@ struct SubsidyListWindow : Window {
 				SetDParam(4, _date - ymd.day + 768 - s->age * 32);
 
 				/* Displays the two connected stations */
-				DrawString(x + 2, right - 2, y, STR_202C_FROM_TO, TC_FROMSTRING);
+				DrawString(x + 2, right - 2, y, STR_SUBSIDIES_SUBSIDISED_FROM_TO, TC_FROMSTRING);
 
 				y += FONT_HEIGHT_NORMAL;
 				num++;
 			}
 		}
 
-		if (num == 0) DrawString(x + 2, right - 2, y, STR_202A_NONE, TC_FROMSTRING);
+		if (num == 0) DrawString(x + 2, right - 2, y, STR_SUBSIDIES_NONE, TC_FROMSTRING);
 	}
 };
 
 static const Widget _subsidies_list_widgets[] = {
-{   WWT_CLOSEBOX, RESIZE_NONE,   COLOUR_BROWN,   0,  10,   0,  13, STR_00C5,           STR_018B_CLOSE_WINDOW},               // SLW_CLOSEBOX
-{    WWT_CAPTION, RESIZE_RIGHT,  COLOUR_BROWN,  11, 307,   0,  13, STR_2025_SUBSIDIES, STR_018C_WINDOW_TITLE_DRAG_THIS},     // SLW_CAPTION
-{  WWT_STICKYBOX, RESIZE_LR,     COLOUR_BROWN, 308, 319,   0,  13, STR_NULL,           STR_STICKY_BUTTON},                   // SLW_STICKYBOX
-{      WWT_PANEL, RESIZE_RB,     COLOUR_BROWN,   0, 307,  14, 126, 0x0,                STR_01FD_CLICK_ON_SERVICE_TO_CENTER}, // SLW_PANEL
-{  WWT_SCROLLBAR, RESIZE_LRB,    COLOUR_BROWN, 308, 319,  14, 114, 0x0,                STR_0190_SCROLL_BAR_SCROLLS_LIST},    // SLW_SCROLLBAR
-{  WWT_RESIZEBOX, RESIZE_LRTB,   COLOUR_BROWN, 308, 319, 115, 126, 0x0,                STR_RESIZE_BUTTON},                   // SLW_RESIZEBOX
+{   WWT_CLOSEBOX, RESIZE_NONE,   COLOUR_BROWN,   0,  10,   0,  13, STR_BLACK_CROSS,       STR_TOOLTIP_CLOSE_WINDOW},                       // SLW_CLOSEBOX
+{    WWT_CAPTION, RESIZE_RIGHT,  COLOUR_BROWN,  11, 307,   0,  13, STR_SUBSIDIES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},             // SLW_CAPTION
+{  WWT_STICKYBOX, RESIZE_LR,     COLOUR_BROWN, 308, 319,   0,  13, STR_NULL,              STR_STICKY_BUTTON},                              // SLW_STICKYBOX
+{      WWT_PANEL, RESIZE_RB,     COLOUR_BROWN,   0, 307,  14, 126, 0x0,                   STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER}, // SLW_PANEL
+{  WWT_SCROLLBAR, RESIZE_LRB,    COLOUR_BROWN, 308, 319,  14, 114, 0x0,                   STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},           // SLW_SCROLLBAR
+{  WWT_RESIZEBOX, RESIZE_LRTB,   COLOUR_BROWN, 308, 319, 115, 126, 0x0,                   STR_RESIZE_BUTTON},                              // SLW_RESIZEBOX
 
 {   WIDGETS_END},
 };
@@ -180,11 +180,11 @@ static const Widget _subsidies_list_widgets[] = {
 static const NWidgetPart _nested_subsidies_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, SLW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, SLW_CAPTION), SetDataTip(STR_2025_SUBSIDIES, STR_018C_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, SLW_CAPTION), SetDataTip(STR_SUBSIDIES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN, SLW_STICKYBOX),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, SLW_PANEL), SetMinimalSize(308, 113), SetDataTip(0x0, STR_01FD_CLICK_ON_SERVICE_TO_CENTER), SetResize(1, 1), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_BROWN, SLW_PANEL), SetMinimalSize(308, 113), SetDataTip(0x0, STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetResize(1, 1), EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_BROWN, SLW_SCROLLBAR),
 			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, SLW_RESIZEBOX),

@@ -646,7 +646,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 	memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
 
 	if (!Vehicle::AllocateList(vl, num_vehicles)) {
-		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 	}
 
 	if (flags & DC_EXEC) {
@@ -811,14 +811,14 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
 
 	if (!Vehicle::AllocateList(vl, num_vehicles)) {
-		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 	}
 
 	Vehicle *v = vl[0];
 
 	UnitID unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_TRAIN);
 	if (unit_num > _settings_game.vehicle.max_trains) {
-		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 	}
 
 	if (flags & DC_EXEC) {
@@ -1093,14 +1093,14 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		dst_head = NULL;
 	}
 
-	if (IsRearDualheaded(src)) return_cmd_error(STR_REAR_ENGINE_FOLLOW_FRONT_ERROR);
+	if (IsRearDualheaded(src)) return_cmd_error(STR_ERROR_REAR_ENGINE_FOLLOW_FRONT);
 
 	/* when moving all wagons, we can't have the same src_head and dst_head */
 	if (HasBit(p2, 0) && src_head == dst_head) return CommandCost();
 
 	/* check if all vehicles in the source train are stopped inside a depot. */
 	int src_len = CheckTrainStoppedInDepot(src_head);
-	if (src_len < 0) return_cmd_error(STR_881A_TRAINS_CAN_ONLY_BE_ALTERED);
+	if (src_len < 0) return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
 
 	if ((flags & DC_AUTOREPLACE) == 0) {
 		/* Check whether there are more than 'max_len' train units (articulated parts and rear heads do not count) in the new chain */
@@ -1113,7 +1113,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			if (dst_head != NULL) {
 				/* check if all vehicles in the dest train are stopped. */
 				dst_len = CheckTrainStoppedInDepot(dst_head);
-				if (dst_len < 0) return_cmd_error(STR_881A_TRAINS_CAN_ONLY_BE_ALTERED);
+				if (dst_len < 0) return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
 			}
 
 			/* We are moving between rows, so only count the wagons from the source
@@ -1129,14 +1129,14 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 			if (src_len + dst_len > max_len) {
 				/* Abort if we're adding too many wagons to a train. */
-				if (dst_head != NULL && IsFrontEngine(dst_head)) return_cmd_error(STR_8819_TRAIN_TOO_LONG);
+				if (dst_head != NULL && IsFrontEngine(dst_head)) return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
 				/* Abort if we're making a train on a new row. */
-				if (dst_head == NULL && IsTrainEngine(src)) return_cmd_error(STR_8819_TRAIN_TOO_LONG);
+				if (dst_head == NULL && IsTrainEngine(src)) return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
 			}
 		} else {
 			/* Abort if we're creating a new train on an existing row. */
 			if (src_len > max_len && src == src_head && IsTrainEngine(GetNextVehicle(src_head)))
-				return_cmd_error(STR_8819_TRAIN_TOO_LONG);
+				return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
 		}
 	}
 
@@ -1144,7 +1144,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (dst == NULL && !IsFrontEngine(src) && IsTrainEngine(src)) {
 		UnitID unit_num = ((flags & DC_AUTOREPLACE) != 0 ? 0 : GetFreeUnitNumber(VEH_TRAIN));
 		if (unit_num > _settings_game.vehicle.max_trains)
-			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+			return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 
 		if (flags & DC_EXEC) src->unitnumber = unit_num;
 	}
@@ -1153,7 +1153,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (!HasBit(p2, 0) && (IsFreeWagon(src) || (IsFrontEngine(src) && dst == NULL)) && (flags & DC_AUTOREPLACE) == 0) {
 		Vehicle *second = GetNextUnit(src);
 		if (second != NULL && IsTrainEngine(second) && GetFreeUnitNumber(VEH_TRAIN) > _settings_game.vehicle.max_trains) {
-			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+			return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 		}
 	}
 
@@ -1418,10 +1418,10 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	/* make sure the vehicle is stopped in the depot */
 	if (CheckTrainStoppedInDepot(first) < 0) {
-		return_cmd_error(STR_881A_TRAINS_CAN_ONLY_BE_ALTERED);
+		return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
 	}
 
-	if (IsRearDualheaded(v)) return_cmd_error(STR_REAR_ENGINE_FOLLOW_FRONT_ERROR);
+	if (IsRearDualheaded(v)) return_cmd_error(STR_ERROR_REAR_ENGINE_FOLLOW_FRONT);
 
 	if (flags & DC_EXEC) {
 		if (v == first && IsFrontEngine(first)) {
@@ -1978,7 +1978,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 		Vehicle *front = v->First();
 		/* make sure the vehicle is stopped in the depot */
 		if (CheckTrainStoppedInDepot(front) < 0) {
-			return_cmd_error(STR_881A_TRAINS_CAN_ONLY_BE_ALTERED);
+			return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
 		}
 
 		if (flags & DC_EXEC) {
@@ -3369,7 +3369,7 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 		st->had_vehicle_of_type |= HVOT_TRAIN;
 		SetDParam(0, st->index);
 		AddNewsItem(
-			STR_8801_CITIZENS_CELEBRATE_FIRST,
+			STR_NEWS_FIRST_TRAIN_ARRIVAL,
 			v->owner == _local_company ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
 			v->index,
 			st->index
@@ -3626,7 +3626,7 @@ static bool CheckTrainCollision(Vehicle *v)
 	if (tcc.num == 0) return false;
 
 	SetDParam(0, tcc.num);
-	AddNewsItem(STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL,
+	AddNewsItem(STR_NEWS_TRAIN_CRASH,
 		NS_ACCIDENT_VEHICLE,
 		v->index,
 		0
