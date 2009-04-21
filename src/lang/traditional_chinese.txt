@@ -3253,7 +3253,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}最大�
 STR_PURCHASE_INFO_COST                                          :{BLACK}價格：{GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}重量：{GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}價格：{GOLD}{CURRENCY}{BLACK} 速度：{GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}容量：{GOLD}乘客 {COMMA} 人，郵件 {COMMA} 袋
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}動力車廂：{GOLD}+{POWER}{BLACK} 重量：{GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}可改裝成：{GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :所有貨物類型

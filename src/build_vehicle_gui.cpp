@@ -567,8 +567,10 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
 
 	/* Cargo capacity */
 	if (cargo == CT_INVALID || cargo == CT_PASSENGERS) {
-		SetDParam(0, e->GetDisplayDefaultCapacity());
-		SetDParam(1, avi->mail_capacity);
+		SetDParam(0, CT_PASSENGERS);
+		SetDParam(1, e->GetDisplayDefaultCapacity());
+		SetDParam(2, CT_MAIL);
+		SetDParam(3, avi->mail_capacity);
 		DrawString(left, right, y, STR_PURCHASE_INFO_AIRCRAFT_CAPACITY, TC_FROMSTRING);
 	} else {
 		/* Note, if the default capacity is selected by the refit capacity

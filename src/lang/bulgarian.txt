@@ -3236,7 +3236,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Макс
 STR_PURCHASE_INFO_COST                                          :{BLACK}Цена: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Тегло: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Цема {GOLD}{CURRENCY}{BLACK} Скорост: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Капацитет: {GOLD}{COMMA} пасажера, {COMMA} пощенски чувала
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Вагони с мощност: {GOLD}+{POWER}{BLACK} Тегло: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Преобразуваем до: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всички видове товар

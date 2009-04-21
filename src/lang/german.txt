@@ -3271,7 +3271,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Zuv
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kosten: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Geschw.: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapazität: {GOLD}{COMMA} Passagiere, {COMMA} Postsäcke
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Angetriebene Waggons: {GOLD}+{POWER}{BLACK} Gewicht: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Umrüstbar auf: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle Frachtarten

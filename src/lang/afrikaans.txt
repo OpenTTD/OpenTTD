@@ -3193,7 +3193,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. Be
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kos: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewig: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kos: {GOLD}{CURRENCY}{BLACK} Spoed: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasiteit: {GOLD}{COMMA} passasiers, {COMMA} sakke van pos
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Self Krag Waens: {GOLD}+{POWER}{BLACK} Gewig: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Herpasbaar na: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle vrag tipes

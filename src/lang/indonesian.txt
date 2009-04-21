@@ -3258,7 +3258,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Kehandal
 STR_PURCHASE_INFO_COST                                          :{BLACK}Biaya: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Berat: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Biaya: {GOLD}{CURRENCY}{BLACK} Kecepatan: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasitas: {GOLD}{COMMA} penumpang, {COMMA} kantong dokumen
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Daya Gerbong: {GOLD}+{POWER}{BLACK} Berat: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Kargo dapat di ganti untuk: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Semua jenis kargo

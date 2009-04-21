@@ -3222,7 +3222,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}最高�
 STR_PURCHASE_INFO_COST                                          :{BLACK}価格：{GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}重量：{GOLD}{WEIGHT_S}（{WEIGHT_S}）
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}価格：{GOLD}{CURRENCY}{BLACK}　最大速度：{GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}容量：{GOLD}{COMMA}人の乗客、{COMMA}袋の郵便袋
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}動力貨車：{GOLD}+{POWER}{BLACK}　重量：{GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}再装備の貨物種類：{GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :すべて

@@ -3249,7 +3249,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. Pa
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kaina: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Svoris: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kaina: {GOLD}{CURRENCY}{BLACK} Greitis: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Talpa: {GOLD}{COMMA} keleivių, {COMMA} pašto maišų
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pajungta vagonų: {GOLD}+{POWER}{BLACK} Svoris: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Pakeičiami į: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Visus krovinių tipus

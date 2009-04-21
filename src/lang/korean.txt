@@ -3266,7 +3266,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}최고 �
 STR_PURCHASE_INFO_COST                                          :{BLACK}가격: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}중량: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}가격: {GOLD}{CURRENCY}{BLACK} 속력: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}수송량: {GOLD}승객 {COMMA}명, 우편 {COMMA}가방
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}전원 화물차: {GOLD}+{POWER}{BLACK} 중량: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}개조가능 화물: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :모든 종류의 화물

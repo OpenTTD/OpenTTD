@@ -3342,7 +3342,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maksymal
 STR_PURCHASE_INFO_COST                                          :{BLACK}Koszt: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Waga: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Koszt: {GOLD}{CURRENCY}{BLACK} Prędkość: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Pojemność: {GOLD}{COMMA} pasażerów, {COMMA} paczek poczty
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GOLD}+{POWER}{BLACK} Waga: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Można przebudować na: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Wszystkie typy ładunków

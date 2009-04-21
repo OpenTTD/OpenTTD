@@ -3165,7 +3165,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilid
 STR_PURCHASE_INFO_COST                                          :{BLACK}Coste: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{COMMA} pasaxeiros, {COMMA} sacos de correo
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagóns tractores: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Actualizable a: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tódolos tipos de carga

@@ -3260,7 +3260,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}الاع
 STR_PURCHASE_INFO_COST                                          :{BLACK}التكلفة: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK} الوزن: {GOLD}{WEIGHT_S}   ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}التكلفة: {GOLD}{CURRENCY}{BLACK} السرعة : {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}السعة: {GOLD}{COMMA}راكب , {COMMA}طرد بريدي
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK} العربات ذات الطاقة: {GOLD}+{POWER}{BLACK}    الوزن: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}يمكن تعديلها الى: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :كل انواع الحمولة

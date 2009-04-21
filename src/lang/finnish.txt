@@ -3270,7 +3270,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Enimmäi
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kulu: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Paino: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kulu: {GOLD}{CURRENCY}{BLACK} Nopeus: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasiteetti: {GOLD}{COMMA} matkustajaa, {COMMA} säkkiä postia
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moottoroidut vaunut: {GOLD}+{POWER}{BLACK} Paino: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Sovitettavissa: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Kaikki rahtityypit

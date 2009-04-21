@@ -3259,7 +3259,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks på
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kostnad: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vekt: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Fart: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasitet: {GOLD}{COMMA} passasjerar, {COMMA} sekker post
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Lokomotivvogner: {GOLD}+{POWER}{BLACK} Vekt: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Ombyggbart til: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle varetypar

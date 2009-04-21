@@ -3341,7 +3341,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. üz
 STR_PURCHASE_INFO_COST                                          :{BLACK}Ár: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Súly: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Sebesség: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitás: {GOLD}{COMMA} utas, {COMMA} csomag levél
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Meghajtott vagonok: {GOLD}+{POWER}{BLACK} Súly: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Átalakítható:  {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Minden szállítmány típusra

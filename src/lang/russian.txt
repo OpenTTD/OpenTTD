@@ -3271,7 +3271,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Макс
 STR_PURCHASE_INFO_COST                                          :{BLACK}Цена: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вес: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Цена: {GOLD}{CURRENCY}{BLACK} Скорость: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Емкость: {GOLD}{COMMA} пассажиров, {COMMA} мешков почты
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ведущие вагоны: {GOLD}+{POWER}{BLACK} Вес: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Переоборуд. для: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всех типов грузов

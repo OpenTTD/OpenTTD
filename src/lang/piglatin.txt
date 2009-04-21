@@ -3270,7 +3270,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Axmay. E
 STR_PURCHASE_INFO_COST                                          :{BLACK}Ostcay: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Eightway: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ostcay: {GOLD}{CURRENCY}{BLACK} Eedspay: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Apacitycay: {GOLD}{COMMA} assengerspay, {COMMA} agsbay ofway ailmay
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Oweredpay Agonsway: {GOLD}+{POWER}{BLACK} Eightway: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Efittableray otay: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Allway argocay ypestay

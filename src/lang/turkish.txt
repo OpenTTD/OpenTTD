@@ -3270,7 +3270,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Mak. Gü
 STR_PURCHASE_INFO_COST                                          :{BLACK}Fiyat: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Ağırlık: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Fiyat: {GOLD}{CURRENCY}{BLACK} Hız: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasite: {GOLD}{COMMA} yolcu, {COMMA} çanta posta
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Güç Veren Vagonlar: {GOLD}+{POWER}{BLACK} Ağırlık: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Modifiye edilebilir: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tüm kargo türleri

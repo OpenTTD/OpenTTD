@@ -3258,7 +3258,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Dibynadw
 STR_PURCHASE_INFO_COST                                          :{BLACK}Côst: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pwysau: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Côst: {GOLD}{CURRENCY}{BLACK} Cyflymder: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Gallu cludo: {GOLD}{COMMA} teithwyr, {COMMA} bagiau o bost
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pwered Wagons: {GOLD}+{POWER}{BLACK} Pwysau: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Modd ei ailffitio i: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Pob math o lwyth

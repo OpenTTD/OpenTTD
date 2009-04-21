@@ -3324,7 +3324,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. po
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cijena: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Težina: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Trošak: {GOLD}{CURRENCY}{BLACK} Brzina: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Nosivost: {GOLD}{COMMA} putnika, {COMMA} vreća s poštom
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK} Pokretni vagoni:.{GOLD}+{POWER}{BLACK} Težina: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Prenamjenjivo u: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Sve vrste tereta

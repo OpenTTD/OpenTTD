@@ -3267,7 +3267,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. p�
 STR_PURCHASE_INFO_COST                                          :{BLACK}Pris: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vægt: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Hastighed: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Lasteevne: {GOLD}{COMMA} passagerer, {COMMA} sække post
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motoriserede Vogne: {GOLD}+{POWER}{BLACK} Vægt: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Kan ombygges til: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle lasttyper

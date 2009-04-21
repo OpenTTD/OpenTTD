@@ -3236,7 +3236,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{GOLD}{COMMA}%{
 STR_PURCHASE_INFO_COST                                          :{GOLD}{CURRENCY}{BLACK} :מחיר
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{GOLD}({1:WEIGHT_S})  {0:WEIGHT_S} {BLACK} : משקל
 STR_PURCHASE_INFO_COST_SPEED                                    :{GOLD}{1:VELOCITY}{BLACK} : מהירות {GOLD}{0:CURRENCY} {BLACK} :מחיר
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{GOLD}שקי דואר  {NBSP}{1:COMMA},נוסעים  {NBSP}{0:COMMA}{BLACK} :קיבולת
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{GOLD}+{1:WEIGHT_S}{BLACK}  :משקל {GOLD}+{0:POWER} : {BLACK} :קרונות
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK} :ניתן להתאים ל{GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :כל סוגי המטען

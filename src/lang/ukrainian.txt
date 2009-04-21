@@ -3420,7 +3420,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Наді
 STR_PURCHASE_INFO_COST                                          :{BLACK}Ціна: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вага: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ціна: {GOLD}{CURRENCY}{BLACK}  Швидкість: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Місткість: {GOLD}{COMMA} пасажир{P "" и ів}, {COMMA} міш{P ок ки ків} пошти
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Потужність: {GOLD}+{POWER}{BLACK} Вага: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Переобладнати на: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всі типи вантажів

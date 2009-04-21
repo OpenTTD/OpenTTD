@@ -3267,7 +3267,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}最大�
 STR_PURCHASE_INFO_COST                                          :{BLACK}售价：{GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}重量：{GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}售价：{GOLD}{CURRENCY}{BLACK}   速度：{GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}运载能力：{GOLD}{COMMA} 位旅客及 {COMMA} 包邮件
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}功率：{GOLD}+{POWER}{BLACK}     重量：{GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}可改装为：{GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :所有类型

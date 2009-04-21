@@ -3272,7 +3272,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Affidabi
 STR_PURCHASE_INFO_COST                                          :{BLACK}Costo: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Costo: {GOLD}{CURRENCY}{BLACK} Velocità: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacità: {GOLD}{COMMA} passeggeri, {COMMA} sacchi postali
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoni alimentati: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Riadattabile per: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tutti i tipi di carico

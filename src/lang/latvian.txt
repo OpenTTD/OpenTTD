@@ -3257,7 +3257,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. uz
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Svars: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Ātrums: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ietilpība: {GOLD}{COMMA} pasažieru, {COMMA} pasta maisi
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motor-vagoni: {GOLD}+{POWER}zs{BLACK} Svars: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Pārveidojams uz: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Visi kravu tipi

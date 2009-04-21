@@ -3324,7 +3324,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Parim te
 STR_PURCHASE_INFO_COST                                          :{BLACK}Hind: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Mass: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Hind: {GOLD}{CURRENCY}{BLACK} Tippkiirus: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kandevõime: {GOLD}{COMMA} reisijat, {COMMA} kotti kirju
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Kiirendavad vagunid: {GOLD}+{POWER}{BLACK} Mass: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Ümberseadistatav: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Kõik kaubatüübid

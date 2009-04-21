@@ -3350,7 +3350,6 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. zan
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Teža: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hitrost: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Zmogljivost: {GOLD}{COMMA} potnikov, {COMMA} vreč pošte
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pogonski vagoni: {GOLD}+{POWER}{BLACK} Teža: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Nadgradljivo za: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Vse vrste tovora
