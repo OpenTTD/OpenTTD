@@ -1782,7 +1782,6 @@ STR_2800_PLANT_TREES                                            :Plant trees
 STR_2801_PLACE_SIGN                                             :Place sign
 STR_2802_TREES                                                  :{WHITE}Trees
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...tree already here
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...site unsuitable
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Can't plant tree here...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...too many signs
@@ -1804,7 +1803,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Number o
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Platform length
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Too close to another railway station
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Adjoins more than one existing station/loading area
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Too many stations/loading areas in this town
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Too many stations/loading areas
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Too many railway station parts
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Too many bus stops
@@ -1848,7 +1846,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Must dem
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Station{P "" s}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- None -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...site unsuitable
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Too close to another dock
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Must demolish dock first
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Select railway station orientation
@@ -2933,7 +2930,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Can't bu
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Ship in the way
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Can't stop/start ship...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Can't send ship to depot...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Unable to find local depot
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Heading for {TOWN} Ship Depot
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Heading for {TOWN} Ship Depot, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Service at {TOWN} Ship Depot

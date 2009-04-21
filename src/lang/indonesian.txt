@@ -1775,7 +1775,6 @@ STR_2800_PLANT_TREES                                            :Menanam pohon
 STR_2801_PLACE_SIGN                                             :Memasang pengenal
 STR_2802_TREES                                                  :{WHITE}Pepohonan
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...pohon sudah ada disini
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...lokasi tidak memungkinkan/mencukupi
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Tidak dapat menanam pohon disini...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...terlalu banyak tanda
@@ -1797,7 +1796,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Jumlah j
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Panjang peron
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Terlalu dekat dengan stasion kereta lainnya
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}bergandengan dengan lebih dari satu stasiun yang telah ada
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Terlalu banyak stasiun di kota ini
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Terlalu banyak stasiun/area bongkar muat
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Terlalu banyak bag. stasiun
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Terlalu banyak pemberhentian Bus
@@ -1841,7 +1839,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Harus me
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stasiun
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Tidak ada -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...lokasi tidak memungkinkan/mencukupi
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Terlalu dekat dengan dok/galangan kapal lainnya
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Harus menghancurkan pelabuhan terlebih dahulu
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Pilih arah stasiun kereta api
@@ -2909,7 +2906,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Tidak da
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Kapal sedang berjalan
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Tidak dapat menghentikan / menjalankan kapal...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Tidak dapat mengirim kapal ke galangan...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Tidak dapat menemukan galangan terdekat
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Menuju ke Galangan Kapal {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Menuju ke Galangan Kapal {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servis di Galangan Kapal {TOWN}

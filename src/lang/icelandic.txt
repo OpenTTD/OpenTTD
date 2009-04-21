@@ -1776,7 +1776,6 @@ STR_2800_PLANT_TREES                                            :Gróðursetja t
 STR_2801_PLACE_SIGN                                             :Setja skilti
 STR_2802_TREES                                                  :{WHITE}Tré
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...hér er nú þegar tré
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...óhentugur staður
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Ekki hægt að gróðursetja tré hér...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...of mörg skilti
@@ -1798,7 +1797,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Fjöldi 
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Lengd lestarstöðvar
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Of nálægt annarri lestarstöð
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Tengist fleiri en einni annarri stöð
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Of margar stöðvar/lestunarsvæði í þessum bæ
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Of margar stöðvar/lestunarsvæði
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Of margir hlutar af lestarstöðvum
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Of margar strætisvagnastöðvar
@@ -1842,7 +1840,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Verður 
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stöðvar
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Ekkert -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...óhentug staðsetning
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Of nálægt annarri höfn
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Verður að eyða höfn fyrst
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Veldu stöðu lestarstöðvar
@@ -2910,7 +2907,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Get ekki
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Skip er fyrir
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Get ekki stöðvað/ræst skip...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Get ekki sent skip í slipp...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Finnur ekkert nálægt skýli
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Stefnir að {TOWN} slippi
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Stefnir að {TOWN} slippi, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Viðhald í {TOWN} slippi

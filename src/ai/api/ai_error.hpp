@@ -108,7 +108,7 @@ public:
 		ERR_VEHICLE_IN_THE_WAY,                       // [STR_8803_TRAIN_IN_THE_WAY, STR_9000_ROAD_VEHICLE_IN_THE_WAY, STR_980E_SHIP_IN_THE_WAY, STR_A015_AIRCRAFT_IN_THE_WAY]
 
 		/** Site is unsuitable */
-		ERR_SITE_UNSUITABLE,                          // [STR_0239_SITE_UNSUITABLE, STR_304B_SITE_UNSUITABLE]
+		ERR_SITE_UNSUITABLE,                          // [STR_0239_SITE_UNSUITABLE]
 
 		/** Too close to the edge of the map */
 		ERR_TOO_CLOSE_TO_EDGE,                        // [STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP]

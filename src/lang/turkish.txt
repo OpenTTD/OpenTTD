@@ -1782,7 +1782,6 @@ STR_2800_PLANT_TREES                                            :Ağaç dik
 STR_2801_PLACE_SIGN                                             :Tabela dik
 STR_2802_TREES                                                  :{WHITE}Ağaçlar
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...burada zaten ağaç var
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...yer uygun değil
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Buraya ağaç dikilemez...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...çok fazla tabela
@@ -1804,7 +1803,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Ray say�
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Platform uzunluğu
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Başka tren istasyonuna çok yakın
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Birden fazla istasyona bitişik
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Bu şehirde çok fazla istasyon var
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Haritada çok fazla istasyon var
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Çok fazla demiryolu istasyon parçası var
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Çok fazla durak var
@@ -1848,7 +1846,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Önce y�
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} istasyonları
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Yok -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...yer uygun değil
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Başka bir limana çok yakın
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Önce liman yıkılmalı
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Tren istasyonu yönünü seç
@@ -2920,7 +2917,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Yemi yap
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Yolda gemi var
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Gemi durdurulamaz/başlatılamaz...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Gemi tersaneye gönderilemez...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Yerel tersane bulunamadı
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Gidiyor: {TOWN} Tersanesi
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Gidiyor: {TOWN} Tersanesi, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN} Tersanesinde Bakım

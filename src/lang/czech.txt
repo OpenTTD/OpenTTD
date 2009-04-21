@@ -1843,7 +1843,6 @@ STR_2800_PLANT_TREES                                            :Vysadit stromy
 STR_2801_PLACE_SIGN                                             :Umístit nápis
 STR_2802_TREES                                                  :{WHITE}Stromy
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}... strom už tu je
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}... nepoužitelné místo
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Zde nemůžeš vysadit strom...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}... příliš mnoho popisků
@@ -1865,7 +1864,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Počet n
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Délka nástupiště
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Příliš blízko jinému nádraží
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Spojuje více jak jedno existující nádraží nebo nákladovou rampu...
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Příliš mnoho nádraží nebo nákladových ramp v tomto městě
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Příliš mnoho nádraží nebo nákladových ramp
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Příliš mnoho staničních částí
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Příliš mnoho autobusových zastávek
@@ -1909,7 +1907,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Je nutn�
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} stanic{P e e ""}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nic -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}... nepoužitelné místo
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Příliš blízko k jinému doku
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Musíš nejprve zničit dok
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Zvolit orientaci nádraží
@@ -2984,7 +2981,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nelze ko
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Loď v cestě
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nelze rozjet/zastavit loď...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nelze poslat loď do depa...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemohu najít místní depo
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Jedu do depa {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Míří do depa {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Údržba v lodním depu {TOWN}

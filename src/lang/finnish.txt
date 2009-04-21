@@ -1782,7 +1782,6 @@ STR_2800_PLANT_TREES                                            :Istuta puita
 STR_2801_PLACE_SIGN                                             :Aseta kyltti
 STR_2802_TREES                                                  :{WHITE}Puita
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...tässä on jo puu.
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...huono paikka.
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Puuta ei voi istuttaa.
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...liian monta kylttiä.
@@ -1804,7 +1803,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Ratojen 
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Asemalaiturin pituus
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Liian lähellä toista rautatieasemaa.
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Liitä yhteen useampi asema/lastausalue.
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Liian monta asemaa ja lastausaluetta kaupungissa.
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Liian monta asemaa ja lastausaluetta.
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Rautatieasema on jakautunut liian moneen osaan
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Liian monta linja-autopysäkkiä.
@@ -1848,7 +1846,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Rahtiase
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} asema{P "" a}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Ei mitään -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...huono paikka
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Liian lähellä toista satamaa.
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Satama pitää tuhota ensin.
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Valitse rautatieaseman suunta.
@@ -2920,7 +2917,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Laivaa e
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Laiva on tiellä.
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Laivaa ei voi pysäyttää/laittaa liikkeelle...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Laivaa ei voi lähettää telakalle...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Paikallista telakkaa ei löydy
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Suuntana telakka, {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Suuntana telakka, {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Huolto{TOWN} Telakka

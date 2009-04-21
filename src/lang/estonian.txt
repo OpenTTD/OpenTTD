@@ -1836,7 +1836,6 @@ STR_2800_PLANT_TREES                                            :Puude istutamin
 STR_2801_PLACE_SIGN                                             :Sildi paigaldamine
 STR_2802_TREES                                                  :{WHITE}Puud
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...siin on juba puu olemas
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...ebasobiv koht
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Siia ei saa puud istutada...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...liiga palju silte
@@ -1858,7 +1857,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Radade a
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Perrooni pikkus
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Teisele raudteejaamale liiga lähedal
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Mitme olemasoleva jaama ühendamine
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Selles linnas on juba liiga palju jaamasid
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Liiga palju jaamu
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Liiga palju raudteejaama osasid
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Liiga palju bussipeatusi
@@ -1902,7 +1900,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Kaubatra
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} jaam{P "" a}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Puudub -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...ebasobiv koht
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Liiga lähedal teisele dokile
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Dokk tuleb enne lammutada
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Raudteejaamale suuna valimine
@@ -2987,7 +2984,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Ei saa l
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Laev on ees
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Ei saa peatada/käivitada laeva...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Ei saa laeva angaari saata...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ei leia kohalikku laevaangaari
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Suundub linna {TOWN} laevaremonditehasesse.
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Suundub linna {TOWN} laevaremonditehasesse, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Hooldus linna {TOWN} laevaremonditehases.

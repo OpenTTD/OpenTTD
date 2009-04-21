@@ -1816,7 +1816,6 @@ STR_2800_PLANT_TREES                                            :Faültetés
 STR_2801_PLACE_SIGN                                             :Felirat lerakása
 STR_2802_TREES                                                  :{WHITE}Fák
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...már van itt
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...nem alkalmas rá a hely
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Nem ültethetsz ide fát...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...túl sok a felirat
@@ -1838,7 +1837,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Vágány
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Vágányok hossza
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Túl közel van egy másik vasútállomáshoz
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Több állomással/rakodóhellyel érintkezik
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Túl sok állomás/rakodóhely van ebben a városban
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Túl sok az állomás/rakodóhely
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Túl sok vasútállomás-rész
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Túl sok buszmegálló
@@ -1882,7 +1880,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Előbb l
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} állomásai - {COMMA}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nincs -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...nem alkalmas rá a hely
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Túl közel van egy másik kikötőhöz
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Előbb le kell rombolnod a kikötőt
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Vasútállomás helyzetének kiválasztása
@@ -3004,7 +3001,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nem vehe
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Hajó van az útban
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nem indíthatod el/ állíthatod meg a hajót...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nem küldheted a hajót a dokkba...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nem találom a helyi dokkot
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Úton {TOWN} dokkjába
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Úton {TOWN} dokkjába, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Javítás {TOWN} dokkjában

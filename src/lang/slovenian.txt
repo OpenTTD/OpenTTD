@@ -1825,7 +1825,6 @@ STR_2800_PLANT_TREES                                            :Posadi drevesa
 STR_2801_PLACE_SIGN                                             :Postavi znak
 STR_2802_TREES                                                  :{WHITE}Drevesa
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE} ... drevo je že posajeno
-STR_2804_SITE_UNSUITABLE                                        :{WHITE} ... neprimerna lokacija
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Ne moreš posaditi drevesa tukaj ...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE} ... preveč znakov
@@ -1847,7 +1846,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Število
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Dolžina perona
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Preblizu druge železniške postaje
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Združi dve ali več postaj
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Preveč postaj v tem mestu
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Preveč postaj na zemljevidu
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Preveč delov železniške postaje
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Preveč avtobusnih postaj
@@ -1891,7 +1889,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Najprej 
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Postaj{P a i e ""}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Brez -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE} ... neprimerna lokacija
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Preblizu drugemu pristanišču
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Najprej moraš porušiti pristanišče
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Izberi orientacijo železniške postaje
@@ -3000,7 +2997,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Ni mogo�
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Ladja v napoto
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Ni mogoče ustaviti/zagnati ladje...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Ni mogoče poslati ladje v garažo...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ni moč najti lokalne garaže
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Pelje v {TOWN} ladijsko garažo
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Pelje v {TOWN} ladijsko garažo, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Gre na servis v {TOWN} ladijsko garažo

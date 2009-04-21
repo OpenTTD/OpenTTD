@@ -1782,7 +1782,6 @@ STR_2800_PLANT_TREES                                            :Plant bomen
 STR_2801_PLACE_SIGN                                             :Plaats bord
 STR_2802_TREES                                                  :{WHITE}Bomen
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}....er staat hier al een boom
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...plek niet geschikt
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Kan hier geen boom planten...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...teveel borden
@@ -1804,7 +1803,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Aantal s
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Platformlengte
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Te dicht bij een ander station
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Voegt meer dan één bestaand (laad)station samen
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Teveel (laad)stations in de buurt van deze plaats
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Teveel (laad)stations
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Te veel treinstationsonderdelen
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Te veel bushaltes
@@ -1848,7 +1846,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Verwijde
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stations
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Geen -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...plaats ongeschikt
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Te dicht bij een andere haven
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Verwijder eerst haven
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Selecteer treinstation richting
@@ -2920,7 +2917,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan schi
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Schip in de weg
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan schip niet starten of stoppen...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan schip niet naar depot sturen...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan lokaal depot niet vinden
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Op weg naar {TOWN} Scheepswerf
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Op weg naar {TOWN} Scheepswerf, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Onderhoud bij {TOWN} Scheepswerf

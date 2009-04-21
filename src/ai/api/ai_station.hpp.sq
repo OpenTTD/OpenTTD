@@ -47,7 +47,6 @@ void SQAIStation_Register(Squirrel *engine) {
 	AIError::RegisterErrorMap(STR_3008_TOO_MANY_STATIONS_LOADING,    AIStation::ERR_STATION_TOO_MANY_STATIONS);
 	AIError::RegisterErrorMap(STR_TOO_MANY_TRUCK_STOPS,              AIStation::ERR_STATION_TOO_MANY_STATIONS);
 	AIError::RegisterErrorMap(STR_TOO_MANY_BUS_STOPS,                AIStation::ERR_STATION_TOO_MANY_STATIONS);
-	AIError::RegisterErrorMap(STR_3007_TOO_MANY_STATIONS_LOADING,    AIStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN);
 
 	AIError::RegisterErrorMapString(AIStation::ERR_STATION_TOO_LARGE,                    "ERR_STATION_TOO_LARGE");
 	AIError::RegisterErrorMapString(AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION, "ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION");

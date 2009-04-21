@@ -1775,7 +1775,6 @@ STR_2800_PLANT_TREES                                            :Plantera träd
 STR_2801_PLACE_SIGN                                             :Placera skylt
 STR_2802_TREES                                                  :{WHITE}Träd
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...träd redan här
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...plats olämplig
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Kan inte plantera träd här...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...för många skyltar
@@ -1797,7 +1796,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Antal sp
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Längd på plattform
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}För nära en annan järnvägsstation
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Angränsar till mer än en station/hållplats
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}För många stationer/hållplatser i staden
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}För många stationer/hållplatser
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}För många delar på järnvägsstationen
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}För många busshållplatser
@@ -1841,7 +1839,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Måste t
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Station{P "" er}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Inga -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...plats olämplig
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}För nära en annan hamn
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Måste riva hamn först
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Välj riktning för järnvägsstation
@@ -2909,7 +2906,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan inte
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Skepp i vägen
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan inte stoppa/starta skepp...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan inte skicka skepp till depå...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan inte finna en lokal depå
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}På väg mot {TOWN}s Skeppsdepå
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}På väg mot {TOWN}s Skeppsdepå i {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Service vid {TOWN}s skeppsdepå

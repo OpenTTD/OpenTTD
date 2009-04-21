@@ -1757,7 +1757,6 @@ STR_2800_PLANT_TREES                                            :木を植林
 STR_2801_PLACE_SIGN                                             :標示を設置
 STR_2802_TREES                                                  :{WHITE}木
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...木は既にあります
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...不適当な位置です
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}ここに木を植林できません...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...標示が多すぎます
@@ -1779,7 +1778,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}線路�
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}ホームの長さ
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}他の駅に近すぎます
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}複数のすでに存在している駅／バス停／荷役所に接しています
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}町内の駅／バス停／荷役所が多すぎます
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}駅／バス停／荷役所が多すぎます
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}駅の部分が多すぎます。
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}バス停が多すぎます
@@ -1823,7 +1821,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}先に�
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA}軒の駅
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- なし -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...不適当な立地
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}他の埠頭に近すぎます
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}先に埠頭を破壊しなければなりません
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}駅の配置を選択
@@ -2877,7 +2874,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}船舶�
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}船舶があります
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}船舶を始動／停止できません...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}船舶を造船所へ回送できません...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}付近に造船所が見つかりません
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}{TOWN}造船所へ回送
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}{TOWN}造船所へ回送、{VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN}造船所で修理

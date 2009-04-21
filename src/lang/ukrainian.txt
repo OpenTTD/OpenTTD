@@ -1900,7 +1900,6 @@ STR_2800_PLANT_TREES                                            :Посадит�
 STR_2801_PLACE_SIGN                                             :Зробити позначення
 STR_2802_TREES                                                  :{WHITE}Дерева
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...Тут вже росте дерево
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...невідповідне місце
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Неможливо посадити тут дерево
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...дуже багато позначень
@@ -1922,7 +1921,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Кіль
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Довжина платформи
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Дуже близько до іншої залізничної станції
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Граничить з іншою станцією
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Дуже багато станцій в цьому місті
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Дуже багато станцій
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Забагато частин залізничної станції
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Дуже багато зупинок
@@ -1966,7 +1964,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Споч
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} станці{P я ї й}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- нема -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...ділянка не підходить для цього
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Дуже близько до іншого порту
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Спочатку зруйнуйте порт
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Виберіть орієнтацію залізничної станції
@@ -3071,7 +3068,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Немо
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Корабель на шляху
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Неможливо зупинити корабель...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Неможливо направити корабель в депо...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Неможливо знайти місцеве депо
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Прямує до {TOWN} корабельного депо
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Прямує до {TOWN} корабельного депо, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Техогляд в {TOWN} корабельному депо

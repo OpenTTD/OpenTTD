@@ -2024,10 +2024,10 @@ static CommandCost RemoveAirport(Station *st, DoCommandFlag flags)
  */
 CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsWaterTile(tile) || tile == 0) return_cmd_error(STR_304B_SITE_UNSUITABLE);
+	if (!IsWaterTile(tile) || tile == 0) return_cmd_error(STR_0239_SITE_UNSUITABLE);
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 
-	if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_304B_SITE_UNSUITABLE);
+	if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_0239_SITE_UNSUITABLE);
 
 	/* allocate and initialize new station */
 	if (!Station::CanAllocateItem()) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
@@ -2142,11 +2142,11 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (distant_join && (!_settings_game.station.distant_join_stations || !IsValidStationID(station_to_join))) return CMD_ERROR;
 
 	DiagDirection direction = GetInclinedSlopeDirection(GetTileSlope(tile, NULL));
-	if (direction == INVALID_DIAGDIR) return_cmd_error(STR_304B_SITE_UNSUITABLE);
+	if (direction == INVALID_DIAGDIR) return_cmd_error(STR_0239_SITE_UNSUITABLE);
 	direction = ReverseDiagDir(direction);
 
 	/* Docks cannot be placed on rapids */
-	if (IsWaterTile(tile)) return_cmd_error(STR_304B_SITE_UNSUITABLE);
+	if (IsWaterTile(tile)) return_cmd_error(STR_0239_SITE_UNSUITABLE);
 
 	if (!CheckIfAuthorityAllowsNewStation(tile, flags)) return CMD_ERROR;
 
@@ -2157,7 +2157,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	TileIndex tile_cur = tile + TileOffsByDiagDir(direction);
 
 	if (!IsTileType(tile_cur, MP_WATER) || GetTileSlope(tile_cur, NULL) != SLOPE_FLAT) {
-		return_cmd_error(STR_304B_SITE_UNSUITABLE);
+		return_cmd_error(STR_0239_SITE_UNSUITABLE);
 	}
 
 	if (MayHaveBridgeAbove(tile_cur) && IsBridgeAbove(tile_cur)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
@@ -2169,7 +2169,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	tile_cur += TileOffsByDiagDir(direction);
 	if (!IsTileType(tile_cur, MP_WATER) || GetTileSlope(tile_cur, NULL) != SLOPE_FLAT) {
-		return_cmd_error(STR_304B_SITE_UNSUITABLE);
+		return_cmd_error(STR_0239_SITE_UNSUITABLE);
 	}
 
 	/* middle */

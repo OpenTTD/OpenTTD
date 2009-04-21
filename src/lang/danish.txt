@@ -1780,7 +1780,6 @@ STR_2800_PLANT_TREES                                            :Plant træer
 STR_2801_PLACE_SIGN                                             :Placer skilt
 STR_2802_TREES                                                  :{WHITE}Træer
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...der er allerede træer her
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...placeringen er ikke egnet
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Kan ikke plante træer her...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...for mange skilte
@@ -1802,7 +1801,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Antal sp
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Længde af perron
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}For tæt på en anden banegård
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Grænser op til mere end en eksisterende station/fragtcentral
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}For mange stationer/fragtcentraler i denne by
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}For mange stationer/fragtcentraler
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Banegården er i for mange dele
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}For mange busterminaler
@@ -1846,7 +1844,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Fragt-sp
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stationer
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Ingen -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...placeringen er uegnet
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}For tæt på en anden havn
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Det er nødvendigt at rive havnen ned først
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Vælg retning af banegård
@@ -2917,7 +2914,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan ikke
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Der er et skib i vejen
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan ikke stoppe/starte skibet...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan ikke sende skibet til dok...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finde lokal dok
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Sejler til {TOWN} skibsdok
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Sejler til {TOWN} skibsdok, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Service i {TOWN} skibsdok

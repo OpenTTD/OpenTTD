@@ -734,7 +734,6 @@ STR_2800_PLANT_TREES                                            :کاشتن در
 STR_2801_PLACE_SIGN                                             :قرار دادن علامت
 STR_2802_TREES                                                  :{WHITE}درختان
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE} قبلا اینجا درخت کشته شده است
-STR_2804_SITE_UNSUITABLE                                        :{WHITE} موقعیت مناسب نیست
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE} اینجا نمی شود درخت کاشت
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE} تعداد لامات بسیار زیاد شده
@@ -754,7 +753,6 @@ STR_3002_ORIENTATION                                            :{BLACK} جهت
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK} تعداد خطوط
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}طول ایستگاه
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}به ایستگاه دیگری بسیار نزدیک است
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}تعداد ایستگاه ها در این شهر ماکزیمم است
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE} تعداد محوطه های بارگیری/ایستگاه بسیار زیاد شده
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}به محوطه ی بارگیری/ایستگاه دیگری بسیار نزدیک است
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
@@ -783,7 +781,6 @@ STR_303D                                                        :{WHITE}{STRING}
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} دیگر {STRING} قبول نمی کند
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} دیگر {STRING} و {STRING} قبول نمی کند
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} از این پس {STRING} را هم قبول می کند
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}موقعیت مناسب نیست
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}به بندر دیگری بسییار نزدیک است
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}باید اول بندر را تخریب کرد
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}انتخاب جهت ایستگاه راه آهن

@@ -1777,7 +1777,6 @@ STR_2800_PLANT_TREES                                            :Высадит�
 STR_2801_PLACE_SIGN                                             :Поставить знак
 STR_2802_TREES                                                  :{WHITE}Деревья
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...уже есть дерево
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...неподходящее место
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Невозможно высадить деревья...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...слишком много знаков
@@ -1799,7 +1798,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Числ
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Длина платформы
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Слишком близко к другой ж/д станции
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Присоединяется более чем к одной существующей станции
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Слишком много станций и остановок в этом городе. Переименуйте существующие.
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Слишком много станций и остановок
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Слишком большая ЖД станция
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Слишком много автобусных остановок
@@ -1843,7 +1841,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Снач
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Станц{P 2 ия ии ий}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Нет -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...неподходящее место
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Слишком близко к другому доку
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Сначала удалите док
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Выберите направление ж/д станции
@@ -2922,7 +2919,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Нево
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Корабль на пути
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Не могу остановить/запустить корабль...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Не могу отправить корабль в док...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Невозможно найти док
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Следует в док {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Следует в док {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Обслуж. в доке {TOWN}

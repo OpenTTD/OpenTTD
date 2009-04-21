@@ -1564,7 +1564,6 @@ STR_2800_PLANT_TREES                                            :Plantu arbojn
 STR_2801_PLACE_SIGN                                             :Metu afiŝon
 STR_2802_TREES                                                  :{WHITE}Arboj
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...jam estas arbo
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...loko ne uzeblas
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Ne povas planti arbon ĉi tie...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...tro da afiŝoj
@@ -1585,7 +1584,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Kiom da 
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Platforma longo
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Tro proksime al alia stacidomo
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Alligas pli ol unu ekzistantan stacion/ŝarĝejon
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Tro da stacioj/ŝarĝejoj en la urbo
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Tro da stacioj/ŝarĝejoj
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Tro da bushaltejoj
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Tro da ŝarĝaŭtaj stacioj
@@ -1624,7 +1622,6 @@ STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Antaŭe 
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stacio{P "" j}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Neniu -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...loko ne uzeblas
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Tro proksime al alia haveno
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Antaŭe forigu havenon
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Elektu stacidoman direkton
@@ -2546,7 +2543,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Ne povas
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Ŝipo okupas la lokon
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Ne povas haltigi/starti ŝipon...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Ne povas sendi ŝipon al deponejo...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ne eblas trovi lokan deponejon
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Irante al {TOWN} Ŝipdeponejo
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Irante al {TOWN} Ŝipdeponejo, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Prizorgo ĉe {TOWN} Ŝipdeponejo

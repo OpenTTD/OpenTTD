@@ -1776,7 +1776,6 @@ STR_2800_PLANT_TREES                                            :Plant tre
 STR_2801_PLACE_SIGN                                             :Plasser skilt
 STR_2802_TREES                                                  :{WHITE}Tre
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...det er allereie eit tre her
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...uhøveleg område
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Kan ikkje plante tre her...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...for mange skilt
@@ -1798,7 +1797,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Antal sp
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Plattformlengd
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}For nær ein annan jernbanestasjon
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Grensar til meir enn éin eksisterande stasjon/lasteterminal
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}For mange stasjonar/lasteterminalar i byen
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}For mange stasjonar/lasteterminalar
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}For mange togstasjon-delar
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}For mange busshaldeplassar
@@ -1842,7 +1840,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Må fjer
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stasjon{P "" ar}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Ingen -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...upassande område
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}For nær ei anna hamn
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Må rive hamn først
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Vel retning på jernbanestasjonen
@@ -2910,7 +2907,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan ikkj
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Det er eit skip i vegen
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan ikkje starte/stoppe skip...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan ikkje sende skip til depotet...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikkje finne eit depot i nærleiken
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Er på veg til {TOWN} skipsdepot
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Er på veg mot {TOWN} skipsdepot, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Vedlikehald ved {TOWN} skipsdepot

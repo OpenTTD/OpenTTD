@@ -1742,7 +1742,6 @@ STR_2800_PLANT_TREES                                            :Beem planzen
 STR_2801_PLACE_SIGN                                             :Schëld opstellen
 STR_2802_TREES                                                  :{WHITE}Beem
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...schon Beem hei
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...Plaatz nët geegent
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Kann d'Beem hei nët planzen...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...ze vill Schëlder
@@ -1764,7 +1763,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Unzuel v
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Längt
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Ze noo un enger aanerer Gare
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Grenzt un mei wei eng Gare un
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Zevill Garen an der Stadt
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Zevill Garen
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Zevill Garen
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Zevill Busgaren
@@ -1808,7 +1806,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Muss d'T
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Statioun{P "" en}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Näischt -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...Plaatz nët passend
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Ze noo bei engem aanerem Hafen
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Muss den Hafen fir déischt oofrapen
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Wielt Gare Richtung
@@ -2822,7 +2819,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kann Sch
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Schëff am Wee
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kann d'Schëff nët stoppen/starten...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kann d'Schëff nët an den Depot schècken...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kann d'Depot nët fannen
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} waart am Depot
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Schëffdock bauen
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Schëffdepot bauen (fir Schëffer ze bauen an ze warten)

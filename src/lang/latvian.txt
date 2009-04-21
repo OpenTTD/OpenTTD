@@ -1775,7 +1775,6 @@ STR_2800_PLANT_TREES                                            :Stādīt kokus
 STR_2801_PLACE_SIGN                                             :Novietot zīmi
 STR_2802_TREES                                                  :{WHITE}Koki
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...šeit jau aug koks
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...nepiemērota vieta
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Šeit nevar iestādīt koku..
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...pārāk daudz zīmju
@@ -1797,7 +1796,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Platform
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Platformas garums
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Pārāk tuvu citai dzelzceļa stacijai
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Piekļaujas vairāk par vienu staciju/iekraušanas zonu
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Pārāk daudz staciju/iekraušanas zonu šajā pilsētā
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Pārāk daudz staciju/iekraušanas zonu
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE} Pārāk daudz dzelzceļastacijas daļu
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Pa'ra'k daudz autobusa pieturu
@@ -1841,7 +1839,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Vispirms
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stacij{P a as u}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nav -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...vieta nav piemērota
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Pārāk tuvu citam dokam
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Vispirms jānojauc doks
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Izvēlieties dzelzceļa stacijas virzienu
@@ -2909,7 +2906,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nevar uz
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Kuģis ir ceļā
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nevar apstādināt/palaist kuģi...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kuģi nevar aizsūtīt uz depo...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nevar atrast tuvējo depo
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Dodas uz {TOWN} kuģu depo
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Dodas uz {TOWN} kuģu depo, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Apkope {TOWN} kuģu depo

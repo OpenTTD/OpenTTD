@@ -1818,7 +1818,6 @@ STR_2800_PLANT_TREES                                            :Posadź drzewa
 STR_2801_PLACE_SIGN                                             :Umieść napis
 STR_2802_TREES                                                  :{WHITE}Drzewa
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...drzewo już tu jest
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...niewłaściwe miejsce
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Nie można posadzić drzewa...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...zbyt wiele napisów
@@ -1840,7 +1839,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Ilość 
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Długość peronu
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Zbyt blisko innej stacji
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Przylega do więcej niż jednej stacji
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Za dużo stacji w tym mieście
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Za duzo stacji
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Za dużo części stacji kolejowej
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Za dużo przystankow autobusowych
@@ -1884,7 +1882,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Najpierw
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nic -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...niewłaściwe miejsce
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Zbyt blisko innego portu
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Należy najpierw usunąć port
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Wybierz ukierunkowanie stacji
@@ -2994,7 +2991,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nie moż
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Statek na drodze
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nie można zatrzymać/ruszyć statku...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nie można wysłać statku do stoczni...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nie można znaleźć stoczni
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Zmierza do stoczni w {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Zmierza do stoczni w {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Serwisuj w Stoczni w {TOWN}

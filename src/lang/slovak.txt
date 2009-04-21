@@ -1842,7 +1842,6 @@ STR_2800_PLANT_TREES                                            :Vysadba stromov
 STR_2801_PLACE_SIGN                                             :Umiestnenie popisu
 STR_2802_TREES                                                  :{WHITE}Stromy
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}... strom tu uz je
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}... nevhodne miesto
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Tu sa strom neda zasadit ...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}... prilis vela popisov
@@ -1864,7 +1863,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Pocet ko
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Dlzka nastupista
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Prilis blizko inej zeleznicnej stanice
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Susedi z viacerymi stanicami/vykladkami
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Prilis vela stanic/vykladok v tomto meste
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Prilis vela stanic/vykladok
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Veľa častí vlakovej stanice
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Prilis vela autobusovych zastavok
@@ -1908,7 +1906,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Najprv s
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stanic{P a e ""}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Ziadne -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}... miesto je nepouzitelne
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Priliz blizko ineho pristavu
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Pristav musi byt najskor zburany
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Vybrat orientaciu zeleznicnej stanice
@@ -2976,7 +2973,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nemozno 
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Lod v ceste
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nemozno zastavit/spustit lod ...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nemozno poslat lod do lodenice ...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemozno najst miestnu lodenicu
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Smeruje do {TOWN} lodenice
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Smeruje do {TOWN} lodenice, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servis v lodenici {TOWN}

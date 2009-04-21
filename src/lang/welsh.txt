@@ -1775,7 +1775,6 @@ STR_2800_PLANT_TREES                                            :Plannu coed
 STR_2801_PLACE_SIGN                                             :Gosod arwydd
 STR_2802_TREES                                                  :{WHITE}Coed
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...coeden eisoes yma
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...safle anaddas
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Methu plannu coeden yma...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...gormod o arwyddion
@@ -1797,7 +1796,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Nifer y 
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Hyd y platfform
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Rhy agos i orsaf reilffordd arall
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Mae'n ymylu ar fwy nag un gorsaf/ardal lwytho sydd eisoes yn bodoli
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Gormod o orsafoedd/ardaloedd llwytho yn y dre hon
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Gormod o orsafoedd/ardaloedd llwytho
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Mae gan yr orsaf ormod o rannau
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Gormod o arosfannau bysus
@@ -1841,7 +1839,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Rhaid dy
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Gorsaf{P "" oedd}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Dim -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...safle anaddas
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Rhy agos i ddoc arall
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Rhaid dymchwel doc yn gyntaf
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Dewiswch gyfeiriad gorsaf reilffordd
@@ -2909,7 +2906,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Methu ad
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Llong yn y ffordd
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}methu cychwyn/stopio llong...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Methu gyrru llong i ddepo...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Methu dod o hyd i'r depo lleol
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Mynd am Ddepo Llong {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Mynd am Ddepo Llong{TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Mynd am wasanaeth i Ddepo Llong {TOWN}

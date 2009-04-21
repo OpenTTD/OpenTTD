@@ -1021,7 +1021,6 @@ STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (sedan
 
 ##id 0x2800
 STR_2802_TREES                                                  :{WHITE}Pokok
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...kawasan yang tidak sesuai
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Tidak boleh menanam pokok di sini...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...terlalu banyak papan tanda
@@ -1046,7 +1045,6 @@ STR_3033_ACCEPTS                                                :{BLACK}Terima
 
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} tidak lagi menerima {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} tidak lagi menerima {STRING} or {STRING}
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...kawasan tidak sesuai
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Terlalu rapat dengan perlabuhan lain
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Perlabuhan mesti dirobohkan dahulu
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Pilihkan bilangan platform untuk stesen keretapi

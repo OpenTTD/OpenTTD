@@ -87,7 +87,6 @@ void SQAIError_Register(Squirrel *engine) {
 	AIError::RegisterErrorMap(STR_980E_SHIP_IN_THE_WAY,                 AIError::ERR_VEHICLE_IN_THE_WAY);
 	AIError::RegisterErrorMap(STR_A015_AIRCRAFT_IN_THE_WAY,             AIError::ERR_VEHICLE_IN_THE_WAY);
 	AIError::RegisterErrorMap(STR_0239_SITE_UNSUITABLE,                 AIError::ERR_SITE_UNSUITABLE);
-	AIError::RegisterErrorMap(STR_304B_SITE_UNSUITABLE,                 AIError::ERR_SITE_UNSUITABLE);
 	AIError::RegisterErrorMap(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP,        AIError::ERR_TOO_CLOSE_TO_EDGE);
 	AIError::RegisterErrorMap(STR_306C_STATION_TOO_SPREAD_OUT,          AIError::ERR_STATION_TOO_SPREAD_OUT);
 

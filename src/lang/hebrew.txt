@@ -1760,7 +1760,6 @@ STR_2800_PLANT_TREES                                            :טע עצים
 STR_2801_PLACE_SIGN                                             :מקם סימניות
 STR_2802_TREES                                                  :{WHITE}עצים
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...קיימים עצים במשבצת זו
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...אתר לא מתאים
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}...לא יכול לטעת עצים במשבצת זו
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...יותר מידי סימניות
@@ -1782,7 +1781,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}מספר
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}אורך רציף
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}קרוב מידי לתחנה אחרת
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}ניסיון לחבר בין תחנות קיימות
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}יותר מידי תחנות/אזורי טעינה בעיר זאת
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}יותר מידי תחנות/אזורי טעינה
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}התחנה מורכבת מיותר מידי חלקים
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}יותר מידי תחנות אוטובוס
@@ -1826,7 +1824,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}יש ל�
 STR_3048_STATIONS                                               :{WHITE}תחנות{NBSP} {1:COMMA}  - {0:COMPANY}
 STR_3049_0                                                      :{YELLOW} {1:STATIONFEATURES}{0:STATION}
 STR_304A_NONE                                                   :{YELLOW}- כלום -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...אזור לא מתאים
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}יותר מידי קרוב למזח אחר
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}חובה להסיר קודם את המזח הקיים
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}בחר כיוון תחנת רכבת
@@ -2894,7 +2891,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}לא נ�
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}כלי שייט חוסם את הדרך
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}לא ניתן לעצור/להפעיל את כלי השייט
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE} לא ניתן לשלוח את כלי השייט למבדוק
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}לא ניתן למצוא מבדוק קרוב
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE} {TOWN} בדרך אל המבדוק ב
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}{1:VELOCITY} מהירות ,  {NBSP}{0:TOWN} בדרך אל המבדוק ב
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN} טיפול במבדוק

@@ -902,7 +902,6 @@ STR_2800_PLANT_TREES                                            :Plantsje beamme
 STR_2801_PLACE_SIGN                                             :Set buordsje del
 STR_2802_TREES                                                  :{WHITE}Beammen
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...hjir stiet al in beam
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...bouplak net geskikt
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Kin hjir gjin beam plantsje
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...te folle buordsjes
@@ -923,7 +922,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Oantal b
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Stasjon lengte
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Te ticht by in oar stasjon
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Ferbynt mear dan ien stasjon
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Te folle stasjons yn dizze stêd
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Te folle stasjons
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Te folle bushaltes
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Te folle frachtstasjons
@@ -954,7 +952,6 @@ STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Bushalte
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Frachtstasjon moat earst fuorthelle wurde
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Gjin -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...bouterrein net geskikt
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Te ticht by in oare haven
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Haven moat earst fuorthelle wurde
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Selektear oantal banen foar treinstasjon

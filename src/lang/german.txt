@@ -1783,7 +1783,6 @@ STR_2800_PLANT_TREES                                            :Bäume pflanzen
 STR_2801_PLACE_SIGN                                             :Schild aufstellen
 STR_2802_TREES                                                  :{WHITE}Bäume
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...hier sind bereits Bäume
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...ungeeignetes Gelände
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Baum kann hier nicht gepflanzt werden...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...zu viele Schilder
@@ -1805,7 +1804,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Anzahl d
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Bahnsteiglänge
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Zu nah an einem anderen Bahnhof
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Grenzt an mehr als eine vorhandene Station/Ladeplatz
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Zu viele Stationen/Ladeplätze im Stadtgebiet
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Zu viele Stationen/Ladeplätze im Umkreis
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Zu viele Bahnsteigteile
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Zu viele Busbahnhöfe
@@ -1849,7 +1847,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Güterve
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Haltestelle{P "" n}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Keine -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...Gelände ungeeignet
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Zu dicht an einem anderen Hafen
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Hafen muss erst entfernt werden
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Ausrichtung des Bahnhofs auswählen
@@ -2934,7 +2931,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Schiff k
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Schiff ist im Weg
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Schiff kann nicht angehalten {} oder losgeschickt werden...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Schiff kann nicht in die Werft geschickt werden...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Werft unauffindbar
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Unterwegs zur Werft {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Unterwegs zur Werft {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Wartung in der Werft {TOWN}

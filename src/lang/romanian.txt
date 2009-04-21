@@ -1782,7 +1782,6 @@ STR_2800_PLANT_TREES                                            :Plantează arbo
 STR_2801_PLACE_SIGN                                             :Plasează semn
 STR_2802_TREES                                                  :{WHITE}Arbori
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...sunt deja plantaţi arbori
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...locaţie nepotrivită
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Nu se pot planta arbori aici...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...prea multe semne
@@ -1804,7 +1803,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Număr d
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Lungimea liniilor
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Prea aproape de altă gară
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Este adiacentă mai multor staţii
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Prea multe staţii în acest oraş
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Prea multe staţii
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Staţia are prea multe componente
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Prea multe staţii de autobuz
@@ -1848,7 +1846,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Mai înt
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Staţi{P e i}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nici una -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...locaţie nepotrivită
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Prea aproape de alt port
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Mai întâi trebuie demolat portul
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Alege orientarea gării
@@ -2920,7 +2917,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nu pot c
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Navă în cale
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nu pot opri/porni nava...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nu pot trimite nava în şantier...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nu pot găsi un şantier apropiat
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Merge la Santierul {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Merge la Santierul {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Service la Santierul Naval {TOWN}

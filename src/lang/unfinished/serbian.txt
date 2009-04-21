@@ -1584,7 +1584,6 @@ STR_2800_PLANT_TREES                                            :Posadi drvo
 STR_2801_PLACE_SIGN                                             :Postavi znak
 STR_2802_TREES                                                  :{WHITE}Drveće
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...drvo je već na tom mestu
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...lokacija je neadekvatna
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Ovde je nemoguće posaditi drvo...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...previše je znakova
@@ -1605,7 +1604,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Broj kol
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Dužina platforme
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Previše je blizu drugoj železničkoj stanici
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Stanica se spaja sa najmanje dve postojeće stanice
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}U ovom naselju ima previše stanica
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Previše je stanica
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Previše je blizu druge stanice
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
@@ -1642,7 +1640,6 @@ STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Potrebno
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stanic{P a e a}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nema -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...lokacija neadekvatna
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Previše je blizu drugog pristaništa
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Potrebno je prvo srušiti pristanište
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Izbor orijentacije železničke stanice

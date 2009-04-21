@@ -1725,7 +1725,6 @@ STR_2800_PLANT_TREES                                            :Boome beplant
 STR_2801_PLACE_SIGN                                             :Plaas teken
 STR_2802_TREES                                                  :{WHITE}Boome
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...boom reeds daar
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...plek ongeskik
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Kan nie boom hier beplant nie...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...te veel tekens
@@ -1747,7 +1746,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Nommer v
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Verhoog lengte
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Te naby aan 'n ander spoorweg stasie
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Grens aan meer as een bestaande stasie/laai area
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Te veel stasies/laai areas in die stad
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Te veel stasies/laai areas
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Te veel treinstasie deele
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Te veel bushalte
@@ -1791,7 +1789,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Moet eer
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stasie{P "" s}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Geen -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...plek ongeskik
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Te naby aan 'n ander werf
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Moet eers werf afbreek
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Kies spoorweg stasie orientasie
@@ -2853,7 +2850,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan nie 
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Skip in die pad
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan nie skip stop/aanskakel nie
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan nie skip na depot stuur nie...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan nie plaaslike depot vind nie
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Op pad na {TOWN} Skip Depot
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Op pad na {TOWN} Skip Depot, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Diens by {TOWN} Skip Depot

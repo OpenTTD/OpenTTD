@@ -1776,7 +1776,6 @@ STR_2800_PLANT_TREES                                            :Plantar árbole
 STR_2801_PLACE_SIGN                                             :Colocar señal
 STR_2802_TREES                                                  :{WHITE}Árboles
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...ya hay árboles aquí
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...sitio no apropiado
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}No se pueden plantar árboles aquí...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...demasiadas señales
@@ -1798,7 +1797,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Número 
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Longitud de andén
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Demasiado cerca de otra estación de tren
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}djunta más de una estación/zona de carga existente
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Demasiadas estaciones/zonas de carga en esta población
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Demasiadas estaciones/zonas de carga
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Demasiadas partes de estación de tren
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Demasiadas paradas de Autobús
@@ -1842,7 +1840,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Debe dem
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Estaciones
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Ninguna -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...lugar inapropiado
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Demasiado cerca de otro muelle
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Primero debe demolerse el muelle
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Elige orientación de la estación de tren
@@ -2911,7 +2908,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}No se pu
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Barco en camino
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}No se puede detener/arrancar barco...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}No se puede mandar barco a astillero...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}No se puede encontrar ruta al astillero
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Hacia el astillero de {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Hacia el astillero de {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servicio en el embarcadero de {TOWN}

@@ -369,7 +369,7 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				/* FALL THROUGH */
 				case MP_CLEAR:
 					if (IsBridgeAbove(tile)) {
-						msg = STR_2804_SITE_UNSUITABLE;
+						msg = STR_0239_SITE_UNSUITABLE;
 						continue;
 					}
 
@@ -414,7 +414,7 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					break;
 
 				default:
-					msg = STR_2804_SITE_UNSUITABLE;
+					msg = STR_0239_SITE_UNSUITABLE;
 					break;
 			}
 		}

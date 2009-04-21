@@ -1775,7 +1775,6 @@ STR_2800_PLANT_TREES                                            :زراعة اش
 STR_2801_PLACE_SIGN                                             :وضع علامات
 STR_2802_TREES                                                  :{WHITE} اشجار
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}... الاشجار موجودة هنا مسبقا
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}... الموقع غيرمناسب
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}... لا يمكن زراعة اشجار هنا
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}... العلامات كثيرة جدا
@@ -1797,7 +1796,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}عدد �
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}طول المحطة
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE} قريبة جدا من محطة أخرى
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}جاور اكثر من محطة موجودة مسبقا
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE} الكثير من المحطات في هذة المدينة
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE} الكثير من المحطات واماكن التحميل
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE} قطاعات المحطة كثيرة جدا
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}محطات توقف الباصات كثيرة جدا
@@ -1841,7 +1839,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}يجب �
 STR_3048_STATIONS                                               :{WHITE}محطات شركة  {COMPANY} - {COMMA} محطة
 STR_3049_0                                                      :{YELLOW}{STATION}  {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}-  بدون  -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}... الموقع غير مناسب
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}قريب جدا من مرفء آخر
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}يجب هدم المرفء اولا
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}اختر اتجاة محطة القطار
@@ -2910,7 +2907,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}لا ي�
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}سفينة في الطريق
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}لا يمكن توقيف/ تشغيل السفينة ...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}لا يمكن ارسال السفينة الى حوض الصيانة ...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}لا يمكن ايجاد حوض صيانة قريب
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}متوجه لحوض سفن{TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}تتجة الى حوض {TOWN}للسفن, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}صيانة في حوض سفن  {TOWN}

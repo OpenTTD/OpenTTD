@@ -1791,7 +1791,6 @@ STR_2800_PLANT_TREES                                            :Sodinti medžiu
 STR_2801_PLACE_SIGN                                             :Statyti ženklą
 STR_2802_TREES                                                  :{WHITE}Medžiai
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...medis jau yra
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...netinkama vieta
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Neįmanoma pasodinti medžio...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...per daug ženklų
@@ -1813,7 +1812,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Kelių k
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Platformos ilgis
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Per arti kitos geležinkelio stoties
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Ribojasi su daugiau nei viena stotele/pakrovimo aikštele
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Per daug stotelių/pakrovimo aikštelių šiame mieste
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Per daug stotelių
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Perdaug traukinių stoties dalių
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Per daug autobusų stotelių
@@ -1857,7 +1855,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Privalu 
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stotelės
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nieko -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...netinkama vieta
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Per arti kitos prieplaukos
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Pirmiausia nugriauk prieplauką
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Pasirink geležinkelio stoties orientaciją
@@ -2906,7 +2903,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Laivo is
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Laivas kelyje
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Sustabdyti/paleisti laivo negalima...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nusiusti i laivu depa negalima...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Negali rasti artimiausio laivu depo
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Kursas: {TOWN} laivu depas
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Kursas: {TOWN} laivu depas, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servisas{TOWN} Laivu Depe

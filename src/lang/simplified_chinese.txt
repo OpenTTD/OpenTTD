@@ -1782,7 +1782,6 @@ STR_2800_PLANT_TREES                                            :植树
 STR_2801_PLACE_SIGN                                             :放置标志
 STR_2802_TREES                                                  :{WHITE}树木
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}……此处已经有树木了
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}……地点不合适
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}不能在这里植树……
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}……标志太多了
@@ -1804,7 +1803,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}轨道�
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}月台长度
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}距离另一火车站过近
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}与另一车站相连
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}这个城镇中的车站过多
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}车站过多
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}分体站台太多
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}公共汽车站过多
@@ -1848,7 +1846,6 @@ STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}请先�
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} 车站
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- 没有 -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}地点不合适……
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}距离另一码头过近
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}必须先拆除码头
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}选择火车站的方向
@@ -2920,7 +2917,6 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}不能�
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}前方有另一艘船只……
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}不能 停止/启动 船只……
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}不能命令船只前往船坞……
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}找不到附近的船坞
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}正在前往 {TOWN} 船坞
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}正在前往 {TOWN} 船坞，{VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}正在 {TOWN} 船坞保养

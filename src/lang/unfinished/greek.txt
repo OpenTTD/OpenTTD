@@ -1605,7 +1605,6 @@ STR_2800_PLANT_TREES                                            :Φύτευση 
 STR_2801_PLACE_SIGN                                             :Τοποθέτηση σηματοδότη
 STR_2802_TREES                                                  :{WHITE}Δέντρα
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...υπάρχει ήδη δέντρο εδώ
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...ακατάλληλη τοποθεσία
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Δεν γίνεται να φυτευθεί δέντρο εδώ...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...πάρα πολλοί σηματοδότες
@@ -1627,7 +1626,6 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Αριθ
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Μήκος Πλατφόρμας
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Πολύ κοντά σε άλλο σιδηροδρομικό σταθμό
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Γειτονεύει με περισσότερες από μια υπάρχουσες περιοχές σταθμών/φόρτωσης
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Πάρα πολλές περιοχές σταθμών/φόρτωσης σε αυτή την πόλη
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Πάρα πολλές περιοχές σταθμών/φόρτωσης
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Πάρα πολλές στάσεις λεωφορείου
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Πάρα πολλοί σταθμοί φορτηγών
@@ -1666,7 +1664,6 @@ STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Πρέπ
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Σταθμός{P "" s}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Κανένα -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...ακατάλληλη τοποθεσία
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Πολύ κοντά σε άλλη αποβάθρα
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Πρέπει να κατεδαφιστεί η αποβάθρα πρώτα
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Επιλογή προσανατολισμού σιδηροδρομικού σταθμού
