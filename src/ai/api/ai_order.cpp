@@ -23,7 +23,10 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 
 	switch (::GetTileType(t)) {
 		default: break;
-		case MP_STATION: return OT_GOTO_STATION; break;
+		case MP_STATION:
+			if (IsHangar(t)) return OT_GOTO_DEPOT;
+			return OT_GOTO_STATION;
+			break;
 		case MP_WATER:   if (::IsShipDepot(t)) return OT_GOTO_DEPOT; break;
 		case MP_ROAD:    if (::GetRoadTileType(t) == ROAD_TILE_DEPOT) return OT_GOTO_DEPOT; break;
 		case MP_RAILWAY:
@@ -267,7 +270,15 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 		case OT_GOTO_DEPOT: {
 			OrderDepotTypeFlags odtf = (OrderDepotTypeFlags)(ODTFB_PART_OF_ORDERS | ((order_flags & AIOF_SERVICE_IF_NEEDED) ? ODTFB_SERVICE : 0));
 			OrderDepotActionFlags odaf = (OrderDepotActionFlags)(ODATF_SERVICE_ONLY | ((order_flags & AIOF_STOP_IN_DEPOT) ? ODATFB_HALT : 0));
-			order.MakeGoToDepot(::GetDepotByTile(destination)->index, odtf, odaf);
+			/* Check explicitly if the order is to a station (for aircraft) or
+			 * to a depot (other vehicle types). */
+			if (::GetVehicle(vehicle_id)->type == VEH_AIRCRAFT) {
+				if (!::IsTileType(destination, MP_STATION)) return false;
+				order.MakeGoToDepot(::GetStationIndex(destination), odtf, odaf);
+			} else {
+				if (::IsTileType(destination, MP_STATION)) return false;
+				order.MakeGoToDepot(::GetDepotByTile(destination)->index, odtf, odaf);
+			}
 			break;
 		}
 
