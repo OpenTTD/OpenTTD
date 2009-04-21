@@ -32,23 +32,9 @@
 #define stderr stdout
 #endif /* __MORPHOS__ */
 
+#include "../table/strgen.h"
+
 /* Compiles a list of strings into a compiled string list */
-
-typedef void (*ParseCmdProc)(char *buf, int value);
-
-struct CmdStruct {
-	const char *cmd;
-	ParseCmdProc proc;
-	long value;
-	int8 consumes;
-	byte flags;
-};
-
-enum {
-	C_DONTCOUNT = 1,
-	C_CASE      = 2,
-};
-
 
 struct Case {
 	int caseidx;
@@ -97,9 +83,6 @@ static uint _numgenders;
 #define MAX_NUM_CASES 50
 static char _cases[MAX_NUM_CASES][16];
 static uint _numcases;
-
-/* for each plural value, this is the number of plural forms. */
-static const byte _plural_form_counts[] = { 2, 1, 2, 3, 3, 3, 3, 3, 4, 2, 3 };
 
 static const char *_cur_ident;
 
@@ -368,16 +351,16 @@ static void EmitPlural(char *buf, int value)
 	if (nw == 0)
 		error("%s: No plural words", _cur_ident);
 
-	if (_plural_form_counts[_lang_pluralform] != nw) {
+	if (_plural_forms[_lang_pluralform].plural_count != nw) {
 		if (_translated) {
 			error("%s: Invalid number of plural forms. Expecting %d, found %d.", _cur_ident,
-				_plural_form_counts[_lang_pluralform], nw);
+				_plural_forms[_lang_pluralform].plural_count, nw);
 		} else {
 			if ((_show_todo & 2) != 0) strgen_warning("'%s' is untranslated. Tweaking english string to allow compilation for plural forms", _cur_ident);
-			if (nw > _plural_form_counts[_lang_pluralform]) {
-				nw = _plural_form_counts[_lang_pluralform];
+			if (nw > _plural_forms[_lang_pluralform].plural_count) {
+				nw = _plural_forms[_lang_pluralform].plural_count;
 			} else {
-				for (; nw < _plural_form_counts[_lang_pluralform]; nw++) {
+				for (; nw < _plural_forms[_lang_pluralform].plural_count; nw++) {
 					words[nw] = words[nw - 1];
 				}
 			}
@@ -423,126 +406,6 @@ static void EmitGender(char *buf, int value)
 		EmitWordList(words, nw);
 	}
 }
-
-
-static const CmdStruct _cmd_structs[] = {
-	/* Update position */
-	{"SETX",  EmitSetX,  SCC_SETX,  0, 0},
-	{"SETXY", EmitSetXY, SCC_SETXY, 0, 0},
-
-	/* Font size */
-	{"TINYFONT", EmitSingleChar, SCC_TINYFONT, 0, 0},
-	{"BIGFONT",  EmitSingleChar, SCC_BIGFONT,  0, 0},
-
-	/* Colors */
-	{"BLUE",    EmitSingleChar, SCC_BLUE,    0, 0},
-	{"SILVER",  EmitSingleChar, SCC_SILVER,  0, 0},
-	{"GOLD",    EmitSingleChar, SCC_GOLD,    0, 0},
-	{"RED",     EmitSingleChar, SCC_RED,     0, 0},
-	{"PURPLE",  EmitSingleChar, SCC_PURPLE,  0, 0},
-	{"LTBROWN", EmitSingleChar, SCC_LTBROWN, 0, 0},
-	{"ORANGE",  EmitSingleChar, SCC_ORANGE,  0, 0},
-	{"GREEN",   EmitSingleChar, SCC_GREEN,   0, 0},
-	{"YELLOW",  EmitSingleChar, SCC_YELLOW,  0, 0},
-	{"DKGREEN", EmitSingleChar, SCC_DKGREEN, 0, 0},
-	{"CREAM",   EmitSingleChar, SCC_CREAM,   0, 0},
-	{"BROWN",   EmitSingleChar, SCC_BROWN,   0, 0},
-	{"WHITE",   EmitSingleChar, SCC_WHITE,   0, 0},
-	{"LTBLUE",  EmitSingleChar, SCC_LTBLUE,  0, 0},
-	{"GRAY",    EmitSingleChar, SCC_GRAY,    0, 0},
-	{"DKBLUE",  EmitSingleChar, SCC_DKBLUE,  0, 0},
-	{"BLACK",   EmitSingleChar, SCC_BLACK,   0, 0},
-
-	{"CURRCOMPACT",   EmitSingleChar, SCC_CURRENCY_COMPACT,    1, 0}, // compact currency
-	{"REV",           EmitSingleChar, SCC_REVISION,            0, 0}, // openttd revision string
-	{"SHORTCARGO",    EmitSingleChar, SCC_CARGO_SHORT,         2, 0}, // short cargo description, only ### tons, or ### litres
-
-	{"STRING1", EmitSingleChar, SCC_STRING1, 2, C_CASE}, // included string that consumes the string id and ONE argument
-	{"STRING2", EmitSingleChar, SCC_STRING2, 3, C_CASE}, // included string that consumes the string id and TWO arguments
-	{"STRING3", EmitSingleChar, SCC_STRING3, 4, C_CASE}, // included string that consumes the string id and THREE arguments
-	{"STRING4", EmitSingleChar, SCC_STRING4, 5, C_CASE}, // included string that consumes the string id and FOUR arguments
-	{"STRING5", EmitSingleChar, SCC_STRING5, 6, C_CASE}, // included string that consumes the string id and FIVE arguments
-
-	{"STATIONFEATURES", EmitSingleChar, SCC_STATION_FEATURES, 1, 0}, // station features string, icons of the features
-	{"INDUSTRY",        EmitSingleChar, SCC_INDUSTRY_NAME,    1, 0}, // industry, takes an industry #
-	{"CARGO",           EmitSingleChar, SCC_CARGO,            2, 0},
-	{"POWER",           EmitSingleChar, SCC_POWER,            1, 0},
-	{"VOLUME",          EmitSingleChar, SCC_VOLUME,           1, 0},
-	{"VOLUME_S",        EmitSingleChar, SCC_VOLUME_SHORT,     1, 0},
-	{"WEIGHT",          EmitSingleChar, SCC_WEIGHT,           1, 0},
-	{"WEIGHT_S",        EmitSingleChar, SCC_WEIGHT_SHORT,     1, 0},
-	{"FORCE",           EmitSingleChar, SCC_FORCE,            1, 0},
-	{"VELOCITY",        EmitSingleChar, SCC_VELOCITY,         1, 0},
-
-	{"P", EmitPlural, 0, 0, C_DONTCOUNT}, // plural specifier
-	{"G", EmitGender, 0, 0, C_DONTCOUNT}, // gender specifier
-
-	{"DATE_TINY",  EmitSingleChar, SCC_DATE_TINY, 1, 0},
-	{"DATE_SHORT", EmitSingleChar, SCC_DATE_SHORT, 1, 0},
-	{"DATE_LONG",  EmitSingleChar, SCC_DATE_LONG, 1, 0},
-	{"DATE_ISO",   EmitSingleChar, SCC_DATE_ISO, 1, 0},
-
-	{"SKIP", EmitSingleChar, SCC_SKIP, 1, 0},
-
-	{"STRING", EmitSingleChar, SCC_STRING, 1, C_CASE},
-	{"RAW_STRING", EmitSingleChar, SCC_RAW_STRING_POINTER, 1, 0},
-
-	/* Numbers */
-	{"COMMA", EmitSingleChar, SCC_COMMA, 1, 0}, // Number with comma
-	{"NUM",   EmitSingleChar, SCC_NUM,   1, 0}, // Signed number
-	{"BYTES", EmitSingleChar, SCC_BYTES, 1, 0}, // Unsigned number with "bytes", i.e. "1.02 MiB or 123 KiB"
-
-	{"CURRENCY",   EmitSingleChar, SCC_CURRENCY,    1, 0},
-
-	{"WAYPOINT", EmitSingleChar, SCC_WAYPOINT_NAME, 1, 0}, // waypoint name
-	{"STATION",  EmitSingleChar, SCC_STATION_NAME,  1, 0},
-	{"TOWN",     EmitSingleChar, SCC_TOWN_NAME,     1, 0},
-	{"GROUP",    EmitSingleChar, SCC_GROUP_NAME,    1, 0},
-	{"SIGN",     EmitSingleChar, SCC_SIGN_NAME,     1, 0},
-	{"ENGINE",   EmitSingleChar, SCC_ENGINE_NAME,   1, 0},
-	{"VEHICLE",  EmitSingleChar, SCC_VEHICLE_NAME,  1, 0},
-	{"COMPANY",  EmitSingleChar, SCC_COMPANY_NAME,  1, 0},
-	{"COMPANYNUM", EmitSingleChar, SCC_COMPANY_NUM, 1, 0},
-	{"PRESIDENTNAME", EmitSingleChar, SCC_PRESIDENT_NAME, 1, 0},
-
-	// 0x9D is used for the pseudo command SETCASE
-	// 0x9E is used for case switching
-
-	{"",               EmitSingleChar, '\n',               0, C_DONTCOUNT},
-	{"{",              EmitSingleChar, '{',                0, C_DONTCOUNT},
-	{"UPARROW",        EmitSingleChar, SCC_UPARROW,        0, 0},
-	{"SMALLUPARROW",   EmitSingleChar, SCC_SMALLUPARROW,   0, 0},
-	{"SMALLDOWNARROW", EmitSingleChar, SCC_SMALLDOWNARROW, 0, 0},
-	{"TRAIN",          EmitSingleChar, SCC_TRAIN,          0, 0},
-	{"LORRY",          EmitSingleChar, SCC_LORRY,          0, 0},
-	{"BUS",            EmitSingleChar, SCC_BUS,            0, 0},
-	{"PLANE",          EmitSingleChar, SCC_PLANE,          0, 0},
-	{"SHIP",           EmitSingleChar, SCC_SHIP,           0, 0},
-	{"NBSP",           EmitSingleChar, 0xA0,               0, C_DONTCOUNT},
-	{"CENT",           EmitSingleChar, 0xA2,               0, C_DONTCOUNT},
-	{"POUNDSIGN",      EmitSingleChar, 0xA3,               0, C_DONTCOUNT},
-	{"EURO",           EmitSingleChar, 0x20AC,             0, C_DONTCOUNT},
-	{"YENSIGN",        EmitSingleChar, 0xA5,               0, C_DONTCOUNT},
-	{"COPYRIGHT",      EmitSingleChar, 0xA9,               0, C_DONTCOUNT},
-	{"DOWNARROW",      EmitSingleChar, SCC_DOWNARROW,      0, C_DONTCOUNT},
-	{"CHECKMARK",      EmitSingleChar, SCC_CHECKMARK,      0, C_DONTCOUNT},
-	{"CROSS",          EmitSingleChar, SCC_CROSS,          0, C_DONTCOUNT},
-	{"REGISTERED",     EmitSingleChar, 0xAE,               0, C_DONTCOUNT},
-	{"RIGHTARROW",     EmitSingleChar, SCC_RIGHTARROW,     0, C_DONTCOUNT},
-	{"SMALLLEFTARROW", EmitSingleChar, SCC_LESSTHAN,       0, C_DONTCOUNT},
-	{"SMALLRIGHTARROW",EmitSingleChar, SCC_GREATERTHAN,    0, C_DONTCOUNT},
-
-	/* The following are directional formatting codes used to get the RTL strings right:
-	 * http://www.unicode.org/unicode/reports/tr9/#Directional_Formatting_Codes */
-	{"LRM",            EmitSingleChar, 0x200E,             0, C_DONTCOUNT},
-	{"RLM",            EmitSingleChar, 0x200F,             0, C_DONTCOUNT},
-	{"LRE",            EmitSingleChar, 0x202A,             0, C_DONTCOUNT},
-	{"RLE",            EmitSingleChar, 0x202B,             0, C_DONTCOUNT},
-	{"LRO",            EmitSingleChar, 0x202D,             0, C_DONTCOUNT},
-	{"RLO",            EmitSingleChar, 0x202E,             0, C_DONTCOUNT},
-	{"PDF",            EmitSingleChar, 0x202C,             0, C_DONTCOUNT},
-};
-
 
 static const CmdStruct *FindCmd(const char *s, int len)
 {
@@ -653,7 +516,7 @@ static void HandlePragma(char *str)
 		strecpy(_lang_isocode, str + 8, lastof(_lang_isocode));
 	} else if (!memcmp(str, "plural ", 7)) {
 		_lang_pluralform = atoi(str + 7);
-		if (_lang_pluralform >= lengthof(_plural_form_counts))
+		if (_lang_pluralform >= lengthof(_plural_forms))
 			error("Invalid pluralform %d", _lang_pluralform);
 	} else if (!memcmp(str, "textdir ", 8)) {
 		if (!memcmp(str + 8, "ltr", 3)) {
@@ -1334,6 +1197,22 @@ int CDECL main(int argc, char *argv[])
 			return 0;
 		}
 
+		if (strcmp(argv[1], "-export-commands") == 0) {
+			printf("args\tcommand\treplacement\n");
+			for (const CmdStruct *cs = _cmd_structs; cs < endof(_cmd_structs); cs++) {
+				printf("%i\t\"%s\"\t\"%s\"\n", cs->consumes, cs->cmd, strstr(cs->cmd, "STRING") ? "STRING" : cs->cmd);
+			}
+			return 0;
+		}
+
+		if (strcmp(argv[1], "-export-plurals") == 0) {
+			printf("count\tdescription\n");
+			for (const PluralForm *pf = _plural_forms; pf < endof(_plural_forms); pf++) {
+				printf("%i\t\"%s\"\n", pf->plural_count, pf->description);
+			}
+			return 0;
+		}
+
 		if (strcmp(argv[1], "-t") == 0 || strcmp(argv[1], "--todo") == 0) {
 			_show_todo |= 1;
 			argc--, argv++;
@@ -1355,6 +1234,8 @@ int CDECL main(int argc, char *argv[])
 				" -h | -? | --help  print this help message and exit\n"
 				" -s | --source_dir search for english.txt in the specified directory\n"
 				" -d | --dest_dir   put output file in the specified directory, create if needed\n"
+				" -export-commands  export all commands and exit\n"
+				" -export-plurals   export all plural forms and exit\n"
 				" Run without parameters and strgen will search for english.txt and parse it,\n"
 				" creating strings.h. Passing an argument, strgen will translate that language\n"
 				" file using english.txt as a reference and output <language>.lng."
