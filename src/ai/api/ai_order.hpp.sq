@@ -42,9 +42,11 @@ void SQAIOrder_Register(Squirrel *engine) {
 	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_FULL_LOAD_ANY,                               "AIOF_FULL_LOAD_ANY");
 	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_NO_LOAD,                                     "AIOF_NO_LOAD");
 	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_SERVICE_IF_NEEDED,                           "AIOF_SERVICE_IF_NEEDED");
+	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_STOP_IN_DEPOT,                               "AIOF_STOP_IN_DEPOT");
 	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_NON_STOP_FLAGS,                              "AIOF_NON_STOP_FLAGS");
 	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_UNLOAD_FLAGS,                                "AIOF_UNLOAD_FLAGS");
 	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_LOAD_FLAGS,                                  "AIOF_LOAD_FLAGS");
+	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_DEPOT_FLAGS,                                 "AIOF_DEPOT_FLAGS");
 	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_INVALID,                                     "AIOF_INVALID");
 	SQAIOrder.DefSQConst(engine, AIOrder::OC_LOAD_PERCENTAGE,                               "OC_LOAD_PERCENTAGE");
 	SQAIOrder.DefSQConst(engine, AIOrder::OC_RELIABILITY,                                   "OC_RELIABILITY");

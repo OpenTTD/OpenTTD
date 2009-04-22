@@ -41,7 +41,7 @@ public:
 	friend class AIInfo;
 	friend class AILibrary;
 
-	AIFileInfo() : SQ_instance(NULL), main_script(NULL), author(NULL), name(NULL), short_name(NULL), description(NULL), date(NULL), instance_name(NULL) {};
+	AIFileInfo() : SQ_instance(NULL), main_script(NULL), author(NULL), name(NULL), short_name(NULL), description(NULL), date(NULL), instance_name(NULL), url(NULL) {};
 	~AIFileInfo();
 
 	/**
@@ -85,6 +85,11 @@ public:
 	const char *GetInstanceName() const { return this->instance_name; }
 
 	/**
+	 * Get the website for this script.
+	 */
+	const char *GetURL() const { return this->url; }
+
+	/**
 	 * Get the filename of the main.nut script.
 	 */
 	const char *GetMainScript() const { return this->main_script; }
@@ -111,6 +116,7 @@ private:
 	const char *date;
 	const char *instance_name;
 	int version;
+	const char *url;
 };
 
 class AIInfo : public AIFileInfo {
@@ -155,9 +161,15 @@ public:
 	 */
 	int GetSettingDefaultValue(const char *name) const;
 
+	/**
+	 * Use this AI as a random AI.
+	 */
+	bool UseAsRandomAI() const { return this->use_as_random; }
+
 private:
 	AIConfigItemList config_list;
 	int min_loadable_version;
+	bool use_as_random;
 };
 
 class AILibrary : public AIFileInfo {

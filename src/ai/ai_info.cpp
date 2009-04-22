@@ -36,6 +36,7 @@ AIFileInfo::~AIFileInfo()
 	free((void *)this->description);
 	free((void *)this->date);
 	free((void *)this->instance_name);
+	free((void *)this->url);
 	free(this->main_script);
 	free(this->SQ_instance);
 }
@@ -98,6 +99,11 @@ bool AIFileInfo::CheckMethod(const char *name) const
 	if (!info->engine->CallIntegerMethod(*info->SQ_instance, "GetVersion", &info->version)) return SQ_ERROR;
 	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "CreateInstance", &info->instance_name)) return SQ_ERROR;
 
+	/* The GetURL function is optional. */
+	if (info->engine->MethodExists(*info->SQ_instance, "GetURL")) {
+		if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetURL", &info->url)) return SQ_ERROR;
+	}
+
 	return 0;
 }
 
@@ -124,6 +130,12 @@ bool AIFileInfo::CheckMethod(const char *name) const
 		if (!info->engine->CallIntegerMethod(*info->SQ_instance, "MinVersionToLoad", &info->min_loadable_version)) return SQ_ERROR;
 	} else {
 		info->min_loadable_version = info->GetVersion();
+	}
+	/* When there is an UseAsRandomAI function, call it. */
+	if (info->engine->MethodExists(*info->SQ_instance, "UseAsRandomAI")) {
+		if (!info->engine->CallBoolMethod(*info->SQ_instance, "UseAsRandomAI", &info->use_as_random)) return SQ_ERROR;
+	} else {
+		info->use_as_random = true;
 	}
 
 	/* Remove the link to the real instance, else it might get deleted by RegisterAI() */

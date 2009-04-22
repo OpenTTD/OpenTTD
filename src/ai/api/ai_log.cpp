@@ -32,7 +32,7 @@
 		log->lines = CallocT<char *>(80);
 		log->type = CallocT<AILog::AILogType>(80);
 		log->count = 80;
-		log->pos = log->count;
+		log->pos = log->count - 1;
 		log->used = 0;
 	}
 	LogData *log = (LogData *)AIObject::GetLogPointer();

@@ -23,7 +23,10 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 
 	switch (::GetTileType(t)) {
 		default: break;
-		case MP_STATION: return OT_GOTO_STATION; break;
+		case MP_STATION:
+			if (IsHangar(t)) return OT_GOTO_DEPOT;
+			return OT_GOTO_STATION;
+			break;
 		case MP_WATER:   if (::IsShipDepot(t)) return OT_GOTO_DEPOT; break;
 		case MP_ROAD:    if (::GetRoadTileType(t) == ROAD_TILE_DEPOT) return OT_GOTO_DEPOT; break;
 		case MP_RAILWAY:
@@ -74,7 +77,10 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 					(((order_flags & AIOF_NO_UNLOAD)     == 0) || ((order_flags & AIOF_NO_LOAD)   == 0)) &&
 					(((order_flags & AIOF_FULL_LOAD_ANY) == 0) || ((order_flags & AIOF_NO_LOAD)   == 0));
 
-		case OT_GOTO_DEPOT:    return (order_flags & ~(AIOF_NON_STOP_FLAGS | AIOF_SERVICE_IF_NEEDED)) == 0;
+		case OT_GOTO_DEPOT:
+			return ((order_flags & ~(AIOF_NON_STOP_FLAGS | AIOF_DEPOT_FLAGS)) == 0) &&
+					(((order_flags & AIOF_SERVICE_IF_NEEDED) == 0) || ((order_flags & AIOF_STOP_IN_DEPOT) == 0));
+
 		case OT_GOTO_WAYPOINT: return (order_flags & ~(AIOF_NON_STOP_FLAGS)) == 0;
 		default:               return false;
 	}
@@ -118,11 +124,36 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 	}
 
 	switch (order->GetType()) {
-		case OT_GOTO_DEPOT:
+		case OT_GOTO_DEPOT: {
 			if (v->type != VEH_AIRCRAFT) return ::GetDepot(order->GetDestination())->xy;
-			/* FALL THROUGH: aircraft's hangars are referenced by StationID, not DepotID */
+			/* Aircraft's hangars are referenced by StationID, not DepotID */
+			const Station *st = ::GetStation(order->GetDestination());
+			const AirportFTAClass *airport = st->Airport();
+			if (airport == NULL || airport->nof_depots == 0) return INVALID_TILE;
+			return st->airport_tile + ::ToTileIndexDiff(st->Airport()->airport_depots[0]);
+		}
 
-		case OT_GOTO_STATION:  return ::GetStation(order->GetDestination())->xy;
+		case OT_GOTO_STATION: {
+			const Station *st = ::GetStation(order->GetDestination());
+			if (st->train_tile != INVALID_TILE) {
+				for (uint i = 0; i < st->trainst_w; i++) {
+					TileIndex t = st->train_tile + TileDiffXY(i, 0);
+					if (st->TileBelongsToRailStation(t)) return t;
+				}
+			} else if (st->dock_tile != INVALID_TILE) {
+				return st->dock_tile;
+			} else if (st->bus_stops != NULL) {
+				return st->bus_stops->xy;
+			} else if (st->truck_stops != NULL) {
+				return st->truck_stops->xy;
+			} else if (st->airport_tile != INVALID_TILE) {
+				const AirportFTAClass *fta = st->Airport();
+				BEGIN_TILE_LOOP(tile, fta->size_x, fta->size_y, st->airport_tile) {
+					if (!::IsHangar(tile)) return tile;
+				} END_TILE_LOOP(tile, fta->size_x, fta->size_y, st->airport_tile)
+			}
+			return INVALID_TILE;
+		}
 		case OT_GOTO_WAYPOINT: return ::GetWaypoint(order->GetDestination())->xy;
 		default:               return INVALID_TILE;
 	}
@@ -145,6 +176,7 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 	switch (order->GetType()) {
 		case OT_GOTO_DEPOT:
 			if (order->GetDepotOrderType() & ODTFB_SERVICE) order_flags |= AIOF_SERVICE_IF_NEEDED;
+			if (order->GetDepotActionType() & ODATFB_HALT) order_flags |= AIOF_STOP_IN_DEPOT;
 			break;
 
 		case OT_GOTO_STATION:
@@ -260,9 +292,20 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 
 	Order order;
 	switch (::GetOrderTypeByTile(destination)) {
-		case OT_GOTO_DEPOT:
-			order.MakeGoToDepot(::GetDepotByTile(destination)->index, (OrderDepotTypeFlags)(ODTFB_PART_OF_ORDERS | ((order_flags & AIOF_SERVICE_IF_NEEDED) ? ODTFB_SERVICE : 0)));
+		case OT_GOTO_DEPOT: {
+			OrderDepotTypeFlags odtf = (OrderDepotTypeFlags)(ODTFB_PART_OF_ORDERS | ((order_flags & AIOF_SERVICE_IF_NEEDED) ? ODTFB_SERVICE : 0));
+			OrderDepotActionFlags odaf = (OrderDepotActionFlags)(ODATF_SERVICE_ONLY | ((order_flags & AIOF_STOP_IN_DEPOT) ? ODATFB_HALT : 0));
+			/* Check explicitly if the order is to a station (for aircraft) or
+			 * to a depot (other vehicle types). */
+			if (::GetVehicle(vehicle_id)->type == VEH_AIRCRAFT) {
+				if (!::IsTileType(destination, MP_STATION)) return false;
+				order.MakeGoToDepot(::GetStationIndex(destination), odtf, odaf);
+			} else {
+				if (::IsTileType(destination, MP_STATION)) return false;
+				order.MakeGoToDepot(::GetDepotByTile(destination)->index, odtf, odaf);
+			}
 			break;
+		}
 
 		case OT_GOTO_STATION:
 			order.MakeGoToStation(::GetStationIndex(destination));
@@ -356,8 +399,11 @@ static void _DoCommandReturnSetOrderFlags(class AIInstance *instance)
 
 	switch (order->GetType()) {
 		case OT_GOTO_DEPOT:
-			if ((current & AIOF_SERVICE_IF_NEEDED) != (order_flags & AIOF_SERVICE_IF_NEEDED)) {
-				return AIObject::DoCommand(0, vehicle_id | (order_position << 16), MOF_DEPOT_ACTION, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnSetOrderFlags);
+			if ((current & AIOF_DEPOT_FLAGS) != (order_flags & AIOF_DEPOT_FLAGS)) {
+				uint data = DA_ALWAYS_GO;
+				if (order_flags & AIOF_SERVICE_IF_NEEDED) data = DA_SERVICE;
+				if (order_flags & AIOF_STOP_IN_DEPOT) data = DA_STOP;
+				return AIObject::DoCommand(0, vehicle_id | (order_position << 16), (data << 4) | MOF_DEPOT_ACTION, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnSetOrderFlags);
 			}
 			break;
 

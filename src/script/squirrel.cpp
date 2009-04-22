@@ -234,6 +234,15 @@ bool Squirrel::CallIntegerMethod(HSQOBJECT instance, const char *method_name, in
 	return true;
 }
 
+bool Squirrel::CallBoolMethod(HSQOBJECT instance, const char *method_name, bool *res, int suspend)
+{
+	HSQOBJECT ret;
+	if (!this->CallMethod(instance, method_name, &ret, suspend)) return false;
+	if (ret._type != OT_BOOL) return false;
+	*res = ObjectToBool(&ret);
+	return true;
+}
+
 /* static */ bool Squirrel::CreateClassInstanceVM(HSQUIRRELVM vm, const char *class_name, void *real_instance, HSQOBJECT *instance, SQRELEASEHOOK release_hook)
 {
 	int oldtop = sq_gettop(vm);

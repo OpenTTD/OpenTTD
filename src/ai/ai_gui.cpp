@@ -103,6 +103,11 @@ struct AIListWindow : public Window {
 			sprintf(buf, "%d", selected_info->GetVersion());
 			DoDrawStringTruncated(buf, x + 5, y, TC_BLACK, this->width - x - 8);
 			y += 13;
+			if (selected_info->GetURL() != NULL) {
+				SetDParamStr(0, selected_info->GetURL());
+				DrawString(4, y, STR_AI_URL, TC_BLACK);
+				y += 13;
+			}
 			SetDParamStr(0, selected_info->GetDescription());
 			DrawStringMultiLine(4, y, STR_JUST_RAW_STRING, this->width - 8, this->widget[AIL_WIDGET_INFO_BG].bottom - y);
 		}
@@ -575,6 +580,8 @@ struct AIDebugWindow : public Window {
 
 	static CompanyID ai_debug_company;
 	int redraw_timer;
+	int last_vscroll_pos;
+	bool autoscroll;
 
 	AIDebugWindow(const WindowDesc *desc, WindowNumber number) : Window(desc, number)
 	{
@@ -587,6 +594,8 @@ struct AIDebugWindow : public Window {
 		this->vscroll.cap = 14;
 		this->vscroll.pos = 0;
 		this->resize.step_height = 12;
+		this->last_vscroll_pos = 0;
+		this->autoscroll = true;
 
 		if (ai_debug_company != INVALID_COMPANY) this->LowerWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
 
@@ -664,13 +673,35 @@ struct AIDebugWindow : public Window {
 		AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
 		_current_company = old_company;
 
-		SetVScrollCount(this, (log == NULL) ? 0 : log->used);
-		this->InvalidateWidget(AID_WIDGET_SCROLLBAR);
+		int scroll_count = (log == NULL) ? 0 : log->used;
+		if (this->vscroll.count != scroll_count) {
+			SetVScrollCount(this, scroll_count);
+
+			/* We need a repaint */
+			this->InvalidateWidget(AID_WIDGET_SCROLLBAR);
+		}
+
 		if (log == NULL) return;
 
+		/* Detect when the user scrolls the window. Enable autoscroll when the
+		 * bottom-most line becomes visible. */
+		if (this->last_vscroll_pos != this->vscroll.pos) {
+			this->autoscroll = this->vscroll.pos >= log->used - this->vscroll.cap;
+		}
+		if (this->autoscroll) {
+			int scroll_pos = max(0, log->used - this->vscroll.cap);
+			if (scroll_pos != this->vscroll.pos) {
+				this->vscroll.pos = scroll_pos;
+
+				/* We need a repaint */
+				this->InvalidateWidget(AID_WIDGET_SCROLLBAR);
+			}
+		}
+		last_vscroll_pos = this->vscroll.pos;
+
 		int y = 6;
-		for (int i = this->vscroll.pos; i < (this->vscroll.cap + this->vscroll.pos); i++) {
-			uint pos = (log->count + log->pos - i) % log->count;
+		for (int i = this->vscroll.pos; i < (this->vscroll.cap + this->vscroll.pos) && i < log->used; i++) {
+			uint pos = (i + log->pos + 1 - log->used + log->count) % log->count;
 			if (log->lines[pos] == NULL) break;
 
 			TextColour colour;
@@ -693,6 +724,8 @@ struct AIDebugWindow : public Window {
 		this->RaiseWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
 		ai_debug_company = show_ai;
 		this->LowerWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
+		this->autoscroll = true;
+		this->last_vscroll_pos = this->vscroll.pos;
 		this->SetDirty();
 	}
 
@@ -726,6 +759,7 @@ struct AIDebugWindow : public Window {
 	virtual void OnResize(Point new_size, Point delta)
 	{
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;
+		SetVScrollCount(this, this->vscroll.count); // vscroll.pos should be in a valid range
 	}
 };
 
