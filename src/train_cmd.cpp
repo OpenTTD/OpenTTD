@@ -4325,14 +4325,28 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 	} else {
 		TrainCheckIfLineEnds(v);
 		/* Loop until the train has finished moving. */
-		do {
+		for (;;) {
 			j -= adv_spd;
 			TrainController(v, NULL);
 			/* Don't continue to move if the train crashed. */
 			if (CheckTrainCollision(v)) break;
 			/* 192 spd used for going straight, 256 for going diagonally. */
 			adv_spd = (v->direction & 1) ? 192 : 256;
-		} while (j >= adv_spd);
+
+			/* No more moving this tick */
+			if (j < adv_spd || v->cur_speed == 0) break;
+
+			OrderType order_type = v->current_order.GetType();
+			/* Do not skip waypoints (incl. 'via' stations) when passing through at full speed. */
+			if ((order_type == OT_GOTO_WAYPOINT &&
+						v->dest_tile == v->tile) ||
+					(order_type == OT_GOTO_STATION &&
+						(v->current_order.GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) &&
+						IsTileType(v->tile, MP_STATION) &&
+						v->current_order.GetDestination() == GetStationIndex(v->tile))) {
+				ProcessOrders(v);
+			}
+		}
 		SetLastSpeed(v, v->cur_speed);
 	}
 

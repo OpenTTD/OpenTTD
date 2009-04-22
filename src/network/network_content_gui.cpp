@@ -123,11 +123,11 @@ public:
 		this->DrawWidgets();
 
 		/* Draw nice progress bar :) */
-		DrawFrameRect(20, 18, 20 + (int)((this->width - 40) * this->downloaded_bytes / this->total_bytes), 28, COLOUR_MAUVE, FR_NONE);
+		DrawFrameRect(20, 18, 20 + (int)((this->width - 40LL) * this->downloaded_bytes / this->total_bytes), 28, COLOUR_MAUVE, FR_NONE);
 
 		SetDParam(0, this->downloaded_bytes);
 		SetDParam(1, this->total_bytes);
-		SetDParam(2, this->downloaded_bytes * 100 / this->total_bytes);
+		SetDParam(2, this->downloaded_bytes * 100LL / this->total_bytes);
 		DrawStringCentered(this->width / 2, 35, STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, TC_GREY);
 
 		if  (this->downloaded_bytes == this->total_bytes) {

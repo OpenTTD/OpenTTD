@@ -602,7 +602,7 @@ struct BuildRoadToolbarWindow : Window {
 					_place_road_flag = (RoadFlags)((_place_road_flag & RF_DIR_Y) ? (_place_road_flag & 0x07) : (_place_road_flag >> 3));
 
 					DoCommandP(end_tile, start_tile, _place_road_flag | (_cur_roadtype << 3) | (_one_way_button_clicked << 5),
-						(_ctrl_pressed || _remove_button_clicked) ?
+						_remove_button_clicked ?
 						CMD_REMOVE_LONG_ROAD | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_road) :
 						CMD_BUILD_LONG_ROAD | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_road), CcPlaySound1D);
 					break;
