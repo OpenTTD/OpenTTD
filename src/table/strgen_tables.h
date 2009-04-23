@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file table/strgen.h Tables of commands for strgen */
+/** @file table/strgen_tables.h Tables of commands for strgen */
 
 #include "../core/enum_type.hpp"
 

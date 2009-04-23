@@ -32,7 +32,7 @@
 #define stderr stdout
 #endif /* __MORPHOS__ */
 
-#include "../table/strgen.h"
+#include "../table/strgen_tables.h"
 
 /* Compiles a list of strings into a compiled string list */
 
@@ -1217,9 +1217,9 @@ int CDECL main(int argc, char *argv[])
 						} else if (cs->proc == EmitSetXY) {
 							flags = '2'; // Command needs two parameters
 						} else if (cs->proc == EmitGender) {
-							flags = 'g'; // Command needs number of parameters defined by plural value
+							flags = 'g'; // Command needs number of parameters defined by number of genders
 						} else if (cs->proc == EmitPlural) {
-							flags = 'p'; // Command needs number of parameters defined by number of cases
+							flags = 'p'; // Command needs number of parameters defined by plural value
 						} else {
 							flags = '0'; // Command needs no parameters
 						}

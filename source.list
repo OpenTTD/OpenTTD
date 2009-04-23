@@ -511,6 +511,7 @@ table/roadveh_movement.h
 table/settings.h
 table/sprites.h
 table/station_land.h
+table/strgen_tables.h
 ../objs/langs/table/strings.h
 table/town_land.h
 table/track_land.h

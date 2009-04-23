@@ -2244,6 +2244,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\table\strgen_tables.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\..\objs\langs\table\strings.h"
 				>
 			</File>
