@@ -1650,8 +1650,7 @@ static void SaveSettings(const SettingDesc *sd, void *object)
 	const SettingDesc *i;
 	size_t length = 0;
 	for (i = sd; i->save.cmd != SL_END; i++) {
-		const void *ptr = GetVariableAddress(object, &i->save);
-		length += SlCalcObjMemberLength(ptr, &i->save);
+		length += SlCalcObjMemberLength(object, &i->save);
 	}
 	SlSetLength(length);
 
