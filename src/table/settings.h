@@ -510,8 +510,8 @@ const SettingDesc _settings[] = {
 
  SDT_CONDOMANY(GameSettings, locale.currency,                               SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 0, CUSTOM_CURRENCY_ID, _locale_currencies, STR_NULL, NULL, NULL),
  SDT_CONDOMANY(GameSettings, locale.units,                                  SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 1, 2, _locale_units,                       STR_NULL, NULL, NULL),
-   SDT_CONDSTR(GameSettings, locale.digit_group_separator,                   SLE_STRQ,118, SL_MAX_VERSION, N, NULL,                                         STR_NULL, NULL, NULL),
-   SDT_CONDSTR(GameSettings, locale.digit_group_separator_currency,          SLE_STRQ,118, SL_MAX_VERSION, N, NULL,                                         STR_NULL, NULL, NULL),
+   SDT_CONDSTR(GameSettings, locale.digit_group_separator,                   SLE_STRQ,118, SL_MAX_VERSION, N, 0, NULL,                                      STR_NULL, NULL),
+   SDT_CONDSTR(GameSettings, locale.digit_group_separator_currency,          SLE_STRQ,118, SL_MAX_VERSION, N, 0, NULL,                                      STR_NULL, NULL),
 
 	/***************************************************************************/
 	/* Unsaved setting variables. */
