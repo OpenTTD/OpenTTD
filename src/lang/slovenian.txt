@@ -6,6 +6,8 @@
 ##plural 8
 ##textdir ltr
 ##case r d t
+##digitsep .
+##digitsepcur .
 
 #
 

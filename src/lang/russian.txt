@@ -7,6 +7,8 @@
 ##textdir ltr
 ##case m f n p
 ##gender m f n p
+##digitsep .
+##digitsepcur .
 
 #
 

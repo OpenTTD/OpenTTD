@@ -5,6 +5,8 @@
 ##grflangid 0x14
 ##plural 1
 ##textdir rtl
+##digitsep ٬
+##digitsepcur ٬
 
 #
 

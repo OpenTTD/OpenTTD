@@ -7,6 +7,8 @@
 ##textdir ltr
 ##case nom big gen dat aku vok lok ins
 ##gender muški ženski srednji
+##digitsep .
+##digitsepcur .
 
 #
 

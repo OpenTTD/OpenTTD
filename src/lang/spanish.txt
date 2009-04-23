@@ -6,6 +6,8 @@
 ##plural 0
 ##textdir ltr
 ##gender masculino femenino
+##digitsep .
+##digitsepcur .
 
 #
 

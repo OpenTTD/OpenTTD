@@ -6,6 +6,8 @@
 ##plural 0
 ##textdir ltr
 ##gender masculine feminine neuter
+##digitsep .
+##digitsepcur .
 
 #
 

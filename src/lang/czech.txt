@@ -7,6 +7,8 @@
 ##textdir ltr
 ##case nom gen dat acc voc loc ins big small
 ##gender m f n
+##digitsep {NBSP}
+##digitsepcur {NBSP}
 
 #
 

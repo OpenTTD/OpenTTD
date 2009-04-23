@@ -5,6 +5,8 @@
 ##grflangid 0x23
 ##plural 0
 ##textdir ltr
+##digitsep .
+##digitsepcur .
 
 #
 

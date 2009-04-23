@@ -217,7 +217,9 @@ static char *FormatNumber(char *buff, int64 number, const char *last, const char
 
 static char *FormatCommaNumber(char *buff, int64 number, const char *last)
 {
-	return FormatNumber(buff, number, last, ",");
+	const char *separator = _settings_game.locale.digit_group_separator;
+	if (separator == NULL) separator = _langpack->digit_group_separator;
+	return FormatNumber(buff, number, last, separator);
 }
 
 static char *FormatNoCommaNumber(char *buff, int64 number, const char *last)
@@ -333,8 +335,13 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 		}
 	}
 
-	char sep[2] = { spec->separator, '\0' };
-	buff = FormatNumber(buff, number, last, sep);
+	const char *separator = _settings_game.locale.digit_group_separator_currency;
+	if (separator == NULL && _currency->separator != '\0') {
+		static char sep[] = { _currency->separator, '\0' };
+		separator = sep;
+	}
+	if (separator == NULL) separator = _langpack->digit_group_separator_currency;
+	buff = FormatNumber(buff, number, last, separator);
 	buff = strecpy(buff, multiplier, last);
 
 	/* Add suffix part, folowing symbol_pos specification.

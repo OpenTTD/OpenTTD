@@ -6,6 +6,8 @@
 ##plural 0
 ##textdir ltr
 ##gender m w n p
+##digitsep .
+##digitsepcur .
 
 #
 

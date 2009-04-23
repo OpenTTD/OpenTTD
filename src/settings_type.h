@@ -104,6 +104,8 @@ struct GUISettings {
 struct LocaleSettings {
 	byte   currency;                         ///< currency we currently use
 	byte   units;                            ///< unit system we show everything
+	char  *digit_group_separator;            ///< thousand separator for non-currencies
+	char  *digit_group_separator_currency;   ///< thousand separator for currencies
 };
 
 /** All settings related to the network. */

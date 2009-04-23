@@ -71,6 +71,8 @@ static int _next_string_id;
 
 static uint32 _hash;
 static char _lang_name[32], _lang_ownname[32], _lang_isocode[16];
+static char _lang_digit_group_separator[8];
+static char _lang_digit_group_separator_currency[8];
 static byte _lang_pluralform;
 static byte _lang_textdir;
 static uint16 _lang_winlangid;
@@ -526,6 +528,12 @@ static void HandlePragma(char *str)
 		} else {
 			error("Invalid textdir %s", str + 8);
 		}
+	} else if (!memcmp(str, "digitsep ", 9)) {
+		str += 9;
+		strecpy(_lang_digit_group_separator, strcmp(str, "{NBSP}") == 0 ? "\xC2\xA0" : str, lastof(_lang_digit_group_separator));
+	} else if (!memcmp(str, "digitsepcur ", 12)) {
+		str += 12;
+		strecpy(_lang_digit_group_separator_currency, strcmp(str, "{NBSP}") == 0 ? "\xC2\xA0" : str, lastof(_lang_digit_group_separator_currency));
 	} else if (!memcmp(str, "winlangid ", 10)) {
 		const char *buf = str + 10;
 		long langid = strtol(buf, NULL, 16);
@@ -802,6 +810,8 @@ static void ParseFile(const char *file, bool english)
 	/* For each new file we parse, reset the genders, and language codes */
 	_numgenders = 0;
 	_lang_name[0] = _lang_ownname[0] = _lang_isocode[0] = '\0';
+	strecpy(_lang_digit_group_separator, ",", lastof(_lang_digit_group_separator));
+	strecpy(_lang_digit_group_separator_currency, ",", lastof(_lang_digit_group_separator_currency));
 	_lang_textdir = TD_LTR;
 	_lang_winlangid = 0x0000; // neutral language code
 	_lang_newgrflangid = 0; // standard english
@@ -1059,6 +1069,8 @@ static void WriteLangfile(const char *filename)
 	strecpy(hdr.name, _lang_name, lastof(hdr.name));
 	strecpy(hdr.own_name, _lang_ownname, lastof(hdr.own_name));
 	strecpy(hdr.isocode, _lang_isocode, lastof(hdr.isocode));
+	strecpy(hdr.digit_group_separator, _lang_digit_group_separator, lastof(hdr.digit_group_separator));
+	strecpy(hdr.digit_group_separator_currency, _lang_digit_group_separator_currency, lastof(hdr.digit_group_separator_currency));
 
 	fwrite(&hdr, sizeof(hdr), 1, f);
 
