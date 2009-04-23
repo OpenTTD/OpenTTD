@@ -180,8 +180,7 @@ void InjectDParam(uint amount)
 	memmove(_decode_parameters + amount, _decode_parameters, sizeof(_decode_parameters) - amount * sizeof(uint64));
 }
 
-/* TODO */
-static char *FormatCommaNumber(char *buff, int64 number, const char *last)
+static char *FormatNumber(char *buff, int64 number, const char *last, const char *separator)
 {
 	uint64 divisor = 10000000000000000000ULL;
 	uint64 quot;
@@ -204,8 +203,8 @@ static char *FormatCommaNumber(char *buff, int64 number, const char *last)
 			num = num % divisor;
 		}
 		if (tot |= quot || i == 19) {
-			*buff++ = '0' + quot;
-			if ((i % 3) == 1 && i != 19) *buff++ = ',';
+			buff += seprintf(buff, last, "%i", quot);
+			if ((i % 3) == 1 && i != 19) buff = strecpy(buff, separator, last);
 		}
 
 		divisor /= 10;
@@ -216,39 +215,14 @@ static char *FormatCommaNumber(char *buff, int64 number, const char *last)
 	return buff;
 }
 
-/* TODO */
+static char *FormatCommaNumber(char *buff, int64 number, const char *last)
+{
+	return FormatNumber(buff, number, last, ",");
+}
+
 static char *FormatNoCommaNumber(char *buff, int64 number, const char *last)
 {
-	uint64 divisor = 10000000000000000000ULL;
-	uint64 quot;
-	int i;
-	uint64 tot;
-	uint64 num;
-
-	if (number < 0) {
-		buff = strecpy(buff, "-", last);
-		number = -number;
-	}
-
-	num = number;
-
-	tot = 0;
-	for (i = 0; i < 20; i++) {
-		quot = 0;
-		if (num >= divisor) {
-			quot = num / divisor;
-			num = num % divisor;
-		}
-		if (tot |= quot || i == 19) {
-			*buff++ = '0' + quot;
-		}
-
-		divisor /= 10;
-	}
-
-	*buff = '\0';
-
-	return buff;
+	return FormatNumber(buff, number, last, "");
 }
 
 static char *FormatHexNumber(char *buff, int64 number, const char *last)
@@ -332,9 +306,6 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 	 * keep this piece of data as we need it later on */
 	bool negative = number < 0;
 	const char *multiplier = "";
-	char buf[40];
-	char *p;
-	int j;
 
 	number *= spec->rate;
 
@@ -362,19 +333,8 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 		}
 	}
 
-	/* convert to ascii number and add commas */
-	p = endof(buf);
-	*--p = '\0';
-	j = 4;
-	do {
-		if (--j == 0) {
-			*--p = spec->separator;
-			j = 3;
-		}
-		*--p = '0' + (char)(number % 10);
-	} while ((number /= 10) != 0);
-	buff = strecpy(buff, p, last);
-
+	char sep[2] = { spec->separator, '\0' };
+	buff = FormatNumber(buff, number, last, sep);
 	buff = strecpy(buff, multiplier, last);
 
 	/* Add suffix part, folowing symbol_pos specification.
