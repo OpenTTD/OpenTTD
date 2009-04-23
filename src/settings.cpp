@@ -293,8 +293,9 @@ static void make_manyofmany(char *buf, const char *last, const char *many, uint3
  * @param desc SettingDesc struct that holds all information about the variable
  * @param str input string that will be parsed based on the type of desc
  * @return return the parsed value of the setting */
-static const void *string_to_val(const SettingDescBase *desc, const char *str)
+static const void *string_to_val(const SettingDescBase *desc, const char *orig_str)
 {
+	const char *str = orig_str == NULL ? "" : orig_str;
 	switch (desc->cmd) {
 	case SDT_NUMX: {
 		char *end;
@@ -325,7 +326,7 @@ static const void *string_to_val(const SettingDescBase *desc, const char *str)
 		ShowInfoF("ini: invalid setting value '%s' for '%s'", str, desc->name);
 		break;
 
-	case SDT_STRING:
+	case SDT_STRING: return orig_str;
 	case SDT_INTLIST: return str;
 	default: break;
 	}
@@ -446,12 +447,10 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 					break;
 				case SLE_VAR_STR:
 				case SLE_VAR_STRQ:
-					if (p != NULL) {
-						free(*(char**)ptr);
-						*(char**)ptr = strdup((const char*)p);
-					}
+					free(*(char**)ptr);
+					*(char**)ptr = p == NULL ? NULL : strdup((const char*)p);
 					break;
-				case SLE_VAR_CHAR: *(char*)ptr = *(char*)p; break;
+				case SLE_VAR_CHAR: if (p != NULL) *(char*)ptr = *(char*)p; break;
 				default: NOT_REACHED(); break;
 			}
 			break;

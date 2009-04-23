@@ -237,7 +237,7 @@ void IniFile::LoadFromDisk(const char *filename)
 			/* find start of parameter */
 			while (*t == '=' || *t == ' ' || *t == '\t') t++;
 
-
+			bool quoted = (*t == '\"');
 			/* remove starting quotation marks */
 			if (*t == '\"') t++;
 			/* remove ending quotation marks */
@@ -245,7 +245,8 @@ void IniFile::LoadFromDisk(const char *filename)
 			if (e > t && e[-1] == '\"') e--;
 			*e = '\0';
 
-			item->value = strndup(t, e - t);
+			/* If the value was not quoted and empty, it must be NULL */
+			item->value = (!quoted && e == t) ? NULL : strndup(t, e - t);
 		} else {
 			/* it's an orphan item */
 			ShowInfoF("ini: '%s' outside of group", buffer);
@@ -279,7 +280,6 @@ bool IniFile::SaveToDisk(const char *filename)
 		if (group->comment) fputs(group->comment, f);
 		fprintf(f, "[%s]\n", group->name);
 		for (const IniItem *item = group->item; item != NULL; item = item->next) {
-			assert(item->value != NULL);
 			if (item->comment != NULL) fputs(item->comment, f);
 
 			/* protect item->name with quotes if needed */
@@ -290,7 +290,7 @@ bool IniFile::SaveToDisk(const char *filename)
 				fprintf(f, "%s", item->name);
 			}
 
-			fprintf(f, " = %s\n", item->value);
+			fprintf(f, " = %s\n", item->value == NULL ? "" : item->value);
 		}
 	}
 	if (this->comment) fputs(this->comment, f);
