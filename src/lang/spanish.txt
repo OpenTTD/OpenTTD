@@ -319,6 +319,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}¿Está
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandonar Juego
 STR_SORT_ORDER_TIP                                              :{BLACK}Seleccione ordenación (descendiente/ascendinte)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Seleccione criterio de orden
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Selecciona criterio de filtro
 STR_SORT_BY                                                     :{BLACK}Ordenar por
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Población
@@ -341,6 +342,8 @@ STR_SORT_BY_LENGTH                                              :Longitud
 STR_SORT_BY_LIFE_TIME                                           :Tiempo de vida remanente
 STR_SORT_BY_FACILITY                                            :Tipo de estación
 STR_SORT_BY_WAITING                                             :Esperando valor de la carga
+STR_SORT_BY_RATING_MAX                                          :Clasificación de carga más alta
+STR_SORT_BY_RATING_MIN                                          :Clasificación de carga más baja
 STR_ENGINE_SORT_ENGINE_ID                                       :ID Locomotora (ordenación clásia)
 STR_ENGINE_SORT_COST                                            :Coste
 STR_ENGINE_SORT_POWER                                           :Potencia
@@ -727,6 +730,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autoguar
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selección del intervalo entre grabados automáticos del juego
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Apagado
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Cada mes
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Cada 3 meses
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Cada 6 meses
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Cada 12 meses
@@ -847,7 +851,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Conjunto
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selecciona el conjunto de gráficos base a usar
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Cada mes
 STR_AUTOSAVE_FAILED                                             :{WHITE}Error en Autoguardado
 
 STR_MONTH_JAN                                                   :Enero
@@ -935,6 +938,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Mostrar
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Mostrar señales en el lado de conducción: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Mostrar ventana de finanzas al final del año: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nuevas ordenes son 'sin parada' por defecto: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nuevos trenes paran por defecto en {ORANGE}{STRING}{LTBLUE} en la plataforma
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :cerca del fin
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :medio
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :[lejos del fin]
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Cola de vehículos de carretera (con efecto cuantificador): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Desplazar ventana mediante el cursor en los bordes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permitir sobornos a la autoridad local: {ORANGE}{STRING}
@@ -2605,6 +2612,9 @@ STR_ORDER_GO_TO                                                 :Ir a
 STR_ORDER_GO_NON_STOP_TO                                        :Ir sin paradas a
 STR_ORDER_GO_VIA                                                :Ir vía
 STR_ORDER_GO_NON_STOP_VIA                                       :Ir sin paradas vía
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[cerca del fin]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[medio]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[lejos del fin]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Carga completa de cualquier carga
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Cargar si está disponible
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Carga completa de todas las cargas
@@ -2789,6 +2799,18 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Limpiar 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reajustar el contador del retraso, así el vehículo estará en horario
 STR_SERVICE_HINT                                                :{BLACK}Saltar esta orden a menos que el servicio sea necesario
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Coste: {CURRENCY} Peso: {WEIGHT_S}{}Velocidad: {VELOCITY}  Potencia: {POWER}{}Coste Operativo: {CURRENCY}/año{}Capacidad: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Coste: {CURRENCY} Velocidad Max.: {VELOCITY}{}Capacidad: {CARGO}, {CARGO}{}Coste Mantenimiento: {CURRENCY}/año
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Coste: {CURRENCY} Velocidad Max.: {VELOCITY}{}Capacidad: {CARGO}{}Coste Mantenimiento: {CURRENCY}/año
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Edad: {LTBLUE}{STRING}{BLACK}   Coste Mantenimiento: {LTBLUE}{CURRENCY}/yr
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidad max.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Velocidad max.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Velocidad max.: {LTBLUE}{VELOCITY} {BLACK}T.E. Max.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Beneficios este año: {LTBLUE}{CURRENCY} (último año: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde el último servicio: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construido: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacidad: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacidad: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacidad: {LTBLUE}{CARGO}, {CARGO}{STRING}
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parado
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}No se puede pasar la señal en peligro al tren...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}¡Siniestrado!
@@ -3246,6 +3268,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilid
 STR_PURCHASE_INFO_COST                                          :{BLACK}Coste: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidad: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidad: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagones con motor: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Convertible a: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos los tipos de carga
@@ -3538,6 +3561,7 @@ STR_AI_RANDOM_AI                                                :IA aleatoria
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parámetros de la IA
 STR_AI_AUTHOR                                                   :Autor: {STRING}
 STR_AI_VERSION                                                  :Versión: {NUM}
+STR_AI_URL                                                      :URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Una de las AI ejecutadas ha fallado. Por favor, reporte el fallo al autor de la misma desde la ventana AI Debug.
 ########
 
