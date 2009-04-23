@@ -25,7 +25,7 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Akzeptie
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Liefert: {GOLD}
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :{G=p}Passagiere
-STR_CARGO_PLURAL_COAL                                           :{G=w}Kohle
+STR_CARGO_PLURAL_COAL                                           :{G=p}Kohle
 STR_CARGO_PLURAL_MAIL                                           :{G=w}Post
 STR_CARGO_PLURAL_OIL                                            :{G=n}Öl
 STR_CARGO_PLURAL_LIVESTOCK                                      :{G=n}Vieh
@@ -47,16 +47,16 @@ STR_CARGO_PLURAL_WHEAT                                          :{G=m}Weizen
 STR_CARGO_PLURAL_RUBBER                                         :{G=m}Kautschuk
 STR_CARGO_PLURAL_SUGAR                                          :{G=m}Zucker
 STR_CARGO_PLURAL_TOYS                                           :{G=p}Spielwaren
-STR_CARGO_PLURAL_CANDY                                          :Bonbons
-STR_CARGO_PLURAL_COLA                                           :Cola
+STR_CARGO_PLURAL_CANDY                                          :{G=p}Bonbons
+STR_CARGO_PLURAL_COLA                                           :{G=p}Cola
 STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=w}Zuckerwatte
-STR_CARGO_PLURAL_BUBBLES                                        :Luftblasen
-STR_CARGO_PLURAL_TOFFEE                                         :Karamell
-STR_CARGO_PLURAL_BATTERIES                                      :Batterien
-STR_CARGO_PLURAL_PLASTIC                                        :Plastik
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Limonade
+STR_CARGO_PLURAL_BUBBLES                                        :{G=p}Luftblasen
+STR_CARGO_PLURAL_TOFFEE                                         :{G=n}Karamell
+STR_CARGO_PLURAL_BATTERIES                                      :{G=p}Batterien
+STR_CARGO_PLURAL_PLASTIC                                        :{G=n}Plastik
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=w}Limonade
 STR_CARGO_SINGULAR_NOTHING                                      :
-STR_CARGO_SINGULAR_PASSENGER                                    :Passagier
+STR_CARGO_SINGULAR_PASSENGER                                    :{G=m}Passagier
 STR_CARGO_SINGULAR_COAL                                         :{G=w}Kohle
 STR_CARGO_SINGULAR_MAIL                                         :{G=w}Post
 STR_CARGO_SINGULAR_OIL                                          :{G=n}Öl
@@ -78,15 +78,15 @@ STR_CARGO_SINGULAR_WATER                                        :{G=n}Wasser
 STR_CARGO_SINGULAR_WHEAT                                        :{G=n}Weizen
 STR_CARGO_SINGULAR_RUBBER                                       :{G=m}Kautschuk
 STR_CARGO_SINGULAR_SUGAR                                        :{G=m}Zucker
-STR_CARGO_SINGULAR_TOY                                          :Spielware
-STR_CARGO_SINGULAR_CANDY                                        :Bonbon
-STR_CARGO_SINGULAR_COLA                                         :Cola
+STR_CARGO_SINGULAR_TOY                                          :{G=n}Spielware
+STR_CARGO_SINGULAR_CANDY                                        :{G=m}Bonbon
+STR_CARGO_SINGULAR_COLA                                         :{G=w}Cola
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=w}Zuckerwatte
-STR_CARGO_SINGULAR_BUBBLE                                       :Luftblase
-STR_CARGO_SINGULAR_TOFFEE                                       :Karamell
-STR_CARGO_SINGULAR_BATTERY                                      :Batterie
-STR_CARGO_SINGULAR_PLASTIC                                      :Plastik
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Limonade
+STR_CARGO_SINGULAR_BUBBLE                                       :{G=w}Luftblase
+STR_CARGO_SINGULAR_TOFFEE                                       :{G=n}Karamell
+STR_CARGO_SINGULAR_BATTERY                                      :{G=w}Batterie
+STR_CARGO_SINGULAR_PLASTIC                                      :{G=n}Plastik
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=w}Limonade
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} Passagier{P "" e}
 STR_QUANTITY_COAL                                               :{WEIGHT} Kohle
@@ -623,7 +623,7 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Felsige 
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Leuchtturm errichten
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Sendemast errichten
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Wüstengebiet anlegen{}Zum Entfernen Strg-Taste drücken
-STR_CREATE_LAKE                                                 :{BLACK}Wasser erzeugen.{}Baut einen Kanal. Auf Meereshöhe wird bei gedrückter Strg-Taste ein Wasserfeld erzeugt, dass das umliegendes Land flutet.
+STR_CREATE_LAKE                                                 :{BLACK}Wasser erzeugen.{}Baut einen Kanal. Auf Meereshöhe wird bei gedrückter Strg-Taste ein Wasserfeld erzeugt, welches umliegendes Land flutet.
 STR_CREATE_RIVER                                                :{BLACK}Flüsse platzieren.
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Löschen
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Diese Stadt vollständig löschen
@@ -991,7 +991,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :rechts
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Höhenstufe des Spielfeldes in einem flachen Szenario: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Landschaftsbau am Spielfeldrand erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE} Eines oder mehrere Felder am nördlichen Spielfeldrand sind nicht leer
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE} Eines oder mehrere Felder am Spielfeldrand sind nicht Wasser
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Eines oder mehrere Felder am Spielfeldrand sind nicht Wasser
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maximale Stationsgröße: {ORANGE}{STRING} {RED}(Hoher Wert verlangsamt das Spiel)
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Landeplatz automatisch warten: {ORANGE}{STRING}
@@ -1458,7 +1458,7 @@ STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Protokol
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Diese Version des Spiels entspricht nicht der des Servers
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Falsches Passwort
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}Der Server ist voll
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Sie sind auf diesem Server gesperrt
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Sie sind auf diesem Server gesperrt
 STR_NETWORK_ERR_KICKED                                          :{WHITE}Sie wurden vom Server hinausgeworfen
 STR_NETWORK_ERR_CHEATER                                         :{WHITE}Mogeln ist auf diesem Server nicht erlaubt
 
@@ -1593,21 +1593,21 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Ausricht
 STR_RAILROAD_TRACK                                              :Gleis
 STR_RAILROAD_TRAIN_DEPOT                                        :Zugdepot
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...Gelände gehört jemand anderem
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Gleis mit normalen Signalen
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Gleis mit Vorsignalen
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Gleis mit Blocksignalen
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Gleis mit Einfahrsignalen
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Gleis mit Ausfahrsignalen
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gleis mit Kombinationssignalen
 STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Gleis mit Pfadsignal
 STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Gleis mit einseitigem Pfadsignal
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Gleis mit Vor- und Hauptsignalen
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Gleis mit Haupt- und Ausfahrsignalen
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Gleis mit normalen und Kombinationssignalen
-STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Gleis mit normalem Signal und Pfadsignal
-STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Gleis mit normalem Signal und einseitigem Pfadsignal
-STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Gleis mit Vor- und Ausfahrsignalen
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Gleis mit Vor- und Kombinationssignalen
-STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Gleis mit Vor- und Pfadsignal
-STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Gleis mit Vor- und einseitigem Pfadsignal
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Gleis mit Block- und Einfahrsignalen
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Gleis mit Block- und Ausfahrsignalen
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Gleis mit Block- und Kombinationssignalen
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Gleis mit Blocksignal und Pfadsignal
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Gleis mit Blocksignal und einseitigem Pfadsignal
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Gleis mit Ein- und Ausfahrsignalen
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Gleis mit Einfahr- und Kombinationssignalen
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Gleis mit Einfahr- und Pfadsignal
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Gleis mit Einfahr- und einseitigem Pfadsignal
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Gleis mit Ausfahr- und Kombinationssignalen
 STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Gleis mit Ausfahr- und Pfadsignal
 STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Gleis mit Ausfahr- und einseitigem Pfadsignal
@@ -1625,7 +1625,7 @@ STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Straße 
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Straßenarbeiten sind im Gange
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Straßenbau
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Straßenbahnbau
-STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Brücke wählen
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Straßenbrücke wählen
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... Einbahnstraßen können keine Abzweigung haben
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Straße kann hier nicht gebaut werden...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Straßenbahn kann hier nicht gebaut werden...
@@ -1889,7 +1889,7 @@ STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Ausricht
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...muss auf Wasser gebaut werden
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Werft kann hier nicht gebaut werden...
 STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Ausrichtung der Werft auswählen
-STR_WATER_DESCRIPTION_WATER                                     :}Wasser
+STR_WATER_DESCRIPTION_WATER                                     :Wasser
 STR_WATER_DESCRIPTION_COAST_OR_RIVERBANK                        :Küste oder Flussufer
 STR_WATER_DESCRIPTION_SHIP_DEPOT                                :Werft
 STR_BRIDGE_DESCRIPTION_AQUEDUCT                                 :Aquädukt
@@ -1954,7 +1954,7 @@ STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=w}Holzmühle
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Zuckerwattewald
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=w}Bonbonfabrik
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=w}Batterieplantage
-STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=w}Colaquellen
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=p}Colaquellen
 STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=n}Spielwarengeschäft
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=w}Spielwarenfabrik
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=m}Plastikbrunnen
@@ -2011,7 +2011,7 @@ STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Platz is
 STR_BUILD_BRIDGE_INFO                                           :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Stahlhängebrücke
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Stahlträgerbrücke
-STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Selbsttragende Stahlbrücke
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Auslegerbrücke (Stahl)
 STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Betonhängebrücke
 STR_BRIDGE_NAME_WOODEN                                          :Holzbrücke
 STR_BRIDGE_NAME_CONCRETE                                        :Betonbrücke
@@ -2023,13 +2023,13 @@ STR_TUNNEL_DESCRIPTION_RAILROAD                                 :Eisenbahntunnel
 STR_TUNNEL_DESCRIPTION_ROAD                                     :Straßentunnel
 STR_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                    :Stahlhängebrücke
 STR_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                       :Stahlträgerbrücke
-STR_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                    :Selbsttragende Stahlbrücke
+STR_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                    :Auslegerbrücke (Stahl)
 STR_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE                 :Stahlbetonbrücke
 STR_BRIDGE_DESCRIPTION_RAIL_WOODEN                              :Holzbrücke
 STR_BRIDGE_DESCRIPTION_RAIL_CONCRETE                            :Betonbrücke
 STR_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                    :Stahlhängebrücke
 STR_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                        :Stahlträgerbrücke
-STR_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                    :Selbsttragende Stahlbrücke
+STR_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                    :Auslegerbrücke (Stahl)
 STR_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE                 :Stahlbetonbrücke
 STR_BRIDGE_DESCRIPTION_ROAD_WOODEN                              :Holzbrücke
 STR_BRIDGE_DESCRIPTION_ROAD_CONCRETE                            :Betonbrücke
@@ -3512,20 +3512,20 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Krawatte
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Signalauswahl
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Kann Signale hier nicht umbauen...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Blocksignal (Formsignal){}Dieses ist der einfachste Signaltyp. Er erlaubt nur einem Zug zu einem gegebenen Zeitpunkt den Signalblock zu durchfahren.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Einfahrsignal (Formsignal){}Zeigt grün, wenn im folgenden Block mindestens Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Ausfahrsignal (Formsignal){}Verhält sich wie ein normales Signal, wird jedoch benötigt, um Einfahr- oder Combosignalen den Block als "frei" zu melden.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combosignal (Formsignal){}Das Combosignal ist gleichzeitig Ausfahr- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Pfadsignal (Formsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalblock zu befahren, sofern ein Pfad reserviert werden kann. Pfadsignale können von hinten durchfahren werden.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Einseitiges Pfadsignal (Formsignal):{}Erlaubt mehreren Zügen, einen Signalblock zu befahren, sofern ein Pfad reserviert werden kann. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standardsignal (Lichtsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Schienensystem.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Ausfahrsignal (Lichtsignal){}Verhält sich wie ein normales Signal, gibt jedoch das Signal an Einfahr- und Combosignale im vorherliegenden Block weiter.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combosignal (Lichtsignal){}Das Combosignal ist gleichzeitig Ausfahr- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Blocksignal (Formsignal){}Dieses ist der einfachste Signaltyp. Er erlaubt nur einem Zug zu einem gegebenen Zeitpunkt den Signalabschnitt zu durchfahren.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Einfahrsignal (Formsignal){}Zeigt grün, wenn im folgenden Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Ausfahrsignal (Formsignal){}Verhält sich wie ein Blocksignal, wird jedoch benötigt, um Einfahr- oder Kombinationssignalen den Block als "frei" zu melden.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombinationssignal (Formsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Pfadsignal (Formsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalabschnitt zu befahren, sofern ein Pfad reserviert werden kann. Pfadsignale können von hinten durchfahren werden.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Einseitiges Pfadsignal (Formsignal):{}Erlaubt mehreren Zügen, einen Signalabschnitt zu befahren, sofern ein Pfad reserviert werden kann. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Blocksignal (Lichtsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Schienensystem.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Ausfahrsignal (Lichtsignal){}Verhält sich wie ein Blocksignal, gibt jedoch das Signal an Einfahr- und Kombinationssignale im vorherliegenden Block weiter.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinationssignal (Lichtsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Pfadsignal (Lichtsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern ein Pfad reserviert werden kann. Pfadsignale können von hinten durchfahren werden.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Einseitiges Pfadsignal (Lichtsignal):{}Erlaubt mehreren Zügen, einen Signalblock zu befahren, sofern ein Pfad reserviert werden kann. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Einseitiges Pfadsignal (Lichtsignal):{}Erlaubt mehreren Zügen, einen Signalbereich zu befahren, sofern ein Pfad reserviert werden kann. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg+Klicken ändert die bestehende Bauform.
-STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Abstand der Signale
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Abstand der Signale beim automatischen Bau durch Ziehen
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Signalabstand verringern
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Signalabstand erhöhen
 ########

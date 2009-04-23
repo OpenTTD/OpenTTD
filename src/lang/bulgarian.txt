@@ -342,6 +342,8 @@ STR_SORT_BY_LENGTH                                              :Дължина
 STR_SORT_BY_LIFE_TIME                                           :Оставащо време за експлоатация
 STR_SORT_BY_FACILITY                                            :Вид на гарата
 STR_SORT_BY_WAITING                                             :Цена на чакащият товар
+STR_SORT_BY_RATING_MAX                                          :Най-голяма оценка на товари
+STR_SORT_BY_RATING_MIN                                          :Най-ниска оценка на товари
 STR_ENGINE_SORT_ENGINE_ID                                       :Двигател № (класическо сортиране)
 STR_ENGINE_SORT_COST                                            :Цена
 STR_ENGINE_SORT_POWER                                           :Мощност
@@ -727,6 +729,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Авто
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Интервала между две автозаписваня
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :изключено
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :всеки месец
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :всеки 3 месеца
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :всеки 6 месеца
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :всеки 12 месеца
@@ -846,7 +849,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Базо
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Изберете базов графичен набор
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :всеки месец
 STR_AUTOSAVE_FAILED                                             :{WHITE}Автозапазването е неуспешно
 
 STR_MONTH_JAN                                                   :Януари
@@ -933,6 +935,8 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Дъл�
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Семафорите от страната на пътното движение: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Финансов отчет в края на годината: {ORANGE}{STRING.m}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}По подразбиране новите зповеди са 'без спиране': {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :близо до края
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :среда
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Опашка на автомобилите (със сумарен ефект): {ORANGE}{STRING.f}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Местене на екрана когато мишката е в края: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Подкупване на местната власт: {ORANGE}{STRING}
@@ -1106,6 +1110,7 @@ STR_CONFIG_SETTING_AI                                           :{ORANGE}Съп�
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Покажи опциите
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Взаимодействие
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Сигнали
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Обработката на товари
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Компютърни играчи
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршрутизация
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Влакове
@@ -2583,6 +2588,9 @@ STR_ORDER_GO_TO                                                 :Отиди до
 STR_ORDER_GO_NON_STOP_TO                                        :Отиди без спиране до
 STR_ORDER_GO_VIA                                                :Отиди чрез
 STR_ORDER_GO_NON_STOP_VIA                                       :Отиди без спиране чрез
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[близо до края]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[среда]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[далечния край]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}До пълно товарене на стоката
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Натовари ако е вазможно
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Напълно нотовари всичкиат товар
@@ -2766,6 +2774,9 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Изчи
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset the lateness counter, so the vehicle will be on time
 STR_SERVICE_HINT                                                :{BLACK}Пропусни освен ако е необходим ремонт
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Цена: {CURRENCY} Тегло: {WEIGHT_S}{}Скорост: {VELOCITY}  Мощност: {POWER}{}Разход: {CURRENCY}/г.{}Капацитет: {CARGO}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Капацитет: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Капацитет: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Капацитет: {LTBLUE}{CARGO}, {CARGO}{STRING}
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Спрян
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Влака не може да пропусне сигнала при опасност...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Катастрофа!
@@ -3221,6 +3232,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Макс
 STR_PURCHASE_INFO_COST                                          :{BLACK}Цена: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Тегло: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Цема {GOLD}{CURRENCY}{BLACK} Скорост: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Капацитет: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Вагони с мощност: {GOLD}+{POWER}{BLACK} Тегло: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Преобразуваем до: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всички видове товар
@@ -3503,6 +3515,7 @@ STR_AI_RANDOM_AI                                                :Случаен 
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Параметри
 STR_AI_AUTHOR                                                   :Автор: {STRING}
 STR_AI_VERSION                                                  :Версия: {NUM}
+STR_AI_URL                                                      :URL: {STRING}
 ########
 
 ############ town controlled noise level

@@ -26,102 +26,102 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Přijím
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Poskytuje: {GOLD}
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :cestující
-STR_CARGO_PLURAL_PASSENGERS.big                                         :Cestující
-STR_CARGO_PLURAL_PASSENGERS.gen                                         :cestujících
+STR_CARGO_PLURAL_PASSENGERS.big                                 :Cestující
+STR_CARGO_PLURAL_PASSENGERS.gen                                 :cestujících
 STR_CARGO_PLURAL_COAL                                           :uhlí
-STR_CARGO_PLURAL_COAL.big                                               :Uhlí
+STR_CARGO_PLURAL_COAL.big                                       :Uhlí
 STR_CARGO_PLURAL_MAIL                                           :pošta
-STR_CARGO_PLURAL_MAIL.acc                                               :poštu
-STR_CARGO_PLURAL_MAIL.big                                               :Pošta
-STR_CARGO_PLURAL_MAIL.gen                                               :pošty
+STR_CARGO_PLURAL_MAIL.acc                                       :poštu
+STR_CARGO_PLURAL_MAIL.big                                       :Pošta
+STR_CARGO_PLURAL_MAIL.gen                                       :pošty
 STR_CARGO_PLURAL_OIL                                            :ropa
-STR_CARGO_PLURAL_OIL.acc                                                :ropu
-STR_CARGO_PLURAL_OIL.big                                                :Ropa
-STR_CARGO_PLURAL_OIL.gen                                                :ropy
+STR_CARGO_PLURAL_OIL.acc                                        :ropu
+STR_CARGO_PLURAL_OIL.big                                        :Ropa
+STR_CARGO_PLURAL_OIL.gen                                        :ropy
 STR_CARGO_PLURAL_LIVESTOCK                                      :dobytek
-STR_CARGO_PLURAL_LIVESTOCK.big                                          :Dobytek
-STR_CARGO_PLURAL_LIVESTOCK.gen                                          :dobytka
+STR_CARGO_PLURAL_LIVESTOCK.big                                  :Dobytek
+STR_CARGO_PLURAL_LIVESTOCK.gen                                  :dobytka
 STR_CARGO_PLURAL_GOODS                                          :zboží
-STR_CARGO_PLURAL_GOODS.big                                              :Zboží
+STR_CARGO_PLURAL_GOODS.big                                      :Zboží
 STR_CARGO_PLURAL_GRAIN                                          :zrní
-STR_CARGO_PLURAL_GRAIN.big                                              :Zrní
+STR_CARGO_PLURAL_GRAIN.big                                      :Zrní
 STR_CARGO_PLURAL_WOOD                                           :dřevo
-STR_CARGO_PLURAL_WOOD.big                                               :Dřevo
-STR_CARGO_PLURAL_WOOD.gen                                               :dřeva
+STR_CARGO_PLURAL_WOOD.big                                       :Dřevo
+STR_CARGO_PLURAL_WOOD.gen                                       :dřeva
 STR_CARGO_PLURAL_IRON_ORE                                       :železná ruda
-STR_CARGO_PLURAL_IRON_ORE.acc                                           :železnou rudu
-STR_CARGO_PLURAL_IRON_ORE.big                                           :Železná ruda
-STR_CARGO_PLURAL_IRON_ORE.gen                                           :železné rudy
+STR_CARGO_PLURAL_IRON_ORE.acc                                   :železnou rudu
+STR_CARGO_PLURAL_IRON_ORE.big                                   :Železná ruda
+STR_CARGO_PLURAL_IRON_ORE.gen                                   :železné rudy
 STR_CARGO_PLURAL_STEEL                                          :ocel
-STR_CARGO_PLURAL_STEEL.big                                              :Ocel
-STR_CARGO_PLURAL_STEEL.gen                                              :oceli
+STR_CARGO_PLURAL_STEEL.big                                      :Ocel
+STR_CARGO_PLURAL_STEEL.gen                                      :oceli
 STR_CARGO_PLURAL_VALUABLES                                      :ceniny
-STR_CARGO_PLURAL_VALUABLES.big                                          :Ceniny
-STR_CARGO_PLURAL_VALUABLES.gen                                          :cenin
+STR_CARGO_PLURAL_VALUABLES.big                                  :Ceniny
+STR_CARGO_PLURAL_VALUABLES.gen                                  :cenin
 STR_CARGO_PLURAL_COPPER_ORE                                     :měděná ruda
-STR_CARGO_PLURAL_COPPER_ORE.acc                                         :měděnou rudu
-STR_CARGO_PLURAL_COPPER_ORE.big                                         :Měděná ruda
-STR_CARGO_PLURAL_COPPER_ORE.gen                                         :měděné rudy
+STR_CARGO_PLURAL_COPPER_ORE.acc                                 :měděnou rudu
+STR_CARGO_PLURAL_COPPER_ORE.big                                 :Měděná ruda
+STR_CARGO_PLURAL_COPPER_ORE.gen                                 :měděné rudy
 STR_CARGO_PLURAL_MAIZE                                          :kukuřice
-STR_CARGO_PLURAL_MAIZE.acc                                              :kukuřici
-STR_CARGO_PLURAL_MAIZE.big                                              :Kukuřice
+STR_CARGO_PLURAL_MAIZE.acc                                      :kukuřici
+STR_CARGO_PLURAL_MAIZE.big                                      :Kukuřice
 STR_CARGO_PLURAL_FRUIT                                          :ovoce
-STR_CARGO_PLURAL_FRUIT.big                                              :Ovoce
+STR_CARGO_PLURAL_FRUIT.big                                      :Ovoce
 STR_CARGO_PLURAL_DIAMONDS                                       :diamanty
-STR_CARGO_PLURAL_DIAMONDS.big                                           :Diamanty
-STR_CARGO_PLURAL_DIAMONDS.gen                                           :diamantů
+STR_CARGO_PLURAL_DIAMONDS.big                                   :Diamanty
+STR_CARGO_PLURAL_DIAMONDS.gen                                   :diamantů
 STR_CARGO_PLURAL_FOOD                                           :jídlo
-STR_CARGO_PLURAL_FOOD.big                                               :Jídlo
-STR_CARGO_PLURAL_FOOD.gen                                               :jídlo
+STR_CARGO_PLURAL_FOOD.big                                       :Jídlo
+STR_CARGO_PLURAL_FOOD.gen                                       :jídlo
 STR_CARGO_PLURAL_PAPER                                          :papír
-STR_CARGO_PLURAL_PAPER.big                                              :Papír
-STR_CARGO_PLURAL_PAPER.gen                                              :papíru
+STR_CARGO_PLURAL_PAPER.big                                      :Papír
+STR_CARGO_PLURAL_PAPER.gen                                      :papíru
 STR_CARGO_PLURAL_GOLD                                           :zlato
-STR_CARGO_PLURAL_GOLD.big                                               :Zlato
-STR_CARGO_PLURAL_GOLD.gen                                               :zlata
+STR_CARGO_PLURAL_GOLD.big                                       :Zlato
+STR_CARGO_PLURAL_GOLD.gen                                       :zlata
 STR_CARGO_PLURAL_WATER                                          :voda
-STR_CARGO_PLURAL_WATER.acc                                              :vodu
-STR_CARGO_PLURAL_WATER.big                                              :Voda
-STR_CARGO_PLURAL_WATER.gen                                              :vody
+STR_CARGO_PLURAL_WATER.acc                                      :vodu
+STR_CARGO_PLURAL_WATER.big                                      :Voda
+STR_CARGO_PLURAL_WATER.gen                                      :vody
 STR_CARGO_PLURAL_WHEAT                                          :pšenice
-STR_CARGO_PLURAL_WHEAT.acc                                              :pšenici
-STR_CARGO_PLURAL_WHEAT.big                                              :Pšenice
+STR_CARGO_PLURAL_WHEAT.acc                                      :pšenici
+STR_CARGO_PLURAL_WHEAT.big                                      :Pšenice
 STR_CARGO_PLURAL_RUBBER                                         :kaučuk
-STR_CARGO_PLURAL_RUBBER.big                                             :Kaučuk
-STR_CARGO_PLURAL_RUBBER.gen                                             :kaučuku
+STR_CARGO_PLURAL_RUBBER.big                                     :Kaučuk
+STR_CARGO_PLURAL_RUBBER.gen                                     :kaučuku
 STR_CARGO_PLURAL_SUGAR                                          :cukr
-STR_CARGO_PLURAL_SUGAR.big                                              :Cukr
-STR_CARGO_PLURAL_SUGAR.gen                                              :cukru
+STR_CARGO_PLURAL_SUGAR.big                                      :Cukr
+STR_CARGO_PLURAL_SUGAR.gen                                      :cukru
 STR_CARGO_PLURAL_TOYS                                           :hračky
-STR_CARGO_PLURAL_TOYS.big                                               :Hračky
-STR_CARGO_PLURAL_TOYS.gen                                               :hraček
+STR_CARGO_PLURAL_TOYS.big                                       :Hračky
+STR_CARGO_PLURAL_TOYS.gen                                       :hraček
 STR_CARGO_PLURAL_CANDY                                          :bonbony
-STR_CARGO_PLURAL_CANDY.big                                              :Bonbony
-STR_CARGO_PLURAL_CANDY.gen                                              :bonbonů
+STR_CARGO_PLURAL_CANDY.big                                      :Bonbony
+STR_CARGO_PLURAL_CANDY.gen                                      :bonbonů
 STR_CARGO_PLURAL_COLA                                           :kola
-STR_CARGO_PLURAL_COLA.acc                                               :kolu
-STR_CARGO_PLURAL_COLA.big                                               :Kola
-STR_CARGO_PLURAL_COLA.gen                                               :koly
+STR_CARGO_PLURAL_COLA.acc                                       :kolu
+STR_CARGO_PLURAL_COLA.big                                       :Kola
+STR_CARGO_PLURAL_COLA.gen                                       :koly
 STR_CARGO_PLURAL_COTTON_CANDY                                   :cukrová vata
-STR_CARGO_PLURAL_COTTON_CANDY.acc                                       :cukrovou vatu
-STR_CARGO_PLURAL_COTTON_CANDY.big                                       :Cukrová vata
-STR_CARGO_PLURAL_COTTON_CANDY.gen                                       :cukrové vaty
+STR_CARGO_PLURAL_COTTON_CANDY.acc                               :cukrovou vatu
+STR_CARGO_PLURAL_COTTON_CANDY.big                               :Cukrová vata
+STR_CARGO_PLURAL_COTTON_CANDY.gen                               :cukrové vaty
 STR_CARGO_PLURAL_BUBBLES                                        :bubliny
-STR_CARGO_PLURAL_BUBBLES.big                                            :Bubliny
-STR_CARGO_PLURAL_BUBBLES.gen                                            :bublin
+STR_CARGO_PLURAL_BUBBLES.big                                    :Bubliny
+STR_CARGO_PLURAL_BUBBLES.gen                                    :bublin
 STR_CARGO_PLURAL_TOFFEE                                         :karamel
-STR_CARGO_PLURAL_TOFFEE.big                                             :Karamel
-STR_CARGO_PLURAL_TOFFEE.gen                                             :karamelu
+STR_CARGO_PLURAL_TOFFEE.big                                     :Karamel
+STR_CARGO_PLURAL_TOFFEE.gen                                     :karamelu
 STR_CARGO_PLURAL_BATTERIES                                      :baterie
-STR_CARGO_PLURAL_BATTERIES.big                                          :Baterie
-STR_CARGO_PLURAL_BATTERIES.gen                                          :baterií
+STR_CARGO_PLURAL_BATTERIES.big                                  :Baterie
+STR_CARGO_PLURAL_BATTERIES.gen                                  :baterií
 STR_CARGO_PLURAL_PLASTIC                                        :plast
-STR_CARGO_PLURAL_PLASTIC.big                                            :Plast
-STR_CARGO_PLURAL_PLASTIC.gen                                            :plastu
+STR_CARGO_PLURAL_PLASTIC.big                                    :Plast
+STR_CARGO_PLURAL_PLASTIC.gen                                    :plastu
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :limonáda
-STR_CARGO_PLURAL_FIZZY_DRINKS.acc                                       :limonádu
-STR_CARGO_PLURAL_FIZZY_DRINKS.big                                       :Limonáda
-STR_CARGO_PLURAL_FIZZY_DRINKS.gen                                       :limonád
+STR_CARGO_PLURAL_FIZZY_DRINKS.acc                               :limonádu
+STR_CARGO_PLURAL_FIZZY_DRINKS.big                               :Limonáda
+STR_CARGO_PLURAL_FIZZY_DRINKS.gen                               :limonád
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :cestujících
 STR_CARGO_SINGULAR_COAL                                         :uhlí
@@ -386,6 +386,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Opravdu
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Konec hry
 STR_SORT_ORDER_TIP                                              :{BLACK}Vyber způsob řazeni (sestupně/vzestupně)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Vyber, podle čeho se má třídit
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Vyber třídící podmínku
 STR_SORT_BY                                                     :{BLACK}Řadit podle
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populace
@@ -408,6 +409,8 @@ STR_SORT_BY_LENGTH                                              :délky
 STR_SORT_BY_LIFE_TIME                                           :zbývající životnosti
 STR_SORT_BY_FACILITY                                            :druhu stanice
 STR_SORT_BY_WAITING                                             :množství čekajícího nákladu
+STR_SORT_BY_RATING_MAX                                          :nejlepší hodnocení přepravy
+STR_SORT_BY_RATING_MIN                                          :nejhorší hodnocení přepravy
 STR_ENGINE_SORT_ENGINE_ID                                       :ID vozu (klasické pořadí)
 STR_ENGINE_SORT_COST                                            :ceny
 STR_ENGINE_SORT_POWER                                           :výkonu
@@ -794,6 +797,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automati
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Volba intervalu mezi automatickým ukládáním hry
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Vypnuto
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Každý měsíc
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Každé 3 měsíce
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Každých 6 měsíců
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Každých 12 měsíců
@@ -914,7 +918,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Základn
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Zvolte základní sadu grafiky
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Každý měsíc
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatické uložení selhalo
 
 STR_MONTH_JAN                                                   :Leden
@@ -1002,6 +1005,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Ukazova
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Ukazovat semafory na straně, kde jezdí silniční vozidla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Ukazovat finanční okno na konci každého roku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Vydávat nové příkazy jako 'bez zastavení': {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Vlaky normálně zastavují {ORANGE}{STRING}{LTBLUE} nástupiště
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :na začátku
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :uprostřed
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :na konci
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Silniční vozidla stojí fronty (s kvantovým efektem): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Posouvat okno, když je kurzor na okraji: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Povolit úplatek místní správě: {ORANGE}{STRING}
@@ -1208,8 +1215,8 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :původní {BLUE
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(nedoporučuje se)
 
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Rozmer X mapy: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Rozmer Y mapy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Šířka mapy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Výška mapy: {ORANGE}{STRING}
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :vypnuto
@@ -2654,17 +2661,17 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Vrtulník Power
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Zpráva od výrobce dopravních prostředků
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Právě jsme vyvinuli nov{G ou ý é} {STRING.acc}. Měl byste zájem o roční výhradní právo na používání tohoto prostředku, aby byl otestován před uvedením na trh?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}lokomotiva
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.acc                                :{G=f}lokomotivu
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.dat                                :
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.acc                      :{G=f}lokomotivu
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.dat                      :
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}silniční vozidlo
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}letadlo
 STR_ENGINE_PREVIEW_SHIP                                         :{G=f}loď
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}lokomotiva pro monorail
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.acc                                :{G=f}lokomotivu pro monorail
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.dat                                :
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.acc                      :{G=f}lokomotivu pro monorail
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.dat                      :
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}lokomotiva Maglev
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.acc                                  :{G=f}lokomotivu Maglev
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.dat                                  :
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.acc                        :{G=f}lokomotivu Maglev
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.dat                        :
 
 ##id 0x8800
 STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Železniční depo {TOWN}
@@ -2678,6 +2685,9 @@ STR_ORDER_GO_TO                                                 :Jet do
 STR_ORDER_GO_NON_STOP_TO                                        :Jet bez zastavení do
 STR_ORDER_GO_VIA                                                :Jet přes
 STR_ORDER_GO_NON_STOP_VIA                                       :Jet bez zastavení přes
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[na začátku]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[uprostřed]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[na konci]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Plně naložit čímkoli
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Pokud možno naložit
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Plně naložit vším
@@ -2862,6 +2872,19 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Zrušit 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Smazat zpoždění, takže vozidlo pojede na čas
 STR_SERVICE_HINT                                                :{BLACK}Přeskoč tento cíl, pokud není potřeba pravidelná údržba
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Hmotnost: {WEIGHT_S}{}Rychlost: {VELOCITY}  Výkon: {POWER}{}Cena provozu: {CURRENCY} ročně{}Kapacita: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {CARGO}, {CARGO}{}Cena provozu: {CURRENCY} ročně
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {CARGO}{}Cena provozu: {CURRENCY} ročně
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Stáří: {LTBLUE}{STRING}{BLACK}   Cena provozu: {LTBLUE}{CURRENCY} ročně
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_S} {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rychlost: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_S} {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rychlost: {LTBLUE}{VELOCITY} {BLACK}Max. tažná síla: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Letošní zisk: {LTBLUE}{CURRENCY} (vloni: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Koupeno: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapacita: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapacita: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacita: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Porucha
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zastaveno
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nemohu vlak nechat projet semafory v nebezpečí...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Nehoda!
@@ -3319,6 +3342,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. spo
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Poháněné vagony: {GOLD}+{POWER}{BLACK} Hmotnost: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Refitovatelné na: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Všechny druhy nákladu
@@ -3611,6 +3635,7 @@ STR_AI_RANDOM_AI                                                :Náhodná AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametery AI
 STR_AI_AUTHOR                                                   :Autor: {STRING}
 STR_AI_VERSION                                                  :Verze: {NUM}
+STR_AI_URL                                                      :URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Některá z bežících AI skončila s chybou. Prosím oznamte toto autorovi AI spolu se screenshotem okna Ladění AI.
 ########
 
