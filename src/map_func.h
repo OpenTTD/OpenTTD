@@ -431,4 +431,9 @@ static inline TileIndex RandomTileSeed(uint32 r)
  */
 #define RandomTile() RandomTileSeed(Random())
 
+/**
+ * Finds the distance for the closest tile with water/land given a tile
+ */
+uint GetClosestWaterDistance(TileIndex tile, bool water);
+
 #endif /* MAP_FUNC_H */
