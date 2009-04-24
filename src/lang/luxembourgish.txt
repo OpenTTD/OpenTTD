@@ -320,6 +320,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Sidd di
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Spill opginn
 STR_SORT_ORDER_TIP                                              :{BLACK}Richtung fir ze sortéieren (oofsteigend/opsteigend)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Argument fir ze sortéieren
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Filterkritère wielen
 STR_SORT_BY                                                     :{BLACK}Sortéier noo
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Bevölkerung
@@ -342,6 +343,8 @@ STR_SORT_BY_LENGTH                                              :Längt
 STR_SORT_BY_LIFE_TIME                                           :Reschtlaafzäit
 STR_SORT_BY_FACILITY                                            :Statiounstyp
 STR_SORT_BY_WAITING                                             :Luedungswert
+STR_SORT_BY_RATING_MAX                                          :Héchsten Luedungsbewertung
+STR_SORT_BY_RATING_MIN                                          :Nidregsten Luedungsbewertung
 STR_ENGINE_SORT_ENGINE_ID                                       :LokID (klassësch Sortéierung)
 STR_ENGINE_SORT_COST                                            :Käschten
 STR_ENGINE_SORT_POWER                                           :Kraaft
@@ -728,6 +731,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autospä
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Wiel den Intervall aus fir d'Automatëschspäicherung
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Aus
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :All Mount
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :All 3 Méint
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :All 6 Méint
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :All 12 Méint
@@ -848,7 +852,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Basis Gr
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Wielt den Basis Grafikset fir ze benotzen
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :All Mount
 STR_AUTOSAVE_FAILED                                             :{WHITE}Fehler beim Autospäicheren
 
 STR_MONTH_JAN                                                   :Januar
@@ -936,6 +939,9 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Ëmmer 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Weist d'Signaler op der Fuerersäit: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Weist d'Finanzen um Ënn vum Joër: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Néi Opträg sinn 'non-stop': {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :Noot Enn
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :Mëtt
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :Wäit Enn
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Stroossengefiehrerschlaang (mat Quanteneffekter): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}D'Fenster schwenken wann d'Maus um Rand ass: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Erlaabt Bestiechung vun den Gemengen: {ORANGE}{STRING}
@@ -1187,6 +1193,9 @@ STR_CANT_BUILD_CANALS                                           :{WHITE}Kann hei
 STR_BUILD_CANALS_TIP                                            :{BLACK}Kanal bauen.
 STR_LANDINFO_CANAL                                              :Kanal
 
+STR_CANT_BUILD_LOCKS                                            :{WHITE}Kann keen Schlass héi setzen...
+STR_BUILD_LOCKS_TIP                                             :{BLACK}Schlass sétzen
+STR_LANDINFO_LOCK                                               :Schlass
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Kann hei keen Floss platzéiren...
 STR_LANDINFO_RIVER                                              :Floss
@@ -2572,6 +2581,9 @@ STR_ORDER_GO_TO                                                 :Géi op
 STR_ORDER_GO_NON_STOP_TO                                        :Géi non-stop op
 STR_ORDER_GO_VIA                                                :Géi iwert
 STR_ORDER_GO_NON_STOP_VIA                                       :Géi non-stop iwert
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[noot Enn]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[Mëtt]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[wäit Enn]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Voll lueden mat der Wuer
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lueden wann méiglech
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Alles voll lueden
@@ -2745,6 +2757,11 @@ STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Optragsl
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Iwersprang den momentanen Optrag. CTRL+Klick iwerspréngt op den ungewieltenen Optrag
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Läscht den ungewieltenen Optrag
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Sëtzt en neien Optrag firun den ungewieltenen Optrag, oder un d'Ënn vun der Lëscht an
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. Geschwindegkeet: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebaut: {LTBLUE}{NUM}{BLACK} Wärt: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapazitéit: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapazitéit: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapazitéit: {LTBLUE}{CARGO}, {CARGO}{STRING}
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Gestoppt
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kann den Zuch nët bei Gefohr lanscht d'Signal schécken...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Onfall!
@@ -2756,12 +2773,19 @@ STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT
 STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Kann d'Richtung vum Zuch nët äneren...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Zuchgefiehrttyp ëmbenennen
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kann den Zuchgefiehrttyp nët ëmbënennen...
+STR_CLEAR_TIME                                                  :{BLACK}Zäit läschen
 
+STR_TRAIN_STOPPING                                              :{RED}Stopt
+STR_TRAIN_STOPPING_VEL                                          :{RED}Stopt, {VELOCITY}
 STR_TRAIN_NO_POWER                                              :{RED}Keng Energie
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Néi {STRING} verfügbar!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Néi {STRING} verfügbar!  -  {ENGINE}
 
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zäit wiesselen
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofëllen
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Stroossengefiehrt am Wee
@@ -2775,6 +2799,10 @@ STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...muss 
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kann d'Stroossengefiehrt nët verkaafen...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kann d'Stroossengefiehrt nët stoppen/starten...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} waart am Depot
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Um Wee fir {TOWN} Stroossendepot
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Um Wee fir {TOWN} Stroossendepot, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Revisioun am {TOWN} Stroossendepot
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisioun am {TOWN} Stroossendepot, {VELOCITY}
 STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Kann d'Gefiehrt nët an den Depot schécken...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kann den Depot nët fannen
 STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Stroossengefiehrer - klcikt op en Gefiehrt fir Informatiounen
@@ -2790,6 +2818,10 @@ STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Zitt d'S
 STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Zentréiert d'Unsiicht op den Depot
 STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Stroossengefiehrt Lëscht - klcikt op en Gefiehrt fir Informatiounen
 STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Baut dat ungewieltent Stroossengefiehrt
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapazitéit: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_QUERY_ROAD_RENAME                                           :{WHITE}Stroossengefiehrt benennen
 STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Kann d'Stroossengefiehrt nët bennenen...

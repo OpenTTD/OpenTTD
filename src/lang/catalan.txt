@@ -731,6 +731,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Desa aut
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selecciona l'interval en que el joc es desa automàticament
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Inactiu
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Cada mes
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Cada 3 mesos
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Cada 6 mesos
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Cada 12 mesos
@@ -851,7 +852,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Conjunt 
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selecciona el conjunt de gràfics bàsics a utilitzar
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Cada mes
 STR_AUTOSAVE_FAILED                                             :{WHITE}Ha fallat el desat automàtic
 
 STR_MONTH_JAN                                                   :Gener
@@ -2800,6 +2800,19 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Esborra 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reseteja el comptador de retards, de manera que el vehicle serà puntual
 STR_SERVICE_HINT                                                :{BLACK}Saltar l'ordre a menys que es necessiti manteniment
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {CURRENCY} Pes: {WEIGHT_S}{}Velocitat: {VELOCITY}  Potència: {POWER}{}Cost de circulació: {CURRENCY}/any{}Capacitat: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Cost: {CURRENCY} Vel. Max: {VELOCITY}{}Capacitat: {CARGO}, {CARGO}{}Cost d'utilització: {CURRENCY}/any
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Cost: {CURRENCY} Vel. Max: {VELOCITY}{}Capacitat: {CARGO}{}Cost d'utilització: {CURRENCY}/any
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Anys: {LTBLUE}{STRING}{BLACK}   Cost d'utilització: {LTBLUE}{CURRENCY}/any
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Vel. Max: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pes: {LTBLUE}{WEIGHT_S} {BLACK}Potència: {LTBLUE}{POWER}{BLACK} Vel. Max: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pes: {LTBLUE}{WEIGHT_S} {BLACK}Potència: {LTBLUE}{POWER}{BLACK} Vel. Max: {LTBLUE}{VELOCITY} {BLACK}T.E. Max.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Guanys d'aquest any: {LTBLUE}{CURRENCY} (darrer any: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilitat: {LTBLUE}{COMMA}%  {BLACK}Avaries des de la darrera revisió: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Fabricat: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacitat: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacitat: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacitat: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Avariat
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parat
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}No pots fer que un tren passi d'una senyal amb perill...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Accident!
@@ -3257,6 +3270,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Ren
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pes: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Velocitat: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitat: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagons Automotrius: {GOLD}+{POWER}{BLACK} Pes: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Remodelable a: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Totes les càrregues
@@ -3549,6 +3563,7 @@ STR_AI_RANDOM_AI                                                :IA Aleatòria
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paràmetres IA
 STR_AI_AUTHOR                                                   :Autor: {STRING}
 STR_AI_VERSION                                                  :Versió: {NUM}
+STR_AI_URL                                                      :URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Una de les IAs s'ha penjat. Si us plau reporta això a l'autor de la IA amb una captura de pantalla de la finestra de depuració IA.
 ########
 

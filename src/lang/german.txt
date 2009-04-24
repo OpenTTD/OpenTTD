@@ -5,9 +5,9 @@
 ##grflangid 0x02
 ##plural 0
 ##textdir ltr
-##gender m w n p
 ##digitsep .
 ##digitsepcur .
+##gender m w n p
 
 #
 
@@ -27,7 +27,7 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Akzeptie
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Liefert: {GOLD}
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :{G=p}Passagiere
-STR_CARGO_PLURAL_COAL                                           :{G=p}Kohle
+STR_CARGO_PLURAL_COAL                                           :{G=w}Kohle
 STR_CARGO_PLURAL_MAIL                                           :{G=w}Post
 STR_CARGO_PLURAL_OIL                                            :{G=n}Öl
 STR_CARGO_PLURAL_LIVESTOCK                                      :{G=n}Vieh
@@ -50,7 +50,7 @@ STR_CARGO_PLURAL_RUBBER                                         :{G=m}Kautschuk
 STR_CARGO_PLURAL_SUGAR                                          :{G=m}Zucker
 STR_CARGO_PLURAL_TOYS                                           :{G=p}Spielwaren
 STR_CARGO_PLURAL_CANDY                                          :{G=p}Bonbons
-STR_CARGO_PLURAL_COLA                                           :{G=p}Cola
+STR_CARGO_PLURAL_COLA                                           :{G=w}Cola
 STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=w}Zuckerwatte
 STR_CARGO_PLURAL_BUBBLES                                        :{G=p}Luftblasen
 STR_CARGO_PLURAL_TOFFEE                                         :{G=n}Karamell
