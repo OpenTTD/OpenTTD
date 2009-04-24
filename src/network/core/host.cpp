@@ -76,7 +76,8 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // BE
 				sockaddr_storage address;
 				memset(&address, 0, sizeof(address));
 				((sockaddr_in*)&address)->sin_addr.s_addr = htonl(ip | ~netmask);
-				*broadcast->Append() = NetworkAddress(address, sizeof(sockaddr));
+				NetworkAddress addr(address, sizeof(sockaddr));
+				if (!broadcast->Contains(addr)) *broadcast->Append() = addr;
 				index++;
 			}
 			if (read < 0) {
@@ -100,7 +101,8 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // GE
 		if (ifa->ifa_broadaddr == NULL) continue;
 		if (ifa->ifa_broadaddr->sa_family != AF_INET) continue;
 
-		*broadcast->Append() = NetworkAddress(ifa->ifa_broadaddr, sizeof(sockaddr));
+		NetworkAddress addr(ifa->ifa_broadaddr, sizeof(sockaddr));
+		if (!broadcast->Contains(addr)) *broadcast->Append() = addr;
 	}
 	freeifaddrs(ifap);
 }
@@ -135,7 +137,8 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // Wi
 		/* iiBroadcast is unusable, because it always seems to be set to 255.255.255.255. */
 		memcpy(&address, &ifo[j].iiAddress.Address, sizeof(sockaddr));
 		((sockaddr_in*)&address)->sin_addr.s_addr = ifo[j].iiAddress.AddressIn.sin_addr.s_addr | ~ifo[j].iiNetmask.AddressIn.sin_addr.s_addr;
-		*broadcast->Append() = NetworkAddress(address, sizeof(sockaddr));
+		NetworkAddress addr(address, sizeof(sockaddr));
+		if (!broadcast->Contains(addr)) *broadcast->Append() = addr;
 	}
 
 	free(ifo);
@@ -172,7 +175,8 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // !G
 			if (ioctl(sock, SIOCGIFFLAGS, &r) != -1 &&
 					r.ifr_flags & IFF_BROADCAST &&
 					ioctl(sock, SIOCGIFBRDADDR, &r) != -1) {
-				*broadcast->Append() = NetworkAddress(&r.ifr_broadaddr, sizeof(sockaddr));
+				NetworkAddress addr(&r.ifr_broadaddr, sizeof(sockaddr));
+				if (!broadcast->Contains(addr)) *broadcast->Append() = addr;
 			}
 		}
 
