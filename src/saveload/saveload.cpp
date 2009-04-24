@@ -145,17 +145,28 @@ static void SlReadFill()
 }
 
 static inline size_t SlGetOffs() {return _sl.offs_base - (_sl.bufe - _sl.bufp);}
+static inline uint SlReadArrayLength();
 
 /** Return the size in bytes of a certain type of normal/atomic variable
  * as it appears in memory. See VarTypes
  * @param conv VarType type of variable that is used for calculating the size
  * @return Return the size of this type in bytes */
-static inline byte SlCalcConvMemLen(VarType conv)
+static inline uint SlCalcConvMemLen(VarType conv)
 {
 	static const byte conv_mem_size[] = {1, 1, 1, 2, 2, 4, 4, 8, 8, 0};
 	byte length = GB(conv, 4, 4);
-	assert(length < lengthof(conv_mem_size));
-	return conv_mem_size[length];
+
+	switch (length << 4) {
+		case SLE_VAR_STRB:
+		case SLE_VAR_STRBQ:
+		case SLE_VAR_STR:
+		case SLE_VAR_STRQ:
+			return SlReadArrayLength();
+
+		default:
+			assert(length < lengthof(conv_mem_size));
+			return conv_mem_size[length];
+	}
 }
 
 /** Return the size in bytes of a certain type of normal/atomic variable
