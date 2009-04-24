@@ -2267,10 +2267,7 @@ void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, ViewportDrag
 	if (_thd.place_mode == HT_RECT) {
 		_thd.place_mode = HT_SPECIAL;
 		_thd.next_drawstyle = HT_RECT;
-	} else if (_thd.place_mode & HT_RAIL) {
-		_thd.place_mode = HT_SPECIAL;
-		_thd.next_drawstyle = HT_RAIL;
-	} else if (_thd.place_mode & HT_LINE) {
+	} else if (_thd.place_mode & (HT_RAIL | HT_LINE)) {
 		_thd.place_mode = HT_SPECIAL;
 		_thd.next_drawstyle = _thd.drawstyle;
 	} else {
