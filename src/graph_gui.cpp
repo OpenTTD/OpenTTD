@@ -37,6 +37,7 @@ enum GraphLegendWidgetNumbers {
 	GLW_BACKGROUND,
 
 	GLW_FIRST_COMPANY,
+	GLW_LAST_COMPANY = GLW_FIRST_COMPANY + MAX_COMPANIES - 1,
 };
 
 struct GraphLegendWindow : Window {
@@ -86,10 +87,10 @@ struct GraphLegendWindow : Window {
 };
 
 static const Widget _graph_legend_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,       STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   249,     0,    13, STR_GRAPH_KEY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   249,    14,   195, 0x0,                   STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    16,    27, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,       STR_TOOLTIP_CLOSE_WINDOW},           // GLW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   249,     0,    13, STR_GRAPH_KEY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // GLW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   249,    14,   195, 0x0,                   STR_NULL},                           // GLW_BACKGROUND
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    16,    27, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},    // GLW_FIRST_COMPANY
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    28,    39, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    40,    51, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    52,    63, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
@@ -103,7 +104,7 @@ static const Widget _graph_legend_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   148,   159, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   160,   171, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   172,   183, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   184,   195, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   184,   195, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},    // GLW_LAST_COMPANY
 {   WIDGETS_END},
 };
 
@@ -577,6 +578,15 @@ void ShowDeliveredCargoGraph()
 /* PERFORMANCE HISTORY */
 /***********************/
 
+/** Widget numbers of the performance history window. */
+enum PerformanceHistoryGraphWidgets {
+	PHW_CLOSEBOX,
+	PHW_CAPTION,
+	PHW_KEY,
+	PHW_DETAILED_PERFORMANCE,
+	PHW_BACKGROUND,
+};
+
 struct PerformanceHistoryGraphWindow : BaseGraphWindow {
 	PerformanceHistoryGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, window_number, 2, 18, 200, false, STR_JUST_COMMA)
@@ -591,17 +601,17 @@ struct PerformanceHistoryGraphWindow : BaseGraphWindow {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget == 3) ShowPerformanceRatingDetail();
+		if (widget == PHW_DETAILED_PERFORMANCE) ShowPerformanceRatingDetail();
 		this->BaseGraphWindow::OnClick(pt, widget);
 	}
 };
 
 static const Widget _performance_history_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,                               STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   475,     0,    13, STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   526,   575,     0,    13, STR_GRAPH_KEY_BUTTON,                          STR_GRAPH_KEY_TOOLTIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   476,   525,     0,    13, STR_PERFORMANCE_DETAIL_KEY,                    STR_SHOW_DETAILED_PERFORMANCE_RATINGS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   575,    14,   237, 0x0,                                           STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,                               STR_TOOLTIP_CLOSE_WINDOW},              // PHW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   475,     0,    13, STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},    // PHW_CAPTION
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   526,   575,     0,    13, STR_GRAPH_KEY_BUTTON,                          STR_GRAPH_KEY_TOOLTIP},                 // PHW_KEY
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   476,   525,     0,    13, STR_PERFORMANCE_DETAIL_KEY,                    STR_SHOW_DETAILED_PERFORMANCE_RATINGS}, // PHW_DETAILED_PERFORMANCE
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   575,    14,   237, 0x0,                                           STR_NULL},                              // PHW_BACKGROUND
 {   WIDGETS_END},
 };
 
@@ -945,14 +955,20 @@ void ShowCompanyLeagueTable()
 /* PERFORMANCE RATING DETAIL */
 /*****************************/
 
-struct PerformanceRatingDetailWindow : Window {
-private:
-	enum PerformanteRatingWidgets {
-		PRW_COMPANY_FIRST = 13,
-		PRW_COMPANY_LAST  = PRW_COMPANY_FIRST + MAX_COMPANIES - 1,
-	};
+/** Widget numbers of the performance rating details window. */
+enum PerformanceRatingDetailsWidgets {
+	PRW_CLOSEBOX,
+	PRW_CAPTION,
+	PRW_BACKGROUND,
 
-public:
+	PRW_SCORE_FIRST,
+	PRW_SCORE_LAST = PRW_SCORE_FIRST + (SCORE_END - SCORE_BEGIN) - 1,
+
+	PRW_COMPANY_FIRST,
+	PRW_COMPANY_LAST  = PRW_COMPANY_FIRST + MAX_COMPANIES - 1,
+};
+
+struct PerformanceRatingDetailWindow : Window {
 	static CompanyID company;
 	int timeout;
 
@@ -1141,11 +1157,11 @@ CompanyID PerformanceRatingDetailWindow::company = INVALID_COMPANY;
 
 
 static const Widget _performance_rating_detail_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,        STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   298,     0,    13, STR_PERFORMANCE_DETAIL, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    14,    40, 0x0,                    STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,        STR_TOOLTIP_CLOSE_WINDOW},            // PRW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   298,     0,    13, STR_PERFORMANCE_DETAIL, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},  // PRW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    14,    40, 0x0,                    STR_NULL},                            // PRW_BACKGROUND
 
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    41,    60, 0x0,                    STR_PERFORMANCE_DETAIL_VEHICLES_TIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    41,    60, 0x0,                    STR_PERFORMANCE_DETAIL_VEHICLES_TIP}, // PRW_SCORE_FIRST
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    61,    80, 0x0,                    STR_PERFORMANCE_DETAIL_STATIONS_TIP},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    81,   100, 0x0,                    STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   101,   120, 0x0,                    STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP},
@@ -1154,9 +1170,9 @@ static const Widget _performance_rating_detail_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   161,   180, 0x0,                    STR_PERFORMANCE_DETAIL_CARGO_TIP},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   181,   200, 0x0,                    STR_PERFORMANCE_DETAIL_MONEY_TIP},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   201,   220, 0x0,                    STR_PERFORMANCE_DETAIL_LOAN_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   221,   240, 0x0,                    STR_PERFORMANCE_DETAIL_TOTAL_TIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   221,   240, 0x0,                    STR_PERFORMANCE_DETAIL_TOTAL_TIP},    // PRW_SCORE_LAST
 
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,    38,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,    38,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},     // PRW_COMPANY_FIRST
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    39,    75,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    76,   112,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   113,   149,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
@@ -1170,7 +1186,7 @@ static const Widget _performance_rating_detail_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   113,   149,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   150,   186,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   187,   223,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   224,   260,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   224,   260,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},     // PRW_COMPANY_LAST
 {   WIDGETS_END},
 };
 
