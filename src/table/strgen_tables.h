@@ -162,3 +162,31 @@ static const PluralForm _plural_forms[] = {
 	{ 2, "Two forms, singular used for everything ending in 1 but not in 11" },
 	{ 3, "Three forms, special case for 1 and 2, 3, or 4" },
 };
+
+/* Flags:
+ * 0 = nothing
+ * t = translator editable
+ * l = ltr/rtl choice
+ * p = plural choice
+ * d = separator char (replace spaces with {NBSP})
+ * x1 = hexadecimal number of 1 byte
+ * x2 = hexadecimal number of 2 bytes
+ * g = gender
+ * c = cases
+ * a = array, i.e. list of strings
+ */
+ /** All pragmas used */
+static const char *_pragmas[][4] = {
+	/*  name         flags  default   description */
+	{ "name",        "0",   "",       "English name for the language" },
+	{ "ownname",     "t",   "",       "Localised name for the language" },
+	{ "isocode",     "0",   "",       "ISO code for the language" },
+	{ "plural",      "tp",  "0",      "Plural form to use" },
+	{ "textdir",     "tl",  "ltr",    "Text direction. Either ltr (left-to-right) or rtl (right-to-left)" },
+	{ "digitsep",    "td",  ",",      "Digit grouping separator for non-currency numbers" },
+	{ "digitsepcur", "td",  ",",      "Digit grouping seprarator for currency numbers" },
+	{ "winlangid",   "x2",  "0x0000", "Language ID for Windows" },
+	{ "grflangid",   "x1",  "0x00",   "Language ID for NewGRFs" },
+	{ "gender",      "tag", "",       "List of genders" },
+	{ "case",        "tac", "",       "List of cases" },
+};

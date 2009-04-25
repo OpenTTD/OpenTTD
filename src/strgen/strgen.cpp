@@ -1249,6 +1249,15 @@ int CDECL main(int argc, char *argv[])
 			return 0;
 		}
 
+		if (strcmp(argv[1], "-export-pragmas") == 0) {
+			printf("name\tflags\tdefault\tdescription\n");
+			for (int i = 0; i < lengthof(_pragmas); i++) {
+				printf("\"%s\"\t%s\t\"%s\"\t\"%s\"\n",
+						_pragmas[i][0], _pragmas[i][1], _pragmas[i][2], _pragmas[i][3]);
+			}
+			return 0;
+		}
+
 		if (strcmp(argv[1], "-t") == 0 || strcmp(argv[1], "--todo") == 0) {
 			_show_todo |= 1;
 			argc--, argv++;
@@ -1272,6 +1281,7 @@ int CDECL main(int argc, char *argv[])
 				" -d | --dest_dir   put output file in the specified directory, create if needed\n"
 				" -export-commands  export all commands and exit\n"
 				" -export-plurals   export all plural forms and exit\n"
+				" -export-pragmas   export all pragmas and exit\n"
 				" Run without parameters and strgen will search for english.txt and parse it,\n"
 				" creating strings.h. Passing an argument, strgen will translate that language\n"
 				" file using english.txt as a reference and output <language>.lng."
