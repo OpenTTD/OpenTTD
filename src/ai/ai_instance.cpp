@@ -258,6 +258,7 @@ void AIInstance::Died()
 	ShowAIDebugWindow(_current_company);
 	if (strcmp(GetCompany(_current_company)->ai_info->GetMainScript(), "%_dummy") != 0) {
 		ShowErrorMessage(INVALID_STRING_ID, STR_AI_PLEASE_REPORT_CRASH, 0, 0);
+		return;
 	}
 
 	const AIInfo *info = AIConfig::GetConfig(_current_company)->GetInfo();
