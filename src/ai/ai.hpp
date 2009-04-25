@@ -8,6 +8,7 @@
 #include "api/ai_event_types.hpp"
 #include "../date_type.h"
 #include "../core/string_compare_type.hpp"
+#include <map>
 
 typedef std::map<const char *, class AIInfo *, StringCompare> AIInfoList;
 

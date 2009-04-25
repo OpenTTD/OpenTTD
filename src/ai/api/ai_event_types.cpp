@@ -3,6 +3,7 @@
 /** @file ai_event_types.cpp Implementation of all EventTypes. */
 
 #include "ai_event_types.hpp"
+#include "ai_vehicle.hpp"
 #include "../../command_type.h"
 #include "../../strings_func.h"
 #include "../../settings_type.h"
@@ -69,7 +70,7 @@ Money AIEventEnginePreview::GetRunningCost()
 	return ::GetEngine(engine)->GetRunningCost();
 }
 
-AIVehicle::VehicleType AIEventEnginePreview::GetVehicleType()
+int32 AIEventEnginePreview::GetVehicleType()
 {
 	switch (::GetEngine(engine)->type) {
 		case VEH_ROAD:     return AIVehicle::VT_ROAD;

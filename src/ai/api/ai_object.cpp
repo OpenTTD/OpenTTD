@@ -7,6 +7,7 @@
 #include "../ai.hpp"
 #include "../ai_storage.hpp"
 #include "../ai_instance.hpp"
+#include "ai_error.hpp"
 
 static AIStorage *GetStorage()
 {

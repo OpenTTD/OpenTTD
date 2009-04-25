@@ -15,6 +15,7 @@
 #include "ai_scanner.hpp"
 #include "ai_instance.hpp"
 #include "ai_config.hpp"
+#include "api/ai_error.hpp"
 
 /* static */ uint AI::frame_counter = 0;
 /* static */ AIScanner *AI::ai_scanner = NULL;

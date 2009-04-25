@@ -7,10 +7,7 @@
 
 #include "ai_object.hpp"
 #include "ai_event.hpp"
-#include "ai_town.hpp"
-#include "ai_industry.hpp"
-#include "ai_engine.hpp"
-#include "ai_subsidy.hpp"
+#include "ai_company.hpp"
 
 /**
  * Event Vehicle Crash, indicating a vehicle of yours is crashed.
@@ -268,11 +265,15 @@ public:
 	 */
 	Money GetRunningCost();
 
+#ifdef DOXYGEN_SKIP
 	/**
 	 * Get the type of the offered engine.
 	 * @return The type the engine has.
 	 */
 	AIVehicle::VehicleType GetVehicleType();
+#else
+	int32 GetVehicleType();
+#endif
 
 	/**
 	 * Accept the engine preview.
