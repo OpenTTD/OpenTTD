@@ -1604,21 +1604,132 @@ CommandCost CmdBuildTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	return CommandCost();
 }
 
+/**
+ * Towns must all be placed on the same grid or when they eventually
+ * interpenetrate their road networks will not mesh nicely; this
+ * function adjusts a tile so that it aligns properly.
+ *
+ * @param tile the tile to start at
+ * @param layout which town layout algo is in effect
+ * @return the adjusted tile
+ */
+static TileIndex AlignTileToGrid(TileIndex tile, TownLayout layout)
+{
+	switch (layout) {
+		case TL_2X2_GRID: return TileXY(TileX(tile) - TileX(tile) % 3, TileY(tile) - TileY(tile) % 3);
+		case TL_3X3_GRID: return TileXY(TileX(tile) & ~3, TileY(tile) & ~3);
+		default:          return tile;
+	}
+}
+
+/**
+ * Towns must all be placed on the same grid or when they eventually
+ * interpenetrate their road networks will not mesh nicely; this
+ * function tells you if a tile is properly aligned.
+ *
+ * @param tile the tile to start at
+ * @param layout which town layout algo is in effect
+ * @return true if the tile is in the correct location
+ */
+static bool IsTileAlignedToGrid(TileIndex tile, TownLayout layout)
+{
+	switch (layout) {
+		case TL_2X2_GRID: return TileX(tile) % 3 == 0 && TileY(tile) % 3 == 0;
+		case TL_3X3_GRID: return TileX(tile) % 4 == 0 && TileY(tile) % 4 == 0;
+		default:          return true;
+	}
+}
+
+/**
+ * Used as the user_data for FindFurthestFromWater
+ */
+struct SpotData {
+	TileIndex tile; ///< holds the tile that was found
+	uint max_dist;	///< holds the distance that tile is from the water
+	TownLayout layout; ///< tells us what kind of town we're building
+};
+
+/**
+ * CircularTileSearch callback; finds the tile furthest from any
+ * water. slightly bit tricky, since it has to do a search of it's own
+ * in order to find the distance to the water from each square in the
+ * radius.
+ *
+ * Also, this never returns true, because it needs to take into
+ * account all locations being searched before it knows which is the
+ * furthest.
+ *
+ * @param tile Start looking from this tile
+ * @param user_data Storage area for data that must last across calls;
+ * must be a pointer to struct SpotData
+ *
+ * @return always false
+ */
+static bool FindFurthestFromWater(TileIndex tile, void *user_data)
+{
+	SpotData *sp = (SpotData*)user_data;
+	uint dist = GetClosestWaterDistance(tile, true);
+
+	if (IsTileType(tile, MP_CLEAR) &&
+			GetTileSlope(tile, NULL) == SLOPE_FLAT &&
+			IsTileAlignedToGrid(tile, sp->layout) &&
+			dist > sp->max_dist) {
+		sp->tile = tile;
+		sp->max_dist = dist;
+	}
+
+	return false;
+}
+
+/**
+ * CircularTileSearch callback; finds the nearest land tile
+ *
+ * @param tile Start looking from this tile
+ * @param user_data not used
+ */
+static bool FindNearestEmptyLand(TileIndex tile, void *user_data)
+{
+	return IsTileType(tile, MP_CLEAR);
+}
+
+/**
+ * Given a spot on the map (presumed to be a water tile), find a good
+ * coastal spot to build a city. We don't want to build too close to
+ * the edge if we can help it (since that retards city growth) hence
+ * the search within a search within a search. O(n*m^2), where n is
+ * how far to search for land, and m is how far inland to look for a
+ * flat spot.
+ *
+ * @param tile Start looking from this spot.
+ * @return tile that was found
+ */
+static TileIndex FindNearestGoodCoastalTownSpot(TileIndex tile, TownLayout layout)
+{
+	SpotData sp = { INVALID_TILE, 0, layout };
+
+	TileIndex coast = tile;
+	if (CircularTileSearch(&coast, 40, FindNearestEmptyLand, NULL)) {
+		CircularTileSearch(&coast, 10, FindFurthestFromWater, &sp);
+		return sp.tile;
+	}
+
+	/* if we get here just give up */
+	return INVALID_TILE;
+}
+
 Town *CreateRandomTown(uint attempts, TownSize size, bool city, TownLayout layout)
 {
 	if (!Town::CanAllocateItem()) return NULL;
 
 	do {
 		/* Generate a tile index not too close from the edge */
-		TileIndex tile = RandomTile();
-		switch (layout) {
-			case TL_2X2_GRID:
-				tile = TileXY(TileX(tile) - TileX(tile) % 3, TileY(tile) - TileY(tile) % 3);
-				break;
-			case TL_3X3_GRID:
-				tile = TileXY(TileX(tile) & ~3, TileY(tile) & ~3);
-				break;
-			default: break;
+		TileIndex tile = AlignTileToGrid(RandomTile(), layout);
+
+		/* if we tried to place the town on water, slide it over onto
+		 * the nearest likely-looking spot */
+		if (IsTileType(tile, MP_WATER)) {
+			tile = FindNearestGoodCoastalTownSpot(tile, layout);
+			if (tile == INVALID_TILE) continue;
 		}
 
 		/* Make sure town can be placed here */
@@ -1632,7 +1743,11 @@ Town *CreateRandomTown(uint attempts, TownSize size, bool city, TownLayout layou
 		Town *t = new Town(tile);
 
 		DoCreateTown(t, tile, townnameparts, size, city, layout);
-		return t;
+
+		/* if the population is still 0 at the point, then the
+		 * placement is so bad it couldn't grow at all */
+		if (t->population > 0) return t;
+		delete t;
 	} while (--attempts != 0);
 
 	return NULL;
