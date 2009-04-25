@@ -3156,14 +3156,24 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game was saved in version without tram support. All trams have been removed.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Custom currency
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Exchange rate: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {RAW_STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {RAW_STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix: {RAW_STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Switch to Euro: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Exchange rate: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {ORANGE}{2:RAW_STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {ORANGE}{3:RAW_STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix: {ORANGE}{4:RAW_STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Switch to Euro: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Switch to Euro: {ORANGE}never
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Preview: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Preview: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Change custom currency parameter
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Decrease the amount of your currency for one Pound (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Increase the amount of your currency for one Pound (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Set the exchange rate of your currency for one Pound (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Set the separator for your currency
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Set the prefix string for your currency
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Set the suffix string for your currency
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Switch to Euro earlier
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Switch to Euro later
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Set the year to switch to Euro
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Pound (£) in your currency
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}

@@ -1565,20 +1565,29 @@ void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clic
 	}
 }
 
-/** These are not, strickly speaking, widget enums,
- *  since they have been changed as line coordinates.
- *  So, rather, they are more like order of appearance */
-enum CustomCurrenciesWidgets {
-	CUSTCURR_EXCHANGERATE = 0,
+/** Widget numbers of the custom currency window. */
+enum CustomCurrencyWidgets {
+	CUSTCURR_CLOSEBOX,
+	CUSTCURR_CAPTION,
+	CUSTCURR_BACKGROUND,
+
+	CUSTCURR_RATE_DOWN,
+	CUSTCURR_RATE_UP,
+	CUSTCURR_RATE,
+	CUSTCURR_SEPARATOR_EDIT,
 	CUSTCURR_SEPARATOR,
+	CUSTCURR_PREFIX_EDIT,
 	CUSTCURR_PREFIX,
+	CUSTCURR_SUFFIX_EDIT,
 	CUSTCURR_SUFFIX,
-	CUSTCURR_TO_EURO,
+	CUSTCURR_YEAR_DOWN,
+	CUSTCURR_YEAR_UP,
+	CUSTCURR_YEAR,
+	CUSTCURR_PREVIEW,
 };
 
 struct CustomCurrencyWindow : Window {
 	char separator[2];
-	int click;
 	int query_widget;
 
 	CustomCurrencyWindow(const WindowDesc *desc) : Window(desc)
@@ -1586,119 +1595,101 @@ struct CustomCurrencyWindow : Window {
 		this->separator[0] = _custom_currency.separator;
 		this->separator[1] = '\0';
 		this->FindWindowPlacementAndResize(desc);
+
+		SetButtonState();
+	}
+
+	void SetButtonState()
+	{
+		this->SetWidgetDisabledState(CUSTCURR_RATE_DOWN, _custom_currency.rate == 1);
+		this->SetWidgetDisabledState(CUSTCURR_RATE_UP, _custom_currency.rate == UINT16_MAX);
+		this->SetWidgetDisabledState(CUSTCURR_YEAR_DOWN, _custom_currency.to_euro == CF_NOEURO);
+		this->SetWidgetDisabledState(CUSTCURR_YEAR_UP, _custom_currency.to_euro == MAX_YEAR);
 	}
 
 	virtual void OnPaint()
 	{
-		int const right = this->width - 1;
-		int y = 20;
-		this->DrawWidgets();
-
-		/* exchange rate */
-		DrawArrowButtons(10, y, COLOUR_YELLOW, GB(this->click, 0, 2), true, true);
 		SetDParam(0, 1);
 		SetDParam(1, 1);
-		DrawString(35, right, y + 1, STR_CURRENCY_EXCHANGE_RATE, TC_FROMSTRING);
-		y += 12;
-
-		/* separator */
-		DrawFrameRect(10, y + 1, 29, y + 9, COLOUR_DARK_BLUE, GB(this->click, 2, 2) ? FR_LOWERED : FR_NONE);
-		SetDParamStr(0, this->separator);
-		DrawString(35, right, y + 1, STR_CURRENCY_SEPARATOR, TC_FROMSTRING);
-		y += 12;
-
-		/* prefix */
-		DrawFrameRect(10, y + 1, 29, y + 9, COLOUR_DARK_BLUE, GB(this->click, 4, 2) ? FR_LOWERED : FR_NONE);
-		SetDParamStr(0, _custom_currency.prefix);
-		DrawString(35, right, y + 1, STR_CURRENCY_PREFIX, TC_FROMSTRING);
-		y += 12;
-
-		/* suffix */
-		DrawFrameRect(10, y + 1, 29, y + 9, COLOUR_DARK_BLUE, GB(this->click, 6, 2) ? FR_LOWERED : FR_NONE);
-		SetDParamStr(0, _custom_currency.suffix);
-		DrawString(35, right, y + 1, STR_CURRENCY_SUFFIX, TC_FROMSTRING);
-		y += 12;
-
-		/* switch to euro */
-		DrawArrowButtons(10, y, COLOUR_YELLOW, GB(this->click, 8, 2), true, true);
-		SetDParam(0, _custom_currency.to_euro);
-		DrawString(35, right, y + 1, (_custom_currency.to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER, TC_FROMSTRING);
-		y += 12;
-
-		/* Preview */
-		y += 12;
-		SetDParam(0, 10000);
-		DrawString(35, right, y + 1, STR_CURRENCY_PREVIEW, TC_FROMSTRING);
+		SetDParamStr(2, this->separator);
+		SetDParamStr(3, _custom_currency.prefix);
+		SetDParamStr(4, _custom_currency.suffix);
+		SetDParam(5, _custom_currency.to_euro);
+		this->widget[CUSTCURR_YEAR].data = (_custom_currency.to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER;
+		SetDParam(6, 10000);
+		this->DrawWidgets();
 	}
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		int line = (pt.y - 20) / 12;
+		int line = 0;
 		int len = 0;
-		int x = pt.x;
 		StringID str = 0;
 		CharSetFilter afilter = CS_ALPHANUMERAL;
 
-		switch (line) {
-			case CUSTCURR_EXCHANGERATE:
-				if (IsInsideMM(x, 10, 30)) { // clicked buttons
-					if (x < 20) {
-						if (_custom_currency.rate > 1) _custom_currency.rate--;
-						this->click = 1 << (line * 2 + 0);
-					} else {
-						if (_custom_currency.rate < UINT16_MAX) _custom_currency.rate++;
-						this->click = 1 << (line * 2 + 1);
-					}
-				} else { // enter text
-					SetDParam(0, _custom_currency.rate);
-					str = STR_CONFIG_SETTING_INT32;
-					len = 5;
-					afilter = CS_NUMERAL;
-				}
+		switch (widget) {
+			case CUSTCURR_RATE_DOWN:
+				if (_custom_currency.rate > 1) _custom_currency.rate--;
+				if (_custom_currency.rate == 1) this->DisableWidget(CUSTCURR_RATE_DOWN);
+				this->EnableWidget(CUSTCURR_RATE_UP);
 				break;
 
+			case CUSTCURR_RATE_UP:
+				if (_custom_currency.rate < UINT16_MAX) _custom_currency.rate++;
+				if (_custom_currency.rate == UINT16_MAX) this->DisableWidget(CUSTCURR_RATE_UP);
+				this->EnableWidget(CUSTCURR_RATE_DOWN);
+				break;
+
+			case CUSTCURR_RATE:
+				SetDParam(0, _custom_currency.rate);
+				str = STR_CONFIG_SETTING_INT32;
+				len = 5;
+				line = CUSTCURR_RATE;
+				afilter = CS_NUMERAL;
+				break;
+
+			case CUSTCURR_SEPARATOR_EDIT:
 			case CUSTCURR_SEPARATOR:
-				if (IsInsideMM(x, 10, 30)) { // clicked button
-					this->click = 1 << (line * 2 + 1);
-				}
 				SetDParamStr(0, this->separator);
 				str = STR_JUST_RAW_STRING;
 				len = 1;
+				line = CUSTCURR_SEPARATOR;
 				break;
 
+			case CUSTCURR_PREFIX_EDIT:
 			case CUSTCURR_PREFIX:
-				if (IsInsideMM(x, 10, 30)) { // clicked button
-					this->click = 1 << (line * 2 + 1);
-				}
 				SetDParamStr(0, _custom_currency.prefix);
 				str = STR_JUST_RAW_STRING;
 				len = 12;
+				line = CUSTCURR_PREFIX;
 				break;
 
+			case CUSTCURR_SUFFIX_EDIT:
 			case CUSTCURR_SUFFIX:
-				if (IsInsideMM(x, 10, 30)) { // clicked button
-					this->click = 1 << (line * 2 + 1);
-				}
 				SetDParamStr(0, _custom_currency.suffix);
 				str = STR_JUST_RAW_STRING;
 				len = 12;
+				line = CUSTCURR_SUFFIX;
 				break;
 
-			case CUSTCURR_TO_EURO:
-				if (IsInsideMM(x, 10, 30)) { // clicked buttons
-					if (x < 20) {
-						_custom_currency.to_euro = (_custom_currency.to_euro <= 2000) ? CF_NOEURO : _custom_currency.to_euro - 1;
-						this->click = 1 << (line * 2 + 0);
-					} else {
-						_custom_currency.to_euro = Clamp(_custom_currency.to_euro + 1, 2000, MAX_YEAR);
-						this->click = 1 << (line * 2 + 1);
-					}
-				} else { // enter text
-					SetDParam(0, _custom_currency.to_euro);
-					str = STR_CONFIG_SETTING_INT32;
-					len = 7;
-					afilter = CS_NUMERAL;
-				}
+			case CUSTCURR_YEAR_DOWN:
+				_custom_currency.to_euro = (_custom_currency.to_euro <= 2000) ? CF_NOEURO : _custom_currency.to_euro - 1;
+				if (_custom_currency.to_euro == CF_NOEURO) this->DisableWidget(CUSTCURR_YEAR_DOWN);
+				this->EnableWidget(CUSTCURR_YEAR_UP);
+				break;
+
+			case CUSTCURR_YEAR_UP:
+				_custom_currency.to_euro = Clamp(_custom_currency.to_euro + 1, 2000, MAX_YEAR);
+				if (_custom_currency.to_euro == MAX_YEAR) this->DisableWidget(CUSTCURR_YEAR_UP);
+				this->EnableWidget(CUSTCURR_YEAR_DOWN);
+				break;
+
+			case CUSTCURR_YEAR:
+				SetDParam(0, _custom_currency.to_euro);
+				str = STR_CONFIG_SETTING_INT32;
+				len = 7;
+				line = CUSTCURR_YEAR;
+				afilter = CS_NUMERAL;
 				break;
 		}
 
@@ -1716,7 +1707,7 @@ struct CustomCurrencyWindow : Window {
 		if (str == NULL) return;
 
 		switch (this->query_widget) {
-			case CUSTCURR_EXCHANGERATE:
+			case CUSTCURR_RATE:
 				_custom_currency.rate = Clamp(atoi(str), 1, UINT16_MAX);
 				break;
 
@@ -1733,7 +1724,7 @@ struct CustomCurrencyWindow : Window {
 				strecpy(_custom_currency.suffix, str, lastof(_custom_currency.suffix));
 				break;
 
-			case CUSTCURR_TO_EURO: { // Year to switch to euro
+			case CUSTCURR_YEAR: { // Year to switch to euro
 				int val = atoi(str);
 
 				_custom_currency.to_euro = (val < 2000 ? CF_NOEURO : min(val, MAX_YEAR));
@@ -1741,19 +1732,39 @@ struct CustomCurrencyWindow : Window {
 			}
 		}
 		MarkWholeScreenDirty();
+		SetButtonState();
 	}
 
 	virtual void OnTimeout()
 	{
-		this->click = 0;
 		this->SetDirty();
 	}
 };
 
 static const Widget _cust_currency_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,     STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   229,     0,    13, STR_CURRENCY_WINDOW, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   229,    14,   119, 0x0,                 STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,       0,    10,     0,    13, STR_BLACK_CROSS,             STR_TOOLTIP_CLOSE_WINDOW},                     // CUSTCURR_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,      11,   229,     0,    13, STR_CURRENCY_WINDOW,         STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},           // CUSTCURR_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       0,   229,    14,   119, 0x0,                         STR_NULL},                                     // CUSTCURR_BACKGROUND
+
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,    10,    19,    21,    29, STR_ARROW_LEFT_SMALL,        STR_TOOLTIP_DECREASE_EXCHANGE_RATE},           // CUSTCURR_RATE_DOWN
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,    20,    29,    21,    29, STR_ARROW_RIGHT_SMALL,       STR_TOOLTIP_INCREASE_EXCHANGE_RATE},           // CUSTCURR_RATE_UP
+{       WWT_TEXT,   RESIZE_NONE,  COLOUR_BLUE,      35,   227,    21,    29, STR_CURRENCY_EXCHANGE_RATE,  STR_TOOLTIP_SET_EXCHANGE_RATE},                // CUSTCURR_RATE
+
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_DARK_BLUE, 10,    29,    33,    41, 0x0,                         STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR},    // CUSTCURR_SEPARATOR_EDIT
+{       WWT_TEXT,   RESIZE_NONE,  COLOUR_BLUE,      35,   227,    33,    41, STR_CURRENCY_SEPARATOR,      STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR},    // CUSTCURR_SEPARATOR
+
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_DARK_BLUE, 10,    29,    45,    53, 0x0,                         STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX},       // CUSTCURR_PREFIX_EDIT
+{       WWT_TEXT,   RESIZE_NONE,  COLOUR_BLUE,      35,   227,    45,    53, STR_CURRENCY_PREFIX,         STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX},       // CUSTCURR_PREFIX
+
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_DARK_BLUE, 10,    29,    57,    65, 0x0,                         STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX},       // CUSTCURR_SUFFIX_EDIT
+{       WWT_TEXT,   RESIZE_NONE,  COLOUR_BLUE,      35,   227,    57,    65, STR_CURRENCY_SUFFIX,         STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX},       // CUSTCURR_SUFFIX
+
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,    10,    19,    69,    77, STR_ARROW_LEFT_SMALL,        STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO}, // CUSTCURR_YEAR_DOWN
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,    20,    29,    69,    77, STR_ARROW_RIGHT_SMALL,       STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO}, // CUSTCURR_YEAR_UP
+{       WWT_TEXT,   RESIZE_NONE,  COLOUR_BLUE,      35,   227,    69,    77, STR_CURRENCY_SWITCH_TO_EURO, STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO},      // CUSTCURR_YEAR
+
+{      WWT_LABEL,   RESIZE_NONE,  COLOUR_BLUE,       2,   227,    93,   101, STR_CURRENCY_PREVIEW,        STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW},          // CUSTCURR_PREVIEW
+
 {   WIDGETS_END},
 };
 
