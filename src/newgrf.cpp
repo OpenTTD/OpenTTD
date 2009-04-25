@@ -1717,7 +1717,8 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, by
 				uint16 options = grf_load_word(&buf);
 
 				if (curidx < NUM_CURRENCY) {
-					_currency_specs[curidx].separator = GB(options, 0, 8);
+					_currency_specs[curidx].separator[0] = GB(options, 0, 8);
+					_currency_specs[curidx].separator[1] = '\0';
 					/* By specifying only one bit, we prevent errors,
 					 * since newgrf specs said that only 0 and 1 can be set for symbol_pos */
 					_currency_specs[curidx].symbol_pos = GB(options, 8, 1);

@@ -336,10 +336,7 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 	}
 
 	const char *separator = _settings_game.locale.digit_group_separator_currency;
-	if (separator == NULL && _currency->separator != '\0') {
-		static char sep[] = { _currency->separator, '\0' };
-		separator = sep;
-	}
+	if (separator == NULL && !StrEmpty(_currency->separator)) separator = _currency->separator;
 	if (separator == NULL) separator = _langpack->digit_group_separator_currency;
 	buff = FormatNumber(buff, number, last, separator);
 	buff = strecpy(buff, multiplier, last);

@@ -1587,13 +1587,10 @@ enum CustomCurrencyWidgets {
 };
 
 struct CustomCurrencyWindow : Window {
-	char separator[2];
 	int query_widget;
 
 	CustomCurrencyWindow(const WindowDesc *desc) : Window(desc)
 	{
-		this->separator[0] = _custom_currency.separator;
-		this->separator[1] = '\0';
 		this->FindWindowPlacementAndResize(desc);
 
 		SetButtonState();
@@ -1611,7 +1608,7 @@ struct CustomCurrencyWindow : Window {
 	{
 		SetDParam(0, 1);
 		SetDParam(1, 1);
-		SetDParamStr(2, this->separator);
+		SetDParamStr(2, _custom_currency.separator);
 		SetDParamStr(3, _custom_currency.prefix);
 		SetDParamStr(4, _custom_currency.suffix);
 		SetDParam(5, _custom_currency.to_euro);
@@ -1650,7 +1647,7 @@ struct CustomCurrencyWindow : Window {
 
 			case CUSTCURR_SEPARATOR_EDIT:
 			case CUSTCURR_SEPARATOR:
-				SetDParamStr(0, this->separator);
+				SetDParamStr(0, _custom_currency.separator);
 				str = STR_JUST_RAW_STRING;
 				len = 1;
 				line = CUSTCURR_SEPARATOR;
@@ -1712,8 +1709,7 @@ struct CustomCurrencyWindow : Window {
 				break;
 
 			case CUSTCURR_SEPARATOR: // Thousands seperator
-				_custom_currency.separator = StrEmpty(str) ? ' ' : str[0];
-				strecpy(this->separator, str, lastof(this->separator));
+				strecpy(_custom_currency.separator, str, lastof(_custom_currency.separator));
 				break;
 
 			case CUSTCURR_PREFIX:

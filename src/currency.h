@@ -17,7 +17,7 @@ enum {
 
 struct CurrencySpec {
 	uint16 rate;
-	char separator;
+	char separator[8];
 	Year to_euro;
 	char prefix[16];
 	char suffix[16];
