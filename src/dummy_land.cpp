@@ -6,6 +6,7 @@
 #include "tile_cmd.h"
 #include "command_func.h"
 #include "viewport_func.h"
+#include "tile_map.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -18,7 +19,7 @@ static void DrawTile_Dummy(TileInfo *ti)
 
 static uint GetSlopeZ_Dummy(TileIndex tile, uint x, uint y)
 {
-	return 0;
+	return TilePixelHeight(tile);
 }
 
 static Foundation GetFoundation_Dummy(TileIndex tile, Slope tileh)

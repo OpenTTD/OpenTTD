@@ -1711,13 +1711,7 @@ void MarkTileDirtyByTile(TileIndex tile)
 
 void MarkTileDirty(int x, int y)
 {
-	uint z = 0;
-	Point pt;
-
-	if (IsInsideMM(x, 0, MapSizeX() * TILE_SIZE) &&
-			IsInsideMM(y, 0, MapSizeY() * TILE_SIZE))
-		z = GetTileZ(TileVirtXY(x, y));
-	pt = RemapCoords(x, y, z);
+	Point pt = RemapCoords(x, y, GetTileZ(TileVirtXY(x, y)));
 
 	MarkAllViewportsDirty(
 		pt.x - 31,
@@ -1732,38 +1726,91 @@ void MarkTileDirty(int x, int y)
  *
  * This function marks the selected tiles as dirty for repaint
  *
- * @note Documentation may be wrong (Progman)
  * @ingroup dirty
  */
 static void SetSelectionTilesDirty()
 {
-	int y_size, x_size;
-	int x = _thd.pos.x;
-	int y = _thd.pos.y;
+	int x_start = _thd.pos.x;
+	int y_start = _thd.pos.y;
 
-	x_size = _thd.size.x;
-	y_size = _thd.size.y;
+	int x_size = _thd.size.x;
+	int y_size = _thd.size.y;
 
-	if (_thd.outersize.x) {
-		x_size += _thd.outersize.x;
-		x += _thd.offs.x;
-		y_size += _thd.outersize.y;
-		y += _thd.offs.y;
+	if (_thd.outersize.x != 0) {
+		x_size  += _thd.outersize.x;
+		x_start += _thd.offs.x;
+		y_size  += _thd.outersize.y;
+		y_start += _thd.offs.y;
 	}
 
-	assert(x_size > 0);
-	assert(y_size > 0);
+	x_size -= TILE_SIZE;
+	y_size -= TILE_SIZE;
 
-	x_size += x;
-	y_size += y;
+	assert(x_size >= 0);
+	assert(y_size >= 0);
+
+	int x_end = Clamp(x_start + x_size, 0, MapSizeX() * TILE_SIZE - TILE_SIZE);
+	int y_end = Clamp(y_start + y_size, 0, MapSizeY() * TILE_SIZE - TILE_SIZE);
+
+	x_start = Clamp(x_start, 0, MapSizeX() * TILE_SIZE - TILE_SIZE);
+	y_start = Clamp(y_start, 0, MapSizeY() * TILE_SIZE - TILE_SIZE);
+
+	/* make sure everything is multiple of TILE_SIZE */
+	assert((x_end | y_end | x_start | y_start) % TILE_SIZE == 0);
+
+	/* How it works:
+	 * Suppose we have to mark dirty rectangle of 3x4 tiles:
+	 *   x
+	 *  xxx
+	 * xxxxx
+	 *  xxxxx
+	 *   xxx
+	 *    x
+	 * This algorithm marks dirty columns of tiles, so it is done in 3+4-1 steps:
+	 * 1)  x     2)  x
+	 *    xxx       Oxx
+	 *   Oxxxx     xOxxx
+	 *    xxxxx     Oxxxx
+	 *     xxx       xxx
+	 *      x         x
+	 * And so forth...
+	 */
+
+	int top_x = x_end; // coordinates of top dirty tile
+	int top_y = y_start;
+	int bot_x = top_x; // coordinates of bottom dirty tile
+	int bot_y = top_y;
 
 	do {
-		int y_bk = y;
-		do {
-			MarkTileDirty(x, y);
-		} while ( (y += TILE_SIZE) != y_size);
-		y = y_bk;
-	} while ( (x += TILE_SIZE) != x_size);
+		Point top = RemapCoords2(top_x, top_y); // topmost dirty point
+		Point bot = RemapCoords2(bot_x + TILE_SIZE - 1, bot_y + TILE_SIZE - 1); // bottommost point
+
+		/* the 'x' coordinate of 'top' and 'bot' is the same (and always in the same distance from tile middle),
+		 * tile height/slope affects only the 'y' on-screen coordinate! */
+
+		int l = top.x - (TILE_PIXELS - 2); // 'x' coordinate of left side of dirty rectangle
+		int t = top.y;                     // 'y' coordinate of top side -//-
+		int r = top.x + (TILE_PIXELS - 2); // right side of dirty rectangle
+		int b = bot.y;                     // bottom -//-
+
+		static const int OVERLAY_WIDTH = 4; // part of selection sprites is drawn outside the selected area
+
+		MarkAllViewportsDirty(l - OVERLAY_WIDTH, t - OVERLAY_WIDTH, r + OVERLAY_WIDTH, b + OVERLAY_WIDTH);
+
+		/* haven't we reached the topmost tile yet? */
+		if (top_x != x_start) {
+			top_x -= TILE_SIZE;
+		} else {
+			top_y += TILE_SIZE;
+		}
+
+		/* the way the bottom tile changes is different when we reach the bottommost tile */
+		if (bot_y != y_end) {
+			bot_y += TILE_SIZE;
+		} else {
+			bot_x -= TILE_SIZE;
+		}
+	} while (bot_x >= top_x);
 }
 
 
