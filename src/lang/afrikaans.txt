@@ -3067,13 +3067,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Speeletjie was gesoor in 'n weergawe sonder trem toelaating. Alle tremme was verwyder.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Gewoonte koers
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wissel koers: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Afskeier {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Vervoegsel: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Agtervoegsel: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Verwissel na Euro: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wissel koers: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Afskeier {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Vervoegsel: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Agtervoegsel: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Verwissel na Euro: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Verwissel na Euro: {ORANGE}nooit
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Voorskou: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Voorskou: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}verander gebruiklike koers parameter
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

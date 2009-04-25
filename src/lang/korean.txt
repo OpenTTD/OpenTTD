@@ -3139,13 +3139,13 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGIN
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}전차를 지원하지 않는 버전으로 게임이 저장되었습니다. 모든 전차는 제거되었습니다.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}사용자 화폐 단위
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}환율: {ORANGE}{CURRENCY} = {COMMA}파운드
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}단위구분: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}접두어: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}접미어: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}유로화로 전환: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}환율: {ORANGE}{0:CURRENCY} = {1:COMMA}파운드
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}단위구분: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}접두어: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}접미어: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}유로화로 전환: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}유로화로 전환: {ORANGE}안함
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}미리보기: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}미리보기: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}사용자 화폐 변수 변경
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

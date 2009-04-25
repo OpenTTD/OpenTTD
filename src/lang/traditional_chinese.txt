@@ -3126,13 +3126,13 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF�
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}此存檔版本不支援路面電車，已移除所有路面電車
 
 STR_CURRENCY_WINDOW                                             :{WHITE}自訂幣值
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}匯率：{ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}分隔符號： {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}前置字： {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}後置字： {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}改用歐元：{ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}匯率：{ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}分隔符號： {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}前置字： {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}後置字： {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}改用歐元：{ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}改用歐元：{ORANGE}永不改用
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}預覽：{ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}預覽：{ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}變更自訂幣值參數
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

@@ -3197,13 +3197,13 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informac
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Igra je bila spremljena u verziji bez podrške za tramvaje. Zbog toga su svi tramvaji uklonjeni.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Proizvoljna valuta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Devizni tečaj: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Razdjelnik: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Prebaci se na euro: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Devizni tečaj: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Razdjelnik: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Prebaci se na euro: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Prebaci se na euro: {ORANGE}nikad
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prikaz: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prikaz: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Promijeni parametre proizvoljne valute
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

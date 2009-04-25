@@ -3132,13 +3132,13 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Farm/bre
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Leikurinn var vistaður í útgáfu án sporvagna. Allir sporvagnar hafa verið fjarlægðir.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Sérvalinn gjaldeyrir
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Gengi: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Aðskilnaðarmerki: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Forskeyti: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Viðskeyti: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Skipta í Evrur: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Gengi: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Aðskilnaðarmerki: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Forskeyti: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Viðskeyti: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Skipta í Evrur: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Skipta í Evrur: {ORANGE}aldrei
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Dæmi: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Dæmi: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Breyta sérvöldum gjaldeyri
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

@@ -3227,13 +3227,13 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}A játék olyan verzióban lett elmentve, ami nem támogatja a villamosokat . Az összes villamos törölve lett.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Saját pénznem
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Értékarány: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Elválasztó: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Előtag: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Előtag: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Euróra váltás: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Értékarány: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Elválasztó: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Előtag: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Előtag: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Euróra váltás: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Euróra váltás: {ORANGE}soha
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Előnézet: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Előnézet: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}A saját pénznem paramétereinek megváltoztatása
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

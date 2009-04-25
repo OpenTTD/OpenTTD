@@ -3131,13 +3131,13 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last/åt
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spelet sparades i en version som ej stöder spårvagn. Alla spårvagnar har tagits bort
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Egen valuta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Växlingskurs: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Avskiljare: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Ändelse: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Går över till Euro: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Växlingskurs: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Avskiljare: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Ändelse: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Går över till Euro: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Går över till Euro: {ORANGE}aldrig
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Förhandsgranska: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Förhandsgranska: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ändra valutaparametrar
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

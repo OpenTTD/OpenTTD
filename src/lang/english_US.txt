@@ -3143,13 +3143,13 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game was saved in version without streetcar support. All streetcars have been removed.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Custom currency
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Exchange rate: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Switch to Euro: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Exchange rate: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Switch to Euro: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Switch to Euro: {ORANGE}never
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Preview: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Preview: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Change custom currency parameter
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

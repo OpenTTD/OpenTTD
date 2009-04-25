@@ -3157,13 +3157,13 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spiel wurde in einer Version ohne Straßenbahnunterstützung gespeichert. Alle Straßenbahnen wurden entfernt.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Eigene Währung
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wechselkurs: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Trennsymbol: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Präfix: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Umstellung auf Euro: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wechselkurs: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Trennsymbol: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Präfix: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Umstellung auf Euro: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Umstellung auf Euro: {ORANGE}nie
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vorschau: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vorschau: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Parameter für eigene Währung ändern
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

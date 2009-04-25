@@ -3132,13 +3132,13 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last/ist
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spelet har blitt lagra i ein versjon utan støtte for trikk. Alle trikkar har blitt fjerna.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vanleg valuta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffiks: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Byt til euro: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffiks: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Byt til euro: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Byt til euro: {ORANGE}aldri
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eksempel: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eksempel: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Byt vanleg valutagrense
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

@@ -3155,13 +3155,13 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Oyun tramvay desteği olmayan bir sürümde kaydedilmiş. Tüm tramvaylar kaldırılmıştır.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Özel Para Birimi
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Çarpan: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ayraç: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Önek: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sonek: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Euro'ya geç: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Çarpan: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ayraç: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Önek: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sonek: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Euro'ya geç: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Euro'ya geç: {ORANGE}hiçbir zaman
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Önizleme: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Önizleme: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Özel para birimini değiştir
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

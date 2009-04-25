@@ -3130,13 +3130,13 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spēle bija saglabāta bez tramvaju atbalsta. Visi tramvaji tikuši aizvākti.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Cita valūta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Maiņas kurss: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Atdalītājs: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefikss: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffikss: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Pariet uz Eiro: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Maiņas kurss: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Atdalītājs: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefikss: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffikss: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Pariet uz Eiro: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Pariet uz Eiro: {ORANGE}nekad
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Priekšskatījums: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Priekšskatījums: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mainīt patreizējās valūtas parametrus.
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

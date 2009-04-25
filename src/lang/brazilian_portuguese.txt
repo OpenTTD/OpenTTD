@@ -3144,13 +3144,13 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Jogo foi salvo numa versão sem suporte a bondes. Todos os bondes foram removidos.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda Modificada
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de câmbio: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufixo: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Mudar para Euro: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de câmbio: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufixo: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Mudar para Euro: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Mudar para Euro: {ORANGE}nunca
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prevêr: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prevêr: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mudar parametro de moeda personalizada
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

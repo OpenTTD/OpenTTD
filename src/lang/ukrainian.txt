@@ -3293,13 +3293,13 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Інфо
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Гра була записана у версії без підтримки трамваїв. Усі трамваї були видалені.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Вибір грошової одиниці
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Валютний курс: {ORANGE}{CURRENCY} = Ј {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Роздільник: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Префікс: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суфікс: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Перехід на євро: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Валютний курс: {ORANGE}{0:CURRENCY} = Ј {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Роздільник: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Префікс: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суфікс: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Перехід на євро: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Перехід на євро: {ORANGE}ні
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Відображення: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Відображення: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Налаштування іншої грошової одиниці
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

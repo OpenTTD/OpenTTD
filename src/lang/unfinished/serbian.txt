@@ -2222,13 +2222,13 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Podaci o
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Partija je sačuvana u vreziji bez podrške za tramvaje. Svi tramvaji su uklonjeni.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Sopstvena moneta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Devizni kurs: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Razdelnik: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Pelazak na Euro: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Devizni kurs: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Razdelnik: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Pelazak na Euro: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Prelazak na Euro: {ORANGE}nikada
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Primer: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Primer: {ORANGE}{6:CURRENCY}
 
 
 

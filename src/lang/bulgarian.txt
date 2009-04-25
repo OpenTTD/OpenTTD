@@ -3120,13 +3120,13 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Играта бе записана във версия без поддръжка на трамваи. Всички трамваи са изтрити.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Парична единица
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменен курс: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделител: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Представка: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Надставка: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Преобразуване в евро: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменен курс: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделител: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Представка: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Надставка: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Преобразуване в евро: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Преобразуване в евро: {ORANGE}никога
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Преглед: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Преглед: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Промяна параметрите на парична единица
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

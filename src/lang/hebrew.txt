@@ -3114,9 +3114,9 @@ STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game was
 
 STR_CURRENCY_WINDOW                                             :{WHITE}מטבע מותאם אישית
 STR_CURRENCY_EXCHANGE_RATE                                      :{ORANGE}{0:CURRENCY} =£{1:COMMA} {LTBLUE} :שער חליפין
-STR_CURRENCY_SWITCH_TO_EURO                                     :{ORANGE}{NUM} {LTBLUE} :החלפה ליורו
+STR_CURRENCY_SWITCH_TO_EURO                                     :{ORANGE}{5:NUM} {LTBLUE} :החלפה ליורו
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{ORANGE} ללא {LTBLUE} :החלפה ליורו
-STR_CURRENCY_PREVIEW                                            :{ORANGE}{CURRENCY}{LTBLUE} :צפיה מקדימה
+STR_CURRENCY_PREVIEW                                            :{ORANGE}{6:CURRENCY}{LTBLUE} :צפיה מקדימה
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}שנה פרמטר עבור מטבע מותאם אישית
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

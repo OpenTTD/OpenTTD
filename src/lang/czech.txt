@@ -3230,13 +3230,13 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Hra byla uložena ve verzi bez podpory tramvají. Všechny tramvaje se odstraní.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastní měna
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz měny: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Oddělovač: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Předpona: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Přípona: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Přechod k euru: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz měny: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Oddělovač: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Předpona: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Přípona: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Přechod k euru: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Přechod k euru: {ORANGE}nikdy
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Náhled: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Náhled: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Změnit parametry vlastní měny
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

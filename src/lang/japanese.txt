@@ -3096,13 +3096,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}「{1:CO
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}このゲームは路面電車に対応していないバージョンで保存されましたので、すべての路面電車が削除されました。
 
 STR_CURRENCY_WINDOW                                             :{WHITE}カスタム通貨
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}為替レート：{ORANGE}{CURRENCY} ＝ £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}分離記号： {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}接頭文字： {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}接尾文字： {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}ユーロに切替え：{ORANGE}{NUM}年
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}為替レート：{ORANGE}{0:CURRENCY} ＝ £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}分離記号： {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}接頭文字： {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}接尾文字： {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}ユーロに切替え：{ORANGE}{5:NUM}年
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}ユーロに切替え：{ORANGE}しない
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}プレビュー：{ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}プレビュー：{ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}カスタム通貨の設定を変更
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

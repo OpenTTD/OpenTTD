@@ -3131,13 +3131,13 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informas
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game telah disimpan pada versi terdahulu tanpa dukungan alat transportasi trem. Semua Trem telah dihilangkan.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Atur Mata Uang
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Nilai tukar: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Pemisah: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Awalan: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Akhiran: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Menggunakan Euro tahun: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Nilai tukar: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Pemisah: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Awalan: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Akhiran: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Menggunakan Euro tahun: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Menggunakan Euro: {ORANGE}tidak pernah
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Contoh: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Contoh: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ubah sendiri parameter mata uang
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

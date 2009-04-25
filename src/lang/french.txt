@@ -3156,13 +3156,13 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Partie sauvegardée avec une version sans support des tramways. Tous les tramways ont été supprimés.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Devise personnalisée
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taux de change : {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Séparateur : {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Préfixe : {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffixe : {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Passer à l'Euro : {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taux de change : {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Séparateur : {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Préfixe : {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffixe : {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Passer à l'Euro : {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Passer à l'Euro : {ORANGE}jamais
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prévisualisation : {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prévisualisation : {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Changer les paramètres de devises personnalisées
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

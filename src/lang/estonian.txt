@@ -3210,13 +3210,13 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Mäng salvestati trammide toetuseta versioonis. Kõik trammid eemaldati.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Isiklik valuuta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vahetuskurss: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Vahemärk: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Eesliide: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Lõpuliide: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Vaheta üle eurole: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vahetuskurss: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Vahemärk: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Eesliide: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Lõpuliide: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Vaheta üle eurole: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Vaheta üle eurole: {ORANGE}Mitte kunagi
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eelvaade: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eelvaade: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Muuda personaalse valuuta parameetreid
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

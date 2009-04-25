@@ -3158,13 +3158,13 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}La partita è stata salvata in una versione senza il supporto per i tram. Tutte le tranvie sono state rimosse.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Valuta personalizzata
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Cambio: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separatore: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefisso: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffisso: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Passa all'Euro: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Cambio: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separatore: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefisso: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffisso: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Passa all'Euro: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Passa all'Euro: {ORANGE}Mai
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Anteprima: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Anteprima: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambia i parametri della valuta personalizzata
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

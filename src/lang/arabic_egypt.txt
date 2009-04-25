@@ -3133,13 +3133,13 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}اللعبة حفظت بنسخة لا تدعم الترام. كل ما يتعلق بالترام حذف.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}عمله مخصصه
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}معامل التبديل: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE} فاصل العملة: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE} علامة العملة السابقة: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}  علامة العملة الاخيرة: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}حول إلى يورو : {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}معامل التبديل: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE} فاصل العملة: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE} علامة العملة السابقة: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}  علامة العملة الاخيرة: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}حول إلى يورو : {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}حول إلى يورو : {ORANGE}أبدا
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}عرض: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}عرض: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}غير الخيارات الاختيارة
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

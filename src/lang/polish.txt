@@ -3215,13 +3215,13 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Gra została zapisana w wersji nie obsługującej tramwajów. Wszystkie tramwaje zostały usunięte.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Własna waluta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Współczynnik wymiany: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Przejście na Euro: {ORANGE}{NUM}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Współczynnik wymiany: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Przejście na Euro: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Przejście na Euro: {ORANGE}nigdy
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Podgląd: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Podgląd: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmień parametr własnej waluty
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}

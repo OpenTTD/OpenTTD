@@ -3144,13 +3144,13 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Инфо
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Игра была сохранена в игре без поддержки трамваев. Все трамваи были отключены.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Своя валюта
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменный курс: {ORANGE}{CURRENCY} = £{COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделитель: {STRING}
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Префикс: {STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суффикс: {STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Переход на евро: {ORANGE}с {NUM} года
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменный курс: {ORANGE}{0:CURRENCY} = £{1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделитель: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Префикс: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суффикс: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Переход на евро: {ORANGE}с {5:NUM} года
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Переход на евро: {ORANGE}никогда
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Образец: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Образец: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Изменить параметр валюты
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
