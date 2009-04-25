@@ -112,6 +112,7 @@ enum WidgetType {
 	WPT_PADDING,      ///< Widget part for specifying a padding.
 	WPT_PIPSPACE,     ///< Widget part for specifying pre/inter/post space for containers.
 	WPT_ENDCONTAINER, ///< Widget part to denote end of a container.
+	WPT_FUNCTION,     ///< Widget part for calling a user function.
 
 	/* Pushable window widget types. */
 	WWT_MASK = 0x7F,
@@ -312,6 +313,9 @@ struct NWidgetPartPIP {
 	uint8 pre, inter, post; ///< Amount of space before/between/after child widgets.
 };
 
+/** Pointer to function returning a nested widget. */
+typedef NWidgetBase *NWidgetFunctionType();
+
 /** Partial widget specification to allow NWidgets to be written nested. */
 struct NWidgetPart {
 	WidgetType type;                         ///< Type of the part. @see NWidgetPartType.
@@ -323,6 +327,7 @@ struct NWidgetPart {
 		NWidgetPartWidget widget;        ///< Part with a start of a widget.
 		NWidgetPartPaddings padding;     ///< Part with paddings.
 		NWidgetPartPIP pip;              ///< Part with pre/inter/post spaces.
+		NWidgetFunctionType *func_ptr;   ///< Part with a function call.
 	} u;
 };
 
@@ -519,6 +524,16 @@ static inline NWidgetPart NWidget(WidgetType tp)
 	NWidgetPart part;
 
 	part.type = tp;
+
+	return part;
+}
+
+static inline NWidgetPart NWidgetFunction(NWidgetFunctionType *func_ptr)
+{
+	NWidgetPart part;
+
+	part.type = WPT_FUNCTION;
+	part.u.func_ptr = func_ptr;
 
 	return part;
 }

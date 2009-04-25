@@ -1400,13 +1400,15 @@ bool CompareWidgetArrays(const Widget *orig, const Widget *gen, bool report)
  * @param parts Array with parts of the nested widget.
  * @param count Length of the \a parts array.
  * @param dest  Address of pointer to use for returning the composed widget.
+ * @param fill_dest Fill the composed widget with child widgets.
  * @return Number of widget part elements used to compose the widget.
  */
-static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest)
+static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, bool *fill_dest)
 {
 	int num_used = 0;
 
 	*dest = NULL;
+	*fill_dest = false;
 
 	while (count > num_used) {
 		switch (parts->type) {
@@ -1418,11 +1420,13 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest)
 			case NWID_HORIZONTAL:
 				if (*dest != NULL) return num_used;
 				*dest = new NWidgetHorizontal();
+				*fill_dest = true;
 				break;
 
 			case NWID_HORIZONTAL_LTR:
 				if (*dest != NULL) return num_used;
 				*dest = new NWidgetHorizontalLTR();
+				*fill_dest = true;
 				break;
 
 			case WWT_PANEL:
@@ -1430,11 +1434,19 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest)
 			case WWT_FRAME:
 				if (*dest != NULL) return num_used;
 				*dest = new NWidgetBackground(parts->type, parts->u.widget.colour, parts->u.widget.index);
+				*fill_dest = true;
 				break;
 
 			case NWID_VERTICAL:
 				if (*dest != NULL) return num_used;
 				*dest = new NWidgetVertical();
+				*fill_dest = true;
+				break;
+
+			case WPT_FUNCTION:
+				if (*dest != NULL) return num_used;
+				*dest = parts->u.func_ptr();
+				*fill_dest = false;
 				break;
 
 			case WPT_RESIZE: {
@@ -1550,7 +1562,8 @@ static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase *pare
 	int total_used = 0;
 	while (true) {
 		NWidgetBase *sub_widget = NULL;
-		int num_used = MakeNWidget(parts, count - total_used, &sub_widget);
+		bool fill_sub = false;
+		int num_used = MakeNWidget(parts, count - total_used, &sub_widget, &fill_sub);
 		parts += num_used;
 		total_used += num_used;
 
@@ -1563,7 +1576,7 @@ static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase *pare
 
 		/* If sub-widget is a container, recursively fill that container. */
 		WidgetType tp = sub_widget->type;
-		if (tp == NWID_HORIZONTAL || tp == NWID_HORIZONTAL_LTR || tp == NWID_VERTICAL || tp == WWT_PANEL || tp == WWT_FRAME || tp == WWT_INSET) {
+		if (fill_sub && (tp == NWID_HORIZONTAL || tp == NWID_HORIZONTAL_LTR || tp == NWID_VERTICAL || tp == WWT_PANEL || tp == WWT_FRAME || tp == WWT_INSET)) {
 			int num_used = MakeWidgetTree(parts, count - total_used, sub_widget);
 			parts += num_used;
 			total_used += num_used;
