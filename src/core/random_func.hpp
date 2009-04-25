@@ -126,16 +126,14 @@ static FORCEINLINE bool Chance16I(const uint a, const uint b, const uint32 r)
 }
 
 /**
- * Flips a coin with a given probability.
+ * Flips a coin with given probability.
  *
- * This macro can be used to get true or false randomized according to a
- * given probability. The parameter a and b create a percent value with
- * (a/b). The macro returns true in (a/b) percent.
+ * This function returns true with (a/b) probability.
  *
  * @see Chance16I()
- * @param a The numerator of the fraction
+ * @param a The nominator of the fraction
  * @param b The denominator of the fraction
- * @return True in (a/b) percent
+ * @return True with (a/b) probability
  */
 static FORCEINLINE bool Chance16(const uint a, const uint b)
 {
