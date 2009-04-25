@@ -422,11 +422,12 @@ public:
 	static bool SellWagonChain(VehicleID vehicle_id, int wagon);
 
 	/**
-	 * Sends the given vehicle to a depot.
+	 * Sends the given vehicle to a depot. If the vehicle has already been
+	 * sent to a depot it continues with its normal orders instead.
 	 * @param vehicle_id The vehicle to send to a depot.
 	 * @pre IsValidVehicle(vehicle_id).
 	 * @exception AIVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT
-	 * @return True if and only if the vehicle has been sent to a depot.
+	 * @return True if the current order was changed.
 	 */
 	static bool SendVehicleToDepot(VehicleID vehicle_id);
 
