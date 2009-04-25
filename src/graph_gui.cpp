@@ -86,6 +86,20 @@ struct GraphLegendWindow : Window {
 	}
 };
 
+static NWidgetBase *MakeNWidgetCompanyLines()
+{
+	NWidgetVertical *vert = new NWidgetVertical();
+
+	for (int widnum = GLW_FIRST_COMPANY; widnum <= GLW_LAST_COMPANY; widnum++) {
+		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
+		panel->SetMinimalSize(246, 12);
+		panel->SetFill(false, false);
+		panel->SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION);
+		vert->Add(panel);
+	}
+	return vert;
+}
+
 static const Widget _graph_legend_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,       STR_TOOLTIP_CLOSE_WINDOW},           // GLW_CLOSEBOX
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   249,     0,    13, STR_GRAPH_KEY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // GLW_CAPTION
@@ -108,11 +122,26 @@ static const Widget _graph_legend_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_graph_legend_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, GLW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, GLW_CAPTION), SetDataTip(STR_GRAPH_KEY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, GLW_BACKGROUND),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+			NWidgetFunction(MakeNWidgetCompanyLines),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+		EndContainer(),
+	EndContainer(),
+};
+
 static const WindowDesc _graph_legend_desc(
 	WDP_AUTO, WDP_AUTO, 250, 198, 250, 198,
 	WC_GRAPH_LEGEND, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_graph_legend_widgets
+	_graph_legend_widgets, _nested_graph_legend_widgets, lengthof(_nested_graph_legend_widgets)
 );
 
 static void ShowGraphLegend()
@@ -615,11 +644,21 @@ static const Widget _performance_history_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_performance_history_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, PHW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, PHW_CAPTION), SetDataTip(STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, PHW_DETAILED_PERFORMANCE), SetMinimalSize(50, 14), SetDataTip(STR_PERFORMANCE_DETAIL_KEY, STR_SHOW_DETAILED_PERFORMANCE_RATINGS),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, PHW_KEY), SetMinimalSize(50, 14), SetDataTip(STR_GRAPH_KEY_BUTTON, STR_GRAPH_KEY_TOOLTIP),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, PHW_BACKGROUND), SetMinimalSize(576, 224), EndContainer(),
+};
+
 static const WindowDesc _performance_history_desc(
 	WDP_AUTO, WDP_AUTO, 576, 238, 576, 238,
 	WC_PERFORMANCE_HISTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_performance_history_widgets
+	_performance_history_widgets, _nested_performance_history_widgets, lengthof(_nested_performance_history_widgets)
 );
 
 void ShowPerformanceHistoryGraph()
@@ -1155,6 +1194,74 @@ struct PerformanceRatingDetailWindow : Window {
 
 CompanyID PerformanceRatingDetailWindow::company = INVALID_COMPANY;
 
+/** Make a vertical list of panels for outputting score details. */
+static NWidgetBase *MakePerformanceDetailPanels()
+{
+	const StringID performance_tips[] = {
+		STR_PERFORMANCE_DETAIL_VEHICLES_TIP,
+		STR_PERFORMANCE_DETAIL_STATIONS_TIP,
+		STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP,
+		STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP,
+		STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP,
+		STR_PERFORMANCE_DETAIL_DELIVERED_TIP,
+		STR_PERFORMANCE_DETAIL_CARGO_TIP,
+		STR_PERFORMANCE_DETAIL_MONEY_TIP,
+		STR_PERFORMANCE_DETAIL_LOAN_TIP,
+		STR_PERFORMANCE_DETAIL_TOTAL_TIP,
+	};
+
+	assert(lengthof(performance_tips) == SCORE_END - SCORE_BEGIN);
+
+	NWidgetVertical *vert = new NWidgetVertical();
+	for (int widnum = PRW_SCORE_FIRST; widnum <= PRW_SCORE_LAST; widnum++) {
+		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
+		panel->SetMinimalSize(299, 20);
+		panel->SetFill(false, false);
+		panel->SetDataTip(0x0, performance_tips[widnum - PRW_SCORE_FIRST]);
+		vert->Add(panel);
+	}
+	return vert;
+}
+
+/** Make a number of rows with button-like graphics, for enabling/disabling each company. */
+static NWidgetBase *MakeCompanyButtonRows()
+{
+	static const int MAX_LENGTH = 8; // Maximal number of company buttons in one row.
+	NWidgetVertical *vert = NULL; // Storage for all rows.
+	NWidgetHorizontal *hor = NULL; // Storage for buttons in one row.
+	int hor_length = 0;
+
+	for (int widnum = PRW_COMPANY_FIRST; widnum <= PRW_COMPANY_LAST; widnum++) {
+		/* Ensure there is room in 'hor' for another button. */
+		if (hor_length == MAX_LENGTH) {
+			if (vert == NULL) vert = new NWidgetVertical();
+			vert->Add(hor);
+			hor = NULL;
+			hor_length = 0;
+		}
+		if (hor == NULL) {
+			hor = new NWidgetHorizontal();
+			hor_length = 0;
+		}
+
+		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
+		panel->SetMinimalSize(37, 13);
+		panel->SetFill(false, false);
+		panel->SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION);
+		hor->Add(panel);
+		hor_length++;
+	}
+	if (vert == NULL) return hor; // All buttons fit in a single row.
+
+	if (hor_length > 0 && hor_length < MAX_LENGTH) {
+		/* Last row is partial, add a spacer at the end to force all buttons to the left. */
+		NWidgetSpacer *spc = new NWidgetSpacer(0, 0);
+		spc->SetFill(true, false);
+		hor->Add(spc);
+	}
+	if (hor != NULL) vert->Add(hor);
+	return vert;
+}
 
 static const Widget _performance_rating_detail_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,        STR_TOOLTIP_CLOSE_WINDOW},            // PRW_CLOSEBOX
@@ -1190,11 +1297,22 @@ static const Widget _performance_rating_detail_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_performance_rating_detail_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, PRW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, PRW_CAPTION), SetDataTip(STR_PERFORMANCE_DETAIL, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, PRW_BACKGROUND),
+		NWidgetFunction(MakeCompanyButtonRows), SetPadding(0, 1, 1, 2),
+	EndContainer(),
+	NWidgetFunction(MakePerformanceDetailPanels),
+};
+
 static const WindowDesc _performance_rating_detail_desc(
 	WDP_AUTO, WDP_AUTO, 299, 241, 299, 241,
 	WC_PERFORMANCE_DETAIL, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_performance_rating_detail_widgets
+	_performance_rating_detail_widgets, _nested_performance_rating_detail_widgets, lengthof(_nested_performance_rating_detail_widgets)
 );
 
 void ShowPerformanceRatingDetail()
