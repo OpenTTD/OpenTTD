@@ -119,6 +119,33 @@ public:
 	static bool IsValidVehicleOrder(VehicleID vehicle_id, OrderPosition order_position);
 
 	/**
+	 * Checks whether the given order is a goto-station order.
+	 * @param vehicle_id The vehicle to check.
+	 * @param order_position The order index to check.
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @return True if and only if the order is a goto-station order.
+	 */
+	static bool IsGotoStationOrder(VehicleID vehicle_id, OrderPosition order_position);
+
+	/**
+	 * Checks whether the given order is a goto-depot order.
+	 * @param vehicle_id The vehicle to check.
+	 * @param order_position The order index to check.
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @return True if and only if the order is a goto-depot order.
+	 */
+	static bool IsGotoDepotOrder(VehicleID vehicle_id, OrderPosition order_position);
+
+	/**
+	 * Checks whether the given order is a goto-waypoint order.
+	 * @param vehicle_id The vehicle to check.
+	 * @param order_position The order index to check.
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @return True if and only if the order is a goto-waypoint order.
+	 */
+	static bool IsGotoWaypointOrder(VehicleID vehicle_id, OrderPosition order_position);
+
+	/**
 	 * Checks whether the given order is a conditional order.
 	 * @param vehicle_id The vehicle to check.
 	 * @param order_position The order index to check.
@@ -126,6 +153,17 @@ public:
 	 * @return True if and only if the order is a conditional order.
 	 */
 	static bool IsConditionalOrder(VehicleID vehicle_id, OrderPosition order_position);
+
+	/**
+	 * Checks whether the current order is part of the orderlist.
+	 * @param vehicle_id The vehicle to check.
+	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
+	 * @return True if and only if the current order is part of the order list.
+	 * @note If the order is a non-'non-stop' order, and the vehicle is currently
+	 * (un)loading at a station that is not the final destination, this function
+	 * will still return true.
+	 */
+	static bool IsCurrentOrderPartOfOrderList(VehicleID vehicle_id);
 
 	/**
 	 * Resolves the given order index to the correct index for the given vehicle.

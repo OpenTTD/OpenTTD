@@ -160,6 +160,13 @@
 	return AIObject::DoCommand(0, vehicle_id, 0, GetCmdSendToDepot(::GetVehicle(vehicle_id)));
 }
 
+/* static */ bool AIVehicle::SendVehicleToDepotForServicing(VehicleID vehicle_id)
+{
+	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
+
+	return AIObject::DoCommand(0, vehicle_id, DEPOT_SERVICE, GetCmdSendToDepot(::GetVehicle(vehicle_id)));
+}
+
 /* static */ bool AIVehicle::IsInDepot(VehicleID vehicle_id)
 {
 	if (!IsValidVehicle(vehicle_id)) return false;

@@ -432,6 +432,16 @@ public:
 	static bool SendVehicleToDepot(VehicleID vehicle_id);
 
 	/**
+	 * Sends the given vehicle to a depot for servicing. If the vehicle has
+	 * already been sent to a depot it continues with its normal orders instead.
+	 * @param vehicle_id The vehicle to send to a depot for servicing.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @exception AIVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT
+	 * @return True if the current order was changed.
+	 */
+	static bool SendVehicleToDepotForServicing(VehicleID vehicle_id);
+
+	/**
 	 * Starts or stops the given vehicle depending on the current state.
 	 * @param vehicle_id The vehicle to start/stop.
 	 * @pre IsValidVehicle(vehicle_id).
