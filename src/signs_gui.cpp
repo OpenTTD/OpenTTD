@@ -161,11 +161,26 @@ static const Widget _sign_list_widget[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_sign_list_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, SLW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, SLW_CAPTION), SetDataTip(STR_SIGN_LIST_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY, SLW_STICKY),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_GREY, SLW_LIST), SetMinimalSize(346, 124), SetResize(1, 10), EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(WWT_SCROLLBAR, COLOUR_GREY, SLW_SCROLLBAR),
+			NWidget(WWT_RESIZEBOX, COLOUR_GREY, SLW_RESIZE),
+		EndContainer(),
+	EndContainer(),
+};
+
 static const WindowDesc _sign_list_desc(
 	WDP_AUTO, WDP_AUTO, 358, 138, 358, 138,
 	WC_SIGN_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_sign_list_widget
+	_sign_list_widget, _nested_sign_list_widgets, lengthof(_nested_sign_list_widgets)
 );
 
 
@@ -346,11 +361,29 @@ static const Widget _query_sign_edit_widgets[] = {
 { WIDGETS_END },
 };
 
+static const NWidgetPart _nested_query_sign_edit_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_CAPTION), SetDataTip(STR_QUERY_CAPTION, STR_NULL),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_PANEL),
+		NWidget(WWT_EDITBOX, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_TEXT), SetMinimalSize(256, 12), SetDataTip(STR_SIGN_OSKTITLE, STR_NULL), SetPadding(2, 2, 2, 2),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_OK), SetMinimalSize(61, 12), SetDataTip(STR_QUERY_OK, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_CANCEL), SetMinimalSize(60, 12), SetDataTip(STR_QUERY_CANCEL, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_DELETE), SetMinimalSize(60, 12), SetDataTip(STR_TOWN_VIEW_DELETE_BUTTON, STR_NULL),
+		NWidget(WWT_PANEL, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_FILL), SetFill(1, 1), EndContainer(),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_PREVIOUS), SetMinimalSize(11, 12), SetDataTip(STR_ARROW_LEFT_SMALL, STR_PREVIOUS_SIGN_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_NEXT), SetMinimalSize(11, 12), SetDataTip(STR_ARROW_RIGHT_SMALL, STR_NEXT_SIGN_TOOLTIP),
+	EndContainer(),
+};
+
 static const WindowDesc _query_sign_edit_desc(
 	190, 170, 260, 42, 260, 42,
 	WC_QUERY_STRING, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_query_sign_edit_widgets
+	_query_sign_edit_widgets, _nested_query_sign_edit_widgets, lengthof(_nested_query_sign_edit_widgets)
 );
 
 void HandleClickOnSign(const Sign *si)
