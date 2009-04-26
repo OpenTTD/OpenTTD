@@ -636,6 +636,11 @@ DEF_CONSOLE_CMD(ConJoinCompany)
 		return true;
 	}
 
+	if (company_id != COMPANY_SPECTATOR && GetCompany(company_id)->is_ai) {
+		IConsoleError("Cannot join AI company.");
+		return true;
+	}
+
 	/* Check if the company requires a password */
 	if (NetworkCompanyIsPassworded(company_id) && argc < 3) {
 		IConsolePrintF(CC_ERROR, "Company %d requires a password to join.", company_id + 1);
@@ -671,6 +676,11 @@ DEF_CONSOLE_CMD(ConMoveClient)
 
 	if (!IsValidCompanyID(company_id) && company_id != COMPANY_SPECTATOR) {
 		IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
+		return true;
+	}
+
+	if (company_id != COMPANY_SPECTATOR && GetCompany(company_id)->is_ai) {
+		IConsoleError("You cannot move clients to AI companies.");
 		return true;
 	}
 
