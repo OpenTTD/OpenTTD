@@ -1133,7 +1133,7 @@ static void AILoadConfig(IniFile *ini, const char *grpname)
 				continue;
 			}
 		}
-		config->StringToSettings(item->value);
+		if (item->value != NULL) config->StringToSettings(item->value);
 	}
 }
 
