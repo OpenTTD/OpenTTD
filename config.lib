@@ -1400,8 +1400,10 @@ make_cflags_and_ldflags() {
 	# Lovely hackish, not?
 	# Btw, this almost always comes from outside the configure, so it is
 	#  not something we can control.
+	# Also make makedepend aware of compiler's built-in defines.
 	if [ "$with_makedepend" != "0" ]; then
-		cflags_makedep="` echo "$CFLAGS" | sed 's~ /~ -~g;s~-I[ ]*[^ ]*~~g'`"
+		cflags_makedep="`echo | $cxx_host -E -x c++ -dM - | sed 's~#define ~-D~g;s~ .*~ ~g;s~(.*)~~g' | tr -d '\r\n'`"
+		cflags_makedep="$cflags_makedep `echo "$CFLAGS" | sed 's~ /~ -~g;s~-I[ ]*[^ ]*~~g'`"
 	else
 		makedepend=""
 	fi
