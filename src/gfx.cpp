@@ -363,6 +363,8 @@ static int TruncateString(char *str, int maxw)
 			} else if (c == SCC_BIGFONT) {
 				size = FS_LARGE;
 				ddd = GetCharacterWidth(size, '.') * 3;
+			} else if (c == '\n') {
+				DEBUG(misc, 0, "Drawing string using newlines with DrawString instead of DrawStringMultiLine. Please notify the developers of this: [%s]", str);
 			}
 		}
 
