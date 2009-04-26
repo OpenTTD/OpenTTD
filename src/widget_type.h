@@ -212,6 +212,9 @@ public:
 	void Add(NWidgetBase *wid);
 	void SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post);
 
+	/** Return whether the container is empty. */
+	inline bool IsEmpty() { return head == NULL; };
+
 protected:
 	uint8 pip_pre;     ///< Amount of space before first widget.
 	uint8 pip_inter;   ///< Amount of space between widgets.
