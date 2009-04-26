@@ -423,8 +423,7 @@ public:
 			StringID str = STR_CONTENT_TYPE_BASE_GRAPHICS + ci->type - CONTENT_TYPE_BASE_GRAPHICS;
 			DrawString(this->widget[NCLWW_TYPE].left, this->widget[NCLWW_TYPE].right, y, str, TC_BLACK, SA_CENTER);
 
-			SetDParamStr(0, ci->name);
-			DrawString(this->widget[NCLWW_NAME].left + 5, this->widget[NCLWW_NAME].right, y, STR_JUST_RAW_STRING, TC_BLACK);
+			DrawString(this->widget[NCLWW_NAME].left + 5, this->widget[NCLWW_NAME].right, y, ci->name, TC_BLACK);
 			y += this->resize.step_height;
 		}
 

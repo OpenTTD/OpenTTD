@@ -240,8 +240,7 @@ protected:
 		/* show highlighted item with a different colour */
 		if (highlight) GfxFillRect(this->widget[NGWW_NAME].left + 1, y - 2, this->widget[NGWW_INFO].right - 1, y + 9, 10);
 
-		SetDParamStr(0, cur_item->info.server_name);
-		DrawString(this->widget[NGWW_NAME].left + 5, this->widget[NGWW_NAME].right, y, STR_JUST_RAW_STRING, TC_BLACK);
+		DrawString(this->widget[NGWW_NAME].left + 5, this->widget[NGWW_NAME].right, y, cur_item->info.server_name, TC_BLACK);
 
 		/* only draw details if the server is online */
 		if (cur_item->online) {
@@ -414,8 +413,7 @@ public:
 		if (sel == NULL) {
 			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 58, STR_NETWORK_GAME_INFO, TC_FROMSTRING, SA_CENTER);
 		} else if (!sel->online) {
-			SetDParamStr(0, sel->info.server_name);
-			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 68, STR_JUST_RAW_STRING, TC_ORANGE, SA_CENTER); // game name
+			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 68, sel->info.server_name, TC_ORANGE, SA_CENTER); // game name
 
 			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 132, STR_NETWORK_SERVER_OFFLINE, TC_FROMSTRING, SA_CENTER); // server offline
 		} else { // show game info
@@ -424,12 +422,8 @@ public:
 
 			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 48, STR_NETWORK_GAME_INFO, TC_FROMSTRING, SA_CENTER);
 
-
-			SetDParamStr(0, sel->info.server_name);
-			DrawString(this->widget[NGWW_DETAILS].left, this->widget[NGWW_DETAILS].right, 62, STR_JUST_RAW_STRING, TC_ORANGE, SA_CENTER); // game name
-
-			SetDParamStr(0, sel->info.map_name);
-			DrawString(this->widget[NGWW_DETAILS].left, this->widget[NGWW_DETAILS].right, 74, STR_JUST_RAW_STRING, TC_BLACK, SA_CENTER); // map name
+			DrawString(this->widget[NGWW_DETAILS].left, this->widget[NGWW_DETAILS].right, 62, sel->info.server_name, TC_ORANGE, SA_CENTER); // game name
+			DrawString(this->widget[NGWW_DETAILS].left, this->widget[NGWW_DETAILS].right, 74, sel->info.map_name, TC_BLACK, SA_CENTER); // map name
 
 			SetDParam(0, sel->info.clients_on);
 			SetDParam(1, sel->info.clients_max);
