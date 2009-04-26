@@ -184,7 +184,7 @@ struct NewsWindow : Window {
 		GfxFillRect(left,  top,    right, top,    0xD7);
 		GfxFillRect(left,  bottom, right, bottom, 0xD7);
 
-		DrawString(left + 2, right - 2, top + 1, STR_SILVER_CROSS, TC_FROMSTRING);
+		DrawString(left + 2, right - 2, top + 1, STR_SILVER_CROSS);
 	}
 
 	virtual void OnPaint()
@@ -201,7 +201,7 @@ struct NewsWindow : Window {
 					break;
 				}
 
-				DrawString(2, this->width - 1, 1, STR_SILVER_CROSS, TC_FROMSTRING);
+				DrawString(2, this->width - 1, 1, STR_SILVER_CROSS);
 
 				SetDParam(0, this->ni->date);
 				DrawString(2, this->width - 1, 1, STR_DATE_LONG_SMALL, TC_FROMSTRING, SA_RIGHT);

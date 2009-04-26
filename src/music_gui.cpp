@@ -233,7 +233,7 @@ struct MusicTrackSelectionWindow : public Window {
 			SetDParam(0, i);
 			SetDParam(2, i);
 			SetDParam(1, SPECSTR_SONGNAME);
-			DrawString(this->widget[MTSW_LIST_LEFT].left + 2, this->widget[MTSW_LIST_LEFT].right - 2, 23 + (i - 1) * 6, (i < 10) ? STR_PLAYLIST_TRACK_SINGLE_DIGIT : STR_PLAYLIST_TRACK_DOUBLE_DIGIT, TC_FROMSTRING);
+			DrawString(this->widget[MTSW_LIST_LEFT].left + 2, this->widget[MTSW_LIST_LEFT].right - 2, 23 + (i - 1) * 6, (i < 10) ? STR_PLAYLIST_TRACK_SINGLE_DIGIT : STR_PLAYLIST_TRACK_DOUBLE_DIGIT);
 		}
 
 		for (uint i = 0; i != 6; i++) {
@@ -251,7 +251,7 @@ struct MusicTrackSelectionWindow : public Window {
 			SetDParam(0, i);
 			SetDParam(1, SPECSTR_SONGNAME);
 			SetDParam(2, i);
-			DrawString(this->widget[MTSW_LIST_RIGHT].left + 2, this->widget[MTSW_LIST_RIGHT].right - 2, y, (i < 10) ? STR_PLAYLIST_TRACK_SINGLE_DIGIT : STR_PLAYLIST_TRACK_DOUBLE_DIGIT, TC_FROMSTRING);
+			DrawString(this->widget[MTSW_LIST_RIGHT].left + 2, this->widget[MTSW_LIST_RIGHT].right - 2, y, (i < 10) ? STR_PLAYLIST_TRACK_SINGLE_DIGIT : STR_PLAYLIST_TRACK_DOUBLE_DIGIT);
 			y += 6;
 		}
 	}
@@ -441,7 +441,7 @@ struct MusicWindow : public Window {
 			SetDParam(0, _music_wnd_cursong);
 			str = (_music_wnd_cursong < 10) ? STR_MUSIC_TRACK_SINGLE_DIGIT : STR_MUSIC_TRACK_DOUBLE_DIGIT;
 		}
-		DrawString(this->widget[MW_INFO].left + 3, this->widget[MW_INFO].right - 3, 46, str, TC_FROMSTRING);
+		DrawString(this->widget[MW_INFO].left + 3, this->widget[MW_INFO].right - 3, 46, str);
 
 		str = STR_MUSIC_TITLE_NONE;
 		if (_song_is_active != 0 && _music_wnd_cursong != 0) {
@@ -451,7 +451,7 @@ struct MusicWindow : public Window {
 		}
 		DrawString(this->widget[MW_INFO].left, this->widget[MW_INFO].right, 46, str, TC_FROMSTRING, SA_CENTER);
 
-		DrawString(this->widget[MW_INFO].left + 1, this->widget[MW_INFO].right, 38, STR_MUSIC_TRACK_XTITLE, TC_FROMSTRING);
+		DrawString(this->widget[MW_INFO].left + 1, this->widget[MW_INFO].right, 38, STR_MUSIC_TRACK_XTITLE);
 
 		for (uint i = 0; i != 6; i++) {
 			DrawString(this->widget[i + MW_ALL].left, this->widget[i + MW_ALL].right, 59, STR_MUSIC_PLAYLIST_ALL + i, msf.playlist == i ? TC_WHITE : TC_BLACK, SA_CENTER);

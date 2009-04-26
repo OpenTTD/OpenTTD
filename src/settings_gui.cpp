@@ -567,7 +567,7 @@ public:
 
 			value += sdb->str;
 			SetDParam(0, value);
-			DrawString(30, this->width, y, str, TC_FROMSTRING);
+			DrawString(30, this->width, y, str);
 
 			y += GAMEDIFF_WND_ROWSIZE + 2; // space items apart a bit
 			str++;
@@ -941,7 +941,7 @@ uint SettingEntry::Draw(GameSettings *settings_ptr, int base_x, int base_y, int 
 		case SEF_SUBTREE_KIND:
 			if (cur_row >= first_row) {
 				DrawSprite((this->d.sub.folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, x, y);
-				DrawString(x + 12, max_x, y, this->d.sub.title, TC_FROMSTRING);
+				DrawString(x + 12, max_x, y, this->d.sub.title);
 			}
 			cur_row++;
 			if (!this->d.sub.folded) {
@@ -1008,7 +1008,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 			SetDParam(1, value);
 		}
 	}
-	DrawString(x + 25, max_x, y, (sdb->str) + disabled, TC_FROMSTRING);
+	DrawString(x + 25, max_x, y, (sdb->str) + disabled);
 }
 
 

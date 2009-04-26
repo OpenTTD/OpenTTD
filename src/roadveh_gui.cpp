@@ -31,7 +31,7 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 	SetDParam(0, v->engine_type);
 	SetDParam(1, v->build_year);
 	SetDParam(2, v->value);
-	DrawString(left, right, y + y_offset, STR_VEHICLE_INFO_BUILT_VALUE, TC_FROMSTRING);
+	DrawString(left, right, y + y_offset, STR_VEHICLE_INFO_BUILT_VALUE);
 
 	if (RoadVehHasArticPart(v)) {
 		AcceptedCargo max_cargo;
@@ -86,7 +86,7 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 				str = STR_VEHICLE_DETAILS_CARGO_FROM;
 				feeder_share += u->cargo.FeederShare();
 			}
-			DrawString(left, right, y + 21 + y_offset, str, TC_FROMSTRING);
+			DrawString(left, right, y + 21 + y_offset, str);
 
 			y_offset += 11;
 		}
@@ -96,7 +96,7 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 		SetDParam(0, v->cargo_type);
 		SetDParam(1, v->cargo_cap);
 		SetDParam(4, GetCargoSubtypeText(v));
-		DrawString(left, right, y + 10 + y_offset, STR_VEHICLE_INFO_CAPACITY, TC_FROMSTRING);
+		DrawString(left, right, y + 10 + y_offset, STR_VEHICLE_INFO_CAPACITY);
 
 		str = STR_VEHICLE_DETAILS_CARGO_EMPTY;
 		if (!v->cargo.Empty()) {
@@ -106,12 +106,12 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 			str = STR_VEHICLE_DETAILS_CARGO_FROM;
 			feeder_share += v->cargo.FeederShare();
 		}
-		DrawString(left, right, y + 21 + y_offset, str, TC_FROMSTRING);
+		DrawString(left, right, y + 21 + y_offset, str);
 	}
 
 	/* Draw Transfer credits text */
 	SetDParam(0, feeder_share);
-	DrawString(left, right, y + 33 + y_offset, STR_FEEDER_CARGO_VALUE, TC_FROMSTRING);
+	DrawString(left, right, y + 33 + y_offset, STR_FEEDER_CARGO_VALUE);
 }
 
 

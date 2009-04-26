@@ -253,7 +253,7 @@ public:
 		if (_settings_game.economy.station_noise_level) {
 			/* show the noise of the selected airport */
 			SetDParam(0, airport->noise_level);
-			DrawString(2, this->width - 2, 206, STR_STATION_NOISE, TC_FROMSTRING);
+			DrawString(2, this->width - 2, 206, STR_STATION_NOISE);
 			y_noise_offset = 10;
 		}
 

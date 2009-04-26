@@ -366,7 +366,7 @@ public:
 		DrawString(71 + cg_ofst, 71 + cg_ofst + 12, y + cg_ofst, STR_ABBREV_ALL, TC_BLACK);
 
 		if (this->vscroll.count == 0) { // company has no stations
-			DrawString(xb, this->width, 40, STR_STATION_LIST_NONE, TC_FROMSTRING);
+			DrawString(xb, this->width, 40, STR_STATION_LIST_NONE);
 			return;
 		}
 
@@ -385,7 +385,7 @@ public:
 
 			SetDParam(0, st->index);
 			SetDParam(1, st->facilities);
-			x = DrawString(xb, this->widget[SLW_LIST].right, y, STR_STATION_LIST_STATION, TC_FROMSTRING) + 5;
+			x = DrawString(xb, this->widget[SLW_LIST].right, y, STR_STATION_LIST_STATION) + 5;
 
 			/* show cargo waiting and station ratings */
 			for (CargoID j = 0; j < NUM_CARGO; j++) {
@@ -821,7 +821,7 @@ struct StationViewWindow : public Window {
 				if (!st->goods[i].cargo.Empty()) str = STR_EMPTY;
 			}
 			SetDParam(0, str);
-			DrawString(x, this->widget[SVW_WAITING].right - 2, y, STR_STATION_VIEW_WAITING_TITLE, TC_FROMSTRING);
+			DrawString(x, this->widget[SVW_WAITING].right - 2, y, STR_STATION_VIEW_WAITING_TITLE);
 			y += 10;
 		}
 
@@ -886,7 +886,7 @@ struct StationViewWindow : public Window {
 		} else { // extended window with list of cargo ratings
 			y = this->widget[SVW_RATINGLIST].top + 1;
 
-			DrawString(this->widget[SVW_ACCEPTLIST].left + 2, this->widget[SVW_ACCEPTLIST].right - 2, y, STR_STATION_VIEW_CARGO_RATINGS_TITLE, TC_FROMSTRING);
+			DrawString(this->widget[SVW_ACCEPTLIST].left + 2, this->widget[SVW_ACCEPTLIST].right - 2, y, STR_STATION_VIEW_CARGO_RATINGS_TITLE);
 			y += 10;
 
 			for (CargoID i = 0; i < NUM_CARGO; i++) {
@@ -899,7 +899,7 @@ struct StationViewWindow : public Window {
 				SetDParam(0, cs->name);
 				SetDParam(2, ge->rating * 101 >> 8);
 				SetDParam(1, STR_CARGO_RATING_APPALLING + (ge->rating >> 5));
-				DrawString(this->widget[SVW_ACCEPTLIST].left + 8, this->widget[SVW_ACCEPTLIST].right - 2, y, STR_STATION_VIEW_CARGO_RATING, TC_FROMSTRING);
+				DrawString(this->widget[SVW_ACCEPTLIST].left + 8, this->widget[SVW_ACCEPTLIST].right - 2, y, STR_STATION_VIEW_CARGO_RATING);
 				y += 10;
 			}
 		}
@@ -1161,7 +1161,7 @@ struct SelectStationWindow : Window {
 
 		uint y = 17;
 		if (this->vscroll.pos == 0) {
-			DrawString(3, this->widget[JSW_PANEL].right - 2, y, STR_CREATE_SPLITTED_STATION, TC_FROMSTRING);
+			DrawString(3, this->widget[JSW_PANEL].right - 2, y, STR_CREATE_SPLITTED_STATION);
 			y += 10;
 		}
 
@@ -1172,7 +1172,7 @@ struct SelectStationWindow : Window {
 			const Station *st = GetStation(_stations_nearby_list[i - 1]);
 			SetDParam(0, st->index);
 			SetDParam(1, st->facilities);
-			DrawString(3, this->widget[JSW_PANEL].right - 2, y, STR_STATION_LIST_STATION, TC_FROMSTRING);
+			DrawString(3, this->widget[JSW_PANEL].right - 2, y, STR_STATION_LIST_STATION);
 		}
 	}
 

@@ -193,7 +193,7 @@ struct CheatWindow : Window {
 				} break;
 			}
 
-			DrawString(50, this->width, y + 1, ce->str, TC_FROMSTRING);
+			DrawString(50, this->width, y + 1, ce->str);
 
 			y += 12;
 		}

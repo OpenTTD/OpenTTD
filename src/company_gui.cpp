@@ -122,7 +122,7 @@ static void DrawCompanyEconomyStats(const Company *c, bool small, const Widget *
 				DrawString(w->left + 2, w->right - 2, y, STR_FINANCES_TOTAL_CAPTION, TC_FROMSTRING, SA_RIGHT);
 				y += 20;
 			} else {
-				DrawString(w->left + 2, w->right - 2, y, STR_FINANCES_SECTION_CONSTRUCTION + et, TC_FROMSTRING);
+				DrawString(w->left + 2, w->right - 2, y, STR_FINANCES_SECTION_CONSTRUCTION + et);
 				y += 10;
 			}
 		}
@@ -185,18 +185,18 @@ static void DrawCompanyEconomyStats(const Company *c, bool small, const Widget *
 
 		/* draw max loan aligned to loan below (y += 10) */
 		SetDParam(0, _economy.max_loan);
-		DrawString(widget[CFW_TOTAL_MAXLOAN].left, widget[CFW_TOTAL_MAXLOAN].right, y + 10, STR_MAX_LOAN, TC_FROMSTRING);
+		DrawString(widget[CFW_TOTAL_MAXLOAN].left, widget[CFW_TOTAL_MAXLOAN].right, y + 10, STR_MAX_LOAN);
 	} else {
 		y = 15;
 	}
 
-	DrawString(widget[CFW_TOTAL_LABELS].left, widget[CFW_TOTAL_LABELS].right, y, STR_FINANCES_BANK_BALANCE_TITLE, TC_FROMSTRING);
+	DrawString(widget[CFW_TOTAL_LABELS].left, widget[CFW_TOTAL_LABELS].right, y, STR_FINANCES_BANK_BALANCE_TITLE);
 	SetDParam(0, c->money);
 	DrawString(widget[CFW_TOTAL_VALUES].left, widget[CFW_TOTAL_VALUES].right, y, STR_FINANCES_TOTAL_CURRENCY, TC_FROMSTRING, SA_RIGHT);
 
 	y += 10;
 
-	DrawString(widget[CFW_TOTAL_LABELS].left, widget[CFW_TOTAL_LABELS].right, y, STR_FINANCES_LOAN_TITLE, TC_FROMSTRING);
+	DrawString(widget[CFW_TOTAL_LABELS].left, widget[CFW_TOTAL_LABELS].right, y, STR_FINANCES_LOAN_TITLE);
 	SetDParam(0, c->current_loan);
 	DrawString(widget[CFW_TOTAL_VALUES].left, widget[CFW_TOTAL_VALUES].right, y, STR_FINANCES_TOTAL_CURRENCY, TC_FROMSTRING, SA_RIGHT);
 
@@ -1430,7 +1430,7 @@ static void DrawCompanyVehiclesAmount(CompanyID company, int right)
 	uint air   = 0;
 	uint ship  = 0;
 
-	DrawString(x, right, y, STR_COMPANY_VIEW_VEHICLES_TITLE, TC_FROMSTRING);
+	DrawString(x, right, y, STR_COMPANY_VIEW_VEHICLES_TITLE);
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->owner == company) {
@@ -1445,29 +1445,29 @@ static void DrawCompanyVehiclesAmount(CompanyID company, int right)
 	}
 
 	if (train + road + air + ship == 0) {
-		DrawString(x + 70, right, y, STR_COMPANY_VIEW_VEHICLES_NONE, TC_FROMSTRING);
+		DrawString(x + 70, right, y, STR_COMPANY_VIEW_VEHICLES_NONE);
 	} else {
 		if (train != 0) {
 			SetDParam(0, train);
-			DrawString(x + 70, right, y, STR_TRAINS, TC_FROMSTRING);
+			DrawString(x + 70, right, y, STR_TRAINS);
 			y += 10;
 		}
 
 		if (road != 0) {
 			SetDParam(0, road);
-			DrawString(x + 70, right, y, STR_ROAD_VEHICLES, TC_FROMSTRING);
+			DrawString(x + 70, right, y, STR_ROAD_VEHICLES);
 			y += 10;
 		}
 
 		if (air != 0) {
 			SetDParam(0, air);
-			DrawString(x + 70, right, y, STR_AIRCRAFT, TC_FROMSTRING);
+			DrawString(x + 70, right, y, STR_AIRCRAFT);
 			y += 10;
 		}
 
 		if (ship != 0) {
 			SetDParam(0, ship);
-			DrawString(x + 70, right, y, STR_SHIPS, TC_FROMSTRING);
+			DrawString(x + 70, right, y, STR_SHIPS);
 		}
 	}
 }
@@ -1496,7 +1496,7 @@ static void DrawCompanyOwnerText(const Company *c)
 			SetDParam(0, amt * 25);
 			SetDParam(1, c2->index);
 
-			DrawString(120, 359, (num++) * height + 116, STR_COMPANY_VIEW_SHARES_OWNED_BY, TC_FROMSTRING);
+			DrawString(120, 359, (num++) * height + 116, STR_COMPANY_VIEW_SHARES_OWNED_BY);
 		}
 	}
 }
@@ -1572,10 +1572,10 @@ struct CompanyWindow : Window
 
 		/* "Inaugurated:" */
 		SetDParam(0, c->inaugurated_year);
-		DrawString(110, this->width, 23, STR_COMPANY_VIEW_INAUGURATED_TITLE, TC_FROMSTRING);
+		DrawString(110, this->width, 23, STR_COMPANY_VIEW_INAUGURATED_TITLE);
 
 		/* "Colour scheme:" */
-		DrawString(110, this->width, 43, STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE, TC_FROMSTRING);
+		DrawString(110, this->width, 43, STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE);
 		/* Draw company-colour bus */
 		DrawSprite(SPR_VEH_BUS_SW_VIEW, COMPANY_SPRITE_COLOUR(c->index), 215, 44);
 
@@ -1584,7 +1584,7 @@ struct CompanyWindow : Window
 
 		/* "Company value:" */
 		SetDParam(0, CalculateCompanyValue(c));
-		DrawString(110, this->width, 106, STR_COMPANY_VIEW_COMPANY_VALUE, TC_FROMSTRING);
+		DrawString(110, this->width, 106, STR_COMPANY_VIEW_COMPANY_VALUE);
 
 		/* Shares list */
 		DrawCompanyOwnerText(c);

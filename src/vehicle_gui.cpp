@@ -364,7 +364,7 @@ struct RefitWindow : public Window {
 				SetDParam(0, this->cargo->cargo);
 				SetDParam(1, _returned_refit_capacity);
 				SetDParam(2, cost.GetCost());
-				DrawStringMultiLine(2, this->width - 2, this->widget[VRW_INFOPANEL].top + 1, this->widget[VRW_INFOPANEL].bottom, STR_REFIT_NEW_CAPACITY_COST_OF_REFIT, TC_FROMSTRING);
+				DrawStringMultiLine(2, this->width - 2, this->widget[VRW_INFOPANEL].top + 1, this->widget[VRW_INFOPANEL].bottom, STR_REFIT_NEW_CAPACITY_COST_OF_REFIT);
 			}
 		}
 	}
@@ -799,7 +799,7 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y)
 			if (v->type == VEH_SHIP && GetStation(order->GetDestination())->IsBuoy()) continue;
 
 			SetDParam(0, order->GetDestination());
-			DrawString(left, right, y, STR_ORDER_STATION_SMALL, TC_FROMSTRING);
+			DrawString(left, right, y, STR_ORDER_STATION_SMALL);
 
 			y += 6;
 			if (++i == 4) break;
@@ -835,12 +835,12 @@ void BaseVehicleListWindow::DrawVehicleListItems(int x, VehicleID selected_vehic
 		SetDParam(1, v->GetDisplayProfitLastYear());
 
 		DrawVehicleImage(v, x + 19, y + 6, selected_vehicle, this->widget[VLW_WIDGET_LIST].right - this->widget[VLW_WIDGET_LIST].left - 20, 0);
-		DrawString(x + 19, this->widget[VLW_WIDGET_LIST].right, y + this->resize.step_height - 8, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR, TC_FROMSTRING);
+		DrawString(x + 19, this->widget[VLW_WIDGET_LIST].right, y + this->resize.step_height - 8, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);
 
 		if (v->name != NULL) {
 			/* The vehicle got a name so we will print it */
 			SetDParam(0, v->index);
-			DrawString(x + 19, this->widget[VLW_WIDGET_LIST].right, y, STR_VEHICLE_NAME_SMALL, TC_FROMSTRING);
+			DrawString(x + 19, this->widget[VLW_WIDGET_LIST].right, y, STR_VEHICLE_NAME_SMALL);
 		} else if (v->group_id != DEFAULT_GROUP) {
 			/* The vehicle has no name, but is member of a group, so print group name */
 			SetDParam(0, v->group_id);
@@ -856,7 +856,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(int x, VehicleID selected_vehic
 		}
 
 		SetDParam(0, v->unitnumber);
-		DrawString(x, this->widget[VLW_WIDGET_LIST].right, y + 2, str, TC_FROMSTRING);
+		DrawString(x, this->widget[VLW_WIDGET_LIST].right, y + 2, str);
 
 		DrawVehicleProfitButton(v, x, y + 13);
 
@@ -1473,7 +1473,7 @@ struct VehicleDetailsWindow : Window {
 		SetDParam(0, (v->age + DAYS_IN_YEAR < v->max_age) ? STR_AGE : STR_AGE_RED);
 		SetDParam(2, v->max_age / DAYS_IN_LEAP_YEAR);
 		SetDParam(3, v->GetDisplayRunningCost());
-		DrawString(2, this->width - 2, 15, STR_VEHICLE_INFO_AGE_RUNNING_COST_YR, TC_FROMSTRING);
+		DrawString(2, this->width - 2, 15, STR_VEHICLE_INFO_AGE_RUNNING_COST_YR);
 
 		/* Draw max speed */
 		switch (v->type) {
@@ -1484,14 +1484,14 @@ struct VehicleDetailsWindow : Window {
 				SetDParam(3, v->u.rail.cached_max_te / 1000);
 				DrawString(2, this->width - 2, 25, (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && v->u.rail.railtype != RAILTYPE_MAGLEV) ?
 					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE :
-					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED, TC_FROMSTRING);
+					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED);
 				break;
 
 			case VEH_ROAD:
 			case VEH_SHIP:
 			case VEH_AIRCRAFT:
 				SetDParam(0, v->GetDisplayMaxSpeed());
-				DrawString(2, this->width - 2, 25, STR_VEHICLE_INFO_MAX_SPEED, TC_FROMSTRING);
+				DrawString(2, this->width - 2, 25, STR_VEHICLE_INFO_MAX_SPEED);
 				break;
 
 			default: NOT_REACHED();
@@ -1500,17 +1500,17 @@ struct VehicleDetailsWindow : Window {
 		/* Draw profit */
 		SetDParam(0, v->GetDisplayProfitThisYear());
 		SetDParam(1, v->GetDisplayProfitLastYear());
-		DrawString(2, this->width - 2, 35, STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR, TC_FROMSTRING);
+		DrawString(2, this->width - 2, 35, STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR);
 
 		/* Draw breakdown & reliability */
 		SetDParam(0, v->reliability * 100 >> 16);
 		SetDParam(1, v->breakdowns_since_last_service);
-		DrawString(2, this->width - 2, 45, STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS, TC_FROMSTRING);
+		DrawString(2, this->width - 2, 45, STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS);
 
 		/* Draw service interval text */
 		SetDParam(0, v->service_interval);
 		SetDParam(1, v->date_of_last_service);
-		DrawString(13, this->width - 2, this->height - (v->type != VEH_TRAIN ? 11 : 23), _settings_game.vehicle.servint_ispercent ? STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT : STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS, TC_FROMSTRING);
+		DrawString(13, this->width - 2, this->height - (v->type != VEH_TRAIN ? 11 : 23), _settings_game.vehicle.servint_ispercent ? STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT : STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS);
 
 		switch (v->type) {
 			case VEH_TRAIN:

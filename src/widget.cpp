@@ -267,7 +267,7 @@ void Window::DrawWidgets() const
 			const StringID str = wi->data;
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_LOWERED | FR_DARKENED);
 
-			if (str != STR_NULL) DrawString(r.left + 2, r.right - 2, r.top + 1, str, TC_FROMSTRING);
+			if (str != STR_NULL) DrawString(r.left + 2, r.right - 2, r.top + 1, str);
 			break;
 		}
 
@@ -411,7 +411,7 @@ void Window::DrawWidgets() const
 			const StringID str = wi->data;
 			int x2 = r.left; // by default the left side is the left side of the widget
 
-			if (str != STR_NULL) x2 = DrawString(r.left + 6, r.right - 6, r.top, str, TC_FROMSTRING);
+			if (str != STR_NULL) x2 = DrawString(r.left + 6, r.right - 6, r.top, str);
 
 			int c1 = _colour_gradient[wi->colour][3];
 			int c2 = _colour_gradient[wi->colour][7];

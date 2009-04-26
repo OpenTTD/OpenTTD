@@ -1478,7 +1478,7 @@ static void DrawFiosTexts(int left, int right)
 	}
 
 	if (str != STR_ERROR_UNABLE_TO_READ_DRIVE) SetDParam(0, tot);
-	DrawString(left + 2, right - 2, 37, str, TC_FROMSTRING);
+	DrawString(left + 2, right - 2, 37, str);
 	DrawString(left + 2, right - 2, 27, path, TC_BLACK);
 }
 

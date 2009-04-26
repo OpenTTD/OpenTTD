@@ -122,7 +122,7 @@ struct SubsidyListWindow : Window {
 		int x = this->widget[SLW_PANEL].left + 1;
 
 		/* Section for drawing the offered subisidies */
-		DrawString(x, right, y, STR_SUBSIDIES_OFFERED_TITLE, TC_FROMSTRING);
+		DrawString(x, right, y, STR_SUBSIDIES_OFFERED_TITLE);
 		y += FONT_HEIGHT_NORMAL;
 		uint num = 0;
 
@@ -131,7 +131,7 @@ struct SubsidyListWindow : Window {
 				/* Displays the two offered towns */
 				SetupSubsidyDecodeParam(s, 1);
 				SetDParam(7, _date - ymd.day + 384 - s->age * 32);
-				DrawString(x + 2, right - 2, y, STR_SUBSIDIES_OFFERED_FROM_TO, TC_FROMSTRING);
+				DrawString(x + 2, right - 2, y, STR_SUBSIDIES_OFFERED_FROM_TO);
 
 				y += FONT_HEIGHT_NORMAL;
 				num++;
@@ -139,12 +139,12 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (num == 0) {
-			DrawString(x + 2, right - 2, y, STR_SUBSIDIES_NONE, TC_FROMSTRING);
+			DrawString(x + 2, right - 2, y, STR_SUBSIDIES_NONE);
 			y += FONT_HEIGHT_NORMAL;
 		}
 
 		/* Section for drawing the already granted subisidies */
-		DrawString(x, right, y + 1, STR_SUBSIDIES_SUBSIDISED_TITLE, TC_FROMSTRING);
+		DrawString(x, right, y + 1, STR_SUBSIDIES_SUBSIDISED_TITLE);
 		y += FONT_HEIGHT_NORMAL;
 		num = 0;
 
@@ -155,14 +155,14 @@ struct SubsidyListWindow : Window {
 				SetDParam(4, _date - ymd.day + 768 - s->age * 32);
 
 				/* Displays the two connected stations */
-				DrawString(x + 2, right - 2, y, STR_SUBSIDIES_SUBSIDISED_FROM_TO, TC_FROMSTRING);
+				DrawString(x + 2, right - 2, y, STR_SUBSIDIES_SUBSIDISED_FROM_TO);
 
 				y += FONT_HEIGHT_NORMAL;
 				num++;
 			}
 		}
 
-		if (num == 0) DrawString(x + 2, right - 2, y, STR_SUBSIDIES_NONE, TC_FROMSTRING);
+		if (num == 0) DrawString(x + 2, right - 2, y, STR_SUBSIDIES_NONE);
 	}
 };
 

@@ -523,7 +523,7 @@ struct AIConfigWindow : public Window {
 		byte max_competitors = _settings_newgame.difficulty.max_no_competitors;
 		DrawArrowButtons(10, 18, COLOUR_YELLOW, this->clicked_button ? 1 + !!this->clicked_increase : 0, max_competitors > 0, max_competitors < MAX_COMPANIES - 1);
 		SetDParam(0, _settings_newgame.difficulty.max_no_competitors);
-		DrawString(36, this->widget[AIC_WIDGET_BACKGROUND].right, 18, STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS, TC_FROMSTRING);
+		DrawString(36, this->widget[AIC_WIDGET_BACKGROUND].right, 18, STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS);
 
 		int y = this->widget[AIC_WIDGET_LIST].top;
 		for (int i = this->vscroll.pos; i < this->vscroll.pos + this->vscroll.cap && i < MAX_COMPANIES; i++) {

@@ -106,7 +106,7 @@ struct SignListWindow : Window, SignList {
 		/* No signs? */
 		int y = this->widget[SLW_LIST].top + 2; // offset from top of widget
 		if (this->vscroll.count == 0) {
-			DrawString(this->widget[SLW_LIST].left + 2, this->widget[SLW_LIST].right, y, STR_STATION_LIST_NONE, TC_FROMSTRING);
+			DrawString(this->widget[SLW_LIST].left + 2, this->widget[SLW_LIST].right, y, STR_STATION_LIST_NONE);
 			return;
 		}
 

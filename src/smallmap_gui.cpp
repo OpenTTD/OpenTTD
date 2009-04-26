@@ -865,7 +865,7 @@ public:
 			} else {
 				/* Anything that is not an industry is using normal process */
 				GfxFillRect(x, y + 1, x + 8, y + 5, 0);
-				DrawString(x + 11, x + COLUMN_WIDTH - 1, y, tbl->legend, TC_FROMSTRING);
+				DrawString(x + 11, x + COLUMN_WIDTH - 1, y, tbl->legend);
 			}
 			GfxFillRect(x + 1, y + 2, x + 7, y + 4, tbl->colour); // legend colour
 

@@ -249,7 +249,7 @@ public:
 
 		if (_game_mode != GM_EDITOR) {
 			SetDParam(0, indsp->GetConstructionCost());
-			DrawString(x_str, right, y_str, STR_INDUSTRY_BUILD_COST, TC_FROMSTRING);
+			DrawString(x_str, right, y_str, STR_INDUSTRY_BUILD_COST);
 			y_str += 11;
 		}
 
@@ -264,7 +264,7 @@ public:
 			SetDParam(p++, GetCargo(indsp->accepts_cargo[j])->name);
 			SetDParam(p++, GetCargoSuffix(j, CST_FUND, NULL, this->selected_type, indsp));
 		}
-		DrawString(x_str, right, y_str, str, TC_FROMSTRING);
+		DrawString(x_str, right, y_str, str);
 		y_str += 11;
 
 		/* Draw the produced cargos, if any. Otherwhise, will print "Nothing" */
@@ -278,7 +278,7 @@ public:
 			SetDParam(p++, GetCargo(indsp->produced_cargo[j])->name);
 			SetDParam(p++, GetCargoSuffix(j + 3, CST_FUND, NULL, this->selected_type, indsp));
 		}
-		DrawString(x_str, right, y_str, str, TC_FROMSTRING);
+		DrawString(x_str, right, y_str, str);
 		y_str += 11;
 
 		/* Get the additional purchase info text, if it has not already been */
@@ -505,14 +505,14 @@ public:
 				if (i->accepts_cargo[j] == CT_INVALID) continue;
 				has_accept = true;
 				if (first) {
-					DrawString(2, this->widget[IVW_INFO].right, y, STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING, TC_FROMSTRING);
+					DrawString(2, this->widget[IVW_INFO].right, y, STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING);
 					y += 10;
 					first = false;
 				}
 				SetDParam(0, i->accepts_cargo[j]);
 				SetDParam(1, i->incoming_cargo_waiting[j]);
 				SetDParam(2, GetCargoSuffix(j, CST_VIEW, i, i->type, ind));
-				DrawString(4, this->widget[IVW_INFO].right, y, STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO, TC_FROMSTRING);
+				DrawString(4, this->widget[IVW_INFO].right, y, STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO);
 				y += 10;
 			}
 		} else {
@@ -526,7 +526,7 @@ public:
 				SetDParam(p++, GetCargoSuffix(j, CST_VIEW, i, i->type, ind));
 			}
 			if (has_accept) {
-				DrawString(2, this->widget[IVW_INFO].right, y, str, TC_FROMSTRING);
+				DrawString(2, this->widget[IVW_INFO].right, y, str);
 				y += 10;
 			}
 		}
@@ -536,7 +536,7 @@ public:
 			if (i->produced_cargo[j] == CT_INVALID) continue;
 			if (first) {
 				if (has_accept) y += 10;
-				DrawString(2, this->widget[IVW_INFO].right, y, STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE, TC_FROMSTRING);
+				DrawString(2, this->widget[IVW_INFO].right, y, STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE);
 				y += 10;
 				this->production_offset_y = y;
 				first = false;
@@ -548,7 +548,7 @@ public:
 
 			SetDParam(3, i->last_month_pct_transported[j] * 100 >> 8);
 			uint x = 4 + (IsProductionAlterable(i) ? 30 : 0);
-			DrawString(x, this->widget[IVW_INFO].right, y, STR_INDUSTRY_VIEW_TRANSPORTED, TC_FROMSTRING);
+			DrawString(x, this->widget[IVW_INFO].right, y, STR_INDUSTRY_VIEW_TRANSPORTED);
 			/* Let's put out those buttons.. */
 			if (IsProductionAlterable(i)) {
 				DrawArrowButtons(5, y, COLOUR_YELLOW, (this->clicked_line == j + 1) ? this->clicked_button : 0,
@@ -966,7 +966,7 @@ public:
 			/* Drawing the right string */
 			StringID str = STR_INDUSTRYDIR_ITEM_NOPROD;
 			if (p != 1) str = (p == 5) ? STR_INDUSTRYDIR_ITEM : STR_INDUSTRYDIR_ITEM_TWO;
-			DrawString(4, this->widget[IDW_INDUSTRY_LIST].right, y, str, TC_FROMSTRING);
+			DrawString(4, this->widget[IDW_INDUSTRY_LIST].right, y, str);
 
 			y += 10;
 		}

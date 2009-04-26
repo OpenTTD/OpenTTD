@@ -788,7 +788,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 				GfxFillRect(x + clk_dif, y + clk_dif, x + 8 + clk_dif, y + 5 + clk_dif, 0);
 				GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, cs->legend_colour);
 				SetDParam(0, cs->name);
-				DrawString(x + 14 + clk_dif, this->width, y + clk_dif, STR_GRAPH_CARGO_PAYMENT_CARGO, TC_FROMSTRING);
+				DrawString(x + 14 + clk_dif, this->width, y + clk_dif, STR_GRAPH_CARGO_PAYMENT_CARGO);
 				y += 8;
 			}
 
@@ -803,8 +803,8 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 		this->DrawGraph();
 
-		DrawString(2 + 46, this->width, 24 + this->gd_height + 7, STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL, TC_FROMSTRING);
-		DrawString(2 + 84, this->width, 24 - 9, STR_GRAPH_CARGO_PAYMENT_RATES_TITLE, TC_FROMSTRING);
+		DrawString(2 + 46, this->width, 24 + this->gd_height + 7, STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL);
+		DrawString(2 + 84, this->width, 24 - 9, STR_GRAPH_CARGO_PAYMENT_RATES_TITLE);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -931,7 +931,7 @@ public:
 			SetDParam(2, c->index);
 			SetDParam(3, GetPerformanceTitleFromValue(c->old_economy[1].performance_history));
 
-			DrawString(2, this->width, 15 + i * 10, i == 0 ? STR_COMPANY_LEAGUE_FIRST : STR_COMPANY_LEAGUE_OTHER, TC_FROMSTRING);
+			DrawString(2, this->width, 15 + i * 10, i == 0 ? STR_COMPANY_LEAGUE_FIRST : STR_COMPANY_LEAGUE_OTHER);
 			DrawCompanyIcon(c->index, 27, 16 + i * 10);
 		}
 	}
@@ -1119,7 +1119,7 @@ struct PerformanceRatingDetailWindow : Window {
 				total_score += score;
 			}
 
-			DrawString(7, 107, y, STR_PERFORMANCE_DETAIL_VEHICLES + i, TC_FROMSTRING);
+			DrawString(7, 107, y, STR_PERFORMANCE_DETAIL_VEHICLES + i);
 
 			/* Draw the score */
 			SetDParam(0, score);
@@ -1158,10 +1158,10 @@ struct PerformanceRatingDetailWindow : Window {
 				case SCORE_MAX_INCOME:
 				case SCORE_MONEY:
 				case SCORE_LOAN:
-					DrawString(167, this->width, y, STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY, TC_FROMSTRING);
+					DrawString(167, this->width, y, STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY);
 					break;
 				default:
-					DrawString(167, this->width, y, STR_PERFORMANCE_DETAIL_AMOUNT_INT, TC_FROMSTRING);
+					DrawString(167, this->width, y, STR_PERFORMANCE_DETAIL_AMOUNT_INT);
 			}
 		}
 	}
