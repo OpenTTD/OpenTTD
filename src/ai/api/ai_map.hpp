@@ -19,7 +19,7 @@ public:
 #endif /* DEFINE_SCRIPT_FILES */
 #ifdef DOXYGEN_SKIP
 	const static TileIndex TILE_INVALID; //!< Invalid TileIndex.
-#endif
+#endif /* DOXYGEN_SKIP */
 
 	static const char *GetClassName() { return "AIMap"; }
 
