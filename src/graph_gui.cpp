@@ -303,7 +303,7 @@ protected:
 				SetDParam(0, month + STR_MONTH_ABBREV_JAN);
 				SetDParam(1, month + STR_MONTH_ABBREV_JAN + 2);
 				SetDParam(2, year);
-				DrawString(x, x + GRAPH_X_POSITION_SEPARATION, y, month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, graph_axis_label_colour);
+				DrawStringMultiLine(x, x + GRAPH_X_POSITION_SEPARATION, y, this->height, month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, graph_axis_label_colour);
 
 				month += 3;
 				if (month >= 12) {

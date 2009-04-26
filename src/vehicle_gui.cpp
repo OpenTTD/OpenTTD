@@ -364,7 +364,7 @@ struct RefitWindow : public Window {
 				SetDParam(0, this->cargo->cargo);
 				SetDParam(1, _returned_refit_capacity);
 				SetDParam(2, cost.GetCost());
-				DrawString(2, this->width - 2, this->widget[VRW_INFOPANEL].top + 1, STR_REFIT_NEW_CAPACITY_COST_OF_REFIT, TC_FROMSTRING);
+				DrawStringMultiLine(2, this->width - 2, this->widget[VRW_INFOPANEL].top + 1, this->widget[VRW_INFOPANEL].bottom, STR_REFIT_NEW_CAPACITY_COST_OF_REFIT, TC_FROMSTRING);
 			}
 		}
 	}
