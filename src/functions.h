@@ -26,13 +26,6 @@ void InitializeLandscapeVariables(bool only_constants);
 
 /* misc functions */
 /**
- * Mark a tile given by its coordinate dirty for repaint.
- *
- * @ingroup dirty
- */
-void MarkTileDirty(int x, int y);
-
-/**
  * Mark a tile given by its index dirty for repaint.
  *
  * @ingroup dirty

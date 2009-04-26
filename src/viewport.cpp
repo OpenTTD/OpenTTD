@@ -1709,18 +1709,6 @@ void MarkTileDirtyByTile(TileIndex tile)
 	);
 }
 
-void MarkTileDirty(int x, int y)
-{
-	Point pt = RemapCoords(x, y, GetTileZ(TileVirtXY(x, y)));
-
-	MarkAllViewportsDirty(
-		pt.x - 31,
-		pt.y - 122,
-		pt.x - 31 + 67,
-		pt.y - 122 + 154
-	);
-}
-
 /**
  * Marks the selected tiles as dirty.
  *

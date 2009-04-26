@@ -507,7 +507,7 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 			}
 		}
-		MarkTileDirty(_thd.pos.x, _thd.pos.y); // redraw tile selection
+		MarkTileDirtyByTile(TileVirtXY(_thd.pos.x, _thd.pos.y)); // redraw tile selection
 		return state;
 	}
 
