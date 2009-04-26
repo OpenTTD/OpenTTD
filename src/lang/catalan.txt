@@ -3164,6 +3164,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Canvi a
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Canvi a Euro: {ORANGE}mai
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vista prèvia: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Canvia el paràmetre de la moneda personalitzada
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Disminueix la quantitat de moneda per cada Lliura (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Augmenta la quantitat de moneda per cada Lliura (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Estableix el tipus de canvi per a la teva moneda per cada Lliura (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Estableix el separador per a la teva moneda
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Estableix el prefix de text per a la teva moneda
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Estableix el sufix de text per a la teva moneda
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Canvia a l'Euro més aviat
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Canvia a l'Euro més tard
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Estableix l'any d'introducció de l'Euro
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Lliures (£) en la teva moneda
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}

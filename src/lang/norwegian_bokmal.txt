@@ -1,4 +1,4 @@
-##name Norwegian
+##name Norwegian (Bokmal)
 ##ownname Norsk (bokmål)
 ##isocode nb_NO
 ##winlangid 0x0414

@@ -1,4 +1,4 @@
-##name Brazilian_Portuguese
+##name Portuguese (Brazil)
 ##ownname Português (BR)
 ##isocode pt_BR
 ##winlangid 0x0416

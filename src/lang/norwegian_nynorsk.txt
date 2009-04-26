@@ -1,4 +1,4 @@
-##name Norwegian new
+##name Norwegian (Nynorsk)
 ##ownname Norsk, Nynorsk
 ##isocode nn_NO
 ##winlangid 0x0814

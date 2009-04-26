@@ -3165,6 +3165,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Umstell
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Umstellung auf Euro: {ORANGE}nie
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vorschau: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Parameter für eigene Währung ändern
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Eigene Währung gegenüber dem Pfund (£) verteuern
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Eigene Währung gegenüber dem Pfund (£) verbilligen
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Umrechnungskurs der eigenen Währung gegenüber dem Pfund (£) setzen
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Das Tausender-Trennzeichen für die eigene Währung setzen
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Das Zeichen für die eigene Währung setzen (Prefix)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Das Zeichen für die Eigene Währung setzen (Suffix)
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Früher den Euro einführen
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Später den Euro einführen
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Einführungsjahr des Euros festlegen
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Pfund (£) in der eigenen Währung
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}

@@ -5,10 +5,10 @@
 ##grflangid 0x27
 ##plural 0
 ##textdir ltr
-##case ms mp fs fp
-##gender m f
 ##digitsep .
 ##digitsepcur .
+##case ms mp fs fp
+##gender m f
 
 #
 
@@ -3166,6 +3166,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Passa a
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Passa all'Euro: {ORANGE}Mai
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Anteprima: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambia i parametri della valuta personalizzata
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Riduce l'ammontare della valuta per una Sterlina (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Aumenta l'ammontare della valuta per una Sterlina (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Imposta il tasso di cambio della valuta per una Sterlina (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Imposta il separatore delle migliaia utilizzato dalla valuta
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Imposta il prefisso per la valuta
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Imposta il suffisso per la valuta
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Anticipa l'anno di passaggio all'Euro
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Posticipa l'anno di passaggio all'Euro
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Imposta l'anno in cui passare all'Euro
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}L'equivalente di 10.000 Sterline (£) nella valuta
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}

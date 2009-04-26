@@ -320,6 +320,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}هل ا
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}ترك اللعبة
 STR_SORT_ORDER_TIP                                              :{BLACK} اختر طريقة الترتيب - تنازلي / تصاعدي
 STR_SORT_CRITERIA_TIP                                           :{BLACK} اختر نوع الترتيب
+STR_FILTER_CRITERIA_TIP                                         :{BLACK} اختر معايير الفلترة
 STR_SORT_BY                                                     :{BLACK} رتب بـ
 
 STR_SORT_BY_POPULATION                                          :{BLACK}عدد السكان
@@ -342,6 +343,8 @@ STR_SORT_BY_LENGTH                                              :الطول
 STR_SORT_BY_LIFE_TIME                                           :العمر المتبقي
 STR_SORT_BY_FACILITY                                            :نوع المحطة
 STR_SORT_BY_WAITING                                             :قيمة الشحنة المنتظرة
+STR_SORT_BY_RATING_MAX                                          :اعلى نسبة شحن
+STR_SORT_BY_RATING_MIN                                          :اقل نسبة شحن
 STR_ENGINE_SORT_ENGINE_ID                                       :نوع المحرك (قياسي(
 STR_ENGINE_SORT_COST                                            :التكلفة
 STR_ENGINE_SORT_POWER                                           :الطاقة
@@ -728,6 +731,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}حفظ �
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}اختار مدة الحفظ الآلي
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :بدون
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :كل شهر
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :كل 3 اشهر
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :كل 6 اشهر
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :كل سنة
@@ -848,7 +852,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK} الو�
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK} اختر مجموعة الواجهة الرسومية
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :كل شهر
 STR_AUTOSAVE_FAILED                                             :{WHITE}فشل الحفظ التلقائي
 
 STR_MONTH_JAN                                                   :يناير
@@ -936,6 +939,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}است�
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}اظهار الاشارات على جهة السائق: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}أعرض نافذة المالية في آخر السنه: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}الامر الجديد - بدون توقف - قياسيا: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}اوامر القطار الجديدة تتوقف قياسيا في  {ORANGE}{STRING}{LTBLUE} رصيف المحطة
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :قرب النهاية
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :وسط
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :النهاية القصوى
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}تسلسل عربات الطريق - بالتأثير الكمي :  {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}حرك الشاشة عندما تكون المؤشر على الحافة: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}السماح برشوة السلطات االمحليه: {ORANGE}{STRING}
@@ -2606,6 +2613,9 @@ STR_ORDER_GO_TO                                                 :اذهب الى
 STR_ORDER_GO_NON_STOP_TO                                        :اذهب بدون توقف الى
 STR_ORDER_GO_VIA                                                :التوجة خلال
 STR_ORDER_GO_NON_STOP_VIA                                       :اذهب بدون توقف من خلال
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[قرب النهاية]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[وسط]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[النهاية القصوى]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}تحميل كامل لأي بضاعة
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :حمل اذا كان متاح
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :حمل البضائع كاملة
@@ -2790,6 +2800,19 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}مسح �
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}عدل وقت التاخير للعداد حتى تصل المركبة في الوقت المحدد
 STR_SERVICE_HINT                                                :{BLACK}تجاوز هذا الامر الا اذا لم تكن الصيانة مطلوبة
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK} التكلفة: {CURRENCY} الوزن: {WEIGHT_S} {} السرعة: {VELOCITY}  الطاقة: {POWER}{} كلفة التشغيل: {CURRENCY} / سنة {} السعة: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK} التكلفة {CURRENCY} السرعة القصوى {VELOCITY}{}Capacity السعة {CARGO},  {CARGO}{} كلفة التشغيل {CURRENCY} / سنة
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK} التكلفة {CURRENCY} السرعة القصوى {VELOCITY}{} السعة {CARGO}{} كلفة التشغيل {CURRENCY} / سنة
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK} العمر {LTBLUE}{STRING}{BLACK} تكلفة التشغيل {LTBLUE}{CURRENCY} / سنة
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK} السرعة القصوى {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK} الوزن {LTBLUE}{WEIGHT_S}  {BLACK} الطاقة  {LTBLUE}{POWER}{BLACK}  السرعى القصوى  {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK} الوزن  {LTBLUE}{WEIGHT_S} {BLACK} القوة {LTBLUE}{POWER}{BLACK} السرعة القصوى {LTBLUE}{VELOCITY} {BLACK} قوة السحب القصوى {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK} دخل هذة السنة {LTBLUE}{CURRENCY}   السنة السابقة - {CURRENCY}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK} الاعتمادية {LTBLUE}{COMMA} % {BLACK} الاعطال منذ اخر صيانة {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK} بني {LTBLUE}{NUM}{BLACK} القيمة  {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK} السعة  {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK} السعة {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK} السعة {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED} الاعطال
 STR_VEHICLE_STATUS_STOPPED                                      :{RED} متوقف
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}لا يمكن السماح للقطار بالعبور من الاشارة في وضع الخطر
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}تحطم!
@@ -3141,6 +3164,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}حول 
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}حول إلى يورو : {ORANGE}أبدا
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}عرض: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}غير الخيارات الاختيارة
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK} £ قلل قيمة عملتك لكل جنية استرليني
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK} £ زد قيمة عملتك لكل جنية استرليني
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK} حدد قيمة الصرف لعملتك مقابل الجنية الاسترليني (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK} حدد الفاصل لعملتك
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK} حدد الرمز الاستهلالي لعملتك
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK} حدد الرمز اللاحق لعملتك
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK} بدل الى اليورو مبكرا
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK} بدل الى اليورو متاخرا
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK} حدد السنة لتبديل العملة لليورو
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK} 10000 جنية استرليني في عملتك
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3247,6 +3280,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}الاع
 STR_PURCHASE_INFO_COST                                          :{BLACK}التكلفة: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK} الوزن: {GOLD}{WEIGHT_S}   ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}التكلفة: {GOLD}{CURRENCY}{BLACK} السرعة : {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK} السعة {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK} العربات ذات الطاقة: {GOLD}+{POWER}{BLACK}    الوزن: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}يمكن تعديلها الى: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :كل انواع الحمولة
