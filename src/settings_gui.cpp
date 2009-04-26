@@ -1524,11 +1524,25 @@ static const Widget _settings_selection_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_settings_selection_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE, SETTINGSEL_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_MAUVE, SETTINGSEL_CAPTION), SetDataTip(STR_CONFIG_SETTING_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_MAUVE, SETTINGSEL_OPTIONSPANEL), SetMinimalSize(400, 174), SetResize(1, SETTING_HEIGHT), EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(WWT_SCROLLBAR, COLOUR_MAUVE, SETTINGSEL_SCROLLBAR),
+			NWidget(WWT_RESIZEBOX, COLOUR_MAUVE, SETTINGSEL_RESIZE),
+		EndContainer(),
+	EndContainer(),
+};
+
 static const WindowDesc _settings_selection_desc(
 	WDP_CENTER, WDP_CENTER, 412, 188, 450, 397,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
-	_settings_selection_widgets
+	_settings_selection_widgets, _nested_settings_selection_widgets, lengthof(_nested_settings_selection_widgets)
 );
 
 void ShowGameSettings()
@@ -1764,11 +1778,59 @@ static const Widget _cust_currency_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_cust_currency_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CUSTCURR_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, CUSTCURR_CAPTION), SetDataTip(STR_CURRENCY_WINDOW, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, CUSTCURR_BACKGROUND),
+		NWidget(NWID_SPACER), SetMinimalSize(0,7),
+		NWidget(NWID_HORIZONTAL), SetPIP(10, 0, 2),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, CUSTCURR_RATE_DOWN), SetMinimalSize(10, 9), SetDataTip(STR_ARROW_LEFT_SMALL, STR_TOOLTIP_DECREASE_EXCHANGE_RATE),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, CUSTCURR_RATE_UP), SetMinimalSize(10, 9), SetDataTip(STR_ARROW_RIGHT_SMALL, STR_TOOLTIP_INCREASE_EXCHANGE_RATE),
+			NWidget(NWID_SPACER), SetMinimalSize(5, 0),
+			NWidget(WWT_TEXT, COLOUR_BLUE, CUSTCURR_RATE), SetMinimalSize(193, 9), SetDataTip(STR_CURRENCY_EXCHANGE_RATE, STR_TOOLTIP_SET_EXCHANGE_RATE),
+			NWidget(NWID_SPACER), SetFill(1, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
+		NWidget(NWID_HORIZONTAL), SetPIP(10, 0, 2),
+			NWidget(WWT_PUSHBTN, COLOUR_DARK_BLUE, CUSTCURR_SEPARATOR_EDIT), SetMinimalSize(20, 9), SetDataTip(0x0, STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR),
+			NWidget(NWID_SPACER), SetMinimalSize(5, 0),
+			NWidget(WWT_TEXT, COLOUR_BLUE, CUSTCURR_SEPARATOR), SetMinimalSize(193, 9), SetDataTip(STR_CURRENCY_SEPARATOR, STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR),
+			NWidget(NWID_SPACER), SetFill(1, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
+		NWidget(NWID_HORIZONTAL), SetPIP(10, 0, 2),
+			NWidget(WWT_PUSHBTN, COLOUR_DARK_BLUE, CUSTCURR_PREFIX_EDIT), SetMinimalSize(20, 9), SetDataTip(0x0, STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX),
+			NWidget(NWID_SPACER), SetMinimalSize(5, 0),
+			NWidget(WWT_TEXT, COLOUR_BLUE, CUSTCURR_PREFIX), SetMinimalSize(193, 9), SetDataTip(STR_CURRENCY_PREFIX, STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX),
+			NWidget(NWID_SPACER), SetFill(1, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
+		NWidget(NWID_HORIZONTAL), SetPIP(10, 0, 2),
+			NWidget(WWT_PUSHBTN, COLOUR_DARK_BLUE, CUSTCURR_SUFFIX_EDIT), SetMinimalSize(20, 9), SetDataTip(0x0, STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX),
+			NWidget(NWID_SPACER), SetMinimalSize(5, 0),
+			NWidget(WWT_TEXT, COLOUR_BLUE, CUSTCURR_SUFFIX), SetMinimalSize(193, 9), SetDataTip(STR_CURRENCY_SUFFIX, STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX),
+			NWidget(NWID_SPACER), SetFill(1, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
+		NWidget(NWID_HORIZONTAL), SetPIP(10, 0, 2),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, CUSTCURR_YEAR_DOWN), SetMinimalSize(10, 9), SetDataTip(STR_ARROW_LEFT_SMALL, STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, CUSTCURR_YEAR_UP), SetMinimalSize(10, 9), SetDataTip(STR_ARROW_RIGHT_SMALL, STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO),
+			NWidget(NWID_SPACER), SetMinimalSize(5, 0),
+			NWidget(WWT_TEXT, COLOUR_BLUE, CUSTCURR_YEAR), SetMinimalSize(193, 9), SetDataTip(STR_CURRENCY_SWITCH_TO_EURO, STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO),
+			NWidget(NWID_SPACER), SetFill(1, 0),
+		EndContainer(),
+		NWidget(WWT_LABEL, COLOUR_BLUE, CUSTCURR_PREVIEW), SetMinimalSize(226, 9),
+								SetDataTip(STR_CURRENCY_PREVIEW, STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW), SetPadding(15, 1, 18, 2),
+	EndContainer(),
+};
+
 static const WindowDesc _cust_currency_desc(
 	WDP_CENTER, WDP_CENTER, 230, 120, 230, 120,
 	WC_CUSTOM_CURRENCY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_cust_currency_widgets
+	_cust_currency_widgets, _nested_cust_currency_widgets, lengthof(_nested_cust_currency_widgets)
 );
 
 static void ShowCustCurrency()
