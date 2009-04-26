@@ -1189,11 +1189,35 @@ function Regression::TileList()
 	print("");
 	print("--TileList--");
 	print("  Count():             " + list.Count());
-	list.AddRectangle(41895 - 256 * 2, 256 * 2 + 41895 + 8);
+	list.AddRectangle(34436, 256 * 2 + 34436 + 8);
 	print("  Count():             " + list.Count());
 
 	list.Valuate(AITile.GetHeight);
 	print("  Height():            done");
+	print("  Count():             " + list.Count());
+	print("  ListDump:");
+	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+
+	list.Valuate(AITile.GetCornerHeight, AITile.CORNER_N);
+	print("  CornerHeight(North): done");
+	print("  Count():             " + list.Count());
+	print("  ListDump:");
+	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+
+	list.Valuate(AITile.GetMinHeight);
+	print("  MinHeight():         done");
+	print("  Count():             " + list.Count());
+	print("  ListDump:");
+	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+
+	list.Valuate(AITile.GetMaxHeight);
+	print("  MaxHeight():         done");
 	print("  Count():             " + list.Count());
 	print("  ListDump:");
 	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
@@ -1210,6 +1234,8 @@ function Regression::TileList()
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
+	list.Clear();
+	list.AddRectangle(41895 - 256 * 2, 256 * 2 + 41895 + 8);
 	list.Valuate(AITile.IsBuildable);
 	list.KeepValue(1);
 	print("  Buildable():         done");

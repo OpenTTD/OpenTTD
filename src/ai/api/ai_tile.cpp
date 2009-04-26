@@ -11,6 +11,7 @@
 #include "../../water_map.h"
 #include "../../clear_map.h"
 #include "../../town.h"
+#include "../../landscape.h"
 
 /* static */ bool AITile::IsBuildable(TileIndex tile)
 {
@@ -132,9 +133,32 @@
 
 /* static */ int32 AITile::GetHeight(TileIndex tile)
 {
-	if (!::IsValidTile(tile)) return false;
+	if (!::IsValidTile(tile)) return -1;
 
 	return ::TileHeight(tile);
+}
+
+/* static */ int32 AITile::GetMinHeight(TileIndex tile)
+{
+	if (!::IsValidTile(tile)) return -1;
+
+	return ::GetTileZ(tile) / ::TILE_HEIGHT;
+}
+
+/* static */ int32 AITile::GetMaxHeight(TileIndex tile)
+{
+	if (!::IsValidTile(tile)) return -1;
+
+	return ::GetTileMaxZ(tile) / ::TILE_HEIGHT;
+}
+
+/* static */ int32 AITile::GetCornerHeight(TileIndex tile, Corner corner)
+{
+	if (!::IsValidTile(tile) || !::IsValidCorner((::Corner)corner)) return -1;
+
+	uint z;
+	::Slope slope = ::GetTileSlope(tile, &z);
+	return (z + ::GetSlopeZInCorner(slope, (::Corner)corner)) / ::TILE_HEIGHT;
 }
 
 /* static */ AICompany::CompanyID AITile::GetOwner(TileIndex tile)

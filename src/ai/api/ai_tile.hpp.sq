@@ -7,6 +7,8 @@ namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
 	template <> AITile::ErrorMessages GetParam(ForceType<AITile::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AITile::ErrorMessages)tmp; }
 	template <> int Return<AITile::ErrorMessages>(HSQUIRRELVM vm, AITile::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AITile::Corner GetParam(ForceType<AITile::Corner>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AITile::Corner)tmp; }
+	template <> int Return<AITile::Corner>(HSQUIRRELVM vm, AITile::Corner res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> AITile::Slope GetParam(ForceType<AITile::Slope>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AITile::Slope)tmp; }
 	template <> int Return<AITile::Slope>(HSQUIRRELVM vm, AITile::Slope res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> AITile::TransportType GetParam(ForceType<AITile::TransportType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AITile::TransportType)tmp; }
@@ -28,6 +30,11 @@ void SQAITile_Register(Squirrel *engine) {
 	SQAITile.DefSQConst(engine, AITile::ERR_TILE_BASE,     "ERR_TILE_BASE");
 	SQAITile.DefSQConst(engine, AITile::ERR_TILE_TOO_HIGH, "ERR_TILE_TOO_HIGH");
 	SQAITile.DefSQConst(engine, AITile::ERR_TILE_TOO_LOW,  "ERR_TILE_TOO_LOW");
+	SQAITile.DefSQConst(engine, AITile::CORNER_W,          "CORNER_W");
+	SQAITile.DefSQConst(engine, AITile::CORNER_S,          "CORNER_S");
+	SQAITile.DefSQConst(engine, AITile::CORNER_E,          "CORNER_E");
+	SQAITile.DefSQConst(engine, AITile::CORNER_N,          "CORNER_N");
+	SQAITile.DefSQConst(engine, AITile::CORNER_INVALID,    "CORNER_INVALID");
 	SQAITile.DefSQConst(engine, AITile::SLOPE_FLAT,        "SLOPE_FLAT");
 	SQAITile.DefSQConst(engine, AITile::SLOPE_W,           "SLOPE_W");
 	SQAITile.DefSQConst(engine, AITile::SLOPE_S,           "SLOPE_S");
@@ -78,6 +85,9 @@ void SQAITile_Register(Squirrel *engine) {
 	SQAITile.DefSQStaticMethod(engine, &AITile::GetSlope,                   "GetSlope",                   2, ".i");
 	SQAITile.DefSQStaticMethod(engine, &AITile::GetComplementSlope,         "GetComplementSlope",         2, ".i");
 	SQAITile.DefSQStaticMethod(engine, &AITile::GetHeight,                  "GetHeight",                  2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &AITile::GetMinHeight,               "GetMinHeight",               2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &AITile::GetMaxHeight,               "GetMaxHeight",               2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &AITile::GetCornerHeight,            "GetCornerHeight",            3, ".ii");
 	SQAITile.DefSQStaticMethod(engine, &AITile::GetOwner,                   "GetOwner",                   2, ".i");
 	SQAITile.DefSQStaticMethod(engine, &AITile::HasTransportType,           "HasTransportType",           3, ".ii");
 	SQAITile.DefSQStaticMethod(engine, &AITile::GetCargoAcceptance,         "GetCargoAcceptance",         6, ".iiiii");

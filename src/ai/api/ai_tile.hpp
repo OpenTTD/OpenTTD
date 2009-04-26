@@ -32,7 +32,19 @@ public:
 	};
 
 	/**
-	 * Enumeration for the slope-type (from slopes.h).
+	 * Enumeration for corners of tiles.
+	 */
+	enum Corner {
+		CORNER_W       = 0,      //!< West corner
+		CORNER_S       = 1,      //!< South corner
+		CORNER_E       = 2,      //!< East corner
+		CORNER_N       = 3,      //!< North corner
+
+		CORNER_INVALID = 0xFF,
+	};
+
+	/**
+	 * Enumeration for the slope-type.
 	 *
 	 * This enumeration use the chars N, E, S, W corresponding the
 	 *  direction North, East, South and West. The top corner of a tile
@@ -41,18 +53,18 @@ public:
 	enum Slope {
 		/* Values are important, as they represent the internal state of the game. */
 		SLOPE_FLAT     = 0x00,                                  //!< A flat tile
-		SLOPE_W        = 0x01,                                  //!< The west corner of the tile is raised
-		SLOPE_S        = 0x02,                                  //!< The south corner of the tile is raised
-		SLOPE_E        = 0x04,                                  //!< The east corner of the tile is raised
-		SLOPE_N        = 0x08,                                  //!< The north corner of the tile is raised
-		SLOPE_STEEP    = 0x10,                                  //!< Indicates the slope is steep
+		SLOPE_W        = 1 << CORNER_W,                         //!< The west corner of the tile is raised
+		SLOPE_S        = 1 << CORNER_S,                         //!< The south corner of the tile is raised
+		SLOPE_E        = 1 << CORNER_E,                         //!< The east corner of the tile is raised
+		SLOPE_N        = 1 << CORNER_N,                         //!< The north corner of the tile is raised
+		SLOPE_STEEP    = 0x10,                                  //!< Indicates the slope is steep (The corner opposite of the not-raised corner is raised two times)
 		SLOPE_NW       = SLOPE_N | SLOPE_W,                     //!< North and west corner are raised
 		SLOPE_SW       = SLOPE_S | SLOPE_W,                     //!< South and west corner are raised
 		SLOPE_SE       = SLOPE_S | SLOPE_E,                     //!< South and east corner are raised
 		SLOPE_NE       = SLOPE_N | SLOPE_E,                     //!< North and east corner are raised
 		SLOPE_EW       = SLOPE_E | SLOPE_W,                     //!< East and west corner are raised
 		SLOPE_NS       = SLOPE_N | SLOPE_S,                     //!< North and south corner are raised
-		SLOPE_ELEVATED = SLOPE_N | SLOPE_E | SLOPE_S | SLOPE_W, //!< All corner are raised, similar to SLOPE_FLAT
+		SLOPE_ELEVATED = SLOPE_N | SLOPE_E | SLOPE_S | SLOPE_W, //!< Bit mask containing all 'simple' slopes. Does not appear as a slope.
 		SLOPE_NWS      = SLOPE_N | SLOPE_W | SLOPE_S,           //!< North, west and south corner are raised
 		SLOPE_WSE      = SLOPE_W | SLOPE_S | SLOPE_E,           //!< West, south and east corner are raised
 		SLOPE_SEN      = SLOPE_S | SLOPE_E | SLOPE_N,           //!< South, east and north corner are raised
@@ -129,6 +141,7 @@ public:
 
 	/**
 	 * Check if a tile has a steep slope.
+	 * Steep slopes are slopes with a height difference of 2 across one diagonal of the tile.
 	 * @param slope The slope to check on.
 	 * @pre slope != SLOPE_INVALID.
 	 * @return True if the slope is a steep slope.
@@ -137,9 +150,11 @@ public:
 
 	/**
 	 * Check if a tile has a halftile slope.
+	 * Halftile slopes appear on top of halftile foundations. E.g. the slope you get when building a horizontal railtrack on the top of a SLOPE_N or SLOPE_STEEP_N.
 	 * @param slope The slope to check on.
 	 * @pre slope != SLOPE_INVALID.
 	 * @return True if the slope is a halftile slope.
+	 * @note Currently there is no API function that would return or accept a halftile slope.
 	 */
 	static bool IsHalftileSlope(Slope slope);
 
@@ -193,9 +208,10 @@ public:
 
 	/**
 	 * Get the slope of a tile.
+	 * This is the slope of the bare tile. A possible foundation on the tile does not influence this slope.
 	 * @param tile The tile to check on.
 	 * @pre AIMap::IsValidTile(tile).
-	 * @return 0 means flat, others indicate internal state of slope.
+	 * @return Bit mask encoding the slope. See #Slope for a description of the returned values.
 	 */
 	static Slope GetSlope(TileIndex tile);
 
@@ -211,12 +227,42 @@ public:
 	static Slope GetComplementSlope(Slope slope);
 
 	/**
-	 * Get the height of the tile.
+	 * Get the height of the north corner of a tile.
+	 * The returned height is the height of the bare tile. A possible foundation on the tile does not influence this height.
+	 * @deprecated This function is deprecated and might be removed in future versions of the API. Use GetMinHeight(), GetMaxHeight() or GetCornerHeight() instead.
 	 * @param tile The tile to check on.
 	 * @pre AIMap::IsValidTile(tile).
-	 * @return The height of the tile, ranging from 0 to 15.
+	 * @return The height of the north corner of the tile, ranging from 0 to 15.
 	 */
 	static int32 GetHeight(TileIndex tile);
+
+	/**
+	 * Get the minimal height on a tile.
+	 * The returned height is the height of the bare tile. A possible foundation on the tile does not influence this height.
+	 * @param tile The tile to check on.
+	 * @pre AIMap::IsValidTile(tile).
+	 * @return The height of the lowest corner of the tile, ranging from 0 to 15.
+	 */
+	static int32 GetMinHeight(TileIndex tile);
+
+	/**
+	 * Get the maximal height on a tile.
+	 * The returned height is the height of the bare tile. A possible foundation on the tile does not influence this height.
+	 * @param tile The tile to check on.
+	 * @pre AIMap::IsValidTile(tile).
+	 * @return The height of the highest corner of the tile, ranging from 0 to 15.
+	 */
+	static int32 GetMaxHeight(TileIndex tile);
+
+	/**
+	 * Get the height of a certain corner of a tile.
+	 * The returned height is the height of the bare tile. A possible foundation on the tile does not influence this height.
+	 * @param tile The tile to check on.
+	 * @param corner The corner to query.
+	 * @pre AIMap::IsValidTile(tile).
+	 * @return The height of the lowest corner of the tile, ranging from 0 to 15.
+	 */
+	static int32 GetCornerHeight(TileIndex tile, Corner corner);
 
 	/**
 	 * Get the owner of the tile.
