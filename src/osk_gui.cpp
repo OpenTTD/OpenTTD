@@ -13,18 +13,34 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
+/** Widget numbers of the on-screen keyboard (OSK) window. */
 enum OskWidgets {
-	OSK_WIDGET_TEXT = 3,
-	OSK_WIDGET_CANCEL = 5,
-	OSK_WIDGET_OK,
-	OSK_WIDGET_BACKSPACE,
-	OSK_WIDGET_SPECIAL,
-	OSK_WIDGET_CAPS,
-	OSK_WIDGET_SHIFT,
-	OSK_WIDGET_SPACE,
-	OSK_WIDGET_LEFT,
-	OSK_WIDGET_RIGHT,
-	OSK_WIDGET_LETTERS
+	OSK_WIDGET_CAPTION,         ///< Title bar.
+	OSK_WIDGET_TEXT_BACKGROUND, ///< Background around the edit box.
+	OSK_WIDGET_TEXT,            ///< Edit box.
+	OSK_WIDGET_KEYS_BACKGROUND, ///< Background of the keys.
+	OSK_WIDGET_CANCEL,          ///< Cancel key.
+	OSK_WIDGET_OK,              ///< Ok key.
+	OSK_WIDGET_BACKSPACE,       ///< Backspace key.
+	OSK_WIDGET_SPECIAL,         ///< Special key (at keyborads often used for tab key).
+	OSK_WIDGET_CAPS,            ///< Capslock key.
+	OSK_WIDGET_SHIFT,           ///< Shift(lock) key.
+	OSK_WIDGET_SPACE,           ///< Space bar.
+	OSK_WIDGET_LEFT,            ///< Cursor left key.
+	OSK_WIDGET_RIGHT,           ///< Cursor right key.
+	OSK_WIDGET_LETTERS,         ///< First widget of the 'normal' keys.
+
+	OSK_WIDGET_NUMBERS_FIRST = OSK_WIDGET_LETTERS,           ///< First widget of the numbers row.
+	OSK_WIDGET_NUMBERS_LAST = OSK_WIDGET_NUMBERS_FIRST + 13, ///< Last widget of the numbers row.
+
+	OSK_WIDGET_QWERTY_FIRST,                                 ///< First widget of the qwerty row.
+	OSK_WIDGET_QWERTY_LAST = OSK_WIDGET_QWERTY_FIRST + 11,   ///< Last widget of the qwerty row.
+
+	OSK_WIDGET_ASDFG_FIRST,                                  ///< First widget of the asdfg row.
+	OSK_WIDGET_ASDFG_LAST = OSK_WIDGET_ASDFG_FIRST + 11,     ///< Last widget of the asdfg row.
+
+	OSK_WIDGET_ZXCVB_FIRST,                                  ///< First widget of the zxcvb row.
+	OSK_WIDGET_ZXCVB_LAST = OSK_WIDGET_ZXCVB_FIRST + 11,     ///< Last widget of the zxcvb row.
 };
 
 char _keyboard_opt[2][OSK_KEYBOARD_ENTRIES * 4 + 1];
@@ -231,26 +247,26 @@ struct OskWindow : public Window {
 };
 
 static const Widget _osk_widgets[] = {
-{    WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,     0,   255,     0,    13, STR_QUERY_CAPTION, STR_NULL},
-{      WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,     0,   255,    14,    29, 0x0,               STR_NULL},
-{    WWT_EDITBOX, RESIZE_NONE,  COLOUR_GREY,     2,   253,    16,    27, 0x0,               STR_NULL},
+{    WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,     0,   255,     0,    13, STR_QUERY_CAPTION, STR_NULL}, // OSK_WIDGET_CAPTION
+{      WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,     0,   255,    14,    29, 0x0,               STR_NULL}, // OSK_WIDGET_TEXT_BACKGROUND
+{    WWT_EDITBOX, RESIZE_NONE,  COLOUR_GREY,     2,   253,    16,    27, 0x0,               STR_NULL}, // OSK_WIDGET_TEXT
 
-{      WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,     0,   255,    30,   139, 0x0,               STR_NULL},
+{      WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,     0,   255,    30,   139, 0x0,               STR_NULL}, // OSK_WIDGET_KEYS_BACKGROUND
 
-{    WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,     3,   108,    35,    46, STR_QUERY_CANCEL,  STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,   111,   216,    35,    46, STR_QUERY_OK,      STR_NULL},
-{ WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   219,   252,    35,    46, SPR_OSK_BACKSPACE, STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,     3,   108,    35,    46, STR_QUERY_CANCEL,  STR_NULL}, // OSK_WIDGET_CANCEL
+{    WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,   111,   216,    35,    46, STR_QUERY_OK,      STR_NULL}, // OSK_WIDGET_OK
+{ WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   219,   252,    35,    46, SPR_OSK_BACKSPACE, STR_NULL}, // OSK_WIDGET_BACKSPACE
 
-{ WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,     3,    27,    67,    82, SPR_OSK_SPECIAL,   STR_NULL},
-{     WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,     3,    36,    85,   100, SPR_OSK_CAPS,      STR_NULL},
-{     WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,     3,    27,   103,   118, SPR_OSK_SHIFT,     STR_NULL},
+{ WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,     3,    27,    67,    82, SPR_OSK_SPECIAL,   STR_NULL}, // OSK_WIDGET_SPECIAL
+{     WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,     3,    36,    85,   100, SPR_OSK_CAPS,      STR_NULL}, // OSK_WIDGET_CAPS
+{     WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,     3,    27,   103,   118, SPR_OSK_SHIFT,     STR_NULL}, // OSK_WIDGET_SHIFT
 
-{ WWT_PUSHTXTBTN, RESIZE_NONE,  COLOUR_GREY,    75,   189,   121,   136, STR_EMPTY,         STR_NULL},
+{ WWT_PUSHTXTBTN, RESIZE_NONE,  COLOUR_GREY,    75,   189,   121,   136, STR_EMPTY,         STR_NULL}, // OSK_WIDGET_SPACE
 
-{ WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   219,   234,   121,   136, SPR_OSK_LEFT,      STR_NULL},
-{ WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   237,   252,   121,   136, SPR_OSK_RIGHT,     STR_NULL},
+{ WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   219,   234,   121,   136, SPR_OSK_LEFT,      STR_NULL}, // OSK_WIDGET_LEFT
+{ WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   237,   252,   121,   136, SPR_OSK_RIGHT,     STR_NULL}, // OSK_WIDGET_RIGHT
 
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,     3,    18,    49,    64, 0x0,    STR_NULL},
+{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,     3,    18,    49,    64, 0x0,    STR_NULL},            // OSK_WIDGET_NUMBERS_FIRST = OSK_WIDGET_LETTERS
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    21,    36,    49,    64, 0x0,    STR_NULL},
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    39,    54,    49,    64, 0x0,    STR_NULL},
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    57,    72,    49,    64, 0x0,    STR_NULL},
@@ -263,9 +279,9 @@ static const Widget _osk_widgets[] = {
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   183,   198,    49,    64, 0x0,    STR_NULL},
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   201,   216,    49,    64, 0x0,    STR_NULL},
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   219,   234,    49,    64, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   237,   252,    49,    64, 0x0,    STR_NULL},
+{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   237,   252,    49,    64, 0x0,    STR_NULL},            // OSK_WIDGET_NUMBERS_LAST
 
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    30,    45,    67,    82, 0x0,    STR_NULL},
+{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    30,    45,    67,    82, 0x0,    STR_NULL},            // OSK_WIDGET_QWERTY_FIRST
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    48,    63,    67,    82, 0x0,    STR_NULL},
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    66,    81,    67,    82, 0x0,    STR_NULL},
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    84,    99,    67,    82, 0x0,    STR_NULL},
@@ -276,9 +292,9 @@ static const Widget _osk_widgets[] = {
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   174,   189,    67,    82, 0x0,    STR_NULL},
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   192,   207,    67,    82, 0x0,    STR_NULL},
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   210,   225,    67,    82, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   228,   243,    67,    82, 0x0,    STR_NULL},
+{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   228,   243,    67,    82, 0x0,    STR_NULL},            // OSK_WIDGET_QWERTY_LAST
 
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    39,    54,    85,   100, 0x0,    STR_NULL},
+{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    39,    54,    85,   100, 0x0,    STR_NULL},            // OSK_WIDGET_ASDFG_FIRST
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    57,    72,    85,   100, 0x0,    STR_NULL},
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    75,    90,    85,   100, 0x0,    STR_NULL},
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    93,   108,    85,   100, 0x0,    STR_NULL},
@@ -289,9 +305,9 @@ static const Widget _osk_widgets[] = {
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   183,   198,    85,   100, 0x0,    STR_NULL},
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   201,   216,    85,   100, 0x0,    STR_NULL},
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   219,   234,    85,   100, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   237,   252,    85,   100, 0x0,    STR_NULL},
+{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   237,   252,    85,   100, 0x0,    STR_NULL},            // OSK_WIDGET_ASDFG_LAST
 
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    30,    45,   103,   118, 0x0,    STR_NULL},
+{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    30,    45,   103,   118, 0x0,    STR_NULL},            // OSK_WIDGET_ZXCVB_FIRST
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    48,    63,   103,   118, 0x0,    STR_NULL},
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    66,    81,   103,   118, 0x0,    STR_NULL},
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    84,    99,   103,   118, 0x0,    STR_NULL},
@@ -302,7 +318,7 @@ static const Widget _osk_widgets[] = {
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   174,   189,   103,   118, 0x0,    STR_NULL},
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   192,   207,   103,   118, 0x0,    STR_NULL},
 {    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   210,   225,   103,   118, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   228,   243,   103,   118, 0x0,    STR_NULL},
+{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   228,   243,   103,   118, 0x0,    STR_NULL},            // OSK_WIDGET_ZXCVB_LAST
 
 {   WIDGETS_END},
 };
