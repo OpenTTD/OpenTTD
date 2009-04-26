@@ -439,7 +439,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Musykje
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...te fier fan lêste bestimming
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Top bedriuwen dy't  niveau {NUM}{}({STRING} helle ha)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Bedriuwskompetysjetabel yn {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Sakeman
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Undernimmer
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Yndustrialist

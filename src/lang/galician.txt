@@ -566,7 +566,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Reprodu
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...demasiado lonxe do destino anterior
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Mellores compañías que chegaron ó {NUM}{}(Nivel {STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Táboa da Liga de Compañías en {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Home de negocios
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Empresario
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrial
@@ -2737,11 +2737,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Non se p
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Os vehículos só poden parar nas estacións.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Este vehículo non para nesta estación.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar Tempo
-STR_TIMETABLE_STATUS_ON_TIME                                    :Este vehículo está actualmente en tempo
-STR_TIMETABLE_STATUS_LATE                                       :Este vehículo está retrasado {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :Este vehículo vai adiantado {STRING}
-STR_TIMETABLE_TOTAL_TIME                                        :Levará {STRING} completar este horario
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Este horario levará {STRING} completalo (non está completo)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este vehículo está actualmente en tempo
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este vehículo está retrasado {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este vehículo vai adiantado {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Levará {STRING} completar este horario
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Este horario levará {STRING} completalo (non está completo)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoencher
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Enche-lo horario automáticamente cos valores da seguinte viaxe (CTRL-click para intentar mante-los tempos de espera)
 

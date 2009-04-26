@@ -603,7 +603,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Figyelm
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...túl távol van az előző céltól
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Legjobb cégek melyek elérték a {NUM}{}({STRING} Szintet)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Cégdicsőség tábla {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Üzletember
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Vállalkozó
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Iparos
@@ -2917,11 +2917,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}A járm�
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}A járművek csak az állomáson várakozhatnak
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Ez a jármű nem áll meg ezen az állomáson
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Idő megváltoztatása
-STR_TIMETABLE_STATUS_ON_TIME                                    :Ez a jármű jelenleg pontosan közlekedik
-STR_TIMETABLE_STATUS_LATE                                       :Ez a jármű jelenleg {STRING} késéssel közlekedik
-STR_TIMETABLE_STATUS_EARLY                                      :Ez a jármű jelenleg {STRING}pal korábban közlekedik
-STR_TIMETABLE_TOTAL_TIME                                        :Ezen menetrend teljesítési ideje: {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Ezen menetrend teljesítési ideje legalább: {STRING} (nincs minden időzítve)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ez a jármű jelenleg pontosan közlekedik
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ez a jármű jelenleg {STRING} késéssel közlekedik
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ez a jármű jelenleg {STRING}pal korábban közlekedik
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Ezen menetrend teljesítési ideje: {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Ezen menetrend teljesítési ideje legalább: {STRING} (nincs minden időzítve)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autokitölt
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Menetrend automatikus kitöltése a következő út értékeivel (CTRL-lal megtartja a várakozási időket)
 
@@ -3632,9 +3632,9 @@ STR_AI_RESET                                                    :{BLACK}Visszaá
 STR_AI_HUMAN_PLAYER                                             :Játékos
 STR_AI_RANDOM_AI                                                :Véletlenszerűen választott MI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}MI paraméterek
-STR_AI_AUTHOR                                                   :Készítő: {STRING}
-STR_AI_VERSION                                                  :Verzió: {NUM}
-STR_AI_URL                                                      :URL: {STRING}
+STR_AI_AUTHOR                                                   :{BLACK}Készítő: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Verzió: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Az egyik futó MI futása közben hiba történt. Kérjük jelezd ezt az MI készítőjének az MI nyomkövetés ablakról készített képpel.
 ########
 

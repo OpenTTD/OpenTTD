@@ -569,7 +569,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Play so
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...too far from previous destination
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Top companies who reached {NUM}{}({STRING} Level)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Company League Table in {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Businessman
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entrepreneur
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrialist
@@ -2846,11 +2846,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Can't ti
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vehicles can only wait at stations.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}This vehicle is not stopping at this station.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Change Time
-STR_TIMETABLE_STATUS_ON_TIME                                    :This vehicle is currently running on time
-STR_TIMETABLE_STATUS_LATE                                       :This vehicle is currently running {STRING1} late
-STR_TIMETABLE_STATUS_EARLY                                      :This vehicle is currently running {STRING1} early
-STR_TIMETABLE_TOTAL_TIME                                        :This timetable will take {STRING1} to complete
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :This timetable will take at least {STRING1} to complete (not all timetabled)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}This vehicle is currently running on time
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}This vehicle is currently running {STRING1} late
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}This vehicle is currently running {STRING1} early
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}This timetable will take {STRING1} to complete
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}This timetable will take at least {STRING1} to complete (not all timetabled)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofill
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fill the timetable automatically with the values from the next journey (Ctrl+Click to try to keep waiting times)
 
@@ -3571,9 +3571,9 @@ STR_AI_RESET                                                    :{BLACK}Reset
 STR_AI_HUMAN_PLAYER                                             :Human player
 STR_AI_RANDOM_AI                                                :Random AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
-STR_AI_AUTHOR                                                   :Author: {RAW_STRING}
-STR_AI_VERSION                                                  :Version: {NUM}
-STR_AI_URL                                                      :URL: {RAW_STRING}
+STR_AI_AUTHOR                                                   :{BLACK}Author: {RAW_STRING}
+STR_AI_VERSION                                                  :{BLACK}Version: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {RAW_STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}One of the running AIs crashed. Please report this to the AI author with a screenshot of the AI Debug Window.
 ########
 

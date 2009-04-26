@@ -631,7 +631,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW} Pusti 
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...predaleko od prethodnog odredišta
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Najbolje tvrtke koje su dosigle razinu {NUM}{}({STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Tablica tvrtki u {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Privrednik
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Poduzetnik
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrijalist
@@ -2888,11 +2888,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Nije mog
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vozila mogu čekati samo na postajama.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Ovo vozilo se ne zaustavlja na ovoj postaji.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Promijeni vrijeme
-STR_TIMETABLE_STATUS_ON_TIME                                    :Ovo vozilo vozi na vrijeme
-STR_TIMETABLE_STATUS_LATE                                       :Ovo vozilo trenutačno {STRING} kasni
-STR_TIMETABLE_STATUS_EARLY                                      :Ovo vozilo je stiglo {STRING} ranije
-STR_TIMETABLE_TOTAL_TIME                                        :Ovaj raspored trebat će {STRING} za završetak
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Ovaj raspored trebat će najmanje {STRING} za završetak (nije sve raspoređeno)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ovo vozilo vozi na vrijeme
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ovo vozilo trenutačno {STRING} kasni
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ovo vozilo je stiglo {STRING} ranije
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Ovaj raspored trebat će {STRING} za završetak
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Ovaj raspored trebat će najmanje {STRING} za završetak (nije sve raspoređeno)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automatsko punjenje
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Automatski popuni raspored s vrijednostima iz sljedećeg putovanja (CTRL-klik kako bi pokušali spremiti i vremena čekanja)
 
@@ -3601,8 +3601,8 @@ STR_AI_RESET                                                    :{BLACK}Resetira
 STR_AI_HUMAN_PLAYER                                             :Ljudski igrač
 STR_AI_RANDOM_AI                                                :Nasumična UI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametri UI
-STR_AI_AUTHOR                                                   :Autor: {STRING}
-STR_AI_VERSION                                                  :Verzija: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}Autor: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Verzija: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Jedan od igrača sa UI se srušio. Molimo vas da prijavite ovo autoru UI sa screenshotom AI Debug prozora
 ########
 

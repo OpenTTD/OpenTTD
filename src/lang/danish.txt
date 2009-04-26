@@ -567,7 +567,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Afspil 
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...for langt fra forrige destination
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Bedste virksomheder, som har nået {NUM}{}({STRING} Niveau)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Selskabsoversigt i {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Forretningsmand
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entreprenør
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrialist
@@ -2830,11 +2830,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan ikke
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Transportmidler kan kun vente ved stationer.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Dette transportmiddel stopper ikke ved denne station.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ændre tid
-STR_TIMETABLE_STATUS_ON_TIME                                    :Dette transportmiddel kommer til tiden
-STR_TIMETABLE_STATUS_LATE                                       :Dette transportmiddel er nu {STRING} forsinket
-STR_TIMETABLE_STATUS_EARLY                                      :Dette transportmiddel er nu {STRING} foran køreplanen
-STR_TIMETABLE_TOTAL_TIME                                        :Denne køreplan vil tage {STRING} at fuldføre
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Denne køreplan vil tage mindst {STRING} at fuldføre (ikke alt indført i køreplan)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dette transportmiddel kommer til tiden
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Dette transportmiddel er nu {STRING} forsinket
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dette transportmiddel er nu {STRING} foran køreplanen
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Denne køreplan vil tage {STRING} at fuldføre
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Denne køreplan vil tage mindst {STRING} at fuldføre (ikke alt indført i køreplan)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-udfyld
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Udfyld automatisk tidsplanen med tider for den næste tur (CTRL-klik for at forsøge at bevare ventetider)
 
@@ -3544,8 +3544,8 @@ STR_AI_RESET                                                    :{BLACK}Nulstil
 STR_AI_HUMAN_PLAYER                                             :Menneskelig spiller
 STR_AI_RANDOM_AI                                                :Tilfældig computerspiller
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Computerspiller-parametre
-STR_AI_AUTHOR                                                   :Skaber: {STRING}
-STR_AI_VERSION                                                  :Version: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}Skaber: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Version: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}En computerstyret spiller gik ned. Rapporter det venligst til udvikleren af computerspilleren med et skærmbilledet af computerspiller-debugvinduet.
 ########
 

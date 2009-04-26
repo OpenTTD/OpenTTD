@@ -147,7 +147,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 		/* Draw Highscore peepz */
 		for (uint8 i = 0; i < lengthof(_highscore_table[0]); i++) {
 			SetDParam(0, i + 1);
-			DrawString(x + 40, x + 600, y + 140 + (i * 55), STR_HIGHSCORE_POSITION, TC_BLACK);
+			DrawString(x + 40, x + 600, y + 140 + (i * 55), STR_HIGHSCORE_POSITION);
 
 			if (hs[i].company[0] != '\0') {
 				TextColour colour = (this->rank == i) ? TC_RED : TC_BLACK; // draw new highscore in red

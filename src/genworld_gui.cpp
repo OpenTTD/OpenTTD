@@ -642,9 +642,9 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				SetDParam(0, this->x);
 				SetDParam(1, this->y);
 			}
-			int right = DrawString(0, 326, 91, STR_HEIGHTMAP_SIZE, TC_BLACK, SA_RIGHT);
+			int right = DrawString(0, 326, 91, STR_HEIGHTMAP_SIZE, TC_FROMSTRING, SA_RIGHT);
 
-			DrawString( 12, 114, 91, STR_HEIGHTMAP_NAME, TC_BLACK);
+			DrawString( 12, 114, 91, STR_HEIGHTMAP_NAME);
 			SetDParamStr(0, this->name);
 			DrawString(114, right - 5, 91, STR_JUST_RAW_STRING, TC_ORANGE);
 		}

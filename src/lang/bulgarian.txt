@@ -570,7 +570,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Пок�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...прекалено далече от предходната цел
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Първите компании достигнали {NUM}{}(ниво {STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Таблица Лига на компании в {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Бизнесмен
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Предприемач
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Индустриалист
@@ -2812,11 +2812,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Не м�
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Превозни средства могат да чакат само на гари.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Това превознот средство не спира на тази гара.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Промени времето
-STR_TIMETABLE_STATUS_ON_TIME                                    :Това превознот средство е в момента на време
-STR_TIMETABLE_STATUS_LATE                                       :Това превознот средство е в момента с {STRING} закъснение
-STR_TIMETABLE_STATUS_EARLY                                      :Това превознот средство е в момента с {STRING} по-рано
-STR_TIMETABLE_TOTAL_TIME                                        :Ще трябва {STRING} за това разписание да бъде приклучено
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Това разписание ще вземе най-малко {STRING} за да приклучи (не всичко е планирано)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Това превознот средство е в момента на време
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Това превознот средство е в момента с {STRING} закъснение
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Това превознот средство е в момента с {STRING} по-рано
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Ще трябва {STRING} за това разписание да бъде приклучено
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Това разписание ще вземе най-малко {STRING} за да приклучи (не всичко е планирано)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Афтонапълване
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Запълни времевата таблица със стойностите от следващото пътуване (CTRL-клик за опит за запазване на времената за изчакване)
 
@@ -3515,9 +3515,9 @@ STR_AI_CLOSE                                                    :{BLACK}Затв
 STR_AI_HUMAN_PLAYER                                             :Човешки играч
 STR_AI_RANDOM_AI                                                :Случаен AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Параметри
-STR_AI_AUTHOR                                                   :Автор: {STRING}
-STR_AI_VERSION                                                  :Версия: {NUM}
-STR_AI_URL                                                      :URL: {STRING}
+STR_AI_AUTHOR                                                   :{BLACK}Автор: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Версия: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 ########
 
 ############ town controlled noise level

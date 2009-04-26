@@ -566,7 +566,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Spela u
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...för långt från föregående destination
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}De bästa företagen som nådde {NUM}{}(nivå {STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Företagslista för {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Affärsman
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entreprenör
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrialist
@@ -2822,11 +2822,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan inte
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Fordon kan enbart vänta vid stationer.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Detta fordon stannar inte vid denna station.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ändra Tid
-STR_TIMETABLE_STATUS_ON_TIME                                    :Detta fordon kör enligt tidtabellen
-STR_TIMETABLE_STATUS_LATE                                       :Detta fordon är för tillfället {STRING} sen
-STR_TIMETABLE_STATUS_EARLY                                      :Detta fordon är för tillfället {STRING} tidig
-STR_TIMETABLE_TOTAL_TIME                                        :Den här tidtabellen kommer ta {STRING} att slutföra
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Denna tidtabell kommer att ta åtminstonde {STRING} att slutföra (allt är inte inlagt i en tidtabell)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Detta fordon kör enligt tidtabellen
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Detta fordon är för tillfället {STRING} sen
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Detta fordon är för tillfället {STRING} tidig
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Den här tidtabellen kommer ta {STRING} att slutföra
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Denna tidtabell kommer att ta åtminstonde {STRING} att slutföra (allt är inte inlagt i en tidtabell)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofyll
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll i tidtabellen automatiskt med värden från nästa resa (Ctrl-klicka för att försöka behålla väntetiderna)
 
@@ -3535,8 +3535,8 @@ STR_AI_RESET                                                    :{BLACK}Återst�
 STR_AI_HUMAN_PLAYER                                             :Mänsklig spelare
 STR_AI_RANDOM_AI                                                :Slumpa datorspelare
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Datorspelarens parametrar
-STR_AI_AUTHOR                                                   :Upphovsman: {STRING}
-STR_AI_VERSION                                                  :Version: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}Upphovsman: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Version: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}En av AI'erna som körs har krachat. Vänligen raportera detta till AIs skapare med en screenshot på "AI Debug Fönsteret".
 ########
 

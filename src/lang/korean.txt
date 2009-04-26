@@ -567,7 +567,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}요약�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...이전의 목적지로부터 너무 멉니다
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}{NUM}에 달성한 최고의 회사 ({STRING} 난이도)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}{NUM}의 회사 성취도 목록
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :초보자
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :사업주
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :공업가
@@ -2830,11 +2830,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}차량�
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}차량은 정거장에서만 기다릴 수 있습니다.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}이 차량은 이 정거장에 서지 않습니다.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}시간 변경
-STR_TIMETABLE_STATUS_ON_TIME                                    :이 차량은 현재 제시간에 운행하고 있습니다
-STR_TIMETABLE_STATUS_LATE                                       :이 차량은 현재 {STRING} 늦게 운행하고 있습니다
-STR_TIMETABLE_STATUS_EARLY                                      :이 차량은 현재 {STRING} 빨리 운행하고 있습니다
-STR_TIMETABLE_TOTAL_TIME                                        :이 시간표는 완주하는데 {STRING}이(가) 걸릴 것입니다
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :이 시간표는 완주하는데 최소 {STRING}이(가) 필요합니다 (일부만 시간지정됨)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}이 차량은 현재 제시간에 운행하고 있습니다
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}이 차량은 현재 {STRING} 늦게 운행하고 있습니다
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}이 차량은 현재 {STRING} 빨리 운행하고 있습니다
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}이 시간표는 완주하는데 {STRING}이(가) 걸릴 것입니다
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}이 시간표는 완주하는데 최소 {STRING}이(가) 필요합니다 (일부만 시간지정됨)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}자동채움
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}다음 여행에서 얻어진 값으로 시간표를 자동으로 채웁니다 (CTRL-클릭하여 대기 시간을 유지합니다)
 
@@ -3543,8 +3543,8 @@ STR_AI_RESET                                                    :{BLACK}초기�
 STR_AI_HUMAN_PLAYER                                             :사용자 플레이어
 STR_AI_RANDOM_AI                                                :무작위 인공지능
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}인공지능 파라미터
-STR_AI_AUTHOR                                                   :저자: {STRING}
-STR_AI_VERSION                                                  :버젼: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}저자: {STRING}
+STR_AI_VERSION                                                  :{BLACK}버젼: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}작동중인 인공지능 중 하나가 충돌했습니다. 인공지능 디버그 창에서 스샷을 찍어 인공지능 작가에게 보고하십시오.
 ########
 

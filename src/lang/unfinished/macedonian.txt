@@ -541,7 +541,7 @@ STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Суб�
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Општи информации
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}..предалеку од претходната дестинација
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Топ компании што постигнаа {NUM}{}({STRING} Ниво)
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Бизнисмен
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Претпријатие
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Индустриалист

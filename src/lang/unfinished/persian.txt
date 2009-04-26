@@ -370,7 +370,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}تغی�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}کمک هزینه
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}توضیهات کلی
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}از هدف قبلی بسیار دور است......
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :تاجر
 STR_BLUE_NUMBER                                                 :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD

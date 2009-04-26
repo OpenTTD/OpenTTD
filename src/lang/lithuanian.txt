@@ -600,7 +600,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Groti g
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...per toli buvusio keliones tikslo
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Geriausios kompanijos, kurios pasiekė {NUM}{}({STRING} lygį)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Kompaniju Lygos lentele {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Komersantas
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Verslininkas
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Pramonininkas
@@ -2821,11 +2821,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Neįmano
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Transportas gali laukti tik stotelėse.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}transporto priemonė čia nestoja.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Keisti laiką
-STR_TIMETABLE_STATUS_ON_TIME                                    :Transporto priemonė atvažiuoja laiku
-STR_TIMETABLE_STATUS_LATE                                       :Transporto priemonė vėluoja {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :Transporto priemonė skuba {STRING}
-STR_TIMETABLE_TOTAL_TIME                                        :Apvažiuos visą maršrutą per {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Šis maršrutas užtruks mažiausiai {STRING} (ne viskas turi nustatytą laiką)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Transporto priemonė atvažiuoja laiku
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Transporto priemonė vėluoja {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Transporto priemonė skuba {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Apvažiuos visą maršrutą per {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Šis maršrutas užtruks mažiausiai {STRING} (ne viskas turi nustatytą laiką)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto užpildymas
 
 ##id 0x9000
@@ -3496,8 +3496,8 @@ STR_AI_RESET                                                    :{BLACK}Atstatyt
 STR_AI_HUMAN_PLAYER                                             :Žaidėjas Žmogus
 STR_AI_RANDOM_AI                                                :Atsitiktinis DI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parametrai
-STR_AI_AUTHOR                                                   :Autorius: {STRING}
-STR_AI_VERSION                                                  :Versija: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}Autorius: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Versija: {NUM}
 ########
 
 ############ town controlled noise level

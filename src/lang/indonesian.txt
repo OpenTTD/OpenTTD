@@ -566,7 +566,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Mainkan
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...terlalu jauh dari tujuan sebelumnya
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Perusahaan tertinggi yang mencapai tahun {NUM}{}(Level {STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Tabel Liga Perusahaan {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Pengusaha
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Pengusaha
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Ahli Industri
@@ -2822,11 +2822,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Tidak da
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Kendaran hanya dapat menunggu di stasiun
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Kendaraan ini tidak  berhenti pada stasiun ini.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ubah Durasi
-STR_TIMETABLE_STATUS_ON_TIME                                    :Kendaraan ini berjalan tepat waktu
-STR_TIMETABLE_STATUS_LATE                                       :Kendaraaan ini berjalan terlambat {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :Kendaraaan ini berjalan  lebih awal {STRING}
-STR_TIMETABLE_TOTAL_TIME                                        :Total durasi seluruh perjalanan akan memakan waktu {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Total durasi seluruh perjalanan akan memakan waktu kurang lebih {STRING} untuk terpenuhi (blm semuanya terjadwal)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Kendaraan ini berjalan tepat waktu
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Kendaraaan ini berjalan terlambat {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Kendaraaan ini berjalan  lebih awal {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Total durasi seluruh perjalanan akan memakan waktu {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Total durasi seluruh perjalanan akan memakan waktu kurang lebih {STRING} untuk terpenuhi (blm semuanya terjadwal)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Otomatis
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi jadwal keberangkatan secara otomatis dari perjalanan berikutnya (Ctrl-klik agar waktu tinggalnya tetap)
 
@@ -3535,8 +3535,8 @@ STR_AI_RESET                                                    :{BLACK}Reset
 STR_AI_HUMAN_PLAYER                                             :Pemain Manusia
 STR_AI_RANDOM_AI                                                :AI Acak
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parameter AI
-STR_AI_AUTHOR                                                   :Pembuat: {STRING}
-STR_AI_VERSION                                                  :Versi: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}Pembuat: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Versi: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Salah satu AI gagal. Laporkan ini kepada AI Author dengan potongan layar dari Jendela Debug AI.
 ########
 

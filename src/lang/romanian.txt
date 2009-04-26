@@ -569,7 +569,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Sunet p
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...prea departe de destinaţia precedentă
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Primele companii care au atins {NUM}{}(Nivelul {STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Clasamentul companiilor in {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Om de afaceri
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Întreprinzător
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrias
@@ -2833,11 +2833,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Nu pot p
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vehiculele pot astepta numai in statii.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Acest vehicul nu are oprire în această staţie.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifica timpul
-STR_TIMETABLE_STATUS_ON_TIME                                    :Acest vehicul se incadreaza in timp
-STR_TIMETABLE_STATUS_LATE                                       :Vehiculul are întârziere de {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :Momentan, acest vehicul si-a devansat programul {STRING}
-STR_TIMETABLE_TOTAL_TIME                                        :Acest orar va lua {STRING} pentru finalizare
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Acest orar va lua cel putin {STRING} pentru finalizare (nu in intregime programat)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Acest vehicul se incadreaza in timp
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Vehiculul are întârziere de {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Momentan, acest vehicul si-a devansat programul {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Acest orar va lua {STRING} pentru finalizare
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Acest orar va lua cel putin {STRING} pentru finalizare (nu in intregime programat)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-completare
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Completeaza tabla cu timpuri automat cu valorile pentru urmatoarea calatorie (CTRL-clci pentru a incerca sa pastrati timpurile de asteptare)
 
@@ -3547,8 +3547,8 @@ STR_AI_RESET                                                    :{BLACK}Reseteaz
 STR_AI_HUMAN_PLAYER                                             :Jucator uman
 STR_AI_RANDOM_AI                                                :IA aleator
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametri IA
-STR_AI_AUTHOR                                                   :Autor: {STRING}
-STR_AI_VERSION                                                  :Versiune: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}Autor: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Versiune: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}O Inteligentă Artificială s-a oprit în mod eronat. Raportează această problemă autorului împreună cu o captură de ecran a ferestrei Depanare IA
 ########
 

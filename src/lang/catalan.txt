@@ -569,7 +569,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Emetre 
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...massa lluny del destí previ
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Principals empreses en aconseguir el Nivell {NUM}{}({STRING} )
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Taula de Lliga d'Empreses a {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Empresari
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Emprenedor
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrial
@@ -2846,11 +2846,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Impossib
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Els vehicles només poden esperar a les estacions.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Aquest vehicle no para en aquesta estació.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Canvia Temps
-STR_TIMETABLE_STATUS_ON_TIME                                    :Actualment aquest vehicle és puntual
-STR_TIMETABLE_STATUS_LATE                                       :Actualment aquest vehicle va {STRING} tard
-STR_TIMETABLE_STATUS_EARLY                                      :Actualment aquest vehicle va {STRING} d'hora
-STR_TIMETABLE_TOTAL_TIME                                        :L'horari tardarà {STRING} a complir-se
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :L'horari tardarà almenys {STRING} a complir-se (no tot està planificat)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Actualment aquest vehicle és puntual
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Actualment aquest vehicle va {STRING} tard
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Actualment aquest vehicle va {STRING} d'hora
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}L'horari tardarà {STRING} a complir-se
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}L'horari tardarà almenys {STRING} a complir-se (no tot està planificat)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoomple
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Omple automàticament l'horari amb valors del dia següent (CTRL-clic per intentar mantenir les hores)
 
@@ -3561,9 +3561,9 @@ STR_AI_RESET                                                    :{BLACK}Reset
 STR_AI_HUMAN_PLAYER                                             :Jugador humà
 STR_AI_RANDOM_AI                                                :IA Aleatòria
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paràmetres IA
-STR_AI_AUTHOR                                                   :Autor: {STRING}
-STR_AI_VERSION                                                  :Versió: {NUM}
-STR_AI_URL                                                      :URL: {STRING}
+STR_AI_AUTHOR                                                   :{BLACK}Autor: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Versió: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Una de les IAs s'ha penjat. Si us plau reporta això a l'autor de la IA amb una captura de pantalla de la finestra de depuració IA.
 ########
 

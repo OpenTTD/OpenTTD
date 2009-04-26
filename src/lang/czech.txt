@@ -637,7 +637,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Přehr�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... příliš daleko od předcházejícího cíle
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Nejlepší společnosti, které dosáhly {NUM}{}({STRING} úroveň)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Tabulka společností v roce {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Obchodník
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Manažer
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Továrník
@@ -2920,11 +2920,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Tomuto v
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vozidla mohou čekat jen ve stanicích.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Toto vozidlo v této stanici nestaví.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Změnit čas
-STR_TIMETABLE_STATUS_ON_TIME                                    :Vozidlo jede na čas
-STR_TIMETABLE_STATUS_LATE                                       :Vozidlo má {STRING} zpoždění
-STR_TIMETABLE_STATUS_EARLY                                      :Vozidlo jede {STRING} napřed
-STR_TIMETABLE_TOTAL_TIME                                        :Tento jízdní řád bude trvat {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Tento jízdní řád bude trvat nejméně {STRING} (vozidla mimo jízdní řád)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Vozidlo jede na čas
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Vozidlo má {STRING} zpoždění
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Vozidlo jede {STRING} napřed
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Tento jízdní řád bude trvat {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Tento jízdní řád bude trvat nejméně {STRING} (vozidla mimo jízdní řád)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automaticky
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Automaticky vyplň rozvrh hodnotami z následující cesty (CTRL-klik pro vyčkávání nějaké doby)
 
@@ -3635,9 +3635,9 @@ STR_AI_RESET                                                    :{BLACK}Obnovit 
 STR_AI_HUMAN_PLAYER                                             :Lidský hráč
 STR_AI_RANDOM_AI                                                :Náhodná AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametery AI
-STR_AI_AUTHOR                                                   :Autor: {STRING}
-STR_AI_VERSION                                                  :Verze: {NUM}
-STR_AI_URL                                                      :URL: {STRING}
+STR_AI_AUTHOR                                                   :{BLACK}Autor: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Verze: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Některá z bežících AI skončila s chybou. Prosím oznamte toto autorovi AI spolu se screenshotem okna Ladění AI.
 ########
 

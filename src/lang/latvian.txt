@@ -568,7 +568,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Atskaņ
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...pārāk tāla no iepriekšējā punkta
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Labākie uzņēmumi, kuri sasnieguši {NUM}{}({STRING} Līmeni)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Uzņēmumu rangu sarkstā {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Darījumu cilvēks
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Uzņēmējs
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industriālists
@@ -2822,11 +2822,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Nav iesp
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Transportl. var gaidīt tikai stacijās
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Šis transportl. šajā stacijā nestāsies
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mainīt laiku
-STR_TIMETABLE_STATUS_ON_TIME                                    :Patreiz šis transportlīdzeklis iekļaujas laikā
-STR_TIMETABLE_STATUS_LATE                                       :Transports pašlaik {STRING} kavē
-STR_TIMETABLE_STATUS_EARLY                                      :Transports pašlaik {STRING} par agru
-STR_TIMETABLE_TOTAL_TIME                                        :Šis saraksts aizņems {STRING} lai pabeigtu
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Šis saraksts aizņems vismaz {STRING} lai pabeigtu (nav viss pēc saraksta)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Patreiz šis transportlīdzeklis iekļaujas laikā
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Transports pašlaik {STRING} kavē
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Transports pašlaik {STRING} par agru
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Šis saraksts aizņems {STRING} lai pabeigtu
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Šis saraksts aizņems vismaz {STRING} lai pabeigtu (nav viss pēc saraksta)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-aizpildīšana
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Aizpildīt sarakstu automātiski ar vērtībām no nākošā ceļojuma (CTRL-click lai mēģinātu paturēt gaidīšanas laikus)
 
@@ -3534,8 +3534,8 @@ STR_AI_RESET                                                    :{BLACK}Pārspie
 STR_AI_HUMAN_PLAYER                                             :Spēlētājs-cilvēks
 STR_AI_RANDOM_AI                                                :Nejaušš Al
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Ala Parametri
-STR_AI_AUTHOR                                                   :Autors: {STRING}
-STR_AI_VERSION                                                  :Versija: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}Autors: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Versija: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Viens no mākslīgā intelekta spēlētājiem nobruka. Lūdzu paziņojiet par šo gadījumu mākslīgā intelekta autoram, pievienojot ekrānšāviņu ar mākslīgā intelekta atkļūdošanas logu.
 ########
 

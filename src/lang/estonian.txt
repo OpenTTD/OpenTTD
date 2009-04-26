@@ -623,7 +623,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Mängi 
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...liiga kaugel eelmisest sihtpunktist
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Parimad ettevõtted, kes jõudsid tasemeni {NUM}{}({STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Ettevõtete edetabelis {NUM} kohal
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Ärimees
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Ettevõtja
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Tööstur
@@ -2900,11 +2900,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Sõiduki
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Sõidukid saavad ainult peatustes oodata.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Sellel sõidukil pole ühtegi peatust.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuda aega
-STR_TIMETABLE_STATUS_ON_TIME                                    :Sõiduk on graafikus
-STR_TIMETABLE_STATUS_LATE                                       :See sõiduk on {STRING} hiljaks jäämas
-STR_TIMETABLE_STATUS_EARLY                                      :See sõiduk on {STRING} varajane
-STR_TIMETABLE_TOTAL_TIME                                        :Selle sõiduplaani täitmine võtab {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Selle sõiduplaani täitmine võtab vähemalt {STRING} (kõik ei ole planeeritud)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Sõiduk on graafikus
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}See sõiduk on {STRING} hiljaks jäämas
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}See sõiduk on {STRING} varajane
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Selle sõiduplaani täitmine võtab {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Selle sõiduplaani täitmine võtab vähemalt {STRING} (kõik ei ole planeeritud)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Täida ise
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Täida liiniplaan järgmise sõidu andmetega (Ctrl+klõps säilitamaks ooteaegu)
 
@@ -3615,9 +3615,9 @@ STR_AI_RESET                                                    :{BLACK}Nulli
 STR_AI_HUMAN_PLAYER                                             :Inimmängija
 STR_AI_RANDOM_AI                                                :Suvaline tehismõistus
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Tehismõistuse muutujad
-STR_AI_AUTHOR                                                   :Autor: {STRING}
-STR_AI_VERSION                                                  :Versioon: {NUM}
-STR_AI_URL                                                      :URL: {STRING}
+STR_AI_AUTHOR                                                   :{BLACK}Autor: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Versioon: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Tõrge ühe töötava tehismõistusega. Palun teavitage sellest tehismõistuse autorit koos ekraanipildiga tehismõistuse tõrkeotsingu aknast.
 ########
 

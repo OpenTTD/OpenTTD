@@ -633,7 +633,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Prehrat
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...prilis daleko z predchadzajuceho ciela
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Najlepsie spolocnosti, ktore dosiahli {NUM}{}({STRING} uroven)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Tabulka spolocnosti v roku {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Obchodnik
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Podnikatel
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Priemyselnik
@@ -2889,11 +2889,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Vozidlu 
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vozidlá možu cakat len v staniciach.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Toto vozidlo nezastavuje v tejto stanici.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmenit cas
-STR_TIMETABLE_STATUS_ON_TIME                                    :Toto vozidlo ide presne
-STR_TIMETABLE_STATUS_LATE                                       :Toto vozidlo mešká {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :Toto vozidlo ide {STRING} skor
-STR_TIMETABLE_TOTAL_TIME                                        :Na dokoncenie cestovného poriadku je potrebných {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Na dokoncenie cestovného poriadku je potrebných min. {STRING} (nie všetko je urcené)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Toto vozidlo ide presne
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Toto vozidlo mešká {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Toto vozidlo ide {STRING} skor
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Na dokoncenie cestovného poriadku je potrebných {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Na dokoncenie cestovného poriadku je potrebných min. {STRING} (nie všetko je urcené)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Vyplnit
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Naplň časový plán automaticky s hodnotami z nasledujúcej trasy (CTRL-klik - pokúsiť sa udržať čakacie doby)
 
@@ -3602,8 +3602,8 @@ STR_AI_RESET                                                    :{BLACK}Resetova
 STR_AI_HUMAN_PLAYER                                             :Človek
 STR_AI_RANDOM_AI                                                :Náhodná AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametre AI
-STR_AI_AUTHOR                                                   :Autor: {STRING}
-STR_AI_VERSION                                                  :Verzia: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}Autor: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Verzia: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Jedna z AI padla. Prosím nahláste to autorovi AI a priložte screenshot Debugovacej obrazovky AI.
 ########
 

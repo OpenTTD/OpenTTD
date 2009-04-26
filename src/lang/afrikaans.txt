@@ -566,7 +566,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Speel g
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...te ver van vorige destinasie
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Beste maatskappye wat {NUM}{}({STRING} Vlak) behaal het
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Maatskappy Liga Tafel in {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Sakeman
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entrepreneur
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Nyweraar
@@ -2767,11 +2767,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan nie 
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Voertuie kan slegs by stasies wag.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Die voertuig stop nie by die stasie nie.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Verander Tyd
-STR_TIMETABLE_STATUS_ON_TIME                                    :Die voertuig loop tans op tyd
-STR_TIMETABLE_STATUS_LATE                                       :Die voertuig loop tans {STRING} laat
-STR_TIMETABLE_STATUS_EARLY                                      :Die voertuig loop tans {STRING} vroeg
-STR_TIMETABLE_TOTAL_TIME                                        :Die rooster sal  {STRING} vat om te verklaar
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Die rooster sal te minste {STRING} vat om te verklaar (nie alles gerooster nie)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Die voertuig loop tans op tyd
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Die voertuig loop tans {STRING} laat
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Die voertuig loop tans {STRING} vroeg
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Die rooster sal  {STRING} vat om te verklaar
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Die rooster sal te minste {STRING} vat om te verklaar (nie alles gerooster nie)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Outovul
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul die tydtabel outomaties in met die waardes van die volgende reis (CTRL-linker muis om die wagtyd te probeer hou)
 

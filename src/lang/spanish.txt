@@ -570,7 +570,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Reprodu
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...demasiado lejano del destino anterior
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Top de empresas que han alcanzado {NUM}{}(Nivel {STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Tabla clasificatoria de empresas en {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Hombre de negocios
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Empresario
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrial
@@ -2846,11 +2846,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}No se pu
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Los vehículos solo pueden esperar en las estaciones.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Este vehículo no está parando en esta estación.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar Horario
-STR_TIMETABLE_STATUS_ON_TIME                                    :Este vehículo está actualmente en hora
-STR_TIMETABLE_STATUS_LATE                                       :Este vehículo está actualmente retrasado {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :Este vehículo está actualmente {STRING} adelantado
-STR_TIMETABLE_TOTAL_TIME                                        :Los horarios tomarán  {STRING} para completarse
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Estos horarios tomarán {STRING} para completarse (no todos los horarios)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este vehículo está actualmente en hora
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este vehículo está actualmente retrasado {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este vehículo está actualmente {STRING} adelantado
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Los horarios tomarán  {STRING} para completarse
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Estos horarios tomarán {STRING} para completarse (no todos los horarios)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automático
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena la tabla de horarios automáticamente con los valores de la siguiente jornada (CTRL-click para tratar de mantener los tiempos de espera))
 
@@ -3561,9 +3561,9 @@ STR_AI_RESET                                                    :{BLACK}Reinicia
 STR_AI_HUMAN_PLAYER                                             :Jugador Humano
 STR_AI_RANDOM_AI                                                :IA aleatoria
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parámetros de la IA
-STR_AI_AUTHOR                                                   :Autor: {STRING}
-STR_AI_VERSION                                                  :Versión: {NUM}
-STR_AI_URL                                                      :URL: {STRING}
+STR_AI_AUTHOR                                                   :{BLACK}Autor: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Versión: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Una de las AI ejecutadas ha fallado. Por favor, reporte el fallo al autor de la misma desde la ventana AI Debug.
 ########
 

@@ -611,7 +611,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Graj d�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...zbyt daleko od poprzedniego celu
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Ranking firm, które osiągnęły rok {NUM}{}(Poziom {STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Tabela Ligi Firm w {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Biznesmen
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Przedsiębiorca
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Przemysłowiec
@@ -2907,11 +2907,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Nie moż
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Pojazdy mogą czekać tylko na stacjach.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Ten pojazd nie zatrzymuje się na tej stacji.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmień czas
-STR_TIMETABLE_STATUS_ON_TIME                                    :Ten pojazd podróżuje teraz zgodnie z rozkładem jazdy
-STR_TIMETABLE_STATUS_LATE                                       :Ten pojazd jest teraz spóźniony o {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :Ten pojazd spieszy się teraz o {STRING}
-STR_TIMETABLE_TOTAL_TIME                                        :Ten rozkład jazdy zajmie {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Ten rozkład jazdy zajmie przynajmniej {STRING} (nie wszystkie stacje są na rozkładzie)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ten pojazd podróżuje teraz zgodnie z rozkładem jazdy
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ten pojazd jest teraz spóźniony o {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ten pojazd spieszy się teraz o {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Ten rozkład jazdy zajmie {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Ten rozkład jazdy zajmie przynajmniej {STRING} (nie wszystkie stacje są na rozkładzie)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofill
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełnij rozkład jazdy automatycznie wartościami z następnego wyjazdu (CTRL-klik by spróbować utrzymać czasy oczekiwania))
 
@@ -3619,8 +3619,8 @@ STR_AI_RESET                                                    :{BLACK}Resetuj
 STR_AI_HUMAN_PLAYER                                             :Ludzki gracz
 STR_AI_RANDOM_AI                                                :Losowe SI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametry SI
-STR_AI_AUTHOR                                                   :Autor: {STRING}
-STR_AI_VERSION                                                  :Wersja: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}Autor: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Wersja: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Jedna z działających SI przestała działać. Prosimy o zaraportowanie tego autorowi SI dołączając zrzut ekranu okna debuga SI.
 ########
 

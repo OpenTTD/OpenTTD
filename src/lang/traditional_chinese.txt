@@ -565,7 +565,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}摘要�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...與上個目的地相距太遠
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}公司已達到 {NUM}{}({STRING} 等級)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}公司排行榜 {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :商人
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :企業家
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :實業家
@@ -2818,11 +2818,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}無法�
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}交通工具只能於車站內待命
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}此交通工具將不停靠此車站
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}變更時刻
-STR_TIMETABLE_STATUS_ON_TIME                                    :此交通工具目前準點
-STR_TIMETABLE_STATUS_LATE                                       :此交通工具目前慢了 {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :此交通工具目前早了 {STRING}
-STR_TIMETABLE_TOTAL_TIME                                        :此時刻表跑完全程需時 {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :此時刻表跑完全程至少需時 {STRING} (此表尚未完成)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}此交通工具目前準點
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}此交通工具目前慢了 {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}此交通工具目前早了 {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}此時刻表跑完全程需時 {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}此時刻表跑完全程至少需時 {STRING} (此表尚未完成)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動製表
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}以下站火舞價值自動填充時間表 (按住CTRL-點擊以維持等待時間)
 
@@ -3530,8 +3530,8 @@ STR_AI_RESET                                                    :{BLACK}重設
 STR_AI_HUMAN_PLAYER                                             :人類玩家
 STR_AI_RANDOM_AI                                                :隨機 AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI 參數
-STR_AI_AUTHOR                                                   :作者： {STRING}
-STR_AI_VERSION                                                  :版本： {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}作者： {STRING}
+STR_AI_VERSION                                                  :{BLACK}版本： {NUM}
 ########
 
 ############ town controlled noise level

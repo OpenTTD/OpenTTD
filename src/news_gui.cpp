@@ -742,7 +742,7 @@ struct MessageHistoryWindow : Window {
 
 		for (int n = this->vscroll.cap; n > 0; n--) {
 			SetDParam(0, ni->date);
-			DrawString(4, 82, y, STR_SHORT_DATE, TC_WHITE);
+			DrawString(4, 82, y, STR_SHORT_DATE);
 
 			DrawNewsString(82, y, TC_WHITE, ni, this->width - 95);
 			y += 12;

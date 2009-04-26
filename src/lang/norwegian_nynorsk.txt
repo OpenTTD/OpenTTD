@@ -567,7 +567,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Spel av
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...for langt borte frå førre destinasjon
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Beste firma som nådde {NUM}{}({STRING} Nivå)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Firmarangering i {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Forretningsmann
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entreprenør
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrialist
@@ -2823,11 +2823,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan ikkj
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Køyretøy kan berre venta på stasjonar
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Dette køyretøyet stoppar ikkje på denne stasjonen
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Bytt Tid
-STR_TIMETABLE_STATUS_ON_TIME                                    :Dette køyretøyet er presis
-STR_TIMETABLE_STATUS_LATE                                       :Dette køyretøyet er {STRING} for seint
-STR_TIMETABLE_STATUS_EARLY                                      :Dette køyretøyet er {STRING} for tidleg
-STR_TIMETABLE_TOTAL_TIME                                        :Det vil ta {STRING} å gjere ferdig denne rutetabellen
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Det vil ta minst {STRING} å gjere ferdig denne rutetabellen ( ikkje alle på rutetabellen
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dette køyretøyet er presis
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Dette køyretøyet er {STRING} for seint
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dette køyretøyet er {STRING} for tidleg
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Det vil ta {STRING} å gjere ferdig denne rutetabellen
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Det vil ta minst {STRING} å gjere ferdig denne rutetabellen ( ikkje alle på rutetabellen
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automatisk utfylling
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll timeplanen automatisk med verdiar frå neste reise (CTRL-klikk for å prøve å halde ventetider)
 
@@ -3536,8 +3536,8 @@ STR_AI_RESET                                                    :{BLACK}Tilbakes
 STR_AI_HUMAN_PLAYER                                             :Menneskeleg spelar
 STR_AI_RANDOM_AI                                                :Vilkårleg AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parametrar
-STR_AI_AUTHOR                                                   :Forfattar: {STRING}
-STR_AI_VERSION                                                  :Versjon: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}Forfattar: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Versjon: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Ein AI har krasja. Venleg rapporter dette til produsenten av AIen med eit skjermbilete av "AI Debug"-vindauget.
 ########
 

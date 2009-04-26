@@ -738,7 +738,7 @@ public:
 						y < dpi->top + dpi->height) {
 					/* And draw it. */
 					SetDParam(0, t->index);
-					DrawString(x, x + t->sign.width_2, y, STR_SMALLMAP_TOWN, TC_WHITE);
+					DrawString(x, x + t->sign.width_2, y, STR_SMALLMAP_TOWN);
 				}
 			}
 		}

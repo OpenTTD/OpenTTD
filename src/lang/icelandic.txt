@@ -567,7 +567,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Spila h
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...of langt frá fyrri stað
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Efstu fyrirtæki sem náðu {NUM}{}({STRING} stig)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Sambandstafla fyrirtækis í {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Viðskiptamaður
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Athafnamaður
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Iðnjöfur
@@ -2823,11 +2823,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Get ekki
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Farartæki getur aðeins beðið við stöð.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Þetta farartæki mun ekki stoppa við þessa stöð.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Breyta tíma
-STR_TIMETABLE_STATUS_ON_TIME                                    :Þetta farartæki er nú þegar á réttum tíma
-STR_TIMETABLE_STATUS_LATE                                       :Þetta farartæki er {STRING} of seint
-STR_TIMETABLE_STATUS_EARLY                                      :Þetta farartæki er {STRING} of fljótt
-STR_TIMETABLE_TOTAL_TIME                                        :Það mun taka {STRING} að ljúka við þessa áætlun
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Það mun að minnsta kosti taka {STRING} að ljúka við þessa áætlun (ekki allar skipanir á áætlun)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Þetta farartæki er nú þegar á réttum tíma
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Þetta farartæki er {STRING} of seint
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Þetta farartæki er {STRING} of fljótt
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Það mun taka {STRING} að ljúka við þessa áætlun
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Það mun að minnsta kosti taka {STRING} að ljúka við þessa áætlun (ekki allar skipanir á áætlun)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Skrifa sjálfvirkt
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Bæta áfangastöðum næstu ferðar sjálfvirkt við áætlunina (Ctrl+smelltu til að reyna að halda biðtímum)
 
@@ -3536,8 +3536,8 @@ STR_AI_RESET                                                    :{BLACK}Frumstil
 STR_AI_HUMAN_PLAYER                                             :Mennskur leikmaður
 STR_AI_RANDOM_AI                                                :Gervigreind af handahófi
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Stillingar gervigreindar
-STR_AI_AUTHOR                                                   :Höfundur: {STRING}
-STR_AI_VERSION                                                  :Útgáfa: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}Höfundur: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Útgáfa: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Ein af gervigreindunum hrundi. Vinsamlega gerðu höfundi gervigreindarinnar viðvart og sendu inn mynd af aflúsunarglugga gervigreindarinnar.
 ########
 

@@ -297,7 +297,7 @@ public:
 			SetDParam(0, STR_NOT_REPLACING_VEHICLE_SELECTED);
 		}
 
-		DrawString(this->widget[RVW_WIDGET_INFO_TAB].left + 6, this->widget[RVW_WIDGET_INFO_TAB].right - 6, this->widget[RVW_WIDGET_INFO_TAB].top + 1, STR_BLACK_STRING, TC_BLACK);
+		DrawString(this->widget[RVW_WIDGET_INFO_TAB].left + 6, this->widget[RVW_WIDGET_INFO_TAB].right - 6, this->widget[RVW_WIDGET_INFO_TAB].top + 1, STR_BLACK_STRING);
 
 		/* Draw the lists */
 		for (byte i = 0; i < 2; i++) {

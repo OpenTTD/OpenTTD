@@ -570,7 +570,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Sound f
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...zu weit vom vorherigen Bestimmungsort entfernt
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Beste Unternehmen, die {NUM} erreichten{}(Schwierigkeitsgrad {STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Firmentabelle in {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Geschäftsmann
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Unternehmer
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrieller
@@ -2847,11 +2847,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kein Fah
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Fahrzeuge halten nur an Stationen.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Das Fahrzeug hält nicht an dieser Station.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zeit ändern
-STR_TIMETABLE_STATUS_ON_TIME                                    :Das Fahrzeug ist derzeit pünktlich.
-STR_TIMETABLE_STATUS_LATE                                       :Dieses Fahrzeug hat {STRING} Verspätung
-STR_TIMETABLE_STATUS_EARLY                                      :Dieses Fahrzeug ist {STRING} zu früh
-STR_TIMETABLE_TOTAL_TIME                                        :Dieser Fahrplan benötigt {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Dieser Fahrplan benötigt mindestens {STRING} (nicht alle geplant)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Das Fahrzeug ist derzeit pünktlich.
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Dieses Fahrzeug hat {STRING} Verspätung
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dieses Fahrzeug ist {STRING} zu früh
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Dieser Fahrplan benötigt {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Dieser Fahrplan benötigt mindestens {STRING} (nicht alle geplant)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Erfassen
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fahrpan automatisch an die Werte der nächste Fahrt anpassen (Mit Strg+Klick wird veruscht die aktuellen Wartezeiten beizubehalten)
 
@@ -3562,9 +3562,9 @@ STR_AI_RESET                                                    :{BLACK}Rückset
 STR_AI_HUMAN_PLAYER                                             :menschlicher Spieler
 STR_AI_RANDOM_AI                                                :Zufällige KI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}KI Parameter
-STR_AI_AUTHOR                                                   :Autor: {STRING}
-STR_AI_VERSION                                                  :Version: {NUM}
-STR_AI_URL                                                      :URL: {STRING}
+STR_AI_AUTHOR                                                   :{BLACK}Autor: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Version: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Einer der laufenden KIs ist abgestürzt. Es ist nett, den Fehler dem Autor der KI mittels eines Screenshots vom KI-Debug-Fenster unter Angabe der OpenTTD-Versionsnummer zu melden.
 ########
 

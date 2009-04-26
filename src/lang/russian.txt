@@ -568,7 +568,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Про�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...слишком далеко от предыдущей точки
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}ТОП-компании, достигшие {NUM}{}({STRING} уровня)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Порядковая таблица компаний в {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Бизнесмен
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Предприниматель
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Промышленник
@@ -2835,11 +2835,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Не м�
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Транспорт может только ждать на станции.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Этот транспорт не останавливается на этой станции.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Изм. время
-STR_TIMETABLE_STATUS_ON_TIME                                    :Этот транспорт приходит вовремя
-STR_TIMETABLE_STATUS_LATE                                       :Этот транспорт приходит на  {STRING} позже
-STR_TIMETABLE_STATUS_EARLY                                      :Этот транспорт приходит на  {STRING} раньше
-STR_TIMETABLE_TOTAL_TIME                                        :Выполнение этого расписания займет {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Выполнение этого расписания займет не менее {STRING} (не все просчитано)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Этот транспорт приходит вовремя
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Этот транспорт приходит на  {STRING} позже
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Этот транспорт приходит на  {STRING} раньше
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Выполнение этого расписания займет {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Выполнение этого расписания займет не менее {STRING} (не все просчитано)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Автомат.
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fill the timetable automatically with the values from the next journey (CTRL-click to try to keep waiting times)
 
@@ -3548,8 +3548,8 @@ STR_AI_RESET                                                    :{BLACK}Сбро
 STR_AI_HUMAN_PLAYER                                             :Человек
 STR_AI_RANDOM_AI                                                :Случ. ИИ
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Параметры ИИ
-STR_AI_AUTHOR                                                   :Автор: {STRING}
-STR_AI_VERSION                                                  :Версия: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}Автор: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Версия: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Один из запущенных ИИ выполнил недопустимую операцию и был закрыт. Пожалуйста сообщите об этом автору ИИ приложив скриншот окна ИИ отладки.
 ########
 

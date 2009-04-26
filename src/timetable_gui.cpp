@@ -228,16 +228,16 @@ struct TimetableWindow : Window {
 
 			if (total_time != 0) {
 				SetTimetableParams(0, 1, total_time);
-				DrawString(this->widget[TTV_SUMMARY_PANEL].left + 2, this->widget[TTV_SUMMARY_PANEL].right - 2, y, complete ? STR_TIMETABLE_TOTAL_TIME : STR_TIMETABLE_TOTAL_TIME_INCOMPLETE, TC_BLACK);
+				DrawString(this->widget[TTV_SUMMARY_PANEL].left + 2, this->widget[TTV_SUMMARY_PANEL].right - 2, y, complete ? STR_TIMETABLE_TOTAL_TIME : STR_TIMETABLE_TOTAL_TIME_INCOMPLETE);
 			}
 		}
 		y += 10;
 
 		if (v->lateness_counter == 0 || (!_settings_client.gui.timetable_in_ticks && v->lateness_counter / DAY_TICKS == 0)) {
-			DrawString(this->widget[TTV_SUMMARY_PANEL].left + 2, this->widget[TTV_SUMMARY_PANEL].right - 2, y, STR_TIMETABLE_STATUS_ON_TIME, TC_BLACK);
+			DrawString(this->widget[TTV_SUMMARY_PANEL].left + 2, this->widget[TTV_SUMMARY_PANEL].right - 2, y, STR_TIMETABLE_STATUS_ON_TIME);
 		} else {
 			SetTimetableParams(0, 1, abs(v->lateness_counter));
-			DrawString(this->widget[TTV_SUMMARY_PANEL].left + 2, this->widget[TTV_SUMMARY_PANEL].right - 2, y, v->lateness_counter < 0 ? STR_TIMETABLE_STATUS_EARLY : STR_TIMETABLE_STATUS_LATE, TC_BLACK);
+			DrawString(this->widget[TTV_SUMMARY_PANEL].left + 2, this->widget[TTV_SUMMARY_PANEL].right - 2, y, v->lateness_counter < 0 ? STR_TIMETABLE_STATUS_EARLY : STR_TIMETABLE_STATUS_LATE);
 		}
 	}
 

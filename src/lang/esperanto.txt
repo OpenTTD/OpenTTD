@@ -556,7 +556,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Ludu so
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...tro for de la antaŭa destino
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Superkompanioj kiuj atingis {NUM}{}(Nivelo {STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Kompania tabelo en {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Kompaniisto
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entreprenisto
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industriisto

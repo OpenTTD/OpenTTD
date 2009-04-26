@@ -566,7 +566,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}اصد�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}بعيد جدا من محطة/علامة الوصول السابقة
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}الشركات الكبرى التي وصلت لـ {NUM}{}) {STRING} مستوى)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}ترتيب الشركات {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :رجل اعمال
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :مغامر
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :مديرالمصانع
@@ -2823,11 +2823,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}لا ي�
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}يمكن للعربات الانتظار في المحطات فقط.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}هذه العربة لا تتوقف في هذه المحطة.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}غير الوقت
-STR_TIMETABLE_STATUS_ON_TIME                                    :هذه العربة تعمل حسب الجدولة في الوقت المحدد
-STR_TIMETABLE_STATUS_LATE                                       :هذه العربة {STRING} متاخرة حاليا عن الجدولة
-STR_TIMETABLE_STATUS_EARLY                                      :هذه العربة {STRING} متقدمة عن الجدولة
-STR_TIMETABLE_TOTAL_TIME                                        :جدولة الاوامر هذه ستأخذ {STRING} لنهاية
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :جدولة الاوامر هذه ستأخذ على الاقل {STRING} للاكمال (لايشمل كل الجدولة).
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}هذه العربة تعمل حسب الجدولة في الوقت المحدد
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}هذه العربة {STRING} متاخرة حاليا عن الجدولة
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}هذه العربة {STRING} متقدمة عن الجدولة
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}جدولة الاوامر هذه ستأخذ {STRING} لنهاية
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}جدولة الاوامر هذه ستأخذ على الاقل {STRING} للاكمال (لايشمل كل الجدولة).
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}تهيئة تلقائية
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}املأ الجدولة تلقائيا بقيم الرحلة التالية (مفتاح كنترول لمحاولة ابقائ وقت الانتظار).
 
@@ -3537,8 +3537,8 @@ STR_AI_RESET                                                    :{BLACK} اعا�
 STR_AI_HUMAN_PLAYER                                             :لاعب انساني
 STR_AI_RANDOM_AI                                                :ذكاء صناعي عشوائي
 STR_AI_SETTINGS_CAPTION                                         :{WHITE} خصائص الذكاء الصناعي
-STR_AI_AUTHOR                                                   :المؤلف: {STRING}
-STR_AI_VERSION                                                  :الاصدار:  {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}المؤلف: {STRING}
+STR_AI_VERSION                                                  :{BLACK}الاصدار:  {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE} واحد من الذكاء الصناعي فشل. الرجاء ابلاغ المبرمج عنه مصحوبا بصورة من شاشة مصحح الاخطاء.
 ########
 

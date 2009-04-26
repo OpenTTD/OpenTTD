@@ -569,7 +569,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}为摘�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}距离前一目的地太远……
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}达到 {NUM} 的顶级公司！{}({STRING} 级别)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}公司表现值为 {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :小商贩
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :批发商
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :企业主
@@ -2833,11 +2833,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}不能�
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}车辆只能在站内等候。
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}此车辆将不在本站停靠。
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}改变时间
-STR_TIMETABLE_STATUS_ON_TIME                                    :该车辆目前正点运行
-STR_TIMETABLE_STATUS_LATE                                       :该车辆目前晚点 {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :该车辆目前提前 {STRING}
-STR_TIMETABLE_TOTAL_TIME                                        :该时间表需要 {STRING} 完成
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :该时间表至少需要 {STRING} 完成（并非全部计划的时间）
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}该车辆目前正点运行
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}该车辆目前晚点 {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}该车辆目前提前 {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}该时间表需要 {STRING} 完成
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}该时间表至少需要 {STRING} 完成（并非全部计划的时间）
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自动填充
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}根据下一次运行的时间自动填充时间表{}(CRTL+单击 可保持等候时间)
 
@@ -3544,8 +3544,8 @@ STR_AI_RESET                                                    :{BLACK}重设
 STR_AI_HUMAN_PLAYER                                             :玩家
 STR_AI_RANDOM_AI                                                :随机 AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI 特征
-STR_AI_AUTHOR                                                   :作者: {STRING}
-STR_AI_VERSION                                                  :版本: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}作者: {STRING}
+STR_AI_VERSION                                                  :{BLACK}版本: {NUM}
 ########
 
 ############ town controlled noise level

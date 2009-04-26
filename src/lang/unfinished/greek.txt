@@ -567,7 +567,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Ανα�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...πολύ μακριά από τον προηγούμενο προορισμό
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Οι καλύτερες εταιρείες που έφτασαν το {NUM}{}({STRING} Επίπεδο)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Πίνακας Πρωταθλήματος Εταιρειών σε {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA},
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA},
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Επαγγελματίας
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Πρωτοπόρος
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Βιομήχανος

@@ -249,13 +249,13 @@ protected:
 			SetDParam(1, cur_item->info.clients_max);
 			SetDParam(2, cur_item->info.companies_on);
 			SetDParam(3, cur_item->info.companies_max);
-			DrawString(this->widget[NGWW_CLIENTS].left, this->widget[NGWW_CLIENTS].right, y, STR_NETWORK_GENERAL_ONLINE, TC_GOLD, SA_CENTER);
+			DrawString(this->widget[NGWW_CLIENTS].left, this->widget[NGWW_CLIENTS].right, y, STR_NETWORK_GENERAL_ONLINE, TC_FROMSTRING, SA_CENTER);
 
 			/* map size */
 			if (!this->IsWidgetHidden(NGWW_MAPSIZE)) {
 				SetDParam(0, cur_item->info.map_width);
 				SetDParam(1, cur_item->info.map_height);
-				DrawString(this->widget[NGWW_MAPSIZE].left, this->widget[NGWW_MAPSIZE].right, y, STR_NETWORK_MAP_SIZE_SHORT, TC_BLACK, SA_CENTER);
+				DrawString(this->widget[NGWW_MAPSIZE].left, this->widget[NGWW_MAPSIZE].right, y, STR_NETWORK_MAP_SIZE_SHORT, TC_FROMSTRING, SA_CENTER);
 			}
 
 			/* current date */
@@ -384,7 +384,7 @@ public:
 		/* Edit box to set client name */
 		this->DrawEditBox(NGWW_CLIENT);
 
-		DrawString(0, this->widget[NGWW_CLIENT].left - 5, 23, STR_NETWORK_PLAYER_NAME, TC_GOLD, SA_RIGHT);
+		DrawString(0, this->widget[NGWW_CLIENT].left - 5, 23, STR_NETWORK_PLAYER_NAME, TC_FROMSTRING, SA_RIGHT);
 
 		/* Sort based on widgets: name, clients, compatibility */
 		switch (this->servers.SortType()) {
@@ -435,36 +435,36 @@ public:
 			SetDParam(1, sel->info.clients_max);
 			SetDParam(2, sel->info.companies_on);
 			SetDParam(3, sel->info.companies_max);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_CLIENTS, TC_GOLD);
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_CLIENTS);
 			y += 10;
 
 			SetDParam(0, STR_NETWORK_LANG_ANY + sel->info.server_lang);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_LANGUAGE, TC_GOLD); // server language
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_LANGUAGE); // server language
 			y += 10;
 
 			SetDParam(0, STR_TEMPERATE_LANDSCAPE + sel->info.map_set);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_TILESET, TC_GOLD); // tileset
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_TILESET); // tileset
 			y += 10;
 
 			SetDParam(0, sel->info.map_width);
 			SetDParam(1, sel->info.map_height);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_MAP_SIZE, TC_GOLD); // map size
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_MAP_SIZE); // map size
 			y += 10;
 
 			SetDParamStr(0, sel->info.server_revision);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_VERSION, TC_GOLD); // server version
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_VERSION); // server version
 			y += 10;
 
 			SetDParamStr(0, sel->address.GetAddressAsString());
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_ADDRESS, TC_GOLD); // server address
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_ADDRESS); // server address
 			y += 10;
 
 			SetDParam(0, sel->info.start_date);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_START_DATE, TC_GOLD); // start date
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_START_DATE); // start date
 			y += 10;
 
 			SetDParam(0, sel->info.game_date);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_CURRENT_DATE, TC_GOLD); // current date
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_CURRENT_DATE); // current date
 			y += 10;
 
 			y += 2;
@@ -1362,31 +1362,31 @@ struct NetworkLobbyWindow : public Window {
 			SetDParam(1, gi->clients_max);
 			SetDParam(2, gi->companies_on);
 			SetDParam(3, gi->companies_max);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_CLIENTS, TC_GOLD);
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_CLIENTS);
 			y += 10;
 
 			SetDParamStr(0, this->company_info[this->company].company_name);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_COMPANY_NAME, TC_GOLD);
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_COMPANY_NAME);
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].inaugurated_year);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_INAUGURATION_YEAR, TC_GOLD); // inauguration year
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_INAUGURATION_YEAR); // inauguration year
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].company_value);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_VALUE, TC_GOLD); // company value
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_VALUE); // company value
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].money);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_CURRENT_BALANCE, TC_GOLD); // current balance
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_CURRENT_BALANCE); // current balance
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].income);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_LAST_YEARS_INCOME, TC_GOLD); // last year's income
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_LAST_YEARS_INCOME); // last year's income
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].performance);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_PERFORMANCE, TC_GOLD); // performance
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_PERFORMANCE); // performance
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].num_vehicle[0]);
@@ -1394,7 +1394,7 @@ struct NetworkLobbyWindow : public Window {
 			SetDParam(2, this->company_info[this->company].num_vehicle[2]);
 			SetDParam(3, this->company_info[this->company].num_vehicle[3]);
 			SetDParam(4, this->company_info[this->company].num_vehicle[4]);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_VEHICLES, TC_GOLD); // vehicles
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_VEHICLES); // vehicles
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].num_station[0]);
@@ -1402,11 +1402,11 @@ struct NetworkLobbyWindow : public Window {
 			SetDParam(2, this->company_info[this->company].num_station[2]);
 			SetDParam(3, this->company_info[this->company].num_station[3]);
 			SetDParam(4, this->company_info[this->company].num_station[4]);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_STATIONS, TC_GOLD); // stations
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_STATIONS); // stations
 			y += 10;
 
 			SetDParamStr(0, this->company_info[this->company].clients);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_PLAYERS, TC_GOLD); // players
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_PLAYERS); // players
 		}
 	}
 
@@ -1928,7 +1928,7 @@ struct NetworkJoinStatusWindow : Window {
 		uint8 progress; // used for progress bar
 		this->DrawWidgets();
 
-		DrawString(this->widget[NJSW_BACKGROUND].left + 2, this->widget[NJSW_BACKGROUND].right - 2, 35, STR_NETWORK_CONNECTING_1 + _network_join_status, TC_GREY, SA_CENTER);
+		DrawString(this->widget[NJSW_BACKGROUND].left + 2, this->widget[NJSW_BACKGROUND].right - 2, 35, STR_NETWORK_CONNECTING_1 + _network_join_status, TC_FROMSTRING, SA_CENTER);
 		switch (_network_join_status) {
 			case NETWORK_JOIN_STATUS_CONNECTING: case NETWORK_JOIN_STATUS_AUTHORIZING:
 			case NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO:
@@ -1936,13 +1936,13 @@ struct NetworkJoinStatusWindow : Window {
 				break;
 			case NETWORK_JOIN_STATUS_WAITING:
 				SetDParam(0, _network_join_waiting);
-				DrawString(this->widget[NJSW_BACKGROUND].left + 2, this->widget[NJSW_BACKGROUND].right - 2, 46, STR_NETWORK_CONNECTING_WAITING, TC_GREY, SA_CENTER);
+				DrawString(this->widget[NJSW_BACKGROUND].left + 2, this->widget[NJSW_BACKGROUND].right - 2, 46, STR_NETWORK_CONNECTING_WAITING, TC_FROMSTRING, SA_CENTER);
 				progress = 15; // third stage is 15%
 				break;
 			case NETWORK_JOIN_STATUS_DOWNLOADING:
 				SetDParam(0, _network_join_bytes);
 				SetDParam(1, _network_join_bytes_total);
-				DrawString(this->widget[NJSW_BACKGROUND].left + 2, this->widget[NJSW_BACKGROUND].right - 2, 46, STR_NETWORK_CONNECTING_DOWNLOADING, TC_GREY, SA_CENTER);
+				DrawString(this->widget[NJSW_BACKGROUND].left + 2, this->widget[NJSW_BACKGROUND].right - 2, 46, STR_NETWORK_CONNECTING_DOWNLOADING, TC_FROMSTRING, SA_CENTER);
 				/* Fallthrough */
 			default: // Waiting is 15%, so the resting receivement of map is maximum 70%
 				progress = 15 + _network_join_bytes * (100 - 15) / _network_join_bytes_total;

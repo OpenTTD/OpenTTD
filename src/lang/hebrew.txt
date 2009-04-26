@@ -567,7 +567,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}נגן 
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...רחוק מידי מהיעד הקודם
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}החברות שהגיעו {NUM}{}({STRING} לרמת)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}טבלת ליגה של חברות ב {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}.{COMMA}
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}.{COMMA}
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :איש עסקים
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :יזם
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :תעשיין
@@ -2807,11 +2807,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE} לא נ
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}.כלי תעבורה יכולים להמתין בתחנות בלבד
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}הכלי אינו עובר ביעד זה
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}שנה זמן
-STR_TIMETABLE_STATUS_ON_TIME                                    :כלי זה פועל לפי לוח זמנים
-STR_TIMETABLE_STATUS_LATE                                       :{STRING} רכב זה מאחר ב
-STR_TIMETABLE_STATUS_EARLY                                      :{STRING} רכב זה מקדים ב
-STR_TIMETABLE_TOTAL_TIME                                        :{STRING} להשלמת לוח זמנים זה נדרשים
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :.(לא כל היעדים תוזמנו) {STRING} להשלמת לוח זמנים זה ידרשו לפחות
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}כלי זה פועל לפי לוח זמנים
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}{STRING} רכב זה מאחר ב
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}{STRING} רכב זה מקדים ב
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}{STRING} להשלמת לוח זמנים זה נדרשים
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}.(לא כל היעדים תוזמנו) {STRING} להשלמת לוח זמנים זה ידרשו לפחות
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}מילוי אוטומטי
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK} מלא את הטבלה אוטומטית על פי הזמנים שנדרשו להשלמת המסע הקודם
 

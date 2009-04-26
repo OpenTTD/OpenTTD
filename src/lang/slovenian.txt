@@ -611,7 +611,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Zaigraj
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE} ... predaleč od prejšnjega cilja
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Najboljša podjetja, ki so dosegla {NUM}{}({STRING} nivo)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Seznam najboljših podjetij v {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Poslovnež
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Podjetnik
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrijalec
@@ -2913,11 +2913,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Nemogoč
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vozila lahko čakajo le na postajah.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}To vozilo se ne ustavlja na tej postaji.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Spremeni čas
-STR_TIMETABLE_STATUS_ON_TIME                                    :To vozilo trenutno vozi po točnem času
-STR_TIMETABLE_STATUS_LATE                                       :To vozilo zamuja za  {STRING} .
-STR_TIMETABLE_STATUS_EARLY                                      :To vozilo prehiteva za {STRING} .
-STR_TIMETABLE_TOTAL_TIME                                        :Ta časovna tabela bo trajala {STRING} do zaključka
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Ta časovna tabela bo trajala vsaj {STRING} do zaključka (ni vse zajeto v tabeli)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}To vozilo trenutno vozi po točnem času
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}To vozilo zamuja za  {STRING} .
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}To vozilo prehiteva za {STRING} .
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Ta časovna tabela bo trajala {STRING} do zaključka
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Ta časovna tabela bo trajala vsaj {STRING} do zaključka (ni vse zajeto v tabeli)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Samodejno
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Avtomatsko napolni časovno tabelo z vrednostmi iz naslednjega potovanja. (CTRL-klik za poskus vzdrževanja čakalnih dob)
 
@@ -3627,8 +3627,8 @@ STR_AI_RESET                                                    :{BLACK}Resetira
 STR_AI_HUMAN_PLAYER                                             :Igralec
 STR_AI_RANDOM_AI                                                :Naključni UI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}UI parametri
-STR_AI_AUTHOR                                                   :Avtor: {STRING}
-STR_AI_VERSION                                                  :Verzija: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}Avtor: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Verzija: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Ena izmed zagnanih UI se je sesula. Prosim, javi to avtorju UI s priloženo sliko zaslona v orodju za čiščenje UI.
 ########
 

@@ -569,7 +569,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Özet g
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...önceki hedeften çok uzak
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK} {NUM}{} yılına kalan en iyi şirketler ({STRING} Seviye)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK} {NUM} senesindeki şirket ligi
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :İşadamı
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Girişimci
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Sanayici
@@ -2845,11 +2845,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Aracın 
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Araçlar sadece istasyonlarda bekleyebilir.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Araç bu istasyonda durmuyor.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zamanı değiştir
-STR_TIMETABLE_STATUS_ON_TIME                                    :Bu araç zamanında çalışıyor
-STR_TIMETABLE_STATUS_LATE                                       :Bu araç {STRING} geç çalışıyor
-STR_TIMETABLE_STATUS_EARLY                                      :Bu araç {STRING} erken çalışıyor
-STR_TIMETABLE_TOTAL_TIME                                        :Bu zaman çizelgesinin bitmesi {STRING} sürecek
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Bu zaman çizelgesinin bitmesi en az {STRING} sürecek (tamamı hesaplanmadı)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Bu araç zamanında çalışıyor
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Bu araç {STRING} geç çalışıyor
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Bu araç {STRING} erken çalışıyor
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Bu zaman çizelgesinin bitmesi {STRING} sürecek
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Bu zaman çizelgesinin bitmesi en az {STRING} sürecek (tamamı hesaplanmadı)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Otomatik doldur
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Zaman tablosunu bir sonraki yolculuktaki değerlerle otomatik doldur (Bekleme sürelerini tutmak için CTRL ile tıklanır)
 
@@ -3560,9 +3560,9 @@ STR_AI_RESET                                                    :{BLACK}Yeniden 
 STR_AI_HUMAN_PLAYER                                             :İnsan oyuncu
 STR_AI_RANDOM_AI                                                :Rastgele YZ
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}YZ Parametreleri
-STR_AI_AUTHOR                                                   :Yazar: {STRING}
-STR_AI_VERSION                                                  :Sürüm: {NUM}
-STR_AI_URL                                                      :URL: {STRING}
+STR_AI_AUTHOR                                                   :{BLACK}Yazar: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Sürüm: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Çalışan YZ'lerden biri çakıldı. Lütfen bu durumu AI Hata Ayıklama Penceresi görüntüsüyle birlikte YZ'nin yazarına bildirin.
 ########
 

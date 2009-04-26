@@ -566,7 +566,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Chwarae
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...rhy bell o'r gyrchfan flaenorol
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Y Cwmnïau Brig a gyrhaeddodd Lefel {NUM}{}({STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Y Tabl Cynghrair Cwmnïau yn {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Dyn Busnes
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entrepreneur
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Diwydiannydd
@@ -2822,11 +2822,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Methu am
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Dim ond mewn gorsafoedd y gall cerbydau aros.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Nid yw'r cerbyd hwn yn aros yn yr orsaf hon.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Newid Amser
-STR_TIMETABLE_STATUS_ON_TIME                                    :Mae'r cerbyd hwn yn rhedeg ar hyn o bryd
-STR_TIMETABLE_STATUS_LATE                                       :Mae'r cerbyd hwn yn rhedeg {STRING} yn hwyr ar hyn o bryd
-STR_TIMETABLE_STATUS_EARLY                                      :Mae'r cerbyd hwn yn rhedeg {STRING} yn gynnar ar hyn o bryd
-STR_TIMETABLE_TOTAL_TIME                                        :Bydd yr amserlen hon yn cymryd {STRING} i'w chwblhau
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Bydd yr amserlen hon yn cymryd o leiaf {STRING} i'w chwblhau (heb ei hamserlennu'n llwyr)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Mae'r cerbyd hwn yn rhedeg ar hyn o bryd
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Mae'r cerbyd hwn yn rhedeg {STRING} yn hwyr ar hyn o bryd
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Mae'r cerbyd hwn yn rhedeg {STRING} yn gynnar ar hyn o bryd
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Bydd yr amserlen hon yn cymryd {STRING} i'w chwblhau
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Bydd yr amserlen hon yn cymryd o leiaf {STRING} i'w chwblhau (heb ei hamserlennu'n llwyr)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Awtolenwi
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Llenwch yr amserlen yn awtomatig gyda gwerthoedd o'r daith nesaf (Ctrl+Clic er mwyn ceisio cadw amserau aros)
 
@@ -3535,8 +3535,8 @@ STR_AI_RESET                                                    :{BLACK}Ailosod
 STR_AI_HUMAN_PLAYER                                             :Chwaraewr dynol
 STR_AI_RANDOM_AI                                                :AI ar hap
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paramedrau AI
-STR_AI_AUTHOR                                                   :Awdur: {STRING}
-STR_AI_VERSION                                                  :Fersiwn: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}Awdur: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Fersiwn: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Mae un o'r AIau a oedd yn rhedeg wedi crashio. Gyrrwch adroddiad am hyn i awdur yr AI ynghyd á llun sgrin o'r Ffenestr Ddadfygio.
 ########
 

@@ -691,7 +691,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Зву�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...дуже далеко від попереднього пункту призначення
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Кращі компанії, які досягли {NUM}{}({STRING} рівень)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Таблиця компаній з {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Бізнесмен
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Підприємець
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Промисловець
@@ -2984,11 +2984,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Не м�
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Транспорт може чекати тільки на станціях.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Цей транспорт не зупиняється на цій станції.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Змінити час
-STR_TIMETABLE_STATUS_ON_TIME                                    :Цей транспорт зараз прямує за розкладом
-STR_TIMETABLE_STATUS_LATE                                       :Цей транспорт запізнюється на {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :Цей транспорт випереджує розклад на {STRING}
-STR_TIMETABLE_TOTAL_TIME                                        :Цей розклад займе ще {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Цей розклад займе якнайменше {STRING} (не все за розкладом)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Цей транспорт зараз прямує за розкладом
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Цей транспорт запізнюється на {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Цей транспорт випереджує розклад на {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Цей розклад займе ще {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Цей розклад займе якнайменше {STRING} (не все за розкладом)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Автозаповнення
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Автоматично заповнити розклад значеннями з настуної поїздки (CTRL+click - спробувати зберегти час очікування)
 
@@ -3697,8 +3697,8 @@ STR_AI_RESET                                                    :{BLACK}Скид
 STR_AI_HUMAN_PLAYER                                             :Гравець-людина
 STR_AI_RANDOM_AI                                                :Випадковий AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Параметри AI
-STR_AI_AUTHOR                                                   :Автор: {STRING}
-STR_AI_VERSION                                                  :Версія: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}Автор: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Версія: {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Один з поточних AI зазнав краху. Будь ласка, повідомте про це автора AI зі знімком налагоджувального вікна AI.
 ########
 

@@ -565,7 +565,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}概要�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...前の目的地から遠すぎます
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}{NUM}{}({STRING} レベル) に最初に到達した会社
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}{NUM}の会社リーグ表
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :ビジネスマン
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :企業家
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :大実業家
@@ -2792,11 +2792,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}この�
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}車両が駅／バス停のみで停車できます。
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}この車両はこの駅／バス停で停車しません。
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}時間を変更
-STR_TIMETABLE_STATUS_ON_TIME                                    :この車両は現在定刻しています
-STR_TIMETABLE_STATUS_LATE                                       :この車両は現在{STRING}遅刻しています
-STR_TIMETABLE_STATUS_EARLY                                      :この車両は現在{STRING}早刻しています
-STR_TIMETABLE_TOTAL_TIME                                        :この時刻を実行するには{STRING}がかかります
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :この時刻を実行するには少なくとも{STRING}がかかります（時刻されていない部分があります）
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}この車両は現在定刻しています
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}この車両は現在{STRING}遅刻しています
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}この車両は現在{STRING}早刻しています
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}この時刻を実行するには{STRING}がかかります
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}この時刻を実行するには少なくとも{STRING}がかかります（時刻されていない部分があります）
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動時刻
 
 ##id 0x9000
@@ -3497,8 +3497,8 @@ STR_AI_RESET                                                    :{BLACK}リセ�
 STR_AI_HUMAN_PLAYER                                             :人間のプレヤー
 STR_AI_RANDOM_AI                                                :ランダムな AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI のパラメータ
-STR_AI_AUTHOR                                                   :作成者： {STRING}
-STR_AI_VERSION                                                  :バージョン： {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}作成者： {STRING}
+STR_AI_VERSION                                                  :{BLACK}バージョン： {NUM}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}実行中の AI の一つは予期せずに終了しました。AI の作者に AI デバッグのウインドウのスクリーンショットが含む電子メールをご送信ください。
 ########
 

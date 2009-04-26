@@ -716,7 +716,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Zvučni
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...previše udaljeno od prethodne destinacije
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Najbolje kompanije koje su dostigle {NUM}{}({STRING} nivo)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}{NUM} u Tabeli Lige Kompanija
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Biznismen
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN.gen                 :biznismena
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Privrednik

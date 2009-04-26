@@ -569,7 +569,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Speel e
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...te ver van vorige bestemming
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Top bedrijven die {NUM} bereikt hebben{}({STRING} Niveau)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Bedrijfswedstrijdtabel in {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Zakenman
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Ondernemer
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Fabrikant
@@ -2846,11 +2846,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan geen
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Voertuigen kunnen alleen wachten op stations.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Dit voertuig stopt niet op dit station
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Verander de tijd
-STR_TIMETABLE_STATUS_ON_TIME                                    :Dit voertuig loopt op schema
-STR_TIMETABLE_STATUS_LATE                                       :Dit voertuig heeft {STRING} vertraging
-STR_TIMETABLE_STATUS_EARLY                                      :Dit voertuig is {STRING} te vroeg
-STR_TIMETABLE_TOTAL_TIME                                        :Dit tijdschema duurt {STRING} om te volbrengen
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Dit tijdschema duurt minstens {STRING} om te volbrengen (niet alles geselecteerd)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dit voertuig loopt op schema
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Dit voertuig heeft {STRING} vertraging
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dit voertuig is {STRING} te vroeg
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Dit tijdschema duurt {STRING} om te volbrengen
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Dit tijdschema duurt minstens {STRING} om te volbrengen (niet alles geselecteerd)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto aanvullen
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul de dienstregeling automatisch in aan de hand van de volgende reis (Ctrl+klik om wachttijden proberen te bewaren)
 
@@ -3561,9 +3561,9 @@ STR_AI_RESET                                                    :{BLACK}Herstel
 STR_AI_HUMAN_PLAYER                                             :Menselijke speler
 STR_AI_RANDOM_AI                                                :Willekeurige AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
-STR_AI_AUTHOR                                                   :Maker: {STRING}
-STR_AI_VERSION                                                  :Versie: {NUM}
-STR_AI_URL                                                      :URL: {STRING}
+STR_AI_AUTHOR                                                   :{BLACK}Maker: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Versie: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Een van de draaiende AI's is gecrashed. Meldt dit bij de schrijver van deze AI met een schermprint van het AI Debugscherm.
 ########
 

@@ -506,7 +506,7 @@ STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidi
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Maklumat umum
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...terlalu jauh daripada destinasi sebelumnya
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Syarikat-syarikat utama yang mencapai {NUM}{}({STRING} Level)
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Ahli perniagaan
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Usahawan
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Ahli perindustrian

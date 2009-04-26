@@ -569,7 +569,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Sound o
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...ze wäit vun läschter destinatioun
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Top Firmen dei {NUM} erreescht hun{}({STRING} Level)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Firmenligatabell an {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Kaafmann
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entrepreneur
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industriellen
@@ -3171,8 +3171,8 @@ STR_AI_RESET                                                    :{BLACK}Reset
 STR_AI_HUMAN_PLAYER                                             :Mënschlechen Spiller
 STR_AI_RANDOM_AI                                                :Zoufälleg KI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}KI Anstellungen
-STR_AI_AUTHOR                                                   :Autor: {STRING}
-STR_AI_VERSION                                                  :Versioun: {NUM}
+STR_AI_AUTHOR                                                   :{BLACK}Autor: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Versioun: {NUM}
 ########
 
 ############ town controlled noise level

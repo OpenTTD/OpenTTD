@@ -566,7 +566,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Spill a
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...for langt i fra forrige destinasjon
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Beste firma som nådde {NUM}{}({STRING} Nivå)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Firmarangering i {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Forretningsmann
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entreprenør
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrialist
@@ -2803,11 +2803,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan ikke
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Kjøretøy kan bare vente på stasjoner.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Dette kjøretøyet stopper ikke på denne stasjonen.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Skift Tid
-STR_TIMETABLE_STATUS_ON_TIME                                    :Dette kjøretøyet går på tid
-STR_TIMETABLE_STATUS_LATE                                       :Dette kjøretøyet er {STRING} for sent ute
-STR_TIMETABLE_STATUS_EARLY                                      :Dette kjøretøyet er {STRING} for tidlig ute
-STR_TIMETABLE_TOTAL_TIME                                        :Det vil ta {STRING} å fullføre tidstabellen
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Det vil ta minst {STRING} å fullføre denne tidstabellen (tidstabell ikke fullstendig)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dette kjøretøyet går på tid
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Dette kjøretøyet er {STRING} for sent ute
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dette kjøretøyet er {STRING} for tidlig ute
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Det vil ta {STRING} å fullføre tidstabellen
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Det vil ta minst {STRING} å fullføre denne tidstabellen (tidstabell ikke fullstendig)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Fyll automatisk
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll ut timetabellene automatisk med verdiene fra neste reise (CTRL-klikk for å prøve å beholde ventetider)
 
@@ -3506,7 +3506,7 @@ STR_AI_CLOSE                                                    :{BLACK}Lukk
 STR_AI_RESET                                                    :{BLACK}Tilbakestill
 STR_AI_RANDOM_AI                                                :Tilfeldig AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI-parametere
-STR_AI_VERSION                                                  :Versjon {NUM}
+STR_AI_VERSION                                                  :{BLACK}Versjon {NUM}
 ########
 
 ############ town controlled noise level

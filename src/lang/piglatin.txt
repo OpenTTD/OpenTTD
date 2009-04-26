@@ -569,7 +569,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Ayplay 
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...ootay arfay omfray eviouspray estinationday
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Optay ompaniescay owhay eachedray {NUM}{}({STRING} Evellay)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Ompanycay Eaguelay Abletay inway {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Usinessmanbay
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entrepreneurway
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrialistway
@@ -2833,11 +2833,11 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}An'tcay 
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Ehiclesvay ancay onlyway aitway atway ationsstay.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Isthay ehiclevay isway otnay oppingstay atway isthay ationstay.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Angechay Imetay
-STR_TIMETABLE_STATUS_ON_TIME                                    :Isthay ehiclevay isway urrentlycay unningray onway imetay
-STR_TIMETABLE_STATUS_LATE                                       :Isthay ehiclevay isway urrentlycay unningray {STRING} atelay
-STR_TIMETABLE_STATUS_EARLY                                      :Isthay ehiclevay isway urrentlycay unningray {STRING} earlyway
-STR_TIMETABLE_TOTAL_TIME                                        :Isthay imetabletay illway aketay {STRING} otay ompletecay
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Isthay imetabletay illway aketay atway eastlay {STRING} otay ompletecay (otnay allway imetabledtay)
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Isthay ehiclevay isway urrentlycay unningray onway imetay
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Isthay ehiclevay isway urrentlycay unningray {STRING} atelay
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Isthay ehiclevay isway urrentlycay unningray {STRING} earlyway
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Isthay imetabletay illway aketay {STRING} otay ompletecay
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Isthay imetabletay illway aketay atway eastlay {STRING} otay ompletecay (otnay allway imetabledtay)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofillway
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Illfay ethay imetabletay automaticallyway ithway ethay aluesvay omfray ethay extnay ourneyjay (Ctrlay+Ickclay otay ytray otay eepkay aitingway imestay)
 
@@ -3547,9 +3547,9 @@ STR_AI_RESET                                                    :{BLACK}Esetray
 STR_AI_HUMAN_PLAYER                                             :Umanhay ayerplay
 STR_AI_RANDOM_AI                                                :Andomray AIWAY
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AIWAY Arameterspay
-STR_AI_AUTHOR                                                   :Authorway: {STRING}
-STR_AI_VERSION                                                  :Ersionvay: {NUM}
-STR_AI_URL                                                      :URLWAY: {STRING}
+STR_AI_AUTHOR                                                   :{BLACK}Authorway: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Ersionvay: {NUM}
+STR_AI_URL                                                      :{BLACK}URLWAY: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Oneway ofway ethay unningray AIsway ashedcray. Easeplay eportray isthay otay ethay AIWAY authorway ithway away eenshotscray ofway ethay AIWAY Ebugday Indowway.
 ########
 
