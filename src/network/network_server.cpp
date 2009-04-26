@@ -1344,6 +1344,8 @@ void NetworkSocketHandler::Send_CompanyInformation(Packet *p, const Company *c, 
 	for (int i = 0; i < NETWORK_STATION_TYPES; i++) {
 		p->Send_uint16(stats->num_station[i]);
 	}
+
+	p->Send_bool(c->is_ai);
 }
 
 /**
