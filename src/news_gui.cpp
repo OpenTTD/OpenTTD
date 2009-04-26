@@ -53,7 +53,7 @@ static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 	GfxFillRect(3, 23, 3 + 91, 23 + 118, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOUR);
 
 	SetDParamStr(0, cni->president_name);
-	DrawStringMultiLine(49 - MAX_LENGTH_PRESIDENT_NAME_PIXELS / 2, 49 + MAX_LENGTH_PRESIDENT_NAME_PIXELS / 2, 141, 169, STR_JUST_RAW_STRING, SA_CENTER);
+	DrawStringMultiLine(49 - MAX_LENGTH_PRESIDENT_NAME_PIXELS / 2, 49 + MAX_LENGTH_PRESIDENT_NAME_PIXELS / 2, 141, 169, STR_JUST_RAW_STRING, TC_FROMSTRING, SA_CENTER);
 
 	switch (ni->subtype) {
 		case NS_COMPANY_TROUBLE:
@@ -61,7 +61,7 @@ static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 
 			SetDParam(0, ni->params[2]);
 
-			DrawStringMultiLine(100, w->width - 2, 20, 169, STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION, SA_CENTER);
+			DrawStringMultiLine(100, w->width - 2, 20, 169, STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION, TC_FROMSTRING, SA_CENTER);
 			break;
 
 		case NS_COMPANY_MERGER:
@@ -69,20 +69,20 @@ static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 			SetDParam(0, ni->params[2]);
 			SetDParam(1, ni->params[3]);
 			SetDParam(2, ni->params[4]);
-			DrawStringMultiLine(100, w->width - 2, 20, 169, ni->params[4] == 0 ? STR_NEWS_MERGER_TAKEOVER_TITLE : STR_NEWS_COMPANY_MERGER_DESCRIPTION, SA_CENTER);
+			DrawStringMultiLine(100, w->width - 2, 20, 169, ni->params[4] == 0 ? STR_NEWS_MERGER_TAKEOVER_TITLE : STR_NEWS_COMPANY_MERGER_DESCRIPTION, TC_FROMSTRING, SA_CENTER);
 			break;
 
 		case NS_COMPANY_BANKRUPT:
 			DrawString(0, w->width, 1, STR_NEWS_COMPANY_BANKRUPT_TITLE, TC_FROMSTRING, SA_CENTER);
 			SetDParam(0, ni->params[2]);
-			DrawStringMultiLine(100, w->width - 2, 20, 169, STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION, SA_CENTER);
+			DrawStringMultiLine(100, w->width - 2, 20, 169, STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION, TC_FROMSTRING, SA_CENTER);
 			break;
 
 		case NS_COMPANY_NEW:
 			DrawString(0, w->width, 1, STR_NEWS_COMPANY_LAUNCH_TITLE, TC_FROMSTRING, SA_CENTER);
 			SetDParam(0, ni->params[2]);
 			SetDParam(1, ni->params[3]);
-			DrawStringMultiLine(100, w->width - 2, 20, 169, STR_NEWS_COMPANY_LAUNCH_DESCRIPTION, SA_CENTER);
+			DrawStringMultiLine(100, w->width - 2, 20, 169, STR_NEWS_COMPANY_LAUNCH_DESCRIPTION, TC_FROMSTRING, SA_CENTER);
 			break;
 
 		default:
@@ -208,7 +208,7 @@ struct NewsWindow : Window {
 
 				if (!(this->ni->flags & NF_VIEWPORT)) {
 					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
-					DrawStringMultiLine(2, this->width - 2, 20, this->height, this->ni->string_id, SA_CENTER);
+					DrawStringMultiLine(2, this->width - 2, 20, this->height, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
 				} else {
 					/* Back up transparency options to draw news view */
 					TransparencyOptionBits to_backup = _transparency_opt;
@@ -224,7 +224,7 @@ struct NewsWindow : Window {
 					);
 
 					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
-					DrawStringMultiLine(2, this->width - 2, 0, 58, this->ni->string_id, SA_CENTER);
+					DrawStringMultiLine(2, this->width - 2, 0, 58, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
 				}
 				break;
 			}
@@ -237,7 +237,7 @@ struct NewsWindow : Window {
 				} else {
 					this->DrawViewport();
 					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
-					DrawStringMultiLine(2, this->width - 2, 64, this->height, this->ni->string_id, SA_CENTER);
+					DrawStringMultiLine(2, this->width - 2, 64, this->height, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
 				}
 				break;
 		}

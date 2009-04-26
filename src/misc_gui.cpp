@@ -99,7 +99,7 @@ public:
 
 		if (!StrEmpty(this->landinfo_data[LAND_INFO_MULTICENTER_LINE])) {
 			SetDParamStr(0, this->landinfo_data[LAND_INFO_MULTICENTER_LINE]);
-			DrawStringMultiLine(this->widget[LIW_BACKGROUND].left + 2, this->widget[LIW_BACKGROUND].right - 2, y, y + 22, STR_JUST_RAW_STRING, SA_CENTER);
+			DrawStringMultiLine(this->widget[LIW_BACKGROUND].left + 2, this->widget[LIW_BACKGROUND].right - 2, y, y + 22, STR_JUST_RAW_STRING, TC_FROMSTRING, SA_CENTER);
 		}
 	}
 
@@ -509,8 +509,8 @@ public:
 			DrawCompanyManagerFace(c->face, c->colour, 2, 16);
 		}
 
-		DrawStringMultiLine(1, this->width - 1, y[2], y[3] , this->message_2, SA_CENTER);
-		if (this->message_1 != INVALID_STRING_ID) DrawStringMultiLine(1, this->width - 1, y[0], y[1], this->message_1, SA_CENTER);
+		DrawStringMultiLine(1, this->width - 1, y[2], y[3] , this->message_2, TC_FROMSTRING, SA_CENTER);
+		if (this->message_1 != INVALID_STRING_ID) DrawStringMultiLine(1, this->width - 1, y[0], y[1], this->message_1, TC_FROMSTRING, SA_CENTER);
 
 		/* Switch back to the normal text ref. stack for NewGRF texts */
 		SwitchToNormalRefStack();
@@ -681,7 +681,7 @@ struct TooltipsWindow : public Window
 		for (uint arg = 0; arg < this->paramcount; arg++) {
 			SetDParam(arg, this->params[arg]);
 		}
-		DrawStringMultiLine(1, this->width - 1, 0, this->height, this->string_id, SA_CENTER);
+		DrawStringMultiLine(1, this->width - 1, 0, this->height, this->string_id, TC_FROMSTRING, SA_CENTER);
 	}
 
 	virtual void OnMouseLoop()
@@ -1319,7 +1319,7 @@ struct QueryWindow : public Window {
 		this->DrawWidgets();
 		CopyInDParam(0, this->params, lengthof(this->params));
 
-		DrawStringMultiLine(1, this->width - 1, 14, 62, this->message, SA_CENTER);
+		DrawStringMultiLine(1, this->width - 1, 14, 62, this->message, TC_FROMSTRING, SA_CENTER);
 	}
 
 	virtual void OnClick(Point pt, int widget)

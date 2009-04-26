@@ -136,7 +136,7 @@ public:
 			SetDParamStr(0, this->name);
 			SetDParam(1, this->downloaded_files);
 			SetDParam(2, this->total_files);
-			DrawStringMultiLine(this->widget[NCDSWW_BACKGROUND].left + 2, this->widget[NCDSWW_BACKGROUND].right - 2, 43, 67, STR_CONTENT_DOWNLOAD_FILE, SA_CENTER);
+			DrawStringMultiLine(this->widget[NCDSWW_BACKGROUND].left + 2, this->widget[NCDSWW_BACKGROUND].right - 2, 43, 67, STR_CONTENT_DOWNLOAD_FILE, TC_FROMSTRING, SA_CENTER);
 		} else {
 			DrawString(this->widget[NCDSWW_BACKGROUND].left + 2, this->widget[NCDSWW_BACKGROUND].right - 2, 50, STR_CONTENT_DOWNLOAD_INITIALISE, TC_GREY, SA_CENTER);
 		}
@@ -435,7 +435,7 @@ public:
 		if (this->selected == NULL) return;
 
 		/* And fill the rest of the details when there's information to place there */
-		DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, this->widget[NCLWW_DETAILS].right - 5, this->widget[NCLWW_DETAILS].top + 25, this->widget[NCLWW_DETAILS].top + 50, STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED + this->selected->state, SA_CENTER);
+		DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, this->widget[NCLWW_DETAILS].right - 5, this->widget[NCLWW_DETAILS].top + 25, this->widget[NCLWW_DETAILS].top + 50, STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED + this->selected->state, TC_FROMSTRING, SA_CENTER);
 
 		/* Also show the total download size, so keep some space from the bottom */
 		const uint max_y = this->widget[NCLWW_DETAILS].bottom - 15;

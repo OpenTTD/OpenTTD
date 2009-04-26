@@ -1568,7 +1568,7 @@ struct CompanyWindow : Window
 
 		/* "xxx (Manager)" */
 		SetDParam(0, c->index);
-		DrawStringMultiLine(48 - MAX_LENGTH_PRESIDENT_NAME_PIXELS / 2, 48 + MAX_LENGTH_PRESIDENT_NAME_PIXELS / 2, 135, 157, STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, SA_CENTER);
+		DrawStringMultiLine(48 - MAX_LENGTH_PRESIDENT_NAME_PIXELS / 2, 48 + MAX_LENGTH_PRESIDENT_NAME_PIXELS / 2, 135, 157, STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, TC_FROMSTRING, SA_CENTER);
 
 		/* "Inaugurated:" */
 		SetDParam(0, c->inaugurated_year);
@@ -1745,7 +1745,7 @@ struct BuyCompanyWindow : Window {
 
 		SetDParam(0, c->index);
 		SetDParam(1, c->bankrupt_value);
-		DrawStringMultiLine(95, 333, 26, 116, STR_BUY_COMPANY_MESSAGE, SA_CENTER);
+		DrawStringMultiLine(95, 333, 26, 116, STR_BUY_COMPANY_MESSAGE, TC_FROMSTRING, SA_CENTER);
 	}
 
 	virtual void OnClick(Point pt, int widget)

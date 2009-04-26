@@ -95,7 +95,7 @@ struct EnginePreviewWindow : Window {
 
 		EngineID engine = this->window_number;
 		SetDParam(0, GetEngineCategoryName(engine));
-		DrawStringMultiLine(this->widget[EPW_BACKGROUND].left + 2, this->widget[EPW_BACKGROUND].right - 2, 18, 80, STR_ENGINE_PREVIEW_MESSAGE, SA_CENTER);
+		DrawStringMultiLine(this->widget[EPW_BACKGROUND].left + 2, this->widget[EPW_BACKGROUND].right - 2, 18, 80, STR_ENGINE_PREVIEW_MESSAGE, TC_FROMSTRING, SA_CENTER);
 
 		SetDParam(0, engine);
 		DrawString(this->widget[EPW_BACKGROUND].left + 2, this->widget[EPW_BACKGROUND].right - 2, 80, STR_ENGINE_NAME, TC_BLACK, SA_CENTER);
@@ -163,7 +163,7 @@ static void DrawTrainEngineInfo(EngineID engine, int left, int right, int top, i
 	} else {
 		SetDParam(5, CT_INVALID);
 	}
-	DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER, SA_CENTER);
+	DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER, TC_FROMSTRING, SA_CENTER);
 }
 
 static void DrawAircraftEngineInfo(EngineID engine, int left, int right, int top, int bottom)
@@ -180,7 +180,7 @@ static void DrawAircraftEngineInfo(EngineID engine, int left, int right, int top
 		SetDParam(5, e->u.air.mail_capacity);
 		SetDParam(6, e->GetRunningCost());
 
-		DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST, SA_CENTER);
+		DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST, TC_FROMSTRING, SA_CENTER);
 	} else {
 		SetDParam(0, e->GetCost());
 		SetDParam(1, e->GetDisplayMaxSpeed());
@@ -188,7 +188,7 @@ static void DrawAircraftEngineInfo(EngineID engine, int left, int right, int top
 		SetDParam(3, e->GetDisplayDefaultCapacity());
 		SetDParam(4, e->GetRunningCost());
 
-		DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST, SA_CENTER);
+		DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST, TC_FROMSTRING, SA_CENTER);
 	}
 }
 
@@ -207,7 +207,7 @@ static void DrawRoadVehEngineInfo(EngineID engine, int left, int right, int top,
 	}
 	SetDParam(4, e->GetRunningCost());
 
-	DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST, SA_CENTER);
+	DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST, TC_FROMSTRING, SA_CENTER);
 }
 
 static void DrawShipEngineInfo(EngineID engine, int left, int right, int top, int bottom)
@@ -219,7 +219,7 @@ static void DrawShipEngineInfo(EngineID engine, int left, int right, int top, in
 	SetDParam(2, e->GetDefaultCargoType());
 	SetDParam(3, e->GetDisplayDefaultCapacity());
 	SetDParam(4, e->GetRunningCost());
-	DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST, SA_CENTER);
+	DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST, TC_FROMSTRING, SA_CENTER);
 }
 
 void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
@@ -228,12 +228,12 @@ void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
 	const DrawEngineInfo *dei = &_draw_engine_list[GetEngine(engine)->type];
 
 	SetDParam(0, GetEngineCategoryName(engine));
-	DrawStringMultiLine(1, w->width - 2, 0, 56, STR_NEW_VEHICLE_NOW_AVAILABLE, SA_CENTER);
+	DrawStringMultiLine(1, w->width - 2, 0, 56, STR_NEW_VEHICLE_NOW_AVAILABLE, TC_FROMSTRING, SA_CENTER);
 
 	GfxFillRect(25, 56, w->width - 25, w->height - 2, 10);
 
 	SetDParam(0, engine);
-	DrawStringMultiLine(1, w->width - 2, 56, 88, STR_NEW_VEHICLE_TYPE, SA_CENTER);
+	DrawStringMultiLine(1, w->width - 2, 56, 88, STR_NEW_VEHICLE_TYPE, TC_FROMSTRING, SA_CENTER);
 
 	dei->engine_proc(w->width >> 1, 88, engine, 0);
 	GfxFillRect(25, 56, w->width - 56, 112, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOUR);

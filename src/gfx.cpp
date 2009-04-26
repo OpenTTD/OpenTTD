@@ -677,10 +677,11 @@ int GetStringHeight(StringID str, int maxw)
  * @param align  The alignment of the string when drawing left-to-right. In the
  *               case a right-to-left language is chosen this is inverted so it
  *               will be drawn in the right direction.
+ * @param underline Whether to underline all strings
  *
  * @return The bottom to where we have written.
  */
-int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, StringAlignment align)
+int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, TextColour colour, StringAlignment align, bool underline)
 {
 	int maxw = right - left;
 	int maxh = bottom - top;
@@ -708,7 +709,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 	for (;;) {
 		char buf2[DRAW_STRING_BUFFER];
 		strecpy(buf2, src, lastof(buf2));
-		DrawString(left, right, y, buf2, lastof(buf2), TC_FROMSTRING, align, false, false);
+		DrawString(left, right, y, buf2, lastof(buf2), colour, align, underline, false);
 		_cur_fontsize = _last_fontsize;
 
 		for (;;) {
