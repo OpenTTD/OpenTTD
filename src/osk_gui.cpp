@@ -231,7 +231,6 @@ struct OskWindow : public Window {
 };
 
 static const Widget _osk_widgets[] = {
-{      WWT_EMPTY, RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,               STR_NULL},
 {    WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,     0,   255,     0,    13, STR_QUERY_CAPTION, STR_NULL},
 {      WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,     0,   255,    14,    29, 0x0,               STR_NULL},
 {    WWT_EDITBOX, RESIZE_NONE,  COLOUR_GREY,     2,   253,    16,    27, 0x0,               STR_NULL},
