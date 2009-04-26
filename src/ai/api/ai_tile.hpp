@@ -34,7 +34,7 @@ public:
 		ERR_AREA_ALREADY_FLAT,                 // [STR_ALREADY_LEVELLED]
 
 		/** There is a tunnel underneed */
-		ERR_ESCAVATION_WOULD_DAMAGE,           // [STR_ERROR_EXCAVATION_WOULD_DAMAGE]
+		ERR_EXCAVATION_WOULD_DAMAGE,           // [STR_ERROR_EXCAVATION_WOULD_DAMAGE]
 	};
 
 	/**

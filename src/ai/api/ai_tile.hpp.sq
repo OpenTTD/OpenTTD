@@ -31,7 +31,7 @@ void SQAITile_Register(Squirrel *engine) {
 	SQAITile.DefSQConst(engine, AITile::ERR_TILE_TOO_HIGH,           "ERR_TILE_TOO_HIGH");
 	SQAITile.DefSQConst(engine, AITile::ERR_TILE_TOO_LOW,            "ERR_TILE_TOO_LOW");
 	SQAITile.DefSQConst(engine, AITile::ERR_AREA_ALREADY_FLAT,       "ERR_AREA_ALREADY_FLAT");
-	SQAITile.DefSQConst(engine, AITile::ERR_ESCAVATION_WOULD_DAMAGE, "ERR_ESCAVATION_WOULD_DAMAGE");
+	SQAITile.DefSQConst(engine, AITile::ERR_EXCAVATION_WOULD_DAMAGE, "ERR_EXCAVATION_WOULD_DAMAGE");
 	SQAITile.DefSQConst(engine, AITile::CORNER_W,                    "CORNER_W");
 	SQAITile.DefSQConst(engine, AITile::CORNER_S,                    "CORNER_S");
 	SQAITile.DefSQConst(engine, AITile::CORNER_E,                    "CORNER_E");
@@ -68,12 +68,12 @@ void SQAITile_Register(Squirrel *engine) {
 	AIError::RegisterErrorMap(STR_ERROR_ALREADY_AT_SEA_LEVEL,    AITile::ERR_TILE_TOO_HIGH);
 	AIError::RegisterErrorMap(STR_ERROR_ALREADY_AT_SEA_LEVEL,    AITile::ERR_TILE_TOO_LOW);
 	AIError::RegisterErrorMap(STR_ALREADY_LEVELLED,              AITile::ERR_AREA_ALREADY_FLAT);
-	AIError::RegisterErrorMap(STR_ERROR_EXCAVATION_WOULD_DAMAGE, AITile::ERR_ESCAVATION_WOULD_DAMAGE);
+	AIError::RegisterErrorMap(STR_ERROR_EXCAVATION_WOULD_DAMAGE, AITile::ERR_EXCAVATION_WOULD_DAMAGE);
 
 	AIError::RegisterErrorMapString(AITile::ERR_TILE_TOO_HIGH,           "ERR_TILE_TOO_HIGH");
 	AIError::RegisterErrorMapString(AITile::ERR_TILE_TOO_LOW,            "ERR_TILE_TOO_LOW");
 	AIError::RegisterErrorMapString(AITile::ERR_AREA_ALREADY_FLAT,       "ERR_AREA_ALREADY_FLAT");
-	AIError::RegisterErrorMapString(AITile::ERR_ESCAVATION_WOULD_DAMAGE, "ERR_ESCAVATION_WOULD_DAMAGE");
+	AIError::RegisterErrorMapString(AITile::ERR_EXCAVATION_WOULD_DAMAGE, "ERR_EXCAVATION_WOULD_DAMAGE");
 
 	SQAITile.DefSQStaticMethod(engine, &AITile::IsBuildable,                "IsBuildable",                2, ".i");
 	SQAITile.DefSQStaticMethod(engine, &AITile::IsBuildableRectangle,       "IsBuildableRectangle",       4, ".iii");
