@@ -1531,7 +1531,7 @@ void Vehicle::LeaveStation()
 
 	HideFillingPercent(&this->fill_percent_te_id);
 
-	if (this->type == VEH_TRAIN) {
+	if (this->type == VEH_TRAIN && !(this->vehstatus & VS_CRASHED)) {
 		/* Trigger station animation (trains only) */
 		if (IsTileType(this->tile, MP_STATION)) StationAnimationTrigger(st, this->tile, STAT_ANIM_TRAIN_DEPARTS);
 
