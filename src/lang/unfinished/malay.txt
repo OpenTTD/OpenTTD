@@ -1006,12 +1006,15 @@ STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Penarafa
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Pangsapuri
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Kedai-kedai dan pejabat-pejabat
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Kedai-kedai dan pejabat-pejabat
 STR_TOWN_BUILDING_NAME_THEATER_1                                :Panggung Wayang
 STR_TOWN_BUILDING_NAME_STADIUM_2                                :Stadium
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :Pejabat
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Rumah
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Panggung Wayang
 STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Pusat beli-belah
+STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Lakukan
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Kempen iklan kecil
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Kempen iklan sederhana
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Kempen iklan besar
@@ -1056,6 +1059,7 @@ STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Tukarkan
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Tunjukkan senarai kargo yang diterima
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Pilih saiz/jenis lapangan kapal terbang
 STR_STATION_SIGN                                                :{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_STATION_DESCRIPTION_RAILROAD_STATION                        :Stesen keretapi
 STR_STATION_DESCRIPTION_AIRPORT                                 :Lapangan kapal terbang
 STR_STATION_DESCRIPTION_BUS_STATION                             :Stesen bas
@@ -1064,14 +1068,18 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Perlabuh
 
 
 ##id 0x3800
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...mesti dibina atas air
 STR_WATER_DESCRIPTION_WATER                                     :Air
 STR_WATER_DESCRIPTION_SHIP_DEPOT                                :Depot kapal
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Tidak boleh dibina atas air
 
 ##id 0x4000
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Padam
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fail tidak boleh dibaca
 
 ##id 0x4800
+STR_INDUSTRY_NAME_FOREST                                        :Hutan
+STR_INDUSTRY_NAME_FACTORY                                       :Kilang
 
 ############ range for requires starts
 ############ range for requires ends
@@ -1110,9 +1118,23 @@ STR_NUM_CUSTOM                                                  :Custom
 
 ##id 0x7000
 
+STR_LIVERY_BUS                                                  :Bas
+STR_LIVERY_TRUCK                                                :Lori
+STR_LIVERY_PASSENGER_SHIP                                       :Feri Penumpang
+STR_LIVERY_FREIGHT_SHIP                                         :Kapal Kargo
+STR_LIVERY_HELICOPTER                                           :Helikopter
+STR_LIVERY_SMALL_PLANE                                          :Kapal Terbang Kecil
+STR_LIVERY_LARGE_PLANE                                          :Kapal Terbang Besar
+STR_LIVERY_PASSENGER_TRAM                                       :Trem Penumpang
 
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Pilih warna pertama untuk skim yang dipilih
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Pilih warna kedua untuk skim yang dipilih
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Pilih skim warna untuk menukarkanya atau berbilang skim dengan Ctrl+Klik. Klik kotak untuk menukarkan pakaian skim ini
 
 ##id 0x8000
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
 
 ##id 0x8800
 
