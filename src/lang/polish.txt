@@ -5,10 +5,10 @@
 ##grflangid 0x30
 ##plural 7
 ##textdir ltr
-##case d c b n m w
-##gender m f n
 ##digitsep .
 ##digitsepcur .
+##case d c b n m w
+##gender m f n
 
 #
 
@@ -28,110 +28,439 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Akceptuj
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Zasoby: {GOLD}
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Pasażerowie
-STR_CARGO_PLURAL_PASSENGERS.d                                           :pasażerów
+STR_CARGO_PLURAL_PASSENGERS.d                                   :pasażerów
+STR_CARGO_PLURAL_PASSENGERS.w                                   :pasażerowie
+STR_CARGO_PLURAL_PASSENGERS.m                                   :pasażerach
+STR_CARGO_PLURAL_PASSENGERS.n                                   :pasażerami
+STR_CARGO_PLURAL_PASSENGERS.b                                   :pasażerów
+STR_CARGO_PLURAL_PASSENGERS.c                                   :pasażerom
 STR_CARGO_PLURAL_COAL                                           :Węgiel
-STR_CARGO_PLURAL_COAL.d                                                 :węgla
+STR_CARGO_PLURAL_COAL.d                                         :węgla
+STR_CARGO_PLURAL_COAL.w                                         :węglu
+STR_CARGO_PLURAL_COAL.m                                         :węglu
+STR_CARGO_PLURAL_COAL.n                                         :węglem
+STR_CARGO_PLURAL_COAL.b                                         :węgiel
+STR_CARGO_PLURAL_COAL.c                                         :węglowi
 STR_CARGO_PLURAL_MAIL                                           :Poczta
-STR_CARGO_PLURAL_MAIL.d                                                 :poczty
+STR_CARGO_PLURAL_MAIL.d                                         :poczty
+STR_CARGO_PLURAL_MAIL.w                                         :poczto
+STR_CARGO_PLURAL_MAIL.m                                         :poczcie
+STR_CARGO_PLURAL_MAIL.n                                         :pocztą
+STR_CARGO_PLURAL_MAIL.b                                         :pocztę
+STR_CARGO_PLURAL_MAIL.c                                         :poczcie
 STR_CARGO_PLURAL_OIL                                            :Ropa
-STR_CARGO_PLURAL_OIL.d                                                  :ropy
+STR_CARGO_PLURAL_OIL.d                                          :ropy
+STR_CARGO_PLURAL_OIL.w                                          :ropo
+STR_CARGO_PLURAL_OIL.m                                          :ropie
+STR_CARGO_PLURAL_OIL.n                                          :ropą
+STR_CARGO_PLURAL_OIL.b                                          :ropę
+STR_CARGO_PLURAL_OIL.c                                          :ropie
 STR_CARGO_PLURAL_LIVESTOCK                                      :Żywiec
-STR_CARGO_PLURAL_LIVESTOCK.d                                            :żywca
+STR_CARGO_PLURAL_LIVESTOCK.d                                    :żywca
+STR_CARGO_PLURAL_LIVESTOCK.w                                    :żywcze
+STR_CARGO_PLURAL_LIVESTOCK.m                                    :żywcu
+STR_CARGO_PLURAL_LIVESTOCK.n                                    :żywcem
+STR_CARGO_PLURAL_LIVESTOCK.b                                    :żywiec
+STR_CARGO_PLURAL_LIVESTOCK.c                                    :żywcowi
 STR_CARGO_PLURAL_GOODS                                          :Towary
-STR_CARGO_PLURAL_GOODS.d                                                :towarów
+STR_CARGO_PLURAL_GOODS.d                                        :towarów
+STR_CARGO_PLURAL_GOODS.w                                        :towary
+STR_CARGO_PLURAL_GOODS.m                                        :towarach
+STR_CARGO_PLURAL_GOODS.n                                        :towarami
+STR_CARGO_PLURAL_GOODS.b                                        :towary
+STR_CARGO_PLURAL_GOODS.c                                        :towarom
 STR_CARGO_PLURAL_GRAIN                                          :Zboże
-STR_CARGO_PLURAL_GRAIN.d                                                :zboża
+STR_CARGO_PLURAL_GRAIN.d                                        :zboża
+STR_CARGO_PLURAL_GRAIN.w                                        :zboże
+STR_CARGO_PLURAL_GRAIN.m                                        :zbożu
+STR_CARGO_PLURAL_GRAIN.n                                        :zbożem
+STR_CARGO_PLURAL_GRAIN.b                                        :zboże
+STR_CARGO_PLURAL_GRAIN.c                                        :zbożu
 STR_CARGO_PLURAL_WOOD                                           :Drewno
-STR_CARGO_PLURAL_WOOD.d                                                 :drewna
-STR_CARGO_PLURAL_IRON_ORE                                       :Ruda Żelaza
-STR_CARGO_PLURAL_IRON_ORE.d                                             :rudy żelaza
+STR_CARGO_PLURAL_WOOD.d                                         :drewna
+STR_CARGO_PLURAL_WOOD.w                                         :drewno
+STR_CARGO_PLURAL_WOOD.m                                         :drewnie
+STR_CARGO_PLURAL_WOOD.n                                         :drewnem
+STR_CARGO_PLURAL_WOOD.b                                         :drewno
+STR_CARGO_PLURAL_WOOD.c                                         :drewnu
+STR_CARGO_PLURAL_IRON_ORE                                       :Ruda żelaza
+STR_CARGO_PLURAL_IRON_ORE.d                                     :rudy żelaza
+STR_CARGO_PLURAL_IRON_ORE.w                                     :rudo żelaza
+STR_CARGO_PLURAL_IRON_ORE.m                                     :rudzie żelaza
+STR_CARGO_PLURAL_IRON_ORE.n                                     :rudą żelaza
+STR_CARGO_PLURAL_IRON_ORE.b                                     :rudę żelaza
+STR_CARGO_PLURAL_IRON_ORE.c                                     :rudzie żelaza
 STR_CARGO_PLURAL_STEEL                                          :Stal
-STR_CARGO_PLURAL_STEEL.d                                                :stali
+STR_CARGO_PLURAL_STEEL.d                                        :stali
+STR_CARGO_PLURAL_STEEL.w                                        :stali
+STR_CARGO_PLURAL_STEEL.m                                        :stali
+STR_CARGO_PLURAL_STEEL.n                                        :stalą
+STR_CARGO_PLURAL_STEEL.b                                        :stal
+STR_CARGO_PLURAL_STEEL.c                                        :stali
 STR_CARGO_PLURAL_VALUABLES                                      :Kosztowności
-STR_CARGO_PLURAL_VALUABLES.d                                            :kosztowności
-STR_CARGO_PLURAL_COPPER_ORE                                     :Ruda Miedzi
-STR_CARGO_PLURAL_COPPER_ORE.d                                           :rudy miedzi
+STR_CARGO_PLURAL_VALUABLES.d                                    :kosztowności
+STR_CARGO_PLURAL_VALUABLES.w                                    :kosztowności
+STR_CARGO_PLURAL_VALUABLES.m                                    :kosztownościach
+STR_CARGO_PLURAL_VALUABLES.n                                    :kosztownościami
+STR_CARGO_PLURAL_VALUABLES.b                                    :kosztowności
+STR_CARGO_PLURAL_VALUABLES.c                                    :kosztownościom
+STR_CARGO_PLURAL_COPPER_ORE                                     :Ruda miedzi
+STR_CARGO_PLURAL_COPPER_ORE.d                                   :rudy miedzi
+STR_CARGO_PLURAL_COPPER_ORE.w                                   :rudo miedzi
+STR_CARGO_PLURAL_COPPER_ORE.m                                   :rudzie miedzi
+STR_CARGO_PLURAL_COPPER_ORE.n                                   :rudą miedzi
+STR_CARGO_PLURAL_COPPER_ORE.b                                   :rudę miedzi
+STR_CARGO_PLURAL_COPPER_ORE.c                                   :rudzie miedzi
 STR_CARGO_PLURAL_MAIZE                                          :Kukurydza
-STR_CARGO_PLURAL_MAIZE.d                                                :kukurydzy
+STR_CARGO_PLURAL_MAIZE.d                                        :kukurydzy
+STR_CARGO_PLURAL_MAIZE.w                                        :kukurydzo
+STR_CARGO_PLURAL_MAIZE.m                                        :kukurydzy
+STR_CARGO_PLURAL_MAIZE.n                                        :kukurydzą
+STR_CARGO_PLURAL_MAIZE.b                                        :kukurydzę
+STR_CARGO_PLURAL_MAIZE.c                                        :kukurydzy
 STR_CARGO_PLURAL_FRUIT                                          :Owoce
-STR_CARGO_PLURAL_FRUIT.d                                                :owoców
+STR_CARGO_PLURAL_FRUIT.d                                        :owoców
+STR_CARGO_PLURAL_FRUIT.w                                        :owoce
+STR_CARGO_PLURAL_FRUIT.m                                        :owocach
+STR_CARGO_PLURAL_FRUIT.n                                        :owocami
+STR_CARGO_PLURAL_FRUIT.b                                        :owoce
+STR_CARGO_PLURAL_FRUIT.c                                        :owocom
 STR_CARGO_PLURAL_DIAMONDS                                       :Diamenty
-STR_CARGO_PLURAL_DIAMONDS.d                                             :diamentów
+STR_CARGO_PLURAL_DIAMONDS.d                                     :diamentów
+STR_CARGO_PLURAL_DIAMONDS.w                                     :diamenty
+STR_CARGO_PLURAL_DIAMONDS.m                                     :diamentach
+STR_CARGO_PLURAL_DIAMONDS.n                                     :diamentami
+STR_CARGO_PLURAL_DIAMONDS.b                                     :diamenty
+STR_CARGO_PLURAL_DIAMONDS.c                                     :diamentom
 STR_CARGO_PLURAL_FOOD                                           :Żywność
-STR_CARGO_PLURAL_FOOD.d                                                 :żywności
+STR_CARGO_PLURAL_FOOD.d                                         :żywności
+STR_CARGO_PLURAL_FOOD.w                                         :żywności
+STR_CARGO_PLURAL_FOOD.m                                         :żywności
+STR_CARGO_PLURAL_FOOD.n                                         :żywnością
+STR_CARGO_PLURAL_FOOD.b                                         :żywność
+STR_CARGO_PLURAL_FOOD.c                                         :żywności
 STR_CARGO_PLURAL_PAPER                                          :Papier
-STR_CARGO_PLURAL_PAPER.d                                                :papieru
-STR_CARGO_PLURAL_GOLD                                           :Iloto
-STR_CARGO_PLURAL_GOLD.d                                                 :złota
+STR_CARGO_PLURAL_PAPER.d                                        :papieru
+STR_CARGO_PLURAL_PAPER.w                                        :papierze
+STR_CARGO_PLURAL_PAPER.m                                        :papierze
+STR_CARGO_PLURAL_PAPER.n                                        :papierem
+STR_CARGO_PLURAL_PAPER.b                                        :papier
+STR_CARGO_PLURAL_PAPER.c                                        :papierowi
+STR_CARGO_PLURAL_GOLD                                           :Złoto
+STR_CARGO_PLURAL_GOLD.d                                         :złota
+STR_CARGO_PLURAL_GOLD.w                                         :złoto
+STR_CARGO_PLURAL_GOLD.m                                         :złocie
+STR_CARGO_PLURAL_GOLD.n                                         :złotem
+STR_CARGO_PLURAL_GOLD.b                                         :złoto
+STR_CARGO_PLURAL_GOLD.c                                         :złotu
 STR_CARGO_PLURAL_WATER                                          :Woda
-STR_CARGO_PLURAL_WATER.d                                                :wody
+STR_CARGO_PLURAL_WATER.d                                        :wody
+STR_CARGO_PLURAL_WATER.w                                        :wodo
+STR_CARGO_PLURAL_WATER.m                                        :wodzie
+STR_CARGO_PLURAL_WATER.n                                        :wodą
+STR_CARGO_PLURAL_WATER.b                                        :wodę
+STR_CARGO_PLURAL_WATER.c                                        :wodzie
 STR_CARGO_PLURAL_WHEAT                                          :Pszenica
-STR_CARGO_PLURAL_WHEAT.d                                                :pszenicy
+STR_CARGO_PLURAL_WHEAT.d                                        :pszenicy
+STR_CARGO_PLURAL_WHEAT.w                                        :pszenico
+STR_CARGO_PLURAL_WHEAT.m                                        :pszenicy
+STR_CARGO_PLURAL_WHEAT.n                                        :pszenicą
+STR_CARGO_PLURAL_WHEAT.b                                        :pszenicę
+STR_CARGO_PLURAL_WHEAT.c                                        :pszenicy
 STR_CARGO_PLURAL_RUBBER                                         :Kauczuk
-STR_CARGO_PLURAL_RUBBER.d                                               :kauczuku
+STR_CARGO_PLURAL_RUBBER.d                                       :kauczuku
+STR_CARGO_PLURAL_RUBBER.w                                       :kauczuku
+STR_CARGO_PLURAL_RUBBER.m                                       :kauczuku
+STR_CARGO_PLURAL_RUBBER.n                                       :kauczukiem
+STR_CARGO_PLURAL_RUBBER.b                                       :kauczuk
+STR_CARGO_PLURAL_RUBBER.c                                       :kauczukowi
 STR_CARGO_PLURAL_SUGAR                                          :Cukier
-STR_CARGO_PLURAL_SUGAR.d                                                :cukru
+STR_CARGO_PLURAL_SUGAR.d                                        :cukru
+STR_CARGO_PLURAL_SUGAR.w                                        :cukrze
+STR_CARGO_PLURAL_SUGAR.m                                        :cukrze
+STR_CARGO_PLURAL_SUGAR.n                                        :cukrem
+STR_CARGO_PLURAL_SUGAR.b                                        :cukier
+STR_CARGO_PLURAL_SUGAR.c                                        :cukrowi
 STR_CARGO_PLURAL_TOYS                                           :Zabawki
-STR_CARGO_PLURAL_TOYS.d                                                 :zabawek
+STR_CARGO_PLURAL_TOYS.d                                         :zabawek
+STR_CARGO_PLURAL_TOYS.w                                         :zabawki
+STR_CARGO_PLURAL_TOYS.m                                         :zabawkach
+STR_CARGO_PLURAL_TOYS.n                                         :zabawkami
+STR_CARGO_PLURAL_TOYS.b                                         :zabawki
+STR_CARGO_PLURAL_TOYS.c                                         :zabawkom
 STR_CARGO_PLURAL_CANDY                                          :Słodycze
-STR_CARGO_PLURAL_CANDY.d                                                :słodyczy
+STR_CARGO_PLURAL_CANDY.d                                        :słodyczy
+STR_CARGO_PLURAL_CANDY.w                                        :słodycze
+STR_CARGO_PLURAL_CANDY.m                                        :słodyczach
+STR_CARGO_PLURAL_CANDY.n                                        :słodyczami
+STR_CARGO_PLURAL_CANDY.b                                        :słodycze
+STR_CARGO_PLURAL_CANDY.c                                        :słodyczom
 STR_CARGO_PLURAL_COLA                                           :Cola
-STR_CARGO_PLURAL_COLA.d                                                 :coli
+STR_CARGO_PLURAL_COLA.d                                         :coli
+STR_CARGO_PLURAL_COLA.w                                         :colo
+STR_CARGO_PLURAL_COLA.m                                         :coli
+STR_CARGO_PLURAL_COLA.n                                         :colą
+STR_CARGO_PLURAL_COLA.b                                         :colę
+STR_CARGO_PLURAL_COLA.c                                         :coli
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Wata cukrowa
-STR_CARGO_PLURAL_COTTON_CANDY.d                                         :waty cukrowej
+STR_CARGO_PLURAL_COTTON_CANDY.d                                 :waty cukrowej
+STR_CARGO_PLURAL_COTTON_CANDY.w                                 :wato cukrowa
+STR_CARGO_PLURAL_COTTON_CANDY.m                                 :wacie cukrowej
+STR_CARGO_PLURAL_COTTON_CANDY.n                                 :watą cukrową
+STR_CARGO_PLURAL_COTTON_CANDY.b                                 :watę cukrową
+STR_CARGO_PLURAL_COTTON_CANDY.c                                 :wacie cukrowej
 STR_CARGO_PLURAL_BUBBLES                                        :Bąbelki
-STR_CARGO_PLURAL_BUBBLES.d                                              :bąbelków
+STR_CARGO_PLURAL_BUBBLES.d                                      :bąbelków
+STR_CARGO_PLURAL_BUBBLES.w                                      :bąbelki
+STR_CARGO_PLURAL_BUBBLES.m                                      :bąbelkach
+STR_CARGO_PLURAL_BUBBLES.n                                      :bąbelkami
+STR_CARGO_PLURAL_BUBBLES.b                                      :bąbelki
+STR_CARGO_PLURAL_BUBBLES.c                                      :bąbelkom
 STR_CARGO_PLURAL_TOFFEE                                         :Toffi
-STR_CARGO_PLURAL_TOFFEE.d                                               :toffi
+STR_CARGO_PLURAL_TOFFEE.d                                       :toffi
+STR_CARGO_PLURAL_TOFFEE.w                                       :toffi
+STR_CARGO_PLURAL_TOFFEE.m                                       :toffi
+STR_CARGO_PLURAL_TOFFEE.n                                       :toffi
+STR_CARGO_PLURAL_TOFFEE.b                                       :toffi
+STR_CARGO_PLURAL_TOFFEE.c                                       :toffi
 STR_CARGO_PLURAL_BATTERIES                                      :Baterie
-STR_CARGO_PLURAL_BATTERIES.d                                            :baterii
+STR_CARGO_PLURAL_BATTERIES.d                                    :baterii
+STR_CARGO_PLURAL_BATTERIES.w                                    :baterie
+STR_CARGO_PLURAL_BATTERIES.m                                    :bateriach
+STR_CARGO_PLURAL_BATTERIES.n                                    :bateriami
+STR_CARGO_PLURAL_BATTERIES.b                                    :baterie
+STR_CARGO_PLURAL_BATTERIES.c                                    :bateriom
 STR_CARGO_PLURAL_PLASTIC                                        :Plastik
-STR_CARGO_PLURAL_PLASTIC.d                                              :plastiku
+STR_CARGO_PLURAL_PLASTIC.d                                      :plastiku
+STR_CARGO_PLURAL_PLASTIC.w                                      :plastiku
+STR_CARGO_PLURAL_PLASTIC.m                                      :plastiku
+STR_CARGO_PLURAL_PLASTIC.n                                      :plastikiem
+STR_CARGO_PLURAL_PLASTIC.b                                      :plastik
+STR_CARGO_PLURAL_PLASTIC.c                                      :plastikowi
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Napoje gazowane
-STR_CARGO_PLURAL_FIZZY_DRINKS.d                                         :napoi gazowanych
+STR_CARGO_PLURAL_FIZZY_DRINKS.d                                 :napoi gazowanych
+STR_CARGO_PLURAL_FIZZY_DRINKS.w                                 :napoje gazowane
+STR_CARGO_PLURAL_FIZZY_DRINKS.m                                 :napojach gazowanych
+STR_CARGO_PLURAL_FIZZY_DRINKS.n                                 :napojami gazowanymi
+STR_CARGO_PLURAL_FIZZY_DRINKS.b                                 :napoje gazowane
+STR_CARGO_PLURAL_FIZZY_DRINKS.c                                 :napojom gazowanym
 STR_CARGO_SINGULAR_NOTHING                                      :
-STR_CARGO_SINGULAR_PASSENGER                                    :Pasażerowie
-STR_CARGO_SINGULAR_PASSENGER.d                                            :pasażerów
+STR_CARGO_SINGULAR_PASSENGER                                    :Pasażer
+STR_CARGO_SINGULAR_PASSENGER.d                                  :pasażera
+STR_CARGO_SINGULAR_PASSENGER.w                                  :pasażerze
+STR_CARGO_SINGULAR_PASSENGER.m                                  :pasażerze
+STR_CARGO_SINGULAR_PASSENGER.n                                  :pasażerem
+STR_CARGO_SINGULAR_PASSENGER.b                                  :pasażera
+STR_CARGO_SINGULAR_PASSENGER.c                                  :pasażerowi
 STR_CARGO_SINGULAR_COAL                                         :Węgiel
+STR_CARGO_SINGULAR_COAL.w                                       :węglu
+STR_CARGO_SINGULAR_COAL.m                                       :węglu
+STR_CARGO_SINGULAR_COAL.n                                       :węglem
+STR_CARGO_SINGULAR_COAL.b                                       :węgiel
+STR_CARGO_SINGULAR_COAL.c                                       :węglowi
+STR_CARGO_SINGULAR_COAL.d                                       :węgla
 STR_CARGO_SINGULAR_MAIL                                         :Poczta
+STR_CARGO_SINGULAR_MAIL.w                                       :poczto
+STR_CARGO_SINGULAR_MAIL.m                                       :poczcie
+STR_CARGO_SINGULAR_MAIL.n                                       :pocztą
+STR_CARGO_SINGULAR_MAIL.b                                       :pocztę
+STR_CARGO_SINGULAR_MAIL.c                                       :poczcie
+STR_CARGO_SINGULAR_MAIL.d                                       :poczty
 STR_CARGO_SINGULAR_OIL                                          :Ropa
+STR_CARGO_SINGULAR_OIL.w                                        :ropo
+STR_CARGO_SINGULAR_OIL.m                                        :ropie
+STR_CARGO_SINGULAR_OIL.n                                        :ropą
+STR_CARGO_SINGULAR_OIL.b                                        :ropę
+STR_CARGO_SINGULAR_OIL.c                                        :ropie
+STR_CARGO_SINGULAR_OIL.d                                        :ropy
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Żywiec
-STR_CARGO_SINGULAR_GOODS                                        :Towary
+STR_CARGO_SINGULAR_LIVESTOCK.w                                  :żywcu
+STR_CARGO_SINGULAR_LIVESTOCK.m                                  :żywcu
+STR_CARGO_SINGULAR_LIVESTOCK.n                                  :żywcem
+STR_CARGO_SINGULAR_LIVESTOCK.b                                  :żywiec
+STR_CARGO_SINGULAR_LIVESTOCK.c                                  :żywcowi
+STR_CARGO_SINGULAR_LIVESTOCK.d                                  :żywca
+STR_CARGO_SINGULAR_GOODS                                        :Towar
+STR_CARGO_SINGULAR_GOODS.w                                      :towarze
+STR_CARGO_SINGULAR_GOODS.m                                      :towarze
+STR_CARGO_SINGULAR_GOODS.n                                      :towarem
+STR_CARGO_SINGULAR_GOODS.b                                      :towar
+STR_CARGO_SINGULAR_GOODS.c                                      :towarowi
+STR_CARGO_SINGULAR_GOODS.d                                      :towaru
 STR_CARGO_SINGULAR_GRAIN                                        :Zboże
+STR_CARGO_SINGULAR_GRAIN.w                                      :zboże
+STR_CARGO_SINGULAR_GRAIN.m                                      :zbożu
+STR_CARGO_SINGULAR_GRAIN.n                                      :zbożem
+STR_CARGO_SINGULAR_GRAIN.b                                      :zboże
+STR_CARGO_SINGULAR_GRAIN.c                                      :zbożu
+STR_CARGO_SINGULAR_GRAIN.d                                      :zboża
 STR_CARGO_SINGULAR_WOOD                                         :Drewno
+STR_CARGO_SINGULAR_WOOD.w                                       :drewno
+STR_CARGO_SINGULAR_WOOD.m                                       :drewnie
+STR_CARGO_SINGULAR_WOOD.n                                       :drewnem
+STR_CARGO_SINGULAR_WOOD.b                                       :drewno
+STR_CARGO_SINGULAR_WOOD.c                                       :drewnu
+STR_CARGO_SINGULAR_WOOD.d                                       :drewna
 STR_CARGO_SINGULAR_IRON_ORE                                     :Ruda żelaza
+STR_CARGO_SINGULAR_IRON_ORE.w                                   :rudo żelaza
+STR_CARGO_SINGULAR_IRON_ORE.m                                   :rudzie żelaza
+STR_CARGO_SINGULAR_IRON_ORE.n                                   :rudą żelaza
+STR_CARGO_SINGULAR_IRON_ORE.b                                   :rudę żelaza
+STR_CARGO_SINGULAR_IRON_ORE.c                                   :rudzie żelaza
+STR_CARGO_SINGULAR_IRON_ORE.d                                   :rudy żelaza
 STR_CARGO_SINGULAR_STEEL                                        :Stal
-STR_CARGO_SINGULAR_VALUABLES                                    :Kosztowności
+STR_CARGO_SINGULAR_STEEL.w                                      :stali
+STR_CARGO_SINGULAR_STEEL.m                                      :stali
+STR_CARGO_SINGULAR_STEEL.n                                      :stalą
+STR_CARGO_SINGULAR_STEEL.b                                      :stal
+STR_CARGO_SINGULAR_STEEL.c                                      :stali
+STR_CARGO_SINGULAR_STEEL.d                                      :stali
+STR_CARGO_SINGULAR_VALUABLES                                    :Kosztowność
+STR_CARGO_SINGULAR_VALUABLES.w                                  :kosztowności
+STR_CARGO_SINGULAR_VALUABLES.m                                  :kosztowności
+STR_CARGO_SINGULAR_VALUABLES.n                                  :kosztownością
+STR_CARGO_SINGULAR_VALUABLES.b                                  :kosztowność
+STR_CARGO_SINGULAR_VALUABLES.c                                  :kosztowności
+STR_CARGO_SINGULAR_VALUABLES.d                                  :kosztowności
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Ruda miedzi
+STR_CARGO_SINGULAR_COPPER_ORE.w                                 :rudo miedzi
+STR_CARGO_SINGULAR_COPPER_ORE.m                                 :rudzie miedzi
+STR_CARGO_SINGULAR_COPPER_ORE.n                                 :rudą miedzi
+STR_CARGO_SINGULAR_COPPER_ORE.b                                 :rudę miedzi
+STR_CARGO_SINGULAR_COPPER_ORE.c                                 :rudzie miedzi
+STR_CARGO_SINGULAR_COPPER_ORE.d                                 :rudy miedzi
 STR_CARGO_SINGULAR_MAIZE                                        :Kukurydza
-STR_CARGO_SINGULAR_FRUIT                                        :Owoce
-STR_CARGO_SINGULAR_DIAMOND                                      :Diamenty
+STR_CARGO_SINGULAR_MAIZE.w                                      :kukurydzo
+STR_CARGO_SINGULAR_MAIZE.m                                      :kukurydzy
+STR_CARGO_SINGULAR_MAIZE.n                                      :kukurydzą
+STR_CARGO_SINGULAR_MAIZE.b                                      :kukurydzę
+STR_CARGO_SINGULAR_MAIZE.c                                      :kukurydzy
+STR_CARGO_SINGULAR_MAIZE.d                                      :kukurydzy
+STR_CARGO_SINGULAR_FRUIT                                        :Owoc
+STR_CARGO_SINGULAR_FRUIT.w                                      :owocu
+STR_CARGO_SINGULAR_FRUIT.m                                      :owocu
+STR_CARGO_SINGULAR_FRUIT.n                                      :owocem
+STR_CARGO_SINGULAR_FRUIT.b                                      :owoc
+STR_CARGO_SINGULAR_FRUIT.c                                      :owocowi
+STR_CARGO_SINGULAR_FRUIT.d                                      :owoca
+STR_CARGO_SINGULAR_DIAMOND                                      :Diament
+STR_CARGO_SINGULAR_DIAMOND.w                                    :diamencie
+STR_CARGO_SINGULAR_DIAMOND.m                                    :diamencie
+STR_CARGO_SINGULAR_DIAMOND.n                                    :diamentem
+STR_CARGO_SINGULAR_DIAMOND.b                                    :diament
+STR_CARGO_SINGULAR_DIAMOND.c                                    :diamentowi
+STR_CARGO_SINGULAR_DIAMOND.d                                    :diamentu
 STR_CARGO_SINGULAR_FOOD                                         :Żywność
+STR_CARGO_SINGULAR_FOOD.w                                       :żywności
+STR_CARGO_SINGULAR_FOOD.m                                       :żywności
+STR_CARGO_SINGULAR_FOOD.n                                       :żywnością
+STR_CARGO_SINGULAR_FOOD.b                                       :żywność
+STR_CARGO_SINGULAR_FOOD.c                                       :żywności
+STR_CARGO_SINGULAR_FOOD.d                                       :żywności
 STR_CARGO_SINGULAR_PAPER                                        :Papier
+STR_CARGO_SINGULAR_PAPER.w                                      :papierze
+STR_CARGO_SINGULAR_PAPER.m                                      :papierze
+STR_CARGO_SINGULAR_PAPER.n                                      :papierem
+STR_CARGO_SINGULAR_PAPER.b                                      :papier
+STR_CARGO_SINGULAR_PAPER.c                                      :papierowi
+STR_CARGO_SINGULAR_PAPER.d                                      :papieru
 STR_CARGO_SINGULAR_GOLD                                         :Złoto
+STR_CARGO_SINGULAR_GOLD.w                                       :złoto
+STR_CARGO_SINGULAR_GOLD.m                                       :złocie
+STR_CARGO_SINGULAR_GOLD.n                                       :złotem
+STR_CARGO_SINGULAR_GOLD.b                                       :złoto
+STR_CARGO_SINGULAR_GOLD.c                                       :złotu
+STR_CARGO_SINGULAR_GOLD.d                                       :złota
 STR_CARGO_SINGULAR_WATER                                        :Woda
+STR_CARGO_SINGULAR_WATER.w                                      :wodo
+STR_CARGO_SINGULAR_WATER.m                                      :wodzie
+STR_CARGO_SINGULAR_WATER.n                                      :wodą
+STR_CARGO_SINGULAR_WATER.b                                      :wodę
+STR_CARGO_SINGULAR_WATER.c                                      :wodzie
+STR_CARGO_SINGULAR_WATER.d                                      :wody
 STR_CARGO_SINGULAR_WHEAT                                        :Pszenica
+STR_CARGO_SINGULAR_WHEAT.w                                      :pszenico
+STR_CARGO_SINGULAR_WHEAT.m                                      :pszenicy
+STR_CARGO_SINGULAR_WHEAT.n                                      :pszenicą
+STR_CARGO_SINGULAR_WHEAT.b                                      :pszenicę
+STR_CARGO_SINGULAR_WHEAT.c                                      :pszenicy
+STR_CARGO_SINGULAR_WHEAT.d                                      :pszenicy
 STR_CARGO_SINGULAR_RUBBER                                       :Kauczuk
-STR_CARGO_SINGULAR_RUBBER.d                                               :kauczuku
+STR_CARGO_SINGULAR_RUBBER.d                                     :kauczuku
+STR_CARGO_SINGULAR_RUBBER.w                                     :kauczuku
+STR_CARGO_SINGULAR_RUBBER.m                                     :kauczuku
+STR_CARGO_SINGULAR_RUBBER.n                                     :kauczukiem
+STR_CARGO_SINGULAR_RUBBER.b                                     :kauczuk
+STR_CARGO_SINGULAR_RUBBER.c                                     :kauczukowi
 STR_CARGO_SINGULAR_SUGAR                                        :Cukier
-STR_CARGO_SINGULAR_TOY                                          :Zabawki
-STR_CARGO_SINGULAR_TOY.d                                                  :zabawek
-STR_CARGO_SINGULAR_CANDY                                        :Słodycze
-STR_CARGO_SINGULAR_CANDY.d                                                :słodyczy
+STR_CARGO_SINGULAR_SUGAR.w                                      :cukrze
+STR_CARGO_SINGULAR_SUGAR.m                                      :cukrze
+STR_CARGO_SINGULAR_SUGAR.n                                      :cukrem
+STR_CARGO_SINGULAR_SUGAR.b                                      :cukier
+STR_CARGO_SINGULAR_SUGAR.c                                      :cukrowi
+STR_CARGO_SINGULAR_SUGAR.d                                      :cukru
+STR_CARGO_SINGULAR_TOY                                          :Zabawka
+STR_CARGO_SINGULAR_TOY.d                                        :zabawki
+STR_CARGO_SINGULAR_TOY.w                                        :zabawko
+STR_CARGO_SINGULAR_TOY.m                                        :zabawce
+STR_CARGO_SINGULAR_TOY.n                                        :zabawką
+STR_CARGO_SINGULAR_TOY.b                                        :zabawkę
+STR_CARGO_SINGULAR_TOY.c                                        :zabawce
+STR_CARGO_SINGULAR_CANDY                                        :Słodycz
+STR_CARGO_SINGULAR_CANDY.d                                      :słodyczy
+STR_CARGO_SINGULAR_CANDY.m                                      :słodyczy
+STR_CARGO_SINGULAR_CANDY.n                                      :słodyczą
+STR_CARGO_SINGULAR_CANDY.b                                      :słodycz
+STR_CARGO_SINGULAR_CANDY.c                                      :słodyczy
 STR_CARGO_SINGULAR_COLA                                         :Cola
-STR_CARGO_SINGULAR_COLA.d                                                 :coli
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Wata Cukrowa
-STR_CARGO_SINGULAR_COTTON_CANDY.d                                         :waty cukrowej
-STR_CARGO_SINGULAR_BUBBLE                                       :Babelki
-STR_CARGO_SINGULAR_BUBBLE.d                                               :bąbelków
+STR_CARGO_SINGULAR_COLA.d                                       :coli
+STR_CARGO_SINGULAR_COLA.w                                       :colo
+STR_CARGO_SINGULAR_COLA.m                                       :coli
+STR_CARGO_SINGULAR_COLA.n                                       :colą
+STR_CARGO_SINGULAR_COLA.b                                       :colę
+STR_CARGO_SINGULAR_COLA.c                                       :coli
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Wata cukrowa
+STR_CARGO_SINGULAR_COTTON_CANDY.d                               :waty cukrowej
+STR_CARGO_SINGULAR_COTTON_CANDY.w                               :wato cukrowa
+STR_CARGO_SINGULAR_COTTON_CANDY.m                               :wacie cukrowej
+STR_CARGO_SINGULAR_COTTON_CANDY.n                               :watą cukrową
+STR_CARGO_SINGULAR_COTTON_CANDY.b                               :watę cukrową
+STR_CARGO_SINGULAR_COTTON_CANDY.c                               :wacie cukrowej
+STR_CARGO_SINGULAR_BUBBLE                                       :Bąbelek
+STR_CARGO_SINGULAR_BUBBLE.d                                     :bąbelka
+STR_CARGO_SINGULAR_BUBBLE.w                                     :bąbelku
+STR_CARGO_SINGULAR_BUBBLE.m                                     :bąbelku
+STR_CARGO_SINGULAR_BUBBLE.n                                     :bąbelkiem
+STR_CARGO_SINGULAR_BUBBLE.b                                     :bąbelek
+STR_CARGO_SINGULAR_BUBBLE.c                                     :bąbelkowi
 STR_CARGO_SINGULAR_TOFFEE                                       :Toffi
-STR_CARGO_SINGULAR_TOFFEE.d                                               :toffi
-STR_CARGO_SINGULAR_BATTERY                                      :Baterie
-STR_CARGO_SINGULAR_BATTERY.d                                              :baterii
+STR_CARGO_SINGULAR_TOFFEE.d                                     :toffi
+STR_CARGO_SINGULAR_TOFFEE.w                                     :toffi
+STR_CARGO_SINGULAR_TOFFEE.m                                     :toffi
+STR_CARGO_SINGULAR_TOFFEE.n                                     :toffi
+STR_CARGO_SINGULAR_TOFFEE.b                                     :toffi
+STR_CARGO_SINGULAR_TOFFEE.c                                     :toffi
+STR_CARGO_SINGULAR_BATTERY                                      :Bateria
+STR_CARGO_SINGULAR_BATTERY.d                                    :baterii
+STR_CARGO_SINGULAR_BATTERY.w                                    :baterio
+STR_CARGO_SINGULAR_BATTERY.m                                    :baterii
+STR_CARGO_SINGULAR_BATTERY.n                                    :baterią
+STR_CARGO_SINGULAR_BATTERY.b                                    :baterię
+STR_CARGO_SINGULAR_BATTERY.c                                    :baterii
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastik
-STR_CARGO_SINGULAR_PLASTIC.d                                              :plastiku
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Napoje Gazowane
-STR_CARGO_SINGULAR_FIZZY_DRINK.d                                          :napoi gazowanych
+STR_CARGO_SINGULAR_PLASTIC.d                                    :plastiku
+STR_CARGO_SINGULAR_PLASTIC.w                                    :plastiku
+STR_CARGO_SINGULAR_PLASTIC.m                                    :plastiku
+STR_CARGO_SINGULAR_PLASTIC.n                                    :plastikiem
+STR_CARGO_SINGULAR_PLASTIC.b                                    :plastik
+STR_CARGO_SINGULAR_PLASTIC.c                                    :plastikowi
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Napój gazowany
+STR_CARGO_SINGULAR_FIZZY_DRINK.d                                :napoju gazowanego
+STR_CARGO_SINGULAR_FIZZY_DRINK.w                                :napoju gazowany
+STR_CARGO_SINGULAR_FIZZY_DRINK.m                                :napoju gazowanym
+STR_CARGO_SINGULAR_FIZZY_DRINK.n                                :napojem gazowanym
+STR_CARGO_SINGULAR_FIZZY_DRINK.b                                :napój gazowany
+STR_CARGO_SINGULAR_FIZZY_DRINK.c                                :napojowi gazowanemu
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} pasażer{P "" ów ów}
 STR_QUANTITY_COAL                                               :{WEIGHT} węgla
@@ -207,7 +536,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Wiadomo
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Uwaga!
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Nie można tego zrobić...
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Nie można wyczyścić terenu...
-STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Prawa Autorskie {COPYRIGHT} 1995 Chris Sawyer, Wszelkie Prawa Zastrzeżone
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Prawa Autorskie {COPYRIGHT} 1995 Chris Sawyer, Wszelkie prawa zastrzeżone
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD wersja {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Zespół OpenTTD
 
@@ -216,7 +545,7 @@ STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Wyjście
 STR_YES                                                         :{BLACK}Tak
 STR_NO                                                          :{BLACK}Nie
-STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Jesteś pewien że chcesz zakończyć tę grę i wrócić do {STRING}?
+STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Jesteś pewien, że chcesz zakończyć tę grę i wrócić do {STRING}?
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2
 STR_BLACK_3                                                     :{BLACK}3
@@ -242,7 +571,7 @@ STR_COLOUR_WHITE                                                :Biały
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Za dużo pojazdów w grze
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_BUTTON_LOCATION                                             :{BLACK}Lokalizacja
+STR_BUTTON_LOCATION                                             :{BLACK}Położenie
 STR_SMALLMAP_TYPE_CONTOURS                                      :Ukształtowanie
 STR_SMALLMAP_TYPE_VEHICLES                                      :Pojazdy
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Przedsiębiorstwa
@@ -265,7 +594,7 @@ STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFON
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}Samoloty
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}Trasy transportowe
 STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}{G=m}Las
-STR_SMALLMAP_LEGENDA_FOREST.d                                               :{BLACK}{TINYFONT}{G=m}Lasu
+STR_SMALLMAP_LEGENDA_FOREST.d                                   :{BLACK}{TINYFONT}{G=m}Lasu
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}Stacja kolejowa
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}Załadunek ciężarówek
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}Przystanek
@@ -397,11 +726,11 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Pojemność
 STR_NO_WAITING_CARGO                                            :{BLACK}Nie ma żadnego czekającego ładunku
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Zaznacz wszystkie typy stacji
 STR_SELECT_ALL_TYPES                                            :{BLACK}Zaznacz wszystkie typy ładunku (oraz brak czekającego ładunku)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Dostępne Lokomotywy
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Dostępne Samochody
-STR_AVAILABLE_SHIPS                                             :{BLACK}Dostępne Statki
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Dostępne Samoloty
-STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Zobacz listę dostępnych wyglądów lokomotywy dla tego typu pojazdu
+STR_AVAILABLE_TRAINS                                            :{BLACK}Dostępne lokomotywy
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Dostępne pojazdy
+STR_AVAILABLE_SHIPS                                             :{BLACK}Dostępne statki
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Dostępny samolot
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Zobacz listę dostępnych projektów silników dla tego typu pojazdów.
 STR_MANAGE_LIST                                                 :{BLACK}Zarządzaj listą
 STR_MANAGE_LIST_TIP                                             :{BLACK}Wyślij instrukcje wszystkim pojazdom na tej liĹ›cie
 STR_REPLACE_VEHICLES                                            :Zastąp pojazdy
@@ -731,12 +1060,12 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Przezr
 ############ range ends here
 
 ############ range for menu starts
-STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Info o terenie
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informacje o terenie
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Przełącz konsolę
 STR_ABOUT_MENU_AI_DEBUG                                         :Odpluskwianie SI
 STR_ABOUT_MENU_SCREENSHOT                                       :Zrzut ekranu (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Gigantyczny zrzut(Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Gigantyczny zrzut (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Info o 'OpenTTD'
 ############ range ends here
 
@@ -773,6 +1102,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autozapi
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Wybierz przerwy pomiędzy autozapisami
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Wył.
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Co 1 miesiąc
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Co 3 miesiące
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Co 6 miesięcy
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Co 12 miesięcy
@@ -893,7 +1223,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Główny
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Wybierz główny zestaw grafik do użycia
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Co 1 miesiąc
 STR_AUTOSAVE_FAILED                                             :{WHITE}Błąd autozapisu
 
 STR_MONTH_JAN                                                   :Styczeń
@@ -915,7 +1244,13 @@ STR_NO_ORDERS                                                   :{LTBLUE}Bez pol
 STR_NO_ORDERS_VEL                                               :{LTBLUE}Bez poleceń, {VELOCITY}
 
 STR_PASSENGERS                                                  :pasażerów
-STR_BAGS                                                        :worków
+STR_BAGS                                                        :worki
+STR_BAGS.w                                                      :worki
+STR_BAGS.m                                                      :workach
+STR_BAGS.n                                                      :workami
+STR_BAGS.b                                                      :worki
+STR_BAGS.c                                                      :workom
+STR_BAGS.d                                                      :worków
 STR_TONS                                                        :ton
 STR_LITERS                                                      :litrów
 STR_ITEMS                                                       :sztuk
@@ -944,7 +1279,7 @@ STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE
 
 STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Autoodnowa zawiodła przy {VEHICLE}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} jest za długi po wymianie
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Brak regul autozastepowania/odnawiania.
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Brak reguł autozastępowania/odnawiania.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limit funduszy)
 
 STR_CONFIG_SETTING                                              :{BLACK}Ustawienia zaawansowane
@@ -1200,14 +1535,14 @@ STR_SUB_TROPICAL_LANDSCAPE                                      :Krajobraz tropi
 STR_TOYLAND_LANDSCAPE                                           :Krajobraz zabawkowy
 
 STR_CHEATS                                                      :{WHITE}Oszukiwanie
-STR_CHEATS_TIP                                                  :{BLACK}Checkboxy pokazują czy używano już tego oszustwa
-STR_CHEATS_WARNING                                              :{BLACK}Uwaga! Właśnie chcesz zdradzić swoich wspólników.{}Miej na uwadze, że zostanie to zapamiętane na wieki!
+STR_CHEATS_TIP                                                  :{BLACK}Pole wyboru wskazuje, czy użyłeś już wcześniej tego oszustwa
+STR_CHEATS_WARNING                                              :{BLACK}Ostrzeżenie! Właśnie chcesz zdradzić swoich współzawodników. Miej na uwadze, że taka hańba będzie pamiętana na wieki!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Zwiększ ilość pieniędzy o {CURRENCY}
-STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Grasz jako: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczny buldożer (usuwanie przedsiębiorstw, itp.): {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunele mogą się krzyżować: {ORANGE}{STRING}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Budowa w czasie pauzy: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Odrzutowce nie będą się często rozbijać na małych lotniskach: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Grasz jako firma: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczny buldożer (usuwanie przedsiębiorstw, obiektów nieprzesuwalnych): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunele mogą się przecinać: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Budowa w trybie pauzy: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Odrzutowce nie będą rozbijać się (często) na małych lotniskach: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Zmień klimat: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Zmień datę: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Pozwól modyfikować wielkość produkcji przedsiębiorstw: {ORANGE}{STRING}
@@ -1231,12 +1566,12 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHIT
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edytuj nazwę pkt. kontrolnego
 
-STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Nie można zmienić nazwy pkt. kontrolnego...
+STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Nie można zmienić nazwy punktu orientacyjnego...
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Zmiana torów na pkt. kontrolny
-STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Nie można tutaj zbudować pkt. kontolnego...
-STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Nie można usunąć pkt. kontrolnego z tego miejsca...
+STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Nie można budować tutaj punktu orientacyjnego...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Nie można usunąć stąd kolejowego punktu orientacyjnego...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Budowa torów używając trybu Autorail
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Budowa torów za pomocą trybu Autotory
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...nie ma żadnego miasta w scenariuszu
 STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Generowanie mapy anulowane...{}...brak odpowiednich miesjc dla miast
@@ -1255,15 +1590,15 @@ STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Wyrówna
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Drzewa rożnych rodzajów
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Sadzenie drzew rożnych rodzajów
 
-STR_CANT_BUILD_CANALS                                           :{WHITE}Nie można tutaj wybudować kanału...
+STR_CANT_BUILD_CANALS                                           :{WHITE}Nie można budować tutaj kanału...
 STR_BUILD_CANALS_TIP                                            :{BLACK}Buduj kanały.
 STR_LANDINFO_CANAL                                              :Kanał
 
-STR_CANT_BUILD_LOCKS                                            :{WHITE}Nie można tutaj wybudować śluzy...
+STR_CANT_BUILD_LOCKS                                            :{WHITE}Nie można budować tutaj śluzy...
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Buduj śluzy
 STR_LANDINFO_LOCK                                               :Śluza
 
-STR_CANT_PLACE_RIVERS                                           :{WHITE}NIe mozna tutaj umiescic rzeki...
+STR_CANT_PLACE_RIVERS                                           :{WHITE}NIe mozna tutaj umieścić rzeki...
 STR_LANDINFO_RIVER                                              :Rzeka
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...boja w użyciu!
@@ -1597,7 +1932,7 @@ STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Niemożl
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Wykop zniszczyłby tunel
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Już na poziome morza
 STR_ERROR_TOO_HIGH                                              :{WHITE}Zbyt wysoko
-STR_ALREADY_LEVELLED                                            :{WHITE}... juz wyrownany
+STR_ALREADY_LEVELLED                                            :{WHITE}... juz wyrównany
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nieodpowiednie tory
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}...już zbudowano
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Należy najpierw usunąć tory
@@ -1625,7 +1960,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Budowa s
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Budowa mostu kolejowego
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Budowa tunelu kolejowego
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Przełącz buduj/usuń dla torów i semaforów
-STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Wybór mostu - klik na wybranym moście aby go zbudować
+STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Wybór mostu - kliknij na wybranym moście, aby go zbudować
 STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Wybierz ukierunkowanie zajezdni kolejowej
 STR_RAILROAD_TRACK                                              :Tory kolejowe
 STR_RAILROAD_TRAIN_DEPOT                                        :Zajezdnia kolejowa
@@ -1669,7 +2004,7 @@ STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Nie moż
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nie można usunąć drogi z tego miejsca...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nie można torowiska z tego miejsca...
 STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Ukierunkowanie zajezdni samochodowej
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Orientacja zajezdni
+STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Orientacja zajezdni tramwajowej
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Nie można tutaj zbudować zajezdni...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Nie można tutaj zbudować zajezdni...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nie można zbudować przystanku...
@@ -1728,8 +2063,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centruj 
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Zmień nazwę miasta
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Pasażerów w zeszłym miesiącu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Poczta w zeszłym miesiącu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
-STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Towar potrzebny do rozrostu miasta:
-STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} required
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Towar potrzebny do rozwoju miasta:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{BLACK}Wymaganych {SETX 20}{ORANGE}{STRING}
 STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} dowiezionych w zeszłym miesiącu
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Wysoki biurowiec
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Biurowiec
@@ -1858,14 +2193,14 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Akceptuj
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Lokalna ocena usług transportowych:
 
 ############ range for rating starts
-STR_CARGO_RATING_APPALLING                                      :Beznadziejne
-STR_CARGO_RATING_VERY_POOR                                      :Bardzo słabe
-STR_CARGO_RATING_POOR                                           :Słabe
-STR_CARGO_RATING_MEDIOCRE                                       :Średnie
+STR_CARGO_RATING_APPALLING                                      :Zatrważające
+STR_CARGO_RATING_VERY_POOR                                      :Liche
+STR_CARGO_RATING_POOR                                           :Marne
+STR_CARGO_RATING_MEDIOCRE                                       :Przeciętne
 STR_CARGO_RATING_GOOD                                           :Dobre
 STR_CARGO_RATING_VERY_GOOD                                      :Bardzo dobre
 STR_CARGO_RATING_EXCELLENT                                      :Wyśmienite
-STR_CARGO_RATING_OUTSTANDING                                    :Bezkonkurencyjne
+STR_CARGO_RATING_OUTSTANDING                                    :Niezrównane
 ############ range for rating ends
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
@@ -1963,78 +2298,78 @@ STR_SAVE_OSKTITLE                                               :{BLACK}Wprowadz
 STR_OBJECT_IN_THE_WAY                                           :{WHITE}{STRING} na drodze
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_NAME_COAL_MINE                                     :{G=f}Kopalnia Węgla
-STR_INDUSTRY_NAME_COAL_MINE.d                                            :{G=f}kopalni węgla
+STR_INDUSTRY_NAME_COAL_MINE.d                                   :{G=f}kopalni węgla
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Elektrownia
-STR_INDUSTRY_NAME_POWER_STATION.d                                        :{G=f}elektrowni
+STR_INDUSTRY_NAME_POWER_STATION.d                               :{G=f}elektrowni
 STR_INDUSTRY_NAME_SAWMILL                                       :{G=m}Tartak
-STR_INDUSTRY_NAME_SAWMILL.d                                              :{G=m}tartaku
+STR_INDUSTRY_NAME_SAWMILL.d                                     :{G=m}tartaku
 STR_INDUSTRY_NAME_FOREST                                        :{G=m}Las
-STR_INDUSTRY_NAME_FOREST.d                                               :{G=m}lasu
+STR_INDUSTRY_NAME_FOREST.d                                      :{G=m}lasu
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=f}Rafineria
-STR_INDUSTRY_NAME_OIL_REFINERY.d                                         :{G=f}rafinerii
+STR_INDUSTRY_NAME_OIL_REFINERY.d                                :{G=f}rafinerii
 STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Platforma Wiertnicza
-STR_INDUSTRY_NAME_OIL_RIG.d                                              :{G=f}platformy wiertniczej
+STR_INDUSTRY_NAME_OIL_RIG.d                                     :{G=f}platformy wiertniczej
 STR_INDUSTRY_NAME_FACTORY                                       :{G=f}Fabryka
-STR_INDUSTRY_NAME_FACTORY.d                                              :{G=f}fabryki
+STR_INDUSTRY_NAME_FACTORY.d                                     :{G=f}fabryki
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Drukarnia
-STR_INDUSTRY_NAME_PRINTING_WORKS.d                                       :{G=f}drukarni
+STR_INDUSTRY_NAME_PRINTING_WORKS.d                              :{G=f}drukarni
 STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}Huta
-STR_INDUSTRY_NAME_STEEL_MILL.d                                           :{G=f}huty
+STR_INDUSTRY_NAME_STEEL_MILL.d                                  :{G=f}huty
 STR_INDUSTRY_NAME_FARM                                          :{G=f}Farma
-STR_INDUSTRY_NAME_FARM.d                                                 :{G=f}farmy
+STR_INDUSTRY_NAME_FARM.d                                        :{G=f}farmy
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Kopalnia Rudy Miedzi
-STR_INDUSTRY_NAME_COPPER_ORE_MINE.d                                      :{G=f}kopalni rudy miedzi
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.d                             :{G=f}kopalni rudy miedzi
 STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=m}Pole Naftowe
-STR_INDUSTRY_NAME_OIL_WELLS.d                                            :{G=m}pola naftowego
+STR_INDUSTRY_NAME_OIL_WELLS.d                                   :{G=m}pola naftowego
 STR_INDUSTRY_NAME_BANK                                          :{G=m}Bank
-STR_INDUSTRY_NAME_BANK.d                                                 :{G=m}banku
+STR_INDUSTRY_NAME_BANK.d                                        :{G=m}banku
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=f}Przetwórnia Żywności
 STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=m}Zakład Papierniczy
-STR_INDUSTRY_NAME_PAPER_MILL.d                                           :{G=m}zakładu papierniczego
+STR_INDUSTRY_NAME_PAPER_MILL.d                                  :{G=m}zakładu papierniczego
 STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=f}Kopalnia Złota
-STR_INDUSTRY_NAME_GOLD_MINE.d                                            :{G=f}kopalni złota
+STR_INDUSTRY_NAME_GOLD_MINE.d                                   :{G=f}kopalni złota
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=m}Bank
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.d                                                 :{G=m}banku
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.d                          :{G=m}banku
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=f}Kopalnia Diamentów
-STR_INDUSTRY_NAME_DIAMOND_MINE.d                                         :{G=f}kopalni diamentów
+STR_INDUSTRY_NAME_DIAMOND_MINE.d                                :{G=f}kopalni diamentów
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Kopalnia Rudy Żelaza
-STR_INDUSTRY_NAME_IRON_ORE_MINE.d                                        :{G=f}kopalni rudy żelaza
+STR_INDUSTRY_NAME_IRON_ORE_MINE.d                               :{G=f}kopalni rudy żelaza
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=f}Plantacja Owoców
-STR_INDUSTRY_NAME_FRUIT_PLANTATION.d                                     :{G=f}plantacji owoców
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.d                            :{G=f}plantacji owoców
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Plantacja Kauczuku
-STR_INDUSTRY_NAME_RUBBER_PLANTATION.d                                    :{G=f}plantacji kauczuku
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.d                           :{G=f}plantacji kauczuku
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=n}Ujęcie Wody
-STR_INDUSTRY_NAME_WATER_SUPPLY.d                                         :{G=n}ujęcia wody
+STR_INDUSTRY_NAME_WATER_SUPPLY.d                                :{G=n}ujęcia wody
 STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=f}Wieża Ciśnień
-STR_INDUSTRY_NAME_WATER_TOWER.d                                          :{G=f}wieży ciśnień
+STR_INDUSTRY_NAME_WATER_TOWER.d                                 :{G=f}wieży ciśnień
 STR_INDUSTRY_NAME_FACTORY_2                                     :{G=f}Fabryka
-STR_INDUSTRY_NAME_FACTORY_2.d                                              :{G=f}fabryki
+STR_INDUSTRY_NAME_FACTORY_2.d                                   :{G=f}fabryki
 STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Farma
-STR_INDUSTRY_NAME_FARM_2.d                                                 :{G=f}farmy
+STR_INDUSTRY_NAME_FARM_2.d                                      :{G=f}farmy
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=m}Tartak
-STR_INDUSTRY_NAME_LUMBER_MILL.d                                          :{G=m}tartaku
+STR_INDUSTRY_NAME_LUMBER_MILL.d                                 :{G=m}tartaku
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Las Waty Cukrowej
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.d                                  :{G=m}lasu waty cukrowej
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.d                         :{G=m}lasu waty cukrowej
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=m}Zakład Cukierniczy
-STR_INDUSTRY_NAME_CANDY_FACTORY.d                                        :{G=m}zakładu cukierniczego
+STR_INDUSTRY_NAME_CANDY_FACTORY.d                               :{G=m}zakładu cukierniczego
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Farma Baterii
-STR_INDUSTRY_NAME_BATTERY_FARM.d                                         :{G=f}farmy baterii
+STR_INDUSTRY_NAME_BATTERY_FARM.d                                :{G=f}farmy baterii
 STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=f}Studnia Coli
-STR_INDUSTRY_NAME_COLA_WELLS.d                                           :{G=f}studni coli
+STR_INDUSTRY_NAME_COLA_WELLS.d                                  :{G=f}studni coli
 STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=m}Sklep z Zabawkami
-STR_INDUSTRY_NAME_TOY_SHOP.d                                             :{G=m}sklepu z zabawkami
+STR_INDUSTRY_NAME_TOY_SHOP.d                                    :{G=m}sklepu z zabawkami
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Fabryka Zabawek
-STR_INDUSTRY_NAME_TOY_FACTORY.d                                          :{G=f}fabryki zabawek
+STR_INDUSTRY_NAME_TOY_FACTORY.d                                 :{G=f}fabryki zabawek
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=f}Fontanny Plastiku
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.d                                    :{G=f}fontann plastiku
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.d                           :{G=f}fontann plastiku
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=f}Fabryka Napojów Gazowanych
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.d                                  :{G=f}fabryki napojów gazowanych
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.d                         :{G=f}fabryki napojów gazowanych
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Generator Bąbelków
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR.d                                     :{G=m}generatora bąbelków
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.d                            :{G=m}generatora bąbelków
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=f}Odkrywka Toffi
-STR_INDUSTRY_NAME_TOFFEE_QUARRY.d                                        :{G=f}odkrywkę toffi
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.d                               :{G=f}odkrywkę toffi
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Kopalnia Cukru
-STR_INDUSTRY_NAME_SUGAR_MINE.d                                           :{G=f}kopalni cukru
+STR_INDUSTRY_NAME_SUGAR_MINE.d                                  :{G=f}kopalni cukru
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Wymaga: {YELLOW}{STRING}{STRING}
@@ -2082,28 +2417,28 @@ STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Most jes
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Początek i koniec muszą być w jednej linii
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Nieodpowiednie miejsce na wejście tunelu
 STR_BUILD_BRIDGE_INFO                                           :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
-STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Podwieszany, Stalowy
-STR_BRIDGE_NAME_GIRDER_STEEL                                    :Dźwigarowy, Stalowy
-STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Wspornikowy, Stalowy
-STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Podwieszany, Betonowy
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Podwieszany, stalowy
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :Dźwigarowy, stalowy
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Wspornikowy, stalowy
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Podwieszany, betonowy
 STR_BRIDGE_NAME_WOODEN                                          :Drewniany
 STR_BRIDGE_NAME_CONCRETE                                        :Betonowy
-STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Cylindryczny, Stalowy
-STR_BRIDGE_TUBULAR_SILICON                                      :Cylindryczny, Krzemowy
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Cylindryczny, stalowy
+STR_BRIDGE_TUBULAR_SILICON                                      :Cylindryczny, krzemowy
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Nie można tutaj wybudować mostu...
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nie można tutaj wybudować tunelu...
 STR_TUNNEL_DESCRIPTION_RAILROAD                                 :Tunel kolejowy
 STR_TUNNEL_DESCRIPTION_ROAD                                     :Tunel samochodowy
-STR_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                    :Stalowy most kolejowy podwieszany
-STR_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                       :Stalowy dźwigarowy most kolejowy
+STR_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                    :Podwieszany most kolejowy ze stali
+STR_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                       :Dźwigarowy most kolejowy ze stali
 STR_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                    :Stalowy wspornikowy most kolejowy
-STR_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE                 :Wzmocniony betonem podwieszany most kolejowy
+STR_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE                 :Podwieszany most kolejowy wzmocniony betonem
 STR_BRIDGE_DESCRIPTION_RAIL_WOODEN                              :Drewniany most kolejowy
-STR_BRIDGE_DESCRIPTION_RAIL_CONCRETE                            :Betonowy most kolejowy
-STR_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                    :Stalowy most drogowy podwieszany
-STR_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                        :Stalowy dźwigarowy most drogowy
-STR_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                    :Stalowy wspornikowy most drogowy
-STR_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE                 :Wzmocniony betonem podwieszany most drogowy
+STR_BRIDGE_DESCRIPTION_RAIL_CONCRETE                            :Most kolejowy z betonu
+STR_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                    :Podwieszany most drogowy ze stali
+STR_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                        :Dźwigarowy most drogowy ze stali
+STR_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                    :Wspornikowy most drogowy ze stali
+STR_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE                 :Podwieszany most drogowy wzmocniony betonem
 STR_BRIDGE_DESCRIPTION_ROAD_WOODEN                              :Drewniany most drogowy
 STR_BRIDGE_DESCRIPTION_ROAD_CONCRETE                            :Betonowy most drogowy
 STR_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                       :Cylindryczny most kolejowy
@@ -2207,7 +2542,7 @@ STR_ARROW_LEFT_SMALL                                            :{BLACK}{SMALLLE
 STR_ARROW_RIGHT_SMALL                                           :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Bardzo wolno
 STR_AI_SPEED_SLOW                                               :Wolno
-STR_AI_SPEED_MEDIUM                                             :Średnio
+STR_AI_SPEED_MEDIUM                                             :Umiarkowanie
 STR_AI_SPEED_FAST                                               :Szybko
 STR_AI_SPEED_VERY_FAST                                          :Bardzo szybko
 STR_SEA_LEVEL_VERY_LOW                                          :Bardzo niski
@@ -2323,7 +2658,7 @@ STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BLACK}{BIGFONT
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Prezes)
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BLACK}{BIGFONT}Połączenie firm transportowych!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING} został sprzedany {STRING} za {CURRENCY}!
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Szukamy firmy transportowej która przejęłaby naszą firmę{}{}Czy chcesz kupić {COMPANY} za {CURRENCY}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Szukamy firmy transportowej, która przejęłaby naszą firmę{}{}Chcesz kupić {COMPANY} za {CURRENCY}?
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BLACK}{BIGFONT}Bankrut!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BLACK}{BIGFONT}{STRING} zostaje zamknięty przez wierzycieli i wszystkie udziały zostają sprzedane!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BLACK}{BIGFONT}Nowa firma rozpoczęła działalność!
@@ -2666,17 +3001,17 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Helikopter Powe
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Wiadomość od producenta pojazdów
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Właśnie zaprojektowaliśmy now{G y ą e} {STRING.b} - czy jesteś zainteresowany w rocznej wyłączności na użycie tego pojazdu, żebyśmy mogli zobaczyć przed wypuszczeniem na rynek jak się sprawuje?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}lokomotywa
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.b                                  :{G=f}lokomotywę
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.b                        :{G=f}lokomotywę
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}samochód
-STR_ENGINE_PREVIEW_ROAD_VEHICLE.b                                         :{G=m}samochód
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.b                               :{G=m}samochód
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}samolot
-STR_ENGINE_PREVIEW_AIRCRAFT.b                                             :{G=m}samolot
+STR_ENGINE_PREVIEW_AIRCRAFT.b                                   :{G=m}samolot
 STR_ENGINE_PREVIEW_SHIP                                         :{G=m}statek
-STR_ENGINE_PREVIEW_SHIP.b                                                 :{G=m}statek
+STR_ENGINE_PREVIEW_SHIP.b                                       :{G=m}statek
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}lokomotywa jednoszynowa
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.b                                  :{G=f}lokomotywę jednoszynową
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.b                        :{G=f}lokomotywę jednoszynową
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}lokomotywa MagLev
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.b                                    :{G=f}lokomotywę MagLev
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.b                          :{G=f}lokomotywę MagLev
 
 ##id 0x8800
 STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Zajezdnia w {TOWN}
@@ -2788,12 +3123,12 @@ STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Pociąg 
 STR_VEHICLE_LIST_CAPTION_TRAINS                                 :{WHITE}{COMPANY} - {COMMA} Pociąg{P "" i ów}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nowe pociągi
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nowe lokomotywy elektryczne
+STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nowe elektryczne pojazdy szynowe
 STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nowe pociągi jednoszynowe
 STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nowe pociągi MagLev
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Pociągi
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Pojazdy szynowe
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Buduj pojazd
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Zbuduj pojazd
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klonuj pojazd
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Spowoduje zbudowanie kopii pojazdu. CTRL+klik spowoduje współdzielenie poleceń
 STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Spowoduje zbudowanie kopii pojazdu. Kliknij na przycisk a następnie na pojazd wewnątrz lub na zewnątrz zajezdni. CTRL+klik spowoduje współdzielenie poleceń
@@ -2848,8 +3183,8 @@ STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Buduj nowy pociąg
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Przeciągnij tutaj pociąg aby go sprzedać
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrowanie głównego okna na pozycji zajezdni
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Lista wyboru pociągów - klik na pojeździe aby uzyskać informacje
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Zbuduj wybrany pojazd
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Lista wyboru pociągów - kliknij na pojeździe, aby uzyskać informacje
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Zbuduj podświetlony pociąg
 STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Zmiana nazwy typu pociągu
 STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Obecny stan pociągu - klik tutaj aby zatrzymać/ruszyć pociąg
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Pokaż polecenia dla pociągu
@@ -2901,7 +3236,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Dostępn{G y a e} now{G y a e} {STRING} - {ENGINE}!
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Nie można sprzedać zniszczonego pojazdu...
-STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Nie można przebudować zniszczonego pojazdu...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Nie można umieścić ponownie zniszczonego pojazdu...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Nie można wyznaczyć rozkładu jazdy pojazdu...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Pojazdy mogą czekać tylko na stacjach.
@@ -2920,7 +3255,7 @@ STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Samochó
 STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Samoch{P ód ody odów}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE} Zajezdnia samochodowa w {TOWN}
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nowe pojazdy
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nowy Samochód
+STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nowy pojazd drogowy
 STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Zbuduj pojazd
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Nie można zbudować samochodu...
 STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...musi być zatrzymany w zajezdni samochodowej
@@ -2944,8 +3279,8 @@ STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Pojazdy 
 STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Zbuduj nowy samochód
 STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Przeciągnij tutaj samochód aby go sprzedać
 STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Centruj główne okno na pozycji zajezdni samochodowej
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Lista wyboru samochodów - klik na pojeździe po więcej informacji
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Zbuduj wybrany samochód
+STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Lista wyboru pojazdów drogowych - kliknij na pojeździe, aby uzyskać więcej informacji
+STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Zbuduj podświetlony pojazd drogowy
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Pojemność: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3005,8 +3340,8 @@ STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Budowa n
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Przeciągnij tutaj statek aby go sprzedać
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centruj główne okno na pozycji stoczni
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Statki - kliknij aby uzyskać informacje o statku
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Lista wyboru statków - klik na statku aby uzyskać informacje
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Zbuduj wybrany statek
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Lista wyboru statków - kliknij na statku, aby uzyskać informacje
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Zbuduj podświetlony statek
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Obecny stan statku - klik aby zatrzymać/ruszyć statek
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Pokaż polecenia statku
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centruj główne okno na pozycji statku
@@ -3020,7 +3355,7 @@ STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Ustaw boję, która może być użyta jako punkt kontrolny
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Nie można tutaj ustawić boi...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Zbuduj akwedukt
-STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Nie można zbudować tu akweduktu...
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Nie można zbudować tutaj akweduktu...
 STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Zmień nazwę
 STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Zmień nazwę typu statku
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Zmień nazwę typu statku
@@ -3065,8 +3400,8 @@ STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Samolot 
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Budowa nowego samolotu
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Przeciągnij tutaj samolot aby go sprzedać
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centruj główne okno na pozycji hangaru
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Lista wyboru samolotów - klik na samolocie aby uzyskać informacje
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Zbuduj wybrany samolot
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Lista wyboru samolotów - kliknij na samolocie, aby uzyskać informacje
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Zbuduj podświetlony samolot
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Obecny stan samolotu - klik aby zatrzymać/ruszyć samolot
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Pokaż polecenia samolotu
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centruj główne okno na pozycji samolotu
@@ -3102,7 +3437,7 @@ STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BLACK}{BIGFONT
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BLACK}{BIGFONT}Powódź!{}Przynajmniej {COMMA} zaginęło lub utonęło w czasie powodzi!
 
 STR_BRIBE_FAILED                                                :{WHITE}Twoja próba wręczenia łapówki została
-STR_BRIBE_FAILED_2                                              :{WHITE}wykryta przez lokalnych badaczy.
+STR_BRIBE_FAILED_2                                              :{WHITE}wykryta przez lokalnych śledczych.
 STR_BUILD_DATE                                                  :{BLACK}Zbudowano: {LTBLUE}{DATE_LONG}
 
 STR_TILEDESC_STATION_CLASS                                      :{BLACK}Klasa stacji: {LTBLUE}{STRING}
@@ -3208,7 +3543,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Wyłącz
 
 STR_NEWGRF_BROKEN                                               :{WHITE}Zachowanie NewGRF '{0:STRING}' może powodować desynchronizacje i/lub błędy.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmienia długość pojazdu dla '{1:ENGINE}' gdy nie jest w zajezdni.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg '{VEHICLE}' należący do '{COMPANY}' ma niepoprawną długość. Prawdopodobnie problemem powoduje NewGRFs. Gra może działać niestabilnie lub się zawiesić.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg '{VEHICLE}' należący do '{COMPANY}' ma niepoprawną długość. Prawdopodobnie spowodowane jest to problemami z NewGRFami. Gra może stracić synchronizację lub się zawiesić.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' dostarcza niepoprawnych danych.
 
@@ -3285,7 +3620,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Przejdź
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Pojazd nie jest dostępny
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Pojazd nie jest dostępny
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Statek nie jest dostępny
-STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Samolot nie jest dostępny
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Samolot jest niedostępny
 
 STR_ENGINES                                                     :Lokomotywy
 STR_WAGONS                                                      :Wagony
@@ -3378,7 +3713,7 @@ STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / 
 STR_WORLD_GENERATION                                            :{BLACK}Tworzenie świata
 STR_TREE_GENERATION                                             :{BLACK}Tworzenie drzew
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Tworzenie obiektów
-STR_CLEARING_TILES                                              :{BLACK}Generowanie skał i nierowności
+STR_CLEARING_TILES                                              :{BLACK}Tworzenie terenów skalistych i nierówności
 STR_SETTINGUP_GAME                                              :{BLACK}Ustawianie gry
 STR_PREPARING_TILELOOP                                          :{BLACK}Uaktywnianie pól
 STR_PREPARING_GAME                                              :{BLACK}Przygotowywanie gry
@@ -3517,7 +3852,7 @@ STR_SIGN_OSKTITLE                                               :{BLACK}Wpisz na
 
 STR_FUND_NEW_INDUSTRY                                           :{BLACK}Ufunduj
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Zleć poszukiwanie
-STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Wybuduj
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Zbuduj
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Wybierz przedsiębiorstwo z listy
 
 ############ Face formatting
@@ -3571,18 +3906,18 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Zmień k
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Wybór sygnałów
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Nie można tutaj zmienić sygnałów...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Zwykły sygnał (semafor){}Sygnały są potrzebne aby uniknąć zderzeń pociągów na liniach z więcej niż jednym pociągiem.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Pre-sygnał (semafor){}Jest zielony jeżeli zielony jest przynajmniej jeden exit-sygnał przy pobliskim skrzyżowaniu. W przeciwnym wypadku, jest czerwony.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Exit-sygnał (semafor){}Zachowuje się tak jak zwykły sygnał, ale wpływa na pobliskie pre- i combo-sygnały.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combo-sygnał(semafor){}Sygnał combo skupia działanie zarówno pre- jak i exit-sygnałów. Pozwala to na budowę zaawansowanych układów sygnałów.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Sygnalizatory trasy (semafor){}Sygnalizator zezwalajacy więcej niż jednemu pociagowi wjazd na odcinek torów w tym samym czasie, jeśli może on zarezerwować następny odcinek torowiska.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Jednokierunkowe sygnalizatory trasy (semafor){}Sygnalizator zezwalajacy więcej niż jednemu pociagowi wjazd na odcinek torów w tym samym czasie, jeśli może on zarezerwować następny odcinek torowiska. Standardowe sygnalizatory trasy nie blokuja wjazdu z tyłu..
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Zwykły sygnał (świetlny){}Sygnały są potrzebne aby uniknąć zderzeń pociągów na liniach z więcej niż jednym pociągiem.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Pre-sygnał (świetlny){}Jest zielony jeżeli zielony jest przynajmniej jeden exit-sygnał przy pobliskim skrzyżowaniu. W przeciwnym wypadku, jest czerwony.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Exit-sygnał (świetlny){}Zachowuje się tak jak zwykły sygnał, ale wpływa na pobliskie pre- i combo-sygnały.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo-sygnał(świetlny){}Sygnał combo skupia działanie zarówno pre- jak i exit-sygnałów. Pozwala to na budowę zaawansowanych układów sygnałów.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Sygnalizatory trasy (światła){}Sygnalizator zezwalajacy więcej niż jednemu pociagowi wjazd na odcinek torów w tym samym czasie, jeśli może on zarezerwować następny odcinek torowiska. Standardowe sygnalizatory trasy nie blokuja wjazdu z tyłu..
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Jednokierunkowy sygnalizatory trasy (światła){}Sygnalizator zezwalajacy więcej niż jednemu pociagowi wjazd na odcinek torów w tym samym czasie, jeśli może on zarezerwować następny odcinek torowiska. Standardowe sygnalizatory trasy nie blokuja wjazdu z tyłu..
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Sygnalizator bloku (semafor){}Najprostszy typ sygnału umożliwiający na przebywanie w jednym bloku wyłącznie jednemu pociągowi na raz.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Sygnalizator wejściowy (semafor){}Zielony, póki choć jeden sygnalizator wyjściowy dla kolejnego odcinka trasy jest zielony. W przeciwnym przypadku czerwony.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Sygnalizator wyjściowy (semafor){}Zachowuje się jak sygnalizator bloku, lecz jest niezbędny do zmiany na poprawny kolor w presygnalizatorach wejściowych i złożonych.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Sygnalizator złożony (semafor){}Sygnalizator złożony jest kombinacją sygnalizatorów wejściowych oraz wyjściowych. Umożliwia to budowę wielkich "drzew" presygnalizatorów.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Sygnalizator trasy (semafor){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Zwykłe sygnalizatory trasy mogą być mijane w przeciwnym kierunku.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Jednokierunkowy sygnalizator trasy (semafor){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Sygnalizator bloku (elektryczny){}Najprostszy typ sygnału umożliwiający na przebywanie w jednym bloku wyłącznie jednemu pociągowi na raz.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Sygnalizator wejściowy (elektryczny){}Zielony, póki choć jeden sygnalizator wyjściowy dla kolejnego odcinka trasy jest zielony. W przeciwnym przypadku czerwony.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Sygnalizator wyjściowy (elektryczny){}Zachowuje się jak sygnalizator bloku, lecz jest niezbędny do zmiany na poprawny kolor w presygnalizatorach wejściowych i złożonych.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Sygnalizator złożony (elektryczny){}Sygnalizator złożony jest kombinacją sygnalizatorów wejściowych oraz wyjściowych. Umożliwia to budowę wielkich "drzew" presygnalizatorów.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Zwykłe sygnalizatory trasy mogą być mijane w przeciwnym kierunku.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Jednokierunkowy sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Zamiana sygnałów{}Jeżeli włączone, kliknięcie na istniejący sygnał spowoduje zamianę jego typu na wybrany obok. CTRL-klik przełącza wygląd semafor/świetlny.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Gęstość sygnałów przy przeciąganiu. CTRL-przeciągnij aby wypełnić trasę sygnałami.
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Zmniejsz gęstość sygnałów przy przeciąganiu
@@ -3597,7 +3932,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Ustawienia SI
 STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Wyświetl ustawienia SI
-STR_AI_DEBUG                                                    :{WHITE}SI Debug
+STR_AI_DEBUG                                                    :{WHITE}Odpluskwianie SI
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nazwa SI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Przeładuj SI
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Zabij SI, przeładuj skrypt i zrestartuj SI
@@ -3607,7 +3942,7 @@ STR_AI_CHANGE                                                   :{BLACK}Wybierz 
 STR_AI_CONFIGURE                                                :{BLACK}Konfiguruj
 STR_AI_CHANGE_TIP                                               :{BLACK}Wczytaj kolejne SI
 STR_AI_CONFIGURE_TIP                                            :{BLACK}Konfiguruj parametry SI
-STR_AI_LIST_TIP                                                 :{BLACK}Wszystkie SI które będą załadowane w następnej grze
+STR_AI_LIST_TIP                                                 :{BLACK}Wszystkie SI, które będą załadowane w następnej grze
 STR_AI_LIST_CAPTION                                             :{WHITE}Dostępne SI
 STR_AI_AILIST_TIP                                               :{BLACK}Kliknij, aby wybrać SI
 STR_AI_ACCEPT                                                   :{BLACK}Zaakceptuj
@@ -3621,7 +3956,8 @@ STR_AI_RANDOM_AI                                                :Losowe SI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametry SI
 STR_AI_AUTHOR                                                   :{BLACK}Autor: {STRING}
 STR_AI_VERSION                                                  :{BLACK}Wersja: {NUM}
-STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Jedna z działających SI przestała działać. Prosimy o zaraportowanie tego autorowi SI dołączając zrzut ekranu okna debuga SI.
+STR_AI_URL                                                      :{BLACK}Adres: {STRING}
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Jedna z działających SI przestała działać. Prosimy o zgłoszenie tego autorowi SI dołączając zrzut ekranu okna odpluskwiania SI.
 ########
 
 ############ town controlled noise level

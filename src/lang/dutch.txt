@@ -3164,6 +3164,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Overgaa
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Overgaan op de Euro: {ORANGE}nooit
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Voorbeeld: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Verander aangepaste valuta optie
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Verlaag de wisselkoers van jouw munteenheid ten opzicht van de Pond (£) met één
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Verhoog de wisselkoers van jouw munteenheid ten opzicht van de Pond (£) met één
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Stel de wisselkoers in van jouw munteenheid ten opzichte van de Pond (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Stel het scheidings tekens in voor jouw munteenheid
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Stel het voorloopteken in voor jouw munteenheid
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Stel het eindteken in voor jouw munteenheid
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Eerder naar de Euro
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Later naar de Euro
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Stel het jaar in waarop de Euro wordt geïntroduceerd
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Pound (£) in jouw munteenheid
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}

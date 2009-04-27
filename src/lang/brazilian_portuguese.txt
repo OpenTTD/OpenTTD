@@ -1,13 +1,13 @@
-##name Portuguese (Brazil)
+##name Portuguese (Brazilian)
 ##ownname Português (BR)
 ##isocode pt_BR
 ##winlangid 0x0416
 ##grflangid 0x37
 ##plural 2
 ##textdir ltr
-##gender m f
 ##digitsep .
 ##digitsepcur .
+##gender m f
 
 #
 
@@ -732,6 +732,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvar a
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selecionar o intervalo para salvar automaticamente
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Desativado
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :A cada mês
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :A cada 3 meses
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :A cada 6 meses
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :A cada 12 meses
@@ -852,7 +853,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Jogo de 
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selecione o jogo de gráficos a ser utilizado
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :A cada mês
 STR_AUTOSAVE_FAILED                                             :{WHITE}Falha ao salvar automaticamente
 
 STR_MONTH_JAN                                                   :Janeiro
@@ -2801,6 +2801,19 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Reseta a
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reseta o contador de atraso, fazendo o veículo estar na hora
 STR_SERVICE_HINT                                                :{BLACK}Pular esta ordem a menos que necessite de manutenção
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Custo: {CURRENCY} Peso: {WEIGHT_S}{}Velocidade: {VELOCITY}  Potência: {POWER}{}Custo de circulação: {CURRENCY}/ano{}Capacidade: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Preço: {CURRENCY} Velocidade Max: {VELOCITY}{}Capacidade: {CARGO}, {CARGO}{}Custo de manutenção: {CURRENCY}/ano
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Custo: {CURRENCY} Velocidade Max; {VELOCITY}{}Capacidade: {CARGO}{}Custo de manuteção: {CURRENCY}/ano
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de manutenção: {LTBLUE}{CURRENCY}/ano
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidade Max: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Força: {LTBLUE}{POWER}{BLACK} Velocidade Max: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Força: {LTBLUE}{POWER}{BLACK} Velocidade Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lucros desse ano: {LTBLUE}{CURRENCY} (ano passado: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Confiabilidade: {LTBLUE}{COMMA}%  {BLACK}Quebras desde a última manutenção: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacidade: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacidade: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacidade: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Quebrado
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parado
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Impossível fazer o trem passar o sinal de perigo...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Acidentado!
@@ -3152,6 +3165,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Mudar p
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Mudar para Euro: {ORANGE}nunca
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prevêr: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mudar parametro de moeda personalizada
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Diminui a taxa de câmbio em uma Libra (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Aumenta a taxa de câmbio em uma Libra (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Define a taxa de câmbio para 1:1 Libra (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Define o separador numérico
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Define o prefixo
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Define o sufixo
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Trocar para Euro antes
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Trocar para Euro depois
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Selecionar o ano para trocar para Euro
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Libras (£) na sua moeda
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3258,6 +3281,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Confiabi
 STR_PURCHASE_INFO_COST                                          :{BLACK}Custo: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões energizados: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Adaptável para: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos as cargas

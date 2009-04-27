@@ -1214,7 +1214,7 @@ STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Copre la
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Impossibile generare industrie...
 
 STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Apre la barra di modellazione del terreno per alzare/abbassare il terreno, piantare alberi, etc.
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Modella terreno
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Modellazione terreno
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Livella terreno
 
 

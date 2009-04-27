@@ -484,7 +484,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Näita k
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Näita kaardil taimestikku
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Näita kaardil maaomanikke
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Linnanimede sisse- ja välja lülitamine
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Kasum sellel aastal: {CURRENCY} (eelmisel aastal: {CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Kasum sellel aastal: {CURRENCY} (eelneval: {CURRENCY})
 
 ############ range for service numbers starts
 STR_AGE                                                         :{COMMA} aasta{P "" t} ({COMMA})
@@ -602,9 +602,9 @@ STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Teadete seadist
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Teadete ajalugu
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Näita viimast teadet, kuva teadete valikud
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Teadete valikud
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Teate tüüp:
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Mängija jaama saabus esimene veovahend
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Konkurendi jaama saabus esimene veovahend
+STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Teateliigid:
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Esimese sõiduki saabumine mängija jaama
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Esimese sõiduki saabumine vastase jaama
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Õnnetused / katastroofid
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Ettevõtte teave
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Tööstuste avamine
@@ -718,7 +718,7 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Suvaline
 
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Näita viimast teadet
-STR_OFF                                                         :Off
+STR_OFF                                                         :Väljas
 STR_SUMMARY                                                     :Lühike
 STR_FULL                                                        :Täielik
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
@@ -993,7 +993,7 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Täispi
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Signaalide paigutamine sõidusuunda: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Aastalõpu rahavoogude aruanne: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Uued sihtpunktid on vaikimisi 'peatusteta': {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Uute rongikäskude kohaselt peatutakse vaikimisi platvormi osas {ORANGE}{STRING}{LTBLUE}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Vaikimisi platvormiosa peatumiseks uute rongikäskudega: {ORANGE}{STRING}{LTBLUE}
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :lõpu lähedal
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :keskel
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :täiesti lõpus
@@ -1004,7 +1004,7 @@ STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Ainuveo
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Raha saatmine teistele ettevõtetele: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Suvalise kujuga jaamad: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Raskete rongide simuleerimiseks kasutatav raskustegur: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Lennuki kiirustegur: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Lennukite kiirustegur: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Läbisõidupeatused linnateedel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Läbisõidupeatused konkurentide teedel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Jaamade kõrvutiehitamine: {ORANGE}{STRING}
@@ -2246,7 +2246,7 @@ STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Mootorsõ
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Õhusõidukite tulud
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Laevade tulud
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Laenuintress
-STR_FINANCES_SECTION_OTHER                                      :{GOLD}Kõik muu
+STR_FINANCES_SECTION_OTHER                                      :{GOLD}Muud
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Kokku:

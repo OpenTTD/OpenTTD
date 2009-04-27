@@ -5,9 +5,9 @@
 ##grflangid 0x24
 ##plural 2
 ##textdir ltr
-##case t ba
 ##digitsep .
 ##digitsepcur .
+##case t ba
 
 #
 
@@ -27,68 +27,68 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Elfogad:
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Termel: {GOLD}
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Utas
-STR_CARGO_PLURAL_PASSENGERS.t                                           :Utast
+STR_CARGO_PLURAL_PASSENGERS.t                                   :Utast
 STR_CARGO_PLURAL_COAL                                           :Szén
-STR_CARGO_PLURAL_COAL.ba                                                :Szénbe
-STR_CARGO_PLURAL_COAL.t                                                 :Szenet
+STR_CARGO_PLURAL_COAL.ba                                        :Szénbe
+STR_CARGO_PLURAL_COAL.t                                         :Szenet
 STR_CARGO_PLURAL_MAIL                                           :Levél
-STR_CARGO_PLURAL_MAIL.t                                                 :Levelet
+STR_CARGO_PLURAL_MAIL.t                                         :Levelet
 STR_CARGO_PLURAL_OIL                                            :Olaj
-STR_CARGO_PLURAL_OIL.t                                                  :Olajat
+STR_CARGO_PLURAL_OIL.t                                          :Olajat
 STR_CARGO_PLURAL_LIVESTOCK                                      :Állat
-STR_CARGO_PLURAL_LIVESTOCK.t                                            :Állatot
+STR_CARGO_PLURAL_LIVESTOCK.t                                    :Állatot
 STR_CARGO_PLURAL_GOODS                                          :Áru
-STR_CARGO_PLURAL_GOODS.t                                                :Árut
+STR_CARGO_PLURAL_GOODS.t                                        :Árut
 STR_CARGO_PLURAL_GRAIN                                          :Búza
-STR_CARGO_PLURAL_GRAIN.t                                                :Búzát
+STR_CARGO_PLURAL_GRAIN.t                                        :Búzát
 STR_CARGO_PLURAL_WOOD                                           :Fa
-STR_CARGO_PLURAL_WOOD.t                                                 :Fát
+STR_CARGO_PLURAL_WOOD.t                                         :Fát
 STR_CARGO_PLURAL_IRON_ORE                                       :Vasérc
-STR_CARGO_PLURAL_IRON_ORE.t                                             :Vasércet
+STR_CARGO_PLURAL_IRON_ORE.t                                     :Vasércet
 STR_CARGO_PLURAL_STEEL                                          :Acél
-STR_CARGO_PLURAL_STEEL.t                                                :Acélt
+STR_CARGO_PLURAL_STEEL.t                                        :Acélt
 STR_CARGO_PLURAL_VALUABLES                                      :Értéktárgyak
-STR_CARGO_PLURAL_VALUABLES.t                                            :Értéktárgyakat
+STR_CARGO_PLURAL_VALUABLES.t                                    :Értéktárgyakat
 STR_CARGO_PLURAL_COPPER_ORE                                     :Rézérc
-STR_CARGO_PLURAL_COPPER_ORE.t                                           :Rézércet
+STR_CARGO_PLURAL_COPPER_ORE.t                                   :Rézércet
 STR_CARGO_PLURAL_MAIZE                                          :Kukorica
-STR_CARGO_PLURAL_MAIZE.t                                                :Kukoricát
+STR_CARGO_PLURAL_MAIZE.t                                        :Kukoricát
 STR_CARGO_PLURAL_FRUIT                                          :Gyümölcs
-STR_CARGO_PLURAL_FRUIT.t                                                :Gyümölcsöt
+STR_CARGO_PLURAL_FRUIT.t                                        :Gyümölcsöt
 STR_CARGO_PLURAL_DIAMONDS                                       :Gyémánt
-STR_CARGO_PLURAL_DIAMONDS.t                                             :Gyémántot
+STR_CARGO_PLURAL_DIAMONDS.t                                     :Gyémántot
 STR_CARGO_PLURAL_FOOD                                           :Étel
-STR_CARGO_PLURAL_FOOD.t                                                 :Ételt
+STR_CARGO_PLURAL_FOOD.t                                         :Ételt
 STR_CARGO_PLURAL_PAPER                                          :Papír
-STR_CARGO_PLURAL_PAPER.t                                                :Papírt
+STR_CARGO_PLURAL_PAPER.t                                        :Papírt
 STR_CARGO_PLURAL_GOLD                                           :Arany
-STR_CARGO_PLURAL_GOLD.t                                                 :Aranyat
+STR_CARGO_PLURAL_GOLD.t                                         :Aranyat
 STR_CARGO_PLURAL_WATER                                          :Víz
-STR_CARGO_PLURAL_WATER.t                                                :Vízet
+STR_CARGO_PLURAL_WATER.t                                        :Vízet
 STR_CARGO_PLURAL_WHEAT                                          :Búza
-STR_CARGO_PLURAL_WHEAT.t                                                :Búzát
+STR_CARGO_PLURAL_WHEAT.t                                        :Búzát
 STR_CARGO_PLURAL_RUBBER                                         :Gumi
-STR_CARGO_PLURAL_RUBBER.t                                               :Gumit
+STR_CARGO_PLURAL_RUBBER.t                                       :Gumit
 STR_CARGO_PLURAL_SUGAR                                          :Cukor
-STR_CARGO_PLURAL_SUGAR.t                                                :Cukort
+STR_CARGO_PLURAL_SUGAR.t                                        :Cukort
 STR_CARGO_PLURAL_TOYS                                           :Játék
-STR_CARGO_PLURAL_TOYS.t                                                 :Játékot
+STR_CARGO_PLURAL_TOYS.t                                         :Játékot
 STR_CARGO_PLURAL_CANDY                                          :Cukorka
-STR_CARGO_PLURAL_CANDY.t                                                :Cukorkát
+STR_CARGO_PLURAL_CANDY.t                                        :Cukorkát
 STR_CARGO_PLURAL_COLA                                           :Kóla
-STR_CARGO_PLURAL_COLA.t                                                 :Kólát
+STR_CARGO_PLURAL_COLA.t                                         :Kólát
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Vattacukor
-STR_CARGO_PLURAL_COTTON_CANDY.t                                         :Vattacukrot
+STR_CARGO_PLURAL_COTTON_CANDY.t                                 :Vattacukrot
 STR_CARGO_PLURAL_BUBBLES                                        :Buborék
-STR_CARGO_PLURAL_BUBBLES.t                                              :Buborékot
+STR_CARGO_PLURAL_BUBBLES.t                                      :Buborékot
 STR_CARGO_PLURAL_TOFFEE                                         :Tejkaramella
-STR_CARGO_PLURAL_TOFFEE.t                                               :Tejkaramellát
+STR_CARGO_PLURAL_TOFFEE.t                                       :Tejkaramellát
 STR_CARGO_PLURAL_BATTERIES                                      :Elem
-STR_CARGO_PLURAL_BATTERIES.t                                            :Elemet
+STR_CARGO_PLURAL_BATTERIES.t                                    :Elemet
 STR_CARGO_PLURAL_PLASTIC                                        :Műanyag
-STR_CARGO_PLURAL_PLASTIC.t                                              :Műanyagot
+STR_CARGO_PLURAL_PLASTIC.t                                      :Műanyagot
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Szénsavas ital
-STR_CARGO_PLURAL_FIZZY_DRINKS.t                                         :Szénsavas italt
+STR_CARGO_PLURAL_FIZZY_DRINKS.t                                 :Szénsavas italt
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :utas
 STR_CARGO_SINGULAR_COAL                                         :szén
@@ -254,7 +254,7 @@ STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFON
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}REPÜLÖGÉP
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}SZÁLLITÁSI ÚTVONAL
 STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}ERDÖ
-STR_SMALLMAP_LEGENDA_FOREST.t                                               :{BLACK}{TINYFONT}erdőt
+STR_SMALLMAP_LEGENDA_FOREST.t                                   :{BLACK}{TINYFONT}erdőt
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}VASÚTÁLLOMÁS
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}TEHERAUTÓ-RAKODÓHELY
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}BUSZMEGÁLLÓ
@@ -1961,79 +1961,79 @@ STR_SAVE_OSKTITLE                                               :{BLACK}Add meg 
 STR_OBJECT_IN_THE_WAY                                           :{WHITE}...{STRING} van az útban
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_NAME_COAL_MINE                                     :Szénbánya
-STR_INDUSTRY_NAME_COAL_MINE.t                                            :szénbányát
+STR_INDUSTRY_NAME_COAL_MINE.t                                   :szénbányát
 STR_INDUSTRY_NAME_POWER_STATION                                 :Erőmű
-STR_INDUSTRY_NAME_POWER_STATION.t                                        :erőművet
+STR_INDUSTRY_NAME_POWER_STATION.t                               :erőművet
 STR_INDUSTRY_NAME_SAWMILL                                       :Fűrésztelep
-STR_INDUSTRY_NAME_SAWMILL.t                                              :fűrésztelepet
+STR_INDUSTRY_NAME_SAWMILL.t                                     :fűrésztelepet
 STR_INDUSTRY_NAME_FOREST                                        :Erdő
-STR_INDUSTRY_NAME_FOREST.t                                               :erdőt
+STR_INDUSTRY_NAME_FOREST.t                                      :erdőt
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :Olajfinomító
-STR_INDUSTRY_NAME_OIL_REFINERY.t                                         :olajfinomítót
+STR_INDUSTRY_NAME_OIL_REFINERY.t                                :olajfinomítót
 STR_INDUSTRY_NAME_OIL_RIG                                       :Olajfúró torony
-STR_INDUSTRY_NAME_OIL_RIG.t                                              :olajfúró tornyot
+STR_INDUSTRY_NAME_OIL_RIG.t                                     :olajfúró tornyot
 STR_INDUSTRY_NAME_FACTORY                                       :Gyár
-STR_INDUSTRY_NAME_FACTORY.t                                              :gyárat
+STR_INDUSTRY_NAME_FACTORY.t                                     :gyárat
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :Nyomda
-STR_INDUSTRY_NAME_PRINTING_WORKS.t                                       :nyomdát
+STR_INDUSTRY_NAME_PRINTING_WORKS.t                              :nyomdát
 STR_INDUSTRY_NAME_STEEL_MILL                                    :Acélöntő
-STR_INDUSTRY_NAME_STEEL_MILL.t                                           :acélöntőt
+STR_INDUSTRY_NAME_STEEL_MILL.t                                  :acélöntőt
 STR_INDUSTRY_NAME_FARM                                          :Farm
-STR_INDUSTRY_NAME_FARM.t                                                 :farmot
+STR_INDUSTRY_NAME_FARM.t                                        :farmot
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Rézércbánya
-STR_INDUSTRY_NAME_COPPER_ORE_MINE.t                                      :rézércbányát
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.t                             :rézércbányát
 STR_INDUSTRY_NAME_OIL_WELLS                                     :Olajkút
-STR_INDUSTRY_NAME_OIL_WELLS.t                                            :olajkútat
+STR_INDUSTRY_NAME_OIL_WELLS.t                                   :olajkútat
 STR_INDUSTRY_NAME_BANK                                          :Bank
-STR_INDUSTRY_NAME_BANK.t                                                 :bankot
+STR_INDUSTRY_NAME_BANK.t                                        :bankot
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Konzervgyár
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.t                                :konzervgyárat
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.t                       :konzervgyárat
 STR_INDUSTRY_NAME_PAPER_MILL                                    :Papírgyár
-STR_INDUSTRY_NAME_PAPER_MILL.t                                           :papírgyárat
+STR_INDUSTRY_NAME_PAPER_MILL.t                                  :papírgyárat
 STR_INDUSTRY_NAME_GOLD_MINE                                     :Aranybánya
-STR_INDUSTRY_NAME_GOLD_MINE.t                                            :aranybányát
+STR_INDUSTRY_NAME_GOLD_MINE.t                                   :aranybányát
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Bank
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.t                                                 :bankot
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.t                          :bankot
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Gyémántbánya
-STR_INDUSTRY_NAME_DIAMOND_MINE.t                                         :gyémántbányát
+STR_INDUSTRY_NAME_DIAMOND_MINE.t                                :gyémántbányát
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Vasércbánya
-STR_INDUSTRY_NAME_IRON_ORE_MINE.t                                        :vasércbányát
+STR_INDUSTRY_NAME_IRON_ORE_MINE.t                               :vasércbányát
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Gyümölcsültetvény
-STR_INDUSTRY_NAME_FRUIT_PLANTATION.t                                     :gyümölcsültetvényt
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.t                            :gyümölcsültetvényt
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Gumifa ültetvény
-STR_INDUSTRY_NAME_RUBBER_PLANTATION.t                                    :gumiültetvényt
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.t                           :gumiültetvényt
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Vízforrás
-STR_INDUSTRY_NAME_WATER_SUPPLY.t                                         :vízforrást
+STR_INDUSTRY_NAME_WATER_SUPPLY.t                                :vízforrást
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Víztorony
-STR_INDUSTRY_NAME_WATER_TOWER.t                                          :víztornyot
+STR_INDUSTRY_NAME_WATER_TOWER.t                                 :víztornyot
 STR_INDUSTRY_NAME_FACTORY_2                                     :Gyár
-STR_INDUSTRY_NAME_FACTORY_2.t                                              :gyárat
+STR_INDUSTRY_NAME_FACTORY_2.t                                   :gyárat
 STR_INDUSTRY_NAME_FARM_2                                        :Farm
-STR_INDUSTRY_NAME_FARM_2.t                                                 :farmot
+STR_INDUSTRY_NAME_FARM_2.t                                      :farmot
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Favágó
-STR_INDUSTRY_NAME_LUMBER_MILL.t                                          :favágót
+STR_INDUSTRY_NAME_LUMBER_MILL.t                                 :favágót
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Vattacukor-erdő
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.t                                  :vattacukor-erdőt
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.t                         :vattacukor-erdőt
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Cukorkagyár
-STR_INDUSTRY_NAME_CANDY_FACTORY.t                                        :cukorkagyárat
+STR_INDUSTRY_NAME_CANDY_FACTORY.t                               :cukorkagyárat
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Elemfarm
-STR_INDUSTRY_NAME_BATTERY_FARM.t                                         :elemfarmot
+STR_INDUSTRY_NAME_BATTERY_FARM.t                                :elemfarmot
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Kólakút
-STR_INDUSTRY_NAME_COLA_WELLS.t                                           :kólakútat
+STR_INDUSTRY_NAME_COLA_WELLS.t                                  :kólakútat
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Játékbolt
-STR_INDUSTRY_NAME_TOY_SHOP.t                                             :játékboltot
+STR_INDUSTRY_NAME_TOY_SHOP.t                                    :játékboltot
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Játékgyár
-STR_INDUSTRY_NAME_TOY_FACTORY.t                                          :játékgyárat
+STR_INDUSTRY_NAME_TOY_FACTORY.t                                 :játékgyárat
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Műanyagforrás
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.t                                    :műanyagforrást
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.t                           :műanyagforrást
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Üdítőital-gyár
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.t                                  :üdítőital-gyárat
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.t                         :üdítőital-gyárat
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Buborékgenerátor
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR.t                                     :buborékgenerátort
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.t                            :buborékgenerátort
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Tejkaramella fejtő
-STR_INDUSTRY_NAME_TOFFEE_QUARRY.t                                        :tejkaramella fejtőt
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.t                               :tejkaramella fejtőt
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Cukorbánya
-STR_INDUSTRY_NAME_SUGAR_MINE.t                                           :cukorbányát
+STR_INDUSTRY_NAME_SUGAR_MINE.t                                  :cukorbányát
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Felhasznál: {YELLOW}{STRING}{STRING}
@@ -3235,6 +3235,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Euróra
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Euróra váltás: {ORANGE}soha
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Előnézet: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}A saját pénznem paramétereinek megváltoztatása
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Átváltási arány csökkentése egy Fonthoz (£) képest
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Átváltási arány növelése egy Fonthoz (£) képest
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Átváltási arány beállítása egy Fonthoz (£) képest
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Elválasztó beállítása a pénznemedhez
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Előtag beállítása a pénznemedhez
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Utótag beállítása a pénznemedhez
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Euróra váltás korábban
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Euróra váltás később
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Euróra váltás évének beállítása
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Font (£) a pénznemedben
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
