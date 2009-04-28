@@ -688,6 +688,7 @@ bool SQVM::Execute(SQObjectPtr &closure, SQInteger target, SQInteger nargs, SQIn
 			_suspended = SQFalse;
 			break;
 		case ET_RESUME_OPENTTD:
+			traps = _suspended_traps;
 			_suspended = SQFalse;
 			break;
 	}
