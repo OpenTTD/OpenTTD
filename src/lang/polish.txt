@@ -694,6 +694,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Jesteś
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Wyjście
 STR_SORT_ORDER_TIP                                              :{BLACK}Wybierz porządek sortowania (malejąco/rosnąco)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Wybierz kryterium sortowania
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Wybierz kryteria filtrowania
 STR_SORT_BY                                                     :{BLACK}Sortuj wg
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populacja
@@ -1316,6 +1317,9 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Zawsze 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Pokazuj sygnały po stronie jazdy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Pokazuj okno finansów na koniec roku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nowe polecenia sa domyslnie 'non-stop': {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :blisko końca
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :środek
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :daleko od końca
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Ustawianie się samochodów w kolejkach (z efektem quantum): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Przesuń okno, kiedy kursor jest przy krawędzi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Pozwól dawać łapówki lokalnym władzom: {ORANGE}{STRING}
@@ -3025,6 +3029,9 @@ STR_ORDER_GO_TO                                                 :Idź do
 STR_ORDER_GO_NON_STOP_TO                                        :Idź bez przerwy do
 STR_ORDER_GO_VIA                                                :Idź przez
 STR_ORDER_GO_NON_STOP_VIA                                       :Idź bez przerwy przez
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[blisko końca]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[środek]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[daleko od końca]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pelny zaladunek czegokolwiek
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Załaduj jeśli dostępne
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Pelny zaladunek wszystkiego
@@ -3209,6 +3216,11 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Usuń il
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Wyzeruj licznik spóźnienia, aby pojazd podróżował zgodnie z rozkładem jazdy
 STR_SERVICE_HINT                                                :{BLACK}Pomiń to polecenie jesli serwis nie jest wymagany
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Koszt: {CURRENCY} Waga: {WEIGHT_S}{}Prędkość: {VELOCITY}  Moc: {POWER}{}Utrzymanie: {CURRENCY}/rok{}Pojemność: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Kosztuje: {CURRENCY} Maksymalna prędkość: {VELOCITY}{}Pojemność: {CARGO}, {CARGO}{}Koszt używania: {CURRENCY}/rok
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Koszt używania: {LTBLUE}{CURRENCY}/rok
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maksymalna prędkość: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Waga: {LTBLUE}{WEIGHT_S} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Maksymalna prędkość: {LTBLUE}{VELOCITY}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Zepsuty
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zatrzymany
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nie można przepościć pociągu za sygnał, niebezpieczeństwo...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Wypadek!
@@ -3558,6 +3570,10 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Przejś
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Przejście na Euro: {ORANGE}nigdy
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Podgląd: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmień parametr własnej waluty
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Przełącz na Euro wcześniej
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Przełącz na Euro później
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Ustaw rok przełączenia na Euro
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Funtów (£) w twojej walucie
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3664,6 +3680,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maksymal
 STR_PURCHASE_INFO_COST                                          :{BLACK}Koszt: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Waga: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Koszt: {GOLD}{CURRENCY}{BLACK} Prędkość: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Pojemność: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GOLD}+{POWER}{BLACK} Waga: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Można przebudować na: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Wszystkie typy ładunków

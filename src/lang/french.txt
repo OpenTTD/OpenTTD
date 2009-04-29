@@ -5,9 +5,9 @@
 ##grflangid 0x03
 ##plural 2
 ##textdir ltr
-##gender m m2 f
 ##digitsep .
 ##digitsepcur .
+##gender m m2 f
 
 #
 
@@ -3164,6 +3164,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Passer 
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Passer à l'Euro : {ORANGE}jamais
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prévisualisation : {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Changer les paramètres de devises personnalisées
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Réduire le montant de votre monnaie pour une Livre (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Augmenter le montant de votre monnaie pour une Livre (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Définir le taux de change de votre monnaie pour une Livre (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Définir le séparateur pour votre monnaie
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Définir le préfixe pour votre monnaie
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Définir le suffixe pour votre monnaie
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Passer à l'Euro plus tôt
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Passer à l'Euro plus tard
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Définir la date de passage à l'Euro
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Livres (£) dans votre monnaie
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}

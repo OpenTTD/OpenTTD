@@ -1331,7 +1331,7 @@ STR_NETWORK_CONNECTION                                          :{BLACK}Ühendus
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Valimine interneti- või kohtvõrkmängu vahel
 
 STR_NETWORK_START_SERVER                                        :{BLACK}Alusta serverit
-STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Isikliku serveri alustamine
+STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Oma serveri alustamine
 
 STR_NETWORK_GAME_NAME                                           :{BLACK}Nimi
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Mängu nimi
@@ -3209,13 +3209,13 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Mäng on salvestatud osas, kus trammid ei olnud toetatud. Kõik trammid on eemaldatud.
 
-STR_CURRENCY_WINDOW                                             :{WHITE}Isiklik valuuta
+STR_CURRENCY_WINDOW                                             :{WHITE}Oma valuuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vahetuskurss: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Vahemärk: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Eraldusmärk: {ORANGE}{2:STRING}
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Eesliide: {ORANGE}{3:STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Lõpuliide: {ORANGE}{4:STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Vaheta üle eurole: {ORANGE}{5:NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Vaheta üle eurole: {ORANGE}Mitte kunagi
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Järelliide: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Mine eurole: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Mine eurole: {ORANGE}Mitte kunagi
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eelvaade: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Muuda personaalse valuuta parameetreid
 STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Langeta oma valuuta väärtust naela (£) suhtes
