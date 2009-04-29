@@ -430,17 +430,30 @@ void ShowAboutWindow()
 	new AboutWindow();
 }
 
+/** Widgets of the error message windows */
+enum ErrorMessageWidgets {
+	EMW_CLOSE = 0,
+	EMW_CAPTION,
+	EMW_PANEL,
+	EMW_FACE,
+	EMW_MESSAGE,
+};
+
 static const Widget _errmsg_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    COLOUR_RED,     0,    10,     0,    13, STR_BLACK_CROSS,         STR_TOOLTIP_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    COLOUR_RED,     0,    10,     0,    13, STR_BLACK_CROSS,           STR_TOOLTIP_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    COLOUR_RED,    11,   239,     0,    13, STR_ERROR_MESSAGE_CAPTION, STR_NULL},
-{      WWT_PANEL,   RESIZE_BOTTOM,  COLOUR_RED,     0,   239,    14,    45, 0x0,              STR_NULL},
+{      WWT_PANEL,   RESIZE_BOTTOM,  COLOUR_RED,     0,   239,    14,    45, 0x0,                       STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,    COLOUR_RED,     0,     0,     0,     0, 0x0,                       STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,    COLOUR_RED,     2,   237,    14,    45, 0x0,                       STR_NULL},
 {    WIDGETS_END},
 };
 
 static const Widget _errmsg_face_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    COLOUR_RED,     0,    10,     0,    13, STR_BLACK_CROSS,              STR_TOOLTIP_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    COLOUR_RED,     0,    10,     0,    13, STR_BLACK_CROSS,                         STR_TOOLTIP_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    COLOUR_RED,    11,   333,     0,    13, STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_NULL},
-{      WWT_PANEL,   RESIZE_BOTTOM,  COLOUR_RED,     0,   333,    14,   136, 0x0,                   STR_NULL},
+{      WWT_PANEL,   RESIZE_BOTTOM,  COLOUR_RED,     0,   333,    14,   136, 0x0,                                     STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,    COLOUR_RED,     2,    92,    16,   135, 0x0,                                     STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,    COLOUR_RED,    94,   331,    14,   136, 0x0,                                     STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -470,8 +483,9 @@ public:
 
 		assert(msg2 != INVALID_STRING_ID);
 
-		int h2 = GetStringHeight(msg2, width - 2); // msg2 is printed first
-		int h1 = (msg1 == INVALID_STRING_ID) ? 0 : GetStringHeight(msg1, width - 2);
+		int text_width = this->widget[EMW_MESSAGE].right - this->widget[EMW_MESSAGE].left;
+		int h2 = GetStringHeight(msg2, text_width); // msg2 is printed first
+		int h1 = (msg1 == INVALID_STRING_ID) ? 0 : GetStringHeight(msg1, text_width);
 
 		SwitchToNormalRefStack();
 
@@ -506,11 +520,11 @@ public:
 
 		if (this->show_company_manager_face) {
 			const Company *c = GetCompany((CompanyID)GetDParamX(this->decode_params, 2));
-			DrawCompanyManagerFace(c->face, c->colour, 2, 16);
+			DrawCompanyManagerFace(c->face, c->colour, this->widget[EMW_FACE].left, this->widget[EMW_FACE].top);
 		}
 
-		DrawStringMultiLine(1, this->width - 1, y[2], y[3] , this->message_2, TC_FROMSTRING, SA_CENTER);
-		if (this->message_1 != INVALID_STRING_ID) DrawStringMultiLine(1, this->width - 1, y[0], y[1], this->message_1, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(this->widget[EMW_MESSAGE].left, this->widget[EMW_MESSAGE].right, y[2], y[3], this->message_2, TC_FROMSTRING, SA_CENTER);
+		if (this->message_1 != INVALID_STRING_ID) DrawStringMultiLine(this->widget[EMW_MESSAGE].left, this->widget[EMW_MESSAGE].right, y[0], y[1], this->message_1, TC_FROMSTRING, SA_CENTER);
 
 		/* Switch back to the normal text ref. stack for NewGRF texts */
 		SwitchToNormalRefStack();
