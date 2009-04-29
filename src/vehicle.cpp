@@ -1057,7 +1057,8 @@ void VehicleEnterDepot(Vehicle *v)
 			}
 		}
 
-		if (t.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) {
+		if (t.GetDepotOrderType() & ODTFB_PART_OF_ORDERS &&
+				(v->type == VEH_AIRCRAFT ? t.GetDestination() == GetStationIndex(v->tile) : v->dest_tile == v->tile)) {
 			/* Part of orders */
 			UpdateVehicleTimetable(v, true);
 			v->cur_order_index++;
