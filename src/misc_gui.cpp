@@ -552,7 +552,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 	Point pt;
 	const ViewPort *vp;
 
-	if (msg_1 != STR_ERROR_OWNED_BY || GetDParam(2) >= 8) {
+	if (msg_1 != STR_ERROR_OWNED_BY || GetDParam(2) >= MAX_COMPANIES) {
 		if ((x | y) != 0) {
 			pt = RemapCoords2(x, y);
 			vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
