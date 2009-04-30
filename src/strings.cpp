@@ -203,7 +203,7 @@ static char *FormatNumber(char *buff, int64 number, const char *last, const char
 			num = num % divisor;
 		}
 		if (tot |= quot || i == 19) {
-			buff += seprintf(buff, last, "%i", quot);
+			buff += seprintf(buff, last, "%i", (int)quot);
 			if ((i % 3) == 1 && i != 19) buff = strecpy(buff, separator, last);
 		}
 
