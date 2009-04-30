@@ -144,6 +144,7 @@ struct Widget {
 
 /**
  * Baseclass for nested widgets.
+ * @ingroup NestedWidgets
  */
 class NWidgetBase : public ZeroedMemoryAllocator {
 public:
@@ -174,7 +175,8 @@ public:
 	uint8 padding_left;   ///< Paddings added to the left of the widget. Managed by parent container widget.
 };
 
-/** Base class for a resizable nested widget. */
+/** Base class for a resizable nested widget.
+ * @ingroup NestedWidgets */
 class NWidgetResizeBase : public NWidgetBase {
 public:
 	NWidgetResizeBase(WidgetType tp, bool fill_x, bool fill_y);
@@ -186,7 +188,8 @@ public:
 	void AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
 };
 
-/** Base class for a 'real' widget. */
+/** Base class for a 'real' widget.
+ * @ingroup NestedWidgets */
 class NWidgetCore : public NWidgetResizeBase {
 public:
 	NWidgetCore(WidgetType tp, Colours colour, bool def_fill_x, bool def_fill_y, uint16 widget_data, StringID tool_tip);
@@ -203,7 +206,8 @@ public:
 	StringID tool_tip;  ///< Tooltip of the widget. @see Widget::tootips
 };
 
-/** Baseclass for container widgets. */
+/** Baseclass for container widgets.
+ * @ingroup NestedWidgets */
 class NWidgetContainer : public NWidgetBase {
 public:
 	NWidgetContainer(WidgetType tp);
@@ -224,7 +228,8 @@ protected:
 	NWidgetBase *tail; ///< Pointer to last widget in container.
 };
 
-/** Horizontal container. */
+/** Horizontal container.
+ * @ingroup NestedWidgets */
 class NWidgetHorizontal : public NWidgetContainer {
 public:
 	NWidgetHorizontal();
@@ -235,7 +240,8 @@ public:
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 };
 
-/** Horizontal container that doesn't change the direction of the widgets for RTL languages. */
+/** Horizontal container that doesn't change the direction of the widgets for RTL languages.
+ * @ingroup NestedWidgets */
 class NWidgetHorizontalLTR : public NWidgetHorizontal {
 public:
 	NWidgetHorizontalLTR();
@@ -245,7 +251,8 @@ public:
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 };
 
-/** Vertical container */
+/** Vertical container.
+ * @ingroup NestedWidgets */
 class NWidgetVertical : public NWidgetContainer {
 public:
 	NWidgetVertical();
@@ -257,7 +264,8 @@ public:
 };
 
 
-/** Spacer widget */
+/** Spacer widget.
+ * @ingroup NestedWidgets */
 class NWidgetSpacer : public NWidgetResizeBase {
 public:
 	NWidgetSpacer(int length, int height);
@@ -266,7 +274,8 @@ public:
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 };
 
-/** Nested widget with a child. */
+/** Nested widget with a child.
+ * @ingroup NestedWidgets */
 class NWidgetBackground : public NWidgetCore {
 public:
 	NWidgetBackground(WidgetType tp, Colours colour, int index, NWidgetContainer *child = NULL);
@@ -283,7 +292,8 @@ private:
 	NWidgetContainer *child; ///< Child widget.
 };
 
-/** Leaf widget. */
+/** Leaf widget.
+ * @ingroup NestedWidgets */
 class NWidgetLeaf : public NWidgetCore {
 public:
 	NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, StringID tip);
@@ -292,26 +302,71 @@ public:
 Widget *InitializeNWidgets(NWidgetBase *nwid, bool rtl = false);
 bool CompareWidgetArrays(const Widget *orig, const Widget *gen, bool report = true);
 
-/* == Nested widget parts == */
+/**
+ * @defgroup NestedWidgetParts Hierarchical widget parts
+ * To make nested widgets easier to enter, nested widget parts have been created. They allow the tree to be defined in a flat array of parts.
+ *
+ * - Leaf widgets start with a #NWidget(WidgetType tp, Colours col, int16 idx) part.
+ *   Next, specify its properties with one or more of
+ *   - #SetMinimalSize Define the minimal size of the widget.
+ *   - #SetFill Define how the widget may grow to make it nicely.
+ *   - #SetDataTip Define the data and the tooltip of the widget.
+ *   - #SetResize Define how the widget may resize.
+ *   - #SetPadding Create additional space around the widget.
+ *
+ * - To insert a nested widget tree from an external source, nested widget part #NWidgetFunction exists.
+ *   For further customization, the #SetPadding part may be used.
+ *
+ * - Space widgets (#NWidgetSpacer) start with a #NWidget(WidgetType tp), followed by one or more of
+ *   - #SetMinimalSize Define the minimal size of the widget.
+ *   - #SetFill Define how the widget may grow to make it nicely.
+ *   - #SetResize Define how the widget may resize.
+ *   - #SetPadding Create additional space around the widget.
+ *
+ * - Container widgets #NWidgetHorizontal, #NWidgetHorizontalLTR, and #NWidgetVertical, start with a #NWidget(WidgetType tp) part.
+ *   Their properties are derived from the child widgets so they cannot be specified.
+ *   You can however use
+ *   - #SetPadding Define additional padding around the container.
+ *   - #SetPIP Set additional pre/inter/post child widget space.
+ *   .
+ *   Underneath these properties, all child widgets of the container must be defined. To denote that they are childs, add an indent before the nested widget parts of
+ *   the child widgets (it has no meaning for the compiler but it makes the widget parts easier to read).
+ *   Below the last child widget, use an #EndContainer part. This part should be aligned with the #NWidget part that started the container.
+ *
+ * - Background widgets #NWidgetBackground start with a #NWidget(WidgetType tp, Colours col, int16 idx) part.
+ *   What follows depends on how the widget is used.
+ *   - If the widget is used as a leaf widget, that is, to create some space in the window to display a viewport or some text, use the properties of the
+ *     leaf widgets to define how it behaves.
+ *   - If the widget is used a background behind other widgets, it is considered to be a container widgets. Use the properties listed there to define its
+ *     behaviour.
+ *   .
+ *   In both cases, the background widget \b MUST end with a #EndContainer widget part.
+ *
+ * @see NestedWidgets
+ */
 
-/** Widget part for storing data and tooltip information. */
+/** Widget part for storing data and tooltip information.
+ * @ingroup NestedWidgetParts */
 struct NWidgetPartDataTip {
 	uint16 data;      ///< Data value of the widget.
 	StringID tooltip; ///< Tooltip of the widget.
 };
 
-/** Widget part for storing basic widget information. */
+/** Widget part for storing basic widget information.
+ * @ingroup NestedWidgetParts */
 struct NWidgetPartWidget {
 	Colours colour; ///< Widget colour.
 	int16 index;    ///< Widget index in the widget array.
 };
 
-/** Widget part for storing padding. */
+/** Widget part for storing padding.
+ * @ingroup NestedWidgetParts */
 struct NWidgetPartPaddings {
 	uint8 top, right, bottom, left; ///< Paddings for all directions.
 };
 
-/** Widget part for storing pre/inter/post spaces. */
+/** Widget part for storing pre/inter/post spaces.
+ * @ingroup NestedWidgetParts */
 struct NWidgetPartPIP {
 	uint8 pre, inter, post; ///< Amount of space before/between/after child widgets.
 };
@@ -319,7 +374,8 @@ struct NWidgetPartPIP {
 /** Pointer to function returning a nested widget. */
 typedef NWidgetBase *NWidgetFunctionType();
 
-/** Partial widget specification to allow NWidgets to be written nested. */
+/** Partial widget specification to allow NWidgets to be written nested.
+ * @ingroup NestedWidgetParts */
 struct NWidgetPart {
 	WidgetType type;                         ///< Type of the part. @see NWidgetPartType.
 	union {
@@ -338,6 +394,7 @@ struct NWidgetPart {
  * Widget part function for setting the resize step.
  * @param dx Horizontal resize step. 0 means no horizontal resizing.
  * @param dy Vertical resize step. 0 means no horizontal resizing.
+ * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart SetResize(int16 dx, int16 dy)
 {
@@ -353,6 +410,7 @@ static inline NWidgetPart SetResize(int16 dx, int16 dy)
 /**
  * Widget part function for using a pointer to set the resize step.
  * @param ptr Pointer to horizontal and vertical resize step.
+ * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart SetResize(Point *ptr)
 {
@@ -368,6 +426,7 @@ static inline NWidgetPart SetResize(Point *ptr)
  * Widget part function for setting the minimal size.
  * @param dx Horizontal minimal size.
  * @param dy Vertical minimal size.
+ * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart SetMinimalSize(int16 x, int16 y)
 {
@@ -383,6 +442,7 @@ static inline NWidgetPart SetMinimalSize(int16 x, int16 y)
 /**
  * Widget part function for using a pointer to set the minimal size.
  * @param ptr Pointer to horizontal and vertical minimal size.
+ * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart SetMinimalSize(Point *ptr)
 {
@@ -398,6 +458,7 @@ static inline NWidgetPart SetMinimalSize(Point *ptr)
  * Widget part function for setting filling.
  * @param x_fill Allow horizontal filling from minimal size.
  * @param y_fill Allow vertical filling from minimal size.
+ * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart SetFill(bool x_fill, bool y_fill)
 {
@@ -413,6 +474,7 @@ static inline NWidgetPart SetFill(bool x_fill, bool y_fill)
 /**
  * Widget part function for denoting the end of a container
  * (horizontal, vertical, WWT_FRAME, WWT_INSET, or WWT_PANEL).
+ * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart EndContainer()
 {
@@ -426,6 +488,7 @@ static inline NWidgetPart EndContainer()
 /** Widget part function for setting the data and tooltip.
  * @param data Data of the widget.
  * @param tip  Tooltip of the widget.
+ * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart SetDataTip(uint16 data, StringID tip)
 {
@@ -441,6 +504,7 @@ static inline NWidgetPart SetDataTip(uint16 data, StringID tip)
 /**
  * Widget part function for setting the data and tooltip via a pointer.
  * @param ptr Pointer to the data and tooltip of the widget.
+ * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart SetDataTip(NWidgetPartDataTip *ptr)
 {
@@ -453,11 +517,13 @@ static inline NWidgetPart SetDataTip(NWidgetPartDataTip *ptr)
 }
 
 /**
- * Widget part function for setting a padding.
+ * Widget part function for setting additional space around a widget.
+ * Parameters start above the widget, and are specified in clock-wise direction.
  * @param top The padding above the widget.
  * @param right The padding right of the widget.
  * @param bottom The padding below the widget.
  * @param left The padding left of the widget.
+ * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart SetPadding(uint8 top, uint8 right, uint8 bottom, uint8 left)
 {
@@ -475,6 +541,7 @@ static inline NWidgetPart SetPadding(uint8 top, uint8 right, uint8 bottom, uint8
 /**
  * Widget part function for setting a padding.
  * @param padding The padding to use for all directions.
+ * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart SetPadding(uint8 padding)
 {
@@ -486,6 +553,7 @@ static inline NWidgetPart SetPadding(uint8 padding)
  * @param pre The amount of space before the first widget.
  * @param inter The amount of space between widgets.
  * @param post The amount of space after the last widget.
+ * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart SetPIP(uint8 pre, uint8 inter, uint8 post)
 {
@@ -506,6 +574,7 @@ static inline NWidgetPart SetPIP(uint8 pre, uint8 inter, uint8 post)
  * @param idx Index of the widget in the widget array.
  * @note with #WWT_PANEL, #WWT_FRAME, #WWT_INSET, a new container is started.
  *       Child widgets must have a index bigger than the parent index.
+ * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart NWidget(WidgetType tp, Colours col, int16 idx)
 {
@@ -521,6 +590,7 @@ static inline NWidgetPart NWidget(WidgetType tp, Colours col, int16 idx)
 /**
  * Widget part function for starting a new horizontal container, vertical container, or spacer widget.
  * @param tp Type of the new nested widget, #NWID_HORIZONTAL(_LTR), #NWID_VERTICAL, or #NWID_SPACER
+ * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart NWidget(WidgetType tp)
 {
@@ -531,6 +601,11 @@ static inline NWidgetPart NWidget(WidgetType tp)
 	return part;
 }
 
+/**
+ * Obtain a nested widget (sub)tree from an external source.
+ * @param func_ptr Pointer to function that returns the tree.
+ * @ingroup NestedWidgetParts
+ */
 static inline NWidgetPart NWidgetFunction(NWidgetFunctionType *func_ptr)
 {
 	NWidgetPart part;

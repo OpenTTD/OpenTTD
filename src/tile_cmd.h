@@ -69,7 +69,7 @@ typedef uint GetSlopeZProc(TileIndex tile, uint x, uint y);
 typedef CommandCost ClearTileProc(TileIndex tile, DoCommandFlag flags);
 
 /**
- * Tile callback function signature for obtaining accepted carog of a tile
+ * Tile callback function signature for obtaining accepted cargo of a tile
  * @param tile Tile queried for its accepted cargo
  * @param res  Storage destination of the cargo accepted
  */

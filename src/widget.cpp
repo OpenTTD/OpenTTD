@@ -12,8 +12,8 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-static const char *UPARROW   = "\xEE\x8A\xA0";
-static const char *DOWNARROW = "\xEE\x8A\xAA";
+static const char *UPARROW   = "\xEE\x8A\xA0"; ///< String containing an upwards pointing arrow.
+static const char *DOWNARROW = "\xEE\x8A\xAA"; ///< String containing a downwards pointing arrow.
 
 /**
  * Compute the vertical position of the draggable part of scrollbar
@@ -524,6 +524,13 @@ void Window::DrawWidgets() const
 
 }
 
+/**
+ * Evenly distribute the combined horizontal length of two consecutive widgets.
+ * @param w Window containing the widgets.
+ * @param a Left widget to resize.
+ * @param b Right widget to resize.
+ * @note Widgets are assumed to lie against each other.
+ */
 static void ResizeWidgets(Window *w, byte a, byte b)
 {
 	int16 offset = w->widget[a].left;
@@ -534,6 +541,14 @@ static void ResizeWidgets(Window *w, byte a, byte b)
 	w->widget[b].left  = w->widget[a].right + 1;
 }
 
+/**
+ * Evenly distribute the combined horizontal length of three consecutive widgets.
+ * @param w Window containing the widgets.
+ * @param a Left widget to resize.
+ * @param b Middle widget to resize.
+ * @param c Right widget to resize.
+ * @note Widgets are assumed to lie against each other.
+ */
 static void ResizeWidgets(Window *w, byte a, byte b, byte c)
 {
 	int16 offset = w->widget[a].left;
@@ -638,7 +653,25 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
 }
 
 
-/* == Nested widgets == */
+/**
+ * @defgroup NestedWidgets Hierarchical widgets.
+ * Hierarchical widgets, also known as nested widgets, are widgets stored in a tree. At the leafs of the tree are (mostly) the 'real' widgets
+ * visible to the user. At higher levels, widgets get organized in container widgets, until all widgets of the window are merged.
+ *
+ * A leaf widget is one of
+ * - #NWidgetLeaf for widgets visible for the user, or
+ * - #NWidgetSpacer for creating (flexible) empty space between widgets.
+ *
+ * A container widget is one of
+ * - #NWidgetHorizontal for organizing child widgets in a (horizontal) row. The row switches order depending on the language setting (thus supporting
+ *   right-to-left languages),
+ * - #NWidgetHorizontalLTR for organizing child widgets in a (horizontal) row, always in the same order. All childs below this container will also
+ *   never swap order.
+ * - #NWidgetVertical for organizing child widgets underneath each other.
+ * - #NWidgetBackground for adding a background behind its child widget.
+ *
+ * @see NestedWidgetParts
+ */
 
 /**
  * Base class constructor.
@@ -878,6 +911,7 @@ void NWidgetContainer::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
 	this->pip_post = pip_post;
 }
 
+/** Horizontal container widget. */
 NWidgetHorizontal::NWidgetHorizontal() : NWidgetContainer(NWID_HORIZONTAL)
 {
 }
@@ -986,6 +1020,7 @@ void NWidgetHorizontal::StoreWidgets(Widget *widgets, int length, bool left_movi
 	}
 }
 
+/** Horizontal left-to-right container widget. */
 NWidgetHorizontalLTR::NWidgetHorizontalLTR() : NWidgetHorizontal()
 {
 	this->type = NWID_HORIZONTAL_LTR;
@@ -1001,6 +1036,7 @@ void NWidgetHorizontalLTR::StoreWidgets(Widget *widgets, int length, bool left_m
 	NWidgetHorizontal::StoreWidgets(widgets, length, left_moving, top_moving, false);
 }
 
+/** Vertical container widget. */
 NWidgetVertical::NWidgetVertical() : NWidgetContainer(NWID_VERTICAL)
 {
 }
@@ -1223,10 +1259,11 @@ void NWidgetBackground::StoreWidgets(Widget *widgets, int length, bool left_movi
 
 /**
  * Nested leaf widget.
- * @param tp    Type of leaf widget.
- * @param index Index in the widget array used by the window system.
- * @param data  Data of the widget.
- * @param tip   Tooltip of the widget.
+ * @param tp     Type of leaf widget.
+ * @param colour Colour of the leaf widget.
+ * @param index  Index in the widget array used by the window system.
+ * @param data   Data of the widget.
+ * @param tip    Tooltip of the widget.
  */
 NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, StringID tip) : NWidgetCore(tp, colour, true, true, data, tip)
 {
@@ -1314,6 +1351,7 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
  * @param rtl  Direction of the language.
  * @return Widget array with the converted widgets.
  * @note Caller should release returned widget array with \c free(widgets).
+ * @ingroup NestedWidgets
  */
 Widget *InitializeNWidgets(NWidgetBase *nwid, bool rtl)
 {
@@ -1595,6 +1633,7 @@ static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase *pare
  * @param parts Array with parts of the widgets.
  * @param count Length of the \a parts array.
  * @return Root of the nested widget tree, a vertical container containing the entire GUI.
+ * @ingroup NestedWidgetParts
  */
 NWidgetContainer *MakeNWidgets(const NWidgetPart *parts, int count)
 {
