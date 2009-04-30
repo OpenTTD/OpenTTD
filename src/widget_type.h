@@ -100,6 +100,8 @@ enum WidgetType {
 	NWID_HORIZONTAL_LTR, ///< Horizontal container that doesn't change the order of the widgets for RTL languages.
 	NWID_VERTICAL,       ///< Vertical container.
 	NWID_SPACER,         ///< Invisible widget that takes some space.
+	NWID_SELECTION,      ///< Stacked widgets, only one visible at a time (eg in a panel with tabs).
+	NWID_LAYERED,        ///< Widgets layered on top of each other, all visible at the same time.
 
 	/* Nested widget part types. */
 	WPT_RESIZE,       ///< Widget part for specifying resizing.
@@ -214,23 +216,43 @@ public:
 	~NWidgetContainer();
 
 	void Add(NWidgetBase *wid);
-	void SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post);
 
 	/** Return whether the container is empty. */
 	inline bool IsEmpty() { return head == NULL; };
 
 protected:
-	uint8 pip_pre;     ///< Amount of space before first widget.
-	uint8 pip_inter;   ///< Amount of space between widgets.
-	uint8 pip_post;    ///< Amount of space after last widget.
-
 	NWidgetBase *head; ///< Pointer to first widget in container.
 	NWidgetBase *tail; ///< Pointer to last widget in container.
 };
 
+/** Stacked widgets, widgets all occupying the same space in the window.
+ * @note the semantics difference between #NWID_SELECTION and #NWID_LAYERED is currently not used.
+ */
+class NWidgetStacked : public NWidgetContainer {
+public:
+	NWidgetStacked(WidgetType tp);
+
+	int ComputeMinimalSize();
+	void AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
+};
+
+/** Container with pre/inter/post child space. */
+class NWidgetPIPContainer : public NWidgetContainer {
+public:
+	NWidgetPIPContainer(WidgetType tp);
+
+	void SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post);
+
+protected:
+	uint8 pip_pre;     ///< Amount of space before first widget.
+	uint8 pip_inter;   ///< Amount of space between widgets.
+	uint8 pip_post;    ///< Amount of space after last widget.
+};
+
 /** Horizontal container.
  * @ingroup NestedWidgets */
-class NWidgetHorizontal : public NWidgetContainer {
+class NWidgetHorizontal : public NWidgetPIPContainer {
 public:
 	NWidgetHorizontal();
 
@@ -253,7 +275,7 @@ public:
 
 /** Vertical container.
  * @ingroup NestedWidgets */
-class NWidgetVertical : public NWidgetContainer {
+class NWidgetVertical : public NWidgetPIPContainer {
 public:
 	NWidgetVertical();
 
@@ -278,7 +300,7 @@ public:
  * @ingroup NestedWidgets */
 class NWidgetBackground : public NWidgetCore {
 public:
-	NWidgetBackground(WidgetType tp, Colours colour, int index, NWidgetContainer *child = NULL);
+	NWidgetBackground(WidgetType tp, Colours colour, int index, NWidgetPIPContainer *child = NULL);
 	~NWidgetBackground();
 
 	void Add(NWidgetBase *nwid);
@@ -289,7 +311,7 @@ public:
 
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 private:
-	NWidgetContainer *child; ///< Child widget.
+	NWidgetPIPContainer *child; ///< Child widget.
 };
 
 /** Leaf widget.
@@ -332,6 +354,10 @@ bool CompareWidgetArrays(const Widget *orig, const Widget *gen, bool report = tr
  *   Underneath these properties, all child widgets of the container must be defined. To denote that they are childs, add an indent before the nested widget parts of
  *   the child widgets (it has no meaning for the compiler but it makes the widget parts easier to read).
  *   Below the last child widget, use an #EndContainer part. This part should be aligned with the #NWidget part that started the container.
+ *
+ * - Stacked widgets #NWidgetStacked map each of their childs onto the same space. It behaves like a container, except there is no pre/inter/post space,
+ *   so the widget does not support #SetPIP. #SetPadding is allowed though.
+ *   Like the other container widgets, below the last child widgets, a #EndContainer part should be used to denote the end of the stacked widget.
  *
  * - Background widgets #NWidgetBackground start with a #NWidget(WidgetType tp, Colours col, int16 idx) part.
  *   What follows depends on how the widget is used.
@@ -589,7 +615,7 @@ static inline NWidgetPart NWidget(WidgetType tp, Colours col, int16 idx)
 
 /**
  * Widget part function for starting a new horizontal container, vertical container, or spacer widget.
- * @param tp Type of the new nested widget, #NWID_HORIZONTAL(_LTR), #NWID_VERTICAL, or #NWID_SPACER
+ * @param tp Type of the new nested widget, #NWID_HORIZONTAL(_LTR), #NWID_VERTICAL, #NWID_SPACER, #NWID_SELECTION, or #NWID_LAYERED.
  * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart NWidget(WidgetType tp)

@@ -669,6 +669,7 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
  *   never swap order.
  * - #NWidgetVertical for organizing child widgets underneath each other.
  * - #NWidgetBackground for adding a background behind its child widget.
+ * - #NWidgetStacked for stacking child widgets on top of each other.
  *
  * @see NestedWidgetParts
  */
@@ -896,6 +897,86 @@ void NWidgetContainer::Add(NWidgetBase *wid)
 }
 
 /**
+ * Widgets stacked on top of each other.
+ * @param tp Kind of stacking, must be either #NWID_SELECTION or #NWID_LAYERED.
+ */
+NWidgetStacked::NWidgetStacked(WidgetType tp) : NWidgetContainer(tp)
+{
+}
+
+int NWidgetStacked::ComputeMinimalSize()
+{
+	/* First sweep, recurse down and compute minimal size and filling. */
+	int biggest_index = -1;
+	this->min_x = 0;
+	this->min_y = 0;
+	this->fill_x = (this->head != NULL);
+	this->fill_y = (this->head != NULL);
+	this->resize_x = (this->head != NULL) ? 1 : 0;
+	this->resize_y = (this->head != NULL) ? 1 : 0;
+	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+		int idx = child_wid->ComputeMinimalSize();
+		biggest_index = max(biggest_index, idx);
+
+		this->min_x = max(this->min_x, child_wid->min_x + child_wid->padding_left + child_wid->padding_right);
+		this->min_y = max(this->min_y, child_wid->min_y + child_wid->padding_top + child_wid->padding_bottom);
+		this->fill_x &= child_wid->fill_x;
+		this->fill_y &= child_wid->fill_y;
+		this->resize_x = LeastCommonMultiple(this->resize_x, child_wid->resize_x);
+		this->resize_y = LeastCommonMultiple(this->resize_y, child_wid->resize_y);
+	}
+	return biggest_index;
+}
+
+void NWidgetStacked::AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+{
+	assert(given_width >= this->min_x && given_height >= this->min_y);
+
+	this->pos_x = x;
+	this->pos_y = y;
+	this->min_x = given_width;
+	this->min_y = given_height;
+	if (!allow_resize_x) this->resize_x = 0;
+	if (!allow_resize_y) this->resize_y = 0;
+
+	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+		/* Decide about horizontal position and filling of the child. */
+		uint child_width;
+		int child_pos_x;
+		if (child_wid->fill_x) {
+			child_width = given_width - child_wid->padding_left - child_wid->padding_right;
+			child_pos_x = (rtl ? child_wid->padding_right : child_wid->padding_left);
+		} else {
+			child_width = child_wid->min_x;
+			child_pos_x = (given_width - child_wid->padding_left - child_wid->padding_right - child_width) / 2 + (rtl ? child_wid->padding_right : child_wid->padding_left);
+		}
+
+		/* Decide about vertical position and filling of the child. */
+		uint child_height;
+		int child_pos_y;
+		if (child_wid->fill_y) {
+			child_height = given_height - child_wid->padding_top - child_wid->padding_bottom;
+			child_pos_y = 0;
+		} else {
+			child_height = child_wid->min_y;
+			child_pos_y = (given_height - child_wid->padding_top - child_wid->padding_bottom - child_height) / 2;
+		}
+		child_wid->AssignMinimalPosition(x + child_pos_x, y + child_pos_y, child_width, child_height, (this->resize_x > 0), (this->resize_y > 0), rtl);
+	}
+}
+
+void NWidgetStacked::StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl)
+{
+	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+		child_wid->StoreWidgets(widgets, length, left_moving, top_moving, rtl);
+	}
+}
+
+NWidgetPIPContainer::NWidgetPIPContainer(WidgetType tp) : NWidgetContainer(tp)
+{
+}
+
+/**
  * Set additional pre/inter/post space for the container.
  *
  * @param pip_pre   Additional space in front of the first child widget (above
@@ -904,7 +985,7 @@ void NWidgetContainer::Add(NWidgetBase *wid)
  * @param pip_post  Additional space after the last child widget (below for the
  *                  vertical container, at the right for the horizontal container).
  */
-void NWidgetContainer::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
+void NWidgetPIPContainer::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
 {
 	this->pip_pre = pip_pre;
 	this->pip_inter = pip_inter;
@@ -912,7 +993,7 @@ void NWidgetContainer::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
 }
 
 /** Horizontal container widget. */
-NWidgetHorizontal::NWidgetHorizontal() : NWidgetContainer(NWID_HORIZONTAL)
+NWidgetHorizontal::NWidgetHorizontal() : NWidgetPIPContainer(NWID_HORIZONTAL)
 {
 }
 
@@ -1037,7 +1118,7 @@ void NWidgetHorizontalLTR::StoreWidgets(Widget *widgets, int length, bool left_m
 }
 
 /** Vertical container widget. */
-NWidgetVertical::NWidgetVertical() : NWidgetContainer(NWID_VERTICAL)
+NWidgetVertical::NWidgetVertical() : NWidgetPIPContainer(NWID_VERTICAL)
 {
 }
 
@@ -1169,7 +1250,7 @@ void NWidgetSpacer::StoreWidgets(Widget *widgets, int length, bool left_moving, 
  *               vertical container will be inserted while adding the first
  *               child widget.
  */
-NWidgetBackground::NWidgetBackground(WidgetType tp, Colours colour, int index, NWidgetContainer *child) : NWidgetCore(tp, colour, true, true, 0x0, STR_NULL)
+NWidgetBackground::NWidgetBackground(WidgetType tp, Colours colour, int index, NWidgetPIPContainer *child) : NWidgetCore(tp, colour, true, true, 0x0, STR_NULL)
 {
 	this->SetIndex(index);
 	assert(tp == WWT_PANEL || tp == WWT_INSET || tp == WWT_FRAME);
@@ -1487,6 +1568,14 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				*fill_dest = false;
 				break;
 
+			case NWID_SELECTION:
+			case NWID_LAYERED:
+				if (*dest != NULL) return num_used;
+				*dest = new NWidgetStacked(parts->type);
+				*fill_dest = true;
+				break;
+
+
 			case WPT_RESIZE: {
 				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(*dest);
 				if (nwrb != NULL) {
@@ -1559,7 +1648,7 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 			}
 
 			case WPT_PIPSPACE: {
-				NWidgetContainer *nwc = dynamic_cast<NWidgetContainer *>(*dest);
+				NWidgetPIPContainer *nwc = dynamic_cast<NWidgetPIPContainer *>(*dest);
 				if (nwc != NULL) nwc->SetPIP(parts->u.pip.pre,  parts->u.pip.inter, parts->u.pip.post);
 
 				NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(*dest);
@@ -1614,7 +1703,8 @@ static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase *pare
 
 		/* If sub-widget is a container, recursively fill that container. */
 		WidgetType tp = sub_widget->type;
-		if (fill_sub && (tp == NWID_HORIZONTAL || tp == NWID_HORIZONTAL_LTR || tp == NWID_VERTICAL || tp == WWT_PANEL || tp == WWT_FRAME || tp == WWT_INSET)) {
+		if (fill_sub && (tp == NWID_HORIZONTAL || tp == NWID_HORIZONTAL_LTR || tp == NWID_VERTICAL
+							|| tp == WWT_PANEL || tp == WWT_FRAME || tp == WWT_INSET || tp == NWID_SELECTION || tp == NWID_LAYERED)) {
 			int num_used = MakeWidgetTree(parts, count - total_used, sub_widget);
 			parts += num_used;
 			total_used += num_used;
