@@ -1382,11 +1382,107 @@ static const Widget _orders_widgets[] = {
 	{   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_orders_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, ORDER_WIDGET_CLOSEBOX),
+		NWidget(NWID_LAYERED),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_TIMETABLE_VIEW), SetMinimalSize(61, 14),
+											SetDataTip(STR_TIMETABLE_VIEW, STR_TIMETABLE_VIEW_TOOLTIP),
+			EndContainer(),
+			NWidget(WWT_CAPTION, COLOUR_GREY, ORDER_WIDGET_CAPTION), SetDataTip(STR_ORDERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		EndContainer(),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY, ORDER_WIDGET_STICKY),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_GREY, ORDER_WIDGET_ORDER_LIST), SetMinimalSize(372, 62), SetDataTip(0x0, STR_ORDERS_LIST_TOOLTIP),
+											SetResize(1, OrdersWindow::ORDER_LIST_LINE_HEIGHT), EndContainer(),
+		NWidget(WWT_SCROLLBAR, COLOUR_GREY, ORDER_WIDGET_SCROLLBAR),
+	EndContainer(),
+
+	/* First button row. */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_SELECTION),
+			/* Refit + service buttons. */
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_REFIT), SetMinimalSize(186, 12), SetDataTip(STR_REFIT, STR_REFIT_TIP),
+				NWidget(NWID_LAYERED),
+					NWidget(NWID_HORIZONTAL),
+						NWidget(WWT_TEXTBTN, COLOUR_GREY, ORDER_WIDGET_SERVICE), SetMinimalSize(174, 12),
+											SetDataTip(STR_SERVICE, STR_SERVICE_HINT), SetResize(1, 0),
+						NWidget(NWID_SPACER), SetFill(1, 0),
+					EndContainer(),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_SERVICE_DROPDOWN), SetMinimalSize(186, 12),
+											SetDataTip(STR_NULL, STR_SERVICE_HINT), SetResize(1, 0),
+				EndContainer(),
+			EndContainer(),
+			/* load + unload buttons. */
+			NWidget(NWID_HORIZONTAL),
+				NWidget(NWID_LAYERED),
+					/* Not used. */
+					NWidget(NWID_HORIZONTAL),
+						NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_NON_STOP_DROPDOWN), SetMinimalSize(1, 12), SetFill(false, false),
+						NWidget(NWID_SPACER), SetFill(true, false),
+					EndContainer(),
+					/* Not used. */
+					NWidget(NWID_HORIZONTAL),
+						NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_NON_STOP), SetMinimalSize(1, 12), SetFill(false, false),
+						NWidget(NWID_SPACER), SetFill(true, false),
+					EndContainer(),
+					/* Full load. */
+					NWidget(NWID_HORIZONTAL),
+						NWidget(WWT_TEXTBTN, COLOUR_GREY, ORDER_WIDGET_FULL_LOAD), SetMinimalSize(174, 12),
+											SetDataTip(STR_ORDER_TOGGLE_FULL_LOAD, STR_ORDER_TOOLTIP_FULL_LOAD),
+						NWidget(NWID_SPACER), SetFill(1, 0),
+					EndContainer(),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_FULL_LOAD_DROPDOWN), SetMinimalSize(186, 12),
+											SetDataTip(STR_NULL, STR_ORDER_TOOLTIP_FULL_LOAD),
+				EndContainer(),
+				/* Unload. */
+				NWidget(NWID_LAYERED),
+					NWidget(NWID_HORIZONTAL),
+						NWidget(WWT_TEXTBTN, COLOUR_GREY, ORDER_WIDGET_UNLOAD), SetMinimalSize(174, 12),
+											SetDataTip(STR_ORDER_TOGGLE_UNLOAD, STR_ORDER_TOOLTIP_UNLOAD), SetResize(1, 0),
+						NWidget(NWID_SPACER), SetFill(1, 0),
+					EndContainer(),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_UNLOAD_DROPDOWN), SetMinimalSize(186, 12),
+											SetDataTip(STR_NULL, STR_ORDER_TOOLTIP_UNLOAD), SetResize(1, 0),
+				EndContainer(),
+			EndContainer(),
+
+			/* Buttons for setting a condition. */
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_COND_VARIABLE), SetMinimalSize(124, 12), SetDataTip(STR_NULL, STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_COND_COMPARATOR), SetMinimalSize(124, 12), SetDataTip(STR_NULL, STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_COND_VALUE), SetMinimalSize(124, 12), SetResize(1, 0),
+											SetDataTip(STR_CONDITIONAL_VALUE, STR_ORDER_CONDITIONAL_VALUE_TOOLTIP),
+			EndContainer(),
+		EndContainer(),
+
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, ORDER_WIDGET_SHARED_ORDER_LIST), SetMinimalSize(12, 12), SetDataTip(SPR_SHARED_ORDERS_ICON, STR_VEH_WITH_SHARED_ORDERS_LIST_TIP),
+	EndContainer(),
+
+	/* Second button row. */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_SKIP), SetMinimalSize(124, 12), SetDataTip(STR_ORDERS_SKIP_BUTTON, STR_ORDERS_SKIP_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_DELETE), SetMinimalSize(124, 12), SetDataTip(STR_ORDERS_DELETE_BUTTON, STR_ORDERS_DELETE_TOOLTIP),
+		NWidget(NWID_LAYERED),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, ORDER_WIDGET_GOTO), SetMinimalSize(112, 12), SetDataTip(STR_ORDERS_GO_TO_BUTTON, STR_ORDERS_GO_TO_TOOLTIP), SetResize(1, 0),
+				NWidget(NWID_SPACER), SetFill(1, 0),
+			EndContainer(),
+			NWidget(WWT_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_GOTO_DROPDOWN), SetMinimalSize(124, 12), SetDataTip(STR_EMPTY, STR_ORDER_GO_TO_DROPDOWN_TOOLTIP), SetResize(1, 0),
+		EndContainer(),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY, ORDER_WIDGET_RESIZE),
+	EndContainer(),
+};
+
 static const WindowDesc _orders_desc(
 	WDP_AUTO, WDP_AUTO, 384, 100, 384, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_orders_widgets
+	_orders_widgets, _nested_orders_widgets, lengthof(_nested_orders_widgets)
 );
 
 /**
@@ -1426,11 +1522,66 @@ static const Widget _other_orders_widgets[] = {
 	{   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_other_orders_widgets[] = {
+	NWidget(NWID_LAYERED),
+		/* Start of the window. */
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_CLOSEBOX, COLOUR_GREY, ORDER_WIDGET_CLOSEBOX),
+				NWidget(NWID_LAYERED),
+					NWidget(NWID_HORIZONTAL),
+						NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_TIMETABLE_VIEW), SetMinimalSize(61, 14),
+											SetDataTip(STR_TIMETABLE_VIEW, STR_TIMETABLE_VIEW_TOOLTIP),
+					EndContainer(),
+					NWidget(WWT_CAPTION, COLOUR_GREY, ORDER_WIDGET_CAPTION), SetDataTip(STR_ORDERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+				EndContainer(),
+				NWidget(WWT_STICKYBOX, COLOUR_GREY, ORDER_WIDGET_STICKY),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_PANEL, COLOUR_GREY, ORDER_WIDGET_ORDER_LIST), SetMinimalSize(372, 72), SetDataTip(0x0, STR_ORDERS_LIST_TOOLTIP),
+											SetResize(1, OrdersWindow::ORDER_LIST_LINE_HEIGHT), EndContainer(),
+				NWidget(NWID_VERTICAL),
+					NWidget(WWT_SCROLLBAR, COLOUR_GREY, ORDER_WIDGET_SCROLLBAR),
+					NWidget(WWT_RESIZEBOX, COLOUR_GREY, ORDER_WIDGET_RESIZE),
+				EndContainer(),
+			EndContainer(),
+		EndContainer(),
+
+		/* Widgets not used in this window but needed for keeping the widget array filled. */
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(NWID_LAYERED),
+					NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_SKIP),               SetMinimalSize(1, 1), SetFill(false, false),
+					NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_DELETE),             SetMinimalSize(1, 1), SetFill(false, false),
+					NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_NON_STOP_DROPDOWN),  SetMinimalSize(1, 1), SetFill(false, false),
+					NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_NON_STOP),           SetMinimalSize(1, 1), SetFill(false, false),
+					NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_GOTO_DROPDOWN),      SetMinimalSize(1, 1), SetFill(false, false),
+					NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_GOTO),               SetMinimalSize(1, 1), SetFill(false, false),
+					NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_FULL_LOAD_DROPDOWN), SetMinimalSize(1, 1), SetFill(false, false),
+					NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_FULL_LOAD),          SetMinimalSize(1, 1), SetFill(false, false),
+					NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_UNLOAD_DROPDOWN),    SetMinimalSize(1, 1), SetFill(false, false),
+					NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_UNLOAD),             SetMinimalSize(1, 1), SetFill(false, false),
+					NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_REFIT),              SetMinimalSize(1, 1), SetFill(false, false),
+					NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_SERVICE_DROPDOWN),   SetMinimalSize(1, 1), SetFill(false, false),
+					NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_SERVICE),            SetMinimalSize(1, 1), SetFill(false, false),
+					NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_COND_VARIABLE),      SetMinimalSize(1, 1), SetFill(false, false),
+					NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_COND_COMPARATOR),    SetMinimalSize(1, 1), SetFill(false, false),
+					NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_COND_VALUE),         SetMinimalSize(1, 1), SetFill(false, false),
+					NWidget(WWT_EMPTY, COLOUR_GREY, ORDER_WIDGET_SHARED_ORDER_LIST),  SetMinimalSize(1, 1), SetFill(false, false),
+				EndContainer(),
+				NWidget(NWID_SPACER), SetFill(true, false), SetResize(1, 0),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetFill(true, true), SetResize(1, 1),
+		EndContainer(),
+	EndContainer(),
+};
+
 static const WindowDesc _other_orders_desc(
 	WDP_AUTO, WDP_AUTO, 384, 86, 384, 86,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	_other_orders_widgets
+	_other_orders_widgets, _nested_other_orders_widgets, lengthof(_nested_other_orders_widgets)
 );
 
 void ShowOrdersWindow(const Vehicle *v)
