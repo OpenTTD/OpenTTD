@@ -731,6 +731,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvare 
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Alege intervalul de timp dintre salvările automate
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Dezactivată
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :În fiecare lună
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :La fiecare 3 luni
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :La fiecare 6 luni
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :La fiecare 12 luni
@@ -851,7 +852,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Set graf
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selectează setul grafic de bază utilizat în joc
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :În fiecare lună
 STR_AUTOSAVE_FAILED                                             :{WHITE}Auto-salvarea a esuat
 
 STR_MONTH_JAN                                                   :ianuarie
@@ -2800,6 +2800,18 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Elimina 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reinitializeaza contorul de intarziere, astfel ca vehiculul sa ajunga la timp
 STR_SERVICE_HINT                                                :{BLACK}Sari peste aceastã comandã dacã nu este necesar un service
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {CURRENCY} Greutate: {WEIGHT_S}{}Vitezã: {VELOCITY}  Putere: {POWER}{}Cost de rulare: {CURRENCY}/an{}Capacitate: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Cost: {CURRENCY} Viteză max.: {VELOCITY}{}Capacitate: {CARGO}, {CARGO}{}Mentenanţă: {CURRENCY}/an
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Cost: {CURRENCY} Viteză max.: {VELOCITY}{}Capacitate: {CARGO}{}Mentenanţă: {CURRENCY}/an
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Vechime: {LTBLUE}{STRING}{BLACK}   Mentenanţă: {LTBLUE}{CURRENCY}/an
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Viteză max.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Greutate: {LTBLUE}{WEIGHT_S} {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Viteză max.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Greutate: {LTBLUE}{WEIGHT_S} {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Viteză max.: {LTBLUE}{VELOCITY} {BLACK}Efort tractiv: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit pe anul curent: {LTBLUE}{CURRENCY} (anul precedent: {CURRENCY})
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construit: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacitate: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacitate: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacitate: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Defect
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Oprit
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nu se poate permite trenului să treacă în caz de pericol...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Accident!
@@ -3151,6 +3163,14 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Aderă 
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Aderă la Euro: {ORANGE}niciodată
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Previzualizare: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Schimbă un parametru al monedei proprii
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Scadevaloarea Lirei sterline (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Măreşte valoare Lirei sterline (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Setează rata de schimb a Lirei sterline (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Caracterul separator pentru moneda
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Setează prefixul monedei
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Setează sufixul monedei
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Anul în care se schimba în Euro
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 de Lire sterline (£) în moneda proprie
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3257,6 +3277,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Eficien�
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Greutate: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Viteza: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitate: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoane electrificate: {GOLD}+{POWER}{BLACK} Greutate: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Rearanjabil in: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Toate tipurile de incarcaturi
@@ -3549,6 +3570,7 @@ STR_AI_RANDOM_AI                                                :IA aleator
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametri IA
 STR_AI_AUTHOR                                                   :{BLACK}Autor: {STRING}
 STR_AI_VERSION                                                  :{BLACK}Versiune: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}O Inteligentă Artificială s-a oprit în mod eronat. Raportează această problemă autorului împreună cu o captură de ecran a ferestrei Depanare IA
 ########
 

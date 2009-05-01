@@ -2812,6 +2812,7 @@ STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasite: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapasite: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasite: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Arızalı
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Durdu
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Tehlikedeki tren sinyali geçemez...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Çarptı!
@@ -3163,6 +3164,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Euro'ya
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Euro'ya geç: {ORANGE}hiçbir zaman
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Önizleme: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Özel para birimini değiştir
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Bir Sterlin'e (£) karşılık gelen para biriminizi azaltın
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Bir Sterlin'e (£) karşılık gelen para biriminizi arttırın
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Bir Sterlin'e (£) karşılık gelen para biriminizi belirleyin
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Para biriminiz için ondalık ayıracı belirleyin
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Para biriminiz için ön ek belirleyin
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Para biriminiz için son ek belirleyin
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Avro'ya daha erken geç
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Avro'ya daha sonra geç
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Avro'ya geçiş yılını seçin
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Sterlin'in (£) para biriminizdeki karşılığı
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}

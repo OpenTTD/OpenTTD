@@ -3164,6 +3164,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Vaihda 
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Vaihda euroon: {ORANGE}ei koskaan
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Esikatselu: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Vaihda oman valuutan parametria.
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Vähennä valuuttasi määrää yhdelle Punnalle (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Lisää valuuttasi määrää yhdelle Punnalle (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Aseta vaihtokurssi valuutallesi yhdelle Punnalle (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Valitse välimerkki valuutallesi
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Valitse alkuliite valuutallesi
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Valitse jälkiliite valuutallesi
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Vaihda Euroon aikaisemmin
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Vaihda Euroon myöhemmin
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Valitse vuosi, jona vaihdetaan Euroon
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Puntaa (£) valuutassasi
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
