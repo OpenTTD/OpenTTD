@@ -312,11 +312,21 @@ static const Widget _news_type13_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_news_type13_widgets[] = {
+	NWidget(WWT_PANEL, COLOUR_WHITE, 0),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_PANEL, COLOUR_WHITE, 1), SetMinimalSize(11, 12), EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(419, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 158),
+	EndContainer(),
+};
+
 static WindowDesc _news_type13_desc(
 	WDP_CENTER, 476, 430, 170, 430, 170,
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
-	_news_type13_widgets
+	_news_type13_widgets, _nested_news_type13_widgets, lengthof(_nested_news_type13_widgets)
 );
 
 static const Widget _news_type2_widgets[] = {
@@ -325,11 +335,21 @@ static const Widget _news_type2_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_news_type2_widgets[] = {
+	NWidget(WWT_PANEL, COLOUR_WHITE, 0),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_PANEL, COLOUR_WHITE, 1), SetMinimalSize(11, 12), EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(419, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 118),
+	EndContainer(),
+};
+
 static WindowDesc _news_type2_desc(
 	WDP_CENTER, 476, 430, 130, 430, 130,
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
-	_news_type2_widgets
+	_news_type2_widgets, _nested_news_type2_widgets, lengthof(_nested_news_type2_widgets)
 );
 
 static const Widget _news_type0_widgets[] = {
@@ -1015,12 +1035,67 @@ NEWS_SETTINGS_LINE(28, NT_GENERAL),
 {   WIDGETS_END},
 };
 
+static NWidgetBase *MakeNewsSettingLines()
+{
+	const int NEWS_SETTING_HEIGHT = 12; // Height of one line.
+	NWidgetVertical *vert = new NWidgetVertical;
+
+	int widnum = WIDGET_NEWSOPT_START_OPTION;
+	for (int i = 0; i < NT_END; i++) {
+		NWidgetHorizontal *hor = new NWidgetHorizontal;
+		hor->SetPIP(4, 0, 0);
+		/* [<] button. */
+		NWidgetLeaf *leaf = new NWidgetLeaf(WWT_PUSHIMGBTN, COLOUR_YELLOW, widnum++, SPR_ARROW_LEFT, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
+		leaf->SetMinimalSize(9, NEWS_SETTING_HEIGHT);
+		hor->Add(leaf);
+		/* Label. */
+		leaf = new NWidgetLeaf(WWT_PUSHTXTBTN, COLOUR_YELLOW, widnum++, STR_EMPTY, STR_NULL);
+		leaf->SetMinimalSize(77, NEWS_SETTING_HEIGHT);
+		hor->Add(leaf);
+		/* [>] button. */
+		leaf = new NWidgetLeaf(WWT_PUSHIMGBTN, COLOUR_YELLOW, widnum++, SPR_ARROW_RIGHT, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
+		leaf->SetMinimalSize(9, NEWS_SETTING_HEIGHT);
+		hor->Add(leaf);
+		/* Descriptive text. */
+		leaf = new NWidgetLeaf(WWT_TEXT, COLOUR_YELLOW, widnum++, _news_type_data[i].description, STR_NULL);
+		leaf->SetMinimalSize(307, NEWS_SETTING_HEIGHT);
+		leaf->SetPadding(0, 0, 0, 4);
+		hor->Add(leaf);
+
+		vert->Add(hor);
+	}
+	return vert;
+}
+
+static const NWidgetPart _nested_message_options_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, WIDGET_NEWSOPT_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, WIDGET_NEWSOPT_CAPTION), SetDataTip(STR_NEWS_MESSAGE_OPTIONS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_BROWN, WIDGET_NEWSOPT_BACKGROUND),
+		NWidget(WWT_LABEL, COLOUR_BROWN, WIDGET_NEWSOPT_LABEL), SetMinimalSize(410, 14), SetDataTip(STR_NEWS_MESSAGE_TYPES, STR_NULL),
+		NWidgetFunction(MakeNewsSettingLines),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_HORIZONTAL), SetPadding(0, 0, 0, 4),
+				NWidget(WWT_DROPDOWN, COLOUR_YELLOW, WIDGET_NEWSOPT_DROP_SUMMARY), SetMinimalSize(95, 12), SetDataTip(0x0, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_YELLOW, WIDGET_NEWSOPT_LABEL_SUMMARY), SetMinimalSize(307, 12), SetDataTip(STR_MESSAGES_ALL, STR_NULL), SetPadding(0, 0, 0, 4),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL), SetPadding(0, 0, 0, 4),
+				NWidget(WWT_TEXTBTN_2, COLOUR_YELLOW, WIDGET_NEWSOPT_SOUNDTICKER), SetMinimalSize(95, 12), SetDataTip(STR_STATION_BUILD_COVERAGE_OFF, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_YELLOW, WIDGET_NEWSOPT_SOUNDTICKER_LABEL), SetMinimalSize(307, 12), SetDataTip(STR_MESSAGE_SOUND, STR_NULL), SetPadding(0, 0, 0, 4),
+			EndContainer(),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 7),
+	EndContainer(),
+};
+
 static const WindowDesc _message_options_desc(
 	270,  22,  410,  65 + NT_END * NEWS_SETTING_BASELINE_SKIP,
 	           410,  65 + NT_END * NEWS_SETTING_BASELINE_SKIP,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_message_options_widgets
+	_message_options_widgets, _nested_message_options_widgets, lengthof(_nested_message_options_widgets)
 );
 
 void ShowMessageOptions()
