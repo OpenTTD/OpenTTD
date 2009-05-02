@@ -817,10 +817,17 @@ void ShowMessageHistory()
 
 
 /** News settings window widget offset constants */
-enum {
-	WIDGET_NEWSOPT_DROP_SUMMARY = 4,  ///< Dropdown that adjusts at once the level for all settings
-	WIDGET_NEWSOPT_SOUNDTICKER  = 6,  ///< Button activating sound on events
-	WIDGET_NEWSOPT_START_OPTION = 8,  ///< First widget that is part of a group [<] .. [.]
+enum NewsSettingsWidgets {
+	WIDGET_NEWSOPT_CLOSEBOX,          ///< Close box.
+	WIDGET_NEWSOPT_CAPTION,           ///< Caption.
+	WIDGET_NEWSOPT_BACKGROUND,        ///< Background widget.
+	WIDGET_NEWSOPT_LABEL,             ///< Top label.
+	WIDGET_NEWSOPT_DROP_SUMMARY,      ///< Dropdown that adjusts at once the level for all settings.
+	WIDGET_NEWSOPT_LABEL_SUMMARY,     ///< Label of the summary drop down.
+	WIDGET_NEWSOPT_SOUNDTICKER,       ///< Button for (de)activating sound on events.
+	WIDGET_NEWSOPT_SOUNDTICKER_LABEL, ///< Label of the soundticker button,
+
+	WIDGET_NEWSOPT_START_OPTION,      ///< First widget that is part of a group [<] .. [.]
 };
 
 static const StringID _message_opt[] = {STR_OFF, STR_SUMMARY, STR_FULL, INVALID_STRING_ID};
