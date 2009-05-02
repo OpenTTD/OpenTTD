@@ -5,9 +5,9 @@
 ##grflangid 0x3a
 ##plural 1
 ##textdir ltr
-##gender m f
 ##digitsep .
 ##digitsepcur .
+##gender m f
 
 #
 
@@ -321,6 +321,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}정말 
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}게임 그만두기
 STR_SORT_ORDER_TIP                                              :{BLACK}정렬 방법을 선택하십시오 (내림차순/오름차순)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}정렬 기준 선택
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}필터링 기준 선택
 STR_SORT_BY                                                     :{BLACK}정렬
 
 STR_SORT_BY_POPULATION                                          :{BLACK}인구
@@ -343,6 +344,8 @@ STR_SORT_BY_LENGTH                                              :길이
 STR_SORT_BY_LIFE_TIME                                           :남은 수명
 STR_SORT_BY_FACILITY                                            :역 종류
 STR_SORT_BY_WAITING                                             :대기 화물량
+STR_SORT_BY_RATING_MAX                                          :높은 화물 등급순
+STR_SORT_BY_RATING_MIN                                          :낮은 화물 등급순
 STR_ENGINE_SORT_ENGINE_ID                                       :기관차ID
 STR_ENGINE_SORT_COST                                            :가격
 STR_ENGINE_SORT_POWER                                           :힘
@@ -729,6 +732,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}자동�
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}게임 자동 저장의 간격을 선택
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :사용 안함
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :매달
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :3개월마다
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :6개월마다
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12개월마다
@@ -849,7 +853,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}기본 �
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}사용할 기본 그래픽을 선택하세요
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :매달
 STR_AUTOSAVE_FAILED                                             :{WHITE}자동 저장 실패
 
 STR_MONTH_JAN                                                   :1월
@@ -907,8 +910,8 @@ STR_CONFIG_SETTING                                              :{BLACK}고급 �
 STR_CONFIG_SETTING_TIP                                          :{BLACK}고급 설정 표시
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}고급 설정
 
-STR_CONFIG_SETTING_OFF                                          :꺼짐
-STR_CONFIG_SETTING_ON                                           :켜짐
+STR_CONFIG_SETTING_OFF                                          :끔
+STR_CONFIG_SETTING_ON                                           :켬
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}상태바에 차량 속도를 표시 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}경사/해안가 건설을 허용 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}건물, 트랙 등의 하부 지형 편집 허용 (자동 슬로프): {ORANGE}{STRING}
@@ -1717,6 +1720,7 @@ STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}회사 �
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}보조금
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}제공되는 보조금:
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{1:STRING}에서 {2:STRING}까지 {0:STRING} 수송{YELLOW} ({3:DATE_SHORT}까지)
 STR_SUBSIDIES_NONE                                              :{ORANGE}없음
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}이미 지급된 보조금:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{1:STATION}에서 {2:STATION}까지 {0:STRING} 수송{YELLOW} ({3:COMPANY}{YELLOW}, {DATE_SHORT}까지)
@@ -2797,6 +2801,19 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택�
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}지각 카운터 초기화, 차량은 제시간으로 운행합니다.
 STR_SERVICE_HINT                                                :{BLACK}점검이 필요하면 이 경로를 건너뜁니다.
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}가격: {CURRENCY} 무게: {WEIGHT_S}{}속도: {VELOCITY}  힘: {POWER}{}운행비용: {CURRENCY}/년{}수송량: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}가격: {CURRENCY} 최고속력: {VELOCITY}{}수송량: {CARGO}, {CARGO}{}운행비용: {CURRENCY}/년
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}가격: {CURRENCY} 최고속력: {VELOCITY}{}수송량: {CARGO}{}운행비용: {CURRENCY}/년
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/yr
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}최고 속력: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}무게: {LTBLUE}{WEIGHT_S} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속력: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}무게: {LTBLUE}{WEIGHT_S} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속력: {LTBLUE}{VELOCITY} {BLACK}최고 T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}올해 수익: {LTBLUE}{CURRENCY} (작년: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}수송량: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}수송량: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}수송량: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}고장
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}정지함
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}너무 위험해서 신호를 무시할 수 없습니다...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}충돌!!
@@ -3135,6 +3152,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMP
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' 의 정보가 잘못되었습니다
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGINE}을 위한 화물/개조 정보가 건설 후 구매 목록과 다릅니다. 이것은 자동교체에서 개조를 실패를 초래할 수 있습니다.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 때문에 결과물 콜백 과정에서 무한 루프가 발생하고 있습니다.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}전차를 지원하지 않는 버전으로 게임이 저장되었습니다. 모든 전차는 제거되었습니다.
 
@@ -3147,6 +3165,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}유로�
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}유로화로 전환: {ORANGE}안함
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}미리보기: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}사용자 화폐 변수 변경
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}(1 파운드(£)에 대한) 사용자 화폐 단위양을 감소시킵니다.
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}(1 파운드(£)에 대한) 사용자 화폐 단위양을 증가시킵니다.
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}1 파운드(£)에 해당하는 사용자 화폐 단위의 환율을 설정하십시오.
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}사용자 화폐 단위의 단위 구분자를 설정하십시오.
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}사용자 화폐 단위 앞에 붙는 문구를 설정하십시오.
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}사용자 화폐 단위 뒤에 붙는 문구를 설정하십시오.
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}유로화(€) 전환 연도를 앞으로 당깁니다.
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}유로화(€) 전환 연도를 늦춥니다.
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}유로화(€) 전환 연도를 설정하십시오.
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 파운드(£)에 해당하는 사용자 화폐 단위입니다.
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3253,6 +3281,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}최고 �
 STR_PURCHASE_INFO_COST                                          :{BLACK}가격: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}중량: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}가격: {GOLD}{CURRENCY}{BLACK} 속력: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}수용량: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}전원 화물차: {GOLD}+{POWER}{BLACK} 중량: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}개조가능 화물: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :모든 종류의 화물
@@ -3545,6 +3574,7 @@ STR_AI_RANDOM_AI                                                :무작위 인�
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}인공지능 파라미터
 STR_AI_AUTHOR                                                   :{BLACK}저자: {STRING}
 STR_AI_VERSION                                                  :{BLACK}버젼: {NUM}
+STR_AI_URL                                                      :{BLACK}주소: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}작동중인 인공지능 중 하나가 충돌했습니다. 인공지능 디버그 창에서 스샷을 찍어 인공지능 작가에게 보고하십시오.
 ########
 

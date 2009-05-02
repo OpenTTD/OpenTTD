@@ -2611,7 +2611,7 @@ STR_ORDER                                                       :{SETX 10}{COMMA
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}ohne Halt
 STR_ORDER_GO_TO                                                 :Fahre zu
-STR_ORDER_GO_NON_STOP_TO                                        :Fahre ohne Halt nach
+STR_ORDER_GO_NON_STOP_TO                                        :Fahre ohne Halt zu
 STR_ORDER_GO_VIA                                                :Fahre über
 STR_ORDER_GO_NON_STOP_VIA                                       :Fahre ohne Halt über
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[am Anfang]
@@ -2651,17 +2651,17 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Fahre zum näch
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Fahre zum nächsten Hangar
 STR_ORDER_NEAREST_DEPOT                                         :dem nächsten
 STR_ORDER_NEAREST_HANGAR                                        :dem nächsten Hangar
-STR_ORDER_SERVICE_AT                                            :Wartung in
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Fahre ohne Halt zur Wartung in
-STR_ORDER_TRAIN_DEPOT                                           :Zugdepot
-STR_ORDER_ROAD_DEPOT                                            :Straßenfahrzeugdepot
-STR_ORDER_SHIP_DEPOT                                            :Werft
-STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
-STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_ORDER_SERVICE_AT                                            :Falls nötig, Wartung in
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Fahre ohne Halt Zwecks Wartung zu
+STR_ORDER_TRAIN_DEPOT                                           :{G=n}Zugdepot
+STR_ORDER_ROAD_DEPOT                                            :{G=n}Straßenfahrzeugdepot
+STR_ORDER_SHIP_DEPOT                                            :{G=w}Werft
+STR_GO_TO_DEPOT                                                 :{STRING}{G 2 "m" "r" "m" "den"} {2:STRING} {1:TOWN}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING}{G 2 m r m "den"} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Gehe immer
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Wartung wenn benötigt
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Wartung wenn nötig
 STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
 
 STR_ORDER_CONDITIONAL                                           :Bedingter Sprung zu Auftrag
@@ -2730,7 +2730,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Baut ein
 STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Umbenennen
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Überspringen
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Löschen
-STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Fahre nach
+STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Fahre zu
 STR_REFIT                                                       :{BLACK}Umrüsten
 STR_REFIT_TIP                                                   :{BLACK}Frachtart auswählen, auf die umgerüstet werden soll. Strg+Klick, um einen Umrüstungsauftrag wieder zu entfernen
 STR_REFIT_ORDER                                                 :(auf {STRING} umrüsten)
