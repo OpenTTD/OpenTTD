@@ -299,9 +299,9 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			case MP_RAILWAY:
 				if (v->type == VEH_TRAIN && IsTileOwner(tile, _local_company)) {
 					if (IsRailDepot(tile)) {
-						order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS);
+						order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS,
+								_settings_client.gui.new_nonstop ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
 						if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
-						if (_settings_client.gui.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 						return order;
 					}
 				}
@@ -309,9 +309,9 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 			case MP_ROAD:
 				if (IsRoadDepot(tile) && v->type == VEH_ROAD && IsTileOwner(tile, _local_company)) {
-					order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS);
+					order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS,
+							_settings_client.gui.new_nonstop ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
 					if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
-					if (_settings_client.gui.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 					return order;
 				}
 				break;
@@ -319,7 +319,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			case MP_STATION:
 				if (v->type != VEH_AIRCRAFT) break;
 				if (IsHangar(tile) && IsTileOwner(tile, _local_company)) {
-					order.MakeGoToDepot(GetStationIndex(tile), ODTFB_PART_OF_ORDERS);
+					order.MakeGoToDepot(GetStationIndex(tile), ODTFB_PART_OF_ORDERS, ONSF_STOP_EVERYWHERE);
 					if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
 					return order;
 				}
@@ -330,7 +330,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 				if (IsShipDepot(tile) && IsTileOwner(tile, _local_company)) {
 					TileIndex tile2 = GetOtherShipDepotTile(tile);
 
-					order.MakeGoToDepot(GetDepotByTile(tile < tile2 ? tile : tile2)->index, ODTFB_PART_OF_ORDERS);
+					order.MakeGoToDepot(GetDepotByTile(tile < tile2 ? tile : tile2)->index, ODTFB_PART_OF_ORDERS, ONSF_STOP_EVERYWHERE);
 					if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
 					return order;
 				}
@@ -507,7 +507,8 @@ private:
 		Order order;
 		order.next = NULL;
 		order.index = 0;
-		order.MakeGoToDepot(0, ODTFB_PART_OF_ORDERS);
+		order.MakeGoToDepot(0, ODTFB_PART_OF_ORDERS,
+				_settings_client.gui.new_nonstop && (w->vehicle->type == VEH_TRAIN || w->vehicle->type == VEH_ROAD) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
 		order.SetDepotActionType(ODATFB_NEAREST_DEPOT);
 
 		DoCommandP(w->vehicle->tile, w->vehicle->index + (w->OrderGetSel() << 16), order.Pack(), CMD_INSERT_ORDER | CMD_MSG(STR_ERROR_CAN_T_INSERT_NEW_ORDER));

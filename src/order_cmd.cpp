@@ -51,14 +51,12 @@ void Order::MakeGoToStation(StationID destination)
 	this->dest = destination;
 }
 
-void Order::MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, OrderDepotActionFlags action, CargoID cargo, byte subtype)
+void Order::MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, OrderNonStopFlags non_stop_type, OrderDepotActionFlags action, CargoID cargo, byte subtype)
 {
 	this->type = OT_GOTO_DEPOT;
 	this->SetDepotOrderType(order);
 	this->SetDepotActionType(action);
-	if (!(order & ODTFB_PART_OF_ORDERS)) {
-		this->SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
-	}
+	this->SetNonStopType(non_stop_type);
 	this->dest = destination;
 	this->SetRefit(cargo, subtype);
 }
@@ -1644,7 +1642,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 
 				if (v->FindClosestDepot(&location, &destination, &reverse)) {
 					v->dest_tile = location;
-					v->current_order.MakeGoToDepot(destination, v->current_order.GetDepotOrderType(), (OrderDepotActionFlags)(v->current_order.GetDepotActionType() & ~ODATFB_NEAREST_DEPOT), v->current_order.GetRefitCargo(), v->current_order.GetRefitSubtype());
+					v->current_order.MakeGoToDepot(destination, v->current_order.GetDepotOrderType(), v->current_order.GetNonStopType(), (OrderDepotActionFlags)(v->current_order.GetDepotActionType() & ~ODATFB_NEAREST_DEPOT), v->current_order.GetRefitCargo(), v->current_order.GetRefitSubtype());
 
 					/* If there is no depot in front, reverse automatically (trains only) */
 					if (v->type == VEH_TRAIN && reverse) DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);

@@ -83,13 +83,14 @@ public:
 
 	/**
 	 * Makes this order a Go To Depot order.
-	 * @param destination the depot to go to.
-	 * @param order       is this order a 'default' order, or an overriden vehicle order?
-	 * @param action      what to do in the depot?
-	 * @param cargo       the cargo type to change to.
-	 * @param subtype     the subtype to change to.
+	 * @param destination   the depot to go to.
+	 * @param order         is this order a 'default' order, or an overriden vehicle order?
+	 * @param non_stop_type how to get to the depot?
+	 * @param action        what to do in the depot?
+	 * @param cargo         the cargo type to change to.
+	 * @param subtype       the subtype to change to.
 	 */
-	void MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, OrderDepotActionFlags action = ODATF_SERVICE_ONLY, CargoID cargo = CT_NO_REFIT, byte subtype = 0);
+	void MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, OrderNonStopFlags non_stop_type = ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS, OrderDepotActionFlags action = ODATF_SERVICE_ONLY, CargoID cargo = CT_NO_REFIT, byte subtype = 0);
 
 	/**
 	 * Makes this order a Go To Waypoint order.

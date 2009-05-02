@@ -340,10 +340,10 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 			 * to a depot (other vehicle types). */
 			if (::GetVehicle(vehicle_id)->type == VEH_AIRCRAFT) {
 				if (!::IsTileType(destination, MP_STATION)) return false;
-				order.MakeGoToDepot(::GetStationIndex(destination), odtf, odaf);
+				order.MakeGoToDepot(::GetStationIndex(destination), odtf, ONSF_STOP_EVERYWHERE, odaf);
 			} else {
 				if (::IsTileType(destination, MP_STATION)) return false;
-				order.MakeGoToDepot(::GetDepotByTile(destination)->index, odtf, odaf);
+				order.MakeGoToDepot(::GetDepotByTile(destination)->index, odtf, ONSF_STOP_EVERYWHERE, odaf);
 			}
 			break;
 		}
