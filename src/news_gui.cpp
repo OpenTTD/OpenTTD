@@ -133,22 +133,22 @@ assert_compile(lengthof(_news_subtype_data) == NS_END);
  * Per-NewsType data
  */
 NewsTypeData _news_type_data[] = {
-	/* name,              age, sound,           display */
-	{ "arrival_player",    60, SND_1D_APPLAUSE, ND_FULL },  ///< NT_ARRIVAL_COMPANY
-	{ "arrival_other",     60, SND_1D_APPLAUSE, ND_FULL },  ///< NT_ARRIVAL_OTHER
-	{ "accident",          90, SND_BEGIN,       ND_FULL },  ///< NT_ACCIDENT
-	{ "company_info",      60, SND_BEGIN,       ND_FULL },  ///< NT_COMPANY_INFO
-	{ "open",              90, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_OPEN
-	{ "close",             90, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_CLOSE
-	{ "economy",           30, SND_BEGIN,       ND_FULL },  ///< NT_ECONOMY
-	{ "production_player", 30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_COMPANY
-	{ "production_other",  30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_OTHER
-	{ "production_nobody", 30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_NOBODY
-	{ "advice",           150, SND_BEGIN,       ND_FULL },  ///< NT_ADVICE
-	{ "new_vehicles",      30, SND_1E_OOOOH,    ND_FULL },  ///< NT_NEW_VEHICLES
-	{ "acceptance",        90, SND_BEGIN,       ND_FULL },  ///< NT_ACCEPTANCE
-	{ "subsidies",        180, SND_BEGIN,       ND_FULL },  ///< NT_SUBSIDIES
-	{ "general",           60, SND_BEGIN,       ND_FULL },  ///< NT_GENERAL
+	/* name,              age, sound,           display, description */
+	{ "arrival_player",    60, SND_1D_APPLAUSE, ND_FULL, STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN       },  ///< NT_ARRIVAL_COMPANY
+	{ "arrival_other",     60, SND_1D_APPLAUSE, ND_FULL, STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER     },  ///< NT_ARRIVAL_OTHER
+	{ "accident",          90, SND_BEGIN,       ND_FULL, STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                },  ///< NT_ACCIDENT
+	{ "company_info",      60, SND_BEGIN,       ND_FULL, STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                },  ///< NT_COMPANY_INFO
+	{ "open",              90, SND_BEGIN,       ND_FULL, STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                      },  ///< NT_INDUSTRY_OPEN
+	{ "close",             90, SND_BEGIN,       ND_FULL, STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                     },  ///< NT_INDUSTRY_CLOSE
+	{ "economy",           30, SND_BEGIN,       ND_FULL, STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                    },  ///< NT_ECONOMY
+	{ "production_player", 30, SND_BEGIN,       ND_FULL, STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY },  ///< NT_INDUSTRY_COMPANY
+	{ "production_other",  30, SND_BEGIN,       ND_FULL, STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER   },  ///< NT_INDUSTRY_OTHER
+	{ "production_nobody", 30, SND_BEGIN,       ND_FULL, STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED          },  ///< NT_INDUSTRY_NOBODY
+	{ "advice",           150, SND_BEGIN,       ND_FULL, STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY      },  ///< NT_ADVICE
+	{ "new_vehicles",      30, SND_1E_OOOOH,    ND_FULL, STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                       },  ///< NT_NEW_VEHICLES
+	{ "acceptance",        90, SND_BEGIN,       ND_FULL, STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE        },  ///< NT_ACCEPTANCE
+	{ "subsidies",        180, SND_BEGIN,       ND_FULL, STR_NEWS_MESSAGE_TYPE_SUBSIDIES                          },  ///< NT_SUBSIDIES
+	{ "general",           60, SND_BEGIN,       ND_FULL, STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                },  ///< NT_GENERAL
 };
 
 assert_compile(lengthof(_news_type_data) == NT_END);
@@ -936,9 +936,8 @@ struct MessageOptionsWindow : Window {
  *
  * @param basey: Base Y coordinate
  * @param linenum: Count, news - setting is the \a linenum - th line
- * @param text: StringID for the text label to display
  */
-#define NEWS_SETTINGS_LINE(basey, linenum, text) \
+#define NEWS_SETTINGS_LINE(basey, linenum) \
 	{ WWT_PUSHIMGBTN, RESIZE_NONE, COLOUR_YELLOW, \
 	    4,  12,  basey     + linenum * NEWS_SETTING_BASELINE_SKIP,  basey + 11 + linenum * NEWS_SETTING_BASELINE_SKIP, \
 	  SPR_ARROW_LEFT, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST}, \
@@ -950,7 +949,7 @@ struct MessageOptionsWindow : Window {
 	  SPR_ARROW_RIGHT, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST}, \
         { WWT_TEXT, RESIZE_NONE, COLOUR_YELLOW, \
 	  103, 409,  basey + 1 + linenum * NEWS_SETTING_BASELINE_SKIP,  basey + 13 + linenum * NEWS_SETTING_BASELINE_SKIP, \
-	  text, STR_NULL}
+	  _news_type_data[linenum].description, STR_NULL}
 
 static const int NEWS_SETTING_BASELINE_SKIP = 12; ///< Distance between two news-setting lines, should be at least 12
 
@@ -989,21 +988,21 @@ static const Widget _message_options_widgets[] = {
 /* List of news-setting lines (4 widgets for each line).
  * First widget must be number WIDGET_NEWSOPT_START_OPTION
  */
-NEWS_SETTINGS_LINE(26, NT_ARRIVAL_COMPANY,  STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN),
-NEWS_SETTINGS_LINE(26, NT_ARRIVAL_OTHER,    STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER),
-NEWS_SETTINGS_LINE(26, NT_ACCIDENT,         STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS),
-NEWS_SETTINGS_LINE(26, NT_COMPANY_INFO,     STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION),
-NEWS_SETTINGS_LINE(26, NT_INDUSTRY_OPEN,    STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN),
-NEWS_SETTINGS_LINE(26, NT_INDUSTRY_CLOSE,   STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE),
-NEWS_SETTINGS_LINE(26, NT_ECONOMY,          STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES),
-NEWS_SETTINGS_LINE(26, NT_INDUSTRY_COMPANY, STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY),
-NEWS_SETTINGS_LINE(26, NT_INDUSTRY_OTHER,   STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER),
-NEWS_SETTINGS_LINE(26, NT_INDUSTRY_NOBODY,  STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED),
-NEWS_SETTINGS_LINE(26, NT_ADVICE,           STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY),
-NEWS_SETTINGS_LINE(26, NT_NEW_VEHICLES,     STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES),
-NEWS_SETTINGS_LINE(26, NT_ACCEPTANCE,       STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE),
-NEWS_SETTINGS_LINE(26, NT_SUBSIDIES,        STR_NEWS_MESSAGE_TYPE_SUBSIDIES),
-NEWS_SETTINGS_LINE(26, NT_GENERAL,          STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION),
+NEWS_SETTINGS_LINE(26, NT_ARRIVAL_COMPANY),
+NEWS_SETTINGS_LINE(26, NT_ARRIVAL_OTHER),
+NEWS_SETTINGS_LINE(26, NT_ACCIDENT),
+NEWS_SETTINGS_LINE(26, NT_COMPANY_INFO),
+NEWS_SETTINGS_LINE(26, NT_INDUSTRY_OPEN),
+NEWS_SETTINGS_LINE(26, NT_INDUSTRY_CLOSE),
+NEWS_SETTINGS_LINE(26, NT_ECONOMY),
+NEWS_SETTINGS_LINE(26, NT_INDUSTRY_COMPANY),
+NEWS_SETTINGS_LINE(26, NT_INDUSTRY_OTHER),
+NEWS_SETTINGS_LINE(26, NT_INDUSTRY_NOBODY),
+NEWS_SETTINGS_LINE(26, NT_ADVICE),
+NEWS_SETTINGS_LINE(26, NT_NEW_VEHICLES),
+NEWS_SETTINGS_LINE(26, NT_ACCEPTANCE),
+NEWS_SETTINGS_LINE(26, NT_SUBSIDIES),
+NEWS_SETTINGS_LINE(26, NT_GENERAL),
 
 {   WIDGETS_END},
 };

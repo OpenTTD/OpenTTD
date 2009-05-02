@@ -98,6 +98,7 @@ struct NewsTypeData {
 	const byte age;          ///< Maximum age of news items (in days)
 	const SoundFx sound;     ///< Sound
 	NewsDisplay display;     ///< Display mode (off, summary, full)
+	StringID description;    ///< Description of the news type in news settings window
 };
 
 struct NewsItem {
@@ -111,7 +112,7 @@ struct NewsItem {
 	uint data_a;           ///< Custom data 1 (usually tile or vehicle)
 	uint data_b;           ///< Custom data 2
 
-	void *free_data;       ///< Data to be freed when the news item has reached it's end.
+	void *free_data;       ///< Data to be freed when the news item has reached its end.
 
 	uint64 params[10];
 };
