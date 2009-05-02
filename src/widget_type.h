@@ -157,6 +157,21 @@ public:
 
 	virtual void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl) = 0;
 
+	/**
+	 * Set additional space (padding) around the widget.
+	 * @param top    Amount of additional space above the widget.
+	 * @param right  Amount of additional space right of the widget.
+	 * @param bottom Amount of additional space below the widget.
+	 * @param left   Amount of additional space left of the widget.
+	 */
+	inline void SetPadding(uint8 top, uint8 right, uint8 bottom, uint8 left)
+	{
+		this->padding_top = top;
+		this->padding_right = right;
+		this->padding_bottom = bottom;
+		this->padding_left = left;
+	};
+
 	WidgetType type;      ///< Type of the widget / nested widget.
 	uint min_x;           ///< Minimal horizontal size.
 	uint min_y;           ///< Minimal vertical size.

@@ -1636,16 +1636,9 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				break;
 			}
 
-			case WPT_PADDING: {
-				NWidgetBase *nwb = *dest;
-				if (nwb != NULL) {
-					nwb->padding_top = parts->u.padding.top;
-					nwb->padding_right = parts->u.padding.right;
-					nwb->padding_bottom = parts->u.padding.bottom;
-					nwb->padding_left = parts->u.padding.left;
-				}
+			case WPT_PADDING:
+				if (*dest != NULL) (*dest)->SetPadding(parts->u.padding.top, parts->u.padding.right, parts->u.padding.bottom, parts->u.padding.left);
 				break;
-			}
 
 			case WPT_PIPSPACE: {
 				NWidgetPIPContainer *nwc = dynamic_cast<NWidgetPIPContainer *>(*dest);
