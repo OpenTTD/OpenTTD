@@ -869,8 +869,9 @@ struct MessageOptionsWindow : Window {
 		this->DrawWidgets();
 
 		/* Draw the string of each setting on each button. */
-		for (int i = 0, y = 26; i < NT_END; i++, y += 12) {
-			DrawString(this->widget[WIDGET_NEWSOPT_START_OPTION + 1].left, this->widget[WIDGET_NEWSOPT_START_OPTION + 1].right, y + 1, _message_opt[_news_type_data[i].display], TC_BLACK, SA_CENTER);
+		for (int i = 0; i < NT_END; i++) {
+			DrawString(this->widget[WIDGET_NEWSOPT_START_OPTION + 1].left, this->widget[WIDGET_NEWSOPT_START_OPTION + 1].right,
+					this->widget[WIDGET_NEWSOPT_START_OPTION + NB_WIDG_PER_SETTING * i + 1].top + 1, _message_opt[_news_type_data[i].display], TC_BLACK, SA_CENTER);
 		}
 	}
 
