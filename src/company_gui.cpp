@@ -28,7 +28,7 @@
 #include "table/strings.h"
 
 enum {
-	FIRST_GUI_CALL = INT_MAX,  ///< default value to specify thuis is the first call of the resizable gui
+	FIRST_GUI_CALL = INT_MAX,  ///< default value to specify this is the first call of the resizable gui
 };
 
 static void DoShowCompanyFinances(CompanyID company, bool show_small, bool show_stickied, int top = FIRST_GUI_CALL, int left = FIRST_GUI_CALL);
@@ -1381,7 +1381,7 @@ static void DoSelectCompanyManagerFace(Window *parent, bool adv, int top, int le
 }
 
 
-/* Names of the widgets. Keep them in the same order as in the widget array */
+/** Names of the widgets of the #CompanyWindow. Keep them in the same order as in the widget array */
 enum CompanyWindowWidgets {
 	CW_WIDGET_CLOSEBOX = 0,
 	CW_WIDGET_CAPTION,
@@ -1726,7 +1726,14 @@ void ShowCompany(CompanyID company)
 	AllocateWindowDescFront<CompanyWindow>(&_company_desc, company);
 }
 
-
+/** widget numbers of the #BuyCompanyWindow. */
+enum BuyCompanyWidgets {
+	BCW_CLOSEBOX,
+	BCW_CAPTION,
+	BCW_BACKGROUND,
+	BCW_NO,
+	BCW_YES,
+};
 
 struct BuyCompanyWindow : Window {
 	BuyCompanyWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
@@ -1751,11 +1758,11 @@ struct BuyCompanyWindow : Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case 3:
+			case BCW_NO:
 				delete this;
 				break;
 
-			case 4:
+			case BCW_YES:
 				DoCommandP(0, this->window_number, 0, CMD_BUY_COMPANY | CMD_MSG(STR_ERROR_CAN_T_BUY_COMPANY));
 				break;
 		}
