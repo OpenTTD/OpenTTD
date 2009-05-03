@@ -1415,6 +1415,60 @@ static const Widget _company_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_company_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CW_WIDGET_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, CW_WIDGET_CAPTION), SetDataTip(STR_COMPANY_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, CW_WIDGET_FACE),
+		NWidget(NWID_SPACER), SetMinimalSize(360, 4),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetFill(1, 0),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, CW_WIDGET_BUILD_VIEW_HQ), SetMinimalSize(90, 12), SetPadding(0, 4, 0, 0),
+										SetDataTip(STR_COMPANY_VIEW_VIEW_HQ_BUTTON, STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetFill(1, 0),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, CW_WIDGET_RELOCATE_HQ), SetMinimalSize(90, 12), SetPadding(0, 4, 0, 0),
+										SetDataTip(STR_RELOCATE_HQ, STR_RELOCATE_COMPANY_HEADQUARTERS),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 94),
+		/* Multi player buttons. */
+		NWidget(NWID_SELECTION),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(NWID_SPACER), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_PASSWORD), SetMinimalSize(90, 12), SetPadding(0, 4, 0, 0),
+										SetDataTip(STR_COMPANY_PASSWORD, STR_COMPANY_PASSWORD_TOOLTIP),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(NWID_SPACER), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_JOIN), SetMinimalSize(90, 12), SetPadding(0, 4, 0, 0),
+										SetDataTip(STR_COMPANY_JOIN, STR_COMPANY_JOIN_TIP),
+			EndContainer(),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+	EndContainer(),
+	/* Button bars at the bottom. */
+	NWidget(NWID_SELECTION),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_NEW_FACE), SetMinimalSize(90, 12),
+										SetDataTip(STR_COMPANY_VIEW_NEW_FACE_BUTTON, STR_COMPANY_VIEW_NEW_FACE_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COLOUR_SCHEME), SetMinimalSize(90, 12),
+										SetDataTip(STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON, STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_PRESIDENT_NAME), SetMinimalSize(90, 12),
+										SetDataTip(STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON, STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_NAME), SetMinimalSize(90, 12),
+										SetDataTip(STR_COMPANY_VIEW_COMPANY_NAME_BUTTON, STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_BUY_SHARE), SetMinimalSize(180, 12),
+										SetDataTip(STR_COMPANY_VIEW_BUY_SHARE_BUTTON, STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_SELL_SHARE), SetMinimalSize(180, 12),
+										SetDataTip(STR_COMPANY_VIEW_SELL_SHARE_BUTTON, STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP),
+		EndContainer(),
+	EndContainer(),
+};
 
 /**
  * Draws text "Vehicles:" and number of all vehicle types, or "(none)"
@@ -1716,7 +1770,7 @@ static const WindowDesc _company_desc(
 	WDP_AUTO, WDP_AUTO, 360, 170, 360, 170,
 	WC_COMPANY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_company_widgets
+	_company_widgets, _nested_company_widgets,lengthof(_nested_company_widgets)
 );
 
 void ShowCompany(CompanyID company)
@@ -1778,11 +1832,29 @@ static const Widget _buy_company_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_buy_company_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, BCW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, BCW_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, BCW_BACKGROUND),
+		NWidget(NWID_SPACER), SetMinimalSize(334, 103), SetFill(1, 0),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(148, 0), SetFill(1, 0),
+			NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, BCW_NO), SetMinimalSize(60, 12), SetDataTip(STR_NO, STR_NULL),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0), SetFill(1, 0),
+			NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, BCW_YES), SetMinimalSize(60, 12), SetDataTip(STR_YES, STR_NULL),
+			NWidget(NWID_SPACER), SetMinimalSize(56, 0), SetFill(1, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 8), SetFill(1, 0),
+	EndContainer(),
+};
+
 static const WindowDesc _buy_company_desc(
 	153, 171, 334, 137, 334, 137,
 	WC_BUY_COMPANY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_buy_company_widgets
+	_buy_company_widgets, _nested_buy_company_widgets, lengthof(_nested_buy_company_widgets)
 );
 
 
