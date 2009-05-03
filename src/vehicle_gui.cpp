@@ -1640,13 +1640,47 @@ static const Widget _vehicle_view_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_vehicle_view_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, VVW_WIDGET_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_GREY, VVW_WIDGET_CAPTION), SetDataTip(STR_VEHICLE_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY, VVW_WIDGET_STICKY),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_GREY, VVW_WIDGET_PANEL),
+			NWidget(WWT_INSET, COLOUR_GREY, VVW_WIDGET_VIEWPORT), SetPadding(2, 2, 2, 2), SetMinimalSize(228, 86), SetResize(1, 1), EndContainer(),
+		EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_CENTER_MAIN_VIEH), SetMinimalSize(18, 18), SetDataTip(SPR_CENTRE_VIEW_VEHICLE, 0x0 /* filled later */),
+			NWidget(NWID_SELECTION),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_GOTO_DEPOT), SetMinimalSize(18, 18), SetDataTip(0x0 /* filled later */, 0x0 /* filled later */),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_CLONE_VEH), SetMinimalSize(18, 18), SetDataTip(0x0 /* filled later */, 0x0 /* filled later */),
+			EndContainer(),
+			NWidget(NWID_SELECTION),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_REFIT_VEH), SetMinimalSize(18, 18),
+												SetDataTip(SPR_REFIT_VEHICLE, 0x0 /* filled later */),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_TURN_AROUND), SetMinimalSize(18, 18),
+												SetDataTip(SPR_FORCE_VEHICLE_TURN, STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_FORCE_PROCEED), SetMinimalSize(18, 18),
+												SetDataTip(SPR_IGNORE_SIGNALS, STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP),
+			EndContainer(),
+			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_SHOW_ORDERS), SetMinimalSize(18, 18), SetDataTip(SPR_SHOW_ORDERS, 0x0 /* filled later */),
+			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_SHOW_DETAILS), SetMinimalSize(18, 18), SetDataTip(SPR_SHOW_VEHICLE_DETAILS, 0x0 /* filled later */),
+			NWidget(WWT_PANEL, COLOUR_GREY, VVW_WIDGET_EMPTY_BOTTOM_RIGHT), SetMinimalSize(18, 0), SetResize(0, 1), EndContainer(),
+		EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHBTN, COLOUR_GREY, VVW_WIDGET_START_STOP_VEH), SetMinimalSize(0, 12), SetResize(1, 0), SetFill(true, false),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY, VVW_WIDGET_RESIZE),
+	EndContainer(),
+};
 
 /** Vehicle view window descriptor for all vehicles but trains. */
 static const WindowDesc _vehicle_view_desc(
 	WDP_AUTO, WDP_AUTO, 250, 116, 250, 116,
 	WC_VEHICLE_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_vehicle_view_widgets
+	_vehicle_view_widgets, _nested_vehicle_view_widgets, lengthof(_nested_vehicle_view_widgets)
 );
 
 /** Vehicle view window descriptor for trains. Only minimum_height and
@@ -1656,7 +1690,7 @@ static const WindowDesc _train_view_desc(
 	WDP_AUTO, WDP_AUTO, 250, 134, 250, 134,
 	WC_VEHICLE_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_vehicle_view_widgets
+	_vehicle_view_widgets, _nested_vehicle_view_widgets, lengthof(_nested_vehicle_view_widgets)
 );
 
 
