@@ -79,39 +79,39 @@ static void StationsWndShowStationRating(int left, int right, int y, CargoID typ
 
 typedef GUIList<const Station*> GUIStationList;
 
+/** Enum for CompanyStations, referring to _company_stations_widgets */
+enum StationListWidgets {
+	SLW_CLOSEBOX =  0,  ///< Close window button
+	SLW_CAPTION,        ///< Window caption
+	SLW_STICKY,         ///< Sticky button
+	SLW_LIST,           ///< The main panel, list of stations
+	SLW_SCROLLBAR,      ///< Scrollbar next to the main panel
+	SLW_RESIZE,         ///< Resize button
+
+	SLW_TRAIN,          ///< 'TRAIN' button - list only facilities where is a railroad station
+	SLW_TRUCK,          ///< 'TRUCK' button - list only facilities where is a truck stop
+	SLW_BUS,            ///< 'BUS' button - list only facilities where is a bus stop
+	SLW_AIRPLANE,       ///< 'AIRPLANE' button - list only facilities where is an airport
+	SLW_SHIP,           ///< 'SHIP' button - list only facilities where is a dock
+	SLW_FACILALL,       ///< 'ALL' button - list all facilities
+
+	SLW_PAN_BETWEEN,    ///< Small panel between list of types of ficilities and list of cargo types
+	SLW_NOCARGOWAITING, ///< 'NO' button - list stations where no cargo is waiting
+	SLW_CARGOALL,       ///< 'ALL' button - list all stations
+	SLW_PAN_RIGHT,      ///< Panel right of list of cargo types
+
+	SLW_SORTBY,         ///< 'Sort by' button - reverse sort direction
+	SLW_SORTDROPBTN,    ///< Dropdown button
+	SLW_PAN_SORT_RIGHT, ///< Panel right of sorting options
+
+	SLW_CARGOSTART,     ///< Widget numbers used for list of cargo types (not present in _company_stations_widgets)
+};
+
 /**
  * The list of stations per company.
  */
 class CompanyStationsWindow : public Window
 {
-	/** Enum for CompanyStations, referring to _company_stations_widgets */
-	enum StationListWidgets {
-		SLW_CLOSEBOX =  0,  ///< Close window button
-		SLW_CAPTION,        ///< Window caption
-		SLW_STICKY,         ///< Sticky button
-		SLW_LIST,           ///< The main panel, list of stations
-		SLW_SCROLLBAR,      ///< Scrollbar next to the main panel
-		SLW_RESIZE,         ///< Resize button
-
-		SLW_TRAIN,          ///< 'TRAIN' button - list only facilities where is a railroad station
-		SLW_TRUCK,          ///< 'TRUCK' button - list only facilities where is a truck stop
-		SLW_BUS,            ///< 'BUS' button - list only facilities where is a bus stop
-		SLW_AIRPLANE,       ///< 'AIRPLANE' button - list only facilities where is an airport
-		SLW_SHIP,           ///< 'SHIP' button - list only facilities where is a dock
-		SLW_FACILALL,       ///< 'ALL' button - list all facilities
-
-		SLW_PAN_BETWEEN,    ///< Small panel between list of types of ficilities and list of cargo types
-		SLW_NOCARGOWAITING, ///< 'NO' button - list stations where no cargo is waiting
-		SLW_CARGOALL,       ///< 'ALL' button - list all stations
-		SLW_PAN_RIGHT,      ///< Panel right of list of cargo types
-
-		SLW_SORTBY,         ///< 'Sort by' button - reverse sort direction
-		SLW_SORTDROPBTN,    ///< Dropdown button
-		SLW_PAN_SORT_RIGHT, ///< Panel right of sorting options
-
-		SLW_CARGOSTART,     ///< Widget numbers used for list of cargo types (not present in _company_stations_widgets)
-	};
-
 protected:
 	/* Runtime saved values */
 	static Listing last_sorting;
