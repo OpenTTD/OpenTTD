@@ -298,6 +298,18 @@ void AfterLoadVehicles(bool part_of_load)
 		}
 	}
 
+	if (CheckSavegameVersion(105)) {
+		/* Before 105 there was no order for shared orders, thus it messed up horribly */
+		FOR_ALL_VEHICLES(v) {
+			if (v->First() != v || v->orders.list != NULL || v->previous_shared != NULL || v->next_shared == NULL) continue;
+
+			v->orders.list = new OrderList(NULL, v);
+			for (Vehicle *u = v; u != NULL; u = u->next_shared) {
+				u->orders.list = v->orders.list;
+			}
+		}
+	}
+
 	CheckValidVehicles();
 
 	FOR_ALL_VEHICLES(v) {
