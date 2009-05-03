@@ -60,7 +60,7 @@ SQInteger SquirrelStd::require(HSQUIRRELVM vm)
 	SQChar *s = scstrrchr(real_filename, PATHSEPCHAR);
 	if (s != NULL) {
 		/* Keep the PATHSEPCHAR there, remove the rest */
-		*s++;
+		s++;
 		*s = '\0';
 	}
 	/* And now we concat, so we are relative from the current script
