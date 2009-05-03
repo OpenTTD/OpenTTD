@@ -16,6 +16,8 @@ enum {
 	LG_TERRAGENESIS = 1,  ///< TerraGenesis Perlin landscape generator
 
 	GENERATE_NEW_SEED = UINT_MAX, ///< Create a new random seed
+
+	GENWORLD_REDRAW_TIMEOUT = 200, ///< Timeout between redraws
 };
 
 /* Modes for GenerateWorld */
@@ -32,7 +34,6 @@ typedef void gw_abort_proc();
 struct gw_info {
 	bool active;           ///< Is generating world active
 	bool abort;            ///< Whether to abort the thread ASAP
-	bool wait_for_draw;    ///< Are we waiting on a draw event
 	bool quit_thread;      ///< Do we want to quit the active thread
 	bool threaded;         ///< Whether we run _GenerateWorld threaded
 	GenerateWorldMode mode;///< What mode are we making a world in
@@ -69,8 +70,6 @@ static inline bool IsGeneratingWorld()
 }
 
 /* genworld.cpp */
-void SetGeneratingWorldPaintStatus(bool status);
-bool IsGeneratingWorldReadyForPaint();
 bool IsGenerateWorldThreaded();
 void GenerateWorldSetCallback(gw_done_proc *proc);
 void GenerateWorldSetAbortCallback(gw_abort_proc *proc);
@@ -88,5 +87,8 @@ void ShowGenerateWorldProgress();
 void StartNewGameWithoutGUI(uint seed);
 void ShowCreateScenario();
 void StartScenarioEditor();
+
+extern class ThreadMutex *_genworld_mapgen_mutex;
+extern class ThreadMutex *_genworld_paint_mutex;
 
 #endif /* GENWORLD_H */

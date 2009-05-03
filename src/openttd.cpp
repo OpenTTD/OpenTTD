@@ -50,6 +50,7 @@
 #include "elrail_func.h"
 #include "rev.h"
 #include "highscore.h"
+#include "thread.h"
 
 #include "newgrf_commons.h"
 
@@ -654,6 +655,10 @@ int ttd_main(int argc, char *argv[])
 	_cursor.in_window = true;
 	InitializeGUI();
 	IConsoleCmdExec("exec scripts/autoexec.scr 0");
+
+	/* Take our initial lock on whatever we might want to do! */
+	_genworld_paint_mutex->BeginCritical();
+	_genworld_mapgen_mutex->BeginCritical();
 
 	GenerateWorld(GW_EMPTY, 64, 64); // Make the viewport initialization happy
 	WaitTillGeneratedWorld();

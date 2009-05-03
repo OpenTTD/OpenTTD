@@ -26,6 +26,7 @@
 #include "landscape_type.h"
 #include "querystring_gui.h"
 #include "town.h"
+#include "thread.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -1352,8 +1353,8 @@ static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total
 		_tp.percent = percent_table[cls];
 	}
 
-	/* Don't update the screen too often. So update it once in every 200ms */
-	if (!_network_dedicated && _tp.timer != 0 && _realtime_tick - _tp.timer < 200) return;
+	/* Don't update the screen too often. So update it once in every once in a while... */
+	if (!_network_dedicated && _tp.timer != 0 && _realtime_tick - _tp.timer < GENWORLD_REDRAW_TIMEOUT) return;
 
 	/* Percentage is about the number of completed tasks, so 'current - 1' */
 	_tp.percent = percent_table[cls] + (percent_table[cls + 1] - percent_table[cls]) * (_tp.current == 0 ? 0 : _tp.current - 1) / _tp.total;
@@ -1379,12 +1380,15 @@ static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total
 
 	InvalidateWindow(WC_GENERATE_PROGRESS_WINDOW, 0);
 	MarkWholeScreenDirty();
-	SetGeneratingWorldPaintStatus(true);
 
-	/* We wait here till the paint is done, so we don't read and write
-	 *  on the same tile at the same moment. Nasty hack, but that happens
-	 *  if you implement threading afterwards */
-	while (IsGeneratingWorldReadyForPaint()) { CSleep(10); }
+	/* Release the rights to the map generator, and acquire the rights to the
+	 * paint thread. The 'other' thread already has the paint thread rights so
+	 * this ensures us that we are waiting until the paint thread is done
+	 * before we reacquire the mapgen rights */
+	_genworld_mapgen_mutex->EndCritical();
+	_genworld_paint_mutex->BeginCritical();
+	_genworld_mapgen_mutex->BeginCritical();
+	_genworld_paint_mutex->EndCritical();
 
 	_tp.timer = _realtime_tick;
 }
