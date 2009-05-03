@@ -890,25 +890,23 @@ static void ShowRoadDepotPicker(Window *parent)
 	new BuildRoadDepotWindow(&_build_road_depot_desc, parent);
 }
 
-struct BuildRoadStationWindow : public PickerWindowBase {
-private:
-	/** Enum referring to the widgets of the build road station window */
-	enum BuildRoadStationWidgets {
-		BRSW_CLOSEBOX = 0,
-		BRSW_CAPTION,
-		BRSW_BACKGROUND,
-		BRSW_STATION_NE,
-		BRSW_STATION_SE,
-		BRSW_STATION_SW,
-		BRSW_STATION_NW,
-		BRSW_STATION_X,
-		BRSW_STATION_Y,
-		BRSW_LT_OFF,
-		BRSW_LT_ON,
-		BRSW_INFO,
-	};
+/** Enum referring to the widgets of the build road station window */
+enum BuildRoadStationWidgets {
+	BRSW_CLOSEBOX = 0,
+	BRSW_CAPTION,
+	BRSW_BACKGROUND,
+	BRSW_STATION_NE,
+	BRSW_STATION_SE,
+	BRSW_STATION_SW,
+	BRSW_STATION_NW,
+	BRSW_STATION_X,
+	BRSW_STATION_Y,
+	BRSW_LT_OFF,
+	BRSW_LT_ON,
+	BRSW_INFO,
+};
 
-public:
+struct BuildRoadStationWindow : public PickerWindowBase {
 	BuildRoadStationWindow(const WindowDesc *desc, Window *parent, RoadStopType rs) : PickerWindowBase(desc, parent)
 	{
 		/* Trams don't have non-drivethrough stations */
