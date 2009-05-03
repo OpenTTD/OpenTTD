@@ -1118,7 +1118,6 @@ enum JoinStationWidgets {
 	JSW_WIDGET_CAPTION,
 	JSW_PANEL,
 	JSW_SCROLLBAR,
-	JSW_EMPTY,
 	JSW_RESIZEBOX,
 };
 
@@ -1126,9 +1125,8 @@ static const Widget _select_station_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE, COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_BLACK_CROSS,                 STR_TOOLTIP_CLOSE_WINDOW},
 {    WWT_CAPTION,  RESIZE_RIGHT, COLOUR_DARK_GREEN,    11,   199,     0,    13, STR_SELECT_STATION_TO_JOIN,      STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
 {      WWT_PANEL,     RESIZE_RB, COLOUR_DARK_GREEN,     0,   187,    14,    79, 0x0,                             STR_NULL},
-{  WWT_SCROLLBAR,    RESIZE_LRB, COLOUR_DARK_GREEN,   188,   199,    14,    79, 0x0,                             STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,    RESIZE_RTB, COLOUR_DARK_GREEN,     0,   187,    80,    91, 0x0,                             STR_NULL},
-{  WWT_RESIZEBOX,   RESIZE_LRTB, COLOUR_DARK_GREEN,   188,   199,    80,    91, 0x0,                             STR_RESIZE_BUTTON},
+{  WWT_SCROLLBAR,    RESIZE_LRB, COLOUR_DARK_GREEN,   188,   199,    14,    67, 0x0,                             STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX,   RESIZE_LRTB, COLOUR_DARK_GREEN,   188,   199,    68,    79, 0x0,                             STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -1218,7 +1216,7 @@ struct SelectStationWindow : Window {
 };
 
 static const WindowDesc _select_station_desc(
-	WDP_AUTO, WDP_AUTO, 200, 92, 200, 182,
+	WDP_AUTO, WDP_AUTO, 200, 80, 200, 180,
 	WC_SELECT_STATION, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE | WDF_CONSTRUCTION,
 	_select_station_widgets
