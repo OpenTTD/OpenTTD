@@ -619,7 +619,7 @@ static const Widget _company_stations_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    56,    69,    14,    24, STR_SHIP,          STR_USE_CTRL_TO_SELECT_MORE},      // SLW_SHIP
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    70,    83,    14,    24, 0x0,               STR_SELECT_ALL_FACILITIES},        // SLW_FACILALL
 
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    83,    88,    14,    24, 0x0,               STR_NULL},                         // SLW_PAN_BETWEEN
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    84,    88,    14,    24, 0x0,               STR_NULL},                         // SLW_PAN_BETWEEN
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    89,   102,    14,    24, 0x0,               STR_NO_WAITING_CARGO},             // SLW_NOCARGOWAITING
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   103,   116,    14,    24, 0x0,               STR_SELECT_ALL_TYPES},             // SLW_CARGOALL
 {      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,   117,   357,    14,    24, 0x0,               STR_NULL},                         // SLW_PAN_RIGHT
