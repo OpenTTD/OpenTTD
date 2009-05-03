@@ -19,6 +19,8 @@
  */
 
 
+#ifndef NO_QUICKTIME
+
 #define MAC_OS_X_VERSION_MIN_REQUIRED    MAC_OS_X_VERSION_10_3
 #include <AvailabilityMacros.h>
 
@@ -347,3 +349,4 @@ void MusicDriver_QtMidi::SetVolume(byte vol)
 	}
 }
 
+#endif /* NO_QUICKTIME */

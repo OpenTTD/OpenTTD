@@ -491,7 +491,11 @@ check_params() {
 	if [ "$enable_universal" = "0" ]; then
 		log 1 "checking universal build... no"
 	else
-		log 1 "checking universal build... yes"
+		if [ "$enable_universal" = "64" ]; then
+			log 1 "checking universal build... yes (including 64 bits)"
+		else
+			log 1 "checking universal build... yes (without 64 bits)"
+		fi
 	fi
 
 	# Already detected by check_build
@@ -1173,8 +1177,14 @@ make_cflags_and_ldflags() {
 
 	if [ "$os" = "OSX" ]; then
 		LDFLAGS="$LDFLAGS -framework Cocoa"
-		if [ "$enable_dedicated" = "0" ]; then
+		if [ "$enable_dedicated" = "0" ] && [ "$cpu_type" = "32" ]; then
 			LIBS="$LIBS -framework QuickTime"
+		else
+			CFLAGS="$CFLAGS -DNO_QUICKTIME"
+		fi
+
+		if [ "$cpu_type" = "64" ]; then
+			CFLAGS="$CFLAGS -mmacosx-version-min=10.5"
 		fi
 	fi
 
@@ -1378,7 +1388,7 @@ make_cflags_and_ldflags() {
 	fi
 
 	if [ "$enable_osx_g5" != "0" ]; then
-		CFLAGS="$CFLAGS -mtune=970 -mcpu=970 -mpowerpc-gpopt"
+		CFLAGS="$CFLAGS -mcpu=G5 -mpowerpc64 -mtune=970 -mcpu=970 -mpowerpc-gpopt"
 	fi
 
 	if [ -n "$personal_dir" ]; then
@@ -1962,6 +1972,11 @@ detect_cocoa() {
 		log 1 "checking whether to enable the Quartz window subdriver... no"
 	fi
 
+	# 64 bits doesn't have quickdraw
+	if [ "$cpu_type" = "64" ]; then
+		enable_cocoa_quickdraw="0"
+	fi
+
 	if [ "$enable_cocoa_quickdraw" != "0" ]; then
 		log 1 "checking whether to enable the Quickdraw window subdriver... yes"
 	else
@@ -2503,7 +2518,8 @@ detect_cputype() {
 		log 1 "forcing cpu-type... $cpu_type bits"
 		return;
 	fi
-	echo "#include \"src/stdafx.h\"" > tmp.64bit.cpp
+	echo "#define _SQ64 1" > tmp.64bit.cpp
+	echo "#include \"src/stdafx.h\"" >> tmp.64bit.cpp
 	echo "assert_compile(sizeof(size_t) == 8);" >> tmp.64bit.cpp
 	echo "int main() { return 0; }" >> tmp.64bit.cpp
 	execute="$cxx_host $CFLAGS tmp.64bit.cpp -o tmp.64bit -DTESTING 2>&1"
@@ -2699,24 +2715,52 @@ generate_src_normal() {
 }
 
 generate_src_osx() {
+	CLEAN_CFLAGS="$CFLAGS"
+	CLEAN_LDFLAGS="$LDFLAGS"
 	cc_host_orig="$cc_host"
 	cxx_host_orig="$cxx_host"
+
+	# 10.3(.9) can run on PPC, but not on i386
+	CFLAGS="$CLEAN_CFLAGS -mmacosx-version-min=10.3"
+	LDFLAGS="$CLEAN_CFLAGS -mmacosx-version-min=10.3"
 
 	BASE_SRC_OBJS_DIR="$OBJS_DIR/ppc"
 	cc_host="$cc_host_orig -arch ppc"
 	cxx_host="$cxx_host_orig -arch ppc"
 	generate_src_normal "[PowerPC]" "objs/ppc"
 
+	BASE_SRC_OBJS_DIR="$OBJS_DIR/ppc970"
+	cc_host="$cc_host_orig -arch ppc970"
+	cxx_host="$cxx_host_orig -arch ppc970"
+	CFLAGS="$CFLAGS -mcpu=G5 -mpowerpc64 -mtune=970 -mcpu=970 -mpowerpc-gpopt"
+	generate_src_normal "[PowerPC G5]" "objs/ppc970"
+
+	# 10.4.0 starts supporting i386
+	CFLAGS="$CLEAN_CFLAGS -mmacosx-version-min=10.4"
+	LDFLAGS="$CLEAN_CFLAGS -mmacosx-version-min=10.4"
+
 	BASE_SRC_OBJS_DIR="$OBJS_DIR/intel"
 	cc_host="$cc_host_orig -arch i386"
 	cxx_host="$cxx_host_orig -arch i386"
 	generate_src_normal "[Intel]" "objs/intel"
 
-	BASE_SRC_OBJS_DIR="$OBJS_DIR/ppc970"
-	cc_host="$cc_host_orig -arch ppc970"
-	cxx_host="$cxx_host_orig -arch ppc970"
-	CFLAGS="$CFLAGS -mtune=970 -mcpu=970 -mpowerpc-gpopt"
-	generate_src_normal "[PowerPC G5]" "objs/ppc970"
+	if [ "$enable_universal" = "64" ]; then
+		# 64 bits is always 10.5 or higher. Furthermore it has a broken ICONV
+		# and they also removed support for QuickTime/QuickDraw
+		CFLAGS="$CLEAN_CFLAGS -D_SQ64 -DHAVE_BROKEN_ICONV -DNO_QUICKTIME -UENABLE_COCOA_QUICKDRAW -mmacosx-version-min=10.5"
+		LDFLAGS="$CLEAN_CFLAGS -mmacosx-version-min=10.5"
+		LIBS="`echo $LIBS | sed 's/-framework QuickTime//'`"
+
+		BASE_SRC_OBJS_DIR="$OBJS_DIR/ppc64"
+		cc_host="$cc_host_orig -arch ppc64"
+		cxx_host="$cxx_host_orig -arch ppc64"
+		generate_src_normal "[PowerPC 64 bits]" "objs/ppc64"
+
+		BASE_SRC_OBJS_DIR="$OBJS_DIR/intel64"
+		cc_host="$cc_host_orig -arch x86_64"
+		cxx_host="$cxx_host_orig -arch x86_64"
+		generate_src_normal "[Intel 64 bits]" "objs/intel64"
+	fi
 }
 
 generate_src() {
