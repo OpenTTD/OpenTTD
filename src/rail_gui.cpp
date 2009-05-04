@@ -873,45 +873,45 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 	ShowSelectStationIfNeeded(cmdcont, w, h);
 }
 
+/** Enum referring to the widgets of the rail stations window */
+enum BuildRailStationWidgets {
+	BRSW_CLOSEBOX = 0,
+	BRSW_CAPTION,
+	BRSW_BACKGROUND,
+
+	BRSW_PLATFORM_DIR_X,
+	BRSW_PLATFORM_DIR_Y,
+
+	BRSW_PLATFORM_NUM_BEGIN = BRSW_PLATFORM_DIR_Y,
+	BRSW_PLATFORM_NUM_1,
+	BRSW_PLATFORM_NUM_2,
+	BRSW_PLATFORM_NUM_3,
+	BRSW_PLATFORM_NUM_4,
+	BRSW_PLATFORM_NUM_5,
+	BRSW_PLATFORM_NUM_6,
+	BRSW_PLATFORM_NUM_7,
+
+	BRSW_PLATFORM_LEN_BEGIN = BRSW_PLATFORM_NUM_7,
+	BRSW_PLATFORM_LEN_1,
+	BRSW_PLATFORM_LEN_2,
+	BRSW_PLATFORM_LEN_3,
+	BRSW_PLATFORM_LEN_4,
+	BRSW_PLATFORM_LEN_5,
+	BRSW_PLATFORM_LEN_6,
+	BRSW_PLATFORM_LEN_7,
+
+	BRSW_PLATFORM_DRAG_N_DROP,
+
+	BRSW_HIGHLIGHT_OFF,
+	BRSW_HIGHLIGHT_ON,
+
+	BRSW_NEWST_DROPDOWN,
+	BRSW_NEWST_LIST,
+	BRSW_NEWST_SCROLL
+};
+
 struct BuildRailStationWindow : public PickerWindowBase {
 private:
-	/** Enum referring to the widgets of the rail stations window */
-	enum BuildRailStationWidgets {
-		BRSW_CLOSEBOX = 0,
-		BRSW_CAPTION,
-		BRSW_BACKGROUND,
-
-		BRSW_PLATFORM_DIR_X,
-		BRSW_PLATFORM_DIR_Y,
-
-		BRSW_PLATFORM_NUM_BEGIN = BRSW_PLATFORM_DIR_Y,
-		BRSW_PLATFORM_NUM_1,
-		BRSW_PLATFORM_NUM_2,
-		BRSW_PLATFORM_NUM_3,
-		BRSW_PLATFORM_NUM_4,
-		BRSW_PLATFORM_NUM_5,
-		BRSW_PLATFORM_NUM_6,
-		BRSW_PLATFORM_NUM_7,
-
-		BRSW_PLATFORM_LEN_BEGIN = BRSW_PLATFORM_NUM_7,
-		BRSW_PLATFORM_LEN_1,
-		BRSW_PLATFORM_LEN_2,
-		BRSW_PLATFORM_LEN_3,
-		BRSW_PLATFORM_LEN_4,
-		BRSW_PLATFORM_LEN_5,
-		BRSW_PLATFORM_LEN_6,
-		BRSW_PLATFORM_LEN_7,
-
-		BRSW_PLATFORM_DRAG_N_DROP,
-
-		BRSW_HIGHLIGHT_OFF,
-		BRSW_HIGHLIGHT_ON,
-
-		BRSW_NEWST_DROPDOWN,
-		BRSW_NEWST_LIST,
-		BRSW_NEWST_SCROLL
-	};
-
 	/**
 	 * Verify whether the currently selected station size is allowed after selecting a new station class/type.
 	 * If not, change the station size variables ( _settings_client.gui.station_numtracks and _settings_client.gui.station_platlength ).
@@ -1617,22 +1617,20 @@ static void ShowBuildTrainDepotPicker(Window *parent)
 	new BuildRailDepotWindow(&_build_depot_desc, parent);
 }
 
-struct BuildRailWaypointWindow : PickerWindowBase {
-private:
-	/** Enum referring to the widgets of the build NewGRF rail waypoint window */
-	enum BuildRailWaypointWidgets {
-		BRWW_CLOSEBOX = 0,
-		BRWW_CAPTION,
-		BRWW_BACKGROUND,
-		BRWW_WAYPOINT_1,
-		BRWW_WAYPOINT_2,
-		BRWW_WAYPOINT_3,
-		BRWW_WAYPOINT_4,
-		BRWW_WAYPOINT_5,
-		BRWW_SCROLL,
-	};
+/** Enum referring to the widgets of the build NewGRF rail waypoint window */
+enum BuildRailWaypointWidgets {
+	BRWW_CLOSEBOX = 0,
+	BRWW_CAPTION,
+	BRWW_BACKGROUND,
+	BRWW_WAYPOINT_1,
+	BRWW_WAYPOINT_2,
+	BRWW_WAYPOINT_3,
+	BRWW_WAYPOINT_4,
+	BRWW_WAYPOINT_5,
+	BRWW_SCROLL,
+};
 
-public:
+struct BuildRailWaypointWindow : PickerWindowBase {
 	BuildRailWaypointWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
 		this->hscroll.cap = 5;
@@ -1702,7 +1700,7 @@ static const Widget _build_waypoint_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   207,   272,    17,    76, 0x0,             STR_WAYPOINT_GRAPHICS_TIP},          // BRWW_WAYPOINT_4
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   275,   340,    17,    76, 0x0,             STR_WAYPOINT_GRAPHICS_TIP},          // BRWW_WAYPOINT_5
 
-{ WWT_HSCROLLBAR,   RESIZE_NONE,  COLOUR_DARK_GREEN,     1,   343,     80,    91, 0x0,            STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST}, // BRWW_SCROLL
+{ WWT_HSCROLLBAR,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,   343,     80,    91, 0x0,            STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST}, // BRWW_SCROLL
 {    WIDGETS_END},
 };
 
