@@ -1724,3 +1724,43 @@ NWidgetContainer *MakeNWidgets(const NWidgetPart *parts, int count)
 	MakeWidgetTree(parts, count, cont);
 	return cont;
 }
+
+/**
+ * Construct a #Widget array from a nested widget parts array, taking care of all the steps and checks.
+ * Also cache the result and use the cache if possible.
+ * @param[in] parts        Array with parts of the widgets.
+ * @param     parts_length Length of the \a parts array.
+ * @param[in] orig_wid     Pointer to original widget array.
+ * @param     wid_cache    Pointer to the cache for storing the generated widget array (use \c NULL to prevent caching).
+ * @return Cached value if available, otherwise the generated widget array. If \a wid_cache is \c NULL, the caller should free the returned array.
+ *
+ * @pre Before the first call, \c *wid_cache should be \c NULL.
+ * @post The widget array stored in the \c *wid_cache should be free-ed by the caller.
+ */
+const Widget *InitializeWidgetArrayFromNestedWidgets(const NWidgetPart *parts, int parts_length, const Widget *orig_wid, Widget **wid_cache)
+{
+	const bool rtl = false; // Direction of the language is left-to-right
+
+	if (wid_cache != NULL && *wid_cache != NULL) return *wid_cache;
+
+	assert(parts != NULL && parts_length > 0);
+	NWidgetContainer *nwid = MakeNWidgets(parts, parts_length);
+	Widget *gen_wid = InitializeNWidgets(nwid, rtl);
+
+	if (!rtl && orig_wid) {
+		/* There are two descriptions, compare them.
+		 * Comparing only makes sense when using a left-to-right language.
+		 */
+		bool ok = CompareWidgetArrays(orig_wid, gen_wid, false);
+		if (ok) {
+			DEBUG(misc, 1, "Nested widgets are equal, min-size(%u, %u)", nwid->min_x, nwid->min_y);
+		} else {
+			DEBUG(misc, 0, "Nested widgets give different results");
+			CompareWidgetArrays(orig_wid, gen_wid, true);
+		}
+	}
+	delete nwid;
+
+	if (wid_cache != NULL) *wid_cache = gen_wid;
+	return gen_wid;
+}

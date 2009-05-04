@@ -659,4 +659,6 @@ static inline NWidgetPart NWidgetFunction(NWidgetFunctionType *func_ptr)
 
 NWidgetContainer *MakeNWidgets(const NWidgetPart *parts, int count);
 
+const Widget *InitializeWidgetArrayFromNestedWidgets(const NWidgetPart *parts, int parts_length, const Widget *orig_wid, Widget **wid_cache);
+
 #endif /* WIDGET_TYPE_H */

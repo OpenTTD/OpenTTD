@@ -75,28 +75,9 @@ WindowDesc::WindowDesc(int16 left, int16 top, int16 min_width, int16 min_height,
 /** Get widget array of the window description. */
 const Widget *WindowDesc::GetWidgets() const
 {
-	const bool rtl = false; // Direction of the language is left-to-right
-
-	/* If nested widgets are present, convert them to a widget array. */
-	if (this->nwid_parts != NULL && nwid_length > 0 && this->new_widgets == NULL) {
-		NWidgetContainer *nwid = MakeNWidgets(this->nwid_parts, this->nwid_length);
-		this->new_widgets = InitializeNWidgets(nwid, rtl);
-
-		if (!rtl && this->widgets != NULL) {
-			/* There are two descriptions, compare them.
-			 * Comparing only makes sense when using a left-to-right language.
-			 */
-			bool ok = CompareWidgetArrays(this->widgets, this->new_widgets, false);
-			if (ok) {
-				DEBUG(misc, 1, "Nested widgets are equal, min-size(%u, %u)", nwid->min_x, nwid->min_y);
-			} else {
-				DEBUG(misc, 0, "Nested widgets give different results");
-				CompareWidgetArrays(this->widgets, this->new_widgets, true);
-			}
-		}
-		delete nwid;
+	if (this->nwid_parts != NULL) {
+		InitializeWidgetArrayFromNestedWidgets(this->nwid_parts, this->nwid_length, this->widgets, &this->new_widgets);
 	}
-
 	const Widget *wids = (this->new_widgets != NULL) ? this->new_widgets : this->widgets;
 	assert(wids != NULL);
 	return wids;
