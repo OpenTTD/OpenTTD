@@ -69,6 +69,13 @@ static const Widget _dropdown_menu_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_dropdown_menu_widgets[] = {
+	NWidget(NWID_LAYERED),
+		NWidget(WWT_PANEL, COLOUR_END, 0), SetMinimalSize(1, 1), EndContainer(),
+		NWidget(WWT_SCROLLBAR, COLOUR_END, 1), SetMinimalSize(1, 1),
+	EndContainer(),
+};
+
 struct DropdownWindow : Window {
 	WindowClass parent_wnd_class;
 	WindowNumber parent_wnd_num;
@@ -238,6 +245,8 @@ struct DropdownWindow : Window {
 
 void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, uint width, bool auto_width, bool instant_close)
 {
+	static Widget *generated_dropdown_menu_widgets = NULL;
+
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
 
 	w->LowerWidget(button);
@@ -302,12 +311,9 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 
 	if (auto_width) width = max(width, max_item_width);
 
-	DropdownWindow *dw = new DropdownWindow(
-		w->left + wi->left,
-		top,
-		width,
-		height + 4,
-		_dropdown_menu_widgets);
+	const Widget *wid = InitializeWidgetArrayFromNestedWidgets(_nested_dropdown_menu_widgets, lengthof(_nested_dropdown_menu_widgets),
+													_dropdown_menu_widgets, &generated_dropdown_menu_widgets);
+	DropdownWindow *dw = new DropdownWindow(w->left + wi->left, top, width, height + 4, wid);
 
 	dw->widget[0].colour = wi->colour;
 	dw->widget[0].right = width - 1;

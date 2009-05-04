@@ -448,6 +448,28 @@ static const Widget _errmsg_widgets[] = {
 {    WIDGETS_END},
 };
 
+static const NWidgetPart _nested_errmsg_widgets[] = {
+	NWidget(NWID_LAYERED),
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_CLOSEBOX, COLOUR_RED, EMW_CLOSE),
+				NWidget(WWT_CAPTION, COLOUR_RED, EMW_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION, STR_NULL),
+			EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_RED, EMW_PANEL),
+				NWidget(WWT_EMPTY, COLOUR_RED, EMW_MESSAGE), SetPadding(0, 2, 0, 2), SetMinimalSize(236, 32),
+				NWidget(NWID_SPACER), SetResize(0, 1),
+			EndContainer(),
+		EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_EMPTY, COLOUR_RED, EMW_FACE), SetMinimalSize(1, 1), SetFill(false, false),
+				NWidget(NWID_SPACER), SetFill(1, 0),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetFill(1, 1), SetResize(0, 1),
+		EndContainer(),
+	EndContainer(),
+};
+
 static const Widget _errmsg_face_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    COLOUR_RED,     0,    10,     0,    13, STR_BLACK_CROSS,                         STR_TOOLTIP_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    COLOUR_RED,    11,   333,     0,    13, STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_NULL},
@@ -455,6 +477,21 @@ static const Widget _errmsg_face_widgets[] = {
 {      WWT_EMPTY,   RESIZE_NONE,    COLOUR_RED,     2,    92,    16,   135, 0x0,                                     STR_NULL},
 {      WWT_EMPTY,   RESIZE_NONE,    COLOUR_RED,    94,   331,    14,   136, 0x0,                                     STR_NULL},
 {   WIDGETS_END},
+};
+
+static const NWidgetPart _nested_errmsg_face_widgets[] = {
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_CLOSEBOX, COLOUR_RED, EMW_CLOSE),
+			NWidget(WWT_CAPTION, COLOUR_RED, EMW_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_NULL),
+		EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_RED, EMW_PANEL),
+			NWidget(NWID_HORIZONTAL), SetPIP(2, 1, 2),
+				NWidget(WWT_EMPTY, COLOUR_RED, EMW_FACE), SetMinimalSize(91, 120), SetPadding(2, 0, 1, 0),
+				NWidget(WWT_EMPTY, COLOUR_RED, EMW_MESSAGE), SetMinimalSize(238, 123),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetResize(0, 1),
+		EndContainer(),
+	EndContainer(),
 };
 
 struct ErrmsgWindow : public Window {
@@ -557,6 +594,9 @@ public:
 
 void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 {
+	static Widget *generated_errmsg_widgets = NULL;
+	static Widget *generated_errmsg_face_widgets = NULL;
+
 	DeleteWindowById(WC_ERRMSG, 0);
 
 	if (!_settings_client.gui.errmsg_duration) return;
@@ -583,7 +623,10 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 			pt.x = (_screen.width - 240) >> 1;
 			pt.y = (_screen.height - 46) >> 1;
 		}
-		new ErrmsgWindow(pt, 240, 46, msg_1, msg_2, _errmsg_widgets, false);
+
+		const Widget *wid = InitializeWidgetArrayFromNestedWidgets(_nested_errmsg_widgets, lengthof(_nested_errmsg_widgets),
+													_errmsg_widgets, &generated_errmsg_widgets);
+		new ErrmsgWindow(pt, 240, 46, msg_1, msg_2, wid, false);
 	} else {
 		if ((x | y) != 0) {
 			pt = RemapCoords2(x, y);
@@ -594,7 +637,10 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 			pt.x = (_screen.width  - 334) >> 1;
 			pt.y = (_screen.height - 137) >> 1;
 		}
-		new ErrmsgWindow(pt, 334, 137, msg_1, msg_2, _errmsg_face_widgets, true);
+
+		const Widget *wid = InitializeWidgetArrayFromNestedWidgets(_nested_errmsg_face_widgets, lengthof(_nested_errmsg_face_widgets),
+													_errmsg_face_widgets, &generated_errmsg_face_widgets);
+		new ErrmsgWindow(pt, 334, 137, msg_1, msg_2, wid, true);
 	}
 }
 
@@ -662,6 +708,10 @@ static const Widget _tooltips_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_tooltips_widgets[] = {
+	NWidget(WWT_PANEL, COLOUR_GREY, 0), SetMinimalSize(200, 32), EndContainer(),
+};
+
 struct TooltipsWindow : public Window
 {
 	StringID string_id;
@@ -714,6 +764,8 @@ struct TooltipsWindow : public Window
  */
 void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], bool use_left_mouse_button)
 {
+	static Widget *generated_tooltips_widgets = NULL;
+
 	DeleteWindowById(WC_TOOLTIPS, 0);
 
 	if (str == STR_NULL) return;
@@ -738,7 +790,9 @@ void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], bool 
 	if (y + br.height > _screen.height - 12) y = _cursor.pos.y + _cursor.offs.y - br.height - 5;
 	int x = Clamp(_cursor.pos.x - (br.width >> 1), 0, _screen.width - br.width);
 
-	new TooltipsWindow(x, y, br.width, br.height, _tooltips_widgets, str, paramcount, params, use_left_mouse_button);
+	const Widget *wid = InitializeWidgetArrayFromNestedWidgets(_nested_tooltips_widgets, lengthof(_nested_tooltips_widgets),
+													_tooltips_widgets, &generated_tooltips_widgets);
+	new TooltipsWindow(x, y, br.width, br.height, wid, str, paramcount, params, use_left_mouse_button);
 }
 
 
