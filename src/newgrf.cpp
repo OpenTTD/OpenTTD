@@ -4381,7 +4381,8 @@ static void GRFLoadError(byte *buf, size_t len)
 	/* Only two parameter numbers can be used in the string. */
 	uint i = 0;
 	for (; i < 2 && len > 0; i++) {
-		error->param_number[i] = grf_load_byte(&buf);
+		uint param_number = grf_load_byte(&buf);
+		error->param_value[i] = (param_number < _cur_grffile->param_end ? _cur_grffile->param[param_number] : 0);
 		len--;
 	}
 	error->num_params = i;
