@@ -1038,8 +1038,18 @@ void VehicleEnterDepot(Vehicle *v)
 	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 
+		const Order *real_order = GetVehicleOrder(v, v->cur_order_index);
 		Order t = v->current_order;
 		v->current_order.MakeDummy();
+
+		/* Test whether we are heading for this depot. If not, do nothing.
+		 * Note: The target depot for nearest-/manual-depot-orders is only updated on junctions, but we want to accept every depot. */
+		if ((t.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) &&
+				real_order != NULL && !(real_order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) &&
+				(v->type == VEH_AIRCRAFT ? t.GetDestination() != GetStationIndex(v->tile) : v->dest_tile != v->tile)) {
+			/* We are heading for another depot, keep driving. */
+			return;
+		}
 
 		if (t.IsRefit()) {
 			_current_company = v->owner;
@@ -1057,9 +1067,7 @@ void VehicleEnterDepot(Vehicle *v)
 			}
 		}
 
-		if (t.GetDepotOrderType() & ODTFB_PART_OF_ORDERS && (
-				(t.GetDepotOrderType() && ODATFB_NEAREST_DEPOT) || // The target depot is only updated on junctions, but we want to accept every depot.
-				(v->type == VEH_AIRCRAFT ? t.GetDestination() == GetStationIndex(v->tile) : v->dest_tile == v->tile))) {
+		if (t.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) {
 			/* Part of orders */
 			UpdateVehicleTimetable(v, true);
 			v->cur_order_index++;
