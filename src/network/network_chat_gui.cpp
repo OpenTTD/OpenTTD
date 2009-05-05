@@ -258,16 +258,15 @@ static void SendChat(const char *buf, DestType type, int dest)
 	}
 }
 
-struct NetworkChatWindow : public QueryStringBaseWindow {
-private:
-	enum NetWorkChatWidgets {
-		NWCW_CLOSE,
-		NWCW_BACKGROUND,
-		NWCW_TEXTBOX,
-		NWCW_SENDBUTTON,
-	};
+/** Widget numbers of the chat window. */
+enum NetWorkChatWidgets {
+	NWCW_CLOSE,
+	NWCW_BACKGROUND,
+	NWCW_TEXTBOX,
+	NWCW_SENDBUTTON,
+};
 
-public:
+struct NetworkChatWindow : public QueryStringBaseWindow {
 	DestType dtype;
 	int dest;
 
