@@ -19,6 +19,13 @@
 #include "table/strings.h"
 #include "../table/sprites.h"
 
+/** Widgets used by this window */
+enum DownloadStatusWindowWidgets {
+	NCDSWW_CAPTION,    ///< Caption of the window
+	NCDSWW_BACKGROUND, ///< Background
+	NCDSWW_CANCELOK,   ///< Cancel/OK button
+};
+
 /** Widgets for the download window */
 static const Widget _network_content_download_status_window_widget[] = {
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,      0,   349,     0,    13, STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // NCDSWW_CAPTION
@@ -37,13 +44,6 @@ static const WindowDesc _network_content_download_status_window_desc(
 
 /** Window for showing the download status of content */
 struct NetworkContentDownloadStatusWindow : public Window, ContentCallback {
-	/** Widgets used by this window */
-	enum Widgets {
-		NCDSWW_CAPTION,    ///< Caption of the window
-		NCDSWW_BACKGROUND, ///< Background
-		NCDSWW_CANCELOK,   ///< Cancel/OK button
-	};
-
 private:
 	ClientNetworkContentSocketHandler *connection; ///< Our connection with the content server
 	SmallVector<ContentType, 4> receivedTypes;     ///< Types we received so we can update their cache
@@ -164,35 +164,35 @@ public:
 	}
 };
 
+/** Widgets of the content list window. */
+enum NetworkContentListWindowWidgets {
+	NCLWW_CLOSE,         ///< Close 'X' button
+	NCLWW_CAPTION,       ///< Caption of the window
+	NCLWW_BACKGROUND,    ///< Resize button
+
+	NCLWW_FILTER,        ///< Filter editbox
+
+	NCLWW_CHECKBOX,      ///< Button above checkboxes
+	NCLWW_TYPE,          ///< 'Type' button
+	NCLWW_NAME,          ///< 'Name' button
+
+	NCLWW_MATRIX,        ///< Panel with list of content
+	NCLWW_SCROLLBAR,     ///< Scrollbar of matrix
+
+	NCLWW_DETAILS,       ///< Panel with content details
+
+	NCLWW_SELECT_ALL,    ///< 'Select all' button
+	NCLWW_SELECT_UPDATE, ///< 'Select updates' button
+	NCLWW_UNSELECT,      ///< 'Unselect all' button
+	NCLWW_CANCEL,        ///< 'Cancel' button
+	NCLWW_DOWNLOAD,      ///< 'Download' button
+
+	NCLWW_RESIZE,        ///< Resize button
+};
+
 /** Window that lists the content that's at the content server */
 class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 	typedef GUIList<const ContentInfo*> GUIContentList;
-
-	/** All widgets used */
-	enum Widgets {
-		NCLWW_CLOSE,         ///< Close 'X' button
-		NCLWW_CAPTION,       ///< Caption of the window
-		NCLWW_BACKGROUND,    ///< Resize button
-
-		NCLWW_FILTER,        ///< Filter editbox
-
-		NCLWW_CHECKBOX,      ///< Button above checkboxes
-		NCLWW_TYPE,          ///< 'Type' button
-		NCLWW_NAME,          ///< 'Name' button
-
-		NCLWW_MATRIX,        ///< Panel with list of content
-		NCLWW_SCROLLBAR,     ///< Scrollbar of matrix
-
-		NCLWW_DETAILS,       ///< Panel with content details
-
-		NCLWW_SELECT_ALL,    ///< 'Select all' button
-		NCLWW_SELECT_UPDATE, ///< 'Select updates' button
-		NCLWW_UNSELECT,      ///< 'Unselect all' button
-		NCLWW_CANCEL,        ///< 'Cancel' button
-		NCLWW_DOWNLOAD,      ///< 'Download' button
-
-		NCLWW_RESIZE,        ///< Resize button
-	};
 
 	enum {
 		EDITBOX_MAX_SIZE = 50,
