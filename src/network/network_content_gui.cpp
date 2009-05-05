@@ -834,22 +834,6 @@ static const NWidgetPart _nested_network_content_list_widgets[] = {
 	EndContainer(),
 };
 
-void test_nested_content()
-{
-	const Widget *wid;
-
-	printf("_network_content_download_status_window_widget\n");
-	wid = InitializeWidgetArrayFromNestedWidgets(_nested_network_content_download_status_window_widgets, lengthof(_nested_network_content_download_status_window_widgets),
-							_network_content_download_status_window_widget, NULL);
-	free((void *)wid);
-
-	printf("_network_content_list_widgets\n");
-	wid = InitializeWidgetArrayFromNestedWidgets(_nested_network_content_list_widgets, lengthof(_nested_network_content_list_widgets),
-							_network_content_list_widgets, NULL);
-	free((void *)wid);
-}
-
-
 /** Window description of the content list */
 static const WindowDesc _network_content_list_desc(
 	WDP_CENTER, WDP_CENTER, 450, 278, 630, 460,

@@ -514,22 +514,6 @@ static const NWidgetPart _nested_chat_window_widgets[] = {
 	EndContainer(),
 };
 
-void test_chat()
-{
-	const Widget *wid;
-
-	printf("_chat_window_widgets\n");
-	wid = InitializeWidgetArrayFromNestedWidgets(_nested_chat_window_widgets, lengthof(_nested_chat_window_widgets), _chat_window_widgets, NULL);
-	free((void *)wid);
-}
-
-static const WindowDesc _chat_window_desc(
-	WDP_CENTER, -26, 320, 14, 640, 14, // x, y, width, height
-	WC_SEND_NETWORK_MSG, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
-	_chat_window_widgets, _nested_chat_window_widgets, lengthof(_nested_chat_window_widgets)
-);
-
 void ShowNetworkChatQueryWindow(DestType type, int dest)
 {
 	DeleteWindowById(WC_SEND_NETWORK_MSG, 0);
