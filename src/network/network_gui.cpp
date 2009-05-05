@@ -963,24 +963,35 @@ enum {
 
 /** Enum for NetworkStartServerWindow, referring to _network_start_server_window_widgets */
 enum NetworkStartServerWidgets {
-	NSSW_CLOSE           =  0,   ///< Close 'X' button
-	NSSW_GAMENAME        =  4,   ///< Background for editbox to set game name
-	NSSW_SETPWD          =  5,   ///< 'Set password' button
-	NSSW_SELMAP          =  7,   ///< 'Select map' list
-	NSSW_CONNTYPE_BTN    = 10,   ///< 'Connection type' droplist button
-	NSSW_CLIENTS_BTND    = 12,   ///< 'Max clients' downarrow
-	NSSW_CLIENTS_TXT     = 13,   ///< 'Max clients' text
-	NSSW_CLIENTS_BTNU    = 14,   ///< 'Max clients' uparrow
-	NSSW_COMPANIES_BTND  = 16,   ///< 'Max companies' downarrow
-	NSSW_COMPANIES_TXT   = 17,   ///< 'Max companies' text
-	NSSW_COMPANIES_BTNU  = 18,   ///< 'Max companies' uparrow
-	NSSW_SPECTATORS_BTND = 20,   ///< 'Max spectators' downarrow
-	NSSW_SPECTATORS_TXT  = 21,   ///< 'Max spectators' text
-	NSSW_SPECTATORS_BTNU = 22,   ///< 'Max spectators' uparrow
-	NSSW_LANGUAGE_BTN    = 24,   ///< 'Language spoken' droplist button
-	NSSW_START           = 25,   ///< 'Start' button
-	NSSW_LOAD            = 26,   ///< 'Load' button
-	NSSW_CANCEL          = 27,   ///< 'Cancel' button
+	NSSW_CLOSE,             ///< Close 'X' button
+	NSSW_CAPTION,
+	NSSW_BACKGROUND,
+	NSSW_GAMENAME_LABEL,
+	NSSW_GAMENAME,          ///< Background for editbox to set game name
+	NSSW_SETPWD,            ///< 'Set password' button
+	NSSW_SELECT_MAP_LABEL,
+	NSSW_SELMAP,            ///< 'Select map' list
+	NSSW_SCROLLBAR,
+	NSSW_CONNTYPE_LABEL,
+	NSSW_CONNTYPE_BTN,      ///< 'Connection type' droplist button
+	NSSW_CLIENTS_LABEL,
+	NSSW_CLIENTS_BTND,      ///< 'Max clients' downarrow
+	NSSW_CLIENTS_TXT,       ///< 'Max clients' text
+	NSSW_CLIENTS_BTNU,      ///< 'Max clients' uparrow
+	NSSW_COMPANIES_LABEL,
+	NSSW_COMPANIES_BTND,    ///< 'Max companies' downarrow
+	NSSW_COMPANIES_TXT,     ///< 'Max companies' text
+	NSSW_COMPANIES_BTNU,    ///< 'Max companies' uparrow
+	NSSW_SPECTATORS_LABEL,
+	NSSW_SPECTATORS_BTND,   ///< 'Max spectators' downarrow
+	NSSW_SPECTATORS_TXT,    ///< 'Max spectators' text
+	NSSW_SPECTATORS_BTNU,   ///< 'Max spectators' uparrow
+
+	NSSW_LANGUAGE_LABEL,
+	NSSW_LANGUAGE_BTN,      ///< 'Language spoken' droplist button
+	NSSW_START,             ///< 'Start' button
+	NSSW_LOAD,              ///< 'Load' button
+	NSSW_CANCEL,            ///< 'Cancel' button
 };
 
 struct NetworkStartServerWindow : public QueryStringBaseWindow {
@@ -1211,40 +1222,40 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 
 static const Widget _network_start_server_window_widgets[] = {
 /* Window decoration and background panel */
-{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_BLACK_CROSS,                    STR_TOOLTIP_CLOSE_WINDOW },               // NSSW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    11,   419,     0,    13, STR_NETWORK_START_GAME_WINDOW,      STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,   419,    14,   243, 0x0,                                STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_BLACK_CROSS,                    STR_TOOLTIP_CLOSE_WINDOW },            // NSSW_CLOSE
+{    WWT_CAPTION,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    11,   419,     0,    13, STR_NETWORK_START_GAME_WINDOW,      STR_NULL},                             // NSSW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,   419,    14,   243, 0x0,                                STR_NULL},                             // NSSW_BACKGROUND
 
 /* Set game name and password widgets */
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,    90,    22,    34, STR_NETWORK_NEW_GAME_NAME,          STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,    90,    22,    34, STR_NETWORK_NEW_GAME_NAME,          STR_NULL},                             // NSSW_GAMENAME_LABEL
 {    WWT_EDITBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   100,   272,    22,    33, STR_NETWORK_NEW_GAME_NAME_OSKTITLE, STR_NETWORK_NEW_GAME_NAME_TIP},        // NSSW_GAMENAME
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        285,   405,    22,    33, STR_NETWORK_SET_PASSWORD,           STR_NETWORK_PASSWORD_TIP},             // NSSW_SETPWD
 
 /* List of playable scenarios */
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   110,    43,    55, STR_NETWORK_SELECT_MAP,             STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   110,    43,    55, STR_NETWORK_SELECT_MAP,             STR_NULL},                             // NSSW_SELECT_MAP_LABEL
 {      WWT_INSET,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   271,    62,   216, STR_NULL,                           STR_NETWORK_SELECT_MAP_TIP},           // NSSW_SELMAP
-{  WWT_SCROLLBAR,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   259,   270,    63,   215, 0x0,                                STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},
+{  WWT_SCROLLBAR,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   259,   270,    63,   215, 0x0,                                STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // NSSW_SCROLLBAR
 
 /* Combo/selection boxes to control Connection Type / Max Clients / Max Companies / Max Observers / Language */
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    63,    75, STR_NETWORK_CONNECTION,             STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    63,    75, STR_NETWORK_CONNECTION,             STR_NULL},                             // NSSW_CONNTYPE_LABEL
 {   WWT_DROPDOWN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    77,    88, STR_NETWORK_LAN_INTERNET_COMBO,     STR_NETWORK_CONNECTION_TIP},           // NSSW_CONNTYPE_BTN
 
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    95,   107, STR_NETWORK_NUMBER_OF_CLIENTS,      STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    95,   107, STR_NETWORK_NUMBER_OF_CLIENTS,      STR_NULL},                             // NSSW_CLIENTS_LABEL
 {     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   291,   109,   120, SPR_ARROW_DOWN,                     STR_NETWORK_NUMBER_OF_CLIENTS_TIP},    // NSSW_CLIENTS_BTND
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   292,   397,   109,   120, STR_NETWORK_CLIENTS_SELECT,         STR_NETWORK_NUMBER_OF_CLIENTS_TIP},    // NSSW_CLIENTS_TXT
 {     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   398,   410,   109,   120, SPR_ARROW_UP,                       STR_NETWORK_NUMBER_OF_CLIENTS_TIP},    // NSSW_CLIENTS_BTNU
 
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   127,   139, STR_NETWORK_NUMBER_OF_COMPANIES,    STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   127,   139, STR_NETWORK_NUMBER_OF_COMPANIES,    STR_NULL},                             // NSSW_COMPANIES_LABEL
 {     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   291,   141,   152, SPR_ARROW_DOWN,                     STR_NETWORK_NUMBER_OF_COMPANIES_TIP},  // NSSW_COMPANIES_BTND
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   292,   397,   141,   152, STR_NETWORK_COMPANIES_SELECT,       STR_NETWORK_NUMBER_OF_COMPANIES_TIP},  // NSSW_COMPANIES_TXT
 {     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   398,   410,   141,   152, SPR_ARROW_UP,                       STR_NETWORK_NUMBER_OF_COMPANIES_TIP},  // NSSW_COMPANIES_BTNU
 
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   159,   171, STR_NETWORK_NUMBER_OF_SPECTATORS,   STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   159,   171, STR_NETWORK_NUMBER_OF_SPECTATORS,   STR_NULL},                             // NSSW_SPECTATORS_LABEL
 {     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   291,   173,   184, SPR_ARROW_DOWN,                     STR_NETWORK_NUMBER_OF_SPECTATORS_TIP}, // NSSW_SPECTATORS_BTND
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   292,   397,   173,   184, STR_NETWORK_SPECTATORS_SELECT,      STR_NETWORK_NUMBER_OF_SPECTATORS_TIP}, // NSSW_SPECTATORS_TXT
 {     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   398,   410,   173,   184, SPR_ARROW_UP,                       STR_NETWORK_NUMBER_OF_SPECTATORS_TIP}, // NSSW_SPECTATORS_BTNU
 
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   191,   203, STR_NETWORK_LANGUAGE_SPOKEN,        STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   191,   203, STR_NETWORK_LANGUAGE_SPOKEN,        STR_NULL},                             // NSSW_LANGUAGE_LABEL
 {   WWT_DROPDOWN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   205,   216, STR_NETWORK_LANGUAGE_COMBO,         STR_NETWORK_LANGUAGE_TIP},             // NSSW_LANGUAGE_BTN
 
 /* Buttons Start / Load / Cancel */
@@ -1271,14 +1282,19 @@ static void ShowNetworkStartServerWindow()
 
 /** Enum for NetworkLobbyWindow, referring to _network_lobby_window_widgets */
 enum NetworkLobbyWindowWidgets {
-	NLWW_CLOSE    =  0, ///< Close 'X' button
-	NLWW_MATRIX   =  5, ///< List of companies
-	NLWW_DETAILS  =  7, ///< Company details
-	NLWW_JOIN     =  8, ///< 'Join company' button
-	NLWW_NEW      =  9, ///< 'New company' button
-	NLWW_SPECTATE = 10, ///< 'Spectate game' button
-	NLWW_REFRESH  = 11, ///< 'Refresh server' button
-	NLWW_CANCEL   = 12, ///< 'Cancel' button
+	NLWW_CLOSE,      ///< Close 'X' button
+	NLWW_CAPTION,    ///< Titlebar
+	NLWW_BACKGROUND, ///< Background panel
+	NLWW_TEXT,       ///< Heading text
+	NLWW_HEADER,     ///< Header above list of companies
+	NLWW_MATRIX,     ///< List of companies
+	NLWW_SCROLLBAR,  ///< Scroll bar
+	NLWW_DETAILS,    ///< Company details
+	NLWW_JOIN,       ///< 'Join company' button
+	NLWW_NEW,        ///< 'New company' button
+	NLWW_SPECTATE,   ///< 'Spectate game' button
+	NLWW_REFRESH,    ///< 'Refresh server' button
+	NLWW_CANCEL,     ///< 'Cancel' button
 };
 
 struct NetworkLobbyWindow : public Window {
@@ -1458,14 +1474,14 @@ struct NetworkLobbyWindow : public Window {
 
 static const Widget _network_lobby_window_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_BLACK_CROSS,             STR_TOOLTIP_CLOSE_WINDOW },        // NLWW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    11,   419,     0,    13, STR_NETWORK_GAME_LOBBY,      STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,   419,    14,   234, 0x0,                         STR_NULL},
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   419,    22,    34, STR_NETWORK_PREPARE_TO_JOIN, STR_NULL},
+{    WWT_CAPTION,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    11,   419,     0,    13, STR_NETWORK_GAME_LOBBY,      STR_NULL},                         // NLWW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,   419,    14,   234, 0x0,                         STR_NULL},                         // NLWW_BACKGROUND
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   419,    22,    34, STR_NETWORK_PREPARE_TO_JOIN, STR_NULL},                         // NLWW_TEXT
 
 /* company list */
-{      WWT_PANEL,   RESIZE_NONE,   COLOUR_WHITE,         10,   155,    38,    49, 0x0,                         STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,   COLOUR_WHITE,         10,   155,    38,    49, 0x0,                         STR_NULL},                         // NLWW_HEADER
 {     WWT_MATRIX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   155,    50,   190, (10 << 8) + 1,               STR_NETWORK_COMPANY_LIST_TIP},     // NLWW_MATRIX
-{  WWT_SCROLLBAR,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   156,   167,    38,   190, 0x0,                         STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},
+{  WWT_SCROLLBAR,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   156,   167,    38,   190, 0x0,                         STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // NLWW_SCROLLBAR
 
 /* company info */
 {      WWT_PANEL,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   173,   404,    38,   190, 0x0,                         STR_NULL},                         // NLWW_DETAILS
@@ -1525,6 +1541,14 @@ typedef void ClientList_Action_Proc(byte client_no);
 enum {
 	CLNWND_OFFSET = 16,
 	CLNWND_ROWSIZE = 10
+};
+
+/** Widget numbers of the client list window. */
+enum ClientListWidgets {
+	CLW_CLOSE,
+	CLW_CAPTION,
+	CLW_STICKY,
+	CLW_PANEL,
 };
 
 static const Widget _client_list_widgets[] = {
@@ -1967,7 +1991,7 @@ struct NetworkJoinStatusWindow : Window {
 };
 
 static const Widget _network_join_status_window_widget[] = {
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,      0,   249,     0,    13, STR_NETWORK_CONNECTING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // NSJW_CAPTION
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,      0,   249,     0,    13, STR_NETWORK_CONNECTING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // NJSW_CAPTION
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,      0,   249,    14,    84, 0x0,                    STR_NULL},                        // NJSW_BACKGROUND
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_WHITE,    75,   175,    69,    80, STR_NETWORK_DISCONNECT, STR_NULL},                        // NJSW_CANCELOK
 {   WIDGETS_END},
