@@ -34,12 +34,26 @@ static const Widget _network_content_download_status_window_widget[] = {
 {   WIDGETS_END},
 };
 
+/** Nested widgets for the download window. */
+static const NWidgetPart _nested_network_content_download_status_window_widgets[] = {
+	NWidget(WWT_CAPTION, COLOUR_GREY, NCDSWW_CAPTION), SetDataTip(STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	NWidget(WWT_PANEL, COLOUR_GREY, NCDSWW_BACKGROUND),
+		NWidget(NWID_SPACER), SetMinimalSize(350, 55),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(125, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCDSWW_CANCELOK), SetMinimalSize(101, 12), SetDataTip(STR_QUERY_CANCEL, STR_NULL),
+			NWidget(NWID_SPACER), SetFill(true, false),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 4),
+	EndContainer(),
+};
+
 /** Window description for the download window */
 static const WindowDesc _network_content_download_status_window_desc(
 	WDP_CENTER, WDP_CENTER, 350, 85, 350, 85,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_MODAL,
-	_network_content_download_status_window_widget
+	_network_content_download_status_window_widget, _nested_network_content_download_status_window_widgets, lengthof(_nested_network_content_download_status_window_widgets)
 );
 
 /** Window for showing the download status of content */
@@ -748,7 +762,7 @@ static const Widget _network_content_list_widgets[] = {
 
 /* BOTTOM */
 { WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,         10,   110,   252,   263, STR_CONTENT_SELECT_ALL_CAPTION,     STR_CONTENT_SELECT_ALL_CAPTION_TIP},     // NCLWW_SELECT_ALL
-{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,         10,   110,   252,   263, STR_CONTENT_SELECT_UPDATES_CAPTION, STR_CONTENT_SELECT_UPDATES_CAPTION_TIP}, // NCLWW_SELECT_UPDATES
+{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,         10,   110,   252,   263, STR_CONTENT_SELECT_UPDATES_CAPTION, STR_CONTENT_SELECT_UPDATES_CAPTION_TIP}, // NCLWW_SELECT_UPDATE
 { WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,        118,   218,   252,   263, STR_CONTENT_UNSELECT_ALL_CAPTION,   STR_CONTENT_UNSELECT_ALL_CAPTION_TIP},   // NCLWW_UNSELECT
 { WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        226,   326,   252,   263, STR_QUERY_CANCEL,                   STR_NULL},                               // NCLWW_CANCEL
 { WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        334,   434,   252,   263, STR_CONTENT_DOWNLOAD_CAPTION,       STR_CONTENT_DOWNLOAD_CAPTION_TIP},       // NCLWW_DOWNLOAD
@@ -758,12 +772,90 @@ static const Widget _network_content_list_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const NWidgetPart _nested_network_content_list_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NCLWW_CLOSE),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NCLWW_CAPTION), SetDataTip(STR_CONTENT_TITLE, STR_NULL),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NCLWW_BACKGROUND),
+		NWidget(NWID_HORIZONTAL), SetPIP(8, 7, 9),
+			/* Left side. */
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 22), SetResize(1, 0),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(NWID_VERTICAL),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_CHECKBOX), SetMinimalSize(13, 12), SetDataTip(STR_EMPTY, STR_NULL),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_TYPE), SetMinimalSize(90, 12),
+											SetDataTip(STR_CONTENT_TYPE_CAPTION, STR_CONTENT_TYPE_CAPTION_TIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_NAME), SetMinimalSize(80, 12), SetResize(1, 0),
+											SetDataTip(STR_CONTENT_NAME_CAPTION, STR_CONTENT_NAME_CAPTION_TIP),
+						EndContainer(),
+						NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, NCLWW_MATRIX), SetMinimalSize(183, 197), SetResize(2, 14),
+											SetDataTip((14 << 8) | 1, STR_CONTENT_MATRIX_TIP),
+					EndContainer(),
+					NWidget(WWT_SCROLLBAR, COLOUR_LIGHT_BLUE, NCLWW_SCROLLBAR),
+				EndContainer(),
+			EndContainer(),
+			/* Right side. */
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 6),
+				NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, NCLWW_FILTER), SetMinimalSize(231, 12), SetDataTip(STR_CONTENT_FILTER_OSKTITLE, STR_CONTENT_FILTER_TIP),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
+				NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NCLWW_DETAILS), SetMinimalSize(231, 209), SetResize(0, 1), EndContainer(),
+			EndContainer(),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 7), SetResize(1, 0),
+		/* Bottom. */
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+			NWidget(NWID_SELECTION),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_SELECT_ALL), SetMinimalSize(101, 12),
+										SetDataTip(STR_CONTENT_SELECT_ALL_CAPTION, STR_CONTENT_SELECT_ALL_CAPTION_TIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_SELECT_UPDATE), SetMinimalSize(101, 12),
+										SetDataTip(STR_CONTENT_SELECT_UPDATES_CAPTION, STR_CONTENT_SELECT_UPDATES_CAPTION_TIP),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(7, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_UNSELECT), SetMinimalSize(101, 12),
+										SetDataTip(STR_CONTENT_UNSELECT_ALL_CAPTION, STR_CONTENT_UNSELECT_ALL_CAPTION_TIP),
+			NWidget(NWID_SPACER), SetMinimalSize(7, 0), SetResize(1, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_CANCEL), SetMinimalSize(101, 12), SetDataTip(STR_QUERY_CANCEL, STR_NULL),
+			NWidget(NWID_SPACER), SetMinimalSize(7, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_DOWNLOAD), SetMinimalSize(101, 12),
+										SetDataTip(STR_CONTENT_DOWNLOAD_CAPTION, STR_CONTENT_DOWNLOAD_CAPTION_TIP),
+			NWidget(NWID_SPACER), SetMinimalSize(15, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 2), SetResize(1, 0),
+		/* Resize button. */
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetFill(true, false), SetResize(1, 0),
+			NWidget(WWT_RESIZEBOX, COLOUR_LIGHT_BLUE, NCLWW_RESIZE),
+		EndContainer(),
+	EndContainer(),
+};
+
+void test_nested_content()
+{
+	const Widget *wid;
+
+	printf("_network_content_download_status_window_widget\n");
+	wid = InitializeWidgetArrayFromNestedWidgets(_nested_network_content_download_status_window_widgets, lengthof(_nested_network_content_download_status_window_widgets),
+							_network_content_download_status_window_widget, NULL);
+	free((void *)wid);
+
+	printf("_network_content_list_widgets\n");
+	wid = InitializeWidgetArrayFromNestedWidgets(_nested_network_content_list_widgets, lengthof(_nested_network_content_list_widgets),
+							_network_content_list_widgets, NULL);
+	free((void *)wid);
+}
+
+
 /** Window description of the content list */
 static const WindowDesc _network_content_list_desc(
 	WDP_CENTER, WDP_CENTER, 450, 278, 630, 460,
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
-	_network_content_list_widgets
+	_network_content_list_widgets, _nested_network_content_list_widgets, lengthof(_nested_network_content_list_widgets)
 );
 
 /**
