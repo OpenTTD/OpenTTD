@@ -2799,7 +2799,7 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}改变�
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}清除高亮选择的命令的执行时间
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}重置晚点计数器，从而使车辆准时到达
 STR_SERVICE_HINT                                                :{BLACK}除非需要在此处保养，否则跳过这一项目
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}售价：{CURRENCY} 重量：{WEIGHT_S}{}速度：{VELOCITY}  功率：{POWER}{}运行费用：{CURRENCY}/年{}装载量: {CARGO}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}售价：{CURRENCY} 重量：{WEIGHT_S}{}速度：{VELOCITY}  功率：{POWER}{}运行费用：{CURRENCY}/年{}运载能力： {CARGO}
 STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}售价：{CURRENCY} 最大速度：{VELOCITY}{}运载能力：{CARGO}, {CARGO}{}运行成本：{CURRENCY} /年
 STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}售价：{CURRENCY} 最大速度：{VELOCITY}{}运载能力：{CARGO}{}运行成本：{CURRENCY} /年
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}年龄：{LTBLUE}{STRING}{BLACK}   运行成本：{LTBLUE}{CURRENCY} /年
@@ -3149,15 +3149,17 @@ STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}当车辆不在车库中时,这将改变 '{1:ENGINE}' 的车辆长度.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}列车 '{VEHICLE}' 属于 '{COMPANY}' 使长度无效化了. 这可能是NewGRF导致的. 有可能会发生崩溃或同步错误.
 
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}购买'{1:ENGINE}' 后，将造成货物/运费的参数与购买列表不符，这将有可能造成自动更新/购买不成功。
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 产生了一个死循环
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}游戏保存为了无电车版. 所有电车都被去掉了。
 
 STR_CURRENCY_WINDOW                                             :{WHITE}自定义货币
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}兑换汇率： {ORANGE}{0:CURRENCY} = ￡ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}兑换汇率： {ORANGE}{0:CURRENCY} = {1:COMMA} 磅(£)
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}分隔符： {ORANGE}{2:STRING}
 STR_CURRENCY_PREFIX                                             :{LTBLUE}前缀： {ORANGE}{3:STRING}
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}后缀： {ORANGE}{4:STRING}
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}转换为欧元： {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}转换为欧元： {ORANGE}{5:NUM} 年后
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}转换为欧元： {ORANGE}不转换
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}预览：{ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}改变当前的货币参数
@@ -3571,6 +3573,7 @@ STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI 特�
 STR_AI_AUTHOR                                                   :{BLACK}作者: {STRING}
 STR_AI_VERSION                                                  :{BLACK}版本: {NUM}
 STR_AI_URL                                                      :{BLACK}URL： {STRING}
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}一个运行中的 AI 崩溃了。请附上一张 AI 调试窗口的截图，将此错误通报 AI 作者。
 ########
 
 ############ town controlled noise level

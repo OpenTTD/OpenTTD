@@ -3575,7 +3575,7 @@ STR_AI_SETTINGS_CAPTION                                         :{WHITE}인공�
 STR_AI_AUTHOR                                                   :{BLACK}저자: {STRING}
 STR_AI_VERSION                                                  :{BLACK}버젼: {NUM}
 STR_AI_URL                                                      :{BLACK}주소: {STRING}
-STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}작동중인 인공지능 중 하나가 충돌했습니다. 인공지능 디버그 창에서 스샷을 찍어 인공지능 작가에게 보고하십시오.
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}작동중인 인공지능 중 하나가 충돌했습니다. 인공지능 디버그 창에서 스크린샷을 찍어 인공지능 제작자에게 보고하십시오.
 ########
 
 ############ town controlled noise level
