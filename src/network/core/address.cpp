@@ -195,7 +195,8 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 
 	if (e != 0) {
 		if (func != ResolveLoopProc) {
-			DEBUG(net, 0, "getaddrinfo(%s, %s) failed: %s", this->hostname, port_name, FS2OTTD(gai_strerror(e)));
+			DEBUG(net, 0, "getaddrinfo for hostname \"%s\", port %s, address family %s and socket type %s failed: %s",
+				this->hostname, port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), FS2OTTD(gai_strerror(e)));
 		}
 		return INVALID_SOCKET;
 	}
@@ -235,22 +236,28 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
  */
 static SOCKET ConnectLoopProc(addrinfo *runp)
 {
+	const char *type = NetworkAddress::SocketTypeAsString(runp->ai_socktype);
+	const char *family = NetworkAddress::AddressFamilyAsString(runp->ai_family);
+	const char *address = NetworkAddress(runp->ai_addr, (int)runp->ai_addrlen).GetAddressAsString();
+
 	SOCKET sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
 	if (sock == INVALID_SOCKET) {
-		DEBUG(net, 1, "Could not create socket: %s", strerror(errno));
+		DEBUG(net, 1, "[%s] could not create %s socket: %s", type, family, strerror(errno));
 		return INVALID_SOCKET;
 	}
 
-	if (!SetNoDelay(sock)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
+	if (!SetNoDelay(sock)) DEBUG(net, 1, "[%s] setting TCP_NODELAY failed", type);
 
 	if (connect(sock, runp->ai_addr, (int)runp->ai_addrlen) != 0) {
-		DEBUG(net, 1, "Could not connect socket: %s", strerror(errno));
+		DEBUG(net, 1, "[%s] could not connect %s socket: %s", type, family, strerror(errno));
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
 
 	/* Connection succeeded */
-	if (!SetNonBlocking(sock)) DEBUG(net, 0, "Setting non-blocking mode failed");
+	if (!SetNonBlocking(sock)) DEBUG(net, 0, "[%s] setting non-blocking mode failed", type);
+
+	DEBUG(net, 1, "[%s] connected to %s", type, address);
 
 	return sock;
 }
@@ -259,7 +266,7 @@ SOCKET NetworkAddress::Connect()
 {
 	DEBUG(net, 1, "Connecting to %s", this->GetAddressAsString());
 
-	return this->Resolve(0, SOCK_STREAM, AI_ADDRCONFIG, NULL, ConnectLoopProc);
+	return this->Resolve(AF_UNSPEC, SOCK_STREAM, AI_ADDRCONFIG, NULL, ConnectLoopProc);
 }
 
 /**
@@ -269,46 +276,47 @@ SOCKET NetworkAddress::Connect()
  */
 static SOCKET ListenLoopProc(addrinfo *runp)
 {
-	const char *type = runp->ai_socktype == SOCK_STREAM ? "tcp" : "udp";
+	const char *type = NetworkAddress::SocketTypeAsString(runp->ai_socktype);
+	const char *family = NetworkAddress::AddressFamilyAsString(runp->ai_family);
 	const char *address = NetworkAddress(runp->ai_addr, (int)runp->ai_addrlen).GetAddressAsString();
 
 	SOCKET sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
 	if (sock == INVALID_SOCKET) {
-		DEBUG(net, 0, "[%s] Could not create socket on port %s: %s", type, address, strerror(errno));
+		DEBUG(net, 0, "[%s] could not create %s socket on port %s: %s", type, family, address, strerror(errno));
 		return INVALID_SOCKET;
 	}
 
 	if (runp->ai_socktype == SOCK_STREAM && !SetNoDelay(sock)) {
-		DEBUG(net, 3, "[%s] Setting TCP_NODELAY failed for port %s", type, address);
+		DEBUG(net, 3, "[%s] setting TCP_NODELAY failed for port %s", type, address);
 	}
 
 	int on = 1;
 	/* The (const char*) cast is needed for windows!! */
 	if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (const char*)&on, sizeof(on)) == -1) {
-		DEBUG(net, 3, "[%s] Could not set reusable sockets for port %s: %s", type, address, strerror(errno));
+		DEBUG(net, 3, "[%s] could not set reusable %s sockets for port %s: %s", type, family, address, strerror(errno));
 	}
 
 	if (runp->ai_family == AF_INET6 &&
 			setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&on, sizeof(on)) == -1) {
-		DEBUG(net, 3, "[%s] Could not disable IPv4 over IPv6 on port %s: %s", type, address, strerror(errno));
+		DEBUG(net, 3, "[%s] could not disable IPv4 over IPv6 on port %s: %s", type, address, strerror(errno));
 	}
 
 	if (bind(sock, runp->ai_addr, (int)runp->ai_addrlen) != 0) {
-		DEBUG(net, 1, "[%s] Could not bind on port %s: %s", type, address, strerror(errno));
+		DEBUG(net, 1, "[%s] could not bind on %s port %s: %s", type, family, address, strerror(errno));
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
 
 	if (runp->ai_socktype != SOCK_DGRAM && listen(sock, 1) != 0) {
-		DEBUG(net, 1, "[%s] Could not listen at port %s: %s", type, address, strerror(errno));
+		DEBUG(net, 1, "[%s] could not listen at % port %s: %s", type, family, address, strerror(errno));
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
 
 	/* Connection succeeded */
-	if (!SetNonBlocking(sock)) DEBUG(net, 0, "[%s] Setting non-blocking mode failed for port %s", type, address);
+	if (!SetNonBlocking(sock)) DEBUG(net, 0, "[%s] setting non-blocking mode failed for %s port %s", type, family, address);
 
-	DEBUG(net, 1, "[%s] Listening on port %s", type, address);
+	DEBUG(net, 1, "[%s] listening on %s port %s", type, family, address);
 	return sock;
 }
 
@@ -325,6 +333,25 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 		this->Resolve(AF_INET6, socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
 	} else {
 		this->Resolve(AF_UNSPEC, socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
+	}
+}
+
+/* static */ const char *NetworkAddress::SocketTypeAsString(int socktype)
+{
+	switch (socktype) {
+		case SOCK_STREAM: return "tcp";
+		case SOCK_DGRAM:  return "udp";
+		default:          return "unsupported";
+	}
+}
+
+/* static */ const char *NetworkAddress::AddressFamilyAsString(int family)
+{
+	switch (family) {
+		case AF_UNSPEC: return "either IPv4 or IPv6";
+		case AF_INET:   return "IPv4";
+		case AF_INET6:  return "IPv6";
+		default:        return "unsupported";
 	}
 }
 

@@ -238,6 +238,22 @@ public:
 	 * @param sockets the list of sockets to add the sockets to
 	 */
 	void Listen(int socktype, SocketList *sockets);
+
+	/**
+	 * Convert the socket type into a string
+	 * @param socktype the socket type to convert
+	 * @return the string representation
+	 * @note only works for SOCK_STREAM and SOCK_DGRAM
+	 */
+	static const char *SocketTypeAsString(int socktype);
+
+	/**
+	 * Convert the address family into a string
+	 * @param family the family to convert
+	 * @return the string representation
+	 * @note only works for AF_INET, AF_INET6 and AF_UNSPEC
+	 */
+	static const char *AddressFamilyAsString(int family);
 };
 
 #endif /* ENABLE_NETWORK */

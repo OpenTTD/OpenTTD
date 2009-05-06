@@ -55,7 +55,7 @@ public:
 DEF_UDP_RECEIVE_COMMAND(Master, PACKET_UDP_MASTER_ACK_REGISTER)
 {
 	_network_advertise_retries = 0;
-	DEBUG(net, 2, "[udp] advertising on master server successful");
+	DEBUG(net, 2, "[udp] advertising on master server successful (%s)", NetworkAddress::AddressFamilyAsString(client_addr->GetAddress()->ss_family));
 
 	/* We are advertised, but we don't want to! */
 	if (!_settings_client.network.server_advertise) NetworkUDPRemoveAdvertise(false);
@@ -64,7 +64,7 @@ DEF_UDP_RECEIVE_COMMAND(Master, PACKET_UDP_MASTER_ACK_REGISTER)
 DEF_UDP_RECEIVE_COMMAND(Master, PACKET_UDP_MASTER_SESSION_KEY)
 {
 	_session_key = p->Recv_uint64();
-	DEBUG(net, 2, "[udp] received new session key from master server");
+	DEBUG(net, 2, "[udp] received new session key from master server (%s)", NetworkAddress::AddressFamilyAsString(client_addr->GetAddress()->ss_family));
 }
 
 ///*** Communication with clients (we are server) ***/
@@ -116,7 +116,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
 	/* Let the client know that we are here */
 	this->SendPacket(&packet, client_addr);
 
-	DEBUG(net, 2, "[udp] queried from '%s'", client_addr->GetHostname());
+	DEBUG(net, 2, "[udp] queried from %s", client_addr->GetHostname());
 }
 
 DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
@@ -494,6 +494,22 @@ void NetworkUDPAdvertiseThread(void *pntr)
 	NetworkAddress out_addr(NETWORK_MASTER_SERVER_HOST, NETWORK_MASTER_SERVER_PORT);
 
 	DEBUG(net, 1, "[udp] advertising to master server");
+
+	/* Add a bit more messaging when we cannot get a session key */
+	static byte session_key_retries = 0;
+	if (_session_key == 0 && session_key_retries++ == 2) {
+		DEBUG(net, 0, "[udp] advertising to the master server is failing");
+		DEBUG(net, 0, "[udp]   we are not receiving the session key from the server");
+		DEBUG(net, 0, "[udp]   please allow udp packets from %s to you to be delivered", out_addr.GetAddressAsString(false));
+		DEBUG(net, 0, "[udp]   please allow udp packets from you to %s to be delivered", out_addr.GetAddressAsString(false));
+	}
+	if (_session_key != 0 && _network_advertise_retries == 0) {
+		DEBUG(net, 0, "[udp] advertising to the master server is failing");
+		DEBUG(net, 0, "[udp]   we are not receiving the acknowledgement from the server");
+		DEBUG(net, 0, "[udp]   this usually means that the master server cannot reach us");
+		DEBUG(net, 0, "[udp]   please allow udp and tcp packets to port %s to be delivered", _settings_client.network.server_port);
+		DEBUG(net, 0, "[udp]   please allow udp and tcp packets from port %s to be delivered", _settings_client.network.server_port);
+	}
 
 	/* Send the packet */
 	Packet p(PACKET_UDP_SERVER_REGISTER);
