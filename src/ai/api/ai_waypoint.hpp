@@ -16,7 +16,7 @@ public:
 	static const char *GetClassName() { return "AIWaypoint"; }
 
 	enum SpecialWaypointIDs {
-		WAYPOINT_INVALID = -1, //!< An invalid WaypointID.
+		WAYPOINT_INVALID = 0xFFFF, //!< An invalid WaypointID.
 	};
 
 	/**

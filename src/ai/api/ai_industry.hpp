@@ -86,7 +86,9 @@ public:
 	static TileIndex GetLocation(IndustryID industry_id);
 
 	/**
-	 * Get the number of stations around an industry.
+	 * Get the number of stations around an industry. All stations that can
+	 * service the industry are counted, your own stations but also your
+	 * opponents stations.
 	 * @param industry_id The index of the industry.
 	 * @pre IsValidIndustry(industry_id).
 	 * @return The number of stations around an industry.

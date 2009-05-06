@@ -53,7 +53,7 @@ enum Slope {
 	SLOPE_NE       = SLOPE_N | SLOPE_E,                     ///< north and east corner are raised
 	SLOPE_EW       = SLOPE_E | SLOPE_W,                     ///< east and west corner are raised
 	SLOPE_NS       = SLOPE_N | SLOPE_S,                     ///< north and south corner are raised
-	SLOPE_ELEVATED = SLOPE_N | SLOPE_E | SLOPE_S | SLOPE_W, ///< all corner are raised, similar to SLOPE_FLAT
+	SLOPE_ELEVATED = SLOPE_N | SLOPE_E | SLOPE_S | SLOPE_W, ///< bit mask containing all 'simple' slopes
 	SLOPE_NWS      = SLOPE_N | SLOPE_W | SLOPE_S,           ///< north, west and south corner are raised
 	SLOPE_WSE      = SLOPE_W | SLOPE_S | SLOPE_E,           ///< west, south and east corner are raised
 	SLOPE_SEN      = SLOPE_S | SLOPE_E | SLOPE_N,           ///< south, east and north corner are raised
