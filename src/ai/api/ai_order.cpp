@@ -336,14 +336,15 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 		case OT_GOTO_DEPOT: {
 			OrderDepotTypeFlags odtf = (OrderDepotTypeFlags)(ODTFB_PART_OF_ORDERS | ((order_flags & AIOF_SERVICE_IF_NEEDED) ? ODTFB_SERVICE : 0));
 			OrderDepotActionFlags odaf = (OrderDepotActionFlags)(ODATF_SERVICE_ONLY | ((order_flags & AIOF_STOP_IN_DEPOT) ? ODATFB_HALT : 0));
+			OrderNonStopFlags onsf = (OrderNonStopFlags)((order_flags & AIOF_NON_STOP_INTERMEDIATE) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
 			/* Check explicitly if the order is to a station (for aircraft) or
 			 * to a depot (other vehicle types). */
 			if (::GetVehicle(vehicle_id)->type == VEH_AIRCRAFT) {
 				if (!::IsTileType(destination, MP_STATION)) return false;
-				order.MakeGoToDepot(::GetStationIndex(destination), odtf, ONSF_STOP_EVERYWHERE, odaf);
+				order.MakeGoToDepot(::GetStationIndex(destination), odtf, onsf, odaf);
 			} else {
 				if (::IsTileType(destination, MP_STATION)) return false;
-				order.MakeGoToDepot(::GetDepotByTile(destination)->index, odtf, ONSF_STOP_EVERYWHERE, odaf);
+				order.MakeGoToDepot(::GetDepotByTile(destination)->index, odtf, onsf, odaf);
 			}
 			break;
 		}
