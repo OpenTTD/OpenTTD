@@ -43,7 +43,6 @@
 static void _DoCommandReturnBuildTunnel2(class AIInstance *instance)
 {
 	if (!AITunnel::_BuildTunnelRoad2()) {
-		AIObject::SetLastCommandRes(false);
 		AIInstance::DoCommandReturn(instance);
 		return;
 	}
@@ -56,7 +55,6 @@ static void _DoCommandReturnBuildTunnel2(class AIInstance *instance)
 static void _DoCommandReturnBuildTunnel1(class AIInstance *instance)
 {
 	if (!AITunnel::_BuildTunnelRoad1()) {
-		AIObject::SetLastCommandRes(false);
 		AIInstance::DoCommandReturn(instance);
 		return;
 	}
@@ -75,7 +73,7 @@ static void _DoCommandReturnBuildTunnel1(class AIInstance *instance)
 	uint type = 0;
 	if (vehicle_type == AIVehicle::VT_ROAD) {
 		type |= (TRANSPORT_ROAD << 9);
-		type |= RoadTypeToRoadTypes((::RoadType)AIObject::GetRoadType());
+		type |= ::RoadTypeToRoadTypes((::RoadType)AIObject::GetRoadType());
 	} else {
 		type |= (TRANSPORT_RAIL << 9);
 		type |= AIRail::GetCurrentRailType();
@@ -87,10 +85,7 @@ static void _DoCommandReturnBuildTunnel1(class AIInstance *instance)
 	}
 
 	AIObject::SetCallbackVariable(0, start);
-	if (!AIObject::DoCommand(start, type, 0, CMD_BUILD_TUNNEL, NULL, &_DoCommandReturnBuildTunnel1)) return false;
-
-	/* In case of test-mode, test if we can build both road pieces */
-	return _BuildTunnelRoad1();
+	return AIObject::DoCommand(start, type, 0, CMD_BUILD_TUNNEL, NULL, &_DoCommandReturnBuildTunnel1);
 }
 
 /* static */ bool AITunnel::_BuildTunnelRoad1()
@@ -102,10 +97,7 @@ static void _DoCommandReturnBuildTunnel1(class AIInstance *instance)
 	DiagDirection dir_1 = ::DiagdirBetweenTiles(end, start);
 	DiagDirection dir_2 = ::ReverseDiagDir(dir_1);
 
-	if (!AIObject::DoCommand(start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2) | (AIObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD, NULL, &_DoCommandReturnBuildTunnel2)) return false;
-
-	/* In case of test-mode, test the other road piece too */
-	return _BuildTunnelRoad2();
+	return AIObject::DoCommand(start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2) | (AIObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD, NULL, &_DoCommandReturnBuildTunnel2);
 }
 
 /* static */ bool AITunnel::_BuildTunnelRoad2()
