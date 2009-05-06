@@ -23,8 +23,21 @@
 	/* If it's a tunnel alread, take the easy way out! */
 	if (IsTunnelTile(tile)) return ::GetOtherTunnelEnd(tile);
 
-	::DoCommand(tile, 0, 0, DC_AUTO, CMD_BUILD_TUNNEL);
-	return _build_tunnel_endtile == 0 ? INVALID_TILE : _build_tunnel_endtile;
+	uint start_z;
+	Slope start_tileh = ::GetTileSlope(tile, &start_z);
+	DiagDirection direction = ::GetInclinedSlopeDirection(start_tileh);
+	if (direction == INVALID_DIAGDIR) return INVALID_TILE;
+
+	TileIndexDiff delta = ::TileOffsByDiagDir(direction);
+	uint end_z;
+	do {
+		tile += delta;
+		if (!::IsValidTile(tile)) return INVALID_TILE;
+
+		::GetTileSlope(tile, &end_z);
+	} while (start_z != end_z);
+
+	return tile;
 }
 
 static void _DoCommandReturnBuildTunnel2(class AIInstance *instance)

@@ -46,11 +46,15 @@ public:
 
 	/**
 	 * Get the tile that exits on the other end of a (would be) tunnel starting
-	 *  at tile.
+	 *  at tile. If there is no 'simple' inclined slope at the start tile,
+	 *  this function will return AIMap::TILE_INVALID.
 	 * @param tile The tile that is an entrance to a tunnel or the tile where you may want to build a tunnel.
 	 * @pre AIMap::IsValidTile(tile).
 	 * @return The TileIndex that is the other end of the (would be) tunnel, or
 	 *  AIMap::TILE_INVALID if no other end was found (can't build tunnel).
+	 * @note Even if this function returns a valid tile, that is no guarantee
+	 *  that building a tunnel will succeed. Use BuildTunnel in AITestMode to
+	 *  check whether a tunnel can actually be build.
 	 */
 	static TileIndex GetOtherTunnelEnd(TileIndex tile);
 
