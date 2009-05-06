@@ -380,6 +380,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 			company_info->num_vehicle[i] = p->Recv_uint16();
 		for (int i = 0; i < NETWORK_STATION_TYPES; i++)
 			company_info->num_station[i] = p->Recv_uint16();
+		company_info->ai               = p->Recv_bool();
 
 		p->Recv_string(company_info->clients, sizeof(company_info->clients));
 

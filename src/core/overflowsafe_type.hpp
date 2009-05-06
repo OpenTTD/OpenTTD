@@ -86,7 +86,7 @@ public:
 	FORCEINLINE OverflowSafeInt operator * (const byte   factor) const { OverflowSafeInt result = *this; result *= (int64)factor; return result; }
 
 	/* Operators for division */
-	FORCEINLINE OverflowSafeInt& operator /= (const int              divisor)       { this->m_value /= divisor; return *this; }
+	FORCEINLINE OverflowSafeInt& operator /= (const int64            divisor)       { this->m_value /= divisor; return *this; }
 	FORCEINLINE OverflowSafeInt  operator /  (const OverflowSafeInt& divisor) const { OverflowSafeInt result = *this; result /= divisor.m_value; return result; }
 	FORCEINLINE OverflowSafeInt  operator /  (const int              divisor) const { OverflowSafeInt result = *this; result /= divisor; return result; }
 	FORCEINLINE OverflowSafeInt  operator /  (const uint             divisor) const { OverflowSafeInt result = *this; result /= (int)divisor; return result; }

@@ -1235,6 +1235,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MOVE)
 
 	/* Check if the company is valid */
 	if (!IsValidCompanyID(company_id) && company_id != COMPANY_SPECTATOR) return;
+	/* We don't allow moving to AI companies */
+	if (company_id != COMPANY_SPECTATOR && GetCompany(company_id)->is_ai) return;
 
 	/* Check if we require a password for this company */
 	if (company_id != COMPANY_SPECTATOR && !StrEmpty(_network_company_states[company_id].password)) {
@@ -1344,6 +1346,8 @@ void NetworkSocketHandler::Send_CompanyInformation(Packet *p, const Company *c, 
 	for (int i = 0; i < NETWORK_STATION_TYPES; i++) {
 		p->Send_uint16(stats->num_station[i]);
 	}
+
+	p->Send_bool(c->is_ai);
 }
 
 /**
