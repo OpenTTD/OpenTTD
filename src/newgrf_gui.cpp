@@ -57,12 +57,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bott
 		SetDParam   (3, STR_JUST_RAW_STRING);
 		SetDParamStr(4, c->error->data);
 		for (uint i = 0; i < c->error->num_params; i++) {
-			uint32 param = 0;
-			byte param_number = c->error->param_number[i];
-
-			if (param_number < c->num_params) param = c->param[param_number];
-
-			SetDParam(5 + i, param);
+			SetDParam(5 + i, c->error->param_value[i]);
 		}
 		GetString(message, c->error->custom_message == NULL ? c->error->message : STR_JUST_RAW_STRING, lastof(message));
 

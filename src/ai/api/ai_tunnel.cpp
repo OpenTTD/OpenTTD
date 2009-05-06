@@ -23,14 +23,26 @@
 	/* If it's a tunnel alread, take the easy way out! */
 	if (IsTunnelTile(tile)) return ::GetOtherTunnelEnd(tile);
 
-	::DoCommand(tile, 0, 0, DC_AUTO, CMD_BUILD_TUNNEL);
-	return _build_tunnel_endtile == 0 ? INVALID_TILE : _build_tunnel_endtile;
+	uint start_z;
+	Slope start_tileh = ::GetTileSlope(tile, &start_z);
+	DiagDirection direction = ::GetInclinedSlopeDirection(start_tileh);
+	if (direction == INVALID_DIAGDIR) return INVALID_TILE;
+
+	TileIndexDiff delta = ::TileOffsByDiagDir(direction);
+	uint end_z;
+	do {
+		tile += delta;
+		if (!::IsValidTile(tile)) return INVALID_TILE;
+
+		::GetTileSlope(tile, &end_z);
+	} while (start_z != end_z);
+
+	return tile;
 }
 
 static void _DoCommandReturnBuildTunnel2(class AIInstance *instance)
 {
 	if (!AITunnel::_BuildTunnelRoad2()) {
-		AIObject::SetLastCommandRes(false);
 		AIInstance::DoCommandReturn(instance);
 		return;
 	}
@@ -43,7 +55,6 @@ static void _DoCommandReturnBuildTunnel2(class AIInstance *instance)
 static void _DoCommandReturnBuildTunnel1(class AIInstance *instance)
 {
 	if (!AITunnel::_BuildTunnelRoad1()) {
-		AIObject::SetLastCommandRes(false);
 		AIInstance::DoCommandReturn(instance);
 		return;
 	}
@@ -62,7 +73,7 @@ static void _DoCommandReturnBuildTunnel1(class AIInstance *instance)
 	uint type = 0;
 	if (vehicle_type == AIVehicle::VT_ROAD) {
 		type |= (TRANSPORT_ROAD << 9);
-		type |= RoadTypeToRoadTypes((::RoadType)AIObject::GetRoadType());
+		type |= ::RoadTypeToRoadTypes((::RoadType)AIObject::GetRoadType());
 	} else {
 		type |= (TRANSPORT_RAIL << 9);
 		type |= AIRail::GetCurrentRailType();
@@ -74,10 +85,7 @@ static void _DoCommandReturnBuildTunnel1(class AIInstance *instance)
 	}
 
 	AIObject::SetCallbackVariable(0, start);
-	if (!AIObject::DoCommand(start, type, 0, CMD_BUILD_TUNNEL, NULL, &_DoCommandReturnBuildTunnel1)) return false;
-
-	/* In case of test-mode, test if we can build both road pieces */
-	return _BuildTunnelRoad1();
+	return AIObject::DoCommand(start, type, 0, CMD_BUILD_TUNNEL, NULL, &_DoCommandReturnBuildTunnel1);
 }
 
 /* static */ bool AITunnel::_BuildTunnelRoad1()
@@ -89,10 +97,7 @@ static void _DoCommandReturnBuildTunnel1(class AIInstance *instance)
 	DiagDirection dir_1 = (DiagDirection)((::TileX(start) == ::TileX(end)) ? (::TileY(start) < ::TileY(end) ? DIAGDIR_NW : DIAGDIR_SE) : (::TileX(start) < ::TileX(end) ? DIAGDIR_NE : DIAGDIR_SW));
 	DiagDirection dir_2 = ::ReverseDiagDir(dir_1);
 
-	if (!AIObject::DoCommand(start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2) | (AIObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD, NULL, &_DoCommandReturnBuildTunnel2)) return false;
-
-	/* In case of test-mode, test the other road piece too */
-	return _BuildTunnelRoad2();
+	return AIObject::DoCommand(start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2) | (AIObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD, NULL, &_DoCommandReturnBuildTunnel2);
 }
 
 /* static */ bool AITunnel::_BuildTunnelRoad2()

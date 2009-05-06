@@ -53,8 +53,8 @@ struct GRFError {
 	char *data;            ///< Additional data for message and custom_message
 	StringID message;      ///< Default message
 	StringID severity;     ///< Info / Warning / Error / Fatal
-	uint8 num_params;      ///< Number of additinal parameters for custom_message (0, 1 or 2)
-	uint8 param_number[2]; ///< GRF parameters to show for custom_message
+	uint8 num_params;      ///< Number of additinal parameters for message and custom_message (0, 1 or 2)
+	uint32 param_value[2]; ///< Values of GRF parameters to show for message and custom_message
 };
 
 /** Information about GRF, used in the game and (part of it) in savegames */

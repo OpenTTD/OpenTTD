@@ -47,32 +47,10 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date);
  *  in the genworld.h and genworld.c! -- TrueLight */
 gw_info _gw;
 
-/**
- * Set the status of the Paint flag.
- *  If it is true, the thread will hold with any futher generating till
- *  the drawing of the screen is done. This is handled by
- *  SetGeneratingWorldProgress(), so calling that function will stall
- *  from time to time.
- */
-void SetGeneratingWorldPaintStatus(bool status)
-{
-	_gw.wait_for_draw = status;
-}
-
-/**
- * Returns true if the thread wants the main program to do a (full) paint.
- *  If this returns false, please do not update the screen. Because we are
- *  writing in a thread, it can cause damaged data (reading and writing the
- *  same tile at the same time).
- */
-bool IsGeneratingWorldReadyForPaint()
-{
-	/* If we are in quit_thread mode, ignore this and always return false. This
-	 *  forces the screen to not be drawn, and the GUI not to wait for a draw. */
-	if (!_gw.active || _gw.quit_thread || !_gw.threaded) return false;
-
-	return _gw.wait_for_draw;
-}
+/** Rights for the map generation */
+ThreadMutex *_genworld_mapgen_mutex = ThreadMutex::New();
+/** Rights for the painting */
+ThreadMutex *_genworld_paint_mutex = ThreadMutex::New();
 
 /**
  * Tells if the world generation is done in a thread or not.
@@ -100,6 +78,7 @@ static void CleanupGeneration()
 
 	DeleteWindowById(WC_GENERATE_PROGRESS_WINDOW, 0);
 	MarkWholeScreenDirty();
+	_genworld_mapgen_mutex->EndCritical();
 }
 
 /**
@@ -109,6 +88,7 @@ static void _GenerateWorld(void *arg)
 {
 	try {
 		_generating_world = true;
+		_genworld_mapgen_mutex->BeginCritical();
 		if (_network_dedicated) DEBUG(net, 0, "Generating map, please wait...");
 		/* Set the Random() seed to generation_seed so we produce the same map with the same seed */
 		if (_settings_game.game_creation.generation_seed == GENERATE_NEW_SEED) _settings_game.game_creation.generation_seed = _settings_newgame.game_creation.generation_seed = InteractiveRandom();
@@ -194,6 +174,7 @@ static void _GenerateWorld(void *arg)
 		}
 	} catch (...) {
 		_generating_world = false;
+		_genworld_mapgen_mutex->EndCritical();
 		throw;
 	}
 }
@@ -223,11 +204,16 @@ void GenerateWorldSetAbortCallback(gw_abort_proc *proc)
 void WaitTillGeneratedWorld()
 {
 	if (_gw.thread == NULL) return;
+
+	_genworld_mapgen_mutex->EndCritical();
+	_genworld_paint_mutex->EndCritical();
 	_gw.quit_thread = true;
 	_gw.thread->Join();
 	delete _gw.thread;
 	_gw.thread   = NULL;
 	_gw.threaded = false;
+	_genworld_mapgen_mutex->BeginCritical();
+	_genworld_paint_mutex->BeginCritical();
 }
 
 /**
@@ -280,7 +266,6 @@ void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y)
 	_gw.abort  = false;
 	_gw.abortp = NULL;
 	_gw.lc     = _local_company;
-	_gw.wait_for_draw = false;
 	_gw.quit_thread   = false;
 	_gw.threaded      = true;
 
@@ -315,7 +300,9 @@ void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y)
 	    !ThreadObject::New(&_GenerateWorld, NULL, &_gw.thread)) {
 		DEBUG(misc, 1, "Cannot create genworld thread, reverting to single-threaded mode");
 		_gw.threaded = false;
+		_genworld_mapgen_mutex->EndCritical();
 		_GenerateWorld(NULL);
+		_genworld_mapgen_mutex->BeginCritical();
 		return;
 	}
 
