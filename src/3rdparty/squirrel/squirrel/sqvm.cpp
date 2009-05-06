@@ -83,7 +83,7 @@ SQVM::SQVM(SQSharedState *ss)
 	_suspended = SQFalse;
 	_suspended_target=-1;
 	_suspended_root = SQFalse;
-	_suspended_traps=-1;
+	_suspended_traps=0;
 	_foreignptr=NULL;
 	_nnativecalls=0;
 	_lasterror = _null_;
@@ -699,7 +699,7 @@ exception_restore:
 		for(;;)
 		{
 			DecreaseOps(1);
-			if (ShouldSuspend()) { _suspended = SQTrue; return true; }
+			if (ShouldSuspend()) { _suspended = SQTrue; _suspended_traps = traps; return true; }
 
 			const SQInstruction &_i_ = *ci->_ip++;
 			//dumpstack(_stackbase);
