@@ -600,11 +600,8 @@ Vehicle::~Vehicle()
  */
 void VehicleEnteredDepotThisTick(Vehicle *v)
 {
-	/* Vehicle should stop in the depot if it was in 'stopping' state or
-	 * when the vehicle is ordered to halt in the depot. */
-	_vehicles_to_autoreplace[v] = !(v->vehstatus & VS_STOPPED) &&
-			(!v->current_order.IsType(OT_GOTO_DEPOT) ||
-			 !(v->current_order.GetDepotActionType() & ODATFB_HALT));
+	/* Vehicle should stop in the depot if it was in 'stopping' state */
+	_vehicles_to_autoreplace[v] = !(v->vehstatus & VS_STOPPED);
 
 	/* We ALWAYS set the stopped state. Even when the vehicle does not plan on
 	 * stopping in the depot, so we stop it to ensure that it will not reserve
@@ -1073,8 +1070,8 @@ void VehicleEnterDepot(Vehicle *v)
 			v->cur_order_index++;
 		}
 		if (t.GetDepotActionType() & ODATFB_HALT) {
-			/* Force depot visit */
-			v->vehstatus |= VS_STOPPED;
+			/* Vehicles are always stopped on entering depots. Do not restart this one. */
+			_vehicles_to_autoreplace[v] = false;
 			if (v->owner == _local_company) {
 				StringID string;
 
