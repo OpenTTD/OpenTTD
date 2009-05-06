@@ -61,7 +61,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date)
 
 	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 
-	_pause_game = 0;
+	_pause_mode = PM_UNPAUSED;
 	_fast_forward = 0;
 	_tick_counter = 0;
 	_realtime_tick = 0;

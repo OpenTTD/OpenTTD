@@ -395,7 +395,7 @@ public:
 
 	virtual void OnTick()
 	{
-		if (_pause_game != 0) return;
+		if (_pause_mode != PM_UNPAUSED) return;
 		if (!this->timer_enabled) return;
 		if (--this->callback_timer == 0) {
 			/* We have just passed another day.

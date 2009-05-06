@@ -1979,7 +1979,7 @@ void MouseLoop(MouseClick click, int mousewheel)
 						/* query button and place sign button work in pause mode */
 						_cursor.sprite != SPR_CURSOR_QUERY &&
 						_cursor.sprite != SPR_CURSOR_SIGN &&
-						_pause_game != 0 &&
+						_pause_mode != PM_UNPAUSED &&
 						!_cheats.build_in_pause.value) {
 					return;
 				}

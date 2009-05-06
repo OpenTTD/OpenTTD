@@ -40,7 +40,7 @@ bool _screen_disable_anim = false;   ///< Disable palette animation (important f
 bool _exit_game;
 GameMode _game_mode;
 SwitchMode _switch_mode;  ///< The next mainloop command.
-int8 _pause_game;
+PauseModeByte _pause_mode;
 int _pal_first_dirty;
 int _pal_count_dirty;
 

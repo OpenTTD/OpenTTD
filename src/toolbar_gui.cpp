@@ -249,7 +249,7 @@ static void ToolbarPauseClick(Window *w)
 {
 	if (_networking && !_network_server) return; // only server can pause the game
 
-	if (DoCommandP(0, _pause_game ? 0 : 1, 0, CMD_PAUSE)) SndPlayFx(SND_15_BEEP);
+	if (DoCommandP(0, PM_PAUSED_NORMAL, _pause_mode == PM_UNPAUSED, CMD_PAUSE)) SndPlayFx(SND_15_BEEP);
 }
 
 /* --- Fast forwarding --- */
@@ -1106,7 +1106,7 @@ struct MainToolbarWindow : Window {
 
 	virtual void OnTick()
 	{
-		if (this->IsWidgetLowered(TBN_PAUSE) != !!_pause_game) {
+		if (this->IsWidgetLowered(TBN_PAUSE) != !!_pause_mode) {
 			this->ToggleWidgetLoweredState(TBN_PAUSE);
 			this->InvalidateWidget(TBN_PAUSE);
 		}
@@ -1379,7 +1379,7 @@ public:
 
 	virtual void OnTick()
 	{
-		if (this->IsWidgetLowered(TBSE_PAUSE) != !!_pause_game) {
+		if (this->IsWidgetLowered(TBSE_PAUSE) != !!_pause_mode) {
 			this->ToggleWidgetLoweredState(TBSE_PAUSE);
 			this->SetDirty();
 		}

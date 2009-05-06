@@ -166,7 +166,7 @@ static void _GenerateWorld(void *arg)
 		if (_network_dedicated) DEBUG(net, 0, "Map generated, starting game");
 		DEBUG(desync, 1, "new_map: %i\n", _settings_game.game_creation.generation_seed);
 
-		if (_settings_client.gui.pause_on_newgame && _game_mode == GM_NORMAL) DoCommandP(0, 1, 0, CMD_PAUSE);
+		if (_settings_client.gui.pause_on_newgame && _game_mode == GM_NORMAL) DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
 		if (_debug_desync_level > 0) {
 			char name[MAX_PATH];
 			snprintf(name, lengthof(name), "dmp_cmds_%08x_%08x.sav", _settings_game.game_creation.generation_seed, _date);

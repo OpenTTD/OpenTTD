@@ -97,7 +97,7 @@ struct StatusBarWindow : Window {
 
 		this->DrawWidgets();
 		SetDParam(0, _date);
-		DrawString(this->widget[SBW_LEFT].left + 1, this->widget[SBW_LEFT].right - 1, 1, (_pause_game || _settings_client.gui.status_long_date) ? STR_DATE_LONG_WHITE : STR_DATE_SHORT_WHITE, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->widget[SBW_LEFT].left + 1, this->widget[SBW_LEFT].right - 1, 1, (_pause_mode || _settings_client.gui.status_long_date) ? STR_DATE_LONG_WHITE : STR_DATE_SHORT_WHITE, TC_FROMSTRING, SA_CENTER);
 
 		if (c != NULL) {
 			/* Draw company money */
@@ -110,7 +110,7 @@ struct StatusBarWindow : Window {
 			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_STATUSBAR_SAVING_GAME, TC_FROMSTRING, SA_CENTER);
 		} else if (_do_autosave) {
 			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_STATUSBAR_AUTOSAVE, TC_FROMSTRING, SA_CENTER);
-		} else if (_pause_game) {
+		} else if (_pause_mode != PM_UNPAUSED) {
 			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_STATUSBAR_PAUSED, TC_FROMSTRING, SA_CENTER);
 		} else if (this->ticker_scroll > TICKER_STOP && FindWindowById(WC_NEWS_WINDOW, 0) == NULL && _statusbar_news_item.string_id != 0) {
 			/* Draw the scrolling news text */
@@ -159,7 +159,7 @@ struct StatusBarWindow : Window {
 
 	virtual void OnTick()
 	{
-		if (_pause_game) return;
+		if (_pause_mode != PM_UNPAUSED) return;
 
 		if (this->ticker_scroll > TICKER_STOP) { // Scrolling text
 			this->ticker_scroll -= COUNTER_STEP;

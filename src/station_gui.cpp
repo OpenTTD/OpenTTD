@@ -549,7 +549,7 @@ public:
 
 	virtual void OnTick()
 	{
-		if (_pause_game != 0) return;
+		if (_pause_mode != PM_UNPAUSED) return;
 		if (this->stations.NeedResort()) {
 			DEBUG(misc, 3, "Periodic rebuild station list company %d", this->window_number);
 			this->SetDirty();

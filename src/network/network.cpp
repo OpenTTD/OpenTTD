@@ -345,24 +345,20 @@ static uint NetworkCountActiveClients()
 	return count;
 }
 
-static bool _min_active_clients_paused = false;
-
 /* Check if the minimum number of active clients has been reached and pause or unpause the game as appropriate */
 static void CheckMinActiveClients()
 {
-	if (!_network_dedicated) return;
+	if (!_network_dedicated || _settings_client.network.min_active_clients == 0) return;
 
 	if (NetworkCountActiveClients() < _settings_client.network.min_active_clients) {
-		if (_min_active_clients_paused) return;
+		if ((_pause_mode & PM_PAUSED_NORMAL) != 0) return;
 
-		_min_active_clients_paused = true;
-		DoCommandP(0, 1, 0, CMD_PAUSE);
+		DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
 		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "", CLIENT_ID_SERVER, NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS);
 	} else {
-		if (!_min_active_clients_paused) return;
+		if (_pause_mode == PM_UNPAUSED) return;
 
-		_min_active_clients_paused = false;
-		DoCommandP(0, 0, 0, CMD_PAUSE);
+		DoCommandP(0, PM_PAUSED_NORMAL, 0, CMD_PAUSE);
 		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "", CLIENT_ID_SERVER, NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS);
 	}
 }
@@ -464,8 +460,8 @@ void NetworkCloseClient(NetworkClientSocket *cs)
 	}
 
 	/* When the client was PRE_ACTIVE, the server was in pause mode, so unpause */
-	if (cs->status == STATUS_PRE_ACTIVE && _settings_client.network.pause_on_join) {
-		DoCommandP(0, 0, 0, CMD_PAUSE);
+	if (cs->status == STATUS_PRE_ACTIVE && _pause_mode & PM_PAUSED_JOIN) {
+		DoCommandP(0, PM_PAUSED_JOIN, 0, CMD_PAUSE);
 		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "", CLIENT_ID_SERVER, NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL);
 	}
 
@@ -793,8 +789,6 @@ bool NetworkServerStart()
 	IConsoleCmdExec("exec scripts/on_server.scr 0");
 	/* if the server is dedicated ... add some other script */
 	if (_network_dedicated) IConsoleCmdExec("exec scripts/on_dedicated.scr 0");
-
-	_min_active_clients_paused = false;
 
 	/* Try to register us to the master server */
 	_network_last_advertise_frame = 0;

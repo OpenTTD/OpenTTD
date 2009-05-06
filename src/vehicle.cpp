@@ -121,7 +121,7 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 		SetDParamStr(0, grfconfig->name);
 		SetDParam(1, engine);
 		ShowErrorMessage(part2, part1, 0, 0);
-		if (!_networking) _pause_game = (critical ? -1 : 1);
+		if (!_networking) DoCommandP(0, critical ? PM_PAUSED_ERROR : PM_PAUSED_NORMAL, 1, CMD_PAUSE);
 	}
 
 	/* debug output */

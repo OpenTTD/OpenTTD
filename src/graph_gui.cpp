@@ -1182,7 +1182,7 @@ struct PerformanceRatingDetailWindow : Window {
 
 	virtual void OnTick()
 	{
-		if (_pause_game != 0) return;
+		if (_pause_mode != PM_UNPAUSED) return;
 
 		/* Update the company score every 5 days */
 		if (--this->timeout == 0) {

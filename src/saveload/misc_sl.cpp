@@ -74,7 +74,7 @@ static const SaveLoadGlobVarList _date_desc[] = {
 	SLEG_CONDVAR(_next_competitor_start,  SLE_FILE_U16 | SLE_VAR_U32,  0, 108),
 	SLEG_CONDVAR(_next_competitor_start,  SLE_UINT32,                109, SL_MAX_VERSION),
 	    SLEG_VAR(_trees_tick_ctr,         SLE_UINT8),
-	SLEG_CONDVAR(_pause_game,             SLE_UINT8,                   4, SL_MAX_VERSION),
+	SLEG_CONDVAR(_pause_mode,             SLE_UINT8,                   4, SL_MAX_VERSION),
 	SLEG_CONDVAR(_cur_town_iter,          SLE_UINT32,                 11, SL_MAX_VERSION),
 	    SLEG_END()
 };

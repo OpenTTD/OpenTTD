@@ -308,7 +308,7 @@ CommandCost CmdRenamePresident(TileIndex tile, DoCommandFlag flags, uint32 p1, u
  */
 static void AskUnsafeUnpauseCallback(Window *w, bool confirmed)
 {
-	DoCommandP(0, confirmed ? 0 : 1, 0, CMD_PAUSE);
+	DoCommandP(0, PM_PAUSED_ERROR, confirmed ? 0 : 1, CMD_PAUSE);
 }
 
 /** Pause/Unpause the game (server-only).
@@ -317,29 +317,34 @@ static void AskUnsafeUnpauseCallback(Window *w, bool confirmed)
  * to have more control over the game when saving/loading, etc.
  * @param tile unused
  * @param flags operation to perform
- * @param p1 0 = decrease pause counter; 1 = increase pause counter
- * @param p2 unused
+ * @param p1 the pause mode to change
+ * @param p2 1 pauses, 0 unpauses this mode
  */
 CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
+	switch (p1) {
+		case PM_PAUSED_SAVELOAD:
+		case PM_PAUSED_ERROR:
+		case PM_PAUSED_JOIN:
+		case PM_PAUSED_NORMAL:
+			break;
+
+		default: return CMD_ERROR;
+	}
 	if (flags & DC_EXEC) {
-		_pause_game += (p1 == 0) ? -1 : 1;
-
-		switch (_pause_game) {
-			case -4:
-			case -1:
-				_pause_game = 0;
-				break;
-			case -3:
-				ShowQuery(
-					STR_NEWGRF_UNPAUSE_WARNING_TITLE,
-					STR_NEWGRF_UNPAUSE_WARNING,
-					NULL,
-					AskUnsafeUnpauseCallback
-				);
-				break;
-
-			default: break;
+		if (p1 == PM_PAUSED_NORMAL && _pause_mode & PM_PAUSED_ERROR) {
+			ShowQuery(
+				STR_NEWGRF_UNPAUSE_WARNING_TITLE,
+				STR_NEWGRF_UNPAUSE_WARNING,
+				NULL,
+				AskUnsafeUnpauseCallback
+			);
+		} else {
+			if (p2 == 0) {
+				_pause_mode = _pause_mode & ~p1;
+			} else {
+				_pause_mode = _pause_mode | p1;
+			}
 		}
 
 		InvalidateWindow(WC_STATUS_BAR, 0);

@@ -1171,7 +1171,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 
 	virtual void OnTick()
 	{
-		if (_pause_game != 0) return;
+		if (_pause_mode != PM_UNPAUSED) return;
 		if (this->vehicles.NeedResort()) {
 			StationID station = ((this->window_number & VLW_MASK) == VLW_STATION_LIST) ? GB(this->window_number, 16, 16) : INVALID_STATION;
 

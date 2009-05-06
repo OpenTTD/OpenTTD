@@ -336,6 +336,10 @@ bool AfterLoadGame()
 
 	if (CheckSavegameVersion(98)) GamelogGRFAddList(_grfconfig);
 
+	if (CheckSavegameVersion(119)) {
+		_pause_mode = (_pause_mode == 2) ? PM_PAUSED_NORMAL : PM_UNPAUSED;
+	}
+
 	/* in very old versions, size of train stations was stored differently */
 	if (CheckSavegameVersion(2)) {
 		Station *st;
@@ -440,7 +444,7 @@ bool AfterLoadGame()
 
 	switch (gcf_res) {
 		case GLC_COMPATIBLE: _switch_mode_errorstr = STR_NEWGRF_COMPATIBLE_LOAD_WARNING; break;
-		case GLC_NOT_FOUND: _switch_mode_errorstr = STR_NEWGRF_DISABLED_WARNING; _pause_game = -1; break;
+		case GLC_NOT_FOUND:  _switch_mode_errorstr = STR_NEWGRF_DISABLED_WARNING; _pause_mode = PM_PAUSED_ERROR; break;
 		default: break;
 	}
 

@@ -198,7 +198,7 @@ void CheckTrainsLengths()
 						SetDParam(1, v->owner);
 						ShowErrorMessage(INVALID_STRING_ID, STR_BROKEN_VEHICLE_LENGTH, 0, 0);
 
-						if (!_networking) _pause_game = -1;
+						if (!_networking) DoCommandP(0, PM_PAUSED_ERROR, 1, CMD_PAUSE);
 					}
 				}
 			}

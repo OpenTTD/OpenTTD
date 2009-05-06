@@ -23,6 +23,7 @@
 #include "../company_gui.h"
 #include "../settings_type.h"
 #include "../window_func.h"
+#include "../openttd.h"
 
 #include "table/strings.h"
 
@@ -820,7 +821,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 
 		if (_settings_client.network.pause_on_join) {
 			/* Now pause the game till the client is in sync */
-			DoCommandP(0, 1, 0, CMD_PAUSE);
+			DoCommandP(0, PM_PAUSED_JOIN, 1, CMD_PAUSE);
 
 			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "", CLIENT_ID_SERVER, NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT);
 		}
@@ -1013,8 +1014,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 		/* Now he is! Unpause the game */
 		cs->status = STATUS_ACTIVE;
 
-		if (_settings_client.network.pause_on_join) {
-			DoCommandP(0, 0, 0, CMD_PAUSE);
+		if (_pause_mode & PM_PAUSED_JOIN) {
+			DoCommandP(0, PM_PAUSED_JOIN, 0, CMD_PAUSE);
 			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "", CLIENT_ID_SERVER, NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT);
 		}
 

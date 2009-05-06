@@ -302,7 +302,7 @@ bool LoadOldSaveGame(const char *file)
 		return false;
 	}
 
-	_pause_game = 2;
+	_pause_mode = 2;
 
 	return true;
 }

@@ -483,7 +483,7 @@ void VideoDriver_Allegro::MainLoop()
 		}
 
 		cur_ticks = GetTime();
-		if (cur_ticks >= next_tick || (_fast_forward && !_pause_game) || cur_ticks < prev_cur_ticks) {
+		if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode) || cur_ticks < prev_cur_ticks) {
 			_realtime_tick += cur_ticks - last_cur_ticks;
 			last_cur_ticks = cur_ticks;
 			next_tick = cur_ticks + 30;
