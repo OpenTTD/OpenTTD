@@ -600,11 +600,8 @@ Vehicle::~Vehicle()
  */
 void VehicleEnteredDepotThisTick(Vehicle *v)
 {
-	/* Vehicle should stop in the depot if it was in 'stopping' state or
-	 * when the vehicle is ordered to halt in the depot. */
-	_vehicles_to_autoreplace[v] = !(v->vehstatus & VS_STOPPED) &&
-			(!v->current_order.IsType(OT_GOTO_DEPOT) ||
-			 !(v->current_order.GetDepotActionType() & ODATFB_HALT));
+	/* Vehicle should stop in the depot if it was in 'stopping' state */
+	_vehicles_to_autoreplace[v] = !(v->vehstatus & VS_STOPPED);
 
 	/* We ALWAYS set the stopped state. Even when the vehicle does not plan on
 	 * stopping in the depot, so we stop it to ensure that it will not reserve
@@ -1038,8 +1035,18 @@ void VehicleEnterDepot(Vehicle *v)
 	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 
+		const Order *real_order = GetVehicleOrder(v, v->cur_order_index);
 		Order t = v->current_order;
 		v->current_order.MakeDummy();
+
+		/* Test whether we are heading for this depot. If not, do nothing.
+		 * Note: The target depot for nearest-/manual-depot-orders is only updated on junctions, but we want to accept every depot. */
+		if ((t.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) &&
+				real_order != NULL && !(real_order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) &&
+				(v->type == VEH_AIRCRAFT ? t.GetDestination() != GetStationIndex(v->tile) : v->dest_tile != v->tile)) {
+			/* We are heading for another depot, keep driving. */
+			return;
+		}
 
 		if (t.IsRefit()) {
 			_current_company = v->owner;
@@ -1063,8 +1070,8 @@ void VehicleEnterDepot(Vehicle *v)
 			v->cur_order_index++;
 		}
 		if (t.GetDepotActionType() & ODATFB_HALT) {
-			/* Force depot visit */
-			v->vehstatus |= VS_STOPPED;
+			/* Vehicles are always stopped on entering depots. Do not restart this one. */
+			_vehicles_to_autoreplace[v] = false;
 			if (v->owner == _local_company) {
 				StringID string;
 
