@@ -320,6 +320,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Ydych c
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Rhoi'r gorau i Gêm
 STR_SORT_ORDER_TIP                                              :{BLACK}Dewiswch drefn trefnu (disgynnol/esgynnol)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Dewiswch drefn trefnu
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}dewis criteria hidlyr
 STR_SORT_BY                                                     :{BLACK}Trefnu yn ôl
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Poblogaeth
@@ -342,6 +343,8 @@ STR_SORT_BY_LENGTH                                              :Hyd
 STR_SORT_BY_LIFE_TIME                                           :Oes yn weddill
 STR_SORT_BY_FACILITY                                            :Math Gorsaf
 STR_SORT_BY_WAITING                                             :Gwerth y cargo sy'n Disgwyl
+STR_SORT_BY_RATING_MAX                                          :Uchaf amcangrif cargo
+STR_SORT_BY_RATING_MIN                                          :Isaf amcangrif cargo
 STR_ENGINE_SORT_ENGINE_ID                                       :ID Injan (math clasurol)
 STR_ENGINE_SORT_COST                                            :Côst
 STR_ENGINE_SORT_POWER                                           :Pŵer
@@ -728,6 +731,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Awtogadw
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Dewiswch pa mor aml y dylid awtogadw gemau
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Diffodd Awtogadw
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Bob mis
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Bob 3 mis
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Bob 6 mis
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Bob 12 mis
@@ -848,7 +852,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Set Raff
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Dewiswch y set raffeg sylfaenol i'w defnyddio
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Bob mis
 STR_AUTOSAVE_FAILED                                             :{WHITE}Methodd yr Awtogadw
 
 STR_MONTH_JAN                                                   :Ionawr
@@ -936,6 +939,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Dangos 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Dangos signalau ar yr ochr yrru: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Dangos y ffenestr gyllid ar ddechrau'r flwyddyn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Gosodir gorchmynion newydd yn 'ddi-stop' fel rhagosodiad: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Cyweiro trenau newydd aros diofyn ar y {ORANGE}{STRING}{LTBLUE} o'r platfform
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :ochr agos
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :canol
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ochr hir
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Ciwio cerbydau ffordd (gyda effeithiau cwantwm): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Tremio'r ffenestr pan fydd y llygoden ar ymyl y sgrin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Caniatáu llwgrwobrwyo'r awdurdod lleol: {ORANGE}{STRING}
@@ -2231,6 +2238,7 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Dewis wy
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Cynhyrchu wyneb newydd ar hap
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Allwedd
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Dangos allwedd i'r graffiau
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Dangos manwl amcangyfrif perfformiad
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Allwedd i'r graffiau cwmni
 STR_GRAPH_KEY_COMPANY_SELECTION                                 :{BLACK}Cliciwch yma i doglu cofnod cwmni ymlaen neu i ffwrdd
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Llwythi wedi'u cludo (mewn unedau)
@@ -2605,6 +2613,8 @@ STR_ORDER_GO_TO                                                 :Mynd i
 STR_ORDER_GO_NON_STOP_TO                                        :Mynd heb stop i
 STR_ORDER_GO_VIA                                                :Galw heibio
 STR_ORDER_GO_NON_STOP_VIA                                       :Myn heb stop gan alw heibio
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[ochr agos]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[canol]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Llwyth llawn o unrhyw gargo
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Llwytho os yw ar gael
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Llwyth llawn o bob cargo

@@ -729,6 +729,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automati
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vælg interval imellem automatisk gemning
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Fra
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Hver måned
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Hver 3. måned
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Hver 6. måned
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Hver 12. måned
@@ -849,7 +850,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Basis-gr
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Vælg det basis-grafiksæt der skal bruges
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Hver måned
 STR_AUTOSAVE_FAILED                                             :{WHITE}Fejl under autogem
 
 STR_MONTH_JAN                                                   :januar
@@ -2236,10 +2236,11 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Vælg kv
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Generer nyt tilfældigt ansigt
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Nøgle
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Viser nøglen til grafen
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Vis detaljeret præstationsoversigt
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Nøgle til selskabsgraf
 STR_GRAPH_KEY_COMPANY_SELECTION                                 :{BLACK}Klik her for at vise/skjule selskabets graf
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Afleveret last
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Selskabets ydelsesrate (maksimal=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Selskabets præstationsrang (maksimal rang=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Selskabsværdier
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Selskabsoversigt
 STR_COMPANY_LEAGUE_FIRST                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
@@ -2797,6 +2798,19 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Nulstil 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nulstil forsinkelses-tæller, så transportmidlet kommer til tiden
 STR_SERVICE_HINT                                                :{BLACK}Spring denne ordre over medmindre der er behov for service
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Pris: {CURRENCY} Vægt: {WEIGHT_S}{}Hastighed: {VELOCITY}  Styrke: {POWER}{}Driftsomkostninger: {CURRENCY}/år{}Kapacitet: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Pris: {CURRENCY} Maks. hast.: {VELOCITY}{}Kapacitet: {CARGO}, {CARGO}{}Driftsomkostninger: {CURRENCY}/år
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Pris: {CURRENCY} Maks. hast.: {VELOCITY}{}Kapacitet: {CARGO}{}Driftsomkostninger: {CURRENCY}/år
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. hast.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vægt: {LTBLUE}{WEIGHT_S} {BLACK}Effekt: {LTBLUE}{POWER}{BLACK} Maks. hast.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vægt: {LTBLUE}{WEIGHT_S} {BLACK}Effekt: {LTBLUE}{POWER}{BLACK} Maks. hast.: {LTBLUE}{VELOCITY} {BLACK}Maks. trækkraft: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Overskud i år: {LTBLUE}{CURRENCY} (sidste år: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Built: {LTBLUE}{NUM}{BLACK} Value: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapacitet: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapacitet: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacitet: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Gået i stykker
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoppet
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikke få toget til at passere signalet...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Forulykket!
@@ -3148,6 +3162,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Skift t
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Skift til Euro: {ORANGE}aldrig
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eksempel: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Skift brugerdefineret møntfods parametre
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Reducer beløb i din valuta for et pund (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Forøg beløb i din valuta for et pund (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Sæt vekselkursen i din valuta for et pund (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Sæt separatortegn for din valuta
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Sæt præfiks-streng for din valuta
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Sæt suffiks-streng for din valuta
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Skift til euro tidligere
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Skift til euro senere
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Sæt årstal for skift til euro
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 pund (£) i din valuta
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3254,6 +3278,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. p�
 STR_PURCHASE_INFO_COST                                          :{BLACK}Pris: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vægt: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Hastighed: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitet: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motoriserede Vogne: {GOLD}+{POWER}{BLACK} Vægt: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Kan ombygges til: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle lasttyper
@@ -3546,6 +3571,7 @@ STR_AI_RANDOM_AI                                                :Tilfældig comp
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Computerspiller-parametre
 STR_AI_AUTHOR                                                   :{BLACK}Skaber: {STRING}
 STR_AI_VERSION                                                  :{BLACK}Version: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}En computerstyret spiller gik ned. Rapporter det venligst til udvikleren af computerspilleren med et skærmbilledet af computerspiller-debugvinduet.
 ########
 
