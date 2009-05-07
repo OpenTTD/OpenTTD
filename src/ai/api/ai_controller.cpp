@@ -5,6 +5,7 @@
 #include "../../stdafx.h"
 #include "../../string_func.h"
 #include "../../company_base.h"
+#include "../../rev.h"
 #include "table/strings.h"
 
 #include "../ai.hpp"
@@ -64,6 +65,11 @@ AIController::~AIController()
 /* static */ int AIController::GetSetting(const char *name)
 {
 	return AIConfig::GetConfig(_current_company)->GetSetting(name);
+}
+
+/* static */ uint AIController::GetVersion()
+{
+	return _openttd_newgrf_version;
 }
 
 bool AIController::LoadedLibrary(const char *library_name, int *next_number, char *fake_class_name, int fake_class_name_len)

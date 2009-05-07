@@ -9,6 +9,7 @@ void SQAIController_Register(Squirrel *engine) {
 	SQAIController.DefSQStaticMethod(engine, &AIController::SetCommandDelay, "SetCommandDelay", 2, ".i");
 	SQAIController.DefSQStaticMethod(engine, &AIController::Sleep,           "Sleep",           2, ".i");
 	SQAIController.DefSQStaticMethod(engine, &AIController::GetSetting,      "GetSetting",      2, ".s");
+	SQAIController.DefSQStaticMethod(engine, &AIController::GetVersion,      "GetVersion",      1, ".");
 	SQAIController.DefSQStaticMethod(engine, &AIController::Print,           "Print",           3, ".bs");
 	SQAIController.PostRegister(engine);
 }
