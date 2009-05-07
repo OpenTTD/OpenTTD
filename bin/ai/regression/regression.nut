@@ -220,6 +220,7 @@ function Regression::Airport()
 	}
 
 	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+	print("  GetPrice():           " + AIAirport.GetPrice(0));
 	print("  BuildAirport():       " + AIAirport.BuildAirport(32116, 0, AIStation.STATION_JOIN_ADJACENT));
 	print("  IsHangarTile():       " + AIAirport.IsHangarTile(32116));
 	print("  IsAirportTile():      " + AIAirport.IsAirportTile(32116));

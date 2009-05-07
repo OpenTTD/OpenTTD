@@ -39,6 +39,7 @@ void SQAIAirport_Register(Squirrel *engine) {
 	SQAIAirport.DefSQConst(engine, AIAirport::PT_INVALID,       "PT_INVALID");
 
 	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::IsValidAirportType,       "IsValidAirportType",       2, ".i");
+	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetPrice,                 "GetPrice",                 2, ".i");
 	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::IsHangarTile,             "IsHangarTile",             2, ".i");
 	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::IsAirportTile,            "IsAirportTile",            2, ".i");
 	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetAirportWidth,          "GetAirportWidth",          2, ".i");

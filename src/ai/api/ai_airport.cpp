@@ -8,10 +8,19 @@
 #include "../../company_func.h"
 #include "../../command_type.h"
 #include "../../town.h"
+#include "../../economy_func.h"
 
 /* static */ bool AIAirport::IsValidAirportType(AirportType type)
 {
 	return type >= AT_SMALL && type <= AT_HELISTATION && HasBit(::GetValidAirports(), type);
+}
+
+/* static */ Money AIAirport::GetPrice(AirportType type)
+{
+	if (!IsValidAirportType(type)) return -1;
+
+	const AirportFTAClass *afc = ::GetAirport(type);
+	return _price.build_airport * afc->size_x * afc->size_y;
 }
 
 /* static */ bool AIAirport::IsHangarTile(TileIndex tile)

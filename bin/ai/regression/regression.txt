@@ -620,6 +620,7 @@
   GetAirportHeight(9):         -1
   GetAirportCoverageRadius(9): -1
   GetBankBalance():     100000
+  GetPrice():           84
   BuildAirport():       true
   IsHangarTile():       false
   IsAirportTile():      true
