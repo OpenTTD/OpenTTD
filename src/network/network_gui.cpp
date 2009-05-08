@@ -546,8 +546,8 @@ public:
 				ShowQueryString(
 					STR_JUST_RAW_STRING,
 					STR_NETWORK_ENTER_IP,
-					31,  // maximum number of characters
-					250, // characters up to this width pixels, whichever is satisfied first
+					NETWORK_HOSTNAME_LENGTH,  // maximum number of characters including '\0'
+					0,                        // no limit in pixels
 					this, CS_ALPHANUMERAL, QSF_ACCEPT_UNCHANGED);
 				break;
 
