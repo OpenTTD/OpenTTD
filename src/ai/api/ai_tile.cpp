@@ -73,14 +73,14 @@
 
 /* static */ bool AITile::IsSteepSlope(Slope slope)
 {
-	if (slope == SLOPE_INVALID) return false;
+	if ((slope & ~(SLOPE_ELEVATED | SLOPE_STEEP | SLOPE_HALFTILE_MASK)) != 0) return false;
 
 	return ::IsSteepSlope((::Slope)slope);
 }
 
 /* static */ bool AITile::IsHalftileSlope(Slope slope)
 {
-	if (slope == SLOPE_INVALID) return false;
+	if ((slope & ~(SLOPE_ELEVATED | SLOPE_STEEP | SLOPE_HALFTILE_MASK)) != 0) return false;
 
 	return ::IsHalftileSlope((::Slope)slope);
 }
@@ -124,9 +124,7 @@
 
 /* static */ AITile::Slope AITile::GetComplementSlope(Slope slope)
 {
-	if (slope == SLOPE_INVALID) return SLOPE_INVALID;
-	if (IsSteepSlope(slope)) return SLOPE_INVALID;
-	if (IsHalftileSlope(slope)) return SLOPE_INVALID;
+	if ((slope & ~SLOPE_ELEVATED) != 0) return SLOPE_INVALID;
 
 	return (Slope)::ComplementSlope((::Slope)slope);
 }
