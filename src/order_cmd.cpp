@@ -798,9 +798,9 @@ CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			/* Update the current order */
 			if (u->cur_order_index == moving_order) {
 				u->cur_order_index = target_order;
-			} else if(u->cur_order_index > moving_order && u->cur_order_index <= target_order) {
+			} else if (u->cur_order_index > moving_order && u->cur_order_index <= target_order) {
 				u->cur_order_index--;
-			} else if(u->cur_order_index < moving_order && u->cur_order_index >= target_order) {
+			} else if (u->cur_order_index < moving_order && u->cur_order_index >= target_order) {
 				u->cur_order_index++;
 			}
 
@@ -1654,7 +1654,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 					}
 				} else {
 					UpdateVehicleTimetable(v, true);
-					v->cur_order_index++;
+					v->IncrementOrderIndex();
 				}
 			} else if (v->type != VEH_AIRCRAFT) {
 				v->dest_tile = GetDepot(order->GetDestination())->xy;
@@ -1675,12 +1675,12 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 				v->current_order_time += GetVehicleOrder(v, next_order)->travel_time;
 			} else {
 				UpdateVehicleTimetable(v, true);
-				v->cur_order_index++;
+				v->IncrementOrderIndex();
 			}
 
-			/* Get the current order */
-			if (v->cur_order_index >= v->GetNumOrders()) v->cur_order_index = 0;
+			assert(v->cur_order_index < v->GetNumOrders());
 
+			/* Get the current order */
 			const Order *order = GetVehicleOrder(v, v->cur_order_index);
 			v->current_order = *order;
 			return UpdateOrderDest(v, order, conditional_depth + 1);
@@ -1709,7 +1709,7 @@ bool ProcessOrders(Vehicle *v)
 
 			if ((v->current_order.GetDepotOrderType() & ODTFB_SERVICE) && !v->NeedsServicing()) {
 				UpdateVehicleTimetable(v, true);
-				v->cur_order_index++;
+				v->IncrementOrderIndex();
 			}
 			break;
 
@@ -1735,7 +1735,7 @@ bool ProcessOrders(Vehicle *v)
 	/* Check if we've reached the waypoint? */
 	if (v->current_order.IsType(OT_GOTO_WAYPOINT) && v->tile == v->dest_tile) {
 		UpdateVehicleTimetable(v, true);
-		v->cur_order_index++;
+		v->IncrementOrderIndex();
 	}
 
 	/* Check if we've reached a non-stop station.. */
@@ -1744,7 +1744,7 @@ bool ProcessOrders(Vehicle *v)
 			v->current_order.GetDestination() == GetStationIndex(v->tile)) {
 		v->last_station_visited = v->current_order.GetDestination();
 		UpdateVehicleTimetable(v, true);
-		v->cur_order_index++;
+		v->IncrementOrderIndex();
 	}
 
 	/* Get the current order */

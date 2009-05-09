@@ -3284,7 +3284,7 @@ TileIndex Train::GetOrderStationLocation(StationID station)
 	const Station *st = GetStation(station);
 	if (!(st->facilities & FACIL_TRAIN)) {
 		/* The destination station has no trainstation tiles. */
-		this->cur_order_index++;
+		this->IncrementOrderIndex();
 		return 0;
 	}
 

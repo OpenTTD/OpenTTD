@@ -235,7 +235,7 @@ TileIndex Ship::GetOrderStationLocation(StationID station)
 	if (st->dock_tile != INVALID_TILE) {
 		return TILE_ADD(st->dock_tile, ToTileIndexDiff(GetDockOffset(st->dock_tile)));
 	} else {
-		this->cur_order_index++;
+		this->IncrementOrderIndex();
 		return 0;
 	}
 }
@@ -614,9 +614,8 @@ static void ShipController(Vehicle *v)
 						/* We got within 3 tiles of our target buoy, so let's skip to our
 						 * next order */
 						UpdateVehicleTimetable(v, true);
-						v->cur_order_index++;
+						v->IncrementOrderIndex();
 						v->current_order.MakeDummy();
-						InvalidateVehicleOrder(v, 0);
 					} else {
 						/* Non-buoy orders really need to reach the tile */
 						if (v->dest_tile == gp.new_tile) {
@@ -635,8 +634,7 @@ static void ShipController(Vehicle *v)
 									v->BeginLoading();
 								} else { // leave stations without docks right aways
 									v->current_order.MakeLeaveStation();
-									v->cur_order_index++;
-									InvalidateVehicleOrder(v, 0);
+									v->IncrementOrderIndex();
 								}
 							}
 						}

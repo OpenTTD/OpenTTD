@@ -692,7 +692,7 @@ TileIndex RoadVehicle::GetOrderStationLocation(StationID station)
 		return dest;
 	} else {
 		/* There is no stop left at the station, so don't even TRY to go there */
-		this->cur_order_index++;
+		this->IncrementOrderIndex();
 		return 0;
 	}
 }

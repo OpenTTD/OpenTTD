@@ -598,6 +598,16 @@ public:
 	 * @return the cost of the depot action.
 	 */
 	CommandCost SendToDepot(DoCommandFlag flags, DepotCommand command);
+
+	/**
+	 * Increments cur_order_index, keeps care of the wrap-around and invalidates the GUI.
+	 * Note: current_order is not invalidated.
+	 */
+	void IncrementOrderIndex() {
+		this->cur_order_index++;
+		if (this->cur_order_index >= this->GetNumOrders()) this->cur_order_index = 0;
+		InvalidateVehicleOrder(this, 0);
+	}
 };
 
 /**
