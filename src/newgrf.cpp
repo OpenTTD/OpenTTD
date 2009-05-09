@@ -1356,9 +1356,12 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, byte 
 		BridgeSpec *bridge = &_bridge[brid + i];
 
 		switch (prop) {
-			case 0x08: // Year of availability
-				bridge->avail_year = ORIGINAL_BASE_YEAR + grf_load_byte(&buf);
+			case 0x08: { // Year of availability
+				/* We treat '0' as always available */
+				byte year = grf_load_byte(&buf);
+				bridge->avail_year = (year > 0 ? ORIGINAL_BASE_YEAR + year : 0);
 				break;
+			}
 
 			case 0x09: // Minimum length
 				bridge->min_length = grf_load_byte(&buf);
