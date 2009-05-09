@@ -1717,7 +1717,7 @@ static const WindowDesc _client_list_desc(
 	WDP_AUTO, WDP_AUTO, 250, 1, 250, 1,
 	WC_CLIENT_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
-	_client_list_widgets, _nested_client_list_widgets, lengthof(_client_list_widgets)
+	_client_list_widgets, _nested_client_list_widgets, lengthof(_nested_client_list_widgets)
 );
 
 /* Finds the Xth client-info that is active */
