@@ -603,7 +603,8 @@ public:
 	 * Increments cur_order_index, keeps care of the wrap-around and invalidates the GUI.
 	 * Note: current_order is not invalidated.
 	 */
-	void IncrementOrderIndex() {
+	void IncrementOrderIndex()
+	{
 		this->cur_order_index++;
 		if (this->cur_order_index >= this->GetNumOrders()) this->cur_order_index = 0;
 		InvalidateVehicleOrder(this, 0);
