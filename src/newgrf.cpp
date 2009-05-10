@@ -5835,10 +5835,25 @@ static void FinaliseHouseArray()
 
 		for (int i = 0; i < HOUSE_MAX; i++) {
 			HouseSpec *hs = file->housespec[i];
-			if (hs != NULL) {
-				_house_mngr.SetEntitySpec(hs);
-				if (hs->min_year < min_year) min_year = hs->min_year;
+
+			if (hs == NULL) continue;
+
+			const HouseSpec *next1 = (i + 1 < HOUSE_MAX ? file->housespec[i + 1] : NULL);
+			const HouseSpec *next2 = (i + 2 < HOUSE_MAX ? file->housespec[i + 2] : NULL);
+			const HouseSpec *next3 = (i + 3 < HOUSE_MAX ? file->housespec[i + 3] : NULL);
+
+			if (((hs->building_flags & BUILDING_HAS_2_TILES) != 0 &&
+						(next1 == NULL || !next1->enabled || (next1->building_flags & BUILDING_HAS_1_TILE) != 0)) ||
+					((hs->building_flags & BUILDING_HAS_4_TILES) != 0 &&
+						(next2 == NULL || !next2->enabled || (next2->building_flags & BUILDING_HAS_1_TILE) != 0 ||
+						next3 == NULL || !next3->enabled || (next3->building_flags & BUILDING_HAS_1_TILE) != 0))) {
+				hs->enabled = false;
+				DEBUG(grf, 1, "FinaliseHouseArray: %s defines house %d as multitile, but no suitable tiles follow. Disabling house.", file->filename, hs->local_id);
+				continue;
 			}
+
+			_house_mngr.SetEntitySpec(hs);
+			if (hs->min_year < min_year) min_year = hs->min_year;
 		}
 	}
 
