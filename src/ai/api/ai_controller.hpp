@@ -51,6 +51,18 @@ public:
 	static int GetSetting(const char *name);
 
 	/**
+	 * Get the OpenTTD version of this executable. The version is formatted
+	 * with the bits having the following meaning:
+	 * 28-31 major version
+	 * 24-27 minor version
+	 * 20-23 build
+	 *    19 1 if it is a release, 0 if it is not.
+	 *  0-18 revision number; 0 when the revision is unknown.
+	 * @return The version in newgrf format.
+	 */
+	static uint GetVersion();
+
+	/**
 	 * Change the minimum amount of time the AI should be put in suspend mode
 	 *   when you execute a command. Normally in SP this is 1, and in MP it is
 	 *   what ever delay the server has been programmed to delay commands

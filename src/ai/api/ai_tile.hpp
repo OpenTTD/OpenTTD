@@ -80,7 +80,7 @@ public:
 		SLOPE_STEEP_E  = SLOPE_STEEP | SLOPE_SEN,               //!< A steep slope falling to west (from east)
 		SLOPE_STEEP_N  = SLOPE_STEEP | SLOPE_ENW,               //!< A steep slope falling to south (from north)
 
-		SLOPE_INVALID  = 0xFF,                                  //!< An invalid slope
+		SLOPE_INVALID  = 0xFFFF,                                //!< An invalid slope
 	};
 
 	/**

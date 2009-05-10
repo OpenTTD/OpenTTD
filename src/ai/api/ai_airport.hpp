@@ -54,6 +54,13 @@ public:
 	static bool IsValidAirportType(AirportType type);
 
 	/**
+	 * Get the cost to build this AirportType.
+	 * @param type The AirportType to check.
+	 * @return The cost of building this AirportType.
+	 */
+	static Money GetPrice(AirportType type);
+
+	/**
 	 * Checks whether the given tile is actually a tile with a hangar.
 	 * @param tile The tile to check.
 	 * @pre AIMap::IsValidTile(tile).
