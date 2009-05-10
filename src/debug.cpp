@@ -92,15 +92,13 @@ static void debug_print(const char *dbg, const char *buf)
 	}
 }
 
-void CDECL debug(const char *dbg, ...)
+void CDECL debug(const char *dbg, const char *format, ...)
 {
-	va_list va;
-	va_start(va, dbg);
-	const char *s;
 	char buf[1024];
 
-	s = va_arg(va, const char*);
-	vsnprintf(buf, lengthof(buf), s, va);
+	va_list va;
+	va_start(va, format);
+	vsnprintf(buf, lengthof(buf), format, va);
 	va_end(va);
 
 	debug_print(dbg, buf);
@@ -149,7 +147,7 @@ void SetDebugString(const char *s)
 		if (p != NULL) {
 			*p = v;
 		} else {
-			ShowInfoF("Unknown debug level '%.*s'", s - t, t);
+			ShowInfoF("Unknown debug level '%.*s'", (int)(s - t), t);
 			return;
 		}
 	}

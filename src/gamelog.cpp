@@ -85,6 +85,8 @@ enum {
 
 static int _dbgofs = 0; ///< offset in current output buffer
 
+static void AddDebugText(char *buf, const char *s, ...) WARN_FORMAT(2, 3);
+
 static void AddDebugText(char *buf, const char *s, ...)
 {
 	if (GAMELOG_BUF_LEN <= _dbgofs) return;
@@ -277,7 +279,7 @@ static int _gamelog_print_level = 0; ///< gamelog debug level we need to print s
 
 static void GamelogPrintDebugProc(const char *s)
 {
-	DEBUG(gamelog, _gamelog_print_level, s);
+	DEBUG(gamelog, _gamelog_print_level, "%s", s);
 }
 
 

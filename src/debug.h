@@ -50,18 +50,11 @@
 	extern int _debug_gamelog_level;
 	extern int _debug_desync_level;
 
-	void CDECL debug(const char *dbg, ...);
+	void CDECL debug(const char *dbg, const char *format, ...) WARN_FORMAT(2, 3);
 #endif /* NO_DEBUG_MESSAGES */
 
 void SetDebugString(const char *s);
 const char *GetDebugString();
-
-/* MSVCRT of course has to have a different syntax for long long *sigh* */
-#if defined(_MSC_VER) || defined(__MINGW32__)
-	#define OTTD_PRINTF64 "I64"
-#else
-	#define OTTD_PRINTF64 "ll"
-#endif
 
 /* Used for profiling
  *
@@ -100,6 +93,6 @@ const char *GetDebugString();
 }
 
 void ShowInfo(const char *str);
-void CDECL ShowInfoF(const char *str, ...);
+void CDECL ShowInfoF(const char *str, ...) WARN_FORMAT(1, 2);
 
 #endif /* DEBUG_H */

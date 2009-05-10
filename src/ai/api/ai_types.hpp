@@ -1,6 +1,75 @@
 /* $Id$ */
 
-/** @file ai_types.hpp Defines all the types of the game, like VehicleID, .... */
+/** @file ai_types.hpp Defines all the types of the game, like IDs of various objects.
+ *
+ * IDs are used to identify certain objects. They are only unique within the object type, so for example a vehicle may have VehicleID 2009,
+ * while a station has StationID 2009 at the same time. Also IDs are assigned arbitrary, you cannot assume them to be consecutive.
+ * Also note, that some IDs are static and never change, while others are allocated dynamically and might be
+ * reused for other objects once they are released. So be careful, which IDs you store for which purpose and whether they stay valid all the time.
+ *
+ * <table>
+ * <tr><th>type        </th><th> object                                            </th>
+ *                          <th> acquired                                          </th>
+ *                          <th> released                                          </th>
+ *                          <th> reused                                            </th></tr>
+ * <tr><td>#BridgeID   </td><td> bridge type                                       </td>
+ *                          <td> introduction \ref newgrf_changes "(1)"            </td>
+ *                          <td> never \ref newgrf_changes "(1)"                   </td>
+ *                          <td> no \ref newgrf_changes "(1)"                      </td></tr>
+ * <tr><td>#CargoID    </td><td> cargo type                                        </td>
+ *                          <td> game start \ref newgrf_changes "(1)"              </td>
+ *                          <td> never \ref newgrf_changes "(1)"                   </td>
+ *                          <td> no \ref newgrf_changes "(1)"                      </td></tr>
+ * <tr><td>#EngineID   </td><td> engine type                                       </td>
+ *                          <td> introduction, preview \ref dynamic_engines "(2)"  </td>
+ *                          <td> engines retires \ref dynamic_engines "(2)"        </td>
+ *                          <td> no \ref dynamic_engines "(2)"                     </td></tr>
+ * <tr><td>#GroupID    </td><td> vehicle group                                     </td>
+ *                          <td> creation                                          </td>
+ *                          <td> deletion                                          </td>
+ *                          <td> yes                                               </td></tr>
+ * <tr><td>#IndustyID  </td><td> industry                                          </td>
+ *                          <td> construction                                      </td>
+ *                          <td> closure                                           </td>
+ *                          <td> yes                                               </td></tr>
+ * <tr><td>#IndustyType</td><td> industry type                                     </td>
+ *                          <td> game start \ref newgrf_changes "(1)"              </td>
+ *                          <td> never \ref newgrf_changes "(1)"                   </td>
+ *                          <td> no                                                </td></tr>
+ * <tr><td>#SignID     </td><td> sign                                              </td>
+ *                          <td> construction                                      </td>
+ *                          <td> deletion                                          </td>
+ *                          <td> yes                                               </td></tr>
+ * <tr><td>#StationID  </td><td> station                                           </td>
+ *                          <td> construction                                      </td>
+ *                          <td> expiration of 'grey' station sign after deletion  </td>
+ *                          <td> yes                                               </td></tr>
+ * <tr><td>#SubsidyID  </td><td> subsidy                                           </td>
+ *                          <td> offer announcement                                </td>
+ *                          <td> (offer) expiration                                </td>
+ *                          <td> yes                                               </td></tr>
+ * <tr><td>#TileIndex  </td><td> tile on map                                       </td>
+ *                          <td> game start                                        </td>
+ *                          <td> never                                             </td>
+ *                          <td> no                                                </td></tr>
+ * <tr><td>#TownID     </td><td> town                                              </td>
+ *                          <td> game start                                        </td>
+ *                          <td> never                                             </td>
+ *                          <td> no                                                </td></tr>
+ * <tr><td>#VehicleID  </td><td> vehicle                                           </td>
+ *                          <td> construction, autorenew, autoreplace              </td>
+ *                          <td> destruction, autorenew, autoreplace               </td>
+ *                          <td> yes                                               </td></tr>
+ * <tr><td>#WaypointID </td><td> waypoint                                          </td>
+ *                          <td> construction                                      </td>
+ *                          <td> destruction                                       </td>
+ *                          <td> yes                                               </td></tr>
+ * </table>
+ *
+ * @remarks
+ *  \li \anchor newgrf_changes  (1) in-game changes of newgrfs may reassign/invalidate IDs (will also cause other trouble though).
+ *  \li \anchor dynamic_engines (2) engine IDs are reassigned/invalidated on changing 'allow multiple newgrf engine sets' (only allowed as long as no vehicles are built).
+ */
 
 #ifndef AI_TYPES_HPP
 #define AI_TYPES_HPP

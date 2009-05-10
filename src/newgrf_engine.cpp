@@ -803,7 +803,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		default: break;
 	}
 
-	DEBUG(grf, 1, "Unhandled vehicle property 0x%X, type 0x%X", variable, v->type);
+	DEBUG(grf, 1, "Unhandled vehicle property 0x%X, type 0x%X", variable, (uint)v->type);
 
 	*available = false;
 	return UINT_MAX;

@@ -89,9 +89,9 @@ char *strecat(char *dst, const char *src, const char *last);
  */
 char *strecpy(char *dst, const char *src, const char *last);
 
-int CDECL seprintf(char *str, const char *last, const char *format, ...);
+int CDECL seprintf(char *str, const char *last, const char *format, ...) WARN_FORMAT(3, 4);
 
-char *CDECL str_fmt(const char *str, ...);
+char *CDECL str_fmt(const char *str, ...) WARN_FORMAT(1, 2);
 
 /**
  * Scans the string for valid characters and if it finds invalid ones,

@@ -116,13 +116,13 @@ void IConsolePrint(ConsoleColour colour_code, const char *string)
  * by any other means. Uses printf() style format, for more information look
  * at IConsolePrint()
  */
-void CDECL IConsolePrintF(ConsoleColour colour_code, const char *s, ...)
+void CDECL IConsolePrintF(ConsoleColour colour_code, const char *format, ...)
 {
 	va_list va;
 	char buf[ICON_MAX_STREAMSIZE];
 
-	va_start(va, s);
-	vsnprintf(buf, sizeof(buf), s, va);
+	va_start(va, format);
+	vsnprintf(buf, sizeof(buf), format, va);
 	va_end(va);
 
 	IConsolePrint(colour_code, buf);

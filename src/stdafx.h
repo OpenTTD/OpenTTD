@@ -126,6 +126,9 @@
 	#define CDECL
 	#define __int64 long long
 	#define GCC_PACK __attribute__((packed))
+	/* Warn about functions using 'printf' format syntax. First argument determines which parameter
+	 * is the format string, second argument is start of values passed to printf. */
+	#define WARN_FORMAT(string, args) __attribute__ ((format (printf, string, args)))
 
 	#if (__GNUC__ == 2)
 		#undef VARARRAY_SIZE
@@ -138,6 +141,7 @@
 	#define FORCEINLINE inline
 	#define CDECL
 	#define GCC_PACK
+	#define WARN_FORMAT(string, args)
 	#include <malloc.h>
 #endif /* __WATCOMC__ */
 
@@ -177,6 +181,7 @@
 	#pragma warning(disable: 6031)   // code analyzer: Return value ignored: 'ReadFile'
 	#pragma warning(disable: 6255)   // code analyzer: _alloca indicates failure by raising a stack overflow exception. Consider using _malloca instead
 	#pragma warning(disable: 6246)   // code analyzer: Local declaration of 'statspec' hides declaration of the same name in outer scope. For additional information, see previous declaration at ...
+	#define WARN_FORMAT(string, args)
 
 	#include <malloc.h> // alloca()
 	#define NORETURN __declspec(noreturn)
@@ -187,7 +192,7 @@
 		#define CDECL _cdecl
 	#endif
 
-	int CDECL snprintf(char *str, size_t size, const char *format, ...);
+	int CDECL snprintf(char *str, size_t size, const char *format, ...) WARN_FORMAT(3, 4);
 	#if defined(WINCE)
 		int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap);
 	#endif
@@ -224,7 +229,7 @@
 		#define strncasecmp strnicmp
 	#endif
 
-	void SetExceptionString(const char *s, ...);
+	void SetExceptionString(const char *s, ...) WARN_FORMAT(1, 2);
 
 	#if defined(NDEBUG) && defined(WITH_ASSERT)
 		#undef assert
@@ -270,6 +275,15 @@
 #else
 	#define PATHSEP "/"
 	#define PATHSEPCHAR '/'
+#endif
+
+/* MSVCRT of course has to have a different syntax for long long *sigh* */
+#if defined(_MSC_VER) || defined(__MINGW32__)
+	#define OTTD_PRINTF64 "%I64d"
+	#define PRINTF_SIZE "%Iu"
+#else
+	#define OTTD_PRINTF64 "%lld"
+	#define PRINTF_SIZE "%zu"
 #endif
 
 typedef unsigned char byte;
@@ -346,8 +360,8 @@ assert_compile(sizeof(uint8)  == 1);
 	#define CloseConnection OTTD_CloseConnection
 #endif /* __APPLE__ */
 
-void NORETURN CDECL usererror(const char *str, ...);
-void NORETURN CDECL error(const char *str, ...);
+void NORETURN CDECL usererror(const char *str, ...) WARN_FORMAT(1, 2);
+void NORETURN CDECL error(const char *str, ...) WARN_FORMAT(1, 2);
 #define NOT_REACHED() error("NOT_REACHED triggered at line %i of %s", __LINE__, __FILE__)
 
 #if defined(MORPHOS) || defined(__NDS__) || defined(__DJGPP__)

@@ -455,6 +455,8 @@ static void TileLoop_Town(TileIndex tile)
 			if (cargo == CT_INVALID) continue;
 
 			uint amt = GB(callback, 0, 8);
+			if (amt == 0) continue;
+
 			uint moved = MoveGoodsToStation(tile, 1, 1, cargo, amt);
 
 			const CargoSpec *cs = GetCargo(cargo);

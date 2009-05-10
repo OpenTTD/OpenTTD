@@ -595,7 +595,7 @@ bool TarListAddFile(const char *filename)
 		/* Calculate the size of the file.. for some strange reason this is stored as a string */
 		memcpy(buf, th.size, sizeof(th.size));
 		buf[sizeof(th.size)] = '\0';
-		int skip = strtol(buf, &end, 8);
+		size_t skip = strtoul(buf, &end, 8);
 
 		switch (th.typeflag) {
 			case '\0':
@@ -614,7 +614,7 @@ bool TarListAddFile(const char *filename)
 				/* Convert to lowercase and our PATHSEPCHAR */
 				SimplifyFileName(name);
 
-				DEBUG(misc, 6, "Found file in tar: %s (%d bytes, %d offset)", name, skip, pos);
+				DEBUG(misc, 6, "Found file in tar: %s (" PRINTF_SIZE " bytes, " PRINTF_SIZE " offset)", name, skip, pos);
 				if (_tar_filelist.insert(TarFileList::value_type(name, entry)).second) num++;
 
 				break;
@@ -702,7 +702,7 @@ bool TarListAddFile(const char *filename)
 		pos += skip;
 	}
 
-	DEBUG(misc, 1, "Found tar '%s' with %d new files", filename, num);
+	DEBUG(misc, 1, "Found tar '%s' with " PRINTF_SIZE " new files", filename, num);
 	fclose(f);
 
 	/* Resolve file links and store directory links.

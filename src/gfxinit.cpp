@@ -250,7 +250,7 @@ void CheckExternalFiles()
 		add_pos += seprintf(add_pos, last, "Your 'sample.cat' file is corrupted or missing! You can find 'sample.cat' on your Transport Tycoon Deluxe CD-ROM.\n");
 	}
 
-	if (add_pos != error_msg) ShowInfoF(error_msg);
+	if (add_pos != error_msg) ShowInfoF("%s", error_msg);
 }
 
 

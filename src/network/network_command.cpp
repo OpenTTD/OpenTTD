@@ -179,7 +179,7 @@ void NetworkClientSocket::Send_Command(Packet *p, const CommandPacket *cp)
 	}
 
 	if (callback == _callback_table_count) {
-		DEBUG(net, 0, "Unknown callback. (Pointer: %p) No callback sent", callback);
+		DEBUG(net, 0, "Unknown callback. (Pointer: %p) No callback sent", cp->callback);
 		callback = 0; // _callback_table[0] == NULL
 	}
 	p->Send_uint8 (callback);

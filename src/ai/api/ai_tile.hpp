@@ -340,7 +340,10 @@ public:
 
 	/**
 	 * Raise the given corners of the tile. The corners can be combined,
-	 *  for example: SLOPE_N | SLOPE_W (= SLOPE_NW)
+	 *  for example: SLOPE_N | SLOPE_W (= SLOPE_NW) will raise the west and the north corner.
+	 * @note The corners will be modified in the order west (first), south, east, north (last).
+	 *       Changing one corner might cause another corner to be changed too. So modifiing
+	 *       multiple corners may result in changing some corners by multiple steps.
 	 * @param tile The tile to raise.
 	 * @param slope Corners to raise (SLOPE_xxx).
 	 * @pre tile < AIMap::GetMapSize().
@@ -353,7 +356,10 @@ public:
 
 	/**
 	 * Lower the given corners of the tile. The corners can be combined,
-	 *  for example: SLOPE_N | SLOPE_W (= SLOPE_NW)
+	 *  for example: SLOPE_N | SLOPE_W (= SLOPE_NW) will lower the west and the north corner.
+	 * @note The corners will be modified in the order west (first), south, east, north (last).
+	 *       Changing one corner might cause another corner to be changed too. So modifiing
+	 *       multiple corners may result in changing some corners by multiple steps.
 	 * @param tile The tile to lower.
 	 * @param slope Corners to lower (SLOPE_xxx).
 	 * @pre tile < AIMap::GetMapSize().

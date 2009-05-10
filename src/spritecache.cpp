@@ -52,7 +52,7 @@ static SpriteCache *AllocateSpriteCache(uint index)
 		/* Add another 1024 items to the 'pool' */
 		uint items = Align(index + 1, 1024);
 
-		DEBUG(sprite, 4, "Increasing sprite cache to %d items (%d bytes)", items, items * sizeof(*_spritecache));
+		DEBUG(sprite, 4, "Increasing sprite cache to %u items (" PRINTF_SIZE " bytes)", items, items * sizeof(*_spritecache));
 
 		_spritecache = ReallocT(_spritecache, items);
 
@@ -333,7 +333,7 @@ void IncreaseSpriteLRU()
 	if (_sprite_lru_counter > 16384) {
 		SpriteID i;
 
-		DEBUG(sprite, 3, "Fixing lru %d, inuse=%d", _sprite_lru_counter, GetSpriteCacheUsage());
+		DEBUG(sprite, 3, "Fixing lru %u, inuse=" PRINTF_SIZE, _sprite_lru_counter, GetSpriteCacheUsage());
 
 		for (i = 0; i != _spritecache_items; i++) {
 			SpriteCache *sc = GetSpriteCache(i);
@@ -361,7 +361,7 @@ static void CompactSpriteCache()
 {
 	MemBlock *s;
 
-	DEBUG(sprite, 3, "Compacting sprite cache, inuse=%d", GetSpriteCacheUsage());
+	DEBUG(sprite, 3, "Compacting sprite cache, inuse=" PRINTF_SIZE, GetSpriteCacheUsage());
 
 	for (s = _spritecache_ptr; s->size != 0;) {
 		if (s->size & S_FREE_MASK) {
@@ -404,7 +404,7 @@ static void DeleteEntryFromSpriteCache()
 	MemBlock *s;
 	int cur_lru;
 
-	DEBUG(sprite, 3, "DeleteEntryFromSpriteCache, inuse=%d", GetSpriteCacheUsage());
+	DEBUG(sprite, 3, "DeleteEntryFromSpriteCache, inuse=" PRINTF_SIZE, GetSpriteCacheUsage());
 
 	cur_lru = 0xffff;
 	for (i = 0; i != _spritecache_items; i++) {
