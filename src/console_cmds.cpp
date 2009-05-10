@@ -1209,7 +1209,7 @@ DEF_CONSOLE_CMD(ConInfoVar)
 
 	IConsolePrintF(CC_DEFAULT, "variable name: %s", var->name);
 	IConsolePrintF(CC_DEFAULT, "variable type: %s", _icon_vartypes[var->type]);
-	IConsolePrintF(CC_DEFAULT, "variable addr: 0x%X", var->addr);
+	IConsolePrintF(CC_DEFAULT, "variable addr: %p", var->addr);
 
 	if (var->hook.access) IConsoleWarning("variable is access hooked");
 	if (var->hook.pre) IConsoleWarning("variable is pre hooked");
@@ -1236,7 +1236,7 @@ DEF_CONSOLE_CMD(ConInfoCmd)
 	}
 
 	IConsolePrintF(CC_DEFAULT, "command name: %s", cmd->name);
-	IConsolePrintF(CC_DEFAULT, "command proc: 0x%X", cmd->proc);
+	IConsolePrintF(CC_DEFAULT, "command proc: %p", cmd->proc);
 
 	if (cmd->hook.access) IConsoleWarning("command is access hooked");
 	if (cmd->hook.pre) IConsoleWarning("command is pre hooked");
@@ -1441,7 +1441,7 @@ DEF_CONSOLE_CMD(ConCompanies)
 		const NetworkCompanyStats *stats = &company_stats[c->index];
 
 		GetString(buffer, STR_COLOUR_DARK_BLUE + _company_colours[c->index], lastof(buffer));
-		IConsolePrintF(CC_INFO, "#:%d(%s) Company Name: '%s'  Year Founded: %d  Money: %" OTTD_PRINTF64 "d  Loan: %" OTTD_PRINTF64 "d  Value: %" OTTD_PRINTF64 "d  (T:%d, R:%d, P:%d, S:%d) %sprotected",
+		IConsolePrintF(CC_INFO, "#:%d(%s) Company Name: '%s'  Year Founded: %d  Money: " OTTD_PRINTF64 "  Loan: " OTTD_PRINTF64 "  Value: " OTTD_PRINTF64 "  (T:%d, R:%d, P:%d, S:%d) %sprotected",
 			c->index + 1, buffer, company_name, c->inaugurated_year, (int64)c->money, (int64)c->current_loan, (int64)CalculateCompanyValue(c),
 			/* trains      */ stats->num_vehicle[0],
 			/* lorry + bus */ stats->num_vehicle[1] + stats->num_vehicle[2],

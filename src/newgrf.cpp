@@ -150,7 +150,7 @@ void CDECL grfmsg(int severity, const char *str, ...)
 static inline bool check_length(size_t real, size_t wanted, const char *str)
 {
 	if (real >= wanted) return true;
-	grfmsg(0, "%s: Invalid pseudo sprite length %d (expected %d)!", str, real, wanted);
+	grfmsg(0, "%s: Invalid pseudo sprite length " PRINTF_SIZE " (expected " PRINTF_SIZE ")!", str, real, wanted);
 	return false;
 }
 
@@ -4227,7 +4227,7 @@ static void GRFInfo(byte *buf, size_t len)
 	_cur_grfconfig->status = _cur_stage < GLS_RESERVE ? GCS_INITIALISED : GCS_ACTIVATED;
 
 	/* Do swap the GRFID for displaying purposes since people expect that */
-	DEBUG(grf, 1, "GRFInfo: Loaded GRFv%d set %08lX - %s (palette: %s)", version, BSWAP32(grfid), name, _cur_grfconfig->windows_paletted ? "Windows" : "DOS");
+	DEBUG(grf, 1, "GRFInfo: Loaded GRFv%d set %08X - %s (palette: %s)", version, BSWAP32(grfid), name, _cur_grfconfig->windows_paletted ? "Windows" : "DOS");
 }
 
 /* Action 0x0A */
@@ -4404,7 +4404,7 @@ static void GRFComment(byte *buf, size_t len)
 
 	size_t text_len = len - 1;
 	const char *text = (const char*)(buf + 1);
-	grfmsg(2, "GRFComment: %.*s", text_len, text);
+	grfmsg(2, "GRFComment: %.*s", (int)text_len, text);
 }
 
 /* Action 0x0D (GLS_SAFETYSCAN) */
@@ -4946,7 +4946,7 @@ static void FeatureTownName(byte *buf, size_t len)
 	if (!check_length(len, 1, "FeatureTownName: number of parts")) return;
 	byte nb = grf_load_byte(&buf);
 	len--;
-	grfmsg(6, "FeatureTownName: %d parts", nb, nb);
+	grfmsg(6, "FeatureTownName: %u parts", nb);
 
 	townname->nbparts[id] = nb;
 	townname->partlist[id] = CallocT<NamePartList>(nb);

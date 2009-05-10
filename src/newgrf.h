@@ -129,7 +129,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage);
 void LoadNewGRF(uint load_index, uint file_index);
 void ReloadNewGRFData(); // in saveload/afterload.cpp
 
-void CDECL grfmsg(int severity, const char *str, ...);
+void CDECL grfmsg(int severity, const char *str, ...) WARN_FORMAT(2, 3);
 
 bool HasGrfMiscBit(GrfMiscBit bit);
 bool GetGlobalVariable(byte param, uint32 *value);

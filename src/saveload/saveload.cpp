@@ -1640,7 +1640,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		if (_sl.excpt_uninit != NULL) _sl.excpt_uninit();
 
 		/* Skip the "colour" character */
-		DEBUG(sl, 0, GetSaveLoadErrorString() + 3);
+		DEBUG(sl, 0, "%s", GetSaveLoadErrorString() + 3);
 
 		if (threaded) {
 			SetAsyncSaveFinish(SaveFileError);
@@ -1840,7 +1840,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 		if (_sl.excpt_uninit != NULL) _sl.excpt_uninit();
 
 		/* Skip the "colour" character */
-		DEBUG(sl, 0, GetSaveLoadErrorString() + 3);
+		DEBUG(sl, 0, "%s", GetSaveLoadErrorString() + 3);
 
 		/* A saver/loader exception!! reinitialize all variables to prevent crash! */
 		return (mode == SL_LOAD) ? SL_REINIT : SL_ERROR;

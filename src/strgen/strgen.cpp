@@ -136,6 +136,8 @@ static LangString *HashFind(const char *s)
 # define LINE_NUM_FMT ":%d"
 #endif
 
+static void CDECL strgen_warning(const char *s, ...) WARN_FORMAT(1, 2);
+
 static void CDECL strgen_warning(const char *s, ...)
 {
 	char buf[1024];
@@ -146,6 +148,8 @@ static void CDECL strgen_warning(const char *s, ...)
 	fprintf(stderr, "%s" LINE_NUM_FMT ": warning: %s\n", _file, _cur_line, buf);
 	_warnings++;
 }
+
+static void CDECL strgen_error(const char *s, ...) WARN_FORMAT(1, 2);
 
 static void CDECL strgen_error(const char *s, ...)
 {
@@ -463,7 +467,7 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 
 	cmd = FindCmd(start, s - start - 1);
 	if (cmd == NULL) {
-		strgen_error("Undefined command '%.*s'", s - start - 1, start);
+		strgen_error("Undefined command '%.*s'", (int)(s - start - 1), start);
 		return NULL;
 	}
 
@@ -600,7 +604,7 @@ static void ExtractCommandString(ParsedCommandStruct *p, const char *s, bool war
 
 			p->cmd[argidx++] = ar;
 		} else if (!(ar->flags & C_DONTCOUNT)) { // Ignore some of them
-			if (p->np >= lengthof(p->pairs)) error("too many commands in string, max %d", lengthof(p->pairs));
+			if (p->np >= lengthof(p->pairs)) error("too many commands in string, max " PRINTF_SIZE, lengthof(p->pairs));
 			p->pairs[p->np].a = ar;
 			p->pairs[p->np].v = param[0] != '\0' ? strdup(param) : "";
 			p->np++;
@@ -734,7 +738,7 @@ static void HandleString(char *str, bool master)
 
 		if (ent == NULL) {
 			if (_strings[_next_string_id]) {
-				strgen_error("String ID 0x%X for '%s' already in use by '%s'", ent, str, _strings[_next_string_id]->name);
+				strgen_error("String ID 0x%X for '%s' already in use by '%s'", _next_string_id, str, _strings[_next_string_id]->name);
 				return;
 			}
 
