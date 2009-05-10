@@ -2973,6 +2973,9 @@ void FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod, StationList
 
 uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 {
+	/* Return if nothing to do. Also the rounding below fails for 0. */
+	if (amount == 0) return 0;
+
 	Station *st1 = NULL;   // Station with best rating
 	Station *st2 = NULL;   // Second best station
 	uint best_rating1 = 0; // rating of st1
