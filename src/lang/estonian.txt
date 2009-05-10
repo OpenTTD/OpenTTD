@@ -369,7 +369,7 @@ STR_015C_SAVE_GAME                                              :Salvesta mäng
 STR_015D_LOAD_GAME                                              :Laadi mäng
 STR_015E_QUIT_GAME                                              :Lahku mängust
 STR_015F_QUIT                                                   :Välju
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Oled sa kindel, et tahad sellest mängust lahkuda?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Kas te soovite lõpetada selle mängu?
 STR_0161_QUIT_GAME                                              :{WHITE}Mängust lahkumine
 STR_SORT_ORDER_TIP                                              :{BLACK}Sorteerimise järjekorra valimine (kahanev/kasvav)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Sorteerimistingimuse valimine
@@ -387,7 +387,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :Eelmise aasta k
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Selle aasta kasum
 STR_SORT_BY_AGE                                                 :Vanus
 STR_SORT_BY_RELIABILITY                                         :Tehnoseisund
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Kandevõime kokku veose tüübi kohta
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Täielik kandevõime veoseliigi kohta
 STR_SORT_BY_MAX_SPEED                                           :Tippkiirus
 STR_SORT_BY_MODEL                                               :Mudel
 STR_SORT_BY_VALUE                                               :Väärtus
@@ -402,8 +402,8 @@ STR_ENGINE_SORT_POWER                                           :Võimsus
 STR_ENGINE_SORT_INTRO_DATE                                      :Esitluskuupäev
 STR_ENGINE_SORT_RUNNING_COST                                    :Käituskulud
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Võimsus- ja käituskulud
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kauba kandevõime
-STR_NO_WAITING_CARGO                                            :{BLACK}Kaupa pole ootamas
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kandevõime
+STR_NO_WAITING_CARGO                                            :{BLACK}Veoseid pole ootamas
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vali kõik tööstused
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vali kõik kaubatüüpid (ka mitteoodatav kaup)
 STR_AVAILABLE_TRAINS                                            :{BLACK}Saadaval rongid
@@ -498,6 +498,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Maa-ala andmed
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Puhastustasu: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Puhastustasu: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Sissetulek puhastamisel: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :puudub
 STR_01A7_OWNER                                                  :{BLACK}Omanik: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Maantee omanik: {LTBLUE}{STRING}
@@ -658,6 +659,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Ühtegi 
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...pole enam ruumi kaardil
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Linna suuruse suurendamine
 STR_023C_EXPAND                                                 :{BLACK}Laienda
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Linn ei ehita teid. Teedeehituse lubamiseks Täpsemad seaded->Majandus->Linnad.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Suvaline linn
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Ehita linn suvalisse kohta
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}{STRING} ei saa siia ehitada...
@@ -697,25 +699,26 @@ STR_02A2_MEDIUM                                                 :{BLACK}Keskmine
 STR_02A3_LARGE                                                  :{BLACK}Suur
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Suvaline
 STR_FOUND_TOWN_CITY                                             :{BLACK}Linn
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Suuremad linnad kasvavad kiiremini kui väikesed{}Sõltuvalt seadetest on need ka alguses suuremad
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Vali linna suurus
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Linna suurus:
 
-STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Linna teedevõrgu kujundus
-STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Originaalne
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Aleviku teeplaneering
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Vali alevikus kasutatav teeplaneering
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Algne
 STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Paremad teed
-STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 võrgustik
-STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 võrgustik
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 ruudustik
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 ruudustik
 STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Suvaline
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Näita viimast teadet
-STR_OFF                                                         :Off
+STR_OFF                                                         :Väljas
 STR_SUMMARY                                                     :Lühike
 STR_FULL                                                        :Täielik
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Linnanimistu
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Omatehtud
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -892,8 +895,10 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Ekraanip
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vali kasutatav ekraanipildi vorming
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Põhigraafikakomplekt
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Valige kasutatav põhigraafikakomplekt
 STR_AUTOSAVE_1_MONTH                                            :Iga kuu
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automaatne salvestus nurjus
 
@@ -912,8 +917,8 @@ STR_MONTH_DEC                                                   :Detsember
 
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Siht: {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Siht: {STATION}, {VELOCITY}
-STR_NO_ORDERS                                                   :{LTBLUE}Sihtpunkt puudub
-STR_NO_ORDERS_VEL                                               :{LTBLUE}Sihtpunkt puudub, {VELOCITY}
+STR_NO_ORDERS                                                   :{LTBLUE}Sihita
+STR_NO_ORDERS_VEL                                               :{LTBLUE}Sihita, {VELOCITY}
 
 STR_PASSENGERS                                                  :reisijad
 STR_BAGS                                                        :kotti
@@ -946,63 +951,67 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Täpsema
 
 STR_CONFIG_SETTING_OFF                                          :Väljas
 STR_CONFIG_SETTING_ON                                           :Sees
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Olekuribal näidatakse veovahendi kiirust: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Luba ehitised nõlvadele ja kallastele: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Võimalda maastikujunduse teostust majade, rööbaste jms. all (autoslope): {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Võimalda reaalsemaid veekogu alasid: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Luba linnateede, -sildade, -tunnelite jne lammutamine: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Lubatakse väga pikkasid ronge ehitatada: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originaalne
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Sõidukiirus olekuribal: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Nõlvadele ja kallastele ehitamine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Maastikukujundus majade, rööbaste jms. all (autoslope): {ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Reaalsemad veekogud: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Linnateede, -sildade, -tunnelite jne lammutamine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Väga pikkade rongide ehitamine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Rongide kiirendusmudel: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Algupärane
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistlik
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Rongidel ja laevadel keelatakse 90 kraadised pöörded: {ORANGE}{STRING} {LTBLUE} (vajab NPF)
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Ühenda üksteise vastu ehitatud jaamad kokku: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Kasuta parandatud laadimisalgoritmi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Laadi veovahendeid järkjärguliselt: {ORANGE}{STRING}
+STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Kõrvuti ehitatud jaamade ühendamine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Eemalasetsevate jaamade liitmine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Täiustatud laadimisalgoritm: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Veovahendite järkjärguline laadimine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflatsioon: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Vii kaup jaama ainult siis, kui seal on nõudlus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Lubatakse väga pikkasid sildu ehitada: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Lubatakse depoosse minemise käsud: {ORANGE}{STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Põhiline tööstuse rajamise viis: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Kauba toimetamine jaama ainult nõudluse korral: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Väga pikkade sildade ehitamine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Depoosse minemise käsud: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Põhitööstuse rajamismeetod: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :pole
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :nagu muud tööstused
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :uurides
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Luba mitu sama liiki tööstust linna kohta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Sama liiki tööstusi saab ehitada üksteise lähedale: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Olekuribal näidatakse alati täispikka kuupäeva: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Paiguta signaalid rööbasteele sõidusuunda arvestades: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Aasta lõpus näidatakse rahavoogude aruannet: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :eeluuringutega
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Samalaadsed tööstused ühes linnas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Samalaadsed tööstused lähestiku: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Täispikk kuupäev olekuribal: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Signaalide paigutamine sõidusuunda: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Aastalõpu rahavoogude aruanne: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Uued sihtpunktid on vaikimisi 'peatusteta': {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Mootorsõidukite järjekorrad (koos mahuefektidega): {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Kursoriga ekraaniserva puudutamisel keritakse vaadet: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Luba kohalikule omavalitsusele altkäemaksu maksmine: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Luba eksklusiivseid veoõiguseid osta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Luba teistele ettevõtetele raha saata: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Luba suvalise kujuga jaamad: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Raskete rongide simuleerimiseks kasutatav raskuse korrutaja: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Lennuki kiiruse tegur: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Luba läbisõidupeatused linnateedel: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Luba jaamu lähestikku ehitada: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Lubatakse mitu NewGRF sõidukikomplekti: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Vaate kerimine osutiga ekraaniserva puudutamisel: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Altkäemaksud kohalikele omavalitsustele: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Ainuveoõiguste ostmine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Raha saatmine teistele ettevõtetele: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Suvalise kujuga jaamad: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Raskete rongide simuleerimiseks kasutatav raskustegur: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Lennukite kiirustegur: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Läbisõidupeatused linnateedel: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Läbisõidupeatused konkurentide teedel: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Jaamade kõrvutiehitamine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Mitme NewGRF sõidukikomplekti lubamine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sõidukite olemasolul ei saa seda seadet muuta.
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Luba väikesed lennuväljad kuni mängu lõpuni: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Väikesed lennuväljad mängu lõpuni: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Hoiatatakse eksinud rongidest: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Hoiatamine rongide eksimisel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Sõidukite sihtpunktide ülevaade: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ei
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jah, kuid jäta välja seisatud veovahendid
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :kõikidest veovahenditest
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Hoiata kui rongi sissetulek on negatiivne: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Sõidukid ei aegu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Vananenud sõidukite automaatne uuendamine: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Uuenda {ORANGE}{STRING}{LTBLUE} kuud enne/pärast veovahendi suurimat vanust
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Iseuuendusele kuluv väikseim summa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Veateate kuvamise kestus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Linna nimesildil näidatakse rahvaarvu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Vananenud sõidukite moderniseerimine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Piirvanuse saavutanud veovahendit uuendatakse {ORANGE}{STRING}{LTBLUE} kuu piires
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Nõutud rahasumma moderniseerimiseks: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Veateadete kestus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Rahvaarv alevike nimesiltidel: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Maaala Generaator: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Algupärane
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Suurim kaugus kaardiservast naftapuuraukudeni {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Naftatöötlustehaste piirkaugus kaardiservast {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Lumepiiri kõrgus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Maa mägisus (TerraGenesis ainult) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Väga sile
@@ -1017,21 +1026,24 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Kõrgus
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastu-päevapidi
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Päevapidi
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Kõrguse level kui kõrgele lapik kaart läheb: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Maastikukujundus kaardiäärsetel ruutudel: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Üks või enam ruutu põhjaäärel pole tühjad
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Üks või enam ääreruutu pole vesi
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Suurim jaama ala: {ORANGE}{STRING} {RED}Hoiatus: kõrged seadistused aeglustavad mängu
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Maandumisplatsidel hooldatakse automaatselt helikoptereid: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Liida maastikuriba raudtee/tee/vee/lennujaamade tööriistaribaga: {ORANGE}{STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Vaadet keritakse vastassuunas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Suurim jaamaala: {ORANGE}{STRING} {RED}Hoiatus: kõrge määr aeglustab mängu
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Automaatne helikopterihooldus maandumisplatsidel: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Maastiku-, ning raudtee/tee/vee/lennujaamade tööriistaribade seostamine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Vaate kerimine vastassuunas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Vaatevälja liigutatakse sujuvalt: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Mitmete ehitusvahendite kasutamisel näidatakse mõõtmise kohtspikrit: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Mõõtspikker teatud ehitusvahendite kasutamisel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Ettevõtte värve näidatakse: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Mitte ühelgi
-STR_CONFIG_SETTING_LIVERIES_OWN                                 :Enda ettevõtel
-STR_CONFIG_SETTING_LIVERIES_ALL                                 :Kõikidel ettevõttetel
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Vajutades <ENTER> eelistatakse meeskonna jututuba: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Oma ettevõtel
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :Igal ettevõttel
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}<ENTER> vajutades meeskonnavestluse eelistamine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Kerimisrulliku otstarve: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Suurenda kaarti
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Keri kaarti
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Kaardi suurendamine
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Kaardi kerimine
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Väljas
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Kaardi kerimisrulliku kiirus: {ORANGE}{STRING}
 
@@ -1040,22 +1052,25 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+klikk
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+klikk
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Väljas
 
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Kerimine vasakklõpsul: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Kuupäevaformaat salvestatud mängunimedes on {ORANGE}{STRING}{LTBLUE}.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :pikk (31. dets 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :lühike (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Uut mängu alustades seisatatakse automaatselt: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Kasuta laiendatud sõidukinimekirja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Mängu seiskamine alguses: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Laiendatud sõidukinimekiri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Väljas
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Oma ettevõte
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Kõik ettevõtted
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Kasuta laadimisnäidikuid: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Laadimisnäidikud: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Väljas
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Oma ettevõte
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Kõik ettevõtted
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Luba sõiduplaanide määramine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Oma ettevõtel
+STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Igal ettevõttel
+STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Sõiduplaanide määramine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Sõiduplaanis kasutatakse päevade asemel tiksumist: {ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Sõidukikäskude kiirloomine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Algne rööbastee liik (mängu alustamisel/laadimisel): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Tavaline rööbastee
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrifitseeritud rööbastee
@@ -1107,19 +1122,23 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Ainult tavaline
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Ainult täiustatud
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Kõik
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Uute linnade tänavaplaneering: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :vaikimisi
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :paremad teed
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 võrgustik
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 võrgustik
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :suvaline
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Luba linnades lennujaaamade mürapiirangud: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Linnapoolne teedeehitus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Lennujaamade mürapiirangud linnades: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Tööriistariba asukoht: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Vasakul
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Keskel
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Paremal
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Akna haaramise raadius: {ORANGE}{STRING} px
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Akna haaramise raadius: {ORANGE}välja lülitatud
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Akna haaramisraadius: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Akna haaramisraadius: {ORANGE}välja lülitatud
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Aknapiirang (kinnistamata): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Aknapiirang (kinnistamata): {ORANGE}väljas
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Linna kasvutempo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Pole
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Aeglane
@@ -1128,25 +1147,36 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Kiire
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Väga Kiire
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Topeltkiirusel kasvavaid linnu: {ORANGE}1 iga {STRING} linna kohta
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Linnadeks kasvavate asulate suhtarv: {ORANGE}Pole
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Algne linna suuruse kordaja: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Eemalda teedeehituse ajal esinevad tarbetud elemendid: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Algne linnade suurustegur: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Mittevajaliku eemaldamine teedeehitusel: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Välimus
+STR_CONFIG_SETTING_GUI                                          :{ORANGE}Kasutajaliides
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Ehitamine
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Sõidukid
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Jaamad
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Majandus
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurendid
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Kuvaseaded
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Suhtlemine
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaalid
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Kauba käsitlemine
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Arvutimängijad
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Moderniseerimine
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Hooldamine
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Marsruutimine
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Rongid
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Linnad
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Tööstused
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Rongide rajaleidja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Rongide marsruuter: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(ebasoovitatav)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(soovitatav)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Maanteesõidukite rajaleidja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Maanteesõidukite marsruuter: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Algne {RED}(ebasoovitatav)
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(soovitatav)
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Laevade rajaleidja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Laevade marsruuter: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Algne {BLUE}(soovitatav)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(ebasoovitatav)
@@ -1169,13 +1199,14 @@ STR_CHEATS                                                      :{WHITE}Petmine
 STR_CHEATS_TIP                                                  :{BLACK}Märgistatud kastid näitavad et, kas sa oled varem seda pettust kasutanud
 STR_CHEATS_WARNING                                              :{BLACK}Hoiatus! Sa kavatsed oma konkurente reeta. Pea meeles, et sellisest häbist ei saa sa enam kunagi lahti.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Suurenda raha hulka {CURRENCY} võrra
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Mängimine ettevõttena: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Maagiline buldooser (eemaldamatute rajatiste lammutamine): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnelid võivad üksteist läbida: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Seisatuse ajal ehitamine: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Reaktiivlennukid ei kuku (tihti) alla väikestel lennuväljadel: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Vaheta kliimat: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Muuda kuupäeva: {ORANGE} {DATE_SHORT}
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Luba muutuvad tootmisväärtused: {ORANGE}{STRING}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Muutuvad tootmisväärtused: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Suudub meldepunkti: {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Suundub {WAYPOINT}, {VELOCITY}
@@ -1204,6 +1235,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Meldepun
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Rööbaste ehitamine kasutades "venitamist"
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...kaardil puudub linn
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Kaarditekitamine katkes...{}...linnadele pole sobilike kohti
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Palju suvalisi linnu
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Kaardi katmine suvaliselt asetatud linnadega
@@ -1289,7 +1321,7 @@ STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Klõpsa,
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Serveri otsimine
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Võrgust serveri otsimine
 STR_NETWORK_ADD_SERVER                                          :{BLACK}Lisa server
-STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Lisab nimekirja serveri, mida kontrollitakse alati, kas see töötab või mitte.
+STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Pidevalt jälgitava serveri lisamine loendisse.
 STR_NETWORK_ENTER_IP                                            :{BLACK}Sisesta serveri aadress
 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
@@ -1298,12 +1330,12 @@ STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Kliente 
 
 STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Kaardi suurus
-STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Mängu kaardisuurus{}Klõpsa pindala alusel järjestamiseks
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Kaardisuurus mängus{}Klõpsa, et järjestada pindala järgi
 
 STR_NETWORK_DATE_CAPTION                                        :{BLACK}Kuupäev
 STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Kuupäev hetkel
 
-STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Aastaid
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Kestnud
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Mitu aastat{}on mäng kestnud
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}MÄNGU ANDMED
@@ -1318,7 +1350,7 @@ STR_NETWORK_CURRENT_DATE                                        :{SILVER}Aeg het
 STR_NETWORK_PASSWORD                                            :{SILVER}Parooliga kaitstud!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER ON MAAS
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER ON TÄIS
-STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSIOON EI SOBI
+STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}OSAD EI SOBI
 STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF SOBIMATUS
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Liitu mänguga
@@ -1343,10 +1375,10 @@ STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Suurim k
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Määra suurim klientide arv. Kõik vabad kohad ei pea täidetud olema
 STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} ettevõte{P "" t}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Enim ettevõtteid:
-STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Luba serveris X mängijat
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Teatud ettevõtete piirang serveris
 STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} pealtvaataja{P "" t}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Enim pealtvaatajaid
-STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Luba serveris X vaatajat
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Teatud vaatlejate piirang serveris
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Räägitav keel:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Teistele mängijatele teadmiseks, et mis keelt serveris räägitakse
 STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1438,6 +1470,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Katkesta
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Sisesta summa mida anda
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server on kaitstud. Sisesta parool
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Ettevõte on kaitstud. Sisesta parool
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klientide nimekiri
@@ -1686,7 +1719,9 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Vaate vi
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Linnanime muutmine
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Reisijaid eelmisel kuul: {ORANGE}{COMMA}{BLACK}  Enim: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Posti eelmisel kuul: {ORANGE}{COMMA}{BLACK}  Enim: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Veoseid linna kasvamiseks:
 STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} vajalik
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} toimetatud eelmisel kuul
 STR_200F_TALL_OFFICE_BLOCK                                      :Kõrge büroohoone
 STR_2010_OFFICE_BLOCK                                           :Büroohoone
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Väike kortermaja
@@ -1725,6 +1760,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Teenusetoetust makstakse ettevõttele {COMPANY}!{}{}{STRING} kohast {STATION} kohta {STATION} teenuse eest makstakse järgmisel aastal kolmekordselt!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Teenusetoetust makstakse ettevõttele {COMPANY}!{}{}{STRING} kohast {STATION} kohta {STATION} teenuse eest makstakse järgmisel aastal neljakordselt!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Linna {TOWN} kohalik omavalitsus keeldub uut lennujaama lubamast
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} kohalik omavalitsus keeldub ehitusluba lennujaamale väljastamast kuna on mures müra pärast
 STR_2036_COTTAGES                                               :Suvilad
 STR_2037_HOUSES                                                 :Majad
 STR_2038_FLATS                                                  :Korterid
@@ -1898,6 +1934,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Laadi m�
 STR_4002_SAVE                                                   :{BLACK}Salvesta
 STR_4003_DELETE                                                 :{BLACK}Kustuta
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Vaatleja, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} vaba
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Ei suuda kettalt lugeda
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Mängu salvestamine nurjus{}{STRING}
@@ -1905,9 +1942,10 @@ STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Faili ei
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Mängu laadimine nurjus{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Süsteemi viga: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Katkine salvestus - {STRING}
-STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Salvestus on tehtud uuemas versioonis
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Salvestus on tehtud uuemas osas
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fail pole loetav
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Faili ei saanud kirjutada
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Andmeterviklikuse kontrolli ei läbitud
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Nimekiri ketastest, kataloogidest ja salvestatud mängudest
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Mängu salvestuse nimi
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Kustuta valitud salvestus
@@ -1993,6 +2031,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 
 ##id 0x5000
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Teine tunnel on ees
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunnel lõpeks väljaspool kaarti
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Ei saa tunneli teise otsa jaoks maad parajaks kaevata
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Tunnel tuleb enne lammutada
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Sild tuleb enne lammutada
@@ -2067,15 +2106,15 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} lennuv
 STR_SV_STNAME_OILFIELD                                          :{STRING} naftaväli
 STR_SV_STNAME_MINES                                             :{STRING} kaevandused
 STR_SV_STNAME_DOCKS                                             :{STRING} dokid
-STR_SV_STNAME_BUOY_1                                            :{STRING} poi #1
-STR_SV_STNAME_BUOY_2                                            :{STRING} poi #2
-STR_SV_STNAME_BUOY_3                                            :{STRING} poi #3
-STR_SV_STNAME_BUOY_4                                            :{STRING} poi #4
-STR_SV_STNAME_BUOY_5                                            :{STRING} poi #5
-STR_SV_STNAME_BUOY_6                                            :{STRING} poi #6
-STR_SV_STNAME_BUOY_7                                            :{STRING} poi #7
-STR_SV_STNAME_BUOY_8                                            :{STRING} poi #8
-STR_SV_STNAME_BUOY_9                                            :{STRING} poi #9
+STR_SV_STNAME_BUOY_1                                            :{STRING} 1. poi
+STR_SV_STNAME_BUOY_2                                            :{STRING} 2. poi
+STR_SV_STNAME_BUOY_3                                            :{STRING} 3. poi
+STR_SV_STNAME_BUOY_4                                            :{STRING} 4. poi
+STR_SV_STNAME_BUOY_5                                            :{STRING} 5. poi
+STR_SV_STNAME_BUOY_6                                            :{STRING} 6. poi
+STR_SV_STNAME_BUOY_7                                            :{STRING} 7. poi
+STR_SV_STNAME_BUOY_8                                            :{STRING} 8. poi
+STR_SV_STNAME_BUOY_9                                            :{STRING} 9. poi
 STR_SV_STNAME_ANNEXE                                            :{STRING} juurdeehitis
 STR_SV_STNAME_SIDINGS                                           :{STRING} hargnemine
 STR_SV_STNAME_BRANCH                                            :{STRING} filiaal
@@ -2083,7 +2122,7 @@ STR_SV_STNAME_UPPER                                             :Ülemine {STRIN
 STR_SV_STNAME_LOWER                                             :Alumine {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Kopteriväljak
 STR_SV_STNAME_FOREST                                            :{STRING} mets
-STR_SV_STNAME_FALLBACK                                          :{STRING} Jaam #{NUM}
+STR_SV_STNAME_FALLBACK                                          :{STRING} {NUM}. jaam
 
 ############ end of savegame specific region!
 
@@ -2122,6 +2161,7 @@ STR_NUM_VERY_LOW                                                :Väga madal
 STR_6816_LOW                                                    :Madal
 STR_6817_NORMAL                                                 :Harilik
 STR_6818_HIGH                                                   :Kõrge
+STR_02BF_CUSTOM                                                 :Omatehtud
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Väga aeglane
@@ -2233,6 +2273,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Vali nai
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Tekita uus suvaline nägu
 STR_704C_KEY                                                    :{BLACK}Selgitus
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Näita selgitust graafikute juures
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Näita põhjalike tegevushinnanguid
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Ettevõttegraafiku selgitus
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klõpsa, et ettevõtte graafikut sisse ja välja lülitada
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Veetud veoste kogus
@@ -2607,10 +2648,10 @@ STR_ORDER_GO_TO                                                 :Mine
 STR_ORDER_GO_NON_STOP_TO                                        :Mine peatumata
 STR_ORDER_GO_VIA                                                :Mine läbi
 STR_ORDER_GO_NON_STOP_VIA                                       :Mine peatumata läbi
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Laadi kõik kaubad täis
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Laadi, kui saadaval
-STR_ORDER_DROP_FULL_LOAD_ALL                                    :Laadi kõiki kaupu täis
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Laadi ühte kaupa täis
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Laadi üks täis
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Võimalusel laadi
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Laadi kõik täis
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Laadi üks täis
 STR_ORDER_DROP_NO_LOADING                                       :Mitte laadida
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Laadi kõik maha
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Kui võetakse vastu, laadi maha
@@ -2651,7 +2692,7 @@ STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRIN
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} angaar
 
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Alati mine
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Hoolda, kui vaja
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Vajadusel hoolda
 STR_ORDER_DROP_HALT_DEPOT                                       :Peatu
 
 STR_ORDER_CONDITIONAL                                           :Tinglik sihtpunkti vahetamine
@@ -2723,6 +2764,7 @@ STR_8826_GO_TO                                                  :{BLACK}Mine
 STR_REFIT                                                       :{BLACK}Taasseadista
 STR_REFIT_TIP                                                   :{BLACK}Vali, millist laadungit ümber seadistada selles järjestuses. Ümberseadistuse käsu eemaldamiseks hoia klõpsamise ajal all Control nuppu
 STR_REFIT_ORDER                                                 :(Taasseadista {STRING})
+STR_REFIT_STOP_ORDER                                            :(Seadista ümber {STRING} jaoks ja peatu)
 STR_STOP_ORDER                                                  :(Peatu)
 STR_TIMETABLE_VIEW                                              :{BLACK}Sõiduplaan
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Näita sõiduplaani
@@ -2789,7 +2831,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Hind: {C
 STR_885C_BROKEN_DOWN                                            :{RED}Rikkis
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Käituskulud: {LTBLUE}{CURRENCY}/aastas
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Mass: {LTBLUE}{WEIGHT_S}  {BLACK}Võimsus: {LTBLUE}{POWER}{BLACK} Tippkiirus: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Mass: {LTBLUE}{WEIGHT_S} {BLACK}Võimsus: {LTBLUE}{POWER}{BLACK} Tippkiirus: {LTBLUE}{VELOCITY} {BLACK}Veojõud: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Tühimass: {LTBLUE}{WEIGHT_S} {BLACK}Võimsus: {LTBLUE}{POWER}{BLACK} Tippkiirus: {LTBLUE}{VELOCITY} {BLACK}Veojõud: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Selle aasta kasum: {LTBLUE}{CURRENCY}  (eelmisel aastal: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tehnoseisund: {LTBLUE}{COMMA}%  {BLACK}Rikkeid eelmisest hooldusest: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Peatatud
@@ -2832,6 +2874,7 @@ STR_TIMETABLE_TOTAL_TIME                                        :Selle sõidupla
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Selle sõiduplaani täitmine võtab vähemalt {STRING} (kõik ei ole planeeritud)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Täida ise
 
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Täida liiniplaan järgmise sõidu andmetega (Ctrl+klõps säilitamaks ooteaegu)
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Mootorsõiduk takistab teed
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} mootorsõiduk{P "" it}
@@ -2898,8 +2941,8 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Seadista
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Muuda mootorsõiduki seadistust
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Seadista mootorsõidukit kandma valitud veotüüpi
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Mootorsõiduki seadistust ei saa ümber muuta
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vali maanteesõiduki veetav kaubaliik
 
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vali maanteesõiduki veetav veoseliik
 ##id 0x9800
 STR_9800_WATERWAYS_CONSTRUCTION                                 :Veeteede ehitus
 STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Veeteede ehitus
@@ -3098,34 +3141,36 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Hoiatus: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Viga: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Saatuslik viga: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} ei tööta TTDPatch versiooniga OpenTTD väitel.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} on {STRING} TTD versiooni jaoks.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}OpenTTD väitel {STRING} ei tööta selle TTDPatch osaga.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} on {STRING} TTD osa jaoks.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} on mõeldud kasutamiseks {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}vigane parameeter {STRING} jaoks: parameeter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} peab olema laetud enne {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} peab olema laetud pärast{STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} nõuab OpenTTD versiooni {STRING} või uuemat.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} nõuab OpenTTD osa {STRING} või uuemat.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fail, mis tehti tõlkimiseks,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Liiga palju NewGRF-e on laaditud.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laadides {STRING} staatilise NewGRF-na koos {STRING} võib põhjustada sünkrooni katkemist.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Ootamatu sprait.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Tundmatu Action 0 omadus.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Vale tunnuse kasutamise proov.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sisaldab vigast pilti. Kõiki vigaseid pilte näidatakse punase küsimärgina (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sisaldab mitmeid Action 8 kirjeid
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Laadi valitud eelseadistused
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Salvesta eelseadistus
 STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Salvesta praegune loend eelseadistusena
 STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Sisesta eelseadistuse nimi
 STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Kustuta eelseadistus
-STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Kustuta aktiivne eelseadistus
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Kustuta hetkel valitud eelseadistus
 STR_NEWGRF_ADD                                                  :{BLACK}Lisa
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Lisa nimekirja NewGRF fail
 STR_NEWGRF_REMOVE                                               :{BLACK}Eemalda
 STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Eemalda nimekirjast valitud NewGRF fail
-STR_NEWGRF_MOVEUP                                               :{BLACK}Liiguta Üles
-STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Liiguta valitud NewGRF fail nimekirjas üles
-STR_NEWGRF_MOVEDOWN                                             :{BLACK}Liiguta Alla
-STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Liiguta valitud NewGRF fail nimekirjas alla
+STR_NEWGRF_MOVEUP                                               :{BLACK}Liiguta üles
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}NewGRF-faili liigutamine loendis üles.
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Liiguta alla
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}NewGRF-faili liigutamine loendis alla
 STR_NEWGRF_FILE_TIP                                             :{BLACK}Nimekiri installeerimata NewGRF failidest. Parameetrite muutmiseks klõpsa failil.
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parameetrid: {SILVER}{STRING}
 STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Sisesta NewGRF parameetrid
@@ -3151,15 +3196,18 @@ STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Depoost väljas asudes muudab sõiduki '{1:ENGINE}' pikkust.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Ettevõtte '{1:COMPANY}' rongil '{0:VEHICLE}' on ebasobiv pikkus. See on tõenäoliselt põhjustatud problemaatilistest NewGRF-dest. Mäng võib kokku joosta või
 
-STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Mäng salvestati trammide toetuseta versioonis. Kõik trammid eemaldati.
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' sisaldab väära teavet.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Veose/ümberseadistamise teave sõidukil '{1:ENGINE}' erineb ehitamisaegsest ostunimekirjast. Seetõttu võib uuendamisel või asendamisel ümberseadistamine ebaõnnestuda.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' põhjustas toodangu tagasikutsumises lõpmatu korduse.
 
-STR_CURRENCY_WINDOW                                             :{WHITE}Isiklik valuuta
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Mäng on salvestatud osas, kus trammid ei olnud toetatud. Kõik trammid on eemaldatud.
+STR_CURRENCY_WINDOW                                             :{WHITE}Oma valuuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vahetuskurss: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Vahemärk:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Eesliide:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Lõpuliide:
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Vaheta üle eurole: {ORANGE}{NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Vaheta üle eurole: {ORANGE}Mitte kunagi
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Mine eurole: {ORANGE}Mitte kunagi
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eelvaade: {ORANGE}{CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Muuda personaalse valuuta parameetreid
 
@@ -3245,6 +3293,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Vajuta, 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Siltide nimekiri - {COMMA} Silt{P "" i}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Ümberseadistamise käsu ebaõnnestumine peatas sõiduki {VEHICLE}
 
 ############ Lists rail types
 
@@ -3300,8 +3349,8 @@ STR_DATE                                                        :{BLACK}Algus:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Linnade sagedus:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Tehaste sagedus:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
-STR_SNOW_LINE_UP                                                :{BLACK}Liiguta lumepiiri ühe ühiku võrra üles
-STR_SNOW_LINE_DOWN                                              :{BLACK}Liiguta lumepiiri ühe ühiku võrra alla
+STR_SNOW_LINE_UP                                                :{BLACK}Lumepiiri liigutamine ühe võrra üles
+STR_SNOW_LINE_DOWN                                              :{BLACK}Lumepiiri liigutamine ühe võrra alla
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Muuda lumepiiri kõrgust
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Muuda algusaastat
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skaala hoiatus
@@ -3327,8 +3376,8 @@ STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Genereer
 STR_SE_RANDOM_LAND                                              :{WHITE}Suvaline maa
 STR_SE_NEW_WORLD                                                :{BLACK}Alusta uut stsenaariumit
 STR_SE_CAPTION                                                  :{WHITE}Stsenaariumi tüüp
-STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Liiguta lameda maa kõrgus ühe võrra alla
-STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Liiguta lameda maa kõrgus ühe võrra üles
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Lameda maa kõrguse langetamine ühe võrra
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Lameda maa kõrguse tõstmine ühe võrra
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Muuda maa kõrgust lamedal maal
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Lameda maa kõrgus:
 
@@ -3367,7 +3416,7 @@ STR_HELIPORTS                                                   :{BLACK}Helikopt
 
 STR_MEASURE_LENGTH                                              :{BLACK}Pikkus: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Pindala: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Pikkus: {NUM}{}Kürguste erinevusj: {NUM} m
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Pikkus: {NUM}{}Kõrguserinevus: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Pindala: {NUM} x {NUM}{}Kõrguste erinevus: {NUM} m
 
 ############ Date formatting

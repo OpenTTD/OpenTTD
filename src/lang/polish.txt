@@ -397,11 +397,11 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Pojemność
 STR_NO_WAITING_CARGO                                            :{BLACK}Nie ma żadnego czekającego ładunku
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Zaznacz wszystkie typy stacji
 STR_SELECT_ALL_TYPES                                            :{BLACK}Zaznacz wszystkie typy ładunku (oraz brak czekającego ładunku)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Dostępne Lokomotywy
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Dostępne Samochody
-STR_AVAILABLE_SHIPS                                             :{BLACK}Dostępne Statki
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Dostępne Samoloty
-STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Zobacz listę dostępnych wyglądów lokomotywy dla tego typu pojazdu
+STR_AVAILABLE_TRAINS                                            :{BLACK}Dostępne lokomotywy
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Dostępne pojazdy
+STR_AVAILABLE_SHIPS                                             :{BLACK}Dostępne statki
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Dostępny samolot
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Zobacz listę dostępnych projektów silników dla tego typu pojazdów.
 STR_MANAGE_LIST                                                 :{BLACK}Zarządzaj listą
 STR_MANAGE_LIST_TIP                                             :{BLACK}Wyślij instrukcje wszystkim pojazdom na tej liĹ›cie
 STR_REPLACE_VEHICLES                                            :Zastąp pojazdy
@@ -916,7 +916,7 @@ STR_NO_ORDERS                                                   :{LTBLUE}Bez pol
 STR_NO_ORDERS_VEL                                               :{LTBLUE}Bez poleceń, {VELOCITY}
 
 STR_PASSENGERS                                                  :pasażerów
-STR_BAGS                                                        :worków
+STR_BAGS                                                        :worki
 STR_TONS                                                        :ton
 STR_LITERS                                                      :litrów
 STR_ITEMS                                                       :sztuk
@@ -945,7 +945,7 @@ STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE
 
 STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Autoodnowa zawiodła przy {VEHICLE}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} jest za długi po wymianie
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Brak regul autozastepowania/odnawiania.
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Brak reguł autozastępowania/odnawiania.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limit funduszy)
 
 STR_CONFIG_SETTING                                              :{BLACK}Ustawienia zaawansowane
@@ -1201,14 +1201,14 @@ STR_SUB_TROPICAL_LANDSCAPE                                      :Krajobraz tropi
 STR_TOYLAND_LANDSCAPE                                           :Krajobraz zabawkowy
 
 STR_CHEATS                                                      :{WHITE}Oszukiwanie
-STR_CHEATS_TIP                                                  :{BLACK}Checkboxy pokazują czy używano już tego oszustwa
-STR_CHEATS_WARNING                                              :{BLACK}Uwaga! Właśnie chcesz zdradzić swoich wspólników.{}Miej na uwadze, że zostanie to zapamiętane na wieki!
+STR_CHEATS_TIP                                                  :{BLACK}Pole wyboru wskazuje, czy użyłeś już wcześniej tego oszustwa
+STR_CHEATS_WARNING                                              :{BLACK}Ostrzeżenie! Właśnie chcesz zdradzić swoich współzawodników. Miej na uwadze, że taka hańba będzie pamiętana na wieki!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Zwiększ ilość pieniędzy o {CURRENCY}
-STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Grasz jako: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczny buldożer (usuwanie przedsiębiorstw, itp.): {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunele mogą się krzyżować: {ORANGE}{STRING}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Budowa w czasie pauzy: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Odrzutowce nie będą się często rozbijać na małych lotniskach: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Grasz jako firma: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczny buldożer (usuwanie przedsiębiorstw, obiektów nieprzesuwalnych): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunele mogą się przecinać: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Budowa w trybie pauzy: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Odrzutowce nie będą rozbijać się (często) na małych lotniskach: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Zmień klimat: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Zmień datę: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Pozwól modyfikować wielkość produkcji przedsiębiorstw: {ORANGE}{STRING}
@@ -1232,12 +1232,12 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHIT
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edytuj nazwę pkt. kontrolnego
 
-STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Nie można zmienić nazwy pkt. kontrolnego...
+STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Nie można zmienić nazwy punktu orientacyjnego...
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Zmiana torów na pkt. kontrolny
-STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Nie można tutaj zbudować pkt. kontolnego...
-STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Nie można usunąć pkt. kontrolnego z tego miejsca...
+STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Nie można budować tutaj punktu orientacyjnego...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Nie można usunąć stąd kolejowego punktu orientacyjnego...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Budowa torów używając trybu Autorail
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Budowa torów za pomocą trybu Autotory
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...nie ma żadnego miasta w scenariuszu
 STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Generowanie mapy anulowane...{}...brak odpowiednich miesjc dla miast
@@ -1256,15 +1256,15 @@ STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Wyrówna
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Drzewa rożnych rodzajów
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Sadzenie drzew rożnych rodzajów
 
-STR_CANT_BUILD_CANALS                                           :{WHITE}Nie można tutaj wybudować kanału...
+STR_CANT_BUILD_CANALS                                           :{WHITE}Nie można budować tutaj kanału...
 STR_BUILD_CANALS_TIP                                            :{BLACK}Buduj kanały.
 STR_LANDINFO_CANAL                                              :Kanał
 
-STR_CANT_BUILD_LOCKS                                            :{WHITE}Nie można tutaj wybudować śluzy...
+STR_CANT_BUILD_LOCKS                                            :{WHITE}Nie można budować tutaj śluzy...
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Buduj śluzy
 STR_LANDINFO_LOCK                                               :Śluza
 
-STR_CANT_PLACE_RIVERS                                           :{WHITE}NIe mozna tutaj umiescic rzeki...
+STR_CANT_PLACE_RIVERS                                           :{WHITE}NIe mozna tutaj umieścić rzeki...
 STR_LANDINFO_RIVER                                              :Rzeka
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...boja w użyciu!
@@ -1598,7 +1598,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Niemożl
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Wykop zniszczyłby tunel
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Już na poziome morza
 STR_1004_TOO_HIGH                                               :{WHITE}Zbyt wysoko
-STR_ALREADY_LEVELLED                                            :{WHITE}... juz wyrownany
+STR_ALREADY_LEVELLED                                            :{WHITE}... juz wyrównany
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nieodpowiednie tory
 STR_1007_ALREADY_BUILT                                          :{WHITE}...już zbudowano
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Należy najpierw usunąć tory
@@ -1729,8 +1729,8 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centruj 
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Zmień nazwę miasta
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Pasażerów w zeszłym miesiącu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Poczta w zeszłym miesiącu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
-STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Towar potrzebny do rozrostu miasta:
-STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} required
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Towar potrzebny do rozwoju miasta:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{BLACK}Wymaganych {SETX 20}{ORANGE}{STRING}
 STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} dowiezionych w zeszłym miesiącu
 STR_200F_TALL_OFFICE_BLOCK                                      :Wysoki biurowiec
 STR_2010_OFFICE_BLOCK                                           :Biurowiec
@@ -2095,7 +2095,7 @@ STR_5011_SUSPENSION_CONCRETE                                    :Podwieszany, Be
 STR_5012_WOODEN                                                 :Drewniany
 STR_5013_CONCRETE                                               :Betonowy
 STR_5014_TUBULAR_STEEL                                          :Cylindryczny, Stalowy
-STR_BRIDGE_TUBULAR_SILICON                                      :Cylindryczny, Krzemowy
+STR_BRIDGE_TUBULAR_SILICON                                      :Cylindryczny, krzemowy
 STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Nie można tutaj wybudować mostu...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Nie można tutaj wybudować tunelu...
 STR_5017_RAILROAD_TUNNEL                                        :Tunel kolejowy
@@ -2917,7 +2917,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Dostępn{G y a e} now{G y a e} {STRING} - {ENGINE}!
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Nie można sprzedać zniszczonego pojazdu...
-STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Nie można przebudować zniszczonego pojazdu...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Nie można umieścić ponownie zniszczonego pojazdu...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Nie można wyznaczyć rozkładu jazdy pojazdu...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Pojazdy mogą czekać tylko na stacjach.
@@ -3055,7 +3055,7 @@ STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Ustaw boję, która może być użyta jako punkt kontrolny
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Nie można tutaj ustawić boi...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Zbuduj akwedukt
-STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Nie można zbudować tu akweduktu...
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Nie można zbudować tutaj akweduktu...
 STR_9836_RENAME                                                 :{BLACK}Zmień nazwę
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Zmień nazwę typu statku
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Zmień nazwę typu statku
@@ -3147,7 +3147,7 @@ STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Powódź!{}Przynajmniej {COMMA} zaginęło lub utonęło w czasie powodzi!
 
 STR_BRIBE_FAILED                                                :{WHITE}Twoja próba wręczenia łapówki została
-STR_BRIBE_FAILED_2                                              :{WHITE}wykryta przez lokalnych badaczy.
+STR_BRIBE_FAILED_2                                              :{WHITE}wykryta przez lokalnych śledczych.
 STR_BUILD_DATE                                                  :{BLACK}Zbudowano: {LTBLUE}{DATE_LONG}
 
 STR_TILEDESC_STATION_CLASS                                      :{BLACK}Klasa stacji: {LTBLUE}{STRING}
@@ -3253,7 +3253,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Wyłącz
 
 STR_NEWGRF_BROKEN                                               :{WHITE}Zachowanie NewGRF '{0:STRING}' może powodować desynchronizacje i/lub błędy.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmienia długość pojazdu dla '{1:ENGINE}' gdy nie jest w zajezdni.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg '{VEHICLE}' należący do '{COMPANY}' ma niepoprawną długość. Prawdopodobnie problemem powoduje NewGRFs. Gra może działać niestabilnie lub się zawiesić.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg '{VEHICLE}' należący do '{COMPANY}' ma niepoprawną długość. Prawdopodobnie spowodowane jest to problemami z NewGRFami. Gra może stracić synchronizację lub się zawiesić.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' dostarcza niepoprawnych danych.
 
@@ -3330,7 +3330,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Przejdź
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Pojazd nie jest dostępny
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Pojazd nie jest dostępny
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Statek nie jest dostępny
-STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Samolot nie jest dostępny
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Samolot jest niedostępny
 
 STR_ENGINES                                                     :Lokomotywy
 STR_WAGONS                                                      :Wagony
@@ -3424,7 +3424,7 @@ STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / 
 STR_WORLD_GENERATION                                            :{BLACK}Tworzenie świata
 STR_TREE_GENERATION                                             :{BLACK}Tworzenie drzew
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Tworzenie obiektów
-STR_CLEARING_TILES                                              :{BLACK}Generowanie skał i nierowności
+STR_CLEARING_TILES                                              :{BLACK}Tworzenie terenów skalistych i nierówności
 STR_SETTINGUP_GAME                                              :{BLACK}Ustawianie gry
 STR_PREPARING_TILELOOP                                          :{BLACK}Uaktywnianie pól
 STR_PREPARING_GAME                                              :{BLACK}Przygotowywanie gry
@@ -3563,7 +3563,7 @@ STR_SIGN_OSKTITLE                                               :{BLACK}Wpisz na
 
 STR_FUND_NEW_INDUSTRY                                           :{BLACK}Ufunduj
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Zleć poszukiwanie
-STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Wybuduj
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Zbuduj
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Wybierz przedsiębiorstwo z listy
 
 ############ Face formatting
@@ -3653,7 +3653,7 @@ STR_AI_CHANGE                                                   :{BLACK}Wybierz 
 STR_AI_CONFIGURE                                                :{BLACK}Konfiguruj
 STR_AI_CHANGE_TIP                                               :{BLACK}Wczytaj kolejne SI
 STR_AI_CONFIGURE_TIP                                            :{BLACK}Konfiguruj parametry SI
-STR_AI_LIST_TIP                                                 :{BLACK}Wszystkie SI które będą załadowane w następnej grze
+STR_AI_LIST_TIP                                                 :{BLACK}Wszystkie SI, które będą załadowane w następnej grze
 STR_AI_LIST_CAPTION                                             :{WHITE}Dostępne SI
 STR_AI_AILIST_TIP                                               :{BLACK}Kliknij, aby wybrać SI
 STR_AI_ACCEPT                                                   :{BLACK}Zaakceptuj
@@ -3667,7 +3667,7 @@ STR_AI_RANDOM_AI                                                :Losowe SI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametry SI
 STR_AI_AUTHOR                                                   :Autor:
 STR_AI_VERSION                                                  :Wersja:
-STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Jedna z działających SI przestała działać. Prosimy o zaraportowanie tego autorowi SI dołączając zrzut ekranu okna debuga SI.
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Jedna z działających SI przestała działać. Prosimy o zgłoszenie tego autorowi SI dołączając zrzut ekranu okna odpluskwiania SI.
 ########
 
 ############ town controlled noise level

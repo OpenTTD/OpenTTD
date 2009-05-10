@@ -665,7 +665,6 @@ STR_FULL                                                        :Fullt
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Byoversikt
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Egendefinert
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -2111,6 +2110,7 @@ STR_NUM_VERY_LOW                                                :Veldig lav
 STR_6816_LOW                                                    :Lite
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Høyt
+STR_02BF_CUSTOM                                                 :Egendefinert
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Veldig sent

@@ -2241,6 +2241,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Seleccio
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Genera una nova cara aleatòria
 STR_704C_KEY                                                    :{BLACK}Llegenda
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Mostra la llegenda als gràfics
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Mostra ratis de rendiment detallats
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Llegenda dels gràfics de la companyia
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Clica aquí per activar/desactivar l'entrada als gràfics de la companyia
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Unitats de càrrega entregada
@@ -2615,18 +2616,18 @@ STR_ORDER_GO_TO                                                 :Ves a
 STR_ORDER_GO_NON_STOP_TO                                        :Ves sense parar a
 STR_ORDER_GO_VIA                                                :Ves via
 STR_ORDER_GO_NON_STOP_VIA                                       :Ves sense parar via
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Càrrega completa de qualsevol càrrega
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Carrega del tot qualsevol càrrega
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carrega si està disponible
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Carrega del tot totes les càrregues
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Càrrega completa de qualsevol càrrega
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Carrega del tot qualsevol càrrega
 STR_ORDER_DROP_NO_LOADING                                       :No carreguis
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Descarrega tot
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descarrega si s'accepta
 STR_ORDER_DROP_UNLOAD                                           :Descarrega tot
 STR_ORDER_DROP_TRANSFER                                         :Transfereix
 STR_ORDER_DROP_NO_UNLOADING                                     :No descarreguis
-STR_ORDER_FULL_LOAD                                             :(Càrrega completa)
-STR_ORDER_FULL_LOAD_ANY                                         :(Càrrega completa de qualsevol càrrega)
+STR_ORDER_FULL_LOAD                                             :(Carrega del tot)
+STR_ORDER_FULL_LOAD_ANY                                         :(Carrega del tot qualsevol càrrega)
 STR_ORDER_NO_LOAD                                               :(No carregar)
 STR_ORDER_UNLOAD                                                :(Descarrega i agafa la càrrega)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Descarrega i espera carregar del tot)
@@ -2802,7 +2803,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {C
 STR_885C_BROKEN_DOWN                                            :{RED}Avariat
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Edat: {LTBLUE}{STRING}{BLACK}   Cost de Circulació: {LTBLUE}{CURRENCY}/any
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pes: {LTBLUE}{WEIGHT_S}  {BLACK}Potència: {LTBLUE}{POWER}{BLACK} Vel. Max.: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pes: {LTBLUE}{WEIGHT_S} {BLACK}Potència: {LTBLUE}{POWER}{BLACK} Velocitat Max.: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pes: {LTBLUE}{WEIGHT_S} {BLACK}Potència: {LTBLUE}{POWER}{BLACK} Vel. Max: {LTBLUE}{VELOCITY} {BLACK}T.E. Max.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Benefici enguany: {LTBLUE}{CURRENCY}  (darrer any: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Rendibilitat: {LTBLUE}{COMMA}%  {BLACK}Avaries des de l'últim manteniment: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Parat
@@ -3172,6 +3173,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren 
 
 STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{0:STRING}' està donant informació incorrecta.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La informació de càrrega/remodelació per '{1:ENGINE}' no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de autorenov/-substitueix.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha provocat un bucle infinit en la crida de producció.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}El joc s'ha desat en una versió sense suport de tramvies. Tots els tramvies s'han eliminat.
 

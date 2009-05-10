@@ -2241,6 +2241,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Vælg kv
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Generer nyt tilfældigt ansigt
 STR_704C_KEY                                                    :{BLACK}Nøgle
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Viser nøglen til grafen
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Vis detaljeret præstationsoversigt
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Nøgle til selskabsgraf
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klik her for at vise/skjule selskabets graf
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Afleveret last
@@ -2615,19 +2616,19 @@ STR_ORDER_GO_TO                                                 :Gå til
 STR_ORDER_GO_NON_STOP_TO                                        :Gå uden stop til
 STR_ORDER_GO_VIA                                                :Gå via
 STR_ORDER_GO_NON_STOP_VIA                                       :Gå uden stop via
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Fuld last af hvilken som helst type
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Åbn hvis tilgængelig
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Vilkårlig fuld last
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Last hvis muligt
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Fuld last af alt gods
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Fuld last af hvilket som helst gods
-STR_ORDER_DROP_NO_LOADING                                       :Ingen lastning
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Fuld last vilkårligt gods
+STR_ORDER_DROP_NO_LOADING                                       :Ingen last
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Los alt
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Los hvis gods accepteres
 STR_ORDER_DROP_UNLOAD                                           :Aflæs alt
 STR_ORDER_DROP_TRANSFER                                         :Overfør
 STR_ORDER_DROP_NO_UNLOADING                                     :Ingen losning
 STR_ORDER_FULL_LOAD                                             :(Fuld last)
-STR_ORDER_FULL_LOAD_ANY                                         :(Fuld last af hvilket som helst gods)
-STR_ORDER_NO_LOAD                                               :(Ingen lastning)
+STR_ORDER_FULL_LOAD_ANY                                         :(Fuld last vilkårligt gods)
+STR_ORDER_NO_LOAD                                               :(Ingen last)
 STR_ORDER_UNLOAD                                                :(Los og medtag gods)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Los og vent på fuld last)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Los og vent på fuld last af hvilket som helst gods)
@@ -2802,7 +2803,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Pris: {C
 STR_885C_BROKEN_DOWN                                            :{RED}Gået i stykker
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vægt: {LTBLUE}{WEIGHT_S}  {BLACK}Styrke: {LTBLUE}{POWER}{BLACK} Maks. hastighed: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vægt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks. hast.: {LTBLUE}{VELOCITY} {BLACK}Maks. t.k.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vægt: {LTBLUE}{WEIGHT_S} {BLACK}Effekt: {LTBLUE}{POWER}{BLACK} Maks. hast.: {LTBLUE}{VELOCITY} {BLACK}Maks. trækkraft: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Afkast i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed {LTBLUE}{COMMA}%  {BLACK}nedbrud siden sidste service: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stoppet
@@ -3172,6 +3173,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Toget '{
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' indeholder forkert information.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Gods-/ombygningsinformation for '{1:ENGINE}' afviger fra indkøbslisten efter konstruktion. Dette kan medføre, at autofornyelse ikke fungerer korrekt.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsagede en uendelig løkke i produktions-callback'en.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spillet er gemt i en version uden sporveje. Alle sporveje er blevet fjernet.
 

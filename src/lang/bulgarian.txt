@@ -1109,6 +1109,7 @@ STR_CONFIG_SETTING_AI                                           :{ORANGE}Съп�
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Покажи опциите
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Взаимодействие
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Сигнали
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Обработката на товари
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Компютърни играчи
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршрутизация
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Влакове

@@ -2241,6 +2241,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Electsay
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Enerategay andomray ewnay acefay
 STR_704C_KEY                                                    :{BLACK}Eykay
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Owshay eykay otay aphsgray
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Owshay etailedday erformancepay atingsray
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Eykay otay ompanycay aphsgray
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Ickclay erehay otay oggletay ompany'scay entryway onway aphgray onway/offway
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Unitsway ofway argocay eliveredday
@@ -3172,6 +3173,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Aintray 
 
 STR_NEWGRF_BUGGY                                                :{WHITE}EwGRFnay '{0:STRING}' ovidespray incorrectway informationway.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Argocay/efitray informationway orfay '{1:ENGINE}' iffersday omfray urchasepay istlay afterway onstructioncay. Isthay ightmay ausecay autorenewway/-eplaceray otay ailfay efittingray orrectlycay.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ausedcay anway endlessway ooplay inway ethay oductionpray allbackcay.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Amegay asway avedsay inway ersionvay ithoutway amtray upportsay. Allway amstray avehay eenbay emovedray.
 

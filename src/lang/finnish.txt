@@ -2241,6 +2241,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Valitse 
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Luo satunnaiset kasvot.
 STR_704C_KEY                                                    :{BLACK}Selite
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Näytä kuvaajan selite
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Näytä tarkat suorituskyky arviot
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Selite yhtiön kuvaajiin
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Napsauta tässä laittaaksesi yhtiön merkinnän graafissa päälle/pois.
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Rahtia kuljetettu (yksikköä)
@@ -2802,7 +2803,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kulu: {C
 STR_885C_BROKEN_DOWN                                            :{RED}Rikki
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Ikä: {LTBLUE}{STRING}{BLACK}   Käyttökustannukset: {LTBLUE}{CURRENCY}/vuosi
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Paino: {LTBLUE}{WEIGHT_S}  {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Huippunopeus: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Massa: {LTBLUE}{WEIGHT_S} {BLACK}Voima: {LTBLUE}{POWER}{BLACK} Huippunopeus: {LTBLUE}{VELOCITY} {BLACK}Huippuvääntö: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Paino: {LTBLUE}{WEIGHT_S} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Maks. nopeus: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Tuotto tänä vuonna: {LTBLUE}{CURRENCY}  (viime vuonna: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Luotettavuus: {LTBLUE}{COMMA}%  {BLACK}Hajoamisia viime huollon jälkeen: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Pysäytetty
@@ -3172,6 +3173,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Yhtiöll
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' antaa väärää tietoa.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Rahti/uudelleensovitus tiedot kulkuneuvolle '{1:ENGINE}' ovat eri kuin ostolistassa rakentamisen jälkeen. Tämä voi aiheuttaa, että kulkuneuvon korvaus ei uudelleensovita oikein.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' aiheutti ikuisen silmukan tuotannon callback-funktiossa.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Peli tallennettiin versiossa, joka ei tue raitiovaunuja. Kaikki raitiovaunut on poistettu.
 

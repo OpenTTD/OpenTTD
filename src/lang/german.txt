@@ -590,7 +590,7 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Landflä
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Erzeuge Land durch Zufall
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Landfläche wiederherstellen
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Landfläche wiederherstellen
-STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Das gesamte Spielereigentum von der Karte entfernen
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Das gesamte Spielereigentum vom Spielfeld entfernen
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Soll wirklich das gesamte Spielereigentum entfernt werden?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landfläche erzeugen
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stadt gründen
@@ -622,7 +622,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Felsige 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Leuchtturm errichten
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sendemast errichten
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Wüstengebiet anlegen{}Zum Entfernen Strg-Taste drücken
-STR_CREATE_LAKE                                                 :{BLACK}Wasser erzeugen.{}Baut einen Kanal. Bei gedrückter Strg-Taste wird ein Wasserfeld erzeugt, das umliegendes Land flutet.
+STR_CREATE_LAKE                                                 :{BLACK}Wasser erzeugen.{}Baut einen Kanal. Auf Meereshöhe wird bei gedrückter Strg-Taste ein Wasserfeld erzeugt, welches umliegendes Land flutet.
 STR_CREATE_RIVER                                                :{BLACK}Flüsse platzieren.
 STR_0290_DELETE                                                 :{BLACK}Löschen
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Diese Stadt vollständig löschen
@@ -848,8 +848,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Format a
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Standard Grafik
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Wähle die Grafik, die du nutzen möchtest
 
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Zu benutzendes Set an Basisgrafiken auswählen
 STR_AUTOSAVE_1_MONTH                                            :Jeden Monat
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosicherung fehlgeschlagen
 
@@ -987,10 +987,10 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :rechts
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Höhenstufe des Spielfeldes in einem flachen Szenario: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Landschaftsbau am Spielfeldrand erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE} Eines oder mehrere Felder am nördlichen Spielfeldrand sind nicht leer
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE} Eines oder mehrere Felder am Spielfeldrand sind nicht Wasser
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Eines oder mehrere Felder am Spielfeldrand sind nicht Wasser
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maximale Stationsgröße: {ORANGE}{STRING} {RED}(Hoher Wert verlangsamt das Spiel)
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Helipads automatisch warten: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Landeplatz automatisch warten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Werkzeugleiste für Landschaftsbau an die Bauwerkzeuge binden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Bei Rechtsklick Ansicht in die Gegenrichtung verschieben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Optimierten Bildlauf in den Ansichten verwenden: {ORANGE}{STRING}
@@ -1198,7 +1198,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Wegpunkt
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Gleise legen mit automatischer Wahl der Ausrichtung
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...in diesem Szenario gibt es keine Stadt
-STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Kartengenerierung wurde abgebrochen... {} ...kein brauchbarer Platz für eine Stadt gefunden
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Spielfeldgenerierung wurde abgebrochen... {} ...kein brauchbarer Platz für eine Stadt gefunden
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Viele zufällige Städte
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Das Spielfeld mit zufällig platzierten Städten füllen
@@ -1589,21 +1589,21 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Ausricht
 STR_1021_RAILROAD_TRACK                                         :Gleis
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Zugdepot
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...Gelände gehört jemand anderem
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Gleis mit normalen Signalen
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Gleis mit Vorsignalen
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Gleis mit Blocksignalen
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Gleis mit Einfahrsignalen
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Gleis mit Ausfahrsignalen
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gleis mit Kombinationssignalen
 STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Gleis mit Pfadsignal
 STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Gleis mit einseitigem Pfadsignal
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Gleis mit Vor- und Hauptsignalen
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Gleis mit Haupt- und Ausfahrsignalen
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Gleis mit normalen und Kombinationssignalen
-STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Gleis mit normalem Signal und Pfadsignal
-STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Gleis mit normalem Signal und einseitigem Pfadsignal
-STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Gleis mit Vor- und Ausfahrsignalen
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Gleis mit Vor- und Kombinationssignalen
-STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Gleis mit Vor- und Pfadsignal
-STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Gleis mit Vor- und einseitigem Pfadsignal
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Gleis mit Block- und Einfahrsignalen
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Gleis mit Block- und Ausfahrsignalen
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Gleis mit Block- und Kombinationssignalen
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Gleis mit Blocksignal und Pfadsignal
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Gleis mit Blocksignal und einseitigem Pfadsignal
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Gleis mit Ein- und Ausfahrsignalen
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Gleis mit Einfahr- und Kombinationssignalen
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Gleis mit Einfahr- und Pfadsignal
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Gleis mit Einfahr- und einseitigem Pfadsignal
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Gleis mit Ausfahr- und Kombinationssignalen
 STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Gleis mit Ausfahr- und Pfadsignal
 STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Gleis mit Ausfahr- und einseitigem Pfadsignal
@@ -1914,7 +1914,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Spielstandsdate
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spielstand wurde mit neuerer Version erstellt
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datei kann nicht gelesen werden
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Datei kann nicht geschrieben werden
-STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Prüfung der Dateningetrität fehlgeschlagen
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Prüfung der Datenintegrität fehlgeschlagen
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Liste der Laufwerke, Verzeichnisse und gespeicherten Spiele
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Ausgewählter Spielname
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Lösche gewählten Spielstand
@@ -2000,7 +2000,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 
 ##id 0x5000
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Ein anderer Tunnel ist im Weg
-STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunnel würde außerhalb der Karte enden
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunnel würde außerhalb des Spielfelds enden
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Land kann am anderen Ende des Tunnels nicht angehoben werden
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Der Tunnel muss zuerst abgerissen werden
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Die Brücke muss erst abgerissen werden
@@ -2242,6 +2242,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Wähle w
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Wähle zufälliges neues Gesicht
 STR_704C_KEY                                                    :{BLACK}Legende
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Legende des Diagramms
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Zeige detailierte Leistungsaufschlüsselung
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Legende des Firmendiagramms
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Graph der Firma ein-/ausblenden
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Beförderte Frachteinheiten
@@ -2336,8 +2337,8 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Schiffsf
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Flugzeugfarbschema anzeigen
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Wähle die Hauptfarbe für das gewählte Schema aus.
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Wähle die Nebenfarbe für das ausgewählte Schema.
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Wähle ein Farbschema oder mehrere Farbschemen(mit Strg+Klick) aus, um diese zu ändern. Klicke in das Kästchen um ein Schema zu aktivieren.
 
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Wähle ein Farbschema oder mehrere Farbschemata mittels Strg+Klick aus, um diese zu ändern. Klicke in das Kästchen um ein Schema zu aktivieren.
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Dampf)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
@@ -2613,7 +2614,7 @@ STR_8804                                                        :{SETX 10}{COMMA
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}ohne Halt
 STR_ORDER_GO_TO                                                 :Fahre zu
-STR_ORDER_GO_NON_STOP_TO                                        :Fahre ohne Halt nach
+STR_ORDER_GO_NON_STOP_TO                                        :Fahre ohne Halt zu
 STR_ORDER_GO_VIA                                                :Fahre über
 STR_ORDER_GO_NON_STOP_VIA                                       :Fahre ohne Halt über
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Vollladen einer Fracht
@@ -2650,17 +2651,17 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Fahre zum näch
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Fahre zum nächsten Hangar
 STR_ORDER_NEAREST_DEPOT                                         :dem nächsten
 STR_ORDER_NEAREST_HANGAR                                        :dem nächsten Hangar
-STR_ORDER_SERVICE_AT                                            :Wartung in
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Fahre ohne Halt zur Wartung in
-STR_ORDER_TRAIN_DEPOT                                           :Zugdepot
-STR_ORDER_ROAD_DEPOT                                            :Straßenfahrzeugdepot
-STR_ORDER_SHIP_DEPOT                                            :Werft
-STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
-STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_ORDER_SERVICE_AT                                            :Falls nötig, Wartung in
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Fahre ohne Halt Zwecks Wartung zu
+STR_ORDER_TRAIN_DEPOT                                           :{G=n}Zugdepot
+STR_ORDER_ROAD_DEPOT                                            :{G=n}Straßenfahrzeugdepot
+STR_ORDER_SHIP_DEPOT                                            :{G=w}Werft
+STR_GO_TO_DEPOT                                                 :{STRING}{G 2 "m" "r" "m" "den"} {2:STRING} {1:TOWN}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING}{G 2 m r m "den"} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Gehe immer
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Wartung wenn benötigt
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Wartung wenn nötig
 STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
 
 STR_ORDER_CONDITIONAL                                           :Bedingter Sprung zu Auftrag
@@ -2803,7 +2804,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kosten: 
 STR_885C_BROKEN_DOWN                                            :{RED}Panne
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}  Betriebskosten: {LTBLUE}{CURRENCY} pro Jahr
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S}  {BLACK}Leistung: {LTBLUE}{POWER}{BLACK}  Höchstgeschwindigkeit: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S}  {BLACK}Leistung: {LTBLUE}{POWER}{BLACK}  Geschw.: {LTBLUE}{VELOCITY}  {BLACK}Zugkraft: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S} {BLACK}Leistung: {LTBLUE}{POWER}{BLACK} Max. Geschw.: {LTBLUE}{VELOCITY} {BLACK}Max. Zugkraft: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Gewinn lfd. Jahr: {LTBLUE}{CURRENCY}  (vergangenes Jahr: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zuverlässigkeit: {LTBLUE}{COMMA}% {BLACK}Ausfälle seit letzter Wartung: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Angehalten
@@ -3039,7 +3040,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Flugzeug
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Flugzeugname
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Das erste Flugzeug startet von {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Flugzeugabsturz!{}{COMMA} sterben in einem Feuerball auf {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Flugzeugabsturz!{}Dem Flugzeug ging der Treibstoff aus, {COMMA} sterben in einem Feuerball!
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Flugzeugabsturz!{}Dem Flugzeug ging der Treibstoff aus, {COMMA} {P stirbt sterben} in einem Feuerball!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Umbenennen
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Flugzeug umbenennen
@@ -3123,7 +3124,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Falscher 
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} muss vor {STRING} geladen werden.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} muss nach {STRING} geladen werden.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} Benötigt OpenTTD-Version {STRING} oder höher.
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :der GRF-Datei, die es übersetzen soll,
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :der NewGRF-Datei, die es übersetzen soll,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Zu viele NewGRFs geladen.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Das Laden von {STRING} als statisches NewGRF mit {STRING} könnte Synchronisationsfehler hervorrufen.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unerwartetes Sprite.
@@ -3156,14 +3157,14 @@ STR_NEWGRF_ADD_FILE                                             :{BLACK}Zur Ausw
 STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Ausgewählte NewGRF-Datei zur Konfiguration hinzufügen
 STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Dateiliste aktualisieren
 STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Liste der verfügbaren NewGRF-Dateien aktualisieren
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Datei kann nicht hinzugefügt werden: GRF-ID bereits vergeben
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Datei kann nicht hinzugefügt werden: NewGRF-ID bereits vergeben
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Zugehörige Datei nicht gefunden
 STR_NEWGRF_DISABLED                                             :{RED}Deaktiviert
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Passende Datei nicht gefunden (kompatible GRF geladen)
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Passende Datei nicht gefunden (kompatible NewGRF geladen)
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatible GRF(s) für fehlende Dateien geladen
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fehlende GRF-Dateien wurden deaktiviert.
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatible NewGRF(s) für fehlende Dateien geladen
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fehlende NewGRF-Dateien wurden deaktiviert.
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF-Datei(en) fehlen
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Das Beenden der Pause kann OpenTTD zum Absturz bringen. Bitte keine Fehlerberichte bei auftretenden Fehlern senden. {}Pause wirklich beenden?
 
@@ -3173,6 +3174,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zug '{VE
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' liefert falsche Informationen
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fracht / Ersetzungs - Informationen für '{1:ENGINE}' weichen von der Einkaufsliste nach dem Kauf ab. Das kann dazu führen, dass das Umrüsten beim autmatisches Ersetzen oder Erneuern nicht korrekt funktioniert
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' verursachte eine Endlosschleife im 'Production callback'.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spiel wurde in einer Version ohne Straßenbahnunterstützung gespeichert. Alle Straßenbahnen wurden entfernt.
 
@@ -3227,7 +3229,7 @@ STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Alle Flu
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} {P Zug Züge}
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Fahrzeug{P "" e}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Schiff{P "" e}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Flugzeug
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Flugzeug{P "" e}
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} ersetzen
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Fahrzeugersetzung an
@@ -3286,7 +3288,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.:
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Geschwindigkeit: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Betriebskosten: {GOLD}{CURRENCY} pro Jahr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapazität: {GOLD}{CARGO} {STRING}
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Entwurf: {GOLD}{NUM}{BLACK} Betriebsdauer: {GOLD}{COMMA} Jahre
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Entwurf: {GOLD}{NUM}{BLACK} Betriebsdauer: {GOLD}{COMMA} Jahr{P "" e}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Zuverlässigkeit: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kosten: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
@@ -3341,7 +3343,7 @@ STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / 
 STR_WORLD_GENERATION                                            :{BLACK}Spielfeldgenerierung
 STR_TREE_GENERATION                                             :{BLACK}Baumerzeugung
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Unbewegliche Objekte werden erzeugt
-STR_CLEARING_TILES                                              :{BLACK}Leere, felsige Landschaft wird erzeugt
+STR_CLEARING_TILES                                              :{BLACK}Raue, felsige Landschaft wird erzeugt
 STR_SETTINGUP_GAME                                              :{BLACK}Spiel wird vorbereitet
 STR_PREPARING_TILELOOP                                          :{BLACK}Spielfeld wird belebt
 STR_PREPARING_GAME                                              :{BLACK}Spiel wird vorbereitet
@@ -3360,7 +3362,7 @@ STR_SMALLMAP_CENTER                                             :{BLACK}Zusatzan
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 # Strings for map borders at game generation
-STR_BORDER_TYPE                                                 :{BLACK}Kartenränder:
+STR_BORDER_TYPE                                                 :{BLACK}Spielfeldränder:
 STR_NORTHWEST                                                   :{BLACK}Nordwesten
 STR_NORTHEAST                                                   :{BLACK}Nordosten
 STR_SOUTHEAST                                                   :{BLACK}Südosten
@@ -3405,21 +3407,21 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
-STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer-Kredit: {LTBLUE}{CURRENCY}
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer-Einnahmen: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...diese Straße ist in kommunaler Trägerschaft
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...Straße verläuft in die falsche Richtung
 
-STR_TRANSPARENCY_TOOLB                                          :{WHITE}Transparenzoptionen
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Transparenz für Stationsschilder einstellen
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Transparenz für Bäume einstellen
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Transparenz für Häuser einstellen
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Transparenz für Industrien einstellen
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Transparenz für Gebäude wie Bahnhöfe, Depots, Wegpunkte und Oberleitung einstellen
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Transparenz für Brücken einstellen
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparenz für Bauten wie Leuchttürme und Antennen, evtl. in der Zukunft auch für Sehenswürdigkeiten, einstellen
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Transparente Oberleitungen. Strg+Klick zum feststellen.
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparenz für Ladestandsanzeige einstellen
-STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Objekte unsichtbar machen anstelle von transparent
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Transparenzeinstellungen
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Transparenz für Stationsschilder einstellen.  Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Transparenz für Bäume einstellen. Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Transparenz für Häuser einstellen. Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Transparenz für Industrien einstellen.  Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Transparenz für Gebäude wie Bahnhöfe, Depots und Wegpunkte einstellen.  Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Transparenz für Brücken einstellen. Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparenz für Bauten wie Leuchttürme und Sendemasten einstellen.  Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Transparenz für Oberleitungen. Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparenz für Ladestandsanzeige einstellen.  Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Objekte unsichtbar statt transparent machen
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3490,15 +3492,15 @@ STR_FACE_SIMPLE                                                 :{BLACK}Einfach
 STR_FACE_SIMPLE_TIP                                             :{BLACK}Einfache Wahl des Gesichts
 STR_FACE_LOAD                                                   :{BLACK}Laden
 STR_FACE_LOAD_TIP                                               :{BLACK}Lade bevorzugtes Gesicht
-STR_FACE_LOAD_DONE                                              :{WHITE}Dein bevorzugtes Gesicht wurde aus der OpenTTD-Konfigurationsdatei geladen.
+STR_FACE_LOAD_DONE                                              :{WHITE}Das bevorzugte Gesicht wurde aus der OpenTTD-Konfigurationsdatei geladen.
 STR_FACE_FACECODE                                               :{BLACK}Gesichtsnummer
-STR_FACE_FACECODE_TIP                                           :{BLACK}Betrachte / Setze Nummer des Gesichts
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Betrachte / Setze Nummer des Gesichts
+STR_FACE_FACECODE_TIP                                           :{BLACK}Nummer des Gesichts anschauen / setzen
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Nummer des Gesichts anschauen / setzen
 STR_FACE_FACECODE_SET                                           :{WHITE}Neue Nummer wurde für das Gesicht registriert.
 STR_FACE_FACECODE_ERR                                           :{WHITE}Konnte keine Nummer für das Gesicht registrieren, sie muss zwischen 0 und 4.294.967.295 liegen!
 STR_FACE_SAVE                                                   :{BLACK}Speichern
 STR_FACE_SAVE_TIP                                               :{BLACK}Speichere bevorzugtes Gesicht
-STR_FACE_SAVE_DONE                                              :{WHITE}Dieses Gesicht wird als bevorzugtes Gesicht in der OpenTTD-Konfigurationsdatei gespiechert.
+STR_FACE_SAVE_DONE                                              :{WHITE}Dieses Gesicht wird als bevorzugtes Gesicht in der OpenTTD-Konfigurationsdatei gespeichert.
 STR_FACE_EUROPEAN                                               :{BLACK}Europäisch
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Auswahl europäischer Gesichter
 STR_FACE_AFRICAN                                                :{BLACK}Afrikanisch

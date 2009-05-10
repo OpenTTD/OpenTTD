@@ -2802,7 +2802,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Fiyat: {
 STR_885C_BROKEN_DOWN                                            :{RED}Bozuldu
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Yaş: {LTBLUE}{STRING}{BLACK}   Bakım: {LTBLUE}{CURRENCY}/sene
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_S}  {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Mak. hız: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_S} {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Mak. hız: {LTBLUE}{VELOCITY} {BLACK}Max. Ç.G.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_S} {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Azami Hız: {LTBLUE}{VELOCITY} {BLACK}Azami Tork: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Bu seneki kâr: {LTBLUE}{CURRENCY}  (geçen sene: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Güvenilirlik: {LTBLUE}%{COMMA}  {BLACK}Son servisteki bozulmalar: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Durdu
@@ -3172,6 +3172,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{VEHICL
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' geçersiz bilgi vermektedir.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}'{1:ENGINE}' için kargo tür değişim bilgisi yapımdan sonraki alım listesinden farklı. Bu otomatik yenileme-değiştirmenin kargo türünü doğru şekilde değiştirmesine engel olabilir.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' üretim yordamında sonsuz döngüye neden oldu.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Oyun tramvay desteği olmayan bir sürümde kaydedilmiş. Tüm tramvaylar kaldırılmıştır.
 

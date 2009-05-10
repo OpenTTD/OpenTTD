@@ -2242,6 +2242,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Rostos f
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Gerar novo rosto aleatoriamente
 STR_704C_KEY                                                    :{BLACK}Legenda
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Exibir legenda dos gráficos
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Exibir avaliações de performance detalhadas
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Legendas dos gráficos da empresa
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Clique aqui para alternar exibir/ocultar empresas no gráfico
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Unidades de carga entregues
@@ -2803,7 +2804,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Custo: {
 STR_885C_BROKEN_DOWN                                            :{RED}Quebrado
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de circulação: {LTBLUE}{CURRENCY}/ano
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_S}  {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade Máx.: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade: {LTBLUE}{VELOCITY} {BLACK}Manutenção.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Força: {LTBLUE}{POWER}{BLACK} Velocidade Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Lucro anual: {LTBLUE}{CURRENCY}  (último ano: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Confiabilidade: {LTBLUE}{COMMA}%  {BLACK}Quebras desde a última manutenção: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Parado
@@ -3173,6 +3174,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trem '{V
 
 STR_NEWGRF_BUGGY                                                :{WHITE}O NewGRF '{0:STRING}' retorna informação incorreta.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A informação de adaptação para '{1:ENGINE}' difere da lista de compras após a construção. Isso pode causar erros na autosubstituição/autoadaptação.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' causou um loop infinito no callback da produção.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Jogo foi salvo numa versão sem suporte a bondes. Todos os bondes foram removidos.
 

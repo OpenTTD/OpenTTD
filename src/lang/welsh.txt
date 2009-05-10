@@ -2241,6 +2241,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Dewis wy
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Cynhyrchu wyneb newydd ar hap
 STR_704C_KEY                                                    :{BLACK}Allwedd
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Dangos allwedd i'r graffiau
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Dangos manwl amcangyfrif perfformiad
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Allwedd i'r graffiau cwmni
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Cliciwch yma i doglu cofnod cwmni ymlaen neu i ffwrdd
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Llwythi wedi'u cludo (mewn unedau)

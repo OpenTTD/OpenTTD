@@ -2241,6 +2241,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Alege fi
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Generează poză aleatoare
 STR_704C_KEY                                                    :{BLACK}Legenda
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Afişează legenda graficelor
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Afişează detaliile ratingului performanţei
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Legenda graficelor
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Clic aici pentru a comuta afişarea informaţiilor despre companie
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Unităţi de marfă livrate
@@ -2802,7 +2803,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {C
 STR_885C_BROKEN_DOWN                                            :{RED}Defectiune
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vechimea: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Greutate: {LTBLUE}{WEIGHT_S}  {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Vitezã max.: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Greutate: {LTBLUE}{WEIGHT_S} {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Viteza max.: {LTBLUE}{VELOCITY} {BLACK}E.T. max.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Greutate: {LTBLUE}{WEIGHT_S} {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Viteză max.: {LTBLUE}{VELOCITY} {BLACK}Efort tractiv: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficienţă: {LTBLUE}{COMMA}%  {BLACK}Defecţiuni de la ultimul service: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Oprit
@@ -3172,6 +3173,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trenul '
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' produce informaţii incorecte.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE} Datele despre marfa/regarnisire pentru '{1:ENGINE}' diferă de valorile iniţiale după construcţie. Acest lucru ar putea cauza eşuarea autorenovarii/schimbarii.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' a cauzat o buclă infinită în funcţia de producţie
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Jocul a fost salvat într-o versiune fără suport pentru tramvaie. Toate tramvaiele au fost eliminate.
 

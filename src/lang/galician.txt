@@ -656,7 +656,6 @@ STR_FULL                                                        :Completo
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Directorio de cidades
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Persoalizado
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -892,6 +891,8 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permiti
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permitir áreas de captura máis realistas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permiti-la eliminación de máis estradas, etc... das cidades: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permiti-la construcción de trens moi largos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Orixinal
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realista
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prohibir os trens e os barcos xirar 90 graos: {ORANGE}{STRING} {LTBLUE} (require NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Xunta-las estacións construídas xuntas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Usa-lo algoritmo de carga mellorado: {ORANGE}{STRING}
@@ -929,6 +930,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Revisa-
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :non
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :si, pero exclúe os vehículos parados
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de tódolos vehículos
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Avisar se os ingresos dun vehículo son negativos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Os vehículos nunca caducan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenova-los vehículos cando envellezan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autorenovar {ORANGE}{STRING}{LTBLUE} meses antes/despois da idade máxima
@@ -1016,6 +1018,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Deshabi
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Deshabilita-los barcos para o ordenador: {ORANGE}{STRING}
 
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervalos de servicio en porcentaxes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de servicio para os trens: {ORANGE}{STRING} días/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de servicio para os trens: {ORANGE}deshabilitado
 STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Intervalo de servicio para os vehículos de estrada: {ORANGE}{STRING} días/%
@@ -1049,6 +1052,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :mellores estrad
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Reixa 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Reixa 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleatorio
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir á cidade controla-lo nivel de ruído dos aeroportos: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posición da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Esquerda
@@ -1073,12 +1077,12 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehícu
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Estacións
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economía
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidores
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinais
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trens
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Cidades
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrias
 
-STR_CONFIG_SETTING_DISABLED                                     :deshabilitado
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
 
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Cambia-lo valor
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Buscador de ruta para trens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Non recomendado)
@@ -1093,6 +1097,12 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orixinal {BLUE}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Non recomendado)
 
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Tamaño X do mapa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Tamaño Y do mapa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLED                                     :deshabilitado
+STR_CONFIG_SETTING_INT32                                        :{NUM}
+STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Cambia-lo valor
 STR_TEMPERATE_LANDSCAPE                                         :Escenario temperado
 STR_SUB_ARCTIC_LANDSCAPE                                        :Escenario sub-ártico
 STR_SUB_TROPICAL_LANDSCAPE                                      :Escenario sub-tropical
@@ -1199,7 +1209,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Reaxusta
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona o tipo de carga que levará o tren
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Reaxusta-lo tren para o tipo de carga seleccionado
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}No se pode reaxusta-lo tren...
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervalos de servicio en porcentaxes: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambiar producción
 
 ############ network gui strings
@@ -1444,8 +1453,6 @@ STR_NETWORK_SEND                                                :{BLACK}Enviar
 ############ end network gui strings
 
 
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Tamaño X do mapa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Tamaño Y do mapa: {ORANGE}{STRING}
 
 
 ##### PNG-MAP-Loader
@@ -2048,6 +2055,7 @@ STR_NUM_VERY_LOW                                                :Moi baixo
 STR_6816_LOW                                                    :Baixo
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Alto
+STR_02BF_CUSTOM                                                 :Persoalizado
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Moi Lento
@@ -3447,7 +3455,6 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ town controlled noise level
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir á cidade controla-lo nivel de ruído dos aeroportos: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Límite de ruído na cidade: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Ruído xerado: {GOLD}{COMMA}
 ########

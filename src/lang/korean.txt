@@ -908,8 +908,8 @@ STR_CONFIG_SETTING                                              :{BLACK}고급 �
 STR_CONFIG_SETTING_TIP                                          :{BLACK}고급 설정 표시
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}고급 설정
 
-STR_CONFIG_SETTING_OFF                                          :꺼짐
-STR_CONFIG_SETTING_ON                                           :켜짐
+STR_CONFIG_SETTING_OFF                                          :끔
+STR_CONFIG_SETTING_ON                                           :켬
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}상태바에 차량 속도를 표시 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}경사/해안가 건설을 허용 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}건물, 트랙 등의 하부 지형 편집 허용 (자동 슬로프): {ORANGE}{STRING}
@@ -2242,6 +2242,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}여성�
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}얼굴을 만듭니다.
 STR_704C_KEY                                                    :{BLACK}키
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}그래프의 키를 보여줍니다.
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}상세 성취도를 봅니다
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}회사 그래프의 키를 보여줍니다.
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}특정 회사의 그래프를 켜거나 숨기려면 클릭하세요
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}수송 화물량
@@ -2803,7 +2804,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}가격: 
 STR_885C_BROKEN_DOWN                                            :{RED}고장
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}무게: {LTBLUE}{WEIGHT_S}  {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속력: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}중량: {LTBLUE}{WEIGHT_S} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속도: {LTBLUE}{VELOCITY} {BLACK}최고 견인 효과: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}무게: {LTBLUE}{WEIGHT_S} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속력: {LTBLUE}{VELOCITY} {BLACK}최고 T.E.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}올해 수익: {LTBLUE}{CURRENCY}  (작년: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}정지함
@@ -3173,6 +3174,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMP
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' 의 정보가 잘못되었습니다
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGINE}을 위한 화물/개조 정보가 건설 후 구매 목록과 다릅니다. 이것은 자동교체에서 개조를 실패를 초래할 수 있습니다.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 때문에 결과물 콜백 과정에서 무한 루프가 발생하고 있습니다.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}전차를 지원하지 않는 버전으로 게임이 저장되었습니다. 모든 전차는 제거되었습니다.
 
@@ -3584,7 +3586,7 @@ STR_AI_RANDOM_AI                                                :무작위 인�
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}인공지능 파라미터
 STR_AI_AUTHOR                                                   :저자:
 STR_AI_VERSION                                                  :버젼:
-STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}작동중인 인공지능 중 하나가 충돌했습니다. 인공지능 디버그 창에서 스샷을 찍어 인공지능 작가에게 보고하십시오.
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}작동중인 인공지능 중 하나가 충돌했습니다. 인공지능 디버그 창에서 스크린샷을 찍어 인공지능 제작자에게 보고하십시오.
 ########
 
 ############ town controlled noise level

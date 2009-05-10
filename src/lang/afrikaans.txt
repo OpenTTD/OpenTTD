@@ -657,7 +657,6 @@ STR_FULL                                                        :Vol
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Dorp gids
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BF_CUSTOM                                                 :Bestelling
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -1640,6 +1639,7 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Senter s
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Verander dorp naam
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passasiers verlede maand: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Pos verlede maand: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} gelewer laas maand
 STR_200F_TALL_OFFICE_BLOCK                                      :Hoog kantoor blok
 STR_2010_OFFICE_BLOCK                                           :Kantoor blok
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Klein blok van woonstelle
@@ -1947,6 +1947,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 
 ##id 0x5000
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Ander tonnel in die pad
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tonnel so op die einde van die kaart eindig
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Kan nie daal vir ander einde van tonnel te uitgrawe nie
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Moet eers tonnel afbreek
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Moet eers brug afbreek
@@ -2076,6 +2077,7 @@ STR_NUM_VERY_LOW                                                :Baie laag
 STR_6816_LOW                                                    :Laag
 STR_6817_NORMAL                                                 :Normaal
 STR_6818_HIGH                                                   :Hoog
+STR_02BF_CUSTOM                                                 :Bestelling
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Baie Stadig
@@ -2225,6 +2227,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Herbou m
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Maatskappy hoofkwartiers kan nie hier gebou word nie...
 STR_7072_VIEW_HQ                                                :{BLACK}Wys HK
 STR_RELOCATE_HQ                                                 :{BLACK}Beweeg HQ
+STR_COMPANY_JOIN                                                :{BLACK}Bind
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Bind en speel as maatskapy
 STR_COMPANY_PASSWORD                                            :{BLACK}Wagwoord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Wagwoord-beskerm jou maatskappy om onmagtig gebruikers te belet van verbinding
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Stel maatskappy wagwoord
@@ -3036,6 +3040,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Die bedr
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Totaale punte uit van moontlike punte
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Stellings
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Wys NewGRF stellings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF stellings
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Wend aan veranderings
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Tokkel pallet
@@ -3066,6 +3071,11 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Pooging om onvo
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} het 'n korrupte "sprite". Alle korrupte "sprites" sal gewys word as 'n rooi vraag teken (?).
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Laai die gekose voorafstel
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Stoor voorafstel
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Stoor die huidige lys as 'n voorafstel
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Sleutel 'n naam vir die voorafstel in
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Vee voorafstel uit
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Vee die huidige gekose voorafstel uit
 STR_NEWGRF_ADD                                                  :{BLACK}Voeg
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Voeg 'n NewGRF na die lys
 STR_NEWGRF_REMOVE                                               :{BLACK}Verwyder
@@ -3233,6 +3243,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Verander
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Wêreld generasie
 STR_RANDOM_SEED                                                 :{BLACK}Lukraak Saad:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Kliek om 'n lukraak saad in te voeg
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Sleutel 'n lukraak saad in
 STR_LAND_GENERATOR                                              :{BLACK}Daal genereerder:
 STR_TREE_PLACER                                                 :{BLACK}Boom algoritme:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Hoogtekaart rotasie:
@@ -3280,12 +3291,15 @@ STR_SMALLMAP_CENTER                                             :{BLACK}Senter d
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 # Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Kaart kante:
 STR_NORTHWEST                                                   :{BLACK}Noordwes
 STR_NORTHEAST                                                   :{BLACK}Noordoos
 STR_SOUTHEAST                                                   :{BLACK}Suidoos
 STR_SOUTHWEST                                                   :{BLACK}Suidwes
 STR_BORDER_FREEFORM                                             :{BLACK}Vryeform
 STR_BORDER_WATER                                                :{BLACK}Water
+STR_BORDER_RANDOM                                               :{BLACK}Lukraak
+STR_BORDER_RANDOMIZE                                            :{BLACK}Lukraak
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Klein
@@ -3476,6 +3490,9 @@ STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Jy het 
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Jy het dit geselekeer om af te laai
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Jy het hierdie reeds
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 
 
 ########

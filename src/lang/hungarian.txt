@@ -352,7 +352,7 @@ STR_015F_QUIT                                                   :Kilépés
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Biztosan kilépsz ebből a játékból ?
 STR_0161_QUIT_GAME                                              :{WHITE}Kilépés a játékból
 STR_SORT_ORDER_TIP                                              :{BLACK}Csökkenő/növekvő sorbarendezés
-STR_SORT_CRITERIA_TIP                                           :{BLACK}Sorbarendezési kritérium
+STR_SORT_CRITERIA_TIP                                           :{BLACK}Sorbarendezési feltétel
 STR_SORT_BY                                                     :{BLACK}Rendezés
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Lakosság
@@ -2312,6 +2312,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Női arc
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Véletlenszerű új arc létrehozása
 STR_704C_KEY                                                    :{BLACK}Jelkulcs
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}A grafikonok jelmagyarázata
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Részletes teljesítményértékelés mutatása
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Jelmagyarázat a grafikonokhoz
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}A vállalat adatainak mutatása/elrejtése a grafikonon
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Elszállított áruk mennyisége
@@ -2873,7 +2874,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ár: {CU
 STR_885C_BROKEN_DOWN                                            :{RED}Lerobbant
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Működtetési költség: {LTBLUE}{CURRENCY}/év
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Súly: {LTBLUE}{WEIGHT_S}   {BLACK}Teljesítmény: {LTBLUE}{POWER}{BLACK}   Végsebesség: {LTBLUE} {VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Súly: {LTBLUE}{WEIGHT_S} {BLACK}Telj.: {LTBLUE}{POWER}{BLACK} Max. seb.: {LTBLUE}{VELOCITY} {BLACK}Vonóerő: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Tömeg: {LTBLUE}{WEIGHT_S} {BLACK}Teljesítmény: {LTBLUE}{POWER}{BLACK} Végsebesség: {LTBLUE}{VELOCITY} {BLACK}Vonóerő: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Idei haszon: {LTBLUE}{CURRENCY}  (tavalyi: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Áll
@@ -3164,7 +3165,7 @@ STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}A két �
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Az utóbbi 12 negyedév legalacsonyabb havi profitja
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Az utóbbi 12 negyedév legjövedelmezőbb havi profitja
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Utolsó négy negyedévben elszállított rakomány.
-STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Az utolsó negyedévben elszállított árúk típusa.
+STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Az utolsó negyedévben elszállított áruk típusa.
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Elérhető készpénz
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Magas kölcsönöd van?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Megszerzett pontok az elérhető pontokból
@@ -3243,6 +3244,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}A '{1:CO
 
 STR_NEWGRF_BUGGY                                                :{WHITE}A(z) '{0:STRING}' NewGRF helytelen információt tartalmaz.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A(z) '{1:ENGINE}' rakomány/átalakítás információja a gyártás után különbözik a vételi listán találhatótól. Ez hibát okozhat az automatikus felújítás/lecserélés során az átalakításban.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' végtelen ciklust okozott a termelés folyamatnál.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}A játék olyan verzióban lett elmentve, ami nem támogatja a villamosokat . Az összes villamos törölve lett.
 

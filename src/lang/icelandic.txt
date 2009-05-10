@@ -3366,8 +3366,8 @@ STR_SOUTHEAST                                                   :{BLACK}Suðaust
 STR_SOUTHWEST                                                   :{BLACK}Suðvestur
 STR_BORDER_FREEFORM                                             :{BLACK}Frjálsar
 STR_BORDER_WATER                                                :{BLACK}Vatn
-STR_BORDER_RANDOM                                               :{BLACK}Handahófkenndar
-STR_BORDER_RANDOMIZE                                            :{BLACK}Handahóf
+STR_BORDER_RANDOM                                               :{BLACK}Slembin
+STR_BORDER_RANDOMIZE                                            :{BLACK}Slembnar
 STR_BORDER_MANUAL                                               :{BLACK}Forvaldar
 
 ########### String for new airports
