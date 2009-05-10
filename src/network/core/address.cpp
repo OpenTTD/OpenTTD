@@ -308,7 +308,7 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 	}
 
 	if (runp->ai_socktype != SOCK_DGRAM && listen(sock, 1) != 0) {
-		DEBUG(net, 1, "[%s] could not listen at % port %s: %s", type, family, address, strerror(errno));
+		DEBUG(net, 1, "[%s] could not listen at %s port %s: %s", type, family, address, strerror(errno));
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}

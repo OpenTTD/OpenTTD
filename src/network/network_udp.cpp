@@ -507,8 +507,8 @@ void NetworkUDPAdvertiseThread(void *pntr)
 		DEBUG(net, 0, "[udp] advertising to the master server is failing");
 		DEBUG(net, 0, "[udp]   we are not receiving the acknowledgement from the server");
 		DEBUG(net, 0, "[udp]   this usually means that the master server cannot reach us");
-		DEBUG(net, 0, "[udp]   please allow udp and tcp packets to port %s to be delivered", _settings_client.network.server_port);
-		DEBUG(net, 0, "[udp]   please allow udp and tcp packets from port %s to be delivered", _settings_client.network.server_port);
+		DEBUG(net, 0, "[udp]   please allow udp and tcp packets to port %u to be delivered", _settings_client.network.server_port);
+		DEBUG(net, 0, "[udp]   please allow udp and tcp packets from port %u to be delivered", _settings_client.network.server_port);
 	}
 
 	/* Send the packet */
