@@ -1,28 +1,34 @@
+openttd (0.7.1~RC1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Mon, 11 Mar 2008 17:34:56 +0200
+
 openttd (0.7.0) unstable; urgency=low
 
   * New upstream release.
 
  -- Matthijs Kooijman <matthijs@stdin.nl>  Wed, 01 Apr 2008 13:37:42 +0000
 
-openttd (0.7.0-RC2) unstable; urgency=low
+openttd (0.7.0~RC2) unstable; urgency=low
 
   * New upstream release.
 
  -- Matthijs Kooijman <matthijs@stdin.nl>  Mon, 23 Mar 2008 00:42:00 +0200
 
-openttd (0.7.0-RC1) unstable; urgency=low
+openttd (0.7.0~RC1) unstable; urgency=low
 
   * New upstream release.
 
  -- Matthijs Kooijman <matthijs@stdin.nl>  Mon, 16 Mar 2008 00:07:00 +0200
 
-openttd (0.7.0-beta2) unstable; urgency=low
+openttd (0.7.0~beta2) unstable; urgency=low
 
   * New upstream release.
 
  -- Matthijs Kooijman <matthijs@stdin.nl>  Tue, 10 Mar 2009 00:33:05 +0100
 
-openttd (0.7.0-beta1) unstable; urgency=low
+openttd (0.7.0~beta1) unstable; urgency=low
 
   * New upstream release.
 

@@ -830,7 +830,7 @@ STR_TOWNNAME_SWEDISH                                            :Szwedzkie
 STR_TOWNNAME_DUTCH                                              :Holenderskie
 STR_TOWNNAME_FINNISH                                            :Fińskie
 STR_TOWNNAME_POLISH                                             :Polskie
-STR_TOWNNAME_SLOVAKISH                                          :Słowackie
+STR_TOWNNAME_SLOVAK                                             :Słowackie
 STR_TOWNNAME_NORWEGIAN                                          :Norweskie
 STR_TOWNNAME_HUNGARIAN                                          :Węgierskie
 STR_TOWNNAME_AUSTRIAN                                           :Austriackie

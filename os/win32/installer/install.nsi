@@ -1,11 +1,11 @@
 !define APPNAME "OpenTTD"   ; Define application name
-!define APPVERSION "0.7.0"  ; Define application version
-!define INSTALLERVERSION 58 ; NEED TO UPDATE THIS FOR EVERY RELEASE!!!
+!define APPVERSION "0.7.1-RC1"  ; Define application version
+!define APPVERSIONINTERNAL "0.7.1.0" ; Define application version in X.X.X.X
+!define INSTALLERVERSION 59 ; NEED TO UPDATE THIS FOR EVERY RELEASE!!!
 !include ${VERSION_INCLUDE}
 
 !define APPURLLINK "http://www.openttd.org"
-!define APPNAMEANDVERSION "${APPNAME} ${APPVERSION}"
-!define APPVERSIONINTERNAL "${APPVERSION}.0" ; Needs to be of the format X.X.X.X
+!define APPNAMEANDVERSION "${APPNAME} ${APPVERSION_FULL}"
 
 !define MUI_ICON "..\..\..\media\openttd.ico"
 !define MUI_UNICON "..\..\..\media\openttd.ico"

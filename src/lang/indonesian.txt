@@ -785,7 +785,7 @@ STR_TOWNNAME_SWEDISH                                            :Swedia
 STR_TOWNNAME_DUTCH                                              :Belanda
 STR_TOWNNAME_FINNISH                                            :Finlandia
 STR_TOWNNAME_POLISH                                             :Polandia
-STR_TOWNNAME_SLOVAKISH                                          :Slovakia
+STR_TOWNNAME_SLOVAK                                             :Slovakia
 STR_TOWNNAME_NORWEGIAN                                          :Norwegia
 STR_TOWNNAME_HUNGARIAN                                          :Hungaria
 STR_TOWNNAME_AUSTRIAN                                           :Austria

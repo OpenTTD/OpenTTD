@@ -853,7 +853,7 @@ STR_TOWNNAME_SWEDISH                                            :Švédská
 STR_TOWNNAME_DUTCH                                              :Holandská
 STR_TOWNNAME_FINNISH                                            :Finská
 STR_TOWNNAME_POLISH                                             :Polská
-STR_TOWNNAME_SLOVAKISH                                          :Slovenská
+STR_TOWNNAME_SLOVAK                                             :Slovenská
 STR_TOWNNAME_NORWEGIAN                                          :Norská
 STR_TOWNNAME_HUNGARIAN                                          :Maďarská
 STR_TOWNNAME_AUSTRIAN                                           :Rakouská

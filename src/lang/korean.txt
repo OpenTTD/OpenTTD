@@ -786,7 +786,7 @@ STR_TOWNNAME_SWEDISH                                            :스웨덴어
 STR_TOWNNAME_DUTCH                                              :네덜란드어
 STR_TOWNNAME_FINNISH                                            :핀란드어
 STR_TOWNNAME_POLISH                                             :폴란드어
-STR_TOWNNAME_SLOVAKISH                                          :슬로바키아어
+STR_TOWNNAME_SLOVAK                                             :슬로바키아어
 STR_TOWNNAME_NORWEGIAN                                          :노르웨이어
 STR_TOWNNAME_HUNGARIAN                                          :헝가리어
 STR_TOWNNAME_AUSTRIAN                                           :오스트리아어

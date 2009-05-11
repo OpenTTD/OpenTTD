@@ -782,7 +782,7 @@ STR_TOWNNAME_SWEDISH                                            :Svensk
 STR_TOWNNAME_DUTCH                                              :Nederlandsk
 STR_TOWNNAME_FINNISH                                            :Finsk
 STR_TOWNNAME_POLISH                                             :Polsk
-STR_TOWNNAME_SLOVAKISH                                          :Slovakisk
+STR_TOWNNAME_SLOVAK                                             :Slovakisk
 STR_TOWNNAME_NORWEGIAN                                          :Norsk
 STR_TOWNNAME_HUNGARIAN                                          :Ungarsk
 STR_TOWNNAME_AUSTRIAN                                           :Østerriksk

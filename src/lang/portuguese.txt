@@ -785,7 +785,7 @@ STR_TOWNNAME_SWEDISH                                            :Sueco
 STR_TOWNNAME_DUTCH                                              :Holandês
 STR_TOWNNAME_FINNISH                                            :Finlandês
 STR_TOWNNAME_POLISH                                             :Polaco
-STR_TOWNNAME_SLOVAKISH                                          :Eslovaco
+STR_TOWNNAME_SLOVAK                                             :Eslovaco
 STR_TOWNNAME_NORWEGIAN                                          :Noreguês
 STR_TOWNNAME_HUNGARIAN                                          :Húngaro
 STR_TOWNNAME_AUSTRIAN                                           :Austríaco

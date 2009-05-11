@@ -785,7 +785,7 @@ STR_TOWNNAME_SWEDISH                                            :Swedaidd
 STR_TOWNNAME_DUTCH                                              :Iseldireg
 STR_TOWNNAME_FINNISH                                            :Ffinnaidd
 STR_TOWNNAME_POLISH                                             :Pwylaidd
-STR_TOWNNAME_SLOVAKISH                                          :Slofacaidd
+STR_TOWNNAME_SLOVAK                                             :Slofacaidd
 STR_TOWNNAME_NORWEGIAN                                          :Norwyaidd
 STR_TOWNNAME_HUNGARIAN                                          :Hwngaraidd
 STR_TOWNNAME_AUSTRIAN                                           :Awstriaidd

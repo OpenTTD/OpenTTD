@@ -772,7 +772,7 @@ STR_TOWNNAME_SWEDISH                                            :Sueco
 STR_TOWNNAME_DUTCH                                              :Holandés
 STR_TOWNNAME_FINNISH                                            :Finés
 STR_TOWNNAME_POLISH                                             :Polaco
-STR_TOWNNAME_SLOVAKISH                                          :Eslovaco
+STR_TOWNNAME_SLOVAK                                             :Eslovaco
 STR_TOWNNAME_NORWEGIAN                                          :Noruegués
 STR_TOWNNAME_HUNGARIAN                                          :Húngaro
 STR_TOWNNAME_AUSTRIAN                                           :Austríaco

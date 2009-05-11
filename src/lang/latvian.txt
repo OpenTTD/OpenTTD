@@ -786,7 +786,7 @@ STR_TOWNNAME_SWEDISH                                            :Zviedru
 STR_TOWNNAME_DUTCH                                              :Holandiešu
 STR_TOWNNAME_FINNISH                                            :Somu
 STR_TOWNNAME_POLISH                                             :Poļu
-STR_TOWNNAME_SLOVAKISH                                          :Slovāku
+STR_TOWNNAME_SLOVAK                                             :Slovāku
 STR_TOWNNAME_NORWEGIAN                                          :Norvēģu
 STR_TOWNNAME_HUNGARIAN                                          :Ungāru
 STR_TOWNNAME_AUSTRIAN                                           :Austriešu

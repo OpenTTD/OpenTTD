@@ -850,7 +850,7 @@ STR_TOWNNAME_SWEDISH                                            :Švedski
 STR_TOWNNAME_DUTCH                                              :Nizozemski
 STR_TOWNNAME_FINNISH                                            :Finski
 STR_TOWNNAME_POLISH                                             :Poljski
-STR_TOWNNAME_SLOVAKISH                                          :Slovački
+STR_TOWNNAME_SLOVAK                                             :Slovački
 STR_TOWNNAME_NORWEGIAN                                          :Norveški
 STR_TOWNNAME_HUNGARIAN                                          :Mađarski
 STR_TOWNNAME_AUSTRIAN                                           :Austrijski
