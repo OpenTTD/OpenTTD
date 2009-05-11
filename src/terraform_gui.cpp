@@ -22,9 +22,11 @@
 #include "textbuf_gui.h"
 #include "genworld.h"
 #include "tree_map.h"
+#include "station_map.h"
 #include "landscape_type.h"
 #include "tilehighlight_func.h"
 #include "settings_type.h"
+#include "waypoint.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -623,24 +625,34 @@ static OnButtonClick * const _editor_terraform_button_proc[] = {
 static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 {
 	if (confirmed) {
-		Company *c;
-
 		/* Set generating_world to true to get instant-green grass after removing
 		 * company property. */
 		_generating_world = true;
 
-		/* Delete all stations owned by a company */
-		Station *st;
-		FOR_ALL_STATIONS(st) {
-			if (IsValidCompanyID(st->owner)) delete st;
-		}
-
 		/* Delete all companies */
+		Company *c;
 		FOR_ALL_COMPANIES(c) {
 			ChangeOwnershipOfCompanyItems(c->index, INVALID_OWNER);
 			delete c;
 		}
+
 		_generating_world = false;
+
+		/* Delete all station signs */
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			/* There can be buoys, remove them */
+			if (IsBuoyTile(st->xy)) DoCommand(st->xy, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+			delete st;
+		}
+
+		/* The same for waypoints */
+		Waypoint *wp;
+		FOR_ALL_WAYPOINTS(wp) {
+			delete wp;
+		}
+
+		MarkWholeScreenDirty();
 	}
 }
 
