@@ -258,11 +258,10 @@ void ShowTownViewWindow(TownID town);
 void ExpandTown(Town *t);
 Town *CreateRandomTown(uint attempts, TownSize size, bool city, TownLayout layout);
 
-enum {
+enum TownRatingCheckType {
 	ROAD_REMOVE         = 0,
-	UNMOVEABLE_REMOVE   = 1,
 	TUNNELBRIDGE_REMOVE = 1,
-	INDUSTRY_REMOVE     = 2
+	TOWN_RATING_CHECK_TYPE_COUNT,
 };
 
 /** This is the number of ticks between towns being processed for building new
@@ -286,7 +285,7 @@ enum {
 	TOWN_HAS_STADIUM    = 2    ///< There can be only one stadium by town.
 };
 
-bool CheckforTownRating(DoCommandFlag flags, Town *t, byte type);
+bool CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType type);
 
 static inline HouseSpec *GetHouseSpecs(HouseID house_id)
 {

@@ -2810,27 +2810,29 @@ void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags)
 	}
 }
 
-/* penalty for removing town-owned stuff */
-static const int _default_rating_settings [3][3] = {
-	/* ROAD_REMOVE, TUNNELBRIDGE_REMOVE, INDUSTRY_REMOVE */
-	{  0, 128, 384}, // Permissive
-	{ 48, 192, 480}, // Neutral
-	{ 96, 384, 768}, // Hostile
-};
-
-bool CheckforTownRating(DoCommandFlag flags, Town *t, byte type)
+bool CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType type)
 {
 	/* if magic_bulldozer cheat is active, town doesn't restrict your destructive actions */
-	if (t == NULL || !IsValidCompanyID(_current_company) || _cheats.magic_bulldozer.value)
+	if (t == NULL || !IsValidCompanyID(_current_company) ||
+			_cheats.magic_bulldozer.value || (flags & DC_NO_TEST_TOWN_RATING)) {
 		return true;
+	}
 
-	/* check if you're allowed to remove the street/bridge/tunnel/industry
+	/* minimum rating needed to be allowed to remove stuff */
+	static const int needed_rating[][TOWN_RATING_CHECK_TYPE_COUNT] = {
+		/*                  ROAD_REMOVE,                    TUNNELBRIDGE_REMOVE */
+		{ RATING_ROAD_NEEDED_PERMISSIVE, RATING_TUNNEL_BRIDGE_NEEDED_PERMISSIVE}, // Permissive
+		{    RATING_ROAD_NEEDED_NEUTRAL,    RATING_TUNNEL_BRIDGE_NEEDED_NEUTRAL}, // Neutral
+		{    RATING_ROAD_NEEDED_HOSTILE,    RATING_TUNNEL_BRIDGE_NEEDED_HOSTILE}, // Hostile
+	};
+
+	/* check if you're allowed to remove the road/bridge/tunnel
 	 * owned by a town no removal if rating is lower than ... depends now on
 	 * difficulty setting. Minimum town rating selected by difficulty level
 	 */
-	int modemod = _default_rating_settings[_settings_game.difficulty.town_council_tolerance][type];
+	int needed = needed_rating[_settings_game.difficulty.town_council_tolerance][type];
 
-	if (GetRating(t) < 16 + modemod && !(flags & DC_NO_TEST_TOWN_RATING)) {
+	if (GetRating(t) < needed) {
 		SetDParam(0, t->index);
 		_error_message = STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS;
 		return false;

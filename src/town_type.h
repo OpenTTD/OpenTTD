@@ -50,12 +50,19 @@ enum {
 	RATING_STATION_UP_STEP   =  12, ///< when a town grows, company gains reputation for all well serviced stations ...
 	RATING_STATION_DOWN_STEP = -15, ///< ... but loses for bad serviced stations
 
-	RATING_TUNNEL_BRIDGE_DOWN_STEP = -250,
-	RATING_TUNNEL_BRIDGE_MINIMUM   = 0,
+	RATING_TUNNEL_BRIDGE_DOWN_STEP = -250, ///< penalty for removing town owned tunnel or bridge
+	RATING_TUNNEL_BRIDGE_MINIMUM   =    0, ///< minimum rating after removing tunnel or bridge
+	RATING_TUNNEL_BRIDGE_NEEDED_PERMISSIVE = 144, ///< rating needed, "Permissive" difficulty settings
+	RATING_TUNNEL_BRIDGE_NEEDED_NEUTRAL    = 208, ///< "Neutral"
+	RATING_TUNNEL_BRIDGE_NEEDED_HOSTILE    = 400, ///< "Hostile"
 
-	RATING_ROAD_DOWN_STEP_INNER = -50, ///< removing a roadpiece in the middle
-	RATING_ROAD_DOWN_STEP_EDGE  = -18, ///< removing a roadpiece at the edge
-	RATING_ROAD_MINIMUM   = -100,
+	RATING_ROAD_DOWN_STEP_INNER =  -50, ///< removing a roadpiece in the middle
+	RATING_ROAD_DOWN_STEP_EDGE  =  -18, ///< removing a roadpiece at the edge
+	RATING_ROAD_MINIMUM         = -100, ///< minimum rating after removing town owned road
+	RATING_ROAD_NEEDED_PERMISSIVE =  16, ///< rating needed, "Permissive" difficulty settings
+	RATING_ROAD_NEEDED_NEUTRAL    =  64, ///< "Neutral"
+	RATING_ROAD_NEEDED_HOSTILE    = 112, ///< "Hostile"
+
 	RATING_HOUSE_MINIMUM  = RATING_MINIMUM,
 
 	RATING_BRIBE_UP_STEP = 200,
