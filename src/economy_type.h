@@ -130,10 +130,7 @@ enum ExpensesType {
 	INVALID_EXPENSES      = 0xFF,
 };
 
-/* The "steps" in loan size, in British Pounds! */
-enum {
-	LOAN_INTERVAL        = 10000,
-	LOAN_INTERVAL_OLD_AI = 50000,
-};
+/** The "steps" in loan size, in British Pounds! */
+static const int LOAN_INTERVAL = 10000;
 
 #endif /* ECONOMY_TYPE_H */
