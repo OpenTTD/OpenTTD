@@ -23,7 +23,7 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
-static bool DrawScrollingStatusText(const NewsItem *ni, int pos, int width)
+static bool DrawScrollingStatusText(const NewsItem *ni, int scroll_pos, int left, int right, int top, int bottom)
 {
 	CopyInDParam(0, ni->params, lengthof(ni->params));
 	StringID str = ni->string_id;
@@ -52,12 +52,12 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int pos, int width)
 	*d = '\0';
 
 	DrawPixelInfo tmp_dpi;
-	if (!FillDrawPixelInfo(&tmp_dpi, 141, 1, width, 11)) return true;
+	if (!FillDrawPixelInfo(&tmp_dpi, left, top, right - left, bottom)) return true;
 
 	DrawPixelInfo *old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;
 
-	int x = DrawString(pos, INT16_MAX, 0, buffer, TC_LIGHT_BLUE);
+	int x = DrawString(scroll_pos, INT16_MAX, 0, buffer, TC_LIGHT_BLUE);
 	_cur_dpi = old_dpi;
 
 	return x > 0;
@@ -114,7 +114,7 @@ struct StatusBarWindow : Window {
 			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_STATUSBAR_PAUSED, TC_FROMSTRING, SA_CENTER);
 		} else if (this->ticker_scroll > TICKER_STOP && FindWindowById(WC_NEWS_WINDOW, 0) == NULL && _statusbar_news_item.string_id != 0) {
 			/* Draw the scrolling news text */
-			if (!DrawScrollingStatusText(&_statusbar_news_item, this->ticker_scroll, this->widget[SBW_MIDDLE].right - this->widget[SBW_MIDDLE].left - 2)) {
+			if (!DrawScrollingStatusText(&_statusbar_news_item, this->ticker_scroll, this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, this->widget[SBW_MIDDLE].top + 1, this->widget[SBW_MIDDLE].bottom)) {
 				this->ticker_scroll = TICKER_STOP;
 				if (c != NULL) {
 					/* This is the default text */
