@@ -54,13 +54,15 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int scroll_pos, int left
 	DrawPixelInfo tmp_dpi;
 	if (!FillDrawPixelInfo(&tmp_dpi, left, top, right - left, bottom)) return true;
 
+	int width = GetStringBoundingBox(buffer).width;
+	int pos = (_dynlang.text_dir == TD_RTL) ? (scroll_pos - width) : (right - scroll_pos - left);
+
 	DrawPixelInfo *old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;
-
-	int x = DrawString(scroll_pos, INT16_MAX, 0, buffer, TC_LIGHT_BLUE);
+	DrawString(pos, INT16_MAX, 0, buffer, TC_LIGHT_BLUE, SA_LEFT | SA_FORCE);
 	_cur_dpi = old_dpi;
 
-	return x > 0;
+	return (_dynlang.text_dir == TD_RTL) ? (pos < right - left) : (pos + width > 0);
 }
 
 enum StatusbarWidget {
@@ -75,11 +77,10 @@ struct StatusBarWindow : Window {
 	int reminder_timeout;
 
 	enum {
-		TICKER_START   =   360, ///< initial value of the ticker counter (scrolling news)
-		TICKER_STOP    = -1280, ///< scrolling is finished when counter reaches this value
-		REMINDER_START =    91, ///< initial value of the reminder counter (right dot on the right)
-		REMINDER_STOP  =     0, ///< reminder disappears when counter reaches this value
-		COUNTER_STEP   =     2, ///< this is subtracted from active counters every tick
+		TICKER_STOP    = 1640, ///< scrolling is finished when counter reaches this value
+		REMINDER_START =   91, ///< initial value of the reminder counter (right dot on the right)
+		REMINDER_STOP  =    0, ///< reminder disappears when counter reaches this value
+		COUNTER_STEP   =    2, ///< this is subtracted from active counters every tick
 	};
 
 	StatusBarWindow(const WindowDesc *desc) : Window(desc)
@@ -112,7 +113,7 @@ struct StatusBarWindow : Window {
 			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_STATUSBAR_AUTOSAVE, TC_FROMSTRING, SA_CENTER);
 		} else if (_pause_mode != PM_UNPAUSED) {
 			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_STATUSBAR_PAUSED, TC_FROMSTRING, SA_CENTER);
-		} else if (this->ticker_scroll > TICKER_STOP && FindWindowById(WC_NEWS_WINDOW, 0) == NULL && _statusbar_news_item.string_id != 0) {
+		} else if (this->ticker_scroll < TICKER_STOP && FindWindowById(WC_NEWS_WINDOW, 0) == NULL && _statusbar_news_item.string_id != 0) {
 			/* Draw the scrolling news text */
 			if (!DrawScrollingStatusText(&_statusbar_news_item, this->ticker_scroll, this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, this->widget[SBW_MIDDLE].top + 1, this->widget[SBW_MIDDLE].bottom)) {
 				this->ticker_scroll = TICKER_STOP;
@@ -139,7 +140,7 @@ struct StatusBarWindow : Window {
 			default: NOT_REACHED();
 			case SBI_SAVELOAD_START:  this->saving = true;  break;
 			case SBI_SAVELOAD_FINISH: this->saving = false; break;
-			case SBI_SHOW_TICKER:     this->ticker_scroll    =   TICKER_START; break;
+			case SBI_SHOW_TICKER:     this->ticker_scroll = 0; break;
 			case SBI_SHOW_REMINDER:   this->reminder_timeout = REMINDER_START; break;
 			case SBI_NEWS_DELETED:
 				this->ticker_scroll    =   TICKER_STOP; // reset ticker ...
@@ -161,8 +162,8 @@ struct StatusBarWindow : Window {
 	{
 		if (_pause_mode != PM_UNPAUSED) return;
 
-		if (this->ticker_scroll > TICKER_STOP) { // Scrolling text
-			this->ticker_scroll -= COUNTER_STEP;
+		if (this->ticker_scroll < TICKER_STOP) { // Scrolling text
+			this->ticker_scroll += COUNTER_STEP;
 			this->InvalidateWidget(SBW_MIDDLE);
 		}
 
@@ -203,7 +204,7 @@ static WindowDesc _main_status_desc(
 bool IsNewsTickerShown()
 {
 	const StatusBarWindow *w = dynamic_cast<StatusBarWindow*>(FindWindowById(WC_STATUS_BAR, 0));
-	return w != NULL && w->ticker_scroll > StatusBarWindow::TICKER_STOP;
+	return w != NULL && w->ticker_scroll < StatusBarWindow::TICKER_STOP;
 }
 
 void ShowStatusBar()
