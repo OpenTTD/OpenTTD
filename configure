@@ -1,5 +1,13 @@
 #!/bin/sh
 
+check_path_characters() {
+	if [ -n "`echo $ROOT_DIR | grep '[^-_A-Za-z0-9\/\\\.:]'`" ]; then
+		echo "WARNING: The path contains a non-alphanumeric character that might cause"
+		echo "         failures in subsequent build stages. Any failures with the build"
+		echo "         will most likely be caused by this."
+	fi
+}
+
 CONFIGURE_EXECUTABLE="$_"
 # On *nix systems those two are equal when ./configure is done
 if [ "$0" != "$CONFIGURE_EXECUTABLE" ]; then
@@ -15,6 +23,8 @@ fi
 # Find out where configure is (in what dir)
 ROOT_DIR="`dirname $0`"
 ROOT_DIR="`cd $ROOT_DIR && pwd`"
+
+check_path_characters
 
 PWD="`pwd`"
 PREFIX="$PWD/bin"
@@ -135,3 +145,5 @@ CONFIGURE_FILES="$ROOT_DIR/configure $ROOT_DIR/config.lib $ROOT_DIR/Makefile.in 
 generate_main
 generate_lang
 generate_src
+
+check_path_characters
