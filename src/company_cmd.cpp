@@ -445,13 +445,6 @@ Company *DoStartupNewCompany(bool is_ai)
 	c->inaugurated_year = _cur_year;
 	RandomCompanyManagerFaceBits(c->face, (GenderEthnicity)Random(), false); // create a random company manager face
 
-	/* Engine renewal settings */
-	c->engine_renew_list = NULL;
-	c->renew_keep_length = false;
-	c->engine_renew = _settings_client.gui.autorenew;
-	c->engine_renew_months = _settings_client.gui.autorenew_months;
-	c->engine_renew_money = _settings_client.gui.autorenew_money;
-
 	GeneratePresidentName(c);
 
 	InvalidateWindow(WC_GRAPH_LEGEND, 0);

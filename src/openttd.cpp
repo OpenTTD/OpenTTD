@@ -754,6 +754,11 @@ static void MakeNewGameDone()
 	/* Create a single company */
 	DoStartupNewCompany(false);
 
+	Company *c = GetCompany(COMPANY_FIRST);
+	c->engine_renew = _settings_client.gui.autorenew;
+	c->engine_renew_months = _settings_client.gui.autorenew_months;
+	c->engine_renew_money = _settings_client.gui.autorenew_money;
+
 	IConsoleCmdExec("exec scripts/game_start.scr 0");
 
 	SetLocalCompany(COMPANY_FIRST);
