@@ -57,7 +57,7 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int pos, int width)
 	DrawPixelInfo *old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;
 
-	int x = DrawString(pos, pos + width, 0, buffer, TC_LIGHT_BLUE);
+	int x = DrawString(pos, INT16_MAX, 0, buffer, TC_LIGHT_BLUE);
 	_cur_dpi = old_dpi;
 
 	return x > 0;
