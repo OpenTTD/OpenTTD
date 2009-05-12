@@ -3238,6 +3238,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Přecho
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Přechod k euru: {ORANGE}nikdy
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Náhled: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Změnit parametry vlastní měny
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Snížit hodnotu vlastní měny oproti libře (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Zvýšit hodnotu vlastní měny oproti libře (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Určit směnný kurz vlastní měny oproti libře (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Určit oddělovač v zápisu měny
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Určit předponu pro vlastní měnu
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Určit příponu pro vlastní měnu
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Přejít na euro dříve
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Přejít na euro později
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Určit rok přechodu na euro
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 liber (£) ve vlastní měně
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}

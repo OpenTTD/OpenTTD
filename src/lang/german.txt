@@ -2647,9 +2647,9 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ändert 
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Erweiterten Befehl einfügen
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Fahre zum nächsten Depot
-STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Fahre zum nächsten Hangar
-STR_ORDER_NEAREST_DEPOT                                         :dem nächsten
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Nächstes Depot
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Nächster Hangar
+STR_ORDER_NEAREST_DEPOT                                         :nächsten
 STR_ORDER_NEAREST_HANGAR                                        :dem nächsten Hangar
 STR_ORDER_SERVICE_AT                                            :Falls nötig, Wartung in
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Fahre ohne Halt Zwecks Wartung zu
@@ -2675,18 +2675,18 @@ STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Höchstgeschwin
 STR_ORDER_CONDITIONAL_AGE                                       :Fahrzeugalter (Jahre)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Benötigt Inspektion
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Immer
-STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :ist gleich
-STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ist ungleich
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :ist kleiner als
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :ist kleiner gleich
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :ist größer als
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :ist größer gleich
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :ist wahr
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :ist falsch
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :gleich
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ungleich
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :kleiner als
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :kleiner gleich
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :größer als
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :größer gleich
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :wahr
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :falsch
 STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 STR_CONDITIONAL_UNCONDITIONAL                                   :Springe zu Auftrag {COMMA}
-STR_CONDITIONAL_NUM                                             :Springe zu Auftrag {COMMA}, wenn {STRING} {STRING} {COMMA}
-STR_CONDITIONAL_TRUE_FALSE                                      :Springe zu Auftrag {COMMA}, wenn {STRING} {STRING}
+STR_CONDITIONAL_NUM                                             :Springe zu Auftrag {COMMA}, wenn {STRING} {STRING} {COMMA} ist
+STR_CONDITIONAL_TRUE_FALSE                                      :Springe zu Auftrag {COMMA}, wenn {STRING} {STRING} ist
 
 STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Nicht unterwegs
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Unterwegs (ohne Fahrplan)

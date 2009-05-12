@@ -5,9 +5,9 @@
 ##grflangid 0x04
 ##plural 0
 ##textdir ltr
-##gender masculino femenino
 ##digitsep .
 ##digitsepcur .
+##gender masculino femenino
 
 #
 
@@ -2813,6 +2813,7 @@ STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacidad: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacidad: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacidad: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Averiado
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parado
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}No se puede pasar la señal en peligro al tren...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}¡Siniestrado!
@@ -3164,6 +3165,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Cambio 
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Cambio al Euro: {ORANGE}nunca
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Previa: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambiar parámetro de moneda personalizada
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Decrementa la cantidad de tu moneda en una Libra (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Incrementa la cantidad de tu moneda en una Libra (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Configura el valor de cambio de tu moneda por una Libra (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Configura el separador de tu moneda
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Configura el prefijo de tu moneda
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Configura el sufijo de tu moneda
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Cambiar al Euro antes
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Cambiar al Euro después
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Configurar el año del cambio al Euro
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Libras(£) en tu moneda
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
