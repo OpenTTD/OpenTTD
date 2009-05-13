@@ -1076,6 +1076,12 @@ make_cflags_and_ldflags() {
 		if [ "$cc_version" = "10.1" ]; then
 			CFLAGS="$CFLAGS -Wno-multichar"
 		fi
+
+		if [ "$cc_version" = "11.0" ]; then
+			# warning 1899: multicharacter character literal (potential portability problem) (e.g. 'FOOD')
+			# vec report defaults to telling where it did loop vectorisation, which is not very important
+			CFLAGS="$CFLAGS -vec-report=0 -wd1899"
+		fi
 	else
 		# Enable some things only for certain GCC versions
 		cc_version=`$cc_host -dumpversion | cut -c 1,3`
