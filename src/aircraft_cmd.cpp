@@ -1576,7 +1576,7 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *a
 
 static void AircraftEventHandler_General(Vehicle *v, const AirportFTAClass *apc)
 {
-	assert("OK, you shouldn't be here, check your Airport Scheme!" && 0);
+	error("OK, you shouldn't be here, check your Airport Scheme!");
 }
 
 static void AircraftEventHandler_TakeOff(Vehicle *v, const AirportFTAClass *apc)

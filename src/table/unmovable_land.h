@@ -8,7 +8,7 @@ static const DrawTileSeqStruct _draw_tile_transmitterlighthouse_data[] = {
 };
 
 #define TILE_SEQ_LINE(sz, img) { 0, 0, 0, 16, 16, sz, {img, PAL_NONE} },
-#define TILE_SEQ_END() { (byte)0x80, 0, 0, 0, 0, 0, {0, 0} }
+#define TILE_SEQ_END() { (int8)0x80, 0, 0, 0, 0, 0, {0, 0} }
 
 static const DrawTileSeqStruct _unmovable_display_nothing[] = {
 	TILE_SEQ_END()

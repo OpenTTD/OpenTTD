@@ -556,7 +556,7 @@ struct DepotWindow : Window {
 	 */
 	void HandleCloneVehClick(const Vehicle *v, const Window *w)
 	{
-		uint error_str;
+		StringID error_str;
 
 		if (v == NULL) return;
 
@@ -567,14 +567,14 @@ struct DepotWindow : Window {
 		}
 
 		switch (v->type) {
-			case VEH_TRAIN:    error_str = CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE); break;
-			case VEH_ROAD:     error_str = CMD_MSG(STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE);     break;
-			case VEH_SHIP:     error_str = CMD_MSG(STR_ERROR_CAN_T_BUILD_SHIP);             break;
-			case VEH_AIRCRAFT: error_str = CMD_MSG(STR_ERROR_CAN_T_BUILD_AIRCRAFT);         break;
+			case VEH_TRAIN:    error_str = STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE; break;
+			case VEH_ROAD:     error_str = STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE;     break;
+			case VEH_SHIP:     error_str = STR_ERROR_CAN_T_BUILD_SHIP;             break;
+			case VEH_AIRCRAFT: error_str = STR_ERROR_CAN_T_BUILD_AIRCRAFT;         break;
 			default: return;
 		}
 
-		DoCommandP(this->window_number, v->index, _ctrl_pressed ? 1 : 0, CMD_CLONE_VEHICLE | error_str, CcCloneVehicle);
+		DoCommandP(this->window_number, v->index, _ctrl_pressed ? 1 : 0, CMD_CLONE_VEHICLE | CMD_MSG(error_str), CcCloneVehicle);
 
 		ResetObjectToPlace();
 	}
