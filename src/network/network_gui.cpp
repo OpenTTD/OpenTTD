@@ -1934,8 +1934,10 @@ static void PopupClientList(int client_no, int x, int y)
 
 	if (NetworkFindClientInfo(client_no) == NULL) return;
 
-	const Widget *wid = InitializeWidgetArrayFromNestedWidgets(_nested_client_list_widgets, lengthof(_nested_client_list_widgets),
-												_client_list_widgets, &generated_client_list_popup_widgets);
+	const Widget *wid = InitializeWidgetArrayFromNestedWidgets(
+		_nested_client_list_popup_widgets, lengthof(_nested_client_list_popup_widgets),
+		_client_list_popup_widgets, &generated_client_list_popup_widgets
+	);
 
 	new NetworkClientListPopupWindow(x, y, wid, client_no);
 }
