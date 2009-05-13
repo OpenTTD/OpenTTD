@@ -749,6 +749,9 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			/* This is the client (or non-dedicated server) who wants a new company */
 			if (cid == _network_own_client_id) {
+				/* Create p1 and p2 here because SetLocalCompany resets the gui.autorenew* settings. */
+				uint32 p1 = (_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4;
+				uint32 p2 = _settings_client.gui.autorenew_money;
 				assert(_local_company == COMPANY_SPECTATOR);
 				SetLocalCompany(c->index);
 				if (!StrEmpty(_settings_client.network.default_company_pass)) {
@@ -760,13 +763,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 				/* Now that we have a new company, broadcast our autorenew settings to
 				 * all clients so everything is in sync */
-				NetworkSend_Command(0,
-					(_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4,
-					_settings_client.gui.autorenew_money,
-					CMD_SET_AUTOREPLACE,
-					NULL,
-					NULL
-				);
+				NetworkSend_Command(0, p1, p2, CMD_SET_AUTOREPLACE, NULL, NULL);
 
 				MarkWholeScreenDirty();
 			}
