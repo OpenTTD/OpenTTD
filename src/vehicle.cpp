@@ -1219,13 +1219,12 @@ Trackdir GetVehicleTrackdir(const Vehicle *v)
 			if (IsStandardRoadStopTile(v->tile)) // We'll assume the road vehicle is facing outwards
 				return DiagDirToDiagTrackdir(GetRoadStopDir(v->tile)); // Road vehicle in a station
 
-			if (IsDriveThroughStopTile(v->tile)) return DiagDirToDiagTrackdir(DirToDiagDir(v->direction));
+			/* Drive through road stops / wormholes (tunnels) */
+			if (v->u.road.state > RVSB_TRACKDIR_MASK) return DiagDirToDiagTrackdir(DirToDiagDir(v->direction));
 
-			/* If vehicle's state is a valid track direction (vehicle is not turning around) return it */
-			if (!IsReversingRoadTrackdir((Trackdir)v->u.road.state)) return (Trackdir)v->u.road.state;
-
-			/* Vehicle is turning around, get the direction from vehicle's direction */
-			return DiagDirToDiagTrackdir(DirToDiagDir(v->direction));
+			/* If vehicle's state is a valid track direction (vehicle is not turning around) return it,
+			 * otherwise transform it into a valid track direction */
+			return (Trackdir)((IsReversingRoadTrackdir((Trackdir)v->u.road.state)) ? (v->u.road.state - 6) : v->u.road.state);
 
 		/* case VEH_AIRCRAFT: case VEH_EFFECT: case VEH_DISASTER: */
 		default: return INVALID_TRACKDIR;
