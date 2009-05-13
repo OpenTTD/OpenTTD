@@ -361,7 +361,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			veh_counter++;
 		} while ((v = v->Next()) != NULL);
 
-		if (!Vehicle::AllocateList(NULL, veh_counter)) {
+		if (!Vehicle::CanAllocateItem(veh_counter)) {
 			return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 		}
 	}

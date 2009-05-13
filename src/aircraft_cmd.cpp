@@ -265,10 +265,8 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	/* Prevent building aircraft types at places which can't handle them */
 	if (!CanVehicleUseStation(p1, GetStationByTile(tile))) return CMD_ERROR;
 
-	/* Allocate 2 or 3 vehicle structs, depending on type
-	 * vl[0] = aircraft, vl[1] = shadow, [vl[2] = rotor] */
-	Vehicle *vl[3];
-	if (!Vehicle::AllocateList(vl, avi->subtype & AIR_CTOL ? 2 : 3)) {
+	/* We will need to allocate 2 or 3 vehicle structs, depending on type */
+	if (!Vehicle::CanAllocateItem(avi->subtype & AIR_CTOL ? 2 : 3)) {
 		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 	}
 
@@ -277,11 +275,9 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 
 	if (flags & DC_EXEC) {
-		Vehicle *v = vl[0]; // aircraft
-		Vehicle *u = vl[1]; // shadow
+		Vehicle *v = new Aircraft(); // aircraft
+		Vehicle *u = new Aircraft(); // shadow
 
-		v = new (v) Aircraft();
-		u = new (u) Aircraft();
 		v->unitnumber = unit_num;
 		v->direction = DIR_SE;
 
@@ -402,9 +398,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 		/* Aircraft with 3 vehicles (chopper)? */
 		if (v->subtype == AIR_HELICOPTER) {
-			Vehicle *w = vl[2];
-
-			w = new (w) Aircraft();
+			Vehicle *w = new Aircraft();
 			w->engine_type = p1;
 			w->direction = DIR_N;
 			w->owner = _current_company;
