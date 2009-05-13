@@ -165,8 +165,8 @@ struct NewGRFAddWindow : public Window {
 				const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
 
 				/* Draw selection background */
-				if (h) GfxFillRect(3, y, this->width - 15, y + 9, 156);
-				DrawString(4, this->width - 22, y, text, h ? TC_WHITE : TC_ORANGE);
+				if (h) GfxFillRect(this->widget[ANGRFW_GRF_LIST].left + 1, y, this->widget[ANGRFW_GRF_LIST].right, y + 9, 156);
+				DrawString(this->widget[ANGRFW_GRF_LIST].left + 2, this->widget[ANGRFW_GRF_LIST].right - 2, y, text, h ? TC_WHITE : TC_ORANGE);
 				y += 10;
 			}
 		}
