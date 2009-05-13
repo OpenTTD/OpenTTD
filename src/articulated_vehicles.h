@@ -10,7 +10,7 @@
 
 uint CountArticulatedParts(EngineID engine_type, bool purchase_window);
 uint16 *GetCapacityOfArticulatedParts(EngineID engine, VehicleType type);
-void AddArticulatedParts(Vehicle **vl, VehicleType type);
+void AddArticulatedParts(Vehicle *first, VehicleType type);
 uint32 GetUnionOfArticulatedRefitMasks(EngineID engine, VehicleType type, bool include_initial_cargo_type);
 uint32 GetIntersectionOfArticulatedRefitMasks(EngineID engine, VehicleType type, bool include_initial_cargo_type);
 bool IsArticulatedVehicleCarryingDifferentCargos(const Vehicle *v, CargoID *cargo_type);

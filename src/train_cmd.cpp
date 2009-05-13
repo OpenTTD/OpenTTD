@@ -641,31 +641,28 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 
 	uint num_vehicles = 1 + CountArticulatedParts(engine, false);
 
-	/* Allow for the wagon and the articulated parts, plus one to "terminate" the list. */
-	Vehicle **vl = AllocaM(Vehicle*, num_vehicles + 1);
-	memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
-
-	if (!Vehicle::AllocateList(vl, num_vehicles)) {
+	/* Allow for the wagon and the articulated parts */
+	if (!Vehicle::CanAllocateItem(num_vehicles)) {
 		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 	}
 
 	if (flags & DC_EXEC) {
-		Vehicle *v = vl[0];
-		v->spritenum = rvi->image_index;
-
 		Vehicle *u = NULL;
 
 		Vehicle *w;
 		FOR_ALL_VEHICLES(w) {
+			/* do not connect new wagon with crashed/flooded consists */
 			if (w->type == VEH_TRAIN && w->tile == tile &&
-			    IsFreeWagon(w) && w->engine_type == engine &&
-			    !HASBITS(w->vehstatus, VS_CRASHED)) {          /// do not connect new wagon with crashed/flooded consists
+					IsFreeWagon(w) && w->engine_type == engine &&
+					!HASBITS(w->vehstatus, VS_CRASHED)) {
 				u = GetLastVehicleInChain(w);
 				break;
 			}
 		}
 
-		v = new (v) Train();
+		Vehicle *v = new Train();
+		v->spritenum = rvi->image_index;
+
 		v->engine_type = engine;
 
 		DiagDirection dir = GetRailDepotDirection(tile);
@@ -707,7 +704,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 
 		v->group_id = DEFAULT_GROUP;
 
-		AddArticulatedParts(vl, VEH_TRAIN);
+		AddArticulatedParts(v, VEH_TRAIN);
 
 		_new_vehicle_id = v->index;
 
@@ -743,9 +740,11 @@ static void NormalizeTrainVehInDepot(const Vehicle *u)
 	}
 }
 
-static void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u)
+static void AddRearEngineToMultiheadedTrain(Vehicle *v)
 {
-	u = new (u) Train();
+	Vehicle *u = new Train();
+	v->value >>= 1;
+	u->value = v->value;
 	u->direction = v->direction;
 	u->owner = v->owner;
 	u->tile = v->tile;
@@ -755,20 +754,23 @@ static void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u)
 	u->u.rail.track = TRACK_BIT_DEPOT;
 	u->vehstatus = v->vehstatus & ~VS_STOPPED;
 //	u->subtype = 0;
-	SetMultiheaded(u);
 	u->spritenum = v->spritenum + 1;
 	u->cargo_type = v->cargo_type;
 	u->cargo_subtype = v->cargo_subtype;
 	u->cargo_cap = v->cargo_cap;
 	u->u.rail.railtype = v->u.rail.railtype;
-	v->SetNext(u);
 	u->engine_type = v->engine_type;
 	u->build_year = v->build_year;
-	v->value >>= 1;
-	u->value = v->value;
 	u->cur_image = 0xAC2;
 	u->random_bits = VehicleRandomBits();
+	SetMultiheaded(v);
+	SetMultiheaded(u);
+	v->SetNext(u);
 	VehicleMove(u, false);
+
+	/* Now we need to link the front and rear engines together */
+	v->u.rail.other_multiheaded_part = u;
+	u->u.rail.other_multiheaded_part = v;
 }
 
 /** Build a railroad vehicle.
@@ -806,15 +808,10 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	 * We need to see if the engine got power on the tile to avoid eletric engines in non-electric depots */
 	if (!HasPowerOnRail(rvi->railtype, GetRailType(tile))) return CMD_ERROR;
 
-	/* Allow for the dual-heads and the articulated parts, plus one to "terminate" the list. */
-	Vehicle **vl = AllocaM(Vehicle*, num_vehicles + 1);
-	memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
-
-	if (!Vehicle::AllocateList(vl, num_vehicles)) {
+	/* Allow for the dual-heads and the articulated parts */
+	if (!Vehicle::CanAllocateItem(num_vehicles)) {
 		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 	}
-
-	Vehicle *v = vl[0];
 
 	UnitID unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_TRAIN);
 	if (unit_num > _settings_game.vehicle.max_trains) {
@@ -826,7 +823,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		int x = TileX(tile) * TILE_SIZE + _vehicle_initial_x_fract[dir];
 		int y = TileY(tile) * TILE_SIZE + _vehicle_initial_y_fract[dir];
 
-		v = new (v) Train();
+		Vehicle *v = new Train();
 		v->unitnumber = unit_num;
 		v->direction = DiagDirToDir(dir);
 		v->tile = tile;
@@ -874,16 +871,9 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		VehicleMove(v, false);
 
 		if (rvi->railveh_type == RAILVEH_MULTIHEAD) {
-			SetMultiheaded(v);
-			AddRearEngineToMultiheadedTrain(vl[0], vl[1]);
-			/* Now we need to link the front and rear engines together
-			 * other_multiheaded_part is the pointer that links to the other half of the engine
-			 * vl[0] is the front and vl[1] is the rear
-			 */
-			vl[0]->u.rail.other_multiheaded_part = vl[1];
-			vl[1]->u.rail.other_multiheaded_part = vl[0];
+			AddRearEngineToMultiheadedTrain(v);
 		} else {
-			AddArticulatedParts(vl, VEH_TRAIN);
+			AddArticulatedParts(v, VEH_TRAIN);
 		}
 
 		TrainConsistChanged(v, false);

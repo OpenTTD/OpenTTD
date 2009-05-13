@@ -327,14 +327,6 @@ public:
 	uint32 cached_var42; ///< Cache for NewGRF var 42
 	uint32 cached_var43; ///< Cache for NewGRF var 43
 
-	/**
-	 * Allocates a lot of vehicles.
-	 * @param vl pointer to an array of vehicles to get allocated. Can be NULL if the vehicles aren't needed (makes it test only)
-	 * @param num number of vehicles to allocate room for
-	 * @return true if there is room to allocate all the vehicles
-	 */
-	static bool AllocateList(Vehicle **vl, int num);
-
 	/** Create a new vehicle */
 	Vehicle();
 

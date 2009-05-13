@@ -160,9 +160,6 @@ void RoadVehUpdateCache(Vehicle *v)
  */
 CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Vehicle *v;
-	UnitID unit_num;
-
 	if (!IsEngineBuildable(p1, VEH_ROAD, _current_company)) return_cmd_error(STR_ROAD_VEHICLE_NOT_AVAILABLE);
 
 	const Engine *e = GetEngine(p1);
@@ -181,47 +178,40 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	uint num_vehicles = 1 + CountArticulatedParts(p1, false);
 
-	/* Allow for the front and the articulated parts, plus one to "terminate" the list. */
-	Vehicle **vl = AllocaM(Vehicle*, num_vehicles + 1);
-	memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
-
-	if (!Vehicle::AllocateList(vl, num_vehicles)) {
+	/* Allow for the front and the articulated parts */
+	if (!Vehicle::CanAllocateItem(num_vehicles)) {
 		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 	}
 
-	v = vl[0];
-
 	/* find the first free roadveh id */
-	unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_ROAD);
-	if (unit_num > _settings_game.vehicle.max_roadveh)
+	UnitID unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_ROAD);
+	if (unit_num > _settings_game.vehicle.max_roadveh) {
 		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
+	}
 
 	if (flags & DC_EXEC) {
-		int x;
-		int y;
-
 		const RoadVehicleInfo *rvi = RoadVehInfo(p1);
 
-		v = new (v) RoadVehicle();
+		Vehicle *v = new RoadVehicle();
 		v->unitnumber = unit_num;
 		v->direction = DiagDirToDir(GetRoadDepotDirection(tile));
 		v->owner = _current_company;
 
 		v->tile = tile;
-		x = TileX(tile) * TILE_SIZE + TILE_SIZE / 2;
-		y = TileY(tile) * TILE_SIZE + TILE_SIZE / 2;
+		int x = TileX(tile) * TILE_SIZE + TILE_SIZE / 2;
+		int y = TileY(tile) * TILE_SIZE + TILE_SIZE / 2;
 		v->x_pos = x;
 		v->y_pos = y;
 		v->z_pos = GetSlopeZ(x, y);
 
-		v->running_ticks = 0;
+//		v->running_ticks = 0;
 
 		v->u.road.state = RVSB_IN_DEPOT;
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 
 		v->spritenum = rvi->image_index;
 		v->cargo_type = e->GetDefaultCargoType();
-		v->cargo_subtype = 0;
+//		v->cargo_subtype = 0;
 		v->cargo_cap = rvi->capacity;
 //		v->cargo_count = 0;
 		v->value = cost.GetCost();
@@ -230,7 +220,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 //		v->load_unload_time_rem = 0;
 //		v->progress = 0;
 
-//	v->u.road.overtaking = 0;
+//		v->u.road.overtaking = 0;
 
 		v->last_station_visited = INVALID_STATION;
 		v->max_speed = rvi->max_speed;
@@ -261,7 +251,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		v->cargo_cap = rvi->capacity;
 
-		AddArticulatedParts(vl, VEH_ROAD);
+		AddArticulatedParts(v, VEH_ROAD);
 
 		/* Call various callbacks after the whole consist has been constructed */
 		for (Vehicle *u = v; u != NULL; u = u->Next()) {

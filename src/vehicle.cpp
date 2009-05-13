@@ -206,22 +206,6 @@ byte VehicleRandomBits()
 	return GB(Random(), 0, 8);
 }
 
-
-/* static */ bool Vehicle::AllocateList(Vehicle **vl, int num)
-{
-	if (!Vehicle::CanAllocateItem(num)) return false;
-	if (vl == NULL) return true;
-
-	uint counter = _Vehicle_pool.first_free_index;
-
-	for (int i = 0; i != num; i++) {
-		vl[i] = new (AllocateRaw(counter)) InvalidVehicle();
-		counter++;
-	}
-
-	return true;
-}
-
 /* Size of the hash, 6 = 64 x 64, 7 = 128 x 128. Larger sizes will (in theory) reduce hash
  * lookup times at the expense of memory usage. */
 const int HASH_BITS = 7;

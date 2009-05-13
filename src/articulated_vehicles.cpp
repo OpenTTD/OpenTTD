@@ -283,10 +283,10 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 	}
 }
 
-void AddArticulatedParts(Vehicle **vl, VehicleType type)
+void AddArticulatedParts(Vehicle *first, VehicleType type)
 {
-	const Vehicle *v = vl[0];
-	Vehicle *u = vl[0];
+	const Vehicle *v = first;
+	Vehicle *u = first;
 
 	if (!HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return;
 
@@ -294,23 +294,20 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, v->engine_type, v);
 		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) return;
 
-		/* Attempt to use pre-allocated vehicles until they run out. This can happen
-		 * if the callback returns different values depending on the cargo type. */
-		u->SetNext(vl[i]);
-		if (u->Next() == NULL) return;
-
-		Vehicle *previous = u;
-		u = u->Next();
+		/* In the (very rare) case the GRF reported wrong number of articulated parts
+		 * and we run out of available vehicles, bail out. */
+		if (!Vehicle::CanAllocateItem()) return;
 
 		EngineID engine_type = GetNewEngineID(GetEngineGRF(v->engine_type), type, GB(callback, 0, 7));
 		bool flip_image = HasBit(callback, 7);
 
+		Vehicle *previous = u;
 		const Engine *e_artic = GetEngine(engine_type);
 		switch (type) {
 			default: NOT_REACHED();
 
 			case VEH_TRAIN:
-				u = new (u) Train();
+				u = new Train();
 				u->subtype = 0;
 				previous->SetNext(u);
 				u->u.rail.track = v->u.rail.track;
@@ -330,7 +327,7 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 				break;
 
 			case VEH_ROAD:
-				u = new (u) RoadVehicle();
+				u = new RoadVehicle();
 				u->subtype = 0;
 				previous->SetNext(u);
 				u->u.road.first_engine = v->engine_type;
