@@ -819,6 +819,7 @@ check_params() {
 	fi
 
 	if [ "$os" = "OSX" ]; then
+		check_osx_sdk
 		# Test on G5
 
 		if [ "$enable_osx_g5" != "0" ]; then
@@ -1626,6 +1627,30 @@ set_universal_binary_flags() {
 	if [ "$with_osx_sysroot" = "3" ]; then
 		CFLAGS="$CFLAGS -isysroot /Developer/SDKs/MacOSX$osx_sysroot_version.sdk -mmacosx-version-min=$osx_target_version"
 		LDFLAGS="$LDFLAGS -Wl,-syslibroot,/Developer/SDKs/MacOSX$osx_sysroot_version.sdk -mmacosx-version-min=$osx_target_version"
+	fi
+}
+
+check_osx_sdk() {
+cat > tmp.osx.cpp << EOF
+#include <AvailabilityMacros.h>
+#if !defined(MAC_OS_X_VERSION_10_5)
+# error "Need newer SDK"
+#endif
+int main() {
+	return 0;
+}
+EOF
+	execute="$cxx_host $CFLAGS -E tmp.osx.cpp -o - 2>&1"
+	eval $execute > /dev/null
+	ret=$?
+	log 2 "executing $execute"
+	log 2 "  exit code $ret"
+	rm -f tmp.osx.cpp
+	if [ "$ret" != "0" ]; then
+		log 1 "I couldn't detect any XCode >= 2.5 on your system"
+		log 1 "please install/upgrade your XCode"
+
+		exit 1
 	fi
 }
 
