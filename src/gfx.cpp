@@ -1058,18 +1058,26 @@ void DoPaletteAnimations()
 		byte i = (_palette_animation_counter >> 1) & 0x7F;
 		byte v;
 
-		(v = 255, i < 0x3f) ||
-		(v = 128, i < 0x4A || i >= 0x75) ||
-		(v = 20);
+		if (i < 0x3f) {
+			v = 255;
+		} else if (i < 0x4A || i >= 0x75) {
+			v = 128;
+		} else {
+			v = 20;
+		}
 		palette_pos->r = v;
 		palette_pos->g = 0;
 		palette_pos->b = 0;
 		palette_pos++;
 
 		i ^= 0x40;
-		(v = 255, i < 0x3f) ||
-		(v = 128, i < 0x4A || i >= 0x75) ||
-		(v = 20);
+		if (i < 0x3f) {
+			v = 255;
+		} else if (i < 0x4A || i >= 0x75) {
+			v = 128;
+		} else {
+			v = 20;
+		}
 		palette_pos->r = v;
 		palette_pos->g = 0;
 		palette_pos->b = 0;

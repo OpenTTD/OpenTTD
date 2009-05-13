@@ -563,7 +563,7 @@ public:
 			DrawArrowButtons(5, y, COLOUR_YELLOW,
 					(this->clicked_button == i) ? 1 + !!this->clicked_increase : 0,
 					editable && sdb->min != value,
-					editable && sdb->max != value);
+					editable && sdb->max != (uint32)value);
 
 			value += sdb->str;
 			SetDParam(0, value);
@@ -992,7 +992,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 		value = (int32)ReadValue(var, sd->save.conv);
 
 		/* Draw [<][>] boxes for settings of an integer-type */
-		DrawArrowButtons(x, y, COLOUR_YELLOW, state, editable && value != (sdb->flags & SGF_0ISDISABLED ? 0 : sdb->min), editable && value != sdb->max);
+		DrawArrowButtons(x, y, COLOUR_YELLOW, state, editable && value != (sdb->flags & SGF_0ISDISABLED ? 0 : sdb->min), editable && (uint32)value != sdb->max);
 
 		disabled = (value == 0) && (sdb->flags & SGF_0ISDISABLED);
 		if (disabled) {
@@ -1440,7 +1440,7 @@ struct GameSettingsWindow : Window {
 					/* Increase or decrease the value and clamp it to extremes */
 					if (x >= 10) {
 						value += step;
-						if (value > sdb->max) value = sdb->max;
+						if ((uint32)value > sdb->max) value = (int32)sdb->max;
 						if (value < sdb->min) value = sdb->min; // skip between "disabled" and minimum
 					} else {
 						value -= step;

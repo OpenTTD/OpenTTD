@@ -76,11 +76,18 @@ struct ExpensesList {
 	const ExpensesType *et; ///< Expenses items.
 	const int length;       ///< Number of items in list.
 	const int height;       ///< Height of list, 10 pixels per item, plus an additional 12 pixels per subtotal. */
+
+	ExpensesList(ExpensesType *et, int length, int height) :
+		et(et),
+		length(length),
+		height(height)
+	{
+	}
 };
 
 static const ExpensesList _expenses_list_types[] = {
-	{ _expenses_list_1, lengthof(_expenses_list_1), lengthof(_expenses_list_1) * 10 },
-	{ _expenses_list_2, lengthof(_expenses_list_2), lengthof(_expenses_list_2) * 10 + 3 * 12 },
+	ExpensesList(_expenses_list_1, lengthof(_expenses_list_1), lengthof(_expenses_list_1) * 10),
+	ExpensesList(_expenses_list_2, lengthof(_expenses_list_2), lengthof(_expenses_list_2) * 10 + 3 * 12),
 };
 
 /** Widgets of the company finances windows. */

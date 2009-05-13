@@ -247,12 +247,12 @@ static bool FindNearIndustryName(TileIndex tile, void *user_data)
 static StringID GenerateStationName(Station *st, TileIndex tile, int flag)
 {
 	static const uint32 _gen_station_name_bits[] = {
-		0,                                      // 0
-		1 << M(STR_SV_STNAME_AIRPORT),          // 1
-		1 << M(STR_SV_STNAME_OILFIELD),         // 2
-		1 << M(STR_SV_STNAME_DOCKS),            // 3
-		0x1FF << M(STR_SV_STNAME_BUOY_1),       // 4
-		1 << M(STR_SV_STNAME_HELIPORT),         // 5
+		0,                                       // 0
+		1U << M(STR_SV_STNAME_AIRPORT),          // 1
+		1U << M(STR_SV_STNAME_OILFIELD),         // 2
+		1U << M(STR_SV_STNAME_DOCKS),            // 3
+		0x1FFU << M(STR_SV_STNAME_BUOY_1),       // 4
+		1U << M(STR_SV_STNAME_HELIPORT),         // 5
 	};
 
 	const Town *t = st->town;

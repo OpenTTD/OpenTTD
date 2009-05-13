@@ -56,7 +56,8 @@ struct SettingDescBase {
 	const void *def;        ///< default value given when none is present
 	SettingDescType cmd;    ///< various flags for the variable
 	SettingGuiFlag flags;   ///< handles how a setting would show up in the GUI (text/currency, etc.)
-	int32 min, max;         ///< minimum and maximum values
+	int32 min;              ///< minimum values
+	uint32 max;             ///< maximum values
 	int32 interval;         ///< the interval to use between settings in the 'settings' window. If interval is '0' the interval is dynamically determined
 	const char *many;       ///< ONE/MANY_OF_MANY: string of possible values for this type
 	StringID str;           ///< (translated) string with descriptive text; gui and console
