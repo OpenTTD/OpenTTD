@@ -1412,7 +1412,7 @@ make_cflags_and_ldflags() {
 	#  not something we can control.
 	# Also make makedepend aware of compiler's built-in defines.
 	if [ "$with_makedepend" != "0" ]; then
-		cflags_makedep="`echo | $cxx_host -E -x c++ -dM - | sed 's~#define ~-D~g;s~ .*~ ~g;s~(.*)~~g' | tr -d '\r\n'`"
+		cflags_makedep="`echo | $cxx_host -E -x c++ -dM - | sed 's~.define ~-D~g;s~ .*~ ~g;s~(.*)~~g' | tr -d '\r\n'`"
 		cflags_makedep="$cflags_makedep `echo "$CFLAGS" | sed 's~ /~ -~g;s~-I[ ]*[^ ]*~~g'`"
 	else
 		makedepend=""
@@ -2619,31 +2619,31 @@ make_sed() {
 
 	if [ "$icon_theme_dir" != "" ]; then
 		SRC_REPLACE="$SRC_REPLACE
-			s#!!ICON_THEME_DIR!!#$prefix_dir/$icon_theme_dir#g;
+			s~!!ICON_THEME_DIR!!~$prefix_dir/$icon_theme_dir~g;
 		"
 	else
 		SRC_REPLACE="$SRC_REPLACE
-			s#!!ICON_THEME_DIR!!##g;
+			s~!!ICON_THEME_DIR!!~~g;
 		"
 	fi
 
 	if [ "$man_dir" != "" ]; then
 		SRC_REPLACE="$SRC_REPLACE
-			s#!!MAN_DIR!!#$prefix_dir/$man_dir#g;
+			s~!!MAN_DIR!!~$prefix_dir/$man_dir~g;
 		"
 	else
 		SRC_REPLACE="$SRC_REPLACE
-			s#!!MAN_DIR!!##g;
+			s~!!MAN_DIR!!~~g;
 		"
 	fi
 
 	if [ "$menu_dir" != "" ]; then
 		SRC_REPLACE="$SRC_REPLACE
-			s#!!MENU_DIR!!#$prefix_dir/$menu_dir#g;
+			s~!!MENU_DIR!!~$prefix_dir/$menu_dir~g;
 		"
 	else
 		SRC_REPLACE="$SRC_REPLACE
-			s#!!MENU_DIR!!##g;
+			s~!!MENU_DIR!!~~g;
 		"
 	fi
 }
