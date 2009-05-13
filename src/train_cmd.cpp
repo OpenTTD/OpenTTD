@@ -743,7 +743,7 @@ static void NormalizeTrainVehInDepot(const Vehicle *u)
 	}
 }
 
-static void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building)
+static void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u)
 {
 	u = new (u) Train();
 	u->direction = v->direction;
@@ -761,10 +761,10 @@ static void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool buildin
 	u->cargo_subtype = v->cargo_subtype;
 	u->cargo_cap = v->cargo_cap;
 	u->u.rail.railtype = v->u.rail.railtype;
-	if (building) v->SetNext(u);
+	v->SetNext(u);
 	u->engine_type = v->engine_type;
 	u->build_year = v->build_year;
-	if (building) v->value >>= 1;
+	v->value >>= 1;
 	u->value = v->value;
 	u->cur_image = 0xAC2;
 	u->random_bits = VehicleRandomBits();
@@ -875,7 +875,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 		if (rvi->railveh_type == RAILVEH_MULTIHEAD) {
 			SetMultiheaded(v);
-			AddRearEngineToMultiheadedTrain(vl[0], vl[1], true);
+			AddRearEngineToMultiheadedTrain(vl[0], vl[1]);
 			/* Now we need to link the front and rear engines together
 			 * other_multiheaded_part is the pointer that links to the other half of the engine
 			 * vl[0] is the front and vl[1] is the rear
