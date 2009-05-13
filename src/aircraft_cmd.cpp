@@ -383,7 +383,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		v->date_of_last_service = _date;
 		v->build_year = u->build_year = _cur_year;
 
-		v->cur_image = u->cur_image = 0xEA0;
+		v->cur_image = u->cur_image = SPR_IMG_QUERY;
 
 		v->random_bits = VehicleRandomBits();
 		u->random_bits = VehicleRandomBits();

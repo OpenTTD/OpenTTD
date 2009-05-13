@@ -699,7 +699,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 		v->u.rail.railtype = rvi->railtype;
 
 		v->build_year = _cur_year;
-		v->cur_image = 0xAC2;
+		v->cur_image = SPR_IMG_QUERY;
 		v->random_bits = VehicleRandomBits();
 
 		v->group_id = DEFAULT_GROUP;
@@ -761,7 +761,7 @@ static void AddRearEngineToMultiheadedTrain(Vehicle *v)
 	u->u.rail.railtype = v->u.rail.railtype;
 	u->engine_type = v->engine_type;
 	u->build_year = v->build_year;
-	u->cur_image = 0xAC2;
+	u->cur_image = SPR_IMG_QUERY;
 	u->random_bits = VehicleRandomBits();
 	SetMultiheaded(v);
 	SetMultiheaded(u);
@@ -856,7 +856,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		v->service_interval = _settings_game.vehicle.servint_trains;
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
-		v->cur_image = 0xAC2;
+		v->cur_image = SPR_IMG_QUERY;
 		v->random_bits = VehicleRandomBits();
 
 //		v->vehicle_flags = 0;

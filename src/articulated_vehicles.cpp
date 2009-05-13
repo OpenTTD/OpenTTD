@@ -9,6 +9,7 @@
 #include "vehicle_func.h"
 
 #include "table/strings.h"
+#include "table/sprites.h"
 
 static const uint MAX_ARTICULATED_PARTS = 100; ///< Maximum of articulated parts per vehicle, i.e. when to abort calling the articulated vehicle callback.
 
@@ -365,7 +366,7 @@ void AddArticulatedParts(Vehicle *first, VehicleType type)
 		u->max_age = 0;
 		u->engine_type = engine_type;
 		u->value = 0;
-		u->cur_image = 0xAC2;
+		u->cur_image = SPR_IMG_QUERY;
 		u->random_bits = VehicleRandomBits();
 
 		if (flip_image) u->spritenum++;

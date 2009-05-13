@@ -789,7 +789,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		v->service_interval = _settings_game.vehicle.servint_ships;
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
-		v->cur_image = 0x0E5E;
+		v->cur_image = SPR_IMG_QUERY;
 		v->random_bits = VehicleRandomBits();
 
 		v->vehicle_flags = 0;

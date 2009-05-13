@@ -238,7 +238,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
 
-		v->cur_image = 0xC15;
+		v->cur_image = SPR_IMG_QUERY;
 		v->random_bits = VehicleRandomBits();
 		SetRoadVehFront(v);
 
