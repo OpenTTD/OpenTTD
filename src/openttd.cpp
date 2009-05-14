@@ -300,9 +300,6 @@ static void InitializeDynamicVariables()
  */
 static void ShutdownGame()
 {
-	/* stop the AI */
-	AI::Uninitialize(false);
-
 	IConsoleFree();
 
 	if (_network_available) NetworkShutDown(); // Shut down the network and close any open connections
@@ -310,6 +307,9 @@ static void ShutdownGame()
 	DriverFactoryBase::ShutdownDrivers();
 
 	UnInitWindowSystem();
+
+	/* stop the AI */
+	AI::Uninitialize(false);
 
 	/* Uninitialize airport state machines */
 	UnInitializeAirports();
