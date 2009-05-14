@@ -20,6 +20,7 @@ MEDIA_DIR    = !!MEDIA_DIR!!
 TTD          = !!TTD!!
 STRGEN       = !!STRGEN!!
 ENDIAN_CHECK = !!ENDIAN_CHECK!!
+DEPEND       = !!DEPEND!!
 ENDIAN_FORCE = !!ENDIAN_FORCE!!
 OS           = !!OS!!
 STAGE        = !!STAGE!!
@@ -167,11 +168,18 @@ ifeq ($(filter $(ENDIAN_TARGETS) depend clean mrproper, $(MAKECMDGOALS)),)
 -include Makefile.dep
 endif
 
+ifeq ("$(SRC_OBJS_DIR)/$(DEPEND)","$(MAKEDEPEND)")
+DEP := $(MAKEDEPEND)
+$(SRC_OBJS_DIR)/$(DEPEND): $(SRC_DIR)/depend/depend.cpp
+	$(E) '$(STAGE) Compiling and linking $(DEPEND)'
+	$(Q)$(CXX_HOST) -o $@ $<
+endif
+
 # Make sure that only 'make depend' ALWAYS triggers a recheck
 ifeq ($(filter depend, $(MAKECMDGOALS)),)
-Makefile.dep: $(FILE_DEP) $(SRCS:%=$(SRC_DIR)/%) $(CONFIG_CACHE_SOURCE)
+Makefile.dep: $(FILE_DEP) $(SRCS:%=$(SRC_DIR)/%) $(CONFIG_CACHE_SOURCE) $(DEP)
 else
-Makefile.dep: FORCE
+Makefile.dep: $(DEP) FORCE
 endif
 	$(E) '$(STAGE) DEP CHECK (all files)'
 	$(Q)rm -f Makefile.dep.tmp
@@ -291,7 +299,7 @@ depend: $(DEPS)
 
 clean:
 	$(E) '$(STAGE) Cleaning up object files'
-	$(Q)rm -f $(DEPS) $(OBJS) $(TTD) $(TTD:%=$(BIN_DIR)/%) $(CONFIG_CACHE_COMPILER) $(CONFIG_CACHE_LINKER) $(CONFIG_CACHE_ENDIAN) $(CONFIG_CACHE_SOURCE) $(ENDIAN_TARGETS)
+	$(Q)rm -f $(DEPS) $(OBJS) $(TTD) $(DEPEND) $(TTD:%=$(BIN_DIR)/%) $(CONFIG_CACHE_COMPILER) $(CONFIG_CACHE_LINKER) $(CONFIG_CACHE_ENDIAN) $(CONFIG_CACHE_SOURCE) $(ENDIAN_TARGETS)
 
 mrproper: clean
 	$(Q)rm -f $(SRC_DIR)/rev.cpp $(SRC_DIR)/ottdres.rc

@@ -67,6 +67,7 @@ fi
 TTD="openttd$EXE"
 STRGEN="strgen$EXE"
 ENDIAN_CHECK="endian_check$EXE"
+DEPEND="depend$EXE"
 
 if [ -z "$sort" ]; then
 	PIPE_SORT="sed s~a~a~"

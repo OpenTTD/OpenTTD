@@ -61,7 +61,8 @@ set_default() {
 	with_cocoa="1"
 	with_zlib="1"
 	with_png="1"
-	with_makedepend="1"
+	enable_builtin_depend="1"
+	with_makedepend="0"
 	with_direct_music="1"
 	with_sort="1"
 	with_iconv="1"
@@ -127,6 +128,7 @@ set_default() {
 		with_cocoa
 		with_zlib
 		with_png
+		enable_builtin_depend
 		with_makedepend
 		with_direct_music
 		with_sort
@@ -339,6 +341,10 @@ detect_params() {
 			--without-psp-config)         with_psp_config="0";;
 			--with-psp-config=*)          with_psp_config="$optarg";;
 
+			--disable-builtin-depend)     enable_builtin_depend="0";;
+			--enable-builtin-depend)      enable_builtin_depend="2";;
+			--enable-builtin-depend=*)    enable_builtin_depend="$optarg";;
+
 			--with-makedepend)            with_makedepend="2";;
 			--without-makedepend)         with_makedepend="0";;
 			--with-makedepend=*)          with_makedepend="$optarg";;
@@ -511,6 +517,14 @@ check_params() {
 		log 1 "checking strip... disabled"
 	fi
 	check_lipo
+
+	if [ "$enable_builtin_depend" != "0" ]; then
+		log 1 "checking builtin depend... yes"
+		makedepend="\$(SRC_OBJS_DIR)/\$(DEPEND)"
+	else
+		log 1 "checking builtin depend... no"
+	fi
+
 	check_makedepend
 	detect_cputype
 
@@ -1418,7 +1432,7 @@ make_cflags_and_ldflags() {
 	# Btw, this almost always comes from outside the configure, so it is
 	#  not something we can control.
 	# Also make makedepend aware of compiler's built-in defines.
-	if [ "$with_makedepend" != "0" ]; then
+	if [ "$with_makedepend" != "0" ] || [ "$enable_builtin_depend" != "0" ]; then
 		cflags_makedep="`echo | $cxx_host -E -x c++ -dM - | sed 's~.define ~-D~g;s~ .*~ ~g;s~(.*)~~g' | tr -d '\r\n'`"
 		cflags_makedep="$cflags_makedep `echo "$CFLAGS" | sed 's~ /~ -~g;s~-I[ ]*[^ ]*~~g'`"
 	else
@@ -1686,6 +1700,10 @@ check_direct_music() {
 }
 
 check_makedepend() {
+	if [ "$enable_builtin_depend" != "0" ]; then
+		with_makedepend="0"
+	fi
+
 	if [ "$with_makedepend" = "0" ]; then
 		log 1 "checking makedepend... disabled"
 		return
@@ -2622,6 +2640,7 @@ make_sed() {
 		s~!!BINARY_NAME!!~$binary_name~g;
 		s~!!STRGEN!!~$STRGEN~g;
 		s~!!ENDIAN_CHECK!!~$ENDIAN_CHECK~g;
+		s~!!DEPEND!!~$DEPEND~g;
 		s~!!ENDIAN_FORCE!!~$endian~g;
 		s~!!STAGE!!~$STAGE~g;
 		s~!!MAKEDEPEND!!~$makedepend~g;
@@ -2904,6 +2923,7 @@ showhelp() {
 	echo "  --with-icu[=icu-config]        enables icu (used for right-to-left support)"
 	echo "  --with-iconv[=iconv-path]      enables iconv support"
 	echo "  --with-psp-config[=psp-config] enables psp-config support (PSP ONLY)"
+	echo "  --disable-builtin-depend       disable use of builtin deps finder"
 	echo "  --with-makedepend[=makedepend] enables makedepend support"
 	echo ""
 	echo "Some influential environment variables:"
