@@ -2553,7 +2553,7 @@ uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
  */
 CommandCost CmdDoTownAction(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsValidTownID(p1) || p2 > lengthof(_town_action_proc)) return CMD_ERROR;
+	if (!IsValidTownID(p1) || p2 >= lengthof(_town_action_proc)) return CMD_ERROR;
 
 	Town *t = GetTown(p1);
 
