@@ -135,10 +135,14 @@ static FORCEINLINE bool Chance16I(const uint a, const uint b, const uint32 r)
  * @param b The denominator of the fraction
  * @return True with (a/b) probability
  */
+#ifdef RANDOM_DEBUG
+	#define Chance16(a, b) Chance16I(a, b, DoRandom(__LINE__, __FILE__))
+#else
 static FORCEINLINE bool Chance16(const uint a, const uint b)
 {
 	return Chance16I(a, b, Random());
 }
+#endif /* RANDOM_DEBUG */
 
 /**
  * Flips a coin with a given probability and saves the randomize-number in a variable.
@@ -155,10 +159,14 @@ static FORCEINLINE bool Chance16(const uint a, const uint b)
  * @param r The variable to save the randomize-number from Random()
  * @return True in (a/b) percent
  */
+#ifdef RANDOM_DEBUG
+	#define Chance16R(a, b, r) (r = DoRandom(__LINE__, __FILE__), Chance16I(a, b, r))
+#else
 static FORCEINLINE bool Chance16R(const uint a, const uint b, uint32 &r)
 {
 	r = Random();
 	return Chance16I(a, b, r);
 }
+#endif /* RANDOM_DEBUG */
 
 #endif /* RANDOM_FUNC_HPP */

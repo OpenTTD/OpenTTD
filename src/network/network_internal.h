@@ -18,6 +18,7 @@
 
 #include "../command_type.h"
 
+#ifdef RANDOM_DEBUG
 /**
  * If this line is enable, every frame will have a sync test
  *  this is not needed in normal games. Normal is like 1 sync in 100
@@ -27,13 +28,14 @@
  *  option enabled to make it to work. If one of the two has it disabled
  *  nothing will happen.
  */
-//#define ENABLE_NETWORK_SYNC_EVERY_FRAME
+#define ENABLE_NETWORK_SYNC_EVERY_FRAME
 
 /**
  * In theory sending 1 of the 2 seeds is enough to check for desyncs
  *   so in theory, this next define can be left off.
  */
-//#define NETWORK_SEND_DOUBLE_SEED
+#define NETWORK_SEND_DOUBLE_SEED
+#endif /* RANDOM_DEBUG */
 
 enum MapPacket {
 	MAP_PACKET_START,
