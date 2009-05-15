@@ -1219,7 +1219,7 @@ const char *FS2OTTD(const TCHAR *name)
 		wchar_t w;
 		int len = MultiByteToWideChar(_codepage, 0, name, 1, &w, 1);
 		if (len != 1) {
-			DEBUG(misc, 0, "[utf8] M2W error converting '%c'. Errno %d", *name, GetLastError());
+			DEBUG(misc, 0, "[utf8] M2W error converting '%c'. Errno %lu", *name, GetLastError());
 			continue;
 		}
 
@@ -1258,7 +1258,7 @@ const TCHAR *OTTD2FS(const char *name)
 		char mb;
 		int len = WideCharToMultiByte(_codepage, 0, (wchar_t*)&c, 1, &mb, 1, NULL, NULL);
 		if (len != 1) {
-			DEBUG(misc, 0, "[utf8] W2M error converting '0x%X'. Errno %d", c, GetLastError());
+			DEBUG(misc, 0, "[utf8] W2M error converting '0x%X'. Errno %lu", c, GetLastError());
 			continue;
 		}
 
