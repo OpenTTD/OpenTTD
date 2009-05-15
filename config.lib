@@ -2770,45 +2770,35 @@ generate_src_osx() {
 	cc_host_orig="$cc_host"
 	cxx_host_orig="$cxx_host"
 
-	# 10.3(.9) can run on PPC, but not on i386
-	CFLAGS="$CLEAN_CFLAGS -mmacosx-version-min=10.3"
-	LDFLAGS="$CLEAN_CFLAGS -mmacosx-version-min=10.3"
-
 	BASE_SRC_OBJS_DIR="$OBJS_DIR/ppc"
-	cc_host="$cc_host_orig -arch ppc"
-	cxx_host="$cxx_host_orig -arch ppc"
+	cc_host="$cc_host_orig -arch ppc -mmacosx-version-min=10.3"
+	cxx_host="$cxx_host_orig -arch ppc -mmacosx-version-min=10.3"
 	generate_src_normal "[PowerPC]" "objs/ppc"
 
 	BASE_SRC_OBJS_DIR="$OBJS_DIR/ppc970"
-	cc_host="$cc_host_orig -arch ppc970"
-	cxx_host="$cxx_host_orig -arch ppc970"
-	CFLAGS="$CFLAGS -mcpu=G5 -mpowerpc64 -mtune=970 -mcpu=970 -mpowerpc-gpopt"
+	cc_host="$cc_host_orig -arch ppc970 -mmacosx-version-min=10.3 -mcpu=G5 -mpowerpc64 -mtune=970 -mcpu=970 -mpowerpc-gpopt"
+	cxx_host="$cxx_host_orig -arch ppc970 -mmacosx-version-min=10.3 -mcpu=G5 -mpowerpc64 -mtune=970 -mcpu=970 -mpowerpc-gpopt"
 	generate_src_normal "[PowerPC G5]" "objs/ppc970"
 
-	# 10.4.0 starts supporting i386
-	CFLAGS="$CLEAN_CFLAGS -mmacosx-version-min=10.4"
-	LDFLAGS="$CLEAN_CFLAGS -mmacosx-version-min=10.4"
-
 	BASE_SRC_OBJS_DIR="$OBJS_DIR/intel"
-	cc_host="$cc_host_orig -arch i386"
-	cxx_host="$cxx_host_orig -arch i386"
+	cc_host="$cc_host_orig -arch i386 -mmacosx-version-min=10.4"
+	cxx_host="$cxx_host_orig -arch i386 -mmacosx-version-min=10.4"
 	generate_src_normal "[Intel]" "objs/intel"
 
 	if [ "$enable_universal" = "64" ]; then
 		# 64 bits is always 10.5 or higher. Furthermore it has a broken ICONV
 		# and they also removed support for QuickTime/QuickDraw
-		CFLAGS="$CLEAN_CFLAGS -D_SQ64 -DHAVE_BROKEN_ICONV -DNO_QUICKTIME -UENABLE_COCOA_QUICKDRAW -mmacosx-version-min=10.5"
-		LDFLAGS="$CLEAN_CFLAGS -mmacosx-version-min=10.5"
+		CFLAGS="$CFLAGS -D_SQ64 -DHAVE_BROKEN_ICONV -DNO_QUICKTIME -UENABLE_COCOA_QUICKDRAW"
 		LIBS="`echo $LIBS | sed 's/-framework QuickTime//'`"
 
 		BASE_SRC_OBJS_DIR="$OBJS_DIR/ppc64"
-		cc_host="$cc_host_orig -arch ppc64"
-		cxx_host="$cxx_host_orig -arch ppc64"
+		cc_host="$cc_host_orig -arch ppc64 -mmacosx-version-min=10.5"
+		cxx_host="$cxx_host_orig -arch ppc64 -mmacosx-version-min=10.5"
 		generate_src_normal "[PowerPC 64 bits]" "objs/ppc64"
 
 		BASE_SRC_OBJS_DIR="$OBJS_DIR/intel64"
-		cc_host="$cc_host_orig -arch x86_64"
-		cxx_host="$cxx_host_orig -arch x86_64"
+		cc_host="$cc_host_orig -arch x86_64 -mmacosx-version-min=10.5"
+		cxx_host="$cxx_host_orig -arch x86_64 -mmacosx-version-min=10.5"
 		generate_src_normal "[Intel 64 bits]" "objs/intel64"
 	fi
 }
