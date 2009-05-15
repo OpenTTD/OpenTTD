@@ -1254,9 +1254,9 @@ static SettingEntry _settings_vehicles_routing[] = {
 static SettingsPage _settings_vehicles_routing_page = {_settings_vehicles_routing, lengthof(_settings_vehicles_routing)};
 
 static SettingEntry _settings_vehicles_autorenew[] = {
-	SettingEntry("gui.autorenew"),
-	SettingEntry("gui.autorenew_months"),
-	SettingEntry("gui.autorenew_money"),
+	SettingEntry("company.engine_renew"),
+	SettingEntry("company.engine_renew_months"),
+	SettingEntry("company.engine_renew_money"),
 };
 /** Autorenew sub-page */
 static SettingsPage _settings_vehicles_autorenew_page = {_settings_vehicles_autorenew, lengthof(_settings_vehicles_autorenew)};

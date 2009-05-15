@@ -661,10 +661,10 @@ bool AfterLoadGame()
 	 *  of course, we do need to initialize them for older savegames. */
 	if (CheckSavegameVersion(16)) {
 		FOR_ALL_COMPANIES(c) {
-			c->engine_renew_list   = NULL;
-			c->engine_renew        = false;
-			c->engine_renew_months = -6;
-			c->engine_renew_money  = 100000;
+			c->engine_renew_list            = NULL;
+			c->settings.engine_renew        = false;
+			c->settings.engine_renew_months = 6;
+			c->settings.engine_renew_money  = 100000;
 		}
 
 		/* When loading a game, _local_company is not yet set to the correct value.
@@ -675,9 +675,7 @@ bool AfterLoadGame()
 		 */
 		if (!_network_dedicated && IsValidCompanyID(COMPANY_FIRST)) {
 			c = GetCompany(COMPANY_FIRST);
-			c->engine_renew        = _settings_client.gui.autorenew;
-			c->engine_renew_months = _settings_client.gui.autorenew_months;
-			c->engine_renew_money  = _settings_client.gui.autorenew_money;
+			c->settings = _settings_client.company;
 		}
 	}
 
@@ -950,7 +948,7 @@ bool AfterLoadGame()
 	 * replaced, shall keep their old length. In all prior versions, just default
 	 * to false */
 	if (CheckSavegameVersionOldStyle(16, 1)) {
-		FOR_ALL_COMPANIES(c) c->renew_keep_length = false;
+		FOR_ALL_COMPANIES(c) c->settings.renew_keep_length = false;
 	}
 
 	/* In version 17, ground type is moved from m2 to m4 for depots and

@@ -100,7 +100,7 @@
 
 /* static */ bool AIGroup::HasWagonRemoval()
 {
-	return ::GetCompany(_current_company)->renew_keep_length;
+	return ::GetCompany(_current_company)->settings.renew_keep_length;
 }
 
 /* static */ bool AIGroup::SetAutoReplace(GroupID group_id, EngineID engine_id_old, EngineID engine_id_new)

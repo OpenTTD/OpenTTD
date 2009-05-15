@@ -15,6 +15,7 @@
 #include "autoreplace_type.h"
 #include "economy_type.h"
 #include "tile_type.h"
+#include "settings_type.h"
 
 struct CompanyEconomyEntry {
 	Money income;
@@ -78,10 +79,7 @@ struct Company : PoolItem<Company, CompanyByte, &_Company_pool> {
 	CompanyEconomyEntry cur_economy;
 	CompanyEconomyEntry old_economy[24];
 	EngineRenewList engine_renew_list; ///< Defined later
-	bool engine_renew;
-	bool renew_keep_length;
-	int16 engine_renew_months;
-	uint32 engine_renew_money;
+	CompanySettings settings;          ///< settings specific for each company
 	uint16 *num_engines; ///< caches the number of engines of each type the company owns (no need to save this)
 
 	inline bool IsValid() const { return this->name_1 != 0; }

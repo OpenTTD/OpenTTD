@@ -726,19 +726,19 @@ static bool CheckInterval(int32 p1)
 
 static bool EngineRenewUpdate(int32 p1)
 {
-	DoCommandP(0, 0, _settings_client.gui.autorenew, CMD_SET_AUTOREPLACE);
+	DoCommandP(0, 0, _settings_client.company.engine_renew, CMD_SET_AUTOREPLACE);
 	return true;
 }
 
 static bool EngineRenewMonthsUpdate(int32 p1)
 {
-	DoCommandP(0, 1, _settings_client.gui.autorenew_months, CMD_SET_AUTOREPLACE);
+	DoCommandP(0, 1, _settings_client.company.engine_renew_months, CMD_SET_AUTOREPLACE);
 	return true;
 }
 
 static bool EngineRenewMoneyUpdate(int32 p1)
 {
-	DoCommandP(0, 2, _settings_client.gui.autorenew_money, CMD_SET_AUTOREPLACE);
+	DoCommandP(0, 2, _settings_client.company.engine_renew_money, CMD_SET_AUTOREPLACE);
 	return true;
 }
 

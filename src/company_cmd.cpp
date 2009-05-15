@@ -78,9 +78,7 @@ void SetLocalCompany(CompanyID new_company)
 	/* Do not update the settings if we are in the intro GUI */
 	if (IsValidCompanyID(new_company) && _game_mode != GM_MENU) {
 		const Company *c = GetCompany(new_company);
-		_settings_client.gui.autorenew        = c->engine_renew;
-		_settings_client.gui.autorenew_months = c->engine_renew_months;
-		_settings_client.gui.autorenew_money  = c->engine_renew_money;
+		_settings_client.company = c->settings;
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}
 
@@ -568,12 +566,12 @@ CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	Company *c = GetCompany(_current_company);
 	switch (GB(p1, 0, 3)) {
 		case 0:
-			if (c->engine_renew == HasBit(p2, 0)) return CMD_ERROR;
+			if (c->settings.engine_renew == HasBit(p2, 0)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				c->engine_renew = HasBit(p2, 0);
+				c->settings.engine_renew = HasBit(p2, 0);
 				if (IsLocalCompany()) {
-					_settings_client.gui.autorenew = c->engine_renew;
+					_settings_client.company.engine_renew = c->settings.engine_renew;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 			}
@@ -581,12 +579,12 @@ CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 		case 1:
 			if (Clamp((int16)p2, -12, 12) != (int16)p2) return CMD_ERROR;
-			if (c->engine_renew_months == (int16)p2) return CMD_ERROR;
+			if (c->settings.engine_renew_months == (int16)p2) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				c->engine_renew_months = (int16)p2;
+				c->settings.engine_renew_months = (int16)p2;
 				if (IsLocalCompany()) {
-					_settings_client.gui.autorenew_months = c->engine_renew_months;
+					_settings_client.company.engine_renew_months = c->settings.engine_renew_months;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 			}
@@ -594,12 +592,12 @@ CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 		case 2:
 			if (ClampU(p2, 0, 2000000) != p2) return CMD_ERROR;
-			if (c->engine_renew_money == p2) return CMD_ERROR;
+			if (c->settings.engine_renew_money == p2) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				c->engine_renew_money = p2;
+				c->settings.engine_renew_money = p2;
 				if (IsLocalCompany()) {
-					_settings_client.gui.autorenew_money = c->engine_renew_money;
+					_settings_client.company.engine_renew_money = c->settings.engine_renew_money;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 			}
@@ -630,24 +628,24 @@ CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 			if (ClampU(p2, 0, 2000000) != p2) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				c->engine_renew = HasBit(p1, 15);
-				c->engine_renew_months = (int16)GB(p1, 16, 16);
-				c->engine_renew_money = p2;
+				c->settings.engine_renew = HasBit(p1, 15);
+				c->settings.engine_renew_months = (int16)GB(p1, 16, 16);
+				c->settings.engine_renew_money = p2;
 
 				if (IsLocalCompany()) {
-					_settings_client.gui.autorenew = c->engine_renew;
-					_settings_client.gui.autorenew_months = c->engine_renew_months;
-					_settings_client.gui.autorenew_money = c->engine_renew_money;
+					_settings_client.company.engine_renew = c->settings.engine_renew;
+					_settings_client.company.engine_renew_months = c->settings.engine_renew_months;
+					_settings_client.company.engine_renew_money = c->settings.engine_renew_money;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 			}
 			break;
 
 		case 5:
-			if (c->renew_keep_length == HasBit(p2, 0)) return CMD_ERROR;
+			if (c->settings.renew_keep_length == HasBit(p2, 0)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				c->renew_keep_length = HasBit(p2, 0);
+				c->settings.renew_keep_length = HasBit(p2, 0);
 				if (IsLocalCompany()) {
 					InvalidateWindow(WC_REPLACE_VEHICLE, VEH_TRAIN);
 				}
@@ -750,8 +748,8 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			/* This is the client (or non-dedicated server) who wants a new company */
 			if (cid == _network_own_client_id) {
 				/* Create p1 and p2 here because SetLocalCompany resets the gui.autorenew* settings. */
-				uint32 p1 = (_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4;
-				uint32 p2 = _settings_client.gui.autorenew_money;
+				uint32 p1 = (_settings_client.company.engine_renew << 15 ) | (_settings_client.company.engine_renew_months << 16) | 4;
+				uint32 p2 = _settings_client.company.engine_renew_money;
 				assert(_local_company == COMPANY_SPECTATOR);
 				SetLocalCompany(c->index);
 				if (!StrEmpty(_settings_client.network.default_company_pass)) {

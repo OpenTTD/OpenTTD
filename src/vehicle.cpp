@@ -64,8 +64,8 @@ bool Vehicle::NeedsAutorenewing(const Company *c) const
 	 * argument rather than finding it again. */
 	assert(c == GetCompany(this->owner));
 
-	if (!c->engine_renew) return false;
-	if (this->age - this->max_age < (c->engine_renew_months * 30)) return false;
+	if (!c->settings.engine_renew) return false;
+	if (this->age - this->max_age < (c->settings.engine_renew_months * 30)) return false;
 	if (this->age == 0) return false; // rail cars don't age and lacks a max age
 
 	return true;
@@ -642,9 +642,9 @@ void CallVehicleTicks()
 		int z = v->z_pos;
 
 		const Company *c = GetCompany(_current_company);
-		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, (Money)c->engine_renew_money));
+		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, (Money)c->settings.engine_renew_money));
 		CommandCost res = DoCommand(0, v->index, 0, DC_EXEC, CMD_AUTOREPLACE_VEHICLE);
-		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, -(Money)c->engine_renew_money));
+		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, -(Money)c->settings.engine_renew_money));
 
 		if (!IsLocalCompany()) continue;
 
@@ -906,7 +906,7 @@ void AgeVehicle(Vehicle *v)
 	if (v->Previous() != NULL || v->owner != _local_company || (v->vehstatus & VS_CRASHED) != 0) return;
 
 	/* Don't warn if a renew is active */
-	if (GetCompany(v->owner)->engine_renew && GetEngine(v->engine_type)->company_avail != 0) return;
+	if (GetCompany(v->owner)->settings.engine_renew && GetEngine(v->engine_type)->company_avail != 0) return;
 
 	StringID str;
 	if (age == -DAYS_IN_LEAP_YEAR) {

@@ -267,7 +267,7 @@ public:
 
 		if (this->window_number == VEH_TRAIN) {
 			/* set on/off for renew_keep_length */
-			SetDParam(1, c->renew_keep_length ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
+			SetDParam(1, c->settings.renew_keep_length ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 
 			/* set wagon/engine button */
 			SetDParam(2, this->wagon_btnstate ? STR_ENGINES : STR_WAGONS);
@@ -347,7 +347,7 @@ public:
 			}
 
 			case RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE: // toggle renew_keep_length
-				DoCommandP(0, 5, GetCompany(_local_company)->renew_keep_length ? 0 : 1, CMD_SET_AUTOREPLACE);
+				DoCommandP(0, 5, GetCompany(_local_company)->settings.renew_keep_length ? 0 : 1, CMD_SET_AUTOREPLACE);
 				break;
 
 			case RVW_WIDGET_START_REPLACE: { // Start replacing

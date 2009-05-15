@@ -6,6 +6,7 @@
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../company_manager_face.h"
+#include "../settings_type.h"
 
 #include "saveload.h"
 
@@ -133,11 +134,11 @@ static const SaveLoad _company_desc[] = {
 
 	/* Engine renewal settings */
 	SLE_CONDNULL(512, 16, 18),
-	SLE_CONDREF(Company, engine_renew_list,     REF_ENGINE_RENEWS,          19, SL_MAX_VERSION),
-	SLE_CONDVAR(Company, engine_renew,          SLE_BOOL,                   16, SL_MAX_VERSION),
-	SLE_CONDVAR(Company, engine_renew_months,   SLE_INT16,                  16, SL_MAX_VERSION),
-	SLE_CONDVAR(Company, engine_renew_money,    SLE_UINT32,                 16, SL_MAX_VERSION),
-	SLE_CONDVAR(Company, renew_keep_length,     SLE_BOOL,                    2, SL_MAX_VERSION), // added with 16.1, but was blank since 2
+	SLE_CONDREF(Company, engine_renew_list,            REF_ENGINE_RENEWS,   19, SL_MAX_VERSION),
+	SLE_CONDVAR(Company, settings.engine_renew,        SLE_BOOL,            16, SL_MAX_VERSION),
+	SLE_CONDVAR(Company, settings.engine_renew_months, SLE_INT16,           16, SL_MAX_VERSION),
+	SLE_CONDVAR(Company, settings.engine_renew_money,  SLE_UINT32,          16, SL_MAX_VERSION),
+	SLE_CONDVAR(Company, settings.renew_keep_length,   SLE_BOOL,             2, SL_MAX_VERSION),
 
 	/* Reserve extra space in savegame here. (currently 63 bytes) */
 	SLE_CONDNULL(63, 2, SL_MAX_VERSION),

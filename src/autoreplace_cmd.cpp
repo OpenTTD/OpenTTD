@@ -624,7 +624,7 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1
 	}
 
 	const Company *c = GetCompany(_current_company);
-	bool wagon_removal = c->renew_keep_length;
+	bool wagon_removal = c->settings.renew_keep_length;
 
 	/* Test whether any replacement is set, before issuing a whole lot of commands that would end in nothing changed */
 	Vehicle *w = v;

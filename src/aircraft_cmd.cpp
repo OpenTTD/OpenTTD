@@ -1448,7 +1448,7 @@ static inline bool CheckSendAircraftToHangarForReplacement(const Vehicle *v)
 		return false;
 	}
 
-	if (c->money < (c->engine_renew_money + (2 * DoCommand(0, new_engine, 0, DC_QUERY_COST, CMD_BUILD_AIRCRAFT).GetCost()))) {
+	if (c->money < (c->settings.engine_renew_money + (2 * DoCommand(0, new_engine, 0, DC_QUERY_COST, CMD_BUILD_AIRCRAFT).GetCost()))) {
 		/* We lack enough money to request the replacement right away.
 		 * We want 2*(the price of the new vehicle) and not looking at the value of the vehicle we are going to sell.
 		 * The reason is that we don't want to send a whole lot of vehicles to the hangars when we only have enough money to replace a single one.

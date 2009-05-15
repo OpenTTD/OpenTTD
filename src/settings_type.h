@@ -78,9 +78,6 @@ struct GUISettings {
 	bool   auto_euro;                        ///< automatically switch to euro in 2002
 	byte   drag_signals_density;             ///< many signals density
 	Year   semaphore_build_before;           ///< build semaphore signals automatically before this year
-	bool   autorenew;                        ///< should autorenew be enabled for new companies?
-	int16  autorenew_months;                 ///< how many months from EOL of vehicles should autorenew trigger for new companies?
-	int32  autorenew_money;                  ///< how much money before autorenewing for new companies?
 	byte   news_message_timeout;             ///< how much longer than the news message "age" should we keep the message in the history
 	bool   show_track_reservation;           ///< highlight reserved tracks.
 	uint8  default_signal_type;              ///< the signal type to build by default.
@@ -341,6 +338,14 @@ struct StationSettings {
 	byte   station_spread;                   ///< amount a station may spread
 };
 
+/** Settings that can be set per company. */
+struct CompanySettings {
+	bool engine_renew;                       ///< is autorenew enabled
+	int16 engine_renew_months;               ///< months before/after the maximum vehicle age a vehicle should be renewed
+	uint32 engine_renew_money;               ///< minimum amount of money before autorenew is used
+	bool renew_keep_length;                  ///< sell some wagons if after autoreplace the train is longer than before
+};
+
 /** All settings together for the game. */
 struct GameSettings {
 	DifficultySettings   difficulty;         ///< settings related to the difficulty
@@ -360,6 +365,7 @@ struct GameSettings {
 struct ClientSettings {
 	GUISettings          gui;                ///< settings related to the GUI
 	NetworkSettings      network;            ///< settings related to the network
+	CompanySettings      company;            ///< default values for per-company settings
 };
 
 /** The current settings for this game. */

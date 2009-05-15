@@ -755,15 +755,12 @@ static void MakeNewGameDone()
 	DoStartupNewCompany(false);
 
 	Company *c = GetCompany(COMPANY_FIRST);
-	c->engine_renew = _settings_client.gui.autorenew;
-	c->engine_renew_months = _settings_client.gui.autorenew_months;
-	c->engine_renew_money = _settings_client.gui.autorenew_money;
+	c->settings = _settings_client.company;
 
 	IConsoleCmdExec("exec scripts/game_start.scr 0");
 
 	SetLocalCompany(COMPANY_FIRST);
 	_current_company = _local_company;
-	DoCommandP(0, (_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4, _settings_client.gui.autorenew_money, CMD_SET_AUTOREPLACE);
 
 	InitializeRailGUI();
 
@@ -854,7 +851,8 @@ static void StartScenario()
 
 	SetLocalCompany(COMPANY_FIRST);
 	_current_company = _local_company;
-	DoCommandP(0, (_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4, _settings_client.gui.autorenew_money, CMD_SET_AUTOREPLACE);
+	Company *c = GetCompany(COMPANY_FIRST);
+	c->settings = _settings_client.company;
 
 	MarkWholeScreenDirty();
 }

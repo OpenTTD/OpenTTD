@@ -156,7 +156,7 @@
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return false;
 
-	return ::GetCompany((CompanyID)company)->engine_renew;
+	return ::GetCompany((CompanyID)company)->settings.engine_renew;
 }
 
 /* static */ bool AICompany::SetAutoRenewMonths(int16 months)
@@ -169,7 +169,7 @@
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return 0;
 
-	return ::GetCompany((CompanyID)company)->engine_renew_months;
+	return ::GetCompany((CompanyID)company)->settings.engine_renew_months;
 }
 
 /* static */ bool AICompany::SetAutoRenewMoney(uint32 money)
@@ -182,5 +182,5 @@
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return 0;
 
-	return ::GetCompany((CompanyID)company)->engine_renew_money;
+	return ::GetCompany((CompanyID)company)->settings.engine_renew_money;
 }
