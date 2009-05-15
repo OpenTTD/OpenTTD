@@ -293,6 +293,7 @@ public:
 
 	/**
 	 * Get all RailTracks on the given tile.
+	 * @note A depot has no railtracks.
 	 * @param tile The tile to check.
 	 * @pre IsRailTile(tile).
 	 * @return A bitmask of RailTrack with all RailTracks on the tile.

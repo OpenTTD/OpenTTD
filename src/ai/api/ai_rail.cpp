@@ -203,6 +203,7 @@
 	if (IsRailWaypointTile(tile)) return ::GetRailWaypointBits(tile);
 	if (IsRailStationTile(tile)) return ::TrackToTrackBits(::GetRailStationTrack(tile));
 	if (IsLevelCrossingTile(tile)) return ::GetCrossingRailBits(tile);
+	if (IsRailDepotTile(tile)) return ::TRACK_BIT_NONE;
 	return ::GetTrackBits(tile);
 }
 

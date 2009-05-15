@@ -321,6 +321,8 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		case MP_RAILWAY:
 			if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
+			if (!IsPlainRailTile(tile)) return CMD_ERROR;
+
 			if (!IsCompatibleRail(GetRailType(tile), railtype)) return_cmd_error(STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION);
 
 			if (!CheckTrackCombination(tile, trackbit, flags) ||
@@ -554,6 +556,8 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  */
 bool FloodHalftile(TileIndex t)
 {
+	assert(IsPlainRailTile(t));
+
 	bool flooded = false;
 	if (GetRailGroundType(t) == RAIL_GROUND_WATER) return flooded;
 
@@ -1043,7 +1047,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 	end_tile = p1;
 	if (signal_density == 0 || signal_density > 20) return CMD_ERROR;
 
-	if (!IsTileType(tile, MP_RAILWAY)) return CMD_ERROR;
+	if (!IsTileType(tile, MP_RAILWAY) || !IsPlainRailTile(tile)) return CMD_ERROR;
 
 	/* for vertical/horizontal tracks, double the given signals density
 	 * since the original amount will be too dense (shorter tracks) */
@@ -1169,6 +1173,7 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1
 
 	if (!ValParamTrackOrientation(track) ||
 			!IsTileType(tile, MP_RAILWAY) ||
+			!IsPlainRailTile(tile) ||
 			!HasTrack(tile, track) ||
 			!EnsureNoTrainOnTrack(tile, track) ||
 			!HasSignalOnTrack(tile, track)) {
@@ -2175,7 +2180,7 @@ static void TileLoop_Track(TileIndex tile)
 							(rail & TRACK_BIT_X)
 						)) {
 					TileIndex n = tile + TileDiffXY(0, -1);
-					TrackBits nrail = GetTrackBits(n);
+					TrackBits nrail = (IsTileType(n, MP_RAILWAY) && IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
 
 					if (!IsTileType(n, MP_RAILWAY) ||
 							!IsTileOwner(n, owner) ||
@@ -2190,7 +2195,7 @@ static void TileLoop_Track(TileIndex tile)
 							(rail & TRACK_BIT_X)
 						)) {
 					TileIndex n = tile + TileDiffXY(0, 1);
-					TrackBits nrail = GetTrackBits(n);
+					TrackBits nrail = (IsTileType(n, MP_RAILWAY) && IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
 
 					if (!IsTileType(n, MP_RAILWAY) ||
 							!IsTileOwner(n, owner) ||
@@ -2206,7 +2211,7 @@ static void TileLoop_Track(TileIndex tile)
 							(rail & TRACK_BIT_Y)
 						)) {
 					TileIndex n = tile + TileDiffXY(-1, 0);
-					TrackBits nrail = GetTrackBits(n);
+					TrackBits nrail = (IsTileType(n, MP_RAILWAY) && IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
 
 					if (!IsTileType(n, MP_RAILWAY) ||
 							!IsTileOwner(n, owner) ||
@@ -2221,7 +2226,7 @@ static void TileLoop_Track(TileIndex tile)
 							(rail & TRACK_BIT_Y)
 						)) {
 					TileIndex n = tile + TileDiffXY(1, 0);
-					TrackBits nrail = GetTrackBits(n);
+					TrackBits nrail = (IsTileType(n, MP_RAILWAY) && IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
 
 					if (!IsTileType(n, MP_RAILWAY) ||
 							!IsTileOwner(n, owner) ||
