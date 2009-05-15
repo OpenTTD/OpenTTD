@@ -1820,7 +1820,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (distant_join && (!_settings_game.station.distant_join_stations || !IsValidStationID(station_to_join))) return CMD_ERROR;
 
 	/* Check if a valid, buildable airport was chosen for construction */
-	if (p1 > lengthof(_airport_sections) || !HasBit(GetValidAirports(), p1)) return CMD_ERROR;
+	if (p1 >= lengthof(_airport_sections) || !HasBit(GetValidAirports(), p1)) return CMD_ERROR;
 
 	if (!CheckIfAuthorityAllowsNewStation(tile, flags)) {
 		return CMD_ERROR;
