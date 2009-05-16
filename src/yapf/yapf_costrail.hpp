@@ -54,6 +54,10 @@ protected:
 	};
 
 protected:
+	/**
+	 * @note maximum cost doesn't work with caching enabled
+	 * @todo fix maximum cost failing with caching (e.g. FS#2900)
+	 */
 	int           m_max_cost;
 	CBlobT<int>   m_sig_look_ahead_costs;
 	bool          m_disable_cache;

@@ -213,6 +213,16 @@ public:
 	static bool stFindNearestDepotTwoWay(const Vehicle *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int max_distance, int reverse_penalty, TileIndex *depot_tile, bool *reversed)
 	{
 		Tpf pf1;
+		/*
+		 * With caching enabled it simply cannot get a reliable result when you
+		 * have limited the distance a train may travel. This means that the
+		 * cached result does not match uncached result in all cases and that
+		 * causes desyncs. So disable caching when finding for a depot that is
+		 * nearby. This only happens with automatic servicing of vehicles,
+		 * so it will only impact performance when you do not manually set
+		 * depot orders and you do not disable automatic servicing.
+		 */
+		if (max_distance != 0) pf1.DisableCache(true);
 		bool result1 = pf1.FindNearestDepotTwoWay(v, t1, td1, t2, td2, max_distance, reverse_penalty, depot_tile, reversed);
 
 #if DEBUG_YAPF_CACHE
