@@ -170,7 +170,7 @@ RailType GetTileRailType(TileIndex tile)
 
 bool HasRailtypeAvail(const CompanyID company, const RailType railtype)
 {
-	return HasBit(GetCompany(company)->avail_railtypes, railtype);
+	return HasBit(Company::Get(company)->avail_railtypes, railtype);
 }
 
 bool ValParamRailtype(const RailType rail)

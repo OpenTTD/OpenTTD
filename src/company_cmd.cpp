@@ -77,7 +77,7 @@ void SetLocalCompany(CompanyID new_company)
 
 	/* Do not update the settings if we are in the intro GUI */
 	if (IsValidCompanyID(new_company) && _game_mode != GM_MENU) {
-		const Company *c = GetCompany(new_company);
+		const Company *c = Company::Get(new_company);
 		_settings_client.company = c->settings;
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}
@@ -91,7 +91,7 @@ void SetLocalCompany(CompanyID new_company)
 
 bool IsHumanCompany(CompanyID company)
 {
-	return !GetCompany(company)->is_ai;
+	return !Company::Get(company)->is_ai;
 }
 
 
@@ -151,7 +151,7 @@ bool CheckCompanyHasMoney(CommandCost cost)
 {
 	if (cost.GetCost() > 0) {
 		CompanyID company = _current_company;
-		if (IsValidCompanyID(company) && cost.GetCost() > GetCompany(company)->money) {
+		if (IsValidCompanyID(company) && cost.GetCost() > Company::Get(company)->money) {
 			SetDParam(0, cost.GetCost());
 			_error_message = STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY;
 			return false;
@@ -189,12 +189,12 @@ void SubtractMoneyFromCompany(CommandCost cost)
 {
 	CompanyID cid = _current_company;
 
-	if (IsValidCompanyID(cid)) SubtractMoneyFromAnyCompany(GetCompany(cid), cost);
+	if (IsValidCompanyID(cid)) SubtractMoneyFromAnyCompany(Company::Get(cid), cost);
 }
 
 void SubtractMoneyFromCompanyFract(CompanyID company, CommandCost cst)
 {
-	Company *c = GetCompany(company);
+	Company *c = Company::Get(company);
 	byte m = c->money_fraction;
 	Money cost = cst.GetCost();
 
@@ -500,7 +500,7 @@ void OnTick_Companies()
 	if (_game_mode == GM_EDITOR) return;
 
 	if (IsValidCompanyID((CompanyID)_cur_company_tick_index)) {
-		Company *c = GetCompany((CompanyID)_cur_company_tick_index);
+		Company *c = Company::Get((CompanyID)_cur_company_tick_index);
 		if (c->name_1 != 0) GenerateCompanyName(c);
 	}
 
@@ -528,7 +528,7 @@ void CompaniesYearlyLoop()
 
 	if (_settings_client.gui.show_finances && _local_company != COMPANY_SPECTATOR) {
 		ShowCompanyFinances(_local_company);
-		c = GetCompany(_local_company);
+		c = Company::Get(_local_company);
 		if (c->num_valid_stat_ent > 5 && c->old_economy[0].performance_history < c->old_economy[4].performance_history) {
 			SndPlayFx(SND_01_BAD_YEAR);
 		} else {
@@ -569,7 +569,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 {
 	if (!IsValidCompanyID(_current_company)) return CMD_ERROR;
 
-	Company *c = GetCompany(_current_company);
+	Company *c = Company::Get(_current_company);
 	switch (GB(p1, 0, 3)) {
 		case 0:
 			if (c->settings.engine_renew == HasBit(p2, 0)) return CMD_ERROR;
@@ -823,7 +823,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			if (!(flags & DC_EXEC)) return CommandCost();
 
-			c = GetCompany((CompanyID)p2);
+			c = Company::Get((CompanyID)p2);
 
 			/* Delete any open window of the company */
 			DeleteCompanyWindows(c->index);
@@ -854,7 +854,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			if (!(flags & DC_EXEC)) return CMD_ERROR;
 
 			ChangeOwnershipOfCompanyItems(cid_old, cid_new);
-			delete GetCompany(cid_old);
+			delete Company::Get(cid_old);
 		} break;
 
 		default: return CMD_ERROR;

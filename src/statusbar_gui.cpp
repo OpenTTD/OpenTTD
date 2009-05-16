@@ -94,7 +94,7 @@ struct StatusBarWindow : Window {
 
 	virtual void OnPaint()
 	{
-		const Company *c = (_local_company == COMPANY_SPECTATOR) ? NULL : GetCompany(_local_company);
+		const Company *c = (_local_company == COMPANY_SPECTATOR) ? NULL : Company::Get(_local_company);
 
 		this->DrawWidgets();
 		SetDParam(0, _date);

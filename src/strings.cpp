@@ -665,7 +665,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 			}
 
 			case SCC_INDUSTRY_NAME: { // {INDUSTRY}
-				const Industry *i = GetIndustry(GetInt32(&argv));
+				const Industry *i = Industry::Get(GetInt32(&argv));
 				int64 args[2];
 
 				/* industry not valid anymore? */
@@ -827,7 +827,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 				break;
 
 			case SCC_WAYPOINT_NAME: { // {WAYPOINT}
-				Waypoint *wp = GetWaypoint(GetInt32(&argv));
+				Waypoint *wp = Waypoint::Get(GetInt32(&argv));
 
 				assert(wp->IsValid());
 
@@ -855,7 +855,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 					break;
 				}
 
-				const Station *st = GetStation(sid);
+				const Station *st = Station::Get(sid);
 				if (st->name != NULL) {
 					buff = strecpy(buff, st->name, last);
 				} else {
@@ -882,7 +882,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 			}
 
 			case SCC_TOWN_NAME: { // {TOWN}
-				const Town *t = GetTown(GetInt32(&argv));
+				const Town *t = Town::Get(GetInt32(&argv));
 				int64 temp[1];
 
 				assert(t->IsValid());
@@ -909,7 +909,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 			}
 
 			case SCC_GROUP_NAME: { // {GROUP}
-				const Group *g = GetGroup(GetInt32(&argv));
+				const Group *g = Group::Get(GetInt32(&argv));
 
 				assert(g->IsValid());
 
@@ -926,7 +926,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 
 			case SCC_ENGINE_NAME: { // {ENGINE}
 				EngineID engine = (EngineID)GetInt32(&argv);
-				const Engine *e = GetEngine(engine);
+				const Engine *e = Engine::Get(engine);
 
 				if (e->name != NULL) {
 					buff = strecpy(buff, e->name, last);
@@ -937,7 +937,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 			}
 
 			case SCC_VEHICLE_NAME: { // {VEHICLE}
-				const Vehicle *v = GetVehicle(GetInt32(&argv));
+				const Vehicle *v = Vehicle::Get(GetInt32(&argv));
 
 				if (v->name != NULL) {
 					buff = strecpy(buff, v->name, last);
@@ -960,7 +960,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 			}
 
 			case SCC_SIGN_NAME: { // {SIGN}
-				const Sign *si = GetSign(GetInt32(&argv));
+				const Sign *si = Sign::Get(GetInt32(&argv));
 				if (si->name != NULL) {
 					buff = strecpy(buff, si->name, last);
 				} else {
@@ -970,7 +970,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 			}
 
 			case SCC_COMPANY_NAME: { // {COMPANY}
-				const Company *c = GetCompany((CompanyID)GetInt32(&argv));
+				const Company *c = Company::Get((CompanyID)GetInt32(&argv));
 
 				if (c->name != NULL) {
 					buff = strecpy(buff, c->name, last);
@@ -995,7 +995,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 			}
 
 			case SCC_PRESIDENT_NAME: { // {PRESIDENTNAME}
-				const Company *c = GetCompany((CompanyID)GetInt32(&argv));
+				const Company *c = Company::Get((CompanyID)GetInt32(&argv));
 
 				if (c->president_name != NULL) {
 					buff = strecpy(buff, c->president_name, last);

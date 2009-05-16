@@ -24,7 +24,7 @@
 {
 	if (!IsAwarded(subsidy_id)) return AICompany::COMPANY_INVALID;
 
-	return (AICompany::CompanyID)((byte)GetStation(_subsidies[subsidy_id].from)->owner);
+	return (AICompany::CompanyID)((byte)Station::Get(_subsidies[subsidy_id].from)->owner);
 }
 
 /* static */ int32 AISubsidy::GetExpireDate(SubsidyID subsidy_id)

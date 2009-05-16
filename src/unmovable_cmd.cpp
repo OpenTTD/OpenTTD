@@ -51,7 +51,7 @@ static inline const UnmovableSpec *GetUnmovableSpec(UnmovableType type)
  */
 static CommandCost DestroyCompanyHQ(CompanyID cid, DoCommandFlag flags)
 {
-	Company *c = GetCompany(cid);
+	Company *c = Company::Get(cid);
 
 	if (flags & DC_EXEC) {
 		TileIndex t = c->location_of_HQ;
@@ -99,7 +99,7 @@ extern CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandF
  */
 CommandCost CmdBuildCompanyHQ(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Company *c = GetCompany(_current_company);
+	Company *c = Company::Get(_current_company);
 	CommandCost cost(EXPENSES_PROPERTY);
 
 	cost = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
@@ -280,7 +280,7 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
 		if (flags & DC_AUTO) return_cmd_error(STR_ERROR_OBJECT_IN_THE_WAY);
 
 		TownID town = GetStatueTownID(tile);
-		ClrBit(GetTown(town)->statues, GetTileOwner(tile));
+		ClrBit(Town::Get(town)->statues, GetTileOwner(tile));
 		InvalidateWindow(WC_TOWN_AUTHORITY, town);
 	}
 
@@ -469,7 +469,7 @@ static void ChangeTileOwner_Unmovable(TileIndex tile, Owner old_owner, Owner new
 		SetTileOwner(tile, new_owner);
 	} else if (IsStatueTile(tile)) {
 		TownID town = GetStatueTownID(tile);
-		Town *t = GetTown(town);
+		Town *t = Town::Get(town);
 		ClrBit(t->statues, old_owner);
 		if (new_owner != INVALID_OWNER && !HasBit(t->statues, new_owner)) {
 			/* Transfer ownership to the new company */

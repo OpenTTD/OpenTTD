@@ -20,7 +20,7 @@ AIStationList_Vehicle::AIStationList_Vehicle(VehicleID vehicle_id)
 {
 	if (!AIVehicle::IsValidVehicle(vehicle_id)) return;
 
-	Vehicle *v = ::GetVehicle(vehicle_id);
+	Vehicle *v = ::Vehicle::Get(vehicle_id);
 
 	for (Order *o = v->GetFirstOrder(); o != NULL; o = o->next) {
 		if (o->IsType(OT_GOTO_STATION)) this->AddItem(o->GetDestination());

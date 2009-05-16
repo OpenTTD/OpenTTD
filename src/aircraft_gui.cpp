@@ -86,7 +86,7 @@ void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection)
 void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
-		const Vehicle *v = GetVehicle(_new_vehicle_id);
+		const Vehicle *v = Vehicle::Get(_new_vehicle_id);
 
 		if (v->tile == _backup_orders_tile) {
 			_backup_orders_tile = 0;

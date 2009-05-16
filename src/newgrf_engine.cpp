@@ -27,7 +27,7 @@ struct WagonOverride {
 
 void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *group, EngineID *train_id, uint trains)
 {
-	Engine *e = GetEngine(engine);
+	Engine *e = Engine::Get(engine);
 	WagonOverride *wo;
 
 	assert(cargo < NUM_CARGO + 2); // Include CT_DEFAULT and CT_PURCHASE pseudo cargos.
@@ -45,7 +45,7 @@ void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *
 
 const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, EngineID overriding_engine)
 {
-	const Engine *e = GetEngine(engine);
+	const Engine *e = Engine::Get(engine);
 
 	/* XXX: This could turn out to be a timesink on profiles. We could
 	 * always just dedicate 65535 bytes for an [engine][train] trampoline
@@ -81,7 +81,7 @@ void UnloadWagonOverrides(Engine *e)
 
 void SetCustomEngineSprites(EngineID engine, byte cargo, const SpriteGroup *group)
 {
-	Engine *e = GetEngine(engine);
+	Engine *e = Engine::Get(engine);
 	assert(cargo < lengthof(e->group));
 
 	if (e->group[cargo] != NULL) {
@@ -99,7 +99,7 @@ void SetCustomEngineSprites(EngineID engine, byte cargo, const SpriteGroup *grou
  */
 void SetEngineGRF(EngineID engine, const GRFFile *file)
 {
-	Engine *e = GetEngine(engine);
+	Engine *e = Engine::Get(engine);
 	e->grffile = file;
 }
 
@@ -111,7 +111,7 @@ void SetEngineGRF(EngineID engine, const GRFFile *file)
  */
 const GRFFile *GetEngineGRF(EngineID engine)
 {
-	return GetEngine(engine)->grffile;
+	return Engine::Get(engine)->grffile;
 }
 
 
@@ -479,7 +479,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			case 0x43: return _current_company | (LiveryHelper(object->u.vehicle.self_type, NULL) << 24); // Owner information
 			case 0x46: return 0;               // Motion counter
 			case 0x47: { // Vehicle cargo info
-				const Engine *e = GetEngine(object->u.vehicle.self_type);
+				const Engine *e = Engine::Get(object->u.vehicle.self_type);
 				CargoID cargo_type = e->GetDefaultCargoType();
 				if (cargo_type != CT_INVALID) {
 					const CargoSpec *cs = GetCargo(cargo_type);
@@ -488,7 +488,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 					return 0x000000FF;
 				}
 			}
-			case 0x48: return GetEngine(object->u.vehicle.self_type)->flags; // Vehicle Type Info
+			case 0x48: return Engine::Get(object->u.vehicle.self_type)->flags; // Vehicle Type Info
 			case 0x49: return _cur_year; // 'Long' format build year
 			case 0xC4: return Clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR; // Build year
 			case 0xDA: return INVALID_VEHICLE; // Next vehicle
@@ -576,7 +576,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 		case 0x43: // Company information
 			if (!HasBit(v->cache_valid, 3)) {
-				v->cached_var43 = v->owner | (GetCompany(v->owner)->is_ai ? 0x10000 : 0) | (LiveryHelper(v->engine_type, v) << 24);
+				v->cached_var43 = v->owner | (Company::Get(v->owner)->is_ai ? 0x10000 : 0) | (LiveryHelper(v->engine_type, v) << 24);
 				SetBit(v->cache_valid, 3);
 			}
 			return v->cached_var43;
@@ -646,18 +646,18 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			return (cs->classes << 16) | (cs->weight << 8) | GetEngineGRF(v->engine_type)->cargo_map[v->cargo_type];
 		}
 
-		case 0x48: return GetEngine(v->engine_type)->flags; // Vehicle Type Info
+		case 0x48: return Engine::Get(v->engine_type)->flags; // Vehicle Type Info
 		case 0x49: return v->build_year;
 
 		/* Variables which use the parameter */
 		case 0x60: // Count consist's engine ID occurance
 			//EngineID engine = GetNewEngineID(GetEngineGRF(v->engine_type), v->type, parameter);
-			if (v->type != VEH_TRAIN) return GetEngine(v->engine_type)->internal_id == parameter;
+			if (v->type != VEH_TRAIN) return Engine::Get(v->engine_type)->internal_id == parameter;
 
 			{
 				uint count = 0;
 				for (; v != NULL; v = v->Next()) {
-					if (GetEngine(v->engine_type)->internal_id == parameter) count++;
+					if (Engine::Get(v->engine_type)->internal_id == parameter) count++;
 				}
 				return count;
 			}
@@ -730,8 +730,8 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x43: return GB(v->max_age, 8, 8);
 		case 0x44: return Clamp(v->build_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
 		case 0x45: return v->unitnumber;
-		case 0x46: return GetEngine(v->engine_type)->internal_id;
-		case 0x47: return GB(GetEngine(v->engine_type)->internal_id, 8, 8);
+		case 0x46: return Engine::Get(v->engine_type)->internal_id;
+		case 0x47: return GB(Engine::Get(v->engine_type)->internal_id, 8, 8);
 		case 0x48:
 			if (v->type != VEH_TRAIN || v->spritenum != 0xFD) return v->spritenum;
 			return HasBit(v->u.rail.flags, VRF_REVERSE_DIRECTION) ? 0xFE : 0xFD;
@@ -854,7 +854,7 @@ static inline void NewVehicleResolver(ResolverObject *res, EngineID engine_type,
 	res->reseed          = 0;
 	res->count           = 0;
 
-	const Engine *e = GetEngine(engine_type);
+	const Engine *e = Engine::Get(engine_type);
 	res->grffile         = (e != NULL ? e->grffile : NULL);
 }
 
@@ -889,7 +889,7 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 		}
 	}
 
-	const Engine *e = GetEngine(engine);
+	const Engine *e = Engine::Get(engine);
 
 	assert(cargo < lengthof(e->group));
 	group = e->group[cargo];
@@ -916,7 +916,7 @@ SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction dire
 
 SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v, bool info_view)
 {
-	const Engine *e = GetEngine(engine);
+	const Engine *e = Engine::Get(engine);
 
 	/* Only valid for helicopters */
 	assert(e->type == VEH_AIRCRAFT);
@@ -1107,7 +1107,7 @@ void TriggerVehicle(Vehicle *v, VehicleTrigger trigger)
  */
 uint ListPositionOfEngine(EngineID engine)
 {
-	const Engine *e = GetEngine(engine);
+	const Engine *e = Engine::Get(engine);
 	if (e->grffile == NULL) return e->list_position;
 
 	/* Crude sorting to group by GRF ID */
@@ -1142,7 +1142,7 @@ void CommitVehicleListOrderChanges()
 
 		if (engine == target) continue;
 
-		Engine *source_e = GetEngine(engine);
+		Engine *source_e = Engine::Get(engine);
 		Engine *target_e = NULL;
 
 		/* Populate map with current list positions */

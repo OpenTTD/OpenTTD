@@ -21,7 +21,7 @@ AIWaypointList_Vehicle::AIWaypointList_Vehicle(VehicleID vehicle_id)
 {
 	if (!AIVehicle::IsValidVehicle(vehicle_id)) return;
 
-	const Vehicle *v = ::GetVehicle(vehicle_id);
+	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 
 	for (const Order *o = v->GetFirstOrder(); o != NULL; o = o->next) {
 		if (o->IsType(OT_GOTO_WAYPOINT)) this->AddItem(o->GetDestination());

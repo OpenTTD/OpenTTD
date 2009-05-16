@@ -50,7 +50,7 @@ struct TimetableWindow : Window {
 
 	TimetableWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		this->vehicle = GetVehicle(window_number);
+		this->vehicle = Vehicle::Get(window_number);
 		this->owner = this->vehicle->owner;
 		this->vscroll.cap = 8;
 		this->resize.step_height = 10;
@@ -80,7 +80,7 @@ struct TimetableWindow : Window {
 		switch (data) {
 			case 0:
 				/* Autoreplace replaced the vehicle */
-				this->vehicle = GetVehicle(this->window_number);
+				this->vehicle = Vehicle::Get(this->window_number);
 				break;
 
 			case -1:

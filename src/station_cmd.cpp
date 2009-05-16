@@ -100,7 +100,7 @@ static Station *GetStationAround(TileIndex tile, int w, int h, StationID closest
 			}
 		}
 	END_TILE_LOOP(tile_cur, w + 2, h + 2, tile - TileDiffXY(1, 1))
-	return (closest_station == INVALID_STATION) ? NULL : GetStation(closest_station);
+	return (closest_station == INVALID_STATION) ? NULL : Station::Get(closest_station);
 }
 
 /**
@@ -911,7 +911,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 			} else {
 				/* Extend the current station, and don't check whether it will
 				 * be near any other stations. */
-				st = GetStation(est);
+				st = Station::Get(est);
 				check_surrounding = false;
 			}
 		} else {
@@ -928,7 +928,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 	}
 
 	/* Distant join */
-	if (st == NULL && distant_join) st = GetStation(station_to_join);
+	if (st == NULL && distant_join) st = Station::Get(station_to_join);
 
 	/* See if there is a deleted station close to us. */
 	if (st == NULL && reuse) st = GetClosestDeletedStation(tile_org);
@@ -1425,7 +1425,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	}
 
 	/* Distant join */
-	if (st == NULL && distant_join) st = GetStation(station_to_join);
+	if (st == NULL && distant_join) st = Station::Get(station_to_join);
 
 	/* Find a deleted station close to us */
 	if (st == NULL && reuse) st = GetClosestDeletedStation(tile);
@@ -1876,7 +1876,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	}
 
 	/* Distant join */
-	if (st == NULL && distant_join) st = GetStation(station_to_join);
+	if (st == NULL && distant_join) st = Station::Get(station_to_join);
 
 	/* Find a deleted station close to us */
 	if (st == NULL && reuse) st = GetClosestDeletedStation(tile);
@@ -2183,7 +2183,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	}
 
 	/* Distant join */
-	if (st == NULL && distant_join) st = GetStation(station_to_join);
+	if (st == NULL && distant_join) st = Station::Get(station_to_join);
 
 	/* Find a deleted station close to us */
 	if (st == NULL && reuse) st = GetClosestDeletedStation(tile);
@@ -2842,7 +2842,7 @@ void OnTick_Station()
 	uint i = _station_tick_ctr;
 	if (++_station_tick_ctr > GetMaxStationIndex()) _station_tick_ctr = 0;
 
-	if (IsValidStationID(i)) StationHandleBigTick(GetStation(i));
+	if (IsValidStationID(i)) StationHandleBigTick(Station::Get(i));
 
 	Station *st;
 	FOR_ALL_STATIONS(st) {
@@ -2913,7 +2913,7 @@ CommandCost CmdRenameStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 {
 	if (!IsValidStationID(p1)) return CMD_ERROR;
 
-	Station *st = GetStation(p1);
+	Station *st = Station::Get(p1);
 	if (!CheckOwnership(st->owner)) return CMD_ERROR;
 
 	bool reset = StrEmpty(text);

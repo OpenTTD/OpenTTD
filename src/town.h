@@ -302,7 +302,7 @@ TileIndexDiff GetHouseNorthPart(HouseID &house);
  */
 static inline bool IsValidTownID(TownID index)
 {
-	return index < GetTownPoolSize() && GetTown(index)->IsValid();
+	return index < GetTownPoolSize() && Town::Get(index)->IsValid();
 }
 
 static inline TownID GetMaxTownIndex()
@@ -341,12 +341,12 @@ static inline Town *GetRandomTown()
 		}
 	}
 
-	return GetTown(index);
+	return Town::Get(index);
 }
 
 Town *CalcClosestTownFromTile(TileIndex tile, uint threshold = UINT_MAX);
 
-#define FOR_ALL_TOWNS_FROM(t, start) for (t = GetTown(start); t != NULL; t = (t->index + 1U < GetTownPoolSize()) ? GetTown(t->index + 1U) : NULL) if (t->IsValid())
+#define FOR_ALL_TOWNS_FROM(t, start) for (t = Town::Get(start); t != NULL; t = (t->index + 1U < GetTownPoolSize()) ? Town::Get(t->index + 1U) : NULL) if (t->IsValid())
 #define FOR_ALL_TOWNS(t) FOR_ALL_TOWNS_FROM(t, 0)
 
 extern Town *_cleared_town;

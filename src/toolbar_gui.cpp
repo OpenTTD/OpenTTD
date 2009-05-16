@@ -624,7 +624,7 @@ static void ToolbarZoomOutClick(Window *w)
 
 static void ToolbarBuildRailClick(Window *w)
 {
-	const Company *c = GetCompany(_local_company);
+	const Company *c = Company::Get(_local_company);
 	DropDownList *list = new DropDownList();
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
 		const RailtypeInfo *rti = GetRailTypeInfo(rt);
@@ -646,7 +646,7 @@ static void MenuClickBuildRail(int index)
 
 static void ToolbarBuildRoadClick(Window *w)
 {
-	const Company *c = GetCompany(_local_company);
+	const Company *c = Company::Get(_local_company);
 	DropDownList *list = new DropDownList();
 	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
 		/* The standard road button is *always* available */

@@ -97,7 +97,7 @@ extern void StateGameLoop();
  */
 NetworkClientInfo *NetworkFindClientInfoFromIndex(ClientIndex index)
 {
-	return IsValidNetworkClientInfoIndex(index) ? GetNetworkClientInfo(index) : NULL;
+	return IsValidNetworkClientInfoIndex(index) ? NetworkClientInfo::Get(index) : NULL;
 }
 
 /**
@@ -926,7 +926,7 @@ static bool NetworkDoClientLoop()
 				NetworkError(STR_NETWORK_ERR_DESYNC);
 				DEBUG(desync, 1, "sync_err: %d; %d\n", _date, _date_fract);
 				DEBUG(net, 0, "Sync error detected!");
-				NetworkClientError(NETWORK_RECV_STATUS_DESYNC, GetNetworkClientSocket(0));
+				NetworkClientError(NETWORK_RECV_STATUS_DESYNC, NetworkClientSocket::Get(0));
 				return false;
 			}
 

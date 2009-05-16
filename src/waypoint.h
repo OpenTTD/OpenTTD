@@ -42,10 +42,10 @@ struct Waypoint : PoolItem<Waypoint, WaypointID, &_Waypoint_pool> {
 
 static inline bool IsValidWaypointID(WaypointID index)
 {
-	return index < GetWaypointPoolSize() && GetWaypoint(index)->IsValid();
+	return index < GetWaypointPoolSize() && Waypoint::Get(index)->IsValid();
 }
 
-#define FOR_ALL_WAYPOINTS_FROM(wp, start) for (wp = GetWaypoint(start); wp != NULL; wp = (wp->index + 1U < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1U) : NULL) if (wp->IsValid())
+#define FOR_ALL_WAYPOINTS_FROM(wp, start) for (wp = Waypoint::Get(start); wp != NULL; wp = (wp->index + 1U < GetWaypointPoolSize()) ? Waypoint::Get(wp->index + 1U) : NULL) if (wp->IsValid())
 #define FOR_ALL_WAYPOINTS(wp) FOR_ALL_WAYPOINTS_FROM(wp, 0)
 
 
@@ -57,7 +57,7 @@ static inline bool IsValidWaypointID(WaypointID index)
 static inline Waypoint *GetWaypointByTile(TileIndex tile)
 {
 	assert(IsRailWaypointTile(tile));
-	return GetWaypoint(GetWaypointIndex(tile));
+	return Waypoint::Get(GetWaypointIndex(tile));
 }
 
 CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justremove);

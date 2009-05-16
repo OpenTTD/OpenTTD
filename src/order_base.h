@@ -423,17 +423,17 @@ public:
 
 static inline bool IsValidOrderListID(uint index)
 {
-	return index < GetOrderListPoolSize() && GetOrderList(index)->IsValid();
+	return index < GetOrderListPoolSize() && OrderList::Get(index)->IsValid();
 }
 
-#define FOR_ALL_ORDERS_FROM(order, start) for (order = GetOrder(start); order != NULL; order = (order->index + 1U < GetOrderPoolSize()) ? GetOrder(order->index + 1U) : NULL) if (order->IsValid())
+#define FOR_ALL_ORDERS_FROM(order, start) for (order = Order::Get(start); order != NULL; order = (order->index + 1U < GetOrderPoolSize()) ? Order::Get(order->index + 1U) : NULL) if (order->IsValid())
 #define FOR_ALL_ORDERS(order) FOR_ALL_ORDERS_FROM(order, 0)
 
 
 #define FOR_VEHICLE_ORDERS(v, order) for (order = (v->orders.list == NULL) ? NULL : v->orders.list->GetFirstOrder(); order != NULL; order = order->next)
 
 
-#define FOR_ALL_ORDER_LISTS_FROM(ol, start) for (ol = GetOrderList(start); ol != NULL; ol = (ol->index + 1U < GetOrderListPoolSize()) ? GetOrderList(ol->index + 1U) : NULL) if (ol->IsValid())
+#define FOR_ALL_ORDER_LISTS_FROM(ol, start) for (ol = OrderList::Get(start); ol != NULL; ol = (ol->index + 1U < GetOrderListPoolSize()) ? OrderList::Get(ol->index + 1U) : NULL) if (ol->IsValid())
 #define FOR_ALL_ORDER_LISTS(ol) FOR_ALL_ORDER_LISTS_FROM(ol, 0)
 
 #endif /* ORDER_H */

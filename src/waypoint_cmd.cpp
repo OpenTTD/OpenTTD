@@ -71,7 +71,7 @@ static void MakeDefaultWaypointName(Waypoint *wp)
 
 	WaypointID cid = 0; // current index, goes to GetWaypointPoolSize()-1, then wraps to 0
 	do {
-		Waypoint *lwp = GetWaypoint(cid);
+		Waypoint *lwp = Waypoint::Get(cid);
 
 		/* check only valid waypoints... */
 		if (lwp->IsValid() && wp != lwp) {
@@ -316,7 +316,7 @@ CommandCost CmdRenameWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 {
 	if (!IsValidWaypointID(p1)) return CMD_ERROR;
 
-	Waypoint *wp = GetWaypoint(p1);
+	Waypoint *wp = Waypoint::Get(p1);
 	if (!CheckOwnership(wp->owner)) return CMD_ERROR;
 
 	bool reset = StrEmpty(text);

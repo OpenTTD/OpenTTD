@@ -587,8 +587,8 @@ static bool LoadOldOrder(LoadgameState *ls, int num)
 
 	/* Relink the orders to eachother (in the orders for one vehicle are behind eachother,
 	 * with an invalid order (OT_NOTHING) as indication that it is the last order */
-	if (num > 0 && GetOrder(num)->IsValid()) {
-		GetOrder(num - 1)->next = GetOrder(num);
+	if (num > 0 && Order::Get(num)->IsValid()) {
+		Order::Get(num - 1)->next = Order::Get(num);
 	}
 
 	return true;
@@ -729,7 +729,7 @@ static bool LoadOldGood(LoadgameState *ls, int num)
 	/* for TTO games, 12th (num == 11) goods entry is created in the Station constructor */
 	if (_savegame_type == SGT_TTO && num == 11) return true;
 
-	Station *st = GetStation(_current_station_id);
+	Station *st = Station::Get(_current_station_id);
 	GoodsEntry *ge = &st->goods[num];
 
 	if (!LoadChunk(ls, ge, goods_chunk)) return false;
@@ -792,7 +792,7 @@ static bool LoadOldStation(LoadgameState *ls, int num)
 	if (!LoadChunk(ls, st, station_chunk)) return false;
 
 	if (st->xy != 0) {
-		st->town = GetTown(RemapTownIndex(_old_town_index));
+		st->town = Town::Get(RemapTownIndex(_old_town_index));
 
 		if (_savegame_type == SGT_TTO) {
 			if (IsInsideBS(_old_string_id, 0x180F, 32)) {
@@ -869,7 +869,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 	if (!LoadChunk(ls, i, industry_chunk)) return false;
 
 	if (i->xy != 0) {
-		i->town = GetTown(RemapTownIndex(_old_town_index));
+		i->town = Town::Get(RemapTownIndex(_old_town_index));
 
 		if (_savegame_type == SGT_TTO) {
 			if (i->type > 0x06) i->type++; // Printing Works were added
@@ -900,7 +900,7 @@ static const OldChunks _company_yearly_chunk[] = {
 
 static bool LoadOldCompanyYearly(LoadgameState *ls, int num)
 {
-	Company *c = GetCompany(_current_company_id);
+	Company *c = Company::Get(_current_company_id);
 
 	for (uint i = 0; i < 13; i++) {
 		if (_savegame_type == SGT_TTO && i == 6) {
@@ -927,7 +927,7 @@ static const OldChunks _company_economy_chunk[] = {
 
 static bool LoadOldCompanyEconomy(LoadgameState *ls, int num)
 {
-	Company *c = GetCompany(_current_company_id);
+	Company *c = Company::Get(_current_company_id);
 
 	if (!LoadChunk(ls, &c->cur_economy, _company_economy_chunk)) return false;
 
@@ -1131,7 +1131,7 @@ static const OldChunks vehicle_empty_chunk[] = {
 
 static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 {
-	Vehicle *v = GetVehicle(_current_vehicle_id);
+	Vehicle *v = Vehicle::Get(_current_vehicle_id);
 	uint temp = ls->total_read;
 	bool res;
 
@@ -1358,11 +1358,11 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 		if (_old_order_ptr != 0 && _old_order_ptr != 0xFFFFFFFF) {
 			uint max = _savegame_type == SGT_TTO ? 3000 : 5000;
 			uint old_id = RemapOrderIndex(_old_order_ptr);
-			if (old_id < max) v->orders.old = GetOrder(old_id); // don't accept orders > max number of orders
+			if (old_id < max) v->orders.old = Order::Get(old_id); // don't accept orders > max number of orders
 		}
 		v->current_order.AssignOrder(UnpackOldOrder(_old_order));
 
-		if (_old_next_ptr != 0xFFFF) v->next = GetVehiclePoolSize() <= _old_next_ptr ? new (_old_next_ptr) InvalidVehicle() : GetVehicle(_old_next_ptr);
+		if (_old_next_ptr != 0xFFFF) v->next = GetVehiclePoolSize() <= _old_next_ptr ? new (_old_next_ptr) InvalidVehicle() : Vehicle::Get(_old_next_ptr);
 
 		if (_cargo_count != 0) {
 			CargoPacket *cp = new CargoPacket((_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source, _cargo_count);

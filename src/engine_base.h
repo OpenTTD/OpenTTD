@@ -87,34 +87,34 @@ static inline bool IsEngineIndex(uint index)
 	return index < GetEnginePoolSize();
 }
 
-#define FOR_ALL_ENGINES_FROM(e, start) for (e = GetEngine(start); e != NULL; e = (e->index + 1U < GetEnginePoolSize()) ? GetEngine(e->index + 1U) : NULL) if (e->IsValid())
+#define FOR_ALL_ENGINES_FROM(e, start) for (e = Engine::Get(start); e != NULL; e = (e->index + 1U < GetEnginePoolSize()) ? Engine::Get(e->index + 1U) : NULL) if (e->IsValid())
 #define FOR_ALL_ENGINES(e) FOR_ALL_ENGINES_FROM(e, 0)
 
 #define FOR_ALL_ENGINES_OF_TYPE(e, engine_type) FOR_ALL_ENGINES(e) if (e->type == engine_type)
 
 static inline const EngineInfo *EngInfo(EngineID e)
 {
-	return &GetEngine(e)->info;
+	return &Engine::Get(e)->info;
 }
 
 static inline const RailVehicleInfo *RailVehInfo(EngineID e)
 {
-	return &GetEngine(e)->u.rail;
+	return &Engine::Get(e)->u.rail;
 }
 
 static inline const RoadVehicleInfo *RoadVehInfo(EngineID e)
 {
-	return &GetEngine(e)->u.road;
+	return &Engine::Get(e)->u.road;
 }
 
 static inline const ShipVehicleInfo *ShipVehInfo(EngineID e)
 {
-	return &GetEngine(e)->u.ship;
+	return &Engine::Get(e)->u.ship;
 }
 
 static inline const AircraftVehicleInfo *AircraftVehInfo(EngineID e)
 {
-	return &GetEngine(e)->u.air;
+	return &Engine::Get(e)->u.air;
 }
 
 #endif /* ENGINE_TYPE_H */

@@ -42,7 +42,7 @@
 	}
 
 	_current_company = company;
-	Company *c = GetCompany(company);
+	Company *c = Company::Get(company);
 
 	c->ai_info = info;
 	assert(c->ai_instance == NULL);
@@ -74,7 +74,7 @@
 	 * Effectively collecting garbage once every two months per AI. */
 	if ((AI::frame_counter & 255) == 0) {
 		CompanyID cid = (CompanyID)GB(AI::frame_counter, 8, 4);
-		if (IsValidCompanyID(cid) && !IsHumanCompany(cid)) GetCompany(cid)->ai_instance->CollectGarbage();
+		if (IsValidCompanyID(cid) && !IsHumanCompany(cid)) Company::Get(cid)->ai_instance->CollectGarbage();
 	}
 
 	_current_company = OWNER_NONE;
@@ -91,7 +91,7 @@
 
 	CompanyID old_company = _current_company;
 	_current_company = company;
-	Company *c = GetCompany(company);
+	Company *c = Company::Get(company);
 
 	delete c->ai_instance;
 	c->ai_instance = NULL;
@@ -221,18 +221,18 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 		AIObject::IncreaseDoCommandCosts(AIObject::GetLastCost());
 	}
 
-	GetCompany(_current_company)->ai_instance->Continue();
+	Company::Get(_current_company)->ai_instance->Continue();
 }
 
 /* static */ void AI::Save(CompanyID company)
 {
 	if (!_networking || _network_server) {
 		assert(IsValidCompanyID(company));
-		assert(GetCompany(company)->ai_instance != NULL);
+		assert(Company::Get(company)->ai_instance != NULL);
 
 		CompanyID old_company = _current_company;
 		_current_company = company;
-		GetCompany(company)->ai_instance->Save();
+		Company::Get(company)->ai_instance->Save();
 		_current_company = old_company;
 	} else {
 		AIInstance::SaveEmpty();
@@ -243,11 +243,11 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (!_networking || _network_server) {
 		assert(IsValidCompanyID(company));
-		assert(GetCompany(company)->ai_instance != NULL);
+		assert(Company::Get(company)->ai_instance != NULL);
 
 		CompanyID old_company = _current_company;
 		_current_company = company;
-		GetCompany(company)->ai_instance->Load(version);
+		Company::Get(company)->ai_instance->Load(version);
 		_current_company = old_company;
 	} else {
 		/* Read, but ignore, the load data */
@@ -288,7 +288,7 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 /* static */ bool AI::ImportLibrary(const char *library, const char *class_name, int version, HSQUIRRELVM vm)
 {
-	return AI::ai_scanner->ImportLibrary(library, class_name, version, vm, GetCompany(_current_company)->ai_instance->GetController());
+	return AI::ai_scanner->ImportLibrary(library, class_name, version, vm, Company::Get(_current_company)->ai_instance->GetController());
 }
 
 /* static */ void AI::Rescan()

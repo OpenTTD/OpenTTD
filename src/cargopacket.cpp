@@ -21,7 +21,7 @@ CargoPacket::CargoPacket(StationID source, uint16 count)
 	if (source != INVALID_STATION) assert(count != 0);
 
 	this->source          = source;
-	this->source_xy       = (source != INVALID_STATION) ? GetStation(source)->xy : 0;
+	this->source_xy       = (source != INVALID_STATION) ? Station::Get(source)->xy : 0;
 	this->loaded_at_xy    = this->source_xy;
 
 	this->count           = count;

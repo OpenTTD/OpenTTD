@@ -80,11 +80,11 @@ struct SubsidyListWindow : Window {
 		/* determine from coordinate for subsidy and try to scroll to it */
 		uint offs = s->from;
 		if (s->age >= 12) {
-			xy = GetStation(offs)->xy;
+			xy = Station::Get(offs)->xy;
 		} else if (te == TE_PASSENGERS || te == TE_MAIL) {
-			xy = GetTown(offs)->xy;
+			xy = Town::Get(offs)->xy;
 		} else {
-			xy = GetIndustry(offs)->xy;
+			xy = Industry::Get(offs)->xy;
 		}
 
 		if (_ctrl_pressed || !ScrollMainWindowToTile(xy)) {
@@ -93,11 +93,11 @@ struct SubsidyListWindow : Window {
 			/* otherwise determine to coordinate for subsidy and scroll to it */
 			offs = s->to;
 			if (s->age >= 12) {
-				xy = GetStation(offs)->xy;
+				xy = Station::Get(offs)->xy;
 			} else if (te == TE_PASSENGERS || te == TE_MAIL || te == TE_GOODS || te == TE_FOOD) {
-				xy = GetTown(offs)->xy;
+				xy = Town::Get(offs)->xy;
 			} else {
-				xy = GetIndustry(offs)->xy;
+				xy = Industry::Get(offs)->xy;
 			}
 
 			if (_ctrl_pressed) {
@@ -151,7 +151,7 @@ struct SubsidyListWindow : Window {
 		for (s = _subsidies; s != endof(_subsidies); s++) {
 			if (s->cargo_type != CT_INVALID && s->age >= 12) {
 				SetupSubsidyDecodeParam(s, 1);
-				SetDParam(3, GetStation(s->to)->owner);
+				SetDParam(3, Station::Get(s->to)->owner);
 				SetDParam(4, _date - ymd.day + 768 - s->age * 32);
 
 				/* Displays the two connected stations */

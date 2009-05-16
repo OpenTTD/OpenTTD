@@ -62,7 +62,7 @@ bool Vehicle::NeedsAutorenewing(const Company *c) const
 	 * However this takes time and since the Company pointer is often present
 	 * when this function is called then it's faster to pass the pointer as an
 	 * argument rather than finding it again. */
-	assert(c == GetCompany(this->owner));
+	assert(c == Company::Get(this->owner));
 
 	if (!c->settings.engine_renew) return false;
 	if (this->age - this->max_age < (c->settings.engine_renew_months * 30)) return false;
@@ -75,7 +75,7 @@ void VehicleServiceInDepot(Vehicle *v)
 {
 	v->date_of_last_service = _date;
 	v->breakdowns_since_last_service = 0;
-	v->reliability = GetEngine(v->engine_type)->reliability;
+	v->reliability = Engine::Get(v->engine_type)->reliability;
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index); // ensure that last service date and reliability are updated
 }
 
@@ -86,11 +86,11 @@ bool Vehicle::NeedsServicing() const
 	if (_settings_game.order.no_servicing_if_no_breakdowns && _settings_game.difficulty.vehicle_breakdowns == 0) {
 		/* Vehicles set for autoreplacing needs to go to a depot even if breakdowns are turned off.
 		 * Note: If servicing is enabled, we postpone replacement till next service. */
-		return EngineHasReplacementForCompany(GetCompany(this->owner), this->engine_type, this->group_id);
+		return EngineHasReplacementForCompany(Company::Get(this->owner), this->engine_type, this->group_id);
 	}
 
 	return _settings_game.vehicle.servint_ispercent ?
-		(this->reliability < GetEngine(this->engine_type)->reliability * (100 - this->service_interval) / 100) :
+		(this->reliability < Engine::Get(this->engine_type)->reliability * (100 - this->service_interval) / 100) :
 		(this->date_of_last_service + this->service_interval < _date);
 }
 
@@ -112,7 +112,7 @@ bool Vehicle::NeedsAutomaticServicing() const
  */
 void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRFBugs bug_type, bool critical)
 {
-	const Engine *e = GetEngine(engine);
+	const Engine *e = Engine::Get(engine);
 	uint32 grfid = e->grffile->grfid;
 	GRFConfig *grfconfig = GetGRFConfig(grfid);
 
@@ -510,17 +510,17 @@ void Vehicle::PreDestructor()
 	if (CleaningPool()) return;
 
 	if (IsValidStationID(this->last_station_visited)) {
-		GetStation(this->last_station_visited)->loading_vehicles.remove(this);
+		Station::Get(this->last_station_visited)->loading_vehicles.remove(this);
 
 		HideFillingPercent(&this->fill_percent_te_id);
 	}
 
 	if (IsEngineCountable(this)) {
-		GetCompany(this->owner)->num_engines[this->engine_type]--;
+		Company::Get(this->owner)->num_engines[this->engine_type]--;
 		if (this->owner == _local_company) InvalidateAutoreplaceWindow(this->engine_type, this->group_id);
 
 		DeleteGroupHighlightOfVehicle(this);
-		if (IsValidGroupID(this->group_id)) GetGroup(this->group_id)->num_engines[this->engine_type]--;
+		if (IsValidGroupID(this->group_id)) Group::Get(this->group_id)->num_engines[this->engine_type]--;
 		if (this->IsPrimaryVehicle()) DecreaseGroupNumVehicle(this->group_id);
 	}
 
@@ -641,7 +641,7 @@ void CallVehicleTicks()
 		int y = v->y_pos;
 		int z = v->z_pos;
 
-		const Company *c = GetCompany(_current_company);
+		const Company *c = Company::Get(_current_company);
 		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, (Money)c->settings.engine_renew_money));
 		CommandCost res = DoCommand(0, v->index, 0, DC_EXEC, CMD_AUTOREPLACE_VEHICLE);
 		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, -(Money)c->settings.engine_renew_money));
@@ -708,7 +708,7 @@ CommandCost GetRefitCost(EngineID engine_type)
 {
 	Money base_cost;
 	ExpensesType expense_type;
-	switch (GetEngine(engine_type)->type) {
+	switch (Engine::Get(engine_type)->type) {
 		case VEH_SHIP:
 			base_cost = _price.ship_base;
 			expense_type = EXPENSES_SHIP_RUN;
@@ -906,7 +906,7 @@ void AgeVehicle(Vehicle *v)
 	if (v->Previous() != NULL || v->owner != _local_company || (v->vehstatus & VS_CRASHED) != 0) return;
 
 	/* Don't warn if a renew is active */
-	if (GetCompany(v->owner)->settings.engine_renew && GetEngine(v->engine_type)->company_avail != 0) return;
+	if (Company::Get(v->owner)->settings.engine_renew && Engine::Get(v->engine_type)->company_avail != 0) return;
 
 	StringID str;
 	if (age == -DAYS_IN_LEAP_YEAR) {
@@ -938,7 +938,7 @@ uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *colour)
 	bool loading = false;
 
 	const Vehicle *u = v;
-	const Station *st = v->last_station_visited != INVALID_STATION ? GetStation(v->last_station_visited) : NULL;
+	const Station *st = v->last_station_visited != INVALID_STATION ? Station::Get(v->last_station_visited) : NULL;
 
 	/* Count up max and used */
 	for (; v != NULL; v = v->Next()) {
@@ -1317,7 +1317,7 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 
 const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v)
 {
-	const Company *c = GetCompany(company);
+	const Company *c = Company::Get(company);
 	LiveryScheme scheme = LS_DEFAULT;
 	CargoID cargo_type = v == NULL ? (CargoID)CT_INVALID : v->cargo_type;
 
@@ -1325,7 +1325,7 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 	 * whether any _other_ liveries are in use. */
 	if (c->livery[LS_DEFAULT].in_use && (_settings_client.gui.liveries == 2 || (_settings_client.gui.liveries == 1 && company == _local_company))) {
 		/* Determine the livery scheme to use */
-		const Engine *e = GetEngine(engine_type);
+		const Engine *e = Engine::Get(engine_type);
 		switch (e->type) {
 			default: NOT_REACHED();
 			case VEH_TRAIN: {
@@ -1334,7 +1334,7 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 					/* Wagonoverrides use the coloir scheme of the front engine.
 					 * Articulated parts use the colour scheme of the first part. (Not supported for articulated wagons) */
 					engine_type = parent_engine_type;
-					e = GetEngine(engine_type);
+					e = Engine::Get(engine_type);
 					rvi = RailVehInfo(engine_type);
 					/* Note: Luckily cargo_type is not needed for engines */
 				}
@@ -1377,7 +1377,7 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 				/* Always use the livery of the front */
 				if (v != NULL && parent_engine_type != INVALID_ENGINE) {
 					engine_type = parent_engine_type;
-					e = GetEngine(engine_type);
+					e = Engine::Get(engine_type);
 					cargo_type = v->First()->cargo_type;
 				}
 				if (cargo_type == CT_INVALID) cargo_type = e->GetDefaultCargoType();
@@ -1494,7 +1494,7 @@ void Vehicle::BeginLoading()
 		current_order.MakeLoading(false);
 	}
 
-	GetStation(this->last_station_visited)->loading_vehicles.push_back(this);
+	Station::Get(this->last_station_visited)->loading_vehicles.push_back(this);
 
 	VehiclePayment(this);
 
@@ -1503,7 +1503,7 @@ void Vehicle::BeginLoading()
 	InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
 	InvalidateWindow(WC_STATION_VIEW, this->last_station_visited);
 
-	GetStation(this->last_station_visited)->MarkTilesDirty(true);
+	Station::Get(this->last_station_visited)->MarkTilesDirty(true);
 	this->cur_speed = 0;
 	this->MarkDirty();
 }
@@ -1516,7 +1516,7 @@ void Vehicle::LeaveStation()
 	if (current_order.GetNonStopType() != ONSF_STOP_EVERYWHERE) UpdateVehicleTimetable(this, false);
 
 	current_order.MakeLeaveStation();
-	Station *st = GetStation(this->last_station_visited);
+	Station *st = Station::Get(this->last_station_visited);
 	st->loading_vehicles.remove(this);
 
 	HideFillingPercent(&this->fill_percent_te_id);
@@ -1748,7 +1748,7 @@ void VehiclesYearlyLoop()
 bool CanVehicleUseStation(EngineID engine_type, const Station *st)
 {
 	assert(IsEngineIndex(engine_type));
-	const Engine *e = GetEngine(engine_type);
+	const Engine *e = Engine::Get(engine_type);
 
 	switch (e->type) {
 		case VEH_TRAIN:

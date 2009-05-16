@@ -40,7 +40,7 @@ static inline void SetTownIndex(TileIndex t, TownID index)
  */
 static inline Town *GetTownByTile(TileIndex t)
 {
-	return GetTown(GetTownIndex(t));
+	return Town::Get(GetTownIndex(t));
 }
 
 /**

@@ -76,7 +76,7 @@
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return -1;
 
-	return ::CalculateCompanyValue(::GetCompany((CompanyID)company));
+	return ::CalculateCompanyValue(::Company::Get((CompanyID)company));
 }
 
 /* static */ Money AICompany::GetBankBalance(AICompany::CompanyID company)
@@ -84,12 +84,12 @@
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return -1;
 
-	return ::GetCompany((CompanyID)company)->money;
+	return ::Company::Get((CompanyID)company)->money;
 }
 
 /* static */ Money AICompany::GetLoanAmount()
 {
-	return ::GetCompany(_current_company)->current_loan;
+	return ::Company::Get(_current_company)->current_loan;
 }
 
 /* static */ Money AICompany::GetMaxLoanAmount()
@@ -142,7 +142,7 @@
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return INVALID_TILE;
 
-	TileIndex loc = ::GetCompany((CompanyID)company)->location_of_HQ;
+	TileIndex loc = ::Company::Get((CompanyID)company)->location_of_HQ;
 	return (loc == 0) ? INVALID_TILE : loc;
 }
 
@@ -156,7 +156,7 @@
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return false;
 
-	return ::GetCompany((CompanyID)company)->settings.engine_renew;
+	return ::Company::Get((CompanyID)company)->settings.engine_renew;
 }
 
 /* static */ bool AICompany::SetAutoRenewMonths(int16 months)
@@ -169,7 +169,7 @@
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return 0;
 
-	return ::GetCompany((CompanyID)company)->settings.engine_renew_months;
+	return ::Company::Get((CompanyID)company)->settings.engine_renew_months;
 }
 
 /* static */ bool AICompany::SetAutoRenewMoney(uint32 money)
@@ -182,5 +182,5 @@
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return 0;
 
-	return ::GetCompany((CompanyID)company)->settings.engine_renew_money;
+	return ::Company::Get((CompanyID)company)->settings.engine_renew_money;
 }

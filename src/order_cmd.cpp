@@ -379,8 +379,8 @@ static TileIndex GetOrderLocation(const Order& o)
 {
 	switch (o.GetType()) {
 		default: NOT_REACHED();
-		case OT_GOTO_STATION: return GetStation(o.GetDestination())->xy;
-		case OT_GOTO_DEPOT:   return GetDepot(o.GetDestination())->xy;
+		case OT_GOTO_STATION: return Station::Get(o.GetDestination())->xy;
+		case OT_GOTO_DEPOT:   return Depot::Get(o.GetDestination())->xy;
 	}
 }
 
@@ -418,7 +418,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	if (!IsValidVehicleID(veh)) return CMD_ERROR;
 
-	v = GetVehicle(veh);
+	v = Vehicle::Get(veh);
 
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
@@ -428,7 +428,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		case OT_GOTO_STATION: {
 			if (!IsValidStationID(new_order.GetDestination())) return CMD_ERROR;
 
-			const Station *st = GetStation(new_order.GetDestination());
+			const Station *st = Station::Get(new_order.GetDestination());
 
 			if (st->owner != OWNER_NONE && !CheckOwnership(st->owner)) return CMD_ERROR;
 
@@ -474,7 +474,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				if (v->type == VEH_AIRCRAFT) {
 					if (!IsValidStationID(new_order.GetDestination())) return CMD_ERROR;
 
-					const Station *st = GetStation(new_order.GetDestination());
+					const Station *st = Station::Get(new_order.GetDestination());
 
 					if (!CheckOwnership(st->owner) ||
 							!CanVehicleUseStation(v, st) ||
@@ -484,7 +484,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				} else {
 					if (!IsValidDepotID(new_order.GetDestination())) return CMD_ERROR;
 
-					const Depot *dp = GetDepot(new_order.GetDestination());
+					const Depot *dp = Depot::Get(new_order.GetDestination());
 
 					if (!CheckOwnership(GetTileOwner(dp->xy))) return CMD_ERROR;
 
@@ -519,7 +519,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			if (v->type != VEH_TRAIN) return CMD_ERROR;
 
 			if (!IsValidWaypointID(new_order.GetDestination())) return CMD_ERROR;
-			const Waypoint *wp = GetWaypoint(new_order.GetDestination());
+			const Waypoint *wp = Waypoint::Get(new_order.GetDestination());
 
 			if (!CheckOwnership(wp->owner)) return CMD_ERROR;
 
@@ -667,7 +667,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	if (!IsValidVehicleID(veh_id)) return CMD_ERROR;
 
-	v = GetVehicle(veh_id);
+	v = Vehicle::Get(veh_id);
 
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
@@ -734,7 +734,7 @@ CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	if (!IsValidVehicleID(veh_id)) return CMD_ERROR;
 
-	v = GetVehicle(veh_id);
+	v = Vehicle::Get(veh_id);
 
 	if (!CheckOwnership(v->owner) || sel_ord == v->cur_order_index ||
 			sel_ord >= v->GetNumOrders() || v->GetNumOrders() < 2) return CMD_ERROR;
@@ -774,7 +774,7 @@ CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	if (!IsValidVehicleID(veh)) return CMD_ERROR;
 
-	Vehicle *v = GetVehicle(veh);
+	Vehicle *v = Vehicle::Get(veh);
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* Don't make senseless movements */
@@ -854,7 +854,7 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (mof >= MOF_END) return CMD_ERROR;
 	if (!IsValidVehicleID(veh)) return CMD_ERROR;
 
-	Vehicle *v = GetVehicle(veh);
+	Vehicle *v = Vehicle::Get(veh);
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* Is it a valid order? */
@@ -863,7 +863,7 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	Order *order = GetVehicleOrder(v, sel_ord);
 	switch (order->GetType()) {
 		case OT_GOTO_STATION:
-			if (mof == MOF_COND_VARIABLE || mof == MOF_COND_COMPARATOR || mof == MOF_DEPOT_ACTION || mof == MOF_COND_VALUE || GetStation(order->GetDestination())->IsBuoy()) return CMD_ERROR;
+			if (mof == MOF_COND_VARIABLE || mof == MOF_COND_COMPARATOR || mof == MOF_DEPOT_ACTION || mof == MOF_COND_VALUE || Station::Get(order->GetDestination())->IsBuoy()) return CMD_ERROR;
 			break;
 
 		case OT_GOTO_DEPOT:
@@ -1078,7 +1078,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 	if (!IsValidVehicleID(veh_dst)) return CMD_ERROR;
 
-	dst = GetVehicle(veh_dst);
+	dst = Vehicle::Get(veh_dst);
 
 	if (!CheckOwnership(dst->owner)) return CMD_ERROR;
 
@@ -1088,7 +1088,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 			if (!IsValidVehicleID(veh_src)) return CMD_ERROR;
 
-			src = GetVehicle(veh_src);
+			src = Vehicle::Get(veh_src);
 
 			/* Sanity checks */
 			if (!CheckOwnership(src->owner) || dst->type != src->type || dst == src)
@@ -1107,7 +1107,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 			FOR_VEHICLE_ORDERS(src, order) {
 				if (OrderGoesToStation(dst, order) &&
-						!CanVehicleUseStation(dst, GetStation(order->GetDestination()))) {
+						!CanVehicleUseStation(dst, Station::Get(order->GetDestination()))) {
 					return_cmd_error(STR_ERROR_CAN_T_COPY_SHARE_ORDER);
 				}
 			}
@@ -1134,7 +1134,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 			if (!IsValidVehicleID(veh_src)) return CMD_ERROR;
 
-			src = GetVehicle(veh_src);
+			src = Vehicle::Get(veh_src);
 
 			/* Sanity checks */
 			if (!CheckOwnership(src->owner) || dst->type != src->type || dst == src)
@@ -1145,7 +1145,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			const Order *order;
 			FOR_VEHICLE_ORDERS(src, order) {
 				if (OrderGoesToStation(dst, order) &&
-						!CanVehicleUseStation(dst, GetStation(order->GetDestination()))) {
+						!CanVehicleUseStation(dst, Station::Get(order->GetDestination()))) {
 					return_cmd_error(STR_ERROR_CAN_T_COPY_SHARE_ORDER);
 				}
 			}
@@ -1210,7 +1210,7 @@ CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 	if (!IsValidVehicleID(veh)) return CMD_ERROR;
 
-	v = GetVehicle(veh);
+	v = Vehicle::Get(veh);
 
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
@@ -1363,7 +1363,7 @@ CommandCost CmdRestoreOrderIndex(TileIndex tile, DoCommandFlag flags, uint32 p1,
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
-	v = GetVehicle(p1);
+	v = Vehicle::Get(p1);
 
 	/* Check the vehicle type and ownership, and if the service interval and order are in range */
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
@@ -1429,7 +1429,7 @@ void CheckOrders(const Vehicle *v)
 			}
 			/* Does station have a load-bay for this vehicle? */
 			if (order->IsType(OT_GOTO_STATION)) {
-				const Station *st = GetStation(order->GetDestination());
+				const Station *st = Station::Get(order->GetDestination());
 				TileIndex required_tile = GetStationTileForVehicle(v, st);
 
 				n_st++;
@@ -1657,12 +1657,12 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 					v->IncrementOrderIndex();
 				}
 			} else if (v->type != VEH_AIRCRAFT) {
-				v->dest_tile = GetDepot(order->GetDestination())->xy;
+				v->dest_tile = Depot::Get(order->GetDestination())->xy;
 			}
 			break;
 
 		case OT_GOTO_WAYPOINT:
-			v->dest_tile = GetWaypoint(order->GetDestination())->xy;
+			v->dest_tile = Waypoint::Get(order->GetDestination())->xy;
 			break;
 
 		case OT_CONDITIONAL: {
@@ -1769,7 +1769,7 @@ bool ProcessOrders(Vehicle *v)
 
 	/* If it is unchanged, keep it. */
 	if (order->Equals(v->current_order) && (v->type == VEH_AIRCRAFT || v->dest_tile != 0) &&
-			(v->type != VEH_SHIP || !order->IsType(OT_GOTO_STATION) || GetStation(order->GetDestination())->dock_tile != INVALID_TILE)) {
+			(v->type != VEH_SHIP || !order->IsType(OT_GOTO_STATION) || Station::Get(order->GetDestination())->dock_tile != INVALID_TILE)) {
 		return false;
 	}
 

@@ -186,7 +186,7 @@ void InitializeWindowViewport(Window *w, int x, int y,
 		const Vehicle *veh;
 
 		vp->follow_vehicle = (VehicleID)(follow_flags & 0xFFFF);
-		veh = GetVehicle(vp->follow_vehicle);
+		veh = Vehicle::Get(vp->follow_vehicle);
 		pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 	} else {
 		uint x = TileX(follow_flags) * TILE_SIZE;
@@ -1614,7 +1614,7 @@ void UpdateViewportPosition(Window *w)
 	const ViewPort *vp = w->viewport;
 
 	if (w->viewport->follow_vehicle != INVALID_VEHICLE) {
-		const Vehicle *veh = GetVehicle(w->viewport->follow_vehicle);
+		const Vehicle *veh = Vehicle::Get(w->viewport->follow_vehicle);
 		Point pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 
 		w->viewport->scrollpos_x = pt.x;

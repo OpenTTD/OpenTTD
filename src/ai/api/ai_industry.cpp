@@ -38,7 +38,7 @@
 	if (!IsValidIndustry(industry_id)) return false;
 	if (!AICargo::IsValidCargo(cargo_id)) return false;
 
-	const Industry *i = ::GetIndustry(industry_id);
+	const Industry *i = ::Industry::Get(industry_id);
 
 	for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
 		if (i->accepts_cargo[j] == cargo_id) return true;
@@ -52,7 +52,7 @@
 	if (!IsValidIndustry(industry_id)) return -1;
 	if (!AICargo::IsValidCargo(cargo_id)) return -1;
 
-	Industry *ind = ::GetIndustry(industry_id);
+	Industry *ind = ::Industry::Get(industry_id);
 	for (uint i = 0; i < lengthof(ind->accepts_cargo); i++) {
 		CargoID cid = ind->accepts_cargo[i];
 		if (cid == cargo_id) {
@@ -68,7 +68,7 @@
 	if (!IsValidIndustry(industry_id)) return -1;
 	if (!AICargo::IsValidCargo(cargo_id)) return -1;
 
-	const Industry *i = ::GetIndustry(industry_id);
+	const Industry *i = ::Industry::Get(industry_id);
 
 	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
 		if (i->produced_cargo[j] == cargo_id) return i->last_month_production[j];
@@ -82,7 +82,7 @@
 	if (!IsValidIndustry(industry_id)) return -1;
 	if (!AICargo::IsValidCargo(cargo_id)) return -1;
 
-	const Industry *i = ::GetIndustry(industry_id);
+	const Industry *i = ::Industry::Get(industry_id);
 
 	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
 		if (i->produced_cargo[j] == cargo_id) return i->last_month_transported[j];
@@ -95,14 +95,14 @@
 {
 	if (!IsValidIndustry(industry_id)) return INVALID_TILE;
 
-	return ::GetIndustry(industry_id)->xy;
+	return ::Industry::Get(industry_id)->xy;
 }
 
 /* static */ int32 AIIndustry::GetAmountOfStationsAround(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return -1;
 
-	Industry *ind = ::GetIndustry(industry_id);
+	Industry *ind = ::Industry::Get(industry_id);
 	StationList stations;
 	::FindStationsAroundTiles(ind->xy, ind->width, ind->height, &stations);
 	return (int32)stations.Length();
@@ -126,14 +126,14 @@
 {
 	if (!IsValidIndustry(industry_id)) return false;
 
-	return (::GetIndustrySpec(::GetIndustry(industry_id)->type)->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0;
+	return (::GetIndustrySpec(::Industry::Get(industry_id)->type)->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0;
 }
 
 /* static */ bool AIIndustry::HasHeliport(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return false;
 
-	return (::GetIndustrySpec(::GetIndustry(industry_id)->type)->behaviour & INDUSTRYBEH_AI_AIRSHIP_ROUTES) != 0;
+	return (::GetIndustrySpec(::Industry::Get(industry_id)->type)->behaviour & INDUSTRYBEH_AI_AIRSHIP_ROUTES) != 0;
 }
 
 /* static */ TileIndex AIIndustry::GetHeliportLocation(IndustryID industry_id)
@@ -141,7 +141,7 @@
 	if (!IsValidIndustry(industry_id)) return INVALID_TILE;
 	if (!HasHeliport(industry_id)) return INVALID_TILE;
 
-	const Industry *ind = ::GetIndustry(industry_id);
+	const Industry *ind = ::Industry::Get(industry_id);
 	BEGIN_TILE_LOOP(tile_cur, ind->width, ind->height, ind->xy);
 		if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
 			return tile_cur;
@@ -155,7 +155,7 @@
 {
 	if (!IsValidIndustry(industry_id)) return false;
 
-	return (::GetIndustrySpec(::GetIndustry(industry_id)->type)->behaviour & INDUSTRYBEH_AI_AIRSHIP_ROUTES) != 0;
+	return (::GetIndustrySpec(::Industry::Get(industry_id)->type)->behaviour & INDUSTRYBEH_AI_AIRSHIP_ROUTES) != 0;
 }
 
 /* static */ TileIndex AIIndustry::GetDockLocation(IndustryID industry_id)
@@ -163,7 +163,7 @@
 	if (!IsValidIndustry(industry_id)) return INVALID_TILE;
 	if (!HasDock(industry_id)) return INVALID_TILE;
 
-	const Industry *ind = ::GetIndustry(industry_id);
+	const Industry *ind = ::Industry::Get(industry_id);
 	BEGIN_TILE_LOOP(tile_cur, ind->width, ind->height, ind->xy);
 		if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
 			return tile_cur;
@@ -177,5 +177,5 @@
 {
 	if (!IsValidIndustry(industry_id)) return INVALID_INDUSTRYTYPE;
 
-	return ::GetIndustry(industry_id)->type;
+	return ::Industry::Get(industry_id)->type;
 }

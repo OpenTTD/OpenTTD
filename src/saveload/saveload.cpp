@@ -1431,35 +1431,35 @@ static void *IntToReference(uint index, SLRefType rt)
 
 	switch (rt) {
 		case REF_ORDERLIST:
-			if (_OrderList_pool.AddBlockIfNeeded(index)) return GetOrderList(index);
+			if (_OrderList_pool.AddBlockIfNeeded(index)) return OrderList::Get(index);
 			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "OrderList index out of range");
 
 		case REF_ORDER:
-			if (_Order_pool.AddBlockIfNeeded(index)) return GetOrder(index);
+			if (_Order_pool.AddBlockIfNeeded(index)) return Order::Get(index);
 			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Order index out of range");
 
 		case REF_VEHICLE:
-			if (_Vehicle_pool.AddBlockIfNeeded(index)) return GetVehicle(index);
+			if (_Vehicle_pool.AddBlockIfNeeded(index)) return Vehicle::Get(index);
 			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Vehicle index out of range");
 
 		case REF_STATION:
-			if (_Station_pool.AddBlockIfNeeded(index)) return GetStation(index);
+			if (_Station_pool.AddBlockIfNeeded(index)) return Station::Get(index);
 			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Station index out of range");
 
 		case REF_TOWN:
-			if (_Town_pool.AddBlockIfNeeded(index)) return GetTown(index);
+			if (_Town_pool.AddBlockIfNeeded(index)) return Town::Get(index);
 			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Town index out of range");
 
 		case REF_ROADSTOPS:
-			if (_RoadStop_pool.AddBlockIfNeeded(index)) return GetRoadStop(index);
+			if (_RoadStop_pool.AddBlockIfNeeded(index)) return RoadStop::Get(index);
 			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "RoadStop index out of range");
 
 		case REF_ENGINE_RENEWS:
-			if (_EngineRenew_pool.AddBlockIfNeeded(index)) return GetEngineRenew(index);
+			if (_EngineRenew_pool.AddBlockIfNeeded(index)) return EngineRenew::Get(index);
 			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "EngineRenew index out of range");
 
 		case REF_CARGO_PACKET:
-			if (_CargoPacket_pool.AddBlockIfNeeded(index)) return GetCargoPacket(index);
+			if (_CargoPacket_pool.AddBlockIfNeeded(index)) return CargoPacket::Get(index);
 			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "CargoPacket index out of range");
 
 		case REF_VEHICLE_OLD:
@@ -1469,7 +1469,7 @@ static void *IntToReference(uint index, SLRefType rt)
 			index++;
 			if (index == INVALID_VEHICLE) return NULL;
 
-			if (_Vehicle_pool.AddBlockIfNeeded(index)) return GetVehicle(index);
+			if (_Vehicle_pool.AddBlockIfNeeded(index)) return Vehicle::Get(index);
 			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Vehicle index out of range");
 
 		default: NOT_REACHED();

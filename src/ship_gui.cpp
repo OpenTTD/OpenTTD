@@ -26,7 +26,7 @@ void CcBuildShip(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	const Vehicle *v;
 	if (!success) return;
 
-	v = GetVehicle(_new_vehicle_id);
+	v = Vehicle::Get(_new_vehicle_id);
 	if (v->tile == _backup_orders_tile) {
 		_backup_orders_tile = 0;
 		RestoreVehicleOrders(v);

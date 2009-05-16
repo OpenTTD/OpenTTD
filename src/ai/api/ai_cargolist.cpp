@@ -22,7 +22,7 @@ AICargoList_IndustryAccepting::AICargoList_IndustryAccepting(IndustryID industry
 {
 	if (!AIIndustry::IsValidIndustry(industry_id)) return;
 
-	Industry *ind = ::GetIndustry(industry_id);
+	Industry *ind = ::Industry::Get(industry_id);
 	for (uint i = 0; i < lengthof(ind->accepts_cargo); i++) {
 		CargoID cargo_id = ind->accepts_cargo[i];
 		if (cargo_id != CT_INVALID) {
@@ -35,7 +35,7 @@ AICargoList_IndustryProducing::AICargoList_IndustryProducing(IndustryID industry
 {
 	if (!AIIndustry::IsValidIndustry(industry_id)) return;
 
-	Industry *ind = ::GetIndustry(industry_id);
+	Industry *ind = ::Industry::Get(industry_id);
 	for (uint i = 0; i < lengthof(ind->produced_cargo); i++) {
 		CargoID cargo_id = ind->produced_cargo[i];
 		if (cargo_id != CT_INVALID) {

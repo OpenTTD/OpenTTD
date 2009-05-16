@@ -254,7 +254,7 @@ struct NewsWindow : Window {
 
 			case 0:
 				if (this->ni->flags & NF_VEHICLE) {
-					const Vehicle *v = GetVehicle(this->ni->data_a);
+					const Vehicle *v = Vehicle::Get(this->ni->data_a);
 					ScrollMainWindowTo(v->x_pos, v->y_pos, v->z_pos);
 				} else if (this->ni->flags & NF_TILE) {
 					if (_ctrl_pressed) {

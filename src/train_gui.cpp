@@ -47,7 +47,7 @@ void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (!success) return;
 
-	const Vehicle *v = GetVehicle(_new_vehicle_id);
+	const Vehicle *v = Vehicle::Get(_new_vehicle_id);
 	if (tile == _backup_orders_tile) {
 		_backup_orders_tile = 0;
 		RestoreVehicleOrders(v);
@@ -185,7 +185,7 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, byte det_tab)
 		memset(max_cargo, 0, sizeof(max_cargo));
 		memset(act_cargo, 0, sizeof(act_cargo));
 
-		for (const Vehicle *v = GetVehicle(veh_id) ; v != NULL ; v = v->Next()) {
+		for (const Vehicle *v = Vehicle::Get(veh_id) ; v != NULL ; v = v->Next()) {
 			act_cargo[v->cargo_type] += v->cargo.Count();
 			max_cargo[v->cargo_type] += v->cargo_cap;
 		}
@@ -198,7 +198,7 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, byte det_tab)
 		}
 		num++; // needs one more because first line is description string
 	} else {
-		for (const Vehicle *v = GetVehicle(veh_id) ; v != NULL ; v = v->Next()) {
+		for (const Vehicle *v = Vehicle::Get(veh_id) ; v != NULL ; v = v->Next()) {
 			if (!IsArticulatedPart(v) || v->cargo_cap != 0) num++;
 		}
 	}

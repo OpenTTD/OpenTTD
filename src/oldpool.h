@@ -277,6 +277,14 @@ struct PoolItem {
 		Tpool->UpdateFirstFreeIndex(pn->index);
 	}
 
+	/**
+	 * Get item with given index
+	 */
+	static FORCEINLINE T *Get(uint index)
+	{
+		return Tpool->Get(index);
+	}
+
 private:
 	static T *AllocateSafeRaw(uint &first);
 
@@ -326,7 +334,6 @@ public:
 
 
 #define OLD_POOL_ACCESSORS(name, type) \
-	static inline type *Get##name(uint index) { return _##name##_pool.Get(index);  } \
 	static inline uint Get##name##PoolSize()  { return _##name##_pool.GetSize(); }
 
 
@@ -352,6 +359,7 @@ public:
 #define STATIC_OLD_POOL(name, type, block_size_bits, max_blocks, new_block_proc, clean_block_proc) \
 	OLD_POOL_ENUM(name, type, block_size_bits, max_blocks) \
 	static DEFINE_OLD_POOL(name, type, new_block_proc, clean_block_proc) \
-	OLD_POOL_ACCESSORS(name, type)
+	OLD_POOL_ACCESSORS(name, type) \
+	static inline type *Get##name(uint index) { return _##name##_pool.Get(index); }
 
 #endif /* OLDPOOL_H */

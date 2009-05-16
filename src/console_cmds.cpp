@@ -650,7 +650,7 @@ DEF_CONSOLE_CMD(ConJoinCompany)
 		return true;
 	}
 
-	if (company_id != COMPANY_SPECTATOR && GetCompany(company_id)->is_ai) {
+	if (company_id != COMPANY_SPECTATOR && Company::Get(company_id)->is_ai) {
 		IConsoleError("Cannot join AI company.");
 		return true;
 	}
@@ -693,7 +693,7 @@ DEF_CONSOLE_CMD(ConMoveClient)
 		return true;
 	}
 
-	if (company_id != COMPANY_SPECTATOR && GetCompany(company_id)->is_ai) {
+	if (company_id != COMPANY_SPECTATOR && Company::Get(company_id)->is_ai) {
 		IConsoleError("You cannot move clients to AI companies.");
 		return true;
 	}
@@ -734,7 +734,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 		return true;
 	}
 
-	const Company *c = GetCompany(index);
+	const Company *c = Company::Get(index);
 
 	if (c->is_ai) {
 		IConsoleError("Company is owned by an AI.");

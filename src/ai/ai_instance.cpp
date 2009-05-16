@@ -103,7 +103,7 @@ AIInstance::AIInstance(AIInfo *info) :
 	callback(NULL)
 {
 	/* Set the instance already, so we can use AIObject::Set commands */
-	GetCompany(_current_company)->ai_instance = this;
+	Company::Get(_current_company)->ai_instance = this;
 	AIInstance::current_instance = this;
 
 	this->controller = new AIController();
@@ -354,7 +354,7 @@ void AIInstance::CollectGarbage()
 /* static */ AIStorage *AIInstance::GetStorage()
 {
 	assert(IsValidCompanyID(_current_company) && !IsHumanCompany(_current_company));
-	return GetCompany(_current_company)->ai_instance->storage;
+	return Company::Get(_current_company)->ai_instance->storage;
 }
 
 /*

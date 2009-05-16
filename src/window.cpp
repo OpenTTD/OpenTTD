@@ -1684,7 +1684,7 @@ static bool HandleViewportScroll()
 
 	if (w == FindWindowById(WC_MAIN_WINDOW, 0) && w->viewport->follow_vehicle != INVALID_VEHICLE) {
 		/* If the main window is following a vehicle, then first let go of it! */
-		const Vehicle *veh = GetVehicle(w->viewport->follow_vehicle);
+		const Vehicle *veh = Vehicle::Get(w->viewport->follow_vehicle);
 		ScrollMainWindowTo(veh->x_pos, veh->y_pos, veh->z_pos, true); // This also resets follow_vehicle
 		return true;
 	}

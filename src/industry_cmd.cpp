@@ -1624,7 +1624,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCo
 
 	/* We need to return a non-NULL pointer to tell we have created an industry.
 	 * However, we haven't created a real one (no DC_EXEC), so return a fake one. */
-	return GetIndustry(0);
+	return Industry::Get(0);
 }
 
 /** Build/Fund an industry
@@ -2010,7 +2010,7 @@ int WhoCanServiceIndustry(Industry *ind)
 		FOR_VEHICLE_ORDERS(v, o) {
 			if (o->IsType(OT_GOTO_STATION) && !(o->GetUnloadType() & OUFB_TRANSFER)) {
 				/* Vehicle visits a station to load or unload */
-				Station *st = GetStation(o->GetDestination());
+				Station *st = Station::Get(o->GetDestination());
 				if (!st->IsValid()) continue;
 
 				/* Same cargo produced by industry is dropped here => not serviced by vehicle v */

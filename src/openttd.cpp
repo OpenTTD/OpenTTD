@@ -754,7 +754,7 @@ static void MakeNewGameDone()
 	/* Create a single company */
 	DoStartupNewCompany(false);
 
-	Company *c = GetCompany(COMPANY_FIRST);
+	Company *c = Company::Get(COMPANY_FIRST);
 	c->settings = _settings_client.company;
 
 	IConsoleCmdExec("exec scripts/game_start.scr 0");
@@ -851,7 +851,7 @@ static void StartScenario()
 
 	SetLocalCompany(COMPANY_FIRST);
 	_current_company = _local_company;
-	Company *c = GetCompany(COMPANY_FIRST);
+	Company *c = Company::Get(COMPANY_FIRST);
 	c->settings = _settings_client.company;
 
 	MarkWholeScreenDirty();

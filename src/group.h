@@ -32,7 +32,7 @@ struct Group : PoolItem<Group, GroupID, &_Group_pool> {
 
 static inline bool IsValidGroupID(GroupID index)
 {
-	return index < GetGroupPoolSize() && GetGroup(index)->IsValid();
+	return index < GetGroupPoolSize() && Group::Get(index)->IsValid();
 }
 
 static inline bool IsDefaultGroupID(GroupID index)
@@ -50,7 +50,7 @@ static inline bool IsAllGroupID(GroupID id_g)
 	return id_g == ALL_GROUP;
 }
 
-#define FOR_ALL_GROUPS_FROM(g, start) for (g = GetGroup(start); g != NULL; g = (g->index + 1U < GetGroupPoolSize()) ? GetGroup(g->index + 1) : NULL) if (g->IsValid())
+#define FOR_ALL_GROUPS_FROM(g, start) for (g = Group::Get(start); g != NULL; g = (g->index + 1U < GetGroupPoolSize()) ? Group::Get(g->index + 1) : NULL) if (g->IsValid())
 #define FOR_ALL_GROUPS(g) FOR_ALL_GROUPS_FROM(g, 0)
 
 /**
@@ -77,12 +77,12 @@ uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e);
 
 static inline void IncreaseGroupNumVehicle(GroupID id_g)
 {
-	if (IsValidGroupID(id_g)) GetGroup(id_g)->num_vehicle++;
+	if (IsValidGroupID(id_g)) Group::Get(id_g)->num_vehicle++;
 }
 
 static inline void DecreaseGroupNumVehicle(GroupID id_g)
 {
-	if (IsValidGroupID(id_g)) GetGroup(id_g)->num_vehicle--;
+	if (IsValidGroupID(id_g)) Group::Get(id_g)->num_vehicle--;
 }
 
 

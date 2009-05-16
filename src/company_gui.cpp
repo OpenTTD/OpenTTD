@@ -337,7 +337,7 @@ struct CompanyFinancesWindow : Window {
 	virtual void OnPaint()
 	{
 		CompanyID company = (CompanyID)this->window_number;
-		const Company *c = GetCompany(company);
+		const Company *c = Company::Get(company);
 
 		if (!small) {
 			int type = _settings_client.gui.expenses_layout;
@@ -542,7 +542,7 @@ private:
 			if (HasBit(this->sel, scheme)) break;
 		}
 		if (scheme == LS_END) scheme = LS_DEFAULT;
-		livery = &GetCompany((CompanyID)this->window_number)->livery[scheme];
+		livery = &Company::Get((CompanyID)this->window_number)->livery[scheme];
 
 		DropDownList *list = new DropDownList();
 		for (uint i = 0; i < lengthof(_colour_dropdown); i++) {
@@ -565,7 +565,7 @@ public:
 
 	virtual void OnPaint()
 	{
-		const Company *c = GetCompany((CompanyID)this->window_number);
+		const Company *c = Company::Get((CompanyID)this->window_number);
 		LiveryScheme scheme = LS_DEFAULT;
 		int y = 51;
 
@@ -667,7 +667,7 @@ public:
 
 				/* If clicking on the left edge, toggle using the livery */
 				if (pt.x < 10) {
-					DoCommandP(0, j | (2 << 8), !GetCompany((CompanyID)this->window_number)->livery[j].in_use, CMD_SET_COMPANY_COLOUR);
+					DoCommandP(0, j | (2 << 8), !Company::Get((CompanyID)this->window_number)->livery[j].in_use, CMD_SET_COMPANY_COLOUR);
 				}
 
 				if (_ctrl_pressed) {
@@ -1112,7 +1112,7 @@ public:
 	{
 		this->parent = parent;
 		this->owner = (Owner)this->window_number;
-		this->face = GetCompany((CompanyID)this->window_number)->face;
+		this->face = Company::Get((CompanyID)this->window_number)->face;
 		this->advanced = advanced;
 
 		this->UpdateData();
@@ -1218,7 +1218,7 @@ public:
 		}
 
 		/* Draw the company manager face picture */
-		DrawCompanyManagerFace(this->face, GetCompany((CompanyID)this->window_number)->colour, this->widget[SCMFM_WIDGET_FACE].left, this->widget[SCMFM_WIDGET_FACE].top);
+		DrawCompanyManagerFace(this->face, Company::Get((CompanyID)this->window_number)->colour, this->widget[SCMFM_WIDGET_FACE].left, this->widget[SCMFM_WIDGET_FACE].top);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1577,7 +1577,7 @@ struct CompanyWindow : Window
 
 	virtual void OnPaint()
 	{
-		const Company *c = GetCompany((CompanyID)this->window_number);
+		const Company *c = Company::Get((CompanyID)this->window_number);
 		bool local = this->window_number == _local_company;
 
 		this->SetWidgetHiddenState(CW_WIDGET_NEW_FACE,       !local);
@@ -1674,7 +1674,7 @@ struct CompanyWindow : Window
 				break;
 
 			case CW_WIDGET_BUILD_VIEW_HQ: {
-				TileIndex tile = GetCompany((CompanyID)this->window_number)->location_of_HQ;
+				TileIndex tile = Company::Get((CompanyID)this->window_number)->location_of_HQ;
 				if (tile == INVALID_TILE) {
 					if ((byte)this->window_number != _local_company) return;
 					SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, HT_RECT, this);
@@ -1804,7 +1804,7 @@ struct BuyCompanyWindow : Window {
 
 	virtual void OnPaint()
 	{
-		Company *c = GetCompany((CompanyID)this->window_number);
+		Company *c = Company::Get((CompanyID)this->window_number);
 		SetDParam(0, STR_COMPANY_NAME);
 		SetDParam(1, c->index);
 		this->DrawWidgets();

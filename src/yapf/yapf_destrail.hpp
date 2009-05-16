@@ -135,7 +135,7 @@ public:
 				break;
 
 			case OT_GOTO_WAYPOINT: {
-				Waypoint *wp = GetWaypoint(v->current_order.GetDestination());
+				Waypoint *wp = Waypoint::Get(v->current_order.GetDestination());
 				if (wp == NULL) {
 					/* Invalid waypoint in orders! */
 					DEBUG(yapf, 0, "Invalid waypoint in orders == 0x%04X (train %d, company %d)", v->current_order.GetDestination(), v->unitnumber, (CompanyID)v->owner);

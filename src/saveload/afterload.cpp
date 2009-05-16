@@ -674,7 +674,7 @@ bool AfterLoadGame()
 		 * companies are 'invalid'.
 		 */
 		if (!_network_dedicated && IsValidCompanyID(COMPANY_FIRST)) {
-			c = GetCompany(COMPANY_FIRST);
+			c = Company::Get(COMPANY_FIRST);
 			c->settings = _settings_client.company;
 		}
 	}
@@ -1203,7 +1203,7 @@ bool AfterLoadGame()
 			const CargoList::List *packets = v->cargo.Packets();
 			for (CargoList::List::const_iterator it = packets->begin(); it != packets->end(); it++) {
 				CargoPacket *cp = *it;
-				cp->source_xy = IsValidStationID(cp->source) ? GetStation(cp->source)->xy : v->tile;
+				cp->source_xy = IsValidStationID(cp->source) ? Station::Get(cp->source)->xy : v->tile;
 				cp->loaded_at_xy = cp->source_xy;
 			}
 			v->cargo.InvalidateCache();
@@ -1222,7 +1222,7 @@ bool AfterLoadGame()
 				const CargoList::List *packets = ge->cargo.Packets();
 				for (CargoList::List::const_iterator it = packets->begin(); it != packets->end(); it++) {
 					CargoPacket *cp = *it;
-					cp->source_xy = IsValidStationID(cp->source) ? GetStation(cp->source)->xy : st->xy;
+					cp->source_xy = IsValidStationID(cp->source) ? Station::Get(cp->source)->xy : st->xy;
 					cp->loaded_at_xy = cp->source_xy;
 				}
 			}
@@ -1300,7 +1300,7 @@ bool AfterLoadGame()
 			if ((v->type != VEH_TRAIN || IsFrontEngine(v)) &&  // for all locs
 					!(v->vehstatus & (VS_STOPPED | VS_CRASHED)) && // not stopped or crashed
 					v->current_order.IsType(OT_LOADING)) {         // loading
-				GetStation(v->last_station_visited)->loading_vehicles.push_back(v);
+				Station::Get(v->last_station_visited)->loading_vehicles.push_back(v);
 
 				/* The loading finished flag is *only* set when actually completely
 				 * finished. Because the vehicle is loading, it is not finished. */
@@ -1465,7 +1465,7 @@ bool AfterLoadGame()
 		/* Update go to buoy orders because they are just waypoints */
 		Order *order;
 		FOR_ALL_ORDERS(order) {
-			if (order->IsType(OT_GOTO_STATION) && GetStation(order->GetDestination())->IsBuoy()) {
+			if (order->IsType(OT_GOTO_STATION) && Station::Get(order->GetDestination())->IsBuoy()) {
 				order->SetLoadType(OLF_LOAD_IF_POSSIBLE);
 				order->SetUnloadType(OUF_UNLOAD_IF_POSSIBLE);
 			}

@@ -88,7 +88,7 @@ void NewTrainPathfind(TileIndex tile, TileIndex dest, RailTypes railtypes, DiagD
  */
 static inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile)
 {
-	const Station *st = GetStation(station);
+	const Station *st = Station::Get(station);
 
 	/* If the rail station is (temporarily) not present, use the station sign to drive near the station */
 	if (st->train_tile == INVALID_TILE) return st->xy;

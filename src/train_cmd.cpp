@@ -174,7 +174,7 @@ static void TrainCargoChanged(Vehicle *v)
 static void RailVehicleLengthChanged(const Vehicle *u)
 {
 	/* show a warning once for each engine in whole game and once for each GRF after each game load */
-	const Engine *engine = GetEngine(u->engine_type);
+	const Engine *engine = Engine::Get(u->engine_type);
 	uint32 grfid = engine->grffile->grfid;
 	GRFConfig *grfconfig = GetGRFConfig(grfid);
 	if (GamelogGRFBugReverse(grfid, engine->internal_id) || !HasBit(grfconfig->grf_bugs, GBUG_VEH_LENGTH)) {
@@ -251,7 +251,7 @@ void TrainConsistChanged(Vehicle *v, bool same_length)
 	}
 
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
-		const Engine *e_u = GetEngine(u->engine_type);
+		const Engine *e_u = Engine::Get(u->engine_type);
 		const RailVehicleInfo *rvi_u = &e_u->u.rail;
 
 		if (!HasBit(EngInfo(u->engine_type)->misc_flags, EF_RAIL_TILTS)) train_can_tilt = false;
@@ -366,7 +366,7 @@ enum AccelType {
  */
 int GetTrainStopLocation(StationID station_id, TileIndex tile, const Vehicle *v, int *station_ahead, int *station_length)
 {
-	const Station *st = GetStation(station_id);
+	const Station *st = Station::Get(station_id);
 	*station_ahead  = st->GetPlatformLength(tile, DirToDiagDir(v->direction)) * TILE_SIZE;
 	*station_length = st->GetPlatformLength(tile) * TILE_SIZE;
 
@@ -579,7 +579,7 @@ SpriteID Train::GetImage(Direction direction) const
 		sprite = GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(spritenum)));
 		if (sprite != 0) return sprite;
 
-		spritenum = GetEngine(this->engine_type)->image_index;
+		spritenum = Engine::Get(this->engine_type)->image_index;
 	}
 
 	sprite = _engine_sprite_base[spritenum] + ((direction + _engine_sprite_add[spritenum]) & _engine_sprite_and[spritenum]);
@@ -601,7 +601,7 @@ static SpriteID GetRailIcon(EngineID engine, bool rear_head, int &y)
 			return sprite;
 		}
 
-		spritenum = GetEngine(engine)->image_index;
+		spritenum = Engine::Get(engine)->image_index;
 	}
 
 	if (rear_head) spritenum++;
@@ -627,7 +627,7 @@ void DrawTrainEngine(int x, int y, EngineID engine, SpriteID pal)
 
 static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandFlag flags)
 {
-	const Engine *e = GetEngine(engine);
+	const Engine *e = Engine::Get(engine);
 	const RailVehicleInfo *rvi = &e->u.rail;
 	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
 
@@ -716,7 +716,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 		if (IsLocalCompany()) {
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Train window
 		}
-		GetCompany(_current_company)->num_engines[engine]++;
+		Company::Get(_current_company)->num_engines[engine]++;
 
 		CheckConsistencyOfArticulatedVehicle(v);
 	}
@@ -784,7 +784,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	/* Check if the engine-type is valid (for the company) */
 	if (!IsEngineBuildable(p1, VEH_TRAIN, _current_company)) return_cmd_error(STR_RAIL_VEHICLE_NOT_AVAILABLE);
 
-	const Engine *e = GetEngine(p1);
+	const Engine *e = Engine::Get(p1);
 	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
 
 	/* Engines with CT_INVALID should not be available */
@@ -890,7 +890,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Train window
 		}
 
-		GetCompany(_current_company)->num_engines[p1]++;
+		Company::Get(_current_company)->num_engines[p1]++;
 
 		CheckConsistencyOfArticulatedVehicle(v);
 	}
@@ -1042,7 +1042,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	if (!IsValidVehicleID(s)) return CMD_ERROR;
 
-	Vehicle *src = GetVehicle(s);
+	Vehicle *src = Vehicle::Get(s);
 
 	if (src->type != VEH_TRAIN || !CheckOwnership(src->owner)) return CMD_ERROR;
 
@@ -1055,7 +1055,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		dst = IsTrainEngine(src) ? NULL : FindGoodVehiclePos(src);
 	} else {
 		if (!IsValidVehicleID(d)) return CMD_ERROR;
-		dst = GetVehicle(d);
+		dst = Vehicle::Get(d);
 		if (dst->type != VEH_TRAIN || !CheckOwnership(dst->owner)) return CMD_ERROR;
 
 		/* Do not allow appending to crashed vehicles, too */
@@ -1291,7 +1291,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 					/* Decrease the engines number of the src engine_type */
 					if (!IsDefaultGroupID(src->group_id) && IsValidGroupID(src->group_id)) {
-						GetGroup(src->group_id)->num_engines[src->engine_type]--;
+						Group::Get(src->group_id)->num_engines[src->engine_type]--;
 					}
 
 					/* If we move an engine to a new line affect it to the DEFAULT_GROUP */
@@ -1397,7 +1397,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	if (!IsValidVehicleID(p1) || p2 > 1) return CMD_ERROR;
 
-	Vehicle *v = GetVehicle(p1);
+	Vehicle *v = Vehicle::Get(p1);
 
 	if (v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
 
@@ -1954,7 +1954,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 {
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
-	Vehicle *v = GetVehicle(p1);
+	Vehicle *v = Vehicle::Get(p1);
 
 	if (v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
 
@@ -2015,7 +2015,7 @@ CommandCost CmdForceTrainProceed(TileIndex tile, DoCommandFlag flags, uint32 p1,
 {
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
-	Vehicle *v = GetVehicle(p1);
+	Vehicle *v = Vehicle::Get(p1);
 
 	if (v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
 
@@ -2042,7 +2042,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
-	Vehicle *v = GetVehicle(p1);
+	Vehicle *v = Vehicle::Get(p1);
 
 	if (v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (CheckTrainStoppedInDepot(v) < 0) return_cmd_error(STR_TRAIN_MUST_BE_STOPPED);
@@ -2060,7 +2060,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		 * some nice [Refit] button near each wagon. --pasky */
 		if (!CanRefitTo(v->engine_type, new_cid)) continue;
 
-		const Engine *e = GetEngine(v->engine_type);
+		const Engine *e = Engine::Get(v->engine_type);
 		if (e->CanCarryCargo()) {
 			uint16 amount = CALLBACK_FAILED;
 
@@ -2118,7 +2118,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	_returned_refit_capacity = num;
 
 	/* Update the train's cached variables */
-	if (flags & DC_EXEC) TrainConsistChanged(GetVehicle(p1)->First(), false);
+	if (flags & DC_EXEC) TrainConsistChanged(Vehicle::Get(p1)->First(), false);
 
 	return cost;
 }
@@ -2248,7 +2248,7 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
-	Vehicle *v = GetVehicle(p1);
+	Vehicle *v = Vehicle::Get(p1);
 
 	if (v->type != VEH_TRAIN) return CMD_ERROR;
 
@@ -3280,7 +3280,7 @@ TileIndex Train::GetOrderStationLocation(StationID station)
 {
 	if (station == this->last_station_visited) this->last_station_visited = INVALID_STATION;
 
-	const Station *st = GetStation(station);
+	const Station *st = Station::Get(station);
 	if (!(st->facilities & FACIL_TRAIN)) {
 		/* The destination station has no trainstation tiles. */
 		this->IncrementOrderIndex();
@@ -3363,7 +3363,7 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 	v->last_station_visited = station;
 
 	/* check if a train ever visited this station before */
-	Station *st = GetStation(station);
+	Station *st = Station::Get(station);
 	if (!(st->had_vehicle_of_type & HVOT_TRAIN)) {
 		st->had_vehicle_of_type |= HVOT_TRAIN;
 		SetDParam(0, st->index);
@@ -4501,7 +4501,7 @@ void Train::OnNewDay()
 
 		/* update destination */
 		if (this->current_order.IsType(OT_GOTO_STATION)) {
-			TileIndex tile = GetStation(this->current_order.GetDestination())->train_tile;
+			TileIndex tile = Station::Get(this->current_order.GetDestination())->train_tile;
 			if (tile != INVALID_TILE) this->dest_tile = tile;
 		}
 

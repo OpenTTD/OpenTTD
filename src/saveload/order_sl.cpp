@@ -157,8 +157,8 @@ static void Load_ORDR()
 			/* The orders were built like this:
 			 *   While the order is valid, set the previous will get it's next pointer set
 			 *   We start with index 1 because no order will have the first in it's next pointer */
-			if (GetOrder(i)->IsValid())
-				GetOrder(i - 1)->next = GetOrder(i);
+			if (Order::Get(i)->IsValid())
+				Order::Get(i - 1)->next = Order::Get(i);
 		}
 	} else {
 		int index;

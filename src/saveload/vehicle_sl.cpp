@@ -225,7 +225,7 @@ static void CheckValidVehicles()
 			case VEH_ROAD:
 			case VEH_SHIP:
 			case VEH_AIRCRAFT:
-				if (v->engine_type >= total_engines || v->type != GetEngine(v->engine_type)->type) {
+				if (v->engine_type >= total_engines || v->type != Engine::Get(v->engine_type)->type) {
 					v->engine_type = first_engine[v->type];
 				}
 				break;

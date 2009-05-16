@@ -657,7 +657,7 @@ static inline uint GetNumVehicles()
 	return GetVehiclePoolSize();
 }
 
-#define FOR_ALL_VEHICLES_FROM(v, start) for (v = GetVehicle(start); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) if (v->IsValid())
+#define FOR_ALL_VEHICLES_FROM(v, start) for (v = Vehicle::Get(start); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? Vehicle::Get(v->index + 1) : NULL) if (v->IsValid())
 #define FOR_ALL_VEHICLES(v) FOR_ALL_VEHICLES_FROM(v, 0)
 
 /**
@@ -667,7 +667,7 @@ static inline uint GetNumVehicles()
  */
 static inline bool IsValidVehicleID(uint index)
 {
-	return index < GetVehiclePoolSize() && GetVehicle(index)->IsValid();
+	return index < GetVehiclePoolSize() && Vehicle::Get(index)->IsValid();
 }
 
 

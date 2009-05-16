@@ -104,7 +104,7 @@ public:
 	}
 
 	LandInfoWindow(TileIndex tile) : Window(&_land_info_desc) {
-		Company *c = GetCompany(IsValidCompanyID(_local_company) ? _local_company : COMPANY_FIRST);
+		Company *c = Company::Get(IsValidCompanyID(_local_company) ? _local_company : COMPANY_FIRST);
 		Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 
 		Money old_money = c->money;
@@ -556,7 +556,7 @@ public:
 		RewindTextRefStack();
 
 		if (this->show_company_manager_face) {
-			const Company *c = GetCompany((CompanyID)GetDParamX(this->decode_params, 2));
+			const Company *c = Company::Get((CompanyID)GetDParamX(this->decode_params, 2));
 			DrawCompanyManagerFace(c->face, c->colour, this->widget[EMW_FACE].left, this->widget[EMW_FACE].top);
 		}
 

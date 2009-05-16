@@ -70,7 +70,7 @@ static inline IndustryID GetIndustryIndex(TileIndex t)
  */
 static inline Industry *GetIndustryByTile(TileIndex t)
 {
-	return GetIndustry(GetIndustryIndex(t));
+	return Industry::Get(GetIndustryIndex(t));
 }
 
 /**

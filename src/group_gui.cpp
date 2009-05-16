@@ -405,7 +405,7 @@ public:
 				default: NOT_REACHED();
 			}
 		} else {
-			const Group *g = GetGroup(this->group_sel);
+			const Group *g = Group::Get(this->group_sel);
 
 			SetDParam(0, g->index);
 			SetDParam(1, g->num_vehicle);
@@ -569,7 +569,7 @@ public:
 			case GRP_WIDGET_RENAME_GROUP: { // Rename the selected roup
 				assert(IsValidGroupID(this->group_sel));
 
-				const Group *g = GetGroup(this->group_sel);
+				const Group *g = Group::Get(this->group_sel);
 
 				SetDParam(0, g->index);
 				ShowQueryString(STR_GROUP_NAME, STR_GROUP_RENAME_CAPTION, MAX_LENGTH_GROUP_NAME_BYTES, MAX_LENGTH_GROUP_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
@@ -596,7 +596,7 @@ public:
 
 			case GRP_WIDGET_REPLACE_PROTECTION:
 				if (IsValidGroupID(this->group_sel)) {
-					const Group *g = GetGroup(this->group_sel);
+					const Group *g = Group::Get(this->group_sel);
 
 					DoCommandP(0, this->group_sel, !g->replace_protection, CMD_SET_GROUP_REPLACE_PROTECTION);
 				}

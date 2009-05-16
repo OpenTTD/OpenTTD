@@ -15,7 +15,7 @@
 
 /* static */ bool AIEngine::IsValidEngine(EngineID engine_id)
 {
-	return ::IsEngineIndex(engine_id) && HasBit(::GetEngine(engine_id)->company_avail, _current_company);
+	return ::IsEngineIndex(engine_id) && HasBit(::Engine::Get(engine_id)->company_avail, _current_company);
 }
 
 /* static */ char *AIEngine::GetName(EngineID engine_id)
@@ -34,7 +34,7 @@
 {
 	if (!IsValidEngine(engine_id)) return CT_INVALID;
 
-	const Engine *e = ::GetEngine(engine_id);
+	const Engine *e = ::Engine::Get(engine_id);
 	if (!e->CanCarryCargo()) return CT_INVALID;
 
 	return e->GetDefaultCargoType();
@@ -46,8 +46,8 @@
 	if (!AICargo::IsValidCargo(cargo_id)) return false;
 
 	if (GetCargoType(engine_id) == cargo_id) return true;
-	if (cargo_id == CT_MAIL && ::GetEngine(engine_id)->type == VEH_AIRCRAFT) return true;
-	if (::GetEngine(engine_id)->type == VEH_SHIP && !ShipVehInfo(engine_id)->refittable) return false;
+	if (cargo_id == CT_MAIL && ::Engine::Get(engine_id)->type == VEH_AIRCRAFT) return true;
+	if (::Engine::Get(engine_id)->type == VEH_SHIP && !ShipVehInfo(engine_id)->refittable) return false;
 	return ::CanRefitTo(engine_id, cargo_id);
 }
 
@@ -65,7 +65,7 @@
 {
 	if (!IsValidEngine(engine_id)) return -1;
 
-	const Engine *e = ::GetEngine(engine_id);
+	const Engine *e = ::Engine::Get(engine_id);
 	switch (e->type) {
 		case VEH_ROAD:
 		case VEH_TRAIN: {
@@ -91,14 +91,14 @@
 	if (!IsValidEngine(engine_id)) return -1;
 	if (GetVehicleType(engine_id) == AIVehicle::VT_RAIL && IsWagon(engine_id)) return -1;
 
-	return (::GetEngine(engine_id)->reliability * 100 >> 16);
+	return (::Engine::Get(engine_id)->reliability * 100 >> 16);
 }
 
 /* static */ int32 AIEngine::GetMaxSpeed(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
 
-	const Engine *e = ::GetEngine(engine_id);
+	const Engine *e = ::Engine::Get(engine_id);
 	int32 max_speed = e->GetDisplayMaxSpeed(); // km-ish/h
 	if (e->type == VEH_AIRCRAFT) max_speed /= _settings_game.vehicle.plane_speed;
 	return max_speed;
@@ -108,7 +108,7 @@
 {
 	if (!IsValidEngine(engine_id)) return -1;
 
-	return ::GetEngine(engine_id)->GetCost();
+	return ::Engine::Get(engine_id)->GetCost();
 }
 
 /* static */ int32 AIEngine::GetMaxAge(EngineID engine_id)
@@ -116,14 +116,14 @@
 	if (!IsValidEngine(engine_id)) return -1;
 	if (GetVehicleType(engine_id) == AIVehicle::VT_RAIL && IsWagon(engine_id)) return -1;
 
-	return ::GetEngine(engine_id)->lifelength * DAYS_IN_LEAP_YEAR;
+	return ::Engine::Get(engine_id)->lifelength * DAYS_IN_LEAP_YEAR;
 }
 
 /* static */ Money AIEngine::GetRunningCost(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
 
-	return ::GetEngine(engine_id)->GetRunningCost();
+	return ::Engine::Get(engine_id)->GetRunningCost();
 }
 
 /* static */ int32 AIEngine::GetPower(EngineID engine_id)
@@ -132,7 +132,7 @@
 	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return -1;
 	if (IsWagon(engine_id)) return -1;
 
-	return ::GetEngine(engine_id)->GetPower();
+	return ::Engine::Get(engine_id)->GetPower();
 }
 
 /* static */ int32 AIEngine::GetWeight(EngineID engine_id)
@@ -140,7 +140,7 @@
 	if (!IsValidEngine(engine_id)) return -1;
 	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return -1;
 
-	return ::GetEngine(engine_id)->GetDisplayWeight();
+	return ::Engine::Get(engine_id)->GetDisplayWeight();
 }
 
 /* static */ int32 AIEngine::GetMaxTractiveEffort(EngineID engine_id)
@@ -149,14 +149,14 @@
 	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return -1;
 	if (IsWagon(engine_id)) return -1;
 
-	return ::GetEngine(engine_id)->GetDisplayMaxTractiveEffort();
+	return ::Engine::Get(engine_id)->GetDisplayMaxTractiveEffort();
 }
 
 /* static */ AIVehicle::VehicleType AIEngine::GetVehicleType(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return AIVehicle::VT_INVALID;
 
-	switch (::GetEngine(engine_id)->type) {
+	switch (::Engine::Get(engine_id)->type) {
 		case VEH_ROAD:     return AIVehicle::VT_ROAD;
 		case VEH_TRAIN:    return AIVehicle::VT_RAIL;
 		case VEH_SHIP:     return AIVehicle::VT_WATER;

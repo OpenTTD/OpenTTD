@@ -110,7 +110,7 @@
 
 	if (!AIStation::HasStationType(station_id, AIStation::STATION_AIRPORT)) return AT_INVALID;
 
-	return (AirportType)::GetStation(station_id)->airport_type;
+	return (AirportType)::Station::Get(station_id)->airport_type;
 }
 
 

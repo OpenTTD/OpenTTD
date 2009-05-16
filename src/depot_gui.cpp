@@ -139,14 +139,14 @@ void CcCloneVehicle(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (!success) return;
 
-	const Vehicle *v = GetVehicle(_new_vehicle_id);
+	const Vehicle *v = Vehicle::Get(_new_vehicle_id);
 
 	ShowVehicleViewWindow(v);
 }
 
 static void TrainDepotMoveVehicle(const Vehicle *wagon, VehicleID sel, const Vehicle *head)
 {
-	const Vehicle *v = GetVehicle(sel);
+	const Vehicle *v = Vehicle::Get(sel);
 
 	if (v == wagon) return;
 
@@ -948,7 +948,7 @@ struct DepotWindow : Window {
 					if (this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, &gdvp) == MODE_DRAG_VEHICLE &&
 						sel != INVALID_VEHICLE) {
 						if (gdvp.wagon != NULL && gdvp.wagon->index == sel && _ctrl_pressed) {
-							DoCommandP(GetVehicle(sel)->tile, GetVehicle(sel)->index, true, CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_ERROR_CAN_T_MAKE_VEHICLE_TURN));
+							DoCommandP(Vehicle::Get(sel)->tile, Vehicle::Get(sel)->index, true, CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_ERROR_CAN_T_MAKE_VEHICLE_TURN));
 						} else if (gdvp.wagon == NULL || gdvp.wagon->index != sel) {
 							TrainDepotMoveVehicle(gdvp.wagon, sel, gdvp.head);
 						} else if (gdvp.head != NULL && IsFrontEngine(gdvp.head)) {
@@ -972,7 +972,7 @@ struct DepotWindow : Window {
 
 					this->HandleButtonClick(widget);
 
-					const Vehicle *v = GetVehicle(this->sel);
+					const Vehicle *v = Vehicle::Get(this->sel);
 					this->sel = INVALID_VEHICLE;
 					this->SetDirty();
 

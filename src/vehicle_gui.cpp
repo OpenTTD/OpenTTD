@@ -333,7 +333,7 @@ struct RefitWindow : public Window {
 
 	virtual void OnPaint()
 	{
-		Vehicle *v = GetVehicle(this->window_number);
+		Vehicle *v = Vehicle::Get(this->window_number);
 
 		if (v->type == VEH_TRAIN) {
 			uint length = CountVehiclesInChain(v);
@@ -383,7 +383,7 @@ struct RefitWindow : public Window {
 
 			case VRW_REFITBUTTON: // refit button
 				if (this->cargo != NULL) {
-					const Vehicle *v = GetVehicle(this->window_number);
+					const Vehicle *v = Vehicle::Get(this->window_number);
 
 					if (this->order == INVALID_VEH_ORDER_ID) {
 						int command = 0;
@@ -477,7 +477,7 @@ uint ShowAdditionalText(int left, int right, int y, EngineID engine)
 uint ShowRefitOptionsList(int left, int right, int y, EngineID engine)
 {
 	/* List of cargo types of this engine */
-	uint32 cmask = GetUnionOfArticulatedRefitMasks(engine, GetEngine(engine)->type, false);
+	uint32 cmask = GetUnionOfArticulatedRefitMasks(engine, Engine::Get(engine)->type, false);
 	/* List of cargo types available in this climate */
 	uint32 lmask = _cargo_mask;
 	char string[512];
@@ -796,7 +796,7 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y)
 		sel--;
 
 		if (order->IsType(OT_GOTO_STATION)) {
-			if (v->type == VEH_SHIP && GetStation(order->GetDestination())->IsBuoy()) continue;
+			if (v->type == VEH_SHIP && Station::Get(order->GetDestination())->IsBuoy()) continue;
 
 			SetDParam(0, order->GetDestination());
 			DrawString(left, right, y, STR_ORDER_STATION_SMALL);
@@ -1042,7 +1042,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 				if (this->vehicle_type == VEH_AIRCRAFT) {
 					SetDParam(1, index); // Airport name
 				} else {
-					SetDParam(1, GetDepot(index)->town_index);
+					SetDParam(1, Depot::Get(index)->town_index);
 				}
 				SetDParam(2, this->vscroll.count);
 				break;
@@ -1346,7 +1346,7 @@ struct VehicleDetailsWindow : Window {
 	/** Initialize a newly created vehicle details window */
 	VehicleDetailsWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		const Vehicle *v = GetVehicle(this->window_number);
+		const Vehicle *v = Vehicle::Get(this->window_number);
 
 		switch (v->type) {
 			case VEH_TRAIN:
@@ -1439,7 +1439,7 @@ struct VehicleDetailsWindow : Window {
 	/** Repaint vehicle details window. */
 	virtual void OnPaint()
 	{
-		const Vehicle *v = GetVehicle(this->window_number);
+		const Vehicle *v = Vehicle::Get(this->window_number);
 		byte det_tab = this->tab;
 
 		this->SetWidgetDisabledState(VLD_WIDGET_RENAME_VEHICLE, v->owner != _local_company);
@@ -1540,7 +1540,7 @@ struct VehicleDetailsWindow : Window {
 
 		switch (widget) {
 			case VLD_WIDGET_RENAME_VEHICLE: {// rename
-				const Vehicle *v = GetVehicle(this->window_number);
+				const Vehicle *v = Vehicle::Get(this->window_number);
 				SetDParam(0, v->index);
 				ShowQueryString(STR_VEHICLE_NAME, _name_vehicle_title[v->type], MAX_LENGTH_VEHICLE_NAME_BYTES, MAX_LENGTH_VEHICLE_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 			} break;
@@ -1548,7 +1548,7 @@ struct VehicleDetailsWindow : Window {
 			case VLD_WIDGET_INCREASE_SERVICING_INTERVAL:   // increase int
 			case VLD_WIDGET_DECREASE_SERVICING_INTERVAL: { // decrease int
 				int mod = _ctrl_pressed ? 5 : 10;
-				const Vehicle *v = GetVehicle(this->window_number);
+				const Vehicle *v = Vehicle::Get(this->window_number);
 
 				mod = (widget == VLD_WIDGET_DECREASE_SERVICING_INTERVAL) ? -mod : mod;
 				mod = GetServiceIntervalClamped(mod + v->service_interval);
@@ -1587,7 +1587,7 @@ struct VehicleDetailsWindow : Window {
 
 		if (str == NULL) return;
 
-		DoCommandP(0, this->window_number, 0, CMD_RENAME_VEHICLE | CMD_MSG(_name_vehicle_error[GetVehicle(this->window_number)->type]), NULL, str);
+		DoCommandP(0, this->window_number, 0, CMD_RENAME_VEHICLE | CMD_MSG(_name_vehicle_error[Vehicle::Get(this->window_number)->type]), NULL, str);
 	}
 
 	virtual void OnResize(Point delta)
@@ -1768,7 +1768,7 @@ static bool IsVehicleRefitable(const Vehicle *v)
 struct VehicleViewWindow : Window {
 	VehicleViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		const Vehicle *v = GetVehicle(this->window_number);
+		const Vehicle *v = Vehicle::Get(this->window_number);
 
 		this->owner = v->owner;
 		InitializeWindowViewport(this, VV_VIEWPORT_X, VV_VIEWPORT_Y, VV_INITIAL_VIEWPORT_WIDTH,
@@ -1924,7 +1924,7 @@ struct VehicleViewWindow : Window {
 			STR_HEADING_FOR_HANGAR_SERVICE,
 		};
 
-		const Vehicle *v = GetVehicle(this->window_number);
+		const Vehicle *v = Vehicle::Get(this->window_number);
 		StringID str;
 		bool is_localcompany = v->owner == _local_company;
 		bool refitable_and_stopped_in_depot = IsVehicleRefitable(v);
@@ -1978,7 +1978,7 @@ struct VehicleViewWindow : Window {
 						SetDParam(0, v->current_order.GetDestination());
 						SetDParam(1, v->GetDisplaySpeed());
 					} else {
-						Depot *depot = GetDepot(v->current_order.GetDestination());
+						Depot *depot = Depot::Get(v->current_order.GetDestination());
 						SetDParam(0, depot->town_index);
 						SetDParam(1, v->GetDisplaySpeed());
 					}
@@ -2027,7 +2027,7 @@ struct VehicleViewWindow : Window {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		const Vehicle *v = GetVehicle(this->window_number);
+		const Vehicle *v = Vehicle::Get(this->window_number);
 
 		switch (widget) {
 			case VVW_WIDGET_START_STOP_VEH: // start stop
@@ -2088,7 +2088,7 @@ struct VehicleViewWindow : Window {
 
 	virtual void OnTick()
 	{
-		const Vehicle *v = GetVehicle(this->window_number);
+		const Vehicle *v = Vehicle::Get(this->window_number);
 		bool veh_stopped = v->IsStoppedInDepot();
 
 		/* Widget VVW_WIDGET_GOTO_DEPOT must be hidden if the vehicle is already

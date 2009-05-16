@@ -72,7 +72,7 @@ AITileList_IndustryAccepting::AITileList_IndustryAccepting(IndustryID industry_i
 {
 	if (!AIIndustry::IsValidIndustry(industry_id)) return;
 
-	const Industry *i = ::GetIndustry(industry_id);
+	const Industry *i = ::Industry::Get(industry_id);
 
 	/* Check if this industry accepts anything */
 	{
@@ -110,7 +110,7 @@ AITileList_IndustryProducing::AITileList_IndustryProducing(IndustryID industry_i
 {
 	if (!AIIndustry::IsValidIndustry(industry_id)) return;
 
-	const Industry *i = ::GetIndustry(industry_id);
+	const Industry *i = ::Industry::Get(industry_id);
 
 	/* Check if this industry produces anything */
 	{
@@ -148,7 +148,7 @@ AITileList_StationType::AITileList_StationType(StationID station_id, AIStation::
 {
 	if (!AIStation::IsValidStation(station_id)) return;
 
-	const StationRect *rect = &::GetStation(station_id)->rect;
+	const StationRect *rect = &::Station::Get(station_id)->rect;
 
 	uint station_type_value = 0;
 	/* Convert AIStation::StationType to ::StationType, but do it in a

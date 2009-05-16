@@ -69,14 +69,14 @@ static int CDECL EngineNumberSorter(const void *a, const void *b)
  */
 void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g)
 {
-	Company *c = GetCompany(_local_company);
+	Company *c = Company::Get(_local_company);
 	uint num_engines = GetGroupNumEngines(_local_company, id_g, e);
 
 	if (num_engines == 0 || c->num_engines[e] == 0) {
 		/* We don't have any of this engine type.
 		 * Either we just sold the last one, we build a new one or we stopped replacing it.
 		 * In all cases, we need to update the left list */
-		InvalidateWindowData(WC_REPLACE_VEHICLE, GetEngine(e)->type, true);
+		InvalidateWindowData(WC_REPLACE_VEHICLE, Engine::Get(e)->type, true);
 	}
 }
 
@@ -148,7 +148,7 @@ class ReplaceVehicleWindow : public Window {
 				const uint num_engines = GetGroupNumEngines(_local_company, selected_group, eid);
 
 				/* Skip drawing the engines we don't have any of and haven't set for replacement */
-				if (num_engines == 0 && EngineReplacementForCompany(GetCompany(_local_company), eid, selected_group) == INVALID_ENGINE) continue;
+				if (num_engines == 0 && EngineReplacementForCompany(Company::Get(_local_company), eid, selected_group) == INVALID_ENGINE) continue;
 			} else {
 				if (!CheckAutoreplaceValidity(this->sel_engine[0], eid, _local_company)) continue;
 			}
@@ -238,7 +238,7 @@ public:
 	{
 		if (this->update_left || this->update_right) this->GenerateLists();
 
-		Company *c = GetCompany(_local_company);
+		Company *c = Company::Get(_local_company);
 		EngineID selected_id[2];
 		const GroupID selected_group = this->sel_group;
 
@@ -334,7 +334,7 @@ public:
 				break;
 
 			case RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN: { // Railtype selection dropdown menu
-				const Company *c = GetCompany(_local_company);
+				const Company *c = Company::Get(_local_company);
 				DropDownList *list = new DropDownList();
 				for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
 					const RailtypeInfo *rti = GetRailTypeInfo(rt);
@@ -347,7 +347,7 @@ public:
 			}
 
 			case RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE: // toggle renew_keep_length
-				DoCommandP(0, 5, GetCompany(_local_company)->settings.renew_keep_length ? 0 : 1, CMD_SET_AUTOREPLACE);
+				DoCommandP(0, 5, Company::Get(_local_company)->settings.renew_keep_length ? 0 : 1, CMD_SET_AUTOREPLACE);
 				break;
 
 			case RVW_WIDGET_START_REPLACE: { // Start replacing

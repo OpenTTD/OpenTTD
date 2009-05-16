@@ -17,7 +17,7 @@
 
 /* static */ bool AIStation::IsValidStation(StationID station_id)
 {
-	return ::IsValidStationID(station_id) && ::GetStation(station_id)->owner == _current_company;
+	return ::IsValidStationID(station_id) && ::Station::Get(station_id)->owner == _current_company;
 }
 
 /* static */ StationID AIStation::GetStationID(TileIndex tile)
@@ -33,7 +33,7 @@
 	static const int len = 64;
 	char *station_name = MallocT<char>(len);
 
-	::SetDParam(0, GetStation(station_id)->index);
+	::SetDParam(0, Station::Get(station_id)->index);
 	::GetString(station_name, STR_STATION, &station_name[len - 1]);
 	return station_name;
 }
@@ -51,7 +51,7 @@
 {
 	if (!IsValidStation(station_id)) return INVALID_TILE;
 
-	return ::GetStation(station_id)->xy;
+	return ::Station::Get(station_id)->xy;
 }
 
 /* static */ int32 AIStation::GetCargoWaiting(StationID station_id, CargoID cargo_id)
@@ -59,7 +59,7 @@
 	if (!IsValidStation(station_id)) return -1;
 	if (!AICargo::IsValidCargo(cargo_id)) return -1;
 
-	return ::GetStation(station_id)->goods[cargo_id].cargo.Count();
+	return ::Station::Get(station_id)->goods[cargo_id].cargo.Count();
 }
 
 /* static */ int32 AIStation::GetCargoRating(StationID station_id, CargoID cargo_id)
@@ -67,7 +67,7 @@
 	if (!IsValidStation(station_id)) return -1;
 	if (!AICargo::IsValidCargo(cargo_id)) return -1;
 
-	return ::GetStation(station_id)->goods[cargo_id].rating * 101 >> 8;
+	return ::Station::Get(station_id)->goods[cargo_id].rating * 101 >> 8;
 }
 
 /* static */ int32 AIStation::GetCoverageRadius(AIStation::StationType station_type)
@@ -114,7 +114,7 @@
 	if (!IsValidStation(station_id)) return false;
 	if (CountBits(station_type) != 1) return false;
 
-	return (::GetStation(station_id)->facilities & station_type) != 0;
+	return (::Station::Get(station_id)->facilities & station_type) != 0;
 }
 
 /* static */ bool AIStation::HasRoadType(StationID station_id, AIRoad::RoadType road_type)
@@ -124,10 +124,10 @@
 
 	::RoadTypes r = RoadTypeToRoadTypes((::RoadType)road_type);
 
-	for (const RoadStop *rs = ::GetStation(station_id)->GetPrimaryRoadStop(ROADSTOP_BUS); rs != NULL; rs = rs->next) {
+	for (const RoadStop *rs = ::Station::Get(station_id)->GetPrimaryRoadStop(ROADSTOP_BUS); rs != NULL; rs = rs->next) {
 		if ((::GetRoadTypes(rs->xy) & r) != 0) return true;
 	}
-	for (const RoadStop *rs = ::GetStation(station_id)->GetPrimaryRoadStop(ROADSTOP_TRUCK); rs != NULL; rs = rs->next) {
+	for (const RoadStop *rs = ::Station::Get(station_id)->GetPrimaryRoadStop(ROADSTOP_TRUCK); rs != NULL; rs = rs->next) {
 		if ((::GetRoadTypes(rs->xy) & r) != 0) return true;
 	}
 
@@ -138,5 +138,5 @@
 {
 	if (!IsValidStation(station_id)) return INVALID_TOWN;
 
-	return ::GetStation(station_id)->town->index;
+	return ::Station::Get(station_id)->town->index;
 }

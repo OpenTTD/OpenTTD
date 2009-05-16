@@ -32,10 +32,10 @@ static inline void UpdateNumEngineGroup(EngineID i, GroupID old_g, GroupID new_g
 {
 	if (old_g != new_g) {
 		/* Decrease the num engines of EngineID i of the old group if it's not the default one */
-		if (!IsDefaultGroupID(old_g) && IsValidGroupID(old_g)) GetGroup(old_g)->num_engines[i]--;
+		if (!IsDefaultGroupID(old_g) && IsValidGroupID(old_g)) Group::Get(old_g)->num_engines[i]--;
 
 		/* Increase the num engines of EngineID i of the new group if it's not the default one */
-		if (!IsDefaultGroupID(new_g) && IsValidGroupID(new_g)) GetGroup(new_g)->num_engines[i]++;
+		if (!IsDefaultGroupID(new_g) && IsValidGroupID(new_g)) Group::Get(new_g)->num_engines[i]++;
 	}
 }
 
@@ -107,7 +107,7 @@ CommandCost CmdDeleteGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 {
 	if (!IsValidGroupID(p1)) return CMD_ERROR;
 
-	Group *g = GetGroup(p1);
+	Group *g = Group::Get(p1);
 	if (g->owner != _current_company) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -126,7 +126,7 @@ CommandCost CmdDeleteGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			Company *c;
 			EngineRenew *er;
 
-			c = GetCompany(_current_company);
+			c = Company::Get(_current_company);
 			FOR_ALL_ENGINE_RENEWS(er) {
 				if (er->group_id == g->index) RemoveEngineReplacementForCompany(c, er->from, g->index, flags);
 			}
@@ -166,7 +166,7 @@ CommandCost CmdRenameGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 {
 	if (!IsValidGroupID(p1)) return CMD_ERROR;
 
-	Group *g = GetGroup(p1);
+	Group *g = Group::Get(p1);
 	if (g->owner != _current_company) return CMD_ERROR;
 
 	bool reset = StrEmpty(text);
@@ -203,10 +203,10 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	if (!IsValidVehicleID(p2) || (!IsValidGroupID(new_g) && !IsDefaultGroupID(new_g))) return CMD_ERROR;
 
-	Vehicle *v = GetVehicle(p2);
+	Vehicle *v = Vehicle::Get(p2);
 
 	if (IsValidGroupID(new_g)) {
-		Group *g = GetGroup(new_g);
+		Group *g = Group::Get(new_g);
 		if (g->owner != _current_company || g->vehicle_type != v->type) return CMD_ERROR;
 	}
 
@@ -286,7 +286,7 @@ CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, DoCommandFlag flags, uint3
 	VehicleType type = (VehicleType)p2;
 	if (!IsValidGroupID(p1) || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
 
-	Group *g = GetGroup(p1);
+	Group *g = Group::Get(p1);
 	if (g->owner != _current_company) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -322,7 +322,7 @@ CommandCost CmdSetGroupReplaceProtection(TileIndex tile, DoCommandFlag flags, ui
 {
 	if (!IsValidGroupID(p1)) return CMD_ERROR;
 
-	Group *g = GetGroup(p1);
+	Group *g = Group::Get(p1);
 	if (g->owner != _current_company) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -395,9 +395,9 @@ void UpdateTrainGroupID(Vehicle *v)
 
 uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e)
 {
-	if (IsValidGroupID(id_g)) return GetGroup(id_g)->num_engines[id_e];
+	if (IsValidGroupID(id_g)) return Group::Get(id_g)->num_engines[id_e];
 
-	uint num = GetCompany(company)->num_engines[id_e];
+	uint num = Company::Get(company)->num_engines[id_e];
 	if (!IsDefaultGroupID(id_g)) return num;
 
 	const Group *g;

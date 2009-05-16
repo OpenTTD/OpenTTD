@@ -307,7 +307,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 		delete v;
 	} else {
 		/* Target a vehicle */
-		Vehicle *u = GetVehicle(v->dest_tile);
+		Vehicle *u = Vehicle::Get(v->dest_tile);
 		if (u->type != VEH_ROAD || !IsRoadVehFront(u)) {
 			delete v;
 			return;
@@ -393,7 +393,7 @@ static void DisasterTick_Aircraft(Vehicle *v, uint16 image_override, bool leave_
 
 	if (v->current_order.GetDestination() == 2) {
 		if (GB(v->tick_counter, 0, 2) == 0) {
-			Industry *i = GetIndustry(v->dest_tile);
+			Industry *i = Industry::Get(v->dest_tile);
 			int x = TileX(i->xy) * TILE_SIZE;
 			int y = TileY(i->xy) * TILE_SIZE;
 			uint32 r = Random();
@@ -411,7 +411,7 @@ static void DisasterTick_Aircraft(Vehicle *v, uint16 image_override, bool leave_
 			v->current_order.SetDestination(2);
 			v->age = 0;
 
-			Industry *i = GetIndustry(v->dest_tile);
+			Industry *i = Industry::Get(v->dest_tile);
 			DestructIndustry(i);
 
 			SetDParam(0, i->town->index);
@@ -430,7 +430,7 @@ static void DisasterTick_Aircraft(Vehicle *v, uint16 image_override, bool leave_
 		IndustryID ind = GetIndustryIndex(tile);
 		v->dest_tile = ind;
 
-		if (GetIndustrySpec(GetIndustry(ind)->type)->behaviour & industry_flag) {
+		if (GetIndustrySpec(Industry::Get(ind)->type)->behaviour & industry_flag) {
 			v->current_order.SetDestination(1);
 			v->age = 0;
 		}
@@ -574,7 +574,7 @@ static void DisasterTick_Big_Ufo_Destroyer(Vehicle *v)
 	}
 
 	if (v->current_order.GetDestination() == 0) {
-		Vehicle *u = GetVehicle(v->u.disaster.big_ufo_destroyer_target);
+		Vehicle *u = Vehicle::Get(v->u.disaster.big_ufo_destroyer_target);
 		if (Delta(v->x_pos, u->x_pos) > TILE_SIZE) return;
 		v->current_order.SetDestination(1);
 
@@ -911,7 +911,7 @@ void StartupDisasters()
 }
 
 /** Marks all disasters targeting this industry in such a way
- * they won't call GetIndustry(v->dest_tile) on invalid industry anymore.
+ * they won't call Industry::Get(v->dest_tile) on invalid industry anymore.
  * @param i deleted industry
  */
 void ReleaseDisastersTargetingIndustry(IndustryID i)

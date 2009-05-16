@@ -48,7 +48,7 @@ uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
  */
 static inline uint16 GetVehicleDefaultCapacity(EngineID engine, VehicleType type, CargoID *cargo_type)
 {
-	const Engine *e = GetEngine(engine);
+	const Engine *e = Engine::Get(engine);
 	CargoID cargo = (e->CanCarryCargo() ? e->GetDefaultCargoType() : (CargoID)CT_INVALID);
 	if (cargo_type != NULL) *cargo_type = cargo;
 	if (cargo == CT_INVALID) return 0;
@@ -113,7 +113,7 @@ bool IsArticulatedVehicleRefittable(EngineID engine)
 {
 	if (IsEngineRefittable(engine)) return true;
 
-	const Engine *e = GetEngine(engine);
+	const Engine *e = Engine::Get(engine);
 	if (e->type != VEH_TRAIN && e->type != VEH_ROAD) return false;
 
 	if (!HasBit(e->info.callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return false;
@@ -235,7 +235,7 @@ bool IsArticulatedVehicleCarryingDifferentCargos(const Vehicle *v, CargoID *carg
  */
 void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 {
-	const Engine *engine = GetEngine(v->engine_type);
+	const Engine *engine = Engine::Get(v->engine_type);
 
 	uint32 purchase_refit_union = GetUnionOfArticulatedRefitMasks(v->engine_type, v->type, true);
 	uint32 purchase_refit_intersection = GetIntersectionOfArticulatedRefitMasks(v->engine_type, v->type, true);
@@ -303,7 +303,7 @@ void AddArticulatedParts(Vehicle *first, VehicleType type)
 		bool flip_image = HasBit(callback, 7);
 
 		Vehicle *previous = u;
-		const Engine *e_artic = GetEngine(engine_type);
+		const Engine *e_artic = Engine::Get(engine_type);
 		switch (type) {
 			default: NOT_REACHED();
 

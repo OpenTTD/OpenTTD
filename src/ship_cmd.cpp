@@ -56,7 +56,7 @@ static SpriteID GetShipIcon(EngineID engine)
 		SpriteID sprite = GetCustomVehicleIcon(engine, DIR_W);
 		if (sprite != 0) return sprite;
 
-		spritenum = GetEngine(engine)->image_index;
+		spritenum = Engine::Get(engine)->image_index;
 	}
 
 	return 6 + _ship_sprites[spritenum];
@@ -88,7 +88,7 @@ SpriteID Ship::GetImage(Direction direction) const
 		SpriteID sprite = GetCustomVehicleSprite(this, direction);
 		if (sprite != 0) return sprite;
 
-		spritenum = GetEngine(this->engine_type)->image_index;
+		spritenum = Engine::Get(this->engine_type)->image_index;
 	}
 
 	return _ship_sprites[spritenum] + direction;
@@ -231,7 +231,7 @@ TileIndex Ship::GetOrderStationLocation(StationID station)
 {
 	if (station == this->last_station_visited) this->last_station_visited = INVALID_STATION;
 
-	const Station *st = GetStation(station);
+	const Station *st = Station::Get(station);
 	if (st->dock_tile != INVALID_TILE) {
 		return TILE_ADD(st->dock_tile, ToTileIndexDiff(GetDockOffset(st->dock_tile)));
 	} else {
@@ -609,7 +609,7 @@ static void ShipController(Vehicle *v)
 				} else if (v->dest_tile != 0) {
 					/* We have a target, let's see if we reached it... */
 					if (v->current_order.IsType(OT_GOTO_STATION) &&
-							GetStation(v->current_order.GetDestination())->IsBuoy() &&
+							Station::Get(v->current_order.GetDestination())->IsBuoy() &&
 							DistanceManhattan(v->dest_tile, gp.new_tile) <= 3) {
 						/* We got within 3 tiles of our target buoy, so let's skip to our
 						 * next order */
@@ -628,7 +628,7 @@ static void ShipController(Vehicle *v)
 								v->last_station_visited = v->current_order.GetDestination();
 
 								/* Process station in the orderlist. */
-								Station *st = GetStation(v->current_order.GetDestination());
+								Station *st = Station::Get(v->current_order.GetDestination());
 								if (st->facilities & FACIL_DOCK) { // ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations
 									ShipArrivesAt(v, st);
 									v->BeginLoading();
@@ -728,7 +728,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	if (!IsEngineBuildable(p1, VEH_SHIP, _current_company)) return_cmd_error(STR_SHIP_NOT_AVAILABLE);
 
-	const Engine *e = GetEngine(p1);
+	const Engine *e = Engine::Get(p1);
 	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
 
 	/* Engines without valid cargo should not be available */
@@ -805,7 +805,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		if (IsLocalCompany())
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Ship window
 
-		GetCompany(_current_company)->num_engines[p1]++;
+		Company::Get(_current_company)->num_engines[p1]++;
 	}
 
 	return value;
@@ -823,7 +823,7 @@ CommandCost CmdSellShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
-	v = GetVehicle(p1);
+	v = Vehicle::Get(p1);
 
 	if (v->type != VEH_SHIP || !CheckOwnership(v->owner)) return CMD_ERROR;
 
@@ -872,7 +872,7 @@ CommandCost CmdSendShipToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
-	Vehicle *v = GetVehicle(p1);
+	Vehicle *v = Vehicle::Get(p1);
 
 	if (v->type != VEH_SHIP) return CMD_ERROR;
 
@@ -900,7 +900,7 @@ CommandCost CmdRefitShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
-	v = GetVehicle(p1);
+	v = Vehicle::Get(p1);
 
 	if (v->type != VEH_SHIP || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT);

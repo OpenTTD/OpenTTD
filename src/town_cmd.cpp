@@ -693,7 +693,7 @@ void OnTick_Town()
 		if (++_cur_town_ctr > GetMaxTownIndex())
 			_cur_town_ctr = 0;
 
-		if (IsValidTownID(i)) TownTickHandler(GetTown(i));
+		if (IsValidTownID(i)) TownTickHandler(Town::Get(i));
 	}
 }
 
@@ -2288,7 +2288,7 @@ CommandCost CmdRenameTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	}
 
 	if (flags & DC_EXEC) {
-		Town *t = GetTown(p1);
+		Town *t = Town::Get(p1);
 
 		free(t->name);
 		t->name = reset ? NULL : strdup(text);
@@ -2512,7 +2512,7 @@ uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
 	if (cid != COMPANY_SPECTATOR && !(_settings_game.economy.bribe && t->unwanted[cid])) {
 
 		/* Things worth more than this are not shown */
-		Money avail = GetCompany(cid)->money + _price.station_value * 200;
+		Money avail = Company::Get(cid)->money + _price.station_value * 200;
 		Money ref = _price.build_industry >> 8;
 
 		/* Check the action bits for validity and
@@ -2555,7 +2555,7 @@ CommandCost CmdDoTownAction(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 {
 	if (!IsValidTownID(p1) || p2 >= lengthof(_town_action_proc)) return CMD_ERROR;
 
-	Town *t = GetTown(p1);
+	Town *t = Town::Get(p1);
 
 	if (!HasBit(GetMaskOfTownActions(NULL, _current_company, t), p2)) return CMD_ERROR;
 
@@ -2727,7 +2727,7 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 					return NULL;
 				}
 
-				Town *town = GetTown(tid);
+				Town *town = Town::Get(tid);
 				assert(town->IsValid());
 
 				if (DistanceManhattan(tile, town->xy) >= threshold) town = NULL;

@@ -459,7 +459,7 @@ Money GetAvailableMoneyForCommand()
 {
 	CompanyID company = _current_company;
 	if (!IsValidCompanyID(company)) return INT64_MAX;
-	return GetCompany(company)->money;
+	return Company::Get(company)->money;
 }
 
 /**
@@ -591,7 +591,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 
 	/* update last build coordinate of company. */
 	if (tile != 0 && IsValidCompanyID(_current_company)) {
-		GetCompany(_current_company)->last_build_coordinate = tile;
+		Company::Get(_current_company)->last_build_coordinate = tile;
 	}
 
 	/* Actually try and execute the command. If no cost-type is given

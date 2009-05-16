@@ -188,7 +188,7 @@ static void RunVehicleDayProc(uint daytick)
 	uint i;
 
 	for (i = daytick; i < total; i += DAY_TICKS) {
-		Vehicle *v = GetVehicle(i);
+		Vehicle *v = Vehicle::Get(i);
 
 		if (v->IsValid()) {
 			/* Call the 32-day callback if needed */

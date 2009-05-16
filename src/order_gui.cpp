@@ -224,7 +224,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 					SetDParam(3, STR_ORDER_NEAREST_DEPOT);
 				} else {
 					SetDParam(1, STR_GO_TO_DEPOT);
-					SetDParam(3, GetDepot(order->GetDestination())->town_index);
+					SetDParam(3, Depot::Get(order->GetDestination())->town_index);
 				}
 
 				switch (v->type) {
@@ -351,7 +351,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 	if (IsTileType(tile, MP_STATION)) {
 		StationID st_index = GetStationIndex(tile);
-		const Station *st = GetStation(st_index);
+		const Station *st = Station::Get(st_index);
 
 		if (st->owner == _local_company || st->owner == OWNER_NONE) {
 			byte facil;
@@ -659,7 +659,7 @@ public:
 		switch (data) {
 			case 0:
 				/* Autoreplace replaced the vehicle */
-				this->vehicle = GetVehicle(this->window_number);
+				this->vehicle = Vehicle::Get(this->window_number);
 				break;
 
 			case -1:
@@ -762,7 +762,7 @@ public:
 			this->SetWidgetLoweredState(ORDER_WIDGET_NON_STOP, order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 			switch (order->GetType()) {
 				case OT_GOTO_STATION:
-					if (!GetStation(order->GetDestination())->IsBuoy()) {
+					if (!Station::Get(order->GetDestination())->IsBuoy()) {
 						this->SetWidgetLoweredState(ORDER_WIDGET_FULL_LOAD, order->GetLoadType() == OLF_FULL_LOAD_ANY);
 						this->SetWidgetLoweredState(ORDER_WIDGET_UNLOAD, order->GetUnloadType() == OUFB_UNLOAD);
 						break;
@@ -856,11 +856,11 @@ public:
 					TileIndex xy = INVALID_TILE;
 
 					switch (ord->GetType()) {
-						case OT_GOTO_STATION:  xy = GetStation(ord->GetDestination())->xy ; break;
-						case OT_GOTO_WAYPOINT: xy = GetWaypoint(ord->GetDestination())->xy; break;
+						case OT_GOTO_STATION:  xy = Station::Get(ord->GetDestination())->xy ; break;
+						case OT_GOTO_WAYPOINT: xy = Waypoint::Get(ord->GetDestination())->xy; break;
 						case OT_GOTO_DEPOT:
 							if ((ord->GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0) break;
-							xy = (this->vehicle->type == VEH_AIRCRAFT) ?  GetStation(ord->GetDestination())->xy : GetDepot(ord->GetDestination())->xy;
+							xy = (this->vehicle->type == VEH_AIRCRAFT) ?  Station::Get(ord->GetDestination())->xy : Depot::Get(ord->GetDestination())->xy;
 							break;
 						default:
 							break;

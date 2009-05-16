@@ -87,10 +87,10 @@ struct Company : PoolItem<Company, CompanyByte, &_Company_pool> {
 
 static inline bool IsValidCompanyID(CompanyID company)
 {
-	return company < MAX_COMPANIES && (uint)company < GetCompanyPoolSize() && GetCompany(company)->IsValid();
+	return company < MAX_COMPANIES && (uint)company < GetCompanyPoolSize() && Company::Get(company)->IsValid();
 }
 
-#define FOR_ALL_COMPANIES_FROM(d, start) for (d = GetCompany(start); d != NULL; d = (d->index + 1U < GetCompanyPoolSize()) ? GetCompany(d->index + 1U) : NULL) if (d->IsValid())
+#define FOR_ALL_COMPANIES_FROM(d, start) for (d = Company::Get(start); d != NULL; d = (d->index + 1U < GetCompanyPoolSize()) ? Company::Get(d->index + 1U) : NULL) if (d->IsValid())
 #define FOR_ALL_COMPANIES(d) FOR_ALL_COMPANIES_FROM(d, 0)
 
 static inline byte ActiveCompanyCount()

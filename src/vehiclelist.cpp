@@ -92,7 +92,7 @@ void GenerateVehicleSortList(VehicleList *list, VehicleType type, Owner owner, u
 
 		case VLW_SHARED_ORDERS:
 			/* Add all vehicles from this vehicle's shared order list */
-			for (v = GetVehicle(index); v != NULL; v = v->NextShared()) {
+			for (v = Vehicle::Get(index); v != NULL; v = v->NextShared()) {
 				*list->Append() = v;
 			}
 			break;

@@ -221,16 +221,16 @@ static inline uint GetNumStations()
 
 static inline bool IsValidStationID(StationID index)
 {
-	return index < GetStationPoolSize() && GetStation(index)->IsValid();
+	return index < GetStationPoolSize() && Station::Get(index)->IsValid();
 }
 
-#define FOR_ALL_STATIONS_FROM(st, start) for (st = GetStation(start); st != NULL; st = (st->index + 1U < GetStationPoolSize()) ? GetStation(st->index + 1U) : NULL) if (st->IsValid())
+#define FOR_ALL_STATIONS_FROM(st, start) for (st = Station::Get(start); st != NULL; st = (st->index + 1U < GetStationPoolSize()) ? Station::Get(st->index + 1U) : NULL) if (st->IsValid())
 #define FOR_ALL_STATIONS(st) FOR_ALL_STATIONS_FROM(st, 0)
 
 
 /* Stuff for ROADSTOPS */
 
-#define FOR_ALL_ROADSTOPS_FROM(rs, start) for (rs = GetRoadStop(start); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) if (rs->IsValid())
+#define FOR_ALL_ROADSTOPS_FROM(rs, start) for (rs = RoadStop::Get(start); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? RoadStop::Get(rs->index + 1U) : NULL) if (rs->IsValid())
 #define FOR_ALL_ROADSTOPS(rs) FOR_ALL_ROADSTOPS_FROM(rs, 0)
 
 /* End of stuff for ROADSTOPS */

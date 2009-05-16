@@ -56,7 +56,7 @@ Station *ComposeWaypointStation(TileIndex tile)
 	static Station &stat = *(Station*)stat_raw;
 
 	stat.train_tile = stat.xy = wp->xy;
-	stat.town = GetTown(wp->town_index);
+	stat.town = Town::Get(wp->town_index);
 	stat.build_date = wp->build_date;
 
 	return &stat;

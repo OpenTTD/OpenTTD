@@ -114,8 +114,8 @@ static int CDECL EngineNumberSorter(const void *a, const void *b)
 
 static int CDECL EngineIntroDateSorter(const void *a, const void *b)
 {
-	const int va = GetEngine(*(const EngineID*)a)->intro_date;
-	const int vb = GetEngine(*(const EngineID*)b)->intro_date;
+	const int va = Engine::Get(*(const EngineID*)a)->intro_date;
+	const int vb = Engine::Get(*(const EngineID*)b)->intro_date;
 	const int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -152,8 +152,8 @@ static int CDECL EngineNameSorter(const void *a, const void *b)
 
 static int CDECL EngineReliabilitySorter(const void *a, const void *b)
 {
-	const int va = GetEngine(*(const EngineID*)a)->reliability;
-	const int vb = GetEngine(*(const EngineID*)b)->reliability;
+	const int va = Engine::Get(*(const EngineID*)a)->reliability;
+	const int vb = Engine::Get(*(const EngineID*)b)->reliability;
 	const int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -163,8 +163,8 @@ static int CDECL EngineReliabilitySorter(const void *a, const void *b)
 
 static int CDECL EngineCostSorter(const void *a, const void *b)
 {
-	Money va = GetEngine(*(const EngineID*)a)->GetCost();
-	Money vb = GetEngine(*(const EngineID*)b)->GetCost();
+	Money va = Engine::Get(*(const EngineID*)a)->GetCost();
+	Money vb = Engine::Get(*(const EngineID*)b)->GetCost();
 	int r = ClampToI32(va - vb);
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -174,8 +174,8 @@ static int CDECL EngineCostSorter(const void *a, const void *b)
 
 static int CDECL EngineSpeedSorter(const void *a, const void *b)
 {
-	int va = GetEngine(*(const EngineID*)a)->GetDisplayMaxSpeed();
-	int vb = GetEngine(*(const EngineID*)b)->GetDisplayMaxSpeed();
+	int va = Engine::Get(*(const EngineID*)a)->GetDisplayMaxSpeed();
+	int vb = Engine::Get(*(const EngineID*)b)->GetDisplayMaxSpeed();
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -185,8 +185,8 @@ static int CDECL EngineSpeedSorter(const void *a, const void *b)
 
 static int CDECL EnginePowerSorter(const void *a, const void *b)
 {
-	int va = GetEngine(*(const EngineID*)a)->GetPower();
-	int vb = GetEngine(*(const EngineID*)b)->GetPower();
+	int va = Engine::Get(*(const EngineID*)a)->GetPower();
+	int vb = Engine::Get(*(const EngineID*)b)->GetPower();
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -196,8 +196,8 @@ static int CDECL EnginePowerSorter(const void *a, const void *b)
 
 static int CDECL EngineRunningCostSorter(const void *a, const void *b)
 {
-	Money va = GetEngine(*(const EngineID*)a)->GetRunningCost();
-	Money vb = GetEngine(*(const EngineID*)b)->GetRunningCost();
+	Money va = Engine::Get(*(const EngineID*)a)->GetRunningCost();
+	Money vb = Engine::Get(*(const EngineID*)b)->GetRunningCost();
 	int r = ClampToI32(va - vb);
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -208,8 +208,8 @@ static int CDECL EngineRunningCostSorter(const void *a, const void *b)
 /* Train sorting functions */
 static int CDECL TrainEnginePowerVsRunningCostSorter(const void *a, const void *b)
 {
-	const Engine *e_a = GetEngine(*(const EngineID*)a);
-	const Engine *e_b = GetEngine(*(const EngineID*)b);
+	const Engine *e_a = Engine::Get(*(const EngineID*)a);
+	const Engine *e_b = Engine::Get(*(const EngineID*)b);
 
 	/* Here we are using a few tricks to get the right sort.
 	 * We want power/running cost, but since we usually got higher running cost than power and we store the result in an int,
@@ -268,8 +268,8 @@ static int CDECL RoadVehEngineCapacitySorter(const void *a, const void *b)
 /* Ship vehicle sorting functions */
 static int CDECL ShipEngineCapacitySorter(const void *a, const void *b)
 {
-	const Engine *e_a = GetEngine(*(const EngineID*)a);
-	const Engine *e_b = GetEngine(*(const EngineID*)b);
+	const Engine *e_a = Engine::Get(*(const EngineID*)a);
+	const Engine *e_b = Engine::Get(*(const EngineID*)b);
 
 	int va = e_a->GetDisplayDefaultCapacity();
 	int vb = e_b->GetDisplayDefaultCapacity();
@@ -283,8 +283,8 @@ static int CDECL ShipEngineCapacitySorter(const void *a, const void *b)
 /* Aircraft sorting functions */
 static int CDECL AircraftEngineCargoSorter(const void *a, const void *b)
 {
-	const Engine *e_a = GetEngine(*(const EngineID*)a);
-	const Engine *e_b = GetEngine(*(const EngineID*)b);
+	const Engine *e_a = Engine::Get(*(const EngineID*)a);
+	const Engine *e_b = Engine::Get(*(const EngineID*)b);
 
 	int va = e_a->GetDisplayDefaultCapacity();
 	int vb = e_b->GetDisplayDefaultCapacity();
@@ -400,7 +400,7 @@ static const StringID _sort_listing[][11] = {{
 static bool CDECL CargoFilter(const EngineID *eid, const CargoID cid)
 {
 	if (cid == CF_ANY) return true;
-	uint32 refit_mask = GetUnionOfArticulatedRefitMasks(*eid, GetEngine(*eid)->type, true);
+	uint32 refit_mask = GetUnionOfArticulatedRefitMasks(*eid, Engine::Get(*eid)->type, true);
 	return (cid == CF_NONE ? refit_mask == 0 : HasBit(refit_mask, cid));
 }
 
@@ -431,7 +431,7 @@ static int DrawCargoCapacityInfo(int left, int right, int y, EngineID engine, Ve
 /* Draw rail wagon specific details */
 static int DrawRailWagonPurchaseInfo(int left, int right, int y, EngineID engine_number, const RailVehicleInfo *rvi)
 {
-	const Engine *e = GetEngine(engine_number);
+	const Engine *e = Engine::Get(engine_number);
 
 	/* Purchase cost */
 	SetDParam(0, e->GetCost());
@@ -469,7 +469,7 @@ static int DrawRailWagonPurchaseInfo(int left, int right, int y, EngineID engine
 /* Draw locomotive specific details */
 static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engine_number, const RailVehicleInfo *rvi)
 {
-	const Engine *e = GetEngine(engine_number);
+	const Engine *e = Engine::Get(engine_number);
 
 	/* Purchase Cost - Engine weight */
 	SetDParam(0, e->GetCost());
@@ -511,7 +511,7 @@ static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engin
 /* Draw road vehicle specific details */
 static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_number)
 {
-	const Engine *e = GetEngine(engine_number);
+	const Engine *e = Engine::Get(engine_number);
 
 	/* Purchase cost - Max speed */
 	SetDParam(0, e->GetCost());
@@ -530,7 +530,7 @@ static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_n
 /* Draw ship specific details */
 static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_number, const ShipVehicleInfo *svi, bool refittable)
 {
-	const Engine *e = GetEngine(engine_number);
+	const Engine *e = Engine::Get(engine_number);
 
 	/* Purchase cost - Max speed */
 	SetDParam(0, e->GetCost());
@@ -556,7 +556,7 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
 /* Draw aircraft specific details */
 static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_number, const AircraftVehicleInfo *avi, bool refittable)
 {
-	const Engine *e = GetEngine(engine_number);
+	const Engine *e = Engine::Get(engine_number);
 	CargoID cargo = e->GetDefaultCargoType();
 
 	/* Purchase cost - Max speed */
@@ -598,7 +598,7 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
  */
 int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 {
-	const Engine *e = GetEngine(engine_number);
+	const Engine *e = Engine::Get(engine_number);
 	YearMonthDay ymd;
 	ConvertDateToYMD(e->intro_date, &ymd);
 	bool refittable = IsArticulatedVehicleRefittable(engine_number);

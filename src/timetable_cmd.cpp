@@ -59,7 +59,7 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	VehicleID veh = GB(p1, 0, 16);
 	if (!IsValidVehicleID(veh)) return CMD_ERROR;
 
-	Vehicle *v = GetVehicle(veh);
+	Vehicle *v = Vehicle::Get(veh);
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	VehicleOrderID order_number = GB(p1, 16, 8);
@@ -117,7 +117,7 @@ CommandCost CmdSetVehicleOnTime(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	VehicleID veh = GB(p1, 0, 16);
 	if (!IsValidVehicleID(veh)) return CMD_ERROR;
 
-	Vehicle *v = GetVehicle(veh);
+	Vehicle *v = Vehicle::Get(veh);
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -145,7 +145,7 @@ CommandCost CmdAutofillTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	VehicleID veh = GB(p1, 0, 16);
 	if (!IsValidVehicleID(veh)) return CMD_ERROR;
 
-	Vehicle *v = GetVehicle(veh);
+	Vehicle *v = Vehicle::Get(veh);
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {

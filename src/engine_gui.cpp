@@ -20,7 +20,7 @@
 
 StringID GetEngineCategoryName(EngineID engine)
 {
-	switch (GetEngine(engine)->type) {
+	switch (Engine::Get(engine)->type) {
 		default: NOT_REACHED();
 		case VEH_ROAD:              return STR_ENGINE_PREVIEW_ROAD_VEHICLE;
 		case VEH_AIRCRAFT:          return STR_ENGINE_PREVIEW_AIRCRAFT;
@@ -100,7 +100,7 @@ struct EnginePreviewWindow : Window {
 		SetDParam(0, engine);
 		DrawString(this->widget[EPW_BACKGROUND].left + 2, this->widget[EPW_BACKGROUND].right - 2, 80, STR_ENGINE_NAME, TC_BLACK, SA_CENTER);
 
-		const DrawEngineInfo *dei = &_draw_engine_list[GetEngine(engine)->type];
+		const DrawEngineInfo *dei = &_draw_engine_list[Engine::Get(engine)->type];
 
 		int width = this->width;
 		dei->engine_proc(width >> 1, 100, engine, 0);
@@ -147,7 +147,7 @@ uint GetTotalCapacityOfArticulatedParts(EngineID engine, VehicleType type)
 
 static void DrawTrainEngineInfo(EngineID engine, int left, int right, int top, int bottom)
 {
-	const Engine *e = GetEngine(engine);
+	const Engine *e = Engine::Get(engine);
 
 	SetDParam(0, e->GetCost());
 	SetDParam(2, e->GetDisplayMaxSpeed());
@@ -168,7 +168,7 @@ static void DrawTrainEngineInfo(EngineID engine, int left, int right, int top, i
 
 static void DrawAircraftEngineInfo(EngineID engine, int left, int right, int top, int bottom)
 {
-	const Engine *e = GetEngine(engine);
+	const Engine *e = Engine::Get(engine);
 	CargoID cargo = e->GetDefaultCargoType();
 
 	if (cargo == CT_INVALID || cargo == CT_PASSENGERS) {
@@ -194,7 +194,7 @@ static void DrawAircraftEngineInfo(EngineID engine, int left, int right, int top
 
 static void DrawRoadVehEngineInfo(EngineID engine, int left, int right, int top, int bottom)
 {
-	const Engine *e = GetEngine(engine);
+	const Engine *e = Engine::Get(engine);
 
 	SetDParam(0, e->GetCost());
 	SetDParam(1, e->GetDisplayMaxSpeed());
@@ -212,7 +212,7 @@ static void DrawRoadVehEngineInfo(EngineID engine, int left, int right, int top,
 
 static void DrawShipEngineInfo(EngineID engine, int left, int right, int top, int bottom)
 {
-	const Engine *e = GetEngine(engine);
+	const Engine *e = Engine::Get(engine);
 
 	SetDParam(0, e->GetCost());
 	SetDParam(1, e->GetDisplayMaxSpeed());
@@ -225,7 +225,7 @@ static void DrawShipEngineInfo(EngineID engine, int left, int right, int top, in
 void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
 {
 	EngineID engine = ni->data_a;
-	const DrawEngineInfo *dei = &_draw_engine_list[GetEngine(engine)->type];
+	const DrawEngineInfo *dei = &_draw_engine_list[Engine::Get(engine)->type];
 
 	SetDParam(0, GetEngineCategoryName(engine));
 	DrawStringMultiLine(1, w->width - 2, 0, 56, STR_NEW_VEHICLE_NOW_AVAILABLE, TC_FROMSTRING, SA_CENTER);

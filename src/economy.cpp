@@ -294,7 +294,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		}
 
 		/* Sell all the shares that people have on this company */
-		c = GetCompany(old_owner);
+		c = Company::Get(old_owner);
 		for (i = 0; i < 4; i++) {
 			_current_company = c->share_owners[i];
 			if (_current_company != INVALID_OWNER) {
@@ -313,7 +313,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	 * removing his/her property doesn't fail because of lack of money.
 	 * Not too drastically though, because it could overflow */
 	if (new_owner == INVALID_OWNER) {
-		GetCompany(old_owner)->money = UINT64_MAX >> 2; // jackpot ;p
+		Company::Get(old_owner)->money = UINT64_MAX >> 2; // jackpot ;p
 	}
 
 	if (new_owner == INVALID_OWNER) {
@@ -321,7 +321,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 
 		for (s = _subsidies; s != endof(_subsidies); s++) {
 			if (s->cargo_type != CT_INVALID && s->age >= 12) {
-				if (GetStation(s->to)->owner == old_owner) s->cargo_type = CT_INVALID;
+				if (Station::Get(s->to)->owner == old_owner) s->cargo_type = CT_INVALID;
 			}
 		}
 	}
@@ -360,7 +360,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 				} else {
 					v->owner = new_owner;
 					v->colourmap = PAL_NONE;
-					if (IsEngineCountable(v)) GetCompany(new_owner)->num_engines[v->engine_type]++;
+					if (IsEngineCountable(v)) Company::Get(new_owner)->num_engines[v->engine_type]++;
 					if (v->IsPrimaryVehicle()) v->unitnumber = unitidgen[v->type].NextID();
 				}
 			}
@@ -418,7 +418,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 
 	/* In all cases clear replace engine rules.
 	 * Even if it was copied, it could interfere with new owner's rules */
-	RemoveAllEngineReplacementForCompany(GetCompany(old_owner));
+	RemoveAllEngineReplacementForCompany(Company::Get(old_owner));
 
 	if (new_owner == INVALID_OWNER) {
 		RemoveAllGroupsForCompany(old_owner);
@@ -872,32 +872,32 @@ Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode)
 		if (cs->town_effect != TE_PASSENGERS && cs->town_effect != TE_MAIL) {
 			SetDParam(1, STR_INDUSTRY);
 			SetDParam(2, s->from);
-			tile = GetIndustry(s->from)->xy;
+			tile = Industry::Get(s->from)->xy;
 
 			if (cs->town_effect != TE_GOODS && cs->town_effect != TE_FOOD) {
 				SetDParam(4, STR_INDUSTRY);
 				SetDParam(5, s->to);
-				tile2 = GetIndustry(s->to)->xy;
+				tile2 = Industry::Get(s->to)->xy;
 			} else {
 				SetDParam(4, STR_TOWN);
 				SetDParam(5, s->to);
-				tile2 = GetTown(s->to)->xy;
+				tile2 = Town::Get(s->to)->xy;
 			}
 		} else {
 			SetDParam(1, STR_TOWN);
 			SetDParam(2, s->from);
-			tile = GetTown(s->from)->xy;
+			tile = Town::Get(s->from)->xy;
 
 			SetDParam(4, STR_TOWN);
 			SetDParam(5, s->to);
-			tile2 = GetTown(s->to)->xy;
+			tile2 = Town::Get(s->to)->xy;
 		}
 	} else {
 		SetDParam(1, s->from);
-		tile = GetStation(s->from)->xy;
+		tile = Station::Get(s->from)->xy;
 
 		SetDParam(2, s->to);
-		tile2 = GetStation(s->to)->xy;
+		tile2 = Station::Get(s->to)->xy;
 	}
 
 	tp.a = tile;
@@ -1069,7 +1069,7 @@ static void SubsidyMonthlyHandler()
 			modified = true;
 			AI::BroadcastNewEvent(new AIEventSubsidyOfferExpired(s - _subsidies));
 		} else if (s->age == 2 * 12 - 1) {
-			st = GetStation(s->to);
+			st = Station::Get(s->to);
 			if (st->owner == _local_company) {
 				pair = SetupSubsidyDecodeParam(s, 1);
 				AddNewsItem(STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE, NS_SUBSIDIES, pair.a, pair.b);
@@ -1295,9 +1295,9 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 			/* Check distance from source */
 			const CargoSpec *cs = GetCargo(cargo_type);
 			if (cs->town_effect == TE_PASSENGERS || cs->town_effect == TE_MAIL) {
-				xy = GetTown(s->from)->xy;
+				xy = Town::Get(s->from)->xy;
 			} else {
-				xy = GetIndustry(s->from)->xy;
+				xy = Industry::Get(s->from)->xy;
 			}
 			if (DistanceMax(xy, from->xy) > 9) continue;
 
@@ -1307,11 +1307,11 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 				case TE_MAIL:
 				case TE_GOODS:
 				case TE_FOOD:
-					xy = GetTown(s->to)->xy;
+					xy = Town::Get(s->to)->xy;
 					break;
 
 				default:
-					xy = GetIndustry(s->to)->xy;
+					xy = Industry::Get(s->to)->xy;
 					break;
 			}
 			if (DistanceMax(xy, to->xy) > 9) continue;
@@ -1360,14 +1360,14 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 
 	/* Update company statistics */
 	{
-		Company *c = GetCompany(_current_company);
+		Company *c = Company::Get(_current_company);
 		c->cur_economy.delivered_cargo += num_pieces;
 		SetBit(c->cargo_types, cargo_type);
 	}
 
 	/* Get station pointers. */
-	s_from = GetStation(source);
-	s_to = GetStation(dest);
+	s_from = Station::Get(source);
+	s_to = Station::Get(dest);
 
 	/* Check if a subsidy applies. */
 	subsidised = CheckSubsidised(s_from, s_to, cargo_type);
@@ -1444,7 +1444,7 @@ void VehiclePayment(Vehicle *front_v)
 	Money virtual_profit = 0; // The virtual profit for entire vehicle chain
 
 	StationID last_visited = front_v->last_station_visited;
-	Station *st = GetStation(last_visited);
+	Station *st = Station::Get(last_visited);
 
 	/* The owner of the train wants to be paid */
 	CompanyID old_company = _current_company;
@@ -1496,7 +1496,7 @@ void VehiclePayment(Vehicle *front_v)
 					Money profit = GetTransportedGoodsIncome(
 						cp->count,
 						/* pay transfer vehicle for only the part of transfer it has done: ie. cargo_loaded_at_xy to here */
-						DistanceManhattan(cp->loaded_at_xy, GetStation(last_visited)->xy),
+						DistanceManhattan(cp->loaded_at_xy, Station::Get(last_visited)->xy),
 						cp->days_in_transit,
 						v->cargo_type);
 
@@ -1562,7 +1562,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	}
 
 	StationID last_visited = v->last_station_visited;
-	Station *st = GetStation(last_visited);
+	Station *st = Station::Get(last_visited);
 
 	if (v->type == VEH_TRAIN && (!IsTileType(v->tile, MP_STATION) || GetStationIndex(v->tile) != st->index)) {
 		/* The train reversed in the station. Take the "easy" way
@@ -1837,7 +1837,7 @@ static void DoAcquireCompany(Company *c)
 	CompanyID ci = c->index;
 
 	CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
-	cni->FillData(c, GetCompany(_current_company));
+	cni->FillData(c, Company::Get(_current_company));
 
 	SetDParam(0, STR_NEWS_COMPANY_MERGER_TITLE);
 	SetDParam(1, c->bankrupt_value == 0 ? STR_NEWS_MERGER_TAKEOVER_TITLE : STR_NEWS_COMPANY_MERGER_DESCRIPTION);
@@ -1852,7 +1852,7 @@ static void DoAcquireCompany(Company *c)
 	ChangeOwnershipOfCompanyItems(ci, _current_company);
 
 	if (c->bankrupt_value == 0) {
-		owner = GetCompany(_current_company);
+		owner = Company::Get(_current_company);
 		owner->current_loan += c->current_loan;
 	}
 
@@ -1893,7 +1893,7 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	 * Cannot buy own shares */
 	if (!IsValidCompanyID((CompanyID)p1) || !_settings_game.economy.allow_shares || _current_company == (CompanyID)p1) return CMD_ERROR;
 
-	Company *c = GetCompany((CompanyID)p1);
+	Company *c = Company::Get((CompanyID)p1);
 
 	/* Protect new companies from hostile takeovers */
 	if (_cur_year - c->inaugurated_year < 6) return_cmd_error(STR_PROTECTED);
@@ -1936,7 +1936,7 @@ CommandCost CmdSellShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1
 	 * Cannot sell own shares */
 	if (!IsValidCompanyID((CompanyID)p1) || !_settings_game.economy.allow_shares || _current_company == (CompanyID)p1) return CMD_ERROR;
 
-	Company *c = GetCompany((CompanyID)p1);
+	Company *c = Company::Get((CompanyID)p1);
 
 	/* Those lines are here for network-protection (clients can be slow) */
 	if (GetAmountOwnedBy(c, _current_company) == 0) return CommandCost();
@@ -1973,7 +1973,7 @@ CommandCost CmdBuyCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	/* Do not allow companies to take over themselves */
 	if (cid == _current_company) return CMD_ERROR;
 
-	Company *c = GetCompany(cid);
+	Company *c = Company::Get(cid);
 
 	if (!c->is_ai) return CMD_ERROR;
 

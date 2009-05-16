@@ -59,7 +59,7 @@ AIController::~AIController()
 
 /* static */ uint AIController::GetTick()
 {
-	return ::GetCompany(_current_company)->ai_instance->GetController()->ticks;
+	return ::Company::Get(_current_company)->ai_instance->GetController()->ticks;
 }
 
 /* static */ int AIController::GetSetting(const char *name)

@@ -485,13 +485,13 @@ public:
 		this->editbox_line = 0;
 		this->clicked_line = 0;
 		this->clicked_button = 0;
-		InitializeWindowViewport(this, 3, 17, 254, 86, GetIndustry(window_number)->xy + TileDiffXY(1, 1), ZOOM_LVL_INDUSTRY);
+		InitializeWindowViewport(this, 3, 17, 254, 86, Industry::Get(window_number)->xy + TileDiffXY(1, 1), ZOOM_LVL_INDUSTRY);
 		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
 	{
-		Industry *i = GetIndustry(this->window_number);
+		Industry *i = Industry::Get(this->window_number);
 		const IndustrySpec *ind = GetIndustrySpec(i->type);
 		int y = this->widget[IVW_INFO].top + 1;
 		bool first = true;
@@ -594,7 +594,7 @@ public:
 			case IVW_INFO: {
 				int line, x;
 
-				i = GetIndustry(this->window_number);
+				i = Industry::Get(this->window_number);
 
 				/* We should work if needed.. */
 				if (!IsProductionAlterable(i)) return;
@@ -628,7 +628,7 @@ public:
 			} break;
 
 			case IVW_GOTO:
-				i = GetIndustry(this->window_number);
+				i = Industry::Get(this->window_number);
 				if (_ctrl_pressed) {
 					ShowExtraViewPortWindow(i->xy + TileDiffXY(1, 1));
 				} else {
@@ -660,7 +660,7 @@ public:
 	{
 		if (StrEmpty(str)) return;
 
-		Industry *i = GetIndustry(this->window_number);
+		Industry *i = Industry::Get(this->window_number);
 		int line = this->editbox_line;
 
 		i->production_rate[line] = ClampU(atoi(str), 0, 255);

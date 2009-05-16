@@ -39,21 +39,21 @@
 /* static */ int32 AITown::GetPopulation(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
-	const Town *t = ::GetTown(town_id);
+	const Town *t = ::Town::Get(town_id);
 	return t->population;
 }
 
 /* static */ int32 AITown::GetHouseCount(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
-	const Town *t = ::GetTown(town_id);
+	const Town *t = ::Town::Get(town_id);
 	return t->num_houses;
 }
 
 /* static */ TileIndex AITown::GetLocation(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return INVALID_TILE;
-	const Town *t = ::GetTown(town_id);
+	const Town *t = ::Town::Get(town_id);
 	return t->xy;
 }
 
@@ -62,7 +62,7 @@
 	if (!IsValidTown(town_id)) return -1;
 	if (!AICargo::IsValidCargo(cargo_id)) return -1;
 
-	const Town *t = ::GetTown(town_id);
+	const Town *t = ::Town::Get(town_id);
 
 	switch(AICargo::GetTownEffect(cargo_id)) {
 		case AICargo::TE_PASSENGERS: return t->act_pass;
@@ -76,7 +76,7 @@
 	if (!IsValidTown(town_id)) return -1;
 	if (!AICargo::IsValidCargo(cargo_id)) return -1;
 
-	const Town *t = ::GetTown(town_id);
+	const Town *t = ::Town::Get(town_id);
 
 	switch(AICargo::GetTownEffect(cargo_id)) {
 		case AICargo::TE_PASSENGERS: return t->pct_pass_transported;
@@ -90,7 +90,7 @@
 	if (!IsValidTown(town_id)) return -1;
 	if (!AICargo::IsValidCargo(cargo_id)) return -1;
 
-	const Town *t = ::GetTown(town_id);
+	const Town *t = ::Town::Get(town_id);
 
 	switch(AICargo::GetTownEffect(cargo_id)) {
 		case AICargo::TE_PASSENGERS: return t->max_pass;
@@ -113,7 +113,7 @@
 {
 	if (!IsValidTown(town_id)) return false;
 
-	const Town *t = ::GetTown(town_id);
+	const Town *t = ::Town::Get(town_id);
 	return ((uint32)GetDistanceSquareToTile(town_id, tile) <= t->squared_town_zone_radius[0]);
 }
 
@@ -121,35 +121,35 @@
 {
 	if (!IsValidTown(town_id)) return false;
 
-	return ::HasBit(::GetTown(town_id)->statues, _current_company);
+	return ::HasBit(::Town::Get(town_id)->statues, _current_company);
 }
 
 /* static */ int AITown::GetRoadReworkDuration(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 
-	return ::GetTown(town_id)->road_build_months;
+	return ::Town::Get(town_id)->road_build_months;
 }
 
 /* static */ AICompany::CompanyID AITown::GetExclusiveRightsCompany(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return AICompany::COMPANY_INVALID;
 
-	return (AICompany::CompanyID)(int8)::GetTown(town_id)->exclusivity;
+	return (AICompany::CompanyID)(int8)::Town::Get(town_id)->exclusivity;
 }
 
 /* static */ int32 AITown::GetExclusiveRightsDuration(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 
-	return ::GetTown(town_id)->exclusive_counter;
+	return ::Town::Get(town_id)->exclusive_counter;
 }
 
 /* static */ bool AITown::IsActionAvailable(TownID town_id, TownAction town_action)
 {
 	if (!IsValidTown(town_id)) return false;
 
-	return HasBit(::GetMaskOfTownActions(NULL, _current_company, ::GetTown(town_id)), town_action);
+	return HasBit(::GetMaskOfTownActions(NULL, _current_company, ::Town::Get(town_id)), town_action);
 }
 
 /* static */ bool AITown::PerformTownAction(TownID town_id, TownAction town_action)
@@ -157,7 +157,7 @@
 	EnforcePrecondition(false, IsValidTown(town_id));
 	EnforcePrecondition(false, IsActionAvailable(town_id, town_action));
 
-	return AIObject::DoCommand(::GetTown(town_id)->xy, town_id, town_action, CMD_DO_TOWN_ACTION);
+	return AIObject::DoCommand(::Town::Get(town_id)->xy, town_id, town_action, CMD_DO_TOWN_ACTION);
 }
 
 /* static */ AITown::TownRating AITown::GetRating(TownID town_id, AICompany::CompanyID company_id)
@@ -166,7 +166,7 @@
 	AICompany::CompanyID company = AICompany::ResolveCompanyID(company_id);
 	if (company == AICompany::COMPANY_INVALID) return TOWN_RATING_INVALID;
 
-	const Town *t = ::GetTown(town_id);
+	const Town *t = ::Town::Get(town_id);
 	if (!HasBit(t->have_ratings, company)) return TOWN_RATING_NONE;
 	return max(TOWN_RATING_APPALLING, (TownRating)((t->ratings[company] / 200) + 3));
 }
@@ -175,7 +175,7 @@
 {
 	if (!IsValidTown(town_id)) return -1;
 
-	const Town *t = ::GetTown(town_id);
+	const Town *t = ::Town::Get(town_id);
 	if (_settings_game.economy.station_noise_level) {
 		return t->MaxTownNoise() - t->noise_reached;
 	}
@@ -192,5 +192,5 @@
 {
 	if (!IsValidTown(town_id)) return ROAD_LAYOUT_INVALID;
 
-	return (AITown::RoadLayout)((TownLayout)::GetTown(town_id)->layout);
+	return (AITown::RoadLayout)((TownLayout)::Town::Get(town_id)->layout);
 }

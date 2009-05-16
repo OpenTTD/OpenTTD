@@ -20,7 +20,7 @@
 
 /* static */ bool AISign::IsValidSign(SignID sign_id)
 {
-	return ::IsValidSignID(sign_id) && ::GetSign(sign_id)->owner == _current_company;
+	return ::IsValidSignID(sign_id) && ::Sign::Get(sign_id)->owner == _current_company;
 }
 
 /* static */ bool AISign::SetName(SignID sign_id, const char *name)
@@ -49,7 +49,7 @@
 {
 	if (!IsValidSign(sign_id)) return INVALID_TILE;
 
-	const Sign *sign = ::GetSign(sign_id);
+	const Sign *sign = ::Sign::Get(sign_id);
 	return ::TileVirtXY(sign->x, sign->y);
 }
 

@@ -35,7 +35,7 @@ CommandCost CmdSetCompanyManagerFace(TileIndex tile, DoCommandFlag flags, uint32
 	if (!IsValidCompanyManagerFace(cmf)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		GetCompany(_current_company)->face = cmf;
+		Company::Get(_current_company)->face = cmf;
 		MarkWholeScreenDirty();
 	}
 	return CommandCost();
@@ -60,7 +60,7 @@ CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 	if (scheme >= LS_END || state >= 3) return CMD_ERROR;
 
-	Company *c = GetCompany(_current_company);
+	Company *c = Company::Get(_current_company);
 
 	/* Ensure no two companies have the same primary colour */
 	if (scheme == LS_DEFAULT && state == 0) {
@@ -138,7 +138,7 @@ CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  */
 CommandCost CmdIncreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Company *c = GetCompany(_current_company);
+	Company *c = Company::Get(_current_company);
 
 	if (c->current_loan >= _economy.max_loan) {
 		SetDParam(0, _economy.max_loan);
@@ -182,7 +182,7 @@ CommandCost CmdIncreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
  */
 CommandCost CmdDecreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Company *c = GetCompany(_current_company);
+	Company *c = Company::Get(_current_company);
 
 	if (c->current_loan == 0) return_cmd_error(STR_ERROR_LOAN_ALREADY_REPAYED);
 
@@ -242,7 +242,7 @@ CommandCost CmdRenameCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	}
 
 	if (flags & DC_EXEC) {
-		Company *c = GetCompany(_current_company);
+		Company *c = Company::Get(_current_company);
 		free(c->name);
 		c->name = reset ? NULL : strdup(text);
 		MarkWholeScreenDirty();
@@ -278,7 +278,7 @@ CommandCost CmdRenamePresident(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	}
 
 	if (flags & DC_EXEC) {
-		Company *c = GetCompany(_current_company);
+		Company *c = Company::Get(_current_company);
 		free(c->president_name);
 
 		if (reset) {
@@ -382,7 +382,7 @@ CommandCost CmdGiveMoney(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 {
 	if (!_settings_game.economy.give_money) return CMD_ERROR;
 
-	const Company *c = GetCompany(_current_company);
+	const Company *c = Company::Get(_current_company);
 	CommandCost amount(EXPENSES_OTHER, min((Money)p1, (Money)20000000LL));
 
 	/* You can only transfer funds that is in excess of your loan */

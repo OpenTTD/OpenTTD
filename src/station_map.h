@@ -26,7 +26,7 @@ static inline StationID GetStationIndex(TileIndex t)
 
 static inline Station *GetStationByTile(TileIndex t)
 {
-	return GetStation(GetStationIndex(t));
+	return Station::Get(GetStationIndex(t));
 }
 
 
