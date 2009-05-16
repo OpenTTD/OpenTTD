@@ -668,7 +668,6 @@ STR_OFF                                                         :I Ffwrdd
 STR_SUMMARY                                                     :Crynodeb
 STR_FULL                                                        :Llawn
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Cyfeiriadur Trefi
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -702,9 +701,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}I Ffwrdd
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Ymlaen
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Dangos Cymorthdaliadau
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Cymorthdaliadau
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Map o'r Byd
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ffenestr Olygfa Newydd
 STR_MAP_MENU_SIGN_LIST                                          :Rhestr Arwyddion
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Cyfeiriadur Trefi
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Poblogaeth y Byd: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Ffenestr Olygfa{COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copïo i Ffenestr Olygfa
@@ -2615,6 +2619,7 @@ STR_ORDER_GO_VIA                                                :Galw heibio
 STR_ORDER_GO_NON_STOP_VIA                                       :Myn heb stop gan alw heibio
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[ochr agos]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[canol]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[ochr hir]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Llwyth llawn o unrhyw gargo
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Llwytho os yw ar gael
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Llwyth llawn o bob cargo
@@ -2799,6 +2804,14 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Clirio f
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Ailosod y mesurydd hwyrni, fel y bydd y cerbyd ar amser
 STR_SERVICE_HINT                                                :{BLACK}Hepgor y gorchymyn hwn os nad oes angen gwasanaeth
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Côst: {CURRENCY} Pwysau: {WEIGHT_S}{}Cyflymder: {VELOCITY}  Pŵer: {POWER}{}Côst Rhedeg: {CURRENCY}/bl{}Gallu cludo: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Côst: {CURRENCY} Cyflym. Max: {VELOCITY}{}Cynhwysedd: {CARGO}, {CARGO}{}Côst Rhedfa: {CURRENCY}/yr
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Côst: {CURRENCY} Cyflym. Max: {VELOCITY}{}Cynhwysedd: {CARGO}{}Cost Rhedfa: {CURRENCY}/bl
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Oed: {LTBLUE}{STRING}{BLACK}   Cost Rhedfa: {LTBLUE}{CURRENCY}/bl.
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pwys: {LTBLUE}{WEIGHT_S} {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflym. Max: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pwys: {LTBLUE}{WEIGHT_S} {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflym. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit this year: {LTBLUE}{CURRENCY} (last year: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Dibynadwy: {LTBLUE}{COMMA}%  {BLACK}Toriadau es gwasanaeth olaf: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Codi: {LTBLUE}{NUM}{BLACK} Pris: {LTBLUE}{CURRENCY}
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Wedi stopio
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Does dim modd gwneud i drên basio signal pan fo perygl...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Wedi crashio!

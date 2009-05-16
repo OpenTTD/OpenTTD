@@ -668,7 +668,6 @@ STR_OFF                                                         :Off
 STR_SUMMARY                                                     :Summary
 STR_FULL                                                        :Full
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Town directory
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -702,9 +701,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Off
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}On
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Display subsidies
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidies
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Map of world
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Extra viewport
 STR_MAP_MENU_SIGN_LIST                                          :Sign list
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Town directory
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}World population: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Viewport {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copy to viewport
@@ -731,6 +735,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosave
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Select interval between automatic game saves
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Off
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Every month
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Every 3 months
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Every 6 months
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Every 12 months
@@ -851,7 +856,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Base gra
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Select the base graphics set to use
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Every month
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosave failed
 
 STR_MONTH_JAN                                                   :January
@@ -2800,6 +2804,19 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Clear th
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset the lateness counter, so the vehicle will be on time
 STR_SERVICE_HINT                                                :{BLACK}Skip this order unless a service is needed
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {CURRENCY} Weight: {WEIGHT_S}{}Speed: {VELOCITY}  Power: {POWER}{}Running Cost: {CURRENCY}/yr{}Capacity: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Cost: {CURRENCY} Max. Speed: {VELOCITY}{}Capacity: {CARGO}, {CARGO}{}Running Cost: {CURRENCY}/yr
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Cost: {CURRENCY} Max. Speed: {VELOCITY}{}Capacity: {CARGO}{}Running Cost: {CURRENCY}/yr
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Age: {LTBLUE}{STRING}{BLACK}   Running Cost: {LTBLUE}{CURRENCY}/yr
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. speed: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Weight: {LTBLUE}{WEIGHT_S} {BLACK}Power: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Weight: {LTBLUE}{WEIGHT_S} {BLACK}Power: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit this year: {LTBLUE}{CURRENCY} (last year: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Reliability: {LTBLUE}{COMMA}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Built: {LTBLUE}{NUM}{BLACK} Value: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacity: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacity: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacity: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Broken down
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stopped
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Can't make train pass signal at danger...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Crashed!
@@ -3151,6 +3168,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Switch 
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Switch to Euro: {ORANGE}never
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Preview: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Change custom currency parameter
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Decrease the amount of your currency for one Pound (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Increase the amount of your currency for one Pound (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Set the exchange rate of your currency for one Pound (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Set the separator for your currency
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Set the prefix string for your currency
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Set the suffix string for your currency
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Switch to Euro earlier
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Switch to Euro later
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Set the year to switch to Euro
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Pound (£) in your currency
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3257,6 +3284,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Rel
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Weight: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Speed: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacity: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Powered Wagons: {GOLD}+{POWER}{BLACK} Weight: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Refittable to: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :All cargo types

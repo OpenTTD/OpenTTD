@@ -668,7 +668,6 @@ STR_OFF                                                         :اغلاق
 STR_SUMMARY                                                     :ملخص
 STR_FULL                                                        :ممتلئ
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :دليل المدن
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -702,9 +701,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}غلق
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}فتح
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}اظهار العروض
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :العروض
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :خريطة العالم
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :شاشة عرض اضافية
 STR_MAP_MENU_SIGN_LIST                                          :قائمة العلامات
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :دليل المدن
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}سكان العالم: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}شاشة عرض{COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}انسخ لشاشة العرض
@@ -3573,6 +3577,7 @@ STR_AI_RANDOM_AI                                                :ذكاء صنا
 STR_AI_SETTINGS_CAPTION                                         :{WHITE} خصائص الذكاء الصناعي
 STR_AI_AUTHOR                                                   :{BLACK}المؤلف: {STRING}
 STR_AI_VERSION                                                  :{BLACK}الاصدار:  {NUM}
+STR_AI_URL                                                      :{BLACK}العنوان  :   {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE} واحد من الذكاء الصناعي فشل. الرجاء ابلاغ المبرمج عنه مصحوبا بصورة من شاشة مصحح الاخطاء.
 ########
 

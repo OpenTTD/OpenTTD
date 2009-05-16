@@ -668,7 +668,6 @@ STR_OFF                                                         :Offway
 STR_SUMMARY                                                     :Ummarysay
 STR_FULL                                                        :Ullfay
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Owntay irectoryday
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -702,9 +701,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Offway
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Onway
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Isplayday ubsidiessay
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Ubsidiessay
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Apmay ofway orldway
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Extraway iewportvay
 STR_MAP_MENU_SIGN_LIST                                          :Ignsay istlay
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Owntay irectoryday
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Orldway opulationpay: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Iewportvay {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Opycay otay iewportvay
@@ -731,6 +735,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosave
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Electsay intervalway etweenbay automaticway amegay avessay
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Offway
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Everyway onthmay
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Everyway 3 onthsmay
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Everyway 6 onthsmay
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Everyway 12 onthsmay
@@ -851,7 +856,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Asebay a
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Electsay ethay asebay aphicsgray etsay otay useway
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Everyway onthmay
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosaveway ailedfay
 
 STR_MONTH_JAN                                                   :Anuaryjay
@@ -2800,6 +2804,19 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Earclay 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Esetray ethay atenesslay ountercay, osay ethay ehiclevay illway ebay onway imetay
 STR_SERVICE_HINT                                                :{BLACK}Ipskay isthay orderway unlessway away ervicesay isway eedednay
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ostcay: {CURRENCY} Eightway: {WEIGHT_S}{}Eedspay: {VELOCITY}  Owerpay: {POWER}{}Unningray Ostcay: {CURRENCY}/yray{}Apacitycay: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Ostcay: {CURRENCY} Axmay. Eedspay: {VELOCITY}{}Apacitycay: {CARGO}, {CARGO}{}Unningray Ostcay: {CURRENCY}/yray
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Ostcay: {CURRENCY} Axmay. Eedspay: {VELOCITY}{}Apacitycay: {CARGO}{}Unningray Ostcay: {CURRENCY}/yray
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ageway: {LTBLUE}{STRING}{BLACK}   Unningray Ostcay: {LTBLUE}{CURRENCY}/yray
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Axmay. eedspay: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Eightway: {LTBLUE}{WEIGHT_S} {BLACK}Owerpay: {LTBLUE}{POWER}{BLACK} Axmay. eedspay: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Eightway: {LTBLUE}{WEIGHT_S} {BLACK}Owerpay: {LTBLUE}{POWER}{BLACK} Axmay. eedspay: {LTBLUE}{VELOCITY} {BLACK}Axmay. Tay.Eway.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Ofitpray isthay earyay: {LTBLUE}{CURRENCY} (astlay earyay: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Eliabilityray: {LTBLUE}{COMMA}%  {BLACK}Eakdownsbray incesay astlay ervicesay: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Uiltbay: {LTBLUE}{NUM}{BLACK} Aluevay: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Apacitycay: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Apacitycay: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (xay{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Apacitycay: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Okenbray ownday
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Oppedstay
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}An'tcay akemay aintray asspay ignalsay atway angerday...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Ashedcray!
@@ -3151,6 +3168,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Itchswa
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Itchsway otay Euroway: {ORANGE}evernay
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eviewpray: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Angechay ustomcay urrencycay arameterpay
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Ecreaseday ethay amountway ofway ouryay urrencycay orfay oneway Oundpay (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Increaseway ethay amountway ofway ouryay urrencycay orfay oneway Oundpay (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Etsay ethay exchangeway ateray ofway ouryay urrencycay orfay oneway Oundpay (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Etsay ethay eparatorsay orfay ouryay urrencycay
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Etsay ethay efixpray ingstray orfay ouryay urrencycay
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Etsay ethay uffixsay ingstray orfay ouryay urrencycay
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Itchsway otay Euroway earlierway
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Itchsway otay Euroway aterlay
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Etsay ethay earyay otay itchsway otay Euroway
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Oundpay (£) inway ouryay urrencycay
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3257,6 +3284,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Axmay. E
 STR_PURCHASE_INFO_COST                                          :{BLACK}Ostcay: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Eightway: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ostcay: {GOLD}{CURRENCY}{BLACK} Eedspay: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Apacitycay: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Oweredpay Agonsway: {GOLD}+{POWER}{BLACK} Eightway: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Efittableray otay: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Allway argocay ypestay

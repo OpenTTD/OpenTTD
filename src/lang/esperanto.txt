@@ -5,9 +5,9 @@
 ##grflangid 0x05
 ##plural 0
 ##textdir ltr
-##case n
 ##digitsep .
 ##digitsepcur .
+##case n
 
 #
 
@@ -645,7 +645,6 @@ STR_OFF                                                         :Ne
 STR_SUMMARY                                                     :Resume
 STR_FULL                                                        :Plene
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Urbaro
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -677,9 +676,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Malaktiv
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Aktiva
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Montru subvenciojn
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencioj
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mondomapo
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Plia videjo
 STR_MAP_MENU_SIGN_LIST                                          :Afiŝa listo
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Urbaro
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Monda enloĝantaro: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Videjo {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiu al videjo
@@ -706,6 +710,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Aŭtomat
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Elektu intervalon inter aŭtomataj konservadoj de la ludo
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Malaktiva
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Je ĉiu monato
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Je ĉiuj 3 monatoj
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Je ĉiuj 6 monatoj
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Je ĉiuj 12 monatoj
@@ -819,7 +824,6 @@ STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{S
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Elektu uzotan ekranfotan formaton
 
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Je ĉiu monato
 STR_AUTOSAVE_FAILED                                             :{WHITE}Fiaskis aŭtomate konservi
 
 STR_MONTH_JAN                                                   :Januaro
@@ -3001,8 +3005,13 @@ STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Konstruu
 
 ############ Face formatting
 STR_FACE_SIMPLE                                                 :{BLACK}Simpla
+STR_FACE_SAVE                                                   :{BLACK}Konservi
+STR_FACE_SAVE_TIP                                               :{BLACK}Konservi faman vizaĝon
+STR_FACE_SAVE_DONE                                              :{WHITE}Tiu ĉi vizaĝo estos konservita kiel via fama en agord-dosiero de OpenTTD.
 STR_FACE_EUROPEAN                                               :{BLACK}Europa
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Elekti eŭropecajn vizaĝojn
 STR_FACE_AFRICAN                                                :{BLACK}Afrika
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Elekti afrikecajn vizaĝojn
 STR_FACE_YES                                                    :Jes
 STR_FACE_NO                                                     :Ne
 STR_FACE_HAIR                                                   :Hararo:
@@ -3011,6 +3020,7 @@ STR_FACE_EYECOLOUR                                              :Okula koloro:
 STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Ŝanĝu okulan koloron
 STR_FACE_GLASSES                                                :Okulvitroj:
 STR_FACE_NOSE                                                   :Nazo:
+STR_FACE_NOSE_TIP                                               :{BLACK}Ŝanĝi nazon
 STR_FACE_LIPS                                                   :Lipoj:
 STR_FACE_MOUSTACHE                                              :Liphararo:
 ########
