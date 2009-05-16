@@ -16,10 +16,10 @@ End Sub
 
 Sub UpdateFile(modified, revision, version, cur_date, filename)
 	FSO.CopyFile filename & ".in", filename
-	FindReplaceInFile filename, "@@MODIFIED@@", modified
-	FindReplaceInFile filename, "@@REVISION@@", revision
-	FindReplaceInFile filename, "@@VERSION@@", version
-	FindReplaceInFile filename, "@@DATE@@", cur_date
+	FindReplaceInFile filename, "!!MODIFIED!!", modified
+	FindReplaceInFile filename, "!!REVISION!!", revision
+	FindReplaceInFile filename, "!!VERSION!!", version
+	FindReplaceInFile filename, "!!DATE!!", cur_date
 End Sub
 
 Sub UpdateFiles(version)

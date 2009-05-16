@@ -20,7 +20,7 @@
  * norev000 is for non-releases that are made on systems without
  * subversion or sources that are not a checkout of subversion.
  */
-const char _openttd_revision[] = "@@VERSION@@";
+const char _openttd_revision[] = "!!VERSION!!";
 
 /**
  * Let us know if current build was modified. This detection
@@ -30,7 +30,7 @@ const char _openttd_revision[] = "@@VERSION@@";
  * (compiling from sources without any version control software)
  * and 2 is for modified revision.
  */
-const byte _openttd_revision_modified = @@MODIFIED@@;
+const byte _openttd_revision_modified = !!MODIFIED!!;
 
 /**
  * The NewGRF revision of OTTD:
@@ -45,11 +45,11 @@ const byte _openttd_revision_modified = @@MODIFIED@@;
  * final release will always have a lower version number than the released
  * version, thus making comparisions on specific revisions easy.
  */
-const uint32 _openttd_newgrf_version = 0 << 28 | 8 << 24 | 0 << 20 | 0 << 19 | (@@REVISION@@ & ((1 << 19) - 1));
+const uint32 _openttd_newgrf_version = 0 << 28 | 8 << 24 | 0 << 20 | 0 << 19 | (!!REVISION!! & ((1 << 19) - 1));
 
 #ifdef __MORPHOS__
 /**
  * Variable used by MorphOS to show the version.
  */
-extern const char morphos_versions_tag[] = "$VER: OpenTTD @@VERSION@@ (@@DATE@@) OpenTTD Team [MorphOS, PowerPC]";
+extern const char morphos_versions_tag[] = "$VER: OpenTTD !!VERSION!! (!!DATE!!) OpenTTD Team [MorphOS, PowerPC]";
 #endif

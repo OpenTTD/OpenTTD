@@ -86,8 +86,8 @@ elif [ -d "$ROOT_DIR/.git" ]; then
 	fi
 	HASH=`LC_ALL=C git rev-parse --verify HEAD 2>/dev/null`
 	REV="g`echo $HASH | cut -c1-8`"
-	BRANCH=`git branch|grep '[*]' | sed 's~\* ~~;s~^master$~~'`
-	REV_NR=`LC_ALL=C git log --pretty=format:%s "$SRC_DIR" | grep "^(svn r[0-9]*)" | head -n 1 | sed "s~.*(svn r\([0-9]*\)).*~\1~"`
+	BRANCH=`git branch|grep '[*]' | sed 's@\* @@;s@^master$@@'`
+	REV_NR=`LC_ALL=C git log --pretty=format:%s "$SRC_DIR" | grep "^(svn r[0-9]*)" | head -n 1 | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
 elif [ -d "$ROOT_DIR/.hg" ]; then
 	# We are a hg checkout
 	if [ -n "`hg status \"$SRC_DIR\" | grep -v '^?'`" ]; then
@@ -95,8 +95,8 @@ elif [ -d "$ROOT_DIR/.hg" ]; then
 	fi
 	HASH=`LC_ALL=C hg parents 2>/dev/null | head -n 1 | cut -d: -f3`
 	REV="h`echo $HASH | cut -c1-8`"
-	BRANCH=`hg branch | sed 's~^default$~~'`
-	REV_NR=`LC_ALL=C hg log -r $HASH:0 -k "svn" -l 1 --template "{desc}\n" "$SRC_DIR" | grep "^(svn r[0-9]*)" | head -n 1 | sed "s~.*(svn r\([0-9]*\)).*~\1~"`
+	BRANCH=`hg branch | sed 's@^default$@@'`
+	REV_NR=`LC_ALL=C hg log -r $HASH:0 -k "svn" -l 1 --template "{desc}\n" "$SRC_DIR" | grep "^(svn r[0-9]*)" | head -n 1 | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
 else
 	# We don't know
 	MODIFIED="1"

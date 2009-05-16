@@ -421,7 +421,7 @@ save_params() {
 	configure="$CONFIGURE_EXECUTABLE --ignore-extra-parameters"
 	for p in $save_params_array; do
 		eval "v=\"\$$p\""
-		p=`echo "$p" | sed 's~_~-~g;s~\n~~g;s~ ~\\ ~g'`
+		p=`echo "$p" | sed 's@_@-@g;s@\n@@g;s@ @\\ @g'`
 		# Only save those params that aren't empty
 		configure="$configure --$p=\"$v\""
 	done
@@ -922,7 +922,7 @@ check_params() {
 			doc_dir="$data_dir/docs"
 		fi
 	else
-		doc_dir="`echo $doc_dir | sed 's~\([^\]\)\\\\ ~\1\\\\\\\\ ~g;s~\([^\]\) ~\1\\\\\\\\ ~g'`"
+		doc_dir="`echo $doc_dir | sed 's@\([^\]\)\\\\ @\1\\\\\\\\ @g;s@\([^\]\) @\1\\\\\\\\ @g'`"
 	fi
 
 	if [ "$icon_theme_dir" = "1" ]; then
@@ -932,7 +932,7 @@ check_params() {
 			icon_theme_dir=""
 		fi
 	else
-		icon_theme_dir="`echo $icon_theme_dir | sed 's~\([^\]\)\\\\ ~\1\\\\\\\\ ~g;s~\([^\]\) ~\1\\\\\\\\ ~g'`"
+		icon_theme_dir="`echo $icon_theme_dir | sed 's@\([^\]\)\\\\ @\1\\\\\\\\ @g;s@\([^\]\) @\1\\\\\\\\ @g'`"
 	fi
 
 	if [ "$personal_dir" = "1" ]; then
@@ -944,7 +944,7 @@ check_params() {
 			personal_dir=".openttd"
 		fi
 	else
-		personal_dir="`echo $personal_dir | sed 's~\([^\]\)\\\\ ~\1\\\\\\\\ ~g;s~\([^\]\) ~\1\\\\\\\\ ~g'`"
+		personal_dir="`echo $personal_dir | sed 's@\([^\]\)\\\\ @\1\\\\\\\\ @g;s@\([^\]\) @\1\\\\\\\\ @g'`"
 	fi
 
 	if [ "$shared_dir" = "1" ]; then
@@ -955,7 +955,7 @@ check_params() {
 			shared_dir=""
 		fi
 	else
-		shared_dir="`echo $shared_dir | sed 's~\([^\]\)\\\\ ~\1\\\\\\\\ ~g;s~\([^\]\) ~\1\\\\\\\\ ~g'`"
+		shared_dir="`echo $shared_dir | sed 's@\([^\]\)\\\\ @\1\\\\\\\\ @g;s@\([^\]\) @\1\\\\\\\\ @g'`"
 	fi
 
 	if [ "$man_dir" = "1" ]; then
@@ -966,7 +966,7 @@ check_params() {
 			man_dir=""
 		fi
 	else
-		man_dir="`echo $man_dir | sed 's~\([^\]\)\\\\ ~\1\\\\\\\\ ~g;s~\([^\]\) ~\1\\\\\\\\ ~g'`"
+		man_dir="`echo $man_dir | sed 's@\([^\]\)\\\\ @\1\\\\\\\\ @g;s@\([^\]\) @\1\\\\\\\\ @g'`"
 	fi
 
 	if [ "$menu_dir" = "1" ]; then
@@ -977,7 +977,7 @@ check_params() {
 			menu_dir=""
 		fi
 	else
-		menu_dir="`echo $menu_dir | sed 's~\([^\]\)\\\\ ~\1\\\\\\\\ ~g;s~\([^\]\) ~\1\\\\\\\\ ~g'`"
+		menu_dir="`echo $menu_dir | sed 's@\([^\]\)\\\\ @\1\\\\\\\\ @g;s@\([^\]\) @\1\\\\\\\\ @g'`"
 	fi
 
 	# "set_universal_binary_flags" needs to be before "detect_iconv"
@@ -1237,7 +1237,7 @@ make_cflags_and_ldflags() {
 	if [ -n "$sdl_config" ]; then
 		CFLAGS="$CFLAGS -DWITH_SDL"
 		# SDL must not add _GNU_SOURCE as it breaks many platforms
-		CFLAGS="$CFLAGS `$sdl_config --cflags | sed 's~-D_GNU_SOURCE[^ ]*~~'`"
+		CFLAGS="$CFLAGS `$sdl_config --cflags | sed 's@-D_GNU_SOURCE[^ ]*@@'`"
 		if [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ] && [ "$os" != "WINCE" ]; then
 			if [ "$enable_static" != "0" ]; then
 				LIBS="$LIBS `$sdl_config --static-libs`"
@@ -1299,7 +1299,7 @@ make_cflags_and_ldflags() {
 			if [ "$os" = "OSX" ]; then
 				# fontconfig_config goes via pkg-config on all systems, which doesn't know --prefix
 				# Also, despite the reason we link to the .a file ourself (because we can't use -static), we do need to ask pkg-config about possible other deps
-				LIBS="$LIBS `$fontconfig_config --variable=prefix`/lib/libfontconfig.a `$fontconfig_config --libs --static | sed s~-lfontconfig~~`"
+				LIBS="$LIBS `$fontconfig_config --variable=prefix`/lib/libfontconfig.a `$fontconfig_config --libs --static | sed s@-lfontconfig@@`"
 			else
 				LIBS="$LIBS `$fontconfig_config --libs --static | tr '\n\r' '  '`"
 			fi
@@ -1433,8 +1433,8 @@ make_cflags_and_ldflags() {
 	#  not something we can control.
 	# Also make makedepend aware of compiler's built-in defines.
 	if [ "$with_makedepend" != "0" ] || [ "$enable_builtin_depend" != "0" ]; then
-		cflags_makedep="`echo | $cxx_host -E -x c++ -dM - | sed 's~.define ~-D~g;s~ .*~ ~g;s~(.*)~~g' | tr -d '\r\n'`"
-		cflags_makedep="$cflags_makedep `echo "$CFLAGS" | sed 's~ /~ -~g;s~-I[ ]*[^ ]*~~g'`"
+		cflags_makedep="`echo | $cxx_host -E -x c++ -dM - | sed 's@.define @-D@g;s@ .*@ @g;s@(.*)@@g' | tr -d '\r\n'`"
+		cflags_makedep="$cflags_makedep `echo "$CFLAGS" | sed 's@ /@ -@g;s@-I[ ]*[^ ]*@@g'`"
 	else
 		makedepend=""
 	fi
@@ -2604,105 +2604,105 @@ make_sed() {
 	#  use multiple OBJS_DIR, because all in-between
 	#  binaries are stored in there, and nowhere else.
 	SRC_REPLACE="
-		s~!!CC_HOST!!~$cc_host~g;
-		s~!!CXX_HOST!!~$cxx_host~g;
-		s~!!CC_BUILD!!~$cc_build~g;
-		s~!!CXX_BUILD!!~$cxx_build~g;
-		s~!!WINDRES!!~$windres~g;
-		s~!!STRIP!!~$strip $strip_arg~g;
-		s~!!LIPO!!~$lipo~g;
-		s~!!CC_CFLAGS!!~$CC_CFLAGS~g;
-		s~!!CFLAGS!!~$T_CFLAGS~g;
-		s~!!CFLAGS_BUILD!!~$CFLAGS_BUILD~g;
-		s~!!STRGEN_FLAGS!!~$strgen_flags~g;
-		s~!!LIBS!!~$LIBS~g;
-		s~!!LDFLAGS!!~$T_LDFLAGS~g;
-		s~!!BIN_DIR!!~$BIN_DIR~g;
-		s~!!ROOT_DIR!!~$ROOT_DIR~g;
-		s~!!MEDIA_DIR!!~$MEDIA_DIR~g;
-		s~!!SOURCE_LIST!!~$SOURCE_LIST~g;
-		s~!!SRC_OBJS_DIR!!~$SRC_OBJS_DIR~g;
-		s~!!LANG_OBJS_DIR!!~$LANG_OBJS_DIR~g;
-		s~!!SRC_DIR!!~$SRC_DIR~g;
-		s~!!SCRIPT_SRC_DIR!!~$SCRIPT_SRC_DIR~g;
-		s~!!OSXAPP!!~$OSXAPP~g;
-		s~!!LANG_DIR!!~$LANG_DIR~g;
-		s~!!TTD!!~$TTD~g;
-		s~!!BINARY_DIR!!~$prefix_dir/$binary_dir~g;
-		s~!!DATA_DIR!!~$prefix_dir/$data_dir~g;
-		s~!!DOC_DIR!!~$prefix_dir/$doc_dir~g;
-		s~!!MAN_DIR!!~$prefix_dir/$man_dir~g;
-		s~!!ICON_DIR!!~$prefix_dir/$icon_dir~g;
-		s~!!ICON_THEME_DIR!!~$prefix_dir/$icon_theme_dir~g;
-		s~!!PERSONAL_DIR!!~$personal_dir~g;
-		s~!!SHARED_DIR!!~$shared_dir~g;
-		s~!!INSTALL_DIR!!~$install_dir~g;
-		s~!!BINARY_NAME!!~$binary_name~g;
-		s~!!STRGEN!!~$STRGEN~g;
-		s~!!ENDIAN_CHECK!!~$ENDIAN_CHECK~g;
-		s~!!DEPEND!!~$DEPEND~g;
-		s~!!ENDIAN_FORCE!!~$endian~g;
-		s~!!STAGE!!~$STAGE~g;
-		s~!!MAKEDEPEND!!~$makedepend~g;
-		s~!!CFLAGS_MAKEDEP!!~$cflags_makedep~g;
-		s~!!SORT!!~$sort~g;
-		s~!!CONFIG_CACHE_COMPILER!!~config.cache.compiler~g;
-		s~!!CONFIG_CACHE_LINKER!!~config.cache.linker~g;
-		s~!!CONFIG_CACHE_ENDIAN!!~config.cache.endian~g;
-		s~!!CONFIG_CACHE_SOURCE!!~config.cache.source~g;
-		s~!!CONFIG_CACHE_VERSION!!~config.cache.version~g;
-		s~!!CONFIG_CACHE_SOURCE_LIST!!~config.cache.source.list~g;
-		s~!!CONFIG_CACHE_PWD!!~config.cache.pwd~g;
-		s~!!LANG_SUPPRESS!!~$lang_suppress~g;
-		s~!!OBJS_C!!~$OBJS_C~g;
-		s~!!OBJS_CPP!!~$OBJS_CPP~g;
-		s~!!OBJS_MM!!~$OBJS_MM~g;
-		s~!!OBJS_RC!!~$OBJS_RC~g;
-		s~!!SRCS!!~$SRCS~g;
-		s~!!OS!!~$os~g;
-		s~!!CONFIGURE_FILES!!~$CONFIGURE_FILES~g;
-		s~!!REVISION!!~$revision~g;
-		s~!!AWK!!~$awk~g;
-		s~!!GCC295!!~$gcc295~g;
-		s~!!DISTCC!!~$distcc~g;
+		s@!!CC_HOST!!@$cc_host@g;
+		s@!!CXX_HOST!!@$cxx_host@g;
+		s@!!CC_BUILD!!@$cc_build@g;
+		s@!!CXX_BUILD!!@$cxx_build@g;
+		s@!!WINDRES!!@$windres@g;
+		s@!!STRIP!!@$strip $strip_arg@g;
+		s@!!LIPO!!@$lipo@g;
+		s@!!CC_CFLAGS!!@$CC_CFLAGS@g;
+		s@!!CFLAGS!!@$T_CFLAGS@g;
+		s@!!CFLAGS_BUILD!!@$CFLAGS_BUILD@g;
+		s@!!STRGEN_FLAGS!!@$strgen_flags@g;
+		s@!!LIBS!!@$LIBS@g;
+		s@!!LDFLAGS!!@$T_LDFLAGS@g;
+		s@!!BIN_DIR!!@$BIN_DIR@g;
+		s@!!ROOT_DIR!!@$ROOT_DIR@g;
+		s@!!MEDIA_DIR!!@$MEDIA_DIR@g;
+		s@!!SOURCE_LIST!!@$SOURCE_LIST@g;
+		s@!!SRC_OBJS_DIR!!@$SRC_OBJS_DIR@g;
+		s@!!LANG_OBJS_DIR!!@$LANG_OBJS_DIR@g;
+		s@!!SRC_DIR!!@$SRC_DIR@g;
+		s@!!SCRIPT_SRC_DIR!!@$SCRIPT_SRC_DIR@g;
+		s@!!OSXAPP!!@$OSXAPP@g;
+		s@!!LANG_DIR!!@$LANG_DIR@g;
+		s@!!TTD!!@$TTD@g;
+		s@!!BINARY_DIR!!@$prefix_dir/$binary_dir@g;
+		s@!!DATA_DIR!!@$prefix_dir/$data_dir@g;
+		s@!!DOC_DIR!!@$prefix_dir/$doc_dir@g;
+		s@!!MAN_DIR!!@$prefix_dir/$man_dir@g;
+		s@!!ICON_DIR!!@$prefix_dir/$icon_dir@g;
+		s@!!ICON_THEME_DIR!!@$prefix_dir/$icon_theme_dir@g;
+		s@!!PERSONAL_DIR!!@$personal_dir@g;
+		s@!!SHARED_DIR!!@$shared_dir@g;
+		s@!!INSTALL_DIR!!@$install_dir@g;
+		s@!!BINARY_NAME!!@$binary_name@g;
+		s@!!STRGEN!!@$STRGEN@g;
+		s@!!ENDIAN_CHECK!!@$ENDIAN_CHECK@g;
+		s@!!DEPEND!!@$DEPEND@g;
+		s@!!ENDIAN_FORCE!!@$endian@g;
+		s@!!STAGE!!@$STAGE@g;
+		s@!!MAKEDEPEND!!@$makedepend@g;
+		s@!!CFLAGS_MAKEDEP!!@$cflags_makedep@g;
+		s@!!SORT!!@$sort@g;
+		s@!!CONFIG_CACHE_COMPILER!!@config.cache.compiler@g;
+		s@!!CONFIG_CACHE_LINKER!!@config.cache.linker@g;
+		s@!!CONFIG_CACHE_ENDIAN!!@config.cache.endian@g;
+		s@!!CONFIG_CACHE_SOURCE!!@config.cache.source@g;
+		s@!!CONFIG_CACHE_VERSION!!@config.cache.version@g;
+		s@!!CONFIG_CACHE_SOURCE_LIST!!@config.cache.source.list@g;
+		s@!!CONFIG_CACHE_PWD!!@config.cache.pwd@g;
+		s@!!LANG_SUPPRESS!!@$lang_suppress@g;
+		s@!!OBJS_C!!@$OBJS_C@g;
+		s@!!OBJS_CPP!!@$OBJS_CPP@g;
+		s@!!OBJS_MM!!@$OBJS_MM@g;
+		s@!!OBJS_RC!!@$OBJS_RC@g;
+		s@!!SRCS!!@$SRCS@g;
+		s@!!OS!!@$os@g;
+		s@!!CONFIGURE_FILES!!@$CONFIGURE_FILES@g;
+		s@!!REVISION!!@$revision@g;
+		s@!!AWK!!@$awk@g;
+		s@!!GCC295!!@$gcc295@g;
+		s@!!DISTCC!!@$distcc@g;
 	"
 
 	if [ "$icon_theme_dir" != "" ]; then
 		SRC_REPLACE="$SRC_REPLACE
-			s~!!ICON_THEME_DIR!!~$prefix_dir/$icon_theme_dir~g;
+			s@!!ICON_THEME_DIR!!@$prefix_dir/$icon_theme_dir@g;
 		"
 	else
 		SRC_REPLACE="$SRC_REPLACE
-			s~!!ICON_THEME_DIR!!~~g;
+			s@!!ICON_THEME_DIR!!@@g;
 		"
 	fi
 
 	if [ "$man_dir" != "" ]; then
 		SRC_REPLACE="$SRC_REPLACE
-			s~!!MAN_DIR!!~$prefix_dir/$man_dir~g;
+			s@!!MAN_DIR!!@$prefix_dir/$man_dir@g;
 		"
 	else
 		SRC_REPLACE="$SRC_REPLACE
-			s~!!MAN_DIR!!~~g;
+			s@!!MAN_DIR!!@@g;
 		"
 	fi
 
 	if [ "$menu_dir" != "" ]; then
 		SRC_REPLACE="$SRC_REPLACE
-			s~!!MENU_DIR!!~$prefix_dir/$menu_dir~g;
+			s@!!MENU_DIR!!@$prefix_dir/$menu_dir@g;
 		"
 	else
 		SRC_REPLACE="$SRC_REPLACE
-			s~!!MENU_DIR!!~~g;
+			s@!!MENU_DIR!!@@g;
 		"
 	fi
 }
 
 generate_menu_item() {
 	MENU_REPLACE="
-		s~!!TTD!!~$TTD~g;
-		s~!!MENU_GROUP!!~$menu_group~g;
-		s~!!MENU_NAME!!~$menu_name~g
+		s@!!TTD!!@$TTD@g;
+		s@!!MENU_GROUP!!@$menu_group@g;
+		s@!!MENU_NAME!!@$menu_name@g
 	"
 	log 1 "Generating menu item..."
 	mkdir -p media

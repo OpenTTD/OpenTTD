@@ -58,7 +58,7 @@ ENDIAN_TARGETS := endian_target.h $(ENDIAN_CHECK)
 # For more information, please check:
 #  http://maillist.openttd.org/pipermail/devs/2007-April/000284.html
 #  http://maillist.openttd.org/pipermail/devs/2007-February/000248.html
-GCC295_FIX=sed -r 's~^(\t*)(.*)( const )([A-Za-z0-9_ ]+(\[.*\]){2,})(( = \{)|(;))(.*)$$~\1\2 \4\6\8\9~g'
+GCC295_FIX=sed -r 's@^(\t*)(.*)( const )([A-Za-z0-9_ ]+(\[.*\]){2,})(( = \{)|(;))(.*)$$@\1\2 \4\6\8\9@g'
 # This 'sed' removes the 3rd '4' in the # lines of the -E output of
 #  gcc 2.95.3 and lower, as it should indicate that it is a C-linkage, but the
 #  compiler can't handle that information (just don't ask). So we remove it
@@ -66,7 +66,7 @@ GCC295_FIX=sed -r 's~^(\t*)(.*)( const )([A-Za-z0-9_ ]+(\[.*\]){2,})(( = \{)|(;)
 # Furthermore gcc 2.95 has some trouble with protected and private when
 #  accessing the protected/private stuff of the enclosing class (or the
 #  super class of the enclosing class).
-GCC295_FIX_2=sed -e 's~\(^\# [0-9][0-9]* "[^"]*"[ 0-9]*\) 4$$~\1~g;s~private:~public:~g;s~protected:~public:~g'
+GCC295_FIX_2=sed -e 's@\(^\# [0-9][0-9]* "[^"]*"[ 0-9]*\) 4$$@\1@g;s@private:@public:@g;s@protected:@public:@g'
 
 # Check if we want to show what we are doing
 ifdef VERBOSE
@@ -99,7 +99,7 @@ MODIFIED := $(shell echo "$(VERSIONS)" | cut -f 3 -d'	')
 ifdef REVISION
 # Use specified revision (which should be of the form "r000").
 REV := $(REVISION)
-REV_NR := $(shell echo $(REVISION) | sed "s~[^0-9]~~g")
+REV_NR := $(shell echo $(REVISION) | sed "s@[^0-9]@@g")
 else
 # Use autodetected revisions
 REV      := $(shell echo "$(VERSIONS)" | cut -f 1 -d'	')
@@ -144,15 +144,15 @@ endif
 
 $(OBJS_C:%.o=%.d): %.d: $(SRC_DIR)/%.c $(FILE_DEP)
 	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.c=%.c)'
-	$(Q)$(CC_HOST) $(CC_CFLAGS) $(CFLAGS) -MM $< | sed 's~^$(@F:%.d=%.o):~$@ $(@:%.d=%.o):~' > $@
+	$(Q)$(CC_HOST) $(CC_CFLAGS) $(CFLAGS) -MM $< | sed 's@^$(@F:%.d=%.o):@$@ $(@:%.d=%.o):@' > $@
 
 $(OBJS_CPP:%.o=%.d): %.d: $(SRC_DIR)/%.cpp $(FILE_DEP)
 	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.cpp=%.cpp)'
-	$(Q)$(CXX_HOST) $(CFLAGS) -MM $< | sed 's~^$(@F:%.d=%.o):~$@ $(@:%.d=%.o):~' > $@
+	$(Q)$(CXX_HOST) $(CFLAGS) -MM $< | sed 's@^$(@F:%.d=%.o):@$@ $(@:%.d=%.o):@' > $@
 
 $(OBJS_MM:%.o=%.d): %.d: $(SRC_DIR)/%.mm $(FILE_DEP)
 	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.mm=%.mm)'
-	$(Q)$(CC_HOST) $(CFLAGS) -MM $< | sed 's~^$(@F:%.d=%.o):~$@ $(@:%.d=%.o):~' > $@
+	$(Q)$(CC_HOST) $(CFLAGS) -MM $< | sed 's@^$(@F:%.d=%.o):@$@ $(@:%.d=%.o):@' > $@
 
 $(OBJS_RC:%.o=%.d): %.d: $(SRC_DIR)/%.rc $(FILE_DEP)
 	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.mm=%.mm)'
@@ -190,7 +190,7 @@ endif
 
 # Convert x:/... paths to /x/... for mingw
 ifeq ($(OS), MINGW)
-	@cat Makefile.dep.tmp | sed 's~\([a-zA-Z]\):\/~\/\1\/~g' > Makefile.dep.tmp.mingw
+	@cat Makefile.dep.tmp | sed 's@\([a-zA-Z]\):\/@\/\1\/@g' > Makefile.dep.tmp.mingw
 	@cp Makefile.dep.tmp.mingw Makefile.dep.tmp
 	@rm -f Makefile.dep.tmp.mingw
 endif
@@ -219,7 +219,7 @@ endif
 	{                                   \
 		print $$0                         \
 	}                                   \
-	' < Makefile.dep.tmp | sed 's~  *~ ~g;s~ $$~~' | $(SORT) > Makefile.dep
+	' < Makefile.dep.tmp | sed 's@  *@ @g;s@ $$@@' | $(SORT) > Makefile.dep
 
 	$(Q)rm -f Makefile.dep.tmp Makefile.dep.tmp.bak
 
@@ -288,10 +288,10 @@ $(ENDIAN_CHECK): $(SRC_DIR)/endian_check.cpp
 # Revision files
 
 $(SRC_DIR)/rev.cpp: $(CONFIG_CACHE_VERSION) $(SRC_DIR)/rev.cpp.in
-	$(Q)cat $(SRC_DIR)/rev.cpp.in      | sed "s~@@REVISION@@~$(REV_NR)~g;s~@@VERSION@@~$(REV)~g;s~@@MODIFIED@@~$(MODIFIED)~g;s~@@DATE@@~`date +%d.%m.%y`~g" > $(SRC_DIR)/rev.cpp
+	$(Q)cat $(SRC_DIR)/rev.cpp.in      | sed "s@\!\!REVISION\!\!@$(REV_NR)@g;s@!!VERSION!!@$(REV)@g;s@!!MODIFIED!!@$(MODIFIED)@g;s@!!DATE!!@`date +%d.%m.%y`@g" > $(SRC_DIR)/rev.cpp
 
 $(SRC_DIR)/ottdres.rc: $(CONFIG_CACHE_VERSION) $(SRC_DIR)/ottdres.rc.in
-	$(Q)cat $(SRC_DIR)/ottdres.rc.in | sed "s~@@REVISION@@~$(REV_NR)~g;s~@@VERSION@@~$(REV)~g;s~@@DATE@@~`date +%d.%m.%y`~g" > $(SRC_DIR)/ottdres.rc
+	$(Q)cat $(SRC_DIR)/ottdres.rc.in | sed "s@\!\!REVISION\!\!@$(REV_NR)@g;s@!!VERSION!!@$(REV)@g;s@!!DATE!!@`date +%d.%m.%y`@g" > $(SRC_DIR)/ottdres.rc
 
 FORCE:
 
