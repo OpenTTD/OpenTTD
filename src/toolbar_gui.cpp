@@ -784,8 +784,8 @@ static void ToolbarScenDateBackward(Window *w)
 		w->HandleButtonClick(TBSE_DATEBACKWARD);
 		w->SetDirty();
 
-		_settings_newgame.game_creation.starting_year = Clamp(_settings_newgame.game_creation.starting_year - 1, MIN_YEAR, MAX_YEAR);
-		SetDate(ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
+		_settings_game.game_creation.starting_year = Clamp(_settings_game.game_creation.starting_year - 1, MIN_YEAR, MAX_YEAR);
+		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
 	}
 	_left_button_clicked = false;
 }
@@ -797,8 +797,8 @@ static void ToolbarScenDateForward(Window *w)
 		w->HandleButtonClick(TBSE_DATEFORWARD);
 		w->SetDirty();
 
-		_settings_newgame.game_creation.starting_year = Clamp(_settings_newgame.game_creation.starting_year + 1, MIN_YEAR, MAX_YEAR);
-		SetDate(ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
+		_settings_game.game_creation.starting_year = Clamp(_settings_game.game_creation.starting_year + 1, MIN_YEAR, MAX_YEAR);
+		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
 	}
 	_left_button_clicked = false;
 }
@@ -1233,8 +1233,8 @@ public:
 
 	virtual void OnPaint()
 	{
-		this->SetWidgetDisabledState(TBSE_DATEBACKWARD, _settings_newgame.game_creation.starting_year <= MIN_YEAR);
-		this->SetWidgetDisabledState(TBSE_DATEFORWARD, _settings_newgame.game_creation.starting_year >= MAX_YEAR);
+		this->SetWidgetDisabledState(TBSE_DATEBACKWARD, _settings_game.game_creation.starting_year <= MIN_YEAR);
+		this->SetWidgetDisabledState(TBSE_DATEFORWARD, _settings_game.game_creation.starting_year >= MAX_YEAR);
 
 		/* Draw brown-red toolbar bg. */
 		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB2);
@@ -1242,7 +1242,7 @@ public:
 
 		this->DrawWidgets();
 
-		SetDParam(0, ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
+		SetDParam(0, ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
 		DrawString(this->widget[TBSE_DATEBACKWARD].right, this->widget[TBSE_DATEFORWARD].left, 6, STR_DATE_LONG_WHITE, TC_FROMSTRING, SA_CENTER);
 
 		/* We hide this panel when the toolbar space gets too small */
