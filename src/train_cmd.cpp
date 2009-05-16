@@ -2431,6 +2431,15 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 		seg_state = _settings_game.pf.reserve_paths ? SIGSEG_PBS : UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
 	}
 
+	/* We are leaving a depot, but have to go to the exact same one; re-enter */
+	if (v->tile == v->dest_tile) {
+		/* We need to have a reservation for this to work. */
+		if (GetDepotWaypointReservation(v->tile)) return true;
+		SetDepotWaypointReservation(v->tile, true);
+		VehicleEnterDepot(v);
+		return true;
+	}
+
 	/* Only leave when we can reserve a path to our destination. */
 	if (seg_state == SIGSEG_PBS && !TryPathReserve(v) && v->u.rail.force_proceed == 0) {
 		/* No path and no force proceed. */
