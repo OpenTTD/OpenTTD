@@ -321,6 +321,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 			if (rt == ROADTYPE_ROAD && HasTileRoadType(tile, ROADTYPE_TRAM) && (flags & DC_EXEC || crossing_check)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
+				Track railtrack = GetCrossingRailTrack(tile);
 				RoadTypes rts = GetRoadTypes(tile) & ComplementRoadTypes(RoadTypeToRoadTypes(rt));
 				if (rts == ROADTYPES_NONE) {
 					TrackBits tracks = GetCrossingRailBits(tile);
@@ -332,7 +333,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 					/* If we ever get HWAY and it is possible without road then we will need to promote ownership and invalidate town index here, too */
 				}
 				MarkTileDirtyByTile(tile);
-				YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetTrackBits(tile)));
+				YapfNotifyTrackLayoutChange(tile, railtrack);
 			}
 			return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_road * 2);
 		}
@@ -549,9 +550,10 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetTrackBits(tile)));
+				Track railtrack = AxisToTrack(OtherAxis(roaddir));
+				YapfNotifyTrackLayoutChange(tile, railtrack);
 				/* Always add road to the roadtypes (can't draw without it) */
-				bool reserved = HasBit(GetTrackReservation(tile), AxisToTrack(OtherAxis(roaddir)));
+				bool reserved = HasBit(GetTrackReservation(tile), railtrack);
 				MakeRoadCrossing(tile, _current_company, _current_company, GetTileOwner(tile), roaddir, GetRailType(tile), RoadTypeToRoadTypes(rt) | ROADTYPES_ROAD, p2);
 				SetCrossingReservation(tile, reserved);
 				UpdateLevelCrossing(tile, false);

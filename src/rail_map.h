@@ -141,6 +141,7 @@ static inline void SetRailType(TileIndex t, RailType r)
  */
 static inline TrackBits GetTrackBits(TileIndex tile)
 {
+	assert(IsPlainRailTile(tile));
 	return (TrackBits)GB(_m[tile].m5, 0, 6);
 }
 
@@ -151,6 +152,7 @@ static inline TrackBits GetTrackBits(TileIndex tile)
  */
 static inline void SetTrackBits(TileIndex t, TrackBits b)
 {
+	assert(IsPlainRailTile(t));
 	SB(_m[t].m5, 0, 6, b);
 }
 

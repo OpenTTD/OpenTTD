@@ -54,6 +54,10 @@ protected:
 	};
 
 protected:
+	/**
+	 * @note maximum cost doesn't work with caching enabled
+	 * @todo fix maximum cost failing with caching (e.g. FS#2900)
+	 */
 	int           m_max_cost;
 	CBlobT<int>   m_sig_look_ahead_costs;
 	bool          m_disable_cache;
@@ -111,7 +115,7 @@ public:
 
 	FORCEINLINE int SwitchCost(TileIndex tile1, TileIndex tile2, DiagDirection exitdir)
 	{
-		if (IsTileType(tile1, MP_RAILWAY) && IsTileType(tile2, MP_RAILWAY)) {
+		if (IsTileType(tile1, MP_RAILWAY) && IsTileType(tile2, MP_RAILWAY) && IsPlainRailTile(tile1) && IsPlainRailTile(tile2)) {
 			bool t1 = KillFirstBit(GetTrackBits(tile1) & DiagdirReachesTracks(ReverseDiagDir(exitdir))) != TRACK_BIT_NONE;
 			bool t2 = KillFirstBit(GetTrackBits(tile2) & DiagdirReachesTracks(exitdir)) != TRACK_BIT_NONE;
 			if (t1 && t2) return Yapf().PfGetSettings().rail_doubleslip_penalty;

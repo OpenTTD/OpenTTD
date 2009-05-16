@@ -255,7 +255,7 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 		case 0x40: return (IsTileType(tile, MP_HOUSE) ? GetHouseBuildingStage(tile) : 0) | TileHash2Bit(TileX(tile), TileY(tile)) << 2;
 
 		/* Building age. */
-		case 0x41: return GetHouseAge(tile);
+		case 0x41: return IsTileType(tile, MP_HOUSE) ? GetHouseAge(tile) : 0;
 
 		/* Town zone */
 		case 0x42: return GetTownRadiusGroup(town, tile);
