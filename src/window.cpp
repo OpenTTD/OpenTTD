@@ -235,15 +235,15 @@ void Window::HandleButtonClick(byte widget)
 }
 
 /**
- * Checks if the window has at least one widget of given type
+ * Return a widget of the requested type from the window.
  * @param widget_type the widget type to look for
  */
-bool Window::HasWidgetOfType(WidgetType widget_type) const
+const Widget *Window::GetWidgetOfType(WidgetType widget_type) const
 {
 	for (uint i = 0; i < this->widget_count; i++) {
-		if (this->widget[i].type == widget_type) return true;
+		if (this->widget[i].type == widget_type) return &this->widget[i];
 	}
-	return false;
+	return NULL;
 }
 
 static void StartWindowDrag(Window *w);
@@ -822,7 +822,7 @@ void Window::Initialize(int x, int y, int min_width, int min_height,
 	/* Give focus to the opened window unless it is the OSK window or a text box
 	 * of focused window has focus (so we don't interrupt typing). But if the new
 	 * window has a text box, then take focus anyway. */
-	if (this->window_class != WC_OSK && (!EditBoxInGlobalFocus() || this->HasWidgetOfType(WWT_EDITBOX))) SetFocusedWindow(this);
+	if (this->window_class != WC_OSK && (!EditBoxInGlobalFocus() || this->GetWidgetOfType(WWT_EDITBOX) != NULL)) SetFocusedWindow(this);
 
 	/* Hacky way of specifying always-on-top windows. These windows are
 	 * always above other windows because they are moved below them.
@@ -1483,9 +1483,8 @@ static bool HandleWindowDragging()
 			}
 
 			/* Search for the title bar */
-			const Widget *t = w->widget;
-			while (t->type != WWT_CAPTION && t->type != WWT_LAST) t++;
-			assert(t->type == WWT_CAPTION);
+			const Widget *t = w->GetWidgetOfType(WWT_CAPTION);
+			assert(t != NULL);
 
 			/* The minimum number of pixels of the title bar must be visible
 			 * in both the X or Y direction */

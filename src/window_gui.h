@@ -376,7 +376,7 @@ public:
 	}
 
 	void HandleButtonClick(byte widget);
-	bool HasWidgetOfType(WidgetType widget_type) const;
+	const Widget *GetWidgetOfType(WidgetType widget_type) const;
 
 	void RaiseButtons();
 	void CDECL SetWidgetsDisabledState(bool disab_stat, int widgets, ...);
