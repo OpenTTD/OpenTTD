@@ -1072,7 +1072,7 @@
   GetAutoRenewStatus();        true
   SetAutoRenewStatus(true);    false
   SetAutoRenewStatus(false);   true
-  GetAutoRenewMonths();        -6
+  GetAutoRenewMonths();        6
   SetAutoRenewMonths(-12);     true
   GetAutoRenewMonths();        -12
   SetAutoRenewMonths(-12);     false
