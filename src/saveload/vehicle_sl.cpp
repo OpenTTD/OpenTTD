@@ -208,7 +208,7 @@ void UpdateOldAircraft()
  */
 static void CheckValidVehicles()
 {
-	uint total_engines = GetEnginePoolSize();
+	uint total_engines = Engine::GetPoolSize();
 	EngineID first_engine[4] = { INVALID_ENGINE, INVALID_ENGINE, INVALID_ENGINE, INVALID_ENGINE };
 
 	Engine *e;

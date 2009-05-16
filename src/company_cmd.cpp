@@ -457,7 +457,7 @@ Company *DoStartupNewCompany(bool is_ai)
 
 	if (is_ai && (!_networking || _network_server)) AI::StartNew(c->index);
 
-	c->num_engines = CallocT<uint16>(GetEnginePoolSize());
+	c->num_engines = CallocT<uint16>(Engine::GetPoolSize());
 
 	return c;
 }

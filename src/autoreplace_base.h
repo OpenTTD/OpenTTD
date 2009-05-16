@@ -34,7 +34,7 @@ struct EngineRenew : PoolItem<EngineRenew, EngineRenewID, &_EngineRenew_pool> {
 	inline bool IsValid() const { return this->from != INVALID_ENGINE; }
 };
 
-#define FOR_ALL_ENGINE_RENEWS_FROM(er, start) for (er = EngineRenew::Get(start); er != NULL; er = (er->index + 1U < GetEngineRenewPoolSize()) ? EngineRenew::Get(er->index + 1U) : NULL) if (er->IsValid())
+#define FOR_ALL_ENGINE_RENEWS_FROM(er, start) for (er = EngineRenew::Get(start); er != NULL; er = (er->index + 1U < EngineRenew::GetPoolSize()) ? EngineRenew::Get(er->index + 1U) : NULL) if (er->IsValid())
 #define FOR_ALL_ENGINE_RENEWS(er) FOR_ALL_ENGINE_RENEWS_FROM(er, 0)
 
 #endif /* AUTOREPLACE_BASE_H */

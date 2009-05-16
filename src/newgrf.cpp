@@ -378,7 +378,7 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 
 	if (static_access) return NULL;
 
-	uint engine_pool_size = GetEnginePoolSize();
+	uint engine_pool_size = Engine::GetPoolSize();
 
 	/* ... it's not, so create a new one based off an existing engine */
 	Engine *e = new Engine(type, internal_id);
@@ -392,12 +392,12 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 	eid->internal_id     = internal_id;
 	eid->substitute_id   = min(internal_id, _engine_counts[type]); // substitute_id == _engine_counts[subtype] means "no substitute"
 
-	if (engine_pool_size != GetEnginePoolSize()) {
+	if (engine_pool_size != Engine::GetPoolSize()) {
 		/* Resize temporary engine data ... */
-		_gted = ReallocT(_gted, GetEnginePoolSize());
+		_gted = ReallocT(_gted, Engine::GetPoolSize());
 
 		/* and blank the new block. */
-		size_t len = (GetEnginePoolSize() - engine_pool_size) * sizeof(*_gted);
+		size_t len = (Engine::GetPoolSize() - engine_pool_size) * sizeof(*_gted);
 		memset(_gted + engine_pool_size, 0, len);
 	}
 
@@ -5575,7 +5575,7 @@ static void ResetNewGRFData()
 	ResetRailTypes();
 
 	/* Allocate temporary refit/cargo class data */
-	_gted = CallocT<GRFTempEngineData>(GetEnginePoolSize());
+	_gted = CallocT<GRFTempEngineData>(Engine::GetPoolSize());
 
 	/* Reset GRM reservations */
 	memset(&_grm_engines, 0, sizeof(_grm_engines));

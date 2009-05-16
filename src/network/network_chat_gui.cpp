@@ -303,7 +303,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 
 		/* First, try clients */
 		if (*item < MAX_CLIENT_SLOTS) {
-			if (*item < GetNetworkClientInfoPoolSize()) {
+			if (*item < NetworkClientInfo::GetPoolSize()) {
 				/* Skip inactive clients */
 				NetworkClientInfo *ci;
 				FOR_ALL_CLIENT_INFOS_FROM(ci, *item) break;

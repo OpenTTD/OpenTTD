@@ -356,7 +356,7 @@ EngineID EngineOverrideManager::GetID(VehicleType type, uint16 grf_local_id, uin
  */
 void SetCachedEngineCounts()
 {
-	uint engines = GetEnginePoolSize();
+	uint engines = Engine::GetPoolSize();
 
 	/* Set up the engine count for all companies */
 	Company *c;

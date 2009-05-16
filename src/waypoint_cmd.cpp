@@ -69,7 +69,7 @@ static void MakeDefaultWaypointName(Waypoint *wp)
 	 * If it wasn't using 'used' and 'idx', it would just search for increasing 'next',
 	 * but this way it is faster */
 
-	WaypointID cid = 0; // current index, goes to GetWaypointPoolSize()-1, then wraps to 0
+	WaypointID cid = 0; // current index, goes to Waypoint::GetPoolSize()-1, then wraps to 0
 	do {
 		Waypoint *lwp = Waypoint::Get(cid);
 
@@ -99,7 +99,7 @@ static void MakeDefaultWaypointName(Waypoint *wp)
 		}
 
 		cid++;
-		if (cid == GetWaypointPoolSize()) cid = 0; // wrap to zero...
+		if (cid == Waypoint::GetPoolSize()) cid = 0; // wrap to zero...
 	} while (cid != idx);
 
 	wp->town_cn = (uint16)next; // set index...

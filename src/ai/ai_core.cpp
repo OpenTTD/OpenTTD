@@ -104,7 +104,7 @@
 /* static */ void AI::KillAll()
 {
 	/* It might happen there are no companies .. than we have nothing to loop */
-	if (GetCompanyPoolSize() == 0) return;
+	if (Company::GetPoolSize() == 0) return;
 
 	const Company *c;
 	FOR_ALL_COMPANIES(c) {

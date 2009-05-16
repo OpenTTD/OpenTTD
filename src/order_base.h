@@ -250,12 +250,12 @@ static inline VehicleOrderID GetMaxOrderIndex()
 	 *  _really_ returns the highest index. Now it just returns
 	 *  the next safe value we are sure about everything is below.
 	 */
-	return GetOrderPoolSize() - 1;
+	return Order::GetPoolSize() - 1;
 }
 
 static inline VehicleOrderID GetNumOrders()
 {
-	return GetOrderPoolSize();
+	return Order::GetPoolSize();
 }
 
 /** Shared order list linking together the linked list of orders and the list
@@ -423,17 +423,17 @@ public:
 
 static inline bool IsValidOrderListID(uint index)
 {
-	return index < GetOrderListPoolSize() && OrderList::Get(index)->IsValid();
+	return index < OrderList::GetPoolSize() && OrderList::Get(index)->IsValid();
 }
 
-#define FOR_ALL_ORDERS_FROM(order, start) for (order = Order::Get(start); order != NULL; order = (order->index + 1U < GetOrderPoolSize()) ? Order::Get(order->index + 1U) : NULL) if (order->IsValid())
+#define FOR_ALL_ORDERS_FROM(order, start) for (order = Order::Get(start); order != NULL; order = (order->index + 1U < Order::GetPoolSize()) ? Order::Get(order->index + 1U) : NULL) if (order->IsValid())
 #define FOR_ALL_ORDERS(order) FOR_ALL_ORDERS_FROM(order, 0)
 
 
 #define FOR_VEHICLE_ORDERS(v, order) for (order = (v->orders.list == NULL) ? NULL : v->orders.list->GetFirstOrder(); order != NULL; order = order->next)
 
 
-#define FOR_ALL_ORDER_LISTS_FROM(ol, start) for (ol = OrderList::Get(start); ol != NULL; ol = (ol->index + 1U < GetOrderListPoolSize()) ? OrderList::Get(ol->index + 1U) : NULL) if (ol->IsValid())
+#define FOR_ALL_ORDER_LISTS_FROM(ol, start) for (ol = OrderList::Get(start); ol != NULL; ol = (ol->index + 1U < OrderList::GetPoolSize()) ? OrderList::Get(ol->index + 1U) : NULL) if (ol->IsValid())
 #define FOR_ALL_ORDER_LISTS(ol) FOR_ALL_ORDER_LISTS_FROM(ol, 0)
 
 #endif /* ORDER_H */

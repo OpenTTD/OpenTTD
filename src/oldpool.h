@@ -279,10 +279,19 @@ struct PoolItem {
 
 	/**
 	 * Get item with given index
+	 * @param index item to get
 	 */
 	static FORCEINLINE T *Get(uint index)
 	{
 		return Tpool->Get(index);
+	}
+
+	/**
+	 * Returns size of the pool (in number of items)
+	 */
+	static FORCEINLINE uint GetPoolSize()
+	{
+		return Tpool->GetSize();
 	}
 
 private:
@@ -333,14 +342,9 @@ public:
 	};
 
 
-#define OLD_POOL_ACCESSORS(name, type) \
-	static inline uint Get##name##PoolSize()  { return _##name##_pool.GetSize(); }
-
-
 #define DECLARE_OLD_POOL(name, type, block_size_bits, max_blocks) \
 	OLD_POOL_ENUM(name, type, block_size_bits, max_blocks) \
-	extern OldMemoryPool<type> _##name##_pool; \
-	OLD_POOL_ACCESSORS(name, type)
+	extern OldMemoryPool<type> _##name##_pool;
 
 
 #define DEFINE_OLD_POOL(name, type, new_block_proc, clean_block_proc) \
@@ -359,7 +363,7 @@ public:
 #define STATIC_OLD_POOL(name, type, block_size_bits, max_blocks, new_block_proc, clean_block_proc) \
 	OLD_POOL_ENUM(name, type, block_size_bits, max_blocks) \
 	static DEFINE_OLD_POOL(name, type, new_block_proc, clean_block_proc) \
-	OLD_POOL_ACCESSORS(name, type) \
-	static inline type *Get##name(uint index) { return _##name##_pool.Get(index); }
+	static inline type *Get##name(uint index) { return _##name##_pool.Get(index); } \
+	static inline uint Get##name##PoolSize()  { return _##name##_pool.GetSize(); }
 
 #endif /* OLDPOOL_H */

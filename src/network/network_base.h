@@ -29,10 +29,10 @@ struct NetworkClientInfo : PoolItem<NetworkClientInfo, ClientIndex, &_NetworkCli
 
 static inline bool IsValidNetworkClientInfoIndex(ClientIndex index)
 {
-	return (uint)index < GetNetworkClientInfoPoolSize() && NetworkClientInfo::Get(index)->IsValid();
+	return (uint)index < NetworkClientInfo::GetPoolSize() && NetworkClientInfo::Get(index)->IsValid();
 }
 
-#define FOR_ALL_CLIENT_INFOS_FROM(d, start) for (d = NetworkClientInfo::Get(start); d != NULL; d = (d->index + 1U < GetNetworkClientInfoPoolSize()) ? NetworkClientInfo::Get(d->index + 1U) : NULL) if (d->IsValid())
+#define FOR_ALL_CLIENT_INFOS_FROM(d, start) for (d = NetworkClientInfo::Get(start); d != NULL; d = (d->index + 1U < NetworkClientInfo::GetPoolSize()) ? NetworkClientInfo::Get(d->index + 1U) : NULL) if (d->IsValid())
 #define FOR_ALL_CLIENT_INFOS(d) FOR_ALL_CLIENT_INFOS_FROM(d, 0)
 
 #endif /* ENABLE_NETWORK */

@@ -47,7 +47,7 @@ Group::Group(Owner owner)
 {
 	this->owner = owner;
 
-	if (this->IsValid()) this->num_engines = CallocT<uint16>(GetEnginePoolSize());
+	if (this->IsValid()) this->num_engines = CallocT<uint16>(Engine::GetPoolSize());
 }
 
 Group::~Group()

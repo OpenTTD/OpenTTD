@@ -272,7 +272,7 @@ void SetIndustryDailyChanges();
  */
 static inline bool IsValidIndustryID(IndustryID index)
 {
-	return index < GetIndustryPoolSize() && Industry::Get(index)->IsValid();
+	return index < Industry::GetPoolSize() && Industry::Get(index)->IsValid();
 }
 
 
@@ -283,7 +283,7 @@ static inline IndustryID GetMaxIndustryIndex()
 	 *  _really_ returns the highest index. Now it just returns
 	 *  the next safe value we are sure about everything is below.
 	 */
-	return GetIndustryPoolSize() - 1;
+	return Industry::GetPoolSize() - 1;
 }
 
 extern int _total_industries;  // general counter
@@ -355,7 +355,7 @@ static inline Industry *GetRandomIndustry()
 	return Industry::Get(index);
 }
 
-#define FOR_ALL_INDUSTRIES_FROM(i, start) for (i = Industry::Get(start); i != NULL; i = (i->index + 1U < GetIndustryPoolSize()) ? Industry::Get(i->index + 1U) : NULL) if (i->IsValid())
+#define FOR_ALL_INDUSTRIES_FROM(i, start) for (i = Industry::Get(start); i != NULL; i = (i->index + 1U < Industry::GetPoolSize()) ? Industry::Get(i->index + 1U) : NULL) if (i->IsValid())
 #define FOR_ALL_INDUSTRIES(i) FOR_ALL_INDUSTRIES_FROM(i, 0)
 
 static const uint8 IT_INVALID = 255;

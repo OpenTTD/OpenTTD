@@ -42,10 +42,10 @@ struct Waypoint : PoolItem<Waypoint, WaypointID, &_Waypoint_pool> {
 
 static inline bool IsValidWaypointID(WaypointID index)
 {
-	return index < GetWaypointPoolSize() && Waypoint::Get(index)->IsValid();
+	return index < Waypoint::GetPoolSize() && Waypoint::Get(index)->IsValid();
 }
 
-#define FOR_ALL_WAYPOINTS_FROM(wp, start) for (wp = Waypoint::Get(start); wp != NULL; wp = (wp->index + 1U < GetWaypointPoolSize()) ? Waypoint::Get(wp->index + 1U) : NULL) if (wp->IsValid())
+#define FOR_ALL_WAYPOINTS_FROM(wp, start) for (wp = Waypoint::Get(start); wp != NULL; wp = (wp->index + 1U < Waypoint::GetPoolSize()) ? Waypoint::Get(wp->index + 1U) : NULL) if (wp->IsValid())
 #define FOR_ALL_WAYPOINTS(wp) FOR_ALL_WAYPOINTS_FROM(wp, 0)
 
 

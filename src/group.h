@@ -32,7 +32,7 @@ struct Group : PoolItem<Group, GroupID, &_Group_pool> {
 
 static inline bool IsValidGroupID(GroupID index)
 {
-	return index < GetGroupPoolSize() && Group::Get(index)->IsValid();
+	return index < Group::GetPoolSize() && Group::Get(index)->IsValid();
 }
 
 static inline bool IsDefaultGroupID(GroupID index)
@@ -50,7 +50,7 @@ static inline bool IsAllGroupID(GroupID id_g)
 	return id_g == ALL_GROUP;
 }
 
-#define FOR_ALL_GROUPS_FROM(g, start) for (g = Group::Get(start); g != NULL; g = (g->index + 1U < GetGroupPoolSize()) ? Group::Get(g->index + 1) : NULL) if (g->IsValid())
+#define FOR_ALL_GROUPS_FROM(g, start) for (g = Group::Get(start); g != NULL; g = (g->index + 1U < Group::GetPoolSize()) ? Group::Get(g->index + 1) : NULL) if (g->IsValid())
 #define FOR_ALL_GROUPS(g) FOR_ALL_GROUPS_FROM(g, 0)
 
 /**

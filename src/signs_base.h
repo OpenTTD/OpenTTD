@@ -38,15 +38,15 @@ static inline SignID GetMaxSignIndex()
 	 *  _really_ returns the highest index. Now it just returns
 	 *  the next safe value we are sure about everything is below.
 	 */
-	return GetSignPoolSize() - 1;
+	return Sign::GetPoolSize() - 1;
 }
 
 static inline bool IsValidSignID(uint index)
 {
-	return index < GetSignPoolSize() && Sign::Get(index)->IsValid();
+	return index < Sign::GetPoolSize() && Sign::Get(index)->IsValid();
 }
 
-#define FOR_ALL_SIGNS_FROM(ss, start) for (ss = Sign::Get(start); ss != NULL; ss = (ss->index + 1U < GetSignPoolSize()) ? Sign::Get(ss->index + 1U) : NULL) if (ss->IsValid())
+#define FOR_ALL_SIGNS_FROM(ss, start) for (ss = Sign::Get(start); ss != NULL; ss = (ss->index + 1U < Sign::GetPoolSize()) ? Sign::Get(ss->index + 1U) : NULL) if (ss->IsValid())
 #define FOR_ALL_SIGNS(ss) FOR_ALL_SIGNS_FROM(ss, 0)
 
 #endif /* SIGNS_BASE_H */
