@@ -140,8 +140,8 @@ static void Load_ORDR()
 
 			free(orders);
 		} else if (CheckSavegameVersionOldStyle(5, 2)) {
-			len /= sizeof(uint16);
-			uint16 *orders = MallocT<uint16>(len + 1);
+			len /= sizeof(uint32);
+			uint32 *orders = MallocT<uint32>(len + 1);
 
 			SlArray(orders, len, SLE_UINT32);
 
