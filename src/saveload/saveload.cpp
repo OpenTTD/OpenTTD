@@ -58,10 +58,16 @@ enum SaveLoadAction {
 	SLA_SAVE, ///< saving
 };
 
+enum NeedLength {
+	NL_NONE = 0,       ///< not working in NeedLength mode
+	NL_WANTLENGTH = 1, ///< writing length and data
+	NL_CALCLENGTH = 2, ///< need to calculate the length
+};
+
 /** The saveload struct, containing reader-writer functions, bufffer, version, etc. */
 struct SaveLoadParams {
 	SaveLoadAction action;               ///< are we doing a save or a load atm.
-	byte need_length;                    ///< ???
+	NeedLength need_length;              ///< working in NeedLength (Autolength) mode?
 	byte block_mode;                     ///< ???
 	bool error;                          ///< did an error occur or not
 
@@ -91,9 +97,6 @@ struct SaveLoadParams {
 };
 
 static SaveLoadParams _sl;
-
-
-enum NeedLengthValues {NL_NONE = 0, NL_WANTLENGTH = 1, NL_CALCLENGTH = 2};
 
 /** Error handler, calls longjmp to simulate an exception.
  * @todo this was used to have a central place to handle errors, but it is
@@ -399,31 +402,35 @@ void SlSetLength(size_t length)
 	assert(_sl.action == SLA_SAVE);
 
 	switch (_sl.need_length) {
-	case NL_WANTLENGTH:
-		_sl.need_length = NL_NONE;
-		switch (_sl.block_mode) {
-		case CH_RIFF:
-			/* Ugly encoding of >16M RIFF chunks
-			 * The lower 24 bits are normal
-			 * The uppermost 4 bits are bits 24:27 */
-			assert(length < (1 << 28));
-			SlWriteUint32((uint32)((length & 0xFFFFFF) | ((length >> 24) << 28)));
+		case NL_WANTLENGTH:
+			_sl.need_length = NL_NONE;
+			switch (_sl.block_mode) {
+				case CH_RIFF:
+					/* Ugly encoding of >16M RIFF chunks
+					* The lower 24 bits are normal
+					* The uppermost 4 bits are bits 24:27 */
+					assert(length < (1 << 28));
+					SlWriteUint32((uint32)((length & 0xFFFFFF) | ((length >> 24) << 28)));
+					break;
+				case CH_ARRAY:
+					assert(_sl.last_array_index <= _sl.array_index);
+					while (++_sl.last_array_index <= _sl.array_index)
+						SlWriteArrayLength(1);
+					SlWriteArrayLength(length + 1);
+					break;
+				case CH_SPARSE_ARRAY:
+					SlWriteArrayLength(length + 1 + SlGetArrayLength(_sl.array_index)); // Also include length of sparse index.
+					SlWriteSparseIndex(_sl.array_index);
+					break;
+				default: NOT_REACHED();
+			}
 			break;
-		case CH_ARRAY:
-			assert(_sl.last_array_index <= _sl.array_index);
-			while (++_sl.last_array_index <= _sl.array_index)
-				SlWriteArrayLength(1);
-			SlWriteArrayLength(length + 1);
+
+		case NL_CALCLENGTH:
+			_sl.obj_len += (int)length;
 			break;
-		case CH_SPARSE_ARRAY:
-			SlWriteArrayLength(length + 1 + SlGetArrayLength(_sl.array_index)); // Also include length of sparse index.
-			SlWriteSparseIndex(_sl.array_index);
-			break;
+
 		default: NOT_REACHED();
-		} break;
-	case NL_CALCLENGTH:
-		_sl.obj_len += (int)length;
-		break;
 	}
 }
 
@@ -950,7 +957,7 @@ void SlAutolength(AutolengthProc *proc, void *arg)
 {
 	size_t offs;
 
-	assert(_sl.action == SL_SAVE);
+	assert(_sl.action == SLA_SAVE);
 
 	/* Tell it to calculate the length */
 	_sl.need_length = NL_CALCLENGTH;
@@ -1033,22 +1040,22 @@ static void SlSaveChunk(const ChunkHandler *ch)
 
 	_sl.block_mode = ch->flags & CH_TYPE_MASK;
 	switch (ch->flags & CH_TYPE_MASK) {
-	case CH_RIFF:
-		_sl.need_length = NL_WANTLENGTH;
-		proc();
-		break;
-	case CH_ARRAY:
-		_sl.last_array_index = 0;
-		SlWriteByte(CH_ARRAY);
-		proc();
-		SlWriteArrayLength(0); // Terminate arrays
-		break;
-	case CH_SPARSE_ARRAY:
-		SlWriteByte(CH_SPARSE_ARRAY);
-		proc();
-		SlWriteArrayLength(0); // Terminate arrays
-		break;
-	default: NOT_REACHED();
+		case CH_RIFF:
+			_sl.need_length = NL_WANTLENGTH;
+			proc();
+			break;
+		case CH_ARRAY:
+			_sl.last_array_index = 0;
+			SlWriteByte(CH_ARRAY);
+			proc();
+			SlWriteArrayLength(0); // Terminate arrays
+			break;
+		case CH_SPARSE_ARRAY:
+			SlWriteByte(CH_SPARSE_ARRAY);
+			proc();
+			SlWriteArrayLength(0); // Terminate arrays
+			break;
+		default: NOT_REACHED();
 	}
 }
 
