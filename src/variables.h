@@ -18,10 +18,6 @@ VARDEF byte _age_cargo_skip_counter;
 /* Also save scrollpos_x, scrollpos_y and zoom */
 VARDEF uint16 _disaster_delay;
 
-/* Determines what station to operate on in the
- *  tick handler. */
-VARDEF uint16 _station_tick_ctr;
-
 /* Determines how often to run the tree loop */
 VARDEF byte _trees_tick_ctr;
 

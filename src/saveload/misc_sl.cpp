@@ -65,7 +65,7 @@ static const SaveLoadGlobVarList _date_desc[] = {
 	SLEG_CONDVAR(_cur_tileloop_tile,      SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
 	SLEG_CONDVAR(_cur_tileloop_tile,      SLE_UINT32,                  6, SL_MAX_VERSION),
 	    SLEG_VAR(_disaster_delay,         SLE_UINT16),
-	    SLEG_VAR(_station_tick_ctr,       SLE_UINT16),
+	SLE_CONDNULL(2, 0, 119),
 	    SLEG_VAR(_random.state[0],        SLE_UINT32),
 	    SLEG_VAR(_random.state[1],        SLE_UINT32),
 	SLEG_CONDVAR(_cur_town_ctr,           SLE_FILE_U8  | SLE_VAR_U32,  0, 9),

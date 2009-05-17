@@ -2699,7 +2699,11 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 	return VETSB_CONTINUE;
 }
 
-/* this function is called for one station each tick */
+/**
+ * This function is called for each station once every 250 ticks.
+ * Not all stations will get the tick at the same time.
+ * @param st the station receiving the tick.
+ */
 static void StationHandleBigTick(Station *st)
 {
 	UpdateStationAcceptance(st, true);
@@ -2839,11 +2843,6 @@ void OnTick_Station()
 {
 	if (_game_mode == GM_EDITOR) return;
 
-	uint i = _station_tick_ctr;
-	if (++_station_tick_ctr > GetMaxStationIndex()) _station_tick_ctr = 0;
-
-	if (Station::IsValidID(i)) StationHandleBigTick(Station::Get(i));
-
 	Station *st;
 	FOR_ALL_STATIONS(st) {
 		StationHandleSmallTick(st);
@@ -2852,6 +2851,7 @@ void OnTick_Station()
 		 * Station index is included so that triggers are not all done
 		 * at the same time. */
 		if ((_tick_counter + st->index) % 250 == 0) {
+			StationHandleBigTick(st);
 			StationAnimationTrigger(st, st->xy, STAT_ANIM_250_TICKS);
 		}
 	}
@@ -3211,8 +3211,6 @@ void InitializeStations()
 	/* Clean the roadstop pool and create 1 block in it */
 	_RoadStop_pool.CleanPool();
 	_RoadStop_pool.AddBlockToPool();
-
-	_station_tick_ctr = 0;
 }
 
 static CommandCost TerraformTile_Station(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
