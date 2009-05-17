@@ -13,20 +13,15 @@
 #include "vehicle_base.h"
 #include "debug.h"
 
-static uint _file_count;
 static FileEntry *_files;
 MusicFileSettings msf;
 
 /* Number of levels of panning per side */
 #define PANNING_LEVELS 16
 
-/** The number of sounds in the original sample.cat */
-static const uint ORIGINAL_SAMPLE_COUNT = 73;
-
 static void OpenBankFile(const char *filename)
 {
 	FileEntry *fe = CallocT<FileEntry>(ORIGINAL_SAMPLE_COUNT);
-	_file_count = ORIGINAL_SAMPLE_COUNT;
 	_files = fe;
 
 	FioOpenFile(SOUND_SLOT, filename);
@@ -97,11 +92,6 @@ static void OpenBankFile(const char *filename)
 			fe->file_offset = FioGetPos();
 		}
 	}
-}
-
-uint GetNumOriginalSounds()
-{
-	return _file_count;
 }
 
 static bool SetBankSource(MixerChannel *mc, const FileEntry *fe)
@@ -187,7 +177,7 @@ static const byte _sound_idx[] = {
 
 void SndCopyToPool()
 {
-	for (uint i = 0; i < _file_count; i++) {
+	for (uint i = 0; i < ORIGINAL_SAMPLE_COUNT; i++) {
 		FileEntry *orig = &_files[_sound_idx[i]];
 		FileEntry *fe = AllocateFileEntry();
 

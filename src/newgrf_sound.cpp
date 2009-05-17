@@ -60,7 +60,7 @@ bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event)
 
 	callback = GetVehicleCallback(CBID_VEHICLE_SOUND_EFFECT, event, 0, v->engine_type, v);
 	if (callback == CALLBACK_FAILED) return false;
-	if (callback >= GetNumOriginalSounds()) callback += file->sound_offset - GetNumOriginalSounds();
+	if (callback >= ORIGINAL_SAMPLE_COUNT) callback += file->sound_offset - ORIGINAL_SAMPLE_COUNT;
 
 	if (callback < GetNumSounds()) SndPlayVehicleFx((SoundFx)callback, v);
 	return true;
@@ -68,7 +68,7 @@ bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event)
 
 bool PlayTileSound(const GRFFile *file, uint16 sound_id, TileIndex tile)
 {
-	if (sound_id >= GetNumOriginalSounds()) sound_id += file->sound_offset - GetNumOriginalSounds();
+	if (sound_id >= ORIGINAL_SAMPLE_COUNT) sound_id += file->sound_offset - ORIGINAL_SAMPLE_COUNT;
 
 	if (sound_id < GetNumSounds()) {
 		SndPlayTileFx((SoundFx)sound_id, tile);

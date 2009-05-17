@@ -2020,7 +2020,7 @@ static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, b
 	}
 
 	for (int i = 0; i < numinfo; i++) {
-		uint sound = sid + i + _cur_grffile->sound_offset - GetNumOriginalSounds();
+		uint sound = sid + i + _cur_grffile->sound_offset - ORIGINAL_SAMPLE_COUNT;
 
 		if (sound >= GetNumSounds()) {
 			grfmsg(1, "SoundEffectChangeInfo: Sound %d not defined (max %d)", sound, GetNumSounds());

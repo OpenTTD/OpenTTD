@@ -12,7 +12,6 @@
 extern MusicFileSettings msf;
 
 bool SoundInitialize(const char *filename);
-uint GetNumOriginalSounds();
 
 void SndPlayTileFx(SoundFx sound, TileIndex tile);
 void SndPlayVehicleFx(SoundFx sound, const Vehicle *v);
