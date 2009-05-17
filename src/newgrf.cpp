@@ -2595,9 +2595,7 @@ static void ReserveChangeInfo(byte *buf, size_t len)
  */
 static const SpriteGroup *NewCallBackResultSpriteGroup(uint16 value)
 {
-	SpriteGroup *group = AllocateSpriteGroup();
-
-	group->type = SGT_CALLBACK;
+	SpriteGroup *group = new SpriteGroup(SGT_CALLBACK);
 
 	/* Old style callback results have the highest byte 0xFF so signify it is a callback result
 	 * New style ones only have the highest bit set (allows 15-bit results, instead of just 8) */
@@ -2620,8 +2618,7 @@ static const SpriteGroup *NewCallBackResultSpriteGroup(uint16 value)
  */
 static const SpriteGroup *NewResultSpriteGroup(SpriteID sprite, byte num_sprites)
 {
-	SpriteGroup *group = AllocateSpriteGroup();
-	group->type = SGT_RESULT;
+	SpriteGroup *group = new SpriteGroup(SGT_RESULT);
 	group->g.result.sprite = sprite;
 	group->g.result.num_sprites = num_sprites;
 	return group;
@@ -2768,8 +2765,7 @@ static void NewSpriteGroup(byte *buf, size_t len)
 			/* Check we can load the var size parameter */
 			if (!check_length(bufend - buf, 1, "NewSpriteGroup (Deterministic) (1)")) return;
 
-			group = AllocateSpriteGroup();
-			group->type = SGT_DETERMINISTIC;
+			group = new SpriteGroup(SGT_DETERMINISTIC);
 			group->g.determ.var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
 
 			switch (GB(type, 2, 2)) {
@@ -2843,8 +2839,7 @@ static void NewSpriteGroup(byte *buf, size_t len)
 		{
 			if (!check_length(bufend - buf, HasBit(type, 2) ? 8 : 7, "NewSpriteGroup (Randomized) (1)")) return;
 
-			group = AllocateSpriteGroup();
-			group->type = SGT_RANDOMIZED;
+			group = new SpriteGroup(SGT_RANDOMIZED);
 			group->g.random.var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
 
 			if (HasBit(type, 2)) {
@@ -2893,8 +2888,7 @@ static void NewSpriteGroup(byte *buf, size_t len)
 
 					if (!check_length(bufend - buf, 2 * num_loaded + 2 * num_loading, "NewSpriteGroup (Real) (1)")) return;
 
-					group = AllocateSpriteGroup();
-					group->type = SGT_REAL;
+					group = new SpriteGroup(SGT_REAL);
 
 					group->g.real.num_loaded  = num_loaded;
 					group->g.real.num_loading = num_loading;
@@ -2925,8 +2919,7 @@ static void NewSpriteGroup(byte *buf, size_t len)
 					byte num_sprites = max((uint8)1, type);
 					uint i;
 
-					group = AllocateSpriteGroup();
-					group->type = SGT_TILELAYOUT;
+					group = new SpriteGroup(SGT_TILELAYOUT);
 					group->g.layout.num_sprites = sprites;
 					group->g.layout.dts = CallocT<DrawTileSprites>(1);
 
@@ -2987,8 +2980,7 @@ static void NewSpriteGroup(byte *buf, size_t len)
 						break;
 					}
 
-					group = AllocateSpriteGroup();
-					group->type = SGT_INDUSTRY_PRODUCTION;
+					group = new SpriteGroup(SGT_INDUSTRY_PRODUCTION);
 					group->g.indprod.version = type;
 					if (type == 0) {
 						for (uint i = 0; i < 3; i++) {
@@ -5631,7 +5623,8 @@ static void ResetNewGRFData()
 	_grf_id_overrides.clear();
 
 	InitializeSoundPool();
-	InitializeSpriteGroupPool();
+	_SpriteGroup_pool.CleanPool();
+	_SpriteGroup_pool.AddBlockToPool();
 }
 
 static void BuildCargoTranslationMap()

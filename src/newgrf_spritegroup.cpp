@@ -7,68 +7,38 @@
 #include "newgrf.h"
 #include "newgrf_spritegroup.h"
 #include "sprite.h"
+#include "oldpool_func.h"
 
-static void SpriteGroupPoolCleanBlock(uint start_item, uint end_item);
+DEFINE_OLD_POOL_GENERIC(SpriteGroup, SpriteGroup)
 
-static uint _spritegroup_count = 0;
-STATIC_OLD_POOL(SpriteGroup, SpriteGroup, 9, 250, NULL, SpriteGroupPoolCleanBlock)
-
-static void DestroySpriteGroup(SpriteGroup *group)
+SpriteGroup::~SpriteGroup()
 {
 	/* Free dynamically allocated memory */
-	/* XXX Cast away the consts due to MSVC being buggy... */
-	switch (group->type) {
+	switch (this->type) {
 		case SGT_REAL:
-			free((SpriteGroup**)group->g.real.loaded);
-			free((SpriteGroup**)group->g.real.loading);
+			free((SpriteGroup**)this->g.real.loaded);
+			free((SpriteGroup**)this->g.real.loading);
 			break;
 
 		case SGT_DETERMINISTIC:
-			free(group->g.determ.adjusts);
-			free(group->g.determ.ranges);
+			free(this->g.determ.adjusts);
+			free(this->g.determ.ranges);
 			break;
 
 		case SGT_RANDOMIZED:
-			free((SpriteGroup**)group->g.random.groups);
+			free((SpriteGroup**)this->g.random.groups);
 			break;
 
 		case SGT_TILELAYOUT:
-			free((void*)group->g.layout.dts->seq);
-			free(group->g.layout.dts);
+			free((void*)this->g.layout.dts->seq);
+			free(this->g.layout.dts);
 			break;
 
 		default:
 			break;
 	}
-}
 
-static void SpriteGroupPoolCleanBlock(uint start_item, uint end_item)
-{
-	uint i;
-
-	for (i = start_item; i <= end_item; i++) {
-		DestroySpriteGroup(GetSpriteGroup(i));
-	}
-}
-
-
-/* Allocate a new SpriteGroup */
-SpriteGroup *AllocateSpriteGroup()
-{
-	/* This is totally different to the other pool allocators, as we never remove an item from the pool. */
-	if (_spritegroup_count == GetSpriteGroupPoolSize()) {
-		if (!_SpriteGroup_pool.AddBlockToPool()) return NULL;
-	}
-
-	return GetSpriteGroup(_spritegroup_count++);
-}
-
-
-void InitializeSpriteGroupPool()
-{
-	_SpriteGroup_pool.CleanPool();
-
-	_spritegroup_count = 0;
+	this->type = SGT_INVALID;
 }
 
 TemporaryStorageArray<uint32, 0x110> _temp_store;
