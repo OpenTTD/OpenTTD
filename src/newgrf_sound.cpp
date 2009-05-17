@@ -8,26 +8,21 @@
 #include "newgrf_sound.h"
 #include "vehicle_base.h"
 #include "sound_func.h"
+#include "core/smallvec_type.hpp"
 
-static uint _sound_count = 0;
-STATIC_OLD_POOL(SoundInternal, SoundEntry, 3, 1000, NULL, NULL)
+static SmallVector<SoundEntry, ORIGINAL_SAMPLE_COUNT> _sounds;
 
 
 /* Allocate a new Sound */
 SoundEntry *AllocateSound()
 {
-	if (_sound_count == GetSoundInternalPoolSize()) {
-		if (!_SoundInternal_pool.AddBlockToPool()) return NULL;
-	}
-
-	return GetSoundInternal(_sound_count++);
+	return _sounds.Append();
 }
 
 
 void InitializeSoundPool()
 {
-	_SoundInternal_pool.CleanPool();
-	_sound_count = 0;
+	_sounds.Clear();
 
 	/* Copy original sound data to the pool */
 	SndCopyToPool();
@@ -36,14 +31,14 @@ void InitializeSoundPool()
 
 SoundEntry *GetSound(SoundID index)
 {
-	if (index >= GetNumSounds()) return NULL;
-	return GetSoundInternal(index);
+	if (index >= _sounds.Length()) return NULL;
+	return &_sounds[index];
 }
 
 
 uint GetNumSounds()
 {
-	return _sound_count;
+	return _sounds.Length();
 }
 
 
