@@ -260,8 +260,8 @@ private:
 
 public:
 	/** Default constructor producing an invalid order list. */
-	OrderList()
-		: first(NULL), num_orders(INVALID_VEH_ORDER_ID), num_vehicles(0), first_shared(NULL),
+	OrderList(VehicleOrderID num_orders = INVALID_VEH_ORDER_ID)
+		: first(NULL), num_orders(num_orders), num_vehicles(0), first_shared(NULL),
 		  timetable_duration(0) { }
 
 	/** Create an order list with the given order chain for the given vehicle.

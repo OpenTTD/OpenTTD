@@ -277,6 +277,15 @@ static void Load_PLYR()
 	}
 }
 
+static void Ptrs_PLYR()
+{
+	Company *c;
+	FOR_ALL_COMPANIES(c) {
+		SlObject(c, _company_desc);
+	}
+}
+
+
 extern const ChunkHandler _company_chunk_handlers[] = {
-	{ 'PLYR', Save_PLYR, Load_PLYR, CH_ARRAY | CH_LAST},
+	{ 'PLYR', Save_PLYR, Load_PLYR, Ptrs_PLYR, CH_ARRAY | CH_LAST},
 };

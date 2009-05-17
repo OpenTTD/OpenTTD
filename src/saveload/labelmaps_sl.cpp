@@ -120,6 +120,6 @@ static void Load_RAIL()
 }
 
 extern const ChunkHandler _labelmaps_chunk_handlers[] = {
-	{ 'RAIL', Save_RAIL, Load_RAIL, CH_ARRAY | CH_LAST},
+	{ 'RAIL', Save_RAIL, Load_RAIL, NULL, CH_ARRAY | CH_LAST},
 };
 

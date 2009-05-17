@@ -236,13 +236,13 @@ static void Save_MAP7()
 }
 
 extern const ChunkHandler _map_chunk_handlers[] = {
-	{ 'MAPS', Save_MAPS,     Load_MAPS,     CH_RIFF },
-	{ 'MAPT', Save_MAPT,     Load_MAPT,     CH_RIFF },
-	{ 'MAPO', Save_MAP1,     Load_MAP1,     CH_RIFF },
-	{ 'MAP2', Save_MAP2,     Load_MAP2,     CH_RIFF },
-	{ 'M3LO', Save_MAP3,     Load_MAP3,     CH_RIFF },
-	{ 'M3HI', Save_MAP4,     Load_MAP4,     CH_RIFF },
-	{ 'MAP5', Save_MAP5,     Load_MAP5,     CH_RIFF },
-	{ 'MAPE', Save_MAP6,     Load_MAP6,     CH_RIFF },
-	{ 'MAP7', Save_MAP7,     Load_MAP7,     CH_RIFF | CH_LAST },
+	{ 'MAPS', Save_MAPS, Load_MAPS, NULL, CH_RIFF },
+	{ 'MAPT', Save_MAPT, Load_MAPT, NULL, CH_RIFF },
+	{ 'MAPO', Save_MAP1, Load_MAP1, NULL, CH_RIFF },
+	{ 'MAP2', Save_MAP2, Load_MAP2, NULL, CH_RIFF },
+	{ 'M3LO', Save_MAP3, Load_MAP3, NULL, CH_RIFF },
+	{ 'M3HI', Save_MAP4, Load_MAP4, NULL, CH_RIFF },
+	{ 'MAP5', Save_MAP5, Load_MAP5, NULL, CH_RIFF },
+	{ 'MAPE', Save_MAP6, Load_MAP6, NULL, CH_RIFF },
+	{ 'MAP7', Save_MAP7, Load_MAP7, NULL, CH_RIFF | CH_LAST },
 };

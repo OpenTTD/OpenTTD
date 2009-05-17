@@ -71,7 +71,7 @@ struct CargoPacket : PoolItem<CargoPacket, CargoPacketID, &_CargoPacket_pool> {
  */
 #define FOR_ALL_CARGOPACKETS(cp) FOR_ALL_CARGOPACKETS_FROM(cp, 0)
 
-extern void SaveLoad_STNS(Station *st);
+extern const struct SaveLoad *GetGoodsDesc();
 
 /**
  * Simple collection class for a list of cargo packets
@@ -99,7 +99,7 @@ private:
 	uint days_in_transit; ///< Cache for the number of days in transit
 
 public:
-	friend void SaveLoad_STNS(Station *st);
+	friend const struct SaveLoad *GetGoodsDesc();
 
 	/** Create the cargo list */
 	CargoList() { this->InvalidateCache(); }

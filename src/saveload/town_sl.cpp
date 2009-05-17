@@ -192,6 +192,6 @@ static void Load_TOWN()
 }
 
 extern const ChunkHandler _town_chunk_handlers[] = {
-	{ 'HIDS', Save_HOUSEIDS, Load_HOUSEIDS, CH_ARRAY },
-	{ 'CITY', Save_TOWN,     Load_TOWN,     CH_ARRAY | CH_LAST},
+	{ 'HIDS', Save_HOUSEIDS, Load_HOUSEIDS, NULL, CH_ARRAY },
+	{ 'CITY', Save_TOWN,     Load_TOWN,     NULL, CH_ARRAY | CH_LAST},
 };

@@ -121,7 +121,7 @@ static void Load_ORDR()
 {
 	if (CheckSavegameVersionOldStyle(5, 2)) {
 		/* Version older than 5.2 did not have a ->next pointer. Convert them
-		    (in the old days, the orderlist was 5000 items big) */
+		 * (in the old days, the orderlist was 5000 items big) */
 		size_t len = SlGetFieldLength();
 		uint i;
 
@@ -170,6 +170,17 @@ static void Load_ORDR()
 	}
 }
 
+static void Ptrs_ORDR()
+{
+	if (CheckSavegameVersionOldStyle(5, 2)) return;
+
+	Order *o;
+
+	FOR_ALL_ORDERS(o) {
+		SlObject(o, GetOrderDescription());
+	}
+}
+
 const SaveLoad *GetOrderListDescription()
 {
 	static const SaveLoad _orderlist_desc[] = {
@@ -195,12 +206,23 @@ static void Load_ORDL()
 	int index;
 
 	while ((index = SlIterateArray()) != -1) {
-		OrderList *list = new (index) OrderList();
+		/* set num_orders to 0 so it's a valid OrderList */
+		OrderList *list = new (index) OrderList(0);
+		SlObject(list, GetOrderListDescription());
+	}
+
+}
+
+static void Ptrs_ORDL()
+{
+	OrderList *list;
+
+	FOR_ALL_ORDER_LISTS(list) {
 		SlObject(list, GetOrderListDescription());
 	}
 }
 
 extern const ChunkHandler _order_chunk_handlers[] = {
-	{ 'ORDR', Save_ORDR, Load_ORDR, CH_ARRAY},
-	{ 'ORDL', Save_ORDL, Load_ORDL, CH_ARRAY | CH_LAST},
+	{ 'ORDR', Save_ORDR, Load_ORDR, Ptrs_ORDR, CH_ARRAY},
+	{ 'ORDL', Save_ORDL, Load_ORDL, Ptrs_ORDL, CH_ARRAY | CH_LAST},
 };

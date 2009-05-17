@@ -102,6 +102,6 @@ static void SaveLoad_VIEW()
 }
 
 extern const ChunkHandler _misc_chunk_handlers[] = {
-	{ 'DATE', SaveLoad_DATE, SaveLoad_DATE, CH_RIFF},
-	{ 'VIEW', SaveLoad_VIEW, SaveLoad_VIEW, CH_RIFF | CH_LAST},
+	{ 'DATE', SaveLoad_DATE, SaveLoad_DATE, NULL, CH_RIFF},
+	{ 'VIEW', SaveLoad_VIEW, SaveLoad_VIEW, NULL, CH_RIFF | CH_LAST},
 };

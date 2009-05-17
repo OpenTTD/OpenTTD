@@ -56,6 +56,7 @@ typedef size_t ReaderProc();
 enum SaveLoadAction {
 	SLA_LOAD, ///< loading
 	SLA_SAVE, ///< saving
+	SLA_PTRS, ///< fixing pointers
 };
 
 enum NeedLength {
@@ -564,6 +565,7 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 			WriteValue(ptr, conv, x);
 			break;
 		}
+		case SLA_PTRS: break;
 		default: NOT_REACHED();
 	}
 }
@@ -671,6 +673,7 @@ static void SlString(void *ptr, size_t length, VarType conv)
 			str_validate((char *)ptr, (char *)ptr + len);
 			break;
 		}
+		case SLA_PTRS: break;
 		default: NOT_REACHED();
 	}
 }
@@ -693,6 +696,8 @@ static inline size_t SlCalcArrayLen(size_t length, VarType conv)
  */
 void SlArray(void *array, size_t length, VarType conv)
 {
+	if (_sl.action == SLA_PTRS) return;
+
 	/* Automatically calculate the length? */
 	if (_sl.need_length != NL_NONE) {
 		SlSetLength(SlCalcArrayLen(length, conv));
@@ -767,13 +772,14 @@ void SlList(void *list, SLRefType conv)
 		if (_sl.need_length == NL_CALCLENGTH) return;
 	}
 
-	std::list<void *> *l = (std::list<void *> *) list;
+	typedef std::list<void *> PtrList;
+	PtrList *l = (PtrList *)list;
 
 	switch (_sl.action) {
 		case SLA_SAVE: {
 			SlWriteUint32((uint32)l->size());
 
-			std::list<void *>::iterator iter;
+			PtrList::iterator iter;
 			for (iter = l->begin(); iter != l->end(); ++iter) {
 				void *ptr = *iter;
 				SlWriteUint32(ReferenceToInt(ptr, conv));
@@ -785,7 +791,18 @@ void SlList(void *list, SLRefType conv)
 
 			/* Load each reference and push to the end of the list */
 			for (uint i = 0; i < length; i++) {
-				void *ptr = IntToReference(CheckSavegameVersion(69) ? SlReadUint16() : SlReadUint32(), conv);
+				size_t data = CheckSavegameVersion(69) ? SlReadUint16() : SlReadUint32();
+				l->push_back((void *)data);
+			}
+			break;
+		}
+		case SLA_PTRS: {
+			PtrList temp = *l;
+
+			l->clear();
+			PtrList::iterator iter;
+			for (iter = temp.begin(); iter != temp.end(); ++iter) {
+				void *ptr = IntToReference((size_t)*iter, conv);
 				l->push_back(ptr);
 			}
 			break;
@@ -885,7 +902,10 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 							SlWriteUint32(ReferenceToInt(*(void **)ptr, (SLRefType)conv));
 							break;
 						case SLA_LOAD:
-							*(void **)ptr = IntToReference(CheckSavegameVersion(69) ? SlReadUint16() : SlReadUint32(), (SLRefType)conv);
+							*(size_t *)ptr = (size_t)(CheckSavegameVersion(69) ? SlReadUint16() : SlReadUint32());
+							break;
+						case SLA_PTRS:
+							*(void **)ptr = IntToReference(*(size_t *)ptr, (SLRefType)conv);
 							break;
 						default: NOT_REACHED();
 					}
@@ -906,6 +926,7 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 			switch (_sl.action) {
 				case SLA_SAVE: SlWriteByte(sld->version_to); break;
 				case SLA_LOAD: *(byte *)ptr = sld->version_from; break;
+				case SLA_PTRS: break;
 				default: NOT_REACHED();
 			}
 			break;
@@ -1114,6 +1135,33 @@ static void SlLoadChunks()
 		if (ch == NULL) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unknown chunk type");
 		SlLoadChunk(ch);
 	}
+}
+
+/** Fix all pointers (convert index -> pointer) */
+static void SlFixPointers()
+{
+	const ChunkHandler *ch;
+	const ChunkHandler * const *chsc;
+
+	_sl.action = SLA_PTRS;
+
+	DEBUG(sl, 1, "Fixing pointers");
+
+	for (chsc = _sl.chs; (ch = *chsc++) != NULL;) {
+		while (true) {
+			if (ch->ptrs_proc != NULL) {
+				DEBUG(sl, 2, "Fixing pointers for %c%c%c%c", ch->id >> 24, ch->id >> 16, ch->id >> 8, ch->id);
+				ch->ptrs_proc();
+			}
+			if (ch->flags & CH_LAST)
+				break;
+			ch++;
+		}
+	}
+
+	DEBUG(sl, 1, "All pointers fixed");
+
+	assert(_sl.action == SLA_PTRS);
 }
 
 /*******************************************
@@ -1424,6 +1472,8 @@ static const ChunkHandler * const _chunk_handlers[] = {
  */
 static uint ReferenceToInt(const void *obj, SLRefType rt)
 {
+	assert(_sl.action == SLA_SAVE);
+
 	if (obj == NULL) return 0;
 
 	switch (rt) {
@@ -1452,8 +1502,13 @@ static uint ReferenceToInt(const void *obj, SLRefType rt)
  * @param rt SLRefType type of the object the pointer is sought of
  * @return Return the index converted to a pointer of any type
  */
+
+assert_compile(sizeof(size_t) <= sizeof(void *));
+
 static void *IntToReference(uint index, SLRefType rt)
 {
+	assert(_sl.action == SLA_PTRS);
+
 	/* After version 4.3 REF_VEHICLE_OLD is saved as REF_VEHICLE,
 	 * and should be loaded like that */
 	if (rt == REF_VEHICLE_OLD && !CheckSavegameVersionOldStyle(4, 4)) {
@@ -1461,59 +1516,50 @@ static void *IntToReference(uint index, SLRefType rt)
 	}
 
 	/* No need to look up NULL pointers, just return immediately */
-	if (rt != REF_VEHICLE_OLD && index == 0) {
-		return NULL;
-	}
+	if (index == (rt == REF_VEHICLE_OLD ? 0xFFFF : 0)) return NULL;
 
-	index--; // correct for the NULL index
+	/* Correct index. Old vehicles were saved differently:
+	 * invalid vehicle was 0xFFFF, now we use 0x0000 for everything invalid. */
+	if (rt != REF_VEHICLE_OLD) index--;
 
 	switch (rt) {
 		case REF_ORDERLIST:
-			if (_OrderList_pool.AddBlockIfNeeded(index)) return OrderList::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "OrderList index out of range");
+			if (OrderList::IsValidID(index)) return OrderList::Get(index);
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid OrderList");
 
 		case REF_ORDER:
-			if (_Order_pool.AddBlockIfNeeded(index)) return Order::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Order index out of range");
-
-		case REF_VEHICLE:
-			if (_Vehicle_pool.AddBlockIfNeeded(index)) return Vehicle::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Vehicle index out of range");
-
-		case REF_STATION:
-			if (_Station_pool.AddBlockIfNeeded(index)) return Station::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Station index out of range");
-
-		case REF_TOWN:
-			if (_Town_pool.AddBlockIfNeeded(index)) return Town::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Town index out of range");
-
-		case REF_ROADSTOPS:
-			if (_RoadStop_pool.AddBlockIfNeeded(index)) return RoadStop::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "RoadStop index out of range");
-
-		case REF_ENGINE_RENEWS:
-			if (_EngineRenew_pool.AddBlockIfNeeded(index)) return EngineRenew::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "EngineRenew index out of range");
-
-		case REF_CARGO_PACKET:
-			if (_CargoPacket_pool.AddBlockIfNeeded(index)) return CargoPacket::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "CargoPacket index out of range");
+			if (Order::IsValidID(index)) return Order::Get(index);
+			/* in old versions, invalid order was used to mark end of order list */
+			if (CheckSavegameVersionOldStyle(5, 2)) return NULL;
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Order");
 
 		case REF_VEHICLE_OLD:
-			/* Old vehicles were saved differently:
-			 * invalid vehicle was 0xFFFF,
-			 * and the index was not - 1.. correct for this */
-			index++;
-			if (index == INVALID_VEHICLE) return NULL;
+		case REF_VEHICLE:
+			if (Vehicle::IsValidID(index)) return Vehicle::Get(index);
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Vehicle");
 
-			if (_Vehicle_pool.AddBlockIfNeeded(index)) return Vehicle::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Vehicle index out of range");
+		case REF_STATION:
+			if (Station::IsValidID(index)) return Station::Get(index);
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Station");
+
+		case REF_TOWN:
+			if (Town::IsValidID(index)) return Town::Get(index);
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Town");
+
+		case REF_ROADSTOPS:
+			if (RoadStop::IsValidID(index)) return RoadStop::Get(index);
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid RoadStop");
+
+		case REF_ENGINE_RENEWS:
+			if (EngineRenew::IsValidID(index)) return EngineRenew::Get(index);
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid EngineRenew");
+
+		case REF_CARGO_PACKET:
+			if (CargoPacket::IsValidID(index)) return CargoPacket::Get(index);
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid CargoPacket");
 
 		default: NOT_REACHED();
 	}
-
-	return NULL;
 }
 
 /** The format for a reader/writer type of a savegame */
@@ -1852,6 +1898,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 			GamelogReset();
 
 			SlLoadChunks();
+			SlFixPointers();
 			fmt->uninit_read();
 			fclose(_sl.fh);
 

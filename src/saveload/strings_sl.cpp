@@ -119,5 +119,5 @@ static void Load_NAME()
 }
 
 extern const ChunkHandler _name_chunk_handlers[] = {
-	{ 'NAME', NULL, Load_NAME, CH_ARRAY | CH_LAST},
+	{ 'NAME', NULL, Load_NAME, NULL, CH_ARRAY | CH_LAST},
 };

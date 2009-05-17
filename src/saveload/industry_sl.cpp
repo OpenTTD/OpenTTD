@@ -148,8 +148,17 @@ static void Load_TIDS()
 	}
 }
 
+static void Ptrs_INDY()
+{
+	Industry *i;
+
+	FOR_ALL_INDUSTRIES(i) {
+		SlObject(i, _industry_desc);
+	}
+}
+
 extern const ChunkHandler _industry_chunk_handlers[] = {
-	{ 'INDY', Save_INDY, Load_INDY, CH_ARRAY},
-	{ 'IIDS', Save_IIDS, Load_IIDS, CH_ARRAY},
-	{ 'TIDS', Save_TIDS, Load_TIDS, CH_ARRAY | CH_LAST},
+	{ 'INDY', Save_INDY, Load_INDY, Ptrs_INDY, CH_ARRAY},
+	{ 'IIDS', Save_IIDS, Load_IIDS,      NULL, CH_ARRAY},
+	{ 'TIDS', Save_TIDS, Load_TIDS,      NULL, CH_ARRAY | CH_LAST},
 };

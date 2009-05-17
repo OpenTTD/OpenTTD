@@ -143,7 +143,7 @@ static void Load_EIDS()
 }
 
 extern const ChunkHandler _engine_chunk_handlers[] = {
-	{ 'EIDS', Save_EIDS,     Load_EIDS,     CH_ARRAY          },
-	{ 'ENGN', Save_ENGN,     Load_ENGN,     CH_ARRAY          },
-	{ 'ENGS', NULL,          Load_ENGS,     CH_RIFF | CH_LAST },
+	{ 'EIDS', Save_EIDS, Load_EIDS, NULL, CH_ARRAY          },
+	{ 'ENGN', Save_ENGN, Load_ENGN, NULL, CH_ARRAY          },
+	{ 'ENGS', NULL,      Load_ENGS, NULL, CH_RIFF | CH_LAST },
 };

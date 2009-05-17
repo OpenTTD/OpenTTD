@@ -732,6 +732,14 @@ void Load_VEHS()
 	}
 }
 
+void Ptrs_VEHS()
+{
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		SlObject(v, GetVehicleDescription(v->type));
+	}
+}
+
 extern const ChunkHandler _veh_chunk_handlers[] = {
-	{ 'VEHS', Save_VEHS, Load_VEHS, CH_SPARSE_ARRAY | CH_LAST},
+	{ 'VEHS', Save_VEHS, Load_VEHS, Ptrs_VEHS, CH_SPARSE_ARRAY | CH_LAST},
 };

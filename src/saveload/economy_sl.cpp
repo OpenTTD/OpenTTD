@@ -52,7 +52,7 @@ static void Load_ECMY()
 }
 
 extern const ChunkHandler _economy_chunk_handlers[] = {
-	{ 'PRIC', SaveLoad_PRIC, SaveLoad_PRIC, CH_RIFF | CH_AUTO_LENGTH},
-	{ 'CAPR', SaveLoad_CAPR, SaveLoad_CAPR, CH_RIFF | CH_AUTO_LENGTH},
-	{ 'ECMY', Save_ECMY,     Load_ECMY,     CH_RIFF | CH_LAST},
+	{ 'PRIC', SaveLoad_PRIC, SaveLoad_PRIC, NULL, CH_RIFF | CH_AUTO_LENGTH},
+	{ 'CAPR', SaveLoad_CAPR, SaveLoad_CAPR, NULL, CH_RIFF | CH_AUTO_LENGTH},
+	{ 'ECMY', Save_ECMY,     Load_ECMY,     NULL, CH_RIFF | CH_LAST},
 };

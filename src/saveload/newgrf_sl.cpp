@@ -48,5 +48,5 @@ static void Load_NGRF()
 }
 
 extern const ChunkHandler _newgrf_chunk_handlers[] = {
-	{ 'NGRF', Save_NGRF, Load_NGRF, CH_ARRAY | CH_LAST }
+	{ 'NGRF', Save_NGRF, Load_NGRF, NULL, CH_ARRAY | CH_LAST }
 };

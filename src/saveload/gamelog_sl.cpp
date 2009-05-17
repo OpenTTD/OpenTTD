@@ -162,5 +162,5 @@ static void Save_GLOG()
 
 
 extern const ChunkHandler _gamelog_chunk_handlers[] = {
-	{ 'GLOG', Save_GLOG, Load_GLOG, CH_RIFF | CH_LAST }
+	{ 'GLOG', Save_GLOG, Load_GLOG, NULL, CH_RIFF | CH_LAST }
 };
