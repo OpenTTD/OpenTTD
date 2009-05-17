@@ -120,6 +120,8 @@ enum GameOptionsWidgets {
 	GOW_SCREENSHOT_DROPDOWN, ///< Select the screenshot type... please use PNG!
 	GOW_BASE_GRF_FRAME,      ///< Base GRF selection frame
 	GOW_BASE_GRF_DROPDOWN,   ///< Use to select a base GRF
+	GOW_BASE_GRF_STATUS,     ///< Info about missing files etc.
+	GOW_BASE_GRF_DESCRIPTION,///< Description of selected base GRF
 };
 
 /**
@@ -191,8 +193,22 @@ struct GameOptionsWindow : Window {
 		SetDParam(8, SPECSTR_SCREENSHOT_START + _cur_screenshot_format);
 		this->SetWidgetLoweredState(GOW_FULLSCREEN_BUTTON, _fullscreen);
 		SetDParamStr(9, GetGraphicsSetName(GetIndexOfCurrentGraphicsSet()));
+		int missing_files = GetGraphicsSetNumMissingFiles(GetIndexOfCurrentGraphicsSet());
+		SetDParam(10, missing_files);
+		SetWidgetHiddenState(GOW_BASE_GRF_STATUS, missing_files == 0);
 
 		this->DrawWidgets();
+
+		SetDParam(0, STR_JUST_RAW_STRING);
+		SetDParamStr(1, GetGraphicsSetDescription(GetIndexOfCurrentGraphicsSet()));
+		const Widget *desc = &this->widget[GOW_BASE_GRF_DESCRIPTION];
+		int y = DrawStringMultiLine(desc->left, desc->right, desc->top, UINT16_MAX, STR_BLACK_STRING);
+
+		if (y != desc->bottom) {
+			this->SetDirty();
+			ResizeWindowForWidget(this, GOW_BASE_GRF_DESCRIPTION, 0, y - desc->bottom);
+			this->SetDirty();
+		}
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -328,6 +344,7 @@ struct GameOptionsWindow : Window {
 
 					SetGraphicsSet(name);
 					this->reload = true;
+					this->SetDirty();
 				}
 				break;
 		}
@@ -337,7 +354,7 @@ struct GameOptionsWindow : Window {
 static const Widget _game_options_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,                           STR_TOOLTIP_CLOSE_WINDOW},                          // GOW_CLOSEBOX
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   369,     0,    13, STR_GAME_OPTIONS_CAPTION,                  STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},                // GOW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   369,    14,   242, 0x0,                                       STR_NULL},                                          // GOW_BACKGROUND
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   369,    14,   248, 0x0,                                       STR_NULL},                                          // GOW_BACKGROUND
 {      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   179,    20,    55, STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME,     STR_NULL},                                          // GOW_CURRENCY_FRAME
 {   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,    20,   169,    34,    45, STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN,  STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP},  // GOW_CURRENCY_DROPDOWN
 {      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,   190,   359,    20,    55, STR_GAME_OPTIONS_MEASURING_UNITS_FRAME,    STR_NULL},                                          // GOW_DISTANCE_FRAME
@@ -360,8 +377,10 @@ static const Widget _game_options_widgets[] = {
 {      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,   190,   359,   146,   190, STR_OPTIONS_SCREENSHOT_FORMAT,             STR_NULL},                                          // GOW_SCREENSHOT_FRAME
 {   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,   200,   349,   160,   171, STR_OPTIONS_SCREENSHOT_FORMAT_CBO,         STR_OPTIONS_SCREENSHOT_FORMAT_TIP},                 // GOW_SCREENSHOT_DROPDOWN
 
-{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   179,   197,   232, STR_OPTIONS_BASE_GRF,                      STR_NULL},                                          // GOW_BASE_GRF_FRAME
+{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   359,   197,   238, STR_OPTIONS_BASE_GRF,                      STR_NULL},                                          // GOW_BASE_GRF_FRAME
 {   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,    20,   169,   211,   222, STR_OPTIONS_BASE_GRF_CBO,                  STR_OPTIONS_BASE_GRF_TIP},                          // GOW_BASE_GRF_DROPDOWN
+{       WWT_TEXT,   RESIZE_NONE,  COLOUR_GREY,   200,   349,   211,   222, STR_OPTIONS_BASE_GRF_STATUS,               STR_NULL},                                          // GOW_BASE_GRF_STATUS
+{       WWT_TEXT,   RESIZE_NONE,  COLOUR_GREY,    20,   349,   229,   228, STR_EMPTY,                                 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP},              // GOW_BASE_GRF_DESCRIPTION
 
 {   WIDGETS_END},
 };
@@ -371,9 +390,9 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, GOW_CLOSEBOX),
 		NWidget(WWT_CAPTION, COLOUR_GREY, GOW_CAPTION), SetDataTip(STR_GAME_OPTIONS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, GOW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_GREY, GOW_BACKGROUND), SetPIP(6, 6, 10),
 		NWidget(NWID_HORIZONTAL), SetPIP(10, 10, 10),
-			NWidget(NWID_VERTICAL), SetPIP(6, 6, 10),
+			NWidget(NWID_VERTICAL), SetPIP(0, 6, 0),
 				NWidget(WWT_FRAME, COLOUR_GREY, GOW_CURRENCY_FRAME), SetDataTip(STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_CURRENCY_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN, STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP), SetPadding(14, 10, 10, 10),
 				EndContainer(),
@@ -390,12 +409,9 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, GOW_FULLSCREEN_BUTTON), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_OPTIONS_FULLSCREEN_TIP), SetPadding(0, 10, 4, 0),
 					EndContainer(),
 				EndContainer(),
-				NWidget(WWT_FRAME, COLOUR_GREY, GOW_BASE_GRF_FRAME), SetDataTip(STR_OPTIONS_BASE_GRF, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_BASE_GRF_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_OPTIONS_BASE_GRF_CBO, STR_OPTIONS_BASE_GRF_TIP), SetPadding(14, 10, 10, 10),
-				EndContainer(),
 			EndContainer(),
 
-			NWidget(NWID_VERTICAL), SetPIP(6, 6, 10),
+			NWidget(NWID_VERTICAL), SetPIP(0, 6, 0),
 				NWidget(WWT_FRAME, COLOUR_GREY, GOW_DISTANCE_FRAME), SetDataTip(STR_GAME_OPTIONS_MEASURING_UNITS_FRAME, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_DISTANCE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN, STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP), SetPadding(14, 10, 10, 10),
 				EndContainer(),
@@ -409,14 +425,21 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_SCREENSHOT_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_OPTIONS_SCREENSHOT_FORMAT_CBO, STR_OPTIONS_SCREENSHOT_FORMAT_TIP), SetPadding(14, 10, 10, 10),
 					NWidget(NWID_SPACER), SetMinimalSize(0, 9),
 				EndContainer(),
-				NWidget(NWID_SPACER), SetFill(false, true),
 			EndContainer(),
+		EndContainer(),
+
+		NWidget(WWT_FRAME, COLOUR_GREY, GOW_BASE_GRF_FRAME), SetDataTip(STR_OPTIONS_BASE_GRF, STR_NULL),
+			NWidget(NWID_HORIZONTAL), SetPIP(10, 30, 10),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_BASE_GRF_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_OPTIONS_BASE_GRF_CBO, STR_OPTIONS_BASE_GRF_TIP), SetPadding(14, 0, 0, 0),
+				NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_GRF_STATUS), SetMinimalSize(150, 12), SetDataTip(STR_OPTIONS_BASE_GRF_STATUS, STR_NULL), SetPadding(14, 0, 0, 0),
+			EndContainer(),
+			NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_GRF_DESCRIPTION), SetMinimalSize(330, 0), SetDataTip(STR_EMPTY, STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP), SetPadding(6, 10, 10, 10),
 		EndContainer(),
 	EndContainer(),
 };
 
 static const WindowDesc _game_options_desc(
-	WDP_CENTER, WDP_CENTER, 370, 243, 370, 243,
+	WDP_CENTER, WDP_CENTER, 370, 249, 370, 249,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_game_options_widgets, _nested_game_options_widgets, lengthof(_nested_game_options_widgets)

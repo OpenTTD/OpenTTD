@@ -600,14 +600,38 @@ int GetIndexOfCurrentGraphicsSet()
 }
 
 /**
+ * Get the graphics set at the specified index
+ */
+static const GraphicsSet *GetGraphicsSetAtIndex(int index)
+{
+	for (const GraphicsSet *g = _available_graphics_sets; g != NULL; g = g->next) {
+		if (g != _used_graphics_set && g->found_grfs <= 1) continue;
+		if (index == 0) return g;
+		index--;
+	}
+	error("GetGraphicsSetAtIndex: index %d out of range", index);
+}
+
+/**
  * Get the name of the graphics set at the specified index
  */
 const char *GetGraphicsSetName(int index)
 {
-	for (const GraphicsSet *g = _available_graphics_sets; g != NULL; g = g->next) {
-		if (g != _used_graphics_set && g->found_grfs <= 1) continue;
-		if (index == 0) return g->name;
-		index--;
-	}
-	error("GetGraphicsSetName: index %d out of range", index);
+	return GetGraphicsSetAtIndex(index)->name;
+}
+
+/**
+ * Get the description of the graphics set at the specified index
+ */
+const char *GetGraphicsSetDescription(int index)
+{
+	return GetGraphicsSetAtIndex(index)->description;
+}
+
+/**
+ * Get the number of missing/corrupted files of the graphics set at the specified index
+ */
+int GetGraphicsSetNumMissingFiles(int index)
+{
+	return MAX_GFT - GetGraphicsSetAtIndex(index)->found_grfs;
 }

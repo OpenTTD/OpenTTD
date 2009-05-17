@@ -18,6 +18,8 @@ char *GetGraphicsSetsList(char *p, const char *last);
 int GetNumGraphicsSets();
 int GetIndexOfCurrentGraphicsSet();
 const char *GetGraphicsSetName(int index);
+const char *GetGraphicsSetDescription(int index);
+int GetGraphicsSetNumMissingFiles(int index);
 
 extern char *_ini_graphics_set;
 

@@ -855,6 +855,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Select t
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Base graphics set
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{RAW_STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Select the base graphics set to use
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} missing/corrupted file{P "" s}
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Additional information about the base graphics set
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosave failed
 
