@@ -1040,7 +1040,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	VehicleID s = GB(p1, 0, 16);
 	VehicleID d = GB(p1, 16, 16);
 
-	if (!IsValidVehicleID(s)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(s)) return CMD_ERROR;
 
 	Vehicle *src = Vehicle::Get(s);
 
@@ -1054,7 +1054,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (d == INVALID_VEHICLE) {
 		dst = IsTrainEngine(src) ? NULL : FindGoodVehiclePos(src);
 	} else {
-		if (!IsValidVehicleID(d)) return CMD_ERROR;
+		if (!Vehicle::IsValidID(d)) return CMD_ERROR;
 		dst = Vehicle::Get(d);
 		if (dst->type != VEH_TRAIN || !CheckOwnership(dst->owner)) return CMD_ERROR;
 
@@ -1290,7 +1290,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 					assert(src->orders.list == NULL);
 
 					/* Decrease the engines number of the src engine_type */
-					if (!IsDefaultGroupID(src->group_id) && IsValidGroupID(src->group_id)) {
+					if (!IsDefaultGroupID(src->group_id) && Group::IsValidID(src->group_id)) {
 						Group::Get(src->group_id)->num_engines[src->engine_type]--;
 					}
 
@@ -1395,7 +1395,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	/* Check if we deleted a vehicle window */
 	Window *w = NULL;
 
-	if (!IsValidVehicleID(p1) || p2 > 1) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p1) || p2 > 1) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::Get(p1);
 
@@ -1952,7 +1952,7 @@ static void ReverseTrainDirection(Vehicle *v)
  */
 CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::Get(p1);
 
@@ -2013,7 +2013,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
  */
 CommandCost CmdForceTrainProceed(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::Get(p1);
 
@@ -2040,7 +2040,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	byte new_subtype = GB(p2, 8, 8);
 	bool only_this = HasBit(p2, 16);
 
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::Get(p1);
 
@@ -2246,7 +2246,7 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		return SendAllVehiclesToDepot(VEH_TRAIN, flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), p1);
 	}
 
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::Get(p1);
 

@@ -66,17 +66,17 @@ Company::~Company()
  * Sets the local company and updates the settings that are set on a
  * per-company basis to reflect the core's state in the GUI.
  * @param new_company the new company
- * @pre IsValidCompanyID(new_company) || new_company == COMPANY_SPECTATOR || new_company == OWNER_NONE
+ * @pre Company::IsValidID(new_company) || new_company == COMPANY_SPECTATOR || new_company == OWNER_NONE
  */
 void SetLocalCompany(CompanyID new_company)
 {
 	/* company could also be COMPANY_SPECTATOR or OWNER_NONE */
-	assert(IsValidCompanyID(new_company) || new_company == COMPANY_SPECTATOR || new_company == OWNER_NONE);
+	assert(Company::IsValidID(new_company) || new_company == COMPANY_SPECTATOR || new_company == OWNER_NONE);
 
 	_local_company = new_company;
 
 	/* Do not update the settings if we are in the intro GUI */
-	if (IsValidCompanyID(new_company) && _game_mode != GM_MENU) {
+	if (Company::IsValidID(new_company) && _game_mode != GM_MENU) {
 		const Company *c = Company::Get(new_company);
 		_settings_client.company = c->settings;
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
@@ -99,7 +99,7 @@ uint16 GetDrawStringCompanyColour(CompanyID company)
 {
 	/* Get the colour for DrawString-subroutines which matches the colour
 	 * of the company */
-	if (!IsValidCompanyID(company)) return _colour_gradient[COLOUR_WHITE][4] | IS_PALETTE_COLOUR;
+	if (!Company::IsValidID(company)) return _colour_gradient[COLOUR_WHITE][4] | IS_PALETTE_COLOUR;
 	return (_colour_gradient[_company_colours[company]][4]) | IS_PALETTE_COLOUR;
 }
 
@@ -151,7 +151,7 @@ bool CheckCompanyHasMoney(CommandCost cost)
 {
 	if (cost.GetCost() > 0) {
 		CompanyID company = _current_company;
-		if (IsValidCompanyID(company) && cost.GetCost() > Company::Get(company)->money) {
+		if (Company::IsValidID(company) && cost.GetCost() > Company::Get(company)->money) {
 			SetDParam(0, cost.GetCost());
 			_error_message = STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY;
 			return false;
@@ -189,7 +189,7 @@ void SubtractMoneyFromCompany(CommandCost cost)
 {
 	CompanyID cid = _current_company;
 
-	if (IsValidCompanyID(cid)) SubtractMoneyFromAnyCompany(Company::Get(cid), cost);
+	if (Company::IsValidID(cid)) SubtractMoneyFromAnyCompany(Company::Get(cid), cost);
 }
 
 void SubtractMoneyFromCompanyFract(CompanyID company, CommandCost cst)
@@ -209,7 +209,7 @@ void GetNameOfOwner(Owner owner, TileIndex tile)
 	SetDParam(2, owner);
 
 	if (owner != OWNER_TOWN) {
-		if (!IsValidCompanyID(owner)) {
+		if (!Company::IsValidID(owner)) {
 			SetDParam(0, STR_COMPANY_SOMEONE);
 		} else {
 			SetDParam(0, STR_COMPANY_NAME);
@@ -499,7 +499,7 @@ void OnTick_Companies()
 {
 	if (_game_mode == GM_EDITOR) return;
 
-	if (IsValidCompanyID((CompanyID)_cur_company_tick_index)) {
+	if (Company::IsValidID((CompanyID)_cur_company_tick_index)) {
 		Company *c = Company::Get((CompanyID)_cur_company_tick_index);
 		if (c->name_1 != 0) GenerateCompanyName(c);
 	}
@@ -567,7 +567,7 @@ void CompaniesYearlyLoop()
  */
 CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsValidCompanyID(_current_company)) return CMD_ERROR;
+	if (!Company::IsValidID(_current_company)) return CMD_ERROR;
 
 	Company *c = Company::Get(_current_company);
 	switch (GB(p1, 0, 3)) {
@@ -615,7 +615,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 			GroupID id_g = GB(p1, 16, 16);
 			CommandCost cost;
 
-			if (!IsValidGroupID(id_g) && !IsAllGroupID(id_g) && !IsDefaultGroupID(id_g)) return CMD_ERROR;
+			if (!Group::IsValidID(id_g) && !IsAllGroupID(id_g) && !IsDefaultGroupID(id_g)) return CMD_ERROR;
 			if (new_engine_type != INVALID_ENGINE) {
 				if (!CheckAutoreplaceValidity(old_engine_type, new_engine_type, _current_company)) return CMD_ERROR;
 
@@ -780,7 +780,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				ci->client_playas = c->index;
 				NetworkUpdateClientInfo(ci->client_id);
 
-				if (IsValidCompanyID(ci->client_playas)) {
+				if (Company::IsValidID(ci->client_playas)) {
 					CompanyID company_backup = _local_company;
 					_network_company_states[c->index].months_empty = 0;
 					_network_company_states[c->index].password[0] = '\0';
@@ -819,7 +819,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		case 2: { // Delete a company
 			Company *c;
 
-			if (!IsValidCompanyID((CompanyID)p2)) return CMD_ERROR;
+			if (!Company::IsValidID((CompanyID)p2)) return CMD_ERROR;
 
 			if (!(flags & DC_EXEC)) return CommandCost();
 
@@ -849,7 +849,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			CompanyID cid_old = (CompanyID)GB(p2,  0, 16);
 			CompanyID cid_new = (CompanyID)GB(p2, 16, 16);
 
-			if (!IsValidCompanyID(cid_old) || !IsValidCompanyID(cid_new)) return CMD_ERROR;
+			if (!Company::IsValidID(cid_old) || !Company::IsValidID(cid_new)) return CMD_ERROR;
 
 			if (!(flags & DC_EXEC)) return CMD_ERROR;
 

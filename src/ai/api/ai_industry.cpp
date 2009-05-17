@@ -18,7 +18,7 @@
 
 /* static */ bool AIIndustry::IsValidIndustry(IndustryID industry_id)
 {
-	return ::IsValidIndustryID(industry_id);
+	return ::Industry::IsValidID(industry_id);
 }
 
 /* static */ char *AIIndustry::GetName(IndustryID industry_id)

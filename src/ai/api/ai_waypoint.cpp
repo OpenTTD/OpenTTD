@@ -14,7 +14,7 @@
 
 /* static */ bool AIWaypoint::IsValidWaypoint(WaypointID waypoint_id)
 {
-	return ::IsValidWaypointID(waypoint_id) && ::Waypoint::Get(waypoint_id)->owner == _current_company;
+	return ::Waypoint::IsValidID(waypoint_id) && ::Waypoint::Get(waypoint_id)->owner == _current_company;
 }
 
 /* static */ WaypointID AIWaypoint::GetWaypointID(TileIndex tile)

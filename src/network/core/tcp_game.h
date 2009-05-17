@@ -108,11 +108,6 @@ public:
 	void Send_Command(Packet *p, const CommandPacket *cp);
 };
 
-static inline bool IsValidNetworkClientSocketIndex(ClientIndex index)
-{
-	return (uint)index < NetworkClientSocket::GetPoolSize() && NetworkClientSocket::Get(index)->IsValid();
-}
-
 #define FOR_ALL_CLIENT_SOCKETS_FROM(d, start) for (d = NetworkClientSocket::Get(start); d != NULL; d = (d->index + 1U < NetworkClientSocket::GetPoolSize()) ? NetworkClientSocket::Get(d->index + 1U) : NULL) if (d->IsValid())
 #define FOR_ALL_CLIENT_SOCKETS(d) FOR_ALL_CLIENT_SOCKETS_FROM(d, 0)
 

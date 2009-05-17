@@ -847,7 +847,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 			case SCC_STATION_NAME: { // {STATION}
 				StationID sid = GetInt32(&argv);
 
-				if (!IsValidStationID(sid)) {
+				if (!Station::IsValidID(sid)) {
 					/* The station doesn't exist anymore. The only place where we might
 					 * be "drawing" an invalid station is in the case of cargo that is
 					 * in transit. */
@@ -986,7 +986,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 				CompanyID company = (CompanyID)GetInt32(&argv);
 
 				/* Nothing is added for AI or inactive companies */
-				if (IsValidCompanyID(company) && IsHumanCompany(company)) {
+				if (Company::IsValidID(company) && IsHumanCompany(company)) {
 					int64 args[1];
 					args[0] = company + 1;
 					buff = GetStringWithArgs(buff, STR_COMPANY_NUM, args, last);

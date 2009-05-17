@@ -119,7 +119,7 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType
 	 * Towns are not be allowed to remove non "normal" road pieces, like tram
 	 * tracks as that would result in trams that cannot turn. */
 	if (_current_company == OWNER_WATER ||
-			(rt == ROADTYPE_ROAD && !IsValidCompanyID(_current_company))) return true;
+			(rt == ROADTYPE_ROAD && !Company::IsValidID(_current_company))) return true;
 
 	/* Only do the special processing if the road is owned
 	 * by a town */
@@ -455,7 +455,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	/* Road pieces are max 4 bitset values (NE, NW, SE, SW) and town can only be non-zero
 	 * if a non-company is building the road */
-	if ((IsValidCompanyID(_current_company) && p2 != 0) || (_current_company == OWNER_TOWN && !IsValidTownID(p2))) return CMD_ERROR;
+	if ((Company::IsValidID(_current_company) && p2 != 0) || (_current_company == OWNER_TOWN && !Town::IsValidID(p2))) return CMD_ERROR;
 	if (_current_company != OWNER_TOWN) {
 		const Town *town = CalcClosestTownFromTile(tile);
 		p2 = (town != NULL) ? town->index : (TownID)INVALID_TOWN;

@@ -353,7 +353,7 @@ void AIInstance::CollectGarbage()
 
 /* static */ AIStorage *AIInstance::GetStorage()
 {
-	assert(IsValidCompanyID(_current_company) && !IsHumanCompany(_current_company));
+	assert(Company::IsValidID(_current_company) && !IsHumanCompany(_current_company));
 	return Company::Get(_current_company)->ai_instance->storage;
 }
 

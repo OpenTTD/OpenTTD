@@ -421,11 +421,6 @@ public:
 	void DebugCheckSanity() const;
 };
 
-static inline bool IsValidOrderListID(uint index)
-{
-	return index < OrderList::GetPoolSize() && OrderList::Get(index)->IsValid();
-}
-
 #define FOR_ALL_ORDERS_FROM(order, start) for (order = Order::Get(start); order != NULL; order = (order->index + 1U < Order::GetPoolSize()) ? Order::Get(order->index + 1U) : NULL) if (order->IsValid())
 #define FOR_ALL_ORDERS(order) FOR_ALL_ORDERS_FROM(order, 0)
 

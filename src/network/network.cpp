@@ -97,7 +97,7 @@ extern void StateGameLoop();
  */
 NetworkClientInfo *NetworkFindClientInfoFromIndex(ClientIndex index)
 {
-	return IsValidNetworkClientInfoIndex(index) ? NetworkClientInfo::Get(index) : NULL;
+	return NetworkClientInfo::IsValidID(index) ? NetworkClientInfo::Get(index) : NULL;
 }
 
 /**
@@ -339,7 +339,7 @@ static uint NetworkCountActiveClients()
 	uint count = 0;
 
 	FOR_ALL_CLIENT_INFOS(ci) {
-		if (IsValidCompanyID(ci->client_playas)) count++;
+		if (Company::IsValidID(ci->client_playas)) count++;
 	}
 
 	return count;

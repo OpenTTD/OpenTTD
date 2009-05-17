@@ -608,7 +608,7 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1
 	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES, 0);
 	bool nothing_to_do = true;
 
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
 	Vehicle *v = Vehicle::Get(p1);
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 	if (!v->IsInDepot()) return CMD_ERROR;

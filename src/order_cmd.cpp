@@ -416,7 +416,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	VehicleOrderID sel_ord = GB(p1, 16, 16);
 	Order new_order(p2);
 
-	if (!IsValidVehicleID(veh)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(veh)) return CMD_ERROR;
 
 	v = Vehicle::Get(veh);
 
@@ -426,7 +426,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	 * and has the correct flags if any */
 	switch (new_order.GetType()) {
 		case OT_GOTO_STATION: {
-			if (!IsValidStationID(new_order.GetDestination())) return CMD_ERROR;
+			if (!Station::IsValidID(new_order.GetDestination())) return CMD_ERROR;
 
 			const Station *st = Station::Get(new_order.GetDestination());
 
@@ -472,7 +472,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		case OT_GOTO_DEPOT: {
 			if (new_order.GetDepotActionType() != ODATFB_NEAREST_DEPOT) {
 				if (v->type == VEH_AIRCRAFT) {
-					if (!IsValidStationID(new_order.GetDestination())) return CMD_ERROR;
+					if (!Station::IsValidID(new_order.GetDestination())) return CMD_ERROR;
 
 					const Station *st = Station::Get(new_order.GetDestination());
 
@@ -482,7 +482,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 						return CMD_ERROR;
 					}
 				} else {
-					if (!IsValidDepotID(new_order.GetDestination())) return CMD_ERROR;
+					if (!Depot::IsValidID(new_order.GetDestination())) return CMD_ERROR;
 
 					const Depot *dp = Depot::Get(new_order.GetDestination());
 
@@ -518,7 +518,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		case OT_GOTO_WAYPOINT: {
 			if (v->type != VEH_TRAIN) return CMD_ERROR;
 
-			if (!IsValidWaypointID(new_order.GetDestination())) return CMD_ERROR;
+			if (!Waypoint::IsValidID(new_order.GetDestination())) return CMD_ERROR;
 			const Waypoint *wp = Waypoint::Get(new_order.GetDestination());
 
 			if (!CheckOwnership(wp->owner)) return CMD_ERROR;
@@ -665,7 +665,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	VehicleOrderID sel_ord = p2;
 	Order *order;
 
-	if (!IsValidVehicleID(veh_id)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(veh_id)) return CMD_ERROR;
 
 	v = Vehicle::Get(veh_id);
 
@@ -732,7 +732,7 @@ CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	VehicleID veh_id = p1;
 	VehicleOrderID sel_ord = p2;
 
-	if (!IsValidVehicleID(veh_id)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(veh_id)) return CMD_ERROR;
 
 	v = Vehicle::Get(veh_id);
 
@@ -772,7 +772,7 @@ CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	VehicleOrderID moving_order = GB(p2,  0, 16);
 	VehicleOrderID target_order = GB(p2, 16, 16);
 
-	if (!IsValidVehicleID(veh)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(veh)) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::Get(veh);
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
@@ -852,7 +852,7 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	uint16 data             = GB(p2, 4, 11);
 
 	if (mof >= MOF_END) return CMD_ERROR;
-	if (!IsValidVehicleID(veh)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(veh)) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::Get(veh);
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
@@ -1076,7 +1076,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	VehicleID veh_src = GB(p1, 16, 16);
 	VehicleID veh_dst = GB(p1,  0, 16);
 
-	if (!IsValidVehicleID(veh_dst)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(veh_dst)) return CMD_ERROR;
 
 	dst = Vehicle::Get(veh_dst);
 
@@ -1086,7 +1086,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		case CO_SHARE: {
 			Vehicle *src;
 
-			if (!IsValidVehicleID(veh_src)) return CMD_ERROR;
+			if (!Vehicle::IsValidID(veh_src)) return CMD_ERROR;
 
 			src = Vehicle::Get(veh_src);
 
@@ -1132,7 +1132,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			Vehicle *src;
 			int delta;
 
-			if (!IsValidVehicleID(veh_src)) return CMD_ERROR;
+			if (!Vehicle::IsValidID(veh_src)) return CMD_ERROR;
 
 			src = Vehicle::Get(veh_src);
 
@@ -1208,7 +1208,7 @@ CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	CargoID cargo = GB(p2, 0, 8);
 	byte subtype  = GB(p2, 8, 8);
 
-	if (!IsValidVehicleID(veh)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(veh)) return CMD_ERROR;
 
 	v = Vehicle::Get(veh);
 
@@ -1361,7 +1361,7 @@ CommandCost CmdRestoreOrderIndex(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	VehicleOrderID cur_ord = GB(p2,  0, 16);
 	uint16 serv_int = GB(p2, 16, 16);
 
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
 
 	v = Vehicle::Get(p1);
 

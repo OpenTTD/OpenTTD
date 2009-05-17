@@ -509,7 +509,7 @@ void Vehicle::PreDestructor()
 {
 	if (CleaningPool()) return;
 
-	if (IsValidStationID(this->last_station_visited)) {
+	if (Station::IsValidID(this->last_station_visited)) {
 		Station::Get(this->last_station_visited)->loading_vehicles.remove(this);
 
 		HideFillingPercent(&this->fill_percent_te_id);
@@ -520,7 +520,7 @@ void Vehicle::PreDestructor()
 		if (this->owner == _local_company) InvalidateAutoreplaceWindow(this->engine_type, this->group_id);
 
 		DeleteGroupHighlightOfVehicle(this);
-		if (IsValidGroupID(this->group_id)) Group::Get(this->group_id)->num_engines[this->engine_type]--;
+		if (Group::IsValidID(this->group_id)) Group::Get(this->group_id)->num_engines[this->engine_type]--;
 		if (this->IsPrimaryVehicle()) DecreaseGroupNumVehicle(this->group_id);
 	}
 
@@ -1283,7 +1283,7 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 {
 	assert(IsCompanyBuildableVehicleType(type));
 
-	if (!IsValidCompanyID(_local_company)) return false;
+	if (!Company::IsValidID(_local_company)) return false;
 	if (_settings_client.gui.always_build_infrastructure) return true;
 
 	UnitID max;

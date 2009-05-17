@@ -314,7 +314,7 @@ CommandCost CmdSellRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 {
 	Vehicle *v;
 
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
 
 	v = Vehicle::Get(p1);
 
@@ -423,7 +423,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1
 		return SendAllVehiclesToDepot(VEH_ROAD, flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), p1);
 	}
 
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::Get(p1);
 
@@ -442,7 +442,7 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 {
 	Vehicle *v;
 
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
 
 	v = Vehicle::Get(p1);
 
@@ -1976,7 +1976,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	uint16 capacity = CALLBACK_FAILED;
 	uint total_capacity = 0;
 
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
 
 	v = Vehicle::Get(p1);
 

@@ -880,7 +880,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 	if (!reuse) station_to_join = INVALID_STATION;
 	bool distant_join = (station_to_join != INVALID_STATION);
 
-	if (distant_join && (!_settings_game.station.distant_join_stations || !IsValidStationID(station_to_join))) return CMD_ERROR;
+	if (distant_join && (!_settings_game.station.distant_join_stations || !Station::IsValidID(station_to_join))) return CMD_ERROR;
 
 	if (h_org > _settings_game.station.station_spread || w_org > _settings_game.station.station_spread) return CMD_ERROR;
 
@@ -958,7 +958,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 			st->town = ClosestTownFromTile(tile_org, UINT_MAX);
 			st->string_id = GenerateStationName(st, tile_org, STATIONNAMING_RAIL);
 
-			if (IsValidCompanyID(_current_company)) {
+			if (Company::IsValidID(_current_company)) {
 				SetBit(st->town->have_ratings, _current_company);
 			}
 		}
@@ -1365,7 +1365,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	Owner tram_owner = _current_company;
 	Owner road_owner = _current_company;
 
-	if (distant_join && (!_settings_game.station.distant_join_stations || !IsValidStationID(station_to_join))) return CMD_ERROR;
+	if (distant_join && (!_settings_game.station.distant_join_stations || !Station::IsValidID(station_to_join))) return CMD_ERROR;
 
 	if (!AreValidRoadTypes(rts) || !HasRoadTypesAvail(_current_company, rts)) return CMD_ERROR;
 
@@ -1454,7 +1454,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			st->town = ClosestTownFromTile(tile, UINT_MAX);
 			st->string_id = GenerateStationName(st, tile, STATIONNAMING_ROAD);
 
-			if (IsValidCompanyID(_current_company)) {
+			if (Company::IsValidID(_current_company)) {
 				SetBit(st->town->have_ratings, _current_company);
 			}
 			st->sign.width_1 = 0;
@@ -1817,7 +1817,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (!reuse) station_to_join = INVALID_STATION;
 	bool distant_join = (station_to_join != INVALID_STATION);
 
-	if (distant_join && (!_settings_game.station.distant_join_stations || !IsValidStationID(station_to_join))) return CMD_ERROR;
+	if (distant_join && (!_settings_game.station.distant_join_stations || !Station::IsValidID(station_to_join))) return CMD_ERROR;
 
 	/* Check if a valid, buildable airport was chosen for construction */
 	if (p1 >= lengthof(_airport_sections) || !HasBit(GetValidAirports(), p1)) return CMD_ERROR;
@@ -1903,7 +1903,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			st->town = t;
 			st->string_id = GenerateStationName(st, tile, !(afc->flags & AirportFTAClass::AIRPLANES) ? STATIONNAMING_HELIPORT : STATIONNAMING_AIRPORT);
 
-			if (IsValidCompanyID(_current_company)) {
+			if (Company::IsValidID(_current_company)) {
 				SetBit(st->town->have_ratings, _current_company);
 			}
 			st->sign.width_1 = 0;
@@ -2038,7 +2038,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		st->town = ClosestTownFromTile(tile, UINT_MAX);
 		st->string_id = GenerateStationName(st, tile, STATIONNAMING_BUOY);
 
-		if (IsValidCompanyID(_current_company)) {
+		if (Company::IsValidID(_current_company)) {
 			SetBit(st->town->have_ratings, _current_company);
 		}
 		st->sign.width_1 = 0;
@@ -2087,7 +2087,7 @@ bool HasStationInUse(StationID station, CompanyID company)
 static CommandCost RemoveBuoy(Station *st, DoCommandFlag flags)
 {
 	/* XXX: strange stuff */
-	if (!IsValidCompanyID(_current_company)) return_cmd_error(INVALID_STRING_ID);
+	if (!Company::IsValidID(_current_company)) return_cmd_error(INVALID_STRING_ID);
 
 	TileIndex tile = st->dock_tile;
 
@@ -2139,7 +2139,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (!reuse) station_to_join = INVALID_STATION;
 	bool distant_join = (station_to_join != INVALID_STATION);
 
-	if (distant_join && (!_settings_game.station.distant_join_stations || !IsValidStationID(station_to_join))) return CMD_ERROR;
+	if (distant_join && (!_settings_game.station.distant_join_stations || !Station::IsValidID(station_to_join))) return CMD_ERROR;
 
 	DiagDirection direction = GetInclinedSlopeDirection(GetTileSlope(tile, NULL));
 	if (direction == INVALID_DIAGDIR) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
@@ -2208,7 +2208,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			st->town = ClosestTownFromTile(tile, UINT_MAX);
 			st->string_id = GenerateStationName(st, tile, STATIONNAMING_DOCK);
 
-			if (IsValidCompanyID(_current_company)) {
+			if (Company::IsValidID(_current_company)) {
 				SetBit(st->town->have_ratings, _current_company);
 			}
 		}
@@ -2294,7 +2294,7 @@ static void DrawTile_Station(TileInfo *ti)
 	Owner owner = GetTileOwner(ti->tile);
 
 	SpriteID palette;
-	if (IsValidCompanyID(owner)) {
+	if (Company::IsValidID(owner)) {
 		palette = COMPANY_SPRITE_COLOUR(owner);
 	} else {
 		/* Some stations are not owner by a company, namely oil rigs */
@@ -2750,7 +2750,7 @@ static void UpdateStationRating(Station *st)
 				(rating += 13, true);
 			}
 
-			if (IsValidCompanyID(st->owner) && HasBit(st->town->statues, st->owner)) rating += 26;
+			if (Company::IsValidID(st->owner) && HasBit(st->town->statues, st->owner)) rating += 26;
 
 			{
 				byte days = ge->days_since_pickup;
@@ -2842,7 +2842,7 @@ void OnTick_Station()
 	uint i = _station_tick_ctr;
 	if (++_station_tick_ctr > GetMaxStationIndex()) _station_tick_ctr = 0;
 
-	if (IsValidStationID(i)) StationHandleBigTick(Station::Get(i));
+	if (Station::IsValidID(i)) StationHandleBigTick(Station::Get(i));
 
 	Station *st;
 	FOR_ALL_STATIONS(st) {
@@ -2911,7 +2911,7 @@ static bool IsUniqueStationName(const char *name)
  */
 CommandCost CmdRenameStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsValidStationID(p1)) return CMD_ERROR;
+	if (!Station::IsValidID(p1)) return CMD_ERROR;
 
 	Station *st = Station::Get(p1);
 	if (!CheckOwnership(st->owner)) return CMD_ERROR;

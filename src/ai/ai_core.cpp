@@ -28,7 +28,7 @@
 
 /* static */ void AI::StartNew(CompanyID company)
 {
-	assert(IsValidCompanyID(company));
+	assert(Company::IsValidID(company));
 
 	/* Clients shouldn't start AIs */
 	if (_networking && !_network_server) return;
@@ -74,7 +74,7 @@
 	 * Effectively collecting garbage once every two months per AI. */
 	if ((AI::frame_counter & 255) == 0) {
 		CompanyID cid = (CompanyID)GB(AI::frame_counter, 8, 4);
-		if (IsValidCompanyID(cid) && !IsHumanCompany(cid)) Company::Get(cid)->ai_instance->CollectGarbage();
+		if (Company::IsValidID(cid) && !IsHumanCompany(cid)) Company::Get(cid)->ai_instance->CollectGarbage();
 	}
 
 	_current_company = OWNER_NONE;
@@ -178,7 +178,7 @@
 	}
 
 	/* Only AIs can have an event-queue */
-	if (!IsValidCompanyID(company) || IsHumanCompany(company)) {
+	if (!Company::IsValidID(company) || IsHumanCompany(company)) {
 		event->Release();
 		return;
 	}
@@ -227,7 +227,7 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 /* static */ void AI::Save(CompanyID company)
 {
 	if (!_networking || _network_server) {
-		assert(IsValidCompanyID(company));
+		assert(Company::IsValidID(company));
 		assert(Company::Get(company)->ai_instance != NULL);
 
 		CompanyID old_company = _current_company;
@@ -242,7 +242,7 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 /* static */ void AI::Load(CompanyID company, int version)
 {
 	if (!_networking || _network_server) {
-		assert(IsValidCompanyID(company));
+		assert(Company::IsValidID(company));
 		assert(Company::Get(company)->ai_instance != NULL);
 
 		CompanyID old_company = _current_company;
@@ -259,7 +259,7 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	/* Find the first company which doesn't exist yet */
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-		if (!IsValidCompanyID(c)) return AIConfig::GetConfig(c)->GetSetting("start_date");
+		if (!Company::IsValidID(c)) return AIConfig::GetConfig(c)->GetSetting("start_date");
 	}
 
 	/* Currently no AI can be started, check again in a year. */

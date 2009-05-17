@@ -66,7 +66,7 @@ CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
  */
 CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsValidSignID(p1)) return CMD_ERROR;
+	if (!Sign::IsValidID(p1)) return CMD_ERROR;
 
 	/* Rename the signs when empty, otherwise remove it */
 	if (!StrEmpty(text)) {

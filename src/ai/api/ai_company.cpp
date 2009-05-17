@@ -19,7 +19,7 @@
 {
 	if (company == COMPANY_SELF) return (CompanyID)((byte)_current_company);
 
-	return ::IsValidCompanyID((::CompanyID)company) ? company : COMPANY_INVALID;
+	return ::Company::IsValidID((::CompanyID)company) ? company : COMPANY_INVALID;
 }
 
 /* static */ bool AICompany::IsMine(AICompany::CompanyID company)

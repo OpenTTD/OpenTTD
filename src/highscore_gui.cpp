@@ -93,7 +93,7 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 
 		this->SetupHighScoreEndWindow(&x, &y);
 
-		if (!IsValidCompanyID(_local_company)) return;
+		if (!Company::IsValidID(_local_company)) return;
 
 		c = Company::Get(_local_company);
 		/* We need to get performance from last year because the image is shown
@@ -198,7 +198,7 @@ void ShowHighscoreTable(int difficulty, int8 ranking)
 void ShowEndGameChart()
 {
 	/* Dedicated server doesn't need the highscore window and neither does -v null. */
-	if (_network_dedicated || (!_networking && !IsValidCompanyID(_local_company))) return;
+	if (_network_dedicated || (!_networking && !Company::IsValidID(_local_company))) return;
 
 	HideVitalWindows();
 	DeleteWindowByClass(WC_ENDSCREEN);

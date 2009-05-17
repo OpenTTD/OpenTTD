@@ -1891,7 +1891,7 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1,
 
 	/* Check if buying shares is allowed (protection against modified clients)
 	 * Cannot buy own shares */
-	if (!IsValidCompanyID((CompanyID)p1) || !_settings_game.economy.allow_shares || _current_company == (CompanyID)p1) return CMD_ERROR;
+	if (!Company::IsValidID((CompanyID)p1) || !_settings_game.economy.allow_shares || _current_company == (CompanyID)p1) return CMD_ERROR;
 
 	Company *c = Company::Get((CompanyID)p1);
 
@@ -1934,7 +1934,7 @@ CommandCost CmdSellShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1
 {
 	/* Check if selling shares is allowed (protection against modified clients)
 	 * Cannot sell own shares */
-	if (!IsValidCompanyID((CompanyID)p1) || !_settings_game.economy.allow_shares || _current_company == (CompanyID)p1) return CMD_ERROR;
+	if (!Company::IsValidID((CompanyID)p1) || !_settings_game.economy.allow_shares || _current_company == (CompanyID)p1) return CMD_ERROR;
 
 	Company *c = Company::Get((CompanyID)p1);
 
@@ -1968,7 +1968,7 @@ CommandCost CmdBuyCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	CompanyID cid = (CompanyID)p1;
 
 	/* Disable takeovers in multiplayer games */
-	if (!IsValidCompanyID(cid) || _networking) return CMD_ERROR;
+	if (!Company::IsValidID(cid) || _networking) return CMD_ERROR;
 
 	/* Do not allow companies to take over themselves */
 	if (cid == _current_company) return CMD_ERROR;

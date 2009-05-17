@@ -466,11 +466,11 @@ static inline void ResetSets()
  *
  * @param owner company whose signals we are updating
  * @return state of the first block from _globset
- * @pre IsValidCompanyID(owner)
+ * @pre Company::IsValidID(owner)
  */
 static SigSegState UpdateSignalsInBuffer(Owner owner)
 {
-	assert(IsValidCompanyID(owner));
+	assert(Company::IsValidID(owner));
 
 	bool first = true;  // first block?
 	SigSegState state = SIGSEG_FREE; // value to return

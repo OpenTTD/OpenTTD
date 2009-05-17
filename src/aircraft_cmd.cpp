@@ -440,7 +440,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  */
 CommandCost CmdSellAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::Get(p1);
 
@@ -494,7 +494,7 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, DoCommandFlag flags, uint32 
 		return SendAllVehiclesToDepot(VEH_AIRCRAFT, flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), p1);
 	}
 
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::Get(p1);
 
@@ -518,7 +518,7 @@ CommandCost CmdRefitAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 {
 	byte new_subtype = GB(p2, 8, 8);
 
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::Get(p1);
 
@@ -889,7 +889,7 @@ static byte AircraftGetEntryPoint(const Vehicle *v, const AirportFTAClass *apc)
 	 * or it will simply crash in next tick */
 	TileIndex tile = 0;
 
-	if (IsValidStationID(v->u.air.targetairport)) {
+	if (Station::IsValidID(v->u.air.targetairport)) {
 		const Station *st = Station::Get(v->u.air.targetairport);
 		/* Make sure we don't go to INVALID_TILE if the airport has been removed. */
 		tile = (st->airport_tile != INVALID_TILE) ? st->airport_tile : st->xy;
@@ -921,7 +921,7 @@ static bool AircraftController(Vehicle *v)
 	int count;
 
 	/* NULL if station is invalid */
-	const Station *st = IsValidStationID(v->u.air.targetairport) ? Station::Get(v->u.air.targetairport) : NULL;
+	const Station *st = Station::IsValidID(v->u.air.targetairport) ? Station::Get(v->u.air.targetairport) : NULL;
 	/* INVALID_TILE if there is no station */
 	TileIndex tile = INVALID_TILE;
 	if (st != NULL) {
@@ -2051,7 +2051,7 @@ Station *GetTargetAirportIfValid(const Vehicle *v)
 
 	StationID sid = v->u.air.targetairport;
 
-	if (!IsValidStationID(sid)) return NULL;
+	if (!Station::IsValidID(sid)) return NULL;
 
 	Station *st = Station::Get(sid);
 

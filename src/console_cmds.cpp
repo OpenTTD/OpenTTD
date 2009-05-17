@@ -635,7 +635,7 @@ DEF_CONSOLE_CMD(ConJoinCompany)
 	CompanyID company_id = (CompanyID)(atoi(argv[1]) <= MAX_COMPANIES ? atoi(argv[1]) - 1 : atoi(argv[1]));
 
 	/* Check we have a valid company id! */
-	if (!IsValidCompanyID(company_id) && company_id != COMPANY_SPECTATOR) {
+	if (!Company::IsValidID(company_id) && company_id != COMPANY_SPECTATOR) {
 		IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
 		return true;
 	}
@@ -688,7 +688,7 @@ DEF_CONSOLE_CMD(ConMoveClient)
 		return true;
 	}
 
-	if (!IsValidCompanyID(company_id) && company_id != COMPANY_SPECTATOR) {
+	if (!Company::IsValidID(company_id) && company_id != COMPANY_SPECTATOR) {
 		IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
 		return true;
 	}
@@ -729,7 +729,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 	index = (CompanyID)(atoi(argv[1]) - 1);
 
 	/* Check valid range */
-	if (!IsValidCompanyID(index)) {
+	if (!Company::IsValidID(index)) {
 		IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
 		return true;
 	}
@@ -1049,7 +1049,7 @@ DEF_CONSOLE_CMD(ConReloadAI)
 	}
 
 	CompanyID company_id = (CompanyID)(atoi(argv[1]) - 1);
-	if (!IsValidCompanyID(company_id)) {
+	if (!Company::IsValidID(company_id)) {
 		IConsolePrintF(CC_DEFAULT, "Unknown company. Company range is between 1 and %d.", MAX_COMPANIES);
 		return true;
 	}
@@ -1086,7 +1086,7 @@ DEF_CONSOLE_CMD(ConStopAI)
 	}
 
 	CompanyID company_id = (CompanyID)(atoi(argv[1]) - 1);
-	if (!IsValidCompanyID(company_id)) {
+	if (!Company::IsValidID(company_id)) {
 		IConsolePrintF(CC_DEFAULT, "Unknown company. Company range is between 1 and %d.", MAX_COMPANIES);
 		return true;
 	}
@@ -1464,7 +1464,7 @@ DEF_CONSOLE_CMD(ConSayCompany)
 	if (argc != 3) return false;
 
 	CompanyID company_id = (CompanyID)(atoi(argv[1]) - 1);
-	if (!IsValidCompanyID(company_id)) {
+	if (!Company::IsValidID(company_id)) {
 		IConsolePrintF(CC_DEFAULT, "Unknown company. Company range is between 1 and %d.", MAX_COMPANIES);
 		return true;
 	}
@@ -1508,7 +1508,7 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 		return true;
 	}
 
-	if (!IsValidCompanyID(_local_company)) {
+	if (!Company::IsValidID(_local_company)) {
 		IConsoleError("You have to own a company to make use of this command.");
 		return false;
 	}

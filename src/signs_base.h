@@ -41,11 +41,6 @@ static inline SignID GetMaxSignIndex()
 	return Sign::GetPoolSize() - 1;
 }
 
-static inline bool IsValidSignID(uint index)
-{
-	return index < Sign::GetPoolSize() && Sign::Get(index)->IsValid();
-}
-
 #define FOR_ALL_SIGNS_FROM(ss, start) for (ss = Sign::Get(start); ss != NULL; ss = (ss->index + 1U < Sign::GetPoolSize()) ? Sign::Get(ss->index + 1U) : NULL) if (ss->IsValid())
 #define FOR_ALL_SIGNS(ss) FOR_ALL_SIGNS_FROM(ss, 0)
 

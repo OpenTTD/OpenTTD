@@ -76,7 +76,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 
 	/* Add the local player (if not dedicated) */
 	const NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
-	if (ci != NULL && IsValidCompanyID(ci->client_playas)) {
+	if (ci != NULL && Company::IsValidID(ci->client_playas)) {
 		strecpy(clients[ci->client_playas], ci->client_name, lastof(clients[ci->client_playas]));
 	}
 
@@ -86,7 +86,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		NetworkGetClientName(client_name, sizeof(client_name), csi);
 
 		ci = csi->GetInfo();
-		if (ci != NULL && IsValidCompanyID(ci->client_playas)) {
+		if (ci != NULL && Company::IsValidID(ci->client_playas)) {
 			if (!StrEmpty(clients[ci->client_playas])) {
 				strecat(clients[ci->client_playas], ", ", lastof(clients[ci->client_playas]));
 			}
@@ -632,7 +632,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
 	if (!StrEmpty(_settings_client.network.server_password)) {
 		SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_GAME_PASSWORD);
 	} else {
-		if (IsValidCompanyID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
+		if (Company::IsValidID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
 			SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_COMPANY_PASSWORD);
 		} else {
 			SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
@@ -686,7 +686,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 			}
 			break;
 		default: // Join another company (companies 1-8 (index 0-7))
-			if (!IsValidCompanyID(playas) || !IsHumanCompany(playas)) {
+			if (!Company::IsValidID(playas) || !IsHumanCompany(playas)) {
 				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_COMPANY_MISMATCH);
 				return;
 			}
@@ -710,7 +710,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	ci->client_lang = client_lang;
 
 	/* Make sure companies to which people try to join are not autocleaned */
-	if (IsValidCompanyID(playas)) _network_company_states[playas].months_empty = 0;
+	if (Company::IsValidID(playas)) _network_company_states[playas].months_empty = 0;
 
 	if (_grfconfig == NULL) {
 		RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)(cs, NULL);
@@ -738,7 +738,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 
 		ci = cs->GetInfo();
 
-		if (IsValidCompanyID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
+		if (Company::IsValidID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
 			SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_COMPANY_PASSWORD);
 			return;
 		}
@@ -872,7 +872,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		return;
 	}
 
-	if ((GetCommandFlags(cp.cmd) & CMD_SPECTATOR) == 0 && !IsValidCompanyID(cp.company) && ci->client_id != CLIENT_ID_SERVER) {
+	if ((GetCommandFlags(cp.cmd) & CMD_SPECTATOR) == 0 && !Company::IsValidID(cp.company) && ci->client_id != CLIENT_ID_SERVER) {
 		IConsolePrintF(CC_ERROR, "WARNING: spectator issueing command from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_KICKED);
 		return;
@@ -1100,7 +1100,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		if (ci != NULL && show_local) {
 			if (from_id == CLIENT_ID_SERVER) {
 				char name[NETWORK_NAME_LENGTH];
-				StringID str = IsValidCompanyID(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
+				StringID str = Company::IsValidID(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
 				SetDParam(0, ci_to->client_playas);
 				GetString(name, str, lastof(name));
 				NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci_own->client_playas), true, name, msg, data);
@@ -1147,7 +1147,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 	NetworkClientInfo *ci = cs->GetInfo();
 	switch (action) {
 		case NETWORK_ACTION_GIVE_MONEY:
-			if (!IsValidCompanyID(ci->client_playas)) break;
+			if (!Company::IsValidID(ci->client_playas)) break;
 			/* Fall-through */
 		case NETWORK_ACTION_CHAT:
 		case NETWORK_ACTION_CHAT_CLIENT:
@@ -1175,7 +1175,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
 	p->Recv_string(password, sizeof(password));
 	ci = cs->GetInfo();
 
-	if (IsValidCompanyID(ci->client_playas)) {
+	if (Company::IsValidID(ci->client_playas)) {
 		strecpy(_network_company_states[ci->client_playas].password, password, lastof(_network_company_states[ci->client_playas].password));
 		NetworkServerUpdateCompanyPassworded(ci->client_playas, !StrEmpty(_network_company_states[ci->client_playas].password));
 	}
@@ -1235,7 +1235,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MOVE)
 	CompanyID company_id = (Owner)p->Recv_uint8();
 
 	/* Check if the company is valid */
-	if (!IsValidCompanyID(company_id) && company_id != COMPANY_SPECTATOR) return;
+	if (!Company::IsValidID(company_id) && company_id != COMPANY_SPECTATOR) return;
 	/* We don't allow moving to AI companies */
 	if (company_id != COMPANY_SPECTATOR && Company::Get(company_id)->is_ai) return;
 
@@ -1364,7 +1364,7 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 
 	/* Go through all vehicles and count the type of vehicles */
 	FOR_ALL_VEHICLES(v) {
-		if (!IsValidCompanyID(v->owner) || !v->IsPrimaryVehicle()) continue;
+		if (!Company::IsValidID(v->owner) || !v->IsPrimaryVehicle()) continue;
 		byte type = 0;
 		switch (v->type) {
 			case VEH_TRAIN: type = 0; break;
@@ -1378,7 +1378,7 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 
 	/* Go through all stations and count the types of stations */
 	FOR_ALL_STATIONS(s) {
-		if (IsValidCompanyID(s->owner)) {
+		if (Company::IsValidID(s->owner)) {
 			NetworkCompanyStats *npi = &stats[s->owner];
 
 			if (s->facilities & FACIL_TRAIN)      npi->num_station[0]++;
@@ -1431,12 +1431,12 @@ static void NetworkAutoCleanCompanies()
 
 	/* Detect the active companies */
 	FOR_ALL_CLIENT_INFOS(ci) {
-		if (IsValidCompanyID(ci->client_playas)) clients_in_company[ci->client_playas] = true;
+		if (Company::IsValidID(ci->client_playas)) clients_in_company[ci->client_playas] = true;
 	}
 
 	if (!_network_dedicated) {
 		ci = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
-		if (IsValidCompanyID(ci->client_playas)) clients_in_company[ci->client_playas] = true;
+		if (Company::IsValidID(ci->client_playas)) clients_in_company[ci->client_playas] = true;
 	}
 
 	if (_settings_client.network.autoclean_novehicles != 0) {
@@ -1444,7 +1444,7 @@ static void NetworkAutoCleanCompanies()
 
 		const Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
-			if (!IsValidCompanyID(v->owner) || !v->IsPrimaryVehicle()) continue;
+			if (!Company::IsValidID(v->owner) || !v->IsPrimaryVehicle()) continue;
 			vehicles_in_company[v->owner]++;
 		}
 	}
@@ -1710,7 +1710,7 @@ void NetworkServerShowStatusToConsole()
 		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
 		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s  unique-id: '%s'",
 			cs->client_id, ci->client_name, status, lag,
-			ci->client_playas + (IsValidCompanyID(ci->client_playas) ? 1 : 0),
+			ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
 			GetClientIP(ci), ci->unique_id);
 	}
 }

@@ -433,7 +433,7 @@ static const WindowDesc _company_finances_small_desc(
  */
 static void DoShowCompanyFinances(CompanyID company, bool show_small, bool show_stickied, int top, int left)
 {
-	if (!IsValidCompanyID(company)) return;
+	if (!Company::IsValidID(company)) return;
 
 	if (BringWindowToFrontById(WC_FINANCES, company)) return;
 	new CompanyFinancesWindow(show_small ? &_company_finances_small_desc : &_company_finances_desc, company, show_small, show_stickied, top, left);
@@ -1381,7 +1381,7 @@ static const WindowDesc _select_company_manager_face_adv_desc(
  */
 static void DoSelectCompanyManagerFace(Window *parent, bool adv, int top, int left)
 {
-	if (!IsValidCompanyID((CompanyID)parent->window_number)) return;
+	if (!Company::IsValidID((CompanyID)parent->window_number)) return;
 
 	if (BringWindowToFrontById(WC_COMPANY_MANAGER_FACE, parent->window_number)) return;
 	new SelectCompanyManagerFaceWindow(adv ? &_select_company_manager_face_adv_desc : &_select_company_manager_face_desc, parent, adv, top, left); // simple or advanced window
@@ -1782,7 +1782,7 @@ static const WindowDesc _company_desc(
 
 void ShowCompany(CompanyID company)
 {
-	if (!IsValidCompanyID(company)) return;
+	if (!Company::IsValidID(company)) return;
 
 	AllocateWindowDescFront<CompanyWindow>(&_company_desc, company);
 }

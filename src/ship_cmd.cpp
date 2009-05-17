@@ -821,7 +821,7 @@ CommandCost CmdSellShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p
 {
 	Vehicle *v;
 
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
 
 	v = Vehicle::Get(p1);
 
@@ -870,7 +870,7 @@ CommandCost CmdSendShipToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		return SendAllVehiclesToDepot(VEH_SHIP, flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), p1);
 	}
 
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::Get(p1);
 
@@ -898,7 +898,7 @@ CommandCost CmdRefitShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	byte new_subtype = GB(p2, 8, 8);
 	uint16 capacity = CALLBACK_FAILED;
 
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
 
 	v = Vehicle::Get(p1);
 

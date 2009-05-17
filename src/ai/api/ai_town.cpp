@@ -21,7 +21,7 @@
 
 /* static */ bool AITown::IsValidTown(TownID town_id)
 {
-	return ::IsValidTownID(town_id);
+	return ::Town::IsValidID(town_id);
 }
 
 /* static */ char *AITown::GetName(TownID town_id)

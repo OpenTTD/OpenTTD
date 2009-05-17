@@ -219,11 +219,6 @@ static inline uint GetNumStations()
 	return Station::GetPoolSize();
 }
 
-static inline bool IsValidStationID(StationID index)
-{
-	return index < Station::GetPoolSize() && Station::Get(index)->IsValid();
-}
-
 #define FOR_ALL_STATIONS_FROM(st, start) for (st = Station::Get(start); st != NULL; st = (st->index + 1U < Station::GetPoolSize()) ? Station::Get(st->index + 1U) : NULL) if (st->IsValid())
 #define FOR_ALL_STATIONS(st) FOR_ALL_STATIONS_FROM(st, 0)
 

@@ -57,7 +57,7 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (!_settings_game.order.timetabling) return CMD_ERROR;
 
 	VehicleID veh = GB(p1, 0, 16);
-	if (!IsValidVehicleID(veh)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(veh)) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::Get(veh);
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
@@ -115,7 +115,7 @@ CommandCost CmdSetVehicleOnTime(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	if (!_settings_game.order.timetabling) return CMD_ERROR;
 
 	VehicleID veh = GB(p1, 0, 16);
-	if (!IsValidVehicleID(veh)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(veh)) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::Get(veh);
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
@@ -143,7 +143,7 @@ CommandCost CmdAutofillTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	if (!_settings_game.order.timetabling) return CMD_ERROR;
 
 	VehicleID veh = GB(p1, 0, 16);
-	if (!IsValidVehicleID(veh)) return CMD_ERROR;
+	if (!Vehicle::IsValidID(veh)) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::Get(veh);
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;

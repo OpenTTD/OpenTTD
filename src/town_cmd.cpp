@@ -535,7 +535,7 @@ static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
 	_cleared_town_rating += rating;
 	Town *t = _cleared_town = GetTownByTile(tile);
 
-	if (IsValidCompanyID(_current_company)) {
+	if (Company::IsValidID(_current_company)) {
 		if (rating > t->ratings[_current_company] && !(flags & DC_NO_TEST_TOWN_RATING) && !_cheats.magic_bulldozer.value) {
 			SetDParam(0, t->index);
 			return_cmd_error(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS);
@@ -693,7 +693,7 @@ void OnTick_Town()
 		if (++_cur_town_ctr > GetMaxTownIndex())
 			_cur_town_ctr = 0;
 
-		if (IsValidTownID(i)) TownTickHandler(Town::Get(i));
+		if (Town::IsValidID(i)) TownTickHandler(Town::Get(i));
 	}
 }
 
@@ -2278,7 +2278,7 @@ static bool IsUniqueTownName(const char *name)
  */
 CommandCost CmdRenameTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsValidTownID(p1)) return CMD_ERROR;
+	if (!Town::IsValidID(p1)) return CMD_ERROR;
 
 	bool reset = StrEmpty(text);
 
@@ -2553,7 +2553,7 @@ uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
  */
 CommandCost CmdDoTownAction(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsValidTownID(p1) || p2 >= lengthof(_town_action_proc)) return CMD_ERROR;
+	if (!Town::IsValidID(p1) || p2 >= lengthof(_town_action_proc)) return CMD_ERROR;
 
 	Town *t = Town::Get(p1);
 
@@ -2586,12 +2586,12 @@ static void UpdateTownGrowRate(Town *t)
 		if (DistanceSquare(st->xy, t->xy) <= t->squared_town_zone_radius[0]) {
 			if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
 				n++;
-				if (IsValidCompanyID(st->owner)) {
+				if (Company::IsValidID(st->owner)) {
 					int new_rating = t->ratings[st->owner] + RATING_STATION_UP_STEP;
 					t->ratings[st->owner] = min(new_rating, INT16_MAX); // do not let it overflow
 				}
 			} else {
-				if (IsValidCompanyID(st->owner)) {
+				if (Company::IsValidID(st->owner)) {
 					int new_rating = t->ratings[st->owner] + RATING_STATION_DOWN_STEP;
 					t->ratings[st->owner] = max(new_rating, INT16_MIN);
 				}
@@ -2682,7 +2682,7 @@ static void UpdateTownUnwanted(Town *t)
  */
 bool CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags)
 {
-	if (!IsValidCompanyID(_current_company) || (flags & DC_NO_TEST_TOWN_RATING)) return true;
+	if (!Company::IsValidID(_current_company) || (flags & DC_NO_TEST_TOWN_RATING)) return true;
 
 	Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 	if (t == NULL) return true;
@@ -2784,7 +2784,7 @@ void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags)
 {
 	/* if magic_bulldozer cheat is active, town doesn't penaltize for removing stuff */
 	if (t == NULL || (flags & DC_NO_MODIFY_TOWN_RATING) ||
-			!IsValidCompanyID(_current_company) ||
+			!Company::IsValidID(_current_company) ||
 			(_cheats.magic_bulldozer.value && add < 0)) {
 		return;
 	}
@@ -2813,7 +2813,7 @@ void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags)
 bool CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType type)
 {
 	/* if magic_bulldozer cheat is active, town doesn't restrict your destructive actions */
-	if (t == NULL || !IsValidCompanyID(_current_company) ||
+	if (t == NULL || !Company::IsValidID(_current_company) ||
 			_cheats.magic_bulldozer.value || (flags & DC_NO_TEST_TOWN_RATING)) {
 		return true;
 	}

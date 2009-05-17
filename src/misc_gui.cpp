@@ -104,7 +104,7 @@ public:
 	}
 
 	LandInfoWindow(TileIndex tile) : Window(&_land_info_desc) {
-		Company *c = Company::Get(IsValidCompanyID(_local_company) ? _local_company : COMPANY_FIRST);
+		Company *c = Company::Get(Company::IsValidID(_local_company) ? _local_company : COMPANY_FIRST);
 		Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 
 		Money old_money = c->money;

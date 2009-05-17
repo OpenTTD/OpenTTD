@@ -22,11 +22,6 @@ struct Depot : PoolItem<Depot, DepotID, &_Depot_pool> {
 	inline bool IsValid() const { return this->xy != INVALID_TILE; }
 };
 
-static inline bool IsValidDepotID(DepotID index)
-{
-	return index < Depot::GetPoolSize() && Depot::Get(index)->IsValid();
-}
-
 Depot *GetDepotByTile(TileIndex tile);
 
 #define FOR_ALL_DEPOTS_FROM(d, start) for (d = Depot::Get(start); d != NULL; d = (d->index + 1U < Depot::GetPoolSize()) ? Depot::Get(d->index + 1U) : NULL) if (d->IsValid())

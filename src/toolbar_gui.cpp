@@ -222,7 +222,7 @@ static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
 #endif /* ENABLE_NETWORK */
 
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-		if (!IsValidCompanyID(c)) continue;
+		if (!Company::IsValidID(c)) continue;
 		list->push_back(new DropDownListCompanyItem(c, false, HasBit(grey, c)));
 	}
 

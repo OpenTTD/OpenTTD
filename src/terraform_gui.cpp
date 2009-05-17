@@ -352,7 +352,7 @@ static const WindowDesc _terraform_desc(
 
 void ShowTerraformToolbar(Window *link)
 {
-	if (!IsValidCompanyID(_local_company)) return;
+	if (!Company::IsValidID(_local_company)) return;
 
 	Window *w = AllocateWindowDescFront<TerraformToolbarWindow>(&_terraform_desc, 0);
 	if (link == NULL) return;

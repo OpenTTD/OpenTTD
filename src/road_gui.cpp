@@ -723,7 +723,7 @@ static const WindowDesc _build_tramway_desc(
 
 void ShowBuildRoadToolbar(RoadType roadtype)
 {
-	if (!IsValidCompanyID(_local_company)) return;
+	if (!Company::IsValidID(_local_company)) return;
 	_cur_roadtype = roadtype;
 
 	DeleteWindowByClass(WC_BUILD_TOOLBAR);

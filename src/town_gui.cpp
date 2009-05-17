@@ -976,6 +976,6 @@ static const WindowDesc _found_town_desc(
 
 void ShowBuildTownWindow()
 {
-	if (_game_mode != GM_EDITOR && !IsValidCompanyID(_local_company)) return;
+	if (_game_mode != GM_EDITOR && !Company::IsValidID(_local_company)) return;
 	AllocateWindowDescFront<FoundTownWindow>(&_found_town_desc, 0);
 }

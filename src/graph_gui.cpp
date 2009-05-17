@@ -53,7 +53,7 @@ struct GraphLegendWindow : Window {
 	virtual void OnPaint()
 	{
 		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-			if (IsValidCompanyID(c)) continue;
+			if (Company::IsValidID(c)) continue;
 
 			SetBit(_legend_excluded_companies, c);
 			this->RaiseWidget(c + GLW_FIRST_COMPANY);
@@ -401,7 +401,7 @@ public:
 
 		/* Exclude the companies which aren't valid */
 		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-			if (!IsValidCompanyID(c)) SetBit(excluded_companies, c);
+			if (!Company::IsValidID(c)) SetBit(excluded_companies, c);
 		}
 		this->excluded_data = excluded_companies;
 		this->num_vert_lines = 24;
@@ -425,7 +425,7 @@ public:
 
 		int numd = 0;
 		for (CompanyID k = COMPANY_FIRST; k < MAX_COMPANIES; k++) {
-			if (IsValidCompanyID(k)) {
+			if (Company::IsValidID(k)) {
 				c = Company::Get(k);
 				this->colours[numd] = _colour_gradient[c->colour][6];
 				for (int j = this->num_on_x_axis, i = 0; --j >= 0;) {
@@ -1015,7 +1015,7 @@ struct PerformanceRatingDetailWindow : Window {
 	{
 		/* Disable the companies who are not active */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-			this->SetWidgetDisabledState(i + PRW_COMPANY_FIRST, !IsValidCompanyID(i));
+			this->SetWidgetDisabledState(i + PRW_COMPANY_FIRST, !Company::IsValidID(i));
 		}
 
 		this->UpdateCompanyStats();
@@ -1049,7 +1049,7 @@ struct PerformanceRatingDetailWindow : Window {
 		this->DrawWidgets();
 
 		/* Check if the currently selected company is still active. */
-		if (company == INVALID_COMPANY || !IsValidCompanyID(company)) {
+		if (company == INVALID_COMPANY || !Company::IsValidID(company)) {
 			if (company != INVALID_COMPANY) {
 				/* Raise and disable the widget for the previous selection. */
 				this->RaiseWidget(company + PRW_COMPANY_FIRST);
@@ -1060,7 +1060,7 @@ struct PerformanceRatingDetailWindow : Window {
 			}
 
 			for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-				if (IsValidCompanyID(i)) {
+				if (Company::IsValidID(i)) {
 					/* Lower the widget corresponding to this company. */
 					this->LowerWidget(i + PRW_COMPANY_FIRST);
 					this->SetDirty();
@@ -1076,7 +1076,7 @@ struct PerformanceRatingDetailWindow : Window {
 
 		/* Paint the company icons */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-			if (!IsValidCompanyID(i)) {
+			if (!Company::IsValidID(i)) {
 				/* Check if we have the company as an active company */
 				if (!this->IsWidgetDisabled(i + PRW_COMPANY_FIRST)) {
 					/* Bah, company gone :( */

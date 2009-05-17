@@ -16,7 +16,7 @@
 
 /* static */ bool AIGroup::IsValidGroup(GroupID group_id)
 {
-	return ::IsValidGroupID(group_id) && ::Group::Get(group_id)->owner == _current_company;
+	return ::Group::IsValidID(group_id) && ::Group::Get(group_id)->owner == _current_company;
 }
 
 /* static */ AIGroup::GroupID AIGroup::CreateGroup(AIVehicle::VehicleType vehicle_type)

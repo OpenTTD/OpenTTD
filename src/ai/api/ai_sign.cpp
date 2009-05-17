@@ -20,7 +20,7 @@
 
 /* static */ bool AISign::IsValidSign(SignID sign_id)
 {
-	return ::IsValidSignID(sign_id) && ::Sign::Get(sign_id)->owner == _current_company;
+	return ::Sign::IsValidID(sign_id) && ::Sign::Get(sign_id)->owner == _current_company;
 }
 
 /* static */ bool AISign::SetName(SignID sign_id, const char *name)

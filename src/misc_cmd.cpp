@@ -387,7 +387,7 @@ CommandCost CmdGiveMoney(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	/* You can only transfer funds that is in excess of your loan */
 	if (c->money - c->current_loan < amount.GetCost() || amount.GetCost() <= 0) return CMD_ERROR;
-	if (!_networking || !IsValidCompanyID((CompanyID)p2)) return CMD_ERROR;
+	if (!_networking || !Company::IsValidID((CompanyID)p2)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		/* Add money to company */

@@ -19,7 +19,7 @@
 
 /* static */ bool AIVehicle::IsValidVehicle(VehicleID vehicle_id)
 {
-	if (!::IsValidVehicleID(vehicle_id)) return false;
+	if (!::Vehicle::IsValidID(vehicle_id)) return false;
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 	return v->owner == _current_company && (v->IsPrimaryVehicle() || (v->type == VEH_TRAIN && ::IsFreeWagon(v)));
 }

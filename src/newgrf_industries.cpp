@@ -214,7 +214,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 			byte colours;
 			bool is_ai = false;
 
-			if (IsValidCompanyID(industry->founder)) {
+			if (Company::IsValidID(industry->founder)) {
 				const Company *c = Company::Get(industry->founder);
 				const Livery *l = &c->livery[LS_DEFAULT];
 

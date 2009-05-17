@@ -30,11 +30,6 @@ struct Group : PoolItem<Group, GroupID, &_Group_pool> {
 };
 
 
-static inline bool IsValidGroupID(GroupID index)
-{
-	return index < Group::GetPoolSize() && Group::Get(index)->IsValid();
-}
-
 static inline bool IsDefaultGroupID(GroupID index)
 {
 	return index == DEFAULT_GROUP;
@@ -77,12 +72,12 @@ uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e);
 
 static inline void IncreaseGroupNumVehicle(GroupID id_g)
 {
-	if (IsValidGroupID(id_g)) Group::Get(id_g)->num_vehicle++;
+	if (Group::IsValidID(id_g)) Group::Get(id_g)->num_vehicle++;
 }
 
 static inline void DecreaseGroupNumVehicle(GroupID id_g)
 {
-	if (IsValidGroupID(id_g)) Group::Get(id_g)->num_vehicle--;
+	if (Group::IsValidID(id_g)) Group::Get(id_g)->num_vehicle--;
 }
 
 

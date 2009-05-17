@@ -458,7 +458,7 @@ error:
 Money GetAvailableMoneyForCommand()
 {
 	CompanyID company = _current_company;
-	if (!IsValidCompanyID(company)) return INT64_MAX;
+	if (!Company::IsValidID(company)) return INT64_MAX;
 	return Company::Get(company)->money;
 }
 
@@ -590,7 +590,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	DEBUG(desync, 1, "cmd: %08x; %08x; %1x; %06x; %08x; %08x; %04x; %s\n", _date, _date_fract, (int)_current_company, tile, p1, p2, cmd & ~CMD_NETWORK_COMMAND, text);
 
 	/* update last build coordinate of company. */
-	if (tile != 0 && IsValidCompanyID(_current_company)) {
+	if (tile != 0 && Company::IsValidID(_current_company)) {
 		Company::Get(_current_company)->last_build_coordinate = tile;
 	}
 

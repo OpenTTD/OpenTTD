@@ -523,7 +523,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 	if (flags & DC_EXEC) {
 		/* if we got that far, 'owner' variable is set correctly */
-		assert(IsValidCompanyID(owner));
+		assert(Company::IsValidID(owner));
 
 		MarkTileDirtyByTile(tile);
 		if (crossing) {

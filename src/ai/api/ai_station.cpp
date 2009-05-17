@@ -17,7 +17,7 @@
 
 /* static */ bool AIStation::IsValidStation(StationID station_id)
 {
-	return ::IsValidStationID(station_id) && ::Station::Get(station_id)->owner == _current_company;
+	return ::Station::IsValidID(station_id) && ::Station::Get(station_id)->owner == _current_company;
 }
 
 /* static */ StationID AIStation::GetStationID(TileIndex tile)

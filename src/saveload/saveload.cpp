@@ -1864,7 +1864,7 @@ void GenerateDefaultSaveName(char *buf, const char *last)
 	 * available company. When there's no company available we'll use
 	 * 'Spectator' as "company" name. */
 	CompanyID cid = _local_company;
-	if (!IsValidCompanyID(cid)) {
+	if (!Company::IsValidID(cid)) {
 		const Company *c;
 		FOR_ALL_COMPANIES(c) {
 			cid = c->index;
@@ -1884,7 +1884,7 @@ void GenerateDefaultSaveName(char *buf, const char *last)
 	SetDParam(2, _date);
 
 	/* Get the correct string (special string for when there's not company) */
-	GetString(buf, !IsValidCompanyID(cid) ? STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME : STR_DEFAULT_SAVEGAME_NAME, last);
+	GetString(buf, !Company::IsValidID(cid) ? STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME : STR_DEFAULT_SAVEGAME_NAME, last);
 	SanitizeFilename(buf);
 }
 

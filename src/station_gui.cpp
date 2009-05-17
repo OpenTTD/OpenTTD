@@ -676,7 +676,7 @@ static const WindowDesc _company_stations_desc(
  */
 void ShowCompanyStations(CompanyID company)
 {
-	if (!IsValidCompanyID(company)) return;
+	if (!Company::IsValidID(company)) return;
 
 	AllocateWindowDescFront<CompanyStationsWindow>(&_company_stations_desc, company);
 }

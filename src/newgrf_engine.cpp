@@ -430,7 +430,7 @@ static uint8 LiveryHelper(EngineID engine, const Vehicle *v)
 	const Livery *l;
 
 	if (v == NULL) {
-		if (!IsValidCompanyID(_current_company)) return 0;
+		if (!Company::IsValidID(_current_company)) return 0;
 		l = GetEngineLivery(engine, _current_company, INVALID_ENGINE, NULL);
 	} else if (v->type == VEH_TRAIN) {
 		l = GetEngineLivery(v->engine_type, v->owner, v->u.rail.first_engine, v);

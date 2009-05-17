@@ -1212,7 +1212,7 @@ static WindowDesc _vehicle_list_desc(
 
 static void ShowVehicleListWindowLocal(CompanyID company, uint16 VLW_flag, VehicleType vehicle_type, uint16 unique_number)
 {
-	if (!IsValidCompanyID(company)) return;
+	if (!Company::IsValidID(company)) return;
 
 	_vehicle_list_desc.cls = GetWindowClassForVehicleType(vehicle_type);
 	WindowNumber num = (unique_number << 16) | (vehicle_type << 11) | VLW_flag | company;

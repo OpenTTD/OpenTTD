@@ -32,10 +32,10 @@ static inline void UpdateNumEngineGroup(EngineID i, GroupID old_g, GroupID new_g
 {
 	if (old_g != new_g) {
 		/* Decrease the num engines of EngineID i of the old group if it's not the default one */
-		if (!IsDefaultGroupID(old_g) && IsValidGroupID(old_g)) Group::Get(old_g)->num_engines[i]--;
+		if (!IsDefaultGroupID(old_g) && Group::IsValidID(old_g)) Group::Get(old_g)->num_engines[i]--;
 
 		/* Increase the num engines of EngineID i of the new group if it's not the default one */
-		if (!IsDefaultGroupID(new_g) && IsValidGroupID(new_g)) Group::Get(new_g)->num_engines[i]++;
+		if (!IsDefaultGroupID(new_g) && Group::IsValidID(new_g)) Group::Get(new_g)->num_engines[i]++;
 	}
 }
 
@@ -105,7 +105,7 @@ CommandCost CmdCreateGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
  */
 CommandCost CmdDeleteGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsValidGroupID(p1)) return CMD_ERROR;
+	if (!Group::IsValidID(p1)) return CMD_ERROR;
 
 	Group *g = Group::Get(p1);
 	if (g->owner != _current_company) return CMD_ERROR;
@@ -164,7 +164,7 @@ static bool IsUniqueGroupName(const char *name)
  */
 CommandCost CmdRenameGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsValidGroupID(p1)) return CMD_ERROR;
+	if (!Group::IsValidID(p1)) return CMD_ERROR;
 
 	Group *g = Group::Get(p1);
 	if (g->owner != _current_company) return CMD_ERROR;
@@ -201,11 +201,11 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 {
 	GroupID new_g = p1;
 
-	if (!IsValidVehicleID(p2) || (!IsValidGroupID(new_g) && !IsDefaultGroupID(new_g))) return CMD_ERROR;
+	if (!Vehicle::IsValidID(p2) || (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g))) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::Get(p2);
 
-	if (IsValidGroupID(new_g)) {
+	if (Group::IsValidID(new_g)) {
 		Group *g = Group::Get(new_g);
 		if (g->owner != _current_company || g->vehicle_type != v->type) return CMD_ERROR;
 	}
@@ -247,7 +247,7 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 CommandCost CmdAddSharedVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleType type = (VehicleType)p2;
-	if (!IsValidGroupID(p1) || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
+	if (!Group::IsValidID(p1) || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		Vehicle *v;
@@ -284,7 +284,7 @@ CommandCost CmdAddSharedVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32
 CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleType type = (VehicleType)p2;
-	if (!IsValidGroupID(p1) || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
+	if (!Group::IsValidID(p1) || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
 
 	Group *g = Group::Get(p1);
 	if (g->owner != _current_company) return CMD_ERROR;
@@ -320,7 +320,7 @@ CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, DoCommandFlag flags, uint3
  */
 CommandCost CmdSetGroupReplaceProtection(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsValidGroupID(p1)) return CMD_ERROR;
+	if (!Group::IsValidID(p1)) return CMD_ERROR;
 
 	Group *g = Group::Get(p1);
 	if (g->owner != _current_company) return CMD_ERROR;
@@ -356,7 +356,7 @@ void RemoveVehicleFromGroup(const Vehicle *v)
  */
 void SetTrainGroupID(Vehicle *v, GroupID new_g)
 {
-	if (!IsValidGroupID(new_g) && !IsDefaultGroupID(new_g)) return;
+	if (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g)) return;
 
 	assert(v->IsValid() && v->type == VEH_TRAIN && IsFrontEngine(v));
 
@@ -395,7 +395,7 @@ void UpdateTrainGroupID(Vehicle *v)
 
 uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e)
 {
-	if (IsValidGroupID(id_g)) return Group::Get(id_g)->num_engines[id_e];
+	if (Group::IsValidID(id_g)) return Group::Get(id_g)->num_engines[id_e];
 
 	uint num = Company::Get(company)->num_engines[id_e];
 	if (!IsDefaultGroupID(id_g)) return num;

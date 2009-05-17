@@ -265,17 +265,6 @@ void BuildIndustriesLegend();
 /* industry_cmd.cpp */
 void SetIndustryDailyChanges();
 
-/**
- * Check if an Industry exists whithin the pool of industries
- * @param index of the desired industry
- * @return true if it is inside the pool
- */
-static inline bool IsValidIndustryID(IndustryID index)
-{
-	return index < Industry::GetPoolSize() && Industry::Get(index)->IsValid();
-}
-
-
 static inline IndustryID GetMaxIndustryIndex()
 {
 	/* TODO - This isn't the real content of the function, but
@@ -346,7 +335,7 @@ static inline Industry *GetRandomIndustry()
 		index++;
 
 		/* Make sure we have a valid industry */
-		while (!IsValidIndustryID(index)) {
+		while (!Industry::IsValidID(index)) {
 			index++;
 			assert(index <= GetMaxIndustryIndex());
 		}

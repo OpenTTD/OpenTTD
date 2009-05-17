@@ -288,10 +288,20 @@ struct PoolItem {
 
 	/**
 	 * Returns size of the pool (in number of items)
+	 * @return size of the pool
 	 */
 	static FORCEINLINE uint GetPoolSize()
 	{
 		return Tpool->GetSize();
+	}
+
+	/**
+	 * Tests if given ID belongs to valid pool item
+	 * @return is given ID valid?
+	 */
+	static FORCEINLINE bool IsValidID(uint index)
+	{
+		return index < Tpool->GetSize() && Tpool->Get(index)->IsValid();
 	}
 
 private:

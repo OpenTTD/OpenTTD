@@ -660,16 +660,6 @@ static inline uint GetNumVehicles()
 #define FOR_ALL_VEHICLES_FROM(v, start) for (v = Vehicle::Get(start); v != NULL; v = (v->index + 1U < Vehicle::GetPoolSize()) ? Vehicle::Get(v->index + 1) : NULL) if (v->IsValid())
 #define FOR_ALL_VEHICLES(v) FOR_ALL_VEHICLES_FROM(v, 0)
 
-/**
- * Check if an index is a vehicle-index (so between 0 and max-vehicles)
- * @param index of the vehicle to query
- * @return Returns true if the vehicle-id is in range
- */
-static inline bool IsValidVehicleID(uint index)
-{
-	return index < Vehicle::GetPoolSize() && Vehicle::Get(index)->IsValid();
-}
-
 
 /** Generates sequence of free UnitID numbers */
 struct FreeUnitIDGenerator {

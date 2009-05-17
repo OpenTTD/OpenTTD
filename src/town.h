@@ -295,16 +295,6 @@ static inline HouseSpec *GetHouseSpecs(HouseID house_id)
 
 TileIndexDiff GetHouseNorthPart(HouseID &house);
 
-/**
- * Check if a TownID is valid.
- * @param index to inquiry in the pool of town
- * @return true if it exists
- */
-static inline bool IsValidTownID(TownID index)
-{
-	return index < Town::GetPoolSize() && Town::Get(index)->IsValid();
-}
-
 static inline TownID GetMaxTownIndex()
 {
 	/* TODO - This isn't the real content of the function, but
@@ -335,7 +325,7 @@ static inline Town *GetRandomTown()
 
 		index++;
 		/* Make sure we have a valid town */
-		while (!IsValidTownID(index)) {
+		while (!Town::IsValidID(index)) {
 			index++;
 			assert(index <= GetMaxTownIndex());
 		}

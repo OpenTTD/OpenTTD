@@ -518,7 +518,7 @@ bool CanDeleteHouse(TileIndex tile)
 
 	/* Humans are always allowed to remove buildings, as is water and
 	 * anyone using the scenario editor. */
-	if ((IsValidCompanyID(_current_company) && IsHumanCompany(_current_company))
+	if ((Company::IsValidID(_current_company) && IsHumanCompany(_current_company))
 			|| _current_company == OWNER_WATER || _current_company == OWNER_NONE) return true;
 
 	if (HasBit(hs->callback_mask, CBM_HOUSE_DENY_DESTRUCTION)) {

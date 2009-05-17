@@ -620,7 +620,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 		/* New company/spectator (invalid company) or company we want to join is not active
 		 * Switch local company to spectator and await the server's judgement */
-		if (_network_playas == COMPANY_NEW_COMPANY || !IsValidCompanyID(_network_playas)) {
+		if (_network_playas == COMPANY_NEW_COMPANY || !Company::IsValidID(_network_playas)) {
 			SetLocalCompany(COMPANY_SPECTATOR);
 
 			if (_network_playas != COMPANY_SPECTATOR) {
@@ -723,10 +723,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 
 			/* For speaking to company or giving money, we need the company-name */
 			case NETWORK_ACTION_GIVE_MONEY:
-				if (!IsValidCompanyID(ci_to->client_playas)) return NETWORK_RECV_STATUS_OKAY;
+				if (!Company::IsValidID(ci_to->client_playas)) return NETWORK_RECV_STATUS_OKAY;
 				/* fallthrough */
 			case NETWORK_ACTION_CHAT_COMPANY: {
-				StringID str = IsValidCompanyID(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
+				StringID str = Company::IsValidID(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
 				SetDParam(0, ci_to->client_playas);
 
 				GetString(name, str, lastof(name));
@@ -842,7 +842,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MOVE)
 	if (ci == NULL) return NETWORK_RECV_STATUS_OKAY;
 
 	/* if not valid player, force spectator, else check player exists */
-	if (!IsValidCompanyID(company_id)) company_id = COMPANY_SPECTATOR;
+	if (!Company::IsValidID(company_id)) company_id = COMPANY_SPECTATOR;
 
 	if (client_id == _network_own_client_id) {
 		_network_playas = company_id;
@@ -1006,7 +1006,7 @@ void NetworkClientSetPassword(const char *password)
 bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio)
 {
 	/* Only companies actually playing can speak to team. Eg spectators cannot */
-	if (!_settings_client.gui.prefer_teamchat || !IsValidCompanyID(cio->client_playas)) return false;
+	if (!_settings_client.gui.prefer_teamchat || !Company::IsValidID(cio->client_playas)) return false;
 
 	const NetworkClientInfo *ci;
 	FOR_ALL_CLIENT_INFOS(ci) {
@@ -1044,7 +1044,7 @@ void NetworkPrintClients()
 		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  company: %1d  IP: %s",
 				ci->client_id,
 				ci->client_name,
-				ci->client_playas + (IsValidCompanyID(ci->client_playas) ? 1 : 0),
+				ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
 				GetClientIP(ci));
 	}
 }
