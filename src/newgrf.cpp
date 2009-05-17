@@ -2039,8 +2039,8 @@ static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, b
 			case 0x0A: { // Override old sound
 				uint orig_sound = grf_load_byte(&buf);
 
-				if (orig_sound >= GetNumSounds()) {
-					grfmsg(1, "SoundEffectChangeInfo: Original sound %d not defined (max %d)", orig_sound, GetNumSounds());
+				if (orig_sound >= ORIGINAL_SAMPLE_COUNT) {
+					grfmsg(1, "SoundEffectChangeInfo: Original sound %d not defined (max %d)", orig_sound, ORIGINAL_SAMPLE_COUNT);
 				} else {
 					FileEntry *newfe = GetSound(sound);
 					FileEntry *oldfe = GetSound(orig_sound);
