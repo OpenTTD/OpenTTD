@@ -381,11 +381,11 @@ int SlIterateArray()
 		_next_offs = SlGetOffs() + length;
 
 		switch (_sl.block_mode) {
-		case CH_SPARSE_ARRAY: index = (int)SlReadSparseIndex(); break;
-		case CH_ARRAY:        index = _sl.array_index++; break;
-		default:
-			DEBUG(sl, 0, "SlIterateArray error");
-			return -1; // error
+			case CH_SPARSE_ARRAY: index = (int)SlReadSparseIndex(); break;
+			case CH_ARRAY:        index = _sl.array_index++; break;
+			default:
+				DEBUG(sl, 0, "SlIterateArray error");
+				return -1; // error
 		}
 
 		if (length != 0) return index;
@@ -475,17 +475,17 @@ size_t SlGetFieldLength() {return _sl.obj_len;}
 int64 ReadValue(const void *ptr, VarType conv)
 {
 	switch (GetVarMemType(conv)) {
-	case SLE_VAR_BL:  return (*(bool*)ptr != 0);
-	case SLE_VAR_I8:  return *(int8*  )ptr;
-	case SLE_VAR_U8:  return *(byte*  )ptr;
-	case SLE_VAR_I16: return *(int16* )ptr;
-	case SLE_VAR_U16: return *(uint16*)ptr;
-	case SLE_VAR_I32: return *(int32* )ptr;
-	case SLE_VAR_U32: return *(uint32*)ptr;
-	case SLE_VAR_I64: return *(int64* )ptr;
-	case SLE_VAR_U64: return *(uint64*)ptr;
-	case SLE_VAR_NULL:return 0;
-	default: NOT_REACHED();
+		case SLE_VAR_BL:  return (*(bool *)ptr != 0);
+		case SLE_VAR_I8:  return *(int8  *)ptr;
+		case SLE_VAR_U8:  return *(byte  *)ptr;
+		case SLE_VAR_I16: return *(int16 *)ptr;
+		case SLE_VAR_U16: return *(uint16*)ptr;
+		case SLE_VAR_I32: return *(int32 *)ptr;
+		case SLE_VAR_U32: return *(uint32*)ptr;
+		case SLE_VAR_I64: return *(int64 *)ptr;
+		case SLE_VAR_U64: return *(uint64*)ptr;
+		case SLE_VAR_NULL:return 0;
+		default: NOT_REACHED();
 	}
 
 	/* useless, but avoids compiler warning this way */
@@ -500,18 +500,18 @@ int64 ReadValue(const void *ptr, VarType conv)
 void WriteValue(void *ptr, VarType conv, int64 val)
 {
 	switch (GetVarMemType(conv)) {
-	case SLE_VAR_BL:  *(bool  *)ptr = (val != 0);  break;
-	case SLE_VAR_I8:  *(int8  *)ptr = val; break;
-	case SLE_VAR_U8:  *(byte  *)ptr = val; break;
-	case SLE_VAR_I16: *(int16 *)ptr = val; break;
-	case SLE_VAR_U16: *(uint16*)ptr = val; break;
-	case SLE_VAR_I32: *(int32 *)ptr = val; break;
-	case SLE_VAR_U32: *(uint32*)ptr = val; break;
-	case SLE_VAR_I64: *(int64 *)ptr = val; break;
-	case SLE_VAR_U64: *(uint64*)ptr = val; break;
-	case SLE_VAR_NAME: *(char**)ptr = CopyFromOldName(val); break;
-	case SLE_VAR_NULL: break;
-	default: NOT_REACHED();
+		case SLE_VAR_BL:  *(bool  *)ptr = (val != 0);  break;
+		case SLE_VAR_I8:  *(int8  *)ptr = val; break;
+		case SLE_VAR_U8:  *(byte  *)ptr = val; break;
+		case SLE_VAR_I16: *(int16 *)ptr = val; break;
+		case SLE_VAR_U16: *(uint16*)ptr = val; break;
+		case SLE_VAR_I32: *(int32 *)ptr = val; break;
+		case SLE_VAR_U32: *(uint32*)ptr = val; break;
+		case SLE_VAR_I64: *(int64 *)ptr = val; break;
+		case SLE_VAR_U64: *(uint64*)ptr = val; break;
+		case SLE_VAR_NAME: *(char**)ptr = CopyFromOldName(val); break;
+		case SLE_VAR_NULL: break;
+		default: NOT_REACHED();
 	}
 }
 
@@ -990,26 +990,26 @@ static void SlLoadChunk(const ChunkHandler *ch)
 	_sl.obj_len = 0;
 
 	switch (m) {
-	case CH_ARRAY:
-		_sl.array_index = 0;
-		ch->load_proc();
-		break;
-	case CH_SPARSE_ARRAY:
-		ch->load_proc();
-		break;
-	default:
-		if ((m & 0xF) == CH_RIFF) {
-			/* Read length */
-			len = (SlReadByte() << 16) | ((m >> 4) << 24);
-			len += SlReadUint16();
-			_sl.obj_len = len;
-			endoffs = SlGetOffs() + len;
+		case CH_ARRAY:
+			_sl.array_index = 0;
 			ch->load_proc();
-			if (SlGetOffs() != endoffs) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Invalid chunk size");
-		} else {
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Invalid chunk type");
-		}
-		break;
+			break;
+		case CH_SPARSE_ARRAY:
+			ch->load_proc();
+			break;
+		default:
+			if ((m & 0xF) == CH_RIFF) {
+				/* Read length */
+				len = (SlReadByte() << 16) | ((m >> 4) << 24);
+				len += SlReadUint16();
+				_sl.obj_len = len;
+				endoffs = SlGetOffs() + len;
+				ch->load_proc();
+				if (SlGetOffs() != endoffs) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Invalid chunk size");
+			} else {
+				SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Invalid chunk type");
+			}
+			break;
 	}
 }
 
