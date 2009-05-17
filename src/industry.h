@@ -337,7 +337,7 @@ static inline Industry *GetRandomIndustry()
 		/* Make sure we have a valid industry */
 		while (!Industry::IsValidID(index)) {
 			index++;
-			assert(index <= GetMaxIndustryIndex());
+			assert(index < Industry::GetPoolSize());
 		}
 	}
 

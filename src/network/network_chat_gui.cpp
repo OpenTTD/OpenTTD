@@ -318,7 +318,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		/* Then, try townnames
 		 * Not that the following assumes all town indices are adjacent, ie no
 		 * towns have been deleted. */
-		if (*item <= (uint)MAX_CLIENT_SLOTS + GetMaxTownIndex()) {
+		if (*item < (uint)MAX_CLIENT_SLOTS + Town::GetPoolSize()) {
 			const Town *t;
 
 			FOR_ALL_TOWNS_FROM(t, *item - MAX_CLIENT_SLOTS) {

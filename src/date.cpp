@@ -184,10 +184,9 @@ static const Month _autosave_months[] = {
  */
 static void RunVehicleDayProc(uint daytick)
 {
-	uint total = GetMaxVehicleIndex() + 1;
-	uint i;
+	uint total = Vehicle::GetPoolSize();
 
-	for (i = daytick; i < total; i += DAY_TICKS) {
+	for (uint i = daytick; i < total; i += DAY_TICKS) {
 		Vehicle *v = Vehicle::Get(i);
 
 		if (v->IsValid()) {

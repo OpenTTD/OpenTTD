@@ -327,7 +327,7 @@ static inline Town *GetRandomTown()
 		/* Make sure we have a valid town */
 		while (!Town::IsValidID(index)) {
 			index++;
-			assert(index <= GetMaxTownIndex());
+			assert(index < Town::GetPoolSize());
 		}
 	}
 
