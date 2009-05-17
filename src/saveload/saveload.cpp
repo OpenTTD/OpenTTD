@@ -1266,34 +1266,34 @@ struct ThreadedSave {
 	CursorID cursor;
 };
 
-/* A maximum size of of 128K * 500 = 64.000KB savegames */
-STATIC_OLD_POOL(Savegame, byte, 17, 500, NULL, NULL)
+/** Save in chunks of 128 KiB. */
+static const int MEMORY_CHUNK_SIZE = 128 * 1024;
+/** Memory allocation for storing savegames in memory. */
+static AutoFreeSmallVector<byte *, 16> _memory_savegame;
+
 static ThreadedSave _ts;
-
-static bool InitMem()
-{
-	_ts.count = 0;
-
-	_Savegame_pool.CleanPool();
-	_Savegame_pool.AddBlockToPool();
-
-	/* A block from the pool is a contigious area of memory, so it is safe to write to it sequentially */
-	_sl.bufsize = GetSavegamePoolSize();
-	_sl.buf = GetSavegame(_ts.count);
-	return true;
-}
-
-static void UnInitMem()
-{
-	_Savegame_pool.CleanPool();
-}
 
 static void WriteMem(size_t size)
 {
 	_ts.count += (uint)size;
-	/* Allocate new block and new buffer-pointer */
-	_Savegame_pool.AddBlockIfNeeded(_ts.count);
-	_sl.buf = GetSavegame(_ts.count);
+
+	_sl.buf = CallocT<byte>(MEMORY_CHUNK_SIZE);
+	*_memory_savegame.Append() = _sl.buf;
+}
+
+static void UnInitMem()
+{
+	_memory_savegame.Clear();
+}
+
+static bool InitMem()
+{
+	_ts.count = 0;
+	_sl.bufsize = MEMORY_CHUNK_SIZE;
+
+	UnInitMem();
+	WriteMem(0);
+	return true;
 }
 
 /********************************************
@@ -1675,7 +1675,7 @@ static void SaveFileError()
 	SaveFileDone();
 }
 
-/** We have written the whole game into memory, _Savegame_pool, now find
+/** We have written the whole game into memory, _memory_savegame, now find
  * and appropiate compressor and start writing to file.
  */
 static SaveOrLoadResult SaveFileToDisk(bool threaded)
@@ -1696,18 +1696,17 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 
 		{
 			uint i;
-			uint count = 1 << Savegame_POOL_BLOCK_SIZE_BITS;
 
 			if (_ts.count != _sl.offs_base) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unexpected size of chunk");
-			for (i = 0; i != _Savegame_pool.GetBlockCount() - 1; i++) {
-				_sl.buf = _Savegame_pool.blocks[i];
-				fmt->writer(count);
+			for (i = 0; i != _memory_savegame.Length() - 1; i++) {
+				_sl.buf = _memory_savegame[i];
+				fmt->writer(MEMORY_CHUNK_SIZE);
 			}
 
 			/* The last block is (almost) always not fully filled, so only write away
 			 * as much data as it is in there */
-			_sl.buf = _Savegame_pool.blocks[i];
-			fmt->writer(_ts.count - (i * count));
+			_sl.buf = _memory_savegame[i];
+			fmt->writer(_ts.count % MEMORY_CHUNK_SIZE);
 		}
 
 		fmt->uninit_write();
