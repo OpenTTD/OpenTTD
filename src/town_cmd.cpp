@@ -683,17 +683,12 @@ void OnTick_Town()
 {
 	if (_game_mode == GM_EDITOR) return;
 
-	/* Make sure each town's tickhandler invocation frequency is about the
-	 * same - TOWN_GROWTH_FREQUENCY - independent on the number of towns. */
-	for (_cur_town_iter += GetMaxTownIndex() + 1;
-	     _cur_town_iter >= TOWN_GROWTH_FREQUENCY;
-	     _cur_town_iter -= TOWN_GROWTH_FREQUENCY) {
-		uint32 i = _cur_town_ctr;
-
-		if (++_cur_town_ctr > GetMaxTownIndex())
-			_cur_town_ctr = 0;
-
-		if (Town::IsValidID(i)) TownTickHandler(Town::Get(i));
+	Town *t;
+	FOR_ALL_TOWNS(t) {
+		/* Run town tick at regular intervals, but not all at once. */
+		if ((_tick_counter + t->index) % TOWN_GROWTH_FREQUENCY == 0) {
+			TownTickHandler(t);
+		}
 	}
 }
 
@@ -2877,8 +2872,6 @@ void InitializeTowns()
 		s->cargo_type = CT_INVALID;
 	}
 
-	_cur_town_ctr = 0;
-	_cur_town_iter = 0;
 	_total_towns = 0;
 }
 

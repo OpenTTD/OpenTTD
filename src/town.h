@@ -341,8 +341,6 @@ Town *CalcClosestTownFromTile(TileIndex tile, uint threshold = UINT_MAX);
 
 extern Town *_cleared_town;
 extern int _cleared_town_rating;
-extern uint32 _cur_town_ctr;
-extern uint32 _cur_town_iter;
 
 void ResetHouses();
 

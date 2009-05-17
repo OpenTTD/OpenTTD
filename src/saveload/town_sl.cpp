@@ -189,11 +189,6 @@ static void Load_TOWN()
 
 		_total_towns++;
 	}
-
-	/* This is to ensure all pointers are within the limits of
-	 *  the size of the TownPool */
-	if (_cur_town_ctr > GetMaxTownIndex())
-		_cur_town_ctr = 0;
 }
 
 extern const ChunkHandler _town_chunk_handlers[] = {

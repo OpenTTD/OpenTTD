@@ -1583,7 +1583,6 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 }
 
 extern TileIndex _cur_tileloop_tile;
-static uint32 _old_cur_town_ctr;
 static const OldChunks main_chunk[] = {
 	OCL_ASSERT( OC_TTD, 0 ),
 	OCL_ASSERT( OC_TTO, 0 ),
@@ -1618,7 +1617,7 @@ static const OldChunks main_chunk[] = {
 	OCL_ASSERT( OC_TTD, 0x4B26 ),
 	OCL_ASSERT( OC_TTO, 0x3A20 ),
 
-	OCL_VAR ( OC_UINT32,   1, &_old_cur_town_ctr ),
+	OCL_NULL( 4 ),              ///< town counter,  no longer in use
 	OCL_NULL( 2 ),              ///< timer_counter, no longer in use
 	OCL_NULL( 2 ),              ///< land_code,     no longer in use
 
@@ -1774,9 +1773,6 @@ bool LoadTTDMain(LoadgameState *ls)
 	/* Fix some general stuff */
 	_settings_game.game_creation.landscape = _settings_game.game_creation.landscape & 0xF;
 
-	/* Remap some pointers */
-	_cur_town_ctr      = RemapTownIndex(_old_cur_town_ctr);
-
 	/* Fix the game to be compatible with OpenTTD */
 	FixOldTowns();
 	FixOldVehicles();
@@ -1812,8 +1808,6 @@ bool LoadTTOMain(LoadgameState *ls)
 
 	_settings_game.game_creation.landscape = 0;
 	_trees_tick_ctr = 0xFF;
-
-	_cur_town_ctr = RemapTownIndex(_old_cur_town_ctr);
 
 	if (!FixTTOMapArray() || !FixTTOEngines()) {
 		DEBUG(oldloader, 0, "Conversion failed");
