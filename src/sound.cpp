@@ -13,7 +13,7 @@
 #include "vehicle_base.h"
 #include "debug.h"
 
-static FileEntry _original_sounds[ORIGINAL_SAMPLE_COUNT];
+static SoundEntry _original_sounds[ORIGINAL_SAMPLE_COUNT];
 MusicFileSettings msf;
 
 /* Number of levels of panning per side */
@@ -45,10 +45,10 @@ static void OpenBankFile(const char *filename)
 	}
 
 	for (uint i = 0; i != ORIGINAL_SAMPLE_COUNT; i++) {
-		FileEntry *fe = &_original_sounds[i];
+		SoundEntry *sound = &_original_sounds[i];
 		char name[255];
 
-		FioSeekTo(fe->file_offset, SEEK_SET);
+		FioSeekTo(sound->file_offset, SEEK_SET);
 
 		/* Check for special case, see else case */
 		FioReadBlock(name, FioReadByte()); // Read the name of the sound
@@ -62,20 +62,20 @@ static void OpenBankFile(const char *filename)
 
 				if (tag == ' tmf') {
 					FioReadWord(); // wFormatTag
-					fe->channels = FioReadWord(); // wChannels
+					sound->channels = FioReadWord(); // wChannels
 					FioReadDword();   // samples per second
-					fe->rate = 11025; // seems like all samples should be played at this rate.
+					sound->rate = 11025; // seems like all samples should be played at this rate.
 					FioReadDword();   // avg bytes per second
 					FioReadWord();    // alignment
-					fe->bits_per_sample = FioReadByte(); // bits per sample
+					sound->bits_per_sample = FioReadByte(); // bits per sample
 					FioSeekTo(size - (2 + 2 + 4 + 4 + 2 + 1), SEEK_CUR);
 				} else if (tag == 'atad') {
-					fe->file_size = size;
-					fe->file_slot = SOUND_SLOT;
-					fe->file_offset = FioGetPos();
+					sound->file_size = size;
+					sound->file_slot = SOUND_SLOT;
+					sound->file_offset = FioGetPos();
 					break;
 				} else {
-					fe->file_size = 0;
+					sound->file_size = 0;
 					break;
 				}
 			}
@@ -85,33 +85,33 @@ static void OpenBankFile(const char *filename)
 			 * (name in sample.cat is "Corrupt sound")
 			 * It's no RIFF file, but raw PCM data
 			 */
-			fe->channels = 1;
-			fe->rate = 11025;
-			fe->bits_per_sample = 8;
-			fe->file_slot = SOUND_SLOT;
-			fe->file_offset = FioGetPos();
+			sound->channels = 1;
+			sound->rate = 11025;
+			sound->bits_per_sample = 8;
+			sound->file_slot = SOUND_SLOT;
+			sound->file_offset = FioGetPos();
 		}
 	}
 }
 
-static bool SetBankSource(MixerChannel *mc, const FileEntry *fe)
+static bool SetBankSource(MixerChannel *mc, const SoundEntry *sound)
 {
-	assert(fe != NULL);
+	assert(sound != NULL);
 
-	if (fe->file_size == 0) return false;
+	if (sound->file_size == 0) return false;
 
-	int8 *mem = MallocT<int8>(fe->file_size);
+	int8 *mem = MallocT<int8>(sound->file_size);
 
-	FioSeekToFile(fe->file_slot, fe->file_offset);
-	FioReadBlock(mem, fe->file_size);
+	FioSeekToFile(sound->file_slot, sound->file_offset);
+	FioReadBlock(mem, sound->file_size);
 
-	for (uint i = 0; i != fe->file_size; i++) {
+	for (uint i = 0; i != sound->file_size; i++) {
 		mem[i] += -128; // Convert unsigned sound data to signed
 	}
 
-	assert(fe->bits_per_sample == 8 && fe->channels == 1 && fe->file_size != 0 && fe->rate != 0);
+	assert(sound->bits_per_sample == 8 && sound->channels == 1 && sound->file_size != 0 && sound->rate != 0);
 
-	MxSetChannelRawSrc(mc, mem, fe->file_size, fe->rate, MX_AUTOFREE);
+	MxSetChannelRawSrc(mc, mem, sound->file_size, sound->rate, MX_AUTOFREE);
 
 	return true;
 }
@@ -127,16 +127,16 @@ static void StartSound(SoundID sound_id, int panning, uint volume)
 {
 	if (volume == 0) return;
 
-	const FileEntry *fe = GetSound(sound_id);
-	if (fe == NULL) return;
+	const SoundEntry *sound = GetSound(sound_id);
+	if (sound == NULL) return;
 
 	MixerChannel *mc = MxAllocateChannel();
 	if (mc == NULL) return;
 
-	if (!SetBankSource(mc, fe)) return;
+	if (!SetBankSource(mc, sound)) return;
 
 	/* Apply the sound effect's own volume. */
-	volume = (fe->volume * volume) / 128;
+	volume = (sound->volume * volume) / 128;
 
 	panning = Clamp(panning, -PANNING_LEVELS, PANNING_LEVELS);
 	uint left_vol = (volume * PANNING_LEVELS) - (volume * panning);
@@ -178,11 +178,10 @@ static const byte _sound_idx[] = {
 void SndCopyToPool()
 {
 	for (uint i = 0; i < ORIGINAL_SAMPLE_COUNT; i++) {
-		FileEntry *fe = AllocateFileEntry();
-
-		*fe = _original_sounds[_sound_idx[i]];
-		fe->volume = _sound_base_vol[i];
-		fe->priority = 0;
+		SoundEntry *sound = AllocateSound();
+		*sound = _original_sounds[_sound_idx[i]];
+		sound->volume = _sound_base_vol[i];
+		sound->priority = 0;
 	}
 }
 

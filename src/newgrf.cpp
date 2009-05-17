@@ -2042,11 +2042,11 @@ static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, b
 				if (orig_sound >= ORIGINAL_SAMPLE_COUNT) {
 					grfmsg(1, "SoundEffectChangeInfo: Original sound %d not defined (max %d)", orig_sound, ORIGINAL_SAMPLE_COUNT);
 				} else {
-					FileEntry *newfe = GetSound(sound);
-					FileEntry *oldfe = GetSound(orig_sound);
+					SoundEntry *new_sound = GetSound(sound);
+					SoundEntry *old_sound = GetSound(orig_sound);
 
 					/* Literally copy the data of the new sound over the original */
-					*oldfe = *newfe;
+					*old_sound = *new_sound;
 				}
 			} break;
 
@@ -5051,9 +5051,9 @@ static void SkipAct11(byte *buf, size_t len)
 static void ImportGRFSound(byte *buf, int len)
 {
 	const GRFFile *file;
-	FileEntry *se = AllocateFileEntry();
+	SoundEntry *sound = AllocateSound();
 	uint32 grfid = grf_load_dword(&buf);
-	uint16 sound = grf_load_word(&buf);
+	SoundID sound_id = grf_load_word(&buf);
 
 	file = GetFileByGRFID(grfid);
 	if (file == NULL || file->sound_offset == 0) {
@@ -5061,18 +5061,18 @@ static void ImportGRFSound(byte *buf, int len)
 		return;
 	}
 
-	if (file->sound_offset + sound >= GetNumSounds()) {
-		grfmsg(1, "ImportGRFSound: Sound effect %d is invalid", sound);
+	if (file->sound_offset + sound_id >= GetNumSounds()) {
+		grfmsg(1, "ImportGRFSound: Sound effect %d is invalid", sound_id);
 		return;
 	}
 
-	grfmsg(2, "ImportGRFSound: Copying sound %d (%d) from file %X", sound, file->sound_offset + sound, grfid);
+	grfmsg(2, "ImportGRFSound: Copying sound %d (%d) from file %X", sound_id, file->sound_offset + sound_id, grfid);
 
-	*se = *GetSound(file->sound_offset + sound);
+	*sound = *GetSound(file->sound_offset + sound_id);
 
 	/* Reset volume and priority, which TTDPatch doesn't copy */
-	se->volume   = 128;
-	se->priority = 0;
+	sound->volume   = 128;
+	sound->priority = 0;
 }
 
 /* 'Action 0xFE' */
@@ -5105,7 +5105,7 @@ static void LoadGRFSound(byte *buf, int len)
 
 	/* Allocate a sound entry. This is done even if the data is not loaded
 	 * so that the indices used elsewhere are still correct. */
-	FileEntry *se = AllocateFileEntry();
+	SoundEntry *sound = AllocateSound();
 
 	if (grf_load_dword(&buf) != BSWAP32('RIFF')) {
 		grfmsg(1, "LoadGRFSound: Missing RIFF header");
@@ -5131,30 +5131,30 @@ static void LoadGRFSound(byte *buf, int len)
 					grfmsg(1, "LoadGRFSound: Invalid audio format");
 					return;
 				}
-				se->channels = grf_load_word(&buf);
-				se->rate = grf_load_dword(&buf);
+				sound->channels = grf_load_word(&buf);
+				sound->rate = grf_load_dword(&buf);
 				grf_load_dword(&buf);
 				grf_load_word(&buf);
-				se->bits_per_sample = grf_load_word(&buf);
+				sound->bits_per_sample = grf_load_word(&buf);
 
 				/* Consume any extra bytes */
 				for (; size > 16; size--) grf_load_byte(&buf);
 				break;
 
 			case 'atad': // 'data'
-				se->file_size   = size;
-				se->file_offset = FioGetPos() - (len - (buf - buf_start)) + 1;
-				se->file_slot   = _file_index;
+				sound->file_size   = size;
+				sound->file_offset = FioGetPos() - (len - (buf - buf_start)) + 1;
+				sound->file_slot   = _file_index;
 
 				/* Set default volume and priority */
-				se->volume = 0x80;
-				se->priority = 0;
+				sound->volume = 0x80;
+				sound->priority = 0;
 
-				grfmsg(2, "LoadGRFSound: channels %u, sample rate %u, bits per sample %u, length %u", se->channels, se->rate, se->bits_per_sample, size);
+				grfmsg(2, "LoadGRFSound: channels %u, sample rate %u, bits per sample %u, length %u", sound->channels, sound->rate, sound->bits_per_sample, size);
 				return;
 
 			default:
-				se->file_size = 0;
+				sound->file_size = 0;
 				return;
 		}
 	}

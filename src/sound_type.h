@@ -15,7 +15,7 @@ struct MusicFileSettings {
 	bool shuffle;
 };
 
-struct FileEntry {
+struct SoundEntry {
 	uint8 file_slot;
 	size_t file_offset;
 	size_t file_size;

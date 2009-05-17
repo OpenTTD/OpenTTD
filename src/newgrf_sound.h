@@ -21,9 +21,9 @@ enum VehicleSoundEvent {
 };
 
 
-FileEntry *AllocateFileEntry();
+SoundEntry *AllocateSound();
 void InitializeSoundPool();
-FileEntry *GetSound(SoundID sound_id);
+SoundEntry *GetSound(SoundID sound_id);
 uint GetNumSounds();
 bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event);
 bool PlayTileSound(const struct GRFFile *file, SoundID sound_id, TileIndex tile);

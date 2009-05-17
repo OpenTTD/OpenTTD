@@ -10,11 +10,11 @@
 #include "sound_func.h"
 
 static uint _sound_count = 0;
-STATIC_OLD_POOL(SoundInternal, FileEntry, 3, 1000, NULL, NULL)
+STATIC_OLD_POOL(SoundInternal, SoundEntry, 3, 1000, NULL, NULL)
 
 
-/* Allocate a new FileEntry */
-FileEntry *AllocateFileEntry()
+/* Allocate a new Sound */
+SoundEntry *AllocateSound()
 {
 	if (_sound_count == GetSoundInternalPoolSize()) {
 		if (!_SoundInternal_pool.AddBlockToPool()) return NULL;
@@ -34,7 +34,7 @@ void InitializeSoundPool()
 }
 
 
-FileEntry *GetSound(SoundID index)
+SoundEntry *GetSound(SoundID index)
 {
 	if (index >= GetNumSounds()) return NULL;
 	return GetSoundInternal(index);
@@ -62,16 +62,16 @@ bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event)
 	if (callback == CALLBACK_FAILED) return false;
 	if (callback >= ORIGINAL_SAMPLE_COUNT) callback += file->sound_offset - ORIGINAL_SAMPLE_COUNT;
 
-	if (callback < GetNumSounds()) SndPlayVehicleFx((SoundFx)callback, v);
+	if (callback < GetNumSounds()) SndPlayVehicleFx(callback, v);
 	return true;
 }
 
-bool PlayTileSound(const GRFFile *file, uint16 sound_id, TileIndex tile)
+bool PlayTileSound(const GRFFile *file, SoundID sound_id, TileIndex tile)
 {
 	if (sound_id >= ORIGINAL_SAMPLE_COUNT) sound_id += file->sound_offset - ORIGINAL_SAMPLE_COUNT;
 
 	if (sound_id < GetNumSounds()) {
-		SndPlayTileFx((SoundFx)sound_id, tile);
+		SndPlayTileFx(sound_id, tile);
 		return true;
 	}
 	return false;
