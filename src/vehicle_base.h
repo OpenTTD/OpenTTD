@@ -642,21 +642,6 @@ struct InvalidVehicle : public Vehicle {
 	void Tick() {}
 };
 
-static inline VehicleID GetMaxVehicleIndex()
-{
-	/* TODO - This isn't the real content of the function, but
-	 *  with the new pool-system this will be replaced with one that
-	 *  _really_ returns the highest index. Now it just returns
-	 *  the next safe value we are sure about everything is below.
-	 */
-	return Vehicle::GetPoolSize() - 1;
-}
-
-static inline uint GetNumVehicles()
-{
-	return Vehicle::GetPoolSize();
-}
-
 #define FOR_ALL_VEHICLES_FROM(v, start) for (v = Vehicle::Get(start); v != NULL; v = (v->index + 1U < Vehicle::GetPoolSize()) ? Vehicle::Get(v->index + 1) : NULL) if (v->IsValid())
 #define FOR_ALL_VEHICLES(v) FOR_ALL_VEHICLES_FROM(v, 0)
 

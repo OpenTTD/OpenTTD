@@ -295,16 +295,6 @@ static inline HouseSpec *GetHouseSpecs(HouseID house_id)
 
 TileIndexDiff GetHouseNorthPart(HouseID &house);
 
-static inline TownID GetMaxTownIndex()
-{
-	/* TODO - This isn't the real content of the function, but
-	 *  with the new pool-system this will be replaced with one that
-	 *  _really_ returns the highest index. Now it just returns
-	 *  the next safe value we are sure about everything is below.
-	 */
-	return Town::GetPoolSize() - 1;
-}
-
 static inline uint GetNumTowns()
 {
 	extern uint _total_towns;

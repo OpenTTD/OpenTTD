@@ -243,21 +243,6 @@ public:
 	void ConvertFromOldSavegame();
 };
 
-static inline VehicleOrderID GetMaxOrderIndex()
-{
-	/* TODO - This isn't the real content of the function, but
-	 *  with the new pool-system this will be replaced with one that
-	 *  _really_ returns the highest index. Now it just returns
-	 *  the next safe value we are sure about everything is below.
-	 */
-	return Order::GetPoolSize() - 1;
-}
-
-static inline VehicleOrderID GetNumOrders()
-{
-	return Order::GetPoolSize();
-}
-
 /** Shared order list linking together the linked list of orders and the list
  *  of vehicles sharing this order list.
  */

@@ -204,21 +204,6 @@ public:
 	uint GetCatchmentRadius() const;
 };
 
-static inline StationID GetMaxStationIndex()
-{
-	/* TODO - This isn't the real content of the function, but
-	 *  with the new pool-system this will be replaced with one that
-	 *  _really_ returns the highest index. Now it just returns
-	 *  the next safe value we are sure about everything is below.
-	 */
-	return Station::GetPoolSize() - 1;
-}
-
-static inline uint GetNumStations()
-{
-	return Station::GetPoolSize();
-}
-
 #define FOR_ALL_STATIONS_FROM(st, start) for (st = Station::Get(start); st != NULL; st = (st->index + 1U < Station::GetPoolSize()) ? Station::Get(st->index + 1U) : NULL) if (st->IsValid())
 #define FOR_ALL_STATIONS(st) FOR_ALL_STATIONS_FROM(st, 0)
 

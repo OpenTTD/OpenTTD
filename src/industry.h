@@ -265,16 +265,6 @@ void BuildIndustriesLegend();
 /* industry_cmd.cpp */
 void SetIndustryDailyChanges();
 
-static inline IndustryID GetMaxIndustryIndex()
-{
-	/* TODO - This isn't the real content of the function, but
-	 *  with the new pool-system this will be replaced with one that
-	 *  _really_ returns the highest index. Now it just returns
-	 *  the next safe value we are sure about everything is below.
-	 */
-	return Industry::GetPoolSize() - 1;
-}
-
 extern int _total_industries;  // general counter
 extern uint16 _industry_counts[NUM_INDUSTRYTYPES]; // Number of industries per type ingame
 

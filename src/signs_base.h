@@ -31,16 +31,6 @@ struct Sign : PoolItem<Sign, SignID, &_Sign_pool> {
 	inline bool IsValid() const { return this->owner != INVALID_OWNER; }
 };
 
-static inline SignID GetMaxSignIndex()
-{
-	/* TODO - This isn't the real content of the function, but
-	 *  with the new pool-system this will be replaced with one that
-	 *  _really_ returns the highest index. Now it just returns
-	 *  the next safe value we are sure about everything is below.
-	 */
-	return Sign::GetPoolSize() - 1;
-}
-
 #define FOR_ALL_SIGNS_FROM(ss, start) for (ss = Sign::Get(start); ss != NULL; ss = (ss->index + 1U < Sign::GetPoolSize()) ? Sign::Get(ss->index + 1U) : NULL) if (ss->IsValid())
 #define FOR_ALL_SIGNS(ss) FOR_ALL_SIGNS_FROM(ss, 0)
 
