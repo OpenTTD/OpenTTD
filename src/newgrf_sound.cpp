@@ -34,7 +34,7 @@ void InitializeSoundPool()
 }
 
 
-FileEntry *GetSound(uint index)
+FileEntry *GetSound(SoundID index)
 {
 	if (index >= GetNumSounds()) return NULL;
 	return GetSoundInternal(index);

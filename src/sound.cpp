@@ -123,11 +123,11 @@ bool SoundInitialize(const char *filename)
 }
 
 /* Low level sound player */
-static void StartSound(uint sound, int panning, uint volume)
+static void StartSound(SoundID sound_id, int panning, uint volume)
 {
 	if (volume == 0) return;
 
-	const FileEntry *fe = GetSound(sound);
+	const FileEntry *fe = GetSound(sound_id);
 	if (fe == NULL) return;
 
 	MixerChannel *mc = MxAllocateChannel();
@@ -195,7 +195,7 @@ void SndCopyToPool()
  * @param top    Top edge of virtual coordinates where the sound is produced
  * @param bottom Bottom edge of virtual coordinates where the sound is produced
  */
-static void SndPlayScreenCoordFx(SoundFx sound, int left, int right, int top, int bottom)
+static void SndPlayScreenCoordFx(SoundID sound, int left, int right, int top, int bottom)
 {
 	if (msf.effect_vol == 0) return;
 
@@ -220,7 +220,7 @@ static void SndPlayScreenCoordFx(SoundFx sound, int left, int right, int top, in
 	}
 }
 
-void SndPlayTileFx(SoundFx sound, TileIndex tile)
+void SndPlayTileFx(SoundID sound, TileIndex tile)
 {
 	/* emits sound from center of the tile */
 	int x = min(MapMaxX() - 1, TileX(tile)) * TILE_SIZE + TILE_SIZE / 2;
@@ -232,7 +232,7 @@ void SndPlayTileFx(SoundFx sound, TileIndex tile)
 	SndPlayScreenCoordFx(sound, pt.x, pt2.x, pt.y, pt2.y);
 }
 
-void SndPlayVehicleFx(SoundFx sound, const Vehicle *v)
+void SndPlayVehicleFx(SoundID sound, const Vehicle *v)
 {
 	SndPlayScreenCoordFx(sound,
 		v->coord.left, v->coord.right,
@@ -240,7 +240,7 @@ void SndPlayVehicleFx(SoundFx sound, const Vehicle *v)
 	);
 }
 
-void SndPlayFx(SoundFx sound)
+void SndPlayFx(SoundID sound)
 {
 	StartSound(sound, 0, msf.effect_vol);
 }

@@ -518,7 +518,7 @@ static const RailVehicleInfo _orig_rail_vehicle_info[] = {
  * @param g sound effect
  * @param h refittable
  */
-#define SVI(a, b, c, d, e, f, g, h) { a, b, c, d, e, f, {g}, h }
+#define SVI(a, b, c, d, e, f, g, h) { a, b, c, d, e, f, g, h }
 static const ShipVehicleInfo _orig_ship_vehicle_info[] = {
 	/*   image_index  cargo_type     cargo_amount                 refittable
 	 *   |    base_cost |              |    running_cost          |
@@ -550,7 +550,7 @@ static const ShipVehicleInfo _orig_ship_vehicle_info[] = {
  * @param h mail_capacity
  * @param i passenger_capacity
  */
-#define AVI(a, b, c, d, e, f, g, h, i) { a, b, c, d, {e}, f, (g * 129) / 10, h, i }
+#define AVI(a, b, c, d, e, f, g, h, i) { a, b, c, d, e, f, (g * 129) / 10, h, i }
 #define H AIR_HELI
 #define P AIR_CTOL
 #define J AIR_CTOL | AIR_FAST
@@ -619,7 +619,7 @@ static const AircraftVehicleInfo _orig_aircraft_vehicle_info[] = {
  * @param h weight (1/4ton)
  * @param i power (10hp)
  */
-#define ROV(a, b, c, d, e, f, g, h, i) { a, b, c, RC_R, {d}, e, f, g, h, i, 76, 0 }
+#define ROV(a, b, c, d, e, f, g, h, i) { a, b, c, RC_R, d, e, f, g, h, i, 76, 0 }
 static const RoadVehicleInfo _orig_road_vehicle_info[] = {
 	/*    image_index       sfx                                 max_speed
 	 *    |    base_cost    |                                   |   capacity

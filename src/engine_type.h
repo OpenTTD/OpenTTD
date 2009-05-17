@@ -62,7 +62,7 @@ struct ShipVehicleInfo {
 	CargoID cargo_type;
 	uint16 capacity;
 	byte running_cost;
-	SoundFxByte sfx;
+	SoundID sfx;
 	bool refittable;
 };
 
@@ -80,7 +80,7 @@ struct AircraftVehicleInfo {
 	byte cost_factor;
 	byte running_cost;
 	byte subtype;
-	SoundFxByte sfx;
+	SoundID sfx;
 	byte acceleration;
 	uint16 max_speed;
 	byte mail_capacity;
@@ -92,7 +92,7 @@ struct RoadVehicleInfo {
 	byte cost_factor;
 	byte running_cost;
 	byte running_cost_class;
-	SoundFxByte sfx;
+	SoundID sfx;
 	uint16 max_speed;        ///< Maximum speed in mph/3.2 units
 	byte capacity;
 	CargoID cargo_type;

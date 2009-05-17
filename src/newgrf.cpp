@@ -811,7 +811,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x12: // SFX
-				rvi->sfx = (SoundFx)grf_load_byte(&buf);
+				rvi->sfx = grf_load_byte(&buf);
 				break;
 
 			case 0x13: // Power in 10hp
@@ -937,7 +937,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x10: // SFX
-				svi->sfx = (SoundFx)grf_load_byte(&buf);
+				svi->sfx = grf_load_byte(&buf);
 				break;
 
 			case 0x11: // Cargos available for refitting
@@ -1053,7 +1053,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				break;
 
 			case 0x12: // SFX
-				avi->sfx = (SoundFx)grf_load_byte(&buf);
+				avi->sfx = grf_load_byte(&buf);
 				break;
 
 			case 0x13: // Cargos available for refitting
@@ -2020,7 +2020,7 @@ static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, b
 	}
 
 	for (int i = 0; i < numinfo; i++) {
-		uint sound = sid + i + _cur_grffile->sound_offset - ORIGINAL_SAMPLE_COUNT;
+		SoundID sound = sid + i + _cur_grffile->sound_offset - ORIGINAL_SAMPLE_COUNT;
 
 		if (sound >= GetNumSounds()) {
 			grfmsg(1, "SoundEffectChangeInfo: Sound %d not defined (max %d)", sound, GetNumSounds());
@@ -2037,7 +2037,7 @@ static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, b
 				break;
 
 			case 0x0A: { // Override old sound
-				uint orig_sound = grf_load_byte(&buf);
+				SoundID orig_sound = grf_load_byte(&buf);
 
 				if (orig_sound >= ORIGINAL_SAMPLE_COUNT) {
 					grfmsg(1, "SoundEffectChangeInfo: Original sound %d not defined (max %d)", orig_sound, ORIGINAL_SAMPLE_COUNT);

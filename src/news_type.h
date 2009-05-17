@@ -5,6 +5,7 @@
 #ifndef NEWS_TYPE_H
 #define NEWS_TYPE_H
 
+#include "core/enum_type.hpp"
 #include "date_type.h"
 #include "strings_type.h"
 #include "sound_type.h"

@@ -690,7 +690,7 @@ TileIndex RoadVehicle::GetOrderStationLocation(StationID station)
 static void StartRoadVehSound(const Vehicle *v)
 {
 	if (!PlayVehicleSound(v, VSE_START)) {
-		SoundFx s = RoadVehInfo(v->engine_type)->sfx;
+		SoundID s = RoadVehInfo(v->engine_type)->sfx;
 		if (s == SND_19_BUS_START_PULL_AWAY && (v->tick_counter & 3) == 0)
 			s = SND_1A_BUS_START_PULL_AWAY_WITH_HORN;
 		SndPlayVehicleFx(s, v);

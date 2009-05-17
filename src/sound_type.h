@@ -5,8 +5,6 @@
 #ifndef SOUND_TYPE_H
 #define SOUND_TYPE_H
 
-#include "core/enum_type.hpp"
-
 struct MusicFileSettings {
 	byte playlist;
 	byte music_vol;
@@ -106,11 +104,9 @@ enum SoundFx {
 	SND_END
 };
 
-/** Define basic enum properties */
-template <> struct EnumPropsT<SoundFx> : MakeEnumPropsT<SoundFx, byte, SND_BEGIN, SND_END, SND_END> {};
-typedef TinyEnumT<SoundFx> SoundFxByte;
-
 /** The number of sounds in the original sample.cat */
 static const uint ORIGINAL_SAMPLE_COUNT = 73;
+
+typedef uint16 SoundID;
 
 #endif /* SOUND_TYPE_H */
