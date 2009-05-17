@@ -13,7 +13,7 @@
 #include "vehicle_base.h"
 #include "debug.h"
 
-static FileEntry *_files;
+static FileEntry _original_sounds[ORIGINAL_SAMPLE_COUNT];
 MusicFileSettings msf;
 
 /* Number of levels of panning per side */
@@ -21,8 +21,7 @@ MusicFileSettings msf;
 
 static void OpenBankFile(const char *filename)
 {
-	FileEntry *fe = CallocT<FileEntry>(ORIGINAL_SAMPLE_COUNT);
-	_files = fe;
+	memset(_original_sounds, 0, sizeof(_original_sounds));
 
 	FioOpenFile(SOUND_SLOT, filename);
 	size_t pos = FioGetPos();
@@ -40,12 +39,13 @@ static void OpenBankFile(const char *filename)
 	FioSeekTo(pos, SEEK_SET);
 
 	for (uint i = 0; i != ORIGINAL_SAMPLE_COUNT; i++) {
-		fe[i].file_slot = SOUND_SLOT;
-		fe[i].file_offset = FioReadDword() + pos;
-		fe[i].file_size = FioReadDword();
+		_original_sounds[i].file_slot = SOUND_SLOT;
+		_original_sounds[i].file_offset = FioReadDword() + pos;
+		_original_sounds[i].file_size = FioReadDword();
 	}
 
-	for (uint i = 0; i != ORIGINAL_SAMPLE_COUNT; i++, fe++) {
+	for (uint i = 0; i != ORIGINAL_SAMPLE_COUNT; i++) {
+		FileEntry *fe = &_original_sounds[i];
 		char name[255];
 
 		FioSeekTo(fe->file_offset, SEEK_SET);
@@ -178,10 +178,9 @@ static const byte _sound_idx[] = {
 void SndCopyToPool()
 {
 	for (uint i = 0; i < ORIGINAL_SAMPLE_COUNT; i++) {
-		FileEntry *orig = &_files[_sound_idx[i]];
 		FileEntry *fe = AllocateFileEntry();
 
-		*fe = *orig;
+		*fe = _original_sounds[_sound_idx[i]];
 		fe->volume = _sound_base_vol[i];
 		fe->priority = 0;
 	}
