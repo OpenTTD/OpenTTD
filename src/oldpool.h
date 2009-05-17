@@ -357,23 +357,11 @@ public:
 	extern OldMemoryPool<type> _##name##_pool;
 
 
-#define DEFINE_OLD_POOL(name, type, new_block_proc, clean_block_proc) \
-	OldMemoryPool<type> _##name##_pool( \
-		#name, name##_POOL_MAX_BLOCKS, name##_POOL_BLOCK_SIZE_BITS, sizeof(type), \
-		new_block_proc, clean_block_proc);
-
 #define DEFINE_OLD_POOL_GENERIC(name, type) \
 	OldMemoryPool<type> _##name##_pool( \
 		#name, name##_POOL_MAX_BLOCKS, name##_POOL_BLOCK_SIZE_BITS, sizeof(type), \
 		PoolNewBlock<type, &_##name##_pool>, PoolCleanBlock<type, &_##name##_pool>); \
 		template type *PoolItem<type, type##ID, &_##name##_pool>::AllocateSafeRaw(uint &first); \
 		template bool PoolItem<type, type##ID, &_##name##_pool>::CanAllocateItem(uint count);
-
-
-#define STATIC_OLD_POOL(name, type, block_size_bits, max_blocks, new_block_proc, clean_block_proc) \
-	OLD_POOL_ENUM(name, type, block_size_bits, max_blocks) \
-	static DEFINE_OLD_POOL(name, type, new_block_proc, clean_block_proc) \
-	static inline type *Get##name(uint index) { return _##name##_pool.Get(index); } \
-	static inline uint Get##name##PoolSize()  { return _##name##_pool.GetSize(); }
 
 #endif /* OLDPOOL_H */
