@@ -620,11 +620,8 @@ void EnginesDailyLoop()
  */
 CommandCost CmdWantEnginePreview(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Engine *e;
-
-	if (!IsEngineIndex(p1)) return CMD_ERROR;
-	e = Engine::Get(p1);
-	if (GetBestCompany(e->preview_company_rank) != _current_company) return CMD_ERROR;
+	Engine *e = Engine::GetIfValid(p1);
+	if (e == NULL || GetBestCompany(e->preview_company_rank) != _current_company) return CMD_ERROR;
 
 	if (flags & DC_EXEC) AcceptEnginePreview(p1, _current_company);
 
@@ -734,7 +731,8 @@ static bool IsUniqueEngineName(const char *name)
  */
 CommandCost CmdRenameEngine(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsEngineIndex(p1)) return CMD_ERROR;
+	Engine *e = Engine::GetIfValid(p1);
+	if (e == NULL) return CMD_ERROR;
 
 	bool reset = StrEmpty(text);
 
@@ -744,7 +742,6 @@ CommandCost CmdRenameEngine(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	}
 
 	if (flags & DC_EXEC) {
-		Engine *e = Engine::Get(p1);
 		free(e->name);
 
 		if (reset) {
@@ -769,10 +766,10 @@ CommandCost CmdRenameEngine(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
  */
 bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company)
 {
-	/* check if it's an engine that is in the engine array */
-	if (!IsEngineIndex(engine)) return false;
+	const Engine *e = Engine::GetIfValid(engine);
 
-	const Engine *e = Engine::Get(engine);
+	/* check if it's an engine that is in the engine array */
+	if (e == NULL) return false;
 
 	/* check if it's an engine of specified type */
 	if (e->type != type) return false;
@@ -797,10 +794,10 @@ bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company)
  */
 bool IsEngineRefittable(EngineID engine)
 {
-	/* check if it's an engine that is in the engine array */
-	if (!IsEngineIndex(engine)) return false;
+	const Engine *e = Engine::GetIfValid(engine);
 
-	const Engine *e = Engine::Get(engine);
+	/* check if it's an engine that is in the engine array */
+	if (e == NULL) return false;
 
 	if (e->type == VEH_SHIP && !e->u.ship.refittable) return false;
 

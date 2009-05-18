@@ -42,7 +42,7 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 {
 	/* First we make sure that it's a valid type the user requested
 	 * check that it's an engine that is in the engine array */
-	if (!IsEngineIndex(from) || !IsEngineIndex(to)) return false;
+	if (!Engine::IsValidID(from) || !Engine::IsValidID(to)) return false;
 
 	/* we can't replace an engine into itself (that would be autorenew) */
 	if (from == to) return false;

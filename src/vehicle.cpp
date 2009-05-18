@@ -1747,8 +1747,8 @@ void VehiclesYearlyLoop()
  */
 bool CanVehicleUseStation(EngineID engine_type, const Station *st)
 {
-	assert(IsEngineIndex(engine_type));
-	const Engine *e = Engine::Get(engine_type);
+	const Engine *e = Engine::GetIfValid(engine_type);
+	assert(e != NULL);
 
 	switch (e->type) {
 		case VEH_TRAIN:
