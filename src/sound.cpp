@@ -20,9 +20,6 @@ MusicFileSettings msf;
 /* Number of levels of panning per side */
 #define PANNING_LEVELS 16
 
-/** The number of sounds in the original sample.cat */
-static const uint ORIGINAL_SAMPLE_COUNT = 73;
-
 static void OpenBankFile(const char *filename)
 {
 	FileEntry *fe = CallocT<FileEntry>(ORIGINAL_SAMPLE_COUNT);

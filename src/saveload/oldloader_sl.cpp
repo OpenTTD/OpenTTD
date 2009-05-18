@@ -1260,7 +1260,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			uint type = ReadByte(ls);
 			switch (type) {
 				default: return false;
-				case 0x00 /* VEH_INVALID */: v = new (_current_vehicle_id) InvalidVehicle();  break;
+				case 0x00 /* VEH_INVALID  */: v = new (_current_vehicle_id) InvalidVehicle();  break;
 				case 0x25 /* MONORAIL     */:
 				case 0x20 /* VEH_TRAIN    */: v = new (_current_vehicle_id) Train();           break;
 				case 0x21 /* VEH_ROAD     */: v = new (_current_vehicle_id) RoadVehicle();     break;
@@ -1583,7 +1583,6 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 }
 
 extern TileIndex _cur_tileloop_tile;
-static uint32 _old_cur_town_ctr;
 static const OldChunks main_chunk[] = {
 	OCL_ASSERT( OC_TTD, 0 ),
 	OCL_ASSERT( OC_TTO, 0 ),
@@ -1618,7 +1617,7 @@ static const OldChunks main_chunk[] = {
 	OCL_ASSERT( OC_TTD, 0x4B26 ),
 	OCL_ASSERT( OC_TTO, 0x3A20 ),
 
-	OCL_VAR ( OC_UINT32,   1, &_old_cur_town_ctr ),
+	OCL_NULL( 4 ),              ///< town counter,  no longer in use
 	OCL_NULL( 2 ),              ///< timer_counter, no longer in use
 	OCL_NULL( 2 ),              ///< land_code,     no longer in use
 
@@ -1707,8 +1706,7 @@ static const OldChunks main_chunk[] = {
 
 	OCL_CNULL( OC_TTD, 144 ),             ///< AI cargo-stuff, calculated in InitializeLandscapeVariables
 	OCL_NULL( 2 ),               ///< Company indexes of companies, no longer in use
-
-	OCL_VAR ( OC_FILE_U8 | OC_VAR_U16,    1, &_station_tick_ctr ),
+	OCL_NULL( 1 ),               ///< Station tick counter, no longer in use
 
 	OCL_VAR (  OC_UINT8,    1, &_settings_game.locale.currency ),
 	OCL_VAR (  OC_UINT8,    1, &_settings_game.locale.units ),
@@ -1775,9 +1773,6 @@ bool LoadTTDMain(LoadgameState *ls)
 	/* Fix some general stuff */
 	_settings_game.game_creation.landscape = _settings_game.game_creation.landscape & 0xF;
 
-	/* Remap some pointers */
-	_cur_town_ctr      = RemapTownIndex(_old_cur_town_ctr);
-
 	/* Fix the game to be compatible with OpenTTD */
 	FixOldTowns();
 	FixOldVehicles();
@@ -1813,8 +1808,6 @@ bool LoadTTOMain(LoadgameState *ls)
 
 	_settings_game.game_creation.landscape = 0;
 	_trees_tick_ctr = 0xFF;
-
-	_cur_town_ctr = RemapTownIndex(_old_cur_town_ctr);
 
 	if (!FixTTOMapArray() || !FixTTOEngines()) {
 		DEBUG(oldloader, 0, "Conversion failed");

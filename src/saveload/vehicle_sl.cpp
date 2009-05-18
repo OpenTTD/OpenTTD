@@ -698,7 +698,7 @@ void Load_VEHS()
 			case VEH_AIRCRAFT: v = new (index) Aircraft();        break;
 			case VEH_EFFECT:   v = new (index) EffectVehicle();   break;
 			case VEH_DISASTER: v = new (index) DisasterVehicle(); break;
-			case VEH_INVALID:  v = new (index) InvalidVehicle();  break;
+			case VEH_INVALID: /* Savegame shouldn't contain invalid vehicles */
 			default: NOT_REACHED();
 		}
 

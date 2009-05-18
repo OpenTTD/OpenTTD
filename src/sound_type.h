@@ -110,4 +110,7 @@ enum SoundFx {
 template <> struct EnumPropsT<SoundFx> : MakeEnumPropsT<SoundFx, byte, SND_BEGIN, SND_END, SND_END> {};
 typedef TinyEnumT<SoundFx> SoundFxByte;
 
+/** The number of sounds in the original sample.cat */
+static const uint ORIGINAL_SAMPLE_COUNT = 73;
+
 #endif /* SOUND_TYPE_H */
