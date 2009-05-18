@@ -235,14 +235,41 @@ static bool InitializeWindowsAndCaches()
 	return true;
 }
 
+typedef void (CDECL *SignalHandlerPointer)(int);
+static SignalHandlerPointer _prev_segfault = NULL;
+static SignalHandlerPointer _prev_abort = NULL;
+
+static void CDECL HandleSavegameLoadCrash(int signum);
+
+/**
+ * Replaces signal handlers of SIGSEGV and SIGABRT
+ * and stores pointers to original handlers in memory.
+ */
+static void SetSignalHandlers()
+{
+	_prev_segfault = signal(SIGSEGV, HandleSavegameLoadCrash);
+	_prev_abort = signal(SIGABRT, HandleSavegameLoadCrash);
+}
+
+/**
+ * Resets signal handlers back to original handlers.
+ */
+static void ResetSignalHandlers()
+{
+	signal(SIGSEGV, _prev_segfault);
+	signal(SIGABRT, _prev_abort);
+}
+
 /**
  * Signal handler used to give a user a more useful report for crashes during
  * the savegame loading process; especially when there's problems with the
  * NewGRFs that are required by the savegame.
- * @param unused well... unused
+ * @param signum received signal
  */
-void CDECL HandleSavegameLoadCrash(int unused)
+static void CDECL HandleSavegameLoadCrash(int signum)
 {
+	ResetSignalHandlers();
+
 	char buffer[8192];
 	char *p = buffer;
 	p += seprintf(p, lastof(buffer),
@@ -272,6 +299,9 @@ void CDECL HandleSavegameLoadCrash(int unused)
 	}
 
 	ShowInfo(buffer);
+
+	SignalHandlerPointer call = signum == SIGSEGV ? _prev_segfault : _prev_abort;
+	if (call != NULL) call(signum);
 }
 
 /**
@@ -322,9 +352,7 @@ static void FixOwnerOfRailTrack(TileIndex t)
 
 bool AfterLoadGame()
 {
-	typedef void (CDECL *SignalHandlerPointer)(int);
-	SignalHandlerPointer prev_segfault = signal(SIGSEGV, HandleSavegameLoadCrash);
-	SignalHandlerPointer prev_abort = signal(SIGABRT, HandleSavegameLoadCrash);
+	SetSignalHandlers();
 
 	TileIndex map_size = MapSize();
 	Company *c;
@@ -437,8 +465,7 @@ bool AfterLoadGame()
 	if (_networking && gcf_res != GLC_ALL_GOOD) {
 		SetSaveLoadError(STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH);
 		/* Restore the signals */
-		signal(SIGSEGV, prev_segfault);
-		signal(SIGABRT, prev_abort);
+		ResetSignalHandlers();
 		return false;
 	}
 
@@ -490,8 +517,7 @@ bool AfterLoadGame()
 	if (_game_mode == GM_NORMAL && !ClosestTownFromTile(0, UINT_MAX)) {
 		SetSaveLoadError(STR_NO_TOWN_IN_SCENARIO);
 		/* Restore the signals */
-		signal(SIGSEGV, prev_segfault);
-		signal(SIGABRT, prev_abort);
+		ResetSignalHandlers();
 		return false;
 	}
 
@@ -554,8 +580,7 @@ bool AfterLoadGame()
 						SetStationGfx(t, gfx - 170 + GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET);
 					} else {
 						/* Restore the signals */
-						signal(SIGSEGV, prev_segfault);
-						signal(SIGABRT, prev_abort);
+						ResetSignalHandlers();
 						return false;
 					}
 					SB(_m[t].m6, 3, 3, st);
@@ -1813,8 +1838,7 @@ bool AfterLoadGame()
 
 	bool ret = InitializeWindowsAndCaches();
 	/* Restore the signals */
-	signal(SIGSEGV, prev_segfault);
-	signal(SIGABRT, prev_abort);
+	ResetSignalHandlers();
 	return ret;
 }
 
