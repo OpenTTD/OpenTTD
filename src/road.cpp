@@ -84,8 +84,9 @@ bool HasRoadTypesAvail(const CompanyID company, const RoadTypes rts)
 	if (company == OWNER_TOWN || _game_mode == GM_EDITOR || IsGeneratingWorld()) {
 		avail_roadtypes = ROADTYPES_ROAD;
 	} else {
-		if (!Company::IsValidID(company)) return false;
-		avail_roadtypes = (RoadTypes)Company::Get(company)->avail_roadtypes | ROADTYPES_ROAD; // road is available for always for everybody
+		Company *c = Company::GetIfValid(company);
+		if (c == NULL) return false;
+		avail_roadtypes = (RoadTypes)c->avail_roadtypes | ROADTYPES_ROAD; // road is available for always for everybody
 	}
 	return (rts & ~avail_roadtypes) == 0;
 }

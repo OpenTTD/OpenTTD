@@ -88,14 +88,13 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 
 	virtual void OnPaint()
 	{
-		const Company *c;
 		uint x, y;
 
 		this->SetupHighScoreEndWindow(&x, &y);
 
-		if (!Company::IsValidID(_local_company)) return;
+		const Company *c = Company::GetIfValid(_local_company);
+		if (c == NULL) return;
 
-		c = Company::Get(_local_company);
 		/* We need to get performance from last year because the image is shown
 		 * at the start of the new year when these things have already been copied */
 		if (this->background_img == SPR_TYCOON_IMG2_BEGIN) { // Tycoon of the century \o/

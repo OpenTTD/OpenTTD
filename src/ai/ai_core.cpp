@@ -74,7 +74,8 @@
 	 * Effectively collecting garbage once every two months per AI. */
 	if ((AI::frame_counter & 255) == 0) {
 		CompanyID cid = (CompanyID)GB(AI::frame_counter, 8, 4);
-		if (Company::IsValidID(cid) && !IsHumanCompany(cid)) Company::Get(cid)->ai_instance->CollectGarbage();
+		Company *com = Company::GetIfValid(cid);
+		if (com != NULL && !IsHumanCompany(cid)) com->ai_instance->CollectGarbage();
 	}
 
 	_current_company = OWNER_NONE;
@@ -227,12 +228,12 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 /* static */ void AI::Save(CompanyID company)
 {
 	if (!_networking || _network_server) {
-		assert(Company::IsValidID(company));
-		assert(Company::Get(company)->ai_instance != NULL);
+		Company *c = Company::GetIfValid(company);
+		assert(c != NULL && c->ai_instance != NULL);
 
 		CompanyID old_company = _current_company;
 		_current_company = company;
-		Company::Get(company)->ai_instance->Save();
+		c->ai_instance->Save();
 		_current_company = old_company;
 	} else {
 		AIInstance::SaveEmpty();
@@ -242,12 +243,12 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 /* static */ void AI::Load(CompanyID company, int version)
 {
 	if (!_networking || _network_server) {
-		assert(Company::IsValidID(company));
-		assert(Company::Get(company)->ai_instance != NULL);
+		Company *c = Company::GetIfValid(company);
+		assert(c != NULL && c->ai_instance != NULL);
 
 		CompanyID old_company = _current_company;
 		_current_company = company;
-		Company::Get(company)->ai_instance->Load(version);
+		c->ai_instance->Load(version);
 		_current_company = old_company;
 	} else {
 		/* Read, but ignore, the load data */

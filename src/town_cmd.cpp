@@ -2273,7 +2273,8 @@ static bool IsUniqueTownName(const char *name)
  */
 CommandCost CmdRenameTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!Town::IsValidID(p1)) return CMD_ERROR;
+	Town *t = Town::GetIfValid(p1);
+	if (t == NULL) return CMD_ERROR;
 
 	bool reset = StrEmpty(text);
 
@@ -2283,8 +2284,6 @@ CommandCost CmdRenameTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	}
 
 	if (flags & DC_EXEC) {
-		Town *t = Town::Get(p1);
-
 		free(t->name);
 		t->name = reset ? NULL : strdup(text);
 
@@ -2548,9 +2547,8 @@ uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
  */
 CommandCost CmdDoTownAction(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!Town::IsValidID(p1) || p2 >= lengthof(_town_action_proc)) return CMD_ERROR;
-
-	Town *t = Town::Get(p1);
+	Town *t = Town::GetIfValid(p1);
+	if (t == NULL || p2 >= lengthof(_town_action_proc)) return CMD_ERROR;
 
 	if (!HasBit(GetMaskOfTownActions(NULL, _current_company, t), p2)) return CMD_ERROR;
 

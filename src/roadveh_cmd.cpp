@@ -312,13 +312,8 @@ bool RoadVehicle::IsStoppedInDepot() const
  */
 CommandCost CmdSellRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Vehicle *v;
-
-	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
-
-	v = Vehicle::Get(p1);
-
-	if (v->type != VEH_ROAD || !CheckOwnership(v->owner)) return CMD_ERROR;
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL || v->type != VEH_ROAD || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (HASBITS(v->vehstatus, VS_CRASHED)) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
 
@@ -423,11 +418,8 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1
 		return SendAllVehiclesToDepot(VEH_ROAD, flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), p1);
 	}
 
-	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
-
-	Vehicle *v = Vehicle::Get(p1);
-
-	if (v->type != VEH_ROAD) return CMD_ERROR;
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL || v->type != VEH_ROAD) return CMD_ERROR;
 
 	return v->SendToDepot(flags, (DepotCommand)(p2 & DEPOT_COMMAND_MASK));
 }
@@ -440,13 +432,8 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1
  */
 CommandCost CmdTurnRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Vehicle *v;
-
-	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
-
-	v = Vehicle::Get(p1);
-
-	if (v->type != VEH_ROAD || !CheckOwnership(v->owner)) return CMD_ERROR;
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL || v->type != VEH_ROAD || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (v->vehstatus & VS_STOPPED ||
 			v->vehstatus & VS_CRASHED ||
@@ -1968,7 +1955,6 @@ void RoadVehicle::OnNewDay()
  */
 CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Vehicle *v;
 	CommandCost cost(EXPENSES_ROADVEH_RUN);
 	CargoID new_cid = GB(p2, 0, 8);
 	byte new_subtype = GB(p2, 8, 8);
@@ -1976,11 +1962,9 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	uint16 capacity = CALLBACK_FAILED;
 	uint total_capacity = 0;
 
-	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
+	Vehicle *v = Vehicle::GetIfValid(p1);
 
-	v = Vehicle::Get(p1);
-
-	if (v->type != VEH_ROAD || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL || v->type != VEH_ROAD || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT);
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_REFIT_DESTROYED_VEHICLE);
 

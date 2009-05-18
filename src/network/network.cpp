@@ -97,7 +97,7 @@ extern void StateGameLoop();
  */
 NetworkClientInfo *NetworkFindClientInfoFromIndex(ClientIndex index)
 {
-	return NetworkClientInfo::IsValidID(index) ? NetworkClientInfo::Get(index) : NULL;
+	return NetworkClientInfo::GetIfValid(index);
 }
 
 /**

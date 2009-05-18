@@ -846,8 +846,9 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 
 			case SCC_STATION_NAME: { // {STATION}
 				StationID sid = GetInt32(&argv);
+				const Station *st = Station::GetIfValid(sid);
 
-				if (!Station::IsValidID(sid)) {
+				if (st == NULL) {
 					/* The station doesn't exist anymore. The only place where we might
 					 * be "drawing" an invalid station is in the case of cargo that is
 					 * in transit. */
@@ -855,7 +856,6 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 					break;
 				}
 
-				const Station *st = Station::Get(sid);
 				if (st->name != NULL) {
 					buff = strecpy(buff, st->name, last);
 				} else {

@@ -1040,11 +1040,8 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	VehicleID s = GB(p1, 0, 16);
 	VehicleID d = GB(p1, 16, 16);
 
-	if (!Vehicle::IsValidID(s)) return CMD_ERROR;
-
-	Vehicle *src = Vehicle::Get(s);
-
-	if (src->type != VEH_TRAIN || !CheckOwnership(src->owner)) return CMD_ERROR;
+	Vehicle *src = Vehicle::GetIfValid(s);
+	if (src == NULL || src->type != VEH_TRAIN || !CheckOwnership(src->owner)) return CMD_ERROR;
 
 	/* Do not allow moving crashed vehicles inside the depot, it is likely to cause asserts later */
 	if (HASBITS(src->vehstatus, VS_CRASHED)) return CMD_ERROR;
@@ -1054,9 +1051,8 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (d == INVALID_VEHICLE) {
 		dst = IsTrainEngine(src) ? NULL : FindGoodVehiclePos(src);
 	} else {
-		if (!Vehicle::IsValidID(d)) return CMD_ERROR;
-		dst = Vehicle::Get(d);
-		if (dst->type != VEH_TRAIN || !CheckOwnership(dst->owner)) return CMD_ERROR;
+		dst = Vehicle::GetIfValid(d);
+		if (dst == NULL || dst->type != VEH_TRAIN || !CheckOwnership(dst->owner)) return CMD_ERROR;
 
 		/* Do not allow appending to crashed vehicles, too */
 		if (HASBITS(dst->vehstatus, VS_CRASHED)) return CMD_ERROR;
@@ -1395,11 +1391,9 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	/* Check if we deleted a vehicle window */
 	Window *w = NULL;
 
-	if (!Vehicle::IsValidID(p1) || p2 > 1) return CMD_ERROR;
-
-	Vehicle *v = Vehicle::Get(p1);
-
-	if (v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL || v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (p2 > 1) return CMD_ERROR;
 
 	if (HASBITS(v->vehstatus, VS_CRASHED)) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
 
@@ -1952,11 +1946,8 @@ static void ReverseTrainDirection(Vehicle *v)
  */
 CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
-
-	Vehicle *v = Vehicle::Get(p1);
-
-	if (v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL || v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (p2 != 0) {
 		/* turn a single unit around */
@@ -2013,11 +2004,8 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
  */
 CommandCost CmdForceTrainProceed(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
-
-	Vehicle *v = Vehicle::Get(p1);
-
-	if (v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL || v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) v->u.rail.force_proceed = 0x50;
 
@@ -2040,11 +2028,8 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	byte new_subtype = GB(p2, 8, 8);
 	bool only_this = HasBit(p2, 16);
 
-	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
-
-	Vehicle *v = Vehicle::Get(p1);
-
-	if (v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL || v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (CheckTrainStoppedInDepot(v) < 0) return_cmd_error(STR_TRAIN_MUST_BE_STOPPED);
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_REFIT_DESTROYED_VEHICLE);
 
@@ -2246,11 +2231,8 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		return SendAllVehiclesToDepot(VEH_TRAIN, flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), p1);
 	}
 
-	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
-
-	Vehicle *v = Vehicle::Get(p1);
-
-	if (v->type != VEH_TRAIN) return CMD_ERROR;
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL || v->type != VEH_TRAIN) return CMD_ERROR;
 
 	return v->SendToDepot(flags, (DepotCommand)(p2 & DEPOT_COMMAND_MASK));
 }

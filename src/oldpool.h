@@ -287,6 +287,18 @@ struct PoolItem {
 	}
 
 	/**
+	 * Get item with given index
+	 * @param index item to get
+	 * @return NULL for invalid items
+	 */
+	static FORCEINLINE T *GetIfValid(uint index)
+	{
+		if (index >= Tpool->GetSize()) return NULL;
+		T *item = Tpool->Get(index);
+		return item->IsValid() ? item : NULL;
+	}
+
+	/**
 	 * Returns size of the pool (in number of items)
 	 * @return size of the pool
 	 */

@@ -716,8 +716,6 @@ DEF_CONSOLE_CMD(ConMoveClient)
 
 DEF_CONSOLE_CMD(ConResetCompany)
 {
-	CompanyID index;
-
 	if (argc == 0) {
 		IConsoleHelp("Remove an idle company from the game. Usage: 'reset_company <company-id>'");
 		IConsoleHelp("For company-id's, see the list of companies from the dropdown menu. Company 1 is 1, etc.");
@@ -726,15 +724,14 @@ DEF_CONSOLE_CMD(ConResetCompany)
 
 	if (argc != 2) return false;
 
-	index = (CompanyID)(atoi(argv[1]) - 1);
+	CompanyID index = (CompanyID)(atoi(argv[1]) - 1);
+	const Company *c = Company::GetIfValid(index);
 
 	/* Check valid range */
-	if (!Company::IsValidID(index)) {
+	if (c == NULL) {
 		IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
 		return true;
 	}
-
-	const Company *c = Company::Get(index);
 
 	if (c->is_ai) {
 		IConsoleError("Company is owned by an AI.");

@@ -594,13 +594,13 @@ public:
 				break;
 			}
 
-			case GRP_WIDGET_REPLACE_PROTECTION:
-				if (Group::IsValidID(this->group_sel)) {
-					const Group *g = Group::Get(this->group_sel);
-
+			case GRP_WIDGET_REPLACE_PROTECTION: {
+				const Group *g = Group::GetIfValid(this->group_sel);
+				if (g != NULL) {
 					DoCommandP(0, this->group_sel, !g->replace_protection, CMD_SET_GROUP_REPLACE_PROTECTION);
 				}
 				break;
+			}
 		}
 	}
 

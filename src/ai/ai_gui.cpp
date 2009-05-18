@@ -641,7 +641,8 @@ struct AIDebugWindow : public Window {
 	{
 		/* Disable the companies who are not active or not an AI */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-			this->SetWidgetDisabledState(i + AID_WIDGET_COMPANY_BUTTON_START, !Company::IsValidID(i) || !Company::Get(i)->is_ai);
+			Company *c = Company::GetIfValid(i);
+			this->SetWidgetDisabledState(i + AID_WIDGET_COMPANY_BUTTON_START, c == NULL || !c->is_ai);
 		}
 		this->DisableWidget(AID_WIDGET_RELOAD_TOGGLE);
 
@@ -669,7 +670,8 @@ struct AIDebugWindow : public Window {
 			}
 
 			for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-				if (Company::IsValidID(i) && Company::Get(i)->is_ai) {
+				Company *c = Company::GetIfValid(i);
+				if (c != NULL && c->is_ai) {
 					/* Lower the widget corresponding to this company. */
 					this->LowerWidget(i + AID_WIDGET_COMPANY_BUTTON_START);
 
@@ -690,7 +692,8 @@ struct AIDebugWindow : public Window {
 
 		/* Paint the company icons */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-			if (!Company::IsValidID(i) || !Company::Get(i)->is_ai) {
+			Company *c = Company::GetIfValid(i);
+			if (c == NULL || !c->is_ai) {
 				/* Check if we have the company as an active company */
 				if (!this->IsWidgetDisabled(i + AID_WIDGET_COMPANY_BUTTON_START)) {
 					/* Bah, company gone :( */

@@ -105,10 +105,8 @@ CommandCost CmdCreateGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
  */
 CommandCost CmdDeleteGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!Group::IsValidID(p1)) return CMD_ERROR;
-
-	Group *g = Group::Get(p1);
-	if (g->owner != _current_company) return CMD_ERROR;
+	Group *g = Group::GetIfValid(p1);
+	if (g == NULL || g->owner != _current_company) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		Vehicle *v;
@@ -164,10 +162,8 @@ static bool IsUniqueGroupName(const char *name)
  */
 CommandCost CmdRenameGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!Group::IsValidID(p1)) return CMD_ERROR;
-
-	Group *g = Group::Get(p1);
-	if (g->owner != _current_company) return CMD_ERROR;
+	Group *g = Group::GetIfValid(p1);
+	if (g == NULL || g->owner != _current_company) return CMD_ERROR;
 
 	bool reset = StrEmpty(text);
 
@@ -199,11 +195,10 @@ CommandCost CmdRenameGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
  */
 CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
+	Vehicle *v = Vehicle::GetIfValid(p2);
 	GroupID new_g = p1;
 
-	if (!Vehicle::IsValidID(p2) || (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g))) return CMD_ERROR;
-
-	Vehicle *v = Vehicle::Get(p2);
+	if (v == NULL || (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g))) return CMD_ERROR;
 
 	if (Group::IsValidID(new_g)) {
 		Group *g = Group::Get(new_g);
@@ -283,11 +278,10 @@ CommandCost CmdAddSharedVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32
  */
 CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
+	Group *g = Group::GetIfValid(p1);
 	VehicleType type = (VehicleType)p2;
-	if (!Group::IsValidID(p1) || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
 
-	Group *g = Group::Get(p1);
-	if (g->owner != _current_company) return CMD_ERROR;
+	if (g == NULL || g->owner != _current_company || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		GroupID old_g = p1;
@@ -320,10 +314,8 @@ CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, DoCommandFlag flags, uint3
  */
 CommandCost CmdSetGroupReplaceProtection(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!Group::IsValidID(p1)) return CMD_ERROR;
-
-	Group *g = Group::Get(p1);
-	if (g->owner != _current_company) return CMD_ERROR;
+	Group *g = Group::GetIfValid(p1);
+	if (g == NULL || g->owner != _current_company) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		g->replace_protection = HasBit(p2, 0);

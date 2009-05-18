@@ -61,12 +61,8 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	/* Disable the effect of p2 bit 0, when DC_AUTOREPLACE is not set */
 	if ((flags & DC_AUTOREPLACE) == 0) SetBit(p2, 0);
 
-	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
-
-	Vehicle *v = Vehicle::Get(p1);
-
-	if (!CheckOwnership(v->owner)) return CMD_ERROR;
-	if (!v->IsPrimaryVehicle()) return CMD_ERROR;
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL || !CheckOwnership(v->owner) || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	switch (v->type) {
 		case VEH_TRAIN:
@@ -334,9 +330,8 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	CommandCost total_cost(EXPENSES_NEW_VEHICLES);
 	uint32 build_argument = 2;
 
-	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
-
-	Vehicle *v = Vehicle::Get(p1);
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL) return CMD_ERROR;
 	Vehicle *v_front = v;
 	Vehicle *w = NULL;
 	Vehicle *w_front = NULL;
@@ -532,10 +527,8 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, DoCommandFlag flags, bool s
  */
 CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
-
-	Vehicle *v = Vehicle::Get(p1);
-	if (!CheckOwnership(v->owner)) return CMD_ERROR;
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	bool reset = StrEmpty(text);
 
@@ -564,12 +557,9 @@ CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 CommandCost CmdChangeServiceInt(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	uint16 serv_int = GetServiceIntervalClamped(p2); // Double check the service interval from the user-input
+	Vehicle *v = Vehicle::GetIfValid(p1);
 
-	if (serv_int != p2 || !Vehicle::IsValidID(p1)) return CMD_ERROR;
-
-	Vehicle *v = Vehicle::Get(p1);
-
-	if (!CheckOwnership(v->owner)) return CMD_ERROR;
+	if (serv_int != p2 || v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		v->service_interval = serv_int;

@@ -1889,11 +1889,11 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1,
 {
 	CommandCost cost(EXPENSES_OTHER);
 
+	Company *c = Company::GetIfValid(p1);
+
 	/* Check if buying shares is allowed (protection against modified clients)
 	 * Cannot buy own shares */
-	if (!Company::IsValidID((CompanyID)p1) || !_settings_game.economy.allow_shares || _current_company == (CompanyID)p1) return CMD_ERROR;
-
-	Company *c = Company::Get((CompanyID)p1);
+	if (c == NULL || !_settings_game.economy.allow_shares || _current_company == (CompanyID)p1) return CMD_ERROR;
 
 	/* Protect new companies from hostile takeovers */
 	if (_cur_year - c->inaugurated_year < 6) return_cmd_error(STR_PROTECTED);
@@ -1932,11 +1932,11 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1,
  */
 CommandCost CmdSellShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
+	Company *c = Company::GetIfValid(p1);
+
 	/* Check if selling shares is allowed (protection against modified clients)
 	 * Cannot sell own shares */
-	if (!Company::IsValidID((CompanyID)p1) || !_settings_game.economy.allow_shares || _current_company == (CompanyID)p1) return CMD_ERROR;
-
-	Company *c = Company::Get((CompanyID)p1);
+	if (c == NULL || !_settings_game.economy.allow_shares || _current_company == (CompanyID)p1) return CMD_ERROR;
 
 	/* Those lines are here for network-protection (clients can be slow) */
 	if (GetAmountOwnedBy(c, _current_company) == 0) return CommandCost();
@@ -1965,15 +1965,13 @@ CommandCost CmdSellShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1
  */
 CommandCost CmdBuyCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	CompanyID cid = (CompanyID)p1;
+	Company *c = Company::GetIfValid(p1);
 
 	/* Disable takeovers in multiplayer games */
-	if (!Company::IsValidID(cid) || _networking) return CMD_ERROR;
+	if (c == NULL || _networking) return CMD_ERROR;
 
 	/* Do not allow companies to take over themselves */
-	if (cid == _current_company) return CMD_ERROR;
-
-	Company *c = Company::Get(cid);
+	if ((CompanyID)p1 == _current_company) return CMD_ERROR;
 
 	if (!c->is_ai) return CMD_ERROR;
 

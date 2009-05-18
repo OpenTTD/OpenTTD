@@ -57,10 +57,9 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (!_settings_game.order.timetabling) return CMD_ERROR;
 
 	VehicleID veh = GB(p1, 0, 16);
-	if (!Vehicle::IsValidID(veh)) return CMD_ERROR;
 
-	Vehicle *v = Vehicle::Get(veh);
-	if (!CheckOwnership(v->owner)) return CMD_ERROR;
+	Vehicle *v = Vehicle::GetIfValid(veh);
+	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	VehicleOrderID order_number = GB(p1, 16, 8);
 	Order *order = GetVehicleOrder(v, order_number);
@@ -115,10 +114,9 @@ CommandCost CmdSetVehicleOnTime(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	if (!_settings_game.order.timetabling) return CMD_ERROR;
 
 	VehicleID veh = GB(p1, 0, 16);
-	if (!Vehicle::IsValidID(veh)) return CMD_ERROR;
 
-	Vehicle *v = Vehicle::Get(veh);
-	if (!CheckOwnership(v->owner)) return CMD_ERROR;
+	Vehicle *v = Vehicle::GetIfValid(veh);
+	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		v->lateness_counter = 0;
@@ -143,10 +141,9 @@ CommandCost CmdAutofillTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	if (!_settings_game.order.timetabling) return CMD_ERROR;
 
 	VehicleID veh = GB(p1, 0, 16);
-	if (!Vehicle::IsValidID(veh)) return CMD_ERROR;
 
-	Vehicle *v = Vehicle::Get(veh);
-	if (!CheckOwnership(v->owner)) return CMD_ERROR;
+	Vehicle *v = Vehicle::GetIfValid(veh);
+	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		if (HasBit(p2, 0)) {

@@ -72,12 +72,14 @@ uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e);
 
 static inline void IncreaseGroupNumVehicle(GroupID id_g)
 {
-	if (Group::IsValidID(id_g)) Group::Get(id_g)->num_vehicle++;
+	Group *g = Group::GetIfValid(id_g);
+	if (g != NULL) g->num_vehicle++;
 }
 
 static inline void DecreaseGroupNumVehicle(GroupID id_g)
 {
-	if (Group::IsValidID(id_g)) Group::Get(id_g)->num_vehicle--;
+	Group *g = Group::GetIfValid(id_g);
+	if (g != NULL) g->num_vehicle--;
 }
 
 

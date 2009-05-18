@@ -19,9 +19,8 @@
 
 /* static */ bool AIVehicle::IsValidVehicle(VehicleID vehicle_id)
 {
-	if (!::Vehicle::IsValidID(vehicle_id)) return false;
-	const Vehicle *v = ::Vehicle::Get(vehicle_id);
-	return v->owner == _current_company && (v->IsPrimaryVehicle() || (v->type == VEH_TRAIN && ::IsFreeWagon(v)));
+	const Vehicle *v = ::Vehicle::GetIfValid(vehicle_id);
+	return v != NULL && v->owner == _current_company && (v->IsPrimaryVehicle() || (v->type == VEH_TRAIN && ::IsFreeWagon(v)));
 }
 
 /* static */ int32 AIVehicle::GetNumWagons(VehicleID vehicle_id)

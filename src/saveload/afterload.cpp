@@ -698,8 +698,8 @@ bool AfterLoadGame()
 		 * becomes company 0, unless we are in the scenario editor where all the
 		 * companies are 'invalid'.
 		 */
-		if (!_network_dedicated && Company::IsValidID(COMPANY_FIRST)) {
-			c = Company::Get(COMPANY_FIRST);
+		c = Company::GetIfValid(COMPANY_FIRST);
+		if (!_network_dedicated && c != NULL) {
 			c->settings = _settings_client.company;
 		}
 	}

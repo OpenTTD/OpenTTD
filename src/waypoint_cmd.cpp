@@ -314,10 +314,8 @@ static bool IsUniqueWaypointName(const char *name)
  */
 CommandCost CmdRenameWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!Waypoint::IsValidID(p1)) return CMD_ERROR;
-
-	Waypoint *wp = Waypoint::Get(p1);
-	if (!CheckOwnership(wp->owner)) return CMD_ERROR;
+	Waypoint *wp = Waypoint::GetIfValid(p1);
+	if (wp == NULL || !CheckOwnership(wp->owner)) return CMD_ERROR;
 
 	bool reset = StrEmpty(text);
 

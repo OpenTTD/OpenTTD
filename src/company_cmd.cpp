@@ -76,8 +76,8 @@ void SetLocalCompany(CompanyID new_company)
 	_local_company = new_company;
 
 	/* Do not update the settings if we are in the intro GUI */
-	if (Company::IsValidID(new_company) && _game_mode != GM_MENU) {
-		const Company *c = Company::Get(new_company);
+	const Company *c = Company::GetIfValid(new_company);
+	if (_game_mode != GM_MENU && c != NULL) {
 		_settings_client.company = c->settings;
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}
@@ -150,8 +150,8 @@ void InvalidateCompanyWindows(const Company *company)
 bool CheckCompanyHasMoney(CommandCost cost)
 {
 	if (cost.GetCost() > 0) {
-		CompanyID company = _current_company;
-		if (Company::IsValidID(company) && cost.GetCost() > Company::Get(company)->money) {
+		const Company *c = Company::GetIfValid(_current_company);
+		if (c != NULL && cost.GetCost() > c->money) {
 			SetDParam(0, cost.GetCost());
 			_error_message = STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY;
 			return false;
@@ -187,9 +187,8 @@ static void SubtractMoneyFromAnyCompany(Company *c, CommandCost cost)
 
 void SubtractMoneyFromCompany(CommandCost cost)
 {
-	CompanyID cid = _current_company;
-
-	if (Company::IsValidID(cid)) SubtractMoneyFromAnyCompany(Company::Get(cid), cost);
+	Company *c = Company::GetIfValid(_current_company);
+	if (c != NULL) SubtractMoneyFromAnyCompany(c, cost);
 }
 
 void SubtractMoneyFromCompanyFract(CompanyID company, CommandCost cst)
@@ -499,9 +498,9 @@ void OnTick_Companies()
 {
 	if (_game_mode == GM_EDITOR) return;
 
-	if (Company::IsValidID((CompanyID)_cur_company_tick_index)) {
-		Company *c = Company::Get((CompanyID)_cur_company_tick_index);
-		if (c->name_1 != 0) GenerateCompanyName(c);
+	Company *c = Company::GetIfValid(_cur_company_tick_index);
+	if (c != NULL && c->name_1 != 0) {
+		GenerateCompanyName(c);
 	}
 
 	if (_next_competitor_start == 0) {
@@ -567,9 +566,9 @@ void CompaniesYearlyLoop()
  */
 CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!Company::IsValidID(_current_company)) return CMD_ERROR;
+	Company *c = Company::GetIfValid(_current_company);
+	if (c == NULL) return CMD_ERROR;
 
-	Company *c = Company::Get(_current_company);
 	switch (GB(p1, 0, 3)) {
 		case 0:
 			if (c->settings.engine_renew == HasBit(p2, 0)) return CMD_ERROR;
@@ -817,13 +816,10 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			break;
 
 		case 2: { // Delete a company
-			Company *c;
-
-			if (!Company::IsValidID((CompanyID)p2)) return CMD_ERROR;
+			Company *c = Company::GetIfValid(p2);
+			if (c == NULL) return CMD_ERROR;
 
 			if (!(flags & DC_EXEC)) return CommandCost();
-
-			c = Company::Get((CompanyID)p2);
 
 			/* Delete any open window of the company */
 			DeleteCompanyWindows(c->index);

@@ -440,9 +440,8 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  */
 CommandCost CmdSellAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
-
-	Vehicle *v = Vehicle::Get(p1);
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL) return CMD_ERROR;
 
 	if (v->type != VEH_AIRCRAFT || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_AIRCRAFT_MUST_BE_STOPPED);
@@ -494,9 +493,8 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, DoCommandFlag flags, uint32 
 		return SendAllVehiclesToDepot(VEH_AIRCRAFT, flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), p1);
 	}
 
-	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
-
-	Vehicle *v = Vehicle::Get(p1);
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL) return CMD_ERROR;
 
 	if (v->type != VEH_AIRCRAFT) return CMD_ERROR;
 
@@ -518,9 +516,8 @@ CommandCost CmdRefitAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 {
 	byte new_subtype = GB(p2, 8, 8);
 
-	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
-
-	Vehicle *v = Vehicle::Get(p1);
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL) return CMD_ERROR;
 
 	if (v->type != VEH_AIRCRAFT || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_AIRCRAFT_MUST_BE_STOPPED);
@@ -889,8 +886,8 @@ static byte AircraftGetEntryPoint(const Vehicle *v, const AirportFTAClass *apc)
 	 * or it will simply crash in next tick */
 	TileIndex tile = 0;
 
-	if (Station::IsValidID(v->u.air.targetairport)) {
-		const Station *st = Station::Get(v->u.air.targetairport);
+	const Station *st = Station::GetIfValid(v->u.air.targetairport);
+	if (st != NULL) {
 		/* Make sure we don't go to INVALID_TILE if the airport has been removed. */
 		tile = (st->airport_tile != INVALID_TILE) ? st->airport_tile : st->xy;
 	}
@@ -921,7 +918,7 @@ static bool AircraftController(Vehicle *v)
 	int count;
 
 	/* NULL if station is invalid */
-	const Station *st = Station::IsValidID(v->u.air.targetairport) ? Station::Get(v->u.air.targetairport) : NULL;
+	const Station *st = Station::GetIfValid(v->u.air.targetairport);
 	/* INVALID_TILE if there is no station */
 	TileIndex tile = INVALID_TILE;
 	if (st != NULL) {
@@ -2049,11 +2046,8 @@ Station *GetTargetAirportIfValid(const Vehicle *v)
 {
 	assert(v->type == VEH_AIRCRAFT);
 
-	StationID sid = v->u.air.targetairport;
-
-	if (!Station::IsValidID(sid)) return NULL;
-
-	Station *st = Station::Get(sid);
+	Station *st = Station::GetIfValid(v->u.air.targetairport);
+	if (st == NULL) return NULL;
 
 	return st->airport_tile == INVALID_TILE ? NULL : st;
 }

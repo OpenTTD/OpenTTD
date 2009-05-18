@@ -819,13 +819,8 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
  */
 CommandCost CmdSellShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Vehicle *v;
-
-	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
-
-	v = Vehicle::Get(p1);
-
-	if (v->type != VEH_SHIP || !CheckOwnership(v->owner)) return CMD_ERROR;
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL || v->type != VEH_SHIP || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (HASBITS(v->vehstatus, VS_CRASHED)) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
 
@@ -870,11 +865,8 @@ CommandCost CmdSendShipToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		return SendAllVehiclesToDepot(VEH_SHIP, flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), p1);
 	}
 
-	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
-
-	Vehicle *v = Vehicle::Get(p1);
-
-	if (v->type != VEH_SHIP) return CMD_ERROR;
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL || v->type != VEH_SHIP) return CMD_ERROR;
 
 	return v->SendToDepot(flags, (DepotCommand)(p2 & DEPOT_COMMAND_MASK));
 }
@@ -892,17 +884,14 @@ CommandCost CmdSendShipToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
  */
 CommandCost CmdRefitShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Vehicle *v;
 	CommandCost cost(EXPENSES_SHIP_RUN);
 	CargoID new_cid = GB(p2, 0, 8); // gets the cargo number
 	byte new_subtype = GB(p2, 8, 8);
 	uint16 capacity = CALLBACK_FAILED;
 
-	if (!Vehicle::IsValidID(p1)) return CMD_ERROR;
+	Vehicle *v = Vehicle::GetIfValid(p1);
 
-	v = Vehicle::Get(p1);
-
-	if (v->type != VEH_SHIP || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL || v->type != VEH_SHIP || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT);
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_REFIT_DESTROYED_VEHICLE);
 

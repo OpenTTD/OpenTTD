@@ -2911,10 +2911,8 @@ static bool IsUniqueStationName(const char *name)
  */
 CommandCost CmdRenameStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!Station::IsValidID(p1)) return CMD_ERROR;
-
-	Station *st = Station::Get(p1);
-	if (!CheckOwnership(st->owner)) return CMD_ERROR;
+	Station *st = Station::GetIfValid(p1);
+	if (st == NULL || !CheckOwnership(st->owner)) return CMD_ERROR;
 
 	bool reset = StrEmpty(text);
 
