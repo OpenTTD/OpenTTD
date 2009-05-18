@@ -2086,8 +2086,8 @@ bool HasStationInUse(StationID station, CompanyID company)
 
 static CommandCost RemoveBuoy(Station *st, DoCommandFlag flags)
 {
-	/* XXX: strange stuff */
-	if (!Company::IsValidID(_current_company)) return_cmd_error(INVALID_STRING_ID);
+	/* XXX: strange stuff, allow clearing as invalid company when clearing landscape */
+	if (!Company::IsValidID(_current_company) && !(flags & DC_BANKRUPT)) return_cmd_error(INVALID_STRING_ID);
 
 	TileIndex tile = st->dock_tile;
 
