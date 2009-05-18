@@ -1260,7 +1260,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			uint type = ReadByte(ls);
 			switch (type) {
 				default: return false;
-				case 0x00 /* VEH_INVALID */: v = new (_current_vehicle_id) InvalidVehicle();  break;
+				case 0x00 /* VEH_INVALID  */: v = new (_current_vehicle_id) InvalidVehicle();  break;
 				case 0x25 /* MONORAIL     */:
 				case 0x20 /* VEH_TRAIN    */: v = new (_current_vehicle_id) Train();           break;
 				case 0x21 /* VEH_ROAD     */: v = new (_current_vehicle_id) RoadVehicle();     break;
