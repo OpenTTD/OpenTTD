@@ -118,7 +118,7 @@ static bool CheckTrackCombination(TileIndex tile, TrackBits to_build, uint flags
 	TrackBits future;  // The track layout we want to build
 	_error_message = STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION;
 
-	if (!IsPlainRailTile(tile)) return false;
+	if (!IsPlainRail(tile)) return false;
 
 	/* So, we have a tile with tracks on it (and possibly signals). Let's see
 	 * what tracks first */
@@ -321,7 +321,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		case MP_RAILWAY:
 			if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
-			if (!IsPlainRailTile(tile)) return CMD_ERROR;
+			if (!IsPlainRail(tile)) return CMD_ERROR;
 
 			if (!IsCompatibleRail(GetRailType(tile), railtype)) return_cmd_error(STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION);
 
@@ -481,7 +481,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		case MP_RAILWAY: {
 			TrackBits present;
 
-			if (!IsPlainRailTile(tile) ||
+			if (!IsPlainRail(tile) ||
 					(_current_company != OWNER_WATER && !CheckTileOwnership(tile)) ||
 					!EnsureNoTrainOnTrack(tile, track)) {
 				return CMD_ERROR;
@@ -825,14 +825,14 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 
 	if (sigtype > SIGTYPE_LAST) return CMD_ERROR;
 
-	if (!ValParamTrackOrientation(track) || !IsTileType(tile, MP_RAILWAY) || !EnsureNoTrainOnTrack(tile, track))
+	/* You can only build signals on plain rail tiles, and the selected track must exist */
+	if (!ValParamTrackOrientation(track) || !IsPlainRailTile(tile) ||
+			!EnsureNoTrainOnTrack(tile, track) || !HasTrack(tile, track)) {
 		return CMD_ERROR;
+	}
 
 	/* Protect against invalid signal copying */
 	if (p2 != 0 && (p2 & SignalOnTrack(track)) == 0) return CMD_ERROR;
-
-	/* You can only build signals on plain rail tiles, and the selected track must exist */
-	if (!IsPlainRailTile(tile) || !HasTrack(tile, track)) return CMD_ERROR;
 
 	if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
@@ -1047,7 +1047,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 	end_tile = p1;
 	if (signal_density == 0 || signal_density > 20) return CMD_ERROR;
 
-	if (!IsTileType(tile, MP_RAILWAY) || !IsPlainRailTile(tile)) return CMD_ERROR;
+	if (!IsPlainRailTile(tile)) return CMD_ERROR;
 
 	/* for vertical/horizontal tracks, double the given signals density
 	 * since the original amount will be too dense (shorter tracks) */
@@ -1172,7 +1172,6 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1
 	Track track = (Track)GB(p1, 0, 3);
 
 	if (!ValParamTrackOrientation(track) ||
-			!IsTileType(tile, MP_RAILWAY) ||
 			!IsPlainRailTile(tile) ||
 			!HasTrack(tile, track) ||
 			!EnsureNoTrainOnTrack(tile, track) ||
@@ -1456,10 +1455,11 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlag flags)
 	CommandCost ret;
 
 	if (flags & DC_AUTO) {
-		if (!IsTileOwner(tile, _current_company))
+		if (!IsTileOwner(tile, _current_company)) {
 			return_cmd_error(STR_ERROR_AREA_IS_OWNED_BY_ANOTHER);
+		}
 
-		if (IsPlainRailTile(tile)) {
+		if (IsPlainRail(tile)) {
 			return_cmd_error(STR_ERROR_MUST_REMOVE_RAILROAD_TRACK);
 		} else {
 			return_cmd_error(STR_ERROR_BUILDING_MUST_BE_DEMOLISHED);
@@ -1889,7 +1889,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 	_drawtile_track_palette = COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile));
 
-	if (IsPlainRailTile(ti->tile)) {
+	if (IsPlainRail(ti->tile)) {
 		TrackBits rails = GetTrackBits(ti->tile);
 
 		DrawTrackBits(ti, rails);
@@ -2059,7 +2059,7 @@ static uint GetSlopeZ_Track(TileIndex tile, uint x, uint y)
 	Slope tileh = GetTileSlope(tile, &z);
 
 	if (tileh == SLOPE_FLAT) return z;
-	if (IsPlainRailTile(tile)) {
+	if (IsPlainRail(tile)) {
 		z += ApplyFoundationToSlope(GetRailFoundation(tileh, GetTrackBits(tile)), &tileh);
 		return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
 	} else {
@@ -2069,7 +2069,7 @@ static uint GetSlopeZ_Track(TileIndex tile, uint x, uint y)
 
 static Foundation GetFoundation_Track(TileIndex tile, Slope tileh)
 {
-	return IsPlainRailTile(tile) ? GetRailFoundation(tileh, GetTrackBits(tile)) : FlatteningFoundation(tileh);
+	return IsPlainRail(tile) ? GetRailFoundation(tileh, GetTrackBits(tile)) : FlatteningFoundation(tileh);
 }
 
 static void GetAcceptedCargo_Track(TileIndex tile, AcceptedCargo ac)
@@ -2100,7 +2100,7 @@ static void TileLoop_Track(TileIndex tile)
 
 			/* for non-flat track, use lower part of track
 			 * in other cases, use the highest part with track */
-			if (IsPlainRailTile(tile)) {
+			if (IsPlainRail(tile)) {
 				TrackBits track = GetTrackBits(tile);
 				Foundation f = GetRailFoundation(slope, track);
 
@@ -2158,7 +2158,7 @@ static void TileLoop_Track(TileIndex tile)
 			break;
 	}
 
-	if (!IsPlainRailTile(tile)) return;
+	if (!IsPlainRail(tile)) return;
 
 	new_ground = RAIL_GROUND_GRASS;
 
@@ -2180,7 +2180,7 @@ static void TileLoop_Track(TileIndex tile)
 							(rail & TRACK_BIT_X)
 						)) {
 					TileIndex n = tile + TileDiffXY(0, -1);
-					TrackBits nrail = (IsTileType(n, MP_RAILWAY) && IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
+					TrackBits nrail = (IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
 
 					if (!IsTileType(n, MP_RAILWAY) ||
 							!IsTileOwner(n, owner) ||
@@ -2195,7 +2195,7 @@ static void TileLoop_Track(TileIndex tile)
 							(rail & TRACK_BIT_X)
 						)) {
 					TileIndex n = tile + TileDiffXY(0, 1);
-					TrackBits nrail = (IsTileType(n, MP_RAILWAY) && IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
+					TrackBits nrail = (IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
 
 					if (!IsTileType(n, MP_RAILWAY) ||
 							!IsTileOwner(n, owner) ||
@@ -2211,7 +2211,7 @@ static void TileLoop_Track(TileIndex tile)
 							(rail & TRACK_BIT_Y)
 						)) {
 					TileIndex n = tile + TileDiffXY(-1, 0);
-					TrackBits nrail = (IsTileType(n, MP_RAILWAY) && IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
+					TrackBits nrail = (IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
 
 					if (!IsTileType(n, MP_RAILWAY) ||
 							!IsTileOwner(n, owner) ||
@@ -2226,7 +2226,7 @@ static void TileLoop_Track(TileIndex tile)
 							(rail & TRACK_BIT_Y)
 						)) {
 					TileIndex n = tile + TileDiffXY(1, 0);
-					TrackBits nrail = (IsTileType(n, MP_RAILWAY) && IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
+					TrackBits nrail = (IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
 
 					if (!IsTileType(n, MP_RAILWAY) ||
 							!IsTileOwner(n, owner) ||
@@ -2252,7 +2252,7 @@ set_ground:
 static TrackStatus GetTileTrackStatus_Track(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
 	/* Case of half tile slope with water. */
-	if (mode == TRANSPORT_WATER && IsPlainRailTile(tile) && GetRailGroundType(tile) == RAIL_GROUND_WATER) {
+	if (mode == TRANSPORT_WATER && IsPlainRail(tile) && GetRailGroundType(tile) == RAIL_GROUND_WATER) {
 		TrackBits tb = GetTrackBits(tile);
 		switch (tb) {
 			default: NOT_REACHED();
@@ -2555,7 +2555,7 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlag flags, uint
 {
 	uint z_old;
 	Slope tileh_old = GetTileSlope(tile, &z_old);
-	if (IsPlainRailTile(tile)) {
+	if (IsPlainRail(tile)) {
 		TrackBits rail_bits = GetTrackBits(tile);
 		/* Is there flat water on the lower halftile, that must be cleared expensively? */
 		bool was_water = (GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(tileh_old));

@@ -611,7 +611,7 @@ start_at:
 
 			/* Not a regular rail tile?
 			 * Then we can't use the code below, but revert to more general code. */
-			if (!IsTileType(tile, MP_RAILWAY) || !IsPlainRailTile(tile)) {
+			if (!IsPlainRailTile(tile)) {
 				/* We found a tile which is not a normal railway tile.
 				 * Determine which tracks that exist on this tile. */
 				bits = TrackdirBitsToTrackBits(TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0)) & DiagdirReachesTrackdirs(direction));

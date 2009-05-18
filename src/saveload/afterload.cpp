@@ -683,7 +683,7 @@ bool AfterLoadGame()
 		for (TileIndex t = 0; t < map_size; t++) {
 			switch (GetTileType(t)) {
 				case MP_RAILWAY:
-					if (IsPlainRailTile(t)) {
+					if (IsPlainRail(t)) {
 						/* Swap ground type and signal type for plain rail tiles, so the
 						 * ground type uses the same bits as for depots and waypoints. */
 						uint tmp = GB(_m[t].m4, 0, 4);
@@ -1548,7 +1548,7 @@ bool AfterLoadGame()
 				if (IsLevelCrossing(t)) {
 					if (!Company::IsValidID(GetTileOwner(t))) FixOwnerOfRailTrack(t);
 				}
-			} else if (IsTileType(t, MP_RAILWAY) && IsPlainRailTile(t)) {
+			} else if (IsPlainRailTile(t)) {
 				if (!Company::IsValidID(GetTileOwner(t))) FixOwnerOfRailTrack(t);
 			}
 		}
