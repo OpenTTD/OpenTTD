@@ -714,7 +714,7 @@ public:
 
 
 /* Used by clients, to connect to a server */
-void NetworkClientConnectGame(NetworkAddress address)
+void NetworkClientConnectGame(NetworkAddress address, CompanyID join_as)
 {
 	if (!_network_available) return;
 
@@ -722,6 +722,7 @@ void NetworkClientConnectGame(NetworkAddress address)
 
 	strecpy(_settings_client.network.last_host, address.GetHostname(), lastof(_settings_client.network.last_host));
 	_settings_client.network.last_port = address.GetPort();
+	_network_join_as = join_as;
 
 	NetworkDisconnect();
 	NetworkInitialize();
@@ -777,9 +778,6 @@ bool NetworkServerStart()
 	_frame_counter_max = 0;
 	_last_sync_frame = 0;
 	_network_own_client_id = CLIENT_ID_SERVER;
-
-	/* Non-dedicated server will always be company #1 */
-	if (!_network_dedicated) _network_playas = COMPANY_FIRST;
 
 	_network_clients_connected = 0;
 
@@ -1126,6 +1124,3 @@ bool IsNetworkCompatibleVersion(const char *other)
 }
 
 #endif /* ENABLE_NETWORK */
-
-/* NOTE: this variable needs to be always available */
-CompanyID _network_playas;

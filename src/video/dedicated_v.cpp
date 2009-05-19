@@ -255,7 +255,6 @@ void VideoDriver_Dedicated::MainLoop()
 	/* Load the dedicated server stuff */
 	_is_network_server = true;
 	_network_dedicated = true;
-	_network_playas = COMPANY_SPECTATOR;
 	_local_company = COMPANY_SPECTATOR;
 
 	/* If SwitchMode is SM_LOAD, it means that the user used the '-g' options */

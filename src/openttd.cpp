@@ -675,26 +675,24 @@ int ttd_main(int argc, char *argv[])
 		if (network_conn != NULL) {
 			const char *port = NULL;
 			const char *company = NULL;
-			uint16 rport;
-
-			rport = NETWORK_DEFAULT_PORT;
-			_network_playas = COMPANY_NEW_COMPANY;
+			uint16 rport = NETWORK_DEFAULT_PORT;
+			CompanyID join_as = COMPANY_NEW_COMPANY;
 
 			ParseConnectionString(&company, &port, network_conn);
 
 			if (company != NULL) {
-				_network_playas = (CompanyID)atoi(company);
+				join_as = (CompanyID)atoi(company);
 
-				if (_network_playas != COMPANY_SPECTATOR) {
-					_network_playas--;
-					if (_network_playas >= MAX_COMPANIES) return false;
+				if (join_as != COMPANY_SPECTATOR) {
+					join_as--;
+					if (join_as >= MAX_COMPANIES) return false;
 				}
 			}
 			if (port != NULL) rport = atoi(port);
 
 			LoadIntroGame();
 			_switch_mode = SM_NONE;
-			NetworkClientConnectGame(NetworkAddress(network_conn, rport));
+			NetworkClientConnectGame(NetworkAddress(network_conn, rport), join_as);
 		}
 	}
 #endif /* ENABLE_NETWORK */
@@ -1197,8 +1195,7 @@ void GameLoop()
 		if (_network_reconnect > 0 && --_network_reconnect == 0) {
 			/* This means that we want to reconnect to the last host
 			 * We do this here, because it means that the network is really closed */
-			_network_playas = COMPANY_SPECTATOR;
-			NetworkClientConnectGame(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
+			NetworkClientConnectGame(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port), COMPANY_SPECTATOR);
 		}
 		/* Singleplayer */
 		StateGameLoop();

@@ -448,7 +448,6 @@ static void ChangeNetworkOwner(Owner current_owner, Owner new_owner)
 	if (!_networking) return;
 
 	if (current_owner == _local_company) {
-		_network_playas = new_owner;
 		SetLocalCompany(new_owner);
 	}
 

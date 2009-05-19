@@ -33,8 +33,4 @@ static inline void NetworkDrawChatMessage() {}
 #define _is_network_server 0
 
 #endif /* ENABLE_NETWORK */
-
-/** As which company do we play? */
-extern CompanyID _network_playas;
-
 #endif /* NETWORK_H */

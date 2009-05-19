@@ -722,10 +722,10 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			/* Joining Client:
 			 * _local_company: COMPANY_SPECTATOR
-			 * _network_playas/cid = requested company/clientid
+			 * cid = clientid
 			 *
 			 * Other client(s)/server:
-			 * _local_company/_network_playas: what they play as
+			 * _local_company: what they play as
 			 * cid = requested company/company of joining client */
 			ClientID cid = (ClientID)p2;
 
@@ -744,8 +744,6 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				if (_network_server) {
 					ci->client_playas = COMPANY_SPECTATOR;
 					NetworkUpdateClientInfo(ci->client_id);
-				} else if (_local_company == COMPANY_SPECTATOR) {
-					_network_playas = COMPANY_SPECTATOR;
 				}
 				break;
 			}

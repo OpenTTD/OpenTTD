@@ -769,11 +769,6 @@ DEF_CONSOLE_CMD(ConNetworkClients)
 
 DEF_CONSOLE_CMD(ConNetworkConnect)
 {
-	char *ip;
-	const char *port = NULL;
-	const char *company = NULL;
-	uint16 rport;
-
 	if (argc == 0) {
 		IConsoleHelp("Connect to a remote OTTD server and join the game. Usage: 'connect <ip>'");
 		IConsoleHelp("IP can contain port and company: 'IP[[#Company]:Port]', eg: 'server.ottd.org#2:443'");
@@ -784,23 +779,25 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 	if (argc < 2) return false;
 	if (_networking) NetworkDisconnect(); // we are in network-mode, first close it!
 
-	ip = argv[1];
+	const char *port = NULL;
+	const char *company = NULL;
+	char *ip = argv[1];
 	/* Default settings: default port and new company */
-	rport = NETWORK_DEFAULT_PORT;
-	_network_playas = COMPANY_NEW_COMPANY;
+	uint16 rport = NETWORK_DEFAULT_PORT;
+	CompanyID join_as = COMPANY_NEW_COMPANY;
 
 	ParseConnectionString(&company, &port, ip);
 
 	IConsolePrintF(CC_DEFAULT, "Connecting to %s...", ip);
 	if (company != NULL) {
-		_network_playas = (CompanyID)atoi(company);
-		IConsolePrintF(CC_DEFAULT, "    company-no: %d", _network_playas);
+		join_as = (CompanyID)atoi(company);
+		IConsolePrintF(CC_DEFAULT, "    company-no: %d", join_as);
 
 		/* From a user pov 0 is a new company, internally it's different and all
 		 * companies are offset by one to ease up on users (eg companies 1-8 not 0-7) */
-		if (_network_playas != COMPANY_SPECTATOR) {
-			if (_network_playas > MAX_COMPANIES) return false;
-			_network_playas--;
+		if (join_as != COMPANY_SPECTATOR) {
+			if (join_as > MAX_COMPANIES) return false;
+			join_as--;
 		}
 	}
 	if (port != NULL) {
@@ -808,7 +805,7 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 		IConsolePrintF(CC_DEFAULT, "    port: %s", port);
 	}
 
-	NetworkClientConnectGame(NetworkAddress(ip, rport));
+	NetworkClientConnectGame(NetworkAddress(ip, rport), join_as);
 
 	return true;
 }

@@ -44,6 +44,9 @@ static uint8 _network_server_max_companies;
 /** Maximum number of spectators of the currently joined server. */
 static uint8 _network_server_max_spectators;
 
+/** Who would we like to join as. */
+CompanyID _network_join_as;
+
 /** Make sure the unique ID length is the same as a md5 hash. */
 assert_compile(NETWORK_UNIQUE_ID_LENGTH == 16 * 2 + 1);
 
@@ -135,7 +138,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 	p = NetworkSend_Init(PACKET_CLIENT_JOIN);
 	p->Send_string(_openttd_revision);
 	p->Send_string(_settings_client.network.client_name); // Client name
-	p->Send_uint8 (_network_playas);      // PlayAs
+	p->Send_uint8 (_network_join_as);     // PlayAs
 	p->Send_uint8 (NETLANG_ANY);          // Language
 	p->Send_string(_settings_client.network.network_id);
 	MY_CLIENT->Send_Packet(p);
@@ -406,9 +409,6 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 
 	if (MY_CLIENT->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
 
-	/* Do we receive a change of data? Most likely we changed playas */
-	if (client_id == _network_own_client_id) _network_playas = playas;
-
 	ci = NetworkFindClientInfoFromClientID(client_id);
 	if (ci != NULL) {
 		if (playas == ci->client_playas && strcmp(name, ci->client_name) != 0) {
@@ -620,10 +620,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 		/* New company/spectator (invalid company) or company we want to join is not active
 		 * Switch local company to spectator and await the server's judgement */
-		if (_network_playas == COMPANY_NEW_COMPANY || !Company::IsValidID(_network_playas)) {
+		if (_network_join_as == COMPANY_NEW_COMPANY || !Company::IsValidID(_network_join_as)) {
 			SetLocalCompany(COMPANY_SPECTATOR);
 
-			if (_network_playas != COMPANY_SPECTATOR) {
+			if (_network_join_as != COMPANY_SPECTATOR) {
 				/* We have arrived and ready to start playing; send a command to make a new company;
 				 * the server will give us a client-id and let us in */
 				_network_join_status = NETWORK_JOIN_STATUS_REGISTERING;
@@ -632,7 +632,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 			}
 		} else {
 			/* take control over an existing company */
-			SetLocalCompany(_network_playas);
+			SetLocalCompany(_network_join_as);
 		}
 	}
 
@@ -845,7 +845,6 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MOVE)
 	if (!Company::IsValidID(company_id)) company_id = COMPANY_SPECTATOR;
 
 	if (client_id == _network_own_client_id) {
-		_network_playas = company_id;
 		SetLocalCompany(company_id);
 	}
 

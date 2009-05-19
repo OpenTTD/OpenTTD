@@ -23,6 +23,8 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_MOVE)(CompanyID company, const char 
 NetworkRecvStatus NetworkClient_ReadPackets(NetworkClientSocket *cs);
 void NetworkClient_Connected();
 
+extern CompanyID _network_join_as;
+
 #endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CLIENT_H */
