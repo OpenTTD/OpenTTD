@@ -187,7 +187,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(uint count, const Con
 
 		this->Send_Packet(p);
 		count -= p_count;
-		content_ids += count;
+		content_ids += p_count;
 	}
 }
 
@@ -271,7 +271,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 
 		this->Send_Packet(p);
 		count -= p_count;
-		content_ids += count;
+		content_ids += p_count;
 	}
 
 	free(ids);
