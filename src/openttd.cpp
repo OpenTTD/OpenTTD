@@ -576,7 +576,7 @@ int ttd_main(int argc, char *argv[])
 	/* This must be done early, since functions use the InvalidateWindow* calls */
 	InitWindowSystem();
 
-	if (graphics_set == NULL) graphics_set = strdup(_ini_graphics_set);
+	if (graphics_set == NULL && _ini_graphics_set != NULL) graphics_set = strdup(_ini_graphics_set);
 	if (!SetGraphicsSet(graphics_set)) {
 		StrEmpty(graphics_set) ?
 			usererror("Failed to find a graphics set. Please acquire a graphics set for OpenTTD.") :
@@ -588,7 +588,7 @@ int ttd_main(int argc, char *argv[])
 	GfxInitPalettes();
 
 	DEBUG(misc, 1, "Loading blitter...");
-	if (blitter == NULL) blitter = strdup(_ini_blitter);
+	if (blitter == NULL && _ini_blitter != NULL) blitter = strdup(_ini_blitter);
 	if (BlitterFactoryBase::SelectBlitter(blitter) == NULL)
 		StrEmpty(blitter) ?
 			usererror("Failed to autoprobe blitter") :
@@ -597,7 +597,7 @@ int ttd_main(int argc, char *argv[])
 
 	DEBUG(driver, 1, "Loading drivers...");
 
-	if (sounddriver == NULL) sounddriver = strdup(_ini_sounddriver);
+	if (sounddriver == NULL && _ini_sounddriver != NULL) sounddriver = strdup(_ini_sounddriver);
 	_sound_driver = (SoundDriver*)SoundDriverFactoryBase::SelectDriver(sounddriver, Driver::DT_SOUND);
 	if (_sound_driver == NULL) {
 		StrEmpty(sounddriver) ?
@@ -606,7 +606,7 @@ int ttd_main(int argc, char *argv[])
 	}
 	free(sounddriver);
 
-	if (musicdriver == NULL) musicdriver = strdup(_ini_musicdriver);
+	if (musicdriver == NULL && _ini_musicdriver != NULL) musicdriver = strdup(_ini_musicdriver);
 	_music_driver = (MusicDriver*)MusicDriverFactoryBase::SelectDriver(musicdriver, Driver::DT_MUSIC);
 	if (_music_driver == NULL) {
 		StrEmpty(musicdriver) ?
@@ -615,7 +615,7 @@ int ttd_main(int argc, char *argv[])
 	}
 	free(musicdriver);
 
-	if (videodriver == NULL) videodriver = strdup(_ini_videodriver);
+	if (videodriver == NULL && _ini_videodriver != NULL) videodriver = strdup(_ini_videodriver);
 	_video_driver = (VideoDriver*)VideoDriverFactoryBase::SelectDriver(videodriver, Driver::DT_VIDEO);
 	if (_video_driver == NULL) {
 		StrEmpty(videodriver) ?
