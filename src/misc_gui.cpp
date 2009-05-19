@@ -104,13 +104,7 @@ public:
 	}
 
 	LandInfoWindow(TileIndex tile) : Window(&_land_info_desc) {
-		Company *c = Company::Get(Company::IsValidID(_local_company) ? _local_company : COMPANY_FIRST);
 		Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
-
-		Money old_money = c->money;
-		c->money = INT64_MAX;
-		CommandCost costclear = DoCommand(tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR);
-		c->money = old_money;
 
 		/* Because build_date is not set yet in every TileDesc, we make sure it is empty */
 		TileDesc td;
@@ -158,15 +152,22 @@ public:
 
 		/* Cost to clear/revenue when cleared */
 		StringID str = STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A;
-		if (CmdSucceeded(costclear)) {
-			Money cost = costclear.GetCost();
-			if (cost < 0) {
-				cost = -cost; // Negate negative cost to a positive revenue
-				str = STR_REVENUE_WHEN_CLEARED;
-			} else {
-				str = STR_LAND_AREA_INFORMATION_COST_TO_CLEAR;
+		Company *c = Company::GetIfValid(_local_company);
+		if (c != NULL) {
+			Money old_money = c->money;
+			c->money = INT64_MAX;
+			CommandCost costclear = DoCommand(tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR);
+			c->money = old_money;
+			if (CmdSucceeded(costclear)) {
+				Money cost = costclear.GetCost();
+				if (cost < 0) {
+					cost = -cost; // Negate negative cost to a positive revenue
+					str = STR_REVENUE_WHEN_CLEARED;
+				} else {
+					str = STR_LAND_AREA_INFORMATION_COST_TO_CLEAR;
+				}
+				SetDParam(0, cost);
 			}
-			SetDParam(0, cost);
 		}
 		GetString(this->landinfo_data[line_nr], str, lastof(this->landinfo_data[line_nr]));
 		line_nr++;
