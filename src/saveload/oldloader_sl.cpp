@@ -96,6 +96,17 @@ static void FixTTDMapArray()
 	FixOldMapArray();
 }
 
+static void FixTTDDepots()
+{
+	const Depot *d;
+	FOR_ALL_DEPOTS_FROM(d, 252) {
+		if (!IsRoadDepotTile(d->xy) && !IsRailDepotTile(d->xy) && !IsShipDepotTile(d->xy) && !IsHangarTile(d->xy)) {
+			/** Workaround for SVXConverter bug, depots 252-255 could be invalid */
+			delete d;
+		}
+	}
+}
+
 #define FIXNUM(x, y, z) (((((x) << 16) / (y)) + 1) << z)
 
 static uint32 RemapOldTownName(uint32 townnameparts, byte old_town_name_type)
@@ -1769,6 +1780,7 @@ bool LoadTTDMain(LoadgameState *ls)
 	DEBUG(oldloader, 3, "Done, converting game data...");
 
 	FixTTDMapArray();
+	FixTTDDepots();
 
 	/* Fix some general stuff */
 	_settings_game.game_creation.landscape = _settings_game.game_creation.landscape & 0xF;
