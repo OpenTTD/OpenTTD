@@ -668,7 +668,6 @@ STR_OFF                                                         :Kapalı
 STR_SUMMARY                                                     :Özet
 STR_FULL                                                        :Tam
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Şehir listesi
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -702,9 +701,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Kapalı
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Açık
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Sübvansiyonları göster
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Sübvansiyonlar
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Dünya haritası
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra görünüm
 STR_MAP_MENU_SIGN_LIST                                          :Tabela listesi
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Şehir listesi
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Dünya nüfusu: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Görünüm {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Görünümü kopyala
@@ -851,6 +855,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Kullanı
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Temel grafik seti
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Kullanılacak temel grafik setini seçin
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} kayıp/bozuk dosya
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Temel grafik setiyle ilgili ilave bilgiler
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Otokayıt başarısız
 

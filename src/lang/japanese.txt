@@ -663,7 +663,6 @@ STR_OFF                                                         :切
 STR_SUMMARY                                                     :概要
 STR_FULL                                                        :完全
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :市町村のリスト
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -697,9 +696,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}切
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}入
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}助成金を表示
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :助成金
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :世界の地図
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :特別ビューア
 STR_MAP_MENU_SIGN_LIST                                          :標示のリスト
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :市町村のリスト
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}人
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}ビューア {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}ビューアへコピー
@@ -726,6 +730,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自動�
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}自動保存の間隔を選択します
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :切
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :毎月
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :毎3月
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :毎6月
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :毎12月
@@ -845,7 +850,6 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}スク�
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}使用するGRFの選択
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :毎月
 STR_AUTOSAVE_FAILED                                             :{WHITE}自動保存に失敗しました
 
 STR_MONTH_JAN                                                   :1月
@@ -2759,6 +2763,19 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}選択�
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}遅刻回数をリセットして、車両が定刻になります
 STR_SERVICE_HINT                                                :{BLACK}修理が必要でないとこの指令をスキップ
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}価格：{CURRENCY}　重量：{WEIGHT_S}{}最大速度：{VELOCITY}　出力：{POWER}{}運転費：一年間{CURRENCY}{}容量：{CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}値段：{CURRENCY}　最高速度：{VELOCITY}{}収容能力：{CARGO}、{CARGO}{}維持費：一年間{CURRENCY}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}値段：{CURRENCY}　最高速度：{VELOCITY}{}収容能力：{CARGO}{}維持費：一年間{CURRENCY}
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}年齢：{LTBLUE}{STRING}{BLACK}　維持費：一年間{LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最高速度：{LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重さ：{LTBLUE}{WEIGHT_S}　{BLACK}力：{LTBLUE}{POWER}{BLACK}　最高速度：{LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重さ：{LTBLUE}{WEIGHT_S}　{BLACK}力：{LTBLUE}{POWER}{BLACK}　最高速度：{LTBLUE}{VELOCITY}　{BLACK}最大牽引力：{LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年の利益：{LTBLUE}{CURRENCY}（昨年：{CURRENCY}）
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}信頼度：{LTBLUE}{COMMA}%　{BLACK}修理後の故障：{LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}　{BLACK}購入年：{LTBLUE}{NUM}{BLACK}　現在価値：{LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}収容能力：{LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}収容能力：{LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}収容能力：{LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}故障中
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}停止中
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}信号を無視して列車を進行させることができません...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}事故！
@@ -3104,6 +3121,10 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}ユー�
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}ユーロに切替え：{ORANGE}しない
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}プレビュー：{ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}カスタム通貨の設定を変更
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}英ポンドに対するお使いの通貨の為替レートを減らします
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}英ポンドに対するお使いの通貨の為替レートを増やします
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}英ポンドに対するお使いの通貨の為替レートを設定します
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}お使いの通貨で£10,000（英ポンド）
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3209,6 +3230,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}最高�
 STR_PURCHASE_INFO_COST                                          :{BLACK}価格：{GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}重量：{GOLD}{WEIGHT_S}（{WEIGHT_S}）
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}価格：{GOLD}{CURRENCY}{BLACK}　最大速度：{GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}収容能力：{GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}動力貨車：{GOLD}+{POWER}{BLACK}　重量：{GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}再装備の貨物種類：{GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :すべて
@@ -3314,6 +3336,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}地域�
 STR_DATE_TINY                                                   :{2:NUM}-{1:STRING}-{0:STRING}
 STR_DATE_SHORT                                                  :{1:NUM}年{0:STRING}
 STR_DATE_LONG                                                   :{2:NUM}年{1:STRING}{0:STRING}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
@@ -3499,6 +3522,7 @@ STR_AI_RANDOM_AI                                                :ランダムな
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI のパラメータ
 STR_AI_AUTHOR                                                   :{BLACK}作成者： {STRING}
 STR_AI_VERSION                                                  :{BLACK}バージョン： {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}実行中の AI の一つは予期せずに終了しました。AI の作者に AI デバッグのウインドウのスクリーンショットが含む電子メールをご送信ください。
 ########
 

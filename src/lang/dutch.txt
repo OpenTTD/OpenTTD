@@ -668,7 +668,6 @@ STR_OFF                                                         :Uit
 STR_SUMMARY                                                     :Kort
 STR_FULL                                                        :Volledig
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stedenlijst
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -702,9 +701,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Uit
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Aan
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Toon subsidies
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidies
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kaart
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Extra kijkvenster
 STR_MAP_MENU_SIGN_LIST                                          :Bordenlijst
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stedenlijst
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Wereldbevolking: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Kijkvenster {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopieer naar kijkvenster
@@ -851,6 +855,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selectee
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Basis graphics set
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selecteer de te gebruiken basis graphics set
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} ontbrekend/corrupt bestand{P "" en}
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Aanvullende informatie over de basis graphics set
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatisch opslaan mislukt
 

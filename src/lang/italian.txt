@@ -670,7 +670,6 @@ STR_OFF                                                         :No
 STR_SUMMARY                                                     :Sommario
 STR_FULL                                                        :Completo
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Elenco città
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -704,9 +703,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Off
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}On
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Mostra i sussidi
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Sussidi
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mappa del mondo
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Mini visuale extra
 STR_MAP_MENU_SIGN_LIST                                          :Elenco cartelli
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Elenco città
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Popolazione mondiale: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Mini visuale {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copia nella mini visuale
@@ -853,6 +857,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selezion
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Stile grafico di base
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Seleziona lo stile grafico di base da utilizzare
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} file mancant{P e i}/corrott{P o i}
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Informazioni aggiuntive sullo stile grafico di base
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Salvataggio automatico fallito
 

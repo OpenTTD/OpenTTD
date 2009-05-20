@@ -856,6 +856,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Format a
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Standard Grafik
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Zu benutzendes Set an Basisgrafiken auswählen
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} fehlende/ fehlerhafte Datei{P "" en}
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Zusatzinformationen zu den Basisgrafiken
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosicherung fehlgeschlagen
 
