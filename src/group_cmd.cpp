@@ -62,7 +62,7 @@ bool Group::IsValid() const
 	return this->owner != INVALID_OWNER;
 }
 
-void InitializeGroup(void)
+void InitializeGroup()
 {
 	_Group_pool.CleanPool();
 	_Group_pool.AddBlockToPool();

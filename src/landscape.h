@@ -23,12 +23,12 @@ struct SnowLine {
 	byte lowest_value;  ///< Lowest snow line of the year
 };
 
-bool IsSnowLineSet(void);
+bool IsSnowLineSet();
 void SetSnowLine(byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS]);
-byte GetSnowLine(void);
-byte HighestSnowLine(void);
-byte LowestSnowLine(void);
-void ClearSnowLine(void);
+byte GetSnowLine();
+byte HighestSnowLine();
+byte LowestSnowLine();
+void ClearSnowLine();
 
 uint GetPartialZ(int x, int y, Slope corners);
 uint GetSlopeZ(int x, int y);

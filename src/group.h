@@ -51,7 +51,7 @@ static inline bool IsAllGroupID(GroupID id_g)
 /**
  * Get the current size of the GroupPool
  */
-static inline uint GetGroupArraySize(void)
+static inline uint GetGroupArraySize()
 {
 	const Group *g;
 	uint num = 0;

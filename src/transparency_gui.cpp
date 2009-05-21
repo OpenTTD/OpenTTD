@@ -146,7 +146,7 @@ static const WindowDesc _transparency_desc(
 	_transparency_widgets, _nested_transparency_widgets, lengthof(_nested_transparency_widgets)
 );
 
-void ShowTransparencyToolbar(void)
+void ShowTransparencyToolbar()
 {
 	AllocateWindowDescFront<TransparenciesWindow>(&_transparency_desc, 0);
 }

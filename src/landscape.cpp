@@ -526,7 +526,7 @@ void GetTileDesc(TileIndex tile, TileDesc *td)
  * @return true if the table has been loaded already.
  * @ingroup SnowLineGroup
  */
-bool IsSnowLineSet(void)
+bool IsSnowLineSet()
 {
 	return _snow_line != NULL;
 }
@@ -555,7 +555,7 @@ void SetSnowLine(byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS])
  * @return the snow line height.
  * @ingroup SnowLineGroup
  */
-byte GetSnowLine(void)
+byte GetSnowLine()
 {
 	if (_snow_line == NULL) return _settings_game.game_creation.snow_line;
 
@@ -569,7 +569,7 @@ byte GetSnowLine(void)
  * @return the highest snow line height.
  * @ingroup SnowLineGroup
  */
-byte HighestSnowLine(void)
+byte HighestSnowLine()
 {
 	return _snow_line == NULL ? _settings_game.game_creation.snow_line : _snow_line->highest_value;
 }
@@ -579,7 +579,7 @@ byte HighestSnowLine(void)
  * @return the lowest snow line height.
  * @ingroup SnowLineGroup
  */
-byte LowestSnowLine(void)
+byte LowestSnowLine()
 {
 	return _snow_line == NULL ? _settings_game.game_creation.snow_line : _snow_line->lowest_value;
 }
@@ -588,7 +588,7 @@ byte LowestSnowLine(void)
  * Clear the variable snow line table and free the memory.
  * @ingroup SnowLineGroup
  */
-void ClearSnowLine(void)
+void ClearSnowLine()
 {
 	free(_snow_line);
 	_snow_line = NULL;

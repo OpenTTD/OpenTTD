@@ -17,7 +17,7 @@ static const SaveLoad _group_desc[] = {
   SLE_END()
 };
 
-static void Save_GRPS(void)
+static void Save_GRPS()
 {
 	Group *g;
 
@@ -28,7 +28,7 @@ static void Save_GRPS(void)
 }
 
 
-static void Load_GRPS(void)
+static void Load_GRPS()
 {
 	int index;
 

@@ -157,7 +157,7 @@ private:
 	 * On thread creation, this function is called, which calls the real startup
 	 *  function. This to get back into the correct instance again.
 	 */
-	static void Proxy(void)
+	static void Proxy()
 	{
 		struct Task *child = FindTask(NULL);
 		struct OTTDThreadStartupMessage *msg;

@@ -1846,7 +1846,7 @@ struct ProbabilityHelper {
 /**
  * Try to create a random industry, during gameplay
  */
-static void MaybeNewIndustry(void)
+static void MaybeNewIndustry()
 {
 	Industry *ind;               // will receive the industry's creation pointer
 	IndustryType rndtype, j;     // Loop controlers
