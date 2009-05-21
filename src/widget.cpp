@@ -1027,12 +1027,12 @@ NWidgetHorizontal::NWidgetHorizontal() : NWidgetPIPContainer(NWID_HORIZONTAL)
 int NWidgetHorizontal::SetupSmallestSize()
 {
 	int biggest_index = -1;
-	this->smallest_x = 0;      // Sum of minimal size of all childs.
-	this->smallest_y = 0;      // Biggest child.
-	this->fill_x = false; // true if at least one child allows fill_x.
-	this->fill_y = true;  // true if all childs allow fill_y.
-	this->resize_x = 0;   // smallest non-zero child widget resize step.
-	this->resize_y = 1;   // smallest common child resize step
+	this->smallest_x = 0;   // Sum of minimal size of all childs.
+	this->smallest_y = 0;   // Biggest child.
+	this->fill_x = false;   // true if at least one child allows fill_x.
+	this->fill_y = true;    // true if all childs allow fill_y.
+	this->resize_x = 0;     // smallest non-zero child widget resize step.
+	this->resize_y = 1;     // smallest common child resize step
 
 	if (this->head != NULL) this->head->padding_left += this->pip_pre;
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
@@ -1152,12 +1152,12 @@ NWidgetVertical::NWidgetVertical() : NWidgetPIPContainer(NWID_VERTICAL)
 int NWidgetVertical::SetupSmallestSize()
 {
 	int biggest_index = -1;
-	this->smallest_x = 0;      // Biggest child.
-	this->smallest_y = 0;      // Sum of minimal size of all childs.
-	this->fill_x = true;  // true if all childs allow fill_x.
-	this->fill_y = false; // true if at least one child allows fill_y.
-	this->resize_x = 1;   // smallest common child resize step
-	this->resize_y = 0;   // smallest non-zero child widget resize step.
+	this->smallest_x = 0;   // Biggest child.
+	this->smallest_y = 0;   // Sum of minimal size of all childs.
+	this->fill_x = true;    // true if all childs allow fill_x.
+	this->fill_y = false;   // true if at least one child allows fill_y.
+	this->resize_x = 1;     // smallest common child resize step
+	this->resize_y = 0;     // smallest non-zero child widget resize step.
 
 	if (this->head != NULL) this->head->padding_top += this->pip_pre;
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
