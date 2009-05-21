@@ -173,8 +173,6 @@ public:
 	};
 
 	WidgetType type;      ///< Type of the widget / nested widget.
-	uint min_x;           ///< Minimal horizontal size of only this widget.
-	uint min_y;           ///< Minimal vertical size of only this widget.
 	bool fill_x;          ///< Allow horizontal filling from initial size.
 	bool fill_y;          ///< Allow vertical filling from initial size.
 	uint resize_x;        ///< Horizontal resize step (\c 0 means not resizable).
@@ -208,6 +206,9 @@ public:
 	void SetResize(uint resize_x, uint resize_y);
 
 	void AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+
+	uint min_x; ///< Minimal horizontal size of only this widget.
+	uint min_y; ///< Minimal vertical size of only this widget.
 };
 
 /** Base class for a 'real' widget.
