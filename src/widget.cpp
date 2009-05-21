@@ -658,18 +658,43 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
  * Hierarchical widgets, also known as nested widgets, are widgets stored in a tree. At the leafs of the tree are (mostly) the 'real' widgets
  * visible to the user. At higher levels, widgets get organized in container widgets, until all widgets of the window are merged.
  *
+ * \section nestedwidgetkinds Hierarchical widget kinds
  * A leaf widget is one of
- * - #NWidgetLeaf for widgets visible for the user, or
- * - #NWidgetSpacer for creating (flexible) empty space between widgets.
+ * <ul>
+ * <li> #NWidgetLeaf for widgets visible for the user, or
+ * <li> #NWidgetSpacer for creating (flexible) empty space between widgets.
+ * </ul>
+ * The purpose of a leaf widget is to provide interaction with the user by displaying settings, and/or allowing changing the settings.
  *
  * A container widget is one of
- * - #NWidgetHorizontal for organizing child widgets in a (horizontal) row. The row switches order depending on the language setting (thus supporting
- *   right-to-left languages),
- * - #NWidgetHorizontalLTR for organizing child widgets in a (horizontal) row, always in the same order. All childs below this container will also
- *   never swap order.
- * - #NWidgetVertical for organizing child widgets underneath each other.
- * - #NWidgetBackground for adding a background behind its child widget.
- * - #NWidgetStacked for stacking child widgets on top of each other.
+ * <ul>
+ * <li> #NWidgetHorizontal for organizing child widgets in a (horizontal) row. The row switches order depending on the language setting (thus supporting
+ *      right-to-left languages),
+ * <li> #NWidgetHorizontalLTR for organizing child widgets in a (horizontal) row, always in the same order. All childs below this container will also
+ *      never swap order.
+ * <li> #NWidgetVertical for organizing child widgets underneath each other.
+ * <li> #NWidgetBackground for adding a background behind its child widget.
+ * <li> #NWidgetStacked for stacking child widgets on top of each other.
+ * </ul>
+ * The purpose of a container widget is to structure its leafs and sub-containers to allow proper resizing.
+ *
+ * \section nestedwidgetscomputations Hierarchical widget computations
+ * The first 'computation' is the creation of the nested widgets tree by calling the constructors of the widgets listed above and calling \c Add() for every child,
+ * or by means of specifying the tree as a collection of nested widgets parts and instantiating the tree from the array.
+ *
+ * After the creation step,
+ * - The leafs have their own minimal size (\e min_x, \e min_y), filling (\e fill_x, \e fill_y), and resize steps (\e resize_x, \e resize_y).
+ * - Containers only know what their children are, \e fill_x, \e fill_y, \e resize_x, and \e resize_y are not initialized.
+ *
+ * Computations in the nested widgets take place as follows:
+ * <ol>
+ * <li> A bottom-up sweep by recursively calling NWidgetBase::SetupSmallestSize() to initialize the smallest size (\e smallest_x, \e smallest_y) and
+ *      to propagate filling and resize steps upwards to the root of the tree.
+ * <li> A top-down sweep by recursively calling NWidgetBase::AssignSizePosition() to make the smallest sizes consistent over the entire tree, and to assign
+ *      the top-left (\e pos_x, \e pos_y) position of each widget in the tree. This step uses \e fill_x and \e fill_y at each node in the tree to decide how to
+ *      fill each widget towards consistent sizes.
+ *      For generating a widget array, resize step sizes are made consistent.
+ * </ol>
  *
  * @see NestedWidgetParts
  */
@@ -715,7 +740,7 @@ NWidgetBase::NWidgetBase(WidgetType tp) : ZeroedMemoryAllocator()
  * @param widgets     Widget array to store the nested widgets in.
  * @param length      Length of the array.
  * @param left_moving Left edge of the widget may move due to resizing (right edge if \a rtl).
- * @param top_moving  Top edge of the widget may move due to reisizing.
+ * @param top_moving  Top edge of the widget may move due to resizing.
  * @param rtl         Adapt for right-to-left languages (position contents of horizontal containers backwards).
  *
  * @note When storing a nested widget, the function should check first that the type in the \a widgets array is #WWT_LAST.
