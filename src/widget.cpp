@@ -686,7 +686,7 @@ NWidgetBase::NWidgetBase(WidgetType tp) : ZeroedMemoryAllocator()
 /* ~NWidgetContainer() takes care of #next and #prev data members. */
 
 /**
- * @fn int NWidgetBase::ComputeMinimalSize()
+ * @fn int NWidgetBase::SetupSmallestSize()
  * @brief Compute smallest size needed by the widget.
  *
  * The smallest size of a widget is the smallest size that a widget needs to
@@ -698,8 +698,8 @@ NWidgetBase::NWidgetBase(WidgetType tp) : ZeroedMemoryAllocator()
  */
 
 /**
- * @fn void NWidgetBase::AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
- * @brief Assign minimal size and position to the widget.
+ * @fn void NWidgetBase::AssignSizePosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+ * @brief Assign size and position to the widget.
  * @param x              Horizontal offset of the widget relative to the left edge of the window.
  * @param y              Vertical offset of the widget relative to the top edge of the window.
  * @param given_width    Width allocated to the widget.
@@ -767,7 +767,7 @@ void NWidgetResizeBase::SetResize(uint resize_x, uint resize_y)
 	this->resize_y = resize_y;
 }
 
-void NWidgetResizeBase::AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+void NWidgetResizeBase::AssignSizePosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
 {
 	this->pos_x = x;
 	this->pos_y = y;
@@ -815,7 +815,7 @@ void NWidgetCore::SetDataTip(uint16 widget_data, StringID tool_tip)
 	this->tool_tip = tool_tip;
 }
 
-int NWidgetCore::ComputeMinimalSize()
+int NWidgetCore::SetupSmallestSize()
 {
 	this->smallest_x = this->min_x;
 	this->smallest_y = this->min_y;
@@ -906,7 +906,7 @@ NWidgetStacked::NWidgetStacked(WidgetType tp) : NWidgetContainer(tp)
 {
 }
 
-int NWidgetStacked::ComputeMinimalSize()
+int NWidgetStacked::SetupSmallestSize()
 {
 	/* First sweep, recurse down and compute minimal size and filling. */
 	int biggest_index = -1;
@@ -917,7 +917,7 @@ int NWidgetStacked::ComputeMinimalSize()
 	this->resize_x = (this->head != NULL) ? 1 : 0;
 	this->resize_y = (this->head != NULL) ? 1 : 0;
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
-		int idx = child_wid->ComputeMinimalSize();
+		int idx = child_wid->SetupSmallestSize();
 		biggest_index = max(biggest_index, idx);
 
 		this->smallest_x = max(this->smallest_x, child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
@@ -930,7 +930,7 @@ int NWidgetStacked::ComputeMinimalSize()
 	return biggest_index;
 }
 
-void NWidgetStacked::AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+void NWidgetStacked::AssignSizePosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
 {
 	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
@@ -963,7 +963,7 @@ void NWidgetStacked::AssignMinimalPosition(uint x, uint y, uint given_width, uin
 			child_height = child_wid->smallest_y;
 			child_pos_y = (given_height - child_wid->padding_top - child_wid->padding_bottom - child_height) / 2;
 		}
-		child_wid->AssignMinimalPosition(x + child_pos_x, y + child_pos_y, child_width, child_height, (this->resize_x > 0), (this->resize_y > 0), rtl);
+		child_wid->AssignSizePosition(x + child_pos_x, y + child_pos_y, child_width, child_height, (this->resize_x > 0), (this->resize_y > 0), rtl);
 	}
 }
 
@@ -999,7 +999,7 @@ NWidgetHorizontal::NWidgetHorizontal() : NWidgetPIPContainer(NWID_HORIZONTAL)
 {
 }
 
-int NWidgetHorizontal::ComputeMinimalSize()
+int NWidgetHorizontal::SetupSmallestSize()
 {
 	int biggest_index = -1;
 	this->smallest_x = 0;      // Sum of minimal size of all childs.
@@ -1011,7 +1011,7 @@ int NWidgetHorizontal::ComputeMinimalSize()
 
 	if (this->head != NULL) this->head->padding_left += this->pip_pre;
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
-		int idx = child_wid->ComputeMinimalSize();
+		int idx = child_wid->SetupSmallestSize();
 		biggest_index = max(biggest_index, idx);
 
 		if (child_wid->next != NULL) {
@@ -1036,7 +1036,7 @@ int NWidgetHorizontal::ComputeMinimalSize()
 	return biggest_index;
 }
 
-void NWidgetHorizontal::AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+void NWidgetHorizontal::AssignSizePosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
 {
 	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
@@ -1084,7 +1084,7 @@ void NWidgetHorizontal::AssignMinimalPosition(uint x, uint y, uint given_width, 
 			child_width += increment;
 		}
 
-		child_wid->AssignMinimalPosition(x + position + (rtl ? child_wid->padding_right : child_wid->padding_left), y + child_pos_y, child_width, child_height, allow_resize_x, (this->resize_y > 0), rtl);
+		child_wid->AssignSizePosition(x + position + (rtl ? child_wid->padding_right : child_wid->padding_left), y + child_pos_y, child_width, child_height, allow_resize_x, (this->resize_y > 0), rtl);
 		position += child_width + child_wid->padding_right + child_wid->padding_left;
 		if (child_wid->resize_x > 0) allow_resize_x = false; // Widget array allows only one child resizing
 
@@ -1109,9 +1109,9 @@ NWidgetHorizontalLTR::NWidgetHorizontalLTR() : NWidgetHorizontal()
 	this->type = NWID_HORIZONTAL_LTR;
 }
 
-void NWidgetHorizontalLTR::AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+void NWidgetHorizontalLTR::AssignSizePosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
 {
-	NWidgetHorizontal::AssignMinimalPosition(x, y, given_width, given_height, allow_resize_x, allow_resize_y, false);
+	NWidgetHorizontal::AssignSizePosition(x, y, given_width, given_height, allow_resize_x, allow_resize_y, false);
 }
 
 void NWidgetHorizontalLTR::StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl)
@@ -1124,7 +1124,7 @@ NWidgetVertical::NWidgetVertical() : NWidgetPIPContainer(NWID_VERTICAL)
 {
 }
 
-int NWidgetVertical::ComputeMinimalSize()
+int NWidgetVertical::SetupSmallestSize()
 {
 	int biggest_index = -1;
 	this->smallest_x = 0;      // Biggest child.
@@ -1136,7 +1136,7 @@ int NWidgetVertical::ComputeMinimalSize()
 
 	if (this->head != NULL) this->head->padding_top += this->pip_pre;
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
-		int idx = child_wid->ComputeMinimalSize();
+		int idx = child_wid->SetupSmallestSize();
 		biggest_index = max(biggest_index, idx);
 
 		if (child_wid->next != NULL) {
@@ -1161,7 +1161,7 @@ int NWidgetVertical::ComputeMinimalSize()
 	return biggest_index;
 }
 
-void NWidgetVertical::AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+void NWidgetVertical::AssignSizePosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
 {
 	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
@@ -1207,7 +1207,7 @@ void NWidgetVertical::AssignMinimalPosition(uint x, uint y, uint given_width, ui
 			child_height += increment;
 		}
 
-		child_wid->AssignMinimalPosition(x + child_pos_x, y + position + child_wid->padding_top, child_width, child_height, (this->resize_x > 0), allow_resize_y, rtl);
+		child_wid->AssignSizePosition(x + child_pos_x, y + position + child_wid->padding_top, child_width, child_height, (this->resize_x > 0), allow_resize_y, rtl);
 		position += child_height + child_wid->padding_top + child_wid->padding_bottom;
 		if (child_wid->resize_y > 0) allow_resize_y = false; // Widget array allows only one child resizing
 	}
@@ -1232,7 +1232,7 @@ NWidgetSpacer::NWidgetSpacer(int length, int height) : NWidgetResizeBase(NWID_SP
 	this->SetResize(0, 0);
 }
 
-int NWidgetSpacer::ComputeMinimalSize()
+int NWidgetSpacer::SetupSmallestSize()
 {
 	this->smallest_x = this->min_x;
 	this->smallest_y = this->min_y;
@@ -1299,11 +1299,11 @@ void NWidgetBackground::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
 	this->child->SetPIP(pip_pre, pip_inter, pip_post);
 }
 
-int NWidgetBackground::ComputeMinimalSize()
+int NWidgetBackground::SetupSmallestSize()
 {
 	int biggest_index = this->index;
 	if (this->child != NULL) {
-		int idx = this->child->ComputeMinimalSize();
+		int idx = this->child->SetupSmallestSize();
 		biggest_index = max(biggest_index, idx);
 
 		this->smallest_x = this->child->smallest_x;
@@ -1320,7 +1320,7 @@ int NWidgetBackground::ComputeMinimalSize()
 	return biggest_index;
 }
 
-void NWidgetBackground::AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+void NWidgetBackground::AssignSizePosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
 {
 	this->pos_x = x;
 	this->pos_y = y;
@@ -1333,7 +1333,7 @@ void NWidgetBackground::AssignMinimalPosition(uint x, uint y, uint given_width, 
 		uint x_offset = (rtl ? this->child->padding_right : this->child->padding_left);
 		uint width = given_width - this->child->padding_right - this->child->padding_left;
 		uint height = given_height - this->child->padding_top - this->child->padding_bottom;
-		this->child->AssignMinimalPosition(x + x_offset, y + this->child->padding_top, width, height, (this->resize_x > 0), (this->resize_y > 0), rtl);
+		this->child->AssignSizePosition(x + x_offset, y + this->child->padding_top, width, height, (this->resize_x > 0), (this->resize_y > 0), rtl);
 	}
 }
 
@@ -1442,8 +1442,8 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 Widget *InitializeNWidgets(NWidgetBase *nwid, bool rtl)
 {
 	/* Initialize nested widgets. */
-	int biggest_index = nwid->ComputeMinimalSize();
-	nwid->AssignMinimalPosition(0, 0, nwid->smallest_x, nwid->smallest_y, (nwid->resize_x > 0), (nwid->resize_y > 0), rtl);
+	int biggest_index = nwid->SetupSmallestSize();
+	nwid->AssignSizePosition(0, 0, nwid->smallest_x, nwid->smallest_y, (nwid->resize_x > 0), (nwid->resize_y > 0), rtl);
 
 	/* Construct a local widget array and initialize all its types to #WWT_LAST. */
 	Widget *widgets = MallocT<Widget>(biggest_index + 2);
