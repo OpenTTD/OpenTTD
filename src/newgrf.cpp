@@ -3471,7 +3471,7 @@ static void FeatureNewName(byte *buf, size_t len)
 					StringID string = AddGRFString(_cur_grffile->grfid, e->index, lang, new_scheme, name, e->info.string_id);
 					e->info.string_id = string;
 				} else {
-					AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, id);
+					AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED);
 				}
 				break;
 
