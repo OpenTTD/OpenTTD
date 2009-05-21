@@ -1007,6 +1007,11 @@ public:
 			this->vscroll.count = _railstation.station_count;
 			this->vscroll.cap   = 5;
 			this->vscroll.pos   = Clamp(_railstation.station_type - 2, 0, this->vscroll.count - this->vscroll.cap);
+		} else {
+			/* New stations are not available, so ensure the default station
+			 * type is 'selected'. */
+			_railstation.station_class = STAT_CLASS_DFLT;
+			_railstation.station_type = 0;
 		}
 	}
 
