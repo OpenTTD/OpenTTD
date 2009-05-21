@@ -1,3 +1,29 @@
+0.7.1-RC2 (2009-05-21)
+------------------------------------------------------------------------
+- Fix: The previously selected NewGRF station type was still remembered after switching to a different game without newstations enabled, preventing stations from being built (r16363)
+- Fix: Pointer incremented with wrong count (r16361)
+- Fix: Delete invalid depots in TTD savegames caused by improper SVXConverter conversions (r16357)
+- Fix: Invalid read when OTTD savegame contains VEH_INVALID (r16353)
+- Fix: Signal handler could end in endless loop (r16351)
+- Fix: [NewGRF] When overriding 'original sounds', only allow overriding of the 'original sounds' and not any other that is already loaded (r16339)
+- Fix: Desyncs when removing lots of stations/towns (r16329, r16328)
+- Fix: Desyncs due to the fact that depot searching with a maximum search depth simply does not work with YAPF's caches [FS#2900] (r16323)
+- Fix: Trains could get stuck in a depot when they wanted to go to the same depot again [FS#2873] (r16322)
+- Fix: In the scenario editor change the (starting) game year of the scenario, not the (starting) game year for new games/scenarios (r16321)
+- Fix: Loading of savegames created in revision between 0.3.5 and 0.3.6 caused crash (r16320)
+- Fix: [NoAI] Set the autorenew settings for new AI companies to the default values, not to 0 or the local settings (r16316)
+- Fix: [NewGRF] Allow accessing the house age when the house is not yet built (r16314)
+- Fix: (Get|Set)TrackBits() is only valid for RAIL_TILE_NORMAL and _SIGNALS (r16311)
+- Fix: Parameter is invalid when it is equal to length of an array (r16308)
+- Fix: Close all windows before unloading the AI system as closing the content-download window will rescan for AIs [FS#2901] (r16306)
+- Fix: ICC (Intel C++ Compiler) defined __GNUC__ but does not define __builtin_bswap32, so fall back to the default swap method for ICC (r16295)
+- Fix: Road vehicles were unable to find a depot when turning around (in some cases), causing 'nearest depot' orders to be occasionally lost [FS#2893] (r16291
+- Fix: Unable to (re)set the desert state for watery tiles [FS#2888] (r16290)
+- Fix: Possible (in theory) desync related to autorenew settings (r16287)
+- Fix: Crash after using the 'Reset landscape' function and remove all waypoint signs and buoys after resetting landscape (r16280)
+- Fix: [NewGRF] Disable multitile houses for which the NewGRF does not define proper additional tiles (r16274)
+
+
 0.7.1-RC1 (2009-05-11)
 ------------------------------------------------------------------------
 - Add: [NoAI] AIController::GetVersion, this returns the version of OpenTTD in the same way as for NewGRFs (r16253)
