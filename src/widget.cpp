@@ -687,9 +687,9 @@ NWidgetBase::NWidgetBase(WidgetType tp) : ZeroedMemoryAllocator()
 
 /**
  * @fn int NWidgetBase::ComputeMinimalSize()
- * @brief Compute minimal size needed by the widget.
+ * @brief Compute smallest size needed by the widget.
  *
- * The minimal size of a widget is the smallest size that a widget needs to
+ * The smallest size of a widget is the smallest size that a widget needs to
  * display itself properly.
  * In addition, filling and resizing of the widget are computed.
  * @return Biggest index in the widget array of all child widgets.
@@ -771,8 +771,8 @@ void NWidgetResizeBase::AssignMinimalPosition(uint x, uint y, uint given_width, 
 {
 	this->pos_x = x;
 	this->pos_y = y;
-	this->min_x = given_width;
-	this->min_y = given_height;
+	this->smallest_x = given_width;
+	this->smallest_y = given_height;
 	if (!allow_resize_x) this->resize_x = 0;
 	if (!allow_resize_y) this->resize_y = 0;
 }
@@ -817,7 +817,9 @@ void NWidgetCore::SetDataTip(uint16 widget_data, StringID tool_tip)
 
 int NWidgetCore::ComputeMinimalSize()
 {
-	/* All data is already at the right place. */
+	this->smallest_x = this->min_x;
+	this->smallest_y = this->min_y;
+	/* All other data is already at the right place. */
 	return this->index;
 }
 
@@ -848,9 +850,9 @@ void NWidgetCore::StoreWidgets(Widget *widgets, int length, bool left_moving, bo
 	w->display_flags = flags;
 	w->colour = this->colour;
 	w->left = this->pos_x;
-	w->right = this->pos_x + this->min_x - 1;
+	w->right = this->pos_x + this->smallest_x - 1;
 	w->top = this->pos_y;
-	w->bottom = this->pos_y + this->min_y - 1;
+	w->bottom = this->pos_y + this->smallest_y - 1;
 	w->data = this->widget_data;
 	w->tooltips = this->tool_tip;
 }
@@ -908,8 +910,8 @@ int NWidgetStacked::ComputeMinimalSize()
 {
 	/* First sweep, recurse down and compute minimal size and filling. */
 	int biggest_index = -1;
-	this->min_x = 0;
-	this->min_y = 0;
+	this->smallest_x = 0;
+	this->smallest_y = 0;
 	this->fill_x = (this->head != NULL);
 	this->fill_y = (this->head != NULL);
 	this->resize_x = (this->head != NULL) ? 1 : 0;
@@ -918,8 +920,8 @@ int NWidgetStacked::ComputeMinimalSize()
 		int idx = child_wid->ComputeMinimalSize();
 		biggest_index = max(biggest_index, idx);
 
-		this->min_x = max(this->min_x, child_wid->min_x + child_wid->padding_left + child_wid->padding_right);
-		this->min_y = max(this->min_y, child_wid->min_y + child_wid->padding_top + child_wid->padding_bottom);
+		this->smallest_x = max(this->smallest_x, child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
+		this->smallest_y = max(this->smallest_y, child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
 		this->fill_x &= child_wid->fill_x;
 		this->fill_y &= child_wid->fill_y;
 		this->resize_x = LeastCommonMultiple(this->resize_x, child_wid->resize_x);
@@ -930,12 +932,12 @@ int NWidgetStacked::ComputeMinimalSize()
 
 void NWidgetStacked::AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
 {
-	assert(given_width >= this->min_x && given_height >= this->min_y);
+	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
 	this->pos_x = x;
 	this->pos_y = y;
-	this->min_x = given_width;
-	this->min_y = given_height;
+	this->smallest_x = given_width;
+	this->smallest_y = given_height;
 	if (!allow_resize_x) this->resize_x = 0;
 	if (!allow_resize_y) this->resize_y = 0;
 
@@ -947,7 +949,7 @@ void NWidgetStacked::AssignMinimalPosition(uint x, uint y, uint given_width, uin
 			child_width = given_width - child_wid->padding_left - child_wid->padding_right;
 			child_pos_x = (rtl ? child_wid->padding_right : child_wid->padding_left);
 		} else {
-			child_width = child_wid->min_x;
+			child_width = child_wid->smallest_x;
 			child_pos_x = (given_width - child_wid->padding_left - child_wid->padding_right - child_width) / 2 + (rtl ? child_wid->padding_right : child_wid->padding_left);
 		}
 
@@ -958,7 +960,7 @@ void NWidgetStacked::AssignMinimalPosition(uint x, uint y, uint given_width, uin
 			child_height = given_height - child_wid->padding_top - child_wid->padding_bottom;
 			child_pos_y = 0;
 		} else {
-			child_height = child_wid->min_y;
+			child_height = child_wid->smallest_y;
 			child_pos_y = (given_height - child_wid->padding_top - child_wid->padding_bottom - child_height) / 2;
 		}
 		child_wid->AssignMinimalPosition(x + child_pos_x, y + child_pos_y, child_width, child_height, (this->resize_x > 0), (this->resize_y > 0), rtl);
@@ -1000,8 +1002,8 @@ NWidgetHorizontal::NWidgetHorizontal() : NWidgetPIPContainer(NWID_HORIZONTAL)
 int NWidgetHorizontal::ComputeMinimalSize()
 {
 	int biggest_index = -1;
-	this->min_x = 0;      // Sum of minimal size of all childs.
-	this->min_y = 0;      // Biggest child.
+	this->smallest_x = 0;      // Sum of minimal size of all childs.
+	this->smallest_y = 0;      // Biggest child.
 	this->fill_x = false; // true if at least one child allows fill_x.
 	this->fill_y = true;  // true if all childs allow fill_y.
 	this->resize_x = 0;   // smallest non-zero child widget resize step.
@@ -1018,8 +1020,8 @@ int NWidgetHorizontal::ComputeMinimalSize()
 			child_wid->padding_right += this->pip_post;
 		}
 
-		this->min_x += child_wid->min_x + child_wid->padding_left + child_wid->padding_right;
-		this->min_y = max(this->min_y, child_wid->min_y + child_wid->padding_top + child_wid->padding_bottom);
+		this->smallest_x += child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right;
+		this->smallest_y = max(this->smallest_y, child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
 		this->fill_x |= child_wid->fill_x;
 		this->fill_y &= child_wid->fill_y;
 
@@ -1036,13 +1038,13 @@ int NWidgetHorizontal::ComputeMinimalSize()
 
 void NWidgetHorizontal::AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
 {
-	assert(given_width >= this->min_x && given_height >= this->min_y);
+	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
-	uint additional_length = given_width - this->min_x; // Additional width given to us.
+	uint additional_length = given_width - this->smallest_x; // Additional width given to us.
 	this->pos_x = x;
 	this->pos_y = y;
-	this->min_x = given_width;
-	this->min_y = given_height;
+	this->smallest_x = given_width;
+	this->smallest_y = given_height;
 	if (!allow_resize_x) this->resize_x = 0;
 	if (!allow_resize_y) this->resize_y = 0;
 
@@ -1058,7 +1060,7 @@ void NWidgetHorizontal::AssignMinimalPosition(uint x, uint y, uint given_width, 
 	allow_resize_x = (this->resize_x > 0);
 	child_wid = rtl ? this->tail : this->head;
 	while (child_wid != NULL) {
-		assert(given_height >= child_wid->min_y + child_wid->padding_top + child_wid->padding_bottom);
+		assert(given_height >= child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
 		/* Decide about vertical filling of the child. */
 		uint child_height; // Height of the child widget.
 		uint child_pos_y; // Vertical position of child relative to the top of the container.
@@ -1066,13 +1068,13 @@ void NWidgetHorizontal::AssignMinimalPosition(uint x, uint y, uint given_width, 
 			child_height = given_height - child_wid->padding_top - child_wid->padding_bottom;
 			child_pos_y = child_wid->padding_top;
 		} else {
-			child_height = child_wid->min_y;
+			child_height = child_wid->smallest_y;
 			child_pos_y = (given_height - child_wid->padding_top - child_wid->padding_bottom - child_height) / 2 + child_wid->padding_top;
 		}
 
 		/* Decide about horizontal filling of the child. */
 		uint child_width;
-		child_width = child_wid->min_x;
+		child_width = child_wid->smallest_x;
 		if (child_wid->fill_x && num_changing_childs > 0) {
 			/* Hand out a piece of the pie while compensating for rounding errors. */
 			uint increment = additional_length / num_changing_childs;
@@ -1125,8 +1127,8 @@ NWidgetVertical::NWidgetVertical() : NWidgetPIPContainer(NWID_VERTICAL)
 int NWidgetVertical::ComputeMinimalSize()
 {
 	int biggest_index = -1;
-	this->min_x = 0;      // Biggest child.
-	this->min_y = 0;      // Sum of minimal size of all childs.
+	this->smallest_x = 0;      // Biggest child.
+	this->smallest_y = 0;      // Sum of minimal size of all childs.
 	this->fill_x = true;  // true if all childs allow fill_x.
 	this->fill_y = false; // true if at least one child allows fill_y.
 	this->resize_x = 1;   // smallest common child resize step
@@ -1143,8 +1145,8 @@ int NWidgetVertical::ComputeMinimalSize()
 			child_wid->padding_bottom += this->pip_post;
 		}
 
-		this->min_y += child_wid->min_y + child_wid->padding_top + child_wid->padding_bottom;
-		this->min_x = max(this->min_x, child_wid->min_x + child_wid->padding_left + child_wid->padding_right);
+		this->smallest_y += child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom;
+		this->smallest_x = max(this->smallest_x, child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
 		this->fill_y |= child_wid->fill_y;
 		this->fill_x &= child_wid->fill_x;
 
@@ -1161,13 +1163,13 @@ int NWidgetVertical::ComputeMinimalSize()
 
 void NWidgetVertical::AssignMinimalPosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
 {
-	assert(given_width >= this->min_x && given_height >= this->min_y);
+	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
-	int additional_length = given_height - this->min_y; // Additional height given to us.
+	int additional_length = given_height - this->smallest_y; // Additional height given to us.
 	this->pos_x = x;
 	this->pos_y = y;
-	this->min_x = given_width;
-	this->min_y = given_height;
+	this->smallest_x = given_width;
+	this->smallest_y = given_height;
 	if (!allow_resize_x) this->resize_x = 0;
 	if (!allow_resize_y) this->resize_y = 0;
 
@@ -1181,7 +1183,7 @@ void NWidgetVertical::AssignMinimalPosition(uint x, uint y, uint given_width, ui
 	uint position = 0; // Place to put next child relative to origin of the container.
 	allow_resize_y = (this->resize_y > 0);
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
-		assert(given_width >= child_wid->min_x + child_wid->padding_left + child_wid->padding_right);
+		assert(given_width >= child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
 		/* Decide about horizontal filling of the child. */
 		uint child_width; // Width of the child widget.
 		uint child_pos_x; // Horizontal position of child relative to the left of the container.
@@ -1189,13 +1191,13 @@ void NWidgetVertical::AssignMinimalPosition(uint x, uint y, uint given_width, ui
 			child_width = given_width - child_wid->padding_left - child_wid->padding_right;
 			child_pos_x = (rtl ? child_wid->padding_right : child_wid->padding_left);
 		} else {
-			child_width = child_wid->min_x;
+			child_width = child_wid->smallest_x;
 			child_pos_x = (given_width - child_wid->padding_left - child_wid->padding_right - child_width) / 2 + (rtl ? child_wid->padding_right : child_wid->padding_left);
 		}
 
 		/* Decide about vertical filling of the child. */
 		uint child_height;
-		child_height = child_wid->min_y;
+		child_height = child_wid->smallest_y;
 		if (child_wid->fill_y && num_changing_childs > 0) {
 			/* Hand out a piece of the pie while compensating for rounding errors. */
 			uint increment = additional_length / num_changing_childs;
@@ -1232,7 +1234,8 @@ NWidgetSpacer::NWidgetSpacer(int length, int height) : NWidgetResizeBase(NWID_SP
 
 int NWidgetSpacer::ComputeMinimalSize()
 {
-	/* No further computation needed. */
+	this->smallest_x = this->min_x;
+	this->smallest_y = this->min_y;
 	return -1;
 }
 
@@ -1303,14 +1306,16 @@ int NWidgetBackground::ComputeMinimalSize()
 		int idx = this->child->ComputeMinimalSize();
 		biggest_index = max(biggest_index, idx);
 
-		this->min_x = this->child->min_x;
-		this->min_y = this->child->min_y;
+		this->smallest_x = this->child->smallest_x;
+		this->smallest_y = this->child->smallest_y;
 		this->fill_x = this->child->fill_x;
 		this->fill_y = this->child->fill_y;
 		this->resize_x = this->child->resize_x;
 		this->resize_y = this->child->resize_y;
+	} else {
+		this->smallest_x = this->min_x;
+		this->smallest_y = this->min_y;
 	}
-	/* Otherwise, the program should have already set the above values. */
 
 	return biggest_index;
 }
@@ -1319,8 +1324,8 @@ void NWidgetBackground::AssignMinimalPosition(uint x, uint y, uint given_width, 
 {
 	this->pos_x = x;
 	this->pos_y = y;
-	this->min_x = given_width;
-	this->min_y = given_height;
+	this->smallest_x = given_width;
+	this->smallest_y = given_height;
 	if (!allow_resize_x) this->resize_x = 0;
 	if (!allow_resize_y) this->resize_y = 0;
 
@@ -1438,7 +1443,7 @@ Widget *InitializeNWidgets(NWidgetBase *nwid, bool rtl)
 {
 	/* Initialize nested widgets. */
 	int biggest_index = nwid->ComputeMinimalSize();
-	nwid->AssignMinimalPosition(0, 0, nwid->min_x, nwid->min_y, (nwid->resize_x > 0), (nwid->resize_y > 0), rtl);
+	nwid->AssignMinimalPosition(0, 0, nwid->smallest_x, nwid->smallest_y, (nwid->resize_x > 0), (nwid->resize_y > 0), rtl);
 
 	/* Construct a local widget array and initialize all its types to #WWT_LAST. */
 	Widget *widgets = MallocT<Widget>(biggest_index + 2);
@@ -1753,7 +1758,7 @@ const Widget *InitializeWidgetArrayFromNestedWidgets(const NWidgetPart *parts, i
 		 */
 		bool ok = CompareWidgetArrays(orig_wid, gen_wid, false);
 		if (ok) {
-			DEBUG(misc, 1, "Nested widgets are equal, min-size(%u, %u)", nwid->min_x, nwid->min_y);
+			DEBUG(misc, 1, "Nested widgets are equal, min-size(%u, %u)", nwid->smallest_x, nwid->smallest_y);
 		} else {
 			DEBUG(misc, 0, "Nested widgets give different results");
 			CompareWidgetArrays(orig_wid, gen_wid, true);

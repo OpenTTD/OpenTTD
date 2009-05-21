@@ -173,12 +173,17 @@ public:
 	};
 
 	WidgetType type;      ///< Type of the widget / nested widget.
-	uint min_x;           ///< Minimal horizontal size.
-	uint min_y;           ///< Minimal vertical size.
+	uint min_x;           ///< Minimal horizontal size of only this widget.
+	uint min_y;           ///< Minimal vertical size of only this widget.
 	bool fill_x;          ///< Allow horizontal filling from initial size.
 	bool fill_y;          ///< Allow vertical filling from initial size.
 	uint resize_x;        ///< Horizontal resize step (\c 0 means not resizable).
 	uint resize_y;        ///< Vertical resize step (\c 0 means not resizable).
+	/* Size of the widget in the smallest window possible.
+	 * Computed by #ComputeMinimalSize() followed by #AssignMinimalPosition().
+	 */
+	uint smallest_x;      ///< Smallest horizontal size of the widget in a filled window.
+	uint smallest_y;      ///< Smallest vertical size of the widget in a filled window.
 
 	uint pos_x;           ///< Horizontal position of top-left corner of the widget in the window.
 	uint pos_y;           ///< Vertical position of top-left corner of the widget in the window.
