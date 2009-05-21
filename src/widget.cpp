@@ -924,6 +924,35 @@ void NWidgetContainer::Add(NWidgetBase *wid)
 }
 
 /**
+ * Return the biggest possible size of a nested widget.
+ * @param base      Base size of the widget.
+ * @param max_space Available space for the widget.
+ * @param step      Stepsize of the widget.
+ * @return Biggest possible size of the widget, assuming that \a base may only be incremented by \a step size steps.
+ */
+static inline uint ComputeMaxSize(uint base, uint max_space, uint step)
+{
+	if (base >= max_space || step == 0) return base;
+	if (step == 1) return max_space;
+	int increment = max_space - base;
+	increment -= increment % step;
+	return base + increment;
+}
+
+/**
+ * Compute the offset of a widget due to not entirely using the available space.
+ * @param space     Space used by the widget.
+ * @param max_space Available space for the widget.
+ * @return Offset for centering widget.
+ */
+static inline uint ComputeOffset(uint space, uint max_space)
+{
+	if (space >= max_space) return 0;
+	return (max_space - space) / 2;
+}
+
+
+/**
  * Widgets stacked on top of each other.
  * @param tp Kind of stacking, must be either #NWID_SELECTION or #NWID_LAYERED.
  */
@@ -967,27 +996,14 @@ void NWidgetStacked::AssignSizePosition(uint x, uint y, uint given_width, uint g
 	if (!allow_resize_y) this->resize_y = 0;
 
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
-		/* Decide about horizontal position and filling of the child. */
-		uint child_width;
-		int child_pos_x;
-		if (child_wid->fill_x) {
-			child_width = given_width - child_wid->padding_left - child_wid->padding_right;
-			child_pos_x = (rtl ? child_wid->padding_right : child_wid->padding_left);
-		} else {
-			child_width = child_wid->smallest_x;
-			child_pos_x = (given_width - child_wid->padding_left - child_wid->padding_right - child_width) / 2 + (rtl ? child_wid->padding_right : child_wid->padding_left);
-		}
+		uint hor_step = child_wid->GetHorizontalStepSize();
+		uint child_width = ComputeMaxSize(child_wid->smallest_x, given_width - child_wid->padding_left - child_wid->padding_right, hor_step);
+		uint child_pos_x = (rtl ? child_wid->padding_right : child_wid->padding_left) + ComputeOffset(child_width, given_width - child_wid->padding_left - child_wid->padding_right);
 
-		/* Decide about vertical position and filling of the child. */
-		uint child_height;
-		int child_pos_y;
-		if (child_wid->fill_y) {
-			child_height = given_height - child_wid->padding_top - child_wid->padding_bottom;
-			child_pos_y = 0;
-		} else {
-			child_height = child_wid->smallest_y;
-			child_pos_y = (given_height - child_wid->padding_top - child_wid->padding_bottom - child_height) / 2;
-		}
+		uint vert_step = child_wid->GetVerticalStepSize();
+		uint child_height = ComputeMaxSize(child_wid->smallest_y, given_height - child_wid->padding_top - child_wid->padding_bottom, vert_step);
+		uint child_pos_y = child_wid->padding_top + ComputeOffset(child_height,  given_height - child_wid->padding_top - child_wid->padding_bottom);
+
 		child_wid->AssignSizePosition(x + child_pos_x, y + child_pos_y, child_width, child_height, (this->resize_x > 0), (this->resize_y > 0), rtl);
 	}
 }
@@ -1077,7 +1093,8 @@ void NWidgetHorizontal::AssignSizePosition(uint x, uint y, uint given_width, uin
 	int num_changing_childs = 0; // Number of childs that can change size.
 	NWidgetBase *child_wid;
 	for (child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
-		if (child_wid->fill_x) num_changing_childs++;
+		uint hor_step = child_wid->GetHorizontalStepSize();
+		if (hor_step > 0) num_changing_childs++;
 	}
 
 	/* Fill and position the child widgets. */
@@ -1086,23 +1103,18 @@ void NWidgetHorizontal::AssignSizePosition(uint x, uint y, uint given_width, uin
 	child_wid = rtl ? this->tail : this->head;
 	while (child_wid != NULL) {
 		assert(given_height >= child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
-		/* Decide about vertical filling of the child. */
-		uint child_height; // Height of the child widget.
-		uint child_pos_y; // Vertical position of child relative to the top of the container.
-		if (child_wid->fill_y) {
-			child_height = given_height - child_wid->padding_top - child_wid->padding_bottom;
-			child_pos_y = child_wid->padding_top;
-		} else {
-			child_height = child_wid->smallest_y;
-			child_pos_y = (given_height - child_wid->padding_top - child_wid->padding_bottom - child_height) / 2 + child_wid->padding_top;
-		}
 
-		/* Decide about horizontal filling of the child. */
-		uint child_width;
-		child_width = child_wid->smallest_x;
-		if (child_wid->fill_x && num_changing_childs > 0) {
+		uint vert_step = child_wid->GetVerticalStepSize();
+		uint child_height = ComputeMaxSize(child_wid->smallest_y, given_height - child_wid->padding_top - child_wid->padding_bottom, vert_step);
+		uint child_pos_y = child_wid->padding_top + ComputeOffset(child_height,  given_height - child_wid->padding_top - child_wid->padding_bottom);
+
+		/* Decide about horizontal sizing of the child. */
+		uint hor_step = child_wid->GetHorizontalStepSize();
+		uint child_width = child_wid->smallest_x;
+		if (hor_step > 0 && num_changing_childs > 0) {
 			/* Hand out a piece of the pie while compensating for rounding errors. */
 			uint increment = additional_length / num_changing_childs;
+			if (hor_step > 1) increment -= increment % hor_step;
 			additional_length -= increment;
 			num_changing_childs--;
 
@@ -1201,7 +1213,8 @@ void NWidgetVertical::AssignSizePosition(uint x, uint y, uint given_width, uint 
 	/* count number of childs that would like a piece of the pie. */
 	int num_changing_childs = 0; // Number of childs that can change size.
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
-		if (child_wid->fill_y) num_changing_childs++;
+		uint vert_step = child_wid->GetVerticalStepSize();
+		if (vert_step > 0) num_changing_childs++;
 	}
 
 	/* Fill and position the child widgets. */
@@ -1209,23 +1222,18 @@ void NWidgetVertical::AssignSizePosition(uint x, uint y, uint given_width, uint 
 	allow_resize_y = (this->resize_y > 0);
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 		assert(given_width >= child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
-		/* Decide about horizontal filling of the child. */
-		uint child_width; // Width of the child widget.
-		uint child_pos_x; // Horizontal position of child relative to the left of the container.
-		if (child_wid->fill_x) {
-			child_width = given_width - child_wid->padding_left - child_wid->padding_right;
-			child_pos_x = (rtl ? child_wid->padding_right : child_wid->padding_left);
-		} else {
-			child_width = child_wid->smallest_x;
-			child_pos_x = (given_width - child_wid->padding_left - child_wid->padding_right - child_width) / 2 + (rtl ? child_wid->padding_right : child_wid->padding_left);
-		}
+
+		uint hor_step = child_wid->GetHorizontalStepSize();
+		uint child_width = ComputeMaxSize(child_wid->smallest_x, given_width - child_wid->padding_left - child_wid->padding_right, hor_step);
+		uint child_pos_x = (rtl ? child_wid->padding_right : child_wid->padding_left) + ComputeOffset(child_width, given_width - child_wid->padding_left - child_wid->padding_right);
 
 		/* Decide about vertical filling of the child. */
-		uint child_height;
-		child_height = child_wid->smallest_y;
-		if (child_wid->fill_y && num_changing_childs > 0) {
+		uint vert_step = child_wid->GetVerticalStepSize();
+		uint child_height = child_wid->smallest_y;
+		if (vert_step > 0 && num_changing_childs > 0) {
 			/* Hand out a piece of the pie while compensating for rounding errors. */
 			uint increment = additional_length / num_changing_childs;
+			if (vert_step > 1) increment -= increment % vert_step;
 			additional_length -= increment;
 			num_changing_childs--;
 

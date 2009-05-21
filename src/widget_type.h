@@ -172,6 +172,9 @@ public:
 		this->padding_left = left;
 	};
 
+	inline uint GetHorizontalStepSize() const;
+	inline uint GetVerticalStepSize() const;
+
 	WidgetType type;      ///< Type of the widget / nested widget.
 	bool fill_x;          ///< Allow horizontal filling from initial size.
 	bool fill_y;          ///< Allow vertical filling from initial size.
@@ -194,6 +197,18 @@ public:
 	uint8 padding_bottom; ///< Paddings added to the bottom of the widget. Managed by parent container widget.
 	uint8 padding_left;   ///< Paddings added to the left of the widget. Managed by parent container widget.
 };
+
+/** Get the horizontal sizing step. */
+inline uint NWidgetBase::GetHorizontalStepSize() const
+{
+	return this->fill_x ? 1 : 0;
+}
+
+/** Get the vertical sizing step. */
+inline uint NWidgetBase::GetVerticalStepSize() const
+{
+	return this->fill_y ? 1 : 0;
+}
 
 /** Base class for a resizable nested widget.
  * @ingroup NestedWidgets */
