@@ -314,7 +314,7 @@ void AddArticulatedParts(Vehicle *first, VehicleType type)
 				previous->SetNext(t);
 				t->track = front->track;
 				t->railtype = front->railtype;
-				t->u.rail.first_engine = front->engine_type;
+				t->tcache.first_engine = front->engine_type;
 
 				t->spritenum = e_artic->u.rail.image_index;
 				if (e_artic->CanCarryCargo()) {

@@ -107,22 +107,22 @@ void TrainPowerChanged(Train *v)
 
 					total_power += power;
 					/* Tractive effort in (tonnes * 1000 * 10 =) N */
-					max_te += (u->u.rail.cached_veh_weight * 10000 * GetVehicleProperty(u, 0x1F, rvi_u->tractive_effort)) / 256;
+					max_te += (u->tcache.cached_veh_weight * 10000 * GetVehicleProperty(u, 0x1F, rvi_u->tractive_effort)) / 256;
 				}
 			}
 		}
 
 		if (HasBit(u->flags, VRF_POWEREDWAGON) && HasPowerOnRail(v->railtype, railtype)) {
-			total_power += RailVehInfo(u->u.rail.first_engine)->pow_wag_power;
+			total_power += RailVehInfo(u->tcache.first_engine)->pow_wag_power;
 		}
 	}
 
-	if (v->u.rail.cached_power != total_power || v->u.rail.cached_max_te != max_te) {
+	if (v->tcache.cached_power != total_power || v->tcache.cached_max_te != max_te) {
 		/* If it has no power (no catenary), stop the train */
 		if (total_power == 0) v->vehstatus |= VS_STOPPED;
 
-		v->u.rail.cached_power = total_power;
-		v->u.rail.cached_max_te = max_te;
+		v->tcache.cached_power = total_power;
+		v->tcache.cached_max_te = max_te;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
@@ -149,18 +149,18 @@ static void TrainCargoChanged(Train *v)
 
 		/* powered wagons have extra weight added */
 		if (HasBit(u->flags, VRF_POWEREDWAGON)) {
-			vweight += RailVehInfo(u->u.rail.first_engine)->pow_wag_weight;
+			vweight += RailVehInfo(u->tcache.first_engine)->pow_wag_weight;
 		}
 
 		/* consist weight is the sum of the weight of all vehicles in the consist */
 		weight += vweight;
 
 		/* store vehicle weight in cache */
-		u->u.rail.cached_veh_weight = vweight;
+		u->tcache.cached_veh_weight = vweight;
 	}
 
 	/* store consist weight in cache */
-	v->u.rail.cached_weight = weight;
+	v->tcache.cached_weight = weight;
 
 	/* Now update train power (tractive effort is dependent on weight) */
 	TrainPowerChanged(v);
@@ -192,7 +192,7 @@ void CheckTrainsLengths()
 			for (const Train *u = (Train *)v, *w = (Train *)v->Next(); w != NULL; u = w, w = w->Next()) {
 				if (u->track != TRACK_BIT_DEPOT) {
 					if ((w->track != TRACK_BIT_DEPOT &&
-							max(abs(u->x_pos - w->x_pos), abs(u->y_pos - w->y_pos)) != u->u.rail.cached_veh_length) ||
+							max(abs(u->x_pos - w->x_pos), abs(u->y_pos - w->y_pos)) != u->tcache.cached_veh_length) ||
 							(w->track == TRACK_BIT_DEPOT && TicksToLeaveDepot(u) <= 0)) {
 						SetDParam(0, v->index);
 						SetDParam(1, v->owner);
@@ -222,7 +222,7 @@ void TrainConsistChanged(Train *v, bool same_length)
 
 	const RailVehicleInfo *rvi_v = RailVehInfo(v->engine_type);
 	EngineID first_engine = IsFrontEngine(v) ? v->engine_type : INVALID_ENGINE;
-	v->u.rail.cached_total_length = 0;
+	v->tcache.cached_total_length = 0;
 	v->compatible_railtypes = RAILTYPES_NONE;
 
 	bool train_can_tilt = true;
@@ -234,19 +234,19 @@ void TrainConsistChanged(Train *v, bool same_length)
 		assert(u->First() == v);
 
 		/* update the 'first engine' */
-		u->u.rail.first_engine = v == u ? INVALID_ENGINE : first_engine;
+		u->tcache.first_engine = v == u ? INVALID_ENGINE : first_engine;
 		u->railtype = rvi_u->railtype;
 
 		if (IsTrainEngine(u)) first_engine = u->engine_type;
 
 		/* Set user defined data to its default value */
-		u->u.rail.user_def_data = rvi_u->user_def_data;
+		u->tcache.user_def_data = rvi_u->user_def_data;
 		u->cache_valid = 0;
 	}
 
 	for (Train *u = v; u != NULL; u = u->Next()) {
 		/* Update user defined data (must be done before other properties) */
-		u->u.rail.user_def_data = GetVehicleProperty(u, 0x25, u->u.rail.user_def_data);
+		u->tcache.user_def_data = GetVehicleProperty(u, 0x25, u->tcache.user_def_data);
 		u->cache_valid = 0;
 	}
 
@@ -257,23 +257,23 @@ void TrainConsistChanged(Train *v, bool same_length)
 		if (!HasBit(EngInfo(u->engine_type)->misc_flags, EF_RAIL_TILTS)) train_can_tilt = false;
 
 		/* Cache wagon override sprite group. NULL is returned if there is none */
-		u->u.rail.cached_override = GetWagonOverrideSpriteSet(u->engine_type, u->cargo_type, u->u.rail.first_engine);
+		u->tcache.cached_override = GetWagonOverrideSpriteSet(u->engine_type, u->cargo_type, u->tcache.first_engine);
 
 		/* Reset colour map */
 		u->colourmap = PAL_NONE;
 
 		if (rvi_u->visual_effect != 0) {
-			u->u.rail.cached_vis_effect = rvi_u->visual_effect;
+			u->tcache.cached_vis_effect = rvi_u->visual_effect;
 		} else {
 			if (IsTrainWagon(u) || IsArticulatedPart(u)) {
 				/* Wagons and articulated parts have no effect by default */
-				u->u.rail.cached_vis_effect = 0x40;
+				u->tcache.cached_vis_effect = 0x40;
 			} else if (rvi_u->engclass == 0) {
 				/* Steam is offset by -4 units */
-				u->u.rail.cached_vis_effect = 4;
+				u->tcache.cached_vis_effect = 4;
 			} else {
 				/* Diesel fumes and sparks come from the centre */
-				u->u.rail.cached_vis_effect = 8;
+				u->tcache.cached_vis_effect = 8;
 			}
 		}
 
@@ -281,11 +281,11 @@ void TrainConsistChanged(Train *v, bool same_length)
 		if (HasBit(EngInfo(u->engine_type)->callbackmask, CBM_TRAIN_WAGON_POWER)) {
 			uint16 callback = GetVehicleCallback(CBID_TRAIN_WAGON_POWER, 0, 0, u->engine_type, u);
 
-			if (callback != CALLBACK_FAILED) u->u.rail.cached_vis_effect = GB(callback, 0, 8);
+			if (callback != CALLBACK_FAILED) u->tcache.cached_vis_effect = GB(callback, 0, 8);
 		}
 
 		if (rvi_v->pow_wag_power != 0 && rvi_u->railveh_type == RAILVEH_WAGON &&
-			UsesWagonOverride(u) && !HasBit(u->u.rail.cached_vis_effect, 7)) {
+			UsesWagonOverride(u) && !HasBit(u->tcache.cached_vis_effect, 7)) {
 			/* wagon is powered */
 			SetBit(u->flags, VRF_POWEREDWAGON); // cache 'powered' status
 		} else {
@@ -327,18 +327,18 @@ void TrainConsistChanged(Train *v, bool same_length)
 		veh_len = 8 - Clamp(veh_len, 0, 7);
 
 		/* verify length hasn't changed */
-		if (same_length && veh_len != u->u.rail.cached_veh_length) RailVehicleLengthChanged(u);
+		if (same_length && veh_len != u->tcache.cached_veh_length) RailVehicleLengthChanged(u);
 
 		/* update vehicle length? */
-		if (!same_length) u->u.rail.cached_veh_length = veh_len;
+		if (!same_length) u->tcache.cached_veh_length = veh_len;
 
-		v->u.rail.cached_total_length += u->u.rail.cached_veh_length;
+		v->tcache.cached_total_length += u->tcache.cached_veh_length;
 		u->cache_valid = 0;
 	}
 
 	/* store consist weight/max speed in cache */
-	v->u.rail.cached_max_speed = max_speed;
-	v->u.rail.cached_tilt = train_can_tilt;
+	v->tcache.cached_max_speed = max_speed;
+	v->tcache.cached_tilt = train_can_tilt;
 
 	/* recalculate cached weights and power too (we do this *after* the rest, so it is known which wagons are powered and need extra weight added) */
 	TrainCargoChanged(v);
@@ -373,7 +373,7 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 	/* Default to the middle of the station for stations stops that are not in
 	 * the order list like intermediate stations when non-stop is disabled */
 	OrderStopLocation osl = OSL_PLATFORM_MIDDLE;
-	if (v->u.rail.cached_total_length >= *station_length) {
+	if (v->tcache.cached_total_length >= *station_length) {
 		/* The train is longer than the station, make it stop at the far end of the platform */
 		osl = OSL_PLATFORM_FAR_END;
 	} else if (v->current_order.IsType(OT_GOTO_STATION) && v->current_order.GetDestination() == station_id) {
@@ -386,11 +386,11 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 		default: NOT_REACHED();
 
 		case OSL_PLATFORM_NEAR_END:
-			stop = v->u.rail.cached_total_length;
+			stop = v->tcache.cached_total_length;
 			break;
 
 		case OSL_PLATFORM_MIDDLE:
-			stop = *station_length - (*station_length - v->u.rail.cached_total_length) / 2;
+			stop = *station_length - (*station_length - v->tcache.cached_total_length) / 2;
 			break;
 
 		case OSL_PLATFORM_FAR_END:
@@ -400,7 +400,7 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 
 	/* Substract half the front vehicle length of the train so we get the real
 	 * stop location of the train. */
-	return stop - (v->u.rail.cached_veh_length + 1) / 2;
+	return stop - (v->tcache.cached_veh_length + 1) / 2;
 }
 
 /** new acceleration*/
@@ -458,7 +458,7 @@ static int GetTrainAcceleration(Train *v, bool mode)
 		const RailtypeInfo *rti = GetRailTypeInfo(v->railtype);
 		max_speed += (max_speed / 2) * rti->curve_speed;
 
-		if (v->u.rail.cached_tilt) {
+		if (v->tcache.cached_tilt) {
 			/* Apply max_speed bonus of 20% for a tilting train */
 			max_speed += max_speed / 5;
 		}
@@ -489,9 +489,9 @@ static int GetTrainAcceleration(Train *v, bool mode)
 		}
 	}
 
-	int mass = v->u.rail.cached_weight;
-	int power = v->u.rail.cached_power * 746;
-	max_speed = min(max_speed, v->u.rail.cached_max_speed);
+	int mass = v->tcache.cached_weight;
+	int power = v->tcache.cached_power * 746;
+	max_speed = min(max_speed, v->tcache.cached_max_speed);
 
 	int num = 0; // number of vehicles, change this into the number of axles later
 	int incl = 0;
@@ -503,9 +503,9 @@ static int GetTrainAcceleration(Train *v, bool mode)
 		if (u->track == TRACK_BIT_DEPOT) max_speed = min(max_speed, 61);
 
 		if (HasBit(u->flags, VRF_GOINGUP)) {
-			incl += u->u.rail.cached_veh_weight * 60; // 3% slope, quite a bit actually
+			incl += u->tcache.cached_veh_weight * 60; // 3% slope, quite a bit actually
 		} else if (HasBit(u->flags, VRF_GOINGDOWN)) {
-			incl -= u->u.rail.cached_veh_weight * 60;
+			incl -= u->tcache.cached_veh_weight * 60;
 		}
 	}
 
@@ -525,7 +525,7 @@ static int GetTrainAcceleration(Train *v, bool mode)
 	resistance += incl;
 	resistance *= 4; //[N]
 
-	const int max_te = v->u.rail.cached_max_te; // [N]
+	const int max_te = v->tcache.cached_max_te; // [N]
 	int force;
 	if (speed > 0) {
 		switch (v->railtype) {
@@ -560,10 +560,10 @@ void UpdateTrainAcceleration(Train *v)
 {
 	assert(IsFrontEngine(v));
 
-	v->max_speed = v->u.rail.cached_max_speed;
+	v->max_speed = v->tcache.cached_max_speed;
 
-	uint power = v->u.rail.cached_power;
-	uint weight = v->u.rail.cached_weight;
+	uint power = v->tcache.cached_power;
+	uint weight = v->tcache.cached_weight;
 	assert(weight != 0);
 	v->acceleration = Clamp(power / weight * 4, 1, 255);
 }
@@ -1185,13 +1185,13 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			/* Don't check callback for articulated or rear dual headed parts */
 			if (!IsArticulatedPart(next_to_attach) && !IsRearDualheaded(next_to_attach)) {
 				/* Back up and clear the first_engine data to avoid using wagon override group */
-				EngineID first_engine = next_to_attach->u.rail.first_engine;
-				next_to_attach->u.rail.first_engine = INVALID_ENGINE;
+				EngineID first_engine = next_to_attach->tcache.first_engine;
+				next_to_attach->tcache.first_engine = INVALID_ENGINE;
 
 				uint16 callback = GetVehicleCallbackParent(CBID_TRAIN_ALLOW_WAGON_ATTACH, 0, 0, dst_head->engine_type, next_to_attach, dst_head);
 
 				/* Restore original first_engine data */
-				next_to_attach->u.rail.first_engine = first_engine;
+				next_to_attach->tcache.first_engine = first_engine;
 
 				if (callback != CALLBACK_FAILED) {
 					StringID error = STR_NULL;
@@ -1585,9 +1585,9 @@ static void UpdateVarsAfterSwap(Train *v)
 
 static inline void SetLastSpeed(Train *v, int spd)
 {
-	int old = v->u.rail.last_speed;
+	int old = v->tcache.last_speed;
 	if (spd != old) {
-		v->u.rail.last_speed = spd;
+		v->tcache.last_speed = spd;
 		if (_settings_client.gui.vehicle_speed || (old == 0) != (spd == 0)) {
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
@@ -1790,7 +1790,7 @@ static void AdvanceWagonsBeforeSwap(Train *v)
 		last = last->Previous();
 		first = first->Next();
 
-		int differential = base->u.rail.cached_veh_length - last->u.rail.cached_veh_length;
+		int differential = base->tcache.cached_veh_length - last->tcache.cached_veh_length;
 
 		/* do not update images now
 		 * negative differential will be handled in AdvanceWagonsAfterSwap() */
@@ -1850,7 +1850,7 @@ static void AdvanceWagonsAfterSwap(Train *v)
 		last = last->Previous();
 		first = first->Next();
 
-		int differential = last->u.rail.cached_veh_length - base->u.rail.cached_veh_length;
+		int differential = last->tcache.cached_veh_length - base->tcache.cached_veh_length;
 
 		/* do not update images now */
 		for (int i = 0; i < differential; i++) TrainController(first, (nomove ? last->Next() : NULL));
@@ -2267,9 +2267,9 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 
 	do {
 		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
-		int effect_offset = GB(v->u.rail.cached_vis_effect, 0, 4) - 8;
-		byte effect_type = GB(v->u.rail.cached_vis_effect, 4, 2);
-		bool disable_effect = HasBit(v->u.rail.cached_vis_effect, 6);
+		int effect_offset = GB(v->tcache.cached_vis_effect, 0, 4) - 8;
+		byte effect_type = GB(v->tcache.cached_vis_effect, 4, 2);
+		bool disable_effect = HasBit(v->tcache.cached_vis_effect, 6);
 
 		/* no smoke? */
 		if ((rvi->railveh_type == RAILVEH_WAGON && effect_type == 0) ||
@@ -2394,7 +2394,7 @@ static bool CheckTrainStayInDepot(Train *v)
 	}
 
 	/* if the train got no power, then keep it in the depot */
-	if (v->u.rail.cached_power == 0) {
+	if (v->tcache.cached_power == 0) {
 		v->vehstatus |= VS_STOPPED;
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		return true;
@@ -4133,7 +4133,7 @@ static bool TrainApproachingLineEnd(Train *v, bool signal)
 	}
 
 	/* do not reverse when approaching red signal */
-	if (!signal && x + (v->u.rail.cached_veh_length + 1) / 2 >= TILE_SIZE) {
+	if (!signal && x + (v->tcache.cached_veh_length + 1) / 2 >= TILE_SIZE) {
 		/* we are too near the tile end, reverse now */
 		v->cur_speed = 0;
 		ReverseTrainDirection(v);
@@ -4353,7 +4353,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 	int j = UpdateTrainSpeed(v);
 
 	/* we need to invalidate the widget if we are stopping from 'Stopping 0 km/h' to 'Stopped' */
-	if (v->cur_speed == 0 && v->u.rail.last_speed == 0 && v->vehstatus & VS_STOPPED) {
+	if (v->cur_speed == 0 && v->tcache.last_speed == 0 && v->vehstatus & VS_STOPPED) {
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 

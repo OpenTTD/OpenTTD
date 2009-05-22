@@ -272,7 +272,7 @@ struct DepotWindow : Window {
 				DrawTrainImage(v, x + 21, sprite_y, this->sel, this->hscroll.cap + 4, this->hscroll.pos);
 
 				/* Number of wagons relative to a standard length wagon (rounded up) */
-				SetDParam(0, (v->u.rail.cached_total_length + 7) / 8);
+				SetDParam(0, (((Train *)v)->tcache.cached_total_length + 7) / 8);
 				DrawString(this->widget[DEPOT_WIDGET_MATRIX].left, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, TC_FROMSTRING, SA_RIGHT); // Draw the counter
 				break;
 
@@ -328,7 +328,7 @@ struct DepotWindow : Window {
 			hnum = 8;
 			for (uint num = 0; num < this->vehicle_list.Length(); num++) {
 				const Vehicle *v = this->vehicle_list[num];
-				hnum = max(hnum, v->u.rail.cached_total_length);
+				hnum = max(hnum, ((Train *)v)->tcache.cached_total_length);
 			}
 			/* Always have 1 empty row, so people can change the setting of the train */
 			SetVScrollCount(w, this->vehicle_list.Length() + this->wagon_list.Length() + 1);
@@ -450,7 +450,7 @@ struct DepotWindow : Window {
 				x += skip;
 
 				/* find the vehicle in this row that was clicked */
-				while (v != NULL && (x -= v->u.rail.cached_veh_length) >= 0) v = v->Next();
+				while (v != NULL && (x -= ((Train *)v)->tcache.cached_veh_length) >= 0) v = v->Next();
 
 				/* if an articulated part was selected, find its parent */
 				while (v != NULL && IsArticulatedPart(v)) v = v->Previous();
@@ -514,7 +514,7 @@ struct DepotWindow : Window {
 
 					switch (v->type) {
 						case VEH_TRAIN:
-							_cursor.short_vehicle_offset = 16 - v->u.rail.cached_veh_length * 2;
+							_cursor.short_vehicle_offset = 16 - ((Train *)v)->tcache.cached_veh_length * 2;
 							break;
 
 						case VEH_ROAD:

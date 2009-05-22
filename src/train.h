@@ -259,6 +259,40 @@ void TrainConsistChanged(Train *v, bool same_length);
 void TrainPowerChanged(Train *v);
 Money GetTrainRunningCost(const Train *v);
 
+/** Variables that are cached to improve performance and such */
+struct TrainCache {
+	/* Cached wagon override spritegroup */
+	const struct SpriteGroup *cached_override;
+
+	uint16 last_speed; // NOSAVE: only used in UI
+
+	/* cached values, recalculated on load and each time a vehicle is added to/removed from the consist. */
+	uint32 cached_power;        ///< total power of the consist.
+	uint16 cached_max_speed;    ///< max speed of the consist. (minimum of the max speed of all vehicles in the consist)
+	uint16 cached_total_length; ///< Length of the whole train, valid only for first engine.
+	uint8 cached_veh_length;    ///< length of this vehicle in units of 1/8 of normal length, cached because this can be set by a callback
+	bool cached_tilt;           ///< train can tilt; feature provides a bonus in curves
+
+	/* cached values, recalculated when the cargo on a train changes (in addition to the conditions above) */
+	uint32 cached_weight;     ///< total weight of the consist.
+	uint32 cached_veh_weight; ///< weight of the vehicle.
+	uint32 cached_max_te;     ///< max tractive effort of consist
+
+	/**
+	 * Position/type of visual effect.
+	 * bit 0 - 3 = position of effect relative to vehicle. (0 = front, 8 = centre, 15 = rear)
+	 * bit 4 - 5 = type of effect. (0 = default for engine class, 1 = steam, 2 = diesel, 3 = electric)
+	 * bit     6 = disable visual effect.
+	 * bit     7 = disable powered wagons.
+	 */
+	byte cached_vis_effect;
+	byte user_def_data;
+
+	/* NOSAVE: for wagon override - id of the first engine in train
+	 * 0xffff == not in train */
+	EngineID first_engine;
+};
+
 /**
  * This class 'wraps' Vehicle; you do not actually instantiate this class.
  * You create a Vehicle using AllocateVehicle, so it is added to the pool
@@ -268,6 +302,8 @@ Money GetTrainRunningCost(const Train *v);
  * As side-effect the vehicle type is set correctly.
  */
 struct Train : public Vehicle {
+	TrainCache tcache;
+
 	/* Link between the two ends of a multiheaded engine */
 	Train *other_multiheaded_part;
 
@@ -292,8 +328,8 @@ struct Train : public Vehicle {
 	void PlayLeaveStationSound() const;
 	bool IsPrimaryVehicle() const { return IsFrontEngine(this); }
 	SpriteID GetImage(Direction direction) const;
-	int GetDisplaySpeed() const { return this->u.rail.last_speed; }
-	int GetDisplayMaxSpeed() const { return this->u.rail.cached_max_speed; }
+	int GetDisplaySpeed() const { return this->tcache.last_speed; }
+	int GetDisplayMaxSpeed() const { return this->tcache.cached_max_speed; }
 	Money GetRunningCost() const;
 	bool IsInDepot() const { return CheckTrainInDepot(this, false) != -1; }
 	bool IsStoppedInDepot() const { return CheckTrainStoppedInDepot(this) >= 0; }

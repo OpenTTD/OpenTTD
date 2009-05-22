@@ -252,7 +252,7 @@ void AfterLoadVehicles(bool part_of_load)
 
 		if (part_of_load) v->fill_percent_te_id = INVALID_TE_ID;
 		v->first = NULL;
-		if (v->type == VEH_TRAIN) v->u.rail.first_engine = INVALID_ENGINE;
+		if (v->type == VEH_TRAIN) ((Train *)v)->tcache.first_engine = INVALID_ENGINE;
 		if (v->type == VEH_ROAD)  ((RoadVehicle *)v)->first_engine = INVALID_ENGINE;
 
 		v->cargo.InvalidateCache();
@@ -318,7 +318,7 @@ void AfterLoadVehicles(bool part_of_load)
 		assert(v->first != NULL);
 
 		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) {
-			if (IsFrontEngine(v)) ((Train *)v)->u.rail.last_speed = v->cur_speed; // update displayed train speed
+			if (IsFrontEngine(v)) ((Train *)v)->tcache.last_speed = v->cur_speed; // update displayed train speed
 			TrainConsistChanged((Train *)v, false);
 		} else if (v->type == VEH_ROAD && IsRoadVehFront(v)) {
 			RoadVehUpdateCache((RoadVehicle *)v);

@@ -49,7 +49,7 @@
 			}
 			return total_length;
 		}
-		case VEH_TRAIN: return v->u.rail.cached_total_length;
+		case VEH_TRAIN: return ((Train *)v)->tcache.cached_total_length;
 		default: return -1;
 	}
 }

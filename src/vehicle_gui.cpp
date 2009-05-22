@@ -603,7 +603,7 @@ static int CDECL VehicleMaxSpeedSorter(const Vehicle * const *a, const Vehicle *
 {
 	int r = 0;
 	if ((*a)->type == VEH_TRAIN && (*b)->type == VEH_TRAIN) {
-		r = (*a)->u.rail.cached_max_speed - (*b)->u.rail.cached_max_speed;
+		r = ((const Train *)(*a))->tcache.cached_max_speed - ((const Train *)(*b))->tcache.cached_max_speed;
 	} else {
 		r = (*a)->max_speed - (*b)->max_speed;
 	}
@@ -636,7 +636,7 @@ static int CDECL VehicleLengthSorter(const Vehicle * const *a, const Vehicle * c
 	int r = 0;
 	switch ((*a)->type) {
 		case VEH_TRAIN:
-			r = (*a)->u.rail.cached_total_length - (*b)->u.rail.cached_total_length;
+			r = ((const Train *)(*a))->tcache.cached_total_length - ((const Train *)(*b))->tcache.cached_total_length;
 			break;
 
 		case VEH_ROAD: {
@@ -1466,9 +1466,9 @@ struct VehicleDetailsWindow : Window {
 		switch (v->type) {
 			case VEH_TRAIN:
 				SetDParam(2, v->GetDisplayMaxSpeed());
-				SetDParam(1, v->u.rail.cached_power);
-				SetDParam(0, v->u.rail.cached_weight);
-				SetDParam(3, v->u.rail.cached_max_te / 1000);
+				SetDParam(1, ((Train *)v)->tcache.cached_power);
+				SetDParam(0, ((Train *)v)->tcache.cached_weight);
+				SetDParam(3, ((Train *)v)->tcache.cached_max_te / 1000);
 				DrawString(2, this->width - 2, 25, (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && ((Train *)v)->railtype != RAILTYPE_MAGLEV) ?
 					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE :
 					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED);
@@ -1937,7 +1937,7 @@ struct VehicleViewWindow : Window {
 		} else if (v->vehstatus & VS_STOPPED) {
 			if (v->type == VEH_TRAIN) {
 				if (v->cur_speed == 0) {
-					if (v->u.rail.cached_power == 0) {
+					if (((Train *)v)->tcache.cached_power == 0) {
 						str = STR_TRAIN_NO_POWER;
 					} else {
 						str = STR_VEHICLE_STATUS_STOPPED;

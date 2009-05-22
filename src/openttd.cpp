@@ -1127,17 +1127,18 @@ void StateGameLoop()
 
 					case VEH_TRAIN: {
 						uint length = 0;
-						for (Vehicle *u = v; u != NULL; u = u->Next()) length++;
+						Train *t = (Train *)v;
+						for (Vehicle *u = t; u != NULL; u = u->Next()) length++;
 
-						VehicleRail *wagons = MallocT<VehicleRail>(length);
+						TrainCache *wagons = MallocT<TrainCache>(length);
 						length = 0;
-						for (Vehicle *u = v; u != NULL; u = u->Next()) wagons[length++] = u->u.rail;
+						for (Train *u = t; u != NULL; u = u->Next()) wagons[length++] = u->tcache;
 
-						TrainConsistChanged((Train *)v, true);
+						TrainConsistChanged(t, true);
 
 						length = 0;
-						for (Vehicle *u = v; u != NULL; u = u->Next()) {
-							if (memcmp(&wagons[length], &u->u.rail, sizeof(VehicleRail)) != 0) {
+						for (Train *u = t; u != NULL; u = u->Next()) {
+							if (memcmp(&wagons[length], &u->tcache, sizeof(TrainCache)) != 0) {
 								DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i, wagon %i\n", v->index, (int)v->owner, v->unitnumber, length);
 							}
 							length++;

@@ -15,6 +15,7 @@
 #include "vehicle_gui.h"
 #include "ai/ai.hpp"
 #include "aircraft.h"
+#include "train.h"
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
 #include "newgrf_industries.h"
@@ -1650,7 +1651,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		/* update stats */
 		int t;
 		switch (u->type) {
-			case VEH_TRAIN: t = u->u.rail.cached_max_speed; break;
+			case VEH_TRAIN: t = ((Train *)u)->tcache.cached_max_speed; break;
 			case VEH_ROAD:  t = u->max_speed / 2;           break;
 			default:        t = u->max_speed;               break;
 		}
@@ -1759,7 +1760,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 	if (v->type == VEH_TRAIN) {
 		/* Each platform tile is worth 2 rail vehicles. */
-		int overhang = v->u.rail.cached_total_length - st->GetPlatformLength(v->tile) * TILE_SIZE;
+		int overhang = ((Train *)v)->tcache.cached_total_length - st->GetPlatformLength(v->tile) * TILE_SIZE;
 		if (overhang > 0) {
 			unloading_time <<= 1;
 			unloading_time += (overhang * unloading_time) / 8;
