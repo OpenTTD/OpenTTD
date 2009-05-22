@@ -912,7 +912,7 @@ bool AfterLoadGame()
 				continue;
 			}
 			if (v->type == VEH_TRAIN) {
-				v->u.rail.track = TRACK_BIT_WORMHOLE;
+				((Train *)v)->u.rail.track = TRACK_BIT_WORMHOLE;
 			} else {
 				((RoadVehicle *)v)->state = RVSB_WORMHOLE;
 			}
@@ -928,7 +928,7 @@ bool AfterLoadGame()
 			if (v->type == VEH_TRAIN) {
 				RailType rt = RailVehInfo(v->engine_type)->railtype;
 
-				v->u.rail.railtype = rt;
+				((Train *)v)->u.rail.railtype = rt;
 				if (rt == RAILTYPE_ELECTRIC) min_rail = RAILTYPE_RAIL;
 			}
 		}
@@ -964,7 +964,7 @@ bool AfterLoadGame()
 		}
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) TrainConsistChanged(v, true);
+			if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) TrainConsistChanged((Train *)v, true);
 		}
 
 	}
@@ -1700,9 +1700,10 @@ bool AfterLoadGame()
 
 	/* Reserve all tracks trains are currently on. */
 	if (CheckSavegameVersion(101)) {
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_TRAIN) {
+		Vehicle *u;
+		FOR_ALL_VEHICLES(u) {
+			if (u->type == VEH_TRAIN) {
+				Train *v = (Train *)u;
 				if ((v->u.rail.track & TRACK_BIT_WORMHOLE) == TRACK_BIT_WORMHOLE) {
 					TryReserveRailTrack(v->tile, DiagDirToDiagTrack(GetTunnelBridgeDirection(v->tile)));
 				} else if ((v->u.rail.track & TRACK_BIT_MASK) != TRACK_BIT_NONE) {

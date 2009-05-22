@@ -258,7 +258,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justre
 		wp->deleted = 30; // let it live for this many days before we do the actual deletion.
 		RedrawWaypointSign(wp);
 
-		Vehicle *v = NULL;
+		Train *v = NULL;
 		if (justremove) {
 			TrackBits tracks = GetRailWaypointBits(tile);
 			bool reserved = GetDepotWaypointReservation(tile);

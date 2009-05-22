@@ -92,7 +92,8 @@ Vehicle *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
 
 	if (v->type != VEH_TRAIN) return NULL;
 
-	if ((v->u.rail.track != rail_bits) && !TracksOverlap(v->u.rail.track | rail_bits)) return NULL;
+	Train *t = (Train *)v;
+	if ((t->u.rail.track != rail_bits) && !TracksOverlap(t->u.rail.track | rail_bits)) return NULL;
 
 	_error_message = VehicleInTheWayErrMsg(v);
 	return v;
@@ -456,7 +457,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	 * so do not call GetTileOwner(tile) in any case here */
 	Owner owner = INVALID_OWNER;
 
-	Vehicle *v = NULL;
+	Train *v = NULL;
 
 	switch (GetTileType(tile)) {
 		case MP_ROAD: {
@@ -877,7 +878,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	}
 
 	if (flags & DC_EXEC) {
-		Vehicle *v = NULL;
+		Train *v = NULL;
 		/* The new/changed signal could block our path. As this can lead to
 		 * stale reservations, we clear the path reservation here and try
 		 * to redo it later on. */
@@ -1184,7 +1185,7 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1
 
 	/* Do it? */
 	if (flags & DC_EXEC) {
-		Vehicle *v = NULL;
+		Train *v = NULL;
 		if (HasReservedTracks(tile, TrackToTrackBits(track))) {
 			v = GetTrainForReservation(tile, track);
 		}
@@ -1234,7 +1235,7 @@ Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
 
 	if (v->type == VEH_TRAIN && !IsArticulatedPart(v)) {
 		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
-		if (GetVehicleProperty(v, 0x0B, rvi->power) != 0) TrainPowerChanged(v->First());
+		if (GetVehicleProperty(v, 0x0B, rvi->power) != 0) TrainPowerChanged((Train *)v->First());
 	}
 
 	return NULL;
@@ -1296,7 +1297,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			/* Trying to convert other's rail */
 			if (!CheckTileOwnership(tile)) continue;
 
-			SmallVector<Vehicle*, 2> vehicles_affected;
+			SmallVector<Train *, 2> vehicles_affected;
 
 			/* Vehicle on the tile when not converting Rail <-> ElRail
 			 * Tunnels and bridges have special check later */
@@ -1306,7 +1307,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					TrackBits reserved = GetReservedTrackbits(tile);
 					Track     track;
 					while ((track = RemoveFirstTrack(&reserved)) != INVALID_TRACK) {
-						Vehicle *v = GetTrainForReservation(tile, track);
+						Train *v = GetTrainForReservation(tile, track);
 						if (v != NULL && !HasPowerOnRail(v->u.rail.railtype, totype)) {
 							/* No power on new rail type, reroute. */
 							FreeTrainTrackReservation(v);
@@ -1372,7 +1373,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					if (flags & DC_EXEC) {
 						Track track = DiagDirToDiagTrack(GetTunnelBridgeDirection(tile));
 						if (GetTunnelBridgeReservation(tile)) {
-							Vehicle *v = GetTrainForReservation(tile, track);
+							Train *v = GetTrainForReservation(tile, track);
 							if (v != NULL && !HasPowerOnRail(v->u.rail.railtype, totype)) {
 								/* No power on new rail type, reroute. */
 								FreeTrainTrackReservation(v);
@@ -1432,7 +1433,7 @@ static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlag flags)
 		/* read variables before the depot is removed */
 		DiagDirection dir = GetRailDepotDirection(tile);
 		Owner owner = GetTileOwner(tile);
-		Vehicle *v = NULL;
+		Train *v = NULL;
 
 		if (GetDepotWaypointReservation(tile)) {
 			v = GetTrainForReservation(tile, DiagDirToDiagTrack(dir));
@@ -2450,7 +2451,7 @@ int TicksToLeaveDepot(const Vehicle *v)
 
 /** Tile callback routine when vehicle enters tile
  * @see vehicle_enter_tile_proc */
-static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
+static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int x, int y)
 {
 	byte fract_coord;
 	byte fract_coord_leave;
@@ -2458,7 +2459,9 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *v, TileIndex tile, int
 	int length;
 
 	/* this routine applies only to trains in depot tiles */
-	if (v->type != VEH_TRAIN || !IsRailDepotTile(tile)) return VETSB_CONTINUE;
+	if (u->type != VEH_TRAIN || !IsRailDepotTile(tile)) return VETSB_CONTINUE;
+
+	Train *v = (Train *)u;
 
 	/* depot direction */
 	dir = GetRailDepotDirection(tile);

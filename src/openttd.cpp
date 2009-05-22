@@ -31,6 +31,7 @@
 #include "fios.h"
 #include "aircraft.h"
 #include "roadveh.h"
+#include "train.h"
 #include "console_func.h"
 #include "screenshot.h"
 #include "network/network.h"
@@ -1132,7 +1133,7 @@ void StateGameLoop()
 						length = 0;
 						for (Vehicle *u = v; u != NULL; u = u->Next()) wagons[length++] = u->u.rail;
 
-						TrainConsistChanged(v, true);
+						TrainConsistChanged((Train *)v, true);
 
 						length = 0;
 						for (Vehicle *u = v; u != NULL; u = u->Next()) {

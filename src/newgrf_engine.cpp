@@ -668,7 +668,8 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			uint16 modflags = 0;
 
 			if (v->type == VEH_TRAIN) {
-				const Vehicle *u = IsTrainWagon(v) && HasBit(v->vehicle_flags, VRF_POWEREDWAGON) ? v->First() : v;
+				const Train *t = (const Train *)v;
+				const Train *u = IsTrainWagon(v) && HasBit(v->vehicle_flags, VRF_POWEREDWAGON) ? t->First() : t;
 				RailType railtype = GetRailType(v->tile);
 				bool powered = IsTrainEngine(v) || (IsTrainWagon(v) && HasBit(v->vehicle_flags, VRF_POWEREDWAGON));
 				bool has_power = powered && HasPowerOnRail(u->u.rail.railtype, railtype);
@@ -676,7 +677,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 				if (has_power) SetBit(modflags, 5);
 				if (is_electric && !has_power) SetBit(modflags, 6);
-				if (HasBit(v->u.rail.flags, VRF_TOGGLE_REVERSE)) SetBit(modflags, 8);
+				if (HasBit(t->u.rail.flags, VRF_TOGGLE_REVERSE)) SetBit(modflags, 8);
 			}
 			if (HasBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE)) SetBit(modflags, 10);
 
@@ -735,7 +736,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x47: return GB(Engine::Get(v->engine_type)->internal_id, 8, 8);
 		case 0x48:
 			if (v->type != VEH_TRAIN || v->spritenum != 0xFD) return v->spritenum;
-			return HasBit(v->u.rail.flags, VRF_REVERSE_DIRECTION) ? 0xFE : 0xFD;
+			return HasBit(((Train *)v)->u.rail.flags, VRF_REVERSE_DIRECTION) ? 0xFE : 0xFD;
 
 		case 0x49: return v->day_counter;
 		case 0x4A: return v->breakdowns_since_last_service;
@@ -766,20 +767,21 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 	/* Vehicle specific properties */
 	switch (v->type) {
-		case VEH_TRAIN:
+		case VEH_TRAIN: {
+			Train *t = (Train *)v;
 			switch (variable - 0x80) {
-				case 0x62: return v->u.rail.track;
-				case 0x66: return v->u.rail.railtype;
-				case 0x73: return v->u.rail.cached_veh_length;
-				case 0x74: return v->u.rail.cached_power;
-				case 0x75: return GB(v->u.rail.cached_power,  8, 24);
-				case 0x76: return GB(v->u.rail.cached_power, 16, 16);
-				case 0x77: return GB(v->u.rail.cached_power, 24,  8);
-				case 0x7C: return v->First()->index;
-				case 0x7D: return GB(v->First()->index, 8, 8);
+				case 0x62: return t->u.rail.track;
+				case 0x66: return t->u.rail.railtype;
+				case 0x73: return t->u.rail.cached_veh_length;
+				case 0x74: return t->u.rail.cached_power;
+				case 0x75: return GB(t->u.rail.cached_power,  8, 24);
+				case 0x76: return GB(t->u.rail.cached_power, 16, 16);
+				case 0x77: return GB(t->u.rail.cached_power, 24,  8);
+				case 0x7C: return t->First()->index;
+				case 0x7D: return GB(t->First()->index, 8, 8);
 				case 0x7F: return 0; // Used for vehicle reversing hack in TTDP
 			}
-			break;
+		} break;
 
 		case VEH_ROAD: {
 			RoadVehicle *rv = (RoadVehicle *)v;

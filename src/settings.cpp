@@ -697,7 +697,7 @@ static bool UpdateConsists(int32 p1)
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		/* Update the consist of all trains so the maximum speed is set correctly. */
-		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) TrainConsistChanged(v, true);
+		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) TrainConsistChanged((Train *)v, true);
 	}
 	return true;
 }
@@ -747,7 +747,7 @@ static bool TrainAccelerationModelChanged(int32 p1)
 	Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_TRAIN && IsFrontEngine(v)) UpdateTrainAcceleration(v);
+		if (v->type == VEH_TRAIN && IsFrontEngine(v)) UpdateTrainAcceleration((Train *)v);
 	}
 
 	return true;

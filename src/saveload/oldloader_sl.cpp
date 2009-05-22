@@ -1315,7 +1315,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 					};
 					if (v->spritenum / 2 >= lengthof(spriteset_rail)) return false;
 					v->spritenum = spriteset_rail[v->spritenum / 2]; // adjust railway sprite set offset
-					v->u.rail.railtype = type == 0x25 ? 1 : 0; // monorail / rail
+					((Train *)v)->u.rail.railtype = type == 0x25 ? 1 : 0; // monorail / rail
 					break;
 				}
 

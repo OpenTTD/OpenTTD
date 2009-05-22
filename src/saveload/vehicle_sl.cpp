@@ -24,7 +24,7 @@ void ConnectMultiheadedTrains()
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_TRAIN) {
-			v->u.rail.other_multiheaded_part = NULL;
+			((Train *)v)->u.rail.other_multiheaded_part = NULL;
 		}
 	}
 
@@ -45,7 +45,7 @@ void ConnectMultiheadedTrains()
 
 			bool sequential_matching = IsFrontEngine(v);
 
-			for (Vehicle *u = v; u != NULL; u = GetNextVehicle(u)) {
+			for (Train *u = (Train *)v; u != NULL; u = (Train *)GetNextVehicle(u)) {
 				if (u->u.rail.other_multiheaded_part != NULL) continue; // we already linked this one
 
 				if (IsMultiheaded(u)) {
@@ -57,7 +57,7 @@ void ConnectMultiheadedTrains()
 
 					/* Find a matching back part */
 					EngineID eid = u->engine_type;
-					Vehicle *w;
+					Train *w;
 					if (sequential_matching) {
 						for (w = GetNextVehicle(u); w != NULL; w = GetNextVehicle(w)) {
 							if (w->engine_type != eid || w->u.rail.other_multiheaded_part != NULL || !IsMultiheaded(w)) continue;
@@ -318,8 +318,8 @@ void AfterLoadVehicles(bool part_of_load)
 		assert(v->first != NULL);
 
 		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) {
-			if (IsFrontEngine(v)) v->u.rail.last_speed = v->cur_speed; // update displayed train speed
-			TrainConsistChanged(v, false);
+			if (IsFrontEngine(v)) ((Train *)v)->u.rail.last_speed = v->cur_speed; // update displayed train speed
+			TrainConsistChanged((Train *)v, false);
 		} else if (v->type == VEH_ROAD && IsRoadVehFront(v)) {
 			RoadVehUpdateCache((RoadVehicle *)v);
 		}

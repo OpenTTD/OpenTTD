@@ -29,7 +29,7 @@
 
 	int num = 1;
 	if (::Vehicle::Get(vehicle_id)->type == VEH_TRAIN) {
-		const Vehicle *v = ::Vehicle::Get(vehicle_id);
+		const Train *v = (Train *)::Vehicle::Get(vehicle_id);
 		while ((v = GetNextUnit(v)) != NULL) num++;
 	}
 
@@ -85,11 +85,11 @@
 	EnforcePrecondition(false, ::Vehicle::Get(source_vehicle_id)->type == VEH_TRAIN);
 	EnforcePrecondition(false, dest_vehicle_id == -1 || ::Vehicle::Get(dest_vehicle_id)->type == VEH_TRAIN);
 
-	const Vehicle *v = ::Vehicle::Get(source_vehicle_id);
+	const Train *v = (Train *)::Vehicle::Get(source_vehicle_id);
 	while (source_wagon-- > 0) v = GetNextUnit(v);
-	const Vehicle *w = NULL;
+	const Train *w = NULL;
 	if (dest_vehicle_id != -1) {
-		w = ::Vehicle::Get(dest_vehicle_id);
+		w = (Train *)::Vehicle::Get(dest_vehicle_id);
 		while (dest_wagon-- > 0) w = GetNextUnit(w);
 	}
 
@@ -136,7 +136,7 @@
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id) && wagon < GetNumWagons(vehicle_id));
 	EnforcePrecondition(false, ::Vehicle::Get(vehicle_id)->type == VEH_TRAIN);
 
-	const Vehicle *v = ::Vehicle::Get(vehicle_id);
+	const Train *v = (Train *)::Vehicle::Get(vehicle_id);
 	while (wagon-- > 0) v = GetNextUnit(v);
 
 	return AIObject::DoCommand(0, v->index, sell_attached_wagons ? 1 : 0, CMD_SELL_RAIL_WAGON);
@@ -243,7 +243,7 @@
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 	if (v->type == VEH_TRAIN) {
-		while (wagon-- > 0) v = GetNextUnit(v);
+		while (wagon-- > 0) v = GetNextUnit((Train *)v);
 	}
 	return v->engine_type;
 }
@@ -281,7 +281,7 @@
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 	if (v->type == VEH_TRAIN) {
-		while (wagon-- > 0) v = GetNextUnit(v);
+		while (wagon-- > 0) v = GetNextUnit((Train *)v);
 	}
 	return v->age;
 }

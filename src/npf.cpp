@@ -16,6 +16,7 @@
 #include "pbs.h"
 #include "settings_type.h"
 #include "pathfind.h"
+#include "train.h"
 
 static AyStar _npf_aystar;
 
@@ -424,7 +425,7 @@ static int32 NPFFindDepot(AyStar *as, OpenListNode *current)
 /** Find any safe and free tile. */
 static int32 NPFFindSafeTile(AyStar *as, OpenListNode *current)
 {
-	const Vehicle *v = ((NPFFindStationOrTileData*)as->user_target)->v;
+	const Train *v = (Train *)((NPFFindStationOrTileData*)as->user_target)->v;
 
 	return
 		IsSafeWaitingPosition(v, current->path.node.tile, current->path.node.direction, true, _settings_game.pf.forbid_90_deg) &&
@@ -458,7 +459,7 @@ static int32 NPFFindStationOrTile(AyStar *as, OpenListNode *current)
  * the second signal is returnd. If no suitable signal is present, the
  * last node of the path is returned.
  */
-static const PathNode *FindSafePosition(PathNode *path, const Vehicle *v)
+static const PathNode *FindSafePosition(PathNode *path, const Train *v)
 {
 	/* If there is no signal, reserve the whole path. */
 	PathNode *sig = path;
@@ -505,7 +506,7 @@ static void NPFSaveTargetData(AyStar *as, OpenListNode *current)
 
 	if (as->user_target != NULL && ((NPFFindStationOrTileData*)as->user_target)->reserve_path && as->user_data[NPF_TYPE] == TRANSPORT_RAIL) {
 		/* Path reservation is requested. */
-		const Vehicle  *v = ((NPFFindStationOrTileData*)as->user_target)->v;
+		const Train *v = (Train *)((NPFFindStationOrTileData*)as->user_target)->v;
 
 		const PathNode *target = FindSafePosition(&current->path, v);
 		ftd->node = target->node;
@@ -1053,7 +1054,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 	return best_result;
 }
 
-NPFFoundTargetData NPFRouteToSafeTile(const Vehicle *v, TileIndex tile, Trackdir trackdir, bool override_railtype)
+NPFFoundTargetData NPFRouteToSafeTile(const Train *v, TileIndex tile, Trackdir trackdir, bool override_railtype)
 {
 	assert(v->type == VEH_TRAIN);
 

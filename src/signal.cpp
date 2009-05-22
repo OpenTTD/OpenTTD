@@ -7,8 +7,8 @@
 #include "station_map.h"
 #include "tunnelbridge_map.h"
 #include "vehicle_func.h"
-#include "vehicle_base.h"
 #include "functions.h"
+#include "train.h"
 
 
 /** these are the maximums used for updating signal blocks */
@@ -185,7 +185,7 @@ static SmallSet<DiagDirection, SIG_GLOB_SIZE> _globset("_globset"); ///< set of 
 /** Check whether there is a train on rail, not in a depot */
 static Vehicle *TrainOnTileEnum(Vehicle *v, void *)
 {
-	if (v->type != VEH_TRAIN || v->u.rail.track == TRACK_BIT_DEPOT) return NULL;
+	if (v->type != VEH_TRAIN || ((Train *)v)->u.rail.track == TRACK_BIT_DEPOT) return NULL;
 
 	return v;
 }

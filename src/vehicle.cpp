@@ -982,8 +982,8 @@ void VehicleEnterDepot(Vehicle *v)
 			if (!IsFrontEngine(v)) v = v->First();
 			UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
 			v->load_unload_time_rem = 0;
-			ClrBit(v->u.rail.flags, VRF_TOGGLE_REVERSE);
-			TrainConsistChanged(v, true);
+			ClrBit(((Train *)v)->u.rail.flags, VRF_TOGGLE_REVERSE);
+			TrainConsistChanged((Train *)v, true);
 			break;
 
 		case VEH_ROAD:
@@ -1488,7 +1488,7 @@ void Vehicle::LeaveStation()
 		 * might not be marked as wanting a reservation, e.g.
 		 * when an overlength train gets turned around in a station. */
 		if (UpdateSignalsOnSegment(this->tile, TrackdirToExitdir(this->GetVehicleTrackdir()), this->owner) == SIGSEG_PBS || _settings_game.pf.reserve_paths) {
-			TryPathReserve(this, true, true);
+			TryPathReserve((Train *)this, true, true);
 		}
 	}
 }

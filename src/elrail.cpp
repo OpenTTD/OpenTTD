@@ -555,12 +555,15 @@ bool SettingsDisableElrail(int32 p1)
 	 *  normal rail too */
 	if (disable) {
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_TRAIN && v->u.rail.railtype == RAILTYPE_ELECTRIC) {
+			if (v->type != VEH_TRAIN) continue;
+
+			Train *t = (Train *)v;
+			if (t->u.rail.railtype == RAILTYPE_ELECTRIC) {
 				/* this railroad vehicle is now compatible only with elrail,
 				 *  so add there also normal rail compatibility */
-				v->u.rail.compatible_railtypes |= RAILTYPES_RAIL;
-				v->u.rail.railtype = RAILTYPE_RAIL;
-				SetBit(v->u.rail.flags, VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL);
+				t->u.rail.compatible_railtypes |= RAILTYPES_RAIL;
+				t->u.rail.railtype = RAILTYPE_RAIL;
+				SetBit(t->u.rail.flags, VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL);
 			}
 		}
 	}
@@ -569,8 +572,9 @@ bool SettingsDisableElrail(int32 p1)
 	FOR_ALL_VEHICLES(v) {
 		/* power and acceleration is cached only for front engines */
 		if (v->type == VEH_TRAIN && IsFrontEngine(v)) {
-			TrainPowerChanged(v);
-			UpdateTrainAcceleration(v);
+			Train *t = (Train *)v;
+			TrainPowerChanged(t);
+			UpdateTrainAcceleration(t);
 		}
 	}
 

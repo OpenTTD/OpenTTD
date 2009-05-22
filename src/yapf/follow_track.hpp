@@ -8,6 +8,7 @@
 #include "yapf.hpp"
 #include "../depot_map.h"
 #include "../roadveh.h"
+#include "../train.h"
 
 /** Track follower helper template class (can serve pathfinders and vehicle
  *  controllers). See 6 different typedefs below for 3 different transport
@@ -54,7 +55,7 @@ struct CFollowTrackT
 	{
 		assert(!IsRailTT() || (v != NULL && v->type == VEH_TRAIN));
 		m_veh = v;
-		Init(v != NULL ? v->owner : INVALID_OWNER, railtype_override == INVALID_RAILTYPES ? v->u.rail.compatible_railtypes : railtype_override, pPerf);
+		Init(v != NULL ? v->owner : INVALID_OWNER, railtype_override == INVALID_RAILTYPES ? ((Train *)v)->u.rail.compatible_railtypes : railtype_override, pPerf);
 	}
 
 	FORCEINLINE void Init(Owner o, RailTypes railtype_override, CPerformanceTimer *pPerf)
@@ -105,7 +106,7 @@ struct CFollowTrackT
 		m_old_tile = old_tile;
 		m_old_td = old_td;
 		m_err = EC_NONE;
-		assert(((TrackStatusToTrackdirBits(GetTileTrackStatus(m_old_tile, TT(), m_veh ? m_veh->u.road.compatible_roadtypes : 0)) & TrackdirToTrackdirBits(m_old_td)) != 0) ||
+		assert(((TrackStatusToTrackdirBits(GetTileTrackStatus(m_old_tile, TT(), m_veh ? ((RoadVehicle *)m_veh)->compatible_roadtypes : 0)) & TrackdirToTrackdirBits(m_old_td)) != 0) ||
 		       (IsTram() && GetSingleTramBit(m_old_tile) != INVALID_DIAGDIR)); // Disable the assertion for single tram bits
 		m_exitdir = TrackdirToExitdir(m_old_td);
 		if (ForcedReverse()) return true;

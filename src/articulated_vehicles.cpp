@@ -208,7 +208,7 @@ bool IsArticulatedVehicleCarryingDifferentCargos(const Vehicle *v, CargoID *carg
 
 		switch (v->type) {
 			case VEH_TRAIN:
-				v = (EngineHasArticPart(v) ? GetNextArticPart(v) : NULL);
+				v = (EngineHasArticPart((Train *)v) ? GetNextArticPart((Train *)v) : NULL);
 				break;
 
 			case VEH_ROAD:
@@ -256,7 +256,7 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 
 		switch (v->type) {
 			case VEH_TRAIN:
-				v = (EngineHasArticPart(v) ? GetNextArticPart(v) : NULL);
+				v = (EngineHasArticPart((Train *)v) ? GetNextArticPart((Train *)v) : NULL);
 				break;
 
 			case VEH_ROAD:
@@ -307,25 +307,27 @@ void AddArticulatedParts(Vehicle *first, VehicleType type)
 		switch (type) {
 			default: NOT_REACHED();
 
-			case VEH_TRAIN:
-				u = new Train();
-				u->subtype = 0;
-				previous->SetNext(u);
-				u->u.rail.track = v->u.rail.track;
-				u->u.rail.railtype = v->u.rail.railtype;
-				u->u.rail.first_engine = v->engine_type;
+			case VEH_TRAIN: {
+				Train *front = (Train *)v;
+				Train *t = new Train();
+				t->subtype = 0;
+				previous->SetNext(t);
+				t->u.rail.track = front->u.rail.track;
+				t->u.rail.railtype = front->u.rail.railtype;
+				t->u.rail.first_engine = front->engine_type;
 
-				u->spritenum = e_artic->u.rail.image_index;
+				t->spritenum = e_artic->u.rail.image_index;
 				if (e_artic->CanCarryCargo()) {
-					u->cargo_type = e_artic->GetDefaultCargoType();
-					u->cargo_cap = e_artic->u.rail.capacity;  // Callback 36 is called when the consist is finished
+					t->cargo_type = e_artic->GetDefaultCargoType();
+					t->cargo_cap = e_artic->u.rail.capacity;  // Callback 36 is called when the consist is finished
 				} else {
-					u->cargo_type = v->cargo_type; // Needed for livery selection
-					u->cargo_cap = 0;
+					t->cargo_type = front->cargo_type; // Needed for livery selection
+					t->cargo_cap = 0;
 				}
 
-				SetArticulatedPart(u);
-				break;
+				SetArticulatedPart(t);
+				u = t;
+			} break;
 
 			case VEH_ROAD: {
 				RoadVehicle *front = (RoadVehicle *)v;

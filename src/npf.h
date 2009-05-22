@@ -115,7 +115,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 /**
  * Search for any safe tile using a breadth first search and try to reserve a path.
  */
-NPFFoundTargetData NPFRouteToSafeTile(const Vehicle *v, TileIndex tile, Trackdir trackdir,bool override_railtype);
+NPFFoundTargetData NPFRouteToSafeTile(const struct Train *v, TileIndex tile, Trackdir trackdir, bool override_railtype);
 
 
 void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, Vehicle *v, bool reserve_path = false);

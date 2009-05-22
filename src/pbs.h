@@ -27,11 +27,11 @@ struct PBSTileInfo {
 	PBSTileInfo(TileIndex _t, Trackdir _td, bool _okay) : tile(_t), trackdir(_td), okay(_okay) {}
 };
 
-PBSTileInfo FollowTrainReservation(const Vehicle *v, bool *train_on_res = NULL);
-bool IsSafeWaitingPosition(const Vehicle *v, TileIndex tile, Trackdir trackdir, bool include_line_end, bool forbid_90deg = false);
-bool IsWaitingPositionFree(const Vehicle *v, TileIndex tile, Trackdir trackdir, bool forbid_90deg = false);
+PBSTileInfo FollowTrainReservation(const Train *v, bool *train_on_res = NULL);
+bool IsSafeWaitingPosition(const Train *v, TileIndex tile, Trackdir trackdir, bool include_line_end, bool forbid_90deg = false);
+bool IsWaitingPositionFree(const Train *v, TileIndex tile, Trackdir trackdir, bool forbid_90deg = false);
 
-Vehicle *GetTrainForReservation(TileIndex tile, Track track);
+Train *GetTrainForReservation(TileIndex tile, Track track);
 
 /**
  * Check whether some of tracks is reserved on a tile.

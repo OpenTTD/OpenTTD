@@ -1015,7 +1015,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 
 		numtracks_orig = numtracks;
 
-		SmallVector<Vehicle*, 4> affected_vehicles;
+		SmallVector<Train*, 4> affected_vehicles;
 		do {
 			TileIndex tile = tile_org;
 			int w = plat_len;
@@ -1023,7 +1023,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 				byte layout = *layout_ptr++;
 				if (IsRailwayStationTile(tile) && GetRailwayStationReservation(tile)) {
 					/* Check for trains having a reservation for this tile. */
-					Vehicle *v = GetTrainForReservation(tile, AxisToTrack(GetRailStationAxis(tile)));
+					Train *v = GetTrainForReservation(tile, AxisToTrack(GetRailStationAxis(tile)));
 					if (v != NULL) {
 						FreeTrainTrackReservation(v);
 						*affected_vehicles.Append() = v;
@@ -1063,7 +1063,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 
 		for (uint i = 0; i < affected_vehicles.Length(); ++i) {
 			/* Restore reservations of trains. */
-			Vehicle *v = affected_vehicles[i];
+			Train *v = affected_vehicles[i];
 			if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
 			TryPathReserve(v, true, true);
 			for (; v->Next() != NULL; v = v->Next()) ;
@@ -1196,7 +1196,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 			uint specindex = GetCustomStationSpecIndex(tile2);
 			Track track = GetRailStationTrack(tile2);
 			Owner owner = GetTileOwner(tile2);
-			Vehicle *v = NULL;
+			Train *v = NULL;
 
 			if (GetRailwayStationReservation(tile2)) {
 				v = GetTrainForReservation(tile2, track);
@@ -1280,7 +1280,7 @@ static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, DoCommandF
 					/* read variables before the station tile is removed */
 					Track track = GetRailStationTrack(tile);
 					Owner owner = GetTileOwner(tile); // _current_company can be OWNER_WATER
-					Vehicle *v = NULL;
+					Train *v = NULL;
 					if (GetRailwayStationReservation(tile)) {
 						v = GetTrainForReservation(tile, track);
 						if (v != NULL) FreeTrainTrackReservation(v);
@@ -2621,7 +2621,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 
 		int station_ahead;
 		int station_length;
-		int stop = GetTrainStopLocation(station_id, tile, v, &station_ahead, &station_length);
+		int stop = GetTrainStopLocation(station_id, tile, (Train *)v, &station_ahead, &station_length);
 
 		/* Stop whenever that amount of station ahead + the distance from the
 		 * begin of the platform to the stop location is longer than the length

@@ -813,7 +813,7 @@ static void FloodVehicle(Vehicle *v)
 						/* FreeTrainTrackReservation() calls GetVehicleTrackdir() that doesn't like crashed vehicles.
 						 * In this case, v->direction matches v->u.rail.track, so we can do this (it wasn't crashed before) */
 						v->vehstatus &= ~VS_CRASHED;
-						FreeTrainTrackReservation(v);
+						FreeTrainTrackReservation((Train *)v);
 						v->vehstatus |= VS_CRASHED;
 					}
 					v->u.rail.crash_anim_pos = 4000; // max 4440, disappear pretty fast

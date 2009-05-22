@@ -24,6 +24,10 @@ template <> struct EnumPropsT<VehicleType> : MakeEnumPropsT<VehicleType, byte, V
 typedef TinyEnumT<VehicleType> VehicleTypeByte;
 
 struct Vehicle;
+struct Train;
+struct RoadVehicle;
+struct Ship;
+struct Aircraft;
 
 struct BaseVehicle
 {

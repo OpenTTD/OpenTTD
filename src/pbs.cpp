@@ -222,7 +222,7 @@ static PBSTileInfo FollowReservation(Owner o, RailTypes rts, TileIndex tile, Tra
  */
 struct FindTrainOnTrackInfo {
 	PBSTileInfo res; ///< Information about the track.
-	Vehicle *best;   ///< The currently "best" vehicle we have found.
+	Train *best;     ///< The currently "best" vehicle we have found.
 
 	/** Init the best location to NULL always! */
 	FindTrainOnTrackInfo() : best(NULL) {}
@@ -233,12 +233,15 @@ static Vehicle *FindTrainOnTrackEnum(Vehicle *v, void *data)
 {
 	FindTrainOnTrackInfo *info = (FindTrainOnTrackInfo *)data;
 
-	if (v->type == VEH_TRAIN && !(v->vehstatus & VS_CRASHED) && HasBit((TrackBits)v->u.rail.track, TrackdirToTrack(info->res.trackdir))) {
-		v = v->First();
+	if (v->type != VEH_TRAIN || (v->vehstatus & VS_CRASHED)) return NULL;
+
+	Train *t = (Train *)v;
+	if (HasBit((TrackBits)t->u.rail.track, TrackdirToTrack(info->res.trackdir))) {
+		t = t->First();
 
 		/* ALWAYS return the lowest ID (anti-desync!) */
-		if (info->best == NULL || v->index < info->best->index) info->best = v;
-		return v;
+		if (info->best == NULL || t->index < info->best->index) info->best = t;
+		return t;
 	}
 
 	return NULL;
@@ -251,7 +254,7 @@ static Vehicle *FindTrainOnTrackEnum(Vehicle *v, void *data)
  * @param train_on_res Is set to a train we might encounter
  * @returns The last tile of the reservation or the current train tile if no reservation present.
  */
-PBSTileInfo FollowTrainReservation(const Vehicle *v, bool *train_on_res)
+PBSTileInfo FollowTrainReservation(const Train *v, bool *train_on_res)
 {
 	assert(v->type == VEH_TRAIN);
 
@@ -274,7 +277,7 @@ PBSTileInfo FollowTrainReservation(const Vehicle *v, bool *train_on_res)
  * @param track A reserved track on the tile.
  * @return The vehicle holding the reservation or NULL if the path is stray.
  */
-Vehicle *GetTrainForReservation(TileIndex tile, Track track)
+Train *GetTrainForReservation(TileIndex tile, Track track)
 {
 	assert(HasReservedTracks(tile, TrackToTrackBits(track)));
 	Trackdir  trackdir = TrackToTrackdir(track);
@@ -320,7 +323,7 @@ Vehicle *GetTrainForReservation(TileIndex tile, Track track)
  * @param forbid_90def Don't allow trains to make 90 degree turns
  * @return True if it is a safe position
  */
-bool IsSafeWaitingPosition(const Vehicle *v, TileIndex tile, Trackdir trackdir, bool include_line_end, bool forbid_90deg)
+bool IsSafeWaitingPosition(const Train *v, TileIndex tile, Trackdir trackdir, bool include_line_end, bool forbid_90deg)
 {
 	if (IsRailDepotTile(tile)) return true;
 
@@ -360,7 +363,7 @@ bool IsSafeWaitingPosition(const Vehicle *v, TileIndex tile, Trackdir trackdir, 
  * @param forbid_90def Don't allow trains to make 90 degree turns
  * @return True if the position is free
  */
-bool IsWaitingPositionFree(const Vehicle *v, TileIndex tile, Trackdir trackdir, bool forbid_90deg)
+bool IsWaitingPositionFree(const Train *v, TileIndex tile, Trackdir trackdir, bool forbid_90deg)
 {
 	Track     track = TrackdirToTrack(trackdir);
 	TrackBits reserved = GetReservedTrackbits(tile);
