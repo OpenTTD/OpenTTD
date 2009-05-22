@@ -526,7 +526,8 @@ void Vehicle::PreDestructor()
 
 	if (this->type == VEH_ROAD) ClearSlot(this);
 	if (this->type == VEH_AIRCRAFT && this->IsPrimaryVehicle()) {
-		Station *st = GetTargetAirportIfValid(this);
+		Aircraft *a = (Aircraft *)this;
+		Station *st = GetTargetAirportIfValid(a);
 		if (st != NULL) {
 			const AirportFTA *layout = st->Airport()->layout;
 			CLRBITS(st->airport_flags, layout[this->u.air.previous_pos].block | layout[this->u.air.pos].block);
@@ -998,7 +999,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 		case VEH_AIRCRAFT:
 			InvalidateWindowClasses(WC_AIRCRAFT_LIST);
-			HandleAircraftEnterHangar(v);
+			HandleAircraftEnterHangar((Aircraft *)v);
 			break;
 		default: NOT_REACHED();
 	}
@@ -1572,8 +1573,8 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 
 		if (this->type == VEH_AIRCRAFT && this->u.air.state == FLYING && this->u.air.targetairport != destination) {
 			/* The aircraft is now heading for a different hangar than the next in the orders */
-			extern void AircraftNextAirportPos_and_Order(Vehicle *v);
-			AircraftNextAirportPos_and_Order(this);
+			extern void AircraftNextAirportPos_and_Order(Aircraft *a);
+			AircraftNextAirportPos_and_Order((Aircraft *)this);
 		}
 	}
 

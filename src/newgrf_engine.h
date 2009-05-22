@@ -17,7 +17,7 @@ void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const struct Sprite
 const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, EngineID overriding_engine);
 void SetCustomEngineSprites(EngineID engine, byte cargo, const struct SpriteGroup *group);
 SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction direction);
-SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v, bool info_view);
+SpriteID GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, bool info_view);
 #define GetCustomRotorSprite(v, i) GetRotorOverrideSprite(v->engine_type, v, i)
 #define GetCustomRotorIcon(et) GetRotorOverrideSprite(et, NULL, true)
 

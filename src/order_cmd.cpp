@@ -20,6 +20,7 @@
 #include "depot_base.h"
 #include "settings_type.h"
 #include "core/pool_func.hpp"
+#include "aircraft.h"
 
 #include "table/strings.h"
 
@@ -1621,8 +1622,8 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 
 					if (v->type == VEH_AIRCRAFT && v->u.air.state == FLYING && v->u.air.targetairport != destination) {
 						/* The aircraft is now heading for a different hangar than the next in the orders */
-						extern void AircraftNextAirportPos_and_Order(Vehicle *v);
-						AircraftNextAirportPos_and_Order(v);
+						extern void AircraftNextAirportPos_and_Order(Aircraft *a);
+						AircraftNextAirportPos_and_Order((Aircraft *)v);
 					}
 				} else {
 					UpdateVehicleTimetable(v, true);
@@ -1728,8 +1729,8 @@ bool ProcessOrders(Vehicle *v)
 	if (order == NULL || (v->type == VEH_AIRCRAFT && order->IsType(OT_DUMMY) && !CheckForValidOrders(v))) {
 		if (v->type == VEH_AIRCRAFT) {
 			/* Aircraft do something vastly different here, so handle separately */
-			extern void HandleMissingAircraftOrders(Vehicle *v);
-			HandleMissingAircraftOrders(v);
+			extern void HandleMissingAircraftOrders(Aircraft *v);
+			HandleMissingAircraftOrders((Aircraft *)v);
 			return false;
 		}
 

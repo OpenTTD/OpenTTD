@@ -167,11 +167,12 @@ void UpdateOldAircraft()
 		st->airport_flags = 0; // reset airport
 	}
 
-	Vehicle *v_oldstyle;
-	FOR_ALL_VEHICLES(v_oldstyle) {
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
 		/* airplane has another vehicle with subtype 4 (shadow), helicopter also has 3 (rotor)
 		 * skip those */
-		if (v_oldstyle->type == VEH_AIRCRAFT && IsNormalAircraft(v_oldstyle)) {
+		if (v->type == VEH_AIRCRAFT && IsNormalAircraft(v)) {
+			Aircraft *v_oldstyle = (Aircraft *)v;
 			/* airplane in terminal stopped doesn't hurt anyone, so goto next */
 			if (v_oldstyle->vehstatus & VS_STOPPED && v_oldstyle->u.air.state == 0) {
 				v_oldstyle->u.air.state = HANGAR;
@@ -362,10 +363,10 @@ void AfterLoadVehicles(bool part_of_load)
 					/* In the case of a helicopter we will update the rotor sprites */
 					if (v->subtype == AIR_HELICOPTER) {
 						Vehicle *rotor = shadow->Next();
-						rotor->cur_image = GetRotorImage(v);
+						rotor->cur_image = GetRotorImage((Aircraft *)v);
 					}
 
-					UpdateAircraftCache(v);
+					UpdateAircraftCache((Aircraft *)v);
 				}
 				break;
 			default: break;

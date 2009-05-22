@@ -174,7 +174,7 @@ enum {
  * Map OTTD aircraft movement states to TTDPatch style movement states
  * (VarAction 2 Variable 0xE2)
  */
-static byte MapAircraftMovementState(const Vehicle *v)
+static byte MapAircraftMovementState(const Aircraft *v)
 {
 	const Station *st = GetTargetAirportIfValid(v);
 	if (st == NULL) return AMS_TTDP_FLIGHT_TO_TOWER;
@@ -301,7 +301,7 @@ enum {
  * (VarAction 2 Variable 0xE6)
  * This is not fully supported yet but it's enough for Planeset.
  */
-static byte MapAircraftMovementAction(const Vehicle *v)
+static byte MapAircraftMovementAction(const Aircraft *v)
 {
 	switch (v->u.air.state) {
 		case HANGAR:
@@ -589,7 +589,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				uint16 altitude = v->z_pos - w->z_pos; // Aircraft height - shadow height
 				byte airporttype = ATP_TTDP_LARGE;
 
-				const Station *st = GetTargetAirportIfValid(v);
+				const Station *st = GetTargetAirportIfValid((Aircraft *)v);
 
 				if (st != NULL) {
 					switch (st->airport_type) {
@@ -792,13 +792,14 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			}
 			break;
 
-		case VEH_AIRCRAFT:
+		case VEH_AIRCRAFT: {
+			Aircraft *a = (Aircraft *)v;
 			switch (variable - 0x80) {
-				case 0x62: return MapAircraftMovementState(v);  // Current movement state
+				case 0x62: return MapAircraftMovementState(a);  // Current movement state
 				case 0x63: return v->u.air.targetairport;       // Airport to which the action refers
-				case 0x66: return MapAircraftMovementAction(v); // Current movement action
+				case 0x66: return MapAircraftMovementAction(a); // Current movement action
 			}
-			break;
+		} break;
 
 		default: break;
 	}
@@ -914,7 +915,7 @@ SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction dire
 }
 
 
-SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v, bool info_view)
+SpriteID GetRotorOverrideSprite(EngineID engine, const Aircraft *v, bool info_view)
 {
 	const Engine *e = Engine::Get(engine);
 
