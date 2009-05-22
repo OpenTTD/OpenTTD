@@ -5,7 +5,7 @@
 #ifndef INDUSTRY_H
 #define INDUSTRY_H
 
-#include "oldpool.h"
+#include "core/pool.hpp"
 #include "core/random_func.hpp"
 #include "newgrf_storage.h"
 #include "cargo_type.h"
@@ -90,12 +90,13 @@ enum IndustryBehaviour {
 
 DECLARE_ENUM_AS_BIT_SET(IndustryBehaviour);
 
-DECLARE_OLD_POOL(Industry, Industry, 3, 8000)
+typedef Pool<Industry, IndustryID, 64, 64000> IndustryPool;
+extern IndustryPool _industry_pool;
 
 /**
  * Defines the internal data of a functionnal industry
  */
-struct Industry : PoolItem<Industry, IndustryID, &_Industry_pool> {
+struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	typedef PersistentStorageArray<uint32, 16> PersistentStorage;
 
 	TileIndex xy;                       ///< coordinates of the primary tile the industry is built one
@@ -134,8 +135,6 @@ struct Industry : PoolItem<Industry, IndustryID, &_Industry_pool> {
 
 	Industry(TileIndex tile = INVALID_TILE) : xy(tile) {}
 	~Industry();
-
-	inline bool IsValid() const { return this->xy != INVALID_TILE; }
 };
 
 struct IndustryTileTable {
@@ -265,12 +264,11 @@ void BuildIndustriesLegend();
 /* industry_cmd.cpp */
 void SetIndustryDailyChanges();
 
-extern int _total_industries;  // general counter
 extern uint16 _industry_counts[NUM_INDUSTRYTYPES]; // Number of industries per type ingame
 
 static inline uint GetNumIndustries()
 {
-	return _total_industries;
+	return (uint)Industry::GetNumItems();
 }
 
 /** Increment the count of industries for this type
@@ -280,7 +278,6 @@ static inline void IncIndustryTypeCount(IndustryType type)
 {
 	assert(type < INVALID_INDUSTRYTYPE);
 	_industry_counts[type]++;
-	_total_industries++;
 }
 
 /** Decrement the count of industries for this type
@@ -290,7 +287,6 @@ static inline void DecIndustryTypeCount(IndustryType type)
 {
 	assert(type < INVALID_INDUSTRYTYPE);
 	_industry_counts[type]--;
-	_total_industries--;
 }
 
 /** get the count of industries for this type
@@ -306,7 +302,6 @@ static inline uint8 GetIndustryTypeCount(IndustryType type)
  * This way, we centralize all counts activities */
 static inline void ResetIndustryCounts()
 {
-	_total_industries = 0;
 	memset(&_industry_counts, 0, sizeof(_industry_counts));
 }
 

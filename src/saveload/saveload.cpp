@@ -739,8 +739,8 @@ void SlArray(void *array, size_t length, VarType conv)
 }
 
 
-static uint ReferenceToInt(const void *obj, SLRefType rt);
-static void *IntToReference(uint index, SLRefType rt);
+static size_t ReferenceToInt(const void *obj, SLRefType rt);
+static void *IntToReference(size_t index, SLRefType rt);
 
 
 /**
@@ -782,15 +782,15 @@ void SlList(void *list, SLRefType conv)
 			PtrList::iterator iter;
 			for (iter = l->begin(); iter != l->end(); ++iter) {
 				void *ptr = *iter;
-				SlWriteUint32(ReferenceToInt(ptr, conv));
+				SlWriteUint32((uint32)ReferenceToInt(ptr, conv));
 			}
 			break;
 		}
 		case SLA_LOAD: {
-			uint length = CheckSavegameVersion(69) ? SlReadUint16() : SlReadUint32();
+			size_t length = CheckSavegameVersion(69) ? SlReadUint16() : SlReadUint32();
 
 			/* Load each reference and push to the end of the list */
-			for (uint i = 0; i < length; i++) {
+			for (size_t i = 0; i < length; i++) {
 				size_t data = CheckSavegameVersion(69) ? SlReadUint16() : SlReadUint32();
 				l->push_back((void *)data);
 			}
@@ -899,10 +899,10 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 				case SL_REF: // Reference variable, translate
 					switch (_sl.action) {
 						case SLA_SAVE:
-							SlWriteUint32(ReferenceToInt(*(void **)ptr, (SLRefType)conv));
+							SlWriteUint32((uint32)ReferenceToInt(*(void **)ptr, (SLRefType)conv));
 							break;
 						case SLA_LOAD:
-							*(size_t *)ptr = (size_t)(CheckSavegameVersion(69) ? SlReadUint16() : SlReadUint32());
+							*(size_t *)ptr = CheckSavegameVersion(69) ? SlReadUint16() : SlReadUint32();
 							break;
 						case SLA_PTRS:
 							*(void **)ptr = IntToReference(*(size_t *)ptr, (SLRefType)conv);
@@ -1470,7 +1470,7 @@ static const ChunkHandler * const _chunk_handlers[] = {
  * @param rt SLRefType type of the object the index is being sought of
  * @return Return the pointer converted to an index of the type pointed to
  */
-static uint ReferenceToInt(const void *obj, SLRefType rt)
+static size_t ReferenceToInt(const void *obj, SLRefType rt)
 {
 	assert(_sl.action == SLA_SAVE);
 
@@ -1505,7 +1505,7 @@ static uint ReferenceToInt(const void *obj, SLRefType rt)
 
 assert_compile(sizeof(size_t) <= sizeof(void *));
 
-static void *IntToReference(uint index, SLRefType rt)
+static void *IntToReference(size_t index, SLRefType rt)
 {
 	assert(_sl.action == SLA_PTRS);
 

@@ -4282,7 +4282,7 @@ static bool TrainLocoHandler(Vehicle *v, bool mode)
 	/* exit if train is stopped */
 	if (v->vehstatus & VS_STOPPED && v->cur_speed == 0) return true;
 
-	bool valid_order = v->current_order.IsValid() && v->current_order.GetType() != OT_CONDITIONAL;
+	bool valid_order = !v->current_order.IsType(OT_NOTHING) && v->current_order.GetType() != OT_CONDITIONAL;
 	if (ProcessOrders(v) && CheckReverseTrain(v)) {
 		v->load_unload_time_rem = 0;
 		v->cur_speed = 0;
@@ -4300,7 +4300,7 @@ static bool TrainLocoHandler(Vehicle *v, bool mode)
 	if (!mode) HandleLocomotiveSmokeCloud(v);
 
 	/* We had no order but have an order now, do look ahead. */
-	if (!valid_order && v->current_order.IsValid()) {
+	if (!valid_order && !v->current_order.IsType(OT_NOTHING)) {
 		CheckNextTrainTile(v);
 	}
 
@@ -4428,10 +4428,12 @@ bool Train::Tick()
 
 		this->current_order_time++;
 
+		VehicleID index = this->index;
+
 		if (!TrainLocoHandler(this, false)) return false;
 
 		/* make sure vehicle wasn't deleted. */
-		assert(this->IsValid());
+		assert(Vehicle::Get(index) == this);
 		assert(IsFrontEngine(this));
 
 		return TrainLocoHandler(this, true);

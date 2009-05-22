@@ -533,22 +533,18 @@ public:
 
 			case GRP_WIDGET_LIST_VEHICLE: { // Matrix Vehicle
 				uint32 id_v = (pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / (int)this->resize.step_height;
-				const Vehicle *v;
-
 				if (id_v >= this->vscroll.cap) return; // click out of bounds
 
 				id_v += this->vscroll.pos;
 
 				if (id_v >= this->vehicles.Length()) return; // click out of list bound
 
-				v = this->vehicles[id_v];
+				const Vehicle *v = this->vehicles[id_v];
 
 				this->vehicle_sel = v->index;
 
-				if (v->IsValid()) {
-					SetObjectToPlaceWnd(v->GetImage(DIR_W), GetVehiclePalette(v), HT_DRAG, this);
-					_cursor.vehchain = true;
-				}
+				SetObjectToPlaceWnd(v->GetImage(DIR_W), GetVehiclePalette(v), HT_DRAG, this);
+				_cursor.vehchain = true;
 
 				this->SetDirty();
 				break;

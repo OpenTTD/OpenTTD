@@ -6,12 +6,13 @@
 #include "depot_base.h"
 #include "order_func.h"
 #include "window_func.h"
-#include "oldpool_func.h"
 #include "core/bitmath_func.hpp"
 #include "tile_map.h"
 #include "water_map.h"
+#include "core/pool_func.hpp"
 
-DEFINE_OLD_POOL_GENERIC(Depot, Depot)
+DepotPool _depot_pool("Depot");
+INSTANTIATE_POOL_METHODS(Depot)
 
 /**
  * Gets a depot from a tile
@@ -48,11 +49,9 @@ Depot::~Depot()
 
 	/* Delete the depot-window */
 	DeleteWindowById(WC_VEHICLE_DEPOT, this->xy);
-	this->xy = INVALID_TILE;
 }
 
 void InitializeDepots()
 {
-	_Depot_pool.CleanPool();
-	_Depot_pool.AddBlockToPool();
+	_depot_pool.CleanPool();
 }

@@ -160,6 +160,8 @@ void FixOldVehicles()
 	Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
+		if (v->next != NULL) v->next = Vehicle::Get((size_t)v->next);
+
 		/* For some reason we need to correct for this */
 		switch (v->spritenum) {
 			case 0xfd: break;
@@ -578,7 +580,7 @@ static bool LoadOldTown(LoadgameState *ls, int num)
 			t->townnametype = t->townnametype == 0x10B6 ? 0x20C1 : t->townnametype + 0x2A00;
 		}
 	} else {
-		t->xy = INVALID_TILE;
+		delete t;
 	}
 
 	return true;
@@ -594,12 +596,15 @@ static bool LoadOldOrder(LoadgameState *ls, int num)
 {
 	if (!LoadChunk(ls, NULL, order_chunk)) return false;
 
-	new (num) Order(UnpackOldOrder(_old_order));
+	Order *o = new (num) Order(UnpackOldOrder(_old_order));
 
-	/* Relink the orders to eachother (in the orders for one vehicle are behind eachother,
-	 * with an invalid order (OT_NOTHING) as indication that it is the last order */
-	if (num > 0 && Order::Get(num)->IsValid()) {
-		Order::Get(num - 1)->next = Order::Get(num);
+	if (o->IsType(OT_NOTHING)) {
+		delete o;
+	} else {
+		/* Relink the orders to eachother (in the orders for one vehicle are behind eachother,
+		 * with an invalid order (OT_NOTHING) as indication that it is the last order */
+		Order *prev = Order::GetIfValid(num - 1);
+		if (prev != NULL) prev->next = o;
 	}
 
 	return true;
@@ -642,7 +647,7 @@ static bool LoadOldDepot(LoadgameState *ls, int num)
 	if (d->xy != 0) {
 		d->town_index = RemapTownIndex(_old_town_index);
 	} else {
-		d->xy = INVALID_TILE;
+		delete d;
 	}
 
 	return true;
@@ -823,7 +828,7 @@ static bool LoadOldStation(LoadgameState *ls, int num)
 			st->string_id = RemapOldStringID(_old_string_id);
 		}
 	} else {
-		st->xy = INVALID_TILE;
+		delete st;
 	}
 
 	return true;
@@ -895,7 +900,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 
 		IncIndustryTypeCount(i->type);
 	} else {
-		i->xy = INVALID_TILE;
+		delete i;
 	}
 
 	return true;
@@ -1142,19 +1147,22 @@ static const OldChunks vehicle_empty_chunk[] = {
 
 static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 {
-	Vehicle *v = Vehicle::Get(_current_vehicle_id);
+	Vehicle *v = Vehicle::GetIfValid(_current_vehicle_id);
 	uint temp = ls->total_read;
 	bool res;
 
-	switch (v->type) {
-		default: NOT_REACHED();
-		case VEH_INVALID : res = LoadChunk(ls, NULL,           vehicle_empty_chunk);    break;
-		case VEH_TRAIN   : res = LoadChunk(ls, &v->u.rail,     vehicle_train_chunk);    break;
-		case VEH_ROAD    : res = LoadChunk(ls, &v->u.road,     vehicle_road_chunk);     break;
-		case VEH_SHIP    : res = LoadChunk(ls, &v->u.ship,     vehicle_ship_chunk);     break;
-		case VEH_AIRCRAFT: res = LoadChunk(ls, &v->u.air,      vehicle_air_chunk);      break;
-		case VEH_EFFECT  : res = LoadChunk(ls, &v->u.effect,   vehicle_effect_chunk);   break;
-		case VEH_DISASTER: res = LoadChunk(ls, &v->u.disaster, vehicle_disaster_chunk); break;
+	if (v == NULL) {
+		res = LoadChunk(ls, NULL, vehicle_empty_chunk);
+	} else {
+		switch (v->type) {
+			default: NOT_REACHED();
+			case VEH_TRAIN   : res = LoadChunk(ls, &v->u.rail,     vehicle_train_chunk);    break;
+			case VEH_ROAD    : res = LoadChunk(ls, &v->u.road,     vehicle_road_chunk);     break;
+			case VEH_SHIP    : res = LoadChunk(ls, &v->u.ship,     vehicle_ship_chunk);     break;
+			case VEH_AIRCRAFT: res = LoadChunk(ls, &v->u.air,      vehicle_air_chunk);      break;
+			case VEH_EFFECT  : res = LoadChunk(ls, &v->u.effect,   vehicle_effect_chunk);   break;
+			case VEH_DISASTER: res = LoadChunk(ls, &v->u.disaster, vehicle_disaster_chunk); break;
+		}
 	}
 
 	/* This chunk size should always be 10 bytes */
@@ -1271,7 +1279,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			uint type = ReadByte(ls);
 			switch (type) {
 				default: return false;
-				case 0x00 /* VEH_INVALID  */: v = new (_current_vehicle_id) InvalidVehicle();  break;
+				case 0x00 /* VEH_INVALID  */: v = NULL;                                        break;
 				case 0x25 /* MONORAIL     */:
 				case 0x20 /* VEH_TRAIN    */: v = new (_current_vehicle_id) Train();           break;
 				case 0x21 /* VEH_ROAD     */: v = new (_current_vehicle_id) RoadVehicle();     break;
@@ -1282,6 +1290,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			}
 
 			if (!LoadChunk(ls, v, vehicle_chunk)) return false;
+			if (v == NULL) continue;
 
 			SpriteID sprite = v->cur_image;
 			/* no need to override other sprites */
@@ -1347,7 +1356,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			/* Read the vehicle type and allocate the right vehicle */
 			switch (ReadByte(ls)) {
 				default: NOT_REACHED();
-				case 0x00 /* VEH_INVALID */: v = new (_current_vehicle_id) InvalidVehicle();  break;
+				case 0x00 /* VEH_INVALID */: v = NULL;                                        break;
 				case 0x10 /* VEH_TRAIN   */: v = new (_current_vehicle_id) Train();           break;
 				case 0x11 /* VEH_ROAD    */: v = new (_current_vehicle_id) RoadVehicle();     break;
 				case 0x12 /* VEH_SHIP    */: v = new (_current_vehicle_id) Ship();            break;
@@ -1355,7 +1364,9 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 				case 0x14 /* VEH_EFFECT  */: v = new (_current_vehicle_id) EffectVehicle();   break;
 				case 0x15 /* VEH_DISASTER*/: v = new (_current_vehicle_id) DisasterVehicle(); break;
 			}
+
 			if (!LoadChunk(ls, v, vehicle_chunk)) return false;
+			if (v == NULL) continue;
 
 			_old_vehicle_names[_current_vehicle_id] = RemapOldStringID(_old_string_id);
 
@@ -1373,7 +1384,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 		}
 		v->current_order.AssignOrder(UnpackOldOrder(_old_order));
 
-		if (_old_next_ptr != 0xFFFF) v->next = Vehicle::GetPoolSize() <= _old_next_ptr ? new (_old_next_ptr) InvalidVehicle() : Vehicle::Get(_old_next_ptr);
+		if (_old_next_ptr != 0xFFFF) v->next = (Vehicle *)_old_next_ptr;
 
 		if (_cargo_count != 0) {
 			CargoPacket *cp = new CargoPacket((_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source, _cargo_count);

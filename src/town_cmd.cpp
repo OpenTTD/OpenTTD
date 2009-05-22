@@ -34,7 +34,6 @@
 #include "window_func.h"
 #include "string_func.h"
 #include "newgrf_cargo.h"
-#include "oldpool_func.h"
 #include "economy_func.h"
 #include "station_func.h"
 #include "cheat_type.h"
@@ -42,11 +41,11 @@
 #include "animated_tile_func.h"
 #include "date_func.h"
 #include "core/smallmap_type.hpp"
+#include "core/pool_func.hpp"
 
 #include "table/strings.h"
 #include "table/town_land.h"
 
-uint _total_towns;
 HouseSpec _house_specs[HOUSE_MAX];
 
 Town *_cleared_town;
@@ -56,13 +55,8 @@ uint32 _cur_town_ctr;     ///< iterator through all towns in OnTick_Town
 uint32 _cur_town_iter;    ///< frequency iterator at the same place
 
 /* Initialize the town-pool */
-DEFINE_OLD_POOL_GENERIC(Town, Town)
-
-Town::Town(TileIndex tile)
-{
-	if (tile != INVALID_TILE) _total_towns++;
-	this->xy = tile;
-}
+TownPool _town_pool("Town");
+INSTANTIATE_POOL_METHODS(Town)
 
 Town::~Town()
 {
@@ -76,7 +70,6 @@ Town::~Town()
 	 * and remove from list of sorted towns */
 	DeleteWindowById(WC_TOWN_VIEW, this->index);
 	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 0);
-	_total_towns--;
 
 	/* Delete all industries belonging to the town */
 	FOR_ALL_INDUSTRIES(i) if (i->town == this) delete i;
@@ -110,9 +103,7 @@ Town::~Town()
 
 	MarkWholeScreenDirty();
 
-	this->xy = INVALID_TILE;
-
-	UpdateNearestTownForRoadTiles(false);
+	UpdateNearestTownForRoadTiles(false, this);
 }
 
 /**
@@ -2689,13 +2680,14 @@ bool CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags)
 }
 
 
-Town *CalcClosestTownFromTile(TileIndex tile, uint threshold)
+Town *CalcClosestTownFromTile(TileIndex tile, uint threshold, const Town *ignore)
 {
 	Town *t;
 	uint best = threshold;
 	Town *best_town = NULL;
 
 	FOR_ALL_TOWNS(t) {
+		if (t == ignore) continue;
 		uint dist = DistanceManhattan(tile, t->xy);
 		if (dist < best) {
 			best = dist;
@@ -2713,6 +2705,7 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 		case MP_ROAD:
 			if (!HasTownOwnedRoad(tile)) {
 				TownID tid = GetTownIndex(tile);
+
 				if (tid == (TownID)INVALID_TOWN) {
 					/* in the case we are generating "many random towns", this value may be INVALID_TOWN */
 					if (_generating_world) return CalcClosestTownFromTile(tile, threshold);
@@ -2720,8 +2713,8 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 					return NULL;
 				}
 
+				assert(Town::IsValidID(tid));
 				Town *town = Town::Get(tid);
-				assert(town->IsValid());
 
 				if (DistanceManhattan(tile, town->xy) >= threshold) town = NULL;
 
@@ -2861,16 +2854,12 @@ void TownsYearlyLoop()
 
 void InitializeTowns()
 {
-	/* Clean the town pool and create 1 block in it */
-	_Town_pool.CleanPool();
-	_Town_pool.AddBlockToPool();
+	_town_pool.CleanPool();
 
 	memset(_subsidies, 0, sizeof(_subsidies));
 	for (Subsidy *s = _subsidies; s != endof(_subsidies); s++) {
 		s->cargo_type = CT_INVALID;
 	}
-
-	_total_towns = 0;
 }
 
 static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)

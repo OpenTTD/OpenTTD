@@ -148,8 +148,8 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 					default: NOT_REACHED();
 				}
 
-				/* Sanity check */
-				assert(base_ptr != NULL || chunk->ptr != NULL);
+				/* When both pointers are NULL, we are just skipping data */
+				if (base_ptr == NULL && chunk->ptr == NULL) continue;
 
 				/* Writing to the var: bits 8 to 15 have the VAR type */
 				if (chunk->ptr == NULL) ptr = base_ptr + chunk->offset;

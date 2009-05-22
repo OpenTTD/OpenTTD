@@ -11,10 +11,11 @@
 #include "waypoint.h"
 #include "window_func.h"
 #include "newgrf_station.h"
-#include "oldpool_func.h"
 #include "order_func.h"
+#include "core/pool_func.hpp"
 
-DEFINE_OLD_POOL_GENERIC(Waypoint, Waypoint)
+WaypointPool _waypoint_pool("Waypoint");
+INSTANTIATE_POOL_METHODS(Waypoint)
 
 /**
  * Update all signs
@@ -79,11 +80,6 @@ void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype)
 	}
 }
 
-Waypoint::Waypoint(TileIndex tile)
-{
-	this->xy = tile;
-}
-
 Waypoint::~Waypoint()
 {
 	free(this->name);
@@ -93,11 +89,9 @@ Waypoint::~Waypoint()
 	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, this->index);
 
 	RedrawWaypointSign(this);
-	this->xy = INVALID_TILE;
 }
 
 void InitializeWaypoints()
 {
-	_Waypoint_pool.CleanPool();
-	_Waypoint_pool.AddBlockToPool();
+	_waypoint_pool.CleanPool();
 }

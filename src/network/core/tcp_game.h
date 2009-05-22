@@ -12,6 +12,7 @@
 #include "os_abstraction.h"
 #include "tcp.h"
 #include "packet.h"
+#include "../../core/pool.hpp"
 
 /**
  * Enum with all types of UDP packets.
@@ -76,12 +77,12 @@ enum ClientStatus {
 	STATUS_ACTIVE,     ///< The client is active within in the game
 };
 
-
 class NetworkClientSocket;
-DECLARE_OLD_POOL(NetworkClientSocket, NetworkClientSocket, NCI_BITS_PER_POOL_BLOCK, MAX_CLIENT_SLOTS >> NCI_BITS_PER_POOL_BLOCK);
+typedef Pool<NetworkClientSocket, ClientIndex, 8, MAX_CLIENT_SLOTS> NetworkClientSocketPool;
+extern NetworkClientSocketPool _networkclientsocket_pool;
 
 /** Base socket handler for all TCP sockets */
-class NetworkClientSocket : public PoolItem<NetworkClientSocket, ClientIndex, &_NetworkClientSocket_pool>, public NetworkTCPSocketHandler {
+class NetworkClientSocket : public NetworkClientSocketPool::PoolItem<&_networkclientsocket_pool>, public NetworkTCPSocketHandler {
 /* TODO: rewrite into a proper class */
 private:
 	NetworkClientInfo *info;  ///< Client info related to this socket
@@ -100,7 +101,6 @@ public:
 	NetworkClientSocket(ClientID client_id = INVALID_CLIENT_ID);
 	~NetworkClientSocket();
 
-	inline bool IsValid() const { return this->IsConnected(); }
 	inline void SetInfo(NetworkClientInfo *info) { assert(info != NULL && this->info == NULL); this->info = info; }
 	inline NetworkClientInfo *GetInfo() const { return this->info; }
 

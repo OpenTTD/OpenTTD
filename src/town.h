@@ -5,7 +5,7 @@
 #ifndef TOWN_H
 #define TOWN_H
 
-#include "oldpool.h"
+#include "core/pool.hpp"
 #include "core/bitmath_func.hpp"
 #include "core/random_func.hpp"
 #include "cargo_type.h"
@@ -100,9 +100,10 @@ struct BuildingCounts {
 static const uint CUSTOM_TOWN_NUMBER_DIFFICULTY  = 4; ///< value for custom town number in difficulty settings
 static const uint CUSTOM_TOWN_MAX_NUMBER = 5000;  ///< this is the maximum number of towns a user can specify in customisation
 
-DECLARE_OLD_POOL(Town, Town, 3, 8000)
+typedef Pool<Town, TownID, 64, 64000> TownPool;
+extern TownPool _town_pool;
 
-struct Town : PoolItem<Town, TownID, &_Town_pool> {
+struct Town : TownPool::PoolItem<&_town_pool> {
 	TileIndex xy;
 
 	/* Current population of people and amount of houses. */
@@ -183,12 +184,10 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	/**
 	 * Creates a new town
 	 */
-	Town(TileIndex tile = INVALID_TILE);
+	Town(TileIndex tile = INVALID_TILE) : xy(tile) { }
 
 	/** Destroy the town */
 	~Town();
-
-	inline bool IsValid() const { return this->xy != INVALID_TILE; }
 
 	void InitializeLayout(TownLayout layout);
 
@@ -297,9 +296,7 @@ TileIndexDiff GetHouseNorthPart(HouseID &house);
 
 static inline uint GetNumTowns()
 {
-	extern uint _total_towns;
-
-	return _total_towns;
+	return (uint)Town::GetNumItems();
 }
 
 /**
@@ -324,7 +321,7 @@ static inline Town *GetRandomTown()
 	return Town::Get(index);
 }
 
-Town *CalcClosestTownFromTile(TileIndex tile, uint threshold = UINT_MAX);
+Town *CalcClosestTownFromTile(TileIndex tile, uint threshold = UINT_MAX, const Town *ignore = NULL);
 
 #define FOR_ALL_TOWNS_FROM(var, start) FOR_ALL_ITEMS_FROM(Town, town_index, var, start)
 #define FOR_ALL_TOWNS(var) FOR_ALL_TOWNS_FROM(var, 0)

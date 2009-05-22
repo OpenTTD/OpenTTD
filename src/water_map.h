@@ -5,6 +5,8 @@
 #ifndef WATER_MAP_H
 #define WATER_MAP_H
 
+#include "core/math_func.hpp"
+
 enum WaterTileType {
 	WATER_TILE_CLEAR,
 	WATER_TILE_COAST,

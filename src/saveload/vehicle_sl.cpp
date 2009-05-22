@@ -208,7 +208,7 @@ void UpdateOldAircraft()
  */
 static void CheckValidVehicles()
 {
-	uint total_engines = Engine::GetPoolSize();
+	size_t total_engines = Engine::GetPoolSize();
 	EngineID first_engine[4] = { INVALID_ENGINE, INVALID_ENGINE, INVALID_ENGINE, INVALID_ENGINE };
 
 	Engine *e;
@@ -282,7 +282,7 @@ void AfterLoadVehicles(bool part_of_load)
 					}
 				} else { // OrderList was saved as such, only recalculate not saved values
 					if (v->PreviousShared() == NULL) {
-						new (v->orders.list) OrderList(v->orders.list->GetFirstOrder(), v);
+						v->orders.list->Initialize(v->orders.list->first, v);
 					}
 				}
 			}

@@ -13,16 +13,16 @@
 #include "../network_internal.h"
 #include "packet.h"
 #include "tcp_game.h"
+#include "../../core/pool_func.hpp"
 
 #include "table/strings.h"
-#include "../../oldpool_func.h"
 
 /** Make very sure the preconditions given in network_type.h are actually followed */
-assert_compile(MAX_CLIENT_SLOTS == (MAX_CLIENT_SLOTS >> NCI_BITS_PER_POOL_BLOCK) << NCI_BITS_PER_POOL_BLOCK);
 assert_compile(MAX_CLIENT_SLOTS > MAX_CLIENTS);
+assert_compile(NetworkClientSocketPool::MAX_SIZE == MAX_CLIENT_SLOTS);
 
-typedef ClientIndex NetworkClientSocketID;
-DEFINE_OLD_POOL_GENERIC(NetworkClientSocket, NetworkClientSocket);
+NetworkClientSocketPool _networkclientsocket_pool("NetworkClientSocket");
+INSTANTIATE_POOL_METHODS(NetworkClientSocket)
 
 NetworkClientSocket::NetworkClientSocket(ClientID client_id)
 {

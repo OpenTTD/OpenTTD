@@ -6,7 +6,7 @@
 #define COMPANY_BASE_H
 
 #include "company_type.h"
-#include "oldpool.h"
+#include "core/pool.hpp"
 #include "road_type.h"
 #include "rail_type.h"
 #include "date_type.h"
@@ -25,13 +25,11 @@ struct CompanyEconomyEntry {
 	Money company_value;
 };
 
-/* The third parameter and the number after >> MUST be the same,
- * otherwise more (or less) companies will be allowed to be
- * created than what MAX_COMPANIES specifies!
- */
-DECLARE_OLD_POOL(Company, Company, 1, (MAX_COMPANIES + 1) >> 1)
+typedef Pool<Company, CompanyByte, 1, MAX_COMPANIES> CompanyPool;
+extern CompanyPool _company_pool;
 
-struct Company : PoolItem<Company, CompanyByte, &_Company_pool> {
+
+struct Company : CompanyPool::PoolItem<&_company_pool> {
 	Company(uint16 name_1 = 0, bool is_ai = false);
 	~Company();
 
@@ -81,13 +79,6 @@ struct Company : PoolItem<Company, CompanyByte, &_Company_pool> {
 	EngineRenewList engine_renew_list; ///< Defined later
 	CompanySettings settings;          ///< settings specific for each company
 	uint16 *num_engines; ///< caches the number of engines of each type the company owns (no need to save this)
-
-	inline bool IsValid() const { return this->name_1 != 0; }
-
-	static inline bool IsValidID(CompanyID company)
-	{
-		return company < MAX_COMPANIES && (uint)company < Company::GetPoolSize() && Company::Get(company)->IsValid();
-	}
 };
 
 #define FOR_ALL_COMPANIES_FROM(var, start) FOR_ALL_ITEMS_FROM(Company, company_index, var, start)
@@ -95,12 +86,7 @@ struct Company : PoolItem<Company, CompanyByte, &_Company_pool> {
 
 static inline byte ActiveCompanyCount()
 {
-	const Company *c;
-	byte count = 0;
-
-	FOR_ALL_COMPANIES(c) count++;
-
-	return count;
+	return (byte)Company::GetNumItems();
 }
 
 Money CalculateCompanyValue(const Company *c);

@@ -17,9 +17,9 @@
 #include "newgrf_cargo.h"
 #include "timetable.h"
 #include "vehicle_func.h"
-#include "oldpool_func.h"
 #include "depot_base.h"
 #include "settings_type.h"
+#include "core/pool_func.hpp"
 
 #include "table/strings.h"
 
@@ -33,8 +33,10 @@ assert_compile(sizeof(DestinationID) >= sizeof(StationID));
 TileIndex _backup_orders_tile;
 BackuppedOrders _backup_orders_data;
 
-DEFINE_OLD_POOL_GENERIC(Order, Order);
-DEFINE_OLD_POOL_GENERIC(OrderList, OrderList);
+OrderPool _order_pool("Order");
+INSTANTIATE_POOL_METHODS(Order)
+OrderListPool _orderlist_pool("OrderList");
+INSTANTIATE_POOL_METHODS(OrderList)
 
 void Order::Free()
 {
@@ -176,17 +178,21 @@ void Order::AssignOrder(const Order &other)
 	this->travel_time = other.travel_time;
 }
 
-
-OrderList::OrderList(Order *chain, Vehicle *v) :
-		first(chain), num_orders(0), num_vehicles(1), first_shared(v),
-		timetable_duration(0)
+void OrderList::Initialize(Order *chain, Vehicle *v)
 {
+	this->first = chain;
+	this->first_shared = v;
+
+	this->num_orders = 0;
+	this->num_vehicles = 1;
+	this->timetable_duration = 0;
+
 	for (Order *o = this->first; o != NULL; o = o->next) {
 		++this->num_orders;
 		this->timetable_duration += o->wait_time + o->travel_time;
 	}
 
-	for (Vehicle *u = v->PreviousShared(); u != NULL; u = u->PreviousShared()) {
+	for (Vehicle *u = this->first_shared->PreviousShared(); u != NULL; u = u->PreviousShared()) {
 		++this->num_vehicles;
 		this->first_shared = u;
 	}
@@ -197,7 +203,7 @@ OrderList::OrderList(Order *chain, Vehicle *v) :
 void OrderList::FreeChain(bool keep_orderlist)
 {
 	Order *next;
-	for(Order *o = this->first; o != NULL; o = next) {
+	for (Order *o = this->first; o != NULL; o = next) {
 		next = o->next;
 		delete o;
 	}
@@ -1143,10 +1149,13 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 					(*order_dst)->AssignOrder(*order);
 					order_dst = &(*order_dst)->next;
 				}
-				if (dst->orders.list == NULL) dst->orders.list = new OrderList(first, dst);
-				else {
+				if (dst->orders.list == NULL) {
+					dst->orders.list = new OrderList(first, dst);
+				} else {
 					assert(dst->orders.list->GetFirstOrder() == NULL);
-					new (dst->orders.list) OrderList(first, dst);
+					assert(!dst->orders.list->IsShared());
+					delete dst->orders.list;
+					dst->orders.list = new OrderList(first, dst);
 				}
 
 				InvalidateVehicleOrder(dst, -1);
@@ -1272,7 +1281,7 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 		 *  order number is one more than the current amount of orders, and because
 		 *  in network the commands are queued before send, the second insert always
 		 *  fails in test mode. By bypassing the test-mode, that no longer is a problem. */
-		for (uint i = 0; bak->order[i].IsValid(); i++) {
+		for (uint i = 0; !bak->order[i].IsType(OT_NOTHING); i++) {
 			Order o = bak->order[i];
 			/* Conditional orders need to have their destination to be valid on insertion. */
 			if (o.IsType(OT_CONDITIONAL)) o.SetConditionSkipToOrder(0);
@@ -1291,7 +1300,7 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 		}
 
 			/* Fix the conditional orders' destination. */
-		for (uint i = 0; bak->order[i].IsValid(); i++) {
+		for (uint i = 0; !bak->order[i].IsType(OT_NOTHING); i++) {
 			if (!bak->order[i].IsType(OT_CONDITIONAL)) continue;
 
 			if (!DoCommandP(0, v->index + (i << 16), MOF_LOAD | (bak->order[i].GetConditionSkipToOrder() << 4),
@@ -1776,11 +1785,9 @@ bool Order::ShouldStopAtStation(const Vehicle *v, StationID station) const
 
 void InitializeOrders()
 {
-	_Order_pool.CleanPool();
-	_Order_pool.AddBlockToPool();
+	_order_pool.CleanPool();
 
-	_OrderList_pool.CleanPool();
-	_OrderList_pool.AddBlockToPool();
+	_orderlist_pool.CleanPool();
 
 	_backup_orders_tile = 0;
 }

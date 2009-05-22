@@ -16,13 +16,10 @@ enum {
 	/** How many clients can we have */
 	MAX_CLIENTS = 255,
 
-	/** The number of bits per pool client block */
-	NCI_BITS_PER_POOL_BLOCK = 3, // => 8 items per block
 	/**
-	 * The number of slots; must be a multiple of (1 << NCI_BITS_PER_POOL_BLOCK)
-	 * and be at least 1 more than MAX_CLIENTS. It must furthermore be less than
-	 * or equal to 256 as client indices (sent over the network) are 8 bits.
-	 * It needs 1 more for the dedicated server.
+	 * The number of slots; must be at least 1 more than MAX_CLIENTS. It must
+	 * furthermore be less than or equal to 256 as client indices (sent over
+	 * the network) are 8 bits. It needs 1 more for the dedicated server.
 	 */
 	MAX_CLIENT_SLOTS = 256,
 

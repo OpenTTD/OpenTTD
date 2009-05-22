@@ -28,7 +28,7 @@
 #include "road_func.h"
 #include "rail.h"
 #include "sprite.h"
-#include "oldpool_func.h"
+#include "core/pool_func.hpp"
 
 #include "table/strings.h"
 
@@ -40,7 +40,8 @@ CompanyManagerFace _company_manager_face; ///< for company manager face storage 
 uint _next_competitor_start;              ///< the number of ticks before the next AI is started
 uint _cur_company_tick_index;             ///< used to generate a name for one company that doesn't have a name yet per tick
 
-DEFINE_OLD_POOL_GENERIC(Company, Company)
+CompanyPool _company_pool("Company");
+INSTANTIATE_POOL_METHODS(Company)
 
 Company::Company(uint16 name_1, bool is_ai) :
 	name_1(name_1),
@@ -59,7 +60,6 @@ Company::~Company()
 	if (CleaningPool()) return;
 
 	DeleteCompanyWindows(this->index);
-	this->name_1 = 0;
 }
 
 /**
@@ -421,7 +421,7 @@ void ResetCompanyLivery(Company *c)
  */
 Company *DoStartupNewCompany(bool is_ai)
 {
-	if (ActiveCompanyCount() == MAX_COMPANIES || !Company::CanAllocateItem()) return NULL;
+	if (!Company::CanAllocateItem()) return NULL;
 
 	/* we have to generate colour before this company is valid */
 	Colours colour = GenerateCompanyColour();
@@ -489,8 +489,7 @@ static void MaybeStartNewCompany()
 
 void InitializeCompanies()
 {
-	_Company_pool.CleanPool();
-	_Company_pool.AddBlockToPool();
+	_company_pool.CleanPool();
 	_cur_company_tick_index = 0;
 }
 

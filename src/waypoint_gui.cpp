@@ -144,6 +144,5 @@ static const WindowDesc _waypoint_view_desc(
 
 void ShowWaypointWindow(const Waypoint *wp)
 {
-	if (!wp->IsValid()) return;  // little safety
 	AllocateWindowDescFront<WaypointWindow>(&_waypoint_view_desc, wp->index);
 }

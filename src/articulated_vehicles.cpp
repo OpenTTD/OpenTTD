@@ -21,9 +21,9 @@ uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 	 * either, so it doesn't matter how many articulated parts there are. */
 	if (!Vehicle::CanAllocateItem()) return 0;
 
-	Vehicle *v = NULL;;
+	Vehicle *v = NULL;
 	if (!purchase_window) {
-		v = new InvalidVehicle();
+		v = new Vehicle();
 		v->engine_type = engine_type;
 	}
 

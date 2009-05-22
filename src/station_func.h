@@ -7,7 +7,6 @@
 
 #include "station_type.h"
 #include "sprite.h"
-#include "oldpool.h"
 #include "rail_type.h"
 #include "road_type.h"
 #include "tile_type.h"

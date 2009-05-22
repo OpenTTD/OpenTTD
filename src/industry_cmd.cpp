@@ -30,14 +30,17 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
-#include "oldpool_func.h"
 #include "animated_tile_func.h"
 #include "effectvehicle_func.h"
 #include "ai/ai.hpp"
+#include "core/pool_func.hpp"
 
 #include "table/strings.h"
 #include "table/industry_land.h"
 #include "table/build_industry.h"
+
+IndustryPool _industry_pool("Industry");
+INSTANTIATE_POOL_METHODS(Industry)
 
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);
@@ -45,7 +48,6 @@ void BuildOilRig(TileIndex tile);
 static byte _industry_sound_ctr;
 static TileIndex _industry_sound_tile;
 
-int _total_industries;                      ///< General counter
 uint16 _industry_counts[NUM_INDUSTRYTYPES]; ///< Number of industries per type ingame
 
 IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
@@ -80,8 +82,6 @@ void ResetIndustryCreationProbility(IndustryType type)
 	_industry_specs[type].appear_creation[_settings_game.game_creation.landscape] = 0;
 }
 
-DEFINE_OLD_POOL_GENERIC(Industry, Industry)
-
 /**
  * Retrieve the type for this industry.  Although it is accessed by a tile,
  * it will return the general type of industry, and not the sprite index
@@ -95,7 +95,8 @@ IndustryType GetIndustryType(TileIndex tile)
 	assert(IsTileType(tile, MP_INDUSTRY));
 
 	const Industry *ind = GetIndustryByTile(tile);
-	return ind->IsValid() ? ind->type : (IndustryType)IT_INVALID;
+	assert(ind != NULL);
+	return ind->type;
 }
 
 /**
@@ -132,10 +133,7 @@ Industry::~Industry()
 
 	/* Industry can also be destroyed when not fully initialized.
 	 * This means that we do not have to clear tiles either. */
-	if (this->width == 0) {
-		this->xy = INVALID_TILE;
-		return;
-	}
+	if (this->width == 0) return;
 
 	BEGIN_TILE_LOOP(tile_cur, this->width, this->height, this->xy);
 		if (IsTileType(tile_cur, MP_INDUSTRY)) {
@@ -167,7 +165,6 @@ Industry::~Industry()
 	DeleteSubsidyWithIndustry(this->index);
 	DeleteWindowById(WC_INDUSTRY_VIEW, this->index);
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 0);
-	this->xy = INVALID_TILE;
 }
 
 static void IndustryDrawSugarMine(const TileInfo *ti)
@@ -1624,7 +1621,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCo
 
 	/* We need to return a non-NULL pointer to tell we have created an industry.
 	 * However, we haven't created a real one (no DC_EXEC), so return a fake one. */
-	return Industry::Get(0);
+	return (Industry *)-1;
 }
 
 /** Build/Fund an industry
@@ -2011,7 +2008,7 @@ int WhoCanServiceIndustry(Industry *ind)
 			if (o->IsType(OT_GOTO_STATION) && !(o->GetUnloadType() & OUFB_TRANSFER)) {
 				/* Vehicle visits a station to load or unload */
 				Station *st = Station::Get(o->GetDestination());
-				if (!st->IsValid()) continue;
+				assert(st != NULL);
 
 				/* Same cargo produced by industry is dropped here => not serviced by vehicle v */
 				if ((o->GetUnloadType() & OUFB_UNLOAD) && !c_accepts) break;
@@ -2323,8 +2320,7 @@ void IndustryMonthlyLoop()
 
 void InitializeIndustries()
 {
-	_Industry_pool.CleanPool();
-	_Industry_pool.AddBlockToPool();
+	_industry_pool.CleanPool();
 
 	ResetIndustryCounts();
 	_industry_sound_tile = 0;

@@ -20,8 +20,14 @@
 #include "aircraft.h"
 #include "vehicle_gui.h"
 #include "settings_type.h"
+#include "core/pool_func.hpp"
 
 #include "table/strings.h"
+
+StationPool _station_pool("Station");
+INSTANTIATE_POOL_METHODS(Station)
+RoadStopPool _roadstop_pool("RoadStop");
+INSTANTIATE_POOL_METHODS(RoadStop)
 
 Station::Station(TileIndex tile)
 {
@@ -87,8 +93,6 @@ Station::~Station()
 
 	/* Remove all news items */
 	DeleteStationNews(this->index);
-
-	xy = INVALID_TILE;
 
 	InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 
@@ -460,8 +464,6 @@ RoadStop::~RoadStop()
 	assert(num_vehicles == 0);
 
 	DEBUG(ms, cDebugCtorLevel , "I- at %d[0x%x]", xy, xy);
-
-	xy = INVALID_TILE;
 }
 
 /** Checks whether there is a free bay in this road stop */
@@ -545,4 +547,10 @@ RoadStop *RoadStop::GetNextRoadStop(const Vehicle *v) const
 	}
 
 	return NULL;
+}
+
+void InitializeStations()
+{
+	_station_pool.CleanPool();
+	_roadstop_pool.CleanPool();
 }

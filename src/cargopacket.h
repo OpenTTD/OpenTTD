@@ -5,7 +5,7 @@
 #ifndef CARGOPACKET_H
 #define CARGOPACKET_H
 
-#include "oldpool.h"
+#include "core/pool.hpp"
 #include "economy_type.h"
 #include "tile_type.h"
 #include "station_type.h"
@@ -15,13 +15,13 @@ typedef uint32 CargoPacketID;
 struct CargoPacket;
 
 /** We want to use a pool */
-DECLARE_OLD_POOL(CargoPacket, CargoPacket, 10, 1000)
-
+typedef Pool<CargoPacket, CargoPacketID, 1024, 1048576> CargoPacketPool;
+extern CargoPacketPool _cargopacket_pool;
 
 /**
  * Container for cargo from the same location and time
  */
-struct CargoPacket : PoolItem<CargoPacket, CargoPacketID, &_CargoPacket_pool> {
+struct CargoPacket : CargoPacketPool::PoolItem<&_cargopacket_pool> {
 	Money feeder_share;     ///< Value of feeder pickup to be paid for on delivery of cargo
 	TileIndex source_xy;    ///< The origin of the cargo (first station in feeder chain)
 	TileIndex loaded_at_xy; ///< Location where this cargo has been loaded into the vehicle
@@ -40,14 +40,7 @@ struct CargoPacket : PoolItem<CargoPacket, CargoPacketID, &_CargoPacket_pool> {
 	CargoPacket(StationID source = INVALID_STATION, uint16 count = 0);
 
 	/** Destroy the packet */
-	virtual ~CargoPacket();
-
-
-	/**
-	 * Is this a valid cargo packet ?
-	 * @return true if and only it is valid
-	 */
-	inline bool IsValid() const { return this->count != 0; }
+	~CargoPacket() { }
 
 	/**
 	 * Checks whether the cargo packet is from (exactly) the same source

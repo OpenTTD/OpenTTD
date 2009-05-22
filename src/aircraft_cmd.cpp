@@ -589,8 +589,11 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 	}
 
 	const Station *st = Station::Get(v->current_order.GetDestination());
+
+	assert(st != NULL);
+
 	/* only goto depot if the target airport has terminals (eg. it is airport) */
-	if (st->IsValid() && st->airport_tile != INVALID_TILE && st->Airport()->terminals != NULL) {
+	if (st->airport_tile != INVALID_TILE && st->Airport()->terminals != NULL) {
 //		printf("targetairport = %d, st->index = %d\n", v->u.air.targetairport, st->index);
 //		v->u.air.targetairport = st->index;
 		v->current_order.MakeGoToDepot(st->index, ODTFB_SERVICE);
@@ -1535,7 +1538,7 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *a
 		return;
 	}
 
-	if (!v->current_order.IsValid()) return;
+	if (v->current_order.IsType(OT_NOTHING)) return;
 
 	/* if the block of the next position is busy, stay put */
 	if (AirportHasBlock(v, &apc->layout[v->u.air.pos], apc)) return;
@@ -2036,8 +2039,9 @@ bool Aircraft::Tick()
 
 	for (uint i = 0; i != 2; i++) {
 		/* stop if the aircraft was deleted */
+		VehicleID index = this->index;
 		if (!AircraftEventHandler(this, i)) return false;
-		assert(this->IsValid());
+		assert(Vehicle::Get(index) == this);
 		assert(IsNormalAircraft(this));
 	}
 

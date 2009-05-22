@@ -3,13 +3,13 @@
 /** @file newgrf_spritegroup.cpp Handling of primarily NewGRF action 2. */
 
 #include "stdafx.h"
-#include "oldpool.h"
 #include "newgrf.h"
 #include "newgrf_spritegroup.h"
 #include "sprite.h"
-#include "oldpool_func.h"
+#include "core/pool_func.hpp"
 
-DEFINE_OLD_POOL_GENERIC(SpriteGroup, SpriteGroup)
+SpriteGroupPool _spritegroup_pool("SpriteGroup");
+INSTANTIATE_POOL_METHODS(SpriteGroup)
 
 SpriteGroup::~SpriteGroup()
 {
@@ -37,8 +37,6 @@ SpriteGroup::~SpriteGroup()
 		default:
 			break;
 	}
-
-	this->type = SGT_INVALID;
 }
 
 TemporaryStorageArray<uint32, 0x110> _temp_store;

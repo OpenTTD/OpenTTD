@@ -7,19 +7,18 @@
 
 #include "tile_type.h"
 #include "depot_type.h"
-#include "oldpool.h"
+#include "core/pool.hpp"
 #include "town_type.h"
 
-DECLARE_OLD_POOL(Depot, Depot, 3, 8000)
+typedef Pool<Depot, DepotID, 64, 64000> DepotPool;
+extern DepotPool _depot_pool;
 
-struct Depot : PoolItem<Depot, DepotID, &_Depot_pool> {
+struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	TileIndex xy;
 	TownID town_index;
 
 	Depot(TileIndex xy = INVALID_TILE) : xy(xy) {}
 	~Depot();
-
-	inline bool IsValid() const { return this->xy != INVALID_TILE; }
 };
 
 Depot *GetDepotByTile(TileIndex tile);

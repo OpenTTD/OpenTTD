@@ -184,7 +184,7 @@ public:
 
 		/* Local authority */
 		SetDParam(0, STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE);
-		if (t != NULL && t->IsValid()) {
+		if (t != NULL) {
 			SetDParam(0, STR_TOWN);
 			SetDParam(1, t->index);
 		}

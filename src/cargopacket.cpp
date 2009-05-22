@@ -4,16 +4,15 @@
 
 #include "stdafx.h"
 #include "station_base.h"
-#include "oldpool_func.h"
+#include "core/pool_func.hpp"
 
 /* Initialize the cargopacket-pool */
-DEFINE_OLD_POOL_GENERIC(CargoPacket, CargoPacket)
+CargoPacketPool _cargopacket_pool("CargoPacket");
+INSTANTIATE_POOL_METHODS(CargoPacket)
 
 void InitializeCargoPackets()
 {
-	/* Clean the cargo packet pool and create 1 block in it */
-	_CargoPacket_pool.CleanPool();
-	_CargoPacket_pool.AddBlockToPool();
+	_cargopacket_pool.CleanPool();
 }
 
 CargoPacket::CargoPacket(StationID source, uint16 count)
@@ -28,11 +27,6 @@ CargoPacket::CargoPacket(StationID source, uint16 count)
 	this->days_in_transit = 0;
 	this->feeder_share    = 0;
 	this->paid_for        = false;
-}
-
-CargoPacket::~CargoPacket()
-{
-	this->count = 0;
 }
 
 bool CargoPacket::SameSource(const CargoPacket *cp) const
@@ -104,7 +98,6 @@ uint CargoList::DaysInTransit() const
 void CargoList::Append(CargoPacket *cp)
 {
 	assert(cp != NULL);
-	assert(cp->IsValid());
 
 	for (List::iterator it = packets.begin(); it != packets.end(); it++) {
 		if ((*it)->SameSource(cp) && (*it)->count + cp->count <= 65535) {

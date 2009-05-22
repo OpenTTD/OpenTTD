@@ -40,7 +40,7 @@ void SetRandomSeed(uint32 seed)
 
 uint32 DoRandom(int line, const char *file)
 {
-	if (_networking && (NetworkClientSocket::Get(0)->status != STATUS_INACTIVE || !_network_server)) {
+	if (_networking && (!_network_server || (NetworkClientSocket::IsValidID(0) && NetworkClientSocket::Get(0)->status != STATUS_INACTIVE))) {
 		printf("Random [%d/%d] %s:%d\n", _frame_counter, (byte)_current_company, file, line);
 	}
 

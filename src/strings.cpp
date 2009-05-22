@@ -669,7 +669,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 				int64 args[2];
 
 				/* industry not valid anymore? */
-				if (!i->IsValid()) break;
+				assert(i != NULL);
 
 				/* First print the town name and the industry type name. */
 				args[0] = i->town->index;
@@ -829,7 +829,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 			case SCC_WAYPOINT_NAME: { // {WAYPOINT}
 				Waypoint *wp = Waypoint::Get(GetInt32(&argv));
 
-				assert(wp->IsValid());
+				assert(wp != NULL);
 
 				if (wp->name != NULL) {
 					buff = strecpy(buff, wp->name, last);
@@ -885,7 +885,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 				const Town *t = Town::Get(GetInt32(&argv));
 				int64 temp[1];
 
-				assert(t->IsValid());
+				assert(t != NULL);
 
 				temp[0] = t->townnameparts;
 				uint32 grfid = t->townnamegrfid;
@@ -911,7 +911,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 			case SCC_GROUP_NAME: { // {GROUP}
 				const Group *g = Group::Get(GetInt32(&argv));
 
-				assert(g->IsValid());
+				assert(g != NULL);
 
 				if (g->name != NULL) {
 					buff = strecpy(buff, g->name, last);
@@ -928,6 +928,8 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 				EngineID engine = (EngineID)GetInt32(&argv);
 				const Engine *e = Engine::Get(engine);
 
+				assert(e != NULL);
+
 				if (e->name != NULL) {
 					buff = strecpy(buff, e->name, last);
 				} else {
@@ -938,6 +940,8 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 
 			case SCC_VEHICLE_NAME: { // {VEHICLE}
 				const Vehicle *v = Vehicle::Get(GetInt32(&argv));
+
+				assert(v != NULL);
 
 				if (v->name != NULL) {
 					buff = strecpy(buff, v->name, last);

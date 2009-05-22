@@ -10,12 +10,13 @@
 #include "viewport_func.h"
 #include "zoom_func.h"
 #include "functions.h"
-#include "oldpool_func.h"
+#include "core/pool_func.hpp"
 
 #include "table/strings.h"
 
 /* Initialize the sign-pool */
-DEFINE_OLD_POOL_GENERIC(Sign, Sign)
+SignPool _sign_pool("Sign");
+INSTANTIATE_POOL_METHODS(Sign)
 
 Sign::Sign(Owner owner)
 {
@@ -29,7 +30,6 @@ Sign::~Sign()
 	if (CleaningPool()) return;
 
 	DeleteRenameSignWindow(this->index);
-	this->owner = INVALID_OWNER;
 }
 
 /**
@@ -80,6 +80,5 @@ void MarkSignDirty(Sign *si)
  */
 void InitializeSigns()
 {
-	_Sign_pool.CleanPool();
-	_Sign_pool.AddBlockToPool();
+	_sign_pool.CleanPool();
 }

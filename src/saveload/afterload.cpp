@@ -1457,7 +1457,7 @@ bool AfterLoadGame()
 
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
-			if (v->orders.list != NULL && v->orders.list->GetFirstOrder() != NULL && !v->orders.list->GetFirstOrder()->IsValid()) {
+			if (v->orders.list != NULL && v->orders.list->GetFirstOrder() != NULL && v->orders.list->GetFirstOrder()->IsType(OT_NOTHING)) {
 				v->orders.list->FreeChain();
 				v->orders.list = NULL;
 			}

@@ -7,12 +7,13 @@
 
 #include "engine_type.h"
 #include "economy_type.h"
-#include "oldpool.h"
+#include "core/pool.hpp"
 #include "core/smallvec_type.hpp"
 
-DECLARE_OLD_POOL(Engine, Engine, 6, 10000)
+typedef Pool<Engine, EngineID, 64, 64000> EnginePool;
+extern EnginePool _engine_pool;
 
-struct Engine : PoolItem<Engine, EngineID, &_Engine_pool> {
+struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	char *name;         ///< Custom name of engine
 	Date intro_date;
 	Date age;
@@ -48,8 +49,6 @@ struct Engine : PoolItem<Engine, EngineID, &_Engine_pool> {
 	Engine();
 	Engine(VehicleType type, EngineID base);
 	~Engine();
-
-	inline bool IsValid() const { return this->info.climates != 0; }
 
 	CargoID GetDefaultCargoType() const;
 	bool CanCarryCargo() const;

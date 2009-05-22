@@ -641,10 +641,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\oldpool.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\openttd.cpp"
 				>
 			</File>
@@ -1249,14 +1245,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\oldpool.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\oldpool_func.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\openttd.h"
 				>
 			</File>
@@ -1682,6 +1670,14 @@
 			</File>
 			<File
 				RelativePath=".\..\src\core\overflowsafe_type.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\pool.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\pool_func.hpp"
 				>
 			</File>
 			<File

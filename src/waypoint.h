@@ -6,17 +6,18 @@
 #define WAYPOINT_H
 
 #include "waypoint_type.h"
-#include "oldpool.h"
 #include "rail_map.h"
 #include "command_type.h"
 #include "station_type.h"
 #include "town_type.h"
 #include "viewport_type.h"
 #include "date_type.h"
+#include "core/pool.hpp"
 
-DECLARE_OLD_POOL(Waypoint, Waypoint, 3, 8000)
+typedef Pool<Waypoint, WaypointID, 32, 64000> WaypointPool;
+extern WaypointPool _waypoint_pool;
 
-struct Waypoint : PoolItem<Waypoint, WaypointID, &_Waypoint_pool> {
+struct Waypoint : WaypointPool::PoolItem<&_waypoint_pool> {
 	TileIndex xy;      ///< Tile of waypoint
 
 	TownID town_index; ///< Town associated with the waypoint
@@ -34,10 +35,8 @@ struct Waypoint : PoolItem<Waypoint, WaypointID, &_Waypoint_pool> {
 
 	byte deleted;      ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the waypoint is then is deleted.
 
-	Waypoint(TileIndex tile = INVALID_TILE);
+	Waypoint(TileIndex tile = INVALID_TILE) : xy(tile) { }
 	~Waypoint();
-
-	inline bool IsValid() const { return this->xy != INVALID_TILE; }
 };
 
 #define FOR_ALL_WAYPOINTS_FROM(var, start) FOR_ALL_ITEMS_FROM(Waypoint, waypoint_index, var, start)

@@ -1088,7 +1088,7 @@ public:
 			if (v != NULL && this->HandleOrderVehClick(v)) return;
 
 			const Order cmd = GetOrderCmdFromTile(this->vehicle, tile);
-			if (!cmd.IsValid()) return;
+			if (cmd.IsType(OT_NOTHING)) return;
 
 			if (DoCommandP(this->vehicle->tile, this->vehicle->index + (this->OrderGetSel() << 16), cmd.Pack(), CMD_INSERT_ORDER | CMD_MSG(STR_ERROR_CAN_T_INSERT_NEW_ORDER))) {
 				/* With quick goto the Go To button stays active */

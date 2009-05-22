@@ -5,7 +5,7 @@
 #ifndef AUTOREPLACE_BASE_H
 #define AUTOREPLACE_BASE_H
 
-#include "oldpool.h"
+#include "core/pool.hpp"
 #include "autoreplace_type.h"
 
 typedef uint16 EngineRenewID;
@@ -15,23 +15,22 @@ typedef uint16 EngineRenewID;
  * placed here so the only exception to this rule, the saveload code, can use
  * it.
  */
-DECLARE_OLD_POOL(EngineRenew, EngineRenew, 3, 8000)
+typedef Pool<EngineRenew, EngineRenewID, 16, 64000> EngineRenewPool;
+extern EngineRenewPool _enginerenew_pool;
 
 /**
  * Struct to store engine replacements. DO NOT USE outside of engine.c. Is
  * placed here so the only exception to this rule, the saveload code, can use
  * it.
  */
-struct EngineRenew : PoolItem<EngineRenew, EngineRenewID, &_EngineRenew_pool> {
+struct EngineRenew : EngineRenewPool::PoolItem<&_enginerenew_pool> {
 	EngineID from;
 	EngineID to;
 	EngineRenew *next;
 	GroupID group_id;
 
-	EngineRenew(EngineID from = INVALID_ENGINE, EngineID to = INVALID_ENGINE) : from(from), to(to), next(NULL) {}
-	~EngineRenew() { this->from = INVALID_ENGINE; }
-
-	inline bool IsValid() const { return this->from != INVALID_ENGINE; }
+	EngineRenew(EngineID from = INVALID_ENGINE, EngineID to = INVALID_ENGINE) : from(from), to(to) {}
+	~EngineRenew() {}
 };
 
 #define FOR_ALL_ENGINE_RENEWS_FROM(var, start) FOR_ALL_ITEMS_FROM(EngineRenew, enginerenew_index, var, start)

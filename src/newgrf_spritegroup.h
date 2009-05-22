@@ -11,7 +11,7 @@
 #include "gfx_type.h"
 #include "engine_type.h"
 #include "tile_type.h"
-#include "oldpool.h"
+#include "core/pool.hpp"
 
 #include "newgrf_cargo.h"
 #include "newgrf_callbacks.h"
@@ -184,10 +184,11 @@ enum SpriteGroupType {
 };
 
 typedef uint32 SpriteGroupID;
-DECLARE_OLD_POOL(SpriteGroup, SpriteGroup, 9, 250)
+typedef Pool<SpriteGroup, SpriteGroupID, 512, 64000> SpriteGroupPool;
+extern SpriteGroupPool _spritegroup_pool;
 
 /* Common wrapper for all the different sprite group types */
-struct SpriteGroup : PoolItem<SpriteGroup, SpriteGroupID, &_SpriteGroup_pool> {
+struct SpriteGroup : SpriteGroupPool::PoolItem<&_spritegroup_pool> {
 	SpriteGroup(SpriteGroupType type = SGT_INVALID) :
 		type(type)
 	{
@@ -206,8 +207,6 @@ struct SpriteGroup : PoolItem<SpriteGroup, SpriteGroupID, &_SpriteGroup_pool> {
 		TileLayoutSpriteGroup layout;
 		IndustryProductionSpriteGroup indprod;
 	} g;
-
-	inline bool IsValid() const { return this->type != SGT_INVALID; }
 };
 
 

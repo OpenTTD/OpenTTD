@@ -14,12 +14,15 @@
 #include "autoreplace_func.h"
 #include "string_func.h"
 #include "company_func.h"
-#include "oldpool_func.h"
 #include "core/alloc_func.hpp"
+#include "core/pool_func.hpp"
 
 #include "table/strings.h"
 
 GroupID _new_group_id;
+
+GroupPool _group_pool("Group");
+INSTANTIATE_POOL_METHODS(Group)
 
 /**
  * Update the num engines of a groupID. Decrease the old one and increase the new one
@@ -40,32 +43,25 @@ static inline void UpdateNumEngineGroup(EngineID i, GroupID old_g, GroupID new_g
 }
 
 
-DEFINE_OLD_POOL_GENERIC(Group, Group)
-
 
 Group::Group(Owner owner)
 {
 	this->owner = owner;
 
-	if (this->IsValid()) this->num_engines = CallocT<uint16>(Engine::GetPoolSize());
+	if (!Company::IsValidID(owner)) return;
+
+	this->num_engines = CallocT<uint16>(Engine::GetPoolSize());
 }
 
 Group::~Group()
 {
 	free(this->name);
-	this->owner = INVALID_OWNER;
 	free(this->num_engines);
-}
-
-bool Group::IsValid() const
-{
-	return this->owner != INVALID_OWNER;
 }
 
 void InitializeGroup()
 {
-	_Group_pool.CleanPool();
-	_Group_pool.AddBlockToPool();
+	_group_pool.CleanPool();
 }
 
 
@@ -334,7 +330,7 @@ CommandCost CmdSetGroupReplaceProtection(TileIndex tile, DoCommandFlag flags, ui
  */
 void RemoveVehicleFromGroup(const Vehicle *v)
 {
-	if (!v->IsValid() || !v->IsPrimaryVehicle()) return;
+	if (!v->IsPrimaryVehicle()) return;
 
 	if (!IsDefaultGroupID(v->group_id)) DecreaseGroupNumVehicle(v->group_id);
 }
@@ -350,7 +346,7 @@ void SetTrainGroupID(Vehicle *v, GroupID new_g)
 {
 	if (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g)) return;
 
-	assert(v->IsValid() && v->type == VEH_TRAIN && IsFrontEngine(v));
+	assert(v->type == VEH_TRAIN && IsFrontEngine(v));
 
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
 		if (IsEngineCountable(u)) UpdateNumEngineGroup(u->engine_type, u->group_id, new_g);
@@ -372,7 +368,7 @@ void SetTrainGroupID(Vehicle *v, GroupID new_g)
  */
 void UpdateTrainGroupID(Vehicle *v)
 {
-	assert(v->IsValid() && v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v)));
+	assert(v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v)));
 
 	GroupID new_g = IsFrontEngine(v) ? v->group_id : (GroupID)DEFAULT_GROUP;
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {

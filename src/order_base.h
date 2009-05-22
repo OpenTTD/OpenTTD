@@ -6,7 +6,7 @@
 #define ORDER_BASE_H
 
 #include "order_type.h"
-#include "oldpool.h"
+#include "core/pool.hpp"
 #include "core/bitmath_func.hpp"
 #include "cargo_type.h"
 #include "depot_type.h"
@@ -14,15 +14,17 @@
 #include "vehicle_type.h"
 #include "waypoint_type.h"
 
-DECLARE_OLD_POOL(Order, Order, 6, 1000)
-DECLARE_OLD_POOL(OrderList, OrderList, 4, 4000)
+typedef Pool<Order, OrderID, 256, 64000> OrderPool;
+typedef Pool<OrderList, OrderListID, 128, 64000> OrderListPool;
+extern OrderPool _order_pool;
+extern OrderListPool _orderlist_pool;
 
 /* If you change this, keep in mind that it is saved on 3 places:
  * - Load_ORDR, all the global orders
  * - Vehicle -> current_order
  * - REF_ORDER (all REFs are currently limited to 16 bits!!)
  */
-struct Order : PoolItem<Order, OrderID, &_Order_pool> {
+struct Order : OrderPool::PoolItem<&_order_pool> {
 private:
 	friend const struct SaveLoad *GetVehicleDescription(VehicleType vt); ///< Saving and loading the current order of vehicles.
 	friend void Load_VEHS();                                             ///< Loading of ancient vehicles.
@@ -42,19 +44,13 @@ public:
 	uint16 travel_time;  ///< How long in ticks the journey to this destination should take.
 
 	Order() : refit_cargo(CT_NO_REFIT) {}
-	~Order() { this->type = OT_NOTHING; }
+	~Order() {}
 
 	/**
 	 * Create an order based on a packed representation of that order.
 	 * @param packed the packed representation.
 	 */
 	Order(uint32 packed);
-
-	/**
-	 * Check if a Order really exists.
-	 * @return true if the order is valid.
-	 */
-	inline bool IsValid() const { return this->type != OT_NOTHING; }
 
 	/**
 	 * Check whether this order is of the given type.
@@ -246,7 +242,7 @@ public:
 /** Shared order list linking together the linked list of orders and the list
  *  of vehicles sharing this order list.
  */
-struct OrderList : PoolItem<OrderList, OrderListID, &_OrderList_pool> {
+struct OrderList : OrderListPool::PoolItem<&_orderlist_pool> {
 private:
 	friend void AfterLoadVehicles(bool part_of_load); ///< For instantiating the shared vehicle chain
 	friend const struct SaveLoad *GetOrderListDescription(); ///< Saving and loading of order lists.
@@ -265,16 +261,20 @@ public:
 		  timetable_duration(0) { }
 
 	/** Create an order list with the given order chain for the given vehicle.
-	 *  @param chain is the pointer to the first order of the order chain
-	 *  @param v is any vehicle of the shared order vehicle chain (does not need to be the first)
+	 *  @param chain pointer to the first order of the order chain
+	 *  @param v any vehicle using this orderlist
 	 */
-	OrderList(Order *chain, Vehicle *v);
+	OrderList(Order *chain, Vehicle *v) { this->Initialize(chain, v); }
 
 	/** Destructor. Invalidates OrderList for re-usage by the pool. */
-	~OrderList() { this->num_orders = INVALID_VEH_ORDER_ID; }
+	~OrderList() {}
 
-	/** Checks, if this is a valid order list. */
-	inline bool IsValid() const { return this->num_orders != INVALID_VEH_ORDER_ID; }
+	/**
+	 * Recomputes everything.
+	 * @param chain first order in the chain
+	 * @param v one of vehicle that is using this orderlist
+	 */
+	void Initialize(Order *chain, Vehicle *v);
 
 	/**
 	 * Get the first order of the order chain.

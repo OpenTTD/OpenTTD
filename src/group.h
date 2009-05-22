@@ -6,14 +6,15 @@
 #define GROUP_H
 
 #include "group_type.h"
-#include "oldpool.h"
+#include "core/pool.hpp"
 #include "company_type.h"
 #include "vehicle_type.h"
 #include "engine_type.h"
 
-DECLARE_OLD_POOL(Group, Group, 5, 2047)
+typedef Pool<Group, GroupID, 16, 64000> GroupPool;
+extern GroupPool _group_pool;
 
-struct Group : PoolItem<Group, GroupID, &_Group_pool> {
+struct Group : GroupPool::PoolItem<&_group_pool> {
 	char *name;                             ///< Group Name
 
 	uint16 num_vehicle;                     ///< Number of vehicles wich belong to the group
@@ -24,9 +25,7 @@ struct Group : PoolItem<Group, GroupID, &_Group_pool> {
 	uint16 *num_engines;                    ///< Caches the number of engines of each type the company owns (no need to save this)
 
 	Group(CompanyID owner = INVALID_COMPANY);
-	virtual ~Group();
-
-	bool IsValid() const;
+	~Group();
 };
 
 

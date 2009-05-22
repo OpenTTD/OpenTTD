@@ -16,7 +16,7 @@
 #include "date_type.h"
 #include "company_base.h"
 #include "company_type.h"
-#include "oldpool.h"
+#include "core/pool.hpp"
 #include "order_base.h"
 #include "cargopacket.h"
 #include "texteff.hpp"
@@ -189,15 +189,18 @@ struct VehicleShip {
 	TrackBitsByte state;
 };
 
-DECLARE_OLD_POOL(Vehicle, Vehicle, 9, 125)
+typedef Pool<Vehicle, VehicleID, 512, 64000> VehiclePool;
+extern VehiclePool _vehicle_pool;
 
 /* Some declarations of functions, so we can make them friendly */
 struct SaveLoad;
 extern const SaveLoad *GetVehicleDescription(VehicleType vt);
 struct LoadgameState;
 extern bool LoadOldVehicle(LoadgameState *ls, int num);
+extern bool AfterLoadGame();
+extern void FixOldVehicles();
 
-struct Vehicle : PoolItem<Vehicle, VehicleID, &_Vehicle_pool>, BaseVehicle {
+struct Vehicle : VehiclePool::PoolItem<&_vehicle_pool>, BaseVehicle {
 private:
 	Vehicle *next;           ///< pointer to the next vehicle in the chain
 	Vehicle *previous;       ///< NOSAVE: pointer to the previous vehicle in the chain
@@ -207,6 +210,8 @@ private:
 	Vehicle *previous_shared; ///< NOSAVE: pointer to the previous vehicle in the shared order chain
 public:
 	friend const SaveLoad *GetVehicleDescription(VehicleType vt); ///< So we can use private/protected variables in the saveload code
+	friend bool AfterLoadGame();
+	friend void FixOldVehicles();
 	friend void AfterLoadVehicles(bool part_of_load);             ///< So we can set the previous and first pointers while loading
 	friend bool LoadOldVehicle(LoadgameState *ls, int num);       ///< So we can set the proper next pointer while loading
 
@@ -622,24 +627,6 @@ struct DisasterVehicle : public Vehicle {
 	const char *GetTypeString() const { return "disaster vehicle"; }
 	void UpdateDeltaXY(Direction direction);
 	bool Tick();
-};
-
-/**
- * This class 'wraps' Vehicle; you do not actually instantiate this class.
- * You create a Vehicle using AllocateVehicle, so it is added to the pool
- * and you reinitialize that to a Train using:
- *   v = new (v) Train();
- *
- * As side-effect the vehicle type is set correctly.
- */
-struct InvalidVehicle : public Vehicle {
-	/** Initializes the Vehicle to a invalid vehicle */
-	InvalidVehicle() { this->type = VEH_INVALID; }
-
-	/** We want to 'destruct' the right class. */
-	virtual ~InvalidVehicle() {}
-
-	const char *GetTypeString() const { return "invalid vehicle"; }
 };
 
 #define FOR_ALL_VEHICLES_FROM(var, start) FOR_ALL_ITEMS_FROM(Vehicle, vehicle_index, var, start)

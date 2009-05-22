@@ -10,8 +10,6 @@
 
 #include "saveload.h"
 
-extern uint _total_towns;
-
 /**
  * Check and update town and house values.
  *
@@ -181,13 +179,9 @@ static void Load_TOWN()
 {
 	int index;
 
-	_total_towns = 0;
-
 	while ((index = SlIterateArray()) != -1) {
 		Town *t = new (index) Town();
 		SlObject(t, _town_desc);
-
-		_total_towns++;
 	}
 }
 

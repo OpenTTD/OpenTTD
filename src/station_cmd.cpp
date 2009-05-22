@@ -29,15 +29,10 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "string_func.h"
-#include "oldpool_func.h"
 #include "animated_tile_func.h"
 #include "elrail_func.h"
 
 #include "table/strings.h"
-
-DEFINE_OLD_POOL_GENERIC(Station, Station)
-DEFINE_OLD_POOL_GENERIC(RoadStop, RoadStop)
-
 
 /**
  * Check whether the given tile is a hangar.
@@ -3198,17 +3193,6 @@ static CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
 	}
 
 	return CMD_ERROR;
-}
-
-void InitializeStations()
-{
-	/* Clean the station pool and create 1 block in it */
-	_Station_pool.CleanPool();
-	_Station_pool.AddBlockToPool();
-
-	/* Clean the roadstop pool and create 1 block in it */
-	_RoadStop_pool.CleanPool();
-	_RoadStop_pool.AddBlockToPool();
 }
 
 static CommandCost TerraformTile_Station(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)

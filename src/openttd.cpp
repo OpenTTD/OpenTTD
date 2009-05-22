@@ -291,7 +291,6 @@ static void InitializeDynamicVariables()
 	_house_mngr.ResetMapping();
 	_industry_mngr.ResetMapping();
 	_industile_mngr.ResetMapping();
-	_Company_pool.AddBlockToPool();
 }
 
 
@@ -316,16 +315,17 @@ static void ShutdownGame()
 
 	/* Uninitialize variables that are allocated dynamically */
 	GamelogReset();
-	_Town_pool.CleanPool();
-	_Industry_pool.CleanPool();
-	_Station_pool.CleanPool();
-	_Vehicle_pool.CleanPool();
-	_Sign_pool.CleanPool();
-	_Order_pool.CleanPool();
-	_Group_pool.CleanPool();
-	_CargoPacket_pool.CleanPool();
-	_Engine_pool.CleanPool();
-	_Company_pool.CleanPool();
+	_town_pool.CleanPool();
+	_industry_pool.CleanPool();
+	_station_pool.CleanPool();
+	_roadstop_pool.CleanPool();
+	_vehicle_pool.CleanPool();
+	_sign_pool.CleanPool();
+	_order_pool.CleanPool();
+	_group_pool.CleanPool();
+	_cargopacket_pool.CleanPool();
+	_engine_pool.CleanPool();
+	_company_pool.CleanPool();
 
 	free(_config_file);
 
@@ -1034,6 +1034,55 @@ void SwitchToMode(SwitchMode new_mode)
 }
 
 
+#include "depot_base.h"
+#include "autoreplace_base.h"
+#include "waypoint.h"
+#include "network/core/tcp_game.h"
+#include "network/network_base.h"
+/** Make sure everything is valid. Will be removed in future. */
+static void CheckPools()
+{
+	const Depot *d;
+	FOR_ALL_DEPOTS(d) assert(IsRoadDepotTile(d->xy) || IsRailDepotTile(d->xy) || IsShipDepotTile(d->xy) || IsHangarTile(d->xy));
+	const Industry *i;
+	FOR_ALL_INDUSTRIES(i) assert(IsValidTile(i->xy));
+	const Engine *e;
+	FOR_ALL_ENGINES(e) assert(e->info.climates != 0);
+	const Order *o;
+	FOR_ALL_ORDERS(o) assert(!o->IsType(OT_NOTHING));
+	const OrderList *ol;
+	FOR_ALL_ORDER_LISTS(ol) assert(ol->GetNumOrders() != INVALID_VEH_ORDER_ID && ol->GetNumVehicles() != 0);
+	const Town *t;
+	FOR_ALL_TOWNS(t) assert(IsValidTile(t->xy));
+	const Group *g;
+	FOR_ALL_GROUPS(g) assert(g->owner != INVALID_OWNER);
+	const EngineRenew *er;
+	FOR_ALL_ENGINE_RENEWS(er) assert(er->from != INVALID_ENGINE);
+	const Waypoint *wp;
+	FOR_ALL_WAYPOINTS(wp) assert(IsValidTile(wp->xy));
+	const Company *c;
+	FOR_ALL_COMPANIES(c) assert(c->name_1 != 0);
+	const CargoPacket *cp;
+	FOR_ALL_CARGOPACKETS(cp) assert(cp->count != 0);
+#ifdef ENABLE_NETWORK
+	const NetworkClientSocket *ncs;
+	FOR_ALL_CLIENT_SOCKETS(ncs) assert(ncs->IsConnected());
+	const NetworkClientInfo *nci;
+	FOR_ALL_CLIENT_INFOS(nci) assert(nci->client_id != INVALID_CLIENT_ID);
+#endif
+	const Station *st;
+	FOR_ALL_STATIONS(st) assert(IsValidTile(st->xy));
+	const RoadStop *rs;
+	FOR_ALL_ROADSTOPS(rs) assert(IsValidTile(rs->xy));
+	const Sign *si;
+	FOR_ALL_SIGNS(si) assert(si->owner != INVALID_OWNER);
+	const Vehicle *v;
+	FOR_ALL_VEHICLES(v) assert(v->type != VEH_INVALID);
+
+	FOR_ALL_ORDER_LISTS(ol) ol->DebugCheckSanity();
+}
+
+
 /**
  * State controlling game loop.
  * The state must not be changed from anywhere but here.
@@ -1047,6 +1096,8 @@ void StateGameLoop()
 		return;
 	}
 	if (IsGeneratingWorld()) return;
+
+	CheckPools();
 
 	ClearStorageChanges(false);
 

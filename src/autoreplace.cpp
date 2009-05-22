@@ -6,9 +6,10 @@
 #include "command_func.h"
 #include "group.h"
 #include "autoreplace_base.h"
-#include "oldpool_func.h"
+#include "core/pool_func.hpp"
 
-DEFINE_OLD_POOL_GENERIC(EngineRenew, EngineRenew)
+EngineRenewPool _enginerenew_pool("EngineRenew");
+INSTANTIATE_POOL_METHODS(EngineRenew)
 
 /**
  * Retrieves the EngineRenew that specifies the replacement of the given
@@ -101,7 +102,5 @@ CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, Group
 
 void InitializeEngineRenews()
 {
-	/* Clean the engine renew pool and create 1 block in it */
-	_EngineRenew_pool.CleanPool();
-	_EngineRenew_pool.AddBlockToPool();
+	_enginerenew_pool.CleanPool();
 }

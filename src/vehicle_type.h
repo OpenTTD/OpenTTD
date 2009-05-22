@@ -28,12 +28,6 @@ struct Vehicle;
 struct BaseVehicle
 {
 	VehicleTypeByte type;    ///< Type of vehicle
-
-	/**
-	 * Is this vehicle a valid vehicle?
-	 * @return true if and only if the vehicle is valid.
-	 */
-	inline bool IsValid() const { return this->type != VEH_INVALID; }
 };
 
 static const VehicleID INVALID_VEHICLE = 0xFFFF;

@@ -18,15 +18,16 @@
 #include "date_func.h"
 #include "autoreplace_gui.h"
 #include "string_func.h"
-#include "oldpool_func.h"
 #include "ai/ai.hpp"
 #include "vehicle_func.h"
 #include "settings_type.h"
+#include "core/pool_func.hpp"
 
 #include "table/strings.h"
 #include "table/engines.h"
 
-DEFINE_OLD_POOL_GENERIC(Engine, Engine)
+EnginePool _engine_pool("Engine");
+INSTANTIATE_POOL_METHODS(Engine)
 
 EngineOverrideManager _engine_mngr;
 
@@ -356,7 +357,7 @@ EngineID EngineOverrideManager::GetID(VehicleType type, uint16 grf_local_id, uin
  */
 void SetCachedEngineCounts()
 {
-	uint engines = Engine::GetPoolSize();
+	size_t engines = Engine::GetPoolSize();
 
 	/* Set up the engine count for all companies */
 	Company *c;
@@ -392,8 +393,7 @@ void SetCachedEngineCounts()
 
 void SetupEngines()
 {
-	_Engine_pool.CleanPool();
-	_Engine_pool.AddBlockToPool();
+	_engine_pool.CleanPool();
 
 	assert(_engine_mngr.Length() >= _engine_mngr.NUM_DEFAULT_ENGINES);
 	const EngineIDMapping *end = _engine_mngr.End();

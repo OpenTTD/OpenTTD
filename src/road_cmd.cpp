@@ -1243,11 +1243,13 @@ void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 	}
 }
 
-/** Updates cached nearest town for all road tiles
+/**
+ * Updates cached nearest town for all road tiles
  * @param invalidate are we just invalidating cached data?
+ * @param ignore town that should be ignored (because we are deleting it now)
  * @pre invalidate == true implies _generating_world == true
  */
-void UpdateNearestTownForRoadTiles(bool invalidate)
+void UpdateNearestTownForRoadTiles(bool invalidate, const Town *ignore)
 {
 	assert(!invalidate || _generating_world);
 
@@ -1255,7 +1257,7 @@ void UpdateNearestTownForRoadTiles(bool invalidate)
 		if (IsTileType(t, MP_ROAD) && !HasTownOwnedRoad(t)) {
 			TownID tid = (TownID)INVALID_TOWN;
 			if (!invalidate) {
-				const Town *town = CalcClosestTownFromTile(t);
+				const Town *town = CalcClosestTownFromTile(t, UINT_MAX, ignore);
 				if (town != NULL) tid = town->index;
 			}
 			SetTownIndex(t, tid);

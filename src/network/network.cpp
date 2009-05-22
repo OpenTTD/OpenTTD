@@ -32,16 +32,18 @@
 #include "../landscape_type.h"
 #include "../rev.h"
 #include "../core/alloc_func.hpp"
+#include "../core/pool_func.hpp"
 #ifdef DEBUG_DUMP_COMMANDS
 	#include "../fileio_func.h"
 #endif /* DEBUG_DUMP_COMMANDS */
 #include "table/strings.h"
-#include "../oldpool_func.h"
 
 DECLARE_POSTFIX_INCREMENT(ClientID);
 
-typedef ClientIndex NetworkClientInfoID;
-DEFINE_OLD_POOL_GENERIC(NetworkClientInfo, NetworkClientInfo);
+assert_compile(NetworkClientInfoPool::MAX_SIZE == NetworkClientSocketPool::MAX_SIZE);
+
+NetworkClientInfoPool _networkclientinfo_pool("NetworkClientInfo");
+INSTANTIATE_POOL_METHODS(NetworkClientInfo)
 
 bool _networking;         ///< are we in networking mode?
 bool _network_server;     ///< network-server is active
@@ -557,10 +559,8 @@ static bool NetworkListen()
 /** Resets both pools used for network clients */
 static void InitializeNetworkPools()
 {
-	_NetworkClientSocket_pool.CleanPool();
-	_NetworkClientSocket_pool.AddBlockToPool();
-	_NetworkClientInfo_pool.CleanPool();
-	_NetworkClientInfo_pool.AddBlockToPool();
+	_networkclientsocket_pool.CleanPool();
+	_networkclientinfo_pool.CleanPool();
 }
 
 /* Close all current connections */

@@ -378,7 +378,7 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 
 	if (static_access) return NULL;
 
-	uint engine_pool_size = Engine::GetPoolSize();
+	size_t engine_pool_size = Engine::GetPoolSize();
 
 	/* ... it's not, so create a new one based off an existing engine */
 	Engine *e = new Engine(type, internal_id);
@@ -5623,8 +5623,7 @@ static void ResetNewGRFData()
 	_grf_id_overrides.clear();
 
 	InitializeSoundPool();
-	_SpriteGroup_pool.CleanPool();
-	_SpriteGroup_pool.AddBlockToPool();
+	_spritegroup_pool.CleanPool();
 }
 
 static void BuildCargoTranslationMap()

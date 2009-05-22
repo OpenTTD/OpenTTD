@@ -31,12 +31,12 @@
 #include "vehicle_func.h"
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
-#include "oldpool_func.h"
 #include "ai/ai.hpp"
 #include "core/smallmap_type.hpp"
 #include "depot_func.h"
 #include "settings_type.h"
 #include "network/network.h"
+#include "core/pool_func.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -50,7 +50,8 @@ uint16 _returned_refit_capacity;
 
 
 /* Initialize the vehicle-pool */
-DEFINE_OLD_POOL_GENERIC(Vehicle, Vehicle)
+VehiclePool _vehicle_pool("Vehicle");
+INSTANTIATE_POOL_METHODS(Vehicle)
 
 /** Function to tell if a vehicle needs to be autorenewed
  * @param *c The vehicle owner
@@ -462,8 +463,7 @@ static AutoreplaceMap _vehicles_to_autoreplace;
 
 void InitializeVehicles()
 {
-	_Vehicle_pool.CleanPool();
-	_Vehicle_pool.AddBlockToPool();
+	_vehicle_pool.CleanPool();
 
 	_vehicles_to_autoreplace.Reset();
 	ResetVehiclePosHash();
@@ -571,12 +571,7 @@ Vehicle::~Vehicle()
 	delete v;
 
 	UpdateVehiclePosHash(this, INVALID_COORD, 0);
-	this->next_hash = NULL;
-	this->next_new_hash = NULL;
-
 	DeleteVehicleNews(this->index, INVALID_STRING_ID);
-
-	this->type = VEH_INVALID;
 }
 
 /** Adds a vehicle to the list of vehicles, that visited a depot this tick
@@ -605,9 +600,12 @@ void CallVehicleTicks()
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		/* Vehicle could be deleted in this tick */
-		if (!v->Tick()) continue;
+		if (!v->Tick()) {
+			assert(Vehicle::Get(vehicle_index) == NULL);
+			continue;
+		}
 
-		assert(v->IsValid());
+		assert(Vehicle::Get(vehicle_index) == v);
 
 		switch (v->type) {
 			default: break;
