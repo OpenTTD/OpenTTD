@@ -321,7 +321,7 @@ void AfterLoadVehicles(bool part_of_load)
 			if (IsFrontEngine(v)) v->u.rail.last_speed = v->cur_speed; // update displayed train speed
 			TrainConsistChanged(v, false);
 		} else if (v->type == VEH_ROAD && IsRoadVehFront(v)) {
-			RoadVehUpdateCache(v);
+			RoadVehUpdateCache((RoadVehicle *)v);
 		}
 	}
 

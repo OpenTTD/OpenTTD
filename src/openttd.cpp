@@ -30,6 +30,7 @@
 #include "fileio_func.h"
 #include "fios.h"
 #include "aircraft.h"
+#include "roadveh.h"
 #include "console_func.h"
 #include "screenshot.h"
 #include "network/network.h"
@@ -1117,8 +1118,8 @@ void StateGameLoop()
 
 				switch (v->type) {
 					case VEH_ROAD: {
-						extern byte GetRoadVehLength(const Vehicle *v);
-						if (GetRoadVehLength(v) != v->u.road.cached_veh_length) {
+						extern byte GetRoadVehLength(const RoadVehicle *v);
+						if (GetRoadVehLength((RoadVehicle *)v) != v->u.road.cached_veh_length) {
 							DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i\n", v->index, (int)v->owner, v->unitnumber);
 						}
 					} break;

@@ -10,6 +10,8 @@
 #include "engine_base.h"
 #include "economy_func.h"
 
+struct RoadVehicle;
+
 /** State information about the Road Vehicle controller */
 enum {
 	RDE_NEXT_TILE = 0x80, ///< We should enter the next tile
@@ -68,9 +70,9 @@ static inline bool RoadVehHasArticPart(const Vehicle *v)
 
 void CcBuildRoadVeh(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
-byte GetRoadVehLength(const Vehicle *v);
+byte GetRoadVehLength(const RoadVehicle *v);
 
-void RoadVehUpdateCache(Vehicle *v);
+void RoadVehUpdateCache(RoadVehicle *v);
 
 
 /**
@@ -104,6 +106,9 @@ struct RoadVehicle : public Vehicle {
 	Trackdir GetVehicleTrackdir() const;
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
+	RoadVehicle *First() { return (RoadVehicle *)this->Vehicle::First(); }
+	RoadVehicle *Next() { return (RoadVehicle *)this->Vehicle::Next(); }
+	const RoadVehicle *Next() const { return (const RoadVehicle *)this->Vehicle::Next(); }
 };
 
 #endif /* ROADVEH_H */

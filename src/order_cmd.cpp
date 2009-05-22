@@ -734,7 +734,7 @@ CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (flags & DC_EXEC) {
 		v->cur_order_index = sel_ord;
 
-		if (v->type == VEH_ROAD) ClearSlot(v);
+		if (v->type == VEH_ROAD) ClearSlot((RoadVehicle *)v);
 
 		if (v->current_order.IsType(OT_LOADING)) v->LeaveStation();
 
@@ -1360,7 +1360,7 @@ static TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st)
 		case VEH_TRAIN:     return st->train_tile;
 		case VEH_AIRCRAFT:  return st->airport_tile;
 		case VEH_SHIP:      return st->dock_tile;
-		case VEH_ROAD:      return st->GetPrimaryRoadStop(v)->xy;
+		case VEH_ROAD:      return st->GetPrimaryRoadStop((RoadVehicle *)v)->xy;
 	}
 }
 
@@ -1739,7 +1739,7 @@ bool ProcessOrders(Vehicle *v)
 
 		v->current_order.Free();
 		v->dest_tile = 0;
-		if (v->type == VEH_ROAD) ClearSlot(v);
+		if (v->type == VEH_ROAD) ClearSlot((RoadVehicle *)v);
 		return false;
 	}
 

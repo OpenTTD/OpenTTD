@@ -73,7 +73,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	bool IsEntranceBusy() const;
 	void SetEntranceBusy(bool busy);
 
-	RoadStop *GetNextRoadStop(const Vehicle *v) const;
+	RoadStop *GetNextRoadStop(const struct RoadVehicle *v) const;
 };
 
 struct StationSpecList {
@@ -113,7 +113,7 @@ public:
 		return type == ROADSTOP_BUS ? bus_stops : truck_stops;
 	}
 
-	RoadStop *GetPrimaryRoadStop(const Vehicle *v) const;
+	RoadStop *GetPrimaryRoadStop(const struct RoadVehicle *v) const;
 
 	const AirportFTAClass *Airport() const
 	{

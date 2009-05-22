@@ -34,7 +34,7 @@ RoadStop * GetRoadStopByTile(TileIndex tile, RoadStopType type);
 uint GetNumRoadStops(const Station *st, RoadStopType type);
 RoadStop * AllocateRoadStop();
 
-void ClearSlot(Vehicle *v);
+void ClearSlot(struct RoadVehicle *v);
 
 void DeleteOilRig(TileIndex t);
 

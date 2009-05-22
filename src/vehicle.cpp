@@ -524,7 +524,7 @@ void Vehicle::PreDestructor()
 		if (this->IsPrimaryVehicle()) DecreaseGroupNumVehicle(this->group_id);
 	}
 
-	if (this->type == VEH_ROAD) ClearSlot(this);
+	if (this->type == VEH_ROAD) ClearSlot((RoadVehicle *)this);
 	if (this->type == VEH_AIRCRAFT && this->IsPrimaryVehicle()) {
 		Aircraft *a = (Aircraft *)this;
 		Station *st = GetTargetAirportIfValid(a);
@@ -1742,7 +1742,7 @@ bool CanVehicleUseStation(EngineID engine_type, const Station *st)
  */
 bool CanVehicleUseStation(const Vehicle *v, const Station *st)
 {
-	if (v->type == VEH_ROAD) return st->GetPrimaryRoadStop(v) != NULL;
+	if (v->type == VEH_ROAD) return st->GetPrimaryRoadStop((RoadVehicle *)v) != NULL;
 
 	return CanVehicleUseStation(v->engine_type, st);
 }
