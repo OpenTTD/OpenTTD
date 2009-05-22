@@ -15,6 +15,7 @@
 #include "town.h"
 #include "variables.h"
 #include "train.h"
+#include "ship.h"
 #include "water_map.h"
 #include "yapf/yapf.h"
 #include "newgrf_sound.h"
@@ -1470,7 +1471,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 					break;
 
 				case VEH_SHIP:
-					v->u.ship.state = TRACK_BIT_WORMHOLE;
+					static_cast<Ship*>(v)->state = TRACK_BIT_WORMHOLE;
 					break;
 
 				default: NOT_REACHED();
@@ -1495,8 +1496,8 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 					break;
 
 				case VEH_SHIP:
-					if (v->u.ship.state == TRACK_BIT_WORMHOLE) {
-						v->u.ship.state = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
+					if (static_cast<Ship*>(v)->state == TRACK_BIT_WORMHOLE) {
+						static_cast<Ship*>(v)->state = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
 						return VETSB_ENTERED_WORMHOLE;
 					}
 					break;

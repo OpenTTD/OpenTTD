@@ -372,7 +372,7 @@ public:
 	{
 		/* set origin (tile, trackdir) */
 		TileIndex src_tile = v->tile;
-		Trackdir src_td = GetVehicleTrackdir(v);
+		Trackdir src_td = v->GetVehicleTrackdir();
 		if ((TrackStatusToTrackdirBits(GetTileTrackStatus(src_tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes)) & TrackdirToTrackdirBits(src_td)) == 0) {
 			/* sometimes the roadveh is not on the road (it resides on non-existing track)
 			 * how should we handle that situation? */
@@ -469,7 +469,7 @@ uint YapfRoadVehDistanceToTile(const Vehicle *v, TileIndex tile)
 Depot *YapfFindNearestRoadDepot(const Vehicle *v)
 {
 	TileIndex tile = v->tile;
-	Trackdir trackdir = GetVehicleTrackdir(v);
+	Trackdir trackdir = v->GetVehicleTrackdir();
 	if ((TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes)) & TrackdirToTrackdirBits(trackdir)) == 0) {
 		return NULL;
 	}

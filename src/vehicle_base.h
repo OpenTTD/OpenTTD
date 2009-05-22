@@ -185,10 +185,6 @@ struct VehicleDisaster {
 	VehicleID big_ufo_destroyer_target;
 };
 
-struct VehicleShip {
-	TrackBitsByte state;
-};
-
 typedef Pool<Vehicle, VehicleID, 512, 64000> VehiclePool;
 extern VehiclePool _vehicle_pool;
 
@@ -322,7 +318,6 @@ public:
 		VehicleRoad road;
 		VehicleEffect effect;
 		VehicleDisaster disaster;
-		VehicleShip ship;
 	} u;
 
 	/* cached oftenly queried NewGRF values */
@@ -436,6 +431,20 @@ public:
 	 * Calls the new day handler of the vehicle
 	 */
 	virtual void OnNewDay() {};
+
+	/**
+	 * Returns the Trackdir on which the vehicle is currently located.
+	 * Works for trains and ships.
+	 * Currently works only sortof for road vehicles, since they have a fuzzy
+	 * concept of being "on" a trackdir. Dunno really what it returns for a road
+	 * vehicle that is halfway a tile, never really understood that part. For road
+	 * vehicles that are at the beginning or end of the tile, should just return
+	 * the diagonal trackdir on which they are driving. I _think_.
+	 * For other vehicles types, or vehicles with no clear trackdir (such as those
+	 * in depots), returns 0xFF.
+	 * @return the trackdir of the vehicle
+	 */
+	virtual Trackdir GetVehicleTrackdir() const { return INVALID_TRACKDIR; }
 
 	/**
 	 * Gets the running cost of a vehicle  that can be sent into SetDParam for string processing.
@@ -662,19 +671,6 @@ static inline Order *GetVehicleOrder(const Vehicle *v, int index) { return (v->o
  * @return last order of a vehicle, if available
  */
 static inline Order *GetLastVehicleOrder(const Vehicle *v) { return (v->orders.list == NULL) ? NULL : v->orders.list->GetLastOrder(); }
-
-/**
- * Returns the Trackdir on which the vehicle is currently located.
- * Works for trains and ships.
- * Currently works only sortof for road vehicles, since they have a fuzzy
- * concept of being "on" a trackdir. Dunno really what it returns for a road
- * vehicle that is halfway a tile, never really understood that part. For road
- * vehicles that are at the beginning or end of the tile, should just return
- * the diagonal trackdir on which they are driving. I _think_.
- * For other vehicles types, or vehicles with no clear trackdir (such as those
- * in depots), returns 0xFF.
- */
-Trackdir GetVehicleTrackdir(const Vehicle *v);
 
 void CheckVehicle32Day(Vehicle *v);
 

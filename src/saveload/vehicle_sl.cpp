@@ -560,7 +560,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 	static const SaveLoad _ship_desc[] = {
 		SLE_WRITEBYTE(Vehicle, type, VEH_SHIP),
 		SLE_VEH_INCLUDEX(),
-		    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleShip, state),  SLE_UINT8),
+		     SLE_VAR(Ship, state, SLE_UINT8),
 
 		/* reserve extra space in savegame here. (currently 16 bytes) */
 		SLE_CONDNULL(16, 2, SL_MAX_VERSION),

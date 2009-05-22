@@ -23,6 +23,8 @@ void GetShipSpriteSize(EngineID engine, uint &width, uint &height);
  * As side-effect the vehicle type is set correctly.
  */
 struct Ship: public Vehicle {
+	TrackBitsByte state;
+
 	/** Initializes the Vehicle to a ship */
 	Ship() { this->type = VEH_SHIP; }
 
@@ -39,9 +41,10 @@ struct Ship: public Vehicle {
 	int GetDisplaySpeed() const { return this->cur_speed / 2; }
 	int GetDisplayMaxSpeed() const { return this->max_speed / 2; }
 	Money GetRunningCost() const;
-	bool IsInDepot() const { return this->u.ship.state == TRACK_BIT_DEPOT; }
+	bool IsInDepot() const { return this->state == TRACK_BIT_DEPOT; }
 	bool Tick();
 	void OnNewDay();
+	Trackdir GetVehicleTrackdir() const;
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
 };

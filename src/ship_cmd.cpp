@@ -97,7 +97,7 @@ SpriteID Ship::GetImage(Direction direction) const
 static const Depot *FindClosestShipDepot(const Vehicle *v)
 {
 	if (_settings_game.pf.pathfinder_for_ships == VPF_NPF) { // NPF is used
-		Trackdir trackdir = GetVehicleTrackdir(v);
+		Trackdir trackdir = v->GetVehicleTrackdir();
 		NPFFoundTargetData ftd = NPFRouteToDepotTrialError(v->tile, trackdir, false, TRANSPORT_WATER, 0, v->owner, INVALID_RAILTYPES);
 
 		if (ftd.best_bird_dist == 0) return GetDepotByTile(ftd.node.tile); // Found target
@@ -176,6 +176,23 @@ void Ship::OnNewDay()
 	InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
 	/* we need this for the profit */
 	InvalidateWindowClasses(WC_SHIPS_LIST);
+}
+
+Trackdir Ship::GetVehicleTrackdir() const
+{
+	if (this->vehstatus & VS_CRASHED) return INVALID_TRACKDIR;
+
+	if (this->IsInDepot()) {
+		/* We'll assume the ship is facing outwards */
+		return DiagDirToDiagTrackdir(GetShipDepotDirection(this->tile));
+	}
+
+	if (this->state == TRACK_BIT_WORMHOLE) {
+		/* ship on aqueduct, so just use his direction and assume a diagonal track */
+		return DiagDirToDiagTrackdir(DirToDiagDir(this->direction));
+	}
+
+	return TrackDirectionToTrackdir(FindFirstTrack(this->state), this->direction);
 }
 
 static void HandleBrokenShip(Vehicle *v)
@@ -276,7 +293,7 @@ static const TileIndexDiffC _ship_leave_depot_offs[] = {
 	{ 0, -1}
 };
 
-static void CheckShipLeaveDepot(Vehicle *v)
+static void CheckShipLeaveDepot(Ship *v)
 {
 	if (!v->IsInDepot()) return;
 
@@ -293,7 +310,7 @@ static void CheckShipLeaveDepot(Vehicle *v)
 		return;
 	}
 
-	v->u.ship.state = AxisToTrackBits(axis);
+	v->state = AxisToTrackBits(axis);
 	v->vehstatus &= ~VS_HIDDEN;
 
 	v->cur_speed = 0;
@@ -447,7 +464,7 @@ static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Tra
 /** returns the track to choose on the next tile, or -1 when it's better to
  * reverse. The tile given is the tile we are about to enter, enterdir is the
  * direction in which we are entering the tile */
-static Track ChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
+static Track ChooseShipTrack(Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 {
 	assert(IsValidDiagDirection(enterdir));
 
@@ -459,7 +476,7 @@ static Track ChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 
 		case VPF_NPF: { // NPF
 			NPFFindStationOrTileData fstd;
-			Trackdir trackdir = GetVehicleTrackdir(v);
+			Trackdir trackdir = v->GetVehicleTrackdir();
 			assert(trackdir != INVALID_TRACKDIR); // Check that we are not in a depot
 
 			NPFFillWithOrderData(&fstd, v);
@@ -479,7 +496,7 @@ static Track ChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 			Track track;
 
 			/* Let's find out how far it would be if we would reverse first */
-			TrackBits b = GetTileShipTrackStatus(tile2) & _ship_sometracks[ReverseDiagDir(enterdir)] & v->u.ship.state;
+			TrackBits b = GetTileShipTrackStatus(tile2) & _ship_sometracks[ReverseDiagDir(enterdir)] & v->state;
 
 			uint distr = UINT_MAX; // distance if we reversed
 			if (b != 0) {
@@ -558,7 +575,7 @@ static const byte _ship_subcoord[4][6][3] = {
 	}
 };
 
-static void ShipController(Vehicle *v)
+static void ShipController(Ship *v)
 {
 	uint32 r;
 	const byte *b;
@@ -589,7 +606,7 @@ static void ShipController(Vehicle *v)
 	if (!ShipAccelerate(v)) return;
 
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
-	if (v->u.ship.state != TRACK_BIT_WORMHOLE) {
+	if (v->state != TRACK_BIT_WORMHOLE) {
 		/* Not on a bridge */
 		if (gp.old_tile == gp.new_tile) {
 			/* Staying in tile */
@@ -669,7 +686,7 @@ static void ShipController(Vehicle *v)
 
 			if (!HasBit(r, VETS_ENTERED_WORMHOLE)) {
 				v->tile = gp.new_tile;
-				v->u.ship.state = TrackToTrackBits(track);
+				v->state = TrackToTrackBits(track);
 			}
 
 			v->direction = (Direction)b[2];
@@ -754,7 +771,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 		const ShipVehicleInfo *svi = ShipVehInfo(p1);
 
-		Vehicle *v = new Ship();
+		Ship *v = new Ship();
 		v->unitnumber = unit_num;
 
 		v->owner = _current_company;
@@ -786,7 +803,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		_new_vehicle_id = v->index;
 
 		v->name = NULL;
-		v->u.ship.state = TRACK_BIT_DEPOT;
+		v->state = TRACK_BIT_DEPOT;
 
 		v->service_interval = _settings_game.vehicle.servint_ships;
 		v->date_of_last_service = _date;

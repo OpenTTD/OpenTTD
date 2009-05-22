@@ -256,7 +256,7 @@ PBSTileInfo FollowTrainReservation(const Vehicle *v, bool *train_on_res)
 	assert(v->type == VEH_TRAIN);
 
 	TileIndex tile = v->tile;
-	Trackdir  trackdir = GetVehicleTrackdir(v);
+	Trackdir  trackdir = v->GetVehicleTrackdir();
 
 	if (IsRailDepotTile(tile) && !GetRailDepotReservation(tile)) return PBSTileInfo(tile, trackdir, false);
 

@@ -992,7 +992,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 		case VEH_SHIP:
 			InvalidateWindowClasses(WC_SHIPS_LIST);
-			v->u.ship.state = TRACK_BIT_DEPOT;
+			static_cast<Ship*>(v)->state = TRACK_BIT_DEPOT;
 			RecalcShipStuff(v);
 			break;
 
@@ -1171,49 +1171,6 @@ Direction GetDirectionTowards(const Vehicle *v, int x, int y)
 	DirDiff dirdiff = DirDifference(_new_direction_table[i], dir);
 	if (dirdiff == DIRDIFF_SAME) return dir;
 	return ChangeDir(dir, dirdiff > DIRDIFF_REVERSE ? DIRDIFF_45LEFT : DIRDIFF_45RIGHT);
-}
-
-Trackdir GetVehicleTrackdir(const Vehicle *v)
-{
-	if (v->vehstatus & VS_CRASHED) return INVALID_TRACKDIR;
-
-	switch (v->type) {
-		case VEH_TRAIN:
-			if (v->u.rail.track == TRACK_BIT_DEPOT) // We'll assume the train is facing outwards
-				return DiagDirToDiagTrackdir(GetRailDepotDirection(v->tile)); // Train in depot
-
-			if (v->u.rail.track == TRACK_BIT_WORMHOLE) // train in tunnel or on bridge, so just use his direction and assume a diagonal track
-				return DiagDirToDiagTrackdir(DirToDiagDir(v->direction));
-
-			return TrackDirectionToTrackdir(FindFirstTrack(v->u.rail.track), v->direction);
-
-		case VEH_SHIP:
-			if (v->IsInDepot())
-				/* We'll assume the ship is facing outwards */
-				return DiagDirToDiagTrackdir(GetShipDepotDirection(v->tile));
-
-			if (v->u.ship.state == TRACK_BIT_WORMHOLE) // ship on aqueduct, so just use his direction and assume a diagonal track
-				return DiagDirToDiagTrackdir(DirToDiagDir(v->direction));
-
-			return TrackDirectionToTrackdir(FindFirstTrack(v->u.ship.state), v->direction);
-
-		case VEH_ROAD:
-			if (v->IsInDepot()) // We'll assume the road vehicle is facing outwards
-				return DiagDirToDiagTrackdir(GetRoadDepotDirection(v->tile));
-
-			if (IsStandardRoadStopTile(v->tile)) // We'll assume the road vehicle is facing outwards
-				return DiagDirToDiagTrackdir(GetRoadStopDir(v->tile)); // Road vehicle in a station
-
-			/* Drive through road stops / wormholes (tunnels) */
-			if (v->u.road.state > RVSB_TRACKDIR_MASK) return DiagDirToDiagTrackdir(DirToDiagDir(v->direction));
-
-			/* If vehicle's state is a valid track direction (vehicle is not turning around) return it,
-			 * otherwise transform it into a valid track direction */
-			return (Trackdir)((IsReversingRoadTrackdir((Trackdir)v->u.road.state)) ? (v->u.road.state - 6) : v->u.road.state);
-
-		/* case VEH_AIRCRAFT: case VEH_EFFECT: case VEH_DISASTER: */
-		default: return INVALID_TRACKDIR;
-	}
 }
 
 /**
@@ -1529,7 +1486,7 @@ void Vehicle::LeaveStation()
 		/* Try to reserve a path when leaving the station as we
 		 * might not be marked as wanting a reservation, e.g.
 		 * when an overlength train gets turned around in a station. */
-		if (UpdateSignalsOnSegment(this->tile, TrackdirToExitdir(GetVehicleTrackdir(this)), this->owner) == SIGSEG_PBS || _settings_game.pf.reserve_paths) {
+		if (UpdateSignalsOnSegment(this->tile, TrackdirToExitdir(this->GetVehicleTrackdir()), this->owner) == SIGSEG_PBS || _settings_game.pf.reserve_paths) {
 			TryPathReserve(this, true, true);
 		}
 	}

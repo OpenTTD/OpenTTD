@@ -1920,10 +1920,10 @@ static void ReverseTrainDirection(Vehicle *v)
 		/* If we are currently on a tile with conventional signals, we can't treat the
 		 * current tile as a safe tile or we would enter a PBS block without a reservation. */
 		bool first_tile_okay = !(IsTileType(v->tile, MP_RAILWAY) &&
-			HasSignalOnTrackdir(v->tile, GetVehicleTrackdir(v)) &&
+			HasSignalOnTrackdir(v->tile, v->GetVehicleTrackdir()) &&
 			!IsPbsSignal(GetSignalType(v->tile, FindFirstTrack(v->u.rail.track))));
 
-		if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(GetVehicleTrackdir(v)), true);
+		if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
 		if (TryPathReserve(v, false, first_tile_okay)) {
 			/* Do a look-ahead now in case our current tile was already a safe tile. */
 			CheckNextTrainTile(v);
@@ -2169,8 +2169,8 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 
 		case VPF_NPF: { // NPF
 			const Vehicle *last = GetLastVehicleInChain(v);
-			Trackdir trackdir = GetVehicleTrackdir(v);
-			Trackdir trackdir_rev = ReverseTrackdir(GetVehicleTrackdir(last));
+			Trackdir trackdir = v->GetVehicleTrackdir();
+			Trackdir trackdir_rev = ReverseTrackdir(last->GetVehicleTrackdir());
 
 			assert(trackdir != INVALID_TRACKDIR);
 			NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes, NPF_INFINITE_PENALTY);
@@ -2353,7 +2353,7 @@ static void CheckNextTrainTile(Vehicle *v)
 	/* Exit if the current order doesn't have a destination, but the train has orders. */
 	if ((v->current_order.IsType(OT_NOTHING) || v->current_order.IsType(OT_LEAVESTATION) || v->current_order.IsType(OT_LOADING)) && v->GetNumOrders() > 0) return;
 
-	Trackdir td = GetVehicleTrackdir(v);
+	Trackdir td = v->GetVehicleTrackdir();
 
 	/* On a tile with a red non-pbs signal, don't look ahead. */
 	if (IsTileType(v->tile, MP_RAILWAY) && HasSignalOnTrackdir(v->tile, td) &&
@@ -2493,7 +2493,7 @@ void FreeTrainTrackReservation(const Vehicle *v, TileIndex origin, Trackdir orig
 	assert(IsFrontEngine(v));
 
 	TileIndex tile = origin != INVALID_TILE ? origin : v->tile;
-	Trackdir  td = orig_td != INVALID_TRACKDIR ? orig_td : GetVehicleTrackdir(v);
+	Trackdir  td = orig_td != INVALID_TRACKDIR ? orig_td : v->GetVehicleTrackdir();
 	bool      free_tile = tile != v->tile || !(IsRailwayStationTile(v->tile) || IsTileType(v->tile, MP_TUNNELBRIDGE));
 	StationID station_id = IsRailwayStationTile(v->tile) ? GetStationIndex(v->tile) : INVALID_STATION;
 
@@ -3013,7 +3013,7 @@ static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir
 		if (TryReserveSafeTrack(v, origin.tile, origin.trackdir, false)) {
 			TrackBits res = GetReservedTrackbits(tile) & DiagdirReachesTracks(enterdir);
 			best_track = FindFirstTrack(res);
-			TryReserveRailTrack(v->tile, TrackdirToTrack(GetVehicleTrackdir(v)));
+			TryReserveRailTrack(v->tile, TrackdirToTrack(v->GetVehicleTrackdir()));
 			if (got_reservation != NULL) *got_reservation = true;
 			if (changed_signal) MarkTileDirtyByTile(tile);
 		} else {
@@ -3060,7 +3060,7 @@ static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir
 		break;
 	}
 
-	TryReserveRailTrack(v->tile, TrackdirToTrack(GetVehicleTrackdir(v)));
+	TryReserveRailTrack(v->tile, TrackdirToTrack(v->GetVehicleTrackdir()));
 
 	if (changed_signal) MarkTileDirtyByTile(tile);
 
@@ -3179,8 +3179,8 @@ static bool CheckReverseTrain(Vehicle *v)
 
 			NPFFillWithOrderData(&fstd, v);
 
-			Trackdir trackdir = GetVehicleTrackdir(v);
-			Trackdir trackdir_rev = ReverseTrackdir(GetVehicleTrackdir(last));
+			Trackdir trackdir = v->GetVehicleTrackdir();
+			Trackdir trackdir_rev = ReverseTrackdir(last->GetVehicleTrackdir());
 			assert(trackdir != INVALID_TRACKDIR);
 			assert(trackdir_rev != INVALID_TRACKDIR);
 
@@ -3471,7 +3471,7 @@ static void SetVehicleCrashed(Vehicle *v)
 		 * and any railway station paltform reservation. */
 		FreeTrainTrackReservation(v);
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
-			ClearPathReservation(u, u->tile, GetVehicleTrackdir(u));
+			ClearPathReservation(u, u->tile, u->GetVehicleTrackdir());
 			if (IsTileType(u->tile, MP_TUNNELBRIDGE)) {
 				/* ClearPathReservation will not free the wormhole exit
 				 * if the train has just entered the wormhole. */
@@ -3796,7 +3796,7 @@ static void TrainController(Vehicle *v, Vehicle *nomove)
 					}
 
 					/* Clear any track reservation when the last vehicle leaves the tile */
-					if (v->Next() == NULL) ClearPathReservation(v, v->tile, GetVehicleTrackdir(v));
+					if (v->Next() == NULL) ClearPathReservation(v, v->tile, v->GetVehicleTrackdir());
 
 					v->tile = gp.new_tile;
 
@@ -4518,6 +4518,23 @@ void Train::OnNewDay()
 		/* Also age engines that aren't front engines */
 		AgeVehicle(this);
 	}
+}
+
+Trackdir Train::GetVehicleTrackdir() const
+{
+	if (this->vehstatus & VS_CRASHED) return INVALID_TRACKDIR;
+
+	if (this->u.rail.track == TRACK_BIT_DEPOT) {
+		/* We'll assume the train is facing outwards */
+		return DiagDirToDiagTrackdir(GetRailDepotDirection(this->tile)); // Train in depot
+	}
+
+	if (this->u.rail.track == TRACK_BIT_WORMHOLE) {
+		/* train in tunnel or on bridge, so just use his direction and assume a diagonal track */
+		return DiagDirToDiagTrackdir(DirToDiagDir(this->direction));
+	}
+
+	return TrackDirectionToTrackdir(FindFirstTrack(this->u.rail.track), this->direction);
 }
 
 void InitializeTrains()

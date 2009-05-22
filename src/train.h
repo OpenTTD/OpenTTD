@@ -331,6 +331,7 @@ struct Train : public Vehicle {
 	bool IsStoppedInDepot() const { return CheckTrainStoppedInDepot(this) >= 0; }
 	bool Tick();
 	void OnNewDay();
+	Trackdir GetVehicleTrackdir() const;
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
 };

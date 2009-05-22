@@ -101,6 +101,7 @@ struct RoadVehicle : public Vehicle {
 	bool IsStoppedInDepot() const;
 	bool Tick();
 	void OnNewDay();
+	Trackdir GetVehicleTrackdir() const;
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
 };

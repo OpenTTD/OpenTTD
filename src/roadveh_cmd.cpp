@@ -364,7 +364,7 @@ static const Depot *FindClosestRoadDepot(const Vehicle *v)
 
 		case VPF_NPF: { // NPF
 			/* See where we are now */
-			Trackdir trackdir = GetVehicleTrackdir(v);
+			Trackdir trackdir = v->GetVehicleTrackdir();
 
 			NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, v->tile, ReverseTrackdir(trackdir), false, TRANSPORT_ROAD, v->u.road.compatible_roadtypes, v->owner, INVALID_RAILTYPES, 0);
 
@@ -1174,7 +1174,7 @@ static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 	}
 
 	/* use NPF */
-	Trackdir trackdir = GetVehicleTrackdir(v);
+	Trackdir trackdir = v->GetVehicleTrackdir();
 	assert(trackdir != INVALID_TRACKDIR);
 
 	NPFFindStationOrTileData fstd;
@@ -1949,6 +1949,29 @@ void RoadVehicle::OnNewDay()
 	InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
 	InvalidateWindowClasses(WC_ROADVEH_LIST);
 }
+
+Trackdir RoadVehicle::GetVehicleTrackdir() const
+{
+	if (this->vehstatus & VS_CRASHED) return INVALID_TRACKDIR;
+
+	if (this->IsInDepot()) {
+		/* We'll assume the road vehicle is facing outwards */
+		return DiagDirToDiagTrackdir(GetRoadDepotDirection(this->tile));
+	}
+
+	if (IsStandardRoadStopTile(this->tile)) {
+		/* We'll assume the road vehicle is facing outwards */
+		return DiagDirToDiagTrackdir(GetRoadStopDir(this->tile)); // Road vehicle in a station
+	}
+
+	/* Drive through road stops / wormholes (tunnels) */
+	if (this->u.road.state > RVSB_TRACKDIR_MASK) return DiagDirToDiagTrackdir(DirToDiagDir(this->direction));
+
+	/* If vehicle's state is a valid track direction (vehicle is not turning around) return it,
+	 * otherwise transform it into a valid track direction */
+	return (Trackdir)((IsReversingRoadTrackdir((Trackdir)this->u.road.state)) ? (this->u.road.state - 6) : this->u.road.state);
+}
+
 
 /** Refit a road vehicle to the specified cargo type
  * @param tile unused

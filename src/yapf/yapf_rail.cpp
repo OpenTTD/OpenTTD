@@ -540,8 +540,8 @@ bool YapfCheckReverseTrain(const Vehicle *v)
 	const Vehicle *last_veh = GetLastVehicleInChain(v);
 
 	/* get trackdirs of both ends */
-	Trackdir td = GetVehicleTrackdir(v);
-	Trackdir td_rev = ReverseTrackdir(GetVehicleTrackdir(last_veh));
+	Trackdir td = v->GetVehicleTrackdir();
+	Trackdir td_rev = ReverseTrackdir(last_veh->GetVehicleTrackdir());
 
 	/* tiles where front and back are */
 	TileIndex tile = v->tile;
@@ -603,7 +603,7 @@ bool YapfFindNearestRailDepotTwoWay(const Vehicle *v, int max_distance, int reve
 
 	PBSTileInfo origin = FollowTrainReservation(v);
 	TileIndex last_tile = last_veh->tile;
-	Trackdir td_rev = ReverseTrackdir(GetVehicleTrackdir(last_veh));
+	Trackdir td_rev = ReverseTrackdir(last_veh->GetVehicleTrackdir());
 
 	typedef bool (*PfnFindNearestDepotTwoWay)(const Vehicle*, TileIndex, Trackdir, TileIndex, Trackdir, int, int, TileIndex*, bool*);
 	PfnFindNearestDepotTwoWay pfnFindNearestDepotTwoWay = &CYapfAnyDepotRail1::stFindNearestDepotTwoWay;

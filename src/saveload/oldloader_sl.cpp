@@ -1103,7 +1103,7 @@ static const OldChunks vehicle_road_chunk[] = {
 };
 
 static const OldChunks vehicle_ship_chunk[] = {
-	OCL_SVAR(  OC_UINT8, VehicleShip, state ),
+	OCL_SVAR(  OC_UINT8, Ship, state ),
 
 	OCL_NULL( 9 ), ///< Junk
 
@@ -1158,7 +1158,7 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 			default: NOT_REACHED();
 			case VEH_TRAIN   : res = LoadChunk(ls, &v->u.rail,     vehicle_train_chunk);    break;
 			case VEH_ROAD    : res = LoadChunk(ls, &v->u.road,     vehicle_road_chunk);     break;
-			case VEH_SHIP    : res = LoadChunk(ls, &v->u.ship,     vehicle_ship_chunk);     break;
+			case VEH_SHIP    : res = LoadChunk(ls, v, vehicle_ship_chunk);     break;
 			case VEH_AIRCRAFT: res = LoadChunk(ls, &v->u.air,      vehicle_air_chunk);      break;
 			case VEH_EFFECT  : res = LoadChunk(ls, &v->u.effect,   vehicle_effect_chunk);   break;
 			case VEH_DISASTER: res = LoadChunk(ls, &v->u.disaster, vehicle_disaster_chunk); break;
