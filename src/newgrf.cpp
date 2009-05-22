@@ -5844,6 +5844,16 @@ static void FinaliseHouseArray()
 				continue;
 			}
 
+			/* Some places sum population by only counting north tiles. Other places use all tiles causing desyncs.
+			 * As the newgrf specs define population to be zero for non-north tiles, we just disable the offending house.
+			 * If you want to allow non-zero populations somewhen, make sure to sum the population of all tiles in all places. */
+			if (((hs->building_flags & BUILDING_HAS_2_TILES) != 0 && next1->population != 0) ||
+					((hs->building_flags & BUILDING_HAS_4_TILES) != 0 && (next2->population != 0 || next3->population != 0))) {
+				hs->enabled = false;
+				DEBUG(grf, 1, "FinaliseHouseArray: %s defines multitile house %d with non-zero population on additional tiles. Disabling house.", file->filename, hs->local_id);
+				continue;
+			}
+
 			_house_mngr.SetEntitySpec(hs);
 			if (hs->min_year < min_year) min_year = hs->min_year;
 		}
