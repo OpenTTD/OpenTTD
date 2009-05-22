@@ -459,20 +459,6 @@ void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *pare
 	w->parent = parent;
 }
 
-/** Display additional text from NewGRF in the purchase information window */
-uint ShowAdditionalText(int left, int right, int y, EngineID engine)
-{
-	uint16 callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, NULL);
-	if (callback == CALLBACK_FAILED) return y;
-
-	/* STR_BLACK_STRING is used to start the string with {BLACK} */
-	SetDParam(0, GetGRFStringID(GetEngineGRFID(engine), 0xD000 + callback));
-	PrepareTextRefStackUsage(0);
-	uint result = DrawStringMultiLine(left, right, y, INT32_MAX, STR_BLACK_STRING);
-	StopTextRefStackUsage();
-	return result;
-}
-
 /** Display list of cargo types of the engine, for the purchase information window */
 uint ShowRefitOptionsList(int left, int right, int y, EngineID engine)
 {

@@ -12,6 +12,7 @@
 #include "company_func.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
+#include "newgrf_text.h"
 #include "group.h"
 #include "strings_func.h"
 #include "window_func.h"
@@ -588,6 +589,27 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
 	y += FONT_HEIGHT_NORMAL;
 
 	return y;
+}
+
+/**
+ * Display additional text from NewGRF in the purchase information window
+ * @param left   Left border of text bounding box
+ * @param right  Right border of text bounding box
+ * @param y      Top border of text bounding box
+ * @param engine Engine to query the additional purchase information for
+ * @return       Bottom border of text bounding box
+ */
+static uint ShowAdditionalText(int left, int right, int y, EngineID engine)
+{
+	uint16 callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, NULL);
+	if (callback == CALLBACK_FAILED) return y;
+
+	/* STR_BLACK_STRING is used to start the string with {BLACK} */
+	SetDParam(0, GetGRFStringID(GetEngineGRFID(engine), 0xD000 + callback));
+	PrepareTextRefStackUsage(0);
+	uint result = DrawStringMultiLine(left, right, y, INT32_MAX, STR_BLACK_STRING);
+	StopTextRefStackUsage();
+	return result;
 }
 
 /**

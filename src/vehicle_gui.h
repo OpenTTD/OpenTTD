@@ -60,7 +60,6 @@ void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection);
 
 void ShowBuildVehicleWindow(TileIndex tile, VehicleType type);
 
-uint ShowAdditionalText(int left, int right, int y, EngineID engine);
 uint ShowRefitOptionsList(int left, int right, int y, EngineID engine);
 StringID GetCargoSubtypeText(const Vehicle *v);
 
