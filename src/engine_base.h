@@ -7,7 +7,7 @@
 
 #include "engine_type.h"
 #include "economy_type.h"
-#include "core/pool.hpp"
+#include "core/pool_type.hpp"
 #include "core/smallvec_type.hpp"
 
 typedef Pool<Engine, EngineID, 64, 64000> EnginePool;

@@ -8,7 +8,7 @@
 #ifdef ENABLE_NETWORK
 
 #include "network_type.h"
-#include "../core/pool.hpp"
+#include "../core/pool_type.hpp"
 
 typedef Pool<NetworkClientInfo, ClientIndex, 8, MAX_CLIENT_SLOTS> NetworkClientInfoPool;
 extern NetworkClientInfoPool _networkclientinfo_pool;

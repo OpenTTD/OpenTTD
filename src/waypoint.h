@@ -12,7 +12,7 @@
 #include "town_type.h"
 #include "viewport_type.h"
 #include "date_type.h"
-#include "core/pool.hpp"
+#include "core/pool_type.hpp"
 
 typedef Pool<Waypoint, WaypointID, 32, 64000> WaypointPool;
 extern WaypointPool _waypoint_pool;

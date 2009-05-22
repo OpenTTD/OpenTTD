@@ -5,7 +5,7 @@
 #ifndef INDUSTRY_H
 #define INDUSTRY_H
 
-#include "core/pool.hpp"
+#include "core/pool_type.hpp"
 #include "core/random_func.hpp"
 #include "newgrf_storage.h"
 #include "cargo_type.h"

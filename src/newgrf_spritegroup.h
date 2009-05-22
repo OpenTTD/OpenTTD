@@ -11,7 +11,7 @@
 #include "gfx_type.h"
 #include "engine_type.h"
 #include "tile_type.h"
-#include "core/pool.hpp"
+#include "core/pool_type.hpp"
 
 #include "newgrf_cargo.h"
 #include "newgrf_callbacks.h"

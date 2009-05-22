@@ -7,7 +7,7 @@
 
 #include "tile_type.h"
 #include "depot_type.h"
-#include "core/pool.hpp"
+#include "core/pool_type.hpp"
 #include "town_type.h"
 
 typedef Pool<Depot, DepotID, 64, 64000> DepotPool;

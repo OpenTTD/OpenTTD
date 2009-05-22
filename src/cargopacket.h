@@ -5,7 +5,7 @@
 #ifndef CARGOPACKET_H
 #define CARGOPACKET_H
 
-#include "core/pool.hpp"
+#include "core/pool_type.hpp"
 #include "economy_type.h"
 #include "tile_type.h"
 #include "station_type.h"

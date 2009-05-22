@@ -12,7 +12,7 @@
 #include "os_abstraction.h"
 #include "tcp.h"
 #include "packet.h"
-#include "../../core/pool.hpp"
+#include "../../core/pool_type.hpp"
 
 /**
  * Enum with all types of UDP packets.

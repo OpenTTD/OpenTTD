@@ -1,9 +1,9 @@
 /* $Id$ */
 
-/** @file pool.hpp Defintion of Pool, structure used to access PoolItems, and PoolItem, base structure for Vehicle, Town, and other indexed items. */
+/** @file pool_type.hpp Defintion of Pool, structure used to access PoolItems, and PoolItem, base structure for Vehicle, Town, and other indexed items. */
 
-#ifndef POOL_HPP
-#define POOL_HPP
+#ifndef POOL_TYPE_HPP
+#define POOL_TYPE_HPP
 
 template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size>
 struct Pool {
@@ -281,4 +281,4 @@ private:
 
 #define FOR_ALL_ITEMS(type, iter, var) FOR_ALL_ITEMS_FROM(type, iter, var, 0)
 
-#endif /* POOL_HPP */
+#endif /* POOL_TYPE_HPP */

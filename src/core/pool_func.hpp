@@ -7,7 +7,7 @@
 
 #include "alloc_func.hpp"
 #include "mem_func.hpp"
-#include "pool.hpp"
+#include "pool_type.hpp"
 
 #define DEFINE_POOL_METHOD(type) \
 	template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size> \

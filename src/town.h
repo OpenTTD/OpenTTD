@@ -5,7 +5,7 @@
 #ifndef TOWN_H
 #define TOWN_H
 
-#include "core/pool.hpp"
+#include "core/pool_type.hpp"
 #include "core/bitmath_func.hpp"
 #include "core/random_func.hpp"
 #include "cargo_type.h"

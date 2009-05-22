@@ -1676,11 +1676,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\core\pool.hpp"
+				RelativePath=".\..\src\core\pool_func.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\core\pool_func.hpp"
+				RelativePath=".\..\src\core\pool_type.hpp"
 				>
 			</File>
 			<File

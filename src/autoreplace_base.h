@@ -5,7 +5,7 @@
 #ifndef AUTOREPLACE_BASE_H
 #define AUTOREPLACE_BASE_H
 
-#include "core/pool.hpp"
+#include "core/pool_type.hpp"
 #include "autoreplace_type.h"
 
 typedef uint16 EngineRenewID;

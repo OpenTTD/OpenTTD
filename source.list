@@ -364,8 +364,8 @@ core/math_func.cpp
 core/math_func.hpp
 core/mem_func.hpp
 core/overflowsafe_type.hpp
-core/pool.hpp
 core/pool_func.hpp
+core/pool_type.hpp
 core/random_func.cpp
 core/random_func.hpp
 core/smallmap_type.hpp

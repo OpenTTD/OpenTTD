@@ -6,7 +6,7 @@
 #define COMPANY_BASE_H
 
 #include "company_type.h"
-#include "core/pool.hpp"
+#include "core/pool_type.hpp"
 #include "road_type.h"
 #include "rail_type.h"
 #include "date_type.h"

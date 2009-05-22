@@ -7,7 +7,7 @@
 
 #include "station_type.h"
 #include "airport.h"
-#include "core/pool.hpp"
+#include "core/pool_type.hpp"
 #include "cargopacket.h"
 #include "cargo_type.h"
 #include "town_type.h"

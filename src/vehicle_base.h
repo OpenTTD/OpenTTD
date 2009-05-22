@@ -16,7 +16,7 @@
 #include "date_type.h"
 #include "company_base.h"
 #include "company_type.h"
-#include "core/pool.hpp"
+#include "core/pool_type.hpp"
 #include "order_base.h"
 #include "cargopacket.h"
 #include "texteff.hpp"

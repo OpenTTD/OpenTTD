@@ -6,7 +6,7 @@
 #define ORDER_BASE_H
 
 #include "order_type.h"
-#include "core/pool.hpp"
+#include "core/pool_type.hpp"
 #include "core/bitmath_func.hpp"
 #include "cargo_type.h"
 #include "depot_type.h"
