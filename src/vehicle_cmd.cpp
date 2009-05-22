@@ -10,6 +10,7 @@
 #include "company_func.h"
 #include "vehicle_gui.h"
 #include "train.h"
+#include "aircraft.h"
 #include "newgrf_engine.h"
 #include "newgrf_text.h"
 #include "functions.h"
@@ -73,10 +74,11 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		case VEH_ROAD:
 			break;
 
-		case VEH_AIRCRAFT:
+		case VEH_AIRCRAFT: {
+			Aircraft *a = (Aircraft *)v;
 			/* cannot stop airplane when in flight, or when taking off / landing */
-			if (v->u.air.state >= STARTTAKEOFF && v->u.air.state < TERM7) return_cmd_error(STR_ERROR_AIRCRAFT_IS_IN_FLIGHT);
-			break;
+			if (a->state >= STARTTAKEOFF && a->state < TERM7) return_cmd_error(STR_ERROR_AIRCRAFT_IS_IN_FLIGHT);
+		} break;
 
 		default: return CMD_ERROR;
 	}

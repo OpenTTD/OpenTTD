@@ -1620,10 +1620,13 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 					/* If there is no depot in front, reverse automatically (trains only) */
 					if (v->type == VEH_TRAIN && reverse) DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
 
-					if (v->type == VEH_AIRCRAFT && v->u.air.state == FLYING && v->u.air.targetairport != destination) {
-						/* The aircraft is now heading for a different hangar than the next in the orders */
-						extern void AircraftNextAirportPos_and_Order(Aircraft *a);
-						AircraftNextAirportPos_and_Order((Aircraft *)v);
+					if (v->type == VEH_AIRCRAFT) {
+						Aircraft *a = (Aircraft *)v;
+						if (a->state == FLYING && a->targetairport != destination) {
+							/* The aircraft is now heading for a different hangar than the next in the orders */
+							extern void AircraftNextAirportPos_and_Order(Aircraft *a);
+							AircraftNextAirportPos_and_Order(a);
+						}
 					}
 				} else {
 					UpdateVehicleTimetable(v, true);

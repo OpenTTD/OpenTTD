@@ -180,9 +180,9 @@ static byte MapAircraftMovementState(const Aircraft *v)
 	if (st == NULL) return AMS_TTDP_FLIGHT_TO_TOWER;
 
 	const AirportFTAClass *afc = st->Airport();
-	uint16 amdflag = afc->MovingData(v->u.air.pos)->flag;
+	uint16 amdflag = afc->MovingData(v->pos)->flag;
 
-	switch (v->u.air.state) {
+	switch (v->state) {
 		case HANGAR:
 			/* The international airport is a special case as helicopters can land in
 			 * front of the hanger. Helicopters also change their air.state to
@@ -303,7 +303,7 @@ enum {
  */
 static byte MapAircraftMovementAction(const Aircraft *v)
 {
-	switch (v->u.air.state) {
+	switch (v->state) {
 		case HANGAR:
 			return (v->cur_speed > 0) ? AMA_TTDP_LANDING_TO_HANGAR : AMA_TTDP_IN_HANGAR;
 
@@ -796,7 +796,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			Aircraft *a = (Aircraft *)v;
 			switch (variable - 0x80) {
 				case 0x62: return MapAircraftMovementState(a);  // Current movement state
-				case 0x63: return v->u.air.targetairport;       // Airport to which the action refers
+				case 0x63: return a->targetairport;             // Airport to which the action refers
 				case 0x66: return MapAircraftMovementAction(a); // Current movement action
 			}
 		} break;
@@ -936,7 +936,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Aircraft *v, bool info_vi
 
 	if (v == NULL) return group->g.result.sprite;
 
-	return group->g.result.sprite + (info_view ? 0 : (v->Next()->Next()->u.air.state % group->g.result.num_sprites));
+	return group->g.result.sprite + (info_view ? 0 : (v->Next()->Next()->state % group->g.result.num_sprites));
 }
 
 

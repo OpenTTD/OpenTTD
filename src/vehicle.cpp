@@ -530,7 +530,7 @@ void Vehicle::PreDestructor()
 		Station *st = GetTargetAirportIfValid(a);
 		if (st != NULL) {
 			const AirportFTA *layout = st->Airport()->layout;
-			CLRBITS(st->airport_flags, layout[this->u.air.previous_pos].block | layout[this->u.air.pos].block);
+			CLRBITS(st->airport_flags, layout[a->previous_pos].block | layout[a->pos].block);
 		}
 	}
 
@@ -1571,10 +1571,13 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 		/* If there is no depot in front, reverse automatically (trains only) */
 		if (this->type == VEH_TRAIN && reverse) DoCommand(this->tile, this->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
 
-		if (this->type == VEH_AIRCRAFT && this->u.air.state == FLYING && this->u.air.targetairport != destination) {
-			/* The aircraft is now heading for a different hangar than the next in the orders */
-			extern void AircraftNextAirportPos_and_Order(Aircraft *a);
-			AircraftNextAirportPos_and_Order((Aircraft *)this);
+		if (this->type == VEH_AIRCRAFT) {
+			Aircraft *a = (Aircraft *)this;
+			if (a->state == FLYING && a->targetairport != destination) {
+				/* The aircraft is now heading for a different hangar than the next in the orders */
+				extern void AircraftNextAirportPos_and_Order(Aircraft *a);
+				AircraftNextAirportPos_and_Order(a);
+			}
 		}
 	}
 

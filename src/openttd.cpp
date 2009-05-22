@@ -1146,9 +1146,9 @@ void StateGameLoop()
 
 					case VEH_AIRCRAFT: {
 						Aircraft *a = (Aircraft *)v;
-						uint speed = a->u.air.cached_max_speed;
+						uint speed = a->cached_max_speed;
 						UpdateAircraftCache(a);
-						if (speed != a->u.air.cached_max_speed) {
+						if (speed != a->cached_max_speed) {
 							DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i\n", v->index, (int)v->owner, v->unitnumber);
 						}
 					} break;

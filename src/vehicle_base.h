@@ -149,15 +149,6 @@ enum VehicleRailFlags {
 	VRF_TRAIN_STUCK    = 8,
 };
 
-struct VehicleAir {
-	uint16 crashed_counter;
-	uint16 cached_max_speed;
-	byte pos;
-	byte previous_pos;
-	StationID targetairport;
-	byte state;
-};
-
 struct VehicleRoad {
 	byte state;             ///< @see RoadVehicleStates
 	byte frame;
@@ -304,7 +295,6 @@ public:
 
 	union {
 		VehicleRail rail;
-		VehicleAir air;
 		VehicleRoad road;
 	} u;
 

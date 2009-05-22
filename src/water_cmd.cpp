@@ -828,7 +828,7 @@ static void FloodVehicle(Vehicle *v)
 
 				case VEH_AIRCRAFT:
 					pass += 2; // driver
-					v->u.air.crashed_counter = 9000; // max 10000, disappear pretty fast
+					((Aircraft *)v)->crashed_counter = 9000; // max 10000, disappear pretty fast
 					InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
 					break;
 			}

@@ -70,9 +70,10 @@ Station::~Station()
 
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_AIRCRAFT && IsNormalAircraft(v) && v->u.air.targetairport == this->index) {
-			v->u.air.targetairport = INVALID_STATION;
-		}
+		if (v->type != VEH_AIRCRAFT || !IsNormalAircraft(v)) continue;
+
+		Aircraft *a = (Aircraft *)v;
+		if (a->targetairport == this->index) a->targetairport = INVALID_STATION;
 	}
 
 	MarkDirty();

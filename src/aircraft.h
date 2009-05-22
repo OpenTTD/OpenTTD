@@ -92,6 +92,13 @@ byte GetAircraftFlyingAltitude(const Aircraft *v);
  * As side-effect the vehicle type is set correctly.
  */
 struct Aircraft : public Vehicle {
+	uint16 crashed_counter;
+	uint16 cached_max_speed;
+	byte pos;
+	byte previous_pos;
+	StationID targetairport;
+	byte state;
+
 	/** Initializes the Vehicle to an aircraft */
 	Aircraft() { this->type = VEH_AIRCRAFT; }
 

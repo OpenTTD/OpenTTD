@@ -173,29 +173,30 @@ void UpdateOldAircraft()
 		 * skip those */
 		if (v->type == VEH_AIRCRAFT && IsNormalAircraft(v)) {
 			Aircraft *v_oldstyle = (Aircraft *)v;
+			Aircraft *a = (Aircraft *)v_oldstyle;
 			/* airplane in terminal stopped doesn't hurt anyone, so goto next */
-			if (v_oldstyle->vehstatus & VS_STOPPED && v_oldstyle->u.air.state == 0) {
-				v_oldstyle->u.air.state = HANGAR;
+			if (a->vehstatus & VS_STOPPED && a->state == 0) {
+				a->state = HANGAR;
 				continue;
 			}
 
-			AircraftLeaveHangar(v_oldstyle); // make airplane visible if it was in a depot for example
-			v_oldstyle->vehstatus &= ~VS_STOPPED; // make airplane moving
-			v_oldstyle->cur_speed = v_oldstyle->max_speed; // so aircraft don't have zero speed while in air
-			if (!v_oldstyle->current_order.IsType(OT_GOTO_STATION) && !v_oldstyle->current_order.IsType(OT_GOTO_DEPOT)) {
+			AircraftLeaveHangar(a); // make airplane visible if it was in a depot for example
+			a->vehstatus &= ~VS_STOPPED; // make airplane moving
+			a->cur_speed = v_oldstyle->max_speed; // so aircraft don't have zero speed while in air
+			if (!a->current_order.IsType(OT_GOTO_STATION) && !a->current_order.IsType(OT_GOTO_DEPOT)) {
 				/* reset current order so aircraft doesn't have invalid "station-only" order */
-				v_oldstyle->current_order.MakeDummy();
+				a->current_order.MakeDummy();
 			}
-			v_oldstyle->u.air.state = FLYING;
-			AircraftNextAirportPos_and_Order(v_oldstyle); // move it to the entry point of the airport
-			GetNewVehiclePosResult gp = GetNewVehiclePos(v_oldstyle);
-			v_oldstyle->tile = 0; // aircraft in air is tile=0
+			a->state = FLYING;
+			AircraftNextAirportPos_and_Order(a); // move it to the entry point of the airport
+			GetNewVehiclePosResult gp = GetNewVehiclePos(a);
+			a->tile = 0; // aircraft in air is tile=0
 
 			/* correct speed of helicopter-rotors */
-			if (v_oldstyle->subtype == AIR_HELICOPTER) v_oldstyle->Next()->Next()->cur_speed = 32;
+			if (a->subtype == AIR_HELICOPTER) a->Next()->Next()->cur_speed = 32;
 
 			/* set new position x,y,z */
-			SetAircraftPosition(v_oldstyle, gp.x, gp.y, GetAircraftFlyingAltitude(v_oldstyle));
+			SetAircraftPosition(a, gp.x, gp.y, GetAircraftFlyingAltitude(a));
 		}
 	}
 }
@@ -572,15 +573,15 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 	static const SaveLoad _aircraft_desc[] = {
 		SLE_WRITEBYTE(Vehicle, type, VEH_AIRCRAFT),
 		SLE_VEH_INCLUDEX(),
-		    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleAir, crashed_counter),       SLE_UINT16),
-		    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleAir, pos),                   SLE_UINT8),
+		     SLE_VAR(Aircraft, crashed_counter,       SLE_UINT16),
+		     SLE_VAR(Aircraft, pos,                   SLE_UINT8),
 
-		SLE_CONDVARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleAir, targetairport),         SLE_FILE_U8  | SLE_VAR_U16,   0, 4),
-		SLE_CONDVARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleAir, targetairport),         SLE_UINT16,                   5, SL_MAX_VERSION),
+		 SLE_CONDVAR(Aircraft, targetairport,         SLE_FILE_U8  | SLE_VAR_U16,   0, 4),
+		 SLE_CONDVAR(Aircraft, targetairport,         SLE_UINT16,                   5, SL_MAX_VERSION),
 
-		    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleAir, state),                 SLE_UINT8),
+		     SLE_VAR(Aircraft, state,                 SLE_UINT8),
 
-		SLE_CONDVARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleAir, previous_pos),          SLE_UINT8,                    2, SL_MAX_VERSION),
+		 SLE_CONDVAR(Aircraft, previous_pos,          SLE_UINT8,                    2, SL_MAX_VERSION),
 
 		/* reserve extra space in savegame here. (currently 15 bytes) */
 		SLE_CONDNULL(15,                                                           2, SL_MAX_VERSION),

@@ -1968,7 +1968,8 @@ static CommandCost RemoveAirport(Station *st, DoCommandFlag flags)
 	FOR_ALL_VEHICLES(v) {
 		if (!(v->type == VEH_AIRCRAFT && IsNormalAircraft(v))) continue;
 
-		if (v->u.air.targetairport == st->index && v->u.air.state != FLYING) return CMD_ERROR;
+		Aircraft *a = (Aircraft *)v;
+		if (a->targetairport == st->index && a->state != FLYING) return CMD_ERROR;
 	}
 
 	BEGIN_TILE_LOOP(tile_cur, w, h, tile) {
