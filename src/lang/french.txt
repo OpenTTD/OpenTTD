@@ -669,7 +669,6 @@ STR_OFF                                                         :Aucun
 STR_SUMMARY                                                     :Sommaire
 STR_FULL                                                        :Complet
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Annuaire des villes
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -703,9 +702,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Désacti
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Activé
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Afficher les subventions
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subventions
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Carte du monde
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Vue supplémentaire
 STR_MAP_MENU_SIGN_LIST                                          :Liste des panneaux
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Annuaire des villes
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Population mondiale : {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vue {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copier vers la vue
@@ -852,6 +856,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Choisir 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Graphiques de base
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Sélectionner les graphiques de base à utiliser
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} fichier{P "" s} manquant{P "" s}/corrompu{P "" s}
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Information additionnelle sur les graphiques de base
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Enregistrement automatique échoué
 

@@ -320,6 +320,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Apakah 
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Batalkan Permainan
 STR_SORT_ORDER_TIP                                              :{BLACK}Pilih modus pengurutan (menurun/menaik)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Pilih kriteria pengurutan
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Pilih kriteria
 STR_SORT_BY                                                     :{BLACK}Urutkan
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populasi
@@ -665,7 +666,6 @@ STR_OFF                                                         :Mati
 STR_SUMMARY                                                     :Ringkasan
 STR_FULL                                                        :Penuh
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Daftar kota
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -699,9 +699,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Non-akti
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Hidup
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Tampilkan subsidi
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidi
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Peta Dunia
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Viewport ekstra
 STR_MAP_MENU_SIGN_LIST                                          :Daftar Tanda
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Daftar kota
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Populasi Dunia: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Viewport {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Simpan ke viewport
@@ -728,6 +733,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Simpan O
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Pilih selang waktu permainan otomatis disimpan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Mati
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Setiap bulan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Setiap 3 bulan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Setiap 6 bulan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Setiap 12 bulan
@@ -847,8 +853,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Pilih fo
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Set Grafik Dasar
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Pilih grafik dasar yang digunakan
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Informasi tambahan tentang set grafik dasar
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Setiap bulan
 STR_AUTOSAVE_FAILED                                             :{WHITE}Simpan otomatis gagal
 
 STR_MONTH_JAN                                                   :Januari
@@ -936,6 +942,8 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Selalu 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Tampilkan sinyal pada lajur kendara: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Tampilkan laporan keuangan pada akhir tahun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Tujuan baru standarnya adalah 'non-stop': {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :hampir selesai
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :tengah
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Bus/truk bisa mengantri (dengan efek kuantum): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Geser tampilan saat mouse ada di tepi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Ijinkan kolusi pada penguasa setempat: {ORANGE}{STRING}
@@ -2789,6 +2797,16 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Hapus ju
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Kembalikan penghitung waktu keterlambatan seperti semula, sehingga kendaraan akan selalu tepat waktu
 STR_SERVICE_HINT                                                :{BLACK}Lewati servis kecuali jika dibutuhkan servis
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Biaya: {CURRENCY} Berat: {WEIGHT_S}{}Kecepatan: {VELOCITY}  Daya: {POWER}{}Biaya ops.: {CURRENCY}/thn{}Kapasitas: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Biaya: {CURRENCY} Kec. Max: {VELOCITY}{}Kapasitas: {CARGO}, {CARGO}{}Bea Berjalan: {CURRENCY}/thn
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Biaya: {CURRENCY} Kec. Max: {VELOCITY}{}Kapasitas: {CARGO}{}Bea Berjalan: {CURRENCY}/thn
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Kec. Max: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Berat: {LTBLUE}{WEIGHT_S} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Berat: {LTBLUE}{WEIGHT_S} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Keuntungan thn ini: {LTBLUE}{CURRENCY} (thn lalu: {CURRENCY})
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Daya Muat: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Daya Muat: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Daya Muat: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Rusak
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Berhenti
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Tidak dapat memaksa kereta melanggar sinyal pada saat bahaya...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Kecelakaan!
@@ -3139,6 +3157,11 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Menggun
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Menggunakan Euro: {ORANGE}tidak pernah
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Contoh: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ubah sendiri parameter mata uang
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Menurunkan nilai mata uang satu Pound (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Meningkatkan nilai mata uang satu Pound (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Atur penukaran nilai mata uang per satu Pound (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Atur pemisah nilai mata uang Anda
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Pound (£) pada mata uang Anda
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3245,6 +3268,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Kehandal
 STR_PURCHASE_INFO_COST                                          :{BLACK}Biaya: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Berat: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Biaya: {GOLD}{CURRENCY}{BLACK} Kecepatan: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Daya Muat: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Daya Gerbong: {GOLD}+{POWER}{BLACK} Berat: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Kargo dapat di ganti untuk: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Semua jenis kargo
