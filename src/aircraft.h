@@ -106,7 +106,7 @@ struct Aircraft : public Vehicle {
 	int GetDisplayMaxSpeed() const { return this->max_speed; }
 	Money GetRunningCost() const;
 	bool IsInDepot() const { return (this->vehstatus & VS_HIDDEN) != 0 && IsHangarTile(this->tile); }
-	void Tick();
+	bool Tick();
 	void OnNewDay();
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);

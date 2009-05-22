@@ -20,7 +20,7 @@ static void ChimneySmokeInit(Vehicle *v)
 	v->progress = GB(r, 16, 3);
 }
 
-static void ChimneySmokeTick(Vehicle *v)
+static bool ChimneySmokeTick(Vehicle *v)
 {
 	if (v->progress > 0) {
 		v->progress--;
@@ -28,7 +28,7 @@ static void ChimneySmokeTick(Vehicle *v)
 		TileIndex tile = TileVirtXY(v->x_pos, v->y_pos);
 		if (!IsTileType(tile, MP_INDUSTRY)) {
 			delete v;
-			return;
+			return false;
 		}
 
 		if (v->cur_image != SPR_CHIMNEY_SMOKE_7) {
@@ -39,6 +39,8 @@ static void ChimneySmokeTick(Vehicle *v)
 		v->progress = 7;
 		VehicleMove(v, true);
 	}
+
+	return true;
 }
 
 static void SteamSmokeInit(Vehicle *v)
@@ -47,7 +49,7 @@ static void SteamSmokeInit(Vehicle *v)
 	v->progress = 12;
 }
 
-static void SteamSmokeTick(Vehicle *v)
+static bool SteamSmokeTick(Vehicle *v)
 {
 	bool moved = false;
 
@@ -63,12 +65,14 @@ static void SteamSmokeTick(Vehicle *v)
 			v->cur_image++;
 		} else {
 			delete v;
-			return;
+			return false;
 		}
 		moved = true;
 	}
 
 	if (moved) VehicleMove(v, true);
+
+	return true;
 }
 
 static void DieselSmokeInit(Vehicle *v)
@@ -77,7 +81,7 @@ static void DieselSmokeInit(Vehicle *v)
 	v->progress = 0;
 }
 
-static void DieselSmokeTick(Vehicle *v)
+static bool DieselSmokeTick(Vehicle *v)
 {
 	v->progress++;
 
@@ -90,8 +94,11 @@ static void DieselSmokeTick(Vehicle *v)
 			VehicleMove(v, true);
 		} else {
 			delete v;
+			return false;
 		}
 	}
+
+	return true;
 }
 
 static void ElectricSparkInit(Vehicle *v)
@@ -100,7 +107,7 @@ static void ElectricSparkInit(Vehicle *v)
 	v->progress = 1;
 }
 
-static void ElectricSparkTick(Vehicle *v)
+static bool ElectricSparkTick(Vehicle *v)
 {
 	if (v->progress < 2) {
 		v->progress++;
@@ -111,8 +118,11 @@ static void ElectricSparkTick(Vehicle *v)
 			VehicleMove(v, true);
 		} else {
 			delete v;
+			return false;
 		}
 	}
+
+	return true;
 }
 
 static void SmokeInit(Vehicle *v)
@@ -121,7 +131,7 @@ static void SmokeInit(Vehicle *v)
 	v->progress = 12;
 }
 
-static void SmokeTick(Vehicle *v)
+static bool SmokeTick(Vehicle *v)
 {
 	bool moved = false;
 
@@ -137,12 +147,14 @@ static void SmokeTick(Vehicle *v)
 			v->cur_image++;
 		} else {
 			delete v;
-			return;
+			return false;
 		}
 		moved = true;
 	}
 
 	if (moved) VehicleMove(v, true);
+
+	return true;
 }
 
 static void ExplosionLargeInit(Vehicle *v)
@@ -151,7 +163,7 @@ static void ExplosionLargeInit(Vehicle *v)
 	v->progress = 0;
 }
 
-static void ExplosionLargeTick(Vehicle *v)
+static bool ExplosionLargeTick(Vehicle *v)
 {
 	v->progress++;
 	if ((v->progress & 3) == 0) {
@@ -160,8 +172,11 @@ static void ExplosionLargeTick(Vehicle *v)
 			VehicleMove(v, true);
 		} else {
 			delete v;
+			return false;
 		}
 	}
+
+	return true;
 }
 
 static void BreakdownSmokeInit(Vehicle *v)
@@ -170,7 +185,7 @@ static void BreakdownSmokeInit(Vehicle *v)
 	v->progress = 0;
 }
 
-static void BreakdownSmokeTick(Vehicle *v)
+static bool BreakdownSmokeTick(Vehicle *v)
 {
 	v->progress++;
 	if ((v->progress & 7) == 0) {
@@ -185,7 +200,10 @@ static void BreakdownSmokeTick(Vehicle *v)
 	v->u.effect.animation_state--;
 	if (v->u.effect.animation_state == 0) {
 		delete v;
+		return false;
 	}
+
+	return true;
 }
 
 static void ExplosionSmallInit(Vehicle *v)
@@ -194,7 +212,7 @@ static void ExplosionSmallInit(Vehicle *v)
 	v->progress = 0;
 }
 
-static void ExplosionSmallTick(Vehicle *v)
+static bool ExplosionSmallTick(Vehicle *v)
 {
 	v->progress++;
 	if ((v->progress & 3) == 0) {
@@ -203,8 +221,11 @@ static void ExplosionSmallTick(Vehicle *v)
 			VehicleMove(v, true);
 		} else {
 			delete v;
+			return false;
 		}
 	}
+
+	return true;
 }
 
 static void BulldozerInit(Vehicle *v)
@@ -254,7 +275,7 @@ static const struct {
 	{  0, -1 }
 };
 
-static void BulldozerTick(Vehicle *v)
+static bool BulldozerTick(Vehicle *v)
 {
 	v->progress++;
 	if ((v->progress & 7) == 0) {
@@ -271,11 +292,13 @@ static void BulldozerTick(Vehicle *v)
 			v->u.effect.animation_state++;
 			if (v->u.effect.animation_state == lengthof(_bulldozer_movement)) {
 				delete v;
-				return;
+				return false;
 			}
 		}
 		VehicleMove(v, true);
 	}
+
+	return true;
 }
 
 static void BubbleInit(Vehicle *v)
@@ -435,18 +458,18 @@ static const BubbleMovement * const _bubble_movement[] = {
 	_bubble_absorb,
 };
 
-static void BubbleTick(Vehicle *v)
+static bool BubbleTick(Vehicle *v)
 {
 	uint anim_state;
 
 	v->progress++;
-	if ((v->progress & 3) != 0) return;
+	if ((v->progress & 3) != 0) return true;
 
 	if (v->spritenum == 0) {
 		v->cur_image++;
 		if (v->cur_image < SPR_BUBBLE_GENERATE_3) {
 			VehicleMove(v, true);
-			return;
+			return true;
 		}
 		if (v->u.effect.animation_substate != 0) {
 			v->spritenum = GB(Random(), 0, 2) + 1;
@@ -462,7 +485,7 @@ static void BubbleTick(Vehicle *v)
 
 	if (b->y == 4 && b->x == 0) {
 		delete v;
-		return;
+		return false;
 	}
 
 	if (b->y == 4 && b->x == 1) {
@@ -492,11 +515,13 @@ static void BubbleTick(Vehicle *v)
 	v->cur_image = SPR_BUBBLE_0 + b->image;
 
 	VehicleMove(v, true);
+
+	return true;
 }
 
 
 typedef void EffectInitProc(Vehicle *v);
-typedef void EffectTickProc(Vehicle *v);
+typedef bool EffectTickProc(Vehicle *v);
 
 static EffectInitProc * const _effect_init_procs[] = {
 	ChimneySmokeInit,
@@ -558,9 +583,9 @@ Vehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVeh
 	return CreateEffectVehicle(v->x_pos + x, v->y_pos + y, v->z_pos + z, type);
 }
 
-void EffectVehicle::Tick()
+bool EffectVehicle::Tick()
 {
-	_effect_tick_procs[this->subtype](this);
+	return _effect_tick_procs[this->subtype](this);
 }
 
 void EffectVehicle::UpdateDeltaXY(Direction direction)

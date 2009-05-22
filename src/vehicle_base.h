@@ -423,8 +423,9 @@ public:
 
 	/**
 	 * Calls the tick handler of the vehicle
+	 * @return is this vehicle still valid?
 	 */
-	virtual void Tick() {};
+	virtual bool Tick() { return true; };
 
 	/**
 	 * Calls the new day handler of the vehicle
@@ -620,7 +621,7 @@ struct DisasterVehicle : public Vehicle {
 
 	const char *GetTypeString() const { return "disaster vehicle"; }
 	void UpdateDeltaXY(Direction direction);
-	void Tick();
+	bool Tick();
 };
 
 /**
@@ -639,7 +640,6 @@ struct InvalidVehicle : public Vehicle {
 	virtual ~InvalidVehicle() {}
 
 	const char *GetTypeString() const { return "invalid vehicle"; }
-	void Tick() {}
 };
 
 #define FOR_ALL_VEHICLES_FROM(v, start) for (v = Vehicle::Get(start); v != NULL; v = (v->index + 1U < Vehicle::GetPoolSize()) ? Vehicle::Get(v->index + 1) : NULL) if (v->IsValid())

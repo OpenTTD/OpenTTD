@@ -708,12 +708,14 @@ static void AgeShipCargo(Vehicle *v)
 	v->cargo.AgeCargo();
 }
 
-void Ship::Tick()
+bool Ship::Tick()
 {
 	if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
 
 	AgeShipCargo(this);
 	ShipController(this);
+
+	return true;
 }
 
 /** Build a ship.

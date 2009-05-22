@@ -99,7 +99,7 @@ struct RoadVehicle : public Vehicle {
 	Money GetRunningCost() const { return RoadVehInfo(this->engine_type)->running_cost * GetPriceByIndex(RoadVehInfo(this->engine_type)->running_cost_class); }
 	bool IsInDepot() const { return this->u.road.state == RVSB_IN_DEPOT; }
 	bool IsStoppedInDepot() const;
-	void Tick();
+	bool Tick();
 	void OnNewDay();
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);

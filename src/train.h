@@ -329,7 +329,7 @@ struct Train : public Vehicle {
 	Money GetRunningCost() const;
 	bool IsInDepot() const { return CheckTrainInDepot(this, false) != -1; }
 	bool IsStoppedInDepot() const { return CheckTrainStoppedInDepot(this) >= 0; }
-	void Tick();
+	bool Tick();
 	void OnNewDay();
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);

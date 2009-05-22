@@ -31,7 +31,7 @@ struct EffectVehicle : public Vehicle {
 
 	const char *GetTypeString() const { return "special vehicle"; }
 	void UpdateDeltaXY(Direction direction);
-	void Tick();
+	bool Tick();
 };
 
 #endif /* EFFECTVEHICLE_BASE_H */

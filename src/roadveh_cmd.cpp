@@ -540,7 +540,7 @@ static void RoadVehSetRandomDirection(Vehicle *v)
 	} while ((v = v->Next()) != NULL);
 }
 
-static void RoadVehIsCrashed(Vehicle *v)
+static bool RoadVehIsCrashed(Vehicle *v)
 {
 	v->u.road.crashed_ctr++;
 	if (v->u.road.crashed_ctr == 2) {
@@ -548,8 +548,12 @@ static void RoadVehIsCrashed(Vehicle *v)
 	} else if (v->u.road.crashed_ctr <= 45) {
 		if ((v->tick_counter & 7) == 0) RoadVehSetRandomDirection(v);
 	} else if (v->u.road.crashed_ctr >= 2220 && !(v->tick_counter & 0x1F)) {
+		bool ret = v->Next() != NULL;
 		DeleteLastRoadVeh(v);
+		return ret;
 	}
+
+	return true;
 }
 
 static Vehicle *EnumCheckRoadVehCrashTrain(Vehicle *v, void *data)
@@ -1735,7 +1739,7 @@ again:
 	return true;
 }
 
-static void RoadVehController(Vehicle *v)
+static bool RoadVehController(Vehicle *v)
 {
 	/* decrease counters */
 	v->tick_counter++;
@@ -1744,8 +1748,7 @@ static void RoadVehController(Vehicle *v)
 
 	/* handle crashed */
 	if (v->vehstatus & VS_CRASHED) {
-		RoadVehIsCrashed(v);
-		return;
+		return RoadVehIsCrashed(v);
 	}
 
 	RoadVehCheckTrainCrash(v);
@@ -1754,19 +1757,19 @@ static void RoadVehController(Vehicle *v)
 	if (v->breakdown_ctr != 0) {
 		if (v->breakdown_ctr <= 2) {
 			HandleBrokenRoadVeh(v);
-			return;
+			return true;
 		}
 		if (!v->current_order.IsType(OT_LOADING)) v->breakdown_ctr--;
 	}
 
-	if (v->vehstatus & VS_STOPPED) return;
+	if (v->vehstatus & VS_STOPPED) return true;
 
 	ProcessOrders(v);
 	v->HandleLoading();
 
-	if (v->current_order.IsType(OT_LOADING)) return;
+	if (v->current_order.IsType(OT_LOADING)) return true;
 
-	if (v->IsInDepot() && RoadVehLeaveDepot(v, true)) return;
+	if (v->IsInDepot() && RoadVehLeaveDepot(v, true)) return true;
 
 	/* Check how far the vehicle needs to proceed */
 	int j = RoadVehAccelerate(v);
@@ -1796,6 +1799,8 @@ static void RoadVehController(Vehicle *v)
 	}
 
 	if (v->progress == 0) v->progress = j;
+
+	return true;
 }
 
 static void AgeRoadVehCargo(Vehicle *v)
@@ -1804,14 +1809,16 @@ static void AgeRoadVehCargo(Vehicle *v)
 	v->cargo.AgeCargo();
 }
 
-void RoadVehicle::Tick()
+bool RoadVehicle::Tick()
 {
 	AgeRoadVehCargo(this);
 
 	if (IsRoadVehFront(this)) {
 		if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
-		RoadVehController(this);
+		return RoadVehController(this);
 	}
+
+	return true;
 }
 
 static void CheckIfRoadVehNeedsService(Vehicle *v)

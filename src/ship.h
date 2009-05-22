@@ -40,7 +40,7 @@ struct Ship: public Vehicle {
 	int GetDisplayMaxSpeed() const { return this->max_speed / 2; }
 	Money GetRunningCost() const;
 	bool IsInDepot() const { return this->u.ship.state == TRACK_BIT_DEPOT; }
-	void Tick();
+	bool Tick();
 	void OnNewDay();
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);

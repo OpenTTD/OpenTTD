@@ -1137,7 +1137,7 @@ static bool AircraftController(Vehicle *v)
 }
 
 
-static void HandleCrashedAircraft(Vehicle *v)
+static bool HandleCrashedAircraft(Vehicle *v)
 {
 	v->u.air.crashed_counter += 3;
 
@@ -1182,7 +1182,11 @@ static void HandleCrashedAircraft(Vehicle *v)
 		}
 
 		delete v;
+
+		return false;
 	}
+
+	return true;
 }
 
 static void HandleBrokenAircraft(Vehicle *v)
@@ -1988,16 +1992,15 @@ static bool AirportFindFreeHelipad(Vehicle *v, const AirportFTAClass *apc)
 	return false; // it shouldn't get here anytime, but just to be sure
 }
 
-static void AircraftEventHandler(Vehicle *v, int loop)
+static bool AircraftEventHandler(Vehicle *v, int loop)
 {
 	v->tick_counter++;
 
 	if (v->vehstatus & VS_CRASHED) {
-		HandleCrashedAircraft(v);
-		return;
+		return HandleCrashedAircraft(v);
 	}
 
-	if (v->vehstatus & VS_STOPPED) return;
+	if (v->vehstatus & VS_STOPPED) return true;
 
 	/* aircraft is broken down? */
 	if (v->breakdown_ctr != 0) {
@@ -2012,14 +2015,16 @@ static void AircraftEventHandler(Vehicle *v, int loop)
 	ProcessOrders(v);
 	v->HandleLoading(loop != 0);
 
-	if (v->current_order.IsType(OT_LOADING) || v->current_order.IsType(OT_LEAVESTATION)) return;
+	if (v->current_order.IsType(OT_LOADING) || v->current_order.IsType(OT_LEAVESTATION)) return true;
 
 	AirportGoToNextPosition(v);
+
+	return true;
 }
 
-void Aircraft::Tick()
+bool Aircraft::Tick()
 {
-	if (!IsNormalAircraft(this)) return;
+	if (!IsNormalAircraft(this)) return true;
 
 	if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
 
@@ -2030,10 +2035,13 @@ void Aircraft::Tick()
 	this->current_order_time++;
 
 	for (uint i = 0; i != 2; i++) {
-		AircraftEventHandler(this, i);
-		if (this->type != VEH_AIRCRAFT) // In case it was deleted
-			break;
+		/* stop if the aircraft was deleted */
+		if (!AircraftEventHandler(this, i)) return false;
+		assert(this->IsValid());
+		assert(IsNormalAircraft(this));
 	}
+
+	return true;
 }
 
 

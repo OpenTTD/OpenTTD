@@ -604,7 +604,10 @@ void CallVehicleTicks()
 
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		v->Tick();
+		/* Vehicle could be deleted in this tick */
+		if (!v->Tick()) continue;
+
+		assert(v->IsValid());
 
 		switch (v->type) {
 			default: break;

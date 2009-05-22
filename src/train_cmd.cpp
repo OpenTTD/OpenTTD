@@ -4022,7 +4022,7 @@ static void ChangeTrainDirRandomly(Vehicle *v)
 	} while ((v = v->Next()) != NULL);
 }
 
-static void HandleCrashedTrain(Vehicle *v)
+static bool HandleCrashedTrain(Vehicle *v)
 {
 	int state = ++v->u.rail.crash_anim_pos;
 
@@ -4052,9 +4052,13 @@ static void HandleCrashedTrain(Vehicle *v)
 	if (state <= 240 && !(v->tick_counter & 3)) ChangeTrainDirRandomly(v);
 
 	if (state >= 4440 && !(v->tick_counter & 0x1F)) {
+		bool ret = v->Next() != NULL;
 		DeleteLastWagon(v);
 		InvalidateWindow(WC_REPLACE_VEHICLE, (v->group_id << 16) | VEH_TRAIN);
+		return ret;
 	}
+
+	return true;
 }
 
 static void HandleBrokenTrain(Vehicle *v)
@@ -4249,12 +4253,11 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 }
 
 
-static void TrainLocoHandler(Vehicle *v, bool mode)
+static bool TrainLocoHandler(Vehicle *v, bool mode)
 {
 	/* train has crashed? */
 	if (v->vehstatus & VS_CRASHED) {
-		if (!mode) HandleCrashedTrain(v);
-		return;
+		return mode ? true : HandleCrashedTrain(v); // 'this' can be deleted here
 	}
 
 	if (v->u.rail.force_proceed != 0) {
@@ -4267,7 +4270,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 	if (v->breakdown_ctr != 0) {
 		if (v->breakdown_ctr <= 2) {
 			HandleBrokenTrain(v);
-			return;
+			return true;
 		}
 		if (!v->current_order.IsType(OT_LOADING)) v->breakdown_ctr--;
 	}
@@ -4277,7 +4280,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 	}
 
 	/* exit if train is stopped */
-	if (v->vehstatus & VS_STOPPED && v->cur_speed == 0) return;
+	if (v->vehstatus & VS_STOPPED && v->cur_speed == 0) return true;
 
 	bool valid_order = v->current_order.IsValid() && v->current_order.GetType() != OT_CONDITIONAL;
 	if (ProcessOrders(v) && CheckReverseTrain(v)) {
@@ -4285,14 +4288,14 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 		v->cur_speed = 0;
 		v->subspeed = 0;
 		ReverseTrainDirection(v);
-		return;
+		return true;
 	}
 
 	v->HandleLoading(mode);
 
-	if (v->current_order.IsType(OT_LOADING)) return;
+	if (v->current_order.IsType(OT_LOADING)) return true;
 
-	if (CheckTrainStayInDepot(v)) return;
+	if (CheckTrainStayInDepot(v)) return true;
 
 	if (!mode) HandleLocomotiveSmokeCloud(v);
 
@@ -4308,7 +4311,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 		/* Should we try reversing this tick if still stuck? */
 		bool turn_around = v->load_unload_time_rem % (_settings_game.pf.wait_for_pbs_path * DAY_TICKS) == 0 && _settings_game.pf.wait_for_pbs_path < 255;
 
-		if (!turn_around && v->load_unload_time_rem % _settings_game.pf.path_backoff_interval != 0 && v->u.rail.force_proceed == 0) return;
+		if (!turn_around && v->load_unload_time_rem % _settings_game.pf.path_backoff_interval != 0 && v->u.rail.force_proceed == 0) return true;
 		if (!TryPathReserve(v)) {
 			/* Still stuck. */
 			if (turn_around) ReverseTrainDirection(v);
@@ -4326,7 +4329,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 				v->load_unload_time_rem = 0;
 			}
 			/* Exit if force proceed not pressed, else reset stuck flag anyway. */
-			if (v->u.rail.force_proceed == 0) return;
+			if (v->u.rail.force_proceed == 0) return true;
 			ClrBit(v->u.rail.flags, VRF_TRAIN_STUCK);
 			v->load_unload_time_rem = 0;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
@@ -4336,7 +4339,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 	if (v->current_order.IsType(OT_LEAVESTATION)) {
 		v->current_order.Free();
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-		return;
+		return true;
 	}
 
 	int j = UpdateTrainSpeed(v);
@@ -4387,6 +4390,8 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 	}
 
 	if (v->progress == 0) v->progress = j; // Save unused spd for next time, if TrainController didn't set progress
+
+	return true;
 }
 
 
@@ -4412,7 +4417,7 @@ Money Train::GetRunningCost() const
 }
 
 
-void Train::Tick()
+bool Train::Tick()
 {
 	if (_age_cargo_skip_counter == 0) this->cargo.AgeCargo();
 
@@ -4420,17 +4425,25 @@ void Train::Tick()
 
 	if (IsFrontEngine(this)) {
 		if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
+
 		this->current_order_time++;
 
-		TrainLocoHandler(this, false);
+		if (!TrainLocoHandler(this, false)) return false;
 
 		/* make sure vehicle wasn't deleted. */
-		if (this->type == VEH_TRAIN && IsFrontEngine(this))
-			TrainLocoHandler(this, true);
+		assert(this->IsValid());
+		assert(IsFrontEngine(this));
+
+		return TrainLocoHandler(this, true);
 	} else if (IsFreeWagon(this) && HASBITS(this->vehstatus, VS_CRASHED)) {
 		/* Delete flooded standalone wagon chain */
-		if (++this->u.rail.crash_anim_pos >= 4400) delete this;
+		if (++this->u.rail.crash_anim_pos >= 4400) {
+			delete this;
+			return false;
+		}
 	}
+
+	return true;
 }
 
 static void CheckIfTrainNeedsService(Vehicle *v)
