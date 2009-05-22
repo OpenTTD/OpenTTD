@@ -376,4 +376,10 @@ public:
 		template type *PoolItem<type, type##ID, &_##name##_pool>::AllocateSafeRaw(uint &first); \
 		template bool PoolItem<type, type##ID, &_##name##_pool>::CanAllocateItem(uint count);
 
+#define FOR_ALL_ITEMS_FROM(type, iter, var, start) \
+	for (size_t iter = start; var = NULL, iter < type::GetPoolSize(); iter++) \
+		if ((var = type::Get(iter))->IsValid())
+
+#define FOR_ALL_ITEMS(type, iter, var) FOR_ALL_ITEMS_FROM(type, iter, var, 0)
+
 #endif /* OLDPOOL_H */

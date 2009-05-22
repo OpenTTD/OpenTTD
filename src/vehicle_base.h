@@ -642,9 +642,8 @@ struct InvalidVehicle : public Vehicle {
 	const char *GetTypeString() const { return "invalid vehicle"; }
 };
 
-#define FOR_ALL_VEHICLES_FROM(v, start) for (v = Vehicle::Get(start); v != NULL; v = (v->index + 1U < Vehicle::GetPoolSize()) ? Vehicle::Get(v->index + 1) : NULL) if (v->IsValid())
-#define FOR_ALL_VEHICLES(v) FOR_ALL_VEHICLES_FROM(v, 0)
-
+#define FOR_ALL_VEHICLES_FROM(var, start) FOR_ALL_ITEMS_FROM(Vehicle, vehicle_index, var, start)
+#define FOR_ALL_VEHICLES(var) FOR_ALL_VEHICLES_FROM(var, 0)
 
 /** Generates sequence of free UnitID numbers */
 struct FreeUnitIDGenerator {

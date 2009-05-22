@@ -108,8 +108,8 @@ public:
 	void Send_Command(Packet *p, const CommandPacket *cp);
 };
 
-#define FOR_ALL_CLIENT_SOCKETS_FROM(d, start) for (d = NetworkClientSocket::Get(start); d != NULL; d = (d->index + 1U < NetworkClientSocket::GetPoolSize()) ? NetworkClientSocket::Get(d->index + 1U) : NULL) if (d->IsValid())
-#define FOR_ALL_CLIENT_SOCKETS(d) FOR_ALL_CLIENT_SOCKETS_FROM(d, 0)
+#define FOR_ALL_CLIENT_SOCKETS_FROM(var, start) FOR_ALL_ITEMS_FROM(NetworkClientSocket, clientsocket_index, var, start)
+#define FOR_ALL_CLIENT_SOCKETS(var) FOR_ALL_CLIENT_SOCKETS_FROM(var, 0)
 
 #endif /* ENABLE_NETWORK */
 

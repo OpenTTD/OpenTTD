@@ -60,16 +60,16 @@ struct CargoPacket : PoolItem<CargoPacket, CargoPacketID, &_CargoPacket_pool> {
 
 /**
  * Iterate over all _valid_ cargo packets from the given start
- * @param cp    the variable used as "iterator"
+ * @param var   the variable used as "iterator"
  * @param start the cargo packet ID of the first packet to iterate over
  */
-#define FOR_ALL_CARGOPACKETS_FROM(cp, start) for (cp = CargoPacket::Get(start); cp != NULL; cp = (cp->index + 1U < CargoPacket::GetPoolSize()) ? CargoPacket::Get(cp->index + 1U) : NULL) if (cp->IsValid())
+#define FOR_ALL_CARGOPACKETS_FROM(var, start) FOR_ALL_ITEMS_FROM(CargoPacket, cargopacket_index, var, start)
 
 /**
  * Iterate over all _valid_ cargo packets from the begin of the pool
- * @param cp    the variable used as "iterator"
+ * @param var   the variable used as "iterator"
  */
-#define FOR_ALL_CARGOPACKETS(cp) FOR_ALL_CARGOPACKETS_FROM(cp, 0)
+#define FOR_ALL_CARGOPACKETS(var) FOR_ALL_CARGOPACKETS_FROM(var, 0)
 
 extern const struct SaveLoad *GetGoodsDesc();
 

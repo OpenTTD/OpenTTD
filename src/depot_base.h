@@ -24,7 +24,7 @@ struct Depot : PoolItem<Depot, DepotID, &_Depot_pool> {
 
 Depot *GetDepotByTile(TileIndex tile);
 
-#define FOR_ALL_DEPOTS_FROM(d, start) for (d = Depot::Get(start); d != NULL; d = (d->index + 1U < Depot::GetPoolSize()) ? Depot::Get(d->index + 1U) : NULL) if (d->IsValid())
-#define FOR_ALL_DEPOTS(d) FOR_ALL_DEPOTS_FROM(d, 0)
+#define FOR_ALL_DEPOTS_FROM(var, start) FOR_ALL_ITEMS_FROM(Depot, depot_index, var, start)
+#define FOR_ALL_DEPOTS(var) FOR_ALL_DEPOTS_FROM(var, 0)
 
 #endif /* DEPOT_BASE_H */

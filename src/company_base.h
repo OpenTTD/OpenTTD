@@ -90,8 +90,8 @@ struct Company : PoolItem<Company, CompanyByte, &_Company_pool> {
 	}
 };
 
-#define FOR_ALL_COMPANIES_FROM(d, start) for (d = Company::Get(start); d != NULL; d = (d->index + 1U < Company::GetPoolSize()) ? Company::Get(d->index + 1U) : NULL) if (d->IsValid())
-#define FOR_ALL_COMPANIES(d) FOR_ALL_COMPANIES_FROM(d, 0)
+#define FOR_ALL_COMPANIES_FROM(var, start) FOR_ALL_ITEMS_FROM(Company, company_index, var, start)
+#define FOR_ALL_COMPANIES(var) FOR_ALL_COMPANIES_FROM(var, 0)
 
 static inline byte ActiveCompanyCount()
 {

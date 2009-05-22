@@ -204,14 +204,14 @@ public:
 	uint GetCatchmentRadius() const;
 };
 
-#define FOR_ALL_STATIONS_FROM(st, start) for (st = Station::Get(start); st != NULL; st = (st->index + 1U < Station::GetPoolSize()) ? Station::Get(st->index + 1U) : NULL) if (st->IsValid())
-#define FOR_ALL_STATIONS(st) FOR_ALL_STATIONS_FROM(st, 0)
+#define FOR_ALL_STATIONS_FROM(var, start) FOR_ALL_ITEMS_FROM(Station, station_index, var, start)
+#define FOR_ALL_STATIONS(var) FOR_ALL_STATIONS_FROM(var, 0)
 
 
 /* Stuff for ROADSTOPS */
 
-#define FOR_ALL_ROADSTOPS_FROM(rs, start) for (rs = RoadStop::Get(start); rs != NULL; rs = (rs->index + 1U < RoadStop::GetPoolSize()) ? RoadStop::Get(rs->index + 1U) : NULL) if (rs->IsValid())
-#define FOR_ALL_ROADSTOPS(rs) FOR_ALL_ROADSTOPS_FROM(rs, 0)
+#define FOR_ALL_ROADSTOPS_FROM(var, start) FOR_ALL_ITEMS_FROM(RoadStop, roadstop_index, var, start)
+#define FOR_ALL_ROADSTOPS(var) FOR_ALL_ROADSTOPS_FROM(var, 0)
 
 /* End of stuff for ROADSTOPS */
 

@@ -27,8 +27,8 @@ struct NetworkClientInfo : PoolItem<NetworkClientInfo, ClientIndex, &_NetworkCli
 	inline bool IsValid() const { return client_id != INVALID_CLIENT_ID; }
 };
 
-#define FOR_ALL_CLIENT_INFOS_FROM(d, start) for (d = NetworkClientInfo::Get(start); d != NULL; d = (d->index + 1U < NetworkClientInfo::GetPoolSize()) ? NetworkClientInfo::Get(d->index + 1U) : NULL) if (d->IsValid())
-#define FOR_ALL_CLIENT_INFOS(d) FOR_ALL_CLIENT_INFOS_FROM(d, 0)
+#define FOR_ALL_CLIENT_INFOS_FROM(var, start) FOR_ALL_ITEMS_FROM(NetworkClientInfo, clientinfo_index, var, start)
+#define FOR_ALL_CLIENT_INFOS(var) FOR_ALL_CLIENT_INFOS_FROM(var, 0)
 
 #endif /* ENABLE_NETWORK */
 #endif /* NETWORK_BASE_H */

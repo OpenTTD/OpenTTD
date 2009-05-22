@@ -334,8 +334,8 @@ static inline Industry *GetRandomIndustry()
 	return Industry::Get(index);
 }
 
-#define FOR_ALL_INDUSTRIES_FROM(i, start) for (i = Industry::Get(start); i != NULL; i = (i->index + 1U < Industry::GetPoolSize()) ? Industry::Get(i->index + 1U) : NULL) if (i->IsValid())
-#define FOR_ALL_INDUSTRIES(i) FOR_ALL_INDUSTRIES_FROM(i, 0)
+#define FOR_ALL_INDUSTRIES_FROM(var, start) FOR_ALL_ITEMS_FROM(Industry, industry_index, var, start)
+#define FOR_ALL_INDUSTRIES(var) FOR_ALL_INDUSTRIES_FROM(var, 0)
 
 static const uint8 IT_INVALID = 255;
 

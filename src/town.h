@@ -326,8 +326,8 @@ static inline Town *GetRandomTown()
 
 Town *CalcClosestTownFromTile(TileIndex tile, uint threshold = UINT_MAX);
 
-#define FOR_ALL_TOWNS_FROM(t, start) for (t = Town::Get(start); t != NULL; t = (t->index + 1U < Town::GetPoolSize()) ? Town::Get(t->index + 1U) : NULL) if (t->IsValid())
-#define FOR_ALL_TOWNS(t) FOR_ALL_TOWNS_FROM(t, 0)
+#define FOR_ALL_TOWNS_FROM(var, start) FOR_ALL_ITEMS_FROM(Town, town_index, var, start)
+#define FOR_ALL_TOWNS(var) FOR_ALL_TOWNS_FROM(var, 0)
 
 extern Town *_cleared_town;
 extern int _cleared_town_rating;

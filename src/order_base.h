@@ -406,14 +406,14 @@ public:
 	void DebugCheckSanity() const;
 };
 
-#define FOR_ALL_ORDERS_FROM(order, start) for (order = Order::Get(start); order != NULL; order = (order->index + 1U < Order::GetPoolSize()) ? Order::Get(order->index + 1U) : NULL) if (order->IsValid())
-#define FOR_ALL_ORDERS(order) FOR_ALL_ORDERS_FROM(order, 0)
+#define FOR_ALL_ORDERS_FROM(var, start) FOR_ALL_ITEMS_FROM(Order, order_index, var, start)
+#define FOR_ALL_ORDERS(var) FOR_ALL_ORDERS_FROM(var, 0)
 
 
 #define FOR_VEHICLE_ORDERS(v, order) for (order = (v->orders.list == NULL) ? NULL : v->orders.list->GetFirstOrder(); order != NULL; order = order->next)
 
 
-#define FOR_ALL_ORDER_LISTS_FROM(ol, start) for (ol = OrderList::Get(start); ol != NULL; ol = (ol->index + 1U < OrderList::GetPoolSize()) ? OrderList::Get(ol->index + 1U) : NULL) if (ol->IsValid())
-#define FOR_ALL_ORDER_LISTS(ol) FOR_ALL_ORDER_LISTS_FROM(ol, 0)
+#define FOR_ALL_ORDER_LISTS_FROM(var, start) FOR_ALL_ITEMS_FROM(OrderList, orderlist_index, var, start)
+#define FOR_ALL_ORDER_LISTS(var) FOR_ALL_ORDER_LISTS_FROM(var, 0)
 
 #endif /* ORDER_H */

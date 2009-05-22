@@ -31,7 +31,7 @@ struct Sign : PoolItem<Sign, SignID, &_Sign_pool> {
 	inline bool IsValid() const { return this->owner != INVALID_OWNER; }
 };
 
-#define FOR_ALL_SIGNS_FROM(ss, start) for (ss = Sign::Get(start); ss != NULL; ss = (ss->index + 1U < Sign::GetPoolSize()) ? Sign::Get(ss->index + 1U) : NULL) if (ss->IsValid())
-#define FOR_ALL_SIGNS(ss) FOR_ALL_SIGNS_FROM(ss, 0)
+#define FOR_ALL_SIGNS_FROM(var, start) FOR_ALL_ITEMS_FROM(Sign, sign_index, var, start)
+#define FOR_ALL_SIGNS(var) FOR_ALL_SIGNS_FROM(var, 0)
 
 #endif /* SIGNS_BASE_H */

@@ -40,8 +40,8 @@ struct Waypoint : PoolItem<Waypoint, WaypointID, &_Waypoint_pool> {
 	inline bool IsValid() const { return this->xy != INVALID_TILE; }
 };
 
-#define FOR_ALL_WAYPOINTS_FROM(wp, start) for (wp = Waypoint::Get(start); wp != NULL; wp = (wp->index + 1U < Waypoint::GetPoolSize()) ? Waypoint::Get(wp->index + 1U) : NULL) if (wp->IsValid())
-#define FOR_ALL_WAYPOINTS(wp) FOR_ALL_WAYPOINTS_FROM(wp, 0)
+#define FOR_ALL_WAYPOINTS_FROM(var, start) FOR_ALL_ITEMS_FROM(Waypoint, waypoint_index, var, start)
+#define FOR_ALL_WAYPOINTS(var) FOR_ALL_WAYPOINTS_FROM(var, 0)
 
 
 /**

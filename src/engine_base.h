@@ -82,8 +82,8 @@ struct EngineOverrideManager : SmallVector<EngineIDMapping, 256> {
 
 extern EngineOverrideManager _engine_mngr;
 
-#define FOR_ALL_ENGINES_FROM(e, start) for (e = Engine::Get(start); e != NULL; e = (e->index + 1U < Engine::GetPoolSize()) ? Engine::Get(e->index + 1U) : NULL) if (e->IsValid())
-#define FOR_ALL_ENGINES(e) FOR_ALL_ENGINES_FROM(e, 0)
+#define FOR_ALL_ENGINES_FROM(var, start) FOR_ALL_ITEMS_FROM(Engine, engine_index, var, start)
+#define FOR_ALL_ENGINES(var) FOR_ALL_ENGINES_FROM(var, 0)
 
 #define FOR_ALL_ENGINES_OF_TYPE(e, engine_type) FOR_ALL_ENGINES(e) if (e->type == engine_type)
 
