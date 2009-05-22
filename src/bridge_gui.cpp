@@ -366,7 +366,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 	if (bl != NULL && bl->Length() != 0) {
 		new BuildBridgeWindow(&_build_bridge_desc, start, end, type, bl);
 	} else {
-		if (bl != NULL) delete bl;
+		delete bl;
 		ShowErrorMessage(errmsg, STR_ERROR_CAN_T_BUILD_BRIDGE_HERE, TileX(end) * TILE_SIZE, TileY(end) * TILE_SIZE);
 	}
 }
