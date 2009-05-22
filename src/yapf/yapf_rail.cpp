@@ -550,7 +550,7 @@ bool YapfCheckReverseTrain(const Vehicle *vt)
 
 	int reverse_penalty = 0;
 
-	if (v->u.rail.track == TRACK_BIT_WORMHOLE) {
+	if (v->track == TRACK_BIT_WORMHOLE) {
 		/* front in tunnel / on bridge */
 		DiagDirection dir_into_wormhole = GetTunnelBridgeDirection(tile);
 
@@ -565,7 +565,7 @@ bool YapfCheckReverseTrain(const Vehicle *vt)
 		reverse_penalty -= DistanceManhattan(cur_tile, tile) * YAPF_TILE_LENGTH;
 	}
 
-	if (last_veh->u.rail.track == TRACK_BIT_WORMHOLE) {
+	if (last_veh->track == TRACK_BIT_WORMHOLE) {
 		/* back in tunnel / on bridge */
 		DiagDirection dir_into_wormhole = GetTunnelBridgeDirection(tile_rev);
 

@@ -1070,8 +1070,8 @@ NPFFoundTargetData NPFRouteToSafeTile(const Train *v, TileIndex tile, Trackdir t
 	start1.direction = trackdir;
 	NPFSetFlag(&start1, NPF_FLAG_IGNORE_RESERVED, true);
 
-	RailTypes railtypes = v->u.rail.compatible_railtypes;
-	if (override_railtype) railtypes |= GetRailTypeInfo(v->u.rail.railtype)->compatible_railtypes;
+	RailTypes railtypes = v->compatible_railtypes;
+	if (override_railtype) railtypes |= GetRailTypeInfo(v->railtype)->compatible_railtypes;
 
 	/* perform a breadth first search. Target is NULL,
 	 * since we are just looking for any safe tile...*/

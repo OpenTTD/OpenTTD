@@ -1469,7 +1469,7 @@ struct VehicleDetailsWindow : Window {
 				SetDParam(1, v->u.rail.cached_power);
 				SetDParam(0, v->u.rail.cached_weight);
 				SetDParam(3, v->u.rail.cached_max_te / 1000);
-				DrawString(2, this->width - 2, 25, (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && ((Train *)v)->u.rail.railtype != RAILTYPE_MAGLEV) ?
+				DrawString(2, this->width - 2, 25, (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && ((Train *)v)->railtype != RAILTYPE_MAGLEV) ?
 					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE :
 					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED);
 				break;
@@ -1949,7 +1949,7 @@ struct VehicleViewWindow : Window {
 			} else { // no train
 				str = STR_VEHICLE_STATUS_STOPPED;
 			}
-		} else if (v->type == VEH_TRAIN && HasBit(((Train *)v)->u.rail.flags, VRF_TRAIN_STUCK)) {
+		} else if (v->type == VEH_TRAIN && HasBit(((Train *)v)->flags, VRF_TRAIN_STUCK)) {
 			str = STR_TRAIN_STUCK;
 		} else { // vehicle is in a "normal" state, show current order
 			switch (v->current_order.GetType()) {

@@ -92,7 +92,7 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chai
 	assert(!part_of_chain || new_head->IsPrimaryVehicle());
 	/* Loop through source parts */
 	for (Vehicle *src = old_veh; src != NULL; src = src->Next()) {
-		if (!part_of_chain && src->type == VEH_TRAIN && src != old_veh && src != ((Train *)old_veh)->u.rail.other_multiheaded_part && !IsArticulatedPart(src)) {
+		if (!part_of_chain && src->type == VEH_TRAIN && src != old_veh && src != ((Train *)old_veh)->other_multiheaded_part && !IsArticulatedPart(src)) {
 			/* Skip vehicles, which do not belong to old_veh */
 			src = GetLastEnginePart((Train *)src);
 			continue;
@@ -101,7 +101,7 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chai
 
 		/* Find free space in the new chain */
 		for (Vehicle *dest = new_head; dest != NULL && src->cargo.Count() > 0; dest = dest->Next()) {
-			if (!part_of_chain && dest->type == VEH_TRAIN && dest != new_head && dest != ((Train *)new_head)->u.rail.other_multiheaded_part && !IsArticulatedPart(dest)) {
+			if (!part_of_chain && dest->type == VEH_TRAIN && dest != new_head && dest != ((Train *)new_head)->other_multiheaded_part && !IsArticulatedPart(dest)) {
 				/* Skip vehicles, which do not belong to new_head */
 				dest = GetLastEnginePart((Train *)dest);
 				continue;
@@ -269,7 +269,7 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	}
 
 	/* Try to reverse the vehicle, but do not care if it fails as the new type might not be reversible */
-	if (new_veh->type == VEH_TRAIN && HasBit(((Train *)old_veh)->u.rail.flags, VRF_REVERSE_DIRECTION)) {
+	if (new_veh->type == VEH_TRAIN && HasBit(((Train *)old_veh)->flags, VRF_REVERSE_DIRECTION)) {
 		DoCommand(0, new_veh->index, true, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
 	}
 

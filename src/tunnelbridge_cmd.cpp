@@ -1390,7 +1390,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 
 			vdir = DirToDiagDir(t->direction);
 
-			if (t->u.rail.track != TRACK_BIT_WORMHOLE && dir == vdir) {
+			if (t->track != TRACK_BIT_WORMHOLE && dir == vdir) {
 				if (IsFrontEngine(t) && fc == _tunnel_fractcoord_1[dir]) {
 					if (!PlayVehicleSound(t, VSE_TUNNEL) && RailVehInfo(t->engine_type)->engclass == 0) {
 						SndPlayVehicleFx(SND_05_TRAIN_THROUGH_TUNNEL, v);
@@ -1399,7 +1399,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 				}
 				if (fc == _tunnel_fractcoord_2[dir]) {
 					t->tile = tile;
-					t->u.rail.track = TRACK_BIT_WORMHOLE;
+					t->track = TRACK_BIT_WORMHOLE;
 					t->vehstatus |= VS_HIDDEN;
 					return VETSB_ENTERED_WORMHOLE;
 				}
@@ -1408,8 +1408,8 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 			if (dir == ReverseDiagDir(vdir) && fc == _tunnel_fractcoord_3[dir] && z == 0) {
 				/* We're at the tunnel exit ?? */
 				t->tile = tile;
-				t->u.rail.track = (TrackBits)_exit_tunnel_track[dir];
-				assert(t->u.rail.track);
+				t->track = (TrackBits)_exit_tunnel_track[dir];
+				assert(t->track);
 				t->vehstatus &= ~VS_HIDDEN;
 				return VETSB_ENTERED_WORMHOLE;
 			}
@@ -1465,9 +1465,9 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 			switch (v->type) {
 				case VEH_TRAIN: {
 					Train *t = (Train *)v;
-					t->u.rail.track = TRACK_BIT_WORMHOLE;
-					ClrBit(t->u.rail.flags, VRF_GOINGUP);
-					ClrBit(t->u.rail.flags, VRF_GOINGDOWN);
+					t->track = TRACK_BIT_WORMHOLE;
+					ClrBit(t->flags, VRF_GOINGUP);
+					ClrBit(t->flags, VRF_GOINGDOWN);
 				} break;
 
 				case VEH_ROAD:
@@ -1486,8 +1486,8 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 			switch (v->type) {
 				case VEH_TRAIN: {
 					Train *t = (Train *)v;
-					if (t->u.rail.track == TRACK_BIT_WORMHOLE) {
-						t->u.rail.track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
+					if (t->track == TRACK_BIT_WORMHOLE) {
+						t->track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
 						return VETSB_ENTERED_WORMHOLE;
 					}
 				} break;

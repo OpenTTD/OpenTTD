@@ -312,8 +312,8 @@ void AddArticulatedParts(Vehicle *first, VehicleType type)
 				Train *t = new Train();
 				t->subtype = 0;
 				previous->SetNext(t);
-				t->u.rail.track = front->u.rail.track;
-				t->u.rail.railtype = front->u.rail.railtype;
+				t->track = front->track;
+				t->railtype = front->railtype;
 				t->u.rail.first_engine = front->engine_type;
 
 				t->spritenum = e_artic->u.rail.image_index;

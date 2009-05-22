@@ -13,8 +13,8 @@ protected:
 public:
 	void SetDestination(const Vehicle *v, bool override_rail_type = false)
 	{
-		m_compatible_railtypes = v->u.rail.compatible_railtypes;
-		if (override_rail_type) m_compatible_railtypes |= GetRailTypeInfo(v->u.rail.railtype)->compatible_railtypes;
+		m_compatible_railtypes = ((Train *)v)->compatible_railtypes;
+		if (override_rail_type) m_compatible_railtypes |= GetRailTypeInfo(((Train *)v)->railtype)->compatible_railtypes;
 	}
 
 	bool IsCompatibleRailType(RailType rt)

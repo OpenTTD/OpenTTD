@@ -185,7 +185,7 @@ static SmallSet<DiagDirection, SIG_GLOB_SIZE> _globset("_globset"); ///< set of 
 /** Check whether there is a train on rail, not in a depot */
 static Vehicle *TrainOnTileEnum(Vehicle *v, void *)
 {
-	if (v->type != VEH_TRAIN || ((Train *)v)->u.rail.track == TRACK_BIT_DEPOT) return NULL;
+	if (v->type != VEH_TRAIN || ((Train *)v)->track == TRACK_BIT_DEPOT) return NULL;
 
 	return v;
 }

@@ -558,12 +558,12 @@ bool SettingsDisableElrail(int32 p1)
 			if (v->type != VEH_TRAIN) continue;
 
 			Train *t = (Train *)v;
-			if (t->u.rail.railtype == RAILTYPE_ELECTRIC) {
+			if (t->railtype == RAILTYPE_ELECTRIC) {
 				/* this railroad vehicle is now compatible only with elrail,
 				 *  so add there also normal rail compatibility */
-				t->u.rail.compatible_railtypes |= RAILTYPES_RAIL;
-				t->u.rail.railtype = RAILTYPE_RAIL;
-				SetBit(t->u.rail.flags, VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL);
+				t->compatible_railtypes |= RAILTYPES_RAIL;
+				t->railtype = RAILTYPE_RAIL;
+				SetBit(t->flags, VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL);
 			}
 		}
 	}

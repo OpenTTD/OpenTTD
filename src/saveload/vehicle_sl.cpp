@@ -24,7 +24,7 @@ void ConnectMultiheadedTrains()
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_TRAIN) {
-			((Train *)v)->u.rail.other_multiheaded_part = NULL;
+			((Train *)v)->other_multiheaded_part = NULL;
 		}
 	}
 
@@ -46,7 +46,7 @@ void ConnectMultiheadedTrains()
 			bool sequential_matching = IsFrontEngine(v);
 
 			for (Train *u = (Train *)v; u != NULL; u = (Train *)GetNextVehicle(u)) {
-				if (u->u.rail.other_multiheaded_part != NULL) continue; // we already linked this one
+				if (u->other_multiheaded_part != NULL) continue; // we already linked this one
 
 				if (IsMultiheaded(u)) {
 					if (!IsTrainEngine(u)) {
@@ -60,7 +60,7 @@ void ConnectMultiheadedTrains()
 					Train *w;
 					if (sequential_matching) {
 						for (w = GetNextVehicle(u); w != NULL; w = GetNextVehicle(w)) {
-							if (w->engine_type != eid || w->u.rail.other_multiheaded_part != NULL || !IsMultiheaded(w)) continue;
+							if (w->engine_type != eid || w->other_multiheaded_part != NULL || !IsMultiheaded(w)) continue;
 
 							/* we found a car to partner with this engine. Now we will make sure it face the right way */
 							if (IsTrainEngine(w)) {
@@ -72,7 +72,7 @@ void ConnectMultiheadedTrains()
 					} else {
 						uint stack_pos = 0;
 						for (w = GetNextVehicle(u); w != NULL; w = GetNextVehicle(w)) {
-							if (w->engine_type != eid || w->u.rail.other_multiheaded_part != NULL || !IsMultiheaded(w)) continue;
+							if (w->engine_type != eid || w->other_multiheaded_part != NULL || !IsMultiheaded(w)) continue;
 
 							if (IsTrainEngine(w)) {
 								stack_pos++;
@@ -84,8 +84,8 @@ void ConnectMultiheadedTrains()
 					}
 
 					if (w != NULL) {
-						w->u.rail.other_multiheaded_part = u;
-						u->u.rail.other_multiheaded_part = w;
+						w->other_multiheaded_part = u;
+						u->other_multiheaded_part = w;
 					} else {
 						/* we got a front car and no rear cars. We will fake this one for forget that it should have been multiheaded */
 						ClearMultiheaded(u);
@@ -525,13 +525,13 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 	static const SaveLoad _train_desc[] = {
 		SLE_WRITEBYTE(Vehicle, type, VEH_TRAIN),
 		SLE_VEH_INCLUDEX(),
-		    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, crash_anim_pos),      SLE_UINT16),
-		    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, force_proceed),       SLE_UINT8),
-		    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, railtype),            SLE_UINT8),
-		    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, track),               SLE_UINT8),
+		     SLE_VAR(Train, crash_anim_pos,      SLE_UINT16),
+		     SLE_VAR(Train, force_proceed,       SLE_UINT8),
+		     SLE_VAR(Train, railtype,            SLE_UINT8),
+		     SLE_VAR(Train, track,               SLE_UINT8),
 
-		SLE_CONDVARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, flags),               SLE_FILE_U8  | SLE_VAR_U16,   2,  99),
-		SLE_CONDVARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, flags),               SLE_UINT16,                 100, SL_MAX_VERSION),
+		 SLE_CONDVAR(Train, flags,               SLE_FILE_U8  | SLE_VAR_U16,   2,  99),
+		 SLE_CONDVAR(Train, flags,               SLE_UINT16,                 100, SL_MAX_VERSION),
 		SLE_CONDNULL(2, 2, 59),
 
 		SLE_CONDNULL(2, 2, 19),

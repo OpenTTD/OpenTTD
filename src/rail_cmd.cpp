@@ -93,7 +93,7 @@ Vehicle *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
 	if (v->type != VEH_TRAIN) return NULL;
 
 	Train *t = (Train *)v;
-	if ((t->u.rail.track != rail_bits) && !TracksOverlap(t->u.rail.track | rail_bits)) return NULL;
+	if ((t->track != rail_bits) && !TracksOverlap(t->track | rail_bits)) return NULL;
 
 	_error_message = VehicleInTheWayErrMsg(v);
 	return v;
@@ -1308,7 +1308,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					Track     track;
 					while ((track = RemoveFirstTrack(&reserved)) != INVALID_TRACK) {
 						Train *v = GetTrainForReservation(tile, track);
-						if (v != NULL && !HasPowerOnRail(v->u.rail.railtype, totype)) {
+						if (v != NULL && !HasPowerOnRail(v->railtype, totype)) {
 							/* No power on new rail type, reroute. */
 							FreeTrainTrackReservation(v);
 							*vehicles_affected.Append() = v;
@@ -1374,7 +1374,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 						Track track = DiagDirToDiagTrack(GetTunnelBridgeDirection(tile));
 						if (GetTunnelBridgeReservation(tile)) {
 							Train *v = GetTrainForReservation(tile, track);
-							if (v != NULL && !HasPowerOnRail(v->u.rail.railtype, totype)) {
+							if (v != NULL && !HasPowerOnRail(v->railtype, totype)) {
 								/* No power on new rail type, reroute. */
 								FreeTrainTrackReservation(v);
 								*vehicles_affected.Append() = v;
@@ -2484,7 +2484,7 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int
 	} else if (_fractcoords_enter[dir] == fract_coord) {
 		if (DiagDirToDir(ReverseDiagDir(dir)) == v->direction) {
 			/* enter the depot */
-			v->u.rail.track = TRACK_BIT_DEPOT,
+			v->track = TRACK_BIT_DEPOT,
 			v->vehstatus |= VS_HIDDEN; // hide it
 			v->direction = ReverseDir(v->direction);
 			if (v->Next() == NULL) VehicleEnterDepot(v);
@@ -2498,7 +2498,7 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int
 			/* leave the depot? */
 			if ((v = v->Next()) != NULL) {
 				v->vehstatus &= ~VS_HIDDEN;
-				v->u.rail.track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
+				v->track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
 			}
 		}
 	}

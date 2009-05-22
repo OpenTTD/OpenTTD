@@ -45,14 +45,10 @@ enum VehicleFlags {
 };
 
 struct VehicleRail {
-	/* Link between the two ends of a multiheaded engine */
-	Train *other_multiheaded_part;
-
 	/* Cached wagon override spritegroup */
 	const struct SpriteGroup *cached_override;
 
 	uint16 last_speed; // NOSAVE: only used in UI
-	uint16 crash_anim_pos;
 
 	/* cached values, recalculated on load and each time a vehicle is added to/removed from the consist. */
 	uint32 cached_power;        ///< total power of the consist.
@@ -79,38 +75,6 @@ struct VehicleRail {
 	/* NOSAVE: for wagon override - id of the first engine in train
 	 * 0xffff == not in train */
 	EngineID first_engine;
-
-	uint16 flags;
-	TrackBitsByte track;
-	byte force_proceed;
-	RailTypeByte railtype;
-	RailTypes compatible_railtypes;
-};
-
-enum VehicleRailFlags {
-	VRF_REVERSING         = 0,
-
-	/* used to calculate if train is going up or down */
-	VRF_GOINGUP           = 1,
-	VRF_GOINGDOWN         = 2,
-
-	/* used to store if a wagon is powered or not */
-	VRF_POWEREDWAGON      = 3,
-
-	/* used to reverse the visible direction of the vehicle */
-	VRF_REVERSE_DIRECTION = 4,
-
-	/* used to mark train as lost because PF can't find the route */
-	VRF_NO_PATH_TO_DESTINATION = 5,
-
-	/* used to mark that electric train engine is allowed to run on normal rail */
-	VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL = 6,
-
-	/* used for vehicle var 0xFE bit 8 (toggled each time the train is reversed, accurate for first vehicle only) */
-	VRF_TOGGLE_REVERSE = 7,
-
-	/* used to mark a train that can't get a path reservation */
-	VRF_TRAIN_STUCK    = 8,
 };
 
 typedef Pool<Vehicle, VehicleID, 512, 64000> VehiclePool;

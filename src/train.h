@@ -11,6 +11,33 @@
 
 struct Train;
 
+enum VehicleRailFlags {
+	VRF_REVERSING         = 0,
+
+	/* used to calculate if train is going up or down */
+	VRF_GOINGUP           = 1,
+	VRF_GOINGDOWN         = 2,
+
+	/* used to store if a wagon is powered or not */
+	VRF_POWEREDWAGON      = 3,
+
+	/* used to reverse the visible direction of the vehicle */
+	VRF_REVERSE_DIRECTION = 4,
+
+	/* used to mark train as lost because PF can't find the route */
+	VRF_NO_PATH_TO_DESTINATION = 5,
+
+	/* used to mark that electric train engine is allowed to run on normal rail */
+	VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL = 6,
+
+	/* used for vehicle var 0xFE bit 8 (toggled each time the train is reversed, accurate for first vehicle only) */
+	VRF_TOGGLE_REVERSE = 7,
+
+	/* used to mark a train that can't get a path reservation */
+	VRF_TRAIN_STUCK    = 8,
+};
+
+
 /** enum to handle train subtypes
  * Do not access it directly unless you have to. Use the access functions below
  * This is an enum to tell what bit to access as it is a bitmask
@@ -241,6 +268,17 @@ Money GetTrainRunningCost(const Train *v);
  * As side-effect the vehicle type is set correctly.
  */
 struct Train : public Vehicle {
+	/* Link between the two ends of a multiheaded engine */
+	Train *other_multiheaded_part;
+
+	uint16 crash_anim_pos;
+
+	uint16 flags;
+	TrackBitsByte track;
+	byte force_proceed;
+	RailTypeByte railtype;
+	RailTypes compatible_railtypes;
+
 	/** Initializes the Vehicle to a train */
 	Train() { this->type = VEH_TRAIN; }
 

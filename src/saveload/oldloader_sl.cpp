@@ -1079,10 +1079,10 @@ static uint16 _old_next_ptr;
 static VehicleID _current_vehicle_id;
 
 static const OldChunks vehicle_train_chunk[] = {
-	OCL_SVAR(  OC_UINT8, VehicleRail, track ),
-	OCL_SVAR(  OC_UINT8, VehicleRail, force_proceed ),
-	OCL_SVAR( OC_UINT16, VehicleRail, crash_anim_pos ),
-	OCL_SVAR(  OC_UINT8, VehicleRail, railtype ),
+	OCL_SVAR(  OC_UINT8, Train, track ),
+	OCL_SVAR(  OC_UINT8, Train, force_proceed ),
+	OCL_SVAR( OC_UINT16, Train, crash_anim_pos ),
+	OCL_SVAR(  OC_UINT8, Train, railtype ),
 
 	OCL_NULL( 5 ), ///< Junk
 
@@ -1157,7 +1157,7 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 	} else {
 		switch (v->type) {
 			default: NOT_REACHED();
-			case VEH_TRAIN   : res = LoadChunk(ls, &v->u.rail,     vehicle_train_chunk);    break;
+			case VEH_TRAIN   : res = LoadChunk(ls, v, vehicle_train_chunk);    break;
 			case VEH_ROAD    : res = LoadChunk(ls, v, vehicle_road_chunk);     break;
 			case VEH_SHIP    : res = LoadChunk(ls, v, vehicle_ship_chunk);     break;
 			case VEH_AIRCRAFT: res = LoadChunk(ls, v, vehicle_air_chunk);      break;
@@ -1315,7 +1315,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 					};
 					if (v->spritenum / 2 >= lengthof(spriteset_rail)) return false;
 					v->spritenum = spriteset_rail[v->spritenum / 2]; // adjust railway sprite set offset
-					((Train *)v)->u.rail.railtype = type == 0x25 ? 1 : 0; // monorail / rail
+					((Train *)v)->railtype = type == 0x25 ? 1 : 0; // monorail / rail
 					break;
 				}
 
