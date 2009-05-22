@@ -175,11 +175,6 @@ struct VehicleRoad {
 	RoadTypes compatible_roadtypes;
 };
 
-struct VehicleDisaster {
-	uint16 image_override;
-	VehicleID big_ufo_destroyer_target;
-};
-
 typedef Pool<Vehicle, VehicleID, 512, 64000> VehiclePool;
 extern VehiclePool _vehicle_pool;
 
@@ -311,7 +306,6 @@ public:
 		VehicleRail rail;
 		VehicleAir air;
 		VehicleRoad road;
-		VehicleDisaster disaster;
 	} u;
 
 	/* cached oftenly queried NewGRF values */
@@ -621,6 +615,9 @@ public:
  * As side-effect the vehicle type is set correctly.
  */
 struct DisasterVehicle : public Vehicle {
+	uint16 image_override;
+	VehicleID big_ufo_destroyer_target;
+
 	/** Initializes the Vehicle to a disaster vehicle */
 	DisasterVehicle() { this->type = VEH_DISASTER; }
 
@@ -630,6 +627,7 @@ struct DisasterVehicle : public Vehicle {
 	const char *GetTypeString() const { return "disaster vehicle"; }
 	void UpdateDeltaXY(Direction direction);
 	bool Tick();
+	DisasterVehicle *Next() { return (DisasterVehicle*)this->Vehicle::Next(); }
 };
 
 #define FOR_ALL_VEHICLES_FROM(var, start) FOR_ALL_ITEMS_FROM(Vehicle, vehicle_index, var, start)

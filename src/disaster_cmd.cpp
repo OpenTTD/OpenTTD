@@ -111,16 +111,16 @@ static const SpriteID * const _disaster_images[] = {
 	_disaster_images_4, _disaster_images_5,                     ///< small and big submarine sprites
 };
 
-static void DisasterVehicleUpdateImage(Vehicle *v)
+static void DisasterVehicleUpdateImage(DisasterVehicle *v)
 {
-	SpriteID img = v->u.disaster.image_override;
+	SpriteID img = v->image_override;
 	if (img == 0) img = _disaster_images[v->subtype][v->direction];
 	v->cur_image = img;
 }
 
 /** Initialize a disaster vehicle. These vehicles are of type VEH_DISASTER, are unclickable
  * and owned by nobody */
-static void InitializeDisasterVehicle(Vehicle *v, int x, int y, byte z, Direction direction, byte subtype)
+static void InitializeDisasterVehicle(DisasterVehicle *v, int x, int y, byte z, Direction direction, byte subtype)
 {
 	v->x_pos = x;
 	v->y_pos = y;
@@ -131,7 +131,7 @@ static void InitializeDisasterVehicle(Vehicle *v, int x, int y, byte z, Directio
 	v->UpdateDeltaXY(INVALID_DIR);
 	v->owner = OWNER_NONE;
 	v->vehstatus = VS_UNCLICKABLE;
-	v->u.disaster.image_override = 0;
+	v->image_override = 0;
 	v->current_order.Free();
 
 	DisasterVehicleUpdateImage(v);
@@ -139,7 +139,7 @@ static void InitializeDisasterVehicle(Vehicle *v, int x, int y, byte z, Directio
 	MarkSingleVehicleDirty(v);
 }
 
-static void SetDisasterVehiclePos(Vehicle *v, int x, int y, byte z)
+static void SetDisasterVehiclePos(DisasterVehicle *v, int x, int y, byte z)
 {
 	v->x_pos = x;
 	v->y_pos = y;
@@ -149,7 +149,7 @@ static void SetDisasterVehiclePos(Vehicle *v, int x, int y, byte z)
 	DisasterVehicleUpdateImage(v);
 	VehicleMove(v, true);
 
-	Vehicle *u = v->Next();
+	DisasterVehicle *u = v->Next();
 	if (u != NULL) {
 		int safe_x = Clamp(x, 0, MapMaxX() * TILE_SIZE);
 		int safe_y = Clamp(y - 1, 0, MapMaxY() * TILE_SIZE);
@@ -180,7 +180,7 @@ static void SetDisasterVehiclePos(Vehicle *v, int x, int y, byte z)
  * 2: Clear the runway after some time and remove crashed zeppeliner
  * If not airport was found, only state 0 is reached until zeppeliner leaves map
  */
-static bool DisasterTick_Zeppeliner(Vehicle *v)
+static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 {
 	v->tick_counter++;
 
@@ -248,9 +248,9 @@ static bool DisasterTick_Zeppeliner(Vehicle *v)
 	if (++v->age == 1) {
 		CreateEffectVehicleRel(v, 0, 7, 8, EV_EXPLOSION_LARGE);
 		SndPlayVehicleFx(SND_12_EXPLOSION, v);
-		v->u.disaster.image_override = SPR_BLIMP_CRASHING;
+		v->image_override = SPR_BLIMP_CRASHING;
 	} else if (v->age == 70) {
-		v->u.disaster.image_override = SPR_BLIMP_CRASHED;
+		v->image_override = SPR_BLIMP_CRASHED;
 	} else if (v->age <= 300) {
 		if (GB(v->tick_counter, 0, 3) == 0) {
 			uint32 r = Random();
@@ -281,9 +281,9 @@ static bool DisasterTick_Zeppeliner(Vehicle *v)
  * 1: Home in on a road vehicle and crash it >:)
  * If not road vehicle was found, only state 0 is used and Ufo disappears after a while
  */
-static bool DisasterTick_Ufo(Vehicle *v)
+static bool DisasterTick_Ufo(DisasterVehicle *v)
 {
-	v->u.disaster.image_override = (HasBit(++v->tick_counter, 3)) ? SPR_UFO_SMALL_SCOUT_DARKER : SPR_UFO_SMALL_SCOUT;
+	v->image_override = (HasBit(++v->tick_counter, 3)) ? SPR_UFO_SMALL_SCOUT_DARKER : SPR_UFO_SMALL_SCOUT;
 
 	if (v->current_order.GetDestination() == 0) {
 		/* Fly around randomly */
@@ -388,10 +388,10 @@ static void DestructIndustry(Industry *i)
  * @param news_message The string that's used as news message.
  * @param industry_flag Only attack industries that have this flag set.
  */
-static bool DisasterTick_Aircraft(Vehicle *v, uint16 image_override, bool leave_at_top, StringID news_message, IndustryBehaviour industry_flag)
+static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, bool leave_at_top, StringID news_message, IndustryBehaviour industry_flag)
 {
 	v->tick_counter++;
-	v->u.disaster.image_override = (v->current_order.GetDestination() == 1 && HasBit(v->tick_counter, 2)) ? image_override : 0;
+	v->image_override = (v->current_order.GetDestination() == 1 && HasBit(v->tick_counter, 2)) ? image_override : 0;
 
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -450,19 +450,19 @@ static bool DisasterTick_Aircraft(Vehicle *v, uint16 image_override, bool leave_
 }
 
 /** Airplane handling. */
-static bool DisasterTick_Airplane(Vehicle *v)
+static bool DisasterTick_Airplane(DisasterVehicle *v)
 {
 	return DisasterTick_Aircraft(v, SPR_F_15_FIRING, true, STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY, INDUSTRYBEH_AIRPLANE_ATTACKS);
 }
 
 /** Helicopter handling. */
-static bool DisasterTick_Helicopter(Vehicle *v)
+static bool DisasterTick_Helicopter(DisasterVehicle *v)
 {
 	return DisasterTick_Aircraft(v, SPR_AH_64A_FIRING, false, STR_NEWS_DISASTER_HELICOPTER_FACTORY, INDUSTRYBEH_CHOPPER_ATTACKS);
 }
 
 /** Helicopter rotor blades; keep these spinning */
-static bool DisasterTick_Helicopter_Rotors(Vehicle *v)
+static bool DisasterTick_Helicopter_Rotors(DisasterVehicle *v)
 {
 	v->tick_counter++;
 	if (HasBit(v->tick_counter, 0)) return true;
@@ -480,7 +480,7 @@ static bool DisasterTick_Helicopter_Rotors(Vehicle *v)
  * 1: Land there and breakdown all trains in a radius of 12 tiles; and now we wait...
  *    because as soon as the Ufo lands, a fighter jet, a Skyranger, is called to clear up the mess
  */
-static bool DisasterTick_Big_Ufo(Vehicle *v)
+static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 {
 	v->tick_counter++;
 
@@ -509,12 +509,12 @@ static bool DisasterTick_Big_Ufo(Vehicle *v)
 
 		v->current_order.SetDestination(2);
 
-		Vehicle *u;
-		FOR_ALL_VEHICLES(u) {
-			if (u->type == VEH_TRAIN || u->type == VEH_ROAD) {
-				if (Delta(u->x_pos, v->x_pos) + Delta(u->y_pos, v->y_pos) <= 12 * TILE_SIZE) {
-					u->breakdown_ctr = 5;
-					u->breakdown_delay = 0xF0;
+		Vehicle *target;
+		FOR_ALL_VEHICLES(target) {
+			if (target->type == VEH_TRAIN || target->type == VEH_ROAD) {
+				if (Delta(target->x_pos, v->x_pos) + Delta(target->y_pos, v->y_pos) <= 12 * TILE_SIZE) {
+					target->breakdown_ctr = 5;
+					target->breakdown_delay = 0xF0;
 				}
 			}
 		}
@@ -530,12 +530,12 @@ static bool DisasterTick_Big_Ufo(Vehicle *v)
 			delete v;
 			return false;
 		}
-		u = new DisasterVehicle();
+		DisasterVehicle *u = new DisasterVehicle();
 
 		InitializeDisasterVehicle(u, -6 * TILE_SIZE, v->y_pos, 135, DIR_SW, ST_BIG_UFO_DESTROYER);
-		u->u.disaster.big_ufo_destroyer_target = v->index;
+		u->big_ufo_destroyer_target = v->index;
 
-		Vehicle *w = new DisasterVehicle();
+		DisasterVehicle *w = new DisasterVehicle();
 
 		u->SetNext(w);
 		InitializeDisasterVehicle(w, -6 * TILE_SIZE, v->y_pos, 0, DIR_SW, ST_BIG_UFO_DESTROYER_SHADOW);
@@ -576,7 +576,7 @@ static bool DisasterTick_Big_Ufo(Vehicle *v)
  * Skyranger destroying (Big) Ufo handling, v->current_order.dest states:
  * 0: Home in on landed Ufo and shoot it down
  */
-static bool DisasterTick_Big_Ufo_Destroyer(Vehicle *v)
+static bool DisasterTick_Big_Ufo_Destroyer(DisasterVehicle *v)
 {
 	v->tick_counter++;
 
@@ -589,7 +589,7 @@ static bool DisasterTick_Big_Ufo_Destroyer(Vehicle *v)
 	}
 
 	if (v->current_order.GetDestination() == 0) {
-		Vehicle *u = Vehicle::Get(v->u.disaster.big_ufo_destroyer_target);
+		Vehicle *u = Vehicle::Get(v->big_ufo_destroyer_target);
 		if (Delta(v->x_pos, u->x_pos) > TILE_SIZE) return true;
 		v->current_order.SetDestination(1);
 
@@ -622,7 +622,7 @@ static bool DisasterTick_Big_Ufo_Destroyer(Vehicle *v)
  * Submarine, v->current_order.dest states:
  * Unused, just float around aimlessly and pop up at different places, turning around
  */
-static bool DisasterTick_Submarine(Vehicle *v)
+static bool DisasterTick_Submarine(DisasterVehicle *v)
 {
 	v->tick_counter++;
 
@@ -649,12 +649,12 @@ static bool DisasterTick_Submarine(Vehicle *v)
 }
 
 
-static bool DisasterTick_NULL(Vehicle *v)
+static bool DisasterTick_NULL(DisasterVehicle *v)
 {
 	return true;
 }
 
-typedef bool DisasterVehicleTickProc(Vehicle *v);
+typedef bool DisasterVehicleTickProc(DisasterVehicle *v);
 
 static DisasterVehicleTickProc * const _disastervehicle_tick_procs[] = {
 	DisasterTick_Zeppeliner, DisasterTick_NULL,
@@ -693,11 +693,11 @@ static void Disaster_Zeppeliner_Init()
 		}
 	}
 
-	Vehicle *v = new DisasterVehicle();
+	DisasterVehicle *v = new DisasterVehicle();
 	InitializeDisasterVehicle(v, x, 0, 135, DIR_SE, ST_ZEPPELINER);
 
 	/* Allocate shadow */
-	Vehicle *u = new DisasterVehicle();
+	DisasterVehicle *u = new DisasterVehicle();
 	v->SetNext(u);
 	InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, ST_ZEPPELINER_SHADOW);
 	u->vehstatus |= VS_SHADOW;
@@ -710,7 +710,7 @@ static void Disaster_Small_Ufo_Init()
 {
 	if (!Vehicle::CanAllocateItem(2)) return;
 
-	Vehicle *v = new DisasterVehicle();
+	DisasterVehicle *v = new DisasterVehicle();
 	int x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 
 	InitializeDisasterVehicle(v, x, 0, 135, DIR_SE, ST_SMALL_UFO);
@@ -718,7 +718,7 @@ static void Disaster_Small_Ufo_Init()
 	v->age = 0;
 
 	/* Allocate shadow */
-	Vehicle *u = new DisasterVehicle();
+	DisasterVehicle *u = new DisasterVehicle();
 	v->SetNext(u);
 	InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, ST_SMALL_UFO_SHADOW);
 	u->vehstatus |= VS_SHADOW;
@@ -741,7 +741,7 @@ static void Disaster_Airplane_Init()
 
 	if (found == NULL) return;
 
-	Vehicle *v = new DisasterVehicle();
+	DisasterVehicle *v = new DisasterVehicle();
 
 	/* Start from the bottom (south side) of the map */
 	int x = (MapSizeX() + 9) * TILE_SIZE - 1;
@@ -749,7 +749,7 @@ static void Disaster_Airplane_Init()
 
 	InitializeDisasterVehicle(v, x, y, 135, DIR_NE, ST_AIRPLANE);
 
-	Vehicle *u = new DisasterVehicle();
+	DisasterVehicle *u = new DisasterVehicle();
 	v->SetNext(u);
 	InitializeDisasterVehicle(u, x, y, 0, DIR_SE, ST_AIRPLANE_SHADOW);
 	u->vehstatus |= VS_SHADOW;
@@ -772,19 +772,19 @@ static void Disaster_Helicopter_Init()
 
 	if (found == NULL) return;
 
-	Vehicle *v = new DisasterVehicle();
+	DisasterVehicle *v = new DisasterVehicle();
 
 	int x = -16 * TILE_SIZE;
 	int y = TileY(found->xy) * TILE_SIZE + 37;
 
 	InitializeDisasterVehicle(v, x, y, 135, DIR_SW, ST_HELICOPTER);
 
-	Vehicle *u = new DisasterVehicle();
+	DisasterVehicle *u = new DisasterVehicle();
 	v->SetNext(u);
 	InitializeDisasterVehicle(u, x, y, 0, DIR_SW, ST_HELICOPTER_SHADOW);
 	u->vehstatus |= VS_SHADOW;
 
-	Vehicle *w = new DisasterVehicle();
+	DisasterVehicle *w = new DisasterVehicle();
 	u->SetNext(w);
 	InitializeDisasterVehicle(w, x, y, 140, DIR_SW, ST_HELICOPTER_ROTORS);
 }
@@ -796,7 +796,7 @@ static void Disaster_Big_Ufo_Init()
 {
 	if (!Vehicle::CanAllocateItem(2)) return;
 
-	Vehicle *v = new DisasterVehicle();
+	DisasterVehicle *v = new DisasterVehicle();
 	int x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 	int y = MapMaxX() * TILE_SIZE - 1;
 
@@ -805,7 +805,7 @@ static void Disaster_Big_Ufo_Init()
 	v->age = 0;
 
 	/* Allocate shadow */
-	Vehicle *u = new DisasterVehicle();
+	DisasterVehicle *u = new DisasterVehicle();
 	v->SetNext(u);
 	InitializeDisasterVehicle(u, x, y, 0, DIR_NW, ST_BIG_UFO_SHADOW);
 	u->vehstatus |= VS_SHADOW;
@@ -831,7 +831,7 @@ static void Disaster_Submarine_Init(DisasterSubType subtype)
 	}
 	if (!IsWaterTile(TileVirtXY(x, y))) return;
 
-	Vehicle *v = new DisasterVehicle();
+	DisasterVehicle *v = new DisasterVehicle();
 	InitializeDisasterVehicle(v, x, y, 0, dir, subtype);
 	v->age = 0;
 }

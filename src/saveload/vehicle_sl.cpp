@@ -646,8 +646,8 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		 SLE_CONDVAR(Vehicle, age,                   SLE_INT32,                   31, SL_MAX_VERSION),
 		     SLE_VAR(Vehicle, tick_counter,          SLE_UINT8),
 
-		    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleDisaster, image_override),            SLE_UINT16),
-		    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleDisaster, big_ufo_destroyer_target),  SLE_UINT16),
+		     SLE_VAR(DisasterVehicle, image_override,            SLE_UINT16),
+		     SLE_VAR(DisasterVehicle, big_ufo_destroyer_target,  SLE_UINT16),
 
 		/* reserve extra space in savegame here. (currently 16 bytes) */
 		SLE_CONDNULL(16,                                                           2, SL_MAX_VERSION),
