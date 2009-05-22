@@ -16,6 +16,7 @@
 #include "variables.h"
 #include "train.h"
 #include "ship.h"
+#include "roadveh.h"
 #include "water_map.h"
 #include "yapf/yapf.h"
 #include "newgrf_sound.h"
@@ -1412,16 +1413,17 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 				return VETSB_ENTERED_WORMHOLE;
 			}
 		} else if (v->type == VEH_ROAD) {
+			RoadVehicle *rv = (RoadVehicle *)v;
 			fc = (x & 0xF) + (y << 4);
 			vdir = DirToDiagDir(v->direction);
 
 			/* Enter tunnel? */
-			if (v->u.road.state != RVSB_WORMHOLE && dir == vdir) {
+			if (rv->state != RVSB_WORMHOLE && dir == vdir) {
 				if (fc == _tunnel_fractcoord_4[dir] ||
 						fc == _tunnel_fractcoord_5[dir]) {
-					v->tile = tile;
-					v->u.road.state = RVSB_WORMHOLE;
-					v->vehstatus |= VS_HIDDEN;
+					rv->tile = tile;
+					rv->state = RVSB_WORMHOLE;
+					rv->vehstatus |= VS_HIDDEN;
 					return VETSB_ENTERED_WORMHOLE;
 				} else {
 					return VETSB_CONTINUE;
@@ -1434,10 +1436,10 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 						fc == _tunnel_fractcoord_7[dir]
 					) &&
 					z == 0) {
-				v->tile = tile;
-				v->u.road.state = _road_exit_tunnel_state[dir];
-				v->u.road.frame = _road_exit_tunnel_frame[dir];
-				v->vehstatus &= ~VS_HIDDEN;
+				rv->tile = tile;
+				rv->state = _road_exit_tunnel_state[dir];
+				rv->frame = _road_exit_tunnel_frame[dir];
+				rv->vehstatus &= ~VS_HIDDEN;
 				return VETSB_ENTERED_WORMHOLE;
 			}
 		}
@@ -1467,11 +1469,11 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 					break;
 
 				case VEH_ROAD:
-					v->u.road.state = RVSB_WORMHOLE;
+					((RoadVehicle *)v)->state = RVSB_WORMHOLE;
 					break;
 
 				case VEH_SHIP:
-					static_cast<Ship*>(v)->state = TRACK_BIT_WORMHOLE;
+					((Ship *)v)->state = TRACK_BIT_WORMHOLE;
 					break;
 
 				default: NOT_REACHED();
@@ -1487,20 +1489,22 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 					}
 					break;
 
-				case VEH_ROAD:
-					if (v->u.road.state == RVSB_WORMHOLE) {
-						v->u.road.state = _road_exit_tunnel_state[dir];
-						v->u.road.frame = 0;
+				case VEH_ROAD: {
+					RoadVehicle *rv = (RoadVehicle *)v;
+					if (rv->state == RVSB_WORMHOLE) {
+						rv->state = _road_exit_tunnel_state[dir];
+						rv->frame = 0;
 						return VETSB_ENTERED_WORMHOLE;
 					}
-					break;
+				} break;
 
-				case VEH_SHIP:
-					if (static_cast<Ship*>(v)->state == TRACK_BIT_WORMHOLE) {
-						static_cast<Ship*>(v)->state = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
+				case VEH_SHIP: {
+					Ship *ship = (Ship *)v;
+					if (ship->state == TRACK_BIT_WORMHOLE) {
+						ship->state = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
 						return VETSB_ENTERED_WORMHOLE;
 					}
-					break;
+				} break;
 
 				default: NOT_REACHED();
 			}

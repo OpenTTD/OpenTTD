@@ -253,7 +253,7 @@ void AfterLoadVehicles(bool part_of_load)
 		if (part_of_load) v->fill_percent_te_id = INVALID_TE_ID;
 		v->first = NULL;
 		if (v->type == VEH_TRAIN) v->u.rail.first_engine = INVALID_ENGINE;
-		if (v->type == VEH_ROAD)  v->u.road.first_engine = INVALID_ENGINE;
+		if (v->type == VEH_ROAD)  ((RoadVehicle *)v)->first_engine = INVALID_ENGINE;
 
 		v->cargo.InvalidateCache();
 	}
@@ -344,9 +344,11 @@ void AfterLoadVehicles(bool part_of_load)
 
 	FOR_ALL_VEHICLES(v) {
 		switch (v->type) {
-			case VEH_ROAD:
-				v->u.road.roadtype = HasBit(EngInfo(v->First()->engine_type)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
-				v->u.road.compatible_roadtypes = RoadTypeToRoadTypes(v->u.road.roadtype);
+			case VEH_ROAD: {
+				RoadVehicle *rv = (RoadVehicle *)v;
+				rv->roadtype = HasBit(EngInfo(v->First()->engine_type)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
+				rv->compatible_roadtypes = RoadTypeToRoadTypes(rv->roadtype);
+			}
 				/* FALL THROUGH */
 			case VEH_TRAIN:
 			case VEH_SHIP:
@@ -542,19 +544,19 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 	static const SaveLoad _roadveh_desc[] = {
 		SLE_WRITEBYTE(Vehicle, type, VEH_ROAD),
 		SLE_VEH_INCLUDEX(),
-		    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, state),                SLE_UINT8),
-		    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, frame),                SLE_UINT8),
-		    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, blocked_ctr),          SLE_UINT16),
-		    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, overtaking),           SLE_UINT8),
-		    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, overtaking_ctr),       SLE_UINT8),
-		    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, crashed_ctr),          SLE_UINT16),
-		    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, reverse_ctr),          SLE_UINT8),
+		     SLE_VAR(RoadVehicle, state,                SLE_UINT8),
+		     SLE_VAR(RoadVehicle, frame,                SLE_UINT8),
+		     SLE_VAR(RoadVehicle, blocked_ctr,          SLE_UINT16),
+		     SLE_VAR(RoadVehicle, overtaking,           SLE_UINT8),
+		     SLE_VAR(RoadVehicle, overtaking_ctr,       SLE_UINT8),
+		     SLE_VAR(RoadVehicle, crashed_ctr,          SLE_UINT16),
+		     SLE_VAR(RoadVehicle, reverse_ctr,          SLE_UINT8),
 
-		SLE_CONDREFX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, slot),                 REF_ROADSTOPS,                6, SL_MAX_VERSION),
-		SLE_CONDNULL(1,                                                            6, SL_MAX_VERSION),
-		SLE_CONDVARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, slot_age),             SLE_UINT8,                    6, SL_MAX_VERSION),
+		 SLE_CONDREF(RoadVehicle, slot,                 REF_ROADSTOPS,                6, SL_MAX_VERSION),
+		SLE_CONDNULL(1,                                                               6, SL_MAX_VERSION),
+		 SLE_CONDVAR(RoadVehicle, slot_age,             SLE_UINT8,                    6, SL_MAX_VERSION),
 		/* reserve extra space in savegame here. (currently 16 bytes) */
-		SLE_CONDNULL(16,                                                           2, SL_MAX_VERSION),
+		SLE_CONDNULL(16,                                                              2, SL_MAX_VERSION),
 
 		     SLE_END()
 	};

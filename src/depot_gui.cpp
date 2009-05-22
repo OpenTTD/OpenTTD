@@ -5,6 +5,7 @@
 #include "train.h"
 #include "ship.h"
 #include "aircraft.h"
+#include "roadveh.h"
 #include "gui.h"
 #include "textbuf_gui.h"
 #include "viewport_func.h"
@@ -517,7 +518,7 @@ struct DepotWindow : Window {
 							break;
 
 						case VEH_ROAD:
-							_cursor.short_vehicle_offset = 16 - v->u.road.cached_veh_length * 2;
+							_cursor.short_vehicle_offset = 16 - ((RoadVehicle *)v)->cached_veh_length * 2;
 							break;
 
 						default:

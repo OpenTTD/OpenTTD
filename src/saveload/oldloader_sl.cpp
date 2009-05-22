@@ -175,10 +175,11 @@ void FixOldVehicles()
 		v->name = CopyFromOldName(_old_vehicle_names[v->index]);
 
 		/* We haven't used this bit for stations for ages */
-		if (v->type == VEH_ROAD &&
-				v->u.road.state != RVSB_IN_DEPOT &&
-				v->u.road.state != RVSB_WORMHOLE) {
-			ClrBit(v->u.road.state, RVS_IS_STOPPING);
+		if (v->type == VEH_ROAD) {
+			RoadVehicle *rv = (RoadVehicle *)v;
+			if (rv->state != RVSB_IN_DEPOT && rv->state != RVSB_WORMHOLE) {
+				ClrBit(rv->state, RVS_IS_STOPPING);
+			}
 		}
 
 		/* The subtype should be 0, but it sometimes isn't :( */
@@ -1089,13 +1090,13 @@ static const OldChunks vehicle_train_chunk[] = {
 };
 
 static const OldChunks vehicle_road_chunk[] = {
-	OCL_SVAR(  OC_UINT8, VehicleRoad, state ),
-	OCL_SVAR(  OC_UINT8, VehicleRoad, frame ),
-	OCL_SVAR( OC_UINT16, VehicleRoad, blocked_ctr ),
-	OCL_SVAR(  OC_UINT8, VehicleRoad, overtaking ),
-	OCL_SVAR(  OC_UINT8, VehicleRoad, overtaking_ctr ),
-	OCL_SVAR( OC_UINT16, VehicleRoad, crashed_ctr ),
-	OCL_SVAR(  OC_UINT8, VehicleRoad, reverse_ctr ),
+	OCL_SVAR(  OC_UINT8, RoadVehicle, state ),
+	OCL_SVAR(  OC_UINT8, RoadVehicle, frame ),
+	OCL_SVAR( OC_UINT16, RoadVehicle, blocked_ctr ),
+	OCL_SVAR(  OC_UINT8, RoadVehicle, overtaking ),
+	OCL_SVAR(  OC_UINT8, RoadVehicle, overtaking_ctr ),
+	OCL_SVAR( OC_UINT16, RoadVehicle, crashed_ctr ),
+	OCL_SVAR(  OC_UINT8, RoadVehicle, reverse_ctr ),
 
 	OCL_NULL( 1 ), ///< Junk
 
@@ -1157,7 +1158,7 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 		switch (v->type) {
 			default: NOT_REACHED();
 			case VEH_TRAIN   : res = LoadChunk(ls, &v->u.rail,     vehicle_train_chunk);    break;
-			case VEH_ROAD    : res = LoadChunk(ls, &v->u.road,     vehicle_road_chunk);     break;
+			case VEH_ROAD    : res = LoadChunk(ls, v, vehicle_road_chunk);     break;
 			case VEH_SHIP    : res = LoadChunk(ls, v, vehicle_ship_chunk);     break;
 			case VEH_AIRCRAFT: res = LoadChunk(ls, v, vehicle_air_chunk);      break;
 			case VEH_EFFECT  : res = LoadChunk(ls, v, vehicle_effect_chunk);   break;

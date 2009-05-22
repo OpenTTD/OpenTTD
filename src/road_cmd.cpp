@@ -1547,20 +1547,22 @@ static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int 
 			}
 			break;
 
-		case ROAD_TILE_DEPOT:
-			if (v->type == VEH_ROAD &&
-					v->u.road.frame == RVC_DEPOT_STOP_FRAME &&
-					_roadveh_enter_depot_dir[GetRoadDepotDirection(tile)] == v->u.road.state) {
-				v->u.road.state = RVSB_IN_DEPOT;
-				v->vehstatus |= VS_HIDDEN;
-				v->direction = ReverseDir(v->direction);
-				if (v->Next() == NULL) VehicleEnterDepot(v);
-				v->tile = tile;
+		case ROAD_TILE_DEPOT: {
+			if (v->type != VEH_ROAD) break;
 
-				InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
+			RoadVehicle *rv = (RoadVehicle *)v;
+			if (rv->frame == RVC_DEPOT_STOP_FRAME &&
+					_roadveh_enter_depot_dir[GetRoadDepotDirection(tile)] == rv->state) {
+				rv->state = RVSB_IN_DEPOT;
+				rv->vehstatus |= VS_HIDDEN;
+				rv->direction = ReverseDir(rv->direction);
+				if (rv->Next() == NULL) VehicleEnterDepot(rv);
+				rv->tile = tile;
+
+				InvalidateWindowData(WC_VEHICLE_DEPOT, rv->tile);
 				return VETSB_ENTERED_WORMHOLE;
 			}
-			break;
+		} break;
 
 		default: break;
 	}

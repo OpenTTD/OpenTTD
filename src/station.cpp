@@ -114,7 +114,7 @@ RoadStop *Station::GetPrimaryRoadStop(const RoadVehicle *v) const
 
 	for (; rs != NULL; rs = rs->next) {
 		/* The vehicle cannot go to this roadstop (different roadtype) */
-		if ((GetRoadTypes(rs->xy) & v->u.road.compatible_roadtypes) == ROADTYPES_NONE) continue;
+		if ((GetRoadTypes(rs->xy) & v->compatible_roadtypes) == ROADTYPES_NONE) continue;
 		/* The vehicle is articulated and can therefor not go the a standard road stop */
 		if (IsStandardRoadStopTile(rs->xy) && RoadVehHasArticPart(v)) continue;
 
@@ -462,7 +462,7 @@ RoadStop::~RoadStop()
 			if (v->type != VEH_ROAD) continue;
 			RoadVehicle *rv = (RoadVehicle *)v;
 
-			if (rv->u.road.slot == this) ClearSlot(rv);
+			if (rv->slot == this) ClearSlot(rv);
 		}
 	}
 	assert(num_vehicles == 0);
@@ -542,7 +542,7 @@ RoadStop *RoadStop::GetNextRoadStop(const RoadVehicle *v) const
 {
 	for (RoadStop *rs = this->next; rs != NULL; rs = rs->next) {
 		/* The vehicle cannot go to this roadstop (different roadtype) */
-		if ((GetRoadTypes(rs->xy) & v->u.road.compatible_roadtypes) == ROADTYPES_NONE) continue;
+		if ((GetRoadTypes(rs->xy) & v->compatible_roadtypes) == ROADTYPES_NONE) continue;
 		/* The vehicle is articulated and can therefor not go the a standard road stop */
 		if (IsStandardRoadStopTile(rs->xy) && RoadVehHasArticPart(v)) continue;
 

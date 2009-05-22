@@ -314,11 +314,12 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		return false;
 	} else {
 		/* Target a vehicle */
-		Vehicle *u = Vehicle::Get(v->dest_tile);
-		if (u->type != VEH_ROAD || !IsRoadVehFront(u)) {
+		Vehicle *u_tmp = Vehicle::Get(v->dest_tile);
+		if (u_tmp->type != VEH_ROAD || !IsRoadVehFront(u_tmp)) {
 			delete v;
 			return false;
 		}
+		RoadVehicle *u = (RoadVehicle *)u_tmp;
 
 		uint dist = Delta(v->x_pos, u->x_pos) + Delta(v->y_pos, u->y_pos);
 
@@ -336,8 +337,8 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 
 		if (z <= u->z_pos && (u->vehstatus & VS_HIDDEN) == 0) {
 			v->age++;
-			if (u->u.road.crashed_ctr == 0) {
-				u->u.road.crashed_ctr++;
+			if (u->crashed_ctr == 0) {
+				u->crashed_ctr++;
 
 				AddNewsItem(STR_NEWS_DISASTER_SMALL_UFO,
 					NS_ACCIDENT_VEHICLE,

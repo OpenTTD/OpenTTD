@@ -1119,7 +1119,7 @@ void StateGameLoop()
 				switch (v->type) {
 					case VEH_ROAD: {
 						extern byte GetRoadVehLength(const RoadVehicle *v);
-						if (GetRoadVehLength((RoadVehicle *)v) != v->u.road.cached_veh_length) {
+						if (GetRoadVehLength((RoadVehicle *)v) != ((RoadVehicle *)v)->cached_veh_length) {
 							DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i\n", v->index, (int)v->owner, v->unitnumber);
 						}
 					} break;

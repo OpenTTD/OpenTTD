@@ -1426,7 +1426,7 @@ SpriteID GetVehiclePalette(const Vehicle *v)
 	if (v->type == VEH_TRAIN) {
 		return GetEngineColourMap(v->engine_type, v->owner, v->u.rail.first_engine, v);
 	} else if (v->type == VEH_ROAD) {
-		return GetEngineColourMap(v->engine_type, v->owner, v->u.road.first_engine, v);
+		return GetEngineColourMap(v->engine_type, v->owner, ((RoadVehicle *)v)->first_engine, v);
 	}
 
 	return GetEngineColourMap(v->engine_type, v->owner, INVALID_ENGINE, v);

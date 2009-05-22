@@ -822,7 +822,7 @@ static void FloodVehicle(Vehicle *v)
 
 				case VEH_ROAD:
 					if (IsRoadVehFront(v)) pass += 1; // driver
-					v->u.road.crashed_ctr = 2000; // max 2220, disappear pretty fast
+					((RoadVehicle *)v)->crashed_ctr = 2000; // max 2220, disappear pretty fast
 					InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
 					break;
 

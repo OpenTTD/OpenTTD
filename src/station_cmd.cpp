@@ -1488,7 +1488,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 static Vehicle *ClearRoadStopStatusEnum(Vehicle *v, void *)
 {
-	if (v->type == VEH_ROAD) ClrBit(v->u.road.state, RVS_IN_DT_ROAD_STOP);
+	if (v->type == VEH_ROAD) ClrBit(((RoadVehicle *)v)->state, RVS_IN_DT_ROAD_STOP);
 
 	return NULL;
 }
@@ -2649,30 +2649,31 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 			}
 		}
 	} else if (v->type == VEH_ROAD) {
-		if (v->u.road.state < RVSB_IN_ROAD_STOP && !IsReversingRoadTrackdir((Trackdir)v->u.road.state) && v->u.road.frame == 0) {
+		RoadVehicle *rv = (RoadVehicle *)v;
+		if (rv->state < RVSB_IN_ROAD_STOP && !IsReversingRoadTrackdir((Trackdir)rv->state) && rv->frame == 0) {
 			if (IsRoadStop(tile) && IsRoadVehFront(v)) {
 				/* Attempt to allocate a parking bay in a road stop */
 				RoadStop *rs = GetRoadStopByTile(tile, GetRoadStopType(tile));
 
 				if (IsDriveThroughStopTile(tile)) {
-					if (!v->current_order.ShouldStopAtStation(v, station_id)) return VETSB_CONTINUE;
+					if (!rv->current_order.ShouldStopAtStation(v, station_id)) return VETSB_CONTINUE;
 
 					/* Vehicles entering a drive-through stop from the 'normal' side use first bay (bay 0). */
-					byte side = ((DirToDiagDir(v->direction) == ReverseDiagDir(GetRoadStopDir(tile))) == (v->u.road.overtaking == 0)) ? 0 : 1;
+					byte side = ((DirToDiagDir(rv->direction) == ReverseDiagDir(GetRoadStopDir(tile))) == (rv->overtaking == 0)) ? 0 : 1;
 
 					if (!rs->IsFreeBay(side)) return VETSB_CANNOT_ENTER;
 
 					/* Check if the vehicle is stopping at this road stop */
-					if (GetRoadStopType(tile) == (IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? ROADSTOP_BUS : ROADSTOP_TRUCK) &&
-							v->current_order.GetDestination() == GetStationIndex(tile)) {
-						SetBit(v->u.road.state, RVS_IS_STOPPING);
+					if (GetRoadStopType(tile) == (IsCargoInClass(rv->cargo_type, CC_PASSENGERS) ? ROADSTOP_BUS : ROADSTOP_TRUCK) &&
+							rv->current_order.GetDestination() == GetStationIndex(tile)) {
+						SetBit(rv->state, RVS_IS_STOPPING);
 						rs->AllocateDriveThroughBay(side);
 					}
 
 					/* Indicate if vehicle is using second bay. */
-					if (side == 1) SetBit(v->u.road.state, RVS_USING_SECOND_BAY);
+					if (side == 1) SetBit(rv->state, RVS_USING_SECOND_BAY);
 					/* Indicate a drive-through stop */
-					SetBit(v->u.road.state, RVS_IN_DT_ROAD_STOP);
+					SetBit(rv->state, RVS_IN_DT_ROAD_STOP);
 					return VETSB_CONTINUE;
 				}
 
@@ -2680,11 +2681,11 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 				 * Check if station is busy or if there are no free bays or whether it is a articulated vehicle. */
 				if (rs->IsEntranceBusy() || !rs->HasFreeBay() || RoadVehHasArticPart(v)) return VETSB_CANNOT_ENTER;
 
-				SetBit(v->u.road.state, RVS_IN_ROAD_STOP);
+				SetBit(rv->state, RVS_IN_ROAD_STOP);
 
 				/* Allocate a bay and update the road state */
 				uint bay_nr = rs->AllocateBay();
-				SB(v->u.road.state, RVS_USING_SECOND_BAY, 1, bay_nr);
+				SB(rv->state, RVS_USING_SECOND_BAY, 1, bay_nr);
 
 				/* Mark the station entrace as busy */
 				rs->SetEntranceBusy(true);

@@ -327,28 +327,30 @@ void AddArticulatedParts(Vehicle *first, VehicleType type)
 				SetArticulatedPart(u);
 				break;
 
-			case VEH_ROAD:
-				u = new RoadVehicle();
-				u->subtype = 0;
+			case VEH_ROAD: {
+				RoadVehicle *front = (RoadVehicle *)v;
+				RoadVehicle *rv = new RoadVehicle();
+				rv->subtype = 0;
 				previous->SetNext(u);
-				u->u.road.first_engine = v->engine_type;
-				u->u.road.cached_veh_length = 8; // Callback is called when the consist is finished
-				u->u.road.state = RVSB_IN_DEPOT;
+				rv->first_engine = front->engine_type;
+				rv->cached_veh_length = 8; // Callback is called when the consist is finished
+				rv->state = RVSB_IN_DEPOT;
 
-				u->u.road.roadtype = v->u.road.roadtype;
-				u->u.road.compatible_roadtypes = v->u.road.compatible_roadtypes;
+				rv->roadtype = front->roadtype;
+				rv->compatible_roadtypes = front->compatible_roadtypes;
 
-				u->spritenum = e_artic->u.road.image_index;
+				rv->spritenum = e_artic->image_index;
 				if (e_artic->CanCarryCargo()) {
-					u->cargo_type = e_artic->GetDefaultCargoType();
-					u->cargo_cap = e_artic->u.road.capacity;  // Callback 36 is called when the consist is finished
+					rv->cargo_type = e_artic->GetDefaultCargoType();
+					rv->cargo_cap = e_artic->u.road.capacity;  // Callback 36 is called when the consist is finished
 				} else {
-					u->cargo_type = v->cargo_type; // Needed for livery selection
-					u->cargo_cap = 0;
+					rv->cargo_type = front->cargo_type; // Needed for livery selection
+					rv->cargo_cap = 0;
 				}
 
-				SetRoadVehArticPart(u);
-				break;
+				SetRoadVehArticPart(rv);
+				u = rv;
+			} break;
 		}
 
 		/* get common values from first engine */

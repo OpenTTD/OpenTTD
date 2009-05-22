@@ -7,6 +7,7 @@
 
 #include "yapf.hpp"
 #include "../depot_map.h"
+#include "../roadveh.h"
 
 /** Track follower helper template class (can serve pathfinders and vehicle
  *  controllers). See 6 different typedefs below for 3 different transport
@@ -74,7 +75,7 @@ struct CFollowTrackT
 	FORCEINLINE static TransportType TT() {return Ttr_type_;}
 	FORCEINLINE static bool IsWaterTT() {return TT() == TRANSPORT_WATER;}
 	FORCEINLINE static bool IsRailTT() {return TT() == TRANSPORT_RAIL;}
-	FORCEINLINE bool IsTram() {return IsRoadTT() && HasBit(m_veh->u.road.compatible_roadtypes, ROADTYPE_TRAM);}
+	FORCEINLINE bool IsTram() {return IsRoadTT() && HasBit(((RoadVehicle *)m_veh)->compatible_roadtypes, ROADTYPE_TRAM);}
 	FORCEINLINE static bool IsRoadTT() {return TT() == TRANSPORT_ROAD;}
 	FORCEINLINE static bool Allow90degTurns() {return T90deg_turns_allowed_;}
 	FORCEINLINE static bool DoTrackMasking() {return IsRailTT() && Tmask_reserved_tracks;}
@@ -205,7 +206,7 @@ protected:
 		if (IsRailTT() && IsPlainRailTile(m_new_tile)) {
 			m_new_td_bits = (TrackdirBits)(GetTrackBits(m_new_tile) * 0x101);
 		} else {
-			m_new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(m_new_tile, TT(), m_veh != NULL ? m_veh->u.road.compatible_roadtypes : 0));
+			m_new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(m_new_tile, TT(), m_veh != NULL ? ((RoadVehicle *)m_veh)->compatible_roadtypes : 0));
 
 			if (IsTram() && m_new_td_bits == 0) {
 				/* GetTileTrackStatus() returns 0 for single tram bits.

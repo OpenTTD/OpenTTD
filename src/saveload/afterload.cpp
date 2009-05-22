@@ -914,7 +914,7 @@ bool AfterLoadGame()
 			if (v->type == VEH_TRAIN) {
 				v->u.rail.track = TRACK_BIT_WORMHOLE;
 			} else {
-				v->u.road.state = RVSB_WORMHOLE;
+				((RoadVehicle *)v)->state = RVSB_WORMHOLE;
 			}
 		}
 	}
@@ -1049,15 +1049,18 @@ bool AfterLoadGame()
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
 			if (v->type == VEH_ROAD) {
-				v->vehstatus &= ~0x40;
-				v->u.road.slot = NULL;
-				v->u.road.slot_age = 0;
+				RoadVehicle *rv = (RoadVehicle *)v;
+				rv->vehstatus &= ~0x40;
+				rv->slot = NULL;
+				rv->slot_age = 0;
 			}
 		}
 	} else {
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_ROAD && v->u.road.slot != NULL) v->u.road.slot->num_vehicles++;
+			if (v->type != VEH_ROAD) continue;
+			RoadVehicle *rv = (RoadVehicle *)v;
+			if (rv->slot != NULL) rv->slot->num_vehicles++;
 		}
 	}
 
@@ -1373,8 +1376,10 @@ bool AfterLoadGame()
 		/* In some old savegames a bit was cleared when it should not be cleared */
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_ROAD && (v->u.road.state == 250 || v->u.road.state == 251)) {
-				SetBit(v->u.road.state, RVS_IS_STOPPING);
+			if (v->type != VEH_ROAD) continue;
+			RoadVehicle *rv = (RoadVehicle *)v;
+			if (rv->state == 250 || rv->state == 251) {
+				SetBit(rv->state, RVS_IS_STOPPING);
 			}
 		}
 	}

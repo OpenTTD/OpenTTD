@@ -45,7 +45,7 @@
 		case VEH_ROAD: {
 			uint total_length = 0;
 			for (const Vehicle *u = v; u != NULL; u = u->Next()) {
-				total_length += u->u.road.cached_veh_length;
+				total_length += ((RoadVehicle*)u)->cached_veh_length;
 			}
 			return total_length;
 		}
@@ -368,7 +368,7 @@
 	if (!IsValidVehicle(vehicle_id)) return AIRoad::ROADTYPE_INVALID;
 	if (GetVehicleType(vehicle_id) != VT_ROAD) return AIRoad::ROADTYPE_INVALID;
 
-	return (AIRoad::RoadType)::Vehicle::Get(vehicle_id)->u.road.roadtype;
+	return (AIRoad::RoadType)((RoadVehicle*)::Vehicle::Get(vehicle_id))->roadtype;
 }
 
 /* static */ int32 AIVehicle::GetCapacity(VehicleID vehicle_id, CargoID cargo)
