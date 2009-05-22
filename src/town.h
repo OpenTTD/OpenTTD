@@ -294,17 +294,12 @@ static inline HouseSpec *GetHouseSpecs(HouseID house_id)
 
 TileIndexDiff GetHouseNorthPart(HouseID &house);
 
-static inline uint GetNumTowns()
-{
-	return (uint)Town::GetNumItems();
-}
-
 /**
  * Return a random valid town.
  */
 static inline Town *GetRandomTown()
 {
-	int num = RandomRange(GetNumTowns());
+	int num = RandomRange((uint16)Town::GetNumItems());
 	TownID index = INVALID_TOWN;
 
 	while (num >= 0) {

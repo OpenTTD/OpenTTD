@@ -16,7 +16,7 @@
 
 /* static */ int32 AITown::GetTownCount()
 {
-	return ::GetNumTowns();
+	return (int32)::Town::GetNumItems();
 }
 
 /* static */ bool AITown::IsValidTown(TownID town_id)

@@ -84,11 +84,6 @@ struct Company : CompanyPool::PoolItem<&_company_pool> {
 #define FOR_ALL_COMPANIES_FROM(var, start) FOR_ALL_ITEMS_FROM(Company, company_index, var, start)
 #define FOR_ALL_COMPANIES(var) FOR_ALL_COMPANIES_FROM(var, 0)
 
-static inline byte ActiveCompanyCount()
-{
-	return (byte)Company::GetNumItems();
-}
-
 Money CalculateCompanyValue(const Company *c);
 
 extern uint _next_competitor_start;

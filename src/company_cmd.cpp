@@ -469,7 +469,7 @@ void StartupCompanies()
 static void MaybeStartNewCompany()
 {
 #ifdef ENABLE_NETWORK
-	if (_networking && ActiveCompanyCount() >= _settings_client.network.max_companies) return;
+	if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) return;
 #endif /* ENABLE_NETWORK */
 
 	Company *c;

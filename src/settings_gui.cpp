@@ -142,7 +142,7 @@ static void ShowTownnameDropdown(Window *w, int sel)
 
 	DropDownList *list = new DropDownList();
 	for (TownList::iterator it = townnames.begin(); it != townnames.end(); it++) {
-		list->push_back(new DropDownListStringItem((*it).first, (*it).second, !(_game_mode == GM_MENU || GetNumTowns() == 0 || (*it).second == sel)));
+		list->push_back(new DropDownListStringItem((*it).first, (*it).second, !(_game_mode == GM_MENU || Town::GetNumItems() == 0 || (*it).second == sel)));
 	}
 
 	ShowDropDownList(w, list, sel, GOW_TOWNNAME_DROPDOWN);
@@ -305,7 +305,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case GOW_TOWNNAME_DROPDOWN: // Town names
-				if (_game_mode == GM_MENU || GetNumTowns() == 0) {
+				if (_game_mode == GM_MENU || Town::GetNumItems() == 0) {
 					this->opt->game_creation.town_name = index;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}

@@ -334,7 +334,7 @@ public:
 				if (this->selected_type == INVALID_INDUSTRYTYPE) {
 					this->HandleButtonClick(DPIW_FUND_WIDGET);
 
-					if (GetNumTowns() == 0) {
+					if (Town::GetNumItems() == 0) {
 						ShowErrorMessage(STR_ERROR_MUST_BUILD_TOWN_FIRST, STR_CAN_T_GENERATE_INDUSTRIES, 0, 0);
 					} else {
 						extern void GenerateIndustries();
@@ -368,7 +368,7 @@ public:
 
 		if (_game_mode == GM_EDITOR) {
 			/* Show error if no town exists at all */
-			if (GetNumTowns() == 0) {
+			if (Town::GetNumItems() == 0) {
 				SetDParam(0, indsp->name);
 				ShowErrorMessage(STR_ERROR_MUST_BUILD_TOWN_FIRST, STR_ERROR_CAN_T_BUILD_HERE, pt.x, pt.y);
 				return;

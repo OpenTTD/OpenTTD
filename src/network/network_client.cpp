@@ -1021,7 +1021,7 @@ bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio)
  */
 bool NetworkMaxCompaniesReached()
 {
-	return ActiveCompanyCount() >= (_network_server ? _settings_client.network.max_companies : _network_server_max_companies);
+	return Company::GetNumItems() >= (_network_server ? _settings_client.network.max_companies : _network_server_max_companies);
 }
 
 /**

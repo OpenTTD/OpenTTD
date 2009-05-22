@@ -1036,7 +1036,7 @@ struct MainToolbarWindow : Window {
 		 * Since enabled state is the default, just disable when needed */
 		this->SetWidgetsDisabledState(_local_company == COMPANY_SPECTATOR, TBN_RAILS, TBN_ROADS, TBN_WATER, TBN_AIR, TBN_LANDSCAPE, WIDGET_LIST_END);
 		/* disable company list drop downs, if there are no companies */
-		this->SetWidgetsDisabledState(ActiveCompanyCount() == TBN_PAUSE, TBN_STATIONS, TBN_FINANCES, TBN_TRAINS, TBN_ROADVEHS, TBN_SHIPS, TBN_AIRCRAFTS, WIDGET_LIST_END);
+		this->SetWidgetsDisabledState(Company::GetNumItems() == TBN_PAUSE, TBN_STATIONS, TBN_FINANCES, TBN_TRAINS, TBN_ROADVEHS, TBN_SHIPS, TBN_AIRCRAFTS, WIDGET_LIST_END);
 
 		this->SetWidgetDisabledState(TBN_RAILS, !CanBuildVehicleInfrastructure(VEH_TRAIN));
 		this->SetWidgetDisabledState(TBN_AIR, !CanBuildVehicleInfrastructure(VEH_AIRCRAFT));

@@ -1760,7 +1760,7 @@ bool GenerateTowns(TownLayout layout)
 
 	/* give it a last try, but now more aggressive */
 	if (num == 0 && CreateRandomTown(10000, TS_RANDOM, _settings_game.economy.larger_towns != 0, layout) == NULL) {
-		if (GetNumTowns() == 0) {
+		if (Town::GetNumItems() == 0) {
 			if (_game_mode != GM_EDITOR) {
 				extern StringID _switch_mode_errorstr;
 				_switch_mode_errorstr = STR_COULD_NOT_CREATE_TOWN;
@@ -2709,7 +2709,7 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 				if (tid == (TownID)INVALID_TOWN) {
 					/* in the case we are generating "many random towns", this value may be INVALID_TOWN */
 					if (_generating_world) return CalcClosestTownFromTile(tile, threshold);
-					assert(GetNumTowns() == 0);
+					assert(Town::GetNumItems() == 0);
 					return NULL;
 				}
 

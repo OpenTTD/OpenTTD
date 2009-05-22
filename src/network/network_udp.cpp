@@ -95,7 +95,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
 	ngi.server_lang    = _settings_client.network.server_lang;
 	ngi.use_password   = !StrEmpty(_settings_client.network.server_password);
 	ngi.clients_max    = _settings_client.network.max_clients;
-	ngi.companies_on   = ActiveCompanyCount();
+	ngi.companies_on   = (byte)Company::GetNumItems();
 	ngi.companies_max  = _settings_client.network.max_companies;
 	ngi.spectators_on  = NetworkSpectatorCount();
 	ngi.spectators_max = _settings_client.network.max_spectators;
@@ -128,7 +128,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 
 	/* Send the amount of active companies */
 	packet.Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
-	packet.Send_uint8 (ActiveCompanyCount());
+	packet.Send_uint8 ((uint8)Company::GetNumItems());
 
 	/* Fetch the latest version of the stats */
 	NetworkCompanyStats company_stats[MAX_COMPANIES];

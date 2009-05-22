@@ -266,11 +266,6 @@ void SetIndustryDailyChanges();
 
 extern uint16 _industry_counts[NUM_INDUSTRYTYPES]; // Number of industries per type ingame
 
-static inline uint GetNumIndustries()
-{
-	return (uint)Industry::GetNumItems();
-}
-
 /** Increment the count of industries for this type
  * @param type IndustryType to increment
  * @pre type < INVALID_INDUSTRYTYPE */
@@ -310,10 +305,10 @@ static inline void ResetIndustryCounts()
  */
 static inline Industry *GetRandomIndustry()
 {
-	int num = RandomRange(GetNumIndustries());
-	IndustryID index = INVALID_INDUSTRY;
+	if (Industry::GetNumItems() == 0) return NULL;
 
-	if (GetNumIndustries() == 0) return NULL;
+	int num = RandomRange((uint16)Industry::GetNumItems());
+	IndustryID index = INVALID_INDUSTRY;
 
 	while (num >= 0) {
 		num--;

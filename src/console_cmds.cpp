@@ -551,7 +551,7 @@ DEF_CONSOLE_CMD(ConServerInfo)
 	}
 
 	IConsolePrintF(CC_DEFAULT, "Current/maximum clients:    %2d/%2d", _network_game_info.clients_on, _settings_client.network.max_clients);
-	IConsolePrintF(CC_DEFAULT, "Current/maximum companies:  %2d/%2d", ActiveCompanyCount(), _settings_client.network.max_companies);
+	IConsolePrintF(CC_DEFAULT, "Current/maximum companies:  %2d/%2d", (int)Company::GetNumItems(), _settings_client.network.max_companies);
 	IConsolePrintF(CC_DEFAULT, "Current/maximum spectators: %2d/%2d", NetworkSpectatorCount(), _settings_client.network.max_spectators);
 
 	return true;
@@ -980,7 +980,7 @@ DEF_CONSOLE_CMD(ConStartAI)
 		return true;
 	}
 
-	if (ActiveCompanyCount() == MAX_COMPANIES) {
+	if (Company::GetNumItems() == CompanyPool::MAX_SIZE) {
 		IConsoleWarning("Can't start a new AI (no more free slots).");
 		return true;
 	}

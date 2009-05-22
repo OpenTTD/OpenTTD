@@ -674,7 +674,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	/* join another company does not affect these values */
 	switch (playas) {
 		case COMPANY_NEW_COMPANY: // New company
-			if (ActiveCompanyCount() >= _settings_client.network.max_companies) {
+			if (Company::GetNumItems() >= _settings_client.network.max_companies) {
 				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
 				return;
 			}
@@ -901,7 +901,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		}
 
 		/* Check if we are full - else it's possible for spectators to send a CMD_COMPANY_CTRL and the company is created regardless of max_companies! */
-		if (ActiveCompanyCount() >= _settings_client.network.max_companies) {
+		if (Company::GetNumItems() >= _settings_client.network.max_companies) {
 			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_CLIENT, ci->client_id, "cannot create new company, server full", CLIENT_ID_SERVER);
 			return;
 		}

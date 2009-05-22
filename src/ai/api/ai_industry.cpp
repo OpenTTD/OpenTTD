@@ -13,7 +13,7 @@
 
 /* static */ int32 AIIndustry::GetIndustryCount()
 {
-	return ::GetNumIndustries();
+	return (int32)::Industry::GetNumItems();
 }
 
 /* static */ bool AIIndustry::IsValidIndustry(IndustryID industry_id)
