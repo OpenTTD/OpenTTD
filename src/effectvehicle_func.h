@@ -5,7 +5,7 @@
 #ifndef EFFECTVEHICLE_FUNC_H
 #define EFFECTVEHICLE_FUNC_H
 
-#include "vehicle_type.h"
+#include "effectvehicle_base.h"
 
 /** Effect vehicle types */
 enum EffectVehicleType {
@@ -21,8 +21,8 @@ enum EffectVehicleType {
 	EV_BUBBLE          = 9
 };
 
-Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type);
-Vehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicleType type);
-Vehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVehicleType type);
+EffectVehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type);
+EffectVehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicleType type);
+EffectVehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVehicleType type);
 
 #endif /* EFFECTVEHICLE_FUNC_H */

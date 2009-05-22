@@ -1122,8 +1122,8 @@ static const OldChunks vehicle_air_chunk[] = {
 };
 
 static const OldChunks vehicle_effect_chunk[] = {
-	OCL_SVAR( OC_UINT16, VehicleEffect, animation_state ),
-	OCL_SVAR(  OC_UINT8, VehicleEffect, animation_substate ),
+	OCL_SVAR( OC_UINT16, EffectVehicle, animation_state ),
+	OCL_SVAR(  OC_UINT8, EffectVehicle, animation_substate ),
 
 	OCL_NULL( 7 ), // Junk
 
@@ -1160,7 +1160,7 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 			case VEH_ROAD    : res = LoadChunk(ls, &v->u.road,     vehicle_road_chunk);     break;
 			case VEH_SHIP    : res = LoadChunk(ls, v, vehicle_ship_chunk);     break;
 			case VEH_AIRCRAFT: res = LoadChunk(ls, &v->u.air,      vehicle_air_chunk);      break;
-			case VEH_EFFECT  : res = LoadChunk(ls, &v->u.effect,   vehicle_effect_chunk);   break;
+			case VEH_EFFECT  : res = LoadChunk(ls, v, vehicle_effect_chunk);   break;
 			case VEH_DISASTER: res = LoadChunk(ls, &v->u.disaster, vehicle_disaster_chunk); break;
 		}
 	}

@@ -702,8 +702,6 @@ static void MakeIndustryTileBigger(TileIndex tile)
 
 static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 {
-	int dir;
-	Vehicle *v;
 	static const int8 _bubble_spawn_location[3][4] = {
 		{ 11,   0, -4, -14 },
 		{ -4, -10, -4,   1 },
@@ -712,16 +710,16 @@ static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 
 	SndPlayTileFx(SND_2E_EXTRACT_AND_POP, tile);
 
-	dir = Random() & 3;
+	int dir = Random() & 3;
 
-	v = CreateEffectVehicleAbove(
+	EffectVehicle *v = CreateEffectVehicleAbove(
 		TileX(tile) * TILE_SIZE + _bubble_spawn_location[0][dir],
 		TileY(tile) * TILE_SIZE + _bubble_spawn_location[1][dir],
 		_bubble_spawn_location[2][dir],
 		EV_BUBBLE
 	);
 
-	if (v != NULL) v->u.effect.animation_substate = dir;
+	if (v != NULL) v->animation_substate = dir;
 }
 
 static void TileLoop_Industry(TileIndex tile)

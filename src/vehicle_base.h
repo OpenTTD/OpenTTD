@@ -175,11 +175,6 @@ struct VehicleRoad {
 	RoadTypes compatible_roadtypes;
 };
 
-struct VehicleEffect {
-	uint16 animation_state;
-	byte animation_substate;
-};
-
 struct VehicleDisaster {
 	uint16 image_override;
 	VehicleID big_ufo_destroyer_target;
@@ -316,7 +311,6 @@ public:
 		VehicleRail rail;
 		VehicleAir air;
 		VehicleRoad road;
-		VehicleEffect effect;
 		VehicleDisaster disaster;
 	} u;
 

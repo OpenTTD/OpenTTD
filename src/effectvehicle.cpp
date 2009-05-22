@@ -13,14 +13,14 @@
 
 #include "table/sprites.h"
 
-static void ChimneySmokeInit(Vehicle *v)
+static void ChimneySmokeInit(EffectVehicle *v)
 {
 	uint32 r = Random();
 	v->cur_image = SPR_CHIMNEY_SMOKE_0 + GB(r, 0, 3);
 	v->progress = GB(r, 16, 3);
 }
 
-static bool ChimneySmokeTick(Vehicle *v)
+static bool ChimneySmokeTick(EffectVehicle *v)
 {
 	if (v->progress > 0) {
 		v->progress--;
@@ -43,13 +43,13 @@ static bool ChimneySmokeTick(Vehicle *v)
 	return true;
 }
 
-static void SteamSmokeInit(Vehicle *v)
+static void SteamSmokeInit(EffectVehicle *v)
 {
 	v->cur_image = SPR_STEAM_SMOKE_0;
 	v->progress = 12;
 }
 
-static bool SteamSmokeTick(Vehicle *v)
+static bool SteamSmokeTick(EffectVehicle *v)
 {
 	bool moved = false;
 
@@ -75,13 +75,13 @@ static bool SteamSmokeTick(Vehicle *v)
 	return true;
 }
 
-static void DieselSmokeInit(Vehicle *v)
+static void DieselSmokeInit(EffectVehicle *v)
 {
 	v->cur_image = SPR_DIESEL_SMOKE_0;
 	v->progress = 0;
 }
 
-static bool DieselSmokeTick(Vehicle *v)
+static bool DieselSmokeTick(EffectVehicle *v)
 {
 	v->progress++;
 
@@ -101,13 +101,13 @@ static bool DieselSmokeTick(Vehicle *v)
 	return true;
 }
 
-static void ElectricSparkInit(Vehicle *v)
+static void ElectricSparkInit(EffectVehicle *v)
 {
 	v->cur_image = SPR_ELECTRIC_SPARK_0;
 	v->progress = 1;
 }
 
-static bool ElectricSparkTick(Vehicle *v)
+static bool ElectricSparkTick(EffectVehicle *v)
 {
 	if (v->progress < 2) {
 		v->progress++;
@@ -125,13 +125,13 @@ static bool ElectricSparkTick(Vehicle *v)
 	return true;
 }
 
-static void SmokeInit(Vehicle *v)
+static void SmokeInit(EffectVehicle *v)
 {
 	v->cur_image = SPR_SMOKE_0;
 	v->progress = 12;
 }
 
-static bool SmokeTick(Vehicle *v)
+static bool SmokeTick(EffectVehicle *v)
 {
 	bool moved = false;
 
@@ -157,13 +157,13 @@ static bool SmokeTick(Vehicle *v)
 	return true;
 }
 
-static void ExplosionLargeInit(Vehicle *v)
+static void ExplosionLargeInit(EffectVehicle *v)
 {
 	v->cur_image = SPR_EXPLOSION_LARGE_0;
 	v->progress = 0;
 }
 
-static bool ExplosionLargeTick(Vehicle *v)
+static bool ExplosionLargeTick(EffectVehicle *v)
 {
 	v->progress++;
 	if ((v->progress & 3) == 0) {
@@ -179,13 +179,13 @@ static bool ExplosionLargeTick(Vehicle *v)
 	return true;
 }
 
-static void BreakdownSmokeInit(Vehicle *v)
+static void BreakdownSmokeInit(EffectVehicle *v)
 {
 	v->cur_image = SPR_BREAKDOWN_SMOKE_0;
 	v->progress = 0;
 }
 
-static bool BreakdownSmokeTick(Vehicle *v)
+static bool BreakdownSmokeTick(EffectVehicle *v)
 {
 	v->progress++;
 	if ((v->progress & 7) == 0) {
@@ -197,8 +197,8 @@ static bool BreakdownSmokeTick(Vehicle *v)
 		VehicleMove(v, true);
 	}
 
-	v->u.effect.animation_state--;
-	if (v->u.effect.animation_state == 0) {
+	v->animation_state--;
+	if (v->animation_state == 0) {
 		delete v;
 		return false;
 	}
@@ -206,13 +206,13 @@ static bool BreakdownSmokeTick(Vehicle *v)
 	return true;
 }
 
-static void ExplosionSmallInit(Vehicle *v)
+static void ExplosionSmallInit(EffectVehicle *v)
 {
 	v->cur_image = SPR_EXPLOSION_SMALL_0;
 	v->progress = 0;
 }
 
-static bool ExplosionSmallTick(Vehicle *v)
+static bool ExplosionSmallTick(EffectVehicle *v)
 {
 	v->progress++;
 	if ((v->progress & 3) == 0) {
@@ -228,12 +228,12 @@ static bool ExplosionSmallTick(Vehicle *v)
 	return true;
 }
 
-static void BulldozerInit(Vehicle *v)
+static void BulldozerInit(EffectVehicle *v)
 {
 	v->cur_image = SPR_BULLDOZER_NE;
 	v->progress = 0;
-	v->u.effect.animation_state = 0;
-	v->u.effect.animation_substate = 0;
+	v->animation_state = 0;
+	v->animation_substate = 0;
 }
 
 struct BulldozerMovement {
@@ -275,22 +275,22 @@ static const struct {
 	{  0, -1 }
 };
 
-static bool BulldozerTick(Vehicle *v)
+static bool BulldozerTick(EffectVehicle *v)
 {
 	v->progress++;
 	if ((v->progress & 7) == 0) {
-		const BulldozerMovement *b = &_bulldozer_movement[v->u.effect.animation_state];
+		const BulldozerMovement *b = &_bulldozer_movement[v->animation_state];
 
 		v->cur_image = SPR_BULLDOZER_NE + b->image;
 
 		v->x_pos += _inc_by_dir[b->direction].x;
 		v->y_pos += _inc_by_dir[b->direction].y;
 
-		v->u.effect.animation_substate++;
-		if (v->u.effect.animation_substate >= b->duration) {
-			v->u.effect.animation_substate = 0;
-			v->u.effect.animation_state++;
-			if (v->u.effect.animation_state == lengthof(_bulldozer_movement)) {
+		v->animation_substate++;
+		if (v->animation_substate >= b->duration) {
+			v->animation_substate = 0;
+			v->animation_state++;
+			if (v->animation_state == lengthof(_bulldozer_movement)) {
 				delete v;
 				return false;
 			}
@@ -301,7 +301,7 @@ static bool BulldozerTick(Vehicle *v)
 	return true;
 }
 
-static void BubbleInit(Vehicle *v)
+static void BubbleInit(EffectVehicle *v)
 {
 	v->cur_image = SPR_BUBBLE_GENERATE_0;
 	v->spritenum = 0;
@@ -458,7 +458,7 @@ static const BubbleMovement * const _bubble_movement[] = {
 	_bubble_absorb,
 };
 
-static bool BubbleTick(Vehicle *v)
+static bool BubbleTick(EffectVehicle *v)
 {
 	uint anim_state;
 
@@ -471,14 +471,14 @@ static bool BubbleTick(Vehicle *v)
 			VehicleMove(v, true);
 			return true;
 		}
-		if (v->u.effect.animation_substate != 0) {
+		if (v->animation_substate != 0) {
 			v->spritenum = GB(Random(), 0, 2) + 1;
 		} else {
 			v->spritenum = 6;
 		}
 		anim_state = 0;
 	} else {
-		anim_state = v->u.effect.animation_state + 1;
+		anim_state = v->animation_state + 1;
 	}
 
 	const BubbleMovement *b = &_bubble_movement[v->spritenum - 1][anim_state];
@@ -506,7 +506,7 @@ static bool BubbleTick(Vehicle *v)
 		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryGfx(tile) == GFX_BUBBLE_CATCHER) AddAnimatedTile(tile);
 	}
 
-	v->u.effect.animation_state = anim_state;
+	v->animation_state = anim_state;
 	b = &_bubble_movement[v->spritenum - 1][anim_state];
 
 	v->x_pos += b->x;
@@ -520,8 +520,8 @@ static bool BubbleTick(Vehicle *v)
 }
 
 
-typedef void EffectInitProc(Vehicle *v);
-typedef bool EffectTickProc(Vehicle *v);
+typedef void EffectInitProc(EffectVehicle *v);
+typedef bool EffectTickProc(EffectVehicle *v);
 
 static EffectInitProc * const _effect_init_procs[] = {
 	ChimneySmokeInit,
@@ -550,11 +550,11 @@ static EffectTickProc * const _effect_tick_procs[] = {
 };
 
 
-Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type)
+EffectVehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type)
 {
 	if (!Vehicle::CanAllocateItem()) return NULL;
 
-	Vehicle *v = new EffectVehicle();
+	EffectVehicle *v = new EffectVehicle();
 	v->subtype = type;
 	v->x_pos = x;
 	v->y_pos = y;
@@ -571,14 +571,14 @@ Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type)
 	return v;
 }
 
-Vehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicleType type)
+EffectVehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicleType type)
 {
 	int safe_x = Clamp(x, 0, MapMaxX() * TILE_SIZE);
 	int safe_y = Clamp(y, 0, MapMaxY() * TILE_SIZE);
 	return CreateEffectVehicle(x, y, GetSlopeZ(safe_x, safe_y) + z, type);
 }
 
-Vehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVehicleType type)
+EffectVehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVehicleType type)
 {
 	return CreateEffectVehicle(v->x_pos + x, v->y_pos + y, v->z_pos + z, type);
 }

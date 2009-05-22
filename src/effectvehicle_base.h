@@ -23,6 +23,9 @@
  *  - bubbles (industry)
  */
 struct EffectVehicle : public Vehicle {
+	uint16 animation_state;
+	byte animation_substate;
+
 	/** Initializes the Vehicle to a special vehicle */
 	EffectVehicle() { this->type = VEH_EFFECT; }
 
