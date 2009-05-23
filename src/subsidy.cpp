@@ -286,7 +286,7 @@ no_add:;
 		InvalidateWindow(WC_SUBSIDIES_LIST, 0);
 }
 
-bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
+bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type)
 {
 	Subsidy *s;
 	TileIndex xy;
