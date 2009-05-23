@@ -121,23 +121,23 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, ResolverObjec
 }
 
 
-static inline const SpriteGroup *ResolveVariable(const DeterministicSpriteGroup *group, ResolverObject *object)
+const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject *object) const
 {
 	uint32 last_value = 0;
 	uint32 value = 0;
 	uint i;
 
-	object->scope = group->var_scope;
+	object->scope = this->var_scope;
 
-	for (i = 0; i < group->num_adjusts; i++) {
-		DeterministicSpriteGroupAdjust *adjust = &group->adjusts[i];
+	for (i = 0; i < this->num_adjusts; i++) {
+		DeterministicSpriteGroupAdjust *adjust = &this->adjusts[i];
 
 		/* Try to get the variable. We shall assume it is available, unless told otherwise. */
 		bool available = true;
 		if (adjust->variable == 0x7E) {
 			ResolverObject subobject = *object;
 			subobject.procedure_call = true;
-			const SpriteGroup *subgroup = Resolve(adjust->subroutine, &subobject);
+			const SpriteGroup *subgroup = SpriteGroup::Resolve(adjust->subroutine, &subobject);
 			if (subgroup == NULL) {
 				value = CALLBACK_FAILED;
 			} else {
@@ -150,10 +150,10 @@ static inline const SpriteGroup *ResolveVariable(const DeterministicSpriteGroup 
 		if (!available) {
 			/* Unsupported property: skip further processing and return either
 			 * the group from the first range or the default group. */
-			return Resolve(group->num_ranges > 0 ? group->ranges[0].group : group->default_group, object);
+			return SpriteGroup::Resolve(this->num_ranges > 0 ? this->ranges[0].group : this->default_group, object);
 		}
 
-		switch (group->size) {
+		switch (this->size) {
 			case DSG_SIZE_BYTE:  value = EvalAdjustT<uint8,  int8> (adjust, object, last_value, value); break;
 			case DSG_SIZE_WORD:  value = EvalAdjustT<uint16, int16>(adjust, object, last_value, value); break;
 			case DSG_SIZE_DWORD: value = EvalAdjustT<uint32, int32>(adjust, object, last_value, value); break;
@@ -164,7 +164,7 @@ static inline const SpriteGroup *ResolveVariable(const DeterministicSpriteGroup 
 
 	object->last_value = last_value;
 
-	if (group->num_ranges == 0) {
+	if (this->num_ranges == 0) {
 		/* nvar == 0 is a special case -- we turn our value into a callback result */
 		if (value != CALLBACK_FAILED) value = GB(value, 0, 15);
 		static CallbackResultSpriteGroup nvarzero(0);
@@ -172,34 +172,34 @@ static inline const SpriteGroup *ResolveVariable(const DeterministicSpriteGroup 
 		return &nvarzero;
 	}
 
-	for (i = 0; i < group->num_ranges; i++) {
-		if (group->ranges[i].low <= value && value <= group->ranges[i].high) {
-			return Resolve(group->ranges[i].group, object);
+	for (i = 0; i < this->num_ranges; i++) {
+		if (this->ranges[i].low <= value && value <= this->ranges[i].high) {
+			return SpriteGroup::Resolve(this->ranges[i].group, object);
 		}
 	}
 
-	return Resolve(group->default_group, object);
+	return SpriteGroup::Resolve(this->default_group, object);
 }
 
 
-static inline const SpriteGroup *ResolveRandom(const RandomizedSpriteGroup *group, ResolverObject *object)
+const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject *object) const
 {
 	uint32 mask;
 	byte index;
 
-	object->scope = group->var_scope;
-	object->count = group->count;
+	object->scope = this->var_scope;
+	object->count = this->count;
 
 	if (object->trigger != 0) {
 		/* Handle triggers */
 		/* Magic code that may or may not do the right things... */
 		byte waiting_triggers = object->GetTriggers(object);
-		byte match = group->triggers & (waiting_triggers | object->trigger);
-		bool res = (group->cmp_mode == RSG_CMP_ANY) ? (match != 0) : (match == group->triggers);
+		byte match = this->triggers & (waiting_triggers | object->trigger);
+		bool res = (this->cmp_mode == RSG_CMP_ANY) ? (match != 0) : (match == this->triggers);
 
 		if (res) {
 			waiting_triggers &= ~match;
-			object->reseed |= (group->num_groups - 1) << group->lowest_randbit;
+			object->reseed |= (this->num_groups - 1) << this->lowest_randbit;
 		} else {
 			waiting_triggers |= object->trigger;
 		}
@@ -207,23 +207,14 @@ static inline const SpriteGroup *ResolveRandom(const RandomizedSpriteGroup *grou
 		object->SetTriggers(object, waiting_triggers);
 	}
 
-	mask  = (group->num_groups - 1) << group->lowest_randbit;
-	index = (object->GetRandomBits(object) & mask) >> group->lowest_randbit;
+	mask  = (this->num_groups - 1) << this->lowest_randbit;
+	index = (object->GetRandomBits(object) & mask) >> this->lowest_randbit;
 
-	return Resolve(group->groups[index], object);
+	return SpriteGroup::Resolve(this->groups[index], object);
 }
 
 
-/* ResolverObject (re)entry point */
-const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject *object)
+const SpriteGroup *RealSpriteGroup::Resolve(ResolverObject *object) const
 {
-	/* We're called even if there is no group, so quietly return nothing */
-	if (group == NULL) return NULL;
-
-	switch (group->type) {
-		case SGT_REAL:          return object->ResolveReal(object, (RealSpriteGroup *)group);
-		case SGT_DETERMINISTIC: return ResolveVariable((DeterministicSpriteGroup *)group, object);
-		case SGT_RANDOMIZED:    return ResolveRandom((RandomizedSpriteGroup *)group, object);
-		default:                return group;
-	}
+	return object->ResolveReal(object, this);
 }

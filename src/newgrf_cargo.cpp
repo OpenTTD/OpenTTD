@@ -74,7 +74,7 @@ SpriteID GetCustomCargoSprite(const CargoSpec *cs)
 
 	NewCargoResolver(&object, cs);
 
-	group = Resolve(cs->group, &object);
+	group = SpriteGroup::Resolve(cs->group, &object);
 	if (group == NULL) return 0;
 
 	return group->GetResult();
@@ -91,7 +91,7 @@ uint16 GetCargoCallback(CallbackID callback, uint32 param1, uint32 param2, const
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;
 
-	group = Resolve(cs->group, &object);
+	group = SpriteGroup::Resolve(cs->group, &object);
 	if (group == NULL) return CALLBACK_FAILED;
 
 	return group->GetCallbackResult();

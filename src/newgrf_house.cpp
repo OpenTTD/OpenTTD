@@ -354,7 +354,7 @@ uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, House
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;
 
-	group = Resolve(GetHouseSpecs(house_id)->spritegroup, &object);
+	group = SpriteGroup::Resolve(GetHouseSpecs(house_id)->spritegroup, &object);
 	if (group == NULL) return CALLBACK_FAILED;
 
 	return group->GetCallbackResult();
@@ -422,7 +422,7 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 
 	NewHouseResolver(&object, house_id, ti->tile, GetTownByTile(ti->tile));
 
-	group = Resolve(hs->spritegroup, &object);
+	group = SpriteGroup::Resolve(hs->spritegroup, &object);
 	if (group == NULL || group->type != SGT_TILELAYOUT) {
 		/* XXX: This is for debugging purposes really, and shouldn't stay. */
 		DrawGroundSprite(SPR_SHADOW_CELL, PAL_NONE);
@@ -601,7 +601,7 @@ static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, byte base_rando
 	object.callback = CBID_RANDOM_TRIGGER;
 	object.trigger = trigger;
 
-	const SpriteGroup *group = Resolve(hs->spritegroup, &object);
+	const SpriteGroup *group = SpriteGroup::Resolve(hs->spritegroup, &object);
 	if (group == NULL) return;
 
 	byte new_random_bits = Random();

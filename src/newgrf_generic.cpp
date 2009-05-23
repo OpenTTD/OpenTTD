@@ -139,7 +139,7 @@ static uint16 GetGenericCallbackResult(uint8 feature, ResolverObject *object, co
 	/* Test each feature callback sprite group. */
 	for (GenericCallbackList::const_iterator it = _gcl[feature].begin(); it != _gcl[feature].end(); ++it) {
 		const SpriteGroup *group = it->group;
-		group = Resolve(group, object);
+		group = SpriteGroup::Resolve(group, object);
 		if (group == NULL) continue;
 
 		/* Return NewGRF file if necessary */

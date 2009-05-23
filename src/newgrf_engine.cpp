@@ -912,7 +912,7 @@ SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction dire
 
 	NewVehicleResolver(&object, engine, v);
 
-	group = Resolve(GetVehicleSpriteGroup(engine, v), &object);
+	group = SpriteGroup::Resolve(GetVehicleSpriteGroup(engine, v), &object);
 	if (group == NULL || group->GetNumResults() == 0) return 0;
 
 	return group->GetResult() + (direction % group->GetNumResults());
@@ -934,7 +934,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Aircraft *v, bool info_vi
 	object.info_view = info_view;
 
 	const SpriteGroup *group = GetWagonOverrideSpriteSet(engine, CT_DEFAULT, engine);
-	group = Resolve(group, &object);
+	group = SpriteGroup::Resolve(group, &object);
 
 	if (group == NULL || group->GetNumResults() == 0) return 0;
 
@@ -975,7 +975,7 @@ uint16 GetVehicleCallback(CallbackID callback, uint32 param1, uint32 param2, Eng
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;
 
-	group = Resolve(GetVehicleSpriteGroup(engine, v, false), &object);
+	group = SpriteGroup::Resolve(GetVehicleSpriteGroup(engine, v, false), &object);
 	if (group == NULL) return CALLBACK_FAILED;
 
 	return group->GetCallbackResult();
@@ -1004,7 +1004,7 @@ uint16 GetVehicleCallbackParent(CallbackID callback, uint32 param1, uint32 param
 
 	object.u.vehicle.parent = parent;
 
-	group = Resolve(GetVehicleSpriteGroup(engine, v, false), &object);
+	group = SpriteGroup::Resolve(GetVehicleSpriteGroup(engine, v, false), &object);
 	if (group == NULL) return CALLBACK_FAILED;
 
 	return group->GetCallbackResult();
@@ -1043,7 +1043,7 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 	object.callback = CBID_RANDOM_TRIGGER;
 	object.trigger = trigger;
 
-	group = Resolve(GetVehicleSpriteGroup(v->engine_type, v), &object);
+	group = SpriteGroup::Resolve(GetVehicleSpriteGroup(v->engine_type, v), &object);
 	if (group == NULL) return;
 
 	new_random_bits = Random();

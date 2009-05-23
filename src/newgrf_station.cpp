@@ -633,7 +633,7 @@ static const SpriteGroup *ResolveStation(ResolverObject *object)
 	/* Invalidate all cached vars */
 	_svc.valid = 0;
 
-	return Resolve(group, object);
+	return SpriteGroup::Resolve(group, object);
 }
 
 SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *st, TileIndex tile)

@@ -96,7 +96,7 @@ SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile)
 
 	NewCanalResolver(&object, tile, _water_feature[feature].grffile);
 
-	group = Resolve(_water_feature[feature].group, &object);
+	group = SpriteGroup::Resolve(_water_feature[feature].group, &object);
 	if (group == NULL) return 0;
 
 	return group->GetResult();
