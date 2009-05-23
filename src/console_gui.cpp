@@ -332,7 +332,6 @@ void IConsoleGUIInit()
 	IConsolePrint(CC_WHITE,  "use \"help\" for more information");
 	IConsolePrint(CC_WHITE,  "");
 	IConsoleClearCommand();
-	IConsoleHistoryAdd("");
 }
 
 void IConsoleClearBuffer()
@@ -388,10 +387,20 @@ void IConsoleOpen()  {if (_iconsole_mode == ICONSOLE_CLOSED) IConsoleSwitch();}
  */
 static void IConsoleHistoryAdd(const char *cmd)
 {
-	free(_iconsole_history[ICON_HISTORY_SIZE - 1]);
+	/* Strip all spaces at the begin */
+	while (IsWhitespace(*cmd)) cmd++;
 
-	memmove(&_iconsole_history[1], &_iconsole_history[0], sizeof(_iconsole_history[0]) * (ICON_HISTORY_SIZE - 1));
-	_iconsole_history[0] = strdup(cmd);
+	/* Do not put empty command in history */
+	if (StrEmpty(cmd)) return;
+
+	/* Do not put in history if command is same as previous */
+	if (_iconsole_history[0] == NULL || strcmp(_iconsole_history[0], cmd) != 0) {
+		free(_iconsole_history[ICON_HISTORY_SIZE - 1]);
+		memmove(&_iconsole_history[1], &_iconsole_history[0], sizeof(_iconsole_history[0]) * (ICON_HISTORY_SIZE - 1));
+		_iconsole_history[0] = strdup(cmd);
+	}
+
+	/* Reset the history position */
 	IConsoleResetHistoryPos();
 }
 
@@ -401,6 +410,7 @@ static void IConsoleHistoryAdd(const char *cmd)
  */
 static void IConsoleHistoryNavigate(int direction)
 {
+	if (_iconsole_history[0] == NULL) return; // Empty history
 	int i = _iconsole_historypos + direction;
 
 	/* watch out for overflows, just wrap around */
