@@ -199,6 +199,307 @@ void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, Fra
 	}
 }
 
+/**
+ * Draw an image button.
+ * @param r       Rectangle of the button.
+ * @param type    Widget type (#WWT_IMGBTN or #WWT_IMGBTN_2).
+ * @param colour  Colour of the button.
+ * @param clicked Button is lowered.
+ * @param img     Sprite to draw.
+ */
+static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colour, bool clicked, SpriteID img)
+{
+	assert(img != 0);
+	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
+
+	/* show different image when clicked for WWT_IMGBTN_2 */
+	if ((type & WWT_MASK) == WWT_IMGBTN_2 && clicked) img++;
+	DrawSprite(img, PAL_NONE, r.left + 1 + clicked, r.top + 1 + clicked);
+}
+
+/**
+ * Draw the label-part of a widget.
+ * @param r       Rectangle of the label background.
+ * @param type    Widget type (#WWT_TEXTBTN, #WWT_TEXTBTN_2, or #WWT_LABEL).
+ * @param clicked Label is rendered lowered.
+ * @param str     Text to draw.
+ */
+static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, StringID str)
+{
+	if ((type & WWT_MASK) == WWT_TEXTBTN_2 && clicked) str++;
+	DrawString(r.left + clicked, r.right + clicked, ((r.top + r.bottom + 1) >> 1) - 5 + clicked, str, TC_FROMSTRING, SA_CENTER);
+}
+
+/**
+ * Draw text.
+ * @param r      Rectangle of the background.
+ * @param colour Colour of the text.
+ * @param str    Text to draw.
+ */
+static inline void DrawText(const Rect &r, TextColour colour, StringID str)
+{
+	if (str != STR_NULL) DrawString(r.left, r.right, r.top, str, colour);
+}
+
+/**
+ * Draw an inset widget.
+ * @param r      Rectangle of the background.
+ * @param colour Colour of the inset.
+ * @param str    Text to draw.
+ */
+static inline void DrawInset(const Rect &r, Colours colour, StringID str)
+{
+	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_LOWERED | FR_DARKENED);
+	if (str != STR_NULL) DrawString(r.left + 2, r.right - 2, r.top + 1, str);
+}
+
+/**
+ * Draw a matrix widget.
+ * @param r       Rectangle of the matrix background.
+ * @param colour  Colour of the background.
+ * @param clicked Matrix is rendered lowered.
+ * @param data    Data of the widget.
+ */
+static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint16 data)
+{
+	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
+
+	int c = GB(data, 0, 8);
+	int amt1 = (r.right - r.left + 1) / c;
+
+	int d = GB(data, 8, 8);
+	int amt2 = (r.bottom - r.top + 1) / d;
+
+	int col = _colour_gradient[colour & 0xF][6];
+
+	int x = r.left;
+	for (int ctr = c; ctr > 1; ctr--) {
+		x += amt1;
+		GfxFillRect(x, r.top + 1, x, r.bottom - 1, col);
+	}
+
+	x = r.top;
+	for (int ctr = d; ctr > 1; ctr--) {
+		x += amt2;
+		GfxFillRect(r.left + 1, x, r.right - 1, x, col);
+	}
+
+	col = _colour_gradient[colour & 0xF][4];
+
+	x = r.left - 1;
+	for (int ctr = c; ctr > 1; ctr--) {
+		x += amt1;
+		GfxFillRect(x, r.top + 1, x, r.bottom - 1, col);
+	}
+
+	x = r.top - 1;
+	for (int ctr = d; ctr > 1; ctr--) {
+		x += amt2;
+		GfxFillRect(r.left + 1, x, r.right - 1, x, col);
+	}
+}
+
+/**
+ * Draw a vertical scrollbar.
+ * @param r            Rectangle of the scrollbar widget.
+ * @param colour       Colour of the scrollbar widget.
+ * @param up_clicked   Up-arrow is clicked.
+ * @param bar_dragged  Bar is dragged.
+ * @param down_clicked Down-arrow is clicked.
+ * @param scrollbar    Scrollbar size, offset, and capacity information.
+ */
+static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_clicked, bool bar_dragged, bool down_clicked, const Scrollbar *scrollbar)
+{
+	assert(r.right - r.left == 11); // To ensure the same sizes are used everywhere!
+
+	/* draw up/down buttons */
+	DrawFrameRect(r.left, r.top, r.right, r.top + 9, colour, (up_clicked) ? FR_LOWERED : FR_NONE);
+	DrawString(r.left + up_clicked, r.right + up_clicked, r.top + up_clicked, UPARROW, TC_BLACK, SA_CENTER);
+
+	DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, colour, (down_clicked) ? FR_LOWERED : FR_NONE);
+	DrawString(r.left + down_clicked, r.right + down_clicked, r.bottom - 9 + down_clicked, DOWNARROW, TC_BLACK, SA_CENTER);
+
+	int c1 = _colour_gradient[colour & 0xF][3];
+	int c2 = _colour_gradient[colour & 0xF][7];
+
+	/* draw "shaded" background */
+	GfxFillRect(r.left, r.top + 10, r.right, r.bottom - 10, c2);
+	GfxFillRect(r.left, r.top + 10, r.right, r.bottom - 10, c1, FILLRECT_CHECKER);
+
+	/* draw shaded lines */
+	GfxFillRect(r.left + 2, r.top + 10, r.left + 2, r.bottom - 10, c1);
+	GfxFillRect(r.left + 3, r.top + 10, r.left + 3, r.bottom - 10, c2);
+	GfxFillRect(r.left + 7, r.top + 10, r.left + 7, r.bottom - 10, c1);
+	GfxFillRect(r.left + 8, r.top + 10, r.left + 8, r.bottom - 10, c2);
+
+	Point pt = HandleScrollbarHittest(scrollbar, r.top, r.bottom);
+	DrawFrameRect(r.left, pt.x, r.right, pt.y, colour, bar_dragged ? FR_LOWERED : FR_NONE);
+}
+
+/**
+ * Draw a horizontal scrollbar.
+ * @param r             Rectangle of the scrollbar widget.
+ * @param colour        Colour of the scrollbar widget.
+ * @param left_clicked  Left-arrow is clicked.
+ * @param bar_dragged   Bar is dragged.
+ * @param right_clicked Right-arrow is clicked.
+ * @param scrollbar     Scrollbar size, offset, and capacity information.
+ */
+static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool left_clicked, bool bar_dragged, bool right_clicked, const Scrollbar *scrollbar)
+{
+	assert(r.bottom - r.top == 11); // To ensure the same sizes are used everywhere!
+
+	DrawFrameRect(r.left, r.top, r.left + 9, r.bottom, colour, left_clicked ? FR_LOWERED : FR_NONE);
+	DrawSprite(SPR_ARROW_LEFT, PAL_NONE, r.left + 1 + left_clicked, r.top + 1 + left_clicked);
+
+	DrawFrameRect(r.right - 9, r.top, r.right, r.bottom, colour, right_clicked ? FR_LOWERED : FR_NONE);
+	DrawSprite(SPR_ARROW_RIGHT, PAL_NONE, r.right - 8 + right_clicked, r.top + 1 + right_clicked);
+
+	int c1 = _colour_gradient[colour & 0xF][3];
+	int c2 = _colour_gradient[colour & 0xF][7];
+
+	/* draw "shaded" background */
+	GfxFillRect(r.left + 10, r.top, r.right - 10, r.bottom, c2);
+	GfxFillRect(r.left + 10, r.top, r.right - 10, r.bottom, c1, FILLRECT_CHECKER);
+
+	/* draw shaded lines */
+	GfxFillRect(r.left + 10, r.top + 2, r.right - 10, r.top + 2, c1);
+	GfxFillRect(r.left + 10, r.top + 3, r.right - 10, r.top + 3, c2);
+	GfxFillRect(r.left + 10, r.top + 7, r.right - 10, r.top + 7, c1);
+	GfxFillRect(r.left + 10, r.top + 8, r.right - 10, r.top + 8, c2);
+
+	/* draw actual scrollbar */
+	Point pt = HandleScrollbarHittest(scrollbar, r.left, r.right);
+	DrawFrameRect(pt.x, r.top, pt.y, r.bottom, colour, bar_dragged ? FR_LOWERED : FR_NONE);
+}
+
+/**
+ * Draw a frame widget.
+ * @param r      Rectangle of the frame.
+ * @param colour Colour of the frame.
+ * @param str    Text of the frame.
+ */
+static inline void DrawFrame(const Rect &r, Colours colour, StringID str)
+{
+	int x2 = r.left; // by default the left side is the left side of the widget
+
+	if (str != STR_NULL) x2 = DrawString(r.left + 6, r.right - 6, r.top, str);
+
+	int c1 = _colour_gradient[colour][3];
+	int c2 = _colour_gradient[colour][7];
+
+	if (_dynlang.text_dir == TD_LTR) {
+		/* Line from upper left corner to start of text */
+		GfxFillRect(r.left, r.top + 4, r.left + 4, r.top + 4, c1);
+		GfxFillRect(r.left + 1, r.top + 5, r.left + 4, r.top + 5, c2);
+
+		/* Line from end of text to upper right corner */
+		GfxFillRect(x2, r.top + 4, r.right - 1, r.top + 4, c1);
+		GfxFillRect(x2, r.top + 5, r.right - 2, r.top + 5, c2);
+	} else {
+		/* Line from upper left corner to start of text */
+		GfxFillRect(r.left, r.top + 4, x2 - 2, r.top + 4, c1);
+		GfxFillRect(r.left + 1, r.top + 5, x2 - 2, r.top + 5, c2);
+
+		/* Line from end of text to upper right corner */
+		GfxFillRect(r.right - 5, r.top + 4, r.right - 1, r.top + 4, c1);
+		GfxFillRect(r.right - 5, r.top + 5, r.right - 2, r.top + 5, c2);
+	}
+
+	/* Line from upper left corner to bottom left corner */
+	GfxFillRect(r.left, r.top + 5, r.left, r.bottom - 1, c1);
+	GfxFillRect(r.left + 1, r.top + 6, r.left + 1, r.bottom - 2, c2);
+
+	/* Line from upper right corner to bottom right corner */
+	GfxFillRect(r.right - 1, r.top + 5, r.right - 1, r.bottom - 2, c1);
+	GfxFillRect(r.right, r.top + 4, r.right, r.bottom - 1, c2);
+
+	GfxFillRect(r.left + 1, r.bottom - 1, r.right - 1, r.bottom - 1, c1);
+	GfxFillRect(r.left, r.bottom, r.right, r.bottom, c2);
+}
+
+/**
+ * Draw a sticky box.
+ * @param r       Rectangle of the box.
+ * @param colour  Colour of the sticky box.
+ * @param clicked Box is lowered.
+ */
+static inline void DrawStickyBox(const Rect &r, Colours colour, bool clicked)
+{
+	assert(r.right - r.left == 11); // To ensure the same sizes are used everywhere!
+	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
+	DrawSprite((clicked) ? SPR_PIN_UP : SPR_PIN_DOWN, PAL_NONE, r.left + 2 + clicked, r.top + 3 + clicked);
+}
+
+/**
+ * Draw a resize box.
+ * @param r       Rectangle of the box.
+ * @param colour  Colour of the resize box.
+ * @param at_left Resize box is at left-side of the window,
+ * @param clicked Box is lowered.
+ */
+static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bool clicked)
+{
+	assert(r.right - r.left == 11); // To ensure the same sizes are used everywhere!
+	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
+	if (at_left) {
+		DrawSprite(SPR_WINDOW_RESIZE_LEFT, PAL_NONE, r.left + 2, r.top + 3 + clicked);
+	} else {
+		DrawSprite(SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.left + 3 + clicked, r.top + 3 + clicked);
+	}
+}
+
+/**
+ * Draw a close box.
+ * @param r      Rectangle of the box.
+ * @param colour Colour of the close box.
+ * @param str    Cross to draw (#STR_BLACK_CROSS or #STR_SILVER_CROSS).
+ */
+static inline void DrawCloseBox(const Rect &r, Colours colour, StringID str)
+{
+	assert(str == STR_BLACK_CROSS || str == STR_SILVER_CROSS); // black or silver cross
+	assert(r.right - r.left == 10); // To ensure the same sizes are used everywhere
+
+	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_NONE);
+	DrawString(r.left, r.right, r.top + 2, str, TC_FROMSTRING, SA_CENTER);
+}
+
+/**
+ * Draw a caption bar.
+ * @param r      Rectangle of the bar.
+ * @param colour Colour of the window.
+ * @param owner  'Owner' of the window.
+ * @param str    Text to draw in the bar.
+ */
+static inline void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str)
+{
+	assert(r.bottom - r.top == 13); // To ensure the same sizes are used everywhere!
+	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_BORDERONLY);
+	DrawFrameRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, colour, (owner == INVALID_OWNER) ? FR_LOWERED | FR_DARKENED : FR_LOWERED | FR_DARKENED | FR_BORDERONLY);
+
+	if (owner != INVALID_OWNER) {
+		GfxFillRect(r.left + 2, r.top + 2, r.right - 2, r.bottom - 2, _colour_gradient[_company_colours[owner]][4]);
+	}
+
+	DrawString(r.left + 2, r.right - 2, r.top + 2, str, TC_FROMSTRING, SA_CENTER);
+}
+
+static inline void DrawDropdown(const Rect &r, Colours colour, bool clicked, StringID str)
+{
+	assert(r.bottom - r.top == 11); // ensure consistent size
+
+	if (_dynlang.text_dir == TD_LTR) {
+		DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, colour, FR_NONE);
+		DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, colour, clicked ? FR_LOWERED : FR_NONE);
+		DrawString(r.right - (clicked ? 10 : 11), r.right, r.top + (clicked ? 2 : 1), STR_ARROW_DOWN, TC_BLACK, SA_CENTER);
+		if (str != STR_NULL) DrawString(r.left + 2, r.right - 14, r.top + 1, str, TC_BLACK);
+	} else {
+		DrawFrameRect(r.left + 12, r.top, r.right, r.bottom, colour, FR_NONE);
+		DrawFrameRect(r.left, r.top, r.left + 11, r.bottom, colour, clicked ? FR_LOWERED : FR_NONE);
+		DrawString(r.left + clicked, r.left + 11, r.top + (clicked ? 2 : 1), STR_ARROW_DOWN, TC_BLACK, SA_CENTER);
+		if (str != STR_NULL) DrawString(r.left + 14, r.right - 2, r.top + 1, str, TC_BLACK);
+	}
+}
 
 /**
  * Paint all widgets of a window.
@@ -222,16 +523,9 @@ void Window::DrawWidgets() const
 
 		switch (wi->type & WWT_MASK) {
 		case WWT_IMGBTN:
-		case WWT_IMGBTN_2: {
-			SpriteID img = wi->data;
-			assert(img != 0);
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
-
-			/* show different image when clicked for WWT_IMGBTN_2 */
-			if ((wi->type & WWT_MASK) == WWT_IMGBTN_2 && clicked) img++;
-			DrawSprite(img, PAL_NONE, r.left + 1 + clicked, r.top + 1 + clicked);
+		case WWT_IMGBTN_2:
+			DrawImageButtons(r, wi->type,wi->colour, clicked, wi->data);
 			break;
-		}
 
 		case WWT_PANEL:
 			assert(wi->data == 0);
@@ -247,269 +541,70 @@ void Window::DrawWidgets() const
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
 			/* FALL THROUGH */
 
-		case WWT_LABEL: {
-			StringID str = wi->data;
-
-			if ((wi->type & WWT_MASK) == WWT_TEXTBTN_2 && clicked) str++;
-
-			DrawString(r.left + clicked, r.right + clicked, ((r.top + r.bottom + 1) >> 1) - 5 + clicked, str, TC_FROMSTRING, SA_CENTER);
+		case WWT_LABEL:
+			DrawLabel(r, wi->type, clicked, wi->data);
 			break;
-		}
 
-		case WWT_TEXT: {
-			const StringID str = wi->data;
-
-			if (str != STR_NULL) DrawString(r.left, r.right, r.top, str, (TextColour)wi->colour);
+		case WWT_TEXT:
+			DrawText(r, (TextColour)wi->colour, wi->data);
 			break;
-		}
 
-		case WWT_INSET: {
-			const StringID str = wi->data;
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_LOWERED | FR_DARKENED);
-
-			if (str != STR_NULL) DrawString(r.left + 2, r.right - 2, r.top + 1, str);
+		case WWT_INSET:
+			DrawInset(r, wi->colour, wi->data);
 			break;
-		}
 
-		case WWT_MATRIX: {
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
-
-			int c = GB(wi->data, 0, 8);
-			int amt1 = (wi->right - wi->left + 1) / c;
-
-			int d = GB(wi->data, 8, 8);
-			int amt2 = (wi->bottom - wi->top + 1) / d;
-
-			int colour = _colour_gradient[wi->colour & 0xF][6];
-
-			int x = r.left;
-			for (int ctr = c; ctr > 1; ctr--) {
-				x += amt1;
-				GfxFillRect(x, r.top + 1, x, r.bottom - 1, colour);
-			}
-
-			x = r.top;
-			for (int ctr = d; ctr > 1; ctr--) {
-				x += amt2;
-				GfxFillRect(r.left + 1, x, r.right - 1, x, colour);
-			}
-
-			colour = _colour_gradient[wi->colour & 0xF][4];
-
-			x = r.left - 1;
-			for (int ctr = c; ctr > 1; ctr--) {
-				x += amt1;
-				GfxFillRect(x, r.top + 1, x, r.bottom - 1, colour);
-			}
-
-			x = r.top - 1;
-			for (int ctr = d; ctr > 1; ctr--) {
-				x += amt2;
-				GfxFillRect(r.left + 1, x, r.right - 1, x, colour);
-			}
-
+		case WWT_MATRIX:
+			DrawMatrix(r, wi->colour, clicked, wi->data);
 			break;
-		}
 
 		/* vertical scrollbar */
-		case WWT_SCROLLBAR: {
+		case WWT_SCROLLBAR:
 			assert(wi->data == 0);
-			assert(r.right - r.left == 11); // To ensure the same sizes are used everywhere!
-
-			/* draw up/down buttons */
-			clicked = ((this->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP);
-			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawString(r.left + clicked, r.right + clicked, r.top + clicked, UPARROW, TC_BLACK, SA_CENTER);
-
-			clicked = (((this->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN));
-			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawString(r.left + clicked, r.right + clicked, r.bottom - 9 + clicked, DOWNARROW, TC_BLACK, SA_CENTER);
-
-			int c1 = _colour_gradient[wi->colour & 0xF][3];
-			int c2 = _colour_gradient[wi->colour & 0xF][7];
-
-			/* draw "shaded" background */
-			GfxFillRect(r.left, r.top + 10, r.right, r.bottom - 10, c2);
-			GfxFillRect(r.left, r.top + 10, r.right, r.bottom - 10, c1, FILLRECT_CHECKER);
-
-			/* draw shaded lines */
-			GfxFillRect(r.left + 2, r.top + 10, r.left + 2, r.bottom - 10, c1);
-			GfxFillRect(r.left + 3, r.top + 10, r.left + 3, r.bottom - 10, c2);
-			GfxFillRect(r.left + 7, r.top + 10, r.left + 7, r.bottom - 10, c1);
-			GfxFillRect(r.left + 8, r.top + 10, r.left + 8, r.bottom - 10, c2);
-
-			Point pt = HandleScrollbarHittest(&this->vscroll, r.top, r.bottom);
-			DrawFrameRect(r.left, pt.x, r.right, pt.y, wi->colour, (this->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_MIDDLE ? FR_LOWERED : FR_NONE);
+			DrawVerticalScrollbar(r, wi->colour, (this->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP,
+								(this->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_MIDDLE,
+								(this->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN, &this->vscroll);
 			break;
-		}
 
-		case WWT_SCROLL2BAR: {
+		case WWT_SCROLL2BAR:
 			assert(wi->data == 0);
-			assert(r.right - r.left == 11); // To ensure the same sizes are used everywhere!
-
-			/* draw up/down buttons */
-			clicked = ((this->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2));
-			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->colour,  (clicked) ? FR_LOWERED : FR_NONE);
-			DrawString(r.left + clicked, r.right + clicked, r.top + clicked, UPARROW, TC_BLACK, SA_CENTER);
-
-			clicked = ((this->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2));
-			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->colour,  (clicked) ? FR_LOWERED : FR_NONE);
-			DrawString(r.left + clicked, r.right + clicked, r.bottom - 9 + clicked, DOWNARROW, TC_BLACK, SA_CENTER);
-
-			int c1 = _colour_gradient[wi->colour & 0xF][3];
-			int c2 = _colour_gradient[wi->colour & 0xF][7];
-
-			/* draw "shaded" background */
-			GfxFillRect(r.left, r.top + 10, r.right, r.bottom - 10, c2);
-			GfxFillRect(r.left, r.top + 10, r.right, r.bottom - 10, c1, FILLRECT_CHECKER);
-
-			/* draw shaded lines */
-			GfxFillRect(r.left + 2, r.top + 10, r.left + 2, r.bottom - 10, c1);
-			GfxFillRect(r.left + 3, r.top + 10, r.left + 3, r.bottom - 10, c2);
-			GfxFillRect(r.left + 7, r.top + 10, r.left + 7, r.bottom - 10, c1);
-			GfxFillRect(r.left + 8, r.top + 10, r.left + 8, r.bottom - 10, c2);
-
-			Point pt = HandleScrollbarHittest(&this->vscroll2, r.top, r.bottom);
-			DrawFrameRect(r.left, pt.x, r.right, pt.y, wi->colour, (this->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_MIDDLE | WF_SCROLL2) ? FR_LOWERED : FR_NONE);
+			DrawVerticalScrollbar(r, wi->colour, (this->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2),
+								(this->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_MIDDLE | WF_SCROLL2),
+								(this->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2), &this->vscroll2);
 			break;
-		}
 
 		/* horizontal scrollbar */
-		case WWT_HSCROLLBAR: {
+		case WWT_HSCROLLBAR:
 			assert(wi->data == 0);
-			assert(r.bottom - r.top == 11); // To ensure the same sizes are used everywhere!
-
-			clicked = ((this->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL));
-			DrawFrameRect(r.left, r.top, r.left + 9, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawSprite(SPR_ARROW_LEFT, PAL_NONE, r.left + 1 + clicked, r.top + 1 + clicked);
-
-			clicked = ((this->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL));
-			DrawFrameRect(r.right - 9, r.top, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawSprite(SPR_ARROW_RIGHT, PAL_NONE, r.right - 8 + clicked, r.top + 1 + clicked);
-
-			int c1 = _colour_gradient[wi->colour & 0xF][3];
-			int c2 = _colour_gradient[wi->colour & 0xF][7];
-
-			/* draw "shaded" background */
-			GfxFillRect(r.left + 10, r.top, r.right - 10, r.bottom, c2);
-			GfxFillRect(r.left + 10, r.top, r.right - 10, r.bottom, c1, FILLRECT_CHECKER);
-
-			/* draw shaded lines */
-			GfxFillRect(r.left + 10, r.top + 2, r.right - 10, r.top + 2, c1);
-			GfxFillRect(r.left + 10, r.top + 3, r.right - 10, r.top + 3, c2);
-			GfxFillRect(r.left + 10, r.top + 7, r.right - 10, r.top + 7, c1);
-			GfxFillRect(r.left + 10, r.top + 8, r.right - 10, r.top + 8, c2);
-
-			/* draw actual scrollbar */
-			Point pt = HandleScrollbarHittest(&this->hscroll, r.left, r.right);
-			DrawFrameRect(pt.x, r.top, pt.y, r.bottom, wi->colour, (this->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL)) == (WF_SCROLL_MIDDLE | WF_HSCROLL) ? FR_LOWERED : FR_NONE);
-
+			DrawHorizontalScrollbar(r, wi->colour, (this->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL),
+								(this->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL)) == (WF_SCROLL_MIDDLE | WF_HSCROLL),
+								(this->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL), &this->hscroll);
 			break;
-		}
 
-		case WWT_FRAME: {
-			const StringID str = wi->data;
-			int x2 = r.left; // by default the left side is the left side of the widget
-
-			if (str != STR_NULL) x2 = DrawString(r.left + 6, r.right - 6, r.top, str);
-
-			int c1 = _colour_gradient[wi->colour][3];
-			int c2 = _colour_gradient[wi->colour][7];
-
-			if (_dynlang.text_dir == TD_LTR) {
-				/* Line from upper left corner to start of text */
-				GfxFillRect(r.left, r.top + 4, r.left + 4, r.top + 4, c1);
-				GfxFillRect(r.left + 1, r.top + 5, r.left + 4, r.top + 5, c2);
-
-				/* Line from end of text to upper right corner */
-				GfxFillRect(x2, r.top + 4, r.right - 1, r.top + 4, c1);
-				GfxFillRect(x2, r.top + 5, r.right - 2, r.top + 5, c2);
-			} else {
-				/* Line from upper left corner to start of text */
-				GfxFillRect(r.left, r.top + 4, x2 - 2, r.top + 4, c1);
-				GfxFillRect(r.left + 1, r.top + 5, x2 - 2, r.top + 5, c2);
-
-				/* Line from end of text to upper right corner */
-				GfxFillRect(r.right - 5, r.top + 4, r.right - 1, r.top + 4, c1);
-				GfxFillRect(r.right - 5, r.top + 5, r.right - 2, r.top + 5, c2);
-			}
-
-			/* Line from upper left corner to bottom left corner */
-			GfxFillRect(r.left, r.top + 5, r.left, r.bottom - 1, c1);
-			GfxFillRect(r.left + 1, r.top + 6, r.left + 1, r.bottom - 2, c2);
-
-			/* Line from upper right corner to bottom right corner */
-			GfxFillRect(r.right - 1, r.top + 5, r.right - 1, r.bottom - 2, c1);
-			GfxFillRect(r.right, r.top + 4, r.right, r.bottom - 1, c2);
-
-			GfxFillRect(r.left + 1, r.bottom - 1, r.right - 1, r.bottom - 1, c1);
-			GfxFillRect(r.left, r.bottom, r.right, r.bottom, c2);
-
+		case WWT_FRAME:
+			DrawFrame(r, wi->colour, wi->data);
 			break;
-		}
 
 		case WWT_STICKYBOX:
 			assert(wi->data == 0);
-			assert(r.right - r.left == 11); // To ensure the same sizes are used everywhere!
-
-			clicked = !!(this->flags4 & WF_STICKY);
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawSprite((clicked) ? SPR_PIN_UP : SPR_PIN_DOWN, PAL_NONE, r.left + 2 + clicked, r.top + 3 + clicked);
+			DrawStickyBox(r, wi->colour, !!(this->flags4 & WF_STICKY));
 			break;
 
 		case WWT_RESIZEBOX:
 			assert(wi->data == 0);
-			assert(r.right - r.left == 11); // To ensure the same sizes are used everywhere!
-
-			clicked = !!(this->flags4 & WF_SIZING);
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			if (wi->left < (this->width / 2)) {
-				DrawSprite(SPR_WINDOW_RESIZE_LEFT, PAL_NONE, r.left + 2, r.top + 3 + clicked);
-			} else {
-				DrawSprite(SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.left + 3 + clicked, r.top + 3 + clicked);
-			}
+			DrawResizeBox(r, wi->colour, wi->left < (this->width / 2), !!(this->flags4 & WF_SIZING));
 			break;
 
-		case WWT_CLOSEBOX: {
-			const StringID str = wi->data;
-
-			assert(str == STR_BLACK_CROSS || str == STR_SILVER_CROSS); // black or silver cross
-			assert(r.right - r.left == 10); // To ensure the same sizes are used everywhere
-
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_NONE);
-			DrawString(r.left, r.right, r.top + 2, str, TC_FROMSTRING, SA_CENTER);
+		case WWT_CLOSEBOX:
+			DrawCloseBox(r, wi->colour, wi->data);
 			break;
-		}
 
 		case WWT_CAPTION:
-			assert(r.bottom - r.top == 13); // To ensure the same sizes are used everywhere!
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_BORDERONLY);
-			DrawFrameRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, wi->colour, (this->owner == INVALID_OWNER) ? FR_LOWERED | FR_DARKENED : FR_LOWERED | FR_DARKENED | FR_BORDERONLY);
-
-			if (this->owner != INVALID_OWNER) {
-				GfxFillRect(r.left + 2, r.top + 2, r.right - 2, r.bottom - 2, _colour_gradient[_company_colours[this->owner]][4]);
-			}
-
-			DrawString(r.left + 2, r.right - 2, r.top + 2, wi->data, TC_FROMSTRING, SA_CENTER);
+			DrawCaption(r, wi->colour, this->owner, wi->data);
 			break;
 
-		case WWT_DROPDOWN: {
-			assert(r.bottom - r.top == 11); // ensure consistent size
-
-			StringID str = wi->data;
-			if (_dynlang.text_dir == TD_LTR) {
-				DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, wi->colour, FR_NONE);
-				DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, wi->colour, clicked ? FR_LOWERED : FR_NONE);
-				DrawString(r.right - (clicked ? 10 : 11), r.right, r.top + (clicked ? 2 : 1), STR_ARROW_DOWN, TC_BLACK, SA_CENTER);
-				if (str != STR_NULL) DrawString(r.left + 2, r.right - 14, r.top + 1, str, TC_BLACK);
-			} else {
-				DrawFrameRect(r.left + 12, r.top, r.right, r.bottom, wi->colour, FR_NONE);
-				DrawFrameRect(r.left, r.top, r.left + 11, r.bottom, wi->colour, clicked ? FR_LOWERED : FR_NONE);
-				DrawString(r.left + clicked, r.left + 11, r.top + (clicked ? 2 : 1), STR_ARROW_DOWN, TC_BLACK, SA_CENTER);
-				if (str != STR_NULL) DrawString(r.left + 14, r.right - 2, r.top + 1, str, TC_BLACK);
-			}
+		case WWT_DROPDOWN:
+			DrawDropdown(r, wi->colour, clicked, wi->data);
 			break;
-		}
 		}
 
 		if (this->IsWidgetDisabled(i)) {
