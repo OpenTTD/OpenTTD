@@ -30,6 +30,7 @@ public:
 
 	/**
 	 * Gets the maximum sign index; there are no valid signs with a higher index.
+	 * @deprecated This function is deprecated and might be removed in future versions of the API. Use AISignList() instead.
 	 * @return The maximum sign index.
 	 * @post Return value is always non-negative.
 	 */

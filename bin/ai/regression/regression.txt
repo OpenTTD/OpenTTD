@@ -7242,11 +7242,6 @@
   BuildSign(33409, 'Some other Sign'): 2
   RemoveSign(2):                       true
 
-  GetMaxSignID():    3
-  Sign -1
-    IsValidSign():   false
-    GetName():       (null : 0x00000000)
-    GetLocation():   -1
   Sign 0
     IsValidSign():   true
     GetName():       Some Sign
@@ -7255,14 +7250,6 @@
     IsValidSign():   true
     GetName():       Test2
     GetLocation():   33411
-  Sign 2
-    IsValidSign():   false
-    GetName():       (null : 0x00000000)
-    GetLocation():   -1
-  Sign 3
-    IsValidSign():   false
-    GetName():       (null : 0x00000000)
-    GetLocation():   -1
   Valid Signs:       2
 
 --Station--

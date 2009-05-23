@@ -1077,9 +1077,10 @@ function Regression::Sign()
 	print("  BuildSign(33409, 'Some other Sign'): " + sign_id);
 	print("  RemoveSign(" + sign_id + "):                       " + AISign.RemoveSign(sign_id));
 	print("");
-	print("  GetMaxSignID():    " + AISign.GetMaxSignID());
-	for (local i = -1; i < AISign.GetMaxSignID() + 1; i++) {
-		if (AISign.IsValidSign(i)) j++;
+	local list = AISignList();
+	list.Sort(AIAbstractList.SORT_BY_ITEM, true);
+	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+		j++;
 		print("  Sign " + i);
 		print("    IsValidSign():   " + AISign.IsValidSign(i));
 		print("    GetName():       " + AISign.GetName(i));
