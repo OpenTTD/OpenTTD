@@ -1275,6 +1275,14 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(120)) {
+		/* CargoPacket's source should be either INVALID_STATION or a valid station */
+		CargoPacket *cp;
+		FOR_ALL_CARGOPACKETS(cp) {
+			if (!Station::IsValidID(cp->source)) cp->source = INVALID_STATION;
+		}
+	}
+
 	/* Buoys do now store the owner of the previous water tile, which can never
 	 * be OWNER_NONE. So replace OWNER_NONE with OWNER_WATER. */
 	if (CheckSavegameVersion(46)) {

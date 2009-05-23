@@ -1016,9 +1016,7 @@ static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int nu
  */
 static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, StationID dest, TileIndex source_tile, byte days_in_transit, SmallIndustryList *industry_set)
 {
-	bool subsidised;
-	Station *s_from, *s_to;
-	Money profit;
+	bool subsidised = false;
 
 	assert(num_pieces > 0);
 
@@ -1029,12 +1027,14 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 		SetBit(c->cargo_types, cargo_type);
 	}
 
-	/* Get station pointers. */
-	s_from = Station::Get(source);
-	s_to = Station::Get(dest);
+	const Station *s_to = Station::Get(dest);
 
-	/* Check if a subsidy applies. */
-	subsidised = CheckSubsidised(s_from, s_to, cargo_type);
+	if (source != INVALID_STATION) {
+		const Station *s_from = Station::Get(source);
+
+		/* Check if a subsidy applies. */
+		subsidised = CheckSubsidised(s_from, s_to, cargo_type);
+	}
 
 	/* Increase town's counter for some special goods types */
 	const CargoSpec *cs = GetCargo(cargo_type);
@@ -1045,7 +1045,7 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 	DeliverGoodsToIndustry(s_to, cargo_type, num_pieces, industry_set);
 
 	/* Determine profit */
-	profit = GetTransportedGoodsIncome(num_pieces, DistanceManhattan(source_tile, s_to->xy), days_in_transit, cargo_type);
+	Money profit = GetTransportedGoodsIncome(num_pieces, DistanceManhattan(source_tile, s_to->xy), days_in_transit, cargo_type);
 
 	/* Modify profit if a subsidy is in effect */
 	if (subsidised) {
