@@ -14,6 +14,7 @@
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "gui.h"
+#include "subsidy_func.h"
 
 #include "table/strings.h"
 

@@ -4,7 +4,7 @@
 
 #include "ai_subsidy.hpp"
 #include "ai_date.hpp"
-#include "../../economy_func.h"
+#include "../../subsidy_type.h"
 #include "../../station_base.h"
 #include "../../cargotype.h"
 

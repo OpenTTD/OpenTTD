@@ -34,6 +34,7 @@
 #include "effectvehicle_func.h"
 #include "ai/ai.hpp"
 #include "core/pool_func.hpp"
+#include "subsidy_func.h"
 
 #include "table/strings.h"
 #include "table/industry_land.h"

@@ -23,14 +23,6 @@ struct Economy {
 	uint32 industry_daily_increment;      ///< The value which will increment industry_daily_change_counter. Computed value. NOSAVE
 };
 
-struct Subsidy {
-	CargoID cargo_type;
-	byte age;
-	/* from and to can either be TownID, StationID or IndustryID */
-	uint16 from;
-	uint16 to;
-};
-
 enum ScoreID {
 	SCORE_BEGIN      = 0,
 	SCORE_VEHICLES   = 0,

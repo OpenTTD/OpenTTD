@@ -11,6 +11,7 @@
 #include "../ship.h"
 #include "../train.h"
 #include "../signs_base.h"
+#include "../subsidy_type.h"
 #include "../debug.h"
 #include "../depot_base.h"
 #include "../newgrf_config.h"

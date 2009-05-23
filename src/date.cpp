@@ -163,6 +163,7 @@ extern void EnginesMonthlyLoop();
 extern void TownsMonthlyLoop();
 extern void IndustryMonthlyLoop();
 extern void StationMonthlyLoop();
+extern void SubsidyMonthlyLoop();
 
 extern void CompaniesYearlyLoop();
 extern void VehiclesYearlyLoop();
@@ -249,6 +250,7 @@ void IncreaseDate()
 
 		InvalidateWindowClasses(WC_CHEATS);
 		CompaniesMonthlyLoop();
+		SubsidyMonthlyLoop();
 		EnginesMonthlyLoop();
 		TownsMonthlyLoop();
 		IndustryMonthlyLoop();

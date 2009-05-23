@@ -74,6 +74,7 @@ spritecache.cpp
 station.cpp
 string.cpp
 strings.cpp
+subsidy.cpp
 texteff.cpp
 tgp.cpp
 #if HAVE_THREAD
@@ -291,6 +292,8 @@ string_func.h
 string_type.h
 strings_func.h
 strings_type.h
+subsidy_func.h
+subsidy_type.h
 tar_type.h
 terraform_gui.h
 textbuf_gui.h

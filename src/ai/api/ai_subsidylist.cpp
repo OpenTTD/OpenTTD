@@ -4,7 +4,7 @@
 
 #include "ai_subsidylist.hpp"
 #include "ai_subsidy.hpp"
-#include "../../economy_func.h"
+#include "../../subsidy_type.h"
 
 AISubsidyList::AISubsidyList()
 {

@@ -20,6 +20,7 @@
 #include "aircraft.h"
 #include "vehicle_gui.h"
 #include "settings_type.h"
+#include "subsidy_func.h"
 #include "core/pool_func.hpp"
 
 #include "table/strings.h"

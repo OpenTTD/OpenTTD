@@ -3,7 +3,7 @@
 /** @file subsidy_sl.cpp Code handling saving and loading of subsidies */
 
 #include "../stdafx.h"
-#include "../economy_func.h"
+#include "../subsidy_type.h"
 
 #include "saveload.h"
 
