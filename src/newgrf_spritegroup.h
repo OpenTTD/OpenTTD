@@ -43,7 +43,11 @@ enum SpriteGroupType {
 
 struct SpriteGroup;
 typedef uint32 SpriteGroupID;
-typedef Pool<SpriteGroup, SpriteGroupID, 512, 64000> SpriteGroupPool;
+
+/* SPRITE_WIDTH is 24. ECS has roughly 30 sprite groups per real sprite.
+ * Adding an 'extra' margin would be assuming 64 sprite groups per real
+ * sprite. 64 = 2^6, so 2^30 should be enough (for now) */
+typedef Pool<SpriteGroup, SpriteGroupID, 1024, 1 << 30> SpriteGroupPool;
 extern SpriteGroupPool _spritegroup_pool;
 
 /* Common wrapper for all the different sprite group types */
