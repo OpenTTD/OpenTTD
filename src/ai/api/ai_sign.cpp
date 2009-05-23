@@ -15,7 +15,7 @@
 
 /* static */ SignID AISign::GetMaxSignID()
 {
-	return (SignID)::Sign::GetNumItems();
+	return (SignID)::Sign::GetPoolSize();
 }
 
 /* static */ bool AISign::IsValidSign(SignID sign_id)
