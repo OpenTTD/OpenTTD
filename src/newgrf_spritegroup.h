@@ -30,12 +30,44 @@ static inline uint32 GetRegister(uint i)
 	return _temp_store.Get(i);
 }
 
+/* List of different sprite group types */
+enum SpriteGroupType {
+	SGT_REAL,
+	SGT_DETERMINISTIC,
+	SGT_RANDOMIZED,
+	SGT_CALLBACK,
+	SGT_RESULT,
+	SGT_TILELAYOUT,
+	SGT_INDUSTRY_PRODUCTION,
+};
+
 struct SpriteGroup;
+typedef uint32 SpriteGroupID;
+typedef Pool<SpriteGroup, SpriteGroupID, 512, 64000> SpriteGroupPool;
+extern SpriteGroupPool _spritegroup_pool;
+
+/* Common wrapper for all the different sprite group types */
+struct SpriteGroup : SpriteGroupPool::PoolItem<&_spritegroup_pool> {
+protected:
+	SpriteGroup(SpriteGroupType type) : type(type) {}
+
+public:
+	virtual ~SpriteGroup() {}
+
+	SpriteGroupType type;
+
+	virtual SpriteID GetResult() const { return 0; }
+	virtual byte GetNumResults() const { return 0; }
+	virtual uint16 GetCallbackResult() const { return CALLBACK_FAILED; }
+};
 
 
 /* 'Real' sprite groups contain a list of other result or callback sprite
  * groups. */
-struct RealSpriteGroup {
+struct RealSpriteGroup : SpriteGroup {
+	RealSpriteGroup() : SpriteGroup(SGT_REAL) {}
+	~RealSpriteGroup();
+
 	/* Loaded = in motion, loading = not moving
 	 * Each group contains several spritesets, for various loading stages */
 
@@ -114,7 +146,10 @@ struct DeterministicSpriteGroupRange {
 };
 
 
-struct DeterministicSpriteGroup {
+struct DeterministicSpriteGroup : SpriteGroup {
+	DeterministicSpriteGroup() : SpriteGroup(SGT_DETERMINISTIC) {}
+	~DeterministicSpriteGroup();
+
 	VarSpriteGroupScope var_scope;
 	DeterministicSpriteGroupSize size;
 	byte num_adjusts;
@@ -131,7 +166,10 @@ enum RandomizedSpriteGroupCompareMode {
 	RSG_CMP_ALL,
 };
 
-struct RandomizedSpriteGroup {
+struct RandomizedSpriteGroup : SpriteGroup {
+	RandomizedSpriteGroup() : SpriteGroup(SGT_RANDOMIZED) {}
+	~RandomizedSpriteGroup();
+
 	VarSpriteGroupScope var_scope;  ///< Take this object:
 
 	RandomizedSpriteGroupCompareMode cmp_mode; ///< Check for these triggers:
@@ -147,66 +185,66 @@ struct RandomizedSpriteGroup {
 
 /* This contains a callback result. A failed callback has a value of
  * CALLBACK_FAILED */
-struct CallbackResultSpriteGroup {
+struct CallbackResultSpriteGroup : SpriteGroup {
+	/**
+	 * Creates a spritegroup representing a callback result
+	 * @param result The value that was used to represent this callback result
+	 */
+	CallbackResultSpriteGroup(uint16 value) :
+		SpriteGroup(SGT_CALLBACK),
+		result(result)
+	{
+		/* Old style callback results have the highest byte 0xFF so signify it is a callback result
+		 * New style ones only have the highest bit set (allows 15-bit results, instead of just 8) */
+		if ((this->result >> 8) == 0xFF) {
+			this->result &= ~0xFF00;
+		} else {
+			this->result &= ~0x8000;
+		}
+	}
+
 	uint16 result;
+	uint16 GetCallbackResult() const { return this->result; }
 };
 
 
 /* A result sprite group returns the first SpriteID and the number of
  * sprites in the set */
-struct ResultSpriteGroup {
+struct ResultSpriteGroup : SpriteGroup {
+	/**
+	 * Creates a spritegroup representing a sprite number result.
+	 * @param sprite The sprite number.
+	 * @param num_sprites The number of sprites per set.
+	 * @return A spritegroup representing the sprite number result.
+	 */
+	ResultSpriteGroup(SpriteID sprite, byte num_sprites) :
+		SpriteGroup(SGT_RESULT),
+		sprite(sprite),
+		num_sprites(num_sprites)
+	{
+	}
+
 	SpriteID sprite;
 	byte num_sprites;
+	SpriteID GetResult() const { return this->sprite; }
+	byte GetNumResults() const { return this->num_sprites; }
 };
 
-struct TileLayoutSpriteGroup {
+struct TileLayoutSpriteGroup : SpriteGroup {
+	TileLayoutSpriteGroup() : SpriteGroup(SGT_TILELAYOUT) {}
+	~TileLayoutSpriteGroup();
+
 	byte num_sprites; ///< Number of sprites in the spriteset, used for loading stages
 	struct DrawTileSprites *dts;
 };
 
-struct IndustryProductionSpriteGroup {
+struct IndustryProductionSpriteGroup : SpriteGroup {
+	IndustryProductionSpriteGroup() : SpriteGroup(SGT_INDUSTRY_PRODUCTION) {}
+
 	uint8 version;
 	uint16 substract_input[3];
 	uint16 add_output[2];
 	uint8 again;
-};
-
-/* List of different sprite group types */
-enum SpriteGroupType {
-	SGT_INVALID,
-	SGT_REAL,
-	SGT_DETERMINISTIC,
-	SGT_RANDOMIZED,
-	SGT_CALLBACK,
-	SGT_RESULT,
-	SGT_TILELAYOUT,
-	SGT_INDUSTRY_PRODUCTION,
-};
-
-typedef uint32 SpriteGroupID;
-typedef Pool<SpriteGroup, SpriteGroupID, 512, 64000> SpriteGroupPool;
-extern SpriteGroupPool _spritegroup_pool;
-
-/* Common wrapper for all the different sprite group types */
-struct SpriteGroup : SpriteGroupPool::PoolItem<&_spritegroup_pool> {
-	SpriteGroup(SpriteGroupType type = SGT_INVALID) :
-		type(type)
-	{
-	}
-
-	~SpriteGroup();
-
-	SpriteGroupType type;
-
-	union {
-		RealSpriteGroup real;
-		DeterministicSpriteGroup determ;
-		RandomizedSpriteGroup random;
-		CallbackResultSpriteGroup callback;
-		ResultSpriteGroup result;
-		TileLayoutSpriteGroup layout;
-		IndustryProductionSpriteGroup indprod;
-	} g;
 };
 
 
@@ -273,7 +311,7 @@ struct ResolverObject {
 	uint32 (*GetTriggers)(const struct ResolverObject*);
 	void (*SetTriggers)(const struct ResolverObject*, int);
 	uint32 (*GetVariable)(const struct ResolverObject*, byte, byte, bool*);
-	const SpriteGroup *(*ResolveReal)(const struct ResolverObject*, const SpriteGroup*);
+	const SpriteGroup *(*ResolveReal)(const struct ResolverObject*, const RealSpriteGroup*);
 
 	ResolverObject() : procedure_call(false) { }
 };

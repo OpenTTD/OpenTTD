@@ -60,11 +60,11 @@ static uint32 CanalGetVariable(const ResolverObject *object, byte variable, byte
 }
 
 
-static const SpriteGroup *CanalResolveReal(const ResolverObject *object, const SpriteGroup *group)
+static const SpriteGroup *CanalResolveReal(const ResolverObject *object, const RealSpriteGroup *group)
 {
-	if (group->g.real.num_loaded == 0) return NULL;
+	if (group->num_loaded == 0) return NULL;
 
-	return group->g.real.loaded[0];
+	return group->loaded[0];
 }
 
 
@@ -97,7 +97,7 @@ SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile)
 	NewCanalResolver(&object, tile, _water_feature[feature].grffile);
 
 	group = Resolve(_water_feature[feature].group, &object);
-	if (group == NULL || group->type != SGT_RESULT) return 0;
+	if (group == NULL) return 0;
 
-	return group->g.result.sprite;
+	return group->GetResult();
 }

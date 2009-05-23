@@ -105,7 +105,7 @@ static uint32 IndustryTileGetVariable(const ResolverObject *object, byte variabl
 	return UINT_MAX;
 }
 
-static const SpriteGroup *IndustryTileResolveReal(const ResolverObject *object, const SpriteGroup *group)
+static const SpriteGroup *IndustryTileResolveReal(const ResolverObject *object, const RealSpriteGroup *group)
 {
 	/* IndustryTile do not have 'real' groups.  Or do they?? */
 	return NULL;
@@ -163,9 +163,9 @@ static void NewIndustryTileResolver(ResolverObject *res, IndustryGfx gfx, TileIn
 	res->grffile         = (its != NULL ? its->grf_prop.grffile : NULL);
 }
 
-static void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte rnd_colour, byte stage, IndustryGfx gfx)
+static void IndustryDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, byte rnd_colour, byte stage, IndustryGfx gfx)
 {
-	const DrawTileSprites *dts = group->g.layout.dts;
+	const DrawTileSprites *dts = group->dts;
 	const DrawTileSeqStruct *dtss;
 
 	SpriteID image = dts->ground.sprite;
@@ -224,7 +224,7 @@ uint16 GetIndustryTileCallback(CallbackID callback, uint32 param1, uint32 param2
 	group = Resolve(GetIndustryTileSpec(gfx_id)->grf_prop.spritegroup, &object);
 	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
 
-	return group->g.callback.result;
+	return group->GetCallbackResult();
 }
 
 bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const IndustryTileSpec *inds)
@@ -249,10 +249,11 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 	if (group == NULL || group->type != SGT_TILELAYOUT) {
 		return false;
 	} else {
+		const TileLayoutSpriteGroup *tlgroup = (const TileLayoutSpriteGroup *)group;
 		/* Limit the building stage to the number of stages supplied. */
 		byte stage = GetIndustryConstructionStage(ti->tile);
-		stage = Clamp(stage - 4 + group->g.layout.num_sprites, 0, group->g.layout.num_sprites - 1);
-		IndustryDrawTileLayout(ti, group, i->random_colour, stage, gfx);
+		stage = Clamp(stage - 4 + tlgroup->num_sprites, 0, tlgroup->num_sprites - 1);
+		IndustryDrawTileLayout(ti, tlgroup, i->random_colour, stage, gfx);
 		return true;
 	}
 }

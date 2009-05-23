@@ -815,24 +815,24 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 }
 
 
-static const SpriteGroup *VehicleResolveReal(const ResolverObject *object, const SpriteGroup *group)
+static const SpriteGroup *VehicleResolveReal(const ResolverObject *object, const RealSpriteGroup *group)
 {
 	const Vehicle *v = object->u.vehicle.self;
 
 	if (v == NULL) {
-		if (group->g.real.num_loading > 0) return group->g.real.loading[0];
-		if (group->g.real.num_loaded  > 0) return group->g.real.loaded[0];
+		if (group->num_loading > 0) return group->loading[0];
+		if (group->num_loaded  > 0) return group->loaded[0];
 		return NULL;
 	}
 
 	bool in_motion = !v->First()->current_order.IsType(OT_LOADING);
 
-	uint totalsets = in_motion ? group->g.real.num_loaded : group->g.real.num_loading;
+	uint totalsets = in_motion ? group->num_loaded : group->num_loading;
 
 	uint set = (v->cargo.Count() * totalsets) / max((uint16)1, v->cargo_cap);
 	set = min(set, totalsets - 1);
 
-	return in_motion ? group->g.real.loaded[set] : group->g.real.loading[set];
+	return in_motion ? group->loaded[set] : group->loading[set];
 }
 
 
@@ -913,9 +913,9 @@ SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction dire
 	NewVehicleResolver(&object, engine, v);
 
 	group = Resolve(GetVehicleSpriteGroup(engine, v), &object);
-	if (group == NULL || group->type != SGT_RESULT || group->g.result.num_sprites == 0) return 0;
+	if (group == NULL || group->GetNumResults() == 0) return 0;
 
-	return group->g.result.sprite + (direction % group->g.result.num_sprites);
+	return group->GetResult() + (direction % group->GetNumResults());
 }
 
 
@@ -936,11 +936,11 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Aircraft *v, bool info_vi
 	const SpriteGroup *group = GetWagonOverrideSpriteSet(engine, CT_DEFAULT, engine);
 	group = Resolve(group, &object);
 
-	if (group == NULL || group->type != SGT_RESULT || group->g.result.num_sprites == 0) return 0;
+	if (group == NULL || group->GetNumResults() == 0) return 0;
 
-	if (v == NULL) return group->g.result.sprite;
+	if (v == NULL) return group->GetResult();
 
-	return group->g.result.sprite + (info_view ? 0 : (v->Next()->Next()->state % group->g.result.num_sprites));
+	return group->GetResult() + (info_view ? 0 : (v->Next()->Next()->state % group->GetNumResults()));
 }
 
 
@@ -976,9 +976,9 @@ uint16 GetVehicleCallback(CallbackID callback, uint32 param1, uint32 param2, Eng
 	object.callback_param2 = param2;
 
 	group = Resolve(GetVehicleSpriteGroup(engine, v, false), &object);
-	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
+	if (group == NULL) return CALLBACK_FAILED;
 
-	return group->g.callback.result;
+	return group->GetCallbackResult();
 }
 
 /**
@@ -1005,9 +1005,9 @@ uint16 GetVehicleCallbackParent(CallbackID callback, uint32 param1, uint32 param
 	object.u.vehicle.parent = parent;
 
 	group = Resolve(GetVehicleSpriteGroup(engine, v, false), &object);
-	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
+	if (group == NULL) return CALLBACK_FAILED;
 
-	return group->g.callback.result;
+	return group->GetCallbackResult();
 }
 
 

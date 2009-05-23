@@ -527,7 +527,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 }
 
 
-static const SpriteGroup *StationResolveReal(const ResolverObject *object, const SpriteGroup *group)
+static const SpriteGroup *StationResolveReal(const ResolverObject *object, const RealSpriteGroup *group)
 {
 	const Station *st = object->u.station.st;
 	const StationSpec *statspec = object->u.station.statspec;
@@ -537,7 +537,7 @@ static const SpriteGroup *StationResolveReal(const ResolverObject *object, const
 	CargoID cargo_type = object->u.station.cargo_type;
 
 	if (st == NULL || statspec->sclass == STAT_CLASS_WAYP) {
-		return group->g.real.loading[0];
+		return group->loading[0];
 	}
 
 	switch (cargo_type) {
@@ -562,18 +562,18 @@ static const SpriteGroup *StationResolveReal(const ResolverObject *object, const
 	cargo = min(0xfff, cargo);
 
 	if (cargo > statspec->cargo_threshold) {
-		if (group->g.real.num_loading > 0) {
-			set = ((cargo - statspec->cargo_threshold) * group->g.real.num_loading) / (4096 - statspec->cargo_threshold);
-			return group->g.real.loading[set];
+		if (group->num_loading > 0) {
+			set = ((cargo - statspec->cargo_threshold) * group->num_loading) / (4096 - statspec->cargo_threshold);
+			return group->loading[set];
 		}
 	} else {
-		if (group->g.real.num_loaded > 0) {
-			set = (cargo * group->g.real.num_loaded) / (statspec->cargo_threshold + 1);
-			return group->g.real.loaded[set];
+		if (group->num_loaded > 0) {
+			set = (cargo * group->num_loaded) / (statspec->cargo_threshold + 1);
+			return group->loaded[set];
 		}
 	}
 
-	return group->g.real.loading[0];
+	return group->loading[0];
 }
 
 
@@ -645,7 +645,7 @@ SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *
 
 	group = ResolveStation(&object);
 	if (group == NULL || group->type != SGT_RESULT) return 0;
-	return group->g.result.sprite - 0x42D;
+	return group->GetResult() - 0x42D;
 }
 
 
@@ -661,7 +661,7 @@ SpriteID GetCustomStationGroundRelocation(const StationSpec *statspec, const Sta
 
 	group = ResolveStation(&object);
 	if (group == NULL || group->type != SGT_RESULT) return 0;
-	return group->g.result.sprite - 0x42D;
+	return group->GetResult() - 0x42D;
 }
 
 
@@ -677,8 +677,8 @@ uint16 GetStationCallback(CallbackID callback, uint32 param1, uint32 param2, con
 	object.callback_param2 = param2;
 
 	group = ResolveStation(&object);
-	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
-	return group->g.callback.result;
+	if (group == NULL) return CALLBACK_FAILED;
+	return group->GetCallbackResult();
 }
 
 

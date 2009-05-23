@@ -98,11 +98,11 @@ static uint32 GenericCallbackGetVariable(const ResolverObject *object, byte vari
 }
 
 
-static const SpriteGroup *GenericCallbackResolveReal(const ResolverObject *object, const SpriteGroup *group)
+static const SpriteGroup *GenericCallbackResolveReal(const ResolverObject *object, const RealSpriteGroup *group)
 {
-	if (group->g.real.num_loaded == 0) return NULL;
+	if (group->num_loaded == 0) return NULL;
 
-	return group->g.real.loaded[0];
+	return group->loaded[0];
 }
 
 
@@ -140,12 +140,12 @@ static uint16 GetGenericCallbackResult(uint8 feature, ResolverObject *object, co
 	for (GenericCallbackList::const_iterator it = _gcl[feature].begin(); it != _gcl[feature].end(); ++it) {
 		const SpriteGroup *group = it->group;
 		group = Resolve(group, object);
-		if (group == NULL || group->type != SGT_CALLBACK) continue;
+		if (group == NULL) continue;
 
 		/* Return NewGRF file if necessary */
 		if (file != NULL) *file = it->file;
 
-		return group->g.callback.result;
+		return group->GetCallbackResult();
 	}
 
 	/* No callback returned a valid result, so we've failed. */

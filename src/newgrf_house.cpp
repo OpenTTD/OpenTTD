@@ -309,7 +309,7 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 	return UINT_MAX;
 }
 
-static const SpriteGroup *HouseResolveReal(const ResolverObject *object, const SpriteGroup *group)
+static const SpriteGroup *HouseResolveReal(const ResolverObject *object, const RealSpriteGroup *group)
 {
 	/* Houses do not have 'real' groups */
 	return NULL;
@@ -355,14 +355,14 @@ uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, House
 	object.callback_param2 = param2;
 
 	group = Resolve(GetHouseSpecs(house_id)->spritegroup, &object);
-	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
+	if (group == NULL) return CALLBACK_FAILED;
 
-	return group->g.callback.result;
+	return group->GetCallbackResult();
 }
 
-static void DrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte stage, HouseID house_id)
+static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, byte stage, HouseID house_id)
 {
-	const DrawTileSprites *dts = group->g.layout.dts;
+	const DrawTileSprites *dts = group->dts;
 	const DrawTileSeqStruct *dtss;
 
 	const HouseSpec *hs = GetHouseSpecs(house_id);
@@ -427,10 +427,11 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 		/* XXX: This is for debugging purposes really, and shouldn't stay. */
 		DrawGroundSprite(SPR_SHADOW_CELL, PAL_NONE);
 	} else {
+		const TileLayoutSpriteGroup *tlgroup = (const TileLayoutSpriteGroup *)group;
 		/* Limit the building stage to the number of stages supplied. */
 		byte stage = GetHouseBuildingStage(ti->tile);
-		stage = Clamp(stage - 4 + group->g.layout.num_sprites, 0, group->g.layout.num_sprites - 1);
-		DrawTileLayout(ti, group, stage, house_id);
+		stage = Clamp(stage - 4 + tlgroup->num_sprites, 0, tlgroup->num_sprites - 1);
+		DrawTileLayout(ti, tlgroup, stage, house_id);
 	}
 }
 

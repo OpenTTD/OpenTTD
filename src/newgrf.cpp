@@ -2588,42 +2588,6 @@ static void ReserveChangeInfo(byte *buf, size_t len)
 	}
 }
 
-/**
- * Creates a spritegroup representing a callback result
- * @param value The value that was used to represent this callback result
- * @return A spritegroup representing that callback result
- */
-static const SpriteGroup *NewCallBackResultSpriteGroup(uint16 value)
-{
-	SpriteGroup *group = new SpriteGroup(SGT_CALLBACK);
-
-	/* Old style callback results have the highest byte 0xFF so signify it is a callback result
-	 * New style ones only have the highest bit set (allows 15-bit results, instead of just 8) */
-	if ((value >> 8) == 0xFF) {
-		value &= ~0xFF00;
-	} else {
-		value &= ~0x8000;
-	}
-
-	group->g.callback.result = value;
-
-	return group;
-}
-
-/**
- * Creates a spritegroup representing a sprite number result.
- * @param sprite The sprite number.
- * @param num_sprites The number of sprites per set.
- * @return A spritegroup representing the sprite number result.
- */
-static const SpriteGroup *NewResultSpriteGroup(SpriteID sprite, byte num_sprites)
-{
-	SpriteGroup *group = new SpriteGroup(SGT_RESULT);
-	group->g.result.sprite = sprite;
-	group->g.result.num_sprites = num_sprites;
-	return group;
-}
-
 /* Action 0x01 */
 static void NewSpriteSet(byte *buf, size_t len)
 {
@@ -2678,7 +2642,7 @@ static void SkipAct1(byte *buf, size_t len)
  * defined spritegroup. */
 static const SpriteGroup *GetGroupFromGroupID(byte setid, byte type, uint16 groupid)
 {
-	if (HasBit(groupid, 15)) return NewCallBackResultSpriteGroup(groupid);
+	if (HasBit(groupid, 15)) return new CallbackResultSpriteGroup(groupid);
 
 	if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
 		grfmsg(1, "GetGroupFromGroupID(0x%02X:0x%02X): Groupid 0x%04X does not exist, leaving empty", setid, type, groupid);
@@ -2691,7 +2655,7 @@ static const SpriteGroup *GetGroupFromGroupID(byte setid, byte type, uint16 grou
 /* Helper function to either create a callback or a result sprite group. */
 static const SpriteGroup *CreateGroupFromGroupID(byte feature, byte setid, byte type, uint16 spriteid, uint16 num_sprites)
 {
-	if (HasBit(spriteid, 15)) return NewCallBackResultSpriteGroup(spriteid);
+	if (HasBit(spriteid, 15)) return new CallbackResultSpriteGroup(spriteid);
 
 	if (spriteid >= _cur_grffile->spriteset_numsets) {
 		grfmsg(1, "CreateGroupFromGroupID(0x%02X:0x%02X): Sprite set %u invalid, max %u", setid, type, spriteid, _cur_grffile->spriteset_numsets);
@@ -2716,7 +2680,7 @@ static const SpriteGroup *CreateGroupFromGroupID(byte feature, byte setid, byte 
 		return NULL;
 	}
 
-	return NewResultSpriteGroup(_cur_grffile->spriteset_start + spriteid * num_sprites, num_sprites);
+	return new ResultSpriteGroup(_cur_grffile->spriteset_start + spriteid * num_sprites, num_sprites);
 }
 
 /* Action 0x02 */
@@ -2732,7 +2696,7 @@ static void NewSpriteGroup(byte *buf, size_t len)
 	 *                 otherwise it specifies a number of entries, the exact
 	 *                 meaning depends on the feature
 	 * V feature-specific-data (huge mess, don't even look it up --pasky) */
-	SpriteGroup *group = NULL;
+	SpriteGroup *act_group = NULL;
 	byte *bufend = buf + len;
 
 	if (!check_length(len, 5, "NewSpriteGroup")) return;
@@ -2765,14 +2729,15 @@ static void NewSpriteGroup(byte *buf, size_t len)
 			/* Check we can load the var size parameter */
 			if (!check_length(bufend - buf, 1, "NewSpriteGroup (Deterministic) (1)")) return;
 
-			group = new SpriteGroup(SGT_DETERMINISTIC);
-			group->g.determ.var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
+			DeterministicSpriteGroup *group = new DeterministicSpriteGroup();
+			act_group = group;
+			group->var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
 
 			switch (GB(type, 2, 2)) {
 				default: NOT_REACHED();
-				case 0: group->g.determ.size = DSG_SIZE_BYTE;  varsize = 1; break;
-				case 1: group->g.determ.size = DSG_SIZE_WORD;  varsize = 2; break;
-				case 2: group->g.determ.size = DSG_SIZE_DWORD; varsize = 4; break;
+				case 0: group->size = DSG_SIZE_BYTE;  varsize = 1; break;
+				case 1: group->size = DSG_SIZE_WORD;  varsize = 2; break;
+				case 2: group->size = DSG_SIZE_DWORD; varsize = 4; break;
 			}
 
 			if (!check_length(bufend - buf, 5 + varsize, "NewSpriteGroup (Deterministic) (2)")) return;
@@ -2782,17 +2747,17 @@ static void NewSpriteGroup(byte *buf, size_t len)
 			do {
 				DeterministicSpriteGroupAdjust *adjust;
 
-				if (group->g.determ.num_adjusts > 0) {
+				if (group->num_adjusts > 0) {
 					if (!check_length(bufend - buf, 2 + varsize + 3, "NewSpriteGroup (Deterministic) (3)")) return;
 				}
 
-				group->g.determ.num_adjusts++;
-				group->g.determ.adjusts = ReallocT(group->g.determ.adjusts, group->g.determ.num_adjusts);
+				group->num_adjusts++;
+				group->adjusts = ReallocT(group->adjusts, group->num_adjusts);
 
-				adjust = &group->g.determ.adjusts[group->g.determ.num_adjusts - 1];
+				adjust = &group->adjusts[group->num_adjusts - 1];
 
 				/* The first var adjust doesn't have an operation specified, so we set it to add. */
-				adjust->operation = group->g.determ.num_adjusts == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)grf_load_byte(&buf);
+				adjust->operation = group->num_adjusts == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)grf_load_byte(&buf);
 				adjust->variable  = grf_load_byte(&buf);
 				if (adjust->variable == 0x7E) {
 					/* Link subroutine group */
@@ -2817,18 +2782,18 @@ static void NewSpriteGroup(byte *buf, size_t len)
 				/* Continue reading var adjusts while bit 5 is set. */
 			} while (HasBit(varadjust, 5));
 
-			group->g.determ.num_ranges = grf_load_byte(&buf);
-			if (group->g.determ.num_ranges > 0) group->g.determ.ranges = CallocT<DeterministicSpriteGroupRange>(group->g.determ.num_ranges);
+			group->num_ranges = grf_load_byte(&buf);
+			if (group->num_ranges > 0) group->ranges = CallocT<DeterministicSpriteGroupRange>(group->num_ranges);
 
-			if (!check_length(bufend - buf, 2 + (2 + 2 * varsize) * group->g.determ.num_ranges, "NewSpriteGroup (Deterministic)")) return;
+			if (!check_length(bufend - buf, 2 + (2 + 2 * varsize) * group->num_ranges, "NewSpriteGroup (Deterministic)")) return;
 
-			for (uint i = 0; i < group->g.determ.num_ranges; i++) {
-				group->g.determ.ranges[i].group = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
-				group->g.determ.ranges[i].low   = grf_load_var(varsize, &buf);
-				group->g.determ.ranges[i].high  = grf_load_var(varsize, &buf);
+			for (uint i = 0; i < group->num_ranges; i++) {
+				group->ranges[i].group = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
+				group->ranges[i].low   = grf_load_var(varsize, &buf);
+				group->ranges[i].high  = grf_load_var(varsize, &buf);
 			}
 
-			group->g.determ.default_group = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
+			group->default_group = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
 			break;
 		}
 
@@ -2839,25 +2804,26 @@ static void NewSpriteGroup(byte *buf, size_t len)
 		{
 			if (!check_length(bufend - buf, HasBit(type, 2) ? 8 : 7, "NewSpriteGroup (Randomized) (1)")) return;
 
-			group = new SpriteGroup(SGT_RANDOMIZED);
-			group->g.random.var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
+			RandomizedSpriteGroup *group = new RandomizedSpriteGroup();
+			act_group = group;
+			group->var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
 
 			if (HasBit(type, 2)) {
-				if (feature <= GSF_AIRCRAFT) group->g.random.var_scope = VSG_SCOPE_RELATIVE;
-				group->g.random.count = grf_load_byte(&buf);
+				if (feature <= GSF_AIRCRAFT) group->var_scope = VSG_SCOPE_RELATIVE;
+				group->count = grf_load_byte(&buf);
 			}
 
 			uint8 triggers = grf_load_byte(&buf);
-			group->g.random.triggers       = GB(triggers, 0, 7);
-			group->g.random.cmp_mode       = HasBit(triggers, 7) ? RSG_CMP_ALL : RSG_CMP_ANY;
-			group->g.random.lowest_randbit = grf_load_byte(&buf);
-			group->g.random.num_groups     = grf_load_byte(&buf);
-			group->g.random.groups = CallocT<const SpriteGroup*>(group->g.random.num_groups);
+			group->triggers       = GB(triggers, 0, 7);
+			group->cmp_mode       = HasBit(triggers, 7) ? RSG_CMP_ALL : RSG_CMP_ANY;
+			group->lowest_randbit = grf_load_byte(&buf);
+			group->num_groups     = grf_load_byte(&buf);
+			group->groups = CallocT<const SpriteGroup*>(group->num_groups);
 
-			if (!check_length(bufend - buf, 2 * group->g.random.num_groups, "NewSpriteGroup (Randomized) (2)")) return;
+			if (!check_length(bufend - buf, 2 * group->num_groups, "NewSpriteGroup (Randomized) (2)")) return;
 
-			for (uint i = 0; i < group->g.random.num_groups; i++) {
-				group->g.random.groups[i] = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
+			for (uint i = 0; i < group->num_groups; i++) {
+				group->groups[i] = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
 			}
 
 			break;
@@ -2866,8 +2832,6 @@ static void NewSpriteGroup(byte *buf, size_t len)
 		/* Neither a variable or randomized sprite group... must be a real group */
 		default:
 		{
-
-
 			switch (feature) {
 				case GSF_TRAIN:
 				case GSF_ROAD:
@@ -2888,25 +2852,26 @@ static void NewSpriteGroup(byte *buf, size_t len)
 
 					if (!check_length(bufend - buf, 2 * num_loaded + 2 * num_loading, "NewSpriteGroup (Real) (1)")) return;
 
-					group = new SpriteGroup(SGT_REAL);
+					RealSpriteGroup *group = new RealSpriteGroup();
+					act_group = group;
 
-					group->g.real.num_loaded  = num_loaded;
-					group->g.real.num_loading = num_loading;
-					if (num_loaded  > 0) group->g.real.loaded = CallocT<const SpriteGroup*>(num_loaded);
-					if (num_loading > 0) group->g.real.loading = CallocT<const SpriteGroup*>(num_loading);
+					group->num_loaded  = num_loaded;
+					group->num_loading = num_loading;
+					if (num_loaded  > 0) group->loaded = CallocT<const SpriteGroup*>(num_loaded);
+					if (num_loading > 0) group->loading = CallocT<const SpriteGroup*>(num_loading);
 
 					grfmsg(6, "NewSpriteGroup: New SpriteGroup 0x%02X, %u views, %u loaded, %u loading",
 							setid, sprites, num_loaded, num_loading);
 
 					for (uint i = 0; i < num_loaded; i++) {
 						uint16 spriteid = grf_load_word(&buf);
-						group->g.real.loaded[i] = CreateGroupFromGroupID(feature, setid, type, spriteid, sprites);
+						group->loaded[i] = CreateGroupFromGroupID(feature, setid, type, spriteid, sprites);
 						grfmsg(8, "NewSpriteGroup: + rg->loaded[%i]  = subset %u", i, spriteid);
 					}
 
 					for (uint i = 0; i < num_loading; i++) {
 						uint16 spriteid = grf_load_word(&buf);
-						group->g.real.loading[i] = CreateGroupFromGroupID(feature, setid, type, spriteid, sprites);
+						group->loading[i] = CreateGroupFromGroupID(feature, setid, type, spriteid, sprites);
 						grfmsg(8, "NewSpriteGroup: + rg->loading[%i] = subset %u", i, spriteid);
 					}
 
@@ -2919,32 +2884,33 @@ static void NewSpriteGroup(byte *buf, size_t len)
 					byte num_sprites = max((uint8)1, type);
 					uint i;
 
-					group = new SpriteGroup(SGT_TILELAYOUT);
-					group->g.layout.num_sprites = sprites;
-					group->g.layout.dts = CallocT<DrawTileSprites>(1);
+					TileLayoutSpriteGroup *group = new TileLayoutSpriteGroup();
+					act_group = group;
+					group->num_sprites = sprites;
+					group->dts = CallocT<DrawTileSprites>(1);
 
 					/* Groundsprite */
-					group->g.layout.dts->ground.sprite = grf_load_word(&buf);
-					group->g.layout.dts->ground.pal    = grf_load_word(&buf);
+					group->dts->ground.sprite = grf_load_word(&buf);
+					group->dts->ground.pal    = grf_load_word(&buf);
 
 					/* Remap transparent/colour modifier bits */
-					MapSpriteMappingRecolour(&group->g.layout.dts->ground);
+					MapSpriteMappingRecolour(&group->dts->ground);
 
-					if (HasBit(group->g.layout.dts->ground.pal, 15)) {
+					if (HasBit(group->dts->ground.pal, 15)) {
 						/* Bit 31 set means this is a custom sprite, so rewrite it to the
 						 * last spriteset defined. */
-						SpriteID sprite = _cur_grffile->spriteset_start + GB(group->g.layout.dts->ground.sprite, 0, 14) * sprites;
-						SB(group->g.layout.dts->ground.sprite, 0, SPRITE_WIDTH, sprite);
-						ClrBit(group->g.layout.dts->ground.pal, 15);
+						SpriteID sprite = _cur_grffile->spriteset_start + GB(group->dts->ground.sprite, 0, 14) * sprites;
+						SB(group->dts->ground.sprite, 0, SPRITE_WIDTH, sprite);
+						ClrBit(group->dts->ground.pal, 15);
 					}
 
-					group->g.layout.dts->seq = CallocT<DrawTileSeqStruct>(num_sprites + 1);
+					group->dts->seq = CallocT<DrawTileSeqStruct>(num_sprites + 1);
 
 					for (i = 0; i < num_sprites; i++) {
-						DrawTileSeqStruct *seq = (DrawTileSeqStruct*)&group->g.layout.dts->seq[i];
+						DrawTileSeqStruct *seq = (DrawTileSeqStruct*)&group->dts->seq[i];
 
 						seq->image.sprite = grf_load_word(&buf);
-						seq->image.pal   = grf_load_word(&buf);
+						seq->image.pal    = grf_load_word(&buf);
 						seq->delta_x = grf_load_byte(&buf);
 						seq->delta_y = grf_load_byte(&buf);
 
@@ -2969,7 +2935,7 @@ static void NewSpriteGroup(byte *buf, size_t len)
 					}
 
 					/* Set the terminator value. */
-					((DrawTileSeqStruct*)group->g.layout.dts->seq)[i].delta_x = (int8)0x80;
+					((DrawTileSeqStruct*)group->dts->seq)[i].delta_x = (int8)0x80;
 
 					break;
 				}
@@ -2980,24 +2946,25 @@ static void NewSpriteGroup(byte *buf, size_t len)
 						break;
 					}
 
-					group = new SpriteGroup(SGT_INDUSTRY_PRODUCTION);
-					group->g.indprod.version = type;
+					IndustryProductionSpriteGroup *group = new IndustryProductionSpriteGroup();
+					act_group = group;
+					group->version = type;
 					if (type == 0) {
 						for (uint i = 0; i < 3; i++) {
-							group->g.indprod.substract_input[i] = grf_load_word(&buf);
+							group->substract_input[i] = grf_load_word(&buf);
 						}
 						for (uint i = 0; i < 2; i++) {
-							group->g.indprod.add_output[i] = grf_load_word(&buf);
+							group->add_output[i] = grf_load_word(&buf);
 						}
-						group->g.indprod.again = grf_load_byte(&buf);
+						group->again = grf_load_byte(&buf);
 					} else {
 						for (uint i = 0; i < 3; i++) {
-							group->g.indprod.substract_input[i] = grf_load_byte(&buf);
+							group->substract_input[i] = grf_load_byte(&buf);
 						}
 						for (uint i = 0; i < 2; i++) {
-							group->g.indprod.add_output[i] = grf_load_byte(&buf);
+							group->add_output[i] = grf_load_byte(&buf);
 						}
-						group->g.indprod.again = grf_load_byte(&buf);
+						group->again = grf_load_byte(&buf);
 					}
 					break;
 				}
@@ -3008,7 +2975,7 @@ static void NewSpriteGroup(byte *buf, size_t len)
 		}
 	}
 
-	_cur_grffile->spritegroups[setid] = group;
+	_cur_grffile->spritegroups[setid] = act_group;
 }
 
 static CargoID TranslateCargo(uint8 feature, uint8 ctype)

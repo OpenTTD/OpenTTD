@@ -329,7 +329,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 	return UINT_MAX;
 }
 
-static const SpriteGroup *IndustryResolveReal(const ResolverObject *object, const SpriteGroup *group)
+static const SpriteGroup *IndustryResolveReal(const ResolverObject *object, const RealSpriteGroup *group)
 {
 	/* IndustryTile do not have 'real' groups */
 	return NULL;
@@ -388,9 +388,9 @@ uint16 GetIndustryCallback(CallbackID callback, uint32 param1, uint32 param2, In
 	object.callback_param2 = param2;
 
 	group = Resolve(GetIndustrySpec(type)->grf_prop.spritegroup, &object);
-	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
+	if (group == NULL) return CALLBACK_FAILED;
 
-	return group->g.callback.result;
+	return group->GetCallbackResult();
 }
 
 uint32 IndustryLocationGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
@@ -465,18 +465,20 @@ bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspe
 
 	/* Unlike the "normal" cases, not having a valid result means we allow
 	 * the building of the industry, as that's how it's done in TTDP. */
-	if (group == NULL || group->type != SGT_CALLBACK || group->g.callback.result == 0x400) return true;
+	if (group == NULL) return true;
+	uint16 result = group->GetCallbackResult();
+	if (result == 0x400 || result == CALLBACK_FAILED) return true;
 
 	/* Copy some parameters from the registers to the error message text ref. stack */
 	SwitchToErrorRefStack();
 	PrepareTextRefStackUsage(4);
 	SwitchToNormalRefStack();
 
-	switch (group->g.callback.result) {
+	switch (result) {
 		case 0x401: _error_message = STR_ERROR_SITE_UNSUITABLE; break;
 		case 0x402: _error_message = STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST; break;
 		case 0x403: _error_message = STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT; break;
-		default: _error_message = GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + group->g.callback.result); break;
+		default: _error_message = GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + result); break;
 	}
 
 	return false;
@@ -529,19 +531,20 @@ void IndustryProductionCallback(Industry *ind, int reason)
 		}
 
 		SB(object.callback_param2, 8, 16, loop);
-		const SpriteGroup *group = Resolve(spec->grf_prop.spritegroup, &object);
-		if (group == NULL || group->type != SGT_INDUSTRY_PRODUCTION) break;
+		const SpriteGroup *tgroup = Resolve(spec->grf_prop.spritegroup, &object);
+		if (tgroup == NULL || tgroup->type != SGT_INDUSTRY_PRODUCTION) break;
+		const IndustryProductionSpriteGroup *group = (const IndustryProductionSpriteGroup *)tgroup;
 
-		bool deref = (group->g.indprod.version == 1);
+		bool deref = (group->version == 1);
 
 		for (uint i = 0; i < 3; i++) {
-			ind->incoming_cargo_waiting[i] = Clamp(ind->incoming_cargo_waiting[i] - DerefIndProd(group->g.indprod.substract_input[i], deref) * multiplier, 0, 0xFFFF);
+			ind->incoming_cargo_waiting[i] = Clamp(ind->incoming_cargo_waiting[i] - DerefIndProd(group->substract_input[i], deref) * multiplier, 0, 0xFFFF);
 		}
 		for (uint i = 0; i < 2; i++) {
-			ind->produced_cargo_waiting[i] = Clamp(ind->produced_cargo_waiting[i] + max(DerefIndProd(group->g.indprod.add_output[i], deref), 0) * multiplier, 0, 0xFFFF);
+			ind->produced_cargo_waiting[i] = Clamp(ind->produced_cargo_waiting[i] + max(DerefIndProd(group->add_output[i], deref), 0) * multiplier, 0, 0xFFFF);
 		}
 
-		int32 again = DerefIndProd(group->g.indprod.again, deref);
+		int32 again = DerefIndProd(group->again, deref);
 		if (again == 0) break;
 
 		SB(object.callback_param2, 24, 8, again);

@@ -35,12 +35,12 @@ static uint32 CargoGetVariable(const ResolverObject *object, byte variable, byte
 }
 
 
-static const SpriteGroup *CargoResolveReal(const ResolverObject *object, const SpriteGroup *group)
+static const SpriteGroup *CargoResolveReal(const ResolverObject *object, const RealSpriteGroup *group)
 {
 	/* Cargo action 2s should always have only 1 "loaded" state, but some
 	 * times things don't follow the spec... */
-	if (group->g.real.num_loaded > 0) return group->g.real.loaded[0];
-	if (group->g.real.num_loading > 0) return group->g.real.loading[0];
+	if (group->num_loaded > 0) return group->loaded[0];
+	if (group->num_loading > 0) return group->loading[0];
 
 	return NULL;
 }
@@ -75,9 +75,9 @@ SpriteID GetCustomCargoSprite(const CargoSpec *cs)
 	NewCargoResolver(&object, cs);
 
 	group = Resolve(cs->group, &object);
-	if (group == NULL || group->type != SGT_RESULT) return 0;
+	if (group == NULL) return 0;
 
-	return group->g.result.sprite;
+	return group->GetResult();
 }
 
 
@@ -92,9 +92,9 @@ uint16 GetCargoCallback(CallbackID callback, uint32 param1, uint32 param2, const
 	object.callback_param2 = param2;
 
 	group = Resolve(cs->group, &object);
-	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
+	if (group == NULL) return CALLBACK_FAILED;
 
-	return group->g.callback.result;
+	return group->GetCallbackResult();
 }
 
 
