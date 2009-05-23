@@ -83,6 +83,11 @@ void AircraftNextAirportPos_and_Order(Aircraft *v);
 void SetAircraftPosition(Aircraft *v, int x, int y, int z);
 byte GetAircraftFlyingAltitude(const Aircraft *v);
 
+/** Cached oftenly queried (NewGRF) values */
+struct AircraftCache {
+	uint16 cached_max_speed; ///< Cached maximum speed of the aircraft.
+};
+
 /**
  * This class 'wraps' Vehicle; you do not actually instantiate this class.
  * You create a Vehicle using AllocateVehicle, so it is added to the pool
@@ -92,8 +97,9 @@ byte GetAircraftFlyingAltitude(const Aircraft *v);
  * As side-effect the vehicle type is set correctly.
  */
 struct Aircraft : public Vehicle {
+	AircraftCache acache; ///< Cache of often used calculated values
+
 	uint16 crashed_counter;
-	uint16 cached_max_speed;
 	byte pos;
 	byte previous_pos;
 	StationID targetairport;

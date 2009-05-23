@@ -45,7 +45,7 @@
 		case VEH_ROAD: {
 			uint total_length = 0;
 			for (const Vehicle *u = v; u != NULL; u = u->Next()) {
-				total_length += ((RoadVehicle*)u)->cached_veh_length;
+				total_length += ((RoadVehicle*)u)->rcache.cached_veh_length;
 			}
 			return total_length;
 		}

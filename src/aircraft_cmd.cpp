@@ -757,9 +757,9 @@ void UpdateAircraftCache(Aircraft *v)
 		/* Convert from original units to (approx) km/h */
 		max_speed = (max_speed * 129) / 10;
 
-		v->cached_max_speed = max_speed;
+		v->acache.cached_max_speed = max_speed;
 	} else {
-		v->cached_max_speed = 0xFFFF;
+		v->acache.cached_max_speed = 0xFFFF;
 	}
 }
 
@@ -791,9 +791,9 @@ static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE,
 	 * and take-off speeds being too low. */
 	speed_limit *= _settings_game.vehicle.plane_speed;
 
-	if (v->cached_max_speed < speed_limit) {
+	if (v->acache.cached_max_speed < speed_limit) {
 		if (v->cur_speed < speed_limit) hard_limit = false;
-		speed_limit = v->cached_max_speed;
+		speed_limit = v->acache.cached_max_speed;
 	}
 
 	speed_limit = min(speed_limit, v->max_speed);

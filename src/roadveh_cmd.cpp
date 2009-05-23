@@ -142,10 +142,10 @@ void RoadVehUpdateCache(RoadVehicle *v)
 		assert(u->First() == v);
 
 		/* Update the 'first engine' */
-		u->first_engine = (v == u) ? INVALID_ENGINE : v->engine_type;
+		u->rcache.first_engine = (v == u) ? INVALID_ENGINE : v->engine_type;
 
 		/* Update the length of the vehicle. */
-		u->cached_veh_length = GetRoadVehLength(u);
+		u->rcache.cached_veh_length = GetRoadVehLength(u);
 
 		/* Invalidate the vehicle colour map */
 		u->colourmap = PAL_NONE;
@@ -244,7 +244,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		v->roadtype = HasBit(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
 		v->compatible_roadtypes = RoadTypeToRoadTypes(v->roadtype);
-		v->cached_veh_length = 8;
+		v->rcache.cached_veh_length = 8;
 
 		v->vehicle_flags = 0;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
@@ -255,7 +255,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		/* Call various callbacks after the whole consist has been constructed */
 		for (RoadVehicle *u = v; u != NULL; u = u->Next()) {
-			u->cached_veh_length = GetRoadVehLength(u);
+			u->rcache.cached_veh_length = GetRoadVehLength(u);
 			/* Cargo capacity is zero if and only if the vehicle cannot carry anything */
 			if (u->cargo_cap != 0) u->cargo_cap = GetVehicleProperty(u, 0x0F, u->cargo_cap);
 		}
@@ -1582,7 +1582,7 @@ again:
 	 * it's on a depot tile, check if it's time to activate the next vehicle in
 	 * the chain yet. */
 	if (v->Next() != NULL && IsRoadDepotTile(v->tile)) {
-		if (v->frame == v->cached_veh_length + RVC_DEPOT_START_FRAME) {
+		if (v->frame == v->rcache.cached_veh_length + RVC_DEPOT_START_FRAME) {
 			RoadVehLeaveDepot(v->Next(), false);
 		}
 	}

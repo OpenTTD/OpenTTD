@@ -518,7 +518,7 @@ struct DepotWindow : Window {
 							break;
 
 						case VEH_ROAD:
-							_cursor.short_vehicle_offset = 16 - ((RoadVehicle *)v)->cached_veh_length * 2;
+							_cursor.short_vehicle_offset = 16 - ((RoadVehicle *)v)->rcache.cached_veh_length * 2;
 							break;
 
 						default:

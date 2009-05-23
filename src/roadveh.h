@@ -109,6 +109,11 @@ byte GetRoadVehLength(const RoadVehicle *v);
 
 void RoadVehUpdateCache(RoadVehicle *v);
 
+/** Cached oftenly queried (NewGRF) values */
+struct RoadVehicleCache {
+	byte cached_veh_length;
+	EngineID first_engine;
+};
 
 /**
  * This class 'wraps' Vehicle; you do not actually instantiate this class.
@@ -119,6 +124,7 @@ void RoadVehUpdateCache(RoadVehicle *v);
  * As side-effect the vehicle type is set correctly.
  */
 struct RoadVehicle : public Vehicle {
+	RoadVehicleCache rcache; ///< Cache of often used calculated values
 	byte state;             ///< @see RoadVehicleStates
 	byte frame;
 	uint16 blocked_ctr;
@@ -128,8 +134,6 @@ struct RoadVehicle : public Vehicle {
 	byte reverse_ctr;
 	struct RoadStop *slot;
 	byte slot_age;
-	EngineID first_engine;
-	byte cached_veh_length;
 
 	RoadType roadtype;
 	RoadTypes compatible_roadtypes;

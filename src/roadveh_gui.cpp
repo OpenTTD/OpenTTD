@@ -130,7 +130,7 @@ void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection, int c
 	int highlight_w = 0;
 
 	for (int dx = 0; v != NULL && dx < max_length ; v = v->Next()) {
-		int width = ((RoadVehicle *)v)->cached_veh_length;
+		int width = ((RoadVehicle *)v)->rcache.cached_veh_length;
 
 		if (dx + width > 0 && dx <= max_length) {
 			SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);

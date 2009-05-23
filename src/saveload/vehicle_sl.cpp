@@ -253,7 +253,7 @@ void AfterLoadVehicles(bool part_of_load)
 		if (part_of_load) v->fill_percent_te_id = INVALID_TE_ID;
 		v->first = NULL;
 		if (v->type == VEH_TRAIN) ((Train *)v)->tcache.first_engine = INVALID_ENGINE;
-		if (v->type == VEH_ROAD)  ((RoadVehicle *)v)->first_engine = INVALID_ENGINE;
+		if (v->type == VEH_ROAD)  ((RoadVehicle *)v)->rcache.first_engine = INVALID_ENGINE;
 
 		v->cargo.InvalidateCache();
 	}

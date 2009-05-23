@@ -122,7 +122,7 @@ CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		/* Company colour data is indirectly cached. */
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
-			if (v->owner == _current_company) v->cache_valid = 0;
+			if (v->owner == _current_company) v->vcache.cache_valid = 0;
 		}
 	}
 	return CommandCost();

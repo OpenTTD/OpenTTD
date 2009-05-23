@@ -436,7 +436,7 @@ static uint8 LiveryHelper(EngineID engine, const Vehicle *v)
 	} else if (v->type == VEH_TRAIN) {
 		l = GetEngineLivery(v->engine_type, v->owner, ((Train *)v)->tcache.first_engine, v);
 	} else if (v->type == VEH_ROAD) {
-		l = GetEngineLivery(v->engine_type, v->owner, ((RoadVehicle *)v)->first_engine, v);
+		l = GetEngineLivery(v->engine_type, v->owner, ((RoadVehicle *)v)->rcache.first_engine, v);
 	} else {
 		l = GetEngineLivery(v->engine_type, v->owner, INVALID_ENGINE, v);
 	}
@@ -506,21 +506,21 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			return GetEngineGRFID(v->engine_type);
 
 		case 0x40: // Get length of consist
-			if (!HasBit(v->cache_valid, 0)) {
-				v->cached_var40 = PositionHelper(v, false);
-				SetBit(v->cache_valid, 0);
+			if (!HasBit(v->vcache.cache_valid, 0)) {
+				v->vcache.cached_var40 = PositionHelper(v, false);
+				SetBit(v->vcache.cache_valid, 0);
 			}
-			return v->cached_var40;
+			return v->vcache.cached_var40;
 
 		case 0x41: // Get length of same consecutive wagons
-			if (!HasBit(v->cache_valid, 1)) {
-				v->cached_var41 = PositionHelper(v, true);
-				SetBit(v->cache_valid, 1);
+			if (!HasBit(v->vcache.cache_valid, 1)) {
+				v->vcache.cached_var41 = PositionHelper(v, true);
+				SetBit(v->vcache.cache_valid, 1);
 			}
-			return v->cached_var41;
+			return v->vcache.cached_var41;
 
 		case 0x42: // Consist cargo information
-			if (!HasBit(v->cache_valid, 2)) {
+			if (!HasBit(v->vcache.cache_valid, 2)) {
 				const Vehicle *u;
 				byte cargo_classes = 0;
 				CargoID common_cargo_best = CT_INVALID;
@@ -570,17 +570,17 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				}
 
 				uint8 common_bitnum = (common_cargo_type == CT_INVALID ? 0xFF : GetCargo(common_cargo_type)->bitnum);
-				v->cached_var42 = cargo_classes | (common_bitnum << 8) | (common_subtype << 16) | (user_def_data << 24);
-				SetBit(v->cache_valid, 2);
+				v->vcache.cached_var42 = cargo_classes | (common_bitnum << 8) | (common_subtype << 16) | (user_def_data << 24);
+				SetBit(v->vcache.cache_valid, 2);
 			}
-			return v->cached_var42;
+			return v->vcache.cached_var42;
 
 		case 0x43: // Company information
-			if (!HasBit(v->cache_valid, 3)) {
-				v->cached_var43 = v->owner | (Company::Get(v->owner)->is_ai ? 0x10000 : 0) | (LiveryHelper(v->engine_type, v) << 24);
-				SetBit(v->cache_valid, 3);
+			if (!HasBit(v->vcache.cache_valid, 3)) {
+				v->vcache.cached_var43 = v->owner | (Company::Get(v->owner)->is_ai ? 0x10000 : 0) | (LiveryHelper(v->engine_type, v) << 24);
+				SetBit(v->vcache.cache_valid, 3);
 			}
-			return v->cached_var43;
+			return v->vcache.cached_var43;
 
 		case 0x44: // Aircraft information
 			if (v->type != VEH_AIRCRAFT) return UINT_MAX;
@@ -889,7 +889,7 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 			group = use_cache ? ((Train *)v)->tcache.cached_override : GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, ((Train *)v)->tcache.first_engine);
 			if (group != NULL) return group;
 		} else if (v->type == VEH_ROAD) {
-			group = GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, ((RoadVehicle *)v)->first_engine);
+			group = GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, ((RoadVehicle *)v)->rcache.first_engine);
 			if (group != NULL) return group;
 		}
 	}

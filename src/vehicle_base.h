@@ -43,6 +43,15 @@ enum VehicleFlags {
 	VF_AUTOFILL_PRES_WAIT_TIME, ///< Whether non-destructive auto-fill should preserve waiting times
 };
 
+/** Cached oftenly queried (NewGRF) values */
+struct VehicleCache {
+	uint8 cache_valid;   ///< Whether the caches are valid
+	uint32 cached_var40; ///< Cache for NewGRF var 40
+	uint32 cached_var41; ///< Cache for NewGRF var 41
+	uint32 cached_var42; ///< Cache for NewGRF var 42
+	uint32 cached_var43; ///< Cache for NewGRF var 43
+};
+
 typedef Pool<Vehicle, VehicleID, 512, 64000> VehiclePool;
 extern VehiclePool _vehicle_pool;
 
@@ -170,12 +179,7 @@ public:
 
 	byte subtype;                   ///< subtype (Filled with values from EffectVehicles/TrainSubTypes/AircraftSubTypes)
 
-	/* cached oftenly queried NewGRF values */
-	uint8 cache_valid;   ///< Whether the caches are valid
-	uint32 cached_var40; ///< Cache for NewGRF var 40
-	uint32 cached_var41; ///< Cache for NewGRF var 41
-	uint32 cached_var42; ///< Cache for NewGRF var 42
-	uint32 cached_var43; ///< Cache for NewGRF var 43
+	VehicleCache vcache;            ///< Cache of often used calculated values
 
 	/** Create a new vehicle */
 	Vehicle();
