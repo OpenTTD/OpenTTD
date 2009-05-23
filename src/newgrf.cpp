@@ -3311,7 +3311,7 @@ static void FeatureMapSpriteGroup(byte *buf, size_t len)
 	 * W cid           cargo ID (sprite group ID) for this type of cargo
 	 * W def-cid       default cargo ID (sprite group ID) */
 
-	if (_cur_grffile->spritegroups == 0) {
+	if (_cur_grffile->spritegroups == NULL) {
 		grfmsg(1, "FeatureMapSpriteGroup: No sprite groups to work on! Skipping");
 		return;
 	}
