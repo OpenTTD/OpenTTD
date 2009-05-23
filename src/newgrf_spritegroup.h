@@ -192,7 +192,7 @@ struct CallbackResultSpriteGroup : SpriteGroup {
 	 */
 	CallbackResultSpriteGroup(uint16 value) :
 		SpriteGroup(SGT_CALLBACK),
-		result(result)
+		result(value)
 	{
 		/* Old style callback results have the highest byte 0xFF so signify it is a callback result
 		 * New style ones only have the highest bit set (allows 15-bit results, instead of just 8) */
