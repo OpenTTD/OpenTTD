@@ -1021,7 +1021,7 @@ void VehicleEnterDepot(Vehicle *v)
 	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 
-		const Order *real_order = GetVehicleOrder(v, v->cur_order_index);
+		const Order *real_order = v->GetOrder(v->cur_order_index);
 		Order t = v->current_order;
 		v->current_order.MakeDummy();
 

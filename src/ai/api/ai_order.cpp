@@ -60,7 +60,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 		order_position = AIOrder::ResolveOrderPosition(vehicle_id, order_position);
 		if (order_position == AIOrder::ORDER_INVALID) return NULL;
 	}
-	return ::GetVehicleOrder(v, order_position);
+	return v->GetOrder(order_position);
 }
 
 /* static */ bool AIOrder::IsGotoStationOrder(VehicleID vehicle_id, OrderPosition order_position)
@@ -92,7 +92,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	if (order_position == ORDER_CURRENT) return false;
 	if (!IsValidVehicleOrder(vehicle_id, order_position)) return false;
 
-	const Order *order = ::GetVehicleOrder(Vehicle::Get(vehicle_id), order_position);
+	const Order *order = Vehicle::Get(vehicle_id)->GetOrder(order_position);
 	return order->GetType() == OT_CONDITIONAL;
 }
 
@@ -236,7 +236,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	if (!IsValidVehicleOrder(vehicle_id, order_position)) return ORDER_INVALID;
 	if (order_position == ORDER_CURRENT || !IsConditionalOrder(vehicle_id, order_position)) return ORDER_INVALID;
 
-	const Order *order = ::GetVehicleOrder(Vehicle::Get(vehicle_id), order_position);
+	const Order *order = Vehicle::Get(vehicle_id)->GetOrder(order_position);
 	return (OrderPosition)order->GetConditionSkipToOrder();
 }
 
@@ -245,7 +245,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	if (!IsValidVehicleOrder(vehicle_id, order_position)) return OC_INVALID;
 	if (order_position == ORDER_CURRENT || !IsConditionalOrder(vehicle_id, order_position)) return OC_INVALID;
 
-	const Order *order = ::GetVehicleOrder(Vehicle::Get(vehicle_id), order_position);
+	const Order *order = Vehicle::Get(vehicle_id)->GetOrder(order_position);
 	return (OrderCondition)order->GetConditionVariable();
 }
 
@@ -254,7 +254,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	if (!IsValidVehicleOrder(vehicle_id, order_position)) return CF_INVALID;
 	if (order_position == ORDER_CURRENT || !IsConditionalOrder(vehicle_id, order_position)) return CF_INVALID;
 
-	const Order *order = ::GetVehicleOrder(Vehicle::Get(vehicle_id), order_position);
+	const Order *order = Vehicle::Get(vehicle_id)->GetOrder(order_position);
 	return (CompareFunction)order->GetConditionComparator();
 }
 
@@ -263,7 +263,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	if (!IsValidVehicleOrder(vehicle_id, order_position)) return -1;
 	if (order_position == ORDER_CURRENT || !IsConditionalOrder(vehicle_id, order_position)) return -1;
 
-	const Order *order = ::GetVehicleOrder(Vehicle::Get(vehicle_id), order_position);
+	const Order *order = Vehicle::Get(vehicle_id)->GetOrder(order_position);
 	int32 value = order->GetConditionValue();
 	if (order->GetConditionVariable() == OCV_MAX_SPEED) value = value * 16 / 10;
 	return value;
@@ -432,7 +432,7 @@ static void _DoCommandReturnSetOrderFlags(class AIInstance *instance)
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, order_position));
 	EnforcePrecondition(false, AreOrderFlagsValid(GetOrderDestination(vehicle_id, order_position), order_flags));
 
-	const Order *order = ::GetVehicleOrder(Vehicle::Get(vehicle_id), order_position);
+	const Order *order = Vehicle::Get(vehicle_id)->GetOrder(order_position);
 
 	AIOrderFlags current = GetOrderFlags(vehicle_id, order_position);
 

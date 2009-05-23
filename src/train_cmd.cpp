@@ -2868,7 +2868,7 @@ public:
 			/* Wrap around. */
 			if (this->index >= this->v->GetNumOrders()) this->index = 0;
 
-			Order *order = GetVehicleOrder(this->v, this->index);
+			Order *order = this->v->GetOrder(this->index);
 			assert(order != NULL);
 
 			switch (order->GetType()) {

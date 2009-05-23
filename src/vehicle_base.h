@@ -470,6 +470,25 @@ public:
 		if (this->cur_order_index >= this->GetNumOrders()) this->cur_order_index = 0;
 		InvalidateVehicleOrder(this, 0);
 	}
+
+	/**
+	 * Returns order 'index' of a vehicle or NULL when it doesn't exists
+	 * @param index the order to fetch
+	 * @return the found (or not) order
+	 */
+	inline Order *GetOrder(int index) const
+	{
+		return (this->orders.list == NULL) ? NULL : this->orders.list->GetOrderAt(index);
+	}
+
+	/**
+	 * Returns the last order of a vehicle, or NULL if it doesn't exists
+	 * @return last order of a vehicle, if available
+	 */
+	inline Order *GetLastOrder() const
+	{
+		return (this->orders.list == NULL) ? NULL : this->orders.list->GetLastOrder();
+	}
 };
 
 /**
@@ -519,16 +538,6 @@ struct FreeUnitIDGenerator {
 	/** Releases allocated memory */
 	~FreeUnitIDGenerator() { free(this->cache); }
 };
-
-/* Returns order 'index' of a vehicle or NULL when it doesn't exists */
-static inline Order *GetVehicleOrder(const Vehicle *v, int index) { return (v->orders.list == NULL) ? NULL : v->orders.list->GetOrderAt(index); }
-
-/**
- * Returns the last order of a vehicle, or NULL if it doesn't exists
- * @param v Vehicle to query
- * @return last order of a vehicle, if available
- */
-static inline Order *GetLastVehicleOrder(const Vehicle *v) { return (v->orders.list == NULL) ? NULL : v->orders.list->GetLastOrder(); }
 
 void CheckVehicle32Day(Vehicle *v);
 

@@ -470,7 +470,7 @@ private:
 	static void OrderClick_FullLoad(OrdersWindow *w, int load_type)
 	{
 		VehicleOrderID sel_ord = w->OrderGetSel();
-		const Order *order = GetVehicleOrder(w->vehicle, sel_ord);
+		const Order *order = w->vehicle->GetOrder(sel_ord);
 
 		if (order == NULL || order->GetLoadType() == load_type) return;
 
@@ -490,7 +490,7 @@ private:
 		VehicleOrderID sel_ord = w->OrderGetSel();
 
 		if (i < 0) {
-			const Order *order = GetVehicleOrder(w->vehicle, sel_ord);
+			const Order *order = w->vehicle->GetOrder(sel_ord);
 			if (order == NULL) return;
 			i = (order->GetDepotOrderType() & ODTFB_SERVICE) ? DA_ALWAYS_GO : DA_SERVICE;
 		}
@@ -535,7 +535,7 @@ private:
 	static void OrderClick_Unload(OrdersWindow *w, int unload_type)
 	{
 		VehicleOrderID sel_ord = w->OrderGetSel();
-		const Order *order = GetVehicleOrder(w->vehicle, sel_ord);
+		const Order *order = w->vehicle->GetOrder(sel_ord);
 
 		if (order == NULL || order->GetUnloadType() == unload_type) return;
 
@@ -555,7 +555,7 @@ private:
 	static void OrderClick_Nonstop(OrdersWindow *w, int non_stop)
 	{
 		VehicleOrderID sel_ord = w->OrderGetSel();
-		const Order *order = GetVehicleOrder(w->vehicle, sel_ord);
+		const Order *order = w->vehicle->GetOrder(sel_ord);
 
 		if (order == NULL || order->GetNonStopType() == non_stop) return;
 
@@ -711,7 +711,7 @@ public:
 		SetVScrollCount(this, this->vehicle->GetNumOrders() + 1);
 
 		int sel = OrderGetSel();
-		const Order *order = GetVehicleOrder(this->vehicle, sel);
+		const Order *order = this->vehicle->GetOrder(sel);
 
 		if (this->vehicle->owner == _local_company) {
 			/* Set the strings for the dropdown boxes. */
@@ -824,7 +824,7 @@ public:
 		int y = 15;
 
 		int i = this->vscroll.pos;
-		order = GetVehicleOrder(this->vehicle, i);
+		order = this->vehicle->GetOrder(i);
 		StringID str;
 		while (order != NULL) {
 			/* Don't draw anything if it extends past the end of the window. */
@@ -852,7 +852,7 @@ public:
 				int sel = this->GetOrderFromPt(pt.y);
 
 				if (_ctrl_pressed && sel < this->vehicle->GetNumOrders()) {
-					const Order *ord = GetVehicleOrder(this->vehicle, sel);
+					const Order *ord = this->vehicle->GetOrder(sel);
 					TileIndex xy = INVALID_TILE;
 
 					switch (ord->GetType()) {
@@ -880,7 +880,7 @@ public:
 				} else if (sel == this->selected_order) {
 					if (this->vehicle->type == VEH_TRAIN && sel < this->vehicle->GetNumOrders()) {
 						DoCommandP(this->vehicle->tile, this->vehicle->index + (sel << 16),
-								MOF_STOP_LOCATION | ((GetVehicleOrder(this->vehicle, sel)->GetStopLocation() + 1) % OSL_END) << 4,
+								MOF_STOP_LOCATION | ((this->vehicle->GetOrder(sel)->GetStopLocation() + 1) % OSL_END) << 4,
 								CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
 					}
 				} else {
@@ -909,7 +909,7 @@ public:
 				break;
 
 			case ORDER_WIDGET_NON_STOP_DROPDOWN: {
-				const Order *o = GetVehicleOrder(this->vehicle, this->OrderGetSel());
+				const Order *o = this->vehicle->GetOrder(this->OrderGetSel());
 				ShowDropDownMenu(this, _order_non_stop_drowdown, o->GetNonStopType(), ORDER_WIDGET_NON_STOP_DROPDOWN, 0, o->IsType(OT_GOTO_STATION) ? 0 : (o->IsType(OT_GOTO_WAYPOINT) ? 3 : 12));
 			} break;
 
@@ -926,7 +926,7 @@ public:
 				break;
 
 			case ORDER_WIDGET_FULL_LOAD_DROPDOWN:
-				ShowDropDownMenu(this, _order_full_load_drowdown, GetVehicleOrder(this->vehicle, this->OrderGetSel())->GetLoadType(), ORDER_WIDGET_FULL_LOAD_DROPDOWN, 0, 2);
+				ShowDropDownMenu(this, _order_full_load_drowdown, this->vehicle->GetOrder(this->OrderGetSel())->GetLoadType(), ORDER_WIDGET_FULL_LOAD_DROPDOWN, 0, 2);
 				break;
 
 			case ORDER_WIDGET_UNLOAD:
@@ -934,7 +934,7 @@ public:
 				break;
 
 			case ORDER_WIDGET_UNLOAD_DROPDOWN:
-				ShowDropDownMenu(this, _order_unload_drowdown, GetVehicleOrder(this->vehicle, this->OrderGetSel())->GetUnloadType(), ORDER_WIDGET_UNLOAD_DROPDOWN, 0, 8);
+				ShowDropDownMenu(this, _order_unload_drowdown, this->vehicle->GetOrder(this->OrderGetSel())->GetUnloadType(), ORDER_WIDGET_UNLOAD_DROPDOWN, 0, 8);
 				break;
 
 			case ORDER_WIDGET_REFIT:
@@ -946,7 +946,7 @@ public:
 				break;
 
 			case ORDER_WIDGET_SERVICE_DROPDOWN:
-				ShowDropDownMenu(this, _order_depot_action_dropdown, DepotActionStringIndex(GetVehicleOrder(this->vehicle, this->OrderGetSel())), ORDER_WIDGET_SERVICE_DROPDOWN, 0, 0);
+				ShowDropDownMenu(this, _order_depot_action_dropdown, DepotActionStringIndex(this->vehicle->GetOrder(this->OrderGetSel())), ORDER_WIDGET_SERVICE_DROPDOWN, 0, 0);
 				break;
 
 			case ORDER_WIDGET_TIMETABLE_VIEW:
@@ -954,16 +954,16 @@ public:
 				break;
 
 			case ORDER_WIDGET_COND_VARIABLE:
-				ShowDropDownMenu(this, _order_conditional_variable, GetVehicleOrder(this->vehicle, this->OrderGetSel())->GetConditionVariable(), ORDER_WIDGET_COND_VARIABLE, 0, 0);
+				ShowDropDownMenu(this, _order_conditional_variable, this->vehicle->GetOrder(this->OrderGetSel())->GetConditionVariable(), ORDER_WIDGET_COND_VARIABLE, 0, 0);
 				break;
 
 			case ORDER_WIDGET_COND_COMPARATOR: {
-				const Order *o = GetVehicleOrder(this->vehicle, this->OrderGetSel());
+				const Order *o = this->vehicle->GetOrder(this->OrderGetSel());
 				ShowDropDownMenu(this, _order_conditional_condition, o->GetConditionComparator(), ORDER_WIDGET_COND_COMPARATOR, 0, (o->GetConditionVariable() == OCV_REQUIRES_SERVICE) ? 0x3F : 0xC0);
 			} break;
 
 			case ORDER_WIDGET_COND_VALUE: {
-				const Order *order = GetVehicleOrder(this->vehicle, this->OrderGetSel());
+				const Order *order = this->vehicle->GetOrder(this->OrderGetSel());
 				uint value = order->GetConditionValue();
 				if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
 				SetDParam(0, value);
@@ -982,7 +982,7 @@ public:
 			VehicleOrderID sel = this->OrderGetSel();
 			uint value = atoi(str);
 
-			switch (GetVehicleOrder(this->vehicle, sel)->GetConditionVariable()) {
+			switch (this->vehicle->GetOrder(sel)->GetConditionVariable()) {
 				case OCV_MAX_SPEED:
 					value = ConvertDisplaySpeedToSpeed(value);
 					break;

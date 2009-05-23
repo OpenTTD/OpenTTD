@@ -146,7 +146,7 @@ struct TimetableWindow : Window {
 		if (v->owner == _local_company) {
 			bool disable = true;
 			if (selected != -1) {
-				const Order *order = GetVehicleOrder(v, ((selected + 1) / 2) % v->GetNumOrders());
+				const Order *order = v->GetOrder(((selected + 1) / 2) % v->GetNumOrders());
 				if (selected % 2 == 1) {
 					disable = order != NULL && order->IsType(OT_CONDITIONAL);
 				} else {
@@ -176,7 +176,7 @@ struct TimetableWindow : Window {
 		VehicleOrderID order_id = (i + 1) / 2;
 		bool final_order = false;
 
-		const Order *order = GetVehicleOrder(v, order_id);
+		const Order *order = v->GetOrder(order_id);
 
 		while (order != NULL) {
 			/* Don't draw anything if it extends past the end of the window. */
@@ -188,7 +188,7 @@ struct TimetableWindow : Window {
 				order_id++;
 
 				if (order_id >= v->GetNumOrders()) {
-					order = GetVehicleOrder(v, 0);
+					order = v->GetOrder(0);
 					final_order = true;
 				} else {
 					order = order->next;
@@ -220,7 +220,7 @@ struct TimetableWindow : Window {
 			uint total_time = 0;
 			bool complete = true;
 
-			for (const Order *order = GetVehicleOrder(v, 0); order != NULL; order = order->next) {
+			for (const Order *order = v->GetOrder(0); order != NULL; order = order->next) {
 				total_time += order->travel_time + order->wait_time;
 				if (order->travel_time == 0 && !order->IsType(OT_CONDITIONAL)) complete = false;
 				if (order->wait_time == 0 && order->IsType(OT_GOTO_STATION) && !(order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) complete = false;
@@ -273,7 +273,7 @@ struct TimetableWindow : Window {
 
 				if (real >= v->GetNumOrders()) real = 0;
 
-				const Order *order = GetVehicleOrder(v, real);
+				const Order *order = v->GetOrder(real);
 				StringID current = STR_EMPTY;
 
 				if (order != NULL) {

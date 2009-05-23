@@ -13,7 +13,7 @@
 
 static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time, bool is_journey)
 {
-	Order *order = GetVehicleOrder(v, order_number);
+	Order *order = v->GetOrder(order_number);
 	int delta;
 
 	if (is_journey) {
@@ -62,7 +62,7 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	VehicleOrderID order_number = GB(p1, 16, 8);
-	Order *order = GetVehicleOrder(v, order_number);
+	Order *order = v->GetOrder(order_number);
 	if (order == NULL) return CMD_ERROR;
 
 	bool packed_time = HasBit(p1, 25);
