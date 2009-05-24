@@ -286,32 +286,31 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 
 void AddArticulatedParts(Vehicle *first, VehicleType type)
 {
-	const Vehicle *v = first;
-	Vehicle *u = first;
+	if (!HasBit(EngInfo(first->engine_type)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return;
 
-	if (!HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return;
-
+	Vehicle *v = first;
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
-		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, v->engine_type, v);
+		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, first->engine_type, first);
 		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) return;
 
 		/* In the (very rare) case the GRF reported wrong number of articulated parts
 		 * and we run out of available vehicles, bail out. */
 		if (!Vehicle::CanAllocateItem()) return;
 
-		EngineID engine_type = GetNewEngineID(GetEngineGRF(v->engine_type), type, GB(callback, 0, 7));
+		EngineID engine_type = GetNewEngineID(GetEngineGRF(first->engine_type), type, GB(callback, 0, 7));
 		bool flip_image = HasBit(callback, 7);
 
-		Vehicle *previous = u;
 		const Engine *e_artic = Engine::Get(engine_type);
 		switch (type) {
 			default: NOT_REACHED();
 
 			case VEH_TRAIN: {
-				Train *front = (Train *)v;
+				Train *front = (Train *)first;
 				Train *t = new Train();
+				v->SetNext(t);
+				v = t;
+
 				t->subtype = 0;
-				previous->SetNext(t);
 				t->track = front->track;
 				t->railtype = front->railtype;
 				t->tcache.first_engine = front->engine_type;
@@ -326,14 +325,15 @@ void AddArticulatedParts(Vehicle *first, VehicleType type)
 				}
 
 				SetArticulatedPart(t);
-				u = t;
 			} break;
 
 			case VEH_ROAD: {
-				RoadVehicle *front = (RoadVehicle *)v;
+				RoadVehicle *front = (RoadVehicle *)first;
 				RoadVehicle *rv = new RoadVehicle();
+				v->SetNext(rv);
+				v = rv;
+
 				rv->subtype = 0;
-				previous->SetNext(rv);
 				rv->rcache.first_engine = front->engine_type;
 				rv->rcache.cached_veh_length = 8; // Callback is called when the consist is finished
 				rv->state = RVSB_IN_DEPOT;
@@ -351,30 +351,29 @@ void AddArticulatedParts(Vehicle *first, VehicleType type)
 				}
 
 				SetRoadVehArticPart(rv);
-				u = rv;
 			} break;
 		}
 
 		/* get common values from first engine */
-		u->direction = v->direction;
-		u->owner = v->owner;
-		u->tile = v->tile;
-		u->x_pos = v->x_pos;
-		u->y_pos = v->y_pos;
-		u->z_pos = v->z_pos;
-		u->build_year = v->build_year;
-		u->vehstatus = v->vehstatus & ~VS_STOPPED;
+		v->direction = first->direction;
+		v->owner = first->owner;
+		v->tile = first->tile;
+		v->x_pos = first->x_pos;
+		v->y_pos = first->y_pos;
+		v->z_pos = first->z_pos;
+		v->build_year = first->build_year;
+		v->vehstatus = first->vehstatus & ~VS_STOPPED;
 
-		u->cargo_subtype = 0;
-		u->max_speed = 0;
-		u->max_age = 0;
-		u->engine_type = engine_type;
-		u->value = 0;
-		u->cur_image = SPR_IMG_QUERY;
-		u->random_bits = VehicleRandomBits();
+		v->cargo_subtype = 0;
+		v->max_speed = 0;
+		v->max_age = 0;
+		v->engine_type = engine_type;
+		v->value = 0;
+		v->cur_image = SPR_IMG_QUERY;
+		v->random_bits = VehicleRandomBits();
 
-		if (flip_image) u->spritenum++;
+		if (flip_image) v->spritenum++;
 
-		VehicleMove(u, false);
+		VehicleMove(v, false);
 	}
 }
