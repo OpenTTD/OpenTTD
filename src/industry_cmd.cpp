@@ -164,6 +164,7 @@ Industry::~Industry()
 	DecIndustryTypeCount(this->type);
 
 	DeleteSubsidyWithIndustry(this->index);
+	DeleteIndustryNews(this->index);
 	DeleteWindowById(WC_INDUSTRY_VIEW, this->index);
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 0);
 }
@@ -1693,7 +1694,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		} else {
 			SetDParam(1, ind->town->index);
 		}
-		AddNewsItem(indspec->new_industry_text, NS_INDUSTRY_OPEN, ind->xy, 0);
+		AddIndustryNewsItem(indspec->new_industry_text, NS_INDUSTRY_OPEN, ind->index);
 		AI::BroadcastNewEvent(new AIEventIndustryOpen(ind->index));
 	}
 
@@ -1898,7 +1899,7 @@ static void MaybeNewIndustry()
 	} else {
 		SetDParam(1, ind->town->index);
 	}
-	AddNewsItem(ind_spc->new_industry_text, NS_INDUSTRY_OPEN, ind->xy, 0);
+	AddIndustryNewsItem(ind_spc->new_industry_text, NS_INDUSTRY_OPEN, ind->index);
 	AI::BroadcastNewEvent(new AIEventIndustryOpen(ind->index));
 }
 
@@ -2042,10 +2043,10 @@ static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int 
 	SetDParam(2, abs(percent));
 	SetDParam(0, GetCargo(type)->name);
 	SetDParam(1, ind->index);
-	AddNewsItem(
+	AddIndustryNewsItem(
 		percent >= 0 ? STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH : STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH,
 		ns,
-		ind->xy + TileDiffXY(1, 1), 0
+		ind->index
 	);
 }
 
@@ -2250,7 +2251,8 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		/* and report the news to the user */
 		AddNewsItem(str,
 			ns,
-			i->xy + TileDiffXY(1, 1), 0);
+			closeit ? NR_TILE : NR_INDUSTRY,
+			closeit ? i->xy + TileDiffXY(1, 1) : i->index);
 	}
 }
 

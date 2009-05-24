@@ -21,9 +21,8 @@ Subsidy _subsidies[MAX_COMPANIES];
 
 Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode)
 {
-	TileIndex tile;
-	TileIndex tile2;
-	Pair tp;
+	NewsReferenceType reftype1 = NR_NONE;
+	NewsReferenceType reftype2 = NR_NONE;
 
 	/* if mode is false, use the singular form */
 	const CargoSpec *cs = GetCargo(s->cargo_type);
@@ -33,38 +32,38 @@ Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode)
 		if (cs->town_effect != TE_PASSENGERS && cs->town_effect != TE_MAIL) {
 			SetDParam(1, STR_INDUSTRY);
 			SetDParam(2, s->from);
-			tile = Industry::Get(s->from)->xy;
+			reftype1 = NR_INDUSTRY;
 
 			if (cs->town_effect != TE_GOODS && cs->town_effect != TE_FOOD) {
 				SetDParam(4, STR_INDUSTRY);
 				SetDParam(5, s->to);
-				tile2 = Industry::Get(s->to)->xy;
+				reftype2 = NR_INDUSTRY;
 			} else {
 				SetDParam(4, STR_TOWN);
 				SetDParam(5, s->to);
-				tile2 = Town::Get(s->to)->xy;
+				reftype2 = NR_TOWN;
 			}
 		} else {
 			SetDParam(1, STR_TOWN);
 			SetDParam(2, s->from);
-			tile = Town::Get(s->from)->xy;
+			reftype1 = NR_TOWN;
 
 			SetDParam(4, STR_TOWN);
 			SetDParam(5, s->to);
-			tile2 = Town::Get(s->to)->xy;
+			reftype2 = NR_TOWN;
 		}
 	} else {
 		SetDParam(1, s->from);
-		tile = Station::Get(s->from)->xy;
+		reftype1 = NR_STATION;
 
 		SetDParam(2, s->to);
-		tile2 = Station::Get(s->to)->xy;
+		reftype2 = NR_STATION;
 	}
 
-	tp.a = tile;
-	tp.b = tile2;
-
-	return tp;
+	Pair p;
+	p.a = reftype1;
+	p.b = reftype2;
+	return p;
 }
 
 void DeleteSubsidyWithTown(TownID index)
@@ -214,7 +213,6 @@ static bool CheckSubsidyDuplicate(Subsidy *s)
 void SubsidyMonthlyLoop()
 {
 	Subsidy *s;
-	Pair pair;
 	Station *st;
 	uint n;
 	FoundRoute fr;
@@ -224,16 +222,16 @@ void SubsidyMonthlyLoop()
 		if (s->cargo_type == CT_INVALID) continue;
 
 		if (s->age == 12 - 1) {
-			pair = SetupSubsidyDecodeParam(s, 1);
-			AddNewsItem(STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED, NS_SUBSIDIES, pair.a, pair.b);
+			Pair reftype = SetupSubsidyDecodeParam(s, 1);
+			AddNewsItem(STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->from, (NewsReferenceType)reftype.b, s->to);
 			s->cargo_type = CT_INVALID;
 			modified = true;
 			AI::BroadcastNewEvent(new AIEventSubsidyOfferExpired(s - _subsidies));
 		} else if (s->age == 2 * 12 - 1) {
 			st = Station::Get(s->to);
 			if (st->owner == _local_company) {
-				pair = SetupSubsidyDecodeParam(s, 1);
-				AddNewsItem(STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE, NS_SUBSIDIES, pair.a, pair.b);
+				Pair reftype = SetupSubsidyDecodeParam(s, 1);
+				AddNewsItem(STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->from, (NewsReferenceType)reftype.b, s->to);
 			}
 			s->cargo_type = CT_INVALID;
 			modified = true;
@@ -272,8 +270,8 @@ void SubsidyMonthlyLoop()
 	add_subsidy:
 				if (!CheckSubsidyDuplicate(s)) {
 					s->age = 0;
-					pair = SetupSubsidyDecodeParam(s, 0);
-					AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NS_SUBSIDIES, pair.a, pair.b);
+					Pair reftype = SetupSubsidyDecodeParam(s, 0);
+					AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->from, (NewsReferenceType)reftype.b, s->to);
 					AI::BroadcastNewEvent(new AIEventSubsidyOffer(s - _subsidies));
 					modified = true;
 					break;
@@ -290,7 +288,6 @@ bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type)
 {
 	Subsidy *s;
 	TileIndex xy;
-	Pair pair;
 
 	/* check if there is an already existing subsidy that applies to us */
 	for (s = _subsidies; s != endof(_subsidies); s++) {
@@ -335,14 +332,14 @@ bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type)
 			s->to = to->index;
 
 			/* Add a news item */
-			pair = SetupSubsidyDecodeParam(s, 0);
+			Pair reftype = SetupSubsidyDecodeParam(s, 0);
 			InjectDParam(1);
 
 			SetDParam(0, _current_company);
 			AddNewsItem(
 				STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF + _settings_game.difficulty.subsidy_multiplier,
 				NS_SUBSIDIES,
-				pair.a, pair.b
+				(NewsReferenceType)reftype.a, s->from, (NewsReferenceType)reftype.b, s->to
 			);
 			AI::BroadcastNewEvent(new AIEventSubsidyAwarded(s - _subsidies));
 

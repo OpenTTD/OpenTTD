@@ -14,11 +14,15 @@
 #include "window_func.h"
 #include "date_func.h"
 #include "vehicle_base.h"
+#include "station_base.h"
+#include "industry.h"
+#include "town.h"
 #include "sound_func.h"
 #include "string_func.h"
 #include "widgets/dropdown_func.h"
 #include "statusbar_gui.h"
 #include "company_manager_face.h"
+#include "map_func.h"
 
 #include "table/strings.h"
 
@@ -90,6 +94,22 @@ static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 	}
 }
 
+/**
+ * Get the position a news-reference is referencing.
+ * @param reftype The type of reference.
+ * @param ref     The reference.
+ * @return A tile for the referenced object, or INVALID_TILE if none.
+ */
+static TileIndex GetReferenceTile(NewsReferenceType reftype, uint32 ref)
+{
+	switch (reftype) {
+		case NR_TILE:     return (TileIndex)ref;
+		case NR_STATION:  return Station::Get((StationID)ref)->xy;
+		case NR_INDUSTRY: return Industry::Get((IndustryID)ref)->xy + TileDiffXY(1, 1);
+		case NR_TOWN:     return Town::Get((TownID)ref)->xy;
+		default:          return INVALID_TILE;
+	}
+}
 
 /**
  * Data common to all news items of a given subtype (structure)
@@ -106,25 +126,24 @@ struct NewsSubtypeData {
  */
 static const NewsSubtypeData _news_subtype_data[] = {
 	/* type,               display_mode, flags,                  callback */
-	{ NT_ARRIVAL_COMPANY,  NM_THIN,     NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ARRIVAL_COMPANY
-	{ NT_ARRIVAL_OTHER,    NM_THIN,     NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ARRIVAL_OTHER
-	{ NT_ACCIDENT,         NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_ACCIDENT_TILE
-	{ NT_ACCIDENT,         NM_THIN,     NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ACCIDENT_VEHICLE
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_TROUBLE
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_MERGER
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_BANKRUPT
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_TILE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_NEW
-	{ NT_INDUSTRY_OPEN,    NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_OPEN
-	{ NT_INDUSTRY_CLOSE,   NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_CLOSE
-	{ NT_ECONOMY,          NM_NORMAL,   NF_NONE,                NULL                    }, ///< NS_ECONOMY
-	{ NT_INDUSTRY_COMPANY, NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_COMPANY
-	{ NT_INDUSTRY_OTHER,   NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_OTHER
-	{ NT_INDUSTRY_NOBODY,  NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_NOBODY
-	{ NT_ADVICE,           NM_SMALL,    NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ADVICE
-	{ NT_NEW_VEHICLES,     NM_NORMAL,   NF_NONE,                DrawNewsNewVehicleAvail }, ///< NS_NEW_VEHICLES
-	{ NT_ACCEPTANCE,       NM_SMALL,    NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_ACCEPTANCE
-	{ NT_SUBSIDIES,        NM_NORMAL,   NF_TILE|NF_TILE2,       NULL                    }, ///< NS_SUBSIDIES
-	{ NT_GENERAL,          NM_NORMAL,   NF_TILE,                NULL                    }, ///< NS_GENERAL
+	{ NT_ARRIVAL_COMPANY,  NM_THIN,     NF_VIEWPORT, NULL                    }, ///< NS_ARRIVAL_COMPANY
+	{ NT_ARRIVAL_OTHER,    NM_THIN,     NF_VIEWPORT, NULL                    }, ///< NS_ARRIVAL_OTHER
+	{ NT_ACCIDENT,         NM_THIN,     NF_VIEWPORT, NULL                    }, ///< NS_ACCIDENT
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,     DrawNewsBankrupcy       }, ///< NS_COMPANY_TROUBLE
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,     DrawNewsBankrupcy       }, ///< NS_COMPANY_MERGER
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,     DrawNewsBankrupcy       }, ///< NS_COMPANY_BANKRUPT
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,     DrawNewsBankrupcy       }, ///< NS_COMPANY_NEW
+	{ NT_INDUSTRY_OPEN,    NM_THIN,     NF_VIEWPORT, NULL                    }, ///< NS_INDUSTRY_OPEN
+	{ NT_INDUSTRY_CLOSE,   NM_THIN,     NF_VIEWPORT, NULL                    }, ///< NS_INDUSTRY_CLOSE
+	{ NT_ECONOMY,          NM_NORMAL,   NF_NONE,     NULL                    }, ///< NS_ECONOMY
+	{ NT_INDUSTRY_COMPANY, NM_THIN,     NF_VIEWPORT, NULL                    }, ///< NS_INDUSTRY_COMPANY
+	{ NT_INDUSTRY_OTHER,   NM_THIN,     NF_VIEWPORT, NULL                    }, ///< NS_INDUSTRY_OTHER
+	{ NT_INDUSTRY_NOBODY,  NM_THIN,     NF_VIEWPORT, NULL                    }, ///< NS_INDUSTRY_NOBODY
+	{ NT_ADVICE,           NM_SMALL,    NF_VIEWPORT, NULL                    }, ///< NS_ADVICE
+	{ NT_NEW_VEHICLES,     NM_NORMAL,   NF_NONE,     DrawNewsNewVehicleAvail }, ///< NS_NEW_VEHICLES
+	{ NT_ACCEPTANCE,       NM_SMALL,    NF_VIEWPORT, NULL                    }, ///< NS_ACCEPTANCE
+	{ NT_SUBSIDIES,        NM_NORMAL,   NF_NONE,     NULL                    }, ///< NS_SUBSIDIES
+	{ NT_GENERAL,          NM_NORMAL,   NF_NONE,     NULL                    }, ///< NS_GENERAL
 };
 
 assert_compile(lengthof(_news_subtype_data) == NS_END);
@@ -253,18 +272,18 @@ struct NewsWindow : Window {
 				break;
 
 			case 0:
-				if (this->ni->flags & NF_VEHICLE) {
-					const Vehicle *v = Vehicle::Get(this->ni->data_a);
+				if (this->ni->reftype1 == NR_VEHICLE) {
+					const Vehicle *v = Vehicle::Get(this->ni->ref1);
 					ScrollMainWindowTo(v->x_pos, v->y_pos, v->z_pos);
-				} else if (this->ni->flags & NF_TILE) {
+				} else {
+					TileIndex tile1 = GetReferenceTile(this->ni->reftype1, this->ni->ref1);
+					TileIndex tile2 = GetReferenceTile(this->ni->reftype2, this->ni->ref2);
 					if (_ctrl_pressed) {
-						ShowExtraViewPortWindow(this->ni->data_a);
-						if (this->ni->flags & NF_TILE2) {
-							ShowExtraViewPortWindow(this->ni->data_b);
-						}
+						if (tile1 != INVALID_TILE) ShowExtraViewPortWindow(tile1);
+						if (tile2 != INVALID_TILE) ShowExtraViewPortWindow(tile2);
 					} else {
-						if (!ScrollMainWindowToTile(this->ni->data_a) && this->ni->flags & NF_TILE2) {
-							ScrollMainWindowToTile(this->ni->data_b);
+						if (((tile1 == INVALID_TILE) || !ScrollMainWindowToTile(tile1)) && (tile2 != INVALID_TILE)) {
+							ScrollMainWindowToTile(tile2);
 						}
 					}
 				}
@@ -405,7 +424,7 @@ static void ShowNewspaper(NewsItem *ni)
 			w = new NewsWindow(&_news_type13_desc, ni);
 			if (ni->flags & NF_VIEWPORT) {
 				InitializeWindowViewport(w, 2, 58, 426, 110,
-					ni->data_a | (ni->flags & NF_VEHICLE ? 0x80000000 : 0), ZOOM_LVL_NEWS);
+					ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
 			}
 			break;
 
@@ -414,7 +433,7 @@ static void ShowNewspaper(NewsItem *ni)
 			w = new NewsWindow(&_news_type2_desc, ni);
 			if (ni->flags & NF_VIEWPORT) {
 				InitializeWindowViewport(w, 2, 58, 426, 70,
-					ni->data_a | (ni->flags & NF_VEHICLE ? 0x80000000 : 0), ZOOM_LVL_NEWS);
+					ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
 			}
 			break;
 
@@ -423,7 +442,7 @@ static void ShowNewspaper(NewsItem *ni)
 			w = new NewsWindow(&_news_type0_desc, ni);
 			if (ni->flags & NF_VIEWPORT) {
 				InitializeWindowViewport(w, 3, 17, 274, 47,
-					ni->data_a | (ni->flags & NF_VEHICLE ? 0x80000000 : 0), ZOOM_LVL_NEWS);
+					ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
 			}
 			break;
 	}
@@ -511,12 +530,14 @@ static void MoveToNextItem()
  * Add a new newsitem to be shown.
  * @param string String to display
  * @param subtype news category, any of the NewsSubtype enums (NS_)
- * @param data_a news-specific value based on news type
- * @param data_b news-specific value based on news type
+ * @param reftype1 Type of ref1
+ * @param ref1     Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleteing the news when the object is deleted.
+ * @param reftype2 Type of ref2
+ * @param ref2     Reference 2 to some object: Used for scrolling after clicking on the news, and for deleteing the news when the object is deleted.
  *
  * @see NewsSubype
  */
-void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b, void *free_data)
+void AddNewsItem(StringID string, NewsSubtype subtype, NewsReferenceType reftype1, uint32 ref1, NewsReferenceType reftype2, uint32 ref2, void *free_data)
 {
 	if (_game_mode == GM_MENU) return;
 
@@ -530,8 +551,10 @@ void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b,
 	/* show this news message in colour? */
 	if (_cur_year >= _settings_client.gui.coloured_news_year) ni->flags |= NF_INCOLOUR;
 
-	ni->data_a = data_a;
-	ni->data_b = data_b;
+	ni->reftype1 = reftype1;
+	ni->reftype2 = reftype2;
+	ni->ref1 = ref1;
+	ni->ref2 = ref2;
 	ni->free_data = free_data;
 	ni->date = _date;
 	CopyOutDParam(ni->params, 0, lengthof(ni->params));
@@ -591,16 +614,12 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 	NewsItem *ni = _oldest_news;
 
 	while (ni != NULL) {
-		if (ni->flags & NF_VEHICLE &&
-				ni->data_a == vid &&
+		NewsItem *next = ni->next;
+		if (((ni->reftype1 == NR_VEHICLE && ni->ref1 == vid) || (ni->reftype2 == NR_VEHICLE && ni->ref2 == vid)) &&
 				(news == INVALID_STRING_ID || ni->string_id == news)) {
-			/* grab a pointer to the next item before ni is freed */
-			NewsItem *p = ni->next;
 			DeleteNewsItem(ni);
-			ni = p;
-		} else {
-			ni = ni->next;
 		}
+		ni = next;
 	}
 }
 
@@ -614,14 +633,24 @@ void DeleteStationNews(StationID sid)
 
 	while (ni != NULL) {
 		NewsItem *next = ni->next;
-		switch (ni->subtype) {
-			case NS_ARRIVAL_COMPANY:
-			case NS_ARRIVAL_OTHER:
-			case NS_ACCEPTANCE:
-				if (ni->data_b == sid) DeleteNewsItem(ni);
-				break;
-			default:
-				break;
+		if ((ni->reftype1 == NR_STATION && ni->ref1 == sid) || (ni->reftype2 == NR_STATION && ni->ref2 == sid)) {
+			DeleteNewsItem(ni);
+		}
+		ni = next;
+	}
+}
+
+/** Remove news regarding given industry
+ * @param iid industry to remove news about
+ */
+void DeleteIndustryNews(IndustryID iid)
+{
+	NewsItem *ni = _oldest_news;
+
+	while (ni != NULL) {
+		NewsItem *next = ni->next;
+		if ((ni->reftype1 == NR_INDUSTRY && ni->ref1 == iid) || (ni->reftype2 == NR_INDUSTRY && ni->ref2 == iid)) {
+			DeleteNewsItem(ni);
 		}
 		ni = next;
 	}

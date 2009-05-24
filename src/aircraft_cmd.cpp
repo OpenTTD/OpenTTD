@@ -1320,10 +1320,10 @@ static void CrashAirplane(Aircraft *v)
 
 	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, crash_reason));
 
-	AddNewsItem(newsitem,
-		NS_ACCIDENT_VEHICLE,
+	AddVehicleNewsItem(newsitem,
+		NS_ACCIDENT,
 		v->index,
-		0);
+		st != NULL ? st->index : INVALID_STATION);
 
 	SndPlayVehicleFx(SND_12_EXPLOSION, v);
 }
@@ -1364,7 +1364,7 @@ static void AircraftEntersTerminal(Aircraft *v)
 		st->had_vehicle_of_type |= HVOT_AIRCRAFT;
 		SetDParam(0, st->index);
 		/* show newsitem of celebrating citizens */
-		AddNewsItem(
+		AddVehicleNewsItem(
 			STR_NEWS_FIRST_AIRCRAFT_ARRIVAL,
 			(v->owner == _local_company) ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
 			v->index,

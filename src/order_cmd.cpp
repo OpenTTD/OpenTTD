@@ -1433,11 +1433,10 @@ void CheckOrders(const Vehicle *v)
 		//DEBUG(misc, 3, "Triggered News Item for vehicle %d", v->index);
 
 		SetDParam(0, v->index);
-		AddNewsItem(
+		AddVehicleNewsItem(
 			message,
 			NS_ADVICE,
-			v->index,
-			0
+			v->index
 		);
 	}
 }

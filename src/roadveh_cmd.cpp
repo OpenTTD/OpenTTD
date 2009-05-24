@@ -591,12 +591,11 @@ static void RoadVehCrash(RoadVehicle *v)
 	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_RV_LEVEL_CROSSING));
 
 	SetDParam(0, pass);
-	AddNewsItem(
+	AddVehicleNewsItem(
 		(pass == 1) ?
 			STR_NEWS_ROAD_CRASH_DRIVER : STR_NEWS_ROAD_CRASH,
-		NS_ACCIDENT_VEHICLE,
-		v->index,
-		0
+		NS_ACCIDENT,
+		v->index
 	);
 
 	ModifyStationRatingAround(v->tile, v->owner, -160, 22);
@@ -770,7 +769,7 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 		if (!(st->had_vehicle_of_type & HVOT_BUS)) {
 			st->had_vehicle_of_type |= HVOT_BUS;
 			SetDParam(0, st->index);
-			AddNewsItem(
+			AddVehicleNewsItem(
 				v->roadtype == ROADTYPE_ROAD ? STR_NEWS_FIRST_ROAD_BUS_ARRIVAL : STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL,
 				(v->owner == _local_company) ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
 				v->index,
@@ -783,7 +782,7 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 		if (!(st->had_vehicle_of_type & HVOT_TRUCK)) {
 			st->had_vehicle_of_type |= HVOT_TRUCK;
 			SetDParam(0, st->index);
-			AddNewsItem(
+			AddVehicleNewsItem(
 				v->roadtype == ROADTYPE_ROAD ? STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL : STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL,
 				(v->owner == _local_company) ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
 				v->index,

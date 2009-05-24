@@ -224,7 +224,8 @@ static void DrawShipEngineInfo(EngineID engine, int left, int right, int top, in
 
 void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
 {
-	EngineID engine = ni->data_a;
+	assert(ni->reftype1 == NR_ENGINE);
+	EngineID engine = ni->ref1;
 	const DrawEngineInfo *dei = &_draw_engine_list[Engine::Get(engine)->type];
 
 	SetDParam(0, GetEngineCategoryName(engine));

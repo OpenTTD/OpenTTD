@@ -354,7 +354,7 @@ static void ShipArrivesAt(const Vehicle *v, Station *st)
 		st->had_vehicle_of_type |= HVOT_SHIP;
 
 		SetDParam(0, st->index);
-		AddNewsItem(
+		AddVehicleNewsItem(
 			STR_NEWS_FIRST_SHIP_ARRIVAL,
 			(v->owner == _local_company) ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
 			v->index,

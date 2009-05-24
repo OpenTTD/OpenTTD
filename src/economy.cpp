@@ -481,7 +481,7 @@ static void CompanyCheckBankrupt(Company *c)
 			SetDParam(0, STR_NEWS_COMPANY_IN_TROUBLE_TITLE);
 			SetDParam(1, STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION);
 			SetDParamStr(2, cni->company_name);
-			AddNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_TROUBLE, 0, 0, cni);
+			AddCompanyNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_TROUBLE, cni);
 			AI::BroadcastNewEvent(new AIEventCompanyInTrouble(c->index));
 			break;
 		case 3: {
@@ -491,7 +491,7 @@ static void CompanyCheckBankrupt(Company *c)
 				SetDParam(0, STR_NEWS_COMPANY_IN_TROUBLE_TITLE);
 				SetDParam(1, STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION);
 				SetDParamStr(2, cni->company_name);
-				AddNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_TROUBLE, 0, 0, cni);
+				AddCompanyNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_TROUBLE, cni);
 				break;
 			}
 
@@ -526,7 +526,7 @@ static void CompanyCheckBankrupt(Company *c)
 			SetDParam(0, STR_NEWS_COMPANY_BANKRUPT_TITLE);
 			SetDParam(1, STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION);
 			SetDParamStr(2, cni->company_name);
-			AddNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_BANKRUPT, 0, 0, cni);
+			AddCompanyNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_BANKRUPT, cni);
 
 			/* Remove the company */
 			ChangeNetworkOwner(c->index, COMPANY_SPECTATOR);
@@ -668,10 +668,10 @@ static void HandleEconomyFluctuations()
 
 	if (--_economy.fluct == 0) {
 		_economy.fluct = -(int)GB(Random(), 0, 2);
-		AddNewsItem(STR_NEWS_BEGIN_OF_RECESSION, NS_ECONOMY, 0, 0);
+		AddNewsItem(STR_NEWS_BEGIN_OF_RECESSION, NS_ECONOMY);
 	} else if (_economy.fluct == -12) {
 		_economy.fluct = GB(Random(), 0, 8) + 312;
-		AddNewsItem(STR_NEWS_END_OF_RECESSION, NS_ECONOMY, 0, 0);
+		AddNewsItem(STR_NEWS_END_OF_RECESSION, NS_ECONOMY);
 	}
 }
 
@@ -1507,7 +1507,7 @@ static void DoAcquireCompany(Company *c)
 	SetDParamStr(2, cni->company_name);
 	SetDParamStr(3, cni->other_company_name);
 	SetDParam(4, c->bankrupt_value);
-	AddNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_MERGER, 0, 0, cni);
+	AddCompanyNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_MERGER, cni);
 	AI::BroadcastNewEvent(new AIEventCompanyMerger(ci, _current_company));
 
 	/* original code does this a little bit differently */

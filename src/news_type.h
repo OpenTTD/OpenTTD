@@ -38,8 +38,7 @@ enum NewsType {
 enum NewsSubtype {
 	NS_ARRIVAL_COMPANY,  ///< NT_ARRIVAL_COMPANY
 	NS_ARRIVAL_OTHER,    ///< NT_ARRIVAL_OTHER
-	NS_ACCIDENT_TILE,    ///< NT_ACCIDENT (tile)
-	NS_ACCIDENT_VEHICLE, ///< NT_ACCIDENT (vehicle)
+	NS_ACCIDENT,         ///< NT_ACCIDENT
 	NS_COMPANY_TROUBLE,  ///< NT_COMPANY_INFO (trouble)
 	NS_COMPANY_MERGER,   ///< NT_COMPANY_INFO (merger)
 	NS_COMPANY_BANKRUPT, ///< NT_COMPANY_INFO (bankrupt)
@@ -68,16 +67,26 @@ enum NewsMode {
 };
 
 /**
+ * References to objects in news.
+ */
+enum NewsReferenceType {
+	NR_NONE,      ///< Empty reference
+	NR_TILE,      ///< Reference tile.     Scroll to tile when clicking on the news.
+	NR_VEHICLE,   ///< Reference vehicle.  Scroll to vehicle when clicking on the news. Delete news when vehicle is deleted.
+	NR_STATION,   ///< Reference station.  Scroll to station when clicking on the news. Delete news when station is deleted.
+	NR_INDUSTRY,  ///< Reference industry. Scroll to industry when clicking on the news. Delete news when industry is deleted.
+	NR_TOWN,      ///< Reference town.     Scroll to town when clicking on the news.
+	NR_ENGINE     ///< Reference engine.
+};
+
+/**
  * Various OR-able news-item flags.
  * note: NF_INCOLOUR is set automatically if needed
  */
 enum NewsFlag {
-	NF_NONE      = 0,        ///< No flag is set.
-	NF_VIEWPORT  = (1 << 1), ///< Does the news message have a viewport? (ingame picture of happening)
-	NF_TILE      = (1 << 2), ///< When clicked on the news message scroll to a given tile? Tile is in data_a
-	NF_VEHICLE   = (1 << 3), ///< When clicked on the message scroll to the vehicle? VehicleID is in data_a
-	NF_INCOLOUR  = (1 << 5), ///< Show the newsmessage in colour, otherwise it defaults to black & white
-	NF_TILE2     = (1 << 6), ///< There is a second tile to scroll to; tile is in data_b
+	NF_NONE      = 0,      ///< No flag is set.
+	NF_VIEWPORT  = 1 << 1, ///< Does the news message have a viewport? (ingame picture of happening)
+	NF_INCOLOUR  = 1 << 2, ///< Show the newsmessage in colour, otherwise it defaults to black & white
 };
 DECLARE_ENUM_AS_BIT_SET(NewsFlag);
 
@@ -112,17 +121,19 @@ struct NewsTypeData {
 };
 
 struct NewsItem {
-	NewsItem *prev;        ///< Previous news item
-	NewsItem *next;        ///< Next news item
-	StringID string_id;    ///< Message text
-	Date date;             ///< Date of the news
-	NewsSubtype subtype;   ///< News subtype @see NewsSubtype
-	NewsFlag flags;        ///< NewsFlags bits @see NewsFlag
+	NewsItem *prev;              ///< Previous news item
+	NewsItem *next;              ///< Next news item
+	StringID string_id;          ///< Message text
+	Date date;                   ///< Date of the news
+	NewsSubtype subtype;         ///< News subtype @see NewsSubtype
+	NewsFlag flags;              ///< NewsFlags bits @see NewsFlag
 
-	uint data_a;           ///< Custom data 1 (usually tile or vehicle)
-	uint data_b;           ///< Custom data 2
+	NewsReferenceType reftype1;  ///< Type of ref1
+	NewsReferenceType reftype2;  ///< Type of ref2
+	uint32 ref1;                 ///< Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleteing the news when the object is deleted.
+	uint32 ref2;                 ///< Reference 2 to some object: Used for scrolling after clicking on the news, and for deleteing the news when the object is deleted.
 
-	void *free_data;       ///< Data to be freed when the news item has reached its end.
+	void *free_data;             ///< Data to be freed when the news item has reached its end.
 
 	uint64 params[10];
 };

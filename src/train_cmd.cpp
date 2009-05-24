@@ -2987,11 +2987,11 @@ static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, 
 				AI::NewEvent(v->owner, new AIEventVehicleLost(v->index));
 				if (_settings_client.gui.lost_train_warn && v->owner == _local_company) {
 					SetDParam(0, v->index);
-					AddNewsItem(
+					AddVehicleNewsItem(
 						STR_TRAIN_IS_LOST,
 						NS_ADVICE,
-						v->index,
-						0);
+						v->index
+					);
 				}
 			}
 		} else {
@@ -3357,7 +3357,7 @@ static void TrainEnterStation(Train *v, StationID station)
 	if (!(st->had_vehicle_of_type & HVOT_TRAIN)) {
 		st->had_vehicle_of_type |= HVOT_TRAIN;
 		SetDParam(0, st->index);
-		AddNewsItem(
+		AddVehicleNewsItem(
 			STR_NEWS_FIRST_TRAIN_ARRIVAL,
 			v->owner == _local_company ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
 			v->index,
@@ -3615,10 +3615,9 @@ static bool CheckTrainCollision(Train *v)
 	if (tcc.num == 0) return false;
 
 	SetDParam(0, tcc.num);
-	AddNewsItem(STR_NEWS_TRAIN_CRASH,
-		NS_ACCIDENT_VEHICLE,
-		v->index,
-		0
+	AddVehicleNewsItem(STR_NEWS_TRAIN_CRASH,
+		NS_ACCIDENT,
+		v->index
 	);
 
 	ModifyStationRatingAround(v->tile, v->owner, -160, 30);
@@ -4328,11 +4327,11 @@ static bool TrainLocoHandler(Train *v, bool mode)
 				/* Show message to player. */
 				if (_settings_client.gui.lost_train_warn && v->owner == _local_company) {
 					SetDParam(0, v->index);
-					AddNewsItem(
+					AddVehicleNewsItem(
 						STR_TRAIN_IS_STUCK,
 						NS_ADVICE,
-						v->index,
-						0);
+						v->index
+					);
 				}
 				v->load_unload_time_rem = 0;
 			}

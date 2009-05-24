@@ -669,7 +669,7 @@ void CallVehicleTicks()
 
 		SetDParam(0, v->index);
 		SetDParam(1, error_message);
-		AddNewsItem(message, NS_ADVICE, v->index, 0);
+		AddVehicleNewsItem(message, NS_ADVICE, v->index);
 	}
 
 	_current_company = OWNER_NONE;
@@ -922,7 +922,7 @@ void AgeVehicle(Vehicle *v)
 	}
 
 	SetDParam(0, v->index);
-	AddNewsItem(str, NS_ADVICE, v->index, 0);
+	AddVehicleNewsItem(str, NS_ADVICE, v->index);
 }
 
 /**
@@ -1043,7 +1043,7 @@ void VehicleEnterDepot(Vehicle *v)
 				if (v->owner == _local_company) {
 					/* Notify the user that we stopped the vehicle */
 					SetDParam(0, v->index);
-					AddNewsItem(STR_ORDER_REFIT_FAILED, NS_ADVICE, v->index, 0);
+					AddVehicleNewsItem(STR_ORDER_REFIT_FAILED, NS_ADVICE, v->index);
 				}
 			} else if (v->owner == _local_company && cost.GetCost() != 0) {
 				ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost.GetCost());
@@ -1070,7 +1070,7 @@ void VehicleEnterDepot(Vehicle *v)
 				}
 
 				SetDParam(0, v->index);
-				AddNewsItem(string, NS_ADVICE, v->index, 0);
+				AddVehicleNewsItem(string, NS_ADVICE, v->index);
 			}
 			AI::NewEvent(v->owner, new AIEventVehicleWaitingInDepot(v->index));
 		}
@@ -1681,11 +1681,11 @@ void VehiclesYearlyLoop()
 				if (_settings_client.gui.vehicle_income_warn && v->owner == _local_company) {
 					SetDParam(0, v->index);
 					SetDParam(1, profit);
-					AddNewsItem(
+					AddVehicleNewsItem(
 						STR_VEHICLE_IS_UNPROFITABLE,
 						NS_ADVICE,
-						v->index,
-						0);
+						v->index
+					);
 				}
 				AI::NewEvent(v->owner, new AIEventVehicleUnprofitable(v->index));
 			}

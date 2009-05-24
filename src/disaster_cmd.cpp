@@ -207,10 +207,9 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 				v->age = 0;
 
 				SetDParam(0, GetStationIndex(v->tile));
-				AddNewsItem(STR_NEWS_DISASTER_ZEPPELIN,
-					NS_ACCIDENT_VEHICLE,
-					v->index,
-					0);
+				AddVehicleNewsItem(STR_NEWS_DISASTER_ZEPPELIN,
+					NS_ACCIDENT,
+					v->index); // Delete the news, when the zeppelin is gone
 				AI::NewEvent(GetTileOwner(v->tile), new AIEventDisasterZeppelinerCrashed(GetStationIndex(v->tile)));
 			}
 		}
@@ -340,10 +339,9 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 			if (u->crashed_ctr == 0) {
 				u->crashed_ctr++;
 
-				AddNewsItem(STR_NEWS_DISASTER_SMALL_UFO,
-					NS_ACCIDENT_VEHICLE,
-					u->index,
-					0);
+				AddVehicleNewsItem(STR_NEWS_DISASTER_SMALL_UFO,
+					NS_ACCIDENT,
+					u->index); // delete the news, when the roadvehicle is gone
 
 				AI::NewEvent(u->owner, new AIEventVehicleCrashed(u->index, u->tile, AIEventVehicleCrashed::CRASH_RV_UFO));
 
@@ -426,7 +424,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, boo
 			DestructIndustry(i);
 
 			SetDParam(0, i->town->index);
-			AddNewsItem(news_message, NS_ACCIDENT_TILE, i->xy, 0);
+			AddIndustryNewsItem(news_message, NS_ACCIDENT, i->index); // delete the news, when the industry closes
 			SndPlayTileFx(SND_12_EXPLOSION, i->xy);
 		}
 	} else if (v->current_order.GetDestination() == 0) {
@@ -523,9 +521,9 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 		Town *t = ClosestTownFromTile(v->dest_tile, UINT_MAX);
 		SetDParam(0, t->index);
 		AddNewsItem(STR_NEWS_DISASTER_BIG_UFO,
-			NS_ACCIDENT_TILE,
-			v->tile,
-			0);
+			NS_ACCIDENT,
+			NR_TILE,
+			v->tile);
 
 		if (!Vehicle::CanAllocateItem(2)) {
 			delete v;
@@ -865,7 +863,7 @@ static void Disaster_CoalMine_Init()
 			if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_CAN_SUBSIDENCE) && --index < 0) {
 				SetDParam(0, i->town->index);
 				AddNewsItem(STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE,
-					NS_ACCIDENT_TILE, i->xy + TileDiffXY(1, 1), 0);
+					NS_ACCIDENT, NR_TILE, i->xy + TileDiffXY(1, 1)); // keep the news, even when the mine closes
 
 				{
 					TileIndex tile = i->xy;

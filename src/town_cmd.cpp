@@ -2344,7 +2344,7 @@ static void TownActionRoadRebuild(Town *t)
 	SetDParam(0, t->index);
 	SetDParamStr(1, cn);
 
-	AddNewsItem(STR_NEWS_ROAD_REBUILDING, NS_GENERAL, t->xy, 0, cn);
+	AddNewsItem(STR_NEWS_ROAD_REBUILDING, NS_GENERAL, NR_TOWN, t->index, NR_NONE, UINT32_MAX, cn);
 }
 
 static bool DoBuildStatueOfCompany(TileIndex tile, TownID town_id)

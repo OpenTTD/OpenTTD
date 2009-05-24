@@ -157,7 +157,7 @@ void CheckSwitchToEuro()
 			_currency_specs[_settings_game.locale.currency].to_euro != CF_ISEURO &&
 			_cur_year >= _currency_specs[_settings_game.locale.currency].to_euro) {
 		_settings_game.locale.currency = 2; // this is the index of euro above.
-		AddNewsItem(STR_EURO_INTRODUCE, NS_ECONOMY, 0, 0);
+		AddNewsItem(STR_EURO_INTRODUCE, NS_ECONOMY);
 	}
 }
 
