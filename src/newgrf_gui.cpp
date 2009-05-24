@@ -32,13 +32,12 @@ static int parse_intlist(const char *p, int *items, int maxitems)
 	char *end;
 
 	for (;;) {
+		while (*p == ' ' || *p == ',') p++;
+		if (*p == '\0') break;
 		v = strtol(p, &end, 0);
 		if (p == end || n == maxitems) return -1;
 		p = end;
 		items[n++] = v;
-		if (*p == '\0') break;
-		if (*p != ',' && *p != ' ') return -1;
-		p++;
 	}
 
 	return n;
