@@ -378,8 +378,7 @@ static bool FillGraphicsSetDetails(GraphicsSet *graphics, IniFile *ini, const ch
 		}
 
 		const char *filename = item->value;
-		file->filename = MallocT<char>(strlen(filename) + strlen(path) + 1);
-		sprintf((char*)file->filename, "%s%s", path, filename);
+		file->filename = str_fmt("%s%s", path, filename);
 
 		/* Then find the MD5 checksum */
 		item = md5s->GetItem(filename, false);

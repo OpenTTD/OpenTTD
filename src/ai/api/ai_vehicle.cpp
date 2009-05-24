@@ -45,11 +45,11 @@
 		case VEH_ROAD: {
 			uint total_length = 0;
 			for (const Vehicle *u = v; u != NULL; u = u->Next()) {
-				total_length += ((RoadVehicle*)u)->rcache.cached_veh_length;
+				total_length += ((const RoadVehicle *)u)->rcache.cached_veh_length;
 			}
 			return total_length;
 		}
-		case VEH_TRAIN: return ((Train *)v)->tcache.cached_total_length;
+		case VEH_TRAIN: return ((const Train *)v)->tcache.cached_total_length;
 		default: return -1;
 	}
 }
@@ -85,11 +85,11 @@
 	EnforcePrecondition(false, ::Vehicle::Get(source_vehicle_id)->type == VEH_TRAIN);
 	EnforcePrecondition(false, dest_vehicle_id == -1 || ::Vehicle::Get(dest_vehicle_id)->type == VEH_TRAIN);
 
-	const Train *v = (Train *)::Vehicle::Get(source_vehicle_id);
+	const Train *v = (const Train *)::Vehicle::Get(source_vehicle_id);
 	while (source_wagon-- > 0) v = GetNextUnit(v);
 	const Train *w = NULL;
 	if (dest_vehicle_id != -1) {
-		w = (Train *)::Vehicle::Get(dest_vehicle_id);
+		w = (const Train *)::Vehicle::Get(dest_vehicle_id);
 		while (dest_wagon-- > 0) w = GetNextUnit(w);
 	}
 
@@ -136,7 +136,7 @@
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id) && wagon < GetNumWagons(vehicle_id));
 	EnforcePrecondition(false, ::Vehicle::Get(vehicle_id)->type == VEH_TRAIN);
 
-	const Train *v = (Train *)::Vehicle::Get(vehicle_id);
+	const Train *v = (const Train *)::Vehicle::Get(vehicle_id);
 	while (wagon-- > 0) v = GetNextUnit(v);
 
 	return AIObject::DoCommand(0, v->index, sell_attached_wagons ? 1 : 0, CMD_SELL_RAIL_WAGON);
@@ -243,7 +243,7 @@
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 	if (v->type == VEH_TRAIN) {
-		while (wagon-- > 0) v = GetNextUnit((Train *)v);
+		while (wagon-- > 0) v = GetNextUnit((const Train *)v);
 	}
 	return v->engine_type;
 }
@@ -281,7 +281,7 @@
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 	if (v->type == VEH_TRAIN) {
-		while (wagon-- > 0) v = GetNextUnit((Train *)v);
+		while (wagon-- > 0) v = GetNextUnit((const Train *)v);
 	}
 	return v->age;
 }

@@ -208,7 +208,7 @@ bool IsArticulatedVehicleCarryingDifferentCargos(const Vehicle *v, CargoID *carg
 
 		switch (v->type) {
 			case VEH_TRAIN:
-				v = (EngineHasArticPart((Train *)v) ? GetNextArticPart((Train *)v) : NULL);
+				v = (EngineHasArticPart((const Train *)v) ? GetNextArticPart((const Train *)v) : NULL);
 				break;
 
 			case VEH_ROAD:
@@ -256,7 +256,7 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 
 		switch (v->type) {
 			case VEH_TRAIN:
-				v = (EngineHasArticPart((Train *)v) ? GetNextArticPart((Train *)v) : NULL);
+				v = (EngineHasArticPart((const Train *)v) ? GetNextArticPart((const Train *)v) : NULL);
 				break;
 
 			case VEH_ROAD:

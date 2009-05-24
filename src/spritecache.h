@@ -17,7 +17,7 @@ struct Sprite {
 
 extern uint _sprite_cache_size;
 
-const void *GetRawSprite(SpriteID sprite, SpriteType type);
+void *GetRawSprite(SpriteID sprite, SpriteType type);
 bool SpriteExists(SpriteID sprite);
 
 static inline const Sprite *GetSprite(SpriteID sprite, SpriteType type)

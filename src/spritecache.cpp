@@ -489,7 +489,7 @@ void *AllocSprite(size_t mem_req)
  * @param available available sprite type
  * @return fallback sprite
  * @note this function will do usererror() in the case the fallback sprite isn't available */
-static const void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, SpriteCache *sc)
+static void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, SpriteCache *sc)
 {
 	static const char *sprite_types[] = {
 		"normal",        // ST_NORMAL
@@ -525,7 +525,7 @@ static const void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType reques
 	}
 }
 
-const void *GetRawSprite(SpriteID sprite, SpriteType type)
+void *GetRawSprite(SpriteID sprite, SpriteType type)
 {
 	assert(IsMapgenSpriteID(sprite) == (type == ST_MAPGEN));
 	assert(type < ST_INVALID);

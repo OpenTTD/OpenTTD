@@ -1424,9 +1424,9 @@ SpriteID GetEnginePalette(EngineID engine_type, CompanyID company)
 SpriteID GetVehiclePalette(const Vehicle *v)
 {
 	if (v->type == VEH_TRAIN) {
-		return GetEngineColourMap(v->engine_type, v->owner, ((Train *)v)->tcache.first_engine, v);
+		return GetEngineColourMap(v->engine_type, v->owner, ((const Train *)v)->tcache.first_engine, v);
 	} else if (v->type == VEH_ROAD) {
-		return GetEngineColourMap(v->engine_type, v->owner, ((RoadVehicle *)v)->rcache.first_engine, v);
+		return GetEngineColourMap(v->engine_type, v->owner, ((const RoadVehicle *)v)->rcache.first_engine, v);
 	}
 
 	return GetEngineColourMap(v->engine_type, v->owner, INVALID_ENGINE, v);
@@ -1742,7 +1742,7 @@ bool CanVehicleUseStation(EngineID engine_type, const Station *st)
  */
 bool CanVehicleUseStation(const Vehicle *v, const Station *st)
 {
-	if (v->type == VEH_ROAD) return st->GetPrimaryRoadStop((RoadVehicle *)v) != NULL;
+	if (v->type == VEH_ROAD) return st->GetPrimaryRoadStop((const RoadVehicle *)v) != NULL;
 
 	return CanVehicleUseStation(v->engine_type, st);
 }

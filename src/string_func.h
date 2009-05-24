@@ -208,11 +208,11 @@ static inline bool IsUtf8Part(char c)
  * @note The function should not be used to determine the length of the previous
  * encoded char because it might be an invalid/corrupt start-sequence
  */
-static inline char *Utf8PrevChar(const char *s)
+static inline char *Utf8PrevChar(char *s)
 {
-	const char *ret = s;
+	char *ret = s;
 	while (IsUtf8Part(*--ret)) {}
-	return (char*)ret;
+	return ret;
 }
 
 

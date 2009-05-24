@@ -641,8 +641,8 @@ static int CDECL VehicleLengthSorter(const Vehicle * const *a, const Vehicle * c
 
 		case VEH_ROAD: {
 			const RoadVehicle *u;
-			for (u = (RoadVehicle *)*a; u != NULL; u = u->Next()) r += u->rcache.cached_veh_length;
-			for (u = (RoadVehicle *)*b; u != NULL; u = u->Next()) r -= u->rcache.cached_veh_length;
+			for (u = (const RoadVehicle *)*a; u != NULL; u = u->Next()) r += u->rcache.cached_veh_length;
+			for (u = (const RoadVehicle *)*b; u != NULL; u = u->Next()) r -= u->rcache.cached_veh_length;
 		} break;
 
 		default: NOT_REACHED();
@@ -1466,10 +1466,10 @@ struct VehicleDetailsWindow : Window {
 		switch (v->type) {
 			case VEH_TRAIN:
 				SetDParam(2, v->GetDisplayMaxSpeed());
-				SetDParam(1, ((Train *)v)->tcache.cached_power);
-				SetDParam(0, ((Train *)v)->tcache.cached_weight);
-				SetDParam(3, ((Train *)v)->tcache.cached_max_te / 1000);
-				DrawString(2, this->width - 2, 25, (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && ((Train *)v)->railtype != RAILTYPE_MAGLEV) ?
+				SetDParam(1, ((const Train *)v)->tcache.cached_power);
+				SetDParam(0, ((const Train *)v)->tcache.cached_weight);
+				SetDParam(3, ((const Train *)v)->tcache.cached_max_te / 1000);
+				DrawString(2, this->width - 2, 25, (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && ((const Train *)v)->railtype != RAILTYPE_MAGLEV) ?
 					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE :
 					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED);
 				break;
@@ -1937,7 +1937,7 @@ struct VehicleViewWindow : Window {
 		} else if (v->vehstatus & VS_STOPPED) {
 			if (v->type == VEH_TRAIN) {
 				if (v->cur_speed == 0) {
-					if (((Train *)v)->tcache.cached_power == 0) {
+					if (((const Train *)v)->tcache.cached_power == 0) {
 						str = STR_TRAIN_NO_POWER;
 					} else {
 						str = STR_VEHICLE_STATUS_STOPPED;
@@ -1949,7 +1949,7 @@ struct VehicleViewWindow : Window {
 			} else { // no train
 				str = STR_VEHICLE_STATUS_STOPPED;
 			}
-		} else if (v->type == VEH_TRAIN && HasBit(((Train *)v)->flags, VRF_TRAIN_STUCK)) {
+		} else if (v->type == VEH_TRAIN && HasBit(((const Train *)v)->flags, VRF_TRAIN_STUCK)) {
 			str = STR_TRAIN_STUCK;
 		} else { // vehicle is in a "normal" state, show current order
 			switch (v->current_order.GetType()) {

@@ -13,8 +13,8 @@ INSTANTIATE_POOL_METHODS(SpriteGroup)
 
 RealSpriteGroup::~RealSpriteGroup()
 {
-	free((SpriteGroup**)this->loaded);
-	free((SpriteGroup**)this->loading);
+	free((void*)this->loaded);
+	free((void*)this->loading);
 }
 
 DeterministicSpriteGroup::~DeterministicSpriteGroup()
@@ -25,7 +25,7 @@ DeterministicSpriteGroup::~DeterministicSpriteGroup()
 
 RandomizedSpriteGroup::~RandomizedSpriteGroup()
 {
-	free((SpriteGroup**)this->groups);
+	free((void*)this->groups);
 }
 
 TileLayoutSpriteGroup::~TileLayoutSpriteGroup()

@@ -214,7 +214,7 @@ static bool load_intlist(const char *str, void *array, int nelems, VarType type)
 static void make_intlist(char *buf, const char *last, const void *array, int nelems, VarType type)
 {
 	int i, v = 0;
-	const byte *p = (const byte*)array;
+	byte *p = (byte*)array;
 
 	for (i = 0; i != nelems; i++) {
 		switch (type) {

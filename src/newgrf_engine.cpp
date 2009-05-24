@@ -434,9 +434,9 @@ static uint8 LiveryHelper(EngineID engine, const Vehicle *v)
 		if (!Company::IsValidID(_current_company)) return 0;
 		l = GetEngineLivery(engine, _current_company, INVALID_ENGINE, NULL);
 	} else if (v->type == VEH_TRAIN) {
-		l = GetEngineLivery(v->engine_type, v->owner, ((Train *)v)->tcache.first_engine, v);
+		l = GetEngineLivery(v->engine_type, v->owner, ((const Train *)v)->tcache.first_engine, v);
 	} else if (v->type == VEH_ROAD) {
-		l = GetEngineLivery(v->engine_type, v->owner, ((RoadVehicle *)v)->rcache.first_engine, v);
+		l = GetEngineLivery(v->engine_type, v->owner, ((const RoadVehicle *)v)->rcache.first_engine, v);
 	} else {
 		l = GetEngineLivery(v->engine_type, v->owner, INVALID_ENGINE, v);
 	}
@@ -536,7 +536,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				memset(common_subtypes, 0, sizeof(common_subtypes));
 
 				for (u = v; u != NULL; u = u->Next()) {
-					if (v->type == VEH_TRAIN) user_def_data |= ((Train *)u)->tcache.user_def_data;
+					if (v->type == VEH_TRAIN) user_def_data |= ((const Train *)u)->tcache.user_def_data;
 
 					/* Skip empty engines */
 					if (u->cargo_cap == 0) continue;
@@ -886,10 +886,10 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 			/* We always use cached value, except for callbacks because the override spriteset
 			 * to use may be different than the one cached. It happens for callback 0x15 (refit engine),
 			 * as v->cargo_type is temporary changed to the new type */
-			group = use_cache ? ((Train *)v)->tcache.cached_override : GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, ((Train *)v)->tcache.first_engine);
+			group = use_cache ? ((const Train *)v)->tcache.cached_override : GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, ((const Train *)v)->tcache.first_engine);
 			if (group != NULL) return group;
 		} else if (v->type == VEH_ROAD) {
-			group = GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, ((RoadVehicle *)v)->rcache.first_engine);
+			group = GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, ((const RoadVehicle *)v)->rcache.first_engine);
 			if (group != NULL) return group;
 		}
 	}
@@ -952,7 +952,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Aircraft *v, bool info_vi
 bool UsesWagonOverride(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	return ((Train *)v)->tcache.cached_override != NULL;
+	return ((const Train *)v)->tcache.cached_override != NULL;
 }
 
 /**

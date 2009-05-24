@@ -56,7 +56,7 @@ int GetDriverParamInt(const char * const *parm, const char *name, int def)
  * @param name the driver to select.
  * @post Sets the driver so GetCurrentDriver() returns it too.
  */
-const Driver *DriverFactoryBase::SelectDriver(const char *name, Driver::Type type)
+Driver *DriverFactoryBase::SelectDriver(const char *name, Driver::Type type)
 {
 	if (GetDrivers().size() == 0) return NULL;
 

@@ -862,7 +862,7 @@ void DetermineBasePaths(const char *exe)
 #endif
 
 	/* Change the working directory to that one of the executable */
-	ChangeWorkingDirectory((char*)exe);
+	ChangeWorkingDirectory(exe);
 	if (getcwd(tmp, MAX_PATH) == NULL) *tmp = '\0';
 	AppendPathSeparator(tmp, MAX_PATH);
 	_searchpaths[SP_BINARY_DIR] = strdup(tmp);

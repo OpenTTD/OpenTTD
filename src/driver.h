@@ -80,7 +80,7 @@ public:
 		}
 	}
 
-	static const Driver *SelectDriver(const char *name, Driver::Type type);
+	static Driver *SelectDriver(const char *name, Driver::Type type);
 	static char *GetDriversInfo(char *p, const char *last);
 
 	/**

@@ -106,8 +106,8 @@ AIInfo::~AIInfo()
 {
 	/* Free all allocated strings */
 	for (AIConfigItemList::iterator it = this->config_list.begin(); it != this->config_list.end(); it++) {
-		free((char *)(*it).name);
-		free((char *)(*it).description);
+		free((void*)(*it).name);
+		free((void*)(*it).description);
 		if (it->labels != NULL) {
 			for (LabelMapping::iterator it2 = (*it).labels->Begin(); it2 != (*it).labels->End(); it2++) {
 				free(it2->second);

@@ -206,7 +206,7 @@ struct MyGetOptData {
 	int numleft;
 	char **argv;
 	const char *options;
-	const char *cont;
+	char *cont;
 
 	MyGetOptData(int argc, char **argv, const char *options)
 	{
@@ -220,9 +220,7 @@ struct MyGetOptData {
 
 static int MyGetOpt(MyGetOptData *md)
 {
-	const char *s, *r, *t;
-
-	s = md->cont;
+	char *s = md->cont;
 	if (s != NULL)
 		goto md_continue_here;
 
@@ -234,12 +232,14 @@ static int MyGetOpt(MyGetOptData *md)
 md_continue_here:;
 			s++;
 			if (*s != 0) {
+				const char *r;
 				/* Found argument, try to locate it in options. */
 				if (*s == ':' || (r = strchr(md->options, *s)) == NULL) {
 					/* ERROR! */
 					return -2;
 				}
 				if (r[1] == ':') {
+					char *t;
 					/* Item wants an argument. Check if the argument follows, or if it comes as a separate arg. */
 					if (!*(t = s + 1)) {
 						/* It comes as a separate arg. Check if out of args? */
@@ -253,7 +253,7 @@ md_continue_here:;
 							md->argv++;
 						}
 					}
-					md->opt = (char*)t;
+					md->opt = t;
 					md->cont = NULL;
 					return *s;
 				}

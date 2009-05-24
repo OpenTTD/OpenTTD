@@ -189,7 +189,7 @@ void CheckTrainsLengths()
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_TRAIN && v->First() == v && !(v->vehstatus & VS_CRASHED)) {
-			for (const Train *u = (Train *)v, *w = (Train *)v->Next(); w != NULL; u = w, w = w->Next()) {
+			for (const Train *u = (const Train *)v, *w = (const Train *)v->Next(); w != NULL; u = w, w = w->Next()) {
 				if (u->track != TRACK_BIT_DEPOT) {
 					if ((w->track != TRACK_BIT_DEPOT &&
 							max(abs(u->x_pos - w->x_pos), abs(u->y_pos - w->y_pos)) != u->tcache.cached_veh_length) ||
@@ -732,7 +732,7 @@ static void NormalizeTrainVehInDepot(const Train *u)
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_TRAIN && IsFreeWagon(v) &&
 				v->tile == u->tile &&
-				((Train *)v)->track == TRACK_BIT_DEPOT) {
+				((const Train *)v)->track == TRACK_BIT_DEPOT) {
 			if (CmdFailed(DoCommand(0, v->index | (u->index << 16), 1, DC_EXEC,
 					CMD_MOVE_RAIL_VEHICLE)))
 				break;
@@ -3572,8 +3572,8 @@ static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
 		 * As there might be more than two trains involved, we have to do that for all vehicles */
 		const Vehicle *u;
 		FOR_ALL_VEHICLES(u) {
-			if (u->type == VEH_TRAIN && HASBITS(u->vehstatus, VS_CRASHED) && (((Train *)u)->track & TRACK_BIT_DEPOT) == TRACK_BIT_NONE) {
-				TrackBits trackbits = ((Train *)u)->track;
+			if (u->type == VEH_TRAIN && HASBITS(u->vehstatus, VS_CRASHED) && (((const Train *)u)->track & TRACK_BIT_DEPOT) == TRACK_BIT_NONE) {
+				TrackBits trackbits = ((const Train *)u)->track;
 				if ((trackbits & TRACK_BIT_WORMHOLE) == TRACK_BIT_WORMHOLE) {
 					/* Vehicle is inside a wormhole, v->track contains no useful value then. */
 					trackbits |= DiagDirToDiagTrackBits(GetTunnelBridgeDirection(u->tile));

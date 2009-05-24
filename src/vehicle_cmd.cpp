@@ -152,7 +152,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 
 
 		if (!vehicle_list_window) {
 			if (vehicle_type == VEH_TRAIN) {
-				if (CheckTrainInDepot((Train *)v, false) == -1) continue;
+				if (CheckTrainInDepot((const Train *)v, false) == -1) continue;
 			} else {
 				if (!(v->vehstatus & VS_HIDDEN)) continue;
 			}
@@ -229,7 +229,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
 	bool did_something = false;
 
 	for (uint i = 0; i < list.Length(); i++) {
-		Vehicle *v = (Vehicle*)list[i];
+		const Vehicle *v = list[i];
 
 		/* Ensure that the vehicle completely in the depot */
 		if (!v->IsInDepot()) continue;

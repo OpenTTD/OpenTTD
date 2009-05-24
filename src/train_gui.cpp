@@ -28,7 +28,7 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_TRAIN && IsFrontEngine(v) &&
 				v->tile == tile &&
-				((Train *)v)->track == TRACK_BIT_DEPOT) {
+				((const Train *)v)->track == TRACK_BIT_DEPOT) {
 			if (found != NULL) return; // must be exactly one.
 			found = v;
 		}
@@ -81,7 +81,7 @@ void DrawTrainImage(const Vehicle *v, int x, int y, VehicleID selection, int cou
 	_cur_dpi = &tmp_dpi;
 
 	do {
-		int width = ((Train *)v)->tcache.cached_veh_length;
+		int width = ((const Train *)v)->tcache.cached_veh_length;
 
 		if (dx + width > 0) {
 			if (dx <= count) {
@@ -228,7 +228,7 @@ void DrawTrainDetails(const Vehicle *v, int left, int right, int y, int vscroll_
 				do {
 					SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 					DrawSprite(u->GetImage(DIR_W), pal, x + WagonLengthToPixels(4 + dx), y + 6 + (is_custom_sprite(RailVehInfo(u->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
-					dx += ((Train *)u)->tcache.cached_veh_length;
+					dx += ((const Train *)u)->tcache.cached_veh_length;
 					u = u->Next();
 				} while (u != NULL && IsArticulatedPart(u) && u->cargo_cap == 0);
 

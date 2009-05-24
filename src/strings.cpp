@@ -40,9 +40,9 @@ uint64 _decode_parameters[20];
 
 static char *StationGetSpecialString(char *buff, int x, const char *last);
 static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const char *last);
-static char *GetSpecialNameString(char *buff, int ind, const int64 *argv, const char *last);
+static char *GetSpecialNameString(char *buff, int ind, int64 *argv, const char *last);
 
-static char *FormatString(char *buff, const char *str, const int64 *argv, uint casei, const char *last);
+static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, const char *last);
 
 struct LanguagePack : public LanguagePackHeader {
 	char data[VARARRAY_SIZE]; // list of strings
@@ -55,22 +55,22 @@ static uint _langtab_start[32]; // Offset into langpack offs
 
 
 /** Read an int64 from the argv array. */
-static inline int64 GetInt64(const int64 **argv)
+static inline int64 GetInt64(int64 **argv)
 {
 	assert(argv);
 	return *(*argv)++;
 }
 
 /** Read an int32 from the argv array. */
-static inline int32 GetInt32(const int64 **argv)
+static inline int32 GetInt32(int64 **argv)
 {
 	return (int32)GetInt64(argv);
 }
 
 /** Read an array from the argv array. */
-static inline const int64 *GetArgvPtr(const int64 **argv, int n)
+static inline int64 *GetArgvPtr(int64 **argv, int n)
 {
-	const int64 *result;
+	int64 *result;
 	assert(*argv);
 	result = *argv;
 	(*argv) += n;
@@ -98,7 +98,7 @@ const char *GetStringPtr(StringID string)
  * @param last
  * @return a formatted string of char
  */
-static char *GetStringWithArgs(char *buffr, uint string, const int64 *argv, const char *last)
+static char *GetStringWithArgs(char *buffr, uint string, int64 *argv, const char *last)
 {
 	if (GB(string, 0, 16) == 0) return GetStringWithArgs(buffr, STR_UNDEFINED, argv, last);
 
@@ -517,16 +517,16 @@ uint ConvertDisplaySpeedToSpeed(uint speed)
 	return ((speed << units[_settings_game.locale.units].s_s) + units[_settings_game.locale.units].s_m / 2) / units[_settings_game.locale.units].s_m;
 }
 
-static char *FormatString(char *buff, const char *str, const int64 *argv, uint casei, const char *last)
+static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, const char *last)
 {
 	WChar b;
-	const int64 *argv_orig = argv;
+	int64 *argv_orig = argv;
 	uint modifier = 0;
 
 	while ((b = Utf8Consume(&str)) != '\0') {
 		if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
 			/* We need to pass some stuff as it might be modified; oh boy. */
-			b = RemapNewGRFStringControlCode(b, &buff, &str, (int64*)argv);
+			b = RemapNewGRFStringControlCode(b, &buff, &str, argv);
 			if (b == 0) continue;
 		}
 
@@ -1177,7 +1177,7 @@ static char *GenPresidentName(char *buff, uint32 x, const char *last)
 	return buff;
 }
 
-static char *GetSpecialNameString(char *buff, int ind, const int64 *argv, const char *last)
+static char *GetSpecialNameString(char *buff, int ind, int64 *argv, const char *last)
 {
 	switch (ind) {
 		case 1: // not used

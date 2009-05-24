@@ -26,7 +26,7 @@ ScreenshotType current_screenshot_type;
 
 /* called by the ScreenShot proc to generate screenshot lines. */
 typedef void ScreenshotCallback(void *userdata, void *buf, uint y, uint pitch, uint n);
-typedef bool ScreenshotHandlerProc(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette);
+typedef bool ScreenshotHandlerProc(char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette);
 
 struct ScreenshotFormat {
 	const char *name;
@@ -67,7 +67,7 @@ struct RgbQuad {
 assert_compile(sizeof(RgbQuad) == 4);
 
 /* generic .BMP writer */
-static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
+static bool MakeBmpImage(char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
 {
 	BitmapFileHeader bfh;
 	BitmapInfoHeader bih;
@@ -170,7 +170,7 @@ static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
 	DEBUG(misc, 1, "[libpng] warning: %s - %s", message, (char *)png_get_error_ptr(png_ptr));
 }
 
-static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
+static bool MakePNGImage(char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
 {
 	png_color rq[256];
 	FILE *f;
@@ -186,7 +186,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	f = fopen(name, "wb");
 	if (f == NULL) return false;
 
-	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, (char *)name, png_my_error, png_my_warning);
+	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, name, png_my_error, png_my_warning);
 
 	if (png_ptr == NULL) {
 		fclose(f);
@@ -299,7 +299,7 @@ struct PcxHeader {
 };
 assert_compile(sizeof(PcxHeader) == 128);
 
-static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
+static bool MakePCXImage(char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
 {
 	FILE *f;
 	uint maxlines;

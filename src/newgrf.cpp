@@ -2247,7 +2247,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				IndustryTileTable **tile_table = CallocT<IndustryTileTable*>(indsp->num_table); // Table with tiles to compose an industry
 				IndustryTileTable *itt = CallocT<IndustryTileTable>(defsize); // Temporary array to read the tile layouts from the GRF
 				int size;
-				IndustryTileTable *copy_from;
+				const IndustryTileTable *copy_from;
 
 				for (byte j = 0; j < indsp->num_table; j++) {
 					for (int k = 0;; k++) {
@@ -2258,7 +2258,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 							IndustryType type = grf_load_byte(&buf);  // industry holding required layout
 							byte laynbr = grf_load_byte(&buf);        // layout number to borrow
 
-							copy_from = (IndustryTileTable*)_origin_industry_specs[type].table[laynbr];
+							copy_from = _origin_industry_specs[type].table[laynbr];
 							for (size = 1;; size++) {
 								if (copy_from[size - 1].ti.x == -0x80 && copy_from[size - 1].ti.y == 0) break;
 							}
@@ -5455,11 +5455,11 @@ static void ResetCustomIndustries()
 						for (int j = 0; j < ind->num_table; j++) {
 							/* remove the individual layouts */
 							if (ind->table[j] != NULL) {
-								free((IndustryTileTable*)ind->table[j]);
+								free((void*)ind->table[j]);
 							}
 						}
 						/* remove the layouts pointers */
-						free((IndustryTileTable**)ind->table);
+						free((void*)ind->table);
 						ind->table = NULL;
 					}
 
