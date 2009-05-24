@@ -335,7 +335,7 @@ static uint32 StationGetTriggers(const ResolverObject *object)
 
 static void StationSetTriggers(const ResolverObject *object, int triggers)
 {
-	Station *st = (Station*)object->u.station.st;
+	Station *st = const_cast<Station *>(object->u.station.st);
 	assert(st != NULL);
 	st->waiting_triggers = triggers;
 }

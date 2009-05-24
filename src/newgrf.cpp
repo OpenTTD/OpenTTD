@@ -1158,11 +1158,9 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, byte
 					MapSpriteMappingRecolour(&dts->ground);
 
 					while (buf < *bufp + len) {
-						DrawTileSeqStruct *dtss;
-
 						/* no relative bounding box support */
-						dts->seq = ReallocT((DrawTileSeqStruct*)dts->seq, ++seq_count);
-						dtss = (DrawTileSeqStruct*) &dts->seq[seq_count - 1];
+						dts->seq = ReallocT(const_cast<DrawTileSeqStruct *>(dts->seq), ++seq_count);
+						DrawTileSeqStruct *dtss = const_cast<DrawTileSeqStruct *>(&dts->seq[seq_count - 1]);
 
 						dtss->delta_x = grf_load_byte(&buf);
 						if ((byte) dtss->delta_x == 0x80) break;
@@ -2907,7 +2905,7 @@ static void NewSpriteGroup(byte *buf, size_t len)
 					group->dts->seq = CallocT<DrawTileSeqStruct>(num_sprites + 1);
 
 					for (i = 0; i < num_sprites; i++) {
-						DrawTileSeqStruct *seq = (DrawTileSeqStruct*)&group->dts->seq[i];
+						DrawTileSeqStruct *seq = const_cast<DrawTileSeqStruct*>(&group->dts->seq[i]);
 
 						seq->image.sprite = grf_load_word(&buf);
 						seq->image.pal    = grf_load_word(&buf);
@@ -2935,7 +2933,7 @@ static void NewSpriteGroup(byte *buf, size_t len)
 					}
 
 					/* Set the terminator value. */
-					((DrawTileSeqStruct*)group->dts->seq)[i].delta_x = (int8)0x80;
+					const_cast<DrawTileSeqStruct *>(group->dts->seq)[i].delta_x = (int8)0x80;
 
 					break;
 				}

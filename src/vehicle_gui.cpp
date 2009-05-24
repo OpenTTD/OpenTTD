@@ -144,7 +144,7 @@ static RefitList *BuildRefitList(const Vehicle *v)
 	uint max_lines = 256;
 	RefitOption *refit = CallocT<RefitOption>(max_lines);
 	RefitList *list = CallocT<RefitList>(1);
-	Vehicle *u = (Vehicle*)v;
+	Vehicle *u = const_cast<Vehicle *>(v);
 	uint num_lines = 0;
 	uint i;
 

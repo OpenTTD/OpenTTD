@@ -807,7 +807,7 @@ void ChangeWorkingDirectory(const char *exe)
 
 	if (app_bundle != NULL) app_bundle[0] = '\0';
 #endif /* WITH_COCOA */
-	char *s = (char*)strrchr(exe, PATHSEPCHAR);
+	char *s = const_cast<char *>(strrchr(exe, PATHSEPCHAR));
 	if (s != NULL) {
 		*s = '\0';
 #if defined(__DJGPP__)

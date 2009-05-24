@@ -440,7 +440,7 @@ bool SQVM::DerefInc(SQInteger op,SQObjectPtr &target, SQObjectPtr &self, SQObjec
 
 #define arg0 (_i_._arg0)
 #define arg1 (_i_._arg1)
-#define sarg1 (*((SQInt32 *)&_i_._arg1))
+#define sarg1 (*(const_cast<SQInt32 *>(&_i_._arg1)))
 #define arg2 (_i_._arg2)
 #define arg3 (_i_._arg3)
 #define sarg3 ((SQInteger)*((signed char *)&_i_._arg3))

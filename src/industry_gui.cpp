@@ -954,7 +954,7 @@ public:
 				if (i->produced_cargo[j] == CT_INVALID) continue;
 				SetDParam(p++, i->produced_cargo[j]);
 				SetDParam(p++, i->last_month_production[j]);
-				SetDParam(p++, GetCargoSuffix(j + 3, CST_DIR, (Industry*)i, i->type, indsp));
+				SetDParam(p++, GetCargoSuffix(j + 3, CST_DIR, const_cast<Industry *>(i), i->type, indsp));
 			}
 
 			/* Transported productions */

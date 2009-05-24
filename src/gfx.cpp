@@ -340,7 +340,7 @@ static int TruncateString(char *str, int maxw)
 
 	ddd_w = ddd = GetCharacterWidth(size, '.') * 3;
 
-	for (ddd_pos = str; (c = Utf8Consume((const char **)&str)) != '\0'; ) {
+	for (ddd_pos = str; (c = Utf8Consume(const_cast<const char **>(&str))) != '\0'; ) {
 		if (IsPrintable(c)) {
 			w += GetCharacterWidth(size, c);
 
@@ -577,7 +577,7 @@ uint32 FormatStringLinebreaks(char *str, int maxw)
 		int w = 0;
 
 		for (;;) {
-			WChar c = Utf8Consume((const char **)&str);
+			WChar c = Utf8Consume(const_cast<const char **>(&str));
 			/* whitespace is where we will insert the line-break */
 			if (IsWhitespace(c)) last_space = str;
 

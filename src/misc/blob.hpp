@@ -82,7 +82,7 @@ public:
 	{
 		assert(pHdr_1 != NULL);
 		ptr_u.m_pHdr_1 = pHdr_1;
-		*(CHdr**)&pHdr_1 = NULL;
+		*const_cast<CHdr**>(&pHdr_1) = NULL;
 	}
 
 	/** destructor */
@@ -330,7 +330,7 @@ public:
 
 	struct OnTransfer {
 		typename Tbase_::CHdr *m_pHdr_1;
-		OnTransfer(const OnTransfer& src) : m_pHdr_1(src.m_pHdr_1) {assert(src.m_pHdr_1 != NULL); *(typename Tbase_::CHdr**)&src.m_pHdr_1 = NULL;}
+		OnTransfer(const OnTransfer& src) : m_pHdr_1(src.m_pHdr_1) {assert(src.m_pHdr_1 != NULL); *const_cast<typename Tbase_::CHdr**>(&src.m_pHdr_1) = NULL;}
 		OnTransfer(CBlobT& src) : m_pHdr_1(src.ptr_u.m_pHdr_1) {src.InitEmpty();}
 		~OnTransfer() {assert(m_pHdr_1 == NULL);}
 	};

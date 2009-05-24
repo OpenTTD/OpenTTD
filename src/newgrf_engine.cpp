@@ -416,7 +416,7 @@ static void VehicleSetTriggers(const ResolverObject *object, int triggers)
 	 * innocent looking function pointer cast... Currently I cannot see a
 	 * way of avoiding this without removing consts deep within gui code.
 	 */
-	Vehicle *v = (Vehicle*)GRV(object);
+	Vehicle *v = const_cast<Vehicle *>(GRV(object));
 
 	/* This function must only be called when processing triggers -- any
 	 * other time is an error. */

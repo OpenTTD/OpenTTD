@@ -1793,7 +1793,7 @@ void NetworkServerBanIP(const char *banip)
 
 	/* There can be multiple clients with the same IP, kick them all */
 	FOR_ALL_CLIENT_INFOS(ci) {
-		if (ci->client_address.IsInNetmask((char*)banip)) {
+		if (ci->client_address.IsInNetmask(const_cast<char *>(banip))) {
 			NetworkServerKickClient(ci->client_id);
 		}
 	}

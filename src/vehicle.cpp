@@ -1396,7 +1396,7 @@ static SpriteID GetEngineColourMap(EngineID engine_type, CompanyID company, Engi
 			 * map else it's returned as-is. */
 			if (!HasBit(callback, 14)) {
 				/* Update cache */
-				if (v != NULL) ((Vehicle*)v)->colourmap = map;
+				if (v != NULL) const_cast<Vehicle *>(v)->colourmap = map;
 				return map;
 			}
 		}
@@ -1412,7 +1412,7 @@ static SpriteID GetEngineColourMap(EngineID engine_type, CompanyID company, Engi
 	if (twocc) map += livery->colour2 * 16;
 
 	/* Update cache */
-	if (v != NULL) ((Vehicle*)v)->colourmap = map;
+	if (v != NULL) const_cast<Vehicle *>(v)->colourmap = map;
 	return map;
 }
 
