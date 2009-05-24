@@ -190,7 +190,7 @@ endif
 
 # Convert x:/... paths to /x/... for mingw
 ifeq ($(OS), MINGW)
-	@cat Makefile.dep.tmp | sed 's@\([a-zA-Z]\):\/@\/\1\/@g' > Makefile.dep.tmp.mingw
+	@cat Makefile.dep.tmp | sed 's@/\([a-zA-Z]\):\/@\/\1\/@g' > Makefile.dep.tmp.mingw
 	@cp Makefile.dep.tmp.mingw Makefile.dep.tmp
 	@rm -f Makefile.dep.tmp.mingw
 endif
@@ -200,7 +200,7 @@ endif
 	@$(AWK) '                           \
 	/^# DO NOT/ { print $$0 ; next}     \
 	/^#/ {next}                         \
-	/:/ {                               \
+	/: / {                               \
 		left = NF - 1;                    \
 		for (n = 2; n <= NF; n++) {       \
 			if (match($$n, "^$(ROOT_DIR)") == 0) { \

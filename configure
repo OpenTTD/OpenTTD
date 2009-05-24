@@ -22,11 +22,16 @@ if [ "$0" != "$CONFIGURE_EXECUTABLE" ]; then
 fi
 # Find out where configure is (in what dir)
 ROOT_DIR="`dirname $0`"
-ROOT_DIR="`cd $ROOT_DIR && pwd`"
+# For MSYS/MinGW we want to know the FULL path. This as that path is generated
+# once you call an outside binary. Having the same path for the rest is needed
+# for dependency checking.
+# pwd -W returns said FULL path, but doesn't exist on others so fall back.
+ROOT_DIR="`cd $ROOT_DIR && (pwd -W 2>/dev/null || pwd 2>/dev/null)`"
 
 check_path_characters
 
-PWD="`pwd`"
+# Same here as for the ROOT_DIR above
+PWD="`pwd -W 2>/dev/null || pwd 2>/dev/null`"
 PREFIX="$PWD/bin"
 
 . $ROOT_DIR/config.lib
