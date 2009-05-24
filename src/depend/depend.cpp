@@ -645,7 +645,7 @@ void ScanFile(const char *filename, const char *ext, bool header, bool verbose)
 										/* Replace the extension with the provided extension of '.o'. */
 										char path[PATH_MAX];
 										strcpy(path, filename);
-										*(strchr(path, '.')) = '\0';
+										*(strrchr(path, '.')) = '\0';
 										strcat(path, ext != NULL ? ext : ".o");
 										curfile = _files.find(path);
 										if (curfile == _files.end()) {
