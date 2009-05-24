@@ -333,7 +333,7 @@ void AddArticulatedParts(Vehicle *first, VehicleType type)
 				RoadVehicle *front = (RoadVehicle *)v;
 				RoadVehicle *rv = new RoadVehicle();
 				rv->subtype = 0;
-				previous->SetNext(u);
+				previous->SetNext(rv);
 				rv->rcache.first_engine = front->engine_type;
 				rv->rcache.cached_veh_length = 8; // Callback is called when the consist is finished
 				rv->state = RVSB_IN_DEPOT;
