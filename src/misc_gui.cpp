@@ -506,11 +506,11 @@ private:
 	int y[4];
 
 public:
-	ErrmsgWindow(Point pt, int width, int height, StringID msg1, StringID msg2, const Widget *widget, bool show_company_manager_face) :
+	ErrmsgWindow(Point pt, int width, int height, StringID msg1, StringID msg2, const Widget *widget, bool show_company_manager_face, bool no_timeout) :
 			Window(pt.x, pt.y, width, height, WC_ERRMSG, widget),
 			show_company_manager_face(show_company_manager_face)
 	{
-		this->duration = _settings_client.gui.errmsg_duration;
+		this->duration = no_timeout ? 0 : _settings_client.gui.errmsg_duration;
 		CopyOutDParam(this->decode_params, 0, lengthof(this->decode_params));
 		this->message_1 = msg1;
 		this->message_2 = msg2;
@@ -570,12 +570,17 @@ public:
 
 	virtual void OnMouseLoop()
 	{
-		if (_right_button_down) delete this;
+		/* Disallow closing the window too easily, if timeout is disabled */
+		if (_right_button_down && this->duration != 0) delete this;
 	}
 
 	virtual void OnHundredthTick()
 	{
-		if (--this->duration == 0) delete this;
+		/* Timeout enabled? */
+		if (this->duration != 0) {
+			this->duration--;
+			if (this->duration == 0) delete this;
+		}
 	}
 
 	~ErrmsgWindow()
@@ -593,14 +598,22 @@ public:
 	}
 };
 
-void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
+/**
+ * Display an error message in a window.
+ * @param msg_1 Detailed error message showed in second line. Can be INVALID_STRING_ID.
+ * @param msg_2 General error message showed in first line. Must be valid.
+ * @param x World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
+ * @param y World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
+ * @param no_timeout Set to true, if the message is that important that it should not close automatically after some time.
+ */
+void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y, bool no_timeout)
 {
 	static Widget *generated_errmsg_widgets = NULL;
 	static Widget *generated_errmsg_face_widgets = NULL;
 
 	DeleteWindowById(WC_ERRMSG, 0);
 
-	if (!_settings_client.gui.errmsg_duration) return;
+	if (_settings_client.gui.errmsg_duration == 0 && !no_timeout) return;
 
 	if (msg_2 == STR_NULL) msg_2 = STR_EMPTY;
 
@@ -627,7 +640,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 
 		const Widget *wid = InitializeWidgetArrayFromNestedWidgets(_nested_errmsg_widgets, lengthof(_nested_errmsg_widgets),
 													_errmsg_widgets, &generated_errmsg_widgets);
-		new ErrmsgWindow(pt, 240, 46, msg_1, msg_2, wid, false);
+		new ErrmsgWindow(pt, 240, 46, msg_1, msg_2, wid, false, no_timeout);
 	} else {
 		if ((x | y) != 0) {
 			pt = RemapCoords2(x, y);
@@ -641,7 +654,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 
 		const Widget *wid = InitializeWidgetArrayFromNestedWidgets(_nested_errmsg_face_widgets, lengthof(_nested_errmsg_face_widgets),
 													_errmsg_face_widgets, &generated_errmsg_face_widgets);
-		new ErrmsgWindow(pt, 334, 137, msg_1, msg_2, wid, true);
+		new ErrmsgWindow(pt, 334, 137, msg_1, msg_2, wid, true, no_timeout);
 	}
 }
 

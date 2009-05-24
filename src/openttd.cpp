@@ -1031,7 +1031,7 @@ void SwitchToMode(SwitchMode new_mode)
 	}
 
 	if (_switch_mode_errorstr != INVALID_STRING_ID) {
-		ShowErrorMessage(INVALID_STRING_ID, _switch_mode_errorstr, 0, 0);
+		ShowErrorMessage(INVALID_STRING_ID, _switch_mode_errorstr, 0, 0, true);
 	}
 }
 
