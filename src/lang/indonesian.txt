@@ -343,6 +343,8 @@ STR_SORT_BY_LENGTH                                              :Panjang
 STR_SORT_BY_LIFE_TIME                                           :Sisa masa pakai
 STR_SORT_BY_FACILITY                                            :Tipe Stasiun
 STR_SORT_BY_WAITING                                             :Nilai tunggu kargo
+STR_SORT_BY_RATING_MAX                                          :Rating kargo tertinggi
+STR_SORT_BY_RATING_MIN                                          :Rating kargo terendah
 STR_ENGINE_SORT_ENGINE_ID                                       :IDMesin (klasik)
 STR_ENGINE_SORT_COST                                            :Biaya
 STR_ENGINE_SORT_POWER                                           :Daya
@@ -853,6 +855,7 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Pilih fo
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Set Grafik Dasar
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Pilih grafik dasar yang digunakan
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} berkas hilang atau rusak
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Informasi tambahan tentang set grafik dasar
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Simpan otomatis gagal
@@ -942,8 +945,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Selalu 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Tampilkan sinyal pada lajur kendara: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Tampilkan laporan keuangan pada akhir tahun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Tujuan baru standarnya adalah 'non-stop': {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Order kereta yang baru aslinya berhenti {ORANGE}{STRING}{LTBLUE} dari stasiun
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :hampir selesai
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :tengah
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :jauh di belakang
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Bus/truk bisa mengantri (dengan efek kuantum): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Geser tampilan saat mouse ada di tepi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Ijinkan kolusi pada penguasa setempat: {ORANGE}{STRING}
@@ -2239,6 +2244,7 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Pilih wa
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Buat wajah baru secara acak
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Item
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Tampilkan grafik item
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Perlihatkan detil rating kekuatan
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Grafik item perusahaan
 STR_GRAPH_KEY_COMPANY_SELECTION                                 :{BLACK}Klik disini untuk menandai daftar perusahaan pada grafik
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Jumlah kargo terkirim
@@ -2613,6 +2619,8 @@ STR_ORDER_GO_TO                                                 :Pergi ke
 STR_ORDER_GO_NON_STOP_TO                                        :Pergi non-stop ke
 STR_ORDER_GO_VIA                                                :Pergi lewat
 STR_ORDER_GO_NON_STOP_VIA                                       :Pergi non-stop lewat
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[agak belakang]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[tengah]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Penuhi salah satu
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Muat seadanya
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Penuhi semua
@@ -2799,10 +2807,12 @@ STR_SERVICE_HINT                                                :{BLACK}Lewati s
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Biaya: {CURRENCY} Berat: {WEIGHT_S}{}Kecepatan: {VELOCITY}  Daya: {POWER}{}Biaya ops.: {CURRENCY}/thn{}Kapasitas: {CARGO}
 STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Biaya: {CURRENCY} Kec. Max: {VELOCITY}{}Kapasitas: {CARGO}, {CARGO}{}Bea Berjalan: {CURRENCY}/thn
 STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Biaya: {CURRENCY} Kec. Max: {VELOCITY}{}Kapasitas: {CARGO}{}Bea Berjalan: {CURRENCY}/thn
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Umur: {LTBLUE}{STRING}{BLACK}   Biaya operasional: {LTBLUE}{CURRENCY}/thn
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Kec. Max: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Berat: {LTBLUE}{WEIGHT_S} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Berat: {LTBLUE}{WEIGHT_S} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Keuntungan thn ini: {LTBLUE}{CURRENCY} (thn lalu: {CURRENCY})
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Dibuat: {LTBLUE}{NUM}{BLACK} Nilai: {LTBLUE}{CURRENCY}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Daya Muat: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Daya Muat: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Daya Muat: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -3145,6 +3155,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Kereta a
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' memberikan informasi yang salah.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informasi muat ulang untuk '{1:ENGINE}' berbeda dengan daftar beli setelah konstruksi. Ini menyebabkan pembaruan otomatis gagal memuat ulang dengan benar..
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' menyebabkan perulangan tanpa akhir di tingkat produksi.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game telah disimpan pada versi terdahulu tanpa dukungan alat transportasi trem. Semua Trem telah dihilangkan.
 
@@ -3161,6 +3172,11 @@ STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Menurunk
 STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Meningkatkan nilai mata uang satu Pound (£)
 STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Atur penukaran nilai mata uang per satu Pound (£)
 STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Atur pemisah nilai mata uang Anda
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Masukkan awalan untuk mata uang
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Masukkan akhiran untuk mata uang
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Berpindah ke Euro lebih awal
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Berpindah ke Eurolebih akhir
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Masukkan tahun perpindahan ke Euro
 STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Pound (£) pada mata uang Anda
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
@@ -3561,6 +3577,7 @@ STR_AI_RANDOM_AI                                                :AI Acak
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parameter AI
 STR_AI_AUTHOR                                                   :{BLACK}Pembuat: {STRING}
 STR_AI_VERSION                                                  :{BLACK}Versi: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Salah satu AI gagal. Laporkan ini kepada AI Author dengan potongan layar dari Jendela Debug AI.
 ########
 

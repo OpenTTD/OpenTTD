@@ -2379,10 +2379,28 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Vagon za Plasti
 
 
 
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Pređi na naredbu {COMMA}
+STR_CONDITIONAL_NUM                                             :Pređi na naredbu {COMMA} kada je {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Pređi na naredbu {COMMA} kada je {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Nema putovanja
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Putovanje (bez rasporeda)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Putovanje za {STRING}
+STR_TIMETABLE_STAY_FOR                                          :i ostani {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :i putuj {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} dan{P "" a a}
+STR_TIMETABLE_TICKS                                             :{COMMA} utkucaj{P "" a a}
 
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Ide za {TOWN} Železnički Depo
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Ide za {TOWN} Železnički Depo, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servisiranje u {TOWN} Železničkom Depou
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servisiranje u {TOWN} Železničkom Depou, {VELOCITY}
 
+STR_INVALID_ORDER                                               :{RED} (Neispravna Naredba)
 
+STR_UNKNOWN_STATION                                             :nepoznata stanica
+STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Prazno
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} sa {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} sa {STATION} (x{NUM})
 STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} čeka u depou
@@ -2394,7 +2412,73 @@ STR_VEHICLE_LIST_CAPTION_TRAINS                                 :{WHITE}{COMPANY
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nova Železnička Vozila
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nova Železnička Električna Vozila
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nova Jenodšinska Vozila
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nova Maglev Vozila
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Šinska Vozila
 
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Kupi Vozilo
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Kopiraj Vozilo
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Ovim ćete kupiti isto drumsko vozilo. Sa Ctrl+Klik će imati zajedničke naredbe
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Ovim ćete kupiti isto drumsko vozilo. Kliknite na dugme i potom na drumsko vozilo koje je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe
+STR_CLONE_TRAIN                                                 :{BLACK}Kopiraj Voz
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Ovim ćete kupiti istu kompoziciju. Sa Ctrl+Klik će imati zajedničke naredbe
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Ovim ćete kupiti istu kompoziciju. Kliknite na dugme i potom na voz koji je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Preimenuj
+STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Preskoči
+STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Izbriši
+STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Idi do
+STR_REFIT                                                       :{BLACK}Prepravi
+STR_REFIT_TIP                                                   :{BLACK}Označite za koji tovar da se prepravi u ovoj naredbi. Ctrl+Klik za uklanjanje prepravljanja
+STR_REFIT_ORDER                                                 :(Prepravi za {STRING})
+STR_REFIT_STOP_ORDER                                            :(Prepravi za {STRING} i stani)
+STR_STOP_ORDER                                                  :(Stani)
+STR_TIMETABLE_VIEW                                              :{BLACK}Raspored
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Prelazi na raspored
+STR_ORDER_VIEW                                                  :{BLACK}Naredbe
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Prelazi na naredbe
+STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Naredbe)
+STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Kraj Naredbi - -
+STR_SERVICE                                                     :{BLACK}Servis
+STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Nemoguća kupovina šinskog vozila...
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Kupljen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Vrednost: {LTBLUE}{CURRENCY}
+STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
+STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Utovarivanje / Iztovarivanje
+STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Kreće
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Voz se mora zaustaviti u nekom depou
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Voz ne može da ode u depo...
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Nema više mesta za naredbe
+STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Previše naredbi
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Ne može se dodati nova naredba...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Ne može da se izbriše ova naredba...
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Ne može da se izmeni ova naredba...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Ne može da se pomeri ova naredba...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Ne može se preskočiti tekuća naredba...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Ne može da se preskoči označena naredba...
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}vozilo ne može da ide na sve stanice
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}vozilo ne može da ide na tu stanicu
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}vozilo koje takođe ima ovu naredbu ne može da ide na tu stanicu
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Ne može se ukloniti vozilo...
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Zadnja lokomotiva u kompoziciji uvek prati prednju
+STR_CARGO_N_A                                                   :Nepoznato{SKIP}
+STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}Ne može se prodati šinsko vozilo...
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nepostoji putanja do lokalnog depoa
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Ne može se pokrenuti/zaustaviti voz...
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Period servisiranja: {LTBLUE}{COMMA}dana{BLACK}   Poslednji servis: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Period servisiranja: {LTBLUE}{COMMA}%{BLACK}   Poslednji servis: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vozovi - kliknite na voz za podatke
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vozovi - kliknite na voz za podatke, prevucite vozilo da bi dodali/sklonili iz kompozicije
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kupite nova šinska vozila
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Ovde prevucite šinsko vozilo kako biste ga prodali
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Prebacite se na lokaciju železničkog depoa
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Spisak probranih šinskih vozila - kliknite na vozilo za više podataka
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Kupite označeno šinsko vozilo
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Preimenujte vrstu šinskog vozila
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Trenutno stanje voza - kliknite ovde za zaustavljanje/pokretanje voza
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Prikazuje naredbe vozu
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Prebacite se na lokaciju voza
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Pošaljite voz u depo. Sa Ctrl+Klik će otići samo na servis
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Voz će krenuti bez čekanja na signal za slobodan kolosek
 
 
 
