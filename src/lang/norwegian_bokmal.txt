@@ -1702,10 +1702,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsidietilbud har gått ut:{}{}{STRING} fra {STRING} til {STRING} vil ikke lenger gi subsidier.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidie trukket tilbake:{}{}Frakt av {STRING} fra {STATION} til {STATION} subsidieres ikke lenger.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subsidietilbud:{}{}Første frakt av {STRING} fra {STRING} til {STRING} vil subsidieres i et år av bystyret!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi 50{NBSP}% mer inntekt i løpet av et år!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi dobbelt så mye inntekt i løpet av et år!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Frakt av {STRING} fra {STATION} til {STATION} vil gi trippel betaling i løpet i et år fra nå!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi fire ganger så mye inntekt i løpet av et år!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subsidie gitt til {STRING}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi 50{NBSP}% mer inntekt i løpet av et år!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subsidie gitt til {STRING}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi dobbelt så mye inntekt i løpet av et år!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subsidie gitt til {STRING}!{}{}Frakt av {STRING} fra {STATION} til {STATION} vil gi trippel betaling i løpet i et år fra nå!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subsidie gitt til {STRING}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi fire ganger så mye inntekt i løpet av et år!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}s bystyre tillater ikke flere flyplasser i denne byen
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN}s bystyre nekter deg å anlegge en flyplass her pga. støynivået
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Hytter

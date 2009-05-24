@@ -1732,10 +1732,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Sübvansiyon zamanı doldu: {}{}{STRING} {STRING} -> {STRING} artık fazla gelir getirmeyecek.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Sübvansiyon geri çekildi:{}{}{STRING} servisi {STATION} -> {STATION} arasında fazla gelir getirmeyecek.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Servis ihalesi önerildi: {}{} ilk {STRING} servisi {STRING} -> {STRING} arasında belediyeden prim alacak!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Sübvansiyon {COMPANY} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca %50 fazla gelir sağlayacak!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Sübvansiyon {COMPANY} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca iki kat fazla gelir sağlayacak!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Sübvansiyon {COMPANY} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca üç kat fazla gelir sağlayacak!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Sübvansiyon {COMPANY} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca dört kat fazla gelir sağlayacak!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Sübvansiyon {STRING} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca %50 fazla gelir sağlayacak!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Sübvansiyon {STRING} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca iki kat fazla gelir sağlayacak!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Sübvansiyon {STRING} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca üç kat fazla gelir sağlayacak!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Sübvansiyon {STRING} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca dört kat fazla gelir sağlayacak!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} belediyesi bu şehir için başka havalimanına izin vermiyor
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} belediyesi gürültü endişesiyle havalimanına izin vermiyor
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Kulübe

@@ -1730,10 +1730,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT} اعلان عن انتهاء عرض {}{} نقل {STRING} من {STRING} الى {STRING} لن يعطي ارباح اضافية بعد الآن .
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}  تم سحب العرض {}{} نقل {STRING} من {STATION} الى {STATION} لم يعد معروض
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}اعلان عن عرض {}{} نقل اول {STRING} من {STRING} الى {STRING} سوف يعطي زيادة ارباح في السنة القادمة.
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT} العرض قد اعطي لـ {COMPANY}!{}{} نقل {STRING} من {STATION} الى  {STATION} سوف يعطي زيادة 50% ارباح للسنة القادمة
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT} العرض قد اعطي لـ {COMPANY}!{}{} نقل {STRING} من {STATION} الى  {STATION} سوف يعطي ضعف الدخل  للسنة القادمة
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}شركة {COMPANY}  فازت بالعرض{}{} نقل {STRING} من {STATION} الى {STATION} سوف يعطي 3 اضعاف الدخل للسنة القادمة
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT} شركة {COMPANY}  فازت بالعرض !{}{} نقل {STRING} من {STATION} الى {STATION} سوف يعطي اربعة اضعاف الدخل للسنة القادمة
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT} العرض قد اعطي لـ {STRING}!{}{} نقل {STRING} من {STATION} الى  {STATION} سوف يعطي زيادة 50% ارباح للسنة القادمة
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT} العرض قد اعطي لـ {STRING}!{}{} نقل {STRING} من {STATION} الى  {STATION} سوف يعطي ضعف الدخل  للسنة القادمة
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}شركة {STRING}  فازت بالعرض{}{} نقل {STRING} من {STATION} الى {STATION} سوف يعطي 3 اضعاف الدخل للسنة القادمة
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT} شركة {STRING}  فازت بالعرض !{}{} نقل {STRING} من {STATION} الى {STATION} سوف يعطي اربعة اضعاف الدخل للسنة القادمة
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}البلدية ترفض بناء مطار آخر في هذه المدينة
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE} بلدية {TOWN}{} ترفض السماح بمطار هنا بسبب تتعلق بالضوضاء العالية منه .
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :اكواخ

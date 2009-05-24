@@ -1800,10 +1800,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Nabídka dotace přepravy vypršela:{}{}Dotace dopravy {STRING.gen} z{NBSP}{STRING} do {STRING} nebude dále nabízena.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Ukončení dotování dopravy:{}{}Dotace pro {STRING} z{NBSP}{STATION} do {STATION} již nebude dále poskytována.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nabídka dotace:{}{}Doprava {STRING.gen} z{NBSP}{STRING} do {STRING} bude jeden rok dotována místní správou!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Dotace přidělena společnosti {COMPANY}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet 150 % normální ceny.
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Dotace přidělena společnosti {COMPANY}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet dvojnásobek normální ceny!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Dotace přidělena společnosti {COMPANY}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet trojnásobek normální ceny!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Dotace přidělena společnosti {COMPANY}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet čtyřnásobek normální ceny!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet 150 % normální ceny.
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet dvojnásobek normální ceny!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet trojnásobek normální ceny!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet čtyřnásobek normální ceny!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Místní správa města {TOWN} zakazuje stavbu dalšího letiště v tomto městě.
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}Zastupitelstvo města {TOWN} odmítá vydat povolení na stavbu letiště kvůli hlukovým limitům
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Chatky

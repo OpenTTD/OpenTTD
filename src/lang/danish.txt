@@ -1724,10 +1724,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Licitation af tilskudsordning udløbet:{}{}{STRING} fra {STRING} til {STRING} vil ikke længere udløse tilskud.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Tilskudsordning tilbagetrukket:{}{}{STRING} fragt fra {STATION} til {STATION} modtager ikke længere tilskud.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Tilskudsordning i licitation:{}{}Første {STRING} fragt fra {STRING} til {STRING} vil udløse et års tilskud fra de lokale myndigheder!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Tilskudsordning tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give 50% mere i de næste 12 måneder!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Tilskudsordning tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give dobbelt udbytte i de næste 12 måneder!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Tilskudsordning tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give tredobbelt udbytte i de næste 12 måneder!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Tilskudsordning tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give firedobbelt udbytte i de næste 12 måneder!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Tilskudsordning tildelt {STRING}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give 50% mere i de næste 12 måneder!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Tilskudsordning tildelt {STRING}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give dobbelt udbytte i de næste 12 måneder!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Tilskudsordning tildelt {STRING}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give tredobbelt udbytte i de næste 12 måneder!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Tilskudsordning tildelt {STRING}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give firedobbelt udbytte i de næste 12 måneder!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} lokale myndigheder nægter at tillade, at endnu en lufthavn bygges i byen
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN}s lokale myndigheder afviser tilladelse til lufthavn pga. støjgener
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Hytter

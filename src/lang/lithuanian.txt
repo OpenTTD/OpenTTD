@@ -1735,10 +1735,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsidijų pasiūlymas baigėsi:{}{}{STRING.ko} pervežimas iš {STRING.ko} į {STRING.ka} daugiau nebesubsidijuojamas.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidijų laikas baigėsi:{}{}{STRING.ko} transportavimas iš {STATION} į {STATION} daugiau nebesubsidijuojama.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subsidijų pasiūlymas:{}{}Pirmasis pervežęs {STRING.ka} iš {STRING} į {STRING} gaus metinę vietinės valdžios subsidiją!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subsidijos suteiktos {COMPANY}!{}{}{STRING} pervežimas iš {STATION} į {STATION} visus metus bus apmokamas 50% daugiau!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subsidijos suteiktos {COMPANY}!{}{}{STRING} pervežimas iš {STATION} į {STATION} visus metus bus apmokamas dvigubai!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subsidijos suteiktos {COMPANY}!{}{}{STRING}  pervežimas iš {STATION} į {STATION} visus metus bus apmokamas trigubai!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subsidijos suteiktos {COMPANY}!{}{}{STRING} pervežimas iš {STATION} į {STATION} bus metus apmokamas keturgubai!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subsidijos suteiktos {STRING}!{}{}{STRING} pervežimas iš {STATION} į {STATION} visus metus bus apmokamas 50% daugiau!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subsidijos suteiktos {STRING}!{}{}{STRING} pervežimas iš {STATION} į {STATION} visus metus bus apmokamas dvigubai!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subsidijos suteiktos {STRING}!{}{}{STRING}  pervežimas iš {STATION} į {STATION} visus metus bus apmokamas trigubai!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subsidijos suteiktos {STRING}!{}{}{STRING} pervežimas iš {STATION} į {STATION} bus metus apmokamas keturgubai!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} vietinė valdžia neleidžia statyti kito oro uosto šiame mieste
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} vietos valdžia atsisako suteikti leidimą statyti oro uosta dėl triukšmo problemų
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Vasarnamiai

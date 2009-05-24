@@ -1705,10 +1705,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}助成金提案の有効期限満了：{}{STRING}を運ぶ{STRING}から{STRING}行き一便は{}今後助成金を受けず
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}助成金の終止{}{STRING}を運ぶ{STATION}から{STATION}行き一便の{}助成金は終了しました
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}助成金提案の報告{}{STRING}を運ぶ{STRING}から{STRING}行き{}先駆の一便は一年間助成金を受ける！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}今後一年間{STRING}を運ぶ{STATION}から{STATION}行き一便は{}５０％の助成金を受ける！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}今後一年間{STRING}を運ぶ{STATION}から{STATION}行き一便は{}１００％の助成金を受ける！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}今後一年間{STRING}を運ぶ{STATION}から{STATION}行き一便は{}２００％の助成金を受ける！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}今後一年間{STRING}を運ぶ{STATION}から{STATION}行き一便は{}３００％の助成金を受ける！
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}{STRING}が助成金を受けた！{}今後一年間{STRING}を運ぶ{STATION}から{STATION}行き一便は{}５０％の助成金を受ける！
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}{STRING}が助成金を受けた！{}今後一年間{STRING}を運ぶ{STATION}から{STATION}行き一便は{}１００％の助成金を受ける！
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}{STRING}が助成金を受けた！{}今後一年間{STRING}を運ぶ{STATION}から{STATION}行き一便は{}２００％の助成金を受ける！
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}{STRING}が助成金を受けた！{}今後一年間{STRING}を運ぶ{STATION}から{STATION}行き一便は{}３００％の助成金を受ける！
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}町議会は町内に他の空港の建設を許可しません
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} の地方自治体は騒音公害の心配によって空港の建設を許可しません。
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :小屋

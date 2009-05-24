@@ -1513,10 +1513,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subvencia oferto ne plu validas:{}{}{STRING} de {STRING} al {STRING} ne estos subvenciata.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subvencio retiriĝis:{}{}Servo de {STRING} de {STATION} al {STATION} ne plu estas subvenciata.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subvencia oferto:{}{}Unua servo de {STRING} de {STRING} al {STRING} ricevos subvencion de jaro de la lokaj estroj!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subvencio doniĝis al {COMPANY}!{}{}Servo de {STRING} de {STATION} al {STATION} ricevis pliaĵon de 50% por la sekva jaro!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subvencio doniĝis al {COMPANY}!{}{}Servo de {STRING} de {STATION} al {STATION} ricevis duoblajn pagojn por la sekva jaro!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subvencio doniĝis al {COMPANY}!{}{}Servo de {STRING} de {STATION} al {STATION} ricevis trioblajn pagojn por la sekva jaro!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subvencio doniĝis al {COMPANY}!{}{}Servo de {STRING} de {STATION} al {STATION} ricevis kvaroblajn pagojn por la sekva jaro!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subvencio doniĝis al {STRING}!{}{}Servo de {STRING} de {STATION} al {STATION} ricevis pliaĵon de 50% por la sekva jaro!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subvencio doniĝis al {STRING}!{}{}Servo de {STRING} de {STATION} al {STATION} ricevis duoblajn pagojn por la sekva jaro!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subvencio doniĝis al {STRING}!{}{}Servo de {STRING} de {STATION} al {STATION} ricevis trioblajn pagojn por la sekva jaro!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subvencio doniĝis al {STRING}!{}{}Servo de {STRING} de {STATION} al {STATION} ricevis kvaroblajn pagojn por la sekva jaro!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}La lokaj estroj de {TOWN} rifuzas permesi konstruadon de plia flughaveno ĉi-urbe
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Plezurdomoj
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Domoj

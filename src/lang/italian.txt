@@ -1734,10 +1734,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Offerta di sussidio scaduta:{}{}Il trasporto di {STRING} da {STRING} a {STRING} non darà più diritto a sovvenzioni.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Sussidio terminato:{}{}Il trasporto di {STRING} da {STATION} a {STATION} non è più sovvenzionato.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Offerta di sussidio:{}{}Il primo servizio di {STRING} da {STRING} a {STRING} riceverà un'anno di sovvenzioni dall'autorità locale!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Sussidio aggiudicato alla {COMPANY}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il 50% in più per il prossimo anno!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Sussidio aggiudicato alla {COMPANY}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il doppio per il prossimo anno!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Sussidio aggiudicato alla {COMPANY}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il triplo per il prossimo anno!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Sussidio aggiudicato alla {COMPANY}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il quadruplo per il prossimo anno!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il 50% in più per il prossimo anno!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il doppio per il prossimo anno!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il triplo per il prossimo anno!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il quadruplo per il prossimo anno!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}L'autorita locale di {TOWN} rifiuta la costruzione di un altro aeroporto nella città
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}L'autorita locale di {TOWN} rifiuta il permesso per motivi di inquinamento acustico
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Cottage

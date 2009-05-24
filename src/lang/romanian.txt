@@ -1732,10 +1732,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}- {STRI
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Ofertă expirată:{}{}Transportul de {STRING} de la {STRING} la {STRING} nu va mai primi subvenţie
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Ofertă închisă:{}{}Transportul de {STRING} de la {STATION} la {STATION} nu va mai fi subvenţionat
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subvenţie oferită:{}{}Primul transport de {STRING} de la {STRING} la {STRING} va primi o subvenţie pe un an din partea autorităţilor locale
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subvenţie acordată companiei {COMPANY}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări cu 50% mai mari timp de un an!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subvenţie acordată companiei {COMPANY}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări duble timp de un an!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subvenţie acordată companiei {COMPANY}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări triple timp de un an!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subvenţie acordată companiei {COMPANY}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări de patru ori mai mari timp de un an!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări cu 50% mai mari timp de un an!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări duble timp de un an!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări triple timp de un an!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări de patru ori mai mari timp de un an!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Autoritatea locală din {TOWN} refuză să permită construirea unui nou aeroport în acest oraş
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}Autoritatea locală din {TOWN} nu permite construirea unui nou aeroport datorită poluării fonice
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Căsuţe

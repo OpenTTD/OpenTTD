@@ -1733,10 +1733,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}A oferta do subsídio expirou:{}{} Transporte de {STRING} de {STRING} para {STRING} não será mais subsidiado.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsídio removido:{}{} Transporte de {STRING} de {STATION} para {STATION} não será mais subsidiado.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Oferta de transporte subsidiado:{}{} Primeiro transporte de {STRING} de {STRING} para {STRING} receberá o subsídio de um ano da autoridade local!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subsídio concedido a {COMPANY}!{}{} Transporte de {STRING} de {STATION} para {STATION} receberá 50% extra durante um ano!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subsídio concedido a {COMPANY}!{}{} Transporte de {STRING} de {STATION} para {STATION} receberá em dobro durante um ano!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subsídio concedido a {COMPANY}!{}{} Transporte de {STRING} de {STATION} para {STATION} receberá o triplo durante um ano!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subsídio concedido a {COMPANY}!{}{} Transporte de {STRING} de {STATION} para {STATION} receberá o quadruplo durante um ano!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subsídio concedido a {STRING}!{}{} Transporte de {STRING} de {STATION} para {STATION} receberá 50% extra durante um ano!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subsídio concedido a {STRING}!{}{} Transporte de {STRING} de {STATION} para {STATION} receberá em dobro durante um ano!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subsídio concedido a {STRING}!{}{} Transporte de {STRING} de {STATION} para {STATION} receberá o triplo durante um ano!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subsídio concedido a {STRING}!{}{} Transporte de {STRING} de {STATION} para {STATION} receberá o quadruplo durante um ano!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}a autoridade local de {TOWN} não permite que outro aeroporto seja construído nesta cidade
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}A prefeitura de {TOWN} reclama do barulho que será gerado pelo aeroporto
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Casas de campo

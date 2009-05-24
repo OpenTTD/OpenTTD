@@ -1732,10 +1732,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsidieaanbod is verlopen:{}{}{STRING} van {STRING} naar {STRING} wordt nu niet meer gesubsidieerd.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidie teruggetrokken:{}{}{STRING}route van {STATION} naar {STATION} is nu niet meer gesubsidieerd.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subsidie aangeboden:{}{}Eerste {STRING}route van {STRING} naar {STRING} krijgt een jaar lang subsidie van de gemeente!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subsidie uitgereikt aan {COMPANY}!{}{}{STRING}route van {STATION} naar {STATION} krijgt 50% extra voor het volgende jaar!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subsidie uitgereikt aan {COMPANY}!{}{}{STRING}route van {STATION} naar {STATION} krijgt dubbele omzet voor het volgende jaar!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subsidie uitgereikt aan {COMPANY}!{}{}{STRING}route van {STATION} naar {STATION} krijgt driedubbele omzet voor het volgende jaar!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subsidie uitgereikt aan {COMPANY}!{}{}{STRING}route van {STATION} naar {STATION} krijgt vierdubbele omzet voor het volgende jaar!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subsidie uitgereikt aan {STRING}!{}{}{STRING}route van {STATION} naar {STATION} krijgt 50% extra voor het volgende jaar!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subsidie uitgereikt aan {STRING}!{}{}{STRING}route van {STATION} naar {STATION} krijgt dubbele omzet voor het volgende jaar!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subsidie uitgereikt aan {STRING}!{}{}{STRING}route van {STATION} naar {STATION} krijgt driedubbele omzet voor het volgende jaar!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subsidie uitgereikt aan {STRING}!{}{}{STRING}route van {STATION} naar {STATION} krijgt vierdubbele omzet voor het volgende jaar!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}De gemeenteraad van {TOWN} staat bouwen van nog een vliegveld niet toe
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} lokale autoriteiten weigeren toestemming te geven voor vliegveld wegens zorgen om geluid
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Plattelandshuisjes

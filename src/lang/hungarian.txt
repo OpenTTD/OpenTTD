@@ -1766,10 +1766,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}A támogatás határideje lejárt:{}{}{STRING} szállításáért {STRING} és {STRING} között már nem jár támogatás.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Támogatás visszavonva:{}{}{STRING} szállítása {STATION} és {STATION} között már nem támogatott.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Támogatási ajánlat:{}{}Az első {STRING} szállító {STRING} és {STRING} között egy éves támogatást kap a helyi önkormányzattól!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}{COMPANY} támogatást kapott!{}{}Így {STRING} szállítása {STATION} és {STATION} között másfélszeres hasznot hoz neki!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}{COMPANY} támogatást kapott!{}{}Így {STRING} szállítása {STATION} és {STATION} között kétszeres hasznot hoz neki!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}{COMPANY} támogatást kapott!{}{}Így {STRING} szállítása {STATION} és {STATION} között háromszoros hasznot hoz neki!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}{COMPANY} támogatást kapott!{}{}Így {STRING} szállítása {STATION} és {STATION} között négyszeres hasznot hoz neki!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}{STRING} támogatást kapott!{}{}Így {STRING} szállítása {STATION} és {STATION} között másfélszeres hasznot hoz neki!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}{STRING} támogatást kapott!{}{}Így {STRING} szállítása {STATION} és {STATION} között kétszeres hasznot hoz neki!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}{STRING} támogatást kapott!{}{}Így {STRING} szállítása {STATION} és {STATION} között háromszoros hasznot hoz neki!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}{STRING} támogatást kapott!{}{}Így {STRING} szállítása {STATION} és {STATION} között négyszeres hasznot hoz neki!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} önkormányzata nem engedélyez új repteret a városban
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} önkormányzata a zajszintnormák miatt megtagadta a repülőtér építését
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Vidéki házak

@@ -1719,10 +1719,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subventionen har gått ut:{}{}{STRING} från {STRING} till {STRING} är inte längre subventionerad
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subventionen gäller inte mer:{}{}{STRING} från {STATION} till {STATION} är inte längre subventionerad
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Ny subvention:{}{}Första transporten av {STRING} från {STRING} till {STRING} får ett års subvention från kommunen!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subvention tilldelad {COMPANY}!{}{}{STRING} från {STATION} till {STATION} ger 50% extra nästa år!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subvention tilldelad {COMPANY}!{}{}{STRING} från {STATION} till {STATION} ger dubbelt så mycket nästa år!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subvention tilldelad {COMPANY}!{}{}{STRING} från {STATION} till {STATION} ger tre gånger så mycket nästa år!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subvention tilldelad {COMPANY}!{}{}{STRING} från {STATION} till {STATION} ger fyra gånger så mycket nästa år!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subvention tilldelad {STRING}!{}{}{STRING} från {STATION} till {STATION} ger 50% extra nästa år!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subvention tilldelad {STRING}!{}{}{STRING} från {STATION} till {STATION} ger dubbelt så mycket nästa år!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subvention tilldelad {STRING}!{}{}{STRING} från {STATION} till {STATION} ger tre gånger så mycket nästa år!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subvention tilldelad {STRING}!{}{}{STRING} från {STATION} till {STATION} ger fyra gånger så mycket nästa år!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} de lokala myndigheterna tillåter inte att en ny flygplats byggs i staden
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN}'s lokala myndigheter vägrar tillåtelse att bygga en flygplats på grund av ljudproblem
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Stuga

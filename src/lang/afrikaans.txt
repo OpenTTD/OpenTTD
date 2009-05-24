@@ -1670,10 +1670,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Aanbod van subsidie verval:{}{}{STRING} van {STRING} tot {STRING} sal nou nie 'n subsidie aantrek nie.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidie terugtrek:{}{}{STRING} diens van {STATION} tot {STATION} is nie meer gesubsideieer nie.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Diens subsidie aanbod:{}{}Eerste {STRING} diens van {STRING} tot {STRING} sal 'n jaar se subsidie van die plaaslike raad kry!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Diens subsidie toeken aan {COMPANY}!{}{}{STRING} Diens van {STATION} tot {STATION} sal nou 50% extra vir die volgende jaar betaal!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Diens subsidie toeken aan {COMPANY}!{}{}{STRING} diens van {STATION} tot {STATION} sal nou dubbel pryse vir die volgende jaar betaal!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Diens subsidie toeken aan {COMPANY}!{}{}{STRING} diens van {STATION} tot {STATION} sal nou driemaal pryse vir die volgende jaar betaal!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Diens subsidie toeken aan {COMPANY}!{}{}{STRING} diens van {STATION} tot {STATION} sal nou viervoud pryse vir die volgende jaar betaal!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Diens subsidie toeken aan {STRING}!{}{}{STRING} Diens van {STATION} tot {STATION} sal nou 50% extra vir die volgende jaar betaal!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Diens subsidie toeken aan {STRING}!{}{}{STRING} diens van {STATION} tot {STATION} sal nou dubbel pryse vir die volgende jaar betaal!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Diens subsidie toeken aan {STRING}!{}{}{STRING} diens van {STATION} tot {STATION} sal nou driemaal pryse vir die volgende jaar betaal!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Diens subsidie toeken aan {STRING}!{}{}{STRING} diens van {STATION} tot {STATION} sal nou viervoud pryse vir die volgende jaar betaal!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} plaaslike raad weier om nog 'n lighawe te bou in hierdie stad
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Kothuise
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Huise

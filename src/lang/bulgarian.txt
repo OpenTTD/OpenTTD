@@ -1704,10 +1704,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Предложението за субсидия изтече:{}{}Превоз на {STRING} от {STRING} до {STRING} няма да спечели субсидия.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Изтеглена субсидия:{}{}Превоз на {STRING} от {STATION} до {STATION} вече не се субсидира.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Предложена субсидия:{}{}Първият превоз на {STRING} от {STRING} до {STRING} ще спечели едногодишна субсидия от местните власти!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}{COMPANY} спечели субсидия!{}{}Превоз на {STRING} от {STATION} до {STATION} ще се заплаща с 50% повече през следващата година!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}{COMPANY} спечели субсидия!!{}{}Превоз на {STRING} от {STATION} до {STATION} ще се заплаща двойно през следващата година!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}{COMPANY} спечели субсидия!!{}{}Превоз на {STRING} от {STATION} до {STATION} ще се заплаща тройно през следващата година!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}{COMPANY} спечели субсидия!!{}{}Превоз на {STRING} от {STATION} до {STATION} ще се заплаща четворно през следващата година!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}{STRING} спечели субсидия!{}{}Превоз на {STRING} от {STATION} до {STATION} ще се заплаща с 50% повече през следващата година!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}{STRING} спечели субсидия!!{}{}Превоз на {STRING} от {STATION} до {STATION} ще се заплаща двойно през следващата година!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}{STRING} спечели субсидия!!{}{}Превоз на {STRING} от {STATION} до {STATION} ще се заплаща тройно през следващата година!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}{STRING} спечели субсидия!!{}{}Превоз на {STRING} от {STATION} до {STATION} ще се заплаща четворно през следващата година!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} местни власти отказват да позволят построяването на друго летище в града
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} локалните власти отказват разрешение за летището (твърде шумно)
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Селски къщи

@@ -1727,10 +1727,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{1:STAT
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}보조금 제공 계약 파기:{}{}{1:STRING}에서 {2:STRING}까지의 {0:STRING} 수송은 더이상 보조금을 지급하지 않습니다.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}보조금 제공 철회:{}{}지역 당국은 {1:STATION}에서 {2:STATION}까지의 {0:STRING} 수송에 대한 보조금을 철회하였습니다.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}보조금 제공 안내:{}{}처음으로 {1:STRING}에서 {2:STRING}까지의 {0:STRING}을/를 수송하는 회사는 지역 당국으로부터 보조금을 받게 될 것입니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}{0:COMPANY}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 50%의 추가 보조금을 내년까지 받게 됩니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}{0:COMPANY}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 2배의 추가 보조금을 내년까지 받게 됩니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}{0:COMPANY}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 3배의 추가 보조금을 내년까지 받게 됩니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}{0:COMPANY}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 4배의 추가 보조금을 내년까지 받게 됩니다!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}{0:STRING}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 50%의 추가 보조금을 내년까지 받게 됩니다!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}{0:STRING}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 2배의 추가 보조금을 내년까지 받게 됩니다!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}{0:STRING}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 3배의 추가 보조금을 내년까지 받게 됩니다!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}{0:STRING}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 4배의 추가 보조금을 내년까지 받게 됩니다!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} 지역당국은 이 도시에 다른 공항이 들어서는 것을 거부합니다!
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} 지역 당국이 소음 문제로 인해 공항 건설을 거부하였습니다
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :아담한 집

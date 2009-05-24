@@ -1729,10 +1729,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Tilboð til samstarfssamnings runnið út:{}{}{STRING} frá {STRING} til {STRING} mun ekki vera samningsbundið.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Samsarfssamningur gerður ógildur:{}{} {STRING}flutningur frá {STATION} til {STATION} er ekki lengur samningsbundinn.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nýtt tilboð til samstarfssamnings: {}{}Fyrsti {STRING}flutningur frá {STRING} til {STRING} mun stofna til eins árs samstarfssamnings við bæjaryfirvöld!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Samstarfssamningur gerður við {COMPANY}!{}{}{STRING}flutningur frá {STATION} til {STATION} mun borga 50% aukalega í heilt ár!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Samstarfssamningur gerður við {COMPANY}!{}{}{STRING}flutningur frá {STATION} til {STATION} mun borga tvöfalt í heilt ár!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Samstarfssamningur gerður við {COMPANY}!{}{}{STRING}flutningur frá {STATION} til {STATION} mun borga þrefalt í heilt ár!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Samstarfssamningur gerður við {COMPANY}!{}{}{STRING}flutningur frá {STATION} til {STATION} mun borga fjórfalt í heilt ár!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Samstarfssamningur gerður við {STRING}!{}{}{STRING}flutningur frá {STATION} til {STATION} mun borga 50% aukalega í heilt ár!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Samstarfssamningur gerður við {STRING}!{}{}{STRING}flutningur frá {STATION} til {STATION} mun borga tvöfalt í heilt ár!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Samstarfssamningur gerður við {STRING}!{}{}{STRING}flutningur frá {STATION} til {STATION} mun borga þrefalt í heilt ár!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Samstarfssamningur gerður við {STRING}!{}{}{STRING}flutningur frá {STATION} til {STATION} mun borga fjórfalt í heilt ár!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Bæjaryfirvöld {TOWN} leyfa ekki byggingu annars flugvallar nærliggjandi bænum
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} Stjórn bæjarins hafnar leyfir fyrir flugvelli vegna hljóðmengunar
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Einbýlishús

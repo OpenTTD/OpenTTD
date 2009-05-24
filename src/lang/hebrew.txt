@@ -1704,10 +1704,10 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK} :שיר
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}.פג תוקפה של הצעה למתן סובסידיה{}{}{NBSP}לא תזכה עוד לסבסוד{NBSP} {2:STRING} ל {NBSP}{1:STRING} מ {NBSP}{0:STRING} הובלת
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}.פג תוקפה של  סובסידיה{}{}{NBSP}לא תסובסד עוד{NBSP} {2:STATION} ל {NBSP}{1:STATION} מ {NBSP}{0:STRING} הובלת
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}.הצעה למתן סובסידיה{}{}{NBSP}!יזכה לסובסידיה בת שנה מהרשות המקומית {NBSP} {2:STRING} ל {NBSP}{1:STRING} מ {NBSP}{0:STRING} שירות הובלה ראשון של
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}!{0:COMPANY} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 50% לשנה הקרובה{NBSP} {3:STATION} ל {NBSP}{2:STATION} מ{NBSP}{1:STRING} הובלת
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}!{0:COMPANY} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 100% לשנה הקרובה{NBSP} {3:STATION} ל {NBSP}{2:STATION} מ{NBSP}{1:STRING} הובלת
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}!{0:COMPANY} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 200% לשנה הקרובה{NBSP} {3:STATION} ל {NBSP}{2:STATION} מ{NBSP}{1:STRING} הובלת
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}!{0:COMPANY} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 300% לשנה הקרובה{NBSP} {3:STATION} ל {NBSP}{2:STATION} מ{NBSP}{1:STRING} הובלת
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}!{0:STRING} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 50% לשנה הקרובה{NBSP} {3:STATION} ל {NBSP}{2:STATION} מ{NBSP}{1:STRING} הובלת
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}!{0:STRING} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 100% לשנה הקרובה{NBSP} {3:STATION} ל {NBSP}{2:STATION} מ{NBSP}{1:STRING} הובלת
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}!{0:STRING} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 200% לשנה הקרובה{NBSP} {3:STATION} ל {NBSP}{2:STATION} מ{NBSP}{1:STRING} הובלת
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}!{0:STRING} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 300% לשנה הקרובה{NBSP} {3:STATION} ל {NBSP}{2:STATION} מ{NBSP}{1:STRING} הובלת
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} הרשות המקומית מתנגדת לבניית שדה תעופה נוסף בעיר זאת
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}מתנגדת להקמת שדה תעופה בשל חשש מהרעש {TOWN} הרשות המקומית ב
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :קוטג'ים

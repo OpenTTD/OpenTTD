@@ -1720,10 +1720,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Tilbod om subsidie har gått ut:{}{}{STRING} frå {STRING} til {STRING} vil ikkje lenger vere subsidiert.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidie trekt attende:{}{}Transport av {STRING} frå {STATION} til {STATION} er ikkje subsidiert lenger.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subsidie-tilbod:{}{}Første transport av {STRING} frå {STRING} til {STRING} vil vere subsidiert i eit år av bystyret!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subsidie gjeve til {COMPANY}!{}{}Transport av {STRING} frå {STATION} til {STATION} vil gje 50 % meir inntekt i eit år!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subsidie gjeve til {COMPANY}!{}{}Transport av {STRING} frå {STATION} til {STATION} vil gje dobbel inntekt i eit år!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subsidie gjeve til {COMPANY}!{}{}Transport av {STRING} frå {STATION} til {STATION} vil gje trippel inntekt i eit år!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subsidie gjeve til {COMPANY}!{}{}Transport av {STRING} frå {STATION} til {STATION} vil gje firedobbel inntekt i eit år!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STATION} til {STATION} vil gje 50 % meir inntekt i eit år!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STATION} til {STATION} vil gje dobbel inntekt i eit år!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STATION} til {STATION} vil gje trippel inntekt i eit år!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STATION} til {STATION} vil gje firedobbel inntekt i eit år!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Bystyret i {TOWN} tillèt ikkje fleire flyplassar i denne byen
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} lokal myndigheit nektar tillatelse til flyplass pga støybekymringar
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Hytter

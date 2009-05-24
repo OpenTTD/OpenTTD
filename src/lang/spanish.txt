@@ -1733,10 +1733,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Oferta de subsidio caducada:{}{}{STRING} de {STRING} a {STRING} ya no conlleva una subvención.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subvención retirada:{}{}Servicio de {STRING} desde {STATION} a {STATION} ya no está subvencionado.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Se ofrece subvención en la línea:{}{}El primer {STRING} que cubra la línea desde {STRING} a {STRING} recibirá una subvención durante un año por parte de las autoridades locales!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}¡Subvención otorgada a {COMPANY}!{}{}¡Servicio de {STRING} desde {STATION} a {STATION} pagará el 50% más durante un año!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}¡Subvención otorgada a {COMPANY}!{}{}¡Servicio de {STRING} desde {STATION} a {STATION} pagará tasa doble durante un año!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}¡Subvención otorgada a {COMPANY}!{}{}¡Servicio de {STRING} desde {STATION} a {STATION} pagará tasa triple durante un año!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}¡Subvención otorgada a {COMPANY}!{}{}¡Servicio de {STRING} desde {STATION} a {STATION} pagará tasa cuádruple durante un año!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}¡Subvención otorgada a {STRING}!{}{}¡Servicio de {STRING} desde {STATION} a {STATION} pagará el 50% más durante un año!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}¡Subvención otorgada a {STRING}!{}{}¡Servicio de {STRING} desde {STATION} a {STATION} pagará tasa doble durante un año!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}¡Subvención otorgada a {STRING}!{}{}¡Servicio de {STRING} desde {STATION} a {STATION} pagará tasa triple durante un año!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}¡Subvención otorgada a {STRING}!{}{}¡Servicio de {STRING} desde {STATION} a {STATION} pagará tasa cuádruple durante un año!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} la autoridad local rechaza la construcción de otro aeropuerto en esta población
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}Las autoridades locales de {TOWN} rechazan el permiso para el aeropuerto debido al ruido
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Cabañas

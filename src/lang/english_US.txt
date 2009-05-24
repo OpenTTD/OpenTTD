@@ -1730,10 +1730,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Offer of subsidy expired:{}{}{STRING} from {STRING} to {STRING} will now not attract a subsidy.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidy withdrawn:{}{}{STRING} service from {STATION} to {STATION} is no longer subsidized.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Service subsidy offered:{}{}First {STRING} service from {STRING} to {STRING} will attract a year's subsidy from the local authority!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Service subsidy awarded to {COMPANY}!{}{}{STRING} service from {STATION} to {STATION} will pay 50% extra for the next year!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Service subsidy awarded to {COMPANY}!{}{}{STRING} service from {STATION} to {STATION} will pay double rates for the next year!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Service subsidy awarded to {COMPANY}!{}{}{STRING} service from {STATION} to {STATION} will pay triple rates for the next year!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Service subsidy awarded to {COMPANY}!{}{}{STRING} service from {STATION} to {STATION} will pay quadruple rates for the next year!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Service subsidy awarded to {STRING}!{}{}{STRING} service from {STATION} to {STATION} will pay 50% extra for the next year!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Service subsidy awarded to {STRING}!{}{}{STRING} service from {STATION} to {STATION} will pay double rates for the next year!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Service subsidy awarded to {STRING}!{}{}{STRING} service from {STATION} to {STATION} will pay triple rates for the next year!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Service subsidy awarded to {STRING}!{}{}{STRING} service from {STATION} to {STATION} will pay quadruple rates for the next year!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} local authority refuses to allow another airport to be built in this town
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} local authority refuses permission for airport due to noise concerns
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Cottages

@@ -1730,10 +1730,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Cynnig cymhorthdal ar ben: {}{}Ni fydd cludo {STRING} o {STRING} i {STRING} bellach yn derbyn cymhorthdal.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Cymhorthdal wedi'i dynnu'n ôl: {}{}Ni fydd y gwasanaeth {STRING} o {STATION} i {STATION} bellach yn derbyn cymhorthdal.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Cymhorthdal yn cael ei gynnig:{}{}bydd y gwasanaeth {STRING} cyntaf o {STRING} i {STRING} yn derbyn blwyddyn o gymhorthdal oddi wrth yr awdurdod lleol!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Cymhorthdal wedi ei ddyfarnu i {COMPANY}! Bydd y gwasanaeth {}{}{STRING} o {STATION} i {STATION} yn talu 50% yn fwy am y flwyddyn nesaf!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Cymhorthdal wedi ei ddyfarnu i {COMPANY}! Bydd y gwasanaeth {}{}{STRING} o {STATION} i {STATION} yn talu dwywaith yn fwy am y flwyddyn nesaf!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Cymhorthdal wedi ei ddyfarnu i {COMPANY}! Bydd y gwasanaeth {}{}{STRING} o {STATION} i {STATION} yn talu teirgwaith yn fwy am y flwyddyn nesaf!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Cymhorthdal wedi ei ddyfarnu i {COMPANY}! Bydd y gwasanaeth {}{}{STRING} o {STATION} i {STATION} yn talu pedair gwaith yn fwy am y flwyddyn nesaf!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Cymhorthdal wedi ei ddyfarnu i {STRING}! Bydd y gwasanaeth {}{}{STRING} o {STATION} i {STATION} yn talu 50% yn fwy am y flwyddyn nesaf!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Cymhorthdal wedi ei ddyfarnu i {STRING}! Bydd y gwasanaeth {}{}{STRING} o {STATION} i {STATION} yn talu dwywaith yn fwy am y flwyddyn nesaf!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Cymhorthdal wedi ei ddyfarnu i {STRING}! Bydd y gwasanaeth {}{}{STRING} o {STATION} i {STATION} yn talu teirgwaith yn fwy am y flwyddyn nesaf!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Cymhorthdal wedi ei ddyfarnu i {STRING}! Bydd y gwasanaeth {}{}{STRING} o {STATION} i {STATION} yn talu pedair gwaith yn fwy am y flwyddyn nesaf!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Mae awdurdod lleol {TOWN} yn gwrthod caniatáu i faes awyr arall gael ei adeiladu ger y dref hon
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}Mae awdurdod lleol {TOWN} wedi gwrthod caniatâd ar gyfer maes awyr oherwydd pryderon ynglŷn â sw^n
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Bythynnod

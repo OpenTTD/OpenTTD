@@ -1732,10 +1732,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Oferiment de subvenció caducada: {}{}{STRING} des de {STRING} fins a {STRING} s'ha declarat desert.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subvenció retirada:{}{}{STRING} des de {STATION} fins a {STATION} ja no està subvencionat.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subvenció per un servei oferta:{}{} El primer servei de {STRING} des de {STRING} fins a {STRING} tindrà una subvenció d'un any de l'autoritat local!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subvenció per Servei concedida a {COMPANY}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} rebrà un 50% addicional durant el pròxim any!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subvenció per Servei concedida a {COMPANY}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} percebrà el doble de la tarifa durant el pròxim any!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subvenció per Servei concedida a {COMPANY}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} percebrà el triple de la tarifa durant el pròxim any!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subvenció per Servei concedida a {COMPANY}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} percebrà el quàdruple de la tarifa durant el pròxim any!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subvenció per Servei concedida a {STRING}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} rebrà un 50% addicional durant el pròxim any!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subvenció per Servei concedida a {STRING}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} percebrà el doble de la tarifa durant el pròxim any!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subvenció per Servei concedida a {STRING}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} percebrà el triple de la tarifa durant el pròxim any!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subvenció per Servei concedida a {STRING}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} percebrà el quàdruple de la tarifa durant el pròxim any!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} l'autoritat local denega el permís de construir un altre aeroport en aquesta població
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}L'autoritat local de {TOWN} rebutja donar el permís per a l'aeroport degut al soroll que causaria
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Xalets

@@ -1733,10 +1733,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subventionsangebot abgelaufen:{}{}{STRING}transport von {STRING} nach {STRING} wird nicht mehr subventioniert.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subventionsende:{}{}{STRING}transport von {STATION} nach {STATION} wird nicht mehr subventioniert.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subventionsangebot:{}{}Erster {STRING}transport von {STRING} nach {STRING} wird ein Jahr von den örtlichen Behörden subventioniert!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subvention vergeben an {COMPANY}!{}{}{STRING}transport von {STATION} nach {STATION} erhält im nächsten Jahr einen 50% höheren Preis!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subvention vergeben an {COMPANY}!{}{}{STRING}transport von {STATION} nach {STATION} erhält im nächsten Jahr den doppelten Preis!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subvention vergeben an {COMPANY}!{}{}{STRING}transport von {STATION} nach {STATION} erhält im nächsten Jahr den dreifachen Preis!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subvention vergeben an {COMPANY}!{}{}{STRING}transport von {STATION} nach {STATION} erhält im nächsten Jahr den vierfachen Preis!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subvention vergeben an {STRING}!{}{}{STRING}transport von {STATION} nach {STATION} erhält im nächsten Jahr einen 50% höheren Preis!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subvention vergeben an {STRING}!{}{}{STRING}transport von {STATION} nach {STATION} erhält im nächsten Jahr den doppelten Preis!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subvention vergeben an {STRING}!{}{}{STRING}transport von {STATION} nach {STATION} erhält im nächsten Jahr den dreifachen Preis!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subvention vergeben an {STRING}!{}{}{STRING}transport von {STATION} nach {STATION} erhält im nächsten Jahr den vierfachen Preis!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Die Stadtverwaltung von {TOWN} verweigert die Genehmigung für den Bau eines weiteren Flughafens in der Stadt
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}Die Stadtverwaltung von {TOWN} verweigert aus Lärmschutzgründen den Bau des Flughafens
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Landhaus

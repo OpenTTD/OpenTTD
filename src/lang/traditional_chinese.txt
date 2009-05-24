@@ -1715,10 +1715,10 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}將 {ST
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}補助過期：{}{}將 {STRING} 從 {STRING} 運到 {STRING} 從此不再提供補助。
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}補助結束：{}{}將 {STRING} 從 {STATION} 運到 {STATION} 不再提供補助。
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}提供補助：{}{}首先將 {STRING} 從 {STRING} 運到 {STRING} 的公司將得到地方政府補助一年！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}{COMPANY} 獲得補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年收到額外 50% 的運費補助！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}{COMPANY} 獲得補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年收到雙倍運費補助！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}{COMPANY} 獲得補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年收到三倍運費補助！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}{COMPANY} 獲得補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年收到四倍運費補助！
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}{STRING} 獲得補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年收到額外 50% 的運費補助！
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}{STRING} 獲得補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年收到雙倍運費補助！
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}{STRING} 獲得補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年收到三倍運費補助！
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}{STRING} 獲得補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年收到四倍運費補助！
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} 地方政府拒絕在城內建造另一座機場
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} 地方政府因噪音限制拒絕建造新機場
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :農舍
