@@ -304,9 +304,17 @@ void AIInstance::GameLoop()
 			AIObject::SetAllowDoCommand(false);
 			/* Run the constructor if it exists. Don't allow any DoCommands in it. */
 			if (this->engine->MethodExists(*this->instance, "constructor")) {
-				if (!this->engine->CallMethod(*this->instance, "constructor")) { this->Died(); return; }
+				if (!this->engine->CallMethod(*this->instance, "constructor", 100000) || this->engine->IsSuspended()) {
+					if (this->engine->IsSuspended()) AILog::Error("This AI took too long to initialize. AI is not started.");
+					this->Died();
+					return;
+				}
 			}
-			if (!this->CallLoad()) { this->Died(); return; }
+			if (!this->CallLoad() || this->engine->IsSuspended()) {
+				if (this->engine->IsSuspended()) AILog::Error("This AI took too long in the Load function. AI is not started.");
+				this->Died();
+				return;
+			}
 			AIObject::SetAllowDoCommand(true);
 			/* Start the AI by calling Start() */
 			if (!this->engine->CallMethod(*this->instance, "Start",  _settings_game.ai.ai_max_opcode_till_suspend) || !this->engine->IsSuspended()) this->Died();
@@ -702,7 +710,7 @@ bool AIInstance::CallLoad()
 
 	/* Call the AI load function. sq_call removes the arguments (but not the
 	 * function pointer) from the stack. */
-	if (SQ_FAILED(sq_call(vm, 3, SQFalse, SQFalse))) return false;
+	if (SQ_FAILED(sq_call(vm, 3, SQFalse, SQFalse, 100000))) return false;
 
 	/* Pop 1) The version, 2) the savegame data, 3) the object instance, 4) the function pointer. */
 	sq_pop(vm, 4);
