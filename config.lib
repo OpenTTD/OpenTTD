@@ -1103,7 +1103,7 @@ make_cflags_and_ldflags() {
 		if [ $cc_version -ge 29 ]; then
 			CFLAGS="$CFLAGS -Wall -Wno-multichar -Wsign-compare -Wundef"
 			CFLAGS="$CFLAGS -Wwrite-strings -Wpointer-arith"
-			CFLAGS="$CFLAGS -Wno-uninitialized -Wcast-qual"
+			CFLAGS="$CFLAGS -Wno-uninitialized"
 
 			CC_CFLAGS="$CC_CFLAGS -Wstrict-prototypes"
 		fi
@@ -1148,19 +1148,22 @@ make_cflags_and_ldflags() {
 			LIBS="$LIBS -lws2_32 -lwinmm -lgdi32 -ldxguid -lole32"
 		fi
 
-		# GCC 4.0+ complains about that we break strict-aliasing.
-		#  On most places we don't see how to fix it, and it doesn't
-		#  break anything. So disable strict-aliasing to make the
-		#  compiler all happy.
 		if [ $cc_version -ge 40 ]; then
+			# GCC 4.0+ complains about that we break strict-aliasing.
+			#  On most places we don't see how to fix it, and it doesn't
+			#  break anything. So disable strict-aliasing to make the
+			#  compiler all happy.
 			CFLAGS="$CFLAGS -fno-strict-aliasing"
+			# Warn about casting-out 'const' with regular C-style cast.
+			#  The preferred way is const_cast<>() which doesn't warn.
+			CFLAGS="$CFLAGS -Wcast-qual"
 		fi
 
-		# GCC 4.2+ automatically assumes that signed overflows do
-		# not occur in signed arithmetics, whereas we are not
-		# sure that they will not happen. It furthermore complains
-		# about it's own optimized code in some places.
 		if [ $cc_version -ge 42 ]; then
+			# GCC 4.2+ automatically assumes that signed overflows do
+			# not occur in signed arithmetics, whereas we are not
+			# sure that they will not happen. It furthermore complains
+			# about it's own optimized code in some places.
 			CFLAGS="$CFLAGS -fno-strict-overflow"
 		fi
 	fi
