@@ -1366,11 +1366,11 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 	}
 
 	/* Get station pointers. */
-	s_from = GetStation(source);
+	s_from = IsValidStationID(source) ? GetStation(source) : NULL;
 	s_to = GetStation(dest);
 
 	/* Check if a subsidy applies. */
-	subsidised = CheckSubsidised(s_from, s_to, cargo_type);
+	subsidised = s_from != NULL && CheckSubsidised(s_from, s_to, cargo_type);
 
 	/* Increase town's counter for some special goods types */
 	const CargoSpec *cs = GetCargo(cargo_type);

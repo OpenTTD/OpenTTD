@@ -1518,6 +1518,8 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 	return true;
 }
 
+/* Content downloading only is available with ZLIB */
+#if defined(WITH_ZLIB)
 #include "network/network_content.h"
 
 /** Resolve a string to a content type. */
@@ -1626,7 +1628,7 @@ DEF_CONSOLE_CMD(ConContent)
 
 	return false;
 }
-
+#endif /* defined(WITH_ZLIB) */
 #endif /* ENABLE_NETWORK */
 
 DEF_CONSOLE_CMD(ConSetting)
@@ -1773,7 +1775,11 @@ void IConsoleStdLibRegister()
 #ifdef ENABLE_NETWORK
 	/* Network hooks; only active in network */
 	IConsoleCmdHookAdd ("resetengines", ICONSOLE_HOOK_ACCESS, ConHookNoNetwork);
+
+/* Content downloading is only available with ZLIB */
+#if defined(WITH_ZLIB)
 	IConsoleCmdRegister("content",         ConContent);
+#endif /* defined(WITH_ZLIB) */
 
 	/*** Networking commands ***/
 	IConsoleCmdRegister("say",             ConSay);

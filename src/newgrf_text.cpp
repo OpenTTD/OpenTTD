@@ -120,7 +120,13 @@ char *TranslateTTDPatchCodes(uint32 grfid, const char *str)
 		if (unicode && Utf8EncodedCharLen(*str) != 0) {
 			c = Utf8Consume(&str);
 			/* 'Magic' range of control codes. */
-			if (GB(c, 8, 8) == 0xE0) c = GB(c, 0, 8);
+			if (GB(c, 8, 8) == 0xE0) {
+				c = GB(c, 0, 8);
+			} else if (c >= 0x20) {
+				if (!IsValidChar(c, CS_ALPHANUMERAL)) c = '?';
+				d += Utf8Encode(d, c);
+				continue;
+			}
 		} else {
 			c = (byte)*str++;
 		}

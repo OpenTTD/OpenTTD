@@ -2657,6 +2657,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\ai\api\ai_signlist.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\ai\api\ai_station.hpp"
 				>
 			</File>
@@ -2858,6 +2862,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\ai\api\ai_sign.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_signlist.cpp"
 				>
 			</File>
 			<File
