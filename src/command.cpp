@@ -503,8 +503,6 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	StringID error_part1 = GB(cmd, 16, 16);
 	_additional_cash_required = 0;
 
-	CompanyID old_company = _current_company;
-
 	/* get pointer to command handler */
 	byte cmd_id = cmd & CMD_ID_MASK;
 	assert(cmd_id < lengthof(_command_proc_table));
@@ -522,6 +520,8 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 
 	/* Always execute server and spectator commands as spectator */
 	if (cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) _current_company = COMPANY_SPECTATOR;
+
+	CompanyID old_company = _current_company;
 
 	/* If the company isn't valid it may only do server command or start a new company!
 	 * The server will ditch any server commands a client sends to it, so effectively
