@@ -110,7 +110,7 @@
 {
 	if (!IsRailStationTile(tile)) return RAILTRACK_INVALID;
 
-	return (RailTrack)::GetRailStationTrack(tile);
+	return (RailTrack)::GetRailStationTrackBits(tile);
 }
 
 /* static */ bool AIRail::BuildRailDepot(TileIndex tile, TileIndex front)

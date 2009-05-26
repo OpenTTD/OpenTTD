@@ -202,6 +202,11 @@ static inline Track GetRailStationTrack(TileIndex t)
 	return AxisToTrack(GetRailStationAxis(t));
 }
 
+static inline TrackBits GetRailStationTrackBits(TileIndex t)
+{
+	return AxisToTrackBits(GetRailStationAxis(t));
+}
+
 static inline bool IsCompatibleTrainStationTile(TileIndex t1, TileIndex t2)
 {
 	assert(IsRailwayStationTile(t2));
@@ -245,7 +250,7 @@ static inline void SetRailwayStationReservation(TileIndex t, bool b)
  */
 static inline TrackBits GetRailStationReservation(TileIndex t)
 {
-	return GetRailwayStationReservation(t) ? AxisToTrackBits(GetRailStationAxis(t)) : TRACK_BIT_NONE;
+	return GetRailwayStationReservation(t) ? GetRailStationTrackBits(t) : TRACK_BIT_NONE;
 }
 
 
