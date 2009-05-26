@@ -1386,7 +1386,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 		}
 		v->current_order.AssignOrder(UnpackOldOrder(_old_order));
 
-		if (_old_next_ptr != 0xFFFF) v->next = (Vehicle *)_old_next_ptr;
+		if (_old_next_ptr != 0xFFFF) v->next = (Vehicle *)(size_t)_old_next_ptr;
 
 		if (_cargo_count != 0) {
 			CargoPacket *cp = new CargoPacket((_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source, _cargo_count);
