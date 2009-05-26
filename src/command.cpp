@@ -145,6 +145,7 @@ DEF_COMMAND(CmdRenameTown);
 DEF_COMMAND(CmdDoTownAction);
 
 DEF_COMMAND(CmdChangeSetting);
+DEF_COMMAND(CmdChangeCompanySetting);
 
 DEF_COMMAND(CmdSellShip);
 DEF_COMMAND(CmdBuildShip);
@@ -317,6 +318,7 @@ static const Command _command_proc_table[] = {
 
 	{CmdGiveMoney,                                  0}, // CMD_GIVE_MONEY
 	{CmdChangeSetting,                     CMD_SERVER}, // CMD_CHANGE_SETTING
+	{CmdChangeCompanySetting,                       0}, // CMD_CHANGE_COMPANY_SETTING
 	{CmdSetAutoReplace,                             0}, // CMD_SET_AUTOREPLACE
 	{CmdCloneVehicle,                     CMD_NO_TEST}, // CMD_CLONE_VEHICLE; NewGRF callbacks influence building and refitting making it impossible to correctly estimate the cost
 	{CmdStartStopVehicle,                           0}, // CMD_START_STOP_VEHICLE

@@ -724,24 +724,6 @@ static bool CheckInterval(int32 p1)
 	return true;
 }
 
-static bool EngineRenewUpdate(int32 p1)
-{
-	DoCommandP(0, 0, _settings_client.company.engine_renew, CMD_SET_AUTOREPLACE);
-	return true;
-}
-
-static bool EngineRenewMonthsUpdate(int32 p1)
-{
-	DoCommandP(0, 1, _settings_client.company.engine_renew_months, CMD_SET_AUTOREPLACE);
-	return true;
-}
-
-static bool EngineRenewMoneyUpdate(int32 p1)
-{
-	DoCommandP(0, 2, _settings_client.company.engine_renew_money, CMD_SET_AUTOREPLACE);
-	return true;
-}
-
 static bool TrainAccelerationModelChanged(int32 p1)
 {
 	Vehicle *v;
@@ -1275,6 +1257,7 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 
 	proc(ini, _settings,         "patches",  &_settings_newgame);
 	proc(ini, _currency_settings,"currency", &_custom_currency);
+	proc(ini, _company_settings, "company",  &_settings_client.company);
 
 #ifdef ENABLE_NETWORK
 	proc_list(ini, "server_bind_addresses", &_network_bind_list);
@@ -1433,6 +1416,40 @@ CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	return CommandCost();
 }
 
+/** Change one of the per-company settings.
+ * @param tile unused
+ * @param flags operation to perform
+ * @param p1 the index of the setting in the _company_settings array which identifies it
+ * @param p2 the new value for the setting
+ * The new value is properly clamped to its minimum/maximum when setting
+ */
+CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	if (p1 >= lengthof(_company_settings)) return CMD_ERROR;
+	const SettingDesc *sd = &_company_settings[p1];
+
+	if (flags & DC_EXEC) {
+		void *var = GetVariableAddress(&Company::Get(_current_company)->settings, &sd->save);
+
+		int32 oldval = (int32)ReadValue(var, sd->save.conv);
+		int32 newval = (int32)p2;
+
+		Write_ValidateSetting(var, sd, newval);
+		newval = (int32)ReadValue(var, sd->save.conv);
+
+		if (oldval == newval) return CommandCost();
+
+		if (sd->desc.proc != NULL && !sd->desc.proc(newval)) {
+			WriteValue(var, sd->save.conv, (int64)oldval);
+			return CommandCost();
+		}
+
+		InvalidateWindow(WC_GAME_OPTIONS, 0);
+	}
+
+	return CommandCost();
+}
+
 /** Top function to save the new value of an element of the Settings struct
  * @param index offset in the SettingDesc array of the Settings struct which
  * identifies the setting member we want to change
@@ -1465,6 +1482,23 @@ bool SetSettingValue(uint index, int32 value)
 		return DoCommandP(0, index, value, CMD_CHANGE_SETTING);
 	}
 	return false;
+}
+
+/** Top function to save the new value of an element of the Settings struct
+ * @param index offset in the SettingDesc array of the CompanySettings struct
+ * which identifies the setting member we want to change
+ * @param object pointer to a valid CompanySettings struct that has its settings changed.
+ * @param value new value of the setting */
+void SetCompanySetting(uint index, int32 value)
+{
+	const SettingDesc *sd = &_company_settings[index];
+	if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
+		DoCommandP(0, index, value, CMD_CHANGE_COMPANY_SETTING);
+	} else {
+		void *var = GetVariableAddress(&_settings_client.company, &sd->save);
+		Write_ValidateSetting(var, sd, value);
+		if (sd->desc.proc != NULL) sd->desc.proc((int32)ReadValue(var, sd->save.conv));
+	}
 }
 
 /**
@@ -1510,6 +1544,13 @@ const SettingDesc *GetSettingFromName(const char *name, uint *i)
 			short_name++;
 			if (strcmp(short_name, name) == 0) return sd;
 		}
+	}
+
+	if (strncmp(name, "company.", 8) == 0) name += 8;
+	/* And finally the company-based settings */
+	for (*i = 0, sd = _company_settings; sd->save.cmd != SL_END; sd++, (*i)++) {
+		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
+		if (strcmp(sd->desc.name, name) == 0) return sd;
 	}
 
 	return NULL;

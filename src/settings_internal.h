@@ -28,7 +28,7 @@ typedef SimpleTinyEnumT<SettingDescTypeLong, byte> SettingDescType;
 
 
 enum SettingGuiFlagLong {
-	/* 8 bytes allocated for a maximum of 8 flags
+	/* 1 byte allocated for a maximum of 8 flags
 	 * Flags directing saving/loading of a variable */
 	SGF_NONE = 0,
 	SGF_0ISDISABLED  = 1 << 0, ///< a value of zero means the feature is disabled
@@ -38,7 +38,7 @@ enum SettingGuiFlagLong {
 	SGF_CURRENCY     = 1 << 4, ///< the number represents money, so when reading value multiply by exchange rate
 	SGF_NO_NETWORK   = 1 << 5, ///< this setting does not apply to network games; it may not be changed during the game
 	SGF_NEWGAME_ONLY = 1 << 6, ///< this setting cannot be changed in inside a game
-	SGF_END          = 1 << 7,
+	SGF_PER_COMPANY  = 1 << 7, ///< this setting can be different for each company (saved in company struct)
 };
 DECLARE_ENUM_AS_BIT_SET(SettingGuiFlagLong);
 typedef SimpleTinyEnumT<SettingGuiFlagLong, byte> SettingGuiFlag;
@@ -78,5 +78,6 @@ typedef SettingDesc SettingDescGlobVarList;
 const SettingDesc *GetSettingFromName(const char *name, uint *i);
 bool SetSettingValue(uint index, int32 value);
 bool SetSettingValue(uint index, const char *value);
+void SetCompanySetting(uint index, int32 value);
 
 #endif /* SETTINGS_H */

@@ -75,13 +75,6 @@ void SetLocalCompany(CompanyID new_company)
 
 	_local_company = new_company;
 
-	/* Do not update the settings if we are in the intro GUI */
-	const Company *c = Company::GetIfValid(new_company);
-	if (_game_mode != GM_MENU && c != NULL) {
-		_settings_client.company = c->settings;
-		InvalidateWindow(WC_GAME_OPTIONS, 0);
-	}
-
 	/* Delete any construction windows... */
 	DeleteConstructionWindows();
 

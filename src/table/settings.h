@@ -14,9 +14,6 @@ static bool InvalidateTownViewWindow(int32 p1);
 static bool DeleteSelectStationWindow(int32 p1);
 static bool UpdateConsists(int32 p1);
 static bool CheckInterval(int32 p1);
-static bool EngineRenewUpdate(int32 p1);
-static bool EngineRenewMonthsUpdate(int32 p1);
-static bool EngineRenewMoneyUpdate(int32 p1);
 static bool TrainAccelerationModelChanged(int32 p1);
 static bool DragSignalsDensityChanged(int32);
 static bool DifficultyReset(int32 level);
@@ -208,6 +205,7 @@ static bool UpdateClientConfigValues(int32 p1);
 #define CR SGF_CURRENCY
 #define NN SGF_NO_NETWORK
 #define NG SGF_NEWGAME_ONLY
+#define PC SGF_PER_COMPANY
 
 static const SettingDesc _music_settings[] = {
 	 SDT_VAR(MusicFileSettings, playlist,   SLE_UINT8, S, 0,   0, 0,   5, 1,  STR_NULL, NULL),
@@ -547,9 +545,6 @@ const SettingDesc _settings[] = {
 	 SDTC_BOOL(gui.vehicle_income_warn,                  S,  0,  true,                        STR_CONFIG_SETTING_WARN_INCOME_LESS,            NULL),
 	  SDTC_VAR(gui.order_review_system,       SLE_UINT8, S, MS,     2,        0,        2, 0, STR_CONFIG_SETTING_ORDER_REVIEW,                NULL),
 	 SDTC_BOOL(gui.lost_train_warn,                      S,  0,  true,                        STR_CONFIG_SETTING_WARN_LOST_TRAIN,             NULL),
-	 SDTC_BOOL(company.engine_renew,                     S,  0, false,                        STR_CONFIG_SETTING_AUTORENEW_VEHICLE,           EngineRenewUpdate),
-	  SDTC_VAR(company.engine_renew_months,   SLE_INT16, S,  0,     6,      -12,       12, 0, STR_CONFIG_SETTING_AUTORENEW_MONTHS,            EngineRenewMonthsUpdate),
-	  SDTC_VAR(company.engine_renew_money,     SLE_UINT, S, CR,100000,        0,  2000000, 0, STR_CONFIG_SETTING_AUTORENEW_MONEY,             EngineRenewMoneyUpdate),
 	 SDTC_BOOL(gui.always_build_infrastructure,          S,  0, false,                        STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE, RedrawScreen),
 	 SDTC_BOOL(gui.new_nonstop,                          S,  0, false,                        STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT,          NULL),
 	  SDTC_VAR(gui.stop_location,             SLE_UINT8, S, MS,     2,        0,        2, 1, STR_CONFIG_SETTING_STOP_LOCATION,               NULL),
@@ -616,6 +611,13 @@ const SettingDesc _settings[] = {
 	 SDTC_VAR(gui.right_mouse_btn_emulation, SLE_UINT8, S, MS, 0, 0, 2, 0, STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU, NULL),
 #endif
 
+	SDT_END()
+};
+
+static const SettingDesc _company_settings[] = {
+	SDT_BOOL(CompanySettings, engine_renew,                     0, PC, false,                        STR_CONFIG_SETTING_AUTORENEW_VEHICLE, NULL),
+	 SDT_VAR(CompanySettings, engine_renew_months,   SLE_INT16, 0, PC,     6,      -12,       12, 0, STR_CONFIG_SETTING_AUTORENEW_MONTHS,  NULL),
+	 SDT_VAR(CompanySettings, engine_renew_money,     SLE_UINT, 0, PC|CR,100000,     0,  2000000, 0, STR_CONFIG_SETTING_AUTORENEW_MONEY,   NULL),
 	SDT_END()
 };
 
