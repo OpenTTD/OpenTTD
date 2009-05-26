@@ -89,12 +89,7 @@ struct AircraftCache {
 };
 
 /**
- * This class 'wraps' Vehicle; you do not actually instantiate this class.
- * You create a Vehicle using AllocateVehicle, so it is added to the pool
- * and you reinitialize that to a Train using:
- *   v = new (v) Aircraft();
- *
- * As side-effect the vehicle type is set correctly.
+ * Aircraft, helicopters, rotors and their shadows belong to this class.
  */
 struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	AircraftCache acache; ///< Cache of often used calculated values

@@ -553,12 +553,7 @@ struct SpecializedVehicle : public Vehicle {
 #define FOR_ALL_VEHICLES_OF_TYPE(name, var) FOR_ALL_ITEMS_FROM(name, vehicle_index, var, 0) if (var->type == name::EXPECTED_TYPE)
 
 /**
- * This class 'wraps' Vehicle; you do not actually instantiate this class.
- * You create a Vehicle using AllocateVehicle, so it is added to the pool
- * and you reinitialize that to a Train using:
- *   v = new (v) Train();
- *
- * As side-effect the vehicle type is set correctly.
+ * Disasters, like submarines, skyrangers and their shadows, belong to this class.
  */
 struct DisasterVehicle : public SpecializedVehicle<DisasterVehicle, VEH_DISASTER> {
 	uint16 image_override;

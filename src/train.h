@@ -294,12 +294,7 @@ struct TrainCache {
 };
 
 /**
- * This class 'wraps' Vehicle; you do not actually instantiate this class.
- * You create a Vehicle using AllocateVehicle, so it is added to the pool
- * and you reinitialize that to a Train using:
- *   v = new (v) Train();
- *
- * As side-effect the vehicle type is set correctly.
+ * 'Train' is either a loco or a wagon.
  */
 struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	TrainCache tcache;

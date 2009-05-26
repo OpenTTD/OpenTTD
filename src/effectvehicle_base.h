@@ -8,13 +8,6 @@
 #include "vehicle_base.h"
 
 /**
- * This class 'wraps' Vehicle; you do not actually instantiate this class.
- * You create a Vehicle using AllocateVehicle, so it is added to the pool
- * and you reinitialize that to a Train using:
- *   v = new (v) Train();
- *
- * As side-effect the vehicle type is set correctly.
- *
  * A special vehicle is one of the following:
  *  - smoke
  *  - electric sparks for trains

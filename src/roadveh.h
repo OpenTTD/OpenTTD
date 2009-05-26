@@ -116,12 +116,7 @@ struct RoadVehicleCache {
 };
 
 /**
- * This class 'wraps' Vehicle; you do not actually instantiate this class.
- * You create a Vehicle using AllocateVehicle, so it is added to the pool
- * and you reinitialize that to a Train using:
- *   v = new (v) RoadVehicle();
- *
- * As side-effect the vehicle type is set correctly.
+ * Buses, trucks and trams belong to this class.
  */
 struct RoadVehicle : public SpecializedVehicle<RoadVehicle, VEH_ROAD> {
 	RoadVehicleCache rcache; ///< Cache of often used calculated values
