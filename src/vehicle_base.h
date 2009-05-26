@@ -491,6 +491,9 @@ public:
 	}
 };
 
+#define FOR_ALL_VEHICLES_FROM(var, start) FOR_ALL_ITEMS_FROM(Vehicle, vehicle_index, var, start)
+#define FOR_ALL_VEHICLES(var) FOR_ALL_VEHICLES_FROM(var, 0)
+
 /**
  * Class defining several overloaded accessors so we don't
  * have to cast vehicle types that often
@@ -572,8 +575,7 @@ struct DisasterVehicle : public SpecializedVehicle<DisasterVehicle, VEH_DISASTER
 	bool Tick();
 };
 
-#define FOR_ALL_VEHICLES_FROM(var, start) FOR_ALL_ITEMS_FROM(Vehicle, vehicle_index, var, start)
-#define FOR_ALL_VEHICLES(var) FOR_ALL_VEHICLES_FROM(var, 0)
+#define FOR_ALL_DISASTERVEHICLES(var) FOR_ALL_VEHICLES_OF_TYPE(DisasterVehicle, var)
 
 /** Generates sequence of free UnitID numbers */
 struct FreeUnitIDGenerator {

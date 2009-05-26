@@ -37,11 +37,9 @@
  */
 bool RoadVehiclesAreBuilt()
 {
-	const Vehicle *v;
+	const RoadVehicle *rv;
+	FOR_ALL_ROADVEHICLES(rv) return true;
 
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_ROAD) return true;
-	}
 	return false;
 }
 
@@ -274,9 +272,9 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 				if (HasRoadWorks(tile)) {
 					/* flooding tile with road works, don't forget to remove the effect vehicle too */
 					assert(_current_company == OWNER_WATER);
-					Vehicle *v;
-					FOR_ALL_VEHICLES(v) {
-						if (v->type == VEH_EFFECT && TileVirtXY(v->x_pos, v->y_pos) == tile) {
+					EffectVehicle *v;
+					FOR_ALL_EFFECTVEHICLES(v) {
+						if (TileVirtXY(v->x_pos, v->y_pos) == tile) {
 							delete v;
 						}
 					}
@@ -1540,13 +1538,6 @@ static const byte _roadveh_enter_depot_dir[4] = {
 static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 {
 	switch (GetRoadTileType(tile)) {
-		case ROAD_TILE_CROSSING:
-			if (v->type == VEH_TRAIN) {
-				/* it should be barred */
-				assert(IsCrossingBarred(tile));
-			}
-			break;
-
 		case ROAD_TILE_DEPOT: {
 			if (v->type != VEH_ROAD) break;
 

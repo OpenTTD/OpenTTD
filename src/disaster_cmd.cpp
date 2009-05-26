@@ -300,9 +300,9 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		}
 		v->current_order.SetDestination(1);
 
-		Vehicle *u;
-		FOR_ALL_VEHICLES(u) {
-			if (u->type == VEH_ROAD && IsRoadVehFront(u)) {
+		RoadVehicle *u;
+		FOR_ALL_ROADVEHICLES(u) {
+			if (IsRoadVehFront(u)) {
 				v->dest_tile = u->index;
 				v->age = 0;
 				return true;
@@ -938,10 +938,10 @@ void StartupDisasters()
  */
 void ReleaseDisastersTargetingIndustry(IndustryID i)
 {
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	DisasterVehicle *v;
+	FOR_ALL_DISASTERVEHICLES(v) {
 		/* primary disaster vehicles that have chosen target */
-		if (v->type == VEH_DISASTER && (v->subtype == ST_AIRPLANE || v->subtype == ST_HELICOPTER)) {
+		if (v->subtype == ST_AIRPLANE || v->subtype == ST_HELICOPTER) {
 			/* if it has chosen target, and it is this industry (yes, dest_tile is IndustryID here), set order to "leaving map peacefully" */
 			if (v->current_order.GetDestination() > 0 && v->dest_tile == i) v->current_order.SetDestination(3);
 		}

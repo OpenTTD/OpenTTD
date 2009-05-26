@@ -24,13 +24,12 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 	/* find a locomotive in the depot. */
 	const Vehicle *found = NULL;
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_TRAIN && IsFrontEngine(v) &&
-				v->tile == tile &&
-				((const Train *)v)->track == TRACK_BIT_DEPOT) {
+	const Train *t;
+	FOR_ALL_TRAINS(t) {
+		if (IsFrontEngine(t) && t->tile == tile &&
+				t->track == TRACK_BIT_DEPOT) {
 			if (found != NULL) return; // must be exactly one.
-			found = v;
+			found = t;
 		}
 	}
 

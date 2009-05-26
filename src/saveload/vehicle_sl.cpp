@@ -100,55 +100,49 @@ void ConnectMultiheadedTrains()
  */
 void ConvertOldMultiheadToNew()
 {
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_TRAIN) {
-			SetBit(v->subtype, 7); // indicates that it's the old format and needs to be converted in the next loop
-		}
-	}
+	Train *t;
+	FOR_ALL_TRAINS(t) SetBit(t->subtype, 7); // indicates that it's the old format and needs to be converted in the next loop
 
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_TRAIN) {
-			if (HasBit(v->subtype, 7) && ((v->subtype & ~0x80) == 0 || (v->subtype & ~0x80) == 4)) {
-				for (Vehicle *u = v; u != NULL; u = u->Next()) {
-					const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
+	FOR_ALL_TRAINS(t) {
+		if (HasBit(t->subtype, 7) && ((t->subtype & ~0x80) == 0 || (t->subtype & ~0x80) == 4)) {
+			for (Vehicle *u = t; u != NULL; u = u->Next()) {
+				const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
 
-					ClrBit(u->subtype, 7);
-					switch (u->subtype) {
-						case 0: // TS_Front_Engine
-							if (rvi->railveh_type == RAILVEH_MULTIHEAD) SetMultiheaded(u);
-							SetFrontEngine(u);
-							SetTrainEngine(u);
-							break;
+				ClrBit(u->subtype, 7);
+				switch (u->subtype) {
+					case 0: // TS_Front_Engine
+						if (rvi->railveh_type == RAILVEH_MULTIHEAD) SetMultiheaded(u);
+						SetFrontEngine(u);
+						SetTrainEngine(u);
+						break;
 
-						case 1: // TS_Artic_Part
-							u->subtype = 0;
-							SetArticulatedPart(u);
-							break;
+					case 1: // TS_Artic_Part
+						u->subtype = 0;
+						SetArticulatedPart(u);
+						break;
 
-						case 2: // TS_Not_First
-							u->subtype = 0;
-							if (rvi->railveh_type == RAILVEH_WAGON) {
-								/* normal wagon */
-								SetTrainWagon(u);
-								break;
-							}
-							if (rvi->railveh_type == RAILVEH_MULTIHEAD && rvi->image_index == u->spritenum - 1) {
-								/* rear end of a multiheaded engine */
-								SetMultiheaded(u);
-								break;
-							}
-							if (rvi->railveh_type == RAILVEH_MULTIHEAD) SetMultiheaded(u);
-							SetTrainEngine(u);
-							break;
-
-						case 4: // TS_Free_Car
-							u->subtype = 0;
+					case 2: // TS_Not_First
+						u->subtype = 0;
+						if (rvi->railveh_type == RAILVEH_WAGON) {
+							/* normal wagon */
 							SetTrainWagon(u);
-							SetFreeWagon(u);
 							break;
-						default: NOT_REACHED();
-					}
+						}
+						if (rvi->railveh_type == RAILVEH_MULTIHEAD && rvi->image_index == u->spritenum - 1) {
+							/* rear end of a multiheaded engine */
+							SetMultiheaded(u);
+							break;
+						}
+						if (rvi->railveh_type == RAILVEH_MULTIHEAD) SetMultiheaded(u);
+						SetTrainEngine(u);
+						break;
+
+					case 4: // TS_Free_Car
+						u->subtype = 0;
+						SetTrainWagon(u);
+						SetFreeWagon(u);
+						break;
+					default: NOT_REACHED();
 				}
 			}
 		}

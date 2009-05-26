@@ -185,10 +185,8 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 			/* First we update the destination for all vehicles that
 			 * have the old waypoint in their orders. */
 			Vehicle *v;
-			FOR_ALL_VEHICLES(v) {
-				if (v->type == VEH_TRAIN &&
-						v->First() == v &&
-						v->current_order.IsType(OT_GOTO_WAYPOINT) &&
+			FOR_ALL_TRAINS(v) {
+				if (v->First() == v && v->current_order.IsType(OT_GOTO_WAYPOINT) &&
 						v->dest_tile == wp->xy) {
 					v->dest_tile = tile;
 				}

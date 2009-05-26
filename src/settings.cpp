@@ -57,6 +57,7 @@
 #include "ai/ai_config.hpp"
 #include "newgrf.h"
 #include "engine_base.h"
+#include "ship.h"
 
 #include "void_map.h"
 #include "station_base.h"
@@ -878,9 +879,9 @@ static bool CheckFreeformEdges(int32 p1)
 {
 	if (_game_mode == GM_MENU) return true;
 	if (p1 != 0) {
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_SHIP && (TileX(v->tile) == 0 || TileY(v->tile) == 0)) {
+		Ship *s;
+		FOR_ALL_SHIPS(s) {
+			if (TileX(s->tile) == 0 || TileY(s->tile) == 0) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_SETTING_EDGES_NOT_EMPTY, 0, 0);
 				return false;
 			}

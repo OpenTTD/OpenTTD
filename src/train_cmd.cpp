@@ -185,11 +185,11 @@ static void RailVehicleLengthChanged(const Train *u)
 /** Checks if lengths of all rail vehicles are valid. If not, shows an error message. */
 void CheckTrainsLengths()
 {
-	const Vehicle *v;
+	const Train *v;
 
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_TRAIN && v->First() == v && !(v->vehstatus & VS_CRASHED)) {
-			for (const Train *u = (const Train *)v, *w = (const Train *)v->Next(); w != NULL; u = w, w = w->Next()) {
+	FOR_ALL_TRAINS(v) {
+		if (v->First() == v && !(v->vehstatus & VS_CRASHED)) {
+			for (const Train *u = v, *w = v->Next(); w != NULL; u = w, w = w->Next()) {
 				if (u->track != TRACK_BIT_DEPOT) {
 					if ((w->track != TRACK_BIT_DEPOT &&
 							max(abs(u->x_pos - w->x_pos), abs(u->y_pos - w->y_pos)) != u->tcache.cached_veh_length) ||
@@ -654,11 +654,11 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 	if (flags & DC_EXEC) {
 		Vehicle *u = NULL;
 
-		Vehicle *w;
-		FOR_ALL_VEHICLES(w) {
+		Train *w;
+		FOR_ALL_TRAINS(w) {
 			/* do not connect new wagon with crashed/flooded consists */
-			if (w->type == VEH_TRAIN && w->tile == tile &&
-					IsFreeWagon(w) && w->engine_type == engine &&
+			if (w->tile == tile && IsFreeWagon(w) &&
+					w->engine_type == engine &&
 					!HASBITS(w->vehstatus, VS_CRASHED)) {
 				u = GetLastVehicleInChain(w);
 				break;
@@ -732,12 +732,10 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 /** Move all free vehicles in the depot to the train */
 static void NormalizeTrainVehInDepot(const Train *u)
 {
-	const Vehicle *v;
-
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_TRAIN && IsFreeWagon(v) &&
-				v->tile == u->tile &&
-				((const Train *)v)->track == TRACK_BIT_DEPOT) {
+	const Train *v;
+	FOR_ALL_TRAINS(v) {
+		if (IsFreeWagon(v) && v->tile == u->tile &&
+				v->track == TRACK_BIT_DEPOT) {
 			if (CmdFailed(DoCommand(0, v->index | (u->index << 16), 1, DC_EXEC,
 					CMD_MOVE_RAIL_VEHICLE)))
 				break;
@@ -2236,8 +2234,8 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		return SendAllVehiclesToDepot(VEH_TRAIN, flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), p1);
 	}
 
-	Vehicle *v = Vehicle::GetIfValid(p1);
-	if (v == NULL || v->type != VEH_TRAIN) return CMD_ERROR;
+	Train *v = Train::GetIfValid(p1);
+	if (v == NULL) return CMD_ERROR;
 
 	return v->SendToDepot(flags, (DepotCommand)(p2 & DEPOT_COMMAND_MASK));
 }
@@ -3567,10 +3565,10 @@ static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
 
 		/* Try to reserve all tiles directly under the crashed trains.
 		 * As there might be more than two trains involved, we have to do that for all vehicles */
-		const Vehicle *u;
-		FOR_ALL_VEHICLES(u) {
-			if (u->type == VEH_TRAIN && HASBITS(u->vehstatus, VS_CRASHED) && (((const Train *)u)->track & TRACK_BIT_DEPOT) == TRACK_BIT_NONE) {
-				TrackBits trackbits = ((const Train *)u)->track;
+		const Train *u;
+		FOR_ALL_TRAINS(u) {
+			if (HASBITS(u->vehstatus, VS_CRASHED) && (u->track & TRACK_BIT_DEPOT) == TRACK_BIT_NONE) {
+				TrackBits trackbits = u->track;
 				if ((trackbits & TRACK_BIT_WORMHOLE) == TRACK_BIT_WORMHOLE) {
 					/* Vehicle is inside a wormhole, v->track contains no useful value then. */
 					trackbits |= DiagDirToDiagTrackBits(GetTunnelBridgeDirection(u->tile));

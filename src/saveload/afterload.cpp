@@ -314,9 +314,9 @@ static void FixOwnerOfRailTrack(TileIndex t)
 	assert(!Company::IsValidID(GetTileOwner(t)) && (IsLevelCrossingTile(t) || IsPlainRailTile(t)));
 
 	/* remove leftover rail piece from crossing (from very old savegames) */
-	Vehicle *v = NULL, *w;
-	FOR_ALL_VEHICLES(w) {
-		if (w->type == VEH_TRAIN && w->tile == t) {
+	Train *v = NULL, *w;
+	FOR_ALL_TRAINS(w) {
+		if (w->tile == t) {
 			v = w;
 			break;
 		}
@@ -1286,10 +1286,10 @@ bool AfterLoadGame()
 	}
 
 	if (CheckSavegameVersion(50)) {
-		Vehicle *v;
+		Aircraft *v;
 		/* Aircraft units changed from 8 mph to 1 km/h */
-		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_AIRCRAFT && v->subtype <= AIR_AIRCRAFT) {
+		FOR_ALL_AIRCRAFT(v) {
+			if (v->subtype <= AIR_AIRCRAFT) {
 				const AircraftVehicleInfo *avi = AircraftVehInfo(v->engine_type);
 				v->cur_speed *= 129;
 				v->cur_speed /= 10;
@@ -1624,10 +1624,9 @@ bool AfterLoadGame()
 	if (CheckSavegameVersion(62)) {
 		/* Remove all trams from savegames without tram support.
 		 * There would be trams without tram track under causing crashes sooner or later. */
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_ROAD && v->First() == v &&
-					HasBit(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM)) {
+		RoadVehicle *v;
+		FOR_ALL_ROADVEHICLES(v) {
+			if (v->First() == v && HasBit(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM)) {
 				if (_switch_mode_errorstr == INVALID_STRING_ID || _switch_mode_errorstr == STR_NEWGRF_COMPATIBLE_LOAD_WARNING) {
 					_switch_mode_errorstr = STR_LOADGAME_REMOVED_TRAMS;
 				}
@@ -1735,11 +1734,11 @@ bool AfterLoadGame()
 	}
 
 	if (CheckSavegameVersion(104)) {
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
+		Aircraft *a;
+		FOR_ALL_AIRCRAFT(a) {
 			/* Set engine_type of shadow and rotor */
-			if (v->type == VEH_AIRCRAFT && !IsNormalAircraft(v)) {
-				v->engine_type = v->First()->engine_type;
+			if (!IsNormalAircraft(a)) {
+				a->engine_type = a->First()->engine_type;
 			}
 		}
 

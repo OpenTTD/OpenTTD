@@ -49,4 +49,6 @@ struct Ship: public SpecializedVehicle<Ship, VEH_SHIP> {
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
 };
 
+#define FOR_ALL_SHIPS(var) FOR_ALL_VEHICLES_OF_TYPE(Ship, var)
+
 #endif /* SHIP_H */

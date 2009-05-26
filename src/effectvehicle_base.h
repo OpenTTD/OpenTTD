@@ -37,4 +37,6 @@ struct EffectVehicle : public SpecializedVehicle<EffectVehicle, VEH_EFFECT> {
 	bool Tick();
 };
 
+#define FOR_ALL_EFFECTVEHICLES(var) FOR_ALL_VEHICLES_OF_TYPE(EffectVehicle, var)
+
 #endif /* EFFECTVEHICLE_BASE_H */
