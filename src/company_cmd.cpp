@@ -29,6 +29,7 @@
 #include "rail.h"
 #include "sprite.h"
 #include "core/pool_func.hpp"
+#include "settings_func.h"
 
 #include "table/strings.h"
 
@@ -531,126 +532,33 @@ void CompaniesYearlyLoop()
 /** Change engine renewal parameters
  * @param tile unused
  * @param flags operation to perform
- * @param p1 bits 0-3 command
- * - p1 = 0 - change auto renew bool
- * - p1 = 1 - change auto renew months
- * - p1 = 2 - change auto renew money
- * - p1 = 3 - change auto renew array
- * - p1 = 4 - change bool, months & money all together
- * - p1 = 5 - change renew_keep_length
- * @param p2 value to set
- * if p1 = 0, then:
- * - p2 = enable engine renewal
- * if p1 = 1, then:
- * - p2 = months left before engine expires to replace it
- * if p1 = 2, then
- * - p2 = minimum amount of money available
- * if p1 = 3, then:
+ * @param
  * - p1 bits 16-31 = engine group
  * - p2 bits  0-15 = old engine type
  * - p2 bits 16-31 = new engine type
- * if p1 = 4, then:
- * - p1 bit     15 = enable engine renewal
- * - p1 bits 16-31 = months left before engine expires to replace it
- * - p2 bits  0-31 = minimum amount of money available
- * if p1 = 5, then
- * - p2 = enable renew_keep_length
  */
 CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Company *c = Company::GetIfValid(_current_company);
 	if (c == NULL) return CMD_ERROR;
 
-	switch (GB(p1, 0, 3)) {
-		case 0:
-			if (c->settings.engine_renew == HasBit(p2, 0)) return CMD_ERROR;
+	EngineID old_engine_type = GB(p2, 0, 16);
+	EngineID new_engine_type = GB(p2, 16, 16);
+	GroupID id_g = GB(p1, 16, 16);
+	CommandCost cost;
 
-			if (flags & DC_EXEC) {
-				c->settings.engine_renew = HasBit(p2, 0);
-				if (IsLocalCompany()) {
-					_settings_client.company.engine_renew = c->settings.engine_renew;
-					InvalidateWindow(WC_GAME_OPTIONS, 0);
-				}
-			}
-			break;
+	if (!Group::IsValidID(id_g) && !IsAllGroupID(id_g) && !IsDefaultGroupID(id_g)) return CMD_ERROR;
+	if (new_engine_type != INVALID_ENGINE) {
+		if (!CheckAutoreplaceValidity(old_engine_type, new_engine_type, _current_company)) return CMD_ERROR;
 
-		case 1:
-			if (Clamp((int16)p2, -12, 12) != (int16)p2) return CMD_ERROR;
-			if (c->settings.engine_renew_months == (int16)p2) return CMD_ERROR;
-
-			if (flags & DC_EXEC) {
-				c->settings.engine_renew_months = (int16)p2;
-				if (IsLocalCompany()) {
-					_settings_client.company.engine_renew_months = c->settings.engine_renew_months;
-					InvalidateWindow(WC_GAME_OPTIONS, 0);
-				}
-			}
-			break;
-
-		case 2:
-			if (ClampU(p2, 0, 2000000) != p2) return CMD_ERROR;
-			if (c->settings.engine_renew_money == p2) return CMD_ERROR;
-
-			if (flags & DC_EXEC) {
-				c->settings.engine_renew_money = p2;
-				if (IsLocalCompany()) {
-					_settings_client.company.engine_renew_money = c->settings.engine_renew_money;
-					InvalidateWindow(WC_GAME_OPTIONS, 0);
-				}
-			}
-			break;
-
-		case 3: {
-			EngineID old_engine_type = GB(p2, 0, 16);
-			EngineID new_engine_type = GB(p2, 16, 16);
-			GroupID id_g = GB(p1, 16, 16);
-			CommandCost cost;
-
-			if (!Group::IsValidID(id_g) && !IsAllGroupID(id_g) && !IsDefaultGroupID(id_g)) return CMD_ERROR;
-			if (new_engine_type != INVALID_ENGINE) {
-				if (!CheckAutoreplaceValidity(old_engine_type, new_engine_type, _current_company)) return CMD_ERROR;
-
-				cost = AddEngineReplacementForCompany(c, old_engine_type, new_engine_type, id_g, flags);
-			} else {
-				cost = RemoveEngineReplacementForCompany(c, old_engine_type, id_g, flags);
-			}
-
-			if (IsLocalCompany()) InvalidateAutoreplaceWindow(old_engine_type, id_g);
-
-			return cost;
-		}
-
-		case 4:
-			if (Clamp((int16)GB(p1, 16, 16), -12, 12) != (int16)GB(p1, 16, 16)) return CMD_ERROR;
-			if (ClampU(p2, 0, 2000000) != p2) return CMD_ERROR;
-
-			if (flags & DC_EXEC) {
-				c->settings.engine_renew = HasBit(p1, 15);
-				c->settings.engine_renew_months = (int16)GB(p1, 16, 16);
-				c->settings.engine_renew_money = p2;
-
-				if (IsLocalCompany()) {
-					_settings_client.company.engine_renew = c->settings.engine_renew;
-					_settings_client.company.engine_renew_months = c->settings.engine_renew_months;
-					_settings_client.company.engine_renew_money = c->settings.engine_renew_money;
-					InvalidateWindow(WC_GAME_OPTIONS, 0);
-				}
-			}
-			break;
-
-		case 5:
-			if (c->settings.renew_keep_length == HasBit(p2, 0)) return CMD_ERROR;
-
-			if (flags & DC_EXEC) {
-				c->settings.renew_keep_length = HasBit(p2, 0);
-				if (IsLocalCompany()) {
-					InvalidateWindow(WC_REPLACE_VEHICLE, VEH_TRAIN);
-				}
-			}
-		break;
+		cost = AddEngineReplacementForCompany(c, old_engine_type, new_engine_type, id_g, flags);
+	} else {
+		cost = RemoveEngineReplacementForCompany(c, old_engine_type, id_g, flags);
 	}
 
-	return CommandCost();
+	if (IsLocalCompany()) InvalidateAutoreplaceWindow(old_engine_type, id_g);
+
+	return cost;
 }
 
 /**
@@ -742,9 +650,6 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			/* This is the client (or non-dedicated server) who wants a new company */
 			if (cid == _network_own_client_id) {
-				/* Create p1 and p2 here because SetLocalCompany resets the gui.autorenew* settings. */
-				uint32 p1 = (_settings_client.company.engine_renew << 15 ) | (_settings_client.company.engine_renew_months << 16) | 4;
-				uint32 p2 = _settings_client.company.engine_renew_money;
 				assert(_local_company == COMPANY_SPECTATOR);
 				SetLocalCompany(c->index);
 				if (!StrEmpty(_settings_client.network.default_company_pass)) {
@@ -754,9 +659,9 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 				_current_company = _local_company;
 
-				/* Now that we have a new company, broadcast our autorenew settings to
+				/* Now that we have a new company, broadcast our company settings to
 				 * all clients so everything is in sync */
-				NetworkSend_Command(0, p1, p2, CMD_SET_AUTOREPLACE, NULL, NULL);
+				SyncCompanySettings();
 
 				MarkWholeScreenDirty();
 			}

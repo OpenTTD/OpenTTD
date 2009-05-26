@@ -1425,6 +1425,7 @@ CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  */
 CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
+	DEBUG(misc, 0, "Change company setting: %u into %u", p1, p2);
 	if (p1 >= lengthof(_company_settings)) return CMD_ERROR;
 	const SettingDesc *sd = &_company_settings[p1];
 
@@ -1499,6 +1500,35 @@ void SetCompanySetting(uint index, int32 value)
 		Write_ValidateSetting(var, sd, value);
 		if (sd->desc.proc != NULL) sd->desc.proc((int32)ReadValue(var, sd->save.conv));
 	}
+}
+
+/**
+ * Sync all company settings in a multiplayer game.
+ */
+void SyncCompanySettings()
+{
+	const SettingDesc *sd;
+	uint i = 0;
+	for (sd = _company_settings; sd->save.cmd != SL_END; sd++, i++) {
+		const void *old_var = GetVariableAddress(&Company::Get(_current_company)->settings, &sd->save);
+		const void *new_var = GetVariableAddress(&_settings_client.company, &sd->save);
+		uint32 old_value = (uint32)ReadValue(old_var, sd->save.conv);
+		uint32 new_value = (uint32)ReadValue(new_var, sd->save.conv);
+		if (old_value != new_value) NetworkSend_Command(0, i, new_value, CMD_CHANGE_COMPANY_SETTING, NULL, NULL);
+	}
+}
+
+/**
+ * Get the index in the _company_settings array of a setting
+ * @param name The name of the setting
+ * @return The index in the _company_settings array
+ */
+uint GetCompanySettingIndex(const char *name)
+{
+	uint i;
+	const SettingDesc *sd = GetSettingFromName(name, &i);
+	assert(sd != NULL && (sd->desc.flags & SGF_PER_COMPANY) != 0);
+	return i;
 }
 
 /**

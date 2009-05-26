@@ -12,6 +12,7 @@
 #include "../../core/alloc_func.hpp"
 #include "../../command_func.h"
 #include "../../autoreplace_func.h"
+#include "../../settings_func.h"
 #include "table/strings.h"
 
 /* static */ bool AIGroup::IsValidGroup(GroupID group_id)
@@ -96,7 +97,7 @@
 {
 	if (HasWagonRemoval() == enable_removal) return true;
 
-	return AIObject::DoCommand(0, 5, enable_removal ? 1 : 0, CMD_SET_AUTOREPLACE);
+	return AIObject::DoCommand(0, ::GetCompanySettingIndex("company.renew_keep_length"), enable_removal ? 1 : 0, CMD_CHANGE_COMPANY_SETTING);
 }
 
 /* static */ bool AIGroup::HasWagonRemoval()
@@ -109,7 +110,7 @@
 	EnforcePrecondition(false, IsValidGroup(group_id) || group_id == GROUP_ALL);
 	EnforcePrecondition(false, AIEngine::IsValidEngine(engine_id_new));
 
-	return AIObject::DoCommand(0, 3 | (group_id << 16), (engine_id_new << 16) | engine_id_old, CMD_SET_AUTOREPLACE);
+	return AIObject::DoCommand(0, group_id << 16, (engine_id_new << 16) | engine_id_old, CMD_SET_AUTOREPLACE);
 }
 
 /* static */ EngineID AIGroup::GetEngineReplacement(GroupID group_id, EngineID engine_id)
@@ -123,5 +124,5 @@
 {
 	EnforcePrecondition(false, IsValidGroup(group_id) || group_id == GROUP_ALL);
 
-	return AIObject::DoCommand(0, 3 | (group_id << 16), (::INVALID_ENGINE << 16) | engine_id, CMD_SET_AUTOREPLACE);
+	return AIObject::DoCommand(0, group_id << 16, (::INVALID_ENGINE << 16) | engine_id, CMD_SET_AUTOREPLACE);
 }

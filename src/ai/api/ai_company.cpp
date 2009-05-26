@@ -13,6 +13,7 @@
 #include "../../tile_map.h"
 #include "../../core/alloc_func.hpp"
 #include "../../string_func.h"
+#include "../../settings_func.h"
 #include "table/strings.h"
 
 /* static */ AICompany::CompanyID AICompany::ResolveCompanyID(AICompany::CompanyID company)
@@ -148,7 +149,7 @@
 
 /* static */ bool AICompany::SetAutoRenewStatus(bool autorenew)
 {
-	return AIObject::DoCommand(0, 0, autorenew ? 1 : 0, CMD_SET_AUTOREPLACE);
+	return AIObject::DoCommand(0, ::GetCompanySettingIndex("company.engine_renew"), autorenew ? 1 : 0, CMD_CHANGE_COMPANY_SETTING);
 }
 
 /* static */ bool AICompany::GetAutoRenewStatus(CompanyID company)
@@ -161,7 +162,7 @@
 
 /* static */ bool AICompany::SetAutoRenewMonths(int16 months)
 {
-	return AIObject::DoCommand(0, 1, months, CMD_SET_AUTOREPLACE);
+	return AIObject::DoCommand(0, ::GetCompanySettingIndex("company.engine_renew_months"), months, CMD_CHANGE_COMPANY_SETTING);
 }
 
 /* static */ int16 AICompany::GetAutoRenewMonths(CompanyID company)
@@ -174,7 +175,7 @@
 
 /* static */ bool AICompany::SetAutoRenewMoney(uint32 money)
 {
-	return AIObject::DoCommand(0, 2, money, CMD_SET_AUTOREPLACE);
+	return AIObject::DoCommand(0, ::GetCompanySettingIndex("company.engine_renew_money"), money, CMD_CHANGE_COMPANY_SETTING);
 }
 
 /* static */ uint32 AICompany::GetAutoRenewMoney(CompanyID company)

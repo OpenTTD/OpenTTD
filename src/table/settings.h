@@ -618,6 +618,7 @@ static const SettingDesc _company_settings[] = {
 	SDT_BOOL(CompanySettings, engine_renew,                     0, PC, false,                        STR_CONFIG_SETTING_AUTORENEW_VEHICLE, NULL),
 	 SDT_VAR(CompanySettings, engine_renew_months,   SLE_INT16, 0, PC,     6,      -12,       12, 0, STR_CONFIG_SETTING_AUTORENEW_MONTHS,  NULL),
 	 SDT_VAR(CompanySettings, engine_renew_money,     SLE_UINT, 0, PC|CR,100000,     0,  2000000, 0, STR_CONFIG_SETTING_AUTORENEW_MONEY,   NULL),
+	SDT_BOOL(CompanySettings, renew_keep_length,                0, PC, false,                        STR_NULL,                             NULL),
 	SDT_END()
 };
 
