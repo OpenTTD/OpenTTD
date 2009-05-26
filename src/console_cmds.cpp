@@ -155,21 +155,37 @@ DEF_CONSOLE_CMD(ConStopAllVehicles)
 
 DEF_CONSOLE_CMD(ConScrollToTile)
 {
-	if (argc == 0) {
-		IConsoleHelp("Center the screen on a given tile. Usage: 'scrollto <tile>'");
-		IConsoleHelp("Tile can be either decimal (34161) or hexadecimal (0x4a5B)");
-		return true;
-	}
+	switch (argc) {
+		case 0:
+			IConsoleHelp("Center the screen on a given tile.");
+			IConsoleHelp("Usage: 'scrollto <tile>' or 'scrollto <x> <y>'");
+			IConsoleHelp("Numbers can be either decimal (34161) or hexadecimal (0x4a5B).");
+			return true;
 
-	if (argc == 2) {
-		uint32 result;
-		if (GetArgumentInteger(&result, argv[1])) {
-			if (result >= MapSize()) {
-				IConsolePrint(CC_ERROR, "Tile does not exist");
+		case 2: {
+			uint32 result;
+			if (GetArgumentInteger(&result, argv[1])) {
+				if (result >= MapSize()) {
+					IConsolePrint(CC_ERROR, "Tile does not exist");
+					return true;
+				}
+				ScrollMainWindowToTile((TileIndex)result);
 				return true;
 			}
-			ScrollMainWindowToTile((TileIndex)result);
-			return true;
+			break;
+		}
+
+		case 3: {
+			uint32 x, y;
+			if (GetArgumentInteger(&x, argv[1]) && GetArgumentInteger(&y, argv[2])) {
+				if (x >= MapSizeX() || y >= MapSizeY()) {
+					IConsolePrint(CC_ERROR, "Tile does not exist");
+					return true;
+				}
+				ScrollMainWindowToTile(TileXY(x, y));
+				return true;
+			}
+			break;
 		}
 	}
 
