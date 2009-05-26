@@ -96,7 +96,7 @@ struct AircraftCache {
  *
  * As side-effect the vehicle type is set correctly.
  */
-struct Aircraft : public Vehicle {
+struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	AircraftCache acache; ///< Cache of often used calculated values
 
 	uint16 crashed_counter;
@@ -125,9 +125,9 @@ struct Aircraft : public Vehicle {
 	void OnNewDay();
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
-	Aircraft *Next() { return (Aircraft *)this->Vehicle::Next(); }
-	const Aircraft *Next() const { return (const Aircraft *)this->Vehicle::Next(); }
 };
+
+#define FOR_ALL_AIRCRAFT(var) FOR_ALL_VEHICLES_OF_TYPE(Aircraft, var)
 
 SpriteID GetRotorImage(const Aircraft *v);
 

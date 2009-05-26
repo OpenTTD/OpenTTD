@@ -973,18 +973,17 @@ static Train *UnlinkWagon(Train *v, Train *first)
 
 static Train *FindGoodVehiclePos(const Train *src)
 {
-	Vehicle *dst;
 	EngineID eng = src->engine_type;
 	TileIndex tile = src->tile;
 
-	FOR_ALL_VEHICLES(dst) {
-		if (dst->type == VEH_TRAIN && IsFreeWagon(dst) && dst->tile == tile && !HASBITS(dst->vehstatus, VS_CRASHED)) {
+	Train *dst;
+	FOR_ALL_TRAINS(dst) {
+		if (IsFreeWagon(dst) && dst->tile == tile && !HASBITS(dst->vehstatus, VS_CRASHED)) {
 			/* check so all vehicles in the line have the same engine. */
-			Vehicle *v = dst;
-
-			while (v->engine_type == eng) {
-				v = v->Next();
-				if (v == NULL) return (Train *)dst;
+			Train *t = dst;
+			while (t->engine_type == eng) {
+				t = t->Next();
+				if (t == NULL) return dst;
 			}
 		}
 	}
@@ -1045,25 +1044,22 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	VehicleID s = GB(p1, 0, 16);
 	VehicleID d = GB(p1, 16, 16);
 
-	Vehicle *src_v = Vehicle::GetIfValid(s);
-	if (src_v == NULL || src_v->type != VEH_TRAIN || !CheckOwnership(src_v->owner)) return CMD_ERROR;
+	Train *src = Train::GetIfValid(s);
+	if (src == NULL || !CheckOwnership(src->owner)) return CMD_ERROR;
 
 	/* Do not allow moving crashed vehicles inside the depot, it is likely to cause asserts later */
-	if (HASBITS(src_v->vehstatus, VS_CRASHED)) return CMD_ERROR;
-
-	Train *src = (Train *)src_v;
+	if (HASBITS(src->vehstatus, VS_CRASHED)) return CMD_ERROR;
 
 	/* if nothing is selected as destination, try and find a matching vehicle to drag to. */
 	Train *dst;
 	if (d == INVALID_VEHICLE) {
 		dst = IsTrainEngine(src) ? NULL : FindGoodVehiclePos(src);
 	} else {
-		Vehicle *dst_v = Vehicle::GetIfValid(d);
-		if (dst_v == NULL || dst_v->type != VEH_TRAIN || !CheckOwnership(dst_v->owner)) return CMD_ERROR;
+		dst = Train::GetIfValid(d);
+		if (dst == NULL || !CheckOwnership(dst->owner)) return CMD_ERROR;
 
 		/* Do not allow appending to crashed vehicles, too */
-		if (HASBITS(dst_v->vehstatus, VS_CRASHED)) return CMD_ERROR;
-		dst = (Train *)dst_v;
+		if (HASBITS(dst->vehstatus, VS_CRASHED)) return CMD_ERROR;
 	}
 
 	/* if an articulated part is being handled, deal with its parent vehicle */
@@ -1399,13 +1395,12 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	/* Check if we deleted a vehicle window */
 	Window *w = NULL;
 
-	Vehicle *vt = Vehicle::GetIfValid(p1);
-	if (vt == NULL || vt->type != VEH_TRAIN || !CheckOwnership(vt->owner)) return CMD_ERROR;
+	Train *v = Train::GetIfValid(p1);
+	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (p2 > 1) return CMD_ERROR;
 
-	if (HASBITS(vt->vehstatus, VS_CRASHED)) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
+	if (HASBITS(v->vehstatus, VS_CRASHED)) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
 
-	Train *v = (Train *)vt;
 	while (IsArticulatedPart(v)) v = v->Previous();
 	Train *first = v->First();
 
@@ -1955,10 +1950,8 @@ static void ReverseTrainDirection(Train *v)
  */
 CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Vehicle *vt = Vehicle::GetIfValid(p1);
-	if (vt == NULL || vt->type != VEH_TRAIN || !CheckOwnership(vt->owner)) return CMD_ERROR;
-
-	Train *v = (Train *)vt;
+	Train *v = Train::GetIfValid(p1);
+	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (p2 != 0) {
 		/* turn a single unit around */
@@ -2015,10 +2008,10 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
  */
 CommandCost CmdForceTrainProceed(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Vehicle *v = Vehicle::GetIfValid(p1);
-	if (v == NULL || v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
+	Train *t = Train::GetIfValid(p1);
+	if (t == NULL || !CheckOwnership(t->owner)) return CMD_ERROR;
 
-	if (flags & DC_EXEC) ((Train *)v)->force_proceed = 0x50;
+	if (flags & DC_EXEC) t->force_proceed = 0x50;
 
 	return CommandCost();
 }
@@ -2039,10 +2032,9 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	byte new_subtype = GB(p2, 8, 8);
 	bool only_this = HasBit(p2, 16);
 
-	Vehicle *vt = Vehicle::GetIfValid(p1);
-	if (vt == NULL || vt->type != VEH_TRAIN || !CheckOwnership(vt->owner)) return CMD_ERROR;
+	Train *v = Train::GetIfValid(p1);
+	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 
-	Train *v = (Train *)vt;
 	if (CheckTrainStoppedInDepot(v) < 0) return_cmd_error(STR_TRAIN_MUST_BE_STOPPED);
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_REFIT_DESTROYED_VEHICLE);
 
@@ -2116,7 +2108,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	_returned_refit_capacity = num;
 
 	/* Update the train's cached variables */
-	if (flags & DC_EXEC) TrainConsistChanged((Train *)Vehicle::Get(p1)->First(), false);
+	if (flags & DC_EXEC) TrainConsistChanged(Train::Get(p1)->First(), false);
 
 	return cost;
 }

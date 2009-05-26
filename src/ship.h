@@ -22,7 +22,7 @@ void GetShipSpriteSize(EngineID engine, uint &width, uint &height);
  *
  * As side-effect the vehicle type is set correctly.
  */
-struct Ship: public Vehicle {
+struct Ship: public SpecializedVehicle<Ship, VEH_SHIP> {
 	TrackBitsByte state;
 
 	/** Initializes the Vehicle to a ship */

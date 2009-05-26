@@ -69,11 +69,9 @@ Station::~Station()
 		loading_vehicles.front()->LeaveStation();
 	}
 
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
-		if (v->type != VEH_AIRCRAFT || !IsNormalAircraft(v)) continue;
-
-		Aircraft *a = (Aircraft *)v;
+	Aircraft *a;
+	FOR_ALL_AIRCRAFT(a) {
+		if (!IsNormalAircraft(a)) continue;
 		if (a->targetairport == this->index) a->targetairport = INVALID_STATION;
 	}
 
@@ -463,12 +461,8 @@ RoadStop::~RoadStop()
 
 	/* Clear the slot assignment of all vehicles heading for this road stop */
 	if (num_vehicles != 0) {
-		Vehicle *v;
-
-		FOR_ALL_VEHICLES(v) {
-			if (v->type != VEH_ROAD) continue;
-			RoadVehicle *rv = (RoadVehicle *)v;
-
+		RoadVehicle *rv;
+		FOR_ALL_ROADVEHICLES(rv) {
 			if (rv->slot == this) ClearSlot(rv);
 		}
 	}

@@ -432,10 +432,8 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1
  */
 CommandCost CmdTurnRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Vehicle *u = Vehicle::GetIfValid(p1);
-	if (u == NULL || u->type != VEH_ROAD || !CheckOwnership(u->owner)) return CMD_ERROR;
-
-	RoadVehicle *v = (RoadVehicle *)u;
+	RoadVehicle *v = RoadVehicle::GetIfValid(p1);
+	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (v->vehstatus & VS_STOPPED ||
 			v->vehstatus & VS_CRASHED ||
@@ -2065,7 +2063,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		}
 	}
 
-	if (flags & DC_EXEC) RoadVehUpdateCache((RoadVehicle *)Vehicle::Get(p1)->First());
+	if (flags & DC_EXEC) RoadVehUpdateCache(RoadVehicle::Get(p1)->First());
 
 	_returned_refit_capacity = total_capacity;
 

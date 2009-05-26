@@ -695,10 +695,10 @@ static bool DeleteSelectStationWindow(int32 p1)
 
 static bool UpdateConsists(int32 p1)
 {
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	Train *t;
+	FOR_ALL_TRAINS(t) {
 		/* Update the consist of all trains so the maximum speed is set correctly. */
-		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) TrainConsistChanged((Train *)v, true);
+		if (IsFrontEngine(t) || IsFreeWagon(t)) TrainConsistChanged(t, true);
 	}
 	return true;
 }
@@ -732,10 +732,9 @@ static bool CheckInterval(int32 p1)
 
 static bool TrainAccelerationModelChanged(int32 p1)
 {
-	Vehicle *v;
-
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_TRAIN && IsFrontEngine(v)) UpdateTrainAcceleration((Train *)v);
+	Train *t;
+	FOR_ALL_TRAINS(t) {
+		if (IsFrontEngine(t)) UpdateTrainAcceleration(t);
 	}
 
 	return true;

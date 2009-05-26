@@ -2073,10 +2073,9 @@ void UpdateAirplanesOnNewStation(const Station *st)
 	/* only 1 station is updated per function call, so it is enough to get entry_point once */
 	const AirportFTAClass *ap = st->Airport();
 
-	Vehicle *u;
-	FOR_ALL_VEHICLES(u) {
-		if (u->type == VEH_AIRCRAFT && IsNormalAircraft(u)) {
-			Aircraft *v = (Aircraft *)u;
+	Aircraft *v;
+	FOR_ALL_AIRCRAFT(v) {
+		if (IsNormalAircraft(v)) {
 			if (v->targetairport == st->index) { // if heading to this airport
 				/* update position of airplane. If plane is not flying, landing, or taking off
 				 * you cannot delete airport, so it doesn't matter */

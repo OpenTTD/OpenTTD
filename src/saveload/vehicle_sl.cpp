@@ -20,16 +20,14 @@
  */
 void ConnectMultiheadedTrains()
 {
-	Vehicle *v;
+	Train *v;
 
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_TRAIN) {
-			((Train *)v)->other_multiheaded_part = NULL;
-		}
+	FOR_ALL_TRAINS(v) {
+		v->other_multiheaded_part = NULL;
 	}
 
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) {
+	FOR_ALL_TRAINS(v) {
+		if (IsFrontEngine(v) || IsFreeWagon(v)) {
 			/* Two ways to associate multiheaded parts to each other:
 			 * sequential-matching: Trains shall be arranged to look like <..>..<..>..<..>..
 			 * bracket-matching:    Free vehicle chains shall be arranged to look like ..<..<..>..<..>..>..
@@ -45,7 +43,7 @@ void ConnectMultiheadedTrains()
 
 			bool sequential_matching = IsFrontEngine(v);
 
-			for (Train *u = (Train *)v; u != NULL; u = (Train *)GetNextVehicle(u)) {
+			for (Train *u = v; u != NULL; u = GetNextVehicle(u)) {
 				if (u->other_multiheaded_part != NULL) continue; // we already linked this one
 
 				if (IsMultiheaded(u)) {
@@ -167,13 +165,11 @@ void UpdateOldAircraft()
 		st->airport_flags = 0; // reset airport
 	}
 
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	Aircraft *a;
+	FOR_ALL_AIRCRAFT(a) {
 		/* airplane has another vehicle with subtype 4 (shadow), helicopter also has 3 (rotor)
 		 * skip those */
-		if (v->type == VEH_AIRCRAFT && IsNormalAircraft(v)) {
-			Aircraft *v_oldstyle = (Aircraft *)v;
-			Aircraft *a = (Aircraft *)v_oldstyle;
+		if (IsNormalAircraft(a)) {
 			/* airplane in terminal stopped doesn't hurt anyone, so goto next */
 			if (a->vehstatus & VS_STOPPED && a->state == 0) {
 				a->state = HANGAR;
@@ -182,7 +178,7 @@ void UpdateOldAircraft()
 
 			AircraftLeaveHangar(a); // make airplane visible if it was in a depot for example
 			a->vehstatus &= ~VS_STOPPED; // make airplane moving
-			a->cur_speed = v_oldstyle->max_speed; // so aircraft don't have zero speed while in air
+			a->cur_speed = a->max_speed; // so aircraft don't have zero speed while in air
 			if (!a->current_order.IsType(OT_GOTO_STATION) && !a->current_order.IsType(OT_GOTO_DEPOT)) {
 				/* reset current order so aircraft doesn't have invalid "station-only" order */
 				a->current_order.MakeDummy();

@@ -532,8 +532,8 @@ void DrawCatenary(const TileInfo *ti)
 
 bool SettingsDisableElrail(int32 p1)
 {
-	Vehicle *v;
 	Company *c;
+	Train *t;
 	bool disable = (p1 != 0);
 
 	/* we will now walk through all electric train engines and change their railtypes if it is the wrong one*/
@@ -554,10 +554,7 @@ bool SettingsDisableElrail(int32 p1)
 	/* when disabling elrails, make sure that all existing trains can run on
 	 *  normal rail too */
 	if (disable) {
-		FOR_ALL_VEHICLES(v) {
-			if (v->type != VEH_TRAIN) continue;
-
-			Train *t = (Train *)v;
+		FOR_ALL_TRAINS(t) {
 			if (t->railtype == RAILTYPE_ELECTRIC) {
 				/* this railroad vehicle is now compatible only with elrail,
 				 *  so add there also normal rail compatibility */
@@ -569,10 +566,9 @@ bool SettingsDisableElrail(int32 p1)
 	}
 
 	/* Fix the total power and acceleration for trains */
-	FOR_ALL_VEHICLES(v) {
+	FOR_ALL_TRAINS(t) {
 		/* power and acceleration is cached only for front engines */
-		if (v->type == VEH_TRAIN && IsFrontEngine(v)) {
-			Train *t = (Train *)v;
+		if (IsFrontEngine(t)) {
 			TrainPowerChanged(t);
 			UpdateTrainAcceleration(t);
 		}

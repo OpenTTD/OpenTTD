@@ -492,6 +492,64 @@ public:
 };
 
 /**
+ * Class defining several overloaded accessors so we don't
+ * have to cast vehicle types that often
+ */
+template <class T, VehicleType Type>
+struct SpecializedVehicle : public Vehicle {
+	static const VehicleType EXPECTED_TYPE = Type; ///< Specialized type
+
+	/**
+	 * Get the first vehicle in the chain
+	 * @return first vehicle in the chain
+	 */
+	FORCEINLINE T *First() const { return (T *)this->Vehicle::First(); }
+
+	/**
+	 * Get next vehicle in the chain
+	 * @return next vehicle in the chain
+	 */
+	FORCEINLINE T *Next() const { return (T *)this->Vehicle::Next(); }
+
+	/**
+	 * Get previous vehicle in the chain
+	 * @return previous vehicle in the chain
+	 */
+	FORCEINLINE T *Previous() const { return (T *)this->Vehicle::Previous(); }
+
+
+	/**
+	 * Tests whether given index is a valid index for vehicle of this type
+	 * @param index tested index
+	 * @return is this index valid index of T?
+	 */
+	static FORCEINLINE bool IsValidID(size_t index)
+	{
+		return Vehicle::IsValidID(index) && Vehicle::Get(index)->type == Type;
+	}
+
+	/**
+	 * Gets vehicle with given index
+	 * @return pointer to vehicle with given index casted to T *
+	 */
+	static FORCEINLINE T *Get(size_t index)
+	{
+		return (T *)Vehicle::Get(index);
+	}
+
+	/**
+	 * Returns vehicle if the index is a valid index for this vehicle type
+	 * @return pointer to vehicle with given index if it's a vehicle of this type
+	 */
+	static FORCEINLINE T *GetIfValid(size_t index)
+	{
+		return IsValidID(index) ? Get(index) : NULL ;
+	}
+};
+
+#define FOR_ALL_VEHICLES_OF_TYPE(name, var) FOR_ALL_ITEMS_FROM(name, vehicle_index, var, 0) if (var->type == name::EXPECTED_TYPE)
+
+/**
  * This class 'wraps' Vehicle; you do not actually instantiate this class.
  * You create a Vehicle using AllocateVehicle, so it is added to the pool
  * and you reinitialize that to a Train using:
@@ -499,7 +557,7 @@ public:
  *
  * As side-effect the vehicle type is set correctly.
  */
-struct DisasterVehicle : public Vehicle {
+struct DisasterVehicle : public SpecializedVehicle<DisasterVehicle, VEH_DISASTER> {
 	uint16 image_override;
 	VehicleID big_ufo_destroyer_target;
 
@@ -512,7 +570,6 @@ struct DisasterVehicle : public Vehicle {
 	const char *GetTypeString() const { return "disaster vehicle"; }
 	void UpdateDeltaXY(Direction direction);
 	bool Tick();
-	DisasterVehicle *Next() { return (DisasterVehicle*)this->Vehicle::Next(); }
 };
 
 #define FOR_ALL_VEHICLES_FROM(var, start) FOR_ALL_ITEMS_FROM(Vehicle, vehicle_index, var, start)

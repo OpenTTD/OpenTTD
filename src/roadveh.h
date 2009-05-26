@@ -123,7 +123,7 @@ struct RoadVehicleCache {
  *
  * As side-effect the vehicle type is set correctly.
  */
-struct RoadVehicle : public Vehicle {
+struct RoadVehicle : public SpecializedVehicle<RoadVehicle, VEH_ROAD> {
 	RoadVehicleCache rcache; ///< Cache of often used calculated values
 	byte state;             ///< @see RoadVehicleStates
 	byte frame;
@@ -160,9 +160,8 @@ struct RoadVehicle : public Vehicle {
 	Trackdir GetVehicleTrackdir() const;
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
-	RoadVehicle *First() { return (RoadVehicle *)this->Vehicle::First(); }
-	RoadVehicle *Next() { return (RoadVehicle *)this->Vehicle::Next(); }
-	const RoadVehicle *Next() const { return (const RoadVehicle *)this->Vehicle::Next(); }
 };
+
+#define FOR_ALL_ROADVEHICLES(var) FOR_ALL_VEHICLES_OF_TYPE(RoadVehicle, var)
 
 #endif /* ROADVEH_H */

@@ -301,7 +301,7 @@ struct TrainCache {
  *
  * As side-effect the vehicle type is set correctly.
  */
-struct Train : public Vehicle {
+struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	TrainCache tcache;
 
 	/* Link between the two ends of a multiheaded engine */
@@ -338,13 +338,9 @@ struct Train : public Vehicle {
 	Trackdir GetVehicleTrackdir() const;
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
-	Train *First() { return (Train *)this->Vehicle::First(); }
-	Train *First() const { return (Train *)this->Vehicle::First(); }
-	Train *Next() { return (Train *)this->Vehicle::Next(); }
-	Train *Next() const { return (Train *)this->Vehicle::Next(); }
-	Train *Previous() { return (Train *)this->Vehicle::Previous(); }
-	Train *Previous() const { return (Train *)this->Vehicle::Previous(); }
 };
+
+#define FOR_ALL_TRAINS(var) FOR_ALL_VEHICLES_OF_TYPE(Train, var)
 
 /**
  * Get the next part of a multi-part engine.

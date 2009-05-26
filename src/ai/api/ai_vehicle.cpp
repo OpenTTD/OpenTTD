@@ -28,8 +28,9 @@
 	if (!IsValidVehicle(vehicle_id)) return -1;
 
 	int num = 1;
-	if (::Vehicle::Get(vehicle_id)->type == VEH_TRAIN) {
-		const Train *v = (Train *)::Vehicle::Get(vehicle_id);
+
+	const Train *v = ::Train::GetIfValid(vehicle_id);
+	if (v != NULL) {
 		while ((v = GetNextUnit(v)) != NULL) num++;
 	}
 
