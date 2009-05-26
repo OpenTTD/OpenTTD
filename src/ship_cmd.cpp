@@ -127,7 +127,7 @@ static const Depot *FindClosestShipDepot(const Vehicle *v)
 
 static void CheckIfShipNeedsService(Vehicle *v)
 {
-	if (_settings_game.vehicle.servint_ships == 0 || !v->NeedsAutomaticServicing()) return;
+	if (Company::Get(v->owner)->settings.vehicle.servint_ships == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
@@ -805,7 +805,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		v->name = NULL;
 		v->state = TRACK_BIT_DEPOT;
 
-		v->service_interval = _settings_game.vehicle.servint_ships;
+		v->service_interval = Company::Get(_current_company)->settings.vehicle.servint_ships;
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
 		v->cur_image = SPR_IMG_QUERY;

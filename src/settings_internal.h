@@ -80,4 +80,6 @@ bool SetSettingValue(uint index, int32 value);
 bool SetSettingValue(uint index, const char *value);
 void SetCompanySetting(uint index, int32 value);
 
+extern VehicleDefaultSettings _old_vds;
+
 #endif /* SETTINGS_H */

@@ -233,7 +233,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		v->name = NULL;
 
-		v->service_interval = _settings_game.vehicle.servint_roadveh;
+		v->service_interval = Company::Get(v->owner)->settings.vehicle.servint_roadveh;
 
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
@@ -1825,7 +1825,7 @@ bool RoadVehicle::Tick()
 static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 {
 	/* If we already got a slot at a stop, use that FIRST, and go to a depot later */
-	if (v->slot != NULL || _settings_game.vehicle.servint_roadveh == 0 || !v->NeedsAutomaticServicing()) return;
+	if (v->slot != NULL || Company::Get(v->owner)->settings.vehicle.servint_roadveh == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;

@@ -90,7 +90,7 @@ bool Vehicle::NeedsServicing() const
 		return EngineHasReplacementForCompany(Company::Get(this->owner), this->engine_type, this->group_id);
 	}
 
-	return _settings_game.vehicle.servint_ispercent ?
+	return Company::Get(this->owner)->settings.vehicle.servint_ispercent ?
 		(this->reliability < Engine::Get(this->engine_type)->reliability * (100 - this->service_interval) / 100) :
 		(this->date_of_last_service + this->service_interval < _date);
 }

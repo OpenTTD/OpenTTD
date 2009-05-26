@@ -1340,7 +1340,7 @@ CommandCost CmdRestoreOrderIndex(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	Vehicle *v = Vehicle::GetIfValid(p1);
 	/* Check the vehicle type and ownership, and if the service interval and order are in range */
 	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
-	if (serv_int != GetServiceIntervalClamped(serv_int) || cur_ord >= v->GetNumOrders()) return CMD_ERROR;
+	if (serv_int != GetServiceIntervalClamped(serv_int, v->owner) || cur_ord >= v->GetNumOrders()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		v->cur_order_index = cur_ord;
@@ -1527,9 +1527,9 @@ void DeleteVehicleOrders(Vehicle *v, bool keep_orderlist)
 	}
 }
 
-Date GetServiceIntervalClamped(uint index)
+uint16 GetServiceIntervalClamped(uint interval, CompanyID company_id)
 {
-	return (_settings_game.vehicle.servint_ispercent) ? Clamp(index, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : Clamp(index, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS);
+	return (Company::Get(company_id)->settings.vehicle.servint_ispercent) ? Clamp(interval, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : Clamp(interval, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS);
 }
 
 /**

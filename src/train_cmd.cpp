@@ -858,7 +858,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		v->railtype = rvi->railtype;
 		_new_vehicle_id = v->index;
 
-		v->service_interval = _settings_game.vehicle.servint_trains;
+		v->service_interval = Company::Get(_current_company)->settings.vehicle.servint_trains;
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
 		v->cur_image = SPR_IMG_QUERY;
@@ -4464,7 +4464,7 @@ static void CheckIfTrainNeedsService(Train *v)
 {
 	static const uint MAX_ACCEPTABLE_DEPOT_DIST = 16;
 
-	if (_settings_game.vehicle.servint_trains == 0 || !v->NeedsAutomaticServicing()) return;
+	if (Company::Get(v->owner)->settings.vehicle.servint_trains == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;

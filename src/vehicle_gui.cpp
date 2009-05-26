@@ -1389,14 +1389,15 @@ struct VehicleDetailsWindow : Window {
 	}
 
 	/** Checks whether service interval is enabled for the vehicle. */
-	static bool IsVehicleServiceIntervalEnabled(const VehicleType vehicle_type)
+	static bool IsVehicleServiceIntervalEnabled(const VehicleType vehicle_type, CompanyID company_id)
 	{
+		const VehicleDefaultSettings *vds = &Company::Get(company_id)->settings.vehicle;
 		switch (vehicle_type) {
 			default: NOT_REACHED();
-			case VEH_TRAIN:    return _settings_game.vehicle.servint_trains   != 0;
-			case VEH_ROAD:     return _settings_game.vehicle.servint_roadveh  != 0;
-			case VEH_SHIP:     return _settings_game.vehicle.servint_ships    != 0;
-			case VEH_AIRCRAFT: return _settings_game.vehicle.servint_aircraft != 0;
+			case VEH_TRAIN:    return vds->servint_trains   != 0;
+			case VEH_ROAD:     return vds->servint_roadveh  != 0;
+			case VEH_SHIP:     return vds->servint_ships    != 0;
+			case VEH_AIRCRAFT: return vds->servint_aircraft != 0;
 		}
 	}
 
@@ -1445,7 +1446,7 @@ struct VehicleDetailsWindow : Window {
 			WIDGET_LIST_END);
 
 		/* Disable service-scroller when interval is set to disabled */
-		this->SetWidgetsDisabledState(!IsVehicleServiceIntervalEnabled(v->type),
+		this->SetWidgetsDisabledState(!IsVehicleServiceIntervalEnabled(v->type, v->owner),
 			VLD_WIDGET_INCREASE_SERVICING_INTERVAL,
 			VLD_WIDGET_DECREASE_SERVICING_INTERVAL,
 			WIDGET_LIST_END);
@@ -1496,7 +1497,7 @@ struct VehicleDetailsWindow : Window {
 		/* Draw service interval text */
 		SetDParam(0, v->service_interval);
 		SetDParam(1, v->date_of_last_service);
-		DrawString(13, this->width - 2, this->height - (v->type != VEH_TRAIN ? 11 : 23), _settings_game.vehicle.servint_ispercent ? STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT : STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS);
+		DrawString(13, this->width - 2, this->height - (v->type != VEH_TRAIN ? 11 : 23), Company::Get(v->owner)->settings.vehicle.servint_ispercent ? STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT : STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS);
 
 		switch (v->type) {
 			case VEH_TRAIN:
@@ -1537,7 +1538,7 @@ struct VehicleDetailsWindow : Window {
 				const Vehicle *v = Vehicle::Get(this->window_number);
 
 				mod = (widget == VLD_WIDGET_DECREASE_SERVICING_INTERVAL) ? -mod : mod;
-				mod = GetServiceIntervalClamped(mod + v->service_interval);
+				mod = GetServiceIntervalClamped(mod + v->service_interval, v->owner);
 				if (mod == v->service_interval) return;
 
 				DoCommandP(v->tile, v->index, mod, CMD_CHANGE_SERVICE_INT | CMD_MSG(STR_ERROR_CAN_T_CHANGE_SERVICING));

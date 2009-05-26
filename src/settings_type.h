@@ -293,11 +293,6 @@ struct VehicleSettings {
 	UnitID max_roadveh;                      ///< max trucks in game per company
 	UnitID max_aircraft;                     ///< max planes in game per company
 	UnitID max_ships;                        ///< max ships in game per company
-	bool   servint_ispercent;                ///< service intervals are in percents
-	uint16 servint_trains;                   ///< service interval for trains
-	uint16 servint_roadveh;                  ///< service interval for road vehicles
-	uint16 servint_aircraft;                 ///< service interval for aircraft
-	uint16 servint_ships;                    ///< service interval for ships
 	uint8  plane_speed;                      ///< divisor for speed of aircraft
 	uint8  freight_trains;                   ///< value to multiply the weight of cargo by
 	bool   dynamic_engines;                  ///< enable dynamic allocation of engine data
@@ -338,12 +333,22 @@ struct StationSettings {
 	byte   station_spread;                   ///< amount a station may spread
 };
 
+/** Default settings for vehicles. */
+struct VehicleDefaultSettings {
+	bool   servint_ispercent;                ///< service intervals are in percents
+	uint16 servint_trains;                   ///< service interval for trains
+	uint16 servint_roadveh;                  ///< service interval for road vehicles
+	uint16 servint_aircraft;                 ///< service interval for aircraft
+	uint16 servint_ships;                    ///< service interval for ships
+};
+
 /** Settings that can be set per company. */
 struct CompanySettings {
 	bool engine_renew;                       ///< is autorenew enabled
 	int16 engine_renew_months;               ///< months before/after the maximum vehicle age a vehicle should be renewed
 	uint32 engine_renew_money;               ///< minimum amount of money before autorenew is used
 	bool renew_keep_length;                  ///< sell some wagons if after autoreplace the train is longer than before
+	VehicleDefaultSettings vehicle;          ///< default settings for vehicles
 };
 
 /** All settings together for the game. */

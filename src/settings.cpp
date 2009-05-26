@@ -67,6 +67,7 @@
 ClientSettings _settings_client;
 GameSettings _settings_game;
 GameSettings _settings_newgame;
+VehicleDefaultSettings _old_vds; ///< Used for loading default vehicles settings from old savegames
 
 typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const char *grpname, void *object);
 typedef void SettingDescProcList(IniFile *ini, const char *grpname, StringList *list);
@@ -705,18 +706,23 @@ static bool UpdateConsists(int32 p1)
 /* Check service intervals of vehicles, p1 is value of % or day based servicing */
 static bool CheckInterval(int32 p1)
 {
-	VehicleSettings *ptc = (_game_mode == GM_MENU) ? &_settings_newgame.vehicle : &_settings_game.vehicle;
+	VehicleDefaultSettings *vds;
+	if (_game_mode == GM_MENU || !Company::IsValidID(_current_company)) {
+		vds = &_settings_client.company.vehicle;
+	} else {
+		vds = &Company::Get(_current_company)->settings.vehicle;
+	}
 
 	if (p1) {
-		ptc->servint_trains   = 50;
-		ptc->servint_roadveh  = 50;
-		ptc->servint_aircraft = 50;
-		ptc->servint_ships    = 50;
+		vds->servint_trains   = 50;
+		vds->servint_roadveh  = 50;
+		vds->servint_aircraft = 50;
+		vds->servint_ships    = 50;
 	} else {
-		ptc->servint_trains   = 150;
-		ptc->servint_roadveh  = 150;
-		ptc->servint_aircraft = 360;
-		ptc->servint_ships    = 100;
+		vds->servint_trains   = 150;
+		vds->servint_roadveh  = 150;
+		vds->servint_aircraft = 360;
+		vds->servint_ships    = 100;
 	}
 
 	InvalidateDetailsWindow(0);
@@ -1425,7 +1431,6 @@ CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  */
 CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	DEBUG(misc, 0, "Change company setting: %u into %u", p1, p2);
 	if (p1 >= lengthof(_company_settings)) return CMD_ERROR;
 	const SettingDesc *sd = &_company_settings[p1];
 

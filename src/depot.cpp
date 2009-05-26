@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "depot_base.h"
+#include "company_type.h"
 #include "order_func.h"
 #include "window_func.h"
 #include "core/bitmath_func.hpp"

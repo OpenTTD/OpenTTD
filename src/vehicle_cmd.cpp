@@ -558,10 +558,11 @@ CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  */
 CommandCost CmdChangeServiceInt(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	uint16 serv_int = GetServiceIntervalClamped(p2); // Double check the service interval from the user-input
 	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (serv_int != p2 || v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	uint16 serv_int = GetServiceIntervalClamped(p2, v->owner); // Double check the service interval from the user-input
+	if (serv_int != p2) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		v->service_interval = serv_int;

@@ -1846,6 +1846,14 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(120)) {
+		extern VehicleDefaultSettings _old_vds;
+		Company *c;
+		FOR_ALL_COMPANIES(c) {
+			c->settings.vehicle = _old_vds;
+		}
+	}
+
 	AfterLoadLabelMaps();
 
 	GamelogPrintDebug(1);

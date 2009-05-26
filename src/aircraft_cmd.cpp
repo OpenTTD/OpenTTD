@@ -378,7 +378,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		v->targetairport = GetStationIndex(tile);
 		v->SetNext(u);
 
-		v->service_interval = _settings_game.vehicle.servint_aircraft;
+		v->service_interval = Company::Get(_current_company)->settings.vehicle.servint_aircraft;
 
 		v->date_of_last_service = _date;
 		v->build_year = u->build_year = _cur_year;
@@ -582,7 +582,7 @@ CommandCost CmdRefitAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 static void CheckIfAircraftNeedsService(Aircraft *v)
 {
-	if (_settings_game.vehicle.servint_aircraft == 0 || !v->NeedsAutomaticServicing()) return;
+	if (Company::Get(v->owner)->settings.vehicle.servint_aircraft == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
