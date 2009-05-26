@@ -179,7 +179,7 @@ endif
 ifeq ($(filter depend, $(MAKECMDGOALS)),)
 Makefile.dep: $(FILE_DEP) $(SRCS:%=$(SRC_DIR)/%) $(CONFIG_CACHE_SOURCE) $(DEP)
 else
-Makefile.dep: $(DEP) FORCE
+Makefile.dep: $(FILE_DEP) $(SRCS:%=$(SRC_DIR)/%) $(DEP) FORCE
 endif
 	$(E) '$(STAGE) DEP CHECK (all files)'
 	$(Q)rm -f Makefile.dep.tmp
