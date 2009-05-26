@@ -20,8 +20,8 @@ enum VehicleType {
 	VEH_INVALID = 0xFF,
 };
 DECLARE_POSTFIX_INCREMENT(VehicleType);
-template <> struct EnumPropsT<VehicleType> : MakeEnumPropsT<VehicleType, byte, VEH_TRAIN, VEH_END, VEH_INVALID> {};
-typedef TinyEnumT<VehicleType> VehicleTypeByte;
+/** It needs to be 8bits, because we save and load it as such */
+typedef SimpleTinyEnumT<VehicleType, byte> VehicleTypeByte;
 
 struct Vehicle;
 struct Train;

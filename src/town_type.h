@@ -85,10 +85,8 @@ enum TownLayout {
 	NUM_TLS,             ///< Number of town layouts
 };
 
-/** It needs to be 8bits, because we save and load it as such
- * Define basic enum properties */
-template <> struct EnumPropsT<TownLayout> : MakeEnumPropsT<TownLayout, byte, TL_BEGIN, NUM_TLS, NUM_TLS> {};
-typedef TinyEnumT<TownLayout> TownLayoutByte; // typedefing-enumification of TownLayout
+/** It needs to be 8bits, because we save and load it as such */
+typedef SimpleTinyEnumT<TownLayout, byte> TownLayoutByte; // typedefing-enumification of TownLayout
 
 enum {
 	MAX_LENGTH_TOWN_NAME_BYTES  =  31, ///< The maximum length of a town name in bytes including '\0'

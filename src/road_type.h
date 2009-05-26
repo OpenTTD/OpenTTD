@@ -34,8 +34,7 @@ enum RoadTypes {
 	INVALID_ROADTYPES  = 0xFF                              ///< Invalid roadtypes
 };
 DECLARE_ENUM_AS_BIT_SET(RoadTypes);
-template <> struct EnumPropsT<RoadTypes> : MakeEnumPropsT<RoadTypes, byte, ROADTYPES_NONE, ROADTYPES_END, INVALID_ROADTYPES> {};
-typedef TinyEnumT<RoadTypes> RoadTypesByte;
+typedef SimpleTinyEnumT<RoadTypes, byte> RoadTypesByte;
 
 
 /**

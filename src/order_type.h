@@ -34,10 +34,8 @@ enum OrderType {
 	OT_END
 };
 
-/* It needs to be 8bits, because we save and load it as such */
-/** Define basic enum properties */
-template <> struct EnumPropsT<OrderType> : MakeEnumPropsT<OrderType, byte, OT_BEGIN, OT_END, OT_END> {};
-typedef TinyEnumT<OrderType> OrderTypeByte;
+/** It needs to be 8bits, because we save and load it as such */
+typedef SimpleTinyEnumT<OrderType, byte> OrderTypeByte;
 
 
 /**

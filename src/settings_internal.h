@@ -24,9 +24,7 @@ enum SettingDescTypeLong {
 	SDT_END,
 	/* 10 more possible primitives */
 };
-
-template <> struct EnumPropsT<SettingDescTypeLong> : MakeEnumPropsT<SettingDescTypeLong, byte, SDT_BEGIN, SDT_END, SDT_END> {};
-typedef TinyEnumT<SettingDescTypeLong> SettingDescType;
+typedef SimpleTinyEnumT<SettingDescTypeLong, byte> SettingDescType;
 
 
 enum SettingGuiFlagLong {
@@ -42,10 +40,8 @@ enum SettingGuiFlagLong {
 	SGF_NEWGAME_ONLY = 1 << 6, ///< this setting cannot be changed in inside a game
 	SGF_END          = 1 << 7,
 };
-
 DECLARE_ENUM_AS_BIT_SET(SettingGuiFlagLong);
-template <> struct EnumPropsT<SettingGuiFlagLong> : MakeEnumPropsT<SettingGuiFlagLong, byte, SGF_NONE, SGF_END, SGF_END> {};
-typedef TinyEnumT<SettingGuiFlagLong> SettingGuiFlag;
+typedef SimpleTinyEnumT<SettingGuiFlagLong, byte> SettingGuiFlag;
 
 
 typedef bool OnChange(int32 var);           ///< callback prototype on data modification

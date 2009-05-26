@@ -52,12 +52,8 @@ enum TrackBits {
 	TRACK_BIT_DEPOT   = 0x80U,                                              ///< Bitflag for a depot
 	INVALID_TRACK_BIT = 0xFF                                                ///< Flag for an invalid trackbits value
 };
-
-/** Define basic enum properties */
-template <> struct EnumPropsT<TrackBits> : MakeEnumPropsT<TrackBits, byte, TRACK_BIT_NONE, TRACK_BIT_ALL, INVALID_TRACK_BIT> {};
-typedef TinyEnumT<TrackBits> TrackBitsByte;
-
 DECLARE_ENUM_AS_BIT_SET(TrackBits);
+typedef SimpleTinyEnumT<TrackBits, byte> TrackBitsByte;
 
 /**
  * Enumeration for tracks and directions.
@@ -118,11 +114,8 @@ enum TrackdirBits {
 	TRACKDIR_BIT_MASK     = 0x3F3F, ///< Bitmask for bit-operations
 	INVALID_TRACKDIR_BIT  = 0xFFFF, ///< Flag for an invalid trackdirbit value
 };
-
-/** Define basic enum properties */
-template <> struct EnumPropsT<TrackdirBits> : MakeEnumPropsT<TrackdirBits, uint16, TRACKDIR_BIT_NONE, TRACKDIR_BIT_MASK, INVALID_TRACKDIR_BIT> {};
-typedef TinyEnumT<TrackdirBits> TrackdirBitsShort;
 DECLARE_ENUM_AS_BIT_SET(TrackdirBits);
+typedef SimpleTinyEnumT<TrackdirBits, uint16> TrackdirBitsShort;
 
 typedef uint32 TrackStatus;
 

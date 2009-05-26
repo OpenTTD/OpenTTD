@@ -21,10 +21,7 @@ enum StationClassID {
 	STAT_CLASS_WAYP,         ///< Waypoint class.
 	STAT_CLASS_MAX = 32,     ///< Maximum number of classes.
 };
-
-/** Define basic enum properties */
-template <> struct EnumPropsT<StationClassID> : MakeEnumPropsT<StationClassID, byte, STAT_CLASS_BEGIN, STAT_CLASS_MAX, STAT_CLASS_MAX> {};
-typedef TinyEnumT<StationClassID> StationClassIDByte;
+typedef SimpleTinyEnumT<StationClassID, byte> StationClassIDByte;
 
 /** Allow incrementing of StationClassID variables */
 DECLARE_POSTFIX_INCREMENT(StationClassID);
