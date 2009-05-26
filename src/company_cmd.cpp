@@ -436,11 +436,7 @@ Company *DoStartupNewCompany(bool is_ai)
 	c->inaugurated_year = _cur_year;
 	RandomCompanyManagerFaceBits(c->face, (GenderEthnicity)Random(), false); // create a random company manager face
 
-	/* Settings for non-ai companies are copied from the client settings later. */
-	if (is_ai) {
-		c->settings.engine_renew_money = 100000;
-		c->settings.engine_renew_months = 6;
-	}
+	SetDefaultCompanySettings(c->index);
 
 	GeneratePresidentName(c);
 

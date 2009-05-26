@@ -7,7 +7,6 @@
 #include "heightmap.h"
 #include "gui.h"
 #include "variables.h"
-#include "settings_func.h"
 #include "debug.h"
 #include "genworld.h"
 #include "network/network.h"
@@ -27,6 +26,7 @@
 #include "querystring_gui.h"
 #include "town.h"
 #include "thread.h"
+#include "settings_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

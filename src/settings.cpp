@@ -1508,6 +1508,19 @@ void SetCompanySetting(uint index, int32 value)
 }
 
 /**
+ * Set the company settings for a new company to their default values.
+ */
+void SetDefaultCompanySettings(CompanyID cid)
+{
+	Company *c = Company::Get(cid);
+	const SettingDesc *sd;
+	for (sd = _company_settings; sd->save.cmd != SL_END; sd++) {
+		void *var = GetVariableAddress(&c->settings, &sd->save);
+		Write_ValidateSetting(var, sd, (int32)sd->desc.def);
+	}
+}
+
+/**
  * Sync all company settings in a multiplayer game.
  */
 void SyncCompanySettings()

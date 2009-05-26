@@ -27,5 +27,6 @@ void DeleteGRFPresetFromConfig(const char *config_name);
 
 uint GetCompanySettingIndex(const char *name);
 void SyncCompanySettings();
+void SetDefaultCompanySettings(CompanyID cid);
 
 #endif /* SETTINGS_FUNC_H */
