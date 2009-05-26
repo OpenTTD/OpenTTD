@@ -59,7 +59,7 @@ static SpriteID GetShipIcon(EngineID engine)
 		spritenum = Engine::Get(engine)->image_index;
 	}
 
-	return 6 + _ship_sprites[spritenum];
+	return DIR_W + _ship_sprites[spritenum];
 }
 
 void DrawShipEngine(int x, int y, EngineID engine, SpriteID pal)

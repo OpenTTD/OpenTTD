@@ -93,7 +93,7 @@ static SpriteID GetRoadVehIcon(EngineID engine)
 		spritenum = Engine::Get(engine)->image_index;
 	}
 
-	return 6 + _roadveh_images[spritenum];
+	return DIR_W + _roadveh_images[spritenum];
 }
 
 SpriteID RoadVehicle::GetImage(Direction direction) const

@@ -568,6 +568,11 @@ void UpdateTrainAcceleration(Train *v)
 	v->acceleration = Clamp(power / weight * 4, 1, 255);
 }
 
+static SpriteID GetDefaultTrainSprite(uint8 spritenum, Direction direction)
+{
+	return ((direction + _engine_sprite_add[spritenum]) & _engine_sprite_and[spritenum]) + _engine_sprite_base[spritenum];
+}
+
 SpriteID Train::GetImage(Direction direction) const
 {
 	uint8 spritenum = this->spritenum;
@@ -582,7 +587,7 @@ SpriteID Train::GetImage(Direction direction) const
 		spritenum = Engine::Get(this->engine_type)->image_index;
 	}
 
-	sprite = _engine_sprite_base[spritenum] + ((direction + _engine_sprite_add[spritenum]) & _engine_sprite_and[spritenum]);
+	sprite = GetDefaultTrainSprite(spritenum, direction);
 
 	if (this->cargo.Count() >= this->cargo_cap / 2U) sprite += _wagon_full_adder[spritenum];
 
@@ -606,7 +611,7 @@ static SpriteID GetRailIcon(EngineID engine, bool rear_head, int &y)
 
 	if (rear_head) spritenum++;
 
-	return ((6 + _engine_sprite_add[spritenum]) & _engine_sprite_and[spritenum]) + _engine_sprite_base[spritenum];
+	return GetDefaultTrainSprite(spritenum, DIR_W);
 }
 
 void DrawTrainEngine(int x, int y, EngineID engine, SpriteID pal)

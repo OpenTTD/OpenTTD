@@ -187,7 +187,7 @@ static SpriteID GetAircraftIcon(EngineID engine)
 		spritenum = Engine::Get(engine)->image_index;
 	}
 
-	return 6 + _aircraft_sprite[spritenum];
+	return DIR_W + _aircraft_sprite[spritenum];
 }
 
 void DrawAircraftEngine(int x, int y, EngineID engine, SpriteID pal)
