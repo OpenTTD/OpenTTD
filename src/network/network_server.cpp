@@ -895,7 +895,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	 * @see CmdCompanyCtrl()
 	 */
 	if (cp.cmd == CMD_COMPANY_CTRL) {
-		if (cp.p1 != 0) {
+		if (cp.p1 != 0 || cp.company != COMPANY_SPECTATOR) {
 			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_CHEATER);
 			return;
 		}
@@ -906,10 +906,6 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 			return;
 		}
 
-		/* XXX - Execute the command as a valid company. Normally this would be done by a
-		 * spectator, but that is not allowed any commands. So do an impersonation. The drawback
-		 * of this is that the first company's last_built_tile is also updated... */
-		cp.company = OWNER_BEGIN;
 		cp.p2 = cs->client_id;
 	}
 
