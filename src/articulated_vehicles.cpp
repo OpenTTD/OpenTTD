@@ -341,7 +341,7 @@ void AddArticulatedParts(Vehicle *first, VehicleType type)
 				rv->roadtype = front->roadtype;
 				rv->compatible_roadtypes = front->compatible_roadtypes;
 
-				rv->spritenum = e_artic->image_index;
+				rv->spritenum = e_artic->u.road.image_index;
 				if (e_artic->CanCarryCargo()) {
 					rv->cargo_type = e_artic->GetDefaultCargoType();
 					rv->cargo_cap = e_artic->u.road.capacity;  // Callback 36 is called when the consist is finished
