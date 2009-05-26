@@ -362,11 +362,11 @@ bool BmpReadBitmap(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 		case 4:  return BmpRead4(buffer, info, data);
 		case 8:  return BmpRead8(buffer, info, data);
 		case 24: return BmpRead24(buffer, info, data);
-		default: NOT_REACHED(); return false;
+		default: NOT_REACHED();
 		}
 	case 1:  return BmpRead8Rle(buffer, info, data); // 8-bit RLE compression
 	case 2:  return BmpRead4Rle(buffer, info, data); // 4-bit RLE compression
-	default: NOT_REACHED(); return false;
+	default: NOT_REACHED();
 	}
 }
 

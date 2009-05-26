@@ -149,7 +149,7 @@ void ConvertOldMultiheadToNew()
 							SetTrainWagon(u);
 							SetFreeWagon(u);
 							break;
-						default: NOT_REACHED(); break;
+						default: NOT_REACHED();
 					}
 				}
 			}

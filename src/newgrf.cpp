@@ -5060,7 +5060,7 @@ static void GRFImportBlock(byte *buf, int len)
 
 	switch (_grf_data_type) {
 		case GDT_SOUND: ImportGRFSound(buf, len - 1); break;
-		default: NOT_REACHED(); break;
+		default: NOT_REACHED();
 	}
 }
 
@@ -5277,7 +5277,7 @@ static void GRFDataBlock(byte *buf, int len)
 
 	switch (_grf_data_type) {
 		case GDT_SOUND: LoadGRFSound(buf, len - name_len - 2); break;
-		default: NOT_REACHED(); break;
+		default: NOT_REACHED();
 	}
 }
 

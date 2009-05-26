@@ -176,7 +176,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 {
 
 	switch (GetUnmovableType(ti->tile)) {
-		default: NOT_REACHED(); break;
+		default: NOT_REACHED();
 		case UNMOVABLE_TRANSMITTER:
 		case UNMOVABLE_LIGHTHOUSE: {
 			const DrawTileSeqStruct *dtu = &_draw_tile_transmitterlighthouse_data[GetUnmovableType(ti->tile)];

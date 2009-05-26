@@ -1066,7 +1066,7 @@ void VehicleEnterDepot(Vehicle *v)
 					case VEH_ROAD:     string = STR_NEWS_ROAD_VEHICLE_IS_WAITING;   break;
 					case VEH_SHIP:     string = STR_NEWS_SHIP_IS_WAITING;  break;
 					case VEH_AIRCRAFT: string = STR_NEWS_AIRCRAFT_IS_WAITING;    break;
-					default: NOT_REACHED(); string = STR_EMPTY; // Set the string to something to avoid a compiler warning
+					default: NOT_REACHED();
 				}
 
 				SetDParam(0, v->index);

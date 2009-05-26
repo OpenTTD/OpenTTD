@@ -541,7 +541,7 @@ struct DepotWindow : Window {
 					case VEH_ROAD:     command = CMD_START_STOP_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE); break;
 					case VEH_SHIP:     command = CMD_START_STOP_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_STOP_START_SHIP);         break;
 					case VEH_AIRCRAFT: command = CMD_START_STOP_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_STOP_START_AIRCRAFT);     break;
-					default: NOT_REACHED(); command = 0;
+					default: NOT_REACHED();
 				}
 				DoCommandP(v->tile, v->index, 0, command);
 			} break;
@@ -991,7 +991,7 @@ struct DepotWindow : Window {
 						case VEH_ROAD:     command = CMD_SELL_ROAD_VEH | CMD_MSG(STR_ERROR_CAN_T_SELL_ROAD_VEHICLE);       break;
 						case VEH_SHIP:     command = CMD_SELL_SHIP | CMD_MSG(STR_ERROR_CAN_T_SELL_SHIP);                   break;
 						case VEH_AIRCRAFT: command = CMD_SELL_AIRCRAFT | CMD_MSG(STR_ERROR_CAN_T_SELL_AIRCRAFT);           break;
-						default: NOT_REACHED(); command = 0;
+						default: NOT_REACHED();
 					}
 
 					if (!DoCommandP(v->tile, v->index, sell_cmd, command) && is_engine) _backup_orders_tile = 0;

@@ -157,7 +157,7 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject *object) con
 			case DSG_SIZE_BYTE:  value = EvalAdjustT<uint8,  int8> (adjust, object, last_value, value); break;
 			case DSG_SIZE_WORD:  value = EvalAdjustT<uint16, int16>(adjust, object, last_value, value); break;
 			case DSG_SIZE_DWORD: value = EvalAdjustT<uint32, int32>(adjust, object, last_value, value); break;
-			default: NOT_REACHED(); break;
+			default: NOT_REACHED();
 		}
 		last_value = value;
 	}

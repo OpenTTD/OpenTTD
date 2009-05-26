@@ -2038,7 +2038,7 @@ static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int 
 		case 0: ns = NS_INDUSTRY_NOBODY;  break;
 		case 1: ns = NS_INDUSTRY_OTHER;   break;
 		case 2: ns = NS_INDUSTRY_COMPANY; break;
-		default: NOT_REACHED(); break;
+		default: NOT_REACHED();
 	}
 	SetDParam(2, abs(percent));
 	SetDParam(0, GetCargo(type)->name);
@@ -2233,7 +2233,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				case 0: ns = NS_INDUSTRY_NOBODY;  break;
 				case 1: ns = NS_INDUSTRY_OTHER;   break;
 				case 2: ns = NS_INDUSTRY_COMPANY; break;
-				default: NOT_REACHED(); break;
+				default: NOT_REACHED();
 			}
 		}
 		/* Set parameters of news string */

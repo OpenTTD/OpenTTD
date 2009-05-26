@@ -144,7 +144,7 @@ void GenerateVehicleSortList(VehicleList *list, VehicleType type, Owner owner, u
 			}
 			break;
 
-		default: NOT_REACHED(); break;
+		default: NOT_REACHED();
 	}
 
 	list->Compact();

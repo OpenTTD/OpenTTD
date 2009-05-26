@@ -378,7 +378,7 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 			}
 			case SLE_VAR_I64:
 			case SLE_VAR_U64:
-			default: NOT_REACHED(); break;
+			default: NOT_REACHED();
 		}
 	}
 
@@ -451,7 +451,7 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 					*(char**)ptr = p == NULL ? NULL : strdup((const char*)p);
 					break;
 				case SLE_VAR_CHAR: if (p != NULL) *(char*)ptr = *(char*)p; break;
-				default: NOT_REACHED(); break;
+				default: NOT_REACHED();
 			}
 			break;
 
@@ -463,7 +463,7 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 			}
 			break;
 		}
-		default: NOT_REACHED(); break;
+		default: NOT_REACHED();
 		}
 	}
 }

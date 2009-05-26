@@ -906,7 +906,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 					case VEH_ROAD:     this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_ROAD_CAPTION;     break;
 					case VEH_SHIP:     this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_SHIP_CAPTION;     break;
 					case VEH_AIRCRAFT: this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_AIRCRAFT_CAPTION; break;
-					default: NOT_REACHED(); break;
+					default: NOT_REACHED();
 				}
 				break;
 
@@ -920,7 +920,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 					case VEH_ROAD:     this->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_ROAD_VEHICLES; break;
 					case VEH_SHIP:     this->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_SHIPS;         break;
 					case VEH_AIRCRAFT: this->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_AIRCRAFT;      break;
-					default: NOT_REACHED(); break;
+					default: NOT_REACHED();
 				}
 				break;
 
@@ -930,10 +930,10 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 					case VEH_ROAD:     this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_ROADVEH_DEPOT;  break;
 					case VEH_SHIP:     this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_SHIP_DEPOT;     break;
 					case VEH_AIRCRAFT: this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_AIRCRAFT_DEPOT; break;
-					default: NOT_REACHED(); break;
+					default: NOT_REACHED();
 				}
 				break;
-			default: NOT_REACHED(); break;
+			default: NOT_REACHED();
 		}
 
 		switch (this->vehicle_type) {
@@ -963,7 +963,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 			case VEH_ROAD:     this->sorting = &_sorting.roadveh; break;
 			case VEH_SHIP:     this->sorting = &_sorting.ship; break;
 			case VEH_AIRCRAFT: this->sorting = &_sorting.aircraft; break;
-			default: NOT_REACHED(); break;
+			default: NOT_REACHED();
 		}
 
 		this->vehicles.SetListing(*this->sorting);
@@ -1024,7 +1024,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 					case VEH_ROAD:     SetDParam(0, STR_DEPOT_ROAD_CAPTION);     break;
 					case VEH_SHIP:     SetDParam(0, STR_DEPOT_SHIP_CAPTION);     break;
 					case VEH_AIRCRAFT: SetDParam(0, STR_DEPOT_AIRCRAFT_CAPTION); break;
-					default: NOT_REACHED(); break;
+					default: NOT_REACHED();
 				}
 				if (this->vehicle_type == VEH_AIRCRAFT) {
 					SetDParam(1, index); // Airport name
@@ -1033,7 +1033,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 				}
 				SetDParam(2, this->vscroll.count);
 				break;
-			default: NOT_REACHED(); break;
+			default: NOT_REACHED();
 		}
 
 		/* Hide the widgets that we will not use in this window
@@ -1393,12 +1393,11 @@ struct VehicleDetailsWindow : Window {
 	{
 		switch (vehicle_type) {
 			default: NOT_REACHED();
-			case VEH_TRAIN:    return _settings_game.vehicle.servint_trains   != 0; break;
-			case VEH_ROAD:     return _settings_game.vehicle.servint_roadveh  != 0; break;
-			case VEH_SHIP:     return _settings_game.vehicle.servint_ships    != 0; break;
-			case VEH_AIRCRAFT: return _settings_game.vehicle.servint_aircraft != 0; break;
+			case VEH_TRAIN:    return _settings_game.vehicle.servint_trains   != 0;
+			case VEH_ROAD:     return _settings_game.vehicle.servint_roadveh  != 0;
+			case VEH_SHIP:     return _settings_game.vehicle.servint_ships    != 0;
+			case VEH_AIRCRAFT: return _settings_game.vehicle.servint_aircraft != 0;
 		}
-		return false; // kill a compiler warning
 	}
 
 	/**

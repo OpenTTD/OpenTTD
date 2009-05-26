@@ -598,7 +598,7 @@ uint32 FormatStringLinebreaks(char *str, int maxw)
 				}
 			} else {
 				switch (c) {
-					case '\0': return num + (size << 16); break;
+					case '\0': return num + (size << 16);
 					case SCC_SETX:  str++; break;
 					case SCC_SETXY: str += 2; break;
 					case SCC_TINYFONT: size = FS_SMALL; break;

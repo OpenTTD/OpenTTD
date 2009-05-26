@@ -488,9 +488,6 @@ int64 ReadValue(const void *ptr, VarType conv)
 		case SLE_VAR_NULL:return 0;
 		default: NOT_REACHED();
 	}
-
-	/* useless, but avoids compiler warning this way */
-	return 0;
 }
 
 /** Write the value of a setting
@@ -1488,8 +1485,6 @@ static size_t ReferenceToInt(const void *obj, SLRefType rt)
 		case REF_ORDERLIST:     return ((const   OrderList*)obj)->index + 1;
 		default: NOT_REACHED();
 	}
-
-	return 0; // avoid compiler warning
 }
 
 /**
