@@ -505,13 +505,6 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 
 	CompanyID old_company = _current_company;
 
-	/** Spectator has no rights except for the (dedicated) server which
-	 * is/can be a spectator but as the server it can do anything */
-	if (_current_company == COMPANY_SPECTATOR && !_network_server) {
-		if (my_cmd) ShowErrorMessage(_error_message, error_part1, x, y);
-		return false;
-	}
-
 	/* get pointer to command handler */
 	byte cmd_id = cmd & CMD_ID_MASK;
 	assert(cmd_id < lengthof(_command_proc_table));
@@ -527,8 +520,13 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	/* Do not even think about executing out-of-bounds tile-commands */
 	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (cmd_flags & CMD_ALL_TILES) == 0))) return false;
 
-	/* If the server is a spectator, it may only do server commands! */
-	if (_current_company == COMPANY_SPECTATOR && (cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) == 0) return false;
+	/* If the company isn't valid it may only do server command or start a new company!
+	 * The server will ditch any server commands a client sends to it, so effectively
+	 * this guards the server from executing functions for an invalid company. */
+	if ((cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) == 0 && !Company::IsValidID(_current_company)) {
+		if (my_cmd) ShowErrorMessage(_error_message, error_part1, x, y);
+		return false;
+	}
 
 	bool notest = (cmd_flags & CMD_NO_TEST) != 0;
 
@@ -572,18 +570,12 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	}
 
 #ifdef ENABLE_NETWORK
-	/** If we are in network, and the command is not from the network
+	/*
+	 * If we are in network, and the command is not from the network
 	 * send it to the command-queue and abort execution
-	 * If we are a dedicated server temporarily switch local company, otherwise
-	 * the other parties won't be able to execute our command and will desync.
-	 * We also need to do this if the server's company has gone bankrupt
-	 * @todo Rewrite (dedicated) server to something more than a dirty hack!
 	 */
 	if (_networking && !(cmd & CMD_NETWORK_COMMAND)) {
-		CompanyID bck = _local_company;
-		if (_network_dedicated || (_network_server && bck == COMPANY_SPECTATOR)) _local_company = COMPANY_FIRST;
 		NetworkSend_Command(tile, p1, p2, cmd & ~CMD_FLAGS_MASK, callback, text);
-		if (_network_dedicated || (_network_server && bck == COMPANY_SPECTATOR)) _local_company = bck;
 		_docommand_recursive = 0;
 		ClearStorageChanges(false);
 		return true;
