@@ -13,6 +13,8 @@
 #include "strings_func.h"
 #include "engine_gui.h"
 #include "articulated_vehicles.h"
+#include "vehicle_func.h"
+#include "company_func.h"
 #include "rail.h"
 
 #include "table/strings.h"
@@ -103,7 +105,7 @@ struct EnginePreviewWindow : Window {
 		const DrawEngineInfo *dei = &_draw_engine_list[Engine::Get(engine)->type];
 
 		int width = this->width;
-		dei->engine_proc(width >> 1, 100, engine, 0);
+		dei->engine_proc(width >> 1, 100, engine, GetEnginePalette(engine, _local_company));
 		dei->info_proc(engine, this->widget[EPW_BACKGROUND].left + 26, this->widget[EPW_BACKGROUND].right - 26, 100, 170);
 	}
 
@@ -236,7 +238,7 @@ void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
 	SetDParam(0, engine);
 	DrawStringMultiLine(1, w->width - 2, 56, 88, STR_NEW_VEHICLE_TYPE, TC_FROMSTRING, SA_CENTER);
 
-	dei->engine_proc(w->width >> 1, 88, engine, 0);
+	dei->engine_proc(w->width >> 1, 88, engine, GetEnginePalette(engine, _local_company));
 	GfxFillRect(25, 56, w->width - 56, 112, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOUR);
 	dei->info_proc(engine, 26, w->width - 26, 100, 170);
 }
