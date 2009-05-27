@@ -562,9 +562,8 @@ static void CompaniesGenStatistics()
 		if (c->num_valid_stat_ent != 24) c->num_valid_stat_ent++;
 
 		UpdateCompanyRatingAndValue(c, true);
-		CompanyCheckBankrupt(c);
-
 		if (c->block_preview != 0) c->block_preview--;
+		CompanyCheckBankrupt(c);
 	}
 
 	InvalidateWindow(WC_INCOME_GRAPH, 0);
