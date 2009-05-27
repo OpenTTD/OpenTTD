@@ -2696,13 +2696,18 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
  * This function is called for each station once every 250 ticks.
  * Not all stations will get the tick at the same time.
  * @param st the station receiving the tick.
+ * @return true if the station is still valid (wasn't deleted)
  */
-static void StationHandleBigTick(Station *st)
+static bool StationHandleBigTick(Station *st)
 {
 	UpdateStationAcceptance(st, true);
 
-	if (st->facilities == 0 && ++st->delete_ctr >= 8) delete st;
+	if (st->facilities == 0 && ++st->delete_ctr >= 8) {
+		delete st;
+		return false;
+	}
 
+	return true;
 }
 
 static inline void byte_inc_sat(byte *p)
@@ -2844,7 +2849,8 @@ void OnTick_Station()
 		 * Station index is included so that triggers are not all done
 		 * at the same time. */
 		if ((_tick_counter + st->index) % 250 == 0) {
-			StationHandleBigTick(st);
+			/* Stop processing this station if it was deleted */
+			if (!StationHandleBigTick(st)) continue;
 			StationAnimationTrigger(st, st->xy, STAT_ANIM_250_TICKS);
 		}
 	}
