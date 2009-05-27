@@ -855,6 +855,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}اختر
 STR_OPTIONS_BASE_GRF                                            :{BLACK} الواجهة الرسومية الاساسية
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK} اختر مجموعة الواجهة الرسومية
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} ملف مفقود او غير صالح
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK} معلومات اضافية عن القاعدة الرسومية
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}فشل الحفظ التلقائي
 

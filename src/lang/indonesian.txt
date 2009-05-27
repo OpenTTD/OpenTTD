@@ -2023,7 +2023,7 @@ STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Suspensi, Beton
 STR_BRIDGE_NAME_WOODEN                                          :Kayu
 STR_BRIDGE_NAME_CONCRETE                                        :Beton
 STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Pipa, Baja
-STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silicon
+STR_BRIDGE_TUBULAR_SILICON                                      :Pipa, Silikon
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Tidak dapat membangun jembatan disini...
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tidak dapat membangun terowongan disini...
 STR_TUNNEL_DESCRIPTION_RAILROAD                                 :Terowongan Kereta api
@@ -2040,8 +2040,8 @@ STR_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                    :Jembatan jalan 
 STR_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE                 :Jembatan jalan suspensi beton bertulang
 STR_BRIDGE_DESCRIPTION_ROAD_WOODEN                              :Jembatan jalan kayu
 STR_BRIDGE_DESCRIPTION_ROAD_CONCRETE                            :Jembatan jalan beton
-STR_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                       :jembatan rel berbentuk tabung
-STR_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                       :jembatan berbentuk tabung
+STR_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                       :Jembatan rel berbentuk tabung
+STR_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                       :Jembatan berbentuk tabung
 
 ##id 0x5800
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}terhalang obyek
@@ -2621,6 +2621,7 @@ STR_ORDER_GO_VIA                                                :Pergi lewat
 STR_ORDER_GO_NON_STOP_VIA                                       :Pergi non-stop lewat
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[agak belakang]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[tengah]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[Tepi terjauh]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Penuhi salah satu
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Muat seadanya
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Penuhi semua
@@ -2812,6 +2813,7 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Kec. Max
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Berat: {LTBLUE}{WEIGHT_S} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Berat: {LTBLUE}{WEIGHT_S} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Keuntungan thn ini: {LTBLUE}{CURRENCY} (thn lalu: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Reliabilitas: {LTBLUE}{COMMA}%  {BLACK}Rusak sejak perbaikkan terakhir : {LTBLUE}{COMMA}
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Dibuat: {LTBLUE}{NUM}{BLACK} Nilai: {LTBLUE}{CURRENCY}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Daya Muat: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Daya Muat: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
@@ -3554,14 +3556,14 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Pengaturan AI
 STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Tampilkan setting AI
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
-STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Name of the AI
-STR_AI_DEBUG_RELOAD                                             :{BLACK}Reload AI
-STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Kill the AI, reload the script, and restart the AI
-STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI Debug window is only available for the server
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nama AI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Muat ulang AI
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Matikan fitur AI, muat ulang script, dan restart AI
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI Jendela "Debug" hanya tersedia untuk server
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfigurasi AI
 STR_AI_CHANGE                                                   :{BLACK}Pilih AI
 STR_AI_CONFIGURE                                                :{BLACK}Konfigurasikan
-STR_AI_CHANGE_TIP                                               :{BLACK}Muat Ai lainnya
+STR_AI_CHANGE_TIP                                               :{BLACK}Muat AI lainnya
 STR_AI_CONFIGURE_TIP                                            :{BLACK}Mengkonfigurasi parameter AI
 STR_AI_LIST_TIP                                                 :{BLACK}Semua AI yang akan dimuat pada permainan selanjutnya
 STR_AI_LIST_CAPTION                                             :{WHITE}AI tersedia

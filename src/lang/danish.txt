@@ -666,7 +666,6 @@ STR_OFF                                                         :Fra
 STR_SUMMARY                                                     :Kortfattet
 STR_FULL                                                        :Fuld
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Byoversigt
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -700,9 +699,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Fra
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Til
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Vis tilskudsordninger
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Tilskudsordninger
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kort over verden
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Nyt lokalitetsvindue
 STR_MAP_MENU_SIGN_LIST                                          :Liste over skilte
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Byoversigt
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Verdens befolkning: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Lokalitetsvindue {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Hent global
@@ -849,6 +853,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vælg sk
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Basis-grafiksæt
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Vælg det basis-grafiksæt der skal bruges
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} forsvund{P en ne}/ødelagt{P "" e} fil{P "" er}
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Yderligere information om basis-grafiksættet
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Fejl under autogem
 

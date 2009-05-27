@@ -855,7 +855,7 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Alege ti
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Set grafic de bază
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selectează setul grafic de bază utilizat în joc
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} lipseşte/corupt fişierul{P "" s}
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} fişier{P "" "e"} lipsă/corupt{P "" e}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Informaţii adiţionale despre setul grafic de bază
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Auto-salvarea a esuat

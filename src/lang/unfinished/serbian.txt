@@ -2479,17 +2479,117 @@ STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Prikazuj
 STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Prebacite se na lokaciju voza
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Pošaljite voz u depo. Sa Ctrl+Klik će otići samo na servis
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Voz će krenuti bez čekanja na signal za slobodan kolosek
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Pokvaren
+STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zaustavljen
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nemoguć je prolaz voza na signal opasnosti...
+STR_VEHICLE_STATUS_CRASHED                                      :{RED}Havarisan!
 
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Naziv voza
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Nemoguće nazvati voz...
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Naziv voza
+STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Sudar Vozova!{}{COMMA} {P "" su je} poginu{P o la lo} u eksploziji nakon sudara
+STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Nije moguće obrnuti smer kretanja voza...
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Promena naziva vrste šinskog vozila
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nemoguća promena naziva vrste šinskog vozila...
+STR_CLEAR_TIME                                                  :{BLACK}Ukloni Vreme
+STR_RESET_LATENESS                                              :{BLACK}Poništi Merač Kašnjenja
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Promena naziva čvorišta
 
+STR_TRAIN_STOPPING                                              :{RED}Zaustavlja se
+STR_TRAIN_STOPPING_VEL                                          :{RED}Zaustavlja se, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Različite vrste železnice
+STR_TRAIN_NO_POWER                                              :{RED}Nema struje
+STR_TRAIN_START_NO_CATENARY                                     :Voz ne može da se kreće jer pruga nije elektrifikovana
+STR_TRAIN_STUCK                                                 :{ORANGE}Čekanje za slobadan prolaz
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nov{G "" a o} {STRING} od sada u prodaji!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nov{G "" a o} {STRING} od sada u prodaji!  -  {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Ne može se prodati havarisano vozilo...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Ne može se prepravljati havarisano vozilo...
 
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Raspored se ne može dodeliti vozilu...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vozilo može čekati samo na stanicama.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Ovo vozilo ne staje na tu stanicu.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Promena Vremena
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Vozilo trenutno ide po rasporedu
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Vozilo trenutno kasni za {STRING} od rasporeda
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Vozilo trenutno žuri za {STRING} od rasporeda
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Za završetak rasporeda trebaće {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Za završetak rasporeda trebaće barem {STRING} (merenja nisu završena)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Merenje
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Popunjava raspored sa vrednostima iz sledećeg putovanja (Ctrl+Klik za zadržavanje vremena čekanja)
 
 ##id 0x9000
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Drumsko vozilo na putu
+STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Drumsk{P o a ih} Vozil{P o a a}
+STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Depo Drumskih Vozila
+STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nova Vozila
+STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nova Drumska Vozila
+STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Kupi Vozilo
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Ne može se kupiti drumsko vozilo...
+STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...mora se zaustaviti unutar depoa za drumska vozila
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Nemoguća prodaja drumskog vozila...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Ne može se pokrenuti/zaustaviti drumsko vozilo...
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} čeka u depou
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Ide ka {TOWN} Drumskom Depou
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Ide ka {TOWN} Drumskom Depou, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servisiranje u {TOWN} Drumskom Depou
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servisiranje u {TOWN} Drumskom Depou, {VELOCITY}
+STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Vozilo ne može da ode u depo...
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Neuspešan pronalazak lokalnog depoa
+STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Drumska vozila - kliknite na vozilo za podatke
+STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Trenutno stanje vozila - kliknite ovde za zaustavljanje/pokretanje vozila
+STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Prikazuje naredbe vozilu
+STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Prebacite se na lokaciju vozila
+STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Pošaljite vozilo u depo. Sa Ctrl+Klik će otići samo na servis
+STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Naterajte vozilo da okrene
+STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}Prikazuje detalje drumskog vozila
+STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Vozila - kliknite na vozilo za podatke
+STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Kupi novo drumsko vozilo
+STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Ovde prevucite drumsko vozilo kako biste ga prodali
+STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Prebacite se na lokaciju drumskog depoa
+STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Spisak probranih drumskih vozila - kliknite na vozilo za više podataka
+STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Kupite označeno drumsko vozilo
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Nosivost: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozil{P o a a}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
+STR_QUERY_ROAD_RENAME                                           :{WHITE}Naziv drumskog vozila
+STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Ne može se promeniti naziv vozila...
+STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Naziv drumskog vozila
+STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi autobus stiže na stanicu {STATION}!
+STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi kamion stiže na stanicu {STATION}!
+STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi tramvaj stiže na stanicu {STATION}!
+STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi teretni tamvaj stiže na stanicu {STATION}!
+STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Saobraćajna nesreća!{}Vozač je poginuo u eksploziji nakon sudara sa vozom
+STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Saobraćajna nesreća!{}{COMMA} {P "" je su} poginu{P o la lo} u eksploziji nakon sudara sa vozom
+STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Nemoguće okretanje vozila...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Ne može se okrenuti vozilo od više delova
+STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Promena naziva
+STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Promenite naziv vrste drumskog vozila
+STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Naziv vrste drumskog vozila
+STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Nemoguća promena naziva vrste drumskog vozila...
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Prepravite drumsko vozilo kako bi prevozio drugu vrstu tovara
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Prepravi drumsko vozilo
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Prepravlja drumsko vozilo za prevoz označene vrste tovara
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nemoguće prepravljanje drumskog vozila...
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Označite vrstu tovara za prepravljanje drumskog vozila
 
 ##id 0x9800
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Izgradnja plovnih kanala
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Izgradnja plovnih kanala
+STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Plovni kanali
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Izgradnja pristaništa ovde nije moguća...
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Depo Plovila
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novi Brodovi
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Brod{P "" a ova}
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Novi Brodovi
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Kupi Brod
 
 
 ##id 0xA000
