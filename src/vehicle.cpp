@@ -1406,6 +1406,9 @@ static SpriteID GetEngineColourMap(EngineID engine_type, CompanyID company, Engi
 
 	if (map == PAL_NONE) map = twocc ? (SpriteID)SPR_2CCMAP_BASE : (SpriteID)PALETTE_RECOLOUR_START;
 
+	/* Spectator has news shown too, but has invalid company ID - as well as dedicated server */
+	if (!Company::IsValidID(company)) return map;
+
 	const Livery *livery = GetEngineLivery(engine_type, company, parent_engine_type, v);
 
 	map += livery->colour1;
