@@ -439,7 +439,7 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 		case SDT_NUMX:
 		case SDT_ONEOFMANY:
 		case SDT_MANYOFMANY:
-			Write_ValidateSetting(ptr, sd, (unsigned long)p); break;
+			Write_ValidateSetting(ptr, sd, (size_t)p); break;
 
 		case SDT_STRING:
 			switch (GetVarMemType(sld->conv)) {
@@ -1516,7 +1516,7 @@ void SetDefaultCompanySettings(CompanyID cid)
 	const SettingDesc *sd;
 	for (sd = _company_settings; sd->save.cmd != SL_END; sd++) {
 		void *var = GetVariableAddress(&c->settings, &sd->save);
-		Write_ValidateSetting(var, sd, (int32)sd->desc.def);
+		Write_ValidateSetting(var, sd, (size_t)sd->desc.def);
 	}
 }
 
