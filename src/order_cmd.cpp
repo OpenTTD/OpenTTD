@@ -1628,8 +1628,15 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 						}
 					}
 				} else {
+					if (conditional_depth > v->GetNumOrders()) return false;
+
 					UpdateVehicleTimetable(v, true);
 					v->IncrementOrderIndex();
+
+					/* Get the current order */
+					const Order *order = v->GetOrder(v->cur_order_index);
+					v->current_order = *order;
+					return UpdateOrderDest(v, order, conditional_depth + 1);
 				}
 			} else if (v->type != VEH_AIRCRAFT) {
 				v->dest_tile = Depot::Get(order->GetDestination())->xy;
