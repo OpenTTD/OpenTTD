@@ -9,12 +9,14 @@
 #include "map_type.h"
 #include "tile_type.h"
 
-enum {MAX_TERMINALS =  10};
-enum {MAX_HELIPADS  =   4};
-enum {MAX_ELEMENTS  = 255};
-enum {MAX_HEADINGS  =  22};
+/** Current limits for airports */
+enum {
+	MAX_TERMINALS =  10, ///< maximum number of terminals per airport
+	MAX_HELIPADS  =   4, ///< maximum number of helipads per airport
+	MAX_ELEMENTS  = 255, ///< maximum number of aircraft positions at airport
+};
 
-/* Airport types */
+/** Airport types */
 enum {
 	AT_SMALL         =   0,
 	AT_LARGE         =   1,
@@ -66,7 +68,8 @@ enum {
 	TERM7          = 19,
 	TERM8          = 20,
 	HELIPAD3       = 21,
-	HELIPAD4       = 22
+	HELIPAD4       = 22,
+	MAX_HEADINGS   = 22,
 };
 
 /* Movement Blocks on Airports
