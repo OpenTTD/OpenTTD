@@ -48,7 +48,10 @@ struct CargoPacket : CargoPacketPool::PoolItem<&_cargopacket_pool> {
 	 * @param cp the cargo packet to compare to
 	 * @return true if and only if days_in_transit and source_xy are equal
 	 */
-	bool SameSource(const CargoPacket *cp) const;
+	FORCEINLINE bool SameSource(const CargoPacket *cp) const
+	{
+		return this->source_xy == cp->source_xy && this->days_in_transit == cp->days_in_transit && this->paid_for == cp->paid_for;
+	}
 };
 
 /**
@@ -95,7 +98,7 @@ public:
 	friend const struct SaveLoad *GetGoodsDesc();
 
 	/** Create the cargo list */
-	CargoList() { this->InvalidateCache(); }
+	FORCEINLINE CargoList() { this->InvalidateCache(); }
 	/** And destroy it ("frees" all cargo packets) */
 	~CargoList();
 
@@ -103,7 +106,7 @@ public:
 	 * Returns a pointer to the cargo packet list (so you can iterate over it etc).
 	 * @return pointer to the packet list
 	 */
-	const CargoList::List *Packets() const;
+	FORCEINLINE const CargoList::List *Packets() const { return &this->packets; }
 
 	/**
 	 * Ages the all cargo in this list
@@ -114,37 +117,37 @@ public:
 	 * Checks whether this list is empty
 	 * @return true if and only if the list is empty
 	 */
-	bool Empty() const;
+	FORCEINLINE bool Empty() const { return this->empty; }
 
 	/**
 	 * Returns the number of cargo entities in this list
 	 * @return the before mentioned number
 	 */
-	uint Count() const;
+	FORCEINLINE uint Count() const { return this->count; }
 
 	/**
 	 * Is there some cargo that has not been paid for?
 	 * @return true if and only if there is such a cargo
 	 */
-	bool UnpaidCargo() const;
+	FORCEINLINE bool UnpaidCargo() const { return this->unpaid_cargo; }
 
 	/**
 	 * Returns total sum of the feeder share for all packets
 	 * @return the before mentioned number
 	 */
-	Money FeederShare() const;
+	FORCEINLINE Money FeederShare() const { return this->feeder_share; }
 
 	/**
 	 * Returns source of the first cargo packet in this list
 	 * @return the before mentioned source
 	 */
-	StationID Source() const;
+	FORCEINLINE StationID Source() const { return this->source; }
 
 	/**
 	 * Returns average number of days in transit for a cargo entity
 	 * @return the before mentioned number
 	 */
-	uint DaysInTransit() const;
+	FORCEINLINE uint DaysInTransit() const { return this->days_in_transit; }
 
 
 	/**

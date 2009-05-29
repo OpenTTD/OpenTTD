@@ -29,11 +29,6 @@ CargoPacket::CargoPacket(StationID source, uint16 count)
 	this->paid_for        = false;
 }
 
-bool CargoPacket::SameSource(const CargoPacket *cp) const
-{
-	return this->source_xy == cp->source_xy && this->days_in_transit == cp->days_in_transit && this->paid_for == cp->paid_for;
-}
-
 /*
  *
  * Cargo list implementation
@@ -48,11 +43,6 @@ CargoList::~CargoList()
 	}
 }
 
-const CargoList::List *CargoList::Packets() const
-{
-	return &packets;
-}
-
 void CargoList::AgeCargo()
 {
 	if (empty) return;
@@ -63,36 +53,6 @@ void CargoList::AgeCargo()
 		dit += (*it)->days_in_transit * (*it)->count;
 	}
 	days_in_transit = dit / count;
-}
-
-bool CargoList::Empty() const
-{
-	return empty;
-}
-
-uint CargoList::Count() const
-{
-	return count;
-}
-
-bool CargoList::UnpaidCargo() const
-{
-	return unpaid_cargo;
-}
-
-Money CargoList::FeederShare() const
-{
-	return feeder_share;
-}
-
-StationID CargoList::Source() const
-{
-	return source;
-}
-
-uint CargoList::DaysInTransit() const
-{
-	return days_in_transit;
 }
 
 void CargoList::Append(CargoPacket *cp)
