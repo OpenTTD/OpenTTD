@@ -1,13 +1,13 @@
 ##name Afrikaans
-##ownname Jaybee
+##ownname Conray
 ##isocode af_ZA
 ##winlangid 0x0436
 ##grflangid 0x1b
 ##plural 0
 ##textdir ltr
-##gender male
 ##digitsep .
 ##digitsepcur .
+##gender male
 
 #
 
@@ -154,7 +154,7 @@ STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}KD
 STR_ABBREV_NONE                                                 :{TINYFONT}NS
-STR_ABBREV_ALL                                                  :{TINYFONT}ALLE
+STR_ABBREV_ALL                                                  :{TINYFONT}ALMAL
 STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
 STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Kaart - {STRING}
@@ -173,7 +173,7 @@ STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Verlaat
 STR_YES                                                         :{BLACK}Ja
 STR_NO                                                          :{BLACK}Nee
-STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Is jy seker u wil OpenTTD verlaat en terug keer na {STRING}?
+STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Is u seker u wil OpenTTD verlaat en terug keer na {STRING}?
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2
 STR_BLACK_3                                                     :{BLACK}3
@@ -648,6 +648,10 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Stad
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Kies dorp groote
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Dorp groote:
 
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Straat uitleg van dorp:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Kies straat uitleg ingebruik vir dorp
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Oorspronklik
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Beter strate
 
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Toon laaste boodskap of nuus verslag
@@ -655,7 +659,6 @@ STR_OFF                                                         :Af
 STR_SUMMARY                                                     :Opsomming
 STR_FULL                                                        :Vol
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Dorp gids
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -688,9 +691,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Af
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Aan
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Toon subsidieë
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidieë
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kaart van wêreld
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra gesigswerf
 STR_MAP_MENU_SIGN_LIST                                          :Teken lys
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Dorp gids
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Wêreld populasie: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Gesigswerf {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopie na gesigswerf
@@ -717,6 +725,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Outostoo
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Kies interval tussen outomatiese store
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Af
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Elke maand
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Elke 3 maande
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Elke 6 maande
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Elke 12 maande
@@ -832,9 +841,11 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Skermsky
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Kies die skermskyf formaat om te gebruik
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Basis grafiek stel
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Kies die Basiese grafiek stel om te gebruik
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} verlore / korrupte ler{P "" s}
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Elke maand
-STR_AUTOSAVE_FAILED                                             :{WHITE}Outospaar misluk
+STR_AUTOSAVE_FAILED                                             :{WHITE}Outostoor het misluk
 
 STR_MONTH_JAN                                                   :Januarie
 STR_MONTH_FEB                                                   :Februarie
@@ -920,6 +931,9 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Toon al
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Toon seine op die bestuur kant: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Toon finansies venster op die einde van die jaar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nuwe bevele is vooraf 'geen-stop' {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :naby einde
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :middel
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ver einde
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Pad voertuig toustaan (met kwantum effekte): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Was skerm as muis by die kant is: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Laattoe die omkooping van plaaslike raad: {ORANGE}{STRING}
@@ -3439,15 +3453,23 @@ STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Naam van
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaai AI
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Maak die AI dood, herlaai die skrif en herlaai die AI
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Die AI ontfout venster is net beskikbaar vir die dienaar
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI konfigurasie
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI Konfigurasie
 STR_AI_CHANGE                                                   :{BLACK}Kies AI
 STR_AI_CONFIGURE                                                :{BLACK}Konfigureer
 STR_AI_CHANGE_TIP                                               :{BLACK}Laai nog 'n AI
-STR_AI_LIST_TIP                                                 :{BLACK}Alle AIs wat in die volgende spel sal gelaai word
-STR_AI_LIST_CAPTION                                             :{WHITE}Beskikbaare AIs
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Konfigureer die parameters van AI
+STR_AI_LIST_TIP                                                 :{BLACK}Alle AIs wat in die volgende spel  gelaai gaan word
+STR_AI_LIST_CAPTION                                             :{WHITE}Beskikbare AIs
 STR_AI_AILIST_TIP                                               :{BLACK}Kliek om 'n AI te kies
 STR_AI_ACCEPT                                                   :{BLACK}Aanvaar
+STR_AI_ACCEPT_TIP                                               :{BLACK}Kies beligte AI
 STR_AI_CANCEL                                                   :{BLACK}Kanseleer
+STR_AI_CANCEL_TIP                                               :{BLACK}Moenie AI verander nie
+STR_AI_CLOSE                                                    :{BLACK}Maak toe
+STR_AI_HUMAN_PLAYER                                             :Mens Speler
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
+STR_AI_AUTHOR                                                   :{BLACK}Skrywer: {STRING}
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Daar was n fout met een van die AIs. Rapporteer assblief aan die skrywer met n skermskoot van die AI ontfout venster.
 ########
 
 ############ town controlled noise level
