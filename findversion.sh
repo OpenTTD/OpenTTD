@@ -93,7 +93,7 @@ elif [ -d "$ROOT_DIR/.hg" ]; then
 	if [ -n "`hg status \"$SRC_DIR\" | grep -v '^?'`" ]; then
 		MODIFIED="2"
 	fi
-	HASH=`LC_ALL=C hg parents 2>/dev/null | head -n 1 | cut -d: -f3`
+	HASH=`LC_ALL=C hg parents --template="{node}"`
 	REV="h`echo $HASH | cut -c1-8`"
 	BRANCH=`hg branch | sed 's@^default$@@'`
 	REV_NR=`LC_ALL=C hg log -r $HASH:0 -k "svn" -l 1 --template "{desc}\n" "$SRC_DIR" | grep "^(svn r[0-9]*)" | head -n 1 | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
