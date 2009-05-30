@@ -266,16 +266,20 @@ public:
 	/**
 	 * Set focus within this window to the given widget. The function however doesn't change which window has focus.
 	 * @param widget_index Index of the widget in the window to set the focus to.
+	 * @return Focus has changed.
 	 */
-	inline void SetFocusedWidget(byte widget_index)
+	inline bool SetFocusedWidget(byte widget_index)
 	{
-		if (widget_index < this->widget_count) {
-			/* Repaint the widget that lost focus. A focused edit box may else leave the caret on the screen. */
-			if (this->focused_widget != NULL && this->focused_widget - this->widget != widget_index) {
-				this->InvalidateWidget(this->focused_widget - this->widget);
-			}
-			this->focused_widget = &this->widget[widget_index];
+		if (widget_index >= this->widget_count || this->widget + widget_index == this->focused_widget) {
+			return false;
 		}
+
+		if (this->focused_widget != NULL) {
+			/* Repaint the widget that lost focus. A focused edit box may else leave the caret on the screen. */
+			this->InvalidateWidget(this->focused_widget - this->widget);
+		}
+		this->focused_widget = &this->widget[widget_index];
+		return true;
 	}
 
 	/**

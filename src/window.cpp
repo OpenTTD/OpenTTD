@@ -249,11 +249,11 @@ static void StartWindowSizing(Window *w, bool to_left);
  */
 static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 {
-	bool focused_widget_changed = false;
 	int widget = 0;
 	if (w->desc_flags & WDF_DEF_WIDGET) {
 		widget = GetWidgetFromPos(w, x, y);
 
+		bool focused_widget_changed = false;
 		/* If clicked on a window that previously did dot have focus */
 		if (_focused_window != w &&
 				(w->desc_flags & WDF_NO_FOCUS) == 0 &&           // Don't lose focus to toolbars
@@ -286,12 +286,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 				DeleteWindowById(WC_OSK, 0);
 			}
 
-			if (w->focused_widget != wi) {
-				/* Repaint the widget that lost focus. A focused edit box may else leave the caret on the screen. */
-				if (w->focused_widget != NULL) w->InvalidateWidget(w->focused_widget - w->widget);
-				focused_widget_changed = true;
-				w->focused_widget = wi;
-			}
+			focused_widget_changed = w->SetFocusedWidget(widget);
 		}
 
 		if (wi->type & WWB_PUSHBUTTON) {
