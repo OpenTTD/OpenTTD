@@ -20,7 +20,6 @@
 #include "vehicle_base.h"
 #include "sound_func.h"
 #include "window_func.h"
-#include "effectvehicle_base.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -740,9 +739,13 @@ public:
 
 		/* draw vehicles? */
 		if (this->map_type == SMT_CONTOUR || this->map_type == SMT_VEHICLES) {
-			EffectVehicle *v;
-			FOR_ALL_EFFECTVEHICLES(v) {
-				if ((v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0) {
+			Vehicle *v;
+			bool skip;
+			byte colour;
+
+			FOR_ALL_VEHICLES(v) {
+				if (v->type != VEH_EFFECT &&
+						(v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0) {
 					/* Remap into flat coordinates. */
 					Point pt = RemapCoords(
 						v->x_pos / TILE_SIZE - this->scroll_x / TILE_SIZE, // divide each one separately because (a-b)/c != a/c-b/c in integer world
@@ -756,7 +759,7 @@ public:
 					if (!IsInsideMM(y, 0, dpi->height)) continue;
 
 					/* Default is to draw both pixels. */
-					bool skip = false;
+					skip = false;
 
 					/* Offset X coordinate */
 					x -= this->subscroll + 3 + dpi->left;
@@ -773,7 +776,7 @@ public:
 					}
 
 					/* Calculate pointer to pixel and the colour */
-					byte colour = (this->map_type == SMT_VEHICLES) ? _vehicle_type_colours[v->type] : 0xF;
+					colour = (this->map_type == SMT_VEHICLES) ? _vehicle_type_colours[v->type] : 0xF;
 
 					/* And draw either one or two pixels depending on clipping */
 					blitter->SetPixel(dpi->dst_ptr, x, y, colour);
