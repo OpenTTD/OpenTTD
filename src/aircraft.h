@@ -100,9 +100,6 @@ struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	StationID targetairport;
 	byte state;
 
-	/** Initializes the Vehicle to an aircraft */
-	Aircraft() { this->type = VEH_AIRCRAFT; }
-
 	/** We want to 'destruct' the right class. */
 	virtual ~Aircraft() { this->PreDestructor(); }
 

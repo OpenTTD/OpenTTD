@@ -310,9 +310,6 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	RailTypeByte railtype;
 	RailTypes compatible_railtypes;
 
-	/** Initializes the Vehicle to a train */
-	Train() { this->type = VEH_TRAIN; }
-
 	/** We want to 'destruct' the right class. */
 	virtual ~Train() { this->PreDestructor(); }
 

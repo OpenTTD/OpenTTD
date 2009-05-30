@@ -133,9 +133,6 @@ struct RoadVehicle : public SpecializedVehicle<RoadVehicle, VEH_ROAD> {
 	RoadType roadtype;
 	RoadTypes compatible_roadtypes;
 
-	/** Initializes the Vehicle to a road vehicle */
-	RoadVehicle() { this->type = VEH_ROAD; }
-
 	/** We want to 'destruct' the right class. */
 	virtual ~RoadVehicle() { this->PreDestructor(); }
 

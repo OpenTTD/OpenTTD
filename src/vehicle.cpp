@@ -188,9 +188,9 @@ bool HasVehicleOnTunnelBridge(TileIndex tile, TileIndex endtile, const Vehicle *
 }
 
 
-Vehicle::Vehicle()
+Vehicle::Vehicle(VehicleType type)
 {
-	this->type               = VEH_INVALID;
+	this->type               = type;
 	this->coord.left         = INVALID_COORD;
 	this->group_id           = DEFAULT_GROUP;
 	this->fill_percent_te_id = INVALID_TE_ID;

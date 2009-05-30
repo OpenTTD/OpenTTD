@@ -20,9 +20,6 @@ void GetShipSpriteSize(EngineID engine, uint &width, uint &height);
 struct Ship: public SpecializedVehicle<Ship, VEH_SHIP> {
 	TrackBitsByte state;
 
-	/** Initializes the Vehicle to a ship */
-	Ship() { this->type = VEH_SHIP; }
-
 	/** We want to 'destruct' the right class. */
 	virtual ~Ship() { this->PreDestructor(); }
 

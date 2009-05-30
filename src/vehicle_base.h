@@ -182,7 +182,7 @@ public:
 	VehicleCache vcache;            ///< Cache of often used calculated values
 
 	/** Create a new vehicle */
-	Vehicle();
+	Vehicle(VehicleType type = VEH_INVALID);
 
 	/** Destroy all stuff that (still) needs the virtual functions to work properly */
 	void PreDestructor();
@@ -503,6 +503,11 @@ struct SpecializedVehicle : public Vehicle {
 	static const VehicleType EXPECTED_TYPE = Type; ///< Specialized type
 
 	/**
+	 * Set vehicle type correctly
+	 */
+	FORCEINLINE SpecializedVehicle<T, Type>() : Vehicle(Type) { }
+
+	/**
 	 * Get the first vehicle in the chain
 	 * @return first vehicle in the chain
 	 */
@@ -558,9 +563,6 @@ struct SpecializedVehicle : public Vehicle {
 struct DisasterVehicle : public SpecializedVehicle<DisasterVehicle, VEH_DISASTER> {
 	uint16 image_override;
 	VehicleID big_ufo_destroyer_target;
-
-	/** Initializes the Vehicle to a disaster vehicle */
-	DisasterVehicle() { this->type = VEH_DISASTER; }
 
 	/** We want to 'destruct' the right class. */
 	virtual ~DisasterVehicle() {}
