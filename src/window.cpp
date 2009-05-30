@@ -112,22 +112,13 @@ void SetFocusedWindow(Window *w)
 }
 
 /**
- * Gets the globally focused widget. Which is the focused widget of the focused window.
- * @return A pointer to the globally focused Widget, or NULL if there is no globally focused widget.
- */
-const Widget *GetGloballyFocusedWidget()
-{
-	return _focused_window != NULL ? _focused_window->focused_widget : NULL;
-}
-
-/**
  * Check if an edit box is in global focus. That is if focused window
  * has a edit box as focused widget, or if a console is focused.
  * @return returns true if an edit box is in global focus or if the focused window is a console, else false
  */
 bool EditBoxInGlobalFocus()
 {
-	const Widget *wi = GetGloballyFocusedWidget();
+	const Widget *wi = (_focused_window != NULL) ? _focused_window->focused_widget : NULL;
 
 	/* The console does not have an edit box so a special case is needed. */
 	return (wi != NULL && wi->type == WWT_EDITBOX) ||

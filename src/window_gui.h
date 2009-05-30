@@ -657,7 +657,6 @@ enum SpecialMouseMode {
 Window *GetCallbackWnd();
 
 void SetFocusedWindow(Window *w);
-const Widget *GetGloballyFocusedWidget();
 bool EditBoxInGlobalFocus();
 
 void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y);
