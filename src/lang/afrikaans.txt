@@ -1455,6 +1455,8 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Speletjie ongep
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Speletjie gepoos (konnekteer kliënt)
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} het by die spel aangesluit
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} het by besigheid  #{2:NUM} aangesluit
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} het aangesluit by die spektators
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} het die spel verlaat ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} het sy/haar naam verander na {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} het jou besigheid {2:CURRENCY} gegee
@@ -1578,6 +1580,7 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Trainspoor met 
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Trainspoor met kombineer- en een-rigting aanwysers
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Trainspoor met rigting- en een-rigting aanwysers
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Moet eers spoorweg stasie verwyder
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Sluit by stasie aan
 
 
 
@@ -1871,6 +1874,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Gebreek spaarsp
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spaarspeletjie is gemaak met nuwer uitgawe
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Lêer nie leesbare
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Lêer nie skryfbaar
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Data integriteit het misluk
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lys van skywe, gidse en spaar-speletjie lêers
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Huidige naam vir spaar-speletjie
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Vee uit die huidige verkieste spaar-speletjie
@@ -2567,6 +2571,8 @@ STR_ORDER_GO_TO                                                 :Gaan na
 STR_ORDER_GO_NON_STOP_TO                                        :Gaan sonder-stop na
 STR_ORDER_GO_VIA                                                :Gaan deur
 STR_ORDER_GO_NON_STOP_VIA                                       :Gaan sonder-stop deur
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[naby einde]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[ver einde]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Vol laai eenigge vrag
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Laai indine beskikbaar
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Vol laai alle vragte
