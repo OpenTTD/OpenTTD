@@ -52,7 +52,7 @@ const char *MusicDriver_LibTimidity::Start(const char * const *param)
 	_midi.status = MIDI_STOPPED;
 	_midi.song = NULL;
 
-	if (mid_init(param == NULL ? NULL : (char *)param[0]) < 0) {
+	if (mid_init(param == NULL ? NULL : const_cast<char *>(param[0])) < 0) {
 		/* If init fails, it can be because no configuration was found.
 		 *  If it was not forced via param, try to load it without a
 		 *  configuration. Who knows that works. */
