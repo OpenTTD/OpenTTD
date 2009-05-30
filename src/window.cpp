@@ -287,7 +287,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 			}
 
 			if (w->focused_widget != wi) {
-				/* Repaint the widget that loss focus. A focused edit box may else leave the caret left on the screen */
+				/* Repaint the widget that lost focus. A focused edit box may else leave the caret on the screen. */
 				if (w->focused_widget != NULL) w->InvalidateWidget(w->focused_widget - w->widget);
 				focused_widget_changed = true;
 				w->focused_widget = wi;
