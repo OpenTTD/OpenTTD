@@ -289,7 +289,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 		 * So unless the clicked widget is the caption bar, change focus to this widget */
 		if (wi->type != WWT_CAPTION) {
 			/* Close the OSK window if a edit box loses focus */
-			if (w->focused_widget && w->focused_widget->type == WWT_EDITBOX && // An edit box was previously selected
+			if (w->focused_widget != NULL && w->focused_widget->type == WWT_EDITBOX && // An edit box was previously selected
 					w->focused_widget != wi &&                                 // and focus is going to change
 					w->window_class != WC_OSK) {                               // and it is not the OSK window
 				DeleteWindowById(WC_OSK, 0);
@@ -297,7 +297,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 
 			if (w->focused_widget != wi) {
 				/* Repaint the widget that loss focus. A focused edit box may else leave the caret left on the screen */
-				if (w->focused_widget) w->InvalidateWidget(w->focused_widget - w->widget);
+				if (w->focused_widget != NULL) w->InvalidateWidget(w->focused_widget - w->widget);
 				focused_widget_changed = true;
 				w->focused_widget = wi;
 			}
@@ -812,7 +812,7 @@ void Window::Initialize(int x, int y, int min_width, int min_height,
 	this->width = min_width;
 	this->height = min_height;
 	AssignWidgetToWindow(this, widget);
-	this->focused_widget = 0;
+	this->focused_widget = NULL;
 	this->resize.width = min_width;
 	this->resize.height = min_height;
 	this->resize.step_width = 1;

@@ -272,7 +272,7 @@ public:
 	{
 		if (widget_index < this->widget_count) {
 			/* Repaint the widget that loss focus. A focused edit box may else leave the caret left on the screen */
-			if (this->focused_widget && this->focused_widget - this->widget != widget_index) {
+			if (this->focused_widget != NULL && this->focused_widget - this->widget != widget_index) {
 				this->InvalidateWidget(this->focused_widget - this->widget);
 			}
 			this->focused_widget = &this->widget[widget_index];
