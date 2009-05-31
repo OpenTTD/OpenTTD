@@ -523,13 +523,11 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			if (!HasBit(v->vcache.cache_valid, 2)) {
 				const Vehicle *u;
 				byte cargo_classes = 0;
-				CargoID common_cargo_best = CT_INVALID;
 				uint8 common_cargos[NUM_CARGO];
-				uint8 common_subtype_best = 0xFF; // Return 0xFF if nothing is carried
 				uint8 common_subtypes[256];
 				byte user_def_data = 0;
-				CargoID common_cargo_type = CT_PASSENGERS;
-				uint8 common_subtype = 0;
+				CargoID common_cargo_type = CT_INVALID;
+				uint8 common_subtype = 0xFF; // Return 0xFF if nothing is carried
 
 				/* Reset our arrays */
 				memset(common_cargos, 0, sizeof(common_cargos));
@@ -546,9 +544,10 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				}
 
 				/* Pick the most common cargo type */
+				uint common_cargo_best_amount = 0;
 				for (CargoID cargo = 0; cargo < NUM_CARGO; cargo++) {
-					if (common_cargos[cargo] > common_cargo_best) {
-						common_cargo_best = common_cargos[cargo];
+					if (common_cargos[cargo] > common_cargo_best_amount) {
+						common_cargo_best_amount = common_cargos[cargo];
 						common_cargo_type = cargo;
 					}
 				}
@@ -562,9 +561,10 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				}
 
 				/* Pick the most common subcargo type*/
+				uint common_subtype_best_amount = 0;
 				for (uint i = 0; i < lengthof(common_subtypes); i++) {
-					if (common_subtypes[i] > common_subtype_best) {
-						common_subtype_best = common_subtypes[i];
+					if (common_subtypes[i] > common_subtype_best_amount) {
+						common_subtype_best_amount = common_subtypes[i];
 						common_subtype = i;
 					}
 				}
