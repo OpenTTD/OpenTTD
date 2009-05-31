@@ -137,6 +137,8 @@ void RoadVehUpdateCache(Vehicle *v)
 	assert(v->type == VEH_ROAD);
 	assert(IsRoadVehFront(v));
 
+	v->InvalidateNewGRFCacheOfChain();
+
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
 		/* Check the v->first cache. */
 		assert(u->First() == v);
@@ -262,12 +264,15 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		v->cargo_cap = rvi->capacity;
 
 		AddArticulatedParts(vl, VEH_ROAD);
+		v->InvalidateNewGRFCacheOfChain();
 
 		/* Call various callbacks after the whole consist has been constructed */
 		for (Vehicle *u = v; u != NULL; u = u->Next()) {
 			u->u.road.cached_veh_length = GetRoadVehLength(u);
 			/* Cargo capacity is zero if and only if the vehicle cannot carry anything */
 			if (u->cargo_cap != 0) u->cargo_cap = GetVehicleProperty(u, 0x0F, u->cargo_cap);
+			v->InvalidateNewGRFCache();
+			u->InvalidateNewGRFCache();
 		}
 
 		VehicleMove(v, false);
