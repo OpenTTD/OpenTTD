@@ -249,15 +249,16 @@ static void StartWindowSizing(Window *w, bool to_left);
  */
 static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 {
-	int widget = 0;
+	int widget_index = 0;
 	if (w->desc_flags & WDF_DEF_WIDGET) {
-		widget = GetWidgetFromPos(w, x, y);
+		widget_index = GetWidgetFromPos(w, x, y);
+		WidgetType widget_type = (widget_index >= 0) ? w->widget[widget_index].type : WWT_EMPTY;
 
 		bool focused_widget_changed = false;
 		/* If clicked on a window that previously did dot have focus */
 		if (_focused_window != w &&
 				(w->desc_flags & WDF_NO_FOCUS) == 0 &&           // Don't lose focus to toolbars
-				!(w->desc_flags & WDF_STD_BTN && w->widget[widget].type == WWT_CLOSEBOX)) { // Don't change focused window if 'X' (close button) was clicked
+				!((w->desc_flags & WDF_STD_BTN) && widget_type == WWT_CLOSEBOX)) { // Don't change focused window if 'X' (close button) was clicked
 			focused_widget_changed = true;
 			if (_focused_window != NULL) {
 				_focused_window->OnFocusLost();
@@ -269,16 +270,16 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 			w->OnFocus();
 		}
 
-		if (widget < 0) return; // exit if clicked outside of widgets
+		if (widget_index < 0) return; // exit if clicked outside of widgets
 
 		/* don't allow any interaction if the button has been disabled */
-		if (w->IsWidgetDisabled(widget)) return;
+		if (w->IsWidgetDisabled(widget_index)) return;
 
-		const Widget *wi = &w->widget[widget];
+		const Widget *wi = &w->widget[widget_index];
 
 		/* Clicked on a widget that is not disabled.
 		 * So unless the clicked widget is the caption bar, change focus to this widget */
-		if (wi->type != WWT_CAPTION) {
+		if (widget_type != WWT_CAPTION) {
 			/* Close the OSK window if a edit box loses focus */
 			if (w->focused_widget != NULL && w->focused_widget->type == WWT_EDITBOX && // An edit box was previously selected
 					w->focused_widget != wi &&                                 // and focus is going to change
@@ -286,57 +287,56 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 				DeleteWindowById(WC_OSK, 0);
 			}
 
-			focused_widget_changed = w->SetFocusedWidget(widget);
+			focused_widget_changed = w->SetFocusedWidget(widget_index);
 		}
 
-		if (wi->type & WWB_PUSHBUTTON) {
+		if (widget_type & WWB_PUSHBUTTON) {
 			/* special widget handling for buttons*/
-			switch (wi->type) {
+			switch (widget_type) {
 				default: NOT_REACHED();
 				case WWT_PANEL   | WWB_PUSHBUTTON: // WWT_PUSHBTN
 				case WWT_IMGBTN  | WWB_PUSHBUTTON: // WWT_PUSHIMGBTN
 				case WWT_TEXTBTN | WWB_PUSHBUTTON: // WWT_PUSHTXTBTN
-					w->HandleButtonClick(widget);
+					w->HandleButtonClick(widget_index);
 					break;
 			}
-		} else if (wi->type == WWT_SCROLLBAR || wi->type == WWT_SCROLL2BAR || wi->type == WWT_HSCROLLBAR) {
+		} else if (widget_type == WWT_SCROLLBAR || widget_type == WWT_SCROLL2BAR || widget_type == WWT_HSCROLLBAR) {
 			ScrollbarClickHandler(w, wi, x, y);
-		} else if (wi->type == WWT_EDITBOX && !focused_widget_changed) { // Only open the OSK window if clicking on an already focused edit box
+		} else if (widget_type == WWT_EDITBOX && !focused_widget_changed) { // Only open the OSK window if clicking on an already focused edit box
 			/* Open the OSK window if clicked on an edit box */
-			QueryStringBaseWindow *qs = dynamic_cast<QueryStringBaseWindow*>(w);
+			QueryStringBaseWindow *qs = dynamic_cast<QueryStringBaseWindow *>(w);
 			if (qs != NULL) {
-				const int widget_index = wi - w->widget;
 				qs->OnOpenOSKWindow(widget_index);
 			}
 		}
 
 		/* Close any child drop down menus. If the button pressed was the drop down
 		 * list's own button, then we should not process the click any further. */
-		if (HideDropDownMenu(w) == widget) return;
+		if (HideDropDownMenu(w) == widget_index) return;
 
 		if (w->desc_flags & WDF_STD_BTN) {
-			if (w->widget[widget].type == WWT_CLOSEBOX) { // 'X'
+			if (widget_type == WWT_CLOSEBOX) { // 'X'
 				delete w;
 				return;
 			}
 
-			if (w->widget[widget].type == WWT_CAPTION) { // 'Title bar'
+			if (widget_type == WWT_CAPTION) { // 'Title bar'
 				StartWindowDrag(w);
 				return;
 			}
 		}
 
-		if (w->desc_flags & WDF_RESIZABLE && wi->type == WWT_RESIZEBOX) {
+		if (w->desc_flags & WDF_RESIZABLE && widget_type == WWT_RESIZEBOX) {
 			/* When the resize widget is on the left size of the window
 			 * we assume that that button is used to resize to the left. */
 			StartWindowSizing(w, wi->left < (w->width / 2));
-			w->InvalidateWidget(widget);
+			w->InvalidateWidget(widget_index);
 			return;
 		}
 
-		if (w->desc_flags & WDF_STICKY_BUTTON && wi->type == WWT_STICKYBOX) {
+		if (w->desc_flags & WDF_STICKY_BUTTON && widget_type == WWT_STICKYBOX) {
 			w->flags4 ^= WF_STICKY;
-			w->InvalidateWidget(widget);
+			w->InvalidateWidget(widget_index);
 			return;
 		}
 	}
@@ -344,9 +344,9 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 	Point pt = { x, y };
 
 	if (double_click) {
-		w->OnDoubleClick(pt, widget);
+		w->OnDoubleClick(pt, widget_index);
 	} else {
-		w->OnClick(pt, widget);
+		w->OnClick(pt, widget_index);
 	}
 }
 
