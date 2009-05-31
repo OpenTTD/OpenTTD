@@ -814,7 +814,11 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		v->vehicle_flags = 0;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
 
+		v->InvalidateNewGRFCacheOfChain();
+
 		v->cargo_cap = GetVehicleProperty(v, 0x0D, svi->capacity);
+
+		v->InvalidateNewGRFCacheOfChain();
 
 		VehicleMove(v, false);
 
@@ -948,6 +952,7 @@ CommandCost CmdRefitShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		v->cargo_type = new_cid;
 		v->cargo_subtype = new_subtype;
 		v->colourmap = PAL_NONE; // invalidate vehicle colour map
+		v->InvalidateNewGRFCacheOfChain();
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClassesData(WC_SHIPS_LIST, 0);

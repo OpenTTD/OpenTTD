@@ -246,6 +246,26 @@ public:
 	virtual SpriteID GetImage(Direction direction) const { return 0; }
 
 	/**
+	 * Invalidates cached NewGRF variables
+	 * @see InvalidateNewGRFCacheOfChain
+	 */
+	FORCEINLINE void InvalidateNewGRFCache()
+	{
+		this->vcache.cache_valid = 0;
+	}
+
+	/**
+	 * Invalidates cached NewGRF variables of all vehicles in the chain (after the current vehicle)
+	 * @see InvalidateNewGRFCache
+	 */
+	FORCEINLINE void InvalidateNewGRFCacheOfChain()
+	{
+		for (Vehicle *u = this; u != NULL; u = u->Next()) {
+			u->InvalidateNewGRFCache();
+		}
+	}
+
+	/**
 	 * Gets the speed in km-ish/h that can be sent into SetDParam for string processing.
 	 * @return the vehicle's speed
 	 */

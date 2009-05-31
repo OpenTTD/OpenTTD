@@ -1098,7 +1098,9 @@ void TriggerVehicle(Vehicle *v, VehicleTrigger trigger)
 		VehicleEnteredDepotThisTick(v);
 	}
 
+	v->InvalidateNewGRFCacheOfChain();
 	DoTriggerVehicle(v, trigger, 0, true);
+	v->InvalidateNewGRFCacheOfChain();
 }
 
 /* Functions for changing the order of vehicle purchase lists

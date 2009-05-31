@@ -373,6 +373,8 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		v->vehicle_flags = 0;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
 
+		v->InvalidateNewGRFCacheOfChain();
+
 		if (v->cargo_type != CT_PASSENGERS) {
 			uint16 callback = CALLBACK_FAILED;
 
@@ -390,6 +392,8 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			/* Set the 'second compartent' capacity to none */
 			u->cargo_cap = 0;
 		}
+
+		v->InvalidateNewGRFCacheOfChain();
 
 		UpdateAircraftCache(v);
 
@@ -566,6 +570,7 @@ CommandCost CmdRefitAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		v->cargo_type = new_cid;
 		v->cargo_subtype = new_subtype;
 		v->colourmap = PAL_NONE; // invalidate vehicle colour map
+		v->InvalidateNewGRFCacheOfChain();
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
