@@ -43,10 +43,13 @@ static void PlaceAirport(TileIndex tile)
 	ShowSelectStationIfNeeded(cmdcont, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE);
 }
 
-
+/** Widget number of the airport build window. */
 enum {
-	ATW_AIRPORT  = 3,
-	ATW_DEMOLISH = 4
+	ATW_CLOSEBOX,
+	ATW_CAPTION,
+	ATW_STICKYBOX,
+	ATW_AIRPORT,
+	ATW_DEMOLISH
 };
 
 
@@ -86,8 +89,8 @@ struct BuildAirToolbarWindow : Window {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget - 3 >= 0) {
-			_build_air_button_proc[widget - 3](this);
+		if (widget - ATW_AIRPORT >= 0) {
+			_build_air_button_proc[widget - ATW_AIRPORT](this);
 		}
 	}
 
@@ -139,13 +142,13 @@ static const Widget _air_toolbar_widgets[] = {
 
 static const NWidgetPart _nested_air_toolbar_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, 0),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, 1), SetMinimalSize(41, 14), SetDataTip(STR_TOOLBAR_AIRCRAFT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, 2),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, ATW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, ATW_CAPTION), SetMinimalSize(41, 14), SetDataTip(STR_TOOLBAR_AIRCRAFT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, ATW_STICKYBOX),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, 3), SetMinimalSize(42, 22), SetDataTip(SPR_IMG_AIRPORT, STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, 4), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, ATW_AIRPORT), SetMinimalSize(42, 22), SetDataTip(SPR_IMG_AIRPORT, STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, ATW_DEMOLISH), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
 	EndContainer(),
 };
 
