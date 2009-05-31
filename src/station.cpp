@@ -78,7 +78,7 @@ Station::~Station()
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		/* Forget about this station if this station is removed */
-		if (v->last_station_visited == destination && type == OT_GOTO_STATION) {
+		if (v->last_station_visited == this->index) {
 			v->last_station_visited = INVALID_STATION;
 		}
 	}
