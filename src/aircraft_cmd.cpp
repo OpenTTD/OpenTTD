@@ -333,24 +333,6 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		u->subtype = AIR_SHADOW;
 		u->UpdateDeltaXY(INVALID_DIR);
 
-		if (v->cargo_type != CT_PASSENGERS) {
-			uint16 callback = CALLBACK_FAILED;
-
-			if (HasBit(EngInfo(p1)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
-				callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, v->engine_type, v);
-			}
-
-			if (callback == CALLBACK_FAILED) {
-				/* Callback failed, or not executed; use the default cargo capacity */
-				v->cargo_cap = AircraftDefaultCargoCapacity(v->cargo_type, avi);
-			} else {
-				v->cargo_cap = callback;
-			}
-
-			/* Set the 'second compartent' capacity to none */
-			u->cargo_cap = 0;
-		}
-
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->max_age = e->lifelength * DAYS_IN_LEAP_YEAR;
@@ -390,6 +372,24 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 		v->vehicle_flags = 0;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
+
+		if (v->cargo_type != CT_PASSENGERS) {
+			uint16 callback = CALLBACK_FAILED;
+
+			if (HasBit(EngInfo(p1)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
+				callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, v->engine_type, v);
+			}
+
+			if (callback == CALLBACK_FAILED) {
+				/* Callback failed, or not executed; use the default cargo capacity */
+				v->cargo_cap = AircraftDefaultCargoCapacity(v->cargo_type, avi);
+			} else {
+				v->cargo_cap = callback;
+			}
+
+			/* Set the 'second compartent' capacity to none */
+			u->cargo_cap = 0;
+		}
 
 		UpdateAircraftCache(v);
 
