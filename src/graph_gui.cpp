@@ -153,6 +153,14 @@ static void ShowGraphLegend()
 /* BASE OF GRAPHS */
 /*****************/
 
+/** Widget numbers of a base graph window. */
+enum CompanyValueWidgets {
+	BGW_CLOSEBOX,
+	BGW_CAPTION,
+	BGW_KEY_BUTTON,
+	BGW_BACKGROUND,
+};
+
 struct BaseGraphWindow : Window {
 protected:
 	enum {
@@ -449,16 +457,8 @@ public:
 	virtual void OnClick(Point pt, int widget)
 	{
 		/* Clicked on legend? */
-		if (widget == 2) ShowGraphLegend();
+		if (widget == BGW_KEY_BUTTON) ShowGraphLegend();
 	}
-};
-
-/** Widget numbers of a base graph window. */
-enum CompanyValueWidgets {
-	BGW_CLOSEBOX,
-	BGW_CAPTION,
-	BGW_KEY_BUTTON,
-	BGW_BACKGROUND,
 };
 
 
@@ -716,6 +716,14 @@ void ShowCompanyValueGraph()
 /* PAYMENT RATES */
 /*****************/
 
+/** Widget numbers of the cargo payment rates. */
+enum CargoPaymentRatesWidgets {
+	CPW_CLOSEBOX,
+	CPW_CAPTION,
+	CPW_BACKGROUND,
+	CPW_CARGO_FIRST,
+};
+
 struct PaymentRatesGraphWindow : BaseGraphWindow {
 	PaymentRatesGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, window_number, 2, 24, 200, false, STR_CURRCOMPACT)
@@ -735,7 +743,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 		/* Set the properties of each widget */
 		for (uint i = 0; i != num_active; i++) {
-			Widget *wi = &this->widget[3 + i];
+			Widget *wi = &this->widget[CPW_CARGO_FIRST + i];
 			wi->type     = WWT_PANEL;
 			wi->display_flags = RESIZE_NONE;
 			wi->colour   = COLOUR_ORANGE;
@@ -746,7 +754,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 			wi->data     = 0;
 			wi->tooltips = STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO;
 
-			if (!HasBit(_legend_excluded_cargo, i)) this->LowerWidget(i + 3);
+			if (!HasBit(_legend_excluded_cargo, i)) this->LowerWidget(i + CPW_CARGO_FIRST);
 		}
 
 		this->SetDirty();
@@ -778,12 +786,12 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 			/* Only draw labels for widgets that exist. If the widget doesn't
 			 * exist then the local company has used the climate cheat or
 			 * changed the NewGRF configuration with this window open. */
-			if (i + 3 < this->widget_count) {
+			if (i + CPW_CARGO_FIRST < this->widget_count) {
 				/* Since the buttons have no text, no images,
 				 * both the text and the coloured box have to be manually painted.
 				 * clk_dif will move one pixel down and one pixel to the right
 				 * when the button is clicked */
-				byte clk_dif = this->IsWidgetLowered(i + 3) ? 1 : 0;
+				byte clk_dif = this->IsWidgetLowered(i + CPW_CARGO_FIRST) ? 1 : 0;
 
 				GfxFillRect(x + clk_dif, y + clk_dif, x + 8 + clk_dif, y + 5 + clk_dif, 0);
 				GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, cs->legend_colour);
@@ -809,19 +817,12 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget >= 3) {
-			ToggleBit(_legend_excluded_cargo, widget - 3);
+		if (widget >= CPW_CARGO_FIRST) {
+			ToggleBit(_legend_excluded_cargo, widget - CPW_CARGO_FIRST);
 			this->ToggleWidgetLoweredState(widget);
 			this->SetDirty();
 		}
 	}
-};
-
-/** Widget numbers of the cargo payment rates. */
-enum CargoPaymentRatesWidgets {
-	CPW_CLOSEBOX,
-	CPW_CAPTION,
-	CPW_BACKGROUND,
 };
 
 static const Widget _cargo_payment_rates_widgets[] = {
