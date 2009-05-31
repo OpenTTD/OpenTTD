@@ -1272,6 +1272,11 @@ enum VehicleDetailsWindowWidgets {
 	VLD_WIDGET_RESIZE,
 };
 
+assert_compile(VLD_WIDGET_DETAILS_CARGO_CARRIED    == VLD_WIDGET_DETAILS_CARGO_CARRIED + TDW_TAB_CARGO   );
+assert_compile(VLD_WIDGET_DETAILS_TRAIN_VEHICLES   == VLD_WIDGET_DETAILS_CARGO_CARRIED + TDW_TAB_INFO    );
+assert_compile(VLD_WIDGET_DETAILS_CAPACITY_OF_EACH == VLD_WIDGET_DETAILS_CARGO_CARRIED + TDW_TAB_CAPACITY);
+assert_compile(VLD_WIDGET_DETAILS_TOTAL_CARGO      == VLD_WIDGET_DETAILS_CARGO_CARRIED + TDW_TAB_TOTALS  );
+
 /** Vehicle details widgets. */
 static const Widget _vehicle_details_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,   0,  10,   0,  13, STR_BLACK_CROSS,                    STR_TOOLTIP_CLOSE_WINDOW},                      // VLD_WIDGET_CLOSEBOX
@@ -1321,14 +1326,14 @@ static const NWidgetPart _nested_vehicle_details_widgets[] = {
 };
 
 
-extern int GetTrainDetailsWndVScroll(VehicleID veh_id, byte det_tab);
-extern void DrawTrainDetails(const Vehicle *v, int left, int right, int y, int vscroll_pos, uint16 vscroll_cap, byte det_tab);
+extern int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab);
+extern void DrawTrainDetails(const Vehicle *v, int left, int right, int y, int vscroll_pos, uint16 vscroll_cap, TrainDetailsWindowTabs det_tab);
 extern void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y);
 extern void DrawShipDetails(const Vehicle *v, int left, int right, int y);
 extern void DrawAircraftDetails(const Vehicle *v, int left, int right, int y);
 
 struct VehicleDetailsWindow : Window {
-	int tab;
+	TrainDetailsWindowTabs tab;
 
 	/** Initialize a newly created vehicle details window */
 	VehicleDetailsWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
@@ -1383,7 +1388,7 @@ struct VehicleDetailsWindow : Window {
 		this->widget[VLD_WIDGET_MIDDLE_DETAILS].data = (this->vscroll.cap << 8) + 1;
 		this->owner = v->owner;
 
-		this->tab = 0;
+		this->tab = TDW_TAB_CARGO;
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -1408,11 +1413,11 @@ struct VehicleDetailsWindow : Window {
 	 * @param left  The left most coordinate to draw
 	 * @param right The right most coordinate to draw
 	 * @param y     The y coordinate
-	 * @param vscroll_pos (train only)
-	 * @param vscroll_cap (train only)
-	 * @param det_tab (train only)
+	 * @param vscroll_pos Position of scrollbar (train only)
+	 * @param vscroll_cap Number of lines currently displayed (train only)
+	 * @param det_tab Selected details tab (train only)
 	 */
-	static void DrawVehicleDetails(const Vehicle *v, int left, int right, int y, int vscroll_pos, uint vscroll_cap, byte det_tab)
+	static void DrawVehicleDetails(const Vehicle *v, int left, int right, int y, int vscroll_pos, uint vscroll_cap, TrainDetailsWindowTabs det_tab)
 	{
 		switch (v->type) {
 			case VEH_TRAIN:    DrawTrainDetails(v, left, right, y, vscroll_pos, vscroll_cap, det_tab);  break;
@@ -1427,7 +1432,7 @@ struct VehicleDetailsWindow : Window {
 	virtual void OnPaint()
 	{
 		const Vehicle *v = Vehicle::Get(this->window_number);
-		byte det_tab = this->tab;
+		TrainDetailsWindowTabs det_tab = this->tab;
 
 		this->SetWidgetDisabledState(VLD_WIDGET_RENAME_VEHICLE, v->owner != _local_company);
 
@@ -1556,7 +1561,7 @@ struct VehicleDetailsWindow : Window {
 					widget,
 					WIDGET_LIST_END);
 
-				this->tab = widget - VLD_WIDGET_DETAILS_CARGO_CARRIED;
+				this->tab = (TrainDetailsWindowTabs)(widget - VLD_WIDGET_DETAILS_CARGO_CARRIED);
 				this->SetDirty();
 				break;
 		}

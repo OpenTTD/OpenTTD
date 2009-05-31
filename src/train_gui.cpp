@@ -174,13 +174,19 @@ static void TrainDetailsCapacityTab(const Vehicle *v, int left, int right, int y
 	}
 }
 
-int GetTrainDetailsWndVScroll(VehicleID veh_id, byte det_tab)
+/**
+ * Determines the number of lines in the train details window
+ * @param veh_id Train
+ * @param det_tab Selected details tab
+ * @return Number of line
+ */
+int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
 {
 	AcceptedCargo act_cargo;
 	AcceptedCargo max_cargo;
 	int num = 0;
 
-	if (det_tab == 3) { // Total cargo tab
+	if (det_tab == TDW_TAB_TOTALS) { // Total cargo tab
 		memset(max_cargo, 0, sizeof(max_cargo));
 		memset(act_cargo, 0, sizeof(act_cargo));
 
@@ -212,11 +218,14 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, byte det_tab)
  * @param left  The left most coordinate to draw
  * @param right The right most coordinate to draw
  * @param y     The y coordinate
+ * @param vscroll_pos Position of scrollbar
+ * @param vscroll_cap Number of lines currently displayed
+ * @param det_tab Selected details tab
  */
-void DrawTrainDetails(const Vehicle *v, int left, int right, int y, int vscroll_pos, uint16 vscroll_cap, byte det_tab)
+void DrawTrainDetails(const Vehicle *v, int left, int right, int y, int vscroll_pos, uint16 vscroll_cap, TrainDetailsWindowTabs det_tab)
 {
 	/* draw the first 3 details tabs */
-	if (det_tab != 3) {
+	if (det_tab != TDW_TAB_TOTALS) {
 		const Vehicle *u = v;
 		int x = 1;
 		for (;;) {
@@ -235,14 +244,21 @@ void DrawTrainDetails(const Vehicle *v, int left, int right, int y, int vscroll_
 				int py = y + 2;
 				switch (det_tab) {
 					default: NOT_REACHED();
-					case 0: TrainDetailsCargoTab(   v, px, right, py); break;
-					case 1:
+
+					case TDW_TAB_CARGO:
+						TrainDetailsCargoTab(v, px, right, py);
+						break;
+
+					case TDW_TAB_INFO:
 						/* Only show name and value for the 'real' part */
 						if (!IsArticulatedPart(v)) {
 							TrainDetailsInfoTab(v, px, right, py);
 						}
 						break;
-					case 2: TrainDetailsCapacityTab(v, px, right, py); break;
+
+					case TDW_TAB_CAPACITY:
+						TrainDetailsCapacityTab(v, px, right, py);
+						break;
 				}
 				y += 14;
 

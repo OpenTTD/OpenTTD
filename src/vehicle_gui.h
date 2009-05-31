@@ -35,6 +35,14 @@ enum VehicleViewWindowWidgets {
 	VVW_WIDGET_FORCE_PROCEED,
 };
 
+/** The tabs in the train details window */
+enum TrainDetailsWindowTabs {
+	TDW_TAB_CARGO = 0, ///< Tab with cargo carried by the vehicles
+	TDW_TAB_INFO,      ///< Tab with name and value of the vehicles
+	TDW_TAB_CAPACITY,  ///< Tab with cargo capacity of the vehicles
+	TDW_TAB_TOTALS,    ///< Tab with sum of total cargo transported
+};
+
 /** Vehicle List Window type flags */
 enum {
 	VLW_STANDARD      = 0 << 8,
