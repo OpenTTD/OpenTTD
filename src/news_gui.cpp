@@ -172,6 +172,14 @@ NewsTypeData _news_type_data[] = {
 
 assert_compile(lengthof(_news_type_data) == NT_END);
 
+/** Widget numbers of the news display windows. */
+enum NewsTypeWidgets {
+	NTW_HEADLINE, ///< The news headline.
+	NTW_CLOSEBOX, ///< Close the window.
+	NTW_CAPTION,  ///< Title bar of the window. Only used in type0-news.
+	NTW_VIEWPORT, ///< Viewport in window. Only used in type0-news.
+};
+
 struct NewsWindow : Window {
 	uint16 chat_height;
 	NewsItem *ni;
@@ -265,13 +273,13 @@ struct NewsWindow : Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case 1:
+			case NTW_CLOSEBOX:
 				NewsWindow::duration = 0;
 				delete this;
 				_forced_news = NULL;
 				break;
 
-			case 0:
+			case NTW_HEADLINE:
 				if (this->ni->reftype1 == NR_VEHICLE) {
 					const Vehicle *v = Vehicle::Get(this->ni->ref1);
 					ScrollMainWindowTo(v->x_pos, v->y_pos, v->z_pos);
@@ -332,9 +340,9 @@ static const Widget _news_type13_widgets[] = {
 };
 
 static const NWidgetPart _nested_news_type13_widgets[] = {
-	NWidget(WWT_PANEL, COLOUR_WHITE, 0),
+	NWidget(WWT_PANEL, COLOUR_WHITE, NTW_HEADLINE),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_PANEL, COLOUR_WHITE, 1), SetMinimalSize(11, 12), EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_WHITE, NTW_CLOSEBOX), SetMinimalSize(11, 12), EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(419, 0),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 158),
@@ -355,9 +363,9 @@ static const Widget _news_type2_widgets[] = {
 };
 
 static const NWidgetPart _nested_news_type2_widgets[] = {
-	NWidget(WWT_PANEL, COLOUR_WHITE, 0),
+	NWidget(WWT_PANEL, COLOUR_WHITE, NTW_HEADLINE),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_PANEL, COLOUR_WHITE, 1), SetMinimalSize(11, 12), EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_WHITE, NTW_CLOSEBOX), SetMinimalSize(11, 12), EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(419, 0),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 118),
@@ -382,17 +390,17 @@ static const Widget _news_type0_widgets[] = {
 static NWidgetPart _nested_news_type0_widgets[] = {
 	/* Caption + close box */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, 1), SetMinimalSize(11, 14), SetDataTip(STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, 2), SetMinimalSize(269, 14), SetDataTip(STR_NEWS_MESSAGE_CAPTION, STR_NULL),
+		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NTW_CLOSEBOX), SetMinimalSize(11, 14), SetDataTip(STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NTW_CAPTION), SetMinimalSize(269, 14), SetDataTip(STR_NEWS_MESSAGE_CAPTION, STR_NULL),
 	EndContainer(),
 
 	/* Main part */
-	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, 0),
+	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NTW_HEADLINE),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 
-			NWidget(WWT_INSET, COLOUR_LIGHT_BLUE, 3), SetMinimalSize(276, 49),
+			NWidget(WWT_INSET, COLOUR_LIGHT_BLUE, NTW_VIEWPORT), SetMinimalSize(276, 49),
 			EndContainer(),
 
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
@@ -760,6 +768,15 @@ static void DrawNewsString(int x, int y, TextColour colour, const NewsItem *ni, 
 	DrawString(x, x + maxw, y, buffer2, colour);
 }
 
+/** Widget numbers of the message history window. */
+enum MessageHistoryWidgets {
+	MHW_CLOSEBOX,
+	MHW_CAPTION,
+	MHW_STICKYBOX,
+	MHW_BACKGROUND,
+	MHW_SCROLLBAR,
+	MHW_RESIZEBOX,
+};
 
 struct MessageHistoryWindow : Window {
 	MessageHistoryWindow(const WindowDesc *desc) : Window(desc)
@@ -803,7 +820,7 @@ struct MessageHistoryWindow : Window {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget == 3) {
+		if (widget == MHW_BACKGROUND) {
 			NewsItem *ni = _latest_news;
 			if (ni == NULL) return;
 
@@ -834,17 +851,17 @@ static const Widget _message_history_widgets[] = {
 
 static const NWidgetPart _nested_message_history[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, 0), SetMinimalSize(11, 14), SetDataTip(STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, 1), SetMinimalSize(377, 14), SetDataTip(STR_MESSAGE_HISTORY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_BROWN, 2), SetMinimalSize(12, 14), SetDataTip(0x0, STR_STICKY_BUTTON),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, MHW_CLOSEBOX), SetMinimalSize(11, 14), SetDataTip(STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, MHW_CAPTION), SetMinimalSize(377, 14), SetDataTip(STR_MESSAGE_HISTORY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_BROWN, MHW_STICKYBOX), SetMinimalSize(12, 14), SetDataTip(0x0, STR_STICKY_BUTTON),
 	EndContainer(),
 
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, 3), SetMinimalSize(388, 125), SetDataTip(0x0, STR_MESSAGE_HISTORY_TIP), SetResize(1, 1),
+		NWidget(WWT_PANEL, COLOUR_BROWN, MHW_BACKGROUND), SetMinimalSize(388, 125), SetDataTip(0x0, STR_MESSAGE_HISTORY_TIP), SetResize(1, 12),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
-			NWidget(WWT_SCROLLBAR, COLOUR_BROWN, 4), SetMinimalSize(12, 114), SetDataTip(0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST), SetResize(0, 1),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, 5), SetMinimalSize(12, 12), SetDataTip(0x0, STR_RESIZE_BUTTON),
+			NWidget(WWT_SCROLLBAR, COLOUR_BROWN, MHW_SCROLLBAR), SetMinimalSize(12, 114), SetDataTip(0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST), SetResize(0, 1),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, MHW_RESIZEBOX), SetMinimalSize(12, 12), SetDataTip(0x0, STR_RESIZE_BUTTON),
 		EndContainer(),
 	EndContainer(),
 };
