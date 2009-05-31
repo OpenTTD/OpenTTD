@@ -1458,11 +1458,6 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 	FOR_ALL_VEHICLES(v) {
 		Order *order;
 
-		/* Forget about this station if this station is removed */
-		if (v->last_station_visited == destination && type == OT_GOTO_STATION) {
-			v->last_station_visited = INVALID_STATION;
-		}
-
 		order = &v->current_order;
 		if ((v->type == VEH_AIRCRAFT && order->IsType(OT_GOTO_DEPOT) ? OT_GOTO_STATION : order->GetType()) == type &&
 				v->current_order.GetDestination() == destination) {
