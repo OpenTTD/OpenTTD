@@ -749,7 +749,16 @@ common_call:
 					case OT_NATIVECLOSURE: {
 						bool suspend;
 						_suspended_target = ct_target;
-						_GUARD(CallNative(_nativeclosure(clo), arg3, ct_stackbase, clo,suspend));
+						try {
+							_GUARD(CallNative(_nativeclosure(clo), arg3, ct_stackbase, clo,suspend));
+						} catch (...) {
+							_suspended = SQTrue;
+							_suspended_target = ct_target;
+							_suspended_root = ci->_root;
+							_suspended_traps = traps;
+							_suspend_varargs = ci->_vargs;
+							throw;
+						}
 						if(suspend){
 							_suspended = SQTrue;
 							_suspended_target = ct_target;

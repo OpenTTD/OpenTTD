@@ -1493,7 +1493,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 static Vehicle *ClearRoadStopStatusEnum(Vehicle *v, void *)
 {
-	if (v->type == VEH_ROAD) ClrBit(v->u.road.state, RVS_IN_DT_ROAD_STOP);
+	if (v->type == VEH_ROAD) v->u.road.state &= RVSB_ROAD_STOP_TRACKDIR_MASK;
 
 	return NULL;
 }

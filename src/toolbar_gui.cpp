@@ -167,6 +167,10 @@ public:
 	void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
 	{
 		CompanyID company = (CompanyID)result;
+
+		/* It's possible the company is deleted while the dropdown is open */
+		if (!IsValidCompanyID(company)) return;
+
 		DrawCompanyIcon(company, x + 2, y + 1);
 
 		SetDParam(0, company);
