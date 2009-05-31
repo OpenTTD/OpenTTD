@@ -1958,13 +1958,11 @@ public:
 		uint diff = delta.x / 2;
 		this->widget[SLWW_SORT_BYNAME].right += diff;
 		this->widget[SLWW_SORT_BYDATE].left  += diff;
-		this->widget[SLWW_SORT_BYDATE].right += delta.x;
 
 		/* Same for widget 11 and 12 in save-dialog */
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
 			this->widget[SLWW_DELETE_SELECTION].right += diff;
 			this->widget[SLWW_SAVE_GAME].left  += diff;
-			this->widget[SLWW_SAVE_GAME].right += delta.x;
 		}
 
 		this->vscroll.cap += delta.y / 10;
