@@ -223,7 +223,7 @@ struct NewsWindow : Window {
 				DrawString(2, this->width - 1, 1, STR_SILVER_CROSS);
 
 				SetDParam(0, this->ni->date);
-				DrawString(2, this->width - 1, 1, STR_DATE_LONG_SMALL, TC_FROMSTRING, SA_RIGHT);
+				DrawString(2, this->width - 2, 1, STR_DATE_LONG_SMALL, TC_FROMSTRING, SA_RIGHT);
 
 				if (!(this->ni->flags & NF_VIEWPORT)) {
 					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
